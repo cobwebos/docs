@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 6204fcefa60d1a627e6e3d4e6b799efd3ee9298b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ec19d249d183f8888bf9e1eb837e2c860b1ed
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505862"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117135"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -43,13 +43,13 @@ ms.locfileid: "85505862"
 检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="assign-the-application-to-a-role"></a>将应用程序分配给角色
-要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](/azure/role-based-access-control/built-in-roles)。
+要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读者”  角色意味着该应用程序可以读取该资源组及其包含的所有资源。 若要允许应用程序执行诸如“重新启动”、“启动”和“停止”实例之类的操作，请选择“参与者”角色  。
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自签名证书创建服务主体
 
-下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 将[读者](/azure/role-based-access-control/built-in-roles#reader)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 将[读者](../../role-based-access-control/built-in-roles.md#reader)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
 > New-SelfSignedCertificate cmdlet 和 PKI 模块目前在 PowerShell Core 中不受支持。 
@@ -224,4 +224,4 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 * 若要使用密码设置服务主体，请参阅[使用 Azure PowerShell 创建 Azure 服务主体](/powershell/azure/create-azure-service-principal-azureps)。
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
-* 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。
+* 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](./authentication-vs-authorization.md)。

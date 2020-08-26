@@ -12,11 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745719"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799479"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -26,9 +27,9 @@ ms.locfileid: "83745719"
 
 - Windows 向组织的网络注册设备，使你能够使用个人帐户访问资源。 设备注册后，Windows 将设备加入网络，因此你可以使用组织的用户名和密码来登录并访问受限的资源。
 
-- （可选）根据组织的选择，可能需要通过[多重身份验证](multi-factor-authentication-end-user-first-time.md)或[安全信息](user-help-security-info-overview.md)设置双重验证。
+- （可选）根据组织的选择，可能需要通过[多重身份验证](multi-factor-authentication-end-user-first-time.md)或[安全信息](./security-info-setup-signin.md)设置双重验证。
 
-- （可选）根据组织的选择，可能会自动注册移动设备管理，如 Microsoft Intune。 有关在 Microsoft Intune 中注册的详细信息，请参阅[在 Intune 中注册设备](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)。
+- （可选）根据组织的选择，可能会自动注册移动设备管理，如 Microsoft Intune。 有关在 Microsoft Intune 中注册的详细信息，请参阅[在 Intune 中注册设备](/intune-user-help/enroll-your-device-in-intune-all)。
 
 - 用户需要完成登录过程，之后便可使用组织帐户自动登录。
 
@@ -60,7 +61,7 @@ ms.locfileid: "83745719"
 
     ![“设置上的帐户”屏幕](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 选择“访问工作单位或学校”，确保可看到如下所示文本：已连接到 \<your_organization> Azure AD 。
+2. 选择 " **访问工作单位或学校**"，并确保显示类似于 " **连接到 *\<your_organization>* Azure AD**" 的文本。
 
     ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -105,7 +106,7 @@ ms.locfileid: "83745719"
 
     ![“设置上的帐户”屏幕](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 选择“访问工作单位或学校”，确保可看到如下所示文本：已连接到 \<your_organization> Azure AD 。
+2. 选择 " **访问工作单位或学校**"，并确保显示类似于 " **连接到 *\<your_organization>* Azure AD**" 的文本。
 
     ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -114,4 +115,4 @@ ms.locfileid: "83745719"
 
 - 如果组织希望你能够注册个人设备（例如手机），请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
 
-- 如果你的组织使用的管理工具是 Microsoft Intune，并且你在注册、登录或与 Intune 相关的任何其他方面存在疑问，请参阅 [Intune 用户帮助内容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。
+- 如果你的组织使用的管理工具是 Microsoft Intune，并且你在注册、登录或与 Intune 相关的任何其他方面存在疑问，请参阅 [Intune 用户帮助内容](/intune-user-help/use-managed-devices-to-get-work-done)。

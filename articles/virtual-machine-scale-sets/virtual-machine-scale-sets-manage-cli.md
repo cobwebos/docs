@@ -8,12 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 2742b0b73d4143159fd1ed1338988b01a2171041
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124323"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502896"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 命令。

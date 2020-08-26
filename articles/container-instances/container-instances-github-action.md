@@ -2,20 +2,20 @@
 title: 通过 GitHub 操作部署容器实例
 description: 配置一个 GitHub 操作，用于自动执行生成容器映像并将其推送和部署到 Azure 容器实例的步骤
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.custom: ''
-ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743994"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755001"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
 [Github 操作](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
 
-使用 GitHub 操作[部署到 Azure 容器实例](https://github.com/azure/aci-deploy)可以自动将容器部署到 Azure 容器实例。 该操作可为容器实例设置属性（类似于在 [az container create][az-container-create] 命令中设置的属性）。
+使用 " [部署到 Azure 容器实例](https://github.com/azure/aci-deploy) " GitHub 操作可自动将单个容器部署到 Azure 容器实例。 该操作可为容器实例设置属性（类似于在 [az container create][az-container-create] 命令中设置的属性）。
 
 本文介绍了如何在 GitHub 存储库中设置用于执行以下操作的工作流：
 
@@ -25,8 +25,8 @@ ms.locfileid: "84743994"
 
 本文将介绍设置工作流的两种方式：
 
-* 使用“部署到 Azure 容器实例”操作和其他操作在 GitHub 存储库中自行配置工作流。  
-* 使用 Azure CLI 的[部署到 Azure](https://github.com/Azure/deploy-to-azure-cli-extension) 扩展中的 `az container app up` 命令。 此命令简化了 GitHub 工作流的创建和部署步骤。
+* [配置 github 工作流](#configure-github-workflow) -使用 "部署到 Azure 容器实例" 操作和其他操作在 GitHub 存储库中创建工作流。  
+* [使用 CLI 扩展](#use-deploy-to-azure-extension) -使用 `az container app up` Azure CLI 中的 " [部署到 Azure](https://github.com/Azure/deploy-to-azure-cli-extension) " 扩展中的命令。 此命令简化了 GitHub 工作流的创建和部署步骤。
 
 > [!IMPORTANT]
 > 适用于 Azure 容器实例的 GitHub 操作目前为预览版。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
@@ -91,7 +91,7 @@ az ad sp create-for-rbac \
 
 ### <a name="update-service-principal-for-registry-authentication"></a>更新用于注册表身份验证的服务主体
 
-更新 Azure 服务主体凭据，以允许对容器注册表拥有推送和拉取权限。 此步骤允许 GitHub 工作流使用服务主体[向容器注册表进行身份验证](../container-registry/container-registry-auth-service-principal.md)。 
+更新 Azure 服务主体凭据，以允许对容器注册表进行推送和请求访问。 此步骤使 GitHub 工作流可以使用服务主体对 [容器注册表进行身份验证](../container-registry/container-registry-auth-service-principal.md) ，并推送和拉取 Docker 映像。 
 
 获取你的容器注册表的资源 ID。 请将以下 [az acr show][az-acr-show] 命令中的占位符替换为你的注册表名称：
 
@@ -118,8 +118,8 @@ az role assignment create \
 
 |Secret  |Value  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | 创建服务主体后显示的整个 JSON 输出 |
-|`REGISTRY_LOGIN_SERVER`   | 注册表的登录服务器名称（全小写）。 示例： *myregistry.azure.cr.io*        |
+|`AZURE_CREDENTIALS`     | 服务主体创建步骤中的整个 JSON 输出 |
+|`REGISTRY_LOGIN_SERVER`   | 注册表的登录服务器名称（全小写）。 示例： *myregistry.azurecr.io*        |
 |`REGISTRY_USERNAME`     |  创建服务主体后显示的 JSON 输出中的 `clientId`       |
 |`REGISTRY_PASSWORD`     |  创建服务主体后显示的 JSON 输出中的 `clientSecret` |
 | `RESOURCE_GROUP` | 用来限定服务主体作用域的资源组名称 |
@@ -177,9 +177,9 @@ jobs:
 
 ![查看工作流进度](./media/container-instances-github-action/github-action-progress.png)
 
-若要了解如何查看工作流中每个步骤的状态和结果，请参阅[管理工作流运行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+若要了解如何查看工作流中每个步骤的状态和结果，请参阅[管理工作流运行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。 如果工作流未完成，请参阅 [查看日志以诊断失败](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)。
 
-工作流完成后，运行 [az container show][az-container-show] 命令获取有关名为 *aci-sampleapp* 的容器实例的信息。 替换为你的资源组名称： 
+工作流成功完成后，通过运行[az container show][az-container-show]命令获取名为*sampleapp.exe*的容器实例的相关信息。 替换为你的资源组名称： 
 
 ```azurecli
 az container show \
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>命令进度
 
-* 出现提示时，请提供你的 GitHub 凭据，或提供具有“存储库”和“用户”作用域的 [GitHub 个人访问令牌](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT)，以便向注册表进行身份验证。   如果提供了 GitHub 凭据，该命令将为你创建一个 PAT。
+* 出现提示时，请提供 GitHub*凭据，或*提供[github 个人访问令牌](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) ，其中包含存储库和*用户*范围以使用 GitHub 帐户进行身份验证。 如果提供了 GitHub 凭据，该命令将为你创建一个 PAT。 按照其他提示配置工作流。
 
 * 该命令将为工作流创建存储库机密：
 
@@ -258,11 +258,29 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
+若要在 GitHub UI 中查看每个步骤的工作流状态和结果，请参阅[管理工作流运行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+
 ### <a name="validate-workflow"></a>验证工作流
 
-工作流使用 GitHub 存储库的基名称（在本例中为 *acr-build-helloworld-node*）部署 Azure 容器实例。 在浏览器中，可以浏览到所提供的链接来查看正在运行的 Web 应用。 如果应用在除 8080 以外的端口上侦听，请改为在 URL 中指定该侦听端口。
+工作流使用 GitHub 存储库的基名称（在本例中为 *acr-build-helloworld-node*）部署 Azure 容器实例。 工作流成功完成后，通过运行[az container show][az-container-show]命令获取名为*helloworld-node*的容器实例的相关信息。 替换为你的资源组名称： 
 
-若要在 GitHub UI 中查看每个步骤的工作流状态和结果，请参阅[管理工作流运行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+```azurecli
+az container show \
+  --resource-group <resource-group-name> \
+  --name acr-build-helloworld-node \
+  --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
+  --output table
+```
+
+输出类似于：
+
+```console
+FQDN                                                   ProvisioningState
+---------------------------------                      -------------------
+acr-build-helloworld-node.westus.azurecontainer.io     Succeeded
+```
+
+预配实例后，在浏览器中导航到容器的 FQDN，以查看正在运行的 Web 应用。
 
 ## <a name="clean-up-resources"></a>清理资源
 

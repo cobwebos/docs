@@ -1,6 +1,6 @@
 ---
 title: 针对虚拟网络对等互连配置 VPN 网关传输
-description: 针对虚拟网络对等互连配置 VPN 网关传输。
+description: 为虚拟网络对等互连配置网关传输，为连接性将两个 Azure 虚拟网络无缝连接到一个。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5649c804cb21a221ca287711380c91846f55306
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982886"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031688"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 

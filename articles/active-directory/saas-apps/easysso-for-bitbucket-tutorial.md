@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for BitBucket 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 EasySSO for BitBucket 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ed96e97-b590-4dca-8d00-36288444c641
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946785f02461706d1d3675d089c19d68816fb8ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077076"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for BitBucket 的集成
 

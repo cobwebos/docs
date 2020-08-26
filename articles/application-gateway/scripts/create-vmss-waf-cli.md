@@ -11,13 +11,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 7fb66c54b13581b9afc516067c1450a154699bb5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: fa81765367eb194161aec4da44a8bbac3398d405
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457767"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497199"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 限制 Web 流量
 

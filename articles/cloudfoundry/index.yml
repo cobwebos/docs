@@ -3,7 +3,7 @@ title: “Azure 上的 Cloud Foundry”文档
 summary: Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和操作以各种语言和框架开发的十二因素应用程序。
 metadata:
   title: “Azure 上的 Cloud Foundry”文档
-  description: Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和操作以各种语言和框架开发的十二因素应用程序。
+  description: Cloud Foundry 是一种开源 PaaS，用于生成、部署和操作以各种语言和框架开发的 12 因素应用程序。
   services: multiple
   ms.service: multiple
   ms.devlang: devops
@@ -11,12 +11,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 92fc1fb74316e2a80d0cf4fde912f05db2b3613b
-  ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+  ms.openlocfilehash: 8191a179474db5e9d60e0cd10fb1efff189a3a73
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/12/2020
-  ms.locfileid: "84750348"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224962"
 landingContent:
 - title: 关于 Azure 上的 Cloud Foundry
   linkLists:

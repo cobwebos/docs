@@ -6,18 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539901"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078081"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
 此功能目前处于预览状态。
 
-使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
+使用 [Application Insights](./app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
 完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。** **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
 
@@ -106,7 +106,7 @@ ms.locfileid: "86539901"
 
     ![设置 Git 存储库](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-有关其他部署选项，请参阅[此文](../../app-service/containers/choose-deployment-type.md)。
+有关更多部署选项，请参阅[应用服务文档](https://docs.microsoft.com/azure/app-service)。
 
 ## <a name="deploy-your-project"></a>部署项目
 
@@ -149,7 +149,7 @@ ms.locfileid: "86539901"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>添加 Application Insights 来监视 Web 应用
 
-1. [创建 Application Insights 资源](./../../azure-monitor/app/create-new-resource.md )。
+1. [创建 Application Insights 资源](./create-new-resource.md)。
 
 2. 复制 Application Insights 资源的 **iKey** 并在 Web 应用中指定以下设置：
 
@@ -171,3 +171,4 @@ ms.locfileid: "86539901"
 如果使用 Azure 应用服务托管的自定义容器，请遵照[为容器化 ASP.NET Core 应用程序启用服务探查器](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)中的说明启用 Application Insights Profiler。
 
 报告有关 Application Insights GitHub 存储库的任何问题或提出建议：[ApplicationInsights-Profiler-AspNetCore：问题](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)
+

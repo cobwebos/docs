@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525494"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439473"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -100,6 +100,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 ## <a name="rhel-8-image-types"></a>RHEL 8 映像类型
 
+>[!NOTE]
+> Red Hat 建议使用 Grubby 在 RHEL 8 + 中配置内核命令行参数。 [此处](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)提供了更多详细信息。
+
 下面是 RHEL 8 映像类型的详细信息。
 
 |发布者 | 产品/服务 | SKU 值 | 版本 | 详细信息
@@ -142,12 +145,12 @@ RedHat:RHEL:7.6:7.6.2019102813
 >
 > 有关 RHEL EUS 可用性的详细信息，请参阅[Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)。
 
-次版本 |EUS 图像示例              |EUS 状态                                                   |
+次要版本 |EUS 图像示例              |EUS 状态                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，EUS 2019 及更高版本发布的映像。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 默认情况下，EUS 2019 及更高版本发布的映像。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
-RHEL 8。0      |不可用                            | Red Hat 中没有可用的 EUS。                               |
+RHEL 8。0      |空值                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服务
 
@@ -162,7 +165,7 @@ RHEL 8。0      |不可用                            | Red Hat 中没有可用�
 
 ## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 
-可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
+可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 示例为 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
 
 ## <a name="publishing-policy"></a>发布策略
 

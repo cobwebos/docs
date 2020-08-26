@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327338"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "84944485"
 
 * 可自定义，即可以更改要查看的指标、修改或设置与限制一致的阈值，并保存为你自己的工作簿。 工作簿中的图表可以固定到 Azure 仪表板。  
 
-此功能不需要启用或配置任何设置，存储帐户的存储指标是默认收集的。 如果不熟悉可用于 Azure 存储的指标，请查阅 [ Azure 存储指标](../../storage/common/storage-metrics-in-azure-monitor.md)，以查看 Azure 存储指标的说明和定义。
+此功能不需要启用或配置任何设置，存储帐户的存储指标是默认收集的。 如果不熟悉可用于 Azure 存储的指标，请查阅 [ Azure 存储指标](../../storage/common/monitor-storage.md)，以查看 Azure 存储指标的说明和定义。
 
 >[!NOTE]
 >访问此功能不需任何费用。系统只会对你配置或启用的 Azure Monitor 基本功能收费，如 [Azure Monitor 定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)页中所述。
@@ -198,7 +198,7 @@ ms.locfileid: "84944485"
 
 1. 选择“指标”网格中的“列设置”。
 
-2. 在“编辑列设置”窗格中，选择“列”部分下的“microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$”。 在“调色板”下拉列表下，选择“绿色”。
+2. 在 "**编辑列设置**" 窗格中，选择 " **storageaccounts/UsedCapacity $ `|` Storageaccounts/blobservices-blobcapacity 相同 $/-storageaccounts $/ `|` `|` `|` **-fileservices $ $/FileCapacity/storageaccounts-queueservices $" 列中的 "**列**" 部分下的 ""。 在“调色板”下拉列表下，选择“绿色”。
 
 3. 选择“保存并关闭”，以提交更改。
 
@@ -228,7 +228,7 @@ ms.locfileid: "84944485"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-有关一般故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
+如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
 此部分有助于诊断和排查在使用用于存储的 Azure Monitor 时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
@@ -242,11 +242,11 @@ ms.locfileid: "84944485"
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何更改可用性着色和阈值？
 
-有关如何更改可用性着色和阈值的详细步骤，请参阅[修改可用性阈值](storage-insights-overview.md#modify-the-availability-threshold)部分。
+有关如何更改可用性着色和阈值的详细步骤，请参阅[修改可用性阈值](#modify-the-availability-threshold)部分。
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何对用于存储的 Azure Monitor 中显示的数据进行分析和故障排除？
 
- 若要详细了解如何对用于存储的 Azure Monitor 中显示的 Azure 存储数据进行分析和故障排除，请参阅[监视、诊断和排除用于存储的 Microsoft Azure 故障](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)一文。
+ 若要详细了解如何对用于存储的 Azure Monitor 中显示的 Azure 存储数据进行分析和故障排除，请参阅[监视、诊断和排除用于存储的 Microsoft Azure 故障](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)一文。
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>为什么我在指标中看不到所有类型的错误？
 
@@ -269,8 +269,9 @@ ms.locfileid: "84944485"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications.md)来设置自动警报，以帮助检测问题。
+* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
 
 * 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 
 * 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
+

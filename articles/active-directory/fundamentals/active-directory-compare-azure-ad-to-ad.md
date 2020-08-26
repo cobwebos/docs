@@ -11,11 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fde1b80a1646a92688a0fcc1fa221cf01ba0a9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926897"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418859"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>将 Active Directory 与 Azure Active Directory 进行比较
 
@@ -41,7 +42,7 @@ Azure Active Directory 是适用于云的标识和访问管理解决方案的下
 | 中间层/守护程序服务|在本地环境中运行的服务通常使用 AD 服务帐户或组托管服务帐户（gMSA）来运行。 然后，这些应用将继承服务帐户的权限。| Azure AD 提供[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)，以在云中运行其他工作负荷。 这些标识的生命周期由 Azure AD 管理，并绑定到资源提供程序，以获取后门访问。|
 | **设备**|||
 | 移动|Active Directory 不支持无第三方解决方案的移动设备。| Microsoft 的移动设备管理解决方案 Microsoft Intune 与 Azure AD 集成。 Microsoft Intune 提供要在身份验证期间评估的标识系统的设备状态信息。 |
-| Windows 桌面|Active Directory 提供使用组策略、System Center Configuration Manager 或其他第三方解决方案来加入 Windows 设备以对其进行管理的功能。|Windows 设备可以[加入到 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/)。 条件性访问可以检查是否 Azure AD 将设备加入到身份验证过程中。 还可以通过[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)来管理 Windows 设备。 在这种情况下，条件性访问会在允许访问应用之前考虑设备是否投诉（例如，最新的安全修补程序和病毒签名）。|
+| Windows 桌面|Active Directory 提供使用组策略、System Center Configuration Manager 或其他第三方解决方案来加入 Windows 设备以对其进行管理的功能。|Windows 设备可以[加入到 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/)。 条件性访问可以检查是否 Azure AD 将设备加入到身份验证过程中。 还可以通过[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)来管理 Windows 设备。 在这种情况下，条件性访问会在允许访问应用之前考虑设备是否符合（例如，最新的安全修补程序和病毒签名）。|
 | Windows 服务器| Active Directory 为使用组策略或其他管理解决方案的本地 Windows 服务器提供了强大的管理功能。| 可以通过[Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/)来管理 Azure 中的 Windows server 虚拟机。 当 Vm 需要访问标识系统目录或资源时，可以使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)。|
 | Linux/Unix 工作负荷|尽管可以将 Linux 计算机配置为以 Kerberos 领域身份向 Active Directory 进行身份验证，但 Active Directory 不能以本机方式支持非 Windows，而无需第三方解决方案。|Linux/Unix Vm 可以使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)来访问标识系统或资源。 某些组织将这些工作负荷迁移到云容器技术，这些技术也可以使用托管的标识。|
 

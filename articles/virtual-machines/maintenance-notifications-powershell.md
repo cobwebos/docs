@@ -7,17 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028579"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 
 **本文适用于同时运行 Linux 和 Windows 的虚拟机。**
 
-可以使用 Azure PowerShell 查看何时安排 VM 进行[维护](maintenance-notifications.md)。 使用 `-status` 参数时可通过 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
+可以使用 Azure PowerShell 查看何时安排 VM 进行[维护](maintenance-notifications.md)。 使用 `-status` 参数时可通过 [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
   
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
@@ -39,7 +40,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 
 
-还可以通过使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 并且不指定 VM 来获取资源组中所有 VM 的维护状态。
+还可以通过使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 并且不指定 VM 来获取资源组中所有 VM 的维护状态。
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status

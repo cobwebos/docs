@@ -3,12 +3,12 @@ title: 配置启用了 Azure Arc 的 Kubernetes 群集与 Azure Monitor 容器 |
 description: 本文介绍如何为启用了 Azure Arc Kubernetes 群集的容器配置 Azure Monitor 监视。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092875"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>启用对启用了 Azure Arc 的 Kubernetes 群集的监视
 
@@ -63,7 +63,7 @@ ms.locfileid: "85261046"
     >[!IMPORTANT]
     >支持启用 Arc 的 Kubernetes 群集支持的最低代理版本为 ciprod04162020 或更高版本。
 
-- 如果你使用 PowerShell 脚本方法启用监视，则需要[Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) 。
+- 如果你使用 PowerShell 脚本方法启用监视，则需要[Powershell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) 。
 
 - 如果使用 Bash 脚本方法启用监视，则需要[bash 版本 4](https://www.gnu.org/software/bash/) 。
 
@@ -212,7 +212,7 @@ ms.locfileid: "85261046"
 |proxyhost | 代理服务器的地址或 FQDN |
 |port | 代理服务器的可选端口号 |
 
-例如： `http://user01:password@proxy01.contoso.com:3128`
+例如：`http://user01:password@proxy01.contoso.com:3128`
 
 如果以**http**形式指定协议，则将使用 SSL/TLS 安全连接创建 http 请求。 代理服务器必须支持 SSL/TLS 协议。
 

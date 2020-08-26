@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 37e6b2986f76529b5f3b2edc69f50259485df0b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006511"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -75,15 +75,15 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **目标 FQDN 部分**
 
-    | 名称 | 源地址 | `Protocol:Port` | 目标 FQDN | 备注 |
+    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 注释 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
-    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际存储帐户名称。 如果你的群集受 WASB 支持，则为 WASB 添加一个规则。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 |
+    | Rule_4 | * | https:443,http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际的存储帐户名称。 如果群集由 WASB 提供支持，则为 WASB 添加一个规则。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 |
 
    ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. 选择 **添加** 。
+1. 选择“添加”  ****。
 
 ### <a name="configure-the-firewall-with-network-rules"></a>使用网络规则配置防火墙
 
@@ -95,31 +95,31 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **顶部部分**
 
-    | 属性|  值|
+    | 属性|  Value|
     |---|---|
     |名称| FwNetRule|
-    |优先度|200|
-    |操作|Allow|
+    |优先级|200|
+    |操作|允许|
 
     **IP 地址部分**
 
-    | 名称 | 协议 | 源地址 | 目标地址 | 目标端口 | 备注 |
+    | 名称 | 协议 | 源地址 | 目标地址 | 目标端口 | 注释 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | 时间服务 |
-    | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | * | 如果使用企业安全性套餐 (ESP)，请在 IP地址部分添加一个网络规则，以允许与 ESP 群集的 AAD-DS 通信。 可以在门户的 AAD-DS 部分找到域控制器的 IP 地址 |
-    | Rule_3 | TCP | * | Data Lake Storage 帐户的 IP 地址 | * | 如果使用的是 Azure Data Lake Storage，则可以在“IP 地址”部分中添加一个网络规则来解决 ADLS Gen1 和 Gen2 的 SNI 问题。 此选项会将流量路由到防火墙。 这可能会导致较大的数据负载成本，但会在防火墙日志中记录和审核流量。 确定 Data Lake Storage 帐户的 IP 地址。 可以使用 PowerShell 命令（如 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`）将 FQDN 解析为 IP 地址。|
+    | Rule_2 | 任意 | * | DC_IP_Address_1、DC_IP_Address_2 | * | 如果使用企业安全性套餐 (ESP)，请在 IP地址部分添加一个网络规则，以允许与 ESP 群集的 AAD-DS 通信。 可以在门户的 AAD-DS 部分中找到域控制器的 IP 地址 |
+    | Rule_3 | TCP | * | Data Lake Storage 帐户的 IP 地址 | * | 如果使用 Azure Data Lake Storage，则可以在 IP地址部分添加一个网络规则，以解决 ADLS Gen1 和 Gen2 的 SNI 问题。 此选项会将流量路由到防火墙。 这可能会导致较大的数据负载成本，但会在防火墙日志中记录和审核流量。 确定 Data Lake Storage 帐户的 IP 地址。 可以使用 PowerShell 命令（如 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`）将 FQDN 解析为 IP 地址。|
     | Rule_4 | TCP | * | * | 12000 | （可选）如果使用的是 Log Analytics，请在“IP 地址”部分中创建一个网络规则以实现与 Log Analytics 工作区的通信。 |
 
     **服务标记部分**
 
-    | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 说明 |
+    | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 注释 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | 在服务标记部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 |
     | Rule_8 | TCP | * | Azure Monitor | * | （可选）计划使用自动缩放功能的客户应添加此规则。 |
     
    ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 ### <a name="create-and-configure-a-route-table"></a>创建并配置路由表
 
@@ -141,12 +141,12 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
 | 路由名称 | 地址前缀 | 下一跃点类型 | 下一跃点地址 |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | 不可用 |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | 不可用 |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | 不可用 |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | 不可用 |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | 不可用 |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | 不可用 |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | 虚拟设备 | 10.0.2.4 |
 
 完成路由表配置：

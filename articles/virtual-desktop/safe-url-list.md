@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面安全 URL 列表-Azure
 description: 你应取消阻止的 Url 的列表，以确保你的 Windows 虚拟桌面部署按预期工作。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225068"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135855"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -29,10 +27,12 @@ ms.locfileid: "86225068"
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |*.core.windows.net|443|代理流量|AzureCloud|
 |*.servicebus.windows.net|443|代理流量|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|代理流量|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|代理流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 空值 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -59,8 +59,8 @@ ms.locfileid: "86225068"
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
 >1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
->2. 打开**事件查看器**，然后切换到**Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3702。
->3. 将在事件 ID 3702 下找到的 URL 加入允许列表。 事件 ID 3702 下的 URL 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
+>2. 打开**事件查看器**，然后切换到**Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3701。
+>3. 将在事件 ID 3701 下找到的 Url 列入白名单。 事件 ID 3701 下的 Url 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
 
 ## <a name="remote-desktop-clients"></a>远程桌面客户端
 
@@ -68,13 +68,15 @@ ms.locfileid: "86225068"
 
 |地址|出站 TCP 端口|目的|客户端|
 |---|---|---|---|
-|*.wvd.microsoft.com|443|服务流量|全部|
-|*.servicebus.windows.net|443|排查数据问题|全部|
-|go.microsoft.com|443|Microsoft FWLink|全部|
-|aka.ms|443|Microsoft URL 缩短符|全部|
-|docs.microsoft.com|443|文档|全部|
+|*.wvd.microsoft.com|443|服务流量|All|
+|*.servicebus.windows.net|443|排查数据问题|All|
+|go.microsoft.com|443|Microsoft FWLink|All|
+|aka.ms|443|Microsoft URL 缩短符|All|
+|docs.microsoft.com|443|文档|All|
 |privacy.microsoft.com|443|隐私声明|All|
 |query.prod.cms.rt.microsoft.com|443|客户端更新|Windows 桌面|
 
 >[!IMPORTANT]
->若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于客户端站点和资源，而不包括 Azure Active Directory 等其他服务的 URL。
+>若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。
+>
+>这些 Url 仅对应于客户端站点和资源。 此列表不包含其他服务（如 Azure Active Directory）的 Url。 在[Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的 ID 56 下可以找到 Azure Active Directory url。

@@ -1,27 +1,27 @@
 ---
-title: 使用 Azure Active Directory 登录到 Azure 中的 Windows 虚拟机（预览版）
+title: '使用 Azure Active Directory (预览版登录到 Azure 中的 Windows 虚拟机) '
 description: Azure AD 登录到运行 Windows 的 Azure VM
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554895"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005022"
 ---
-# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
+# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
-组织现在可以利用运行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更高版本的 Azure 虚拟机（vm）的 Azure Active Directory （AD）身份验证。 通过使用 Azure AD 向 Vm 进行身份验证，可以集中控制和强制实施策略。 Azure 基于角色的访问控制（RBAC）和 Azure AD 条件性访问等工具可让你控制谁可以访问 VM。 本文介绍如何创建和配置 Windows Server 2019 VM 以使用 Azure AD 身份验证。
+组织现在可以将 Azure Active Directory (AD) 身份验证用于其 Azure 虚拟机 (Vm) 运行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更高版本。 通过使用 Azure AD 向 Vm 进行身份验证，可以集中控制和强制实施策略。 基于 Azure 角色的访问控制 (Azure RBAC) 和 Azure AD 条件性访问等工具可让你控制谁可以访问 VM。 本文介绍如何创建和配置 Windows Server 2019 VM 以使用 Azure AD 身份验证。
 
 > [!NOTE]
 > Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -69,7 +69,7 @@ ms.locfileid: "85554895"
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>在 Azure 中启用 Windows VM 的 Azure AD 登录
 
-若要在 Azure 中使用 Windows VM Azure AD 登录，需要首先为 Windows VM 启用 Azure AD login 选项，然后需要为有权登录到 VM 的用户配置 RBAC 角色分配。
+若要在 Azure 中使用 Windows VM Azure AD 登录，需要首先为 Windows VM 启用 Azure AD login 选项，然后需要为有权登录到 VM 的用户配置 Azure 角色分配。
 可以通过多种方式为 Windows VM 启用 Azure AD 登录：
 
 - 在创建 Windows VM 时使用 Azure 门户体验
@@ -84,8 +84,8 @@ ms.locfileid: "85554895"
 1. 使用有权创建 Vm 的帐户登录到[Azure 门户](https://portal.azure.com)，并选择 " **+ 创建资源**"。
 1. 在 "搜索 Marketplace" 搜索栏中键入 " **Windows Server** "。
    1. 单击 " **Windows server** "，然后从 "选择软件计划" 下拉列表中选择 " **Windows server 2019 Datacenter** "。
-   1. 单击“创建”。****
-1. 在 "管理" 选项**卡上，** 在 "Azure Active Directory" 部分中，启用 "**使用 AAD 凭据登录" 选项（预览）** 。
+   1. 单击 "**创建**"。
+1. 在 "管理" 选项卡上，启用 "**使用 AAD 凭据登录" 选项 (预览**"Azure Active Directory" 部分中的 "从关闭到**打开**") 。
 1. 请确保 "标识" 部分下的 "**系统分配的托管标识**" 设置为 **"开**"。 使用 Azure AD 凭据启用登录后，应会自动执行此操作。
 1. 完成创建虚拟机的其余体验。 在此预览版中，你将需要为 VM 创建管理员用户名和密码。
 
@@ -144,7 +144,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
-创建 VM 后，需要配置 Azure RBAC 策略来确定哪些用户可以登录到该 vm。 使用两个 RBAC 角色来授权 VM 登录：
+创建 VM 后，需要配置 Azure RBAC 策略来确定哪些用户可以登录到该 vm。 两个 Azure 角色用于授权 VM 登录：
 
 - **虚拟机管理员登录**：分配了此角色的用户可以使用管理员权限登录到 Azure 虚拟机。
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
@@ -162,7 +162,7 @@ az vm extension set \
 为启用了 Windows Server 2019 Datacenter Vm 的 Azure AD 配置角色分配：
 
 1. 导航到 "特定虚拟机概述" 页
-1. 从菜单选项中选择 "**访问控制（IAM）** "
+1. 从菜单选项中选择 "**访问控制 (IAM) **
 1. 依次选择 "**添加**"、"**添加角色分配**"，以打开 "添加角色分配" 窗格。
 1. 在 "**角色**" 下拉列表中，选择一个角色，如 "**虚拟机管理员登录名**" 或 "**虚拟机用户登录名**"。
 1. 在 "**选择**" 字段中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
@@ -174,7 +174,7 @@ az vm extension set \
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>使用 Azure Cloud Shell 体验
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 scope 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../virtual-machines/linux/login-using-aad.md)。
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 scope 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 还可以在资源组或订阅级别分配范围，并应用普通的 Azure RBAC 继承权限。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机](../../virtual-machines/linux/login-using-aad.md)。
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -189,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > 如果 AAD 域和登录用户名域不匹配，则必须指定用户帐户的对象 ID `--assignee-object-id` ，而不只是的用户名 `--assignee` 。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
 
-有关如何使用 RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
+有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
 
-- [使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-cli)
-- [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-portal)
-- [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-powershell)。
+- [使用 Azure CLI 添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-cli)
+- [使用 Azure 门户添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-portal)
+- [使用 Azure PowerShell 添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-powershell)。
 
 ## <a name="using-conditional-access"></a>使用条件性访问
 
@@ -202,10 +202,13 @@ az role assignment create \
 > [!NOTE]
 > 如果你使用 "需要多重身份验证" 作为授权访问控制来请求访问 "Azure Windows VM 登录" 应用，则必须提供多重身份验证声明作为客户端的一部分，以启动到 Azure 中目标 Windows VM 的 RDP 会话。 在 Windows 10 客户端上实现此目的的唯一方法是将 Windows Hello 企业版 PIN 或生物识别身份验证用于 RDP 客户端。 对生物识别身份验证的支持已添加到 Windows 10 版本1809中的 RDP 客户端。 使用 Windows Hello 企业版身份验证的远程桌面仅适用于使用证书信任模型并且当前不可用于密钥信任模式的部署。
 
+> [!WARNING]
+> 虚拟机登录不支持按用户启用/强制执行的 Azure 多重身份验证。
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Windows VM Azure AD 凭据登录
 
 > [!IMPORTANT]
-> 仅允许从 Azure AD 加入或混合 Azure AD 加入到 VM 的**同一**目录中的 Windows 10 电脑连接到连接到 Azure AD 的 vm 的远程连接。 此外，对于使用 Azure AD 凭据的 RDP，用户必须属于两个 RBAC 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 目前，Azure 堡垒不能用于使用 AADLoginForWindows 扩展进行 Azure Active Directory 身份验证登录。 仅支持直接 RDP。
+> 仅允许从 Azure AD 注册 (所需 Azure AD 最小) 版本的 Windows 10 电脑远程连接到已加入到的 Vm，Azure AD 联接到与 VM**相同**的目录。 此外，若要使用 Azure AD 凭据，该用户必须属于两个 Azure 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 如果使用 Azure AD 注册的 Windows 10 PC，则必须以 AzureAD\UPN 格式输入凭据 (例如， AzureAD\john@contoso.com) 。 目前，不能使用 AADLoginForWindows 扩展的 Azure Active Directory 身份验证来登录 Azure 堡垒;仅支持直接 RDP。
 
 使用 Azure AD 登录到 Windows Server 2019 虚拟机： 
 
@@ -233,7 +236,7 @@ az role assignment create \
 
    > [!NOTE]
    > 如果在第一次失败后重新启动扩展，则包含部署错误的日志将保存为 CommandExecution_YYYYMMDDHHMMSSSSS .log。 "
-1. 在 VM 上打开命令提示符，并针对 Azure 主机上运行的实例元数据服务（IMDS）终结点验证这些查询：
+1. 在虚拟机上打开命令提示符，并验证是否对 Azure 主机上运行 (IMDS) 终结点上的实例元数据服务执行这些查询：
 
    | 要运行的命令 | 预期输出 |
    | --- | --- |
@@ -308,17 +311,17 @@ az role assignment create \
 
 退出代码51转换为 "VM 的操作系统不支持此扩展"。
 
-在公共预览版中，AADLoginForWindows 扩展仅适用于在 Windows Server 2019 或 Windows 10 （版本1809或更高版本）上安装。 确保支持 Windows 的版本。 如果不支持 Windows 的生成，请卸载 VM 扩展。
+在公共预览版中，AADLoginForWindows 扩展仅适用于在 Windows Server 2019 或 Windows 10 (版本1809或更高版本) 上安装。 确保支持 Windows 的版本。 如果不支持 Windows 的生成，请卸载 VM 扩展。
 
 ### <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 
-当你尝试将 RDP 与 Azure AD 凭据结合时，某些常见错误包括未分配的 RBAC 角色、未经授权的客户端或所需的2FA 登录方法。 使用以下信息来更正这些问题。
+当你尝试将 RDP 与 Azure AD 凭据结合时，某些常见错误包括未分配任何 Azure 角色、未经授权的客户端或2FA 登录方法。 使用以下信息来更正这些问题。
 
 可以通过运行来查看设备和 SSO 状态 `dsregcmd /status` 。 目标是将设备状态显示为 "显示为" 和 "显示为" `AzureAdJoined : YES` `SSO State` `AzureAdPrt : YES` 。
 
 此外，在 AAD\Operational 事件日志下的事件查看器中捕获使用 Azure AD 帐户的 RDP 登录。
 
-#### <a name="rbac-role-not-assigned"></a>未分配 RBAC 角色
+#### <a name="azure-role-not-assigned"></a>未分配 Azure 角色
 
 如果你在启动到 VM 的远程桌面连接时看到以下错误消息： 
 
@@ -339,7 +342,7 @@ az role assignment create \
 验证你用来启动远程桌面连接的 Windows 10 电脑是 Azure AD 联接的，或者是连接到你的 VM 加入同一 Azure AD 目录的混合 Azure AD。 有关设备标识的详细信息，请参阅[什么是设备标识一](/azure/active-directory/devices/overview)文。
 
 > [!NOTE]
-> Windows 10 20H1 将添加对 Azure AD 已注册电脑的支持，以启动到 VM 的远程桌面连接。 加入 Windows 预览体验计划以试用并探索 Windows 10 的新功能。
+> Windows 10 内部版本20H1 添加了对 Azure AD 已注册电脑的支持，以启动到 VM 的 RDP 连接。 当使用注册的 Azure AD (不 Azure AD 加入或混合 Azure AD 联接) PC 作为 RDP 客户端来发起到 VM 的连接时，必须以 AzureAD\UPn (格式输入凭据) 例如 AzureAD\john@contoso.com 。
 
 此外，请在 Azure AD 联接完成后验证是否未卸载 AADLoginForWindows 扩展。
  
@@ -351,7 +354,7 @@ az role assignment create \
 
 ![不允许使用尝试使用的登录方法。](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-如果你配置了需要多重身份验证（MFA）的条件性访问策略，然后才能访问该资源，则需要确保使用强身份验证方法（例如 Windows Hello）启动与 VM 的远程桌面连接的 Windows 10 电脑。 如果未对远程桌面连接使用强身份验证方法，则会看到以前的错误。
+如果配置了要求对资源进行多重身份验证 (MFA) 的条件性访问策略，则需要确保使用强身份验证方法（例如 Windows Hello）启动与 VM 的远程桌面连接的 Windows 10 电脑。 如果未对远程桌面连接使用强身份验证方法，则会看到以前的错误。
 
 如果你尚未部署 Windows Hello for Business，并且此选项不是目前的选项，则可以通过配置条件访问策略来排除 MFA 要求，此条件访问策略从需要 MFA 的云应用列表中排除 "Azure Windows VM 登录" 应用。 若要了解有关 Windows Hello 企业版的详细信息，请参阅[Windows Hello 企业版概述](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 

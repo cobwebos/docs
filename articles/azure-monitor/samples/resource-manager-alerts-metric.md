@@ -1,18 +1,18 @@
 ---
-title: 使用 Resource Manager 模板创建指标警报
-description: 了解如何使用资源管理器模板创建指标警报。
+title: 用于指标警报的资源管理器模板示例
+description: 本文提供用于在 Azure Monitor 中创建指标警报的示例资源管理器模板。
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853299"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322289"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 指标警报规则的资源管理器模板示例
 
@@ -20,10 +20,10 @@ ms.locfileid: "83853299"
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-有关可用于指标警报规则的资源列表，请参阅 [Azure Monitor 中的指标警报支持的资源](../platform/alerts-metric-near-real-time.md)。 有关警报规则的架构和属性的说明，请参阅[指标警报 - 创建或更新](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)。
+有关可用于指标警报规则的资源列表，请参阅 [Azure Monitor 中的指标警报支持的资源](../platform/alerts-metric-near-real-time.md)。 有关警报规则的架构和属性的说明，请参阅[指标警报 - 创建或更新](/rest/api/monitor/metricalerts/createorupdate)。
 
 > [!NOTE]
-> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
+> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅[日志指标警报 - 资源模板](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
 
 
 
@@ -709,12 +709,12 @@ ms.locfileid: "83853299"
 
 在此示例中，警报规则监视 Transactions 指标的 ResponseType 和 ApiName 维度的维度值组合：
 1. **ResponsType** - 使用“\*”通配符意味着对于 ResponseType 维度的每个值（包括将来的值），将分别监视不同的时序。
-2. **ApiName** - 仅针对 GetBlob 和 PutBlob 维度值监视不同的时序。
+2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序 。
 
-例如，此警报规则监视的几个潜在时序包括：
-- Metric = Transactions，ResponseType = Success，ApiName = GetBlob
-- Metric = Transactions，ResponseType = Success，ApiName = PutBlob
-- Metric = Transactions，ResponseType = Server Timeout，ApiName = GetBlob
+例如，该警报规则监视的几个潜在时序是：
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob
 - Metric = Transactions，ResponseType = Server Timeout，ApiName = PutBlob
 
 ### <a name="template-file"></a>模板文件
@@ -900,12 +900,12 @@ ms.locfileid: "83853299"
 
 在此示例中，警报规则监视 Transactions 指标的 ResponseType 和 ApiName 维度的维度值组合：
 1. **ResponsType** - 对于 ResponseType 维度的每个值（包括将来的值），将分别监视不同的时序。
-2. **ApiName** - 仅针对 GetBlob 和 PutBlob 维度值监视不同的时序。
+2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序 。
 
-例如，此警报规则监视的几个潜在时序包括：
-- Metric = Transactions，ResponseType = Success，ApiName = GetBlob
-- Metric = Transactions，ResponseType = Success，ApiName = PutBlob
-- Metric = Transactions，ResponseType = Server Timeout，ApiName = GetBlob
+例如，该警报规则监视的几个潜在时序是：
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob
 - Metric = Transactions，ResponseType = Server Timeout，ApiName = PutBlob
 
 >[!NOTE]
@@ -1094,7 +1094,7 @@ ms.locfileid: "83853299"
 
 可以使用以下模板基于自定义指标创建更高级的静态阈值指标警报规则。
 
-若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
+若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](../platform/metrics-custom-overview.md)。
 
 基于自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 此外，还应确保已报告自定义指标，因为无法基于尚不存在的自定义指标创建警报规则。
 
@@ -1325,7 +1325,7 @@ ms.locfileid: "83853299"
 
 >[!NOTE]
 >
-> 通过[使用 Azure 门户浏览自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)，可以找到特定自定义指标的指标命名空间
+> 通过[使用 Azure 门户浏览自定义指标](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)，可以找到特定自定义指标的指标命名空间
 
 
 ## <a name="multiple-resources"></a>多个资源
@@ -3127,10 +3127,10 @@ ms.locfileid: "83853299"
 
 
 ## <a name="availability-test-with-metric-alert"></a>具有指标警报的可用性测试
-[Application Insights 可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)可帮助监视全球各地的网站/应用程序的可用性。 当可用性测试在一定数量的位置失败时，可用性测试警报会通知你。 可用性测试会对与指标警报 (Microsoft.Insights/metricAlerts) 相同的资源类型发出警报。 以下示例将创建一个简单的可用性测试和相关警报。
+[Application Insights 可用性测试](../app/monitor-web-app-availability.md)可帮助监视全球各地的网站/应用程序的可用性。 当可用性测试在一定数量的位置失败时，可用性测试警报会通知你。 可用性测试会对与指标警报 (Microsoft.Insights/metricAlerts) 相同的资源类型发出警报。 以下示例将创建一个简单的可用性测试和相关警报。
 
 > [!NOTE]
-> `&amp`; 是 & 的 HTML 实体引用。 URL 参数仍由单个 & 分隔，但如果在 HTML 中提到 URL，则需要对其进行编码。 因此，如果 pingURL 参数值中包含“&”，则必须使用“`&amp`;”对其进行转义。
+> `&amp`; 是 & 的 HTML 实体引用。 URL 参数仍由单个 & 分隔，但如果在 HTML 中提到了 URL，则需要对其进行编码。 因此，如果 pingURL 参数值中包含“&”，则必须使用“`&amp`;”对其进行转义。
 
 ### <a name="parameter-file"></a>参数文件
 
@@ -3266,3 +3266,4 @@ ms.locfileid: "83853299"
 - [获取 Azure Monitor 的其他示例模板](resource-manager-samples.md)。
 - [详细了解警报](../platform/alerts-overview.md)。
 - [获取使用资源管理器模板创建操作组的示例](resource-manager-action-groups.md)
+

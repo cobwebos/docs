@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029308"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -91,7 +92,7 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>区域冗余规模集
 
-若要创建区域冗余规模集，请使用标准 SKU 公共 IP 地址和负载均衡器**。 为增强冗余，标准 SKU 创建区域冗余网络资源**。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
+若要创建区域冗余规模集，请使用标准 SKU 公共 IP 地址和负载均衡器**。 为增强冗余，标准 SKU 创建区域冗余网络资源**。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 若要创建区域冗余规模集，可使用 `--zones` 参数指定多个区域。 下例跨区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集****：
 
@@ -208,7 +209,7 @@ New-AzVmss `
 }
 ```
 
-如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源**。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
+如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源**。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 有关区域冗余规模集和网络资源的完整示例，请参阅[此示例资源管理器模板](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

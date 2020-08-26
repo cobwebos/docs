@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 8c06365531a4977b6b792e136e515b5b56c2c930
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110022"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288859"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>创建 Azure VMware 解决方案（AVS）评估
 
@@ -33,8 +33,8 @@ ms.locfileid: "86110022"
 
 **评估类型** | **详细信息**
 --- | --- 
-Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。[了解更多](concepts-assessment-calculation.md)
-**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。[了解更多](concepts-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。[了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
 > Azure VMware 解决方案（AVS）评估目前处于预览阶段，只能为 VMware Vm 创建。
@@ -60,17 +60,17 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 
 3. 在 "**评估服务器**" 中，选择 "Azure VMware 解决方案（AVS）" 评估类型，选择 "发现源" 并指定评估名称。
 
-    ![评估基础知识](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    ![评估基本信息](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 
 4. 单击“全部查看”查看评估属性。
 
     ![AVS 评估属性](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. 单击 "**下一步**" 以**选择要评估的计算机**。 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+5. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
 
 6. 在“将计算机添加到组”中，选择要添加到该组的 VM。
 
-7. 单击 "**下一步**"**查看 "+ 创建评估**" 以查看评估详细信息。
+7. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
 
 8. 单击“创建评估”以创建该组，并运行评估。
 
@@ -111,7 +111,7 @@ Azure VMware 解决方案（AVS）评估介绍：
 
 3. 查看建议的工具：
     - **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
-    - **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 
+    - **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展（HCX）解决方案。 
 
 4. 单击**AVS 就绪**状态。 可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
 

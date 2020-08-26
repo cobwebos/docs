@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957056"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503185"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>优化 SQL 池中的事务
+# <a name="optimize-transactions-in-sql-pool"></a>优化 SQL 池中的事务
 
 了解如何在尽量降低长时间回退风险的情况下优化 SQL 池中事务性代码的性能。
 
@@ -82,7 +82,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
-## <a name="optimizing-deletes"></a>优化删除
+## <a name="optimize-deletes"></a>优化删除
 
 DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 操作使用新创建的表将旧表交换出来。
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>优化更新
+## <a name="optimize-updates"></a>优化更新
 
 UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)）来实现。
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > 重新创建大型表时，使用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-## <a name="optimizing-with-partition-switching"></a>使用分区切换进行优化
+## <a name="optimize-with-partition-switching"></a>通过分区切换进行优化
 
 面对[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
 

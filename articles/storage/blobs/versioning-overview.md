@@ -1,7 +1,7 @@
 ---
 title: Blob 版本控制（预览版）
 titleSuffix: Azure Storage
-description: Blob 存储版本控制（预览版）可自动维护对象的以前版本，并使用时间戳标识它们。 如果错误地修改或删除了数据，则可以还原以前版本的 blob 以恢复数据。
+description: Blob 存储版本控制 (预览) 自动维护对象的以前版本，并使用时间戳标识它们。 如果错误地修改或删除了数据，则可以还原以前版本的 blob 以恢复数据。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,20 +9,23 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528394"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056527"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本控制（预览版）
 
-可以启用 Blob 存储版本控制（预览版）来自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
+可以启用 Blob 存储版本控制 (预览) 自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
 
 Blob 版本控制在存储帐户上启用，适用于存储帐户中的所有 blob。 为存储帐户启用 blob 版本控制后，Azure 存储将自动维护存储帐户中每个 blob 的版本。
 
 Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实现高级数据保护。 如果可能，请使用 blob 版本控制而不是 blob 快照来维护以前的版本。 Blob 快照提供了类似的功能，因为它们维护更早版本的 blob，但快照必须由你的应用程序手动维护。
+
+若要了解如何启用 blob 版本控制，请参阅[启用和管理 blob 版本控制](versioning-enable.md)。
 
 > [!IMPORTANT]
 > Blob 版本控制无法帮助你从意外删除存储帐户或容器中恢复。 若要防止意外删除存储帐户，请在存储帐户资源上配置**CannotDelete**锁。 有关锁定 Azure 资源的详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
@@ -31,7 +34,7 @@ Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实�
 
 版本捕获 blob 在给定时间点的状态。 为存储帐户启用 blob 版本控制后，每次修改或删除 blob 时，Azure 存储会自动创建新版本的 blob。
 
-创建启用了版本控制的 blob 时，新的 blob 是该 blob 的当前版本（或基 blob）。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。
+当你创建启用了版本控制的 blob 时，新的 blob 是 (的 blob 的当前版本或基本 blob) 。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。
 
 当删除启用了版本控制的 blob 时，Azure 存储将创建一个在删除之前捕获 blob 状态的版本。 然后，将删除 blob 的当前版本，但 blob 的版本将保持不变，以便可以在需要时重新创建。 
 
@@ -41,7 +44,7 @@ Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数�
 
 每个 blob 版本都由一个版本 ID 标识。 版本 ID 的值是写入或更新 blob 时的时间戳。 版本 ID 在创建版本时被分配。
 
-您可以通过提供其版本 ID 对特定版本的 blob 执行读取或删除操作。 如果省略版本 ID，此操作将针对当前版本（基 blob）进行操作。
+您可以通过提供其版本 ID 对特定版本的 blob 执行读取或删除操作。 如果省略版本 ID，则该操作将针对基本 blob)  (的当前版本。
 
 当你调用写操作来创建或修改 blob 时，Azure 存储将在响应中返回*x ms 版本 id*标头。 此标头包含写入操作创建的 blob 的当前版本的版本 ID。
 
@@ -90,8 +93,8 @@ Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数�
 
 以下操作不会触发新版本的创建。 若要从这些操作捕获更改，请执行手动快照：
 
-- [Put 页](/rest/api/storageservices/put-page)（页 blob）
-- [追加块](/rest/api/storageservices/append-block)（追加 blob）
+- [将页面](/rest/api/storageservices/put-page) (页面 blob) 
+- [追加块](/rest/api/storageservices/append-block) (追加 blob) 
 
 Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有以前的版本，则不能使用其他类型覆盖一种类型的 blob，除非先删除 blob 及其所有版本。
 
@@ -166,8 +169,8 @@ Blob 快照是在特定时间点拍摄的 blob 的只读副本。 Blob 快照和
 
 您可以使用以下方法之一来授予对 blob 版本的访问权限：
 
-- 通过使用基于角色的访问控制（RBAC）向 Azure Active Directory （Azure AD）安全主体授予权限。 Microsoft 建议使用 Azure AD，以实现更高的安全性和易用性。 有关将 Azure AD 与 blob 操作一起使用的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
-- 使用共享访问签名（SAS）委派对 blob 版本的访问权限。 指定已签名资源类型 `bv` （表示 blob 版本）的版本 ID，以创建针对特定版本的操作的 SAS 令牌。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
+- 通过使用基于角色的访问控制 (RBAC) 授予 Azure Active Directory (Azure AD) 安全主体的权限。 Microsoft 建议使用 Azure AD，以实现更高的安全性和易用性。 有关将 Azure AD 与 blob 操作一起使用的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
+- 通过使用共享访问签名 (SAS) 委托对 blob 版本的访问。 指定已签名资源类型 `bv` （表示 blob 版本）的版本 ID，以创建针对特定版本的操作的 SAS 令牌。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 - 通过使用帐户访问密钥向使用共享密钥的 blob 版本授权操作。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强保护，删除 blob 版本需要特殊权限。 以下各节描述了删除 blob 版本所需的权限。
@@ -181,7 +184,7 @@ Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强�
 | 正在删除 blob 的当前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 存储 Blob 数据参与者 |
 | 删除版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
 
-### <a name="shared-access-signature-sas-parameters"></a>共享访问签名（SAS）参数
+### <a name="shared-access-signature-sas-parameters"></a> (SAS) 参数的共享访问签名
 
 Blob 版本的已签名资源为 `bv` 。 有关详细信息，请参阅[创建服务 sas](/rest/api/storageservices/create-service-sas)或[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
@@ -203,7 +206,8 @@ Blob 版本控制在以下区域提供预览版：
 - 加拿大东部
 - 加拿大中部
 
-此预览版仅用于非生产用途。
+> [!IMPORTANT]
+> Blob 版本控制预览版仅适用于非生产使用。 生产服务级别协议 (SLA) 当前不可用。
 
 Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制。
 
@@ -225,7 +229,7 @@ Blob 版本控制可用于以下类型的存储帐户：
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature)命令。
 
 ```powershell
 # Register for blob versioning (preview)
@@ -241,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 若要注册 Azure CLI，请调用[az feature register](/cli/azure/feature#az-feature-register)命令。
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -265,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 若要查看 Azure CLI 的注册状态，请调用[az 功能](/cli/azure/feature#az-feature-show)命令。
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---
@@ -301,7 +304,7 @@ Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。
 
 #### <a name="scenario-2"></a>方案 2
 
-在方案2中，blob 中的一个块（关系图中的块3）已更新。 即使更新的块包含相同的数据和 ID，它也与以前版本中的块3不同。 因此，帐户需要为四个块支付费用。
+在方案2中，已更新 blob) 中的一个块 (块3。 即使更新的块包含相同的数据和 ID，它也与以前版本中的块3不同。 因此，帐户需要为四个块支付费用。
 
 ![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-2.png)
 
@@ -317,7 +320,7 @@ Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。
 
 ![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [启用 Blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

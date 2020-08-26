@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: 创建虚拟网络 - Azure CLI
       href: quick-create-cli.md
+    - name: 创建虚拟网络 - ARM 模板
+      href: quick-create-template.md
   expanded: true
 - name: 教程
   items:

@@ -11,11 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213918"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763127"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中对表进行分区
 
@@ -31,21 +32,33 @@ ms.locfileid: "85213918"
 
 在 Synapse SQL 池中进行分区的主要好处是通过分区删除、切换和合并来提高数据加载效率和性能。 大多数情况下，数据是根据日期列来分区的，而日期列与数据加载到数据库中的顺序密切相关。 使用分区来维护数据的最大好处之一是可以避免事务日志记录。 虽然直接插入、更新或删除数据可能是最直接的方法，但如果在加载过程中使用分区，则只需付出一点点思考和努力就可以大大改进性能。
 
-可以使用分区切换来快速删除或替换表的一部分。  例如，销售事实表可能仅包含过去 36 个月的数据。 在每个月月底，便从表删除最旧月份的销售数据。  删除该数据时，可以使用 delete 语句删除最旧月份的数据。 但是，使用 delete 语句逐行删除大量数据可能需要极长的时间，同时还会有执行大型事务的风险，这些大型事务在出现错误时进行回退的时间会很长。 更理想的方式是删除最旧的数据分区。 如果在某种情况下删除各个行可能需要数小时，则删除整个分区可能只需数秒钟。
+可以使用分区切换来快速删除或替换表的一部分。  例如，销售事实表可能仅包含过去 36 个月的数据。 在每个月月底，便从表删除最旧月份的销售数据。  删除该数据时，可以使用 delete 语句删除最旧月份的数据。 
+
+但是，使用 delete 语句逐行删除大量数据可能需要极长的时间，同时还会有执行大型事务的风险，这些大型事务在出现错误时进行回退的时间会很长。 更理想的方式是删除最旧的数据分区。 如果在某种情况下删除各个行可能需要数小时，则删除整个分区可能只需数秒钟。
 
 ### <a name="benefits-to-queries"></a>对查询的好处
 
-分区还可用来提高查询性能。 对分区数据应用筛选器的查询可以将扫描限制在合格的分区上。 此筛选方法可以避免全表扫描且仅扫描数据的一个较小子集。 引入聚集列存储索引以后，谓词消除的性能好处不再那么明显，但在某些情况下，可能会对查询有好处。 例如，如果使用销售日期字段将销售事实表分区成 36 个月，以销售日期进行筛选的查询便可以跳过对不符合筛选条件的分区的搜索。
+分区还可用来提高查询性能。 对分区数据应用筛选器的查询可以将扫描限制在合格的分区上。 此筛选方法可以避免全表扫描且仅扫描数据的一个较小子集。 引入聚集列存储索引以后，谓词消除的性能好处不再那么明显，但在某些情况下，可能会对查询有好处。 
+
+例如，如果使用销售日期字段将销售事实表分区成 36 个月，以销售日期进行筛选的查询便可以跳过对不符合筛选条件的分区的搜索。
 
 ## <a name="sizing-partitions"></a>调整分区大小
 
-虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
+虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 
 
-在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数  。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，Synapse SQL 池已将每个表细分到 60 个分布式数据库中。 向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实数据表包含 36 个月的分区，并假设 Synapse SQL 池有 60 个分布区，则销售事实数据表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
+若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
+
+在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数  。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，Synapse SQL 池已将每个表细分到 60 个分布式数据库中。 
+
+向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实数据表包含 36 个月的分区，并假设 Synapse SQL 池有 60 个分布区，则销售事实数据表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 
+
+有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
 
 ## <a name="syntax-differences-from-sql-server"></a>与 SQL Server 的语法差异
 
-Synapse SQL 池引入了一种比 SQL Server 简单的定义分区的方法。 在 Synapse SQL 池中使用分区函数和方案的方法与在 SQL Server 中不一样。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 Synapse SQL 池支持一个表一个分区列，后者可以是范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+Synapse SQL 池引入了一种比 SQL Server 简单的定义分区的方法。 在 Synapse SQL 池中使用分区函数和方案的方法与在 SQL Server 中不一样。 只需识别分区列和边界点。 
+
+尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 Synapse SQL 池支持一个表一个分区列，后者可以是范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 下例使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句根据 OrderDateKey 列对 FactInternetSales 表进行分区：
 
@@ -236,7 +249,11 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>通过一个步骤将新数据加载到包含数据的分区中
 
-将数据加载到使用分区开关的分区中可以很方便地将新数据暂存在对用户不可见的表中，然后将新数据切换进来。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  在 Synapse SQL 池中，支持在 `ALTER TABLE` 命令中使用 `TRUNCATE_TARGET` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
+将数据加载到使用分区开关的分区中，可以很方便地将新数据暂存在对用户不可见的表中。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  
+
+在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  
+
+在 Synapse SQL 池中，支持在 `ALTER TABLE` 命令中使用 `TRUNCATE_TARGET` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

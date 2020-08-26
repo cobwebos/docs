@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 089d5dbb1eece2904f104dfecb3de8adec052dfc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079172"
 ---
 # <a name="limits-and-quotas"></a>限制和配额
 
@@ -23,7 +23,7 @@ ms.locfileid: "85391734"
 
 对于 S0 项目，预计每个项目训练图像数和每个项目的标记数量将随着时间的推移而增加。
 
-||**F0**|**S0**|
+|因素|**F0**|**S0**|
 |-----|-----|-----|
 |项目|2|100|
 |每项目训练图像数 |5,000|100,000|

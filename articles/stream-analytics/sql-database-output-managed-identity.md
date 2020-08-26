@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305918"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用托管标识访问 Azure 流分析作业的 Azure SQL 数据库（预览）
 
@@ -102,7 +102,7 @@ Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识�
 
 ## <a name="grant-stream-analytics-job-permissions"></a>授予流分析作业权限
 
-在创建包含数据库用户并按照上节所述在门户中授予其对 Azure 服务的访问权限后，流分析作业就具有了托管标识的权限，可通过托管标识连接到 SQL 数据库资源。 我们建议你向流分析作业授予“选择”和“插入”权限，因为后面在流分析工作流中会需要这些权限。 通过“选择”权限，此作业可以测试其与 SQL 数据库中表的连接。 配置输入和 SQL 数据库输出后，可以通过“插入”权限测试端到端流分析查询。你可以使用 SQL Server Management Studio 向流分析作业授予这些权限。 有关详细信息，请参阅 [GRANT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) 参考。
+在创建包含数据库用户并按照上节所述在门户中授予其对 Azure 服务的访问权限后，流分析作业就具有了托管标识的权限，可通过托管标识连接到 SQL 数据库资源。 我们建议你向流分析作业授予“选择”和“插入”权限，因为后面在流分析工作流中会需要这些权限。 通过“选择”权限，此作业可以测试其与 SQL 数据库中表的连接。 配置输入和 SQL 数据库输出后，可以通过“插入”权限测试端到端流分析查询。你可以使用 SQL Server Management Studio 向流分析作业授予这些权限。 有关详细信息，请参阅 GRANT （Transact-sql）引用。
 
 若要仅对数据库中某个表或对象授予权限，请使用以下 T-SQL 语法，并运行查询。 
 

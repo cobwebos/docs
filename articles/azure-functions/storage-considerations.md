@@ -2,12 +2,13 @@
 title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648787"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318175"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -17,12 +18,12 @@ ms.locfileid: "83648787"
 |存储服务  | 函数用法  |
 |---------|---------|
 | [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)     | 维护绑定状态和函数密钥。  <br/>还由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。 |
-| [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在[消耗计划](functions-scale.md#consumption-plan)中存储和运行函数应用代码的文件共享。 |
+| [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在[消耗计划](functions-scale.md#consumption-plan)和[高级计划](functions-scale.md#premium-plan)中存储和运行函数应用代码的文件共享。 |
 | [Azure 队列存储](../storage/queues/storage-queues-introduction.md)     | 由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 表存储](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。       |
 
 > [!IMPORTANT]
-> 使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
+> 使用消耗/Premium 托管计划时，函数代码和绑定配置文件将存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
@@ -40,7 +41,7 @@ ms.locfileid: "83648787"
 
 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中进行维护。 
 
-重新生成存储密钥时，必须更新存储帐户连接字符串。 [在此处阅读有关存储密钥管理的详细信息](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+重新生成存储密钥时，必须更新存储帐户连接字符串。 [在此处阅读有关存储密钥管理的详细信息](../storage/common/storage-account-create.md)。
 
 ### <a name="shared-storage-accounts"></a>共享存储帐户
 
@@ -79,5 +80,3 @@ files_in_share = os.listdir("/path/to/mount")
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的缩放和托管](functions-scale.md)
-
-

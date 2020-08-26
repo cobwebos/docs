@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75891249"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192279"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -68,3 +68,39 @@ SignalR 服务将监视应用程序服务器的检测信号。
 默认情况下，Azure SignalR 服务提供 ASP.NET Core SignalR 所支持的所有三种传输。 这些传输不可配置。 SignalR 服务将处理连接以及所有客户端连接的传输。
 
 可根据[此文](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)中所述配置客户端传输。
+
+## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-showed-in-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Azure 门户中显示的指标（例如消息计数或连接计数）的含义是什么？ 我应该选择哪种聚合类型？
+
+可以在[此处](signalr-concept-messages-and-connections.md)找到有关如何计算这些指标的详细信息。
+
+在 Azure SignalR 服务资源的“概述”边栏选项卡中，我们已经为你选择了合适的聚合类型。 如果转到“指标”边栏选项卡，则可以将[此处](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr)的聚合类型用作参考。
+
+## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>服务模式 `Default`/`Serverless`/`Classic` 的含义是什么？ 如何选择？
+
+模式：
+* `Default` 模式需要中心服务器。 当没有可用于中心的服务器连接时，客户端尝试连接到该中心将失败。
+* `Serverless` 模式不允许任何服务器连接，即它将拒绝所有服务器连接，所有客户端必须处于无服务器模式。
+* `Classic` 模式为混合状态。 当中心具有服务器连接时，新客户端将被路由到中心服务器；否则，客户端将进入无服务器模式。
+
+  这可能会导致某些问题，例如，所有服务器连接暂时丢失，某些客户端将进入无服务器模式，而不是路由到中心服务器。
+
+选择方案：
+1. 如果没有中心服务器，选择 `Serverless`。
+1. 如果所有中心都有中心服务器，选择 `Default`。
+1. 如果一些中心有中心服务器，而其他中心没有，请选择 `Classic`，但这可能会导致某些问题，更好的方法是创建两个实例：一个实例为 `Serverless`，另一个实例为 `Default`。
+
+## <a name="any-feature-differences-when-using-azure-signalr-for-aspnet-signalr"></a>使用适用于 ASP.NET SignalR 的 Azure SignalR 时是否有功能差异？
+使用 Azure SignalR 时，ASP.NET SignalR 的某些 API 和功能不再受到支持：
+- 使用 Azure SignalR 时，不支持在客户端和中心（通常称为 `HubState`）之间传递任意状态的功能
+- 使用 Azure SignalR 时，尚不支持 `PersistentConnection` 类
+- 使用 Azure SignalR 时，不支持永久帧传输
+- 客户端脱机时，Azure SignalR 不再重播发送给客户端的消息
+- 使用 Azure SignalR 时，在连接期间，始终会将一个客户端连接的流量路由（也称为 粘滞）到一个应用服务器实例
+
+对 ASP.NET SignalR 的支持侧重于兼容性，因此并非 ASP.NET Core SignalR 的所有新功能都受到支持。 例如，MessagePack 和流式处理等仅适用于 ASP.NET Core SignalR 应用程序 。
+
+可以将 SignalR 服务配置为不同的服务模式：`Classic`/`Default`/`Serverles`s。 在此 ASP.NET 支持中，不支持 `Serverless` 模式。 也不支持数据平面 REST API。
+
+## <a name="where-do-my-data-reside"></a>我的数据存放在什么位置？
+
+Azure SignalR 服务以数据处理器服务的形式运行。 该服务不会存储任何客户内容，并且设计会保证数据驻留。 如果将 Azure SignalR 服务与其他 Azure 服务（例如用于诊断的 Azure 存储）一起使用，请参阅[此处](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)，以获取有关如何将数据驻留在 Azure 区域中的指南。

@@ -3,19 +3,17 @@ title: 如何执行脱机评估-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何使用脱机评估来度量应用的有效性并分析学习循环。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: 2fa4e47f600737c9bff5dbff4dd743946b4e82aa
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342147"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244833"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用脱机评估来分析学习循环
 
@@ -32,13 +30,13 @@ ms.locfileid: "84342147"
 
 ## <a name="run-an-offline-evaluation"></a>运行脱机评估
 
-1. 在[Azure 门户](https://azure.microsoft.com/free/)中，找到 Personalizer 资源。
-1. 在 Azure 门户中，请参阅 "**评估**" 部分，并选择 "**创建评估**"。
+1. 在 [Azure 门户](https://azure.microsoft.com/free/cognitive-services)中，找到 Personalizer 资源。
+1. 在 Azure 门户中，请参阅 " **评估** " 部分，并选择 " **创建评估**"。
     ![在 Azure 门户中，请参阅 "评估" 部分，并选择 "创建评估"。](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. 配置以下值：
 
     * 计算名称。
-    * 开始和结束日期-这是用于指定要在计算中使用的数据范围的日期。 此数据必须出现在日志中，如[数据保持](how-to-settings.md)值中所指定。
+    * 开始和结束日期-这是用于指定要在计算中使用的数据范围的日期。 此数据必须出现在日志中，如 [数据保持](how-to-settings.md) 值中所指定。
     * 优化发现设置为 **"是"**。
 
     > [!div class="mx-imgBorder"]
@@ -50,15 +48,15 @@ ms.locfileid: "84342147"
 
 运行评估可能需要花费较长时间，具体取决于要处理的数据量、要比较的学习策略数量，以及是否请求了优化。
 
-完成后，可以从评估列表中选择评估，然后选择 "将**应用程序的分数与其他可能的学习设置进行比较"**。 若要查看当前学习策略与新策略的对比情况，请选择此功能。
+完成后，可以从评估列表中选择评估，然后选择 "将 **应用程序的分数与其他可能的学习设置进行比较"**。 若要查看当前学习策略与新策略的对比情况，请选择此功能。
 
-1. 查看[学习策略](concepts-offline-evaluation.md#discovering-the-optimized-learning-policy)的性能。
+1. 查看 [学习策略](concepts-offline-evaluation.md#discovering-the-optimized-learning-policy)的性能。
 
     > [!div class="mx-imgBorder"]
     > [![查看评估结果](./media/offline-evaluation/evaluation-results.png)](./media/offline-evaluation/evaluation-results.png#lightbox)
 
-1. 选择 "**应用**" 以应用策略，该策略可提高数据的最佳模型。
+1. 选择 " **应用** " 以应用策略，该策略可提高数据的最佳模型。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[脱机评估的工作方式](concepts-offline-evaluation.md)。
+* 详细了解 [脱机评估的工作方式](concepts-offline-evaluation.md)。

@@ -2,15 +2,15 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: dd587279e05b00304eda6edd763ecda9bd6e3c8f
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.date: 08/17/2020
+ms.openlocfilehash: f54b5c7bec7d2b9af67b967ff34ab43bd1818a7d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805773"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511269"
 ---
-本文介绍如何开始通过 Python 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。
+本文介绍如何开始通过 Python 使用自定义视觉客户端库来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,9 +18,9 @@ ms.locfileid: "85805773"
 - [pip](https://pip.pypa.io/en/stable/installing/) 工具
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>安装自定义视觉 SDK
+## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
-若要安装适用于 Python 的自定义视觉服务 SDK，请在 PowerShell 中运行以下命令：
+若要安装适用于 Python 的自定义视觉服务客户端库，请在 PowerShell 中运行以下命令：
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision

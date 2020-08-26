@@ -6,22 +6,22 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992824"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507257"
 ---
 # <a name="data-filtering"></a>数据筛选
 
-提交用于训练自定义系统的文档时，这些文档需要经历一系列的处理和筛选步骤，为训练做准备。 这些步骤会在这里进行介绍。 了解筛选有助于你了解自定义翻译器中显示的句子计数，以及在进行文档准备以便使用自定义翻译器进行训练时可能需要自行采取的步骤。
+提交用于训练自定义系统的文档时，这些文档需要经历一系列的处理和筛选步骤，为训练做准备。 这些步骤会在这里进行介绍。 筛选的知识可帮助您了解在自定义转换器中显示的句子计数，以及您为使用自定义转换器进行定型准备文档所需的步骤。
 
 ## <a name="sentence-alignment"></a>句子对齐
-如果文档不是 XLIFF、TMX 或 ALIGN 格式，则自定义翻译器会将源文档和目标文档的句子一句句地互相对齐。 翻译器并不执行文档对齐操作，而是根据文档的命名找出另一语言的匹配文档。 在文档中，自定义翻译器会尝试找出另一语言的相应句子。 它使用类似于嵌入式 HTML 标记的文档标记来帮助进行对齐。  
+如果文档不是 XLIFF、TMX 或 ALIGN 格式，则自定义翻译器会将源文档和目标文档的句子一句句地互相对齐。 自定义转换器不会执行文档对齐，它按照文档命名来查找其他语言的匹配文档。 在文档中，自定义翻译器会尝试找出另一语言的相应句子。 它使用类似于嵌入式 HTML 标记的文档标记来帮助进行对齐。  
 
 如果在源和目标端文档中的句子数与目标端文档中的句子数之间存在较大的差异，可能是因为你的文档可能没有在第一位置并行，或者无法对齐其他原因。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
 

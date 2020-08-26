@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 ExponentHR 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ExponentHR 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ccfeea70-1cbd-49fb-9154-1dd3f9a0417c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 438b76cd5fa5987375a6e9804e9c4e1037c8ce21
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ef6e49c98c5b6c38e8a3d47b911ceafc22ddf735
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72271897"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551126"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exponenthr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ExponentHR 集成
 

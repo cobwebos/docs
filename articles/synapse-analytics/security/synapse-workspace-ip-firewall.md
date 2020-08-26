@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse Analytics 中配置 IP 防火墙规则
+title: 配置 IP 防火墙规则
 description: 一篇介绍如何在 Azure Synapse Analytics 中配置 IP 防火墙规则的文章
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 255714fcf69a8ed72cf1f306e5aafabd49a199ca
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194393"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503916"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics IP 防火墙规则（预览版）
 
@@ -25,7 +25,7 @@ IP 防火墙规则基于每个请求的来源 IP 地址授予或拒绝对 Synaps
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>创建和管理 IP 防火墙规则
 
-可通过两种方式向 Synapse 工作区添加 IP 防火墙规则。 若要向工作区添加 IP 防火墙，请在创建工作区期间选择“安全 + 网络”，并选中“允许来自所有 IP 地址的连接”。 
+可通过两种方式向 Synapse 工作区添加 IP 防火墙规则。 若要向工作区添加 IP 防火墙，请在创建工作区期间选择“安全 + 网络”，并选中“允许来自所有 IP 地址的连接”。
 
 ![Azure 门户 Synapse 工作区 IP 配置。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
 
@@ -35,7 +35,7 @@ IP 防火墙规则基于每个请求的来源 IP 地址授予或拒绝对 Synaps
 
 ![Azure 门户中的 Azure Synapse 工作区 IP 配置。](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connecting-to-synapse-from-your-own-network"></a>从你自己的网络连接到 Synapse
+## <a name="connect-to-synapse-from-your-own-network"></a>从你自己的网络连接到 Synapse
 
 可以使用 Synapse Studio 连接到 Synapse 工作区。 还可以使用 SQL Server Management Studio (SSMS) 连接到工作区中的 SQL 资源（SQL 池和 SQL 按需版本）。
 
@@ -49,4 +49,4 @@ IP 防火墙规则基于每个请求的来源 IP 地址授予或拒绝对 Synaps
 
 创建 [Azure Synapse 工作区](../quickstart-create-workspace.md)
 
-创建包含[托管工作区 VNet](./synapse-workspace-managed-vnet.md) 的 Azure Synapse 工作区
+创建包含[托管工作区虚拟网络的 Azure Synapse 工作区](./synapse-workspace-managed-vnet.md)

@@ -1,18 +1,19 @@
 ---
 title: 将 Azure 应用配置与 Azure Functions 结合使用的快速入门 | Microsoft Docs
-description: 将 Azure 应用程序配置与 Azure Functions 集合使用的快速入门。
+description: 在本快速入门中，使用 Azure 应用程序配置和 C# 创建 Azure Functions 应用。 创建并连接到应用程序配置存储。 在本地测试函数。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245491"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590279"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
@@ -28,7 +29,7 @@ ms.locfileid: "80245491"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
+6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对  ：
 
     | 密钥 | 值 |
     |---|---|
@@ -36,7 +37,7 @@ ms.locfileid: "80245491"
 
     暂时将“标签”和“内容类型”保留为空   。
 
-7. 选择“应用”。 
+7. 选择“应用”。
 
 ## <a name="create-a-functions-app"></a>创建 Functions 应用
 
@@ -44,9 +45,9 @@ ms.locfileid: "80245491"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包并将其添加到项目中  。 如果找不到，请选择“包含预发行版”复选框  。
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包并将其添加到项目中。 如果找不到，请选择“包含预发行版”复选框****。
 
-2. 打开 Function1.cs，添加 .NET Core 配置和“应用程序配置”配置提供程序的命名空间  。
+2. 打开 Function1.cs，添加 .NET Core 配置和“应用程序配置”配置提供程序的命名空间**。
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -85,7 +86,7 @@ ms.locfileid: "80245491"
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -103,13 +104,13 @@ ms.locfileid: "80245491"
         export ConnectionString='connection-string-of-your-app-configuration-store'
     ```
 
-2. 按 F5 测试函数。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具  。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
+2. 按 F5 测试函数。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
 
 3. 从 Azure Functions 运行时输出复制函数的 URL。
 
     ![在 VS 中的函数调试快速入门](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 下图显示了浏览器中函数返回的本地 GET 请求的响应。
+4. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏。 下图显示了浏览器中函数返回的本地 GET 请求的响应。
 
     ![本地函数启动快速入门](./media/quickstarts/dotnet-core-function-launch-local.png)
 

@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 21/16/2020
-  ms.openlocfilehash: 1cd7e2a4cb4e86e6acfc0ec3d3909bc887a6f943
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 09035b2e0b8440c8ab56c1c3a585957557a35d51
+  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79472112"
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87826001"
 landingContent:
 - title: 关于媒体服务
   linkLists:
@@ -46,9 +46,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 创建帐户
-      url: create-account-cli-how-to.md
+      url: ./create-account-howto.md
     - text: 访问 API
-      url: access-api-cli-how-to.md
+      url: ./access-api-howto.md
   - linkListType: download
     links:
     - text: .NET SDK 示例
@@ -62,7 +62,7 @@ landingContent:
     - text: Azure CLI
       url: https://aka.ms/ams-v3-cli-ref
     - text: REST
-      url: https://docs.microsoft.com/rest/api/media/
+      url: /rest/api/media/
     - text: .NET
       url: https://aka.ms/ams-v3-dotnet-ref
     - text: Java

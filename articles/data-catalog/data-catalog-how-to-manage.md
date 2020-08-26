@@ -4,13 +4,14 @@ description: 本文重点说明如何控制在 Azure 数据目录中注册的数
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736346"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081145"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>管理 Azure 数据目录中的数据资产
 ## <a name="introduction"></a>简介
@@ -62,5 +63,5 @@ Azure 数据目录设计用于发现数据源，使用户能够轻松发现和�
 ## <a name="catalog-administrators"></a>目录管理员
 数据目录管理员是目录中所有资产的隐式共同所有者。 资产所有者不能删除管理员的可见性，并且管理员可以管理目录中所有数据资产的所有权和可见性。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 数据目录的元数据和数据资产发现众包模型允许所有目录用户参与和发现。 数据目录标准版设计用于所有权和管理，限制特定数据资产的可见性和使用。

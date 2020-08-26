@@ -2,15 +2,15 @@
 title: 快速入门：使用 SDK 创建和使用学习循环 - 个性化体验创建服务
 description: 本快速入门介绍如何使用客户端 SDK 创建和管理知识库。
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 07/30/2020
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: d4706e93470134751ade5f16e46a4323fd690f94
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76504da214a3777dba7b2356bea160e86999bb45
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608632"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207544"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入门：个性化体验创建服务客户端库
 
@@ -48,4 +48,4 @@ ms.locfileid: "84608632"
 * [什么是个性化体验创建服务？](what-is-personalizer.md)
 * [可在哪种场合下使用个性化体验创建服务？](where-can-you-use-personalizer.md)
 * [故障排除](troubleshooting.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py) 上找到此示例的源代码。
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer) 上找到此示例的源代码。

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e821c650bae7694070624aeebe7fcc3482f7a3b9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667380"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514605"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Windows 虚拟机上创建 SQL Server
 
@@ -130,7 +130,7 @@ ms.locfileid: "84667380"
    $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
    ```
 
-1. 创建虚拟机配置对象，然后创建 VM。 以下命令创建基于 Windows Server 2016 的 SQL Server 2017 Developer Edition VM。
+1. 创建虚拟机配置对象，然后创建 VM。 以下命令在 Windows Server 2016 上创建 SQL Server 2017 Developer Edition VM。
 
    ```powershell
    # Create a virtual machine configuration
@@ -145,15 +145,36 @@ ms.locfileid: "84667380"
    ```
 
    > [!TIP]
-   > 创建 VM 需要数分钟。
+   > 创建 VM 需要几分钟时间。
 
-## <a name="install-the-sql-iaas-agent"></a>安装 SQL IaaS 代理
+## <a name="register-with-sql-vm-rp"></a>注册 SQL VM RP 
 
-若要获取门户集成和 SQL VM 功能，必须安装 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。 若要在新 VM 上安装该代理，请在创建 VM 后运行以下命令。
+若要获取门户集成和 SQL VM 功能，必须注册 [SQL VM 资源提供程序](sql-vm-resource-provider-register.md)。
 
-   ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
-   ```
+若要获取完整的功能，需要在完整模式下注册资源提供程序。 不过，这样做会重新启动 SQL Server 服务，因此建议的方法是在轻型模式下注册，然后在维护时段内升级到完整模式。 
+
+首先，在轻型模式下注册 SQL Server VM： 
+
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType PAYG -SqlManagementType LightWeight
+```
+
+然后，在维护时段内升级到完整模式： 
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+      
+# Register with SQL VM resource provider in full mode
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+```
+
+
 
 ## <a name="remote-desktop-into-the-vm"></a>通过远程桌面连接到 VM
 
@@ -169,19 +190,19 @@ ms.locfileid: "84667380"
    mstsc /v:<publicIpAddress>
    ```
 
-1. 系统提示输入凭据时，选择输入另一帐户的凭据。 输入带前置反斜杠的用户名（例如 `\azureadmin`），以及此前在本快速入门中设置的密码。
+1. 出现输入凭据的提示时，请选择输入另一个帐户的凭据。 输入带前置反斜杠的用户名（例如 `\azureadmin`），以及此前在本快速入门中设置的密码。
 
 ## <a name="connect-to-sql-server"></a>连接到 SQL Server
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称为 VM 名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
+1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
 
 你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过 Azure 门户或手动[配置连接性](ways-to-connect-to-sql.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但保留它供将来使用。
+如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但会保留它供将来使用。
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName

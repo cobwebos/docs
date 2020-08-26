@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a925aab3fb864643a873433b6df4f2275cae365
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9a8076dcf23c4049ce2728c5099d691f9e865a5f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186527"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510077"
 ---
 适用于 Python 的内容审查器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 内容审查器是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、有风险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。
 
@@ -31,7 +31,7 @@ ms.locfileid: "82186527"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>设置
@@ -40,10 +40,9 @@ ms.locfileid: "82186527"
 
 Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建内容审查器的资源。 你还可以：
 
-* 免费获取在七天内有效的[试用密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，[Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上会提供此密钥。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源
 
-获取试用订阅或资源的密钥后，请为该密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 和 `CONTENT_MODERATOR_ENDPOINT`。
+获取资源的密钥后，请为该密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 和 `CONTENT_MODERATOR_ENDPOINT`。
  
 ### <a name="create-a-python-script"></a>创建 Python 脚本
 

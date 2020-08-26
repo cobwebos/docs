@@ -1,69 +1,69 @@
 ---
-title: 服务器参数-Azure Database for MySQL
-description: 本主题提供有关在 Azure Database for MySQL 中配置服务器参数的准则。
+title: 服务器参数 - Azure Database for MySQL
+description: 本主题提供了在 Azure Database for MySQL 中配置服务器参数的准则。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963200"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258547"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
-本文提供了有关在 Azure Database for MySQL 中配置服务器参数的注意事项和指南。
+本文提供了在 Azure Database for MySQL 中配置服务器参数的注意事项和准则。
 
 ## <a name="what-are-server-parameters"></a>什么是服务器参数？ 
 
-MySQL 引擎提供了许多不同的服务器变量/参数，可用于配置和优化引擎行为。 某些参数可在运行时动态设置，而其他参数为 "静态"，需要重新启动服务器才能应用。
+MySQL 引擎提供了可以用来配置和优化引擎行为的许多不同的服务器变量/参数。 某些参数可在运行时动态设置，另外一些参数则为“静态”参数，需要重启服务器才能应用。
 
-Azure Database for MySQL 公开使用[Azure 门户](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-using-cli.md)和[PowerShell](./howto-configure-server-parameters-using-powershell.md)更改各种 MySQL server 参数的值的功能，以满足工作负荷的需求。
+Azure Database for MySQL 公开了通过 [Azure 门户](./howto-server-parameters.md)、[Azure CLI](./howto-configure-server-parameters-using-cli.md) 和 [PowerShell](./howto-configure-server-parameters-using-powershell.md) 根据工作负荷需求更改各种 MySQL 服务器参数值的功能。
 
 ## <a name="configurable-server-parameters"></a>可配置的服务器参数
 
-受支持服务器参数的列表还在不断增加。 使用 Azure 门户中的 "服务器参数" 选项卡来查看完整列表和配置服务器参数值。
+受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡可查看完整列表并配置服务器参数值。
 
-请参阅以下部分，了解有关多个经常更新的服务器参数的限制的详细信息。 此限制取决于服务器的定价层和 Vcore。
+请参阅以下各部分，详细了解多个经常更新的服务器参数的限制。 这些限制取决于服务器的定价层和 vCore 数。
 
 ### <a name="thread-pools"></a>线程池
 
-MySQL 通常为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能会相应下降。 由于增加了上下文切换、线程争用以及 CPU 缓存的错误位置，许多活动线程可能会显著影响性能。
+MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能会相应下降。 由于上下文切换增加、线程争用以及 CPU 缓存位置不正确，许多活动线程会严重影响性能。
 
-线程池是服务器端功能，不同于连接池，可通过引入工作线程的动态池来最大程度地提高性能，该工作线程可用于限制在服务器上运行的活动线程数，并最大程度地减少线程流失。 这有助于确保连接突发不会导致服务器耗尽资源，也不会导致内存不足错误。 对于短查询和 CPU 密集型工作负荷（例如 OLTP 工作负载），线程池最有效。
+线程池是服务器端的一项功能。与连接池不同，它通过引入工作线程的动态池来最大限度提高性能，该动态池可用于限制服务器上运行的活动线程数，并最大程度地减少线程变动。 这有助于确保连接突发不会导致服务器资源用尽或因内存不足错误而崩溃。 对于短查询和 CPU 密集型工作负荷（例如 OLTP 工作负荷），线程池最有效。
 
-若要了解有关线程池的详细信息，请参阅[Azure Database for MySQL 中的线程池简介](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)
+若要详细了解线程池，请参阅[在 Azure Database for MySQL 中引入线程池](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)
 
 > [!NOTE]
 > MySQL 5.6 版本不支持线程池功能。 
 
 ### <a name="configuring-the-thread-pool"></a>配置线程池
-若要启用线程池，请将 `thread_handling` 服务器参数更新为 "线程池"。 默认情况下，此参数设置为 `one-thread-per-connection` ，这意味着 MySQL 将为每个新连接创建新的线程。 请注意，这是一个静态参数，需要重新启动服务器才能应用。
+若要启用线程池，请将 `thread_handling` 服务器参数更新为“pool-of-threads”。 默认情况下，此参数设置为 `one-thread-per-connection`，这意味着 MySQL 会为每个新连接创建一个新线程。 请注意，这是一个静态参数，需要重启服务器才能应用。
 
-还可以通过设置以下服务器参数，配置池中的最大和最小线程数： 
-- `thread_pool_max_threads`：此值确保池中的线程数不超过此数目。
-- `thread_pool_min_threads`：此值设置即使在连接关闭后也将保留的线程数。
+还可通过设置以下服务器参数，配置池中的最大和最小线程数： 
+- `thread_pool_max_threads`：此值可确保池中的线程数不超过此数目。
+- `thread_pool_min_threads`：此值设置即使在连接关闭后也会保留的线程数。
 
-为了改进线程池上的简短查询的性能问题，Azure Database for MySQL 允许您启用批处理，其中，在执行查询后，线程将始终处于活动状态，而不是在执行查询后立即返回到线程池。 然后，该线程会快速执行查询并完成，并等待下一个查询完成，直到此进程的总消耗时间超过阈值。 批处理执行行为是使用以下服务器参数确定的：  
+为了改善对线程池的短查询的性能问题，Azure Database for MySQL 允许你启用批处理执行，其中的线程会在短时间内保持活动状态，以便通过此连接等待下一个查询，而不是在执行查询后立即返回线程池。 然后，线程会快速执行查询，完成后，便会等待下一个查询，直到此进程的总时间消耗超过阈值。 批处理执行行为使用以下服务器参数确定：  
 
--  `thread_pool_batch_wait_timeout`：此值指定线程等待另一个查询处理的时间。
-- `thread_pool_batch_max_time`：此值确定一个线程将重复执行查询并等待下一个查询的最大时间。
+-  `thread_pool_batch_wait_timeout`：此值指定线程等待另一个查询进行处理的时间。
+- `thread_pool_batch_max_time`：此值确定线程重复查询执行周期并等待下一个查询的最长时间。
 
 > [!IMPORTANT]
-> 在生产环境中开启之前，请测试线程池。 
+> 请在生产环境中启用线程池之前对其进行测试。 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size)。
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size)详细了解此参数。
 
-#### <a name="servers-supporting-up-to-4-tb-storage"></a>支持多达 4 TB 存储空间的服务器
+#### <a name="servers-supporting-up-to-4-tb-storage"></a>最多支持 4 TB 存储的服务器
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|Basic|1|872415232|134217728|872415232|
+|基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
 |常规用途|2|3758096384|134217728|3758096384|
 |常规用途|4|8053063680|134217728|8053063680|
@@ -81,7 +81,7 @@ MySQL 通常为每个客户端连接分配一个线程。 随着并发用户数�
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|Basic|1|872415232|134217728|872415232|
+|基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
 |常规用途|2|7516192768|134217728|7516192768|
 |常规用途|4|16106127360|134217728|16106127360|
@@ -98,7 +98,7 @@ MySQL 通常为每个客户端连接分配一个线程。 随着并发用户数�
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`只能在常规用途和内存优化定价层中进行更新。
+> `innodb_file_per_table` 只能在“常规用途”和“内存优化”定价层中更新。
 
 MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同的表空间中。 [系统表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)是 InnoDB 数据字典的存储区域。 [file-per-table 表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)包含单个 InnoDB 表的数据和索引，并存储在文件系统内它自己的数据文件中。 此行为由 `innodb_file_per_table` 服务器参数控制。 将 `innodb_file_per_table` 设置为 `OFF` 会导致 InnoDB 在系统表空间中创建表。 否则，InnoDB 在 file-per-table 表空间中创建表。
 
@@ -106,12 +106,12 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size)。
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|Basic|1|在基本层中不可配置|不适用|N/A|
-|基本|2|在基本层中不可配置|不适用|不适用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
 |常规用途|8|262144|128|1073741824|
@@ -128,7 +128,7 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|50|10|50|
+|基本|1|50|10|50|
 |基本|2|100|10|100|
 |常规用途|2|300|10|600|
 |常规用途|4|625|10|1250|
@@ -148,19 +148,19 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 > [!IMPORTANT]
 > 为了获得最佳体验，建议使用 ProxySQL 等连接池程序来高效地管理连接。
 
-与 MySQL 建立新的客户端连接需要花费一段时间，一旦建立连接，这些连接会占用数据库资源，即使空闲时，也不例外。 大多数应用程序请求许多生存期短的连接，这加剧了这种情况。 其结果是用于实际工作负荷的资源更少，进而导致性能下降。 连接池程序不仅会减少空闲连接，还会重用现有连接，因而有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+创建与 MySQL 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序请求许多生存期短的连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 连接池程序不仅会减少空闲连接，还会重用现有连接，因而有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
 >[!Note]
->ProxySQL 是开源社区工具。 Microsoft 支持此方法。 为了获得权威指导的生产支持，你可以评估和联系[ProxySQL 产品支持](https://proxysql.com/services/support/)。
+>ProxySQL 是一个开源社区工具。 Microsoft 尽最大努力为它提供支持。 若要获得包含权威指导的生产支持，可以评估并联系 [ProxySQL 产品支持](https://proxysql.com/services/support/)。
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size)。
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|Basic|1|在基本层中不可配置|不适用|N/A|
-|基本|2|在基本层中不可配置|不适用|不适用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|16777216|16384|268435455|
 |常规用途|4|16777216|16384|536870912|
 |常规用途|8|16777216|16384|1073741824|
@@ -175,17 +175,17 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 ### <a name="query_cache_size"></a>query_cache_size
 
-默认情况下，查询缓存被禁用。 若要启用查询缓存，请配置 `query_cache_type` 参数。 
+默认会禁用查询缓存。 若要启用查询缓存，请配置 `query_cache_type` 参数。 
 
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size)。
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size)详细了解此参数。
 
 > [!NOTE]
-> 自 MySQL 5.7.20 起，查询缓存已被弃用；在 MySQL 8.0 中，查询缓存已被删除
+> 查询缓存从 MySQL 5.7.20 开始已遭弃用，并且已在 MySQL 8.0 中删除
 
-|**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|* * 最大值 * *|
+|**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值 **|
 |---|---|---|---|---|
-|Basic|1|在基本层中不可配置|不适用|N/A|
-|基本|2|在基本层中不可配置|不适用|不适用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -198,14 +198,32 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 |内存优化|16|0|0|134217728|
 |内存优化|32|0|0|134217728|
 
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+默认情况下，lower_case_table_name 设置为1，你可以在 MySQL 5.6 和 MySQL 5.7 中更新此参数
+
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names)详细了解此参数。
+
+> [!NOTE]
+> 在 MySQL 8.0 中，默认情况下，lower_case_table_name 设置为1，您无法更改它。
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+如果收到类似于 "行大小太大 ( # A0 8126) " 的错误，则可能需要关闭参数 **innodb_strict_mode**。 不允许在服务器级别全局修改服务器参数 **innodb_strict_mode** ，因为如果行数据大小大于8k，则数据将被截断，且不会导致数据丢失。 建议修改架构以适应页面大小限制。 
+
+可以使用在会话级别设置此参数 `init_connect` 。 若要在会话级别设置 **innodb_strict_mode** ，请参阅 [未列出的设置参数](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+
+> [!NOTE]
+> 如果有读取副本服务器，在主服务器上的会话级别将 **innodb_strict_mode** 设置为 OFF 会断开复制。 如果已读取副本，我们建议将参数设置为 OFF。
+
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size)。
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|Basic|1|在基本层中不可配置|不适用|N/A|
-|基本|2|在基本层中不可配置|不适用|不适用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
 |常规用途|8|524288|32768|16777216|
@@ -220,12 +238,12 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 ### <a name="tmp_table_size"></a>tmp_table_size
 
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size)。
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|Basic|1|在基本层中不可配置|不适用|N/A|
-|基本|2|在基本层中不可配置|不适用|不适用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|16777216|1024|67108864|
 |常规用途|4|16777216|1024|134217728|
 |常规用途|8|16777216|1024|268435456|
@@ -240,11 +258,11 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 ### <a name="time_zone"></a>time_zone
 
-初始部署时，Azure for MySQL 服务器包含时区信息的系统表，但不填充这些表。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程，以及如何设置全局或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 文章。
+初始部署后，Azure for MySQL 服务器包含用于时区信息的系统表，但这些表没有填充。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 一文。
 
 ## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
 
-以下服务器参数在该服务中不可配置：
+以下服务器参数不可在服务中配置：
 
 |**参数**|**固定值**|
 | :------------------------ | :-------- |
@@ -254,7 +272,7 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 |innodb_log_file_size|256 MB|
 |innodb_log_files_in_group|2|
 
-此处未列出的其他变量将设置为默认的 MySQL 现成值。 有关默认值，请参阅版本[8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和[5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html)的 MySQL 文档。 
+此处未列出的其他变量将设置为默认的 MySQL 现成值。 有关默认值，请参阅适用于版本 [8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、[5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) 的 MySQL 文档。 
 
 ## <a name="next-steps"></a>后续步骤
 

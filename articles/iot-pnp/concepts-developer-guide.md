@@ -1,234 +1,433 @@
 ---
 title: 开发人员指南-IoT 即插即用预览版 |Microsoft Docs
-description: 用于 IoT 即插即用开发人员的设备建模说明
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/26/2019
+description: 面向开发人员的 IoT 即插即用说明
+author: rido-min
+ms.author: rmpablos
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605226"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856042"
 ---
-# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT 即插即用预览版建模开发人员指南
+# <a name="iot-plug-and-play-preview-developer-guide"></a>IoT 即插即用预览版开发人员指南
 
-IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程序的设备。 当客户将其连接到 IoT 即插即用启用的应用程序时，IoT 即插即用设备不需要手动配置。 IoT Central 是启用 IoT 即插即用的应用程序的一个示例。
+IoT 即插即用预览版允许构建智能设备，将其功能公布到 Azure IoT 应用程序。 当客户将其连接到 IoT 即插即用启用的应用程序时，IoT 即插即用设备不需要手动配置。
 
-若要构建 IoT 即插即用设备，需要创建设备描述。 使用名为数字孪生定义语言（DTDL）的简单定义语言来完成说明。
+本指南介绍了创建遵循 [IoT 即插即用约定](concepts-convention.md)的设备所需的基本步骤，以及可用于与设备进行交互的可用 REST api。
 
-## <a name="device-capability-model"></a>设备功能模型
+若要构建 IoT 即插即用设备，请执行以下步骤：
 
-使用 DTDL，可以创建_设备功能模型_来描述设备的各个部分。 典型的 IoT 设备由以下内容组成：
+1. 确保你的设备使用 MQTT 或 MQTT over Websocket 协议连接到 Azure IoT 中心。
+1. 创建 [数字孪生定义语言 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl) 模型来描述你的设备。 若要了解详细信息，请参阅 [了解 IoT 即插即用模型中的组件](concepts-components.md)。
+1. 更新设备以在 `model-id` 设备连接过程中公告。
+1. 使用[IoT 即插即用约定](concepts-convention.md)实现遥测、属性和命令
 
-- 自定义部件，这是使您的设备独一无二的东西。
-- 标准部件，是所有设备通用的部分。
+设备实现准备就绪后，请使用 [Azure iot 浏览器](howto-use-iot-explorer.md) 验证设备是否遵循 IoT 即插即用约定。
 
-这些部件在设备功能模型中称为_接口_。 接口定义设备实现的每个部件的详细信息。
+> [!Tip]
+> 本文中的所有代码片段都使用 c #，但这些概念适用于适用于 C、Python、Node 和 Java 的任何可用的 Sdk。
 
-以下示例显示了恒温器设备的设备功能模型：
+## <a name="model-id-announcement"></a>模型 ID 公告
+
+若要公布模型 ID，设备必须将其包含在连接信息中：
+
+```csharp
+DeviceClient.CreateFromConnectionString(
+  connectionString,
+  TransportType.Mqtt,
+  new ClientOptions() { ModelId = modelId })
+```
+
+新 `ClientOptions` 重载在 `DeviceClient` 用于初始化连接的所有方法中可用。
+
+已将模型 ID 公告添加到 Sdk 的下一版本
+
+|SDK 中 IsInRole 中的声明|版本|
+|---|-------|
+|C-SDK|1.3.9|
+|.NET|1.27.0|
+|Java|1.14.0|
+|节点|1.17.0|
+|Python|2.1.4|
+
+## <a name="dps-payload"></a>DPS 有效负载
+
+使用 [设备预配服务 (DPS) ](/iot-dps/) 的设备可以包括 `modelId` 使用以下 JSON 有效负载的预配过程中要使用的。
 
 ```json
 {
-  "@id": "urn:example:Thermostat_T_1000:1",
-  "@type": "CapabilityModel",
-  "implements": [
-    {
-      "name": "thermostat",
-      "schema": "urn:example:Thermostat:1"
-    },
-    {
-      "name": "urn_azureiot_deviceManagement_DeviceInformation",
-      "schema": "urn:azureiot:deviceManagement:DeviceInformation:1"
-    }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+    "modelId" : "dtmi:com:example:Thermostat;1"
 }
 ```
 
-功能模型具有一些必需字段：
+## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
 
-- `@id`：唯一 ID，采用简单统一资源名称的形式。
-- `@type`：声明此对象是功能模型。
-- `@context`：指定用于功能模型的 DTDL 版本。
-- `implements`：列出设备实现的接口。
+如 [了解 IoT 即插即用模型中的组件](concepts-components.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
 
-"实现" 部分的接口列表中的每个条目都有：
+### <a name="telemetry"></a>遥测技术
 
-- `name`：接口的编程名称。
-- `schema`：功能模型实现的接口。
+没有组件的模型不需要任何特殊属性。
 
-还有其他可选字段可用于向功能模型中添加更多详细信息，例如显示名称和说明。 在功能模型中声明的接口可以被视为该设备的组件。 对于公共预览版，接口列表每个架构只能有一个条目。
+使用组件时，设备必须使用组件名称设置消息属性：
 
-## <a name="interface"></a>接口
+```c#
+public async Task SendComponentTelemetryValueAsync(string componentName, string serializedTelemetry)
+{
+  var message = new Message(Encoding.UTF8.GetBytes(serializedTelemetry));
+  message.Properties.Add("$.sub", componentName);
+  message.ContentType = "application/json";
+  message.ContentEncoding = "utf-8";
+  await deviceClient.SendEventAsync(message);
+}
+```
 
-使用 DTDL，可以使用接口描述设备的功能。 接口描述设备的一部分实现的_属性_、_遥测_和_命令_：
+### <a name="read-only-properties"></a>只读属性
 
-- `Properties`. 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 你可以将属性声明为只读或可写。
-- `Telemetry`. 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
-- `Commands`. 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
+没有组件的模型不需要任何特殊构造：
 
-以下示例显示了恒温器设备的接口：
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+reportedProperties["maxTemperature"] = 38.7;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+用下一个报告的属性更新设备克隆：
 
 ```json
 {
-  "@id": "urn:example:Thermostat:1",
-  "@type": "Interface",
-  "contents": [
-    {
-      "@type": "Telemetry",
-      "name": "temperature",
-      "schema": "double"
-    }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+  "reported": {
+      "maxTemperature" : 38.7
+  }
 }
 ```
 
-接口具有一些必需字段：
+使用组件时，必须在组件名称中创建属性：
 
-- `@id`：唯一 ID，采用简单统一资源名称的形式。
-- `@type`：声明此对象是接口。
-- `@context`：指定用于接口的 DTDL 版本。
-- `contents`：列出组成设备的属性、遥测和命令。
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection component = new TwinCollection();
+component["maxTemperature"] = 38.7;
+component["__t"] = "c"; // marker to identify a component
+reportedProperties["thermostat1"] = component;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
 
-在这个简单的示例中，只有一个遥测字段。 最小字段说明具有：
+用下一个报告的属性更新设备克隆：
 
-- `@type`：指定功能类型： `Telemetry` 、 `Property` 或 `Command` 。
-- `name`：提供遥测值的名称。
-- `schema`：指定遥测数据类型。 此值可以是基元类型，如 double、integer、boolean 或 string。 还支持复杂的对象类型、数组和映射。
+```json
+{
+  "reported": {
+    "thermostat1" : {  
+      "__t" : "c",  
+      "maxTemperature" : 38.7
+     } 
+  }
+}
+```
 
-其他可选字段（如显示名称和说明）允许您将更多详细信息添加到界面和功能。
+### <a name="writable-properties"></a>可写属性
 
-### <a name="properties"></a>属性
+这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，则客户端会在中收到作为回调的通知 `DeviceClient` 。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
 
-默认情况下，属性是只读的。 只读属性意味着设备将属性值更新报告到 IoT 中心。 IoT 中心无法设置只读属性的值。
+#### <a name="report-a-writable-property"></a>报告可写属性
 
-还可以在接口上将属性标记为可写。 设备可以从 IoT 中心接收对可写属性的更新，以及向中心报告属性值更新。
+当设备报告可写属性时，它必须包含 `ack` 约定中定义的值。
 
-设备无需连接即可设置属性值。 当设备下一次连接到中心时，将传输更新的值。 此行为同时适用于只读属性和可写属性。
+报告不含组件的可写属性：
 
-不要使用属性从设备发送遥测数据。 例如，readonly 属性（如） `temperatureSetting=80` 应意味着设备温度已设置为80，并且设备尝试进入或停留在此温度上。
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection ackProps = new TwinCollection();
+ackProps["value"] = 23.2;
+ackProps["ac"] = 200; // using HTTP status codes
+ackProps["av"] = 0; // not readed from a desired property
+ackProps["ad"] = "reported default value";
+reportedProperties["targetTemperature"] = ackProps;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
 
-对于可写属性，设备应用程序会返回所需状态状态代码、版本和说明，以指示是否已收到并应用属性值。
+用下一个报告的属性更新设备克隆：
 
-### <a name="telemetry"></a>遥测
+```json
+{
+  "reported": {
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+  }
+}
+```
 
-默认情况下，IoT 中心会将来自设备的所有遥测消息路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的[内置面向服务的终结点（**消息/事件**）](../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。
+若要从组件报告可写属性，则克隆必须包括标记：
 
-可以使用[IoT 中心的自定义终结点和路由规则](../iot-hub/iot-hub-devguide-messages-d2c.md)将遥测数据发送到其他目标，例如 blob 存储或其他事件中心。 路由规则使用消息属性选择消息。
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection component = new TwinCollection();
+TwinCollection ackProps = new TwinCollection();
+component["__t"] = "c"; // marker to identify a component
+ackProps["value"] = 23.2;
+ackProps["ac"] = 200; // using HTTP status codes
+ackProps["av"] = 0; // not read from a desired property
+ackProps["ad"] = "reported default value";
+component["targetTemperature"] = ackProps;
+reportedProperties["thermostat1"] = component;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+用下一个报告的属性更新设备克隆：
+
+```json
+{
+  "reported": {
+    "thermostat1": {
+      "__t" : "c",
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+    }
+  }
+}
+```
+
+#### <a name="subscribe-to-desired-property-updates"></a>订阅所需属性更新
+
+服务可以更新在连接的设备上触发通知的所需属性。 此通知包括更新的所需属性，其中包括用于标识更新的版本号。 设备必须用与报告属性相同的消息进行响应 `ack` 。
+
+如果模型没有组件，请参阅单一属性，并创建报告 `ack` 时所收到的版本：
+
+```csharp
+await client.SetDesiredPropertyUpdateCallbackAsync(async (desired, ctx) => 
+{
+  JValue targetTempJson = desired["targetTemperature"];
+  double targetTemperature = targetTempJson.Value<double>();
+
+  TwinCollection reportedProperties = new TwinCollection();
+  TwinCollection ackProps = new TwinCollection();
+  ackProps["value"] = targetTemperature;
+  ackProps["ac"] = 200;
+  ackProps["av"] = desired.Version; 
+  ackProps["ad"] = "desired property received";
+  reportedProperties["targetTemperature"] = ackProps;
+
+  await client.UpdateReportedPropertiesAsync(reportedProperties);
+}, null);
+```
+
+设备克隆在所需的和报告的部分显示属性：
+
+```json
+{
+  "desired" : {
+    "targetTemperature": 23.2,
+    "$version" : 3
+  },
+  "reported": {
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+  }
+}
+```
+
+包含组件的模型接收用组件名称包装的所需属性，并报告返回 `ack` 报告的属性：
+
+```csharp
+await client.SetDesiredPropertyUpdateCallbackAsync(async (desired, ctx) =>
+{
+  JObject thermostatComponent = desired["thermostat1"];
+  JToken targetTempProp = thermostatComponent["targetTemperature"];
+  double targetTemperature = targetTempProp.Value<double>();
+
+  TwinCollection reportedProperties = new TwinCollection();
+  TwinCollection component = new TwinCollection();
+  TwinCollection ackProps = new TwinCollection();
+  component["__t"] = "c"; // marker to identify a component
+  ackProps["value"] = targetTemperature;
+  ackProps["ac"] = 200; // using HTTP status codes
+  ackProps["av"] = desired.Version; // not readed from a desired property
+  ackProps["ad"] = "desired property received";
+  component["targetTemperature"] = ackProps;
+  reportedProperties["thermostat1"] = component;
+
+  await client.UpdateReportedPropertiesAsync(reportedProperties);
+}, null);
+```
+
+组件的设备克隆显示了所需的和报告的部分，如下所示：
+
+```json
+{
+  "desired" : {
+    "thermostat1" : {
+        "__t" : "c",
+        "targetTemperature": 23.2,
+    }
+    "$version" : 3
+  },
+  "reported": {
+    "thermostat1" : {
+        "__t" : "c",
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+    }
+  }
+}
+```
 
 ### <a name="commands"></a>命令
 
-命令为同步或异步。 默认情况下，必须在30秒内执行同步命令，并且在命令到达时必须连接设备。 如果设备有时间响应或设备未连接，则该命令将失败。
+不含组件的模型会接收服务调用的命令名称。
 
-为长时间运行的操作使用异步命令。 设备使用遥测消息发送进度信息。 这些进度消息具有以下标头属性：
+包含组件的模型将接收以组件和分隔符为前缀的命令名称 `*` 。
 
-- `iothub-command-name`：例如，命令名称 `UpdateFirmware` 。
-- `iothub-command-request-id`：在服务器端生成并在初始调用中发送到设备的请求 ID。
-- `iothub-interface-id`：例如，在其上定义此命令的接口的 ID `urn:example:AssetTracker:1` 。
- `iothub-interface-name`：例如，此接口的实例名称 `myAssetTracker` 。
-- `iothub-command-statuscode`：例如，从设备返回的状态代码 `202` 。
-
-## <a name="register-a-device"></a>注册设备
-
-IoT 即插即用可以轻松地公布设备的功能。 对于 IoT 即插即用，在设备连接到 IoT 中心后，必须注册设备功能模型。 注册使客户能够使用设备的 IoT 即插即用功能。
-
-本指南演示如何使用适用于 C 语言的 Azure IoT 设备 SDK 注册设备。
-
-对于设备实现的每个接口，都必须创建一个接口，并将其连接到其实现。
-
-对于先前显示的恒温器接口，使用 C SDK 创建恒温器接口并将其连接到其实现：
-
-```c
-DIGITALTWIN_INTERFACE_HANDLE thermostatInterfaceHandle;
-
-DIGITALTWIN_CLIENT_RESULT result = DigitalTwin_InterfaceClient_Create(
-    "thermostat",
-    "urn:example:Thermostat:1",
-    null, null,
-    &thermostatInterfaceHandle);
-
-result = DigitalTwin_Interface_SetCommandsCallbacks(
-    thermostatInterfaceHandle,
-    commandsCallbackTable);
-
-result = DigitalTwin_Interface_SetPropertiesUpdatedCallbacks(
-    thermostatInterfaceHandle,
-    propertiesCallbackTable);
-
+```csharp
+await client.SetMethodHandlerAsync("themostat*reboot", (MethodRequest req, object ctx) =>
+{
+  Console.WriteLine("REBOOT");
+  return Task.FromResult(new MethodResponse(200));
+},
+null);
 ```
 
-对设备实现的每个接口重复此代码。
+#### <a name="request-and-response-payloads"></a>请求和响应负载
 
-创建接口后，使用 IoT 中心注册设备功能模型和接口：
+命令使用类型来定义其请求和响应负载。 设备必须反序列化传入的输入参数并序列化响应。 下面的示例演示如何实现具有负载中定义的复杂类型的命令：
 
-```c
-DIGITALTWIN_INTERFACE_CLIENT_HANDLE interfaces[2];
-interfaces[0] = thermostatInterfaceHandle;
-interfaces[1] = deviceInfoInterfaceHandle;
-
-result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
-    digitalTwinClientHandle, // The handle for the connection to Azure IoT
-    "urn:example:Thermostat_T_1000:1",
-    interfaces, 2,
-    null, null);
+```json
+{
+  "@type": "Command",
+  "name": "start",
+  "request": {
+    "name": "startRequest",
+    "schema": {
+      "@type": "Object",
+      "fields": [
+        {
+          "name": "startPriority",
+          "schema": "integer"
+        },
+        {
+          "name": "startMessage",
+          "schema" : "string"
+        }
+      ]
+    }
+  },
+  "response": {
+    "name": "startReponse",
+    "schema": {
+      "@type": "Object",
+      "fields": [
+        {
+            "name": "startupTime",
+            "schema": "integer" 
+        },
+        {
+          "name": "startupMessage",
+          "schema": "string"
+        }
+      ]
+    }
+  }
+}
 ```
 
-## <a name="use-a-device"></a>使用设备
+下面的代码段演示了设备如何实现此命令定义，其中包括用于启用序列化和反序列化的类型：
 
-IoT 即插即用允许你使用已在 IoT 中心注册其功能的设备。 例如，你可以直接访问设备的属性和命令。
+```csharp
+class startRequest
+{
+  public int startPriority { get; set; }
+  public string startMessage { get; set; }
+}
 
-若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 中心 REST API 或 IoT 语言 Sdk 之一。 以下示例使用 IoT 中心 REST API。 该 API 的当前版本为 `2019-07-01-preview` 。 追加 `?api-version=2019-07-01-preview` 到 REST PI 调用。
+class startResponse
+{
+  public int startupTime { get; set; }
+  public string startupMessage { get; set; }
+}
 
-若要在恒温器的接口中获取设备属性的值，如固件版本（ `fwVersion` ）， `DeviceInformation` 请使用数字孪生 REST API。
+// ... 
+
+await client.SetMethodHandlerAsync("start", (MethodRequest req, object ctx) =>
+{
+  var startRequest = JsonConvert.DeserializeObject<startRequest>(req.DataAsJson);
+  Console.WriteLine($"Received start command with priority ${startRequest.startPriority} and ${startRequest.startMessage}");
+
+  var startResponse = new startResponse
+  {
+    startupTime = 123,
+    startupMessage = "device started with message " + startRequest.startMessage
+  };
+
+  string responsePayload = JsonConvert.SerializeObject(startResponse);
+  MethodResponse response = new MethodResponse(Encoding.UTF8.GetBytes(responsePayload), 200);
+  return Task.FromResult(response);
+},null);
+```
+
+> [!Tip]
+> 请求和响应名称不存在于通过网络传输的序列化有效负载中。
+
+## <a name="interact-with-the-device"></a>与设备交互 
+
+IoT 即插即用允许你使用已通过 IoT 中心宣布其模型 ID 的设备。 例如，你可以直接访问设备的属性和命令。
+
+若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 中心 REST API 或 IoT 语言 Sdk 之一。 以下示例使用 IoT 中心 REST API。 该 API 的当前版本为 `2020-05-31-preview` 。 追加 `?api-version=2020-05-31` 到 REST PI 调用。
 
 如果调用恒温器设备 `t-123` ，你将获得设备使用 REST API get 调用实现的所有接口的所有属性：
 
 ```REST
-GET /digitalTwins/t-123/interfaces
+GET /digitalTwins/t-123
 ```
 
-一般来说，所有接口上的所有属性都是通过此 REST API 模板访问的，其中 `{device-id}` ，是设备的标识符：
+此调用将包含 `$metadata.$model` 包含设备所公布的模型 ID 的 Json 属性。
+
+所有接口上的所有属性都是通过 `GET /DigitalTwin/{device-id}` REST API 模板访问的，其中 `{device-id}` ，是设备的标识符：
 
 ```REST
-GET /digitalTwins/{device-id}/interfaces
+GET /digitalTwins/{device-id}
 ```
 
-如果你知道接口的名称（如 `deviceInformation` ），并且想要获取该特定接口的属性，请按名称将请求按名称限定到特定的接口：
+可以直接调用 IoT 即插即用设备命令。 如果 `Thermostat` 设备中的组件 `t-123` 有 `restart` 命令，则可以使用 REST API POST 调用来调用它：
 
 ```REST
-GET /digitalTwins/t-123/interfaces/deviceInformation
-```
-
-更常见的情况是，可以通过此 REST API 模板访问特定接口的属性，其中 `device-id` 是设备的标识符， `{interface-name}` 是接口的名称：
-
-```REST
-GET /digitalTwins/{device-id}/interfaces/{interface-name}
-```
-
-可以直接调用 IoT 即插即用设备命令。 如果 `Thermostat` 设备中的接口 `t-123` 有 `restart` 命令，则可以使用 REST API POST 调用来调用它：
-
-```REST
-POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
+POST /digitalTwins/t-123/components/Thermostat/commands/restart
 ```
 
 通常，可以通过此 REST API 模板调用命令：
 
 - `device-id`：设备的标识符。
-- `interface-name`：设备功能模型的实现部分中的接口的名称。
+- `component-name`：设备功能模型的实现部分中的接口的名称。
 - `command-name`：命令的名称。
 
 ```REST
-/digitalTwins/{device-id}/interfaces/{interface-name}/commands/{command-name}
+/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解设备建模，以下是一些其他资源：
 
-- [数字克隆定义语言（DTDL）](https://aka.ms/DTDL)
+- [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [模型组件](./concepts-components.md)

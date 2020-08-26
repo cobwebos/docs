@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267199"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516276"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>教程：集成多个沉浸式阅读器资源
 
@@ -24,7 +25,7 @@ ms.locfileid: "84267199"
 > * 在现有资源组下创建多个沉浸式阅读器资源
 > * 使用多个资源启动沉浸式阅读器
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 

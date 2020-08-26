@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Synapse Studio 创建 Synapse SQL 池（预览版）
+title: 快速入门：使用 Synapse Studio 创建 Synapse SQL 池
 description: 遵循本指南中的步骤，使用 Synapse Studio 创建新的 Synapse SQL 池。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036567"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>快速入门：使用 Synapse Studio 创建 Synapse SQL 池（预览版）
+# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>快速入门：使用 Synapse Studio 创建 Synapse SQL 池
 
 Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转换和分析数据，以及对数据建模。 SQL 池提供基于 T-SQL 的计算和存储功能。 在 Synapse 工作区中创建 SQL 池后，可以加载、处理和提供数据以及为数据建模，更快地获取分析见解。
 

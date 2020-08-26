@@ -1,25 +1,21 @@
 ---
-title: 将内容传送到客户 | Microsoft Docs
+title: 向客户传送内容
 description: 本主题概述使用 Azure 媒体服务传送内容所涉及的操作。
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060366"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
@@ -55,7 +51,7 @@ ms.locfileid: "85956587"
 
 有关详细信息，请参阅[筛选器和动态清单](media-services-dynamic-manifest-overview.md)。
 
-## <a name="locators"></a><a id="locators"/>定位符
+## <a name="locators"></a><a name="locators"></a>定位符
 若要为用户提供一个可用于流式传输内容或下载内容的 URL，首先需要通过创建定位符来发布资产。 定位符提供访问资产中所含文件的入口点。 媒体服务支持两种类型的定位符：
 
 * OnDemandOrigin 定位符。 这些定位符用于流媒体（例如，MPEG-DASH、HLS 或平滑流式处理）或渐进式下载文件。
@@ -70,9 +66,9 @@ ms.locfileid: "85956587"
 > 
 > 
 
-若要更新定位符的过期日期，请使用 [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API。 请注意，更新 SAS 定位符的过期日期时，URL 会发生变化。
+若要更新定位符的过期日期，请使用 [REST](/rest/api/media/operations/locator#update_a_locator) 或 [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API。 请注意，更新 SAS 定位符的过期日期时，URL 会发生变化。
 
-定位符不用于管理按用户的访问控制。 通过数字版权管理 (DRM) 解决方案，可以为不同的用户提供不同的访问权限。 有关详细信息，请参阅 [保护媒体](https://msdn.microsoft.com/library/azure/dn282272.aspx)。
+定位符不用于管理按用户的访问控制。 通过数字版权管理 (DRM) 解决方案，可以为不同的用户提供不同的访问权限。 有关详细信息，请参阅 [保护媒体](/previous-versions/azure/dn282272(v=azure.100))。
 
 创建定位符时，可能会由于 Azure 存储中所需存储和传播进程的影响，出现 30 秒的延迟。
 
@@ -87,7 +83,7 @@ ms.locfileid: "85956587"
 
 如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含 "origin.mediaservices.windows.net" （旧格式）的流式处理 Url 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>流式处理 URL 格式
+## <a name="streaming-url-formats"></a><a name="URLs"></a>流式处理 URL 格式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 格式
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
@@ -192,4 +188,3 @@ http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 ## <a name="related-topics"></a>相关主题
 [轮转存储密钥后更新媒体服务定位符](media-services-roll-storage-access-keys.md)
-

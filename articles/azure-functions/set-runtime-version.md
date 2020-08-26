@@ -2,25 +2,26 @@
 title: 如何面向 Azure Functions 运行时版本
 description: Azure Functions 支持多个版本的运行时。 了解如何在 Azure 中指定函数应用的运行时版本。
 ms.topic: conceptual
-ms.date: 11/26/2018
-ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77151949"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830863"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
-函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主版本：[1.x、2.x 和 3.x](functions-versions.md)。 默认情况下，函数应用采用 2.x 版的运行时创建。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
+函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主版本：[1.x、2.x 和 3.x](functions-versions.md)。 默认情况下，在运行时的版本2.x 中创建函数应用。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
 
 ## <a name="automatic-and-manual-version-updates"></a>自动和手动版本更新
 
-Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置来针对特定版本的运行时。 函数应用将一直保留在指定的主版本上，直到显式选择迁移到新版本。
+Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置来针对特定版本的运行时。 函数应用将一直保留在指定的主版本上，直到显式选择迁移到新版本。 如果仅指定主版本，当运行时的新次要版本可用时，函数应用将自动更新到该版本。 新的次要版本不应引入中断性变更。 
 
-如果仅指定主版本，当运行时的新次要版本可用时，函数应用将自动更新到该版本。 新的次要版本不应引入中断性变更。 如果指定次要版本（例如，“2.0.12345”），则函数应用将被固定到该特定版本，直到显式更改它。
+如果指定次要版本（例如，“2.0.12345”），则函数应用将被固定到该特定版本，直到显式更改它。 旧的次要版本定期从生产环境中删除。 发生这种情况后，函数应用将在最新版本上运行，而不是在中设置的版本 `FUNCTIONS_EXTENSION_VERSION` 。 因此，你应该快速解决需要特定次要版本的函数应用的任何问题，以便可以改为针对主要版本。 [应用服务公告](https://github.com/Azure/app-service-announcements/issues)中公布了次版本的删除。
 
 > [!NOTE]
-> 如果你固定到 Azure Functions 的特定版本，然后尝试使用 Visual Studio 发布到 Azure，则会弹出一个对话框窗口，提示你更新到最新版本或取消发布。 若要避免出现此情况，请在 `.csproj` 文件中添加 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 属性。
+> 如果你固定到 Azure Functions 的特定主要版本，然后尝试使用 Visual Studio 发布到 Azure，则会弹出一个对话框窗口，提示你将更新到最新版本或取消发布。 若要避免出现此情况，请在 `.csproj` 文件中添加 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 属性。
 
 有新版本公开可用时，门户中将显示提示，让你可以升级到该版本。 升级至新版本后，始终可使用 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置移回到之前的版本。
 

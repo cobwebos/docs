@@ -2,16 +2,17 @@
 title: 在 Azure Data Box Gateway 系列设备上安装更新 |Microsoft Docs
 description: 描述如何使用 Azure Data Box Gateway 系列设备的 Azure 门户和本地 web UI 应用更新
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4c17488a875484b2d3dc0e7e8e1045ce8ea75cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85802026"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783869"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>更新 Azure Data Box Gateway
 
@@ -19,7 +20,7 @@ ms.locfileid: "85802026"
 
 > [!IMPORTANT]
 >
-> - 更新**1911**对应于设备上的**1.6.1049.786** software 版本。 有关此更新的信息，请参阅[发行说明](data-box-gateway-1911-release-notes.md)。
+> - 更新 **1911** 对应于设备上的 **1.6.1049.786** software 版本。 有关此更新的信息，请参阅 [发行说明](data-box-gateway-1911-release-notes.md)。
 >
 > - 请记住，安装更新或修补程序会重新启动设备。 由于 Data Box Gateway 是单节点设备，正在进行的任何 i/o 都将中断，设备软件更新的设备的停机时间最长为30分钟。
 
@@ -30,15 +31,15 @@ ms.locfileid: "85802026"
 建议通过 Azure 门户安装更新。 设备每天自动扫描一次更新。 更新可用后，门户中会显示一条通知。 然后，你可以下载和安装更新。
 
 > [!NOTE]
-> 在继续安装更新之前，请确保设备运行正常并且状态显示为 "**联机**"。
+> 在继续安装更新之前，请确保设备运行正常并且状态显示为 " **联机** "。
 
-1. 当更新可用于你的设备时，你会看到一条通知。 选择通知，或从顶部命令栏中选择 "**更新设备**"。 这将允许你应用设备软件更新。
+1. 当更新可用于你的设备时，你会看到一条通知。 选择通知，或从顶部命令栏中选择 " **更新设备**"。 这将允许你应用设备软件更新。
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-01a.png)
 
-2. 在 "**设备更新**" 边栏选项卡中，检查是否已查看与发行说明中的新功能关联的许可条款。
+2. 在 " **设备更新** " 边栏选项卡中，检查是否已查看与发行说明中的新功能关联的许可条款。
 
-    您可以选择**下载和安装更新，** 或仅**下载**更新。 然后，可以选择稍后安装这些更新。
+    您可以选择 **下载和安装更新，** 或仅 **下载** 更新。 然后，可以选择稍后安装这些更新。
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
@@ -54,7 +55,7 @@ ms.locfileid: "85802026"
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-08a.png)
 
-    你可以选择此通知或选择 "**更新设备**" 来查看更新的详细状态。
+    你可以选择此通知或选择 " **更新设备** " 来查看更新的详细状态。
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-09.png)
 
@@ -62,7 +63,7 @@ ms.locfileid: "85802026"
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    如果选择仅下载更新，则选择该通知即可打开 "**设备更新**" 边栏选项卡。 选择“安装”。
+    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”。
   
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -82,11 +83,11 @@ ms.locfileid: "85802026"
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-20a.png)
 
-7. 安装更新后，设备状态将更新为 "**联机**"。
+7. 安装更新后，设备状态将更新为 " **联机** "。
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-23a.png)
 
-    在顶部命令栏中，选择 "**设备更新**"。 验证更新是否已成功安装，以及设备软件版本是否反映了此情况。
+    在顶部命令栏中，选择 " **设备更新**"。 验证更新是否已成功安装，以及设备软件版本是否反映了此情况。
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-24.png)
 
@@ -109,13 +110,13 @@ ms.locfileid: "85802026"
 
    ![搜索目录](./media/data-box-gateway-apply-updates/download-update-1.png)
 
-2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库（KB）编号或条款。 例如，输入 " **Azure Data Box Gateway**"，然后单击 "**搜索**"。
+2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 号。 例如，输入 " **Azure Data Box Gateway**"，然后单击 " **搜索**"。
 
-   更新列表显示为**Azure Data Box Gateway 1911**。
+   更新列表显示为 **Azure Data Box Gateway 1911**。
 
    ![搜索目录](./media/data-box-gateway-apply-updates/download-update-2.png)
 
-3. 选择“下载”。 有一个与设备软件更新相对应的名为*SoftwareUpdatePackage.exe*下载的文件。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
+3. 选择“下载”。 有一个与设备软件更新相对应的名为 *SoftwareUpdatePackage.exe* 下载的文件。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
    ![搜索目录](./media/data-box-gateway-apply-updates/download-update-3.png)
 
@@ -124,7 +125,7 @@ ms.locfileid: "85802026"
 安装更新或修补程序之前，请确保：
 
 - 更新或修补程序已本地下载到主机上，或可通过网络共享访问。
-- 你的设备状态为 "正常"，如本地 web UI 的 "**概述**" 页中所示。
+- 你的设备状态为 "正常"，如本地 web UI 的 " **概述** " 页中所示。
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-1.png)
 
@@ -134,11 +135,11 @@ ms.locfileid: "85802026"
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-2.png)
 
-2. 提供更新文件的路径。 如果放置在网络共享上，也可以浏览到更新安装文件。 选择包含*SoftwareUpdatePackage.exe*后缀的软件更新文件。
+2. 提供更新文件的路径。 如果放置在网络共享上，也可以浏览到更新安装文件。 选择包含 *SoftwareUpdatePackage.exe* 后缀的软件更新文件。
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. 选择“应用”。
+3. 选择**应用**。
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 
@@ -147,10 +148,10 @@ ms.locfileid: "85802026"
 
 5. 更新启动。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
 
-6. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 本示例中显示的软件版本为**1.6.1049.786**。
+6. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 本示例中显示的软件版本为 **1.6.1049.786**。
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[管理 Azure Data Box Gateway](data-box-gateway-manage-users.md)的详细信息。
+了解有关 [管理 Azure Data Box Gateway](data-box-gateway-manage-users.md)的详细信息。

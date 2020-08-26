@@ -4,11 +4,12 @@ description: 介绍如何使用 Azure 部署管理器在多个区域部署服务
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057919"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130216"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure 部署管理器启用安全部署实践（公共预览版）
 
@@ -27,7 +28,7 @@ Azure 部署管理器处于预览阶段。 提供[反馈](https://aka.ms/admfeed
 
 请在部署推出模板之前部署拓扑模板。
 
-更多资源：
+其他资源：
 
 - [Azure 部署管理器 REST API 参考](/rest/api/deploymentmanager/)。
 - [教程：将 Azure 部署管理器用于资源管理器模板](./deployment-manager-tutorial.md)。
@@ -36,7 +37,7 @@ Azure 部署管理器处于预览阶段。 提供[反馈](https://aka.ms/admfeed
 
 ## <a name="identity-and-access"></a>标识和访问
 
-利用资源管理器，[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)可执行部署操作。 请开始部署之前创建此标识。 它必须有权访问要将服务部署到的订阅并具有足够权限来完成部署。 有关通过角色授予的操作的详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+利用资源管理器，[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)可执行部署操作。 请开始部署之前创建此标识。 它必须有权访问要将服务部署到的订阅并具有足够权限来完成部署。 有关通过角色授予的操作的信息，请参阅[Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 标识必须与部署位于同一位置。
 

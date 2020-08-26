@@ -16,11 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764802"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165067"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何让本机客户端应用程序与代理应用程序交互
 
@@ -123,4 +124,4 @@ if (authResult != null)
 
 有关本机应用程序流的详细信息，请参阅 [Azure Active Directory 中的本机应用](../azuread-dev/native-app.md)。
 
-了解如何[在 Azure Active Directory 中设置应用程序的单一登录](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+了解如何[在 Azure Active Directory 中设置应用程序的单一登录](sso-options.md#choosing-a-single-sign-on-method)。

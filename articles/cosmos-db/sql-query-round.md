@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9712aedd3d6748f3bceea67a3270b6c080cc16f2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302111"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794292"
 ---
 # <a name="round-azure-cosmos-db"></a>ROUND (Azure Cosmos DB)
  返回一个数值，四舍五入到最接近的整数值。  
@@ -33,7 +34,7 @@ ROUND(<numeric_expr>)
   
 ## <a name="remarks"></a>备注
   
-  执行的四舍五入运算遵循远离零的中点四舍五入。 如果输入是正好介于两个整数之间的数值表达式，则结果将是离零最近的整数值。  
+  执行的四舍五入运算遵循远离零的中点四舍五入。 如果输入是正好介于两个整数之间的数值表达式，则结果将是离零最近的整数值。 此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
   
   |<numeric_expr>|已四舍五入|
   |-|-|
@@ -55,10 +56,6 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```json
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
-
-## <a name="remarks"></a>备注
-
-此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 

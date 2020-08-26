@@ -4,12 +4,12 @@ description: 了解 Azure App Service 如何帮助你维护业务连续性和灾
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073746"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移到另一个区域
 
@@ -43,17 +43,17 @@ ms.locfileid: "84946899"
 
 1. 在[Azure 门户](https://portal.azure.com)中，导航到受影响的应用的 "管理" 页。 在 Azure 区域发生故障时，受影响的应用会显示警告文本。 单击警告文本。
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![受影响的应用程序页的屏幕截图。 此时将显示一条警告通知，其中描述了这种情况，并提供了用于还原应用的链接。](media/manage-disaster-recovery/restore-start.png)
 
-1. 在 "**还原备份**" 页中，根据下表配置还原操作。 完成后，单击“确定”****。
+1. 在 "**还原备份**" 页中，根据下表配置还原操作。 完成后，单击 **“确定”** 。
 
-   | 设置 | “值” | 描述 |
+   | 设置 | 值 | 描述 |
    |-|-|-|
    | **快照（预览版）** | 选择快照。 | 可以使用两个最新的快照。 |
    | **还原目标** | **现有应用** | 单击下面的注释 "**单击此处以更改还原目标应用程序**并选择目标应用程序"。 在灾难情况下，只能将快照还原到不同 Azure 区域中的应用。 |
    | **还原站点配置** | **是** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    !["还原备份" 页的屏幕截图。 特定快照、上表列出的选项和 "确定" 按钮将突出显示。](media/manage-disaster-recovery/restore-configure.png)
 
 3. 在目标应用中配置[其他所有内容](#prepare)以镜像受影响的应用并验证你的配置。
 
@@ -65,7 +65,7 @@ ms.locfileid: "84946899"
 
 1. 在[Azure 门户](https://portal.azure.com)中，导航到受影响的应用的 "管理" 页，然后单击 "**获取发布配置文件**"。
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![受影响的应用程序页的屏幕截图。 警告通知可见，但未突出显示。 改为突出显示 "获取发布配置文件" 项。](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. 打开下载的文件，并查找其名称中包含的发布配置文件 `ReadOnly - FTP` 。 这是灾难恢复配置文件。 例如：
 
@@ -84,7 +84,7 @@ ms.locfileid: "84946899"
 
 1. 连接后，下载整个 */site/wwwroot*文件夹。 以下屏幕截图显示了如何在[FileZilla](https://filezilla-project.org/)中下载。
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![FileZilla 文件层次结构的屏幕截图。 Wwwroot 文件夹已突出显示，其快捷菜单可见。 在该菜单中，将突出显示 "下载"。](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>后续步骤
 [在 Azure 中从快照还原应用](app-service-web-restore-snapshots.md)

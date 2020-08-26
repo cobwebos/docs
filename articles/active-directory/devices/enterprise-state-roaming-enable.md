@@ -12,11 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252995"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541883"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 
@@ -30,7 +31,7 @@ ms.locfileid: "85252995"
 ## <a name="to-enable-enterprise-state-roaming"></a>启用企业状态漫游
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
-1. 选择“Azure Active Directory”**“设备”** &gt; **“企业状态漫游”** &gt; ****。
+1. 选择**企业状态漫游 Azure Active Directory**  >  **设备**"  >  **Enterprise State Roaming**。
 1. 选择“用户可以跨设备同步设置和应用数据”。**** 有关详细信息，请参阅[如何配置设备设置](/azure/active-directory/device-management-azure-portal)。
   
    ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -55,7 +56,7 @@ ms.locfileid: "85252995"
 遵循以下步骤查看每个用户的设备同步状态报告。
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
-1. 选择“Azure Active Directory”“用户”“所有用户”**** &gt; **** &gt; ****。
+1. 选择 " **Azure Active Directory**  >  **用户**"  >  **All users**。
 1. 选择用户，再选择“设备”。****
 1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。********
   
@@ -77,7 +78,7 @@ ms.locfileid: "85252995"
 * **目录删除**：在 Azure AD 中删除整个目录是一项即时操作。 会在 90 到 180 天后删除与该目录关联的所有设置数据。 
 * **按请求删除**：如果 Azure AD 管理员要手动删除特定用户的数据或设置数据，可以通过 [Azure 支持](https://azure.microsoft.com/support/)提交票证。 
 
-### <a name="stale-data-deletion"></a>删除过时的数据
+### <a name="stale-data-deletion"></a>陈旧数据删除
 
 一年（“保留期”）内未访问的数据会被视为过时，可能会从 Microsoft 云中删除。 保留期可能会发生变化，但不会少于 90 天。 过时数据可以是一组特定的 Windows/应用程序设置或用户的所有设置。 例如：
 
@@ -85,7 +86,7 @@ ms.locfileid: "85252995"
 * 如果用户已在其所有设备上关闭设置同步，则将不会访问任何设置数据，并且该用户的所有设置数据都将变为过时，并且可能会在保留期后被删除。 
 * 如果 Azure AD 目录管理员关闭整个目录的企业状态漫游，则该目录中的所有用户将停止同步设置，所有用户的所有设置数据都将过时，并可能在保留期后被删除。 
 
-### <a name="deleted-data-recovery"></a>恢复已删除的数据
+### <a name="deleted-data-recovery"></a>恢复已删除数据
 
 数据保留策略不可配置。 永久性删除数据之后，无法将其恢复。 但是，设置数据只会从 Microsoft 云中删除，而不会从最终用户设备中删除。 如果任何设备以后重新连接到企业状态漫游服务，则会再次同步设置并将其存储在 Microsoft 云中。
 

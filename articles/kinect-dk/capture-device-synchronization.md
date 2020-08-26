@@ -9,6 +9,7 @@ ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 内部, 外部, 同步, 菊花链, 相位偏移
 ms.openlocfilehash: 914a29882277c11c388d3f81f0b1fe827fc2f156
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932209"

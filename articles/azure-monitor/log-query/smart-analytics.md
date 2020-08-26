@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067403"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智能分析示例
 本文包含使用 Log Analytics 中的智能分析函数执行用户活动分析的示例。 可以使用这些示例来分析你自己的由 Application Insights 监视的应用程序，或者使用这些查询中的概念来对其他数据进行类似的分析。 
 
-有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是 Log Analytics 的新手，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
+有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](/azure/kusto/query/)。 如果你是 Log Analytics 的新手，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
 ## <a name="cohorts-analytics"></a>队列分析
 

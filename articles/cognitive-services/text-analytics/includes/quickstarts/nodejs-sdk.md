@@ -6,15 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 7f25c9c500615f376ffe2fee2483fbfbdc03f3b8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b1a0425fba7dc8c6fb87f03305062f61fc431ca9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735525"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451265"
 ---
 <a name="HOLTop"></a>
 
@@ -31,7 +32,7 @@ ms.locfileid: "84735525"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版本的 [Node.js](https://nodejs.org/)。
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
@@ -61,7 +62,7 @@ npm init
 安装 `@azure/ai-text-analytics` NPM 包：
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0
+npm install --save @azure/ai-text-analytics@5.0.0
 ```
 
 > [!TIP]
@@ -265,7 +266,7 @@ Document ID: 3 , Language: Chinese_Simplified
 #### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 > [!NOTE]
-> 在版本 `3.0-preview` 中：
+> 在版本 `3.0` 中：
 > * 实体链接是一个独立于 NER 的请求。
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeEntities()` 方法，并获取 `RecognizeEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、类型、子类型、偏移量、长度和分数。

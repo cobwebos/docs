@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750873"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092008"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
@@ -29,20 +30,20 @@ ms.locfileid: "75750873"
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-有关顶层诊断日志架构的详细说明，请参阅[Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/tutorial-dashboards.md)。
+有关顶层诊断日志架构的详细说明，请参阅[Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/resource-logs-schema.md)。
 
 ## <a name="key-delivery-log-schema"></a>密钥传送日志架构
 
-### <a name="properties"></a>属性
+### <a name="properties"></a>“属性”
 
 这些属性特定于密钥传送日志架构。
 
-|“属性”|描述|
+|名称|描述|
 |---|---|
 |keyId|请求的密钥的 ID。|
 |keyType|可以是以下值之一： "Clear" （无加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
 |policyName|策略的 Azure 资源管理器名称。|
-|tokenType|标记类型。|
+|tokenType|令牌类型。|
 |statusMessage|状态消息。|
 
 ### <a name="examples"></a>示例

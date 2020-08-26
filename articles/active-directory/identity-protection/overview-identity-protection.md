@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256641"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509104"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护是什么？
+# <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
 标识保护是一种使组织能够完成三项关键任务的工具：
 
@@ -68,6 +69,12 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 - 风险检测
 
 有关详细信息，请参阅[如何：调查风险](howto-identity-protection-investigate-risk.md)一文。
+
+### <a name="risk-levels"></a>风险级别
+
+标识保护将风险分为三个级别：低、中和高。 
+
+虽然 Microsoft 不提供有关风险计算方式的具体详细信息，但可以说每个级别在用户或登录受到攻击时都提供了更高的置信度。 例如，与某用户的一个实例出现不熟悉的登录属性相比，将凭据泄露给另一个用户所带来的威胁性更高。
 
 ## <a name="exporting-risk-data"></a>导出风险数据
 

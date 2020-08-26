@@ -9,16 +9,17 @@ ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 478413132a09334c6b5fe6e4d7c4c31c988cd38d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796767"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501042"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建 VM
 
-从共享映像库中存储的[专用化映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建 VM。 若要使用通用化映像版本创建 VM，请参阅[从通用化映像版本创建 VM](vm-generalized-image-version-cli.md)。
+从共享映像库中存储的[专用化映像版本](./linux/shared-image-galleries.md#generalized-and-specialized-images)创建 VM。 若要使用通用化映像版本创建 VM，请参阅[从通用化映像版本创建 VM](vm-generalized-image-version-cli.md)。
 
 在此示例中，请根据需要替换资源名称。 
 
@@ -58,5 +59,3 @@ az vm create --resource-group myResourceGroup \
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
-
-

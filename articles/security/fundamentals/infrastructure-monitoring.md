@@ -1,6 +1,6 @@
 ---
 title: Azure 基础结构监视
-description: 本文讨论如何监视 Azure 生产网络。
+description: 了解 Azure 生产网络的基础结构监视方面，如漏洞扫描。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b75c9dc874a41d4221c55a8b00dd12d943e80fc
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68727155"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542936"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure 基础结构监视   
 

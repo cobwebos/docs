@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205297"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760628"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -25,34 +25,34 @@ ms.locfileid: "86205297"
 
 计算机视觉的 OCR Api 支持多种语言。 它们不需要指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR) ](concept-recognizing-text.md) 。
 
-|语言| 语言代码 | OCR API | 读取 API |
-|:-----|:----:|:-----:|:---:|
-|阿拉伯语 | `ar`|✔ | |
-|中文(简体) | `zh-Hans`|✔ | |
-|中文(繁体) | `zh-Hant`|✔ | |
-|捷克语 | `cs` |✔ | |
-|丹麦语 | `da` |✔ | |
-|荷兰语 | `nl` |✔ |✔ |
-|英语 | `en` |✔ |✔ |
-|芬兰语 | `fi` |✔ | |
-|法语 | `fr` |✔ |✔ |
-|德语 | `de` |✔ |✔ |
-|希腊语 | `el` |✔ | |
-|匈牙利语 | `hu` |✔ | |
-|意大利语 | `it` |✔ |✔ |
-|日语 | `ja` |✔ | |
-|韩语 | `ko` |✔ | |
-|挪威语 | `nb` |✔ | |
-|波兰语 | `pl` |✔ | |
-|葡萄牙语 | `pt` |✔ |✔ |
-|罗马尼亚语 | `ro` |✔ | |
-|俄语 | `ru` |✔ | |
-|塞尔维亚语（西里尔） | `sr-Cyrl` |✔ | |
-|塞尔维亚语（拉丁） | `sr-Latn` |✔ | |
-|斯洛伐克语 | `sk` |✔ | |
-|西班牙语 | `es` |✔ |✔ |
-|瑞典语 | `sw` |✔ | |
-|土耳其语 | `tr` |✔ | |
+|语言| 语言代码 | OCR API | 读取3.0 版 | 读取3.1 公共预览版 |
+|:-----|:----:|:-----:|:---:|:---:|
+|阿拉伯语 | `ar`|✔ | | |
+|中文(简体) | `zh-Hans`|✔ | |✔ |
+|中文(繁体) | `zh-Hant`|✔ | | |
+|捷克语 | `cs` |✔ | | |
+|丹麦语 | `da` |✔ | | |
+|荷兰语 | `nl` |✔ |✔ |✔ |
+|英语 | `en` |✔ |✔ |✔ |
+|芬兰语 | `fi` |✔ | | |
+|法语 | `fr` |✔ |✔ |✔ |
+|德语 | `de` |✔ |✔ |✔ |
+|希腊语 | `el` |✔ | | |
+|匈牙利语 | `hu` |✔ | | |
+|意大利语 | `it` |✔ |✔ |✔ |
+|日语 | `ja` |✔ | | |
+|韩语 | `ko` |✔ | | |
+|挪威语 | `nb` |✔ | | |
+|波兰语 | `pl` |✔ | | |
+|葡萄牙语 | `pt` |✔ |✔ |✔ |
+|罗马尼亚语 | `ro` |✔ | | |
+|俄语 | `ru` |✔ | | |
+|塞尔维亚语（西里尔） | `sr-Cyrl` |✔ | | |
+|塞尔维亚语（拉丁） | `sr-Latn` |✔ | | |
+|斯洛伐克语 | `sk` |✔ | | |
+|西班牙语 | `es` |✔ |✔ |✔ |
+|瑞典语 | `sw` |✔ | | |
+|土耳其语 | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>图像分析
 

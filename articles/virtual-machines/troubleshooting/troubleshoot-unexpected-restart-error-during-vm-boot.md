@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268622"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036176"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>操作系统启动-计算机意外重新启动或遇到意外错误
 
@@ -27,7 +27,7 @@ ms.locfileid: "85268622"
 
 ## <a name="symptom"></a>症状
 
-当你使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)来查看 VM 的屏幕截图时，你会看到屏幕截图显示 Windows 安装失败，并出现以下错误：
+当你使用[启动诊断](./boot-diagnostics.md)来查看 VM 的屏幕截图时，你会看到屏幕截图显示 Windows 安装失败，并出现以下错误：
 
 **计算机意外重启或遇到意外错误。Windows 安装无法继续。若要安装 Windows，请单击 "确定" 以重新启动计算机，然后重新启动安装。**
 
@@ -37,7 +37,7 @@ ms.locfileid: "85268622"
 
 ## <a name="cause"></a>原因
 
-计算机正在尝试初始启动[通用化映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)，但由于正在处理自定义应答文件（unattend.xml）而遇到问题。 Azure 中不支持自定义应答文件。 
+计算机正在尝试初始启动[通用化映像](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)，但由于正在处理自定义应答文件（unattend.xml）而遇到问题。 Azure 中不支持自定义应答文件。 
 
 答案文件是一个特殊的 XML 文件，其中包含要在安装 Windows Server 操作系统的过程中自动执行的配置设置的设置定义和值。 配置选项包括有关如何对磁盘进行分区、在何处查找要安装的 Windows 映像的说明、要应用的产品密钥和其他你想要运行的命令。
 
@@ -57,7 +57,7 @@ ms.locfileid: "85268622"
 
 - 在前面的命令中， `<NameOfYourAnswerFile.XML>` 将替换为你的文件的名称。
 
-若要解决此问题，请遵循 Azure 指南，了解如何[准备/捕获映像](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)并准备新的通用映像。 在 sysprep 期间，请不要使用 " `/unattend:<answerfile>` 标志"。 请改用下面的标志：
+若要解决此问题，请遵循 Azure 指南，了解如何[准备/捕获映像](../windows/upload-generalized-managed.md)并准备新的通用映像。 在 sysprep 期间，请不要使用 " `/unattend:<answerfile>` 标志"。 请改用下面的标志：
 
 `sysprep /oobe /generalize /shutdown`
 

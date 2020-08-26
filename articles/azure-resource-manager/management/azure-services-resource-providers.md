@@ -3,12 +3,12 @@ title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 1f57f5cd5822e9acf59462c9ecd6d0fda359b5a0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6c57f3523ca8f3f4ad1565d18791d24c0e698ad6
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054366"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808331"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -44,7 +44,7 @@ ms.locfileid: "86054366"
 | Microsoft.Blueprint | [Azure 蓝图](../../governance/blueprints/index.yml) |
 | Microsoft.BotService | [Azure 机器人服务](/azure/bot-service/) |
 | Microsoft.Cache | [用于 Redis 的 Azure 缓存](../../azure-cache-for-redis/index.yml) |
-| Microsoft.Capacity | 核心 |
+| Microsoft.Capacity | core |
 | Microsoft.Cdn | [内容分发网络](../../cdn/index.yml) |
 | Microsoft.CertificateRegistration | [应用服务证书](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft.ChangeAnalysis | [Azure Monitor](../../azure-monitor/index.yml) |
@@ -91,7 +91,7 @@ ms.locfileid: "86054366"
 | Microsoft.EventHub | [事件中心](../../event-hubs/index.yml) |
 | Microsoft.Features<sup>1</sup> | [Azure 资源管理器](../index.yml) |
 | Microsoft.GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft.HanaOnAzure | [Azure SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
+| Microsoft.HanaOnAzure | [Azure 上的 SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft.HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/index.yml) |
@@ -114,9 +114,9 @@ ms.locfileid: "86054366"
 | Microsoft.ManagedServices | [Azure Lighthouse](../../lighthouse/index.yml) |
 | Microsoft.Management | [管理组](../../governance/management-groups/index.yml) |
 | Microsoft.Maps | [Azure Maps](../../azure-maps/index.yml) |
-| Microsoft.Marketplace | 核心 |
-| Microsoft.MarketplaceApps | 核心 |
-| MarketplaceOrdering<sup>1</sup> | 核心 |
+| Microsoft.Marketplace | core |
+| Microsoft.MarketplaceApps | core |
+| MarketplaceOrdering<sup>1</sup> | core |
 | Microsoft.Media | [媒体服务](../../media-services/index.yml) |
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft.MixedReality | [Azure 空间定位点](../../spatial-anchors/index.yml) |
@@ -149,9 +149,9 @@ ms.locfileid: "86054366"
 | Microsoft.ServiceBus | [服务总线](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabric 网格](../../service-fabric-mesh/index.yml) |
-| Microsoft.Services | 核心 |
+| Microsoft.Services | core |
 | Microsoft.SignalRService | [Azure SignalR 服务](../../azure-signalr/index.yml) |
-| Microsoft.SoftwarePlan | 许可证 |
+| Microsoft.SoftwarePlan | 许可 |
 | Microsoft.Solutions | [Azure 托管应用程序](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL 数据库](../../azure-sql/database/index.yml)<br /> [Azure SQL 托管实例](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Azure 虚拟机中的 SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
@@ -159,15 +159,15 @@ ms.locfileid: "86054366"
 | Microsoft.StorageSync | [存储](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 流分析](../../stream-analytics/index.yml) |
-| Microsoft.Subscription | 核心 |
-| microsoft。支持<sup>1</sup> | 核心 |
+| Microsoft.Subscription | core |
+| microsoft。支持<sup>1</sup> | core |
 | Microsoft.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure 时序见解](../../time-series-insights/index.yml) |
 | Microsoft.Token | 标记 |
 | Microsoft.VirtualMachineImages | [Azure 映像生成器](../../virtual-machines/linux/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.VMware | [Azure VMware 解决方案](../../azure-vmware/index.yml) |
-| Microsoft.VMwareCloudSimple | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
+| Microsoft.VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
 | Microsoft.VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.Web | [应用服务](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft.WindowsESU | 扩展的安全更新 |

@@ -5,15 +5,15 @@ author: cynthn
 manager: gwallace
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 6a648fd7f2835ca23285b69d5fed7156507b2ace
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5b7e50ebe6f09de2555af03a47641ef6ca92e92a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500559"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288295"
 ---
 # <a name="download-the-template-for-a-vm"></a>下载 VM 模板
 使用门户或 PowerShell 在 Azure 中创建 VM 时，系统会自动创建一个 Resource Manager 模板。 可以使用此模板快速复制部署。 该模板包含有关资源组中所有资源的信息。 对于虚拟机而言，这意味着该模板包含为在该资源组中支持该 VM 而创建的所有资源，包括网络资源。

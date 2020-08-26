@@ -1,23 +1,23 @@
 ---
 title: PCI-DSS v3.2.1 蓝图示例控件
 description: 支付卡行业数据安全标准 v3.2.1 蓝图示例到 Azure Policy 和 RBAC 的控制映射。
-ms.date: 01/29/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76905636"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649221"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图 PCI-DSS v3.2.1 蓝图示例如何映射到 PCI-DSS v3.2.1 控件。 有关控制措施的详细信息，请参阅 [PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf)。
 
-以下映射适用于 PCI-DSS v3.2.1:2018 控件  。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\] 审核 PCI v3.2.1:2018 控件并部署特定 VM 扩展以支持审核要求”内置策略计划  。
+以下映射适用于 PCI-DSS v3.2.1:2018 控件****。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“\[预览\] 审核 PCI v3.2.1:2018 控件并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)。
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 和 1.3.4 边界保护
 

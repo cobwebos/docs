@@ -8,17 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: 56c25b7c77809a5cb7f4e539cff8e1815cd9976f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 586094f9e6ee696487064dcfea68af0bfc26c1ae
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77031693"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649102"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
 
 了解如何在 HDInsight 上配置 [Apache Kafka](https://kafka.apache.org/) 使用的托管磁盘数。
 
-Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由于 Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)提供高吞吐量，并为每个节点提供更多存储。 如果将传统虚拟硬盘 (VHD) 用于 Kafka，每个节点将被限制为 1 TB。 使用托管磁盘，可以使用多个磁盘，实现群集中每个节点 16 TB。
+Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由于 Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/managed-disks-overview.md)提供高吞吐量，并为每个节点提供更多存储。 如果将传统虚拟硬盘 (VHD) 用于 Kafka，每个节点将被限制为 1 TB。 使用托管磁盘，可以使用多个磁盘，实现群集中每个节点 16 TB。
 
 下图提供不带托管磁盘的 Kafka on HDInsight 与带托管磁盘的 Kafka on HDInsight 之间的比较：
 

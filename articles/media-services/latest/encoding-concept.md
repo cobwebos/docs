@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053344"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒体服务编码视频和音频
 
@@ -28,7 +29,7 @@ ms.locfileid: "84220162"
 > [!IMPORTANT]
 > 媒体服务不会对已取消或已出错的作业计费。 例如，进度已达到 50% 而被取消的作业不会按作业时间的 50% 计费。 你仅为已完成作业付费。
 
-* 若要通过渐进式下载方式传送内容，可以使用 Azure 媒体服务将数字媒体文件（夹层）转换为 [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) 文件，其中包含已通过 [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) 编解码器编码的视频，以及已通过 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) 编解码器编码的音频。 此 MP4 文件将写入到存储帐户中的资产。 可以使用 Azure 存储 API 或 SDK（例如[存储 REST API](../../storage/common/storage-rest-api-auth.md)或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）直接下载文件。 如果在存储中创建了具有特定容器名称的输出资产，请使用该位置。 否则，可以使用媒体服务[列出资产容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。 
+* 若要通过渐进式下载方式传送内容，可以使用 Azure 媒体服务将数字媒体文件（夹层）转换为 [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) 文件，其中包含已通过 [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) 编解码器编码的视频，以及已通过 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) 编解码器编码的音频。 此 MP4 文件将写入到存储帐户中的资产。 可以使用 Azure 存储 API 或 SDK（例如[存储 REST API](../../storage/common/storage-rest-api-auth.md)或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）直接下载文件。 如果在存储中创建了具有特定容器名称的输出资产，请使用该位置。 否则，可以使用媒体服务[列出资产容器 URL](/rest/api/media/assets/listcontainersas)。 
 * 若要准备通过自适应比特率流式处理传送的内容，需以多个比特率（从高到低）编码夹层文件。 为了确保质量的平稳过渡，视频的分辨率会随着比特率的降低而降低。 这会造成所谓的编码梯度 – 分辨率和比特率的表（请参阅[自动生成的自适应比特率梯度](autogen-bitrate-ladder.md)）。 可以使用媒体服务以多个比特率编码夹层文件。 在此过程中，你将获得一组 MP4 文件和关联的流式处理配置文件，这些文件将写入到存储帐户中的资产。 然后，可以使用媒体服务中的[动态打包](dynamic-packaging-overview.md)功能，通过 [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) 和 [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) 等流式处理协议来传送视频。 这需要创建一个[流定位符](streaming-locators-concept.md)并生成与受支持协议对应的流 URL，然后，可以根据功能将这些内容移交到设备/应用。
 
 下图显示了使用动态打包进行按需编码的工作流。
@@ -39,7 +40,7 @@ ms.locfileid: "84220162"
 
 ## <a name="transforms-and-jobs"></a>转换和作业
 
-若要使用媒体服务 v3 进行编码，需创建[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)。 转换用于定义编码设置和输出的配方，作业则是该配方的一个实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+若要使用媒体服务 v3 进行编码，需创建[转换](/rest/api/media/transforms)和[作业](/rest/api/media/jobs)。 转换用于定义编码设置和输出的配方，作业则是该配方的一个实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 使用媒体服务进行编码时，可以使用预设来指示编码器应如何处理输入媒体文件。 在媒体服务 v3 中，使用标准编码器对文件进行编码。 例如，可以在编码内容中指定所需的视频分辨率和/或音频信道数量。
 
@@ -71,9 +72,9 @@ ms.locfileid: "84220162"
 
 ### <a name="creating-job-input-with-subclipping"></a>使用子剪辑创建作业输入
 
-对视频进行编码时，可以指定同时修剪或剪裁源文件，并生成只包含所需输入视频部分的输出。 此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。
+对视频进行编码时，可以指定同时修剪或剪裁源文件，并生成只包含所需输入视频部分的输出。 此功能适用于使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](/rest/api/media/transforms)。
 
-可以指定使用点播视频或实时存档（录制的事件）的单个剪辑创建[作业](https://docs.microsoft.com/rest/api/media/jobs/create)。 作业输入可以是资产或 HTTPS URL。
+可以指定使用点播视频或实时存档（录制的事件）的单个剪辑创建[作业](/rest/api/media/jobs/create)。 作业输入可以是资产或 HTTPS URL。
 
 > [!TIP]
 > 若要流式传输视频的子剪辑而不重新编码视频，请考虑[使用动态打包器预筛选清单](filters-dynamic-manifest-overview.md)。
@@ -91,7 +92,7 @@ ms.locfileid: "84220162"
 
 ### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 用于设置内置预设，以便使用标准编码器对输入视频进行编码。
+[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 用于设置内置预设，以便使用标准编码器对输入视频进行编码。
 
 目前支持以下预设：
 
@@ -108,13 +109,13 @@ ms.locfileid: "84220162"
 - **EncoderNamedPreset.H264SingleBitrate720p**：生成一个 MP4 文件，其中的视频已使用 H.264 编解码器以 4500 kbps 编码，图片高度为 720 像素，立体声音频已使用 AAC-LC 编解码器以 64 kbps 编码。
 - **EncoderNamedPreset.H264SingleBitrateSD**：生成一个 MP4 文件，其中的视频已使用 H.264 编解码器以 2200 kbps 编码，图片高度为 480 像素，立体声音频已使用 AAC-LC 编解码器以 64 kbps 编码。
 
-若要查看最新预设列表，请参阅[用于编码视频的内置预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
+若要查看最新预设列表，请参阅[用于编码视频的内置预设](/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 
 若要了解预设的用法，请参阅[上传、编码和流式处理文件](stream-files-tutorial-with-api.md)。
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 介绍使用标准编码器对输入视频进行编码时要使用的设置。 自定义转换预设时使用此预设。
+[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 介绍使用标准编码器对输入视频进行编码时要使用的设置。 自定义转换预设时使用此预设。
 
 #### <a name="considerations"></a>注意事项
 
@@ -135,7 +136,7 @@ ms.locfileid: "84220162"
 
 ## <a name="preset-schema"></a>预设架构
 
-在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的 "架构" 定义。 你还可以在[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)， [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) （或其他媒体服务 v3 SDK 参考文档）中查看预设定义（如**StandardEncoderPreset**）。
+在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的 "架构" 定义。 你还可以在[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)， [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) （或其他媒体服务 v3 SDK 参考文档）中查看预设定义（如**StandardEncoderPreset**）。
 
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 

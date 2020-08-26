@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516339"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321864"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>跨 Azure Active Directory 租户 Azure Monitor 收集 Azure 活动日志（旧）
 
@@ -124,7 +124,7 @@ ms.locfileid: "86516339"
 
     ![创建逻辑应用](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |设置 | 说明  |
+   |设置 | 描述  |
    |:---|:---|
    | 名称           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
@@ -299,7 +299,7 @@ ms.locfileid: "86516339"
 
     ![配置发送数据操作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |设置        | 值           | 说明  |
+   |设置        | 值           | 描述  |
    |---------------|---------------------------|--------------|
    |JSON 请求正文  | **撰写**操作提供的**输出** | 从“撰写”操作的正文中检索记录。 |
    | 自定义日志名称 | AzureActivity | 在 Log Analytics 工作区中创建的、用于保存导入数据的自定义日志表的名称。 |
@@ -322,7 +322,7 @@ ms.locfileid: "86516339"
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>步骤 5 - 在 Log Analytics 中查看 Azure 活动日志
 最后一步是检查 Log Analytics 工作区，以确保按预期收集数据。
 
-1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
+1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
 2. 在 Log Analytics 工作区列表中选择工作区。
 3.  单击“日志搜索”**** 磁贴并在“日志搜索”窗格上的查询字段中键入 `AzureActivity_CL`，然后按 Enter 或单击查询字段右侧的搜索按钮。 如果未将自定义日志命名为 *AzureActivity*，请键入所选的名称，并在其后面追加 `_CL`。
 
@@ -340,4 +340,5 @@ ms.locfileid: "86516339"
 本文已介绍如何创建一个逻辑应用，用于从事件中心读取 Azure 活动日志并将其发送到 Log Analytics 工作区进行分析。 若要详细了解如何可视化工作区中的数据（包括创建仪表板），请查看有关可视化数据的教程。
 
 > [!div class="nextstepaction"]
-> [有关可视化日志搜索数据的教程](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [有关可视化日志搜索数据的教程](../learn/tutorial-logs-dashboards.md)
+

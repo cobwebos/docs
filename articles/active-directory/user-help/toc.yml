@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: 查看近期的登录活动
       href: my-account-portal-sign-ins-page.md
-- name: 安全信息（预览版）帮助
+    - name: 更改门户设置
+      href: my-account-portal-settings.md
+- name: 安全信息帮助
   items:
     - name: 在登录过程中添加安全信息
       href: security-info-setup-signin.md

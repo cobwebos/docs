@@ -2,19 +2,16 @@
 title: 排查 Azure 自动化 Runbook 问题
 description: 本文介绍如何排查和解决 Azure 自动化 Runbook 的问题。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187177"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904796"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -416,13 +413,13 @@ $job = Start-AzAutomationRunbook -AutomationAccountName $automationAccountName -
 $pollingSeconds = 5
 $maxTimeout = 10800
 $waitTime = 0
-while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
+while($false -eq (IsJobTerminalState $job.Status) -and $waitTime -lt $maxTimeout) {
    Start-Sleep -Seconds $pollingSeconds
    $waitTime += $pollingSeconds
-   $jobResults = $job | Get-AzAutomationJob
+   $job = $job | Get-AzAutomationJob
 }
 
-$jobResults | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
+$job | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
 
 ## <a name="scenario-runbook-fails-because-of-deserialized-object"></a><a name="fails-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
@@ -511,6 +508,24 @@ The quota for the monthly total job run time has been reached for this subscript
 1. 选择“设置”，然后选择“定价”。 
 1. 选择页面底部的“启用”，以将帐户升级到“基本”层。
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>方案： Runbook 输出流大于 1 MB
+
+### <a name="issue"></a>问题
+
+在 Azure 沙盒中运行的 runbook 失败，并出现以下错误：
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>原因
+
+之所以发生此错误，是因为 runbook 试图将过多的异常数据写入输出流。
+
+### <a name="resolution"></a>解决方法
+
+作业输出流的限制为 1 MB。 确保 Runbook 使用 `try` 和 `catch` 块包含对可执行文件或子进程的调用。 如果操作引发异常，请让代码将该异常中的消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。 对于执行的混合 Runbook 辅助角色作业，将显示截断为 1 MB 的输出流，且不显示错误消息。
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>场景：已尝试启动 Runbook 作业三次，但每次都失败
 
 ### <a name="issue"></a>问题
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 此错误是由以下问题之一造成的：
 
 * **内存限制。** 如果作业使用的内存超过 400 MB，则它可能会失败。 [自动化服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)中阐述了分配给沙盒的内存限制。 
+
 * **网络套接字。** Azure 沙盒限制为 1000 个并发网络套接字。 有关详细信息，请参阅[自动化服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。
+
 * **模块不兼容。** 模块依赖关系可能不正确。 在这种情况下，Runbook 通常会返回 `Command not found` 或 `Cannot bind parameter` 消息。
+
 * **未为沙盒设置 Active Directory 身份验证。** Runbook 尝试调用在 Azure 沙盒中运行的可执行文件或子进程。 不支持将 Runbook 配置为使用 Azure Active Directory 身份验证库 (ADAL) 对 Azure AD 进行身份验证。
-* **异常数据太多。** Runbook 尝试向输出流写入太多的异常数据。
 
 ### <a name="resolution"></a>解决方法
 
 * **内存限制，网络套接字。** 若要在内存限制内工作，建议的方法是在多个 Runbook 之间拆分工作负荷，在内存中处理更少的数据，避免从 Runbook 写入不必要的输出，并考虑将多少个检查点写入 PowerShell 工作流 Runbook。 使用 clear 方法（例如 `$myVar.clear`）清除变量并使用 `[GC]::Collect` 立即运行垃圾回收。 这将减少运行时期间 runbook 的内存占用情况。
+
 * **模块不兼容。** 遵循[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)中的步骤更新 Azure 模块。
+
 * **未为沙盒设置 Active Directory 身份验证。** 使用 Runbook 向 Azure AD 进行身份验证时，请确保 Azure AD 模块在自动化帐户中可用。 确保为运行方式帐户授予所需的权限，使其能够执行 Runbook 自动执行的任务。
 
   如果 Runbook 无法调用 Azure 沙盒中运行的可执行文件或子进程，请在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)中使用 Runbook。 混合辅助角色不受内存和网络限制，而 Azure 沙盒则受限于此限制。
-
-* **异常数据太多。** 作业输出流限制为 1-MB。 确保 Runbook 使用 `try` 和 `catch` 块包含对可执行文件或子进程的调用。 如果操作引发异常，请让代码将该异常中的消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>场景：PowerShell 作业失败并出现“无法调用方法”错误消息
 

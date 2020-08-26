@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 33ee8028031bf94d69d11b08c347f84db94494a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 167fa74b04af7c086c2c95b0fdd56e5932483080
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75610414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076203"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>添加入站网络安全组规则
 
@@ -27,7 +27,7 @@ ms.locfileid: "75610414"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell。 
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -46,4 +46,4 @@ ms.locfileid: "75610414"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

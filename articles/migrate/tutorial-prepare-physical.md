@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113245"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420781"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -138,7 +138,7 @@ ms.locfileid: "86113245"
 
 Azure Migrate 需要拥有发现本地服务器的权限。
 
-- **Windows：** 你需要是域管理员，或者是你要发现的所有 Windows 服务器上的本地管理员。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。
+- **Windows：** 需要一个域帐户来发现已加入域的服务器，并需要一个本地帐户来发现未加入域的计算机。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。
 - **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。
 
 ## <a name="prepare-for-physical-server-migration"></a>为物理服务器迁移做准备

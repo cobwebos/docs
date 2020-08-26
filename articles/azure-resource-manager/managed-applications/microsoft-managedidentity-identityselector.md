@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063344"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft.ManagedIdentity.IdentitySelector UI 元素
 
@@ -19,15 +20,15 @@ ms.locfileid: "77087539"
 
 此控件由以下元素组成：
 
-![Microsoft.ManagedIdentity.IdentitySelector 第一步](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Microsoft.ManagedIdentity.IdentitySelector 第一步](./media/managed-application-elements/microsoft-managedidentity-identityselector-1.png)
 
 当用户选择“添加”  时，将打开以下窗体。 用户可以为资源选择一个或多个用户分配的标识。
 
-![Microsoft.ManagedIdentity.IdentitySelector 第二步](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Microsoft.ManagedIdentity.IdentitySelector 第二步](./media/managed-application-elements/microsoft-managedidentity-identityselector-2.png)
 
 所选的标识将显示在表中。 用户可以从此表中添加或删除项。
 
-![Microsoft.ManagedIdentity.IdentitySelector 第三步](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Microsoft.ManagedIdentity.IdentitySelector 第三步](./media/managed-application-elements/microsoft-managedidentity-identityselector-3.png)
 
 ## <a name="schema"></a>架构
 

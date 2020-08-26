@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
-ms.openlocfilehash: ac351e688eba274c989b4b475c6d61607b9ea5c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219289"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529579"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -26,7 +27,7 @@ ms.locfileid: "84219289"
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP HANA 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含详细介绍、比较和指导。
+>若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并详细介绍每个 SAP 连接器的 comparsion 和指南。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -64,7 +65,7 @@ ms.locfileid: "84219289"
 
 SAP HANA 链接的服务支持以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapHana** | 是 |
 | connectionString | 指定使用**基本身份验证**或 **Windows 身份验证**连接到 SAP HANA 时所需的信息。 请参阅以下示例。<br>在连接字符串中，服务器/端口是必需的（默认端口为 30015）。在使用基本身份验证时，用户名和密码是必需的。 有关其他高级设置，请参阅 [SAP HANA ODBC 连接属性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取密码配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -145,7 +146,7 @@ SAP HANA 链接的服务支持以下属性：
 
 支持使用以下属性从 SAP HANA 复制数据：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapHanaTable** | 是 |
 | 架构 | SAP HANA 数据库中架构的名称。 | 否（如果指定了活动源中的“query”） |
@@ -184,7 +185,7 @@ SAP HANA 链接的服务支持以下属性：
 
 若要从 SAP HANA 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SapHanaSource** | 是 |
 | 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |

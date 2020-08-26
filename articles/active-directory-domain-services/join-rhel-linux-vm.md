@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: d43c12681c7230dc4959261ffd6d96f74ea095d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734718"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005083"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 Red Hat Enterprise Linux 虚拟机加入 Azure Active Directory 域服务托管域
 
@@ -116,7 +116,7 @@ sudo yum install adcli sssd authconfig krb5-workstation
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最后，使用命令将计算机加入托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
+1. 最后，使用命令将 VM 加入到托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
@@ -142,7 +142,7 @@ Successfully enrolled machine in realm
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
 
-1. 首先，使用命令联接域 `adcli join` ，此命令还将创建 keytab 对计算机进行身份验证。 使用属于托管域的用户帐户。
+1. 首先，使用命令联接域 `adcli join` ，此命令还会创建 keytab 以对计算机进行身份验证。 使用属于托管域的用户帐户。
 
     ```console
     sudo adcli join aaddscontoso.com -U contosoadmin

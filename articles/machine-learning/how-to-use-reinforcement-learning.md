@@ -5,17 +5,17 @@ description: 了解如何使用 Azure 机器学习强化学习 (预览版) 训�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.custom: tracking-python
-ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203281"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650819"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -34,7 +34,7 @@ ms.locfileid: "86203281"
 > * 提交试验以开始运行
 > * 查看结果
 
-本文基于可在 Azure 机器学习笔记本 [GitHub 存储库](https://aka.ms/azureml-rl-notebooks)中找到的 [RLlib Pong 示例](https://aka.ms/azureml-rl-pong)。
+本文基于可在 Azure 机器学习笔记本 [GitHub 存储库](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)中找到的 [RLlib Pong 示例](https://aka.ms/azureml-rl-pong)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -168,6 +168,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(head_compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="worker-computing-cluster"></a>工作器节点计算群集
 
@@ -431,4 +433,4 @@ run.wait_for_completion()
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已了解如何使用 IMPALA 学习代理来训练强化学习代理。 若要查看更多示例，请转到 [Azure 机器学习强化学习 GitHub 存储库](https://aka.ms/azureml-rl-notebooks)。
+在本文中，你已了解如何使用 IMPALA 学习代理来训练强化学习代理。 若要查看更多示例，请转到 [Azure 机器学习强化学习 GitHub 存储库](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)。

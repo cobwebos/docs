@@ -5,17 +5,18 @@ description: 了解如何更改工作区使用的 Azure 存储帐户的访问密
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483306"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387058"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +26,7 @@ ms.locfileid: "85483306"
 出于安全考虑，你可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时，必须更新 Azure 机器学习以使用新密钥。 Azure 机器学习可以将存储帐户同时用作模型存储和数据存储。
 
 > [!IMPORTANT]
-> Registred with 数据存储的凭据保存在与工作区关联的 Azure Key Vault 中。 如果为 Key Vault 启用[软删除](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)，请确保按照本文中的步骤更新凭据。 取消注册数据存储区并将其在同一名称中重新注册将失败。
+> 注册到数据存储的凭据会保存在与工作区关联的 Azure Key Vault 库中。 如果已为 Key Vault 启用了[软删除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)，请务必按照本文中的步骤更新凭据。 取消注册数据存储并使用相同的名称重新注册将失败。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +89,7 @@ for name, ds in datastores.items():
 
 1. 重新生成密钥。 有关重新生成访问密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。 保存新密钥。
 
-1. Azure 机器学习工作区将自动同步新密钥并在一小时后开始使用。 若要强制工作区立即同步到新密钥，请执行以下步骤：
+1. Azure 机器学习工作区会自动同步新密钥并在一小时后开始使用该密钥。 若要强制工作区立即同步到新密钥，请执行以下步骤：
 
     1. 使用以下 Azure CLI 命令登录到包含你的工作区的 Azure 订阅：
 

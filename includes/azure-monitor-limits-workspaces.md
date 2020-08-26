@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 864b37c9e59786546ad2c29faf8457cfc3a21f6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226121"
 ---
 **数据收集量和保留期** 
 
@@ -30,55 +30,61 @@ ms.locfileid: "82161154"
 
 | 定价层    | 工作区限制 | 注释
 |:---|:---|:---|
-| 免费层  | 10 | 此限制不能提高。 |
+| 免费层  | 10 个 | 此限制不能提高。 |
 | 其他所有层 | 无限制 | 你会受到资源组中的资源数以及每个订阅的资源组数的限制。 |
 
 **Azure 门户**
 
-| 类别 | 限制 | 注释 |
+| Category | 限制 | 注释 |
 |:---|:---|:---|
 | 日志查询返回的最大记录数 | 10,000 | 在查询中使用查询作用域、时间范围和筛选器来减少结果。 |
 
 
 **数据收集器 API**
 
-| 类别 | 限制 | 注释 |
+| Category | 限制 | 注释 |
 |:---|:---|:---|
 | 单个发布内容的最大大小 | 30 MB | 将较大的卷拆分为多个发布内容。 |
 | 字段值的最大大小  | 32 KB | 超过 32 KB 的字段会被截断。 |
 
 **搜索 API**
 
-| 类别 | 限制 | 注释 |
+| Category | 限制 | 注释 |
 |:---|:---|:---|
 | 单个查询中返回的最大记录数 | 500,000 | |
 | 返回的数据的最大大小 | 64,000,000 字节 (~61 MiB)| |
 | 最长查询运行时间 | 10 分钟 | 有关详细信息，请参阅[超时](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)。  |
-| 最大请求速率 | 每个 AAD 用户或客户端 IP 地址每 30 秒发出 200 个请求 | 有关详细信息，请参阅[速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)。 |
+| 最大请求速率 | 每个 Azure AD 用户或客户端 IP 地址每 30 秒 200 个请求 | 有关详细信息，请参阅[速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)。 |
 
 **常规工作区限制**
 
-| 类别 | 限制 | 注释 |
+| Category | 限制 | 注释 |
 |:---|:---|:---|
 | 表中的最大列数         | 500 | |
 | 列名称的最大字符数 | 500 | |
 | 数据导出 | 当前不可用 | 使用 Azure 函数或逻辑应用聚合和导出数据。 | 
 
-**数据引入量速率**
+**<a name="data-ingestion-volume-rate">数据引入速率</a>**
 
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 引入量速率限制旨在保护 Azure Monitor 客户免受多租户环境中突然出现的引入高峰的影响。 默认的引入量速率阈值为 500 M（压缩量），适用于工作区，大约等于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 此阈值适用于所有引入的数据，无论是使用[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)、[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 还是代理从 Azure 发送都适用。
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 使用[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)从 Azure 资源发送的数据的默认引入量限制约为每个工作区**6 GB/分钟**。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 发送的数据。
+如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率继续超过阈值，或者预计很快会达到阈值，你可打开支持请求，请求在工作区中调高阈值。 
 
-如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过向 LAIngestionRate@microsoft.com 发送电子邮件或提交支持请求来请求增加工作区。
- 
-若要在工作区中收到此类事件的通知，请根据大于零的结果数，使用以下具有警报逻辑的查询创建[日志警报规则](../articles/azure-monitor/platform/alerts-log.md)。
+若要就工作区中的此类事件收到通知，请使用警报逻辑通过以下查询创建一条[日志警报规则](../articles/azure-monitor/platform/alerts-log.md)，其中该逻辑依据的是结果数大于 0、评估时段为 5 分钟且频率为 5 分钟。
 
-``` Kusto
+引入量速率达到阈值的 80%：
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
 
+引入量速率达到阈值：
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 >[!NOTE]
 >根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)。 

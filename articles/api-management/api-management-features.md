@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理层的基于功能的比较 | Microsoft Docs
-description: 本文根据各个 API 管理层提供的功能对这些层进行了比较。
+description: 基于其提供的功能比较 API 管理层。 查看概述每个定价层中可用的主要功能的表。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203162"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905136"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
@@ -26,12 +26,12 @@ ms.locfileid: "82203162"
 > [!IMPORTANT]
 > 请注意，开发人员层适用于非生产用例和评估。 它不提供 SLA。
 
-| 功能                                                                                      | 消耗 | 开发人员 | 基本 | 标准 | 高级 |
+| 功能                                                                                      | 消耗 | 开发人员 | 基本 | Standard | 高级 |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 集成<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虚拟网络 (VNet) 支持                                                               | 否          | 是       | 否    | 否       | 是     |
 | 多区域部署                                                                      | 否          | 否        | 否    | 否       | 是     |
-| 多个自定义域名                                                                 | 否          | 否        | 否    | 否       | 是     |
+| 多个自定义域名                                                                 | 否          | 是        | 否    | 否       | 是     |
 | 开发人员门户<sup>2</sup>                                                                 | 否          | 是       | 是   | 是      | 是     |
 | 内置缓存                                                                               | 否          | 是       | 是   | 是      | 是     |
 | 内置分析                                                                           | 否          | 是       | 是   | 是      | 是     |
@@ -42,7 +42,7 @@ ms.locfileid: "82203162"
 | [备份和还原](api-management-howto-disaster-recovery-backup-restore.md)               | 否          | 是       | 是   | 是      | 是     |
 | [基于 Git 的管理](api-management-configuration-repository-git.md)                        | 否          | 是       | 是   | 是      | 是     |
 | 直接管理 API                                                                        | 否          | 是       | 是   | 是      | 是     |
-| Azure Monitor 日志和指标                                                               | 否          | 是       | 是   | 是      | 是     |
+| Azure Monitor 日志和指标                                                               | 是         | 是       | 是   | 是      | 是     |
 | 静态 IP                                                                                    | 否          | 是       | 是   | 是      | 是     |
 
 <sup>1</sup> 允许使用 Azure AD（和 Azure AD B2C）作为标识提供者，以用于开发人员门户上的用户登录。<br/>

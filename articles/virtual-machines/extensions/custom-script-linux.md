@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux Vm 上运行自定义脚本
+title: 在 Azure 中的 Linux Vm 上运行自定义脚本扩展
 description: 使用自定义脚本扩展 v2 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085718"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -38,14 +38,14 @@ ms.locfileid: "82594723"
 
 ### <a name="operating-system"></a>操作系统
 
-适用于 Linux 的自定义脚本扩展将在扩展支持的扩展 OS 上运行，有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。
+适用于 Linux 的自定义脚本扩展将在扩展支持的扩展 OS 上运行，有关详细信息，请参阅[此文](../linux/endorsed-distros.md)。
 
 ### <a name="script-location"></a>脚本位置
 
 可使用扩展，利用 Azure Blob 存储凭据来访问 Azure Blob 存储。 或者，脚本位置可以是任何位置，只要 VM 可以路由到该终结点（如 GitHub、内部文件服务器等）即可。
 
 ### <a name="internet-connectivity"></a>Internet 连接
-如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
+如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙/网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用[存储](../../virtual-network/security-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙/网络安全组端口。
 
@@ -56,10 +56,11 @@ ms.locfileid: "82594723"
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 请勿将 reboot 置于脚本中，这会导致正在安装的其他扩展出现问题，并且在重启后，该扩展将不会继续。 
 * 如果脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Cron 作业或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
-* 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 SystemD 服务单元。
+* 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 SystemD 服务单元。
+* 只能向 VM 应用一个扩展版本。 若要运行另一个自定义脚本，需要删除自定义脚本扩展，并使用更新的脚本再次重新应用该扩展。 
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl  。 
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 *  将自定义脚本部署到生产 VMSS 实例时，建议通过 json 模板进行部署，并将脚本存储帐户存储在你可以控制 SAS 令牌的位置。 
 
@@ -117,12 +118,12 @@ ms.locfileid: "82594723"
 | type | CustomScript | string |
 | typeHandlerVersion | 2.1 | int |
 | fileUris（例如） | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute（例如） | python MyPythonScript.py\<my-param1> | string |
+| commandToExecute（例如） | python MyPythonScript.py \<my-param1> | string |
 | 脚本 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix（示例） | false | boolean |
 | timestamp（示例） | 123456789 | 32-bit integer |
 | storageAccountName（例如） | examplestorageacct | string |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 | managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |
 
 ### <a name="property-value-details"></a>属性值详细信息
@@ -134,7 +135,7 @@ ms.locfileid: "82594723"
 * `fileUris`：（可选，字符串数组）要下载的文件的 URL。
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
-* `managedIdentity`：（可选，json 对象）用于下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`：（可选，json 对象）用于下载文件的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`：（可选，字符串）托管标识的客户端 ID
   * `objectId`：（可选，字符串）托管标识的对象 ID
 
@@ -150,7 +151,7 @@ ms.locfileid: "82594723"
 
 #### <a name="property-skipdos2unix"></a>属性：skipDos2Unix
 
-默认值为 false，这意味着执行 dos2unix 转换。 
+默认值为 false，这意味着执行 dos2unix 转换。
 
 旧版 CustomScript (Microsoft.OSTCExtensions.CustomScriptForLinux) 会将 `\r\n` 转换为 `\n`，从而将 DOS 文件自动转换为 UNIX 文件。 此转换仍然存在，并且默认为启用状态。 此转换适用于从 fileUris 下载的所有文件或基于任何下述标准的脚本设置。
 
@@ -204,17 +205,17 @@ CustomScript 使用以下算法来执行脚本。
 
  1. 断言脚本值的长度不得超过 256 KB。
  1. base64 对脚本的值进行解码
- 1.  尝试对 base64 解码的值执行 gunzip 操作
+ 1. 尝试对 base64 解码的值执行 gunzip 操作
  1. 将解码（以及可以选择进行解压缩）的值写入磁盘 (/var/lib/waagent/custom-script/#/script.sh)
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 执行脚本。
 
 ####  <a name="property-managedidentity"></a>属性：managedIdentity
 > [!NOTE]
->  只应在受保护的设置中指定此属性。
+> 只应在受保护的设置中指定此属性。
 
-CustomScript（2.1 版及更高版本）支持使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)从“fileUris”设置中提供的 URL 下载文件。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
+CustomScript（2.1 版及更高版本）支持使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)从“fileUris”设置中提供的 URL 下载文件。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 
-若要使用此功能，用户必须将[系统分配的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用此功能，用户必须将[系统分配的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)。
 
 若要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 json 对象。 
 

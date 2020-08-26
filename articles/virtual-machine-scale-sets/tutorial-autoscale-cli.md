@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 3f51c4e50c3c5499c73e18ce40e55de6aeb54472
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: cdad018de9f7683d68f1b6d3b63c722134b2bc80
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700891"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783767"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 自动缩放虚拟机规模集
 
@@ -126,6 +126,7 @@ ssh azureuser@13.92.224.66 -p 50001
 登录后，安装 **stress** 实用工具。 启动 10 个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
 
 ```console
+sudo apt-get update
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -201,7 +202,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除规模集和其他资源，请使用 [az group delete](/cli/azure/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+若要删除规模集和其他资源，请使用 [az group delete](/cli/azure/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

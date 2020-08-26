@@ -1,27 +1,22 @@
 ---
 title: 排查 Windows 虚拟桌面服务连接问题 - Azure
 description: 如何解决在 Windows 虚拟桌面租户环境中设置客户端连接时遇到的问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208887"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009369"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
 
 使用本文解决 Windows 虚拟桌面客户端连接问题。
 
@@ -43,7 +38,7 @@ ms.locfileid: "85208887"
 
 3. 如果正在使用 Web 客户端，请确认没有缓存的凭据问题。
 
-4. 如果用户是 Azure Active Directory （AD）用户组的一部分，请确保该用户组是安全组而不是通讯组。 Windows 虚拟桌面不支持 Azure AD 通讯组。
+4. 如果用户是 Azure Active Directory (AD) 用户组的一部分，请确保该用户组是安全组，而不是通讯组。 Windows 虚拟桌面不支持 Azure AD 通讯组。
 
 ## <a name="next-steps"></a>后续步骤
 

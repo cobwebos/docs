@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983299"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798374"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>更改双重验证方法和设置
 
@@ -31,10 +31,10 @@ ms.locfileid: "85983299"
 
 ## <a name="using-the-additional-security-verification-page"></a>使用其他安全性验证页
 
-如果你的组织提供了有关如何启用和管理双重验证的特定步骤，你应该首先遵循这些说明。 否则，你可以在[其他安全性验证](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time)页访问你的安全验证方法设置。
+如果你的组织提供了有关如何启用和管理双重验证的特定步骤，你应该首先遵循这些说明。 否则，你可以在[其他安全性验证](./multi-factor-authentication-end-user-first-time.md)页访问你的安全验证方法设置。
 
 >[!Note]
->如果屏幕上显示的内容与本文所述不符，则意味着管理员已启用“我的个人资料”（预览版）体验或者你的组织提供了你的自定义门户。 如需有关新安全信息体验的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。 若要详细了解组织的自定义门户，必须与组织的技术支持部门联系。
+>如果屏幕上显示的内容与本文所述不符，则意味着管理员已启用“我的个人资料”（预览版）体验或者你的组织提供了你的自定义门户。 如需有关新安全信息体验的详细信息，请参阅[安全信息（预览版）概述](./security-info-setup-signin.md)。 若要详细了解组织的自定义门户，必须与组织的技术支持部门联系。
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>转到“其他安全验证”页
 
@@ -88,7 +88,7 @@ ms.locfileid: "85983299"
 
 1. 在“其他安全验证”页的“你希望如何响应?”部分 ，更新“身份验证电话”（你的主要移动设备）和“办公电话”的电话号码信息 。
 
-1. 选中 "**备用身份验证电话**" 选项旁边的框，然后键入一个辅助电话号码，如果无法访问主要设备，则可以在该号码接收电话呼叫。
+1. 选中 " **备用身份验证电话** " 选项旁边的框，然后键入一个辅助电话号码，如果无法访问主要设备，则可以在该号码接收电话呼叫。
 
 1. 选择“保存”。
 

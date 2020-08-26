@@ -1,7 +1,7 @@
 ---
 title: 透明数据加密
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
-description: 概述 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的透明数据加密。 本文档介绍服务托管的透明数据加密和“创建自己的密钥”的优势与配置选项。
+description: Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的透明数据加密概述。 本文档介绍服务托管的透明数据加密和“创建自己的密钥”的优势与配置选项。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,27 +12,27 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986956"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836677"
 ---
-# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>针对 SQL Database、SQL 托管实例和 Azure Synapse Analytics 的透明数据加密
+# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[透明数据加密（TDE）](/sql/relational-databases/security/encryption/transparent-data-encryption)可帮助保护 Azure sql 数据库、azure sql 托管实例和 Azure Synapse 分析，防止静态静态数据的恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 默认情况下，将为所有新部署的 SQL 数据库启用 TDE，并且必须为 Azure SQL 数据库、Azure SQL 托管实例的旧数据库手动启用该功能。 必须为 Azure Synapse Analytics 手动启用 TDE。
+[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 通过加密静态数据，帮助保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 对于所有新部署的 SQL 数据库，默认已启用 TDE；对于 Azure SQL 数据库、Azure SQL 托管实例的旧版数据库，需要手动启用 TDE。 对于 Azure Synapse Analytics，需要手动启用 TDE。
 
 TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 TDE 使用称为数据库加密密钥 (DEK) 的对称密钥加密整个数据库的存储。 在数据库启动时，加密的 DEK 将被解密，然后用于解密和重新加密 SQL Server 数据库引擎进程中的数据库文件。 DEK 由 TDE 保护器保护。 TDE 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) 中的非对称密钥（客户管理的透明数据加密）。
 
-对于 Azure SQL 数据库和 Azure Synapse，TDE 保护程序在[服务器](logical-servers.md)级别设置，并由与该服务器关联的所有数据库继承。 对于 Azure SQL 托管实例（预览版 BYOK 功能），TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是服务器和实例  。
+对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在[服务器](logical-servers.md)级别设置，并由该服务器关联的所有数据库继承。 对于 Azure SQL 托管实例，TDE 保护器在实例级别设置，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是服务器和实例。
 
 > [!IMPORTANT]
-> 默认情况下，使用服务托管的透明数据加密对 SQL 数据库中的所有新创建的数据库进行加密。 默认情况下，2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。 默认情况下，不会加密在2019年2月之前创建的现有 SQL 托管实例数据库。 通过还原创建的 SQL 托管实例数据库从源继承加密状态。
+> 默认情况下，将使用服务托管的透明数据加密对 SQL 数据库中所有新建的数据库进行加密。 默认情况下，2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。 默认情况下，2019 年 2 月之前创建的现有 SQL 托管实例数据库不加密。 通过源提供的还原继承加密状态创建的 SQL 托管实例数据库。
 
 > [!NOTE]
-> TDE 不能用于加密 SQL 数据库中的**master**数据库。  **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。
+> 不能使用 TDE 来加密 SQL 数据库中的 master 数据库。  **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。
 
 ## <a name="service-managed-transparent-data-encryption"></a>服务托管的透明数据加密
 
@@ -42,7 +42,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>客户管理的透明数据加密 - 创建自己的密钥
 
-客户管理的 TDE 也称为 TDE 的“创建自己的密钥”(BYOK) 支持。 在此方案中，用于加密 DEK 的 TDE 保护器是客户管理的非对称密钥，该密钥存储在客户自有且自行管理的 Azure Key Vault（Azure 的基于云的外部密钥管理系统）中，并且永远不会离开该密钥保管库。 TDE 保护[程序可由密钥保管库生成，或者](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)从本地硬件安全模块（HSM）设备传输到密钥保管库。 需要授予 SQL 数据库、SQL 托管实例和 Azure Synapse 对客户拥有的密钥保管库的权限，以对 DEK 进行解密和加密。 如果吊销了到密钥保管库的服务器的权限，则数据库将无法访问，并对所有数据进行加密
+客户管理的 TDE 也称为 TDE 的“创建自己的密钥”(BYOK) 支持。 在此方案中，用于加密 DEK 的 TDE 保护器是客户管理的非对称密钥，该密钥存储在客户自有且自行管理的 Azure Key Vault（Azure 的基于云的外部密钥管理系统）中，并且永远不会离开该密钥保管库。 TDE 保护[程序可由密钥保管库生成，或者](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)从本地硬件安全模块 (HSM) 设备传输到密钥保管库。 需要向 SQL 数据库、SQL 托管实例和 Azure Synapse 授予对客户管理的密钥保管库的权限才能对 DEK 进行解密和加密。 如果吊销了到密钥保管库的服务器的权限，则数据库将无法访问，并对所有数据进行加密
 
 使用集成了 Azure Key Vault 的 TDE，用户可以控制密钥管理任务，包括密钥轮换、密钥保管库权限、密钥备份，以及使用 Azure Key Vault 功能对所有 TDE 保护器启用审核/报告。 Key Vault 提供了中心密钥管理，利用了严格监视的 Hsm，并允许在密钥和数据的管理之间分离职责，以帮助满足安全策略的符合性。
 若要详细了解 Azure SQL 数据库和 Azure Synapse 的 BYOK，请参阅[透明数据加密与 Azure Key Vault 的集成](transparent-data-encryption-byok-overview.md)。
@@ -61,13 +61,13 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 - 将备份文件还原到 Azure SQL 托管实例
 
 > [!IMPORTANT]
-> Azure SQL 托管实例不支持对由服务托管的 TDE 加密的数据库进行手动复制备份，因为用于加密的证书不可访问。 使用时间点还原功能将此类型的数据库移到另一个 SQL 托管实例或切换到客户管理的密钥。
+> 由于无法访问用于加密的证书，因此不支持在 Azure SQL 托管实例中对由服务托管的 TDE 加密的数据库手动执行仅复制备份。 使用时间点还原功能将此类型的数据库移到另一个 SQL 托管实例或切换到客户托管的密钥。
 
 在导出受 TDE 保护的数据库时，该数据库的导出内容不会加密。 此导出内容存储在未加密的 BACPAC 文件中。 完成新数据库的导入后，请务必适当保护 BACPAC 文件并启用 TDE。
 
-例如，如果从 SQL Server 实例导出 BACPAC 文件，则不会自动加密新数据库的导入内容。 同样，如果将 BACPAC 文件导入到 SQL Server 实例，则不会自动加密新数据库。
+例如，如果从 SQL Server 实例导出 BACPAC 文件，则新数据库的导入内容不会自动加密。 同样，如果将 BACPAC 文件导出到 SQL Server 实例，则新数据库也不会自动加密。
 
-一个例外是在将数据库与 SQL 数据库一起导出时。 在新数据库上启用了 TDE，但 BACPAC 文件本身仍未加密。
+向/从 SQL 数据库导出数据库时例外。 在新数据库中启用了 TDE，但 BACPAC 文件本身仍未加密。
 
 ## <a name="manage-transparent-data-encryption"></a>管理透明数据加密
 
@@ -77,11 +77,11 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 若要通过 Azure 门户配置 TDE，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份建立连接。
 
-在数据库级别启用和禁用 TDE。 对于 Azure SQL 托管实例使用 Transact-sql （T-sql）为数据库打开和关闭 TDE。 对于 Azure SQL 数据库和 Azure Synapse，你可以在通过 Azure 管理员或参与者帐户登录后，在[Azure 门户](https://portal.azure.com)中为数据库管理 TDE。 在用户数据库下查找 TDE 设置。 默认会使用服务托管的透明数据加密。 将为包含数据库的服务器自动生成 TDE 证书。
+在数据库级别启用和禁用 TDE。 对于 Azure SQL 托管实例，请使用 Transact-SQL (T-SQL) 对数据库启用和禁用 TDE。 对于 Azure SQL 数据库和 Azure Synapse，可在使用 Azure 管理员或参与者帐户登录后，在 [Azure 门户网站](https://portal.azure.com)中管理数据库的 TDE。 在用户数据库下查找 TDE 设置。 默认会使用服务托管的透明数据加密。 将为包含数据库的服务器自动生成 TDE 证书。
 
 ![服务托管的透明数据加密](./media/transparent-data-encryption-tde-overview/service-managed-transparent-data-encryption.png)  
 
-在服务器或实例级别设置 TDE 主密钥（称为 TDE 保护程序）。 若要使用支持 BYOK 的 TDE，并使用 Key Vault 中的密钥来保护数据库，请在你的服务器下打开 TDE 设置。
+在服务器级别或实例级别设置 TDE 主密钥（称为 TDE 保护器）。 若要使用支持 BYOK 的 TDE，并使用 Key Vault 中的密钥来保护数据库，请在你的服务器下打开 TDE 设置。
 
 ![支持“创建自己的密钥”的透明数据加密](./media/transparent-data-encryption-tde-overview/tde-byok-support.png)
 
@@ -91,7 +91,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受支持，但所有将来的开发都适用于 Az .Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> 仍然支持 PowerShell Azure 资源管理器模块，但是所有未来的开发都是针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 若要通过 PowerShell 配置 TDE，用户必须作为 Azure 所有者、参与者或 SQL 安全管理员进行连接。
 
@@ -104,11 +104,11 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |为数据库启用或禁用透明数据加密。|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |获取数据库的透明数据加密状态。 |
 | [Get-AzSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) |检查数据库的加密进度。 |
-| [Add-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/add-azsqlserverkeyvaultkey) |将 Key Vault 项添加到服务器。 |
+| [Add-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/add-azsqlserverkeyvaultkey) |将 Key Vault 密钥添加到服务器。 |
 | [Get-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverkeyvaultkey) |获取服务器的 Key Vault 密钥  |
-| [Set-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) |为服务器设置透明数据加密保护程序。 |
+| [Set-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) |为服务器设置透明数据加密保护器。 |
 | [Get-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) |获取透明数据加密保护器 |
-| [Remove-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) |从服务器中删除 Key Vault 密钥。 |
+| [Remove-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) |将 Key Vault 密钥从服务器删除。 |
 |  | |
 
 > [!IMPORTANT]
@@ -120,7 +120,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 使用 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名连接到数据库。
 
-| Command | 说明 |
+| 命令 | 说明 |
 | --- | --- |
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 会加密或解密数据库 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |返回有关数据库的加密状态及其关联的数据库加密密钥的信息 |
@@ -138,14 +138,14 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 | 命令 | 说明 |
 | --- | --- |
-|[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|将 Azure Active Directory 标识添加到服务器。 （用于授予对 Key Vault 的访问权限）|
-|[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|将 Key Vault 项添加到服务器。|
-|[删除服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|从服务器中删除 Key Vault 密钥。 |
-|[获取服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|从服务器获取特定 Key Vault 键。|
-|[按服务器列出服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|获取服务器的 Key Vault 键。 |
-|[创建或更新加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|为服务器设置 TDE 保护程序。|
-|[获取加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|获取服务器的 TDE 保护程序。|
-|[按服务器列出加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|获取服务器的 TDE 保护程序。 |
+|[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|向服务器添加 Azure Active Directory 标识。 （用于授予对 Key Vault 的访问权限）|
+|[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|将 Key Vault 密钥添加到服务器。|
+|[删除服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|将 Key Vault 密钥从服务器删除。 |
+|[获取服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|从服务器获取特定的 Key Vault 密钥。|
+|[按服务器列出服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|获取服务器的 Key Vault 密钥。 |
+|[创建或更新加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|为服务器设置 TDE 保护器。|
+|[获取加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|获取服务器的 TDE 保护器。|
+|[按服务器列出加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|获取服务器的 TDE 保护器。 |
 |[创建或更新透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|启用或禁用数据库的 TDE。|
 |[获取透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|获取数据库的 TDE 配置。|
 |[列出透明数据加密配置结果](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|获取数据库的加密结果。|

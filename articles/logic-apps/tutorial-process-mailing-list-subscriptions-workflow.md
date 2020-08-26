@@ -3,16 +3,16 @@ title: 生成基于审批的自动化工作流
 description: 教程 - 使用 Azure 逻辑应用来创建基于审批的自动化工作流，以便处理邮件列表订阅
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456615"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132392"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于审批的工作流
 
@@ -21,6 +21,7 @@ ms.locfileid: "75456615"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建空白逻辑应用。
 > * 添加一个触发器，用于监视电子邮件中的订阅请求。
 > * 添加一项操作，用于发送批准或拒绝这些请求的电子邮件。
@@ -41,36 +42,34 @@ ms.locfileid: "75456615"
 
 * Office 365 Outlook 或 Outlook.com 中的电子邮件帐户，支持审批工作流。 本文使用 Office 365 Outlook。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 显示可能稍有不同。
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
-
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
+1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。
 
    ![创建新的逻辑应用资源](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
-1. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。  完成操作后，选择“创建”  。
+1. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。 完成操作后，选择“创建”。
 
    ![提供有关逻辑应用的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | properties | 值 | 说明 |
+   | 属性 | 值 | 描述 |
    |----------|-------|-------------|
-   | **名称** | LA-MailingList | 逻辑应用的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“LA-MailingList”。 |
+   | **Name** | LA-MailingList | 逻辑应用的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“LA-MailingList”。 |
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅名称 |
    | **资源组** | LA-MailingList-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“LA-MailingList-RG”。 |
    | **位置** | 美国西部 | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
-   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
+   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。 |
    ||||
 
-1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知”   > “转到资源”  ，查看你部署的逻辑应用。
+1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知” > “转到资源”，查看你部署的逻辑应用。
 
    ![转到新的逻辑应用资源](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
    或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
 
-   逻辑应用设计器打开并显示一个包含简介视频以及常用触发器和逻辑应用模式的页面。   在“模板”下选择“空白逻辑应用”。
+   逻辑应用设计器打开并显示一个包含简介视频以及常用触发器和逻辑应用模式的页面。 在“模板”下选择“空白逻辑应用”。
 
    ![选择空白逻辑应用模板](./media/tutorial-process-mailing-list-subscriptions-workflow/select-logic-app-template.png)
 
@@ -78,7 +77,7 @@ ms.locfileid: "75456615"
 
 ## <a name="add-trigger-to-monitor-emails"></a>添加用于监视电子邮件的触发器
 
-1. 在逻辑应用设计器上的搜索框中，输入 `when email arrives` 作为筛选器。 从“触发器”列表中，为电子邮件提供商选择“收到新电子邮件时”触发器。  
+1. 在逻辑应用设计器上的搜索框中，输入 `when email arrives` 作为筛选器。 从“触发器”列表中，为电子邮件提供商选择“收到新电子邮件时”触发器。 
 
    此示例使用 Office 365 Outlook 触发器：
 
@@ -95,18 +94,18 @@ ms.locfileid: "75456615"
 
       ![指定用于检查邮件的文件夹、时间间隔和频率](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | properties | 值 | 说明 |
+      | 属性 | 值 | 说明 |
       |----------|-------|-------------|
       | **文件夹** | `Inbox` | 要监视的电子邮件文件夹 |
-      | 间隔  | `1` | 在两次检查之间需等待的时间间隔数 |
+      | 间隔 | `1` | 在两次检查之间需等待的时间间隔数 |
       | **频率** | `Hour` | 用于定期触发的时间单位 |
       ||||
 
-   1. 现在，为触发器添加另一属性，这样就可以在电子邮件主题行中进行筛选。 打开“添加新参数”列表，选择“主题筛选器”属性。  
+   1. 现在，为触发器添加另一属性，这样就可以在电子邮件主题行中进行筛选。 打开“添加新参数”列表，选择“主题筛选器”属性。 
 
       ![将“主题筛选器”属性添加到触发器](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
-      有关此触发器的属性的详细信息，请参阅 [Office 365 Outlook 连接器参考](https://docs.microsoft.com/connectors/office365/)或 [Outlook.com 连接器参考](https://docs.microsoft.com/connectors/outlook/)。
+      有关此触发器的属性的详细信息，请参阅 [Office 365 Outlook 连接器参考](/connectors/office365/)或 [Outlook.com 连接器参考](/connectors/outlook/)。
 
    1. 当属性显示在触发器中以后，请输入此文本：`subscribe-test-members-ML`
 
@@ -116,7 +115,7 @@ ms.locfileid: "75456615"
 
    ![折叠形状即可隐藏详细信息](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 逻辑应用现已生成，但除了检查传入电子邮件，不能执行任何操作。 因此，请添加一项在触发器触发时进行响应的操作。
 
@@ -124,9 +123,9 @@ ms.locfileid: "75456615"
 
 有了触发器以后，即可添加一项[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)，以便发送批准或拒绝请求的电子邮件。
 
-1. 在触发器下，选择“新建步骤”。  
+1. 在触发器下，选择“新建步骤”。 
 
-1. 在“选择操作”  下的搜索框中，输入 `approval` 作为筛选器。 从操作列表中，为电子邮件提供商选择“发送审批电子邮件”操作。  
+1. 在“选择操作”下的搜索框中，输入 `approval` 作为筛选器。 从操作列表中，为电子邮件提供商选择“发送审批电子邮件”操作。 
 
    此示例使用 Office 365 Outlook 操作：
 
@@ -136,7 +135,7 @@ ms.locfileid: "75456615"
 
    ![“发送审批电子邮件”操作的属性](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | properties | 值 | 说明 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **收件人** | <*your-email-address*> | 审批者的电子邮件地址。 可以使用自己的地址进行测试。 此示例使用虚构的“sophia.owen@fabrikam.com”电子邮件地址。 |
    | **主题** | `Approve member request for test-members-ML` | 一个描述性的电子邮件主题 |
@@ -145,7 +144,7 @@ ms.locfileid: "75456615"
 
    现在，请忽略在单击特定编辑框时会显示的动态内容列表。 可以通过此列表选择以前的操作提供的可用输出，这些输出可以在工作流中用作输入。
 
-   有关此操作的属性的详细信息，请参阅 [Office 365 Outlook 连接器参考](https://docs.microsoft.com/connectors/office365/)或 [Outlook.com 连接器参考](https://docs.microsoft.com/connectors/outlook/)。
+   有关此操作的属性的详细信息，请参阅 [Office 365 Outlook 连接器参考](/connectors/office365/)或 [Outlook.com 连接器参考](/connectors/outlook/)。
  
 1. 保存逻辑应用。
 
@@ -153,31 +152,31 @@ ms.locfileid: "75456615"
 
 ## <a name="check-approval-response"></a>检查审批响应
 
-1. 在“发送审批电子邮件”操作下，选择“新建步骤”。  
+1. 在“发送审批电子邮件”操作下，选择“新建步骤”。 
 
-1. 在“选择操作”下，选择“内置”。   在搜索框中，输入 `condition` 作为筛选器。 从操作列表中选择“条件”操作。 
+1. 在“选择操作”下，选择“内置”。 在搜索框中，输入 `condition` 作为筛选器。 从操作列表中选择“条件”操作。
 
    ![查找并选择“条件”操作](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
 1. 重命名此条件，并提供更好的说明。
 
-   1. 在条件的标题栏中，选择**省略号** ( **...** ) 按钮 >“重命名”。 
+   1. 在条件的标题栏中，选择**省略号** ( **...** ) 按钮 >“重命名”。
 
       ![重命名条件的说明](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
    1. 重命名条件并提供以下说明：`If request approved`
 
-1. 生成一个条件，用于检查审批者是否选择了“批准”。 
+1. 生成一个条件，用于检查审批者是否选择了“批准”。
 
-   1. 在条件中，单击条件左侧的“选择值”框。 
+   1. 在条件中，单击条件左侧的“选择值”框。
 
-   1. 从显示的动态内容列表中的“发送审批电子邮件”下选择 **SelectedOption** 属性。 
+   1. 从显示的动态内容列表中的“发送审批电子邮件”下选择 **SelectedOption** 属性。
 
       ![从动态内容列表中，选择“SelectedOption”](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
-   1. 在中间的比较框中，选择“等于”  运算符。
+   1. 在中间的比较框中，选择“等于”运算符。
 
-   1. 在条件右侧的“选择值”框中输入此文本：`Approve` 
+   1. 在条件右侧的“选择值”框中输入此文本：`Approve`
 
       完成后，条件如以下示例所示：
 
@@ -191,9 +190,9 @@ ms.locfileid: "75456615"
 
 现在请添加一项操作，用于将批准的成员添加到邮件列表。
 
-1. 在条件的 **If true** 分支中，选择“添加操作”。 
+1. 在条件的 **If true** 分支中，选择“添加操作”。
 
-1. 在“选择操作”  下，输入 `mailchimp` 作为筛选器，然后选择“将成员添加到列表”操作。 
+1. 在“选择操作”下，输入 `mailchimp` 作为筛选器，然后选择“将成员添加到列表”操作。
 
    ![选择“将成员添加到列表”操作](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -203,14 +202,14 @@ ms.locfileid: "75456615"
 
    ![为“将成员添加到列表”提供信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **列表 ID** | 是 | `test-members-ML` | MailChimp 邮件列表的名称。 此示例使用“test-members-ML”。 |
    | **Status** | 是 | `subscribed` | 选择新成员的订阅状态。 本示例使用“subscribed”。 <p>有关详细信息，请参阅 [Manage subscribers with the MailChimp API](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/)（使用 MailChimp API 管理订户）。 |
-   | **电子邮件地址** | 是 | <*new-member-email-address*> | 在动态内容列表的“收到新电子邮件时”下选择“发件人”，以便传入新成员的电子邮件地址。   |
+   | **电子邮件地址** | 是 | <*new-member-email-address*> | 在动态内容列表的“收到新电子邮件时”下选择“发件人”，以便传入新成员的电子邮件地址。  |
    ||||
 
-   有关此操作的属性的详细信息，请参阅 [MailChimp 连接器参考](https://docs.microsoft.com/connectors/mailchimp/)。
+   有关此操作的属性的详细信息，请参阅 [MailChimp 连接器参考](/connectors/mailchimp/)。
 
 1. 保存逻辑应用。
 
@@ -218,23 +217,23 @@ ms.locfileid: "75456615"
 
 ## <a name="check-for-success-or-failure"></a>检查操作是成功还是失败
 
-1. 在 **If true** 分支的“将成员添加到列表”操作下，  选择“添加操作”  。
+1. 在 **If true** 分支的“将成员添加到列表”操作下，选择“添加操作”。
 
-1. 在“选择操作”下，选择“内置”。   在搜索框中，输入 `condition` 作为筛选器。 在操作列表中选择“条件”。 
+1. 在“选择操作”下，选择“内置”。 在搜索框中，输入 `condition` 作为筛选器。 在操作列表中选择“条件”。
 
 1. 重命名条件并提供以下说明：`If add member succeeded`
 
 1. 生成一个条件，用于检查批准的成员在加入邮件列表时是成功还是失败：
 
-   1. 在条件中，单击条件左侧的“选择值”框。  在动态内容列表的“将成员添加到列表”下，选择“状态”属性。  
+   1. 在条件中，单击条件左侧的“选择值”框。 在动态内容列表的“将成员添加到列表”下，选择“状态”属性。 
 
       例如，你的条件如以下示例所示：
 
       ![在“将成员添加到列表”下，选择“状态”](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member.png)
 
-   1. 在中间的比较框中，选择“等于”  运算符。
+   1. 在中间的比较框中，选择“等于”运算符。
 
-   1. 在条件右侧的“选择值”框中输入此文本：`subscribed` 
+   1. 在条件右侧的“选择值”框中输入此文本：`subscribed`
 
       完成后，条件如以下示例所示：
 
@@ -244,11 +243,11 @@ ms.locfileid: "75456615"
 
 ## <a name="send-email-if-member-added"></a>在添加了成员的情况下发送电子邮件
 
-1. 在“如果添加成员成功”条件的 **If true** 分支中，选择“添加操作”。  
+1. 在“如果添加成员成功”条件的 **If true** 分支中，选择“添加操作”。 
 
    ![在“If true”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-1. 在“选择操作”  下的搜索框中，输入 `outlook send email` 作为筛选器，然后选择“发送电子邮件”操作。 
+1. 在“选择操作”下的搜索框中，输入 `outlook send email` 作为筛选器，然后选择“发送电子邮件”操作。
 
    ![添加“发送电子邮件”操作](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
@@ -258,22 +257,22 @@ ms.locfileid: "75456615"
 
    ![提供成功电子邮件的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **收件人** | 是 | <*your-email-address*> | 一个电子邮件地址，可向其发送成功电子邮件。 为进行测试，可以使用自己的电子邮件地址。 |
-   | **主题** | 是 | <*subject-for-success-email*> | 成功电子邮件的主题。 对于本教程，请输入以下文本： <p>`Success! Member added to "test-members-ML": ` <p>在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。   |
-   | **正文** | 是 | <*body-for-success-email*> | 成功电子邮件的正文内容。 对于本教程，请输入以下文本： <p>`New member has joined "test-members-ML":` <p>在动态内容列表中，选择“电子邮件地址”属性。  <p>在下一行中，输入此文本：`Member opt-in status: ` <p> 在动态内容列表的“将成员添加到列表”下，选择“状态”属性。   |
+   | **主题** | 是 | <*subject-for-success-email*> | 成功电子邮件的主题。 对于本教程，请输入以下文本： <p>`Success! Member added to "test-members-ML": ` <p>在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。  |
+   | **正文** | 是 | <*body-for-success-email*> | 成功电子邮件的正文内容。 对于本教程，请输入以下文本： <p>`New member has joined "test-members-ML":` <p>在动态内容列表中，选择“电子邮件地址”属性。 <p>在下一行中，输入此文本：`Member opt-in status: ` <p> 在动态内容列表的“将成员添加到列表”下，选择“状态”属性。  |
    |||||
 
 1. 保存逻辑应用。
 
 ## <a name="send-email-if-member-not-added"></a>在添加不了成员的情况下发送电子邮件
 
-1. 在“如果添加成员成功”条件的 **If false** 分支中，选择“添加操作”。  
+1. 在“如果添加成员成功”条件的 **If false** 分支中，选择“添加操作”。 
 
    ![在“If false”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-1. 在“选择操作”  下的搜索框中，输入 `outlook send email` 作为筛选器，然后选择“发送电子邮件”操作。 
+1. 在“选择操作”下的搜索框中，输入 `outlook send email` 作为筛选器，然后选择“发送电子邮件”操作。
 
    ![为“发送电子邮件”添加操作](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
@@ -283,10 +282,10 @@ ms.locfileid: "75456615"
 
    ![提供失败电子邮件的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **收件人** | 是 | <*your-email-address*> | 一个电子邮件地址，可向其发送失败电子邮件。 为进行测试，可以使用自己的电子邮件地址。 |
-   | **主题** | 是 | <*subject-for-failure-email*> | 失败电子邮件的主题。 对于本教程，请输入以下文本： <p>`Failed, member not added to "test-members-ML": ` <p>在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。   |
+   | **主题** | 是 | <*subject-for-failure-email*> | 失败电子邮件的主题。 对于本教程，请输入以下文本： <p>`Failed, member not added to "test-members-ML": ` <p>在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。  |
    | **正文** | 是 | <*body-for-failure-email*> | 失败电子邮件的正文内容。 对于本教程，请输入以下文本： <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
@@ -300,11 +299,11 @@ ms.locfileid: "75456615"
 
 1. 向自己发送一封加入邮件列表的电子邮件请求。 等待请求显示在收件箱中。
 
-1. 若要手动启动逻辑应用，请在设计器工具栏中选择“运行”  。 
+1. 若要手动启动逻辑应用，请在设计器工具栏中选择“运行”。 
 
    如果电子邮件的主题与触发器的主题筛选器匹配，逻辑应用会向你发送审批订阅请求的电子邮件。
 
-1. 在审批电子邮件中，选择“批准”  。
+1. 在审批电子邮件中，选择“批准”。
 
 1. 如果订户的电子邮件地址在邮件列表中不存在，逻辑应用会添加该人的电子邮件地址并向你发送一封电子邮件，如以下示例所示：
 
@@ -322,13 +321,13 @@ ms.locfileid: "75456615"
 
 不再需要示例逻辑应用时，请删除包含该逻辑应用和相关资源的资源组。 
 
-1. 在 Azure 主菜单中转到“资源组”，然后选择逻辑应用的资源组。 
+1. 在 Azure 主菜单中转到“资源组”，然后选择逻辑应用的资源组。
 
-1. 在资源组菜单中，选择“概述” > “删除资源组”。   
+1. 在资源组菜单中，选择“概述” > “删除资源组”。  
 
    ![“概览”>“删除资源组”](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
 
-1. 输入资源组名称作为确认，然后选择“删除”。 
+1. 输入资源组名称作为确认，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

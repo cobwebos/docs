@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 318656a779aa5ba2279f075fcc44589fe2039682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009486"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -75,13 +75,13 @@ ms.locfileid: "84987107"
 
 ## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何连接同一订阅中的 VNet
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 因为创建网关需要多达 45 分钟，所以 Azure Cloud Shell 会在此演练中出现周期性超时。 可以单击终端的左上角，重启 Cloud Shell。 重启终端时，务必重新声明所有变量。
 
-* 如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* 如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 

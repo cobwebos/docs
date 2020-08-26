@@ -1,6 +1,7 @@
 ---
-title: JavaScript 单页应用教程 - Microsoft 标识平台 | Azure
-description: JavaScript SPA 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
+title: JavaScript 单页应用教程 | Azure
+titleSuffix: Microsoft identity platform
+description: 本教程介绍 JavaScript 单页应用 (SPA) 如何调用需要 Microsoft 标识平台颁发的访问令牌的 API。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 573aef4f0d340d0d32dc4977e0937bca9c6d3cef
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338918"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118189"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -25,8 +26,8 @@ ms.locfileid: "84338918"
 - 获取访问令牌
 - 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API
 
->[!NOTE]
-> 如果你不熟悉 Microsoft 标识平台，我们建议先阅读[在 JavaScript SPA 中使用户登录和获取访问令牌](quickstart-v2-javascript.md)快速入门。
+>[!TIP]
+> 本教程使用 MSAL.js v1.x，它仅限于对单页应用程序使用隐式授权流。 建议将所有新应用程序改为使用 [MSAL 2.x 和提供 PKCE 和 CORS 支持的授权代码流](tutorial-v2-javascript-auth-code.md)。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
@@ -268,7 +269,7 @@ ms.locfileid: "84338918"
 
 在继续进行身份验证之前，请在 **Azure Active Directory** 中注册你的应用程序。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 如果帐户提供访问多个租户的权限，请在右上方选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 1. “注册应用程序”页显示后，请输入应用程序的名称。
@@ -278,7 +279,7 @@ ms.locfileid: "84338918"
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框   。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>设置 Node.js 的重定向 URL
 >
@@ -321,8 +322,8 @@ ms.locfileid: "84338918"
 ```
 
  其中：
- - \<Enter_the_Application_Id_Here> 是已注册的应用程序的应用程序（客户端）ID。
- - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于**国家**云（例如“中国”云），请参阅[国家云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
+ - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
+ - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于**国家**云（例如“中国”云），请参阅[国家云](./authentication-national-cloud.md)。
  - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。
@@ -446,7 +447,7 @@ ms.locfileid: "84338918"
    ```
 
    其中：
-   - \<Enter_the_Graph_Endpoint_Here> 是 MS Graph API 的实例。 对于全局 MS Graph API 终结点，只需将此字符串替换为 `https://graph.microsoft.com` 即可。 对于国家云部署，请参阅 [Graph API 文档](https://docs.microsoft.com/graph/deployments)。
+   - \<Enter_the_Graph_Endpoint_Here> 是 MS Graph API 的实例。 对于全局 MS Graph API 终结点，只需将此字符串替换为 `https://graph.microsoft.com` 即可。 对于国家云部署，请参阅 [Graph API 文档](/graph/deployments)。
 
 1. 接下来，创建名为 `graph.js` 的、用于对 Microsoft Graph API 发出 REST 调用的 .js 文件，并添加以下代码：
 

@@ -3,12 +3,13 @@ title: 创建个性化体验创建服务资源
 description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 8b56516b5555ca971d7ab1db3caf5b76f252729b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2ebd5496eb45ed007f47cd34761800f8b54e5a5a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344367"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501246"
 ---
 # <a name="create-a-personalizer-resource"></a>创建 Personalizer 资源
 

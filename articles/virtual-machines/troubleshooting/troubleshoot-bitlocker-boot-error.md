@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088523"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -28,7 +28,7 @@ ms.locfileid: "86132951"
 
 ## <a name="symptom"></a>症状
 
- Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗口中的屏幕截图时，看到以下错误消息之一：
+ Windows VM 不启动。 检查[启动诊断](./boot-diagnostics.md)窗口中的屏幕截图时，看到以下错误消息之一：
 
 - 插入含 BitLocker 密钥的 USB 驱动程序
 
@@ -48,7 +48,7 @@ ms.locfileid: "86132951"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -70,7 +70,7 @@ ms.locfileid: "86132951"
     ```
      不能将托管磁盘附加到从 Blob 映像还原的 VM。
 
-3. 附加磁盘后，对恢复 VM 进行远程桌面连接，以便可以运行某些 Azure PowerShell 脚本。 确保已在恢复 VM 上安装[最新版本的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+3. 附加磁盘后，对恢复 VM 进行远程桌面连接，以便可以运行某些 Azure PowerShell 脚本。 确保已在恢复 VM 上安装[最新版本的 Azure PowerShell](/powershell/azure/)。
 
 4. 打开提升的 Azure PowerShell 会话（以管理员身份运行）。 运行以下命令来登录到 Azure 订阅：
 

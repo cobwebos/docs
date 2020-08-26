@@ -1,25 +1,24 @@
 ---
-title: 从 iOS 连接到 Windows 虚拟桌面-Azure
-description: 如何使用 iOS 客户端连接到 Windows 虚拟桌面。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+title: 从 iOS 连接到 Windows 虚拟桌面 (经典) -Azure
+description: 如何使用 iOS 客户端连接到 Windows 虚拟桌面 (经典) 。
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10ad1e3fdcccce4eb0ce97806f67486ce5cc391b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7efedadbba196223db2ad5700035e27d37fb414
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213204"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008451"
 ---
-# <a name="connect-with-the-ios-client"></a>使用 iOS 客户端进行连接
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>通过 iOS 客户端连接到 Windows 虚拟桌面 (经典) 
 
 > 适用于： iOS 13.0 或更高版本。 与 iPhone、iPad 和 iPod touch 兼容。
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../connect-ios.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../connect-ios.md)。
 
 可以使用可下载的客户端从 iOS 设备访问 Windows 虚拟桌面资源。 本指南将说明如何设置 iOS 客户端。
 

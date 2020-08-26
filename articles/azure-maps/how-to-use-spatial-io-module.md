@@ -1,18 +1,20 @@
 ---
 title: 如何使用 Azure Maps 空间 IO 模块 |Microsoft Azure 映射
 description: 了解如何使用 Azure Maps Web SDK 提供的空间 IO 模块。 此模块提供了强大的功能，使开发人员能够轻松地将空间数据与 Azure Maps web sdk 集成。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287043"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure Maps 空间 IO 模块
 
@@ -36,9 +38,9 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
 > [!WARNING]
 > 仅使用来自你信任的源的数据和服务，尤其是在从另一个域中引用它的情况下。 空间 IO 模块执行一些步骤来最大程度地降低风险，不过，最安全的方法不允许将任何 danagerous 的数据从开始到你的应用程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-使用空间 IO 模块之前，需要先[创建一个 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps)，并[获取帐户的主要订阅密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)。
+使用空间 IO 模块之前，需要先[创建一个 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)，并[获取帐户的主要订阅密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)。
 
 ## <a name="installing-the-spatial-io-module"></a>安装空间 IO 模块
 

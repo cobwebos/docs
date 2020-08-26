@@ -3,7 +3,7 @@ title: 在 StorSimple 8000 系列设备上安装更新 5.1 |Microsoft Docs
 description: 介绍如何在 StorSimple 8000 系列设备上安装 StorSimple 8000 系列更新5.1。
 services: storsimple
 documentationcenter: NA
-author: priestlg
+author: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
-ms.author: v-grpr
-ms.openlocfilehash: fb2123bdb0e12571a58a32e414a610665935ebb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: f9cc5181d6cc29ee4b3c2373dbbc91d6290fbe6e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508208"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782764"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 设备上安装更新5。1
 
@@ -29,9 +29,9 @@ ms.locfileid: "85508208"
 
 > [!IMPORTANT]
 >
-> * 更新5.1 是必需的更新，应立即安装。 有关详细信息，请参阅[Update 5.1 发行说明](storsimple-update51-release-notes.md)。
+> * 更新5.1 是必需的更新，应立即安装。 有关详细信息，请参阅 [Update 5.1 发行说明](storsimple-update51-release-notes.md)。
 > * 在安装之前需进行一组手动的和自动的预检查，以便确定设备在硬件状态和网络连接性方面的运行状况。 仅当从 Azure 门户应用更新时，才会执行这些预检查。
-> * 如果要使用修补程序方法安装，请联系[Microsoft 支持部门](mailto:support@microsoft.com)。
+> * 如果要使用修补程序方法安装，请联系 [Microsoft 支持部门](mailto:support@microsoft.com)。
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -47,7 +47,7 @@ ms.locfileid: "85508208"
 
 ## <a name="install-update-51-through-the-azure-portal"></a>通过 Azure 门户安装更新5。1
 
-执行以下步骤，将设备更新为[更新 5.1](storsimple-update51-release-notes.md)。
+执行以下步骤，将设备更新为 [更新 5.1](storsimple-update51-release-notes.md)。
 
 > [!NOTE]
 > Microsoft 从设备中提取其他诊断信息。 因此，当运营团队确定有问题的设备以后，我们就可以更好地从设备中收集信息并诊断问题。
@@ -95,7 +95,7 @@ ms.locfileid: "85508208"
 10. 在作业完成后，导航到“设备设置”>“设备更新”。**** 软件版本现在应当已更新。
 
 
-验证你的设备是否正在运行**StorSimple 8000 系列更新5.1 （6.3.9600.17885）**。 应修改“上次更新日期”。****
+验证设备是否正在运行 **StorSimple 8000 系列更新 5.1 (6.3.9600.17885) **。 应修改“上次更新日期”。****
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[更新5.1 版本](storsimple-update51-release-notes.md)的详细信息。
+了解有关 [更新5.1 版本](storsimple-update51-release-notes.md)的详细信息。

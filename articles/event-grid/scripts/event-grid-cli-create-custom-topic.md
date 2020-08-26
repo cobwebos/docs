@@ -4,12 +4,13 @@ description: 本文提供了一个示例 Azure CLI 脚本，演示如何创建 A
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d61dac0e76fc7b7006fa36f1cb96965ccee3d863
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494122"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>使用 Azure CLI 创建事件网格自定义主题
 
@@ -29,10 +30,10 @@ ms.locfileid: "86171306"
 
 | Command | 说明 |
 |---|---|
-| [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | 创建事件网格自定义主题。 |
+| [az eventgrid topic create](/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | 创建事件网格自定义主题。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关查询订阅的信息，请参阅[查询事件网格订阅](../query-event-subscriptions.md)。
-* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 46d3b8d94148e3db163411c21cccf39c7630c6b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737633"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032896"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>使用 What If 工具对条件访问进行故障排除
 
@@ -66,7 +67,7 @@ What If 工具只需要一名用户即可开始使用。
 
 若要验证是否已正确配置，管理员可以使用 What If 工具来模拟从应允许的位置和从应拒绝的位置进行的访问。
 
-![What If 工具显示带有阻止访问的结果](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[![What If 工具显示带有阻止访问的结果](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 在这种情况下，由于 Contoso 已阻止从该位置进行访问，因此该用户在朝鲜旅行期间将被禁止访问任何云应用。
 

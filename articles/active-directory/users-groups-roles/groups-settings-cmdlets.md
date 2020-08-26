@@ -9,29 +9,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63f0c55823899be8eb4146860787aede2cd2d6b5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727851"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797898"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
-本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。
+本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 (有时称为 "统一组") 的 Microsoft 365 组。
 
 > [!IMPORTANT]
 > 某些设置需要 Azure Active Directory Premium P1 许可证。 有关详细信息，请参阅[模板设置](#template-settings)表。
 
-有关如何防止非管理员用户创建安全组的详细信息，请按照 [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) 中所述内容设置  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False`。
+有关如何防止非管理员用户创建安全组的详细信息，请按照 [Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) 中所述内容设置  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False`。
 
-Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 起初，目录中不会显示任何设置对象，因为目录配置为默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的 Office 365 组设置，请使用名为“Group.Unified”的模板。 若要针对单个组配置 Office 365 组设置，请使用名为“Group.Unified.Guest”的模板。 此模板用于管理对 Office 365 组的来宾访问权限。 
+Microsoft 365 使用 Settings 对象和 SettingsTemplate 对象配置组设置。 起初，目录中不会显示任何设置对象，因为目录配置为默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录 Microsoft 365 组设置，请使用名为 "Group. 统一" 的模板。 若要配置单个组 Microsoft 365 组设置，请使用名为 "Group. 统一来宾" 的模板。 此模板用于管理对 Microsoft 365 组的来宾访问权限。 
 
-这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关如何在计算机上下载和安装模块的说明，请参阅文章 [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)（Azure Active Directory PowerShell 版本 2）。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
+这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关如何在计算机上下载和安装模块的说明，请参阅文章 [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview)（Azure Active Directory PowerShell 版本 2）。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
 
 ## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
 
@@ -52,7 +53,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
-这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 365 组。 Get-AzureADDirectorySettingTemplate cmdlet 仅在 [Azure AD PowerShell for Graph 预览模块](https://www.powershellgallery.com/packages/AzureADPreview)中可用。
+这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Microsoft 365 组。 Get-AzureADDirectorySettingTemplate cmdlet 仅在 [Azure AD PowerShell for Graph 预览模块](https://www.powershellgallery.com/packages/AzureADPreview)中可用。
 
 1. 在 DirectorySettings cmdlet 中，必须指定要使用的 SettingsTemplate 的 ID。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
   
@@ -66,7 +67,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
-   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Office 365 group
+   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Microsoft 365 group
    16933506-8a8d-4f0d-ad58-e1db05a5b929 Company.BuiltIn     Setting templates define the different settings that can be used for the associ...
    4bc7f740-180e-4586-adb6-38b2e9024e6b Application...
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
@@ -148,20 +149,20 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 | **设置** | **说明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>键入：布尔<li>默认值：True |指明是否允许非管理员用户在目录中创建 Office 365 组的标志。 此设置不需要 Azure Active Directory Premium P1 许可证。|
-|  <ul><li>GroupCreationAllowedGroupId<li>键入：String<li>默认值："" |安全组的 GUID，允许该组的成员创建 Office 365 组，即使 EnableGroupCreation == false。 |
+|  <ul><li>EnableGroupCreation<li>键入：布尔<li>默认值：True |指示非管理员用户是否允许在目录中创建 Microsoft 365 组的标志。 此设置不需要 Azure Active Directory Premium P1 许可证。|
+|  <ul><li>GroupCreationAllowedGroupId<li>键入：String<li>默认值："" |允许成员创建 Microsoft 365 组的安全组的 GUID，即使 EnableGroupCreation = = false 也是如此。 |
 |  <ul><li>UsageGuidelinesUrl<li>键入：String<li>默认值："" |组使用准则链接。 |
 |  <ul><li>ClassificationDescriptions<li>键入：String<li>默认值："" | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>其中，Classification 与 ClassificationList 中的条目匹配。<br>当 EnableMIPLabels == True 时，此设置不适用。|
 |  <ul><li>DefaultClassification<li>键入：String<li>默认值："" | 如果未指定，则为要用作组的默认分类的分类。<br>当 EnableMIPLabels == True 时，此设置不适用。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>键入：String<li>默认值："" | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅为[Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
-| <ul><li>CustomBlockedWordsList<li>键入：String<li>默认值："" | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅为[Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
+|  <ul><li>PrefixSuffixNamingRequirement<li>键入：String<li>默认值："" | 最大长度为64个字符的字符串，用于定义为 Microsoft 365 组配置的命名约定。 有关详细信息，请参阅对 [Microsoft 365 组强制实施命名策略](groups-naming-policy.md)。 |
+| <ul><li>CustomBlockedWordsList<li>键入：String<li>默认值："" | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅对 [Microsoft 365 组强制实施命名策略](groups-naming-policy.md)。 |
 | <ul><li>EnableMSStandardBlockedWords<li>键入：布尔<li>默认值：“False” | 请勿使用
 |  <ul><li>AllowGuestsToBeGroupOwner<li>键入：布尔<li>默认值：False | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
-|  <ul><li>AllowGuestsToAccessGroups<li>键入：布尔<li>默认值：True | 一个布尔值，指示来宾用户是否可以访问 Office 365 组的内容。  此设置不需要 Azure Active Directory Premium P1 许可证。|
+|  <ul><li>AllowGuestsToAccessGroups<li>键入：布尔<li>默认值：True | 指示来宾用户是否可以访问 Microsoft 365 组内容的布尔值。  此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>键入：String<li>默认值："" | 指向来宾使用指南的链接的 URL。 |
 |  <ul><li>AllowToAddGuests<li>键入：布尔<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果 *EnableMIPLabels* 设置为 *True* 且某个来宾策略与分配给组的敏感性标签相关联，则此设置可能会被重写，变成只读。<br>如果在组织级别将 AllowToAddGuests 设置设为 False，则会忽略组级别的任何 AllowToAddGuests 设置。 如果希望仅对几个组启用来宾访问，则必须在组织级别将 AllowToAddGuests 设为 true，然后针对特定组有选择地禁用它。 |
-|  <ul><li>ClassificationList<li>键入：String<li>默认值："" | 一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 <br>当 EnableMIPLabels == True 时，此设置不适用。|
-|  <ul><li>EnableMIPLabels<li>键入：布尔<li>默认值：“False” |此标记表明在 Microsoft 365 合规中心发布的敏感性标签是否适用于 Office 365 组。 有关详细信息，请参阅为[Office 365 组分配敏感度标签](groups-assign-sensitivity-labels.md)。 |
+|  <ul><li>ClassificationList<li>键入：String<li>默认值："" | 可应用于 Microsoft 365 组的有效分类值的逗号分隔列表。 <br>当 EnableMIPLabels == True 时，此设置不适用。|
+|  <ul><li>EnableMIPLabels<li>键入：布尔<li>默认值：“False” |该标志指示 Microsoft 365 符合性中心发布的敏感度标签是否可应用于 Microsoft 365 组。 有关详细信息，请参阅为 [Microsoft 365 组分配敏感度标签](groups-assign-sensitivity-labels.md)。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>示例：在目录级别为组配置来宾策略
 1. 获取所有设置模板：
@@ -254,7 +255,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    Id                                   DisplayName            Description
    --                                   -----------            -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified          ...
-   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Office 365 group
+   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Microsoft 365 group
    4bc7f740-180e-4586-adb6-38b2e9024e6b Application            ...
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy Settings ...
    5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...
@@ -318,7 +319,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Cmdlet 语法参考
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
+如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。
 
 ## <a name="additional-reading"></a>其他阅读材料
 

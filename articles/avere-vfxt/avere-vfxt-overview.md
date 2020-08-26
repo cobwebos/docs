@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT for Azure
-description: 适用于 HPC 的云缓存层 Avere vFXT for Azure 简介
+description: 了解 Avere vFXT for Azure，它是一种基于云的文件系统缓存解决方案，适用于数据密集型高性能计算任务。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5095f05b0c9ce9061781c3558ca6c7091ef37aa5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229459"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270950"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>什么是 Avere vFXT for Azure？
 

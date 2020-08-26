@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85798147"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760866"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
@@ -172,7 +173,6 @@ Azure Cosmos DB 目前支持三种类型的索引。
 * 上面的查询将先使用索引筛选 firstName = "Andrew" 的条目， 然后通过后续管道传递所有 firstName = "Andrew" 的条目来评估 CONTAINS 筛选器谓词。
 
 * 如果使用不采用索引（如 CONTAINS）的函数，可额外添加使用该索引的筛选器谓词来加快查询速度和避免完整容器扫描。 筛选子句的顺序并不重要。 查询引擎将确定哪些谓词更具选择性，并相应地运行查询。
-
 
 ## <a name="querying-with-indexes"></a>使用索引进行查询
 

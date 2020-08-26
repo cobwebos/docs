@@ -1,16 +1,16 @@
 ---
 title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
-ms.date: 06/23/2020
+ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512243"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716785"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>将 Azure 事件中心与 Azure 专用链接集成
+# <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 事件中心命名空间 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 
 专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 专用终结点使用虚拟网络中的专用 IP 地址，从而将该服务有效地引入到虚拟网络。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
@@ -18,23 +18,19 @@ ms.locfileid: "86512243"
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> **标准**层和**专用**层都支持此功能。 
-
->[!WARNING]
-> 启用专用终结点可以防止其他 Azure 服务与事件中心交互。
+> **标准**层和**专用**层都支持此功能。 **基本**层不支持此方法。
 >
-> 使用虚拟网络时，受信任的 Microsoft 服务不受支持。
+> 启用专用终结点可以防止其他 Azure 服务与事件中心交互。  被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 
+> 
+> 下面是启用专用终结点时无法访问事件中心资源的某些服务。 请注意，此列表并 **不** 详尽。
 >
-> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
-> - Azure Monitor（诊断设置）
 > - Azure 流分析
-> - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
+> - Azure 事件网格
+> - Azure Monitor (诊断设置) 
 >
-> 以下 Microsoft 服务必须在虚拟网络中
-> - Azure Web 应用
-> - Azure Functions
+> 例外情况是，即使在启用了专用终结点的情况下，也可以允许从某些受信任的服务访问事件中心资源。 有关受信任服务的列表，请参阅 [受信任服务](#trusted-microsoft-services)。
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户添加专用终结点
 
@@ -44,7 +40,7 @@ ms.locfileid: "86512243"
 
 - 事件中心命名空间。
 - 一个 Azure 虚拟网络。
-- 虚拟网络中的子网。
+- 虚拟网络中的子网。 可以使用 **默认** 子网。 
 - 对命名空间和虚拟网络拥有所有者或参与者权限。
 
 专用终结点和虚拟网络必须位于同一区域。 使用门户选择专用终结点的区域时，只会自动筛选该区域中的虚拟网络。 命名空间可以位于不同的区域中。
@@ -57,14 +53,19 @@ ms.locfileid: "86512243"
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在搜索栏中键入“事件中心”。
 3. 从列表中选择要将专用终结点添加到的**命名空间**。
-4. 在“设置”下选择“网络”选项卡。 
+4. 在左侧菜单的 "**设置**" 下选择 "**网络**"。
 
     > [!NOTE]
     > 只会看到**标准**命名空间或**专用**命名空间的 "**网络**" 选项卡。 
+
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="网络选项卡-所选网络选项" lightbox="./media/private-link-service/selected-networks-page.png":::    
+
+    > [!NOTE]
+    > 默认情况下，选择 " **所选网络** " 选项。 如果未指定 IP 防火墙规则或添加虚拟网络，则可以通过公共 internet 访问该命名空间。 
 1. 选择页面顶部的“专用终结点连接”选项卡。 
 1. 在页面顶部选择“+ 专用终结点”按钮。
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text=""网络" 页-专用终结点连接选项卡-添加专用终结点链接":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="网络 页-专用终结点连接选项卡-添加专用终结点链接":::
 7. 在“基本信息”页上执行以下步骤： 
     1. 选择要在其中创建专用终结点的 Azure 订阅。 
     2. 选择专用终结点资源的资源组。
@@ -102,6 +103,10 @@ ms.locfileid: "86512243"
 12. 确认你创建的专用终结点连接已显示在终结点列表中。 在此示例中，专用终结点会自动获得批准，因为你已连接到自己目录中的 Azure 资源，并且有足够的权限。 
 
     ![已创建专用终结点](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+
+若要允许受信任的服务访问你的命名空间，请切换到 "**网络**" 页上的 "**防火墙和虚拟网络**" 选项卡，然后选择 **"是"** 以**允许受信任的 Microsoft 服务跳过此防火墙？**。 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>使用 PowerShell 添加专用终结点
 以下示例演示如何使用 Azure PowerShell 创建专用终结点连接。 此过程不会为你创建专用群集。 请遵循[此文](event-hubs-dedicated-cluster-create-portal.md)中的步骤创建专用的事件中心群集。 
@@ -217,7 +222,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 2. 选择要批准的专用终结点
 3. 选择“批准”按钮。
 
-    ![映像](./media/private-link-service/approve-private-endpoint.png)
+    ![批准专用终结点](./media/private-link-service/approve-private-endpoint.png)
 4. 在“批准连接”页上添加注释（可选），然后选择“是”。  如果选择“否”，则不会执行任何操作。 
 5. 应会看到，列表中专用终结点连接的状态已更改为“已批准”。 
 
@@ -225,7 +230,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 1. 如果存在任何要拒绝的专用终结点连接（不管是挂起的请求还是现有的连接），请选择该连接并单击“拒绝”按钮。
 
-    ![映像](./media/private-link-service/private-endpoint-reject-button.png)
+    ![拒绝专用终结点](./media/private-link-service/private-endpoint-reject-button.png)
 2. 在“拒绝连接”页上输入注释（可选），然后选择“是”。  如果选择“否”，则不会执行任何操作。 
 3. 应会看到，列表中专用终结点连接的状态已更改为“已拒绝”。 
 
@@ -237,7 +242,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="validate-that-the-private-link-connection-works"></a>验证专用链接连接是否有效
 
-应该验证专用终结点资源的同一子网中的资源是否可以通过专用 IP 地址连接到事件中心命名空间，以及它们是否具有正确的专用 DNS 区域集成。
+应该验证专用终结点的虚拟网络中的资源是否通过专用 IP 地址连接到事件中心命名空间，以及它们是否具有正确的专用 DNS 区域集成。
 
 首先，遵循[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)中的步骤创建一个虚拟机。
 

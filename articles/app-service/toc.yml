@@ -4,8 +4,6 @@
   items:
     - name: 关于 Web 应用
       href: overview.md
-    - name: 关于 Linux 上的应用服务
-      href: containers/app-service-linux-intro.md
     - name: 关于应用服务环境
       href: environment/intro.md
     - name: 比较托管选项
@@ -13,34 +11,50 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 .NET Core 应用
-      href: app-service-web-get-started-dotnet.md
-    - name: 创建 .NET Framework 应用
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: 创建 Node.js 应用
-      href: app-service-web-get-started-nodejs.md
-    - name: 创建 PHP 应用
-      href: app-service-web-get-started-php.md
-    - name: 创建 Java 应用
-      href: app-service-web-get-started-java.md
-    - name: 创建静态 HTML 站点
-      href: app-service-web-get-started-html.md
-    - name: 运行 Windows 容器
-      href: app-service-web-get-started-windows-container.md
+    - name: .NET Core
+      href: quickstart-dotnetcore.md
+    - name: .NET Framework
+      href: quickstart-dotnet-framework.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: PHP
+      href: quickstart-php.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Python
+      href: quickstart-python.md
+    - name: Ruby
+      href: quickstart-ruby.md
+    - name: 静态 HTML 站点
+      href: quickstart-html.md
+    - name: 自定义容器
+      href: quickstart-custom-container.md
+    - name: 多容器应用
+      href: quickstart-multi-container.md
 - name: 教程
   items:
     - name: 将应用与 DB 配合使用
       items:
         - name: 将 .NET Core 与 SQL DB 配合使用
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
+          href: tutorial-dotnetcore-sqldb-app.md
         - name: 将 .NET Framework 与 SQL DB 配合使用
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: 将 PHP 与 MySQL 配合使用
-          href: app-service-web-tutorial-php-mysql.md
+          href: tutorial-php-mysql-app.md
         - name: 将 Node.js 与 MongoDB 配合使用
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-    - name: 自定义 Windows（容器）
-      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+          href: tutorial-nodejs-mongodb-app.md
+        - name: 将 Ruby 与 Postgres 配合使用
+          href: tutorial-ruby-postgres-app.md
+        - name: 将 Python 与 Postgres 配合使用
+          href: tutorial-python-postgresql-app.md
+        - name: 将 Java 与 Spring Data 配合使用
+          href: tutorial-java-spring-cosmosdb.md
+    - name: 自定义容器
+      items:
+        - name: 从 ACR 进行部署
+          href: tutorial-custom-container.md
+        - name: 多容器应用
+          href: tutorial-multi-container-app.md
     - name: 安全访问 SQL DB
       href: app-service-web-tutorial-connect-msi.md
     - name: 托管 RESTful API
@@ -52,9 +66,11 @@
     - name: 添加 CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: 对用户进行身份验证
-      href: app-service-web-tutorial-auth-aad.md
+      href: tutorial-auth-aad.md
     - name: 发送电子邮件/推文
       href: tutorial-send-email.md
+    - name: 排查错误
+      href: tutorial-troubleshoot-monitor.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -66,6 +82,8 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+    - name: Terraform
+      href: samples-terraform.md
 - name: 概念
   items:
     - name: 应用服务计划
@@ -84,6 +102,9 @@
           href: overview-patch-os-runtime.md
         - name: 内置安全控件
           href: app-service-security-controls.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全概述
           href: overview-security.md
     - name: 网络功能
@@ -120,8 +141,14 @@
           href: configure-language-nodejs.md
         - name: 配置 PHP
           href: configure-language-php.md
+        - name: 配置 Python
+          href: configure-language-python.md
         - name: 配置 Java
           href: configure-language-java.md
+        - name: 配置 Ruby
+          href: configure-language-ruby.md
+        - name: 配置自定义 Linux 容器
+          href: configure-custom-container.md
         - name: 连接到本地资源
           href: web-sites-integrate-with-vnet.md
         - name: 配置 Azure 存储（容器）
@@ -140,10 +167,14 @@
               href: deploy-content-sync.md
             - name: 持续部署
               href: deploy-continuous-deployment.md
+            - name: 自定义容器 CI/CD
+              href: deploy-ci-cd-custom-container.md
             - name: 从本地 Git 进行部署
               href: deploy-local-git.md
-            - name: 使用 GitHub 操作进行部署
+            - name: GitHub 操作
               href: deploy-github-actions.md
+            - name: 适用于容器的 GitHub 操作
+              href: deploy-container-github-action.md
             - name: 使用模板进行部署
               href: deploy-complex-application-predictably.md
         - name: 设置部署凭据
@@ -210,6 +241,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: 获取资源事件
           href: get-resource-events.md
+        - name: 打开到 Linux 容器的 SSH 会话
+          href: configure-linux-open-ssh-session.md
     - name: 管理应用
       items:
         - name: 管理托管计划

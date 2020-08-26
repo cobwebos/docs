@@ -11,13 +11,14 @@ ms.workload: identity
 ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
-ms.custom: aaddev
+ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77611882"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115979"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 
@@ -68,7 +69,7 @@ Microsoft 标识平台中的帐户包括：
   - `tom@live.com` 的租户配置文件在上述每个租户中存在。
 - 其他租户中有关 Tom 和 Bob 的信息可能与记录系统中的信息不同。 他们在职务、办公地点等属性方面可能不同。 他们可能是每个组织（Azure Active Directory 租户）中的组和/或角色的成员。 我们将此信息称为 bob@contoso.com 租户配置文件。
 
-在示意图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
+在示意图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../external-identities/add-users-administrator.md)。
 
 ## <a name="accounts-and-single-sign-on-sso"></a>帐户和单一登录 (SSO)
 
@@ -117,10 +118,10 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> 若要查看帐户对象中提供的声明列表，请参阅 [id_token 中的声明](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
+> 若要查看帐户对象中提供的声明列表，请参阅 [id_token 中的声明](./id-tokens.md#claims-in-an-id_token)
 
 > [!TIP]
-> 若要在 id_token 中包括其他声明，请参阅[如何：向 Azure AD 应用提供可选声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)中的可选声明文档
+> 若要在 id_token 中包括其他声明，请参阅[如何：向 Azure AD 应用提供可选声明](./active-directory-optional-claims.md)中的可选声明文档
 
 ### <a name="access-tenant-profile-claims"></a>访问租户配置文件声明
 

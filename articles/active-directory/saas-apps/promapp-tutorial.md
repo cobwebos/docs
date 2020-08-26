@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Nintex Promapp 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Nintex Promapp 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 418d0601-6e7a-4997-a683-73fa30a2cfb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3caf67ef436093e63683c270f7121a2861242aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3b4102b4e8dcbd5aa04e354cec0ab91bf139572c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800875"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553472"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nintex Promapp 的集成
 

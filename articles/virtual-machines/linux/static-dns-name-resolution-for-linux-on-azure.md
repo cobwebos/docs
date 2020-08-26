@@ -5,14 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.subservice: networking
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 07a78e4987a844627824ac5034046cf6a393ad8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757844"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292154"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>创建虚拟网络接口卡，以及在 Azure 上使用内部 DNS 进行 VM 名称解析
 

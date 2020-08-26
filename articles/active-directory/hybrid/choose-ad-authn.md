@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d02800d39e918478243429971c0d48c4d0c59148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020094"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法
 
@@ -29,7 +30,7 @@ ms.locfileid: "83758123"
 标识是 IT 安全的新控制平面，因此身份验证是组织对新云世界的访问防护。 组织需要一个标识控制平面，以便增强其安全性并使其云应用免受入侵者攻击。
 
 > [!NOTE]
-> 更改身份验证方法需要进行规划、测试并可能会有停机时间。 [分阶段推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)是测试并逐步从联合身份验证迁移到云身份验证的一种好方法。
+> 更改身份验证方法需要进行规划、测试并可能会有停机时间。 [过渡推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)是测试从联合身份验证迁移到云身份验证的用户的绝佳方式。
 
 ### <a name="out-of-scope"></a>超出范围
 没有现有本地目录占用的组织不是本文的重点。 通常，那些仅在云中创建标识的企业不需要混合标识解决方案。 “仅限云”标识单独存在于云中，不与相应本地标识相关联。

@@ -17,24 +17,25 @@ ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0510184e2471d61c8911b5fcd484fd5dec0bce28
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6a198a63d633573ad683a3f8e8215b2975721bc9
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144489"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794922"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
 
 > [!NOTE] 
-> 这些 Powershell cmdlet 目前仅适用于 [Azure AD 预览](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing)模块。 请注意，预览模块不建议用于生产用途。 
+> 这些 PowerShell cmdlet 目前仅适用于 [Azure AD 预览](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) 模块。 请注意，预览模块不建议用于生产用途。 
 
 若要安装公共预览版，请使用以下说明。 
 
 ```powershell
 Install-module AzureADPreview
 ```
-有关如何使用 powershell 连接到 Azure AD 的详细信息，请参阅 [Azure AD Powershell for Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 一文。  
+
+有关如何使用 PowerShell 连接到 Azure AD 的详细信息，请参阅 [Azure AD PowerShell For Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)一文。  
 
 通过 Azure Active Directory (Azure AD) 报告，可以详细了解在说明（审核日志）和身份验证数据（登录日志）中围绕所有写入操作进行的活动。 虽然可以使用 MS Graph API 来获取信息，但现在可以使用用于报告的 Azure AD PowerShell cmdlet 来检索相同的数据。
 
@@ -42,7 +43,7 @@ Install-module AzureADPreview
 
 ## <a name="audit-logs"></a>审核日志
 
-[审核日志](concept-audit-logs.md)通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
+[审核日志](concept-audit-logs.md)通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源所做的更改，如添加或删除用户、应用、组、角色和策略。
 
 可以使用 `Get-AzureADAuditDirectoryLogs cmdlet 访问审核日志。
 

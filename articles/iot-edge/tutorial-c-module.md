@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/07/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4236b7ad3b15d1bb58a146f5905d226e0c3833d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760941"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064836"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 C IoT Edge 模块
 
@@ -58,6 +58,8 @@ ms.locfileid: "76760941"
 
 * 用于 Visual Studio Code 的 [C/C++ 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)。
 
+本教程不需要安装 Azure IoT C SDK，但它可提供有用的功能，如 IntelliSense 和读取程序定义。 有关安装的信息，请参阅 [Azure IoT C SDK 和库](https://github.com/Azure/azure-iot-sdk-c)。
+
 ## <a name="create-a-module-project"></a>创建模块项目
 
 以下步骤使用 Visual Studio Code 和 Azure IoT Tools 扩展为 C 创建 IoT Edge 模块项目。 创建项目模板后，请添加新代码，使模块根据其报告属性筛选出消息。
@@ -76,9 +78,9 @@ ms.locfileid: "76760941"
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
-   | 选择模块模板 | 选择“C 模块”。  |
+   | 选择模块模板 | 选择“C 模块”。 |
    | 提供模块名称 | 将模块命名为 **CModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/cmodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/cmodule。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-c-module/repository.png)
 
@@ -86,13 +88,15 @@ ms.locfileid: "76760941"
 
 环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。
 
+IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到环境文件中。 检查凭据是否已包含在内。 如果没有，请立即添加：
+
 1. 在 VS Code 资源管理器中，打开 .env 文件。
 2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
 3. 保存此文件。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 C 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认值为 Linux AMD64。
+目前，Visual Studio Code 可以开发适用于 Linux AMD64 和 Linux ARM32v7 设备的 C 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认值为 Linux AMD64。
 
 1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或选择窗口底部侧栏中的快捷方式图标。
 
@@ -100,13 +104,13 @@ ms.locfileid: "76760941"
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将消息转发到 IoT 中心之前，在边缘处理消息。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。
+默认模块代码接收输入队列中的消息，然后通过输出队列传递这些消息。 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。 更新模块，使其分析每条消息中的温度数据，并仅在温度超过特定的阈值时，才将消息发送到 IoT 中心。
 
 1. 在此场景中，来自传感器的数据采用 JSON 格式。 若要筛选 JSON 格式的消息，请导入用于 C 的 JSON 库。本教程使用 Parson。
 
    1. 下载 [Parson GitHub 存储库](https://github.com/kgabis/parson)。 将 **parson.c** 和 **parson.h** 文件复制到 **CModule** 文件夹中。
 
-   2. 打开“模块”   > “CModule”   >   “CMakeLists.txt”。 在文件顶部，导入名为 **my_parson** 的充当库的 Parson 文件。
+   2. 打开“模块” > “CModule” > “CMakeLists.txt”。 在文件顶部，导入名为 **my_parson** 的充当库的 Parson 文件。
 
       ```txt
       add_library(my_parson
@@ -115,11 +119,11 @@ ms.locfileid: "76760941"
       )
       ```
 
-   3. 将 `my_parson` 添加到 CMakeLists.txt 的 target_link_libraries 函数中的库列表  。
+   3. 将 `my_parson` 添加到 CMakeLists.txt 的 target_link_libraries 函数中的库列表。
 
    4. 保存 **CMakeLists.txt** 文件。
 
-   5. 打开“模块”   > “CModule”   >   “main.c”。 在 include 语句列表的底部，添加一个新的语句，以便包括适用于 JSON 支持的 `parson.h`：
+   5. 打开“模块” > “CModule” > “main.c”。 在 include 语句列表的底部，添加一个新的语句，以便包括适用于 JSON 支持的 `parson.h`：
 
       ```c
       #include "parson.h"
@@ -292,9 +296,9 @@ ms.locfileid: "76760941"
 
 在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 CModule，该函数会筛选出其中报告的计算机温度处于可接受限制范围内的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。
 
-1. 打开 VS Code 终端，方法是选择“视图” > “终端”   。
+1. 打开 VS Code 终端，方法是选择“视图” > “终端” 。
 
-1. 在终端中输入以下命令，以登录到 Docker。 使用 Azure 容器注册表中的用户名、密码和登录服务器登录。 可以在 Azure 门户中从注册表的“访问密钥”部分检索这些值。 
+2. 在终端中输入以下命令，以登录到 Docker。 使用 Azure 容器注册表中的用户名、密码和登录服务器登录。 可以在 Azure 门户中从注册表的“访问密钥”部分检索这些值。
 
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -302,33 +306,35 @@ ms.locfileid: "76760941"
 
    可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
 
-1. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。  
+3. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
 
    “生成并推送”命令会启动三项操作。 首先，它在解决方案中创建名为 **config** 的新文件夹，用于保存基于部署模板和其他解决方案文件中的信息生成的完整部署清单。 其次，它会运行 `docker build`，以基于目标体系结构的相应 dockerfile 生成容器映像。 然后，它会运行 `docker push`，以将映像存储库推送到容器注册表。
 
+   首次执行此过程可能需要几分钟时间，但下次运行命令时速度会变快。
+
 ## <a name="deploy-modules-to-device"></a>将模块部署到设备
 
-使用 Visual Studio Code 资源管理器和 Azure IoT Tools 扩展将模块项目部署到 IoT Edge 设备。 你已经为方案准备了部署清单，即 config 文件夹中的 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
+使用 Visual Studio Code 资源管理器和 Azure IoT Tools 扩展将模块项目部署到 IoT Edge 设备。 你已经为方案准备了部署清单，即 config 文件夹中的 deployment.amd64.json 文件。 现在需要做的就是选择一个设备来接收部署。
 
 确保 IoT Edge 设备已启动并运行。
 
-1. 在 Visual Studio Code 资源管理器中展开“Azure IoT 中心设备”部分，查看 IoT 设备的列表。 
+1. 在 Visual Studio Code 资源管理器中的“Azure IoT 中心”部分下，展开“设备”可查看 IoT 设备的列表。 
 
-2. 右键单击 IoT Edge 设备的名称，然后选择“为单个设备创建部署”。 
+2. 右键单击 IoT Edge 设备的名称，然后选择“为单个设备创建部署”。
 
-3. 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。  不要使用 deployment.template.json 文件。
+3. 选择 config 文件夹中的 deployment.amd64.json 文件，然后单击“选择 Edge 部署清单”。   不要使用 deployment.template.json 文件。
 
-4. 单击“刷新”按钮。 此时应看到新的 **CModule** 与 **SimulatedTemperatureSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 一起运行。
+4. 在设备下，展开“模块”可查看已部署的正在运行的模块的列表。 单击“刷新”按钮。 此时应看到新的 **CModule** 与 **SimulatedTemperatureSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 一起运行。
+
+    启动模块可能需要数分钟时间。 IoT Edge 运行时需要接收其新的部署清单，从容器运行时下拉模块映像，然后启动每个新模块。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
 将部署清单应用到 IoT Edge 设备以后，设备上的 IoT Edge 运行时就会收集新的部署信息并开始在其上执行操作。 在设备上运行的未包括在部署清单中的任何模块都会停止。 设备中缺失的任何模块都会启动。
 
-可以通过 Visual Studio Code 资源管理器的“Azure IoT 中心设备”部分查看 IoT Edge 设备的状态  。 展开设备的详细信息，可以看到已部署的正在运行的模块的列表。
+1. 在 Visual Studio Code 资源管理器中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。
 
-1. 在 Visual Studio Code 资源管理器中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。 
-
-2. 查看抵达 IoT 中心的消息。 消息可能需要在一段时间后才会抵达，因为 IoT Edge 设备必须接收其新部署并启动所有模块。 然后，我们对 CModule 代码所做的更改将等到计算机温度达到 25 度时才发送消息。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。 
+2. 查看抵达 IoT 中心的消息。 消息可能需要在一段时间后才会抵达，因为 IoT Edge 设备必须接收其新部署并启动所有模块。 然后，我们对 CModule 代码所做的更改将等到计算机温度达到 25 度时才发送消息。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。
 
    ![查看抵达 IoT 中心的消息](./media/tutorial-c-module/view-d2c-message.png)
 
@@ -338,13 +344,13 @@ ms.locfileid: "76760941"
 
 1. 在 Visual Studio Code 中，展开 IoT Edge 设备下的详细信息以查看正在运行的模块。
 
-2. 右键单击“CModule”并选择“编辑模块孪生”   。
+2. 右键单击“CModule”并选择“编辑模块孪生” 。
 
 3. 在所需属性中找到 **TemperatureThreshold**。 将其值更改为比上次报告的温度高出 5 到 10 度的新温度。
 
 4. 保存模块孪生文件。
 
-5. 右键单击模块孪生编辑窗格中的任意位置，然后选择“更新模块孪生”。 
+5. 右键单击模块孪生编辑窗格中的任意位置，然后选择“更新模块孪生”。
 
 6. 监视传入的设备到云消息。 应会看到，在达到新的温度阈值之前，消息会停止发送。
 
@@ -358,7 +364,7 @@ ms.locfileid: "76760941"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 做好生成自己的模块的准备后，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio Code 开发模块](how-to-vs-code-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT C SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)。
+在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 准备好生成自己的模块时，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio Code 开发模块](how-to-vs-code-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT C SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)。
 
 可以继续学习后续教程，了解如何借助 Azure IoT Edge 部署 Azure 云服务，在边缘位置处理和分析数据。
 

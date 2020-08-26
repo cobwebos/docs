@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure Blob 存储
 description: 介绍为 Azure 事件网格 Blob 存储事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113745"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458937"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>充当事件网格源的 Azure Blob 存储
 
@@ -16,7 +16,7 @@ ms.locfileid: "86113745"
 
 
 >[!NOTE]
-> 只有类型**StorageV2 （常规用途 v2）**、 **BlockBlobStorage**和**BlobStorage**的存储帐户支持事件集成。 **存储（常规用途 v1）** *不*支持与事件网格集成。
+> 只有种类为“StorageV2 (常规用途 v2)”、“BlockBlobStorage”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”不支持与事件网格集成。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -24,13 +24,16 @@ ms.locfileid: "86113745"
 
 当客户端通过调用 Blob REST API 创建、替换或删除 Blob 时，将触发这些事件。
 
+> [!NOTE]
+> `$logs`和 `$blobchangefeed` 容器不与事件网格集成，因此这些容器中的活动不会生成事件。 此外， *`(abfss://URI) `* 为启用非分层命名空间的帐户使用 dfs 终结点将不会生成事件，但 blob 终结点 *`(wasb:// URI)`* 将生成事件。
+
  |事件名称 |说明|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |创建或替换 Blob 时触发。 <br>具体而言，当客户端使用 Blob REST API 中可用的 `PutBlob`、`PutBlockList` 或 `CopyBlob` 操作时，将触发此事件。   |
  |**Microsoft.Storage.BlobDeleted** |删除 Blob 时触发。 <br>具体而言，当客户端调用 Blob REST API 中可用的 `DeleteBlob` 操作时，将触发此事件。 |
 
 > [!NOTE]
-> 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `CopyBlob`、`PutBlob` 和 `PutBlockList` REST API 调用筛选此事件。 这些 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `CopyBlob`、`PutBlob` 和 `PutBlockList` REST API 调用筛选此事件。 这些 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](./how-to-filter-events.md)。
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 的事件列表
 
@@ -46,7 +49,7 @@ ms.locfileid: "86113745"
 |**Microsoft.Storage.DirectoryDeleted**|删除目录时触发。 <br>具体而言，当客户端使用 Azure Data Lake Storage Gen2 REST API 中提供的 `DeleteDirectory` 操作时，会触发此事件。|
 
 > [!NOTE]
-> 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `FlushWithClose` REST API 调用筛选此事件。 此 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `FlushWithClose` REST API 调用筛选此事件。 此 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](./how-to-filter-events.md)。
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>事件响应的内容
@@ -288,33 +291,33 @@ ms.locfileid: "86113745"
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| Property | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| 数据 | object | Blob 存储事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | object | Blob 存储事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| api | string | 触发事件的操作。 |
-| ClientRequestId | string | 客户端提供的用于存储 API 操作的请求 ID。 此 ID 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
-| requestId | string | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
-| eTag | string | 可用于根据条件执行操作的值。 |
-| contentType | string | 为 Blob 指定的内容类型。 |
+| api | 字符串 | 触发事件的操作。 |
+| ClientRequestId | 字符串 | 客户端提供的用于存储 API 操作的请求 ID。 此 ID 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |
+| requestId | 字符串 | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |
+| eTag | 字符串 | 可用于根据条件执行操作的值。 |
+| contentType | 字符串 | 为 Blob 指定的内容类型。 |
 | contentLength | integer | Blob 大小，以字节为单位。 |
-| blobType | string | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
+| blobType | 字符串 | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
 | contentOffset | number | 在事件触发应用程序完成写入文件时执行的写入操作的偏移量（以字节为单位）。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
-| destinationUrl |string | 操作完成后存在的文件的 URL。 例如，如果重命名了某个文件，则 `destinationUrl` 属性将包含新文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
-| sourceUrl |string | 执行操作之前存在的文件的 URL。 例如，如果重命名了某个文件，则 `sourceUrl` 将包含执行重命名操作之前的原始文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
-| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 url 将采用以下结构： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将具有以下结构： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
-| recursive | string | 若要对所有子目录执行该操作，则为 `True`；否则为 `False`。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
+| destinationUrl |字符串 | 操作完成后存在的文件的 URL。 例如，如果重命名了某个文件，则 `destinationUrl` 属性将包含新文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
+| sourceUrl |字符串 | 执行操作之前存在的文件的 URL。 例如，如果重命名了某个文件，则 `sourceUrl` 将包含执行重命名操作之前的原始文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
+| url | 字符串 | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 url 将采用以下结构： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将具有以下结构： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
+| recursive | 字符串 | 若要对所有子目录执行该操作，则为 `True`；否则为 `False`。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
 | sequencer | string | 一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。 |
 | storageDiagnostics | object | Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。 |
 

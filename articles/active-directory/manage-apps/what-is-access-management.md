@@ -1,25 +1,21 @@
 ---
-title: 使用 Azure AD 管理对应用的访问 | Microsoft Docs
+title: 使用 Azure AD 管理对应用的访问
 description: 介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49db0455af02449c3bd087d323d9972d18d96f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479719"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639913"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 
@@ -49,7 +45,7 @@ Azure AD 的应用程序分配着重于两种主要分配模式：
 * 使用 Azure Active Directory 预身份验证的应用程序代理应用程序
 * 在 Azure AD 应用程序平台上生成且使用 OAuth 2.0 / OpenID Connect 身份验证的应用程序（前提是用户或管理员已认可该应用程序）。某些企业应用程序针对允许登录的用户进行了额外的控制。
 
-当不需要用户分配时，未分配的用户在其“我的应用”访问面板上看不到应用，但他们仍然可以登录到应用程序本身（也称为 SP 启动的登录），或者他们可以在应用程序的“属性”页（也称为 IDP 启动的登录）中使用“用户访问 URL” 。
+当*不需要*用户分配时，未分配的用户在我的应用程序上看不到应用程序，但它们仍可以登录到应用程序本身 (也称为 SP 启动的登录) ，也可以使用应用程序的 "**属性**" 页中的 "**用户访问 URL** " (也称为 "IDP) "。
 
 对于某些应用程序，要求用户分配的选项在应用程序的属性中不可用。 在这些情况下，可以使用 PowerShell 在服务主体上设置 appRoleAssignmentRequired 属性。
 
@@ -57,12 +53,12 @@ Azure AD 的应用程序分配着重于两种主要分配模式：
 
 Azure AD 提供[多种可自定义的方式来向组织中的最终用户部署应用程序](end-user-experiences.md)：
 
-* Azure AD 我的应用访问面板
+* Azure AD 我的应用
 * Office 365 应用程序启动器
 * 直接登录联合应用 (service-pr)
 * 联合、基于密码或现有的应用的深层链接
 
-你可以确定分配给企业应用的用户是否可以在访问面板和 Office 365 应用程序启动器中看到它。
+可以确定分配到企业应用的用户是否可以在我的应用程序和 Office 365 应用程序启动器中查看它。
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>示例：使用 Azure AD 进行复杂应用程序分配
 以 Salesforce 之类的应用程序为例。 在许多组织中，Salesforce 主要由营销和销售团队使用。 通常，营销团队成员对 Salesforce 拥有较高的访问权限，而销售团队的访问权限则受限。 在许多情况下，大范围的信息工作者对应用程序的访问权限会受到限制。 这些规则存在的例外使情况变得复杂。 营销或销售领导团队通常有特权授予用户访问权限，或独立于这些常规规则更改其角色。
@@ -76,7 +72,7 @@ Azure AD 提供[多种可自定义的方式来向组织中的最终用户部署�
 
 * 若要启用例外机制，可为每个角色创建自助组。 例如，可以将“Salesforce 营销例外”组创建为自助服务组。 可以为该组分配 Salesforce 营销角色，而营销领导团队可成为所有者。 营销领导团队的成员可以添加或删除用户、设置加入策略甚至批准或拒绝单个用户的加入请求。 信息工作者只需有相应经验即可支持该机制，不需要对所有者或成员进行专门培训。
 
-在此情况下，所有分配的用户会自动预配到 Salesforce，因为当他们添加到不同组时，他们的角色分配会在 Salesforce 中更新。 用户可以通过 Microsoft 应用程序访问面板、Office Web 客户端甚至通过浏览到其组织的 Salesforce 登录页来发现和访问 Salesforce。 管理员可以使用 Azure AD 报告轻松查看使用情况和分配状态。
+在此情况下，所有分配的用户会自动预配到 Salesforce，因为当他们添加到不同组时，他们的角色分配会在 Salesforce 中更新。 用户可以通过我的应用、Office web 客户端发现和访问 Salesforce，甚至可以通过导航到其组织的 Salesforce 登录页。 管理员可以使用 Azure AD 报告轻松查看使用情况和分配状态。
 
 管理员可以运用 [Azure AD 条件性访问](../conditional-access/concept-conditional-access-users-groups.md)为特定角色设置访问策略。 这些策略可能包括是否允许从企业环境外部访问、多重身份验证或设备要求，以在各种情况下实现访问。
 
@@ -92,7 +88,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 某些应用程序合并这些方法。 例如，某些 Microsoft 应用程序是 Office 365 订阅的一部分，但仍需要许可。
 
-用户可以通过其 Office 365 门户访问 Office 365 应用程序。 还可以通过目录的“用户设置”中的 [Office 365 可见性切换](hide-application-from-user-portal.md)，在“我的应用”访问面板中显示或隐藏 Office 365 应用程序。 
+用户可以通过其 Office 365 门户访问 Office 365 应用程序。 你还可以在目录的**用户设置**中通过[office 365 的 "可见性" 切换](hide-application-from-user-portal.md)显示或隐藏 office 365 应用程序。 
 
 与企业应用一样，你可以通过 Azure 门户[分配用户](assign-user-or-group-access-portal.md)到某些 Microsoft 应用程序，或者如果门户方式不可用，则可以使用 PowerShell。
 

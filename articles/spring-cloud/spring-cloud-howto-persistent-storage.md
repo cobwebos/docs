@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 0e49d59386b19aa8da46b8c8e6acfe50e2124541
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 1ff09941d07ecd6d62483b1fca59c9003ddbd159
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76278539"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496264"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中使用永久性存储
 

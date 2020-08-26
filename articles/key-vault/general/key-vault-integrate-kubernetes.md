@@ -1,23 +1,23 @@
 ---
 title: 将 Azure Key Vault 与 Kubernetes 集成
 description: 在本教程中，你将使用机密存储容器存储接口 (CSI) 驱动程序从 Azure 密钥保管库访问和检索机密，以便将其装载到 Kubernetes Pod。
-author: taytran0
-ms.author: t-trtr
+author: rkarlin
+ms.author: rkarlin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921561"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685878"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
 在本教程中，你将使用机密存储容器存储接口 (CSI) 驱动程序从 Azure 密钥保管库访问和检索机密，以便将机密装载到 Kubernetes Pod。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建服务主体或使用托管标识。
@@ -71,7 +71,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. 若要显示已创建的 AKS 群集的元数据，请使用以下命令。 复制 principalId、clientId、subscriptionId 和 nodeResourceGroup 供稍后使用   。
+1. 若要显示已创建的 AKS 群集的元数据，请使用以下命令。 复制 principalId、clientId、subscriptionId 和 nodeResourceGroup 供稍后使用   。 如果在创建 ASK 群集时未启用托管标识，则 principalId 和 clientId 将为 null 。 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -107,7 +107,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 ## <a name="create-your-own-secretproviderclass-object"></a>创建自己的 SecretProviderClass 对象
 
-若要自行创建自定义 SecretProviderClass 对象，并为机密存储 CSI 驱动程序指定提供程序特定的参数，请[使用此模板](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml)。 此对象将提供对密钥保管库的标识访问。
+若要自行创建自定义 SecretProviderClass 对象，并为机密存储 CSI 驱动程序指定提供程序特定的参数，请[使用此模板](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml)。 此对象将提供对密钥保管库的标识访问。
 
 在示例 SecretProviderClass YAML 文件中，填写缺少的参数。 下列参数必填：
 
@@ -141,12 +141,12 @@ spec:
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
-    cloudName: ""                             # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
+    cloudName: ""                                # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
     objects:  |
       array:
         - |
           objectName: secret1                 # [REQUIRED] object name
-                                              #     az keyvault secret list --vault-name “contosoKeyVault5”
+                                              #     az keyvault secret list --vault-name "contosoKeyVault5"
                                               #     the above command will display a list of secret names from your key vault
           objectType: secret                  # [REQUIRED] object types: secret, key, or cert
           objectVersion: ""                   # [OPTIONAL] object versions, default to latest if empty
@@ -166,7 +166,7 @@ spec:
 
 ### <a name="assign-a-service-principal"></a>分配服务主体
 
-如果使用的是服务主体，请向其授予访问密钥保管库并检索机密的权限。 通过执行以下操作分配“读取者”角色并向服务主体授予从密钥保管库获取机密的权限 ：
+如果使用的是服务主体，请向其授予访问密钥保管库并检索机密的权限。 通过执行以下命令分配“读取者”角色并向服务主体授予从密钥保管库获取机密的权限 ：
 
 1. 将服务主体分配到现有密钥保管库。 $AZURE_CLIENT_ID 参数是在创建服务主体后复制的 appId 。
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 如果使用的是托管标识，请将特定角色分配给所创建的 AKS 群集。 
 
-1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。
+1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。 就范围而言，它处于 Azure 订阅服务（特别是创建 AKS 群集时创建的节点资源组）下。 此范围将确保仅该组中的资源受下面分配的角色的影响。 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
@@ -241,7 +241,7 @@ kubectl apply -f secretProviderClass.yaml
 ### <a name="use-a-service-principal"></a>使用服务主体
 
 如果使用的是服务主体，请使用以下命令通过之前配置的 SecretProviderClass 和 secrets-store-creds 部署 Kubernetes Pod。 下面是部署模板：
-* 对于 [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-secrets-store-inline-volume-secretproviderclass.yaml)
+* 对于 [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-inline-volume-service-principal.yaml)
 * 对于 [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml)
 
 ```azurecli

@@ -8,12 +8,13 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 648a47b451e8857c1cd84c2bcecdaae7fcaa065d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142492"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430544"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -218,6 +219,8 @@ async function ManageDirectoryACLs(fileSystemClient) {
   await directoryClient.setAccessControl(acl);
 }
 ```
+
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串（）传递给 `/` **DataLakeFileSystemClient. getDirectoryClient**方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 

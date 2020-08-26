@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6fa27008ea22e1a2bd9a83ce3888370cf2213935
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259288"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458070"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。 Azure 上的传统 Service Fabric 群集作为托管服务提供，而独立的 Service Fabric 群集是自助服务。 有关差异的详细信息，请参阅[比较 Azure 和独立 Service Fabric 群集](./service-fabric-deploy-anywhere.md)。
@@ -128,7 +128,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 
 例如：
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
 有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。

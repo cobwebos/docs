@@ -6,24 +6,21 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384865"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客户托管的密钥对应用配置数据进行加密
 Azure 应用配置对[静态敏感信息进行加密](../security/fundamentals/encryption-atrest.md)。 通过使用客户管理的密钥，可以管理加密密钥，从而提供增强的数据保护。  使用托管密钥加密时，将使用用户提供 Azure Key Vault 密钥对应用配置中的所有敏感信息进行加密。  这样就可以根据需要轮换加密密钥。  它还可以通过撤消应用配置实例对密钥的访问权限来撤消 Azure 应用配置对敏感信息的访问。
-
-> [!NOTE]
-> 客户托管的密钥现在已在*除*印度中部的所有地区正式发布。 在**印度中部**区域，Azure 应用配置提供客户管理的密钥作为公共预览。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。
 
 ## <a name="overview"></a>概述 
 Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静态的敏感信息。 每个应用配置实例都有其自己的加密密钥，该密钥由服务管理并用于加密敏感信息。 敏感信息包括在键值对中找到的值。  启用客户托管的密钥功能后，应用配置将使用分配给应用配置实例的托管标识对 Azure Active Directory 进行身份验证。 然后，托管标识调用 Azure Key Vault 并包装应用配置实例的加密密钥。 然后存储已包装的加密密钥，并在应用配置中将已包装的加密密钥缓存一小时。 应用配置每小时刷新已包装版本的应用配置实例的加密密钥。 这可确保在正常操作情况下的可用性。 
 
 >[!IMPORTANT]
-> 如果分配给应用程序配置实例的标识不再有权解包实例的加密密钥，或者如果永久删除了托管密钥，则将无法再对存储在应用程序配置实例中的敏感信息进行解密。 使用 Azure Key Vault 的[软删除](../key-vault/general/overview-soft-delete.md)功能减少了意外删除加密密钥的几率。
+> 如果分配给应用程序配置实例的标识不再有权解包实例的加密密钥，或者如果永久删除了托管密钥，则将无法再对存储在应用程序配置实例中的敏感信息进行解密。 使用 Azure Key Vault 的[软删除](../key-vault/general/soft-delete-overview.md)功能减少了意外删除加密密钥的几率。
 
 当用户在其 Azure 应用配置实例上启用客户管理的密钥功能时，他们将控制服务访问其敏感信息的能力。 托管密钥用作根加密密钥。 用户可以通过更改其密钥保管库访问策略来撤消其应用配置实例对其托管密钥的访问权限。 撤消此访问权限时，应用配置将失去在一小时内解密用户数据的功能。 此时，应用配置实例将禁止所有访问尝试。 此情况可通过向服务授予对托管密钥的访问权限来恢复。  在一小时内，应用配置将能够对用户数据进行解密，并在正常情况下运行。
 
@@ -81,7 +78,7 @@ Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静�
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    此命令的输出包含系统分配的标识的主体 ID （"principalId"）和租户 ID （"tenandId"）。  这将用于向标识授予对托管密钥的访问权限。
+    此命令的输出包含系统分配的标识的主体 ID （"principalId"）和租户 ID （"tenandId"）。  这些 Id 将用于向标识授予对托管密钥的访问权限。
 
     ```json
     {

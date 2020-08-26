@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134090"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504222"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -51,14 +51,14 @@ ms.locfileid: "86134090"
 6. 在“是否要使用 System Center VMM 管理 Hyper-V 主机?”中，选择“否”。
 7. 选择“确定”。
 
-    ![复制目标](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![准备基础结构中的保护目标选项的屏幕截图。](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>确认部署规划
 
 1. 在“部署规划”中，若要规划大型部署，请通过页面上的链接下载适用于 Hyper-V 的部署规划器。 [详细了解](hyper-v-deployment-planner-overview.md) Hyper-V 部署规划。
 2. 本教程不需要使用部署规划器。 在“是否已完成部署规划?”中选择“我将稍后进行”，然后选择“确定”。
 
-    ![部署规划](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![准备基础结构中的部署规划选项的屏幕截图。](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
@@ -68,17 +68,17 @@ ms.locfileid: "86134090"
 2. 在“准备源”中，选择“+ Hyper-V 站点” 。
 3. 在“创建 Hyper-V 站点”中，指定站点名称。 我们将使用 **ContosoHyperVSite**。
 
-    ![Hyper-V 站点](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![准备基础结构中的 Hyper-V 站点选择屏幕截图。](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. 创建站点后，在“准备源” > “步骤 1: 选择 Hyper-V 站点”中，选择创建的站点。
 5. 选择“+ Hyper-V 服务器”。
 
-    ![Hyper-V Server](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![准备基础结构中的 Hyper-V 服务器选择屏幕截图。](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. 下载 Microsoft Azure Site Recovery 提供程序的安装程序。
 7. 下载保管库注册密钥。 需要使用此密钥来安装提供程序。 生成的密钥有效期为 5 天。
 
-    ![下载提供程序和注册密钥](./media/hyper-v-azure-tutorial/download.png)
+    ![用于下载提供程序和注册密钥的选项的屏幕截图。](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>安装提供程序

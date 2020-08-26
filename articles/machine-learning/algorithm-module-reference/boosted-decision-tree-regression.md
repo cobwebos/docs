@@ -8,18 +8,21 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 171c53aa36ecc854cf32a64f9f2639a7086c24e5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84448625"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782577"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>“提升决策树回归”模块
 
 本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
 
 使用此模块可以通过提升来创建回归树的系综。 “提升”表示每个树依赖于前面的树。 该算法通过拟合每个树前面剩余的树来进行学习。 因此，决策树系综中的提升往往会提高准确度，但在某种程度上也会带来降低覆盖面的小风险。  
+
+此模块基于 LightGBM 算法。
   
 此回归方法是一种监督式学习方法，因此需要带标签的数据集。 标签列必须包含数字值。  
 

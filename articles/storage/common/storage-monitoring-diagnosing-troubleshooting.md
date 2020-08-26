@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518583"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688549"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "86518583"
 诊断和排查在云环境中托管的分布式应用程序中的问题可能会比在传统环境中更复杂。 应用程序可以部署在 PaaS 或 IaaS 基础结构、本地、移动设备，或这些环境的某种组合中。 通常，应用程序的网络流量可能会经过公用和专用网络，应用程序可以使用多种存储技术（如 Microsoft Azure 存储表、Blob、队列或文件）以及其他数据存储（如关系数据库和文档数据库）。
 
 若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。 作为 Azure 存储服务的用户，应持续监视应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入分析问题。 从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。 然后，用户可以排查该问题，并确定可以执行以更正该问题的相应步骤。 Azure 存储是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。 Azure 存储提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
-
-> [!NOTE]
-> Azure 文件目前不支持日志记录。
->
 
 有关 Azure 存储应用程序中端到端故障排除的动手指南，请参阅[端到端故障排除 - 使用 Azure 存储指标和日志记录、AzCopy 和 Message Analyzer](../storage-e2e-troubleshooting.md)。
 
@@ -472,7 +468,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
-| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> 发出同步请求 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> 发出同步请求 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
 | Microsoft.Azure.Storage |警告 |2 |85d077ab -… |等待响应时引发了异常：远程服务器返回了错误：(403) 禁止访问。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
@@ -507,7 +503,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -628,7 +624,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| Timestamp | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |

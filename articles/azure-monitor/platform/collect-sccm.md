@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319314"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
@@ -41,13 +41,13 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>为 Configuration Manager 授予访问 Log Analytics 的权限
 
-在以下过程中，你将在 Log Analytics 工作区中，向前面为 Configuration Manager 创建的 AD 应用程序和服务主体授予“参与者”角色。** 如果尚未创建工作区，请参阅[在 Azure Monitor 中创建工作区](../../azure-monitor/learn/quick-create-workspace.md)，然后继续。 这样，Configuration Manager 便可以执行身份验证并连接到 Log Analytics 工作区。  
+在以下过程中，你将在 Log Analytics 工作区中，向前面为 Configuration Manager 创建的 AD 应用程序和服务主体授予“参与者”角色。** 如果尚未创建工作区，请参阅[在 Azure Monitor 中创建工作区](../learn/quick-create-workspace.md)，然后继续。 这样，Configuration Manager 便可以执行身份验证并连接到 Log Analytics 工作区。  
 
 > [!NOTE]
 > 必须为 Configuration Manager 指定 Log Analytics 工作区中的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
 >
 
-1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
+1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
 
 2. 在 Log Analytics 工作区列表中，选择要修改的工作区。
 
@@ -129,7 +129,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 完成从层次结构导入设备连接的初始配置后，每隔 3 小时检索一次集合信息，以保持最新的集合成员身份。 随时可以选择禁用此功能。
 
-1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
+1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 2. 在 Log Analytics 工作区列表中，选择 Configuration Manager 注册到的工作区。  
 3. 选择“高级设置”。
 4. 依次选择“计算机组”、“SCCM”。********  
@@ -139,14 +139,15 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 ## <a name="view-data-from-configuration-manager"></a>查看配置管理器中的数据
 
-将 Log Analytics 连接添加到 Configuration Manager 并在运行 Configuration Manager 服务连接点站点系统角色的计算机上安装了代理之后，来自代理的数据将发送到 Azure Monitor 中的 Log Analytics 工作区。 在 Azure Monitor 中，Configuration Manager 集合以[计算机组](../../azure-monitor/platform/computer-groups.md)的形式显示。 可以从“设置”>“计算机组”**** 下的“Configuration Manager”**** 页查看这些组。
+将 Log Analytics 连接添加到 Configuration Manager 并在运行 Configuration Manager 服务连接点站点系统角色的计算机上安装了代理之后，来自代理的数据将发送到 Azure Monitor 中的 Log Analytics 工作区。 在 Azure Monitor 中，Configuration Manager 集合以[计算机组](./computer-groups.md)的形式显示。 可以从“设置”>“计算机组”**** 下的“Configuration Manager”**** 页查看这些组。
 
 在导入集合后，可以看到已检测到的具有集合成员身份的计算机数。 此外还可以看到已导入的集合数。
 
 ![计算机组 - SCCM 选项卡](./media/collect-sccm/sccm-computer-groups02.png)
 
-单击上面任意一项，都会打开日志查询编辑器，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，可以针对集合成员身份数据执行进一步的深度分析。
+单击上面任意一项，都会打开日志查询编辑器，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](../log-query/log-query-overview.md)，可以针对集合成员身份数据执行进一步的深度分析。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看有关配置管理器数据的详细信息。
+使用[日志搜索](../log-query/log-query-overview.md)查看有关配置管理器数据的详细信息。
+

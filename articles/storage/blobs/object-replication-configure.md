@@ -6,15 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888121"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566057"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>为块 blob 配置对象复制（预览）
 
@@ -43,8 +44,8 @@ ms.locfileid: "84888121"
 若要在 Azure 门户中创建复制策略，请按照以下步骤操作：
 
 1. 在 Azure 门户中，转到源存储帐户。
-1. 在**Blob 服务**下，选择**对象复制**。
-1. 选择“设置复制”。
+1. 在 **Blob 服务**下，选择 **对象复制**。
+1. 选择 " **设置复制规则**"。
 1. 选择目标订阅和存储帐户。
 1. 在“容器对”部分中，选择源帐户中的源容器，以及目标帐户中的目标容器。 每个复制策略最多可以创建 10 个容器对。
 
@@ -52,7 +53,7 @@ ms.locfileid: "84888121"
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
 
-1. 如果需要，指定一个或多个筛选器，以便只复制与前缀模式匹配的 blob。 例如，如果指定前缀 `b`，则只会复制名称以此字母开头的 blob。 可以将虚拟目录指定为前缀的一部分。
+1. 如果需要，指定一个或多个筛选器，以便只复制与前缀模式匹配的 blob。 例如，如果指定前缀 `b`，则只会复制名称以此字母开头的 blob。 可以将虚拟目录指定为前缀的一部分。 前缀字符串不支持通配符。
 
     下图展示了限制在复制规则中复制哪些 blob 的筛选器。
 
@@ -68,7 +69,7 @@ ms.locfileid: "84888121"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 创建复制策略，请先安装 [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 版本的 Az.Storage PowerShell 模块。 若要安装预览版模块，请按照以下步骤操作：
+若要使用 PowerShell 创建复制策略，请先安装 [2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 或更高版本。 若要安装预览版模块，请按照以下步骤操作：
 
 1. 使用“设置”下的“应用和功能”设置从 Windows 中卸载以前安装的所有 Azure PowerShell。
 
@@ -174,15 +175,18 @@ az login
 在源存储帐户和目标存储帐户上启用 blob 版本控制，在源帐户上启用更改源。 请注意将尖括号中的值替换为你自己的值：
 
 ```azurecli
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-versioning
 
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-change-feed
 
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <dest-storage-account> \
     --enable-versioning
 ```
@@ -190,17 +194,30 @@ az storage blob service-properties update --resource-group <resource-group> \
 在它们各自的存储帐户中创建源容器和目标容器。
 
 ```azurecli
-az storage container create --account-name <source-storage-account> --name source-container3 --auth-mode login
-az storage container create --account-name <source-storage-account> --name source-container4 --auth-mode login
+az storage container create \
+    --account-name <source-storage-account> \
+    --name source-container3 \
+    --auth-mode login
+az storage container create \
+    --account-name <source-storage-account> \
+    --name source-container4 \
+    --auth-mode login
 
-az storage container create --account-name <dest-storage-account> --name source-container3 --auth-mode login
-az storage container create --account-name <dest-storage-account> --name source-container4 --auth-mode login
+az storage container create \
+    --account-name <dest-storage-account> \
+    --name source-container3 \
+    --auth-mode login
+az storage container create \
+    --account-name <dest-storage-account> \
+    --name source-container4 \
+    --auth-mode login
 ```
 
 在目标帐户上新建复制策略及其关联的规则。
 
 ```azurecli
-az storage account or-policy create --account-name <dest-storage-account> \
+az storage account or-policy create \
+    --account-name <dest-storage-account> \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
@@ -209,7 +226,8 @@ az storage account or-policy create --account-name <dest-storage-account> \
     --min-creation-time '2020-05-10T00:00:00Z' \
     --prefix-match a
 
-az storage account or-policy rule add --account-name <dest-storage-account> \
+az storage account or-policy rule add \
+    --account-name <dest-storage-account> \
     --destination-container dest-container4 \
     --policy-id <policy-id> \
     --resource-group <resource-group> \
@@ -220,7 +238,8 @@ az storage account or-policy rule add --account-name <dest-storage-account> \
 使用策略 ID 在源帐户上创建策略。
 
 ```azurecli
-az storage account or-policy show --resource-group <resource-group> \
+az storage account or-policy show \
+    --resource-group <resource-group> \
     --name <dest-storage-account> \
     --policy-id <policy-id> |
     --az storage account or-policy create --resource-group <resource-group> \

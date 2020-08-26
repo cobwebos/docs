@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f0c3c63d00ea49bf43f00f256266599a73d6c0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77132052"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508798"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>从无人机合作伙伴获取无人机图像
 
@@ -23,7 +24,7 @@ ms.locfileid: "77132052"
 
 ## <a name="before-you-begin"></a>开始之前
 
-  - 请确保已安装 Azure FarmBeats。 有关如何安装 FarmBeats 的信息，请参阅[Install Azure FarmBeats](install-azure-farmbeats.md)。
+  - 请确保已安装 Azure FarmBeats。 有关如何安装 FarmBeats 的信息，请参阅 [Install Azure FarmBeats](install-azure-farmbeats.md)。
   - 确保你有要在 FarmBeats 系统中定义无人机图像的场。
 
 ## <a name="enable-drone-imagery-integration-with-farmbeats"></a>启用无人机图像与 FarmBeats 的集成
@@ -36,12 +37,12 @@ ms.locfileid: "77132052"
 
 请执行以下步骤。
 
-1. 下载此[脚本](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器。 Zip 文件内有两个文件。
+1. 下载此 [脚本](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器。 Zip 文件内有两个文件。
 2. 登录到 [Azure 门户](https://portal.azure.com/)，并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。
 
     ![打开门户右上栏 Azure Cloud Shell](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. 请确保将环境设置为**PowerShell**。
+3. 请确保将环境设置为 **PowerShell**。
 
     ![PowerShell 设置](./media/get-drone-imagery-from-drone-partner/power-shell-new-1.png)
 
@@ -52,9 +53,9 @@ ms.locfileid: "77132052"
 5. 中转到上载文件的目录。 默认情况下，会将其上传到 "用户名" 下的主目录。
 6. 运行以下脚本：
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generateCredentials.ps1   
+    ./generateCredentials.ps1
 
     ```
 
@@ -68,11 +69,11 @@ ms.locfileid: "77132052"
 
 将数据发送到 FarmBeats datahub 后，可以使用 FarmBeats Datahub Api 查询场景存储。
 
-或者，你可以在**场详细信息**页上查看最新的无人机图像。 若要查看映像，请执行以下步骤。
+或者，你可以在 **场详细信息** 页上查看最新的无人机图像。 若要查看映像，请执行以下步骤。
 
-1. 选择要将图像上传到的场。 此时将显示**场**详细信息页。
-2. 向下滚动到最新的**精度地图**部分。
-3. 查看**无人机**图像部分中的图像。
+1. 选择要将图像上传到的场。 此时将显示 **场** 详细信息页。
+2. 向下滚动到最新的 **精度地图** 部分。
+3. 查看 **无人机** 图像部分中的图像。
 
     ![无人机图像部分](./media/get-drone-imagery-from-drone-partner/drone-imagery-1.png)
 
@@ -84,10 +85,10 @@ ms.locfileid: "77132052"
 
 ## <a name="view-all-drone-maps"></a>查看所有无人机映射
 
-无人机提供程序上载的文件和映像显示在**Maps**部分。 选择 "**映射**" 部分，按**场**进行筛选，然后选择相应的文件进行查看和下载。
+无人机提供程序上载的文件和映像显示在 **Maps** 部分。 选择 " **映射** " 部分，按 **场**进行筛选，然后选择相应的文件进行查看和下载。
 
   ![Maps 部分](./media/get-drone-imagery-from-drone-partner/view-drone-maps-1.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 FarmBeats Datahub [api](rest-api-in-azure-farmbeats.md)获取无人机图像。
+了解如何使用 FarmBeats Datahub [api](rest-api-in-azure-farmbeats.md) 获取无人机图像。

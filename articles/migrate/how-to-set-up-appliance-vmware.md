@@ -3,12 +3,12 @@ title: 为 VMware 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112810"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386735"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "86112810"
 ## <a name="download-the-ova-template"></a>下载 OVA 模板
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 VMWare vSphere 虚拟机监控程序”。  
+2. 在 "**发现**计算机  >  **是否已虚拟化"** 中，单击 **"是，并 VMware vSphere 虚拟机监控程序"**。
 3. 单击“下载”以下载 .OVA 模板文件。****
 
   ![用于下载 OVA 文件的选项](./media/tutorial-assess-vmware/download-ova.png)
@@ -89,7 +89,7 @@ ms.locfileid: "86112810"
         - 仅支持 HTTP 代理。
     - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
     - **安装更新**： Azure Migrate 检查是否安装了最新的设备更新。
-    - **安装 VDDK**： Azure Migrate 检查是否安装了 VMWare VSphere 虚拟磁盘开发工具包（VDDK）。
+    - **安装 VDDK**： Azure Migrate 检查是否安装了 VMware vSphere 虚拟磁盘开发工具包（VDDK）。
         - Azure 迁移使用 VDDK 在迁移到 Azure 的过程中复制计算机。
         - 从 VMware 下载 VDDK 6.7，并将下载的 zip 内容解压缩到设备上的指定位置。
 
@@ -124,7 +124,7 @@ ms.locfileid: "86112810"
 2. 选择“操作系统”****。
 3. 提供凭据的易记名称。
 4. 在“用户名”和“密码”中，指定在 VM 上至少具有来宾访问权限的帐户********。
-5. 单击“添加”。
+5. 单击“添加”  。
 
 指定 vCenter Server 和 VM 凭据（可选）后，单击“保存并开始发现”，开始发现本地环境****。
 

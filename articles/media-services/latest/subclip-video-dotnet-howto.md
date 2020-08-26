@@ -13,16 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67305074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091889"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒体服务编码时对视频进行子剪辑 - .NET
 
-在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。
+在使用[作业](/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 此功能适用于使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](/rest/api/media/transforms)。
 
 下面的 C# 示例创建一个作业，该作业在提交编码作业时剪裁资产中的视频。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "67305074"
 
 若要完成本主题中所述的步骤，必须：
 
-- [创建 Azure 媒体服务帐户](create-account-cli-how-to.md)
+- [创建 Azure 媒体服务帐户](./create-account-howto.md)
 - 创建转换以及输入和输出资产。 可以在[使用 .NET 对视频进行上传、编码和流式处理](stream-files-tutorial-with-api.md)中了解如何创建转换以及输入和输出资产。
 - 查看[编码概念](encoding-concept.md)主题。
 

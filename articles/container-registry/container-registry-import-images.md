@@ -2,13 +2,13 @@
 title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/17/2020
+ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023510"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660489"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
 
@@ -28,17 +28,19 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 
 * 导入多体系结构映像（例如正式的 Docker 映像）时，会复制清单列表中指定的所有体系结构和平台的映像。
 
+* 访问源和目标注册表不必使用注册表的公共终结点。
+
 若要导入容器映像，本文要求在 Azure Cloud Shell 中或本地（建议使用 2.0.55 或更高版本）运行 Azure CLI。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!NOTE]
-> 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过异地复制注册表（需要高级服务层），可以为多个区域提供完全相同的映像名称和标记名称。
+> 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过异地复制注册表 (需要高级服务层) ，你可以使用一个注册表中具有相同映像和标记名称的多个区域。
 >
 
 ## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 容器注册表，请创建注册表。 有关步骤，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。
+如果还没有 Azure 容器注册表，请创建注册表。 有关步骤，请参阅 [快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。
 
-若要将映像导入到 Azure 容器注册表，标识必须具有对目标注册表的写入权限（至少是参与者角色）。 请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。 
+若要将映像导入到 Azure 容器注册表，你的标识必须对目标注册表具有写入权限， (至少是参与者角色，或者是允许 importImage 操作) 的自定义角色。 请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md#custom-roles)。 
 
 ## <a name="import-from-a-public-registry"></a>从公共注册表导入
 
@@ -85,9 +87,11 @@ az acr import \
 
 可以使用集成的 Azure Active Directory 权限从另一 Azure 容器注册表导入映像。
 
-* 你的身份必须具有 Azure Active Directory 权限，才能从源注册表（读者角色）读取数据并写入到目标注册表（参与者角色）。
+* 你的标识必须具有 Azure Active Directory 的权限，才能读取源注册表 (读取者角色) ，并导入到目标注册表 (参与者角色，或允许 importImage 操作) 的 [自定义角色](container-registry-roles.md#custom-roles) 。
 
 * 注册表可以位于同一 Active Directory 租户的同一或不同 Azure 订阅中。
+
+* 可以禁用对源注册表的[公共访问](container-registry-access-selected-networks.md#disable-public-network-access)。 如果禁用公共访问，请按资源 ID 而不是注册表登录服务器名称指定源注册表。
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>从同一订阅的注册表中导入
 
@@ -98,6 +102,16 @@ az acr import \
   --name myregistry \
   --source mysourceregistry.azurecr.io/aci-helloworld:latest \
   --image aci-helloworld:latest
+```
+
+下面的示例将 `aci-helloworld:latest` 映像从 *myregistry* 的源注册表 *mysourceregistry* 导入到禁用了对注册表的公共终结点的访问。 使用 `--registry` 参数提供源注册表的资源 ID。 请注意， `--source` 参数仅指定源存储库和标记，而不指定注册表登录服务器名称。
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source aci-helloworld:latest \
+  --image aci-helloworld:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 下面的示例通过清单摘要（SHA-256 哈希代码，表示为 `sha256:...`）而非标记导入映像：

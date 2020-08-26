@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Shmoop For Schools 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Shmoop For Schools 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06ce2e51f72b9b4f709bf26ce6d92ad3861d36db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fdd9a0e72b9fee374de810ce6e18bb0f5c2fbe25
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74081649"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548610"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>教程：将 Shmoop For Schools 与 Azure Active Directory 集成
 

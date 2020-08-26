@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure DevOps Starter 创建适用于 .NET 的 CI/CD 管道
+title: 快速入门：通过 Azure DevOps Starter 创建用于 .NET 的 CI/CD 管道
 description: 可以通过 Azure DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选 Azure 服务上的 .NET 应用。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233290"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163690"
 ---
-# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>使用 Azure DevOps Starter 创建适用于 .NET 的 CI/CD 管道
+# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>通过 Azure DevOps Starter 创建用于 .NET 的 CI/CD 管道
 
-通过 DevOps Starter 为 .NET core 或 ASP.NET 应用程序配置持续集成（CI）和持续交付（CD）。 在 Azure Pipelines 中，DevOps Starter 简化了生成和发布管道的初始配置。
+使用 DevOps Starter 为 .NET Core 或 ASP.NET 应用程序配置持续集成 (CI) 和持续交付 (CD)。 DevOps Starter 可以简化 Azure Pipelines 中生成和发布管道的初始配置。
 
 如果没有 Azure 订阅，可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
 
@@ -54,9 +54,9 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 
 2. 创建新的免费 **Azure DevOps 组织**或从下拉列表中选择现有组织。
 
-3. 选择 **Azure 订阅**，输入 **Web 应用**的名称或采用默认值，然后选择“完成”  。 几分钟后，"DevOps 入门部署概述" 会显示在 Azure 门户中。 
+3. 选择 **Azure 订阅**，输入 **Web 应用**的名称或采用默认值，然后选择“完成”  。 几分钟后，DevOps Starter 部署概述会 在 Azure 门户中显示。 
 
-4. 选择 "**前往资源**" 以查看 DevOps 初学者仪表板。 在右上角，将“项目”  固定在仪表板上，以便快速访问。 示例应用设置在 **Azure DevOps 组织**的存储库中。 执行生成，并将应用部署到 Azure。
+4. 选择“转到资源”以查看 DevOps Starter 仪表板。 在右上角，将“项目”  固定在仪表板上，以便快速访问。 示例应用设置在 **Azure DevOps 组织**的存储库中。 执行生成，并将应用部署到 Azure。
 
 5. 在此仪表板中可以查看代码存储库、CI/CD 管道，以及 Azure 中的应用。 在右侧的“Azure 资源”下，选择“浏览”以查看正在运行的应用。 
 
@@ -64,25 +64,25 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD
 
-DevOps Starter 在 Azure Repos 或 GitHub 中创建了一个 Git 存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下操作：
+DevOps Starter 在 Azure Repos 或 GitHub 中创建了 Git 存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下操作：
 
-1. 在 DevOps 入门仪表板的左侧，选择**主**分支的链接。 该链接会打开新建 Git 存储库的视图。
+1. 在 DevOps Starter 仪表板的左侧，选择“主”分支的链接。 该链接会打开新建 Git 存储库的视图。
 
 2. 在后续几个步骤中，可以使用 Web 浏览器直接对 **master** 分支进行代码更改并提交所做的更改。 还可以通过从存储库页右上角选择“克隆”  ，在喜欢的 IDE 中克隆 Git 存储库。 
 
 3. 在左侧，将应用程序文件结构导航到 **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**。
 
-4. 选择“编辑”，  然后对 h2 标题进行更改。 例如，键入 **"Azure DevOps Starter 立即开始"** 或进行其他更改。
+4. 选择“编辑”，  然后对 h2 标题进行更改。 例如，键入“Azure DevOps Starter 快速入门”或进行一些其他的更改。
 
       ![代码编辑](_img/azure-devops-project-aspnet-core/codechange.png)
 
 5. 选择“提交”  ，留下注释，然后再次选择“提交”  。
 
-6. 在浏览器中，请参阅 Azure DevOps Starter 仪表板。  此时会看到一个生成正在进行。 所做的更改会自动通过 CI/CD 管道进行生成和部署。
+6. 在浏览器中，转到 Azure DevOps Starter 仪表板。  此时会看到一个生成正在进行。 所做的更改会自动通过 CI/CD 管道进行生成和部署。
 
 ## <a name="examine-the-cicd-pipeline"></a>检查 CI/CD 管道
 
-在上一步中，Azure DevOps Starter 自动配置了完整的 CI/CD 管道。 根据需要浏览和自定义管道。 请执行以下步骤，自行熟悉 Azure DevOps 的生成和发布管道。
+在上一步中，Azure DevOps Starter 自动配置了一个完整的 CI/CD 管道。 根据需要浏览和自定义管道。 请执行以下步骤，自行熟悉 Azure DevOps 的生成和发布管道。
 
 1. 在 DevOps 入门版仪表板顶部，选择“生成管道”。 此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps 生成管道。
 
@@ -101,7 +101,7 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建了一个 Git 存储库。 �
 1. 在生成管道名称下，选择“历史记录”。    
 在“历史记录”窗格中，此时会看到最近针对生成所做的更改的审核线索。   Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择“触发器”。  DevOps Starter 自动创建了 CI 触发器，每次提交到存储库时都会启动新的生成。 可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。  DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 可以选择在 CI 过程中包括或排除分库。
 
 1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
 

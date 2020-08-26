@@ -3,12 +3,12 @@ title: 使 Azure 服务总线应用程序免受服务中断和灾难影响
 description: 本文提供了用于保护应用程序免受潜在的 Azure 服务总线中断影响的技术。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339658"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065618"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -27,7 +27,7 @@ ms.locfileid: "85339658"
 
 ### <a name="availability-zones"></a>可用性区域
 
-服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本（1个主副本和2个辅助副本）。 服务总线为数据和管理操作保留同步的所有三个副本。 如果主要副本发生故障，则会将其中一个辅助副本提升为主要副本，无需停机。 如果应用程序看到暂时性中断了服务总线，SDK 中的重试逻辑将自动重新连接到服务总线。 
+服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本 (1 个主) 和2个辅助。 服务总线为数据和管理操作保留同步的所有三个副本。 如果主要副本发生故障，则会将其中一个辅助副本提升为主要副本，无需停机。 如果应用程序看到暂时性中断了服务总线，SDK 中的重试逻辑将自动重新连接到服务总线。 
 
 > [!NOTE]
 > Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-region.md)。
@@ -72,7 +72,7 @@ ms.locfileid: "85339658"
 [使用服务总线标准层进行异地复制][Geo-replication with Service Bus Standard Tier]示例演示了消息传送实体的被动复制。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>保护中继终结点免受数据中心中断或灾难的影响
-[Azure 中继](../service-bus-relay/relay-what-is-it.md)终结点的异地复制使得公开中继终结点的服务在服务总线中断时可用。 若要实现异地复制，该服务必须在不同的命名空间中创建两个中继终结点。 命名空间必须位于不同的数据中心，且两个终结点必须具有不同的名称。 例如，主终结点可以在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下进行访问，而其辅助副本则可以在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下进行访问。
+[Azure 中继](../azure-relay/relay-what-is-it.md)终结点的异地复制使得公开中继终结点的服务在服务总线中断时可用。 若要实现异地复制，该服务必须在不同的命名空间中创建两个中继终结点。 命名空间必须位于不同的数据中心，且两个终结点必须具有不同的名称。 例如，主终结点可以在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下进行访问，而其辅助副本则可以在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下进行访问。
 
 该服务随后侦听两个终结点，客户端可通过其中任一终结点调用服务。 客户端应用程序随机选取一个中继作为主要终结点，并向活动终结点发送请求。 如果操作失败并返回错误代码，此故障指示中继终结点不可用。 应用程序会打开通向备份终结点的通道并重新发送请求。 此时，活动终结点与备份终结点将互换角色：客户端应用程序会将旧的活动终结点认定为新的备份终结点，而将旧的备份终结点认定为新的活动终结点。 如果两次发送操作都失败，则两个实体的角色将保持不变并返回错误。
 
@@ -81,7 +81,7 @@ ms.locfileid: "85339658"
 
 * [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)
 * [Azure SQL 数据库业务连续性][Azure SQL Database Business Continuity]
-* [为 Azure 设计复原应用程序][Azure resiliency technical guidance]
+* [设计适用于 Azure 的弹性应用程序][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

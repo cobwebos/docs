@@ -1,27 +1,22 @@
 ---
 title: Windows 虚拟桌面环境-Azure
-description: Windows 虚拟桌面环境的基本元素。
-services: virtual-desktop
+description: 了解 Windows 虚拟桌面环境的基本元素，例如主机池和应用组。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259906"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002605"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
 
 Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚拟化桌面和 RemoteApps。 本主题将详细介绍 Windows 虚拟桌面环境的一般结构。
 
@@ -52,7 +47,7 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 
 ## <a name="workspaces"></a>工作区
 
-工作区是 Windows 虚拟桌面中的应用程序组的逻辑分组。 每个 Windows 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。  
+工作区是 Windows 虚拟桌面中的应用程序组的逻辑分组。 每个 Windows 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。
 
 ## <a name="end-users"></a>最终用户
 

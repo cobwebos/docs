@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全代码分析文档常见问题解答
-description: 本文包含有关 Microsoft 安全代码分析扩展的常见问题解答
+description: 通过查看常见问题（Faq）了解 Microsoft 安全代码分析扩展。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362068"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543038"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 遇到问题？ 请查看以下常见问题解答来了解详细信息。
@@ -26,7 +26,7 @@ ms.locfileid: "85362068"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
 
-不能。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
+否。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>是否必须对生成运行 Microsoft 安全代码分析？ 
 
@@ -55,7 +55,7 @@ ms.locfileid: "85362068"
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>能否在 Azure DevOps 生成中跨多个存储库运行一个生成任务（例如凭据扫描程序）？
 
-不能。 不支持在单个管道中跨多个存储库运行安全开发工具。
+否。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建我指定的输出文件，或者找不到我指定的输出文件
 
@@ -106,15 +106,17 @@ ms.locfileid: "85362068"
 
 CredScan 输出文件中机密的哈希键是必需的，如以下示例所示。
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > 哈希键由匹配值或文件内容的一部分生成。 任何源代码修订都可以更改哈希键并禁用抑制规则。
@@ -133,19 +135,21 @@ CredScan 输出文件中机密的哈希键是必需的，如以下示例所示�
 - \lib\angular.js
 - angular.js - 抑制具有相同名称的任何文件
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > 将来添加到此文件中的任何机密也将被自动抑制。

@@ -1,16 +1,15 @@
 ---
 title: 有关 Azure Functions 中的网络的常见问题解答
 description: 有关 Azure Functions 的网络的一些最常见问题解答和方案。
-author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75409529"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385902"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有关 Azure Functions 中的网络的常见问题解答
 
@@ -54,7 +53,7 @@ ms.locfileid: "75409529"
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>如何在虚拟网络中部署函数应用？
 
-部署到应用服务环境是创建完全位于虚拟网络内部的函数应用的唯一方法。 若要详细了解如何将内部负载均衡器与应用服务环境配合使用，请从[在应用服务环境中创建和使用内部负载均衡器](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)一文着手。
+部署到应用服务环境是创建完全位于虚拟网络内部的函数应用的唯一方法。 若要详细了解如何将内部负载均衡器与应用服务环境配合使用，请从[在应用服务环境中创建和使用内部负载均衡器](../app-service/environment/create-ilb-ase.md)一文着手。
 
 对于只需单向访问虚拟网络资源或不太广泛的网络隔离的情况，请参阅[功能网络概述](functions-networking-options.md)。
 
@@ -65,5 +64,5 @@ ms.locfileid: "75409529"
 * [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)
 * [详细了解 Azure Functions 中的网络选项](./functions-networking-options.md)
 * [详细了解虚拟网络与应用服务和 Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
-* [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
+* [了解有关 Azure 中的虚拟网络的详细信息](../virtual-network/virtual-networks-overview.md)
 * [在应用服务环境中允许更多的网络功能和控制](../app-service/environment/intro.md)

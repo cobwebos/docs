@@ -1,46 +1,46 @@
 ---
 title: Azure Data Lake Storage Gen1 灾难恢复指南 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 灾难恢复指南
-services: data-lake-store
-documentationcenter: ''
+description: 了解如何在 Azure Data Lake Storage Gen1 的本地冗余存储之外进一步保护数据，避免发生区域范围中断或意外删除。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b124f828c4a6a019c45243528ed2d957e3f781f3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75966056"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191419"
 ---
-# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 数据灾难恢复指南
+# <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的高可用性和灾难恢复指南
 
-Azure Data Lake Storage Gen1 提供本地冗余存储 (LRS)。 所以从现在开始，Data Lake Storage Gen1 帐户中的数据可通过自动化副本，从数据中心内暂时性硬件失败中复原。 这可以确保持久性和高可用性，满足 Data Lake Storage Gen1 SLA。 本文提供有关如何进一步保护数据，防范极其少见的全区域服务中断或意外删除行为的一些指导。
+Data Lake Storage Gen1 提供了本地冗余存储 (LRS) 。 因此，Data Lake Storage Gen1 帐户中的数据可通过自动化副本对数据中心内的暂时性硬件故障进行复原。 这可以确保持久性和高可用性，满足 Data Lake Storage Gen1 SLA。 本文提供有关如何进一步保护数据，防范极其少见的全区域服务中断或意外删除行为的一些指导。
 
 ## <a name="disaster-recovery-guidance"></a>灾难恢复指南
-每个客户都应准备好自己的灾难恢复计划，这很重要。 阅读本文中的信息以生成你的灾难恢复计划。 下面是可以帮助自行创建计划的一些资源。
+
+准备灾难恢复计划至关重要。 查看本文中的信息以及这些其他资源，帮助您创建自己的计划。
 
 * [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)
 
-### <a name="best-practices"></a>最佳做法
-我们建议按照与灾难恢复计划需求相符的频率，将关键数据复制到另一个区域中的另一个 Data Lake Storage Gen1 帐户。 可以使用多种方法复制数据，包括 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md) 或 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)。 Azure 数据工厂是一个非常有用的服务，可以周期性地创建和部署数据移动管道。
+### <a name="best-practice-recommendations"></a>最佳做法建议
+
+我们建议按照与灾难恢复计划需求相符的频率，将关键数据复制到另一个区域中的另一个 Data Lake Storage Gen1 帐户。 有多种方法可以复制数据，包括 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、 [Azure PowerShell](data-lake-store-get-started-powershell.md)或 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)。 Azure 数据工厂是一个非常有用的服务，可以周期性地创建和部署数据移动管道。
 
 若发生区域中断，可在复制数据的区域中访问数据。 可监视 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)以确定全球的 Azure 服务状态。
 
 ## <a name="data-corruption-or-accidental-deletion-recovery-guidance"></a>数据损坏或意外删除恢复指导
+
 尽管 Data Lake Storage Gen1 通过自动化副本提供数据复原能力，但这不能避免应用程序（或开发者/用户）损坏数据或意外删除数据。
 
-### <a name="best-practices"></a>最佳做法
-若要防止意外删除，我们建议首先为 Data Lake Storage Gen1 帐户设置适当的访问策略。  这包括使用提供的 [Data Lake Storage Gen1 安全功能](data-lake-store-security-overview.md)应用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md)来锁定重要资源，以及应用帐户和文件级访问控制。 此外，我们建议在另一个 Data Lake Storage Gen1 帐户、文件夹或 Azure 订阅中，定期使用 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md) 或 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)创建关键数据的副本。  发生数据损坏或删除事件时，可以使用这些副本来恢复数据。 Azure 数据工厂是一个非常有用的服务，可以周期性地创建和部署数据移动管道。
+若要防止意外删除，我们建议首先为 Data Lake Storage Gen1 帐户设置适当的访问策略。 这包括应用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md) 来锁定重要资源，以及使用可用 [Data Lake Storage Gen1 安全功能](data-lake-store-security-overview.md)应用帐户和文件级访问控制。 此外，我们建议在另一个 Data Lake Storage Gen1 帐户、文件夹或 Azure 订阅中，定期使用 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md) 或 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)创建关键数据的副本。 发生数据损坏或删除事件时，可以使用这些副本来恢复数据。 Azure 数据工厂是一个非常有用的服务，可以周期性地创建和部署数据移动管道。
 
-组织还可针对 Data Lake Storage Gen1 帐户启用[诊断日志记录](data-lake-store-diagnostic-logs.md)来收集数据访问审核跟踪，提供有关谁删除或更新了文件的信息。
+你还可以为 Data Lake Storage Gen1 帐户启用 [诊断日志记录](data-lake-store-diagnostic-logs.md) ，以收集数据访问审核跟踪。 审核跟踪提供有关可能已删除或更新文件的用户的信息。
+
+可以尝试使用 Data Lake Storage 第1代的 [DataLakeStore](https://docs.microsoft.com/powershell/module/az.datalakestore/) Azure PowerShell 模块来还原已删除的项。 具体而言，请参阅 [AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem) 命令。 尝试使用此命令之前，请务必查看 " [描述](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description) " 部分。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 
+* [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

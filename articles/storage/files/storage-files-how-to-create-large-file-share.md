@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510730"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502080"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
@@ -98,7 +99,7 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 ![在 Azure 门户中选择现有存储帐户对应的“已启用”选项按钮](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
-现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用增加的容量和规模。
+现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用提高的容量和规模。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -108,7 +109,7 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
 ```
 
-现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用增加的容量和规模。
+现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用提高的容量和规模。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -118,7 +119,7 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
 ```
 
-现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用增加的容量和规模。
+现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用提高的容量和规模。
 
 ---
 

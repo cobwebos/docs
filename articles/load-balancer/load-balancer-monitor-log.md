@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809192"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448843"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公共基本负载均衡器的 Azure Monitor 日志
 
@@ -29,7 +29,7 @@ ms.locfileid: "84809192"
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
-> Azure Monitor 日志当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/management/deployment-models.md)。
+> **运行状况探测事件日志当前不起作用，并在[Azure 负载均衡器的已知问题](whats-new.md#known-issues)中列出。** Azure Monitor 日志当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -40,7 +40,7 @@ ms.locfileid: "84809192"
 1. 在门户中，单击“资源组”。
 2. 选择负载均衡器所在的 **\<resource-group-name>** 。
 3. 选择负载均衡器。
-4. 选择“监视” > “诊断设置” 。
+4. 选择 "**活动日志**  >  **诊断设置**"。
 5. 在“诊断设置”窗格中，在“诊断设置”下选择“添加诊断设置”。  
 6. 在“诊断设置”创建窗格中，在“名称”字段中输入“myLBDiagnostics”  。
 7. “诊断设置”有三个选项。  可以选择一个、两个或全部三个，并根据要求对各选项进行配置：

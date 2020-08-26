@@ -10,12 +10,13 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603581"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405528"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 

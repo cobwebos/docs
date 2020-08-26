@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856954"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079853"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 虚拟机对 32 位操作系统的支持
 
@@ -31,11 +31,11 @@ Microsoft Azure 现在允许用户将其32位 Windows 操作系统带入 Azure�
 * [Microsoft Azure 虚拟机的 Microsoft 服务器软件支持](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 * [Azure 中对 Linux 和开源技术的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 * [详细了解 Azure 中 Windows Server 2008/R2 的免费扩展安全更新](https://www.microsoft.com/cloud-platform/windows-server-2008)
-* [详细了解 Azure 对 Windows Server 2008 SP2 32 位专用映像的支持](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
-* [详细了解对使用 Azure Site Recovery 将 Windows Server 2008 映像迁移到 Azure 的支持](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-windows-server-2008)
+* [详细了解 Azure 对 Windows Server 2008 SP2 32 位专用映像的支持](/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
+* [详细了解对使用 Azure Site Recovery 将 Windows Server 2008 映像迁移到 Azure 的支持](../../site-recovery/migrate-tutorial-windows-server-2008.md)
 * [详细了解 Azure 扩展支持的操作系统](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)
 * [详细了解如何在 Microsoft Azure 上运行 Windows Server 2003](https://support.microsoft.com/help/3206074/running-windows-server-2003-on-microsoft-azure)
 

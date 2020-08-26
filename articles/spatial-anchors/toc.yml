@@ -60,7 +60,7 @@
           href: how-tos/create-locate-anchors-cpp-winrt.md
     - name: 使用粗略重新局部化发现附近定位点
       items:
-        - name: '在 C#/Unity 中'
+        - name: 在 C#/Unity 中
           href: how-tos/set-up-coarse-reloc-unity.md
         - name: 在 Objective-C 中
           href: how-tos/set-up-coarse-reloc-objc.md
@@ -72,6 +72,12 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: 在 C++/WinRT 中
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: 项目设置
+      items:
+        - name: C++/WinRT
+          href: how-tos/setup-cpp-winrt-project.md
+        - name: Unity
+          href: how-tos/setup-unity-project.md
 - name: 示例
   items:
     - name: Azure 空间定位点示例 (GitHub)

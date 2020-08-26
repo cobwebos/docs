@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502744"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个网站的应用程序网关
 
@@ -44,7 +44,7 @@ ms.locfileid: "86517888"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组 。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus

@@ -3,12 +3,13 @@ title: 如何更新用于容器的 Azure Monitor 以启用指标 | Microsoft Doc
 description: 本文介绍如何更新用于容器的 Azure Monitor，以启用支持浏览聚合指标并针对其发出警报的自定义指标功能。
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498978"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499953"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
 

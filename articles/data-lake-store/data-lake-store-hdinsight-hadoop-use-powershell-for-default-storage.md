@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 053ee85318d8ac9ccd5fb8b63fb44df966d34821
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075036"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
 
@@ -38,7 +38,7 @@ ms.locfileid: "85855045"
 在开始学习本教程之前，请确保满足以下要求：
 
 * **一个 Azure 订阅**：转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**：参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* **Azure PowerShell 1.0 或更高版本**：参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 * **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/downloads)。 该 SDK 用于创建安全证书。
 * **Azure Active Directory 服务主体**：本教程介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
@@ -77,7 +77,7 @@ ms.locfileid: "85855045"
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    应看到如下输出：
+    应该会看到如下输出：
 
     ```output
     ResourceGroupName : hdiadlgrp
@@ -140,7 +140,7 @@ ms.locfileid: "85855045"
     ```
 
     系统会提示输入私钥密码。 成功执行该命令后，指定的证书目录中应会出现 CertFile.cer 和 mykey.pvk********。
-2. 使用 [Pvk2Pfx][pvk2pfx] 实用工具将 MakeCert 创建的.pvk 和.cer 文件转换为.pfx 文件。 运行下面的命令：
+2. 使用 [Pvk2Pfx][pvk2pfx] 实用工具将 MakeCert 创建的.pvk 和.cer 文件转换为.pfx 文件。 运行以下命令：
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
@@ -281,7 +281,7 @@ hdfs dfs -ls adl:///
 
 可以使用 `hdfs dfs -put` 命令将一些文件上传到 Data Lake Storage Gen1，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure 门户：创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 

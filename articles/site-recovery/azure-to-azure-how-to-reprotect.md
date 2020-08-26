@@ -2,18 +2,18 @@
 title: 通过 Azure Site Recovery 将 Azure Vm 重新保护到主要区域 |Microsoft Docs
 description: 介绍在使用 Azure Site Recovery 将 Azure VM 从次要区域故障转移到主要区域后，如何重新保护 VM。
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738059"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422073"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
@@ -95,10 +95,6 @@ ms.locfileid: "82738059"
 |源区域中有 1 个包含 1 TB 高级磁盘的 VM。<br/>仅使用了 20 GB 数据，磁盘的剩余存储为空。<br/>磁盘类型为“高级”，吞吐量为 200 MBps。<br/>故障转移后，磁盘上的初始数据为 15 GB。 故障转移后有 5 GB 数据更改。 因此填充的数据总量为 20 GB| 大约时间：30-45 分钟。<br/>由于磁盘中填充的数据小于磁盘大小的 10%，因此我们执行完整的初始复制。<br/>传输速度约为吞吐量的 16%（即 32MBps）。 因此，应用 20 GB 的更改所需的传输时间为 20 GB/32 MBps（大约 11 分钟）。<br/>Site Recovery 进行自动缩放需要一些开销时间，大约为 20-30 分钟 |
 
 在 VM 故障回复到主要区域后受到重新保护时（即，将 VM 从主要区域重新保护到 DR 区域），我们将删除目标 VM 和关联的 NIC。
-
-将 VM 从 DR 区域重新保护到主要区域时，我们不会删除以前的主 VM 和关联的 NIC。
-
-在 VM 故障回复到主要区域后受到重新保护时（即，将 VM 从主要区域重新保护到 DR 区域），我们将删除目标 VM 和关联的 NIC。 
 
 将 VM 从 DR 区域重新保护到主要区域时，我们不会删除以前的主 VM 和关联的 NIC。
 

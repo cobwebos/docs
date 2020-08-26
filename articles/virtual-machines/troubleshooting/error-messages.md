@@ -12,11 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76543012"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831220"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解在 Azure 中管理虚拟机时遇到的常见错误消息
 
@@ -175,10 +176,10 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  OSProvisioningClientError  |  为 VM 指定的用户名对于此 Linux 分发版无效。 错误详细信息: {0}。  |
 |  OSProvisioningInternalError  |  VM“{0}”的 OS 预配因内部错误而失败。  |
 |  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 该 VM 仍可能成功完成预配。 请于稍后检查预配状态。  |
-|  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 该 VM 仍可能成功完成预配。 请于稍后检查预配状态。 此外，请确保已正确准备(通用化)映像。   <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 适用于 Linux 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 该 VM 仍可能成功完成预配。 请于稍后检查预配状态。 此外，请确保已正确准备(通用化)映像。   <ul><li>有关[Windows]( ../windows/upload-generalized-managed.md)的说明。</li><li> 适用于[Linux](../linux/capture-image.md)的说明</li></ul>  |
 |  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 但是检测到 VM 来宾代理正在运行。 这表示来宾 OS 尚未准备好用作 VM 映像(其中 CreateOption=FromImage)。 若要解决此问题，可以按原样使用 VHD 并使 CreateOption=Attach，或者对其进行适当准备使其可用作映像:   <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 适用于 Linux 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  所需的 VM 大小当前在所选位置中不可用。  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  此时无法更新资源，因为正在更新平台。 请稍后再试。  |
+|  ResourceUpdateBlockedOnPlatformUpdate  |  此时无法更新资源，因为正在更新平台。 请稍后重试。  |
 |  StorageAccountLimitation  |  存储帐户“{0}”不支持创建磁盘所需的页 Blob。  |
 |  StorageAccountLimitation  |  存储帐户“{0}”已超出向其分配的配额。  |
 |  StorageAccountLocationMismatch  |  无法解析存储帐户 {0}。 请确保通过与计算资源位于相同位置的存储资源提供程序创建该帐户。  |

@@ -6,12 +6,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121565"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607303"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
@@ -19,10 +21,10 @@ ms.locfileid: "86121565"
 
 ## <a name="offer-overview"></a>产品/服务概述  
 
-SaaS 应用程序可用于 Microsoft AppSource 和 Azure 市场。  两个商店均支持正式上架、试用和事务处理套餐。
+SaaS 应用程序可用于 Microsoft AppSource 和 Azure 市场。  这两个在线商店都支持列表、试用和事务服务。
 
 **列表：** “列表”发布选项包含“与我联系”产品/服务类型，在试用级别或交易级别的参与不可行时使用。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
-**试用/交易：** 客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
+**试用/交易：** 客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 利用试用体验，你可以在在线商店中获得更好的促销机会，你应该会从客户的参与中获得更多更多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
 
 | SaaS 应用产品/服务 | 业务要求 | 技术要求 |  
 | --- | --- | --- |  

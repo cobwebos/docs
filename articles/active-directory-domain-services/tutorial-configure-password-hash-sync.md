@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024683"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491776"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -22,7 +22,7 @@ ms.locfileid: "86024683"
 
 若要将 Azure AD DS 与从本地 AD DS 环境同步的帐户配合使用，需要将 Azure AD Connect 配置为同步 NTLM 和 Kerberos 身份验证所需的密码哈希。 配置 Azure AD Connect 之后，本地帐户创建或密码更改事件也会将旧密码哈希同步到 Azure AD。
 
-如果使用仅限云的帐户且不使用本地 AD DS 环境，则无需执行这些步骤。
+如果使用仅限云的帐户且不使用本地 AD DS 环境，或是如果使用资源林，则无需执行这些步骤。 对于使用资源林的托管域，本地密码哈希从不会进行同步。 本地帐户的身份验证使用返回到你自己的 AD DS 域控制器的林信任。
 
 在本教程中，学习以下内容：
 
@@ -62,7 +62,7 @@ ms.locfileid: "86024683"
 1. 在安装了 Azure AD Connect 的计算机上，通过“开始”菜单打开“Azure AD Connect”>“同步服务”。
 1. 选择“连接器”选项卡。此时会列出用于在本地 AD DS 环境与 Azure AD 之间建立同步的连接信息。
 
-    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。  请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
+    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。 请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
 
     ![在同步服务管理器中列出连接器名称](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 

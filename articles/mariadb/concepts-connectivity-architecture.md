@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: d082417fc5b4df7540973d5f6e146030aaad5380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107183"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065346"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍 Azure Database for MariaDB 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MariaDB 实例。
@@ -34,7 +34,7 @@ ms.locfileid: "86107183"
 | 澳大利亚 Central2     | 20.36.113.0   |
 | 澳大利亚东部 | 13.75.149.87, 40.79.161.1     |
 | 澳大利亚东南部 |191.239.192.109, 13.73.109.251   |
-| 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
+| Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | 加拿大中部 |40.85.224.249  |
 | 加拿大东部 | 40.86.226.166    |
 | 美国中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
@@ -52,7 +52,7 @@ ms.locfileid: "86107183"
 | 印度中部 | 104.211.96.159     |
 | 印度南部 | 104.211.224.146  |
 | 印度西部 | 104.211.160.80    |
-| 日本东部 | 13.78.61.196, 191.237.240.43  |
+| Japan East | 13.78.61.196, 191.237.240.43  |
 | 日本西部 | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | 韩国中部 | 52.231.32.42   |
 | 韩国南部 | 52.231.200.86    |
@@ -67,16 +67,16 @@ ms.locfileid: "86107183"
 | 英国南部 | 51.140.184.11   |
 | 英国西部 | 51.141.8.11  |
 | 美国中西部 | 13.78.145.25     |
-| 西欧 | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
-| 美国西部 | 104.42.238.205, 23.99.34.75  |
+| 西欧 | 40.68.37.158, 191.237.232.75, 13.69.105.208, 104.40.169.187  |
+| 美国西部 | 104.42.238.205, 23.99.34.75, 13.86.216.212, 13.86.217.212 |
 | 美国西部 2 | 13.66.226.202  |
 ||||
 
 ## <a name="connection-redirection"></a>连接重定向
 
-Azure Database for MariaDB 支持附加的连接策略（**重定向**），有助于减少客户端应用程序和 MariaDB 服务器之间的网络延迟。 利用此功能，在建立到 Azure Database for MariaDB 服务器的初始 TCP 会话后，服务器会将托管 MariaDB 服务器的节点的后端地址返回到客户端。 此后，所有后续数据包会绕过网关直接流向服务器。 由于数据包会直接流向服务器，因此延迟和吞吐量这两个指标的表现得到了改善。
+Azure Database for MariaDB 支持一个额外的连接策略（即“重定向”），该策略有助于降低客户端应用程序与 MariaDB 服务器之间的网络延迟。 利用此功能，在建立与 Azure Database for MariaDB 服务器的初始 TCP 会话后，服务器会将承载 MariaDB 服务器的节点的后端地址返回到客户端。 此后，所有后续数据包会绕过网关直接流向服务器。 由于数据包会直接流向服务器，因此延迟和吞吐量这两个指标的表现得到了改善。
 
-具有引擎版本10.2 和10.3 的 Azure Database for MariaDB 服务器支持此功能。
+引擎版本为 10.2 和 10.3 的 Azure Database for MariaDB 服务器支持此功能。
 
 对重定向的支持可通过 Microsoft 开发的 PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) 扩展获得，也可在 [PECL](https://pecl.php.net/package/mysqlnd_azure) 上获得。 有关如何在应用程序中使用重定向的详细信息，请参阅[配置重定向](./howto-redirection.md)一文。
 

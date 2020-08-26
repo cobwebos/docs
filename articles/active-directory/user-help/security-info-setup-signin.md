@@ -11,18 +11,18 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747271"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798493"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>根据登录提示设置安全信息
 
 如果在你登录到工作或学校帐户后，紧接着出现设置安全信息的提示，你可以遵循以下步骤进行设置。
 
-仅当尚未设置组织所要求的安全信息时，才会显示此提示。 如果你以前设置了安全信息，但想要进行更改，可以遵循各种基于方法的操作指南文章中的步骤。 有关详细信息，请参阅[添加或更新安全信息概述](security-info-add-update-methods-overview.md)。
+仅当尚未设置组织所要求的安全信息时，才会显示此提示。 如果你以前设置了安全信息，但想要进行更改，可以遵循各种基于方法的操作指南文章中的步骤。 有关详细信息，请参阅[添加或更新安全信息概述](./security-info-setup-auth-app.md)。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 

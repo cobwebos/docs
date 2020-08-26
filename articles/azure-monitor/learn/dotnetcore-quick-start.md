@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c9787a88cba051dcfaa58a188bf43fb03cafe70a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539748"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325162"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "86539748"
 - [安装 .NET Core 2.0 SDK](https://dotnet.microsoft.com/download)
 - 将需要 Azure 订阅和现有 .NET Core Web 应用程序。
 
-如果没有 ASP.NET Core Web 应用程序，可以使用分步指南来[创建 ASP.NET Core 应用并添加 Application Insights](../../azure-monitor/app/asp-net-core.md)。
+如果没有 ASP.NET Core Web 应用程序，可以使用分步指南来[创建 ASP.NET Core 应用并添加 Application Insights](../app/asp-net-core.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -96,7 +96,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![“运行状况概述时间线”图](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. 在左侧单击“指标”。 使用指标资源管理器调查资源的运行状况和利用率。 可以单击“添加新图表”创建其他自定义视图，或者选择“编辑”修改现有的图表类型、高度、调色板、分组和指标。 例如，可以制作一个图表来显示浏览器页面的平均加载时间，只需从指标下拉列表中选取“浏览器页面加载时间”并从聚合中选择“平均”即可。 若要详细了解 Azure 指标资源管理器，请访问 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
+5. 在左侧单击“指标”。 使用指标资源管理器调查资源的运行状况和利用率。 可以单击“添加新图表”创建其他自定义视图，或者选择“编辑”修改现有的图表类型、高度、调色板、分组和指标。 例如，可以制作一个图表来显示浏览器页面的平均加载时间，只需从指标下拉列表中选取“浏览器页面加载时间”并从聚合中选择“平均”即可。 若要详细了解 Azure 指标资源管理器，请访问 [Azure 指标资源管理器入门](../platform/metrics-getting-started.md)。
 
      ![“指标”选项卡：浏览器网页平均加载时间图表](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -113,3 +113,4 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 > [!div class="nextstepaction"]
 > [查找和诊断运行时异常](./tutorial-runtime-exceptions.md)
+

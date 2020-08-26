@@ -1,6 +1,6 @@
 ---
 title: Azure 密钥保管库客户数据功能 - Azure 密钥保管库 | Microsoft Docs
-description: 了解 Key Vault 中的客户数据
+description: 了解在创建或更新保管库、密钥、机密、证书和托管存储帐户期间 Azure Key Vault 收到的客户数据。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,11 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81617897"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189913"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 
@@ -51,7 +52,7 @@ Azure Key Vault 诊断日志包含可通过在用户隐私门户中发出导出�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 日志记录](logging.md)）
+- [Azure Key Vault 日志记录](logging.md)) 
 
 - [Azure Key Vault 软删除概述](soft-delete-cli.md)
 

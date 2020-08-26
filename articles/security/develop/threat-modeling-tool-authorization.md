@@ -1,6 +1,6 @@
 ---
 title: 授权 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中的授权缓解措施。 查看潜在威胁和缓解说明的列表。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07e33279452b8296688c358c9ffdab1bfb2e1321
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322662"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543956"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -236,7 +237,7 @@ WHERE userID=:id < - session var
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
 | **参考**              | [使用角色分配管理对 Azure 订阅资源的访问权限](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
-| **步骤** | Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问次数。|
+| **步骤** | Azure 基于角色的访问控制（Azure RBAC）可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问次数。|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>使用 RBAC 限制客户端对群集操作的访问权限
 
@@ -275,7 +276,7 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 表 |
@@ -286,7 +287,7 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -455,7 +456,7 @@ public class CustomController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |

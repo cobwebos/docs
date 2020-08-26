@@ -9,16 +9,17 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729041"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475781"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 中的管理单元管理（预览）
 

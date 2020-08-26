@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 810f887c43b5653513d6848e9b7dd2e7ced070ab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251325"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003212"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -26,7 +26,7 @@ ms.locfileid: "86251325"
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
-为了增强安全性和管理，AKS 允许你集成 Azure Active Directory 并使用 Kubernetes 基于角色的访问控制。 也可监视群集和资源的运行状况。
+为了增强安全性和管理，AKS 允许你集成 Azure Active Directory 并使用 Kubernetes 基于角色的访问控制 (RBAC)。 也可监视群集和资源的运行状况。
 
 ### <a name="identity-and-security-management"></a>标识和安全管理
 
@@ -140,6 +140,6 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md

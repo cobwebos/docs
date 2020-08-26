@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 8a4fb581b884d28c8366cbf9a50e001eadd027d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2eafd2f74ffcf5fe0fe65d04884cfd2d668cdf0b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593748"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684569"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>将服务器呈现的 Nuxt.js 网站部署到 Azure 静态 Web 应用（预览）
 
@@ -55,7 +56,7 @@ ms.locfileid: "83593748"
     npm run dev
     ```
 
-导航到 <http://localhost:3000>，打开应用，应看到从你首选的浏览器中打开了下面的网站：
+导航到 `http://localhost:3000`，打开应用，应看到从你首选的浏览器中打开了下面的网站：
 
 :::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="启动 Nuxt.js 应用":::
 

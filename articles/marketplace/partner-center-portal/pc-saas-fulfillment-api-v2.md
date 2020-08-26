@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: f501e84e988d340ba710e49d30caddbe56006c8a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109410"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305136"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 中的 SaaS 履单 Api 版本2
 
@@ -615,7 +617,7 @@ TLS 版本1.2 的版本将尽快作为 HTTPS 通信的最低版本来强制实�
 
 座位数量不能超过当前计划中允许的数量。  在这种情况下，应在更改数量之前更改计划。
 
-##### <a name="patchhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>修补程序`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>跳`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *查询参数：*
 

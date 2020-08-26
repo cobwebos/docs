@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 0ddf15ffad086bab5ed6c4e2508cd0874f6ee567
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000087"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>轮转存储访问密钥后更新媒体服务 
 
 创建新的 Azure 媒体服务 (AMS) 帐户时，系统还会要求选择用于存储媒体内容的 Azure 存储帐户。 可将多个存储帐户添加到媒体服务帐户。 本文介绍如何轮换存储密钥。 此外，介绍如何将存储帐户添加到媒体帐户。 
 
-若要执行本文所述的操作，应使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](https://docs.microsoft.com/powershell/module/az.media)。  有关详细信息，请参阅[如何使用 PowerShell 和 Resource Manager 管理 Azure 资源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
+若要执行本文所述的操作，应使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](/powershell/module/az.media)。  有关详细信息，请参阅[如何使用 PowerShell 和 Resource Manager 管理 Azure 资源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -72,7 +72,7 @@ Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountNam
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>将存储帐户添加到 AMS 帐户的步骤
 
-下文介绍了如何将存储帐户添加到 AMS 帐户：[将多个存储帐户附加到媒体服务帐户](meda-services-managing-multiple-storage-accounts.md)。
+下文介绍了如何将存储帐户添加到 AMS 帐户：[将多个存储帐户附加到媒体服务帐户](./media-services-managing-multiple-storage-accounts.md)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 FactSet 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 FactSet 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f41072d1-b2a4-4c4d-9deb-101b52e29096
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b8664e7515de3037d33791f54c000a87b83635
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 903d6e61800e69787aa5c3f96881d7e96eb1f6e9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261170"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-factset"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FactSet 的集成
 

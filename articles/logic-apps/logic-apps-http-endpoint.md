@@ -6,11 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170267"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078672"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTPS 终结点调用、触发或嵌套逻辑应用
 
@@ -35,7 +36,7 @@ ms.locfileid: "84170267"
 
 ## <a name="create-a-callable-endpoint"></a>创建可调用的终结点
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开一个空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开一个空白逻辑应用。
 
    此示例使用请求触发器，但你可以使用任何可接收传入 HTTPS 请求的触发器。 所有原则同样适用于这些触发器。 有关请求触发器的详细信息，请参阅[使用 Azure 逻辑应用接收和响应入站 HTTPS 调用](../connectors/connectors-native-reqres.md)。
 
@@ -165,7 +166,7 @@ ms.locfileid: "84170267"
 
    1. 在请求触发器下，选择 "**新建步骤**" "  >  **添加操作**"。
    
-   1. 在“选择操作”**** 下的搜索框中，输入 `response` 作为筛选器。 在操作列表中选择“响应”操作。****
+   1. 在“选择操作”下的搜索框中，输入 `response` 作为筛选器。 在操作列表中选择“响应”操作。****
 
 1. 若要生成 `triggerOutputs()` 检索参数值的表达式，请执行以下步骤：
 
@@ -232,7 +233,7 @@ ms.locfileid: "84170267"
 
    1. 在请求触发器下，选择 "**新建步骤**" "  >  **添加操作**"。
 
-   1. 在“选择操作”**** 下的搜索框中，输入 `response` 作为筛选器。 在操作列表中选择“响应”操作。****
+   1. 在“选择操作”下的搜索框中，输入 `response` 作为筛选器。 在操作列表中选择“响应”操作。****
 
 1. 在响应操作的“正文”属性中，包含表示在触发器相对路径中指定的参数的标记。****
 
@@ -387,7 +388,7 @@ ms.locfileid: "84170267"
 
 #### <a name="q-what-about-url-security"></a>问：URL 的安全性如何？
 
-**答**： Azure 通过使用[共享访问签名（SAS）](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地生成逻辑应用回调 url。 此签名以查询参数的形式传递，在运行逻辑应用之前必须先验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
+**答**： Azure 通过使用[共享访问签名（SAS）](/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地生成逻辑应用回调 url。 此签名以查询参数的形式传递，在运行逻辑应用之前必须先验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
 > [!IMPORTANT]
 > 对于生产和更高版本的安全系统，强烈建议不要直接从浏览器调用逻辑应用，原因如下：

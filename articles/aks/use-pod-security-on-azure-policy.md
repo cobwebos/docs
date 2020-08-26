@@ -1,25 +1,22 @@
 ---
-title: Azure Kubernetes Service （AKS）中的 Azure 策略的安全箱
-description: 了解如何通过 azure Kubernetes Service （AKS）上的 Azure 策略保护 pod
+title: 'Azure Kubernetes Service 中的 Azure 策略的安全箱 (AKS) '
+description: '了解如何在 Azure Kubernetes Service 上通过 Azure 策略保护 pod (AKS) '
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8a5107b9ba3c05c92a06753b2cb30bcfc2896d91
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: jluk
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090880"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987352"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>用 Azure 策略保护箱（预览版）
+# <a name="secure-pods-with-azure-policy-preview"></a>通过 Azure 策略 (预览的安全箱) 
 
 若要提高 AKS 群集的安全性，可以控制要授予哪些功能，以及根据公司策略运行的任何功能。 此访问通过[用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]提供的内置策略定义。 通过提供对 pod 规范安全方面（如 root 权限）的更多控制，可实现更严格的安全遵从性并了解群集中部署的内容。 如果 pod 不满足策略中指定的条件，Azure 策略可以禁止 pod 启动或标记冲突。 本文介绍如何使用 Azure 策略来限制 AKS 中 pod 的部署。
 
-> [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能并不适合用于生产。 有关其他信息，请参阅以下支持文章：
->
-> * [AKS 支持策略][aks-support-policies]
-> * [Azure 支持常见问题][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -36,21 +33,21 @@ ms.locfileid: "86090880"
 * Azure CLI 安装的 `aks-preview` 扩展版本0.4.53 或更高版本
 * 使用 Azure 策略外接程序安装的1.15 版或更高版本上的 AKS 群集
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>用于 AKS （预览版）的 Azure 策略的安全箱概述
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>AKS (预览版的 Azure 策略的安全箱概述) 
 
 >[!NOTE]
 > 本文档详细介绍了如何使用 Azure 策略来保护 pod，这是[预览版中的 Kubernetes pod 安全策略功能](use-pod-security-policies.md)的后续内容。
-> **不能同时启用 pod 安全策略（预览版）和适用于 AKS 的 Azure 策略外接程序。**
+> **Pod 安全策略 (预览) 和用于 AKS 的 Azure 策略外接程序不能同时启用。**
 > 
 > 如果在启用了 pod 安全策略的情况下将 Azure 策略外接程序安装到群集中，请[按照以下步骤来禁用 pod 安全策略](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster)。
 
 在 AKS 群集中，在创建和更新资源时，会使用一个许可控制器来截获对 API 服务器的请求。 然后，该许可控制器可以根据一组规则*验证*资源请求是否应该创建。
 
-以前，通过 Kubernetes 项目启用了功能[pod 安全策略（预览版）](use-pod-security-policies.md) ，以限制可部署的内容。 此功能不再在 Kubernetes 项目中进行活动开发。
+以前，功能[pod 安全策略 (预览) ](use-pod-security-policies.md)通过 Kubernetes 项目启用，以限制可部署的内容。
 
 使用 Azure 策略外接程序，AKS 群集可以使用内置的 Azure 策略，这些策略用于保护 pod 和其他类似于 pod 安全策略的 Kubernetes 资源。 适用于 AKS 的 Azure 策略外接程序安装一个验证程序[的托管实例，即](https://github.com/open-policy-agent/gatekeeper)一个验证许可控制器。 适用于 Kubernetes 的 Azure 策略建立在依赖于[Rego 策略语言](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)的开放源代码开放策略代理上。
 
-本文档详细说明如何使用 Azure 策略来保护 AKS 群集中的 pod，并指导如何从 pod 安全策略（预览版）进行迁移。
+本文档详细说明如何使用 Azure 策略来保护 AKS 群集中的 pod，并指导如何从 pod 安全策略迁移 (预览版) 。
 
 ## <a name="limitations"></a>限制
 
@@ -63,12 +60,12 @@ ms.locfileid: "86090880"
 
 安装 Azure 策略外接程序后，默认情况下不会应用任何策略。
 
-有十四个（14）个内置的 Azure 策略和两（2）个内置计划，这些方案专门保护 AKS 群集中的 pod。
+有11个 (11) 内置的单个 Azure 策略，另外两个 (2) 内置方案，这些方案专门保护 AKS 群集中的 pod。
 每个策略都可以进行自定义。 [此处列出了 AKS 策略及其受支持效果][policy-samples]的完整列表。 阅读有关[Azure 策略影响](../governance/policy/concepts/effects.md)的详细信息。
 
 Azure 策略可以应用于管理组、订阅或资源组级别。 在资源组级别分配策略时，请确保在策略范围内选择目标 AKS 群集的资源组。 在策略范围内，已安装 Azure 策略外接程序的分配作用域中的每个群集。
 
-如果使用[pod 安全策略（预览版）](use-pod-security-policies.md)，请了解如何[迁移到 Azure 策略以及其他行为差异](#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
+如果使用[pod 安全策略 (预览版) ](use-pod-security-policies.md)，请了解如何[迁移到 Azure 策略以及其他行为差异](#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
 
 ### <a name="built-in-policy-initiatives"></a>内置策略计划
 
@@ -78,24 +75,41 @@ Azure 策略中的计划是一系列策略定义，旨在实现单一的总体�
 
 这两个内置方案都是从[Kubernetes 的 pod 安全策略](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml)中所使用的定义生成的。
 
-|[Pod 安全策略控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure 策略定义链接| 基线计划 | 限制计划 |
+|[Pod 安全策略控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure 策略定义链接| [基线计划](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [限制计划](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
 |禁止运行特权容器|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| 是 | 是
 |不允许共享主机命名空间的使用|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| 是 | 是
-|将主机网络和端口的使用限制为已知列表|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| 是 | 是
-|限制主机文件系统的使用|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| 是 | 是
-|将 Linux 功能添加到[默认集](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)以外|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | 是 | 是
-|限制定义的卷类型的使用|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | 是
+|限制主机网络和端口的所有使用|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| 是 | 是
+|限制主机文件系统的任何使用|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| 是 | 是
+|将 Linux 功能限制为[默认集](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | 是 | 是
+|限制定义的卷类型的使用|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | 是-允许的卷类型为 `configMap` 、 `emptyDir` 、、 `projected` `downwardAPI` 、`persistentVolumeClaim`|
 |权限升级到根|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | 是 |
-|限制容器的用户和组 Id|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是 |
-|限制分配拥有 pod 的卷的 FSGroup|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是 |
-|需要使用 seccomp 配置文件|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | - |
-|限制容器使用的 sysctl 配置文件|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d0a13f-712f-466b-8416-56fb354fb823) | - | - |
-|定义了默认过程装载类型，以减少攻击面|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85eb0dd-92ee-40e9-8a76-db25a507d6d3) | - | - |
-|限制为特定 FlexVolume 驱动程序|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | - | - |
-|允许非只读装载|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | - | - |
-|定义容器的自定义 SELinux 上下文|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) | - | - |
-|定义容器使用的 AppArmor 配置文件|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | - | - |
+|限制容器的用户和组 Id|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是|
+|限制分配拥有 pod 的卷的 FSGroup|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是-允许的规则为 `runAsUser: mustRunAsNonRoot` 、 `supplementalGroup: mustRunAs 1:65536` 、 `fsGroup: mustRunAs 1:65535` 、 `runAsGroup: mustRunAs 1:65535` 。  |
+|需要 seccomp 配置文件|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | 是，allowedProfiles 是 * `docker/default` 或`runtime/default` |
+
+\*自 v 1.11 后，Kubernetes 中已弃用 docker/默认值
+
+### <a name="additional-optional-policies"></a>其他可选策略
+
+还有其他 Azure 策略可以在应用计划之外单独应用。 如果内置计划不满足你的要求，请考虑附加这些策略以及方案。
+
+|[Pod 安全策略控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure 策略定义链接| 应用于基准计划（& a） | 除了限制计划之外还适用 |
+|---|---|---|---|
+|定义容器使用的 AppArmor 配置文件|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | 可选 | 可选 |
+|允许非只读装载|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | 可选 | 可选 |
+|限制为特定 FlexVolume 驱动程序|[公有云](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | 可选-如果只想限制 FlexVolume 驱动程序，而不是使用 "限制定义的卷类型的使用" 设置的其他驱动程序，请使用 | 不适用-受限制的计划包括 "限制定义的卷类型的使用情况"，这不允许使用所有 FlexVolume 驱动程序 |
+
+### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>托管 AKS 群集不支持的内置策略
+
+> [!NOTE]
+> **AKS 中不支持**以下3个策略，因为自定义由 AKS 作为托管服务管理和保护的方面。 这些策略专门针对具有非托管控制平面的 Azure Arc 连接群集构建。
+
+|[Pod 安全策略控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
+|---|
+|定义容器的自定义 SELinux 上下文|
+|限制容器使用的 sysctl 配置文件|
+|定义了默认过程装载类型，以减少攻击面|
 
 <!---
 # Removing until custom initiatives are supported the week after preview
@@ -265,11 +279,11 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 |安装|启用 pod 安全策略功能 |启用 Azure 策略外接程序
 |部署策略| 部署 pod 安全策略资源| 将 Azure 策略分配到订阅或资源组作用域。 Azure 策略外接程序是 Kubernetes 资源应用程序所必需的。
 | 默认策略 | 当在 AKS 中启用 pod 安全策略时，将应用默认的特权和无限制策略。 | 启用 Azure 策略外接程序不会应用默认策略。 必须在 Azure 策略中显式启用策略。
-| 谁可以创建和分配策略 | 群集管理创建 pod 安全策略资源 | 对于 AKS 群集资源组，用户必须至少具有 "所有者" 角色或 "资源策略参与者" 权限。 -通过 API，用户可以在 AKS 群集资源范围内分配策略。 用户应在 AKS 群集资源上至少具有 "所有者" 或 "资源策略参与者" 权限。 -在 Azure 门户中，可以将策略分配到管理组/订阅/资源组级别。
+| 谁可以创建和分配策略 | 群集管理创建 pod 安全策略资源 | 对于 AKS 群集资源组，用户必须至少具有 "所有者" 角色或 "资源策略参与者" 权限。 -通过 API，用户可以在 AKS 群集资源范围内分配策略。 用户应在 AKS 群集资源上至少具有 "所有者" 或 "资源策略参与者" 权限。 -在 Azure 门户中，可以在管理组/订阅/资源组级别分配策略。
 | 授权策略| 用户和服务帐户需要显式权限才能使用 pod 安全策略。 | 不需要对策略进行其他分配。 将策略分配到 Azure 后，所有群集用户都可以使用这些策略。
-| 策略适用性 | 管理员用户绕过 pod 安全策略的实施。 | 所有用户（管理员 & 非管理员）都看到相同的策略。 没有基于用户的特殊大小写。 可在命名空间级别排除策略应用程序。
+| 策略适用性 | 管理员用户绕过 pod 安全策略的实施。 |  (管理员 & 非管理员) 的所有用户都将看到相同的策略。 没有基于用户的特殊大小写。 可在命名空间级别排除策略应用程序。
 | 策略作用域 | Pod 安全策略不带命名空间 | Azure 策略使用的约束模板不可带命名空间。
-| 拒绝/审核/变化操作 | Pod 安全策略仅支持拒绝操作。 可以在 create 请求上对默认值执行 Mutatation。 可以在更新请求期间完成验证。| Azure 策略支持审核 & 拒绝操作。 目前尚不支持转变，但计划了。
+| 拒绝/审核/变化操作 | Pod 安全策略仅支持拒绝操作。 可以在 create 请求上对默认值进行转变。 可以在更新请求期间完成验证。| Azure 策略支持审核 & 拒绝操作。 目前尚不支持转变，但计划了。
 | Pod 安全策略符合性 | 启用 pod 安全策略之前，不会看到已存在的有关 pod 的符合性。 启用 pod 安全策略后，创建不符合的 pod。 | 应用 Azure 策略之前存在的不兼容的 pod 将显示在 "策略冲突" 中。 如果策略设置为 "拒绝" 效果，则会拒绝启用 Azure 策略后创建的不符合的 pod。
 | 如何查看群集上的策略 | `kubectl get psp` | `kubectl get constrainttemplate`-返回所有策略。
 | Pod 安全策略标准版-特权 | 启用该功能时，默认情况下会创建特权 pod 安全策略资源。 | 特权模式意味着无限制，因此它等效于没有 Azure 策略分配。

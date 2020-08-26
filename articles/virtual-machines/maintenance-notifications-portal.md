@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082437"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知
 
@@ -49,7 +50,7 @@ ms.locfileid: "84678726"
 
 ## <a name="notification-and-alerts-in-the-portal"></a>门户中的通知和警报
 
-Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
+Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications-portal.md)。
 
 请确保将“事件类型”设置为“计划内维护”，将“服务”设置为“虚拟机规模集”和/或“虚拟机”。
 

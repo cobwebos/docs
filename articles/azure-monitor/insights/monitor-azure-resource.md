@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326165"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 如果你有关键应用程序和业务流程依赖于 Azure 资源，则需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
@@ -96,7 +96,7 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 
 
 ### <a name="insights-and-solutions"></a>见解和解决方案 
-某些服务将提供超出 Azure Monitor 标准功能的工具。 [见解](../insights/insights-overview.md)提供基于 Azure Monitor 数据平台和标准功能构建的自定义监视体验。 [解决方案](../insights/solutions.md)提供基于 Azure Monitor 日志构建的预定义监视逻辑。 
+某些服务将提供超出 Azure Monitor 标准功能的工具。 [见解](./insights-overview.md)提供基于 Azure Monitor 数据平台和标准功能构建的自定义监视体验。 [解决方案](./solutions.md)提供基于 Azure Monitor 日志构建的预定义监视逻辑。 
 
 如果服务有 Azure Monitor 见解，可通过每项资源的菜单中的“监视”访问它。 可通过“Azure Monitor”菜单访问所有见解和解决方案。
 
@@ -164,3 +164,4 @@ Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅 [Azure 资源日志支持的服务、架构和类别](../platform/resource-logs-schema.md)，了解不同 Azure 服务的资源日志。  
+

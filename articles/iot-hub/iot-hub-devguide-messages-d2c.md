@@ -8,11 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327712"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -30,7 +33,7 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 
 ## <a name="routing-endpoints"></a>路由终结点
 
-IoT 中心有一个默认的内置终结点（消息/事件），此终结点与事件中心兼容  。 可以通过将订阅中的其他服务链接到中心来创建要将消息路由到的[自定义终结点](iot-hub-devguide-endpoints.md#custom-endpoints)。 
+IoT 中心有一个默认的内置终结点（消息/事件），此终结点与事件中心兼容。 可以通过将订阅中的其他服务链接到中心来创建要将消息路由到的[自定义终结点](iot-hub-devguide-endpoints.md#custom-endpoints)。 
 
 每条消息都路由到与它的路由查询匹配的所有终结点。 换句话说，消息可以路由到多个终结点。
 
@@ -46,13 +49,13 @@ IoT 中心目前支持以下终结点：
 
 ### <a name="built-in-endpoint"></a>内置终结点
 
-可以使用标准[事件中心集成和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收来自内置终结点（消息/事件）的设备到云的消息****。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。
+可以使用标准[事件中心集成和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收来自内置终结点（消息/事件）的设备到云的消息。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。
 
 ### <a name="azure-storage"></a>Azure 存储
 
 IoT 中心可将消息路由到以下两个存储服务：[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)和 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) 帐户。 Azure Data Lake Storage 帐户是在 Blob 存储之上构建的启用[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)的存储帐户。 这两个存储服务都使用 blob 作为其存储。
 
-IoT 中心支持将数据以 [Apache Avro](https://avro.apache.org/) 格式和 JSON 格式写入 Azure 存储。 默认值为 AVRO。 只有在配置 Blob 存储终结点时才能设置编码格式。 不能编辑现有终结点的格式。 使用 JSON 编码时，必须在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个值都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。 您可以使用 IoT 中心的 Create 或 Update REST API （特别是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 门户、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)）选择编码格式。 下图说明如何在 Azure 门户中选择编码格式。
+IoT 中心支持将数据以 [Apache Avro](https://avro.apache.org/) 格式和 JSON 格式写入 Azure 存储。 默认值为 AVRO。 只有在配置 Blob 存储终结点时才能设置编码格式。 不能编辑现有终结点的格式。 使用 JSON 编码时，必须在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个值都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。 您可以使用 IoT 中心的 Create 或 Update REST API （特别是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 门户、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)）选择编码格式。 下图说明如何在 Azure 门户中选择编码格式。
 
 ![Blob 存储终结点编码](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -82,14 +85,14 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”**** 选项卡的“分层命名空间”** 字段上选择“启用”**，如下图所示：
+若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”选项卡的“分层命名空间”字段上选择“启用”，如下图所示：
 
 ![选择 Azure Date Lake Gen2 存储](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>服务总线队列和服务总线主题
 
-用作 IoT 中心终结点的服务总线队列和主题不得启用**会话**或**重复检测**选项。 如果启用了其中任一选项，该终结点会在 Azure 门户中显示为**无法访问**。
+用作 IoT 中心终结点的服务总线队列和主题不能启用“会话”或“重复项检测”。 如果启用了其中任一选项，该终结点将在 Azure 门户中显示为“无法访问”。
 
 ### <a name="event-hubs"></a>事件中心
 
@@ -114,13 +117,13 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="fallback-route"></a>回退路由
 
-回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](/azure/event-hubs/)兼容的内置事件中心（消息/事件）****。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。
+回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](/azure/event-hubs/)兼容的内置事件中心（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。
 
-可以在 "Azure 门户 >消息路由" 边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
+可以在 Azure 门户->“消息路由”边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
 
 ## <a name="non-telemetry-events"></a>非遥测事件
 
-除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生更改事件（在公共预览版中）。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”****，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为**数字克隆更改事件**，IoT 中心会在数据源[属性](../iot-pnp/iot-plug-and-play-glossary.md)设置或更改时发送消息，[并在基础](../iot-pnp/iot-plug-and-play-glossary.md)设备克隆发生更改事件时发送消息。
+除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生更改事件（在公共预览版中）。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为**数字克隆更改事件**，IoT 中心会在数据源[属性](../iot-pnp/iot-plug-and-play-glossary.md)设置或更改时发送消息，[并在基础](../iot-pnp/iot-plug-and-play-glossary.md)设备克隆发生更改事件时发送消息。
 
 [IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布设备事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
 
@@ -138,13 +141,13 @@ IoT 中心消息路由可保证按顺序至少将消息传送到终结点一次�
 
 使用内置终结点路由设备到云遥测消息时，在创建第一个路由后，端到端延迟略微增大。
 
-大多数情况下，延迟的平均增加时间小于500毫秒。 可以使用路由：消息/事件的消息延迟或 d2c.endpoints.latency.builtIn.events IoT 中心指标来监视延迟********。 在创建第一个路由后创建或删除任何路由不会影响端到端延迟。
+大多数情况下，延迟的平均增加时间小于500毫秒。 可以使用路由：消息/事件的消息延迟或 d2c.endpoints.latency.builtIn.events IoT 中心指标来监视延迟 。 在创建第一个路由后创建或删除任何路由不会影响端到端延迟。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
-IoT 中心提供了多个与路由和终结点相关的指标，使你能够大致了解你的中心的运行状况和已发送的消息数。 [IoT 中心指标](iot-hub-metrics.md)列出了默认为 IoT 中心启用的所有指标。 使用**路由**诊断日志 Azure Monitor[诊断设置](../iot-hub/iot-hub-monitor-resource-health.md)，你可以跟踪在评估路由查询期间发生的错误以及 IoT 中心感知到的终结点运行状况。 你可以使用 REST API[获取终结点运行状况](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)，以获取终结点的[运行状况状态](iot-hub-devguide-endpoints.md#custom-endpoints)。 
+IoT 中心提供了多个与路由和终结点相关的指标，使你能够大致了解你的中心的运行状况和已发送的消息数。 [IoT 中心指标](iot-hub-metrics.md)列出了默认为 IoT 中心启用的所有指标。 通过使用 Azure Monitor [诊断设置](../iot-hub/iot-hub-monitor-resource-health.md)中的路由诊断日志，可以跟踪发生在路由查询和终结点运行状况的评估期间、由 IoT 中心所察觉到的错误。 可以使用 REST API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 获取终结点的[运行状况状态](iot-hub-devguide-endpoints.md#custom-endpoints)。 
 
-使用用于[路由的故障排除指南](troubleshoot-message-routing.md)以获取更多详细信息，并支持路由故障排除。
+通过[路由故障排除指南](troubleshoot-message-routing.md)获取更多详细信息以及对路由故障排除的支持。
 
 ## <a name="next-steps"></a>后续步骤
 

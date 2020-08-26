@@ -1,6 +1,5 @@
 ---
-title: 查看 & 重新运行试验
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：查看 & 重新运行试验-Azure
 description: 管理 Azure 机器学习 Studio 中的试验运行（经典）。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8935be1261b693cfb4033a9d16c868e11b1fa68
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687389"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432385"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验运行
+
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+
 
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
 

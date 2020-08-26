@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
-    - name: 托管的虚拟网络
-      href: managed-virtual-network-private-endpoint.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -211,14 +209,14 @@
       items:
         - name: 直观创作数据工厂
           href: author-visually.md
+        - name: 迭代开发和调试
+          href: iterative-development-debugging.md
         - name: 管理中心
           href: author-management-hub.md
         - name: 源代码管理
           href: source-control.md
         - name: 持续集成和交付
           href: continuous-integration-deployment.md
-        - name: 迭代开发和调试
-          href: iterative-development-debugging.md
     - name: 连接器
       items:
         - name: 连接器概述
@@ -253,7 +251,7 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -564,6 +562,8 @@
       items:
         - name: 将链接的服务参数化
           href: parameterize-linked-services.md
+        - name: 全局参数
+          href: author-global-parameters.md
         - name: 表达式语言
           href: control-flow-expression-language-functions.md
         - name: 系统变量
@@ -588,6 +588,8 @@
           href: data-factory-service-identity.md
         - name: 客户托管密钥加密
           href: enable-customer-managed-key.md
+        - name: 托管的虚拟网络
+          href: managed-virtual-network-private-endpoint.md
     - name: 监视和管理
       items:
         - name: 直观地监视
@@ -618,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: 自承载集成运行时的自动化脚本
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: 在 Windows 容器中运行自承载集成运行时
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: 在 Azure 中运行 SSIS 包
       items:
         - name: 从 SSDT 运行 Azure 中的 SSIS 包
@@ -726,12 +730,16 @@
           href: pricing-concepts.md
     - name: 疑难解答指南
       items:
+        - name: 数据工厂 UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: 活动
           href: data-factory-troubleshoot-guide.md
         - name: 连接器
           href: connector-troubleshoot-guide.md
         - name: 数据流
           href: data-flow-troubleshoot-guide.md
+        - name: 复制数据工具
+          href: copy-data-tool-troubleshoot-guide.md
         - name: 自承载集成运行时
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 集成运行时

@@ -10,12 +10,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521116"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924183"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -41,7 +43,7 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 ## <a name="using-the-device-sdks"></a>使用设备 SDK
 
-支持 MQTT 协议的[设备 SDK](https://github.com/Azure/azure-iot-sdks) 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 还可以在客户端协议参数中指定基于 Web 套接字的 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。
+支持 MQTT 协议的[设备 SDK](https://github.com/Azure/azure-iot-sdks) 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 还可以在客户端协议参数中指定基于 Web 套接字的 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。 虽然可以将**QoS 0**配置为更快的消息交换，但应注意，传递并不保证，也不会得到确认。 出于此原因， **QoS 0**通常称为 "火灾"。
 
 当设备连接到 IoT 中心时，设备 SDK 会提供方法，让设备与 IoT 中心交换消息。
 
@@ -80,7 +82,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |Java     |    230 秒     |     否    |
 |C     | 240 秒 |  [是](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 秒 |  [是](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (V2)   | 60 秒 |  否   |
+|Python   | 60 秒 |  否   |
 
 按照 [MQTT 规范](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)，IoT 中心的 keep-alive ping 时间间隔是客户端 keep-alive 值的 1.5 倍。 但是，IoT 中心将服务器端最大超时限制为 29.45 分钟（1767 秒），因为所有 Azure 服务都绑定到了 Azure 负载均衡器 TCP 空闲超时（29.45 分钟）。 
 
@@ -308,13 +310,13 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 在从云到设备的消息中，属性包中的值表示如下表中所示：
 
-| 属性值 | 表示形式 | 说明 |
+| 属性值 | 表示形式 | 描述 |
 |----|----|----|
 | `null` | `key` | 属性包中只显示密钥 |
 | 空字符串 | `key=` | 键后跟一个无值的等号 |
 | 非 null，非空值 | `key=value` | 键后跟一个等号和值 |
 
-下面的示例显示一个属性包，其中包含三个应用程序属性： **prop1** ，值为 `null` ;**prop2**，空字符串（""）;和值为 "a string" 的**prop3** 。
+下面的示例显示一个属性包，其中包含三个应用程序属性： **prop1** ，值为 `null` ;**prop2** ( "" ) ，则为空字符串;和值为 "a string" 的**prop3** 。
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
@@ -435,11 +437,11 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/documentation)。
+若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/)。
 
 若要深入了解如何规划 IoT 中心部署，请参阅：
 
-* [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)
+* [Azure IoT 已认证设备目录](https://catalog.azureiotsolutions.com/)
 * [支持其他协议](iot-hub-protocol-gateway.md)
 * [与事件中心比较](iot-hub-compare-event-hubs.md)
 * [缩放、高可用性和灾难恢复](iot-hub-scaling.md)

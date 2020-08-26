@@ -4,17 +4,17 @@ description: include 文件
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: include file
+ms.custom: seodec18, include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 6ec45835038f6daa55051fbfb4b727707a3d9547
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba394d0603557fe6c1a438d15927b71ee4fcf6f8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67173259"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88057731"
 ---
 这些话语仅用于演示。 实际应用应该至少有 15 个话语，这些话语的长度、单词顺序、时态、语法正确性、标点符号和单词计数各不相同。

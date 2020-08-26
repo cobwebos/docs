@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 11e5d4e31f388dcffe7f1292afa223562d44b20a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832291"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Windows 虚拟机
 
@@ -63,7 +63,7 @@ ms.locfileid: "86087276"
     - 管理员密码：提供用于管理员帐户的密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
     - DNS 标签前缀：输入要用作 DNS 标签一部分的唯一标识符。
     - Windows OS 版本：选择想要在 VM 上运行的 Windows 版本。
-    - VM 大小：选择要用于 VM 的[大小](sizes.md)。
+    - VM 大小：选择要用于 VM 的[大小](../sizes.md)。
     - 位置：默认与资源组位置相同（如果已存在）。
 1. 选择“查看 + 创建”。 验证完成后，选择“创建”以创建和部署 VM。
 

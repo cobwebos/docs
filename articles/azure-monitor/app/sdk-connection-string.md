@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
+ms.custom: devx-track-javascript
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482116"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383624"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -31,12 +32,12 @@ ms.locfileid: "85482116"
 
 - 防火墙例外或代理重定向 
 
-    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
+    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](../faq.md#can-i-monitor-an-intranet-web-server)。 
     连接字符串只需进行单个设置，简化了此工作，因此是一种更好的选择。 简单的前缀后缀修正，允许自动填充所有终结点并将其重定向到正确的服务。 
 
 - 主权云或混合云环境
 
-    用户可以将数据发送到定义的[Azure 政府区域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+    用户可以将数据发送到定义的[Azure 政府区域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
     使用连接字符串可以定义 Intranet 服务器或混合云设置的终结点设置。 
 
 ## <a name="getting-started"></a>入门
@@ -274,14 +275,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 在运行时开始使用：
 
-* [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS 服务器](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web 应用](../../azure-monitor/app/azure-web-apps.md)
+* [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](./azure-vm-vmss-apps.md)
+* [IIS 服务器](./monitor-performance-live-website-now.md)
+* [Azure Web 应用](./azure-web-apps.md)
 
 在开发时开始使用：
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

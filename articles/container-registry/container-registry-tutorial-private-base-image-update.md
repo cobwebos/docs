@@ -3,12 +3,13 @@ title: 教程 - 通过基础映像更新触发映像生成
 description: 在本教程中，你将配置一个 Azure 容器注册表任务，以便在更新另一个专用 Azure 容器注册表中的基础映像时，在云中自动触发容器映像生成。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77617680"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407126"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教程：在更新另一个专用 Azure 容器注册表中的基础映像时自动化容器映像生成 
 
@@ -162,7 +163,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 az acr login --name $ACR_NAME
 ```
 
-然后，使用 `docker run` 在本地运行容器。 将 **\<run-id\>** 替换为上一步骤的输出中的“运行 ID”（例如“da6”）。 此示例将容器命名为 `myapp`，并包含 `--rm` 参数，以便在停止容器后将其删除。
+然后，使用 `docker run` 在本地运行容器。 将 \<run-id\> 替换为上一步骤的输出中的“运行 ID”（例如“da6”）。 此示例将容器命名为 `myapp`，并包含 `--rm` 参数，以便在停止容器后将其删除。
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>

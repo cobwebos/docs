@@ -1,23 +1,22 @@
 ---
-title: 在 Windows 虚拟桌面中发布内置应用程序-Azure
-description: 如何在 Windows 虚拟桌面中发布内置应用。
-services: virtual-desktop
+title: 在 Windows 虚拟桌面 (经典) 中发布内置应用程序-Azure
+description: 如何在 Windows 虚拟桌面 (经典) 中发布内置应用。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a453ef44a1ede86290f4130a6147eaaad09fa97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214139"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005561"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中发布内置应用
+# <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面 (经典) 中发布内置应用
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../publish-apps.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../publish-apps.md)。
 
 本文将介绍如何在 Windows 虚拟桌面环境中发布应用。
 

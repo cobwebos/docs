@@ -4,24 +4,24 @@ description: 列出了 Azure 中虚拟机可用的不同 GPU 优化大小。 针
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509302"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067029"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 
 GPU 优化 VM 大小是具有单个、多个或部分 GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
-- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md)大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序以及模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) 处理器，NCv2 系列和 NCv3 系列 VM 使用 Intel Xeon E5-2690 v4 (Broadwell) 处理器。
+- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md)和[NCT4_v3 系列](nct4-v3-series.md)大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序以及模拟、AI 和深度学习。 NCT4v3 系列重点介绍了具有 NVIDIA Tesla T4 GPU 和 AMD EPYC2 罗马处理器的推理工作负荷。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) 处理器，NCv2 系列和 NCv3 系列 VM 使用 Intel Xeon E5-2690 v4 (Broadwell) 处理器。
 
-- [ND 系列](nd-series.md)和[NDv2 系列](ndv2-series.md)的大小侧重于定型和推理方案，以便进行深入学习。 它们使用 NVIDIA Tesla P40 GPU 和 Intel 2690 v4 （Broadwell）处理器。 NDv2 系列使用 Intel 强白金8168（Skylake）处理器。
+- [ND 系列](nd-series.md)和[NDv2 系列](ndv2-series.md)的大小侧重于定型和推理方案，以便进行深入学习。 它们使用 NVIDIA Tesla P40 GPU 和 Intel 2690 v4 (Broadwell) 处理器。 NDv2 系列使用 Intel 强白金 8168 (Skylake) 处理器。
 
 - [NV 系列](nv-series.md)和[NVv3 系列](nvv3-series.md)大小经过优化，适用于使用 OpenGL 和 DirectX 等框架的远程可视化、流式处理、游戏、编码和 VDI 方案。 这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 

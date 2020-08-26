@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 分析存储（预览版）是什么？
 description: 了解 Azure Cosmos DB 事务性（基于行）和分析（基于列）存储。 分析存储的优势、对大型工作负荷的性能响应以及自动将事务性存储中的数据同步到分析存储
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116020"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815821"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB 分析存储（预览版）是什么？
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 分析存储是完全独立的列存储，可以借助它对 Azu
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>对操作数据进行大型分析面临的挑战
 
-Azure Cosmos DB 容器中的多模型操作数据存储在已编索的基于行的“事务性存储”内部。 行存储格式旨在快速实现事务性读写（以毫秒级的响应时间）和操作查询。 若数据集增大，对于采用此格式存储的数据的预配吞吐量，复杂分析查询的成本可能会很高。反之，大规模使用预配的吞吐量会影响实时应用程序和服务使用的事务性工作负荷的性能。
+Azure Cosmos DB 容器中的多模型操作数据存储在已编索的基于行的“事务性存储”内部。 行存储格式旨在快速实现事务性读写（以毫秒级的响应时间）和操作查询。 如果数据集增长很大，则复杂的分析查询在预配存储为此格式的数据时的吞吐量方面可能会很大。 预配的吞吐量的高消耗反过来会影响你的实时应用程序和服务所使用的事务工作负荷的性能。
 
 通常，若要分析大量的数据，则从 Azure Cosmos DB 的事务性存储中提取操作数据，并将其存储在单独的数据层中。 例如，采用适当的格式将数据存储在数据仓库或数据湖中。 之后将使用此数据进行大型分析，并使用计算引擎（如 Apache Spark 群集）分析它们。 从操作数据中分离分析存储和计算层会增加延迟，因为运行 ETL（提取、转换、加载）管道的频率会降低，以最大程度减少对事务性工作负荷的潜在影响。
 
@@ -131,10 +131,10 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 * 分析写入操作：从事务性存储将操作数据更新以完全托管的方式同步到分析存储（自动同步）
 
-* 分析读取操作：从 Synapse Analytics Spark 和 SQL 无服务器运行时对分析存储执行的读取操作。
+* 分析读取操作：针对分析存储执行的、从 Synapse Analytics Spark 和 SQL 无服务器运行时间执行的读取操作。
 
 > [!NOTE]
-> Azure Cosmos DB 分析存储目前以公共预览版提供，在 2020 年 8 月 30 日之前可免费使用。
+> Azure Cosmos DB 分析存储当前在公共预览版中免费提供，不收取任何费用。
 
 分析存储定价与事务性存储定价模型不同。 分析存储中没有预配 RU 这一概念。 有关分析存储定价模型的完整详细信息，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
@@ -144,7 +144,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 分析 TTL 表示应将容器的分析存储中的数据保留多久。 
 
-无论事务性 TTL 配置如何，都会从事务性存储中将对操作数据执行的插入、更新、删除自动同步到分析存储。 分析存储中操作数据的保留可以由容器级别的分析 TTL 值控制，如下所示：
+如果已启用分析存储区，则操作数据的插入、更新、删除操作会自动从事务存储同步到分析存储，而不考虑事务 TTL 配置。 分析存储中操作数据的保留可以由容器级别的分析 TTL 值控制，如下所示：
 
 使用 `AnalyticalStoreTimeToLiveInSeconds` 属性设置容器中的分析 TTL：
 
@@ -152,7 +152,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 * 若此值存在且设置为“-1”：无论事务性存储中数据的保留期是多久，分析存储都将保留所有历史数据。 此设置表示分析存储会无限期保留操作数据
 
-* 若此值存在且设置为某个正数“n”：距在事务性存储中最后一次修改项“n”秒后，项将从分析存储中过期。 如果想要在有限的一段时间内将操作数据保留在分析存储中，而不考虑该数据在事务性存储中的保留期，可利用此设置。
+* 若此值存在且设置为某个正数“n”：距在事务性存储中最后一次修改项“n”秒后，项将从分析存储中过期。 如果要在分析存储中将操作数据保留一段有限的时间，则可以利用此设置，而不考虑事务存储中数据的保留期
 
 考虑的要点：
 *   使用分析 TTL 值启用分析存储后，可以在以后将其更新为其他有效值。 

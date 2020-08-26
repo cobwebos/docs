@@ -2,19 +2,17 @@
 title: include 文件
 description: include 文件
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673435"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133786"
 ---
 认知服务提供两种自然语言处理服务，[语言理解](../luis/what-is-luis.md)和[QnA Maker](../qnamaker/overview/overview.md)，每个服务都有不同的用途。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 
@@ -43,7 +41,7 @@ ms.locfileid: "83673435"
 
 ## <a name="when-do-you-use-luis"></a>何时使用 LUIS？
 
-如果聊天机器人在处理过程中需要知道言语的意图，请使用 LUIS。 沿用示例文本 `How do I get to the Human Resources building on the Seattle North campus?`。知道用户的意图是查找某个地点后，可将有关言语的详细信息（使用实体提取）传递给另一服务（例如交通服务器）来获取答案。
+需要了解聊天机器人进程中的言语的意图时，请使用 LUIS。 沿用示例文本 `How do I get to the Human Resources building on the Seattle North campus?`。知道用户的意图是查找某个地点后，可将有关言语的详细信息（使用实体提取）传递给另一服务（例如交通服务器）来获取答案。
 
 无需结合使用 LUIS 和 QnA Maker 即可确定意向。
 
@@ -51,7 +49,7 @@ ms.locfileid: "83673435"
 
 ## <a name="when-do-you-use-qna-maker"></a>何时使用 QnA Maker？
 
-如果已有一个静态的答案知识库，请使用 QnA Maker。 此知识库是根据需要自定义的，其内容是使用 PDF 和 URL 等文档生成的。
+如果拥有静态回答知识库，请使用 QnA Maker。 此知识库根据你的需要自定义，其内容使用 PDF 和 URL 等文档生成。
 
 沿用示例言语 `How do I get to the Human Resources building on the Seattle North campus?`。将该文本作为查询发送到已发布的 QnA Maker 服务，然后接收最佳答案。
 
@@ -92,4 +90,4 @@ ms.locfileid: "83673435"
 * [机器人框架示例](https://github.com/Microsoft/BotBuilder-Samples)
 * [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 * [Azure 机器人仿真器](https://github.com/Microsoft/BotFramework-Emulator)
-* [Bot Framework 网上聊天](https://github.com/microsoft/BotFramework-WebChat)
+* [机器人 framework web 聊天](https://github.com/microsoft/BotFramework-WebChat)

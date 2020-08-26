@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985800"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439256"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
 
@@ -81,7 +81,7 @@ RDP 侦听器配置不当。
 1. 检查是否已由组策略禁用 RDP。
 
     ```
-    REM Get the group policy 
+    REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
     如果组策略指出禁用了 RDP （fDenyTSConnections 值为0x1），请运行以下命令启用 TermService 服务。 如果找不到注册表项，则没有将组策略配置为禁用 RDP。 您可以转到下一步。
@@ -183,7 +183,7 @@ RDP 侦听器配置不当。
 
 #### <a name="step-1-turn-on-remote-desktop"></a>步骤 1：启用远程桌面
 
-1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 开始与恢复 VM 建立远程桌面连接。
 3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
 4. 开始与恢复 VM 建立远程桌面连接。
@@ -251,4 +251,4 @@ RDP 侦听器配置不当。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果仍需要帮助，可 [联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 来快速解决问题。

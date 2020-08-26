@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e4127024404489d0aa8478a9cbd073773f8b512a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114429"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423909"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用用于 MongoDB 的 Azure Cosmos DB's API 创建 Angular 应用 - 创建 Cosmos 帐户
 
@@ -61,7 +61,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 创建 Azure Cosmos DB 帐户以后，请执行以下操作：
 1. 打开新的浏览器窗口，访问 [https://portal.azure.com](https://portal.azure.com)
-1. 单击左侧栏中的 Azure Cosmos DB 徽标 ![Azure 门户中的 Azure Cosmos DB 图标](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) ，然后就会显示你的所有 Azure Cosmos DB。
+1. 单击左侧栏中的 Azure Cosmos DB 徽标 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png":::，然后就会显示你的所有 Azure Cosmos DB。
 1. 单击刚创建的 Azure Cosmos DB 帐户，选择“概览”选项卡，向下滚动，以便查看数据库所在的映射。 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure 门户中的新 Azure Cosmos DB 帐户":::

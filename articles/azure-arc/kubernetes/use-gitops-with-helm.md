@@ -1,5 +1,5 @@
 ---
-title: 将 GitOps 和 Helm 配合用于启用了 Azure Arc 的群集配置（预览版）
+title: '使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) '
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 和 Helm 配合用于启用了 Azure Arc 的群集配置（预览版）
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 677c5f2b27794ebea9d38e470b5e1a5ba12bff7e
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857220"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723633"
 ---
-# <a name="use-gitops-with-helm-for-an-azure-arc-enabled-cluster-configuration-preview"></a>将 GitOps 和 Helm 配合用于启用了 Azure Arc 的群集配置（预览版）
+# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) 
 
 Helm 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 APT 和 Yum 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
@@ -45,7 +45,7 @@ Name           Location    ResourceGroup
 arc-helm-demo  eastus      k8s-clusters
 ```
 
-## <a name="overview-of-using-helm-with-azure-arc-enabled-kubernetes"></a>将 Helm 用于启用了 Azure Arc 的 Kubernetes 概述
+## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>将 GitOps 和 Helm 与启用了 Azure Arc 的 Kubernetes 一起使用概述
 
  Helm Operator 提供了 Flux 的一个扩展，用于自动完成 Helm 图表发布。 图表发布是通过名为 HelmRelease 的 Kubernetes 自定义资源描述的。 Flux 将这些资源从 git 同步到群集， Helm Operator 确保根据资源中的指定发布 Helm 图表。
 
@@ -53,7 +53,7 @@ arc-helm-demo  eastus      k8s-clusters
 
 ```bash
 ├── charts
-│   └── azure-vote
+│   └── azure-arc-sample
 │       ├── Chart.yaml
 │       ├── templates
 │       │   ├── NOTES.txt
@@ -61,30 +61,25 @@ arc-helm-demo  eastus      k8s-clusters
 │       │   └── service.yaml
 │       └── values.yaml
 └── releases
-    └── prod
-        └── azure-vote-app.yaml
+    └── app.yaml
 ```
 
-git 存储库中有两个目录，其中一个目录包含 Helm 图表，另一个目录包含发布配置。在 `releases/prod` 目录中，`azure-vote-app.yaml` 包含如下所示的 HelmRelease 配置：
+在 git 存储库中，我们有两个目录，一个包含 Helm 图表，另一个包含版本配置。在 `releases` 目录中， `app.yaml` 包含如下所示的 HelmRelease 配置：
 
-```bash
- apiVersion: helm.fluxcd.io/v1
- kind: HelmRelease
- metadata:
-   name: azure-vote-app
-   namespace: prod
-   annotations:
- spec:
-   releaseName: azure-vote-app
-   chart:
-     git: https://github.com/Azure/arc-helm-demo
-     path: charts/azure-vote
-     ref: master
-   values:
-     image:
-       repository: dstrebel/azurevote
-       tag: v1
-     replicaCount: 3
+```yaml
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: azure-arc-sample
+  namespace: arc-k8s-demo
+spec:
+  releaseName: arc-k8s-demo
+  chart:
+    git: https://github.com/Azure/arc-helm-demo
+    ref: master
+    path: charts/azure-arc-sample
+  values:
+    serviceName: arc-k8s-demo
 ```
 
 Helm 发布配置包含以下字段：
@@ -97,30 +92,36 @@ Helm 发布配置包含以下字段：
 
 HelmRelease spec.values 中指定的选项将替代图表源中的 values.yaml 中指定的选项。
 
-可以在官方 [Helm Operator 文档](https://docs.fluxcd.io/projects/helm-operator/en/1.0.0-rc9/references/helmrelease-custom-resource.html)中详细了解 HelmRelease
+可以在官方 [Helm Operator 文档](https://docs.fluxcd.io/projects/helm-operator/en/stable/)中详细了解 HelmRelease
 
 ## <a name="create-a-configuration"></a>创建配置
 
-让我们使用适用于 `k8sconfiguration` 的 Azure CLI 扩展，将已连接的群集链接到示例 git 存储库。 我们将此配置命名为 `azure-voting-app`，并在 `prod` 命名空间中部署 Flux Operator。
+让我们使用适用于 `k8sconfiguration` 的 Azure CLI 扩展，将已连接的群集链接到示例 git 存储库。 我们将此配置命名为 `azure-arc-sample`，并在 `arc-k8s-demo` 命名空间中部署 Flux Operator。
 
 ```bash
-az k8sconfiguration create --name azure-voting-app --resource-group  $RESOURCE_GROUP --cluster-name $CLUSTER_NAME --operator-instance-name azure-voting-app --operator-namespace prod --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --operator-params='--git-readonly --git-path=releases/prod' --scope namespace --cluster-type connectedClusters
+az k8sconfiguration create --name azure-arc-sample \
+  --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
+  --operator-instance-name flux --operator-namespace arc-k8s-demo \
+  --operator-params='--git-readonly --git-path=releases' \
+  --enable-helm-operator --helm-operator-version='0.6.0' \
+  --helm-operator-params='--set helm.versions=v3' \
+  --repository-url https://github.com/Azure/arc-helm-demo.git  \
+  --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>配置参数
 
 若要自定义配置创建，请[了解可以使用的其他参数](./use-gitops-connected-cluster.md#additional-parameters)。
 
-
 ## <a name="validate-the-configuration"></a>验证配置
 
 使用 Azure CLI 验证 `sourceControlConfiguration` 是否已成功创建。
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-voting-app --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
 ```
 
-请注意，将使用合规状态、消息和调试信息更新 `sourceControlConfiguration` 资源。
+`sourceControlConfiguration`资源将更新为符合性状态、消息和调试信息。
 
 **输出：**
 
@@ -130,19 +131,24 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "complianceStatus": {
     "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
-    "message": "...",
+    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}",
     "messageLevel": "3"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
-  "name": "azure-vote-app",
-  "operatorInstanceName": "cluster-config",
-  "operatorNamespace": "prod",
-  "operatorParams": "--git-readonly --git-path=releases/prod",
+  "enableHelmOperator": "True",
+  "helmOperatorProperties": {
+    "chartValues": "--set helm.versions=v3",
+    "chartVersion": "0.6.0"
+  },
+  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-arc-sample",
+  "name": "azure-arc-sample",
+  "operatorInstanceName": "flux",
+  "operatorNamespace": "arc-k8s-demo",
+  "operatorParams": "--git-readonly --git-path=releases",
   "operatorScope": "namespace",
   "operatorType": "Flux",
   "provisioningState": "Succeeded",
-  "repositoryPublicKey": "...",
-  "repositoryUrl": "git://github.com/Azure/arc-helm-demo.git",
+  "repositoryPublicKey": "",
+  "repositoryUrl": "https://github.com/Azure/arc-helm-demo.git",
   "resourceGroup": "AzureArcTest",
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
 }
@@ -150,21 +156,12 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>验证应用程序
 
-现在，我们通过获取服务 IP 来验证应用程序是否已启动并运行。
+运行以下命令并 `localhost:8080` 在浏览器中导航到，验证应用程序是否正在运行。
 
 ```bash
-kubectl get svc/azure-vote-front -n prod
+kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
-
-**输出：**
-
-```bash
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.14.161   52.186.160.216   80:30372/TCP   4d22h
-```
-
-在上面的输出中找到外部 IP 地址，并在浏览器中将其打开。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Policy 来控制群集配置](./use-azure-policy.md)
+- [使用 Azure Policy 控制群集配置](./use-azure-policy.md)

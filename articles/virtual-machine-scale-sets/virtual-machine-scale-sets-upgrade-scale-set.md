@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029291"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -319,13 +320,13 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- 通过 Azure PowerShell 使用 [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)：
+- 通过 Azure PowerShell 使用 [Set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm)：
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- 通过 Azure CLI 使用 [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss)：
+- 通过 Azure CLI 使用 [az vmss reimage](/cli/azure/vmss)：
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -368,12 +369,12 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 通过自定义映像来部署应用程序也很常见。 以下部分介绍此情景。
 
 ### <a name="os-updates"></a>操作系统更新
-如果使用 Azure 平台映像，可以通过修改 *imageReference* 来更新映像（有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)）。
+如果使用 Azure 平台映像，可以通过修改 *imageReference* 来更新映像（有关详细信息，请参阅 [REST API 文档](/rest/api/compute/virtualmachinescalesets/createorupdate)）。
 
 >[!NOTE]
 > 使用平台映像时，通常指定 "latest" 作为映像引用版本。 在你执行创建、横向扩展和重置映像操作时，将使用最新发布的脚本创建 VM。 但是，这**并不**意味着 OS 映像会随新映像版本的发布自动进行更新。 当前处于预览版状态的一个独立功能提供了自动 OS 升级功能。 有关详细信息，请参阅[自动 OS 升级文档](virtual-machine-scale-sets-automatic-upgrade.md)。
 
-如果使用自定义映像，可以通过更新 *imageReference* ID 来更新映像（有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)）。
+如果使用自定义映像，可以通过更新 *imageReference* ID 来更新映像（有关详细信息，请参阅 [REST API 文档](/rest/api/compute/virtualmachinescalesets/createorupdate)）。
 
 ## <a name="examples"></a>示例
 

@@ -1,18 +1,18 @@
 ---
 title: 创建 Dynamics 365 Business Central 产品/服务 - Microsoft 商业市场
-description: 了解在合作伙伴中心的商业市场门户中新建 Dynamics 365 Business Central 产品/服务的步骤和注意事项。 可在 Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售你的产品/服务。
+description: 了解在合作伙伴中心的 Microsoft 商业 marketplace 中创建新的 Dynamics 365 Business Central 产品/服务的步骤和注意事项。 可在 Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售你的产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/07/2020
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121939"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817045"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "86121939"
     ![左侧导航菜单图示。](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -60,7 +60,7 @@ ms.locfileid: "86121939"
 
 #### <a name="free-trial-listing"></a>免费试用版（列出）
 
-向客户列出你的产品/服务，并提供有效的 URL （从或开始， `http` `https` 用户可以在其中获取试用版）。  例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，其中包含免费试用版的链接，方法是提供有效的 URL， (始于 `http` 或 `https`) 可以获取试用版。  例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用程序将通过试用链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户不支持使用此令牌进行身份验证。
@@ -71,7 +71,7 @@ ms.locfileid: "86121939"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从[什么是测试驱动器](../what-is-test-drive.md)开始。
+体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从 [什么是测试驱动器](../what-is-test-drive.md)开始。
 
 若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
 
@@ -91,10 +91,10 @@ ms.locfileid: "86121939"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -117,7 +117,7 @@ ms.locfileid: "86121939"
 > [!NOTE]
 > 仅可用一种语言提供产品/服务列表的详细信息。 如果不要求用英语，则只要产品/服务描述的开头是短语“此应用程序只提供[非英语语言]版本”就可以。 还可提供一个帮助链接 URL，使用与产品/服务列表内容中所用语言以外的语言提供内容。
 
-以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-d365-business-central.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -126,7 +126,7 @@ ms.locfileid: "86121939"
 1. 徽标
 2. 产品
 3. 类别
-4. 支持地址（链接）
+4. 支持地址 (链接) 
 5. 使用条款
 6. 隐私策略
 7. 产品名称
@@ -182,10 +182,16 @@ ms.locfileid: "86121939"
 
 ### <a name="marketplace-images"></a>市场映像
 
-提供适合你的产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 按两种大小上传产品/服务徽标：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-* 小（48 x 48 像素）
-* 大（216 x 216 像素）
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
+
+在列表中的不同位置使用这些徽标：
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
@@ -202,7 +208,7 @@ ms.locfileid: "86121939"
 
 [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="availability"></a>可用性
 
@@ -223,11 +229,11 @@ ms.locfileid: "86121939"
 
 ### <a name="preview-audience"></a>预览版受众
 
-在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览。
+在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览版。
 
 然后，当你准备好提供产品/服务并删除预览限制时，需要删除该隐藏密钥并再次发布。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -264,11 +270,11 @@ ms.locfileid: "86121939"
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-在此页中可以设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息[，请参阅什么是测试驱动器](../what-is-test-drive.md)。
+可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息 [，请参阅什么是测试驱动器](../what-is-test-drive.md)。
 
-若要启用体验版，请在[产品/服务设置](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请清除此复选框。
+若要启用体验版，请在[“产品/服务设置”](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请取消选中此复选框。
 
-完成设置测试驱动器后，请选择 "**保存草稿**"，然后继续。
+完成设置测试驱动器后，请选择 " **保存草稿** "，然后继续。
 
 ## <a name="supplemental-content"></a>补充内容
 

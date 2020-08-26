@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 05/27/2020
-  ms.openlocfilehash: 358c6e85b7a2d6e54b72bb94c00e86f330decd19
-  ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+  ms.openlocfilehash: 6c02f1f12ed32cbced046f9937d4b8a28d74f97a
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/11/2020
-  ms.locfileid: "84708767"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88590415"
 landingContent:
 - title: Azure SQL 托管实例
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: 创建 SQL 托管实例
       url: instance-create-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL 托管实例概述
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
     - text: 新增功能
@@ -61,20 +65,30 @@ landingContent:
       url: ../database/dynamic-data-masking-overview.md
     - text: 公共终结点
       url: public-endpoint-overview.md
-- title: 参考
+- title: 了解 Azure SQL
   linkLists:
   - linkListType: learn
     links:
+    - text: 面向初学者的 Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL 基础知识
+      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL 实操练习
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL 集训营
+      url: https://aka.ms/azuresqlbootcamp
     - text: SQL 教育资源
       url: /sql/sql-server/educational-sql-resources
+- title: 参考
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI 示例
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: ../database/az-cli-script-samples-content-guide.md
     - text: PowerShell 示例
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: ../database/powershell-script-content-guide.md
     - text: ARM 模板示例
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: ../database/arm-templates-content-guide.md
   - linkListType: download
     links:
     - text: SQL Server Management Studio (SSMS)

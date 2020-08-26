@@ -9,12 +9,12 @@ ms.subservice: windows
 ms.date: 11/30/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 14777b85fdc531b96c61882d5f244ca40ed28fa6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c5bcc1f2de379eb9a8a49a2259533bcea33328d1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197989"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265188"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows 上创建虚拟机规模集和部署高度可用的应用
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数。 也可以定义规则，以便根据 CPU、内存需求或网络流量等资源使用情况进行自动缩放。 在本教程中，请在 Azure 中部署虚拟机规模集，并了解如何执行以下操作：
@@ -30,18 +30,18 @@ ms.locfileid: "83197989"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 ## <a name="scale-set-overview"></a>规模集概述
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 放置组是配置类似的 VM 的组，与[可用性集](tutorial-availability-sets.md)相似。
 
-可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些根据 CPU 负载、内存用量或网络流量等指标触发这些规则。
+可以根据需要在规模集中创建 VM。 可以定义自动缩放规则来控制如何以及何时在规模集中添加或删除 VM。 这些规则可以根据 CPU 负载、内存用量或网络流量等指标触发。
 
-使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
+使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 600 个 VM。
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 且使用 *Windows Server 2016 Datacenter* 平台映像的规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，可以针对规模集中的 VM 实例设置自己的管理凭据：
+使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 且使用 *Windows Server 2016 Datacenter* 平台映像的规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，可以针对规模集中的 VM 实例设置自己的管理凭据：
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -59,7 +59,7 @@ New-AzVmss `
 
 
 ## <a name="deploy-sample-application"></a>部署示例应用程序
-若要测试规模集，请安装一个基本的 Web 应用程序。 使用 Azure 自定义脚本扩展下载并运行一个脚本，以便在 VM 实例上安装 IIS。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 有关详细信息，请参阅[自定义脚本扩展概述](extensions-customscript.md)。
+若要测试规模集，请安装一个基本的 Web 应用程序。 使用 Azure 自定义脚本扩展下载并运行一个脚本，以便在 VM 实例上安装 IIS。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 有关详细信息，请参阅[自定义脚本扩展概述](../extensions/custom-script-windows.md)。
 
 使用自定义脚本扩展安装基本的 IIS Web 服务器。 应用可安装 IIS 的自定义脚本扩展，如下所示：
 
@@ -92,7 +92,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>允许流量发往应用程序
 
-若要允许访问基本的 Web 应用程序，请使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 和 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组。 有关详细信息，请参阅 [Azure 虚拟机规模集的网络](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)。
+若要允许访问基本的 Web 应用程序，请使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 和 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组。 有关详细信息，请参阅 [Azure 虚拟机规模集的网络](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)。
 
 ```azurepowershell-interactive
 # Get information about the scale set
@@ -141,7 +141,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要查看运行中的规模集，请使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例显示创建为规模集一部分的“myPublicIP”的 IP 地址： 
+若要查看运行中的规模集，请使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例显示创建为规模集一部分的“myPublicIP”的 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -153,14 +153,14 @@ Get-AzPublicIPAddress `
 
 ![运行 IIS 网站](./media/tutorial-create-vmss/running-iis-site.png)
 
-若要查看规模集的运作方式，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分配流量。
+若要查看规模集的实际运行情况，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分发流量。
 
 
 ## <a name="management-tasks"></a>管理任务
-在规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 Azure PowerShell 提供一种用于执行这些任务的快速方法。 以下是一些常见任务。
+在规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 Azure PowerShell 提供了一种用于执行这些任务的快速方法。 以下是一些常见任务。
 
 ### <a name="view-vms-in-a-scale-set"></a>查看规模集中的 VM
-若要在规模集中查看 VM 实例的列表，请使用 [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)，如下所示：
+若要在规模集中查看 VM 实例的列表，请使用 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)，如下所示：
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -177,7 +177,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-若要查看特定 VM 实例的其他信息，请将 `-InstanceId` 参数添加到 [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)。 以下示例查看 VM 实例 *1* 的相关信息：
+若要查看特定 VM 实例的其他信息，请将 `-InstanceId` 参数添加到 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)。 以下示例查看 VM 实例 *1* 的相关信息：
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -188,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>增加或减少 VM 实例
-若要查看规模集中当前包含的实例数，请使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 并查询 sku.capacity  ：
+若要查看规模集中当前包含的实例数，请使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 并查询 sku.capacity：
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -196,7 +196,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
   Select -ExpandProperty Sku
 ```
 
-然后，可以使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 手动增加或减少规模集中虚拟机的数目。 以下示例将规模集中 VM 的数目设置为 *3*：
+然后，可以使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 手动增加或减少规模集中虚拟机的数目。 以下示例将规模集中 VM 的数目设置为 *3*：
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -211,11 +211,11 @@ Update-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
 
-这会花费数分钟来更新规模集中实例的指定数量。
+这将花费数分钟来更新规模集中指定数目的实例。
 
 
 ### <a name="configure-autoscale-rules"></a>配置自动缩放规则
-定义自动缩放规则，而不是手动缩放规模集中实例的数目。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果在 5 分钟内平均 CPU 负载高于 60%，以下示例将增加一个实例。 如果在 5 分钟内平均 CPU 负载低于 30%，则将减少一个实例：
+你可以定义自动缩放规则，而不是手动缩放规模集中实例的数目。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果在 5 分钟内平均 CPU 负载高于 60%，以下示例将增加一个实例。 如果平均 CPU 负载低于 30% 且持续时间超过 5 分钟，则将减少一个实例：
 
 ```azurepowershell-interactive
 # Define your scale set information
@@ -272,7 +272,7 @@ Add-AzAutoscaleSetting `
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已创建虚拟机规模集。 你已了解如何执行以下操作：
+在本教程中，你已创建了一个虚拟机规模集。 你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用自定义脚本扩展定义要缩放的 IIS 站点
@@ -281,7 +281,7 @@ Add-AzAutoscaleSetting `
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
 
-请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
+请继续学习下一教程，详细了解虚拟机的负载均衡概念。
 
 > [!div class="nextstepaction"]
-> [均衡虚拟机的负载](tutorial-load-balancer.md)
+> [对虚拟机进行负载均衡](tutorial-load-balancer.md)

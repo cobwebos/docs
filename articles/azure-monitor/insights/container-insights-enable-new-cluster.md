@@ -4,12 +4,12 @@ description: 了解如何使用用于容器的 Azure Monitor 订阅启用对新�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320317"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -29,7 +29,7 @@ ms.locfileid: "86516628"
 
 ## <a name="enable-using-terraform"></a>使用 Terraform
 
-如果正在[使用 Terraform 部署新的 AKS 群集](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)，请指定配置文件所需的参数，以便在未指定现有工作区时[创建 Log Analytics 工作区](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)。 
+如果正在[使用 Terraform 部署新的 AKS 群集](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)，请指定配置文件所需的参数，以便在未指定现有工作区时[创建 Log Analytics 工作区](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)。 
 
 >[!NOTE]
 >如果选择使用 Terraform，则必须运行 Terraform Azure RM 提供程序 1.17.0 版或更高版本。
@@ -118,3 +118,4 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 * 如果在尝试载入解决方案时遇到问题，请查看[故障排除指南](container-insights-troubleshoot.md)
 
 * 启用监视以收集 AKS 群集及其上运行的工作负荷的运行状况和资源利用率，了解[如何使用](container-insights-analyze.md)用于容器的 Azure Monitor。
+

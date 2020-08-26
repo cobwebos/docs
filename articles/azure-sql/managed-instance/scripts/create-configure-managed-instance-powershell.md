@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 455860b2ccdfe3188c4985b64bd76ce51ab991ca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 792fede4fd76469ee3f8ae2550d0e3f3a25126a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073432"
 ---
 # <a name="use-powershell-to-create-a-managed-instance"></a>使用 PowerShell 创建托管实例
 
@@ -30,7 +30,7 @@ ms.locfileid: "84708457"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 此脚本使用以下命令中的某些命令。 有关下表中使用的命令和其他命令的详细信息，请单击命令特定文档的链接。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。 |
@@ -66,6 +66,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 Azure SQL 托管实例的其他 PowerShell 脚本示例可在 [Azure SQL 托管实例 PowerShell 脚本](../../database/powershell-script-content-guide.md)中找到。

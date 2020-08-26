@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 16ad8d7fd0f46381f2e2e7076015af65bd4bddcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806149"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502726"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 TLS 终端创建应用程序网关
 
@@ -55,7 +55,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组 。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus

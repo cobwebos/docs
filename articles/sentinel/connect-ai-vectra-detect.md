@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 964bab2b81f6ce69e77fd69cab55f6d1894e4edb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57f4a49ac89f1347fc88f8bacddce3abab7e44e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038216"
 ---
 # <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>将 AI Vectra 检测连接到 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 AI Vectra 检测数据连接器目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍如何将[AI Vectra 检测](https://www.vectra.ai/product/cognito-detect)设备连接到 Azure Sentinel。 AI Vectra 检测数据连接器可让你轻松地将 AI Vectra 检测到 Azure Sentinel，使你能够在工作簿中查看数据，使用它创建自定义警报，并将其合并以改进调查。
 

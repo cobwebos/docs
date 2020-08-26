@@ -1,23 +1,24 @@
 ---
-title: 自动增长存储-Azure PowerShell-Azure Database for PostgreSQL
-description: 本文介绍如何在 Azure Database for PostgreSQL 中使用 PowerShell 启用自动增长存储。
+title: 自动增长存储 - Azure PowerShell - Azure Database for PostgreSQL
+description: 本文介绍如何使用 PowerShell 实现 Azure Database for PostgreSQL 存储的自动增长。
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: d8ea8a03a0ce6f5819bb603c9d0ad7b4d65d5c32
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a186c6e176cde20474cdf4772b8724ad3f356a3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118114"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493612"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>使用 PowerShell 自动增长 Azure Database for PostgreSQL server 中的存储
+# <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>使用 PowerShell 实现 Azure Database for PostgreSQL 服务器存储的自动增长
 
 本文介绍如何将 Azure Database for PostgreSQL 服务器存储配置为在不影响工作负荷的情况下增长。
 
-存储自动增长可防止服务器[达到存储限制](/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)并变为只读。 对于预配存储为 100 GB 或更低的服务器，当可用空间低于 10% 时，大小将增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用空间低于 10 GB 时，大小将增加 5%。 最大存储限制适用于 " [Azure Database for PostgreSQL 定价层](/azure/postgresql/concepts-pricing-tiers#storage)的" 存储 "部分中指定的限制。
+存储自动增长可防止服务器[达到存储限制](/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)并变为只读。 对于预配存储为 100 GB 或更低的服务器，当可用空间低于 10% 时，大小将增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用空间低于 10 GB 时，大小将增加 5%。 最大存储限制的应用方式遵循 [Azure Database for PostgreSQL 定价层](/azure/postgresql/concepts-pricing-tiers#storage)的存储部分内容中所指定的方式。
 
 > [!IMPORTANT]
 > 请记住，存储只能增加，不能减少。
@@ -33,7 +34,7 @@ ms.locfileid: "86118114"
 > 尽管 Az.PostgreSql PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.PostgreSql -AllowPrerelease`。
 > Az.PostgreSql PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
-如果选择在本地使用 PowerShell，请使用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
+如果选择在本地使用 PowerShell，请使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
 
 ## <a name="enable-postgresql-server-storage-auto-grow"></a>启用 PostgreSQL 服务器存储自动增长
 
@@ -53,4 +54,4 @@ New-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sk
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何使用 PowerShell 创建和管理 Azure Database for PostgreSQL 中的读取副本](howto-read-replicas-powershell.md)。
+> [如何使用 PowerShell 在 Azure Database for PostgreSQL 中创建和管理只读副本](howto-read-replicas-powershell.md)。

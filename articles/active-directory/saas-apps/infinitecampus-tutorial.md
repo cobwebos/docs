@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Infinite Campus 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Infinite Campus 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3995b544-e751-4e0f-ab8b-c9a3862da6ba
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ca154caf67d8dd715ad1341e9fe3c6cfde20fde0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100368"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
 

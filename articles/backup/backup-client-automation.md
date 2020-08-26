@@ -3,12 +3,12 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8e9b2f0adc2cdd4e0d17f618b516486d8ca9f8a8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513721"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826321"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -24,7 +24,7 @@ ms.locfileid: "86513721"
 
 以下步骤引导用户创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
 
-1. 如果是首次使用 Azure 备份，则必须使用**AzResourceProvider** Cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+1. 如果是首次使用 Azure 备份，则必须使用 **AzResourceProvider** Cmdlet 将 Azure 恢复服务提供程序注册到订阅。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -42,7 +42,7 @@ ms.locfileid: "86513721"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md)。 下面的示例演示了将*testVault*的 **-BackupStorageRedundancy**选项设置为**GeoRedundant**。
+4. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md) 或 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md)。 下面的示例演示了将*testVault*的 **-BackupStorageRedundancy**选项设置为**GeoRedundant**。
 
    > [!TIP]
    > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
@@ -95,7 +95,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果未指定 */nu*选项，则在安装结束时将打开 " **Windows 更新**" 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
+这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果未指定 */nu* 选项，则在安装结束时将打开 " **Windows 更新** " 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
 
 若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
 
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) cmdlet 以将计算机注册到保管库。
-此 cmdlet 和用于备份的其他 cmdlet 都来自 Mars AgentInstaller 在安装过程中添加的 MSONLINE 模块。
+此操作以及用于备份的其他 cmdlet 来自 MSONLINE 模块，该模块是 MARS AgentInstaller 作为安装过程的一部分添加的。
 
 代理安装程序不会更新:P SModulePath 变量的 $Env。 这意味着模块自动加载失败。 若要解决此问题，可以执行以下操作：
 
@@ -177,7 +177,7 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> 请勿使用相对路径来指定保管库凭据文件。 必须提供绝对路径作为 cmdlet 的输入。
+> 不要使用相对路径来指定保管库凭据文件。 必须提供绝对路径作为 cmdlet 的输入。
 >
 >
 
@@ -271,7 +271,7 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>配置保留策略
 
-保留策略定义基于备份作业创建的恢复点的保留时间。 使用[OBRetentionPolicy](/powershell/module/msonlinebackup/new-obretentionpolicy) cmdlet 创建新的保留策略时，可以指定备份恢复点将在 Azure 备份中保留的天数。 以下示例将保留策略设置为 7 天。
+保留策略定义基于备份作业创建的恢复点的保留时间。 使用 [OBRetentionPolicy](/powershell/module/msonlinebackup/new-obretentionpolicy) cmdlet 创建新的保留策略时，可以指定备份恢复点将在 Azure 备份中保留的天数。 以下示例将保留策略设置为 7 天。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -659,7 +659,7 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
 
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) cmdlet 来完成。 对于本示例，假设我们想要将文件还原到*C：\temp*。假设要跳过目标文件夹*C：\temp*中已存在的文件。若要创建此类恢复选项，请使用以下命令：
+为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) cmdlet 来完成。 对于本示例，假设我们想要将文件还原到 *C：\temp*。假设要跳过目标文件夹 *C：\temp*中已存在的文件。若要创建此类恢复选项，请使用以下命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip

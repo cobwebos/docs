@@ -11,11 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: e5ad882f172007e2563f832ec8eb61145cd0b36a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744505"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799190"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>从“安全信息”（预览版）页面创建应用密码
 
@@ -83,4 +84,4 @@ ms.locfileid: "83744505"
 
 ## <a name="for-more-information"></a>更多信息
 
-- 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](user-help-security-info-overview.md)
+- 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](./security-info-setup-signin.md)

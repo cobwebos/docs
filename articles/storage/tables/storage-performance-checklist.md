@@ -3,17 +3,17 @@ title: 表存储的性能与可伸缩性查检表 - Azure 存储
 description: 开发高性能应用程序时有关表存储的经证实的做法查检表。
 services: storage
 author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
-ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75749546"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236380"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表
 
@@ -196,7 +196,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 从存储服务 2013-08-15 版开始，表服务就支持使用 JSON 而非基于 XML 的 AtomPub 格式来传输表数据。 使用 JSON 最多可以减少 75% 的有效负载大小，并可以显著提高应用程序的性能。
 
-有关详细信息，请参阅文章 [Microsoft Azure 表：JSON 简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)和[表服务操作的有效负载格式](https://msdn.microsoft.com/library/azure/dn535600.aspx)。
+有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx)（表服务操作的有效负载格式）。
 
 ### <a name="disable-nagle"></a>禁用 Nagle
 
@@ -215,7 +215,7 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 表划分为分区。 存储在分区中的每个实体共享相同的分区键，并具有唯一的行键，用于在该分区中标识自己。 分区具有好处，但也带来了可伸缩性限制。
 
 - 好处：可以在同一个分区中更新单个事务、原子事务和批处理事务的实体，每种事务最多包含 100 个单独的存储操作（总大小限制为 4 MB）。 此外，假定需要检索相同数量的实体，则在单个分区中查询数据要比跨多个分区查询数据更高效（不过，如果需要查询表数据，则请继续阅读以获取更进一步的建议）。
-- 可伸缩性限制：对存储在单个分区中的实体的访问无法进行负载均衡，因为分区支持原子批处理事务。 因此，总体说来单个表分区的可伸缩性目标低于表服务的相应目标。
+- 可伸缩性限制：对存储在单个分区中的实体的访问不能进行负载均衡，因为分区支持原子批处理事务。 因此，总体说来单个表分区的可伸缩性目标低于表服务的相应目标。
 
 考虑到表和分区的这些特点，应该采用以下设计原则：
 
@@ -272,16 +272,16 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 #### <a name="upsert"></a>Upsert
 
-尽可能使用表的“Upsert”  操作。 有两种类型的“Upsert”  ，两种都可能比传统的“插入”  和“更新”  操作更高效：  
+尽可能使用表的“Upsert”**** 操作。 有两种类型的“Upsert”****，两种都可能比传统的“插入”**** 和“更新”**** 操作更高效：  
 
-- **InsertOrMerge**：若要上传实体的一部分属性，但不确定实体是否已存在，请使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”  操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
+- **InsertOrMerge**：若要上传实体的一部分属性，但不确定实体是否已存在，请使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”**** 操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
 - **InsertOrReplace**：若要上传全新实体，但不确定实体是否已存在，请使用此操作。 仅当知道这个刚上传的实体完全正确时才使用此操作，因为该实体会完全覆盖旧实体。 例如，需要更新用于存储用户当前位置的实体，而不管应用程序以前是否存储过该用户的位置数据；新位置实体是完整的，不需要任何旧实体提供的任何信息。
 
 #### <a name="storing-data-series-in-a-single-entity"></a>将数据系列存储在单个实体中
 
 有时候，应用程序会存储一系列需要频繁进行一次性检索的数据：例如，应用程序可能会跟踪一段时间内的 CPU 使用情况，以便绘制过去 24 小时内数据的滚动图表。 一种方法是每小时构建一个表实体，每个实体代表一个具体的小时，并存储该小时的 CPU 使用情况。 为了针对该数据绘图，应用程序需要检索保留过去 24 小时内数据的实体。  
 
-此外，也可以让应用程序将每小时的 CPU 使用情况存储为单个实体的独立属性：更新每个小时的时候，应用程序可以使用单个“InsertOrMerge Upsert”  调用来更新最近的一个小时的值。 针对数据进行绘图时，应用程序只需检索 1 个实体而非 24 个，这样的查询非常高效。 有关查询效率的详细信息，请参阅标题为[查询范围](#query-scope)的部分。
+此外，也可以让应用程序将每小时的 CPU 使用情况存储为单个实体的独立属性：更新每个小时的时候，应用程序可以使用单个“InsertOrMerge Upsert”**** 调用来更新最近的一个小时的值。 针对数据进行绘图时，应用程序只需检索 1 个实体而非 24 个，这样的查询非常高效。 有关查询效率的详细信息，请参阅标题为[查询范围](#query-scope)的部分。
 
 #### <a name="storing-structured-data-in-blobs"></a>在 Blob 中存储结构化数据
 

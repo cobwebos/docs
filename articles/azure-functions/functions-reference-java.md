@@ -3,20 +3,27 @@ title: Azure Functions Java 开发人员参考
 description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-java
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057596"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810082"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
-Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)。 本指南包含有关使用 Java 编写 Azure Functions 的复杂性的信息。
+本指南包含有助于你成功使用 Java 开发 Azure Functions 的详细信息。
 
-与其他语言一样，函数应用可能有一个或多个函数。 Java 函数是一个 `public` 方法，使用注释 `@FunctionName` 进行修饰。 此方法定义 java 函数的条目，必须在特定的包中独一无二。 使用 Java 编写的一个函数应用可能有多个类，这些类具有使用 `@FunctionName` 批注的多个公共方法。
+作为 Java 开发人员，如果您不熟悉 Azure Functions，请先阅读以下文章之一：
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 你还应学完下面其中一篇 Functions 快速入门：[使用 Visual Studio Code 创建第一个 Java 函数](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)或[使用 Maven 通过命令行创建第一个 Java 函数](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。
+| 入门 | 概念| 
+| -- | -- |  
+| <ul><li>[使用 Visual Studio Code 的 Java 函数](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[带有终端/命令提示符的 Java/Maven 函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[使用 Gradle 的 Java 函数](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 Java 函数](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 创意的 Java 函数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> |
+
+## <a name="java-function-basics"></a>Java 函数基础知识
+
+Java 函数是一个 `public` 方法，使用注释 `@FunctionName` 进行修饰。 此方法定义了 Java 函数的输入，在特定包中必须唯一。 包可以包含多个类，这些类具有使用批注的多个公共方法 `@FunctionName` 。 单个包部署到 Azure 中的函数应用。 在 Azure 中运行时，function app 为你的单个 Java 函数提供部署、执行和管理上下文。
 
 ## <a name="programming-model"></a>编程模型 
 
@@ -36,9 +43,9 @@ Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)
 
 以上文章链接介绍了如何使用所选的 IDE 创建前几个函数。 
 
-### <a name="project-scaffolding"></a>项目基架
+### <a name="project-scaffolding"></a>创建项目基架
 
-如果更喜欢从终端进行命令行开发，搭建基于 Java 的函数项目的最简单方法是使用 `Apache Maven` 原型。 适用于 Azure Functions 的 Java Maven 原型发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)__ __。 
+如果更喜欢从终端进行命令行开发，那么要对基于 Java 的函数项目创建基架，最简单的方法是使用 `Apache Maven` 原型。 适用于 Azure Functions 的 Java Maven 原型发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 。 
 
 以下命令使用此原型生成新的 Java 函数项目：
 
@@ -48,7 +55,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-若要开始使用此原型，请参阅 [Java 快速入门](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。 
+若要开始使用此原型，请参阅 [Java 快速入门](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)。 
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -76,7 +83,7 @@ FunctionsProject
  | - pom.xml
 ```
 
-可以使用共享的 [host json](functions-host-json.md) 文件配置函数应用。 每个函数都有自己的代码文件 (.java) 和绑定配置文件 (function.json)。
+可使用共享的 [host.json](functions-host-json.md) 文件来配置函数应用。 每个函数都有自己的代码文件 (.java) 和绑定配置文件 (function.json)。
 
 可在项目中放置多个函数。 不要将函数放入单独的 jar 中。 目标目录中的 `FunctionApp` 是部署到 Azure 中的函数应用的内容。
 
@@ -87,14 +94,14 @@ FunctionsProject
 使用 [ com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) 包中附带的 Java 注释将输入和输出绑定到方法。 有关详细信息，请参阅 [Java 参考文档](/java/api/com.microsoft.azure.functions.annotation)。
 
 > [!IMPORTANT] 
-> 必须在 [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) 中配置一个 Azure 存储帐户，才能在本地运行 Azure Blob 存储、Azure 队列存储或 Azure 表存储触发器。
+> 必须在 [local.settings.json](./functions-run-local.md#local-settings-file) 中配置一个 Azure 存储帐户，才能在本地运行 Azure Blob 存储、Azure 队列存储或 Azure 表存储触发器。
 
 示例：
 
 ```java
 public class Function {
     public String echo(@HttpTrigger(name = "req", 
-      methods = {"post"},  authLevel = AuthorizationLevel.ANONYMOUS) 
+      methods = {HttpMethod.POST},  authLevel = AuthorizationLevel.ANONYMOUS) 
         String req, ExecutionContext context) {
         return String.format(req);
     }
@@ -125,15 +132,64 @@ public class Function {
 
 ```
 
+## <a name="java-versions"></a>Java 版本
+
+_对 Java 11 的支持目前以预览版提供_
+
+在创建函数应用时使用的 Java 版本，在 Azure 中运行的函数是在 pom.xml 文件中指定的。 Maven 原型当前为 Java 8 生成了一个 pom.xml，你可以在发布之前对其进行更改。 pom.xml 中的 Java 版本应与您在本地开发和测试应用程序的版本相匹配。 
+
+### <a name="supported-versions"></a>支持的版本
+
+下表显示了每个主要版本的函数运行时的当前支持 Java 版本（按操作系统）：
+
+| Functions 版本 | Java 版本 (Windows)  | Java 版本 (Linux)  |
+| ----- | ----- | --- |
+| 3.x | 11 (预览) <br/>8<sup>\*</sup> | 11 (预览) <br/>8 |
+| 2.x | 8 | 不适用 |
+
+<sup>\*</sup>这是 Maven 原型生成的 pom.xml 的当前默认值。
+
+### <a name="specify-the-deployment-version"></a>指定部署版本
+
+目前，Maven 原型生成以 Java 8 为目标的 pom.xml。 pom.xml 中的以下元素需要更新，以创建运行 Java 11 的函数应用。
+
+| 元素 |  Java 8 值 | Java 11 值 | 说明 |
+| ---- | ---- | ---- | --- |
+| **`Java.version`** | 1.8 | 11 | Maven 所使用的 Java 版本。 |
+| **`JavaVersion`** | 8 | 11 | Azure 中的函数应用托管的 Java 版本。 |
+
+下面的示例显示了 pom.xml 文件相关部分中的 Java 8 的设置：
+
+#### `Java.version`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="12-19" highlight="14":::
+
+#### `JavaVersion`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="80":::
+
+> [!IMPORTANT]
+> 必须将 JAVA_HOME 环境变量正确设置为在使用 Maven 编译代码期间使用的 JDK 目录。 请确保 JDK 的版本至少与 `Java.version` 设置相同。 
+
+### <a name="specify-the-deployment-os"></a>指定部署操作系统
+
+Maven 还允许指定在 Azure 中运行函数应用的操作系统。 使用 `os` 元素选择操作系统。 
+
+| 元素 |  Windows | Linux | Docker |
+| ---- | ---- | ---- | --- |
+| **`os`** | windows | linux | docker |
+
+下面的示例演示了 pom.xml 文件的部分中的操作系统设置 `runtime` ：
+
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="79":::
+ 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时可用性和支持 
 
-若要进行本地 Java 函数应用开发，请从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载并使用[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
+对于 Java function app 的本地开发，请下载并使用适用于 Azure Java Jdk 的[Azul 祖鲁 Enterprise For](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/)。 将 function app 部署到云时，Azure Functions 使用 Azul Java JDK 运行时。
 
 对于 JDK 和函数应用的问题，[Azure 支持](https://azure.microsoft.com/support/)可通过[限定的支持计划](https://azure.microsoft.com/support/plans/)获得。
 
 ## <a name="customize-jvm"></a>自定义 JVM
 
-在 Functions 中可以自定义用于运行 Java 函数的 Java 虚拟机 (JVM)。 默认情况下使用[以下 JVM 选项](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)：
+在 Functions 中可以自定义用于运行 Java 函数的 Java 虚拟机 (JVM)。 默认使用[以下 JVM 选项](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)。
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -141,10 +197,10 @@ public class Function {
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-可以在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可以在 Azure 门户或 Azure CLI 中将应用设置添加到已部署至 Azure 的函数应用。
+可在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可在 Azure 门户或 Azure CLI 中将应用设置添加到部署给 Azure 的函数应用。
 
 > [!IMPORTANT]  
-> 在消耗计划中，还必须添加值为 0 的 WEBSITE_USE_PLACEHOLDER 设置，才能使自定义操作生效。 此设置确实可增加 Java 函数的冷启动时间。
+> 在消耗计划中，还必须添加值为 0 的 WEBSITE_USE_PLACEHOLDER 设置，才能使自定义操作生效。 此设置将增加 Java 函数的冷启动时间。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -152,7 +208,7 @@ public class Function {
 
 ### <a name="azure-cli"></a>Azure CLI
 
-可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令来设置 `JAVA_OPTS`，如以下示例所示：
+可使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令设置 `JAVA_OPTS`，如下例中所示：
 
 #### <a name="consumption-plan"></a>[消耗计划](#tab/consumption)
 ```azurecli-interactive
@@ -169,7 +225,7 @@ az functionapp config appsettings set \
 ```
 ---
 
-此示例会启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。 
+此示例会启用无外设模式。 将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组。 
 
 ## <a name="third-party-libraries"></a>第三方库 
 
@@ -217,7 +273,7 @@ import com.microsoft.azure.functions.annotation.*;
 public class Function {
     @FunctionName("echo")
     public static String echo(
-        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
+        @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
         @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
         @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
     ) {
@@ -247,7 +303,7 @@ public class Function {
 - 以 `String` 的形式为参数 `inputReq` 传递 HTTP 请求有效负载。
 - 从表存储中检索一个项，并将其作为 `TestInputData` 传递给参数 `inputData`。
 
-若要接收一批输入，可以绑定到 `String[]`、`POJO[]`、`List<String>` 或 `List<POJO>`。
+若要接收一批输入，可绑定到 `String[]`、`POJO[]`、`List<String>` 或 `List<POJO>`。
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -334,7 +390,7 @@ public class Function {
 
 ## <a name="metadata"></a>元数据
 
-少量的触发器会连同输入数据一起发送[触发器元数据](/azure/azure-functions/functions-triggers-bindings)。 可以使用注释 `@BindingName` 绑定到触发器元数据。
+少量的触发器会连同输入数据一起发送[触发器元数据](./functions-triggers-bindings.md)。 可使用注释 `@BindingName` 绑定到触发器元数据。
 
 
 ```Java
@@ -347,14 +403,14 @@ import com.microsoft.azure.functions.annotation.*;
 public class Function {
     @FunctionName("metadata")
     public static String metadata(
-        @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
+        @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
         @BindingName("name") String queryValue
     ) {
         return body.orElse(queryValue);
     }
 }
 ```
-在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，演示如何从队列触发器元数据绑定到 `Id`。
+在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，它展示了如何从队列触发器元数据绑定到 `Id`。
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -375,7 +431,7 @@ public class Function {
 
 ## <a name="execution-context"></a>执行上下文
 
-`azure-functions-java-library` 中定义的 `ExecutionContext` 包含用来与 Functions 运行时通信的帮助器方法。 有关详细信息，请参阅[ExecutionContext 参考文章](/java/api/com.microsoft.azure.functions.executioncontext)。
+`azure-functions-java-library` 中定义的 `ExecutionContext` 包含用来与 Functions 运行时通信的帮助器方法。 有关详细信息，请参阅 [ExecutionContext 参考文章](/java/api/com.microsoft.azure.functions.executioncontext)。
 
 ### <a name="logger"></a>记录器
 
@@ -389,7 +445,7 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.*;
 
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+    public String echo(@HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         if (req.isEmpty()) {
             context.getLogger().warning("Empty request body received by function " + context.getFunctionName() + " with invocation " + context.getInvocationId());
         }
@@ -425,14 +481,14 @@ az webapp log download --resource-group resourcegroupname --name functionappname
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 可以使用 `System.getenv("AzureWebJobsStorage")` 访问这些设置。
+在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 可使用 `System.getenv("AzureWebJobsStorage")` 访问这些设置。
 
-以下示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其键名为 `myAppSetting`：
+以下示例获取了[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其中键名为 `myAppSetting`：
 
 ```java
 
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+    public String echo(@HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         context.getLogger().info("My app setting value: "+ System.getenv("myAppSetting"));
         return String.format(req);
     }

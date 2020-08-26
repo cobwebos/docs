@@ -1,6 +1,5 @@
 ---
-title: 教程 1：预测信用风险
-titleSuffix: ML Studio (classic) - Azure
+title: 机器学习工作室（经典）教程：预测信贷风险 - Azure
 description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典版）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第一部分。  其中演示了如何创建工作区、上传数据和创建试验。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 556dc89d3f1d0fd42ab6d161a6d5ccb462f555db
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086103"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431840"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -25,7 +27,7 @@ ms.locfileid: "86086103"
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典版）和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典）和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -42,11 +44,11 @@ ms.locfileid: "86086103"
 
 本教程默认用户此前至少使用过机器学习工作室（经典版）一次，且对机器学习概念有一些了解。 但不假设用户精通其中任一领域。
 
-如果以前从来没用过 Azure 机器学习工作室（经典版），则可能一开始需要学习[在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验](create-experiment.md)快速入门  。 该快速入门指导用户首次完成机器学习工作室（经典版）的使用。 教程中会介绍各种基础知识：如何将模块拖放到试验中、如何将模块连接到一起、如何运行试验，以及如何查看结果。
+如果以前从来没用过 Azure 机器学习工作室（经典版），则可能一开始需要学习[在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验](create-experiment.md)快速入门。 该快速入门指导用户首次完成机器学习工作室（经典版）的使用。 教程中会介绍各种基础知识：如何将模块拖放到试验中、如何将模块连接到一起、如何运行试验，以及如何查看结果。
 
 
 > [!TIP] 
-> 可在 [Azure AI 库](https://gallery.azure.ai)中找到本教程中开发的试验的工作副本。 请前往 [Tutorial - Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)（教程 - 预测信用风险）并单击“在工作室中打开”将试验副本下载到机器学习工作室（经典）的工作区   。
+> 可在 [Azure AI 库](https://gallery.azure.ai)中找到本教程中开发的试验的工作副本。 请前往 [Tutorial - Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)（教程 - 预测信用风险）并单击“在工作室中打开”将试验副本下载到机器学习工作室（经典）的工作区 。
 > 
 
 
@@ -61,9 +63,9 @@ ms.locfileid: "86086103"
 ![在工作室（经典版）中选择工作区](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> 如果你是工作区的所有者，则可通过邀请其他人到工作区来共享所进行的试验。 可以在“设置”页面上的“机器学习工作室（经典版）”中执行此操作  。 只需每位用户的 Microsoft 帐户或组织帐户即可。
+> 如果你是工作区的所有者，则可通过邀请其他人到工作区来共享所进行的试验。 可以在“设置”页面上的“机器学习工作室（经典版）”中执行此操作。 只需每位用户的 Microsoft 帐户或组织帐户即可。
 > 
-> 在“设置”  页上，单击“用户”  ，并在窗口底部单击“邀请更多用户”  。
+> 在“设置”页上，单击“用户”，并在窗口底部单击“邀请更多用户”。
 > 
 
 ## <a name="upload-existing-data"></a><a name="upload"></a>上传现有数据
@@ -117,21 +119,21 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 打开机器学习工作室（经典版）主页 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
-2. 单击窗口左上角菜单![菜单](./media/tutorial-part1-credit-risk/menu.png)，单击“Azure 机器学习”  ，选择“工作室”  ，并登录。
+2. 单击窗口左上角菜单![菜单](./media/tutorial-part1-credit-risk/menu.png)，单击“Azure 机器学习”，选择“工作室”，并登录。
 
-3. 单击窗口底部的“+ 新建”  。
+3. 单击窗口底部的“+ 新建”。
 
-4. 选择“数据集”  。
+4. 选择“数据集”。
 
-5. 选择“从本地文件”  。
+5. 选择“从本地文件”。
 
     ![从本地文件添加数据集](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. 在“上传新数据集”对话框中单击“浏览”，找到创建的 **german.csv** 文件。 
+6. 在“上传新数据集”对话框中单击“浏览”，找到创建的 **german.csv** 文件。
 
 7. 输入数据集名称。 在本教程中，此数据集名为“UCI 德国信用卡数据”。
 
-8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”  。
+8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”。
 
 9. 添加说明（如果需要）。
 
@@ -141,7 +143,7 @@ sed 's/ /,/g' german.data > german.csv
 
 这会数据上传到可在试验中使用的数据集模块。
 
-可以通过单击工作室（经典版）窗口左侧的“数据集”选项卡，来管理已上传到工作室（经典版）的数据集  。
+可以通过单击工作室（经典版）窗口左侧的“数据集”选项卡，来管理已上传到工作室（经典版）的数据集。
 
 ![管理数据集](./media/tutorial-part1-credit-risk/dataset-list.png)
 
@@ -151,8 +153,8 @@ sed 's/ /,/g' german.data > german.csv
 
 本教程的下一步是在机器学习工作室（经典版）中创建一个使用我们上传的数据集的试验。  
 
-1. 在工作室（经典版）中，单击窗口底部的“+新建”  。
-1. 选择“实验”  ，并选择“空白实验”。 
+1. 在工作室（经典版）中，单击窗口底部的“+新建”。
+1. 选择“实验”，并选择“空白实验”。 
 
     ![创建新实验](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
@@ -162,22 +164,22 @@ sed 's/ /,/g' german.data > german.csv
     ![重命名实验](./media/tutorial-part1-credit-risk/rename-experiment.png)
 
    > [!TIP]
-   > 在“属性”  窗格中填写实验的“摘要”  和“说明”  会是一个很好的做法。 这些属性提供了记录实验的机会，以便任何看到它的人都能理解目标和方法。
+   > 在“属性”窗格中填写实验的“摘要”和“说明”会是一个很好的做法。 这些属性提供了记录实验的机会，以便任何看到它的人都能理解目标和方法。
    > 
    > ![实验属性](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
 
-1. 在实验画布左侧的模块控制板中，展开“已保存的数据集”  。
-1. 找到在“我的数据集”  下创建的数据集，并将其拖动到画布上。 此外还可以通过在控制板上方的“搜索”  框中输入名称来查找数据集。  
+1. 在实验画布左侧的模块控制板中，展开“已保存的数据集”。
+1. 找到在“我的数据集”下创建的数据集，并将其拖动到画布上。 此外还可以通过在控制板上方的“搜索”框中输入名称来查找数据集。  
 
     ![将数据集添加到实验](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
 
 
 ### <a name="prepare-the-data"></a>准备数据
 
-可以查看前 100 行数据和整个数据集的一些统计信息：单击数据集的输出端口（底部的小圆圈），然后选择“可视化”  。  
+可以通过以下方法查看整个数据集的前 100 行数据和一些统计信息：单击数据集的输出端口（底部的小圆圈）并选择“可视化”。  
 
-因为数据文件没有列标题，所以工作室（经典版）提供了通用标题（Col1、Col2 等  ）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
+因为数据文件没有列标题，所以工作室（经典版）提供了通用标题（Col1、Col2 等）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
 
 可以使用[编辑元数据][edit-metadata]模块来添加列标题。
 
@@ -185,11 +187,11 @@ sed 's/ /,/g' german.data > german.csv
 
 要使用[编辑元数据][edit-metadata]，请首先指定要修改的列（在本例中为所有列）。接下来，指定要对这些列执行的操作（在此情况下为更改列标题）。
 
-1. 在模块控制板的“搜索”  框中键入“元数据”。 [编辑元数据][edit-metadata]显示在模块列表中。
+1. 在模块控制板的“搜索”框中键入“元数据”。 [编辑元数据][edit-metadata]显示在模块列表中。
 
 1. 单击并将[编辑元数据][edit-metadata]模块拖到画布上，并将其放到之前添加的数据集的下方。
 
-1. 将数据集连接到[编辑元数据][edit-metadata]：单击数据集的输出端口（数据集底部的小圆圈），将其拖到[编辑元数据][edit-metadata]的输入端口（模块顶部的小圆圈），然后松开鼠标按键。 即便是在画布上来回移动，数据集和模块仍保持连接。
+1. 将数据集连接到[编辑元数据][edit-metadata]：单击数据集的输出端口（数据集底部的小圆圈），将其拖动到[编辑元数据][edit-metadata]的输入端口（模块顶部的小圆圈），然后释放鼠标按键。 即便是在画布上来回移动，数据集和模块仍保持连接。
  
     实验现在看起来应当与下图类似：  
 
@@ -203,9 +205,9 @@ sed 's/ /,/g' german.data > german.csv
     > ![添加了注释的“编辑元数据”模块](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. 选择[编辑元数据][edit-metadata]，并在画布右侧的“属性”窗格中，单击“启动列选择器”   。
+1. 选择[编辑元数据][edit-metadata]，并在画布右侧的“属性”窗格中，单击“启动列选择器” 。
 
-1. 在“选择列”  对话框中，选择“可用列”  中的所有行，并单击 > 以将其移动到“选定列”  。
+1. 在“选择列”对话框中，选择“可用列”中的所有行，并单击 > 以将其移动到“选定列”。
    此对话框应如下所示：
 
    ![其中选择了所有列的列选择器](./media/tutorial-part1-credit-risk/select-columns.png)
@@ -213,7 +215,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 单击**确定**复选标记。
 
-1. 回到“属性”  窗格中，查找“新列名称”  参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
+1. 回到“属性”窗格中，查找“新列名称”参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
 
    ```   
    Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
@@ -224,7 +226,7 @@ sed 's/ /,/g' german.data > german.csv
    ![编辑元数据的属性](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > 若要验证列标题，请运行实验（单击实验画布下方的“运行”  ）。 完成运行后（[编辑元数据][edit-metadata]上会出现一个绿色对勾标记），单击[编辑元数据][edit-metadata]模块的输出端口，并选择“可视化”  。 可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
+   > 若要验证列标题，请运行实验（单击实验画布下方的“运行”）。 完成运行后（[编辑元数据][edit-metadata]上会出现一个绿色对号），单击[编辑元数据][edit-metadata]模块的输出端口，并选择“可视化”。 可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
    > 
    > 
 
@@ -237,7 +239,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 找到[拆分数据][split]模块，将其拖到画布上，并将其连接到[编辑元数据][edit-metadata]模块。
 
-1. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”  参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”  参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持不变。
+1. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持不变。
    
    > [!TIP]
    > **第一个输出数据集中行的分数**属性决定了通过*左*输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
@@ -246,7 +248,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 双击[拆分数据][split]模块，并输入注释“训练/测试数据拆分 50%”。 
 
-可以使用[拆分数据][split]模块的输出，但我们选择使用左侧输出作为训练数据，右侧输出作为测试数据。  
+可以使用[拆分数据][split]模块的输出，但我们选择使用左输出作为训练数据，右输出作为测试数据。  
 
 如[上一步骤](tutorial-part1-credit-risk.md#upload)中所述，将高信贷风险错误分类为低的成本比将低信用风险错误分类为高的成本高五倍。 考虑到这一点，我们生成一个新的数据集来反映这个成本函数。 在新数据集中，每个高风险示例会复制五次，而每个低风险示例则不复制。   
 
@@ -258,7 +260,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 双击[执行 R 脚本][execute-r-script]模块，并输入注释“设置成本调整”。
 
-1. 在“属性”  窗格中，删除 **R 脚本**参数中的默认文本，并输入以下脚本：
+1. 在“属性”窗格中，删除 **R 脚本**参数中的默认文本，并输入以下脚本：
    
     ```r
     dataset1 <- maml.mapInputPort(1)
@@ -270,15 +272,15 @@ sed 's/ /,/g' german.data > german.csv
 
     ![“执行 R 脚本”模块中的 R 脚本](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-需要对[拆分数据][split]模块的每个输出执行相同的复制操作，以确保训练和测试数据具有相同的成本调整。 执行此操作最简单的方法是：复制刚才生成的[执行 R 脚本][execute-r-script]模块，将其连接到[拆分数据][split]模块的另一个输出端口。
+需要对 [拆分数据][split]模块的每个输出执行相同的复制操作，以便训练和测试数据具有相同的成本调整。 执行此操作的最简单方法是：复制刚才生成的[执行 R 脚本][execute-r-script]模块，将其连接到[拆分数据][split]模块的另一个输出端口。
 
-1. 右键单击[执行 R 脚本][execute-r-script]模块，并选择“复制”  。
+1. 右键单击[执行 R 脚本][execute-r-script]模块，并选择“复制”。
 
-1. 右键单击实验画布，并选择“粘贴”  。
+1. 右键单击实验画布，并选择“粘贴”。
 
-1. 将新模块拖放到位，然后将[拆分数据][split]模块的右侧输出端口连接到新的[执行 R 脚本][execute-r-script]模块的第一个输入端口。 
+1. 将新模块拖放到位，然后将[拆分数据][split]模块的右侧输出端口连接到此新的[执行 R 脚本][execute-r-script]模块的第一个输入端口。 
 
-1. 在画布底部，单击“运行”  。 
+1. 在画布底部，单击“运行”。 
 
 > [!TIP]
 > 执行 R 脚本模块的副本包含与原始模块相同的脚本。 在画布上复制和粘贴模块时，副本将保留原始文件的所有属性。  
@@ -311,6 +313,6 @@ sed 's/ /,/g' german.data > german.csv
 > [教程 2 - 训练和评估模型](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
+[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data

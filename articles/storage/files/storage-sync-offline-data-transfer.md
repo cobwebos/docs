@@ -1,37 +1,37 @@
 ---
 title: 通过 Azure Data Box 将数据迁移到 Azure 文件同步
-description: 以与 Azure 文件同步兼容的方式迁移大容量数据。
+description: 脱机迁移与 Azure 文件同步兼容的大容量数据。避免文件冲突，并在启用同步后保留文件和文件夹的 Acl 和时间戳。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514392"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034339"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 将数据批量迁移到 Azure 文件同步
 可以通过两种方式将大容量数据迁移到 Azure 文件同步：
 
-* **使用 Azure 文件同步上传文件。** 这是最简单的方法。 将文件本地移动到 Windows Server 2012 R2 或更高版本，然后安装 Azure 文件同步代理。 设置同步后，文件将从服务器上传。 （目前，我们的客户的平均上传速度为 1 TiB。）若要确保你的服务器不会对数据中心使用太多的带宽，你可能想要设置[带宽限制计划](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)。
+* **使用 Azure 文件同步上传文件。** 这是最简单的方法。 将文件本地移动到 Windows Server 2012 R2 或更高版本，然后安装 Azure 文件同步代理。 设置同步后，文件将从服务器上传。  (我们的客户当前在每两天的时间内获得1个 TiB 的平均上传速度。 ) 若要确保你的服务器不会对你的数据中心使用太多的带宽，你可能需要设置一个[带宽限制计划](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)。
 * **脱机传输文件。** 如果没有足够的带宽，可能无法在合理的时间内将文件上传到 Azure。 质询是整个文件集的初始同步。 若要解决此问题，请使用如[Azure Data Box 系列](https://azure.microsoft.com/services/storage/databox)的脱机大容量迁移工具。 
 
-本文介绍如何以与 Azure 文件同步兼容的方式脱机迁移文件。按照这些说明操作，以避免文件冲突，并在启用同步后保留文件和文件夹的访问控制列表（Acl）和时间戳。
+本文介绍如何以与 Azure 文件同步兼容的方式脱机迁移文件。按照这些说明操作，以避免文件冲突，并在启用同步后保留文件和文件夹的访问控制列表 (Acl) 和时间戳。
 
 ## <a name="migration-tools"></a>迁移工具
 本文介绍的过程不仅适用于 Data Box，还适用于其他脱机迁移工具。 它还适用于 AzCopy、Robocopy 或合作伙伴工具以及直接在 internet 上使用的服务等工具。 但是，若要解决最初的上传难题，请按照本文中的步骤操作，以与 Azure 文件同步兼容的方式使用这些工具。
 
-在某些情况下，你需要在采用 Azure 文件同步之前从一台 Windows Server 迁移到另一台 Windows Server。[存储迁移服务](https://aka.ms/storagemigrationservice)（SMS）可帮助解决这种情况。 无论你是需要迁移到 Azure 文件同步（Windows Server 2012R2 和更高版本）所支持的服务器操作系统版本，还是只需迁移，因为你要为 Azure 文件同步购买新系统，但 SMS 具有许多功能和优势，可帮助你顺利完成迁移。
+在某些情况下，你需要在采用 Azure 文件同步之前从一台 Windows Server 迁移到另一台 Windows Server。[存储迁移服务](https://aka.ms/storagemigrationservice) (SMS) 可为此提供帮助。 无论你是需要迁移到 Azure 文件同步 (Windows Server 2012R2 和更) 高版本所支持的服务器操作系统版本，还是只需迁移，因为你要为 Azure 文件同步购买新系统，但 SMS 具有许多功能和优势，可帮助你顺利完成迁移。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>使用工具脱机传输数据的优点
 下面是使用传输工具（例如 Data Box 进行脱机迁移）的主要优点：
 
 - 无需通过网络上传所有文件。 对于大型命名空间，此工具可以节省大量的网络带宽和时间。
-- 当你使用 Azure 文件同步时，无论你使用哪种传输工具（Data Box、Azure 导入/导出服务等），你的实时服务器将仅上传将数据移动到 Azure 后更改的文件。
+- 当你使用 Azure 文件同步时，无论你使用哪种传输工具 (Data Box、Azure 导入/导出服务，) 等等，你的实时服务器将仅上传将数据移至 Azure 后更改的文件。
 - Azure 文件同步同步文件和文件夹 Acl，即使脱机大容量迁移工具不传输 Acl 也是如此。
 - Data Box 和 Azure 文件同步不需要停机。 使用 Data Box 将数据传输到 Azure 中时，可以有效地使用网络带宽并保持文件保真度。 还应仅上载在将数据移动到 Azure 后发生更改的文件，从而使命名空间保持最新。
 
@@ -88,6 +88,13 @@ Azure 文件同步确保文件和文件夹 Acl 与实时服务器同步，即使
 
 > [!IMPORTANT]
 > 禁用脱机数据传输模式之后，就不能再次启用它，即使大容量迁移中的暂存共享仍可用。
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>云中的 Azure 文件同步和预植入文件
+
+如果在 Azure 文件共享中，通过其他方式（例如 via AzCopy、从云备份或任何其他方法执行 RoboCopy）在 Azure 文件共享中创建了种子文件，则仍应按照本文中所述的[脱机数据传输过程](#process-for-offline-data-transfer)进行操作。 你只需忽略 DataBox 作为文件移动到云的方法。 但是，确保仍遵循将文件播种到*暂存共享*而不是最后 Azure 文件同步连接的共享的过程，这一点非常重要。
+
+> [!WARNING]
+> **按照将文件播种到暂存共享而不是最后**Azure 文件同步连接的共享的过程进行操作。 如果不这样做，可能会发生文件冲突 (这两个文件版本都将存储) 并且在实时服务器上删除的文件可能会返回，前提是这些文件仍然存在于较旧的、种子的文件集。 此外，文件夹更改会相互合并，这使得在发生此类错误后，很难分隔命名空间。
 
 ## <a name="next-steps"></a>后续步骤
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)

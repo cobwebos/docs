@@ -3,12 +3,12 @@ title: 快速入门：将自定义事件发送到 Web 终结点 - 事件网格�
 description: 快速入门：使用 Azure 事件网格和 Azure 门户发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115224"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421036"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入门：使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
 
@@ -44,7 +44,8 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 5. 部署成功后，在搜索栏中再次键入“事件网格主题”，然后像之前一样从下拉列表中选择“事件网格主题” 。 
 6. 选择从列表中创建的主题。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="从列表中选择主题":::  
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="从列表中选择主题":::
+
 7. 此时会显示主题的“事件网格主题”页。 请将此页保持打开状态， 稍后在本快速入门中需要使用此页。 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="“事件网格主题”主页":::
@@ -54,7 +55,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 1. 在项目页中，选择“部署到 Azure”以将解决方案部署到订阅。 在 Azure 门户中，为参数提供值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
     如果部署失败，请查看错误消息。 这是因为网站名称已被占用。 再次部署模板，然后为网站选择其他名称。 

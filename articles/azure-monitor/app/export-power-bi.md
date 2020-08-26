@@ -3,19 +3,20 @@ title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663991"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324363"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
-[Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的数据。
+[Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](./app-insights-overview.md) 的数据。
 
 可以使用三种方法将 Application Insights 数据导出到 Power BI：
 
 * [**导出 Analytics 查询**](#export-analytics-queries)。 这是首选方法。 编写任何所需的查询，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
-* [**连续导出和 Azure 流分析**](../../azure-monitor/app/export-stream-analytics.md)。 如果希望长时间存储数据，则此方法非常有用。 如果没有较长的数据保留要求，请使用“导出 Analytics 查询”方法。 “连续导出和流分析”需要执行更多工作来进行设置，并且存储开销更大。
+* [**连续导出和 Azure 流分析**](./export-stream-analytics.md)。 如果希望长时间存储数据，则此方法非常有用。 如果没有较长的数据保留要求，请使用“导出 Analytics 查询”方法。 “连续导出和流分析”需要执行更多工作来进行设置，并且存储开销更大。
 * **Power BI 适配器**。 图表集是预定义的，但可以从其他源任何添加自己的查询。
 
 > [!NOTE]
@@ -30,7 +31,7 @@ ms.locfileid: "77663991"
 安装 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
-1. [打开 Analytics 并编写查询](../../azure-monitor/log-query/get-started-portal.md)。
+1. [打开 Analytics 并编写查询](../log-query/get-started-portal.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
 3. 在“导出”菜单中，选择“Power BI (M)”。  保存文本文件。
    
@@ -55,7 +56,7 @@ ms.locfileid: "77663991"
 8. 定期手动刷新报告，或者在选项页中设置按计划刷新。
 
 ### <a name="export-a-funnel"></a>导出漏斗图
-1. [生成漏斗图](../../azure-monitor/app/usage-funnels.md)。
+1. [生成漏斗图](./usage-funnels.md)。
 2. 选择“Power BI”。
 
    ![Power BI 按钮的屏幕截图](./media/export-power-bi/button.png)
@@ -111,7 +112,7 @@ ms.locfileid: "77663991"
  ```
 
 ## <a name="about-sampling"></a>关于采样
-根据应用程序发送的数据量，你可能希望使用自适应采样功能，它只发送一定百分比的遥测数据。 如果在 SDK 中或者针对引入手动设置了采样，也同样可以做到这一点。 [了解有关采样的详细信息](../../azure-monitor/app/sampling.md)。
+根据应用程序发送的数据量，你可能希望使用自适应采样功能，它只发送一定百分比的遥测数据。 如果在 SDK 中或者针对引入手动设置了采样，也同样可以做到这一点。 [了解有关采样的详细信息](./sampling.md)。
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI 适配器（已弃用）
 此方法可以自动创建完整的遥测仪表板。 初始数据集是预定义的，但可以在其中添加更多数据。
@@ -145,5 +146,5 @@ ms.locfileid: "77663991"
 
 ## <a name="next-steps"></a>后续步骤
 * [Power BI - 学习](https://www.powerbi.com/learning/)
-* [Analytics 教程](../../azure-monitor/log-query/get-started-portal.md)
+* [Analytics 教程](../log-query/get-started-portal.md)
 

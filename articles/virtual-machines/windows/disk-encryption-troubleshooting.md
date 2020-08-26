@@ -4,28 +4,26 @@ description: 本文提供适用于 Windows VM 的 Microsoft Azure 磁盘加密�
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3b83899ad21cf125105881a7ffb526f5c607c6d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085682"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322204"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
 本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在帮助排查与磁盘加密相关的问题。
 
-执行以下任何步骤之前，请先确保尝试加密的 VM 具有[支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)，并且你满足所有先决条件：
+在执行以下任何步骤之前，请首先确保你尝试加密的 VM 具有[受支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)，并且已满足所有先决条件：
 
 - [网络要求](disk-encryption-overview.md#networking-requirements)
 - [组策略要求](disk-encryption-overview.md#group-policy-requirements)
 - [加密密钥存储要求](disk-encryption-overview.md#encryption-key-storage-requirements)
-
- 
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>防火墙保护下的 Azure 磁盘加密故障排除
 
@@ -36,7 +34,7 @@ ms.locfileid: "82085682"
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>防火墙保护下的 Azure Key Vault
 
-使用 [Azure AD 凭据](disk-encryption-windows-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/general/access-behind-firewall.md)的文档中提供了密钥保管库说明。
+使用 [Azure AD 凭据](disk-encryption-windows-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/general/access-behind-firewall.md)的文档中提供了密钥保管库说明。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
 VM 必须能够访问这样的 [Azure 实例元数据服务](../windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持将本地 HTTP 流量更改为此地址的代理配置（例如，添加 X-Forwarded-For 标头）。
@@ -78,15 +76,19 @@ DISKPART> list vol
 
 ## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
 
-即使磁盘在 VM 内解密之后，门户也可能会将磁盘显示为已加密。  当使用低级别命令从 VM 内部直接解密磁盘，而不是使用较高级别 Azure 磁盘加密管理命令时，可能会发生这种情况。  较高级别命令不仅从 VM 内解密磁盘，还会在 VM 外部更新与 VM 关联的重要平台级别加密设置和扩展设置。  如果这些设置未保持一致，则平台将无法正确报告加密状态或预配 VM。   
+即使磁盘在 VM 中解密后，门户也可能显示该磁盘已加密。  当使用低级别命令从 VM 内部直接解密磁盘，而不是使用较高级别的 Azure 磁盘加密管理命令时，可能会发生这种情况。  较高级别命令不仅从 VM 内部解密磁盘，而且在 VM 外部它们还更新与 VM 关联的重要平台级加密设置和扩展设置。  如果这些未保持一致，平台将无法报告加密状态或正确预配 VM。
 
-若要使用 PowerShell 禁用 Azure 磁盘加密，请使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)后跟 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密之前，运行 Remove-AzVMDiskEncryptionExtension 会失败。
+若要使用 PowerShell 禁用 Azure 磁盘加密，请使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)，然后使用 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密之前，运行 Remove-AzVMDiskEncryptionExtension 会失败。
 
 若要使用 CLI 禁用 Azure 磁盘加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption)。 
+
+## 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 
 本文档已详细描述有关 Azure 磁盘加密的一些常见问题和解决这些问题的方法。 有关此服务及其功能的详细信息，请参阅以下文章：
 
-- [在 Azure 安全中心应用磁盘加密](../../security-center/security-center-apply-disk-encryption.md)
+- [在 Azure 安全中心应用磁盘加密](../../security-center/security-center-virtual-machine-protection.md)
 - [Azure 静态数据加密](../../security/fundamentals/encryption-atrest.md)

@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024433"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042473"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
 在条件访问策略中，管理员可以利用风险、设备平台或位置等条件的信号来增强其策略决策。 
 
-![定义条件访问策略并指定条件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[![定义条件访问策略并指定条件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 可以结合多个条件来创建精细且具体的条件访问策略。
 
@@ -60,18 +60,28 @@ Azure AD 条件访问支持以下设备平台：
 
 有关位置的详细信息，可参阅 [Azure Active Directory 条件访问中的位置条件是什么](location-condition.md)一文。
 
-## <a name="client-apps-preview"></a>客户端应用（预览）
+## <a name="client-apps"></a>客户端应用
 
-条件访问策略默认应用到基于浏览器的应用程序，以及利用新式身份验证协议的应用程序。 除这些应用程序以外，管理员还可以选择包括 Exchange ActiveSync 客户端以及其他利用旧式协议的客户端。
+默认情况下，所有新创建的条件性访问策略将应用于所有客户端应用类型，即使未配置客户端应用条件。 
 
-- 浏览者
-   - 这包括使用 SAML、WS 联合身份验证、OpenID Connect 等协议的基于 Web 的应用程序，或注册为 OAuth 机密客户端的服务。
-- 移动应用和桌面客户端
-   - 新式身份验证客户端
-      - 此选项包括 Office 桌面和手机应用程序等应用程序。
+> [!NOTE]
+> 2020年8月更新了客户端应用条件的行为。 如果你有现有的条件性访问策略，它们将保持不变。 但是，如果单击现有策略，则会删除 "配置" 切换，并选中 "应用该策略的客户端应用"。
+
+> [!IMPORTANT]
+> 来自旧身份验证客户端的登录不支持 MFA，并且不会将设备状态信息传递到 Azure AD，因此，它们将被条件访问授权控制阻止，如需要 MFA 或相容设备。 如果你的帐户必须使用旧身份验证，则必须从策略中排除这些帐户，或将策略配置为仅应用于新式身份验证客户端。
+
+如果设置为 **"是"** ，则 "**配置**切换设置" 适用于选中的项。如果设置为 "**否**"，则应用于所有客户端应用，包括新式和旧身份验证客户端 此切换不显示在2020年8月之前创建的策略中。
+
+- 新式身份验证客户端
+   - 浏览者
+      - 这包括使用 SAML、WS 联合身份验证、OpenID Connect 等协议的基于 Web 的应用程序，或注册为 OAuth 机密客户端的服务。
+   - 移动应用和桌面客户端
+      -  此选项包括 Office 桌面和手机应用程序等应用程序。
+- 旧身份验证客户端
    - Exchange ActiveSync 客户端
-      - 默认情况下，这包括 Exchange ActiveSync (EAS) 协议的所有使用。 选择“仅将策略应用于受支持的平台”会将平台限制为受支持的平台（如 iOS、Android 和 Windows）。
+      - 这包括 Exchange ActiveSync (EAS) 协议的所有使用。
       - 当策略阻止使用 Exchange ActiveSync 时，受影响的用户将收到一封隔离电子邮件。 此电子邮件将提供受阻原因，并提供修正说明（如果可以修正）。
+      - 管理员只可以通过条件访问 MS 图形 API，将策略应用于 iOS、Android 和 Windows)  (。
    - 其他客户端
       - 此选项包括使用那些不支持新式身份验证的基本/旧式身份验证协议的客户端。
          - 经身份验证的 SMTP - 由 POP 和 IMAP 客户端用来发送电子邮件。
@@ -112,21 +122,21 @@ Azure AD 条件访问支持以下设备平台：
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于**windows 10 创意者更新（版本1703）** 或更高版本中的 Chrome 支持，请安装[windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
+对于**windows 10 创意者更新 (版本 1703) **或更高版本中的 Chrome 支持，请安装[Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
-- 路径 HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
-- 名称1
-- 类型 REG_SZ （String）
-- Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.google.com/service/update2/crx
+- Path HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 名称 1
+- 类型 REG_SZ（字符串）
+- Data ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
 
-- 路径 HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
-- 名称1
-- 类型 REG_SZ （String）
-- Data {"pattern"： " https://device.login.microsoftonline.com "，"filter"： {"ISSUER"： {"CN"： "MS-组织-Access"}}}
+- Path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 名称 1
+- 类型 REG_SZ（字符串）
+- Data {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 

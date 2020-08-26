@@ -1,26 +1,26 @@
 ---
-title: PowerShell 示例-列出应用程序代理应用 & 组的用户
-description: PowerShell 示例，列出分配给特定 Azure Active Directory （Azure AD）应用程序代理应用程序的所有用户和组。
+title: PowerShell 示例 - 列出应用程序代理应用的用户和组
+description: PowerShell 示例，其中列出了分配给特定 Azure Active Directory (Azure AD) 应用程序代理应用程序的所有用户和组。
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab5ac5d4712dd9e72fc0b9665d740859b5a6775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236850684ce479c2356943aea4fb0af570843f1f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483383"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506915"
 ---
 # <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>显示分配到应用程序代理应用程序的用户和组
 
-此 PowerShell 脚本示例列出了分配给特定 Azure Active Directory （Azure AD）应用程序代理应用程序的用户和组。
+在该 PowerShell 脚本示例中，可找到分配给特定 Azure Active Directory (Azure AD) 应用程序代理应用程序的用户和组。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "75483383"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-此示例需要用于图形模块（AzureAD）的[AzureAD V2 powershell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或[graph 模块预览版本](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)（AzureADPreview）的 AzureAD v2 powershell。
+此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -46,6 +46,6 @@ ms.locfileid: "75483383"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure AD PowerShell 模块的详细信息，请参阅[Azure AD powershell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
+要详细了解 Azure AD PowerShell 模块，请参阅 [Azure AD PowerShell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 
-有关应用程序代理的其他 PowerShell 示例，请参阅[Azure AD 应用程序代理的 Azure AD powershell 示例](../application-proxy-powershell-samples.md)。
+有关应用程序代理的其他 PowerShell 示例，请参阅 [Azure AD 应用程序代理的 Azure AD PowerShell 示例](../application-proxy-powershell-samples.md)。

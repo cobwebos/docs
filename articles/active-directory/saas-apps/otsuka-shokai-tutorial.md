@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Otsuka Shokai 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Otsuka Shokai 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c04bb636-a3c7-4940-9b36-810425b855d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9acde38df91f2505a85119fb83b88cf4879df9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a893e7ac8c24e06ec7a72f4499ba64cf002bf682
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75658655"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543673"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-otsuka-shokai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Otsuka Shokai 集成
 

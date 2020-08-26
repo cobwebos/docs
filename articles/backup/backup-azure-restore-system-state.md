@@ -3,16 +3,16 @@ title: 将系统状态还原为 Windows Server
 description: 有关从 Azure 中的备份还原 Windows Server 系统状态的分步说明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184444"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827097"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
-本文介绍如何从 Azure 恢复服务保管库还原 Windows Server 系统状态备份。 若要还原系统状态，必须使用[备份系统状态](backup-azure-system-state.md#back-up-windows-server-system-state)中的说明创建系统状态备份 (，并确保已安装[最新版本的 Microsoft Azure 恢复服务 (MARS) 代理](https://aka.ms/azurebackup_agent)。 需通过两个步骤才能从 Azure 恢复服务保管库恢复 Windows Server 系统状态数据：
+本文介绍如何从 Azure 恢复服务保管库还原 Windows Server 系统状态备份。 若要还原系统状态，必须使用 [备份系统状态](backup-azure-system-state.md#back-up-windows-server-system-state)中的说明创建系统状态备份 (，并确保已安装 [最新版本的 Microsoft Azure 恢复服务 (MARS) 代理](https://aka.ms/azurebackup_agent)。 需通过两个步骤才能从 Azure 恢复服务保管库恢复 Windows Server 系统状态数据：
 
 1. 从 Azure 备份将系统状态还原为文件。 从 Azure 备份将系统状态还原为文件时，可以:
    * 将系统状态还原到进行备份的同一服务器，或者
@@ -28,15 +28,15 @@ ms.locfileid: "86184444"
 
     该桌面应用应会显示在搜索结果中。
 
-2. 单击“恢复数据” **** 启动向导。
+2. 选择“恢复数据”以启动向导。
 
     ![恢复数据](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器(`<server name>`)”，然后单击“下一步”。**** **** ****
+3. 在 " **入门** " 窗格上，若要将数据还原到同一台服务器或计算机，请选择 " **此服务器 (`<server name>`) ** ，然后选择" **下一步**"。
 
     ![选择“此服务器”选项将数据还原到同一台计算机](./media/backup-azure-restore-system-state/samemachine.png)
 
-4. 在“选择恢复模式”窗格中选择“系统状态”，然后单击“下一步”**** **** ****。
+4. 在 " **选择恢复模式** " 窗格中，选择 " **系统状态** "，然后选择 " **下一步**"。
 
     ![浏览文件](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
@@ -46,21 +46,21 @@ ms.locfileid: "86184444"
 
     ![卷和日期](./media/backup-azure-restore-system-state/select-date.png)
 
-6. 选择要还原的恢复点后，单击“下一步”****。
+6. 选择要还原的恢复点后，选择 " **下一步**"。
 
     Azure 备份会装载本地恢复点，并将其用作恢复卷。
 
-7. 在下一窗格中，指定已恢复的系统状态文件的目标。 然后单击 "**浏览**" 打开 Windows 资源管理器并找到所需的文件和文件夹。 “创建副本以便具有两个版本”选项将创建现有系统状态文件存档中各个文件的副本，而不是创建整个系统状态存档的副本****。
+7. 在下一窗格中，指定已恢复的系统状态文件的目标。 然后选择 " **浏览** " 打开 Windows 资源管理器并找到所需的文件和文件夹。 “创建副本以便具有两个版本”选项将创建现有系统状态文件存档中各个文件的副本，而不是创建整个系统状态存档的副本****。
 
     ![恢复选项](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-8. 验证“确认”窗格中的恢复详细信息，并单击“恢复”**** ****。
+8. 验证 " **确认** " 窗格中的恢复详细信息，然后选择 " **恢复**"。
 
    ![单击“恢复”确认恢复操作](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. 将恢复目标中的 WindowsImageBackup 目录复制到服务器的非关键卷中**。 通常，Windows OS 卷是关键卷。
 
-10. 恢复成功后，请按照[Windows Server 上的 "应用已还原系统状态](#apply-restored-system-state-on-a-windows-server)" 部分中的步骤完成系统状态恢复过程。
+10. 恢复成功后，请按照 [Windows Server 上的 "应用已还原系统状态](#apply-restored-system-state-on-a-windows-server)" 部分中的步骤完成系统状态恢复过程。
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>将系统状态文件恢复到备用服务器
 
@@ -68,17 +68,17 @@ ms.locfileid: "86184444"
 
 这些步骤中使用的术语包括：
 
-* *源计算机*–从中创建备份并且当前不可用的原始计算机。
+* *源计算机* –从中创建备份并且当前不可用的原始计算机。
 * *目标计算机* – 要将数据恢复到的计算机。
-* *示例保管库*–*源计算机*和*目标计算机*注册到的恢复服务保管库。
+* *示例保管库* – *源计算机* 和 *目标计算机* 注册到的恢复服务保管库。
 
 > [!NOTE]
-> 从一台计算机创建的备份无法还原到运行更低版本操作系统的计算机。 例如，从 Windows Server 2016 计算机创建的备份不能还原到 Windows Server 2012 R2。 但是，可进行反向操作。 可使用 Windows Server 2012 R2 中的备份还原 Windows Server 2016。
+> 从一台计算机创建的备份无法还原到运行早期版本的操作系统的计算机。 例如，从 Windows Server 2016 计算机创建的备份不能还原到 Windows Server 2012 R2。 但是，可进行反向操作。 可使用 Windows Server 2012 R2 中的备份还原 Windows Server 2016。
 >
 
 1. 在*目标计算机*上打开 " **Microsoft Azure 备份**" 管理单元。
 2. 确保“*目标计算机*”和“*源计算机*”已还原到同一个恢复服务保管库。
-3. 单击“**恢复数据**”以启动工作流。
+3. 选择 " **恢复数据** " 以启动工作流。
 4. 选择“另一台服务器” ****
 
     ![另一台服务器](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -86,23 +86,23 @@ ms.locfileid: "86184444"
 5. 提供对应于“*示例保管库*”的保管库凭据文件。 如果保管库凭据文件无效（或已过期），请在 Azure 门户中从“示例保管库”下载新的保管库凭据文件。** 提供保管库凭据文件后，会显示与保管库凭据文件相关联的恢复服务保管库。
 
 6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择“源计算机”**。
-7. 在“选择恢复模式”窗格中选择“系统状态”，并单击“下一步”**** ****。
+7. 在 "选择恢复模式" 窗格中，选择 " **系统状态** " 并选择 " **下一步**"。
 
     ![搜索](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. 在“选择卷和日期”窗格的日历中，选择一个恢复点****。 可从任意恢复时间点还原。 以 **粗体** 显示的日期表示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”下拉菜单中选择特定的恢复点****。
+8. 在“选择卷和日期”窗格的日历中，选择一个恢复点****。 可从任意恢复时间点还原。 以 **粗体** 显示的日期表示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间” **** 下拉菜单中选择特定的恢复点。
 
     ![搜索项](./media/backup-azure-restore-system-state/select-date.png)
 
-9. 选择要还原的恢复点后，单击“下一步”****。
+9. 选择要还原的恢复点后，选择 " **下一步**"。
 
-10. 在“选择系统状态恢复模式”窗格中，指定要在其中恢复系统状态文件的目标，然后单击“下一步”**** ****。
+10. 在 " **选择系统状态恢复模式** " 窗格中，指定要在其中恢复系统状态文件的目标，然后选择 " **下一步**"。
 
     ![Encryption](./media/backup-azure-restore-system-state/recover-as-files.png)
 
     “创建副本以便具有两个版本”选项将创建现有系统状态文件存档中各个文件的副本，而不是创建整个系统状态存档的副本****。
 
-11. 验证“确认”窗格中的恢复详细信息，并单击“恢复”****。
+11. 验证 "确认" 窗格中的恢复详细信息，然后选择 " **恢复**"。
 
     ![单击“恢复”按钮确认恢复过程](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -122,9 +122,9 @@ ms.locfileid: "86184444"
 
     ![选择“本地备份”以便从本地备份还原](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
 
-1. 在本地备份控制台中的“操作窗格”中，单击“恢复”，打开“恢复向导”**** ****。
+1. 在本地备份控制台的 "操作" **窗格**中，选择 " **恢复** " 以打开 "恢复向导"。
 
-1. 选择“存储在其他位置的备份”选项，然后单击“下一步”**** ****。
+1. 选择 "选项"， **将备份存储在另一个位置**，然后选择 " **下一步**"。
 
    ![选择恢复到其他服务器](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
@@ -132,15 +132,15 @@ ms.locfileid: "86184444"
 
     ![选择是从本地服务器还是从另一服务器进行恢复](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-1. 输入 WindowsImageBackup 目录的路径，或选择包含此目录的本地驱动器（如 D:\WindowsImageBackup），该目录已在系统状态文件恢复过程中使用 Azure 恢复服务代理恢复，然后单击“下一步”******。
+1. 输入 *WindowsImageBackup* 目录的路径，或选择包含此目录的本地驱动器 (例如，如 d:\windowsimagebackup) ，作为使用 Azure 恢复服务代理进行系统状态文件恢复的一部分恢复，然后选择 " **下一步**"。
 
     ![共享文件的路径](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
-1. 选择要还原的系统状态版本，然后单击“下一步”****。
+1. 选择要还原的系统状态版本，然后选择 " **下一步**"。
 
-1. 在“选择恢复类型”窗格中选择“系统状态”，并单击“下一步”**** ****。
+1. 在 "选择恢复类型" 窗格中，选择 " **系统状态** " 并选择 " **下一步**"。
 
-1. 对于系统状态恢复的位置，请选择“原始位置”，然后单击“下一步”**** ****。
+1. 对于系统状态恢复的位置，选择 " **原始位置**"，然后选择 " **下一步**"。
 
     如果要还原域控制器，将看到以下附加选项：
 
@@ -149,14 +149,14 @@ ms.locfileid: "86184444"
     >[!NOTE]
     >如果你明确想要执行所有 Active Directory 数据的权威还原，请仅选择 "对 Active Directory 文件执行权威还原"。
 
-1. 查看确认详细信息，验证重新启动设置，然后单击“恢复”，应用已还原的系统状态文件****。
+1. 查看确认详细信息，验证重启设置，选择 " **恢复** " 以应用还原的系统状态文件。
 
     ![启动还原系统状态文件](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
-    >如果以 DSRM 模式执行还原，请不要选择 "**自动重新启动服务器"** 选项。
+    >如果以 DSRM 模式执行还原，请不要选择 " **自动重新启动服务器"** 选项。
 
-1. 成功完成还原后，需要在正常模式下重新启动服务器。 打开命令提示符，然后键入以下命令：`bcdedit /deletevalue safeboot`
+1. 成功完成还原后，需要在正常模式下重新启动服务器。 打开命令提示符，然后键入以下命令： `bcdedit /deletevalue safeboot`
 1. 重新启动服务器。
 
 ## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>域控制器上的系统状态恢复的特别注意事项
@@ -166,9 +166,9 @@ ms.locfileid: "86184444"
 * 如果林中没有剩余的域控制器，则还原所有 Active Directory 数据
 * 当部分 Active Directory 数据被删除或损坏时，还原这些对象
 
-本文仅介绍第一个方案，该方案将调用 nonauthorative 还原 AD DS 和 sysvol 文件夹的权威还原。  如果需要执行第二个方案 (其中域控制器仍在运行，但你需要还原特定 AD 对象) ，请参阅[这些说明](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac)。
+本文仅介绍第一个方案，该方案将调用 nonauthorative 还原 AD DS 和 sysvol 文件夹的权威还原。  如果需要执行第二个方案 (其中域控制器仍在运行，但你需要还原特定 AD 对象) ，请参阅 [这些说明](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac)。
 
-1. 按照此处的步骤将[系统状态文件恢复到备用服务器](#recover-system-state-files-to-an-alternate-server)。
+1. 按照此处的步骤将 [系统状态文件恢复到备用服务器](#recover-system-state-files-to-an-alternate-server)。
 1. 使用以下命令在目录服务修复模式下重新启动服务器**。 在提升的命令提示符中：
 
     ```cmd
@@ -178,12 +178,12 @@ ms.locfileid: "86184444"
 
 1. 若要恢复作为系统状态还原的一部分的 Active Directory，可以选择以下两种方法之一：
 
-    * 按照上述说明，使用 Windows Server 备份实用程序[在 Windows Server 上应用还原的系统状态](#apply-restored-system-state-on-a-windows-server)。
+    * 按照上述说明，使用 Windows Server 备份实用程序 [在 Windows Server 上应用还原的系统状态](#apply-restored-system-state-on-a-windows-server) 。
 
         >[!NOTE]
-        >如果要还原所有 Active Directory 的数据 (并且林中没有剩余的域控制器) ，则在上述步骤9中，请确保选择 "**执行 Active Directory 文件的权威还原**"。
+        >如果要还原所有 Active Directory 的数据 (并且林中没有剩余的域控制器) ，则在上述步骤9中，请确保选择 " **执行 Active Directory 文件的权威还原**"。
 
-    * 使用[wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery)实用工具从命令行执行还原。
+    * 使用 [wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) 实用工具从命令行执行还原。
 
         需要使用的备份的版本标识符。 可以通过运行以下命令获取版本标识符列表：
 
@@ -193,13 +193,13 @@ ms.locfileid: "86184444"
 
         然后使用该版本标识符运行还原。
 
-        例如，若要使用从04/30/2020 的备份（存储在的共享资源上）9:00 在[nonauthorative 还原 AD DS 和授权还原 sysvol 文件夹](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)， `\\servername\share` `server01` 请键入：
+        例如，若要使用从04/30/2020 的备份（存储在的共享资源上）9:00 在 [nonauthorative 还原 AD DS 和授权还原 sysvol 文件夹](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) ， `\\servername\share` `server01` 请键入：
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
         ```
 
-1. 成功完成还原后，应在正常模式下重新启动服务器。 打开命令提示符，然后键入以下命令：`bcdedit /deletevalue safeboot`
+1. 成功完成还原后，应在正常模式下重新启动服务器。 打开命令提示符，然后键入以下命令： `bcdedit /deletevalue safeboot`
 1. 重新启动服务器。
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>解决系统状态还原失败的问题
@@ -210,15 +210,15 @@ ms.locfileid: "86184444"
 
 2. 从三个可用选项中选择“故障排除”。
 
-    ![打开菜单](./media/backup-azure-restore-system-state/winre-1.png)
+    ![选择疑难解答](./media/backup-azure-restore-system-state/winre-1.png)
 
 3. 在“高级选项”屏幕中，选择“命令提示符”并提供服务器管理员用户名和密码**** ****。
 
-   ![打开菜单](./media/backup-azure-restore-system-state/winre-2.png)
+   ![选择命令提示符](./media/backup-azure-restore-system-state/winre-2.png)
 
 4. 提供服务器管理员用户名和密码。
 
-    ![打开菜单](./media/backup-azure-restore-system-state/winre-3.png)
+    ![输入密码](./media/backup-azure-restore-system-state/winre-3.png)
 
 5. 在管理员模式下打开命令提示符后，运行以下命令获取系统状态备份版本。
 
@@ -234,7 +234,7 @@ ms.locfileid: "86184444"
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
-    ![获取系统状态备份版本](./media/backup-azure-restore-system-state/winre-5.png)
+    ![获取所有可用卷](./media/backup-azure-restore-system-state/winre-5.png)
 
 7. 以下命令恢复属于系统状态备份一部分的所有卷。 请注意，此步骤仅恢复属于系统状态一部分的关键卷。 将清除所有非系统数据。
 
@@ -242,7 +242,7 @@ ms.locfileid: "86184444"
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
 
-     ![获取系统状态备份版本](./media/backup-azure-restore-system-state/winre-6.png)
+     ![恢复所有卷](./media/backup-azure-restore-system-state/winre-6.png)
 
 ## <a name="next-steps"></a>后续步骤
 

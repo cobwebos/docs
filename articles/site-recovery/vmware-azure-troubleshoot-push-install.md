@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133533"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816150"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>排查移动服务推送安装问题
 
@@ -129,6 +129,28 @@ ms.locfileid: "86133533"
 ## <a name="connectivity-failure-errorid-95523"></a>连接失败（ErrorID：95523）
 
 当源计算机所在的网络无法找到、可能已被删除或不再可用时，会发生此错误。 若要解决此错误，唯一的方法是确保网络存在。
+
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>检查源计算机上的网络共享文件夹的访问权限 (ErrorID：95105、95523) 
+
+验证虚拟机上的网络共享文件夹是否可从进程服务器 (PS) 使用指定的凭据进行远程访问。 确认访问： 
+
+1. 登录到进程服务器计算机。
+2. 打开文件资源管理器。 在地址栏中，键入 `\\<SOURCE-MACHINE-IP>\C$` 并单击 "Enter"。
+
+    ![在 PS 中打开文件夹](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. 文件资源管理器将提示输入凭据。 输入用户名和密码，然后单击 "确定"。 <br><br/>
+
+    ![提供凭据](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > 如果源计算机已加入域，则提供域名，并将用户名作为提供 `<domainName>\<username>` 。 如果源计算机在工作组中，则仅提供用户名。
+
+4. 如果连接成功，则会从进程服务器远程查看源计算机的文件夹。
+
+    ![从源计算机显示的文件夹](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+如果连接不成功，请检查是否满足所有先决条件。
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>文件和打印机共享服务检查（ErrorID：95105 和 95106）
 
@@ -257,6 +279,10 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
 ## <a name="insufficient-space-errorid-95524"></a>空间不足（ErrorID：95524）
 
 将移动代理复制到源计算机时，需要至少 100 MB 的可用空间。 请确保源计算机有必需的可用空间量，然后重试此操作。
+
+## <a name="low-system-resources"></a>系统资源不足
+
+此问题的可能的错误 Id 为95572和95573。 如果系统内存不足，并且无法为移动服务安装分配内存，则会出现此问题。 请确保已释放足够的内存，以便安装继续并成功完成。
 
 ## <a name="vss-installation-failures"></a>VSS 安装失败
 

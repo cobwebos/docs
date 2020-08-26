@@ -1,18 +1,18 @@
 ---
 title: 在 Linux 中排查 Azure 文件问题 | Microsoft Docs
-description: 在 Linux 中排查 Azure 文件问题
+description: 排查 Linux 中的 Azure 文件问题。 请参阅从 Linux 客户端连接时与 Azure 文件相关的常见问题，并查看可能的解决方法。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904915"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -276,7 +276,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 Linux 内核中的此重新连接问题现已在以下更改中进行了修复：
 
 - [修复重新连接以在 socket 重新连接后缩短 smb3 会话的重新连接延迟时间](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
-- [在 socket 重新连接后立即调用 echo 服务](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+- [socket 重新连接后立即调用 echo 服务](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
 - [CIFS：修复重新连接期间潜在的内存损坏](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS：修复重新连接期间潜在的互斥双锁（对于内核 v4.9 及更高版本）](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 

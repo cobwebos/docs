@@ -6,23 +6,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 07/27/2020
+ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: a4db7c59bd43a541a350d78511c6749a914bec79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e0edd688fa34033209798603ef15352b42cd9497
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735521"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451119"
 ---
 <a name="HOLTop"></a>
 
-[参考文档](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[参考文档](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 版本 8 或更高版本
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。  部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
@@ -32,14 +33,14 @@ ms.locfileid: "84735521"
 
 ### <a name="add-the-client-library"></a>添加客户端库
 
-在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0)的实现语法。
+在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)的实现语法。
 
 ```xml
 <dependencies>
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0</version>
+        <version>5.0.0</version>
     </dependency>
 </dependencies>
 ```

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072144"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -36,6 +36,20 @@ ms.locfileid: "86075427"
 >
 > 有关详细信息，请参阅：[媒体服务 v3 的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="live-transcriptions"></a>实时转录
+
+Live 转录现在支持19个语言和8个区域。
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>通过 Media Services 和 Azure AD 保护内容
+
+我们发布了一篇名[为端到端内容保护的教程，其中使用 Azure AD](./azure-ad-content-protection.md)。
+
+### <a name="high-availablity"></a>高可用性
+
+我们发布了有关 Media Services 和视频点播（VOD）[概述](./media-services-high-availability-encoding.md)和[示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)的高可用性。
+
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 预览版的实时视频分析
@@ -43,16 +57,6 @@ ms.locfileid: "86075427"
 IoT Edge 公开的实时视频分析预览。 有关详细信息，请参阅[发行说明](../live-video-analytics-edge/release-notes.md)。
 
 IoT Edge 上的实时视频分析是 Media Service 系列的扩展。 利用它，你可以在自己的边缘设备上分析你所选的 AI 模型的实时视频，还可以选择捕获并录制该视频。 你现在可以在边缘使用实时视频分析构建应用，而无需担心生成和操作实时视频管道的复杂性。
-
-### <a name="search-by-topics"></a>按主题搜索
-
-你现在可以使用搜索 API 搜索包含特定主题的视频（仅限 API）。
-
-主题作为 `textScope` （可选参数）的一部分添加。 有关详细信息，请参阅[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
-
-### <a name="labels-enhancement"></a>标签增强
-
-标签标记已升级，现在包括更多可识别的视觉标签。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -137,7 +141,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧版组件](../previous/legacy-components.md)主题。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)取代了这些旧版媒体处理器。
+我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧版组件](../previous/legacy-components.md)主题。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
 
 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
 
@@ -171,9 +175,9 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="video-subclipping"></a>视频子剪辑
 
-现在，在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
+现在，在使用[作业](/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
 
-此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
+此功能适用于使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](/rest/api/media/transforms)。 
 
 请参阅示例：
 
@@ -212,8 +216,8 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="new-presets"></a>新增预设
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) 已添加到内置分析器预设中。
-* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
+* [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) 已添加到内置分析器预设中。
+* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -246,21 +250,21 @@ V3 API 的正式版中的更新包括：
 
 ## <a name="november-2018"></a>2018 年 11 月
 
-CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) - v 2.0.50。
+CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](/cli/azure/ams?view=azure-cli-latest) - v 2.0.50。
 
 ### <a name="new-commands"></a>新命令
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
+- [az ams account](/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
 
@@ -351,7 +355,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="video-indexer"></a>视频索引器
 
-视频索引器 GA 版本于 8 月份发布。 有关当前支持的功能的新信息，请参阅[什么是视频索引器](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)。 
+视频索引器 GA 版本于 8 月份发布。 有关当前支持的功能的新信息，请参阅[什么是视频索引器](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)。 
 
 ### <a name="plans-for-changes"></a>更改计划
 

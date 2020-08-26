@@ -1,19 +1,20 @@
 ---
 title: 将 Azure 应用配置与 ASP.NET Core 结合使用的快速入门| Microsoft Docs
-description: 将 Azure 应用配置与 ASP.NET Core 应用结合使用的快速入门
+description: 使用 Azure 应用程序配置创建 ASP.NET Core 应用，集中存储和管理 ASP.NET Core 应用程序的应用程序设置。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027709"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590296"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -40,7 +41,7 @@ ms.locfileid: "86027709"
     | TestApp:Settings:FontColor | 黑色 |
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空   。 选择“应用”。 
+    暂时将“标签”和“内容类型”保留为空   。 选择“应用”。
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
@@ -242,6 +243,8 @@ dotnet new mvc --no-https
 ![找到“Web 预览”按钮](./media/quickstarts/cloud-shell-web-preview.png)
 
 系统提示配置预览端口时，请输入“5000”，然后选择“打开并浏览”  。  网页将显示“数据来自 Azure 应用程序配置”。
+
+![启动快速入门应用](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

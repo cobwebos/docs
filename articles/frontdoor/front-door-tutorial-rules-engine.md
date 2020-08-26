@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: 教程：配置规则引擎 - Azure Front Door
 description: 本文提供了有关如何在 Azure 门户和 CLI 中配置规则引擎的教程。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2ab9bc72aa30ddb16d0719827b6d7baeab86c057
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321556"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491300"
 ---
 # <a name="configure-your-rules-engine"></a>配置规则引擎
 
@@ -26,16 +27,16 @@ ms.locfileid: "85321556"
 ## <a name="configure-rules-engine-in-azure-portal"></a>在 Azure 门户中配置规则引擎
 1. 在创建规则引擎配置之前，[创建一个 Front Door](quickstart-create-front-door.md)。
 
-2. 在你的 Front Door 资源中，转到“设置”，然后选择“规则引擎配置”。  单击“添加”，为配置命名，然后开始创建你的第一个规则引擎配置。
+2. 在你的 Front Door 资源中，转到“设置”，然后选择“规则引擎配置”。 单击“添加”，为配置命名，然后开始创建你的第一个规则引擎配置。
 
     ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-3. 单击“添加规则”，创建你的一个规则。 然后即可通过单击“添加条件”或“添加操作”来定义规则。 
+3. 单击“添加规则”，创建你的一个规则。 然后即可通过单击“添加条件”或“添加操作”来定义规则。
     
     > [!NOTE]
     >- 若要从规则中删除条件或操作，请使用特定条件或操作右侧的垃圾桶。
     > - 若要创建适用于所有传入流量的规则，请不要指定任何条件。
-    > - 若要在满足第一个匹配条件后停止计算规则，请选中 "**停止计算剩余规则**"。 如果选中此项并且满足特定规则的所有匹配条件，则不会执行配置中的其余规则。  
+    > - 若要在满足第一个匹配条件后停止对规则进行评估，请选中“停止评估剩余规则”。 如果选中了此规则，且满足特定规则的所有匹配条件，那么配置中的剩余规则将不会执行。  
 
     ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 

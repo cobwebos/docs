@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46bb3517af31e328efae89afef8f3e83ccbc8bfa
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778748"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428584"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -80,6 +80,9 @@ ms.locfileid: "83778748"
 - `https://device.login.microsoftonline.com`
 - 组织的安全令牌服务 (STS)（联合域）
 - `https://autologon.microsoftazuread-sso.com`（如果使用或计划使用无缝 SSO）
+
+> [!WARNING]
+> 如果组织使用针对数据丢失防护或 Azure AD 租户限制等方案拦截 SSL 流量的代理服务器，请确保在 TLS 中断和检查中排除发往“https://device.login.microsoftonline.com”的流量。 未能排除“https://device.login.microsoftonline.com”可能会导致干扰客户端证书身份验证，从而导致设备注册和基于设备的条件访问出现问题。
 
 从 Windows 10 1803 开始，如果无法在使用 AD FS 的联合环境中实现即时混合 Azure AD 加入，我们将依赖 Azure AD Connect 同步 Azure AD 中的计算机对象，该计算机对象随后用于完成混合 Azure AD 加入的设备注册。 验证 Azure AD Connect 是否已将要加入混合 Azure AD 的设备的计算机对象同步到 Azure AD。 如果这些计算机对象属于特定组织单位 (OU)，则还需要在 Azure AD Connect 中配置这些 OU 以进行同步。 要详细了解如何使用 Azure AD Connect 同步计算机对象，请参阅[使用 Azure AD Connect 配置筛选](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)。
 
@@ -196,7 +199,7 @@ ms.locfileid: "83778748"
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
+使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
 
 使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 

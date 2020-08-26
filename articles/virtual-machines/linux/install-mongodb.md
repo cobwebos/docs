@@ -6,16 +6,18 @@ manager: gwallace
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944890"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504613"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>如何在 Linux VM 上安装和配置 MongoDB
 
@@ -213,5 +215,4 @@ az group deployment show \
 
 有关使用模板创建这些规则的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
-Azure 资源管理器模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md)。
-
+Azure 资源管理器模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](../extensions/custom-script-linux.md)。

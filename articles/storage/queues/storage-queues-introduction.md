@@ -1,6 +1,6 @@
 ---
 title: Azure 队列简介 - Azure 存储
-description: Azure 队列简介
+description: 查看 Azure 队列简介，它是一项可存储大量消息的服务。 队列服务包括 URL 格式、存储帐户、队列和消息。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/18/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805132"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826494"
 ---
 # <a name="what-are-azure-queues"></a>什么是 Azure 队列？
 
@@ -33,7 +33,7 @@ Azure 队列存储是一项可存储大量消息的服务。 可以使用 HTTP �
   
     `https://myaccount.queue.core.windows.net/images-to-download`
 
-* **存储帐户**：对 Azure 存储的所有访问都要通过存储帐户来完成。 有关存储帐户容量的信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。
+* **存储帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。
 
 * **队列：** 一个队列包含一组消息。 队列名称**必须**全部小写。 有关命名队列的信息，请参阅 [命名队列和元数据](https://msdn.microsoft.com/library/azure/dd179349.aspx)。
 

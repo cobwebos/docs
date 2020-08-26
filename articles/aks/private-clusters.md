@@ -3,19 +3,26 @@ title: 创建专用 Azure Kubernetes 服务群集
 description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
-ms.date: 6/18/2020
-ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/17/2020
+ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015643"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
 在专用群集中，控制平面或 API 服务器具有内部 IP 地址，这些地址在 [RFC1918 - 专用 Internet 的地址分配](https://tools.ietf.org/html/rfc1918)文档中定义。 通过使用专用群集，可以确保 API 服务器与节点池之间的网络流量仅保留在专用网络上。
 
 控制平面或 API 服务器位于 Azure Kubernetes 服务 (AKS) 托管的 Azure 订阅中。 客户的群集或节点池在客户的订阅中。 服务器与群集或节点池可以通过 API 服务器虚拟网络中的 [Azure 专用链接服务][private-link-service]以及在客户 AKS 群集的子网中公开的专用终结点相互通信。
+
+## <a name="region-availability"></a>上市区域
+
+专用群集在[支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域中提供。
+
+* 当前不支持 Azure 中国世纪互联。
+* 由于缺少私有链接支持，目前不支持 US Gov 德克萨斯州。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,13 +76,13 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 
 ## <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-如前所述，VNet 对等互连是一种访问专用群集的方法。 若要使用 VNet 对等互连，需要在虚拟网络与专用 DNS 区域之间设置链接。
+如前所述，虚拟网络对等互连是一种访问专用群集的方法。 若要使用虚拟网络对等互连，需要在虚拟网络与专用 DNS 区域之间设置链接。
     
 1. 中转到 Azure 门户中的节点资源组。  
 2. 选择专用 DNS 区域。   
 3. 在左窗格中，选择“虚拟网络”链接。  
 4. 创建新链接，将 VM 的虚拟网络添加到专用 DNS 区域。 DNS 区域链接需要几分钟时间才能变为可用。  
-5. 在 Azure 门户中，导航到包含群集的 VNet 的资源组。  
+5. 在 Azure 门户中，导航到包含群集的虚拟网络的资源组。  
 6. 在右窗格中，选择“虚拟网络”。 虚拟网络名称的格式为 aks-vnet-\*。  
 7. 在左窗格中，选择“对等互连”。  
 8. 选择“添加”，添加 VM 的虚拟网络，然后创建对等互连。  
@@ -89,9 +96,9 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 
 1. 默认情况下，预配专用群集后，会在群集托管资源组中创建专用终结点 (1) 和专用 DNS 区域 (2)。 群集使用专用区域中的 A 记录来解析专用终结点的 IP，以便与 API 服务器通信。
 
-2. 专用 DNS 区域仅链接到群集节点附加到的 VNet (3)。 这意味着专用终结点只能由该链接 VNet 中的主机进行解析。 在 VNet 上未配置任何自定义 DNS 的情况下（默认），这可以正常工作，因为主机指向 DNS 168.63.129.16，从而可以解析专用 DNS 区域中的记录（由于链接）。
+2. 专用 DNS 区域仅链接到群集节点附加到的 VNet (3)。 这意味着专用终结点只能由该链接 VNet 中的主机进行解析。 在 VNet 中未配置自定义 DNS 的情况下（默认），这种方式不会像 DNS 的168.63.129.16 上的主机点一样出现问题，因为该链接可以解析专用 DNS 区域中的记录。
 
-3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 使用基于事件的部署 (机制（例如，Azure 事件网格和 Azure Functions) ，在群集预配期间创建专用区域或通过自动化创建该区域后，可以手动创建此链接。
+3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 在群集预配期间创建专用区域或通过使用基于事件的部署机制（例如，Azure 事件网格和 Azure Functions）来检测区域创建时，可以手动创建此链接。
 
 ## <a name="dependencies"></a>依赖项  
 
@@ -99,7 +106,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 * 若要使用自定义 DNS 服务器，请在自定义 DNS 服务器中将 Azure DNS IP 168.63.129.16 作为上游 DNS 服务器进行添加。
 
 ## <a name="limitations"></a>限制 
-* IP 授权范围不能应用于专用 API 服务器终结点，它们仅适用于公共 API 服务器
+* IP 授权范围不能应用于专用 api 服务器终结点，它们仅适用于公共 API 服务器
 * 某些区域当前支持[可用性区域][availability-zones]。 
 * [Azure 专用链接服务限制][private-link-service]适用于专用群集。
 * 不支持具有专用群集的 Azure DevOps Microsoft 托管的代理。 请考虑使用[自托管代理][devops-agents]。 

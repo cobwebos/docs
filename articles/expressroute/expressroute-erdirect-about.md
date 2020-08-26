@@ -1,17 +1,18 @@
 ---
 title: 关于 Azure ExpressRoute 直通
-description: 此页提供 ExpressRoute 直通的概述
+description: 了解 Azure ExpressRoute 直通的主要功能，以及与 ExpressRoute 直接集成所需的信息，如可用的 Sku 和技术要求。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083601"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192357"
 ---
 # <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
 
@@ -51,7 +52,7 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 
 ## <a name="circuit-skus"></a>线路 SKU
 
-ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大数据服务中的方案。 100 Gbps ExpressRoute 直通上的 ExpressRoute 线路现在还支持**40 gbps**和**100 Gbps 的 gbps**电路 sku。 物理端口对只为**100 或 10 Gbps** ，可以有多个虚拟线路。 线路大小：
+ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大数据服务中的方案。 100 Gbps ExpressRoute 直通上的 ExpressRoute 线路现在还支持 **40 gbps** 和 **100 Gbps 的 gbps** 电路 sku。 物理端口对只为 **100 或 10 Gbps** ，可以有多个虚拟线路。 线路大小：
 
 | **100 Gbps ExpressRoute 直接** | **10 Gbps ExpressRoute 直接** | 
 | --- | --- |
@@ -60,19 +61,19 @@ ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大�
 
 ## <a name="technical-requirements"></a>技术要求
 
-* Microsoft 企业边缘路由器（MSEE）接口：
+* Microsoft 企业边缘路由器 (MSEE) 接口：
     * 仅限跨路由器对的双10或100千兆以太网端口
     * 单模式 LR 光纤连接
     * IPv4 和 IPv6
     * IP MTU 1500 字节
 
 * 交换机/路由器第2层/第3层连接：
-    * 必须支持 1 802.1 Q （Dot1Q）标记或两个标记 802.1 Q （QinQ）标记封装
+    * 必须支持 1 802.1 Q (Dot1Q) 标记或两个标记 802.1 Q (QinQ) 标记封装
     * Ethertype = 0x8100
-    * 必须基于 Microsoft 指定的 VLAN ID （*仅适用于 QinQ* ）添加外部 VLAN 标记（STAG）。
-    * 必须支持每个端口和设备多个 BGP 会话（Vlan）
+    * 必须基于 Microsoft 指定的 VLAN ID (STAG) 添加外部 VLAN 标记（ *仅适用于 QinQ）*
+    * 必须支持多个 BGP 会话 (Vlan) 每个端口和设备
     * IPv4 和 IPv6 连接。 *对于 IPv6，将不会创建其他子接口。IPv6 地址将添加到现有子接口*。 
-    * 可选：[双向转发检测（BFD）](https://docs.microsoft.com/azure/expressroute/expressroute-bfd)支持，在 ExpressRoute 线路上的所有专用对等互连上默认配置
+    * 可选： [双向转发检测 (BFD) ](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) 支持，默认情况下，它在 ExpressRoute 线路上的所有专用对等互连上配置
 
 ## <a name="vlan-tagging"></a>VLAN 标记
 

@@ -6,13 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391955"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586097"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -24,6 +26,9 @@ ms.locfileid: "85391955"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -35,7 +40,7 @@ ms.locfileid: "85391955"
 |---------|---------|
 |下载 SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API 文档  |  [JavaScript SDK 参考文档](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
-|SDK 安装说明  |  [安装说明](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK 安装说明  |  [安装说明](https://github.com/Azure/azure-sdk-for-js)
 |参与 SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | 示例 | [Node.js 代码示例](sql-api-nodejs-samples.md)
 | 入门教程 | [JavaScript SDK 入门](sql-api-nodejs-get-started.md)
@@ -55,7 +60,7 @@ ms.locfileid: "85391955"
 * 修复了用户提供部分重试选项时遇到的 bug
 
 ### <a name="303"></a><a name="3.0.3"></a>3.0.3
-* 阻止 Webpack 解析要求调用的模块
+* 阻止 webpack 解析调用的模块时需要
 
 ### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * 修复了在聚合查询中 RU 总是被报告为 0 的长期未解决的 bug
@@ -181,7 +186,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>改进了浏览器体验
-尽管可以在浏览器中使用 v2 SDK，但这并不是理想体验。 需要对多个 node.js 内置库填充代码，并使用 Webpack 或 Parcel 之类的捆绑程序。 v3 SDK 为浏览器用户提供了更好的全新体验。
+尽管可以在浏览器中使用 v2 SDK，但这并不是理想体验。 需要填充代码多个 node.js 内置库并使用 webpack 或包裹等捆绑程序。 v3 SDK 为浏览器用户提供了更好的全新体验。
 
 * 将内部请求替换为 fetch (#245)
 * 不使用缓冲区 (#330)
@@ -408,17 +413,8 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
-Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。
-
-使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
-
-> [!WARNING]
-> Node 客户端 SDK for SQL API 的所有 1.x 版本将在 2020 年 8 月 30 日停用。 这只影响客户端节点 SDK，不影响服务器端脚本（存储过程、触发器和 UDF）。
-> 
->
-<br/>
+Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |

@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483646"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533186"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
 
-你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 Azure NetApp 文件导出策略仅支持 NFS 卷。  支持 NFSv3 和 NFSv4。 
+可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 Azure NetApp 文件导出策略支持使用 NFS 协议（NFSv3 和 NFSv 4.1）和双重协议（NFSv3 和 SMB）的卷。 
+
+最多可以创建五个导出策略规则。
 
 ## <a name="steps"></a>步骤 
 
-1.  在 Azure NetApp 文件导航窗格中单击 "**导出策略**"。 
+1.  从 "卷" 页中，选择要为其配置导出策略的卷，然后单击 "**导出策略**"。 
+
+    你还可以在卷的创建过程中配置导出策略。
 
 2.  为以下字段指定信息来创建导出策略规则：   
     *  **编入**   
@@ -39,10 +43,18 @@ ms.locfileid: "85483646"
         * 读取和写入
         * 只读
 
-    ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **只读**和**读/写**  
+        如果将 Kerberos 加密用于 NFSv 4.1，请按照[配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。  对于 Kerberos 的性能影响，请参阅[nfsv 4.1 上 Kerberos 的性能影响](configure-kerberos-encryption.md#kerberos_performance)。 
+
+        ![Kerberos 安全选项](../media/azure-netapp-files/kerberos-security-options.png) 
+
+    * **根访问**  
+        指定帐户是否 `root` 可以访问该卷。  默认情况下，根访问权限设置为**On**，并且该 `root` 帐户有权访问该卷。
+
+![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>后续步骤 
-* [管理卷](azure-netapp-files-manage-volumes.md)
 * [为虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [管理快照](azure-netapp-files-manage-snapshots.md)

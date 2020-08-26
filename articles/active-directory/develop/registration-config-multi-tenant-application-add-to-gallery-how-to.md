@@ -13,11 +13,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680263"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120705"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>将多租户应用程序添加到 Azure AD 应用程序库
 
@@ -28,9 +29,9 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>如果应用程序支持 SAML 或 OpenIDConnect
 如果想要将某个多租户应用程序在 Azure AD 应用程序库中列出，首先必须确保该应用程序支持以下单一登录技术之一：
 
-- **OpenID Connect**：若要将应用列出，请在 Azure AD 中创建多租户应用程序并为应用程序实现 [Azure AD 许可框架](https://docs.microsoft.com/azure/active-directory/develop/consent-framework)。 将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户的访问。 使用[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)中所述的过程提交应用程序。
+- **OpenID Connect**：若要将应用列出，请在 Azure AD 中创建多租户应用程序并为应用程序实现 [Azure AD 许可框架](./consent-framework.md)。 将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户的访问。 使用[在 Azure Active Directory 应用程序库中列出你的应用程序](../azuread-dev/howto-app-gallery-listing.md)中所述的过程提交应用程序。
 
-- **SAML**：如果应用程序支持 SAML 2.0，则可以在该库中列出。 按照[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)中的说明进行操作。
+- **SAML**：如果应用程序支持 SAML 2.0，则可以在该库中列出。 按照[在 Azure Active Directory 应用程序库中列出你的应用程序](../azuread-dev/howto-app-gallery-listing.md)中的说明进行操作。
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>如果应用程序不支持 SAML 或 OpenIDConnect
 不支持 SAML 或 OpenIDConnect 的应用程序仍可通过密码单一登录技术集成到应用程序库。
@@ -38,12 +39,12 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 密码单一登录也称为密码保管，可用于管理用户对不支持联合身份验证的 Web 应用程序的访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。 
 
 如果想要使用此技术列出你的应用程序：
-1. 创建具有 HTML 登录页的 Web 应用程序来配置[密码单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。 
-2. 按照[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)中所述提交请求。
+1. 创建具有 HTML 登录页的 Web 应用程序来配置[密码单一登录](../manage-apps/what-is-single-sign-on.md)。 
+2. 按照[在 Azure Active Directory 应用程序库中列出你的应用程序](../azuread-dev/howto-app-gallery-listing.md)中所述提交请求。
 
 ## <a name="escalations"></a>升级
 
 若要进行升级，请向 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)发送电子邮件，我们会尽快进行回复。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)。
+了解如何[在 Azure Active Directory 应用程序库中列出你的应用程序](../azuread-dev/howto-app-gallery-listing.md)。

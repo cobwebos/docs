@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9458f6d66dbf95429172a0767b9293efdfa51113
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c1bf77881f672bf3bd2b2dccf91c30855c520052
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042898"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证可通过 .NET 访问 Azure 媒体服务 API
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 从 windowsazure.mediaservices 4.0.0.4 开始，Azure 媒体服务支持基于 Azure Active Directory (Azure AD) 的身份验证。 本主题介绍了如何使用 Azure AD 身份验证通过 Microsoft .NET 访问 Azure 媒体服务 API。
 

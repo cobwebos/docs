@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 0ea5c11254d8dba050fe63a4cd915240c8270dd1
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 7fff8539f330c7cbc886577eaf6dbe4417411999
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324566"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498134"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
-自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 学习如何：
+自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，你将创建自己的 Azure 虚拟机自定义映像。 学习如何：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -29,7 +29,7 @@ ms.locfileid: "84324566"
 > * 共享映像库
 
 
-本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
+本教程在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.4.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "84324566"
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
-若要完成本教程中的示例，必须具备现有虚拟机。 如果需要，可以参阅 [CLI 快速入门](quick-create-cli.md)来创建本教程所用的 VM。 在学习本教程期间，请根据需要替换资源名称。
+若要完成本教程中的示例，必须现有一个虚拟机。 如果需要，可以参阅 [CLI 快速入门](quick-create-cli.md)来创建本教程所用的 VM。 在学习本教程期间，请根据需要替换资源名称。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -88,13 +88,13 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 映像定义为映像创建逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 
 
-映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 
+映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。 
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux OS 映像。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -132,9 +132,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> 需要等待映像版本的生成和复制完全完成，然后才能使用同一个托管映像来创建另一个映像版本。
+> 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_zrs` 在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中存储映像。
+> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_zrs` 在[区域冗余存储](../../storage/common/storage-redundancy.md)中存储映像。
 >
 
  
@@ -176,15 +176,15 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-有关如何使用 RBAC 共享资源的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)。
+有关如何使用 RBAC 共享资源的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="azure-image-builder"></a>Azure 映像生成器
 
-Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。 只需在模板中描述你的自定义设置，然后该模板即会处理映像的创建。 
+Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](./image-builder-overview.md)。 只需在模板中描述你的自定义设置，然后该模板即会处理映像的创建。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建自定义 VM 映像。 你已了解如何执行以下操作：
+在本教程中，已创建自定义 VM 映像。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -197,4 +197,3 @@ Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](https:
 
 > [!div class="nextstepaction"]
 > [创建高度可用的 VM](tutorial-availability-sets.md)
-

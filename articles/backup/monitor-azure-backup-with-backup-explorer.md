@@ -4,11 +4,12 @@ description: 本文介绍如何使用备份资源管理器跨保管库、订阅�
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715199"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824406"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>使用备份资源管理器监视备份
 
@@ -28,7 +29,7 @@ ms.locfileid: "83715199"
 > * 备份资源管理器旨在充当可操作的仪表板，用于查看过去 7 天（上限）备份的相关信息。
 > * 国家云当前不支持备份资源管理器。
 > * 当前不支持自定义备份资源管理器模板。
-> * 不建议对 Azure Resource Graph 数据编写自定义自动化。
+> * 不建议在 Azure 资源关系图数据上编写自定义自动化。
 > * 当前，可通过备份资源管理器监视最多跨 1,000 个订阅（跨租户）的备份。
 
 ## <a name="get-started"></a>入门
@@ -77,7 +78,7 @@ ms.locfileid: "83715199"
 
 ### <a name="the-backup-not-enabled-tab"></a>“未启用备份”选项卡
 
-应为所有需要保护的计算机启用备份。 通过备份资源管理器，备份管理员可快速确定组织中的哪些计算机尚未受备份保护。 要查看此信息，请选择“未启用备份”选项卡。
+应为所有需要保护的计算机启用备份。 使用备份资源管理器，备份管理员可以快速确定组织中的哪些计算机尚未通过备份进行保护。 要查看此信息，请选择“未启用备份”选项卡。
 
 “未启用备份”窗格会显示一张表，其中包含未受保护的计算机的列表。 你的组织可能会将不同的标记分配给生产计算机和测试计算机，或者分配给提供多种功能的计算机。 由于每类计算机都需要一个单独的备份策略，因此按标记进行筛选有助于查看每个类别特定的信息。 选择任何计算机的名称都会将你重定向到该计算机的“配置备份”窗格，可在其中选择应用相应的备份策略。
 
@@ -93,8 +94,8 @@ ms.locfileid: "83715199"
 
 ## <a name="cross-tenant-views"></a>跨租户视图
 
-如果你是一名 Azure Lighthouse 用户，且具有委托权限可跨多个租户环境访问订阅，那么你可使用默认订阅筛选器。 通过选择 Azure 门户右上方的“筛选器”图标，可显示要查看其数据的订阅。 使用此功能时，备份资源管理器会将跨所选订阅的所有保管库的相关信息聚合在一起。 要了解详细信息，请参阅[什么是 Azure Lighthouse？](https://docs.microsoft.com/azure/lighthouse/overview)。
+如果你是一名 Azure Lighthouse 用户，且具有委托权限可跨多个租户环境访问订阅，那么你可使用默认订阅筛选器。 通过选择 Azure 门户右上方的“筛选器”图标，可显示要查看其数据的订阅。 使用此功能时，备份资源管理器会将跨所选订阅的所有保管库的相关信息聚合在一起。 要了解详细信息，请参阅[什么是 Azure Lighthouse？](../lighthouse/overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何使用 Azure Monitor 获取有关备份数据的见解](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[了解如何使用 Azure Monitor 获取有关备份数据的见解](./backup-azure-monitoring-use-azuremonitor.md)

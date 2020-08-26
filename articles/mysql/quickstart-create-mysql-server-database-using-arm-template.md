@@ -1,18 +1,18 @@
 ---
-title: 使用 ARM 模板创建 Azure DB for MySQL
-description: 本文介绍了如何使用 Azure 资源管理器模板创建集成了虚拟网络的 Azure Database for MySQL 服务器。
+title: 快速入门：创建 Azure DB for MySQL - ARM 模板
+description: 本快速入门介绍了如何使用 Azure 资源管理器模板创建集成了虚拟网络的 Azure Database for MySQL 服务器。
 author: mgblythe
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 72ace8a94d16b79f756c83393db2b39a1c0df714
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed908c4711812302fffac2e1ce59d2196426b74c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134852"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185853"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
 

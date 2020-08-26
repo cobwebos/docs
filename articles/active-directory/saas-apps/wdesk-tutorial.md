@@ -2,24 +2,21 @@
 title: 教程：Azure Active Directory 与 Wdesk 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Wdesk 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06900a91-a326-4663-8ba6-69ae741a536e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523987"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wdesk 集成
 

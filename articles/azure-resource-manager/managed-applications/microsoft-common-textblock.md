@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 418056cb149f4441bac49db839a0dba40c2bb42d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba2c4d410891910c29ee1fda1065f8230ab171bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063875"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI 元素
 
@@ -17,7 +18,7 @@ ms.locfileid: "75652211"
 
 ## <a name="ui-sample"></a>UI 示例
 
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
+![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft-common-textblock.png)
 
 ## <a name="schema"></a>架构
 

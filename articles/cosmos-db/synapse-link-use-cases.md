@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119488"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814410"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB：准实时分析用例
 
@@ -34,7 +34,7 @@ ms.locfileid: "85119488"
 
 以下体系结构展示了将 Azure Cosmos DB 用作供应链分析中的云原生操作数据库和 Synapse Link 的能力：
 
-:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="供应链分析中 Azure Cosmos DB 的 Azure Synapse 链接" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="供应链分析中的 Azure Synapse Link for Azure Cosmos DB " border="false":::
 
 根据以前的体系结构，可以通过 Synapse Link for Azure Cosmos DB 实现以下用例：
 
@@ -52,9 +52,9 @@ ms.locfileid: "85119488"
 
   Synapse Link for Azure Cosmos DB 支持丰富的商业智能 (BI)/报告方案：
 
-  * 通过使用与 Synapse SQL 无服务器的本机集成和 T-SQL 语言的完全表达性来查询 Azure Cosmos DB 分析存储中的操作数据。
+  * 通过使用与 Synapse SQL 无服务器的本机集成和 T-sql 语言的完整表现力，从 Azure Cosmos DB 分析存储中查询操作数据。
 
-  * 借助对熟悉的 BI 工具的 Synapse SQL 无服务器支持，通过 Azure Cosmos DB 建模和发布自动刷新 BI 仪表板。 例如，Azure Analysis Services、Power BI Premium 等。
+  * 通过 Synapse SQL 无服务器支持对熟悉的 BI 工具进行建模和发布自动刷新 BI Azure Cosmos DB 面板。 例如，Azure Analysis Services、Power BI Premium 等。
 
 下面是将批处理数据和流式处理数据集成到 Azure Cosmos DB 的一些指南：
 

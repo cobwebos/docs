@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Adobe Experience Manager 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Adobe Experience Manager 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f39751f40b32c5da24e13d75d2607d7da0a57ad3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73154110"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
 

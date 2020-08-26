@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499318"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318974"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理（以前称为状态监视器 v2）：详细说明
 
@@ -231,17 +231,18 @@ Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 �
 
  查看遥测：
 
-- [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
-- [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
+- [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+- [搜索事件和日志](./diagnostic-search.md)以诊断问题。
 - [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
-- [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
+- [创建仪表板](./overview-dashboard.md)。
 
  添加更多遥测：
 
 - [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
-- [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
-- [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
+- [添加 Web 客户端遥测](./javascript.md)，以查看网页代码中的异常并启用跟踪调用。
+- [将 Application Insights SDK 添加到代码](./asp-net.md)，以便插入跟踪和日志调用。
 
 使用 Application Insights 代理执行更多操作：
 
 - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
+

@@ -1,5 +1,5 @@
 ---
-title: 实例化机密客户端应用（MSAL.NET） |Microsoft
+title: " (MSAL.NET) 实例化机密客户端应用 |Microsoft"
 titleSuffix: Microsoft identity platform
 description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化机密客户端应用程序。
 services: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 140385a26dbfd754438d632ce327c3c4a3ea1b61
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477458"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166172"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化机密客户端应用程序
 

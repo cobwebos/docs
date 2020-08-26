@@ -1,19 +1,20 @@
 ---
 title: 从地图上的形状获取数据 |Microsoft Azure 映射
 description: 本文介绍如何使用 Microsoft Azure map Web SDK 获取地图上绘制的形状数据。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a10732790d52ac21ada53970ce2dd028f8d08f14
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334414"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282834"
 ---
 # <a name="get-shape-data"></a>获取形状数据
 

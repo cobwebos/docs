@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383846"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116305"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 
@@ -47,7 +47,7 @@ ms.locfileid: "85383846"
 
 单租户应用程序是仅接受来自定义的 Azure AD 实例的用户登录的应用程序。** 将每个用户作为来宾帐户添加到应用程序注册的 Azure AD 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 
 
-可以通过 [Azure AD B2B 协作](../b2b/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)。
+可以通过 [Azure AD B2B 协作](../external-identities/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](../external-identities/self-service-portal.md)。
 
 单租户应用程序可启用“与我联系”体验，但若要启用 AppSource 建议的单击/免费试用体验，则请改为在应用程序上启用多租户**。
 
@@ -58,14 +58,13 @@ ms.locfileid: "85383846"
 客户导向型试用是 AppSource 所推荐的体验，因为它提供对应用程序的单击访问。 以下示例显示了此体验的外观：
 
 <table >
-<tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择 "免费试用版" 选项</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource 将用户重定向到你网站中的 URL</li><li>网站将自动开始<i>单一登录</i>过程（页面加载中）</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>用户被重定向到 Microsoft 登录页</li><li>用户提供凭据以登录</li></ul></td>
+<tr>    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt="Shows Free trial for customer-led trial experience."/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择 "免费试用版" 选项</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt="Shows how user is redirected to a URL in your web site."/><ul><li>AppSource 将用户重定向到你网站中的 URL</li><li>网站将自动开始<i>单一登录</i>过程（页面加载中）</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt="Shows the Microsoft sign-in page."/><ul><li>用户被重定向到 Microsoft 登录页</li><li>用户提供凭据以登录</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>用户对你的应用程序授权</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>登录完成，且用户被重定向回你的网站</li><li>用户开始进行免费试用</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt="Example: Consent page for an application."/><ul><li>用户对你的应用程序授权</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt="Shows the experience the user sees when redirected back to your site."/><ul><li>登录完成，且用户被重定向回你的网站</li><li>用户开始进行免费试用</li></ul></td>
     <td></td>
 </tr>
 </table>
@@ -76,20 +75,20 @@ ms.locfileid: "85383846"
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择 "与我联系" 选项</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>在表单中填写联系信息</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt="Shows Contact me for partner-led trial experience"/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择 "与我联系" 选项</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt="Shows an example form with contact info"/><ul><li>在表单中填写联系信息</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/usercontact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/usercontact.png" width="55%" alt="Shows placeholder for user information"/></td>
             <td>你接收到用户信息</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/setupenv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/setupenv.png" width="55%" alt="Shows placeholder for setup environment info"/></td>
             <td>设置环境</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/contactcustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/contactcustomer.png" width="55%" alt="Shows placeholder for trial info"/></td>
             <td>就试用信息与用户联系</td>
         </tr>
         </table><br/><br/>
@@ -97,10 +96,9 @@ ms.locfileid: "85383846"
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>用户访问你的应用程序并完成单一登录过程</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>用户对你的应用程序授权</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>登录完成，且用户被重定向回你的网站</li><li>用户开始进行免费试用</li></ul></td>
-   
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt="Shows the application sign-in screen"/><ul><li>用户访问你的应用程序并完成单一登录过程</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt="Shows an example consent page for an application"/><ul><li>用户对你的应用程序授权</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt="Shows the experience the user sees when redirected back to your site"/><ul><li>登录完成，且用户被重定向回你的网站</li><li>用户开始进行免费试用</li></ul></td>  
 </tr>
 </table>
 
@@ -110,7 +108,7 @@ ms.locfileid: "85383846"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关构建支持 Azure AD 登录的应用程序的详细信息，请参阅 [Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios)。
+- 有关构建支持 Azure AD 登录的应用程序的详细信息，请参阅 [Azure AD 的身份验证方案](./v1-authentication-scenarios.md)。
 - 有关如何在 AppSource 中列出你的 SaaS 应用程序的信息，请参阅 [AppSource 合作伙伴信息](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>获取支持

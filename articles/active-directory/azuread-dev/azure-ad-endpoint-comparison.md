@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154910"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116387"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为何更新为 Microsoft 标识平台 (v2.0)？
 
@@ -32,10 +32,10 @@ ms.locfileid: "80154910"
 ![谁可以使用 v1.0 和 v2.0 终结点登录](media/azure-ad-endpoint-comparison/who-can-signin.svg)
 
 * v1.0 终结点仅允许使用工作和学校帐户登录到应用程序 (Azure AD)
-* Microsoft 标识平台终结点允许 Azure AD 和个人 Microsoft 帐户（MSA）（如 hotmail.com、outlook.com 和 msn.com）的工作和学校帐户登录。
-* 对于配置为*[单租户](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 的应用程序或配置为指向特定于租户的终结点（）的*多租户*应用程序，这两个终结点还接受 Azure AD 目录的*[来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 的登录 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
+* Microsoft 标识平台终结点允许 Azure AD 和个人 Microsoft 帐户 (MSA) ，例如 hotmail.com、outlook.com 和 msn.com）登录。
+* 对于配置为*[单租户](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 的应用程序或配置为指向特定于租户的终结点 () 的*多租户*应用程序，这两个终结点还接受 Azure AD 目录的*[来宾用户](../external-identities/what-is-b2b.md)* 的登录 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
 
-Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 Microsoft 个人帐户和工作和学校帐户的登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
+Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 Microsoft 个人帐户和工作和学校帐户的登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](/graph/api/user-list-messages?view=graph-rest-1.0)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
 
 对于 Microsoft 标识平台终结点，可以使用 Microsoft 身份验证库 (MSAL) 来获取对使用者、教育和企业领域的访问权限。 Azure AD v1.0 终结点仅接受工作和学校帐户的登录。
 
@@ -141,34 +141,7 @@ Microsoft 标识平台终结点将演变为消除此处列出的限制，因此�
 
 ### <a name="restrictions-on-redirect-urls"></a>重定向 URL 的限制
 
-为 Microsoft 标识平台注册的应用限制为一组有限的重定向 URL 值。 Web 应用和服务的重定向 URL 必须以方案 `https` 开头，并且所有重定向 URL 值必须共享一个 DNS 域。  注册系统会将现有重定向 URL 的完整 DNS 名称与要添加的重定向 URL 的 DNS 名称相比较。 也支持将 `http://localhost` 用作重定向 URL。  
-
-如果满足以下任一条件，添加 DNS 名称的请求会失败：  
-
-* 新的重定向 URL 的完整 DNS 名称与现有的重定向 URL 的 DNS 名称不匹配。
-* 新重定向 URL 的完整 DNS 名称不是现有重定向 URL 的子域。
-
-#### <a name="example-1"></a>示例 1
-
-如果应用的重定向 URL 为 `https://login.contoso.com`，则你可以添加 DNS 名称完全匹配的重定向 URL，如以下示例所示：
-
-`https://login.contoso.com/new`
-
-或者，可以引用 login.contoso.com 的 DNS 子域，如以下示例所示：
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>示例 2
-
-若要在应用中包含 `login-east.contoso.com` 和 `login-west.contoso.com` 作为重定向 URL，必须按以下顺序添加这些重定向 URL：
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-可以添加后两个重定向 URL，因为它们是第一个重定向 URL (contoso.com) 的子域。
-
-一个特定应用程序只能有 20 个回复 URL - 此限制适用于注册支持的所有应用类型（单页应用程序 (SPA)、本机客户端、Web 应用和服务）。  
+有关注册到 Microsoft 标识平台的应用的重定向 Url 限制的最新信息，请参阅 Microsoft 标识平台文档中的[重定向 URI/回复 url 限制和限制](../develop/reply-url.md)。
 
 若要了解如何注册应用以配合 Microsoft 标识平台使用，请参阅[使用新的应用注册体验来注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 

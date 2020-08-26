@@ -12,7 +12,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -116,7 +116,7 @@
               href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
-            - name: 动态数据掩码
+            - name: 动态数据屏蔽
               href: /azure/sql-database/sql-database-dynamic-data-masking-get-started?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
             - name: 透明数据加密 (TDE) 概述
               href: /azure/sql-database/transparent-data-encryption-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -134,7 +134,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -182,6 +182,8 @@
               href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: 清理缓存
               href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
+        - name: 机器学习预测
+          href: sql-data-warehouse-predict.md
         - name: 表
           items:
             - name: 概述
@@ -232,7 +234,7 @@
           href: sql-data-warehouse-develop-group-by-options.md
         - name: 标签
           href: sql-data-warehouse-develop-label.md
-    - name: 工作负荷管理
+    - name: 工作负载管理
       items:
         - name: 概述
           href: sql-data-warehouse-workload-management.md
@@ -370,7 +372,7 @@
           items:
             - name: 使用 Power BI 进行可视化
               href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接
           href: sql-data-warehouse-troubleshoot-connectivity.md

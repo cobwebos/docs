@@ -7,13 +7,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 3/5/2020
+ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216765"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121555"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>教程：在 Java Spring 应用中使用动态配置
 
@@ -35,7 +36,7 @@ ms.locfileid: "79216765"
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -45,11 +46,33 @@ ms.locfileid: "79216765"
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-保存文件，然后正常生成并运行应用程序。
+## <a name="run-and-test-the-app-locally"></a>在本地运行并测试应用
+
+1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序。
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. 打开浏览器窗口，访问 URL：`http://localhost:8080`。  将显示与密钥关联的消息。 
+
+    还可以使用 curl 来测试应用程序，例如： 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. 若要测试动态配置，请打开与应用程序关联的 Azure 应用程序配置门户。 选择“配置资源管理器”，并更新所显示的密钥的值，例如：
+    | 键 | 值 |
+    |---|---|
+    | application/config.message | Hello - Updated |
+
+1. 刷新浏览器页面，查看显示的新消息。
 
 ## <a name="next-steps"></a>后续步骤
 

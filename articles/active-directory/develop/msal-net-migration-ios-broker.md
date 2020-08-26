@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bc94c7be4e3979cf9aa7624a9aeadf156cc48035
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185825"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166070"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
 
@@ -37,7 +38,7 @@ ms.locfileid: "77185825"
 
 - 单一登录。
 - 设备标识，这是某些[条件访问策略](../conditional-access/overview.md)所必需的。 有关详细信息，请参阅[设备管理](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。
-- 应用程序标识验证，在某些企业方案中也需要执行此操作。 有关详细信息，请参阅 [Intune 移动应用程序管理 (MAM)](https://docs.microsoft.com/intune/mam-faq)。
+- 应用程序标识验证，在某些企业方案中也需要执行此操作。 有关详细信息，请参阅 [Intune 移动应用程序管理 (MAM)](/intune/mam-faq)。
 
 ## <a name="migrate-from-adal-to-msal"></a>从 ADAL 迁移到 MSAL
 
@@ -96,8 +97,8 @@ result = await app.AcquireTokenInteractive(scopes)
 ```
 </table>
 
-### <a name="step-2-set-a-uiviewcontroller"></a>步骤2：设置 UIViewController （）
-在 ADAL.NET 中，已传入 UIViewController 作为 `PlatformParameters` 的一部分。 （请参阅步骤1中的示例。）在 MSAL.NET 中，为开发人员提供更大的灵活性，可以使用对象窗口，但在常规的 iOS 使用中不需要此窗口。 若要使用中介，请设置对象窗口，以便与中介相互发送和接收响应。 
+### <a name="step-2-set-a-uiviewcontroller"></a>步骤2：设置 UIViewController ( # A1
+在 ADAL.NET 中，已传入 UIViewController 作为 `PlatformParameters` 的一部分。  (参见 MSAL.NET 中步骤 1. ) 中的示例，为开发人员提供更大的灵活性，使用对象窗口，但在常规 iOS 使用中不需要此操作。 若要使用中介，请设置对象窗口，以便与中介相互发送和接收响应。 
 <table>
 <tr><td>当前 ADAL 代码：</td><td>对应的 MSAL 代码：</td></tr>
 <tr><td>
@@ -142,7 +143,7 @@ ADAL 和 MSAL 都会调用中介，而中介通过 `AppDelegate` 类的 `OpenUrl
 
 ADAL.NET 和 MSAL.NET 在此方面没有差别。
 
-### <a name="step-4-register-a-url-scheme"></a>步骤4：注册 URL 方案
+### <a name="step-4-register-a-url-scheme"></a>步骤 4：注册 URL 方案
 ADAL.NET 和 MSAL.NET 使用 URL 调用中介，然后将中介响应返回到应用。 按如下所示在应用的 `Info.plist` 文件中注册 URL 方案：
 
 <table>
@@ -240,4 +241,4 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[与 MSAL.NET 配合使用时特定于 Xamarin iOS 的注意事项](msal-net-xamarin-ios-considerations.md)。 
+了解[与 MSAL.NET 配合使用时特定于 Xamarin iOS 的注意事项](msal-net-xamarin-ios-considerations.md)。

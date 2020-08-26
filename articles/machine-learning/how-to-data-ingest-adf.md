@@ -5,18 +5,19 @@ description: 了解如何使用 Azure 数据工厂生成数据引入管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3e8d93c1f04dda9afbcfa0cab4e8fc9036ae7580
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555666"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852848"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure 数据工厂进行数据引入
 

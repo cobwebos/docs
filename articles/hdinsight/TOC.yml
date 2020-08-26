@@ -1,3 +1,5 @@
+- name: Azure HDInsight 文档
+  href: index.yml
 - name: HDInsight 服务
   expanded: true
   items:
@@ -74,7 +76,7 @@
               href: overview-data-lake-storage-gen1.md
             - name: Azure Data Lake Storage Gen2 概述
               href: overview-data-lake-storage-gen2.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 创建群集
           items:
@@ -328,7 +330,7 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: Optimization
+        - name: 优化
           items:
             - name: 优化 Apache Spark 作业
               href: ./spark/apache-spark-perf.md
@@ -342,7 +344,7 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: 迁移到 Spark 2.3 或 2.4
           href: ./spark/migrate-versions.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 使用工具
           items:
@@ -354,6 +356,8 @@
               href: ./set-up-pyspark-interactive-environment.md
         - name: 开发
           items:
+            - name: 使用 SparkCruise 优化查询
+              href: ./spark/spark-cruise.md
             - name: 使用交互式 Apache Spark Shell
               href: ./spark/apache-spark-shell.md
             - name: 使用 Apache Livy 提交远程作业
@@ -471,7 +475,7 @@
           href: ./hdinsight-hadoop-create-linux-clusters-adf.md
         - name: 提交 Apache Hadoop 作业
           href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 使用工具
           items:
@@ -529,6 +533,8 @@
               items:
                 - name: 使用空边缘节点
                   href: ./hdinsight-apps-use-edge-node.md
+                - name: 使用边缘节点缩放 HiveServer2
+                  href: ./hdinsight-apps-install-hiveserver2.md
         - name: 疑难解答
           items:
             - name: 常见问题
@@ -616,7 +622,7 @@
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Kafka 常见问题解答
           href: ./kafka/kafka-faq.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 开发
           items:
@@ -667,7 +673,7 @@
       items:
         - name: 使用 HDInsight 中的 Apache HBase
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 开发
           items:
@@ -746,7 +752,7 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: 调整指导原则大小
           href: ./interactive-query/sizing-guidelines.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 开发
           items:
@@ -843,7 +849,7 @@
           href: ./r-server/ml-services-tutorial-spark-compute.md
         - name: 使用适用于 Visual Studio 的 R 工具
           href: ./r-server/r-server-submit-jobs-r-tools-vs.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 开发
           items:
@@ -875,7 +881,7 @@
           href: ./storm/apache-storm-write-data-lake-store.md
         - name: Apache Kafka 和 Apache Storm (Java)
           href: ./hdinsight-apache-storm-with-kafka.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 将 Storm 迁移到 Spark
           href: ./storm/migrate-storm-to-spark.md
@@ -939,13 +945,11 @@
           href: ./control-network-traffic.md
         - name: NSG 和 UDR 所需的 IP 地址
           href: ./hdinsight-management-ip-addresses.md
-        - name: Azure 防火墙的服务标记
-          href: ./hdinsight-service-tags.md
         - name: 客户管理的密钥磁盘加密
           href: ./disk-encryption.md
         - name: Ranger 和 Apache Ambari 中的 LDAP 同步
           href: ./domain-joined/ldap-sync.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 使用 ID 代理进行凭据管理
           href: ./domain-joined/identity-broker.md
@@ -967,8 +971,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 使用防火墙限制出站流量
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: 创建服务终结点策略
+          href: ./service-endpoint-policies.md
         - name: 配置网络虚拟设备
           href: ./network-virtual-appliance.md
+        - name: Azure 防火墙的服务标记
+          href: ./hdinsight-service-tags.md
         - name: 疑难解答
           items:
             - name: ESP 身份验证问题

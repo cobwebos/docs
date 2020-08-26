@@ -1,6 +1,6 @@
 ---
-title: 为 Office 365 组设置过期 - Azure Active Directory | Microsoft Docs
-description: 如何在 Azure Active Directory 中为 Office 365 组设置过期
+title: 为 Microsoft 365 组设置过期时间-Azure Active Directory |Microsoft Docs
+description: 如何在 Azure Active Directory 中为 Microsoft 365 组设置过期时间
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,32 +10,33 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 03/13/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728327"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799292"
 ---
-# <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
+# <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
 
-本文说明如何通过为 Office 365 组设置过期策略来管理这些组的生命周期。 只能为 Azure Active Directory （Azure AD）中的 Office 365 组设置过期策略。
+本文说明如何通过为 Microsoft 365 组设置过期策略来管理这些组的生命周期。 只能为 Azure Active Directory (Azure AD) 中的 Microsoft 365 组设置过期策略。
 
 将某个组设置为过期后：
 
 - 随着过期时间的临近，会自动续订包含用户活动的组。
 - 如果组未自动续订，则会通知组的所有者续订组。
 - 删除任何未续订的组。
-- 组所有者或管理员可在30天内还原任何已删除的 Office 365 组。
+- 组所有者或管理员可在30天内还原删除的任何 Microsoft 365 组。
 
-目前，只能为 Azure AD 组织中的所有 Office 365 组配置一个过期策略。
+目前，只能为 Azure AD 组织中的所有 Microsoft 365 组配置一个过期策略。
 
 > [!NOTE]
-> 为 Office 365 组配置和使用过期策略要求你拥有（但不一定）为应用过期策略的所有组的成员分配 Azure AD Premium 许可证。
+> 为 Microsoft 365 组配置和使用过期策略要求你拥有（但不一定）为应用过期策略的所有组的成员分配 Azure AD Premium 许可证。
 
 有关如何下载和安装 Azure AD PowerShell cmdlet 的信息，请参阅 [Azure Active Directory PowerShell for Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)。
 
@@ -48,7 +49,7 @@ ms.locfileid: "84728327"
 以下用户操作导致自动组续订：
 
 - SharePoint：查看、编辑、下载、移动、共享或上传文件
-- Outlook：按组空间加入组、读取/写入组邮件，如邮件（在 Outlook Web 访问中）
+- Outlook：通过组空间加入组、读取/写入组消息，如 Outlook Web 访问中的消息 () 
 - 团队：访问团队渠道
 
 ### <a name="auditing-and-reporting"></a>审核和报告
@@ -59,31 +60,31 @@ ms.locfileid: "84728327"
 
 ## <a name="roles-and-permissions"></a>角色和权限
 
-以下角色可用于在 Azure AD 中为 Office 365 组配置和使用到期。
+下面是可以为 Azure AD 中的 Microsoft 365 组配置和使用过期的角色。
 
 角色 | 权限
 -------- | --------
-全局管理员、组管理员或用户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置<br>可以续订任何 Office 365 组
-用户 | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组<br>可以读取过期策略设置
+全局管理员、组管理员或用户管理员 | 可以创建、读取、更新或删除 Microsoft 365 组过期策略设置<br>可以续订任何 Microsoft 365 组
+用户 | 可以续订其拥有的 Microsoft 365 组<br>可以还原他们拥有的 Microsoft 365 组<br>可以读取过期策略设置
 
-有关还原已删除组的权限的详细信息，请参阅[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)。
+有关还原已删除组的权限的详细信息，请参阅 [还原已删除的 Microsoft 365 组 Azure Active Directory](groups-restore-deleted.md)。
 
 ## <a name="set-group-expiration"></a>设置组过期
 
-1. 使用 Azure AD 组织中的全局管理员帐户打开[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 使用 Azure AD 组织中的全局管理员帐户打开 [Azure AD 管理中心](https://aad.portal.azure.com) 。
 
-2. 选择 "**组**"，然后选择 "**过期**" 以打开过期设置。
+2. 选择 " **组**"，然后选择 " **过期** " 以打开过期设置。
   
    ![组的过期设置](./media/groups-lifecycle/expiration-settings.png)
 
-3. 在 "**过期**" 页上，您可以：
+3. 在 " **过期** " 页上，您可以：
 
-    - 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。
+    - 设置组的生存期（天）。 您可以选择一个预设值，或自定义值 (应为30天或更) 。
     - 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。
-    - 选择会过期的 Office 365 组。 可以为以下内容设置过期时间：
-      - **全部**Office 365 组
-      - **所选**Office 365 组的列表
-      - **无**以限制所有组的过期时间
+    - 选择过期的 Microsoft 365 组。 可以为以下内容设置过期时间：
+      - **全部** Microsoft 365 组
+      - **所选**Microsoft 365 组的列表
+      - **无** 以限制所有组的过期时间
     - 设置完成后，选择“保存”来保存设置****。
 
 > [!NOTE]
@@ -93,38 +94,38 @@ ms.locfileid: "84728327"
 
 ## <a name="email-notifications"></a>电子邮件通知
 
-如果未自动续订组，则会将此类电子邮件通知发送到 Office 365 组所有者30天15日，在组到期前的1天。 电子邮件的语言由组所有者首选语言或 Azure AD 语言设置确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况，将使用 Azure AD 语言设置。
+如果未自动续订组，则会将此类电子邮件通知发送到 Microsoft 365 组所有者30天、15天，以及在该组过期之前的1天。 电子邮件的语言由组所有者首选语言或 Azure AD 语言设置确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况，将使用 Azure AD 语言设置。
 
 ![过期电子邮件通知](./media/groups-lifecycle/expiration-notification.png)
 
-组所有者可以从 "**续订组**" 通知电子邮件直接访问 "[访问面板](https://account.activedirectory.windowsazure.com/r#/applications)" 中的 "组详细信息" 页。 在此处，用户可以获取更多关于组的信息，例如该组的描述、上次续订时间、到期时间，并且还能续订组。 组详细信息页面现在还包括 Office 365 组资源的链接，因此组所有者可以在组中轻松查看内容和活动。
+组所有者可以从 " **续订组** " 通知电子邮件直接访问 " [访问面板](https://account.activedirectory.windowsazure.com/r#/applications)" 中的 "组详细信息" 页。 在此处，用户可以获取更多关于组的信息，例如该组的描述、上次续订时间、到期时间，并且还能续订组。 "组详细信息" 页现在还包括指向 Microsoft 365 组资源的链接，以便组所有者可以方便地查看其组中的内容和活动。
 
-当某个组过期时，它将在到期日期的后一天被删除。 如下电子邮件通知将发送到 Office 365 组所有者，通知其关于 Office 365 组过期及后续删除的信息。
+当某个组过期时，它将在到期日期的后一天被删除。 此类电子邮件通知将发送到 Microsoft 365 组所有者，通知他们其 Microsoft 365 组的过期和后续删除。
 
 ![组删除电子邮件通知](./media/groups-lifecycle/deletion-notification.png)
 
-可以通过选择“还原组”或使用 PowerShell cmdlet 在删除组后的 30 天内还原组，如[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)中所述****。 请注意，30 天的组还原期不可自定义。
+通过选择 " **还原组** " 或使用 PowerShell cmdlet，可以在删除后的30天内还原该组，如 [Azure Active Directory 中的 "还原已删除的 Microsoft 365 组](groups-restore-deleted.md)" 中所述。 请注意，30 天的组还原期不可自定义。
 
 如果所还原的组包含文档、SharePoint 站点或其他持久对象，可能需要最多 24 小时才能完全还原该组及其内容。
 
-## <a name="how-to-retrieve-office-365-group-expiration-date"></a>如何检索 Office 365 组到期日期
+## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>如何检索 Microsoft 365 组过期日期
 
-除了访问面板，用户可以在其中查看组详细信息（包括到期日期和上次续订日期），可以从 Microsoft Graph REST API Beta 检索 Office 365 组的到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求来检索它。 有关更多详细信息，请参阅[此示例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)。
+除了访问面板，用户可以在其中查看组详细信息（包括到期日期和上次续订日期），可以从 Microsoft Graph REST API Beta 中检索 Microsoft 365 组的到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求来检索它。 有关更多详细信息，请参阅 [此示例](/graph/api/group-get?view=graph-rest-beta#example)。
 
 > [!NOTE]
 > 若要在访问面板上管理组成员身份，需要在 Azure Active Directory 组 "常规" 设置中将 "限制访问访问面板中的组" 设置为 "否"。
 
-## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Office 365 组到期与合法保留邮箱一起使用的方式
+## <a name="how-microsoft-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Microsoft 365 组过期情况如何与法定持有邮箱一起使用
 
 组到期并删除后，应用（例如 Planner、站点或 Teams）中删除的组数据将会在 30 天后永久删除，但合法保留的组邮箱将会保留下来并且不会永久删除。 管理员可以使用 Exchange cmdlets 来恢复邮箱以提取数据。
 
-## <a name="how-office-365-group-expiration-works-with-retention-policy"></a>Office 365 组到期与保留策略一起使用的方式
+## <a name="how-microsoft-365-group-expiration-works-with-retention-policy"></a>Microsoft 365 组过期如何与保留策略一起使用
 
-保留策略是通过安全和合规中心配置的。 如果为 Office 365 组设置了保留策略，组到期并被删除后，组邮箱中的组对话和组站点中的文件将保留在保留容器中，保留的特定天数取决于保留策略中的定义。 到期后，用户无法查看组或其中的内容，但可以通过电子发现恢复站点和邮箱数据。
+保留策略是通过安全和合规中心配置的。 如果你已为 Microsoft 365 组设置了保留策略，则当某个组到期并被删除时，组中 "邮箱" 和 "组中的文件" 组中的组对话会在保留期内保留，以确定保留策略中指定的天数。 到期后，用户无法查看组或其中的内容，但可以通过电子发现恢复站点和邮箱数据。
 
 ## <a name="powershell-examples"></a>PowerShell 示例
 
-以下示例演示了如何使用 PowerShell cmdlet 在 Azure AD 组织中配置 Office 365 组的过期设置：
+以下示例演示了如何使用 PowerShell cmdlet 来配置 Azure AD 组织中 Microsoft 365 组的过期设置：
 
 1. 安装 PowerShell v2.0 模块并在 PowerShell 提示符下登录：
 
@@ -133,17 +134,17 @@ ms.locfileid: "84728327"
    Connect-AzureAD
    ```
 
-1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Office 365 组的生存期设置为365天。 不包含所有者的 Office 365 组的续订通知将发送到 " emailaddress@contoso.com "
+1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Microsoft 365 组的生存期设置为365天。 没有所有者的 Microsoft 365 组的续订通知将发送到 " emailaddress@contoso.com "
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
    ```
 
-1. 检索现有策略 Get-AzureADMSGroupLifecyclePolicy：此 cmdlet 检索当前已配置的 Office 365 组到期设置。 在此示例中，可以看到：
+1. 检索现有策略 Remove-azureadmsgrouplifecyclepolicy：此 cmdlet 检索已配置的当前 Microsoft 365 组过期设置。 在此示例中，可以看到：
 
    - 策略 ID
-   - Azure AD 组织中所有 Office 365 组的生存期设置为365天
-   - 不包含所有者的 Office 365 组的续订通知将发送到 "" emailaddress@contoso.com 。
+   - Azure AD 组织中所有 Microsoft 365 组的生存期设置为365天
+   - 没有所有者的 Microsoft 365 组的续订通知将发送到 "" emailaddress@contoso.com 。
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy
@@ -165,17 +166,16 @@ ms.locfileid: "84728327"
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. 删除现有策略 Remove-AzureADMSGroupLifecyclePolicy：此 cmdlet 会删除 Office 365 组到期设置，但需要策略 ID。 此 cmdlet 将禁用 Office 365 组的过期时间。
+1. 删除现有策略 Remove-azureadmsgrouplifecyclepolicy：此 cmdlet 删除 Microsoft 365 组过期设置，但需要策略 ID。 此 cmdlet 将禁用 Microsoft 365 组的过期时间。
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅[PowerShell 文档](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)。
+以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups)。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy
-- Get-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup

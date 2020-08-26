@@ -22,6 +22,8 @@
       href: concepts-twins-graph.md
     - name: 查询语言
       href: concepts-query-language.md
+    - name: 查询单位
+      href: concepts-query-units.md
     - name: 与其他服务集成
       href: concepts-integration.md
     - name: 事件路由
@@ -40,16 +42,24 @@
       items:
         - name: 使用 Azure 数字孪生 CLI
           href: how-to-use-cli.md
-        - name: 创建 Azure 数字孪生实例
-          href: how-to-set-up-instance.md
-        - name: 对客户端应用程序进行身份验证
+        - name: 设置实例和身份验证
+          items:
+            - name: 脚本版本
+              href: how-to-set-up-instance-scripted.md
+            - name: CLI 版本
+              href: how-to-set-up-instance-cli.md
+            - name: 门户版本
+              href: how-to-set-up-instance-portal.md
+        - name: 编写应用身份验证码
           href: how-to-authenticate-client.md
     - name: 设计模型
       items:
         - name: 管理自定义模型
           href: how-to-manage-model.md
         - name: 分析和验证模型
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
+        - name: 添加标记
+          href: how-to-use-tags.md
     - name: 使用实时执行环境
       items:
         - name: 管理数字孪生
@@ -69,13 +79,29 @@
     - name: 连接输出
       items:
         - name: 管理终结点和路由
-          href: how-to-manage-routes.md
+          items:
+            - name: API 和 CLI 版本
+              href: how-to-manage-routes-apis-cli.md
+            - name: 门户版本
+              href: how-to-manage-routes-portal.md
         - name: 与 Azure Maps 集成
           href: how-to-integrate-maps.md
+        - name: 与 Azure 时序见解集成
+          href: how-to-integrate-time-series-insights.md
     - name: 疑难解答
       items:
+        - name: 查看 Azure Monitor 中的指标
+          href: troubleshoot-metrics.md
+        - name: 启用诊断日志
+          href: troubleshoot-diagnostics.md
+        - name: 启用警报
+          href: troubleshoot-alerts.md
         - name: 已知问题
           href: troubleshoot-known-issues.md
+        - name: 问题解决方法
+          items:
+            - name: 403（已禁止）
+              href: troubleshoot-error-403.md
 - name: 参考
   items:
     - name: 数字孪生服务限制
@@ -145,9 +171,11 @@
         - name: Azure 数字孪生示例
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure 数字孪生资源管理器（示例）
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL 验证器（示例）
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+        - name: DPS 和 IoT 中心集成示例
+          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell

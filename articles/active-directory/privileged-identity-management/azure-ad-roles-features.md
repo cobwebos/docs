@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256622"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784005"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -29,7 +29,7 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 ## <a name="time-bound-assignments"></a>时限性分配
 
-以前，角色分配有两种可能的状态：*合格*和*永久*。 现在，你还可以为每种类型的分配设置开始时间和结束时间。 此添加操作为您提供了四种可能的状态：
+以前，角色分配有两种可能的状态： *合格* 和 *永久*。 现在，你还可以为每种类型的分配设置开始时间和结束时间。 此添加操作为您提供了四种可能的状态：
 
 - 永久合格
 - 永久活动
@@ -56,7 +56,7 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 ## <a name="api-changes"></a>API 更改
 
-当客户将更新的版本推广到其 Azure AD 组织中时，现有的图形 API 将停止工作。 必须转而使用 [Azure 资源角色的图形 API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)。 若要使用该 API 管理 Azure AD 角色，请在签名中将 `/azureResources` 与 `/aadroles` 交换，并使用 `resourceId` 的目录 ID。
+当客户将更新的版本推广到其 Azure AD 组织中时，现有的图形 API 将停止工作。 必须转而使用 [Azure 资源角色的图形 API](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)。 若要使用该 API 管理 Azure AD 角色，请在签名中将 `/azureResources` 与 `/aadroles` 交换，并使用 `resourceId` 的目录 ID。
 
 我们已经尽最大努力与所有使用以前的 API 的客户取得联系，让他们提前知道这项更改。 如果你的 Azure AD 组织已移至新版本，但你仍依赖于旧的 API，请在 pim_preview@microsoft.com 与团队联系。
 

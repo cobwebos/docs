@@ -1,6 +1,6 @@
 ---
-title: 无密码安全密钥登录（预览版）-Azure Active Directory
-description: 使用 FIDO2 安全密钥（预览版）启用无密码安全密钥登录 Azure AD
+title: 无密码安全密钥登录 (预览) -Azure Active Directory
+description: 使用 FIDO2 安全密钥 () 预览版启用无密码安全密钥登录 Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550411"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116591"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录（预览）
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录 (预览) 
 
 对于目前使用密码并具有共享 PC 环境的企业，安全密钥为辅助角色提供了无需输入用户名或密码即可进行身份验证的无缝方式。 安全密钥可提高工作人员的工作效率，并获得更好的安全性。
 
@@ -30,7 +30,7 @@ ms.locfileid: "85550411"
 ## <a name="requirements"></a>要求
 
 - [Azure 多重身份验证](howto-mfa-getstarted.md)
-- [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md)
+- 启用[组合安全信息注册预览](concept-registration-mfa-sspr-combined.md)
 - 兼容的[FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN 需要 Windows 10 版本1809或更高版本 * *
 
@@ -46,12 +46,12 @@ ms.locfileid: "85550411"
 
 ### <a name="enable-the-combined-registration-experience"></a>启用组合注册体验
 
-无密码身份验证方法的注册功能依赖于组合注册功能。 按照[启用组合安全信息注册（预览版）](howto-registration-mfa-sspr-combined.md)一文中的步骤启用合并注册。
+无密码身份验证方法的注册功能依赖于组合注册功能。 按照[ (预览) 启用组合安全信息注册](howto-registration-mfa-sspr-combined.md)一文中的步骤，启用合并注册。
 
 ### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **安全**  >  **身份验证**方法 "  >  **身份验证方法策略（预览）**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 浏览到**Azure Active Directory**  >  **安全**  >  **身份验证**方法 "  >  **身份验证方法策略 (预览版) **。
 1. 在 "方法**FIDO2 安全密钥**" 下，选择以下选项：
    1. **启用**-是或否
    1. **目标**-所有用户或选择用户
@@ -68,7 +68,7 @@ ms.locfileid: "85550411"
 1. 选择 " **USB 设备**" 或 " **NFC 设备**"。
 1. 准备好密钥，然后选择 "**下一步**"。
 1. 将显示一个框，要求用户为你的安全密钥创建/输入 PIN，然后为密钥（生物识别或触摸）执行所需的笔势。
-1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步” 。
+1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步”。
 1. 单击 "**完成**" 以完成该过程。
 
 ## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录

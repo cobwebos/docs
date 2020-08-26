@@ -3,15 +3,15 @@ title: 使用 Azure CLI 创建 Linux 环境
 description: 使用 Azure CLI 从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511120"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829010"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -21,7 +21,7 @@ ms.locfileid: "86511120"
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -324,7 +324,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>创建虚拟 NIC
-由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联  。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联  。
+由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](../sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联  。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联  。
 
 ```azurecli
 az network nic create \

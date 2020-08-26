@@ -9,25 +9,25 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: b177063d4e50a310534ffa4c04557543c3354249
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-python
+ms.openlocfilehash: 653b3dedcf969c611afa4c81cc5268c43020a7e7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028084"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517772"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
 在本快速入门中，我们将使用表单识别器 REST API 和 Python 通过手动标记的数据来训练自定义模型。 有关此功能的详细信息，请参阅概述的[使用标签进行训练](../overview.md#train-with-labels)部分。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，必须具备以下条件：
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
-- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
+- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
 
 > [!NOTE]
 > 此快速入门使用 URL 访问的远程文档。 要改用本地文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)。

@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: 5d49173a9c06e35c5af3831e504fc6f55a8dfc50
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
+  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84259535"
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87826137"
 highlightedContent:
   items:
   - title: 关于 Azure 媒体服务 v3
@@ -38,7 +38,7 @@ highlightedContent:
     url: ./live-video-analytics-edge/overview.md
   - title: Azure Media Player
     itemType: overview
-    url: https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview
+    url: ./azure-media-player/azure-media-player-overview.md
   - title: 关于 Azure 媒体服务 v2（旧版）
     itemType: overview
     url: ./previous/media-services-overview.md
@@ -52,7 +52,7 @@ conceptualContent:
     - url: ./latest/media-services-apis-overview.md
       itemType: concept
       text: 使用媒体服务 v3 进行开发
-    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+    - url: /samples/browse/?products=azure-media-services
       itemType: sample
       text: 代码示例
     - url: ./latest/release-notes.md
@@ -126,10 +126,10 @@ additionalContent:
   - items:
     - title: Azure 存储
       summary: 了解块 Blob 和容器
-      url: https://docs.microsoft.com/azure/storage/
+      url: ../storage/index.yml
     - title: CDN
       summary: 借助 Azure CDN 可使用 Akamai 和 Verizon 提供的服务对内容进行大规模流式处理，或者跨多个内容分发网络实现负载均衡
-      url: https://docs.microsoft.com/azure/cdn
+      url: ../cdn/index.yml
     - title: 事件网格
       summary: 了解如何使用 Azure 事件网格响应相关事件
-      url: https://docs.microsoft.com/azure/event-grid/
+      url: ../event-grid/index.yml

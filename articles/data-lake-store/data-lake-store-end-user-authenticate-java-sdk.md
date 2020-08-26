@@ -5,13 +5,14 @@ author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
+ms.custom: devx-track-java
 ms.author: twooley
-ms.openlocfilehash: 5d5396b6fa45f8af3d2f20a6c2425e99a4e36db0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ece996f7edb8d37cea47756c5b7e635e02409b35
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318855"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>通过 Java 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -25,7 +26,7 @@ ms.locfileid: "85984992"
 本文介绍如何使用 Java SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证。 有关使用 Java SDK 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 Java 进行 Data Lake Storage Gen1 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
 

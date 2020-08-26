@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 1857d3ee8b607d91b6fdd13b4499518d06fb9913
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3f388937c43c9c6a2b9e4700768d4af9cdcb39de
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834537"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543106"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.locfileid: "83834537"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
-* 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
+* 遵循 [How to install and configure Azure PowerShell](/powershell/azure/) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
 * （可选）本文不会介绍所有数据工厂 cmdlet。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory Cmdlet Reference](/powershell/module/az.datafactory) （数据工厂 cmdlet 参考）。
 
 ## <a name="create-data-factory"></a>创建数据工厂
@@ -168,7 +168,7 @@ ms.locfileid: "83834537"
    * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
    * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
-       随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+       随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 
      有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 2. 运行 **New-AzDataFactoryLinkedService** cmdlet 创建名为 HDInsightOnDemandLinkedService 的链接服务。

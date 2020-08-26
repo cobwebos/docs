@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253369"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275422"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
 
@@ -35,9 +35,9 @@ ms.locfileid: "85253369"
 
 若要使策略发挥作用，必须进行下列配置：
 
-| 对象           | 方式                                  | 原因 |
+| 内容           | 方式                                  | 原因 |
 | :--            | :--                                  | :-- |
-| 云应用  |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
+| **云应用** |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
 | 用户和组  | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件访问策略永远不会触发。 |
 | 访问控制  | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
@@ -49,14 +49,21 @@ ms.locfileid: "85253369"
 
 所有策略都是在两个阶段中强制实施的：
 
-- 阶段 1： 
-   - 收集详细信息：收集详细信息以确定已符合的策略。
-   - 在此阶段，如果设备符合性是条件访问策略的一部分，用户可能会看到证书提示。 如果设备操作系统不是 Windows 10，浏览器应用可能会显示此提示。
-   - 针对所有已启用的策略和[仅限报告模式](concept-conditional-access-report-only.md)下的策略执行策略评估的第 1 阶段。
-- 阶段 2：
-   - 强制实施：考虑到第 1 阶段收集的详细信息，要求用户满足尚未满足的任何其他要求。
-   - 将结果应用于会话。 
-   - 针对所有已启用的策略执行策略评估的第 2 阶段。
+- 阶段1：收集会话详细信息 
+   - 收集会话详细信息，如需要进行策略评估的用户位置和设备标识。 
+   - 在此阶段，如果设备符合性是条件访问策略的一部分，用户可能会看到证书提示。 如果设备操作系统不是 Windows 10，浏览器应用可能会显示此提示。 
+   - 针对[仅报告模式下](concept-conditional-access-report-only.md)的已启用策略和策略进行策略评估的阶段1。
+- 阶段2：强制 
+   - 使用在阶段1中收集的会话详细信息来识别尚未满足的任何要求。 
+   - 如果有一个策略配置为阻止访问，则使用阻止访问控制时，将在此处停止强制，并阻止该用户。 
+   - 然后，系统将提示用户完成额外的授权控制要求，这些要求在阶段1期间按以下顺序未满足，直到满足策略：  
+      - 多重身份验证 
+      - 批准的客户端应用/应用保护策略 
+      - 托管设备（符合或混合 Azure AD 联接） 
+      - 使用条款 
+      - 自定义控件  
+      - 满足授权控制后，应用会话控制（强制应用、Microsoft Cloud App Security 和令牌生存期） 
+   - 针对所有已启用的策略执行策略评估的第 2 阶段。 
 
 ### <a name="how-are-assignments-evaluated"></a>如何计算分配？
 
@@ -71,7 +78,7 @@ ms.locfileid: "85253369"
 
 如果你因为条件访问策略中的设置不正确而被锁定在 Azure AD 门户之外，则请执行以下操作：
 
-- 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
+- 检查组织中是否有其他管理员尚未被阻止。 具有对 Azure 门户的访问权限的管理员可以禁用影响你登录的策略。 
 - 如果组织中没有管理员可以更新策略，则需提交支持请求。 Microsoft 支持人员可以审核并更新妨碍访问的条件访问策略。
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果在 Azure 经典门户和 Azure 门户中配置了策略，会发生什么情况？  

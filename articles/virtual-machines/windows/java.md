@@ -7,13 +7,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
+ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6f73abe108ca9c33a8ec6865a760400d16393e51
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508485"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827480"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -412,7 +413,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>重设 VM 大小
 
-决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](sizes.md)。  
+决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](../sizes.md)。  
 
 若要更改虚拟机大小，请将此代码添加到 main 方法的 try 块：
 

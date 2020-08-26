@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663595"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553158"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>使用托管标识设置到数据源的索引器连接（预览版）
 
 > [!IMPORTANT] 
-> 对于使用托管标识设置到数据源的连接的支持目前处于封闭的公开预览阶段。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> 可以填写[此表单](https://aka.ms/azure-cognitive-search/mi-preview-request)来请求访问预览版。
+> 目前提供了有关使用托管标识建立与数据源的连接的支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
 
 Azure 认知搜索中的[索引器](search-indexer-overview.md)是一种爬网程序，它提供了一种方法，用于将数据源中的数据提取到 Azure 认知搜索中。 索引器从你创建的数据源对象获取数据源连接。 数据源对象通常包含目标数据源的凭据。 例如，如果要为 blob 存储容器中的数据编制索引，数据源对象可能包含 Azure 存储帐户密钥。
 

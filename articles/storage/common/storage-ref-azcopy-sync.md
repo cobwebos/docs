@@ -4,15 +4,16 @@ description: 本文提供有关 azcopy sync 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221061"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285197"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -32,7 +33,7 @@ sync 命令与 copy 命令的不同之处体现在以下几个方面：
 
 1. 默认情况下，递归标志为 true，sync 会复制所有子目录。 如果递归标志为 false，则 sync 只复制目录中的顶级文件。
 2. 在虚拟目录之间同步时，如果存在与某个虚拟目录同名的 Blob，则在路径中添加一个尾随斜杠（参考示例）。
-3. 如果将“deleteDestination”标志设置为 true 或 prompt，则 sync 将删除目标中存在的，但在源中不存在的文件和 Blob。
+3. 如果 `deleteDestination` 将标志设置为 true 或 prompt，则 sync 将删除源中不存在的目标上的文件和 blob。
 
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
@@ -65,16 +66,13 @@ azcopy sync <source> <destination> [flags]
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-> [!NOTE]
-> 必须存在目标 Blob。 使用 `azcopy copy` 复制目标中没有的单个文件。 否则将发生以下错误：`Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
-
-与前面的示例相同，但这一次此命令还会计算文件内容的 MD5 哈希，并将其另存为 Blob 的 Content-MD5 属性：
+与上面相同，但也计算文件内容的 MD5 哈希，然后将该 MD5 哈希保存为 blob 的 Content-MD5 属性。 
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-同步整个目录，包括其子目录（请注意，默认已启用递归）：
+同步整个目录（包括其子目录）（请注意，默认情况下，递归在上）：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -86,22 +84,22 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-仅同步目录中的顶级文件，而不同步其子目录：
+仅同步目录中的文件，但不同步子目录中的文件，而不同步子目录中的文件：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-同步目录中的一部分文件（例如：仅同步 jpg 和 pdf 文件，或者同步文件名为“exactName”的文件）：
+同步目录中的部分文件（例如：仅 jpg 和 pdf 文件，如果文件名为 `exactName` ）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-同步整个目录，但从同步范围中排除某些文件（例如：以 foo 开头或以 bar 结尾的每个文件）：
+同步整个目录，但从作用域中排除某些文件（例如：以 foo 开头或以 bar 结尾的每个文件）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude-pattern="foo*;*bar"
 ```
 
 同步单个 Blob：
@@ -133,29 +131,31 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options"></a>选项
 
-**--block-size-mb** 浮点数         在上传到 Azure 存储或从 Azure 存储下载时使用此块大小（以 MiB 为单位）。 默认值根据文件大小自动计算。 允许使用小数（例如：0.25）。
+**--块大小-mb**浮点在上传到 azure 存储或从 azure 存储下载时，使用此块大小（在 MiB 中指定）。 默认值根据文件大小自动计算。 允许使用小数小数（例如： `0.25` ）。
 
-**--check-md5** 字符串           指定下载时验证 MD5 哈希的严格程度。 此选项仅在下载时可用。 可用的值包括：NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing。 （默认值为“FailIfDifferent”）。 （默认值为“FailIfDifferent”）
+**--check-md5** string 指定在下载时应如何验证严格的 md5 哈希。 此选项仅在下载时可用。 可用值包括： `NoCheck` 、 `LogOnly` 、 `FailIfDifferent` 和 `FailIfDifferentOrMissing` 。 （默认值 `FailIfDifferent` ）。 （默认值 `FailIfDifferent` ）
 
-**--delete-destination** 字符串   定义是否从目标中删除不在源中的多余文件。 可设置为 true、false 或 prompt。 如果设置为 prompt，则在计划要删除的文件和 Blob 之前，系统会向用户提问。 （默认值为“false”）。 （默认值为“false”）
+**--delete-destination** 字符串   定义是否从目标中删除不在源中的多余文件。 可以设置为 `true` 、 `false` 或 `prompt` 。 如果设置为 `prompt` ，则在计划要删除的文件和 blob 之前，会向用户询问一个问题。 （默认值 `false` ）。 （默认值 `false` ）
 
-**--exclude-attributes** 字符串   （仅限 Windows）排除其属性与属性列表相匹配的文件。 例如：A;S;R
+**--exclude-** attribute string （仅限 Windows）排除其属性与属性列表匹配的文件。 例如：`A;S;R`
 
-**--exclude-path** 字符串复制时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：myFolder;myFolder/subDirName/file.pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
+**--排除-路径**字符串在将源与目标进行比较时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如： `myFolder;myFolder/subDirName/file.pdf` ）。
 
-**--exclude-pattern** 字符串      排除名称与模式列表相匹配的文件。 例如：\*.jpg;\*.pdf;exactName
+**--exclude-pattern** 字符串   排除名称与模式列表相匹配的文件。 例如：`*.jpg;*.pdf;exactName`
 
-**-h、--help**                         sync 命令的帮助
+**--帮助**帮助进行同步。
 
-**--include-attributes** 字符串   （仅限 Windows）仅包括其属性与属性列表相匹配的文件。 例如：A;S;R
+**--include-** attribute string （仅限 Windows）仅包括属性与属性列表匹配的文件。 例如：`A;S;R`
 
-**--include-pattern** 字符串      仅包括名称与模式列表相匹配的文件。 例如：\*.jpg;\*.pdf;exactName
+**--include-pattern** 字符串   仅包括名称与模式列表相匹配的文件。 例如：`*.jpg;*.pdf;exactName`
 
-**--log-level** 字符串             定义日志文件的日志详细程度，可用级别：INFO（所有请求和响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 INFO）。 （默认值为“INFO”）
+**--日志级别**字符串定义日志文件的日志详细级别，可用级别： `INFO` （所有请求和响应）、 `WARNING` （响应缓慢）、 `ERROR` （仅失败的请求）和 `NONE` （无输出日志）。 （默认值 `INFO` ）。 
 
-**--put-md5**                   创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
+**--put-md5**    创建每个文件的 MD5 哈希，并将哈希保存为目标 blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
 
-**--recursive**                   默认值为 True，即，在目录之间同步时，将以递归方式查看子目录。 （默认值为 true）。 （默认值为 true）
+**--recursive** `True`默认情况下，在目录间同步时，会以递归方式查看子目录。     （默认值 `True` ）。 
+
+**--s2s-保留-访问层** 服务间复制时保留访问层。 请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值 `true` ）。 
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494779"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505574"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -29,29 +29,22 @@ Desired State Configuration (DSC) 是一个管理平台，可让你使用“配�
 
 DSCForLinux 扩展已发布并受 Microsoft 支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作：
 
-
 - 将 Linux VM 注册到 Azure 自动化帐户，以便从 Azure 自动化服务提取配置 (Register ExtensionAction)
 - 将 MOF 配置推送到 Linux VM (Push ExtensionAction)。
 - 将元 MOF 配置应用到 Linux VM，以配置提取服务器来提取节点配置 (Pull ExtensionAction)。
 - 将自定义的 DSC 模块安装到 Linux VM (Install ExtensionAction)。
 - 从 Linux VM 中删除自定义的 DSC 模块 (Remove ExtensionAction)。
 
- 
-
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](../linux/endorsed-distros.md)，除了以下这些：
+对于运行 Linux 的节点，DSC Linux 扩展支持 [PowerShell DSC 文档](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 发行版。
 
-| 分发 | 版本 |
-|---|---|
-| Debian | 所有版本 |
-| Ubuntu| 18.04 |
- 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。 对于其他操作，例如请求、请求、安装，需要连接到 Azure 存储和 GitHub。 它依赖于客户提供的设置。
+DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。
+对于其他操作，例如请求、请求、安装，需要连接到 Azure 存储和 GitHub。 它依赖于客户提供的设置。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -63,13 +56,13 @@ DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Registe
 * `ResourceName`：（可选，字符串）自定义资源模块的名称。
 * `ExtensionAction`：（可选，字符串）指定扩展的功能。 有效值为 Register、Push、Pull、Install 和 Remove。 如果未指定，则默认将值视为推送操作。
 * `NodeConfigurationName`：（可选，字符串）要应用的节点配置的名称。
-* `RefreshFrequencyMins`：（可选，整数）指定 DSC 尝试从提取服务器获取配置的频率（以分钟为单位）。 
+* `RefreshFrequencyMins`：（可选，整数）指定 DSC 尝试从提取服务器获取配置的频率（以分钟为单位）。
        如果提取服务器上的配置不同于目标节点上的当前配置，则会将前者复制到挂起的存储并应用。
 * `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值为 ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
 * `ConfigurationModeFrequencyMins`：（可选，整数）指定 DSC 确保配置处于所需状态的频率（以分钟为单位）。
 
 > [!NOTE]
-> 如果使用的版本低于 2.3，则 mode 参数与 ExtensionAction 相同。 Mode（模式）看上去像是一个重载的术语。 为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
+> 如果使用的版本低于 2.3，则 mode 参数与 ExtensionAction 相同。 Mode（模式）看上去像是一个重载的术语。 为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。
 >
 
 ### <a name="protected-configuration"></a>受保护的配置
@@ -277,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置（例如，载入 Azure 自动化）的一个或多个虚拟机时，模板是理想选择。 
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置（例如，载入 Azure 自动化）的一个或多个虚拟机时，模板是理想选择。
 
 [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) 和 [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) 是示例资源管理器模板。
 
@@ -331,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 可运行以下命令在 Azure 服务管理模式下登录到 Azure 帐户：
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 运行以下命令部署 DSCForLinux 扩展：
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -370,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 可运行以下命令在 Azure 资源管理器模式下登录到 Azure 帐户：
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -378,7 +371,7 @@ Login-AzAccount
 
 可运行以下命令部署 DSCForLinux 扩展：
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'
@@ -410,7 +403,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -431,7 +424,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以提供 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以提供 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 " **获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。

@@ -1,5 +1,5 @@
 ---
-title: 教程 - 创建和管理 Azure 虚拟机规模集
+title: 教程：创建和管理 Azure VM 规模集 - Azure PowerShell
 description: 了解如何使用 Azure PowerShell 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a657f8a4fd7b92aeb858b919052ca732bf630ae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091328"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-首先，使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 实例的管理员用户名和密码：
+首先，使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 实例的管理员用户名和密码：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -66,6 +66,9 @@ New-AzVmss `
 ```
 
 创建和配置所有的规模集资源和 VM 实例需要几分钟时间。
+
+> [!IMPORTANT]
+> 如果无法连接到规模集，则可能需要通过添加 [-SecurityGroupName "mySecurityGroup"](/powershell/module/az.compute/new-azvmss) 参数来创建网络安全组。
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>查看规模集中的 VM 实例
@@ -192,7 +195,7 @@ New-AzVmss `
 ```
 
 > [!IMPORTANT]
-> 建议使用最新版本的映像。 指定“最新版本”以使用部署时可用的最新版本的映像。 请注意，即使使用的是“最新版本”，VM 映像部署后也不会自动更新，即使新版本可用也是如此。
+> 建议使用最新版本的映像。 指定“latest”以使用部署时可用的最新版本的映像。 请注意，即使使用的是“latest”，VM 映像部署后也不会自动更新，即使新版本可用也是如此。
 
 ## <a name="understand-vm-instance-sizes"></a>了解 VM 实例大小
 VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CPU、GPU 和内存）的量。 需要根据预期的工作负荷适当调整规模集中 VM 实例的大小。
@@ -202,12 +205,12 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 
 | 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
-| [存储优化](../virtual-machines/windows/sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
+| [常规用途](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [计算优化](../virtual-machines/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [内存优化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [存储优化](../virtual-machines/sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [高性能](../virtual-machines/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
 若要查看在特定区域可用的 VM 实例大小的列表，请使用 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令。 
@@ -329,4 +332,4 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 请转到下一教程，了解规模集磁盘。
 
 > [!div class="nextstepaction"]
-> [将数据磁盘与规模集配合使用](tutorial-use-disks-powershell.md)
+> [通过规模集使用数据磁盘](tutorial-use-disks-powershell.md)

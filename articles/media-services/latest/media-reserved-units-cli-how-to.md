@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053224"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
@@ -49,7 +49,7 @@ ms.locfileid: "80582294"
 
 ## <a name="prerequisites"></a>先决条件 
 
-[创建媒体服务帐户](create-account-cli-how-to.md)。
+[创建媒体服务帐户](./create-account-howto.md)。
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -57,7 +57,7 @@ ms.locfileid: "80582294"
 
 运行 `mru` 命令。
 
-以下 [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) 命令使用 **count** 和 **type** 参数在“amsaccount”帐户上设置媒体预留单位。
+以下 [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) 命令使用 **count** 和 **type** 参数在“amsaccount”帐户上设置媒体预留单位。
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
@@ -74,4 +74,4 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 ## <a name="see-also"></a>另请参阅
 
 * [配额和限制](limits-quotas-constraints.md)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/ams?view=azure-cli-latest)

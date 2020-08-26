@@ -3,8 +3,8 @@ title: 教程：将 SQL Server 迁移到 SQL 托管实例
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务从 SQL Server 迁移到 Azure SQL 托管实例。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: f20b9236631057449a337e4e161b7468f995e306
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 79bfb0510aba3a77b720748aaafd83e837500e87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086721"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 托管实例
 

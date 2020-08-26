@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: a73a99d1e6200faf9feb227f562f5b77b0461f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2e4ca2cad0fc080d6a750b3f1682210a5b9b20
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737047"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387653"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute 直接端口上配置 MACsec
 
 本文介绍如何使用 PowerShell 配置 MACsec，以保护边缘路由器与 Microsoft 边缘路由器之间的连接。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在开始配置之前，请确认以下事项：
 
@@ -47,7 +47,7 @@ ms.locfileid: "84737047"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    如果已有密钥保管库或资源组，可以重复使用。 但是，在现有的密钥保管库上启用[**软删除**功能](../key-vault/general/overview-soft-delete.md)非常重要。 如果未启用软删除，你可以使用以下命令来启用它：
+    如果已有密钥保管库或资源组，可以重复使用。 但是，在现有的密钥保管库上启用[**软删除**功能](../key-vault/general/soft-delete-overview.md)非常重要。 如果未启用软删除，你可以使用以下命令来启用它：
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

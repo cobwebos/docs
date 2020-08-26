@@ -15,11 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e8beb8d694b0ee155e3707faef34dff6d56eb3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727647"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797745"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 
@@ -34,7 +35,7 @@ ms.locfileid: "84727647"
 
 ## <a name="step-1-assign-the-required-licenses"></a>步骤 1：分配所需的许可证
 
-1. 使用许可证管理员帐户登录到[**Azure AD 管理中心**](https://aad.portal.azure.com)。 若要管理许可证，该帐户必须是许可证管理员、用户管理员或全局管理员。
+1. 使用许可证管理员帐户登录到 [**Azure AD 管理中心**](https://aad.portal.azure.com) 。 若要管理许可证，该帐户必须是许可证管理员、用户管理员或全局管理员。
 
 1. 选择“许可证”以打开一个页面，可以在其中查看和管理租户中的所有可许可产品。
 
@@ -96,9 +97,9 @@ ms.locfileid: "84727647"
 
 若要详细了解使用组分配许可证的功能集，请参阅以下文章：
 
-- [Azure Active Directory 中基于组的许可是什么？](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
+- [Azure Active Directory 中基于组的许可是什么？](../fundamentals/active-directory-licensing-whatis-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
 - [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 - [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
 - [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-- [Azure Active Directory 基于组的许可的其他方案](../active-directory-licensing-group-advanced.md)
+- [Azure Active Directory 基于组的许可的其他方案](./licensing-group-advanced.md)
 - [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

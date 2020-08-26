@@ -3,11 +3,12 @@ title: 管理已签名的映像
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任是高级服务层的一项功能。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076848"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -113,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服务主体的 **appId**、**objectId** 或其 **servicePrincipalName** 之一。 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证角色身份的信息，请参阅[使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-cli.md)和 [Azure 资源的 RBAC 疑难解答](../role-based-access-control/troubleshooting.md)。
+> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份角色的信息，请参阅[使用 RBAC 和 Azure CLI 管理对 azure 资源的访问权限](../role-based-access-control/role-assignments-cli.md)和[排查 azure RBAC 问题](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送受信任的映像
 

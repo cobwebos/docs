@@ -4,15 +4,15 @@ description: AzCopy 是一个命令行实用工具，可用于向/从存储帐�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143010"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423825"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -31,7 +31,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 - [Windows 64 位](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32 位](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
-- [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar) 
+- [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) （tar）
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 这些文件压缩成 zip 文件（Windows 和 Mac）或 tar 文件（Linux）。 要在 Linux 上下载并解压缩 tar 文件，请参阅 Linux 分发文档。
@@ -97,7 +97,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 若要了解如何验证和分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。
+> 请记住，最多需要五分钟的时间才能传播 Azure 角色分配。
 
 如果安全主体已添加到目标容器或目录的访问控制列表 (ACL)，则无需将这些角色之一分配到安全主体。 在 ACL 中，安全主体需要对目标目录拥有写入权限，并对容器和每个父目录拥有执行权限。
 
@@ -111,7 +111,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 azcopy login
 ```
 
-如果你属于多个组织，请包含存储帐户所属组织的租户 ID。
+如果收到错误，请尝试包括存储帐户所属组织的租户 ID。
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>
@@ -300,7 +300,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ## <a name="use-azcopy-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中使用 AzCopy
 
-[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 来执行其所有数据传输操作。 如果你想要利用 AzCopy 的性能优势，但同时又偏好使用图形用户界面而不是命令行来与文件进行交互，则可以使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 执行其所有数据传输操作。 如果你想要利用 AzCopy 的性能优势，但同时又偏好使用图形用户界面而不是命令行来与文件进行交互，则可以使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
 存储资源管理器使用帐户密钥执行操作，因此在登录到存储资源管理器后，无需额外提供授权凭据。
 

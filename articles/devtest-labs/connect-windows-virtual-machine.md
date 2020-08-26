@@ -17,7 +17,7 @@ ms.locfileid: "86540645"
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，搜索并选择 "**开发测试实验室**"。 
 
-    :::image type="content" source="./media/connect-windows-virtual-machine/search-select.png" alt-text="搜索并选择 "开发测试实验室"":::    
+    :::image type="content" source="./media/connect-windows-virtual-machine/search-select.png" alt-text="搜索并选择 开发测试实验室":::    
 1. 从实验室列表中，选择**实验室**。
 
     :::image type="content" source="./media/connect-windows-virtual-machine/select-lab.png" alt-text="选择实验室":::            
@@ -26,7 +26,7 @@ ms.locfileid: "86540645"
     :::image type="content" source="./media/connect-windows-virtual-machine/select-windows-vm.png" alt-text="选择 Windows VM":::                
 1. 在 VM 的 "**虚拟机**" 页上，选择工具栏上的 "**连接**"。 如果 VM 已停止，请选择 "**启动**" 以启动 vm。
 
-    :::image type="content" source="./media/connect-windows-virtual-machine/select-connect.png" alt-text="在工具栏上选择 "连接"":::                    
+    :::image type="content" source="./media/connect-windows-virtual-machine/select-connect.png" alt-text="在工具栏上选择 连接":::                    
 1. 如果使用的是 Edge 浏览器，则会看到指向浏览器底部**下载的 RDP 文件**的链接。 
 
     :::image type="content" source="./media/connect-windows-virtual-machine/rdp-download.png" alt-text="已下载 RDP":::                        

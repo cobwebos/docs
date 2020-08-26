@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026622"
 ---
 # <a name="scenario-protected-web-api"></a>方案：受保护的 Web API
 
@@ -32,8 +33,12 @@ ms.locfileid: "81537196"
 
 下面是保护 Web API 时需要了解的具体信息：
 
-- 你的应用注册必须至少公开一个范围。 Web API 接受的令牌版本取决于登录受众。
+- 应用注册必须公开至少一个*作用域*或一个*应用程序角色*。
+  - 范围由代表用户调用的 web Api 公开。
+  - 应用程序角色由守护程序应用程序调用的 web Api 公开，后者代表自己调用 web API。
+- 如果创建新的 web API 应用注册，请选择 web API 接受的[访问令牌版本](reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` 。 对于旧版 web Api，接受的令牌版本可以为 `null` ，但此值会将登录受众限制为仅限组织，而不支持个人 Microsoft 帐户（MSA）。
 - Web API 的代码配置必须验证调用 Web API 时使用的令牌。
+- 控制器操作中的代码必须验证令牌中的角色或作用域。
 
 ## <a name="next-steps"></a>后续步骤
 

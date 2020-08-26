@@ -11,11 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017641"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280794"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +25,7 @@ ms.locfileid: "84017641"
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 
 > [!NOTE]
-> Web 活动只能调用公开显示的 URL。 专用虚拟网络中承载的 Url 不支持此方法。
+> 使用自承载集成运行时，支持 Web 活动调用在私有虚拟网络中托管的 Url。 集成运行时应向 URL 终结点进行一行视觉。 
 
 ## <a name="syntax"></a>语法
 
@@ -35,6 +36,10 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
    "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
+      "connectVia": {
+          "referenceName": "<integrationRuntimeName>",
+          "type": "IntegrationRuntimeReference"
+      }
       "headers":{
          "Content-Type":"application/json"
       },
@@ -76,6 +81,7 @@ body | 表示要发送到终结点的有效负载。  | 字符串（或带有 re
 authentication | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 否
 datasets | 传递给终结点的数据集列表。 | 数据集引用数组。 可以是空数组。 | 是
 linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用数组。 可以是空数组。 | 是
+connectVia | 用于连接到数据存储的[集成运行时](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 集成运行时引用。 | 否 
 
 > [!NOTE]
 > Web 活动调用的 REST 终结点必须返回 JSON 类型的响应。 如果活动在 1 分钟内未收到终结点的响应，则会超时并显示错误。

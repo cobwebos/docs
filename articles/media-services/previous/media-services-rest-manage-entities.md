@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f18885634503cc65a5bf78d93bd84afd018956bd
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e79469aa0e405a0096d483ae290d10415fe74f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170796"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000043"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>使用 REST 管理媒体服务实体  
 
@@ -149,7 +149,7 @@ Host: media.windows.net
 ```
 
 ## <a name="updating-entities"></a>更新实体
-根据实体类型及其所处的状态，可以通过 PATCH、PUT 或 MERGE HTTP 请求更新该实体上的属性。 有关这些操作的详细信息，请参阅 [PATCH/PUT/MERGE](https://msdn.microsoft.com/library/dd541276.aspx)。
+根据实体类型及其所处的状态，可以通过 PATCH、PUT 或 MERGE HTTP 请求更新该实体上的属性。 有关这些操作的详细信息，请参阅 [PATCH/PUT/MERGE](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893)。
 
 下面的代码示例演示如何更新资产实体上的 Name 属性。
 
@@ -190,4 +190,3 @@ Content-Length: 0
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

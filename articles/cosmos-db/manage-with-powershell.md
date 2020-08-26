@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建并管理 Azure Cosmos DB
+title: 使用 PowerShell 创建和管理 Azure Cosmos DB
 description: 使用 Azure Powershell 管理 Azure Cosmos 帐户、数据库、容器和吞吐量。
 author: markjbrown
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390833"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486470"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
 以下指南介绍了如何使用 Powershell 通过脚本来自动管理 Azure Cosmos DB 资源，其中包括帐户、数据库、容器和吞吐量。
 
 > [!NOTE]
-> 本文中的示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 有关最新更改，请参阅 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API 参考页。
+> 本文中的示例使用 [Az.CosmosDB](/powershell/module/az.cosmosdb) 管理 cmdlet。 有关最新更改，请参阅 [Az.CosmosDB](/powershell/module/az.cosmosdb) API 参考页。
 
 若要跨平台管理 Azure Cosmos DB，可在使用 `Az` 和 `Az.CosmosDB` cmdlet 时结合使用[跨平台 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) 以及 [Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api] 或 [Azure 门户](create-sql-api-dotnet.md#create-account)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "85390833"
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos 帐户
 
-以下部分演示了如何管理 Azure Cosmos 帐户，具体包括：
+以下部分演示如何管理 Azure Cosmos 帐户，包括：
 
 * [创建 Azure Cosmos 帐户](#create-account)
 * [更新 Azure Cosmos 帐户](#update-account)
@@ -39,8 +39,8 @@ ms.locfileid: "85390833"
 * [获取 Azure Cosmos 帐户](#get-account)
 * [删除 Azure Cosmos 帐户](#delete-account)
 * [更新 Azure Cosmos 帐户标记](#update-tags)
-* [列出 Azure Cosmos 帐户密钥](#list-keys)
-* [重新生成 Azure Cosmos 帐户密钥](#regenerate-keys)
+* [列出 Azure Cosmos 帐户的密钥](#list-keys)
+* [重新生成 Azure Cosmos 帐户的密钥](#regenerate-keys)
 * [列出 Azure Cosmos 帐户的连接字符串](#list-connection-strings)
 * [修改 Azure Cosmos 帐户的故障转移优先级](#modify-failover-priority)
 * [触发 Azure Cosmos 帐户的手动故障转移](#trigger-manual-failover)
@@ -72,11 +72,11 @@ New-AzCosmosDBAccount `
 
 * `$resourceGroupName`：要在其中部署 Cosmos 帐户的 Azure 资源组。 它必须已存在。
 * `$locations`：数据库帐户的区域，从写入区域开始，按故障转移优先级排序。
-* `$accountName` Azure Cosmos 帐户的名称。 必须独一无二且必须为小写，仅包含字母数字和“-”字符，长度为 3 到 31 个字符。
+* `$accountName`：Azure Cosmos 帐户的名称。 必须独一无二且必须为小写，仅包含字母数字和“-”字符，长度为 3 到 31 个字符。
 * `$apiKind`：要创建的 Cosmos 帐户的类型。 有关详细信息，请参阅 [Cosmos DB 中的 API](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis)。
 * `$consistencyPolicy`、`$maxStalenessInterval` 和 `$maxStalenessPrefix`：Azure Cosmos 帐户的默认一致性级别和设置。 有关详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
 
-可以为 Azure Cosmos 帐户配置 IP 防火墙、虚拟网络服务终结点和专用终结点。 若要了解如何为 Azure Cosmos DB 配置 IP 防火墙，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。 若要了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。 若要了解如何为 Azure Cosmos DB 启用专用终结点，请参阅[配置从专用终结点进行访问的权限](how-to-configure-private-endpoints.md)。
+可以为 Azure Cosmos 帐户配置 IP 防火墙、虚拟网络服务终结点和专用终结点。 有关如何为 Azure Cosmos DB 配置 IP 防火墙的信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。 若要了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。 若要了解如何为 Azure Cosmos DB 启用专用终结点，请参阅[配置从专用终结点进行访问的权限](how-to-configure-private-endpoints.md)。
 
 ### <a name="list-all-azure-cosmos-accounts-in-a-resource-group"></a><a id="list-accounts"></a> 列出资源组中的所有 Azure Cosmos 帐户
 
@@ -101,10 +101,10 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 
 ### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a> 更新 Azure Cosmos 帐户
 
-此命令可更新 Azure Cosmos DB 数据库帐户属性。 可以更新的属性包括：
+此命令可更新 Azure Cosmos DB 数据库帐户属性。 可更新的属性包括：
 
 * 添加或删除区域
-* 更改默认一致性策略
+* 更改默认的一致性策略
 * 更改 IP 范围筛选器
 * 更改虚拟网络配置
 * 启用多主数据库
@@ -250,7 +250,7 @@ Get-AzCosmosDBAccountKey `
 
 ### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a> 重新生成帐户密钥
 
-应定期重新生成 Azure Cosmos 帐户访问密钥，确保连接安全。 将会为帐户分配主访问密钥和辅助访问密钥。 这样，在某个时刻重新生成某个密钥时，客户端仍可进行访问。
+应定期重新生成 Azure Cosmos 帐户访问密钥，确保连接安全。 系统会向帐户分配主要和辅助访问密钥。 这样，在某个时刻重新生成某个密钥时，客户端仍可进行访问。
 有四种 Azure Cosmos 帐户密钥（主密钥、辅助密钥、PrimaryReadonly 密钥和 SecondaryReadonly 密钥）
 
 ```azurepowershell-interactive
@@ -475,6 +475,7 @@ Remove-AzResourceLock `
 以下部分演示了如何管理 Azure Cosmos DB 容器，具体包括：
 
 * [创建 Azure Cosmos DB 容器](#create-container)
+* [使用自动缩放功能创建 Azure Cosmos DB 容器](#create-container-autoscale)
 * [使用大分区键创建 Azure Cosmos DB 容器](#create-container-big-pk)
 * [获取 Azure Cosmos DB 容器的吞吐量](#get-container-ru)
 * [使用自定义索引创建 Azure Cosmos DB 容器](#create-container-custom-index)
@@ -496,6 +497,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -503,7 +505,29 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>使用自动缩放功能创建 Azure Cosmos DB 容器
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>使用大分区键大小创建 Azure Cosmos DB 容器

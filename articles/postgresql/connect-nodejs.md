@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 连接到 Azure Database for PostgreSQL - 单一服务器
+title: 快速入门：使用 Node.js 连接到 Azure Database for PostgreSQL - 单一服务器
 description: 本快速入门提供了可用于从 Azure Database for PostgreSQL - 单一服务器连接和查询数据的 Node.js 代码示例。
 author: rachel-msft
 ms.author: raagyema
@@ -9,15 +9,16 @@ ms.custom:
 - devcenter
 - seo-javascript-september2019
 - seo-javascript-october2019
+- devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10c7abf7349a3b2419e81459866920f20c3af6f7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80062265"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182725"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Node.js 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -49,7 +50,7 @@ npm list
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，搜索并选择已创建的服务器（例如 **mydemoserver**）。
 
-1. 从服务器的“概览”面板中记下“服务器名称”和“管理员用户名”。    如果忘记了密码，也可通过此面板来重置密码。
+1. 从服务器的“概览”面板中记下“服务器名称”和“管理员用户名”。 如果忘记了密码，也可通过此面板来重置密码。
 
    ![Azure Database for PostgreSQL 连接字符串](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 

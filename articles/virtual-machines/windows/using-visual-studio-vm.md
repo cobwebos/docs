@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525528"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836150"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
@@ -77,7 +77,7 @@ Azure 提供各种虚拟机大小。 由于 Visual Studio 是一个功能强大�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-有关最新虚拟机大小的详细信息，请参阅 [Azure 中的 Windows 虚拟机大小](./sizes.md)。
+有关最新虚拟机大小的详细信息，请参阅 [Azure 中的 Windows 虚拟机大小](../sizes.md)。
 
 使用 Azure，可通过调整 VM 大小来重新平衡初始选择。 可为新的 VM 预配更合适的大小，也可调整现有 VM 的大小，使其适应不同的底层硬件。 有关详细信息，请参阅[调整 Windows VM 大小](./resize-vm.md)。
 

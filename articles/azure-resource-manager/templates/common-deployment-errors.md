@@ -3,13 +3,13 @@ title: 排查常见部署错误
 description: 说明如何解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 08/07/2020
+ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055658"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008162"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -17,17 +17,15 @@ ms.locfileid: "86055658"
 
 如果需要某个错误代码的信息，而本文没有提供该信息，请告知我们。 在此页的底部，你可以留下反馈。 我们将跟踪 GitHub 问题的反馈。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="error-codes"></a>错误代码
 
-| 错误代码 | 缓解操作 | 详细信息 |
+| 错误代码 | 缓解操作 | 更多信息 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循存储帐户的命名限制。 | [解析存储帐户名称](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 检查可用的存储帐户属性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows 预配和分配问题](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)和[排查分配失败问题](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 等待并发操作完成。 | |
-| AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。<br><br>所需的资源提供程序未注册时，可能会收到此错误。 | [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)<br><br>[解决注册问题](error-register-resource-provider.md) |
+| AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。<br><br>所需的资源提供程序未注册时，可能会收到此错误。 | [Azure RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/role-assignments-portal.md)<br><br>[解决注册问题](error-register-resource-provider.md) |
 | BadRequest | 发送的部署值与资源管理器预期的值不匹配。 检查内部状态消息，以帮助进行故障排除。 | [模板引用](/azure/templates/)和[支持的位置](resource-location.md) |
 | Conflict | 在资源的当前状态下不允许所请求的操作。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
 | DeploymentActiveAndUneditable | 等待此资源组上的并发部署完成。 | |
@@ -76,9 +74,10 @@ ms.locfileid: "86055658"
 | StorageAccountAlreadyTaken | 为存储帐户提供唯一名称。 | [解析存储帐户名称](error-storage-account-name.md) |
 | StorageAccountNotFound | 检查尝试使用的存储帐户的订阅、资源组和名称。 | |
 | SubnetsNotInSameVnet | 一个虚拟机只能有一个虚拟网络。 部署多个 NIC 时，请确保它们属于同一虚拟网络。 | [多个 NIC](../../virtual-machines/windows/multiple-nics.md) |
+| SubscriptionNotFound | 无法访问指定的部署订阅。 这可能是订阅 ID 错误，部署模板的用户没有足够的权限部署到订阅，或者订阅 ID 的格式不正确。 使用嵌套部署[跨范围部署](cross-scope-deployment.md)时，请提供订阅的 GUID。 | |
 | SubscriptionNotRegistered | 部署网络资源时，Microsoft.Network 资源提供程序会自动在订阅中注册。 有时，自动注册未及时完成。 若要避免此间歇性错误，请在部署之前注册 Microsoft.Network 资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | 减少单个部署的资源组数。 | [跨资源组部署](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | 减少单个部署的资源组数。 | [跨范围部署](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>查找错误代码
 
@@ -89,7 +88,7 @@ ms.locfileid: "86055658"
 
 验证错误源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。 部署错误源于部署过程中发生的条件。 原因包括尝试访问并行部署的资源。
 
-这两种类型的错误都会返回错误代码，可使用该代码来排查部署问题。 两种类型的错误都显示在[活动日志](../management/view-activity-logs.md)中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
+两种类型的错误都会返回用于对部署进行故障排除的错误代码。 两种类型的错误都显示在[活动日志](../management/view-activity-logs.md)中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
 
 ### <a name="validation-errors"></a>验证错误
 

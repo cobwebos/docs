@@ -13,6 +13,7 @@ ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83744435"

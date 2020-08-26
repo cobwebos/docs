@@ -1,5 +1,5 @@
 ---
-title: 使用 MySQL Workbench 进行连接 - Azure Database for MySQL
+title: 快速入门：连接 - MySQL Workbench - Azure Database for MySQL
 description: 本快速入门介绍如何使用 MySQL Workbench 连接到 Azure Database for MySQL 并查询其中的数据。
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,19 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1e2dd26e2b954bebd7bac15991b2b5aef9def88d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870051"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185819"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 连接和查询数据
-本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL。 
+# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 MySQL Workbench 连接到 Azure Database for MySQL 并查询其中的数据
+
+本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL。
 
 ## <a name="prerequisites"></a>先决条件
+
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3335bfbed592c9e13d5be437e8013a89ae86e970
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510625"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535087"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>第二部分：向标识分配共享级权限
 
@@ -38,11 +38,11 @@ ms.locfileid: "85510625"
 
 您可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 将内置角色分配到用户的 Azure AD 标识，以便授予共享级别权限。
 
-## <a name="assign-an-rbac-role"></a>分配 RBAC 角色
+## <a name="assign-an-azure-role"></a>分配 Azure 角色
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要将 RBAC 角色分配到 Azure AD 标识，请使用[Azure 门户](https://portal.azure.com)，请执行以下步骤：
+若要将 Azure 角色分配到 Azure AD 标识，请使用[Azure 门户](https://portal.azure.com)，请执行以下步骤：
 
 1. 在 Azure 门户中，请切换到文件共享，或[创建文件共享](storage-how-to-create-file-share.md)。
 1. 选择“访问控制 (IAM)”。
@@ -52,7 +52,7 @@ ms.locfileid: "85510625"
 
 ### <a name="powershell"></a>PowerShell
 
-以下 PowerShell 示例演示了如何基于登录名将 RBAC 角色分配到 Azure AD 标识。 有关如何使用 PowerShell 分配 RBAC 角色的详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
+以下 PowerShell 示例演示了如何基于登录名将 Azure 角色分配到 Azure AD 标识。 有关使用 PowerShell 分配 Azure 角色的详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
 
 在运行下面的示例脚本之前，请将占位符值（包括括号）替换为你的值。
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-以下 CLI 2.0 命令将基于登录名将 RBAC 角色分配到 Azure AD 标识。 有关 Azure CLI 分配 RBAC 角色的详细信息，请参阅[使用 rbac 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。 
+以下 CLI 2.0 命令将基于登录名将 Azure 角色分配到 Azure AD 标识。 有关将 Azure 角色分配到 Azure CLI 的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。 
 
 在运行以下示例脚本之前，请记得将占位符值（包括括号）替换为自己的值。
 

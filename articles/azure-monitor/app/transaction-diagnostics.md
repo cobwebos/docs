@@ -4,11 +4,12 @@ description: Application Insights 端到端事务诊断
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318906"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -63,7 +64,7 @@ ms.locfileid: "77671131"
 
 ## <a name="profiler-and-snapshot-debugger"></a>探查器和快照调试器
 
-[Application Insights 探查器](../../azure-monitor/app/profiler.md)或[快照调试器](snapshot-debugger.md)有助于对性能和失败问题进行代码级诊断。 通过此体验，仅需一次单击即可查看任意组件的探查器跟踪或快照。
+[Application Insights 探查器](./profiler.md)或[快照调试器](snapshot-debugger.md)有助于对性能和失败问题进行代码级诊断。 通过此体验，仅需一次单击即可查看任意组件的探查器跟踪或快照。
 
 如果无法让 Profiler 正常工作，请联系 **serviceprofilerhelp\@microsoft.com**
 
@@ -93,4 +94,5 @@ ms.locfileid: "77671131"
 
 为什么新体验中缺少大部分相关项查询？**
 
-这是设计使然。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。
+这是设计的结果。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。
+

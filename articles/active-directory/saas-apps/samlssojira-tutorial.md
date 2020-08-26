@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 SAML SSO for Jira by Resolution GmbH 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SAML SSO for Jira by resolution GmbH 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 20e18819-e330-4e40-bd8d-2ff3b98e035f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146580"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543459"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 

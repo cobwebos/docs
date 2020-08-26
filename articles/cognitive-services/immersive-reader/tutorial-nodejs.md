@@ -10,12 +10,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a8cd8bacc749ef44ee23e98709f04f75757f5919
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842021"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516327"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>教程：启动沉浸式阅读器 (Node.js)
 
@@ -29,7 +30,7 @@ ms.locfileid: "76842021"
 > * 指定沉浸式阅读器界面的语言
 > * 启动沉浸式阅读器以显示数学内容
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 

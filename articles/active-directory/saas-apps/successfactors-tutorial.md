@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 SuccessFactors 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SuccessFactors 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170422"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552112"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SuccessFactors 集成
 
@@ -116,7 +112,7 @@ ms.locfileid: "86170422"
     - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SuccessFactors 客户端支持团队](https://www.successfactors.com/content/ssf-site/en/support.html)获取这些值。
+    > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SuccessFactors 客户端支持团队](https://www.sap.com/support.html)获取这些值。
 
 4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -227,7 +223,7 @@ ms.locfileid: "86170422"
 
 要使 Azure AD 用户能够登录 SuccessFactors，必须将这些用户预配到 SuccessFactors 中。 对于 SuccessFactors，预配任务需要手动完成。
 
-若要在 SuccessFactors 中创建用户，需要联系 [SuccessFactors 支持团队](https://www.successfactors.com/content/ssf-site/en/support.html)。
+若要在 SuccessFactors 中创建用户，需要联系 [SuccessFactors 支持团队](https://www.sap.com/support.html)。
 
 ## <a name="test-sso"></a>测试 SSO 
 

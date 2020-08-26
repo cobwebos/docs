@@ -1,0 +1,105 @@
+---
+title: Gen2 用例-Azure 时序见解 Gen2 |Microsoft Docs
+description: 了解 Azure 时序见解 Gen2 用例。
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
+ms.workload: big-data
+ms.service: time-series-insights
+services: time-series-insights
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.custom: seodec18
+ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87096540"
+---
+# <a name="azure-time-series-insights-gen2-use-cases"></a>Azure 时序见解 Gen2 用例
+
+本文总结了 Azure 时序见解 Gen2 的几个常见用例。 本文中的建议作为使用 Azure 时序见解 Gen2 开发应用程序和解决方案的起点。
+
+具体而言，本文将解答以下问题：
+
+* Azure 时序见解 Gen2 的常见用例有哪些？
+* 使用 Azure 时序见解 Gen2 进行[数据浏览和视觉异常检测](#data-exploration-and-visual-anomaly-detection)有哪些好处？
+* 使用 Azure 时序见解 Gen2 进行[操作分析和处理效率](#operational-analysis-and-driving-process-efficiency)有哪些好处？
+* 使用 Azure 时序见解 Gen2 进行[高级分析](#advanced-analytics)有哪些好处？
+
+以下部分描述了这些使用方案的概述。
+
+## <a name="introduction"></a>简介
+
+Azure 时序见解 Gen2 是端到端的平台即服务产品。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 它非常适合用于即席数据浏览和操作分析。 Azure 时序见解 Gen2 是一个唯一可扩展的自定义服务产品，可满足业界 IoT 部署的广泛需求。
+
+## <a name="data-exploration-and-visual-anomaly-detection"></a>数据浏览和直观异常检测
+
+即时浏览和分析数十亿事件，确定其中的异常，发现数据的隐藏趋势。 Azure 时序见解 Gen2 为 IoT 和 DevOps 分析工作负荷提供近乎实时的性能。
+
+[![数据资源管理器](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
+
+大多数客户都同意获取见解所需的最短时间是 Azure 时序见解 Gen2 的它最突出功能之一：
+
+* Azure 时序见解 Gen2 无需前期数据准备。
+* 时序见解可在几分钟内快速将你连接到 Azure IoT 中心或 Azure 事件中心实例中的数十亿个事件。
+* 连接后，可直观显示和分析数十亿事件，发现异常，发现数据的隐藏趋势。
+
+Azure 时序见解 Gen2 直观易用。 连一行代码也无需编写即可与数据交互。 尽管 Azure 时序见解 Gen2 为熟悉 SQL 的高级用户提供了基于文本的精细查询语言，但还没有需要学习的新语言。 为初学者提供“选择+单击”式探索模式。
+
+客户可以利用这种高效率，快速诊断与资产相关的问题。 时序见解可以执行 DevOps 分析来找出 IoT 解决方案中 bug 的根本原因。 作为数据科学计划的一部分，时序见解还可以识别要标记的区域，以便进一步调查。
+
+有三种主要方法可与 Azure 时序见解 Gen2 中存储的数据进行交互：
+
+* 最简单的入门方法是通过 Azure 时序见解 Gen2 资源管理器。 可以使用它在一个位置快速显示所有 IoT 数据。 它提供热度地图等工具，可帮助你发现数据中的异常情况。 它还提供透视视图。 使用它可以在单个仪表板中从一个或多个 Azure 时序见解 Gen2 环境比较最多四个视图。 通过仪表板，可以查看所有位置的时序数据。 详细了解[Azure 时序见解 Gen2 资源管理器](./time-series-insights-update-explorer.md)。 若要规划环境，请阅读[Azure 时序见解 Gen2 计划](./time-series-insights-update-plan.md)。
+
+* 第二种开始方法是使用 JavaScript SDK 在 Web 应用程序中快速嵌入功能强大的图表和图。 只需几行代码，即可编写功能强大的查询。 可使用这些查询填充折线图、饼图、条形图、热度地图和数据网格等。 通过使用 SDK，所有这些元素都是现成可用的。 SDK 还会提取 Azure 时序见解 Gen2 查询 Api。 可以使用它们来创建类似 SQL 的谓词，用于查询要在仪表板上显示的数据。 对于混合显示层解决方案，Azure 时序见解 Gen2 提供参数化 Url。 它们提供与 Azure 时序见解 Gen2 资源管理器之间的无缝连接点，用于将深层深入入数据。
+
+  * 阅读有关[JS 客户端库](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)和[示例客户端](https://github.com/Microsoft/tsiclient)文档，以了解有关 JavaScript SDK 的详细信息。
+
+  * 通过查看[Azure 时序见解 Gen2 资源管理器中的可视化数据](time-series-insights-update-explorer.md)，了解有关共享 url 和新 UI 的详细信息。
+
+* 第三种方法是使用功能强大的 Api 来查询 Azure 时序见解 Gen2 中存储的数据。 Azure 时序见解 Gen2 有临时运算符 `from` ，例如、、 `to` `first` 和 `last` 。 它有聚合和转换，例如 `average` 、、、 `sum` `min` `max` 、 `time-weighted average` 、等 `time-weighted sum` 。它还允许筛选、算术和布尔运算符、标量函数等。所有这些运算符都使下游应用程序可以快速发现数据中感兴趣的趋势和模式。 可使用它们填充自生成的可视化效果以发现异常。
+
+## <a name="operational-analysis-and-driving-process-efficiency"></a>操作性分析和提高处理效率
+
+使用 Azure 时序见解 Gen2 来监视设备的运行状况、使用情况和性能，并衡量操作效率。 Azure 时序见解 Gen2 可帮助管理各种不可预测的 IoT 工作负荷，而不会牺牲引入或查询性能。
+
+[![概述](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+
+如果与正确的技术或解决方案相结合，来自操作过程的数据的流式传输和连续处理可成功地转换任何业务。 这些解决方案通常是多个系统的组合。 它们可以探索和分析不断变化的数据，特别是在 IoT 领域，并且采用相同的模式。
+
+这些模式通常始于支持 IoT 的平台，这类平台从各种语言环境的设备和传感器中引入数十亿个事件。 这些系统可以处理和分析流数据，获取实时见解和操作。 通常将数据存档到热存储和冷存储，以实现近实时和批量分析。
+
+收集的数据经过一系列处理，以便对数据进行净化并使其适合特定上下文，从而使其可用于下游查询和分析方案。 Azure 提供丰富的服务，可应用于资产维护和制造等 IoT 方案。 这些服务包括 Azure 时序见解 Gen2、IoT 中心、事件中心、Azure 流分析、Azure Functions、Azure 逻辑应用、Azure Databricks、Azure 机器学习和 Power BI。
+
+解决方案体系结构可以通过以下方式实现：
+
+* 通过 IoT 中心或事件中心来引入数据，以获得最佳的安全性、吞吐量和延迟。
+* 执行数据处理和计算。 通过流分析、逻辑应用和 Azure Functions 等服务传送引入的数据。 使用的服务取决于特定的数据处理需求。
+* 处理管道的计算信号将推送到 Azure 时序见解 Gen2，用于存储和分析。
+
+Azure 时序见解 Gen2 为历史数据提供近实时数据探索和基于资产的见解。 根据你的业务需求，MapReduce 和 Hive 作业可以通过将 Azure 时序见解 Gen2 连接到 Azure HDInsight 来对存储在 Azure 时序见解 Gen2 中的数据运行。 Azure 时序见解 Gen2 中存储的数据可通过 Azure 时序见解 Gen2 公共 surface query Api Power BI 和其他客户应用程序使用。 此数据可用于深层业务和操作智能方案。
+
+## <a name="advanced-analytics"></a>高级分析
+
+与机器学习和 Azure Databricks 等高级分析服务集成。 Azure 时序见解 Gen2 恒温器来自数百万台设备的原始数据。 它添加了可由 Azure 分析服务套件无缝使用的上下文数据。
+
+[![分析](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
+
+高级分析和机器学习会使用和处理大量数据。 该数据用于制定数据驱动的决策并执行预测分析。 在 IoT 用例中，高级分析算法可以从数百万台设备中收集数据。 这些设备每秒内会多次传输数据。 从 IoT 设备收集的数据是原始数据。 它缺少上下文信息，例如设备的位置和传感器读数的单位。 因此，原始数据很难直接用于高级分析。
+
+Azure 时序见解 Gen2 采用两种简单且经济高效的方式，以两种简单且经济高效的方式弥补 IoT 数据和高级分析之间的差距：
+
+* 首先，Azure 时序见解 Gen2 使用 IoT 中心从数百万台设备收集原始遥测数据。 它通过上下文信息来丰富数据，并将数据转换为 parquet 格式。 此格式可以轻松与其他高级分析服务集成，例如机器学习、Azure Databricks 和第三方应用程序。
+
+    Azure 时序见解 Gen2 可以充当整个组织中所有数据的真实来源。 它创建了一个供下游分析工作负荷使用的中央存储库。 由于 Azure 时序见解 Gen2 是一项近乎实时的存储服务，因此高级分析模型可以从传入 IoT 遥测数据中连续学习。 这样一来，模型可以更准确地进行预测。
+
+* 其次，可以将机器学习和预测模型的输出送入 Azure 时序见解 Gen2，以可视化并存储其结果。 此过程可帮助组织优化和调整其模型。 利用 Azure 时序见解 Gen2，可以轻松地在与定型模型输出相同的平面上可视化流式传输遥测数据。 通过这种方式，它可以帮助数据科学团队发现异常并识别模式。
+
+## <a name="next-steps"></a>后续步骤
+
+* 详细了解[Azure 时序见解 Gen2 资源管理器](./time-series-insights-update-explorer.md)。
+* 若要规划环境，请参阅[Azure 时序见解 Gen2 最佳实践](./time-series-insights-update-plan.md)。
+* 阅读[示例客户端](https://github.com/Microsoft/tsiclient)文档。

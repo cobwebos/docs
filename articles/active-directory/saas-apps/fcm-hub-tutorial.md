@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 FCM HUB 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 FCM HUB 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f3a9436c-8f33-462a-950b-8eb57ec31119
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5abc1e093dc7d4e8da823227dc3e3caa556e37e4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4480776e3809d75020ca5f132696f1e06ab5e556
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406851"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FCM HUB 的集成
 

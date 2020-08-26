@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 74757b2f5e272c7e7dbc0dc7f033c7899be1414b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5d1d74f1240f919bb20d8893755a86abc19fa828
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184270"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533795"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>在 Azure 中将多个 SQL 虚拟机注册到 SQL VM 资源提供程序
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "86184270"
 若要将 SQL Server VM 注册到资源提供程序，需要以下内容： 
 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)，该订阅已[注册到资源提供程序](sql-vm-resource-provider-register.md#register-subscription-with-rp)并包含未注册的 SQL Server 虚拟机。 
-- 用于注册虚拟机的客户端凭据存在于以下任何 RBAC 角色中：“虚拟机参与者”、“参与者”和“所有者”  。 
+- 用于注册虚拟机的客户端凭据位于以下任何 Azure 角色中： "**虚拟机参与者**"、"**参与者**" 或 "**所有者**"。 
 - [Az PowerShell](/powershell/azure/new-azureps-module-az) 的最新版本。 
 - [Az.SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0) 的最新版本。
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a7d12a2be7f2e3d3556d6c8c3303b2ddb8b8738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2951d0ee8719ec3b0f195a9abcd1af6f65f2c141
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503483"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761808"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
 备份的 Azure 安全基线包含可帮助你改善部署安全态势的建议。
 
-此服务的基线提取自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "86503483"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
-**指南**： Azure 备份所使用的终结点（包括 Microsoft Azure 恢复服务代理）均由 Microsoft 管理。 你负责管理要部署到本地系统的其他所有控件。
+**指南**： Azure 备份所使用的终结点 (包括 Microsoft Azure 恢复服务代理) 都是由 Microsoft 管理的。 你负责管理要部署到本地系统的其他所有控件。
 
 - [了解对 MARS 代理的网络和访问支持](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
@@ -70,13 +70,13 @@ ms.locfileid: "86503483"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**： Azure 备份所使用的终结点（包括 Microsoft Azure 恢复服务代理）均由 Microsoft 管理。 你负责管理要部署到本地系统的其他所有控件。
+**指南**： Azure 备份所使用的终结点 (包括 Microsoft Azure 恢复服务代理) 都是由 Microsoft 管理的。 你负责管理要部署到本地系统的其他所有控件。
 
 - [了解对 MARS 代理的网络和访问支持](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -94,11 +94,11 @@ ms.locfileid: "86503483"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：不适用;Azure 备份所使用的终结点（包括 Microsoft Azure 恢复服务代理）都由 Microsoft 管理。
+**指南**：不适用;Azure 备份所使用的终结点 (包括 Microsoft Azure 恢复服务代理) 都由 Microsoft 管理。
 
 **Azure 安全中心监视**：不适用
 
@@ -110,7 +110,7 @@ ms.locfileid: "86503483"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -122,7 +122,7 @@ ms.locfileid: "86503483"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -134,7 +134,7 @@ ms.locfileid: "86503483"
 
 **Azure 安全中心监视**：不适用
 
-责任：Microsoft
+**责任**：Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
@@ -170,7 +170,7 @@ ms.locfileid: "86503483"
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -182,7 +182,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -238,7 +238,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -322,7 +322,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
+**指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
 
 此外，还可使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
 
@@ -350,7 +350,7 @@ Azure 安全中心监视：不适用
 
 - [如何配置 Azure 备份以使用 Azure AD 登录](../app-service/configure-authentication-provider-aad.md)
 
-- [如何创建和配置 AAD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 安全中心监视**：是
 
@@ -382,7 +382,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
@@ -390,7 +390,7 @@ Azure 安全中心监视：不适用
 
 - [如何配置 Azure 备份以使用 Azure AD 登录](../app-service/configure-authentication-provider-aad.md)
 
-- [如何查看 Azure AD 有风险的登录](../active-directory/identity-protection/overview-identity-protection.md)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -422,7 +422,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -442,7 +442,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -452,7 +452,7 @@ Microsoft 管理 Azure 备份的底层基础结构，并实施了严格的控制
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：共享
 
@@ -480,7 +480,7 @@ Microsoft 管理 Azure 备份的底层基础结构，并实施了严格的控制
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
+**指南**： azure RBAC) 的 azure 基于角色的访问控制支持对 azure 进行细致的访问管理 (。 使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
 
 Azure 备份提供三个用于控制备份管理操作的内置角色：备份参与者、备份操作员和备份读取者。 可以将备份内置角色映射到各种备份管理操作。
 
@@ -500,7 +500,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 **Azure 安全中心监视**：不适用
 
-责任：Microsoft
+**责任**：Microsoft
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
@@ -512,7 +512,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 **Azure 安全中心监视**：不适用
 
-责任：共享
+**责任**：共享
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
@@ -522,7 +522,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
@@ -544,7 +544,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -552,7 +552,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -560,7 +560,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -580,9 +580,9 @@ Azure 安全中心监视：不适用
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-虽然可以通过 Resource Graph 发现经典的 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源以供后续使用。
+尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -592,7 +592,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -602,7 +602,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -618,7 +618,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：维护已批准的 Azure 资源和软件标题的清单
 
@@ -626,7 +626,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -646,7 +646,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -654,7 +654,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -662,7 +662,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -672,7 +672,7 @@ Azure 安全中心监视：不适用
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -682,7 +682,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -694,13 +694,13 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -732,7 +732,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -772,7 +772,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -790,7 +790,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -808,7 +808,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -836,13 +836,13 @@ Azure 安全中心监视：不适用
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -876,7 +876,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -902,7 +902,7 @@ Azure 安全中心监视：不适用
 
 - [如何在 Azure 中备份密钥保管库密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [了解 Azure 备份中的加密](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [了解 Azure 备份中的加密](./backup-encryption.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -950,9 +950,9 @@ Azure 安全中心监视：不适用
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
+此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
 **Azure 安全中心监视**：是
 
@@ -980,7 +980,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 

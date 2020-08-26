@@ -3,17 +3,18 @@ title: 使用 Azure Maps 室内定位模块
 description: 了解如何使用 Microsoft Azure Maps 室内定位模块，通过嵌入模块的 JavaScript 库来呈现定位。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815940"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure Maps 室内定位模块
 
@@ -34,28 +35,23 @@ Azure Maps Web SDK 包括“Azure Maps 室内”模块。 通过“Azure Maps �
 若要使用“Azure Maps 室内”模块全球托管的 Azure 内容分发网络版本，请参阅以下 HTML 文件 `<head>` 元素中的 JavaScript 和样式表引用：
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  或者，你可以下载“Azure Maps 室内”模块。 “Azure Maps 室内”模块包含用于访问 Azure Maps 服务的客户端库。 按照以下步骤安装室内模块，并将其加载到 Web 应用程序中。  
   
-  1. 下载 [azure-maps-indoor package](https://www.npmjs.com/package/azure-maps-indoor)。
+  1. 安装 [azure maps-室内包](https://www.npmjs.com/package/azure-maps-indoor)。
   
-  2. 安装 NPM 包。 请确保在控制台中使用管理员权限：
-
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
-  3. 引用 HTML 文件 `<head>` 元素中的“Azure Maps 室内”模块 JavaScript 和样式表：
+  2. 引用 HTML 文件 `<head>` 元素中的“Azure Maps 室内”模块 JavaScript 和样式表：
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>实例化定位对象
@@ -71,7 +67,7 @@ const map = new atlas.Map("map-id", {
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
-  authOptions: { 
+  authOptions: {
       authType: 'subscriptionKey',
       subscriptionKey: subscriptionKey
   },

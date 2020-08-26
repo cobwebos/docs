@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 23e7b0f8dcb0c64259627d5350511ebdc48d6fac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078971"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -26,7 +26,7 @@ ms.locfileid: "86080000"
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 存储帐户名和密钥。 请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。
-* 如果使用 PowerShell，则需 AZ 模块。  请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，则需 AZ 模块。  请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/)。
 
 ## <a name="how-it-works"></a>工作原理
 

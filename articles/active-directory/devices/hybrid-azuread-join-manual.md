@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778724"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428376"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -59,6 +59,9 @@ Azure AD Connect：
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * 组织的 STS（适用于联盟域），应包含在用户的本地 Intranet 设置中
+
+> [!WARNING]
+> 如果组织使用针对数据丢失防护或 Azure AD 租户限制等方案拦截 SSL 流量的代理服务器，请确保在 TLS 中断和检查中排除发往“https://device.login.microsoftonline.com”的流量。 未能排除“https://device.login.microsoftonline.com”可能会导致干扰客户端证书身份验证，从而导致设备注册和基于设备的条件访问出现问题。
 
 如果组织计划使用无缝 SSO，则必须可从组织内的计算机访问以下 URL， 并且还必须将该 URL 添加到用户的本地 Intranet 区域。
 
@@ -141,7 +144,7 @@ cmdlet：
 
 * 使用 Active Directory PowerShell 模块和 Azure Active Directory 域服务 (Azure AD DS) 工具。 这些工具依赖于在域控制器上运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。
 * 仅受 MSOnline PowerShell 模块 1.1.166.0 版支持。 若要下载此模块，请使用[此链接](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)。
-* 如果未安装 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 会失败。 可以通过服务器管理器（在“功能” > “远程服务器管理工具” > “角色管理工具”下）安装 AD DS 工具。  
+* 如果未安装 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 会失败。 可以通过服务器管理器（在“功能” > “远程服务器管理工具” > “角色管理工具”下）安装 AD DS 工具。
 
 对于运行 Windows Server 2008 或更低版本的域控制器，请使用以下脚本来创建服务连接点。 在多林配置中，请使用以下脚本在计算机所在的每个林中创建服务连接点。
 
@@ -185,7 +188,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。 
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
 
 > [!NOTE]
 >如果不使用 AD FS 作为本地联合身份验证服务，请按供应商的说明操作，确保供应商支持 WS-Trust 1.3 或 2005 终结点，并且已通过元数据交换文件 (MEX) 发布这些终结点。
@@ -533,7 +536,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. 在联合身份验证服务器上，输入以下 PowerShell 命令。 将 **\<RPObjectName\>** 替换为 Azure AD 信赖方信任对象的信赖方对象名称。 此对象通常命名为“Microsoft Office 365 标识平台”。
+1. 在联合身份验证服务器上，输入以下 PowerShell 命令。 将 \<RPObjectName\> 替换为 Azure AD 信赖方信任对象的信赖方对象名称。 此对象通常命名为“Microsoft Office 365 标识平台”。
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -567,7 +570,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
+使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
 
 使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 

@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689769"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272444"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备权限授予流
 
@@ -55,7 +55,7 @@ scope=user.read%20openid%20profile
 | --- | --- | --- |
 | `tenant` | 必须 | 可以是/common、/consumers 或/organizations。  它也可以是要以 GUID 或友好名称格式向其请求权限的目录租户。  |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `scope` | 建议 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
+| `scope` | 必选 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
 
 ### <a name="device-authorization-response"></a>设备授权响应
 
@@ -77,7 +77,7 @@ scope=user.read%20openid%20profile
 
 收到 `user_code` 和 `verification_uri` 后，客户端会向用户显示这些信息，指示他们使用移动电话或电脑浏览器登录。
 
-如果用户使用个人帐户（在/common 或/consumers 上）进行身份验证，则系统会要求再次登录，以便将身份验证状态传输到设备。  还将要求他们提供许可，以确保他们知道所授予的权限。  这不适用于用于身份验证的工作或学校帐户。
+如果用户使用个人帐户 (在/common 或/consumers) 上进行身份验证，则系统会要求再次登录，以便将身份验证状态传输到设备。  还将要求他们提供许可，以确保他们知道所授予的权限。  这不适用于用于身份验证的工作或学校帐户。
 
 尽管用户是在 `verification_uri` 中进行身份验证，但客户端应使用 `device_code` 来轮询所请求令牌的 `/token` 终结点。
 
@@ -90,11 +90,11 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| 参数 | 必需 | 描述|
+| 参数 | 必选 | 说明|
 | -------- | -------- | ---------- |
-| `tenant`  | 必需 | 初始请求中使用的同一租户或租户别名。 |
-| `grant_type` | 必需 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | 必需 | 必须与初始请求中使用的 `client_id` 匹配。 |
+| `tenant`  | 必须 | 初始请求中使用的同一租户或租户别名。 |
+| `grant_type` | 必须 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | 必须 | 必须与初始请求中使用的 `client_id` 匹配。 |
 | `device_code`| 必须 | 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误

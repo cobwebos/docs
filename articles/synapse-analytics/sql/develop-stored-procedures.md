@@ -10,11 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958372"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494989"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>使用 SQL 池中的存储过程
 
@@ -26,7 +27,7 @@ SQL 池支持 SQL Server 中使用的许多 T-SQL 功能。 更重要的是，�
 
 但是，为了保持 SQL 池的缩放性和性能，还有一些具有行为差异的功能和其他不受支持的特性和功能。
 
-## <a name="introducing-stored-procedures"></a>存储过程简介
+## <a name="stored-procedures-in-sql-pool"></a>SQL 池中的存储过程
 
 存储过程很适合用于封装 SQL 代码；将它存储在数据仓库中数据附近。 通过将代码封装成可管理的单位，促使代码有更大的可重复使用性，存储过程帮助开发人员将其解决方案模块化。 每个存储过程还可接受参数，使其更具弹性。
 

@@ -1,13 +1,14 @@
 ---
 title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259399"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055133"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -64,11 +65,9 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 若要删除某个管理组，必须满足以下要求：
 
-1. 该管理组下面没有任何子管理组或订阅。
+1. 该管理组下面没有任何子管理组或订阅。 若要将订阅或管理组移动到其他管理组，请参阅[在层次结构中移动管理组和订阅](#moving-management-groups-and-subscriptions)。
 
-   - 若要将订阅或管理组移到另一个管理组，请参阅[在层次结构中移动管理组和订阅](#moving-management-groups-and-subscriptions)。
-
-1. 你需要拥有对管理组的写入权限（“所有者”、“参与者”或“管理组参与者”）。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 若要详细了解 RBAC 角色，请参阅  
+1. 你需要拥有对管理组的写入权限（“所有者”、“参与者”或“管理组参与者”）。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 若要了解有关 Azure 角色的详细信息，请参阅  
    [通过 RBAC 管理访问和权限](../../role-based-access-control/overview.md)。
 
 ### <a name="delete-in-the-portal"></a>在门户中删除
@@ -112,7 +111,7 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>查看管理组
 
-可以查看你对其拥有直接管理角色或继承 RBAC 角色的任何管理组。  
+你可以在上查看拥有直接或继承的 Azure 角色的任何管理组。  
 
 ### <a name="view-in-the-portal"></a>在门户中查看
 
@@ -199,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 创建管理组的原因之一是将订阅捆绑在一起。 只能将管理组和订阅设置为另一个管理组的子级。 移到管理组的订阅从父管理组继承所有用户访问权限和策略
 
-将管理组或订阅移动为另一个管理组的子项时，三项规则的计算结果都需要为 true。
+当将管理组或订阅移动到另一个管理组的子级时，需要将三个规则评估为 true。
 
 如果执行移动操作，你需要： 
 
@@ -214,7 +213,7 @@ az account management-group show --name 'Contoso' -e -r
 
 如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 不能将它移到你在其中是参与者的管理组，因为你会失去订阅的所有权。 如果你直接分配到订阅的“所有者”角色的（而不是从管理组继承的），可将该订阅移到你身为参与者的任何管理组。
 
-若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。
+若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 若要了解有关 Azure 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。
 
 ## <a name="move-subscriptions"></a>移动订阅 
 

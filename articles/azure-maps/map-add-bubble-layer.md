@@ -1,6 +1,6 @@
 ---
 title: 向地图添加气泡图层 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 将气泡图层添加到地图。
+description: 了解如何将地图上的点呈现为固定大小的圆圈。 若要实现此目的，请参阅如何使用 Azure Maps Web SDK 添加和自定义气泡图层。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 47ee9e67c6885829e3cb0082aea63367da4aa626
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77208550"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006173"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
@@ -99,4 +100,4 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

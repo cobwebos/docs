@@ -5,50 +5,50 @@ services: load-balancer
 author: irenehua
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 02/23/2020
+ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809328"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033149"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 不需出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
 
-本文介绍了一个 PowerShell 脚本，该脚本使用与基本负载均衡器相同的配置来创建标准负载均衡器，并将流量从基本负载均衡器迁移到标准负载均衡器。
+本文介绍了一个 PowerShell 脚本，该脚本会创建一个其配置与基本负载均衡器相同的标准负载均衡器，并会将流量从基本负载均衡器迁移到标准负载均衡器。
 
 ## <a name="upgrade-overview"></a>升级概述
 
 我们提供了一个用于执行以下操作的 Azure PowerShell 脚本：
 
-* 在指定的位置创建标准内部 SKU 负载均衡器。 请注意，标准内部负载均衡器不会提供[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)。
-* 将基本 SKU 负载均衡器的配置无缝复制到新创建的标准负载均衡器。
-* 将专用 Ip 从基本负载均衡器无缝移动到新创建的标准负载均衡器。
-* 将 Vm 从基本负载均衡器的后端池无缝移动到标准负载均衡器的后端池
+* 在指定的位置中创建标准内部 SKU 负载均衡器。 请注意，标准内部负载均衡器不会提供任何[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)。
+* 将基本 SKU 负载均衡器的配置无缝复制到新建的标准负载均衡器。
+* 将专用 IP 从基本负载均衡器无缝移到新建的标准负载均衡器。
+* 将 VM 从基本负载均衡器的后端池无缝移到标准负载均衡器的后端池
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
-* 脚本仅支持内部负载均衡器升级，无需任何出站连接。 如果需要某些 Vm 的[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，请参阅此[页面](upgrade-InternalBasic-To-PublicStandard.md)了解相关说明。 
-* 基本负载均衡器需要与后端 Vm 和 Nic 位于同一资源组中。
+* 脚本只支持不需要出站连接的内部负载均衡器升级。 如果需要用于某些 VM 的[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，请参阅此[页面](upgrade-InternalBasic-To-PublicStandard.md)，了解相关说明。 
+* 基本负载均衡器需要与后端 VM 和 NIC 位于同一资源组中。
 * 如果在不同的区域中创建标准负载均衡器，则无法将旧区域中的 Vm 关联到新创建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
-* 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 请确保它们不为空。
+* 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 确保负载均衡器不是空的。
 
-## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>将 IP 分配方法更改为静态前端 IP 配置（如果此步骤已为静态，则忽略此步骤）
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>将前端 IP 配置的 IP 分配方法更改为“静态”（如果此项已为“静态”，则忽略此步骤）
 
-1. 选择左侧菜单中的 "**所有服务**"，选择 "**所有资源**"，然后从 "资源" 列表中选择你的基本负载均衡器。
+1. 在左侧菜单中选择“所有服务”，接着选择“所有资源”，然后在资源列表中选择你的基本负载均衡器。 
 
-2. 在 "**设置**" 下，选择 "**前端 ip 配置**"，然后选择第一个前端 ip 配置。 
+2. 在“设置”下，选择“前端 IP 配置”，然后选择第一个前端 IP 配置。 
 
-3. 对于**分配**，选择 "**静态**"
+3. 对于“分配”，请选择“静态”
 
-4. 对于基本负载均衡器的所有前端 IP 配置，重复步骤3。
+4. 对于基本负载均衡器的所有前端 IP 配置，请重复执行步骤 3。
 
 
 ## <a name="download-the-script"></a>下载脚本
 
-从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0)下载迁移脚本。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0)下载迁移脚本。
 ## <a name="use-the-script"></a>使用脚本
 
 根据本地 PowerShell 环境的设置和首选项，可以使用两个选项：
@@ -80,7 +80,7 @@ ms.locfileid: "84809328"
 
 1. 检查所需的参数：
 
-   * **rgName： [String]： Required** –这是现有基本负载均衡器和新标准负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。 资源组位于该页上。
+   * **rgName: [字符串]:必需** – 这是现有基本负载均衡器和新的标准负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。 资源组位于该页上。
    * **oldLBName: [String]:必需** – 这是要升级的现有基本负载均衡器的名称。 
    * **newlocation: [String]:必需** – 这是要在其中创建标准负载均衡器的位置。 建议将所选基本负载均衡器的相同位置继承到标准负载均衡器，以方便与其他现有资源相关联。
    * **newLBName: [String]:必需** – 这是要创建的标准负载均衡器的名称。
@@ -100,7 +100,7 @@ ms.locfileid: "84809328"
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 脚本是否还会将流量从基本负载均衡器切换到新建的标准负载均衡器？
 
-是，它会迁移流量。 如果你想要单独迁移流量，请使用[此脚本](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)，这不会为你移动 vm。
+是的，它会迁移流量。 如果想要亲自迁移流量，请使用[此脚本](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)（它不会为你移动虚拟机）。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时我遇到了一些问题。 如何求助？
   

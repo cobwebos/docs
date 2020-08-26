@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: ceaff4575713d4bf40bea621cbb08313aad11611
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 12d91e43576647b2ffbc1e78d2e059871dbe8a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033167"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84267471"
 
 ## <a name="quickstarts"></a>快速入门
 
-| |  |
+| 快速入门 | 说明 |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|本快速入门演示如何使用 SSMS 连接到数据库，并使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。|
 |[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|本快速入门演示如何使用 Azure Data Studio 连接到数据库，然后使用 Transact-SQL (T-SQL) 语句创建在 Azure Data Studio 教程中使用的 TutorialDB。|
@@ -58,25 +58,25 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 
 ## <a name="libraries"></a>库
 
-可以使用各种库和框架连接到 Azure SQL 数据库或 Azure SQL 托管实例。 查看[入门教程](https://aka.ms/sqldev)，快速开始使用 C#、Java、Node.js、PHP 和 Python 等编程语言。 然后使用 Linux、Windows 或 Docker（对于 macOS）上的 SQL Server 生成应用。
+可以使用各种库和框架连接到 Azure SQL 数据库或 Azure SQL 托管实例。 请查看[快速入门教程](https://aka.ms/sqldev)，了解 C#、Java、Node.js、PHP、Python 等编程语言的快速入门方式。 然后使用基于 Linux 或 Windows 的 SQL Server 或基于 macOS 的 Docker 生成一个应用。
 
-下表列出的连接库或驱动程序可供客户端应用程序使用各种语言进行连接并使用在本地或云中运行的 SQL Server。 可以在 Linux、Windows 或 Docker 上使用它们，并将其用于连接到 Azure SQL 数据库、Azure SQL 托管实例和 Azure SQL 数据仓库。
+下表列出的连接库或驱动程序可供客户端应用程序用于通过多种语言连接到在本地或云中运行的 SQL Server 并使用该 SQL Server。 可以在 Linux、Windows 或 Docker 上使用它们，并将其用于连接到 Azure SQL 数据库、Azure SQL 托管实例和 Azure SQL 数据仓库。
 
 | 语言 | 平台 | 其他资源 | 下载 | 入门 |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下载](https://www.microsoft.com/net/download/) | [入门](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows、Linux、macOS | [Microsoft JDBC driver for SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [下载](https://go.microsoft.com/fwlink/?linkid=852460) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft JDBC 驱动程序](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [下载](https://go.microsoft.com/fwlink/?linkid=852460) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows、Linux、macOS| [用于 SQL Server 的 PHP SQL 驱动程序](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [下载](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [入门](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [用于 SQL Server 的 Node.js 驱动程序](/sql/connect/node-js/node-js-driver-for-sql-server/) | [安装](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL 驱动程序](/sql/connect/python/python-driver-for-sql-server/) | 安装选项： <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [用于 SQL Server 的 Ruby 驱动程序](/sql/connect/ruby/ruby-driver-for-sql-server/) | [安装](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [入门](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
-| C++ | Windows、Linux、macOS | [Microsoft ODBC Driver for SQL Server](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) | [下载](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) |  
+| C++ | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft ODBC 驱动程序](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) | [下载](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) |  
 
 下表列出了客户端应用程序可以与 SQL Server、Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics 一起使用的对象关系映射 (ORM) 框架和 Web 框架的示例。 可以在 Linux、Windows 或 Docker 上使用这些框架。
 
-| 语言 | 平台 | ORM(s) |
+| 语言 | 平台 | ORM |
 | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[实体框架核心](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows、Linux、macOS | [Sequelize ORM](https://sequelize.org/) |

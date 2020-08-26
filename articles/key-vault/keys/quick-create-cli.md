@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Azure Key Vault 中设置和检索密钥
+title: 在 Azure Key Vault 中创建和检索密钥的属性 - Azure CLI
 description: 以快速入门的方式介绍如何使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
 services: key-vault
 author: msmbaldwin
@@ -10,16 +10,17 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: defc5317c127d771786989748e404285ca0c0584
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e59482c3dbc4bd0abb20a5e9094aad5f31c358cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420301"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497403"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
 
-在本快速入门中，你将使用 Azure CLI 在 Azure Key Vault 中创建一个密钥保管库。 Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](../general/overview.md)。 Azure CLI 用于通过命令或脚本创建和管理 Azure 资源。 完成该操作后，即可存储密钥。
+在本快速入门中，你将使用 Azure CLI 在 Azure Key Vault 中创建一个密钥保管库。 Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](../general/overview.md)。 Azure CLI 用于通过命令或脚本创建和管理 Azure 资源。 完成该操作后，你将存储密钥。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,7 +39,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“ContosoResourceGroup”的资源组。  
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“ContosoResourceGroup”的资源组。
 
 ```azurecli
 az group create --name "ContosoResourceGroup" --location eastus
@@ -58,16 +59,16 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 此 cmdlet 的输出显示新创建的 Key Vault 的属性。 请记下下面列出的两个属性：
 
-- **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 将在其他 Key Vault 命令中使用此名称。
+- **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 会在其他 Key Vault 命令中使用此名称。
 - **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
 
 ## <a name="add-a-key-to-key-vault"></a>向 Key Vault 添加密钥
 
-只需再执行几个步骤即可向保管库添加密钥。 此密钥可供应用程序使用。 
+只需再执行几个步骤便可向保管库中添加密钥。 此密钥可供应用程序使用。 
 
-键入以下命令，创建名为“ExampleKey”  的密钥：
+键入以下命令，创建名为 ExampleKey  的密钥：
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
@@ -82,7 +83,7 @@ az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection 
 az keyvault key show --name "ExampleKey" --vault-name "Contoso-Vault2"
 ```
 
-现在，你已创建 Key Vault 并存储和检索了密钥。
+现在，你已创建了一个密钥保管库，存储了一个密钥并检索了该密钥。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: e17dcf02c920dc1a824a165fb3d667833267cac7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e018f2320b505a174850472d85ec2ebd59310560
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507499"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406565"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
 
@@ -251,7 +251,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
     d. 选择 "**网络**"，然后连接网络接口。 在 "**附加网络接口**" 下拉列表中，选择已为 `storage` 和子网创建的网络接口 `hana` 。  
     
-    e. 选择“保存”。 
+    e. 选择“保存” 。 
  
     f. 对于剩余的虚拟机（在我们的示例中为**hanadb2**和**hanadb3**），重复步骤 b 到 e。
  
@@ -361,7 +361,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
     # Add the following entries in the configuration file
-    ipv6.conf.all.disable_ipv6 = 1
+    net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
     net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
@@ -726,7 +726,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 ## <a name="test-sap-hana-failover"></a>测试 SAP HANA 故障转移 
 
-1. 模拟 SAP HANA 辅助节点上的节点崩溃。 执行以下操作： 
+1. 模拟 SAP HANA 辅助节点上的节点崩溃。 请执行以下操作： 
 
    a. 在模拟节点崩溃之前，请运行以下命令作为**hn1**adm 来捕获环境状态：  
 

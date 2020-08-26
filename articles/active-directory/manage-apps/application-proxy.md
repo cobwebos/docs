@@ -8,19 +8,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318022"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164914"
 ---
-# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>通过 Azure Active Directory 应用程序代理远程访问本地应用程序
+# <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理远程访问本地应用程序
 
 Azure Active Directory 应用程序代理提供对本地 Web 应用程序的安全远程访问。 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云端和本地的应用程序。 例如，应用程序代理可以为远程桌面、SharePoint、Teams、Tableau、Qlik 和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
 
@@ -43,7 +41,7 @@ Azure AD 应用程序代理的特性：
 * 驻留在[远程桌面网关](application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
 * 与 Microsoft 身份验证库 (MSAL) 集成的丰富客户端应用
 
-应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](sso-options.md#choosing-a-single-sign-on-method)。
 
 建议使用应用程序代理来使远程用户访问内部资源。 应用程序代理取代了对 VPN 或反向代理的需求。 它不适合企业网络中的内部用户。  不必要地使用应用程序代理的这些用户可能会造成意外的和不需要的性能问题。
 

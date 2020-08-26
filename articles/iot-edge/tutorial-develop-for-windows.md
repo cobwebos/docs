@@ -4,17 +4,17 @@ description: 本教程详细介绍如何设置开发计算机和云资源来使�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 58a63c9e11cf86318f0e9f051d034cbbaf7c40a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76772253"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439696"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
@@ -99,7 +99,7 @@ IoT Edge 模块被打包为容器，因此，需要在开发计算机上安装�
 
    如果使用的是 Visual Studio 2017（15.7 或更高版本），请下载并安装[适用于 Visual Studio 2017 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)。
 
-3. 安装完成后，打开 Visual Studio 2019 并选择“在没有代码的情况下继续”。 
+3. 安装完成后，打开 Visual Studio 2019 并选择“在没有代码的情况下继续”。
 
 4. 选择“查看” > “Cloud Explorer”   。
 
@@ -117,13 +117,13 @@ IoT Edge 模块被打包为容器，因此，需要在开发计算机上安装�
 
 Azure IoT Edge Tools 扩展为 Visual Studio 中支持的所有 IoT Edge 模块语言提供项目模板。 这些模板包含将工作模块部署到测试 IoT Edge 所需的所有文件和代码，或为你提供使用自己的业务逻辑自定义模板的起点。
 
-1. 选择“文件” > “新建” > “项目...”   
+1. 选择“文件” > “新建” > “项目...”
 
-2. 在“新建项目”窗口中，搜索“IoT Edge”  ，然后选择“Azure IoT Edge (Windows amd64)”项目  。 单击“下一步”。 
+2. 在“新建项目”窗口中，搜索“IoT Edge”  ，然后选择“Azure IoT Edge (Windows amd64)”项目  。 单击“下一步”。
 
    ![创建新的 Azure IoT Edge 项目](./media/tutorial-develop-for-windows/new-project.png)
 
-3. 在“配置新项目”窗口中，重命名项目和解决方案，使名称具有描述性，例如 **CSharpTutorialApp**。 单击“创建”以创建项目。 
+3. 在“配置新项目”窗口中，重命名项目和解决方案，使名称具有描述性，例如 **CSharpTutorialApp**。 单击“创建”以创建项目。
 
    ![配置新的 Azure IoT Edge 项目](./media/tutorial-develop-for-windows/configure-project.png)
 
@@ -131,9 +131,9 @@ Azure IoT Edge Tools 扩展为 Visual Studio 中支持的所有 IoT Edge 模块�
 
    | 字段 | 值 |
    | ----- | ----- |
-   | Visual Studio 模板 | 选择“C# 模块”。  |
+   | Visual Studio 模板 | 选择“C# 模块”。 |
    | 模块名称 | 接受默认的 **IotEdgeModule1**。 |
-   | 存储库 URL | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概述”页中检索“登录服务器”值。   <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/iotedgemodule1。 |
+   | 存储库 URL | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索“登录服务器”值。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/iotedgemodule1。 |
 
       ![针对目标设备、模块类型和容器注册表配置项目](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -169,9 +169,9 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
    }
    ```
 
-1. 打开模块解决方案中的 **.env** 文件。 （默认情况下，此文件会隐藏在解决方案资源管理器中，可能需要选择“显示所有文件”按钮才能显示它。） 
+1. 打开模块解决方案中的 **.env** 文件。 （默认情况下，此文件会隐藏在解决方案资源管理器中，可能需要选择“显示所有文件”按钮才能显示它。）
 
-1. 添加从 Azure 容器注册表中复制的“用户名”和“密码”值。  
+1. 添加从 Azure 容器注册表中复制的“用户名”和“密码”值。
 
 1. 将更改保存到 .env 文件。
 
@@ -179,7 +179,7 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 创建的解决方案模板包含 IoT Edge 模块的示例代码。 此示例模块仅接收消息，然后传递消息。 管道功能演示 IoT Edge 中的一个重要概念，即模块之间相互通信的方式。
 
-每个模块可以在其代码中声明多个*输入*和*输出*队列。 在设备上运行的 IoT Edge 中心将来自一个模块的输出的消息路由到一个或多个模块的输入。 用于声明输入和输出的特定语言因语言而异，但所有模块的概念都相同。 有关在模块之间路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
+每个模块可以在其代码中声明多个*输入*和*输出*队列。 在设备上运行的 IoT Edge 中心将来自一个模块的输出的消息路由到一个或多个模块的输入。 用于声明输入和输出的特定代码因语言而异，但所有模块的概念都相同。 有关在模块之间路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
 
 项目模板附带的示例 C# 代码使用适用于 .NET 的 IoT 中心 SDK 中的 [ModuleClient 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)。
 
@@ -199,13 +199,13 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 6. 找到 $edgeAgent 所需属性的 **modules** 属性。
 
-   此处应该列出两个模块。 第一个模块是 **SimulatedTemperatureSensor**，该模块默认包含在所有模板中，提供可用于测试模块的模拟温度数据。 第二个模块是作为此项目的一部分创建的 **IotEdgeModule1** 模块。
+   此处应该列出两个模块。 一个模块是 SimulatedTemperatureSensor 模块，该模块默认包含在所有模板中，提供可用于测试模块的模拟温度数据。 另一个模块是作为此项目的一部分创建的 IotEdgeModule1 模块。
 
    此模块属性声明要将哪些模块包含到设备部署中。
 
 7. 找到 $edgeHub 所需属性的 **routes** 属性。
 
-   IoT Edge 中心模块的其中一个函数可在部署中的所有模块之间路由消息。 查看 routes 属性中的值。 第一个路由 **IotEdgeModule1ToIoTHub** 使用通配符 ( **\*** ) 将来自任何输出队列的任何消息包含到 IotEdgeModule1 模块中。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 第二个路由 sensorToIotEdgeModule1 接收来自 SimulatedTemperatureSensor 模块的消息，并将其路由到 IotEdgeModule1 模块的 input1 输入队列   。
+   IoT Edge 中心模块的其中一个函数可在部署中的所有模块之间路由消息。 查看 routes 属性中的值。 一个路由 IotEdgeModule1ToIoTHub 使用通配符 (\*) 将来自任何输出队列的任何消息包含到 IotEdgeModule1 模块中。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 第二个路由 sensorToIotEdgeModule1 接收来自 SimulatedTemperatureSensor 模块的消息，并将其路由到 IotEdgeModule1 模块的 input1 输入队列。
 
    ![查看 deployment.template.json 中的路由](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -252,7 +252,7 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 6. 将更改保存到 module.json 文件。
 
-7. 再次右键单击 **CSharpTutorialApp** 项目文件夹，然后再次选择“生成并推送 IoT Edge 模块”  。
+7. 再次右键单击“CSharpTutorialApp”项目文件夹，然后再次选择“生成并推送 IoT Edge 模块”。
 
 8. 再次打开 **deployment.windows-amd64.json** 文件。 请注意，再次运行“生成并推送”命令时未创建新文件， 而是更新了同一文件以反映更改。 IotEdgeModule1 映像现指向容器的 0.0.2 版。 部署清单中的此更改告知 IoT Edge 设备有要拉取的新模块版本。
 
@@ -267,7 +267,7 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 
 * 是否使用从容器注册表复制的凭据运行 `docker login` 命令？ 这些凭据与用于登录 Azure 的凭据不同。
-* 你的容器存储库是否正确？ 它是否拥有正确的容器注册表名称和正确的模块名称？ 打开 IotEdgeModule1 文件夹中的 **module.json** 文件进行检查。 存储库值应类似于 **\<registry name\>.azurecr.io/iotedgemodule1**。
+* 你的容器存储库是否正确？ 它是否拥有正确的容器注册表名称和正确的模块名称？ 打开 IotEdgeModule1 文件夹中的 **module.json** 文件进行检查。 存储库值应类似于 \<registry name\>.azurecr.io/iotedgemodule1。
 * 如果为模块使用的名称不是 **IotEdgeModule1**，那么使用的名称在整个解决方案中是否保持一致？
 * 计算机运行的容器类型与要生成的容器类型是否相同？ 本教程适用于 Windows IoT Edge 设备，因此，Visual Studio 文件应具有 **windows-amd64** 扩展名，且 Docker Desktop 应运行 Windows 容器。
 
@@ -297,7 +297,7 @@ IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队�
 
 1. 在 Visual Studio Cloud Explorer 中，选择部署到其中的 IoT Edge 设备的名称。
 
-2. 在“操作”菜单中，选择“开始监视内置事件终结点”。  
+2. 在“操作”菜单中，选择“开始监视内置事件终结点”。
 
 3. 观察 Visual Studio 中的“输出”部分，以查看到达 IoT 中心的消息  。
 
@@ -328,6 +328,14 @@ IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队�
    IoT Edge 模块区分大小写。
 
    SimulatedTemperatureSensor 和 IotEdgeModule1 日志应显示其正在处理的消息。 edgeAgent 模块负责启动其他模块，因此其日志将包含有关实施部署清单的信息。 如果有任何模块未列出或未运行，则 edgeAgent 日志可能包含相关错误信息。 edgeHub 模块负责模块和 IoT 中心之间的通信。 如果模块已启动并运行，但消息未到达 IoT 中心，则 edgeHub 日志可能包含相关错误信息。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。
+
+否则，可以删除本文中使用的本地配置和 Azure 资源，以免产生费用。
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

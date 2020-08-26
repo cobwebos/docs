@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72436048"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082386"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
 
@@ -349,7 +349,7 @@ Tibero 在 Azure 上的 OpenFrame 环境中提供了若干关键功能：
      )
     ```
 
-7. 创建数据库。 将显示以下输出：
+7. 创建数据库。 随即显示以下输出：
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -791,7 +791,7 @@ TACF Manager 是一种 OpenFrame service 模块，它通过 RACF 安全控制用
      ./OpenFrame_Tacf7_0_Fix2_Linux_x86_64.bin -f tacf.properties
      ```
 
-     输出的内容与以下类似：
+     输出结果如下所示：
 
      ```
      Wed Dec 07 17:36:42 EDT 2016
@@ -812,7 +812,7 @@ TACF Manager 是一种 OpenFrame service 模块，它通过 RACF 安全控制用
      /tmp/install.dir.41422/Linux/resource/jre/lib/resources.jar /tmp/install.dir.41422/Linux/resource/jre/lib/rt.jar /tmp/install.dir.41422/Linux/resource/jre/lib/sunrsasign.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jsse.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jce.jar /tmp/install.dir.41422/Linux/resource/jre/lib/charsets.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jfr.jar /tmp/install.dir.41422/Linux/resource/jre/classes
      ```
 
-6. 在命令提示符下，键入 `tmboot` 重新启动 OpenFrame。 输出的内容与以下类似：
+6. 在命令提示符下，键入 `tmboot` 重新启动 OpenFrame。 输出结果如下所示：
 
      ```
      TMBOOT for node(NODE1) is starting: 
@@ -875,7 +875,7 @@ TACF Manager 是一种 OpenFrame service 模块，它通过 RACF 安全控制用
      [oframe7@ofdemo ~]$ tmdow
      ```
 
-9. 使用命令关闭服务器 `tmdown` 。 输出的内容与以下类似：
+9. 使用命令关闭服务器 `tmdown` 。 输出结果如下所示：
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -1167,7 +1167,7 @@ OFASM 是解释大型机汇编程序程序的 OpenFrame 编译器。
      完成后，将显示 "安装完成" 消息。
 
 4. 验证是否已通过 .OSC 变量更新 bash 配置文件。
-5. 查看 OpenFrame \_ OSC7 \_ 0 \_ Fix2 \_ installutil.installlog 文件。 其外观应与下图相似：
+5. 查看 OpenFrame \_ OSC7 \_ 0 \_ Fix2 \_ installutil.installlog 文件。 结果应如下所示：
 
      ```
      Summary 
@@ -1240,7 +1240,7 @@ OFASM 是解释大型机汇编程序程序的 OpenFrame 编译器。
 
 9. 若要启动和关闭 .OSC，请 `osctdlinit OSCOIVP1` 在命令提示符下键入以初始化 CICS 区域共享内存。
 
-10. 运行 `oscboot` 以启动 .osc。 输出的内容与以下类似：
+10. 运行 `oscboot` 以启动 .osc。 输出结果如下所示：
 
      ```
      OSCBOOT : pre-processing       [ OK ]
@@ -1315,7 +1315,7 @@ JEUS （Java 企业用户解决方案）提供 OpenFrame web 应用程序服务�
      [oframe7@ofdemo ~]$ cd jeus7/setup/
      ```
 
-4. 执行 `ant clean-all` 生成之前执行。 输出的内容与以下类似：
+4. 执行 `ant clean-all` 生成之前执行。 输出结果如下所示：
 
      ```
      Buildfile: /home/oframe7jeus7/setup/build.xml
@@ -1476,6 +1476,6 @@ OFManager 为 web 环境中的 OpenFrame 提供操作和管理功能。
 
 如果你正在考虑使用大型机迁移，我们的扩展合作伙伴生态系统可为你提供帮助。 有关选择合作伙伴解决方案的详细指南，请参阅[平台现代化联盟](https://datamigration.microsoft.com/)。
 
--   [Azure 入门](https://docs.microsoft.com/azure/)
--   [Host Integration Server (HIS) 文档](https://docs.microsoft.com/host-integration-server/)
--   [Azure 虚拟数据中心提升指南](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Azure 入门](../../../../index.yml)
+-   [Host Integration Server (HIS) 文档](/host-integration-server/)
+-   [Azure 虚拟数据中心提升指南](/archive/blogs/azurecat/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide)

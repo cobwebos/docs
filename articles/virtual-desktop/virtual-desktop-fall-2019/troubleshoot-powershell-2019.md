@@ -1,24 +1,22 @@
 ---
-title: Windows 虚拟桌面 PowerShell-Azure
-description: 如何在设置 Windows 虚拟桌面租户环境时对 PowerShell 问题进行故障排除。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) PowerShell-Azure
+description: 在设置 Windows 虚拟桌面 (经典) 租户环境时，如何排查 PowerShell 问题。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615495"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004906"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
+# <a name="windows-virtual-desktop-classic-powershell"></a>Windows 虚拟桌面 (经典) PowerShell
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-powershell.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../troubleshoot-powershell.md)。
 
 本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅[Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
 
@@ -51,7 +49,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 **修复：** 确认以下列表中的项。
 
 - 用户将同步到 Azure Active Directory。
-- 用户未与企业对消费者（B2C）或企业到企业（B2B）的商业客户联系。
+- 用户不会与企业对消费者 (B2C) 或企业到企业 (B2B) 商务关联。
 - Windows 虚拟桌面租户绑定到正确的 Azure Active Directory。
 
 ### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>错误： RdsDiagnosticActivities--用户无权查询管理服务
@@ -85,7 +83,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 **修复2：** 具有 Active Directory 权限的用户需要执行该角色分配。
 
 >[!Note]
->RdsRoleAssignment 无法向 Azure Active Directory （AD）中不存在的用户授予权限。
+>RdsRoleAssignment 无法向 (AD) Azure Active Directory 中不存在的用户授予权限。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -75,6 +75,8 @@
           href: enterprise-state-roaming-faqs.md
 - name: 参考
   items:
+    - name: 执行 TLS 1.2
+      href: reference-device-registration-tls-1-2.md
     - name: 企业状态漫游 GPO 设置
       href: enterprise-state-roaming-group-policy-settings.md
     - name: 企业状态漫游 Windows 设置

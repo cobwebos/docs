@@ -1,6 +1,6 @@
 ---
 title: 通过共享密钥授权调用 REST API 操作
-titleSuffix: Azure Storage
+titleSuffix: Discover how to call Azure Storage REST API operations with Shared Key authorization. Get detailed information about each step of the sample operation.
 description: 通过 Azure 存储 REST API 来使用共享密钥授权向 Blob 存储发出请求。
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: 237ad3215ef0330fed8662d987b1b72eca4aec81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509177"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724160"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
@@ -65,7 +65,7 @@ REST 是一种体系结构，用于通过 Internet 协议（例如 HTTP/HTTPS）
 
 **请求方法**：GET。 此谓词是你指定为请求对象属性的 HTTP 方法。 此谓词的其他值包括 HEAD、PUT 和 DELETE，具体将取决于正在调用的 API。
 
-**请求 URI**：`https://myaccount.blob.core.windows.net/?comp=list`。  请求 URI 是从 blob 存储帐户终结点 `http://myaccount.blob.core.windows.net` 和资源字符串 `/?comp=list` 创建的。
+**请求 URI**：`https://myaccount.blob.core.windows.net/?comp=list`。  请求 URI 是从 blob 存储帐户终结点 `https://myaccount.blob.core.windows.net` 和资源字符串 `/?comp=list` 创建的。
 
 [URI 参数](/rest/api/storageservices/List-Containers2#uri-parameters)：调用 ListContainers 时还可以使用其他查询参数。 其中有些参数为调用超时  （以秒计）和前缀  ，后者用于筛选。
 

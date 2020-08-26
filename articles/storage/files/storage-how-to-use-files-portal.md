@@ -1,23 +1,23 @@
 ---
 title: 快速入门：使用 Azure 门户管理 Azure 文件共享
-description: 通过本快速入门了解如何使用 Azure 门户管理 Azure 文件。
+description: 了解如何在 Azure 门户中创建和管理 Azure 文件共享。 创建存储帐户、创建 Azure 文件共享，以及使用 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f68d9f620b686ab20e93584bdd7c024d8a943577
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71260290"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036532"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和管理 Azure 文件共享 
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows、Linux 和 macOS 中装载 Azure 文件共享。 本指南介绍通过 [Azure 门户](https://portal.azure.com/)来使用 Azure 文件共享的基本知识。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
@@ -26,12 +26,12 @@ ms.locfileid: "71260290"
 若要创建 Azure 文件共享，请执行以下操作：
 
 1. 从仪表板中选择存储帐户。
-2. 在存储帐户页的“服务”部分，选择“文件”。  
+2. 在存储帐户页的“服务”部分，选择“文件”。********
     ![存储帐户的服务部分的屏幕截图；选择“文件”服务](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. 在“文件服务”页顶部的菜单中，单击“文件共享”   。 “新建文件共享”页此时会向下拉开。 
-4. 在“名称”中，  键入 *myshare*。
-5. 单击“确定”以创建 Azure 文件共享  。
+3. 在“文件服务”页顶部的菜单中，单击“文件共享”********。 “新建文件共享”页此时会向下拉开。****
+4. 在“名称”中，**** 键入 *myshare*。
+5. 单击“确定”以创建 Azure 文件共享****。
 
 共享名必须全部采用小写字母、数字和单个连字符，但不能以连字符开头。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
 
@@ -59,20 +59,20 @@ Azure 文件提供两种在 Azure 文件共享中使用文件和文件夹的方�
 #### <a name="create-a-directory"></a>创建目录
 若要在 Azure 文件共享的根目录中创建名为 *myDirectory* 的新目录，请执行以下操作：
 
-1. 在“文件服务”页面中，选择“myshare”文件共享   。 文件共享的页面此时会打开。
-2. 在页面顶部的菜单中选择“+ 添加目录”。  “新建目录”页此时会向下拉开。 
-3. 键入 *myDirectory*，然后单击“确定”。 
+1. 在“文件服务”页面中，选择“myshare”文件共享********。 文件共享的页面此时会打开。
+2. 在页面顶部的菜单中选择“+ 添加目录”。**** “新建目录”页此时会向下拉开。****
+3. 键入 *myDirectory*，然后单击“确定”。****
 
 #### <a name="upload-a-file"></a>上传文件 
 若要演示如何上传文件，首先需创建或选择一个需要上传的文件。 可以根据需要采用任何方式来这样做。 选定要上传的文件以后，请执行以下操作：
 
 1. 单击 **myDirectory** 目录。 此时会打开 **myDirectory** 面板。
-2. 在顶部菜单中，单击“上传”  。 “上传文件”面板此时会打开。   
+2. 在顶部菜单中，单击“上传”****。 “上传文件”面板此时会打开。****  
     ![“上传文件”面板的屏幕截图](media/storage-how-to-use-files-portal/upload-file-1.png)
 
 3. 单击文件夹图标，打开一个用来浏览本地文件的窗口。 
-4. 选择一个文件，然后单击“打开”。  
-5. 在“上传文件”页中验证文件名，然后单击“上传”   。
+4. 选择一个文件，然后单击“打开”。**** 
+5. 在“上传文件”页中验证文件名，然后单击“上传”********。
 6. 完成后，文件会显示在 **myDirectory** 页的列表中。
 
 #### <a name="download-a-file"></a>下载文件

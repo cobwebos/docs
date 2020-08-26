@@ -1,18 +1,18 @@
 ---
 title: 根据需要组织发票 - Azure
-description: 了解如何在发票中组织成本。
+description: 了解如何在发票中组织成本。 可以通过创建计费对象信息和发票部分自定义计费帐户。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 553263ebac3c64e27a7711b4407a7d4ba573998c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460025"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>通过自定义计费帐户来组织成本
 
@@ -72,15 +72,15 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-section-invoice/search-cmb.png)
 
-3. 在左侧窗格中选择“计费配置文件”。  在列表中选择一个计费配置文件。 新科目将显示在所选计费配置文件的发票上。
+3. 在左侧窗格中选择“计费配置文件”。 在列表中选择一个计费配置文件。 新科目将显示在所选计费配置文件的发票上。
 
-   [![屏幕截图，显示了计费配置文件列表](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-4. 在左侧窗格中选择“发票科目”，然后在页面顶部选择“添加”。  
+4. 在左侧窗格中选择“发票科目”，然后在页面顶部选择“添加”。 
 
    [![演示如何添加发票科目的屏幕截图](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
@@ -88,7 +88,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
    [![显示发票科目创建页的屏幕截图](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
-6. 选择“创建”  。
+6. 选择“创建”。
 
 ## <a name="create-a-new-billing-profile"></a>创建新的计费配置文件
 
@@ -100,19 +100,19 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-section-invoice/search-cmb.png)
 
-3. 在左侧窗格中选择“计费配置文件”，然后在页面顶部选择“添加”。  
+3. 在左侧窗格中选择“计费配置文件”，然后在页面顶部选择“添加”。 
 
-   [![屏幕截图，显示了计费配置文件列表](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
     > 如果“计费配置文件”页中未显示“添加”按钮，则表示该功能对你的帐户不可用。 目前，只有在 Microsoft 代表的配合下设置的帐户才能使用该功能。
 
-4. 填充表单，并单击“创建”  。
+4. 填充表单，并单击“创建”。
 
    [![显示计费配置文件创建页的屏幕截图](./media/mca-section-invoice/mca-add-profile.png)](./media/mca-section-invoice/mca-add-profile-zoomed-in.png#lightbox)
 
@@ -123,7 +123,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
     |帐单地址   | 帐单地址将显示在为计费配置文件生成的发票上。 |
     |通过电子邮件发送发票   | 选中“通过电子邮件发送发票”框可以通过电子邮件接收此计费配置文件的发票。 如果不选择此项，可以在 Azure 门户中查看和下载发票。|
 
-5. 选择“创建”  。
+5. 选择“创建”。
 
 ## <a name="link-charges-to-invoice-sections-and-billing-profiles"></a>将费用链接到发票科目和计费配置文件
 
@@ -133,11 +133,11 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“订阅”。 
+2. 搜索“订阅”。
 
    [![演示如何在门户中搜索订阅的屏幕截图](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
-3. 从页面顶部选择“添加”。 
+3. 从页面顶部选择“添加”。
 
    ![其中显示了“订阅”视图中的“添加”按钮的屏幕截图](./media/mca-section-invoice/subscription-add.png)
 
@@ -151,7 +151,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 7. 选择 Azure 计划，并输入订阅的易记名称。
 
-9. 单击“创建”。   
+9. 单击“创建”。  
 
 ### <a name="link-existing-subscriptions-and-products"></a>链接现有的订阅和产品
 
@@ -163,21 +163,21 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/mca-section-invoice/search-cmb.png)
 
-3. 若要将订阅链接到新的发票科目，请在屏幕的左侧选择“Azure 订阅”。  对于其他产品（例如 Azure 市场和应用源资源），请选择“重复性费用”。 
+3. 若要将订阅链接到新的发票科目，请在屏幕的左侧选择“Azure 订阅”。 对于其他产品（例如 Azure 市场和应用源资源），请选择“重复性费用”。
 
    [![显示用于更改发票科目的选项的屏幕截图](./media/mca-section-invoice/mca-select-change-invoice-section.png)](./media/mca-section-invoice/mca-select-change-invoice-section.png#lightbox)
 
-4. 在页面中，单击要链接到新发票科目的订阅或产品旁边的省略号（三个点）。 选择“更改发票科目”。 
+4. 在页面中，单击要链接到新发票科目的订阅或产品旁边的省略号（三个点）。 选择“更改发票科目”。
 
 5. 从下拉列表中选择新的发票科目。 下拉列表中只会显示已关联到现有发票科目所属的同一计费配置文件的发票科目。
 
     [![演示如何选择新发票科目的屏幕截图](./media/mca-section-invoice/mca-select-new-invoice-section.png)](./media/mca-section-invoice/mca-select-new-invoice-section-zoomed-in.png#lightbox)
 
-6. 选择“保存”。 
+6. 选择“保存”。
 
 ## <a name="things-to-consider-when-adding-new-billing-profiles"></a>添加新计费配置文件时要考虑的事项
 

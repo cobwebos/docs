@@ -1,7 +1,7 @@
 ---
 title: 创建虚拟网络 - 快速入门 - Azure CLI
 titlesuffix: Azure Virtual Network
-description: 本快速入门介绍如何使用 Azure CLI 创建虚拟网络。 虚拟网络能让 Azure 资源（例如虚拟机）彼此之间私下通信以及与 Internet 进行通信。
+description: 本快速入门介绍如何使用 Azure CLI 创建虚拟网络。 虚拟网络能让 Azure 资源互相通信以及与 Internet 通信。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235195"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056782"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟网络
 
 虚拟网络能让 Azure 资源（例如虚拟机 (VM)）彼此之间私下通信以及与 Internet 进行通信。 本快速入门介绍如何创建虚拟网络。 创建虚拟网络后，将两个 VM 部署到该虚拟网络中。 然后可以从 Internet 连接到 VM，并通过新的虚拟网络进行私下通信。
-
+## <a name="prerequisites"></a>先决条件
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -94,7 +95,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。  在下一步中，此地址将用于从 Internet 连接到 VM。
+记下 publicIpAddress。 在下一步中，此地址将用于从 Internet 连接到 VM。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -126,6 +127,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了默认的虚拟网络和两个 VM。 从 Internet 连接到了其中一个 VM，并在两个 VM 之间进行了私下通信。 若要了解有关虚拟网络设置的详细信息，请参阅[管理虚拟网络](manage-virtual-network.md)。
-
-Azure 可让 VM 之间进行不受限制的私下通信。 默认情况下，Azure 仅允许从 Internet 到 Windows VM 的入站远程桌面连接。 要了解有关配置不同类型的 VM 网络通信的详细信息，请转到[筛选网络流量](tutorial-filter-network-traffic.md)教程。
+在本快速入门中，你创建了默认的虚拟网络和两个 VM。 从 Internet 连接到了其中一个 VM，并在两个 VM 之间进行了私下通信。
+Azure 可让 VM 之间进行不受限制的私下通信。 默认情况下，Azure 仅允许从 Internet 到 Windows VM 的入站远程桌面连接。 转到下一篇文章，详细了解如何配置不同类型的 VM 网络通信：
+> [!div class="nextstepaction"]
+> [筛选网络流量](tutorial-filter-network-traffic.md)

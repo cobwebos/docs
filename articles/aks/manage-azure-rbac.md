@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 azure RBAC 通过 Azure Kubernetes 服务 (AKS) 进行 Kubernetes 授权。
 services: container-service
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244254"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003095"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
@@ -21,41 +21,33 @@ ms.locfileid: "86244254"
 
 本文档介绍一种新的方法，允许跨 Azure 资源、AKS 和 Kubernetes 资源实现统一的管理和访问控制。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 通过 Azure 管理 Kubernetes 资源的 RBAC 功能，你可以选择使用 Azure 或本机 Kubernetes 机制管理群集资源的 RBAC。 启用后，将由 Azure RBAC 专门验证 Azure AD 主体，同时 Kubernetes RBAC 以独占方式验证常规 Kubernetes 用户和服务帐户。 有关 AKS 上的身份验证、授权和 RBAC 的详细信息，请参阅[此处](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
-> [!IMPORTANT]
-> AKS 预览功能是可选择启用的自助功能。 预览功能是“按现状”和“按可用”提供的，不包括在服务级别协议和有限保证中。 AKS 预览功能是由客户支持尽最大努力部分覆盖。 因此，这些功能并不适合用于生产。 有关详细信息，请参阅以下支持文章：
->
-> - [AKS 支持策略](support-policies.md)
-> - [Azure 支持常见问题](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>先决条件 
 - 注册预览版 <https://aka.ms/aad-rbac-sign-up-form> 。
+- 确保具有 Azure CLI 版本2.9.0 或更高版本
 - 确保已 `EnableAzureRBACPreview` 启用功能标志。
-- 确保已 `AAD-V2` 启用功能标志。
-- 确保已 `aks-preview` 安装 CLI extension v 0.4.55 或更高版本
+- 确保已 `aks-preview` 安装[CLI extension][az-extension-add] v 0.4.55 或更高版本
 - 请确保已安装[kubectl v 1.18.3 +][az-aks-install-cli]。
 
-#### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>注册 `EnableAzureRBACPreview` 和 `AAD-V2` 预览功能
+#### <a name="register-enableazurerbacpreview-preview-feature"></a>注册 `EnableAzureRBACPreview` 预览功能
 
-若要创建使用 Azure RBAC 进行 Kubernetes 授权的 AKS 群集，必须 `EnableAzureRBACPreview` `AAD-V2` 在订阅上启用和功能标志。
+若要创建使用 Azure RBAC 进行 Kubernetes 授权的 AKS 群集，必须 `EnableAzureRBACPreview` 在订阅上启用功能标志。
 
 `EnableAzureRBACPreview`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-
-az feature register --namespace "Microsoft.ContainerService"  --name "AAD-V2"
 ```
 
-状态显示为“已注册”需要几分钟时间**。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+提交预览表单后，你必须获得批准才能成功注册标志。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
 准备就绪后，请使用 [az provider register] [az-provider-register] 命令刷新*ContainerService*资源提供程序的注册：
@@ -66,7 +58,7 @@ az provider register --namespace Microsoft.ContainerService
 
 #### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要创建使用 Azure RBAC 的 AKS 群集，需要*AKS* CLI 扩展版本0.4.55 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要创建使用 Azure RBAC 的 AKS 群集，需要*AKS* CLI 扩展版本0.4.55 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，或使用[az extension update][az-extension-update]命令安装任何可用更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -122,7 +114,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad --enable-azure
 AKS 提供下列四种内置角色：
 
 
-| 角色                                | 说明  |
+| 角色                                | 描述  |
 |-------------------------------------|--------------|
 | Azure Kubernetes 服务 RBAC 查看器  | 允许只读访问权限查看命名空间中的大多数对象。 它不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount (一种形式的权限提升)   |
 | Azure Kubernetes 服务 RBAC 编写器 | 允许读/写访问命名空间中的大多数对象。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许将 pod `Secrets` 作为命名空间中的任何 ServiceAccount 来访问和运行，因此它可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
@@ -283,7 +275,7 @@ az group delete -n MyResourceGroup
 
 - [在此处](concepts-identity.md)了解有关 AKS Authentication、AUTHORIZATION 和 RBAC 的详细信息。
 - [在此处](../role-based-access-control/overview.md)阅读有关 Azure RBAC 的详细信息。
-- 若要详细了解可用于在此处为 Kubernetes 授权定义自定义 Azure RBAC 角色的所有操作，请参阅[此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)。
+- 在[此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)了解有关可用于以粒度定义 Kubernetes 授权的自定义 Azure 角色的所有操作的详细信息。
 
 
 <!-- LINKS - Internal -->

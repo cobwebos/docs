@@ -1,6 +1,6 @@
 ---
 title: BGP 和 Azure VPN 网关：概述
-description: 本文概述了 Azure VPN 网关的 BGP。
+description: 了解 Azure VPN 中边界网关协议 (BGP) ，这是用于在网络之间交换路由和可访问性信息的标准 internet 协议。
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 368532eb05ade95a979029871733e057cbdcd6d6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708087"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035546"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>关于 Azure VPN 网关的 BGP
 本文概述了 Azure VPN 网关中的 BGP（边界网关协议）支持。

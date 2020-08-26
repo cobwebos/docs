@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/30/2020
-ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889263"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749866"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -40,7 +41,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager 模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-本文逐步讲解[Azure 门户](https://portal.azure.com)中的设置，您可以在其中创建 HDInsight 群集。
+本文逐步讲解 [Azure 门户](https://portal.azure.com)中的设置，您可以在其中创建 HDInsight 群集。
 
 ## <a name="basics"></a>基础知识
 
@@ -119,9 +120,9 @@ HDInsight 群集可以使用以下存储选项：
 * Azure Data Lake Storage Gen1
 * Azure 存储常规用途 v2
 * Azure 存储常规用途 v1
-* Azure 存储块 blob （**仅支持作为辅助存储**）
+* Azure 存储块 blob (**仅支持用作辅助存储**) 
 
-有关 HDInsight 存储选项的详细信息，请参阅[比较用于 Azure hdinsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
+有关 HDInsight 存储选项的详细信息，请参阅 [比较用于 Azure hdinsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 
 > [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用其他存储帐户。
@@ -132,6 +133,9 @@ HDInsight 群集可以使用以下存储选项：
 
 > [!IMPORTANT]
 > 在创建群集后启用安全存储传输可能会导致使用存储帐户时出错，因此不建议这样做。 最好使用已启用安全传输的存储帐户创建新群集。
+
+> [!Note]  
+> Azure HDInsight 不会自动传输、将 Azure 存储中存储的数据移动或复制到另一区域。
 
 ### <a name="metastore-settings"></a>元存储设置
 
@@ -147,6 +151,9 @@ HDInsight 群集可以使用以下存储选项：
 如果希望在删除 HDInsight 群集后保留 Hive 表，请使用自定义元存储。 这样，便可以将该元存储附加到另一个 HDInsight 群集。
 
 为一个 HDInsight 群集版本创建 An HDInsight 元存储不能在不同的 HDInsight 群集版本之间共享。 有关 HDInsight 版本的列表，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
+
+> [!IMPORTANT]
+> 默认的元存储提供具有 **基本第5级 DTU 限制 **的 Azure SQL 数据库， (无法) 升级！ 适用于基本测试目的。 对于大型或生产工作负荷，我们建议迁移到外部元存储。
 
 #### <a name="sql-database-for-oozie"></a>适用于 Oozie 的 SQL 数据库
 
@@ -165,7 +172,7 @@ Ambari 用于监视 HDInsight 群集，进行配置更改，以及存储群集�
 
 ### <a name="enterprise-security-package"></a>企业安全数据包
 
-对于 Hadoop、Spark、HBase、Kafka 和交互式查询群集类型，可选择启用“企业安全性套餐”。**** 启用此数据包，可通过使用 Apache Ranger 并与 Azure Active Directory 集成来实现更安全的群集设置。 有关详细信息，请参阅[Azure HDInsight 中的企业安全性概述](./domain-joined/hdinsight-security-overview.md)。
+对于 Hadoop、Spark、HBase、Kafka 和 Interactive Query 群集类型，可选择启用“企业安全性套餐”。 启用此套餐，可通过使用 Apache Ranger 并与 Azure Active Directory 集成来实现更安全的群集设置。 有关详细信息，请参阅 [Azure HDInsight 中的企业安全性概述](./domain-joined/hdinsight-security-overview.md)。
 
 企业安全数据包允许将 HDInsight 与 Active Directory 和 Apache Ranger 集成。 可使用企业安全数据包创建多个用户。
 

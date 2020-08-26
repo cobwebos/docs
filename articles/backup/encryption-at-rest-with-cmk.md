@@ -3,16 +3,16 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: ee64b9f2c6d260d91763cbe2d339640a9fab9967
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172498"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827335"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
-Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而不是使用默认情况下启用的平台管理的密钥。 用于加密备份数据的密钥必须存储在[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)中。
+Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而不是使用默认情况下启用的平台管理的密钥。 用于加密备份数据的密钥必须存储在 [Azure Key Vault](../key-vault/index.yml)中。
 
 用于加密备份的加密密钥可能与用于源的加密密钥不同。 使用基于 AES 256 的数据加密密钥保护数据 (DEK) ，后者反过来使用 (KEK) 中的密钥进行保护。 这使你可以完全控制数据和密钥。 若要允许加密，需要向恢复服务保管库授予对 Azure 密钥保管库中加密密钥的访问权限。 你可以在需要时将密钥更改为和。
 
@@ -23,23 +23,23 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 - 对使用客户管理的密钥加密的保管库执行备份
 - 从备份还原数据
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
-- 此功能仅允许加密**新的恢复服务保管库**。 不支持任何包含注册或试图注册到它的现有项目的保管库。
+- 此功能仅允许加密 **新的恢复服务保管库**。 不支持任何包含注册或试图注册到它的现有项目的保管库。
 
 - 为恢复服务保管库启用后，使用客户托管的密钥进行加密时，不能使用平台管理的密钥 (默认) 。 你可以根据需要更改加密密钥。
 
-- 此功能当前**不支持使用 MARS 代理进行备份**，并且你可能无法使用 CMK 加密的保管库。 MARS 代理使用基于用户密码的加密。 此功能也不支持经典 Vm 的备份。
+- 此功能当前 **不支持使用 MARS 代理进行备份**，并且你可能无法使用 CMK 加密的保管库。 MARS 代理使用基于用户密码的加密。 此功能也不支持经典 Vm 的备份。
 
-- 此功能与 Azure 磁盘加密无关，后者使用适用于) Windows 的 BitLocker (的[Azure 磁盘加密](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)和适用于 LINUX 的 DM (的 dm-crypt) 
+- 此功能与 Azure 磁盘加密无关，后者使用适用于) Windows 的 BitLocker (的 [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)和适用于 LINUX 的 DM (的 dm-crypt) 
 
-- 只能使用存储在位于**同一区域**中的 Azure Key Vault 中的密钥来加密恢复服务保管库。 而且，密钥必须仅为**RSA 2048 密钥**，并且应处于**启用**状态。
+- 只能使用存储在位于 **同一区域**中的 Azure Key Vault 中的密钥来加密恢复服务保管库。 而且，密钥必须仅为 **RSA 2048 密钥** ，并且应处于 **启用** 状态。
 
 - 当前不支持跨资源组和订阅移动 CMK 加密恢复服务保管库。
 
 - 此功能当前仅可通过 Azure 门户进行配置。
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+如果尚未创建和配置恢复服务保管库，则可以在 [此处阅读](backup-create-rs-vault.md)此内容。
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>将保管库配置为使用客户托管的密钥进行加密
 
@@ -60,9 +60,9 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 Azure 备份使用系统分配的托管标识对恢复服务保管库进行身份验证，以访问存储在 Azure Key Vault 中的加密密钥。 若要为恢复服务保管库启用托管标识，请按照下面所述的步骤进行操作。
 
 >[!NOTE]
->启用后，不能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
+>启用后， **不** 能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
 
-1. 请参阅恢复服务保管库->**标识**
+1. 请参阅恢复服务保管库-> **标识**
 
     ![标识设置](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
@@ -74,25 +74,25 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 你现在需要允许恢复服务保管库访问包含加密密钥的 Azure Key Vault。 这是通过允许恢复服务保管库的托管标识访问 Key Vault 来完成的。
 
-1. 请访问 Azure Key Vault >**访问策略**。 继续执行 **+ 添加访问策略**。
+1. 请访问 Azure Key Vault > **访问策略**。 继续执行 **+ 添加访问策略**。
 
     ![添加访问策略](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. 在 "**密钥权限**" 下，选择 "**获取**"、"**列出**"、"**解包**密钥并**打包密钥**" 操作 这将指定对允许的键的操作。
+1. 在 " **密钥权限**" 下，选择 " **获取**"、" **列出**"、" **解包** 密钥并 **打包密钥** " 操作 这将指定对允许的键的操作。
 
     ![分配密钥权限](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. 请在搜索框中，**选择 "主体**"，并使用其名称或托管标识搜索你的保管库。 显示后，选择保管库，并单击窗格底部的 "**选择**"。
+1. 请在搜索框中， **选择 "主体** "，并使用其名称或托管标识搜索你的保管库。 显示后，选择保管库，并单击窗格底部的 " **选择** "。
 
     ![选择主体](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. 完成后，单击 "**添加**" 以添加新的访问策略。
+1. 完成后，单击 " **添加** " 以添加新的访问策略。
 
-1. 单击 "**保存**" 以保存对 Azure Key Vault 的访问策略所做的更改。
+1. 单击 " **保存** " 以保存对 Azure Key Vault 的访问策略所做的更改。
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>启用软删除和清除保护 Azure Key Vault
 
-需要在存储加密密钥的 Azure Key Vault 上**启用软删除和清除保护**。 可以从 Azure Key Vault UI 执行此操作，如下所示。  (或者，在创建 Key Vault) 时可以设置这些属性。 [在此处](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)了解有关这些 Key Vault 属性的详细信息。
+需要在存储加密密钥的 Azure Key Vault 上 **启用软删除和清除保护** 。 可以从 Azure Key Vault UI 执行此操作，如下所示。  (或者，在创建 Key Vault) 时可以设置这些属性。 [在此处](../key-vault/general/soft-delete-overview.md)了解有关这些 Key Vault 属性的详细信息。
 
 ![启用软删除和清除保护](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -133,26 +133,26 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 ### <a name="assign-encryption-key-to-the-rs-vault"></a>将加密密钥分配给 RS vault
 
 >[!NOTE]
-> 继续操作之前，请确保以下各项：
+> 继续下一步之前，请确保以下各项：
 >
 > - 上述所有步骤均已成功完成：
 >   - 恢复服务保管库的托管标识已启用，并且已分配有必需的权限
 >   - 已启用软删除和清除保护的 Azure Key Vault
-> - 要为其启用 CMK 加密的恢复服务保管库没有任何受保护的项或未向其注册的项
+> - 要为其启用 CMK 加密的恢复服务保管库没有任何受保护的项或 **未** 向其注册的项
 
 确保了上述各项后，请继续选择保管库的加密密钥。
 
 分配密钥：
 
-1. 请参阅恢复服务保管库->**属性**
+1. 请参阅恢复服务保管库-> **属性**
 
     ![加密设置](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
 1. 单击 "**加密设置**" 下的 "**更新**"。
 
-1. 在 "加密设置" 窗格中，选择 "**使用你自己的密钥**"，然后使用以下方法之一继续指定密钥。 **确保要使用的密钥是 RSA 2048 密钥，它处于启用状态。**
+1. 在 "加密设置" 窗格中，选择 " **使用你自己的密钥** "，然后使用以下方法之一继续指定密钥。 **确保要使用的密钥是 RSA 2048 密钥，它处于启用状态。**
 
-    1. 输入要用于对此恢复服务保管库中的数据进行加密的**密钥 URI** 。 还需要指定包含此密钥) Azure Key Vault (的订阅。 可以从 Azure Key Vault 中的相应密钥获取此密钥 URI。 请确保正确复制了密钥 URI。 建议使用与密钥标识符一起提供的 "**复制到剪贴板**" 按钮。
+    1. 输入要用于对此恢复服务保管库中的数据进行加密的 **密钥 URI** 。 还需要指定包含此密钥) Azure Key Vault (的订阅。 可以从 Azure Key Vault 中的相应密钥获取此密钥 URI。 请确保正确复制了密钥 URI。 建议使用与密钥标识符一起提供的 " **复制到剪贴板** " 按钮。
 
         ![输入密钥 URI](./media/encryption-at-rest-with-cmk/key-uri.png)
 
@@ -160,9 +160,9 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
-1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的**活动日志**跟踪密钥分配的进度。 状态应更改为 "**成功**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
+1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的 **活动日志** 跟踪密钥分配的进度。 状态应更改为 " **成功**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 
     ![跟踪活动日志的进度](./media/encryption-at-rest-with-cmk/activity-log.png)
 
@@ -182,7 +182,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 在继续配置保护之前，强烈建议您确保遵守以下清单。 这一点很重要，因为一旦项目已配置为要 (备份或试图) 配置为 CMK 加密的保管库，则无法在其上启用使用客户托管的密钥进行加密，它将继续使用平台管理的密钥。
 
 >[!IMPORTANT]
-> 在继续配置保护之前，必须已**成功**完成以下步骤：
+> 在继续配置保护之前，必须已 **成功** 完成以下步骤：
 >
 >1. 已启用你的订阅，以便对你的备份保管库使用客户管理的密钥。
 >1. 已创建备份保管库
@@ -193,13 +193,13 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 >
 >如果已确认以上所有步骤，则只需继续配置备份。
 
-使用客户管理的密钥来配置和执行备份到恢复服务保管库的过程与使用平台托管密钥的保管库相同，**不会更改体验**。 这适用于[Azure vm 的备份](https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)以及在 VM 内运行的工作负荷的备份 (例如[SAP HANA](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) [SQL Server](https://docs.microsoft.com/azure/backup/tutorial-sql-backup)数据库) 。
+使用客户管理的密钥来配置和执行备份到恢复服务保管库的过程与使用平台托管密钥的保管库相同， **不会更改体验**。 这适用于 [Azure vm 的备份](./quick-backup-vm-portal.md) 以及在 VM 内运行的工作负荷的备份 (例如 [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) 数据库) 。
 
 ## <a name="restoring-data-from-backup"></a>从备份还原数据
 
 ### <a name="vm-backup"></a>VM 备份
 
-恢复服务保管库中存储的数据可以根据[此处](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms)所述的步骤还原。 从使用客户管理的密钥加密的恢复服务保管库还原时，可以选择使用 (DES) 的磁盘加密集来加密还原的数据。
+恢复服务保管库中存储的数据可以根据 [此处](./backup-azure-arm-restore-vms.md)所述的步骤还原。 从使用客户管理的密钥加密的恢复服务保管库还原时，可以选择使用 (DES) 的磁盘加密集来加密还原的数据。
 
 #### <a name="restoring-vm--disk"></a>正在还原 VM/磁盘
 
@@ -215,12 +215,12 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 磁盘加密集在 "还原" 窗格的 "加密设置" 下指定，如下所示：
 
-1. 在 "**使用你的密钥加密磁盘 () **中，选择 **" 是 "**。
+1. 在 " **使用你的密钥加密磁盘 () **中，选择 **" 是 "**。
 
 1. 从下拉列表中，选择要用于还原的磁盘的 DES)  (。 **确保你有权访问 DES。**
 
 >[!NOTE]
->如果正在还原使用 Azure 磁盘加密的 VM，则在还原时选择 DES 的功能将不可用。
+>如果正在还原使用 Azure 磁盘加密的 VM，则在还原时选择 DES 的功能不可用。
 
 ![使用密钥加密磁盘](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
 
@@ -240,7 +240,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>我尝试保护我的保管库中的某一项，但失败，并且该保管库仍未包含任何受保护的项。 能否为此保管库启用 CMK 加密？
 
-不可以，保管库在过去不能尝试保护任何项。
+不可以，保管库在过去不能对任何项进行任何保护。
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一个使用 CMK 加密的保管库。 以后是否可以使用平台托管密钥恢复到加密，即使已将备份项保护到保管库？
 
@@ -252,7 +252,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 ### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-cmk-encryption"></a>我漏掉了本文中的一个步骤，并继续对数据源进行了保护。 我是否仍然可以使用 CMK 加密？
 
-不遵循本文中的步骤并继续保护项目可能导致保管库无法使用客户管理的密钥来加密。 因此，建议您在继续保护项目之前引用[此核对清单](#backing-up-to-a-vault-encrypted-with-customer-managed-keys)。
+不遵循本文中的步骤并继续保护项目可能导致保管库无法使用客户管理的密钥来加密。 因此，建议您在继续保护项目之前引用 [此核对清单](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) 。
 
 ### <a name="does-using-cmk-encryption-add-to-the-cost-of-my-backups"></a>使用 CMK 加密会增加备份的成本吗？
 

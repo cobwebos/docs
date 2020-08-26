@@ -1,19 +1,19 @@
 ---
 title: 包含逻辑应用和 Power Automate 的视频索引器连接器教程。
 description: 本教程介绍如何使用包含逻辑应用和 Power Automate 的视频索引器连接器来解锁新的体验并创造盈利机会。
-author: anikaz
+author: anzaman
 manager: johndeu
-ms.author: anzaman
+ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 932f52aa694c13fd3696d82872135304a4e41bdc
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047102"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教程：使用包含逻辑应用和 Power Automate 的视频索引器
 
@@ -64,7 +64,7 @@ Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.
 
 ![按路径创建 SAS URI](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-填写[帐户位置和 ID](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) 以获取视频索引器帐户令牌。
+填写[帐户位置和 ID](./video-indexer-use-apis.md#account-id) 以获取视频索引器帐户令牌。
 
 ![获取帐户访问令牌](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.
 
 对于触发器，你会看到“HTTP POST URL”字段。 只有在保存流之后才会生成该 URL；但是，最后才需要使用该 URL。 稍后我们将返回到此字段。 
 
-填写[帐户位置和 ID](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) 以获取视频索引器帐户令牌。  
+填写[帐户位置和 ID](./video-indexer-use-apis.md#account-id) 以获取视频索引器帐户令牌。  
 
 转到“获取视频索引”操作并填写所需的参数。 对于“视频 ID”，请输入以下表达式：triggerOutputs()['queries']['id'] 
 

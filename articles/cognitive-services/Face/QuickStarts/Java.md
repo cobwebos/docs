@@ -8,20 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 8aaf0b25a20f24739bb556583cd020d8f11eaf2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986568"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549518"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入门：使用 REST API 和 Java 检测图像中的人脸
 
 本快速入门将通过 Java 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。 
 
 ## <a name="prerequisites"></a>先决条件
 

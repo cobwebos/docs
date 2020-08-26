@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84033568"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209545"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,7 +33,7 @@ ms.locfileid: "84033568"
 | [航班延迟和其他交通数据](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | “美国运输部 (DOT) 运输统计局 (BTS) 对大型航空公司运营的国内航班的准时情况进行了跟踪。 可在此网站发布的汇总表中了解准时的、延迟的和取消的航班及转机航班数的汇总信息。” | 文件为 CSV 格式。 |
 | [交通死亡事故 - 美国事故分析报告系统 (FARS)](https://www.nhtsa.gov/FARS) | “FARS 是全国性的普查，可提供 NHTSA、国会和美国公众就机动车辆交通事故造成的致命事故公开的年度数据。” | “使用 FARS 查询系统自己创建在线运行的死亡数据。 或从 FTP 站点下载自 1975 起的所有 FARS 数据。” |
 | [有毒化学物质数据 - EPA 毒性预测 (ToxCast&trade;) 数据](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | “EPA 可公开提供最近更新的数千种化学品的高通量毒性数据。 该数据由 EPA 的 ToxCast 研究得出。” | 存在各种格式的数据集，包括电子表格、R 包和 MySQL 数据库文件。 |
-| [有毒化学物质数据 - NIH Tox21 数据挑战 2014](https://tripod.nih.gov/tox21/challenge/) | “2014 Tox21 数据挑战旨在帮助科学家了解通过 21 世纪毒理学进行测试的化学物质和化合物的潜力，以可能造成毒性反应的方法主动打破生物学路径。” | 数据集格式为 SMILES 和 SDF。 该数据可提供“Tox21 收集的约 10,000 种化合物 (Tox21 10K) 的测定活性数据和化学结构。” |
+| [有毒化学物质数据 - NIH Tox21 数据挑战 2014](https://tripod.nih.gov/tox21) | “2014 Tox21 数据挑战旨在帮助科学家了解通过 21 世纪毒理学进行测试的化学物质和化合物的潜力，以可能造成毒性反应的方法主动打破生物学路径。” | 数据集格式为 SMILES 和 SDF。 该数据可提供“Tox21 收集的约 10,000 种化合物 (Tox21 10K) 的测定活性数据和化学结构。” |
 | [NCBI 提供的生物技术和基因组数据](https://www.ncbi.nlm.nih.gov/guide/data-software/) | 多个数据集，涵盖了基因、基因组和蛋白质的数据。 | 数据集为文本、XML、BLAST 等格式。 可使用 BLAST 应用。 |
 
 ## <a name="other-statistical-and-scientific-data"></a>其他统计和科学类数据

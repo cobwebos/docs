@@ -3,19 +3,19 @@ title: 语音转文本 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 5c356a1c707ede3b9417bc3e742a940333b4c4ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537963"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056816"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -64,8 +64,8 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Pronunciation-Assessment` | 指定用于在识别结果中显示发音评分的参数，这些参数可评估语音输入的发音质量，并显示准确性、熟练、完整性等。此参数是 base64 编码的 json，其中包含多个详细参数。 有关如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
+| `Pronunciation-Assessment` | 指定用于在识别结果中显示发音分数的参数，这些参数评估语音输入的发音质量，并具有准确性、流畅性、完整性等指标。此参数是 Base64 编码的 json，其中包含多个详细的参数。 若要了解如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必须 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |
@@ -84,16 +84,16 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 ## <a name="pronunciation-assessment-parameters"></a>发音评估参数
 
-此表列出了发音评估的必需参数和可选参数。
+下表列出了发音评估的必需参数和可选参数。
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| ReferenceText | 将对发音进行计算的文本。 | 必需 |
-| GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
-| 粒度 | 计算粒度。 接受的值为 `Phoneme` ，其中显示了全文本、单词和音素级别上的分数， `Word` 其中显示了整个文本和 word 级别的分数， `FullText` 只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
-| 维度 | 定义输出条件。 接受的值为 `Basic` ，只显示精确度评分， `Comprehensive` 显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
-| EnableMiscue | 启用 miscue 计算。 启用此功能后，会将发音为的单词与引用文本进行比较，并根据比较结果标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
-| ScenarioId | 指示自定义点系统的 GUID。 | 可选 |
+| ReferenceText | 用来对发音进行评估的文本。 | 必须 |
+| GradingSystem | 用于分数校准的分数系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
+| 粒度 | 评估粒度。 接受的值为 `Phoneme`（显示全文、单词和音素级别的分数）、`Word`（显示全文和单词级别的分数）、`FullText`（只显示全文级别的分数）。 默认设置为 `Phoneme`。 | 可选 |
+| 维度 | 定义输出条件。 接受的值为 `Basic`（只显示准确度分数）、`Comprehensive`（显示更多维度的分数，例如，全文级别的流畅度分数和完整性分数、单词级别的错误类型）。 检查[响应参数](#response-parameters)以了解不同分数维度和单词错误类型的定义。 默认设置为 `Basic`。 | 可选 |
+| EnableMiscue | 启用误读计算。 启用此功能后，系统会将发音单词与参考文本进行比较，并会根据比较结果将其标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
+| ScenarioId | 一个 GUID，表示自定义分数系统。 | 可选 |
 
 下面是一个示例 JSON，其中包含发音评估参数：
 
@@ -106,7 +106,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 }
 ```
 
-下面的示例代码演示如何将发音评估参数生成到 `Pronunciation-Assessment` 标头中：
+下面的示例代码演示如何将发音评估参数构建到 `Pronunciation-Assessment` 标头中：
 
 ```csharp
 var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
@@ -114,10 +114,10 @@ var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson)
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
 
-我们强烈建议在发布音频数据时进行流式处理（分块）上载，这可以显著减少延迟。 有关如何启用流式处理的详细说明，请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)。
+我们强烈建议在发布音频数据时进行流式（分块）上传，这可以显著减少延迟。 请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)以了解如何启用流式处理。
 
 >[!NOTE]
->发音评估功能当前仅适用于 `westus` `eastasia` 和 `centralindia` 区域。 此功能目前仅适用于 `en-US` 语言。
+>发音评估功能目前只在 `westus`、`eastasia` 和 `centralindia` 区域可用。 此功能目前仅适用于 `en-US` 语言。
 
 ## <a name="sample-request"></a>示例请求
 
@@ -133,7 +133,7 @@ Transfer-Encoding: chunked
 Expect: 100-continue
 ```
 
-若要启用发音评估，可以添加以下标头。 有关如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。
+若要启用发音评估，可以添加以下标头。 若要了解如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。
 
 ```HTTP
 Pronunciation-Assessment: eyJSZWZlcm...
@@ -223,10 +223,10 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `ITN` | 已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。 |
 | `MaskedITN` | 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。 |
 | `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `simple` 时提供的 `DisplayText` 相同。 |
-| `AccuracyScore` | 语音的读音准确性。 "准确性" 指示音素与本机扬声器发音的匹配程度。 Word 和全文级别的准确性分数聚合为音素级别的准确性分数。 |
-| `FluencyScore` | 给定语音的熟练。 熟练指示语音如何与本机演讲者使用单词之间的无提示中断的方式相匹配。 |
-| `CompletenessScore` | 语音的完整性，通过计算发音为引用文本输入的比率来确定。 |
-| `PronScore` | 指示给定语音的发音质量的总体分数。 此值从 `AccuracyScore` 、 `FluencyScore` 和权重中聚合而 `CompletenessScore` 成。 |
+| `AccuracyScore` | 语音的发音准确度。 准确度表示音素与母语人士发音的接近程度。 单词级别和全文级别的准确度分数由音素级别的准确度分数聚合而来。 |
+| `FluencyScore` | 给定语音的流畅度。 流畅度表示语音与母语人士在单词之间使用无声停顿的接近程度。 |
+| `CompletenessScore` | 语音的完整性，通过计算发音单词与参考文本输入的比率来确定。 |
+| `PronScore` | 总分，表示给定语音的发音质量。 此分数按权重从 `AccuracyScore`、`FluencyScore` 和 `CompletenessScore` 聚合而成。 |
 | `ErrorType` | 此值指示与 `ReferenceText` 相比，是省略、插入还是错误读出字词。 可能的值为 `None`（表示此词没有错误）、`Omission`、`Insertion` 和 `Mispronunciation`。 |
 
 ## <a name="sample-responses"></a>示例响应
@@ -302,6 +302,6 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+- [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

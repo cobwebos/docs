@@ -12,11 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741970"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798034"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>从“我的应用”门户登录并启动应用
 
@@ -32,7 +33,7 @@ ms.locfileid: "83741970"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> 此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
+> 此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
@@ -58,7 +59,7 @@ ms.locfileid: "83741970"
 
 - 请在“最近使用的项目”部分中查看你最后使用的应用。
 
-- 使用内部公司 URL，同时通过[应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)进行远程操作。
+- 使用内部公司 URL，同时通过[应用程序代理](../manage-apps/application-proxy.md)进行远程操作。
 
 ### <a name="to-download-and-install-the-extension"></a>下载并安装扩展
 

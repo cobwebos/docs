@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 IamIP Patent Platform 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 IamIP Patent Platform 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5b4fc1-e8fd-4418-a369-189272fef80d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d487aaf7ba4aaf666962cf91ca86d46115055b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1a2139b7a0f7d51b6c759a98c93c5250666f15a9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IamIP Patent Platform 的集成
 
@@ -121,7 +117,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中，完成以下步骤： 
    1. 在“名称”  框中，输入 **B.Simon**。  
-   1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。  例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。  
    1. 选择“创建”  。
 

@@ -9,13 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b844bcf45417fefc7dd78a26d5dae0b2ce03249
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8307f01e690536a71d98d5d5ca99f8f7a77a433f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982898"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383913"
 ---
-# <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>将数据引入到 Azure Data Lake Storage Gen2 中 
+# <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>将数据引入 Azure Data Lake Storage Gen2 
 
 本文介绍如何使用 Azure Synapse Analytics 将数据从 Azure Data Lake Gen2 (Azure Data Lake Gen 2) 存储帐户中的一个位置引入到另一个位置。
 

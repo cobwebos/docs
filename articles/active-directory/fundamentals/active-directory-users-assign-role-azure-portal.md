@@ -2,7 +2,7 @@
 title: 向用户分配 Azure AD 角色-Azure Active Directory |Microsoft Docs
 description: 有关如何为具有 Azure Active Directory 的用户分配管理员和非管理员角色的说明。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5dc42d8308b8e20a647f5f64867fd78a1a09c96
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223989"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902348"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>为具有 Azure Active Directory 的用户分配管理员和非管理员角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "86223989"
 
 ## <a name="assign-roles"></a>分配角色
 
-向用户分配 Azure AD 角色的常见方法是在用户的 "**分配的角色**" 页上。 你还可以使用 Privileged Identity Management (PIM) 向角色提升实时提升的资格。 有关如何使用 PIM 的详细信息，请参阅[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
+向用户分配 Azure AD 角色的常见方法是在用户的 "**分配的角色**" 页上。 你还可以使用 Privileged Identity Management (PIM) ，将用户资格配置为以实时方式提升为角色。 有关如何使用 PIM 的详细信息，请参阅[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
 
 > [!Note]
 > 如果有 Azure AD Premium P2 许可计划并已使用 PIM，则所有角色管理任务都将在[Privileged Identity Management 体验](../users-groups-roles/directory-manage-roles-portal.md)中执行。

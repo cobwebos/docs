@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066127"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 X12 消息以实现 B2B 企业集成
 
@@ -60,7 +61,7 @@ ms.locfileid: "83739526"
 
 ![入站消息的标识符属性](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-identifiers.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | ISA1（授权限定符） | 要使用的授权限定符值。 默认值为“00 - 不存在任何授权信息”。 <p>**注意**：如果选择其他值，请指定 ISA2 属性的值。 |
 | ISA2 | 当 ISA1 属性不是“00 - 不存在任何授权信息”时要使用的授权信息值。 此属性值必须最少包含一个字母数字字符，最多包含 10 个。 |
@@ -74,7 +75,7 @@ ms.locfileid: "83739526"
 
 ![确认入站消息](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-acknowledgement.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 预期的 TA1 | 向交换发送方返回技术确认 (TA1)。 |
 | 预期的 FA | 向交换发送方返回功能确认 (FA)。 <p>对于“FA 版本”属性，根据架构版本，选择 997 或 999 确认。 <p>若要在功能确认中为接受的事务集生成 AK2 循环，请选择“包括 AK2/IK2 循环”。 |
@@ -86,9 +87,9 @@ ms.locfileid: "83739526"
 
 ![入站消息的架构](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-对于此部分，请从每个事务类型 (ST01) 和发送方应用程序 (GS02) 的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)中选择一个[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 EDI 接收管道会通过将在此部分中设置的值和架构与传入消息中的 ST01 和 GS02 值进行匹配以及与传入消息的架构进行匹配，来分解传入消息。 完成每行后，会自动显示新的空行。
+对于此部分，请从每个事务类型 (ST01) 和发送方应用程序 (GS02) 的[集成帐户](./logic-apps-enterprise-integration-create-integration-account.md)中选择一个[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 EDI 接收管道会通过将在此部分中设置的值和架构与传入消息中的 ST01 和 GS02 值进行匹配以及与传入消息的架构进行匹配，来分解传入消息。 完成每行后，会自动显示新的空行。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | **版本** | 架构的 X12 版本 |
 | 事务类型 (ST01) | 事务类型 |
@@ -102,7 +103,7 @@ ms.locfileid: "83739526"
 
 ![在入站消息的事务集中使用的分隔符](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-envelopes.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | ISA11 用法 | 要在事务集中使用的分隔符： <p>- 标准标识符：在 EDI 接收管道中使用句点 (.) 十进制表示法，而不是使用传入文档的十进制表示法。 <p>- 重复分隔符：为重复出现的简单数据元素或重复数据结构指定分隔符。 例如，脱字符 (^) 通常用作重复分隔符。 对于 HIPAA 架构，只能使用脱字符。 |
 |||
@@ -113,7 +114,7 @@ ms.locfileid: "83739526"
 
 ![处理入站消息的控制编号重复项](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-control-numbers.png) 
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 不允许交换控制编号重复项 | 阻止重复交换。 检查交换控制编号 (ISA13) 是否匹配接收的交换控制编号。 如果检测到匹配项，则 EDI 接收管道不处理交换。 <p><p>若要指定执行检查的间隔天数，请为“每 x 天检查重复的 ISA13”属性输入适当的值。 |
 | 不允许组控制编号重复项 | 阻止具有重复组控制编号的交换。 |
@@ -128,7 +129,7 @@ ms.locfileid: "83739526"
 
 “默认”行显示用于 EDI 消息类型的验证规则。 如果要定义不同的规则，请选择要将规则设置为 true 的每个框。 完成每行后，会自动显示新的空行。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 消息类型 | EDI 消息类型 |
 | EDI 验证 | 根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
@@ -144,7 +145,7 @@ ms.locfileid: "83739526"
 
 ![入站消息的内部设置](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-internal-settings.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 将隐式小数格式“Nn”转换为十进制数值 | 将使用格式“Nn”指定的 EDI 数字转换为十进制数值。 |
 | 如果允许尾随分隔符，请创建空的 XML 标记 | 使交换发送方包含用于尾随分隔符的空 XML 标记。 |
@@ -183,7 +184,7 @@ ms.locfileid: "83739526"
 
 ![出站消息的标识符属性](./media/logic-apps-enterprise-integration-x12/x12-send-settings-identifiers.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | ISA1（授权限定符） | 要使用的授权限定符值。 默认值为“00 - 不存在任何授权信息”。 <p>**注意**：如果选择其他值，请指定 ISA2 属性的值。 |
 | ISA2 | 当 ISA1 属性不是“00 - 不存在任何授权信息”时要使用的授权信息值。 此属性值必须最少包含一个字母数字字符，最多包含 10 个。 |
@@ -197,7 +198,7 @@ ms.locfileid: "83739526"
 
 ![出站消息的确认属性](./media/logic-apps-enterprise-integration-x12/x12-send-settings-acknowledgement.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 预期的 TA1 | 向交换发送方返回技术确认 (TA1)。 <p>此设置指定发送消息的管理方请求协议中的托管方的确认。 管理方基于协议的接收设置需要这些确认。 |
 | 预期的 FA | 向交换发送方返回功能确认 (FA)。 对于“FA 版本”属性，根据架构版本，选择 997 或 999 确认。 <p>此设置指定发送消息的管理方请求协议中的托管方的确认。 管理方基于协议的接收设置需要这些确认。 |
@@ -209,9 +210,9 @@ ms.locfileid: "83739526"
 
 ![出站消息的架构](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-对于此部分，请从每个事务类型 (ST01) 的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)中选择一个[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 完成每行后，会自动显示新的空行。
+对于此部分，请从每个事务类型 (ST01) 的[集成帐户](./logic-apps-enterprise-integration-create-integration-account.md)中选择一个[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 完成每行后，会自动显示新的空行。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | **版本** | 架构的 X12 版本 |
 | 事务类型 (ST01) | 架构的事务类型 |
@@ -224,7 +225,7 @@ ms.locfileid: "83739526"
 
 ![在出站消息的事务集中使用的分隔符](./media/logic-apps-enterprise-integration-x12/x12-send-settings-envelopes.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | ISA11 用法 | 要在事务集中使用的分隔符： <p>- 标准标识符：在 EDI 发送管道中使用句点 (.) 十进制表示法，而不是使用出站文档的十进制表示法。 <p>- 重复分隔符：为重复出现的简单数据元素或重复数据结构指定分隔符。 例如，脱字符 (^) 通常用作重复分隔符。 对于 HIPAA 架构，只能使用脱字符。 |
 |||
@@ -235,9 +236,9 @@ ms.locfileid: "83739526"
 
 ![出站消息的控制版本号](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-对于此部分，请从每个交换的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)中选择一个[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 完成每行后，会自动显示新的空行。
+对于此部分，请从每个交换的[集成帐户](./logic-apps-enterprise-integration-create-integration-account.md)中选择一个[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 完成每行后，会自动显示新的空行。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 控制版本号 (ISA12) | X12 标准的版本 |
 | 用法指示符 (ISA15) | 交换的上下文，为测试数据、信息数据或生产数据 |
@@ -257,7 +258,7 @@ ms.locfileid: "83739526"
 
 ![出站消息的控制编号](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-numbers.png)
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 交换控制编号 (ISA13) | 交换控制编号的值范围，最小值为 1，最大值为 999999999 |
 | 组控制编号 (GS06) | 组控制编号的值范围，最小值为 1，最大值为 999999999 |
@@ -275,7 +276,7 @@ ms.locfileid: "83739526"
 > [!TIP]
 > 若要提供特殊字符值，请编辑作为 JSON 的协议并提供特殊字符的 ASCII 值。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 要使用的字符集 | X12 字符集，为“基本”、“扩展”或“UTF8”。 |
 | **架构** | 要使用的架构。 选择架构后，请根据以下分隔符说明选择要使用的字符集。 |
@@ -295,7 +296,7 @@ ms.locfileid: "83739526"
 
 “默认”行显示用于 EDI 消息类型的验证规则。 如果要定义不同的规则，请选择要将规则设置为 true 的每个框。 完成每行后，会自动显示新的空行。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | 消息类型 | EDI 消息类型 |
 | EDI 验证 | 根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
@@ -380,7 +381,7 @@ ms.locfileid: "83739526"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息（例如连接器的 Swagger 文件所述的操作和限制），请查看[连接器的参考页](https://docs.microsoft.com/connectors/x12/)。
+有关此连接器的更多技术详细信息（例如连接器的 Swagger 文件所述的操作和限制），请查看[连接器的参考页](/connectors/x12/)。
 
 > [!NOTE]
 > 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。

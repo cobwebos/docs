@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 AuditBoard 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 AuditBoard 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 072724b9-d1c8-4c22-9571-d1d0d7eb5ea2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: be16f4b51435016d948b23d4313214f399140b39
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1020dec2069d609cf5f919c5802da906ae172ed2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157810"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>教程：Azure Active Directory 与 AuditBoard 集成
 

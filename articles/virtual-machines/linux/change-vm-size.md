@@ -3,14 +3,15 @@ title: 如何使用 Azure CLI 重设 Linux VM 的大小
 description: 如何通过更改 VM 大小来增加或减少 Linux 虚拟机。
 author: DavidCBerry13
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
-ms.openlocfilehash: cf2716ce5d24aa86e32f6f521134590c671d5011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120974"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372257"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 重设 Linux 虚拟机大小 
 
@@ -49,5 +50,5 @@ ms.locfileid: "83120974"
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
-[scale-set]: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
+[scale-set]: ../../virtual-machine-scale-sets/tutorial-autoscale-cli.md 
 [vm-sizes]:sizes.md

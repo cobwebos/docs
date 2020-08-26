@@ -10,13 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047495"
 ---
-# <a name="animated-character-detection-preview"></a>动画字符检测（预览）
+# <a name="animated-character-detection-preview"></a>动画字符检测（预览版）
 
 Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)集成来检测、分组和识别动画内容中的字符。 此功能可通过门户和 API 使用。
 
@@ -42,8 +43,8 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 |功能|试用|已付|
 |---|---|---|
 |自定义视觉帐户|由视频索引器在后台进行管理。 |自定义视觉帐户已连接到视频索引器。|
-|动画模型的数目|One|每个帐户最多100个型号（自定义视觉限制）。|
-|模型定型|视频索引器训练新字符的模型其他现有字符的示例。|当客户准备好进行更改时，帐户所有者训练该模型。|
+|动画模型的数目|一个|每个帐户最多100个型号（自定义视觉限制）。|
+|训练模型|视频索引器训练新字符的模型其他现有字符的示例。|当客户准备好进行更改时，帐户所有者训练该模型。|
 |自定义视觉中的高级选项|无权访问自定义视觉门户。|您可以在自定义视觉门户中自行调整模型。|
 
 ## <a name="use-the-animated-character-detection-with-portal"></a>使用门户中的动画字符检测 
@@ -68,7 +69,7 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 
     * 定型键（适用于定型资源）
     * 预测键（用于预测资源）
-    * 终结点 
+    * 端点 
     * 预测资源 ID
     
     > [!NOTE]
@@ -133,7 +134,7 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
         ![内容模型自定义](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. 训练后，任何将通过该模型建立索引或重新编制索引的视频都将识别定型字符。 
-    有权访问其自定义视觉帐户的付费帐户可在此处查看模型和标记图像。 详细了解如何[在自定义视觉中改进分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)。
+    有权访问其自定义视觉帐户的付费帐户可在此处查看模型和标记图像。 详细了解如何[在自定义视觉中改进分类器](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)。
 
 1. 删除动画字符。
 
@@ -159,7 +160,7 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 1. 连接自定义视觉帐户。
 
     如果你拥有视频索引器付费帐户，则需要先连接自定义视觉帐户。 <br/>
-    如果还没有自定义视觉帐户，请创建一个。 有关详细信息，请参阅[自定义视觉](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)。
+    如果还没有自定义视觉帐户，请创建一个。 有关详细信息，请参阅[自定义视觉](../../cognitive-services/custom-vision-service/home.md)。
 
     [使用 API 连接自定义视觉帐户](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)。
 1. 创建 "动画字符" 模型。

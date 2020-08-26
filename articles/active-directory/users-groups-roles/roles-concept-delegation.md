@@ -15,11 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556871b55de60ee592622f9f93c7b7123ba2ed32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731964"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798595"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委托管理权限
 
@@ -37,7 +38,7 @@ ms.locfileid: "84731964"
 
 在 Azure AD 门户中，可以[查看任何角色的所有成员](directory-manage-roles-portal.md)，以帮助快速检查部署和委托权限。
 
-如果想要委托 Azure 资源访问权限而不是 Azure AD 中的管理访问权限，请参阅[分配基于角色的访问控制 (RBAC) 角色](../../role-based-access-control/role-assignments-portal.md)。
+如果你有兴趣委派对 Azure 资源的访问权限，而不是 Azure AD 中的管理访问权限，请参阅 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="delegation-planning"></a>委托规划
 
@@ -59,7 +60,7 @@ ms.locfileid: "84731964"
 应该评估每个任务的频率、重要性和难度。 这些标准是任务定义至关重要的方面，因为它们决定了是否要委托某个权限：
 
 * 日常执行的、风险有限的和容易完成的任务非常适合委托权限。
-* 至于极少执行但会在整个组织中造成很大影响且需要较高技能的任务，在委托权限之前应慎重考虑。 可以[暂时将某个帐户提升到所需的角色](../active-directory-privileged-identity-management-configure.md)，或重新分配任务。
+* 至于极少执行但会在整个组织中造成很大影响且需要较高技能的任务，在委托权限之前应慎重考虑。 可以[暂时将某个帐户提升到所需的角色](../privileged-identity-management/pim-configure.md)，或重新分配任务。
 
 ## <a name="delegate-app-administration"></a>委托应用管理权限
 
@@ -72,12 +73,12 @@ ms.locfileid: "84731964"
 
 默认情况下，所有用户都可以创建应用程序注册。 若要有选择地授予创建应用程序注册的能力，请执行以下操作：
 
-* 在“用户设置”中，将“用户可以注册应用程序”更改为“否”********
+* 在“用户设置”中，将“用户可以注册应用程序”更改为“否” 
 * 将用户分配到应用程序开发人员角色
 
 若要有选择地授予允许应用程序访问数据的能力，请执行以下操作：
 
-* 在“用户设置”中，将“用户可以自行许可应用程序访问公司数据”设置为“否”********
+* 在“用户设置”中，将“用户可以自行许可应用程序访问公司数据”设置为“否” 
 * 将用户分配到应用程序开发人员角色
 
 当应用程序开发人员创建新应用程序注册时，他们将自动添加为第一个所有者。
@@ -86,8 +87,8 @@ ms.locfileid: "84731964"
 
 若要进行更精细的应用访问权限委托，可将所有权分配到单个企业应用程序。 这是对分配应用程序注册所有者的现有支持的补充。 所有权在“企业应用程序”边栏选项卡中根据每个企业应用程序进行分配。 优点是所有者只能管理他们拥有的企业应用程序。 例如，可以分配 Salesforce 应用程序的所有者，该所有者可以管理 Salesforce 的访问权限和配置，但不能管理其他任何应用程序的访问权限和配置。 一个企业应用程序可以有多个所有者，一个用户可以是许多企业应用程序的所有者。 有两种应用所有者角色：
 
-* “企业应用程序所有者”角色授予管理用户拥有的企业应用程序的能力，包括单一登录设置、用户和组分配，以及添加其他所有者。**** 它不会授予管理应用程序代理设置或条件性访问的能力。
-* “应用程序注册所有者”角色授予管理用户拥有的应用的应用程序注册的能力，包括应用程序清单和添加其他所有者。****
+* “企业应用程序所有者”角色授予管理用户拥有的企业应用程序的能力，包括单一登录设置、用户和组分配，以及添加其他所有者。 它不会授予管理应用程序代理设置或条件性访问的能力。
+* “应用程序注册所有者”角色授予管理用户拥有的应用的应用程序注册的能力，包括应用程序清单和添加其他所有者。
 
 ## <a name="develop-a-security-plan"></a>制定安全计划
 
@@ -99,7 +100,7 @@ Azure AD 提供了一篇综合性的指南来帮助你规划和执行 Azure AD �
 
 ## <a name="secure-your-administrator-roles"></a>保护管理员角色
 
-控制特权帐户的攻击者可能会面临巨大的损害，因此，请先使用默认情况下提供给所有 Azure AD 组织（在公共预览版中）的[基线访问策略](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)来保护这些帐户。 该策略针对 Azure AD 特权帐户强制实施多重身份验证。 Azure AD 基线策略涵盖以下 Azure AD 角色：
+控制了特权帐户的攻击者可能会造成极大的损害，因此，首先请使用默认适用于所有 Azure AD 组织的[基线访问策略](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)（公共预览版）保护这些帐户。 该策略针对 Azure AD 特权帐户强制实施多重身份验证。 Azure AD 基线策略涵盖以下 Azure AD 角色：
 
 * 全局管理员
 * SharePoint 管理员
@@ -109,7 +110,7 @@ Azure AD 提供了一篇综合性的指南来帮助你规划和执行 Azure AD �
 
 ## <a name="elevate-privilege-temporarily"></a>暂时提升特权
 
-对于大多数日常活动，并非所有用户都需要全局管理员权限，也不应将所有用户永久分配到全局管理员角色。 当用户需要全局管理员权限时，应使用其自己的帐户或备用管理帐户在 Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) 中激活角色分配。
+对于大多数日常活动，并非所有用户都需要全局管理员权限，也不应将所有用户永久分配到全局管理员角色。 当用户需要全局管理员权限时，应使用其自己的帐户或备用管理帐户在 Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 中激活角色分配。
 
 ## <a name="next-steps"></a>后续步骤
 

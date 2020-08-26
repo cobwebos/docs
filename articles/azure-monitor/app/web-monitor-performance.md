@@ -4,11 +4,12 @@ description: Application Insights 入门。 分析本地或 Microsoft Azure 应�
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985059"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323445"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -22,10 +23,10 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>设置性能监视
 如果尚未将 Application Insights 添加到项目（即，如果它没有 ApplicationInsights.config），则选择以下方式之一开始操作：
 
-* [ASP.NET Web 应用](../../azure-monitor/app/asp-net.md)
-  * [添加异常监视](../../azure-monitor/app/asp-net-exceptions.md)
-  * [添加依赖项监视](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web 应用](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [ASP.NET Web 应用](./asp-net.md)
+  * [添加异常监视](./asp-net-exceptions.md)
+  * [添加依赖项监视](./monitor-performance-live-website-now.md)
+* [Java EE Web 应用](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>探索性能指标
 在 [Azure 门户](https://portal.azure.com)中，浏览到为应用程序设置的 Application Insights 资源。 “概述”边栏选项卡显示基本性能数据：
@@ -60,15 +61,15 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 单击该磁贴可获取特定 URL 的时间。
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+!["应用程序运行状况" 窗格的屏幕截图，它在请求和响应时间的移动平均值的时间段内显示折线图。](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>速度最慢的请求
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![最慢请求及其响应时间列表的屏幕截图。](./media/web-monitor-performance/appinsights-44slowest.png)
 
 显示哪些请求可能需要性能优化。
 
 ### <a name="failed-requests"></a>失败的请求
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![一段时间内的行图的屏幕截图，出现失败的请求数。也就是说，引发未捕获的异常的请求。](./media/web-monitor-performance/appinsights-46failed.png)
 
 引发未捕获异常的请求计数。
 
@@ -86,7 +87,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 ## <a name="set-alerts"></a>设置警报
 若要收到任意指标异常值的电子邮件通知，请添加警报。 可选择将电子邮件发送给帐户管理员或特定电子邮件地址。
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+!["添加警报规则" 对话框的屏幕截图，以及显示如何从指标资源管理器访问该对话框的箭头所连接的屏幕截图。](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 在其他属性之前设置资源。 如果要设置关于性能或使用情况指标的警报，请不要选择 webtest 资源。
 
@@ -105,7 +106,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 
-可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 您可以快速选择特定的慢速操作并使用[探查器](../../azure-monitor/app/profiler.md)使操作缓慢地降低到代码的速度。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
+可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 您可以快速选择特定的慢速操作并使用[探查器](./profiler.md)使操作缓慢地降低到代码的速度。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
 
 ![“GET Customers/Details”三个持续时间峰值](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -141,15 +142,13 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
+[qna]: ../faq.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
 

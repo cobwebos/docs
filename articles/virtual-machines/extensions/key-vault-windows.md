@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c41207bedbea96c76f0a9a6ffd45ea6efa09138b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502956"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641766"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -73,9 +73,9 @@ ms.locfileid: "86502956"
 > 
 > 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> 当 VM 具有多个分配的标识时，"Authenticationsettings.instance.setsecretkey 中" 属性是可选的。
-> 它允许指定标识用于 Key Vault 的身份验证。
+> [!IMPORTANT]
+> 只有具有**用户分配标识**的 vm 才**需要**"authenticationsettings.instance.setsecretkey 中" 属性。
+> 它指定用于 Key Vault 身份验证的标识。
 
 
 ### <a name="property-values"></a>属性值
@@ -83,16 +83,16 @@ ms.locfileid: "86502956"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| pollingIntervalInS | 3600 | 字符串 |
+| certificateStoreName | MY | 字符串 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | 字符串 |
+| certificateStoreLocation  | LocalMachine 或 CurrentUser (区分大小写)  | 字符串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
-| msiEndpoint | http://169.254.169.254/metadata/identity | string |
+| msiEndpoint | http://169.254.169.254/metadata/identity | 字符串 |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
 
@@ -209,7 +209,7 @@ ms.locfileid: "86502956"
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 

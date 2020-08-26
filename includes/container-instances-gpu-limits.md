@@ -4,14 +4,14 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: e3aeababcd062e315c9d80a35f183173a6fd1273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad52317319a2da973c0cc1cdf34a1ada01238d95
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77117840"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387076"
 ---
-### <a name="resource-availability"></a>资源可用性
+### <a name="maximum-resources-per-sku"></a>每个 SKU 的最大资源
 
 | OS | GPU SKU | GPU 计数 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | --- | --- | --- | --- | --- | --- |

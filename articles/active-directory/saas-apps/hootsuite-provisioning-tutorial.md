@@ -2,24 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Hootsuite 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Hootsuite 及如何解除预配。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fbbee24e-272f-4fa6-819c-10c548bf0215
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1adbb0961ab610db936107f2fff210f4acecf2ed
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 83b2a497cbeda188a4329e634256746f48984a89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83882970"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521927"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教程：为 Hootsuite 配置自动用户预配
 
@@ -132,7 +129,7 @@ ms.locfileid: "83882970"
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 

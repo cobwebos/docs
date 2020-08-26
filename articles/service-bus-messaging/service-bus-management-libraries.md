@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 服务总线管理库动态预配服
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341722"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066162"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -26,11 +26,11 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 
 若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 
-* [使用 Azure 门户创建可访问资源的 Active Directory 应用程序和服务主体](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [使用 Azure PowerShell 创建服务主体来访问资源](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [使用 Azure CLI 创建服务主体来访问资源](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [使用 Azure 门户创建可访问资源的 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)
+* [使用 Azure PowerShell 创建服务主体来访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [使用 Azure CLI 创建服务主体来访问资源](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)或[参与者](/azure/role-based-access-control/built-in-roles#contributor)权限 。
+这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)或[参与者](../role-based-access-control/built-in-roles.md#contributor)权限 。
 
 ## <a name="programming-pattern"></a>编程模式
 

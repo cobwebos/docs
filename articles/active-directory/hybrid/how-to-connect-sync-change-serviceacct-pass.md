@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357556"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385086"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>更改 ADSync 服务帐户密码
 如果更改了 ADSync 服务帐户密码，则将无法正常启动同步服务，除非已放弃加密密钥并重新初始化 ADSync 服务帐户密码。 
@@ -52,7 +52,7 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>放弃 ADSync 服务帐户加密密钥
 >[!IMPORTANT]
->以下过程仅适用于 Azure AD Connect 1.1.443.0 或更低版本。
+>以下过程仅适用于 Azure AD Connect 1.1.443.0 或更低版本。 这不能用于较新版本的 Azure AD Connect。
 
 请按以下过程操作，放弃加密密钥。
 
@@ -93,14 +93,14 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 #### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>提供 AD DS 连接器帐户的密码
 由于存储在数据库中的现有密码再也不能解密，因此需要为同步服务提供 AD DS 连接器帐户的密码。 同步服务使用新的加密密钥对密码加密：
 
-1. 启动 Synchronization Service Manager（“开始”→ Synchronization Service）。
+1. 启动 Synchronization Service Manager（“开始”→ 同步服务）。
 </br>![Sync Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
-2. 转到“连接器”选项卡。 
-3. 选择与本地 AD 对应的“AD 连接器”。  如果有多个 AD 连接器，请针对每个连接器重复以下步骤。
-4. 在“操作”下面，选择“属性”。  
-5. 在弹出对话框中，选择“连接到 Active Directory 林”： 
-6. 在“密码”文本框中输入 AD DS 帐户的密码。  如果不知道该密码，则必须将其设置为某个已知值，再执行此步骤。
-7. 单击“确定”保存新密码并关闭弹出对话框。 
+2. 转到“连接器”**** 选项卡。
+3. 选择与本地 AD 对应的“AD 连接器”。**** 如果有多个 AD 连接器，请针对每个连接器重复以下步骤。
+4. 在“操作”下面，选择“属性”。********
+5. 在弹出对话框中，选择“连接到 Active Directory 林”****：
+6. 在“密码”**** 文本框中输入 AD DS 帐户的密码。 如果不知道该密码，则必须将其设置为某个已知值，然后再执行此步骤。
+7. 单击“确定”**** 保存新密码并关闭弹出对话框。
 ![Azure AD Connect 同步加密密钥实用工具](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>重新初始化 ADSync 服务帐户的密码

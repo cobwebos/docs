@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156607"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246574"
 ---
-开始使用适用于 Go 的必应自动建议客户端库。 请按照以下步骤安装库并试用基本任务的示例。 
+开始使用适用于 Go 的必应自动建议客户端库。 请按照以下步骤安装库并试用基本任务的示例。
 
 使用适用于 Go 的必应自动建议客户端库，以便基于部分查询字符串获取搜索建议。
 
@@ -23,7 +23,7 @@ ms.locfileid: "86156607"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有 Azure 订阅，则[可以免费创建一个](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果还没有 Azure 订阅，则[可以免费创建一个](https://azure.microsoft.com/free/cognitive-services)。
 * 最新版本的 [Go](https://golang.org/dl/)。
 
 通过创建 Azure 资源，开始使用必应自动建议客户端库。 选择下面适合你的资源类型：
@@ -33,12 +33,12 @@ ms.locfileid: "86156607"
 ## <a name="create-environment-variables"></a>创建环境变量
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之后创建的资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
+> 在 2019 年 7 月 1 日之后创建的资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。
 
 从创建的资源使用密钥和终结点，创建两个用于身份验证的环境变量：
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`：用于验证请求的资源密钥。
-* `AUTOSUGGEST_ENDPOINT`：用于发送 API 请求的资源终结点。 它应如下所示：`https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_ENDPOINT`：用于发送 API 请求的资源终结点。 它应如下所示：`https://<your-custom-subdomain>.api.cognitive.microsoft.com`
 
 使用操作系统的说明。
 <!-- replace the below endpoint and key examples -->
@@ -74,7 +74,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 ## <a name="create-a-new-go-project"></a>创建新的 Go 项目
 
-在控制台窗口（cmd、PowerShell、终端、Bash）中，为 Go 项目创建一个新的工作区并导航到该工作区。 工作区包含三个文件夹： 
+在控制台窗口（cmd、PowerShell、终端、Bash）中，为 Go 项目创建一个新的工作区并导航到该工作区。 工作区包含三个文件夹：
 
 * **src**：此目录包含源代码和包。 使用 `go get` 命令安装的任何包将位于此处。
 * pkg：此目录包含已编译的 Go 包对象。 这些文件使用 `.a` 扩展名。
@@ -92,7 +92,7 @@ $ cd my-app
 
 ## <a name="install-the-client-library-for-go"></a>安装适用于 Go 的客户端库
 
-现在，让我们安装适用于 Go 的客户端库： 
+现在，让我们安装适用于 Go 的客户端库：
 
 ```bash
 $ go get -u <library-location-or-url>
@@ -154,10 +154,10 @@ func main() {
 
 ### <a name="authenticate-the-client"></a>验证客户端
 
-> [!NOTE] 
+> [!NOTE]
 > 本快速入门假设你已为必应自动建议密钥创建了名为 `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，以及一个用于终结点的名为 `BING_AUTOSUGGEST_ENDPOINT` 的环境变量。
 
-在 `main()` 函数中，使用终结点和密钥实例化客户端。 
+在 `main()` 函数中，使用终结点和密钥实例化客户端。
 
 ```go
 // Get the context, which is required by the SDK methods.

@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: bb7be1815364b3def9b22e50454dceabd17e6150
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d144960972f5a1b45e88cc3a0ea015925cae3b91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829641"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288142"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Twilio 中的消息
 
@@ -68,7 +69,7 @@ ms.locfileid: "83829641"
 
 ## <a name="get-support"></a>获取支持
 
-* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

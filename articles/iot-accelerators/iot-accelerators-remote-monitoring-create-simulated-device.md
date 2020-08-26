@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt
-ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682014"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422753"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
 
@@ -32,11 +33,11 @@ ms.locfileid: "81682014"
 
 | 名称                     | 值                      |
 | ------------------------ | --------------------------- |
-| 颜色                    | 白、红、蓝            |
+| Color                    | 白、红、蓝            |
 | 亮度               | 0 到 100                    |
 | 估计剩余生命 | 从 10,000 小时开始倒计数 |
 
-遥测 
+*遥测*
 
 下表显示了灯泡以数据流形式报告给云的数据：
 
@@ -53,7 +54,7 @@ ms.locfileid: "81682014"
 
 下表显示了新设备支持的操作：
 
-| “属性”        |
+| 名称        |
 | ----------- |
 | 打开   |
 | 关闭  |
@@ -64,7 +65,7 @@ ms.locfileid: "81682014"
 
 | 名称                     | 值 |
 | ------------------------ | -------|
-| 初始颜色            | 白色  |
+| 初始颜色            | 白种人  |
 | 初始亮度       | 75     |
 | 初始剩余生命   | 10,000 |
 | 初始遥测状态 | "on"   |

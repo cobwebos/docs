@@ -1,13 +1,14 @@
 ---
 title: 设置蓝图操作员的环境
-description: 了解如何配置 Azure 环境，以便与蓝图运算符内置的基于角色的访问控制（RBAC）角色一起使用。
+description: 了解如何配置 Azure 环境以与蓝图操作员 Azure 内置角色一起使用。
 ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a61997f5e3247e5b42d5e2f07c0fc38cc1b5114d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9390958507a135497c4c48a260a44bc0f4492ffa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864005"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499800"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图操作员配置环境
 

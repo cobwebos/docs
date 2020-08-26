@@ -3,12 +3,12 @@ title: Azure 服务总线主题筛选器 | Microsoft Docs
 description: 本文介绍订阅者如何通过指定筛选器来定义希望从主题接收的消息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339969"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066740"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 
@@ -55,13 +55,11 @@ ms.locfileid: "85339969"
 
 
 > [!NOTE]
-> 由于 Azure 门户现在支持服务总线资源管理器功能，因此可以从门户创建或编辑订阅筛选器。 
+> 由于 Azure 门户现在支持 Service Bus Explorer 功能，因此可以从门户创建或编辑订阅筛选器。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下示例： 
 
 - [.NET - 使用筛选器进行的基本发送和接收操作的教程](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET - 主题筛选器](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager 模板](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
-
-
+- [Azure Resource Manager 模板](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

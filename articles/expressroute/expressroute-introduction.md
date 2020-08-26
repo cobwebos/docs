@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75770945"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607116"
 ---
-# <a name="expressroute-overview"></a>ExpressRoute 概述
+# <a name="what-is-azure-expressroute"></a>什么是 Azure ExpressRoute？
 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Office 365 等 Microsoft 云服务建立连接。
 
 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、一致的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。

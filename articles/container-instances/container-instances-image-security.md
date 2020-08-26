@@ -4,12 +4,12 @@ description: 有关保护 Azure 容器实例的映像和机密的建议，以及
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907017"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922228"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -19,7 +19,7 @@ ms.locfileid: "84907017"
 > * 有关管理 Azure 容器实例的映像和机密的**安全建议**
 > * 任何容器平台在整个容器生命周期内的**容器生态系统注意事项**
 
-有关将帮助你改进部署安全状况的综合建议，请参阅[容器实例的 Azure 安全基线](security-baseline.md)。
+有关可帮助你改善部署安全态势的综合建议，请参阅[容器实例的 Azure 安全基线](security-baseline.md)。
 
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Azure 容器实例的安全建议
@@ -32,15 +32,15 @@ ms.locfileid: "84907017"
 
 ### <a name="monitor-and-scan-container-images"></a>监视和扫描容器映像
 
-利用解决方案来扫描专用注册表中的容器映像，并识别潜在的漏洞。 了解不同解决方案提供的威胁检测的深度很重要。
+利用解决方案来扫描专用注册表中的容器映像并识别潜在漏洞。 了解不同解决方案提供的威胁检测的深度很重要。
 
-例如，Azure 容器注册表可以选择[与 Azure 安全中心集成](../security-center/azure-container-registry-integration.md)，以自动扫描推送到注册表的所有 Linux 映像。 Azure 安全中心的集成 Qualys 扫描程序可以检测映像漏洞，对其进行分类，并提供修正指导。
+例如，Azure 容器注册表可以选择[与 Azure 安全中心](../security-center/azure-container-registry-integration.md)集成，以便自动扫描已推送到注册表的所有 Linux 映像。 Azure 安全中心的集成 Qualys 扫描程序可以检测映像漏洞、对其进行分类，并提供修正指导。
 
 还可以通过 Azure Marketplace 使用安全监视和图像扫描解决方案，如[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview)和[浅绿安全性](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)。  
 
 ### <a name="protect-credentials"></a>保护凭据
 
-容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  确保解决方案包含加密的数据库、针对传输中机密数据的 TLS 加密，以及最低特权的[基于角色的访问控制](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
+容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  请确保解决方案包含加密数据库、传输中的机密数据的 TLS 加密，以及 azure [RBAC)  (的最低权限 azure 基于角色的访问控制](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>容器生态系统的注意事项
 
@@ -138,14 +138,14 @@ ms.locfileid: "84907017"
 
 维护对容器生态系统（包括 Kubernetes 群集）、容器注册表和容器映像的管理访问的准确审核线索。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
 
-* 将[Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/azure-kubernetes-service-integration.md)，以监视群集环境的安全配置并生成安全建议
+* [将 Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/azure-kubernetes-service-integration.md)来监视群集环境的安全配置并生成安全建议
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)
 * [Azure 容器实例](container-instances-log-analytics.md)和[azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅[容器实例的 Azure 安全基线](security-baseline.md)以获取可帮助你提高部署安全状况的综合建议。
+* 有关可帮助你改善部署安全态势的综合建议，请参阅[容器实例的 Azure 安全基线](security-baseline.md)。
 
-* 详细了解如何使用[Azure 安全中心](../security-center/container-security.md)在容器化环境中进行实时威胁检测。
+* 详细了解如何使用 [Azure 安全中心](../security-center/container-security.md)在容器化环境中进行实时威胁检测。
 
 * 详细了解如何使用 [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) 和 [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/) 提供的解决方案来管理容器漏洞。

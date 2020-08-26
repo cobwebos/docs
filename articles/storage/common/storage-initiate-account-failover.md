@@ -10,12 +10,13 @@ ms.date: 06/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: cbdeb1c55af157a0bf5160d2420974fd014ea3b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01718b4f3d539f77f4496a7914b027335cc45618
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807588"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503270"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
 
@@ -39,11 +40,11 @@ ms.locfileid: "84807588"
 
 ## <a name="initiate-the-failover"></a>启动故障转移
 
-## <a name="portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要通过 Azure 门户启动帐户故障转移，请按照以下步骤操作：
 
-1. 导航到存储帐户。
+1. 导航到自己的存储帐户。
 1. 选择“设置”**** 下的“异地复制”****。 下图展示了存储帐户的异地复制和故障转移状态。
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="显示异地复制和故障转移状态的屏幕截图":::

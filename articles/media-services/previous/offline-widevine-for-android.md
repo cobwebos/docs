@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065499"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理  
 
@@ -29,7 +29,7 @@ ms.locfileid: "80294339"
 > * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 除了保护联机流式处理的内容之外，媒体内容订阅和租赁服务还提供可下载的内容，供用户在未连接到 Internet 时使用。 可以将内容下载到手机或平板电脑上，以便在飞行中与网络断开连接时，在飞行模式下播放。 可能需要下载内容的其他情况包括：
 
@@ -181,7 +181,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 ### <a name="question"></a>问题
 
-对于 Widevine 安全级别，在 Google 的[WIDEVINE DRM 体系结构概述文档](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)文档中，它定义了三个不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)中，概述了五种不同的安全级别。 这两组不同安全级别之间的关系或映射是什么？
+对于 Widevine 安全级别，在 Google 的[WIDEVINE DRM 体系结构概述文档](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)文档中，它定义了三个不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](./media-services-widevine-license-template-overview.md)中，概述了五种不同的安全级别。 这两组不同安全级别之间的关系或映射是什么？
 
 ### <a name="answer"></a>答案
 
@@ -191,7 +191,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 2.  安全级别 2：在 TEE 中执行加密（但不是视频处理）：已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍仅在 TEE 中处理。
 3.  安全级别 3：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现还包括硬件加密引擎，但只能增强性能，而不能增强安全性。
 
-同时，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)中，content_key_specs 的 security_level 属性可以具有以下五个不同的值（播放的客户端稳定性要求）：
+同时，在 [Widevine 许可证模板上的 Azure 媒体服务文档](./media-services-widevine-license-template-overview.md)中，content_key_specs 的 security_level 属性可以具有以下五个不同的值（播放的客户端稳定性要求）：
 
 1.  需要基于软件的白盒加密。
 2.  需要软件加密和模糊处理解码器。
@@ -224,6 +224,6 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文讨论了如何在 Android 设备上实现受 Widevine 保护的 DASH 内容的脱机模式播放。  本文还回答了与对受 Widevine 保护的内容进行脱机流式处理相关的一些常见问题。

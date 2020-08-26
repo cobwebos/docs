@@ -1,6 +1,6 @@
 ---
 title: 会话管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中公开的威胁的会话管理缓解措施。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,18 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref
-ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198864"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543684"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[使用 Azure AD 时借助 ADAL 方法实现适当的注销](#logout-adal)</li></ul> |
-| IoT 设备 | <ul><li>[对生成的 SaS 令牌使用有限生存期](#finite-tokens)</li></ul> |
+| **IoT 设备** | <ul><li>[对生成的 SaS 令牌使用有限生存期](#finite-tokens)</li></ul> |
 | **Azure Document DB** | <ul><li>[对生成的资源令牌使用最短的令牌生存期](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[使用 ADFS 时借助 WsFederation 方法实现适当的注销](#wsfederation-logout)</li></ul> |
 | **标识服务器** | <ul><li>[使用标识服务器时实现适当的注销](#proper-logout)</li></ul> |
@@ -72,7 +73,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -408,7 +409,7 @@ void Page_Init (object sender, EventArgs e) {
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
@@ -443,10 +444,10 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **属性**              | 空值  |
 | **参考**              | 空值  |
 | **步骤** | 当用户按下注销按钮时，从应用程序执行适当的注销。 注销后，应用程序应销毁用户的会话，重置会话 Cookie 值并将其设置为 null，同时重置身份验证 Cookie 值并将其设置为 null。 此外，如果多个会话绑定到单个用户标识，在超时或注销时，必须在服务器端统一终止这些会话。 最后，确保可在每个页面上使用注销功能。 |
 
@@ -454,19 +455,19 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **属性**              | 空值  |
 | **参考**              | 空值  |
 | **步骤** | 跨站点请求伪造（CSRF 或 XSRF）攻击是指在在不同用户与网站建立的会话的安全上下文中执行操作。 其企图是在目标网站专门依赖使用会话 Cookie 对收到的请求进行身份验证的情况下修改或删除内容。 攻击者可能会利用此漏洞，获取不同用户的浏览器并在用户已登录到的有漏洞站点中使用某个命令加载 URL。 攻击者可以使用多种方式实现此目的，例如，托管一个不同的网站用于从有漏洞的服务器加载资源，或者诱骗用户点击某个链接。 如果服务器向客户端发送一个附加令牌，要求客户端在将来的所有请求中包含该令牌，并验证将来的所有请求是否包含与当前会话相关的令牌（例如，使用 ASP.NET AntiForgeryToken 或 ViewState），则可以避免这种攻击。 |
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
-| **特性**              | 不适用  |
+| **属性**              | 空值  |
 | **参考**              | [防止 ASP.NET Web API 中的跨站点请求伪造 (CSRF) 攻击](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
 | **步骤** | 反 CSRF 和 AJAX：窗体令牌可能对 AJAX 请求造成问题，因为 AJAX 请求可以发送 JSON 数据，但不能发送 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 |
 
@@ -550,7 +551,7 @@ public ViewResult SubmitUpdate()
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |

@@ -3,7 +3,7 @@ title: 将访问管理委派给 Azure AD 的权利管理中的目录创建者-Az
 description: 了解如何将 IT 管理员的访问管理委派给目录创建者和项目经理，使他们能够自行管理访问权限。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,11 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02f44543f78789284e7b8d39471d1346ca7b8e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078376"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798420"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>将访问管理委派给 Azure AD 的权利管理中的目录创建者
 
@@ -46,7 +47,7 @@ ms.locfileid: "85078376"
 
 1. 单击“选择”。
 
-1. 单击“保存” 。
+1. 单击“保存”。
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>允许委托角色访问 Azure 门户
 

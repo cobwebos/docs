@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c75b6e67932cfd26a3374eab3f3efa34ceade577
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66236918"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504477"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒体服务帐户的基于角色的访问控制 (RBAC)
 
@@ -36,14 +36,14 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-[内置角色定义](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)一文会确切地告知你该角色授予的权限。 
+[内置角色定义](../../role-based-access-control/built-in-roles.md)一文会确切地告知你该角色授予的权限。 
 
 有关详细信息，请参阅以下文章：
 
-- [经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
-- [Azure 资源的 RBAC 是什么？](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [使用 RBAC 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [媒体服务资源提供程序操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
+- [使用 RBAC 管理访问权限](../../role-based-access-control/role-assignments-rest.md)
+- [媒体服务资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>后续步骤
 

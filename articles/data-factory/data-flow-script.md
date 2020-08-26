@@ -6,12 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298595"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448532"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本（DFS）
 
@@ -194,13 +195,21 @@ Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、插入、删除的次数
-使用更改行转换时，可能需要计算从更改行策略生成的更新、upsert、插入、删除的数目。 在更改行后添加聚合转换，并将此数据流脚本粘贴到这些计数的聚合定义中：
+使用更改行转换时，可能需要计算从更改行策略生成的更新、upsert、插入、删除的数目。 在更改行后添加聚合转换，并将此数据流脚本粘贴到这些计数的聚合定义中。
 
 ```
 aggregate(updates = countIf(isUpdate(), 1),
         inserts = countIf(isInsert(), 1),
         upserts = countIf(isUpsert(), 1),
         deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>使用所有列的非重复行
+此代码段将向数据流中添加一个新的聚合转换，该转换将采用所有传入列，生成用于分组以消除重复项的哈希，然后提供每个重复项的第一个匹配项作为输出。 不需要显式命名列，它们会自动从传入数据流生成。
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565798"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055031"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火墙管理器部署概述
 
@@ -65,6 +65,15 @@ ms.locfileid: "85565798"
 > - 每个区域的每个虚拟 WAN 最多只有一个中心。 但可以在区域中添加多个虚拟 WAN 来实现多个中心。
 > - 在 vWAN 中，多个中心不能具有重叠的 IP 空间。
 > - 中心 VNet 连接必须与中心位于同一区域。
+>
+> 有关更多已知问题，请参阅[什么是 Azure 防火墙管理器？](overview.md#known-issues)
+
+## <a name="convert-virtual-networks"></a>转换虚拟网络
+
+如果将现有虚拟网络转换为中心虚拟网络，则以下信息适用：
+
+- 如果该虚拟网络具有现有的 Azure 防火墙，请选择一个要与现有防火墙关联的防火墙策略。 防火墙策略替换防火墙规则时，防火墙预配状态将为“正在更新”。 在该预配状态期间，防火墙会继续处理流量，不会出现停机时间。 可以使用防火墙管理器或 Azure PowerShell 将现有规则导入到防火墙策略。
+- 如果该虚拟网络没有关联的 Azure 防火墙，则会部署一个防火墙并且防火墙策略会与此新防火墙关联。
 
 ## <a name="next-steps"></a>后续步骤
 

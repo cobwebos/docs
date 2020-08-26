@@ -3,12 +3,12 @@ title: 播放多天录制的内容 - Azure
 description: 本教程介绍如何使用 Azure 媒体服务 API 播放多天连续录制的视频内容。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433660"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649085"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教程：播放多天录制的内容  
 
@@ -40,7 +40,7 @@ ms.locfileid: "84433660"
 
 ## <a name="run-the-sample"></a>运行示例 
 
-[CVR 教程](continuous-video-recording-tutorial.md)期间将创建媒体服务帐户。 对于本教程，需要具有对该帐户的完整 API 访问权限。 可以按照[获取访问媒体服务 API 的凭据](../latest/access-api-howto.md#use-the-azure-portal)中的步骤来创建服务主体。 应能够从 Azure 门户获取如下所示的 JSON 块：
+[CVR 教程](continuous-video-recording-tutorial.md)期间将创建媒体服务帐户。 对于本教程，需要具有对该帐户的完整 API 访问权限。 可以按照[获取访问媒体服务 API 的凭据](../latest/access-api-howto.md?tabs=portal)中的步骤来创建服务主体。 应能够从 Azure 门户获取如下所示的 JSON 块：
 
 ```
 {

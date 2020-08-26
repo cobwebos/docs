@@ -1,19 +1,20 @@
 ---
 title: 向地图添加控件 |Microsoft Azure 映射
 description: 如何将缩放控件、螺距控件、旋转控件和样式选取器添加到 Microsoft Azure 映射中的地图。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9a54ef02677c657d9a86507370344dd335fd497c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334565"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287010"
 ---
 # <a name="add-controls-to-a-map"></a>向地图添加控件
 

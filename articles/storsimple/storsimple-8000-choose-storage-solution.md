@@ -1,18 +1,18 @@
 ---
 title: 使用设备将数据传输到 Azure 的选项 | Microsoft Docs
-description: 了解如何选择适当的设备将数据传输到 Azure
+description: 了解如何在 Data Box Edge、Azure 文件同步和 StorSimple 8000 系列之间选择将本地数据传输到 Azure 的正确设备。
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203970"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183269"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
 

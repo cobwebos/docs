@@ -1,29 +1,29 @@
 - name: 虚拟机文档
   href: index.yml
 - name: Azure 中的 Linux 虚拟机
-  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/'
+  href: ./linux/index.yml
 - name: Azure 中的 Windows 虚拟机
-  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/'
+  href: ./windows/index.yml
 - name: VM 扩展文档
   href: ./extensions/overview.md
 - name: 工作负荷
   items:
     - name: Red Hat
-      href: ./workloads/redhat/redhat-overview.md
+      href: ./workloads/redhat/overview.md
     - name: 高性能计算
       href: ./workloads/hpc/overview.md
     - name: SAP
       href: ./workloads/sap/get-started.md
     - name: Oracle
-      href: ./workloads/oracle/oracle-considerations.md
+      href: ./workloads/oracle/oracle-overview.md
     - name: 大型机重新托管
       href: ./workloads/mainframe-rehosting/overview.md
 - name: 经典部署
   items:
     - name: 使用经典部署的 Linux VM
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/'
+      href: /previous-versions/azure/virtual-machines/linux/classic/
     - name: 使用经典部署的 Windows VM
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/'
+      href: /previous-versions/azure/virtual-machines/windows/classic/
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

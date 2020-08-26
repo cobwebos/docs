@@ -3,12 +3,12 @@ title: 适用于辅助角色服务应用（非 HTTP 应用）的 Application Ins
 description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499199"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325400"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
@@ -542,7 +542,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
-* [跟踪系统不会自动跟踪的附加依赖项](../../azure-monitor/app/auto-collect-dependencies.md)。
-* [扩充或筛选自动收集的遥测数据](../../azure-monitor/app/api-filtering-sampling.md)。
+* [使用 API](./api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
+* [跟踪系统不会自动跟踪的附加依赖项](./auto-collect-dependencies.md)。
+* [扩充或筛选自动收集的遥测数据](./api-filtering-sampling.md)。
 * [ASP.NET Core 中的依赖项注入](/aspnet/core/fundamentals/dependency-injection)。
+

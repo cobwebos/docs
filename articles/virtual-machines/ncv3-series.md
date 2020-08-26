@@ -4,19 +4,19 @@ description: NCv3 系列 VM 的规范。
 ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de118f7a4a29d306fe351199795a5a8cacb38fcd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736979"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289738"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
-NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tesla-v100/) GPU。 这些 GPU 可提供 NCv2 系列的 1.5 倍计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 NC24rs v3 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。 除了 GPU 之外，NCv3 系列 VM 还采用 Intel Xeon E5-2690 v4 (Broadwell) CPU。
+NCv3 系列 VM 采用 NVIDIA Tesla V100 GPU。 这些 GPU 可提供 NCv2 系列的 1.5 倍计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 NC24rs v3 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。 除了 GPU 之外，NCv3 系列 VM 还采用 Intel Xeon E5-2690 v4 (Broadwell) CPU。
 
 高级存储：支持
 
@@ -27,7 +27,7 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 内存保留更新：不支持
 
 > [!IMPORTANT]
-> 对于此 VM 系列，订阅中的 vCPU（核心）配额最初在每个区域中设置为 0。 在[可用区域](https://azure.microsoft.com/regions/services/)中为此系列[请求 vCPU 配额增加](../azure-supportability/resource-manager-core-quotas-request.md)。
+> 对于此 VM 系列，订阅中的 vCPU（核心）配额最初在每个区域中设置为 0。 在[可用区域](https://azure.microsoft.com/regions/services/)中为此系列[请求 vCPU 配额增加](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 >
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|

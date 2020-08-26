@@ -1,32 +1,24 @@
 ---
 title: 从 Android 连接到 Windows 虚拟桌面-Azure
 description: 如何使用 Android 客户端连接到 Windows 虚拟桌面。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ca15a301de3c54195c0978aa31121c3624a98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209447"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007754"
 ---
-# <a name="connect-with-the-android-client"></a>使用 Android 客户端进行连接
+# <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>通过 Android 客户端连接到 Windows 虚拟桌面
 
 > 适用于： Android 4.1 及更高版本、Chromebook 和 ChromeOS 53 及更高版本。
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/connect-android-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
->[!NOTE]
-> 当前在预览版中提供了从 Android 客户端访问 Windows 虚拟桌面资源的功能。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/connect-android-2019.md)。
 
 可以使用可下载的客户端从 Android 设备访问 Windows 虚拟桌面资源。 你还可以在支持 Google Play 商店的 Chromebook 设备上使用 Android 客户端。 本指南将说明如何设置 Android 客户端。
 
@@ -40,7 +32,7 @@ ms.locfileid: "85209447"
 
 若要订阅源，请执行以下操作：
 
-1. 在“连接中心”点击“+”  ，然后点击“远程资源源”  。
+1. 在“连接中心”点击“+”，然后点击“远程资源源”。
 2. 在 "**源 url** " 字段中输入源 url。 源 URL 可以是 URL，也可以是电子邮件地址。
    - 如果使用 URL，请使用管理员为你提供的（通常为） <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> 。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 如果管理员配置了服务器，则客户端将搜索与你的电子邮件地址关联的 URL。

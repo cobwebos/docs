@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 脚本示例 - 对等互连两个虚拟网络 | Microsoft Docs
-description: Azure CLI 脚本示例 - 对等互连两个虚拟网络
+description: 使用 Azure CLI 脚本示例通过 Azure 网络在同一区域创建并连接两个虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,13 +12,15 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 507e17b2edb0db2d21265f3e945745d97395e7c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890250"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503848"
 ---
-# <a name="peer-two-virtual-networks"></a>对等互连两个虚拟网络
+# <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>使用 Azure CLI 示例脚本连接两个虚拟网络
 
 此脚本通过 Azure 网络在同一区域创建并连接两个虚拟网络。 运行脚本后，会在两个虚拟网络之间创建对等互连。
 
@@ -43,7 +45,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |

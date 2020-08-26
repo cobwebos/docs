@@ -1,14 +1,14 @@
 ---
 title: 向 Azure 开发测试实验室中的实验室发布公告 |Microsoft Docs
-description: 了解如何在 Azure 开发测试实验室中向实验室添加通告
+description: 了解如何在现有实验室中发布自定义公告，以便向用户通知 Azure 开发测试实验室中的实验室最近的更改或新增内容。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478988"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270761"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室发布通告
 
@@ -24,7 +24,7 @@ ms.locfileid: "85478988"
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>在现有实验室中发布通告的步骤
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 如果需要，请选择“所有服务”****，并从列表中选择“开发测试实验室”****。 （实验室可能已显示在“所有资源”**** 下的“仪表板”上）。
 1. 从实验室列表中选择要在其中发布通告的实验室。
 1. 在实验室的“概览”**** 区域中，选择“配置和策略”****。
@@ -156,4 +156,4 @@ ms.locfileid: "85478988"
 
 ## <a name="next-steps"></a>后续步骤
 * 如果更改或设置了实验室策略，可以发布通告来告知用户。 [设置策略和计划](devtest-lab-set-lab-policy.md)提供了有关使用自定义策略对整个订阅应用限制和约定的信息。
-* 探索[开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

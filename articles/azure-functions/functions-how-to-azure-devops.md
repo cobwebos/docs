@@ -5,16 +5,17 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 0e47078e9f7620e72524ccf91e942d4e15a6b5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559123"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210213"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
-可以通过使用[Azure Pipelines](/azure/devops/pipelines/)自动将函数部署到 Azure Functions 应用。
+可以通过使用 [Azure Pipelines](/azure/devops/pipelines/)自动将函数部署到 Azure Functions 应用。
 
 可以使用两个选项来定义管道：
 
@@ -219,7 +220,7 @@ Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
 在 Azure Pipelines 中构建应用程序的方式取决于应用程序的编程语言。 每种语言都有创建部署项目的特定生成步骤。 部署项目用于更新 Azure 中的函数应用。
 
-若要使用内置生成模板，请在创建新的生成管道时，选择 **"使用经典编辑器**通过设计器模板创建管道"。
+若要使用内置生成模板，请在创建新的生成管道时，选择 **"使用经典编辑器** 通过设计器模板创建管道"。
 
 ![选择 Azure Pipelines 经典编辑器](media/functions-how-to-azure-devops/classic-editor.png)
 
@@ -227,13 +228,13 @@ Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
 ![选择 Azure Functions 生成模板](media/functions-how-to-azure-devops/build-templates.png)
 
-在某些情况下，生成项目具有特定文件夹结构。 可能需要选中 "**将根文件夹名称预置到存档路径**" 复选框。
+在某些情况下，生成项目具有特定文件夹结构。 可能需要选中 " **将根文件夹名称预置到存档路径** " 复选框。
 
 ![用于预置根文件夹名称的选项](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript 应用
 
-如果 JavaScript 应用依赖于 Windows 本机模块，则必须将代理池版本更新为**托管 VS2017**。
+如果 JavaScript 应用依赖于 Windows 本机模块，则必须将代理池版本更新为 **托管 VS2017**。
 
 ![更新代理池版本](media/functions-how-to-azure-devops/change-agent.png)
 
@@ -251,21 +252,21 @@ Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
 - 如果你的代码位于 GitHub 中：
 
-    - 您必须对订阅具有**写入**权限。
+    - 您必须对订阅具有 **写入** 权限。
 
     - 你必须是 Azure DevOps 中的项目管理员。
 
-    - 你必须具有创建具有足够权限的 GitHub 个人访问令牌（PAT）的权限。 有关详细信息，请参阅[GITHUB PAT 权限要求。](https://aka.ms/azure-devops-source-repos)
+    - 您必须有权创建具有足够权限 (PAT) 的 GitHub 个人访问令牌。 有关详细信息，请参阅 [GITHUB PAT 权限要求。](https://aka.ms/azure-devops-source-repos)
 
     - 您必须有权提交到 GitHub 存储库中的主分支，才能提交自动生成的 YAML 文件。
 
 - 如果你的代码在 Azure Repos：
 
-    - 您必须对订阅具有**写入**权限。
+    - 您必须对订阅具有 **写入** 权限。
 
     - 你必须是 Azure DevOps 中的项目管理员。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[Azure Functions 概述](functions-overview.md)。
-- 查看[Azure DevOps 概述](/azure/devops/pipelines/)。
+- 查看 [Azure Functions 概述](functions-overview.md)。
+- 查看 [Azure DevOps 概述](/azure/devops/pipelines/)。

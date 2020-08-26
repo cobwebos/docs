@@ -5,58 +5,10 @@
       items:
         - name: Azure Dev Spaces 是什么？
           href: about.md
-    - name: 快速入门
-      items:
-        - name: 团队开发
-          href: quickstart-team-development.md
-        - name: 调试和迭代
-          items:
-            - name: 使用 Visual Studio Code 和 Java
-              href: quickstart-java.md
-            - name: 使用 Visual Studio Code 和 .NET Core
-              href: quickstart-netcore.md
-            - name: 使用 Visual Studio Code 和 Node.js
-              href: quickstart-nodejs.md
-            - name: 使用 Visual Studio 和 .NET Core
-              href: quickstart-netcore-visualstudio.md
-        - name: 使用 CLI 进行开发
-          href: quickstart-cli.md
-        - name: 使用现有的 Helm 图表进行开发
-          href: quickstart-existing-helm-chart.md
     - name: 教程
       items:
-        - name: Java（VS Code 和 CLI）
-          items:
-            - name: 1 - 入门
-              href: get-started-java.md
-            - name: 2 - 多服务开发
-              href: multi-service-java.md
-            - name: 3 - 团队开发
-              href: team-development-java.md
-        - name: .NET Core（VS Code 和 CLI）
-          items:
-            - name: 1 - 入门
-              href: get-started-netcore.md
-            - name: 2 - 多服务开发
-              href: multi-service-netcore.md
-            - name: 3 - 团队开发
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1 - 入门
-              href: get-started-netcore-visualstudio.md
-            - name: 2 - 多服务开发
-              href: multi-service-netcore-visualstudio.md
-            - name: 3 - 团队开发
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js（VS Code 和 CLI）
-          items:
-            - name: 1 - 入门
-              href: get-started-nodejs.md
-            - name: 2 - 多服务开发
-              href: multi-service-nodejs.md
-            - name: 3 - 团队开发
-              href: team-development-nodejs.md
+        - name: Visual Studio 入门
+          href: get-started-netcore-visualstudio.md
     - name: 概念
       items:
         - name: Dev Spaces 工作原理
@@ -73,8 +25,6 @@
               href: how-dev-spaces-works-routing.md
             - name: 远程调试
               href: how-dev-spaces-works-remote-debugging.md
-            - name: Local Process with Kubernetes
-              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: VS Code 如何与 Dev Spaces 配合工作
           href: how-vs-code-works-with-dev-spaces.md
         - name: 不同网络拓扑中的网络配置
@@ -85,8 +35,6 @@
           href: how-to/install-dev-spaces.md
         - name: 使用 Azure Cloud Shell 创建 Kubernetes 群集
           href: how-to/create-cluster-cloud-shell.md
-        - name: 共享 Azure Dev Spaces
-          href: how-to/share-dev-spaces.md
         - name: 管理机密
           href: how-to/manage-secrets.md
         - name: 使用自定义 NuGet 源
@@ -102,7 +50,7 @@
         - name: 将 GitHub 操作与 Azure Dev Spaces 配合使用（预览）
           href: how-to/github-actions.md
         - name: 使用用于 Jenkins 的 Azure Dev Spaces 插件
-          href: ../jenkins/tutorial-jenkins-dev-spaces.md
+          href: /azure/developer/jenkins/azure-dev-spaces-and-aks
         - name: Azure Dev Spaces 的业务连续性和灾难恢复
           href: how-to/dev-spaces-business-continuity.md
         - name: 与 Windows 容器交互
@@ -111,10 +59,6 @@
           href: how-to/ingress-https-traefik.md
         - name: 将 NGINX 用于自定义入口和 HTTPS
           href: how-to/ingress-https-nginx.md
-        - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
-          href: how-to/local-process-kubernetes-vs-code.md
-        - name: 在 Visual Studio 中使用 Local Process with Kubernetes（预览版）
-          href: how-to/local-process-kubernetes-visual-studio.md
     - name: 疑难解答
       href: troubleshooting.md
     - name: 常见问题解答

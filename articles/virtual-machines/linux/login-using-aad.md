@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Active Directory 凭据登录到 Linux VM
 description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510423"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002325"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -35,7 +35,7 @@ ms.locfileid: "86510423"
   - 若要进一步确保 Azure 虚拟机的登录安全性，可以配置多重身份验证。
   - 使用 Azure Active Directory 登录 Linux VM 这一功能也适用于使用[联合身份验证服务](../../active-directory/hybrid/how-to-connect-fed-whatis.md)的客户。
 
-- **无缝协作：** 可以使用基于角色的访问控制 (RBAC)，指定能够以常规用户或管理员特权用户身份登录到给定 VM 的人员。 当用户加入或离开你的团队时，你可以更新 VM 的 RBAC 策略，根据需要授予访问权限。 与必须通过清理 VM 来删除不必要的 SSH 公钥相比，这种体验要简单得多。 员工在离开你的组织时，其用户帐户会被禁用或从 Azure AD 中删除，然后他们就再也不能访问你的资源。
+- **无缝协作：** 使用基于 Azure 角色的访问控制 (Azure RBAC) ，你可以指定谁可以作为常规用户或使用管理员权限登录到给定的 VM。 当用户加入或离开团队时，可以更新 VM 的 Azure RBAC 策略，以根据需要授予访问权限。 与必须通过清理 VM 来删除不必要的 SSH 公钥相比，这种体验要简单得多。 员工在离开你的组织时，其用户帐户会被禁用或从 Azure AD 中删除，然后他们就再也不能访问你的资源。
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>受支持的 Azure 区域和 Linux 发行版
 
@@ -58,7 +58,7 @@ ms.locfileid: "86510423"
 >[!IMPORTANT]
 > 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
 >
-> 不支持在 Azure Kubernetes 服务（AKS）群集上使用此扩展。 有关详细信息，请参阅[AKS 的支持策略](../../aks/support-policies.md)。
+> 不支持在 Azure Kubernetes Service (AKS) 群集上使用此扩展。 有关详细信息，请参阅[AKS 的支持策略](../../aks/support-policies.md)。
 
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
-Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 使用两个 RBAC 角色来授权 VM 登录：
+Azure RBAC) 策略的 azure 基于角色的访问控制 (确定可登录到 VM 的用户。 两个 Azure 角色用于授权 VM 登录：
 
 - **虚拟机管理员登录名**：分配了此角色的用户可以使用 Windows 管理员或 Linux root 用户权限登录到 Azure 虚拟机。
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
@@ -121,7 +121,7 @@ Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 �
 > [!NOTE]
 > 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。**** 分配了 VM“所有者”或“参与者”角色的 Azure 用户**** 不会自动获得通过 SSH 登录到 VM 的权限。
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。** 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../role-based-access-control/overview.md)
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。** 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 还可以在资源组或订阅级别分配范围，并应用普通的 Azure RBAC 继承权限。 有关详细信息，请参阅[AZURE RBAC](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > 如果 AAD 域和登录用户名域不匹配，则必须使用 *--assignee-object-id* 指定用户帐户的对象 ID，而不是仅指定 *--assignee* 的用户名。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
 
-若要详细了解如何使用 RBAC 来管理对 Azure 订阅资源的访问权限，请参阅 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) 的使用指南。
+有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅使用[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)或[Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
 
 也可对 Azure AD 进行配置，要求特定的用户通过多重身份验证登录到 Linux 虚拟机。 有关详细信息，请参阅[云中的 Azure 多重身份验证入门](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
@@ -181,11 +181,11 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ## <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 
-尝试使用 Azure AD 凭据进行 SSH 登录时，会出现一些常见的错误，其中包括：未分配 RBAC 角色、系统重复提示你登录。 请根据以下部分的说明来纠正这些问题。
+尝试将 SSH 与 Azure AD 凭据结合时，某些常见错误包括未分配任何 Azure 角色，并重复提示登录。 请根据以下部分的说明来纠正这些问题。
 
-### <a name="access-denied-rbac-role-not-assigned"></a>访问被拒绝：未分配 RBAC 角色
+### <a name="access-denied-azure-role-not-assigned"></a>拒绝访问：未分配 Azure 角色
 
-如果在 SSH 提示符窗口中看到以下错误，请验证是否已为授予用户“虚拟机管理员登录名”或“虚拟机用户登录名”角色的 VM 配置 RBAC 策略：****
+如果在 SSH 提示符下出现以下错误，请验证是否已为 VM 配置了 Azure RBAC 策略，该策略向用户授予 "*虚拟机管理员登录名*" 或 "*虚拟机用户登录*" 角色：
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432055"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685708"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
  
@@ -55,7 +55,7 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>令牌缺少关联的适当资源。 
 
-从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的**所有**令牌的资源是*https： \/ /vault.keyvault.net* （无尾随斜杠）。
+从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的 **所有** 令牌的资源是 *https： \/ /vault.keyvault.net* (，无尾随斜杠) 。
 
 ### <a name="the-token-is-expired"></a>令牌已过期
 
@@ -89,7 +89,7 @@ Content-Length: 31
 
 在此令牌中可以看到许多重要组成部分：
 
-- aud（受众）：令牌的资源。 请注意，此资源为 <https://vault.azure.net>。 对于不显式匹配此值的任何资源（例如 Graph），此令牌将不适用。
+- aud（受众）：令牌的资源。 请注意，此资源为 `https://vault.azure.net`。 对于不显式匹配此值的任何资源（例如 Graph），此令牌将不适用。
 - iat（颁发时间）：颁发令牌时距离纪元开始时间的计时周期数。
 - nbf（不早于）：此令牌生效时距离纪元开始时间的计时周期数。
 - exp（过期时间）：此令牌过期时距离纪元开始时间的计时周期数。
@@ -134,7 +134,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 ### <a name="troubleshooting-403"></a>排除故障 403
 
-首先启用日志记录。 有关如何执行此操作的说明，请参阅[Azure Key Vault 日志记录](logging.md)）。
+首先启用日志记录。 有关说明，请参阅 [Azure Key Vault 日志记录](logging.md)。
 
 启用日志记录后，可以确定 403 错误是由访问策略还是防火墙策略造成的。
 
@@ -142,7 +142,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 “客户端地址(00.00.00.00)未获授权，调用方不是受信任的服务”
 
-有一个有限的“Azure 信任的服务”列表。 Azure 网站**不是**受信任的 Azure 服务。 有关详细信息，请参阅博客文章[Key Vault 防火墙访问 Azure 应用 Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)。
+有一个有限的“Azure 信任的服务”列表。 Azure 网站**不是**受信任的 Azure 服务。 有关详细信息，请参阅博客文章 [Key Vault 防火墙访问 Azure 应用 Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)。
 
 必须将 Azure 网站的 IP 地址添加到 Key Vault 才能使其正常工作。
 

@@ -7,15 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8032e8809f7849ab7497da7821788c017adff12d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212048"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192313"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 
@@ -43,13 +44,13 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 在 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 已知的情况下，可以使用 CREATE WORKLOAD GROUP <link> 语法来创建工作负荷组。  可以选择指定大于零的 `MIN_PERCENTAGE_RESOURCE` 以隔离工作负荷组的资源。  此外，还可以选择指定小于 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作负荷组可以使用的资源量。  
 
-下面的示例将 `MIN_PERCENTAGE_RESOURCE` 设置为提供 9.6% 的系统资源专供 `wgDataLoads` 使用，并保证一个查询始终能够运行。  此外，`CAP_PERCENTAGE_RESOURCE` 设置为 38.4%，并将此工作负荷组限制为四个并发请求。  通过将 `QUERY_EXECUTION_TIMEOUT_SEC` 参数设置为 3600，运行超过 1 小时的任何查询都将自动取消。
+使用 mediumrc 作为示例的基础，以下代码将设置 `MIN_PERCENTAGE_RESOURCE` 为专用于10% 的系统资源， `wgDataLoads` 并保证一个查询能够运行所有时间。  此外， `CAP_PERCENTAGE_RESOURCE` 设置为40%，并将此工作负荷组限制为四个并发请求。  通过将 `QUERY_EXECUTION_TIMEOUT_SEC` 参数设置为 3600，运行超过 1 小时的任何查询都将自动取消。
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 

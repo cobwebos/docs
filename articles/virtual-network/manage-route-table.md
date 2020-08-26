@@ -1,7 +1,7 @@
 ---
 title: 创建、更改或删除 Azure 路由表
 titlesuffix: Azure Virtual Network
-description: 了解如何创建、更改或删除路由表。
+description: 了解在何处可以找到有关虚拟网络流量路由的信息，以及如何创建、更改或删除路由表。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708257"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291006"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 
@@ -31,7 +31,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 - **PowerShell 用户**：运行[Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 "**选择环境**" 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
 
-    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块版本1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 另请运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 另请运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 - **Azure 命令行接口（CLI）用户**：运行[Azure Cloud Shell](https://shell.azure.com/bash)中的命令，或从计算机运行 CLI。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 另请运行 `az login` 以创建与 Azure 的连接。
 
@@ -43,16 +43,16 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 在 [Azure 门户](https://portal.azure.com)菜单或“主页”页上，选择“创建资源” 。
 
-1. 在搜索框中，输入“路由表”**。 当“路由表”出现在搜索结果中时，请选择它。****
+1. 在搜索框中，输入“路由表”。 当“路由表”出现在搜索结果中时，请选择它。
 
-1. 在“路由表”**** 页中，选择“创建”****。
+1. 在“路由表”页中，选择“创建”。
 
 1. 在“创建路由表”对话框中：****
 
     1. 输入路由表的名称****。
     1. 选择“订阅”。
     1. 选择现有的资源组，或选择“新建”以创建新的资源组。**** ****
-    1. 选择“位置”****。
+    1. 选择“位置”。
     1. 如果你计划将路由表与通过 VPN 网关连接到本地网络的虚拟网络中的子网相关联，并且不希望将本地路由传播到子网中的网络接口，请将“虚拟网络网关路由传播”设置为“已禁用”**** ****。
 
 1. 选择“创建”以创建新的路由表****。
@@ -66,7 +66,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 ## <a name="view-route-tables"></a>查看路由表
 
-转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“路由表”。**** 随后将列出订阅中存在的路由表。
+转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“路由表”。 随后将列出订阅中存在的路由表。
 
 ### <a name="view-route-table---commands"></a>查看路由表 - 命令
 
@@ -77,7 +77,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 ## <a name="view-details-of-a-route-table"></a>查看路由表详细信息
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择要查看其详细信息的路由表。
 
@@ -100,7 +100,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 ## <a name="change-a-route-table"></a>更改路由表
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择要更改的路由表。
 
@@ -117,7 +117,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 可以选择性地将路由表关联到子网。 一个路由表可与零个或多个子网相关联。 由于路由表不会关联到虚拟网络，因此，必须将路由表关联到你希望该路由表关联到的每个子网。 如果虚拟网络已连接到 Azure 虚拟网络网关（ExpressRoute 或 VPN），则 Azure 会根据路由表中创建的路由、[默认路由](virtual-networks-udr-overview.md#default)以及从本地网络传播的路由，来路由离开子网的所有流量。 只能将路由表关联到该路由表所在的同一 Azure 位置和订阅中的虚拟网络内的子网。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“虚拟网络”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“虚拟网络”。
 
 1. 在虚拟网络列表中，选择包含要将路由表关联到的子网的虚拟网络。
 
@@ -142,7 +142,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 从子网取消关联路由表后，Azure 会根据流量的[默认路由](virtual-networks-udr-overview.md#default)来路由流量。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“虚拟网络”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“虚拟网络”。
 
 1. 在虚拟网络列表中，选择包含要与路由表取消关联的子网的虚拟网络。
 
@@ -165,7 +165,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 不能删除已关联到任何子网的路由表。 在尝试删除路由表之前，请从所有子网[取消关联](#dissociate-a-route-table-from-a-subnet)该路由表。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择要删除的路由表。
 
@@ -182,7 +182,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 在每个 Azure 位置和订阅中，可为每个路由表创建的路由数目有限制。 有关详细信息，请参阅[网络限制 - Azure 资源管理器](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择要将路由添加到的路由表。
 
@@ -209,7 +209,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 一个路由表包含零个或多个路由。 若要详细了解在查看路由时所列出的信息，请参阅[虚拟网络流量路由](virtual-networks-udr-overview.md)。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择要查看其路由的路由表。
 
@@ -224,7 +224,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 ## <a name="view-details-of-a-route"></a>查看路由详细信息
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择包含你要查看其详细信息的路由的路由表。
 
@@ -241,7 +241,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 ## <a name="change-a-route"></a>更改路由
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择包含你要更改的路由的路由表。
 
@@ -260,7 +260,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 ## <a name="delete-a-route"></a>删除路由
 
-1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
 1. 在路由表列表中，选择包含你要删除的路由的路由表。
 
@@ -285,7 +285,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 在虚拟机列表中，选择要查看其有效路由的 VM。
 
-1. 在 VM 菜单栏中选择“网络”。****
+1. 在 VM 菜单栏中选择“网络”。
 
 1. 选择网络接口的名称。
 

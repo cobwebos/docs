@@ -4,16 +4,16 @@ description: 本文提供有关适用于 Windows IaaS VM 的 Microsoft Azure 磁
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78d4ffda62b98ca57a8204e6037f8ccd8c470924
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0b910e3b119167fb4c6de55289d92b9d538c8ddb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508536"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284551"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答
 

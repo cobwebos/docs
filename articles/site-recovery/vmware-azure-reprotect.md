@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79257168"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292788"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>从 Azure 到本地进行重新保护
 
@@ -32,7 +33,7 @@ ms.locfileid: "79257168"
     - 是否使用的是 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版。 升级到其他版本。
     - 你是否有 Windows Server 2008 R2 SP1 物理服务器。
     - VMware VM 无法故障回复到 Hyper-V。
-    - [已迁移](migrate-overview.md#what-do-we-mean-by-migration)的 VM。
+    - 已迁移的 VM。
     - 已移动到另一个资源组的 VM。
     - 已删除的副本 Azure VM。
     - 未受保护（复制到本地站点）的副本 Azure VM。

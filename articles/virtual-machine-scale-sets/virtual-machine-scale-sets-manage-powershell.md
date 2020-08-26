@@ -11,6 +11,7 @@ ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 68b5aa21f861009dd78f48428fa0ffdc5b5ae3a3
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124862"

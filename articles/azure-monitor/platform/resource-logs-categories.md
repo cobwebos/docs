@@ -1,24 +1,24 @@
 ---
 title: Azure Monitor 资源日志支持的服务和类别
-description: Azure Monitor 的参考了解 Azure 资源日志支持的服务和事件架构。
+description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515387"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318294"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
 > [!NOTE]
-> 资源日志以前称为诊断日志。 此名称在10月2019中发生了更改，因为 Azure Monitor 移动的日志类型仅包含 Azure 资源。
+> 资源日志以前称为诊断日志。 此名称在 2019 年 10 月发生了更改，因为 Azure Monitor 收集的日志类型已转变，不仅仅包括 Azure 资源。
 
-[Azure Monitor 资源日志](../../azure-monitor/platform/platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
+[Azure Monitor 资源日志](./platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
 
-资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 对于具有服务特定字段的所有资源日志，都有一个通用架构，然后针对不同的日志类别添加这些字段。 有关详细信息，请参阅[Azure 资源日志的通用和特定于服务的架构](resource-logs-categories.md)
+资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 所有资源日志都有一个通用架构，其中包含特定于服务的字段，这些字段随后会针对不同的日志类别进行添加。 有关详细信息，请参阅 [Azure 资源日志的通用架构和特定于服务的架构]()
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 
@@ -26,7 +26,7 @@ ms.locfileid: "86515387"
 
 某些类别可能只适用于特定类型的资源。 如果你觉得缺少资源，请参阅特定于资源的文档。 例如，Microsoft.Sql/servers/databases 类别并非适用于所有类型的数据库。 有关详细信息，请参阅[有关 SQL 数据库诊断日志记录的信息](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。 
 
-如果仍缺少某些内容，可以在本文底部打开 GitHub 注释。
+如果仍觉得缺少某些内容，可以在本文底部打开 GitHub 评论。
 
 ## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
 
@@ -91,7 +91,7 @@ ms.locfileid: "86515387"
 |代理|代理|
 
 
-## <a name="microsoftblockchaincordamembers"></a>区块链/cordaMembers
+## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
 |Category|类别显示名称|
 |---|---|
@@ -109,14 +109,14 @@ ms.locfileid: "86515387"
 
 |Category|类别显示名称|
 |---|---|
-|AzureCdnAccessLog|Azure Cdn 访问日志|
+|AzureCdnAccessLog|Azure CDN 访问日志|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
 |Category|类别显示名称|
 |---|---|
-|CoreAnalytics|获取终结点的指标，例如带宽、出口等。|
+|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
@@ -239,7 +239,7 @@ ms.locfileid: "86515387"
 |PostgreSQLLogs|PostgreSQL 服务器日志|
 
 
-## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>DesktopVirtualization/applicationgroups
+## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
 |Category|类别显示名称|
 |---|---|
@@ -248,7 +248,7 @@ ms.locfileid: "86515387"
 |管理|管理|
 
 
-## <a name="microsoftdesktopvirtualizationhostpools"></a>DesktopVirtualization/hostpools
+## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
 |Category|类别显示名称|
 |---|---|
@@ -381,7 +381,7 @@ ms.locfileid: "86515387"
 |AppMetrics|指标|
 |AppPageViews|页面视图|
 |AppPerformanceCounters|性能计数器|
-|AppRequests|Requests|
+|AppRequests|请求|
 |AppSystemEvents|系统事件|
 |AppTraces|跟踪|
 
@@ -587,7 +587,7 @@ ms.locfileid: "86515387"
 
 |Category|类别显示名称|
 |---|---|
-|Alllogs.csv|Azure SignalR 服务日志。|
+|AllLogs|Azure SignalR 服务日志。|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
@@ -711,7 +711,8 @@ ms.locfileid: "86515387"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解资源日志](../../azure-monitor/platform/platform-logs-overview.md)
+* [详细了解资源日志](./platform-logs-overview.md)
 * [将资源日志流式传输到**事件中心**](./resource-logs.md#send-to-azure-event-hubs)
 * [使用 Azure Monitor REST API 更改资源日志诊断设置](/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析 Azure 存储中的日志](./resource-logs.md#send-to-log-analytics-workspace)
+

@@ -1,6 +1,6 @@
 ---
 title: 为 Azure NetApp 文件创建 SMB 卷 | Microsoft Docs
-description: 介绍如何为 Azure NetApp 文件创建 SMB 卷。
+description: 本文介绍如何在 Azure NetApp 文件中创建 SMBv3 卷。 了解 Active Directory 连接和域服务的要求。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483697"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080501"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
-Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。 如果要创建 NFS 卷，请参阅[创建用于 Azure NetApp 文件的 NFS 卷](azure-netapp-files-create-volumes.md)。 
+Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协议 (NFSv3 和 SMB) 创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。
 
 ## <a name="before-you-begin"></a>开始之前 
 必须已设置容量池。   
@@ -163,8 +163,20 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
      * **备份策略用户**  
         你可以包含其他帐户，这些帐户要求对创建用于 Azure NetApp 文件的计算机帐户具有提升的权限。 将允许指定的帐户在文件或文件夹级别更改 NTFS 权限。 例如，你可以指定一个非特权服务帐户，用于将数据迁移到 Azure NetApp 文件中的 SMB 文件共享。  
 
-        > [!IMPORTANT] 
-        > 使用备份策略用户功能需要白名单。 将订阅 ID 发送到 anffeedback@microsoft.com 以请求此功能。 
+        **备份策略用户**功能目前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        检查功能注册的状态： 
+
+        > [!NOTE]
+        > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态**注册**后再继续。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * 凭证，包括“用户名”和“密码” 
 
@@ -185,7 +197,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 2. 单击“+ 添加卷”以创建卷。  
     此时将显示“创建卷”窗口。
 
-3. 在“创建卷”窗口中，单击“创建”，并提供以下字段的信息：   
+3. 在 "创建卷" 窗口中，单击 "**创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
     * **卷名称**      
         指定要创建的卷的名称。   
 
@@ -215,6 +227,12 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
+
+        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+
+        ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. 单击“协议”，并完成以下信息：  
     * 选择“SMB”作为卷的协议类型。 

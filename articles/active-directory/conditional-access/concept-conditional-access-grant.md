@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274674"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -28,7 +28,7 @@ ms.locfileid: "86024437"
 
 阻止操作会考虑到任何分配，根据条件访问策略配置阻止访问。
 
-阻止是一种强有力的控制，运用此项控制时，应具备相应的知识。 带有 block 语句的策略可能会产生意外的副作用。 在大规模启用之前，正确的测试和验证至关重要。 在进行更改时，管理员应使用条件访问[仅报告模式](concept-conditional-access-report-only.md)和[What If 工具](what-if-tool.md)等工具进行更改。
+阻止是一种强有力的控制，运用此项控制时，应具备相应的知识。 带有块语句的策略可能会产生意外的副作用。 在大规模启用之前，正确的测试和验证至关重要。 在进行更改时，管理员应使用条件访问[仅报告模式](concept-conditional-access-report-only.md)和[What If 工具](what-if-tool.md)等工具进行更改。
 
 ## <a name="grant-access"></a>授予访问权限
 
@@ -36,8 +36,8 @@ ms.locfileid: "86024437"
 
 - [需要多重身份验证（Azure 多重身份验证）](../authentication/concept-mfa-howitworks.md)
 - [要求设备标记为符合（Microsoft Intune）](/intune/protect/device-compliance-get-started)
-- [需要混合 Azure AD 联接设备](../devices/concept-azure-ad-join-hybrid.md)
-- 需要经批准的客户端应用
+- [要求使用已建立混合 Azure AD 联接的设备](../devices/concept-azure-ad-join-hybrid.md)
+- [“需要已批准的客户端应用”](app-based-conditional-access.md)
 - [需要应用保护策略](app-protection-based-conditional-access.md)
 - [要求更改密码](#require-password-change)
 
@@ -80,8 +80,7 @@ ms.locfileid: "86024437"
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
+- Microsoft Power Automate
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -104,7 +103,7 @@ ms.locfileid: "86024437"
 - Microsoft Yammer
 - Microsoft Whiteboard
 
-**注释**
+**备注**
 
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”要求：
@@ -123,9 +122,22 @@ ms.locfileid: "86024437"
 此设置适用于以下客户端应用：
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- Intune 多行
+- 九封电子邮件 & 日历
+
+> [!NOTE]
+> Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持**需要应用保护策略**授予。 如果要求这些应用正常工作，请使用 "仅**要求批准的应用**" 授权。 对于这三个应用程序，在两个授予之间使用或子句将不起作用。
 
 **备注**
 

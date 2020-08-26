@@ -3,18 +3,18 @@ title: 概念-私有云和群集
 description: 了解 vmware 解决方案中 Azure vmware 软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906983"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752288"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案（AVS）预览版私有云和群集概念
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案预览私有云和群集概念
 
-Azure VMware 解决方案（AVS）在 Azure 中提供基于 VMware 的私有云。 私有云是从专用裸机主机群集构建的，并通过 Azure 门户进行部署和管理。 私有云中的群集配有 VMware vSphere、vCenter、vSAN 和 NSX 软件。 AVS 私有云硬件和软件部署在 Azure 中完全集成和自动化。
+Azure VMware 解决方案在 Azure 中提供基于 VMware 的私有云。 私有云是从专用裸机主机群集构建的，并通过 Azure 门户进行部署和管理。 私有云中的群集配有 VMware vSphere、vCenter、vSAN 和 NSX 软件。 Azure VMware 解决方案私有云硬件和软件部署在 Azure 中完全集成和自动化。
 
-Azure 订阅、AVS 私有云、vSAN 群集和主机之间存在逻辑关系。 在此图中，将显示单个 Azure 订阅中的两个私有云。 私有云代表一个开发环境和一个生产环境，每个环境都有自己的私有云。 其中每个私有云都有两个分类。 为了显示开发环境的更低潜在需求，使用较小容量主机的小型群集。 以下各部分介绍了所有这些概念。
+Azure 订阅、Azure VMware 解决方案私有云、vSAN 群集和主机之间存在逻辑关系。 在此图中，将显示单个 Azure 订阅中的两个私有云。 私有云代表一个开发环境和一个生产环境，每个环境都有自己的私有云。 其中每个私有云都有两个分类。 为了显示开发环境的更低潜在需求，使用较小容量主机的小型群集。 以下各部分介绍了所有这些概念。
 
 ![客户订阅中两个私有云的图像](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,19 +34,19 @@ Azure 订阅、AVS 私有云、vSAN 群集和主机之间存在逻辑关系。 �
 
 ## <a name="hosts"></a>主机
 
-超聚合、裸机基础结构节点用于 AVS 私有云群集。 下表提供了主机的 RAM、CPU 和磁盘容量。 
+超聚合、裸机基础结构节点用于 Azure VMware 解决方案私有云群集。 下表提供了主机的 RAM、CPU 和磁盘容量。 
 
-| 主机类型              |             CPU             |   RAM (GB)   |  vSAN NVMe 缓存层（TB，raw）  |  vSAN SSD 容量层（TB，raw）  |
+| 主机类型              |             CPU             |   RAM (GB)   |  vSAN NVMe 缓存层 (TB，原始)   |  vSAN SSD 容量层 (TB，原始)   |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| 高端（HE）          |  双重 Intel 18 核 2.3 GHz  |     576      |                3.2               |                15.20               |
+| 高端 (他)           |  双重 Intel 18 核 2.3 GHz  |     576      |                3.2               |                15.20               |
 
 用于构建或缩放群集的主机是从主机的隔离池获取的。 这些主机已通过硬件测试，并已将所有数据安全地从闪存磁盘中删除。 从群集中删除主机时，将安全地擦除内部磁盘，并将主机置于主机的隔离池中。 将主机添加到群集时，将使用来自隔离池的净化的主机。
 
 ## <a name="vmware-software-versions"></a>VMware 软件版本
 
-AVS 私有云群集中使用的 VMware 软件的当前软件版本包括：
+Azure VMware 解决方案私有云群集中使用的 VMware 软件的当前软件版本包括：
 
-| 软件              |    Version   |
+| 软件              |    版本   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6.7 U2    | 
 | ESXi                  |    6.7 U2    | 
@@ -55,16 +55,16 @@ AVS 私有云群集中使用的 VMware 软件的当前软件版本包括：
 
 对于私有云中的任何新群集，软件版本将与私有云中当前运行的版本匹配。 对于客户订阅中的任何新私有云，会安装最新版本的软件堆栈。
 
-升级概念文档中介绍了 AVS 平台软件的常规升级策略和过程。
+升级概念文档中介绍了 Azure VMware 解决方案平台软件的常规升级策略和过程。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>主机维护和生命周期管理
 
 主机维护和生命周期管理已完成，不会影响私有云群集的容量或性能。 自动主机维护的示例包括固件升级和硬件修复或更换。
 
-Microsoft 负责对 NSX-t 设备（例如，NSX-T Manager 和 NSX-T 边缘）进行生命周期管理。 Microsoft 还负责引导网络配置，例如创建第0层的网关和启用北南部路由。 作为你的 AVS 私有云的管理员，你需要负责网络分段、分布式防火墙规则、第1层网关和负载均衡器等 NSX-T SDN 配置。
+Microsoft 负责对 NSX-t 设备（例如，NSX-T Manager 和 NSX-T 边缘）进行生命周期管理。 Microsoft 还负责引导网络配置，例如创建第0层的网关和启用北南部路由。 作为 Azure VMware 解决方案私有云的管理员，你需要负责网络分段、分布式防火墙规则、第1层网关和负载均衡器等 NSX-T SDN 配置。
 
 > [!IMPORTANT]
-> AVS 管理员不得修改 NSX-T 边缘或第0层网关的配置。 这可能会导致服务丢失。
+> Azure VMware 解决方案管理员不得修改 NSX-T 边缘或第0层网关的配置。 这可能会导致服务丢失。
 
 ## <a name="backup-and-restoration"></a>备份和还原
 
@@ -72,7 +72,7 @@ Microsoft 负责对 NSX-t 设备（例如，NSX-T Manager 和 NSX-T 边缘）进
 
 ## <a name="next-steps"></a>后续步骤
 
-下一步是了解[网络和连接性概念](concepts-networking.md)。
+下一步是了解 [网络和连接性概念](concepts-networking.md)。
 
 <!-- LINKS - internal -->
 

@@ -7,12 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 30573eb3b35152ab5769c1aab9c4af052cb454a6
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171017"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258304"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 性能提示
 
@@ -42,9 +43,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     * 直接模式 (默认值)       
     * 网关模式
 
-    这些连接模式实质上是指数据平面请求的路由-文档读取和写入-从客户端计算机到 Azure Cosmos DB 后端的分区。 通常，直接模式是最佳性能的首选选项，它允许客户端直接打开与 Azure Cosmos DB 后端中的分区的 TCP 连接，并向无中介*直接*发送请求 ly。 与之相反，在“网关”模式下，客户端发出的请求会路由到 Azure Cosmos DB 前端中所谓的“网关”服务器，该服务器接下来会将你的请求扇出到 Azure Cosmos DB 后端的相应分区。 如果应用程序在有严格防火墙限制的企业网络中运行，则“网关”模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次从/向 Azure Cosmos DB 读取/写入数据时，“网关”模式都涉及到额外的网络跃点（从客户端到网关，以及从网关到分区）。 因此，直接模式因为网络跃点较少，可以提供更好的性能。
+    这些连接模式实质上是指数据平面请求的路由-文档读取和写入-从客户端计算机到 Azure Cosmos DB 后端的分区。 通常，直接模式是最佳性能的首选选项，它允许客户端直接打开与 Azure Cosmos DB 后端中的分区的 TCP 连接，并向无中介 *直接*发送请求 ly。 与之相反，在“网关”模式下，客户端发出的请求会路由到 Azure Cosmos DB 前端中所谓的“网关”服务器，该服务器接下来会将你的请求扇出到 Azure Cosmos DB 后端的相应分区。 如果应用程序在有严格防火墙限制的企业网络中运行，则“网关”模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次从/向 Azure Cosmos DB 读取/写入数据时，“网关”模式都涉及到额外的网络跃点（从客户端到网关，以及从网关到分区）。 因此，直接模式因为网络跃点较少，可以提供更好的性能。
 
-    数据平面请求的连接模式在使用*directMode ( # B1*或*GatewayMode ( # B3*方法的 Azure Cosmos DB 客户端生成器中配置，如下所示。 若要配置具有默认设置的任一模式，请调用不带参数的任何方法。 否则，将配置设置类实例作为参数传递 (*DirectConnectionConfig* for *DirectMode ( # B2 *、 *GatewayConnectionConfig* for *gatewayMode ( # B4 *。 ) 
+    数据平面请求的连接模式在使用 *directMode ( # B1 * 或 *GatewayMode ( # B3 * 方法的 Azure Cosmos DB 客户端生成器中配置，如下所示。 若要配置具有默认设置的任一模式，请调用不带参数的任何方法。 否则，将配置设置类实例作为参数传递 (*DirectConnectionConfig* for *DirectMode ( # B2 *、  *GatewayConnectionConfig* for *gatewayMode ( # B4 *。 ) 
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -62,7 +63,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     --- 
 
-    *DirectMode ( # B1*方法有一个额外的替代，原因如下。 控制平面操作（如数据库和容器 CRUD）*始终*使用网关模式;如果用户已为数据平面操作配置了直接模式，控制平面操作将使用默认网关模式设置。 这适合大多数用户。 但是，如果用户需要直接模式进行数据平面操作，并且 tunability 控制平面网关模式参数，则可以使用以下*directMode ( # B1*替代：
+    *DirectMode ( # B1*方法有一个额外的替代，原因如下。 控制平面操作（如数据库和容器 CRUD） *始终* 使用网关模式;如果用户已为数据平面操作配置了直接模式，控制平面操作将使用默认网关模式设置。 这适合大多数用户。 但是，如果用户需要直接模式进行数据平面操作，并且 tunability 控制平面网关模式参数，则可以使用以下 *directMode ( # B1 * 替代：
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -162,11 +163,11 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     * ***直接模式的配置选项***
 
-        如果需要非默认的直接模式行为，请创建一个*DirectConnectionConfig*实例并自定义其属性，然后将自定义属性实例传递到 Azure Cosmos DB 客户端生成器中的*DirectMode ( # B1*方法。
+        如果需要非默认的直接模式行为，请创建一个 *DirectConnectionConfig* 实例并自定义其属性，然后将自定义属性实例传递到 Azure Cosmos DB 客户端生成器中的 *DirectMode ( # B1 * 方法。
 
         这些配置设置控制上述基础直接模式体系结构的行为。
 
-        第一步是使用下面推荐的配置设置。 这些*DirectConnectionConfig*选项是高级配置设置，可能会以意外的方式影响 SDK 性能;建议用户不要对其进行修改，除非他们感到非常乐于理解折衷方案，并且这是绝对必要的。 如果遇到有关此特定主题方面的问题，请与 [Azure Cosmos DB 团队](mailto:CosmosDBPerformanceSupport@service.microsoft.com)联系。
+        第一步是使用下面推荐的配置设置。 这些 *DirectConnectionConfig* 选项是高级配置设置，可能会以意外的方式影响 SDK 性能;建议用户不要对其进行修改，除非他们感到非常乐于理解折衷方案，并且这是绝对必要的。 如果遇到有关此特定主题方面的问题，请与 [Azure Cosmos DB 团队](mailto:CosmosDBPerformanceSupport@service.microsoft.com)联系。
 
         | 配置选项       | 默认    |
         | :------------------:       | :-----:    |
@@ -315,7 +316,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
 
-    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
     有关详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 

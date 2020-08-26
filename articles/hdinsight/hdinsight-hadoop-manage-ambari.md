@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281374"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -108,6 +108,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 仪表板上的“服务”边栏可让你快速了解群集上运行的服务的状态。**** 各种图标用来指示状态或应当采取的操作。 例如，如果某项服务需要再循环，则会显示一个黄色的再循环符号。
 
+
 ![Apache Ambari services 侧栏](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
@@ -170,10 +171,10 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 在“仪表板”或“服务”页中，使用服务列表底部的“操作”按钮来停止和启动所有服务。**** **** ****
 
-![Apache Ambari 服务操作列表](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png" alt-text="Apache Ambari 服务操作列表。" border="true":::
 
 > [!WARNING]  
-> 虽然“添加服务”列于该菜单中，但不应使用它来向 HDInsight 群集添加服务。**** 应在群集预配过程中使用脚本操作添加新服务。 有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+> 应在群集预配过程中使用脚本操作添加新服务。 有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 虽然“操作”按钮可以重启所有服务，但你要启动、停止或重启的通常是某个特定服务。**** 使用以下步骤来对单个服务执行操作：
 

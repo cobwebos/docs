@@ -3,18 +3,18 @@ title: 使用 AzCopy 将 VHD 文件上传到 Azure 开发测试实验室 | Micro
 description: 本文介绍如何使用 AzCopy 命令行实用工具将 VHD 文件上载到 Azure 开发测试实验室中的实验室存储帐户。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483204"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650768"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>使用 AzCopy 将 VHD 文件上传到实验室的存储帐户
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 以下步骤将引导使用 AzCopy 命令行实用工具将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 有关 Azure 中的磁盘和 VHD 的详细信息，请参阅[托管磁盘简介](../virtual-machines/linux/managed-disks-overview.md)
+在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 以下步骤将引导使用 AzCopy 命令行实用工具将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 有关 Azure 中的磁盘和 VHD 的详细信息，请参阅[托管磁盘简介](../virtual-machines/managed-disks-overview.md)
 
 > [!NOTE] 
 >  
@@ -26,9 +26,9 @@ ms.locfileid: "85483204"
 
 1. 使用 Azure 门户获取实验室的存储帐户名称：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
+1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 
 1. 从实验室列表，选择所需的实验室。  
 

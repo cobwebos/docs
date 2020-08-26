@@ -1,14 +1,14 @@
 ---
 title: 部署 HIPAA HITRUST 蓝图示例
 description: HIPAA HITRUST 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 12/03/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f41827d687beb583ea6402d517e88b8cf69903a0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044832"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211530"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>部署 HIPAA HITRUST 蓝图示例
 
@@ -106,6 +106,8 @@ ms.locfileid: "86044832"
 |对 SQL 服务器部署审核 |策略分配 |要进行 SQL Server 审核的存储帐户的资源组名称 |审核针对 Azure 存储帐户（在 SQL Server 所在的每个区域中创建的存储帐户，由该区域中的所有服务器共享）中审核日志的写入数据库事件。 重要提示 - 为了正确地进行审核，请勿删除或重命名资源组或存储帐户。 |
 |为网络安全组部署诊断设置 |策略分配 |适用于网络安全组诊断的存储帐户前缀 |此前缀与网络安全组位置结合使用，一起构成已创建的存储帐户的名称。 |
 |为网络安全组部署诊断设置 |策略分配 |适用于网络安全组诊断的存储帐户的资源组名称（必须存在） |在其中创建存储帐户的资源组。 此资源组必须已存在。 |
+|\[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理 |策略分配 |Linux VM 规模集 (VMSS) 的 Log Analytics 工作区 |如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。 |
+|\[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理 |策略分配 |Linux VM 规模集 (VMSS) 的 Log Analytics 工作区 |如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 1aea1f3b2401d7b9639c32927ffa7390727d25b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9995b82c1dc437cdaa2f9f987abba3e9681454a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833632"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926750"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -59,13 +59,13 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
 
-在管理平面中，使用 RBAC（基于角色的访问控制）对调用方可以执行的操作进行授权。 在 RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+在管理平面中，你将使用 Azure RBAC)  (Azure 基于角色的访问控制来授权调用方可以执行的操作。 在 RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
-可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 通过分配适当的 RBAC 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 RBAC 角色：
+可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可以通过分配相应的 Azure 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下作用域级别分配给 Azure 角色：
 
-- **订阅**：在订阅级别分配的 RBAC 角色适用于该订阅中的所有资源组和资源。
-- **资源组**：在资源组级别分配的 RBAC 角色适用于该资源组中的所有资源。
-- **特定资源**：为特定资源分配的 RBAC 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
+- **订阅**：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
+- **资源组**：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
+- **特定资源**：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
 
 有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -82,7 +82,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 可以查看保管库和机密操作的完整列表，并了解通过查看以下参考配置密钥保管库访问策略时允许的操作。 [Key Vault 操作参考](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
-<a id="key-vault-access-policies"></a> 密钥保管库访问策略单独授予对密钥、机密和证书的权限。 可以仅授予用户对密钥的访问权限，而不授予对机密的访问权限。 密钥、机密或证书的访问权限是保管库级别的。 密钥保管库访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](/cli/azure/install-azure-cli?view=azure-cli-latest)、[PowerShell](/powershell/azureps-cmdlets-docs) 或[密钥保管库管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)。
+<a id="key-vault-access-policies"></a> 密钥保管库访问策略单独授予对密钥、机密和证书的权限。 可以仅授予用户对密钥的访问权限，而不授予对机密的访问权限。 密钥、机密或证书的访问权限是保管库级别的。 密钥保管库访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](/cli/azure/install-azure-cli?view=azure-cli-latest)、[PowerShell](/powershell/azure/) 或[密钥保管库管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)。
 
 > [!IMPORTANT]
 > Key Vault 访问策略适用于保管库级别。 如果授予某个用户创建和删除密钥的权限，该用户可以针对该密钥保管库中的所有密钥执行这些操作。
@@ -130,7 +130,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 | --- | --- | --- |
 | 安全团队 | 密钥保管库参与者 | 密钥：备份、创建、删除、获取、导入、列出、还原<br>机密：所有操作 |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 |
-| 审核人员 | None | 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 |
+| 审核人员 | 无 | 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 |
 | 应用程序 | 无 | 密钥：签名<br>机密：获取 |
 
 三个团队角色需要访问其他资源的权限以及密钥保管库权限。 若要部署 VM（或 Azure 应用服务的 Web 应用功能），开发人员和操作人员需要对这些资源类型的 `Contributor` 访问权限。 审核员需要具有对存储密钥保管库日志的存储帐户的“读取”访问权限。
@@ -197,7 +197,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 ## <a name="resources"></a>资源
 
-* [Azure AD RBAC](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 * [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
 

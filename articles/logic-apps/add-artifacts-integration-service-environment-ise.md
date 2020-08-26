@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078713"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>将资源添加到 Azure 逻辑应用中的 integration service 环境（ISE）
 
@@ -50,7 +50,7 @@ ms.locfileid: "85830020"
    | **位置** | 是 | 在 " **Integration service 环境**" 下，选择要使用的 ISE （如果尚未选择）。 <p><p> **重要提示**：若要将逻辑应用与集成帐户一起使用，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成后，选择“创建”。
+1. 完成操作后，选择“创建”。
 
 1. 继续[以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "85830020"
    | **位置** | 是 | 在 " **Integration service 环境**" 下，选择逻辑应用使用的相同 ISE （如果尚未选择）。 <p><p> **重要提示**：若要在逻辑应用中使用集成帐户，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成后，选择“创建”。
+1. 完成操作后，选择“创建”。
 
 1. [以常规方式将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "85830020"
 
    ![查看托管连接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”。
+1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建” 。
 
    ![选择要在 ISE 中部署的 ISE 连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "85830020"
 
    ![选择和编辑自定义连接器](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. 通过从[OpenAPI 定义](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)或[SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)按常规方式创建连接器继续。
+1. 通过从[OpenAPI 定义](/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)或[SOAP](/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)按常规方式创建连接器继续。
 
 1. 若要管理 ISE 中的自定义连接器，请参阅[管理 integration service 环境](../logic-apps/ise-manage-integration-service-environment.md)。
 

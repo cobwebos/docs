@@ -1,24 +1,22 @@
 ---
-title: 展开具有新会话主机的现有主机池 2019-Azure
-description: 如何使用 Windows 虚拟桌面中的新会话主机扩展现有的主机池。
-services: virtual-desktop
+title: 利用新的会话主机展开现有 Windows 虚拟桌面 (经典) 主机池-Azure
+description: 如何使用 Windows 虚拟桌面 (经典) 中的新会话主机展开现有的主机池。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527534"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009165"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>使用新的会话主机展开现有的主机池（秋季为2019）
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>使用 Windows 虚拟桌面 (经典) 中的新会话主机展开现有的主机池
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../expand-existing-host-pool.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../expand-existing-host-pool.md)。
 
 当你在主机池内提高使用率时，可能需要使用新的会话主机扩展现有的主机池以处理新负载。
 
@@ -26,7 +24,7 @@ ms.locfileid: "86527534"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>扩展主机池所需的条件
 
-在开始之前，请确保已使用以下方法之一创建了主机池和会话主机虚拟机（Vm）：
+在开始之前，请确保已使用以下方法之一) 创建了主机池和会话主机虚拟机 (Vm：
 
 - [Azure Marketplace 产品/服务](create-host-pools-azure-marketplace-2019.md)
 - [GitHub Azure 资源管理器模板](create-host-pools-arm-template.md)

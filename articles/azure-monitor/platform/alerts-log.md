@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 57cc3624a38fbec1e5bef7bb281363d34acef2b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 25604bde3afbbef0d541bc21996b59e98b3090f4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505595"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327491"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -77,8 +77,8 @@ ms.locfileid: "86505595"
 1. 选择**警报的运行频率。** 
 
     日志警报可以基于：
-    - [记录数目](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)：如果查询返回的记录计数大于或小于提供的值，则创建警报。
-    - [指标度量](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)：如果结果中的每个聚合值超过提供的阈值并且是“分组依据”选定值，则创建警报 。 警报违规数是在选定时间段内超过阈值的次数。 可以为结果集中的任何违规组合指定总违规数，或指定连续违规数以要求违规必须在连续采样时发生。
+    - [记录数目](./alerts-unified-log.md#number-of-results-alert-rules)：如果查询返回的记录计数大于或小于提供的值，则创建警报。
+    - [指标度量](./alerts-unified-log.md#metric-measurement-alert-rules)：如果结果中的每个聚合值超过提供的阈值并且是“分组依据”选定值，则创建警报 。 警报违规数是在选定时间段内超过阈值的次数。 可以为结果集中的任何违规组合指定总违规数，或指定连续违规数以要求违规必须在连续采样时发生。
 
 
 1. 单击“完成”。 
@@ -100,7 +100,7 @@ ms.locfileid: "86505595"
     其他一些功能可用于替代默认操作：
 
     - **电子邮件通知**：覆盖通过操作组发送的电子邮件中的*电子邮件主题*。 无法修改邮件正文，并且该字段不能用于电子邮件地址。
-    - **包括自定义 Json 有效负载**：替代操作组使用的 webhook Json，假定操作组包含 webhook 类型。 有关 webhook 格式的详细信息，请参阅[日志警报的 webhook 操作](../../azure-monitor/platform/alerts-log-webhook.md)。 提供了“查看 Webhook”选项来使用示例 JSON 数据检查格式。
+    - **包括自定义 Json 有效负载**：替代操作组使用的 webhook Json，假定操作组包含 webhook 类型。 有关 webhook 格式的详细信息，请参阅[日志警报的 webhook 操作](./alerts-log-webhook.md)。 提供了“查看 Webhook”选项来使用示例 JSON 数据检查格式。
 
         ![日志警报的操作替代](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -212,7 +212,7 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>使用 Azure 资源模板进行跨资源查询的日志警报
 
-以下是基于资源模板的[计划查询规则创建](/rest/api/monitor/scheduledqueryrules/createorupdate)结构，它使用[指标度量值类型日志警报](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)的[跨资源日志搜索查询](../../azure-monitor/log-query/cross-workspace-query.md)，其中示例数据集作为变量。
+以下是基于资源模板的[计划查询规则创建](/rest/api/monitor/scheduledqueryrules/createorupdate)结构，它使用[指标度量值类型日志警报](./alerts-unified-log.md#metric-measurement-alert-rules)的[跨资源日志搜索查询](../log-query/cross-workspace-query.md)，其中示例数据集作为变量。
 
 ```json
 
@@ -319,7 +319,7 @@ Azure Monitor - [计划查询规则 API](/rest/api/monitor/scheduledqueryrules/)
 - [AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) ： PowerShell cmdlet，用于创建或更新指定日志警报的操作参数的对象。 由 [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) 和 [Set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 用作输入。
 - [AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) ： PowerShell cmdlet，用于创建或更新指定操作组日志警报参数的对象。 由 [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) cmdlet 用作输入。
 - [AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) ： PowerShell cmdlet，用于创建或更新指定日志警报的触发器条件参数的对象。 由 [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) cmdlet 用作输入。
-- [AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： PowerShell cmdlet，用于创建或更新为[指标度量类型日志警报](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)指定指标触发器条件参数的对象。 由 [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) cmdlet 用作输入。
+- [AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： PowerShell cmdlet，用于创建或更新为[指标度量类型日志警报](./alerts-unified-log.md#metric-measurement-alert-rules)指定指标触发器条件参数的对象。 由 [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) cmdlet 用作输入。
 - [AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) ： PowerShell cmdlet 列出现有的日志警报规则或特定的日志警报规则
 - [AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) ： PowerShell cmdlet，用于启用或禁用日志预警规则
 - [AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule)： PowerShell cmdlet 用于删除现有的日志警报规则
@@ -363,7 +363,8 @@ az group deployment create --resource-group contosoRG --template-file sampleSche
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Azure 警报中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)
-* 了解[用于日志警报的 Webhook 操作](../../azure-monitor/platform/alerts-log-webhook.md)
+* 了解 [Azure 警报中的日志警报](./alerts-unified-log.md)
+* 了解[用于日志警报的 Webhook 操作](./alerts-log-webhook.md)
 * 详细了解 [Application Insights](../log-query/log-query-overview.md)
 * 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。
+

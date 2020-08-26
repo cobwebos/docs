@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 03/26/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025585"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -45,9 +45,9 @@ ms.locfileid: "86103698"
 - **已加入 Azure AD**
    - 已加入 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中。
       - Windows 10 
-      - [在 Azure 中运行的 Windows Server 2019 虚拟机] (./howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心）
+      - [在 Azure 中运行的 Windows Server 2019 虚拟机](howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心）
 - **已加入混合 Azure AD**
-   - 已加入混合 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中和本地。
+   - 已加入混合 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Active Directory 域服务帐户。 这些设备位于云中和本地。
       - Windows 7、8.1 或 10
       - Windows Server 2008 或更高版本
 

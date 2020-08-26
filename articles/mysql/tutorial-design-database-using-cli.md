@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
-ms.custom: mvc
-ms.openlocfilehash: 080e4b119048f2c204e6617405c7c053c7f24cea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 6f79460f00ce52fd54d0cda34467d3df35185ba0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80382828"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496791"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 
@@ -70,7 +70,7 @@ sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如�
 
 
 ## <a name="configure-firewall-rule"></a>配置防火墙规则
-使用 az mysql server firewall-rule create 命令创建 Azure Database for MySQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql  命令行工具或 MySQL Workbench）通过 Azure MySQL 服务防火墙连接到服务器。 
+使用 az mysql server firewall-rule create 命令创建 Azure Database for MySQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure MySQL 服务防火墙连接到服务器。 
 
 以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替代与要从其进行连接的地址相对应的 IP 地址或 IP 地址范围。 
 
@@ -170,7 +170,7 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
-假设意外删除了此表。 这是你不能轻易还原的内容。 借助 Azure Database for MySQL，可返回到最近 35 天内的任意时间点并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
+假设意外删除了此表。 这是不能轻易还原的内容。 借助 Azure Database for MySQL，可返回到最近 35 天内的任意时间点并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
 
 执行还原需要以下信息：
 
@@ -197,7 +197,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 该命令是同步的，且会在服务器还原后返回。 还原完成后，找到创建的新服务器。 验证数据是否按预期还原。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍：
+本教程介绍了：
 > [!div class="checklist"]
 > * 创建 Azure Database for MySQL 服务器
 > * 配置服务器防火墙

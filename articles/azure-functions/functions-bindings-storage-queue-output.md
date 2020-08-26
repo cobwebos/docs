@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559959"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212272"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -300,7 +301,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-| 属性    | 描述 |
+| 属性    | 说明 |
 |-------------|-----------------------------|
 |`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
 |`queueName`  | 在存储帐户中声明队列名称。 |
@@ -316,7 +317,7 @@ public class HttpTriggerQueueOutput {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |
@@ -366,17 +367,17 @@ public class HttpTriggerQueueOutput {
 
 有两个选项可用于从函数输出事件中心消息：
 
-- **返回值**：将 `name` *function.js上*的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为队列存储消息。
+- **返回值**：将 `name` *function.js上* 的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为队列存储消息。
 
-- **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为队列存储消息。
+- **命令式**：向声明为[Out](/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为队列存储消息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-可通过两个选项使用 [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注释从函数输出事件中心消息：
+可通过两个选项使用 [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注释从函数输出事件中心消息：
 
 - **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为事件中心消息。
 
-- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
 
 ---
 
@@ -384,9 +385,9 @@ public class HttpTriggerQueueOutput {
 
 | 绑定 |  参考 |
 |---|---|
-| 队列 | [队列错误代码](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob、表、队列 |  [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| 队列 | [队列错误代码](/rest/api/storageservices/queue-service-error-codes) |
+| Blob、表、队列 | [存储错误代码](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob、表、队列 |  [故障排除](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 

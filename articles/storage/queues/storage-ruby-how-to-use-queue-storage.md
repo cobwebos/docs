@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 518a1b01f52edcf5fa365e2275d4b995ffd719c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac47747f7789b23801900804522681e5a4b10e5a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805170"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078693"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84805170"
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
-创建 Ruby 应用程序。 有关说明，请参阅[使用 Linux 应用服务创建 Ruby 应用](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)。
+创建 Ruby 应用程序。 有关说明，请参阅[使用 Linux 应用服务创建 Ruby 应用](https://docs.microsoft.com/azure/app-service/quickstart-ruby)。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 要使用 Azure 存储，需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
@@ -57,7 +57,7 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到要使用的存储帐户。
-3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”****。
+3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”。
 4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。 
 5. 单击复制图标以将键复制到剪贴板。 
 
@@ -79,14 +79,14 @@ end
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>如何：在队列中插入消息
-要在队列中插入消息，可使用 **create_message()** 方法创建一条新消息并将其添加到队列中。
+若要在队列中插入消息，请使用**create_message ( # B1**方法来创建新消息并将其添加到队列中。
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
-可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下，**速览 \_ 消息（）** 查看单个消息。 也可以指定要扫视的消息数。
+通过调用**速览 \_ 消息 ( # B1**方法，你可以扫视队列前面的消息，而不必从队列中将其删除。 默认情况下，**扫视 \_ 消息 ( # B1**查看单个消息。 也可以指定要扫视的消息数。
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -97,9 +97,9 @@ result = azure_queue_service.peek_messages("test-queue",
 可通过两个步骤从队列中删除消息。
 
 1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 将传递以秒为单位的可见性超时值作为参数。
-2. 若要完成从队列中删除消息，还必须调用**delete_message （）**。
+2. 若要完成从队列中删除消息，还必须** ( # B1 delete_message**调用。
 
-此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后立即调用**delete \_ message （）** 。
+此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 处理消息后，你的代码将调用** \_ ( # B1 的删除消息**。
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -108,7 +108,7 @@ azure_queue_service.delete_message("test-queue",
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
-可以更改队列中现有消息的内容。 以下代码使用 **update_message()** 方法来更新消息。 该方法将返回一个元组，其中包含队列消息的 pop 接收方，以及一个 UTC 日期时间值，表示消息会在队列中可见的时间。
+可以更改队列中现有消息的内容。 下面的代码使用**update_message ( # B1**方法来更新消息。 该方法将返回一个元组，其中包含队列消息的 pop 接收方，以及一个 UTC 日期时间值，表示消息会在队列中可见的时间。
 
 ```ruby
 message = azure_queue_service.list_messages("test-queue", 30)
@@ -117,7 +117,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于取消对消息进行排队的其他选项
 可通过两种方式自定义队列中消息的检索。
 
 1. 可以获取一批消息。
@@ -142,14 +142,14 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>如何：删除队列
-若要删除队列及其中包含的所有消息，请对队列对象调用 **delete\_queue()** 方法。
+若要删除队列及其中包含的所有消息，请对队列对象调用**delete \_ queue ( # B1**方法。
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+在了解了有关队列存储的基础知识后，可使用以下链接来了解更复杂的存储任务。
 
 * 访问[Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
 * 访问 GitHub 上的[AZURE SDK For Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby)存储库

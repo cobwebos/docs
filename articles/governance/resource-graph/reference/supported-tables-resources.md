@@ -1,15 +1,15 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
 description: 提供 Azure 资源关系图支持的 Azure 资源管理器资源类型列表和更改历史记录。
-ms.date: 06/04/2020
+ms.date: 08/10/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 91b8a88fd056db2fd8495c85dccbcc08f4a94fda
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970563"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065992"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -19,6 +19,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
+- microsoft advisor/建议/禁止显示
 - microsoft.advisor/suppressions
 
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
@@ -184,7 +185,6 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.desktopvirtualization/applicationgroups
 - microsoft.desktopvirtualization/hostpools
 - microsoft.desktopvirtualization/workspaces
-- microsoft.detonationservice/detonationinstances
 - microsoft.devices/elasticpools
 - microsoft.devices/elasticpools/iothubtenants
 - microsoft.devices/iothubs

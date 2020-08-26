@@ -1,7 +1,7 @@
 ---
 title: 创建虚拟网络
 titleSuffix: Azure SQL Managed Instance
-description: 本文介绍如何创建配置为支持部署 Azure SQL 托管实例的虚拟网络。
+description: 本文介绍如何创建可配置为支持部署 Azure SQL 托管实例的虚拟网络。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -12,18 +12,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: d6458794b8d3c5ba68109dbc90a075d6a2a577b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ec6b7747ad22df96fd8ab5f9b5b5bc1e27b0993
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711317"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543735"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>为 Azure SQL 托管实例创建虚拟网络
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本文介绍如何创建可在其中部署 Azure SQL 托管实例的有效虚拟网络和子网。
+本文说明如何创建可在其中部署 Azure SQL 托管实例的有效虚拟网络和子网。
 
-必须在 Azure[虚拟网络](../../virtual-network/virtual-networks-overview.md)中部署 azure SQL 托管实例。 此部署支持以下方案：
+Azure SQL 托管实例必须部署在 Azure [虚拟网络](../../virtual-network/virtual-networks-overview.md)中。 此部署支持以下方案：
 
 - 保护专用 IP 地址
 - 直接从本地网络连接到 SQL 托管实例
@@ -31,9 +32,9 @@ ms.locfileid: "84711317"
 - 将 SQL 托管实例连接到 Azure 资源  
 
 > [!NOTE]
-> 你应在部署第一个实例之前[确定 SQL 托管实例的子网的大小](vnet-subnet-determine-size.md)。 在资源放入子网后，无法调整子网大小。
+> 在部署第一个实例之前，应[确定 SQL 托管实例的子网大小](vnet-subnet-determine-size.md)。 在资源放入子网后，无法调整子网大小。
 >
-> 如果打算使用现有的虚拟网络，则需要修改该网络配置以适应 SQL 托管实例。 有关详细信息，请参阅[修改 SQL 托管实例的现有虚拟网络](vnet-existing-add-subnet.md)。
+> 如果打算使用现有的虚拟网络，则需要修改该网络的配置，以适应 SQL 托管实例。 有关详细信息，请参阅[为 SQL 托管实例修改现有的虚拟网络](vnet-existing-add-subnet.md)。
 >
 > 创建托管实例后，不支持将托管实例或虚拟网络移到另一个资源组或订阅。  也不支持将托管实例移到另一个子网。
 >
@@ -44,25 +45,25 @@ ms.locfileid: "84711317"
 
 1. 登录到 Azure 门户。
 
-2. 选择“部署到 Azure”按钮： 
+2. 选择“部署到 Azure”按钮：
 
-   <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+   [![显示标记为 "部署到 Azure" 按钮的图像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json)
 
-   此按钮将打开一个窗体，可用于配置可在其中部署 SQL 托管实例的网络环境。
+   单击此按钮会打开一个窗体，在其中可以配置用于部署 SQL 托管实例的网络环境。
 
    > [!Note]
-   > 此 Azure 资源管理器模板将部署包含两个子网的虚拟网络。 一个名为**ManagedInstances**的子网为 SQL 托管实例保留，并且具有预先配置的路由表。 另一个名为 "**默认**" 的子网用于应该访问 SQL 托管实例的其他资源（例如，Azure 虚拟机）。
+   > 此 Azure 资源管理器模板将部署包含两个子网的虚拟网络。 一个名为 ManagedInstances 的子网预留给 SQL 托管实例并且已预配置了路由表。 名为 Default 的另一个子网用于应当访问 SQL 托管实例的其他资源（例如 Azure 虚拟机）。
 
 3. 配置网络环境。 在以下窗体上，可以配置网络环境的参数：
 
    ![用于配置 Azure 网络的资源管理器模板](./media/virtual-network-subnet-create-arm-template/create-mi-network-arm.png)
 
-   可以更改虚拟网络和子网的名称，并调整与网络资源关联的 IP 范围。 选择“购买”按钮后，此窗体将创建并配置环境。  如果不需要两个子网，可以删除默认子网。
+   可以更改虚拟网络和子网的名称，并调整与网络资源关联的 IP 范围。 选择“购买”按钮后，此窗体将创建并配置环境。 如果不需要两个子网，可以删除默认子网。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是 SQL 托管实例？](sql-managed-instance-paas-overview.md)。
-- 了解[SQL 托管实例中的连接体系结构](connectivity-architecture-overview.md)。
-- 了解如何[修改 SQL 托管实例的现有虚拟网络](vnet-existing-add-subnet.md)。
-- 有关演示如何创建虚拟网络、创建托管实例和从数据库备份还原数据库的教程，请参阅[创建托管实例](instance-create-quickstart.md)。
+- 有关概述，请参阅[什么是 SQL 托管实例](sql-managed-instance-paas-overview.md)。
+- 了解 [SQL 托管实例中的连接体系结构](connectivity-architecture-overview.md)。
+- 了解如何[为 SQL 托管实例修改现有的虚拟网络](vnet-existing-add-subnet.md)。
+- 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关 DNS 问题，请参阅[配置自定义 DNS](custom-dns-configure.md)。

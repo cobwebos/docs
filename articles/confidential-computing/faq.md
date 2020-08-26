@@ -10,6 +10,7 @@ ms.date: 4/17/2020
 ms.author: jencook
 ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83772892"

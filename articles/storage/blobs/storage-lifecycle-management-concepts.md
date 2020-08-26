@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528686"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494547"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -30,17 +30,11 @@ ms.locfileid: "86528686"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="storage-account-support"></a>存储帐户支持
+## <a name="availability-and-pricing"></a>可用性和定价
 
-生命周期管理策略可用于常规用途 v2 （GPv2）帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
-
-## <a name="pricing"></a>定价
+常规用途 v2 （GPv2）帐户、Blob 存储帐户和高级块 Blob 存储帐户的所有 Azure 区域均提供生命周期管理功能。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
 
 生命周期管理功能是免费的。 客户将按[集 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)API 调用的常规操作成本收费。 删除操作是免费的。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
-
-## <a name="regional-availability"></a>区域可用性
-
-生命周期管理功能在所有 Azure 区域中均可用。
 
 ## <a name="add-or-remove-a-policy"></a>添加或删除策略
 
@@ -248,7 +242,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 以下示例规则将筛选帐户，以针对 `container1` 中存在的、以 `foo` 开头的对象运行操作。  
 
 >[!NOTE]
->生命周期管理仅支持块 blob 类型。  
+>- 生命周期管理仅支持块 blob 类型。<br>
+>- 生命周期管理不会影响系统容器，如 $logs 和 $web。
 
 - 在上次修改后的 30 天后，将 Blob 分层到冷层
 - 在上次修改后的 90 天后，将 Blob 分层到存档层
@@ -296,7 +291,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | blobIndexMatch | 由要匹配的 Blob 索引标记键和值条件组成的字典值的数组。 每个规则最多可以定义10个 Blob 索引标记条件。 例如，如果想要将的所有 blob 与 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 规则进行匹配，则 blobIndexMatch 为 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果未定义 blobIndexMatch，则规则将应用于存储帐户中的所有 blob。 | 否 |
 
 > [!NOTE]
-> Blob 索引为公共预览版，在**法国中部**和**法国南部**区域可用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
+> Blob 索引以公共预览版提供，在**加拿大中部**、**加拿大东部**、**法国中部**和**法国南部**区域提供。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>规则操作
 
@@ -357,7 +352,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 以下生命周期策略已配置为在引入数据后立即对其进行存档。 此示例将容器 `archivecontainer` 中的存储帐户中的块 Blob 转移到存档层。 转移是通过在上次修改后的 0 天内处理 Blob 实现的：
 
 > [!NOTE] 
-> 建议将 blob 直接上传到存档层以提高效率。 可以将[PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob)或[PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list)的 x ms 访问层标头与 REST 版本2018-11-09 及更高版本或最新的 blob 存储客户端库配合使用。 
+> 建议将 blob 直接上传到存档层以提高效率。 可以将 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) 或 [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) 的 x-ms-access-tier 标头用于 REST 版本 2018-11-09 和更新版本或我们的最新 Blob 存储客户端库。 
 
 ```json
 {

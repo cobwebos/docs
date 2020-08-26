@@ -8,19 +8,20 @@ ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6ff56ca61304bdacb3512156babd637afd337c7e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8e96a666ece7fea64df59c9ed51944534c96bd6b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242122"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246240"
 ---
-[参考文档](https://docs.microsoft.com/java/api/overview/azure/formrecognizer) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[参考文档](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 包含一组训练数据的 Azure 存储 Blob。 有关整理训练数据集的提示和选项，请参阅[为自定义模型生成训练数据集](../../build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Train** 文件夹下的文件。
 * 最新版本的 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 生成工具](https://gradle.org/install/)，或其他依赖项管理器。
@@ -73,7 +74,7 @@ import com.azure.core.util.Context;
 
 
 ```java
-public static void Main(string[] args)
+public static void main(String[] args)
 {
     String key = System.getenv("FORM_RECOGNIZER_KEY");
     String endpoint = System.getenv("FORM_RECOGNIZER_ENDPOINT");
@@ -130,12 +131,12 @@ FormTrainingClient trainingClient = recognizerClient.getFormTrainingClient();
 * 使用上述方法还可获取回执图像的 URL。
 
 > [!NOTE]
-> 本指南中的代码片段使用通过 URL 访问的远程表单。 如果要改为处理本地表单文档，请参阅[参考文档](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)中的相关方法。
+> 本指南中的代码片段使用通过 URL 访问的远程表单。 如果要改为处理本地表单文档，请参阅[参考文档](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)中的相关方法。
 
 ```java
-    string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
-    string formUrl = "<SAS-URL-of-a-form-in-blob-storage>";
-    string receiptUrl = "https://docs.microsoft.com/azure/cognitive-services/form-recognizer/media"
+    String trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
+    String formUrl = "<SAS-URL-of-a-form-in-blob-storage>";
+    String receiptUrl = "https://docs.microsoft.com/azure/cognitive-services/form-recognizer/media"
     + "/contoso-allinone.jpg";
 
     // Call Form Recognizer scenarios:
@@ -179,7 +180,7 @@ private static void GetContent(
     contentResult.forEach(formPage -> {
         // Table information
         System.out.println("----Recognizing content ----");
-        System.out.printf("Has width: %d and height: %d, measured with unit: %s.%n", formPage.getWidth(),
+        System.out.printf("Has width: %f and height: %f, measured with unit: %s.%n", formPage.getWidth(),
             formPage.getHeight(),
             formPage.getUnit());
         formPage.getTables().forEach(formTable -> {
@@ -202,7 +203,7 @@ private static void GetContent(
 
 ```java
 private static void AnalyzeReceipt(
-    FormRecognizerClient recognizerClient, string receiptUri)
+    FormRecognizerClient recognizerClient, String receiptUri)
 {
     SyncPoller<OperationResult, List<RecognizedReceipt>> syncPoller =
         formRecognizerClient.beginRecognizeReceiptsFromUrl(receiptUri);
@@ -303,7 +304,7 @@ private static void AnalyzeReceipt(
 
 ```java
 private static String TrainModel(
-    FormRecognizerClient trainingClient, string trainingDataUrl)
+    FormRecognizerClient trainingClient, String trainingDataUrl)
 {
     String trainingSetSource = "{unlabeled_training_set_SAS_URL}";
     SyncPoller<OperationResult, CustomFormModel> trainingPoller =

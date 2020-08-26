@@ -3,43 +3,46 @@ title: 使用 Azure 托管标识在开发测试实验室中创建环境 |Microso
 description: 了解如何使用 Azure 中的托管标识在 Azure 开发测试实验室中的实验室部署环境。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478869"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718964"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>使用 Azure 托管标识在实验室中部署环境 
+
 作为实验室所有者，你可以使用托管标识在实验室中部署环境。 此功能在以下情况下非常有用：环境包含或引用 Azure 资源，如 key vault、共享映像库以及环境资源组外部的网络。 它允许创建不限于该环境的资源组的沙盒环境。
 
 > [!NOTE]
 > 目前，每个实验室支持单一用户分配的标识。 
 
 ## <a name="prerequisites"></a>先决条件
+
 - [使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 
+    
+    确保你的托管标识是与实验室在同一区域和订阅中创建的。 托管标识不需要位于同一资源组中。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
+
 在本部分中，你将作为实验室所有者，使用 Azure 门户向实验室添加用户管理的标识。 
 
-1. 在 "实验室" 页上，选择 "**配置和策略**"。 
-1. 在 "**设置**" 部分中选择 "**标识**"。
-1. 若要添加用户分配的标识，请在工具栏上选择 "**添加**"。 
-1. 从预填充的下拉列表中选择一个**标识**。
-1. 选择“确定”。
-
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 搜索 **开发测试实验室**。
+1. 从实验室列表中，选择所需的实验室。
+1. 选择 "**配置和策略**  ->  **标识" (预览 ") **。 
+1. 若要添加用户分配的标识，请选择 " **用户分配** " 选项卡。
+1. 按 " **添加** "。
+1. 从下拉选择已创建和/或有权访问的现有用户。
+ 
     ![添加用户托管标识](./media/use-managed-identities-environments/add-user-managed-identity.png)
-2. 你将在列表中看到添加的用户管理的标识。 
+1. 按页面顶部的 " **保存** "。
 
-    ![列表中用户管理的标识](./media/use-managed-identities-environments/identity-in-list.png)
-
-保存后，实验室将使用此标识，同时部署所有实验室环境。 还可以通过从列表中选择标识来访问 Azure 中的标识资源。 
+    保存后，实验室将使用此标识，同时部署所有实验室环境。 还可以通过从列表中选择标识来访问 Azure 中的标识资源。 
 
 部署环境时，实验室所有者无需执行任何特殊操作，只要添加到实验室的标识有权访问环境需要访问的外部资源。 
 
-若要更改分配给实验室的用户托管标识，请首先删除附加到实验室的标识，然后将另一个标识添加到实验室。 若要删除附加到实验室的标识，请选择 " **..."（省略号）**，然后单击 "**删除**"。 
-
-![列表中用户管理的标识](./media/use-managed-identities-environments/replace-identity.png)  
+若要更改分配给实验室的用户托管标识，请首先删除附加到实验室的标识，然后将另一个标识添加到实验室。 若要删除附加到实验室的标识，请选择 " **..." (省略号) **，然后单击 " **删除**"。 
 
 ## <a name="use-api"></a>使用 API
 
@@ -66,7 +69,7 @@ ms.locfileid: "85478869"
     }
     ```
  
-    以下是一个示例： 
+    下面是一个示例： 
 
     ```json
     PUT https://management.azure.com/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.Devtestlab/labs/mylab/serviceRunners/sampleuseridentity

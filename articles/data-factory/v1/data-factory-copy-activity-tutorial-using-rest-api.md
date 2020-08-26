@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85248567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053820"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.locfileid: "85248567"
   2. 获取**客户端 ID** 和**机密密钥**。 
   3. 获取 **租户 ID**。 
   4. 将 **ADFCopyTutorialApp** 应用程序分配给**数据工厂参与者**角色。  
-* 安装 [Azure PowerShell](/powershell/azure/overview)。  
+* 安装 [Azure PowerShell](/powershell/azure/)。  
 * 启动 **PowerShell** 并执行以下步骤。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   
   1. 运行以下命令并输入用于登录 Azure 门户的用户名和密码：

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193407"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501910"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护 Synapse 工作区（预览）
 
@@ -82,7 +82,7 @@ ms.locfileid: "85193407"
   - 将 WS1\_SparkAdmins 分配到 Synapse Spark 管理员
   - 将 WS1\_SQLAdmins 分配到 Synapse SQL 管理员
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>第 4 步：配置 Data Lake Storage Gen2 以供 Synapse 工作区使用
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>步骤4：配置 Data Lake Storage Gen2 以供 Synapse 工作区使用
 
 Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行系统任务。
 
@@ -100,7 +100,7 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 - 在“设置”下，单击“SQL Active Directory 管理员”
 - 单击“设置管理员”，然后选择“WS1\_SQLAdmins”
 
-## <a name="step-6-maintaining-access-control"></a>第 6 步：维护访问控制
+## <a name="step-6-maintain-access-control"></a>步骤6：维护访问控制
 
 配置已完成。
 
@@ -112,7 +112,7 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 
 每个角色的用户都需要完成以下步骤：
 
-|   | 步骤 | 工作区管理员 | Spark 管理员 | SQL 管理员 |
+| Number | 步骤 | 工作区管理员 | Spark 管理员 | SQL 管理员 |
 | --- | --- | --- | --- | --- |
 | 1 | 将 parquet 文件上传到 CNT1 中 | YES | YES | YES |
 | 2 | 使用 SQL 按需版本读取 parquet 文件 | YES | 是 | YES |

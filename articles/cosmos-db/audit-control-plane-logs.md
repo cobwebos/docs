@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023681"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何审核 Azure Cosmos DB 控制平面操作
 
@@ -26,9 +27,9 @@ Azure Cosmos DB 中的控制平面是一项 RESTful 服务，可用于对 Azure 
 
 ## <a name="disable-key-based-metadata-write-access"></a>禁用基于密钥的元数据写入访问
 
-在 Azure Cosmos DB 中审核控制平面操作之前，请在帐户中禁用基于密钥的元数据写入访问。 禁用基于密钥的元数据写入访问后，会阻止通过帐户密钥连接到 Azure Cosmos 帐户的客户端访问该帐户。 可以通过将 `disableKeyBasedMetadataWriteAccess` 属性设置为 true 来禁用写入访问。 设置此属性后，拥有适当的、基于角色的访问控制 (RBAC) 角色和凭据的用户即可对任一资源进行更改。 若要详细了解如何设置此属性，请参阅[阻止从 SDK 进行更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文。 
+在 Azure Cosmos DB 中审核控制平面操作之前，请在帐户中禁用基于密钥的元数据写入访问。 禁用基于密钥的元数据写入访问后，会阻止通过帐户密钥连接到 Azure Cosmos 帐户的客户端访问该帐户。 可以通过将 `disableKeyBasedMetadataWriteAccess` 属性设置为 true 来禁用写入访问。 设置此属性后，拥有适当的、基于角色的访问控制 (RBAC) 角色和凭据的用户即可对任一资源进行更改。 若要详细了解如何设置此属性，请参阅[阻止从 SDK 进行更改](role-based-access-control.md#prevent-sdk-changes)一文。 
 
-启用 `disableKeyBasedMetadataWriteAccess` 后，如果基于 SDK 的客户端执行创建或更新操作，则会返回“不允许通过 Azure Cosmos DB 终结点对资源 ContainerNameorDatabaseName 执行'发布'操作”错误**。 你必须为你的帐户启用此类操作的访问权限，或通过 Azure 资源管理器、Azure CLI 或 Azure PowerShell 执行创建/更新操作。 若要切换回去，请按照[阻止来自 Cosmos SDK 的更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)中所述，使用 Azure CLI 将 disableKeyBasedMetadataWriteAccess 设置为 false****。 确保将 `disableKeyBasedMetadataWriteAccess` 的值更改为 false 而不是 true。
+启用 `disableKeyBasedMetadataWriteAccess` 后，如果基于 SDK 的客户端执行创建或更新操作，则会返回“不允许通过 Azure Cosmos DB 终结点对资源 ContainerNameorDatabaseName 执行'发布'操作”错误**。 你必须为你的帐户启用此类操作的访问权限，或通过 Azure 资源管理器、Azure CLI 或 Azure PowerShell 执行创建/更新操作。 若要切换回去，请按照[阻止来自 Cosmos SDK 的更改](role-based-access-control.md#prevent-sdk-changes)中所述，使用 Azure CLI 将 disableKeyBasedMetadataWriteAccess 设置为 false****。 确保将 `disableKeyBasedMetadataWriteAccess` 的值更改为 false 而不是 true。
 
 禁用元数据写入访问时，请注意以下几点：
 

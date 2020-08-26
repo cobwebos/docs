@@ -3,12 +3,12 @@ title: 使用 Azure 门户创建资源运行状况警报
 description: 使用 Azure 门户创建警报，以便在 Azure 资源变为不可用时通知你。
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091566"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>使用 Azure 门户配置资源运行状况警报
 
@@ -45,7 +45,7 @@ Azure 资源将资源运行状况通知发送到 Azure 订阅时，你可以收�
 1. 在 Azure[门户](https://portal.azure.com/)中，选择 "**服务运行状况**"。
 
     ![服务运行状况选择](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. 在 "**资源运行状况**" 部分中，选择 "**资源运行状况**"。
+2. 在 "**资源运行状况**" 部分中，选择 "**服务运行状况**"。
 3. 选择 "**添加资源运行状况警报**"，并填写字段。
 4. 在 "警报目标" 下，选择要向其发出警报的**订阅**、**资源类型**、**资源组**和**资源**。
 

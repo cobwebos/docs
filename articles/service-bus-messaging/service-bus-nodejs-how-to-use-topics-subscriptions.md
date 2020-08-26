@@ -4,14 +4,15 @@ description: 了解如何通过使用 azure/service-bus 包的 Node.js 应用在
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 08/09/2020
 ms.author: spelluru
-ms.openlocfilehash: d4b382a0cf857f9cfe1065815e9b07b8260023a8
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339791"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077010"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何通过 Node.js 和 azure-sb 包使用服务总线主题与订阅
 本教程介绍如何使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包创建 Node.js 应用程序，用于将消息发送到服务总线主题，并从服务总线订阅接收消息。 示例以 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)，该模块在内部使用 `azure-sb` 包。
@@ -19,7 +20,7 @@ ms.locfileid: "85339791"
 > [!IMPORTANT]
 > [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包获得更快的体验，因为该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 
 > 
-> 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线主题和订阅](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
+> 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线主题和订阅](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
 
 本文涉及的方案包括：
 
@@ -141,7 +142,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 > [!NOTE]
 > 默认情况下，除非删除订阅或与之关联的主题，否则订阅是持久性的。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否存在。
 >
-> 可以通过设置 [AutoDeleteOnIdle 属性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)自动删除订阅。
+> 可以通过设置 [AutoDeleteOnIdle 属性](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)自动删除订阅。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 MatchAll 筛选器是创建订阅时使用的默认筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 MatchAll 筛选器。
@@ -253,7 +254,7 @@ var message = {
     }
 }
 
-for (i = 0;i < 5;i++) {
+for (var i = 0; i < 5; i++) {
     message.customProperties.messagenumber=i;
     message.body='This is Message #'+i;
     serviceBusService.sendTopicMessage(topic, message, function(error) {
@@ -305,7 +306,7 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 也就是说，每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应该向应用程序添加逻辑来处理重复消息传送。 可以使用消息的 MessageId 属性，该属性在各次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
-除非设置了 [autoDeleteOnIdle 属性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，否则主题和订阅是持久性的，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
+除非设置了 [AutoDeleteOnIdle 属性](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，否则主题和订阅是持久性的，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
 下面的示例演示如何删除名为 `MyTopic` 的主题：
 
 ```javascript
@@ -342,6 +343,6 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[创建 Node.js 应用程序并将其部署到 Azure 网站]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to Azure App Service]: ../app-service/quickstart-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

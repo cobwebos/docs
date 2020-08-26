@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ae716345275bda2cb23cd331f7c96d0ca5faedc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fc7d62cc89e240d931f3d0f255a917a73a4114c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525239"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654576"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -74,7 +74,7 @@ ms.locfileid: "86525239"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -247,7 +247,7 @@ ms.locfileid: "86525239"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -336,7 +336,7 @@ ms.locfileid: "86525239"
 
 
 * 除 A 系列 VM、tempdb 数据、日志文件外，所有 SAP 认证的 VM 类型（请参阅 SAP 说明 [1928533]）都可放置在非持久性驱动器 D:\ 上。 
-* 不过，建议使用多个 tempdb 数据文件。 请注意，D:\ 驱动器卷因 VM 类型而异。 有关不同 VM 的驱动器 D:\ 精确大小的信息，请参阅 [Azure 中 Windows 虚拟机的大小](../../windows/sizes.md)。
+* 不过，建议使用多个 tempdb 数据文件。 请注意，D:\ 驱动器卷因 VM 类型而异。 有关不同 VM 的驱动器 D:\ 精确大小的信息，请参阅 [Azure 中 Windows 虚拟机的大小](../../sizes.md)。
 
 这些配置让 tempdb 耗用的空间比系统驱动器能够提供的还多。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 若要确定正确的 tempdb 大小，可以在现有系统上检查 tempdb 大小。 
 
@@ -355,7 +355,7 @@ ms.locfileid: "86525239"
 
 
 ### <a name="special-for-m-series-vms"></a>专用于 M 系列 VM
-对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入事务日志的延迟。 因此，应该为形成 SQL Server 事务日志卷的 VHD 部署 Azure 写入加速器。 有关详细信息，请阅读文档[写入加速器](../../windows/how-to-enable-write-accelerator.md)。
+对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入事务日志的延迟。 因此，应该为形成 SQL Server 事务日志卷的 VHD 部署 Azure 写入加速器。 有关详细信息，请阅读文档[写入加速器](../../how-to-enable-write-accelerator.md)。
   
 
 ### <a name="formatting-the-disks"></a>格式化磁盘
@@ -379,9 +379,9 @@ SQL Server 2014 及更新版本提供了一种可能性：将数据库文件直�
 
 * 所用存储帐户所在的 Azure 区域必须与部署运行 SQL Server 的 VM 时所用的存储帐户相同。
 * 之前列出的有关将 VHD 分布到不同 Azure 存储帐户的注意事项也适用于这种部署方法。 意味着 I/O 操作计数会以 Azure 存储帐户的限制为依据。
-* 代表 SQL Server 数据和日志文件的存储 Blob 的流量将计入特定 VM 类型的 VM 的网络带宽，而不是计入 VM 的存储 I/O 配额。 有关特定 VM 类型的网络和存储带宽的信息，请参考 [Azure 中 Windows 虚拟机的大小](../../windows/sizes.md)一文。
+* 代表 SQL Server 数据和日志文件的存储 Blob 的流量将计入特定 VM 类型的 VM 的网络带宽，而不是计入 VM 的存储 I/O 配额。 有关特定 VM 类型的网络和存储带宽的信息，请参考 [Azure 中 Windows 虚拟机的大小](../../sizes.md)一文。
 * 由于通过网络配额推送文件 I/O，你将主要搁浅存储配额，而这只会部分地使用 VM 的总体带宽。
-* Azure 高级存储针对不同磁盘大小的 IOPS 和 I/O 吞吐量性能目标不再适用。 即使创建的 Blob 位于 Azure 高级存储上。 目标记录于 [VM 的高性能高级存储与托管磁盘](../../windows/disks-types.md#premium-ssd)一文中。 由于直接将 SQL Server 数据文件和日志文件至于存储在 Azure 高级存储上的 Blob，因此与 Azure 高级存储上的 VHD 相比，性能特征可能会有所不同。
+* Azure 高级存储针对不同磁盘大小的 IOPS 和 I/O 吞吐量性能目标不再适用。 即使创建的 Blob 位于 Azure 高级存储上。 目标记录于 [VM 的高性能高级存储与托管磁盘](../../disks-types.md#premium-ssd)一文中。 由于直接将 SQL Server 数据文件和日志文件至于存储在 Azure 高级存储上的 Blob，因此与 Azure 高级存储上的 VHD 相比，性能特征可能会有所不同。
 * 将 SQL Server 数据文件直接放在 Azure blob 上时，无法使用 Azure 高级存储磁盘可用的基于主机的高速缓存。
 * 在 M 系列 VM 上，Azure 写入加速器不能用于支持针对 SQL Server 事务日志文件的亚毫秒写入。 
 

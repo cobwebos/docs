@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310865"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142241"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 
@@ -76,7 +76,7 @@ ms.locfileid: "81310865"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到下一篇文章，了解如何配置自定义警报...
+请转到下一篇文章了解如何调查安全建议…
 
 > [!div class="nextstepaction"]
-> [配置自定义警报](quickstart-create-custom-alerts.md)
+> [调查安全建议](quickstart-investigate-security-recommendations.md)

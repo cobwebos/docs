@@ -1,4 +1,4 @@
-- name: 用于 PostgreSQL 的 Azure DB 文档
+- name: Azure DB for PostgreSQL 文档
   href: index.yml
 - name: 概述
   items:
@@ -28,6 +28,12 @@
               href: connect-nodejs.md
             - name: Java
               href: connect-java.md
+            - name: 将 Java 与 Spring Data JDBC 配合使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: 将 Java 与 Spring Data JPA 配合使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: 将 Java 与 Spring Data R2DBC 配合使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
             - name: Ruby
               href: connect-ruby.md
             - name: PHP
@@ -38,7 +44,7 @@
               href: connect-go.md
     - name: 超大规模 (Citus)
       items:
-        - name: 创建 DB - 门户
+        - name: 创建服务器组 - 门户
           href: quickstart-create-hyperscale-portal.md
 - name: 教程
   items:
@@ -53,7 +59,7 @@
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
         - name: 2 - 设计 Web 应用 - Python
-          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          href: ../app-service/tutorial-python-postgresql-app.md
           maintainContext: true
         - name: 3 - 监视和优化
           href: tutorial-monitor-and-tune.md
@@ -139,7 +145,7 @@
                   href: concepts-query-store-scenarios.md
                 - name: 查询存储最佳做法
                   href: concepts-query-store-best-practices.md
-            - name: 查询性能见解
+            - name: Query Performance Insight
               href: concepts-query-performance-insight.md
             - name: 性能建议
               href: concepts-performance-recommendations.md
@@ -153,30 +159,32 @@
               href: concepts-aks.md
             - name: Java
               items:
+                - name: 使用 Java 和 JDBC
+                  href: connect-java.md
                 - name: 配置 Spring Data JDBC
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: 配置 Spring Data JPA
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                - name: 配置 Spring Data R2DBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
         - name: 复制
           items:
             - name: 只读副本
               href: concepts-read-replicas.md
             - name: 逻辑解码
               href: concepts-logical.md
-        - name: 在区域之间移动
-          items:
-            - name: Azure 门户
-              href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
-        - name: Nodes
-          href: concepts-hyperscale-nodes.md
         - name: 分布式数据
-          href: concepts-hyperscale-distributed-data.md
-        - name: 选择分布列
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: 表共置
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: 节点和表
+              href: concepts-hyperscale-nodes.md
+            - name: 确定应用程序类型
+              href: concepts-hyperscale-app-type.md
+            - name: 选择分布列
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: 表共置
+              href: concepts-hyperscale-colocation.md
         - name: 数据访问和安全性
           items:
             - name: 防火墙规则
@@ -255,6 +263,8 @@
           items:
             - name: 配置 TLS
               href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: 配置服务器参数
           items:
             - name: Azure 门户
@@ -335,34 +345,54 @@
               href: howto-read-replicas-cli.md
             - name: 管理只读副本 - Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: 在区域之间移动
+          items:
+            - name: Azure 门户
+              href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
         - name: 创建用户
           href: howto-hyperscale-create-users.md
-        - name: 缩放
+        - name: 服务器组大小
           href: howto-hyperscale-scaling.md
         - name: 管理防火墙
           items:
             - name: Azure 门户
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 分布式数据
+          items:
+            - name: 分发和修改表
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
         - name: 监视
           items:
             - name: 针对指标创建警报
               href: howto-hyperscale-alert-on-metric.md
+            - name: Access 数据库日志
+              href: howto-hyperscale-logging.md
         - name: 疑难解答
           items:
             - name: 排查连接错误
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: 参考
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: 资源管理器模板
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 单个服务器
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: 资源管理器模板
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 超大规模 (Citus)
+      items:
+        - name: SQL API 函数
+          href: reference-hyperscale-functions.md
+        - name: 服务器参数
+          href: reference-hyperscale-parameters.md
+        - name: 系统表
+          href: reference-hyperscale-metadata.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

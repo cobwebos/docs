@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
-ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76984509"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080741"
 ---
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。
 
@@ -66,7 +66,7 @@ ms.locfileid: "76984509"
    > [!NOTE]
    > 可以改为导入证书。 为增强安全性，建议使用证书。 若要使用证书，请选择“上传证书”。
 
-1. 将 Azure Active Directory 应用与 Azure 时序见解关联。 依次选择“API 权限” > “添加权限” > “我的组织使用的 API”。 
+1. 将 Azure Active Directory 应用关联到 Azure 时序见解。 依次选择“API 权限” > “添加权限” > “我的组织使用的 API”。 
 
     [![将 API 与 Azure Active Directory 应用相关联](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

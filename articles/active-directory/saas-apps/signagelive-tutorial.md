@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Signagelive 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Signagelive 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: d923f0e7-ad31-4d59-a6fd-f0e895e1a32d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dab2fd0ee2f25e835b4bd07a3534475d3d93b5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160926"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>教程：Azure Active Directory 与 Signagelive 集成
 

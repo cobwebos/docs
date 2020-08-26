@@ -1,24 +1,22 @@
 ---
-title: 使用 Azure 市场创建 Windows 虚拟桌面主机池 - Azure
-description: 如何使用 Azure 市场创建 Windows 虚拟桌面主机池。
-services: virtual-desktop
+title: 使用 Azure 市场创建 Windows 虚拟桌面（经典）主机池 - Azure
+description: 如何使用 Azure 市场创建 Windows 虚拟桌面（经典）主机池。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
-ms.translationtype: HT
+ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256843"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008587"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：通过使用 Azure 市场创建主机池
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建主机池
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../create-host-pools-azure-marketplace.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../create-host-pools-azure-marketplace.md)。
 
 本教程介绍如何使用 Microsoft Azure 市场套餐在 Windows 虚拟桌面租户中创建主机池。
 
@@ -53,22 +51,22 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 若要运行 Azure 市场套餐以预配新的主机池，请执行以下操作：
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
-1. 在市场搜索窗口中输入“Windows 虚拟桌面”。 
+1. 在市场搜索窗口中输入“Windows 虚拟桌面”。
 1. 选择“Windows 虚拟桌面 - 预配主机池”，然后选择“创建”   。
 
 然后，按照下一部分中的说明为相应选项卡输入信息。
 
 ### <a name="basics"></a>基础
 
-下面是在“基本信息”选项卡中可执行的操作： 
+下面是在“基本信息”选项卡中可执行的操作：
 
 1. 选择一个“订阅”  。
-1. 对于“资源组”，请选择“新建”，并为新资源组提供一个名称。  
+1. 对于“资源组”，请选择“新建”，并为新资源组提供一个名称。
 1. 选择一个**区域**。
 1. 输入主机池的名称，该名称在 Windows 虚拟桌面租户中必须唯一。
-1. 选择“桌面类型”。  如果选择“个人”，则连接到此主机池的每个用户将永久分配到某个虚拟机。 
+1. 选择“桌面类型”。 如果选择“个人”，则连接到此主机池的每个用户将永久分配到某个虚拟机。
 1. 输入可以登录到 Windows 虚拟桌面客户端并可以访问桌面的用户。 使用逗号分隔列表。 例如，如果要分配 `user1@contoso.com` 和 `user2@contoso.com` 访问权限，请输入 *`user1@contoso.com,user2@contoso.com`*
-1. 对于“服务元数据位置”，请选择连接到 Active Directory 服务器的虚拟网络所在的同一位置。 
+1. 对于“服务元数据位置”，请选择连接到 Active Directory 服务器的虚拟网络所在的同一位置。
 
    >[!IMPORTANT]
    >如果使用的是纯 Azure Active Directory 域服务 (Azure AD DS) 和 Azure Active Directory (Azure AD) 解决方案，请确保将主机池部署在与 Azure AD DS 相同的区域中，以避免出现加入域错误和凭据错误。
@@ -77,7 +75,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ### <a name="configure-virtual-machines"></a>配置虚拟机
 
-在“配置虚拟机”选项卡中执行以下操作： 
+在“配置虚拟机”选项卡中执行以下操作：
 
 1. 接受默认设置，或自定义虚拟机的数量和大小。
 
@@ -89,7 +87,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ### <a name="virtual-machine-settings"></a>虚拟机设置
 
-在“虚拟机设置”选项卡中执行以下操作： 
+在“虚拟机设置”选项卡中执行以下操作：
 
 1. 对于“映像源”，请选择所需的源，并输入有关如何找到和存储该源的相应信息  。 针对 Blob 存储、托管映像和库的选项各不相同。
 
@@ -106,7 +104,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows 虚拟桌面租户信息
 
-在“Windows 虚拟桌面租户信息”选项卡中执行以下操作： 
+在“Windows 虚拟桌面租户信息”选项卡中执行以下操作：
 
 1. 对于“Windows 虚拟桌面租户组名称”  ，请输入租户所在的租户组的名称。 将此字段保留默认值，除非为你提供了具体的租户组名称。
 1. 对于“Windows 虚拟桌面租户名称”  ，请输入要在其中创建此主机池的租户的名称。
@@ -114,12 +112,12 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
    如果已完成[“使用 PowerShell 创建服务主体和角色分配”教程](create-service-principal-role-powershell.md)，选择“服务主体”  。
 
-1. 对于“服务主体”，请为“Azure AD 租户 ID”输入包含该服务主体的 Azure AD 实例的租户管理员帐户。   仅支持具有密码凭据的服务主体。
+1. 对于“服务主体”，请为“Azure AD 租户 ID”输入包含该服务主体的 Azure AD 实例的租户管理员帐户。 仅支持具有密码凭据的服务主体。
 1. 在完成时选择“下一步:  查看 + 创建”。
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>完成设置并创建虚拟机
 
-在“查看并创建”中检查设置信息。  如需更改某些设置，请返回并做出更改。 准备就绪后，选择“创建”以部署主机池。 
+在“查看并创建”中检查设置信息。 如需更改某些设置，请返回并做出更改。 准备就绪后，选择“创建”以部署主机池。
 
 此过程可能需要 30 分钟或更长时间才能完成，具体取决于要创建多少个虚拟机。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515421"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318889"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
 
@@ -236,3 +236,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 - 有关设置专用链接的详细信息，请参阅[使用 Azure 专用链接安全地将网络连接到 Azure Monitor](private-link-security.md)
+

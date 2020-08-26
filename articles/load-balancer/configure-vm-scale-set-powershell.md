@@ -6,16 +6,16 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 858315008434f511e3adc0a91d591d924634fc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809499"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510056"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集
 
-本文介绍如何配置包含现有 Azure 负载均衡器的虚拟机规模集。 
+本文介绍如何配置包含现有 Azure 负载均衡器的虚拟机规模集。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "84809499"
 - 要将虚拟机规模集部署到的订阅中的现有标准 SKU 负载均衡器。
 - 虚拟机规模集的 Azure 虚拟网络。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 - 其中包含名为 mySubnet 的子网 
 - 其中包含名为 myResourceGroup 的资源组 
 
-```azureppowershell-interactive
+```azurepowershell-interactive
 
 $rsg = "myResourceGroup"
 $loc = "East US 2"
@@ -87,4 +87,3 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 
 - [什么是 Azure 负载均衡器？](load-balancer-overview.md)
 - [什么是虚拟机规模集？](../virtual-machine-scale-sets/overview.md)
-                                

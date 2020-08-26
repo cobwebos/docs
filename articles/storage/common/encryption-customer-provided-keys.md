@@ -1,25 +1,25 @@
 ---
 title: 在对 Blob 存储的请求中提供加密密钥
 titleSuffix: Azure Storage
-description: 针对 Azure Blob 存储发出请求的客户端可以选择基于每个请求提供加密密钥（预览版）。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。
+description: 对 Azure Blob 存储发出请求的客户端可以选择按请求提供加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec3d760450fb5cc20deed14dac03f58f23c2b4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029733"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在对 Blob 存储的请求中提供加密密钥（预览版）
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>在对 Blob 存储的请求中提供加密密钥
 
-针对 Azure Blob 存储发出请求的客户端可以选择基于每个请求提供加密密钥（预览版）。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥可以存储在 Azure Key Vault 或其他密钥存储中。
+对 Azure Blob 存储发出请求的客户端可以选择按请求提供加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥可以存储在 Azure Key Vault 或其他密钥存储中。
 
 ## <a name="encrypting-read-and-write-operations"></a>加密读取和写入操作
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069147"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>排查启动错误 - 发生磁盘读取错误
 
@@ -26,7 +27,7 @@ ms.locfileid: "84302599"
 
 ## <a name="symptoms"></a>症状
 
-使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，你将看到屏幕截图显示以下消息提示：“发生磁盘读取错误。 然后按 Ctrl+Alt+Del 重启”。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，你将看到屏幕截图显示以下消息提示：“发生磁盘读取错误。 然后按 Ctrl+Alt+Del 重启”。
 
    ![错误消息：发生磁盘读取错误。 请按 Ctrl+Alt+Del 重启。](./media/disk-read-error-occurred/1.png)
 
@@ -50,7 +51,7 @@ ms.locfileid: "84302599"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤 1-3 来准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="set-partition-status-to-active"></a>将分区状态设置为活动
@@ -108,7 +109,7 @@ ms.locfileid: "84302599"
 
 1. 验 OS 磁盘上的可用空间是否大于 VM 上的内存大小 (RAM)。
 
-   如果 OS 磁盘上没有足够的空间，请更改将要创建内存转储文件的位置，并将该位置引用到具有足够可用空间的 VM 上附加的任何数据磁盘。 若要更改位置，请在以下命令中将“%SystemRoot%”替换为数据磁盘的驱动器号（例如，“F:”）。
+   如果 OS 磁盘上没有足够的空间，请更改将要创建内存转储文件的位置，并将该位置引用到具有足够可用空间的 VM 上附加的任何数据磁盘。 若要更改位置，请在以下命令中将 %SystemRoot% 替换为数据磁盘的驱动器号（例如，F:）。
 
    用于启用 OS 转储的建议配置：
 
@@ -142,4 +143,4 @@ ms.locfileid: "84302599"
    
 ### <a name="rebuild-the-vm"></a>重新生成 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新生成 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。

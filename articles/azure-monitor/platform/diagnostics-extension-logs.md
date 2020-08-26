@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317172"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>将 Azure 诊断扩展中的数据收集到 Azure Monitor 日志
 Azure 诊断扩展是 [Azure Monitor 中的代理](agents-overview.md)，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文介绍了如何将诊断扩展收集的数据从 Azure 存储收集到 Azure Monitor 日志。
@@ -62,6 +63,7 @@ Azure 诊断扩展将数据存储在 Azure 存储帐户中。 要使 Azure Monit
 
 ## <a name="next-steps"></a>后续步骤
 
-* 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](collect-azure-metrics-logs.md)。
-* [启用解决方案](../../azure-monitor/insights/solutions.md)深入分析数据。
-* [使用搜索查询](../../azure-monitor/log-query/log-query-overview.md)分析数据。
+* 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](./resource-logs.md#send-to-log-analytics-workspace)。
+* [启用解决方案](../insights/solutions.md)深入分析数据。
+* [使用搜索查询](../log-query/log-query-overview.md)分析数据。
+

@@ -3,18 +3,17 @@ title: 使用适用于 Node.js 的 Azure SDK 管理 Azure Data Lake Analytics
 description: 本文介绍如何使用用于 Node.js 的 Azure SDK 管理 Data Lake Analytics 帐户、数据源、作业和用户。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: f821f8f8fddfafbdba060fd3f9940ce32c138755
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5347218c17af89e58ae6219b860a8db03e1bf89b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121344"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415000"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>使用适用于 Node.js 的 Azure SDK 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -129,5 +128,5 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)

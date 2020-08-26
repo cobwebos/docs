@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678574"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315631"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -18,9 +19,9 @@ ms.locfileid: "84678574"
 
 ## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> 为应用启用 Profiler
 若要为应用启用 Profiler，请遵循下面的说明。 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用 Profiler 的说明：
-* [云服务](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric 应用程序](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [虚拟机](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [云服务](./profiler-cloudservice.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Service Fabric 应用程序](./profiler-servicefabric.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [虚拟机](./profiler-vm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Application Insights Profiler 是作为应用服务运行时的一部分预先安装的。 下面的步骤将说明如何为应用服务启用它。 即使在生成时已在应用程序中包含了 App Insights SDK，也应该执行这些步骤。
 
@@ -49,7 +50,7 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-可以使用[Azure 资源管理器模板](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest)设置这些值。
+可以使用[Azure 资源管理器模板](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、 [Azure PowerShell](/powershell/module/az.websites/set-azwebapp) [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)设置这些值。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>手动为其他云启用 Profiler
 
@@ -73,8 +74,9 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Visual Studio 中使用 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
+* [在 Visual Studio 中使用 Application Insights](./visual-studio.md)
 
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png
 [disable-profiler-webjob]: ./media/profiler/disable-profiler-webjob.png
+

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Zoho 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Zoho 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b5d0e52e927a44d5bce5314e724c1c753809ce0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 00b9df3ad5e4d2104051e5489138785b4ecde8e0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74231938"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>教程：Azure Active Directory 与 Zoho 的集成
 

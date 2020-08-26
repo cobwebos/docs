@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: azuread-video-2020
+ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996494"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761121"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什么是 Azure 基于角色的访问控制 (Azure RBAC)？
 
@@ -27,13 +28,17 @@ ms.locfileid: "82996494"
 
 Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/overview.md)基础上构建的授权系统，针对 Azure 资源提供精细的访问权限管理。
 
+此视频提供 Azure RBAC 的快速概述。
+
+>[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
+
 ## <a name="what-can-i-do-with-azure-rbac"></a>Azure RBAC 有什么用途？
 
 下面是 Azure RBAC 的用途的一些示例：
 
-- 允许一个用户管理订阅中的虚拟机，并允许另一个用户管理虚拟网络
-- 允许 DBA 组管理订阅中的 SQL 数据库
-- 允许某个用户管理资源组中的所有资源，例如虚拟机、网站和子网
+- 让一个用户管理订阅中的虚拟机，另一个用户管理虚拟网络
+- 让 DBA 组管理订阅中的 SQL 数据库
+- 让某个用户管理资源组中的所有资源，例如虚拟机、网站和子网
 - 允许某个应用程序访问资源组中的所有资源
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC 的工作原理
@@ -62,15 +67,19 @@ Azure 包含多个可用的[内置角色](built-in-roles.md)。 下面列出了�
 - [所有者](built-in-roles.md#owner) - 拥有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。
 - [参与者](built-in-roles.md#contributor) - 可以创建和管理所有类型的 Azure 资源，但无法将访问权限授予其他用户。
 - [读取者](built-in-roles.md#reader) - 可以查看现有的 Azure 资源。
-- [用户访问管理员](built-in-roles.md#user-access-administrator) - 允许你管理用户对 Azure 资源的访问。
+- [用户访问管理员](built-in-roles.md#user-access-administrator) - 可以管理用户对 Azure 资源的访问。
 
 剩余的内置角色允许管理特定的 Azure 资源。 例如，[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色允许用户创建和管理虚拟机。 如果内置角色不能满足组织的特定需求，你可以创建自己的 [Azure 自定义角色](custom-roles.md)。
+
+此视频提供内置角色和自定义角色的快速概述。
+
+>[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
 Azure 具有数据操作，通过这些操作可以授予对对象内数据的访问权限。 例如，如果某个用户对某个存储帐户拥有读取数据的访问权限，则该用户可以读取该存储帐户中的 Blob 或消息。 有关详细信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
 
 ### <a name="scope"></a>范围
 
-范围是访问权限适用于的资源集。 分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
+范围是访问权限适用于的资源集。 分配角色时，可以通过定义范围来进一步限制允许的操作。 若要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则可使用范围。
 
 在 Azure 中，可在多个级别指定范围：[管理组](../governance/management-groups/overview.md)、订阅、资源组或资源。 范围采用父子关系结构。
 
@@ -80,7 +89,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 - 如果将[所有者](built-in-roles.md#owner)角色分配给管理组范围的用户，则该用户可以在管理组中管理所有订阅中的一切内容。
 - 如果在订阅范围向某个组分配了[读取者](built-in-roles.md#reader)角色，则该组的成员可以查看订阅中的每个资源组和资源。
-- 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组资源。
+- 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中其他资源组的资源。
 
 ### <a name="role-assignments"></a>角色分配
 
@@ -90,7 +99,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ![用于控制访问权限的角色分配](./media/overview/rbac-overview.png)
 
-可以使用 Azure 门户、Azure CLI、Azure PowerShell、Azure SDK 或 REST API 创建角色分配。 每个订阅中最多可以有 2000 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。 若要创建和删除角色分配，必须拥有 `Microsoft.Authorization/roleAssignments/*` 权限。 此权限是通过[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)角色授予的。
+可以使用 Azure 门户、Azure CLI、Azure PowerShell、Azure SDK 或 REST API 创建角色分配。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。 若要创建和删除角色分配，必须拥有 `Microsoft.Authorization/roleAssignments/*` 权限。 此权限是通过[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)角色授予的。
 
 ## <a name="multiple-role-assignments"></a>多角色分配
 
@@ -128,7 +137,6 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：查看用户对 Azure 资源的访问权限](check-access.md)
 - [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
 - [了解不同角色](rbac-and-directory-admin-roles.md)
 - [云采用框架：Azure 中的资源访问管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

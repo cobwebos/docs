@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 06/01/2020
-ms.openlocfilehash: 2efd2c982fcd4c799a6c9daa1d89fde25e7f2c64
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 98b50649b5a788270fa2b4cd8b62ca5598daa25f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307602"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320470"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序 (.NET) 读取该数据
 
@@ -90,7 +91,7 @@ az extension add --name azure-iot
 
     稍后会在快速入门中用到此值。
 
-3. 还需要使用来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
+3. 还需要使用与事件中心兼容的终结点、与事件中心兼容的路径和 IoT 中心的服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -138,7 +139,7 @@ az extension add --name azure-iot
 
 2. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.cs 文件。 更新以下变量并保存对文件所做的更改。
 
-    | 变量 | 值 |
+    | 变量 | Value |
     | -------- | ----------- |
     | `EventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
     | `EventHubName`                | 将变量的值替换为之前记下的与事件中心兼容的路径。 |

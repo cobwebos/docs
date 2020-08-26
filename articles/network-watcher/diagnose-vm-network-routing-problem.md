@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76845208"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
@@ -55,7 +55,7 @@ ms.locfileid: "76845208"
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
-    |位置| 选择“美国东部” |
+    |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”  。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。  
@@ -70,7 +70,7 @@ ms.locfileid: "76845208"
 如果已至少在一个区域中启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。
 
 1. 在门户中，选择“所有服务”。  在“筛选器”框中，输入“网络观察程序”   。 结果中出现“网络观察程序”后，将其选中  。
-2. 选择“区域”，以便将其展开，然后选择“美国东部”右侧的“...”，如下图所示：   
+2. 选择“区域”，以便将其展开，然后选择“美国东部”右侧的“...”，如下图所示：  
 
     ![启用网络观察程序](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 

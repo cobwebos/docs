@@ -3,13 +3,13 @@ title: 创建 Azure Service Fabric 容器应用程序
 description: 在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。 使用 Python 应用程序生成 Docker 映像，将该映像推送到容器注册表，然后生成容器并将其部署到 Azure Service Fabric。
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.custom: tracking-python
-ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247398"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844433"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 
@@ -321,7 +321,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 ## <a name="deploy-the-container-application"></a>部署容器应用程序
 保存所有更改，生成应用程序。 若要发布应用程序，请右键单击解决方案资源管理器中的“MyFirstContainer”，然后选择“发布”。********
 
-在“连接终结点”中**** 输入群集的管理终结点。 例如，`containercluster.westus2.cloudapp.azure.com:19000`。 在 [Azure 门户](https://portal.azure.com)中，可以在群集的“概览”选项卡中查找客户端连接终结点。
+在“连接终结点”中**** 输入群集的管理终结点。 例如 `containercluster.westus2.cloudapp.azure.com:19000`。 在 [Azure 门户](https://portal.azure.com)中，可以在群集的“概览”选项卡中查找客户端连接终结点。
 
 单击“发布”。
 

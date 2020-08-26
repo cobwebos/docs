@@ -3,8 +3,8 @@ title: 教程：将 RDS MySQL 联机迁移到 Azure Database for MySQL
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 RDS MySQL 到 Azure Database for MySQL 的联机迁移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/09/2020
-ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0c62cf28c9e9368e80982fa7c5badeb79d40ae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087724"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
@@ -121,6 +122,10 @@ ms.locfileid: "84609244"
     ```
 
 4. 运行查询结果中的 drop foreign key（第二列），以删除外键。
+
+> [!NOTE]
+> Azure DMS 不支持级联引用操作，这有助于在父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参阅 MySQL 文档中的 "引用操作"[部分。](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+> Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果工作负载依赖于通过此引用操作更新相关子表，则建议改为执行[转储和还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
 
 5. 如果数据中包含触发器（insert 或 update 触发器），该触发器会在从源复制数据之前在目标中强制实施数据完整性。 建议在迁移期间禁用目标的所有表中的触发器，然后在迁移完成后再启用这些触发器。
 

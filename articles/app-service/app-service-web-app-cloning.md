@@ -5,11 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255191"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815379"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure App Service 应用
 
@@ -53,7 +54,7 @@ $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-weba
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>将现有应用克隆到应用服务环境
-方案： "美国中南部" 区域中的现有应用，你想要将内容克隆到现有应用服务环境（ASE）的新应用。
+方案： "美国中南部" 区域中的现有应用，你想要将内容克隆到现有应用服务环境 (ASE) 的新应用。
 
 如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取源应用的信息（在本例中，该应用名为 `source-webapp`）：
 
@@ -106,6 +107,8 @@ $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
+> [!NOTE]
+> 如果收到一条错误消息，指出 "流量管理器主机名上的 SSL 验证失败"，则建议你在执行克隆操作时使用-IgnoreCustomHostNames 属性，或使用门户。
 
 ## <a name="current-restrictions"></a>当前限制
 下面是应用克隆的已知限制：
@@ -121,7 +124,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 如果克隆到不同的缩放单元，出站 IP 地址会更改
 * 不适用于 Linux 应用
 
-### <a name="references"></a>参考
+### <a name="references"></a>引用
 * [应用服务克隆](app-service-web-app-cloning.md)
 * [在 Azure 应用服务中备份应用](manage-backup.md)
 * [Azure 流量管理器预览版对 Azure 资源管理器的支持](../traffic-manager/traffic-manager-powershell-arm.md)

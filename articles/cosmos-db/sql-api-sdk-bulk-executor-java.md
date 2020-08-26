@@ -6,13 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 766981d355c5f24e817ea5d626aefd0d0e9bed05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 60c2b3e194fc7703ad1c3f1d3138f9a2c6301f33
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392074"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585043"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 
@@ -25,6 +27,9 @@ ms.locfileid: "85392074"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)

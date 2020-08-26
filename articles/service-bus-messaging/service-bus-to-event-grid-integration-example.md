@@ -6,12 +6,12 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0909fd95238051a6a50e582cb2543dd3bdd307bf
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337065"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067284"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教程：使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应
 本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 
@@ -60,30 +60,30 @@ ms.locfileid: "85337065"
 执行以下步骤，将逻辑应用与 Azure 服务总线和 Azure 事件网格连接到一起：
 
 1. 在 Azure 门户中创建逻辑应用。
-    1. 依次选择“+ 创建资源”、“集成”、“逻辑应用”。   
+    1. 依次选择“+ 创建资源”、“集成”、“逻辑应用”。 
     2. 在“逻辑应用 - 创建”页上，输入逻辑应用的**名称**。
     3. 选择 **Azure 订阅**。 
-    4. 为“资源组”选择“使用现有项”，然后选择以前创建的、用于其他资源（例如 Azure 函数、服务总线命名空间）的资源组。  
+    4. 为“资源组”选择“使用现有项”，然后选择以前创建的、用于其他资源（例如 Azure 函数、服务总线命名空间）的资源组。 
     5. 选择逻辑应用的**位置**。 
     6. 选择“创建”以创建逻辑应用。 
-2. 在“逻辑应用设计器”页上，选择“模板”下的“空白逻辑应用”。   
+2. 在“逻辑应用设计器”页上，选择“模板”下的“空白逻辑应用”。 
 3. 在设计器中执行以下步骤：
     1. 搜索“事件网格”。 
     2. 选择“发生资源事件时 - Azure 事件网格”。 
 
         ![逻辑应用设计器 - 选择事件网格触发器](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
-4. 选择“登录”，输入 Azure 凭据，然后选择“允许访问”。  
+4. 选择“登录”，输入 Azure 凭据，然后选择“允许访问”。 
 5. 在“当资源事件发生时”页上执行以下步骤：
     1. 选择 Azure 订阅。 
-    2. 对于“资源类型”，请选择“Microsoft.ServiceBus.Namespaces”。  
+    2. 对于“资源类型”，请选择“Microsoft.ServiceBus.Namespaces”。 
     3. 对于“资源名称”，请选择你的服务总线命名空间。 
-    4. 选择“添加新参数”，然后选择“后缀筛选器”。  
+    4. 选择“添加新参数”，然后选择“后缀筛选器”。 
     5. 对于“后缀筛选器”，请输入第二个服务总线主题订阅的名称。 
         ![逻辑应用设计器 - 配置事件](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. 在设计器中选择“+ 新建步骤”，然后执行以下步骤：
     1. 搜索“服务总线”。
     2. 在列表中选择“服务总线”。 
-    3. 在“操作”列表中选择“获取消息”。  
+    3. 在“操作”列表中选择“获取消息”。 
     4. 选择“从主题订阅中获取消息(扫视锁定)”。 
 
         ![逻辑应用设计器 - 获取消息操作](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
@@ -101,7 +101,7 @@ ms.locfileid: "85337065"
     2. 在操作列表中选择“完成主题订阅中的消息”。 
     3. 选择你的服务总线**主题**。
     4. 选择主题的第二个**订阅**。
-    5. 对于“消息的锁定标记”，请从“动态内容”中选择“锁定标记”。   
+    5. 对于“消息的锁定标记”，请从“动态内容”中选择“锁定标记”。 
 
         ![逻辑应用设计器 - 选择你的服务总线主题和订阅](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
 8. 在逻辑应用设计器的工具栏上选择“保存”以保存逻辑应用。 
@@ -207,7 +207,7 @@ ms.locfileid: "85337065"
 
 1. 将函数配置为使用 **V1** 版本： 
     1. 在树视图中选择你的函数应用，然后选择“函数应用设置”。 
-    2. 为“运行时版本”选择“~1”。  
+    2. 为“运行时版本”选择“~1”。 
 2. 在树视图中展开“函数”，并选择你的函数。 将函数代码替换为以下代码： 
 
     ```csharp
@@ -276,7 +276,7 @@ ms.locfileid: "85337065"
 3. 在“创建事件订阅”页中执行以下步骤：
     1. 输入订阅的**名称**。 
     2. 输入系统主题的名称 。 系统主题是为 Azure 资源（如 Azure 存储帐户和 Azure 服务总线）创建的主题。 若要详细了解系统主题，请参阅[系统主题概述](../event-grid/system-topics.md)。
-    2. 为“终结点类型”选择“Web Hook”。  
+    2. 为“终结点类型”选择“Web Hook”。 
 
         ![服务总线 - 事件网格订阅](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
     3. 选中“选择终结点”，粘贴函数 URL，然后选择“确认选择” 。 
@@ -321,9 +321,9 @@ ms.locfileid: "85337065"
 
         ![获取函数的发布配置文件](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. 将文件保存到项目的文件夹中。 
-4. 在 Visual Studio 中右键单击“SBEventGridIntegration”，然后选择“发布”。  
+4. 在 Visual Studio 中右键单击“SBEventGridIntegration”，然后选择“发布”。 
 5. 在“发布”上，执行以下步骤： 
-    1. 在“发布”页面上选择“启动”  
+    1. 在“发布”页面上选择“启动” 
     2. 对于“目标”，请选择“导入配置文件” 。 
     3. 选择“**下一页**”。 
 
@@ -331,7 +331,7 @@ ms.locfileid: "85337065"
 7. 选择前面下载的“发布配置文件”，然后选择“完成” 。
 
     ![选择发布配置文件](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
-8. 在“发布”页上选择“发布”。  
+8. 在“发布”页上选择“发布”。 
 
     ![Visual Studio - 发布](./media/service-bus-to-event-grid-integration-example/select-publish.png)
 9. 确认看到了新的 Azure 函数 **ReceiveMessagesOnEvent**。 根据需要刷新页面。 
@@ -342,12 +342,12 @@ ms.locfileid: "85337065"
 ### <a name="event-grid-subscription"></a>事件网格订阅
 
 1. 删除现有的事件网格订阅：
-    1. 在“服务总线命名空间”页上，选择左侧菜单中的“事件”。  
+    1. 在“服务总线命名空间”页上，选择左侧菜单中的“事件”。 
     2. 切换到“事件订阅”选项卡。 
     2. 选择现有的事件订阅。 
 
         ![选择事件订阅](./media/service-bus-to-event-grid-integration-example/select-event-subscription.png)
-    3. 在“事件订阅”页上选择“删除”。  选择“是”以确认删除。 
+    3. 在“事件订阅”页上选择“删除”。 选择“是”以确认删除。 
         ![删除“事件订阅”按钮](./media/service-bus-to-event-grid-integration-example/delete-subscription-button.png)
 2. 遵照[通过事件网格连接函数和命名空间](#connect-the-function-and-namespace-via-event-grid)部分的说明，使用新函数 URL 创建事件网格订阅。
 3. 遵照[向服务总线主题发送消息](#send-messages-to-the-service-bus-topic)部分的说明，向主题发送消息并监视函数。 
@@ -355,10 +355,10 @@ ms.locfileid: "85337065"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)。
-* 详细了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
-* 详细了解 [Azure 应用服务的逻辑应用功能](https://docs.microsoft.com/azure/logic-apps/)。
-* 详细了解 [Azure 服务总线](https://docs.microsoft.com/azure/service-bus/)。
+* 详细了解 [Azure 事件网格](../event-grid/index.yml)。
+* 详细了解 [Azure Functions](../azure-functions/index.yml)。
+* 详细了解 [Azure 应用服务的逻辑应用功能](../logic-apps/index.yml)。
+* 详细了解 [Azure 服务总线](/azure/service-bus/)。
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

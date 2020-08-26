@@ -1,5 +1,5 @@
 ---
-title: 商业市场合作伙伴和客户使用情况归因
+title: 商业应用商店合作伙伴和客户使用情况归属
 description: 获取有关跟踪 Azure 市场解决方案客户使用情况的概述。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
-ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-terraform
+ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103018"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031279"
 ---
-# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业市场合作伙伴和客户使用情况归因
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业应用商店合作伙伴和客户使用情况归属
 
 客户使用情况归因是一种方法，可将 Azure 资源作为合作伙伴与你关联起来，这些资源在客户订阅中运行且为了运行你的解决方案已部署。 在内部 Microsoft 系统中形成这些关联可以更好地了解运行软件的 Azure 内存占用情况。 采用此跟踪功能时，可与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。
 
@@ -44,7 +45,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 建议为每个产品/服务和每个产品的分销渠道创建唯一的 GUID。 如果不希望拆分报告，则可以选择对产品的多个分销渠道使用单个 GUID。
 
-如果使用模板部署产品并且产品在 Azure 市场和 GitHub 中都提供，则可以创建并注册两个不同的 GUID：
+如果使用模板部署产品，并且它在 Azure Marketplace 和 GitHub 上都可用，则可以创建并注册两个不同的 GUID：
 
 - Azure 市场中的产品 A
 - GitHub 中的产品 A
@@ -81,13 +82,13 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 1. 选择“保存”。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
-许多合作伙伴解决方案都是使用 Azure 资源管理器模板部署的。 如果你使用的资源管理器模板在 Azure 市场、GitHub 上或作为快速入门提供，则修改此模板以启用客户使用情况归因的过程很简单。
+许多合作伙伴解决方案都是使用 Azure 资源管理器模板部署的。 如果你有一个在 Azure Marketplace 中提供的资源管理器模板，在 GitHub 上或作为快速入门，修改模板以启用客户使用归属的过程是直接的。
 
 > [!NOTE]
 > 有关创建和发布解决方案模板的详细信息，请参阅
 > * [创建和部署第一个资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。
->* 视频：[为 Azure 市场构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
+>* 视频：[为 Azure Marketplace 构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
 若要添加全局唯一标识符 (GUID)，可对主模板文件进行一次性的修改：
@@ -98,7 +99,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 1. 在主模板文件中添加新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 在前缀后面输入 GUID 值 `pid-` （例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 在前缀后面输入 GUID 值 `pid-` (例如，eb7927c8-dd66-43e1-b0cf-c346a422063) 。
 
 1. 检查模板是否存在任何错误。
 
@@ -268,7 +269,7 @@ foreach ($deployment in $deployments){
 1. 选择问题的“类别”：
 
    - 对于使用情况关联的问题，请选择“其他”。
-   - 对于访问 Azure 市场时出现的问题，请选择“访问问题”。
+   - 有关 Azure Marketplace 的访问问题，请选择 "**访问问题**"。
 
      ![选择问题类别](media/marketplace-publishers-guide/lu-article-incident.png)
 

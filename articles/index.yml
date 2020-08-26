@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 02/27/2020
+  ms.date: 07/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 451bbf8f82623fdc20be21b4ffa1699f6c5722cf
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: 5f6ba56347f76cc707bea2b30fab16e46f8be963
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86536862"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88651499"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -53,6 +53,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
     azureCategories:
     - ai-machine-learning
+    - mobile
     - web
     url: search/index.yml
   - title: Azure 认知服务
@@ -61,6 +62,7 @@ productDirectory:
     azureCategories:
     - featured
     - ai-machine-learning
+    - mobile
     url: cognitive-services/index.yml
   - title: Azure Databricks
     summary: 基于 Apache Spark 的快速简单的协作分析平台
@@ -394,7 +396,6 @@ productDirectory:
     azureCategories:
     - compute
     - containers
-    - mobile
     - web
     url: app-service/index.yml
   - title: 应用服务
@@ -513,7 +514,6 @@ productDirectory:
     azureCategories:
     - compute
     - containers
-    - mobile
     - web
     url: app-service/index.yml
   - title: Windows 虚拟桌面
@@ -555,7 +555,6 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/web-apps-containers.svg
     azureCategories:
     - containers
-    - mobile
     - web
     url: app-service/containers/index.yml
   - title: 适用于 FHIR 的 Azure API
@@ -951,7 +950,7 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
-  - title: Azure 资源管理器模板
+  - title: ARM 模板
     summary: 使用资源管理器为所有 Azure 资源提供基础结构即代码
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
     azureCategories:
@@ -1059,6 +1058,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
     azureCategories:
     - mixed-reality
+    - mobile
     url: spatial-anchors/index.yml
   - title: 远程渲染（预览版）
     summary: 渲染高质量的交互式 3D 内容，并实时将内容流式传输到设备
@@ -1218,7 +1218,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
     - storage
-    url: virtual-machines/windows/managed-disks-overview.md
+    url: virtual-machines/managed-disks-overview.md
   - title: Azure 文件
     summary: 使用标准 SMB 3.0 协议的文件共享
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-azure-files.svg
@@ -1230,7 +1230,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/disk.svg
     azureCategories:
     - storage
-    url: virtual-machines/windows/managed-disks-overview.md
+    url: virtual-machines/managed-disks-overview.md
   - title: 队列存储
     summary: 根据流量有效缩放应用
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg

@@ -1,23 +1,28 @@
 ---
-title: 启用和管理 blob 版本控制（预览）
+title: '启用和管理 blob 版本控制 (预览) '
 titleSuffix: Azure Storage
-description: 了解如何在 Azure 门户中或使用 Azure 资源管理器模板启用 blob 版本控制。
+description: 了解如何在 Azure 门户中或使用 Azure 资源管理器模板启用 blob 版本控制 (预览) 。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884340"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067267"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
+# <a name="enable-and-manage-blob-versioning-preview"></a>启用和管理 blob 版本控制 (预览) 
 
-通过使用 Azure 门户或 Azure 资源管理器模板，可以随时启用或禁用存储帐户的 blob 版本控制（预览）。
+可以启用 Blob 存储版本控制 (预览) 自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
+
+本文介绍如何使用 Azure 门户或 Azure 资源管理器模板启用或禁用存储帐户的 blob 版本控制。
+
+启用 blob 版本控制之前，必须注册预览。 若要了解有关 blob 版本控制的详细信息（包括如何注册预览版），请参阅[blob 版本控制 (预览) ](versioning-overview.md)。
 
 ## <a name="enable-blob-versioning"></a>启用 Blob 版本控制
 
@@ -67,7 +72,7 @@ ms.locfileid: "82884340"
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以触发新版本
 
-下面的代码示例演示如何使用用于 .NET 的 Azure 存储客户端库版本12来触发新版本的创建。 运行此示例之前，请确保已为存储帐户启用了版本控制。
+下面的代码示例演示如何使用适用于 .NET 的 Azure 存储客户端库（版本[12.5.0](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) ）或更高版本触发创建新版本。 运行此示例之前，请确保已为存储帐户启用了版本控制。
 
 该示例创建一个块 blob，然后更新该 blob 的元数据。 更新 blob 的元数据会触发新版本的创建。 该示例将检索初始版本和当前版本，并显示只有当前版本包括元数据。
 

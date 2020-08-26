@@ -1,6 +1,6 @@
 ---
 title: Azure 操作安全性概述 | Microsoft Docs
-description: 本文概述 Azure 操作安全性。
+description: 在本概述中了解 Azure 操作安全性。 操作安全是指资产保护服务、控件和功能。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674242"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925305"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -67,7 +68,7 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 - [自助服务密码管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [自助组管理](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [特权帐户管理](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [基于角色的访问控制](/azure/role-based-access-control/overview)
+- [Azure RBAC) 的 azure 基于角色的访问控制 (](/azure/role-based-access-control/overview)
 - [应用程序使用情况监视](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [多种审核](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [安全监视和警报](/azure/operations-management-suite/oms-security-responding-alerts)
@@ -86,7 +87,7 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 - 磁盘加密验证。
 - 基于网络的攻击。
 
-安全中心使用[基于角色的访问控制 (RBAC)](/azure/role-based-access-control/role-assignments-portal)。 RBAC 提供了[内置角色](../../role-based-access-control/built-in-roles.md)，可分配给 Azure 中的用户、组和服务。
+安全中心使用 azure [RBAC)  (azure 基于角色的访问控制](/azure/role-based-access-control/role-assignments-portal)。 RBAC 提供了[内置角色](../../role-based-access-control/built-in-roles.md)，可分配给 Azure 中的用户、组和服务。
 
 安全中心会评估资源的配置以识别安全问题和漏洞。 只有在分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色时，才会在安全中心看到与资源相关的信息。
 

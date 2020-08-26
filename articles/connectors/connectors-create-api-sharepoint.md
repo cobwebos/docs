@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 06dfca4fc59ba6ff32714d7a92b0d4a65e262de5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c72330792e508361830c1bf391f85eefe78bdd1e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826003"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283973"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 SharePoint 资源
 
@@ -67,7 +68,7 @@ ms.locfileid: "83826003"
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
    选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 系统提示登录时，请提供所需的连接信息。 如果使用 SharePoint Server，请务必选择“通过本地数据网关连接”。 完成后，选择“创建”。
+1. 系统提示登录时，请提供所需的连接信息。 如果使用 SharePoint 服务器，请务必选择“通过本地数据网关连接”。 完成后，选择“创建”。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -77,9 +78,10 @@ ms.locfileid: "83826003"
 
 ## <a name="get-support"></a>获取支持
 
-* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+

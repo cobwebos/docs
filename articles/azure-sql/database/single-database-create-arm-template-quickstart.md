@@ -4,19 +4,19 @@ description: 使用 Azure 资源管理器模板在 Azure SQL 数据库中创建�
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: subject-armqs sqldbrb=1
+ms.custom: subject-armqs sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4175792875b3bb60572ef9aa520b1fb09e00bbba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135638"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503015"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure SQL 数据库中创建单一数据库
 
@@ -43,7 +43,7 @@ ms.locfileid: "86135638"
 该模板中定义了以下资源：
 
 - [**Microsoft.Sql/servers**](/azure/templates/microsoft.sql/servers)
-- [**Microsoft.Sql/servers/databases**](/azure/templates/microsoft.sql/servers/databases)
+- [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
 
 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)中找到更多 Azure SQL 数据库模板示例。
 

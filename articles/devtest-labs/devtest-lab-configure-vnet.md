@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中配置虚拟网络 | Microsoft Docs
 description: 了解如何配置现有虚拟网络和子网并通过 Azure 开发测试实验室在 VM 中使用它们
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283548"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置虚拟网络
 如文章[将 VM 添加到实验室](devtest-lab-add-vm.md)中所述，在实验室中创建 VM 时，可指定已配置的虚拟网络。 例如，可能需要使用 ExpressRoute 或站点到站点 VPN 配置的虚拟网络从 VM 访问公司网络资源。
@@ -21,14 +21,14 @@ ms.locfileid: "85482643"
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>使用 Azure 门户为实验室配置虚拟网络
 以下步骤介绍如何将现有虚拟网络（以及子网）添加到实验室，以便在同一实验室创建 VM 时使用它。 
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表，选择所需的实验室。 
 1. 在实验室的主窗格中，选择“配置和策略”****。
 
     ![访问实验室的配置和策略](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. 在“外部资源”部分，选择“虚拟网络”********。 将显示为当前实验室配置的虚拟网络列表以及为实验室创建的默认虚拟网络。 
-1. 选择“+ 添加”****。
+1. 选择“+ 添加”。
    
     ![将现有虚拟网络添加到实验室](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 1. 在“虚拟网络”窗格中，选择“[选择虚拟网络]”********。
@@ -53,10 +53,9 @@ ms.locfileid: "85482643"
 
 既然已配置虚拟网络，则可在创建 VM 时选择它。 要了解如何创建 VM 和指定虚拟网络，请参阅文章[将 VM 添加到实验室](devtest-lab-add-vm.md)。 
 
-Azure 的[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network)提供有关如何使用 VNet 的详细信息，包括如何设置和管理 VNet 以及如何将其连接到本地网络。
+Azure 的[虚拟网络文档](../virtual-network/index.yml)提供有关如何使用 VNet 的详细信息，包括如何设置和管理 VNet 以及如何将其连接到本地网络。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>后续步骤
 将所需虚拟网络添加到实验室后，下一步为[将 VM 添加到实验室](devtest-lab-add-vm.md)。
-

@@ -1,5 +1,5 @@
 ---
-title: 获取几个资源的许可（MSAL.NET） |Microsoft
+title: " (MSAL.NET) ，获取几个资源的同意 |Microsoft"
 titleSuffix: Microsoft identity platform
 description: 了解用户如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 获得多个资源的预先同意。
 services: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: e36237e67b4498ca6aad4b7ffa8c645abeff6143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 6333d935e1a902ba173017f8149c098f44398955
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477288"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165866"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>用户使用 MSAL.NET 获得多个资源的同意
 Microsoft 标识平台终结点不允许你一次获取多个资源的令牌。 使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，获取令牌方法中的 scopes 参数应仅包含单个资源的范围。 但是，可以通过使用 `.WithExtraScopeToConsent` 生成器方法指定其他范围来预先同意多个资源。
@@ -28,8 +28,8 @@ Microsoft 标识平台终结点不允许你一次获取多个资源的令牌。 
 
 例如，如果你有两个资源（每个资源有两个范围）：
 
-- https： \/ /mytenant.onmicrosoft.com/customerapi （包含2个范围 `customer.read` 和 `customer.write` ）
-- https： \/ /mytenant.onmicrosoft.com/vendorapi （包含2个范围 `vendor.read` 和 `vendor.write` ）
+- \/带有2个作用域 `customer.read` 和)  (的 https：/mytenant.onmicrosoft.com/customerapi `customer.write`
+- \/带有2个作用域 `vendor.read` 和)  (的 https：/mytenant.onmicrosoft.com/vendorapi `vendor.write`
 
 应该使用具有 *extraScopesToConsent* 参数的 `.WithExtraScopeToConsent` 修饰符，如以下示例所示：
 

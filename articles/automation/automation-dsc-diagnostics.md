@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015147"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>与 Azure Monitor 日志集成
 
@@ -34,7 +34,7 @@ Azure Monitor 日志可以更直观地显示 Automation State Configuration 数�
 
 若要开始将 Automation State Configuration 报告发送到 Azure Monitor 日志，需要准备：
 
-- 2016 年 11 月或之后发布的 [Azure PowerShell](/powershell/azure/overview) (v2.3.0) 版本。
+- 2016 年 11 月或之后发布的 [Azure PowerShell](/powershell/azure/) (v2.3.0) 版本。
 - 一个 Azure 自动化帐户。 有关详细信息，请参阅 [Azure 自动化简介](automation-intro.md)。
 - 具有“自动化和控制”服务产品的 Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)。
 - 至少一个 Azure Automation State Configuration 节点。 有关详细信息，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)。

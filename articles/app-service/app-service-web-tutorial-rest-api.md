@@ -5,19 +5,19 @@ ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
-ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559812"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213698"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 另外，应用服务还为 RESTful API 提供对[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) 的内置支持。 本教程介绍如何将 ASP.NET Core API 应用部署到提供 CORS 支持的应用服务。 请使用命令行工具来配置应用，使用 Git 来部署应用。 
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 Azure CLI 创建应用服务资源
@@ -30,7 +30,7 @@ ms.locfileid: "82559812"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
  * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
@@ -43,7 +43,7 @@ ms.locfileid: "82559812"
 
 在终端窗口中，通过 `cd` 转到工作目录。  
 
-运行下列命令以克隆示例存储库。 
+运行下列命令，克隆示例存储库。 
 
 ```bash
 git clone https://github.com/Azure-Samples/dotnet-core-api
@@ -142,7 +142,7 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
 
 在本地存储库中，打开 _wwwroot/index.html_。
 
-在第 51 中，将 `apiEndpoint` 变量设置为已部署 API 的 URL (`http://<app_name>.azurewebsites.net`)。 在应用服务中将 _\<appname>_ 替换为你的应用名称。
+在第 51 中，将 `apiEndpoint` 变量设置为已部署 API 的 URL (`http://<app_name>.azurewebsites.net`)。 在应用服务中将 \<appname> 替换为你的应用名称。
 
 在本地终端窗口中，再次运行示例应用。
 
@@ -160,7 +160,7 @@ dotnet run
 
 ### <a name="enable-cors"></a>启用 CORS 
 
-在 Cloud Shell 中，使用 [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) 命令对客户端的 URL 启用 CORS。 替换 &lt;app-name> 占位符  。
+在 Cloud Shell 中，使用 [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) 命令对客户端的 URL 启用 CORS。 替换 &lt;app-name> 占位符。
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
@@ -193,7 +193,7 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 <a name="next"></a>
 ## <a name="next-steps"></a>后续步骤
 
-你已了解：
+现已了解：
 
 > [!div class="checklist"]
 > * 使用 Azure CLI 创建应用服务资源
@@ -203,4 +203,4 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 转到下一教程，了解如何对用户进行身份验证和授权。
 
 > [!div class="nextstepaction"]
-> [教程：对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
+> [教程：对用户进行端到端身份验证和授权](tutorial-auth-aad.md)

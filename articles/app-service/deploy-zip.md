@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957029"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077146"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -40,7 +40,7 @@ WAR 文件部署将[war](https://wikipedia.org/wiki/WAR_(file_format))文件部�
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-上述终结点目前不适用于 Linux 应用服务。 请考虑改用 FTP 或[ZIP 部署 API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) 。
+上述终结点目前不适用于 Linux 应用服务。 请考虑改用 FTP 或[ZIP 部署 API](faq-app-service-linux.md#continuous-integration-and-deployment) 。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 文件
 

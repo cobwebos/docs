@@ -1,19 +1,19 @@
 ---
-title: Java 用户定义函数 (UDF) 与 Apache Hive Azure HDInsight
+title: Apache Hive Azure HDInsight 的 Java 用户定义函数（UDF）
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
-ms.openlocfilehash: 8bb5f69bc43a6af27aa71d4cf1fe054d693cc085
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201222"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323785"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554909"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923724"
 ---
 # <a name="azure-ad-joined-devices"></a>已加入 Azure AD 的设备
 
@@ -28,7 +28,8 @@ ms.locfileid: "85554909"
 | **主要受众** | 适合仅使用云和使用混合环境的组织。 |
 |   | 适用于组织中的所有用户 |
 | **设备所有权** | 组织 |
-| **操作系统** | 所有 Windows 10 设备 |
+| **操作系统** | Windows 10 家庭版以外的所有 Windows 10 设备 |
+|   | [在 Azure 中运行的 Windows Server 2019 虚拟机](howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心） |
 | **预配** | 自助服务：Windows OOBE 或设置 |
 |   | 批量注册 |
 |   | Windows Autopilot |
@@ -61,7 +62,7 @@ ms.locfileid: "85554909"
 - 你需要在 Azure AD 而不是 Active Directory 中管理用户组。 该方案适用于季节工、承包商或学生等群体。
 - 想要向本地基础设施有限的远程分支机构中的员工提供加入功能。
 
-可对 Windows 10 设备配置 Azure AD 加入设备。
+你可以为所有 Windows 10 设备配置 Azure AD 联接设备，Windows 10 家庭版除外。
 
 Azure AD 加入设备旨在简化：
 

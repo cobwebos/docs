@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483918"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008519"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>将 IoT 数据导出到 Azure 中的目标
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>使用数据导出 (旧) 将 IoT 数据导出到 Azure 中的目标
 
-*本主题适用于管理员。*
+> [!Note]
+> 有一种新方法可在 IoT Central 中导出数据。 你可以使用新的数据导出来筛选和丰富导出的数据，并将其导出到新目标（如 webhook 终结点）。 你可以在[此处](./howto-use-data-export.md)了解有关新数据导出的信息。 若要了解新的数据导出和旧数据导出之间的差异，请参阅[比较表](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export)。
 
 本文介绍如何使用 Azure 中的数据导出功能 IoT Central。 此功能可让你将数据连续导出到**Azure 事件中心**、 **azure 服务总线**或**azure Blob 存储**实例。 数据导出使用 JSON 格式，可以包括遥测、设备信息和设备模板信息。 使用导出的数据可以获取：
 
@@ -64,9 +65,9 @@ ms.locfileid: "85483918"
 
     |性能层|帐户类型|
     |-|-|
-    |标准|常规用途 V2|
-    |标准|常规用途 V1|
-    |标准|Blob 存储|
+    |Standard|常规用途 V2|
+    |Standard|常规用途 V1|
+    |Standard|Blob 存储|
     |高级|块 Blob 存储|
 
 2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
@@ -135,7 +136,7 @@ ms.locfileid: "85483918"
 对于 Blob 存储，将每分钟分批和导出一次消息。 导出的文件使用的格式与[IoT 中心消息路由](../../iot-hub/tutorial-routing.md)到 blob 存储导出的消息文件相同。
 
 > [!NOTE]
-> 对于 Blob 存储，请确保你的设备正在发送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` （或 `utf-16` ） `utf-32` 的消息。 有关示例，请参阅 [IoT 中心文档](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
+> 对于 Blob 存储，请确保你的设备正在发送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` (或 `utf-16`) `utf-32` 的消息。 有关示例，请参阅 [IoT 中心文档](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
 
 发送遥测数据的设备由设备 ID 表示（请参阅以下部分）。 若要获取设备的名称，请导出设备数据并使用与设备消息的 **deviceId** 匹配的 **connectionDeviceId** 来关联每条消息。
 
@@ -567,7 +568,7 @@ ms.locfileid: "85483918"
 - `@id`对于设备模板已重命名为`id`
 - `@type`对于设备模板，将重命名为 `types` ，现在为数组
 
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>设备（从2020年2月3日开始的格式）
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>从2020年2月3日 (格式弃用的设备) 
 
 ```json
 {
@@ -613,7 +614,7 @@ ms.locfileid: "85483918"
 }
 ```
 
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>设备模板（2020年2月3日的格式弃用）
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>从2020年2月3日 (格式弃用的设备模板) 
 
 ```json
 {

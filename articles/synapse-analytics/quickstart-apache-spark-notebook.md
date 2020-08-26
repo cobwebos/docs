@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 1ec73c07d97a0e400e048e77ba6a30a6a12c0fc4
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194903"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496241"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池（预览版）
+# <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池
 
 本快速入门介绍如何使用 Web 工具在 Azure Synapse 中创建 Apache Spark 池（预览版）。 然后，介绍如何连接到 Apache Spark 池并针对文件和表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Azure Synapse 中 Spark 的信息，请参阅[概述：Azure Synapse 上的 Apache Spark](./spark/apache-spark-overview.md)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "85194903"
 
     ![Azure Synapse Spark 中的查询输出](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Azure Synapse Spark 中的查询输出")
 
-3. 在“视图”切换器中，选择“图表”。 
+3. 在“视图”切换器中，选择“图表”。
 4. 选择最右侧的“视图选项”图标。
 5. 在“图表类型”字段中选择“条形图”。
 6. 在“X 轴列”字段中选择“省/市/自治区”。
@@ -129,7 +129,7 @@ ms.locfileid: "85194903"
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. 对于前面执行的每个单元，可以选择转到“History Server”和“监视”。  单击相应的链接会转到用户体验的不同组成部分。
+11. 对于前面执行的每个单元，可以选择转到“History Server”和“监视”。 单击相应的链接会转到用户体验的不同组成部分。
 
 ## <a name="clean-up-resources"></a>清理资源
 

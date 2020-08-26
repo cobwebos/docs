@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 142daec93724fe4c25fd5c65dd387856dfb582c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324431"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -55,5 +55,6 @@ OpenCensus 网站保留了 [Python](https://opencensus.io/api/python/trace/usage
 ## <a name="next-steps"></a>后续步骤
 
 * [OpenCensus Python 使用指南](https://opencensus.io/api/python/trace/usage.html)
-* [应用程序映射](./../../azure-monitor/app/app-map.md)
-* [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)
+* [应用程序映射](./app-map.md)
+* [端到端性能监视](../learn/tutorial-performance.md)
+

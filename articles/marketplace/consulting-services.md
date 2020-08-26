@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103749"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814716"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 
@@ -20,7 +22,7 @@ ms.locfileid: "86103749"
 
 ## <a name="compare-consulting-services"></a>比较咨询服务
 
-商业市场店面、Microsoft AppSource 和 Azure 市场与受众需求和云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 若要详细了解两个商店之间的差异，请参阅[比较 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
+商业市场在线商店（Microsoft AppSource 和 Azure Marketplace）与受众和云产品保持一致，以帮助客户找到所需的内容。 每个在线商店都提供专门的发布选项来帮助你最大程度地提高发布投资。 若要详细了解两个在线商店之间的差异，请参阅 [比较 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
 
 基于 Dynamics 365、Power Apps 和 Power BI 的咨询服务产品可以列在 AppSource 中。 有关详细信息，请下载 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 文件。
 
@@ -32,7 +34,7 @@ ms.locfileid: "86103749"
 > AppSource 中的咨询服务应主要为面向以下用户提供的产品：提供 Dynamics 365、Power BI 或 Power Apps 高质量解决方案的专业人员。
  
 > [!TIP]
-> 若要发布到 Azure 市场店面，请在合作伙伴中心“主要产品”下拉列表中，选择“Azure” 。
+> 若要发布到 Azure Marketplace，请在 "合作伙伴中心 **主要产品** " 下拉列表中选择 " **Azure**"。
 >
 > 若要发布到 AppSource，请在“合作伙伴中心“主要产品”下拉列表中，选择“Dynamics 365”、“Power BI”或“Power Apps”   。
 
@@ -70,40 +72,40 @@ ms.locfileid: "86103749"
 
 系统集成商合作伙伴可以为以下20个国家/地区提交咨询服务产品/服务：
 
-| 国家/地区  | （续）   | （续）  | （续）  |
+| 国家/地区 |  (续 )  |   (续 )  |   (续 )  |
 |---------|----------|----------|----------|
 | 澳大利亚 | 比利时 | Canada | 丹麦 |
 | 芬兰  | 法国 | 德国  | 印度   |
 | 意大利    | 日本  |  墨西哥  |  荷兰  |
 |  新西兰  |  挪威  |  波兰  | 南非 |
 |  瑞典  | 瑞士  |  United States  | United Kingdom  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>在商业市场注册咨询服务
 
-首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](become-publisher.md)。 
+首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](become-publisher.md)。
 
 ## <a name="prepare-your-publishing-artifacts"></a>准备发布项目
 在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。 
 
 |设置新的发布服务器  |
-|---------|
-|MPN ID     |
-|公司徽标（48 x 48、216 x 216 像素）     |
-|潜在客户目标     |
-||
+| - |
+| MPN ID |
+| 公司徽标（48 x 48、216 x 216 像素） |
+| 潜在客户目标 |
+|
 
 |新产品设置  |
-|---------|
-|产品/服务名称（200 个字符）和说明（2000 个字符）    |
-|资质     |
-|国家/区域可用性     |
-|参与持续时间     |
-|适用的行业、类别和搜索关键字     |
-|产品概述视频    |
-|屏幕截图（最多 5 个、1280 x 720 像素）     |
-|营销文档（最多 3 个）     |
-||
+| - |
+| 产品/服务名称（200 个字符）和说明（2000 个字符） |
+| 资质  |
+| 国家/区域可用性 |
+| 参与持续时间  |
+| 适用的行业、类别和搜索关键字 |
+| 产品概述视频 |
+| 屏幕截图（最多 5 个、1280 x 720 像素） |
+| 营销文档（最多 3 个） |
+|
 
 ## <a name="the-publishing-process"></a>发布过程
 

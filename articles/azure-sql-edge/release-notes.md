@@ -9,17 +9,28 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 06/05/2020
-ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361636"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553404"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍 Azure SQL Edge 的每个新版本的新增功能和变化。
+
+## <a name="ctp-22"></a>CTP 2.2
+### <a name="sql-engine-build-number---15020001546"></a>SQL 引擎内部版本号-15.0.2000.1546
+### <a name="fixes"></a>修复项
+1. 支持非根容器 
+2. 支持使用情况和诊断数据收集 
+3. T-sql 流式处理更新
+   - 支持对流对象名称的 Unicode 字符
+   - 进程清理改进
+   - 日志记录和诊断改进
+4. 数据引入性能改进
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL 引擎内部版本号-15.0.2000.1545
@@ -40,7 +51,7 @@ ms.locfileid: "85361636"
     
     i.  ONNX 所需的运行时参数 
     
-4.  TSQL 流式处理支持（受限预览版） 
+4.  TSQL 流式处理支持 (有限预览)  
  
 ### <a name="known-issues"></a>已知问题
 

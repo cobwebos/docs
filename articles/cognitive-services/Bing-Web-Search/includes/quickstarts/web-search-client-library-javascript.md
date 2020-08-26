@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924988"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406362"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Node.js 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 

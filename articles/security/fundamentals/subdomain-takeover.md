@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3d63ccc2c47bca9410b5b9105b90aa1f0cf5854a
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223969"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439274"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>禁止无关联的 DNS 条目，并避免子域接管
 
@@ -61,7 +61,7 @@ ms.locfileid: "86223969"
 
 - **失去对子域内容的控制**-负按下，你的组织无法保护其内容，同时还会损坏品牌和失去信任。
 
-- **从不受防范的访客那里收集 Cookie** -通常，web 应用会将会话 cookie 公开给子域 ( * contoso.com) ，因此任何子域都可以访问这些 cookie。 威胁参与者可以使用子域接管来构建真实的页面，欺骗用户访问其 cookie，并 (甚至) 保护 cookie。 一个常见的误解是，使用 SSL 证书可保护你的网站和你的用户的 cookie。 但是，威胁参与者可以使用劫持的子域来申请和接收有效的 SSL 证书。 有效的 SSL 证书向他们授予安全 cookie 的访问权限，并可以进一步提高恶意网站的感知合法性。
+- **从不受防范的访客那里收集 cookie** -通常，web 应用会将会话 cookie 公开给子域（*. contoso.com），因此任何子域都可以访问这些 cookie。 威胁参与者可以使用子域接管来构建真实的页面，欺骗用户访问它，并搜集其 cookie （甚至是安全 cookie）。 一个常见的误解是，使用 SSL 证书可保护你的网站和你的用户的 cookie。 但是，威胁参与者可以使用劫持的子域来申请和接收有效的 SSL 证书。 有效的 SSL 证书向他们授予安全 cookie 的访问权限，并可以进一步提高恶意网站的感知合法性。
 
 - **网络钓鱼活动**-可在网络钓鱼活动中使用可信外观的子域。 这适用于恶意站点以及 MX 记录，这种情况下，攻击者可能会收到发送到已知安全品牌合法子域的电子邮件。
 
@@ -82,7 +82,7 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
 
 - Azure Front Door
 - 流量管理器配置文件
-- Azure 内容分发网络 (CDN) 终结点
+- Azure 内容分发网络（CDN）终结点
 - 公共 IP
 
 尽管目前提供有限的服务，我们仍建议使用别名记录来防止子域接管。
@@ -117,23 +117,83 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
 
     - 定期查看你的 DNS 记录，以确保你的子域全部都映射到以下 Azure 资源：
 
-        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 *. cloudapp.azure.com (参阅[此引用列表](azure-domains.md)) 。
+        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 cloudapp.azure.com （请参阅[此引用列表](azure-domains.md)）。
         - 你需要确认你拥有 DNS 子域所面向的所有资源。
 
-    - 维护 Azure 完全限定的域名的服务目录 (FQDN) 终结点和应用程序所有者。 若要生成服务目录，请运行以下 Azure 资源图 (ARG) query，其中包含下表中的参数：
-    
+    - 维护 Azure 完全限定的域名（FQDN）终结点和应用程序所有者的服务目录。 若要生成服务目录，请运行以下 Azure 资源关系图查询脚本。 此脚本将为你有权访问的资源创建 FQDN 终结点信息，并将其输出到 CSV 文件中。 如果你有权访问租户的所有订阅，该脚本将会考虑所有这些订阅，如下面的示例脚本中所示。 若要将结果限制为一组特定的订阅，请按如下所示编辑脚本。
+
         >[!IMPORTANT]
         > **权限**-以有权访问所有 Azure 订阅的用户身份运行查询。 
         >
-        > **限制**-Azure 资源图的限制和分页限制，你应考虑使用大型 azure 环境。 [详细了解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)如何使用大型 Azure 资源数据集。  
+        > **限制**-Azure 资源图的限制和分页限制，你应考虑使用大型 azure 环境。 [详细了解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)如何使用大型 Azure 资源数据集。 下面的示例脚本使用订阅批处理来避免这些限制。
 
         ```powershell
-        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
-        project tenantId, subscriptionId, type, resourceGroup, name, 
-        endpoint = <FQDNproperty>"
-        ``` 
+        
+            # Fetch the full array of subscription IDs.
+            $subscriptions = Get-AzSubscription
 
-        ARG 查询的每个服务参数：
+            $subscriptionIds = $subscriptions.Id
+                   # Output file path and names
+                   $date = get-date
+                   $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
+                   $fdate #log to console
+                   $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
+                   $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
+                   $fpath = $rpath + $rname
+                   $fpath #This is the output file of FQDN report.
+
+            # query
+            $query = "where type in ('microsoft.network/frontdoors',
+                                    'microsoft.storage/storageaccounts',
+                                    'microsoft.cdn/profiles/endpoints',
+                                    'microsoft.network/publicipaddresses',
+                                    'microsoft.network/trafficmanagerprofiles',
+                                    'microsoft.containerinstance/containergroups',
+                                    'microsoft.apimanagement/service',
+                                    'microsoft.web/sites',
+                                    'microsoft.web/sites/slots')
+                        | extend FQDN = case(
+                            type =~ 'microsoft.network/frontdoors', properties['cName'],
+                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
+                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
+                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
+                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
+                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
+                            type =~ 'microsoft.apimanagement/service', properties['hostnameConfigurations']['hostName'],
+                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
+                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
+                            '')
+                        | project id, ['type'], name, FQDN
+                        | where isnotempty(FQDN)";
+
+            # Paging helper cursor
+            $Skip = 0;
+            $First = 1000;
+
+            # If you have large number of subscriptions, process them in batches of 2,000.
+            $counter = [PSCustomObject] @{ Value = 0 }
+            $batchSize = 2000
+            $response = @()
+
+            # Group the subscriptions into batches.
+            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
+
+            # Run the query for each subscription batch with paging.
+            foreach ($batch in $subscriptionsBatch)
+            { 
+                $Skip = 0; #Reset after each batch.
+
+                $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
+                else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
+                $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
+            }
+
+            # View the completed results of the query on all subscriptions.
+            $response | Export-Csv -Path $fpath -Append 
+
+        ```
+
+        `FQDNProperty`前面的资源关系图查询中指定的类型及其值的列表：
 
         |资源名称  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
@@ -147,28 +207,11 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
         |Azure 应用服务|microsoft.web/sites|defaultHostName|
         |Azure App Service 槽|microsoft.web/sites/slots|defaultHostName|
 
-        
-        **示例 1** -该查询返回 Azure App Service 中的资源： 
-
-        ```powershell
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
-        project tenantId, subscriptionId, type, resourceGroup, name, 
-        endpoint = properties.defaultHostName"
-        ```
-        
-        **示例 2** -此查询合并了多个资源类型，以从 Azure App Service**和**Azure App Service 槽返回资源：
-
-        ```powershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
-        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
-        resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
 - **创建修补程序：**
     - 找到无关联的 DNS 条目后，你的团队需要调查是否发生了任何损害。
     - 调查停止资源后不重新路由地址的原因。
-    - 如果 DNS 记录不再使用，请将其删除，或将其指向正确的 Azure 资源 (FQDN) 你的组织拥有。
+    - 删除不再使用的 DNS 记录，或将其指向组织拥有的正确 Azure 资源（FQDN）。
  
 
 ## <a name="next-steps"></a>后续步骤

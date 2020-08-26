@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028543"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -66,7 +66,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 
 ### <a name="property-values"></a>属性值
 
-|   **名称**   |**值/示例**|       **说明**      |
+|   **名称**   |**值/示例**|       **描述**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
 |publisher|Microsoft.Azure.Performance.Diagnostics|扩展的发布服务器命名空间。
@@ -88,7 +88,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 
 请按照这些说明在 Windows 虚拟机上安装扩展：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择你想要安装此扩展的虚拟机。
 
     ![Azure 门户的屏幕截图，其中突出显示了虚拟机](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -233,7 +233,7 @@ PerfInsights 工具将收集各种日志、配置和诊断数据，具体视所�
 
 ## <a name="view-and-share-the-results"></a>查看和共享结果
 
-扩展的输出可以在上传到安装期间指定的存储帐户的 zip 文件中找到，并使用[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共享 30 天。 此 zip 文件包含诊断日志和一个包含发现和建议的报告。 可在文件夹**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **下名为*zipfilename*_saslink.txt 的文本文件中找到指向输出 zip 文件的 SAS 链接。 拥有此链接的任何人都可以下载 zip 文件。
+扩展的输出可以在上传到安装期间指定的存储帐户的 zip 文件中找到，并使用[共享访问签名 (SAS)](../../storage/common/storage-sas-overview.md) 共享 30 天。 此 zip 文件包含诊断日志和一个包含发现和建议的报告。 可在文件夹**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **下名为*zipfilename*_saslink.txt 的文本文件中找到指向输出 zip 文件的 SAS 链接。 拥有此链接的任何人都可以下载 zip 文件。
 
 Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支持工作的支持工程师提供帮助。
 

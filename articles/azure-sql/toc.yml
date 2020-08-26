@@ -42,8 +42,11 @@
             - name: 概述
               href: database/security-overview.md
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
-            - name: 最佳做法
+            - name: 最佳实践
               href: database/security-best-practice.md
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./database/security-controls-policy.md
             - name: 安全基线
               href: database/security-baseline.md
             - name: 安全属性
@@ -62,6 +65,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: 漏洞评估规则
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: 在存储中存储漏洞扫描结果
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: 登录名、用户帐户、角色和权限
               href: database/logins-create-manage.md
             - name: Azure AD 身份验证
@@ -69,12 +74,16 @@
               items:
                 - name: 配置 Azure AD 身份验证
                   href: database/authentication-aad-configure.md
-                - name: 多重 AAD 身份验证
+                - name: 多重 Azure AD 身份验证
                   href: database/authentication-mfa-ssms-overview.md
                 - name: 配置多重身份验证
                   href: database/authentication-mfa-ssms-configure.md
                 - name: 条件性访问
                   href: database/conditional-access-configure.md
+                - name: 服务主体（应用程序）
+                  href: database/authentication-aad-service-principal.md
+                - name: 目录读取者角色
+                  href: database/authentication-aad-directory-readers-role.md
             - name: 透明数据加密 (TDE)
               items:
                 - name: 概述
@@ -138,10 +147,14 @@
               href: database/long-term-backup-retention-configure.md
         - name: 安全性
           items:
+            - name: Azure AD 身份验证
+              items:
+                - name: 创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员
+                  href: database/authentication-aad-guest-users.md
+                - name: 将目录读取者角色分配给组
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: 为 TDE 配置 BYOK
               href: database/transparent-data-encryption-byok-configure.md
-            - name: 在存储中存储漏洞扫描结果
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Always Encrypted
               items:
                 - name: 使用 Azure Key Vault
@@ -200,10 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: 使用 Java 和 JDBC
+                  href: database/connect-query-java.md
                 - name: 使用 Spring Data JDBC
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: 使用 Spring Data JPA
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+                - name: 使用 Spring Data R2DBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL 数据库 (SQL DB)
   items:
     - name: 文档
@@ -230,8 +247,6 @@
               href: database/service-tier-hyperscale.md
             - name: “超大规模”常见问题解答
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
-            - name: 从高级 RS 迁移
-              href: database/service-tiers-prs.md
     - name: 快速入门
       href: database/quickstart-content-reference-guide.md
       items:
@@ -274,6 +289,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 删除 TDE 保护器
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: 使用服务主体创建用户
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移动数据
           items:
             - name: 使用 DMS 迁移
@@ -392,6 +409,12 @@
                   href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
+                - name: 将 Java 与 Spring Data JDBC 配合使用
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+                - name: 将 Java 与 Spring Data JPA 配合使用
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+                - name: 将 Java 与 Spring Data R2DBC 配合使用
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -514,7 +537,7 @@
               href: database/elastic-query-horizontal-partitioning.md
             - name: 在具有不同架构的表中进行查询
               href: database/elastic-query-vertical-partitioning.md
-        - name: 弹性作业
+        - name: 弹性作业（预览）
           items:
             - name: 配置作业
               href: database/elastic-jobs-overview.md
@@ -680,16 +703,20 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: 概念
       items:
-        - name: 事务复制
-          href: managed-instance/replication-transactional-overview.md
-        - name: 管理 API 参考
-          href: managed-instance/api-references-create-manage-instance.md
         - name: 资源限制
           href: managed-instance/resource-limits.md
         - name: 连接体系结构
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL 的差异
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: 事务复制
+          href: managed-instance/replication-transactional-overview.md
+        - name: 管理操作
+          items:
+            - name: 概述
+              href: managed-instance/management-operations-overview.md
+            - name: API 参考
+              href: managed-instance/api-references-create-manage-instance.md
         - name: 机器学习服务
           items:
             - name: 概述
@@ -708,6 +735,8 @@
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                     - name: 对模型进行训练和评分
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: 部署 ONNX 模型
+                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current
                 - name: R
                   items:
                     - name: 运行 R 脚本
@@ -742,6 +771,18 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: 4 - 部署模型
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: 纽约出租车提示（分类）
+                      items:
+                        - name: 1 - 简介
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - 数据研究
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - 功能设计
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - 训练和部署
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 5 - 预测
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                 - name: R
                   items:
                     - name: 滑雪租赁（决策树）
@@ -764,24 +805,52 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: 4 - 部署模型
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-            - name: 管理 Python 包和 R 包
+                    - name: 纽约出租车提示（分类）
+                      items:
+                        - name: 1 - 简介
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2 - 数据研究
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 - 功能设计
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4 - 训练和部署
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 5 - 预测
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: 如何
               items:
-                - name: Python
+                - name: 数据探索和建模
                   items:
-                    - name: 获取 Python 包信息
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: 通过 sqlmlutils 安装
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                - name: R
+                    - name: Python
+                      items:
+                        - name: 在 Python 中绘制直方图
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-plot-histogram?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 将数据导入 Pandas 数据帧
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 将数据帧插入 SQL
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: 预测
                   items:
-                    - name: 获取 R 包信息
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: 通过 sqlmlutils 安装
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: 创建 miniCRAN 存储库
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: 使用 R 包的提示
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: 使用 PREDICT T-SQL 本机评分
+                      href: 'https://docs.microsoft.com/sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: 包管理
+                  items:
+                    - name: 安装新 Python 包
+                      items:
+                        - name: 获取 Python 包信息
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 通过 sqlmlutils 安装
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: 安装新 R 包
+                      items:
+                        - name: 获取 R 包信息
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 通过 sqlmlutils 安装
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 创建 miniCRAN 存储库
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 使用 R 包的提示
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
         - name: 功能
           items:
             - name: 链接服务器
@@ -830,8 +899,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: 连接应用程序
           href: managed-instance/connect-application-instance.md
-        - name: 创建警报
+        - name: 对托管实例创建警报
           href: managed-instance/alerts-create.md
+        - name: 在托管实例上手动启动故障转移
+          href: managed-instance/user-initiated-failover.md
     - name: 示例
       items:
         - name: Azure CLI
@@ -866,6 +937,7 @@
             - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
             - name: ARM 模板
+              displayName: Resource Manager
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: 概念
           items:
@@ -952,8 +1024,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性组
                   items:
-                    - name: Azure SQL VM CLI
-                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: PowerShell 或 Az CLI
+                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure 快速入门模板
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: 多个区域
@@ -976,7 +1048,7 @@
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
                     - name: 使用以下项创建 FCI
                       items:
-                        - name: Azure 共享磁盘 (SQL2019+)
+                        - name: Azure 共享磁盘
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
                         - name: 存储空间直通 (Win2016+)
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
@@ -995,7 +1067,7 @@
         - name: 参考
           items:
             - name: Azure PowerShell
-              href: /powershell/azure/overview
+              href: /powershell/azure/
             - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
@@ -1010,6 +1082,8 @@
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
+            - name: 存档的经典 RM 文档
+              href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
               href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
             - name: SQL Server Management Studio (SSMS)

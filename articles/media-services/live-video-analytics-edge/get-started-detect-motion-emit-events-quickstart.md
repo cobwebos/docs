@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816908"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067651"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -34,7 +34,7 @@ ms.locfileid: "84816908"
 * IoT 中心
 * 存储帐户
 * Azure 媒体服务帐户
-* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 在本快速入门中，我们建议你使用[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)在 Azure 订阅中部署所需资源。 为此，请执行下列步骤：
 
@@ -84,7 +84,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ![lva-sample-device 节点](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>使用直接方法
+## <a name="use-direct-method-calls"></a>使用直接方法调用
 
 可以通过调用直接方法来使用该模块分析实时视频流。 有关详细信息，请参阅 [IoT Edge上的实时视频分析的直接方法](direct-methods.md)。 
 
@@ -561,7 +561,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 请注意以下详细信息：
 
-* 该消息包含 `body` 部分和 `applicationProperties` 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+* 该消息包含 `body` 部分和 `applicationProperties` 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 * 在 `applicationProperties` 中，`subject` 引用生成消息的 `MediaGraph` 中的节点。 在本例中，该消息来自运动检测处理器。
 * `applicationProperties` 中的 `eventType` 指示此事件是分析事件。
 * `eventTime` 值为事件发生的时间。

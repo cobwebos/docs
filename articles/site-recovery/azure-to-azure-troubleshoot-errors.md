@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130453"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083814"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -534,6 +534,44 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
 ### <a name="fix-the-problem"></a>解决问题
 
 删除错误消息中指出的副本磁盘，然后重试失败的保护作业。
+
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>启用保护失败，因为安装程序找不到根磁盘（错误代码151137）
+
+对于使用 Azure 磁盘加密（ADE）对 OS 磁盘进行加密的 Linux 计算机，会发生此错误。 这只是代理版本9.35 中的有效问题。
+
+### <a name="possible-causes"></a>可能的原因
+
+安装程序找不到承载根文件系统的根目录。
+
+### <a name="fix-the-problem"></a>解决问题
+
+请按照以下步骤解决此问题-
+
+1. 使用以下命令在 RHEL 和 CentOS 计算机上的目录 _/var/lib/waagent_下查找代理位： <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   预期输出：
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. 创建一个新目录，并将目录更改为此新目录。
+3. 使用以下命令提取在第一步中找到的代理文件：
+
+    `tar -xf <Tar Ball File>`
+
+4. 打开_prereq_check_installer.js_的文件，并删除以下行。 在此之后保存该文件。
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. 使用命令调用安装程序： <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. 如果安装成功，请重试启用复制作业。
 
 ## <a name="next-steps"></a>后续步骤
 

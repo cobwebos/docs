@@ -2,34 +2,34 @@
 title: 为用户授予基于角色的访问权限
 titleSuffix: Azure Maps
 description: 使用基于角色的访问控制向用户授予授权 Azure Maps
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/17/2020
 ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 86f89397f3685443071788580253ee11ce4b70be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 816e4e439bb98ced8bbc5b5d8a7d38ef65aee33f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988319"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011028"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>向用户授予 Azure Maps 的基于角色的访问权限
 
-可以通过将 Azure AD 组或安全主体分配给一个或多个 Azure Maps 访问控制角色定义，来授予*基于角色的访问控制*（RBAC）。 若要查看 Azure Maps 可用的 RBAC 角色定义，请访问 "**访问控制（IAM）**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
+可以通过将 Azure AD 组或安全主体分配给一个或多个 Azure Maps 角色定义，向 azure *RBAC) 授予 azure 基于角色的访问控制 (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请**访问 (IAM) 的 "访问控制**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
 
 * 若要有效地管理大量用户对 Azure Maps 的访问权限，请参阅[Azure AD 组](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。
 * 对于允许用户对应用程序进行身份验证的用户，必须在 Azure AD 中创建用户。 请参阅[添加或删除使用 Azure AD 的用户](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)。
 
 阅读有关[Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/)的详细信息，以便有效地管理用户的目录。
 
-1. 中转到你的**Azure Maps 帐户**。 选择 "**访问控制（IAM）**  >  **角色分配**"。
+1. 中转到你的**Azure Maps 帐户**。 ** (IAM) **  >  **角色分配**选择 "访问控制"。
 
-    ![授予 RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
+    ![使用 Azure RBAC 授予访问权限](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”********。 按名称选择主体。 然后，选择“保存”。
+2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”********。 按名称选择主体。 再选择“保存”。
 
    * 有关[添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
 

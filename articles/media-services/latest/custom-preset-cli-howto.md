@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382947"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503882"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何对自定义转换进行编码 - Azure CLI
 
@@ -32,7 +32,7 @@ ms.locfileid: "80382947"
 
 ## <a name="prerequisites"></a>先决条件
 
-[创建媒体服务帐户](create-account-cli-how-to.md)。
+[创建媒体服务帐户](./create-account-howto.md)。
 
 请务必记住资源组名称和媒体服务帐户名称。
 

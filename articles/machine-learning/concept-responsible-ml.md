@@ -1,46 +1,49 @@
 ---
-title: " (ML) 预览的责任机器学习"
+title: '什么是机器学习 (预览) '
 titleSuffix: Azure Machine Learning
-description: 了解什么是负责 ML，以及如何使用 Azure 机器学习将其付诸实践
+description: 了解什么是负责的机器学习以及如何在 Azure 机器学习
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201936"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829384"
 ---
-# <a name="responsible-machine-learning-ml-preview"></a> (ML) 预览的责任机器学习
+# <a name="what-is-responsible-machine-learning-preview"></a>什么是计算机学习？ （预览版）
 
-本文介绍了什么是负责 ML，以及如何使用 Azure 机器学习将其付诸实践。
+在本文中，你将了解哪些负责的机器学习 (ML) ，以及如何将其与 Azure 机器学习结合起来。
 
-在 AI 系统的整个开发和使用过程中，信任必须是核心。 具体包括信任平台、过程和模型。 在 Microsoft，负责 ML 包含以下价值观和原则：
+## <a name="responsible-machine-learning-principles"></a>责任机器学习原则
+
+在 AI 系统的整个开发和使用过程中，信任必须是核心。 具体包括信任平台、过程和模型。 Microsoft 的责任机器学习包括以下值和原则：
 
 - 了解机器学习模型
   - 解释和说明模型行为
   - 评估和缓解模型不公平性
 - 保护人员及其数据
-  - 通过差异隐私防止数据泄露  
+  - 通过差异隐私防止数据泄露
+  - 使用 homomorphic 加密处理加密数据
 - 控制端到端机器学习过程
   - 用数据表记录机器学习生命周期
 
-:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="负责 ML 支柱":::
+:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="责任 ML 支柱-interpretability、差分隐私、homomorphic 加密、审核线索-Azure 机器学习":::
 
 随着人工智能和自治系统越来越多地融入社会结构，积极主动地努力预测和缓解这些技术带来的意外后果是很重要的。
 
 ## <a name="interpret-and-explain-model-behavior"></a>解释和说明模型行为
 
-难以解释或不透明的系统可能会产生问题，因为这使利益干系人（如系统开发人员、管理人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
+难以解释的系统或非透明盒系统可能会出问题，因为利益干系人（如系统开发人员、监管人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
 
 若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
 
-## <a name="assess-and-mitigate-model-unfairness"></a>评估和缓解模型不公平性
+## <a name="mitigate-fairness-in-machine-learning-models"></a>在机器学习模型中缓解公平
 
 随着 AI 系统越来越多地参与到社会的日常决策中，这些系统能够很好地为每个人提供公平的结果是极为重要的。
 
@@ -62,13 +65,23 @@ AI 系统中的不公平性可能会导致以下意外后果：
 实现差异隐私系统较为棘手。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) 是一个开放源代码项目，其中包含用于生成全局差异隐私系统的不同组件。 若要详细了解差异隐私和 WhiteNoise 项目，请参阅[使用差异隐私和 WhiteNoise 保护数据隐私](./concept-differential-privacy.md)一文。
 
 > [!NOTE]
-> 请注意，我们将重命名该工具包，并将在未来几周引入新名称。 
+> 请注意，我们正在重命名该工具包，并将在未来几周内引入新名称。 
+
+## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>使用 homomorphic 加密处理加密数据
+
+在传统的云存储和计算解决方案中，云需要对客户数据具有未加密的访问权限，以便对其进行计算。 此访问权限将数据公开给云操作员。 数据隐私依赖于云实现并由客户信任的访问控制策略。
+
+使用同态加密，无需访问机密（解密）密钥即可对加密数据进行计算。 计算的结果已加密，只能由密钥的所有者公开。 使用 homomorphic 加密，cloud operators 绝不会对存储和计算数据的数据进行未加密的访问。 计算直接在加密数据上执行。 数据隐私依赖于先进的加密技术，数据所有者控制所有信息发布。 有关 Microsoft 的 homomorphic 加密的详细信息，请参阅[Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/)。
+
+若要在 Azure 机器学习中开始使用 homomorphic 加密，请使用适用于[MICROSOFT 印章](https://github.com/microsoft/SEAL)的[加密推理](https://pypi.org/project/encrypted-inference/)Python 绑定。 Microsoft 封条是一个开源 homomorphic 加密库，允许对加密整数或实数执行添加和祖。 若要了解有关 Microsoft 印章的详细信息，请参阅[Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal)或[microsoft Research 项目页面](https://www.microsoft.com/research/project/microsoft-seal/)。
+
+请参阅以下示例，了解[如何在 Azure 机器学习中部署加密的推断 web 服务](how-to-homomorphic-encryption-seal.md)。
 
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>用数据表记录机器学习生命周期
 
 在机器学习过程中记录正确的信息是在每个阶段做出负责决策的关键所在。 使用数据表，可以记录在机器学习生命周期内使用和创建的机器学习资产。
 
-模型通常被视为 "不透明框"，通常不会有很少的信息。 由于机器学习系统变得越来越普遍，且被用于做出决策，因此使用数据表就是向开发更负责的机器学习系统迈进。
+模型往往被认为是“非透明盒”，而且往往很少有关于它们的信息。 由于机器学习系统变得越来越普遍，且被用于做出决策，因此使用数据表就是向开发更负责的机器学习系统迈进。
 
 不妨在数据表中记录一些模型信息：
 
@@ -83,5 +96,5 @@ AI 系统中的不公平性可能会导致以下意外后果：
 
 ## <a name="additional-resources"></a>其他资源
 
-- 使用同态加密[部署加密推理 Web 服务](how-to-homomorphic-encryption-seal.md)。
+- 有关详细信息，请参阅[负责的创新工具包](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/)，了解最佳实践。
 - 详细了解有关机器学习系统记录的[关于 ML](https://www.partnershiponai.org/about-ml/) 指南集。

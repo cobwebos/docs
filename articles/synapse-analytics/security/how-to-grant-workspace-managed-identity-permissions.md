@@ -1,5 +1,5 @@
 ---
-title: 如何向 Azure Synapse 工作区中的托管标识授予权限
+title: 向 Synapse 工作区中的托管标识授予权限
 description: 本文介绍如何在 Azure Synapse 工作区中配置托管标识的权限。
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193458"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535036"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "85193458"
 >[!NOTE]
 >在此文档的剩余部分中，我们将此工作区托管标识称为托管标识。
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>向 SQL 池授予托管标识权限
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>向 SQL 池授予托管标识权限
 
 托管标识授予对工作区中的 SQL 池的权限。 在授予权限的情况下，你可以安排执行与 SQL 池相关的活动的管道。 使用 Azure 门户创建 Azure Synapse 工作区时，可以授予对 SQL 池的托管标识控制权限。
 
@@ -80,15 +80,15 @@ ms.locfileid: "85193458"
 
 #### <a name="step-4-add-a-new-role-assignment"></a>步骤4：添加新的角色分配
 
-选择“+ 添加”****。
+选择“+ 添加”。
 
 ![添加新的角色分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
-#### <a name="step-5-select-the-rbac-role"></a>步骤5：选择 RBAC 角色
+#### <a name="step-5-select-the-azure-role"></a>步骤5：选择 Azure 角色
 
 选择 "**存储 Blob 数据参与者**" 角色。
 
-![选择 RBAC 角色](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
+![选择 Azure 角色](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>步骤6：选择 Azure AD 安全主体
 

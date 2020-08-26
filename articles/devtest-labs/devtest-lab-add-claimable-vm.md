@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 开发测试实验室中创建和管理可认领 Vm |Microsoft Docs
-description: 了解如何向 Azure 开发测试实验室中的实验室添加可声明的虚拟机
+description: 了解如何使用 Azure 门户在 Azure 开发测试实验室中添加可认领虚拟机，并查看要遵循的流程以声明/取消认领虚拟机。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe949d7104fe6437087e77c403cc0d921ebd025
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481300"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270972"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建和管理可认领 VM
 使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[市场映像](devtest-lab-configure-marketplace-images.md)的“基”添加**。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可认领 VM 的步骤
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，然后在“DEVOPS”**** 部分中选择“开发测试实验室”****。 如果在“DEVOPS”**** 部分中选择了“开发测试实验室”**** 旁边的 *（星号）， 此操作会将“开发测试实验室”**** 添加到左侧导航菜单中，以便你下次可以轻松访问它。 然后，可以在左侧导航菜单中选择“开发测试实验室”****。
 
     ![所有服务 - 选择“开发测试实验室”](./media/devtest-lab-create-lab/all-services-select.png)
@@ -88,4 +88,4 @@ ms.locfileid: "85481300"
 
 ## <a name="next-steps"></a>后续步骤
 * 在创建后，可以通过在 VM 的管理窗格上选择“连接”来连接到 VM。****
-* 探索[开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

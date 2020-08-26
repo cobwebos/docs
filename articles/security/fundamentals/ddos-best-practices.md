@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054434"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287807"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护-设计复原解决方案
 
@@ -48,7 +48,7 @@ DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应�
 
 可伸缩性是指系统处理增加的负载的能力。 采用可[横向缩放](/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。
 
-对于 [Azure 应用服务](/azure/app-service/app-service-value-prop-what-is)，请选择提供多个实例的[应用服务计划](/azure/app-service/overview-hosting-plans)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](/azure/cloud-services/cloud-services-choose-me)。 对于 [Azure 虚拟机](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](/azure/virtual-machines/virtual-machines-windows-manage-availability)中。 我们建议使用[虚拟机规模集](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)来实现自动缩放功能。
+对于 [Azure 应用服务](/azure/app-service/app-service-value-prop-what-is)，请选择提供多个实例的[应用服务计划](/azure/app-service/overview-hosting-plans)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](/azure/cloud-services/cloud-services-choose-me)。 对于 [Azure 虚拟机](../../virtual-machines/index.yml)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../../virtual-machines/windows/tutorial-availability-sets.md)中。 我们建议使用[虚拟机规模集](../../virtual-machine-scale-sets/overview.md)来实现自动缩放功能。
 
 ### <a name="defense-in-depth"></a>深层防御
 

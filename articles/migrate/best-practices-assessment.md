@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119967"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387041"
 ---
 # <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
 
@@ -25,17 +25,17 @@ ms.locfileid: "86119967"
 
 **评估类型** | **详细信息**
 --- | --- 
-Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。 [了解详细信息](concepts-assessment-calculation.md)
-**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[物理服务器](how-to-set-up-appliance-physical.md)。 [了解详细信息](concepts-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 
 ### <a name="sizing-criteria"></a>调整大小标准
-服务器评估提供两个大小调整条件选项：
+服务器评估提供两个调整大小标准选项：
 
 **调整大小标准** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于收集的性能数据提出建议的评估 | **AZURE vm 评估**： VM 大小建议基于 CPU 和内存使用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/> **Azure VMware 解决方案（AVS）评估**： AVS 节点建议基于 CPU 和内存利用率数据。
-**按本地** | 评估不使用性能数据来提出建议。 | **AZURE vm 评估**： VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在评估的 "存储类型" 设置中选择的内容。<br/><br/> **Azure VMware 解决方案（AVS）评估**： AVS 节点建议基于本地 VM 大小。
+**基于性能** | 基于收集的性能数据提出建议的评估 | **Azure VM 评估**：VM 大小建议基于 CPU 和内存利用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于 CPU 和内存利用率数据。
+**按本地原样** | 不使用性能数据来提出建议的评估。 | **Azure VM 评估**：VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在存储类型设置中选择要评估的内容。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于本地 VM 大小。
 
 #### <a name="example"></a>示例
 例如，如果你有一个本地 VM，其四个内核的利用率为20%，内存为 8 GB，利用率为10%，Azure VM 评估将如下所示：
@@ -67,15 +67,15 @@ Azure Migrate 设备会持续分析你的本地环境，并将元数据和性能
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>适用于 AVS 评估的 FTT 大小参数
 
-AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的存储要求。 这些策略保证 Vm 所需的服务级别，因为它们确定如何将存储分配给 VM。 以下是可用的 FTT-Raid 组合： 
+AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的存储要求。 这些策略保证了 VM 所需的服务级别，因为它们可确定如何将存储分配给 VM。 以下是可用的 FTT-Raid 组合： 
 
-**容错故障（FTT）** | **RAID 配置** | **需要的最低主机** | **大小调整注意事项**
+**允许的故障数 (FTT)** | **RAID 配置** | **需要的最少主机数** | **大小调整注意事项**
 --- | --- | --- | --- 
-1 | RAID-1 （镜像） | 3 | 100GB VM 将使用200GB。
-1 | RAID-5 （擦除编码） | 4 | 100GB VM 将使用 133.33 GB
-2 | RAID-1 （镜像） | 5 | 100GB VM 将使用300GB。
-2 | RAID-1 （擦除编码） | 6 | 100GB VM 将使用 150 GB。
-3 | RAID-1 （镜像） | 7 | 100GB VM 将使用400GB。
+1 | RAID-1（镜像） | 3 | 100GB VM 将使用 200GB。
+1 | RAID-5（擦除编码） | 4 | 100GB VM 将使用 133.33 GB
+2 | RAID-1（镜像） | 5 | 100GB VM 将使用 300GB。
+2 | RAID-6（擦除编码） | 6 | 100GB VM 将使用 150GB。
+3 | RAID-1（镜像） | 7 | 100GB VM 将使用 400GB。
 
 
 ## <a name="best-practices-for-confidence-ratings"></a>置信度评级的最佳实践
@@ -131,9 +131,9 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>适用于 AVS 评估的迁移工具指南
 
-在 azure VMware 解决方案（AVS）评估的 Azure 就绪状态报告中，可以看到以下建议的工具： 
+在 Azure VMware 解决方案 (AVS) 评估的 Azure 迁移就绪性报告中，可以看到以下推荐工具： 
 - **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
-- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。
+- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展（HCX）解决方案。
 
 
 ## <a name="next-steps"></a>后续步骤

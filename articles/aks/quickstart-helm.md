@@ -4,18 +4,18 @@ description: 结合使用 Helm 与 AKS 和 Azure 容器注册表，打包和运�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82169562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407109"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
-[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与 Linux 包管理器（例如*APT*和*Yum*）类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
+[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 *APT* 和 *Yum* 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
 本文介绍如何使用 Helm 在 AKS 中打包和运行应用程序。 有关使用 Helm 安装现有应用程序的详细信息，请参阅[在 AKS 中通过 Helm 安装现有应用程序][helm-existing]。
 
@@ -23,7 +23,6 @@ ms.locfileid: "82169562"
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* 已安装并配置 Docker。 Docker 提供的包可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker。
 * [已安装 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
@@ -57,14 +56,6 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
   "type": "Microsoft.ContainerRegistry/registries"
 }
 ```
-
-若要使用 ACR 实例，必须先登录。 请使用 [az acr login][az-acr-login] 命令登录。 以下示例登录到名为 MyHelmACR 的 ACR。
-
-```azurecli
-az acr login --name MyHelmACR
-```
-
-完成后，该命令会返回“登录成功”消息。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
@@ -122,18 +113,12 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>生成并将示例应用程序推送到 ACR
 
-使用[az acr list][az-acr-list]命令获取登录服务器地址并查询*loginServer*：
+使用[az acr build][az-acr-build]命令生成映像，并使用上述 Dockerfile 将映像推送到注册表。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
 
 ```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-使用 Docker 生成、标记示例应用程序容器并将其推送到 ACR：
-
-```console
-docker build -t webfrontend:latest .
-docker tag webfrontend <acrLoginServer>/webfrontend:v1
-docker push <acrLoginServer>/webfrontend:v1
+az acr build --image webfrontend:v1 \
+  --registry MyHelmACR \
+  --file Dockerfile .
 ```
 
 ## <a name="create-your-helm-chart"></a>创建 Helm 图表
@@ -144,9 +129,9 @@ docker push <acrLoginServer>/webfrontend:v1
 helm create webfrontend
 ```
 
-对 webfrontend/values.yaml 进行以下更新：
+对*webfrontend/yaml*进行以下更新。 替换前面步骤中记下的注册表的 loginServer，例如*myhelmacr.azurecr.io*：
 
-* 将 `image.repository` 更改为 `<acrLoginServer>/webfrontend`
+* 将 `image.repository` 更改为 `<loginServer>/webfrontend`
 * 将 `service.type` 更改为 `LoadBalancer`
 
 例如：
@@ -159,7 +144,7 @@ helm create webfrontend
 replicaCount: 1
 
 image:
-  repository: <acrLoginServer>/webfrontend
+  repository: *myhelmacr.azurecr.io*/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:
@@ -218,16 +203,11 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [Helm 文档][helm-documentation]
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-list]: /cli/azure/acr#az-acr-list
+[az-acr-build]: /cli/azure/acr#az-acr-build
 [az-group-delete]: /cli/azure/group#az-group-delete
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-
-[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-for-mac]: https://docs.docker.com/docker-for-mac/
-[docker-for-windows]: https://docs.docker.com/docker-for-windows/
 [example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/

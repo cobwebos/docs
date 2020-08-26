@@ -5,11 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285996"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>使用 GPU 虚拟机设置实验室
 
@@ -31,7 +32,7 @@ ms.locfileid: "85443394"
 | ---- | ----- | --- | ----------- | 
 | 小型 GPU (计算) | -&nbsp;6 &nbsp; 核<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |此大小最适用于计算机密集型应用程序，如人工智能（AI）和深度学习。 |
 
-*可视化*GPU 大小适用于图形密集型应用程序。  例如， [SolidWorks 工程类类型](./class-type-solidworks.md)使用**小 GPU （可视化）** 大小显示。  可视化 GPU 适用于这类类，因为学生与用于建模和可视化实体对象的 SolidWorks 3D 计算机辅助设计（CAD）环境交互。
+*可视化*GPU 大小适用于图形密集型应用程序。  例如， [SOLIDWORKS 工程类类型](./class-type-solidworks.md)使用**小 GPU （可视化）** 大小显示。  可视化 GPU 适用于这类类，因为学生与用于建模和可视化实体对象的 SOLIDWORKS 3D 计算机辅助设计（CAD）环境交互。
 
 | 大小 | 核心数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
@@ -44,7 +45,7 @@ ms.locfileid: "85443394"
 ![显示 "安装 GPU 驱动程序" 选项的 "新实验室" 屏幕截图](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 如上图所示，此选项在默认情况下处于启用状态，这可确保为所选 GPU 和映像的类型安装*最新*的驱动程序。
-- 选择*计算*GPU 大小时，实验室 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 提供支持。  在这种情况下，将安装最新的[计算统一设备体系结构（CUDA）](https://www.nvidia.com/object/io_69526.html)驱动程序，这可实现高性能计算。
+- 选择*计算*GPU 大小时，实验室 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 提供支持。  在这种情况下，将安装最新的[计算统一设备体系结构（CUDA）](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf)驱动程序，这可实现高性能计算。
 - 选择*可视化*GPU 大小时，实验室 Vm 由[NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和[网格技术](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)提供支持。  在这种情况下，将安装最新的网格驱动程序，这将允许使用图形密集型应用程序。
 
 ### <a name="install-the-drivers-manually"></a>手动安装驱动程序
@@ -66,8 +67,8 @@ ms.locfileid: "85443394"
    d. 根据创建实验室时选择的基本映像类型，设置**操作系统**。  
    e. 将**CUDA 工具包**设置为所需的 CUDA 驱动程序版本。  
    f. 选择 "**搜索**" 以查找驱动程序。  
-   如， 选择 "**下载**" 以下载安装程序。  
-   h.如果该值不存在，请单击“添加行”。 运行安装程序，以便在模板 VM 上安装驱动程序。  
+   g. 选择 "**下载**" 以下载安装程序。  
+   h. 运行安装程序，以便在模板 VM 上安装驱动程序。  
 1. 按照[验证安装的驱动程序](how-to-setup-lab-gpu.md#validate-the-installed-drivers)部分中的说明，验证是否正确安装了驱动程序。 
 1. 安装了类所需的驱动程序和其他软件之后，选择 "**发布**" 以创建学生的 vm。
 
@@ -112,7 +113,7 @@ ms.locfileid: "85443394"
 请参阅以下文章：
 
 - [创建和管理教室实验室](how-to-manage-classroom-labs.md)
-- [SolidWorks 计算机辅助设计（CAD）类类型](class-type-solidworks.md)
+- [SOLIDWORKS 计算机辅助设计（CAD）类类型](class-type-solidworks.md)
 - [MATLAB （matrix 实验室）类类型](class-type-matlab.md)
 
 

@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798204"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>从“设备”页管理连接的设备
 
@@ -26,7 +27,7 @@ ms.locfileid: "83735950"
 - 禁用不再拥有、丢失或被盗的任何设备。
 
 >[!Important]
->本文适用于尝试更新连接到工作或学校帐户的设备信息的用户。 如果你作为管理员正在为你的员工和其他用途查找设备管理相关信息，请参阅[设备标识文档](https://docs.microsoft.com/azure/active-directory/devices/index)。
+>本文适用于尝试更新连接到工作或学校帐户的设备信息的用户。 如果你作为管理员正在为你的员工和其他用途查找设备管理相关信息，请参阅[设备标识文档](../devices/index.yml)。
 
 ## <a name="view-your-connected-devices"></a>查看连接的设备
 
@@ -67,13 +68,15 @@ ms.locfileid: "83735950"
 
 查看连接的设备后，可以：
 
-- 选择查看或管理[安全信息](user-help-security-info-overview.md)。
+- 选择查看或管理[安全信息](./security-info-setup-signin.md)。
 
 - 查看并管理[组织](my-account-portal-organizations-page.md)。
 
 - 查看[登录活动](my-account-portal-sign-ins-page.md)。
 
 - 查看组织如何[使用隐私相关数据](my-account-portal-privacy-page.md)。
+
+- 更改[我的帐户门户设置](my-account-portal-settings.md)
 
 ## <a name="related-office-content"></a>相关 Office 内容
 

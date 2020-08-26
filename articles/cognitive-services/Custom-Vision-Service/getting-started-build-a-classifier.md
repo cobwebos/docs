@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 56bdaa324420bf274e7cda8ac1c6506e4bc9ad21
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404057"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551346"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入门：如何使用自定义影像服务生成分类器
 
 在本快速入门中，你将了解如何通过自定义视觉服务网站生成分类器。 生成分类器模型后，可以使用自定义视觉服务进行图像分类。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 

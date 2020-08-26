@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: f4c4c63e6461dd3aa3cabe86b871434814fb400e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 8ac742c42a32e8b864c4be71e786c292ceb1514d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073388"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>将 PowerShell 与 Azure 资源管理器模板配合使用，以创建托管实例
 
@@ -29,7 +29,7 @@ ms.locfileid: "84708529"
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 Azure PowerShell 命令可以使用预定义的 Azure 资源管理器模板启动部署。 可以在模板中指定以下属性：
 
@@ -53,7 +53,7 @@ Install-Module Az.Network
 Install-Module Az.Resources
 ```
 
-## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 
 将以下脚本保存到 .json 文件中，并记下文件位置： 
@@ -138,6 +138,6 @@ New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGr
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 Azure SQL 托管实例的其他 PowerShell 脚本示例可在 [Azure SQL 托管实例 PowerShell 脚本](../../database/powershell-script-content-guide.md)中找到。

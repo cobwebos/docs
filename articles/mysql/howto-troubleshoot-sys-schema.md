@@ -8,6 +8,7 @@ ms.topic: troubleshooting
 ms.date: 3/30/2020
 ms.openlocfilehash: d2ed06041e8ee0e2993289cdde5fe92f7664b476
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83829509"

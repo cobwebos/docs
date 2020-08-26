@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368238"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797740"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -36,12 +36,12 @@ ms.locfileid: "85368238"
 
 SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是，如果你已经在本地使用 SBD 设备，则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 如果希望能够在一个 iSCSI 目标服务器关闭时进行防护，则必须使用三个 SBD 设备，因此可以使用三个 iSCSI 目标服务器，这是使用 SBDs 时最具弹性的配置。
 
-Azure 隔离代理不需要部署其他虚拟机。   
+Azure 隔离代理不需要部署)  (额外的虚拟机。   
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免此类障碍，在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，请勿定义通过 NVA 和类似设备路由群集节点与 SBD 设备之间的流量的 NVA 路由规则或[用户定义路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。 
+> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免此类障碍，在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，请勿定义通过 NVA 和类似设备路由群集节点与 SBD 设备之间的流量的 NVA 路由规则或[用户定义路由规则](../../../virtual-network/virtual-networks-udr-overview.md)。 
 >
 
 ## <a name="sbd-fencing"></a>SBD 隔离
@@ -221,17 +221,17 @@ o- / ...........................................................................
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the second iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.18:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.18:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the third iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.19:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.19:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
    请确保 iSCSI 设备可用并记下设备名称（在以下示例中为 /dev/sde）
@@ -447,9 +447,14 @@ o- / ...........................................................................
 1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
-   请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。
+   请替换以下命令中的 IP 地址和主机名。
 
+   >[!IMPORTANT]
+   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用并且可能导致群集故障转移延迟，则群集通信将失败。
+   > 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。  
+     
    <pre><code>sudo vi /etc/hosts
+
    </code></pre>
 
    将以下行插入 /etc/hosts。 根据环境更改 IP 地址和主机名   
@@ -583,7 +588,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) 来创建它
+默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) 或 [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
@@ -647,11 +652,11 @@ sudo crm configure property stonith-timeout=900
 > 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。
 
 > [!TIP]
->Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中所述的公共终结点建立出站连接并提供可能的解决方案。  
+>Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)中所述的公共终结点建立出站连接并提供可能的解决方案。  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>用于 Azure 计划事件的 Pacemaker 配置
 
-Azure 提供[计划事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，该代理将尝试停止受影响 VM 上的所有资源，并将它们移至群集中的另一个节点。 若要实现这一点，必须配置其他 Pacemaker 资源。 
+Azure 提供[计划事件](../../linux/scheduled-events.md)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，该代理将尝试停止受影响 VM 上的所有资源，并将它们移至群集中的另一个节点。 若要实现这一点，必须配置其他 Pacemaker 资源。 
 
 1. **[A]** 确保已安装 azure-events 代理包，并且其版本是最新的。 
 

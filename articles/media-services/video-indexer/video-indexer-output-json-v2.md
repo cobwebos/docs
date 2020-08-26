@@ -8,36 +8,52 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/10/2020
 ms.author: juliako
-ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656575"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604784"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>检查 API 生成的视频索引器输出
+# <a name="examine-the-video-indexer-output"></a>检查视频索引器输出
 
-调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。**** JSON 内容包含指定的视频见解的详细信息。 见解包括：脚本、OCRs、面部、主题、块等。每个洞察类型都包含显示见解在视频中出现的时间范围的实例。 
+为视频编制索引后，视频索引器将 poduces 包含指定视频见解的详细信息的 JSON 内容。 见解包括：脚本、OCRs、面部、主题、块等。每个洞察类型都包含显示见解在视频中出现的时间范围的实例。 
 
-1. 若要检索 JSON 文件，请调用[获取视频索引 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)
-1. 如果还对特定项目感兴趣，请调用[获取视频项目下载 URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
+可以通过按视频[索引器](https://www.videoindexer.ai/)网站上视频上的 "**播放**" 按钮，直观地检查视频的汇总见解。 
 
-    在 API 调用中，指定请求的项目类型（OCR、面部、关键帧等）
-
-此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。**** 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
+你还可以通过调用 **获取视频索引** API 并使用响应状态 "正常" 来使用 API，你将获得详细的 JSON 输出作为响应内容。
 
 ![洞察力](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-本文探讨“获取视频索引”API 返回的 JSON 内容。**** 
+本文检查视频索引器输出 (JSON 内容) 。 有关可供使用的功能和见解的信息，请参阅 [视频索引器见解](video-indexer-overview.md#video-insights)。
 
 > [!NOTE]
 > 视频索引器中所有访问令牌的有效期为一小时。
 
+## <a name="get-the-insights"></a>获取见解
 
-## <a name="root-elements"></a>根元素
+### <a name="insightsoutput-produced-in-the-websiteportal"></a>网站/门户中生成的 Insights/输出
 
-|“属性”|描述|
+1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
+1. 查找视频要检查的输出。
+1. 按“播放”。****
+1. 选择 " **见解** " 选项卡 (汇总见解) 或 " **时间线** " 选项卡 (允许筛选相关的见解) 。
+1. 下载项目以及其中的内容。
+
+有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
+
+## <a name="insightsoutput-produced-by-api"></a>API 生成的 Insights/输出
+
+1. 若要检索 JSON 文件，请调用 [获取视频索引 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)
+1. 如果还对特定项目感兴趣，请调用 [获取视频项目下载 URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
+
+    在 API 调用中，指定请求的项目类型 (OCR、面部、关键帧等 ) 
+
+## <a name="root-elements-of-the-insights"></a>见解的根元素
+
+|名称|说明|
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
@@ -77,15 +93,15 @@ ms.locfileid: "84656575"
 
 本部分介绍见解的摘要。
 
-|特性 | 说明|
+|Attribute | 说明|
 |---|---|
 |name|视频的名称。 例如 Azure Monitor。|
 |id|视频的 ID。 例如 63c6d532ff。|
 |privacyMode|可以细分为以下模式之一：“私用”、“公共”。******** **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
 |thumbnailVideoId|从其创建缩略图的视频的 ID。
-|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用[get-缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)，并将其传递给 ThumbnailVideoId 和 thumbnailId。|
-|人脸|可以包含零个或多个人脸。 有关更详细的信息，请参阅 [faces](#faces)。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 [get-缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) ，并将其传递给 ThumbnailVideoId 和 thumbnailId。|
+|面部/animatedCharacters|可以包含零个或多个人脸。 有关更多详细信息，请参阅 [面部/animatedCharacters](#facesanimatedcharacters)。|
 |关键字|可以包含零个或多个关键字。 有关更详细的信息，请参阅 [keywords](#keywords)。|
 |情绪|可以包含零个或多个情绪。 有关更详细的信息，请参阅 [sentiments](#sentiments)。|
 |audioEffects| 可以包含零个或多个音效。 有关更详细的信息，请参阅 [audioEffects](#audioeffects)。|
@@ -97,7 +113,7 @@ ms.locfileid: "84656575"
 
 ## <a name="videos"></a>videos
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
 |accountId|视频的 VI 帐户 ID。|
 |id|视频的 ID。|
@@ -111,7 +127,7 @@ ms.locfileid: "84656575"
 |metadata|视频的外部元数据（如果用户已指定）。|
 |isAdult|指示视频是否已经过人工审查，并已标识为成人视频。|
 |insights|见解对象。 有关详细信息，请参阅 [insights](#insights)。|
-|thumbnailId|视频的缩略图 ID。 若要获取实际的缩略图，请调用[Get 缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)，并向其传递视频 ID 和 thumbnailId。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际的缩略图，请调用 [Get 缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) ，并向其传递视频 ID 和 thumbnailId。|
 |publishedUrl|用于流式传输视频的 URL。|
 |publishedUrlProxy|要从中流式传输视频的 URL（适用于 Apple 设备）。|
 |viewToken|用于流式传输视频的短期查看令牌。|
@@ -120,7 +136,7 @@ ms.locfileid: "84656575"
 |indexingPreset|用于编制视频索引的预设。|
 |streamingPreset|用于发布视频的预设。|
 |linguisticModelId|用于转录视频的 CRIS 模型。|
-|statistics | 有关详细信息，请参阅[统计](#statistics)信息。|
+|statistics | 有关详细信息，请参阅 [统计](#statistics)信息。|
 
 ```json
 {
@@ -149,11 +165,11 @@ ms.locfileid: "84656575"
 ```
 ### <a name="insights"></a>insights
 
-每个见解（例如，脚本行、面部、品牌等）都包含一个唯一元素（例如，face1、face2、face3）的列表，每个元素都有其自己的元数据和其实例的列表（这是具有其他可选元数据的时间范围）。
+每个见解 (例如，脚本行、面部、品牌等 ) ，都包含唯一元素的列表 (例如，face1、face2、face3) ，并且每个元素都有其自己的元数据和其实例的列表 (这是具有其他可选元数据) 的时间范围。
 
-人脸可能有 ID、名称、缩略图、其他元数据和其时态实例列表（例如：00:00:05 –00:00:10、00:01:00-00:02:30 和00:41:21 –00:41:49）。每个临时实例都可以有其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
+人脸可能有一个 ID、名称、缩略图、其他元数据和其时态实例的列表 (例如：00:00:05 –00:00:10、00:01:00-00:02:30 和00:41:21 –00:41:49。 ) 每个时态实例都可以有其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
 
-|Version|代码版本|
+|版本|代码版本|
 |---|---|
 |sourceLanguage|视频的源语言（采用一种主要语言）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
 |语言|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
@@ -161,7 +177,7 @@ ms.locfileid: "84656575"
 |ocr|[OCR](#ocr)见解。|
 |关键字|[关键字](#keywords)见解。|
 |blocks|可以包含一个或多个[块](#blocks)|
-|人脸|[面部](#faces)见解。|
+|面部/animatedCharacters|[面部/animatedCharacters](#facesanimatedcharacters)见解。|
 |标签|[标签](#labels)见解。|
 |截图|[照片](#shots)见解。|
 |brands|[品牌](#brands)见解。|
@@ -195,14 +211,14 @@ ms.locfileid: "84656575"
 
 #### <a name="blocks"></a>blocks
 
-特性 | 说明
+Attribute | 说明
 ---|---
 id|块的 ID。|
 instances|此块的时间范围列表。|
 
 #### <a name="transcript"></a>脚本
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -240,7 +256,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="ocr"></a>ocr
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -275,7 +291,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="keywords"></a>关键字
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -304,9 +320,13 @@ instances|此块的时间范围列表。|
 }
 ```
 
-#### <a name="faces"></a>人脸
+#### <a name="facesanimatedcharacters"></a>面部/animatedCharacters
 
-|“属性”|说明|
+`animatedCharacters``faces`如果视频是使用动画字符模型编制索引的，则元素将替换。 这是使用自定义视觉中的自定义模型完成的，视频索引器在关键帧上运行它。
+
+如果面部 (没有经过动画处理的字符) 出现，视频索引器将使用所有视频帧上的人脸 API 来检测人脸和名人。
+
+|名称|说明|
 |---|---|
 |id|人脸 ID。|
 |name|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
@@ -351,7 +371,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="labels"></a>标签
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
@@ -410,10 +430,10 @@ instances|此块的时间范围列表。|
 
 #### <a name="scenes"></a>scenes
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|场景 ID。|
-|instances|此场景的时间范围列表（场景只能有1个实例）。|
+|instances|此场景 (的时间范围列表中，场景只能有1个实例) 。|
 
 ```json
 "scenes":[  
@@ -443,11 +463,11 @@ instances|此块的时间范围列表。|
 
 #### <a name="shots"></a>截图
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|截图 ID。|
-|keyFrames|快照内的关键帧列表（每个关键帧都有一个 ID 和一个实例时间范围列表）。 每个关键帧实例都有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
-|instances|此快照的时间范围列表（快照只能有1个实例）。|
+|keyFrames| (中的关键帧的列表均有一个 ID 和一个实例时间范围列表) 。 每个关键帧实例都有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
+|instances|此快照 (一个快照的时间范围列表只能有1个实例) 。|
 
 ```json
 "shots":[  
@@ -493,14 +513,14 @@ instances|此块的时间范围列表。|
 
 在语音转文本脚本和/或视频 OCR 中检测到的企业和产品品牌名称。 这不包括品牌或徽标检测内容的视觉辨识形式。
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|品牌 ID。|
 |name|品牌名称。|
 |referenceId | 品牌维基百科 URL 的后缀。 例如，"Target_Corporation" 是的后缀 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
-|referenceUrl | 品牌的维基百科 URL（如果存在）。 例如， [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
+|referenceUrl | 品牌的维基百科 URL（如果存在）。 例如， https://en.wikipedia.org/wiki/Target_Corporation 。
 |description|品牌说明。|
-|tags|与此品牌关联的预定义标记的列表。|
+|标记|与此品牌关联的预定义标记的列表。|
 |confidence|视频索引器品牌检测器的置信度值 (0-1)。|
 |instances|此品牌的时间范围列表。 每个实例有一个 brandType，表示此品牌是出现在脚本还是 OCR 中。|
 
@@ -552,7 +572,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="statistics"></a>statistics
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |SpeakerWordCount|每个发言人的单词数。|
@@ -562,10 +582,10 @@ instances|此块的时间范围列表。|
 
 #### <a name="audioeffects"></a>audioEffects
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|音频效果 ID。|
-|类型|音频效果类型（例如鼓掌、语音、静音）。|
+|type|音频效果类型（例如鼓掌、语音、静音）。|
 |instances|出现此音频效果的时间范围列表。|
 
 ```json
@@ -591,7 +611,7 @@ instances|此块的时间范围列表。|
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -630,7 +650,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
@@ -666,7 +686,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|文本内容审核 ID。|
 |bannedWordsCount |受禁单词的数目。|
@@ -676,10 +696,10 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器根据语音和音频提示识别情感。确定的情感可能是：乐趣、悲伤、愤怒或恐惧。
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|情感 ID。|
-|类型|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
+|type|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
 |instances|出现该情感的时间范围列表。|
 
 ```json
@@ -764,9 +784,9 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="topics"></a>topics
 
-视频索引器从脚本中推理主要主题。 在可能的情况下，将包括第2级[IPTC](https://iptc.org/standards/media-topics/)分类。 
+视频索引器从脚本中推理主要主题。 在可能的情况下，将包括第2级 [IPTC](https://iptc.org/standards/media-topics/) 分类。 
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|主题 ID。|
 |name|主题名称，例如：“Pharmaceuticals”。|

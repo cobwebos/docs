@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359154"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828789"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -43,7 +43,7 @@ ms.locfileid: "85359154"
 6. 若要保存所做更改，请单击“保存”。**** 只有在保存之后，更改才会生效。
 
 >[!NOTE] 
-> 如果在后端服务中处理同步请求时出现问题，则此服务会向租户的管理联系人电子邮件地址发送一封通知电子邮件，其中包含错误详细信息。 我们听说过来自客户的反馈，在某些情况下，这些消息的数量很大，因此我们正在改变我们发送这些消息的方式。 
+> 如果在我们的后端服务中处理同步请求时出现问题，则此服务会向租户 (es) 的管理联系人电子邮件地址发送一封通知电子邮件，其中包含错误详细信息。 我们听说过来自客户的反馈，在某些情况下，这些消息的数量很大，因此我们正在改变我们发送这些消息的方式。 
 >
 > 不会在每次发生同步错误时都发送消息，而是发送后端服务返回的所有错误的每日摘要。 这使客户能够以更有效的方式处理这些错误并减少重复的错误消息数。
 >
@@ -74,7 +74,7 @@ ms.locfileid: "85359154"
 2. 在操作栏中的“服务器”边栏选项卡上，单击“删除”。********
 ![Azure AD Connect Health 删除服务器的屏幕截图](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. 在确认框中键入服务器名称以进行确认。
-4. 单击 **“删除”** 。
+4. 单击“删除” 。
 
 用于 Azure Active Directory 域服务的 Azure AD Connect Health：
 
@@ -82,7 +82,7 @@ ms.locfileid: "85359154"
 2. 选择要删除的域控制器。
 3. 在操作栏中，单击“删除所选项”****。
 4. 确认删除服务器的操作。
-5. 单击 **“删除”** 。
+5. 单击“删除” 。
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>从 Azure AD Connect Health Service 中删除服务实例
 在某些情况下，可能需要删除某个服务实例。 以下是关于从 Azure AD Connect Health 服务中删除服务实例的说明。
@@ -99,12 +99,12 @@ ms.locfileid: "85359154"
 2. 在操作栏中的“服务”边栏选项卡上，单击“删除”********。 
 ![Azure AD Connect Health 删除服务的屏幕截图](./media/how-to-connect-health-operations/DeleteServer.png)
 3. 在确认框中键入服务名称（例如：sts.contoso.com）以进行确认。
-4. 单击 **“删除”** 。
+4. 单击“删除” 。
    <br><br>
 
 [//]: # (开始 RBAC 部分)
 ## <a name="manage-access-with-role-based-access-control"></a>使用基于角色的访问控制管理访问权限
-用于 Azure AD Connect Health 的[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 可向全局管理员以外的用户和组提供访问权限。 RBAC 会将角色分配给目标用户和组，并提供一个机制将全局管理员的权限限制到目录以内。
+用于 Azure AD Connect Health 的 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)提供对除全局管理员以外的用户和组的访问权限。 RBAC 会将角色分配给目标用户和组，并提供一个机制将全局管理员的权限限制到目录以内。
 
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支持以下内置角色：
@@ -133,7 +133,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”**** 部分中，单击“用户”****。<br>
    ![Azure AD Connect Health 资源边栏的屏幕截图](./media/how-to-connect-health-operations/startRBAC.png)
-2. 选择 **添加** 。
+2. 选择“添加”。
 3. 在“选择角色”**** 窗格中，选择一个角色（例如“所有者”****）。<br>
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。

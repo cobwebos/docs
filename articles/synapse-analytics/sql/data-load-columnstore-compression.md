@@ -1,5 +1,5 @@
 ---
-title: 提高列存储索引性能（工作区预览）
+title: " (工作区预览版提高列存储索引性能) "
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: synapse-analytics
 author: kevinvngo
@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa3bee706049bbeaed0a01cb4f3f5c0422050fa2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495476"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797575"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
 
 行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
@@ -42,7 +42,7 @@ ms.locfileid: "86495476"
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV sys.databases dm_pdw_nodes_db_column_store_row_group_physical_stats （[sys.databases dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)包含与 SQL db 匹配的视图定义），用于公开有用信息，如行组中的行数，以及在发生修整时进行修整的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV [dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (dm_pdw_nodes_db_column_store_row_group_physical_stats 包含与 SQL db) 匹配的视图定义，该定义将公开有用的信息（如行组中的行数）以及修整时剪裁的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -69,6 +69,9 @@ select *
 from cte;
 ```
 
+>[!TIP]
+> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
+
 trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
 
 - BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批负荷，使之包含更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
@@ -88,7 +91,7 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
-有关列存储内存需求的深入讨论，请参阅视频[SYNAPSE SQL 缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请参阅视频 [SYNAPSE SQL 缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -141,6 +144,6 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解更多提高 Synapse SQL 性能的方法，请参阅[性能概述](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要了解更多提高 Synapse SQL 性能的方法，请参阅 [性能概述](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
  

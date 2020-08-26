@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdfcda0ce466299d57f79ba1e60a96309078587
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014343"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846303"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -116,6 +117,7 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 - [从库中添加的应用程序](../manage-apps/add-application-portal.md)
 - [不在库中的自定义应用程序](../manage-apps/add-non-gallery-app.md)
 - [通过应用交付控制器和网络发布的传统应用程序](../manage-apps/secure-hybrid-access.md)
+- 使用[基于密码的单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)的应用程序
 
 > [!NOTE]
 > 由于条件访问策略规定了有关访问服务的要求，因此你无法将其应用于客户端（公共/本机）应用程序。 换句话说，该策略不是直接在客户端（公共/本机）应用程序上设置的，而是在客户端调用服务时应用的。 例如，在 SharePoint 服务上设置的策略将应用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略将应用于使用 Outlook 客户端访问电子邮件的尝试。 正因如此，云应用选取器没有客户端（公共/本机）应用程序可供选择，并且在租户中注册的客户端（公共/本机）应用程序的应用程序设置中未提供条件访问选项。 
@@ -129,5 +131,5 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 
 - [条件访问：条件](concept-conditional-access-conditions.md)
 
-- [常用条件访问策略](concept-conditional-access-policy-common.md)
+- [条件访问常见策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖关系](service-dependencies.md)

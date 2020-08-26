@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7db0a5bd4697c99c071d685903dfc394c2b49f25
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102678"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835793"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -32,7 +32,7 @@ ms.locfileid: "86102678"
 1. 请确保源订阅和目标 CSP 订阅位于相同的 Azure Active Directory (Azure AD) 租户中。  
     你不能更改 Azure CSP 订阅的 Azure AD 租户。 相反，你必须将源订阅添加或关联到 CSP Azure AD 租户。 有关详细信息，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
     > [!IMPORTANT]
-    > - 将订阅关联到其他 Azure AD 目录时，如果用户的角色是使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配的，则用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也会失去访问权限。
+    > - 将订阅关联到其他 Azure AD 目录时，如果用户的角色是使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配的，则用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也会失去访问权限。
     > - 将订阅与其他目录相关联时，还会从订阅中删除策略分配。
 1. 用来执行转移的用户帐户必须对这两个订阅都具有 [RBAC](add-change-subscription-administrator.md) 所有者访问权限。
 1. 在开始之前，[验证](/rest/api/resources/resources/validatemoveresources)是否所有 Azure 资源都可以从源订阅移动到目标订阅。  

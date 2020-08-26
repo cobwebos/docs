@@ -3,15 +3,15 @@ title: 使用 Azure CLI 创建分区 Linux VM
 description: 使用 Azure CLI 在可用性区域中创建 Linux VM
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208952"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828993"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
 
@@ -23,7 +23,7 @@ ms.locfileid: "82208952"
 
 
 ## <a name="check-vm-sku-availability"></a>查看 VM SKU 可用性
-VM 大小或 SKU 的可用性可能因地区和区域而异。 可以按 Azure 区域列出可用的 VM SKU，以便规划可用性区域的使用。 此功能可确保选择适当的 VM 大小，并跨区域获取所需的复原能力。 有关不同 VM 类型和大小的详细信息，请参阅 [VM 大小概述](sizes.md)。
+VM 大小或 SKU 的可用性可能因地区和区域而异。 可以按 Azure 区域列出可用的 VM SKU，以便规划可用性区域的使用。 此功能可确保选择适当的 VM 大小，并跨区域获取所需的复原能力。 有关不同 VM 类型和大小的详细信息，请参阅 [VM 大小概述](../sizes.md)。
 
 可以使用 [az vm list-skus](/cli/azure/vm) 命令查看可用的 VM SKU。 以下示例列出了 *eastus2* 区域中可用的 VM SKU：
 
@@ -52,7 +52,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。  
+使用“[az group create](/cli/azure/group)”命令创建资源组。  
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”** 区域中创建了名为“myResourceGroupVM”** 的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
 
@@ -188,8 +188,4 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
-
-
-
-
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](../availability.md)。

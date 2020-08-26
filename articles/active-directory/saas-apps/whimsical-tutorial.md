@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Whimsical 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Whimsical 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3a1bab37-e0a8-4710-a927-b80bea80d9f5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401ca1a22b47555f530e1785e25653269403812c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ee5fe4a856e75e9833b9d69dd24efd932f760a91
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662207"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523250"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Whimsical 的集成
 
@@ -37,7 +33,7 @@ ms.locfileid: "83662207"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 启用了单一登录 (SSO) 的 Whimsical 订阅。
+* Whimsical 团队工作区。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -93,7 +89,7 @@ ms.locfileid: "83662207"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://whimsical.com/@<TENANT_NAME>`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Whimsical 客户端支持团队](mailto:help@whimsical.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 你的特定值会显示在 Whimsical 工作区设置中的 SAML 设置屏幕上。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. Whimsical 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -123,30 +119,34 @@ ms.locfileid: "83662207"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Whimsical 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在应用程序列表中，选择“Whimsical”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-whimsical-sso"></a>配置 Whimsical SSO
 
-若要在 Whimsical 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Whimsical 支持团队](mailto:help@whimsical.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Whimsical 端配置单一登录，需要将刚下载的“联合元数据 XML”上传到[工作区设置](https://whimsical.com/workspace/settings)。
+
+![Whimsical 工作区 SAML 设置](media/whimsical-tutorial/saml-setup.png)
+
+上传“联合元数据 XML”应是设置 SAML SSO 连接而需要在 Whimsical 中执行的唯一步骤。
 
 ### <a name="create-whimsical-test-user"></a>创建 Whimsical 测试用户
 

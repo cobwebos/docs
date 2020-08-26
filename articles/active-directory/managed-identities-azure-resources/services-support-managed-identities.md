@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 5bf397cac26d3cc46e11f8ac60110629a528cd62
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229816"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873579"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -85,6 +85,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
+### <a name="azure-cognitive-services"></a>Azure 认知服务
+
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+
 
 ### <a name="azure-container-instances"></a>Azure 容器实例
 
@@ -138,7 +145,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 不可用 | 不可用  | 不可用  | 不可用 |
 
 
@@ -224,7 +231,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-[Service Fabric 应用程序的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)处于预览状态，并在所有区域中均可用。
+所有区域都提供[Service Fabric 应用程序的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)。
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
@@ -289,7 +296,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅[映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服务
 
-托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government  | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 预览 | 预览 | 不可用 | 预览 |

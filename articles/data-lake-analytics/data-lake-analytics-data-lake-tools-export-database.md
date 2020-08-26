@@ -2,19 +2,17 @@
 title: 导出 U-SQL 数据库-针对 Visual Studio 的 Azure Data Lake 工具
 description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具导出 U-SQL 数据库并自动将其导入本地帐户。
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: 364682f6bcf2edeecc7af2da6c91e4bfd1de98a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117281"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132086"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
 

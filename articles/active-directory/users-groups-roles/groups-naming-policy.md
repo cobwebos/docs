@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Active Directory 中强制执行组命名策略 |Microsoft Docs
-description: 如何在 Azure Active Directory 中为 Office 365 组设置命名策略
+description: 如何在 Azure Active Directory 中为 Microsoft 365 组设置命名策略
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,27 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 08/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728140"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213738"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 组上强制实施命名策略
+# <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Microsoft 365 组上强制实施命名策略
 
-若要为用户创建或编辑的 Office 365 组强制执行一致的命名约定，请在 Azure Active Directory （Azure AD）中为你的组织设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
+若要为用户创建或编辑 Microsoft 365 组强制执行一致的命名约定，请在 Azure Active Directory (Azure AD) 中为组织设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
 
 > [!IMPORTANT]
-> 如果对 Office 365 组使用 Azure AD 命名策略，则需要拥有但不一定要为一个或多个 Office 365 组的成员的每个唯一用户分配 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证。
+> 如果对 Microsoft 365 组使用 Azure AD 命名策略，则需要拥有但不一定要为一个或多个 Microsoft 365 组的成员的每个唯一用户分配 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证。
 
 命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置命名策略，并且具有现有的 Exchange 组命名策略，则会在你的组织中强制实施 Azure AD 命名策略。
 
-配置组命名策略时，策略将应用于最终用户创建的新 Office 365 组。 命名策略不适用于某些目录角色，如全局管理员或用户管理员（有关从组命名策略中免除的角色的完整列表，请参阅下文）。 对于现有的 Office 365 组，在配置时，该策略不会立即应用。 组所有者编辑这些组的组名称后，将强制实施命名策略。
+配置组命名策略时，策略将应用于最终用户创建的新 Microsoft 365 组。 命名策略不适用于某些目录角色，如全局管理员或用户管理员 (请参阅下面的有关从组命名策略中免除的角色的完整列表) 。 对于现有 Microsoft 365 组，策略不会在配置时立即应用。 组所有者编辑这些组的组名称后，将强制实施命名策略。
 
 ## <a name="naming-policy-features"></a>命名策略功能
 
@@ -71,7 +72,7 @@ ms.locfileid: "84728140"
 若要配置命名策略，需要以下角色之一：
 - 全局管理员
 - 组管理员
-- 用户管理员
+
 
 选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。
 
@@ -83,7 +84,7 @@ ms.locfileid: "84728140"
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>在 Azure 门户中配置命名策略
 
-1. 使用组管理员帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 使用组管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
 1. 选择“组”，然后选择“命名策略”，以便打开“命名策略”页。********
 
     ![在管理中心打开“命名策略”页](./media/groups-naming-policy/policy.png)
@@ -93,7 +94,7 @@ ms.locfileid: "84728140"
 1. 在“命名策略”页上，选择“组命名策略”。********
 1. 可以单独查看或编辑当前的前缀或后缀命名策略，只需选择需要在命名策略中强制实施的属性或字符串即可。
 1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。**** 可以同时删除多个项。
-1. 通过选择 "**保存**"，保存新策略的更改，使其生效。
+1. 通过选择 " **保存**"，保存新策略的更改，使其生效。
 
 ### <a name="edit-custom-blocked-words"></a>编辑自定义阻止字词
 
@@ -103,7 +104,7 @@ ms.locfileid: "84728140"
 
 1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。****
 1. 上传自定义阻止字词的新列表，方法是选择文件图标。
-1. 通过选择 "**保存**"，保存新策略的更改，使其生效。
+1. 通过选择 " **保存**"，保存新策略的更改，使其生效。
 
 ## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
 
@@ -122,7 +123,7 @@ ms.locfileid: "84728140"
    Install-Module AzureADPreview
    ```
 
-   如果系统提示你访问不受信任的存储库，请输入**Y**。新模块安装可能需要几分钟时间。
+   如果系统提示你访问不受信任的存储库，请输入 **Y**。新模块安装可能需要几分钟时间。
 
 ## <a name="configure-naming-policy-in-powershell"></a>在 PowerShell 中配置命名策略
 
@@ -137,7 +138,7 @@ ms.locfileid: "84728140"
 
    在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”********。
 
-1. 按照 Azure Active Directory cmdlet 中的步骤[配置组设置](groups-settings-cmdlets.md)，为此组织创建组设置。
+1. 按照 Azure Active Directory cmdlet 中的步骤 [配置组设置](groups-settings-cmdlets.md) ，为此组织创建组设置。
 
 ### <a name="view-the-current-settings"></a>查看当前设置
 
@@ -177,7 +178,7 @@ ms.locfileid: "84728140"
 
 ## <a name="export-or-import-custom-blocked-words"></a>导出或导入自定义阻止字词
 
-有关详细信息，请参阅文章[Azure Active Directory 用于配置组设置的 cmdlet](groups-settings-cmdlets.md)。
+有关详细信息，请参阅文章 [Azure Active Directory 用于配置组设置的 cmdlet](groups-settings-cmdlets.md)。
 
 下面的 PowerShell 脚本示例可导出多个阻止字词：
 
@@ -235,7 +236,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 - 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
 - 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
 
-工作负荷 | 合规性
+工作负载 | 合规性
 ----------- | -------------------------------
 Azure Active Directory 门户 | 如果用户在创建或编辑组时键入组名，Azure AD 门户和访问面板门户会显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，会显示一错误消息以及阻止字词，以便用户删除它。
 Outlook Web Access (OWA) | 当用户键入组名或组别名时，Outlook Web Access 显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，UI 中会显示一条错误消息以及阻止字词，以便用户删除它。
@@ -252,7 +253,7 @@ Outlook Customer Manager (OCM) | Outlook Customer Manager 遵循命名策略，�
 Classroom 应用 | 在 Classroom 应用中创建的组遵循命名策略，但不会自动应用命名策略，并且在输入教室组名时不会向用户显示命名策略预览。 用户必须输入强制使用的教室组名称（包含前缀和后缀）。 否则，教室组创建或编辑会失败，并出现错误。
 Power BI | Power BI 工作区遵循命名策略。    
 Yammer | 当使用其 Azure Active Directory 帐户登录到 Yammer 的用户创建一个组或编辑组名时，组名将符合命名策略。 这适用于 Office 365 连接组以及所有其他 Yammer 组。<br>如果在命名策略到位之前已创建 Office 365 连接组，则组名将不会自动遵循命名策略。 当用户编辑组名，系统将提示他们添加前缀和后缀。
-StaffHub  | StaffHub 团队不遵循命名策略，但基础 Office 365 组遵循给策略。 StaffHub 团队名不应用前缀和后缀，也不检查自定义阻止字词。 但在基础 Office 365 组中，StaffHub 应用了前缀和后缀，并删除了阻止字词。
+StaffHub  | StaffHub 团队不遵循命名策略，但基础 Microsoft 365 组会执行此操作。 StaffHub 团队名不应用前缀和后缀，也不检查自定义阻止字词。 但 StaffHub 会应用前缀和后缀，并删除基础 Microsoft 365 组中阻止的单词。
 Exchange PowerShell | Exchange PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名 (mailNickname) 的命名策略，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
 Azure Active Directory PowerShell cmdlet | Azure Active Directory PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名的命名约定，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
 Exchange 管理中心 | Exchange 管理中心遵循命名策略。 如果用户不遵循组名和组别名的命名约定，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
@@ -263,7 +264,7 @@ Microsoft 365 管理中心 | Microsoft 365 管理中心符合命名策略。 当
 以下文章提供有关 Azure AD 组的更多信息。
 
 - [查看现有组](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Office 365 组的到期策略](groups-lifecycle.md)
+- [Microsoft 365 组的过期策略](groups-lifecycle.md)
 - [管理组的设置](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [管理组的成员](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [管理组的成员身份](../fundamentals/active-directory-groups-membership-azure-portal.md)

@@ -10,16 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727664"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799054"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -27,7 +28,7 @@ ms.locfileid: "84727664"
 
 ## <a name="usage-location"></a>使用位置
 
-某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为用户指定 "**使用位置**" 属性。 在[Azure 门户](https://portal.azure.com)中，可以在 "**用户** &gt; **配置文件** &gt; **设置**" 中指定使用位置。
+某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为用户指定 " **使用位置** " 属性。 在 [Azure 门户](https://portal.azure.com)中，可以在 " **用户** &gt; **配置文件** &gt; **设置**" 中指定使用位置。
 
 对于组许可证分配，任何没有指定使用位置的用户将继承该目录的位置。 如果用户位于多个位置，请确保在将用户添加到具有许可证的组之前，在用户资源中正确地反映了这些用户。
 
@@ -67,7 +68,7 @@ ms.locfileid: "84727664"
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>多个组和多个许可证
 
-用户可能是具有许可证的多个组的成员。 下面是需要注意的事项：
+用户可能是具有许可证的多个组的成员。 以下是一些需要考虑的事项：
 
 - 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 以下示例显示了两个许可组：*E3 基本服务*包含首先向用户部署的基础服务。 *E3 扩展服务*包含只向某些用户部署的其他服务（Sway 和 Planner）。 在本示例中，用户已添加到两个组：
 
@@ -75,7 +76,7 @@ ms.locfileid: "84727664"
 
   因此，该用户获得了已启用产品的 12 个服务中的 7 个，同时只需为此产品使用 1 个许可证。
 
-- 选择*E3*许可证可显示更多详细信息，包括组许可证分配为用户启用了哪些服务的相关信息。
+- 选择 *E3* 许可证可显示更多详细信息，包括组许可证分配为用户启用了哪些服务的相关信息。
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>直接许可证与组许可证共存
 
@@ -85,9 +86,9 @@ ms.locfileid: "84727664"
 
 可以删除直接分配的许可证，不会影响继承的许可证。 假设用户从某个组继承了 Office 365 企业版 E3 许可证。
 
-最初，该用户只从*E3 基本服务*组继承许可证，这将启用四个服务计划。
+最初，该用户只从 *E3 基本服务* 组继承许可证，这将启用四个服务计划。
 
-1. 选择 "**分配**"，将 E3 许可证直接分配给用户。 在本例中，我们要禁用除 Yammer Enterprise 以外的所有服务计划。
+1. 选择 " **分配** "，将 E3 许可证直接分配给用户。 在本例中，我们要禁用除 Yammer Enterprise 以外的所有服务计划。
 
     因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 可以查看组成员身份和直接分配启用了哪些服务。
 
@@ -111,7 +112,7 @@ ms.locfileid: "84727664"
 
 3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”****](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”**，然后选择“许可的组”**** 以查看具有该产品的所有组的列表。
 
-4. 单击要查看的组（此处为 O365 E5 - Exchange only**）。 这将打开 "**许可证**" 选项卡。单击 E5 许可证将打开一个边栏选项卡，其中列出了所有已启用的服务。
+4. 单击要查看的组（此处为 O365 E5 - Exchange only**）。 这将打开 " **许可证** " 选项卡。单击 E5 许可证将打开一个边栏选项卡，其中列出了所有已启用的服务。
    > [!NOTE]
    > 除了 Exchange Online ** 服务外，Microsoft Stream ** 服务也已自动添加到此组中并已启用：
 
@@ -129,7 +130,7 @@ ms.locfileid: "84727664"
 
 1. 运行 `connect-msolservice` cmdlet 进行身份验证并连接到你的组织。
 
-2. `Get-MsolAccountSku`可用于发现 Azure AD 组织中所有预配的产品许可证。
+2. `Get-MsolAccountSku` 可用于发现 Azure AD 组织中所有预配的产品许可证。
 
    ![Get-Msolaccountsku cmdlet 的屏幕截图](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -204,13 +205,13 @@ ms.locfileid: "84727664"
 
 - 基于组的许可目前不支持包含其他组的组（嵌套组）。 如果将许可证应用到某个嵌套组，只会向该组的直接一级用户成员应用许可证。
 
-- 该功能只能用于安全组和其中 securityEnabled=TRUE 的 Office 365 组。
+- 此功能只能用于安全组，Microsoft 365 具有 securityEnabled = TRUE 的组。
 
 - [Microsoft 365 管理中心](https://admin.microsoft.com)当前不支持基于组的许可。 如果用户从组继承许可证，此许可证会在 Office 管理门户中显示为普通的用户许可证。 如果尝试修改该许可证或尝试删除它，门户会返回错误消息。 无法直接修改用户的继承的组许可证。
 
 - 如果针对大型组（例如，100,000 个用户）分配或修改许可证，则可能会影响性能。 具体而言，Azure AD 自动化生成的大量更改可能会对 Azure AD 与本地系统之间的目录同步性能产生负面影响。
 
-- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)。
+- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](./groups-create-rule.md)。
 
 - 在某些高负载情况下，处理组的许可证更改或处理具有现有许可证的组的成员身份更改可能需要很长时间。 如果发现对于 60000 及以下的用户群，处理更改所需时间超过 24 小时，请[开具支持票证](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)以便我们调查。 
 

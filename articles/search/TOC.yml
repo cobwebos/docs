@@ -106,10 +106,17 @@
           href: cognitive-search-debug-session.md
         - name: 知识存储
           href: knowledge-store-concept-intro.md
-        - name: 投影
+        - name: 投影数
           href: knowledge-store-projection-overview.md
         - name: 增量扩充
           href: cognitive-search-incremental-indexing-conceptual.md
+    - name: 安全性
+      items:
+        - name: 安全概述
+          href: search-security-overview.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 操作指南
   items:
     - name: 创建索引和构造
@@ -262,7 +269,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis（预览版）
               href: search-more-like-this.md
-    - name: 筛选器
+    - name: “筛选器”
       items:
         - name: 筛选器概述
           href: search-filters.md
@@ -305,9 +312,15 @@
         - name: 预览功能列表
           href: search-api-preview.md
         - name: 使用 .NET 进行开发
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: 使用 Microsoft.Azure.Search (v10)
+              href: search-howto-dotnet-sdk.md
+            - name: 开始使用 (v10)
+              href: search-get-started-dotnet-v10.md
         - name: 升级 SDK
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -324,12 +337,12 @@
           href: search-api-migration.md
     - name: 安全性
       items:
-        - name: 概述
-          href: search-security-overview.md
         - name: 数据加密
           items:
             - name: 客户管理的密钥
               href: search-security-manage-encryption-keys.md
+            - name: 获取密钥信息
+              href: search-security-get-encryption-keys.md
         - name: 入站安全性
           items:
             - name: API 访问密钥
@@ -342,7 +355,7 @@
           items:
             - name: 安全筛选器
               href: search-security-trimming-for-azure-search.md
-            - name: AAD 标识筛选器
+            - name: 筛选用户标识
               href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理
       items:

@@ -1,26 +1,29 @@
 ---
-title: 地理编码覆盖率 |Microsoft Azure 映射
-description: 将位置地址转换为纬度和经度坐标的过程称为地理编码。 在本文中，你将了解 Microsoft Azure Maps 中的地理编码覆盖区域。
-author: philmea
-ms.author: philmea
-ms.date: 12/31/2019
+title: Microsoft Azure Maps 搜索服务中的地理编码覆盖率
+description: 查看 Azure Maps 搜索涵盖哪些区域。 地理编码类别包括地址点、房屋编号、街道级别、城市级别和兴趣点。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335651"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037433"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
-使用 Azure Maps 搜索某个位置时，搜索服务（例如 "[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)"）将获取搜索词并返回纬度和经度坐标。 此过程称为“地理编码”。 不过，Azure Maps 没有与所有地区和国家/地区相同的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。 
+Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)支持地理编码，这意味着 API 请求可以具有搜索词（如地址或位置名称），并将结果返回为纬度和经度坐标。 例如，Azure Maps[获取搜索地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)接收包含位置信息的查询，并将结果返回为纬度和经度坐标。
 
-在国家/地区地理编码的能力取决于公路数据覆盖面和地理编码服务的地理编码精度。 以下分类用于在每个国家/地区指定地理编码支持的级别。
-* **地址点** - 可以将地址数据解析为地址包裹中的经度/维度坐标（地产边界）。 有时候称为“屋顶”准确性。 这是可用于地址的最高准确性级别。 
+不过，Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)对所有地区和国家没有相同级别的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。
+
+在国家/地区地理编码的能力取决于地理编码服务的公路数据覆盖和地理编码精度。 以下分类用于在每个国家/地区指定地理编码支持的级别。
+
+* **地址点**-地址数据可解析为地址包内的纬度/经度坐标 (属性边界) 。 地址点通常称为 "屋顶"，这是地址的最高级别的准确性。
 * **门牌号** - 地址内插到街道上的纬度/经度坐标。
 * **街道级别** - 地址解析为包含地址的街道的纬度/经度坐标。 门牌号码可能不会处理。
 * **城市级别** - 支持城市位置名称。
@@ -214,7 +217,6 @@ ms.locfileid: "80335651"
 | 乌兹别克斯坦                                          |                 |                |              |      ✓     |          ✓         |
 | 梵蒂冈                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>中东和非洲
 
 | 国家/地区                                      | 地址点 |门牌号 | 街道级 | 市/县级 | 兴趣点 |
@@ -295,11 +297,8 @@ ms.locfileid: "80335651"
 | 赞比亚                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | 津巴布韦                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Maps 地理编码的详细信息，请参阅[搜索](https://docs.microsoft.com/rest/api/maps/search)参考页面。
-
-了解[地图交通服务的覆盖区域](traffic-coverage.md)。 
-
+了解有关 Azure Maps 地理编码的详细信息：
+> [!div class="nextstepaction"]
+> [Azure Maps 搜索服务](https://docs.microsoft.com/rest/api/maps/search)

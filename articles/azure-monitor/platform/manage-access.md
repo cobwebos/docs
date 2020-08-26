@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105916"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925628"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -20,10 +20,10 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 本文介绍如何管理对日志的访问，以及如何管理包含日志的工作区，包括如何执行以下操作： 
 
 * 使用工作区权限授予对工作区的访问权限。
-* 需要使用 Azure 基于角色的访问控制（RBAC）从特定资源访问日志数据的用户（也称为[资源上下文](design-logs-deployment.md#access-mode)）
+* 需要使用基于角色的访问控制从特定资源访问日志数据的用户 (Azure RBAC) -也称为[资源上下文](design-logs-deployment.md#access-mode)
 * 使用 Azure RBAC 对需要访问工作区中特定表中的日志数据的用户授予访问权限。
 
-若要了解有关 RBAC 和访问策略的日志概念，请阅读[设计 Azure Monitor 日志部署](design-logs-deployment.md)
+要了解有关 RBAC 和访问策略的日志概念，请阅读[设计 Azure Monitor 日志部署](design-logs-deployment.md)
 
 ## <a name="configure-access-control-mode"></a>配置访问控制模式
 
@@ -102,7 +102,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 ## <a name="manage-access-using-workspace-permissions"></a>使用工作区权限管理访问
 
-每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 使用 [Azure 基于角色的访问](../../role-based-access-control/role-assignments-portal.md)来管理访问权限。
+每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 使用 azure [RBAC)  (，使用 azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)来管理访问权限。
 
 以下活动也需要 Azure 权限：
 
@@ -270,7 +270,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-以上示例定义了允许的表的白名单。 此示例显示了当用户可以访问所有表而不是_SecurityAlert_表时的列入黑名单定义：
+以上示例定义了允许的表的允许列表。 此示例显示了当用户可以访问除 SecurityAlert 表之外的所有表时的阻止列表定义：
 
 ```
 "Actions":  [
@@ -304,12 +304,12 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 * 如果为某个用户授予全局读取权限以及含有 _\*/read_ 操作的标准“读取者”或“参与者”角色，则会替代按表进行的访问控制，并向该用户授予所有日志数据的访问权限。
 * 如果为某个用户授予按表访问权限但未授予其他任何权限，则该用户可以通过 API 访问日志数据，但不能通过 Azure 门户进行访问。 若要从 Azure 门户提供访问权限，请使用“Log Analytics 读取者”作为用户的基本角色。
-* 无论其他任何权限设置如何，订阅的管理员和所有者都有权访问所有数据类型。
+* 无论任何其他权限设置如何，订阅管理员和所有者都有权访问所有数据类型。
 * 应用按表进行的访问控制时，工作区所有者被视为类似于其他任何用户。
 * 我们建议将角色分配到安全组而不是个人用户，以减少分配数目。 这还有助于使用现有的组管理工具来配置和验证访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
+* 请参阅 [Log Analytics 代理概述](./log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
 
-* 请参阅[收集有关 Azure 虚拟机的数据](../../azure-monitor/learn/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。
+* 请参阅[收集有关 Azure 虚拟机的数据](../learn/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。

@@ -9,17 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905085"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型构建定型数据集
 
 使用窗体识别器自定义模型时，需要提供自己的定型数据，以便该模型可以培训特定于行业的窗体。 
 
-如果你是在没有手动标签的情况下进行训练，则可以使用五个填充的窗体或一个空窗体（文件名中必须包含单词 "empty"）以及两个填充窗体。 即使您具有足够的填充窗体，将空的窗体添加到定型数据集也可以提高模型的准确性。
+如果你是在没有手动标签的情况下定型，则可以使用五个填充窗体或空窗体 (必须在文件名中包含单词 "empty") 加上两种填充形式。 即使您具有足够的填充窗体，将空的窗体添加到定型数据集也可以提高模型的准确性。
 
 如果要使用手动标记的定型数据，则必须从至少五个相同类型的填充窗体开始。 除了所需的数据集之外，还可以使用未标记的窗体和空窗体。
 
@@ -30,7 +31,7 @@ ms.locfileid: "86028260"
 * 如果可能，请使用基于文本的 PDF 文档而不是基于图像的文档。 扫描的 Pdf 作为图像处理。
 * 对于填充窗体，请使用填充了所有字段的示例。
 * 在每个字段中使用具有不同值的表格。
-* 如果你的表单图像质量较低，请使用较大的数据集（例如，10-15 的图像）。
+* 如果你的表单图像质量较低，请使用较大的数据集 (10-15 图像，例如) 。
 * 训练数据集的总大小最多可达500页。
 
 ## <a name="general-input-requirements"></a>一般输入要求
@@ -41,11 +42,11 @@ ms.locfileid: "86028260"
 
 ## <a name="upload-your-training-data"></a>上传定型数据
 
-将用于定型的窗体文档集中在一起后，需要将其上传到 Azure blob 存储容器。 如果你不知道如何使用容器创建 Azure 存储帐户，请遵循[适用于 Azure 门户的 Azure 存储快速入门](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+将用于定型的窗体文档集中在一起后，需要将其上传到 Azure blob 存储容器。 如果你不知道如何使用容器创建 Azure 存储帐户，请遵循[适用于 Azure 门户的 Azure 存储快速入门](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 使用标准性能层。
 
-如果要使用手动标记的数据，则还必须上传与训练文档对应的文件上的 *.labels.js*和 *.ocr.js* 。 您可以使用[示例标记工具](./quickstarts/label-tool.md)（或您自己的 UI）来生成这些文件。
+如果要使用手动标记的数据，则还必须上传与训练文档对应的文件上的 *.labels.js*和 *.ocr.js* 。 您可以使用[示例标签工具](./quickstarts/label-tool.md) (或自己的 UI) 来生成这些文件。
 
-### <a name="organize-your-data-in-subfolders-optional"></a>组织子文件夹中的数据（可选）
+### <a name="organize-your-data-in-subfolders-optional"></a>在子文件夹中组织数据 (可选) 
 
 默认情况下，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)API 将仅使用位于存储容器根目录下的窗体文档。 但是，如果在 API 调用中指定数据，则可以训练子文件夹中的数据。 通常，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
 

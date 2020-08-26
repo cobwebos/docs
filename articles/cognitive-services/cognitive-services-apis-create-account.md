@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: f76b444f737c4deb0fc61953c839c8826f379d5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a28a8f22a8aa20612a177d88fd99a66660c74618
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207268"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607554"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "86207268"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 有效的 Azure 订阅-[免费创建一个](https://azure.microsoft.com/free/cognitive-services/)。
+* 有效的 Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新建 Azure 认知服务资源
 
@@ -94,6 +94,7 @@ ms.locfileid: "86207268"
 
     ***
 
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
@@ -119,5 +120,6 @@ ms.locfileid: "86207268"
 
 * [对 Azure 认知服务的请求进行身份验证](authentication.md)
 * [什么是 Azure 认知服务？](Welcome.md)
+* [使用 Azure 管理客户端库创建新资源](.\cognitive-services-apis-create-account-client-library.md)
 * [自然语言支持](language-support.md)
 * [Docker 容器支持](cognitive-services-container-support.md)

@@ -2,21 +2,22 @@
 title: Azure 单一注销 SAML 协议
 description: 本文介绍 Azure Active Directory 中的单一注销 SAML 协议
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2017
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: paulgarn
+ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881259"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118257"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 
@@ -41,7 +42,7 @@ Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配�
 
 * `ID` - 此项标识注销请求。 `ID` 的值不能以数字开头。 典型的做法是在 GUID 的字符串表示形式前面追加 **ID**。
 * `Version` - 将此元素的值设置为 **2.0**。 此值是必需的。
-* `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)。 Azure AD 需要此类型的值，但不强制要求。
+* `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)。 Azure AD 需要此类型的值，但不强制要求。
 
 ### <a name="issuer"></a>颁发者
 `LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。

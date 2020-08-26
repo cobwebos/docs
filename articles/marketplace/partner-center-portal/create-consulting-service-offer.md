@@ -1,18 +1,18 @@
 ---
 title: 创建咨询服务产品/服务 - Microsoft 商业市场
 description: 了解如何使用合作伙伴中心将咨询服务产品/服务发布到 Microsoft AppSource 或 Azure 市场。
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203807"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814258"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -38,7 +38,7 @@ ms.locfileid: "86203807"
     ![阐释左侧导航菜单。](./media/new-offer-consulting-service.png)
 
 >[!NOTE]
->发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -96,11 +96,11 @@ ms.locfileid: "86203807"
     - **概念证明**：进行有限范围的实施，以确定解决方案是否满足客户的要求。
     - **研讨会**：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。
 
-3. 如果选择了 " **Azure**作为主要产品"，请选择最多三个**解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
+3. 如果选择了 " **Azure** 作为主要产品"，请选择最多三个 **解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
 
     - 分析
     - 应用现代化
-    - 存档
+    - Archive
     - AI + 机器学习
     - 备份
     - 大数据
@@ -115,12 +115,12 @@ ms.locfileid: "86203807"
     - 安全性
     - 存储
 
-1. 如果选择了 " **Azure**作为主要产品"，则可以选择最多六个**行业**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业完整列表。 如果未选择 "Azure"，请跳过此步骤。
+1. 如果选择了 " **Azure** 作为主要产品"，则可以选择最多六个 **行业**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业完整列表。 如果未选择 "Azure"，请跳过此步骤。
 1. 如果选择了除 Azure 之外的主产品，则最多选择三个适用的产品。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
-1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
+1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
 1. 最多添加贵公司已赢得的三个资格，以显示在咨询服务产品列表中。 至少需要一个资格，Azure 专家 MSP 和 Azure 网络 MSP 除外。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
@@ -202,17 +202,21 @@ ms.locfileid: "86203807"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 .png 格式。 模糊图像将被拒绝。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="store-logos"></a>Store 徽标
+#### <a name="store-logos"></a>应用商店徽标
 
-按以下每个像素大小提供产品/服务徽标的 PNG 文件：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-- 小图 (48 x 48)
-- 大图 (216 x 216)
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
 
-所有徽标都是必需的，并且在市场列表的不同位置上使用。
+这些徽标用在列表中的不同位置。
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 

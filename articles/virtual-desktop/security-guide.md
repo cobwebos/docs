@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面安全性最佳做法-Azure
 description: 保持 Windows 虚拟桌面环境安全的最佳做法。
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736666"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002285"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -23,7 +21,7 @@ Windows 虚拟桌面是一种托管虚拟桌面服务，其中包括用于保护
 
 ## <a name="security-responsibilities"></a>安全责任
 
-不同于传统的本地虚拟桌面基础结构（VDIs）的云服务是如何处理安全责任的。 例如，在传统的本地 VDI 中，客户将负责安全的各个方面。 但在大多数云服务中，这些责任在客户和公司之间共享。
+云服务与传统的本地虚拟桌面基础结构的不同之处 (VDIs) 是他们处理安全责任的方式。 例如，在传统的本地 VDI 中，客户将负责安全的各个方面。 但在大多数云服务中，这些责任在客户和公司之间共享。
 
 使用 Windows 虚拟桌面时，务必要了解的是，尽管某些组件已经为你的环境提供了保护，但你需要自行配置其他区域以满足你组织的安全需求。
 
@@ -32,7 +30,7 @@ Windows 虚拟桌面是一种托管虚拟桌面服务，其中包括用于保护
 | 安全需求 | 客户负责这一情况吗？ |
 |---------------|:-------------------------:|
 |标识|是|
-|用户设备（移动设备和 PC）|是|
+|移动和电脑) 的用户设备 (|是|
 |应用安全性|是|
 |会话主机操作系统|是|
 |部署配置|是|
@@ -84,7 +82,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 -   [Azure 活动日志](../azure-monitor/platform/activity-log-collect.md)
 -   [Azure Active Directory 活动日志](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
--   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
+-   Azure Active Directory
 -   [会话主机](../azure-monitor/platform/agent-windows.md)
 -   [Windows 虚拟桌面诊断日志](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault 日志](../key-vault/general/logging.md)
@@ -103,13 +101,13 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="enable-endpoint-protection"></a>启用终结点保护
 
-为了保护你的部署免受已知的恶意软件的攻击，我们建议在所有会话主机上启用 endpoint protection。 可以使用 Windows Defender 防病毒或第三方程序。 若要了解详细信息，请参阅[VDI 环境中 Windows Defender 防病毒的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。 
+为了保护你的部署免受已知的恶意软件的攻击，我们建议在所有会话主机上启用 endpoint protection。 可以使用 Windows Defender 防病毒或第三方程序。 若要了解详细信息，请参阅[VDI 环境中 Windows Defender 防病毒的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。
 
 对于 FSLogix 等配置文件解决方案或装载 VHD 文件的其他解决方案，建议排除 VHD 文件扩展名。
 
 ### <a name="install-an-endpoint-detection-and-response-product"></a>安装终结点检测和响应产品
 
-建议安装端点检测和响应（EDR）产品来提供高级检测和响应功能。 对于启用了[Azure 安全中心](../security-center/security-center-services.md)的服务器操作系统，安装 EDR 产品将部署 Defender ATP。 对于客户端操作系统，可以将[DEFENDER ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding)或第三方产品部署到这些终结点。
+建议安装 endpoint 检测和响应 (EDR) 产品，以提供高级检测和响应功能。 对于启用了[Azure 安全中心](../security-center/security-center-services.md)的服务器操作系统，安装 EDR 产品将部署 Defender ATP。 对于客户端操作系统，可以将[DEFENDER ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding)或第三方产品部署到这些终结点。
 
 ### <a name="enable-threat-and-vulnerability-management-assessments"></a>启用威胁和漏洞管理评估
 

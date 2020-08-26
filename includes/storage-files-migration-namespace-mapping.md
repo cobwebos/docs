@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570152"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424976"
 ---
 在此步骤中，你将评估你需要多少个 Azure 文件共享。 单个 Windows Server 实例（或群集）最多可以同步30个 Azure 文件共享。
 
@@ -68,7 +68,7 @@ Azure 文件同步最多支持将100000000项同步到单个 Azure 文件共享�
 
 :::row:::
     :::column:::
-        [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
+        [![映射表的示例。下载以下文件以体验并使用此映像的内容。](media/storage-files-migration-namespace-mapping/namespace-mapping.png)](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
         结合使用前面的概念来帮助确定所需的 Azure 文件共享的数量，以及现有数据的哪些部分最终会在哪个 Azure 文件共享位置结束。

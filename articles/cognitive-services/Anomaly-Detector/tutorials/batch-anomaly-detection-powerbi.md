@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921923"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245496"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -29,10 +29,10 @@ ms.locfileid: "85921923"
 > * 将在数据中发现的异常可视化，其中包括预期的和看到的值，以及异常检测边界。
 
 ## <a name="prerequisites"></a>先决条件
-* [Azure 订阅](https://azure.microsoft.com/free/)
+* [Azure 订阅](https://azure.microsoft.com/free/cognitive-services)
 * 免费提供的 [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)。
 * 一个 Excel 文件 (.xlsx)，其中包含时序数据点。 可在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 上找到本快速入门的示例数据
-* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 
+* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 稍后会在本快速入门中执行此操作。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -52,19 +52,19 @@ ms.locfileid: "85921923"
 
 ![Power BI 中数据源“导航器”屏幕的图像](../media/tutorials/navigator-dialog-box.png)
 
-Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这些时间戳必须转换为文本才能发送到异常检测器 API。 如果 Power Query 编辑器没有自动打开，请单击主页选项卡上的“编辑查询”。 
+Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这些时间戳必须转换为文本才能发送到异常检测器 API。 如果 Power Query 编辑器没有自动打开，请单击主页选项卡上的“编辑查询”。
 
 单击 Power Query 编辑器中的“转换”功能区。 在“任何列”组中，打开“数据类型:”下拉菜单，然后选择“文本”。
 
 ![Power BI 中数据源“导航器”屏幕的图像](../media/tutorials/data-type-drop-down.png)
 
-获得有关更改列类型的通知后，请单击“替换当前项”。 然后，在“主页”功能区中单击“关闭并应用”或“应用”。 
+获得有关更改列类型的通知后，请单击“替换当前项”。 然后，在“主页”功能区中单击“关闭并应用”或“应用”。
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>创建一个函数来发送数据并设置响应的格式
 
 若要设置数据文件的格式并将其发送到异常检测器 API，可以调用一个在上面创建的表的查询。 在 Power Query 编辑器的“开始”功能区中，打开“新建源”下拉菜单并单击“空白查询”。
 
-确保选中新建查询，然后单击“高级编辑器”。 
+确保选中新建查询，然后单击“高级编辑器”。
 
 ![Power BI 中“高级编辑器”按钮的图像](../media/tutorials/advanced-editor-screen.png)
 
@@ -84,7 +84,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
-                    
+
                      Table.Column(inputTable, "Timestamp")
                      ,Table.Column(inputTable, "Value")
                      , Record.Field(jsonresp, "IsAnomaly") as list
@@ -96,7 +96,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
                   }, {"Timestamp", "Value", "IsAnomaly", "ExpectedValues", "UpperMargin", "LowerMargin", "IsPositiveAnomaly", "IsNegativeAnomaly"}
                ),
-    
+
     respTable1 = Table.AddColumn(respTable , "UpperMargins", (row) => row[ExpectedValues] + row[UpperMargin]),
     respTable2 = Table.AddColumn(respTable1 , "LowerMargins", (row) => row[ExpectedValues] -  row[LowerMargin]),
     respTable3 = Table.RemoveColumns(respTable2, "UpperMargin"),
@@ -112,7 +112,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
  in results
 ```
 
-调用数据工作表上的查询，方法是：在“输入参数”下选择 `Sheet1`，然后单击“调用”。 
+调用数据工作表上的查询，方法是：在“输入参数”下选择 `Sheet1`，然后单击“调用”。
 
 ![“高级编辑器”按钮的图像](../media/tutorials/invoke-function-screenshot.png)
 
@@ -121,23 +121,23 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 > [!NOTE]
 > 请注意组织的数据隐私和访问政策。 有关详细信息，请参阅 [Power BI Desktop 隐私级别](https://docs.microsoft.com/power-bi/desktop-privacy-levels)。
 
-在尝试运行此查询时，可能会出现警告消息，因为此查询使用外部数据源。 
+在尝试运行此查询时，可能会出现警告消息，因为此查询使用外部数据源。
 
 ![一个显示由 Power BI 创建的警告的图像](../media/tutorials/blocked-function.png)
 
-若要修复此问题，请单击“文件”，然后单击“选项和设置”。 然后单击“选项”。 在“当前文件”下选择“隐私”，然后选择“忽略隐私级别并潜在地改善性能”。   
+若要修复此问题，请单击“文件”，然后单击“选项和设置”。 然后单击“选项”。 在“当前文件”下选择“隐私”，然后选择“忽略隐私级别并潜在地改善性能”。  
 
 另外，可能会出现一条消息，要求指定连接到 API 的方式。
 
 ![一个图像，其中显示了一条请求，要求指定访问凭据](../media/tutorials/edit-credentials-message.png)
 
-若要修复此问题，请单击消息中的“编辑凭据”。 在对话框出现后选择“匿名”，以匿名方式连接到 API。 然后单击“连接”。 
+若要修复此问题，请单击消息中的“编辑凭据”。 在对话框出现后选择“匿名”，以匿名方式连接到 API。 然后单击“连接”。
 
 然后在“主页”功能区中单击“关闭并应用”，应用所做的更改。
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>可视化异常检测器 API 响应
 
-在 Power BI 主屏幕中，开始使用上面创建的查询将数据可视化。 首先选择“可视化效果”中的“折线图”。  然后，将已调用函数中的时间戳添加到折线图的“轴”。 右键单击它，并选择“时间戳”。 
+在 Power BI 主屏幕中，开始使用上面创建的查询将数据可视化。 首先选择“可视化效果”中的“折线图”。  然后，将已调用函数中的时间戳添加到折线图的“轴”。 右键单击它，并选择“时间戳”。
 
 ![右键单击时间戳值](../media/tutorials/timestamp-right-click.png)
 

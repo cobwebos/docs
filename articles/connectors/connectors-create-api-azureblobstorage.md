@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711283"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284075"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -20,7 +20,7 @@ ms.locfileid: "84711283"
 
 假定你有一个在 Azure 网站上进行更新的工具。 它充当逻辑应用的触发器。 当此事件发生时，可以让逻辑应用更新 Blob 存储容器中的某些文件，这是逻辑应用中的一项操作。
 
-如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需特定于连接器的技术信息，请参阅 [Azure Blob 存储连接器参考](https://docs.microsoft.com/connectors/azureblobconnector/)。
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需特定于连接器的技术信息，请参阅 [Azure Blob 存储连接器参考](/connectors/azureblobconnector/)。
 
 > [!IMPORTANT]
 > 如果逻辑应用和防火墙后的存储帐户位于同一区域，则逻辑应用无法直接访问这些存储帐户。 解决方法是将逻辑应用和存储帐户放在不同的区域。 有关如何使 Azure 逻辑应用能够访问防火墙后的存储帐户的详细信息，请参阅本主题稍后的[访问防火墙后的存储帐户](#storage-firewalls)部分。
@@ -137,7 +137,7 @@ ms.locfileid: "84711283"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/azureblobconnector/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/azureblobconnector/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
@@ -194,7 +194,7 @@ ms.locfileid: "84711283"
 1. 在逻辑应用的工作流中，添加并设置 HTTP 操作或触发器，以访问存储帐户或实体。
 
    > [!IMPORTANT]
-   > 对于传出 HTTP 操作或触发对 Azure 存储帐户的调用，请确保请求标头包含 `x-ms-version` 要在存储帐户上运行的操作的属性和 API 版本。 有关详细信息，请参阅使用[Azure 存储服务](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)的托管标识和版本控制对[访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
+   > 对于传出 HTTP 操作或触发对 Azure 存储帐户的调用，请确保请求标头包含 `x-ms-version` 要在存储帐户上运行的操作的属性和 API 版本。 有关详细信息，请参阅使用[Azure 存储服务](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)的托管标识和版本控制对[访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
 
 1. 在该操作中，选择要用于身份验证的[托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
 
@@ -207,3 +207,4 @@ ms.locfileid: "84711283"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+

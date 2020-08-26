@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496955"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639828"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -33,7 +33,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |连接状态   |   一个只读属性，指定专用终结点是否处于活动状态。 只能使用处于已批准状态的专用终结点发送流量。 可用的其他状态： <br>-**已批准**：连接已自动或手动批准，随时可供使用。</br><br>-**等待中**：连接是手动创建的，正等待由专用链接资源所有者批准。</br><br>-**已拒绝**：连接已被专用链接资源所有者拒绝。</br><br>-**已断开连接**：连接已被专用链接资源所有者删除。 专用终结点已变为参考性终结点，应将其删除以清理资源。 </br>|
 
 下面是有关专用终结点的一些重要详细信息： 
-- 专用终结点使用 [VPN](https://azure.microsoft.com/services/vpn-gateway/) 或 [Express Route](https://azure.microsoft.com/services/expressroute/) 以及专用链接驱动的服务，在同一 VNet、区域对等互连的 VNet、全球对等互连的 VNet 和本地的使用者之间实现连接。
+- 专用终结点使同一 VNet、区域性对等互连的 Vnet、全局性对等互连的 Vnet 中的以及本地用户能够使用 [VPN](https://azure.microsoft.com/services/vpn-gateway/) 或 [Express 路由](https://azure.microsoft.com/services/expressroute/)和由专用链接提供支持的服务在用户之间实现互连。
  
 - 只有连接到专用终结点的客户端能发起网络连接，服务提供程序不提供任何路由配置用于发起服务使用者之间的互连。 只能在单个方向建立连接。
 
@@ -47,6 +47,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 - 可以在同一虚拟网络中的相同或不同子网上创建多个专用终结点。 在一个订阅中可以创建的专用终结点数量有限制。 有关详细信息，请参阅  [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
+- 还必须向 Micosoft 资源提供程序注册来自专用链接资源的订阅。 有关详细信息，请参阅 [Azure 资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
 
  
 ## <a name="private-link-resource"></a>专用链接资源 
@@ -66,18 +67,25 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure IoT 中心** | Microsoft.Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | 保管库 |
-|**Azure Kubernetes 服务 - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
+|**Azure Kubernetes 服务 - Kubernetes API** | Microsoft.ContainerService/managedClusters    | 管理 |
 |**Azure 搜索** | Microsoft.Search/searchService| searchService|  
 |**Azure 容器注册表** | Microsoft.ContainerRegistry/registries    | 注册表 |
 |**Azure 应用配置** | Microsoft.Appconfiguration/configurationStores    | configurationStores |
 |**Azure 备份** | Microsoft.RecoveryServices/vaults    | 保管库 |
-|**Azure 事件中心** | Microsoft.EventHub/namespaces    | namespace |
-|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | namespace |
+|**Azure 事件中心** | Microsoft.EventHub/namespaces    | 命名空间 |
+|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | 命名空间 |
 |**Azure 中继** | Microsoft.Relay/namespaces | 命名空间 |
 |**Azure 事件网格** | Microsoft.EventGrid/topics    | 主题 |
 |**Azure 事件网格** | Microsoft.EventGrid/domains    | 域 |
 |**Azure WebApps** | Microsoft.Web/sites    | sites |
 |**Azure 机器学习** | Microsoft.MachineLearningServices/workspaces    | 工作区 |
+|**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
+|**Azure Monitor** | Microsoft Insights/privateLinkScopes    | azuremonitor |
+|**认知服务** |  (Cognitiveservices account/帐户    | account |
+|**Azure 文件同步** | Storagesync.sys/storageSyncServices    | Afs |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全性 
@@ -119,15 +127,15 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |说明 |缓解措施  |
+|限制 |说明 |缓解操作  |
 |---------|---------|---------|
 |网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息        |
 
 
 ## <a name="next-steps"></a>后续步骤
-- [使用门户创建 SQL 数据库的专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 为 SQL 数据库创建专用终结点](create-private-endpoint-powershell.md)
-- [使用 CLI 创建 SQL 数据库的专用终结点](create-private-endpoint-cli.md)
+- [使用门户创建 SQL 数据库的专用终结点 ](create-private-endpoint-portal.md)
+- [使用 PowerShell 为 SQL 数据库创建专用终结点 ](create-private-endpoint-powershell.md)
+- [使用 CLI 创建 SQL 数据库的专用终结点 ](create-private-endpoint-cli.md)
 - [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
 - [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)

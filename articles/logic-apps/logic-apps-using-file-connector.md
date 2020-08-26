@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e6abeff8998e55eb7cbf450d1c3cc32f233e382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065976"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
@@ -35,10 +35,10 @@ ms.locfileid: "82580630"
 
 * 访问特定的计算机，其中的文件系统是你需要使用的。 例如，如果在与文件系统相同的计算机上安装数据网关，则需要该计算机的帐户凭据。
 
-* 逻辑应用支持的提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 此逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。
+* 逻辑应用支持的提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](/connectors/)。 此逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。
 
   > [!IMPORTANT]
-  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 对于本示例，需要一个空白逻辑应用。
 
@@ -73,7 +73,7 @@ ms.locfileid: "82580630"
    | **连接名称** | 是 | <*connection-name*> | 连接使用的名称 |
    | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 |
    | **身份验证类型** | 否 | <*auth-type*> | 文件系统使用的身份验证类型：**Windows** |
-   | **用户名** | 是 | <*domain*>\\<*username*> <p>\- 或 - <p><*本地* > \\ 计算机 <*用户名*> | 具有文件系统文件夹的计算机的用户名。 <p>如果文件系统文件夹与本地数据网关在同一台计算机上，则可以使用 <*本地计算机* > \\ < *用户名*>。 |
+   | **用户名** | 是 | <*domain*>\\<*username*> <p>- 或 - <p><*本地* > \\ 计算机 <*用户名*> | 具有文件系统文件夹的计算机的用户名。 <p>如果文件系统文件夹与本地数据网关在同一台计算机上，则可以使用 <*本地计算机* > \\ < *用户名*>。 |
    | **密码** | 是 | <*your-password*> | 拥有文件系统的计算机密码 |
    | **gateway** | 是 | <*installed-gateway-name*> | 以前安装的网关的名称 |
    |||||
@@ -96,7 +96,7 @@ ms.locfileid: "82580630"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/fileconnector/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/fileconnector/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。

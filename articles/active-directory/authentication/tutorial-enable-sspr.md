@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983143"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718843"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
 Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够更改或重置其密码，而不需要管理员或支持人员的干预。 如果用户的帐户被锁定或用户忘记了自己的密码，他们可以按照提示取消对自己的阻止，回到工作状态。 当用户无法登录到其设备或应用程序时，此功能可减少呼叫支持人员的次数，降低生产力损失。
 
 > [!IMPORTANT]
-> 本快速入门演示管理员如何启用自助式密码重置。 如果你是已注册自助式密码重置的最终用户并且需要返回到你的帐户，请转到 https://aka.ms/sspr 。
+> 本教程向管理员展示如何启用自助式密码重置。 如果你是已注册自助式密码重置的最终用户并且需要返回到你的帐户，请转到 https://aka.ms/sspr 。
 >
 > 如果你的 IT 团队尚未启用重置自己密码的功能，请联系支持人员以获得更多帮助。
 
@@ -37,17 +37,17 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个拥有“全局管理员”特权的帐户。
 * 你知道其密码的非管理员测试用户，例如 *testuser*。 在本教程中，你将使用此帐户来测试最终用户的 SSPR 体验。
-    * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)。
+    * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../fundamentals/add-users-azure-active-directory.md)。
 * 该非管理员用户所属的组，例如 *SSPR-Test-Group*。 在本教程中，你将为此组启用 SSPR。
-    * 如需创建一个组，请参阅如何[在 Azure Active Directory 中创建组并添加成员](../active-directory-groups-create-azure-portal.md)。
+    * 如需创建一个组，请参阅[如何在 Azure Active Directory 中创建组并添加成员](../fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="enable-self-service-password-reset"></a>启用自助式密码重置
 
-Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。   借助这种粒度，可以选择一部分用户来测试 SSPR 注册过程和工作流。 如果你很熟悉该过程，并且能够与更广泛的用户传达相关要求，则可以选择一组用户来为他们启用 SSPR。 或者，可为 Azure AD 租户中的每个人启用 SSPR。
+Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。 借助这种粒度，可以选择一部分用户来测试 SSPR 注册过程和工作流。 如果你不介意使用此流程并能与更广泛的用户传达相关要求，可以选择一组用户为其启用 SSPR。 或者，可为 Azure AD 租户中的每个人启用 SSPR。
 
 > [!NOTE]
 >
@@ -56,11 +56,11 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 本教程将为测试组中的一组用户配置 SSPR。 以下示例使用组 *SSPR-Test-Group*。 根据需要提供自己的 Azure AD 组：
 
 1. 使用拥有全局管理员权限的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“密码重置”。 
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“密码重置”。
 1. 在“属性”页中的“已启用自助式密码重置”选项下，选择“选择组”。
 1. 浏览并选择 Azure AD 组（例如 *SSPR-Test-Group*），然后选择“选择”。
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [ ![在 Azure 门户中选择要为其启用自助式密码重置的组](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) ](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. 若要为所选用户启用 SSPR，请选择“保存”。
 
@@ -68,7 +68,7 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 
 当用户需要解锁其帐户或重置其密码时，系统会提示他们选择额外的确认方法。 此额外的身份验证因素可确保只会完成已批准的 SSPR 事件。 可以根据用户提供的注册信息，选择允许哪些身份验证方法。
 
-1. 在“身份验证方法”页上的左侧菜单中，将“重置所需的方法数”设置为 *1*。 
+1. 在“身份验证方法”页上的左侧菜单中，将“重置所需的方法数”设置为 *1*。
 
     若要提高安全性，可以增加 SSPR 所需的身份验证方法数。
 
@@ -78,8 +78,8 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
     * *移动应用代码*
     * *电子邮件*
     * *移动电话*
-    * *办公电话*
-    * *安全性问题*
+
+     可以根据需要启用其他身份验证方法（如办公电话或安全问题），用以满足业务要求。
 
 1. 若要应用身份验证方法，请选择“保存”。
 
@@ -90,12 +90,12 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 1. 在“注册”页上的左侧菜单中，对“要求用户在登录时注册”选择“是”。
 1. 联系信息必须是最新的，这一点很重要。 如果在启动 SSPR 事件时联系信息已过时，用户可能无法解锁其帐户或重置其密码。
 
-    将“在多少天后要求用户重新确认其身份验证信息”设置为“180”。 
+    将“在多少天后要求用户重新确认其身份验证信息”设置为“180”。
 1. 若要应用注册设置，请选择“保存”。
 
 ## <a name="configure-notifications-and-customizations"></a>配置通知和自定义项
 
-若要使用户随时了解帐户活动，可以配置电子邮件通知，以便在发生 SSPR 事件时发送通知。 这些通知可以涵盖普通用户帐户和管理员帐户。 对于管理员帐户，当使用 SSPR 重置特权管理员帐户密码时，此通知将提供额外的意识层。
+若要使用户随时了解帐户活动，可以配置电子邮件通知，以便在发生 SSPR 事件时发送通知。 这些通知可以涵盖普通用户帐户和管理员帐户。 对于管理员帐户，当使用 SSPR 重置特权管理员帐户密码时，此通知将提供额外的意识层。 在管理员帐户上使用 SSPR 时，所有全局管理员都将收到通知。
 
 1. 在“通知”页上的左侧菜单中配置以下选项：
 
@@ -119,13 +119,13 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 
 1. 若要查看手动注册过程，请以 InPrivate 或 incognito 模式打开新的浏览器窗口，并浏览到 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)。 用户在下次登录时，应会定向到此注册门户。
 1. 使用非管理员测试用户（例如 *testuser*）登录，并注册身份验证方法的联系信息。
-1. 完成后，选择标记为“看起来不错”的按钮并关闭浏览器窗口。
+1. 完成后，选择标记为“正常”的按钮并关闭浏览器窗口。
 1. 在 InPrivate 或 incognito 模式下打开一个新的浏览器窗口并浏览到 [https://aka.ms/sspr](https://aka.ms/sspr)。
 1. 输入非管理员测试用户的帐户信息（例如 *testuser*）和 CAPTCHA（验证码）中的字符，然后选择“下一步”。
 
     ![输入用户帐户信息以重置密码](media/tutorial-enable-sspr/password-reset-page.png)
 
-1. 按照验证步骤来重置密码。 完成后，应会收到电子邮件通知，其中指出密码已重置。
+1. 按验证步骤重置密码。 完成后，应会收到电子邮件通知，其中指出密码已重置。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -134,13 +134,13 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 如果你不再想要使用本教程中配置的 SSPR 功能，请使用以下步骤将 SSPR 状态设置为“无”：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“密码重置”。 
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“密码重置”。
 1. 在“属性”页中的“已启用自助式密码重置”选项下，选择“无”。
 1. 若要应用 SSPR 更改，请选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何执行以下操作：
+在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何：
 
 > [!div class="checklist"]
 > * 为一组 Azure AD 用户启用自助式密码重置
@@ -148,4 +148,4 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 > * 以用户身份测试 SSPR 过程
 
 > [!div class="nextstepaction"]
-> [启用 Azure 多重身份验证](tutorial-mfa-applications.md)
+> [启用 Azure 多重身份验证](./tutorial-enable-azure-mfa.md)

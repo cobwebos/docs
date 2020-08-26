@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份 DPM 工作负荷
 description: 了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 备份
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 4d8b8f6ca233c997bc2a94f88903d14009481d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538847"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825964"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 服务器的 Azure 备份
 
@@ -69,7 +69,7 @@ Sample DPM scripts: Get-DPMSampleScript
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md)。 以下示例显示，testVault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
+4. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md) 或 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md)。 以下示例显示，testVault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
 
    > [!TIP]
    > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
@@ -111,7 +111,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果没有指定 */nu* 选项，则安装结束时，会打开“Windows Update”窗口，以检查是否有任何更新。
+这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果未指定 */nu* 选项，则在安装结束时将打开 **Windows 更新** 窗口以检查是否有任何更新。
 
 代理在已安装程序列表中显示。 若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
 
@@ -191,7 +191,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
 ```
 
-也可针对给定的一组星期日期，使用 ```-WorkHourBandwidth``` 和 ```-NonWorkHourBandwidth``` 选项来控制带宽使用。 本示例未设置任何限制。
+也可针对给定的一组星期日期，使用 ```-WorkHourBandwidth``` 和 ```-NonWorkHourBandwidth``` 选项来控制带宽使用。 在此示例中，我们未设置任何限制。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoThrottle
@@ -220,7 +220,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 ```
 
 > [!IMPORTANT]
-> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，则无法从 Azure 还原数据。
+> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，将无法从 Azure 还原数据。
 >
 >
 
@@ -262,7 +262,7 @@ $MPG = Get-ModifiableProtectionGroup $PG
 3. 获取该服务器上所有数据源的列表。
 4. 选择一个或多个数据源，并将其添加到保护组
 
-使用 [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 获取安装 DPM 代理并由 DPM 服务器管理的服务器的列表。 在本示例中，我们进行筛选，并只为备份配置名为 *productionserver01* 的 PS。
+使用 [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 获取安装 DPM 代理并由 DPM 服务器管理的服务器的列表。 在此示例中，我们将筛选并仅配置具有 *为 productionserver01* 名称的 PowerShell 进行备份。
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

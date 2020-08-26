@@ -4,13 +4,14 @@ description: 本文重点说明如何发现已向 Azure 数据目录注册的数
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081196"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何发现 Azure 数据目录中的数据源
 
@@ -55,7 +56,7 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 
  ![在 Azure 数据目录门户中命中突出显示并搜索匹配项](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 因为使用数据目录注册数据源会将结构性元数据和描述性元数据从数据源复制到目录服务，所以发现和理解数据源更简单。 注册数据源后，可通过使用数据目录门户中的筛选和搜索功能发现数据源。
 

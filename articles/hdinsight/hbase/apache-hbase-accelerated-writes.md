@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: de32f2a3a45a883f9da860b159eaa7f7b9368518
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085423"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654848"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight 的 Apache HBase 加速写入
 
-本文提供有关 Azure HDInsight 中 Apache HBase 的**加速写入**功能的背景信息，以及如何使用它来有效提高写入性能。 **加速写入**使用 [Azure 高级 SSD 托管磁盘](../../virtual-machines/linux/disks-types.md#premium-ssd)来提高 Apache HBase 预写日志 (WAL) 的性能。 有关 Apache HBase 的详细信息，请参阅 [HDInsight 中的 Apache HBase 是什么](apache-hbase-overview.md)。
+本文提供有关 Azure HDInsight 中 Apache HBase 的**加速写入**功能的背景信息，以及如何使用它来有效提高写入性能。 **加速写入**使用 [Azure 高级 SSD 托管磁盘](../../virtual-machines/disks-types.md#premium-ssd)来提高 Apache HBase 预写日志 (WAL) 的性能。 有关 Apache HBase 的详细信息，请参阅 [HDInsight 中的 Apache HBase 是什么](apache-hbase-overview.md)。
 
 ## <a name="overview-of-hbase-architecture"></a>HBase 体系结构概述
 
@@ -32,7 +32,7 @@ HBase 最初会将数据更新写入到一种名为“预写日志”(WAL) 的�
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Azure HDInsight 中 Apache HBase 的加速写入功能
 
-加速写入功能解决了使用云存储中的预写日志导致写入延迟增大的问题。  HDInsight Apache HBase 群集的加速写入功能将高级 SSD 托管磁盘附加到每个区域服务器（工作器节点）。 然后，预写日志将写入到这些高级托管磁盘中装载的 Hadoop 文件系统 (HDFS)，而不是写入到云存储。  高级托管磁盘使用固态硬盘 (SSD)，提供卓越的 I/O 性能和容错能力。  与非托管磁盘不同，如果一个存储单元出现故障，则它不会影响同一可用性集中的其他存储单元。  因此，托管磁盘可为应用程序提供较低的写入延迟和更好的复原能力。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
+加速写入功能解决了使用云存储中的预写日志导致写入延迟增大的问题。  HDInsight Apache HBase 群集的加速写入功能将高级 SSD 托管磁盘附加到每个区域服务器（工作器节点）。 然后，预写日志将写入到这些高级托管磁盘中装载的 Hadoop 文件系统 (HDFS)，而不是写入到云存储。  高级托管磁盘使用固态硬盘 (SSD)，提供卓越的 I/O 性能和容错能力。  与非托管磁盘不同，如果一个存储单元出现故障，则它不会影响同一可用性集中的其他存储单元。  因此，托管磁盘可为应用程序提供较低的写入延迟和更好的复原能力。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/managed-disks-overview.md)。
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何启用 HDInsight 中 HBase 的加速写入
 

@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457297"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007907"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -54,7 +55,7 @@ ms.locfileid: "84457297"
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net 会话状态提供程序](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [ASP.NET 会话状态提供程序](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>何时可以安全重试？
@@ -78,14 +79,14 @@ ms.locfileid: "84457297"
  * **考虑使用高级层 Redis 实例**。  这些缓存大小具有更好的网络延迟和吞吐量，因为它们是在 CPU 和网络两方面都更好的硬件上运行的。
  
      > [!NOTE]
-     > [此处发布](cache-faq.md#azure-cache-for-redis-performance)了我们观测到的性能结果供你参考。   另请注意，SSL/TLS 会增大一些开销，因此，如果你使用传输加密，延迟和/或吞吐量可能会有变化。
+     > [此处发布](cache-planning-faq.md#azure-cache-for-redis-performance)了我们观测到的性能结果供你参考。   另请注意，SSL/TLS 会增大一些开销，因此，如果你使用传输加密，延迟和/或吞吐量可能会有变化。
  
 ### <a name="redis-benchmark-examples"></a>Redis 基准示例
 **测试前的设置**：使用下列延迟和吞吐量测试命令所需的数据准备缓存实例。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t-t 1024 
+> redis--yourcache.redis.cache.windows.net-a yourAccesskey-1024 t 
 
 **测试延迟**：使用 1k 有效负载测试 GET 请求。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
+> redis-yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
 
 **测试吞吐量：** 管道化的 GET 请求，其有效负载为 1k。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-HELP 1000000-d 1024-P 50-c 50
+> redis-yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

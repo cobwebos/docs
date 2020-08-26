@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2020
 ms.author: memildin
-ms.openlocfilehash: f12a137d4cf182837e2f2212923b97cb7dc5f34a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 63b00682af3de8c558a6ef69dd6cb8b9a7d5f2b4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057766"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433216"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Azure 域的参考列表（不完整）
 
@@ -28,10 +28,10 @@ ms.locfileid: "86057766"
 |服务  |子域  |
 |---------|---------|
 |[Azure 访问控制服务](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)（已停用）|*.accesscontrol.windows.net|
-|[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)|*. graph.windows.net/*. onmicrosoft.com|
+|Azure Active Directory|*. graph.windows.net/*. onmicrosoft.com|
 |[Azure API 管理](https://azure.microsoft.com/services/api-management/)|*. azure-api.net|
 |[Azure BizTalk 服务](https://azure.microsoft.com/pricing/details/biztalk-services/)（已停用）|*. biztalk.windows.net|
-|[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/)|*.blob.core.windows.net|
+|[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/)|\* .blob.core.windows.net|
 |[Azure 云服务](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)和[azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/)|*.cloudapp.net|
 |[Azure 云服务](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)|*. cloudapp.azure.com|
 |[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)|*.azurecr.io|
@@ -42,11 +42,11 @@ ms.locfileid: "86057766"
 |Azure 管理服务|*. management.core.windows.net|
 |[Azure 媒体服务](https://azure.microsoft.com/services/media-services/)|*. origin.mediaservices.windows.net|
 |[Azure 移动应用](https://azure.microsoft.com/services/app-service/mobile/)|*. azure-mobile.net|
-|[Azure 队列存储](https://azure.microsoft.com/services/storage/queues/)|*.queue.core.windows.net|
+|Azure 队列存储|*.queue.core.windows.net|
 |[Azure 服务总线](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview)|*.servicebus.windows.net|
 |[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)|*.database.windows.net|
 |[Azure Stack 边缘](https://azure.microsoft.com/products/azure-stack/edge/)和[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
 |[Azure 表存储](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*.table.core.windows.net|
 |[Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)|*. trafficmanager.net|
-|[Azure 网站](https://azure.microsoft.com/resources/videos/playlists/websites/)|*.azurewebsites.net|
+|Azure 网站|*.azurewebsites.net|
 |[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualStudio.com|

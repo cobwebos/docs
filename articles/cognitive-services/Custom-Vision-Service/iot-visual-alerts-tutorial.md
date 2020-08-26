@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734325"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244663"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教程：配合使用自定义视觉和 IoT 设备来报告视觉状态
 
@@ -31,7 +31,7 @@ ms.locfileid: "82734325"
 > * 使用应用训练自定义视觉项目。
 > * 使用应用对新图像进行实时评分，并将结果发送到 Azure。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。 
 
 ## <a name="prerequisites"></a>先决条件
 

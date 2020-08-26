@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258285"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042626"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的克隆模型
 
@@ -24,20 +24,20 @@ Azure 数字孪生的一项重要特征是能够定义自己的词汇，并以�
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>数字克隆定义语言 (DTDL) 用于编写模型
 
-Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。 DTDL 基于 JSON-LD，是独立于编程语言的。 DTDL 不是 Azure 数字孪生独有的，但也用于表示[iot 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 Azure 数字孪生使用 DTDL*版本 2*。
+Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。 DTDL 基于 JSON-LD，是独立于编程语言的。 DTDL 不是 Azure 数字孪生独有的，但也用于表示[iot 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 
+
+Azure 数字孪生使用**DTDL_版本 2_**。 有关此版本的 DTDL 的详细信息，请参阅 GitHub 中的规范文档：[*数字孪生定义语言 (DTDL) 版本 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 在 Azure 数字孪生中使用 DTDL_版本 1_现已弃用。
 
 > [!TIP] 
 > 并非所有使用 DTDL 的服务都实现 DTDL 的完全相同的功能。 例如，IoT 即插即用不使用适用于图形的 DTDL 功能，而 Azure 数字孪生目前不实现 DTDL 命令。 有关特定于 Azure 数字孪生的 DTDL 功能的详细信息，请参阅本文后面的[Azure 数字孪生 DTDL 实现细节](#azure-digital-twins-dtdl-implementation-specifics)部分。
-
-有关一般 DTDL 的详细信息，请参阅 GitHub 中的规范文档：[数字孪生定义语言 (DTDL) 版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 ## <a name="elements-of-a-model"></a>模型的元素
 
 在模型定义中，顶级代码项是一个**接口**。 这将封装整个模型，并在接口中定义模型的其余部分。 
 
 DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字段：
-* **属性**-属性是表示实体的状态的数据字段 (类似于许多面向对象的编程语言) 中的属性。 与遥测（这是时间绑定的数据事件）不同，属性具有后备存储并且可随时读取。
-* **遥测**-遥测字段表示度量值或事件，通常用于描述设备传感器读数。 遥测数据不会存储在数字克隆上;它更像是准备发送到某个位置的数据事件流。 
+* **属性**-属性是表示实体的状态的数据字段 (类似于许多面向对象的编程语言) 中的属性。 属性具有后备存储，可随时读取。
+* **遥测**-遥测字段表示度量值或事件，通常用于描述设备传感器读数。 与属性不同，遥测数据不会存储在数字克隆上;这是一系列需要在发生时进行处理的时间限制的数据事件。 有关属性和遥测之间的差异的详细信息，请参阅下面的 "[*属性与遥测*](#properties-vs-telemetry)" 部分。
 * 如果需要，**组件**组件允许将模型接口构建为其他接口的程序集。 组件的一个示例是 (的*frontCamera*接口，另一个组件接口*backCamera*) 用于为*手机*定义模型。 必须先为*frontCamera*定义一个接口，就像它是其自己的模型一样，然后在定义*手机*时可以引用它。
 
     使用组件来描述作为解决方案不可分割但不需要单独标识的内容，而无需单独在克隆图形中创建、删除或重新排列。 如果希望实体在 existences 图中具有独立的，则将其表示为不同模型的单独数字孪生，通过*关系*进行连接 (参阅下一项目符号) 。
@@ -47,7 +47,25 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 * **关系**-关系使你可以表示数字克隆如何与其他数字孪生一起使用。 关系可以表示不同的语义含义，如*contains* ( "楼层包含空间" ) ，*冷却* ( "hvac 冷却房间" ) ， *isBilledTo* ( "为用户向用户计费" ) 等。关系允许解决方案提供关联实体的关系图。
 
 > [!NOTE]
-> DTDL 规范还定义命令，这些**命令**可以在数字克隆 (（如 reset 命令）或用于切换风扇) 的命令。 但是， *Azure 数字孪生目前不支持命令。*
+> [DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)还定义命令，这些**命令**可以在数字克隆 (（如 reset 命令）或用于切换风扇) 的命令。 但是， *Azure 数字孪生目前不支持命令。*
+
+### <a name="properties-vs-telemetry"></a>属性与遥测
+
+下面是有关在 Azure 数字孪生中区分 DTDL**属性**和**遥测**字段的一些附加指导。
+
+Azure 数字孪生模型的属性和遥测的区别如下：
+* **属性**应具有后备存储。 这意味着您可以随时读取属性并检索其值。 如果该属性是可写的，则还可以在属性中存储值。  
+* **遥测**更像是事件流;这是一组具有短 lifespans 的数据消息。 如果不设置侦听事件和发生事件时要执行的操作，则不会在以后进行事件跟踪。 你不能返回它并稍后阅读。 
+  - 在 c # 术语中，遥测类似于 c # 事件。 
+  - 在 IoT 术语中，遥测通常是设备发送的一种度量。
+
+**遥测**数据通常与 IoT 设备一起使用，因为许多设备不能或不感兴趣地存储所生成的度量值。 它们只是将它们作为 "遥测" 事件流发送。 在这种情况下，无法随时针对遥测字段的最新值查询设备。 相反，你需要从设备中侦听消息，并在消息到达时执行操作。 
+
+因此，在 Azure 数字孪生中设计模型时，可能会在大多数情况下使用**属性**来为孪生建模。 这使你可以使用后备存储和读取和查询数据字段的功能。
+
+遥测和属性通常协同工作以处理来自设备的数据入口。 由于所有入口都是通过[api](how-to-use-apis-sdks.md)进行的，因此你通常会使用入口函数从设备读取遥测数据或属性事件，并在 ADT 中将属性设置为 "响应"。 
+
+还可以从 Azure 数字孪生 API 发布遥测事件。 与其他遥测一样，这是一个生存期较短的事件，需要侦听器才能处理。
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure 数字孪生 DTDL 实现细节
 
@@ -62,7 +80,9 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 
 可以在任何文本编辑器中编写克隆类型模型。 DTDL 语言遵循 JSON 语法，因此应存储扩展名为*JSON*的模型。 使用 JSON 扩展会使许多编程文本编辑器为你的 DTDL 文档提供基本语法检查和突出显示。 还有一个可用于[Visual Studio Code](https://code.visualstudio.com/)的[DTDL 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。
 
-下面是一个以 DTDL 接口形式编写的典型模型示例。 此模型描述行星，每个行星都具有名称、质量和温度。 行星可能将月亮作为卫星，并且它可能包含 craters。
+本部分包含以 DTDL 接口形式编写的典型模型的示例。 此模型描述**行星**，每个行星都具有名称、质量和温度。
+ 
+请考虑行星还可能会与**卫星一起交互，其中可能**包含**craters**。 在下面的示例中，该 `Planet` 模型通过引用两个外部模型（和）来表示与这些其他实体的连接 `Moon` `Crater` 。 下面的示例代码中也定义了这些模型，但它们非常简单，因此不会降低主要的 `Planet` 示例。
 
 ```json
 [
@@ -101,6 +121,11 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
   },
   {
     "@id": "dtmi:com:contoso:Crater;1",
+    "@type": "Interface",
+    "@context": "dtmi:dtdl:context;2"
+  },
+  {
+    "@id": "dtmi:com:contoso:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2"
   }
@@ -197,20 +222,13 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 
 ## <a name="validating-models"></a>验证模型
 
-> [!TIP]
-> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。
-
-有一种与语言无关的示例可用于验证模型文档，以确保 DTDL 是正确的。 其位置为： [**DTDL 验证器示例**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)。
-
-DTDL 验证器示例建立在一个 .NET DTDL 分析器库上，该库在 NuGet 上作为客户端库提供： [**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 你还可以直接使用库来设计自己的验证解决方案。 使用分析器库时，请确保使用与 Azure 数字孪生运行的版本兼容的版本。 预览期间，此版本为*3.7.0*。
-
-可以在[操作方法：分析和验证模型](how-to-use-parser.md)中了解有关分析器库的详细信息，包括用法示例。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何通过 DigitalTwinsModels Api 管理模型：
-* [操作说明：管理自定义模型](how-to-manage-model.md)
+* [*操作说明：管理自定义模型*](how-to-manage-model.md)
 
 或者，了解如何基于模型创建数字孪生：
-* [概念：数字孪生和双子图形](concepts-twins-graph.md)
+* [*概念：数字孪生和双子图形*](concepts-twins-graph.md)
 

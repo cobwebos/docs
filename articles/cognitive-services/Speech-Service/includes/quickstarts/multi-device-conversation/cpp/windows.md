@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 015986ffa687142cf20ca18cff175ac6c5952a11
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1999100be3dd65518db7b5496ad5aaa1a407ee9e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671850"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226132"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -199,7 +199,7 @@ ms.locfileid: "80671850"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，免费试用版订阅的 `westus`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
 1. 在菜单栏中，选择“文件” > “全部保存”。
 
@@ -207,7 +207,7 @@ ms.locfileid: "80671850"
 
 1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试” > “开始调试”（或按 F5<kbd></kbd>）以启动 helloworld 应用程序。
+1. 选择“调试” > “开始调试”（或按 F5）以启动 helloworld 应用程序。
 
 1. 看到 `Started transcribing` 消息出现后，你可以开始说话。 在你说话时，你会看到口述文本出现。
     - 如果你与其他人分享对话代码并且他们加入了对话，则你还会看到他们的口述文本。

@@ -3,13 +3,14 @@ title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014892"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -53,6 +54,57 @@ Durable Functions 扩展自动将一组 HTTP API 添加到 Azure Functions 宿�
 **function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+**__init__py**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    function_name = req.route_params['functionName']
+    event_data = req.get_body()
+
+    instance_id = await client.start_new(function_name, instance_id, event_data)
+    
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+```
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 
 ---
 
@@ -147,6 +199,22 @@ module.exports = df.orchestrator(function*(context){
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    response = yield context.call_http('GET', url)
+    
+    if response["statusCode"] >= 400:
+        # handling of error codes goes here
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -169,7 +237,7 @@ module.exports = df.orchestrator(function*(context){
 
 Durable Functions 原生支持调用接受 Azure Active Directory (Azure AD) 授权令牌的 API。 此项支持使用 [Azure 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)来获取这些令牌。
 
-以下代码是 .NET 业务流程协调程序函数的一个示例。 该函数发出经过身份验证的调用来使用 Azure 资源管理器[虚拟机 REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines) 重启虚拟机。
+以下代码是 .NET 业务流程协调程序函数的一个示例。 该函数发出经过身份验证的调用来使用 Azure 资源管理器[虚拟机 REST API](/rest/api/compute/virtualmachines) 重启虚拟机。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,6 +289,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    subscription_id = "mySubId"
+    resource_group = "myRg"
+    vm_name = "myVM"
+    api_version = "2019-03-01"
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+
+    # get a list of the Azure subscriptions that I have access to
+    restart_response = yield context.call_http("POST", 
+        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        None,
+        None,
+        token_source)
+    return restart_response
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 在以上示例中，`tokenSource` 参数配置为获取 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的 Azure AD 令牌。 该令牌由资源 URI `https://management.core.windows.net` 标识。 该示例假设当前函数应用在本地运行，或者已使用托管标识部署为函数应用。 假设本地标识或托管标识有权管理指定资源组 `myRG` 中的 VM。
@@ -255,7 +347,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="extensibility-net-only"></a>扩展性（仅适用于 .NET）
 
-可以使用 [Azure Functions .NET 依赖项注入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
+可以使用 [Azure Functions .NET 依赖项注入](../functions-dotnet-dependency-injection.md)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
 
 以下示例演示如何使用依赖项注入为调用外部 HTTP 终结点的业务流程协调程序函数禁用 TLS/SSL 证书验证。
 

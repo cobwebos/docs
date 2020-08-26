@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f10be59501368012b0e4269f402fe258da552e25
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193167"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422736"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义浮出控件
 
@@ -31,7 +32,7 @@ ms.locfileid: "82193167"
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 应先完成下列文章中的步骤，再继续操作：
 

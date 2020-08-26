@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置适用于内部专用网络的 NGINX 入口控制器。
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/17/2020
+ms.openlocfilehash: 2055946728231452b5359bbe4c98892cba72cfec
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251580"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855815"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -27,7 +27,7 @@ ms.locfileid: "86251580"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。 请确保使用最新版本的 Helm，并且有权访问 *nginx* Helm 存储库。 有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -35,7 +35,7 @@ ms.locfileid: "86251580"
 
 默认情况下，NGINX 入口控制器通过动态公共 IP 地址分配创建。 常见的配置要求是使用内部专用网络和 IP 地址。 此方法仅限内部用户访问你的服务，不允许外部访问。
 
-根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。
+根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。 此外，如果你使用的是现有虚拟网络和子网，则必须使用正确的权限配置 AKS 群集，以管理虚拟网络和子网。 有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络][aks-configure-kubenet-networking]或[在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络][aks-configure-advanced-networking]。
 
 ```yaml
 controller:
@@ -53,17 +53,17 @@ controller:
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到 Helm 命令中。
 
 > [!TIP]
-> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，TLS 传递将不起作用。
+> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了“客户端源 IP 保留”的入口控制器时，TLS 直通将不起作用。
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
-# Add the official stable repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # Use Helm to deploy an NGINX ingress controller
-helm install nginx-ingress stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     -f internal-ingress.yaml \
     --set controller.replicaCount=2 \
@@ -71,20 +71,19 @@ helm install nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-为 NGINX 入口控制器创建 Kubernetes 负载均衡器服务时，会分配内部 IP 地址。 若要获取公共 IP 地址，请使用 `kubectl get service` 命令。
+为 NGINX 入口控制器创建 Kubernetes 负载均衡器服务时，系统会分配内部 IP 地址。 若要获取公共 IP 地址，请使用 `kubectl get service` 命令。
 
 ```console
-kubectl get service -l app=nginx-ingress --namespace ingress-basic
+kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 ```
 
-将 IP 地址分配给服务需要几分钟时间，如以下示例输出所示：
+将 IP 地址分配给服务需要几分钟时间，如以下示例输出中所示：
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                             TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-nginx-ingress-controller         LoadBalancer   10.0.61.144    10.240.0.42   80:30386/TCP,443:32276/TCP   6m2s
-nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 由于尚未创建入口规则，如果浏览到该内部 IP 地址，则会显示 NGINX 入口控制器的默认 404 页面。 入口规则是通过以下步骤配置的。
@@ -169,7 +168,7 @@ spec:
     app: ingress-demo
 ```
 
-使用 `kubectl apply` 来运行这两个演示应用程序：
+使用 `kubectl apply` 运行这两个演示应用程序：
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -185,7 +184,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 创建名为 `hello-world-ingress.yaml` 的文件，并将其复制到以下示例 YAML 中。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -193,6 +192,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
@@ -201,11 +201,15 @@ spec:
       - backend:
           serviceName: aks-helloworld
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: ingress-demo
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld
+          servicePort: 80
+        path: /(.*)
 ```
 
 使用 `kubectl apply -f hello-world-ingress.yaml` 命令创建入口资源。
@@ -214,7 +218,7 @@ spec:
 kubectl apply -f hello-world-ingress.yaml
 ```
 
-以下示例输出显示了入口资源的创建。
+以下示例输出显示创建了入口资源。
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -358,3 +362,5 @@ kubectl delete namespace ingress-basic
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

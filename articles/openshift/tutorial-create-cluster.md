@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260678"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587729"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "86260678"
 
 ## <a name="before-you-begin"></a>开始之前
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ### <a name="verify-your-permissions"></a>验证你的权限
 
@@ -33,42 +33,12 @@ ms.locfileid: "86260678"
 |**用户访问管理员**|X|X| |
 |**参与者**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>安装 `az aro` 扩展
-借助 `az aro` 扩展，可以使用 Azure CLI 直接从命令行创建、访问和删除 Azure Red Hat OpenShift 群集。
-
-运行以下命令可安装 `az aro` 扩展。
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-如果已安装了该扩展，可以通过运行以下命令进行更新。
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>注册资源提供程序
 
 接下来，需要在订阅中注册 `Microsoft.RedHatOpenShift` 资源提供程序。
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-验证该扩展是否已注册。
-
-```azurecli-interactive
-az -v
-```
-
-  应会获得类似于以下内容的输出。
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>获取 Red Hat 拉取机密（可选）
@@ -79,9 +49,9 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
    你将需要使用你的企业电子邮件登录 Red Hat 帐户或创建一个新的 Red Hat 帐户，并接受条款和条件。
 
-2. 单击“下载拉取机密”。
+2. 如果你是第一次创建群集，请转到 [OpenShift 产品页](https://developers.redhat.com/products/codeready-containers)。 注册后，请转到 [Red Hat OpenShift 群集管理器页](https://cloud.redhat.com/openshift/)，可以其中单击“下载拉取机密”，然后下载用于 ARO 群集的拉取机密 。
 
-将保存的 `pull-secret.txt` 文件保存在一个安全的位置 - 每次创建群集时都要使用该文件。
+将已保存的 `pull-secret.txt` 文件保存在安全的位置。 如果需要创建包含 Red Hat 或认证合作伙伴的示例或运算符的群集，则该文件将用于每个群集创建。
 
 运行 `az aro create` 命令时，可以使用 `--pull-secret @pull-secret.txt` 参数引用拉取机密。 从存储 `pull-secret.txt` 文件的目录执行 `az aro create`。 否则，将 `@pull-secret.txt` 替换为 `@<path-to-my-pull-secret-file>`。
 

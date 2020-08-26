@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c88a54661e8fee2dd7c3b4dc34336d44a6803090
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680916"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719455"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -44,7 +45,7 @@ ms.locfileid: "83680916"
 3. 使用默认设置完成安装，除非因某种原因而需要更改它们。
 4. 将 TLS/SSL 证书绑定到 IIS 中的站点。
 
-如果对如何在 IIS 服务器上配置 TLS/SSL 证书存在疑问，请参阅[如何在 IIS 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) 一文。
+如果对如何在 IIS 服务器上配置 TLS/SSL 证书存在疑问，请参阅[如何在 IIS 上设置 SSL](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) 一文。
 
 必须使用 TLS/SSL 证书保护 Web 服务 SDK。 也可以使用自签名证书实现此目的。 将该证书导入到用户门户 Web 服务器上的本地计算机帐户的“受信任的根证书颁发机构”存储中，使该服务器在发起 TLS 连接时信任该证书。
 
@@ -72,7 +73,7 @@ ms.locfileid: "83680916"
 
 ![MFA 服务器用户门户安装](./media/howto-mfaserver-deploy-userportal/install.png)
 
-如果对如何在 IIS 服务器上配置 TLS/SSL 证书存在疑问，请参阅[如何在 IIS 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) 一文。
+如果对如何在 IIS 服务器上配置 TLS/SSL 证书存在疑问，请参阅[如何在 IIS 上设置 SSL](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) 一文。
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>在单独的服务器上部署用户门户
 
@@ -109,7 +110,7 @@ ms.locfileid: "83680916"
 
 6. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例：`https://mfa.contoso.com/MultiFactorAuth`）。 确保未显示证书警告或错误。
 
-如果对如何在 IIS 服务器上配置 TLS/SSL 证书存在疑问，请参阅[如何在 IIS 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) 一文。
+如果对如何在 IIS 服务器上配置 TLS/SSL 证书存在疑问，请参阅[如何在 IIS 上设置 SSL](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) 一文。
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure 多重身份验证服务器中配置用户门户设置
 

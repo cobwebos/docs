@@ -8,11 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037199"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337800"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
@@ -27,9 +28,9 @@ ms.locfileid: "86037199"
     - 在 Azure 门户的“查询”选项卡上，选择“测试” 。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
     - 还可以使用适用于 Visual Studio 或 [Visual Studio Code](visual-studio-code-local-run-live-input.md) 的 Azure 流分析工具[在本地测试查询](stream-analytics-live-data-local-testing.md)。 
 
-2.  在适用于 Visual Studio 的 Azure 流分析工具中，[使用作业关系图对查询进行本地分步调试](debug-locally-using-job-diagram.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
+2.  在 Visual Studio Code 的 Azure 流分析工具中，[使用作业关系图在本地调试查询](debug-locally-using-job-diagram-vs-code.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
 
-    ![作业关系图 - 预览结果](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![作业关系图预览结果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  如果使用了 [Timestamp By](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，请验证事件的时间戳是否大于[作业开始时间](stream-analytics-out-of-order-and-late-events.md)。
 
@@ -92,7 +93,7 @@ ms.locfileid: "86037199"
 
 可以看到，此引用数据中的 GUID 的格式与 temp2 中 [来自] 列的格式不同。 这就是数据无法按预期到达 output1 的原因。
 
-可以修复数据格式，将其上传至引用 Blob，然后再重新尝试：
+可以修复数据格式、将其上传至引用 blob，然后再重新尝试：
 
 ![SELECT INTO temp 表流分析查询](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 

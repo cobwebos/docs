@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085157"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -136,7 +136,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
-1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。  
    1. 按照以下说明创建标准负载均衡器：
       1. 创建前端 IP 地址
          1. NW1 的 IP 地址 10.0.0.4
@@ -213,10 +213,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
             * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
 
 > [!Note]
-> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
 
 > [!IMPORTANT]
-> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](../../../load-balancer/load-balancer-custom-probe-overview.md)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 

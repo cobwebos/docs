@@ -9,12 +9,13 @@ ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ebf7d35529a9bf0f6d9caca35b7429a803fed2f
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-java
+ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327525"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -46,9 +47,9 @@ ms.locfileid: "85562213"
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    也可以创建查询密钥。 最好使用只读权限发出查询请求。
 
@@ -62,20 +63,20 @@ ms.locfileid: "85562213"
 
 ### <a name="create-the-project"></a>创建项目
 
-1. 打开 IntelliJ IDEA，选择“创建新项目”。 
-1. 选择“Maven”。 
-1. 在“项目 SDK”列表中选择“Java 11 SDK”。 
+1. 打开 IntelliJ IDEA，选择“创建新项目”。
+1. 选择“Maven”。
+1. 在“项目 SDK”列表中选择“Java 11 SDK”。
 
     ![创建 Maven 项目](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
 
-1. 对于“GroupId”和“ArtifactId”，请输入 `AzureSearchQuickstart`。  
+1. 对于“GroupId”和“ArtifactId”，请输入 `AzureSearchQuickstart`。
 1. 接受剩余的默认值以打开项目。
 
 ### <a name="specify-maven-dependencies"></a>指定 Maven 依赖项
 
-1. 选择“文件” > “设置”。  
-1. 在“设置”窗口中，选择“生成、执行、部署” > “生成工具” > “Maven” > “导入”。     
-1. 选中“自动导入 Maven 项目”复选框，然后单击“确定”关闭窗口。   在下一步骤中更新 pom.xml 文件时，Maven 插件和其他依赖项将自动同步。
+1. 选择“文件” > “设置”。
+1. 在“设置”窗口中，选择“生成、执行、部署” > “生成工具” > “Maven” > “导入”。
+1. 选中“自动导入 Maven 项目”复选框，然后单击“确定”关闭窗口。 在下一步骤中更新 pom.xml 文件时，Maven 插件和其他依赖项将自动同步。
 
     ![IntelliJ 设置中的 Maven 导入选项](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
 
@@ -132,8 +133,8 @@ ms.locfileid: "85562213"
 
 ### <a name="set-up-the-project-structure"></a>设置项目结构
 
-1. 选择“文件” > “项目结构”。  
-1. 选择“模块”，展开源树以访问 `src` >  `main` 文件夹的内容。 
+1. 选择“文件” > “项目结构”。
+1. 选择“模块”，展开源树以访问 `src` >  `main` 文件夹的内容。
 1. 在 `src` >  `main` > `java` 文件夹中添加 `app` 和 `service` 文件夹。 为此，请选择 `java` 文件夹，按 Alt + Insert，然后输入文件夹名称。
 1. 在 `src` >  `main` >`resources` 文件夹中添加 `app` 和 `service` 文件夹。
 
@@ -141,11 +142,11 @@ ms.locfileid: "85562213"
 
     ![项目目录结构](media/search-get-started-java/java-quickstart-basic-code-tree.png)
 
-1. 单击“确定”关闭窗口。 
+1. 单击“确定”  以关闭该窗口。
 
 ### <a name="add-azure-cognitive-search-service-information"></a>添加 Azure 认知搜索服务信息
 
-1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `app` 文件夹，并添加 `config.properties` 文件。  为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。 
+1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `app` 文件夹，并添加 `config.properties` 文件。 为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。
 
 1. 将以下设置复制到新文件中，并将 `<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>` 和 `<YOUR-QUERY-KEY>` 替换为自己的服务名称和密钥。 如果服务终结点是 `https://mydemo.search.windows.net`，则服务名称为“mydemo”。
 
@@ -159,7 +160,7 @@ ms.locfileid: "85562213"
 
 ### <a name="add-the-main-method"></a>添加主方法
 
-1. 在 `src` >  `main` > `java` > `app` 文件夹中添加 `App` 类。 为此，请选择 `app` 文件夹，按 Alt + Insert，选择“Java 类”，然后输入类名。 
+1. 在 `src` >  `main` > `java` > `app` 文件夹中添加 `App` 类。 为此，请选择 `app` 文件夹，按 Alt + Insert，选择“Java 类”，然后输入类名。
 1. 打开 `App` 类，将内容替换为以下代码。 此代码包含 `main` 方法。 
 
     取消注释的代码将读取搜索服务参数，并使用这些参数来创建搜索服务客户端的实例。 我们将在下一部分添加搜索服务客户端代码。
@@ -258,7 +259,7 @@ ms.locfileid: "85562213"
 
 ### <a name="add-the-http-operations"></a>添加 HTTP 操作
 
-1. 在 `src` >  `main` > `java` > `service` 文件夹中添加 `SearchServiceClient` 类。 为此，请选择 `service` 文件夹，按 Alt + Insert，选择“Java 类”，然后输入类名。 
+1. 在 `src` >  `main` > `java` > `service` 文件夹中添加 `SearchServiceClient` 类。 为此，请选择 `service` 文件夹，按 Alt + Insert，选择“Java 类”，然后输入类名。
 1. 打开 `SearchServiceClient` 类，将内容替换为以下代码。 此代码提供使用 Azure 认知搜索 REST API 所需的 HTTP 操作。 在稍后的部分将会添加用于创建索引、上传文档和查询索引的其他方法。
 
     ```java
@@ -374,7 +375,7 @@ ms.locfileid: "85562213"
 
     ![项目目录结构](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. 打开“Maven”工具窗口并执行以下 Maven 目标：  `verify exec:java`
+1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java`
 ![Execute maven goal: verify exec:java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
 处理完成后，查看后接零 (0) 退出代码的 BUILD SUCCESS 消息。
@@ -383,7 +384,7 @@ ms.locfileid: "85562213"
 
 hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店名称”或“说明”是简单字段。 “地址”字段是复杂字段，因为它包含“街道地址”和“城市”等子字段。 在本快速入门中，索引定义是使用 JSON 指定的。
 
-1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `service` 文件夹，并添加 `index.json` 文件。  为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。 
+1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `service` 文件夹，并添加 `index.json` 文件。 为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。
 
 1. 打开 `index.json` 文件并插入以下索引定义。
 
@@ -570,7 +571,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
     
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `service` 文件夹，并添加 `hotels.json` 文件。  为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。 
+1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `service` 文件夹，并添加 `hotels.json` 文件。 为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。
 1. 将以下酒店文档插入到该文件中。
 
     ```json
@@ -821,7 +822,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
 在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 

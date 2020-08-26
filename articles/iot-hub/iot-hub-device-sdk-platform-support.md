@@ -7,11 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045118"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423076"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
 
@@ -123,7 +124,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 ## <a name="support-and-other-resources"></a>支持和其他资源
 
-如果在使用 Azure IoT 设备 SDK 时遇到问题，可以通过多种方式来寻求支持。 可尝试使用以下渠道之一：
+如果你在使用 Azure IoT 设备 Sdk 时遇到问题，可以通过多种方式来查找下面汇总的支持。 有关所有支持选项的完整信息，请参阅[Azure IoT 支持和帮助选项](https://aka.ms/iothelp)。 
 
 **报告 bug** – 可在相关 GitHub 项目的“问题”页上报告设备 SDK 中的 Bug。 修复很快就会从项目实施到产品更新中。
 
@@ -136,6 +137,8 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 * [Azure IoT 中心 Node.js SDK 问题](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Azure IoT 中心 Python SDK 问题](https://github.com/Azure/azure-iot-sdk-python/issues)
+
+**技术问题**–可以使用标记*azure iot sdk* [&](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)和[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)上的技术问题。
 
 **Microsoft 客户支持团队** – 拥有[支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)创建新的支持请求来与 Microsoft 客户支持团队进行沟通。
 

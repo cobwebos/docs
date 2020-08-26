@@ -1,6 +1,5 @@
 ---
-title: 执行 Python 脚本
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (经典) ：执行 Python 脚本-Azure
 description: 了解如何通过“执行 Python 脚本”模块在机器学习工作室（经典版）试验和 Web 服务中使用 Python 代码。
 services: machine-learning
 ms.service: machine-learning
@@ -8,15 +7,19 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2f2e01bda22c348d53ce2a1dd25d8d11e86ff3e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696297"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843532"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 Python 是许多数据科学家珍藏的一个有用工具。 它可以在典型机器学习工作流的每个阶段（包括数据探索、特征提取、模型训练和验证，以及部署）中使用。
 
@@ -60,9 +63,9 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 | Pandas "NA" | 转换为“缺失值” |
 | 索引向量 | 不支持* |
 | 非字符串列名 | 对列名调用 `str` |
-| 复制列名 | 添加数字后缀：(1)、(2)、(3) 等。
+| 复制列名 | 添加数字后缀： (1) 、 (2) 、 (3) 等。
 
-Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范围从 0 到行数减去 1 的值* 
+**Python 函数中的所有输入数据帧始终具有64位从0到行数减1的数字索引*
 
 ## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>导入现有的 Python 脚本模块
 
@@ -70,7 +73,7 @@ Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范
 
 常见的用例是将现有 Python 脚本整合到工作室（经典版）试验中。 [执行 Python 脚本][execute-python-script]模块接受在第三个输入端口上使用包含 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
 
-例如，请考虑包含简单“Hello, World”函数的 Hello.py 文件。
+作为示例，请考虑文件 Hello.py，其中包含简单的 "Hello，World" 函数。
 
 ![Hello.py 文件中用户定义的函数](./media/execute-python-scripts/figure4.png)
 
@@ -78,7 +81,7 @@ Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范
 
 ![包含用户定义的 Python 代码的 zip 文件](./media/execute-python-scripts/figure5.png)
 
-将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。 
+将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。****
 
 ![使用 Hello.zip 的示例试验，用作“执行 Python 脚本”模块的输入](./media/execute-python-scripts/figure6a.png)
 
@@ -103,13 +106,13 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. 在存储的“配置”设置选项卡中禁用“需要安全传输”  
+1. 在存储的“配置”设置选项卡中禁用“需要安全传输”********
 
 ![在 Azure 门户中禁用“需要安全传输”](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
 ## <a name="operationalizing-python-scripts"></a>实现 Python 脚本
 
-发布为 Web 服务时，将调用在评分试验中使用的任何[执行 Python 脚本][execute-python-script]模块。 例如，下图显示了包含用于评估单个 Python 表达式的代码的评分试验。
+任何在评分实验中使用的[执行 Python 脚本][execute-python-script]模块在发布为 Web 服务时都将受到调用。 例如，下图显示了包含用于评估单个 Python 表达式的代码的评分试验。
 
 ![Web 服务的工作室工作区](./media/execute-python-scripts/figure3a.png)
 
@@ -127,7 +130,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 若要从 MatplotLib 生成图像，必须执行以下步骤：
 
-1. 将后端由默认的基于 Qt 的呈现器切换为“AGG”。
+1. 从默认的基于 Qt 的呈现器将后端切换到 "聚合"。
 1. 创建新图形对象。
 1. 获取轴，并将所有绘图生成到其中。
 1. 将图形保存到 PNG 文件。
@@ -152,7 +155,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ![按评分将特征排名的函数](./media/execute-python-scripts/figure8.png)
 
-以下试验在 Azure 机器学习工作室（经典版）的“Pima Indian Diabetes”数据集中计算并返回特征的重要性评分：
+接下来，试验将计算并返回 Azure 机器学习 Studio (经典) 中 "Pima indian diabetes 印度糖尿病" 数据集中的特征的重要性分数：
 
 ![使用 Python 为 Pima Indian Diabetes 数据集中的特征排名的试验](./media/execute-python-scripts/figure9a.png)
 
@@ -172,7 +175,7 @@ Python 模块当前不支持诸如 intellisense 和调试等 IDE 功能。 此�
 
 ### <a name="single-data-frame-output"></a>单数据帧输出
 
-Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸如训练的模型等任意 Python 对象直接返回到工作室（经典版）运行时。 就像存在相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下可将对象转换为字节数组，并在数据帧中返回该字节数组。
+Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸如训练的模型等任意 Python 对象直接返回到工作室（经典版）运行时。 就像具有相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下可将对象转换为字节数组，并在数据帧中返回字节数组。
 
 ### <a name="inability-to-customize-python-installation"></a>无法自定义 Python 安装
 

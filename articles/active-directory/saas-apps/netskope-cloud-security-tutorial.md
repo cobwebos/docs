@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Netskope 管理员控制台的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Netskope 理员控制台之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e286adec-8d19-4d41-9afa-a2e39d7a5983
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c38900d4ded3d2ee08245674bda90d96226c1eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80396561"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netskope 管理员控制台的集成
 

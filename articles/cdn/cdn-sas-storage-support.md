@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887041"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432753"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 
@@ -81,7 +81,8 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    
    源：   
    `(container1\/.*)`
-   
+
+
    目标：   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
@@ -95,7 +96,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. 使用缓存规则或在源服务器处添加 `Cache-Control` 标头来微调缓存持续时间。 由于 Azure CDN 将 SAS 令牌视为普通查询字符串，因此，最佳做法是应该设置在 SAS 到期时或到期之前到期的缓存持续时间。 否则，如果文件的缓存持续时间长于 SAS 的有效时间，在 SAS 到期之后，则可从 Azure CDN 源服务器访问此文件。 如果出现这种情况，并且你需要使缓存文件不可访问，则必须对文件执行清除操作以将其从缓存中清除。 有关对 Azure CDN 设置缓存持续时间的信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
+3. 使用缓存规则或在源服务器处添加 `Cache-Control` 标头来微调缓存持续时间。 由于 Azure CDN 将 SAS 令牌视为普通查询字符串，因此，最佳做法是应该设置在 SAS 到期时或到期之前到期的缓存持续时间。 否则，如果文件的缓存时间长于 SAS 的有效持续时间，则在已过 SAS 过期时间后，可以从 Azure CDN 终结点访问该文件。 如果出现这种情况，并且你需要使缓存文件不可访问，则必须对文件执行清除操作以将其从缓存中清除。 有关对 Azure CDN 设置缓存持续时间的信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>选项 3：通过重写规则使用 CDN 安全令牌身份验证
 

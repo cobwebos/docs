@@ -3,18 +3,16 @@ title: 在 Azure Data Lake Analytics 中使用 U-SQL 目录
 description: 了解如何使用 U-SQL 目录共享代码和数据。 创建表值函数、创建视图、创建表并对其进行查询。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: 78bd7f446b7716031e3eef02639acc8bb729719e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0ef1bff996589d09326e80b770953bd6b34966c5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119559"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132426"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 目录入门
 

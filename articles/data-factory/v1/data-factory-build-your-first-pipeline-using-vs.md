@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: bf7bfa6ec405841934cd068cbc90c2b071fc0afc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022072"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543140"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -128,7 +128,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     > [!IMPORTANT]
     > HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     > 
-    > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+    > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 
     有关 JSON 属性的详细信息，请参阅[计算链接服务](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)一文。 
 4. 保存 **HDInsightOnDemandLinkedService1.json** 文件。
@@ -412,7 +412,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 -  数据工厂使用前面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 - HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     
-    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 - 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 
 - 本教程不介绍如何通过 Azure 数据工厂复制数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 

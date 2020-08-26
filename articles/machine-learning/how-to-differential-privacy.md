@@ -1,23 +1,24 @@
 ---
-title: '如何使用 WhiteNoise 包 (预览保留数据隐私) '
+title: 如何使用 WhiteNoise 包保留数据隐私（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 WhiteNoise 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206340"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320198"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习 (预览版中使用差异隐私) 
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习中使用差分隐私（预览版）
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -26,7 +27,7 @@ ms.locfileid: "86206340"
 差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差分隐私的工作原理](./concept-differential-privacy.md)。
 
 > [!NOTE]
-> 请注意，我们将重命名该工具包，并将在未来几周引入新名称。 
+> 请注意，我们正在重命名该工具包，并将在未来几周内引入新名称。 
 
 ## <a name="prerequisites"></a>先决条件
 

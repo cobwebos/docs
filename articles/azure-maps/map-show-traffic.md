@@ -1,19 +1,20 @@
 ---
 title: 在地图上显示交通信息 | Microsoft Azure Maps
-description: 在本文中，你将学习如何使用 Microsoft Azure Maps Web SDK 在地图上显示交通数据。
-author: Philmea
-ms.author: philmea
+description: 了解如何将流量数据添加到 maps。 了解流数据，并了解如何使用 Azure Maps Web SDK 将事件数据和流数据添加到 Maps。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123915"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036419"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 

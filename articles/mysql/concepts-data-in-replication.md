@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79533226"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031211"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -29,6 +29,11 @@ ms.locfileid: "79533226"
 
 ### <a name="data-not-replicated"></a>不会复制的数据
 不会复制主服务器上的 [mysql 系统数据库](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)**。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 若要了解哪些表包含在系统数据库中，请参阅 [MySQL 手册](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)。
+
+### <a name="filtering"></a>筛选
+若要跳过从主服务器复制表 (本地、虚拟机或其他云提供程序托管的数据库服务) ， `replicate_wild_ignore_table` 支持参数。 （可选）使用[Azure 门户](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)在 Azure 中托管的副本服务器上更新此参数。
+
+查看 [MySQL 文档](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)详细了解此参数。
 
 ### <a name="requirements"></a>要求
 - 主服务器版本必须至少是 MySQL 5.6 版本。 

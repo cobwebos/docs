@@ -1,16 +1,17 @@
 ---
 title: Avere vFXT for Azure 演示项目
-description: Avere vFXT 代码演示教程的链接
+description: 这些示例显示了适用于 Azure 的 Avere vFXT 的主要功能和用例：视频呈现、高性能计算、vFXT 性能和客户端设置。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153694"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271067"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT 演示项目
 
@@ -18,13 +19,13 @@ ms.locfileid: "76153694"
 
 ## <a name="video-rendering"></a>视频渲染
 
-* [使用 Azure Batch 和 Avere vFXT 进行呈现](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)-一种60分钟项目，该项目演示如何使用 Azure Batch 和 Avere vFXT 群集的 Autodesk Maya 生成动画影片
+* [使用 Azure Batch 和 Avere vFXT 进行呈现](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) -一种60分钟项目，该项目演示如何使用 Azure Batch 和 Avere vFXT 群集的 Autodesk Maya 生成动画影片
 
 * [为何要使用 Avere vFXT 来进行渲染？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -一种演示，该演示使用和不使用 Avere vFXT 群集来比较网络附加存储中的呈现时间
 
 ## <a name="high-performance-computing"></a>高性能计算
 
-* [改进 Azure 虚拟机（VM）启动时间的最佳实践](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md)-一种可重复的测试，该测试使用 Avere VFXT for Azure 来改善在快速启动成千上万个计算客户端时的启动时间
+* [提高 Azure 虚拟机 (VM) 启动时间的最佳实践](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -一种可重复执行的测试，该测试使用 Azure 的 Avere vFXT 来改善启动成千上万个计算客户端时的启动时间
 
 ## <a name="vfxt-performance"></a>vFXT 性能
 

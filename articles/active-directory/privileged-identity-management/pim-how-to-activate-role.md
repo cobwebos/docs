@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024089"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421393"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中激活我的 Azure AD 角色
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色登录到 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。  如果在概述页的顶部有横幅，请按照本文“新版本”选项卡中的说明进行操作  。 否则，请按照“先前版本”选项卡中的说明操作  。
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![选择 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
@@ -46,33 +46,33 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。  有关如何将 Privileged Identity Management 磁贴添加到仪表板的信息，请参阅[开始使用 Privileged Identity Management](pim-getting-started.md)。
+1. 打开“Azure AD Privileged Identity Management”。 有关如何将 Privileged Identity Management 磁贴添加到仪表板的信息，请参阅[开始使用 Privileged Identity Management](pim-getting-started.md)。
 
-1. 选择“我的角色”，然后选择“Azure AD 角色”，查看符合条件的 Azure AD 角色的列表。  
+1. 选择 **"我的角色**"，然后选择 " **Azure AD 角色**" 查看符合条件的 Azure AD 角色的列表。
 
     ![显示可以激活的角色的“我的角色”页](./media/pim-how-to-activate-role/my-roles.png)
 
-1. 在“Azure AD 角色”列表中，找到要激活的角色。 
+1. 在 " **Azure AD 角色**" 列表中，找到要激活的角色。
 
-    ![Azure AD 角色 - 我的合格角色列表](./media/pim-how-to-activate-role/activate-link.png)
+    ![Azure AD 角色-我的合格角色列表](./media/pim-how-to-activate-role/activate-link.png)
 
 1. 选择 "**激活**" 以打开 "激活" 页。
 
-    ![Azure AD 角色 - 激活页面包含持续时间和范围](./media/pim-how-to-activate-role/activate-page.png)
+    ![Azure AD 角色-激活页面包含持续时间和范围](./media/pim-how-to-activate-role/activate-page.png)
 
-1. 如果角色需要多重身份验证，请选择“验证你的身份，然后继续”。  只需在每个会话中执行身份验证一次。
+1. 如果角色需要多重身份验证，请选择“验证你的身份，然后继续”。**** 只需在每个会话中执行身份验证一次。
 
     ![在激活角色之前使用 MFA 验证身份](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
-1. 选择“验证我的身份”，并按照说明提供其他安全验证。 
+1. 选择“验证我的身份”，并按照说明提供其他安全验证。****
 
     ![用于提供安全验证（例如 PIN 码）的屏幕](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. 如果要指定缩小的范围，请选择“范围”  以打开筛选器窗格。 在筛选器窗格中，可以指定需要访问的 Azure AD 资源。 它是仅请求访问所需资源的最佳做法。
+1. 若要指定缩减的作用域，请选择 "**作用域**" 以打开 "筛选器" 窗格。 在 "筛选器" 窗格中，可以指定需要访问的 Azure AD 资源。 最佳做法是只请求访问所需资源。
 
-1. 根据需要指定自定义的激活开始时间。 Azure AD 角色将在选定时间后激活。
+1. 根据需要指定自定义的激活开始时间。 Azure AD 角色将在选定时间之后激活。
 
-1. 在“原因”框中，输入该激活请求的原因。 
+1. 在“原因”框中，输入该激活请求的原因。****
 
 1. 选择“激活”  。
 
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     ![“已完成激活”窗格，其中包含自定义开始时间、持续时间、票证和原因](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
-1. 单击“激活”  。
+1. 单击“激活”。
 
     如果角色不需要审批，则会出现一个“激活状态”窗格，其中显示激活状态。****
 
@@ -202,7 +202,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“Azure AD 角色”。 
+1. 单击“Azure AD 角色”。****
 
 1. 单击“我的请求”。****
 

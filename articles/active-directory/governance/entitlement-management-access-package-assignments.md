@@ -3,7 +3,7 @@ title: 查看、添加和删除 Azure AD 权利管理中的访问包的分配-Az
 description: 了解如何在 Azure Active Directory 权限管理中查看、添加和删除访问包的分配。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,11 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078826"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783546"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看、添加和删除访问包的分配
 
@@ -57,7 +58,7 @@ ms.locfileid: "85078826"
 
 ### <a name="viewing-assignments-programmatically"></a>以编程方式查看分配
 
-你还可以使用 Microsoft Graph 在访问包中检索分配。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[列出 accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 在访问包中检索分配。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [列出 accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
 
 ## <a name="directly-assign-a-user"></a>直接分配用户
 
@@ -75,9 +76,9 @@ ms.locfileid: "85078826"
 
     ![分配 - 将用户添加到访问包](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. 单击 "**添加用户**" 以选择要向其分配此访问包的用户。
+1. 单击 " **添加用户** " 以选择要向其分配此访问包的用户。
 
-1. 在 "**选择策略**" 列表中，选择将由用户的未来请求和生命周期控制和跟踪的策略。 如果你希望所选用户具有不同的策略设置，你可以单击 "**创建新策略**" 来添加新策略。
+1. 在 " **选择策略** " 列表中，选择将由用户的未来请求和生命周期控制和跟踪的策略。 如果你希望所选用户具有不同的策略设置，你可以单击 " **创建新策略** " 来添加新策略。
 
 1. 设置所选用户的分配开始与结束日期和时间。 如果未提供结束日期，则将使用该策略的生命周期设置。
 
@@ -89,7 +90,7 @@ ms.locfileid: "85078826"
 
 ### <a name="directly-assigning-users-programmatically"></a>直接以编程方式分配用户
 
-你还可以使用 Microsoft Graph 直接将用户分配到访问包。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[创建 accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 直接将用户分配到访问包。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [创建 accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-an-assignment"></a>删除分配
 
@@ -103,7 +104,7 @@ ms.locfileid: "85078826"
  
 1. 单击要删除其分配的用户旁边的复选框。 
 
-1. 单击左侧窗格顶部附近的 "**删除**" 按钮。 
+1. 单击左侧窗格顶部附近的 " **删除** " 按钮。 
  
     ![分配-从 access 包中删除用户](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
 

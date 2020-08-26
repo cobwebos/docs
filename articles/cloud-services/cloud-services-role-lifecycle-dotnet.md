@@ -1,6 +1,6 @@
 ---
 title: 处理云服务生命周期事件 | Microsoft Docs
-description: 了解如何在 .NET 中使用云服务角色的生命周期方法
+description: 了解如何在 .NET 中使用云服务角色的生命周期方法，包括 RoleEntryPoint，它提供了用于响应生命周期事件的方法。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652078"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142309"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自定义 Web 角色或辅助角色的生命周期
 在创建辅助角色时，需要扩展 [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 类，重写该类提供的方法可以响应生命周期事件。 此类对于 Web 角色而言是可选的，因此，必须将它用于响应生命周期事件。

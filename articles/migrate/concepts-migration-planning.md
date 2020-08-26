@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090087"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 构建迁移计划
 
@@ -28,7 +28,7 @@ ms.locfileid: "86107693"
 
 **关键业务事件** | **迁移结果**
 --- | ---
-数据中心退出 | 成本节约
+数据中心退出 | 节约成本
 合并、收购或 divestiture | 减少供应商或降低技术复杂性
 资本支出降低 | 优化内部操作
 终止对任务关键型技术的支持 | 提高业务灵活性
@@ -151,7 +151,7 @@ ms.locfileid: "86107693"
 
 - 如果需要，获取实现支持。 许多组织选择外部帮助来支持云迁移。 若要使用个性化协助快速、自信地迁移到 Azure，请考虑使用 [Azure 专家托管服务提供商](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   或 [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)。  
 
-创建一个有效的云迁移计划，其中包括有关要迁移的应用程序的列表/组的详细信息、应用程序和数据库的可用性以及停机限制以及所需的迁移里程碑。 你的迁移计划还应考虑数据复制将采用的时间，并包含用于迁移后测试和转换活动的深思熟虑后得出缓冲区。 迁移后测试必须包括功能、集成、安全和性能测试用例，以确保已迁移的应用程序按预期运行，并且所有数据库对象和数据关系均已成功传输到云。 迁移后测试必须包括功能、集成、安全和性能测试用例，以确保已迁移的应用程序按预期运行，并且所有数据库对象和数据关系均已成功传输到云。  
+创建一个有效的云迁移计划，其中包括有关要迁移的应用程序的列表/组的详细信息、应用程序和数据库的可用性以及停机限制以及所需的迁移里程碑。 你的迁移计划还应考虑数据复制将采用的时间，并包含用于迁移后测试和转换活动的深思熟虑后得出缓冲区。 迁移后测试必须包括功能、集成、安全和性能测试用例，以确保已迁移的应用程序按预期运行，并且所有数据库对象和数据关系均已成功传输到云。  
 
 使用此分析构建迁移路线图，并声明一个维护时段，将应用程序和数据库迁移到最少停机时间，并在迁移期间限制潜在的操作/业务影响。  
 

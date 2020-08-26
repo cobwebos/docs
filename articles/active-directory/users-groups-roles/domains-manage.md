@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c58086a163bf558ffdc71e51e55d296e8d4d25e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728582"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795332"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -29,10 +30,10 @@ ms.locfileid: "84728582"
 创建目录后，初始域名（例如“contoso.onmicrosoft.com”）也是主域名。 创建新用户时，主域名是新用户的默认域名。 设置主域名简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory”。
+2. 选择“Azure Active Directory” 。
 3. 选择“自定义域名”。
   
-   ![打开用户管理页](./media/domains-manage/add-custom-domain.png)
+   ![打开用户管理页面](./media/domains-manage/add-custom-domain.png)
 4. 选择你希望设为主域的域名。
 5. 选择“设置主域”命令。 出现提示时确认所做的选择。
   
@@ -70,9 +71,9 @@ ms.locfileid: "84728582"
 
 ### <a name="forcedelete-option"></a>ForceDelete 选项
 
-可以在 [Azure AD 管理中心](https://aad.portal.azure.com)使用 **ForceDelete** 来强制删除域名，或使用 [Microsoft 图形 API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta) 执行此操作。 这些选项使用异步操作，并将自定义域名（例如“user@contoso.com”）中的所有引用更新为类似于“user@contoso.onmicrosoft.com”的初始默认域名称。 
+可以在 [Azure AD 管理中心](https://aad.portal.azure.com)使用 **ForceDelete** 来强制删除域名，或使用 [Microsoft 图形 API](/graph/api/domain-forcedelete?view=graph-rest-beta) 执行此操作。 这些选项使用异步操作，并将自定义域名（例如“user@contoso.com”）中的所有引用更新为类似于“user@contoso.onmicrosoft.com”的初始默认域名称。 
 
-若要在 Azure 门户中调用 **ForceDelete**，必须确保对该域名的引用少于 1000 个，并且必须在 [Exchange 管理中心](https://outlook.office365.com/ecp/)更新或删除预配服务是 Exchange 的所有引用。 这包括支持 Exchange 邮件的安全组和分发列表；有关详细信息，请参阅[删除支持邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果存在以下任一情况，则 **ForceDelete** 操作不会成功：
+若要在 Azure 门户中调用 **ForceDelete**，必须确保对该域名的引用少于 1000 个，并且必须在 [Exchange 管理中心](https://outlook.office365.com/ecp/)更新或删除预配服务是 Exchange 的所有引用。 这包括支持 Exchange 邮件的安全组和分发列表；有关详细信息，请参阅[删除支持邮件的安全组](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)。 此外，如果存在以下任一情况，则 **ForceDelete** 操作不会成功：
 
 * 通过 Office 365 域订阅服务购买了域
 * 你是代表另一客户组织的合作伙伴管理员
@@ -93,7 +94,7 @@ ms.locfileid: "84728582"
 **问：为何域删除操作失败，并显示错误“此域名包含 Exchange 主控的组”？** <br>
 **答:** 目前，某些组（例如，支持邮件的安全组和分发列表）由 Exchange 预配，需要手动在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 清理这些组。 可能有遗留的 ProxyAddresses 依赖于自定义域名，需要手动将其更新为另一个域名。 
 
-**问：我以 admin\@contoso.com 身份登录，但无法删除域名“contoso.com”，为什么？**<br>
+**问：我以 admin\@contoso.com 的身份登录，但我无法删除域名“contoso.com”？**<br>
 **答:** 无法引用你尝试在用户帐户名中删除的自定义域名。 请确保全局管理员帐户使用初始默认域名 (.onmicrosoft.com)，例如 admin@contoso.onmicrosoft.com。 使用不同的全局管理员帐户（例如 admin@contoso.onmicrosoft.com），或帐户为 admin@fabrikam.com 的另一个自定义域名（例如“fabrikam.com”）登录。
 
 **问：我单击了“删除域”按钮，但看到删除操作的状态为 `In Progress`。需要多长时间？如果该操作失败，会发生什么情况？**<br>
@@ -105,15 +106,15 @@ ms.locfileid: "84728582"
 
 如果不符合上述任何情况，请手动清理引用，然后重试删除域。
 
-## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>使用 PowerShell 或 Microsoft API 管理域名
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>使用 PowerShell 或 Microsoft Graph API 管理域名
 
-针对 Azure Active Directory 中域名的大多数管理任务也可以使用 Microsoft PowerShell 或者使用 Microsoft 图形 API 以编程方式来完成。
+Azure Active Directory 中的大多数域名管理任务也可以使用 Microsoft PowerShell 完成，或者使用 Microsoft Graph API 以编程方式完成。
 
-* [使用 PowerShell 管理 Azure AD 中的域名](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [域资源类型](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
+* [使用 PowerShell 管理 Azure AD 中的域名](/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [域资源类型](/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [添加自定义域名](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [在 Exchange 管理中心删除 Azure AD 的自定义域名中支持 Exchange 邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [使用 Microsoft 图形 API 强制删除自定义域名](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [添加自定义域名](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
+* [在 Exchange 管理中心删除 Azure AD 的自定义域名中支持 Exchange 邮件的安全组](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
+* [使用 Microsoft 图形 API 强制删除自定义域名](/graph/api/domain-forcedelete?view=graph-rest-beta)

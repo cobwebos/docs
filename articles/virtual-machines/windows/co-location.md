@@ -3,16 +3,16 @@ title: 归置 Vm 以提高延迟
 description: 了解并置 Azure VM 资源如何改善延迟。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 066b6d10dbe07b902abfd15565c5ccf1a5e9c115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5a3c0a582b1e9dfbcf81968ebc9d0c7a0a4f75e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083166"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288316"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>并置资源以改善延迟
 
@@ -29,6 +29,6 @@ ms.locfileid: "82083166"
 
 了解如何[测试网络延迟](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-了解如何[优化网络吞吐量](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  
+了解如何[优化网络吞吐量](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  
 
-了解如何[结合使用邻近组和 SAP 应用程序](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+了解如何[结合使用邻近组和 SAP 应用程序](../workloads/sap/sap-proximity-placement-scenarios.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

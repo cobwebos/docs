@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: 719fb5891fff560ba621b7af88f27387a4f7fce2
-  ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+  ms.openlocfilehash: f78a311125340f447cb0f2dda960e34c289c123a
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2020
-  ms.locfileid: "84906949"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88650836"
 landingContent:
 - title: 了解 Azure 备份
   linkLists:
@@ -116,7 +116,7 @@ landingContent:
       url: backup-azure-manage-mars.md
     - text: MARS 代理支持矩阵
       url: backup-support-matrix-mars-agent.md
-    - text: 常见问题解答 - Mars 代理
+    - text: 常见问题解答 - MARS 代理
       url: backup-azure-file-folder-backup-faq.md
 - title: 使用 Microsoft Azure 备份服务器 (MABS) 和 DPM 进行备份
   linkLists:
@@ -149,4 +149,4 @@ landingContent:
     - text: Azure 备份服务更新
       url: https://azure.microsoft.com/updates/?product=backup
     - text: 有关 Azure 备份的 Microsoft Q&A 问题页面
-      url: https://docs.microsoft.com/answers/topics/azure-backup.html
+      url: /answers/topics/azure-backup.html

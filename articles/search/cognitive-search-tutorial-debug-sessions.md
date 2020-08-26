@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510978"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290676"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教程：诊断、修正和提交对技能组的更改
 
@@ -73,7 +73,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在“文件” > “新建”下，选择要导入的集合。
 1. 导入集合后，展开操作列表 (...)。
 1. 单击 **“编辑”** 。
-1. 输入 searchService 的名称（例如，如果终结点为 https://mydemo.search.windows.net ，则服务名称为“mydemo”）。
+1. 输入 searchService 的名称（例如，如果终结点为 `https://mydemo.search.windows.net`，则服务名称为“`mydemo`”）。
 1. 输入包含搜索服务主要密钥或辅助密钥的 apiKey。
 1. 输入 Azure 存储帐户的密钥页中的 storageConnectionString。
 1. 输入在存储帐户中创建的容器的 containerName。

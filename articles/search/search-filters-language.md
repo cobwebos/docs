@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084188"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中按语言筛选 
 
@@ -34,7 +34,7 @@ ms.locfileid: "82116275"
 
 以下示例来自 [real-estate 示例](search-get-started-portal.md)，该示例具有包含不同语言内容的多个字符串字段。 请注意此索引中字段的语言分析器分配。 如果与旨在处理目标语言的语言规则的分析器搭配使用，包含字符串的字段可在全文搜索中更好地发挥作用。
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![显示房地产示例的 "字段" 屏幕的屏幕截图。 突出显示一组字段，指出语言分析器分配与突出显示的字段的语言对应的方式。](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > 有关通过语言分析器显示字段定义的代码示例，请参阅[定义索引 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) 和[定义索引 (REST)](search-create-index-rest-api.md)。

@@ -10,12 +10,14 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323054"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -41,7 +43,7 @@ ms.locfileid: "86045988"
 
 直接方法是同步的，在超时期限（默认：30 秒，可设置为 5 到 300 秒）。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
-直接方法仅从 cloud 端、MQTT、AMQP、MQTT over Websocket，或从设备端到 Websocket 的 AMQP。
+直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT、AMQP、基于 WebSocket 的 MQTT 或 基于 WebSockets 的 AMQP 调用。
 
 方法请求和响应的有效负载为最大 128 KB 的 JSON 文档。
 

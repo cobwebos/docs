@@ -4,11 +4,12 @@ description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327032"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor 自动缩放常用指标
 
@@ -16,7 +17,7 @@ ms.locfileid: "76845560"
 
 利用 Azure 监视器自动缩放，可以根据遥测数据（指标）增加或减少正在运行的实例数。 本文档介绍了你可能想要使用的常用指标。 在 Azure 门户中，可以选择要作为缩放依据的资源指标。 不过，也可以选择其他资源的任何指标来作为缩放依据。
 
-Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。 其他 Azure 服务使用不同的缩放方法。
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。 其他 Azure 服务使用不同的缩放方法。
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>基于 Resource Manager 的 VM 的计算指标
 默认情况下，基于 Resource Manager 的虚拟机和虚拟机规模集发出基本（主机级）指标。 此外，为 Azure VM 和 VMSS 配置诊断数据集合时，Azure 诊断扩展也会发出来宾 OS性能计数器（通常称为“来宾 OS 指标”）。  可在自动缩放规则中使用所有这些指标。
@@ -32,8 +33,8 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>基于 Resource Manager 的 Windows 和 Linux VM 的主机指标
 默认情况下，将向 Windows 和 Linux 实例中的 Azure VM 和 VMSS 发出以下主机级指标。 这些指标可描述 Azure VM，但这些指标是从 Azure VM 主机而不是通过来宾 VM 上安装的代理收集的。 可在自动缩放规则中使用这些指标。
 
-- [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](./metrics-supported.md#microsoftcomputevirtualmachines)
+- [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](./metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows VM 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会启用诊断。 诊断扩展会发出一组从 VM 内部获取的指标。 这意味着可以自动缩放不是默认发出的指标。

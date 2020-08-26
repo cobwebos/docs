@@ -1,19 +1,19 @@
 ---
 title: 支持的数据格式详细信息 |Microsoft Azure 映射
 description: 了解如何在空间 IO 模块中分析分隔空间数据。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334082"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127921"
 ---
 # <a name="supported-data-format-details"></a>支持的数据格式详细信息
 
@@ -23,7 +23,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下命名空间中的 XML 标记。
 
-| 命名空间前缀 | 命名空间 URI   | 备注                                                                    |
+| 命名空间前缀 | 命名空间 URI   | 注释                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | GeoRSS 文件中的只读支持。           |
@@ -45,7 +45,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 KML 元素。
 
-| 元素名称         | 读取    | 写入   | 备注                                                                                                                      |
+| 元素名称         | 读取    | 写入   | 注释                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | 部分 | 是     | 对象经过分析，但不用于定位形状。                                                                    |
 | `AddressDetails`     | 部分 | 否      | 对象经过分析，但不用于定位形状。                                                                    |
@@ -131,7 +131,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 GeoRSS 元素。
 
-| 元素名称             | 读取    | 写入 | 备注                                                                                          |
+| 元素名称             | 读取    | 写入 | 注释                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | 是     | 是   |                                                                                                |
 | `atom:category`          | 是     | 是   |                                                                                                |
@@ -203,7 +203,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 GML 元素。 
 
-| 元素名称            | 读取 | 写入 | 备注                                                                                  |
+| 元素名称            | 读取 | 写入 | 注释                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | 是  | 否    | 编写为 `gml:posList` 。                                                              |
 | `gml:curveMember`       | 是  | 否    |                                                                                        |
@@ -254,7 +254,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 .GPX) 元素。
 
-| 元素名称             | 读取    | 写入   | 备注                                                                                       |
+| 元素名称             | 读取    | 写入   | 注释                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | 是     | 是     |                                                                                             |
 | `gpx:author`             | 是     | 是     |                                                                                             |
@@ -397,9 +397,9 @@ ms.locfileid: "80334082"
 - int
 - long
 - edm。 double
-- float
-- double
-- number
+- FLOAT
+- Double
+- 数字
 
 #### <a name="booleans"></a>布尔型
 

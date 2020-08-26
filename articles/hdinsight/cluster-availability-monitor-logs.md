@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077212"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163724"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>如何在 HDInsight 中使用 Azure Monitor 日志监视群集可用性
 
@@ -30,6 +30,8 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 ![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+默认情况下，会在除边缘节点以外的所有群集节点上安装 OMS 代理。 由于未在群集边缘节点上安装 OMS 代理，因此默认情况下，Log Analytics 中没有针对边缘节点的遥测。
+
 ## <a name="query-metrics-and-logs-tables"></a>查询指标和日志表
 
 启用 Azure Monitor 日志集成后（这可能需要几分钟时间），导航到“Log Analytics 工作区”资源并选择“日志”。**** ****
@@ -46,7 +48,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 | 不可用的计算机           | 列出过去 5 小时未发送检测信号的所有已知计算机 |
 | 可用率               | 计算每台已连接计算机的可用率                |
 
-例如，选择该查询对应的“运行”以运行“可用率”示例查询，如以上屏幕截图中所示。**** **** 这会以百分比显示群集中每个节点的可用率。 如果启用了多个 HDInsight 群集以将指标发送到相同的 Log Analytics 工作区，则会显示这些群集中所有节点的可用率。
+例如，选择该查询对应的“运行”以运行“可用率”示例查询，如以上屏幕截图中所示。**** **** 这会以百分比显示群集中每个节点的可用率。 如果已启用多个 HDInsight 群集来将指标发送到相同的 Log Analytics 工作区，则会看到所有节点的可用性费率 (排除显示的那些群集中) 边缘节点。
 
 ![Log Analytics 工作区日志的“可用率”示例查询](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 

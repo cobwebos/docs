@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Versal 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Versal 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5b2e53c0-61a3-4954-ae46-8c28c6368bfd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5e5a3f8070829916b228e9bc68e37156ddf5f6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae966e56b0ea679f20445648926ce2beccb9f080
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75561773"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532039"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-versal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Versal 集成
 

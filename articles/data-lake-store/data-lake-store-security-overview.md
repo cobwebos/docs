@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 中的安全性概述 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 是更安全的大数据存储的原因
+description: 了解 Azure Data Lake Storage Gen1 的安全功能，包括身份验证、授权、网络隔离、数据保护和审核。
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086566"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192829"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 
@@ -39,22 +39,22 @@ ms.locfileid: "82086566"
 
 Azure Active Directory 对用户进行身份验证，以便用户可以访问 Data Lake Storage Gen1。在此之后，授权控制 Data Lake Storage Gen1 的访问权限。 Data Lake Storage Gen1 按以下方式分隔帐户相关活动与数据相关活动的授权：
 
-* Azure 向帐户管理提供的[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC)
+* 用于帐户管理[ (AZURE RBAC) 的 azure 基于角色的访问控制](../role-based-access-control/overview.md)
 * 用于访问存储区中数据的 POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>用于帐户管理的 RBAC
 
 默认情况下，针对 Data Lake Storage Gen1 定义四种基本角色。 这些角色允许通过 Azure 门户、PowerShell cmdlet 和 REST API 对 Data Lake Storage Gen1 帐户执行不同的操作。 所有者和参与者角色可对帐户执行许多管理功能。 可以将读取者角色分配给仅查看帐户管理数据的用户。
 
-![RBAC 角色](./media/data-lake-store-security-overview/rbac-roles.png "RBAC 角色")
+![Azure 角色](./media/data-lake-store-security-overview/rbac-roles.png "Azure 角色")
 
 请注意：尽管未给帐户管理分配角色，但某些角色会影响对数据的访问。 需要使用 ACL 来控制对用户在文件系统上所执行操作的访问。 下表显示管理权限的摘要和默认角色的数据访问权限。
 
 | 角色 | 管理权限 | 数据访问权限 | 说明 |
 | --- | --- | --- | --- |
 | 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
-| 所有者 |All |All |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
-| 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
+| 所有者 |全部 |全部 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
+| 读者 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
 
@@ -74,7 +74,7 @@ Data Lake Storage Gen1 是一个类似于 Hadoop 分布式文件系统 (HDFS) �
 
 ![防火墙设置和 IP 访问](./media/data-lake-store-security-overview/firewall-ip-access.png "防火墙设置和 IP 地址")
 
-Azure 虚拟网络（VNet）支持 Data Lake 第1代的服务标记。 服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关详细信息，请参阅[Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
+Azure 虚拟网络 (VNet) 支持 Data Lake 第1代服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关详细信息，请参阅 [Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
 
 ## <a name="data-protection"></a>数据保护
 
@@ -117,7 +117,7 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 如果想要了解 Data Lake Storage Gen1 中的新功能，请在 [Data Lake Storage Gen1 UserVoice 论坛](https://feedback.azure.com/forums/327234-data-lake)中向我们发送反馈。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)

@@ -6,12 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80745555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075921"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>流分析开窗函数简介
 
@@ -34,7 +35,8 @@ ms.locfileid: "80745555"
 ![流分析跳跃窗口](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>滑动窗口
-不同于翻转或跳跃窗口，滑动开窗函数**只**在事件发生时生成输出。 每个窗口至少有一个事件，并且窗口持续按 ε (epsilon) 向前移动。 与跳跃窗口一样，事件可以属于多个滑动窗口。
+
+滑动窗口不同于翻转或跳跃窗口，仅输出窗口内容实际更改时点的事件。 换句话说，事件进入或退出窗口时。 每个窗口至少有一个事件，如跳跃窗口，事件可以属于多个滑动窗口
 
 ![流分析滑动窗口](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -49,6 +51,11 @@ ms.locfileid: "80745555"
 
 如果提供了分区键，则事件按该键组合在一起，会话窗口将分别应用于每个组。 在需要将不同会话窗口用于不同用户或设备时，此分区十分有帮助。
 
+## <a name="snapshot-window"></a>快照窗口
+
+快照 windows 组具有相同时间戳的事件。 与其他需要特定窗口函数（如[SessionWindow （）](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)的窗口化类型不同，您可以通过向 GROUP by 子句添加 system.string （）来应用快照窗口。
+
+![流分析快照窗口](media/stream-analytics-window-functions/snapshot.png)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

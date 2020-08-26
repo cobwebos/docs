@@ -2,12 +2,13 @@
 title: 扩展资源类型
 description: 列出用于扩展其他资源类型的功能的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754869"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374008"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
 
@@ -27,7 +28,9 @@ ms.locfileid: "80754869"
 - Microsoft.Authorization/permissions
 - Microsoft.Authorization/policyAssignments
 - Microsoft.Authorization/policyDefinitions
+- Microsoft. Authorization/policyExemptions
 - Microsoft.Authorization/policySetDefinitions
+- Microsoft. Authorization/privateLinkAssociations
 - Microsoft.Authorization/roleAssignments
 - Microsoft.Authorization/roleAssignmentsUsageMetrics
 - Microsoft.Authorization/roleDefinitions
@@ -38,6 +41,7 @@ ms.locfileid: "80754869"
 - Microsoft.Billing/createBillingRoleAssignment
 - Microsoft.Blueprint/blueprintAssignments
 - Microsoft.Blueprint/blueprints
+- ChangeAnalysis/resourceChanges
 - Microsoft.Consumption/AggregatedCost
 - Microsoft.Consumption/Balances
 - Microsoft.Consumption/Budgets
@@ -49,6 +53,7 @@ ms.locfileid: "80754869"
 - Microsoft.Consumption/OperationStatus
 - Microsoft.Consumption/Pricesheets
 - Microsoft.Consumption/ReservationDetails
+- ReservationRecommendationDetails/
 - Microsoft.Consumption/ReservationRecommendations
 - Microsoft.Consumption/ReservationSummaries
 - Microsoft.Consumption/ReservationTransactions
@@ -63,6 +68,7 @@ ms.locfileid: "80754869"
 - Microsoft.ContainerInstance/serviceAssociationLinks
 - Microsoft.CostManagement/Alerts
 - Microsoft.CostManagement/Budgets
+- CostManagement/costAllocationRules
 - Microsoft.CostManagement/Dimensions
 - Microsoft.CostManagement/Exports
 - Microsoft.CostManagement/ExternalSubscriptions
@@ -70,8 +76,8 @@ ms.locfileid: "80754869"
 - Microsoft.CostManagement/Query
 - Microsoft.CostManagement/Reportconfigs
 - Microsoft.CostManagement/Reports
-- Microsoft.CostManagement/Views
 - Microsoft.CostManagement/showbackRules
+- Microsoft.CostManagement/Views
 - Microsoft.CustomProviders/associations
 - Microsoft.EventGrid/eventSubscriptions
 - Microsoft.EventGrid/extensionTopics
@@ -107,12 +113,13 @@ ms.locfileid: "80754869"
 - Microsoft.ManagedServices/registrationDefinitions
 - Microsoft.OperationalInsights/storageInsightConfigs
 - Microsoft.OperationsManagement/managementassociations
+- PolicyInsights/证明
 - Microsoft.PolicyInsights/policyEvents
 - Microsoft.PolicyInsights/policyStates
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Microsoft.RecoveryServices/backupProtectedItems
-- Microsoft.RecoveryServices/replicationEligibilityResults    
+- Microsoft.RecoveryServices/replicationEligibilityResults
 - Microsoft.ResourceHealth/availabilityStatuses
 - Microsoft.ResourceHealth/childAvailabilityStatuses
 - Microsoft.ResourceHealth/childResources
@@ -130,11 +137,12 @@ ms.locfileid: "80754869"
 - Microsoft.Security/complianceResults
 - Microsoft.Security/dataCollectionAgents
 - Microsoft.Security/deviceSecurityGroups
-- Microsoft.Security/networkData
+- Microsoft. Security/jitPolicies
 - Microsoft.Security/serverVulnerabilityAssessments
 - Microsoft.SecurityInsights/aggregations
 - Microsoft.SecurityInsights/alertRuleTemplates
 - Microsoft.SecurityInsights/alertRules
+- SecurityInsights/automationRules
 - Microsoft.SecurityInsights/bookmarks
 - Microsoft.SecurityInsights/cases
 - Microsoft.SecurityInsights/dataConnectors
@@ -144,6 +152,7 @@ ms.locfileid: "80754869"
 - SecurityInsights/事件
 - Microsoft.SecurityInsights/officeConsents
 - Microsoft.SecurityInsights/settings
+- SecurityInsights/threatIntelligence
 - Microsoft.SoftwarePlan/hybridUseBenefits
 - Microsoft.Subscription/CreateSubscription
 - microsoft.support/supporttickets

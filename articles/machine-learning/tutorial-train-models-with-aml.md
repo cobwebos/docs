@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 3cdd39ea9581384e7dd37ed67c641849f2696e1c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: seodec18, devx-track-python
+ms.openlocfilehash: f56b289f65bf12c1ad89d046d6bc26acd76249ce
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558341"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849772"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
+在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分****。  
 
 本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](https://scikit-learn.org) 与 Azure 机器学习配合使用来训练简单的逻辑回归。 MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28 x 28 像素的手写数字，代表一个从零到九的数字。 目标是创建多类分类器，以确定给定图像代表的数字。
 
@@ -46,7 +46,7 @@ ms.locfileid: "84558341"
     * 将教程笔记本克隆到工作区中的文件夹。
     * 创建基于云的计算实例。
 
-* 在克隆的 tutorials/image-classification-mnist-data 文件夹中，打开 img-classification-part1-training.ipynb 笔记本。 
+* 在克隆的 tutorials/image-classification-mnist-data** 文件夹中，打开 img-classification-part1-training.ipynb 笔记本**。 
 
 
 如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程及其附带的 **utils.py** 文件，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以便安装本教程的依赖项。
@@ -55,7 +55,7 @@ ms.locfileid: "84558341"
 > 本文的其余部分包含的内容与在笔记本中看到的内容相同。  
 >
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。 
-> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”来运行整个笔记本。
+> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”**** 来运行整个笔记本。
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>设置开发环境
 
@@ -66,7 +66,7 @@ ms.locfileid: "84558341"
 * 创建试验来跟踪所有运行。
 * 创建要用于定型的远程计算目标。
 
-### <a name="import-packages"></a>导入包
+### <a name="import-packages"></a>导入程序包
 
 导入在此会话中所需的 Python 包。 此外显示 Azure 机器学习 SDK 版本：
 
@@ -84,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>连接到工作区
 
-从现有工作区创建工作区对象。 `Workspace.from_config()` 读取文件 config.json 并将详细信息加载到一个名为 `ws` 的对象：
+从现有工作区创建工作区对象。 `Workspace.from_config()` 读取文件 config.json 并将详细信息加载到一个名为 `ws` 的对象****：
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -315,7 +315,7 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 * 估算器对象的名称，`est`。
 * 包含脚本的目录。 此目录中的所有文件都上传到群集节点以便执行。
 * 计算目标。 在此示例中，将使用所创建的 Azure 机器学习计算群集。
-* 定型脚本名称，train.py。
+* 定型脚本名称，train.py****。
 * 一个环境，其中包含运行脚本所需的库。
 * 定型脚本所需的参数。
 
@@ -364,23 +364,23 @@ run = exp.submit(config=est)
 run
 ```
 
-由于调用是异步的，因此一旦作业启动，它就会返回“正在准备”或“正在运行”状态 。
+由于调用是异步的，因此一旦作业启动，它就会返回“正在准备”或“正在运行”状态**** ****。
 
 ## <a name="monitor-a-remote-run"></a>监视远程运行
 
-总的来说，首次运行需要大约 10 分钟。 但对于后续运行，只要不更改脚本依赖项，将重复使用相同的映像。 因此容器启动时间要快得多。
+总的来说，首次运行需要大约 10 分钟****。 但对于后续运行，只要不更改脚本依赖项，将重复使用相同的映像。 因此容器启动时间要快得多。
 
 等待时会发生以下情况：
 
-- **映像创建**：将创建与估算器指定的 Python 环境相匹配的 Docker 映像。 映像将上传到工作区。 创建和上传映像需要大约五分钟。
+- **映像创建**：将创建与估算器指定的 Python 环境相匹配的 Docker 映像。 映像将上传到工作区。 创建和上传映像需要大约五分钟****。
 
   此阶段针对每个 Python 环境发生一次，因为已缓存容器用于后续运行。 映像创建期间，日志将流式传输到运行历史记录。 可以使用这些日志监视映像创建进度。
 
-- **缩放**：如果远程群集需要比当前可用节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约五分钟。
+- **缩放**：如果远程群集需要比当前可用节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约五分钟****。
 
-- **正在运行**：在此阶段，必要的脚本和文件会发送到计算目标。 接着，装载或复制数据存储。 然后，运行 entry_script。 运行作业时，stdout 和 ./logs 目录会流式传输到运行历史记录 。 可以使用这些日志监视运行进度。
+- **正在运行**：在此阶段，必要的脚本和文件会发送到计算目标。 接着，装载或复制数据存储。 然后，运行 entry_script****。 运行作业时，stdout 和 ./logs 目录会流式传输到运行历史记录**** ****。 可以使用这些日志监视运行进度。
 
-- **后期处理**：运行的 ./outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果。
+- **后期处理**：运行的 ./outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果****。
 
 可以通过多种方式查看正在运行的作业的进度。 本教程使用 Jupyter 小组件和 `wait_for_completion` 方法。
 

@@ -3,16 +3,17 @@ title: 创建启用了捕获的事件中心 - Azure 事件中心 | Microsoft Doc
 description: 使用 Azure 资源管理器模板创建包含一个事件中心的 Azure 事件中心命名空间并启用捕获
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 51b654635fa7e06901a257c930e04bff3ea86cf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7d8c8913cfe674c04f90fe02b88fc9739b2404aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315693"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499460"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
-本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的[事件中心](event-hubs-what-is-event-hubs.md)命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的[事件中心](./event-hubs-about.md)命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
 本文还介绍如何根据所选目标，指定将事件捕获到 Azure 存储 Blob 或 Azure Data Lake Store 中。
 
@@ -34,11 +35,11 @@ ms.locfileid: "85315693"
 
 借助此模板，可以部署包含事件中心的事件中心命名空间并启用[事件中心捕获](event-hubs-capture-overview.md)。 通过事件中心捕获，可以在所选的指定时间或大小间隔内，将事件中心的流式处理数据自动传送到 Azure Blob 存储或 Azure Data Lake Store。 单击以下按钮，允许事件中心捕获将事件捕获到 Azure 存储中：
 
-[![“部署到 Azure”](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 单击以下按钮，允许事件中心捕获将事件捕获到 Azure Data Lake Store 中：
 
-[![“部署到 Azure”](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
+[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>参数
 
@@ -418,7 +419,7 @@ az group deployment create \<my-resource-group\> \<my-deployment-name\> --templa
 
 访问以下链接可以了解有关事件中心的详细信息：
 
-* [事件中心概述](event-hubs-what-is-event-hubs.md)
+* [事件中心概述](./event-hubs-about.md)
 * [创建事件中心](event-hubs-create.md)
 * [事件中心常见问题](event-hubs-faq.md)
 

@@ -3,34 +3,34 @@ title: Azure 认可的 Linux 分发
 description: 了解 Azure 认可的分发中的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的指南。
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
-ms.date: 11/04/2019
+ms.topic: conceptual
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527381"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607006"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 
-合作伙伴在 Azure 市场中提供了 Linux 映像。 Microsoft 与各种 Linux 社区合作，向认可的通讯组列表添加更多风格。 对于市场未提供的分发，用户始终可以按照[创建并上传包含 Linux 操作系统的虚拟硬盘](./create-upload-generic.md)中的准则安装自己的 Linux。
+合作伙伴提供 Azure Marketplace 中的 Linux 映像。 Microsoft 与各种 Linux 社区合作，向认可的通讯组列表添加更多风格。 对于市场未提供的分发，用户始终可以按照[创建并上传包含 Linux 操作系统的虚拟硬盘](./create-upload-generic.md)中的准则安装自己的 Linux。
 
 ## <a name="supported-distributions-and-versions"></a>支持的发行版和版本
 
-下表列出了 Azure 支持的 Linux 分发和版本。 请参阅[Microsoft Azure 中对 linux 映像的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)，了解有关 Azure 中 linux 和开源技术的支持的更多详细信息。
+下表列出了 Azure 支持的 Linux 分发和版本。 有关详细信息，请参阅 [Microsoft Azure 中对 Linux 映像的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)。
 
-Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序是 Microsoft 直接为上游 Linux 内核提供的内核模块。 默认情况下，某些 LIS 驱动程序已内置在发行版的内核中。 基于 Red Hat Enterprise (RHEL)/CentOS 的早期分发在[用于 Hyper-V 和 Azure 的 Linux Integration Services 版本 4.2](https://www.microsoft.com/download/details.aspx?id=55106) 以单独下载的形式提供。 有关 LIS 驱动程序的详细信息，请参阅 [Linux 内核要求](create-upload-generic.md#linux-kernel-requirements)。
+Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序是 Microsoft 直接为上游 Linux 内核提供的内核模块。 默认情况下，某些 LIS 驱动程序已内置在发行版的内核中。 基于 Red Hat Enterprise (RHEL)/CentOS 的早期分发在[用于 Hyper-V 和 Azure 的 Linux Integration Services 版本 4.2](https://www.microsoft.com/download/details.aspx?id=55106) 以单独下载的形式提供。 有关详细信息，请参阅 [Linux 内核要求](create-upload-generic.md#linux-kernel-requirements)。
 
-Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的包存储库中获得。 源代码可在 [GitHub](https://github.com/azure/walinuxagent)上找到。
+Azure Linux 代理已预安装在 Azure Marketplace 映像上，并通常可从分发的包存储库中获取。 源代码可在 [GitHub](https://github.com/azure/walinuxagent)上找到。
 
 | 分发 | 版本 | 驱动程序 | Agent |
 | --- | --- | --- | --- |
@@ -39,20 +39,20 @@ Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的�
 | 由 Credativ 提供的 Debian |8.x、9.x |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 |由 Kinvolk 提供的 Flatcar Container Linux| Stable、Edge| | |
 | Oracle Oracle Linux |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| 用 Red Hat Red Hat Enterprise Linux |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| [用 Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 由 SUSE 提供的 SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE 公有云映像生命周期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在内核中 |包：<p> 对于 11，在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中<br>对于 12，包含在“公有云”模块中的“python-azure-agent”下<br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | 由 SUSE 提供的 openSUSE |openSUSE Leap 15.x |在内核中 |包：在“python-azure-agent”下的 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 由 Canonical 提供的 Ubuntu |Ubuntu Server 和 Pro。 16.x、18.x、20.x<p>对 Ubuntu 12.04 和 14.04 的扩展支持有关的信息可在此处找到：[Ubuntu 扩展安全维护](https://www.ubuntu.com/esm)。 |在内核中 |包：在“walinuxagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>映像的更新节奏
 
-Azure 要求受认可 Linux 分发版的发布者在每个季度或以更快的节奏，定期使用最新修补程序和安全修复程序，更新其在 Azure 市场中的映像。 在 Azure 市场中更新的映像将自动以新版映像 SKU 的形式提供给客户使用。 有关如何查找 Linux 映像的详细信息：[在 Azure 市场中查找 Linux VM 映像](./cli-ps-findimage.md)。
+Azure 要求认可的 Linux 分发版的发布者定期使用最新的修补程序和安全修补程序在 Azure Marketplace 中更新其映像，每季度或更快。 Marketplace 中更新后的映像将自动提供给客户，作为新版本的映像 SKU。 有关如何查找 Linux 映像的详细信息： [在 Azure Marketplace 中查找 LINUX VM 映像](./cli-ps-findimage.md)。
 
 ## <a name="azure-tuned-kernels"></a>Azure 优化的内核
 
-Azure 与众多认可的 Linux 分发商密切合作，以优化他们在 Azure 市场中发布的映像。 这种协作的一个方面体现在：开发针对 Azure 平台优化的 Linux 内核，并以完全受支持组件的形式交付 Linux 分发版。 Azure 优化的内核整合了新的功能和性能改进，并且与分发版中提供的默认或常规内核相比，其发布节奏更快（通常每季度发布一次）。
+Azure 与各种认可的 Linux 发行版密切合作，以优化发布到 Azure Marketplace 的映像。 这种协作的一个方面体现在：开发针对 Azure 平台优化的 Linux 内核，并以完全受支持组件的形式交付 Linux 分发版。 Azure 优化的内核整合了新的功能和性能改进，并且与分发版中提供的默认或常规内核相比，其发布节奏更快（通常每季度发布一次）。
 
-在大多数情况下，你会发现这些内核已预装在 Azure 市场中的默认映像内，因此客户可以立即获得这些优化内核的优势。 可在以下链接中找到有关这些 Azure 优化内核的详细信息：
+在大多数情况下，你将在 Azure Marketplace 中的默认映像上预先安装这些内核，以便客户立即获得这些优化内核的好处。 可在以下链接中找到有关这些 Azure 优化内核的详细信息：
 
 - [CentOS Azure 优化内核 - 通过 CentOS 虚拟化 SIG 提供](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian 云内核 - 适用于 Azure 上的 Debian 10 和 Debian 9“后向移植”映像](https://wiki.debian.org/Cloud/MicrosoftAzure)
@@ -75,6 +75,14 @@ Microsoft 为 CoreOS 用户提供了两 (2) 个迁移通道。
 
 Credativ 是一家独立的咨询和服务公司，致力于通过免费软件开发和实施专业解决方案。 Credativ 是获得国际认可的开源领域专业先行者，为许多公司的 IT 部门提供支持。 Credativ 与 Microsoft 合作，目前正在为 Debian 8 (Jessie) 以及 Debian 7 (Wheezy) 之前的版本准备相应的 Debian 映像。 这些映像经过专门的设计，可以在 Azure 上运行并可通过该平台轻松进行管理。 Credativ 还会通过其开源支持中心为 Azure 的 Debian 映像的维护和更新提供长期支持。
 
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+Kinvolk 是 Flatcar 容器 Linux 后面的公司，为容器化的应用程序继续原 CoreOS 愿景，实现最小、不可变和自动更新的基础。 最小的发行版是，Flatcar 只包含部署容器所需的包。 它的不可变文件系统确保一致性和安全性，而其自动更新功能使您始终可以使用最新的安全修补程序保持最新状态。 
+
+Flatcar 容器 Linux 由 Kinvolk 的 Linux 和容器技术专家的全局团队进行备份，这些专家提供了可选的商业支持订阅，包括24x7 响应、安全和技术警报，以及独有的 Azure 优化映像，其中包括长期支持渠道。
+
+
 ### <a name="oracle"></a>Oracle
 
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
@@ -85,7 +93,7 @@ Oracle 的策略是为公有云和私有云提供广泛的解决方案组合。 
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-世界上领先的开源解决方案提供商可帮助超过90% 的财富500公司解决业务难题、协调其 IT 和业务策略，并为未来的技术做好准备。 Red Hat 通过开放式业务模型和价格合理、可预测的订阅模型提供安全的解决方案，从而实现了此目的。
+世界上领先的开源解决方案提供商可帮助超过90% 的财富500公司解决业务难题、协调其 IT 和业务策略，并为未来的技术做好准备。 Red Hat 通过开放业务模型和价格合理且可预测的订阅模型提供安全解决方案来实现这一点。
 
 ### <a name="suse"></a>SUSE
 

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Dovetale 的单一登录 (SSO) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Dovetale 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 81da50c3-df94-458a-8b6a-a30827ee6358
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2c96c6ddd015285b7780c70741ddb704866aa60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f1e8c1a0008d1b09a56929c64ba35bbc4881edd0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76260644"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dovetale"></a>教程：Azure Active Directory 与 Dovetale 的单一登录 (SSO) 集成
 

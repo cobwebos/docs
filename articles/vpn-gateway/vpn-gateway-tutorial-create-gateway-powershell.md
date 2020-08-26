@@ -1,18 +1,18 @@
 ---
 title: 教程 - 使用 Azure VPN 网关创建和管理网关
-description: 教程 - 使用 Azure PowerShell 模块创建和管理 VPN 网关
+description: 按本教程进行操作，了解如何使用 PowerShell 创建、部署和管理 Azure VPN 网关。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38b13ddc08b08ce080f1cc9e9b30caeea3b4efdf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79137171"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031518"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 

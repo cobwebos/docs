@@ -4,11 +4,12 @@ description: 使用应用程序映射监视复杂的应用程序拓扑
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80989521"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421291"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -80,9 +81,12 @@ ms.locfileid: "80989521"
 
 ![分析体验的屏幕截图](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>设置云角色名称
+## <a name="set-or-override-cloud-role-name"></a>设置或重写云角色名称
 
-应用程序映射使用**云角色名称**属性来标识映射上的组件。 Application Insights SDK 会自动将云角色名称属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改要在应用程序映射上显示的内容，请如下所示进行操作：
+应用程序映射使用**云角色名称**属性来标识映射上的组件。 若要手动设置或重写云角色名称并更改应用程序映射上显示的内容，请执行以下操作：
+
+> [!NOTE]
+> Application Insights SDK 或代理会自动将云角色名称属性添加到 Azure App Service 环境中由组件发出的遥测。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
@@ -156,7 +160,7 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 
 **Java 代理**
 
-对于 [Java 代理 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)，云角色名称设置如下：
+对于 [Java 代理 3.0](./java-in-process-agent.md)，云角色名称设置如下：
 
 ```json
 {
@@ -258,15 +262,15 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 1. 请确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
 
-    有关受支持的 SDK 的列表，请参考此[文章](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
+    有关受支持的 SDK 的列表，请参考此[文章](./platforms.md)。
 
 2. 将所有组件都升级到最新 SDK 版本。
 
-3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
+3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](../../azure-functions/functions-versions.md)。
 
-4. 确认[云角色名称](#set-cloud-role-name)已正确配置。
+4. 确认[云角色名称](#set-or-override-cloud-role-name)已正确配置。
 
-5. 如果缺少某个依赖项，请确保它在[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)列表中。 如果不在其中，也可以使用某个[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
+5. 如果缺少某个依赖项，请确保它在[自动收集的依赖项](./auto-collect-dependencies.md)列表中。 如果不在其中，也可以使用某个[跟踪依赖项调用](./api-custom-events-metrics.md#trackdependency)手动跟踪它。
 
 ### <a name="too-many-nodes-on-the-map"></a>映射中存在过多的节点
 
@@ -280,7 +284,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 * 依赖项类型应代表依赖项的逻辑类型。 例如，HTTP、 SQL 或 Azure Blob 就是典型的依赖项类型。 它不应包含唯一 ID。
 
-* [上面的部分](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)介绍了云角色名称的用途。
+* [上面的部分](#set-or-override-cloud-role-name)介绍了云角色名称的用途。
 
 ## <a name="portal-feedback"></a>门户反馈
 

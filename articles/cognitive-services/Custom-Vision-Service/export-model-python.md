@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: 46ed55e5d6a9156d9ea7909925e92d6c39c8e89d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609567"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875432"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
@@ -171,7 +171,7 @@ def update_orientation(image):
     return image
 ```
 
-## <a name="predict-an-image"></a>预测图像
+## <a name="classify-an-image"></a>对图像进行分类
 
 一旦图像已作为 tensor 准备就绪，便可以通过模型发送它以进行预测：
 
@@ -184,7 +184,7 @@ input_node = 'Placeholder:0'
 with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+        predictions = sess.run(prob_tensor, {input_node: [augmented_image] })
     except KeyError:
         print ("Couldn't find classification output layer: " + output_layer + ".")
         print ("Verify this a model exported from an Object Detection project.")

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Mail Luck! 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Mail Luck! 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 783ea511-0b02-4455-ac8c-7aefde4ae4df
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: daf86270224d2a76eb124e879594ac2588b46776
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9f2808690bee528e78dbd5fed3023e1a6ea4a75b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969729"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Mail Luck! 的集成
 

@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200090"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837170"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -111,7 +112,7 @@ Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>使用 PowerShell 查看维护状态
 
-可以使用 Azure PowerShell 查看虚拟机规模集中的 VM 计划何时维护。 使用 `-InstanceView` 参数时可通过使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) cmdlet 获得计划内维护信息。
+可以使用 Azure PowerShell 查看虚拟机规模集中的 VM 计划何时维护。 使用 `-InstanceView` 参数时可通过使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) cmdlet 获得计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划影响 VM 实例的维护，则 cmdlet 不会返回任何维护信息。 
 
@@ -180,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **答:** 可用性集或虚拟机规模集中部署的虚拟机使用更新域。 执行维护时，Azure 遵循更新域约束，不会从其他更新域（在同一可用性集中）重新启动 VM。 Azure 还会至少等待 30 分钟，然后才移到下一组 VM。 
 
-有关高可用性的详细信息，请参阅 [Azure 中虚拟机的区域和可用性](../virtual-machines/windows/availability.md)。
+有关高可用性的详细信息，请参阅 [Azure 中虚拟机的区域和可用性](../virtual-machines/availability.md)。
 
 **问：如何收到有关计划内维护的通知？**
 

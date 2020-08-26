@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 87af7f0f9b446fb3a54a600f61409c2cfc1a2494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006936"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>部署包含多个公共 IP 地址的 Azure 防火墙
 
@@ -37,9 +37,9 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
      -VirtualHubId $vHubId 
 ```
 
-### <a name="delete-a-public-ip-address"></a>删除公共 IP 地址
+### <a name="update-a-public-ip-address"></a>更新公共 IP 地址
 
-可以使用 Azure PowerShell 从 Azure 防火墙中删除公共 IP 地址。 以下示例从防火墙中删除一个公共 IP 地址。 它从三个公共 IP 地址开始。
+你可以使用 Azure PowerShell 来更新 Azure 防火墙的公共 IP 地址。 以下示例从防火墙中删除一个公共 IP 地址。 它从三个公共 IP 地址开始。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>

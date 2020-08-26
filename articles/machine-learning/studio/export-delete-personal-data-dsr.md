@@ -1,6 +1,5 @@
 ---
-title: 导出和删除数据
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (经典) ：导出 & 删除数据-Azure
 description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室（经典版）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍如何进行此操作。
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9f623357dfbc8fab8a2967df65cc53abc4bc9d57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80a9fe1afdee820904b07254d317e4d00c7fac71
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696127"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691371"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习工作室（经典版）中导出和删除产品内用户数据
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
+
+
 
 可以使用 Azure 门户、工作室（经典版）界面、PowerShell 和经过验证的 REST API 删除或导出 Azure 机器学习工作室（经典版）存储的产品内数据。 本文介绍了相关实现方法。 
 

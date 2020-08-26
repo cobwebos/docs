@@ -9,6 +9,7 @@ ms.custom:
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83772830"

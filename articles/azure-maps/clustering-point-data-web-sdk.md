@@ -1,6 +1,6 @@
 ---
 title: 在地图上聚类点数据 | Microsoft Azure Maps
-description: 在本文中，你将学习如何使用 Microsoft Azure Maps Web SDK 在地图上聚类点数据并进行呈现。
+description: 了解如何对地图上的数据点进行分类。 了解如何使用 Azure Maps Web SDK 对数据进行分类、对群集鼠标事件做出反应并显示群集聚合。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen
-ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804565"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009046"
 ---
 # <a name="clustering-point-data"></a>聚类点数据
 
@@ -91,7 +92,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 当鼠标事件在包含聚类数据点的层上发生时，聚类数据点会作为 GeoJSON 点特征对象返回给事件。 此点特征具有以下属性：
 
-| 属性名称             | 类型    | 说明   |
+| 属性名称             | 类型    | 描述   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | 指示特征是否表示聚类。 |
 | `cluster_id`              | 字符串  | 可与数据源 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法结合使用的群集唯一 ID。 |

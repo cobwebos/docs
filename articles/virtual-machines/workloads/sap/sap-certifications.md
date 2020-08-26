@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084815"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035836"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
-SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴关系，使其客户可以互惠互利。 Microsoft 会不断更新其平台并向 SAP 提交新认证详细信息，确保 Microsoft Azure 是运行 SAP 工作负荷的最佳平台。 下表概述了 Azure 支持的配置以及不断增加的 SAP 认证的列表。 此列表是一种概述列表，在此列表中可能会有所建议，也可能来自官方 SAP 列表。 有关如何获取详细数据的信息，请参见[Azure 部署支持的 SAP 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)一文
+SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴关系，使其客户可以互惠互利。 Microsoft 会不断更新其平台并向 SAP 提交新认证详细信息，确保 Microsoft Azure 是运行 SAP 工作负荷的最佳平台。 下表概述了 Azure 支持的配置以及不断增加的 SAP 认证的列表。 此列表是一种概述列表，在此列表中可能会有所建议，也可能来自官方 SAP 列表。 有关如何获取详细数据的信息，请参见[Azure 部署支持的 SAP 软件](./sap-supported-product-on-azure.md)一文
 
 ## <a name="sap-hana-certifications"></a>SAP HANA 认证
 引用：

@@ -14,18 +14,18 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3e307df95fe4cb18986ed8e68a7f3381c5fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95b0b026b75b9b77c94451245ac4f18d487fc2e4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742889"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783512"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>适用于 Privileged Identity Management 的 Microsoft Graph API（预览版）
 
-可以使用 Azure Active Directory 的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) 执行 Privileged Identity Management 任务。 本文介绍使用适用于 Privileged Identity Management 的 Microsoft Graph API 的重要概念。
+可以使用 Azure Active Directory 的 [Microsoft Graph API](/graph/overview) 执行 Privileged Identity Management 任务。 本文介绍使用适用于 Privileged Identity Management 的 Microsoft Graph API 的重要概念。
 
-有关 Microsoft Graph API 的详细信息，请查看 [Azure AD Privileged Identity Management API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)。
+有关 Microsoft Graph API 的详细信息，请查看 [Azure AD Privileged Identity Management API 参考](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta)。
 
 > [!IMPORTANT]
 > Microsoft Graph 中 /beta 版本下的 API 为预览版，可能会进行更改。 不支持在生产应用程序中使用这些 API。
@@ -61,4 +61,4 @@ ms.locfileid: "84742889"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD Privileged Identity Management API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)
+- [Azure AD Privileged Identity Management API 参考](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta)

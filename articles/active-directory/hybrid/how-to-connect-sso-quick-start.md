@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115750"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -130,7 +130,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
    - **** 值名称：要将 Kerberos 票证转发到的 Azure AD URL。
    - **** 值（数据）：**** 1 指示 Intranet 区域。
 
-     结果类似以下形式：
+     结果与下面类似：
 
      值名称：`https://autologon.microsoftazuread-sso.com`
   
@@ -140,7 +140,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
    > 如果你想禁止某些用户使用无缝 SSO（例如，如果这些用户在共享展台上登录），请将前面的值设置为 4。**** 此操作将 Azure AD URL 添加到受限区域，并且始终无法使用无缝 SSO。
    >
 
-5. 选择“确定”  ，然后再次选择“确定”  。
+5. 选择“确定”，然后再选择“确定”。 
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso7.png)
 
@@ -162,9 +162,9 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 4. 在相应字段中输入以下值，然后单击“确定”****。
    - **密钥路径**：Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon******
-   - **值名称**：https******。
-   - **值类型**： ***REG_DWORD***。
-   - **值数据**：00000001******。
+   - **值名称**： ***https***
+   - **值类型**： ***REG_DWORD***
+   - **值数据**： ***00000001***
  
      ![单一登录](./media/how-to-connect-sso-quick-start/sso16.png)
  

@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087476"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166937"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
-通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器。 连接器是用于查询和修改 HBase 存储的数据的一种方便、高性能的替代方法。
+通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器。 连接器是用于查询和修改 HBase 存储的数据的一种便捷且高效的替代方法。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,11 +27,10 @@ ms.locfileid: "86087476"
 
 ## <a name="overall-process"></a>整体进程
 
-启用 Spark 群集查询 HDInsight 群集的概述过程如下所示：
+启用 Spark 群集以查询 HBase 群集的高级过程如下所示：
 
 1. 在 HBase 中准备一些示例数据。
-2. 从 HBase 集群配置文件夹 (/etc/hbase/conf) 中获取 hbase-site.xml 文件。
-3. 将 hbase-site.xml 的副本放在 Spark 2 配置文件夹 (/etc/spark2/conf)。
+2. 从 HBase 群集配置文件夹 (/etc/hbase/conf) 获取 hbase-site.xml 文件，并在 Spark 2 配置文件夹中将 hbase-site.xml 的副本放在/etc/spark2/conf () 。  (可选：使用 HDInsight 团队提供的脚本自动执行此过程) 
 4. 运行 `spark-shell`，在 `packages` 中按 Maven 坐标来引用 Spark HBase 连接器。
 5. 定义将架构从 Spark 映射到 HBase 的目录。
 6. 使用 RDD 或 DataFrame API 与 HBase 数据进行交互。
@@ -76,36 +75,77 @@ ms.locfileid: "86087476"
     ```hbase
     exit
     ```
+    
+## <a name="run-scripts-to-set-up-connection-between-clusters"></a>运行脚本以设置群集之间的连接
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>将 hbase-site.xml 复制到 Spark 群集
+若要设置群集之间的通信，请执行以下步骤，在群集上运行两个脚本。 这些脚本将自动执行下面的 "手动设置通信" 一节中所述的文件复制过程。 
 
-将 hbase-site.xml 从本地存储复制到 Spark 群集默认存储所在的根目录。  编辑以下命令以反映配置。  然后，在与 HBase 群集建立的 SSH 会话中输入该命令：
+* 从 HBase 群集运行的脚本将 `hbase-site.xml` 向附加到 Spark 群集的默认存储上传和 HBASE IP 映射信息。 
+* 从 Spark 群集运行的脚本将设置两个 cron 作业，以便定期运行两个帮助器脚本：  
+    1.  HBase cron 作业– `hbase-site.xml` 从 Spark 默认存储帐户向本地节点下载新文件和 HBASE IP 映射
+    2.  Spark cron 作业–检查是否发生了 Spark 缩放以及群集是否安全。 如果是这样，则编辑 `/etc/hosts` 以包含本地存储的 HBASE IP 映射
 
-| 语法值 | 新值|
-|---|---|
-|[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改此值以反映存储。  以下语法适用于启用了安全传输的 Blob 存储。|
-|`SPARK_STORAGE_CONTAINER`|替换为 Spark 群集使用的默认存储容器名称。|
-|`SPARK_STORAGE_ACCOUNT`|替换为 Spark 群集使用的默认存储帐户名称。|
+__注意__：在继续操作之前，请确保已将 Spark 群集的存储帐户作为辅助存储帐户添加到 HBase 群集。 请确保脚本按下面所示的顺序排列。
 
-```bash
-hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
-```
 
-然后退出与 HBase 群集的 ssh 连接。
+1. 在 HBase 群集上使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)，应用更改，但需注意以下事项： 
 
-```bash
-exit
-```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>将 hbase-site.xml 放置于 Spark 集群上
+    |属性 | Value |
+    |---|---|
+    |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
+    |节点类型|区域|
+    |参数|`-s SECONDARYS_STORAGE_URL`|
+    |持久化|是|
 
-1. 使用 SSH 连接到 Spark 集群的头节点。 编辑以下命令，将 `SPARKCLUSTER` 替换为 Spark 群集的名称，然后输入该命令：
+    * `SECONDARYS_STORAGE_URL`是 Spark 端默认存储的 url。 参数示例：`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+
+
+2.  在 Spark 群集上使用脚本操作，以应用更改，但需注意以下事项：
+
+    |属性 | Value |
+    |---|---|
+    |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
+    |节点类型|Head，Worker，Zookeeper|
+    |参数|`-s "SPARK-CRON-SCHEDULE"`可选)  (可选 `-h "HBASE-CRON-SCHEDULE"` () |
+    |持久化|是|
+
+
+    * 可以指定希望此分类自动检查更新的频率。 默认值：-s "*/1 * * * * *"-h 0 (在此示例中，Spark cron 每分钟运行一次，而 HBase cron 不会运行) 
+    * 由于默认情况下不会设置 HBase cron，因此在执行缩放到 HBase 群集时，需要重新运行此脚本。 如果 HBase 群集频繁缩放，则可以选择自动设置 HBase cron 作业。 例如： `-h "*/30 * * * *"` 将脚本配置为每30分钟执行一次检查。 这会定期运行 HBase cron 计划，以自动将公共存储帐户上的新 HBase 信息下载到本地节点。
+    
+    
+
+## <a name="set-up-communication-manually-optional-if-provided-script-in-above-step-fails"></a>如果以上步骤中提供的脚本失败，请 (可选，手动设置通信) 
+
+__注意：__ 每次群集经历缩放活动时，都需要执行这些步骤。
+
+1. 将 hbase-site.xml 从本地存储复制到 Spark 群集默认存储所在的根目录。  编辑以下命令以反映配置。  然后，在与 HBase 群集建立的 SSH 会话中输入该命令：
+
+    | 语法值 | 新值|
+    |---|---|
+    |[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改此值以反映存储。  以下语法适用于启用了安全传输的 Blob 存储。|
+    |`SPARK_STORAGE_CONTAINER`|替换为 Spark 群集使用的默认存储容器名称。|
+    |`SPARK_STORAGE_ACCOUNT`|替换为 Spark 群集使用的默认存储帐户名称。|
+
+    ```bash
+    hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+    ```
+
+2. 然后退出与 HBase 群集的 ssh 连接。
+
+    ```bash
+    exit
+    ```
+
+
+3. 使用 SSH 连接到 Spark 集群的头节点。 编辑以下命令，将 `SPARKCLUSTER` 替换为 Spark 群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹中：
+4. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹中：
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -122,10 +162,10 @@ exit
 
     |Spark 版本| HDI HBase 版本  | SHC 版本    |  Command  |
     | :-----------:| :----------: | :-----------: |:----------- |
-    |      2.1    | HDI 3.6 （HBase 1.1） | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2.4    | HDI 4.0 （HBase 2.0） | 1.1.1-2.1-s_2  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.1    | HDI 3.6 (HBase 1.1)  | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4.0 (HBase 2.0)  | 1.1.1-2.1-s_2  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. 使此 Spark shell 实例保持打开状态并继续[定义目录和查询](#define-a-catalog-and-query)。 如果找不到对应于 SHC Core 存储库中版本的 jar，请继续阅读。 
+2. 使此 Spark shell 实例保持打开状态并继续[定义目录和查询](#define-a-catalog-and-query)。 如果找不到对应于 SHC Core 存储库中的版本的 jar，请继续阅读。 
 
 可以直接从[spark--连接器](https://github.com/hortonworks-spark/shc)GitHub 分支生成 jar。 例如，如果运行的是 Spark 2.3 和 HBase 1.1，请完成以下步骤：
 
@@ -141,13 +181,13 @@ exit
     git checkout branch-2.3
     ```
 
-3. 从分支生成（创建 .jar 文件）：
+3. 从分支生成 (创建 .jar 文件) ：
 
     ```bash
     mvn clean package -DskipTests
     ```
     
-3. 运行以下命令（请确保更改对应于所生成的 .jar 文件的 .jar 名称）：
+3. 运行以下命令 (确保更改对应于所生成的 .jar 文件的 .jar 名称) ：
 
     ```bash
     spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
@@ -190,7 +230,7 @@ exit
 
     1. 定义名为的 HBase 表的目录架构 `Contacts` 。  
     1. 将 rowkey 标识为 `key` ，并将 Spark 中使用的列名映射到在 HBase 中使用的列系列、列名称和列类型。  
-    1. 将 rowkey 定义为详细的命名列（ `rowkey` ），该列具有特定的列系列 `cf` `rowkey` 。  
+    1. 将 rowkey 定义为 () 的命名列 `rowkey` ，该列具有特定的列系列 `cf` `rowkey` 。  
 
 1. 输入以下命令，以定义一个在 HBase 中提供围绕 `Contacts` 表的 DataFrame 的方法：
 

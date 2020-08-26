@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: f716af1d50eb8a24d8ab70f784cba31f65795cb7
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652699"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165900"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>将通用 Windows 平台与 MSAL.NET 配合使用时的注意事项
 将通用 Windows 平台 (UWP) 与 MSAL.NET 配合使用的应用程序的开发人员应当考虑本文中所述的概念。
@@ -56,7 +56,7 @@ We can't connect to the service you need right now. Check your network connectio
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-有关详细信息，请参阅 [Web 身份验证代理 - Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler)。
+有关详细信息，请参阅 [Web 身份验证代理 - Fiddler](/windows/uwp/security/web-authentication-broker#fiddler)。
 
 ## <a name="next-steps"></a>后续步骤
 以下示例提供了详细信息。

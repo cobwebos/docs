@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343993"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213368"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的 Azure 专用链接
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 检查连接
 > [!NOTE]
-> 在客户端的连接字符串中使用服务器的**完全限定域名 (FQDN)** 。 直接登录 IP 地址的任何尝试都将失败。 此行为是设计使然，因为专用终结点会将流量路由到该区域中的 SQL 网关，并且需要指定 FQDN 才能成功登录。
+> 在客户端的连接字符串中 (`<server>.database.windows.net`) 使用服务器的完全限定域名 (FQDN)。 直接登录 IP 地址的任何尝试或使用专用链接 FQDN (`<server>.privatelink.database.windows.net`) 都将失败。 此行为是设计使然，因为专用终结点会将流量路由到该区域中的 SQL 网关，并且需要指定正确的 FQDN 才能成功登录。
 
 请按照此处的步骤使用 [SSMS 连接到 SQL 数据库](connect-query-ssms.md)。 使用 SSMS 连接到 SQL 数据库后，请运行以下查询，验证是否正在从 Azure VM 的专用 IP 地址进行连接：
 
@@ -175,9 +175,9 @@ where session_id=@@SPID
 - [ExpressRoute 线路](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>使用 Polybase 从 Azure Synapse Analytics 连接到 Azure 存储
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>使用 Polybase 和 COPY 语句从 Azure Synapse Analytics 连接到 Azure 存储
 
-PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组虚拟网络子网，则通过 PolyBase 与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到虚拟网络）的 Azure Synapse Analytics，若要启用 PolyBase 导入和导出方案，请执行[此处](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
+PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组虚拟网络子网，则通过 PolyBase 和 COPY 语句与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到虚拟网络）的 Azure Synapse Analytics，若要启用导入和导出方案，请执行[此处](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
 
 ## <a name="next-steps"></a>后续步骤
 

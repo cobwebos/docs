@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Sugar CRM 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Sugar CRM 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3331b9fc-ebc0-4a3a-9f7b-bf20ee35d180
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3199509b03b058b71b609d276a8d95e8d225175
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cd1be43bd8984df8fef690e595ec99f4b112c3c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167753"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sugar CRM 集成
 

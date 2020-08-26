@@ -1,9 +1,9 @@
 ---
-title: 快速入门：部署 Azure Kubernetes 服务群集
+title: 快速入门：使用 Azure CLI 部署 AKS 群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-ms.date: 04/28/2020
+ms.date: 08/18/2020
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -11,12 +11,13 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: c55e93e4fe8baf04504f1cff6e762dfcb5c46c18
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+- devx-track-azurecli
+ms.openlocfilehash: 863017797aa6872d7ac7a824e1d38f2dde4c6d1a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251433"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589927"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -64,16 +65,31 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 也可通过 *--enable-addons monitoring* 参数启用用于容器的 Azure Monitor。  此操作将需要几分钟才能完成。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
 
 > [!NOTE]
-> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](./faq.md#why-are-two-resource-groups-created-with-aks)
+> 使用 --enable-addons monitoring 参数启用适用于容器的 Azure Monitor，这需要在订阅上注册 Microsoft.OperationsManagement 和 Microsoft.OperationalInsights。 若要检查注册状态，请使用以下命令：
+> 
+> ```azurecli
+> az provider show -n Microsoft.OperationsManagement -o table
+> az provider show -n Microsoft.OperationalInsights -o table
+> ```
+> 
+> 如果未注册，请使用以下命令注册 Microsoft.OperationsManagement 和 Microsoft.OperationalInsights：
+> 
+> ```azurecli
+> az provider register --namespace Microsoft.OperationsManagement
+> az provider register --namespace Microsoft.OperationalInsights
+> ```
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。
+
+> [!NOTE]
+> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
@@ -88,6 +104,9 @@ az aks install-cli
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+> [!NOTE]
+> 以上命令使用 Kubernetes 配置文件的默认位置，即 `~/.kube/config`。 可以使用 --file 为 Kubernetes 配置文件指定其他位置。
 
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
@@ -106,10 +125,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 [Kubernetes 部署][kubernetes-deployment] - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 [Kubernetes 服务][kubernetes-service] - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
-> [!TIP]
-> 在本快速入门中，请手动创建应用程序清单并将其部署到 AKS 群集。 在更实际的方案中，可以使用 [Azure Dev Spaces][azure-dev-spaces] 直接在 AKS 群集中快速地循环访问代码并对其进行调试。 可以跨 OS 平台和开发环境使用 Dev Spaces，并可与团队中的他人进行协作。
-
-创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure Cloud Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
+创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure Cloud Shell，则可以使用 `code`、`vi`或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
 
 ```yaml
 apiVersion: apps/v1

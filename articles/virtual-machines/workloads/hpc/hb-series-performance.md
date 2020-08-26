@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4745fda5417ea937c367a116f999070bd62cf8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79534195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077409"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB-ACCT-WC 系列虚拟机大小
 
 已对 HB-ACCT-WC 系列大小运行多个性能测试。 下面是此性能测试的部分结果。
 
 
-| 工作负荷                                        | HB                    |
+| 工作负载                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | 约 260 GB/秒（每个 CCX 32-33 GB/秒）  |
 | 高性能 Linpack （HPL.DAT）                  | ~ 1000 GigaFLOPS （Rpeak），~ 860 GigaFLOPS （Rmax） |
@@ -119,8 +119,4 @@ OSU MPI 带宽测试 v 5.4.3。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 中的[高性能计算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。
-
-
-
-
+详细了解 Azure 中的[高性能计算](/azure/architecture/topics/high-performance-computing/)。

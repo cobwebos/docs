@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2bbc1d6f42819354f48812a34371a49e5acbac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999626"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
 
-[!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
+[Azure 文件](storage-files-introduction.md)  支持通过以下两种类型的域服务通过服务器消息块（SMB）进行基于身份的身份验证：本地 Active Directory 域服务（AD DS）和 Azure Active Directory 域服务（Azure AD DS）。强烈建议查看[其工作原理部分](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)，为身份验证选择适当的域服务。 安装程序不同，具体取决于所选的域服务。 本文重点介绍如何启用和配置 Azure AD DS，以便通过 Azure 文件共享进行身份验证。
 
-有关 Azure 文件共享的 SMB Azure AD 身份验证的概述，请参阅[Azure 文件的通过 smb Azure Active Directory 身份验证的概述](storage-files-active-directory-overview.md)。 本文重点介绍如何使用 Azure 文件上 Azure Active Directory 域服务（Azure AD DS）启用身份验证。
+如果你不熟悉 Azure 文件共享，我们建议在阅读以下文章之前阅读我们的[规划指南](storage-files-planning.md)。
 
 > [!NOTE]
 > Azure 文件支持通过具有 RC4-HMAC 加密 Azure AD DS 进行 Kerberos 身份验证。 目前尚不支持 AES Kerberos 加密。
@@ -88,7 +88,7 @@ ms.locfileid: "85510389"
 1. 在 Azure 门户中，请前往现有的存储帐户，或者[创建一个存储帐户](../common/storage-account-create.md)。
 1. 在“设置”部分选择“配置”。********
 1. 在 "**文件共享基于标识的访问**" 下，将**Azure Active Directory 域服务（AAD DS）** 的切换切换为 "**已启用**"。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 下图显示了如何为存储帐户启用通过 SMB 进行的 Azure AD DS 身份验证。
 

@@ -6,13 +6,14 @@ ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: ee3e2a224789c899dcfabdbee56b949ea86f0a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdae608d573bc411242b4bf66ea033a7df421cfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82872274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005695"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>预览：使用 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>预览：使用 Windows 中的 Azure 映像生成器在现有映像版本中创建新的 VM 映像版本
 
 本文介绍如何使用[共享映像库](shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 

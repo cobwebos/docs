@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2d291af3cc6175b371f71fb63402ecb45afcba34
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 05d4bc8d249d5ac45fd36ce1ae58ca56870e3be6
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223442"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722766"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 
@@ -43,7 +43,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使 Azure AD DS 托管域能够同步数据，并定义哪些用户在托管域中拥有管理权限。
 
-首先创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。  请不要更改此应用程序 ID。
+首先创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。 请不要更改此应用程序 ID。
 
 使用 [Get-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建 Azure AD 服务主体：
 
@@ -101,7 +101,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-为 Azure AD 域服务创建虚拟网络和子网。 创建两个子网 - 一个用于“DomainServices”，另一个用于“Workloads”。  Azure AD DS 将部署到专用的“DomainServices”子网中。 请不要将其他应用程序或工作负载部署到此子网中。 对剩余的 VM 使用单独的“Workloads”子网或其他子网。
+为 Azure AD 域服务创建虚拟网络和子网。 创建两个子网 - 一个用于“DomainServices”，另一个用于“Workloads”。 Azure AD DS 将部署到专用的“DomainServices”子网中。 请不要将其他应用程序或工作负载部署到此子网中。 对剩余的 VM 使用单独的“Workloads”子网或其他子网。
 
 使用 [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] cmdlet 创建子网，然后使用 [New-AzVirtualNetwork][New-AzVirtualNetwork] cmdlet 创建虚拟网络。
 
@@ -154,9 +154,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 如果在支持可用性区域的区域中创建了托管域，请创建一个网络安全组，仅限该托管域在虚拟网络中传送流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需的规则，请在门户中选择你的托管域。 “概览”窗口中会提示你自动创建并配置网络安全组。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
+* 创建网络安全组，以针对托管域限制虚拟网络中的流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
+    * 若要创建网络安全组和所需规则，请首先使用 `Install-Script -Name New-AaddsNetworkSecurityGroup` 命令安装 `New-AzureAddsNetworkSecurityGroup` 脚本，然后运行 `New-AaddsNetworkSecurityGroup`。 系统会为你创建托管域所需的规则。
+* [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="complete-powershell-script"></a>完整的 PowerShell 脚本
 
@@ -241,9 +241,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 如果在支持可用性区域的区域中创建了托管域，请创建一个网络安全组，仅限该托管域在虚拟网络中传送流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需的规则，请在门户中选择你的托管域。 “概览”窗口中会提示你自动创建并配置网络安全组。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
+* 创建网络安全组，以针对托管域限制虚拟网络中的流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
+    * 若要创建网络安全组和所需规则，请首先使用 `Install-Script -Name New-AaddsNetworkSecurityGroup` 命令安装 `New-AzureAddsNetworkSecurityGroup` 脚本，然后运行 `New-AaddsNetworkSecurityGroup`。 系统会为你创建托管域所需的规则。
+* [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -267,5 +267,5 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 [New-AzVirtualNetworkSubnetConfig]: /powershell/module/Az.Network/New-AzVirtualNetworkSubnetConfig
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
-[cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [availability-zones]: ../availability-zones/az-overview.md

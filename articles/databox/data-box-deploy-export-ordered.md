@@ -2,18 +2,18 @@
 title: 从 Azure Data Box 导出数据的教程 |Microsoft Docs
 description: 了解部署先决条件以及如何从 Azure Data Box 导出数据
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.author: v-grpr
-ms.openlocfilehash: 5b17488ebab8dc29221723fabf8efe0c00467509
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.author: twooley
+ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209249"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783614"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教程：创建 Azure Data Box (预览版的出口订单) 
 
@@ -40,7 +40,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 * 请确保现有的资源组可用于 Azure Data Box。
 
-* 请确保要从中导出数据的 Azure 存储帐户是受支持的存储帐户类型中的一种，如[Data Box](data-box-system-requirements.md#supported-storage-accounts)所述。
+* 请确保要从中导出数据的 Azure 存储帐户是受支持的存储帐户类型中的一种，如 [Data Box](data-box-system-requirements.md#supported-storage-accounts)所述。
 
 ### <a name="for-device"></a>对于设备
 
@@ -48,7 +48,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 * 应该将一个主机连接到数据中心网络。 将 Azure Data Box 中的数据复制到此计算机。 主机必须按照 [Azure Data Box 系统要求](data-box-system-requirements.md)中的说明运行支持的操作系统。
 
-* 数据中心需要有高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可以使用 1-GbE 数据链接，但复制速度会受影响。
+* 数据中心需要有高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。
 
 ## <a name="order-data-box-for-export"></a>导出 Data Box 顺序
 
@@ -68,9 +68,9 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     |设置  |值  |
     |---------|---------|
-    |传输类型     | 选择 "**导出到 Azure**"。        |
+    |传输类型     | 选择 " **导出到 Azure**"。        |
     |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
-    |资源组     |    选择现有的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
+    |资源组     |    选择现有资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |源 Azure 区域    |    选择数据当前所在的 Azure 区域。         |
     |目标国家/地区     |     选择要将设备寄送到的国家/地区。        |
 
@@ -80,64 +80,64 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![选择 Data Box 容量](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
 
-6. 在 "**顺序**" 中，指定**基本**订单详细信息。 输入或选择以下信息，然后选择“下一步”。
+6. 在 " **顺序**" 中，指定 **基本** 订单详细信息。 输入或选择以下信息，然后选择“下一步”。
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
-    |订阅     | 系统会根据您之前选择的内容自动填充订阅。|
-    |资源组 | 你之前选择的资源组。 |
+    |订阅     | 系统会根据前面所做的选择自动填充此订阅。|
+    |资源组 | 之前选择的资源组。 |
     |导出顺序名称     |  提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
 
     ![出口订单基础知识](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
 
-    选择**下一步：** 要继续的数据选择。
+    选择 **下一步：** 要继续的数据选择。
 
-7. 在**数据选择**中，选择 "**添加存储帐户" 和 "导出类型**"。
+7. 在 **数据选择**中，选择 " **添加存储帐户" 和 "导出类型**"。
 
     ![添加存储帐户和导出类型](media/data-box-deploy-export-ordered/azure-data-box-export-03b.png)
 
-8. 在 "**选择导出选项**" 中，指定导出选项的详细信息。 输入或选择以下信息，然后选择 "**添加**"。
+8. 在 " **选择导出选项**" 中，指定导出选项的详细信息。 输入或选择以下信息，然后选择 " **添加**"。
 
     |设置  |值  |
     |---------|---------|
     |存储帐户     | 要从中导出数据的 Azure 存储帐户。 |
-    |导出类型     | 指定要从**所有对象**导出并**使用 XML 文件**的数据类型。<ul><li> **所有对象**-指定作业根据你选择的**传输选项**导出所有数据。</li><li> **使用 xml 文件**–指定一个 XML 文件，其中包含要从存储帐户导出的 blob 和/或文件的一组路径和前缀。 该 XML 文件需要位于所选存储帐户的容器中，并且当前不支持从文件共享中进行选择。 文件必须为非空 .xml 文件。</li></ul>        |
-    |传输选项     |  指定 "全**选**"、"**所有 blob**" 和 "**所有文件**" 中的数据传输选项。 <ul><li> **全选**-指定导出所有 Blob 和 Azure 文件。 如果你使用的存储帐户仅支持 blob (Blob 存储帐户) ，则 "**所有文件**" 选项将不可选择。</li><li> **所有 blob** -指定仅导出块和页 blob。</li><li> **所有文件**-指定导出所有文件时不包括 blob。 已 (GPv1 和 GPv2、高级存储或 blob 存储的存储帐户类型) 确定可导出的数据类型。 有关详细信息，请参阅[支持的存储帐户导出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
+    |导出类型     | 指定要从 **所有对象** 导出并 **使用 XML 文件**的数据类型。<ul><li> **所有对象** -指定作业根据你选择的 **传输选项**导出所有数据。</li><li> **使用 xml 文件** –指定一个 XML 文件，其中包含要从存储帐户导出的 blob 和/或文件的一组路径和前缀。 该 XML 文件需要位于所选存储帐户的容器中，并且当前不支持从文件共享中进行选择。 文件必须为非空 .xml 文件。</li></ul>        |
+    |传输选项     |  指定 "全 **选**"、" **所有 blob**" 和 " **所有文件**" 中的数据传输选项。 <ul><li> **全选** -指定导出所有 Blob 和 Azure 文件。 如果你使用的存储帐户仅支持 blob (Blob 存储帐户) ，则 " **所有文件** " 选项将不可选择。</li><li> **所有 blob** -指定仅导出块和页 blob。</li><li> **所有文件** -指定导出所有文件时不包括 blob。 已 (GPv1 和 GPv2、高级存储或 blob 存储的存储帐户类型) 确定可导出的数据类型。 有关详细信息，请参阅 [支持的存储帐户导出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
     |包括详细日志     | 指示是否需要一个详细日志文件，其中包含已成功导出的所有文件的列表。        |
 
     > [!NOTE]
     >
-    > 如果选择 "**将 xml 文件**用于**导出类型**" 设置，则需要确保 XML 包含有效路径和/或前缀。 必须构造和提供 XML 文件。  如果文件无效或没有任何数据与指定的路径相匹配，则该顺序将以部分数据终止或未导出任何数据。
+    > 如果选择 " **将 xml 文件** 用于 **导出类型** " 设置，则需要确保 XML 包含有效路径和/或前缀。 必须构造和提供 XML 文件。  如果文件无效或没有任何数据与指定的路径相匹配，则该顺序将以部分数据终止或未导出任何数据。
 
-    若要查看如何将 XML 文件添加到容器，请参阅[使用 XML 文件导出顺序](data-box-deploy-export-ordered.md#export-order-using-xml-file)。
+    若要查看如何将 XML 文件添加到容器，请参阅 [使用 XML 文件导出顺序](data-box-deploy-export-ordered.md#export-order-using-xml-file)。
 
    ![选择导出选项](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
 
-   若要查看 xml 输入示例，请参阅[示例 xml 输入](data-box-deploy-export-ordered.md#sample-xml-file)
+   若要查看 xml 输入示例，请参阅 [示例 xml 输入](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. 在 "**选择数据**" 中查看设置，然后选择 "**下一步：联系人详细信息>**"。
+9. 在 " **选择数据**" 中查看设置，然后选择 " **下一步：联系人详细信息>**"。
 
    ![联系人详细信息](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
 
-10. 在 "**联系人详细信息**" 中，选择 " **+ 添加送货地址**" 以输入寄送信息。
+10. 在 " **联系人详细信息**" 中，选择 " **+ 添加送货地址** " 以输入寄送信息。
 
     ![添加送货地址](media/data-box-deploy-export-ordered/azure-data-box-export-06.png)
 
-11. 在 "**添加送货地址**" 中，提供你的名字和姓氏、公司名称和邮寄地址以及有效的电话号码。 选择“验证”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
+11. 在 " **添加送货地址**" 中，提供你的名字和姓氏、公司名称和邮寄地址以及有效的电话号码。 选择“验证”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
 
     ![验证送货地址](media/data-box-deploy-export-ordered/azure-data-box-export-07.png)
 
     如果要在可自行管理的装运可用的区域中进行排序，则可以选择此选项。 有关自托管寄送的详细信息，请参阅[使用自托管寄送](data-box-portal-customer-managed-shipping.md)。
 
-12. 成功验证发货详细信息后，选择 "**添加寄送地址**"。
+12. 成功验证发货详细信息后，选择 " **添加寄送地址** "。
 
-13. 在 "**联系人详细信息**" 中，查看您的发货地址和电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
+13. 在 " **联系人详细信息**" 中，查看您的发货地址和电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
 
     我们建议使用组电子邮件，以便在组中的管理员离任后，可以持续收到通知。
 
     ![订单详细信息](media/data-box-deploy-export-ordered/azure-data-box-export-09.png)
 
-14. 选择**下一步：查看 + 订单>**。 必须接受条款和条件才能继续创建订单。
+14. 选择 **下一步：查看 + 订单>**。 必须接受条款和条件才能继续创建订单。
 
 15. 选择“订单”。 创建订单需要几分钟时间。
 
@@ -145,15 +145,15 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 ## <a name="export-order-using-xml-file"></a>使用 XML 文件导出订单
 
-如果选择 "**使用 XML 文件**"，则可以指定要导出的 (页面和块) 的特定容器和 blob。 若要设置 XML 格式，需遵循[示例 xml 文件表](#sample-xml-file)规范。 下面的步骤演示了如何使用 XML 文件导出数据：
+如果选择 " **使用 XML 文件**"，则可以指定要导出的 (页面和块) 的特定容器和 blob。 若要设置 XML 格式，需遵循 [示例 xml 文件表](#sample-xml-file) 规范。 下面的步骤演示了如何使用 XML 文件导出数据：
 
-1. 对于 "**导出类型**"，请选择 "**使用 XML 文件**"。 这是 XML 文件，用于指定要导出的特定 blob 和 Azure 文件。 若要添加 XML 文件，请选择 "**单击此处以选择 xml 文件**"。
+1. 对于 " **导出类型**"，请选择 " **使用 XML 文件**"。 这是 XML 文件，用于指定要导出的特定 blob 和 Azure 文件。 若要添加 XML 文件，请选择 " **单击此处以选择 xml 文件**"。
      ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
-2. 选择 " **+ 容器**" 以创建容器。
+2. 选择 " **+ 容器** " 以创建容器。
     ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. 在从 Azure 门户右侧弹出的 "**新建容器**" 选项卡中，为容器添加一个名称。 名称必须为小写，并且可以包含数字和短划线 "-"。 然后从下拉列表框中选择 "**公共访问级别**"。 建议选择 "**专用 (非匿名访问) ** "，以防止其他人访问数据。 有关容器访问级别的详细信息，请参阅[容器访问权限](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
+3. 在从 Azure 门户右侧弹出的 " **新建容器** " 选项卡中，为容器添加一个名称。 名称必须为小写，并且可以包含数字和短划线 "-"。 然后从下拉列表框中选择 " **公共访问级别** "。 建议选择 " **专用 (非匿名访问) ** "，以防止其他人访问数据。 有关容器访问级别的详细信息，请参阅 [容器访问权限](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
    ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
@@ -181,11 +181,11 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 下单后，可以从 Azure 门户跟踪订单状态。 转到你的 Data Box 订单，然后转到“概述”来查看状态。 门户中会显示订单处于“已订购”状态。
 
-设备准备完成后，将从所选存储帐户开始数据复制。 门户会显示 "**数据复制正在进行**" 状态的顺序。
+设备准备完成后，将从所选存储帐户开始数据复制。 门户会显示 " **数据复制正在进行** " 状态的顺序。
 
 ![已处理 Data Box 导出顺序](media/data-box-deploy-export-ordered/azure-data-box-export-15b.png)
 
-Data Box) 中的源存储 (帐户复制数据。 数据复制完成后，Data Box 被锁定，门户将显示 "**复制已完成**" 状态的顺序。
+Data Box) 中的源存储 (帐户复制数据。 数据复制完成后，Data Box 被锁定，门户将显示 " **复制已完成** " 状态的顺序。
 
 ![Data Box 导出数据复制完成](media/data-box-deploy-export-ordered/azure-data-box-export-15c.png)
 
@@ -193,27 +193,27 @@ Data Box) 中的源存储 (帐户复制数据。 数据复制完成后，Data Bo
 
 * 将为与设备关联的每个存储帐户创建 SMB 共享。
 * 将为每个共享生成访问凭据（例如用户名和密码）。
-* 设备已锁定，只能使用设备解锁密码进行访问。 若要检索密码，需要登录到 Azure 门户帐户并选择 "**设备详细信息**"。
+* 设备已锁定，只能使用设备解锁密码进行访问。 若要检索密码，需要登录到 Azure 门户帐户并选择 " **设备详细信息**"。
 
 然后，Microsoft 通过区域运营商准备并调度你的设备。 设备发货后，你会收到跟踪号。 门户会显示订单处于“已发运”状态。
 
 ![已调度 Data Box 出口订单](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
 
-如果选择了 "自行管理的装运"，则将在设备准备好从数据中心选取时收到电子邮件通知，其中包含后续步骤。 有关与自行管理的发货相关的详细信息，请参阅[自行管理发货](data-box-portal-customer-managed-shipping.md)。
+如果选择了 "自行管理的装运"，则将在设备准备好从数据中心选取时收到电子邮件通知，其中包含后续步骤。 有关与自行管理的发货相关的详细信息，请参阅 [自行管理发货](data-box-portal-customer-managed-shipping.md)。
 
 ![自助管理发货准备就绪](media/data-box-deploy-export-ordered/azure-data-box-export-17.png)
 
 ## <a name="cancel-the-order"></a>取消订单
 
-若要取消此顺序，请在 Azure 门户中，选择 "**概述**"，然后从命令栏中选择 "**取消**"。
+若要取消此订单，请在 Azure 门户中转到“概览”，然后在命令栏中选择“取消” 。
 
 下订单后，您可以在订单开始处理之前的任何时间点将其取消。
 
-若要删除已取消的订单，请从命令栏中转到 "**概述**" 并选择 "**删除**"。
+若要删除已取消的订单，请转到“概况”，然后在命令栏中选择“删除” 。
 
 ## <a name="sample-xml-file"></a>示例 XML 文件
 
-下面的 xml 显示了在你选择 "**使用 xml 文件**" 选项时，导出顺序使用的 xml 格式的 blob 名称、blob 前缀和 Azure 文件的示例：
+下面的 xml 显示了在你选择 " **使用 xml 文件** " 选项时，导出顺序使用的 xml 格式的 blob 名称、blob 前缀和 Azure 文件的示例：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -257,8 +257,8 @@ Data Box) 中的源存储 (帐户复制数据。 数据复制完成后，Data Bo
 
 ## <a name="sample-log-files"></a>示例日志文件
 
-本部分提供在导出过程中生成的示例日志文件。 错误日志会自动生成。 若要生成详细日志文件，需要在配置导出顺序时选择 "在 Azure 门户中**包括详细日志**。
-有关复制日志和详细日志的详细信息，请参阅[复制日志](data-box-deploy-export-copy-data.md#copy-data-from-data-box)。
+本部分提供在导出过程中生成的示例日志文件。 错误日志会自动生成。 若要生成详细日志文件，需要在配置导出顺序时选择 "在 Azure 门户中 **包括详细日志** 。
+有关复制日志和详细日志的详细信息，请参阅 [复制日志](data-box-deploy-export-copy-data.md#copy-data-from-data-box)。
 
 <!-- ### Verbose log
 

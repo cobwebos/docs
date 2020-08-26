@@ -1,6 +1,6 @@
 ---
 title: 选择 Azure 数据传输解决方案 | Microsoft Docs
-description: 了解基于环境中的数据大小和可用网络带宽如何选择 Azure 数据传输解决方案
+description: 了解如何根据环境中的数据大小和可用网络带宽，选择用于数据传输的 Azure 解决方案。
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514429"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836592"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -74,7 +74,7 @@ ms.locfileid: "85514429"
 - [阅读 AzCopy 概述](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
 - [快速入门：使用 PowerShell 上传、下载和列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
-- 学习内容：
+- 了解：
 
     - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)。
     - [用于联机传输的 Azure Data Box Gateway 和 Azure Stack 边缘](https://docs.microsoft.com/azure/databox-online/)。

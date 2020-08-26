@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074290"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>故障排除 API 限制错误 
 
@@ -25,7 +26,7 @@ Azure 计算请求可能会根据订阅和区域进行限制，以便优化服�
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure 资源管理器限制与资源提供程序限制  
 
-作为 Azure 的“前门”，Azure 资源管理器会对所有传入的 API 请求进行身份验证、第一级验证和限制。 [此处](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)介绍了 Azure 资源管理器调用速率限制和相关的诊断响应 HTTP 标头。
+作为 Azure 的“前门”，Azure 资源管理器会对所有传入的 API 请求进行身份验证、第一级验证和限制。 [此处](../../azure-resource-manager/management/request-limits-and-throttling.md)介绍了 Azure 资源管理器调用速率限制和相关的诊断响应 HTTP 标头。
  
 当 Azure API 客户端收到限制错误时，HTTP 状态为“429 请求过多”。 若要了解请求限制是由 Azure 资源管理器施加的还是由基础资源提供程序（例如 CRP）施加的，请检查 `x-ms-ratelimit-remaining-subscription-reads`（针对 GET 请求）和 `x-ms-ratelimit-remaining-subscription-writes` 响应标头（针对非 GET 请求）。 如果剩余调用计数接近 0，则表明已达到订阅的常规调用限制（由 Azure 资源管理器定义）。 所有订阅客户端的活动会一起计数。 否则，限制由目标资源提供程序（请求 URL 的 `/providers/<RP>` 段所指的提供程序）施加。 
 
@@ -78,8 +79,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 调用速率和限制错误分析器
 针对计算资源提供程序的 API 提供了故障排除功能的一个预览版版本。 这些 PowerShell cmdlet 按时间间隔按操作提供有关 API 请求速率的统计信息并且按操作组（策略）提供限制违规统计信息：
--   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export-AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequest](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 使用此 API 调用统计信息可以很好地洞察订阅的客户端的行为，并轻松识别导致限制的调用模式。
 
@@ -99,4 +100,4 @@ PowerShell cmdlet 使用 REST 服务 API，客户端可以轻松直接调用该 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 中的其他服务的重试指南，请参阅[特定服务的重试指南](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
+若要详细了解 Azure 中的其他服务的重试指南，请参阅[特定服务的重试指南](/azure/architecture/best-practices/retry-service-specific)

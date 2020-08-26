@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: de5b490f1ffd50e44defb1c3e3c6f0ad32ca689c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516373"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324278"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
 使用“Log Analytics 工作区”菜单通过 Azure 门户创建 Log Analytics 工作区。 Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。 每个工作区都有其自己的数据存储库和配置，并且数据源和解决方案均配置为将其数据存储在特定工作区中。 如果打算从以下源收集数据，则需要 Log Analytics 工作区：
@@ -23,8 +23,8 @@ ms.locfileid: "86516373"
 
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：
 
-*  [从 Azure 虚拟机收集数据](../learn/quick-collect-azurevm.md) 
-*  [从混合 Linux 计算机收集数据](../learn/quick-collect-linux-computer.md)
+*  [从 Azure 虚拟机收集数据](./quick-collect-azurevm.md) 
+*  [从混合 Linux 计算机收集数据](./quick-collect-linux-computer.md)
 *  [从混合 Windows 计算机收集数据](quick-collect-windows-computer.md)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -66,3 +66,4 @@ ms.locfileid: "86516373"
 * [将 System Center Operations Manager 添加为数据源](../platform/om-agents.md)以从报告 Operations Manager 管理组的代理收集数据并将其存储在 Log Analytics 工作区中。 
 * 连接 [Configuration Manager](../platform/collect-sccm.md) 以导入作为层次结构中集合成员的计算机。  
 * 查看可用的[监视解决方案](../insights/solutions.md)以及如何从工作区添加或删除解决方案。
+

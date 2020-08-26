@@ -16,11 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1ffb5ec0b39c5331afbc55d99268d9a3997e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764445"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641171"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -58,7 +59,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
    - 条件访问和多重身份验证等功能易于启用
 - 外围安全区域中无组件
 - 不需要任何入站连接
-- 一个访问面板，用户可通过它访问自己的所有应用程序，包括 O365、集成了 Azure AD 的 SaaS 应用以及本地 Web 应用。 
+- 你的应用程序页面，你的用户可以从其所有应用程序（包括 O365、Azure AD 集成的 SaaS 应用和本地 web 应用）中转到它们。 
 
 
 ## <a name="next-steps"></a>后续步骤

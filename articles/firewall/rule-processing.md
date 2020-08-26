@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087537"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑
+# <a name="configure-azure-firewall-rules"></a>配置 Azure 防火墙规则
 可以在 Azure 防火墙上配置 NAT 规则、网络规则和应用程序规则。 规则集合按照按优先级排列的规则类型进行处理，从100到65000的数字越小。 规则集合名称只能包含字母、数字、下划线、句点或连字符。 它必须以字母或数字开头，以字母、数字或下划线结尾。 最大名称长度为80个字符。
 
 最好以100增量（100、200、300等）为规则集合优先级数字设置空格，以便在需要时添加更多规则集合。
@@ -48,15 +49,15 @@ ms.locfileid: "81113433"
 - 操作：允许
 
 
-|name  |协议  |源类型  |源  |目标类型  |目标地址  |目标端口|
+|name  |协议  |源类型  |Source  |目标类型  |目标地址  |目标端口|
 |---------|---------|---------|---------|----------|----------|--------|
 |允许-web     |TCP|IP 地址|*|IP 地址|*|80,443
 
 **应用程序规则**
 
-- 操作： Deny
+- 操作：Deny
 
-|name  |源类型  |源  |协议:端口|目标 Fqdn|
+|name  |源类型  |Source  |协议:端口|目标 Fqdn|
 |---------|---------|---------|---------|----------|----------|
 |拒绝-google     |IP 地址|*|http：80，https：443|google.com
 
@@ -74,7 +75,7 @@ ms.locfileid: "81113433"
 - 优先级：200
 - 操作：允许
 
-|name  |协议  |源类型  |源  |目标类型  |目标地址  |目标端口|
+|name  |协议  |源类型  |Source  |目标类型  |目标地址  |目标端口|
 |---------|---------|---------|---------|----------|----------|--------|
 |允许-SSH     |TCP|IP 地址|*|IP 地址|*|22
 
@@ -82,9 +83,9 @@ ms.locfileid: "81113433"
 
 - 名称：拒绝-集合
 - 优先级：100
-- 操作： Deny
+- 操作：Deny
 
-|name  |协议  |源类型  |源  |目标类型  |目标地址  |目标端口|
+|name  |协议  |源类型  |Source  |目标类型  |目标地址  |目标端口|
 |---------|---------|---------|---------|----------|----------|--------|
 |Deny-SSH     |TCP|IP 地址|*|IP 地址|*|22
 

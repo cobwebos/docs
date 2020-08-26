@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052460"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入门：创建 Synapse 工作区
 
@@ -56,7 +56,7 @@ ms.locfileid: "86274231"
     > [!IMPORTANT]
     > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 此外，对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须已启用“分层命名空间”。
     >
-    > 在 ADLS Gen2 选择字段下有一条说明，指出将在所选的 Data Lake Storage Gen2 文件系统上向工作区的托管标识分配**存储 Blob 数据参与者**角色，并向其授予完全访问权限。
+    > 在 ADLS Gen2 选择字段下有一条说明，指出将在所选的 Data Lake Storage Gen2 文件系统上向工作区的托管标识分配“存储 Blob 数据参与者”角色，并向其授予完全访问权限。
 
 4. （可选）修改任何“安全性 + 网络默认值”选项卡：
 5. （可选）在**标记**选项卡中添加任何标记。

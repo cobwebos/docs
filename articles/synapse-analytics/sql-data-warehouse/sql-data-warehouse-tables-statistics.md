@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495629"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799309"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表统计信息
 
@@ -101,7 +101,7 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能为�
 
 没有任何动态管理视图可用于确定自上次更新统计信息以来表中的数据是否发生更改。  以下两个查询可帮助确定统计信息是否过时。
 
-**查询1：** 找出统计信息（**stats_row_count**）与实际行计数（**actual_row_count**）之间的行计数之间的差异。 
+**查询 1：** 找出统计信息中的行计数 (stats_row_count) 与实际行计数 (actual_row_count) 之间的差异。 
 
 ```sql
 select 
@@ -150,7 +150,10 @@ on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
 
-**查询2：** 通过检查每个表上上次更新统计信息的时间来找出统计信息的期限。 
+>[!TIP]
+> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
+
+**查询 2：** 通过检查每个表中上次更新统计信息的时间，找出统计信息的使用年限。 
 
 > [!NOTE]
 > 如果给定列的值分布有重大变化，则应该更新统计信息，不管上次更新时间为何。

@@ -1,27 +1,22 @@
 ---
 title: Windows 虚拟桌面诊断日志分析-Azure
 description: 如何将 log analytics 用于 Windows 虚拟桌面诊断功能。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209379"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005103"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用诊断功能 Log Analytics
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 
 Windows 虚拟桌面使用[Azure Monitor](../azure-monitor/overview.md)来监视和警报，例如许多其他 Azure 服务。 这样，管理员便可以通过单个界面识别问题。 此服务为用户和管理操作创建活动日志。 每个活动日志分为以下类别：
 
@@ -41,7 +36,7 @@ Windows 虚拟桌面使用[Azure Monitor](../azure-monitor/overview.md)来监视
 
 由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
 
-Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（VM）性能计数器，这些计数器都在同一工具内。 本文将介绍如何为 Windows 虚拟桌面环境启用诊断。
+Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机 (VM) 性能计数器，一切都在同一工具内。 本文将介绍如何为 Windows 虚拟桌面环境启用诊断。
 
 >[!NOTE]
 >若要了解如何在 Azure 中监视 Vm，请参阅[利用 Azure Monitor 监视 azure 虚拟机](../azure-monitor/insights/monitor-vm-azure.md)。 此外，请确保[查看性能计数器阈值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)，以便更好地了解你在会话主机上的用户体验。
@@ -70,7 +65,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 1. 登录到 Azure 门户并前往**Windows 虚拟桌面**。
 
-2. 导航到要捕获其日志和事件的对象（例如，主机池、应用组或工作区）。
+2. 导航到要捕获其日志和事件的对象 (例如主机池、应用组或工作区) 。
 
 3. 在屏幕左侧的菜单中选择 "**诊断设置**"。
 
@@ -133,52 +128,16 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 ## <a name="example-queries"></a>查询示例
 
-以下示例查询显示诊断功能如何为系统中最常见的活动生成报告。
+通过 Azure Monitor Log Analytics UI 访问示例查询：
+1. 中转到 Log Analytics 工作区，然后选择 "**日志**"。 示例查询 UI 将自动显示。
+1. 将筛选器更改为 "**类别**"。
+1. 选择**Windows 虚拟桌面**查看可用查询。
+1. 选择 "**运行**" 以运行所选查询。
 
-若要获取用户所建立的连接列表，请运行以下 cmdlet：
+请在 Azure Monitor Log Analytics 中详细了解[已保存查询](../azure-monitor/log-query/saved-queries.md)中的示例查询接口。
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+下面的查询列表允许您查看单个用户的连接信息或问题。 可以在[Log Analytics 查询编辑器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中运行这些查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
 
-查看用户的源活动：
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 查找单个用户的所有连接：
 
@@ -199,7 +158,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 按用户查找会话持续时间：
 
@@ -224,7 +182,7 @@ WVDErrors
 |take 100
 ```
 
-确定是否发生了特定错误：
+若要确定是否为其他用户发生了特定错误：
 
 ```kusto
 WVDErrors
@@ -232,27 +190,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-查找所有用户的错误发生次数：
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-若要查询用户已打开的应用，请运行以下查询：
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- 当用户打开完整桌面时，不会在 WVDCheckpoints 表中将其应用程序使用情况作为检查点进行跟踪。
 >- WVDConnections 表中的 ResourcesAlias 列显示用户是连接到完整的桌面还是已发布的应用。 该列只显示在连接期间打开的第一个应用。 用户打开的任何已发布应用都将在 WVDCheckpoints 中进行跟踪。

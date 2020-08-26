@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 PrinterLogic SaaS 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 PrinterLogic SaaS 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b3a1c5ba-3aa1-4eea-9cb1-cc32a8b132a6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbaef9cfb972e202d45fcb7a7dfdd512cd542ae7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8cf73e7eae333bcf2a5cb639f1c9e3d9e70140e2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75470422"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PrinterLogic SaaS 集成
 

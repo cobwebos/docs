@@ -1,19 +1,19 @@
 ---
-title: 函数1.x 和更高版本的 Azure Cosmos DB 输入绑定
+title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 输入绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 5e41f5d2189cce19dab3e0b48943ef0568ddedb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807003"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212789"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的 Azure Cosmos DB 输入绑定
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
 Azure Cosmos DB 输入绑定会使用 SQL API 检索一个或多个 Azure Cosmos DB 文档，并将其传递给函数的输入参数。 可根据调用函数的触发器确定文档 ID 或查询参数。
 
@@ -43,8 +43,12 @@ namespace CosmosDBSamplesV2
 {
     public class ToDoItem
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
+        
+        [JsonProperty("partitionKey")]
         public string PartitionKey { get; set; }
+        
         public string Description { get; set; }
     }
 }
@@ -296,7 +300,7 @@ namespace CosmosDBSamplesV2
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
 > [!NOTE]
-> 还可以使用 [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) 接口来简化测试。
+> 还可以使用 [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) 接口来简化测试。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -384,7 +388,7 @@ namespace CosmosDBSamplesV2
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数读取单个文档，并更新文档的文本值。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -420,7 +424,7 @@ C# 脚本代码如下所示：
 
 队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -459,7 +463,7 @@ C# 脚本代码如下所示：
 
 以下示例演示检索单个文档的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -522,7 +526,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 以下示例演示检索单个文档的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -586,7 +590,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 以下示例演示检索文档列表的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发。 此查询在 `SqlQuery` 特性属性中指定。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -644,7 +648,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 
 以下示例演示检索文档列表的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -732,7 +736,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数读取单个文档，并更新文档的文本值。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -776,7 +780,7 @@ JavaScript 代码如下所示：
 
 以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -835,7 +839,7 @@ module.exports = function (context, req, toDoItem) {
 
 以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -897,7 +901,7 @@ module.exports = function (context, req, toDoItem) {
 
 队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -1261,7 +1265,7 @@ public class DocByIdFromQueryStringPojo {
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
-以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数来指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档，将它作为 ```Optional<String>``` 返回。
+以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的路由参数用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档，将它作为 ```Optional<String>``` 返回。
 
 ```java
 public class DocByIdFromRoute {
@@ -1308,7 +1312,7 @@ public class DocByIdFromRoute {
 
 ### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID
 
-以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数来指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 ```ToDoItem[]```，因为可能会返回许多文档，具体取决于查询条件。
+以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 ```ToDoItem[]```，因为可能会返回许多文档，具体取决于查询条件。
 
 > [!NOTE]
 > 如果需要只按 ID 进行查询，则建议使用查找（如[以前的示例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)所示），因为该查找消耗较少的[请求单位](../cosmos-db/request-units.md)。 点读取操作 (GET) 比按 ID 进行的查询[更高效](../cosmos-db/optimize-cost-queries.md)。
@@ -1354,9 +1358,9 @@ public class DocByIdFromRouteSqlQuery {
 
  <a id="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>
 
-### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据获取多个文档（C# 脚本）
+### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据获取多个文档
 
-以下示例演示了检索多个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数 ```desc``` 来指定要在字段中搜索的字符串 ```description``` 。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 ```ToDoItem[]``` 并将其作为参数传递给函数。
+以下示例演示了检索多个文档的 Java 函数。 该函数由 HTTP 请求触发，该请求使用路由参数 ```desc``` 指定要在 ```description``` 字段中搜索的字符串。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 ```ToDoItem[]``` 并将其作为参数传递给函数。
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -1420,7 +1424,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-从[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中， `@CosmosDBOutput` 对写入到 Cosmos DB 的参数使用批注。 批注参数类型应为 `OutputBinding<T>` ，其中 `T` 是本机 Java 类型或 POJO。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对写入 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。 注释参数类型应当为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
 
 ---
 
@@ -1430,13 +1434,13 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |**direction**     | 不适用 | 必须设置为 `in`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
-|**id**    | Id | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 请勿同时设置 `id` 和**sqlQuery**属性。 如果上述两个属性都未设置，则会检索整个集合。 |
-|**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 请勿同时设置 `id` 和 `sqlQuery` 属性。 如果上述两个属性都未设置，则会检索整个集合。|
+|**id**    | Id | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 `id` 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
+|**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 `id` 和 `sqlQuery` 属性。 如果上述两个属性都未设置，则会检索整个集合。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。 |
 |**partitionKey**|**PartitionKey**|指定用于查找分区键值。 可以包含绑定参数。 它是在[分区的](../cosmos-db/partition-data.md#logical-partitions)集合中进行查询所需的。|
 |**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
@@ -1463,11 +1467,11 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中， [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 批注向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，[@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注释向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
 - [创建或修改 Azure Cosmos DB 文档时运行函数（触发器）](./functions-bindings-cosmosdb-v2-trigger.md)
-- [保存对 Azure Cosmos DB 文档所做的更改（输出绑定）](./functions-bindings-cosmosdb-v2-output.md)
+- [保存对 Azure Cosmos DB 文档的更改（输出绑定）](./functions-bindings-cosmosdb-v2-output.md)

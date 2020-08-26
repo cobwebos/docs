@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081417"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor 工作簿数据源
 
@@ -61,7 +61,7 @@ Azure 资源发出可以通过工作簿访问的[指标](data-platform-metrics.m
 
 ## <a name="azure-data-explorer"></a>Azure 数据资源管理器
 
-工作簿现在支持使用强大的 [Kusto](https://docs.microsoft.com/azure/kusto/query/index) 查询语言从 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/)群集进行查询。   
+工作簿现在支持使用强大的 [Kusto](/azure/kusto/query/index) 查询语言从 [Azure 数据资源管理器](/azure/data-explorer/)群集进行查询。   
 
 ![Kusto 查询窗口的屏幕截图](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ JSON 提供程序允许您从静态 JSON 内容创建查询结果。 它最常�
 > [!NOTE]
 > 查询 Azure 警报信息的建议方法是通过查询表来使用[Azure 资源关系图](#azure-resource-graph)数据源 `AlertsManagementResources` 。
 >
-> 有关示例，请参阅[Azure 资源关系图表引用](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)或[警报模板](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)。
+> 有关示例，请参阅[Azure 资源关系图表引用](../../governance/resource-graph/reference/supported-tables-resources.md)或[警报模板](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)。
 >
 > 警报数据源将在一段时间内保持可用，同时作者转换为使用 ARG。 不建议在模板中使用此数据源。 
 
@@ -113,5 +113,5 @@ JSON 提供程序允许您从静态 JSON 内容创建查询结果。 它最常�
 
 * [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
 * [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。
-* [Log Analytics 查询优化提示](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Log Analytics 查询优化提示](../log-query/query-optimization.md)
 * 

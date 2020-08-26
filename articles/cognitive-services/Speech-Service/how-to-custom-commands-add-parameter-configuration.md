@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307466"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284177"
 ---
-# <a name="add-configurations-to-commands-parameters"></a>将配置添加到命令参数
+# <a name="add-configurations-to-commands-parameters"></a>向命令参数添加配置
 
 本文详细介绍高级参数配置，包括：
 
  - 如何将参数值归属于在外部定义为自定义命令应用程序的集
  - 如何将验证子句添加到参数的值上
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你必须已完成以下文章中的步骤：
 
@@ -44,7 +44,7 @@ ms.locfileid: "85307466"
 | 设置 | 建议的值 |
 |----|----|
 | 名称 | `getDevices` |
-| 代码 | `https://aka.ms/speech/cc-sampledevices` |
+| URL | `https://aka.ms/speech/cc-sampledevices` |
 | 方法 | GET |
 
 
@@ -75,7 +75,7 @@ ms.locfileid: "85307466"
 
 | 设置 | 建议的值 |
 | ----| ---- |
-| Configuration | 接受来自外部目录的预定义输入 |                               
+| 配置 | 接受来自外部目录的预定义输入 |                               
 | 目录终结点 | getDevices |
 | 方法 | GET |
 
@@ -84,7 +84,7 @@ ms.locfileid: "85307466"
 > [!IMPORTANT]
 > 除非在左窗格的 " **web 终结点**" 部分中设置了 web 终结点，否则不会显示用于将参数配置为接受来自外部目录的输入的选项。
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 
 选择 "**定型**" 并等待训练完成。 训练完成后，请选择 "**测试**"，然后尝试几个交互。
 
@@ -112,12 +112,12 @@ ms.locfileid: "85307466"
     | ---- | ---- | ---- |
     | 最小值 | `60` | 对于 Number 参数，此参数可以采用的最小值 |
     | 最大值 | `80` | 对于 Number 参数，此参数可以采用的最大值 |
-    | 故障响应 |  简单编辑器 > 第一变化 >`Sorry, I can only set temperature between 60 and 80 degrees` | 验证失败时提示要求输入新值 |
+    | 故障响应 |  简单编辑器 > 第一变化 >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | 验证失败时提示要求输入新值 |
 
     > [!div class="mx-imgBorder"]
     > ![添加范围验证](media/custom-commands/add-validations-temperature.png)
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 
 1. 选择位于右窗格顶部的 "**定型**" 图标。
 

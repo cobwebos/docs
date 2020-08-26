@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure CDN 计费 | Microsoft Docs
-description: 本常见问题解答介绍了 Azure CDN 计费原理。
+description: 了解 Azure 内容交付网络所承载的内容的计费结构，包括计费区域、交货费用和管理成本。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254559"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191157"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
 
@@ -114,9 +114,9 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 - Azure Cosmos DB
 - Azure Data Lake Store
 - Azure 机器学习 
-- Azure SQL Database
+- Azure SQL 数据库
 - Azure SQL 托管实例
-- 用于 Redis 的 Azure 缓存
+- Azure Redis 缓存
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>如何才能最有效地管理费用？
 将内容的 TTL 尽可能设置得长一点。 

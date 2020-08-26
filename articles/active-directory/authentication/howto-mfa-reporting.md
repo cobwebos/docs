@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639835"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719506"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>使用登录报告查看 Azure 多重身份验证事件
 
@@ -43,7 +44,7 @@ ms.locfileid: "83639835"
 
     事件详细信息的“身份验证详细信息”或“条件访问”选项卡显示状态代码或触发了 MFA 提示的策略 。
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![屏幕截图，其中显示了 Azure 门户中的示例 Azure Active Directory 登录报告](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 如果可用，将显示身份验证，如短信、Microsoft Authenticator 应用通知或电话呼叫。
 
@@ -89,7 +90,7 @@ ms.locfileid: "83639835"
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>针对已注册 MFA 用户的 PowerShell 报告
 
-首先，请确保已安装 [MSOnline V1 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0)。
+首先，请确保已安装 [MSOnline V1 PowerShell 模块](/powershell/azure/active-directory/overview?view=azureadps-1.0)。
 
 使用后面的 PowerShell 标识已注册 MFA 的用户。 这一组命令会排除已禁用的用户，因为这些帐户无法针对 Azure AD 进行身份验证：
 

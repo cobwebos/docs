@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954088"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654372"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>集成 ExpressRoute 和 Azure Vm 的灾难恢复
 
@@ -21,7 +22,7 @@ ms.locfileid: "73954088"
 
 Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾难恢复。
 
-- 如果 Azure VM 使用 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)，则 VM 数据将复制到次要区域中复制的托管磁盘。
+- 如果 Azure VM 使用 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)，则 VM 数据将复制到次要区域中复制的托管磁盘。
 - 如果 Azure VM 没有使用托管磁盘，则 VM 数据将复制到 Azure 存储帐户。
 - 复制终结点是公共终结点，但 Azure VM 的复制流量不会通过 Internet。
 

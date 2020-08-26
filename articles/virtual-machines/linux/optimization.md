@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 662475bdcb6b1ea9809f4501d144fb94e21e945e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659473"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654185"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
@@ -33,7 +34,7 @@ ms.locfileid: "84659473"
 * 如果使用的是 **XFS**，请使用装入选项 `nobarrier` 禁用屏障（若要启用屏障，请使用 `barrier`）
 
 ## <a name="unmanaged-storage-account-considerations"></a>非托管存储帐户注意事项
-使用 Azure CLI 创建 VM 时的默认操作是使用 Azure 托管磁盘。  这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。  非托管磁盘需要存储帐户，且需要进行更多的性能考虑。  有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../windows/managed-disks-overview.md)。  以下部分概述的性能注意事项仅适用于用户使用非托管磁盘的情况。  同样，默认的和建议的存储解决方案是使用托管磁盘。
+使用 Azure CLI 创建 VM 时的默认操作是使用 Azure 托管磁盘。  这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。  非托管磁盘需要存储帐户，且需要进行更多的性能考虑。  有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../managed-disks-overview.md)。  以下部分概述的性能注意事项仅适用于用户使用非托管磁盘的情况。  同样，默认的和建议的存储解决方案是使用托管磁盘。
 
 如果使用非托管磁盘创建 VM，请务必从区域与 VM 相同的存储帐户附加磁盘，以确保高度邻近性并降低网络延迟。  每个标准存储帐户最多有 20k IOps 和 500 TB 大小的容量。  此限制大约相当于 40 个重度使用的磁盘，包括 OS 磁盘和用户创建的任何数据磁盘。 高级存储帐户没有 IOps 上限，但有 32 TB 的大小限制。 
 

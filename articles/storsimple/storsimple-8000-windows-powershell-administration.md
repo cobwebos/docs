@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999510"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -29,7 +29,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 > [!NOTE]
 > * 使用 Windows PowerShell for StorSimple cmdlet，可以从某个串行控制台或通过 Windows PowerShell 远程处理以远程方式管理 StorSimple 设备。 有关可以在此命令行接口中使用的各个 cmdlet 的详细信息，请参阅 [Windows PowerShell for StorSimple 的 cmdlet 参考](https://technet.microsoft.com/library/dn688168.aspx)。
-> * Azure PowerShell StorSimple cmdlet 是一个不同的 cmdlet 集合，可让你从命令行实现 StorSimple 服务级任务和迁移任务的自动化。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)。
+> * Azure PowerShell StorSimple cmdlet 是一个不同的 cmdlet 集合，可让你从命令行实现 StorSimple 服务级任务和迁移任务的自动化。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)。
 
 
 可以使用以下方法之一访问 Windows PowerShell for StorSimple：

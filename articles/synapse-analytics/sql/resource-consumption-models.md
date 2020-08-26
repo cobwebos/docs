@@ -1,5 +1,5 @@
 ---
-title: Synapse Analytics SQL 资源消耗
+title: Synapse SQL 资源消耗
 description: 了解 Azure Synapse Analytics 中的 Synapse SQL 消耗模型。
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112756"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489565"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure Synapse Analytics SQL 资源消耗
+# <a name="synapse-sql-resource-consumption"></a>Synapse SQL 资源消耗
 
 本文介绍了 Synapse SQL（预览版）的资源消耗模型。
 
@@ -27,7 +27,7 @@ SQL 按需版本是一项按查询付费的服务，不要求选取合适的大�
 
 提供的建议涉及如何选择理想数目的数据仓库单位 (DWU) 来优化价格和性能，以及如何更改单位数。
 
-### <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位
+### <a name="data-warehouse-units"></a>数据仓库单位
 
 Synapse SQL 池表示所预配的分析资源的集合。 分析资源以 CPU、内存和 IO 的组合形式定义。 这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 通过更改服务级别，可更改可供系统使用的 DWU 数，这反过来又会调整系统的性能和成本。
 
@@ -79,7 +79,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)。
 
-### <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位
+### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>评估所需的数据仓库单位数
 
 合适的数据仓库单位数很大程度上取决于工作负荷及已加载到系统的数据量。
 
@@ -99,7 +99,7 @@ SQL 池是一个横向扩展系统，可预配大量计算并查询大量数据�
 
 更改数据仓库单位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的权限。
 
-Azure 资源的内置角色（如 SQL DB 参与者和 SQL Server 参与者）可以更改 DWU 设置。
+Azure 内置角色（如 SQL DB 参与者和 SQL Server 参与者）可以更改 DWU 设置。
 
 #### <a name="view-current-dwu-settings"></a>查看当前的 DWU 设置
 

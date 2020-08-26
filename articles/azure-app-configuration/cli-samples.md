@@ -6,18 +6,19 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 02/19/2020
-ms.openlocfilehash: a255db3fbce2c111a0a629c01b86cc891d71e803
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d6e644a73a18cdfda71ae6a4e5360b713c08f4f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523741"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504392"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
 下表包含使用 Azure CLI 生成的 bash 脚本的链接，这些脚本适用于 Azure 应用配置。
 
-| | |
+| Script | 说明 |
 |-|-|
 |**创建**||
 | [创建应用程序配置存储区](./scripts/cli-create-service.md) | 创建资源组和应用程序配置存储区实例。  |

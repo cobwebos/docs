@@ -4,15 +4,15 @@ description: 有关创建虚拟硬盘 (VHD) 的常见问题解答。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 2b6ab5d36cd5a1f66badc79d1b2d42e464d028f4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110736"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653522"
 ---
 # <a name="common-issues-during-vhd-creation"></a>创建 VHD 期间出现的常见问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "86110736"
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>如何使用高级存储中的 VHD 从 Azure 门户创建 VM？
 
-Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像创建 VM 产品/服务。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../virtual-machines/windows/managed-disks-overview.md)。
+Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像创建 VM 产品/服务。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../virtual-machines/managed-disks-overview.md)。
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>是否可将第 2 代 VM 用于产品/服务？
 
@@ -34,8 +34,8 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 以下文章介绍了如何对基于 Windows 和基于 Linux 的 VM 执行 RDS 重置：
 
-* [如何在 Windows VM 中重置远程桌面服务或其登录密码](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [如何在 Windows VM 中重置远程桌面服务或其登录密码](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>如何生成新的 SSH 证书？
 
@@ -59,7 +59,7 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>在 VM 中如何管理启动任务中的自定义脚本扩展？
 
-有关通过 Azure PowerShell 模块、Azure 资源管理器模板和 Windows 系统上的故障排除步骤使用自定义脚本扩展的详细信息，请参阅[适用于 Windows 的自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)。
+有关通过 Azure PowerShell 模块、Azure 资源管理器模板和 Windows 系统上的故障排除步骤使用自定义脚本扩展的详细信息，请参阅[适用于 Windows 的自定义脚本扩展](/azure/virtual-machines/extensions/custom-script-windows)。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Azure 市场是否支持 32 位应用程序或服务？
 

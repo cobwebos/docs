@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 0ef3135f572b00176ff2a114fd02db82c7a05bca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258399"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494479"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box 和 Azure Data Box Heavy 导出订单的跟踪和事件日志记录
 
@@ -34,7 +34,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 ## <a name="set-up-access-control-on-the-order"></a>针对订单设置访问控制
 
-首次创建订单时，可以控制谁能够访问你的订单。 在不同的范围设置基于角色的访问控制 (RBAC)，以控制对 Data Box 订单的访问。 RBAC 角色确定了对一部分操作的访问类型 – 读写、只读、只写。
+首次创建订单时，可以控制谁能够访问你的订单。 在不同范围中设置 Azure 角色，以控制对 Data Box 顺序的访问。 Azure 角色确定对操作子集的访问（读写、只读、读写）的类型。
 
 可为 Azure Data Box 服务定义的两个角色：
 
@@ -125,11 +125,11 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 你可以使用以下选项导出这些文件： 
 
 - 你可以传输无法通过网络复制的文件。 
-- 如果数据大小大于可用设备容量，则会发生部分复制，且未复制的所有文件都将在此日志中列出。 你可以使用此日志作为输入 XML 来创建新的 Data Box 顺序，然后复制这些文件。
+- 如果数据大小大于可用设备容量，则会发生部分复制，且未复制的所有文件都将在此日志中列出。 你可以将此日志用作输入 XML 来创建新的 Data Box 订单，然后复制这些文件。
 
 ### <a name="verbose-log"></a>详细日志
 
-*详细日志*包含已从 Azure 存储帐户中成功导出的所有文件的列表。 该日志还包含文件大小和校验和计算。
+详细日志包含从 Azure 存储帐户成功导出的所有文件的列表。 该日志还包含文件大小和校验和计算。
 
 详细日志的信息采用以下格式：
 
@@ -181,7 +181,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 - 验证实际名称以及从 Data Box 复制的文件数。
 - 验证文件的实际大小。
-- 验证*crc64*是否与非零字符串相对应。 循环冗余检查 (CRC) 计算在 Azure 导出期间完成。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
+- 验证*crc64*是否与非零字符串相对应。 循环冗余检查（CRC）计算是在从 Azure 导出过程中完成的。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
 
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>擦除数据后获取监管日志链
@@ -306,7 +306,3 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[排查 Data Box 和 Data Box Heavy 上的问题](data-box-troubleshoot.md)。
-
-
-
-

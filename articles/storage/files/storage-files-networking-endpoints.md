@@ -4,17 +4,19 @@ description: Azure 文件存储的网络选项概述。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0859b034cf0caa60039fbf9eb4dd9be54448a940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510322"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586675"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
+
 Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件共享： 
 - 公共终结点：使用公共 IP 地址，可从全球任意位置访问。
 - 专用终结点：位于某个虚拟网络中，并使用该虚拟网络的地址空间内部的专用 IP 地址。
@@ -26,12 +28,21 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 在阅读本操作指南之前，我们建议先阅读 [Azure 文件存储的网络注意事项](storage-files-networking-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 - 本文假设已创建一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 本文假设已在要从本地连接到的存储帐户中创建了一个 Azure 文件共享。 若要了解如何创建 Azure 文件共享，请参阅[创建 Azure 文件共享](storage-how-to-create-file-share.md)。
+- 本文假设你已在要从本地连接到的存储帐户中创建了 Azure 文件共享。 若要了解如何创建 Azure 文件共享，请参阅[创建 Azure 文件共享](storage-how-to-create-file-share.md)。
 - 如果你打算使用 Azure PowerShell，请[安装最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 如果你打算使用 Azure CLI，请[安装最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="create-a-private-endpoint"></a>创建专用终结点
+## <a name="endpoint-configurations"></a>终结点配置
+
+你可以配置终结点，以限制对你的存储帐户的网络访问。 可通过两种方法来仅限虚拟网络访问存储帐户：
+
+- [为存储帐户创建一个或多个专用终结点](#create-a-private-endpoint)，并限制对公共终结点的所有访问。 这可以确保只有源自所需虚拟网络内部的流量才能访问存储帐户中的 Azure 文件共享。
+- [将公共终结点限制为一个或多个虚拟网络](#restrict-public-endpoint-access)。 为此，可以使用称作“服务终结点”的虚拟网络功能。 当你通过服务终结点将流量限制到存储帐户时，你仍然可以通过公共 IP 地址访问存储帐户，但只能从你在配置中指定的位置访问。
+
+### <a name="create-a-private-endpoint"></a>创建专用终结点
+
 为存储帐户创建专用终结点会部署以下 Azure 资源：
 
 - **一个专用终结点**：表示存储帐户专用终结点的 Azure 资源。 可将此资源视为连接存储帐户和网络接口的资源。
@@ -105,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-如果一切成功进行，则应会看到以下输出，其中 `192.168.0.5` 是虚拟网络中专用终结点的专用 IP 地址。 请注意，仍应使用 storageaccount.file.core.windows.net 来装载文件共享，而非 `privatelink` 路径。
+如果一切成功进行，则应会看到以下输出，其中 `192.168.0.5` 是虚拟网络中专用终结点的专用 IP 地址。 你仍应使用 storageaccount.file.core.windows.net 来装载文件共享，而不是 `privatelink` 路径。
 
 ```Output
 Server:         127.0.0.53
@@ -119,14 +130,13 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>限制对公共终结点的访问
-可以使用存储帐户防火墙设置来限制对公共终结点的访问。 通常，大多数针对存储帐户的防火墙策略仅限一个或多个虚拟网络进行网络访问。 可通过两种方法来仅限虚拟网络访问存储帐户：
+### <a name="restrict-public-endpoint-access"></a>限制公共终结点访问
 
-- [为存储帐户创建一个或多个专用终结点](#create-a-private-endpoint)，并限制对公共终结点的所有访问。 这可以确保只有源自所需虚拟网络内部的流量才能访问存储帐户中的 Azure 文件共享。
-- 仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。 通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
+限制公共终结点访问首先要求禁用公共终结点的常规访问权限。 禁用对公共终结点的访问不会影响私有终结点。 禁用公共终结点后，可以选择可以继续访问的特定网络或 IP 地址。 通常，存储帐户的大多数防火墙策略限制了对一个或多个虚拟网络的网络访问。
 
-### <a name="disable-access-to-the-public-endpoint"></a>禁止对公共终结点的访问
-禁止对公共终结点的访问时，仍可通过存储帐户的专用终结点来访问该存储帐户。 否则，对存储帐户的公共终结点发出的有效请求将被拒绝。 
+#### <a name="disable-access-to-the-public-endpoint"></a>禁止对公共终结点的访问
+
+禁止对公共终结点的访问时，仍可通过存储帐户的专用终结点来访问该存储帐户。 否则，将拒绝对存储帐户的公共终结点的有效请求，除非它们来自 [特定允许的源](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks)。 
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]
@@ -139,7 +149,8 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>仅限从特定的虚拟网络访问公共终结点
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>仅限从特定的虚拟网络访问公共终结点
+
 如果仅限从特定的虚拟网络访问存储帐户，则会允许从指定的虚拟网络内部对公共终结点发出请求。 为此，可以使用称作“服务终结点”的虚拟网络功能。 在具有或没有专用终结点的情况下都可以使用此功能。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
@@ -154,6 +165,7 @@ Address: 192.168.0.5
 ---
 
 ## <a name="see-also"></a>另请参阅
+
 - [Azure 文件存储的网络注意事项](storage-files-networking-overview.md)
 - [配置 Azure 文件存储的 DNS 转发](storage-files-networking-dns.md)
 - [配置 Azure 文件存储的 S2S VPN](storage-files-configure-s2s-vpn.md)

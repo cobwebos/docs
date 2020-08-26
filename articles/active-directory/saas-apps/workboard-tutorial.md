@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 WorkBoard 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 WorkBoard 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 60368164-feb7-4509-baa4-d338a5d28988
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b29405ebc620736a4318c2c3a875e8864c1eafb6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a54778aad52e3abafefb3f551cce06918b214d4c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70846902"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workboard"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WorkBoard 集成
 

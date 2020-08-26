@@ -4,12 +4,12 @@ description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fab
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257098"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716871"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>增加节点资源 
-创建 Service Fabric 群集后，可以纵向扩展群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统，方法是使用新节点类型（带有更新的 VM SKU 或 OS 映像）替换原始节点类型。 有关更多详细信息，请参阅[纵向扩展 Azure Service Fabric 节点类型](service-fabric-scale-up-node-type.md)。
+创建 Service Fabric 群集后，可以纵向扩展群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统，方法是使用新节点类型（带有更新的 VM SKU 或 OS 映像）替换原始节点类型。 有关更多详细信息，请参阅[纵向扩展 Azure Service Fabric 节点类型](service-fabric-scale-up-primary-node-type.md)。
 
 > [!IMPORTANT]
 > 切勿尝试就地更改 VM SKU 或 OS 映像，这是一项危险操作，不受支持。

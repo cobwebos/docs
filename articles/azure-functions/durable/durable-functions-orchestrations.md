@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033636"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -25,7 +25,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ## <a name="orchestration-identity"></a>业务流程标识
 
-业务流程的每个实例都有一个实例标识符（也称为“实例 ID”）。  默认情况下，每个实例 ID 都是自动生成的 GUID。 但是，实例 ID 也可以是用户生成的任何字符串值。 每个业务流程实例 ID 在[任务中心](durable-functions-task-hubs.md)内必须唯一。
+业务流程的每个实例都有一个实例标识符（也称为“实例 ID”）。 默认情况下，每个实例 ID 都是自动生成的 GUID。 但是，实例 ID 也可以是用户生成的任何字符串值。 每个业务流程实例 ID 在[任务中心](durable-functions-task-hubs.md)内必须唯一。
 
 下面是有关实例 ID 的一些规则：
 
@@ -41,9 +41,9 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ## <a name="reliability"></a>可靠性
 
-业务流程协调程序函数使用[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)设计模式可靠地维护自身的执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”整个运行时状态相比，仅限追加的存储具有很多优点。 优点包括提高性能、可伸缩性和响应能力。 此外，它还提供事务数据的最终一致性，以及完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
+业务流程协调程序函数使用[事件溯源](/azure/architecture/patterns/event-sourcing)设计模式可靠地维护自身的执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”整个运行时状态相比，仅限追加的存储具有很多优点。 优点包括提高性能、可伸缩性和响应能力。 此外，它还提供事务数据的最终一致性，以及完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
 
-Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。
+Durable Functions 以透明方式使用事件溯源。 在后台，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript/Python) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。
 
 如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器到期），业务流程协调程序将会唤醒，并从头开始重新执行整个函数，以重新生成本地状态。 在重播过程中，如果代码尝试调用函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成结果，则会回放该函数的结果并且业务流程协调程序代码继续运行。 在函数代码完成或计划了新的异步工作之前，重放会一直继续。
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-执行到每条 `await` (C#) 或 `yield` (JavaScript) 语句时，Durable Task Framework 会在某个持久存储后端（通常是 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。
+执行到每条 `await` (C#) 或 `yield` (JavaScript/Python) 语句时，Durable Task Framework 会在某个持久存储后端（通常是 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。
 
 ### <a name="history-table"></a>历史记录表
 
@@ -133,7 +147,7 @@ module.exports = df.orchestrator(function*(context) {
 
 * **PartitionKey**：包含业务流程的实例 ID。
 * **EventType**：表示事件的类型。 可为以下类型之一：
-  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
+  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET)、`currentUtcDateTime` (JavaScript)，和 `current_utc_datetime`(Python) API 的确定性值。
   * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
   * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
   * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
@@ -151,7 +165,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!WARNING]
 > 尽管此表可以用作有效的调试工具，但不要对它有任何依赖。 它可能会随着 Durable Functions 扩展的演变而变化。
 
-每当函数从 `await` (C#) 或 `yield` (JavaScript) 恢复时，Durable Task Framework 会从头开始重新运行业务流程协调程序函数。 每次重新运行时，它会查询执行历史记录，确定当前的异步操作是否已发生。  如果该操作已发生，该框架会立即重播该操作的输出，并转到下一个 `await` (C#) 或 `yield` (JavaScript)。 此过程会持续到整个历史记录被重播为止。 重播当前历史记录后，本地变量已还原到其先前值。
+每当函数从 `await` (C#) 或 `yield` (JavaScript/Python) 恢复时，Durable Task Framework 会从头开始重新运行业务流程协调程序函数。 每次重新运行时，它会查询执行历史记录，确定当前的异步操作是否已发生。  如果该操作已发生，该框架会立即重播该操作的输出，并转到下一个 `await` (C#) 或 `yield` (JavaScript/Python)。 此过程会持续到整个历史记录被重播为止。 重播当前历史记录后，本地变量已还原到其先前值。
 
 ## <a name="features-and-patterns"></a>功能和模式
 
@@ -165,7 +179,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="durable-timers"></a>持久计时器
 
-业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。 请在业务流程协调程序函数中使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。 请在业务流程协调程序函数中使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#)，或 `setTimeout()` 和 `setInterval()`(JavaScript)，或 `time.sleep()`(Python)。
 
 有关详细信息和示例，请参阅[持久计时器](durable-functions-timers.md)一文。
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 除了支持基本请求/响应模式外，该方法还支持自动处理常见的异步 HTTP 202 轮询模式，并支持使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)通过外部服务进行身份验证。
@@ -267,7 +293,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
+在 .NET 中，还可以使用 [ValueTuples](/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](/dotnet/csharp/tuples) 的新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>活动
+#### <a name="getweather-activity"></a>`GetWeather` 活动
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>业务流程协调程序
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather` 活动
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

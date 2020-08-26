@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 34cbba15f5798286be63171da0173f6214fe7822
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ac945b14091ae01cfad66c3776c84406583e491f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037110"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>使用 CLI 配置 SQL 数据库审核和高级威胁防护
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| | |
+| 命令 | 说明 |
 |---|---|
 | [az sql db audit-policy](/cli/azure/sql/db/audit-policy) | 设置数据库的审核策略。 |
 | [az sql db threat-policy](/cli/azure/sql/db/threat-policy) | 在数据库上设置高级威胁防护策略。 |

@@ -2,25 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Bonusly 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Bonusly 和取消其预配。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 879b0ee9-042a-441b-90a7-8c364d62426a
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7694e441a59680a9b9544d3479100c1f779964ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee150c2fdeb29dcd01d94a335635db7e3939b59c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058818"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549305"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>教程：为 Bonusly 配置自动用户预配
 
@@ -46,15 +42,15 @@ ms.locfileid: "77058818"
 
 **若要从 Azure AD 应用程序库中添加 Bonusly，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项 。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -85,7 +81,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>若要在 Azure AD 中为 Bonusly 配置自动用户预配，请执行以下操作：
 
-1. 登录到[Azure 门户](https://portal.azure.com)，选择 "**企业应用程序**"，选择 "**所有应用程序**"，然后选择 " **Bonusly**"。
+1. 登录到 [Azure 门户](https://portal.azure.com) ，选择 " **企业应用程序**"，选择 " **所有应用程序**"，然后选择 " **Bonusly**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 

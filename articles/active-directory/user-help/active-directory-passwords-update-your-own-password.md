@@ -11,20 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266111"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799037"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全信息重置工作或学校密码
 
-如果忘记了工作或学校密码、从来没有从组织处得到过密码，或者帐户被锁定，则可使用安全信息和移动设备来重置工作或学校密码。 你的管理员必须已启用此功能，你才能设置信息并[重置你的密码](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)。
+如果忘记了工作或学校密码、从来没有从组织处得到过密码，或者帐户被锁定，则可使用安全信息和移动设备来重置工作或学校密码。 你的管理员必须已启用此功能，你才能设置信息并[重置你的密码](./active-directory-passwords-reset-register.md)。
 
-如果你知道密码，但想要对其进行更改，请参阅本文的[更改密码步骤](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)部分。
+如果你知道密码，但想要对其进行更改，请参阅本文的 [更改密码步骤](#how-to-change-your-password) 部分。
 
 >[!Important]
->本文适用于尝试重置工作或学校帐户密码的用户。 如果你是管理员，并且正在查找有关如何为员工或其他用户启用自助式密码重置的详细信息，请参阅[部署 Azure AD 自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)。
+>本文适用于尝试重置工作或学校帐户密码的用户。 如果你是管理员，并且正在查找有关如何为员工或其他用户启用自助式密码重置的详细信息，请参阅[部署 Azure AD 自助式密码重置](../authentication/howto-sspr-deployment.md)。
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>如何重置或解锁工作或学校帐户的密码
 
@@ -163,6 +164,6 @@ ms.locfileid: "84266111"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[安全信息（预览版）概述](user-help-security-info-overview.md)一文中了解安全信息。
+- 在[安全信息（预览版）概述](./security-info-setup-signin.md)一文中了解安全信息。
 
 - 若尝试回到个人帐户，如 Xbox、hotmail.com 或 outlook.com，请使用[无法登录到你的 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的建议。

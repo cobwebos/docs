@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223000"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722630"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure Active Directory 域服务托管域
 
@@ -71,7 +71,7 @@ Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使托
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。  请不要更改此应用程序 ID。
+使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。 请不要更改此应用程序 ID。
 
 ```powershell
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
@@ -115,7 +115,7 @@ New-AzResourceGroup `
 
 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。
 
-对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看详细信息和区域可用性，请参阅[Azure 中的可用性区域是什么？][availability-zones]。
+对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 有关详细信息和区域可用性，请参阅[Azure 中的可用性区域是什么？][availability-zones]。
 
 ## <a name="resource-definition-for-azure-ad-ds"></a>Azure AD DS 的资源定义
 
@@ -125,8 +125,8 @@ New-AzResourceGroup `
 |-------------------------|---------|
 | domainName              | 托管域的 DNS 域名，填写此参数时，请考虑到前面提到的有关命名前缀和冲突的要点。 |
 | filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 <br /><br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
-| notificationSettings    | 如果托管域中生成了任何警报，可以发出电子邮件通知。 <br /><br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。  <br /><br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
-| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /><br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为 ResourceTrusting 可创建资源林。<br /><br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
+| notificationSettings    | 如果托管域中生成了任何警报，可以发出电子邮件通知。 <br /><br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。<br /><br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
+| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /><br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 将值设置为 ResourceTrusting 可创建资源林。<br /><br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
 
 以下精简参数定义演示了这些值的声明方式。 将创建名为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步到托管域的所有用户：
 
@@ -358,6 +358,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile
 [Register-AzResourceProvider]: /powershell/module/Az.Resources/Register-AzResourceProvider
 [New-AzResourceGroup]: /powershell/module/Az.Resources/New-AzResourceGroup
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
-[cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain
 [New-AzResourceGroupDeployment]: /powershell/module/Az.Resources/New-AzResourceGroupDeployment

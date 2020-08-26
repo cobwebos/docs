@@ -1,27 +1,23 @@
 ---
-title: Azure Arc for servers 的内置策略定义
-description: 列出 Azure Arc for servers 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
+title: 已启用 Azure Arc 的服务器的内置策略定义
+description: 列出已启用 Azure Arc 的服务器（预览版）的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
 ms.date: 07/10/2020
 ms.topic: sample
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 6cbbfcd16ee0c256833cd600db91e26a3c68e618
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8d430e741e2cdf2ed562f4a2b2a14cc64d4e5d99
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275643"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211269"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-arc-for-servers"></a>Azure Arc for servers 的 Azure Policy 内置定义
+# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers-preview"></a>已启用 Azure Arc 的服务器（预览版）的 Azure Policy 内置定义
 
-此页是 Azure Arc for servers 的 [Azure Policy](../../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../../governance/policy/samples/built-in-policies.md)。
+本页面是已启用 Azure Arc 的服务器（预览版）的 [Azure Policy](../../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../../governance/policy/samples/built-in-policies.md)。
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 
-## <a name="azure-arc-for-servers"></a>用于服务器的 Azure Arc
+## <a name="azure-arc-enabled-servers-preview"></a>启用了 Azure Arc 的服务器（预览版）
 
 [!INCLUDE [azure-policy-samples-rp-arcserver](../../../includes/policy/samples/byrp/microsoft.hybridcompute.md)]
 

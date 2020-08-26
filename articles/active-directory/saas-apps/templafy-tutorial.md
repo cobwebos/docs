@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Templafy SAML2 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Templafy SAML2 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 60c6153e-2d9d-4a56-809d-4a7a9d677c43
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5eee56509eb10a2c51c168d432803af75bf46a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cff461ba2d463e88d0d5ba1943f789614aa5afa9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482694"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy-saml2"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Templafy SAML2 的集成
 

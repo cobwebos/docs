@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141950"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543429"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
 
@@ -24,7 +25,7 @@ ms.locfileid: "86141950"
 
 1. 使用 Azure 机器学习[将模型部署为 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
 
-2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md#example-entry-script)。 流分析使用该架构来理解 Web 服务的函数签名。 可以使用此[示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)作为参考，以确保已正确设置该定义。
+2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md)。 流分析使用该架构来理解 Web 服务的函数签名。 可以使用此[示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)作为参考，以确保已正确设置该定义。
 
 3. 确保 Web 服务接受并返回 JSON 序列化的数据。
 
@@ -146,7 +147,7 @@ FROM input
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>优化 Azure 机器学习 UDF 的性能
 
-将模型部署到 Azure Kubernetes 服务时，可以[分析模型以确定资源利用率](../machine-learning/how-to-deploy-and-where.md#profilemodel)。 还可以[为部署启用 App Insights](../machine-learning/how-to-enable-app-insights.md)，以了解请求速率、响应时间和失败率。
+将模型部署到 Azure Kubernetes 服务时，可以[分析模型以确定资源利用率](../machine-learning/how-to-deploy-profile-model.md)。 还可以[为部署启用 App Insights](../machine-learning/how-to-enable-app-insights.md)，以了解请求速率、响应时间和失败率。
 
 如果你的方案使用较高的事件吞吐量，那么你可能需要更改流分析中的以下参数，以实现最佳性能和较低的端到端延迟：
 

@@ -1,6 +1,6 @@
 ---
 title: 远程监视访问控制 - Azure | Microsoft Docs
-description: 本文提供有关如何在远程监视解决方案加速器中配置基于角色的访问控制 (RBAC) 的信息
+description: 本文提供了有关如何在远程监视解决方案加速器中配置基于角色的访问控制 (RBAC) 的信息
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,15 +9,16 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920717"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008978"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
+# <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 
-本文提供有关如何在远程监视解决方案加速器中配置基于角色的访问控制的信息。 使用基于角色的访问控制可以限制单个用户对解决方案中特定功能的访问。
+本文提供了有关如何在远程监视解决方案加速器中配置基于角色的访问控制的信息。 基于角色的访问控制允许你将个人用户的访问权限限制为解决方案中的特定功能。
 
 ## <a name="default-settings"></a>默认设置
 
@@ -243,7 +244,7 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何在远程监视解决方案加速器中实现基于角色的访问控制。
+本文介绍如何在远程监视解决方案加速器中实现基于角色的访问控制。
 
 请参阅[配置时序见解资源管理器的访问控制](iot-accelerators-remote-monitoring-rbac-tsi.md)，了解有关如何在远程监视解决方案加速器中管理时序见解资源管理器的访问权限信息。
 

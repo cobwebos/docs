@@ -16,12 +16,13 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9af6311165f50023cfca8f9253f77b4c84c25dd5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688222"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500923"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>在 Azure CLI 中使用网络安全组筛选网络流量
 
@@ -36,7 +37,7 @@ ms.locfileid: "84688222"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
@@ -176,7 +177,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
+记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -195,7 +196,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将替换 *\<publicIpAddress>* 为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 *\<publicIpAddress>* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>

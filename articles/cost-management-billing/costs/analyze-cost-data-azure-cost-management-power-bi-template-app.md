@@ -3,24 +3,27 @@ title: 使用 Power BI 应用分析 Azure 成本
 description: 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/16/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 388fbcf8dde2e01bf7f4e6c8b4ecbe344fd036d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888205"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290899"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
 
 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。 该应用可帮助你在 Power BI 中分析和管理 Azure 成本。 可以使用该应用来监视成本和使用趋势，并确定可用于减少支出的成本优化选项。
 
-将该应用下载到 Power BI Desktop。 可以按原样使用该应用，或者对其进行修改，以根据自己的自定义需求扩展默认筛选器、视图和可视化效果。 然后，使用该应用联接更多的数据，以创建自定义报表，获取总体业务成本的全方位视图。
+可以按原样使用该应用，或者对其进行修改，以根据自己的自定义需求扩展默认筛选器、视图和可视化效果。 然后，使用该应用联接更多的数据，以创建自定义报表，获取总体业务成本的全方位视图。
 
 Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)的客户。
+
+> [!NOTE]
+> Power BI 模板应用不支持下载 PBIX 文件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,13 +37,13 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 1. 打开 [Azure 成本管理 Power BI 应用](https://aka.ms/costmgmt/ACMApp)。
 2. 在 Power BI 的“AppSource”页上，选择“立即获取”。
 3. 选择“继续”以同意使用条款和隐私策略。
-4. 在“安装此 Power BI 应用”框中，选择“安装”。 
+4. 在“安装此 Power BI 应用”框中，选择“安装”。
 5. 如果需要，请创建一个工作区并选择“继续”。
 6. 安装完成后会显示通知，指出新应用已准备就绪。
 7. 选择“转到应用”。
-8. 在“开始使用新应用”中的“连接数据”下，选择“连接”。    
+8. 在“开始使用新应用”中的“连接数据”下，选择“连接”。  
   ![开始使用新应用 - 连接](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. 在出现的对话框中，为“BillingProfileIdOrEnrollmentNumber”输入 EA 注册编号。 指定要获取的数据的月数。 保留“注册编号”的默认“范围”值，然后选择“下一步”。    
+9. 在出现的对话框中，为“BillingProfileIdOrEnrollmentNumber”输入 EA 注册编号。 指定要获取的数据的月数。 保留“注册编号”的默认“范围”值，然后选择“下一步”。  
   ![输入 EA 注册信息](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. 在下一个对话框中连接到 Azure，并获取所需的数据来显示预留实例建议。 保留配置的默认值，并选择“登录”。  
   ![连接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
@@ -112,7 +115,7 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 
 建议表根据所用的 VM 大小提供预留项购买建议。
 
-“规范化大小”和“建议的规范化数量”值可帮助你根据实例大小灵活性组的最小大小规范化购买。  如果你打算只为实例大小灵活性组中的所有大小购买一个预留项，此信息将很有帮助。
+“规范化大小”和“建议的规范化数量”值可帮助你根据实例大小灵活性组的最小大小规范化购买。 如果你打算只为实例大小灵活性组中的所有大小购买一个预留项，此信息将很有帮助。
 
 ![RI 建议](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
 

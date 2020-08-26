@@ -5,17 +5,18 @@ description: 在适用于 Python 的 Azure 机器学习 SDK 中的机器学习�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
+ms.topic: conceptual
+ms.custom: troubleshooting
+ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/06/2020
-ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/16/2020
+ms.openlocfilehash: 16366d9f3be1144a7588ceb9133fb4e2e60db95c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026995"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373702"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>对 ParallelRunStep 进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +37,7 @@ ms.locfileid: "86026995"
 
 - `~/logs/overview.txt`：此文件提供了有关到目前为止已创建的微型批处理数（也称为任务数）以及已处理的微型批处理数的高级信息。 最后，它会显示作业的结果。 如果作业失败，它将显示错误消息以及开始进行故障排除的位置。
 
-- `~/logs/sys/master.txt`：此文件提供正在运行的作业的主节点（也称为业务流程协调程序）视图。 包括任务创建、进度监视和运行结果。
+- `~/logs/sys/master.txt`：此文件提供正在运行的作业的主体节点（也称为协调器）视图。 包括任务创建、进度监视和运行结果。
 
 使用 EntryScript 帮助程序和 print 语句，通过入口脚本生成的日志将显示在以下文件中：
 
@@ -61,11 +62,11 @@ ms.locfileid: "86026995"
 此外，还可以找到有关每个工作进程的资源使用情况的信息。 此信息采用 CSV 格式，并且位于 `~/logs/sys/perf/overview.csv` 中。 下提供了有关每个流程的信息 `~logs/sys/processes.csv` 。
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>如何从远程上下文中的用户脚本记录？
-可从 EntryScript 获取记录器（如下面的示例代码所示），以使日志显示在门户的“日志/用户”文件夹中。
+ParallelRunStep 可以基于 process_count_per_node 在一个节点上运行多个进程。 为了组织节点上每个进程的日志并组合 print 和 log 语句，我们建议使用 ParallelRunStep 记录器，如下所示。 从 EntryScript 获取记录器，并使日志显示在门户的 "**日志/用户**" 文件夹中。
 
 使用记录器的示例入口脚本：
 ```python
-from entry_script import EntryScript
+from azureml_user.parallel_run import EntryScript
 
 def init():
     """ Initialize the node."""
@@ -87,7 +88,9 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将端输入（如包含查找表的单个或多个文件）传递到所有工作器？
 
-构造包含端输入的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_input` 参数。 此外，还可以在节中添加其路径 `arguments` ，以便轻松访问其装入的路径：
+用户可以使用 ParalleRunStep 的 side_inputs 参数将引用数据传递给脚本。 作为 side_inputs 提供的所有数据集将装载到每个辅助角色节点上。 用户可以通过传递参数获取装入的位置。
+
+构造包含引用数据的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，并将其注册到你的工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在节中添加其路径 `arguments` ，以便轻松访问其装入的路径：
 
 ```python
 label_config = label_ds.as_named_input("labels_input")

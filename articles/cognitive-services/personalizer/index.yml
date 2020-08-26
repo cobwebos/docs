@@ -12,12 +12,12 @@ metadata:
   title: 个性化体验创建服务文档
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-  ms.openlocfilehash: 0c8e99ab2817cd9aaa2de60b9996b3d47b10a1ff
-  ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+  ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
+  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/11/2020
-  ms.locfileid: "84717911"
+  ms.lasthandoff: 08/18/2020
+  ms.locfileid: "88506542"
 landingContent:
 - title: 关于个性化体验创建服务
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
     links:
     - text: 在 .NET web 应用中使用个性化体验创建服务
       url: tutorial-use-personalizer-web-app.md
-    - text: 将个性化体验创建服务用于 Azure 笔记本
+    - text: 在 Azure Notebooks 文件中使用个性化体验创建服务
       url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:

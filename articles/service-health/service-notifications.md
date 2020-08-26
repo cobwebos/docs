@@ -3,11 +3,12 @@ title: 使用 Azure 门户查看服务运行状况通知
 description: 借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f8297ae708d3f4e7921221f2c4bacee12a7a2b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75748652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089560"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -29,7 +30,7 @@ ms.locfileid: "75748652"
 
     ![监视活动日志的屏幕快照，其中“警报”处于选中状态](./media/service-notifications/service-health-summary.png)
 
-1. 选择“+添加活动日志警报”  并设置警报，以确保以后可收到服务通知。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
+1. 选择“+添加活动日志警报”  并设置警报，以确保以后可收到服务通知。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](./alerts-activity-log-service-notifications-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

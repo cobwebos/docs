@@ -3,12 +3,12 @@ title: Application Insights 中的事件计数器 | Microsoft Docs
 description: 监视 Application Insights 中的系统和自定义的 .NET/.NET Core EventCounters。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539935"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272359"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
@@ -45,10 +45,6 @@ Application Insights 支持使用 `EventCounterCollectionModule` 收集 `EventCo
 |`System.Runtime` | `threadpool-queue-length` |
 |`System.Runtime` | `threadpool-completed-items-count` |
 |`System.Runtime` | `active-timer-count` |
-|`Microsoft.AspNetCore.Hosting` | `requests-per-second` |
-|`Microsoft.AspNetCore.Hosting` | `total-requests` |
-|`Microsoft.AspNetCore.Hosting` | `current-requests` |
-|`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
 > Microsoft.AspNetCore.Hosting 类别的计数器仅添加到 ASP.NET Core 应用程序中。
@@ -124,7 +120,7 @@ customMetrics
 与其他遥测一样，customMetrics 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 上述查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](../../azure-monitor/platform/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
+与其他指标一样，可以[设置警报](../platform/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -148,4 +144,5 @@ EventCounter 无需任何特殊权限，并且在支持 .NET Core 3.0 的所有�
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
-* [依赖关系跟踪](../../azure-monitor/app/asp-net-dependencies.md)
+* [依赖关系跟踪](./asp-net-dependencies.md)
+

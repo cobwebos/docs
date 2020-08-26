@@ -6,13 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/27/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5fcde46738417a03cac8e5e99bea840ce2fd8bc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5944cbeea2e26d7209cde7c926f862683c7cab7e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392091"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590194"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -25,6 +26,9 @@ ms.locfileid: "85392091"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -42,7 +46,7 @@ ms.locfileid: "85392091"
 | **当前受支持的框架**| Microsoft .NET Framework 4.5.2、4.6.1 和 .NET Standard 2.0 |
 
 > [!NOTE]
-> 如果使用批量执行程序，请参阅 [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md) 的最新版本 3.x，其中内置了批量执行程序。 
+> 如果使用的是批量执行程序，请参阅 [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md) 的最新版本 3.x，其中包含内置于 SDK 中的批量执行程序。 
 
 ## <a name="release-notes"></a>发行说明
 

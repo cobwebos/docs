@@ -7,12 +7,13 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975854"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499409"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览：使用 Azure 映像生成器创建 Windows VM 使用 PowerShell
 
@@ -25,7 +26,7 @@ ms.locfileid: "84975854"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
 > 尽管**ImageBuilder**和**ManagedServiceIdentity** PowerShell 模块处于预览阶段，但你必须使用 `Install-Module` cmdlet 和参数分别安装这些模块。 `AllowPrerelease` 当这些 PowerShell 模块公开上市后，它们将成为未来 Az PowerShell 模块版本的一部分，并从 Azure Cloud Shell 中的本机提供。
@@ -36,7 +37,7 @@ ms.locfileid: "84975854"
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-如果有多个 Azure 订阅，请选择应当计费的资源所在的相应订阅。 使用[AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) cmdlet 选择特定订阅。
+如果有多个 Azure 订阅，请选择应当计费的资源所在的相应订阅。 使用[AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 选择特定订阅。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +101,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 [Azure 资源组](../../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 下面的示例基于变量中指定的区域内的变量名称创建一个资源组 `$imageResourceGroup` `$location` 。 此资源组用于存储映像配置模板项目和映像。
 
@@ -168,7 +169,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> 如果收到错误： "_AzRoleDefinition：已超出角色定义限制。无法创建更多的角色定义。 "的详细信息_，请参阅[Azure RBAC 故障排除](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)。
+> 如果收到错误： "_AzRoleDefinition：已超出角色定义限制。无法创建更多的角色定义。 "的详细信息_，请参阅[Azure RBAC 故障排除](../../role-based-access-control/troubleshooting.md)。
 
 ## <a name="create-a-shared-image-gallery"></a>创建共享映像库
 
@@ -200,7 +201,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>创建映像
 
-创建 Azure 映像生成器源对象。 请参阅[在 Azure Marketplace 中查找 WINDOWS VM 映像，并 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)有效的参数值。
+创建 Azure 映像生成器源对象。 请参阅[在 Azure Marketplace 中查找 WINDOWS VM 映像，并 Azure PowerShell](./cli-ps-findimage.md)有效的参数值。
 
 ```azurepowershell-interactive
 $SrcObjParams = @{

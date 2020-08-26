@@ -5,11 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147931"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067165"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -17,7 +18,8 @@ ms.locfileid: "84147931"
 
 ## <a name="settings-file"></a>“设置”文件
 
-如果在输入模型旁边的输入容器中找到名为 `ConversionSettings.json` 的文件，则该文件用于为模型转换过程提供额外配置。
+如果 `<modelName>.ConversionSettings.json` 在输入模型旁边的输入容器中找到一个名为的文件 `<modelName>.<ext>` ，则该文件将用于为模型转换过程提供其他配置。
+例如， `box.ConversionSettings.json` 在转换时使用 `box.gltf` 。
 
 该文件的内容应满足以下 json 架构：
 
@@ -47,13 +49,19 @@ ms.locfileid: "84147931"
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
 }
 ```
 
-`ConversionSettings.json` 文件的一个示例可能是：
+示例文件 `box.ConversionSettings.json` 可能是：
 
 ```json
 {
@@ -65,15 +73,18 @@ ms.locfileid: "84147931"
 
 ### <a name="geometry-parameters"></a>几何参数
 
-* `scaling` - 此参数统一缩放模型。 缩放可用于增大或缩小模型，例如用于在桌面上显示建筑模型。 由于呈现引擎期望以米为单位指定长度，因此以其他单位定义模型时，会显露出此参数的另一重要用途。 例如，如果模型是以厘米定义的，则应用比例 0.01 应会以正确的大小呈现模型。
+* `scaling` - 此参数统一缩放模型。 缩放可用于增大或缩小模型，例如用于在桌面上显示建筑模型。
+如果模型是在 "米" 之外的单位中定义的，则缩放也很重要，因为呈现引擎需要计量。
+例如，如果模型是以厘米定义的，则应用比例 0.01 应会以正确的大小呈现模型。
 一些源数据格式（例如 .fbx）提供单位缩放提示，在这种情况下，转换会将模型隐式缩放为以米为单位。 将在缩放参数的基础上应用源格式提供的隐式缩放。
 最终缩放因子应用于场景图形节点的几何顶点和局部转换。 根实体转换的缩放比例保持不变。
 
 * `recenterToOrigin` - 指出应对模型进行转换，使其边界框以原点为中心。
-如果源模型离原点较远，则居中非常重要，因为在这种情况下，浮点精度问题可能导致呈现噪点。
+如果从源模型置换了源模型，则浮点精度问题可能导致呈现项目。
+在这种情况下，可以对模型进行居中。
 
 * `opaqueMaterialDefaultSidedness` - 呈现引擎假定不透明材料是双面的。
-如果这不是预期的行为，则应将此参数设置为“SingleSided”。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
+如果该假设不是特定模型的 true，则应将此参数设置为 "SingleSided"。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="material-overrides"></a>材料覆盖
 
@@ -98,10 +109,10 @@ ms.locfileid: "84147931"
 
 * `sceneGraphMode` - 定义如何转换源文件中的场景图：
   * `dynamic`（默认值）：文件中的所有对象都作为 API 中的[实体](../../concepts/entities.md)公开，并可独立转换。 运行时的节点层次结构与源文件中的结构相同。
-  * `static`：所有对象都在 API 中公开，但无法独立转换。
+  * `static`：所有对象都在 API 中公开，但无法独立进行转换。
   * `none`：场景图折叠为一个对象。
 
-每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 仅当需要为应用程序单独移动部件时才应使用此方法，例如要制作“爆炸视图”动画时。
+每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 `dynamic`仅当需要单独移动部件（例如，对于 "爆炸视图" 动画）时使用模式。
 
 `static` 模式将导出整个场景图，但此图内的部件相对于其根部件具有恒定的转换。 但是，仍可移动、旋转或缩放对象的根节点，而不产生显著的性能开销。 而且，[空间查询](../../overview/features/spatial-queries.md)将返回各个部件，并且可以通过[状态重写](../../overview/features/override-hierarchical-state.md)来修改每个部件。 在此模式下，每个对象的运行时开销可忽略不计。 它非常适用于仍需要按对象检查但不需要按对象转换的大型场景。
 
@@ -125,6 +136,12 @@ ms.locfileid: "84147931"
 ### <a name="coordinate-system-overriding"></a>坐标系统替代
 
 * `axis` - 替代坐标系统单位矢量。 默认值有 `["+x", "+y", "+z"]`。 理论上，FBX 格式具有标头，其中定义了这些矢量以及使用该信息来转换场景的转换。 glTF 格式也定义固定坐标系统。 在实践中，某些资产的标头中包含不正确的信息，或者是使用不同的坐标系统约定保存的。 此选项可用于替代坐标系统以进行补偿。 例如：`"axis" : ["+x", "+z", "-y"]` 将交换 Z 轴和 Y 轴，并通过反转 Y 轴方向来保持坐标系统的旋向。
+
+### <a name="node-meta-data"></a>节点元数据
+
+* `metadataKeys`-用于指定要保留在转换结果中的节点元数据属性的键。 可以指定精确的密钥或通配符。 通配符的格式为 "ABC *"，并与以 "ABC" 开头的任何密钥匹配。 支持的元数据值类型为 `bool` 、、 `int` `float` 和 `string` 。
+
+    对于 GLTF 文件，此数据来自[节点上的额外对象](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 对于 FBX 文件，此数据来自中的 `Properties70` 数据 `Model nodes` 。 有关更多详细信息，请参阅你的3D 资产工具的文档。
 
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::形式
 
@@ -200,7 +217,7 @@ ms.locfileid: "84147931"
 
 默认情况下，转换器必须假设你在某个时间会想在模型上使用 PBR 材料，因此它将为你生成 `normal`、`tangent` 和 `binormal` 数据。 因此，每个顶点的内存使用量为 `position`（12 字节）+ `texcoord0`（8 字节）+ `normal`（4 字节）+ `tangent`（4 字节）+ `binormal`（4 字节）= 32 字节。 此类更大的模型可能很多数百万 :::no-loc text="vertices"::: ，因此可能会占用多 gb 内存。 如此大量的数据会影响性能，甚至可能耗尽内存。
 
-知道您在模型上从不需要动态照明，并且知道所有纹理坐标都在范围内 `[0; 1]` ，则可以将 `normal` 、 `tangent` 和设置 `binormal` 为 `NONE` `texcoord0` 半精度（ `16_16_FLOAT` ），因此每个仅生成16个字节 :::no-loc text="vertex"::: 。 将网格数据一分为二，可以加载更大的模型，并可能提高性能。
+知道您在模型上从不需要动态照明，并且知道所有纹理坐标都在范围内 `[0; 1]` ，则可以将 `normal` 、 `tangent` 、和设置 `binormal` 为 `NONE` `texcoord0` 半精度 (`16_16_FLOAT`) ，从而每个仅生成16个字节 :::no-loc text="vertex"::: 。 将网格数据一分为二，可以加载更大的模型，并可能提高性能。
 
 ## <a name="memory-optimizations"></a>内存优化
 
@@ -212,7 +229,7 @@ ms.locfileid: "84147931"
 实例化示例用例是体系结构模型中的一种或椅子。
 
 > [!NOTE]
-> 实例化可显著提高内存消耗（从而导致加载时间），但对渲染性能方面的改进是不重要的。
+> 实例化可以 (的内存消耗提高，从而) 明显地加载时间，但对渲染性能方面的改进是不重要的。
 
 如果在源文件中相应地标记了部件，转换服务将考虑实例化。 但是，转换不执行网格数据的其他深入分析来识别可重复使用的部分。 因此，内容创建工具及其导出管道是正确的实例化设置的决定性条件。
 
@@ -224,9 +241,9 @@ ms.locfileid: "84147931"
 
 ![最大3ds 克隆](./media/3dsmax-clone-object.png)
 
-* **`Copy`**：在此模式下，将克隆网格，因此不使用实例（ `numMeshPartsInstanced` = 0）。
-* **`Instance`**：这两个对象共享同一网格，因此使用了实例化（ `numMeshPartsInstanced` = 1）。
-* **`Reference`**：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，不使用实例化（ `numMeshPartsInstanced` = 0）。
+* **`Copy`**：在此模式下，将克隆网格，因此不会使用 (`numMeshPartsInstanced` = 0) 的实例。
+* **`Instance`**：这两个对象共享同一网格，因此 (`numMeshPartsInstanced` = 1) 使用实例化。
+* **`Reference`**：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，而不使用实例 (`numMeshPartsInstanced` = 0) 。
 
 
 ### <a name="depth-based-composition-mode"></a>基于深度的组合模式
@@ -277,6 +294,11 @@ ms.locfileid: "84147931"
 * 各个部件应是可选择且可移动的，因此必须将 `sceneGraphMode` 保持为 `dynamic`。
 * 打光通常是应用程序不可分割的一部分，因此必须生成冲突网格。
 * 启用 `opaqueMaterialDefaultSidedness` 标志可美化剪切平面。
+
+## <a name="deprecated-features"></a>弃用的功能
+
+仍支持使用非特定于模型的文件名来提供设置 `conversionSettings.json` ，但不推荐使用。
+请改用特定于模型的文件名 `<modelName>.ConversionSettings.json` 。
 
 ## <a name="next-steps"></a>后续步骤
 

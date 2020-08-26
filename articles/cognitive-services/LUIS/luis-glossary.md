@@ -3,15 +3,15 @@ title: 术语表 - LUIS
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056372"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836405"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
-语言理解（LUIS）词汇表说明了使用 LUIS 服务时可能会遇到的术语。
+语言理解 (LUIS) 术语表说明了使用 LUIS 服务时可能会遇到的术语。
 
 ## <a name="active-version"></a>活动版本
 
@@ -26,7 +26,7 @@ ms.locfileid: "86056372"
 * [教程查看终结点最谈话](luis-tutorial-review-endpoint-utterances.md)
 * 如何通过[查看端点最谈话](luis-how-to-review-endpoint-utterances.md)改善 LUIS 应用
 
-## <a name="application-app"></a>应用程序（应用）
+## <a name="application-app"></a>应用程序 (应用程序) 
 
 在 LUIS 中，应用程序（或应用程序）是在同一数据集上构建的机器学习模型的集合，可配合使用来预测特定方案的意图和实体。 每个应用程序都有一个单独的预测终结点。
 
@@ -59,20 +59,20 @@ ms.locfileid: "86056372"
 
 在批处理测试中，它是有关测试准确度的一个度量值。
 
-### <a name="false-negative-fn"></a>假负（FN）
+### <a name="false-negative-fn"></a>假负 (FN) 
 
 在批处理测试中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的缺失。
 
-### <a name="false-positive-fp"></a>假正（FP）
+### <a name="false-positive-fp"></a>假正 (FP) 
 
 在批处理测试中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的存在。
 
 ### <a name="precision"></a>精度
 在批处理测试中，精准率（也称为正预测值）是相关话语在检索到的话语中所占的比例。
 
-动物批处理测试的一个示例是预测的羊数除以动物总数（羊和非羊等）。
+动物批处理测试的一个示例是预测的羊数除以动物总数 (羊和非羊等) 。
 
-### <a name="recall"></a>召回率
+### <a name="recall"></a>Recall
 
 在批处理测试中，召回率（也称为敏感度）是 LUIS 进行通用化的能力。
 
@@ -84,7 +84,7 @@ ms.locfileid: "86056372"
 
 ### <a name="true-positive-tp"></a>实报 (TP)
 
-True （TP）在应用正确预测匹配项时是真正的正值。 在批处理测试中，如果应用程序为使用该意向或实体标记的示例预测意向或实体，则会出现 true。
+True (TP) 如果应用正确预测匹配项，则为 true。 在批处理测试中，如果应用程序为使用该意向或实体标记的示例预测意向或实体，则会出现 true。
 
 ## <a name="classifier"></a>分类器
 
@@ -94,11 +94,11 @@ True （TP）在应用正确预测匹配项时是真正的正值。 在批处理
 
 ## <a name="collaborator"></a>协作者
 
-协作者在概念上与[参与者](#contributor)相同。 当所有者将协作者的电子邮件地址添加到不受基于角色的访问（RBAC）控制的应用时，将授予协作者访问权限。 如果你仍在使用协作者，则应迁移你的 LUIS 帐户，并使用 LUIS 创作资源来使用 RBAC 管理参与者。
+协作者在概念上与[参与者](#contributor)相同。 当所有者将协作者的电子邮件地址添加到不受 Azure 基于角色的访问控制 (Azure RBAC) 的应用时，将授予协作者访问权限。 如果你仍在使用协作者，则应迁移你的 LUIS 帐户，并使用 LUIS 创作资源来使用 RBAC 管理参与者。
 
 ## <a name="contributor"></a>参与者
 
-参与者不是应用的[所有者](#owner)，但具有用于添加、编辑和删除意向、实体、最谈话的相同权限。 参与者为 LUIS 应用提供基于角色的访问（RBAC）。
+参与者不是应用的[所有者](#owner)，但具有用于添加、编辑和删除意向、实体、最谈话的相同权限。 参与者为 LUIS 应用提供 Azure RBAC)  (Azure 基于角色的访问控制。
 
 另请参阅：
 * [如何](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)添加参与者
@@ -107,11 +107,11 @@ True （TP）在应用正确预测匹配项时是真正的正值。 在批处理
 
 描述符是以前用于机器学习[功能](#features)的术语。
 
-## <a name="domain"></a>域
+## <a name="domain"></a>Domain
 
 在 LUIS 上下文中，域是一个知识领域。 你的域特定于你的方案。 不同域使用在域上下文中有意义的特定语言和术语。 例如，如果您正在构建一个用于播放音乐的应用程序，则您的应用程序将具有特定于音乐的术语和语言–如 "song、曲目、唱片集、歌词、b 方、艺术家" 等词。 有关域的示例，请参阅[预构建域](#prebuilt-domain)。
 
-## <a name="endpoint"></a>终结点
+## <a name="endpoint"></a>端点
 
 ### <a name="authoring-endpoint"></a>创作终结点
 
@@ -190,11 +190,11 @@ LUIS 预测终结点 URL 是在创作和发布[LUIS 应用](#application-app)后
 
 ## <a name="luis-app"></a>LUIS 应用
 
-请参阅[应用程序的定义（应用）](#application-app)。
+请参阅[应用程序 (应用程序) ](#application-app)的定义。
 
-## <a name="model"></a>型号
+## <a name="model"></a>模型
 
-（机器学习）模型是一种对输入数据进行预测的函数。 在 LUIS 中，我们以 "模型" 的形式引用意向分类器和实体提取器，并将一组以 "应用" 形式进行定型、发布和查询的模型作为一个整体来引用。
+) 模型学习的 (计算机是对输入数据进行预测的函数。 在 LUIS 中，我们以 "模型" 的形式引用意向分类器和实体提取器，并将一组以 "应用" 形式进行定型、发布和查询的模型作为一个整体来引用。
 
 ## <a name="normalized-value"></a>规范化值
 
@@ -210,7 +210,7 @@ LUIS 预测终结点 URL 是在创作和发布[LUIS 应用](#application-app)后
 
 ## <a name="phrase-list"></a>短语列表
 
-[短语列表](luis-concept-feature.md)是一种特定类型的机器学习功能，其中包括属于同一类的一组值（词或短语），必须按类似方式处理（例如，城市或产品的名称）。
+[短语列表](luis-concept-feature.md)是一种特定类型的机器学习功能，其中包含一组值 (单词或短语) 属于同一类，并且必须按类似方式处理 (例如，城市名称或产品名称) 。
 
 ## <a name="prebuilt-model"></a>预构建模型
 
@@ -230,11 +230,11 @@ LUIS 预测终结点 URL 是在创作和发布[LUIS 应用](#application-app)后
 
 ## <a name="prediction"></a>预测
 
-预测是对使用新数据（用户查询文本）的 Azure LUIS 预测服务的 REST 请求，并将定型和发布的应用程序应用于该数据，以确定找到了哪些意图和实体。
+预测是对 Azure LUIS 预测服务的 REST 请求，该服务将 (用户查询文本) 中的新数据，并将训练和发布的应用程序应用于该数据，以确定所找到的意图和实体。
 
 ### <a name="prediction-key"></a>预测密钥
 
-[预测密钥](luis-how-to-azure-subscription.md)（以前称为订阅密钥）是与在 Azure 中创建的 LUIS 服务关联的密钥，该服务授权你使用预测终结点。
+[预测密钥](luis-how-to-azure-subscription.md) (之前称为订阅密钥) 是与在 Azure 中创建的 LUIS 服务关联的密钥，该服务授权你使用预测终结点。
 
 此密钥不是创作密钥。 如果有一个预测终结点密钥，则它应用于任何终结点请求，而不是创作密钥。 你可以在 LUIS 网站中 "Azure 资源" 页底部的终结点 URL 内查看当前的预测密钥。 它是订阅密钥名称/值对的值。
 
@@ -248,7 +248,7 @@ LUIS 预测资源是可通过 Azure 获取的可管理项。 资源是对 Azure 
 
 [分数](luis-concept-prediction-score.md)是0和1之间的数字，它是一种衡量系统如何相信特定输入查询文本与特定意向相匹配的数字。 接近1的分数表示系统对其输出非常有把握，分数越接近0，表示系统确信输入与特定输出不匹配。 中间的分数表示系统不能确定如何做出决定。
 
-例如，使用一个模型来确定某些客户文本是否包含食物订单。 它可能为 "我想要定购一个咖啡" （系统非常确信这是订单），分数为0（即 "我的团队在过去的某个时间赢得游戏）" 的分数（系统非常确信这不是订单）。 对于 "我们有一些茶"，它的分数可能为0.5，而不确定这是不是订单。
+例如，使用一个模型来确定某些客户文本是否包含食物订单。 它可能为 "我想要定购一个咖啡" 的分数取1， (系统非常确信这是订单) 并且 "我的团队过去晚上就赢得游戏" 的分数为0， (系统非常确信这不是) 的顺序。 对于 "我们有一些茶"，它的分数可能为0.5， (不确定这是订单还是不) 。
 
 ## <a name="programmatic-key"></a>编程密钥
 
@@ -284,8 +284,8 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 |Nomalized 值| 同义词|
 |--|--|
 |小型| 这只是一个8盎司|
-|中| 常规，12盎司|
-|大| 大，16盎司|
+|中型| 常规，12盎司|
+|大型| 大，16盎司|
 |Xtra 大型| 最大的1盎司|
 
 当在输入中出现任何同义词时，该模型将返回实体的规范化值。
@@ -303,9 +303,9 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 ## <a name="token"></a>标记
 [标记](luis-language-support.md#tokenization)是 LUIS 可以识别的最小文本单位。 这种不同的语言略有不同。
 
-对于**英语**，标记是字母和数字的连续跨度（无空格或标点）。 空格不是标记。
+对于**英语**，令牌是连续范围 (没有空格或标点) 字母和数字。 空格不是标记。
 
-|文字|令牌计数|说明|
+|短语|令牌计数|说明|
 |--|--|--|
 |`Dog`|1|不带标点或空格的单个单词。|
 |`RMT33W`|1|记录定位器号。 它可能包含数字和字母，但没有任何标点。|
@@ -328,6 +328,6 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 
 [查询文本](luis-concept-utterance.md)是会话中句子的简短文本表示形式的用户输入。 这是一种自然语言短语，如 "将图书2入场券给西雅图的第二个星期二"。 示例最谈话添加到定型模型，模型在运行时在新查询文本上预测
 
-## <a name="version"></a>Version
+## <a name="version"></a>版本
 
 LUIS[版本](luis-how-to-manage-versions.md)是与 LUIS 应用 ID 和已发布终结点关联的 LUIS 应用程序的特定实例。 每个 LUIS 应用至少有一个版本。

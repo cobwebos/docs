@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75641327"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826780"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 门户中的键盘快捷方式
 
@@ -52,7 +53,11 @@ ms.locfileid: "75641327"
 |转到“资源组” |G+R |
 |打开此位置的左边栏项 |G+数字|
 
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Azure 门户中特定页面的键盘快捷方式
+
+- [Azure Resource Graph 资源管理器](../governance/resource-graph/reference/keyboard-shortcuts.md)
+
 ## <a name="next-steps"></a>后续步骤
 
-- [启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)
-- [支持的浏览器和设备](../azure-preview-portal-supported-browsers-devices.md)
+- [启用高对比度或更改主题](set-preferences.md#choose-a-theme-or-enable-high-contrast)
+- [支持的浏览器和设备](azure-portal-supported-browsers-devices.md)

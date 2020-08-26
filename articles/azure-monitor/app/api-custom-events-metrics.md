@@ -3,15 +3,17 @@ title: 用于处理自定义事件和指标的 Application Insights API | Micros
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 430ec96006ed8f564ea5bbd0a28beca858ebe1ab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115653"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366866"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
-在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) 核心遥测 API 发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
+在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](./app-insights-overview.md) 核心遥测 API 发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
 
 ## <a name="api-summary"></a>API 摘要
 
@@ -36,11 +38,11 @@ ms.locfileid: "83115653"
 
 * 将 Application Insights SDK 添加到项目：
 
-  * [ASP.NET 项目](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core 项目](../../azure-monitor/app/asp-net-core.md)
-  * [Java 项目](../../azure-monitor/app/java-get-started.md)
-  * [Node.js 项目](../../azure-monitor/app/nodejs.md)
-  * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
+  * [ASP.NET 项目](./asp-net.md)
+  * [ASP.NET Core 项目](./asp-net-core.md)
+  * [Java 项目](./java-get-started.md)
+  * [Node.js 项目](./nodejs.md)
+  * [每个网页中的 JavaScript](./javascript.md) 
 * 在设备或 Web 服务器代码中包含以下内容：
 
     C#：`using Microsoft.ApplicationInsights;`
@@ -106,7 +108,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
+在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](../platform/metrics-charts.md)中显示为聚合计数，在[诊断搜索](./diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
 在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
@@ -144,13 +146,13 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
-[Application Insights Analytics](analytics.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
+[Application Insights Analytics](../log-query/log-query-overview.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
+如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
 
 ## <a name="getmetric"></a>GetMetric
 
-若要了解如何有效地使用 GetMetric() 调用捕获 .NET 和 .NET Core 应用程序的本地预聚合指标，请访问 [GetMetric](../../azure-monitor/app/get-metric.md) 文档。
+若要了解如何有效地使用 GetMetric() 调用捕获 .NET 和 .NET Core 应用程序的本地预聚合指标，请访问 [GetMetric](./get-metric.md) 文档。
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -200,7 +202,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
-[Application Insights Analytics](analytics.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
+[Application Insights Analytics](../log-query/log-query-overview.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
 
 * `valueSum` - 这是度量值的总和。 若要获取平均值，请除以 `valueCount`。
 * `valueCount` - 聚合到此 `trackMetric(..)` 调用中的度量值个数。
@@ -270,7 +272,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>Analytics 中的页面遥测
 
-[Analytics](analytics.md)中有两个表展示了浏览器操作的数据：
+[Analytics](../log-query/log-query-overview.md)中有两个表展示了浏览器操作的数据：
 
 * `pageViews` 表包含关于 URL 和页标题的数据
 * `browserTimings` 表包含关于客户端性能的数据，例如处理传入数据所用的时间
@@ -306,9 +308,9 @@ pageViews
 
 ## <a name="operation-context"></a>操作上下文
 
-可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](../../azure-monitor/app/diagnostic-search.md)和[分析](analytics.md)中，可以使用操作 ID 轻松找到与请求关联的任何事件。
+可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](./diagnostic-search.md)和[分析](../log-query/log-query-overview.md)中，可以使用操作 ID 轻松找到与请求关联的任何事件。
 
-有关关联的更多详细信息，请参阅 [Application Insights 中的遥测关联](../../azure-monitor/app/correlation.md)。
+有关关联的更多详细信息，请参阅 [Application Insights 中的遥测关联](./correlation.md)。
 
 手动跟踪遥测时，使用此模式确保遥测关联的最简单方法：
 
@@ -340,13 +342,13 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 ![相关项](./media/api-custom-events-metrics/21.png)
 
-有关自定义操作跟踪的详细信息，请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../../azure-monitor/app/custom-operations-tracking.md)。
+有关自定义操作跟踪的详细信息，请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](./custom-operations-tracking.md)。
 
 ### <a name="requests-in-analytics"></a>Analytics 中的请求
 
-在 [Application Insights Analytics](analytics.md) 中，请求出现在 `requests` 表中。
+在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，请求出现在 `requests` 表中。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackRequest() 调用了 10 次，采样进程只传输其中一次。 若要按请求名称获取正确的请求数和平均持续时间，请使用如下所示的代码：
+如果正在进行[采样](./sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackRequest() 调用了 10 次，采样进程只传输其中一次。 若要按请求名称获取正确的请求数和平均持续时间，请使用如下所示的代码：
 
 ```kusto
 requests
@@ -357,8 +359,8 @@ requests
 
 将异常发送到 Application Insights：
 
-* 用于[对其计数](../../azure-monitor/platform/metrics-charts.md)，作为问题发生频率的指示。
-* 用于[检查单个事件](../../azure-monitor/app/diagnostic-search.md)。
+* 用于[对其计数](../platform/metrics-charts.md)，作为问题发生频率的指示。
+* 用于[检查单个事件](./diagnostic-search.md)。
 
 报告包含堆栈跟踪。
 
@@ -413,8 +415,8 @@ catch (ex)
 
 SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackException。
 
-* ASP.NET：[编写代码来捕获异常](../../azure-monitor/app/asp-net-exceptions.md)。
-* Java EE：[自动捕获异常](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* ASP.NET：[编写代码来捕获异常](./asp-net-exceptions.md)。
+* Java EE：[自动捕获异常](./java-get-started.md#exceptions-and-request-failures)。
 * JavaScript：自动捕获异常。 若要禁用自动收集，请在插入网页的代码片段中添加一行：
 
 ```javascript
@@ -426,9 +428,9 @@ SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
 
 ### <a name="exceptions-in-analytics"></a>Analytics 中的异常
 
-在 [Application Insights Analytics](analytics.md) 中，异常出现在 `exceptions` 表中。
+在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，异常出现在 `exceptions` 表中。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 `itemCount` 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
+如果正在进行[采样](./sampling.md)，那么 `itemCount` 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
 
 ```kusto
 exceptions
@@ -451,11 +453,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-使用 TrackTrace 可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中检查。
+使用 TrackTrace 可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索](./diagnostic-search.md)中检查。
 
-使用 .NET 时，[日志适配器](../../azure-monitor/app/asp-net-trace-logs.md)使用此 API 将第三方日志发送到门户。
+使用 .NET 时，[日志适配器](./asp-net-trace-logs.md)使用此 API 将第三方日志发送到门户。
 
-使用 Java 时，[标准记录器（如 Log4J、Logback）](../../azure-monitor/app/java-trace-logs.md)使用 Application Insights Log4j 或 Logback Appenders 将第三方日志发送到门户。
+使用 Java 时，[标准记录器（如 Log4J、Logback）](./java-trace-logs.md)使用 Application Insights Log4j 或 Logback Appenders 将第三方日志发送到门户。
 
 *C#*
 
@@ -490,7 +492,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
  参数 | 说明
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
-`properties` | 字符串到字符串的映射：用于在门户中[筛选异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
+`properties` | 字符串到字符串的映射：用于在门户中[筛选异常](#properties)的其他数据。 默认为空。
 `severityLevel` | 支持的值：[SeverityLevel.ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 可以搜索消息内容，但是（不同于属性值）无法在其中进行筛选。
@@ -517,13 +519,13 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-在[搜索](../../azure-monitor/app/diagnostic-search.md)中，可轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
+在[搜索](./diagnostic-search.md)中，可轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
 
 ### <a name="traces-in-analytics"></a>Analytics 中的跟踪
 
-在 [Application Insights Analytics](analytics.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
+在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 `trackTrace()` 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
+如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 `trackTrace()` 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -590,19 +592,19 @@ finally
 }
 ```
 
-请记住，服务器 SDK 包含[依赖项模块](../../azure-monitor/app/asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 
+请记住，服务器 SDK 包含[依赖项模块](./asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 
 
-使用 Java 时，可以使用 [Java 代理](../../azure-monitor/app/java-agent.md)自动跟踪某些依赖项调用。
+使用 Java 时，可以使用 [Java 代理](./java-agent.md)自动跟踪某些依赖项调用。
 
 如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
 
-要关闭 C# 中的标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。 使用 Java 时，如果不希望自动收集标准依赖项，请勿安装 java 代理。
+要关闭 C# 中的标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。 使用 Java 时，如果不希望自动收集标准依赖项，请勿安装 java 代理。
 
 ### <a name="dependencies-in-analytics"></a>Analytics 中的依赖项
 
-在 [Application Insights Analytics](analytics.md) 中，trackDependency 调用出现在 `dependencies` 表中。
+在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，trackDependency 调用出现在 `dependencies` 表中。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
+如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
 
 ```kusto
 dependencies
@@ -648,7 +650,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>经过身份验证的用户
 
-在 Web 应用中，默认[按 Cookie 标识用户](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
+在 Web 应用中，默认[按 Cookie 标识用户](./usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
 
 如果用户登录到应用，可以通过在浏览器代码中设置经过身份验证的用户 ID 来获取更准确的计数：
 
@@ -688,9 +690,9 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
+在[指标资源管理器](../platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
 
-还可以[搜索](../../azure-monitor/app/diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
+还可以[搜索](./diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
 
@@ -809,7 +811,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>在 Analytics 中自定义度量值和属性
 
-在 [Analytics](analytics.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
+在 [Analytics](../log-query/log-query-overview.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
 
 例如，如果已向请求遥测添加名为“game”的属性，此查询将计算“game”不同值的出现次数，同时显示自定义指标“score”的平均值：
 
@@ -821,7 +823,7 @@ requests
 请注意：
 
 * 从 customDimensions 或 customMeasurements JSON 中提取值的时候，会有动态类型，所以必须将其转换为 `tostring` 或 `todouble`。
-* 考虑到[采样](../../azure-monitor/app/sampling.md)的可能性，需要使用 `sum(itemCount)` 而非 `count()`。
+* 考虑到[采样](./sampling.md)的可能性，需要使用 `sum(itemCount)` 而非 `count()`。
 
 ## <a name="timing-events"></a><a name="timed"></a>计时事件
 
@@ -918,19 +920,19 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *对于 JavaScript Web 客户端*，请使用 JavaScript 遥测初始化表达式。
 
-若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
+若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](./api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>采样、筛选和处理遥测数据
 
 可以先通过编写代码来处理遥测数据，再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
 
-通过实现 `ITelemetryInitializer`[将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
+通过实现 `ITelemetryInitializer`[将属性添加到](./api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
-[筛选](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcessor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
+[筛选](./api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcessor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
 
-[采样](../../azure-monitor/app/api-filtering-sampling.md)是减少从应用发送到门户的数据量的打包解决方案。 它不会影响显示的指标。 且不影响通过在相关项（如异常、请求和页面视图）之间导航来诊断问题。
+[采样](./api-filtering-sampling.md)是减少从应用发送到门户的数据量的打包解决方案。 它不会影响显示的指标。 且不影响通过在相关项（如异常、请求和页面视图）之间导航来诊断问题。
 
-[了解详细信息](../../azure-monitor/app/api-filtering-sampling.md)。
+[了解详细信息](./api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>禁用遥测
 
@@ -950,7 +952,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 *Node.js*
 
@@ -1011,7 +1013,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
-若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )，并根据环境更改其密钥。
+若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源](./create-new-resource.md)，并根据环境更改其密钥。
 
 无需从配置文件获取检测密钥，可以在代码中设置密钥。 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
@@ -1067,7 +1069,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-如果自行设置这些值，请考虑从 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中删除相关的代码行，以便值与标准值不会造成混淆。
+如果自行设置这些值，请考虑从 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中删除相关的代码行，以便值与标准值不会造成混淆。
 
 * **Component**：应用及其版本。
 * **Device**：有关正在运行应用的设备的数据。 （在 Web 应用中，是指从其中发送遥测的服务器或客户端设备。）
@@ -1085,14 +1087,14 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-若要避免达到数据速率限制，请使用[采样](../../azure-monitor/app/sampling.md)。
+若要避免达到数据速率限制，请使用[采样](./sampling.md)。
 
-若要确定保留数据的时间期限，请参阅[数据保留和隐私](../../azure-monitor/app/data-retention-privacy.md)。
+若要确定保留数据的时间期限，请参阅[数据保留和隐私](./data-retention-privacy.md)。
 
 ## <a name="reference-docs"></a>参考文档
 
-* [ASP.NET 参考](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java 参考](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET 参考](/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java 参考](/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK 代码
@@ -1111,9 +1113,10 @@ telemetry.Context.Operation.Name = "MyOperationName";
     无。 不需要将它们包装在 try-catch 子句中。 如果 SDK 遇到问题，它会在调试控制台输出中记录消息，如果消息已传入，可在诊断搜索中查看。
 * *是否可以使用某个 REST API 从门户获取数据？*
 
-    是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](../../azure-monitor/app/export-power-bi.md ) 和[连续导出](../../azure-monitor/app/export-telemetry.md)。
+    是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](./export-power-bi.md) 和[连续导出](./export-telemetry.md)。
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
-* [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
+* [搜索事件和日志](./diagnostic-search.md)
+* [故障排除](../faq.md)
+

@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9236b5d6159a87ef09219d5e2bdb2e2679fb85a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084545"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST API](/rest/api/media/operations/channel)
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
 
@@ -170,7 +171,7 @@ ms.locfileid: "77162559"
 
 直播活动在停止后会自动转换为点播内容。
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 如果已完成流式处理事件，并想要清理先前设置的资源，请遵循以下过程。
 
 * 停止从编码器推送流。
@@ -195,4 +196,3 @@ ms.locfileid: "77162559"
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

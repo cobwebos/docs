@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-java
+ms.openlocfilehash: a1347364066f4b36256782dd8891390a47bae020
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871139"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326760"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入门：使用 Java 和必应新闻搜索 REST API 执行新闻搜索
 

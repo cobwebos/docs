@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 脚本示例 - 对等互连两个虚拟网络 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 对等互连两个虚拟网络
+description: 在同一区域中创建并连接两个虚拟网络。 使用 Azure script for 两个对等虚拟网络通过 Azure 连接网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,17 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
-ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17224e859dce99a20cd51c2fe9024759c5239c03
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890190"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037229"
 ---
 # <a name="peer-two-virtual-networks"></a>对等互连两个虚拟网络
 
 此脚本通过 Azure 网络在同一区域创建并连接两个虚拟网络。 运行脚本后，会在两个虚拟网络之间创建对等互连。
 
-必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。
+必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azure/)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,6 +54,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)。
 
 可在 [Azure 网络概述文档](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)中找到其他网络 PowerShell 脚本示例。

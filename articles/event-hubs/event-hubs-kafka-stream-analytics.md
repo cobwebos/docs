@@ -3,12 +3,12 @@ title: Azure 事件中心 - 处理 Apache Kafka 事件
 description: 教程：本文介绍如何使用 Azure 流分析处理通过事件中心引入的 Kafka 事件
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074919"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -129,7 +129,7 @@ ms.locfileid: "85313265"
  
 
 ### <a name="define-a-query"></a>定义查询
-设置用于读取传入数据流的流分析作业以后，下一步是创建一个可分析实时数据的转换。 请使用[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)来定义转换查询。 在本演练中，定义经过数据而不执行任何转换的查询。
+设置用于读取传入数据流的流分析作业以后，下一步是创建一个可分析实时数据的转换。 请使用[流分析查询语言](/stream-analytics-query/stream-analytics-query-language-reference)来定义转换查询。 在本演练中，定义经过数据而不执行任何转换的查询。
 
 1. 选择“查询”。
 2. 在查询窗口中，将 `[YourOutputAlias]` 替换为之前创建的输出别名。

@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 476f1523eaf042576d38f5d2db283b525721389c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538660"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825216"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -24,7 +24,7 @@ MABS 基于 System Center DPM，并提供类似的功能，但有几项差别：
 
 - 无需 System Center 许可证即可运行 MABS。
 - Azure 为 MABS 和 DPM 提供长期备份存储。 此外，DPM 允许在磁带上备份数据，以作长期存储。 MABS 不提供此功能。
-- 可以使用辅助 DPM 服务器备份主 DPM 服务器。 辅助服务器将保护主服务器上存储的主服务器数据库和数据源副本。 如果主服务器出现故障，则辅助服务器可以继续保护由主服务器保护的工作负荷，直到主服务器再次可用为止。  MABS 不提供此功能。
+- [您可以使用辅助 dpm 服务器备份主 dpm 服务器](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019)。 辅助服务器将保护主服务器上存储的主服务器数据库和数据源副本。 如果主服务器出现故障，则辅助服务器可以继续保护由主服务器保护的工作负荷，直到主服务器再次可用为止。  MABS 不提供此功能。
 
 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57520)下载 MABS。 它可以在本地运行，或者在 Azure VM 上运行。
 
@@ -76,7 +76,7 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 **本地 DPM** | 物理服务器/Hyper-V VM：System Center 2012 SP1 或更高版本。<br/><br/> VMware VM：System Center 2012 R2 Update 5 或更高版本。
 
 >[!NOTE]
->Windows Server Core 或 Microsoft Hyper-V Server 不支持安装 Azure 备份服务器。
+>Windows Server Core 或 Microsoft Hyper-V 服务器不支持安装 Azure 备份服务器。
 
 ## <a name="management-support"></a>管理支持
 
@@ -94,7 +94,7 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 
 **组件** | **详细信息**
 --- | ---
-**Azure Stack VM 上的 MABS** | 至少使用 A2 大小。 我们建议从 Azure 市场中提供的 Windows Server 2012 R2 或 Windows Server 2016 映像着手。<br/><br/> 不要在 MABS VM 上安装其他任何组件。
+**Azure Stack VM 上的 MABS** | 至少使用 A2 大小。 建议从 Azure Marketplace 开始使用 Windows Server 2012 R2 或 Windows Server 2016 映像。<br/><br/> 不要在 MABS VM 上安装其他任何组件。
 **MABS 存储** | 对 MABS VM 使用单独的存储帐户。 MABS 上运行的 MARS 代理需要使用临时存储作为缓存位置，以及保存从云中还原的数据。
 **MABS 存储池** | MABS 存储池的大小取决于附加到 MABS VM 的磁盘数目和大小。 每个 Azure Stack VM 大小具有最大磁盘数。 例如，A2 是四个磁盘。
 **MABS 保留** | 不要在本地 MABS 磁盘上将备份数据保留 5 天以上。
@@ -158,7 +158,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 |要求 |详细信息 |
 |---------|---------|
 |Domain    | DPM/MABS 服务器应该在 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 域中。        |
-|域信任   |  只要您在单独的林之间建立了林级别的双向信任关系，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   DPM/MABS 可跨域保护服务器和工作站，这些域与 DPM/MABS 服务器域具有双向信任关系的林中。 若要保护工作组或不受信任的域中的计算机，请参阅[备份和还原工作组和不受信任的域中的工作负荷。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|域信任   |  只要您在单独的林之间建立了林级别的双向信任关系，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   DPM/MABS 可跨域保护服务器和工作站，这些域与 DPM/MABS 服务器域具有双向信任关系的林中。 若要保护工作组或不受信任的域中的计算机，请参阅 [备份和还原工作组和不受信任的域中的工作负荷。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS 存储支持
 

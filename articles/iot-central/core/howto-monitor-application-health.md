@@ -7,13 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84249472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001894"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>监视连接到 IoT Central 应用程序的设备的总体运行状况
+
+> [!NOTE]
+> 指标仅适用于版本 3 IoT Central 应用程序。 若要了解如何检查您的应用程序版本，请参阅[关于您的应用程序](./howto-get-app-info.md)。
 
 *本文适用于操作员和管理员。*
 
@@ -34,25 +38,15 @@ ms.locfileid: "84249472"
 1. 在门户中导航到 IoT Central 应用程序资源。 默认情况下，IoT Central 资源位于名为**IOTC**的资源组中。
 1. 若要从应用程序的指标创建图表，请在 "**监视**" 部分中选择 "**指标**"。
 
+![Azure 指标](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Azure 门户权限
 
 对 Azure 门户中的度量值的访问由[Azure 基于角色的访问控制](../../role-based-access-control/overview.md)进行管理。 使用 Azure 门户将用户添加到 IoT Central 应用程序/资源组/订阅中，以向他们授予访问权限。 即使已将用户添加到 IoT Central 应用程序，也必须在门户中添加该用户。 使用[Azure 内置角色](../../role-based-access-control/built-in-roles.md)以获得更精细的访问控制。
 
 ## <a name="iot-central-metrics"></a>IoT Central 度量值
 
-下表描述了 IoT Central 当前可用的指标：
-
-| 指标 | 指标显示名称 | 计价单位 | 聚合类型 | 说明 |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | 已连接的设备总数                              | 计数  | 总计             | 已连接到 IoT Central 的设备数目                               |
-| c2d.property.read.success    | 从 IoT Central 发起的成功设备属性读取数    | 计数  | 总计             | 从 IoT Central 发起的所有成功属性读取计数    |
-| c2d.property.read.failure    | 从 IoT Central 发起的失败设备属性读取数        | 计数  | 总计             | 从 IoT Central 发起的所有失败属性读取计数        |
-| d2c.property.read.success    | 从设备发起的成功设备属性读取数        | 计数  | 总计             | 从设备发起的所有成功属性读取计数        |
-| d2c.property.read.failure    | 从设备发起的失败设备属性读取数            | 计数  | 总计             | 从设备发起的所有失败属性读取计数            |
-| c2d.property.update.success  | 从 IoT Central 发起的成功设备属性更新数  | 计数  | 总计             | 从 IoT Central 发起的所有成功属性更新计数  |
-| c2d.property.update.failure  | 从 IoT Central 发起的失败设备属性更新数      | 计数  | 总计             | 从 IoT Central 发起的所有失败属性更新计数      |
-| d2c.property.update.success  | 从设备发起的成功设备属性更新数      | 计数  | 总计             | 从设备发起的所有成功属性更新计数      |
-| d2c.property.update.failure  | 从设备发起的失败设备属性更新数          | 计数  | 总计             | 从设备发起的所有失败属性更新计数          |
+有关 IoT Central 当前可用指标的列表，请参阅[支持的指标和 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps)。
 
 ### <a name="metrics-and-invoices"></a>指标和发票
 

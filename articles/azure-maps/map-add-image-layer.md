@@ -1,6 +1,6 @@
 ---
 title: 向地图添加图像层 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure map Web SDK 覆盖地图上的图像。
+description: 了解如何将图像添加到地图中。 请参阅如何使用 Azure Maps Web SDK 自定义图像层并覆盖固定坐标集上的图像。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 4a804272a92d98156122397ee7427dcb467fbdf0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77209709"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010219"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
@@ -33,7 +34,7 @@ ms.locfileid: "77209709"
 - JPEG
 - PNG
 - BMP
-- GIF （无动画）
+- GIF 不 (动画) 
 
 ## <a name="add-an-image-layer"></a>添加图像层
 

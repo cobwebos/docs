@@ -12,15 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682391"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311562"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
 要在 Microsoft 标识平台中注册单页应用程序 (SPA)，请完成以下步骤。 注册步骤在支持隐式授权流的 MSAL 1.0 和支持使用 PKCE 的授权代码流的 MSAL 2.0 之间有所不同。
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>创建应用注册
 
@@ -37,7 +40,7 @@ ms.locfileid: "83682391"
 - [采用身份验证代码流的 MSAL.js 2.0](#redirect-uri-msaljs-20-with-auth-code-flow)（推荐）
 - [采用隐式流的 MSAL.js 1.0](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>重定向 URI：采用身份验证代码流的 MSAL.js 2.0
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>重定向 URI： [MSAL.js 2.0 与身份验证代码流](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 按照以下步骤为使用 MSAL.js 2.0 或更高版本的应用添加重定向 URI。 MSAL.js 2.0+ 支持使用 PKCE 和 CORS 的授权代码流，以响应[浏览器第三方 cookie 限制](reference-third-party-cookies-spas.md)。 MSAL.js 2.0+ 不支持隐式授权流。
 
@@ -49,7 +52,9 @@ ms.locfileid: "83682391"
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过使用“添加平台”窗格中的“单页应用程序”磁贴来配置重定向 URI，可以将应用程序注册配置为支持使用 PKCE 和 CORS 的授权代码流。
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>重定向 URI：采用隐式流的 MSAL.js 1.0
+请按照[教程](tutorial-v2-javascript-auth-code.md)获取进一步指导。
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>重定向 URI： [MSAL.js 1.0 与隐式流](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 请按照以下步骤为使用 MSAL.js 1.3 或更早版本的单页应用和隐式授权流添加重定向 URI。 使用 MSAL.js 1.3 或更早版本的应用程序不支持身份验证代码流。
 
@@ -63,6 +68,8 @@ ms.locfileid: "83682391"
 1. 选择“配置”以添加重定向 URI。
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过选择“ID 令牌”和“访问令牌”中的一个或选择两个，即表示启用了隐式授权流。
+
+请按照[教程](tutorial-v2-javascript-spa.md)获取进一步指导。
 
 ## <a name="note-about-authorization-flows"></a>关于授权流的注意事项
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040242"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281848"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中创建组托管服务帐户（gMSA）
 
@@ -25,9 +26,9 @@ ms.locfileid: "86040242"
 
 本文介绍如何使用 Azure PowerShell 在托管域中创建 gMSA。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-需要拥有以下资源和权限才能完成本文中的操作：
+需有以下资源和特权才能完成本文：
 
 * 一个有效的 Azure 订阅。
     * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -75,7 +76,7 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 * **-Name**设置为*WebFarmSvc*
 * **-Path**参数指定上一步中创建的 gMSA 的自定义 OU。
 * 为*WebFarmSvc.aaddscontoso.com*设置 DNS 条目和服务主体名称
-* *AADDSCONTOSO-SERVER $* 中的主体允许检索使用标识的密码。
+* *AADDSCONTOSO-SERVER $* 中的主体可以检索密码并使用标识。
 
 指定您自己的名称和域名。
 

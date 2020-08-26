@@ -3,12 +3,12 @@ title: Azure 事件网格传送和重试
 description: 介绍 Azure 事件网格如何传送事件以及如何处理未送达的消息。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e565bbc8592dc2818e3573672e6e3035c3c8983a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087605"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -78,8 +78,12 @@ az eventgrid event-subscription create \
 从功能上讲，延迟传送的目的是保护不正常的终结点以及事件网格系统。 如果不采用退让机制并延迟向不正常的终结点传送事件，事件网格的重试策略和卷功能可能很容易使系统瘫痪。
 
 ## <a name="dead-letter-events"></a>死信事件
+当事件网格在某个时间段内无法传递事件时，或者尝试将事件传递到一定次数后，它可以将未送达的事件发送到存储帐户。 此过程称为 "**死信**"。 当满足**下列条件之一**时，事件网格会将事件死信。 
 
-当事件网格无法传递事件时，它会将未送达的事件发送到某个存储帐户。 此过程称为死信处理。 默认情况下，事件网格不启用死信处理。 若要启用该功能，在创建事件订阅时必须指定一个存储帐户来存放未送达的事件。 你将从此存储帐户中拉取事件来解决传递问题。
+- 不会在生存时间内传递事件
+- 尝试传递事件的次数超出了限制
+
+如果满足上述任一条件，则会删除或死信。  默认情况下，事件网格不启用死信处理。 若要启用该功能，在创建事件订阅时必须指定一个存储帐户来存放未送达的事件。 你将从此存储帐户中拉取事件来解决传递问题。
 
 事件网格已进行所有重试尝试后会将事件发送到死信位置。 如果事件网格收到 400（错误请求）或 413（请求实体太大）响应代码，它会立即将事件发送到死信终结点。 这些响应代码指示事件传送将永远不会成功。
 

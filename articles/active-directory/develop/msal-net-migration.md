@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: e758c69f91fb60a83dfcc119b2c7f7aba44384ca
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054655"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166102"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
 适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 用于对 Azure AD 实体进行身份验证，以及从 Azure AD 请求令牌。 截止目前，大多数开发人员都是通过 Azure AD 身份验证库 (ADAL) 来请求令牌，使用面向开发人员的 Azure AD 平台 (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 使用 MSAL：
 
-- 你可以使用 Microsoft 标识平台终结点，通过 Azure AD B2C 对更广泛的一组 Microsoft 标识（Azure AD 标识和 Microsoft 帐户以及社交和本地帐户）进行身份验证。
+- 你可以通过 Azure AD B2C) 来验证更广泛的一组 Microsoft 标识 (Azure AD 标识和 Microsoft 帐户，以及社交和本地帐户，因为它使用 Microsoft 标识平台终结点，
 - 你的用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可，可以更轻松地为条件访问提供支持
 - 你将从创新中受益。
@@ -37,7 +37,7 @@ ms.locfileid: "86054655"
 
 在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台终结点，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）、Microsoft（个人）帐户 (MSA) 或 Azure AD B2C 登录到应用程序的用户的令牌。
 
-如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](active-directory-v2-compare.md)
+如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)
 
 但是，如果应用程序需要使用早期版本的 [Active Directory 联合身份验证服务 (ADFS)](/windows-server/identity/active-directory-federation-services) 将用户登录，则你仍然需要使用 ADAL.NET。 有关详细信息，请参阅 [ADFS 支持](https://aka.ms/msal-net-adfs-support)。
 
@@ -161,7 +161,7 @@ v1.0 终结点（由 ADAL 使用）只发出 v1.0 令牌。
 
 ## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌的 Web API 的范围
 
-OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公开的权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 [Azure Active Directory 应用程序清单](active-directory-application-manifest.md)中有关 oauth2Permissions 的部分。
+OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公开的权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 [Azure Active Directory 应用程序清单](./reference-app-manifest.md)中有关 oauth2Permissions 的部分。
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 

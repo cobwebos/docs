@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Allbound SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Allbound SSO 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 15011ddf-941f-4da2-b993-40ad94a08e42
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec519e9296d8f8b5373e4db84f4efb4af5f07a9e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fd4c059b7f37960f0a76de8df3d99d2aefae94ef
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73153607"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>教程：Azure Active Directory 与 Allbound SSO 集成
 

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.date: 11/21/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-java
+ms.openlocfilehash: 5d01d1143563637e21aaa06a3f997c1507e4d8f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696208"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114772"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java 中的 Active Directory 联合身份验证服务支持
 
@@ -47,4 +48,4 @@ MSAL for Java 会连接到 Azure AD，后者可将在 Azure AD 中管理的用�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关联合案例，请参阅[使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+有关联合案例，请参阅[使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为](../manage-apps/configure-authentication-for-federated-users-portal.md)

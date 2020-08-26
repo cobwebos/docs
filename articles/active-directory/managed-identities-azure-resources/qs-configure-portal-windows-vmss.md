@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VMSS 上配置托管标识-Azure AD
+title: 在 Azure VMSS 上配置托管标识 - Azure AD
 description: 分步说明如何使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e2d72ba63633d7c5d3da3094cfa00e076513af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609106"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924489"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
+- 若要执行本文中的管理操作，帐户需要以下 Azure 角色分配：
 
     > [!NOTE]
     > 无需其他 Azure AD 目录角色分配。
@@ -105,5 +105,3 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 Azure 门户，授予 Azure 虚拟机规模集托管标识[对另一个 Azure 资源的访问权限](howto-assign-access-portal.md)。
-
-

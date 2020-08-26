@@ -1,6 +1,6 @@
 ---
 title: 启用软删除 - Azure 文件共享
-description: 了解如何在 Azure 文件共享上启用软删除（预览版），以便进行数据恢复和防止意外删除。
+description: 了解如何在 Azure 文件共享上启用软删除（预览版），以进行数据恢复和防止意外删除。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,20 +8,22 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528377"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590109"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 文件共享上启用软删除
 
-Azure 存储为文件共享提供软删除（预览版），以便在应用程序或其他存储帐户用户误删除数据时，可以更轻松地恢复数据。 若要了解有关软删除的详细信息，请参阅[如何防止意外删除 Azure 文件共享](storage-files-prevent-file-share-deletion.md)。
+Azure 存储为文件共享（预览版）提供软删除，以便在应用程序或其他存储帐户用户误删除数据后，可以更轻松地恢复数据。 若要了解有关软删除的详细信息，请参阅[如何防止意外删除 Azure 文件共享](storage-files-prevent-file-share-deletion.md)。
 
 以下部分说明如何在现有存储帐户上为 Azure 文件共享启用和使用软删除：
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+## <a name="getting-started"></a>入门
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 导航到存储帐户，然后在“文件服务”下选择“软删除”。
@@ -33,7 +35,13 @@ Azure 存储为文件共享提供软删除（预览版），以便在应用程�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-在 2.1.1-预览版本的 Az 存储模块中提供了软删除 cmdlet。 若要启用软删除，则必须更新文件客户端的服务属性。 下面的示例为存储帐户中的所有文件共享启用了软删除：
+## <a name="prerequisite"></a>先决条件
+
+软删除 cmdlet 目前仅适用于 Az [-预览版](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) 模块的2.1.1 和 [2.3.1 预览](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) 版本。 
+
+## <a name="getting-started"></a>入门
+
+若要启用软删除，则必须更新文件客户端的服务属性。 下面的示例为存储帐户中的所有文件共享启用了软删除：
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -100,4 +108,4 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountNa
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解另一种形式的数据保护和恢复，请参阅[Azure 文件的共享快照概述](storage-snapshots-files.md)。
+若要了解其他形式的数据保护和恢复，请参阅 [Azure 文件存储的共享快照概述](storage-snapshots-files.md)一文。

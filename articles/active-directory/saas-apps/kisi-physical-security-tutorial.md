@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Kisi Physical Security 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Kisi Physical Security之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ee67ca73-2f8e-40b7-a4f3-69fecd2f3308
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 8543eb83e9a642f377d5d3abd261a545cefc7e5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604958"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534946"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kisi Physical Security 的集成
 
@@ -85,9 +81,12 @@ ms.locfileid: "85604958"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://identity.kms.kisi.io/saml/<DOMAIN>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.kisi.io/saml/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://identity.kms.kisi.io/saml/<DOMAIN>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.kisi.io/saml/consume/<DOMAIN>`
+
+    > [!NOTE] 
+    > `DOMAIN` 是 Kisi 分配给组织的小写字母数字标识符，与组织的 DNS 域名不同。*
 
 1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -101,7 +100,7 @@ ms.locfileid: "85604958"
     ![image](common/default-attributes.png)
 
 1. 除了上述属性，Kisi Physical Security 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
+
     | 名称 | 源属性|
     | ---------------| --------- |
     | FirstName | user.givenname |
@@ -119,28 +118,28 @@ ms.locfileid: "85604958"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，你通过授予 B.Simon 访问 Kisi Physical Security 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在应用程序列表中，选择“Kisi Physical Security”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-kisi-physical-security-sso"></a>配置 Kisi Physical Security SSO
 
@@ -150,7 +149,7 @@ ms.locfileid: "85604958"
 
 在本部分中，在 Kisi Physical Security 中创建一个名为 Britta Simon 的用户。 Kisi Physical Security 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Kisi Physical Security 中尚不存在用户，身份验证后会创建一个新用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

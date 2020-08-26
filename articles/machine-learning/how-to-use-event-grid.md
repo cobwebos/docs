@@ -1,25 +1,26 @@
 ---
-title: 在 ML 工作流中触发事件（预览）
+title: '在 ML 工作流中触发事件 (预览) '
 titleSuffix: Azure Machine Learning
 description: 在 Azure 机器学习中设置事件驱动的应用程序、进程或 CI/CD 机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135953"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650411"
 ---
-# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件触发应用程序、进程或 CI/CD 工作流（预览）
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件 (预览版触发应用程序、进程或 CI/CD 工作流) 
 
-本文介绍如何在 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)检测到某些条件时，基于 Azure 机器学习事件（例如，失败通知电子邮件或 ML 管道运行）设置事件驱动的应用程序、进程或 CI/CD 工作流。 
+本文介绍如何在 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)检测到某些条件时，基于 Azure 机器学习事件（例如，失败通知电子邮件或 ML 管道运行）设置事件驱动的应用程序、进程或 CI/CD 工作流。
 
 Azure 机器学习管理机器学习进程的整个生命周期，包括模型训练、模型部署和监视。 可以借助现代无服务器体系结构，使用事件网格对 Azure 机器学习事件做出反应，例如完成训练运行、注册和部署模型以及检测数据偏移。 然后，可以订阅和使用事件，例如运行状态更改、运行完成、模型注册、模型部署以及工作区中的数据偏移检测。
 
@@ -198,7 +199,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 在开始之前，请执行以下操作：
 
-* 设置数据集监视器以[检测工作区中的数据偏移]( https://aka.ms/datadrift)
+* 设置数据集监视器以[检测工作区中的数据偏移](how-to-monitor-datasets.md)
 * 创建已发布的 [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/)。
 
 此示例中使用的是简单的数据工厂管道，用于将文件复制到 blob 存储区，并运行已发布的机器学习管道。 有关此方案的详细信息，请参阅如何设置 [Azure 数据工厂中的机器学习步骤](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)

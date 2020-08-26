@@ -1,6 +1,6 @@
 ---
 title: 适用于 Azure Data Lake Storage Gen2 的 Azure Blob 文件系统驱动程序
-description: ABFS Hadoop Filesystem 驱动程序
+description: 了解 Azure Blob Filesystem 驱动程序 (ABFS) ，这是一种专用于 Hadoop 的 Azure 存储驱动程序。 使用此驱动程序访问 Azure Data Lake Storage Gen2 中的数据。
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,11 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75970277"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836354"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob Filesystem 驱动程序 (ABFS)：专用于 Hadoop 的 Azure 存储驱动程序
 
@@ -41,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 ABFS 驱动程序在内部将 URI 中指定的资源转换为文件和目录，并使用这些引用调用 Azure Data Lake Storage REST API。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序可以安全地访问支持 Data Lake Storage Gen2 的帐户中包含的资源。 [Azure 存储安全指南](security-recommendations.md)中提供了可用身份验证方案的完整详细信息。 它们分别是：
 

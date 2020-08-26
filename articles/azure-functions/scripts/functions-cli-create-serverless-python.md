@@ -4,13 +4,13 @@ description: 使用 Azure CLI 创建无服务器 Python 函数应用
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 11/23/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 3bcefe59bfec5f3d76ecbc04a5b46a9285fc381b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: bbc302194d4dc1922344138e057b456b63c18bbf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561199"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848078"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>使用 Azure CLI 创建无服务器 Python 函数应用
 

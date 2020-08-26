@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 1e5f1e38461b7f229f9eb7559aeb6203563fceb6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 45bb8637d37c9c3789a962c9f5ac42227d547637
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022814"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教程：使用 AES-128 来加密视频以及使用密钥传送服务
 
 > [!NOTE]
-> 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
+> 尽管本教程使用了 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
 借助媒体服务，可以传送使用 AES 通过 128 位加密密钥加密的 HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果希望媒体服务动态加密视频，需要将加密密钥与流定位器相关联，并配置内容密钥策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES-128 动态加密内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
@@ -57,8 +57,8 @@ ms.locfileid: "86200209"
 
 * 查看[内容保护概述](content-protection-overview.md)一文。
 * 安装 Visual Studio Code 或 Visual Studio。
-* [创建媒体服务帐户](create-account-cli-quickstart.md)。
-* 使用[访问 api](access-api-cli-how-to.md)获取使用媒体服务 api 时所需的凭据。
+* [创建媒体服务帐户](./create-account-howto.md)。
+* 使用[访问 api](./access-api-howto.md)获取使用媒体服务 api 时所需的凭据。
 
 ## <a name="download-code"></a>下载代码
 
@@ -81,21 +81,21 @@ ms.locfileid: "86200209"
 
 ## <a name="create-an-output-asset"></a>创建输出资产  
 
-输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业编码的结果。  
+输出[资产](/rest/api/media/assets)会存储作业编码的结果。  
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateOutputAsset)]
 
 ## <a name="get-or-create-an-encoding-transform"></a>获取或创建编码转换
 
-创建新实例时，需要指定希望生成的输出内容[转换](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 **TransformOutput** 对象，如以下代码所示。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），然后通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。
+创建新[转换](/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），然后通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。
 
-在创建新的[转换](https://docs.microsoft.com/rest/api/media/transforms)之前，请先检查是否已存在使用 **Get** 方法的转换，如以下代码中所示。 在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
+在创建新的[转换](/rest/api/media/transforms)之前，请先检查是否已存在使用 **Get** 方法的转换，如以下代码中所示。 在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#EnsureTransformExists)]
 
 ## <a name="submit-job"></a>提交作业
 
-如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容  。 Job 指定输入视频位置和输出位置等信息  。
+如上所述，[转换](/rest/api/media/transforms)对象为脚本，[作业则是](/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 Job 指定输入视频位置和输出位置等信息。
 
 本教程基于直接从 [HTTPs 源 URL](job-input-from-http-how-to.md) 引入的文件创建作业的输入。
 
@@ -103,9 +103,9 @@ ms.locfileid: "86200209"
 
 ## <a name="wait-for-the-job-to-complete"></a>等待作业完成
 
-该作业需要一些时间才能完成操作。 在该过程中，你应能够接收通知。 以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。 有关详细信息，请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
+该作业需要一些时间才能完成操作。 在该过程中，你应能够接收通知。 以下代码示例显示如何轮询服务以获取[作业](/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。 有关详细信息，请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
+**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
@@ -113,7 +113,7 @@ ms.locfileid: "86200209"
 
 内容密钥提供对资产的安全访问。 你需要创建一个**内容密钥策略**，用于配置如何将内容密钥传递到最终客户端。 内容密钥与**流定位器**相关联。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。
 
-当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容，在这种情况下，使用 AES 加密 (。 ) 解密流，播放机从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
+当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容（在这种情况下，使用 AES 加密。）为了解密流，播放器将从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
@@ -121,21 +121,21 @@ ms.locfileid: "86200209"
 
 完成编码并设置内容密钥策略后，下一步是使输出资产中的视频可供客户端播放。 可以通过两个步骤来提供视频：
 
-1. 创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)。
+1. 创建[流式处理定位符](/rest/api/media/streaminglocators)。
 2. 生成客户端可以使用的流式处理 URL。
 
 创建**流定位器**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，流式处理定位符**** 立即生效， 并持续到被删除为止。
 
-创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)时，需要指定所需的 **StreamingPolicyName**。 本教程使用某个 PredefinedStreamingPolicies 来告知 Azure 媒体服务如何发布流式处理的内容。 此示例中应用了 AES 信封加密（此加密也称为 ClearKey 加密，因为密钥是通过 HTTPS 而不是 DRM 许可证传送到播放客户端的）。
+创建[流式处理定位符](/rest/api/media/streaminglocators)时，需要指定所需的 **StreamingPolicyName**。 本教程使用某个 PredefinedStreamingPolicies 来告知 Azure 媒体服务如何发布流式处理的内容。 此示例中应用了 AES 信封加密（此加密也称为 ClearKey 加密，因为密钥是通过 HTTPS 而不是 DRM 许可证传送到播放客户端的）。
 
 > [!IMPORTANT]
-> 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流式处理定位符。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个流式处理定位符创建新的 StreamingPolicy。
+> 使用自定义的 [StreamingPolicy](/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流式处理定位符。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个流式处理定位符创建新的 StreamingPolicy。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
 ## <a name="get-a-test-token"></a>获取测试令牌
 
-本教程在内容密钥策略中指定使用令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用 [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) 格式的令牌，我们在示例中配置了此格式。
+本教程在内容密钥策略中指定使用令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用 [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) 格式的令牌，我们在示例中配置了此格式。
 
 **内容密钥策略**中使用了 ContentKeyIdentifierClaim，这意味着，提供给密钥传送服务的令牌必须包含内容密钥的标识符。 本示例未指定内容密钥，在创建流定位器时，系统创建了一个随机内容密钥。 若要生成测试令牌，必须获取要放入 ContentKeyIdentifierClaim 声明中的 ContentKeyId。
 
@@ -143,13 +143,13 @@ ms.locfileid: "86200209"
 
 ## <a name="build-a-dash-streaming-url"></a>生成 DASH 流 URL
 
-现在已经创建了[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，可以获取流式处理 url。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径****。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
+现在已经创建了[流式处理定位符](/rest/api/media/streaminglocators)，可以获取流式处理 url。 若要生成 URL，需要连接 [StreamingEndpoint](/rest/api/media/streamingendpoints) 主机名称和流定位器路径****。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换、流式处理定位符等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码将删除已创建的资产和内容密钥策略：
+一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换、流式处理定位符等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码可删除作业、已创建的资产和内容密钥策略：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 

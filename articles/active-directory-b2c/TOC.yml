@@ -296,7 +296,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -369,10 +369,16 @@
           href: partner-gallery.md
         - name: Arkose Labs
           href: partner-arkose-labs.md
+        - name: Experian
+          href: partner-experian.md
         - name: IDology
           href: partner-idology.md
         - name: itsme
           href: partner-itsme.md
+        - name: LexisNexis
+          href: partner-lexisnexis.md
+        - name: Onfido
+          href: partner-onfido.md
         - name: Trusona
           href: partner-trusona.md
         - name: Twilio
@@ -448,6 +454,8 @@
       displayName: security
     - name: 用户流版本
       href: user-flow-versions.md
+    - name: 旧版用户流
+      href: user-flow-versions-legacy.md
 - name: 资源
   items:
     - name: Azure 路线图

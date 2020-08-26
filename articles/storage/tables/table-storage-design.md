@@ -1,18 +1,19 @@
 ---
 title: 在 Azure 表存储中设计可伸缩的高性能表。 | Microsoft Docs
-description: 在 Azure 表存储中设计可伸缩的高性能表。
+description: 了解如何在 Azure 表存储中设计可缩放的高性能表。 查看表分区、实体组事务以及容量和成本注意事项。
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 03/09/2020
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656910"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236499"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -36,7 +37,7 @@ ms.locfileid: "83656910"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -48,8 +49,8 @@ ms.locfileid: "83656910"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -68,11 +69,11 @@ ms.locfileid: "83656910"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
-<td>六月</td>
+<td>Jun</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -105,8 +106,8 @@ ms.locfileid: "83656910"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>

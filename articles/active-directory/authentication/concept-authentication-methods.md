@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770953"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116761"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -38,12 +39,14 @@ Azure AD 中的许多帐户启用了自助服务密码重置 (SSPR) 或 Azure �
 | [Microsoft Authenticator 应用](#microsoft-authenticator-app) | 是（预览版） | MFA 和 SSPR |
 | [FIDO2 安全密钥（预览版）](#fido2-security-keys) | 是 | 仅 MFA |
 | [OATH 软件令牌](#oath-software-tokens) | 否 | MFA |
-| [OATH 硬件令牌（预览版）](#oath-hardware-tokens-preview) | 是 | MFA |
+| [OATH 硬件令牌（预览版）](#oath-hardware-tokens-preview) | 否 | MFA |
 | [SMS](#phone-options) | 是（预览版） | MFA 和 SSPR |
 | [语音呼叫](#phone-options) | 否 | MFA 和 SSPR |
 | [安全性问题](#security-questions) | 否 | 仅 SSPR |
 | [电子邮件地址](#email-address) | 否 | 仅 SSPR |
 | [应用密码](#app-passwords) | 否 | 仅限在某些情况下执行 MFA |
+
+这些身份验证方法可以在 Azure 门户中进行配置，并且在更多情况下都使用[Microsoft Graph REST API beta 版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
 
 本文概述了可在 Azure AD 中使用的这些不同的身份验证方法以及特定的限制或限制（如有）。
 
@@ -73,7 +76,7 @@ Authenticator 应用通过将通知推送到智能手机或平板电脑，可帮
 ![Web 浏览器提示示例的屏幕截图，其中提示用户处理 Authenticator 应用通知以完成登录过程](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> 如果你的组织有员工在中国工作或要前往中国，则 Android 设备上的移动应用通知方法在该国家/地区不起作用。 应向这些用户提供备用身份验证方法。
+> 如果你的组织有员工在中国工作或出差，则通过 Android 设备上的*移动应用方法发出的通知*在该国家/地区不起作用，因为 Google play services (包括推送通知) 在区域中被阻止。 但 iOS 通知确实有效。 对于 Android 设备，应让这些用户使用备用身份验证方法。
 
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 
@@ -296,6 +299,8 @@ Microsoft 不保证相同号码传送的短信或基于语音的 Azure 多重身
 要详细了解 SSPR 概念，请参阅[ Azure AD 自助式密码重置的工作原理][concept-sspr]。
 
 要详细了解 MFA 概念，请参阅[ Azure 多重身份验证的工作原理][concept-mfa]。
+
+详细了解如何使用[Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

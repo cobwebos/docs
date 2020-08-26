@@ -3,15 +3,15 @@ title: .NET 编程指南-Azure 事件中心（旧版） |Microsoft Docs
 description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编写代码。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314543"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074839"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
-本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
+本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](./event-hubs-about.md)。
 
 > [!WARNING]
 > 本指南适用于旧 **Microsoft.Azure.EventHubs** 包。 建议[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)代码以使用最新 [Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md) 包。  
@@ -96,7 +96,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
 
-请通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 返回一个 [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) 对象。 可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) 类来控制客户端重试选项。
+请通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 返回一个 [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) 对象。 可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) 类来控制客户端重试选项。
 
 ## <a name="event-consumers"></a>事件使用者
 [EventProcessorHost][] 类处理来自事件中心的数据。 在 .NET 平台上构建事件读取者时，应该使用此实现。 [EventProcessorHost][] 为事件处理器实现提供线程安全、多进程安全的运行时环境，该环境还能提供检查点和分区租用管理。
@@ -149,8 +149,8 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 若要了解有关事件中心方案的详细信息，请访问以下链接：
 
-* [事件中心 API 概述](event-hubs-api-overview.md)
-* [什么是事件中心](event-hubs-what-is-event-hubs.md)
+* [事件中心 API 概述](./event-hubs-samples.md)
+* [什么是事件中心](./event-hubs-about.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件处理程序主机 API 参考](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 

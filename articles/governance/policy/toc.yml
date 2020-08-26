@@ -10,16 +10,22 @@
   items:
     - name: 分配策略 - 门户
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: 分配策略 - Azure PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: 分配策略 - Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: 分配策略 - Azure PowerShell
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: 分配策略 - Python
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: 分配策略 - REST
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: 分配策略 - ARM 模板
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: 教程
   items:
     - name: 创建和管理 Azure Policy
@@ -93,9 +99,14 @@
     - name: 将策略设计为代码工作流
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: 适用于 Kubernetes 的 Azure Policy（预览版）
-      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
-      href: ./concepts/policy-for-kubernetes.md
+    - name: Kubernetes 集成
+      items:
+        - name: 适用于 Kubernetes 的 Azure Policy（预览版）
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: 使用 Azure Policy 保护 Pod（预览）
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
@@ -151,10 +162,10 @@
       items:
         - name: 大规模部署 Azure Monitor
           displayName: 'monitor, diagnostic settings, dependency agent'
-          href: ../../azure-monitor/platform/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: 启用用于 VM 的 Azure Monitor（预览版）
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
 - name: 疑难解答
   href: ./troubleshoot/general.md
 - name: 参考
@@ -223,6 +234,8 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: 资源
   items:
+    - name: 已知问题
+      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub - Azure Policy 示例
       href: 'https://github.com/Azure/azure-policy'
     - name: GitHub - 社区策略存储库
@@ -241,8 +254,8 @@
           href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
         - name: 修正任务
           href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: 视频 - Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: 视频 - Ignite 2019
+      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价计算器

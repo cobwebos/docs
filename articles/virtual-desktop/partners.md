@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面合作伙伴集成-Azure
 description: 了解 Windows 虚拟桌面的合作伙伴，并访问与它们集成的相关文档。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038049"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612361"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -38,7 +36,7 @@ Microsoft Azure 上的 VMware 范围云是一种本机云服务，可让组织�
 作为 Windows 虚拟桌面批准的提供程序，VMware 可以帮助希望使用 Windows 虚拟桌面的客户，同时还享有 VMware 范围随附的其他功能，例如集成和易用的电源管理、基于云的监视和群发极限协议。 这些功能可适应动态变化的网络条件，提供一致的用户体验。 VMware 地平线云还附带了 VMware 应用程序卷和动态环境管理器，它添加了适用于 .MSIX 应用连接和 FSLogix 的高级应用程序和用户环境管理功能。
 
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
-- [阅读 VMWare 地平线云技术文档](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
+- [阅读 VMware 地平线云技术文档](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 
@@ -48,15 +46,30 @@ Microsoft Azure 上的 VMware 范围云是一种本机云服务，可让组织�
 
 10ZiG's 全球市场领导，适用于虚拟桌面的瘦和零客户端终结点设备和管理软件的工作方式由其客户的工作方式举例说明。 它的瘦客户端硬件附带了周全构造的权益功能和选项，旨在确保客户根据其需求接收正确的客户端设备。 10ZiG 通过基于 Windows 和 Linux 的客户端对其设备进行定制，使其能够在虚拟桌面（云内部和外部）提供最佳性能。
 
-- [请参阅合作伙伴网站](https://www.10zig.com/)。
+- [请参阅合作伙伴网站](https://www.10zig.com/about/microsoft-wvd)。
+
+## <a name="automai"></a>Automai
+
+![Automai 徽标](./media/partners/automai.png)
+
+你可以在部署生效之前，使用 Automai 的机器人自动化平台在 Windows 虚拟桌面环境中测试关键业务流程。
+
+通过 Automai 的 ScenarioBuilder 工具和基于 GUI 的工作流引擎，IT 团队可以记录真实的最终用户工作流，并自动将其转换为脚本。 然后，Automai 使用运行来自各个桌面的进程的 bot 来模拟模拟中的最终用户活动，并报告结果。 这极大地简化了测试过程，使 IT 管理员甚至可以在最复杂的情况下进行压力测试。
+
+准备好启动后，可以使用为负载测试创建的所有工作流脚本来持续监视生产中的性能。 Automai 的 bot 不仅能实现可用性监视。 Bot 还可以从密钥位置测试最终用户工作流，并实时地获取屏幕截图和收集错误报告。 这将导致比反应性方法更主动地处理 Windows 虚拟桌面应用程序的 bug 修复。
+
+Automai 使你可以将相同的脚本用于性能测试、功能测试、性能监视甚至机器人流程自动化，一切都在一个平台上。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)。
+- [请参阅合作伙伴网站](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
 ![Cloudhouse 徽标](./media/partners/cloudhouse.png)
 
-Cloudhouse 是一个 Windows 虚拟桌面增值服务提供程序，它为客户提供了一个全包式应用程序迁移服务，该服务可以将所有应用程序（包括与新式 Windows 操作系统不兼容的应用程序）移动到 Windows 虚拟桌面环境，从而使客户能够真正利用多会话 Windows 10。 
+Cloudhouse 是一个 Windows 虚拟桌面增值服务提供程序，它为客户提供了一个全包式应用程序迁移服务，该服务可以将所有应用程序（包括与新式 Windows 操作系统不兼容的应用程序）移动到 Windows 虚拟桌面环境，从而使客户能够真正利用多会话 Windows 10。
 
-通过利用行之有效的 Cloudhouse 容器化技术，Cloudhouse 服务将获取所有应用程序（包括为 Windows XP、Windows 7 或 Windows 8 设计的应用程序），并将其部署到新式 Windows 虚拟桌面，而无需更改代码或影响用户体验。 Cloudhouse 通过将应用程序与基础操作系统隔离，进一步增加了 Windows 虚拟桌面的值，从而允许在不影响容器化应用程序的情况下推出 Windows 服务更新。 
+通过利用行之有效的 Cloudhouse 容器化技术，Cloudhouse 服务将获取所有应用程序（包括为 Windows XP、Windows 7 或 Windows 8 设计的应用程序），并将其部署到新式 Windows 虚拟桌面，而无需更改代码或影响用户体验。 Cloudhouse 通过将应用程序与基础操作系统隔离，进一步增加了 Windows 虚拟桌面的值，从而允许在不影响容器化应用程序的情况下推出 Windows 服务更新。
 
 - [请参阅合作伙伴网站](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua)。
 
@@ -96,9 +109,9 @@ Wyse 瘦客户端在设计时需要考虑到有限的攻击面、对安全遵从
 
 ![deviceTRUST 徽标](./media/partners/devicetrust.png)
 
-deviceTRUST 是一个 Windows 虚拟桌面增值服务提供商，tsi 公司企业。 它使用户能够自由地从任何位置、任何设备通过任何网络访问其 Windows 虚拟桌面，同时为 IT 部门提供满足其管理要求所需的信息和控制。 
+deviceTRUST 是一个 Windows 虚拟桌面增值服务提供商，tsi 公司企业。 它使用户能够自由地从任何位置、任何设备通过任何网络访问其 Windows 虚拟桌面，同时为 IT 部门提供满足其管理要求所需的信息和控制。
 
-deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 deviceTRUST 为安全 Windows 虚拟桌面访问和 Windows 虚拟桌面中的条件性应用程序访问启用条件性访问，并且无需任何其他基础结构即可应用条件性 Windows 虚拟桌面策略。 使用 deviceTRUST 可实现一个满足所有安全性、合规性和法规要求的移动灵活工作区。 
+deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 deviceTRUST 为安全 Windows 虚拟桌面访问和 Windows 虚拟桌面中的条件性应用程序访问启用条件性访问，并且无需任何其他基础结构即可应用条件性 Windows 虚拟桌面策略。 使用 deviceTRUST 可实现一个满足所有安全性、合规性和法规要求的移动灵活工作区。
 
 - [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
 
@@ -106,19 +119,30 @@ deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 d
 
 ![Ekran 系统徽标](./media/partners/ekran.png)
 
-Ekran System 是一个 Windows 虚拟桌面增值合作伙伴，使 IT 团队能够监视 Microsoft Azure 虚拟机上的所有远程用户活动。 对于 Ekran 系统，可以在发布的应用程序或虚拟机中记录每个用户会话的屏幕活动，同时收集各种上下文丰富的元数据，例如应用程序名称、活动窗口标题、访问的 Url 和击键。 高级功能提供深入的可见性和快速事件响应时间，使 Ekran 系统成为高效的内部威胁管理和合规性解决方案。  
+Ekran System 是一个 Windows 虚拟桌面增值合作伙伴，使 IT 团队能够监视 Microsoft Azure 虚拟机上的所有远程用户活动。 对于 Ekran 系统，可以在发布的应用程序或虚拟机中记录每个用户会话的屏幕活动，同时收集各种上下文丰富的元数据，例如应用程序名称、活动窗口标题、访问的 Url 和击键。 高级功能提供深入的可见性和快速事件响应时间，使 Ekran 系统成为高效的内部威胁管理和合规性解决方案。
 
 Ekran 系统客户端的唯一浮动终结点授权自动支持动态变化的虚拟机。 Ekran 系统允许你从已删除的非永久性虚拟桌面自动取消分配许可证，并从数据库中删除它们。 Ekran 系统与 Azure Active Directory 和 Azure Sentinel 无缝集成。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)。
 - [请中转到 "合作伙伴" 页](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
 
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech 徽标](./media/partners/fabulatech.png)
+
+FabulaTech 与 Windows 虚拟桌面客户端无缝集成。 安装后，当你建立与远程桌面的连接时，FabulaTech 软件将自动开始工作。
+
+当用户登录到虚拟桌面时，FabulaTech 软件会创建虚拟设备。 例如，可以创建虚拟网络摄像机、扫描仪或指纹读取器。 在远程会话中运行的任何应用都可以访问虚拟设备，就像它是一个物理设备一样。 您可以使用系统托盘图标菜单在 Windows 虚拟桌面中配置虚拟设备，这意味着您还可以在瘦客户端上使用此解决方案。 在此基础上，所有通信都通过现有远程桌面连接进行，这意味着防火墙是为你设置的。 一切都可以立即使用。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO)。
+- [请参阅合作伙伴网站](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/)。
+
 ## <a name="flexxible-it"></a>Flexxible
 
 ![Flexxible IT 徽标](./media/partners/flexxible.png)
 
 Flexxible 是一个 Windows 虚拟桌面增值合作伙伴，它使组织能够快速缩放、监视和高效管理 Windows 虚拟桌面和 Citrix 工作区基础结构。 Flexxible |套件允许 IT 管理员智能地预配和管理本地 Windows 虚拟桌面工作负载，并托管在 Azure 中。
- 
+
 Flexxible，它通过自动执行常见过程以简化基础结构配置、桌面预配和日常管理，来扩展本机 Windows 虚拟桌面和 Citrix 工作区的价值。 由于无需复杂的 PowerShell 脚本或耗时的手动过程，套件提供了可伸缩的桌面部署、广泛的监视和报告以及安全委托管理。 利用这些功能，你可以将重点放在提供增强的服务级别，并为用户提供优质的 Windows 虚拟桌面体验。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A)。
@@ -138,9 +162,9 @@ HP 瘦客户端是 Microsoft Azure 和 Windows 虚拟桌面服务的经批准和
 
 ![IGEL 徽标](./media/partners/igel.png)
 
-IGEL 是经过批准和验证的 Microsoft Azure 和 Windows 虚拟桌面服务的合作伙伴。 IGEL 提供 IGEL OS，适用于云工作区的下一代边缘操作系统，旨在利用轻型、简单和安全的基于 Linux 的终结点，从一个或多个用户设备访问虚拟应用、桌面和云工作区。 独立于平台的软件解决方案、IGEL OS 及其基于服务器的管理和控制软件（IGEL 通用管理套件（UMS））包含一个终结点管理和控制解决方案，该解决方案可使企业完全利用基于 Azure 的云实例和 Windows 虚拟桌面桌面，包括经济的多会话 Windows 虚拟桌面，同时降低终结点硬件和终结点设备管理和操作成本。
- 
-IGEL OS 支持 Citrix、Microsoft 和 VMware 中的所有常用虚拟应用、桌面和云工作区客户端协议。 它包括85外设、接口和协议合作伙伴提供的集成技术，可帮助组织快速将 Windows 虚拟桌面服务采用其自己独特的用户环境。 IGEL OS 是一个只读的模块化终结点操作系统，可帮助防止其被篡改。 它现在还包括了一个完整的 "信任链"，它可验证在终结点上运行的所有主要进程的完整性，从终结点硬件（某些选定的模型）或 UEFI 过程一直到 Azure 云和 Windows 虚拟桌面服务。 借助 IGEL 操作系统，企业可以从 Azure 云中订阅 Windows 虚拟桌面，以完全相信其用户终结点设备的完整性、安全性和可管理性。
+IGEL 是经过批准和验证的 Microsoft Azure 和 Windows 虚拟桌面服务的合作伙伴。 IGEL 提供 IGEL OS，适用于云工作区的下一代边缘操作系统，旨在利用轻型、简单和安全的基于 Linux 的终结点，从一个或多个用户设备访问虚拟应用、桌面和云工作区。 独立于平台的软件解决方案、IGEL OS 及其基于服务器的管理和控制软件、IGEL 通用管理套件 (UMS) ，包括一个终结点管理和控制解决方案，该解决方案可使企业完全利用基于 Azure 的云实例和 Windows 虚拟桌面桌面，包括经济的多会话 Windows 虚拟桌面，同时降低终结点硬件和终结点设备管理和操作成本。
+
+IGEL OS 支持 Citrix、Microsoft 和 VMware 中的所有常用虚拟应用、桌面和云工作区客户端协议。 它包括85外设、接口和协议合作伙伴提供的集成技术，可帮助组织快速将 Windows 虚拟桌面服务采用其自己独特的用户环境。 IGEL OS 是一个只读的模块化终结点操作系统，可帮助防止其被篡改。 它现在还包括一个完整的 "信任链"，它可以验证终结点上运行的所有主要进程的完整性，从终结点硬件 (一些所选的模型) 或 UEFI 过程一直到 Azure 云和 Windows 虚拟桌面服务。 借助 IGEL 操作系统，企业可以从 Azure 云中订阅 Windows 虚拟桌面，以完全相信其用户终结点设备的完整性、安全性和可管理性。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO)。
 - [请参阅合作伙伴网站](https://www.igel.com/igel-os-universal-desktop-operating-system/)。
@@ -149,9 +173,9 @@ IGEL OS 支持 Citrix、Microsoft 和 VMware 中的所有常用虚拟应用、�
 
 ![Ivanti 徽标](./media/partners/ivanti.png)
 
-Ivanti 用户工作区管理器是一个 Windows 虚拟桌面增值服务，它通过将用户数据与台式机分离以便无缝便携性，简化桌面部署和管理。 借助 Ivanti，用户可以提供复杂的项目，例如迁移到 Windows 10、采用 Microsoft 365 或更快地将服务迁移到云。 
+Ivanti 用户工作区管理器是一个 Windows 虚拟桌面增值服务，它通过将用户数据与台式机分离以便无缝便携性，简化桌面部署和管理。 借助 Ivanti，用户可以提供复杂的项目，例如迁移到 Windows 10、采用 Microsoft 365 或更快地将服务迁移到云。
 
-与 Windows 虚拟桌面一起使用时，Ivanti 用户工作区管理器提供用户桌面体验的简单上下文管理，消除长登录时间和 eradicating 组策略恶梦。 Ivanti 用户工作区管理器现成的模板通过代理和现有控制台简化了用户的安装。 Ivanti 用户工作区经理提供用户喜爱的响应安全的安全桌面，节省服务器上的资金，更有效地管理用户，降低终结点安全风险。 
+与 Windows 虚拟桌面一起使用时，Ivanti 用户工作区管理器提供用户桌面体验的简单上下文管理，消除长登录时间和 eradicating 组策略恶梦。 Ivanti 用户工作区管理器现成的模板通过代理和现有控制台简化了用户的安装。 Ivanti 用户工作区经理提供用户喜爱的响应安全的安全桌面，节省服务器上的资金，更有效地管理用户，降低终结点安全风险。
 
 - [请参阅合作伙伴网站](https://www.ivanti.com/products/user-workspace-manager)。
 
@@ -181,7 +205,7 @@ Liquidware Essentials 通过有效地收集用户配置文件和收集重要用�
 
 ![Liquit 徽标](./media/partners/liquit.png)
 
-Liquit 应用程序聚合和交付软件使企业和服务提供商能够连接到所有工作区后端（Citrix、VMWare、Windows 虚拟桌面、RDP 和旧版本）并与之结合，并提供自定义且一致的客户体验，不管客户的应用程序位于何处。 当客户发布智能图标时，Liquit 根据客户的位置、设备和配置文件权限决定启动应用程序的位置。
+使用 Liquit 应用程序聚合和交付软件，企业和服务提供商可以连接到所有工作区后端 (Citrix、VMWare、Windows 虚拟桌面、RDP 和旧) ，并提供自定义且一致的客户体验，不管客户的应用程序位于何处。 当客户发布智能图标时，Liquit 根据客户的位置、设备和配置文件权限决定启动应用程序的位置。
 
 作为认证的集成合作伙伴，Liquit 可帮助加速过渡到云，而无需延迟和替换延迟。 Windows 虚拟桌面可以轻松连接到现有环境，创建工作区，并交付桌面。 然后，你可以将时间从旧的平台迁移，并在不需要用户注意的情况下在后端进行更改。 无论在何处，都可以获得一致的最终用户体验、灵活的基础结构，并保持对应用程序的控制。
 
@@ -211,9 +235,9 @@ Nerdio 扩展了 Windows 虚拟桌面的价值，使其易于预配 Azure 资源
 
 ![Numecent 徽标](./media/partners/numecent.png)
 
-Numecent 是一个 Windows 虚拟桌面增值服务提供程序，通过在 Windows 虚拟桌面环境中快速载入和迁移复杂的或不兼容的 Windows 应用，大大降低了运营成本。 Numecent 还可以最大程度地减少用户需要执行的配置，减少应用程序更新，并简化复杂的过程。 由于 Numecent Cloudpaging 支持与任何其他应用程序传送工具无缝地支持更多应用程序，因此它可减少环境中具有一组不同应用程序的时间和 IT 工作负荷。 
+Numecent 是一个 Windows 虚拟桌面增值服务提供程序，通过在 Windows 虚拟桌面环境中快速载入和迁移复杂的或不兼容的 Windows 应用，大大降低了运营成本。 Numecent 还可以最大程度地减少用户需要执行的配置，减少应用程序更新，并简化复杂的过程。 由于 Numecent Cloudpaging 支持与任何其他应用程序传送工具无缝地支持更多应用程序，因此它可减少环境中具有一组不同应用程序的时间和 IT 工作负荷。
 
-与 Windows 虚拟桌面一起使用时，Cloudpaging 通过从部署中完成软件资产生命周期来升级、计数和删除应用程序，进一步降低了成本。 Cloudpaging 通过动态地将应用程序设置为 Windows 虚拟桌面部署，来简化映像管理。 Cloudpaging 可帮助应用程序无需管理或干预即可通过定期 Windows 10 更新运行。 Cloudpaging 还通过支持更高效的应用程序部署和使用，降低了昂贵应用程序的许可成本。 
+与 Windows 虚拟桌面一起使用时，Cloudpaging 通过从部署中完成软件资产生命周期来升级、计数和删除应用程序，进一步降低了成本。 Cloudpaging 通过动态地将应用程序设置为 Windows 虚拟桌面部署，来简化映像管理。 Cloudpaging 可帮助应用程序无需管理或干预即可通过定期 Windows 10 更新运行。 Cloudpaging 还通过支持更高效的应用程序部署和使用，降低了昂贵应用程序的许可成本。
 
 - [请参阅合作伙伴网站](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/)。
 
@@ -221,9 +245,9 @@ Numecent 是一个 Windows 虚拟桌面增值服务提供程序，通过在 Wind
 
 ![PolicyPak 徽标](./media/partners/policypak.png)
 
-PolicyPak Software 是一种 Windows 虚拟桌面合作伙伴，用于执行应用程序、桌面、浏览器、Java 和安全设置的总体设置管理。 PolicyPak 使桌面、系统和安全设置保持符合性。 PolicyPak 通过添加一套组件来增强 Windows 的内置管理，从而增强了 Windows 虚拟桌面的价值。 使用现有 Active Directory 组策略和/或 Windows Intune 提供 PolicyPak 的设置，并提高管理员管理其 Windows 10 计算机的能力。 
+PolicyPak Software 是一种 Windows 虚拟桌面合作伙伴，用于执行应用程序、桌面、浏览器、Java 和安全设置的总体设置管理。 PolicyPak 使桌面、系统和安全设置保持符合性。 PolicyPak 通过添加一套组件来增强 Windows 的内置管理，从而增强了 Windows 虚拟桌面的价值。 使用现有 Active Directory 组策略和/或 Windows Intune 提供 PolicyPak 的设置，并提高管理员管理其 Windows 10 计算机的能力。
 
-PolicyPak 的主要用例是删除本地管理员权限并克服 UAC 提示，阻止勒索软件，管理多个浏览器，管理 Internet Explorer 的企业和兼容性模式，减少 Gpo 的数量，管理 Windows 10 文件关联，管理 Windows 10 开始菜单和任务栏，并管理 Windows 10 功能和可选功能。  
+PolicyPak 的主要用例是删除本地管理员权限并克服 UAC 提示，阻止勒索软件，管理多个浏览器，管理 Internet Explorer 的企业和兼容性模式，减少 Gpo 的数量，管理 Windows 10 文件关联，管理 Windows 10 开始菜单和任务栏，并管理 Windows 10 功能和可选功能。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN)。
 - [请参阅合作伙伴网站](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)。
@@ -232,9 +256,9 @@ PolicyPak 的主要用例是删除本地管理员权限并克服 UAC 提示，�
 
 ![PrinterLogic 徽标](./media/partners/printerlogic.png)
 
-PrinterLogic 是一个 Windows 虚拟桌面增值服务提供商平台，使 IT 专业人员能够消除所有打印服务器并提供高度可用的无服务器打印基础结构。 PrinterLogic 扩展了 Windows 虚拟桌面和 Azure 的价值，使你可以轻松地集中管理和将打印机对象部署到任何打印机或终结点操作系统。 
+PrinterLogic 是一个 Windows 虚拟桌面增值服务提供商平台，使 IT 专业人员能够消除所有打印服务器并提供高度可用的无服务器打印基础结构。 PrinterLogic 扩展了 Windows 虚拟桌面和 Azure 的价值，使你可以轻松地集中管理和将打印机对象部署到任何打印机或终结点操作系统。
 
-PrinterLogic 平台在你自己的私有云中作为 SaaS 或 web 堆栈提供，可确保用户在其虚拟会话中始终根据用户 ID、设备名称或位置提供所需的正确打印机。 此功能通过一整套企业打印管理功能（如打印跟踪和报告、移动打印和安全徽章版本打印）进行求反。 
+PrinterLogic 平台在你自己的私有云中作为 SaaS 或 web 堆栈提供，可确保用户在其虚拟会话中始终根据用户 ID、设备名称或位置提供所需的正确打印机。 此功能通过一整套企业打印管理功能（如打印跟踪和报告、移动打印和安全徽章版本打印）进行求反。
 
 - [请参阅合作伙伴网站](https://www.printerlogic.com)。
 
@@ -244,7 +268,7 @@ PrinterLogic 平台在你自己的私有云中作为 SaaS 或 web 堆栈提供�
 
 Printix 是一个 Windows 虚拟桌面增值服务提供程序，可自动执行到 office 打印资源的用户连接。 作为客户 Azure 迁移中缺少的部分，Printix 是最具成本效益的服务，可用于删除与支持和优化每个用户的打印工作流关联的基础结构和 IT 任务，而不考虑位置。
 
-打印只是每个办公环境和小型企业环境中的基本任务。 为了充分利用 Windows 虚拟桌面并提供出色的用户体验，请务必确保用户能够以最小的工作量和最大可靠性连接到打印机。 借助 Printix，你可以通过单一登录（SSO）、无提示配置、定期更新以及持续监视打印环境，充分利用 Windows 虚拟桌面。
+打印只是每个办公环境和小型企业环境中的基本任务。 为了充分利用 Windows 虚拟桌面并提供出色的用户体验，请务必确保用户能够以最小的工作量和最大可靠性连接到打印机。 借助 Printix，你可以通过单一登录 (SSO) 、无提示配置、定期更新以及持续监视打印环境，充分利用 Windows 虚拟桌面。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)。
 - [请参阅合作伙伴网站](https://www.printix.net/printix-for-windows-virtual-desktop)。
@@ -253,9 +277,9 @@ Printix 是一个 Windows 虚拟桌面增值服务提供程序，可自动执行
 
 ![RDPSoft 徽标](./media/partners/rdpsoft.png)
 
-RDPSoft 是一个 Windows 虚拟桌面合作伙伴，可提供功能强大、价格低廉的监视、管理和报告解决方案。 其远程桌面版产品/服务允许 IT 专业人员深入了解 Windows 虚拟桌面部署的运行状况、性能、用户活动、授权和安全性。 
- 
-RDPSoft 的远程桌面指挥解决方案增强了 Windows 虚拟桌面管理。 高级管理功能通过提供远程协助、用户会话和流程管理，简化了对 Windows 虚拟桌面管理任务的委派以支持桌面人员。 同时，远程桌面指挥套件会收集有关每个用户的性能和负载、用户活动和审核、Windows 虚拟桌面连接质量（延迟和带宽）、授权和安全性的丰富指标，以便进行查看。 使用 RDPSoft，只需单击一下即可了解丰富的历史报告和全面的仪表板。
+RDPSoft 是一个 Windows 虚拟桌面合作伙伴，可提供功能强大、价格低廉的监视、管理和报告解决方案。 其远程桌面版产品/服务允许 IT 专业人员深入了解 Windows 虚拟桌面部署的运行状况、性能、用户活动、授权和安全性。
+
+RDPSoft 的远程桌面指挥解决方案增强了 Windows 虚拟桌面管理。 高级管理功能通过提供远程协助、用户会话和流程管理，简化了对 Windows 虚拟桌面管理任务的委派以支持桌面人员。 同时，远程桌面指挥套件会收集有关每用户性能和负载、用户活动和审核、Windows 虚拟桌面连接质量 (延迟和) 带宽的丰富指标，并将其提供给中央 Azure SQL Database 实例供审查。 使用 RDPSoft，只需单击一下即可了解丰富的历史报告和全面的仪表板。
 
 - [请参阅合作伙伴网站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)。
 
@@ -296,7 +320,7 @@ ThinPrint 的 ezeep 解决方案通过启用到现有企业打印基础结构的
 
 ![Tricerat 徽标](./media/partners/tricerat.png)
 
-Tricerat 为 Windows 虚拟桌面和其他桌面平台提供出色的打印管理解决方案。 Tricerat software 提供了强大的功能，为用户和管理员提供了更好的体验。 管理员通过完成驱动程序管理、简化了打印队列的部署以及跨混合平台的一致性管理，提高了效率。 通过较短的登录时间、基于用户、设备和网络位置的智能打印队列，以及用于快速打印机选择的自助服务选项，用户体验得以改善。 
+Tricerat 为 Windows 虚拟桌面和其他桌面平台提供出色的打印管理解决方案。 Tricerat software 提供了强大的功能，为用户和管理员提供了更好的体验。 管理员通过完成驱动程序管理、简化了打印队列的部署以及跨混合平台的一致性管理，提高了效率。 通过较短的登录时间、基于用户、设备和网络位置的智能打印队列，以及用于快速打印机选择的自助服务选项，用户体验得以改善。
 
 借助 Tricerat，在 Windows 虚拟桌面和更高版本中，打印是无缝的。 Tricerat software 使管理员能够轻松地将本地打印机连接到云，将企业打印管理从传统环境扩展到新的新式工作区。
 
@@ -316,9 +340,9 @@ uberAgent 是针对最终用户计算而设计的一种监视和分析产品，�
 
 ![工作区365徽标](./media/partners/workspace-365.png)
 
-工作区365将您的所有信息（业务数据、文档、通信和微应用程序），并提供对一个工作区中任何本地、web 或托管应用程序的访问权限。 它可自动适应你的角色、位置、设备、浏览器等，以提供个性化工作区。 无论技术在哪一种技术下，用户都可以获得简单而一致的体验。 你可以集成当前的解决方案，如 RDP、Citrix 和旧版应用程序，并将它们移动到 Windows 虚拟桌面，同时保持相同的用户体验。 此外，您可以在一个文档管理应用程序中集成所有文件位置，如 SharePoint、OneDrive、团队和文件服务器。
+工作区365将所有信息 (业务数据、文档、通信和微应用程序) ，并提供对一个工作区中任何本地、web 或托管应用程序的访问权限。 它可自动适应你的角色、位置、设备、浏览器等，以提供个性化工作区。 无论技术在哪一种技术下，用户都可以获得简单而一致的体验。 你可以集成当前的解决方案，如 RDP、Citrix 和旧版应用程序，并将它们移动到 Windows 虚拟桌面，同时保持相同的用户体验。 此外，您可以在一个文档管理应用程序中集成所有文件位置，如 SharePoint、OneDrive、团队和文件服务器。
 
-使用工作区365，IT 管理员可以使基于权限的 Windows 虚拟桌面应用程序可供用户使用。 然后，管理员可以将这些应用程序添加到共享应用程序组。 当 Windows 虚拟桌面应用程序在工作区365中可见时，用户可以在工作区中打开该应用程序，而无需再次登录。 
+使用工作区365，IT 管理员可以使基于权限的 Windows 虚拟桌面应用程序可供用户使用。 然后，管理员可以将这些应用程序添加到共享应用程序组。 当 Windows 虚拟桌面应用程序在工作区365中可见时，用户可以在工作区中打开该应用程序，而无需再次登录。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh)。
 - [请参阅合作伙伴网站](https://workspace365.net/product-tour/hybrid-workspace-365/)。

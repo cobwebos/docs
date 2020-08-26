@@ -5,18 +5,18 @@ description: 了解如何使用 Azure 机器学习 PyTorch 估算器类在企业
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.reviewer: peterlu
 ms.date: 08/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 25343c22eab743fa0b1341a85c00a452dbb81e56
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 28a2d5c34da9f7996524d29a88c7969adf197b38
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146402"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270642"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Pytorch 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,6 +124,8 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+
 有关计算目标的详细信息，请参阅[什么是计算目标](concept-compute-target.md)一文。
 
 ## <a name="create-a-pytorch-estimator"></a>创建 PyTorch 估算器
@@ -149,7 +151,7 @@ estimator = PyTorch(source_directory=project_folder,
 ```
 
 > [!WARNING]
-> Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想要上传的敏感数据，请使用[. ignore file](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不要将其包含在源目录中。 而是使用数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)访问数据。
+> Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想要上传的敏感数据，请使用 [. ignore file](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 或不要将其包含在源目录中。 而是使用数据 [存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)访问数据。
 
 有关自定义 Python 环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
 
@@ -216,7 +218,7 @@ estimator= PyTorch(source_directory=project_folder,
                       node_count=2,
                       process_count_per_node=1,
                       distributed_training=MpiConfiguration(),
-                      framework_version='1.13',
+                      framework_version='1.4',
                       use_gpu=True)
 ```
 将为你安装 Horovod 及其依赖项，因此，你可以在训练脚本 `train.py` 中导入它，如下所示：

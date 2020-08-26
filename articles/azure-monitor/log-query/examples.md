@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045518"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
 本文包含使用 [Kusto 查询语言](/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
-有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
+有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
 ## <a name="events"></a>事件
 
@@ -374,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用情况
 
-`Usage`数据类型可用于按解决方案或数据类型跟踪引入数据量。 还有其他方法可以按[计算机](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 订阅、资源组或资源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)来研究引入数据量。
+`Usage`数据类型可用于按解决方案或数据类型跟踪引入数据量。 还有其他方法可以按[计算机](../platform/manage-cost-storage.md#data-volume-by-computer)或[Azure 订阅、资源组或资源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)来研究引入数据量。
 
 #### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
 

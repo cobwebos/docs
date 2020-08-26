@@ -1,6 +1,6 @@
 ---
 title: Azure 虚拟机网络吞吐量 | Microsoft Docs
-description: 了解 Azure 虚拟机网络吞吐量。
+description: 了解 Azure 虚拟机网络吞吐量，包括如何将带宽分配给虚拟机。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,11 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695994"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265108"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
 
@@ -55,8 +56,8 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 
 目前，Azure 网络堆栈支持网络流总计为 250K 且为 CPU 核心数大于 8 的 VM 提供良好性能的方案，以及网络流总计为 100k 且为 CPU 核心数小于 8 的 VM 提供良好性能的方案。 超过此限制后，由于超出的流量，网络性能会正常下降，直到达到 500K 总流量（250K 入站流量和 250K 出站流量）的硬限制，然后丢弃超出的流量。
 
-||CPU 核心数 <8 的 VM|CPU 核心数 >8 的 VM|
-|---|---|---|
+| 性能级别 | CPU 核心数 <8 的 VM | CPU 核心数 >8 的 VM |
+| ----------------- | --------------------- | --------------------- |
 |<b>性能良好</b>|100K 流 |250K 流|
 |<b>性能下降</b>|大于 100k 流|大于 250K 流|
 |<b>流限制</b>|500K 流|500K 流|
@@ -70,4 +71,4 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 ## <a name="next-steps"></a>后续步骤
 
 - [优化虚拟机操作系统的网络吞吐量](virtual-network-optimize-network-bandwidth.md)
-- 针对虚拟机[测试网络吞吐量](virtual-network-bandwidth-testing.md)。
+- 测试虚拟机的[网络吞吐量](virtual-network-bandwidth-testing.md)。

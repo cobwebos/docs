@@ -5,16 +5,16 @@ author: vikramdesai01
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 74c00678ca901d163d951e02167c89896c43e7b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237660"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281763"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
@@ -97,7 +97,7 @@ ms.locfileid: "79237660"
 
 1. 片刻之后，为用户分配了订阅的“账单读取者”角色。
 
-** 如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。 
+** 如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。
 
 ## <a name="check-the-type-of-your-billing-account"></a>检查计费帐户的类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
@@ -105,7 +105,7 @@ ms.locfileid: "79237660"
 ## <a name="next-steps"></a>后续步骤
 
 - 其他角色的用户（如所有者或参与者）不仅可访问计费信息，还可访问 Azure 服务。 若要管理这些角色，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
-- 有关角色的详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+- 有关角色的详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

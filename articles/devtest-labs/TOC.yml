@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: 设置策略和计划
           href: devtest-lab-set-lab-policy.md
+        - name: "配置实验室标识\_"
+          href: configure-lab-identity.md
         - name: 将实验室配置为使用远程桌面网关
           href: configure-lab-remote-desktop-gateway.md
         - name: 在实验室中发布公告
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: 缩放实验室
           href: devtest-lab-scale-lab.md
-        - name: 为实验室 VM 启用托管标识
-          href: enable-managed-identities-lab-vms.md
         - name: 管理虚拟机基础映像
           items:
             - name: 配置 Azure 市场映像
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: 从另一个实验室导入虚拟机
           href: import-virtual-machines-from-another-lab.md
+        - name: 为实验室 VM 启用托管标识
+          href: enable-managed-identities-lab-vms.md
     - name: 在实验室中使用环境
       items:
         - name: 创建环境
@@ -232,6 +234,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: 排查有关应用项目的问题
           href: devtest-lab-troubleshoot-apply-artifacts.md
+    - name: 加密实验室资源
+      items:
+        - name: 加密实验室使用的存储空间
+          href: encrypt-storage.md
+        - name: 使用客户管理的密钥加密 OS 磁盘
+          href: encrypt-disks-customer-managed-keys.md
     - name: 与 CI/CD 集成
       items:
         - name: 将实验室集成到 Azure Pipelines CI/CD 管道中
@@ -291,7 +299,7 @@
     - name: PowerShell - 示例 Az.DevTestLabs2 模块
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
+      href: /rest/api/dtl/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.devtestlab/allversions
 - name: 资源
@@ -301,7 +309,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-devtestlabs.html'
+      href: /answers/topics/azure-devtestlabs.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: 视频

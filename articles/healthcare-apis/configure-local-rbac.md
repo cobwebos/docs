@@ -1,18 +1,18 @@
 ---
-title: 为适用于 FHIR 的 Azure API 配置基于本地角色的访问控制（RBAC）
+title: " (用于 FHIR 的 Azure API 的本地 RBAC) 配置本地基于角色的访问控制"
 description: 本文介绍如何将用于 FHIR 的 Azure API 配置为使用外部 Azure AD 租户作为数据平面
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: a8c1b36d6a439297dfb0bbcb34efe059349fc5a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871157"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847000"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>配置 FHIR 的本地 RBAC 
 
@@ -65,8 +65,7 @@ az ad sp create --id 3274406e-4e0a-4852-ba4f-d7226630abb7
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用外部（辅助） Azure Active Directory 租户分配 FHIR 数据平面访问权限。 接下来了解适用于 FHIR 的 Azure API 的其他设置：
+本文介绍了如何使用外部 (辅助) Azure Active Directory 租户来分配 FHIR 数据平面访问权限。 接下来了解适用于 FHIR 的 Azure API 的其他设置：
  
 >[!div class="nextstepaction"]
 >[其他设置 Azure API for FHIR](azure-api-for-fhir-additional-settings.md)
-

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Meta Networks 连接器集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Meta Networks 连接器之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160638"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>教程：Azure Active Directory 与 Meta Networks 连接器集成
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/01/2019
-ms.openlocfilehash: bcce08285c7412644de22f19ddd9d821ad3adea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124385"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384848"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -66,7 +66,7 @@ Azure Monitor HTTP 数据收集器 API 的任何请求都必须包含授权标�
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* 是 Log Analytics 工作区的唯一标识符。 *签名*是[基于哈希的消息验证代码 (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx)，它构造自请求并使用 [SHA256 算法](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)进行计算。 然后，使用 Base64 编码进行编码。
+*WorkspaceID* 是 Log Analytics 工作区的唯一标识符。 *签名*是[基于哈希的消息验证代码 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1)，它构造自请求并使用 [SHA256 算法](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)进行计算。 然后，使用 Base64 编码进行编码。
 
 使用此格式对 **SharedKey** 签名字符串进行编码：
 
@@ -140,6 +140,9 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 | 日期/时间 |_t |
 | GUID（存储为字符串） |_g |
 
+> [!NOTE]
+> 显示为 Guid 的字符串值将被赋予 _g 后缀并格式化为 GUID，即使传入的值不包含短划线。 例如，"8145d822-13a7-44ad-859c-36f31a84f6dd" 和 "8145d82213a744ad859c36f31a84f6dd" 都将存储为 "8145d822-13a7-44ad-859c-36f31a84f6dd"。 此字符串与另一个字符串之间唯一的区别在于，如果在输入中未提供，则为名称中的 _g，并插入短划线。 
+
 Azure Monitor 对每个属性所使用的数据类型取决于新记录的记录类型是否已存在。
 
 * 如果记录类型不存在，Azure Monitor 将创建新的记录类型，并使用 JSON 类型推理来确定新记录的每个属性的数据类型。
@@ -207,7 +210,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 对于每个示例，执行以下步骤来设置授权标头的变量：
 
 1. 在 Azure 门户中，找到 Log Analytics 工作区。
-2. 依次选择“高级设置”和“已连接的源”。
+2. 选择 "**代理管理**"。
 2. 在 **Workspace ID** 的右侧，选择复制图标，并粘贴该 ID 作为 **Customer ID** 变量的值。
 3. 在 **Primary Key** 的右侧，选择复制图标，并粘贴该 ID 作为 **Shared Key** 变量的值。
 
@@ -464,14 +467,99 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+
+### <a name="python-3-sample"></a>Python 3 示例
+```python
+import json
+import requests
+import datetime
+import hashlib
+import hmac
+import base64
+
+# Update the customer ID to your Log Analytics workspace ID
+customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+# For the shared key, use either the primary or the secondary Connected Sources client authentication key   
+shared_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# The log type is the name of the event that is being submitted
+log_type = 'WebMonitorTest'
+
+# An example JSON web monitor object
+json_data = [{
+   "slot_ID": 12345,
+    "ID": "5cdad72f-c848-4df0-8aaa-ffe033e75d57",
+    "availability_Value": 100,
+    "performance_Value": 6.954,
+    "measurement_Name": "last_one_hour",
+    "duration": 3600,
+    "warning_Threshold": 0,
+    "critical_Threshold": 0,
+    "IsActive": "true"
+},
+{   
+    "slot_ID": 67890,
+    "ID": "b6bee458-fb65-492e-996d-61c4d7fbb942",
+    "availability_Value": 100,
+    "performance_Value": 3.379,
+    "measurement_Name": "last_one_hour",
+    "duration": 3600,
+    "warning_Threshold": 0,
+    "critical_Threshold": 0,
+    "IsActive": "false"
+}]
+body = json.dumps(json_data)
+
+#####################
+######Functions######  
+#####################
+
+# Build the API signature
+def build_signature(customer_id, shared_key, date, content_length, method, content_type, resource):
+    x_headers = 'x-ms-date:' + date
+    string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
+    bytes_to_hash = bytes(string_to_hash, encoding="utf-8")  
+    decoded_key = base64.b64decode(shared_key)
+    encoded_hash = base64.b64encode(hmac.new(decoded_key, bytes_to_hash, digestmod=hashlib.sha256).digest()).decode()
+    authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
+    return authorization
+
+# Build and send a request to the POST API
+def post_data(customer_id, shared_key, body, log_type):
+    method = 'POST'
+    content_type = 'application/json'
+    resource = '/api/logs'
+    rfc1123date = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+    content_length = len(body)
+    signature = build_signature(customer_id, shared_key, rfc1123date, content_length, method, content_type, resource)
+    uri = 'https://' + customer_id + '.ods.opinsights.azure.com' + resource + '?api-version=2016-04-01'
+
+    headers = {
+        'content-type': content_type,
+        'Authorization': signature,
+        'Log-Type': log_type,
+        'x-ms-date': rfc1123date
+    }
+
+    response = requests.post(uri,data=body, headers=headers)
+    if (response.status_code >= 200 and response.status_code <= 299):
+        print('Accepted')
+    else:
+        print("Response code: {}".format(response.status_code))
+
+post_data(customer_id, shared_key, body, log_type)
+```
+
+
 ## <a name="alternatives-and-considerations"></a>替代方法和注意事项
 虽然数据收集器 API 应该满足你将自由格式数据收集到 Azure 日志中的大部分需求，但有时候也可能需要替代方法来克服此 API 的某些限制。 所有选项如下所示，包括了主要的考虑事项：
 
 | 替代方法 | 说明 | 最适用于 |
 |---|---|---|
-| [自定义事件](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)：Application Insights 中的基于本机 SDK 的引入 | Application Insights 通常通过应用程序中的 SDK 进行检测，提供通过“自定义事件”发送自定义数据的功能。 | <ul><li> 在应用程序内生成但未通过默认数据类型（请求、依赖项、异常等）之一选取的数据。</li><li> 与 Application Insights 中的其他应用程序数据最常关联的数据 </li></ul> |
-| Azure Monitor Logs 中的数据收集器 API | Azure Monitor Logs 中的数据收集器 API 是一种用于引入数据的完全开放式方法。 采用 JSON 对象格式的任何数据均可发送到此处。 在发送后，这些数据将被处理，并在 Logs 中可用来与 Logs 中的其他数据关联，或与其他 Application Insights 数据进行对比。 <br/><br/> 将数据作为文件上传到 Azure Blob 相当容易，这些文件将在这里被处理并上传到 Log Analytics。 请参阅[本文](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)，了解此类管道的示例实现。 | <ul><li> 不一定是在使用 Application Insights 检测的应用程序中生成的数据。</li><li> 示例包括查找和事实数据表、引用数据、预先聚合的统计信息等。 </li><li> 适用于将与其他 Azure Monitor 数据交叉引用的数据（Application Insights、其他日志数据类型、安全中心、容器/Vm Azure Monitor，等等）。 </li></ul> |
-| [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器 (ADX) 是为 Application Insights Analytics 和 Azure Monitor Logs 提供强大支持的数据平台。 现已正式发布（"GA"），使用其原始格式的数据平台可为你提供完全的灵活性（但需要管理开销）（RBAC、保留率、架构等）。 ADX 提供了很多[引入选项](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) 文件。 | <ul><li> 与 Application Insights 或 Logs 下的任何其他数据无关联的数据。 </li><li> 需要 Azure Monitor Logs 中目前未提供的高级引入或处理功能的数据。 </li></ul> |
+| [自定义事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)：Application Insights 中的基于本机 SDK 的引入 | Application Insights 通常通过应用程序中的 SDK 进行检测，提供通过“自定义事件”发送自定义数据的功能。 | <ul><li> 在应用程序内生成但未通过默认数据类型（请求、依赖项、异常等）之一选取的数据。</li><li> 与 Application Insights 中的其他应用程序数据最常关联的数据 </li></ul> |
+| Azure Monitor Logs 中的数据收集器 API | Azure Monitor Logs 中的数据收集器 API 是一种用于引入数据的完全开放式方法。 采用 JSON 对象格式的任何数据均可发送到此处。 在发送后，这些数据将被处理，并在 Logs 中可用来与 Logs 中的其他数据关联，或与其他 Application Insights 数据进行对比。 <br/><br/> 将数据作为文件上传到 Azure Blob 相当容易，这些文件将在这里被处理并上传到 Log Analytics。 请参阅[本文](./create-pipeline-datacollector-api.md)，了解此类管道的示例实现。 | <ul><li> 不一定是在使用 Application Insights 检测的应用程序中生成的数据。</li><li> 示例包括查找和事实数据表、引用数据、预先聚合的统计信息等。 </li><li> 适用于将与其他 Azure Monitor 数据交叉引用的数据（Application Insights、其他日志数据类型、安全中心、容器/Vm Azure Monitor，等等）。 </li></ul> |
+| [Azure 数据资源管理器](/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器 (ADX) 是为 Application Insights Analytics 和 Azure Monitor Logs 提供强大支持的数据平台。 现已正式发布（"GA"），使用其原始格式的数据平台可为你提供完全的灵活性（但需要管理开销）（RBAC、保留率、架构等）。 ADX 提供了很多[引入选项](/azure/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings?branch=master) 文件。 | <ul><li> 与 Application Insights 或 Logs 下的任何其他数据无关联的数据。 </li><li> 需要 Azure Monitor Logs 中目前未提供的高级引入或处理功能的数据。 </li></ul> |
 
 
 ## <a name="next-steps"></a>后续步骤

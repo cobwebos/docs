@@ -1,18 +1,19 @@
 ---
 title: 呈现覆盖率 |Microsoft Azure 映射
-description: 在本文中，了解 Microsoft Azure 地图呈现覆盖范围的区域及其呈现的详细信息级别。
-author: Philmea
-ms.author: philmea
+description: 了解 Azure Maps 是否呈现具有详细数据或简化数据的不同区域。 请参阅在这些区域中，对于光栅磁贴和矢量磁贴地图，它使用的级别。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123932"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030922"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps 呈现覆盖区域
 

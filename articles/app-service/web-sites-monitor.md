@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482677"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079665"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动和 API 应用提供内置监视功能。
@@ -63,6 +63,10 @@ ms.locfileid: "85482677"
 
 > [!IMPORTANT]
 > “平均响应时间”将弃用，以避免与指标聚合混淆。 使用“响应时间”作为替代。
+
+> [!NOTE]
+> 应用的指标包括对应用的 SCM 站点的请求 (Kudu) 。  这包括使用 Kudu 查看站点 logstream 的请求。  Logstream 请求可能跨越几分钟，这将影响请求时间指标。  在将这些指标与自动缩放逻辑结合使用时，用户应注意这一关系。
+> 
 
 指标提供有关应用或应用服务计划行为的信息。
 

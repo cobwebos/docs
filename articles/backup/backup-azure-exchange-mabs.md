@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 043122271bfa91b1cbaa490760da712cd1b867cc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514112"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825029"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 
@@ -61,7 +61,7 @@ ms.locfileid: "86514112"
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果未针对数据库的至少一个 DAG 副本选择“完全备份”，则不会截断日志。
+   > 如果没有为数据库的至少一个 DAG 副本选择 "完全备份"，则不会截断日志。
    >
    >
 10. 配置“**短期备份**”的目标，并单击“**下一步**”。

@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面常见问题解答-Azure
 description: Windows 虚拟桌面的常见问题和最佳实践。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b7ab9e63bfe92967eca22b60dceec0de882768a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531133"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121113"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
 
@@ -25,7 +23,7 @@ ms.locfileid: "86531133"
 
 你必须为应用组分配 "用户访问管理员" 角色，才能向用户或用户组发布应用组。
 
-若要将管理员限制为仅管理用户会话（如向用户发送消息、注销用户等），你可以创建自定义角色。 例如： 
+若要将管理员限制为仅管理用户会话（如向用户发送消息、注销用户等），你可以创建自定义角色。 例如：
 
 ```powershell
 "actions": [
@@ -46,11 +44,9 @@ ms.locfileid: "86531133"
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows 虚拟桌面是否支持拆分 Azure Active Directory 模型？
 
-将用户分配到应用组时，服务将执行简单的 Azure 基于角色的访问控制（RBAC）角色分配。 因此，用户的 Azure Active Directory （AD）和应用组的 Azure AD 必须位于同一位置。 所有服务对象，例如主机池、应用组和工作区，也必须与用户在同一 Azure AD 中。
+将用户分配到应用组时，服务将执行简单的 Azure 角色分配。 因此，用户的 Azure Active Directory (AD) ，并且应用组的 Azure AD 必须位于同一位置。 所有服务对象，例如主机池、应用组和工作区，也必须与用户在同一 Azure AD 中。
 
-可以在不同的 Azure AD 中创建虚拟机（Vm），只要将 Active Directory 与用户在同一虚拟网络（VNET）中的 Azure AD 进行同步即可。
-
-Azure Lighthouse 不完全支持管理 Windows 虚拟桌面环境。 由于 Lighthouse 目前不支持跨 Azure AD 租户用户管理，Lighthouse 客户仍需登录到客户用于管理用户的 Azure AD。
+你可以在不同的 Azure AD 中创建 (Vm) 的虚拟机，只要你将 Active Directory 与相同虚拟网络 Azure AD VNET (中的用户) 同步即可。
 
 ## <a name="what-are-location-restrictions"></a>什么是位置限制？
 
@@ -94,7 +90,7 @@ CustomRdpProperty : audiocapturemode:i:0;audiomode:i:0;drivestoredirect:s:;redir
 
 Windows 虚拟桌面不支持 Azure AD 来宾用户帐户。 例如，假设一组来宾用户具有 Microsoft 365 E3 每用户、Windows E3 每用户或在其自己的公司中使用了一种 WIN VDA 许可证，但却是不同公司 Azure AD 中的来宾用户。 另一家公司将在 Azure AD 和 Active Directory （如本地帐户）中管理来宾用户的用户对象。
 
-对于第三方权益，不能使用自己的许可证。 此外，Windows 虚拟桌面目前不支持 Microsoft 帐户（MSA）。
+对于第三方权益，不能使用自己的许可证。 此外，Windows 虚拟桌面目前不支持 (MSA) 的 Microsoft 帐户。
 
 ## <a name="why-dont-i-see-the-client-ip-address-in-the-wvdconnections-table"></a>为什么我看不到 WVDConnections 表中的客户端 IP 地址？
 
@@ -114,14 +110,14 @@ Windows 虚拟桌面当前针对团队进行了优化。 Microsoft 目前不支�
 
 ## <a name="whats-the-largest-profile-size-fslogix-can-handle"></a>FSLogix 可以处理的最大配置文件大小是多少？
 
-FSLogix 中的限制或配额取决于用于存储用户配置文件 VHD （X）文件的存储构造。
+FSLogix 中的限制或配额取决于用于存储用户配置文件 VHD (X) 文件的存储构造。
 
-下表提供了 FSLogix 配置文件支持每个用户所需的任何资源的示例。 根据每个配置文件的用户、应用程序和活动，要求可能会有很大的差异。 
+下表提供了 FSLogix 配置文件支持每个用户所需的任何资源的示例。 根据每个配置文件的用户、应用程序和活动，要求可能会有很大的差异。
 
 | 资源 | 要求 |
 |---|---|
 | 稳定状态 IOPS | 10 |
-| 登录/注销 IOPS | 5 |
+| 登录/注销 IOPS | 50 |
 
 此表中的示例是一个用户，但可用于估算环境中用户总数的要求。 例如，对于100用户，需要大约 1000 IOPS，在登录和注销期间大约需要 5000 IOPS。
 
@@ -134,3 +130,11 @@ FSLogix 中的限制或配额取决于用于存储用户配置文件 VHD （X）
 - 对于每个区域和每个订阅可以创建的内核数有限制。 例如，如果你有企业协议订阅，则可以创建350核心。 你需要将350除以每个 VM 的默认核心数或你自己的核心限制，以确定每次运行模板时可以创建多少个 Vm。 了解更多[虚拟机限制-Azure 资源管理器](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)。
 
 - VM 前缀名称和 Vm 数少于15个字符。 若要了解详细信息，请参阅[Azure 资源的命名规则和限制](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)。
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>能否通过 Azure Lighthouse 管理 Windows 虚拟桌面环境？
+
+Azure Lighthouse 不完全支持管理 Windows 虚拟桌面环境。 由于 Lighthouse 目前不支持跨 Azure AD 租户用户管理，Lighthouse 客户仍需登录到客户用于管理用户的 Azure AD。
+
+还不能将 CSP 沙盒订阅与 Windows 虚拟桌面服务一起使用。 若要了解详细信息，请参阅[Integration 沙盒帐户](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)。
+
+最后，如果你从 CSP 所有者帐户启用了资源提供程序，则 CSP 客户帐户将不能修改资源提供程序。

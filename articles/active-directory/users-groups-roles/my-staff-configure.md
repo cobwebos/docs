@@ -1,5 +1,5 @@
 ---
-title: 使用我的人员委托用户管理（预览）-Azure AD |Microsoft Docs
+title: 使用我的员工将用户管理委托 (预览) -Azure AD |Microsoft Docs
 description: 使用我的员工和管理单元委托用户管理
 services: active-directory
 documentationcenter: ''
@@ -13,36 +13,36 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850903"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798952"
 ---
-# <a name="manage-your-users-with-my-staff-preview"></a>利用我的员工管理用户（预览）
+# <a name="manage-your-users-with-my-staff-preview"></a>通过我的员工 (预览版来管理用户) 
 
 我的员工允许您委托给机构，例如商店经理或团队主管，确保其员工能够访问其 Azure AD 帐户的权限。 组织可以委派常见任务，例如重置密码或将电话号码更改为团队经理，而不是依赖于中心支持人员。 使用我的员工，无法访问其帐户的用户只需点击几下鼠标就能重新获得访问权限，而无需任何支持人员或 IT 人员。
 
-在为你的组织配置员工之前，我们建议你查看此文档以及[用户文档](../user-help/my-staff-team-manager.md)，以确保你了解此功能对用户的功能和影响。 你可以利用用户文档来训练和准备用户以获得新体验，并帮助确保成功推出。
+在为你的组织配置员工之前，我们建议你查看此文档以及 [用户文档](../user-help/my-staff-team-manager.md) ，以确保你了解此功能对用户的功能和影响。 你可以利用用户文档来训练和准备用户以获得新体验，并帮助确保成功推出。
 
 基于 SMS 的用户身份验证是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="how-my-staff-works"></a>我的员工工作方式
 
-我的员工基于管理单元（澳大利亚），这是资源的容器，可用于限制角色分配的管理控制的作用域。 在我的工作人员中，使用了澳大利亚来定义组织用户（如商店或部门）的子集。 例如，可以将团队经理分配到其作用域为一个或多个澳大利亚的角色。 在以下示例中，用户已被授予身份验证管理角色，这三个澳大利亚是角色的作用域。 有关管理单元的详细信息，请参阅[Azure Active Directory 中的管理单元管理](directory-administrative-units.md)。
+我的员工基于管理单元 (澳大利亚) ，这是资源的容器，可用于限制角色分配的管理控制的作用域。 在我的工作人员中，使用了澳大利亚来定义组织用户（如商店或部门）的子集。 例如，可以将团队经理分配到其作用域为一个或多个澳大利亚的角色。 在以下示例中，用户已被授予身份验证管理角色，这三个澳大利亚是角色的作用域。 有关管理单元的详细信息，请参阅 [Azure Active Directory 中的管理单元管理](directory-administrative-units.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
-需要拥有以下资源和权限才能完成本文中的操作：
+需有以下资源和特权才能完成本文：
 
 * 一个有效的 Azure 订阅。
 
   * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 与订阅关联的 Azure Active Directory 租户。
+* 一个与订阅关联的 Azure Active Directory 租户。
 
   * 如果需要，请[创建一个 Azure Active Directory 租户](../fundamentals/sign-up-organization.md)或[将 Azure 订阅关联到你的帐户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
-* 需要 Azure AD 租户中的*全局管理员*权限才能启用基于 SMS 的身份验证。
+* 需要 Azure AD 租户中的 *全局管理员* 权限才能启用基于 SMS 的身份验证。
 * 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个启用的用户必须拥有以下 Azure AD 或 Microsoft 365 许可证之一：
 
   * [Azure AD Premium P1 或 P2](https://azure.microsoft.com/pricing/details/active-directory/)
@@ -55,7 +55,7 @@ ms.locfileid: "85850903"
 
 1. 以用户管理员身份登录到 Azure 门户。
 2. 浏览到**Azure Active Directory**  >  **用户设置**  >  **用户功能预览**  >  **管理用户功能预览设置**。
-3. 在 "**管理员可以访问我的人员**" 下，您可以选择为所有用户、选定用户或没有用户访问启用。
+3. 在 " **管理员可以访问我的人员**" 下，您可以选择为所有用户、选定用户或没有用户访问启用。
 
 > [!Note]
 > 只有被分配了管理员角色的用户才可以访问我的员工。 如果为未分配管理员角色的用户启用我的员工，则他们将无法访问我的员工。
@@ -64,11 +64,11 @@ ms.locfileid: "85850903"
 
 你可以使用 Azure AD 条件性访问策略来保护我的员工门户。 在访问我的员工之前，将其用于需要多重身份验证的任务。
 
-强烈建议使用[Azure AD 的条件性访问策略](https://docs.microsoft.com/azure/active-directory/conditional-access/)来保护我的员工。 若要将条件访问策略应用到我的员工，必须使用 PowerShell 手动创建 "我的员工服务主体"。
+强烈建议使用 [Azure AD 的条件性访问策略](../conditional-access/index.yml)来保护我的员工。 若要将条件访问策略应用到我的员工，必须使用 PowerShell 手动创建 "我的员工服务主体"。
 
 ### <a name="apply-a-conditional-access-policy-to-my-staff"></a>将条件性访问策略应用于我的员工
 
-1. 安装[Microsoft Graph Beta PowerShell cmdlet](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)。
+1. 安装 [Microsoft Graph Beta PowerShell cmdlet](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)。
 1. 运行以下命令：
 
    ```powershell
@@ -81,7 +81,7 @@ ms.locfileid: "85850903"
 
 ## <a name="using-my-staff"></a>使用我的员工
 
-当用户转到我的员工时，他们将显示具有管理权限的[管理单元](directory-administrative-units.md)的名称。 在[我的员工用户文档](../user-help/my-staff-team-manager.md)中，我们将使用术语 "位置" 来表示管理单元。 如果管理员的权限没有 AU 范围，则这些权限将应用于整个组织。 启用我的人员后，已被授予并已分配有管理角色的用户可以通过访问 [https://mystaff.microsoft.com](https://mystaff.microsoft.com) 。 他们可以选择 AU 来查看该 AU 中的用户，并选择用户以打开其配置文件。
+当用户转到我的员工时，他们将显示具有管理权限的 [管理单元](directory-administrative-units.md) 的名称。 在 [我的员工用户文档](../user-help/my-staff-team-manager.md)中，我们将使用术语 "位置" 来表示管理单元。 如果管理员的权限没有 AU 范围，则这些权限将应用于整个组织。 启用我的人员后，已被授予并已分配有管理角色的用户可以通过访问 [https://mystaff.microsoft.com](https://mystaff.microsoft.com) 。 他们可以选择 AU 来查看该 AU 中的用户，并选择用户以打开其配置文件。
 
 ## <a name="reset-a-users-password"></a>重置用户密码
 
@@ -94,7 +94,7 @@ ms.locfileid: "85850903"
 - [用户管理员](directory-assign-admin-roles.md#user-administrator)
 - [密码管理员](directory-assign-admin-roles.md#password-administrator)
 
-在**我**的工作人员中，打开用户的配置文件。 选择“重置密码”。
+在 **我**的工作人员中，打开用户的配置文件。 选择“重置密码”。
 
 - 如果用户是仅限云的，你可以看到可向用户分配的临时密码。
 - 如果用户是从本地 Active Directory 同步，则可以输入符合本地 AD 策略的密码。 然后，可以将该密码给用户。
@@ -105,11 +105,11 @@ ms.locfileid: "85850903"
 
 ## <a name="manage-a-phone-number"></a>管理电话号码
 
-在**我**的工作人员中，打开用户的配置文件。
+在 **我**的工作人员中，打开用户的配置文件。
 
-- 选择 "**添加电话号码**" 部分以添加用户的电话号码
-- 选择 "**编辑电话号码**" 以更改电话号码
-- 选择 "**删除电话号码**" 以删除用户的电话号码
+- 选择 " **添加电话号码** " 部分以添加用户的电话号码
+- 选择 " **编辑电话号码** " 以更改电话号码
+- 选择 " **删除电话号码** " 以删除用户的电话号码
 
 根据您的设置，用户可以使用您设置的电话号码来登录 SMS、执行多重身份验证，以及执行自助密码重置。
 

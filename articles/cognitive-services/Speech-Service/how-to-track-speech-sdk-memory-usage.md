@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6be6ca00b2bc5d7b35fb71437809754f129df96
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456428"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054629"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>如何跟踪语音 SDK 内存使用情况
 
@@ -40,7 +40,7 @@ ms.locfileid: "75456428"
 
 可以选择创建警告阈值。如果超出该阈值（假定启用了日志记录），则会记录一条警告消息。 警告消息包含所有存在的对象及其计数的转储。 可以通过此信息更好地了解问题。 
 
-若要启用警告阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `SpeechConfig` 的 `config` 实例：
+若要启用警告阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `config` 的 `SpeechConfig` 实例：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -69,7 +69,7 @@ config.setProperty("SPEECH-ObjectCountWarnThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountWarnThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-若要启用错误阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `SpeechConfig` 的 `config` 实例：
+若要启用错误阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `config` 的 `SpeechConfig` 实例：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -131,7 +131,7 @@ config.setProperty("SPEECH-ObjectCountErrorThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountErrorThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -149,5 +149,4 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取语音服务试用订阅](get-started.md)
-* [了解如何使用麦克风识别语音](quickstarts/speech-to-text-from-microphone.md)
+* [了解有关 Speech SDK 的详细信息](speech-sdk.md)

@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82304052d6ed0c0169c24c19c58d53548b4479cc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731489"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423586"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>批量删除 Azure Active Directory 中的用户
 
@@ -67,7 +68,7 @@ ms.locfileid: "84731489"
 
 可在“批量操作结果”页中查看所有挂起的批量请求的状态。
 
-   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
+   [![选中 "批量操作结果" 页中的 "删除状态"。](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
 
 接下来，你可以查看 Azure AD 组织中已删除的用户是否存在于 Azure 门户中或使用 PowerShell。
 
@@ -80,7 +81,7 @@ ms.locfileid: "84731489"
 
 ### <a name="verify-deleted-users-with-powershell"></a>通过 PowerShell 验证已删除的用户
 
-运行下面的命令：
+运行以下命令：
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"

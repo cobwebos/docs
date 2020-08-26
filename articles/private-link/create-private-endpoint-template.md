@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 专用链接中创建专用终结点
-description: 在本快速入门中，将使用 Azure 资源管理器模板创建专用终结点。
+description: 在本快速入门中，将使用 Azure 资源管理器模板（ARM 模板）创建专用终结点。
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071495"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建专用终结点
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建专用终结点
 
-在本快速入门中，将使用 Azure 资源管理器模板创建专用终结点。
+在本快速入门中，将使用 Azure 资源管理器模板（ARM 模板）创建专用终结点。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 还可以使用 [Azure 门户](create-private-endpoint-portal.md)、[Azure PowerShell](create-private-endpoint-powershell.md) 或 [Azure CLI](create-private-endpoint-cli.md) 完成本快速入门。
 
-## <a name="prerequisite"></a>先决条件
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>先决条件
 
 需要一个具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-private-endpoint"></a>创建专用终结点
+## <a name="review-the-template"></a>查看模板
 
 该模板为 Azure SQL 数据库的实例创建专用终结点。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/)。
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ ms.locfileid: "84817970"
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)：虚拟机的网络接口。
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)：用于测试专用终结点与 SQL 数据库实例的专用连接的虚拟机。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
-下面介绍如何将 Azure 资源管理器模板部署到 Azure：
+下面介绍如何将 ARM 模板部署到 Azure：
 
 1. 若要登录到 Azure 并打开模板，请选择“部署到 Azure”。 该模板创建专用终结点、SQL 数据库实例、网络基础结构和要验证的虚拟机。
 
@@ -66,7 +68,7 @@ ms.locfileid: "84817970"
 ## <a name="validate-the-deployment"></a>验证部署
 
 > [!NOTE]
-> Azure 资源管理器模板为虚拟机 myVm<b>{uniqueid}</b> 资源和 SQL 数据库 sqlserver<b>{uniqueid}</b> 资源生成唯一名称。 用生成的值替换 {uniqueid}。
+> ARM 模板为虚拟机 myVm<b>{uniqueid}</b> 资源和 SQL 数据库 sqlserver<b>{uniqueid}</b> 资源生成唯一名称。 用生成的值替换 {uniqueid}。
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 

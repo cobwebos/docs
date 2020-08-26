@@ -4,12 +4,13 @@ description: 了解启用基于工作区的新 Azure Monitor Application Insight
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647897"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783835"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>基于工作区的 Application Insights 资源（预览版）
 
@@ -18,15 +19,15 @@ ms.locfileid: "83647897"
 这样还可以跨资源实现公用的基于角色的访问控制 (RBAC)，并消除进行跨应用/工作区查询的需要。
 
 > [!NOTE]
-> 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
+> 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
 若要测试新体验，请登录到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
 
 ![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
 
-如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../learn/quick-create-workspace.md)。
 
-对于公共预览版，**基于工作区的资源当前仅限在“美国西部 2”、“美国东部”和“美国中南部”使用。**
+**基于工作区的资源当前在所有商业区域和 Azure 政府版中可用**
 
 创建资源后，可在“概览”窗格中看到相应的工作区信息：
 
@@ -39,7 +40,7 @@ ms.locfileid: "83647897"
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
-[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+[连接字符串](./sdk-connection-string.md?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 ## <a name="monitoring-configuration"></a>监视配置
 
@@ -51,14 +52,14 @@ ms.locfileid: "83647897"
 
 若要详细了解如何设置 Application Insights SDK 以进行基于代码的监视，请参阅特定于语言/框架的文档：
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [后台任务和新式控制台应用程序 (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [经典控制台应用程序 (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Java ](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core ](./asp-net-core.md)
+- [后台任务和新式控制台应用程序 (.NET/.NET Core)](./worker-service.md)
+- [经典控制台应用程序 (.NET)](./console.md) 
+- [Java ](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>无代码监视和 Visual Studio 资源创建
 
@@ -101,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -184,6 +185,14 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 
 ```
 
+## <a name="new-capabilities"></a>新功能
+
+基于工作区的 Application Insights 允许您充分利用 Azure Monitor 的所有最新功能，包括：
+
+* [ (CMK 的客户托管密钥) ](../platform/customer-managed-keys.md) 使用只有你有权访问的加密密钥为你的数据提供静态加密。
+* 通过 [Azure 专用链接](../platform/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
+* [为探查器和 Snapshot Debugger 提供自己的存储 (BYOS) ](./profiler-bring-your-own-storage.md) ，你可以完全控制静态加密策略、生存期管理策略以及与 Application Insights Profiler 和 Snapshot Debugger 相关的所有数据的网络访问。 
+
 ## <a name="modifying-the-associated-workspace"></a>修改关联的工作区
 
 创建基于工作区的 Application Insights 资源后，可以修改关联的 Log Analytics 工作区。
@@ -196,10 +205,10 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [探索指标](../../azure-monitor/platform/metrics-charts.md)
-* [编写分析查询](../../azure-monitor/app/analytics.md)
+* [探索指标](../platform/metrics-charts.md)
+* [编写分析查询](../log-query/log-query-overview.md)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[api]: ./api-custom-events-metrics.md
+[diagnostic]: ./diagnostic-search.md
+[metrics]: ../platform/metrics-charts.md
+[start]: ./app-insights-overview.md

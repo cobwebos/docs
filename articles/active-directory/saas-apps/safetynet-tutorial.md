@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 SafetyNet 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SafetyNet 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: caa96ea2-da21-4529-8fab-0e06367beb40
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b94592f78a3aba46406d25d95de3a8847831eeb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f359efbb0aedcd401f58a731d0cd18510b548095
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68880184"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543544"
 ---
 # <a name="tutorial-integrate-safetynet-with-azure-active-directory"></a>教程：将 SafetyNet 与 Azure Active Directory 集成
 

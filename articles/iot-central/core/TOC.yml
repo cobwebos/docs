@@ -10,10 +10,12 @@
       href: overview-iot-central-developer.md
     - name: 最新更新
       items:
+        - name: 2020 年 7 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
         - name: 2020 年 6 月新增功能和更新的功能
-          href: 'https://azure.microsoft.com/en-us/updates/azure-iot-central-feature-updates-june-2020/'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
         - name: 2020 年 6 月 UI 和文档更新
-          href: 'https://azure.microsoft.com/en-us/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
         - name: 2020 年 5 月作业和指标更新
           href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
         - name: 2020 年 5 月仪表板更新
@@ -43,8 +45,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: 连接设备 (Python)
           href: tutorial-connect-device-python.md
-        - name: 连接即插即用（预览版）设备
-          href: tutorial-connect-pnp-device.md
         - name: 创建网关设备模板
           href: tutorial-define-gateway-device-type.md
         - name: 连接 IoT Edge 设备
@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: 什么是设备模板？
       href: concepts-device-templates.md
+    - name: 消息有效负载
+      href: concepts-telemetry-properties-commands.md
     - name: 设备连接
       href: concepts-get-connected.md
     - name: 连接 IoT Edge 设备
@@ -77,8 +79,6 @@
       items:
         - name: 设置设备模板
           href: howto-set-up-template.md
-        - name: 准备和连接 MXChip IoT DevKit
-          href: howto-connect-devkit.md
         - name: 准备和连接 Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: 准备和连接 RuuviTag 设备
@@ -107,8 +107,10 @@
           href: howto-run-a-job.md
     - name: 转换
       items:
-        - name: 将数据导出到 Azure 中的目标
+        - name: 将数据导出到 Azure 中的目标（旧版）
           href: howto-export-data.md
+        - name: 将数据导出到云目标（预览版）
+          href: howto-use-data-export.md
         - name: 根据规则创建 Webhook
           href: howto-create-webhooks.md
         - name: 使用工作流与其他服务集成
@@ -121,6 +123,8 @@
           href: howto-create-custom-analytics.md
         - name: 在 Power BI 中直观显示数据
           href: howto-connect-powerbi.md
+        - name: 配置和使用文件上传
+          href: howto-configure-file-uploads.md
     - name: 管理
       items:
         - name: 管理应用程序
@@ -139,6 +143,8 @@
               href: howto-monitor-application-health.md
             - name: 关于你的应用程序
               href: howto-get-app-info.md
+            - name: 滚动 X.509 证书
+              href: how-to-roll-x509-certificates.md
         - name: 从其他位置管理
           items:
             - name: 从 Azure 门户进行管理
@@ -157,6 +163,10 @@
               href: howto-manage-preferences.md
             - name: 切换实时聊天
               href: howto-show-hide-chat.md
+    - name: 疑难解答
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
 - name: 参考
   items:
     - name: Azure CLI

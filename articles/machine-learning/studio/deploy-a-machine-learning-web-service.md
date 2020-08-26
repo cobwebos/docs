@@ -1,6 +1,5 @@
 ---
-title: 部署 Web 服务
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：部署 web 服务-Azure
 description: 如何将训练试验转换为预测试验、准备进行部署，然后将其部署为 Azure 机器学习工作室（经典）Web 服务。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8195d310de708e48b27b5a2d81023d02792be1d3
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696382"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429470"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务
+
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+
 
 可以使用 Azure 机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。
 

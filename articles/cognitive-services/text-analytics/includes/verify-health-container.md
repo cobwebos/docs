@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108698"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122291"
 ---
 ### <a name="verify-that-a-container-is-running"></a>验证容器是否正在运行
 
@@ -29,7 +29,7 @@ ms.locfileid: "86108698"
 
 你还可以使用多个 Url 来验证容器是否正在运行。
 
-|请求|目标|
+|请求|用途|
 |--|--|
 |`http://localhost:5000/`|容器提供主页。|
 |`http://localhost:5000/ready`|通过 GET 请求，这提供了一种验证，指示容器已准备好接受针对模型的查询。 此请求可用于 Kubernetes [运行情况和就绪情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)。|
@@ -37,4 +37,4 @@ ms.locfileid: "86108698"
 |`http://localhost:5000/swagger`|通过此 URL，容器提供了有关终结点和功能的完整文档集 `Try it now` 。 使用此功能可以将设置输入到基于 Web 的 HTML 表单并进行查询，而无需编写任何代码。 查询返回后，将提供示例 CURL 命令，用于演示所需的 HTTP 标头和正文格式。 |
 |`http://localhost:5000/demo`| 此功能通过浏览器进行请求，可对输入文本示例或您提供的查询的结果进行交互式可视化。  |
 
-使用此请求 URL- `http://localhost:5000/text/analytics/v3.0-preview.1/domains/health` -将查询提交到容器。
+使用此请求 URL- `http://localhost:5000/text/analytics/v3.2-preview.1/entities/health` -将查询提交到容器。

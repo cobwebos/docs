@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6b95eeaf7dd72c85c3940e3cdc2a71c193c35ff5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187398"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008602"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
@@ -44,7 +44,7 @@ ms.locfileid: "86187398"
 |:--- |:--- |
 | `Get-AutomationPSCredential` |获取要在 Runbook 或 DSC 配置中使用的 `PSCredential` 对象。 大多数情况下，应使用此 [内部 cmdlet](modules.md#internal-cmdlets) 而不是 `Get-AzAutomationCredential` cmdlet，因为后者仅检索凭据信息。 此信息通常对传递到另一个 cmdlet 没有帮助。 |
 | [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |通过提示输入用户名和密码来获取凭据。 此 cmdlet 是默认 Microsoft.PowerShell.Security 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 创建凭据资产。 此 cmdlet 是默认 Azure 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) | 创建凭据资产。 此 cmdlet 是默认 Azure 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
 
 若要在代码中检索 `PSCredential` 对象，必须导入 `Orchestrator.AssetManagement.Cmdlets` 模块。 有关详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 

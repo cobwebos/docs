@@ -16,10 +16,10 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76834648"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
@@ -55,7 +55,7 @@ ms.locfileid: "76834648"
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
-    |位置| 选择“美国东部” |
+    |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”  。
 5. 在“设置”  下选择“扩展”  。 选择“添加扩展”，然后选择“用于 Windows 的网络观察程序代理”，如下图所示：  

@@ -1,18 +1,19 @@
 ---
 title: Azure Maps 路线服务的最佳实践 |Microsoft Azure 映射
 description: 了解如何使用 Microsoft Azure Maps 中的路线服务来路由车辆。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266689"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132205"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
 
@@ -30,7 +31,7 @@ Azure Maps[路线服务](https://docs.microsoft.com/rest/api/maps/route)中的�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要调用 Azure Maps Api，需要 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主密钥也称为主要订阅密钥或订阅密钥。
+若要调用 Azure Maps Api，需要 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主密钥也称为主要订阅密钥或订阅密钥。
 
 有关 Azure Maps 中身份验证的信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。 有关路线服务的覆盖范围的详细信息，请参阅[路由覆盖面](routing-coverage.md)。
 

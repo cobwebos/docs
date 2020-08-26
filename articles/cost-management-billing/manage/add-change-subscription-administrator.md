@@ -8,21 +8,21 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 57a070aa5931349d94597c629a09ab7662e327fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267556"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922449"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
 
-若要管理对 Azure 资源的访问权限，必须具有相应的管理员角色。 Azure 有一个称为[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 的授权系统，其中包含了你可以从中选择的多个内置角色。 可以在不同的作用域（例如，管理组、订阅或资源组）分配这些角色。 默认情况下，创建新的 Azure 订阅的人员可以向其他用户分配对订阅的管理访问权限。
+若要管理对 Azure 资源的访问权限，必须具有相应的管理员角色。 Azure 有一个称为 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 的授权系统，其中包含了你可以从中选择的多个内置角色。 可以在不同的作用域（例如，管理组、订阅或资源组）分配这些角色。 默认情况下，创建新的 Azure 订阅的人员可以向其他用户分配对订阅的管理访问权限。
 
 本文介绍了如何在订阅作用域使用 RBAC 为用户添加或更改管理员角色。
 
-Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如果仍使用经典部署模型，并使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure)管理经典资源，则需要使用经典管理员。
+Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如果仍使用经典部署模型，并使用 [Azure 服务管理 PowerShell 模块](/powershell/module/servicemanagement/azure.service)管理经典资源，则需要使用经典管理员。
 
 > [!TIP]
 > 如果只使用 Azure 门户管理经典资源，则无需使用经典管理员。
@@ -33,7 +33,7 @@ Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如
 
 ## <a name="assign-a-subscription-administrator"></a>分配订阅管理员
 
-要使用户成为 Azure 订阅的管理员，现有管理员应在订阅范围内为其分配[所有者](../../role-based-access-control/built-in-roles.md#owner)角色（一个 RBAC 角色）。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
+要使用户成为 Azure 订阅的管理员，现有管理员应在订阅范围内为其分配[所有者](../../role-based-access-control/built-in-roles.md#owner)角色（一个 Azure 角色）。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
 
 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
 
@@ -69,7 +69,7 @@ Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)
+* [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
 * [了解 Azure 中的不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory 中的管理员角色权限](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)

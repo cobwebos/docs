@@ -1,5 +1,5 @@
 ---
-title: 限制对 PaaS 资源的网络访问-Azure CLI
+title: 限制对 PaaS 资源的网络访问 - Azure CLI
 description: 本文介绍如何使用 Azure CLI 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,12 +16,13 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: 5d08dd2705c69f3fa8f8e0830e487833f7cf96f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2be9b5e6fd489b331982d31693bf810d488d92b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689327"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484141"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -42,7 +43,7 @@ ms.locfileid: "84689327"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -271,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将替换 *\<publicIpAddress>* 为*myVmPrivate* VM 的公共 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 将 *\<publicIpAddress>* 替换为 *myVmPrivate* VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -321,7 +322,7 @@ sudo mkdir /mnt/MyAzureFileShare
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
+访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。  
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 

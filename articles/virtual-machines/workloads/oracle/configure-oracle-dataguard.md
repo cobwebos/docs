@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 2b0b85792fe1266d2ec6478561193ef0c80ac98f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083372"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将介绍如何使用 Azure CLI 从 Azure 市场映像部署 Oracle Database 12c 数据库。 本文将分步演示如何在 Azure 虚拟机 (VM) 上安装和配置 Data Guard。
 
-开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅[Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅[Azure CLI 安装指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 ### <a name="assumptions"></a>假设
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-创建可用性集是可选的，但我们建议执行此操作。 有关详细信息，请参阅 [Azure 可用性集指南](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)。
+创建可用性集是可选的，但我们建议执行此操作。 有关详细信息，请参阅 [Azure 可用性集指南](../../windows/infrastructure-example.md)。
 
 ```azurecli
 az vm availability-set create \
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-启用闪回 (这会使恢复更加轻松) 并将备用 \_ 文件 \_ 管理设置为 "自动"。退出 SQL * Plus。
+启用闪回（这可以简化恢复），并将 "备用 \_ 文件 \_ 管理" 设置为 "自动"。退出 SQL * Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -512,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1（主 VM）上配置 Data Guard 代理
 
-启动 Data Guard Manager，并使用 SYS 和密码登录。  (不使用 OS 身份验证。 ) 执行以下操作：
+启动 Data Guard Manager，并使用 SYS 和密码登录。 （请勿使用 OS 身份验证。）执行以下操作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

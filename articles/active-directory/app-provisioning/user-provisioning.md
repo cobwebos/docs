@@ -1,5 +1,5 @@
 ---
-title: Azure AD 中的自动 SaaS 应用用户预配
+title: 什么是 Azure AD 中的自动 SaaS 应用用户预配
 description: 介绍可以如何使用 Azure AD 进行自动化设置、取消设置，并不断跨多个第三方 SaaS 应用程序更新用户帐户。
 services: active-directory
 author: kenwith
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84781084"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235394"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>使用 Azure AD 为应用程序自动预配和取消预配用户
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>什么是 Azure AD 中的自动 SaaS 应用用户预配？
 
 在 Azure Active Directory (Azure AD) 中，术语应用预配是指在用户需要访问的云 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见方案包括将 Azure AD 用户预配到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) 等应用程序中。
 
@@ -58,7 +59,7 @@ Azure AD 功能预先集成了对许多常见 SaaS 应用和人力资源系统�
 
    ![Salesforce 徽标](./media/user-provisioning/gallery-app-logos.png)
 
-   如果要请求新应用程序进行预配，可以[请求将应用程序与应用库集成集成](../develop/howto-app-gallery-listing.md)。 对于用户预配请求，我们要求应用程序具有与符合 SCIM 标准的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便我们可以将应用快速加入我们的平台。
+   如果要请求新应用程序进行预配，可以[请求将应用程序与应用库集成集成](../azuread-dev/howto-app-gallery-listing.md)。 对于用户预配请求，我们要求应用程序具有与符合 SCIM 标准的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便我们可以将应用快速加入我们的平台。
 
 * 支持 SCIM 2.0 的应用程序。 有关如何在一般情况下连接实现基于 SCIM 2.0 的用户管理 API 的应用程序的信息，请参阅[生成 SCIM 终结点并配置用户预配](use-scim-to-provision-users-and-groups.md)。
 
@@ -93,11 +94,8 @@ Azure AD 库中的应用程序支持以下两种预配模式之一：
 对于支持 SCIM 2.0 的其他应用程序，请按照[生成 SCIM 终结点并配置用户预配](use-scim-to-provision-users-and-groups.md)一文中的步骤进行操作。
 
 
-## <a name="related-articles"></a>相关文章
+## <a name="next-steps"></a>后续步骤
 
 - [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
 - [为用户预配自定义属性映射](customize-application-attributes.md)
-- [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
-- [用于用户预配的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [生成 SCIM 终结点并配置预配](use-scim-to-provision-users-and-groups.md)
-- [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [用于用户预配的范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)

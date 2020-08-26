@@ -4,15 +4,15 @@ description: 使用共享访问签名时遇到的常见问题和建议的解决�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 95ce37d92adc3d09c5a09944b094df7971831198
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4eb3c3e893a276aed10807a13a0f2d6d3bc4e71d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110719"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87316832"
 ---
 # <a name="common-sas-uri-issues-and-fixes"></a>常见 SAS URI 问题和修复
 

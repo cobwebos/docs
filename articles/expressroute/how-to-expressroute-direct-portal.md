@@ -5,18 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765320"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903589"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute 直接
 
 本文介绍如何使用 Azure 门户创建 ExpressRoute 直接连接。
 通过 ExpressRoute Direct，你可以直接连接到在世界上战略分散的对等互连位置上的 Microsoft 全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
+
+## <a name="before-you-begin"></a><a name="before"></a>准备工作
+
+验证是否已将**Microsoft 网络**资源提供程序注册到你的订阅。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。
+
+1. 如[Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)中所述，访问你的订阅设置。
+1. 在订阅中，为**资源提供程序**验证**Microsoft 网络**提供程序是否显示**已注册**状态。 如果已注册的提供程序的列表中不存在 Microsoft. 网络资源提供程序，请添加该提供程序。
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. 创建 ExpressRoute 直接
 
@@ -33,7 +41,7 @@ ms.locfileid: "84765320"
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="“基本信息”页":::
 
     * **订阅**：要用来创建新 ExpressRoute 直接的 Azure 订阅。 ExpressRoute Direct 资源和 ExpressRoute 线路必须位于同一订阅中。
-    * **资源组**：要在其中创建新的 ExpressRoute 直接资源的 Azure 资源组。 如果没有现有的资源组，则可以创建一个新的资源组。
+    * **资源组**：要在其中创建新的 ExpressRoute 直接资源的 Azure 资源组。 如果目前没有资源组，可新建一个。
     * **区域**：将在其中创建资源的 Azure 公共区域。
     * **名称**：新的 ExpressRoute 直接资源的名称。
 
@@ -55,7 +63,7 @@ ms.locfileid: "84765320"
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="查看并创建":::
 
-1. 选择“创建”。 你将看到一条消息，告知你的部署正在进行。 创建资源后，状态将显示在此页上。 
+1. 选择“创建”。 你将看到一条消息，其中指出你的部署正在进行中。 创建资源后，此页面上将显示状态。 
 
 ## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. 更改链接的管理员状态
 
@@ -99,7 +107,7 @@ ms.locfileid: "84765320"
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="查看并创建":::
 
-1. 选择“创建”。 你将看到一条消息，告知你的部署正在进行。 创建资源后，状态将显示在此页上。 
+1. 选择“创建”。 你将看到一条消息，其中指出你的部署正在进行中。 创建资源后，此页面上将显示状态。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: 注册 Premium 版本 - Azure Active Directory | Microsoft Docs
 description: 有关如何注册 Azure Active Directory Premium 版本的说明。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,11 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c146640112190fe08bb1b3b806c95a2854da9083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f2e3e9376c26bae2c0b3c0dda06b781b5f2f7c4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604448"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799151"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
 可购买 Azure Active Directory (Azure AD) Premium 版本并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。

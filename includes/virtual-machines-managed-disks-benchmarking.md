@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010813"
 ---
 预热缓存   
 启用 ReadOnly 主机缓存的磁盘能够提供比磁盘限制更高的 IOPS。 若要通过主机缓存来实现此最大读取性能，首先必须对此磁盘的缓存进行预热。 这样可确保需要通过基准测试工具在 CacheReads 卷上实现的读取 IO 实际上可以直接命中缓存而不是磁盘。 命中缓存导致单个启用缓存的磁盘可以实现额外的 IOPS。
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 进行测试时，就能够看到 VM 和高级磁盘传送的写入 IOPS 数。 如以下示例所示，DS14 VM 传送的写入 IOPS 达到了最大限制：50,000 IOPS。  
-    ![正在传送的写入 IOPS VM 和高级磁盘的数量](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![VM 和高级磁盘的写入 IOPS 数正在传递。](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>最大读取 IOPS
 
@@ -194,7 +194,7 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 进行测试时，就能够看到 VM 和高级磁盘传送的读取 IOPS 数。 如以下示例所示，DS14 VM 传送了 64,000 个以上的读取 IOPS。 这是磁盘和缓存性能的组合。  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![传递 VM 和高级磁盘数量的屏幕截图。](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>最大读取和写入 IOPS
 

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082760"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>排查 NAS 配置和 NFS 存储目标问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "85515455"
 本文包含有关如何检查端口以及如何启用对 NAS 系统的根访问的详细信息。 它还包括有关可能导致 NFS 存储目标创建失败的常见问题的详细信息。
 
 > [!TIP]
-> 使用本指南之前，请先阅读[NFS 存储目标的先决条件](hpc-cache-prereqs.md#nfs-storage-requirements)。
+> 使用本指南之前，请先阅读[NFS 存储目标的先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)。
 
 如果此处未包含您的问题的解决方案，请[打开支持票证](hpc-cache-support-ticket.md)，以便 Microsoft 服务和支持人员与您合作来调查并解决问题。
 
@@ -32,13 +32,13 @@ Azure HPC 缓存需要对后端 NAS 存储系统上的几个 UDP/TCP 端口具�
 
 通常，缓存需要访问以下端口：
 
-| 协议 | Port  | 服务  |
+| 协议 | 端口  | 服务  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
 | TCP/UDP  | 4045  | nlockmgr |
 | TCP/UDP  | 4046  | mountd   |
-| TCP/UDP  | 4047  | 状态   |
+| TCP/UDP  | 4047  | status   |
 
 若要了解系统所需的特定端口，请使用以下 ``rpcinfo`` 命令。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
 

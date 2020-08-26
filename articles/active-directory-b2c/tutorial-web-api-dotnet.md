@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 280a59d8c378de6b3667560a4eb2b1cf95041f8d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298782"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163877"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
 本教程介绍如何从 ASP.NET Web 应用程序调用 Azure Active Directory B2C (Azure AD B2C) 中受保护的 Web API 资源。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 添加 Web API 应用程序

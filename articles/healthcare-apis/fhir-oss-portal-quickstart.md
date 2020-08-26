@@ -2,18 +2,18 @@
 title: Azure 门户：部署适用于 Azure 的开源 FHIR 服务器 - Azure API for FHIR
 description: 本快速入门介绍了如何使用 Azure 门户部署 Microsoft 开源 FHIR 服务器。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 5109c9a7c6432e42c6841b89cc28bde3e92c74aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: matjazl
+ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "84819894"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843481"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>快速入门：使用 Azure 门户部署开源 FHIR 服务器
 

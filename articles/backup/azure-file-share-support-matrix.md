@@ -4,12 +4,12 @@ description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289509"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
@@ -20,10 +20,6 @@ ms.locfileid: "86514538"
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure 文件共享备份的 GA 区域
 
 Azure 文件共享备份在除以下项**之外**的所有地区提供：德国中部（主权）、德国东北部（主权）、中国东部、中国东部2、中国北部、中国北部2、US Gov 爱荷华州
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>意外删除保护的支持区域
-
-美国中部、澳大利亚东南部、加拿大中部、美国中部、印度南部、美国中北部、日本东部、巴西南部、美国中南部、澳大利亚东部、美国东部、美国东部2
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 

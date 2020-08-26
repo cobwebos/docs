@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: e7ebcf39c203f9956b23ef22754b38f32e9d9352
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323020"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832750"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -178,7 +178,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ## <a name="azure-subscriptions"></a>Azure 订阅
 
-订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 除了管理员外，还可以使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
+订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 除了管理员外，还可以使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
 
 ### <a name="select-and-enable-an-azure-subscription"></a>选择并启用 Azure 订阅
 

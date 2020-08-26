@@ -2,17 +2,17 @@
 title: 应用程序网关组件
 description: 本文提供有关应用程序网关中各个组件的信息
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 08/21/2020
+ms.author: surmb
+ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186752"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723310"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -69,13 +69,13 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 - **基本**。 此类侦听器侦听单个域站点，该站点中的单个 DNS 映射到应用程序网关的 IP 地址。 在应用程序网关后面托管单个站点时，需要使用此侦听器配置。
 
-- **多站点**。 在同一个应用程序网关实例上配置多个 Web 应用程序时，需要使用此侦听器配置。 这样可以将最多 100 个网站添加到一个应用程序网关，为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，有三个子域（abc.alpha.com、xyz.alpha.com 和 pqr.alpha.com）指向应用程序网关 IP 地址。 可以创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。
+- **多站点**。 如果要为同一应用程序网关上的多个 Web 应用程序配置基于主机名或域名配置路由，则需要此侦听器配置。 它可以将多达 100 多个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，contoso.com、fabrikam.com 和 adatum.com，这三个域指向应用程序网关的 IP 地址。 你将创建三个[多站点侦听器](multiple-site-overview.md)，并为每个侦听器配置相应的端口和协议设置。 
 
-    有关详细信息，请参阅[多站点托管](application-gateway-web-app-overview.md)。
+    此外，你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名（预览）](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
 
-创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。
+    要了解如何配置多站点侦听器，请参阅[使用 Azure 门户在应用程序网关上托管多个站点](create-multiple-sites-portal.md)。
 
-应用程序网关按[显示顺序](configuration-overview.md#order-of-processing-listeners)处理侦听器。
+创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。 请求传递规则还包含要路由到的后端池，以及涉及后端端口、协议等信息的 HTTP 设置。
 
 ## <a name="request-routing-rules"></a>请求路由规则
 
@@ -99,13 +99,13 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 有关详细信息，请参阅[重定向应用程序网关上的流量](redirect-overview.md)。
 
-### <a name="rewrite-http-headers"></a>重写 HTTP 标头
+### <a name="rewrite-http-headers-and-url"></a>重写 HTTP 标头和 URL
 
-通过使用请求路由规则，当请求和响应数据包通过应用程序网关在客户端和后端池之间移动时，你可以添加、删除或更新 HTTP(S) 请求和响应标头。
+通过使用重写规则，当请求和响应数据包通过应用程序网关在客户端和后端池之间移动时，你可以添加、删除或更新 HTTP(S) 请求和响应标头以及 URL 路径和查询字符串参数。
 
-这些标头可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
+这些标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 
-有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头](rewrite-http-headers.md)。
+有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头和 URL](rewrite-http-headers-url.md)。
 
 ## <a name="http-settings"></a>HTTP 设置
 
@@ -144,7 +144,7 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 默认情况下，应用程序网关会监视其后端池中所有资源的运行状况，并自动删除不正常的资源。 然后，它会监视不正常的实例，当这些实例恢复可用状态并能响应运行状况探测时，应用程序网关就会将它们添加回到正常的后端池中。
 
-除了使用默认的运行状况探测监视以外，还可以根据应用程序的要求自定义运行状况探测。 使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，可以配置自定义主机名、URL 路径、探测间隔，以及在将后端池实例标记为不正常之前可接受的失败响应数、自定义状态代码和响应正文匹配等。建议你将自定义探测配置为监视每个后端池的运行状况。
+除了使用默认的运行状况探测监视以外，还可以根据应用程序的要求自定义运行状况探测。 使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，你可以配置自定义主机名、URL 路径、探测间隔，以及在将后端池实例标记为不正常之前可接受的失败响应次数、自定义状态代码和响应正文匹配等。我们建议配置自定义探测来监视每个后端池的运行状况。
 
 有关详细信息，请参阅[监视应用程序网关的运行状况](../application-gateway/application-gateway-probe-overview.md)。
 

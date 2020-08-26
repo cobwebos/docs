@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: fd4b94f6a99241ffddd7ae359059c3a4a918934a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026938"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544075"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,13 +43,17 @@ ms.locfileid: "84026938"
 
 为提供的三个租户部署应用：
 
-1. 单击每个蓝色的“部署到 Azure”按钮，在 [Azure 门户](https://portal.azure.com)中打开部署模板****。 每个模板要求两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso 音乐厅**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam 爵士乐俱乐部**
+1. 单击每个蓝色的“部署到 Azure”按钮，在 [Azure 门户](https://portal.azure.com)中打开部署模板****。 每个模板要求两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。
 
+   **Contoso 音乐厅**   
+   [![显示标记为 "部署到 Azure" 按钮的图像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+
+   **Dogwood Dojo**   
+   [![显示标记为 "部署到 Azure" 按钮的图像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+
+   **Fabrikam 爵士乐俱乐部**   
+   [![显示标记为 "部署到 Azure" 按钮的图像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+ 
 2. 输入每个部署所需的参数值。
 
     > [!IMPORTANT]

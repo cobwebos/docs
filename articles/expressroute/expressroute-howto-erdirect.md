@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：配置 ExpressRoute 直接
-description: 此页可帮助你配置 ExpressRoute Direct。
+description: 了解如何使用 Azure PowerShell 将 Azure ExpressRoute Direct 配置为直接连接到世界各地的对等互连位置上的 Microsoft 全球网络。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42803cbc7901be01c88145e2d98f2982434710a1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736248"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192767"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
 
@@ -231,9 +231,9 @@ ms.locfileid: "84736248"
 
 有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 它们是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是本地、标准或高级。
+**SkuTier** 可以是本地、标准或高级。
 
-**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
+**SkuFamily** 必须是 MeteredData，因为 ExpressRoute 直接不支持。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 
@@ -277,4 +277,4 @@ ms.locfileid: "84736248"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 ExpressRoute Direct 的详细信息，请参阅[概述](expressroute-erdirect-about.md)。
+有关 ExpressRoute Direct 的详细信息，请参阅 [概述](expressroute-erdirect-about.md)。

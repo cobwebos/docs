@@ -3,13 +3,12 @@ title: 使用 Web 应用 - 个性化体验创建服务
 description: 自定义具有个性化体验创建服务循环的 C# .NET Web 应用，以根据操作（包含特征）和上下文特征向用户提供正确的内容。
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.author: diberry
-ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207605"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446360"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教程：向 .NET Web 应用添加个性化体验创建服务
 
@@ -42,7 +41,7 @@ ms.locfileid: "86207605"
 * 咖啡
 * 汤
 
-为了帮助个性化体验创建服务了解你的操作，请在发送的每个排名 API 请求中包含操作（包含特征）和上下文特征 。
+为了帮助个性化体验创建服务了解你的操作，请在发送的每个排名 API 请求中附上操作（包含特征）和上下文特征 。
 
 模型的“特征”是有关可以跨 Web 应用用户群的成员进行聚合（分组）的操作或上下文的信息。 特征不具有个体特定性（例如用户 ID）或高度特定性（例如一天中的准确时间）。
 
@@ -338,7 +337,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>选择最佳操作
 
-在服务器的 PersonalizerController.cs 中，GenerateRank 服务器 API 汇总了调用排名 API 的准备工作 
+在服务器的 PersonalizerController.cs 中，GenerateRank 服务器 API 汇总了调用排名 API 的准备工作
 
 * 为排名调用创建新 `eventId`
 * 获取操作列表

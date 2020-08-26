@@ -9,13 +9,13 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev, vs-azure
-ms.openlocfilehash: ee79333e1092cfcf2cd35e408f86dcfc9e1327cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev, vs-azure
+ms.openlocfilehash: fb8c1f25c8a22c96679a0310353f474f6b9d5ba5
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479005"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165424"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory 入门（WebApi 项目）
 
@@ -33,5 +33,5 @@ ms.locfileid: "85479005"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
+- [Azure Active Directory 的身份验证方案](./authentication-vs-authorization.md)
 - [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

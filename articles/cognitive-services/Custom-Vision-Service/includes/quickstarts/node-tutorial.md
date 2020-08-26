@@ -2,15 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: a96e78ed15eaa4d97cafb7ffc9d5d6979ab869b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 08/17/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965921"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508501"
 ---
-本文介绍如何开始通过 Node.js 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
+本文介绍如何开始通过 Node.js 使用自定义视觉客户端库来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,9 +19,9 @@ ms.locfileid: "85965921"
 - 安装了 [npm](https://www.npmjs.com/)。
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>安装自定义视觉 SDK
+## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
-若要安装适用于 Node.js 的自定义视觉服务 SDK，请在 PowerShell 中运行以下命令：
+若要安装适用于 Node.js 的自定义视觉服务客户端库，请在 PowerShell 中运行以下命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

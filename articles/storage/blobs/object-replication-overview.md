@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 097b3c71b01a8ad0e930d7aa0d7be46a1e835e1a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888071"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495159"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>块 blob 的对象复制（预览版）
 
@@ -63,6 +64,8 @@ ms.locfileid: "84888071"
 - 法国中部
 - 加拿大东部
 - 加拿大中部
+- 美国东部 2
+- 美国中部
 
 源帐户和目标帐户必须都位于其中一个区域，才能使用对象复制。 这些帐户可以在两个不同的区域中。
 
@@ -75,7 +78,7 @@ ms.locfileid: "84888071"
 
 对象复制需要启用以下 Azure 存储功能： 
 - [更改源](storage-blob-change-feed.md)
-- [版本管理](versioning-overview.md)
+- [版本控制](versioning-overview.md)
 
 在配置对象复制之前，请先启用其先决条件。 必须在源帐户上启用更改源，并且必须同时在源帐户和目标帐户上启用 blob 版本控制。 有关如何启用上述功能的详细信息，请参阅以下文章：
 

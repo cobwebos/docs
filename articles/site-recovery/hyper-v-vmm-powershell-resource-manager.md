@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086211"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
@@ -47,8 +47,8 @@ ms.locfileid: "86130221"
 
 确保已将 Azure PowerShell 准备就绪：
 
-- 如果已使用 PowerShell，请升级到 0.8.10 或更高版本。 [详细了解](/powershell/azureps-cmdlets-docs)如何设置 PowerShell。
-- 设置并配置 PowerShell 后，请参阅[服务 cmdlet](/powershell/azure/overview)。
+- 如果已使用 PowerShell，请升级到 0.8.10 或更高版本。 [详细了解](/powershell/azure/)如何设置 PowerShell。
+- 设置并配置 PowerShell 后，请参阅[服务 cmdlet](/powershell/azure/)。
 - 若要详细了解如何在 PowerShell 中使用参数值、输入和输出，请参阅[入门](/powershell/azure/get-started-azureps)指南。
 
 ## <a name="set-up-a-subscription"></a>设置订阅

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 363d26391c8ee40fb95a0b8fd92c4d94f1082b8d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221521"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723410"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -107,18 +107,18 @@ Azure NetApp 文件旨在满足在云中运行高性能工作负荷（如数据�
 - 关键任务企业工作负荷（如 SAP 和 Oracle）通常所需的大规模高可用性、高持续性和可管理性
 - 快速高效的备份和恢复，实现最严格的 RTO 和 RPO SLA
 
-这些功能可用是因为 Azure NetApp 文件基于作为 Azure 本机服务在 Azure 数据中心环境中运行的 NetApp® ONTAP® 全闪存系统。 其结果是一个理想的数据库存储技术，可以像其他 Azure 存储选项一样进行预配和使用。 有关如何部署和访问 Azure NetApp 文件 NFS 卷的详细信息，请参阅 [Azure NetApp 文件文档](https://docs.microsoft.com/azure/azure-netapp-files/)。 有关在 Azure NetApp 文件上对 Oracle 数据库进行操作的最佳做法建议，请参阅[使用 Azure NetApp 文件的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)。
+这些功能可用是因为 Azure NetApp 文件基于作为 Azure 本机服务在 Azure 数据中心环境中运行的 NetApp® ONTAP® 全闪存系统。 其结果是一个理想的数据库存储技术，可以像其他 Azure 存储选项一样进行预配和使用。 有关如何部署和访问 Azure NetApp 文件 NFS 卷的详细信息，请参阅 [Azure NetApp 文件文档](../../../azure-netapp-files/index.yml)。 有关在 Azure NetApp 文件上对 Oracle 数据库进行操作的最佳做法建议，请参阅[使用 Azure NetApp 文件的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)。
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>在 Azure 上授权 Oracle Database 与软件
 
 Microsoft Azure 是一种用于运行 Oracle Database 的已授权云环境。 在云中授权 Oracle 数据库时，Oracle 内核系数表不适用。 相反，当使用为 Enterprise Edition 数据库启用的超线程技术的 VM 时，如果启用了超线程（如策略文档中所述），则应将两个 vCPU 视为等效于一个 Oracle 处理器许可证。 [此处](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)提供了策略详细信息。
-Oracle 数据库通常需要更高端存储器和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)。 若要进一步优化工作负荷，建议将[受约束的核心 vCPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) 用于需要高端存储器、存储和 I/O 带宽，但不需要高核心计数的 Oracle Database 工作负荷。
+Oracle 数据库通常需要更高端存储器和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 VM](../../sizes-memory.md)。 若要进一步优化工作负荷，建议将[受约束的核心 vCPU](../../constrained-vcpu.md) 用于需要高端存储器、存储和 I/O 带宽，但不需要高核心计数的 Oracle Database 工作负荷。
 
 将 Oracle 软件和工作负荷从本地迁移到 Microsoft Azure 时，Oracle 提供了许可移动性，如 [Azure 上的 Oracle 常见问题解答](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)中所述
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 
-Oracle Real 应用程序群集 (Oracle RAC) 用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，需要使用第三方软件来启用这些技术。 有关 Oracle RAC 的详细信息，请参阅 [FlashGrid SkyCluster 页](https://www.flashgrid.io/oracle-rac-in-azure/)。
+Oracle Real 应用程序群集 (Oracle RAC) 用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，则需要第三方软件来实现这些技术。 有关 Oracle RAC 的详细信息，请参阅 [FlashGrid SkyCluster 页](https://www.flashgrid.io/oracle-rac-in-azure/)。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 

@@ -1,5 +1,5 @@
 ---
-title: SAP NetWeaver 的 Azure 虚拟机高可用性 | Microsoft 文档
+title: SAP NetWeaver 的 Azure 虚拟机高可用性
 description: Azure 虚拟机 (VM) 上的 SAP NetWeaver 的高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080176"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机高可用性
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>适用于 SAP NetWeaver 的高可用性 Azure 虚拟机
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -35,7 +36,7 @@ ms.locfileid: "84557312"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -170,7 +171,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>先决条件
 在开始之前，请确保满足以下部分中所述的先决条件。 此外，务必要检查[资源][sap-ha-guide-2]部分中列出的所有资源。
 
-在本文中，为[使用托管磁盘的三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) 使用资源管理器模板。 有关模板的有用概述，请参阅 [SAP Azure 资源管理器模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
+在本文中，为[使用托管磁盘的三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) 使用资源管理器模板。 有关模板的有用概述，请参阅 [SAP Azure 资源管理器模板](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap)。
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Resources
 这些文章介绍了 Azure 中的 SAP 部署：
@@ -319,7 +320,7 @@ _**图 4：** 高可用性 SAP 应用程序服务器_
 * 所有虚拟机都是同一个升级域的一部分。 例如，升级域确保虚拟机不在计划的维护停机时间期间同时更新。
 * 所有虚拟机都是同一个容错域的一部分。 例如，容错域确保将虚拟机部署为任何单一故障点都不会影响所有虚拟机的可用性。
 
-详细了解如何[管理虚拟机的可用性][virtual-machines-manage-availability]。
+详细了解如何 [管理虚拟机的可用性] [。/manage-availability.md]。
 
 仅限非托管磁盘：由于 Azure 存储帐户是潜在的单一故障点，因此必须至少有两个 Azure 存储帐户，并在其中至少分配两个虚拟机。 在理想的设置中，运行 SAP 对话实例的每个虚拟机的磁盘都应部署在不同的存储帐户中。
 
@@ -770,7 +771,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 | 变量名称 |`KeepAliveTime` |
 | 变量类型 |REG_DWORD（十进制） |
 | 值 |120000 |
-| 文档链接 |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| 文档链接 |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**表 3：** 更改第一个 TCP/IP 参数_
 
@@ -781,7 +782,7 @@ _**表 3：** 更改第一个 TCP/IP 参数_
 | 变量名称 |`KeepAliveInterval` |
 | 变量类型 |REG_DWORD（十进制） |
 | 值 |120000 |
-| 文档链接 |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| 文档链接 |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**表 4：** 更改第二个 TCP/IP 参数_
 

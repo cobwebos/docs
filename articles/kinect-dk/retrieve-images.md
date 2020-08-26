@@ -7,15 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 检索, 传感器, 相机, sdk, 深度, rgb, 图像, 颜色, 捕获, 分辨率, 缓冲区
-ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73931697"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538908"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>检索 Azure Kinect 图像数据
 
-本页提供有关如何通过 Azure Kinect 检索图像的详细信息。 本文将演示如何捕获和访问在彩色和深度相机设备之间协调的图像。 若要访问图像，必须先打开并配置设备，然后可以捕获图像。
+本页提供有关如何通过 Azure Kinect 检索图像的详细信息。 本文演示如何捕获和访问设备颜色和深度之间的协调图像。 若要访问图像，必须先打开并配置设备，然后可以捕获图像。
 在配置和捕获图像之前，必须[找到并打开设备](find-then-open-device.md)。
 
 你还可以参考 [SDK 流示例](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming)，其中演示了如何使用本文所述的函数。

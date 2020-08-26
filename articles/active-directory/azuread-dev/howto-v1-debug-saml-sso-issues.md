@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383574"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116132"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -43,7 +43,7 @@ ms.locfileid: "85383574"
 1. 以全局管理员或者有权管理应用程序的其他管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧边栏选项卡中，选择 " **Azure Active Directory**"，然后选择 "**企业应用程序**"。 
 1. 从企业应用程序列表中，选择要为其测试单一登录的应用程序，然后从左侧的选项中选择 "**单一登录**"。
-1. 若要打开基于 SAML 的单一登录测试体验，请参阅**测试单一登录**（步骤5）。 如果 "**测试**" 按钮灰显，则需要首先在 "**基本 SAML 配置**" 部分中填写并保存所需的属性。
+1. 若要打开基于 SAML 的单一登录测试体验，请参阅 (步骤 5) 中的 "**测试单一登录**"。 如果 "**测试**" 按钮灰显，则需要首先在 "**基本 SAML 配置**" 部分中填写并保存所需的属性。
 1. 在“测试单一登录”边栏选项卡中，使用企业凭据登录到目标应用程序。**** 可以当前用户或其他用户的身份登录。 如果以其他用户的身份登录，系统会提示进行身份验证。
 
     ![显示 "测试 SAML SSO" 页的屏幕截图](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
@@ -104,4 +104,4 @@ ms.locfileid: "85383574"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，单一登录正在使用应用程序，你可以[自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)或[开始使用条件性访问](../conditional-access/app-based-conditional-access.md)。
+现在，单一登录正在使用应用程序，你可以[自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)或[开始使用条件性访问](../conditional-access/app-based-conditional-access.md)。

@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663247"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326012"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Azure Monitor 中的 Log Analytics 工作区报告或向连接到 Azure Monitor 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
 ## <a name="prerequisites"></a>必备条件
-在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../../log-analytics/log-analytics-windows-agent.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)报告。
+在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../platform/agent-windows.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../platform/om-agents.md)报告。
 
 ## <a name="solution-components"></a>解决方案组件
 此解决方案包含以下资源，这些资源添加到工作区和直接连接的代理或 Operations Manager 连接的管理组。
@@ -27,7 +28,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer)。  
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../platform/om-agents.md)。
 
 ## <a name="configuration"></a>配置
 执行[添加解决方案](solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
@@ -66,7 +67,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。****  这些记录的属性在下表中列出。  
 
-| Property | 描述 |
+| 属性 | 描述 |
 | --- | --- |
 | `Type` | *检测信号*|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。******|
@@ -110,3 +111,4 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ## <a name="next-steps"></a>后续步骤
 
 * 有关从日志查询生成警报的详细信息，请参阅 [Azure Monitor 中的警报](../platform/alerts-overview.md)。 
+

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187313"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055286"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -30,7 +30,7 @@ ms.locfileid: "86187313"
 
 Azure 自动化会持久保存变量，因此即使 Runbook 或 DSC 配置失败，变量也仍然可用。 此行为允许一个 Runbook 或 DSC 配置设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 
+Azure 自动化会安全存储每个加密的变量。 创建变量时，可以将 Azure 自动化中的加密和存储指定为安全资产。 创建变量后，无法更改其加密状态，而无需重新创建变量。 Azure 安全中心建议将加密所有 Azure 自动化变量，如[自动化帐户变量](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。 
@@ -196,4 +196,4 @@ except AutomationAssetNotFound:
 
 * 若要了解有关用于访问变量的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
-* 有关 DSC 配置的详细信息，请参阅 [Azure Automation State Configuration 概述](../automation-dsc-overview.md)。
+* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。

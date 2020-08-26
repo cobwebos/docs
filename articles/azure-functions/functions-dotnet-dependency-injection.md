@@ -1,23 +1,24 @@
 ---
 title: 在 .NET Azure Functions 中使用依赖项注入
 description: 了解如何在 .NET 函数中使用依赖项注入来注册和使用服务
-author: craigshoemaker
+author: ggailey777
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.author: cshoe
+ms.custom: devx-track-csharp
+ms.date: 08/15/2020
+ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6fe6079ca4cdf76757088cbdc00dd1af3c2225ea
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249251"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642361"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
-Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在类与其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的方法。
+Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在类与其依赖项之间实现[控制反转 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的方法。
 
-- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能构建。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
+- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能构建。 建议熟悉 [.NET Core 依赖项注入](/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
 
 - 从 Azure Functions 2.x 支持依赖项注入。
 
@@ -33,7 +34,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在�
 
 若要注册服务，请创建一个方法来配置组件并将组件添加到 `IFunctionsHostBuilder` 实例。  Azure Functions 主机会创建 `IFunctionsHostBuilder` 的实例，并将其直接传递到方法中。
 
-若要注册方法，请添加指定在启动过程中使用的类型名称的 `FunctionsStartup` 程序集特性。
+若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。
 
 ```csharp
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -71,9 +72,9 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>使用注入的依赖项
 
-使用构造函数注入以后，依赖项即可在函数中使用。 使用构造函数注入要求不要将静态类用于注入的服务或用于函数类。
+使用构造函数注入以后，依赖项即可在函数中使用。 使用构造函数注入要求你不要对已注入服务或对函数类使用静态类。
 
-下面的示例演示如何将 `IMyService` 和 `HttpClient` 依赖项注入到 HTTP 触发的函数中。
+以下示例演示了 `IMyService` 和 `HttpClient` 依赖项是如何注入到 HTTP 触发的函数中的。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -115,17 +116,17 @@ namespace MyNamespace
 
 ## <a name="service-lifetimes"></a>服务生存期
 
-Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
+Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
 
 - **暂时性**：每次请求此服务时，都会创建暂时性服务。
 - **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域服务在每次执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
 - **单一实例**：单一实例服务生存期与主机生存期相匹配，并且在该实例上的各个函数执行之间重用。 对于连接和客户端（例如 `DocumentClient` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
 
-可在 GitHub 上查看或下载[不同服务生存期的示例](https://aka.ms/functions/di-sample)。
+在 GitHub 上查看或下载[不同服务生存期的示例](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)。
 
 ## <a name="logging-services"></a>日志记录服务
 
-如果需要自己的日志记录提供程序，请将自定义类型注册为的实例 [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，该实例可[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)通过使用
+如果需要自己的日志记录提供程序，请将自定义类型注册为的实例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，该实例可[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)通过使用
 
 Azure Functions 会自动添加 Application Insights。
 
@@ -225,10 +226,10 @@ public class MyOptions
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 调用 `Bind` 可以将那些与属性名匹配的值从配置复制到自定义实例中。 IoC 容器中现在提供可以注入到函数中的选项实例。
@@ -250,10 +251,59 @@ public class HttpTrigger
 }
 ```
 
-有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options)。
 
-> [!WARNING]
-> 请避免尝试从有关消耗计划的 local.settings.json 或 appsettings.{environment}.json 等文件中读取值。 从与触发器连接相关的这些文件中读取的值在应用缩放时不可用，因为规模控制器创建应用的新实例时托管基础结构无法访问配置信息。
+### <a name="customizing-configuration-sources"></a>自定义配置源
+
+> [!NOTE]
+> Azure Functions 主机版本2.0.14192.0 和3.0.14191.0 开始提供配置源自定义。
+
+若要指定其他配置源，请 `ConfigureAppConfiguration` 在函数应用的类中重写方法 `StartUp` 。
+
+下面的示例从基本和特定于环境的应用程序设置文件添加配置值。
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+将配置提供程序添加到的 `ConfigurationBuilder` 属性 `IFunctionsConfigurationBuilder` 。 有关使用配置提供程序的详细信息，请参阅 [ASP.NET Core 中的配置](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)。
+
+`FunctionsHostBuilderContext`是从获取的 `IFunctionsConfigurationBuilder.GetContext()` 。 使用此上下文检索当前环境名称，并解析函数应用文件夹中配置文件的位置。
+
+默认情况下，上的配置文件（如 *appsettings.js* ）不会自动复制到 function app 的 output 文件夹中。 更新 *.csproj* 文件，使其与以下示例匹配以确保复制文件。
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> 对于在使用或高级计划中运行的函数应用，对触发器中使用的配置值的修改可能导致缩放错误。 类对这些属性所做的任何更改都会 `FunctionsStartup` 导致函数应用启动错误。
 
 ## <a name="next-steps"></a>后续步骤
 

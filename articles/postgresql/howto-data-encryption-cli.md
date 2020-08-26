@@ -6,12 +6,13 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119576"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797808"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI Azure Database for PostgreSQL 单个服务器的数据加密
 
@@ -33,13 +34,13 @@ ms.locfileid: "86119576"
    ```
 
 * 为了使用现有的密钥保管库，它必须具有以下属性以用作客户管理的密钥：
-  * [软删除](../key-vault/general/overview-soft-delete.md)
+  * [软删除](../key-vault/general/soft-delete-overview.md)
 
       ```azurecli-interactive
       az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
       ```
 
-  * [清除保护](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)
 
       ```azurecli-interactive
       az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
@@ -66,7 +67,7 @@ ms.locfileid: "86119576"
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. 设置**主体**的**密钥权限**（**Get**、 **Wrap**、**解包**），这是 PostgreSQL 单一服务器服务器的名称。
+2. 设置**主体** (**获取**、**包装**、**解包**) 的**主要权限**，这是 PostgreSQL 单服务器服务器的名称。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -84,7 +85,7 @@ ms.locfileid: "86119576"
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原服务器或副本服务器使用数据加密
 
-在使用 Key Vault 中存储的客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行加密后，还将所有新创建的服务器副本进行加密。 你可以通过本地或异地还原操作或通过副本（本地/跨区域）操作进行此新复制。 因此，对于加密的 PostgreSQL 单服务器服务器，可以使用以下步骤来创建加密还原服务器。
+在使用 Key Vault 中存储的客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行加密后，还将所有新创建的服务器副本进行加密。 可以通过本地或异地还原操作或通过副本 (本地/跨区域) 操作来生成此新副本。 因此，对于加密的 PostgreSQL 单服务器服务器，可以使用以下步骤来创建加密还原服务器。
 
 ### <a name="creating-a-restoredreplica-server"></a>创建还原/副本服务器
 
@@ -92,6 +93,25 @@ ms.locfileid: "86119576"
 * [创建读取副本服务器](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>还原服务器后，重新验证还原的服务器的数据加密
+
+*   为副本服务器分配标识
+```azurecli-interactive
+az postgres server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   获取必须用于还原/副本服务器的现有密钥
+
+```azurecli-interactive
+az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   为还原/副本服务器的新标识设置策略
+
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* 重新验证还原/副本服务器的加密密钥
 
 ```azurecli-interactive
 az postgres server key create –name  <server name> -g <resource_group> --kid <key url>

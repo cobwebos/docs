@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 021999e1757993eea4bbfe3aec0bd68049a37e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 3ed4f8d4d8ca0a68a4ccf01a38ae5f8e66cc26df
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737659"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757823"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark 的数据处理优化
 
@@ -20,7 +21,7 @@ ms.locfileid: "84737659"
 
 ## <a name="overview"></a>概述
 
-如果某个联接和数据重组操作上有速度较慢的作业，可能是由数据倾斜引起的。 数据倾斜是指作业数据不对称。 例如，运行映射作业可能需要 20 秒。 但运行对数据进行联接或重组的作业则需数小时。 若要解决数据倾斜问题，应对整个键进行加盐加密，或对仅仅一部分键使用*独立的加密盐*。 如果使用独立的加密盐，应进一步进行筛选，将映射联接中已进行加盐加密的键的子集隔离出来。 另一种做法是引入 Bucket 列，先在 Bucket 中进行预聚合。
+如果某个联接和数据重组操作上有速度较慢的作业，可能是由数据倾斜引起的。 数据倾斜是指作业数据不对称。 例如，运行映射作业可能需要 20 秒， 但运行对数据进行联接或重组的作业则需数小时。 若要解决数据倾斜问题，应对整个键进行加盐加密，或对仅仅一部分键使用*独立的加密盐*。 如果使用独立的加密盐，应进一步进行筛选，将映射联接中已进行加盐加密的键的子集隔离出来。 另一种做法是引入 Bucket 列，先在 Bucket 中进行预聚合。
 
 导致联接变慢的另一个因素可能是联接类型。 默认情况下，Spark 使用 `SortMerge` 联接类型。 这种类型的联接最适合大型数据集。 但另一方面又会占用大量计算资源，因为它必须先对数据的左右两侧进行排序，然后才进行合并。
 

@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125802"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448200"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -125,15 +126,15 @@ SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用�
 
 在自己的 DNS 服务器中通过 ILB ASE 配置 DNS：
 
-1. 为 <ASE name>.appserviceenvironment.net 创建区域
+1. 为 &lt;ASE 名称&gt;.appserviceenvironment.net 创建一个区域
 1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
 1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
-1. 在 <ASE name>.appserviceenvironment.net named scm 中创建名为 scm 的区域
+1. 在 &lt;ASE 名称&gt;.appserviceenvironment.net 中创建名为 scm 的区域
 1. 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
 
 在 Azure DNS 专用区域中配置 DNS：
 
-1. 创建名为 <ASE name>.appserviceenvironment.net 的 Azure DNS 专用区域
+1. 创建一个名为 &lt; ASE name. appserviceenvironment.net 的 Azure DNS 专用区域 &gt; 。
 1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
 1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
 1. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录
@@ -250,6 +251,30 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
     ![ASE 删除][3]
 
 1. 选择“确定” 。
+
+## <a name="ase-cli"></a>ASE CLI
+
+有一些命令行功能可用于管理 ASE。  Az cli 命令如下所示。
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

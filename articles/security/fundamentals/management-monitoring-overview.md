@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73162746"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448354"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
@@ -32,7 +32,7 @@ ms.locfileid: "73162746"
 了解详细信息：
 
 * [有关 RBAC 的 Active Directory 团队博客](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
+* [Azure 基于角色的访问控制（Azure RBAC）](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>反恶意软件
 

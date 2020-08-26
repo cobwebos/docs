@@ -4,6 +4,8 @@
   items:
     - name: 关于 Azure 应用配置
       href: overview.md
+    - name: 最佳做法
+      href: howto-best-practices.md
     - name: 常见问题解答
       href: faq.md
 - name: 快速入门
@@ -34,28 +36,40 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: 教程
   items:
-    - name: 使用 ASP.NET Core 启用动态配置
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: 在 .NET Core 应用中启用动态配置
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: 使用 .NET Framework 启用动态配置
-      href: enable-dynamic-configuration-dotnet.md
-    - name: 在 Azure Functions 应用中实现动态配置
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: 在 Spring Boot 应用中实现动态配置
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: 在 .NET Core 应用中使用功能标志
-      href: use-feature-flags-dotnet-core.md
-    - name: 在 Spring Boot 应用中使用功能标志
-      href: use-feature-flags-spring-boot.md
+    - name: 启用动态配置
+      items:
+        - name: ASP.NET Core
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: .NET Framework
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure Functions
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: 使用功能标志
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: 管理功能标志
       href: manage-feature-flags.md
-    - name: 在 ASP.NET Core 应用中使用 Key Vault 引用
-      href: use-key-vault-references-dotnet-core.md
-    - name: 在 Spring Boot 中使用 Key Vault 引用
-      href: use-key-vault-references-spring-boot.md
-    - name: 与 CI/CD 管道集成
-      href: integrate-ci-cd-pipeline.md
+    - name: 使用 Key Vault 引用
+      items:
+        - name: ASP.NET Core
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
+    - name: CI/CD 管道集成
+      items:
+        - name: 使用 Azure Pipelines 推送
+          href: push-kv-devops-pipeline.md
+        - name: 使用 GitHub Actions 推送
+          href: concept-github-action.md
+        - name: 使用导出的配置生成项目
+          href: integrate-ci-cd-pipeline.md
     - name: 使用 Helm 与 Kubernetes 部署集成
       href: integrate-kubernetes-deployment-helm.md
 - name: 示例
@@ -67,14 +81,12 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 键值存储
+    - name: 键和值
       href: concept-key-value.md
     - name: 时间点快照
       href: concept-point-time-snapshot.md
     - name: 特色管理
       href: concept-feature-management.md
-    - name: 使用 GitHub Actions 进行同步
-      href: concept-github-action.md
     - name: 事件处理
       href: concept-app-configuration-event.md
     - name: 安全性
@@ -83,8 +95,6 @@
           href: concept-customer-managed-keys.md
         - name: 使用专用终结点保护配置存储
           href: concept-private-endpoint.md
-        - name: 与 Azure 托管标识集成
-          href: howto-integrate-azure-managed-service-identity.md
         - name: 使用 Azure Active Directory 启用访问权限
           href: concept-enable-rbac.md
         - name: 分配 Azure 托管标识
@@ -101,12 +111,14 @@
       href: howto-labels-aspnet-core.md
     - name: 导入或导出配置数据
       href: howto-import-export-data.md
+    - name: 对键值使用 JSON 内容类型
+      href: howto-leverage-json-content-type.md
     - name: 将事件路由到自定义终结点
       href: howto-app-configuration-event.md
     - name: 自动备份配置存储
       href: howto-backup-config-store.md
-    - name: 最佳做法
-      href: howto-best-practices.md
+    - name: 使用托管标识来访问应用程序配置
+      href: howto-integrate-azure-managed-service-identity.md
 - name: 参考
   items:
     - name: 配置
@@ -145,7 +157,7 @@
       href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: 视频
       items:
-        - name: 入门
+        - name: 应用程序配置入门
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: 特色管理
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
@@ -153,5 +165,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: Cloud Native Show 上的 Azure 应用配置
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
+        - name: Azure Friday 功能筛选
+          url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: 提供产品反馈
       href: 'https://github.com/Azure/AppConfiguration/issues'

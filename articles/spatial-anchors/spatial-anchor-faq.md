@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091481"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -88,9 +88,9 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 
 这意味着为此服务提供支持的计算和存储处于这些区域中。 也就是说，对于客户端所处的位置没有限制。 
 
-**问：是否对 Azure 空间定位点收费？是否会永远收费？**
+**问：** 是否对 Azure 空间定位点收费？
 
-**答:** 可以在我们的[定价页面](https://azure.microsoft.com/pricing/details/spatial-anchors/)上找到有关预览版期间的定价的详细信息。
+**答:** 可以在我们的[定价页面](https://azure.microsoft.com/pricing/details/spatial-anchors/)上找到有关定价的详细信息。
 
 ## <a name="technical-faqs"></a>技术常见问题解答
 

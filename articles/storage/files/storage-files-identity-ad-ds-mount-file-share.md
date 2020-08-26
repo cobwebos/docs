@@ -7,18 +7,18 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9a8805666e1e162f76cf5fa6f7d828833c573bed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510443"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535053"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>第四部分：从已加入域的 VM 装载文件共享
 
 在开始本文之前，请确保已完成上一篇文章，[通过 SMB 配置目录和文件级权限](storage-files-identity-ad-ds-configure-permissions.md)。
 
-本文中所述的过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 共享级 RBAC 角色分配可能需要一些时间才能生效。 
+本文中所述的过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 共享级 Azure 角色分配可能需要一些时间才能生效。 
 
 使用你向其授予权限的凭据登录到客户端，如下图所示。
 
@@ -33,9 +33,18 @@ ms.locfileid: "85510443"
 
 将占位符值替换为你自己的值，然后使用以下命令装载 Azure 文件共享：
 
-```cli
+```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 如果在加载时遇到 AD DS 凭据问题，请参阅[无法装载具有 AD 凭据的 Azure 文件](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials)以获得指导。

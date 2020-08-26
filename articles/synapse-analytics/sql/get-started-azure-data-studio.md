@@ -1,5 +1,5 @@
 ---
-title: Azure Data Studio（预览版）：连接并查询 Synapse SQL
+title: 使用 Azure Data Studio（预览版）连接到 Synapse SQL
 description: 使用 Azure Data Studio（预览版）连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059557"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>使用 Azure Data Studio（预览版）连接到 Synapse SQL
 
@@ -46,13 +46,13 @@ ms.locfileid: "82187539"
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net。
 >
-> 若使用 SQL 池，则 URL 应如下所示： 
+> 若使用 SQL 池，则 URL 应如下所示：
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
-选择“Windows 身份验证”、“Azure Active Directory”或“SQL 登录”作为“身份验证类型”。    
+选择“Windows 身份验证”、“Azure Active Directory”或“SQL 登录”作为“身份验证类型”。
 
-若要使用“SQL 登录”作为身份验证类型，请添加用户名/密码参数： 
+若要使用“SQL 登录”作为身份验证类型，请添加用户名/密码参数：
 
 * **用户：** 采用 `<User>` 格式的服务器用户
 * **密码:** 与用户关联的密码
@@ -65,7 +65,7 @@ ms.locfileid: "82187539"
 
 ![Windows 身份验证](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-以下屏幕截图显示使用 SQL 登录名时的“连接详细信息”：  
+以下屏幕截图显示使用 SQL 登录名时的“连接详细信息”：
 
 ![SQL 登录名](./media/get-started-azure-data-studio/2-database-details.png)
 

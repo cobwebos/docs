@@ -1,6 +1,6 @@
 ---
 title: 高可用性 - Azure 专用 HSM | Microsoft Docs
-description: Azure 专用 HSM 高可用性示例和基本注意事项
+description: 了解 Azure 专用 HSM 高可用性的基本注意事项。 本文包含一个示例。
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70882248"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189857"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 专用 HSM 高可用性
 
@@ -24,7 +25,7 @@ Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 
 
 ## <a name="high-availability-example"></a>高可用性示例
 
-“Gemalto Luna 网络 HSM 管理指南”中提供了有关如何在软件级别配置 HSM 设备以实现高可用性的信息。 此文档可在[GEMALTO 身份 HSM 页面](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)上找到。
+“Gemalto Luna 网络 HSM 管理指南”中提供了有关如何在软件级别配置 HSM 设备以实现高可用性的信息。 此文档可在  [GEMALTO 身份 HSM 页面](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)上找到。
 
 下图展示了一个具有高可用性的体系结构。 它在区域中使用了多个设备并且在每个单独的区域中使用了多个配对的设备。 此体系结构使用了四 HSM 设备的最低配置和虚拟网络组件。
 

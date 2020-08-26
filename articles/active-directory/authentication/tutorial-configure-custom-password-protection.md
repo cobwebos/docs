@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78253117"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718877"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教程：为 Azure Active Directory 密码保护配置自定义受禁密码
 
@@ -32,16 +32,16 @@ ms.locfileid: "78253117"
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 一个拥有全局管理员特权的帐户。 
+* 一个拥有全局管理员特权的帐户。
 * 你知道其密码的非管理员测试用户，例如 *testuser*。 在本教程中，你将使用此帐户测试密码更改事件。
-    * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)。
+    * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../fundamentals/add-users-azure-active-directory.md)。
     * 若要使用受禁密码测试密码更改操作，必须为 Azure AD 租户[配置自助式密码重置](tutorial-enable-sspr.md)。
 
 ## <a name="what-are-banned-password-lists"></a>什么是受禁密码列表？
 
-Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不基于任何外部数据源。 全局受禁密码列表基于不断更新的 Azure AD 安全遥测和分析结果。 当用户或管理员尝试更改或重置其凭据时，会根据受禁密码列表检查所需的密码。 如果与全局受禁密码列表中的某个密码匹配，则密码更改请求将会失败。
+Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不基于任何外部数据源。 全局受禁密码列表基于不断更新的 Azure AD 安全遥测和分析结果。 当用户或管理员尝试更改或重置其凭据时，会根据受禁密码列表检查所需的密码。 如果与全局受禁密码列表中的某个密码匹配，则密码更改请求将会失败。 无法编辑此默认的全局禁止密码列表。
 
 为了灵活控制允许的密码，还可以自定义受禁密码列表。 自定义受禁密码列表与全局受禁密码列表一同应用，可在组织中实施强密码。 可将组织特定的字词添加到自定义受禁密码列表，如以下示例所示：
 
@@ -53,8 +53,8 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 
 当用户尝试将某个密码重置为全局或自定义受禁密码列表中的密码时，会看到以下错误消息之一：
 
-* “很遗憾，密码中包含的单词、短语或模式使密码很容易被猜出。  请使用其他密码重试。”
-* “很遗憾，不能使用该密码，因为它包含管理员已禁止的字词或字符。  请使用其他密码重试。”
+* “很遗憾，密码中包含的单词、短语或模式使密码很容易被猜出。请使用其他密码重试。”
+* “很遗憾，不能使用该密码，因为它包含管理员已禁止的字词或字符。请使用其他密码重试。”
 
 自定义受禁密码列表限制为最多 1000 个字词。 它并非用于阻止包含大量密码的列表。 若要最大程度地发挥自定义受禁密码列表的优势，请查看[自定义受禁密码列表的概念](concept-password-ban-bad.md#custom-banned-password-list)和[密码评估算法概述](concept-password-ban-bad.md#how-are-passwords-evaluated)。
 
@@ -64,11 +64,11 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 
 若要启用自定义受禁密码列表并在其中添加条目，请完成以下步骤：
 
-1. 使用拥有全局管理员权限的帐户登录到 [Azure 门户](https://portal.azure.com)。 
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。  
-1. 在“管理”菜单标题下，依次选择“身份验证方法”、“密码保护”。   
-1. 将“强制实施自定义列表”选项设置为“是”。  
-1. 将字符串添加到“自定义受禁密码列表”，每行添加一个字符串。  以下注意事项和限制适用于自定义受禁密码列表：
+1. 使用拥有全局管理员权限的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。 
+1. 在“管理”菜单标题下，依次选择“身份验证方法”、“密码保护”。  
+1. 将“强制实施自定义列表”选项设置为“是”。
+1. 将字符串添加到“自定义受禁密码列表”，每行添加一个字符串。 以下注意事项和限制适用于自定义受禁密码列表：
 
     * 自定义受禁密码列表最多可以包含 1000 个字词。
     * 自定义禁止密码列表不区分大小写。
@@ -77,10 +77,10 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 
     按以下示例所示指定自己的自定义受禁密码
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [ ![在 Azure 门户中的“身份验证方法”下修改自定义禁止密码列表](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
-1. 将“对 Windows Server Active Directory 启用密码保护”选项保留设置为“否”。  
-1. 若要启用自定义受禁密码和条目，请选择“保存”。 
+1. 将“对 Windows Server Active Directory 启用密码保护”选项保留设置为“否”。
+1. 若要启用自定义受禁密码和条目，请选择“保存”。
 
 自定义禁止密码列表更新可能需要几个小时才能应用。
 
@@ -91,15 +91,15 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 若要查看自定义受禁密码列表的运作方式，请尝试将密码更改为在上一部分添加的某个受禁密码。 当 Azure AD 尝试处理密码更改时，该密码将与自定义受禁密码列表中的某个条目相匹配。 然后向用户显示错误。
 
 > [!NOTE]
-> 必须先为 Azure AD 租户[配置自助式密码重置](tutorial-enable-sspr.md)，用户才能在基于 Web 的门户中重置其密码。
+> 必须先为 Azure AD 租户[配置自助式密码重置](tutorial-enable-sspr.md)，用户才能在基于 Web 的门户中重置其密码。 如果需要，用户可以[在 https://aka.ms/ssprsetup 注册 SSPR](https://aka.ms/ssprsetup)。
 
-1. 在 [https://myapps.microsoft.com](https://myapps.microsoft.com) 上转到“我的应用”页。 
-1. 在右上角选择自己的姓名，然后从下拉菜单中选择“个人资料”。 
+1. 在 [https://myapps.microsoft.com](https://myapps.microsoft.com) 上转到“我的应用”页。
+1. 在右上角选择自己的姓名，然后从下拉菜单中选择“个人资料”。
 
     ![选择配置文件](media/tutorial-configure-custom-password-protection/myapps-profile.png)
 
-1. 在“个人资料”页上，选择“更改密码”。  
-1. 在“更改密码”页上，输入现有的（旧）密码。  输入并确认包含在上一部分定义的自定义受禁密码列表中的新密码，然后选择“提交”。 
+1. 在“个人资料”页上，选择“更改密码”。
+1. 在“更改密码”页上，输入现有的（旧）密码。 输入并确认包含在上一部分定义的自定义受禁密码列表中的新密码，然后选择“提交”。
 1. 此时将返回一条错误消息，指出管理员已禁止该密码，如以下示例所示：
 
     ![尝试使用包含在自定义受禁密码列表中的密码时显示的错误消息](media/tutorial-configure-custom-password-protection/password-change-error.png)
@@ -108,11 +108,11 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 
 如果你不再想要使用本教程中配置的自定义受禁密码列表，请完成以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。  
-1. 在“管理”菜单标题下，依次选择“身份验证方法”、“密码保护”。   
-1. 将“强制实施自定义列表”选项设置为“否”。  
-1. 若要更新自定义受禁密码配置，请选择“保存”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。
+1. 在“管理”菜单标题下，依次选择“身份验证方法”、“密码保护”。  
+1. 将“强制实施自定义列表”选项设置为“否”。
+1. 若要更新自定义受禁密码配置，请选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -124,4 +124,4 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 > * 使用受禁密码测试密码更改
 
 > [!div class="nextstepaction"]
-> [启用基于风险的 Azure 多重身份验证](tutorial-mfa-applications.md)
+> [启用基于风险的 Azure 多重身份验证](./tutorial-enable-azure-mfa.md)

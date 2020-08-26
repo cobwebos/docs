@@ -3,12 +3,12 @@ title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970920"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530381"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -39,7 +39,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 [策略](../policy/overview.md)是默认允许和显式拒绝系统，侧重于部署期间的资源属性，用于现有资源。 它会验证订阅中的资源是否符合要求和标准，以此为云治理提供支持。
 
-在蓝图中包含策略可以在分配蓝图期间创建正确的模式或设计。 包含策略可确保只对环境进行批准或预期的更改，以确保持续符合蓝图意向。
+如果在蓝图中包含策略，则可以在分配蓝图期间创建适当的模式或设计。 包含策略可确保只对环境进行批准或预期的更改，以确保持续符合蓝图意向。
 
 策略可作为众多项目中的一项包含在蓝图定义中。 蓝图还支持在策略和计划中使用参数。
 
@@ -103,7 +103,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 以下内置角色可用：
 
-|RBAC 角色 | 说明 |
+|Azure 角色 | 说明 |
 |-|-|
 |[所有者](../../role-based-access-control/built-in-roles.md#owner) | 除了其他权限以外，还包括所有与 Azure 蓝图相关的权限。 |
 |[参与者](../../role-based-access-control/built-in-roles.md#contributor) | 除了其他权限以外，还可以创建和删除蓝图定义，但不具有蓝图分配权限。 |

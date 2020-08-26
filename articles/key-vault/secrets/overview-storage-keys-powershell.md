@@ -1,18 +1,19 @@
 ---
 title: Azure Key Vault 托管存储帐户 - PowerShell 版本
 description: 托管存储帐户功能在 Azure Key Vault 与 Azure 存储帐户之间提供无缝集成。
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449299"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585094"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -45,7 +46,7 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 | 租户 | 云 | 应用程序 ID |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Azure 公共 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>先决条件
@@ -98,12 +99,12 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限
 
-只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
+只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可通过 Azure 内置角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
 
 使用 Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 将此角色分配到 Key Vault 服务主体，以将范围限定为你的存储帐户。
 
 ```azurepowershell-interactive
-# Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
+# Assign Azure role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
@@ -163,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>启用密钥重新生成
 
-如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 三天后 Key Vault 将重新生成 "key2"，并将活动密钥从 "key2" 交换为 "key1" （替换为经典存储帐户的 "primary" 和 "辅助"）。
+如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 当需要轮换时，Key Vault 将重新生成非活动状态的密钥，然后将新创建的密钥设置为活动密钥。 在任何时间都只有一个密钥用于颁发 SAS 令牌。 这就是活动密钥。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

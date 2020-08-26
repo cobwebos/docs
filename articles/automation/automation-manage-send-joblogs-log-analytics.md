@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004743"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>将 Azure 自动化作业数据转发到 Azure Monitor 日志
 
@@ -28,7 +28,7 @@ Azure 自动化可将 Runbook 作业状态和作业流发送到 Log Analytics �
 
 要开始将自动化日志发送到 Azure Monitor 日志，需要：
 
-* 最新版本的 [Azure PowerShell](/powershell/azureps-cmdlets-docs/)。
+* 最新版本的 [Azure PowerShell](/powershell/azure/)。
 * Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 日志入门](../azure-monitor/overview.md)。
 * Azure 自动化帐户的资源 ID。
 

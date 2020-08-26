@@ -3,16 +3,16 @@ title: 在 Microsoft 商业市场中创建托管服务产品/服务
 description: 如何使用合作伙伴中心的商业市场门户创建新的托管服务产品/服务，以在 Azure 市场中列出。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
-ms.date: 07/07/2020
-ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: how-to
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.date: 08/07/2020
+ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121786"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816977"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -29,7 +29,7 @@ ms.locfileid: "86121786"
     ![左侧导航菜单图示。](./media/new-offer-managed-service.png)
 
 >[!NOTE]
->发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -130,26 +130,24 @@ ms.locfileid: "86121786"
 
 在此部分中，可以提供在向客户展示你的产品/服务时使用的徽标和图像。 所有图像都必须采用 .png 格式。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
->如果上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
+>如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="marketplace-logos"></a>市场徽标
+#### <a name="store-logos"></a>应用商店徽标
 
-提供以下四个像素大小的产品/服务徽标：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小型** 和 **中型** 徽标。 稍后可以选择将它们替换为不同的图像。
 
-- 小图 (48 x 48)
-- 中图 (90 x 90)
-- 大图 (216 x 216)
-- 宽图 (255 x 115)
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **中型** (90 x 90 px，可选) 
+- **小写** (48 x 48 px，可选) 
 
-请遵守徽标适用的下述准则：
+在列表中的不同位置使用这些徽标：
 
-- Azure 设计具有简单的调色板。 限制徽标上的主要和次要颜色数。
-- 门户的主题颜色为白色和黑色。 请勿将这些颜色用作徽标的背景色。 使用可使徽标在门户中更为突出的颜色。 建议使用简单的主颜色。
-- 如果使用透明背景，请确保徽标和文本不是白色、黑色或蓝色。
-- 徽标的外观应平整，并且应避免渐变。 不要在徽标上使用渐变背景。
-- 不要在徽标上放置文本，即使是公司或品牌名称也不可以。
-- 确保徽标未被拉伸。
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -163,7 +161,7 @@ ms.locfileid: "86121786"
 
 - [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="preview"></a>预览
 
@@ -177,7 +175,9 @@ ms.locfileid: "86121786"
 
 ## <a name="plan-overview"></a>计划概述
 
-每个产品/服务都必须具有一个或多个计划（有时也称为 SKU）。 可添加多个计划，以不同的价格支持不同的功能集，也可为有限数量的特定客户自定义特定计划。 客户可在父级产品/服务中查看可供其使用的计划。
+每个产品/服务必须有一个或多个计划 (以前称为 Sku) 。 可添加多个计划，以不同的价格支持不同的功能集，也可为有限数量的特定客户自定义特定计划。 客户可在父级产品/服务中查看可供其使用的计划。
+
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 在“计划概述”页，选择“+ 创建新计划”。 然后输入“计划 ID”和“计划名称”。 这两个值只能包含小写的字母数字字符、短划线和下划线，且长度不得超过 50 个字符。 这些值可能会对客户可见，在发布产品/服务后，无法更改这些值。
 
@@ -194,6 +194,9 @@ ms.locfileid: "86121786"
 目前，只有一种定价模型可用于托管服务产品/服务：**自带许可 (BYOL)** 。 这意味着你将直接向客户收取与此产品/服务相关的费用，而 Microsoft 不向你收取任何费用。
 
 “计划可见性”部分让你可以指示此计划是否应为[专用](../../marketplace/private-offers.md)。 如果未选中“这是专用计划”复选框，则计划将不限于特定客户（或特定数量的客户）。
+
+> [!NOTE]
+> 通过云解决方案提供商的分销商 (CSP) 计划建立的订阅不支持私有计划。
 
 要使此计划仅对特定客户可用，请选择“是”。 执行此操作时，需要提供客户的订阅 ID 来确定客户身份。 可逐一输入（最多 10 个订阅），也可上传一个 .csv 文件（所有计划最多 10,000 个订阅）。 请确保在此处包含你自己的订阅，以便测试和验证该产品/服务。
 

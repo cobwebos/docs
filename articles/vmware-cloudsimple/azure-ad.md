@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077317"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者
 
@@ -45,7 +46,7 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
 > [!NOTE]
 > 如果你已有 Azure AD，则可以跳过此部分。
 
-1. 根据[Azure AD 文档](../active-directory/fundamentals/get-started-azure-ad.md)中所述，在订阅上设置 Azure AD。
+1. 根据[Azure AD 文档](../active-directory/fundamentals/active-directory-whatis.md)中所述，在订阅上设置 Azure AD。
 2. 按照[注册 Azure Active Directory Premium](../active-directory/fundamentals/active-directory-get-started-premium.md)中所述，在订阅上启用 Azure Active Directory Premium。
 3. 设置自定义域名并验证自定义域名，如[将自定义域名添加到 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)中所述。
     1. 使用 Azure 上提供的信息，在域注册机构中设置 DNS 记录。
@@ -58,17 +59,17 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
 > [!NOTE]
 > 这是启用 Azure AD 作为 vCenter 标识源的一个重要步骤。  若要避免任何问题，请确保所有步骤均正确执行。
 
-1. 启用 Azure AD 域服务，如[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started.md)中所述。
-2. 按照[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-network.md)中所述，设置 Azure AD 域服务将使用的网络。
-3. 如[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)中所述，配置用于管理 Azure AD 域服务的管理员组。
-4. 根据[启用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)中所述，更新 Azure AD 域服务的 DNS 设置。  如果要通过 Internet 连接到 AD，请将 Azure AD 域服务的公共 IP 地址的 DNS 记录设置为域名。
-5. 为用户启用密码哈希同步。  此步骤启用对 NT LAN Manager （NTLM）和 Kerberos 身份验证所需的密码哈希的同步，以便 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。 请参阅[启用 Azure Active Directory 域服务的密码哈希同步](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
+1. 启用 Azure AD 域服务，如[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/tutorial-create-instance.md)中所述。
+2. 按照[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/tutorial-create-instance.md)中所述，设置 Azure AD 域服务将使用的网络。
+3. 如[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/tutorial-create-instance.md)中所述，配置用于管理 Azure AD 域服务的管理员组。
+4. 根据[启用 Azure Active Directory 域服务](../active-directory-domain-services/tutorial-create-instance.md)中所述，更新 Azure AD 域服务的 DNS 设置。  如果要通过 Internet 连接到 AD，请将 Azure AD 域服务的公共 IP 地址的 DNS 记录设置为域名。
+5. 为用户启用密码哈希同步。  此步骤启用对 NT LAN Manager （NTLM）和 Kerberos 身份验证所需的密码哈希的同步，以便 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。 请参阅[启用 Azure Active Directory 域服务的密码哈希同步](../active-directory-domain-services/tutorial-create-instance.md)。
     1. 如果存在仅限云的用户，他们必须使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 访问面板</a>更改其密码，以确保密码哈希以 NTLM 或 Kerberos 所需的格式存储。  按照为[仅限云的用户帐户的托管域启用密码哈希同步](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)中的说明进行操作。  必须针对单个用户和使用 Azure 门户或 Azure AD PowerShell cmdlet 在 Azure AD 目录中创建的任何新用户执行此步骤。 需要访问 Azure AD 域服务的用户必须使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 访问面板</a>，并访问其配置文件以更改密码。
 
         > [!NOTE]
         > 如果组织有仅限云的用户帐户，则需要使用 Azure Active Directory 域服务的所有用户必须更改其密码。 仅限云的用户帐户是在 Azure AD 目录中使用 Azure 门户或 Azure AD PowerShell cmdlet 创建的帐户。 此类用户帐户不是从本地目录同步的。
 
-    2. 如果要同步本地 Active directory 中的密码，请按照[Active Directory 文档](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)中的步骤进行操作。
+    2. 如果要同步本地 Active directory 中的密码，请按照[Active Directory 文档](../active-directory-domain-services/tutorial-configure-password-hash-sync.md)中的步骤进行操作。
 
 6.  按照为[Azure AD 域服务托管域配置安全 ldap （LDAPS）](../active-directory-domain-services/tutorial-configure-ldaps.md)中所述，在 Azure Active Directory 域服务上配置安全 ldap。
     1. 按 Azure 主题[获取安全 ldap 的证书](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)中所述，上传用于安全 ldap 的证书。  CloudSimple 建议使用证书颁发机构颁发的签名证书，以确保 vCenter 可以信任该证书。
@@ -92,7 +93,7 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
     | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldaps://hostname:port`。 对于 LDAPS 连接，此端口通常为636。 <br><br> `ldaps://`   在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
     | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
     | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请  `ldaps://`   在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
-    | **用户名** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
+    | **Username** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
     | **密码** | Username 指定的用户的密码。 |
 
 3. 升级权限后，登录到私有云 vCenter。

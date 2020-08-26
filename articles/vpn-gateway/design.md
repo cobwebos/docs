@@ -8,15 +8,16 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84302309"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852710"
 ---
 # <a name="vpn-gateway-design"></a>VPN 网关设计
 
-必须知道，VPN 网关连接可以使用不同的配置。 必须确定哪种配置最适合自己的需要。 在下面的部分中，可以查看有关以下 VPN 网关连接的设计信息和拓扑图。 使用图示和描述来帮助选择符合要求的连接拓扑。 关系图显示了主要的基准拓扑，但可以使用关系图作为准则来构建更复杂的配置。
+必须知道，VPN 网关连接可以使用不同的配置。 必须确定哪种配置最适合自己的需要。 在以下部分，可以查看有关下述 VPN 网关连接的设计信息和拓扑示意图。 使用图示和描述来帮助选择符合要求的连接拓扑。 这些示意图显示了主要的基准拓扑。但是，你也可以使用这些示意图作为指导来构建更复杂的配置。
 
 ## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a><a name="s2smulti"></a>站点到站点和多站点（IPsec/IKE VPN 隧道）
 
@@ -25,6 +26,8 @@ ms.locfileid: "84302309"
 站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 S2S 连接可用于跨界和混合配置。 S2S 连接要求位于本地的 VPN 设备分配有一个公共 IP 地址。 若要了解如何选择 VPN 设备，请参阅 [VPN 网关常见问题解答 - VPN 设备](vpn-gateway-vpn-faq.md#s2s)。
 
 ![Azure VPN 网关站点到站点连接示例](./media/design/vpngateway-site-to-site-connection-diagram.png)
+
+可以使用一个公共 IP 在活动备用模式下配置 VPN 网关，也可以使用两个公共 ip 在主动-主动模式下配置 VPN 网关。 在活动备用模式下，一个 IPsec 隧道处于活动状态，另一个隧道处于备用状态。 在此设置中，流量流经活动隧道，如果此隧道发生某些问题，则流量将切换到备用隧道。 *建议*在主动-主动模式下设置 VPN 网关，因为这两个 IPsec 隧道同时处于活动状态，同时通过这两个隧道同时流动数据。 主动-主动模式的另一个优点是，客户遇到更高的吞吐量。
 
 ### <a name="multi-site"></a><a name="Multi"></a>多站点
 
@@ -74,7 +77,7 @@ Azure 当前具有两个部署模型：经典模型和 Resource Manager 模型�
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute（专用连接）
 
-使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 连接可以来自任意到任意（IP VPN）网络、点到点以太网，或通过归置设施的连接提供商进行虚拟交叉连接。
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在场地租用设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
 
 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 
@@ -94,13 +97,13 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 
 ## <a name="highly-available-connections"></a><a name="highly-available"></a>高可用连接
 
-有关高可用连接的规划和设计，请参阅[高度可用连接](vpn-gateway-highlyavailable.md)。
+有关高可用连接的规划和设计，请参阅[高可用连接](vpn-gateway-highlyavailable.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
 
-* 了解有关[VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)的详细信息。
+* 详细了解 [VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
 * 有关 VPN 网关 BGP 的注意事项，请参阅[关于 BGP](vpn-gateway-bgp-overview.md)。
 

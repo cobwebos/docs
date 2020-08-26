@@ -1,17 +1,17 @@
 ---
 title: 配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 description: 了解如何为 Azure Cosmos 帐户启用 Azure Synapse Link，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 Synapse 工作区，并运行查询。
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262032"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815566"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 
@@ -19,7 +19,7 @@ Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处�
 
 
 > [!IMPORTANT]
-> 若要使用 Azure Synapse Link，请确保在上述支持的区域之一预配 Azure Cosmos 帐户和 Azure Synapse Analytics 工作区。有关支持的区域的列表，请参阅 [Azure 服务更新](https://azure.microsoft.com/updates/)。 
+> 若要使用 Azure Synapse 链接，请确保在一个支持的区域中预配 Azure Cosmos 帐户 & Azure Synapse Analytics 工作区。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
 
 使用以下步骤，通过 Azure Synapse Link for Azure Cosmos 运行分析查询：
 
@@ -103,41 +103,60 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="python-v3-sdk"></a>Python V3 SDK
+### <a name="python-v4-sdk"></a>Python V4 SDK
 
-以下代码使用 Python SDK 创建具有分析存储的容器：
+Python 2.7 和 Azure Cosmos DB SDK 4.1.0 是所需的最低版本，SDK 仅与 SQL API 兼容。
+
+第一步是确保至少使用版本4.1.0 的 [Azure Cosmos DB PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)：
 
 ```python
+import azure.cosmos as cosmos
+
+print (cosmos.__version__)
+```
+下一步使用 Azure Cosmos DB Python SDK 创建包含分析存储的容器：
+
+```python
+# Azure Cosmos DB Python SDK, for SQL API only.
+# Creating an analytical store enabled container.
+
 import azure.cosmos.cosmos_client as cosmos_client
-def create_collection_if_not_exists(cosmosEndpoint, cosmosKey, databaseName, collectionName):
-    client = cosmos_client.CosmosClient(url_connection=cosmosEndpoint, auth={'masterKey': cosmosKey})
+import azure.cosmos.exceptions as exceptions
+from azure.cosmos.partition_key import PartitionKey
 
-db = client.QueryDatabases("select * from c where c.id = '" + databaseName + "'").fetch_next_block()[0]
-options = {
-    'offerThroughput': 1000
-}
+HOST = 'your-cosmos-db-account-URI'
+KEY = 'your-cosmos-db-account-key'
+DATABASE = 'your-cosmos-db-database-name'
+CONTAINER = 'your-cosmos-db-container-name'
 
-container_definition = {
-    'id': collectionName,
-    "partitionKey": {  
-        "paths": [  
-        "/id"  
-        ],  
-        "kind": "Hash" 
-    },
-    "indexingPolicy": {  
-    "indexingMode": "consistent",  
-    "automatic": True,  
-    "includedPaths": [],  
-    "excludedPaths": [{
-        "path": "/*"
-    }]  
-    },
-    "defaultTtl": -1,
-    "analyticalStorageTtl": -1
-}
+client = cosmos_client.CosmosClient(HOST,  KEY )
+# setup database for this sample. 
+# If doesn't exist, creates a new one with the name informed above.
+try:
+    db = client.create_database(DATABASE)
 
-container = client.CreateContainer(db['_self'], container_definition, options)
+except exceptions.CosmosResourceExistsError:
+    db = client.get_database_client(DATABASE)
+
+# Creating the container with analytical store enabled, using the name informed above.
+# If a container with the same name exists, an error is returned.
+#
+# The 3 options for the analytical_storage_ttl parameter are:
+# 1) 0 or Null or not informed (Not enabled).
+# 2) -1 (The data will be stored in analytical store infinitely).
+# 3) Any other number is the actual ttl, in seconds.
+
+try:
+    container = db.create_container(
+        id=CONTAINER,
+        partition_key=PartitionKey(path='/id', kind='Hash'),analytical_storage_ttl=-1
+    )
+    properties = container.read()
+    print('Container with id \'{0}\' created'.format(container.id))
+    print('Partition Key - \'{0}\''.format(properties['partitionKey']))
+
+except exceptions.CosmosResourceExistsError:
+    print('A container with already exists')
 ```
 
 ### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> 更新分析存储生存时间
@@ -157,7 +176,7 @@ container = client.CreateContainer(db['_self'], container_definition, options)
   * 打开“规模和设置”窗口。****
   * 在“设置”**** 下，找到“分析存储生存时间”。
   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值**** ****
-  * 单击“保存”以保存更改。
+  * 单击“保存” **** 以保存更改。
 
 #### <a name="net-sdk"></a>.NET SDK
 

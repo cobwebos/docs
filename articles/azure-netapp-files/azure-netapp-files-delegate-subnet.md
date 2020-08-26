@@ -1,6 +1,6 @@
 ---
 title: 将子网委派给 Azure NetApp 文件 | Microsoft Docs
-description: 介绍了如何将子网委派给 Azure NetApp 文件。
+description: 了解如何向 Azure NetApp 文件委托子网。 创建卷时，请指定委托子网。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 713a72b0a406d2038d56dc6fcc41e169d02c54eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bb3e93b99ce8d5a61501d417a71e5e38753f5ff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483612"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513020"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
 
 必须将一个子网委派给 Azure NetApp 文件。   在创建卷时，需要指定委派的子网。
 
 ## <a name="considerations"></a>注意事项
-* 用于创建新子网的向导默认设置 /24 网络掩码，这将提供 251 个可用 IP 地址。 对于此服务，使用 /28 网络掩码就足够了，这将提供 16 个可用 IP 地址。
+* 用于创建新子网的向导默认设置 /24 网络掩码，这将提供 251 个可用 IP 地址。 使用提供11个可用 IP 地址的/28 网络掩码足以满足服务的需求。
 * 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。   
    Azure 使你能够在 VNet 中创建多个委托子网。  但是，如果使用多个委托子网，则任何创建新卷的尝试都将失败。  
    VNet 中只能有一个委托子网。 NetApp 帐户可以将卷部署到多个 Vnet 中，每个都有其自己的委托子网。  

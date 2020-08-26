@@ -3,12 +3,13 @@ title: 快速入门：通过 Azure CLI 进行新策略分配
 description: 本快速入门介绍如何使用 Azure CLI 创建 Azure Policy 分配以识别不合规的资源。
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: 33db6b4098dc0a69f4dabbea62fc9627cdc948eb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2c289aa01362fcf0ede24bc1da7e8aef9e9be072
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558937"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496672"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入门：使用 Azure CLI 创建策略分配以识别不符合的资源
 

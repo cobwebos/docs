@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 ClickUp Productivity Platform 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ClickUp Productivity Platform 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06853edd-e8da-4ad2-a4e6-5555d592cee5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: f497955b698d7ca390b40686e94d553a7cd5c948
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048762"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教程：Azure Active Directory 与 ClickUp Productivity Platform 集成
 

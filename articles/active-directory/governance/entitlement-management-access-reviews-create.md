@@ -1,9 +1,9 @@
 ---
 title: 在 Azure AD 权限管理中创建访问包的访问评审
-description: 了解如何在 Azure Active Directory 访问评审（预览版）中创建授权管理访问包的访问评审策略。
+description: 了解如何在 Azure Active Directory 访问评审 (预览版) 中为授权管理访问包创建访问评审策略。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7aed942058a922fc8da504fe14c5ad8e0bed59a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078596"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798505"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建访问包的访问评审
 
@@ -53,14 +53,14 @@ ms.locfileid: "85078596"
 
 1. 设置 "**持续时间**"，以定义为审阅者的输入打开的重复序列的每个查看天数。 例如，您可以计划在1月1日开始的年度评审，并在30天内开启查看，以便审阅者在该月结束之前做出响应。
 
-1. 如果你希望用户执行其自己的访问评审，**则选择 "** **审阅者**" 旁边的 "查看"，如果要指定审阅者，请选择 "查看**特定审阅者**"。
+1. 如果希望指定审阅者，请在 "**审阅者**" 旁边，选择 "**自动查看**" （如果希望用户执行其自己的访问评审）或选择**特定的审阅者)  (s** 。
 
     ![选择 "添加审阅者"](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. 如果选择了 "**特定审阅者**"，请指定将执行访问评审的用户：
+1. 如果选择了 " ** () 的特定审阅者**"，请指定将执行访问评审的用户：
     1. 选择 "**添加审阅者**"。
-    1. 在 "**选择审阅者**" 窗格中，搜索并选择要作为审阅者的用户。
-    1. 选择了审阅者后，请单击 "**选择**" 按钮。
+    1. 在 "**选择审阅者**" 窗格中，搜索并选择要作为审阅者) 用户 (。
+    1. 选择了审阅者 () 时，单击 "**选择**" 按钮。
 
     ![指定审阅者](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
 

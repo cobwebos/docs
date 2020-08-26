@@ -3,18 +3,16 @@ title: 使用 Azure 门户管理 Azure Data Lake Analytics
 description: 本文介绍如何使用 Azure 门户管理 Data Lake Analytics 帐户、数据源、用户和作业。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121310"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531203"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +27,7 @@ ms.locfileid: "86121310"
 
 ### <a name="create-an-account"></a>创建帐户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 单击 "**创建资源**  >  **智能 + 分析**"  >  **Data Lake Analytics**。
 3. 为以下项选择值： 
    1. 名称****：Data Lake Analytics 帐户的名称。
@@ -44,9 +42,9 @@ ms.locfileid: "86121310"
 删除 Data Lake Analytics 帐户前，先删除其默认 Data Lake Store 帐户。
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 **“删除”** 。
+2. 单击“删除” 。
 3. 键入帐户名称。
-4. 单击 **“删除”** 。
+4. 单击“删除” 。
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -89,7 +87,7 @@ Data Lake Analytics 支持以下数据源：
 3. 选择一个用户，然后单击“选择”****。
 4. 选择一个角色，然后单击“选择”****。 若要设置要使用 Azure Data Lake 的新的开发人员，请选择“Data Lake Analytics 开发人员”**** 角色。
 5. 选择 U-SQL 数据库的访问控制列表 (ACL)。 如果对所选内容满意，请单击“选择”****。
-6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”。
+6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”  。
 7. 查看所选的所有更改，然后单击“运行”****。
 8. 完成向导后，单击“完成”****。
 
@@ -97,7 +95,7 @@ Data Lake Analytics 支持以下数据源：
 
 与其他 Azure 服务一样，可使用基于角色的访问控制 (RBAC) 来控制用户与服务交互的方式。
 
-标准 RBAC 角色具有以下功能：
+标准 Azure 角色具有以下功能：
 * 所有者****：可提交作业、监视作业、从任何用户取消作业以及配置帐户。
 * 参与者****：可提交作业、监视作业、从任何用户取消作业以及配置帐户。
 * 读者****：可监视作业。

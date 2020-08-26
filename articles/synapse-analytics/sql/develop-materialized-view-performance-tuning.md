@@ -10,11 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955057"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495686"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>通过具体化视图进行性能优化
 
@@ -39,7 +40,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 |额外存储                   | 否                                           | 是
 |语法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-using-materialized-views"></a>使用具体化视图的优点
+## <a name="benefits-of-materialized-views"></a>具体化视图的优点
 
 设计合理的具体化视图具有以下优势：
 

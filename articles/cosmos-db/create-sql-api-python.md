@@ -1,24 +1,24 @@
 ---
 title: 快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用
 description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Python 代码示例
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/11/2020
-ms.author: anfeldma
+ms.date: 08/11/2020
+ms.author: rosouz
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-- tracking-python
-ms.openlocfilehash: 1b3a97a11c8d5782b8b7577d6afccbbdaadea0e7
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+- devx-track-python
+ms.openlocfilehash: 16f1a7d3608b13dd5423205dc75500d76f62d69a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116564"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588120"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用程序
 
@@ -34,11 +34,19 @@ ms.locfileid: "85116564"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
-- [Python 3.6+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可执行文件。
+- 一个 Cosmos DB 帐户。 选项包括：
+    * 具有 Azure 有效订阅：
+        * [创建 Azure 免费帐户](https://azure.microsoft.com/free)或使用现有订阅 
+        * [Visual Studio 每月额度](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
+        * [Azure Cosmos DB 免费层](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+    * 不具有 Azure 有效订阅：
+        * [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，为期 30 天的测试环境。
+        * [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator) 
+- [Python 2.7 或 3.5.3+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可执行文件。
 - [Visual Studio Code](https://code.visualstudio.com/)。
 - [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
 - [Git](https://www.git-scm.com/downloads)。 
+- [用于 Python 的 Azure Cosmos DB SQL API SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

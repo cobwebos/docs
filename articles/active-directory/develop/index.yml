@@ -3,18 +3,18 @@ title: Microsoft 标识平台文档
 summary: Microsoft 标识平台是一项身份验证服务，也是开源库和应用程序管理工具。 在我们的快速入门、教程和代码示例中了解如何创建基于标准的新式身份验证解决方案。 构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 身份或社交帐户，或者它们授权访问你的 API 或 Microsoft API（例如 Microsoft Graph）。
 metadata:
   ms.topic: landing-page
-  ms.date: 07/13/2020
-  author: CelesteDG
-  ms.author: celested
+  ms.date: 08/11/2020
+  author: mmacy
+  ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
-  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/10/2020
-  ms.locfileid: "86230343"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88690283"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -76,14 +76,14 @@ landingContent:
       url: quickstart-v2-ios.md
     - text: Windows 桌面 (WPF)
       url: quickstart-v2-windows-desktop.md
-- title: 保护 Web API
+- title: Web API
   linkLists:
   - linkListType: get-started
     links:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: /samples/azure-samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/calling-a-web-api-in-an-aspnet-core-web-application-using-azure-ad/
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -91,12 +91,38 @@ landingContent:
     - text: 使用 Microsoft Graph API
       url: microsoft-graph-intro.md
     - text: Microsoft Graph 身份验证概述
-      url: https://docs.microsoft.com/graph/auth/
-- title: SAML 2.0
+      url: /graph/auth/
+- title: 协议
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: OAuth 2.0 和 OpenID Connect
+      url: active-directory-v2-protocols.md
+    - text: SAML 2.0
+      url: active-directory-saml-protocol-reference.md
+- title: 企业对客户 (B2C)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD B2C？
+      url: ../../active-directory-b2c/overview.md
+    - text: 技术和功能概述
+      url: ../../active-directory-b2c/technical-overview.md
+- title: 托管标识
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure AD 使用 SAML 协议的方式
-      url: active-directory-saml-protocol-reference.md
-    - text: Azure AD 中的 SAML SSO
-      url: single-sign-on-saml-protocol.md
+    - text: 关于 Azure 资源的托管标识
+      url: ../managed-identities-azure-resources/overview.md
+    - text: 托管标识和 Azure VM
+      url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
+- title: Docs 中的新增内容
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 处理错误和异常 - Android
+      url: msal-android-handling-exceptions.md
+    - text: 声明中的目录架构扩展属性
+      url: active-directory-schema-extensions.md
+    - text: MSAL.js 2.0 授权代码 + PKCE 和 CORS
+      url: quickstart-v2-javascript-auth-code.md

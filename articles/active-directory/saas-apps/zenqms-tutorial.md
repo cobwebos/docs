@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 ZenQMS 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 ZenQMS 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 72857c30-8896-438d-90c9-aeb21bf5fec0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 850923940c60212ad99729b8dbd002d8f9083a0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1b4f4d801a5bbc3342b203a402f5921265630944
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167158"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>教程：Azure Active Directory 与 ZenQMS 的集成
 

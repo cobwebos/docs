@@ -3,17 +3,17 @@ title: 教程 - 将通用 Node.js 客户端应用连接到 Azure IoT Central | M
 description: 本教程介绍如何以设备开发人员的身份将运行 Node.js 客户端应用的设备连接到 Azure IoT Central 应用程序。 通过导入设备功能模型创建设备模板，并添加视图来与连接设备交互
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt
-ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423516"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "84417899"
 
 本文适用于解决方案构建者和设备开发人员。
 
-本教程介绍如何以设备开发人员的身份将 Node.js 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Node.js 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。  此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
+本教程介绍如何以设备开发人员的身份将 Node.js 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Node.js 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。 此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -38,7 +38,7 @@ ms.locfileid: "84417899"
 
 若要完成本文中的步骤，需要以下各项：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。 应用程序必须在 2020/07/14 或之后创建。
 * 安装了 [Node.js](https://nodejs.org/) 10.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 本教程中的说明假设在 Windows 命令提示符下运行 **node** 命令。 但是，可以在许多其他的操作系统上使用 Node.js。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -121,7 +121,7 @@ ms.locfileid: "84417899"
 
     IoT Central 使用设备孪生来同步设备与 IoT Central 应用程序之间的属性值。 设备属性值使用设备孪生报告属性。 可写属性使用设备孪生报告属性和所需属性。
 
-1. 若要定义和处理设备响应的可写属性，请添加以下代码：
+1. 若要定义和处理设备响应的可写属性，请添加以下代码。 设备响应[可写属性更新](concepts-telemetry-properties-commands.md#writeable-property-types)而发送的消息必须包含 `av` 和 `ac` 字段。 `ad` 字段为可选字段：
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -130,12 +130,12 @@ ms.locfileid: "84417899"
     var writeableProperties = {
       'name': (newValue, callback) => {
           setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
           }, 1000);
       },
       'brightness': (newValue, callback) => {
         setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
         }, 5000);
       }
     };
@@ -145,13 +145,14 @@ ms.locfileid: "84417899"
       twin.on('properties.desired', function (desiredChange) {
         for (let setting in desiredChange) {
           if (writeableProperties[setting]) {
-            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-            writeableProperties[setting](desiredChange[setting].value, (newValue, status) => {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting]}`);
+            writeableProperties[setting](desiredChange[setting], (newValue, status, code) => {
               var patch = {
                 [setting]: {
                   value: newValue,
-                  status: status,
-                  desiredVersion: desiredChange.$version
+                  ad: status,
+                  ac: code,
+                  av: desiredChange.$version
                 }
               }
               sendDeviceProperties(twin, patch);
@@ -280,7 +281,9 @@ ms.locfileid: "84417899"
           } else {
             // Send device properties once on device start up.
             var properties = {
-              state: 'true'
+              state: 'true',
+              processorArchitecture: 'ARM',
+              swVersion: '1.0.0'
             };
             sendDeviceProperties(twin, properties);
 
@@ -326,11 +329,14 @@ node environmentalSensor.js
 
 ![观察客户端应用程序](media/tutorial-connect-device-nodejs/run-application-2.png)
 
+## <a name="view-raw-data"></a>查看原始数据
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 作为设备开发人员，现在你已了解了有关使用 Node.js 创建设备的基础知识，建议执行的后续步骤是：
 
-* 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
 * 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
 * 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
 

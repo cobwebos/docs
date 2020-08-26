@@ -4,12 +4,13 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中创建跨可用性
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/13/2020
+ms.openlocfilehash: 6bca57f799681a9f51b983da6f565bb465da8814
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195563"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214255"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -98,7 +99,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-接下来，使用 [kubectl describe][kubectl-describe] 命令来列出群集中的节点。 对 failure-domain.beta.kubernetes.io/zone 值进行筛选，如以下示例所示：
+接下来，使用 [kubectl 说明][kubectl-describe] 命令列出群集中的节点并按 *failure-domain.beta.kubernetes.io/zone* 值进行筛选。 以下示例适用于 Bash shell。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -130,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-当缩放操作在几分钟后完成时，命令 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` 应显示类似于以下示例的输出：
+如果缩放操作在几分钟后完成，则 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` Bash shell 中的命令应为类似于以下示例的输出：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -151,7 +152,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-通过查看运行 pod 的节点，可以看到 pod 在与三个不同的可用性区域相对应的节点上运行。 例如，使用命令 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 将获得类似于以下内容的输出：
+通过查看运行 pod 的节点，可以看到 pod 在与三个不同的可用性区域相对应的节点上运行。 例如， `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 在 Bash shell 中使用命令时，会收到类似于下面的输出：
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

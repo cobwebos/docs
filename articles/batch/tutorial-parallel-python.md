@@ -1,16 +1,16 @@
 ---
-title: 运行并行工作负载
+title: 使用 Python API 运行并行工作负荷
 description: 教程 - 在 Azure Batch 中使用 Batch Python 客户端库通过 ffmpeg 并行处理媒体文件
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 63515012d10739bb018de34e040465fbe337aa02
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561280"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853324"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -264,7 +264,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 运行任务之后，应用自动删除所创建的输入存储容器，并允许你选择是否删除 Batch 池和作业。 BatchClient 的 [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) 和 [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) 类都有删除方法（在确认删除时调用）。 虽然作业和任务本身不收费，但计算节点收费。 因此，建议只在需要的时候分配池。 删除池时会删除节点上的所有任务输出。 但是，输入和输出文件保留在存储帐户中。
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

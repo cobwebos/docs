@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps 创建易访问的地图应用程序 | Microsoft Azure Maps
-description: 本文介绍如何使用 Microsoft Azure Maps 生成具有辅助功能的应用程序。
+description: 了解 Azure Maps 中的辅助功能注意事项。 查看可访问地图应用程序的功能，并查看辅助功能提示。
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006207"
 ---
 # <a name="building-an-accessible-application"></a>生成可访问的应用程序
 

@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103953"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835997"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
-本文提供了有关使用以前版本的 Azure Migrate 的信息。
+本文提供了有关使用以前版本的 Azure Migrate 的信息。 
 
 
 有两个版本的 Azure Migrate 服务：
 
 - **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
-- **以前版本**：如果你使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 如果仍需使用在以前版本中创建的 Azure Migrate 项目，那么以下是可以执行与不可执行的操作：
+- **以前版本**：如果你使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 本文将以前版本的项目称为经典项目。 如果仍需使用在以前版本中创建的 Azure Migrate 项目，那么以下是可以执行与不可执行的操作：
     - 不能再创建迁移项目。
     - 建议不要执行新的发现。
     - 仍可以访问现有项目。
@@ -31,15 +31,24 @@ ms.locfileid: "86103953"
 
 ## <a name="upgrade-between-versions"></a>进行版本之间的升级
 
-无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](how-to-add-tool-first-time.md)并向其添加评估和迁移工具。
+无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](how-to-add-tool-first-time.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
 
 ## <a name="find-projects-from-previous-version"></a>从以前的版本中查找项目
 
 从以前的版本中查找项目的操作如下：
 
-1. 在“Azure 门户”>“所有服务”中搜索并选择“Azure Migrate”   。 
+1. 在“Azure 门户”>“所有服务”中搜索并选择“Azure Migrate” 。 
 2. Azure Migrate 仪表板上提供了一个通知和一个用于访问旧 Azure Migrate 项目的链接。
-3. 单击链接以打开 v1 项目。
+3. 单击链接以打开经典项目。
+
+## <a name="delete-projects-from-previous-version"></a>从以前的版本中删除项目
+
+从以前的版本中查找和删除项目时遵循以下操作：
+
+1. 在“Azure 门户”>“所有服务”中搜索并选择“Azure Migrate” 。 
+2. Azure Migrate 仪表板上提供了一个通知和一个用于访问旧 Azure Migrate 项目的链接。
+3. 单击链接以打开经典项目。
+4. 选择要删除的项目，然后将其删除。 
 
 
 ## <a name="create-an-assessment"></a>创建评估
@@ -51,15 +60,15 @@ ms.locfileid: "86103953"
 
 创建评估的操作如下：
 
-1. 在项目的“概述”页中，单击“+ 创建评估”。  
-2. 单击“全部查看”查看评估属性  。
+1. 在项目的“概述”页中，单击“+ 创建评估”。 
+2. 单击“全部查看”查看评估属性。
 3. 创建组并指定组名称。
 4. 选择要添加到该组的计算机。
-5. 单击“创建评估”，以创建该组和评估。 
-6. 创建评估后，在“概述” > “仪表板”中查看该评估。  
-7. 单击“导出评估”，将评估下载为 Excel 文件。 
+5. 单击“创建评估”，以创建该组和评估。
+6. 创建评估后，在“概述” > “仪表板”中查看该评估。 
+7. 单击“导出评估”，将评估下载为 Excel 文件。
 
-若要使用最新的性能数据更新现有的评估，可以对评估使用“重新计算”命令来更新它。 
+若要使用最新的性能数据更新现有的评估，可以对评估使用“重新计算”命令来更新它。
 
 ## <a name="review-an-assessment"></a>查看评估 
 
@@ -92,7 +101,7 @@ ms.locfileid: "86103953"
 --- | --- | ---
 **启动类型** | 支持 BIOS。 不支持 UEFI。 | 如果启动类型为 UEFI，则状态为有条件的就绪。
 **核心数** | 计算机核心数 <= Azure VM 支持的最大核心数 (128)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的核心数。<br/>如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果小于或等于限制，则状态为就绪。
-**内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](../virtual-machines/windows/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
+**内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果在限制范围内，则状态为就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果在限制范围内，则状态为就绪。
 
@@ -118,8 +127,8 @@ Windows Client 7、8 和 10 | Azure 仅支持 [Visual Studio 订阅。](../virtu
 Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)的支持。 | 已做好特定条件下的 Azure 迁移准备
 Windows Vista、XP Professional | 不支持。 计算机可能在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
 Linux | Azure 予以认可这些 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能在 Azure 中启动，但建议在迁移到 Azure 前将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本不受认可，则为 Azure 有条件的就绪。
-其他操作系统<br/><br/> 例如 Oracle Solaris、Apple Mac 操作系统、FreeBSD 等。 | Azure 不认可这些操作系统。 计算机课在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前安装已升级的 OS。  
-vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrate 无法确认 OS。 | 就绪性未知。 确保 VM 内部运行的 OS 在 Azure 中受到支持。
+其他操作系统<br/><br/> 例如 Oracle Solaris、Apple macOS、FreeBSD 等。 | Azure 不认可这些操作系统。 计算机课在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前安装已升级的 OS。  
+vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 无法确认 OS。 | 就绪性未知。 确保 VM 内部运行的 OS 在 Azure 中受到支持。
 32 位操作系统 | 计算机可在 Azure 中启动，但 Azure 可能不会提供完全支持。 | Azure 有条件的就绪，在迁移到 Azure 前考虑将计算机的 OS 从 32 位 OS 升级到 64 位 OS。
 
 
@@ -198,10 +207,10 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
 若要使用依赖项可视化，请将 Log Analytics 工作区与迁移项目相关联。 只能在创建迁移项目的同一订阅中创建或附加工作区。
 
-1. 若要将 Log Analytics 工作区附加到项目，请在“概述”>“Essentials”中，单击“需要配置”    。
+1. 若要将 Log Analytics 工作区附加到项目，请在“概述”>“Essentials”中，单击“需要配置”  。
 2. 可以创建新的工作区或附加现有的工作区：
   - 若要创建新的工作区，请指定名称。 在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
-  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 只有在[受支持的服务映射区域](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)中创建的那些工作区才会列出。 若要附加工作区，请确保对该工作区有“读取者”访问权限。
+  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 只有在[受支持的服务映射区域](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)中创建的那些工作区才会列出。 若要附加工作区，请确保对该工作区有“读取者”访问权限。
 
 > [!NOTE]
 > 你无法更改与迁移项目关联的工作区。
@@ -210,9 +219,9 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
 配置工作区后，请在要评估的每个本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../azure-monitor/platform/gateway.md)。
 
-1. 在“概述”  中，单击“管理”   > “计算机”  ，然后选择所需的计算机。
-2. 在“依赖项”  列中，单击“安装代理”  。
-3. 在要评估的每台 VM 上，从“依赖项”页下载并安装 Microsoft Monitoring Agent (MMA) 和依赖项代理  。
+1. 在“概述”中，单击“管理” > “计算机”，然后选择所需的计算机。
+2. 在“依赖项”列中，单击“安装代理”。
+3. 在要评估的每台 VM 上，从“依赖项”页下载并安装 Microsoft Monitoring Agent (MMA) 和依赖项代理。
 4. 复制工作区 ID 和密钥。 在本地计算机上安装 MMA 时将需要这些信息。
 
 > [!NOTE]
@@ -224,10 +233,10 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 若要在 Windows 计算机上安装代理：
 
 1. 双击下载的代理。
-2. 在“欢迎”页面上，单击“下一步”。   在“许可条款”  页面上，单击“我接受”  以接受许可协议。
-3. 在“目标文件夹”  中，保留或修改默认安装文件夹，然后选择“下一步”  。
-4. 在“代理安装选项”  中，选择“Azure Log Analytics”   > “下一步”  。
-5. 单击“添加”  以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。 
+2. 在“欢迎”页面上，单击“下一步”。  在“许可条款”页面上，单击“我接受”以接受许可协议。
+3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。
+4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
+5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 可以从命令行或使用自动化方法（如 Configuration Manager）安装代理。 [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。
 
@@ -254,16 +263,16 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - 详细了解针对 Windows 和 Linux 操作系统的 [Dependency agent 支持](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)。
-- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用脚本来安装依赖项代理。
+- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。
 
 >[!NOTE]
 > 参考的“用于 VM 的 Azure Monitor”一文提供了部署 Dependency agent 的系统先决条件和方法的概述，也适用于服务映射解决方案。
 
 ### <a name="create-a-group-with-dependency-mapping"></a>通过依赖项映射创建组
 
-1. 安装代理后，请转到门户并单击“管理”   > “计算机”  。
+1. 安装代理后，请转到门户并单击“管理” > “计算机”。
 2. 搜索在其中安装代理的计算机。
-3. 计算机的“依赖项”列现在应显示为“查看依赖项”   。 单击该列，查看计算机的依赖项。
+3. 计算机的“依赖项”列现在应显示为“查看依赖项” 。 单击该列，查看计算机的依赖项。
 4. 计算机的依赖项映射显示以下详细信息：
     - 与计算机的入站（客户端）和出站（服务器）TCP 连接
         - 没有安装 MMA 和依赖项代理的依赖计算机按端口号进行分组。
@@ -276,14 +285,14 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
    > [!NOTE]
    >    支持最长为一小时的时间范围。 使用 Azure Monitor 日志[查询较长持续时间的依赖项数据](./how-to-create-group-machine-dependencies.md)。
 
-5. 确定想要分成一组的依赖计算机之后，按住 Ctrl 键单击，在映射上选择多台计算机，然后单击“分组计算机”  。
+5. 确定想要分成一组的依赖计算机之后，按住 Ctrl 键单击，在映射上选择多台计算机，然后单击“分组计算机”。
 6. 指定组名。 确认 Azure Migrate 已发现依赖计算机。
 
     > [!NOTE]
     > 如果依赖计算机未被 Azure Migrate 发现，则无法将其添加到组中。 要将此类计算机添加到组中，需要再次在 vCenter Server 的正确范围内运行发现进程，确保 Azure Migrate 发现该计算机。  
 
 7. 如果想要为该组创建评估，请选中相应复选框，为该组创建新的评估。
-8. 单击“确定”  以保存组。
+8. 单击“确定”以保存组。
 
 创建组后，建议在该组中的所有计算机上安装代理，然后通过可视化整个组的依赖项优化该组。
 
@@ -293,9 +302,9 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
 若要运行 Kusto 查询，请执行以下操作：
 
-1. 安装代理后，请转到门户并单击“概述”  。
-2. 在“概述”  中，转到项目的“Essentials”  部分，然后单击“OMS 工作区”  旁边提供的工作区名称。
-3. 在“Log Analytics 工作区”页上，单击“常规”   > “日志”  。
+1. 安装代理后，请转到门户并单击“概述”。
+2. 在“概述”中，转到项目的“Essentials”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
+3. 在“Log Analytics 工作区”页上，单击“常规” > “日志”。
 4. 编写查询以使用 Azure Monitor 日志收集依赖项数据。 在下一部分查找示例查询。
 5. 通过单击“运行”，运行查询。 
 

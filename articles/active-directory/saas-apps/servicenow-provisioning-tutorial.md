@@ -2,25 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 ServiceNow 及如何取消预配。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
-ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218a3ad04d4f7366604784e06c558a9c568ad77e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751504"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528057"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -60,13 +56,13 @@ ms.locfileid: "84751504"
 
    ![ServiceNow 管理员角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. 检查以确保在 ServiceNow 中**禁用**了以下设置：
+3. 检查以确保在 ServiceNow 中 **禁用** 了以下设置：
 
    1. 选择 "**系统安全**  >  **高级安全设置**"  >  **要求对传入架构请求进行基本身份验证**。
    2. 选择 "**系统属性**"  >  **Web 服务**  >  **需要对传入 SOAP 请求进行基本授权**。
      
    > [!IMPORTANT]
-   > 如果*启用*了这些设置，则设置引擎将无法与 ServiceNow 通信。
+   > 如果 *启用*了这些设置，则设置引擎将无法与 ServiceNow 通信。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 ServiceNow
 
@@ -101,7 +97,7 @@ ms.locfileid: "84751504"
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![预配选项卡](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分中，输入 ServiceNow 管理员凭据和用户名。 单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow。 如果连接失败，请确保 ServiceNow 帐户具有管理员权限，然后重试。
 
@@ -141,7 +137,7 @@ ms.locfileid: "84751504"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。  
 
 ## <a name="troubleshooting-tips"></a>故障排查提示
@@ -153,7 +149,7 @@ ms.locfileid: "84751504"
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   此错误表示与 ServiceNow 实例通信时出现问题。 仔细检查以确保在 ServiceNow 中*禁用*了以下设置：
+   此错误表示与 ServiceNow 实例通信时出现问题。 仔细检查以确保在 ServiceNow 中 *禁用* 了以下设置：
    
    1. 选择 "**系统安全**  >  **高级安全设置**"  >  **要求对传入架构请求进行基本身份验证**。
    2. 选择 "**系统属性**"  >  **Web 服务**  >  **需要对传入 SOAP 请求进行基本授权**。

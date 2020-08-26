@@ -4,11 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0506eb6350358f7256a61c8d6f164b6594d20554
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416845"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566108"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -25,7 +26,7 @@ ms.locfileid: "84416845"
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* 您可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+* 你可以使用系统分配的托管标识来获得权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 * 分配给 AKS 节点池的子网不能是[委托子网](../virtual-network/subnet-delegation-overview.md)。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
@@ -38,7 +39,7 @@ Pod 和群集节点的 IP 地址是从虚拟网络中指定的子网分配的。
 > 应在考虑到升级和缩放操作的基础上确定所需的 IP 地址数。 如果设置的 IP 地址范围仅支持固定数量的节点，则无法升级或缩放群集。
 >
 > - **升级** AKS 群集时，会将一个新节点部署到该群集中。 服务和工作负荷开始在新节点上运行，旧节点将从群集中删除。 这种滚动升级过程要求至少有一个额外的 IP 地址块可用。 那么，节点计数是 `n + 1`。
->   - 使用 Windows Server 节点池时，此注意事项特别重要。 AKS 中的 windows Server 节点不会自动应用 Windows 更新，而是在节点池上执行升级。 此升级通过最新的 Windows Server 2019 基本节点映像和安全修补程序部署新节点。 有关升级 Windows Server 节点池的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+>   - 使用 Windows Server 节点池时，此注意事项尤其重要。 AKS 中的 Windows Server 节点不会自动应用 Windows 更新，相反，你需要在节点池上执行升级。 此升级使用最新的 Window Server 2019 基本节点映像和安全修补程序部署新节点。 有关升级 Windows Server 节点池的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 >
 > - **缩放** AKS 群集时，会将一个新节点部署到该群集中。 服务和工作负荷开始在新节点上运行。 确定 IP 地址范围时需要考虑到如何纵向扩展群集可以支持的节点和 Pod 数目。 此外，应该为升级操作包含一个额外的节点。 那么，节点计数是 `n + number-of-additional-scaled-nodes-you-anticipate + 1`。
 
@@ -48,7 +49,7 @@ AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网�
 
 | 地址范围 / Azure 资源 | 限制和调整大小 |
 | --------- | ------------- |
-| 虚拟网络 | Azure 虚拟网络的大小可以为 /8，但仅限于 65,536 个已配置的 IP 地址。 |
+| 虚拟网络 | Azure 虚拟网络的大小可以为 /8，但仅限于 65,536 个已配置的 IP 地址。 在配置地址空间之前，请考虑所有网络需求，包括与其他虚拟网络中的服务进行通信。 例如，如果配置的地址空间太大，则可能会遇到与网络中的其他地址空间重叠的问题。|
 | 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 子网大小还应考虑到帐户升级操作或将来的缩放需求。<p />若要计算最小子网大小，包括用于升级操作的其他节点：`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 个节点群集的示例：`(51) + (51  * 30 (default)) = 1,581`（/21 或更大）<p/>50 节点群集的示例，其中还包括纵向扩展额外 10 个节点的预配：`(61) + (61 * 30 (default)) = 1,891`（/21 或更大）<p>如果在创建群集时没有指定每个节点的最大 Pod 数，则每个节点的最大 Pod 数将设置为 30。 所需的最小 IP 地址数取决于该值。 如果基于不同的最大值计算最小 IP 地址要求，请参阅[如何配置每个节点的最大 Pod 数](#configure-maximum---new-clusters)，以便在部署群集时设置此值。 |
 | Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 可以在不同 AKS 群集中重复使用此范围。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址。 |
@@ -81,12 +82,12 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 > 上表中的最小值由 AKS 服务严格强制实施。 不能将 maxPods 值设置为低于所示的最小值，因为这样做可能会阻止群集启动。
 
 * **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，请指定 `--max-pods` 参数。 最大值为 250。
-* **资源管理器模板**：在 `maxPods` 使用资源管理器模板部署群集时，在[ManagedClusterAgentPoolProfile]对象中指定属性。 最大值为 250。
+* **资源管理器模板**：在 `maxPods` 使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定属性。 最大值为 250。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
 
 ### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
 
-创建新节点池时，可以定义“每个节点的 maxPod”设置。 如果需要增加现有群集的“每个节点的 maxPod”设置，请使用新的所需 maxPod 计数添加新的节点池。 将 Pod 迁移到新池后，请删除旧池。 若要删除群集中的任何旧池，请确保按[系统节点池文档[system-node-pools]中的定义设置节点池模式。
+创建新节点池时，可以定义“每个节点的 maxPod”设置。 如果需要增加现有群集的“每个节点的 maxPod”设置，请使用新的所需 maxPod 计数添加新的节点池。 将 Pod 迁移到新池后，请删除旧池。 若要在群集中删除任何较旧的池，请确保正在设置 " [系统节点池" 文档][system-node-pools]中定义的节点池模式。
 
 ## <a name="deployment-parameters"></a>部署参数
 
@@ -151,6 +152,10 @@ az aks create \
 * 是否可以在群集子网中部署 VM？
 
   是的。
+
+* *对于源自 Azure CNI 的 pod 的流量，哪些源 IP 对外部系统进行查看？*
+
+  与 AKS 群集处于同一虚拟网络中的系统，请参阅 pod IP 作为来自 pod 的任何流量的源地址。 AKS 群集虚拟网络外部的系统会看到节点 IP 作为来自 pod 的任何流量的源地址。 
 
 * *是否可以配置基于 Pod 的网络策略？*
 

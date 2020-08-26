@@ -5,11 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857805"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985608"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型转换 REST API
 
@@ -38,7 +39,7 @@ ms.locfileid: "82857805"
 转换服务向提供三个 REST API 终结点：
 
 - 使用与 Azure 远程呈现帐户链接的存储帐户开始模型转换。 
-- 使用提供的*共享访问签名（SAS）* 开始模型转换。
+- 使用提供的*共享访问签名 (SAS) *开始模型转换。
 - 查询转换状态
 
 ### <a name="start-conversion-using-a-linked-storage-account"></a>使用链接的存储帐户开始转换
@@ -52,6 +53,8 @@ ms.locfileid: "82857805"
 
 #### <a name="request-body"></a>请求正文
 
+> [!NOTE]
+> `input.folderPath`将检索到的所有内容，以便在 Azure 上执行转换。 如果 `input.folderPath` 未指定，则将检索容器的全部内容。 检索到的所有 blob 和文件夹都必须具有[有效的 Windows 文件名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -72,21 +75,23 @@ ms.locfileid: "82857805"
 }
 ```
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>使用提供的共享访问签名开始转换
-如果 ARR 帐户未链接到你的存储帐户，此 REST 接口允许你使用*共享访问签名（SAS）* 提供访问权限。
+如果 ARR 帐户未链接到你的存储帐户，此 REST 接口允许你使用*共享访问签名 (SAS) *提供访问权限。
 
 | 终结点 | 方法 |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-返回在 JSON 文档中包装的正在进行的转换的 ID。 字段名为 "conversionId"。
+返回在 JSON 文档中包装的正在进行的转换的 ID。 字段名称是 `conversionId` 。
 
 #### <a name="request-body"></a>请求正文
 
-请求正文与上面的 "创建 REST" 调用中的内容相同，但输入和输出包含*共享访问签名（SAS）令牌*。 这些令牌提供对存储帐户的访问，用于读取输入和写入转换结果。
+请求正文与上面的 "创建 REST" 调用相同，但输入和输出包含* (SAS) 令牌的共享访问签名*。 这些令牌提供对存储帐户的访问，用于读取输入和写入转换结果。
 
 > [!NOTE]
 > 这些 SAS URI 标记是查询字符串，而不是完整的 URI。 
 
+> [!NOTE]
+> `input.folderPath`将检索到的所有内容，以便在 Azure 上执行转换。 如果 `input.folderPath` 未指定，则将检索容器的全部内容。 检索到的所有 blob 和文件夹都必须具有[有效的 Windows 文件名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {

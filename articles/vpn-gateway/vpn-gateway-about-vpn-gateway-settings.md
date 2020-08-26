@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关：配置设置
-description: 了解 Azure 虚拟网络网关的 VPN 网关设置。
+description: 了解资源管理器部署模型中创建的虚拟网络的 VPN 网关资源和设置。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708138"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036906"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 
@@ -114,7 +114,7 @@ New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
 
 选择的 VPN 类型必须满足所要创建的解决方案的所有连接要求。 例如，如果要为同一虚拟网络创建 S2S VPN 网关连接和 P2S VPN 网关连接，应使用 VPN 类型*基于路由*，因为 P2S 需要“基于路由”VPN 类型。 此外，需确认 VPN 设备支持 RouteBased VPN 连接。 
 
-创建虚拟网络网关后，无法更改 VPN 类型。 必须删除虚拟网络网关，并新建一个。 有两种 VPN 类型：
+创建虚拟网络网关后，无法更改 VPN 类型。 必须删除虚拟网络网关，并新建一个。 VPN 类型分为两种：
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
@@ -169,7 +169,7 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 有关将 REST API、PowerShell cmdlet 或 Azure CLI 用于 VPN 网关配置的其他技术资源和具体语法要求，请参阅以下页面：
 
-| **经典** | **Resource Manager** |
+| **经典** | **资源管理器** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |

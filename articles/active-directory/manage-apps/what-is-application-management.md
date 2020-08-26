@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Active Directory 管理应用程序 | Microsoft 文档
+title: 什么是 Azure Active Directory 中的应用程序管理
 description: 将 Azure Active Directory (AD) 用作云和本地应用程序的标识和访问管理 (IAM) 系统的概述。
 services: active-directory
 author: kenwith
@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dafd3d7805924d92354c3de6ded50f17598f80f6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055199"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078064"
 ---
 # <a name="what-is-application-management"></a>什么是应用程序管理？
 
@@ -63,7 +63,7 @@ Azure AD 通过为云和本地应用提供单一的标识系统，简化了应�
 
 - **定制开发的应用程序** – 生成自己的业务线应用程序时，可将其与 Azure AD 相集成，以支持单一登录。 将应用程序注册到 Azure AD 后，你可以控制应用程序的身份验证策略。 有关详细信息，请参阅[开发人员指南](developer-guidance-for-integrating-applications.md)。
 
-- **非库应用程序** – 引入自己的应用程序！ 将这些应用程序添加到 Azure AD 即可支持其他应用的单一登录。 可以通过多种方法集成应用程序，下面列出了一些方法。 有关详细信息，请参阅[配置非库应用的单一登录](configure-single-sign-on-non-gallery-applications.md)。
+- **非库应用程序** – 引入自己的应用程序！ 将这些应用程序添加到 Azure AD 即可支持其他应用的单一登录。 可以通过多种方法集成应用程序，下面列出了一些方法。 有关详细信息，请参阅[配置 SAML 单一登录](configure-saml-single-sign-on.md)。
 
 >[!TIP]
 >可以将 Azure AD 与应用程序集成，即使尚未对应用程序进行预配置并且它不在应用库中。 可以将 Azure AD 与以下任意项集成
@@ -93,8 +93,6 @@ SSO 可以提高安全性。 在没有单一登录的情况下，管理员需要
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在你的 Azure AD 租户中查看已配置的应用程序](view-applications-portal.md)
-- [快速入门：将库应用程序添加到 Azure AD 租户](add-application-portal.md)
-- [将库应用添加到 Azure AD 组织](add-gallery-app.md)
+- [Azure AD 中的应用管理快速入门系列](view-applications-portal.md)
 - [应用程序集成入门](plan-an-application-integration.md)
 - [了解如何执行自动预配](../app-provisioning/user-provisioning.md)

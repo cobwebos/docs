@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的自适应应用程序控制
-description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure 计算机中运行的应用程序加入允许列表。
+description: 本文档可帮助你在 Azure 安全中心使用自适应应用程序控制，以允许列出在 Azure 计算机中运行的应用程序。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,172 +11,218 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2019
+ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77604672"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691473"
 ---
-# <a name="adaptive-application-controls"></a>自适应应用程序控制
-了解如何通过本演练在 Azure 安全中心配置应用程序控制。
+# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控件来减少计算机的攻击面
 
-## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
-自适应应用程序控制是 Azure 安全中心提供的智能、自动化、端到端的解决方案，有助于控制可在 Azure 和非 Azure 计算机（Windows 和 Linux）上运行的应用程序。 除其他优势外，这种控制还有助于强化计算机抵御恶意软件的侵害。 安全中心使用机器学习来分析计算机上运行的应用程序，并根据此智能创建允许列表。 此功能大大简化了配置和维护应用程序允许列表策略的过程，让你可以：
+了解 Azure 安全中心的自适应应用程序控件的优点，以及如何利用此数据驱动的智能功能增强安全性。
 
-- 阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
-- 遵循组织要求只能使用许可软件的安全策略。
-- 避免在环境中使用不需要的软件。
-- 避免运行旧的不受支持的应用。
-- 防止使用组织不允许的特定软件工具。
-- 允许 IT 部门控制用户使用应用来访问敏感数据。
 
-> [!NOTE]
-> 对于非 Azure 和 Linux 计算机，自适应应用程序控制仅在审核模式下受支持。
+## <a name="what-are-security-centers-adaptive-application-controls"></a>什么是安全中心的自适应应用程序控件？
 
-## <a name="how-to-enable-adaptive-application-controls"></a>如何启用自适应应用程序控制？
+自适应应用程序控件是一种智能和自动化的解决方案，用于定义计算机的已知安全应用程序的允许列表。 
 
-可以使用自适应应用程序控制来定义一组应用程序，允许这些应用程序在所配置计算机组上运行。 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。 使用以下步骤配置应用程序允许列表：
+通常，组织具有定期运行相同进程的计算机的集合。 安全中心使用机器学习来分析计算机上运行的应用程序，并创建一系列已知安全的软件。 允许列表基于特定的 Azure 工作负荷，你可以使用以下说明进一步自定义建议。
 
-1. 打开“安全中心”仪表板。
+启用并配置自适应应用程序控件后，如果任何应用程序运行的不是您定义为安全的应用程序，您将收到安全警报。
 
-1. 在左窗格的“高级云防御”下选择“自适应应用程序控制”。 
 
-    [![防御](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
+## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>自适应应用程序控件的好处是什么？
 
-此时会显示“自适应应用程序控件”页。
+通过定义已知安全的应用程序列表，并在执行任何其他操作时生成警报，你可以实现多个强化目标：
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+- 识别潜在的恶意软件，甚至反恶意软件解决方案可能丢失的恶意软件
+- 提高了本地安全策略的符合性，该策略规定仅使用许可的软件
+- 避免运行旧应用程序或不受支持的应用程序
+- 阻止组织禁止的特定软件
+- 增加访问敏感数据的应用的监督
 
-“VM 组”部分包含三个选项卡：
 
-* **已配置**：其中包含已配置了应用程序控制的 VM 的组列表。
-* **已建议**：建议对其实施应用程序控制的组的列表。 安全中心使用机器学习，根据 VM 是否一致地运行相同应用程序来确定适用于应用程序控制的 VM。
-* **无建议**：其中包含没有任何应用程序控制建议的 VM 的组列表。 例如，其上的应用程序始终变化，尚未达到稳定状态的 VM。
 
-> [!NOTE]
-> 安全中心使用专有聚类算法来创建 VM 组，确保相似的 VM 获得推荐的最佳应用程序控制策略。
->
->
+## <a name="availability"></a>可用性
 
-### <a name="configure-a-new-application-control-policy"></a>配置新的应用程序控制策略
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|支持的计算机：|![是 ](./media/icons/yes-icon.png) azure 和运行 Windows 和 Linux 的非 azure 计算机<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 计算机|
+|必需的角色和权限：|**安全读者** 和 **读取** 者角色可以查看组和已知安全应用程序的列表<br>**参与者** 和 **安全管理员** 角色可以编辑组和已知安全应用程序的列表|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
 
-1. 选择“已建议”选项卡会出现一个列表，其中列出了具有应用程序控制建议的组：
 
-   ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-   此列表包括：
+## <a name="enable-application-controls-on-a-group-of-machines"></a>在一组计算机上启用应用程序控件
 
-   - **组名称**：订阅和组的名称
-   - **VM 和计算机**：组中虚拟机的数目
-   - **状态**：建议的状态
-   - **严重性**：建议的严重性级别
+如果安全中心在你的订阅中标识了一致运行一组类似的应用程序的计算机组，则系统会提示你提供以下建议： **自适应应用程序控件，以便在你的计算机上启用用于定义安全应用程序的自适应应用程序控件**。
 
-2. 单击一个组，打开“创建应用程序控制规则”选项。
+选择建议，或打开 "自适应应用程序控制" 页，查看建议的已知安全应用程序和计算机组的列表。
 
-   [![应用程序控制规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
+1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
 
-3. 在“选择 VM”中查看建议的 VM 的列表，取消选中不需向其应用应用程序允许列表策略的 VM。 接下来，你将看到两个列表：
+    此时将打开 " **自适应应用程序控制** " 页，并将 vm 分组为以下选项卡：
 
-   - **建议的应用程序**：此列表中的应用程序在此组中的 VM 上频繁出现，建议允许其运行。
-   - **更多应用程序**：此列表中的应用程序在此组中的 VM 上不太频繁地出现（这类应用程序也称为“可利用项”，详见下文），因此建议对其进行复查。
+    - 已**配置**-已定义允许应用程序列表的计算机组。 对于每个组，"已配置" 选项卡显示：
+        - 组中的计算机数
+        - 最近的警报
 
-4. 复查每个列表中的应用程序，并取消选中不希望应用规则的任何应用程序。 每个列表包括：
+    - **建议** -运行相同应用程序且未配置允许列表的计算机组。 建议为这些组启用自适应应用程序控件。
+    
+      > [!TIP]
+      > 如果你看到名为 "REVIEWGROUP" 的组名，则它包含具有部分一致性列表的应用程序的计算机。 安全中心无法查看模式，但建议查看此组，以查看 _是否可以_ 手动定义某些自适应应用程序控件规则，如 [编辑组的自适应应用程序控件规则](#editing-a-groups-adaptive-application-controls-rule)中所述。
+      >
+      > 你还可以根据 [将计算机从一个组移到另一个组](#move-a-machine-from-one-group-to-another)中所述，将计算机从此组移动到其他组。
 
-   - **名称**：应用程序的证书信息或其完整路径
-   - **文件类型**：应用程序文件类型。 可以是 EXE、脚本、MSI 或这些类型的任意排列。
-   - **可利用**：一个警告图标，表示攻击者可能会利用特定应用程序绕过应用程序允许列表解决方案。 建议在这些应用程序审批前查看它们。
-   - **用户**：建议允许其运行应用程序的用户
+    - **无建议** -没有定义的应用程序的允许列表和不支持此功能的计算机。 您的计算机可能在此选项卡中，原因如下：
+      - 缺少 Log Analytics 代理
+      - Log Analytics 代理未发送事件
+      - 它是一个 Windows 计算机，其中包含由 GPO 或本地安全策略启用的预先存在的 [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) 策略
 
-5. 选择完以后，请选择“创建”。 <br>
-   选择“创建”后，Azure 安全中心会自动基于 Windows 服务器 (AppLocker) 上可用的内置应用程序允许列表解决方案创建相应的规则。
+      > [!TIP]
+      > 安全中心需要至少两周的数据来定义每组计算机的唯一建议。 最近创建的计算机或属于只有最近启用了标准层的订阅的计算机将显示在 " **无建议** " 选项卡下。
 
-> [!NOTE]
-> - 安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。
-> - 安全中心内的自适应应用程序控制不支持已通过 GPO 或本地安全策略为其启用了 AppLocker 策略的 VM。
-> -  安全中心始终会遵循安全方面的最佳做法，尝试为选择允许的应用程序创建发布者规则，只有在应用程序没有发布者信息（即未签名）的情况下，才会为特定应用程序的完整路径创建路径规则。
->   
 
-### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>编辑和监视配置了应用程序控制的组
+1. 打开 **建议** 的选项卡。此时会显示具有 "推荐允许列表" 的计算机组。
 
-1. 若要编辑和监视使用应用程序允许列表策略配置的组，请返回到“自适应应用程序控制”页，在“VM 组”下选择“已配置”  ：
+   ![建议的选项卡](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
-   ![组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+1. 选择组。 
 
-   此列表包括：
+1. 若要配置新规则，请查看此 " **配置应用程序控制规则** " 页和内容的各个部分，这些部分对于这一特定计算机组是唯一的：
 
-   - **组名称**：订阅和组的名称
-   - **VM 和计算机数**：组中虚拟机的数目
-   - **模式**：“审核”模式将记录要运行不在允许列表中的应用程序的尝试；“强制”模式将禁止运行应用程序，除非它们在允许列表中
-   - **警报**：任何当前的冲突
+   ![配置新规则](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-2. 单击一个组，可在“编辑应用程序控制策略”页中进行更改。
+   1. **选择计算机** -默认情况下，已标识组中的所有计算机都处于选中状态。 取消选择任何以从该规则中删除它们。
+   
+   1. **推荐的应用程序** -查看此组中的计算机共用的此应用程序列表，并建议允许运行。
+   
+   1. **更多应用程序** -查看此组中的计算机上不太频繁显示的此应用程序列表，或查看这些应用程序的可攻击列表。 警告图标表示攻击者可以使用特定的应用程序绕过应用程序允许列表。 建议仔细查看这些应用程序。
 
-   ![保护](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+      > [!TIP]
+      > 这两个应用程序列表包括将特定应用程序限制为特定用户的选项。 尽可能采用最小特权原则。
+      > 
+      > 应用程序是由其发布者定义的。如果应用程序没有 (未签名) 的发行者信息，将为特定应用程序的完整路径创建路径规则。
 
-3. 在“保护模式”下，可以在以下选项之间进行选择：
+   1. 若要应用规则，请选择 " **审核**"。 
 
-   - **审核**：在此模式下，应用程序控制解决方案不强制实施规则，只审核受保护 VM 上的活动。 如果在阻止应用在目标 VM 中运行之前需先观察总体行为，建议使用此模式。
-   - **强制**：在此模式下，应用程序控制解决方案强制实施规则，确保阻止不允许运行的应用程序。
 
-   > [!NOTE]
-   > -  在进一步通知之前，禁用“强制”保护模式。
-   > - 如前所述，默认情况下，新的应用程序控制策略始终在“审核”模式下配置。 
+
+
+## <a name="editing-a-groups-adaptive-application-controls-rule"></a>编辑组的自适应应用程序控件规则
+
+由于组织中已知的更改，你可能会决定编辑一组计算机的允许列表。 
+
+编辑计算机组的规则：
+
+1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
+
+1. 从 " **配置** " 选项卡中，选择包含要编辑的规则的组。
+
+1. 如在[一组计算机上启用自适应应用程序控件](#enable-application-controls-on-a-group-of-machines)中所述，查看 "**配置应用程序控制规则**" 页的各个部分。
+
+1. （可选）添加一个或多个自定义规则：
+
+   1. 选择 " **添加规则**"。
+
+      ![添加自定义规则](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+
+   1. 如果要定义已知的安全路径，请将 **规则类型** 更改为 "path"。 可以在路径中包含通配符。
+   
+      > [!TIP]
+      > 路径中的通配符可能有用的一些方案：
+      > 
+      > * 在路径末尾使用通配符可允许此文件夹和子文件夹中的所有可执行文件。
+      > * 使用路径中间的通配符启用具有更改的文件夹名称的已知可执行文件名称 (例如，包含已知可执行文件、自动生成的文件夹名称等) 的个人用户文件夹。
+  
+   1. 定义允许的用户和受保护的文件类型。
+
+   1. 定义完规则后，选择 " **添加**"。
+
+1. 若要应用更改，请选择 " **保存**"。
+
+
+
+
+## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>响应 "应更新自适应应用程序控制策略中的允许列表规则" 建议
+
+如果安全中心的机器学习识别了以前未被允许的可能合法行为，你将看到此建议。 建议建议现有定义的新规则，以减少误报警报的数目。
+
+要修正问题：
+
+1. 在 "建议" 页上，选择 " **自适应应用程序控制策略中的允许列表规则" "应更新** " 建议，以查看具有新标识的潜在合法行为的组。
+
+1. 选择包含要编辑的规则的组。
+
+1. 如在[一组计算机上启用自适应应用程序控件](#enable-application-controls-on-a-group-of-machines)中所述，查看 "**配置应用程序控制规则**" 页的各个部分。
+
+1. 若要应用更改，请选择 " **审核**"。
+
+
+
+
+## <a name="auditing-alerts-and-violations"></a>审核警报和冲突
+
+1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
+
+1. 若要查看具有最近警报的计算机的组，请查看 " **已配置** " 选项卡中列出的组。
+
+1. 若要进一步调查，请选择组。
+
+   ![最近的警报](./media/security-center-adaptive-application/recent-alerts.png)
+
+1. 有关更多详细信息以及受影响的计算机的列表，请选择警报。
+
+
+
+## <a name="move-a-machine-from-one-group-to-another"></a>将计算机从一个组移到另一个组
+
+将计算机从一个组移到另一个组时，应用于该计算机的应用程序控制策略将更改为您将其移动到的组的设置。 你还可以将计算机从配置的组移动到未配置的组，这样做会删除应用于计算机的任何应用程序控制规则。
+
+1. 从 " **自适应应用程序控制** " 页上的 " **配置** " 选项卡中，选择包含要移动的计算机的组。
+
+1. 打开  **已配置计算机**的列表。
+
+1. 从行末尾的三个点打开计算机的菜单，然后选择 " **移动**"。 此时将打开 " **将计算机移动到不同的组** " 窗格。
+
+1. 选择目标组，然后选择 " **移动计算机**"。
+
+1. 若要保存更改，请选择 " **保存**"。
+
+
+
+
+
+## <a name="managing-application-controls-via-the-rest-api"></a>通过 REST API 管理应用程序控件 
+
+若要以编程方式管理自适应应用程序控件，请使用我们的 REST API。 
+
+[此处](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)提供了完整的 API 文档。
+
+REST API 提供的一些函数：
+
+* **List** 检索所有组的建议，并为每个组提供一个包含对象的 JSON。
+
+* **Get** 检索包含完整建议数据 (的 JSON，即计算机列表、发布服务器/路径规则等) 。
+
+* **Put** 配置规则 (使用检索 **到的 JSON 作为此** 请求的主体) 。
+ 
+   > [!IMPORTANT]
+   > **Put**函数需要的参数少于 Get 命令返回的 JSON 所包含的参数。
    >
+   > 在 Put 请求中使用 JSON 之前，请删除以下属性： recommendationStatus、configurationStatus、问题、位置和 sourceSystem。
 
-4. 可以在“策略扩展”下添加需要允许的任何应用程序路径。 添加这些路径后，除了已有的规则，安全中心还会更新所选 VMS 组中 VM 上的应用程序允许列表策略，并为这些应用程序创建适当的规则。
 
-5. 查看“最近警报”部分中列出的当前冲突。 单击要重定向到 Azure 安全中心内“警报”页面的每一行，并查看 Azure 安全中心在关联的 VM 上检测到的所有警报。
-   - **警报**：已记录的任何冲突。
-   - **VM 数量**：带有此类警报的虚拟机数量。
 
-6. 在“发布者允许列表规则”、“路径允许列表规则”和“哈希允许列表规则”下，可以根据规则集合类型，查看当前在组内的 VM 上配置了哪些应用程序允许列表规则  。 对于每条规则，可以查看：
-
-   - **规则**：AppLocker 根据此参数检查应用程序是否能运行。
-   - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意一种类型：EXE、脚本、MSI 或这些文件类型的任意排列。
-   - **用户**：允许运行应用程序允许列表规则所涵盖的应用程序的用户的名称或数量。
-
-   ![允许列表规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
-
-7. 若要删除特定规则或编辑允许的用户，请单击每行末尾的三点符号。
-
-8. 更改“自适应应用程序控制”策略后，请点击“保存” 。
-
-### <a name="not-recommended-list"></a>“不建议”列表
-
-安全中心只为运行稳定的一组应用程序的虚拟机建议应用程序允许列表规则。 如果已关联 VM 上的应用程序始终变化不定，则不会创建建议。
-
-![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
-
-此列表包含：
-- **组名称**：订阅和组的名称
-- **VM 和计算机数**：组中虚拟机的数目
-
-Azure 安全中心还可以在非推荐的 VM 组上定义应用程序允许列表策略。 遵循与前述相同的原则，在这些组上配置应用程序允许列表策略。
-
-## <a name="move-a-vm-from-one-group-to-another"></a>将 VM 从一个组移到另一个组
-
- 将 VM 从一个组移动到另一个组时，适用于该 VM 的应用程序控制策略会更改为移动到的组的设置。 也可将 VM 从一个已配置组移动到一个未配置组，这样会删除以前应用到该 VM 的任何应用程序控制策略。
-
- 1. 在“自适应应用程序控制”页的“已配置”选项卡中，单击要移动的 VM 目前所属的组。 
-1. 单击“已配置的 VM 和计算机”。
-1. 单击要移动的 VM 所在行中的三个点，然后单击“移动”。 此时“将计算机移动到其他组”窗口会打开。
-
-    ![保护](./media/security-center-adaptive-application/adaptive-application-move-group.png)
-
- 1. 选择要将 VM 移到其中的组，单击“移动计算机”，然后单击“保存” 。
-
-    ![保护](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
-
- > [!NOTE]
-> 请确保在单击“移动计算机”后单击“保存”。 如果未单击“保存”，则计算机不会移动。
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 和非 Azure VM 中运行的应用程序加入允许列表。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
+本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制来定义允许在 Azure 和非 Azure 计算机上运行的应用程序列表。 若要详细了解安全中心的某些其他云工作负荷保护功能，请参阅：
 
-* [Managing and responding to security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理警报并响应安全中心的安全事件。
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
-* [了解 Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
-* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
+* [了解实时 (JIT) VM 访问](just-in-time-explained.md)
+* [保护 Azure Kubernetes 群集](azure-kubernetes-service-integration.md)

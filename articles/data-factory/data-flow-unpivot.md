@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537708"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541645"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure 数据工厂逆透视转换
 
@@ -46,7 +46,7 @@ ms.locfileid: "86537708"
 
 例如，通过“区域”透视“销售”只会为你提供每个销售值的新列值。 例如： "25"，"50"，"1000"，.。。但是，如果您设置了前缀值 "Sales"，则 "Sales" 将作为这些值的前缀。
 
-<img src="media/data-flow/unpivot3.png" width="400">
+![图像：使用水果列作为 unipivot 键，在 unipivot 转换前后显示 PO、供应商和水果列。](media/data-flow/unpivot3.png)
 
 将列排列设置为“正常”，将所有透视列与其聚合值组合在一起。 将列排列设置为“横向”将在列和值之间交替。
 

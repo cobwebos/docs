@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: bb8f80baac5ce49db612a7d3a599d727b824bffc
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073365"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505849"
 ---
 适用于 Go 的人脸客户端库入门。 请按照以下步骤安装库并试用基本任务的示例。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520147"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289327"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何将帐户从云合作伙伴门户迁移到合作伙伴中心
 
@@ -59,7 +59,7 @@ ms.locfileid: "86520147"
 
 如果你不是 Microsoft 合作伙伴网络的成员，可[在此处加入](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)以获取 MPN ID。 记下你的 MPN ID，因为你需要在帐户激活过程中输入该 ID。
 
-若要详细了解 Microsoft 合作伙伴网络，请参阅合作伙伴网站上的[加入 Microsoft 合作伙伴网络](https://partner.microsoft.com/en-US/membership)。 若要详细了解 Microsoft 合作伙伴网络中的 ISV 权益，请参阅 [ISV 资源中心](https://partner.microsoft.com/isv-resource-hub)。  
+若要详细了解 Microsoft 合作伙伴网络，请参阅合作伙伴网站上的[加入 Microsoft 合作伙伴网络](https://partner.microsoft.com/membership)。 若要详细了解 Microsoft 合作伙伴网络中的 ISV 权益，请参阅 [ISV 资源中心](https://partner.microsoft.com/isv-resource-hub)。  
 
 ## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>将 Dynamics 365 和 PowerApps 产品/服务移迁移到合作伙伴中心
 

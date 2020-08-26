@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051903"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080226"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "85051903"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -51,13 +51,9 @@ az group create --name "myResourceGroup" -l "EastUS"
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-记下返回的 `vaultUri`（其格式将为“https://<your-keyvault-name>.vault.azure.net/”）。 它将在[更新代码](#update-the-code)步骤中使用。
+记下返回的 `vaultUri`（其格式将为“https://&lt;your-keyvault-name&gt;.vault.azure.net/”）。 它将在[更新代码](#update-the-code)步骤中使用。
 
-现在可以使用 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) 命令将机密放入密钥保管库中。 将机密名称设置为“MySecret”，将值设置为 "Success!"。
-
-```azurecli-interactive
-az keyvault secret set --vault-name "<your-keyvault-name>" --name "MySecret" --value "Success!"
-```
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-net-web-app"></a>创建 .NET Web 应用
 
@@ -144,7 +140,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-remote-web-app"></a>创建远程 Web 应用
 
-在 `myAppServicePlan` 应用服务计划中创建 [Azure Web 应用](../../app-service/containers/app-service-linux-intro.md)。 
+在 `myAppServicePlan` 应用服务计划中创建 [Azure Web 应用](../../app-service/overview.md#app-service-on-linux)。 
 
 > [!Important]
 > 与密钥保管库类似，Azure Web 应用必须具有独一无二的名称。 在以下示例中，请将 \<your-webapp-name\> 替换为 Web 应用的名称。

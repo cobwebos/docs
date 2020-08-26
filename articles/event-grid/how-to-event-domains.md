@@ -3,12 +3,13 @@ title: 使用事件域向 Azure 事件网格发布事件
 description: 展示了如何使用事件域管理 Azure 事件网格中的大型主题集并向其发布事件。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 30a77d98fdb0d5bfd5169174999a0a08742adfd8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105555"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502029"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
 
@@ -78,7 +79,7 @@ New-AzureRmEventGridDomain `
 
 ## <a name="manage-access-to-topics"></a>管理对主题的访问
 
-可通过[角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)来管理对主题的访问。 角色分配使用基于角色的访问控制来限制对 Azure 资源的操作，仅允许经授权用户在特定范围内执行操作。
+可通过[角色分配](../role-based-access-control/role-assignments-cli.md)来管理对主题的访问。 角色分配使用基于角色的访问控制来限制对 Azure 资源的操作，仅允许经授权用户在特定范围内执行操作。
 
 事件网格包含两个内置角色，可以使用这些角色为特定用户分配对域中不同主题的访问权限。 这些角色为 `EventGrid EventSubscription Contributor (Preview)` 和 `EventGrid EventSubscription Reader (Preview)`，分别用于创建/删除订阅，以及只允许列出事件订阅。
 
@@ -135,7 +136,7 @@ New-AzureRmEventGridSubscription `
 
 如果需要将事件订阅到某个测试终结点，始终可以部署能够显示传入事件的[预生成 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 可将事件发送到测试网站 (`https://<your-site-name>.azurewebsites.net/api/updates`)。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
 为主题设置的权限存储在 Azure Active Directory 中，必须显式删除。 如果用户对主题拥有写访问权限，则删除事件订阅不会撤消用户创建事件订阅的权限。
 

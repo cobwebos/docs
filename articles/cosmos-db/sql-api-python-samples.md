@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB 的 SQL API Python 示例
 description: 在 GitHub 上查找用于 Azure Cosmos DB 中常见任务的 Python 示例，包括 CRUD 操作。
-author: SnehaGunda
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: sample
-ms.date: 05/20/2020
-ms.author: sngun
-ms.custom: tracking-python
-ms.openlocfilehash: c52651e15f648bede419501f516392acbc266e8a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 08/11/2020
+ms.author: rosouz
+ms.custom: devx-track-python
+ms.openlocfilehash: 34257281470f051f3d385aa729ca5a4f3591e61c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558004"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586244"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 示例
 
@@ -33,16 +33,19 @@ ms.locfileid: "84558004"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-- 可以[激活 Visual Studio 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
-
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-还需要 [Python SDK](sql-api-sdk-python.md)。
-
-   > [!NOTE]
-   > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 这些示例会向 `CosmosClient.CreateContainer` 发出多次调用。 每次调用完成后，你的订阅将按使用一小时计费。 有关 Azure Cosmos DB 计费的详细信息，请参阅 [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+- 一个 Cosmos DB 帐户。 选项包括：
+    * 具有 Azure 有效订阅：
+        * [创建 Azure 免费帐户](https://azure.microsoft.com/free)或使用现有订阅 
+        * [Visual Studio 每月额度](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
+        * [Azure Cosmos DB 免费层](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+    * 不具有 Azure 有效订阅：
+        * [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，为期 30 天的测试环境。
+        * [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator) 
+- [Python 2.7 或 3.5.3+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可执行文件。
+- [Visual Studio Code](https://code.visualstudio.com/)。
+- [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
+- [Git](https://www.git-scm.com/downloads)。 
+- [用于 Python 的 Azure Cosmos DB SQL API SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
 
 ## <a name="database-examples"></a>数据库示例
 
@@ -93,6 +96,6 @@ ms.locfileid: "84558004"
 | [将特定项排除在索引范围外](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L145-L201) | documents.IndexingDirective.Exclude|
 | [对已编入索引的特定项使用手动索引](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L204-L263) | documents.IndexingDirective.Include |
 | [将路径排除在索引范围外](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L266-L336) |定义要在 `IndexingPolicy` 属性中排除的路径 |
-| [对字符串使用范围索引](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L401-L485) | 使用范围索引对字符串数据类型定义索引策略。 `'kind': documents.IndexKind.Range`、`'dataType': documents.DataType.String`|
+| [对字符串使用范围索引](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L401-L485) | 使用范围索引对字符串数据类型定义索引策略。 `'kind': documents.IndexKind.Range`, `'dataType': documents.DataType.String`|
 | [执行索引转换](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L488-L544) |database.replace_container（使用更新的索引策略）|
 | [当路径上仅存在哈希索引时使用扫描](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L339-L398) | 查询项时设置 `enable_scan_in_query=True` 和 `enable_cross_partition_query=True` |

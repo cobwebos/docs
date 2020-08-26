@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dbd4ea4438e82ea9fb1d503b262bfda1b22b2737
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845434"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690300"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>配置适用于 IIS Web 应用的 Azure 多重身份验证服务器
 
@@ -57,7 +58,7 @@ ms.locfileid: "83845434"
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
 2. 单击“HTTP”选项卡。
 3. 单击“添加”。
-4. 在“添加基 URL”对话框中，输入执行 HTTP 身份验证的网站的 URL（例如 <http://localhost/owa>）并提供应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
+4. 在“添加基 URL”对话框中，输入执行 HTTP 身份验证的网站的 URL（例如 `http://localhost/owa`）并提供应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 调整空闲超时和会话时间上限（如果默认值不够）。
 6. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 7. 如果需要，请选中“Cookie 缓存”框。

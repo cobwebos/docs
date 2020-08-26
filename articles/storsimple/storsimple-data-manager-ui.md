@@ -1,16 +1,17 @@
 ---
 title: Microsoft Azure StorSimple 数据管理器 UI
-description: 介绍如何使用 StorSimple 数据管理器服务 UI
+description: 了解如何使用 StorSimple 数据管理器 UI 转换驻留在 StorSimple 8000 系列设备上的数据。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78933746"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184527"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
 
@@ -41,7 +42,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    2. 从下拉列表中选择一个**订阅**。 该订阅将链接到计费帐户。 如果你只有一个订阅，则该字段将自动填充（并且不可选）。
 
-   3. 选择现有的资源组，或创建一个新的组。 有关详细信息，请参阅 [Azure 资源组](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
+   3. 选择现有的资源组，或创建一个新的组。 有关详细信息，请参阅 [Azure 资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
    4. 为存储存储帐户和 StorSimple 数据管理器服务的服务指定“位置”****。 StorSimple 设备管理器服务、数据管理器服务和关联的存储帐户都应在支持的区域中。
     
@@ -103,7 +104,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    4. 数据转换服务仅适用于推送到 Azure 的数据的最新快照。
 
-   5. 单击“确定”。
+   5. 单击" **确定**"。
 
       ![配置源数据存储库 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -120,7 +121,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
     
     1. 从“目标帐户名称”的下拉列表中选择创建的存储库作为目标****。
 
-    2. 选择 blob 或文件作为存储类型。 指定已转换的数据所在的存储容器的名称。 单击“确定”。
+    2. 选择 blob 或文件作为存储类型。 指定已转换的数据所在的存储容器的名称。 单击" **确定**"。
 
         ![配置目标数据存储库存储帐户](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 

@@ -5,16 +5,17 @@ description: 了解如何在 Azure 机器学习设计器（预览版）中通过
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.custom: designer
-ms.openlocfilehash: c466684bf5c07b5e88e8052c29aa9fb0b8583a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430070"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319620"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器（预览版）重新训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,6 +34,8 @@ ms.locfileid: "84430070"
 
 * 使用企业 SKU 的 Azure 机器学习工作区。
 * 请完成本操作说明系列的第 1 部分“[在设计器中转换数据](how-to-designer-transform-data.md)”。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 本文还假定你已掌握在设计器中生成管道的基本知识。 如需了解引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
 

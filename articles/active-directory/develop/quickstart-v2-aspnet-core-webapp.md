@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554131"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165764"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 在本快速入门中，你将通过代码示例了解 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
@@ -43,11 +43,11 @@ ms.locfileid: "85554131"
 > 1. 选择“新注册”。
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
 >    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AspNetCore-Quickstart`。
->    - 在“重定向 URI”中添加 `https://localhost:44321/`，然后选择“注册”。 
+>    - 在“重定向 URI”中添加 `https://localhost:44321/`，然后选择“注册”。
 > 1. 选择“身份验证”菜单，然后添加以下信息：
->    - 在“重定向 URI”中添加 `https://localhost:44321/signin-oidc`，然后选择“保存”。 
+>    - 在“重定向 URI”中添加 `https://localhost:44321/signin-oidc`，然后选择“保存”。
 >    - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:44321/signout-oidc`。
->    - 在“隐式授权”下，勾选“ID 令牌”。 
+>    - 在“隐式授权”下，勾选“ID 令牌”。
 >    - 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -62,10 +62,10 @@ ms.locfileid: "85554131"
 #### <a name="step-2-download-your-aspnet-core-project"></a>步骤 2：下载 ASP.NET Core 项目
 
 > [!div renderon="docs"]
-> [下载 Visual Studio 2019 解决方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [下载 ASP.NET Core 解决方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 使用 Visual Studio 2019 运行项目。
+> 运行该项目。
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
@@ -76,9 +76,9 @@ ms.locfileid: "85554131"
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>步骤 3：运行 Visual Studio 项目
+> #### <a name="step-3-run-your-aspnet-core-project"></a>步骤 3：运行 ASP.NET Core 项目
 > 1. 将 zip 文件提取到根文件夹中的本地文件夹（例如，**C:\Azure-Samples**）
-> 1. 在 Visual Studio 中打开该解决方案
+> 1. 在 IDE 中打开解决方案
 > 1. 编辑 **appsettings.json** 文件。 查找 `ClientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”值更新 `ClientId` 的值。
 >
 >    ```json
@@ -90,14 +90,14 @@ ms.locfileid: "85554131"
 
 > [!div renderon="docs"]
 > 其中：
-> - `Enter_the_Application_Id_here` - 在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。 
+> - `Enter_the_Application_Id_here` - 在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
 > - `Enter_the_Tenant_Info_Here` - 以下选项之一：
 >   - 如果应用程序支持“仅限此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
 >   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为`common`
 >
 > > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
 
 ## <a name="more-information"></a>详细信息
 

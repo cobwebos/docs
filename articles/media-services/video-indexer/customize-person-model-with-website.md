@@ -8,13 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: f29e651f5c8542722f0dc2c9878184ac0d2a6a1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.author: kumud
+ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499972"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904490"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义人员模型
 
@@ -69,7 +70,7 @@ ms.locfileid: "79499972"
 
     ![向人员添加新的人脸](./media/customize-face-model/add-new-face2.png)
 
-    然后，你可以从文件资源管理器中进行选择，或者拖放人脸图像。 视频索引器将采用所有标准图像文件类型（例如： JPG、PNG 等）。
+    然后，你可以从文件资源管理器中进行选择，或者拖放人脸图像。 视频索引器将采用所有标准图像文件类型， (例如： JPG、PNG 等) 。
 
     视频索引器可以使用您向其中添加了此新人脸的人员模型，在您为你建立索引的未来视频中检测此人的出现次数，并使用你已建立索引的当前视频。 在当前视频中，用户识别可能需要一些时间才能生效，因为这是一个批处理。
 
@@ -103,7 +104,7 @@ ms.locfileid: "79499972"
 1. 如果确定，请再次选择 "删除"。
 
 > [!NOTE]
-> 使用此（现已删除）人员模型进行索引的现有视频不支持更新出现在视频中的面部名称的功能。 仅在使用其他人员模式对其重新进行索引后，才能在这些视频中编辑面部的名称。 如果在未指定人员模型的情况下进行重新索引，将使用默认模型。
+> 使用此 (已删除索引的现有视频) 人员模型不支持更新出现在视频中的面部名称的功能。 仅在使用其他人员模式对其重新进行索引后，才能在这些视频中编辑面部的名称。 如果在未指定人员模型的情况下进行重新索引，将使用默认模型。
 
 ## <a name="manage-existing-people-in-a-person-model"></a>管理人员模型中的现有人员
 
@@ -125,9 +126,20 @@ ms.locfileid: "79499972"
 
 ### <a name="manage-a-person"></a>管理人员
 
-如果选择 "**管理**"，则会看到此人员模型正在进行训练的所有人脸。 这些人脸是在使用此人员模型的视频中或从手动上载的图像中出现的。
+如果选择 "**管理**"，则会看到该人员的**详细信息**窗口，其中包含此人员模型正在进行训练的所有人脸。 这些人脸是在使用此人员模型的视频中或从手动上载的图像中出现的。
+
+> [!TIP]
+> 通过单击人员的名称或单击 "**管理**"，可以转到该**人员的详细信息**窗口，如上所示。
+
+#### <a name="add-a-face"></a>添加人脸
 
 可以通过选择 "**添加图像**" 向人员添加更多的人脸。
+
+#### <a name="delete-a-face"></a>删除人脸
+
+选择要删除的映像，然后单击 "**删除**"。
+
+#### <a name="rename-and-delete-the-person"></a>重命名并删除人员 
 
 您可以使用 "管理" 窗格重命名该人员并从 "人员" 模型中删除该用户。
 
@@ -194,7 +206,7 @@ ms.locfileid: "79499972"
 
     ![编辑视频中的人脸](./media/customize-face-model/edit-face.png)
 
-1. 选择任何检测到的人脸，并将其名称从 "Unknown #X" 更改（或之前分配给人脸的名称）。
+1. 选择任何检测到的人脸，并将其名称从 "Unknown #X" 更改 (或之前分配给面部) 的名称。
 1. 键入新名称后，选择新名称旁边的复选图标。 此操作将保存新名称，并在你的其他当前视频和你上传的未来视频中识别和命名此人脸的所有匹配项。 识别其他当前视频中的人脸可能需要一定的时间，因为这是一个批处理过程。
 
 如果使用视频所使用的人员模型中的现有人员姓名来命名人脸，则此人视频中检测到的人脸图像将与模型中已存在的内容合并。 如果使用新名称命名人脸，则会在视频使用的人员模型中创建一个新的 Person 条目。

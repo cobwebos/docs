@@ -6,6 +6,8 @@
       items:
         - name: 什么是翻译器？
           href: translator-info-overview.md
+        - name: 语言支持
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: 快速入门
       items:
         - name: 翻译文本
@@ -22,7 +24,7 @@
           href: quickstart-sentences.md
     - name: 教程
       items:
-        - name: '通过 C# 创建一个使用翻译器的 WPF 应用'
+        - name: 通过 C# 创建一个使用翻译器的 WPF 应用
           href: tutorial-wpf-translation-csharp.md
         - name: 使用 Python 创建 Flask 翻译应用
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: 示例
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: 返回 N 个最佳翻译
               href: return-n-best-translations.md
+        - name: 请求限制
+          href: request-limits.md
     - name: 资源
       items:
         - name: GitHub 上的代码示例
           href: 'https://aka.ms/TranslatorGitHub'
         - name: 常见问题解答
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: 语言支持
-          href: language-support.md
         - name: 定价
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: 区域可用性
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 合规性
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: 请求限制
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自定义翻译
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: 资源
       items:
-        - name: 语言支持
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: 术语表
           href: custom-translator/glossary.md
         - name: 常见问题解答

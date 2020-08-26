@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044135"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794297"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流式处理数据的实时分析仪表板
 
@@ -39,7 +39,10 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 2. 在左侧菜单中，选择“作业拓扑结构”下的“输出” 。 然后从下拉菜单中依次选择“+ 添加”和“Power BI” 。
 
-3. 选择“+ 添加” > “Power BI”。 然后在窗体中填写以下详细信息并选择“授权”：
+3. 选择“+ 添加” > “Power BI”。 然后，使用以下详细信息填充窗体，并选择 " **授权** " 以使用自己的用户标识连接到 Power BI (该令牌在90天) 有效。 
+
+>[!NOTE]
+>对于生产作业，我们建议连接到 [使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -173,7 +176,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     * 转到“可视化效果类型”后，选择“折线图” 。 
     * 添加轴，然后选择“windowend”。 
-    * 添加值，然后选择“fraudulentcalls”。
+    * 添加值，然后选择“fraudulentcalls”****。
     * 对于“要显示的时间窗口”，请选择最近 10 分钟。
 
       ![在 Power BI 中创建折线图磁贴](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
@@ -183,16 +186,6 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
      现在，Power BI 仪表板显示关于流式处理数据中检测到的欺诈性呼叫数据的两个视图。
 
      ![已完成的 Power BI 仪表板，其中显示欺诈性呼叫的两个磁贴](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
-
-
-## <a name="learn-more-about-power-bi"></a>详细了解 Power BI
-
-本教程演示了如何为数据集创建仅几种类型的可视化效果。 Power BI 可帮助你为组织创建其他客户商业智能工具。 有关详细信息，请参阅以下资源：
-
-* 如需 Power BI 仪表板的其他示例，请观看 [Power BI 入门](https://youtu.be/L-Z_6P56aas?t=1m58s)视频。
-* 若要详细了解如何配置 Power BI 的流分析作业输出以及如何使用 Power BI 组，请参阅[流分析输出](stream-analytics-define-outputs.md)一文中的 [Power BI](stream-analytics-define-outputs.md#power-bi) 部分。 
-* 若要了解 Power BI 的常规使用方法，请参阅 [Power BI 中的仪表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
-
 
 ## <a name="learn-about-limitations-and-best-practices"></a>了解限制和最佳做法
 目前，大约每秒可调用 Power BI 一次。 流视觉对象支持 15 KB 的数据包。 超过该大小的流视觉对象会失败（但推送将继续工作）。 由于这些限制，Power BI 最适合用于可通过 Azure 流分析来大幅减少数据加载的案例。 建议使用“翻转窗口”或“跳跃窗口”来确保数据推送速率最大为每秒推送一次，并且查询满足吞吐量要求。
@@ -234,12 +227,10 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 使用 Power BI 刷新授权后，授权区域中会出现一条绿色通知，指出问题已解决。
 
-## <a name="get-help"></a>获取帮助
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
-
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
+* [流分析输出](stream-analytics-define-outputs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

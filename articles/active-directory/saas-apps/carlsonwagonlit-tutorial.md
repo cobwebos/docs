@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Carlson Wagonlit Travel 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Carlson Wagonlit Travel 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2745e165-94ab-43b1-970a-4547b4e5b501
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4a5958d5d82b4f77d66109bfc41050a63b5edf0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fccdacce90bec75cd30e5df199310f6b5d569e66
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157529"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>教程：Azure Active Directory 与 Carlson Wagonlit Travel 集成
 

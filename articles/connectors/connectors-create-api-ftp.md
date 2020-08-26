@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656334"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284007"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -170,7 +171,7 @@ FTP 触发器的工作原理是轮询 FTP 文件系统并查找自上次轮询�
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/ftpconnector/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/ftpconnector/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
@@ -178,3 +179,4 @@ FTP 触发器的工作原理是轮询 FTP 文件系统并查找自上次轮询�
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+

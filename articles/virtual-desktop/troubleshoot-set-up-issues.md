@@ -1,27 +1,22 @@
 ---
 title: Windows 虚拟桌面环境主机池创建-Azure
 description: 如何在 Windows 虚拟桌面环境的安装过程中排除和解决租户和主机池问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361161"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121368"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
 
 本文介绍了 Windows 虚拟桌面租户和相关的会话主机池基础结构的初始安装过程中的问题。
 
@@ -40,13 +35,13 @@ ms.locfileid: "85361161"
 > [!div class="mx-imgBorder"]
 > ![显示 "创建免费帐户" 消息 Azure 门户的图像](media/create-new-account.png)
 
-**原因**：你使用登录到 Azure 的帐户中没有活动的订阅，或者该帐户无权查看订阅。 
+**原因**：你使用登录到 Azure 的帐户中没有活动的订阅，或者该帐户无权查看订阅。
 
-**修复**：使用至少具有参与者级别访问权限的帐户登录到要将会话主机虚拟机（vm）部署到的订阅。
+**修复**：登录到要在其中部署会话主机虚拟机 (vm) 的订阅，该订阅包含至少具有参与者级别访问权限的帐户。
 
 ### <a name="error-exceeding-quota-limit"></a>错误： "超过配额限制"
 
-如果操作超过配额限制，可以执行以下操作之一： 
+如果操作超过配额限制，可以执行以下操作之一：
 
 - 使用相同的参数创建一个新的主机池，但 Vm 和 VM 内核数更少。
 
@@ -84,7 +79,7 @@ ms.locfileid: "85361161"
 
 **修复2：** 请参阅[错误：未](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)在[会话主机 VM 配置](troubleshoot-vm-configuration.md)中解析域名。
 
-**原因3：** 虚拟网络（VNET） DNS 配置已设置为**默认值**。
+**原因3：** 虚拟网络 (VNET) DNS 配置设置为 "**默认**"。
 
 若要解决此问题，请执行以下操作：
 
@@ -122,13 +117,13 @@ ms.locfileid: "85361161"
 原始错误的示例：
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
-**原因：** 提供的密码包含禁止的子字符串（admin、administrator、root）。
+**原因：** 提供的密码包含禁止的子字符串 (admin、administrator、root) 。
 
 **修复：** 更新用户名或使用其他用户。
 
@@ -141,10 +136,10 @@ ms.locfileid: "85361161"
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -152,10 +147,10 @@ ms.locfileid: "85361161"
 
 **修复：** 确认用户名和密码在虚拟机上具有管理访问权限，然后再次运行 Azure 资源管理器模板。
 
-### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>错误： DeploymentFailed – PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误
+### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>错误： DeploymentFailed – PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误 (s) 
 
 > [!div class="mx-imgBorder"]
-> ![部署的屏幕截图失败，PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误。](media/failure-dsc.png)
+> ![部署的屏幕截图失败，PowerShell DSC 配置 "FirstSessionHost" 已完成，但)  (错误。](media/failure-dsc.png)
 
 原始错误的示例：
 
@@ -165,7 +160,7 @@ ms.locfileid: "85361161"
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n
@@ -257,6 +252,12 @@ the VM.\\\"
 **原因：** 此错误是由于静态路由、防火墙规则或 NSG 阻止下载关联到 Azure 资源管理器模板的 zip 文件引起的。
 
 **修复：** 删除阻止的静态路由、防火墙规则或 NSG。 （可选）在文本编辑器中打开 Azure 资源管理器模板 json 文件，获取 zip 文件的链接，并将资源下载到允许的位置。
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>错误：删除 VM 后无法从主机池删除会话主机
+
+**原因：** 删除 VM 之前，需要先删除该会话主机。
+
+**修复：** 将会话主机置于排出模式，从该会话主机中注销所有用户，然后删除该主机。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: android
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7f716e6b31afc882f7fcd1d6c8faa92afa82540
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127303"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004101"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>教程：使用 Google Cloud Messaging（已弃用）将推送通知发送到特定 Android 设备
 
@@ -120,7 +118,7 @@ ms.locfileid: "80127303"
 
     `main_activity.xml` 的图形布局应如下图所示：
 
-    ![][A1]
+    ![开发环境的屏幕截图，其中显示了应用屏幕。 应用列出了添加到代码中的新闻类别。][A1]
 3. 在与 `MainActivity` 类相同的包中创建 `Notifications` 类。
 
     ```java
@@ -338,8 +336,8 @@ ms.locfileid: "80127303"
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

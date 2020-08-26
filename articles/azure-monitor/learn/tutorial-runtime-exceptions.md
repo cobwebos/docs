@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516356"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322425"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
@@ -36,7 +36,7 @@ Azure Application Insights 从应用程序收集遥测数据，帮助确定和�
     - Azure 开发
 - 下载并安装 [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)。
 - 启用 [Visual Studio 快照调试器](../app/snapshot-debugger.md)
-- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../../azure-monitor/app/asp-net.md)。 
+- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../app/asp-net.md)。 
 - 本教程跟踪应用程序中异常的标识，以便在开发或测试环境中修改代码来生成异常。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
@@ -63,7 +63,7 @@ Application Insights 收集应用程序中出现的所有故障，让用户能�
 
     ![失败请求示例](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. 失败请求的详细信息显示了甘特图，该图显示此事务中有两个依赖项失败，这两个失败所用时间占事务总持续时间的 50% 以上。 此体验提供的所有遥测跨分布式应用程序的多个组件，这些组件与此操作 ID 相关。 [详细了解此新体验](../../azure-monitor/app/transaction-diagnostics.md)。 可以选择任意项，然后即可在右侧查看其详细信息。 
+6. 失败请求的详细信息显示了甘特图，该图显示此事务中有两个依赖项失败，这两个失败所用时间占事务总持续时间的 50% 以上。 此体验提供的所有遥测跨分布式应用程序的多个组件，这些组件与此操作 ID 相关。 [详细了解此新体验](../app/transaction-diagnostics.md)。 可以选择任意项，然后即可在右侧查看其详细信息。 
 
     ![失败请求的详细信息](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -112,4 +112,5 @@ Application Insights 收集的所有数据都存储在 Azure Log Analytics 中�
 现在，你已学会如何确定运行时异常，请继续完成下一教程，学习如何确定和诊断性能问题。
 
 > [!div class="nextstepaction"]
-> [确定性能问题](../../azure-monitor/learn/tutorial-performance.md)
+> [确定性能问题](./tutorial-performance.md)
+

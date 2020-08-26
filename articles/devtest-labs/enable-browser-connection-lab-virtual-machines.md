@@ -3,15 +3,15 @@ title: 在 Azure 开发测试实验室虚拟机上启用浏览器连接
 description: 开发测试实验室现已与 Azure 堡垒集成，作为实验室的所有者，你可以通过浏览器启用访问所有实验室虚拟机。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2ff55aa033ee9a024c8bc89cc9d39bc8d3ad25da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c78b872855b3fe21f2cb41d394c599aeca7a790
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537517"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272345"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>在 Azure 开发测试实验室虚拟机上启用浏览器连接 
-开发测试 Labs 与[Azure 堡垒](https://docs.microsoft.com/azure/bastion/)集成，使你能够通过浏览器连接到你的虚拟机。 首先需要在实验室虚拟机上启用浏览器连接。
+开发测试 Labs 与[Azure 堡垒](../bastion/index.yml)集成，使你能够通过浏览器连接到你的虚拟机。 首先需要在实验室虚拟机上启用浏览器连接。
 
 作为实验室的所有者，你可以通过浏览器启用访问所有实验室虚拟机。 无需额外的客户端、代理或软件。 Azure 堡垒通过 TLS 在 Azure 门户中直接向虚拟机提供安全且无缝的 RDP/SSH 连接。 通过 Azure 堡垒连接时，虚拟机不需要公共 IP 地址。 有关详细信息，请参阅[什么是 Azure 堡垒？](../bastion/bastion-overview.md)
 

@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c81f88821d841002ef2489c727071e9629da9e1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432120"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750775"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>使用托管标识提供 Key Vault 身份验证
 
@@ -28,14 +28,14 @@ ms.locfileid: "81432120"
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要完成本指南，必须备好以下资源。 
+要完成本指南，必须备好以下资源。 
 
 - 一个 Key Vault。 可以使用现有的 Key Vault，或者遵循以下快速入门之一中的步骤创建一个新的 Key Vault：
    - [使用 Azure CLI 创建 Key Vault](../secrets/quick-create-cli.md)
    - [使用 Azure PowerShell 创建 Key Vault](../secrets/quick-create-powershell.md)
    - [使用 Azure 门户创建 Key Vault](../secrets/quick-create-portal.md)
 - 一个现有的应用服务应用程序，需向其授予密钥保管库访问权限。 可以按[应用服务文档](../../app-service/overview.md)中的步骤快速创建一个。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识 
@@ -50,9 +50,9 @@ ms.locfileid: "81432120"
 
 1. 选择“托管标识”  。 
 
-1. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存”  。 
+1. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存” 。 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![显示保存系统分配的标识的屏幕截图。](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 1.  单击“添加”，完成添加新访问策略的操作  。
 
-    ![](../media/managed-identity-access-policy.png)
+    ![屏幕截图，显示在 Azure 门户中添加新的访问策略。](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -114,6 +114,6 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 - [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
 - [使用访问控制策略提供 Key Vault 身份验证](group-permissions-for-apps.md)
-- [保护密钥保管库](secure-your-key-vault.md)。
+- [保护 Key Vault](secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
 - 查看 [Azure Key Vault 最佳做法](best-practices.md)

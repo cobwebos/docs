@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374723"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783716"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -43,28 +43,7 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>带 Azure 负载均衡器的 Azure 虚拟机规模集
-
-使用虚拟机规模集和负载均衡器时，应考虑以下各项：
-
-* **多个虚拟机规模集不能使用同一负载均衡器**。
-* **端口转发和入站 NAT 规则**：
-  * 每个虚拟机规模集必须有一个入站 NAT 规则。
-  * 创建规模集后，无法为负载均衡器的运行状况探测所用的负载均衡规则修改后端端口。 为了更改端口，可以通过更新 Azure 虚拟机规模集来删除运行状况探测，更新端口，然后重新配置运行状况探测。
-  * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的入站 NAT 规则。
-* **入站 NAT 池**：
-  * 入站 NAT 池是入站 NAT 规则的集合。 一个入站 NAT 池不能支持多个虚拟机规模集。
-* **负载均衡规则**：
-  * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的负载均衡规则。
-* **出站规则**：
-  *  若要为已被负载均衡规则引用的后端池创建出站规则，需要先在创建入站负载均衡规则时在门户中将“创建隐式出站规则”标记为“否”。  
-
-  :::image type="content" source="./media/vmsslb.png" alt-text="创建负载均衡规则" border="true":::
-
-可以使用以下方法部署一个包含现有 Azure 负载均衡器的虚拟机规模集。
-
-* [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+请参阅 [Azure 负载均衡器和虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) ，了解有关如何根据方案配置虚拟机规模集的标准负载均衡器详细信息。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：
@@ -244,7 +223,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 在规模集中，附加到 VM 的每个 NIC 可以有一个或多个关联的 IP 配置。 每个配置分配有一个专用 IP 地址。 每个配置还可以有一个关联的公共 IP 地址资源。 若要了解可以为一个 NIC 分配多少个 IP 地址，以及可以在一个 Azure 订阅中使用多少个公共 IP 地址，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="multiple-nics-per-virtual-machine"></a>每个虚拟机多个 NIC
-每个虚拟机最多可以有 8 个 NIC，具体取决于虚拟机大小。 若要了解每个虚拟机的最大 NIC 数，请参阅 [VM 大小](../virtual-machines/windows/sizes.md)一文。 连接到 VM 实例的所有 NIC 都必须连接到同一虚拟网络。 NIC 可以连接到不同子网，但所有子网都必须属于同一虚拟网络。
+每个虚拟机最多可以有 8 个 NIC，具体取决于虚拟机大小。 若要了解每个虚拟机的最大 NIC 数，请参阅 [VM 大小](../virtual-machines/sizes.md)一文。 连接到 VM 实例的所有 NIC 都必须连接到同一虚拟网络。 NIC 可以连接到不同子网，但所有子网都必须属于同一虚拟网络。
 
 以下示例为规模集网络配置文件，显示每个虚拟机有多个 NIC 条目和多个公共 IP：
 

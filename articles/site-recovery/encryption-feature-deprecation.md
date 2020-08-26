@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
-ms.openlocfilehash: b9d333467864f67bc357314830ff885af4232ba0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 79c129fee6d0339eed752abe94059fa566859bc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086177"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>弃用 Site Recovery 数据加密功能
 
@@ -22,14 +22,14 @@ ms.locfileid: "86133189"
 ## <a name="deprecation-information"></a>弃用信息
 
 
-Site Recovery 数据加密功能可供保护 Hyper-V VM 的客户使用，确保复制的数据免受安全威胁。 该功能将于 **2019 年 12 月 30 日**弃用。 它会被替换为更高级的[静态加密](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/)功能，后者使用[存储服务加密](../storage/common/storage-service-encryption.md) (SSE)。 有了 SSE，数据就可以在保存到存储之前先加密，在检索时解密。在故障转移到 Azure 以后，VM 就会从加密的存储帐户运行，从而改进恢复时间目标 (RTO)。
+Site Recovery 数据加密功能可供保护 Hyper-V VM 的客户使用，确保复制的数据免受安全威胁。 此功能将于**2022 年4月30日**弃用。 它会被替换为更高级的[静态加密](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/)功能，后者使用[存储服务加密](../storage/common/storage-service-encryption.md) (SSE)。 有了 SSE，数据就可以在保存到存储之前先加密，在检索时解密。在故障转移到 Azure 以后，VM 就会从加密的存储帐户运行，从而改进恢复时间目标 (RTO)。
 
 请注意，如果你是使用此功能的现有客户，你会收到通信材料，其中包含弃用详情以及补救步骤。 
 
 
 ## <a name="what-are-the-implications"></a>这会产生什么影响？
 
-**2019 年 12 月 30 日**以后，任何仍使用已停用加密功能的 VM 都不得执行故障转移。 
+**2022 年4月 30**日后，仍将不允许任何仍使用停用加密功能的 vm 执行故障转移。 
 
 ## <a name="required-action"></a>必需的操作
 若要继续执行成功的故障转移操作和复制，请执行下述步骤：
@@ -44,4 +44,3 @@ Site Recovery 数据加密功能可供保护 Hyper-V VM 的客户使用，确保
 
 ## <a name="next-steps"></a>后续步骤
 做好执行补救步骤的计划，并尽早执行这些步骤。 如果有与此弃用相关的任何查询，请联系 Microsoft 支持部门。 若要详细了解从 Hyper-V 故障转移到 Azure 的方案，请参阅[此文](hyper-v-vmm-architecture.md)。
-

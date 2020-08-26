@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75376646"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327168"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教程：使用 ELK 监视 Service Fabric 应用程序
 

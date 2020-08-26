@@ -3,8 +3,8 @@ title: 教程：将 Oracle 联机迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务将本地或虚拟机中的 Oracle 联机迁移到 Azure Database for PostgreSQL。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087758"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 

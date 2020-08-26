@@ -8,23 +8,20 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 9427b007bc047e2f01db2dad02e06bf0ab0f5dea
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001376"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032277"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
-
-
 
 Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维护企业级 IoT 解决方案相关联的负担和成本。 选择使用 Azure IoT Central 进行构建可将时间、金钱和精力集中于使用 IoT 数据转换业务，而不仅仅是维护和更新复杂且不断发展的 IoT 基础结构。
 
 本文介绍了几个特定于零售的 IoT Central 应用程序模板。 作为解决方案构建者，你可以利用已发布的模板构建 IoT 解决方案，来优化供应链，改进客户的店内体验，更高效地跟踪库存。
 
-> [!div class="mx-imgBorder"]
-> ![Azure IoT 零售概述](./media/overview-iot-central-retail/retail-app-templates.png)
+:::image type="content" source="media/overview-iot-central-retail/retail-app-templates.png" alt-text="Azure IoT 零售概述":::
 
 以下各部分介绍了这些应用程序模板的功能：
 
@@ -44,17 +41,15 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-> [!div class="mx-imgBorder"]
-> ![联接的物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="联接的物流仪表板":::
 
-> [!div class="mx-imgBorder"]
-> ![联接的物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="联接的物流仪表板":::
 
 若要了解详细信息，请参阅[部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics.md)教程。
 
 ## <a name="digital-distribution-center"></a>数字分发中心
 
-随着越来越多的制造商和零售商进入世界各地，它们的供应链也不断扩展且越来越复杂。 消费者现在希望有大量的产品可供选择，并且希望在购买后的 1-2 天内即可到货。 分发中心必须适应这些趋势，并克服当前导致效率低下的问题。 
+随着越来越多的制造商和零售商进入世界各地，它们的供应链也不断扩展且越来越复杂。 消费者现在希望有大量的产品可供选择，并且希望在购买后的 1-2 天内即可到货。 分发中心必须适应这些趋势，并克服当前导致效率低下的问题。
 
 如今，依赖人工意味着分拣和打包占据分发中心成本的 55%-65%。 人工分拣和打包通常也比自动化系统慢，快速波动的人员需求使得运输量需求更加难以满足。 这种季节性的波动导致员工流动率高，并且出错概率会大增且代价高昂。
 
@@ -69,8 +64,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-> [!div class="mx-imgBorder"]
-> ![数字分发中心仪表板](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="数字分发中心仪表板":::
 
 若要了解详细信息，请参阅[部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center.md)教程。
 
@@ -82,8 +76,8 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 使用此应用程序模板，可以：
 
-* 将各种 IoT 传感器连接到 IoT Central 应用程序实例。
-* 监视并管理传感器网络以及环境中的网关设备的运行状况。
+* 将不同种类的 IoT 传感器连接到 IoT Central 应用程序实例。
+* 监视并管理传感器网络以及环境中所有网关设备的运行状况。
 * 创建关于店内环境状况的自定义规则，以针对商店管理人员触发警报。
 * 将店内的环境状况转换为见解，供零售店团队用来改进客户体验。
 * 将聚合的见解导出到现有的或新的业务应用程序，为零售员工提供有用及时的信息。
@@ -92,8 +86,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-> [!div class="mx-imgBorder"]
-> ![店内分析环境监视](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="店内分析环境监视":::
 
 若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)教程。
 
@@ -105,8 +98,8 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 使用此应用程序模板，可以：
 
-* 将各种 IoT 传感器连接到 IoT Central 应用程序实例。
-* 监视并管理传感器网络以及环境中的网关设备的运行状况。
+* 将不同种类的 IoT 传感器连接到 IoT Central 应用程序实例。
+* 监视并管理传感器网络以及环境中所有网关设备的运行状况。
 * 创建关于店内结帐状况的自定义规则，以针对零售员工触发警报。
 * 将店内的结帐状况转换为见解，供零售店团队用来改进客户体验。
 * 将聚合的见解导出到现有的或新的业务应用程序，为零售员工提供有用及时的信息。
@@ -115,8 +108,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-> [!div class="mx-imgBorder"]
-> ![店内分析结帐](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="店内分析结帐":::
 
 若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)教程。
 
@@ -136,8 +128,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-> [!div class="mx-imgBorder"]
-> ![智能库存管理仪表板](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="智能库存管理仪表板":::
 
 若要了解详细信息，请参阅[部署和演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management.md)教程。
 
@@ -157,10 +148,32 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-> [!div class="mx-imgBorder"]
-> ![微履行中心](./media/overview-iot-central-retail/MFC-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="微履行中心":::
 
 若要了解详细信息，请参阅[部署并演练微履行中心应用程序模板](./tutorial-micro-fulfillment-center.md)教程。
+
+## <a name="video-analytics---object-and-motion-detection"></a>视频分析 - 对象和运动检测
+
+利用 IoT Central 视频分析 - 对象和运动检测应用程序模板，可快速体验如何部署、管理和监视使用智能边缘相机检测对象和移动的解决方案。
+
+视频分析应用程序使用 IoT Edge 中运行的 [实时视频分析 (LVA)](#live-video-analytics) 模块。 LVA 模块提供了一个平台，可用于构建跨越边缘和云的智能视频应用程序。 你可使用该平台通过对象和运动检测来增强 IoT 解决方案，如视频分析应用程序。
+
+应用程序模板包含四个应用程序仪表板：
+
+* **设置**提供有关应用程序设计的信息，并允许你添加和删除相机。
+* **管理**使你能够管理你的相机。 例如，你可以配置相机、查看状态信息和开始运行相机。
+* **实际相机**可让你查看来自实际相机的信息，如检测计数和相机事件。
+* **监视器**可让你查看来自所有相机的详细信息。
+
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="视频分析 - 对象和运动检测":::
+
+若要详细了解该解决方案的体系结构，请参阅[视频分析应用程序体系结构](architecture-video-analytics.md)。
+
+若要了解如何部署解决方案，请参阅[在 Azure IoT Central 中创建视频分析应用程序](tutorial-video-analytics-create-app.md)教程。
+
+### <a name="live-video-analytics"></a>实时视频分析
+
+实时视频分析提供了一个平台，可用于构建跨越边缘和云的智能视频应用程序。 此平台提供了捕获、记录和分析实时视频的功能，并且可以将结果（视频和/或视频分析）发布到 Azure 服务。 Azure 服务可以在云或边缘中运行。 可以使用该平台通过视频分析增强 IoT 解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 

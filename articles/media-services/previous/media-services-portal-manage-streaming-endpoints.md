@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084494"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
 
@@ -66,7 +67,7 @@ ms.locfileid: "74900882"
 * 缓存控制
 * 跨网站访问策略
 
-有关这些属性的详细信息，请参阅 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
+有关这些属性的详细信息，请参阅 [StreamingEndpoint](/rest/api/media/operations/streamingendpoint)。
 
 >[!NOTE]
 >如果启用了 CDN，则无法访问 IP 访问。 仅当不具有 CDN 时，IP 访问才适用。
@@ -74,7 +75,7 @@ ms.locfileid: "74900882"
 可通过执行以下操作配置流式处理终结点：
 
 1. 选择要配置的流式处理终结点。
-2. 单击“设置”****。
+2. 单击**设置**。
 
 后面提供了字段的简要说明。
 
@@ -121,4 +122,3 @@ ms.locfileid: "74900882"
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

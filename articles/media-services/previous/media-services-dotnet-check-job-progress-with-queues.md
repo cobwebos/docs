@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060324"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../../storage/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
+运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../../storage/queues/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
 
 用户可以从任何位置访问已传给到队列存储中的消息。 队列存储消息体系结构十分可靠，且伸缩性极高。 建议使用其他方法轮询消息的队列存储。
 
@@ -37,10 +37,10 @@ ms.locfileid: "85962673"
 ## <a name="considerations"></a>注意事项
 开发使用存储队列的媒体服务应用程序时，请注意以下几点：
 
-* 队列存储不保证按照先进先出 (FIFO) 的顺序传递消息。 有关详细信息，请参阅 [Azure 队列和 Azure 服务总线队列比较与对照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
+* 队列存储不保证按照先进先出 (FIFO) 的顺序传递消息。 有关详细信息，请参阅 [Azure 队列和 Azure 服务总线队列比较与对照](/previous-versions/azure/hh767287(v=azure.100))。
 * 队列存储不是推送服务。 必须轮询队列。
-* 可以有任意数目的队列。 有关详细信息，请参阅[队列服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)。
-* 队列存储存在一些需注意的限制和细节问题。 相关说明请参阅[Azure 队列和 Azure 服务总线队列比较与对照](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)。
+* 可以有任意数目的队列。 有关详细信息，请参阅[队列服务 REST API](/rest/api/storageservices/queue-service-rest-api)。
+* 队列存储存在一些需注意的限制和细节问题。 相关说明请参阅[Azure 队列和 Azure 服务总线队列比较与对照](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)。
 
 ## <a name="net-code-example"></a>.NET 代码示例
 

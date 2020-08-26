@@ -1,33 +1,28 @@
 ---
 title: 部署 Windows 7 虚拟机 Windows 虚拟桌面-Azure
 description: 如何在 Windows 虚拟机上配置和部署 Windows 7 虚拟机。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542d0bcea6cfae2af2918d699952d4c054bd68cb
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277628"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007567"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)。
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机 (VM) 的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的说明创建主机池。 如果使用的是门户，请按照[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)的步骤1到步骤9中的说明进行操作。 在此之后，请选择 "**查看 + 创建**" 创建空的主机池。 
+在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的说明创建主机池。 如果使用的是门户，请按照[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)的步骤1到步骤9中的说明进行操作。 在此之后，请选择 "**查看 + 创建**" 创建空的主机池。
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>配置 Windows 7 虚拟机
 
@@ -52,9 +47,9 @@ ms.locfileid: "86277628"
      ```
 
 12. 按照[此处](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0)的说明获取注册令牌。
-      
+
       - 如果你想要使用 Azure 门户，则还可以前往要将 VM 添加到的主机池的 "概述" 页，并在其中创建一个令牌。
-  
+
 13. [下载适用于 windows 7 的 Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [下载适用于 windows 7 的 Windows 虚拟桌面代理程序管理器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. 打开 Windows 虚拟桌面代理安装程序，然后按照说明进行操作。 出现提示时，请提供在步骤12中创建的注册密钥。

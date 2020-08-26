@@ -3,12 +3,13 @@ title: Application Insights SDK 中的筛选和预处理 |Microsoft Docs
 description: 编写遥测处理器和遥测初始值设定项，以便在遥测发送到 Application Insights 门户之前，对数据进行筛选或向其添加属性。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075784"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366749"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中筛选和预处理遥测
 
@@ -17,7 +18,7 @@ ms.locfileid: "86075784"
 * [采样](sampling.md)可在不影响统计信息的情况下减少遥测量。 它将相关的数据点保持在一起，以便你可以在诊断问题时在它们之间导航。 在门户中，总计相乘以补偿采样。
 * 通过遥测处理器进行筛选，可以在将遥测发送到服务器之前，筛选出 SDK 中的遥测数据。 例如，可以通过排除机器人请求减少遥测量。 与采样相比，筛选是更基本的减少流量的方法。 它使您可以更好地控制传输的内容，但会影响统计信息。 例如，你可以筛选出所有成功的请求。
 * [遥测初始值设定项向](#add-properties)从应用发送的任何遥测添加或修改属性，其中包括来自标准模块的遥测。 例如，可以添加计算值或版本号，以便在门户中筛选数据。
-* [SDK API](../../azure-monitor/app/api-custom-events-metrics.md) 用于发送自定义事件和指标。
+* [SDK API](./api-custom-events-metrics.md) 用于发送自定义事件和指标。
 
 开始之前：
 
@@ -34,7 +35,7 @@ ms.locfileid: "86075784"
 > [!WARNING]
 > 使用处理器筛选从 SDK 发送的遥测会使你在门户中看到的统计信息歪斜，并使其难以跟踪相关项目。
 >
-> 此时，考虑使用[采样](../../azure-monitor/app/sampling.md)。
+> 此时，考虑使用[采样](./sampling.md)。
 >
 >
 
@@ -352,7 +353,7 @@ ASP.NET**核心/辅助服务应用：加载初始值设定项**
 </script>
 ```
 
-有关遥测项上可用的非自定义属性的摘要，请参阅[Application Insights 导出数据模型](../../azure-monitor/app/export-data-model.md)。
+有关遥测项上可用的非自定义属性的摘要，请参阅[Application Insights 导出数据模型](./export-data-model.md)。
 
 可添加任意数量的初始值设定项。 它们按其添加顺序进行调用。
 
@@ -498,7 +499,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>从 HttpContext 添加信息
 
-下面的示例初始值设定项从读取数据 [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) 并将其追加到 `RequestTelemetry` 实例。 `IHttpContextAccessor` 是通过构造函数依赖项注入自动提供的。
+下面的示例初始值设定项从读取数据 [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) 并将其追加到 `RequestTelemetry` 实例。 `IHttpContextAccessor` 是通过构造函数依赖项注入自动提供的。
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -542,8 +543,8 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 
 ## <a name="reference-docs"></a>参考文档
 
-* [API 概述](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
+* [API 概述](./api-custom-events-metrics.md)
+* [ASP.NET 参考](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK 代码
 
@@ -552,6 +553,7 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
-* [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-* [采样](../../azure-monitor/app/sampling.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
+* [搜索事件和日志](./diagnostic-search.md)
+* [样本](./sampling.md)
+* [疑难解答](../faq.md)
+

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077501"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922925"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
-服务器管理员必须是服务器所在的租户的 Azure Active Directory （Azure AD）中有效的用户、服务主体或安全组。 可以使用 **Analysis Services 管理员**来管理 Azure 门户中的服务器，在 SSMS、PowerShell 或 REST API 中使用“服务器属性”来管理服务器管理员。 
+服务器管理员必须是 Azure Active Directory 中的有效用户、服务主体或安全组 (服务器所在的租户 Azure AD) 。 可以使用 **Analysis Services 管理员**来管理 Azure 门户中的服务器，在 SSMS、PowerShell 或 REST API 中使用“服务器属性”来管理服务器管理员。 
 
 添加“安全组”时，请使用 `obj:groupid@tenantid`。 添加到服务器管理员角色的安全组不支持服务主体。
 
@@ -54,5 +54,4 @@ ms.locfileid: "86077501"
 
 [身份验证和用户权限](analysis-services-manage-users.md)  
 [管理数据库角色和用户](analysis-services-database-users.md)  
-[基于角色的访问控制](../role-based-access-control/overview.md)  
-
+[Azure RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)  

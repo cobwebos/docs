@@ -3,19 +3,17 @@ title: 使用脱机计算方法-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 本文将介绍如何使用脱机评估来度量应用的有效性并分析学习循环。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623585"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132749"
 ---
 # <a name="offline-evaluation"></a>脱机评估
 
@@ -55,7 +53,7 @@ ms.locfileid: "77623585"
 | 学习设置 | 目的|
 |--|--|
 |**联机策略**| 个性化体验创建服务中当前使用的学习策略 |
-|**基线**|应用程序的默认值（由排名调用中发送的第一个操作确定）|
+|**Baseline**|应用程序的默认值（由排名调用中发送的第一个操作确定）|
 |**随机策略**|一个假想的排名行为，始终从提供的操作中返回随机操作选项。|
 |**自定义策略**|启动评估时上传的附加学习策略。|
 |**优化策略**|如果使用发现优化策略的选项启动了评估，则也会比较该策略，你可以下载该策略，或将其设为联机学习策略，以替换当前策略。|
@@ -108,5 +106,5 @@ ms.locfileid: "77623585"
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置 Personalizer](how-to-settings.md)
-[运行脱机评估](how-to-offline-evaluation.md)了解[Personalizer 的工作方式](how-personalizer-works.md)
+[配置 Personalizer](how-to-settings.md) 
+[运行脱机评估](how-to-offline-evaluation.md)了解[Personalizer 的工作原理](how-personalizer-works.md)

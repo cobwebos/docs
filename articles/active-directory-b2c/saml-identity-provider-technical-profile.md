@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 724178f71befbe4eace0d3d5615871c21253c1f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0c30d5c072c66e04b97cae2f88e4c8ef96b32779
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116219"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
@@ -169,6 +169,38 @@ SAML 断言：
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |是 | X509 证书（RSA 密钥集），用于解密 SAML 消息。 此证书应由身份提供程序提供。 Azure AD B2C 使用此证书解密身份提供程序发送的数据。 |
 | MetadataSigning |否 | X509 证书（RSA 密钥集），用于对 SAML 元数据进行签名。 Azure AD B2C 使用此密钥对元数据进行签名。  |
+
+## <a name="saml-entityid-customization"></a>SAML entityID 自定义
+
+如果有多个依赖于不同 entityID 值的 SAML 应用程序，则可以覆盖 `issueruri` 信赖方文件中的值。 为此，请将技术配置文件从基本文件复制到 "Saml2AssertionIssuer" ID 并覆盖 `issueruri` 值。
+
+> [!TIP]
+> `<ClaimsProviders>`从基中复制节，并在声明提供程序中保留这些元素： `<DisplayName>Token Issuer</DisplayName>` 、 `<TechnicalProfile Id="Saml2AssertionIssuer">` 和 `<DisplayName>Token Issuer</DisplayName>` 。
+ 
+示例：
+
+```xml
+   <ClaimsProviders>   
+    <ClaimsProvider>
+      <DisplayName>Token Issuer</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Saml2AssertionIssuer">
+          <DisplayName>Token Issuer</DisplayName>
+          <Metadata>
+            <Item Key="IssuerUri">customURI</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpInSAML" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2" />
+      <Metadata>
+     …
+```
 
 ## <a name="next-steps"></a>后续步骤
 

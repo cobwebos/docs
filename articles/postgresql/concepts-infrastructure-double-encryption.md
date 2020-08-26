@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 3806135b7ed212e6eb5ea458c015ebc5810e0e80
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034814"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067488"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL 基础结构双加密
 
@@ -31,11 +32,11 @@ Azure Database for PostgreSQL 使用 Microsoft 的托管密钥对数据进行[�
 > [!NOTE]
 > 使用基础结构双加密会对 Azure Database for PostgreSQL 服务器造成性能影响，因为附加的加密过程。
 
-## <a name="benefits"></a>好处
+## <a name="benefits"></a>优点
 
 Azure Database for PostgreSQL 的基础结构双加密具有以下优势：
 
-1. **增加了加密实现的多样性**-计划迁移到基于硬件的加密会通过基于软件的实现提供基于硬件的实现，进一步多元化实现。
+1. **加密实现的额外多样性**-计划迁移到基于硬件的加密会通过基于软件的实现提供基于硬件的实现，进一步多元化实现。
 2. **实现错误**-基础结构层的两层加密可防止在公开纯文本数据的更高层中进行缓存或内存管理中的任何错误。 此外，这两个层还可以确保通常在加密的实现中出现错误。
 
 这种组合提供了强大的防护机制来防范用于攻击加密的常见威胁和漏洞。
@@ -44,7 +45,7 @@ Azure Database for PostgreSQL 的基础结构双加密具有以下优势：
 
 Azure Database for PostgreSQL 提供的加密功能可以一起使用。 下面是可以使用的各种方案的摘要：
 
-|  ##   | 默认加密 | 基础结构双加密 | 使用客户托管密钥的数据加密  |
+|  ##   | 默认加密 | 基础结构双重加密 | 使用客户托管密钥的数据加密  |
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *是*              | *否*                             | *否*                                         |
 | 2     | *是*              | *是*                            | *否*                                         |
@@ -53,7 +54,7 @@ Azure Database for PostgreSQL 提供的加密功能可以一起使用。 下面�
 |       |                    |                                  |                                              |
 
 > [!Important]
-> - 方案2和4将对 Azure Database for PostgreSQL 服务器带来显著的性能影响，因为这会增加基础结构加密层。
+> - 方案2和4将对 Azure Database for PostgreSQL 服务器造成性能影响，因为基础结构加密会增加一层。
 > - 仅允许在服务器创建过程中为 Azure Database for PostgreSQL 配置基础结构双加密。 设置服务器后，将无法更改存储加密。 但是，你仍然可以使用客户管理的密钥来启用使用/不使用基础结构双加密创建的服务器的数据加密。
 
 ## <a name="limitations"></a>限制
@@ -64,7 +65,7 @@ Azure Database for PostgreSQL 提供的加密功能可以一起使用。 下面�
 * 此功能仅支持在支持存储高达 16 TB 的区域和服务器上。 有关支持存储高达 16 TB 的 Azure 区域列表，请参阅[存储文档](concepts-pricing-tiers.md#storage)。
 
     > [!NOTE]
-    > - 以上列出的区域中创建的所有**新**PostgreSQL 服务器还支持通过客户管理器密钥进行数据加密。 在这种情况下，通过时间点还原（PITR）或读取副本创建的服务器不符合 "new"。
+    > - 以上列出的区域中创建的所有**新**PostgreSQL 服务器还支持通过客户管理器密钥进行数据加密。 在这种情况下，通过时间点还原创建的服务器 (PITR) 或读取副本不符合 "new"。
     > - 若要验证预配的服务器是否最多支持 16 TB，可转到门户中的 "定价层" 边栏选项卡，查看 "存储" 滑块是否可以移动到 16 TB。 如果只能将滑块移动到 4 TB，则服务器可能不支持对客户管理的密钥进行加密;但是，始终使用服务托管密钥对数据进行加密。 AskAzureDBforPostgreSQL@service.microsoft.com如果你有任何疑问，请联系。
 
 ## <a name="next-steps"></a>后续步骤

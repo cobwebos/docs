@@ -5,16 +5,17 @@ author: cynthn
 manager: gwallace
 ms.service: virtual-machines
 ms.subservice: networking
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4c57ec2edf43bf0a710f3c15f30836f751c4d52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066628"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500157"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>使用 Azure CLI 打开 VM 的端口和终结点
 

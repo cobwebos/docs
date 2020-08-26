@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 05/25/2020
-ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 08/11/2020
+ms.openlocfilehash: 809011df3c8cd6dbc1ee2a2129a261102adb43c0
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848866"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067845"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -36,6 +36,8 @@ ms.locfileid: "83848866"
 [监视和管理映射数据流性能](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
 [基准计时](http://youtu.be/6CSbWm4lRhw?hd=1)
+
+[调试数据流的工作流](https://youtu.be/y3suL7UsWVw)
 
 ## <a name="transformation-overviews"></a>转换概述
 
@@ -118,6 +120,8 @@ ms.locfileid: "83848866"
 [在运行时动态优化数据流群集大小](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
 [优化数据流启动时间](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[Azure Integration Runtime 的数据流](https://mssqldude.wordpress.com/)
 
 ## <a name="mapping-data-flow-scenarios"></a>映射数据流方案
 

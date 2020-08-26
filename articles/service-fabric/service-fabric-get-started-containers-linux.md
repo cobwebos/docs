@@ -3,13 +3,13 @@ title: 在 Linux 上创建 Azure Service Fabric 容器应用程序
 description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程序。 生成包含应用程序的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256405"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847527"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "86256405"
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
   * [Service Fabric CLI](service-fabric-cli.md)
+
+* 包含三个或更多节点的 Linux 群集。
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -86,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>生成映像
-运行 `docker build` 命令，创建运行上述 Web 应用程序的映像。 打开 PowerShell 窗口，导航到 *c:\temp\helloworldapp*。 运行以下命令：
+运行 `docker build` 命令，创建运行上述 Web 应用程序的映像。 打开 PowerShell 窗口，导航到 *c:\temp\helloworldapp*。 运行下面的命令：
 
 ```bash
 docker build -t helloworldapp .
@@ -112,7 +114,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 docker run -d -p 4000:80 --name my-web-site helloworldapp
 ```
 
-name 用于为运行的容器（而不是容器 ID）命名。 
+name 用于为运行的容器（而不是容器 ID）命名。**
 
 连接到正在运行的容器。 打开 Web 浏览器并指向端口 4000 上返回的 IP 地址，例如“http:\//localhost:4000”。 此时会看到标题“Hello World!” 显示在浏览器中。
 

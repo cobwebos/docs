@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206553"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827301"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>扩建端到端解决方案
 
@@ -26,6 +26,9 @@ ms.locfileid: "86206553"
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>设置 Cloud Shell 会话
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -57,7 +60,7 @@ ms.locfileid: "86206553"
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="完整建筑方案图的摘录，其中突出显示了 A 部分（Azure 数字孪生实例）":::
 
-在打开 AdtE2ESample 项目的 Visual Studio 窗口中，使用工具栏中的此按钮运行该项目__：
+在打开 AdtE2ESample 项目的 Visual Studio 窗口中，使用工具栏中的此按钮运行该项目：
 
 :::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Visual Studio 开始按钮（SampleClientApp 项目）":::
 
@@ -90,11 +93,25 @@ Query
 * ProcessHubToDTEvents：处理传入的 IoT 中心数据，并相应地更新 Azure 数字孪生
 * ProcessDTRoutedData：处理来自数字孪生的数据，并相应地更新 Azure 数字孪生中的父级孪生
 
-在本部分中，你将发布预先编写的函数应用，并确保该函数应用可通过向其分配 Azure Active Directory (AAD) 标识来访问 Azure 数字孪生。 完成这些步骤后，本教程的其余部分即可使用函数应用中的函数。 
+在本部分中，你将发布预先编写的函数应用，并确保该函数应用可通过向其分配 Azure Active Directory (Azure AD) 标识来访问 Azure 数字孪生。 完成这些步骤后，本教程的其余部分即可使用函数应用中的函数。 
+
+返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，该函数应用位于 SampleFunctionsApp 项目文件中__ __。 你可以在“解决方案资源管理器”窗格中进行查看。
+
+### <a name="update-dependencies"></a>更新依赖项
+
+在发布应用之前，最好确保依赖项是最新版本，以确保具有所有包含的包的最新版本。
+
+在“解决方案资源管理器”窗格中，展开“SampleFunctionsApp”>“依赖项” 。 右键选择“包”，并选择“管理 NuGet 包...” 。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio：管理 SampleFunctionsApp 项目的 NuGet 包" border="false":::
+
+这将打开 NuGet 包管理器。 选择“更新”选项卡，如果有任何要更新的包，请选中此复选框以“选择所有的包” 。 然后点击“更新”。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio：选择更新 NuGet 包管理器中的所有包":::
 
 ### <a name="publish-the-app"></a>发布应用
 
-返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，从“解决方案资源管理器”窗格中，右键选择 SampleFunctionsApp 项目文件，然后点击“发布”____。
+返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，从“解决方案资源管理器”窗格中，右键选择 SampleFunctionsApp 项目文件，然后点击“发布” 。
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio：发布项目":::
 
@@ -131,19 +148,21 @@ Query
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布":::
 
 > [!NOTE]
-> 你可能会看到如下所示的弹出窗口：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
-> 如果出现弹出窗口，请依次选择“尝试从 Azure 检索凭据”和“保存” 。
+> 如果看到如下所示的弹出窗口：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
+> 依次选择“尝试从 Azure 检索凭据”和“保存” 。
 >
-> 若看到“你的 Functions 运行时版本与在 Azure中运行的版本不匹配”警告，请按照提示升级到最新的 Azure Functions 运行时版本。 若使用旧版本的 Visual Studio 而不是本教程开头的“先决条件”部分中推荐的版本，则可能出现此问题。
+> 若看到“升级 Azure 上的 Functions 版本”或“你的 Functions 运行时版本与在 Azure 中运行的版本不匹配”警告 ：
+>
+> 请按照提示升级到最新的 Azure Functions 运行时版本。 若使用旧版本的 Visual Studio 而不是本教程开头的“先决条件”部分中推荐的版本，则可能出现此问题。
 
 ### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
 
-为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 AAD 标识，并为此标识授予 Azure 数字孪生实例的“所有者”权限。
+为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 Azure AD 标识，并为此标识授予 Azure 数字孪生实例的“Azure 数字孪生所有者(预览版)”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在[概念：Azure 数字孪生解决方案的安全性](concepts-security.md)中了解详细信息。
 
-在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用数字孪生实例。
+在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用 Azure 数字孪生实例。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 使用以下命令创建系统管理的标识。 记下输出中的 principalId 字段。
@@ -152,7 +171,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-在以下命令中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“所有者”角色 ：
+在以下命令的输出中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“Azure 数字孪生所有者(预览版)”角色 ：
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -246,12 +265,12 @@ az iot hub device-identity show-connection-string --device-id thermostat67 --hub
 
 将这些值插入本地项目中的设备模拟器代码中，以将模拟器连接到此 IoT 中心和 IoT 中心设备。
 
-在新的 Visual Studio 窗口中，（从下载的解决方案文件夹）打开“设备模拟器”>“DeviceSimulator.sln”__。
+在新的 Visual Studio 窗口中，（从下载的解决方案文件夹）打开“设备模拟器”>“DeviceSimulator.sln”。
 
 >[!NOTE]
-> 你现在应该有两个 Visual Studio 窗口，一个是 DeviceSimulator.sln，另一个是 AdtE2ESample.sln__ __。
+> 你现在应该有两个 Visual Studio 窗口，一个是 DeviceSimulator.sln，另一个是 AdtE2ESample.sln 。
 
-在这个新 Visual Studio 窗口的“解决方案资源管理器”窗格中，选择“DeviceSimulator/AzureIoTHub.cs”，在编辑窗口中将其打开__。 将以下连接字符串值更改为前面收集的值：
+在这个新 Visual Studio 窗口的“解决方案资源管理器”窗格中，选择“DeviceSimulator/AzureIoTHub.cs”，在编辑窗口中将其打开。 将以下连接字符串值更改为前面收集的值：
 
 ```csharp
 connectionString = <Iot-hub-connection-string>
@@ -274,7 +293,7 @@ deviceConnectionString = <device-connection-string>
 
 之前发布的 ProcessHubToDTEvents 函数会侦听 IoT 中心数据，并调用 Azure 数字孪生 API 来更新 thermostat67 孪生上的“温度”属性  。
 
-要查看 Azure 数字孪生端的数据，请转到打开 AdtE2ESample 项目的 Visual Studio 窗口，并运行该项目__。
+要查看 Azure 数字孪生端的数据，请转到打开 AdtE2ESample 项目的 Visual Studio 窗口，并运行该项目。
 
 在打开的项目控制台窗口中运行以下命令，以获取数字孪生 thermostat67 所报告的温度：
 
@@ -336,7 +355,7 @@ az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-在输出中查找 `provisioningState` 字段，检查其值是否为“Succeeded”。
+在输出中查找 `provisioningState` 字段，检查其值是否为“Succeeded”。 它也可能显示“Provisioning”，这意味着仍在创建终结点。 在这种情况下，请等待几秒钟，然后再次运行该命令，以检查它是否已成功完成。
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="终结点的查询结果，其中显示 provisioningState 为 Succeeded":::
 
@@ -351,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 此命令的输出是一些有关已创建的路由的信息。
+
+>[!NOTE]
+>必须先完成终结点（来自上一步）的预配工作，然后才能设置使用这些终结点的事件路由。 如果由于终结点未就绪而导致路由创建失败，请等待几分钟，然后重试。
 
 #### <a name="connect-the-function-to-event-grid"></a>将函数连接到事件网格
 
@@ -375,7 +397,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 ### <a name="run-the-simulation-and-see-the-results"></a>运行模拟并查看结果
 
-现在你可以运行设备模拟器，启动已设置的新事件流。 转到打开 DeviceSimulator 项目的 Visual Studio 窗口，然后运行该项目__。
+现在你可以运行设备模拟器，启动已设置的新事件流。 转到打开 DeviceSimulator 项目的 Visual Studio 窗口，然后运行该项目。
 
 与之前运行设备模拟器一样，控制台窗口将打开并显示模拟温度遥测消息。 这些事件将经过之前设置的流来更新 thermostat67 孪生，然后经过最近设置的流来更新 room21 孪生以进行匹配 。
 
@@ -420,7 +442,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 az group delete --name <your-resource-group>
 ```
 
-接下来，使用以下命令删除为客户端应用创建的 AAD 应用注册：
+接下来，使用以下命令删除为客户端应用创建的 Azure AD 应用注册：
 
 ```azurecli
 az ad app delete --id <your-application-ID>
@@ -433,7 +455,7 @@ az ad app delete --id <your-application-ID>
 在本教程中，你创建了一个端到端方案，它显示了由实时设备数据驱动的 Azure 数字孪生。
 
 接下来，请开始查看概念文档，详细了解本教程中所用的元素：
-* [概念：自定义模型](concepts-models.md)
+* [*概念：自定义模型*](concepts-models.md)
 
 或者，你也可以先查看操作方法文章，更深入的了解本教程中的过程：
-* [操作说明：使用 Azure 数字孪生 CLI](how-to-use-cli.md)
+* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)

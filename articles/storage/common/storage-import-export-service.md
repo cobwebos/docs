@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512434"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185377"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -74,9 +75,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 8. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于本地（在数据中心的国家/地区）装运，请共享国内运营商帐户。
+> 对于数据中心国家/地区内的本地 () 装运，请共享国内运营商帐户。
 >
-> 对于国外（外部数据中心国家/地区）装运，请共享国际运营商帐户。
+> 对于国外 (数据中心国家/地区外) 发货，请分享国际运营商帐户。
 
  ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
 
@@ -103,9 +104,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 9. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于本地（在数据中心的国家/地区）装运，请共享国内运营商帐户。
+> 对于数据中心国家/地区内的本地 () 装运，请共享国内运营商帐户。
 >
-> 对于国外（外部数据中心国家/地区）装运，请共享国际运营商帐户。
+> 对于国外 (数据中心国家/地区外) 发货，请分享国际运营商帐户。
   
  ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 
@@ -119,14 +120,15 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 |国家/地区  |国家/地区  |国家/地区  |国家/地区  |
 |---------|---------|---------|---------|
-|美国东部    | 北欧        | 印度中部        |US Gov 爱荷华州         |
+|美国东部    | 北欧        | Central India        |US Gov 爱荷华州         |
 |美国西部     |西欧         | 印度南部        | US DoD 东部        |
 |美国东部 2    | 东亚        |  印度西部        | US DoD 中部        |
-|美国西部 2     | 东南亚        | 加拿大中部        | 中国东部         |
+|美国西部 2     | Southeast Asia        | 加拿大中部        | 中国东部         |
 |美国中部     | 澳大利亚东部        | 加拿大东部        | 中国北部        |
-|美国中北部     |  澳大利亚东南部       | 巴西南部        | 英国南部        |
+|美国中北部     |  Australia Southeast       | Brazil South        | 英国南部        |
 |美国中南部     | 日本西部        |韩国中部         | 德国中部        |
 |美国中西部     |  日本东部       | US Gov 弗吉尼亚州        | 德国东北部        |
+|南非西部   |  南非北部 |
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -136,7 +138,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 * 在运行 WAImportExport 工具准备驱动器时，使用 dataset.csv 文件指定该选项**。
 
-* 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥**。 可以使用外部密钥保护程序（也称为 Microsoft 托管密钥）或客户托管密钥来进一步保护 BitLocker 加密密钥。 有关详细信息，请参阅如何[使用客户托管密钥保护 BitLocker 密钥](storage-import-export-encryption-key-portal.md)。
+* 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥**。 可以使用外部密钥保护程序来进一步保护 BitLocker 加密密钥， (也称为 Microsoft 托管密钥) 或客户托管密钥。 有关详细信息，请参阅如何[使用客户托管密钥保护 BitLocker 密钥](storage-import-export-encryption-key-portal.md)。
 
 对于导出作业，在将数据复制到驱动器以后，此服务会使用 BitLocker 加密驱动器，然后再将驱动器寄回给你。 加密密钥是通过 Azure 门户提供的。 需要使用 WAImporExport 工具通过密钥解锁驱动器。
 

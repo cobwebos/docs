@@ -1,14 +1,14 @@
 ---
 title: Linux VM 的应用程序一致性备份
 description: 创建 Linux 虚拟机到 Azure 的应用程序一致性备份。 本文介绍如何配置脚本框架以备份 Azure 部署的 Linux VM。 本文还包括故障排除信息。
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407092"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的应用程序一致性备份
 
@@ -52,21 +52,21 @@ ms.locfileid: "74173011"
 
     - **postScriptParams**：提供需传递给操作后脚本的可选参数。 所有参数都应当用引号引起来。 如果使用多个参数，请用逗号分隔参数。
 
-    - **preScriptNoOfRetries**：设置发生任何错误时，程序终止前应重试操作前脚本的次数。 0 表示发生失败时只尝试一次且不重试。
+    - **preScriptNoOfRetries**：设置在终止之前出现任何错误时应重试操作前脚本的次数。 如果为0，则表示只尝试一次，不重试。
 
-    - **postScriptNoOfRetries**：设置发生任何错误时，程序终止前应重试操作后脚本的次数。 0 表示发生失败时只尝试一次且不重试。
+    - **postScriptNoOfRetries**：设置在终止后出现任何错误时应重试操作后脚本的次数。 如果为0，则表示只尝试一次，不重试。
 
     - **timeoutInSeconds**：指定操作前脚本和操作后脚本的单次超时（最大值可以为 1800）。
 
-    - **continueBackupOnFailure**：如果希望在操作前脚本或操作后脚本失败时 Azure 备份故障回复到文件系统/崩溃一致性备份，请将此值设置为 true。  如果将此值设置为 false，则脚本失败时，备份也会失败（除非拥有单磁盘 VM，它会故障回复到崩溃一致性备份，不管此项设置如何）。 
+    - **continueBackupOnFailure**：如果希望在操作前脚本或操作后脚本失败时 Azure 备份故障回复到文件系统/崩溃一致性备份，请将此值设置为 true。  如果脚本失败，则将此项设置为**false**会导致备份失败（除非你具有单磁盘 VM，而不考虑此设置，则回退到崩溃一致的备份）。 当**continueBackupOnFailure**值设置为 false 时，如果备份失败，则会根据服务中的重试逻辑，尝试重试备份操作（针对规定尝试次数）。
 
-    - **fsFreezeEnabled**：指定为了确保文件系统一致性，在创建 VM 快照时是否应调用 Linux fsfreeze。 建议将此设置保留为 true，除非必须禁用 fsfreeze 才能让应用程序正常工作。 
+    - fsFreezeEnabled：指定为了确保文件系统一致性，在创建 VM 快照时是否应调用 Linux fsfreeze。**** 建议将此设置保留为 true，除非必须禁用 fsfreeze 才能让应用程序正常工作。****
 
-    - **ScriptsExecutionPollTimeSeconds**：设置在每次轮询到脚本执行之间，扩展必须进入睡眠状态的时间。 例如，如果值为 2，则扩展会每 2 秒检查一次前/后脚本执行是否完成。 它可以采用的最小值和最大值分别为 1 和 5。 该值应严格为一个整数。
+    - **ScriptsExecutionPollTimeSeconds**：设置扩展在每次轮询到脚本执行之间必须休眠的时间。 例如，如果值为 2，则扩展会每 2 秒检查一次前/后脚本执行是否完成。 它可以采用的最小值和最大值分别为 1 和 5。 该值应严格为一个整数。
 
-6. 现已配置脚本框架。 如果已配置 VM 备份，则下一次备份将调用这些脚本，并触发应用程序一致性备份。 如果未配置 VM 备份，请使用[将 Azure 虚拟机备份到恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)进行配置。
+6. 现已配置脚本框架。 如果已配置 VM 备份，则下一次备份将调用这些脚本，并触发应用程序一致性备份。 如果未配置 VM 备份，请使用将[Azure 虚拟机备份到恢复服务保管库](./backup-azure-vms-first-look-arm.md)进行配置。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 编写操作前脚本和操作后脚本时，请确保添加相应的日志记录，并查看脚本日志来解决任何脚本问题。 如果运行脚本时仍然遇到问题，请参阅下表中的详细信息。
 
@@ -74,15 +74,15 @@ ms.locfileid: "74173011"
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |操作前脚本返回错误，因此备份可能不具有应用程序一致性。| 查看脚本的失败日志来解决问题。|  
 |Post-ScriptExecutionFailed |操作后脚本返回了可能影响应用程序状态的错误。 |查看脚本的失败日志来解决问题，并检查应用程序状态。 |
-| Pre-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作前脚本。  |确保配置文件中指定的路径处存在操作前脚本，以保证应用程序一致性备份。|
-| Post-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作后脚本。  |确保配置文件中指定的路径处存在操作后脚本，以保证应用程序一致性备份。|
-| IncorrectPluginhostFile |VmSnapshotLinux 扩展随附的 Pluginhost 文件已损坏，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致性的备份。 | 卸载 VmSnapshotLinux 扩展，下一次备份时会自动重新安装它，这样即可解决问题。  |
-| IncorrectJSONConfigFile | VMSnapshotScriptPluginConfig.json 文件不正确，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致的备份。  | 从 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下载副本并重新配置该文件。 |
+| Pre-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作前脚本。**** |确保配置文件中指定的路径处存在操作前脚本，以保证应用程序一致性备份。|
+| Post-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json 配置文件中指定的位置找不到操作后脚本。**** |确保配置文件中指定的路径处存在操作后脚本，以保证应用程序一致性备份。|
+| IncorrectPluginhostFile |VmSnapshotLinux 扩展随附的 Pluginhost 文件已损坏，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致性的备份。****| 卸载 VmSnapshotLinux 扩展，下一次备份时会自动重新安装它，这样即可解决问题。**** |
+| IncorrectJSONConfigFile | VMSnapshotScriptPluginConfig.json 文件不正确，因此操作前脚本和操作后脚本无法运行，且不会创建应用程序一致的备份。**** | 从 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下载副本并重新配置该文件。 |
 | InsufficientPermissionforPre-Script | 对于正在运行的脚本，“root”用户应是该文件的所有者，并且应对文件设置“700”权限（即只有“所有者”才拥有“读取”、“写入”和“执行”权限）。 | 确保“root”用户是脚本文件的“所有者”，只有“所有者”才拥有“读取”、“写入”和“执行”权限。 |
 | InsufficientPermissionforPost-Script | 对于正在运行的脚本，root 用户应是该文件的所有者，并且应该对文件设置“700”权限（即，只有“所有者”才拥有“读取”、“写入”和“执行”权限）。 | 确保“root”用户是脚本文件的“所有者”，只有“所有者”才拥有“读取”、“写入”和“执行”权限。 |
-| Pre-ScriptTimeout | 执行应用程序一致性备份时操作前脚本超时。 | 检查脚本，并在 /etc/azure 中的 VMSnapshotScriptPluginConfig.json 文件中增加超时时间。   |
-| Post-ScriptTimeout | 执行应用程序一致性备份时操作后脚本超时。 | 检查脚本，并在 /etc/azure 中的 VMSnapshotScriptPluginConfig.json 文件中增加超时时间。   |
+| Pre-ScriptTimeout | 执行应用程序一致性备份时操作前脚本超时。 | 检查脚本，并在 /etc/azure 中的 VMSnapshotScriptPluginConfig.json 文件中增加超时时间。******** |
+| Post-ScriptTimeout | 执行应用程序一致性备份时操作后脚本超时。 | 检查脚本，并在 /etc/azure 中的 VMSnapshotScriptPluginConfig.json 文件中增加超时时间。******** |
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置 VM 备份到恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[配置 VM 备份到恢复服务保管库](./backup-azure-vms-first-look-arm.md)

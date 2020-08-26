@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5b4d5241e4236d4c11f2e2a5a8feb7c73258cba0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080768"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171390"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用 Azure Migrate:服务器评估工具评估物理服务器
 
@@ -45,12 +45,12 @@ ms.locfileid: "85080768"
 按如下所述设置新的 Azure Migrate 项目。
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
-2. 在“服务”下选择“Azure Migrate”。 
-3. 在“概述”中的“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。  
+2. 在“服务”下选择“Azure Migrate”。
+3. 在“概述”中的“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。
 
     ![发现和评估服务器](./media/tutorial-assess-physical/assess-migrate.png)
 
-4. 在“开始”中，单击“添加工具”。 
+4. 在“开始”中，单击“添加工具”。
 5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。  
 6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
@@ -65,8 +65,8 @@ ms.locfileid: "85080768"
 
     ![创建 Azure Migrate 项目](./media/tutorial-assess-physical/assessment-tool.png)
 
-9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
-10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。 
+9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。
+10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。
 11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
 
 
@@ -87,7 +87,7 @@ ms.locfileid: "85080768"
 下载设备的压缩文件。
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。  
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。
 3. 单击“下载”以下载压缩文件。
 
     ![下载安装程序](./media/tutorial-assess-physical/download-appliance.png)
@@ -179,13 +179,14 @@ ms.locfileid: "85080768"
 现在，从设备连接到要发现的物理服务器，并启动发现。
 
 1. 单击“添加凭据”以指定设备用于发现服务器的帐户凭据。  
-2. 指定操作系统、凭据的友好名称以及用户名和密码。 然后单击“添加”。
+2. 使用用户名和密码登录。 不支持使用密钥登录。 此外，用户必须是根登录名或本地管理员组的成员。
+3. 指定操作系统、凭据的友好名称以及用户名和密码。 然后单击“添加”。
 你可以为 Windows 和 Linux 服务器添加多个凭据。
 4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器。
-3. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。
+5. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。
     - 如果服务器验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。
     - 若要删除服务器，请选择 >“删除”。
-4. 验证之后，单击“保存并启动发现”以启动发现过程。
+6. 验证之后，单击“保存并启动发现”以启动发现过程。
 
 随即会启动发现。 每台服务器大约需要 1.5 分钟，才能将已发现的服务器的元数据显示在 Azure 门户中。
 
@@ -220,7 +221,7 @@ ms.locfileid: "85080768"
 
     ![评估属性](./media/tutorial-assess-physical/view-all.png)
 
-3. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个服务器集合到一起。
+3. 在“选择或创建组”中，选择“新建”并指定组名称。 组将要评估的一个或多个服务器集合到一起。
 4. 在“将计算机添加到组”中，选择要添加到该组的服务器。
 5. 单击“创建评估”以创建该组，并运行评估。
 

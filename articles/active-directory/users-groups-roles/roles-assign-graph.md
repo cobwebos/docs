@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44299a55424f9b0338ee49d2742aeedf16db22e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732083"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798510"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft 图形 API 分配自定义管理员角色 
 
@@ -26,11 +26,11 @@ ms.locfileid: "84732083"
 
 ## <a name="required-permissions"></a>所需的权限
 
-使用全局管理员帐户或特权标识管理员连接到 Azure AD 组织，以分配或移除角色。
+使用 "全局管理员" 或 "特权角色管理员" 帐户连接到 Azure AD 组织，以分配或删除角色。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 操作
 
-用于在用户和角色定义之间创建角色分配的 HTTP 请求。
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>示例1：创建用户和角色定义之间的角色分配。
 
 POST
 
@@ -45,7 +45,7 @@ Body
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  // Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -55,7 +55,7 @@ Body
 HTTP/1.1 201 Created
 ```
 
-用于在不存在主体或角色定义的情况下创建角色分配的 HTTP 请求
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>示例2：创建不存在主体或角色定义的角色分配
 
 POST
 
@@ -69,7 +69,7 @@ Body
 {
     "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  //Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -78,11 +78,7 @@ Body
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
-
-用于在内置角色定义上创建单个资源范围内的角色分配的 HTTP 请求。
-
-> [!NOTE] 
-> 目前，内置角色的限制仅限于“/”组织范围范围或“/AU/*”范围。 单个资源范围不适用于内置角色，但适用于自定义角色。
+### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>示例3：在单个资源作用域上创建角色分配
 
 POST
 
@@ -90,13 +86,37 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-Body
+正文
+
+``` HTTP
+{
+    "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
+    "roleDefinitionId":"e9b2b976-1dea-4229-a078-b08abd6c4f84",    //role template ID of a custom role
+    "directoryScopeId":"/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"  //object ID of an application
+}
+```
+
+响应
+
+``` HTTP
+HTTP/1.1 201 Created
+```
+
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>示例4：针对不受支持的内置角色定义创建管理单元范围的角色分配
+
+POST
+
+``` HTTP
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+```
+
+正文
 
 ``` HTTP
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
+    "roleDefinitionId":"29232cdf-9323-42fd-ade2-1d097af3e4de",    //role template ID of Exchange Administrator
+    "directoryScopeId":"/administrativeUnits/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"    //object ID of an administrative unit
 }
 ```
 
@@ -110,23 +130,17 @@ HTTP/1.1 400 Bad Request
         "code":"Request_BadRequest",
         "message":
         {
-            "lang":"en",
-            "value":"Provided authorization scope is not supported for built-in role definitions."},
-            "values":
-            [
-                {
-                    "item":"scope",
-                    "value":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
-                }
-            ]
+            "message":"The given built-in role is not supported to be assigned to a single resource scope."
         }
     }
 }
 ```
 
+仅为管理单元范围启用了部分内置角色。 请参阅 [此文档](./roles-admin-units-assign-roles.md) ，了解通过管理单元支持的内置角色的列表。
+
 ## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 操作
 
-用于为给定主体获取角色分配的 HTTP 请求
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>示例5：获取给定主体的角色分配
 
 GET
 
@@ -138,21 +152,25 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filte
 
 ``` HTTP
 HTTP/1.1 200 OK
-{ 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
-} ,
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/"  
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+        ]
 }
 ```
 
-用于为给定角色定义获取角色分配的 HTTP 请求。
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>示例6：获取给定角色定义的角色分配。
 
 GET
 
@@ -165,14 +183,18 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filte
 ``` HTTP
 HTTP/1.1 200 OK
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+     ]
 }
 ```
 
-用于按 ID 获取角色分配的 HTTP 请求。
+### <a name="example-7-get-a-role-assignment-by-id"></a>示例7：按 ID 获取角色分配。
 
 GET
 
@@ -188,13 +210,44 @@ HTTP/1.1 200 OK
     "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"
+}
+```
+
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>示例8：获取给定范围的角色分配
+
+
+GET
+
+``` HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
+```
+
+响应
+
+``` HTTP
+HTTP/1.1 200 OK
+{
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            }
+        ]
 }
 ```
 
 ## <a name="delete-operations-on-roleassignment"></a>RoleAssignment 上的 DELETE 操作
 
-用于删除用户和角色定义之间的角色分配的 HTTP 请求。
+### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>示例9：删除用户和角色定义之间的角色分配。
 
 DELETE
 
@@ -207,7 +260,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 204 No Content
 ```
 
-用于删除不再存在的角色分配的 HTTP 请求
+### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>示例10：删除不再存在的角色分配
 
 DELETE
 
@@ -221,7 +274,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 404 Not Found
 ```
 
-用于删除自己和内置角色定义之间的角色分配的 HTTP 请求
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>示例11：删除自定义和全局管理员角色定义之间的角色分配
 
 DELETE
 
@@ -240,12 +293,14 @@ HTTP/1.1 400 Bad Request
         "message":
         {
             "lang":"en",
-            "value":"Cannot remove self from built-in role definitions."},
+            "value":"Removing self from Global Administrator built-in role is not allowed"},
             "values":null
         }
     }
 }
 ```
+
+我们阻止用户删除其自己的全局管理员角色，以避免某个租户的全局管理员为零的情况。 允许删除分配给 self 的其他角色。
 
 ## <a name="next-steps"></a>后续步骤
 

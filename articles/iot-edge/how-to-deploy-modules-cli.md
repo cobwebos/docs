@@ -8,13 +8,14 @@ ms.date: 08/16/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 222e3e75d61096dc7aebb409213b8016e478c72b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133947"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501570"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 

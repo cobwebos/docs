@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477798"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116965"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>在 Chrome 浏览器中处理 SameSite Cookie 更改
 
@@ -59,7 +59,7 @@ ms.locfileid: "85477798"
 
 有关如何处理 ASP.NET 和 ASP.NET Core 中的 SameSite Cookie 的详细信息，另请参阅：
 
-- [使用 ASP.NET Core 中的 SameSite Cookie](https://docs.microsoft.com/aspnet/core/security/samesite)
+- [使用 ASP.NET Core 中的 SameSite Cookie](/aspnet/core/security/samesite)
 - [有关 SameSite 问题的 ASP.NET 博客](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)

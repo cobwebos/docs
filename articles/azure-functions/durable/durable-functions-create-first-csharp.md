@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: eda3afdf8deb3336cd0c5293c2422e694caa69c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80132773"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055456"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -49,7 +49,7 @@ ms.locfileid: "80132773"
 
     ![创建函数项目](media/durable-functions-create-first-csharp/functions-vscode-create-project.png)
 
-1. 为项目选择一个空文件夹位置，然后选择“选择”。 
+1. 为项目选择一个空文件夹位置，然后选择“选择”。
 
 1. 按照提示提供以下信息：
 
@@ -76,7 +76,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 提供函数名称 | HelloOrchestration | 在其中创建函数的类的名称 |
     | 提供命名空间 | Company.Function | 所生成类的命名空间 |
 
-1. 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。  按照提示提供以下信息，以在 Azure 中创建新的存储帐户。
+1. 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。 按照提示提供以下信息，以在 Azure 中创建新的存储帐户。
 
     | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
@@ -84,7 +84,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择一个位置 | *region* | 选择离你较近的区域 |
+    | 选择位置 | *region* | 选择离你较近的区域 |
 
 包含新函数的类会添加到此项目。 VS Code 还将存储帐户连接字符串添加到 *local.settings.json*，并将对 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet 包的引用添加到 *.csproj* 项目文件。
 
@@ -102,7 +102,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具。
 
-1. 若要测试函数，请在 `SayHello` 活动函数代码中设置断点，然后按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
+1. 若要测试函数，请在 `SayHello` 活动函数代码中设置断点，然后按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
@@ -148,7 +148,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用以下格式：
 
-        https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart
+    `https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart`
 
 1. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 
@@ -183,13 +183,13 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
 1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目”。
 
-1. 在“创建新项目”  对话框中，搜索 `functions`，选择“Azure Functions”  模板，然后选择“下一步”  。 
+1. 在“创建新项目”对话框中，搜索 `functions`，选择“Azure Functions”模板，然后选择“下一步”。 
 
     ![“新建项目”对话框，用于在 Visual Studio 中创建函数](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. 为项目键入**项目名称**，然后选择“确定”  。 项目名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
+1. 为项目键入**项目名称**，然后选择“确定”****。 项目名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
 
-1. 在“新建 Azure Functions 应用程序”  中，使用图片后面的表中指定的设置。
+1. 在“新建 Azure Functions 应用程序”**** 中，使用图片后面的表中指定的设置。
 
     ![Visual Studio 中的“新建 Azure Functions 应用程序”对话框](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
@@ -199,19 +199,19 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
     | **模板** | 空 | 创建一个空的函数应用。 |
     | **存储帐户**  | 存储模拟器 | 要进行持久函数状态管理，需要一个存储帐户。 |
 
-4. 选择“创建”  以创建一个空的函数项目。 此项目具有运行函数所需的基本配置文件。
+4. 选择“创建”**** 以创建一个空的函数项目。 此项目具有运行函数所需的基本配置文件。
 
 ## <a name="add-functions-to-the-app"></a>向应用中添加函数
 
 以下步骤使用模板在项目中创建持久函数代码。
 
-1. 在 Visual Studio 中右键单击该项目并选择“添加” > “新建 Azure 函数”。
+1. 在 Visual Studio 中右键单击该项目并选择“添加” > “新建 Azure 函数”。 
 
     ![添加新函数](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
-1. 确认从“添加”菜单中选择了“Azure 函数”  ，键入 C# 文件的名称，然后选择“添加”  。
+1. 确认从“添加”菜单中选择了“Azure 函数”****，键入 C# 文件的名称，然后选择“添加”****。
 
-1. 选择“Durable Functions 业务流程”  模板并选择“确定” 
+1. 选择“Durable Functions 业务流程”**** 模板并选择“确定”****
 
     ![选择持久模板](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)
 
@@ -277,7 +277,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     调用持久函数 HTTP 触发器的 URL 应采用以下格式：
 
-        https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart
+    `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart`
 
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 

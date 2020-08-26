@@ -3,12 +3,12 @@ title: 启用容器 Azure Monitor |Microsoft Docs
 description: 本文介绍如何启用和配置容器 Azure Monitor，以便你可以了解容器的执行情况以及已确定的与性能相关的问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320300"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>启用容器 Azure Monitor
 
@@ -28,7 +28,7 @@ ms.locfileid: "86499012"
 - Azure 门户
 - Azure PowerShell
 - Azure CLI
-- [Terraform 和 AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- [Terraform 和 AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "86499012"
    为新的 AKS 群集启用监视时，可以创建工作区，也可以让载入体验在 AKS 群集订阅的默认资源组中创建默认工作区。 
    
    如果选择自己创建工作区，则可以通过以下方法创建工作区： 
-   - [Azure 资源管理器](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure 门户](../learn/quick-create-workspace.md) 
    
@@ -112,7 +112,7 @@ ms.locfileid: "86499012"
 
 若要启用容器 Azure Monitor，请使用下表中所述的方法之一：
 
-| 部署状态 | 方法 | 说明 |
+| 部署状态 | 方法 | 描述 |
 |------------------|--------|-------------|
 | 新建 Kubernetes 群集 | [使用 Azure CLI 创建 AKS 群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 你可以为使用 Azure CLI 创建的新的 AKS 群集启用监视。 |
 | | [使用 Terraform 创建 AKS 群集](container-insights-enable-new-cluster.md#enable-using-terraform)| 你可以为使用开源工具 Terraform 创建的新 AKS 群集启用监视。 |
@@ -131,3 +131,4 @@ ms.locfileid: "86499012"
 ## <a name="next-steps"></a>后续步骤
 
 启用监视后，可以开始分析 Azure Kubernetes 服务（AKS）、Azure Stack 或其他环境中托管的 Kubernetes 群集的性能。 若要了解如何使用用于容器的 Azure Monitor，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)。
+

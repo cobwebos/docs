@@ -7,15 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997095"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284109"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Common Data Service 中的记录
 
-通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Common Data Service 连接器](https://docs.microsoft.com/connectors/commondataservice/)，你可以构建管理[Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro)数据库中的记录的自动化工作流。 这些工作流可以创建记录、更新记录和执行其他操作。 你还可以从 Common Data Service 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Common Data Service 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
+通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Common Data Service 连接器](/connectors/commondataservice/)，你可以构建管理[Common Data Service](/powerapps/maker/common-data-service/data-platform-intro)数据库中的记录的自动化工作流。 这些工作流可以创建记录、更新记录和执行其他操作。 你还可以从 Common Data Service 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Common Data Service 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
 
 本文介绍如何构建逻辑应用，以便在每次创建新的潜在客户记录时创建任务记录。
 
@@ -23,10 +24,10 @@ ms.locfileid: "82997095"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* [Common Data Service 环境](https://docs.microsoft.com/power-platform/admin/environments-overview)，它是组织存储、管理和共享业务数据和 Common Data Service 数据库的空间。 有关详细信息，请参阅以下资源：<p>
+* [Common Data Service 环境](/power-platform/admin/environments-overview)，它是组织存储、管理和共享业务数据和 Common Data Service 数据库的空间。 有关详细信息，请参阅以下资源：<p>
 
-  * [了解： Common Data Service 入门](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power Platform-环境概述](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [了解： Common Data Service 入门](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power Platform-环境概述](/power-platform/admin/environments-overview)
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)和逻辑应用的基本知识，你需要从该位置访问 Common Data Service 数据库中的记录。 若要使用 Common Data Service 触发器启动逻辑应用，需要使用空白逻辑应用。 如果不熟悉 Azure 逻辑应用，请查看[快速入门：使用 Azure 逻辑应用创建第一个工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -48,9 +49,9 @@ ms.locfileid: "82997095"
 
    ![用于监视环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | properties | 必须 | 描述 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
-   | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅[Power Platform-环境概述](https://docs.microsoft.com/power-platform/admin/environments-overview)。 |
+   | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅[Power Platform-环境概述](/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如 "Lead" |
    | **范围** | 是 | 创建新记录的源，例如，业务部门中的用户或组织中的任何用户。 此示例使用 "Business unit"。 |
    ||||
@@ -69,7 +70,7 @@ ms.locfileid: "82997095"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | properties | 必须 | 描述 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，该记录在触发器中不必是相同的环境，而是在此示例中为 "Fabrikam 销售生产" |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -86,9 +87,9 @@ ms.locfileid: "82997095"
 
       ![选择要在任务记录中使用的触发器输出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 触发器输出 | 描述 |
+      | 触发器输出 | 说明 |
       |----------------|-------------|
-      | **First Name** | 要用作任务记录中主要联系人的潜在顾客记录的名字 |
+      | **名字** | 要用作任务记录中主要联系人的潜在顾客记录的名字 |
       | **姓氏** | 要用作任务记录中主要联系人的潜在客户记录的姓氏 |
       | **说明** | 要包括在任务记录中的其他输出，如电子邮件地址和办公电话号码 |
       |||
@@ -97,7 +98,7 @@ ms.locfileid: "82997095"
 
    ![已完成 "创建新记录" 操作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 1. 若要手动启动逻辑应用，请在设计器工具栏上选择 "**运行**"。 若要测试逻辑应用，请创建新的 "潜在顾客" 记录。
 
@@ -125,7 +126,7 @@ ms.locfileid: "82997095"
 
    ![输入用于筛选记录的 ODATA 筛选器查询](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-有关 `$filter` 系统查询选项的详细信息，请参阅[Common Data Service-Filter results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
+有关 `$filter` 系统查询选项的详细信息，请参阅[Common Data Service-Filter results](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
 
 ## <a name="list-records-based-on-an-order"></a>基于订单列出记录
 
@@ -139,7 +140,7 @@ ms.locfileid: "82997095"
 
    ![输入用于对记录进行排序的 ODATA 筛选器查询](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-有关 `$orderby` 系统查询选项的详细信息，请参阅[Common Data Service 顺序结果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
+有关 `$orderby` 系统查询选项的详细信息，请参阅[Common Data Service 顺序结果](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
 
 ## <a name="field-data-types"></a>字段数据类型
 
@@ -165,7 +166,7 @@ ms.locfileid: "82997095"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关基于连接器的 Swagger 说明的技术信息，如触发器、操作、限制和其他详细信息，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/commondataservice/)。
+有关基于连接器的 Swagger 说明的技术信息，如触发器、操作、限制和其他详细信息，请参阅[连接器的参考页](/connectors/commondataservice/)。
 
 ## <a name="next-steps"></a>后续步骤
 

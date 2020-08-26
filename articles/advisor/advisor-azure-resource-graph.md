@@ -4,12 +4,12 @@ description: 对 Azure Resource Graph 中的顾问数据进行查询
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117827"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057775"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>在 Resource Graph 资源管理器 (Azure Resource Graph) 中查询顾问数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "85117827"
 
 ## <a name="advisor-resource-types-in-azure-graph"></a>Azure Graph 中的顾问资源类型
 
-[Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) 中的可用顾问资源类型：在顾问资源下有 3 种资源类型可供查询。 下面是现在可在 Resource Graph 中查询的资源列表。
+[Resource Graph](../governance/resource-graph/index.yml) 中的可用顾问资源类型：在顾问资源下有 3 种资源类型可供查询。 下面是现在可在 Resource Graph 中查询的资源列表。
 * Microsoft.Advisor/configurations
 * Microsoft.Advisor/recommendations
 * Microsoft.Advisor/suppressions
@@ -40,6 +40,6 @@ ms.locfileid: "85117827"
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问可靠性建议](advisor-high-availability-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
-* [顾问安全建议](advisor-security-recommendations.md)
-* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)
-* [顾问 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [顾问安全性建议](advisor-security-recommendations.md)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)
+* [顾问 REST API](/rest/api/advisor/)

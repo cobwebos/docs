@@ -11,12 +11,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/19/2019
-  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: ada202a8683b64144f2adacc759b9461472e4a31
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81422398"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262562"
 landingContent:
 - title: 关于 Azure Key Vault
   linkLists:
@@ -24,12 +24,14 @@ landingContent:
     links:
     - text: 什么是 Azure Key Vault？
       url: overview.md
+    - text: 关于软删除的重要新消息
+      url: soft-delete-change.md
   - linkListType: concept
     links:
     - text: 基本概念
       url: basic-concepts.md
     - text: 软删除
-      url: overview-soft-delete.md
+      url: soft-delete-overview.md
     - text: 限制
       url: overview-throttling.md
 - title: 教程
@@ -38,10 +40,10 @@ landingContent:
     links:
     - text: 从 Web 应用程序使用 Key Vault
       url: tutorial-net-create-vault-azure-web-app.md
-    - text: 将 Key Vault 与 Azure Windows 虚拟机配合使用
-      url: tutorial-net-windows-virtual-machine.md
-    - text: 通过 Python 使用 Key Vault - Windows
-      url: tutorial-python-windows-virtual-machine.md
+    - text: 通过 .NET 结合使用密钥保管库和虚拟机
+      url: tutorial-net-virtual-machine.md
+    - text: 通过 Python 结合使用密钥保管库和虚拟机
+      url: tutorial-python-virtual-machine.md
 - title: 安全性
   linkLists:
   - linkListType: overview
@@ -60,6 +62,20 @@ landingContent:
       url: managed-identity.md
     - text: 使用访问策略
       url: group-permissions-for-apps.md
+- title: 客户端库
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Key Vault 的客户端库
+      url: client-libraries.md
+    - text: .NET 客户端库
+      url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - text: Python 客户端库
+      url: /python/api/overview/azure/key-vault-index?view=azure-python
+    - text: Java 客户端库
+      url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+    - text: Node.js 客户端库
+      url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
 - title: Microsoft Learn
   linkLists:
   - linkListType: learn

@@ -2,18 +2,19 @@
 title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘
 description: 了解如何通过 Azure CLI 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: a4be498b25aee7c5a50b2f35fe06be3763eb4732
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008822"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825840"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
@@ -42,16 +43,16 @@ ms.locfileid: "81008822"
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 | 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
-| [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 1600 |
-| [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 576 |
-| [内存优化](../virtual-machines/linux/sizes-memory.md) | D、E、G、M 系列 | 6144 |
-| [存储优化](../virtual-machines/linux/sizes-storage.md) | L 系列 | 5630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 1440 |
-| [高性能](../virtual-machines/linux/sizes-hpc.md) | A 和 H 系列 | 2000 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 1600 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E、G、M 系列 | 6144 |
+| [存储优化](../virtual-machines/sizes-storage.md) | L 系列 | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
-可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 可以为每个 VM vCPU 附加两个数据磁盘，直至达到每个虚拟机 64 个磁盘的绝对上限。
+可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 可以为每个 VM vCPU 附加两个数据磁盘，直至达到每个虚拟机 64 个磁盘的绝对上限。
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 Azure 提供两种类型的磁盘。
@@ -60,7 +61,7 @@ Azure 提供两种类型的磁盘。
 标准存储受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负荷。
 
 ### <a name="premium-disk"></a>高级磁盘
-高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 建议对运行生产工作负荷的 VM 使用这些磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将舍入为下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
+高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 建议对运行生产工作负荷的 VM 使用这些磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将向上舍入到下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
 
 ### <a name="premium-disk-performance"></a>高级磁盘性能
 |高级存储磁盘类型 | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
@@ -69,14 +70,14 @@ Azure 提供两种类型的磁盘。
 | 每个磁盘的最大 IOPS | 120 | 240 | 500 | 2,300 | 5,000 | 7,500 | 7,500 |
 每个磁盘的吞吐量 | 25 MB/秒 | 50 MB/秒 | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
 
-尽管上表确定了每个磁盘的最大 IOPS，但还可通过条带化多个数据磁盘实现更高级别的性能。 例如，Standard_GS5 VM 最多可实现 80,000 IOPS。 若要详细了解每个 VM 的最大 IOPS，请参阅 [Linux VM 大小](../virtual-machines/linux/sizes.md)。
+尽管上表确定了每个磁盘的最大 IOPS，但还可通过条带化多个数据磁盘实现更高级别的性能。 例如，Standard_GS5 VM 最多可实现 80,000 IOPS。 若要详细了解每个 VM 的最大 IOPS，请参阅 [Linux VM 大小](../virtual-machines/sizes.md)。
 
 
 ## <a name="create-and-attach-disks"></a>创建并附加磁盘
 可以在创建规模集时创建和附加磁盘，也可以对现有的规模集创建和附加磁盘。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>创建规模集时附加磁盘
-首先，使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。
+首先，使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”  区域中创建了名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -111,7 +112,7 @@ az vmss disk attach \
 ## <a name="prepare-the-data-disks"></a>准备数据磁盘
 已创建并附加到规模集 VM 实例的磁盘是原始磁盘。 将磁盘用于数据和应用程序之前，必须准备磁盘。 若要准备磁盘，需要创建分区、创建文件系统，并将其装载。
 
-若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/linux/extensions-customscript.md)。
+若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-linux.md)。
 
 以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [az vmss extension set](/cli/azure/vmss/extension) 命令，该命令用于准备所有原始的附加数据磁盘：
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045191"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -25,9 +26,9 @@ ms.locfileid: "83125768"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
+- 你的订阅必须已注册到 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md)。 
 
-- 需要安装 [Azure PowerShell](/powershell/azure)，但也可以使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 
+- 需要安装 [Azure PowerShell](/powershell/azure)，但也可以使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 
 
 - VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
@@ -292,5 +293,3 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[自定义指标](metrics-custom-overview.md)。
-
-

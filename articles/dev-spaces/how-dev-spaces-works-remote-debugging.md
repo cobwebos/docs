@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 介绍如何在 Azure Kubernetes Service 上进行远程调试的过程与 Azure Dev Spaces
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241395"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213389"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 远程调试代码的方式
 
@@ -30,15 +30,7 @@ Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kuber
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Azure Dev Spaces 对项目进行远程调试，请参阅以下快速入门：
+详细了解 Azure Dev Spaces 的工作方式。
 
-* [通过 Visual Studio Code 和 Java 快速循环访问和调试][quickstart-java]
-* [通过 Visual Studio Code 和 .NET 快速循环访问和调试][quickstart-netcore]
-* [通过 Visual Studio Code 和 Node.js快速循环访问和调试][quickstart-node]
-* [通过 Visual Studio 和 .NET Core 快速循环访问和调试][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces 工作原理](how-dev-spaces-works.md)

@@ -3,8 +3,8 @@ title: 已知问题：从 Oracle 迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
 description: 了解使用 Azure 数据库迁移服务从 Oracle 联机迁移到 Azure Database for PostgreSQL 单服务器时存在的已知问题和迁移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/20/2020
-ms.openlocfilehash: 2cf8ff446fe3441fc039ef3c2afef6308224666f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 06e96e970705801203c0469d5b87d1304d67a4f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090682"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>从 Oracle 联机迁移到 Azure DB for PostgreSQL 单服务器时存在的已知问题/迁移限制
 

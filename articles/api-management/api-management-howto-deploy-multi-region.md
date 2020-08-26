@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790473"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065448"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 
@@ -28,6 +28,9 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 > [!NOTE]
 > 只会将 API 管理的网关组件部署到所有区域。 服务管理组件和开发人员门户只会托管在主要区域。 因此，如果主要区域发生服务中断，在主要区域恢复联机之前，访问开发人员门户和更改配置（例如添加 API、应用策略）的功能将受到影响。 当主要区域脱机时，可用的辅助区域将继续使用可用的最新配置为 API 流量提供服务。
+
+>[!IMPORTANT]
+> 用于在单个区域中存储客户数据的功能当前仅在亚太地理 (新加坡) 的东南部区域提供。 对于所有其他区域，客户数据存储在异地。
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 

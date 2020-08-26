@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b258b0b5dba902e94e8d221e0d8f0292fdec9f67
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: faf0db31b458ed6b8dd4961fffbf2a810990574d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057392"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084477"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容  
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ ms.locfileid: "86057392"
 > 
 > 
 
-可以使用 [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) 来更新定位符的过期日期。 
+可以使用 [REST API](/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) 来更新定位符的过期日期。 
 
 > [!NOTE]
 > 更新共享访问签名定位符的过期日期时，URL 会发生变化。
@@ -97,4 +97,3 @@ URL 将添加到“已发布 URL”  列表。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-

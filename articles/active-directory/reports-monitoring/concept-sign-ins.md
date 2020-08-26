@@ -17,19 +17,19 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246511"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816076"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录**–有关托管应用程序和用户登录活动的使用情况的信息。
+    - **登录** –有关托管应用程序和用户登录活动的使用情况的信息。
     - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
 - **安全性** 
     - 有**风险的登录**-有[风险的登录](concept-risky-sign-ins.md)是指不是用户帐户合法所有者的登录尝试。
@@ -47,11 +47,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
 
-- [所有版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) 中都提供了登录活动报告。
-
-- 若要使用 API 访问登录数据，租户必须拥有与之关联的 [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 许可证。
-
-
+"登录活动" 报告适用于 [所有版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) ，还可以通过 Microsoft Graph API 进行访问。
 
 ## <a name="sign-ins-report"></a>登录报告
 
@@ -151,7 +147,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 |经验证的 SMTP| |由 POP 和 IMAP 客户端用来发送电子邮件。|
 |自动发现| |由 Outlook 和 EAS 客户端用来查找和连接 Exchange Online 中的邮箱。|
 |Exchange ActiveSync| |此筛选器显示尝试 EAS 协议的所有登录尝试。|
-|浏览者|![检查](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
+|浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
 |Exchange ActiveSync| | 显示使用客户端应用通过 Exchange ActiceSync 连接到 Exchange Online 的用户进行的所有登录尝试|
 |Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用使用的编程接口。|
@@ -184,7 +180,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - **成功**：在登录过程中对用户和应用程序应用了一个或多个条件访问策略（但不一定是其他条件）。 
 
-- **失败**：在登录过程中应用了一个或多个条件访问策略，但不符合这些策略。
+- **失败**：满足至少一个条件性访问策略的用户和应用程序条件，并且未满足或未将授权控件设置为阻止访问。
 
 
 

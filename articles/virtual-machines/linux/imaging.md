@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 40d028ade5429c89ce40b718c90c601dfcb0e470
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307058"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502174"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -25,7 +25,7 @@ ms.locfileid: "85307058"
 ## <a name="difference-between-managed-disks-and-images"></a>托管磁盘和映像之间的差异
 
 
-Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#managed-disks)或用作映像的源。 
+Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](../windows/faq-for-disks.md#managed-disks)或用作映像的源。 
 
 Azure 托管磁盘是单个的 VHD。 可以使用现有 VHD 和根据其创建托管磁盘，或者从头开始创建一个空托管磁盘。 可以通过将磁盘附加到 VM 来借助托管磁盘创建 VM，但一个 VM 只能使用一个 VHD。 OS 属性无法修改，Azure 只会尝试开启 VM 和启动磁盘。 
 
@@ -49,16 +49,16 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 通用映像在首次启动时需要完成设置。 例如，在首次启动时，设置主机名、管理员用户和其他特定于 VM 的配置。 需要多次重用映像以及在创建期间传入参数时，此类映像非常有用。 如果通用映像包含 Azure 代理，则代理将处理参数，并向平台返回指示初始配置已完成的信号。 此过程称为“预配”。 
 
 预配要求映像中包含配置程序。 以下两个配置程序可供使用：
-- [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
-- [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+- [Azure Linux 代理](../extensions/agent-linux.md)
+- [cloud-init](./using-cloud-init.md)
 
-有关创建映像的先决条件，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)。
+有关创建映像的先决条件，请参阅[此处](./create-upload-generic.md)。
 
 
 ### <a name="specialized-images"></a>专用映像
 此类映像经过完全配置且不需用 VM 参数和特殊参数。该平台仅打开 VM，你需要通过设置主机名等方式确保 VM 内的唯一性来避免同一 VNET 中存在 DNS 冲突。 
 
-虽然此类映像无需预配代理，但是，你可能需要一些扩展处理功能。 为此，可以安装 Linux 代理，但请禁用预配选项。 即使无需预配代理，此类映像也必须满足 Azure 映像的[先决条件](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)。
+虽然此类映像无需预配代理，但是，你可能需要一些扩展处理功能。 为此，可以安装 Linux 代理，但请禁用预配选项。 即使无需预配代理，此类映像也必须满足 Azure 映像的[先决条件](./create-upload-generic.md)。
 
 
 ## <a name="image-storage-options"></a>映像存储选项
@@ -94,13 +94,14 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 
 ## <a name="hyper-v-generation"></a>Hyper-V 代系
 
-Azure 支持 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)。Gen2 是最新一代的 Hyper-V，与 Gen1 相比提供了更多功能， 例如更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些特性。 有关详细信息，请参阅“特性和功能”部分。 有关详细信息，请参阅此[文章](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。 如果需要其他功能，请创建 Gen2 映像。
+Azure 支持 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)。Gen2 是最新一代的 Hyper-V，与 Gen1 相比提供了更多功能， 例如更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些特性。 有关详细信息，请参阅“特性和功能”部分。 有关详细信息，请参阅此[文章](../windows/generation-2.md)。 如果需要其他功能，请创建 Gen2 映像。
 
-如果仍需要创建自己的映像，请确保映像符合[映像先决条件](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)，并将其上传到 Azure。 以下是分发特定要求：
+如果仍需要创建自己的映像，请确保映像符合[映像先决条件](./create-upload-generic.md)，并将其上传到 Azure。 以下是分发特定要求：
 
 
-- [基于 CentOS 的分发](create-upload-centos.md)
+- [基于 CentOS 的分发版](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
 - [Oracle Linux](oracle-create-upload-vhd.md)
 - [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 - [SLES 和 openSUSE](suse-create-upload-vhd.md)
@@ -110,6 +111,3 @@ Azure 支持 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)。Gen2 是最新一代
 ## <a name="next-steps"></a>后续步骤
 
 了解如何创建[共享映像库](tutorial-custom-images.md)。
-
-
-

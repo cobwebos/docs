@@ -2,25 +2,20 @@
 title: 教程：使用 Azure Active Directory 为 Concur 配置自动用户预配 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Concur 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60280397"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551160"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
 
@@ -93,7 +88,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
    
     ![确认操作](./media/concur-provisioning-tutorial/ic721732.png "确认操作")
 
-6. 在[Azure 门户](https://portal.azure.com)中，浏览到**Azure Active Directory > 企业应用 > 所有应用程序**"部分。
+6. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
 
 7. 如果已为 Concur 配置单一登录，请使用搜索字段搜索 Concur 实例。 否则，请选择“添加”并在应用程序库中搜索“Concur”********。 从搜索结果中选择 Concur，并将其添加到应用程序列表。
 

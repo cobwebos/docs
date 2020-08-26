@@ -1,6 +1,5 @@
 ---
-title: 使用示例数据集
-titleSuffix: ML Studio (classic) - Azure
+title: 机器学习工作室（经典）：使用示例数据集 - Azure
 description: 机器学习工作室（经典）中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +9,25 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd7d880efaa5c69301c25c69d55f4b21dd97242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb10b55aeeaa2d40d4ef4398dc06c9d4091f5ea
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321839"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432082"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中使用示例数据集
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 [top]: #machine-learning-sample-datasets
 
 在 Azure 机器学习工作室（经典）中创建新工作区时，默认包含大量的示例数据集和试验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
 
-一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在试验中通过[导入数据][import-data]模块使用这些数据集。
+一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在试验中通过使用[导入数据][import-data]模块来使用这些数据集。
 
-余下的这些示例数据集可在“保存的数据集”  下的工作区中使用。 可以在机器学习工作室（经典）中试验画布左侧的模块调色板中找到此项。
+余下的这些示例数据集可在“保存的数据集”下的工作区中使用。 可以在机器学习工作室（经典）中试验画布左侧的模块调色板中找到此项。
 通过将其中的任何数据集拖放到实验画布中，即可在自己的实验中使用它们。
 
 ## <a name="datasets"></a>数据集
@@ -170,7 +172,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。
 <p></p>
-数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室（经典）之前，数据集的处理如下所示：
+数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室（经典）之前，数据集已按如下所述进行处理：
 <ul>
   <li>数据集经筛选，仅包含美国本土 70 个最繁忙的机场</li>
   <li>取消的航班标记为延误超过 15 分钟</li>
@@ -233,7 +235,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <tr>
   <td>电影推文</td>
   <td>
-该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例表示一篇推文和如下元组：此推文的用户 ID、IMDB 电影 ID、评级、时间戳、收藏数目和转发此推文的数目。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。
+该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例表示一篇推文，是一个元组：用户 ID、IMDB 电影 ID、评分、时间戳、收藏此推文的数目和转发此推文的数目。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。
   </td>
 </tr>
 
@@ -330,7 +332,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 美国国家海洋和大气局每小时发布的陆基天气观测（<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">从 201304 到 201310 的合并数据</a>）。
 <p></p>
-该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到 Azure 机器学习工作室（经典）之前，数据集的处理如下所示：
+该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到 Azure 机器学习工作室（经典）之前，数据集已按如下所述进行处理：
 <ul>
   <li>气象站 ID 已映射到相应的机场 ID</li>
   <li>与 70 个最繁忙的机场无关的气象站已筛选掉</li>
@@ -345,7 +347,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 数据来自维基百科 (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>)，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。
 <p></p>
-在上传到 Azure 机器学习工作室（经典）之前，数据集的处理如下所示：
+在上传到 Azure 机器学习工作室（经典）之前，数据集已按如下所述进行处理：
 <ul>
   <li>提取每个特定公司的文本内容</li>
   <li>去除维基百科的格式设置</li>
@@ -409,7 +411,7 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [通过示例开始试验](sample-experiments.md)
+> [通过示例快速开始试验](sample-experiments.md)
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

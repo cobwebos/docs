@@ -4,19 +4,19 @@ description: 用于在 Azure SQL 托管实例中创建托管实例的 Azure CLI 
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 9d0058fd90590b10a0d5745bce1875db9ad35745
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 54e1aa993f177a4d3bc255287ae8c2fb14cf65af
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497267"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>使用 CLI 创建 Azure SQL 托管实例
 
@@ -49,7 +49,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 虚拟网络命令。 |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 虚拟网络子网命令。 |

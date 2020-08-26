@@ -1,25 +1,15 @@
 ---
 title: Azure CLI - 在实验室中创建并验证虚拟机
 description: 此 Azure CLI 脚本在实验室中创建虚拟机，并验证其是否可用。
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: 767d1f3a504e91783e37d8ff1c1b97f62816af3b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 08/11/2020
+ms.openlocfilehash: b64b6fa13bd0d320707dc279cb554d5c23f1d80d
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889098"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136161"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>使用 Azure CLI 在 Azure 开发测试实验室的实验室中创建虚拟机并验证其可用性
 
@@ -53,6 +43,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure 实验室服务 CLI 示例](../samples-cli.md)中找到其他 Azure 实验室服务 CLI 脚本示例。

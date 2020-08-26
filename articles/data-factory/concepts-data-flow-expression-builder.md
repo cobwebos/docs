@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/20/2020
-ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: f522812f762b55ec61794101e6cd1ec15fb171ca
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126155"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212103"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>映射数据流中的生成表达式
 
@@ -24,7 +24,7 @@ ms.locfileid: "85126155"
 
 ## <a name="open-expression-builder"></a>打开表达式生成器
 
-Azure 数据工厂用户体验中的表达式编辑接口称为 "表达式生成器"。 在输入表达式逻辑时，数据工厂使用[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)代码完成来突出显示、语法检查和完成。
+Azure 数据工厂用户体验中的表达式编辑接口称为 "表达式生成器"。 在输入表达式逻辑时，数据工厂使用 [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) 代码完成来突出显示、语法检查和完成。
 
 ![表达式生成器](media/data-flow/xpb1.png "表达式生成器")
 
@@ -32,17 +32,17 @@ Azure 数据工厂用户体验中的表达式编辑接口称为 "表达式生成
 
 ![蓝色表达式框](media/data-flow/expressionbox.png "表达式生成器")
 
-引用匹配或分组依据条件中的列时，表达式可以从列中提取值。 若要创建表达式，请选择 "**计算列**"。
+引用匹配或分组依据条件中的列时，表达式可以从列中提取值。 若要创建表达式，请选择 " **计算列**"。
 
 ![计算列选项](media/data-flow/computedcolumn.png "表达式生成器")
 
-如果表达式或文本值为有效输入，请选择 "**添加动态内容**" 以生成一个计算结果为文本值的表达式。
+如果表达式或文本值为有效输入，请选择 " **添加动态内容** " 以生成一个计算结果为文本值的表达式。
 
 ![添加动态内容选项](media/data-flow/add-dynamic-content.png "表达式生成器")
 
 ## <a name="expression-language-reference"></a>表达式语言参考
 
-映射数据流具有可在表达式中使用的内置函数和运算符。 有关可用函数的列表，请参阅[映射数据流中的表达式函数](data-flow-expression-functions.md)。
+映射数据流具有可在表达式中使用的内置函数和运算符。 有关可用函数的列表，请参阅 [映射数据流中的表达式函数](data-flow-expression-functions.md)。
 
 ## <a name="column-names-with-special-characters"></a>带有特殊字符的列名称
 
@@ -52,11 +52,11 @@ Azure 数据工厂用户体验中的表达式编辑接口称为 "表达式生成
 
 ## <a name="preview-expression-results"></a>预览表达式结果
 
-如果打开了[调试模式](concepts-data-flow-debug-mode.md)，则可以使用实时 Spark 群集来查看表达式的计算结果的正在进行预览。 构建逻辑时，可以实时调试表达式。 
+如果打开了 [调试模式](concepts-data-flow-debug-mode.md) ，则可以使用实时 Spark 群集来查看表达式的计算结果的正在进行预览。 构建逻辑时，可以实时调试表达式。 
 
 ![正在进行的预览](media/data-flow/exp4b.png "表达式数据预览")
 
-选择 "**刷新**" 可根据源的实时示例更新表达式的结果。
+选择 " **刷新** " 可根据源的实时示例更新表达式的结果。
 
 ![“刷新”按钮](media/data-flow/exp5.png "表达式数据预览")
 
@@ -89,7 +89,7 @@ Azure 数据工厂用户体验中的表达式编辑接口称为 "表达式生成
 
 ## <a name="regular-expressions"></a>正则表达式
 
-许多表达式语言函数使用正则表达式语法。 使用正则表达式函数时，表达式生成器会尝试将反斜杠（ \\ ）解释为转义字符序列。 如果在正则表达式中使用反斜杠，请将整个正则表达式括在反撇号（）中， \` 或使用双反斜杠。
+许多表达式语言函数使用正则表达式语法。 使用正则表达式函数时，表达式生成器会尝试将反斜杠 (\\) 解释为转义字符序列。 如果在正则表达式中使用反斜杠，请将整个正则表达式括在反撇号 (\`) 或使用双反斜杠。
 
 使用反撇号的示例：
 
@@ -105,7 +105,7 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ## <a name="address-array-indexes"></a>地址数组索引
 
-对于返回数组的表达式函数，使用方括号（[]）来寻址返回数组对象内的特定索引。 数组基于一个数组。
+对于返回数组的表达式函数，使用方括号 ( [] ) 来处理返回数组对象内的特定索引。 数组基于一个数组。
 
 ![表达式生成器数组](media/data-flow/expb2.png "表达式数据预览")
 
@@ -132,7 +132,7 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ## <a name="find-time-from-epoch-or-unix-time"></a>查找来自 epoch 或 Unix 时间的时间
 
-toLong （currentTimestamp （）-toTimestamp （' 1970-01-01 00：00： 00.000 '，' yyyy-mm-dd HH： MM： ss。SSS '）） * 1000l
+toLong ( currentTimestamp ( # A2-toTimestamp ( "1970-01-01 00：00： 00.000"，' yyyy-MM-dd HH： MM： ss。SSS ") ) * 1000l
 
 ## <a name="next-steps"></a>后续步骤
 

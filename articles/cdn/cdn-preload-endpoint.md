@@ -1,6 +1,6 @@
 ---
 title: 在 Azure CDN 终结点上预加载资产 | Microsoft Docs
-description: 了解如何在 Azure CDN 终结点上预加载缓存内容。
+description: 了解如何在 Azure 内容分发网络终结点上预加载缓存的内容。 此功能在某些版本的产品上可用。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887579"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192569"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]

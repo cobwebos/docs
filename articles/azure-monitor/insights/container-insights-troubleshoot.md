@@ -2,13 +2,13 @@
 title: 如何对用于容器的 Azure Monitor 进行故障排除 | Microsoft Docs
 description: 本文介绍如何排查和解决用于容器的 Azure Monitor 存在的问题。
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: bc4105dc23445c29364961501f93e42f8c3b683d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: fcd799c63e4afb68d96f67d1c03016a4d3b10f34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092824"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
 
@@ -37,18 +37,18 @@ ms.locfileid: "85800437"
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    输出应如下所示，指明其已正确部署：
+    输出应类似于以下示例，指示已正确部署：
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```
-2. 如果你有 Windows Server 节点，请运行以下命令来检查代理的状态：
+2. 如果有 Windows Server 节点，请运行以下命令，检查代理的状态：
 
     `kubectl get ds omsagent-win --namespace=kube-system`
 
-    输出应如下所示，指明其已正确部署：
+    输出应类似于以下示例，指示已正确部署：
 
     ```
     User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
@@ -82,33 +82,6 @@ ms.locfileid: "85800437"
     omsagent-win-6drwq                  1/1       Running   0          1d
     ```
 
-5. 查看代理日志。 部署容器化代理时，它通过运行 OMI 命令执行快速检查，并显示代理和提供程序的版本。
-
-6. 若要验证代理是否已成功部署，请运行以下命令：`kubectl logs omsagent-484hw --namespace=kube-system`
-
-    状态应类似于以下示例：
-
-    ```
-    User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-    :
-    :
-    instance of Container_HostInventory
-    {
-        [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-        Computer=aks-nodepool1-39773055-0
-        DockerVersion=1.13.1
-        OperatingSystem=Ubuntu 16.04.3 LTS
-        Volume=local
-        Network=bridge host macvlan null overlay
-        NodeRole=Not Orchestrated
-        OrchestratorType=Kubernetes
-    }
-    Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc    Status: Onboarded(OMSAgent Running)
-    omi 1.4.2.2
-    omsagent 1.6.0.23
-    docker-cimprov 1.0.0.31
-    ```
-
 ## <a name="error-messages"></a>错误消息
 
 下表汇总了使用适用于容器的 Azure Monitor 时可能会遇到的已知错误。
@@ -117,7 +90,7 @@ ms.locfileid: "85800437"
 | ---- | --- |
 | 错误消息 `No data for selected filters`  | 为新创建的群集建立监视数据流可能需要花费一些时间。 群集的数据至少需要 10 到 15 分钟才能显示。 |
 | 错误消息 `Error retrieving data` | 为 Azure Kubernetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除时，可能会发生此错误。 检查工作区是否已删除，如果已删除，则需要使用用于容器的 Azure Monitor 重新启用对群集的监视，并指定现有工作区或创建新工作区。 若要重新启用，将需要对该群集[禁用](container-insights-optout.md)监视，然后再次[启用](container-insights-enable-new-cluster.md)用于容器的 Azure Monitor。 |
-| 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 当使用 `az aks cli` 启用监视时，可能无法正确部署用于容器的 Azure Monitor。 请检查是否部署了该解决方案。 若要执行此操作，请转到你的 Log Analytics 工作区，并从左侧的面板中选择“解决方案”来查看该解决方案是否可用。**** 若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](container-insights-onboard.md) 中的说明重新部署该解决方案。 |
+| 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 当使用 `az aks cli` 启用监视时，可能无法正确部署用于容器的 Azure Monitor。 请检查是否部署了该解决方案。 若要进行验证，请在左侧窗格中选择 "**解决方案**" Log Analytics，并查看解决方案是否可用。 若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](container-insights-onboard.md) 中的说明重新部署该解决方案。 |
 
 为了帮助诊断问题，我们在[此处](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)提供了一个可用的故障排除脚本。
 

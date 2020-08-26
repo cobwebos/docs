@@ -5,18 +5,18 @@ description: 了解如何在部署 Azure 机器学习模型时使用自定义 Do
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 8ad3ec9f257289abab1c2d881a798a43a2c1d8ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976755"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843209"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 Internet 上访问的 [Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。
-* 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的“准备部署”部分。
+* 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-custom-base-image"></a>创建自定义基础映像
 
@@ -76,7 +76,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 
     * Ubuntu 16.04 或更高版本。
     * Conda 4.5.# 或更高版本。
-    * Python 3.5.# 或 3.6.#。
+    * Python 3.5. #、3.6. # 或 3.7. #。
 
 <a id="getname"></a>
 
@@ -205,7 +205,7 @@ Microsoft 在可公开访问的存储库中提供了多个 docker 映像，可�
 > [!TIP]
 > 由于这些映像是公开可用的，因此在使用它们时不需要提供地址、用户名或密码。
 
-有关详细信息，请参阅 GitHub 上的[Azure 机器学习容器](https://github.com/Azure/AzureML-Containers)存储库。
+有关详细信息，请参阅 GitHub 上的 [Azure 机器学习容器](https://github.com/Azure/AzureML-Containers)存储库。
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>将映像与 Azure 机器学习 SDK 结合使用
 

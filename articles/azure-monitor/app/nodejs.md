@@ -3,15 +3,17 @@ title: 使用 Azure Application Insights 监视 Node.js 服务 | Microsoft Docs
 description: 使用 Application Insights 监视 Node.js 服务的性能并诊断其问题。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309758"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371611"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
-在部署后[Application Insights](../../azure-monitor/app/app-insights-overview.md)监视后端服务和组件，帮助你发现并快速诊断性能问题和其他问题。 可以将 Application Insights 用于数据中心、Azure Vm 和 web 应用，甚至其他公有云中的 Node.js 服务。
+在部署后[Application Insights](./app-insights-overview.md)监视后端服务和组件，帮助你发现并快速诊断性能问题和其他问题。 可以将 Application Insights 用于数据中心、Azure Vm 和 web 应用，甚至其他公有云中的 Node.js 服务。
 
 若要接收、存储和探索监视数据，请将 SDK 包括到代码中，然后在 Azure 中设置相应的 Application Insights 资源。 SDK 会将数据发送到该资源进行进一步的分析和探索。
 
@@ -23,16 +25,16 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 
 请完成以下任务，为应用或服务设置监视。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 开始之前，请确保拥有 Azure 订阅，否则请[免费获取一个新的][azure-free-offer]。 如果组织已经拥有 Azure 订阅，管理员可以按照[这些说明][add-aad-user]你将添加到该订阅。
 
 [azure-free-offer]: https://azure.microsoft.com/free/
-[add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
+[add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>设置 Application Insights 资源
 
-1. 登录到 [Azure 门户][portal]。
+1. 登录 [Azure 门户][portal]。
 2. [创建 Application Insights 资源](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> 设置 Node.js SDK
@@ -79,8 +81,8 @@ SDK 会自动收集有关 Node.js 运行时和某些常见第三方模块的遥�
 
 * 继续使用应用程序。 通过更多操作生成更多遥测。
 * 在门户资源视图中单击“刷新”。**** 图表会定期自行刷新，但手动刷新会强制图表立刻刷新。
-* 验证[所需传出端口](../../azure-monitor/app/ip-addresses.md)是否已打开。
-* 使用[搜索](../../azure-monitor/app/diagnostic-search.md)查找特定事件。
+* 验证[所需传出端口](./ip-addresses.md)是否已打开。
+* 使用[搜索](./diagnostic-search.md)查找特定事件。
 * 检查[常见问题解答][FAQ]。
 
 ## <a name="basic-usage"></a>基本用法
@@ -215,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient API
 
-有关 TelemetryClient API 的完整说明，请参阅[用于处理自定义事件和指标的 Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md)。
+有关 TelemetryClient API 的完整说明，请参阅[用于处理自定义事件和指标的 Application Insights API](./api-custom-events-metrics.md)。
 
 可以使用 Application Insights Node.js SDK 跟踪任何请求、事件、指标或异常。 以下代码示例演示了部分可用 API：
 
@@ -395,7 +397,7 @@ client.config.PROPERTYNAME = VALUE;
 
 这些属性是特定于客户端的，因此你可以 `appInsights.defaultClient` 独立于用创建的客户端进行配置 `new appInsights.TelemetryClient()` 。
 
-| Property                        | 说明                                                                                                |
+| 属性                        | 说明                                                                                                |
 | ------------------------------- |------------------------------------------------------------------------------------------------------------|
 | instrumentationKey              | Application Insights 资源的标识符。                                                      |
 | endpointUrl                     | 要将遥测负载发送到的引入终结点。                                                      |
@@ -413,10 +415,11 @@ client.config.PROPERTYNAME = VALUE;
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在门户中监视遥测](../../azure-monitor/app/overview-dashboard.md)
-* [通过遥测编写分析查询](../../azure-monitor/log-query/get-started-portal.md)
+* [在门户中监视遥测](./overview-dashboard.md)
+* [通过遥测编写分析查询](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
+[FAQ]: ../faq.md
+

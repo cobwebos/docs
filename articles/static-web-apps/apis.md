@@ -7,11 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09daffa74ccd279c8187391ba3b86063aed7d204
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791616"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607024"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure 静态 Web 应用预览中通过 Azure Functions 提供 API 支持
 
@@ -32,9 +33,9 @@ Azure 静态 Web 应用通过 Azure Functions 提供 API。 Azure Functions 的�
 
 - API 路由前缀必须是 api。
 - API 函数应用必须采用 JavaScript。
-- API 函数的路由规则仅支持[重定向](routes.md#redirects)和[保护具有角色的路由](routes.md#securing-routes-with-roles)。
-- 触发器和绑定仅限于 [HTTP](../azure-functions/functions-bindings-http-webhook.md)。
-  - 除输出绑定外，所有其他 [Azure Functions 触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)都受到限制。
+- API 函数的路由规则仅支持 [重定向](routes.md#redirects) 和 [保护具有角色的路由](routes.md#securing-routes-with-roles)。
+- 触发器仅限于 [HTTP](../azure-functions/functions-bindings-http-webhook.md)。
+  - 支持输入和输出 [绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings) 。
 - 仅当将 [Application Insights](../azure-functions/functions-monitoring.md) 添加到 Functions 应用中时，才能使用日志。
 
 ## <a name="next-steps"></a>后续步骤

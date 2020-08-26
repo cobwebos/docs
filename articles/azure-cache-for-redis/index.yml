@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: cbf495563a6d3a9000778d8980a506b6726fb658
+  ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75470026"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "88006003"
 landingContent:
 - title: 关于用于 Redis 的 Azure 缓存
   linkLists:
@@ -22,23 +22,21 @@ landingContent:
     links:
     - text: 什么是 Azure Redis 缓存？
       url: cache-overview.md
-    - text: 了解用于 Redis 的 Azure 缓存高级层
-      url: cache-premium-tier-intro.md
   - linkListType: video
     links:
     - text: 管理选项
       url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
     - text: 安全缓存
       url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
-    - text: 最佳做法
+    - text: 最佳实践
       url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
-    - text: 改善性能
+    - text: 提高性能
       url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
   - linkListType: whats-new
     links:
     - text: 常见问题
       url: cache-faq.md
-    - text: 针对 Azure Cache for Redis 的最佳做法
+    - text: Azure Redis 缓存的最佳做法
       url: cache-best-practices.md
     - text: Azure Redis 缓存的 ASP.NET 会话状态提供程序
       url: cache-aspnet-session-state-provider.md
@@ -86,7 +84,7 @@ landingContent:
       url: /powershell/module/az.rediscache
     - text: Azure CLI
       url: /cli/azure/redis
-- title: 故障排除
+- title: 疑难解答
   linkLists:
   - linkListType: how-to-guide
     links:

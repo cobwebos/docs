@@ -13,18 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978172"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855217"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>在 Azure 上使用 Windows Server 故障转移群集和文件共享实现 SAP ASCS/SCS 实例的多 SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
 
 可以使用 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 
@@ -41,10 +42,10 @@ ms.locfileid: "82978172"
 >
 >一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
-> 本文档中介绍的配置尚不支持用于 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)
+> 本文档中介绍的配置尚不支持用于 [Azure 可用性区域](../../../availability-zones/az-overview.md)
 > 
 
-若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”部分。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
+若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”部分。 还可考虑使用 [Azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) 而不是 Azure 负载均衡器的基本 SKU。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,6 +61,7 @@ _**图1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 > * 属于不同 SAP SID 的不同 SAP 全局主机文件共享必须共享相同的 SOFS 群集。
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
 > * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
+> * 不支持在同一个群集中混合使用排队复制服务器1和排队复制服务器2。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>使用文件共享实现的 SAP ASCS/SCS 多 SID 体系结构
 
@@ -75,7 +77,7 @@ _**图2：** 两个群集中的 SAP 多 SID 配置_
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>在域控制器上准备基础结构
 
-创建域组** \<Domain> \ SAP_ \<SID2> _GlobalAdmin**，例如，with \<SID2> = pr2)。 域组名称是 \<Domain> \ SAP_PR2_GlobalAdmin。
+创建域组** \<Domain> \ SAP_ \<SID2> _GlobalAdmin**，例如，with \<SID2> = pr2) 。 域组名称是 \<Domain> \ SAP_PR2_GlobalAdmin。
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>在 ASCS/SCS 群集上准备基础结构
 
@@ -97,7 +99,7 @@ _图 3：多 SID SOFS 使用相同的 SAP 全局主机名_****
 
 > [!IMPORTANT]
 >对于第二**个 \<SID2> SAP**系统，使用相同的 Volume1 和相同的 **\<SAPGlobalHost>** 网络名称。
->由于已将**SAPMNT**设置为各种 SAP 系统的共享名，因此，若要重用 **\<SAPGlobalHost>** 网络名称，必须使用相同的**Volume1**。
+>由于已将 **SAPMNT** 设置为各种 SAP 系统的共享名，因此，若要重用 **\<SAPGlobalHost>** 网络名称，必须使用相同的 **Volume1**。
 >
 >全局主机的文件路径 \<SID2> 是 C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.
 >
@@ -155,7 +157,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>通过使用不同的 SAP 全局主机，在 SOFS 群集上准备基础结构
 
-可以配置第二个 SOFS （例如，第二个 SOFS 群集角色， **\<SAPGlobalHost2>** 并将另一个**Volume2**用于第二个 **\<SID2>** ）。
+可以配置第二个 SOFS (例如，第二个 SOFS 群集角色， **\<SAPGlobalHost2>** 并为第二个) 配置不同的 **Volume2** **\<SID2>** 。
 
 ![图 4：多 SID SOFS 使用相同的 SAP 全局主机名 2][sap-ha-guide-figure-8015]
 
@@ -222,7 +224,7 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-若要在 Volume2 上为 *\<SAPGlobalHost2>* 第二个 SAP 的主机名创建 SAPMNT 文件共享 \<SID2> ，请在故障转移群集管理器中启动 "**添加文件共享**" 向导。
+若要在 Volume2 上为 *\<SAPGlobalHost2>* 第二个 SAP 的主机名创建 SAPMNT 文件共享 \<SID2> ，请在故障转移群集管理器中启动 " **添加文件共享** " 向导。
 
 右键单击 saoglobal2 SOFS 群集组，然后选择“添加文件共享”********。
 

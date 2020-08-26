@@ -3,11 +3,13 @@ title: 管理 Azure Service Fabric 网格应用程序机密
 description: 管理应用程序机密，以便可以安全地创建并部署 Service Fabric 网格应用程序。
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 379560b73c38558fe0b712ed5e036c7a3736b600
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461928"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500702"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>管理 Service Fabric 网格应用程序机密
 Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格机密可以是任何敏感文本信息，例如存储连接字符串、密码或应该安全存储和传输的其他值。 本文展示了如何使用 Service Fabric Secure Store Service 来部署和维护机密。

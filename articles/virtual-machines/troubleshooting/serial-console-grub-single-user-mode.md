@@ -13,18 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70883925"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439539"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 在启动虚拟机（VM）时，可能会出现 "总计启动加载（GRUB）"。 由于它是在操作系统开始之前显示的，因此无法通过 SSH 访问 GRUB。 在 GRUB 中，可以修改启动配置，使其在单用户模式下启动。
 
 单用户模式是最小功能的最小环境。 这对于调查启动问题、文件系统问题或网络问题可能非常有用。 较少的服务可在后台运行，根据运行级别的不同，文件系统甚至可能不会自动装载。
 
-单用户模式也适用于以下情况： VM 可能配置为仅接受 SSH 密钥用于登录。 在这种情况下，您可能能够使用单用户模式创建具有密码身份验证的帐户。 
+单用户模式也适用于以下情况： VM 可能配置为仅接受 SSH 密钥用于登录。 在这种情况下，您可能能够使用单用户模式创建具有密码身份验证的帐户。
 
 > [!NOTE]
 > 串行控制台服务仅允许具有*参与者*级别或更高权限的用户访问 VM 的串行控制台。
@@ -36,7 +37,7 @@ ms.locfileid: "70883925"
 ## <a name="general-grub-access"></a>常规 GRUB 访问
 若要访问 GRUB，请在串行控制台窗格处于打开状态时重新启动 VM。 某些分发版要求键盘输入显示 GRUB，其他分发版自动显示 GRUB 几秒钟，以允许用户键盘输入取消超时。
 
-若要能够访问单用户模式，需要确保 VM 上已启用 GRUB。 根据你的分布情况，可能需要进行一些设置工作以确保启用了 GRUB。 有关特定于分发的信息，请参阅下一节和我们[对 Azure 上的 Linux 的支持](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)页。
+若要能够访问单用户模式，需要确保 VM 上已启用 GRUB。 根据你的分布情况，可能需要进行一些设置工作以确保启用了 GRUB。 有关特定于分发的信息，请参阅下一节。
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>重启 VM 以在串行控制台中访问 GRUB
 在串行控制台中，可以通过将鼠标悬停在 "**重新启动**" 按钮，然后选择 "**重新启动 vm**" 来重新启动 vm。 有关重启的通知显示在窗格底部。
@@ -65,6 +66,9 @@ RHEL 原本就启用了 GRUB。 若要进入 GRUB，请运行来重新启动 VM�
 
 **适用于 RHEL 8**
 
+>[!NOTE]
+> Red Hat 建议使用 Grubby 在 RHEL 8 + 中配置内核命令行参数。 目前不能使用 grubby 更新 grub 超时和终端参数。 若要修改为所有启动条目更新 GRUB_CMDLINE_LINUX 参数，请运行 `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` 。 [此处](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)提供了更多详细信息。
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -89,8 +93,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 切换到根。
 1. 通过执行以下操作为根用户启用密码：
     * 运行 `passwd root` （设置强根密码）。
-1. 通过执行以下操作，确保根用户只能通过 ttyS0 登录：  
-    a. 运行 `edit /etc/ssh/sshd_config` ，并确保 PermitRootLogIn 设置为 `no` 。  
+1. 通过执行以下操作，确保根用户只能通过 ttyS0 登录：。 运行 `edit /etc/ssh/sshd_config` ，并确保 PermitRootLogIn 设置为 `no` 。
     b. 运行 `edit /etc/securetty file` 以仅允许通过 ttyS0 登录。
 
 现在，如果系统启动到单用户模式，则可以用 root 密码登录。
@@ -105,14 +108,14 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 查找 "内核" 行。 在 Azure 中，它从*linux16*开始。
 1. 按 Ctrl + E 以前往行的末尾。
 1. 在行的末尾，添加 " *systemd*"。
-    
+
     此操作可引导你进入单用户模式。 如果要使用紧急模式，请将*systemd = "紧急*" 添加到行的末尾（而不是*systemd =*""。
 
 1. 按 Ctrl + X 退出并重新启动应用的设置。
 
    系统将提示你输入管理员密码，然后才能进入单用户模式。 此密码是你在前面的说明中创建的密码。
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![显示命令行界面的动画图像。 用户选择服务器，找到内核行的末尾，然后输入指定的文本。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>输入 RHEL 中未启用根帐户的单用户模式
 如果未按前面的说明启用 root 用户，则仍可通过执行以下操作来重置根密码：
@@ -129,14 +132,14 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
     `initramfs` `systemd` 如[Red Hat 文档](https://aka.ms/rhel7rootpassword)中所述，此操作会在将控制传递到之前中断启动进程。
 1. 按 Ctrl + X 退出并重新启动应用的设置。
 
-   重新启动后，系统会将其放入具有只读文件系统的紧急模式。 
-   
+   重新启动后，系统会将其放入具有只读文件系统的紧急模式。
+
 1. 在 shell 中，输入 `mount -o remount,rw /sysroot` 以将根文件系统重新装载为读/写权限。
 1. 启动到单用户模式后，输入 `chroot /sysroot` 以切换到 `sysroot` 越狱。
-1. 你现在处于 root 状态。 您可以通过输入 `passwd` 并使用前面的说明来输入单用户模式来重置 root 密码。 
+1. 你现在处于 root 状态。 您可以通过输入 `passwd` 并使用前面的说明来输入单用户模式来重置 root 密码。
 1. 完成后，输入 `reboot -f` 重新启动。
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![显示命令行界面的动画图像。 用户选择服务器，找到内核行的末尾，然后输入指定的命令。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > 通过上述说明运行将会使你进入紧急 shell，以便你还可以执行编辑等任务 `fstab` 。 但是，我们通常建议你重置根密码，并使用它来进入单用户模式。
@@ -240,7 +243,7 @@ Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请运行来重新�
 ## <a name="next-steps"></a>后续步骤
 若要详细了解串行控制台，请参阅：
 * [Linux 串行控制台文档](serial-console-linux.md)
-* [使用串行控制台在各种分发中启用 GRUB](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [使用串行控制台在各种分发中启用 GRUB](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [对 NMI 和 SysRq 调用使用串行控制台](serial-console-nmi-sysrq.md)
 * [适用于 Windows Vm 的串行控制台](serial-console-windows.md)
 * [启动诊断](boot-diagnostics.md)

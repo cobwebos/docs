@@ -1,20 +1,20 @@
 ---
 title: 向 Azure Maps 提供数据反馈 |Microsoft Azure 映射
 description: 使用 Microsoft Azure 地图反馈工具提供数据反馈。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 08/19/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 92469370f1ea64f5ee1bc2a84e47cc8b294b5375
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb806aa444ba3b8b3247559b87ddd93fecdaa1b0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335347"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133344"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>向 Azure Maps 提供数据反馈
 

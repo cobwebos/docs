@@ -3,14 +3,14 @@ title: 在 Azure 中创建用于响应 HTTP 请求的函数
 description: 了解如何通过命令行创建函数，然后将本地项目发布到 Azure Functions 中托管的无服务器实例。
 ms.date: 03/30/2020
 ms.topic: quickstart
-ms.custom: tracking-python
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: d63ae61dbaf969c021b0f1744e716068de88e4f8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100016"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547369"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -40,7 +40,7 @@ ms.locfileid: "85100016"
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 Maven 不是你的首选开发工具，请查看面向使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 的 Java 开发人员的类似教程。
+> 如果 Maven 不是你的首选开发工具，请查看面向使用 [Gradle](./functions-create-first-java-gradle.md)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java) 的 Java 开发人员的类似教程。
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -82,19 +82,19 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。
+在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。 如果要部署 Java 11 函数，请使用 `-DjavaVersion=11`。若要了解更多信息，请参阅 [Java 版本](functions-reference-java.md#java-versions)。 
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" 
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" 
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" 
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8"
 ```
 ---
 
@@ -111,6 +111,7 @@ Maven 会请求你提供所需的值，以在部署上完成项目的生成。
 键入 `Y` 或按 Enter 进行确认。
 
 Maven 在名为 artifactId 的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
+
 ::: zone-end  
 导航到项目文件夹：
 
@@ -139,7 +140,7 @@ cd fabrikam-functions
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-返回对象是 [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult)，它将响应消息作为 [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) 或 [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) 返回。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp)。
+返回对象是 [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult)，它将响应消息作为 [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) 或 [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) 返回。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](./functions-bindings-http-webhook.md?tabs=csharp)。
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -152,11 +153,13 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 
 #### <a name="pomxml"></a>pom.xml
 
-为托管应用而创建的 Azure 资源的设置在插件的 configuration 元素中使用生成的 pom.xml 文件中 `com.microsoft.azure` 的 groupId 定义。  例如，以下 configuration 元素指示基于 Maven 的部署在 `westus` 区域中的 `java-functions-group` 资源组内创建一个函数应用。 该函数应用本身在 Windows 上运行，后者托管在 `java-functions-app-service-plan` 计划（默认情况下是一个无服务器消耗计划）中。    
+为托管应用而创建的 Azure 资源的设置在插件的 configuration 元素中使用生成的 pom.xml 文件中 `com.microsoft.azure` 的 groupId 定义。 例如，以下 configuration 元素指示基于 Maven 的部署在 `westus` 区域中的 `java-functions-group` 资源组内创建一个函数应用。 该函数应用本身在 Windows 上运行，后者托管在 `java-functions-app-service-plan` 计划（默认情况下是一个无服务器消耗计划）中。    
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 若要控制在 Azure 中创建资源的方式，可以更改这些设置，例如，在初始部署之前将 `runtime.os` 从 `windows` 更改为 `linux`。 有关 Maven 插件支持的设置的完整列表，请参阅[配置详细信息](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
+
+如果要在 Java 11（而不是 Java 8）上运行函数应用，则必须使用 Java 11 值手动更新 pom.xml 文件。 若要了解详细信息，请参阅 [Java 版本](functions-reference-java.md#java-versions)。 在 Java 11 上运行时，请确保  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
@@ -169,7 +172,7 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 `req` 是 [azure.functions.HttpRequest 类](/python/api/azure-functions/azure.functions.httprequest)的实例。 在 *function.json* 中定义为 `$return` 的返回对象是 [azure.functions.HttpResponse 类](/python/api/azure-functions/azure.functions.httpresponse)的一个实例。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](/azure/azure-functions/functions-bindings-http-webhook?tabs=python)。
+对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 `req` 是 [azure.functions.HttpRequest 类](/python/api/azure-functions/azure.functions.httprequest)的实例。 在 *function.json* 中定义为 `$return` 的返回对象是 [azure.functions.HttpResponse 类](/python/api/azure-functions/azure.functions.httpresponse)的一个实例。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](./functions-bindings-http-webhook.md?tabs=python)。
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -179,7 +182,7 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 在 *function.json* 中定义为 `$return` 的返回对象是响应。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript)。
+对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 在 *function.json* 中定义为 `$return` 的返回对象是响应。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](./functions-bindings-http-webhook.md?tabs=javascript)。
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"

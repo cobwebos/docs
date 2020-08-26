@@ -1,6 +1,6 @@
 ---
-title: 监视管道运行 Azure Synapse Studio （预览版）
-description: 使用 Azure Synapse Studio 监视工作区管道运行。
+title: 使用 Synapse Studio 运行监视管道
+description: 使用 Synapse Studio 监视工作区管道运行。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16400d7f292ad5844add3d4a5fc019e84bd27127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194886"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387313"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Azure Synapse Studio 监视工作区管道运行
+# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 监视工作区管道运行
 
-借助 Azure Synapse Analytics，可以创建复杂的管道，使其能够在解决方案中自动化和协调数据移动、数据转换和计算活动。 可以使用 Azure Synapse Studio （预览版）创作和监视这些管道。
+借助 Azure Synapse Analytics，可以创建复杂的管道，使其能够在解决方案中自动化和协调数据移动、数据转换和计算活动。 可以使用 Synapse Studio （预览版）创作和监视这些管道。
 
 本文介绍如何监视管道运行，从而使你能够关注管道的最新状态、问题和进度。
 
-## <a name="access-the-list-of-pipeline-runs"></a>访问管道运行列表
+## <a name="access-pipeline-runs-list"></a>访问管道运行列表
 
-若要查看工作区中运行的管道列表，请先[打开 Azure Synapse Studio](https://web.azuresynapse.net/) ，然后选择工作区。
+若要查看工作区中运行的管道列表，请先[打开 Synapse Studio](https://web.azuresynapse.net/) ，然后选择工作区。
 
 ![登录到工作区](./media/common/login-workspace.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "85194886"
 
 ![选择管道运行](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>筛选管道运行
+## <a name="filter-your-pipeline-runs"></a>筛选管道运行
 
 你可以将管道运行列表筛选为你感兴趣的运行列表。 使用屏幕顶部的筛选器，可以指定要筛选的字段。
 
@@ -46,7 +46,7 @@ ms.locfileid: "85194886"
 
 ![示例筛选器](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>查看有关特定管道运行的详细信息
+## <a name="view-details-about-a-specific-pipeline-run"></a>查看有关特定管道运行的详细信息
 
 若要查看有关管道运行的详细信息，请选择管道运行。 然后查看与管道运行关联的活动运行。 如果管道仍在运行，你可以监视进度。 
   

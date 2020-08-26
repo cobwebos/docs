@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045865"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>探究适用于 Azure Cache for Redis（预览版）的 Azure Monitor
 
@@ -120,7 +120,7 @@ ms.locfileid: "84945403"
 
 ### <a name="metric-definitions"></a>指标定义
 
-有关构成这些工作簿的指标定义的完整列表，请查看[可用指标和报告时间间隔](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)一文。
+有关构成这些工作簿的指标定义的完整列表，请查看[可用指标和报告时间间隔](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals)一文。
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>从 Azure Cache for Redis 资源查看
 
@@ -156,7 +156,7 @@ ms.locfileid: "84945403"
 
 ## <a name="pin-export-and-expand"></a>固定、导出和展开
 
-若要将任何指标部分固定到 [Azure 仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)，请选择该部分右上角的图钉符号。
+若要将任何指标部分固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)，请选择该部分右上角的图钉符号。
 
 ![突出显示图钉符号的指标部分](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ ms.locfileid: "84945403"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications.md)来设置自动警报，以帮助检测问题。
+* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
 
 * 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿支持的方案、创作和自定义报表的方式，以及更多信息。

@@ -4,19 +4,20 @@ description: 了解如何使用 Python 在 Azure 中创建和管理 Windows VM�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 1e2558074275f9b97bd4a2fd9a3d111c5de02948
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551969"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853409"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
-[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Python 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
+[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Python 创建、管理和删除 VM 资源。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Visual Studio 项目
@@ -31,7 +32,7 @@ ms.locfileid: "84551969"
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“Python 开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“Python 3 64 位 (3.6.0)”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 Python 工作负荷。
+1. 如果尚未安装，请安装 [Visual Studio](/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“Python 开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“Python 3 64 位 (3.6.0)”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 Python 工作负荷。
 2. 安装并启动 Visual Studio 后, 单击“文件” > “新建” > “项目”。
 3. 单击“模板” > “Python” > “Python 应用程序”，输入“myPythonProject” 作为项目名称并选择该项目的位置，然后单击“确定”。
 
@@ -463,7 +464,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="resize-the-vm"></a>重设 VM 大小
 
-决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](sizes.md)。
+决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](../sizes.md)。
 
 1. 若要更改虚拟机大小，请在 .py 文件中将此函数添加在变量之后：
 
@@ -565,6 +566,5 @@ compute_client = ComputeManagementClient(
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果部署出现问题，请查看[使用 Azure 门户对资源组部署进行故障排除](../../resource-manager-troubleshoot-deployments-portal.md)
-- 了解有关 [Azure Python 库](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)的详细信息
-
+- 如果部署出现问题，请查看[使用 Azure 门户对资源组部署进行故障排除](../../azure-resource-manager/templates/deployment-history.md)
+- 了解有关 [Azure Python 库](/python/api/overview/azure/?view=azure-python)的详细信息

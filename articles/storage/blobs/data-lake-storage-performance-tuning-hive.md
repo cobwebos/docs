@@ -1,6 +1,6 @@
 ---
 title: 调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 Hive 性能优化指南。
+description: 了解使用 Hive、HDInsight 和 Azure Data Lake Storage Gen2 的 i/o 密集型查询的优化指导原则。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106305"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034764"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2
 
@@ -74,5 +74,5 @@ ms.locfileid: "86106305"
 
 下面是将帮助优化 Hive 查询的几个博客：
 * [在 Hdinsight 中优化 Hadoop 的 Hive 查询](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Hive 查询性能故障排除](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [优化 Azure HDInsight 中的 Apache Hive 查询](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query)
 * [有关优化 Hive on HDInsight 的 Ignite 讨论](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

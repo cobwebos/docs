@@ -3,16 +3,16 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: e51508f634493d59ec91da0f1a8dd462f637a630
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9714b3efe7052b837a83769fe24794a373adbc84
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537810"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245343"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 

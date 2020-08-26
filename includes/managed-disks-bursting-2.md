@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102476"
 ---
 ## <a name="common-scenarios"></a>常见场景
 以下需求场景可显著受益于突发：
@@ -27,7 +28,7 @@ ms.locfileid: "85242105"
 
 ![突发桶关系图](media/managed-disks-bursting/bucket-diagram.jpg)
 
-最大程度地了解如何使用30分钟的突发。 你可以连续使用30分钟或在一整天内使用它。 部署产品后，该产品将会获得全部信用额度，并在 depletes 信用额度不到一天后，再次充分消耗信用额度。 您可以决定根据自己的需要累积和消耗其猝发信用额度，而30分钟的存储桶无需再次填满。 有关突发累积，需要注意的一件事是，各个资源的突发累积都各不相同，因为它基于资源在其性能限制下运行时未使用的 IOPS 和 MB/s。 这意味着，较高基线性能的产品积累其突发额度的速度可能会快于较低基线性能的产品。 例如，处于空闲状态、没有任何活动的 P1 磁盘将每秒积累 120 IOPS，而 P20 磁盘在处于空闲状态、没有任何活动时将每秒积累 2300 IOPS。
+最大程度地了解如何使用30分钟的突发。 你可以连续使用30分钟或在一整天内使用它。 部署产品时，它会获得完整的信用额度，并在 depletes 的信用额度不到一天后再次充分消耗信用额度。 您可以决定根据自己的需要累积和消耗其猝发信用额度，而30分钟的存储桶无需再次填满。 有关突发累积，需要注意的一件事是，各个资源的突发累积都各不相同，因为它基于资源在其性能限制下运行时未使用的 IOPS 和 MB/s。 这意味着，较高基线性能的产品积累其突发额度的速度可能会快于较低基线性能的产品。 例如，处于空闲状态、没有任何活动的 P1 磁盘将每秒积累 120 IOPS，而 P20 磁盘在处于空闲状态、没有任何活动时将每秒积累 2300 IOPS。
 
 ## <a name="bursting-states"></a>突发状态
 启用了突发功能时，资源可能处于以下三种状态之一：

@@ -10,11 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711657"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089050"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>启用 Azure 流量管理器中的资源日志记录
 
@@ -53,7 +54,7 @@ ms.locfileid: "84711657"
       请确保与流量管理器配置文件资源关联的所有日志类别都显示为已启用。 另外，请验证存储帐户是否已正确设置。
 
 ## <a name="access-log-files"></a>访问日志文件
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 在门户中导航到你的 Azure 存储帐户。
 2. 在你的 Azure 存储帐户的“概述”**** 页面上，在“服务”**** 下选择“Blob”****。
 3. 对于“容器”****，选择“insights-logs-probehealthstatusevents”****，向下导航到 PT1H.json 文件并单击“下载”**** 以下载并保存此日志文件的副本。
@@ -67,11 +68,10 @@ ms.locfileid: "84711657"
 
 下表包含特定于 Azure 流量管理器配置文件资源的日志架构。
 
-|||||
+|字段名称|字段类型|定义|示例|
 |----|----|---|---|
-|**字段名称**|**字段类型**|**定义**|**示例**|
-|EndpointName|String|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
-|状态|String|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**向上**|
+|EndpointName|字符串|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
+|状态|字符串|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**Up**|
 |||||
 
 ## <a name="next-steps"></a>后续步骤

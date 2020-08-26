@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705366"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286489"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -26,7 +26,7 @@ ms.locfileid: "84705366"
 
 ## <a name="symmetric-key-creation"></a>对称密钥创建
 
-默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥  。
+默认情况下，设备预配服务在启用了 "**自动生成密钥**" 选项的情况下，将创建新的对称密钥，默认长度为64字节。
 
 ![自动生成对称密钥](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 

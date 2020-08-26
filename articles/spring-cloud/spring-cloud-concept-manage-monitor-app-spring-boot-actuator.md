@@ -6,11 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037587"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>使用 Azure Spring Boot Actuator 管理和监视应用
 

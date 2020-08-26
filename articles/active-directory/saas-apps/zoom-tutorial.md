@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Zoom 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Zoom 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d257935aa3e9ad54b64b0f416119931661809172
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70743970"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zoom 集成
 
@@ -87,14 +82,16 @@ ms.locfileid: "70743970"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<companyname>.zoom.us` 
 
-    > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.zoom.us`
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+    > [!NOTE]
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Zoom”部分中，根据要求复制相应 URL  。
+1. 在“设置 Zoom”部分中，根据要求复制相应 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -108,65 +105,65 @@ ms.locfileid: "70743970"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-    1. 在“名称”  字段中，输入 `B.Simon`。  
-    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-    1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+    1. 在“名称”字段中，输入 `B.Simon`。  
+    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Zoom 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Zoom”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Zoom”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-zoom-sso"></a>配置 Zoom SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoom 公司站点。
 
-2. 单击“单一登录”  选项卡。
+2. 单击 **“单一登录”** 选项卡。
 
-    ![“单一登录”选项卡](./media/zoom-tutorial/ic784700.png "单一登录")
+    ![“单一登录”选项卡](./media/zoom-tutorial/zoom-sso1.png "单一登录")
 
-3. 单击“安全控制”  ，并转到“单一登录”  设置。
+3. 单击 **“安全控件”** 选项卡，然后转到 **“单一登录”** 设置。
 
 4. 在“单一登录”部分中，执行以下步骤：
 
-    ![“单一登录”部分](./media/zoom-tutorial/ic784701.png "单一登录")
+    ![“单一登录”部分](./media/zoom-tutorial/zoom-sso2.png "单一登录")
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值********。
 
-    b. 对于**注销页 URL** 值，需要转到 Azure 门户并单击左侧的 **Azure Active Directory**，然后导航到“应用注册”  。
+    b. 对于**注销页 URL** 值，需要转到 Azure 门户并单击左侧的 **Azure Active Directory**，然后导航到“应用注册”****。
 
     ![“Azure Active Directory”按钮](./media/zoom-tutorial/appreg.png)
 
-    c. 单击“终结点” 
+    c. 单击“终结点”****
 
     ![“终结点”按钮](./media/zoom-tutorial/endpoint.png)
 
-    d. 复制 **SAML-P 注销终结点**并将其粘贴到“注销页 URL”  文本框中。
+    d. 复制 **SAML-P 注销终结点**并将其粘贴到“注销页 URL”**** 文本框中。
 
     ![“复制终结点”按钮](./media/zoom-tutorial/endpoint1.png)
 
-    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后再粘贴到“标识提供者证书”文本框中。 
+    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到 **“标识提供程序证书”** 文本框中。
 
-    f. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。 
+    f. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。 
 
-    g. 单击“ **保存**”。
+    g. 单击 **“保存更改”** 。
 
     > [!NOTE]
     > 有关详细信息，请访问 zoom 文档 [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)

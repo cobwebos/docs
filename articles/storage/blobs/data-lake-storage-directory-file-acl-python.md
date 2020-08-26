@@ -8,13 +8,13 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.custom: tracking-python
-ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-python
+ms.openlocfilehash: 762f616a27338750973e843a999b36a22171fbcd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142482"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847595"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -195,6 +195,8 @@ def manage_directory_permissions():
     except Exception as e:
      print(e) 
 ```
+
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **_Get_root_directory_client FileSystemClient**方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录 
 

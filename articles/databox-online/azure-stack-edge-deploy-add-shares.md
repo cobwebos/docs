@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Stack Edge 传输要共享的数据 | Microsoft Docs
-description: 了解如何在 Azure Stack Edge 设备上添加共享并与其连接。
+description: 在本教程中，了解如何在 Azure Stack Edge 设备添加和连接共享，使 Azure Stack Edge 可将数据传输到 Azure。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e62d746be92583abead1c3edb93900068b123838
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82565095"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926104"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge"></a>教程：使用 Azure Stack Edge 传输数据
 

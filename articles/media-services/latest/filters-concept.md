@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023222"
 ---
 # <a name="filters"></a>筛选器
 
@@ -38,8 +38,8 @@ ms.locfileid: "84708291"
 
 有两种类型的筛选器： 
 
-* [帐户筛选器](https://docs.microsoft.com/rest/api/media/accountfilters)（全局）- 可应用到 Azure 媒体服务帐户中所有的资产，生存期与帐户相同。
-* [资产筛选器](https://docs.microsoft.com/rest/api/media/assetfilters)（本地）- 在创建后只能应用到与筛选器关联的资产，生存期与资产相同。 
+* [帐户筛选器](/rest/api/media/accountfilters)（全局）- 可应用到 Azure 媒体服务帐户中所有的资产，生存期与帐户相同。
+* [资产筛选器](/rest/api/media/assetfilters)（本地）- 在创建后只能应用到与筛选器关联的资产，生存期与资产相同。 
 
 **帐户筛选器**和**资产筛选器**类型的用于定义/描述筛选器的属性完全相同。 需要指定要与筛选器关联的资产名称，但创建**资产筛选器**时除外。
 
@@ -139,7 +139,7 @@ ms.locfileid: "84708291"
 
 ## <a name="associating-filters-with-streaming-locator"></a>将筛选器与流定位符相关联
 
-可以在[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
+可以在[流定位符](/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
 
 请看以下示例：
 
@@ -161,4 +161,3 @@ ms.locfileid: "84708291"
 - [使用 REST API 创建筛选器](filters-dynamic-manifest-rest-howto.md)
 - [使用 .NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
 - [使用 CLI 创建筛选器](filters-dynamic-manifest-cli-howto.md)
-

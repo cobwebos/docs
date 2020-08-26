@@ -1,26 +1,26 @@
 ---
-title: 快速入门：计算机视觉 2.1 和 3.0 - 提取印刷体文本和手写文本 - REST、C#
+title: 快速入门：使用计算机视觉 3.0 REST API Read 操作和 C# 提取文本
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用计算机视觉 API 和 C# 从图像中提取印刷体文本和手写文本。
+description: 本快速入门使用计算机视觉 3.0 REST API Read 操作和 C# 在图像中应用 OCR。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987521"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210154"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>快速入门：使用计算机视觉 3.0 REST API 和 C# 提取印刷体文本和手写文本
+# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>快速入门：使用计算机视觉 3.0 REST API Read 操作和 C# 提取文本
 
-本快速入门将使用计算机视觉 REST API 从图像中提取印刷体文本和手写文本。 使用 [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 和 [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) 方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 
+本快速入门将使用计算机视觉 3.0 REST API 中提供的新 OCR 技术从图像中提取印刷体文本和手写文本。 使用新的 [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 和 [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) 方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 
 
 > [!IMPORTANT]
 > [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Location` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取读取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API，同时检查状态并返回 Read 方法调用的结果。
@@ -44,6 +44,7 @@ ms.locfileid: "84987521"
     2. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json” 。
     3. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装” 。
 3. 将以下代码复制并粘贴到解决方案中的 Program.cs 文件。
+1. 将 `imageFilePath` 设置为自己的映像的路径。 可以下载[示例映像](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg)进行使用。
 4. 运行该程序。
 
 ```csharp
@@ -67,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";

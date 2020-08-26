@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 SmarterU 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SmarterU 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 95fe3212-d052-4ac8-87eb-ac5305227e85
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 6b4004697828e08215cc912dcd21491b43fc9d64
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981946"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>教程：Azure Active Directory 与 SmarterU 集成
 

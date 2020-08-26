@@ -1,18 +1,18 @@
 ---
 title: 适用于 VPN 网关的 Azure PowerShell 示例
-description: 适用于 VPN 网关的 Azure PowerShell 示例。
+description: 使用这些 Azure PowerShell 脚本创建 VPN 网关、创建站点到站点和 Vnet 到 Vnet 连接，以及下载 VPN 设备模板。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: fcae37da3ef9c5b2b7633db1dd16cec247a782af
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 84aa01722a9be078f361bd482c8c95be675e6ef9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203832"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035326"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>适用于 VPN 网关的 Azure PowerShell 示例
 

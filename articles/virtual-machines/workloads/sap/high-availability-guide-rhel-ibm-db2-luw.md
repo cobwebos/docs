@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983034"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077398"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
 
@@ -66,7 +67,7 @@ ms.locfileid: "82983034"
 
 
 ## <a name="overview"></a>概述
-为实现高可用性，使用 HADR 的 IBM Db2 LUW 安装在至少两个 Azure 虚拟机上，这些虚拟机部署在[azure 可用性集中](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性区域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
+为实现高可用性，使用 HADR 的 IBM Db2 LUW 安装在至少两个 Azure 虚拟机上，这些虚拟机部署在[azure 可用性集中](../../windows/tutorial-availability-sets.md)或跨[Azure 可用性区域](./sap-ha-availability-zones.md)。 
 
 以下图形显示了两个数据库服务器 Azure Vm 的设置。 两个数据库服务器 Azure Vm 都附加了其自己的存储，并已启动并运行。 在 HADR 中，一个 Azure Vm 中的一个数据库实例具有主实例的角色。 所有客户端均连接到主实例。 数据库事务中的所有更改都将在 Db2 事务日志中本地保存。 当事务日志记录在本地保存时，记录将通过 TCP/IP 传输到第二个数据库服务器、备用服务器或备用实例上的数据库实例。 备用实例通过前滚传输的事务日志记录来更新本地数据库。 通过这种方式，备用服务器与主服务器保持同步。
 
@@ -397,10 +398,10 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 
 ### <a name="configure-azure-load-balancer"></a>配置 Azure 负载均衡器
-若要配置 Azure 负载均衡器，建议使用[azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然后执行以下操作：
+若要配置 Azure 负载均衡器，建议使用[azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-overview.md) ，然后执行以下操作：
 
 > [!NOTE]
-> 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)文章介绍了如何启用这些节点来访问公共 IP 地址
+> 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)文章介绍了如何启用这些节点来访问公共 IP 地址
 
 
 
@@ -494,7 +495,7 @@ j2ee/dbhost = db-virt-hostname
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. 选择 **添加** 。
+1. 选择“添加”  。
 1. 若要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重新启动 Java 实例。
@@ -506,11 +507,11 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置公共 NFS 共享或 GlusterFS，其中日志是从这两个节点写入的。 NFS 共享或 GlusterFS 必须高度可用。 
 
-可以使用现有的高可用 NFS 共享或 GlusterFS 传输或配置文件目录。 有关详情，请参阅：
+可以使用现有的高可用 NFS 共享或 GlusterFS 传输或配置文件目录。 有关详细信息，请参阅：
 
 - [适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS][glusterfs] 
 - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux][anf-rhel]
-- [Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction)（用于创建 NFS 共享）
+- [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)（用于创建 NFS 共享）
 
 ## <a name="test-the-cluster-setup"></a>测试群集设
 
@@ -815,7 +816,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
 ## <a name="next-steps"></a>后续步骤
-- [SAP NetWeaver 的高可用性体系结构和方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [SAP NetWeaver 的高可用性体系结构和方案](./sap-high-availability-architecture-scenarios.md)
 - [在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533

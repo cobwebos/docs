@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp 文件 Sdk 和 CLI 工具 |Microsoft Docs
-description: 列出 Azure NetApp 文件支持的 Sdk 和命令行（CLI）工具。
+description: 了解 Azure NetApp 文件支持的 Sdk 及其在 GitHub 中的已发布位置，并了解支持的命令行工具： Azure CLI 和 PowerShell。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045461"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513615"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp 文件 SDK 和 CLI 工具
 

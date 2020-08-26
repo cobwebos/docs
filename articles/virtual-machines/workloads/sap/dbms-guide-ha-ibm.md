@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051995"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>与 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 的高可用性
 
@@ -59,7 +60,7 @@ ms.locfileid: "82978376"
 | [IBM Db2 HADR R 10。5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>概述
-为实现高可用性，使用 HADR 的 IBM Db2 LUW 安装在至少两个 Azure 虚拟机上，这些虚拟机部署在[azure 可用性集中](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性区域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
+为实现高可用性，使用 HADR 的 IBM Db2 LUW 安装在至少两个 Azure 虚拟机上，这些虚拟机部署在[azure 可用性集中](../../windows/tutorial-availability-sets.md)或跨[Azure 可用性区域](./sap-ha-availability-zones.md)。 
 
 以下图形显示了两个数据库服务器 Azure Vm 的设置。 两个数据库服务器 Azure Vm 都附加了其自己的存储，并已启动并运行。 在 HADR 中，一个 Azure Vm 中的一个数据库实例具有主实例的角色。 所有客户端均连接到此主实例。 数据库事务中的所有更改都将在 Db2 事务日志中本地保存。 当事务日志记录在本地保存时，记录将通过 TCP/IP 传输到第二个数据库服务器、备用服务器或备用实例上的数据库实例。 备用实例通过前滚传输的事务日志记录来更新本地数据库。 通过这种方式，备用服务器与主服务器保持同步。
 
@@ -109,7 +110,7 @@ HADR 只是一种复制功能。 它没有故障检测，也没有自动接管�
 | Azure 负载均衡器 | 使用的是基本或标准（推荐），用于 Db2 数据库的探测端口（我们的建议62500）**探测端口**。 |
 | 名称解析| 名称解析在环境中的工作方式。 强烈建议使用 DNS 服务。 可以使用本地主机文件。 |
     
-有关 Azure 中 Linux Pacemaker 的详细信息，请参阅在[azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)。
+有关 Azure 中 Linux Pacemaker 的详细信息，请参阅在[azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md)。
 
 ## <a name="deployment-on-suse-linux"></a>SUSE Linux 上的部署
 
@@ -395,10 +396,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 
 ### <a name="configure-azure-load-balancer"></a>配置 Azure 负载均衡器
-若要配置 Azure 负载均衡器，建议使用[azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然后执行以下操作：
+若要配置 Azure 负载均衡器，建议使用[azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-overview.md) ，然后执行以下操作：
 
 > [!NOTE]
-> 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)文章介绍了如何启用这些节点来访问公共 IP 地址
+> 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)文章介绍了如何启用这些节点来访问公共 IP 地址
 
 1. 创建前端 IP 池：
 
@@ -482,7 +483,7 @@ j2ee/dbhost = db-virt-hostname
 1. 在右侧框中，选择密钥 jdbc/pool/ \<SAPSID> /url。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 选择 **添加** 。
+1. 选择“添加”  。
 1. 若要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重新启动 Java 实例。
@@ -494,11 +495,11 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置一个公共 NFS 共享，其中的日志从两个节点写入。 NFS 共享必须高度可用。 
 
-可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详情，请参阅：
+可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详细信息，请参阅：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][nfs-ha] 
-- [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction)（用于创建 NFS 共享）
+- [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](./high-availability-guide-suse-netapp-files.md)
+- [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)（用于创建 NFS 共享）
 
 
 ## <a name="test-the-cluster-setup"></a>测试群集设
@@ -878,8 +879,8 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb01 ]</code></pre>
 
 ## <a name="next-steps"></a>后续步骤
-- [SAP NetWeaver 的高可用性体系结构和方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [SAP NetWeaver 的高可用性体系结构和方案](./sap-high-availability-architecture-scenarios.md)
+- [在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md)
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553

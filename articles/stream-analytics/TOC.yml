@@ -1,4 +1,4 @@
-- name: 流分析文档
+- name: Azure 流分析文档
   href: index.yml
 - name: 概述
   items:
@@ -53,6 +53,9 @@
       href: develop-locally.md
     - name: 安全性
       items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 作业的输入类型
@@ -119,7 +122,7 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: 错误策略
       href: stream-analytics-output-error-policy.md
-- name: 操作方式指南
+- name: 操作指南
   items:
     - name: 管理
       items:

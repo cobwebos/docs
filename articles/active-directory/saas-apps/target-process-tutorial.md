@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 TargetProcess 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 TargetProcess 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d5b0be147b8aa25e6c737d423eaf4a8a23cde083
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089041"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教程：Azure Active Directory 与 TargetProcess 集成
 
@@ -70,7 +66,7 @@ ms.locfileid: "67089041"
 
      ![结果列表中的 TargetProcess](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
 在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 TargetProcess 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 TargetProcess 中相关用户之间建立链接关系。
@@ -133,47 +129,49 @@ ms.locfileid: "67089041"
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. 将扩展添加到浏览器后，单击“安装 TargetProcess”  会定向到 TargetProcess 应用程序。 随后，提供管理员凭据，以登录到 TargetProcess。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+1. 将扩展添加到浏览器后，单击“安装 TargetProcess”  会定向到 TargetProcess 应用程序。 随后，提供管理员凭据，以登录到 TargetProcess。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
 
     **如果要手动配置应用程序，请执行以下步骤：**
 
-3. 以管理员身份登录 TargetProcess 应用程序。
+1. 以管理员身份登录 TargetProcess 应用程序。
 
-4. 在顶部菜单中，单击“设置”  。
+1. 在顶部菜单中，单击“设置”****。
 
     ![设置](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. 单击“设置”  选项卡。
+1. 单击“设置”**** 选项卡。
 
     ![设置](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. 单击“单一登录”  选项卡。
+1. 单击“单一登录”**** 选项卡。
 
     ![单击“单一登录”](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-7. 在“单一登录设置”对话框上，执行以下步骤：
+1. 在“单一登录设置”对话框上，执行以下步骤：
 
     ![配置单一登录](./media/target-process-tutorial/tutorial_target_process_08.png)
 
-    a. 单击“启用单一登录”  。
+    a. 单击“启用单一登录”。
 
-    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值********。
 
-    c. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中  。
+    c. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。
 
-    d. 单击“启用 JIT 预配”  。
+    d. 单击“启用 JIT 预配”****。
 
-    e. 单击“保存”  。
+    e. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -181,28 +179,28 @@ ms.locfileid: "67089041"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 TargetProcess 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”  、“所有应用程序”  和“TargetProcess”  。
+1. 在 Azure 门户中，依次选择“企业应用程序”****、“所有应用程序”**** 和“TargetProcess”****。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TargetProcess”  。
+2. 在应用程序列表中，选择“TargetProcess”****。
 
     ![应用程序列表中的 TargetProcess 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -210,11 +208,11 @@ ms.locfileid: "67089041"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-targetprocess-test-user"></a>创建 TargetProcess 测试用户
 

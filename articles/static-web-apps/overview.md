@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488913"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565700"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>什么是 Azure 静态 Web 应用预览版？
 
@@ -32,10 +32,10 @@ Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 �
 
 - 适用于 HTML、CSS、JavaScript 和映像等静态内容的 Web 托管。
 - 由 Azure Functions 提供的集成 API 支持。
-- 第一方 GitHub 集成，其中存储库更改将触发构建和部署。
+- 一流的 GitHub 集成，其中存储库更改将触发生成和部署。
 - 全球分布的静态内容，使内容更接近你的用户。
 - 可自动续订的免费 SSL 证书。
-- 自定义域\*为应用提供品牌自定义。
+- 自定义域为应用提供品牌自定义。
 - 调用 API 时使用反向代理的无缝安全模型，这不需要配置 CORS。
 - 身份验证提供程序与 Azure Active Directory、Facebook、Google、GitHub 和 Twitter 集成。
 - 可自定义的授权角色定义和分配。
@@ -44,11 +44,9 @@ Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 �
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>可对静态 Web 应用执行的操作
 
-- 使用框架和库构建新式 JavaScript 应用程序，这些框架和库包括：[Angular](https://angular.io/)、[React](https://reactjs.org/)、[Svelte](https://svelte.dev/) 和带 [Azure Functions](https://azure.microsoft.com/services/functions/) 后端服务的 [Vue](https://vuejs.org/)。
+- 使用框架和库构建新式 JavaScript 应用程序，这些框架和库包括：[Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) 和带 [Azure Functions](apis.md) 后端服务的 [Vue](getting-started.md?tabs=react)。
 - 使用 [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) 等框架发布静态站点。
 - 使用 [Next.js](deploy-nextjs.md) 和 [Nuxt.js](deploy-nuxtjs.md) 等框架部署 Web 应用程序。
-
-\* 预览期间不支持 Apex 域注册。
 
 ## <a name="next-steps"></a>后续步骤
 

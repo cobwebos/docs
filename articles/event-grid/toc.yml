@@ -8,6 +8,8 @@
       href: overview.md
     - name: 比较消息服务
       href: compare-messaging-services.md
+    - name: 发行说明
+      href: whats-new.md
 - name: 快速入门
   expanded: true
   items:
@@ -91,7 +93,7 @@
     - name: 资源管理器模板
       href: template-samples.md
     - name: 代码示例
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Azure Policy 内置策略定义
       href: ./policy-samples.md
 - name: 概念
@@ -180,6 +182,8 @@
           href: geo-disaster-recovery.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 对事件处理程序的事件传递进行身份验证
           href: security-authentication.md
         - name: 对发布客户端进行身份验证
@@ -234,7 +238,7 @@
       items:
         - name: 配置专用终结点
           href: configure-private-endpoints.md
-        - name: 配置 IP 防火墙（预览版）
+        - name: 配置 IP 防火墙
           href: configure-firewall.md
         - name: 通过 AAD 保护 WebHook
           href: secure-webhook-delivery.md

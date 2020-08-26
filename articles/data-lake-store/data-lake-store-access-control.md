@@ -1,6 +1,6 @@
 ---
 title: Data Lake Storage Gen1 中的访问控制概述 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 中访问控制的工作原理
+description: 了解从 HDFS 派生的 Azure Data Lake Storage Gen1 的访问控制模型的基础知识。
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847829"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190159"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -47,7 +47,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 |            |    文件     |   文件夹 |
 |------------|-------------|----------|
-| **读取 (R)** | 可以读取文件内容 | 需要 "**读取**" 和 "**执行**" 来列出文件夹的内容|
+| **读取 (R)** | 可以读取文件内容 | 需要 " **读取** " 和 " **执行** " 来列出文件夹的内容|
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项******** |
 | **执行 (X)** | 不表示 Data Lake Storage Gen1 上下文中的任何内容 | 需要遍历文件夹的子项 |
 
@@ -71,7 +71,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 以下常见方案可帮助你了解对 Data Lake Storage Gen1 帐户执行特定操作所需的权限。
 
-| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 操作 | 对象              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>掩码
 
-如访问检查算法中所示，掩码限制对**命名用户**、**拥有组**和**命名组**的访问。  
+如访问检查算法中所示，掩码限制对 **命名用户**、 **拥有组**和 **命名组**的访问。  
 
 > [!NOTE]
 > 对于新 Data Lake Storage Gen1 帐户，根文件夹（“/”）的访问 ACL 的掩码默认为 RWX。
@@ -216,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值，其中包含用于**拥有用户**、**拥有组**和**其他**的 RWX 值。
+创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值，其中包含用于 **拥有用户**、 **拥有组**和 **其他**的 RWX 值。
 
 Azure Data Lake Storage Gen1 的 umask 是设置为007的常量值。 此值将转换为
 
@@ -258,7 +258,7 @@ def set_default_acls_for_new_child(parent, child):
 * 要删除的文件夹及其中的每个文件夹都需要“读取 + 写入 + 执行”权限。****
 
 > [!NOTE]
-> 不需要有“写入”权限即可删除文件夹中的文件。 此外，也**永远**无法删除根文件夹 "/"。
+> 不需要有“写入”权限即可删除文件夹中的文件。 此外，也 **永远** 无法删除根文件夹 "/"。
 >
 >
 

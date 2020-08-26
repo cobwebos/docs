@@ -24,7 +24,7 @@
 - name: 如何
   items:
     - name: 配置服务运行状况事件的警报
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: 使用 Azure 门户查看服务运行状况通知
       href: service-notifications.md
     - name: 通过 Webhook 将警报发送给外部系统

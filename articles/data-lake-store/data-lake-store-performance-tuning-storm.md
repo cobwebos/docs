@@ -1,16 +1,17 @@
 ---
 title: 性能优化-带有 Azure Data Lake Storage Gen1 的风暴
-description: 了解 Azure Data Lake Storage Gen1 上的风暴群集的性能优化指南。
+description: 了解在优化 Azure 风暴拓扑的性能时应考虑的因素，包括排查常见问题。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513795"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192808"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -18,10 +19,10 @@ ms.locfileid: "85513795"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅[HDInsight 上的风暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
+* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>优化拓扑的并行度
@@ -54,13 +55,13 @@ ms.locfileid: "85513795"
 
 假设你有一个包含 D13v2 Azure VM 的8个工作节点群集。 此 VM 有8个核心，因此在八个辅助角色节点中，共有64个核心。
 
-假设我们每个内核都有8个螺栓线程。 由于有 64 个核心，总共可以配置 512 个 Bolt 执行器实例（即线程）。 在这种情况下，假设我们一开始在每个 VM 安装一个 JVM，主要使用 JVM 中的线程并发性来实现并发性。 这意味着，我们需要8个工作任务（每个 Azure VM 一个）和512螺栓执行器。 根据此配置，风暴会尝试在辅助节点（也称为监督器节点）之间平均分配工作线程，并为每个辅助角色节点提供一个 JVM。 现在，在监察员内，风暴尝试在监察员之间平均分配执行器，为每个监督器（即 JVM）提供8个线程。
+假设我们每个内核都有8个螺栓线程。 由于有 64 个核心，总共可以配置 512 个 Bolt 执行器实例（即线程）。 在这种情况下，假设我们一开始在每个 VM 安装一个 JVM，主要使用 JVM 中的线程并发性来实现并发性。 这意味着，我们需要 (每个 Azure VM) 有八个工作线程任务，以及512个螺栓执行器。 根据此配置，风暴会尝试在辅助角色节点之间平均分配工作线程 (也称为监督器节点) ，为每个辅助角色节点提供一个 JVM。 现在，在监察员内，风暴尝试在监察员之间平均分配执行器，为每个监督器 (，每个监察员) 每个主管线程。
 
 ## <a name="tune-additional-parameters"></a>优化其他参数
 创建基本拓扑后，可以考虑是否要调整以下任何参数：
 * **每个辅助节点的 JVM 数。** 如果在内存中托管一个大型数据结构（例如查找表），则每个 JVM 都需要一个单独的副本。 或者，如果安装更少的 JVM，就能通过许多线程使用该数据结构。 对于 Bolt 的 I/O 而言，JVM 数目不会造成这么大的差异，因为线程数是在这些 JVM 之间增加的。 为方便起见，最好是为每个辅助角色创建一个 JVM。 根据 Bolt 的作用或者所需的应用程序处理功能，可能需要评估是否要更改此数字。
 * **Spout 执行器数。** 由于上面的示例使用 Bolt 向 Data Lake Storage Gen1 写入数据，因此 Spout 的数目与 Bolt 性能没有直接的关系。 但是，根据 Spout 中发生的处理或 I/O 工作量，最好是优化 Spout 以获得最佳性能。 确保提供足够的 Spout 来让 Bolt 保持繁忙状态。 Spout 的输出速率应与 Bolt 的吞吐量相符。 实际配置取决于 Spout。
-* **任务数。** 每个 Bolt 以单个线程的形式运行。 增加每个 Bolt 的任务并不能进一步提高并发性。 仅当确认元组的进程占用了大部分 Bolt 执行时间时，增加任务才能发挥作用。 在从螺栓发送确认之前，最好将多个元组分组为更大的附加。 因此，在大多数情况下，分配多个任务并不能带来任何额外的好处。
+* **任务数。** 每个 Bolt 以单个线程的形式运行。 增加每个 Bolt 的任务并不能进一步提高并发性。 仅当确认元组的进程占用了大部分 Bolt 执行时间时，增加任务才能发挥作用。 在发送来自 Bolt 的确认之前，最好是将多个元组分组成一个较大的追加操作。 因此，在大多数情况下，分配多个任务并不能带来任何额外的好处。
 * **本地或随机分组。** 如果启用此设置，元组将发送到同一工作进程中的 Bolt。 这会减少进程间通信和网络调用。 建议在大多数拓扑中采用此设置。
 
 这种基本方案是个不错的起点。 可以使用自己的数据进行测试，同时调整上述参数来获得最佳性能。
@@ -69,7 +70,7 @@ ms.locfileid: "85513795"
 
 可通过修改以下设置来优化 Spout。
 
-- **元组超时：topology.message.timeout.secs**。 此设置确定消息在被视为失败之前需要完成并接收确认的时间。
+- **元组超时：topology.message.timeout.secs**。 此设置确定在发送完消息之后，在多长时间内如果未收到确认，则将消息处理视为失败。
 
 - **每个工作进程的最大内存：worker.childopts**。 此设置用于指定 Java 辅助角色的附加命令行参数。 此处最常用的设置是 XmX，它确定分配给 JVM 堆的最大内存。
 
@@ -78,7 +79,7 @@ ms.locfileid: "85513795"
   一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
 
 ## <a name="tune-the-bolt"></a>优化 Bolt
-向 Data Lake Storage Gen1 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小为此值时，才执行刷新或 hsync （）。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Storage Gen1 驱动程序会自动执行这种缓冲。
+向 Data Lake Storage Gen1 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小为此值时，才会执行刷新或 hsync ( # A1。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Storage Gen1 驱动程序会自动执行这种缓冲。
 
 默认的 Data Lake Storage Gen1 Storm Bolt 提供了一个可用于优化此参数的大小同步策略参数 (fileBufferSize)。
 
@@ -104,17 +105,17 @@ ms.locfileid: "85513795"
 
 * **进程执行延迟总计。** 一个元组由 Spout 发出、由 Bolt 处理并确认所花费的平均时间。
 
-* **Bolt 进程延迟总计。** 这是按下的元组在收到确认之前花费的平均时间。
+* **Bolt 进程延迟总计。** Bolt 中的元组在收到确认之前花费的平均时间。
 
 * **Bolt 进程执行总计。** execute 方法中的 Bolt 花费的平均时间。
 
 * **失败数。** 在超时之前无法完全处理的元组数目。
 
-* **功能.** 系统繁忙程度的度量值。 如果此数字等于 1，则表示 Bolt 以最快的速度工作。 如果小于 1，应提高并行度。 如果大于 1，应降低并行度。
+* **容量。** 系统繁忙程度的度量值。 如果此数字等于 1，则表示 Bolt 以最快的速度工作。 如果小于 1，应提高并行度。 如果大于 1，应降低并行度。
 
 ## <a name="troubleshoot-common-problems"></a>排查常见问题
 下面是一些常见的故障排除方案。
-* **许多元组超时。** 查看拓扑中的每个节点以确定瓶颈的位置。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
+* **大量元组超时。** 检查拓扑中的每个节点，确定瓶颈所在。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
 
 * **进程执行延迟总计较高，但 Bolt 进程延迟较低。** 此情况下，可能不会快速确认元组。 请检查是否有足够数量的确认器。 另一种可能是元组在队列中等待 Bolt 处理的时间太长。 请减小最大 Spout 挂起时间。
 
@@ -129,6 +130,6 @@ ms.locfileid: "85513795"
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
-有关风暴的其他性能调整，请参阅[此博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。
+有关风暴的其他性能调整，请参阅 [此博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。
 
 有关可运行的其他示例，请参阅 [GitHub 上的这篇文章](https://github.com/hdinsight/storm-performance-automation)。

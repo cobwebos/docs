@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 04/05/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 222b45e455f42264a5324f138c55b822d9d8e7a1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c820f0cbf2e5d7b68451263315766895839716b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011186"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建单区域虚拟机规模集
 此脚本创建在单个可用性区域中运行 Windows Server 2016 的虚拟机规模集。 运行脚本后，可通过 RDP 访问虚拟机。
@@ -47,5 +47,5 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 

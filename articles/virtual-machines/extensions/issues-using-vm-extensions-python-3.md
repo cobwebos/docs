@@ -12,23 +12,23 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82120777"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852595"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在启用 Python 3 的 Linux Azure 虚拟机系统中使用 VM 扩展时遇到的问题
 
 > [!NOTE]
-> Microsoft 鼓励用户在其系统中采用**python** 3.x，除非你的工作负载需要**python** 2.x 支持。 此要求的示例可能包括旧版管理脚本或扩展，如 Azure 磁盘加密和 Azure Monitor 。
+> Microsoft 鼓励用户在其系统中采用 **python** 3.x，除非你的工作负载需要 **python** 2.x 支持。 此要求的示例可能包括旧版管理脚本或扩展，如 Azure 磁盘加密和 Azure Monitor 。
 >
 > 在生产环境中安装 Python 2.x 之前，请考虑 Python 2.x 的长期支持问题，尤其是它们接收安全更新的能力。 由于产品（包括上述一些扩展）使用 Python 3.8 支持进行更新，应停止使用 Python 2.x。
 
-某些 Linux 发行版已转换为 Python 3.8，并完全删除了 Python 的旧版 `/usr/bin/python` 入口点。 此转换会影响具备以下条件的某些虚拟机 (VM) 扩展的开箱即用、自动部署：
+某些 Linux 发行版已转换为 Python 3.8，并完全删除了 Python 的旧版 `/usr/bin/python` 入口点。 此转换会影响特定虚拟机的现成、自动部署 (VM) 扩展，这两个条件如下：
 
 - 仍在转换为 Python 3.x 支持的扩展
 - 使用旧版 `/usr/bin/python` 入口点的扩展
@@ -43,50 +43,52 @@ ms.locfileid: "82120777"
 
 ## <a name="resolution"></a>解决方法
 
-在上文摘要中介绍的已知受影响的场景中部署扩展之前，请考虑以下常规建议：
+在以下摘要中的前面介绍的已知受影响的方案中部署扩展之前，请考虑以下常规建议：
 
-1.  部署扩展之前，请使用 Linux 发行版供应商提供的方法恢复 `/usr/bin/python` 符号链接。
+1. 部署扩展之前，请使用 Linux 发行版供应商提供的方法恢复 `/usr/bin/python` 符号链接。
 
-    - 例如，对于 Python 2.7，请使用 `sudo apt update && sudo apt install python-is-python2`
+   - 例如，对于 Python 2.7，请使用 `sudo apt update && sudo apt install python-is-python2`
 
-2.  如果已部署出现此问题的实例，请使用 " **VM" 边栏选项卡**中的 "**运行命令**" 功能运行上面提到的命令。 运行命令扩展本身不受向 Python 3.8 的转换的影响。
+1. 此建议适用于 Azure 客户，在 Azure Stack 中不受支持：
 
-3.  如果要部署新实例，并需要在预配时设置扩展，请使用 cloud-init 用户数据来安装上述程序包。
+   - 如果已部署出现此问题的实例，请使用 "VM" 边栏选项卡中的 "运行命令" 功能运行上面提到的命令。 运行命令扩展本身不受向 Python 3.8 的转换的影响。
 
-    例如，对于 Python 2.7：
+1. 如果要部署新实例，并需要在预配时设置扩展，请使用 cloud-init 用户数据来安装上述程序包。
 
-    ```
-    # create cloud-init config
-    cat > cloudinitConfig.json <<EOF
-    #cloud-config
-    package_update: true
+   例如，对于 Python 2.7：
+
+   ```python
+   # create cloud-init config
+   cat > cloudinitConfig.json <<EOF
+   #cloud-config
+   package_update: true
     
-    runcmd:
-    - sudo apt update
-    - sudo apt install python-is-python2 
-    EOF
-    
-    # create VM
-    az vm create \
-        --resource-group <resourceGroupName> \
-        --name <vmName> \
-        --image <Ubuntu 20.04 Image URN> \
-        --admin-username azadmin \
-        --ssh-key-value "<sshPubKey>" \
-        --custom-data ./cloudinitConfig.json
-    ```
+   runcmd:
+   - sudo apt update
+   - sudo apt install python-is-python2 
+   EOF
 
-4.  如果你的组织的策略管理员确定不应将扩展部署到 Vm 中，你可以在预配时禁用扩展支持：
+   # create VM
+   az vm create \
+       --resource-group <resourceGroupName> \
+       --name <vmName> \
+       --image <Ubuntu 20.04 Image URN> \
+       --admin-username azadmin \
+       --ssh-key-value "<sshPubKey>" \
+       --custom-data ./cloudinitConfig.json
+   ```
 
-    - REST API
+1. 如果你的组织的策略管理员确定不应将扩展部署到 Vm 中，你可以在预配时禁用扩展支持：
 
-      在可以使用此属性部署 VM 时禁用和启用扩展：
+   - REST API
 
-      ```
-        "osProfile": {
-          "allowExtensionOperations": false
-        },
-      ```
+     在可以使用此属性部署 VM 时禁用和启用扩展：
+
+     ```python
+       "osProfile": {
+         "allowExtensionOperations": false
+       },
+     ```
 
 ## <a name="next-steps"></a>后续步骤
 

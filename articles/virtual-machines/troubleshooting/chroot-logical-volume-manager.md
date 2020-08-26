@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526871"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825678"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM （逻辑卷管理器）时，Linux VM 的故障排除
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局正在使用 LVM (逻辑卷管理器时，Linux VM 的故障排除) 
 
 本故障排除指南可帮助解决以下场景中出现的问题：Linux VM 不启动、无法建立 SSH 连接，并且在底层文件系统布局中配置了 LVM（逻辑卷管理器）。
 
@@ -272,6 +272,6 @@ umount /rescue
 ## <a name="next-steps"></a>后续步骤
 详细了解以下内容
 
- [Azure 串行控制台]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+ [Azure 串行控制台]( ./serial-console-linux.md)
 
 [单用户模式](./serial-console-grub-single-user-mode.md)

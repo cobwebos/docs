@@ -4,16 +4,15 @@ description: 了解如何使用命令行和本地工作站上的编程接口在�
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110464"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132409"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
@@ -65,7 +64,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
 本地运行 U-SQL 脚本时，在编译期间，会在当前运行目录下创建一个工作目录。 除编译输出外，本地执行所需的运行时文件也以卷影形式复制到此工作目录。 工作目录根文件夹名为“ScopeWorkDir”，该工作目录下的文件如下所示：
 
-|目录/文件|目录/文件|目录/文件|定义|说明|
+|目录/文件|目录/文件|目录/文件|定义|描述|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |运行时版本的哈希字符串|本地执行所需的运行时文件卷影副本|
 | |Script_66AE4909AA0ED06C| |脚本名称 + 脚本路径的哈希字符串|编译输出和执行步骤日志记录|
@@ -144,21 +143,21 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 |参数|默认值|说明|
 |--------|-------------|-----------|
-|-CodeBehind|False|该脚本具有 .cs 代码隐藏|
+|-CodeBehind|错误|该脚本具有 .cs 代码隐藏|
 |-CppSDK| |CppSDK 目录|
 |-DataRoot| DataRoot 环境变量|用于本地运行的 DataRoot，默认为“LOCALRUN_DATAROOT”环境变量|
 |-MessageOut| |将控制台上的消息转储到文件中|
 |-Parallel|1|使用指定的并行度运行计划|
 |-References| |代码隐藏的额外引用数据集或数据文件的路径列表，列表由“;”分隔|
-|-UdoRedirect|False|生成 Udo 程序集重定向配置|
+|-UdoRedirect|错误|生成 Udo 程序集重定向配置|
 |-UseDatabase|主|用于代码隐藏临时程序集注册的数据库|
-|-Verbose|False|显示运行时的详细输出|
+|-Verbose|错误|显示运行时的详细输出|
 |-WorkDir|当前目录|编译器用法和输出的目录|
 |-RunScopeCEP|0|要使用的 ScopeCEP 模式|
 |-ScopeCEPTempPath|temp|用于流式处理数据的临时路径|
 |-OptFlags| |用逗号分隔的优化器标志列表|
 
-以下是一个示例：
+下面是一个示例：
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
@@ -174,7 +173,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 以下是用于 **compile** 的可选参数：
 
-|参数|说明|
+|参数|描述|
 |--------|-----------|
 | -CodeBehind [default value 'False']|该脚本具有 .cs 代码隐藏|
 | -CppSDK [default value '']|CppSDK 目录|
@@ -332,38 +331,38 @@ LocalRunHelper.exe 提供了用于进行 U SQL 本地编译、运行等的编程
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|类型|说明|
+|参数|类型|描述|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 ### <a name="properties"></a>属性
 
-|properties|类型|说明|
+|properties|类型|描述|
 |--------|----|-----------|
-|AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
-|CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
-|CppSdkDir|字符串|CppSDK 目录|
-|CurrentDir|字符串|当前目录|
-|DataRoot|字符串|数据根路径|
-|DebuggerMailPath|字符串|调试程序邮件槽的路径|
+|AlgebraPath|string|代数文件的路径（代数文件是某个编译结果）|
+|CodeBehindReferences|string|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
+|CppSdkDir|string|CppSDK 目录|
+|CurrentDir|string|当前目录|
+|DataRoot|string|数据根路径|
+|DebuggerMailPath|string|调试程序邮件槽的路径|
 |GenerateUdoRedirect|bool|是否要生成程序集加载重定向替代配置|
 |HasCodeBehind|bool|如果脚本具有.cs 代码隐藏|
-|InputDir|字符串|输入数据的目录|
-|MessagePath|字符串|消息转储文件路径|
-|OutputDir|字符串|输出数据的目录|
+|InputDir|string|输入数据的目录|
+|MessagePath|string|消息转储文件路径|
+|OutputDir|string|输出数据的目录|
 |并行度|int|运行代数的并行度|
 |ParentPid|int|父级（服务监视器要从中退出）的 PID，设置为 0 或负数以忽略|
-|ResultPath|字符串|结果转储文件路径|
-|RuntimeDir|字符串|运行时目录|
-|ScriptPath|字符串|在何处可以找到脚本|
+|ResultPath|string|结果转储文件路径|
+|RuntimeDir|string|运行时目录|
+|ScriptPath|string|在何处可以找到脚本|
 |Shallow|bool|浅层编译或不编译|
-|TempDir|字符串|Temp 目录|
-|UseDataBase|字符串|指定用于代码隐藏临时程序集注册的数据库，默认为 master|
-|WorkDir|字符串|首选工作目录|
+|TempDir|string|Temp 目录|
+|UseDataBase|string|指定用于代码隐藏临时程序集注册的数据库，默认为 master|
+|WorkDir|string|首选工作目录|
 
 ### <a name="method"></a>方法
 
-|方法|说明|返回|参数|
+|方法|描述|返回|参数|
 |------|-----------|------|---------|
 |public bool DoCompile()|编译 U-SQL 脚本|如果成功，则返回 true| |
 |public bool DoExec()|执行编译结果|如果成功，则返回 true| |

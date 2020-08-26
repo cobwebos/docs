@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentDateTime�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4db2ec7bbd05d982af57c05fd46ef7da7c682e15
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258797"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606965"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 
@@ -44,15 +44,13 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>备注
 
-  GetCurrentDateTime() 是非确定性的函数。
-  
-  返回的结果为 UTC。
+GetCurrentDateTime() 是非确定性的函数。 返回的结果为 UTC。 精度为 7 位，准确度为 100 纳秒。
 
-  精度为 7 位，准确度为 100 纳秒。
+此系统函数不会使用索引。
 
 ## <a name="examples"></a>示例
   
-  以下示例演示如何使用 GetCurrentDateTime() 内置函数获取当前 UTC 日期时间。
+以下示例演示如何使用 GetCurrentDateTime() 内置函数获取当前 UTC 日期时间。
   
 ```sql
 SELECT GetCurrentDateTime() AS currentUtcDateTime

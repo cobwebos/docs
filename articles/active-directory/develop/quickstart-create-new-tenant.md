@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256690"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120807"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -72,5 +72,5 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 ## <a name="next-steps"></a>后续步骤
 
 * [注册应用](quickstart-register-app.md)并与 Microsoft 标识平台集成。 
-* 了解[身份验证的基础知识](authentication-scenarios.md)。
+* 了解[身份验证的基础知识](./authentication-vs-authorization.md)。
 * 若要详细了解订阅和 Azure AD 租户之间的关系，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。

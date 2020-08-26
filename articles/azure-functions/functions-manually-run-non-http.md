@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121717"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640951"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手动运行非 HTTP 触发的函数
 
@@ -36,7 +37,7 @@ ms.locfileid: "83121717"
 
 ## <a name="get-the-functions-master-key"></a>获取函数的主密钥
 
-1. 在 Azure 门户中导航到你的函数，选择“函数密钥”。 然后选择要复制的函数密钥。 
+1. 在 [Azure 门户](https://portal.azure.com)中导航到 function app，选择 " **应用密钥**"，然后选择 " `_master` 密钥"。 
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="找到要复制的主密钥。" border="true":::
 
@@ -49,7 +50,7 @@ ms.locfileid: "83121717"
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="查看日志以了解主密钥测试结果。" border="true":::
 
 > [!CAUTION]  
-> 由于函数应用中提升的权限由主密钥授予，因此不应与第三方共享此密钥或在应用程序中分发此密钥。
+> 由于函数应用中提升的权限由主密钥授予，因此不应与第三方共享此密钥或在应用程序中分发此密钥。 密钥只应发送到 HTTPS 终结点。
 
 ## <a name="call-the-function"></a>调用该函数
 

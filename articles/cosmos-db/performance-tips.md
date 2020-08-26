@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: c6c1b30716b52554afebe39562692de181dd7d1a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: bc73292d7ed01468fc31e5a6203a4ba53a6425a2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921230"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505761"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>适用于 Azure Cosmos DB 和 .NET SDK v2 的性能提示
 
@@ -71,21 +72,19 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
   * 网关模式（默认）
       
-    网关模式受所有 SDK 平台支持并已配置为 [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) 的默认设置。 如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是：每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。 在套接字连接数量有限的环境中运行应用程序时，我们也建议使用网关连接模式。
+    网关模式受所有 SDK 平台支持并已配置为 [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) 的默认设置。 如果你的应用程序在具有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口和单个 DNS 终结点。 但是，对于性能的影响是：每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。 在套接字连接数量有限的环境中运行应用程序时，我们也建议使用网关连接模式。
 
     在 Azure Functions 中使用 SDK 时，尤其是在[消耗计划](../azure-functions/functions-scale.md#consumption-plan)中使用时，请注意当前的[连接限制](../azure-functions/manage-connections.md)。 这种情况下，如果还在 Azure Functions 应用程序中使用其他基于 HTTP 的客户端，则使用网关模式可能更好。
 
   * 直接模式
 
     直接模式支持通过 TCP 协议的连接。
-
-在网关模式下，当你使用 Azure Cosmos DB API for MongoDB 时，Azure Cosmos DB 会使用端口 443 以及端口 10250、10255 和 10256。 端口 10250 映射到没有异地复制功能的默认 MongoDB 实例。 端口 10255 和 10256 映射到具有异地复制功能的 MongoDB 实例。
      
-在直接模式下使用 TCP 时，除了网关端口，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口（在[专用终结点](./how-to-configure-private-endpoints.md)上使用直接模式时，必须打开整个范围的 TCP 端口（即从 0 到 65535））。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
+在直接模式下使用 TCP 时，除了网关端口外，还需确保端口范围为10000到20000，因为 Azure Cosmos DB 使用动态 TCP 端口。 当对 [专用终结点](./how-to-configure-private-endpoints.md)使用直接模式时，TCP 端口的完整范围应为0到65535。 如果这些端口未打开，而你尝试使用 TCP 协议，则会收到503服务不可用错误。 下表显示了可用于各种 Api 的连接模式以及用于每个 API 的服务端口：
 
 |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
 |---------|---------|---------|---------|
-|网关  |   HTTPS    |  所有 SDK    |   SQL (443)、MongoDB（10250、10255、10256）、表 (443)、Cassandra (10350)、Graph (443)    |
+|网关  |   HTTPS    |  所有 SDK    |   SQL (443)、MongoDB（10250、10255、10256）、表 (443)、Cassandra (10350)、Graph (443) <br> 端口10250映射到 MongoDB 实例的默认 Azure Cosmos DB API，无地域复制。 而端口10255和10256映射到具有异地复制的实例。   |
 |直接    |     TCP    |  .NET SDK    | 使用公共/服务终结点时：端口介于 10000 到 20000 之间<br>使用专用终结点时：端口介于 0 到 65535 之间 |
 
 Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 TLS 来进行初始身份验证和加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
@@ -115,12 +114,12 @@ new ConnectionPolicy
 
 在具有稀疏访问权限的情况下，如果在与网关模式访问比较时发现连接计数更高，则可以：
 
-* 将[ConnectionPolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode)属性配置为 `PrivatePortPool` （有效使用 framework 版本>= 4.6.1，.net core 版本 >= 2.0）：此属性允许 SDK 为不同的 Azure Cosmos DB 目标终结点使用少量临时端口。
-* 配置[ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout)属性必须大于或等于10分钟。 建议值介于20分钟到24小时之间。
+* 将 [ConnectionPolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) 属性配置为 `PrivatePortPool` (与 framework 版本>= 4.6.1 和 .net core 版本 >= 2.0) 一起使用：此属性允许 SDK 为不同 Azure Cosmos DB 目标终结点使用少量临时端口。
+* 配置 [ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) 属性必须大于或等于10分钟。 建议值介于20分钟到24小时之间。
 
 **调用 OpenAsync 以避免首次请求时启动延迟**
 
-默认情况下，第一个请求因为需要提取地址路由表而有较高的延迟。 使用[SDK V2](sql-api-sdk-dotnet.md)时，请在 `OpenAsync()` 初始化过程中调用一次，以避免第一次请求时的此启动延迟。 调用如下所示：`await client.OpenAsync();`
+默认情况下，第一个请求因为需要提取地址路由表而有较高的延迟。 使用 [SDK V2](sql-api-sdk-dotnet.md)时，请在 `OpenAsync()` 初始化过程中调用一次，以避免第一次请求时的此启动延迟。 调用如下所示： `await client.OpenAsync();`
 
 > [!NOTE]
 > `OpenAsync` 会生成多个请求，这些请求用于获取帐户中所有容器的地址路由表。 如果帐户有多个容器，但其应用程序访问的是其中的一部分，则 `OpenAsync` 会生成不必要数量的流量，导致初始化速度缓慢。 因此，在这种情况下使用 `OpenAsync` 可能不起作用，因为它会降低应用程序启动速度。
@@ -213,9 +212,9 @@ IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollectio
 
 **增加线程/任务数目**
 
-请参阅本文的 "网络" 部分中的[增加线程/任务的数量](#increase-threads)。
+请参阅本文的 "网络" 部分中的 [增加线程/任务的数量](#increase-threads) 。
 
-## <a name="indexing-policy"></a>索引策略
+## <a name="indexing-policy"></a>索引编制策略
  
 **从索引中排除未使用的路径以加快写入速度**
 
@@ -230,7 +229,7 @@ collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabas
 
 有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](index-policy.md)。
 
-## <a name="throughput"></a><a id="measure-rus"></a>量
+## <a name="throughput"></a><a id="measure-rus"></a> 量
 
 **度量并优化较低的每秒请求单位使用量**
 

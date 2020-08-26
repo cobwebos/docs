@@ -5,15 +5,16 @@ ms.subservice: sizes
 documentationcenter: ''
 author: sasha-melamed
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 028de173c5cda1e95de9dd64d6ccd2a6b0ad7eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674307"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835572"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>存储优化虚拟机大小
 
@@ -35,3 +36,5 @@ ms.locfileid: "84674307"
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
 了解如何针对 [Windows](windows/storage-performance.md) 或 [Linux](linux/storage-performance.md) 优化 Lsv2 系列虚拟机上的性能。
+
+有关 Azure 如何命名其 Vm 的详细信息，请参阅[azure 虚拟机大小命名约定](./vm-naming-conventions.md)。

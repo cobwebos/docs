@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226404"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010943"
 ---
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 调试模式通过 `--debug` 使用 CLI 和 `-Debug` 交换机（使用 PowerShell）传递开关来激活。 确定错误的位置以后，请按本文档的说明来排查错误。
 
@@ -76,7 +76,7 @@ ms.locfileid: "86226404"
 
 尝试创建 VM 或虚拟机规模集的用户没有映像版本的读取访问权限。
 
-请联系订阅所有者，要求他们通过[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 授予对映像版本或父资源（例如共享映像库或映像定义）的读取访问权限。 
+请与订阅所有者联系，并要求他们为映像版本或父资源授予读取访问权限， (如共享图像库或映像定义) 通过[AZURE RBAC)  (azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)。 
 
 找不到映像版本。
 
@@ -88,7 +88,7 @@ ms.locfileid: "86226404"
 
 ## <a name="unable-to-share-resources"></a>无法共享资源
 
-可以通过[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 启用对共享映像库、映像定义和映像版本资源的跨订阅共享。 
+使用[AZURE RBAC)  (使用 azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)来启用跨订阅共享共享映像库、映像定义和映像版本资源。 
 
 ## <a name="replication-is-slow"></a>复制速度慢
 
@@ -97,6 +97,3 @@ ms.locfileid: "86226404"
 ## <a name="azure-limits-and-quotas"></a>Azure 限制和配额 
 
 [Azure 限制和配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)适用于所有共享映像库、映像定义和映像版本资源。 请确保未超出订阅限制。 
-
-
-

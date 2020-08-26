@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 72c2a664b3994d53fdd3602b432df1cabdaeb3ef
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392695"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002970"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -33,7 +33,9 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 
 AKS 群集可以使用 Kubernetes 基于角色的访问控制 (RBAC)。 可以使用这些控制根据分配给用户的角色定义资源访问权限。 权限可以组合（如果为用户分配了多个角色），可以局限于单个命名空间，也可以涵盖整个群集。 默认情况下，Azure CLI 会在你创建 AKS 群集时自动启用 RBAC。
 
-使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。 为了允许 AKS 群集与其他 Azure 资源进行交互，将自动创建一个 Azure Active Directory 服务主体，因为未指定该主体。 在这里，此服务主体[被授予从上一教程中创建的 Azure 容器注册表 (ACR) 实例中拉取映像][container-registry-integration]的权限。 请注意，可以使用[托管标识](use-managed-identity.md)而不是服务主体，以便更轻松地进行管理。
+使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是[上一教程][aks-tutorial-prepare-acr]中在 eastus 区域中创建的。 下面的示例未指定区域，因此 AKS 群集也会在 eastus 区域中创建。 请参阅 [Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和区域可用性][quotas-skus-regions]，以了解有关 AKS 的资源限制和区域可用性的详细信息。
+
+为了允许 AKS 群集与其他 Azure 资源进行交互，将自动创建一个 Azure Active Directory 服务主体，因为未指定该主体。 在这里，此服务主体[被授予从上一教程中创建的 Azure 容器注册表 (ACR) 实例中拉取映像][container-registry-integration]的权限。 请注意，可以使用[托管标识](use-managed-identity.md)而不是服务主体，以便更轻松地进行管理。
 
 ```azurecli
 az aks create \
@@ -108,3 +110,4 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-registry-integration]: ./cluster-container-registry-integration.md
+[quotas-skus-regions]: quotas-skus-regions.md

@@ -5,17 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 了解如何在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996255"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212434"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具
 
 本文介绍了多种方式来在 AKS 群集上启用 Azure Dev Spaces 以及安装客户端工具。
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>使用 CLI 启用或删除 Azure Dev Spaces
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>使用 CLI 启用 Azure Dev Spaces
 
 需具备以下项，才可使用 CLI 启用 Dev Spaces：
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户][az-portal-create-account]。
@@ -48,17 +49,6 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces` 命令还会安装 Azure Dev Spaces CLI。
 
-要从 AKS 群集中删除 Azure Dev Spaces，请使用 `azds remove` 命令。 例如：
-
-```azurecli
-$ azds remove -g MyResourceGroup -n MyAKS
-Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
-
-Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
-```
-
-上述命令将从 MyResourceGroup 中的 MyAKS 群集中删除 Azure Dev Spaces 。 使用 Azure Dev Spaces 创建的所有命名空间仍将与其工作负载一起保留，但这些命名空间中新的工作负载将不使用 Azure Dev Spaces 进行检测。 此外，如果你重启已使用 Azure Dev Spaces 检测的任何现有 Pod，可能会看到错误。 必须在没有 Azure Dev Spaces 工具的情况下重新部署这些 Pod。 若要从群集中完全删除 Azure Dev Spaces，请在已启用 Azure Dev Spaces 的所有命名空间中删除所有 Pod。
-
 ## <a name="install-the-client-side-tools"></a>安装客户端工具
 
 可使用 Azure Dev Spaces 客户端工具与本地计算机上 AKS 群集中的开发空间进行交互。 可采用多种方法安装客户端工具：
@@ -67,18 +57,35 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 * 在 [Visual Studio 2019][visual-studio] 中安装 Azure 开发工作负载。
 * 下载并安装 [Windows][cli-win]、[Mac][cli-mac] 或 [Linux][cli-linux] CLI。
 
+## <a name="remove-azure-dev-spaces-using-the-cli"></a>使用 CLI 删除 Azure Dev Spaces
+
+要从 AKS 群集中删除 Azure Dev Spaces，请使用 `azds remove` 命令。
+
+```azurecli
+azds remove -g MyResourceGroup -n MyAKS
+```
+
+以下示例输出显示了从 *MyAKS* 群集中删除 Azure Dev Spaces。
+
+```azurecli
+$ azds remove -g MyResourceGroup -n MyAKS
+Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
+
+Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
+```
+
+使用 Azure Dev Spaces 创建的所有命名空间仍将与其工作负载一起保留，但这些命名空间中新的工作负载将不使用 Azure Dev Spaces 进行检测。 此外，如果你重启已使用 Azure Dev Spaces 检测的任何现有 Pod，可能会看到错误。 必须在没有 Azure Dev Spaces 工具的情况下重新部署这些 Pod。 若要从群集中完全删除 Azure Dev Spaces，请在已启用 Azure Dev Spaces 的所有命名空间中删除所有 Pod。
+
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用程序，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作式开发。
+详细了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 中的团队开发][team-development-qs]
+> [Azure Dev Spaces 工作原理](../how-dev-spaces-works.md)
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-qs]: ../quickstart-team-development.md
-
 [az-portal]: https://portal.azure.com
 [az-portal-create-account]: https://azure.microsoft.com/free
 [cli-linux]: https://aka.ms/get-azds-linux

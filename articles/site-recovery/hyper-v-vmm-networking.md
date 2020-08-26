@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961429"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495937"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 
@@ -62,11 +63,11 @@ ms.locfileid: "73961429"
 
 故障转移前 
 
-![在故障转移之前](./media/hyper-v-vmm-networking/network-design2.png)
+![显示故障转移之前的子网的关系图。](./media/hyper-v-vmm-networking/network-design2.png)
 
 故障转移后 
 
-![在故障转移之后](./media/hyper-v-vmm-networking/network-design3.png)
+![故障转移后显示子网的关系图。](./media/hyper-v-vmm-networking/network-design3.png)
 
 故障转移后，Site Recovery 为 VM 上的每个网络接口分配 IP 地址。 将为每个 VM 实例从相关网络中的静态 IP 地址池中分配地址。
 
@@ -78,12 +79,12 @@ ms.locfileid: "73961429"
 
 为 VM 启用保护后，可以使用以下示例脚本来验证分配给 VM 的地址。 此 IP 地址将被设为故障转移 IP 地址，并在故障转移期间分配给 VM：
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>使用不同 IP 地址
 
@@ -92,7 +93,7 @@ ms.locfileid: "73961429"
 - 对 Intranet 应用程序使用低 TTL 值。
 - 在 Site Recovery 恢复计划中使用以下脚本及时更新 DNS 服务器。 如果使用动态 DNS 注册，则不需要该脚本。
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,
@@ -117,11 +118,11 @@ ms.locfileid: "73961429"
 
 故障转移前 
 
-![不同的 IP 地址 - 故障转移前](./media/hyper-v-vmm-networking/network-design10.png)
+![故障转移之前显示不同 IP 地址的关系图。](./media/hyper-v-vmm-networking/network-design10.png)
 
 故障转移后 
 
-![不同的 IP 地址 - 故障转移后](./media/hyper-v-vmm-networking/network-design11.png)
+![故障转移后显示不同 IP 地址的关系图。](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>后续步骤

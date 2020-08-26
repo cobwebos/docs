@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9554fa63d13c5da465653064d69d7950d91f0300
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114684"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421869"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -50,7 +51,7 @@ ms.locfileid: "85114684"
 * 在本地工作站上安装 [Git][Git]。
 
 ## <a name="create-an-azure-cosmos-db-account"></a><a name="_Toc395637761"></a>创建 Azure Cosmos DB 帐户
-让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
+首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -59,7 +60,7 @@ ms.locfileid: "85114684"
 ## <a name="create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>创建新的 Node.js 应用程序
 现在让我们来了解如何使用 Express 框架创建基本的 Hello World Node.js 项目。
 
-1. 打开最喜欢的终端，如 Node.js 命令提示符。
+1. 打开首选终端，例如 Node.js 命令提示符。
 
 1. 导航到要在其中存储新应用程序的目录。
 
@@ -92,7 +93,7 @@ ms.locfileid: "85114684"
 
 **package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 在将此应用程序部署到 Azure 时，请使用此文件以确定应该在 Azure 上安装哪些模块来支持应用程序。 为本教程再安装两个包。
 
-1. 通过 npm 安装 **\@azure/cosmos** 模板。 
+1. 通过 npm 安装 **\@azure/cosmos** 模块。 
 
    ```bash
    npm install @azure/cosmos

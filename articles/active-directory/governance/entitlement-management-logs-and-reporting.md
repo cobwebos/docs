@@ -16,11 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078175"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783807"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure AD 权利管理中使用 Azure Monitor 存档日志和进行报告
 
@@ -58,7 +59,7 @@ Azure AD 在审核日志中将审核事件存储最长 30 天。 但是，可以
 
 ## <a name="view-events-for-an-access-package"></a>查看访问包的事件  
 
-若要查看访问包的事件，必须有权访问基础 Azure Monitor 工作区（有关信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)）并充当以下角色之一： 
+若要查看访问包的事件，必须有权访问基础 Azure Monitor 工作区（有关信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)）并充当以下角色之一： 
 
 - 全局管理员  
 - 安全管理员  
@@ -169,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>将查询发送到 Log Analytics 工作区
 最后，在确定工作区后，可以使用 [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) 将 Kusto 查询发送到该工作区。 这些查询以 [Kusto 查询语言](https://docs.microsoft.com/azure/kusto/query/)编写。
+) 将 Kusto 查询发送到该工作区。 这些查询以 [Kusto 查询语言](/azure/kusto/query/)编写。
  
 例如，可以使用 PowerShell cmdlet 发送如下所示的查询，从 Log Analytics 工作区检索审核事件记录的日期范围：
  
@@ -188,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>后续步骤：
-- [使用 Azure Monitor 工作簿创建交互式报表](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [使用 Azure Monitor 工作簿创建交互式报表](../../azure-monitor/platform/workbooks-overview.md)

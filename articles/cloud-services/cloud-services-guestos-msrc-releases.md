@@ -1,6 +1,6 @@
 ---
 title: 适用于 Azure 来宾 OS 的更新列表 | Microsoft Docs
-description: 适用于来宾 OS 版本的更新列表
+description: 本文列出了适用于不同 Azure 来宾 OS 的 Microsoft 安全响应中心更新。 查看更新是否适用于你正在使用的来宾 OS。
 services: cloud-services
 documentationcenter: na
 author: yohaddad
@@ -10,37 +10,146 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/12/2020
+ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737455"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510158"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
-## <a name="june-2020-guest-os"></a>2020 年 6 月来宾 OS
-">[!NOTE]
->目前，我们正在将 6 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 4 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+## <a name="august-2020-guest-os"></a>2020年8月来宾操作系统
+>[!NOTE]
+>8月版来宾 OS 当前正在推出给为自动更新配置的云服务 Vm。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 8月版来宾操作系统中包含以下修补程序。 此列表可能随时变动。
 
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2.99、3.86、4.79  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4561616]  |  最新累积更新(LCU)  |  5.44  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4561608]  |  最新累积更新(LCU)  |  6.20  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4562030]  |  服务堆栈更新  |  2.99  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4561643]  |  每月汇总  |  2.99  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4562252]  |  服务堆栈更新  |  3.86  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4561612]  |  每月汇总  |  3.86  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4561600]  |  闪烁  |  3.86、4.79、5.44、6.20  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4562253]  |  服务堆栈更新  |  4.79  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4561666]  |  每月汇总  |  4.79  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4562561]  |  服务堆栈更新  |  5.44  |  2020 年 6 月 9 日  |
-|  Rel 20-06  |  [4562562]  |  服务堆栈更新  |  6.20  |  2020 年 6 月 9 日  |
+|  Rel 20-08 |  [4571687]  |  IE 累积更新 | 2.101、3.88、4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4561600]  |  闪存更新 | 3.88、4.81、5.46、6.22 | 2020 年 6 月 9 日 |
+|  Rel 20-08 |  [4571694]  |  最新累积更新 | 6.22 | 8月11日，2020 |
+|  Rel 20-08 |  [4565349]  |  最新累积更新 | 5.46 | 8月11日，2020 |
+|  Rel 20-08 |  [4570673]  |  服务堆栈更新 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4571729]  |  每月汇总 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1 安全和质量汇总 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 安全和质量汇总 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5 安全和质量汇总 | 3.88 | 8月11日，2020 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 安全和质量汇总 | 3.88 | 8月11日，2020 |
+|  Rel 20-08 |  [4566426]  |  服务堆栈更新 | 3.88 | 7月14日2020 |
+|  Rel 20-08 |  [4571736]  |  每月汇总 | 3.88 | 8月11日，2020 |
+|  Rel 20-08 |  [4566425]  |  服务堆栈更新 | 4.81 | 7月14日2020 |
+|  Rel 20-08 |  [4571703]  |  每月汇总 | 4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5 安全和质量汇总 | 4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 安全和质量汇总 | 4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4494175]  |  编码 | 5.46 | 2020年2月25日 |
+|  Rel 20-08 |  [4565912]  |  服务堆栈更新 | 5.46 | 7月14日2020 |
+|  Rel 20-08 |  [4569746]  |  .NET Framework 4.8 安全和质量汇总 | 5.46 | 8月11日，2020 |
+|  Rel 20-08 |  [4569776]  |  .NET Framework 3.5 和4.7.2 累积更新 | 6.22 | 8月11日，2020 |
+|  Rel 20-08 |  [4569750]  |  .NET Framework 3.5 和4.8 累积更新 | 6.22 | 8月11日，2020 |
+|  Rel 20-08 |  [4566424]  |  服务堆栈更新 | 6.22 | 8月11日，2020 |
+
+
+
+[4571687]: https://support.microsoft.com/kb/4571687
+[4561600]: https://support.microsoft.com/kb/4561600
+[4571694]: https://support.microsoft.com/kb/4571694
+[4565349]: https://support.microsoft.com/kb/4565349
+[4570673]: https://support.microsoft.com/kb/4570673
+[4571729]: https://support.microsoft.com/kb/4571729
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566426]: https://support.microsoft.com/kb/4566426
+[4571736]: https://support.microsoft.com/kb/4571736
+[4566425]: https://support.microsoft.com/kb/4566425
+[4571703]: https://support.microsoft.com/kb/4571703
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565912]: https://support.microsoft.com/kb/4565912
+[4569746]: https://support.microsoft.com/kb/4569746
+[4569776]: https://support.microsoft.com/kb/4569776
+[4569750]: https://support.microsoft.com/kb/4569750
+[4566424]: https://support.microsoft.com/kb/4566424
+
+
+## <a name="july-2020-guest-os"></a>2020年7月来宾 OS
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | [2.100]、 [3.87]、 [4.80] | 7月14日2020 |
+|  Rel 20-07 |  [4565511]  |  最新累积更新 (LCU)  | [5.45] | 7月14日2020 |
+|  Rel 20-07 |  [4558998]  |  最新累积更新 (LCU)  | [6.21] | 7月14日2020 |
+|  Rel 20-07 |  [4565524]  |  每月汇总 | [2.100] | 7月14日2020 |
+|  Rel 20-07 |  [4565616]  |  每月汇总 | [2.100] | 2020年7月16日 |
+|  Rel 20-07 |  [4565354]  |  服务堆栈更新 | [2.100] | 7月14日2020 |
+|  Rel 20-07 |  [4565612]  |  每月汇总 | [2.100] | 7月14日2020 |
+|  Rel 20-07 |  [4565615]  |  每月汇总 | [3.87] | 7月14日2020 |
+|  Rel 20-07 |  [4566426]  |  服务堆栈更新 | [3.87] | 7月14日2020 |
+|  Rel 20-07 |  [4565537]  |  每月汇总 | [3.87] | 7月14日2020 |
+|  Rel 20-07 |  [4565610]  |  每月汇总 | [3.87] | 7月14日2020 |
+|  Rel 20-07 |  [4565541]  |  每月汇总 | [4.80] | 7月14日2020 |
+|  Rel 20-07 |  [4566425]  |  服务堆栈更新 | [4.80] | 7月14日2020 |
+|  Rel 20-07 |  [4565614]  |  每月汇总 | [4.80] | 7月14日2020 |
+|  Rel 20-07 |  [4565613]  |  每月汇总 | [4.80] | 7月14日2020 |
+|  Rel 20-07 |  [4565912]  |  服务堆栈更新 | [5.45] | 7月14日2020 |
+|  Rel 20-07 |  [4565628]  |  每月汇总 | [5.45] | 7月14日2020 |
+|  Rel 20-07 |  [4494175]  |  编码 | [5.45] | 2020年2月25日 |
+|  Rel 20-07 |  [4565632]  |  每月汇总 | [6.21] | 7月14日2020 |
+|  Rel 20-07 |  [4558997]  |  服务堆栈更新 | [6.21] | 7月14日2020 |
+|  Rel 20-07 |  [4494174]  |  编码 | [6.21] | 2020年2月25日 |
+
+
+[4565479]: https://support.microsoft.com/kb/4565479
+[4565511]: https://support.microsoft.com/kb/4565511
+[4558998]: https://support.microsoft.com/kb/4558998
+[4565524]: https://support.microsoft.com/kb/4565524
+[4565616]: https://support.microsoft.com/kb/4565616
+[4565354]: https://support.microsoft.com/kb/4565354
+[4565612]: https://support.microsoft.com/kb/4565612
+[4565615]: https://support.microsoft.com/kb/4565615
+[4566426]: https://support.microsoft.com/kb/4566426
+[4565537]: https://support.microsoft.com/kb/4565537
+[4565610]: https://support.microsoft.com/kb/4565610
+[4565541]: https://support.microsoft.com/kb/4565541
+[4566425]: https://support.microsoft.com/kb/4566425
+[4565614]: https://support.microsoft.com/kb/4565614
+[4565613]: https://support.microsoft.com/kb/4565613
+[4565912]: https://support.microsoft.com/kb/4565912
+[4565628]: https://support.microsoft.com/kb/4565628
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565632]: https://support.microsoft.com/kb/4565632
+[4558997]: https://support.microsoft.com/kb/4558997
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+
+
+## <a name="june-2020-guest-os"></a>2020 年 6 月来宾 OS
+
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  [2.99]、 [3.86]、 [4.79]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561616]  |  最新累积更新(LCU)  |  [5.44]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561608]  |  最新累积更新(LCU)  |  [6.20]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562030]  |  服务堆栈更新  |  [2.99]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561643]  |  每月汇总  |  [2.99]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562252]  |  服务堆栈更新  |  [3.86]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561612]  |  每月汇总  |  [3.86]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561600]  |  闪烁  |  [3.86]、 [4.79]、 [5.44]、 [6.20]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562253]  |  服务堆栈更新  |  [4.79]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4561666]  |  每月汇总  |  [4.79]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562561]  |  服务堆栈更新  |  [5.44]  |  2020 年 6 月 9 日  |
+|  Rel 20-06  |  [4562562]  |  服务堆栈更新  |  [6.20]  |  2020 年 6 月 9 日  |
 
 
 
@@ -56,6 +165,11 @@ ms.locfileid: "84737455"
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
+[2.99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>2020 年 5 月来宾 OS
@@ -453,9 +567,9 @@ ms.locfileid: "84737455"
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
 |  Rel 19-08   |  [4512482]  |  Windows 安全性   |  [3.76]  |  2019 年 8 月 13 日  |
-|  Rel 19-08   |  [4494175]  |  Microcode 更新   |  [5.34]  |  2019 年 6 月 18 日  |
+|  Rel 19-08   |  [4494175]  |  微代码更新   |  [5.34]  |  2019 年 6 月 18 日  |
 |  Rel 19-08   |  [4512517]  |  最新累积更新   |  [5.34]  |  2019 年 8 月 13 日  |
-|  Rel 19-08   |  [4494174]  |  Microcode 更新   |  [6.1]  |  2019 年 6 月 18 日  |
+|  Rel 19-08   |  [4494174]  |  微代码更新   |  [6.1]  |  2019 年 6 月 18 日  |
 |  Rel 19-08   |  [4511553]  |  最新累积更新   |  [6.1]  |  2019 年 8 月 13 日  |
 |  Rel 19-08   |  [4512486]  |  Windows 安全性   |  [2.89]  |  2019 年 8 月 13 日  |
 |  Rel 19-08   |  [4512489]  |  Windows 安全性   |  [4.69]  |  2019 年 8 月 13 日  |
@@ -1543,7 +1657,7 @@ ms.locfileid: "84737455"
 | MS15-075 |[3072633] |OLE 中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 | MS15-076 |[3067505] |Windows 远程过程调用中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 | MS15-077 |[3077657] |ATM 字体驱动程序中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
-| 不可用 |[3057154] |更新为限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
+| NA |[3057154] |更新为限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 
 ## <a name="june-2015-guest-os"></a>2015 年 6 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -1576,7 +1690,7 @@ ms.locfileid: "84737455"
 | MS15-040 |[3045711] |ADFS 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-041 |[3048010] |.NET Framework 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-042 |[3047234] |Windows Hyper-V 中的漏洞可能导致拒绝服务 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
-| 不可用 |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
+| NA |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 
 ## <a name="april-2015-guest-os"></a>2015 年 4 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |

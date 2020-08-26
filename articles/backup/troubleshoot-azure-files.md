@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524482"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825454"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -22,15 +22,15 @@ ms.locfileid: "86524482"
 - 检查存储帐户下的任何文件共享是否已由另一个恢复服务保管库保护。
 
   >[!NOTE]
-  >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 您可以使用[此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md)查找您的存储帐户注册到的恢复服务保管库。
+  >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 您可以使用 [此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md) 查找您的存储帐户注册到的恢复服务保管库。
 
-- 确保文件共享不在任何不受支持的存储帐户中。 可以参考[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
-- 请确保存储帐户名称和资源组名称的组合长度不超过84个字符，以防在经典存储帐户的情况下出现新存储帐户和77个字符。 
+- 确保文件共享不在任何不受支持的存储帐户中。 可以参考 [Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md) 来查找支持的存储帐户。
+- 请确保存储帐户名称和资源组名称的组合长度不超过84个字符，以防在经典存储帐户的情况下出现新存储帐户和77个字符。
 - 检查存储帐户的防火墙设置，以确保启用 "允许受信任的 Microsoft 服务访问存储帐户" 选项。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>门户中的错误指出无法发现存储帐户
 
-如果有合作伙伴订阅（已启用 CSP），请忽略此错误。 如果订阅未启用 CSP，并且无法发现存储帐户，请联系支持人员。
+如果在启用了 CSP)  (合作伙伴订阅，则忽略该错误。 如果订阅未启用 CSP，并且无法发现存储帐户，请联系支持人员。
 
 ### <a name="selected-storage-account-validation-or-registration-failed"></a>选择的存储帐户验证或注册失败
 
@@ -40,10 +40,10 @@ ms.locfileid: "86524482"
 
 - 请确保存储帐户存在于资源组中，但在保管库中的上次验证或注册后尚未删除或移动。
 - 确保未删除你要保护的文件共享。
-- 请确保存储帐户是支持进行文件共享备份的存储帐户。 可以参考[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
+- 请确保存储帐户是支持进行文件共享备份的存储帐户。 可以参考 [Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md) 来查找支持的存储帐户。
 - 检查是否已在同一恢复服务保管库中对文件共享进行保护。
 
-### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>备份文件共享配置（或保护策略配置）失败
+### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>备份文件共享配置 (或保护策略配置) 失败
 
 - 请重试该配置，以确定问题是否仍然存在。
 - 确保尚未删除要保护的文件共享。
@@ -59,7 +59,7 @@ ms.locfileid: "86524482"
 ## <a name="common-backup-or-restore-errors"></a>常见的备份或还原错误
 
 >[!NOTE]
->请参阅[本文档](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup)，确保你有足够的权限执行备份或还原操作。
+>请参阅 [本文档](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup) ，确保你有足够的权限执行备份或还原操作。
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound-操作失败，因为找不到文件共享
 
@@ -151,7 +151,7 @@ ms.locfileid: "86524482"
 
 错误消息：由于存储帐户处于锁定状态，备份或还原作业失败。
 
-请删除对存储帐户的锁定，或者使用**删除锁定**而不是**读取锁定**，然后重试备份或还原操作。
+请删除对存储帐户的锁定，或者使用 **删除锁定** 而不是 **读取锁定** ，然后重试备份或还原操作。
 
 ### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>DataTransferServiceCoFLimitReached-恢复失败，因为失败的文件数超过了阈值
 
@@ -159,7 +159,7 @@ ms.locfileid: "86524482"
 
 错误消息：恢复失败，因为失败的文件数超过了阈值。
 
-- 恢复失败原因列在文件（作业详细信息中提供的路径）中。 解决失败，并仅对失败的文件重试还原操作。
+- 恢复失败原因列在 "作业详细信息") 中提供的文件 (路径中。 解决失败，并仅对失败的文件重试还原操作。
 
 - 文件还原失败的常见原因：
 
@@ -172,7 +172,7 @@ ms.locfileid: "86524482"
 
 错误消息：恢复失败，因为无法恢复任何文件。
 
-- 恢复失败原因列在文件（作业详细信息中提供的路径）中。 解决导致失败的问题，然后只对故障文件重试还原操作。
+- 恢复失败原因列在 "作业详细信息") 中提供的文件 (路径中。 解决导致失败的问题，然后只对故障文件重试还原操作。
 
 - 文件还原失败的常见原因：
 
@@ -236,7 +236,7 @@ ms.locfileid: "86524482"
 
 错误消息：一个或多个文件无法成功恢复。 有关详细信息，请查看上面给出的路径中的故障文件列表。
 
-- 恢复失败原因列在文件（作业详细信息中提供的路径）中。 解决原因，并重试仅对失败的文件执行还原操作。
+- 恢复失败原因列在 "作业详细信息") 中提供的文件 (路径中。 解决原因，并重试仅对失败的文件执行还原操作。
 - 文件还原失败的常见原因：
 
   - 已失败的文件当前正在使用中
@@ -289,7 +289,7 @@ ms.locfileid: "86524482"
 
 错误消息：此还原点不可用，因为与此点关联的快照位于处于软删除状态的文件共享中。
 
-如果文件共享处于软删除状态，则无法执行还原操作。 从文件门户撤消删除文件共享或使用[撤消删除脚本](scripts/backup-powershell-script-undelete-file-share.md)，然后尝试还原。
+如果文件共享处于软删除状态，则无法执行还原操作。 从文件门户撤消删除文件共享或使用 [撤消删除脚本](scripts/backup-powershell-script-undelete-file-share.md) ，然后尝试还原。
 
 ### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState 列出的还原点不可用，因为包含还原点快照的关联文件共享已永久删除
 
@@ -308,7 +308,7 @@ ms.locfileid: "86524482"
 
 错误消息：备份失败，因为 Azure 文件共享处于软删除状态
 
-从**文件门户**撤消删除文件共享，或使用取消[删除脚本](scripts/backup-powershell-script-undelete-file-share.md)继续备份，并防止永久删除数据。
+从 **文件门户** 撤消删除文件共享，或使用取消 [删除脚本](scripts/backup-powershell-script-undelete-file-share.md) 继续备份，并防止永久删除数据。
 
 ### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState-备份失败，因为关联的 Azure 文件共享已永久删除
 
@@ -316,7 +316,7 @@ ms.locfileid: "86524482"
 
 错误消息：备份失败，因为关联的 Azure 文件共享已永久删除
 
-检查是否永久删除了备份的文件共享。 如果是，请停止该文件共享的备份，以避免重复的备份失败。 若要了解如何停止保护，请参阅[停止保护 Azure 文件共享](./manage-afs-backup.md#stop-protection-on-a-file-share)
+检查是否永久删除了备份的文件共享。 如果是，请停止该文件共享的备份，以避免重复的备份失败。 若要了解如何停止保护，请参阅 [停止保护 Azure 文件共享](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>后续步骤
 

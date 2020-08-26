@@ -3,15 +3,16 @@ title: 使用 Azure 门户部署 Azure 专用主机
 description: 使用 Azure 门户将 VM 部署到专用主机。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19bd7960c4a6a02566d86d51ff7e21f4e570c34d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79086766"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373634"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 部署到专用主机
 
@@ -45,7 +46,7 @@ ms.locfileid: "79086766"
 
 - VM 大小必须属于专用主机所用的同一大小系列。 例如，如果专用主机是 DSv3，则 VM 大小可以是 Standard_D4s_v3，但不能是 Standard_A4_v2。 
 - VM 需要位于专用主机所在的同一区域。
-- VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](../windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位于可用性集中。
 - 如果 VM 位于可用性区域中，则该可用性区域必须与主机组相同。 VM 和主机组的可用性区域设置必须匹配。
 
@@ -66,6 +67,3 @@ ms.locfileid: "79086766"
 - [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
 
 - 还可以使用 [Azure CLI](dedicated-hosts-cli.md) 部署专用主机。
-
-
-

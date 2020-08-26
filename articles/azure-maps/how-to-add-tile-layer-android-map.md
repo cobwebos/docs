@@ -1,19 +1,19 @@
 ---
 title: 向 Android 地图添加图块层 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure 地图 Android SDK 在地图上呈现图块层。
-author: philmea
-ms.author: philmea
+description: 了解如何向地图添加图块层。 请参阅使用 Azure Maps Android SDK 将天气雷达图添加到地图的示例。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335568"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037348"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
 
@@ -71,7 +71,7 @@ ms.locfileid: "80335568"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到类的**onCreate （）** 方法 `MainActivity.java` 。
+2. 将以下代码片段复制到类的**onCreate ( # B1**方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ ms.locfileid: "80335568"
     });
     ```
     
-    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它创建一个 `TileLayer` 对象，并将带格式的**xyz**磁贴 URL 传递到 `tileUrl` 选项中。 层的不透明度设置为 `0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递到 `tileSize` 选项中。 然后，将图块层传递到地图层管理器中。
+    上面的代码段首先使用**onReady ( # B1**回调方法获取 Azure Maps 映射控件实例。 然后，它创建一个 `TileLayer` 对象，并将带格式的**xyz**磁贴 URL 传递到 `tileUrl` 选项中。 层的不透明度设置为 `0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递到 `tileSize` 选项中。 然后，将图块层传递到地图层管理器中。
 
     添加上述代码片段后，应如下 `MainActivity.java` 所示：
     

@@ -4,18 +4,18 @@ description: 应用程序性能管理和实时 Web 应用程序的使用情况�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: f80322e8cde27ea48ca343ca8eee5985cba23ceb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996085"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321439"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是面向开发人员和 DevOps 专业人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时应用程序。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js、Java 和 Python）上的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights 的工作原理是什么？
-你可以在应用程序中安装小型检测包 (SDK)，或者使用 Application Insights 代理启用 Application Insights（如果[受支持](../../azure-monitor/app/platforms.md)）。 检测技术会监视应用，并使用我们称为“检测密钥”的唯一 GUID 将遥测数据定向到 Azure Application Insights 资源。
+你可以在应用程序中安装小型检测包 (SDK)，或者使用 Application Insights 代理启用 Application Insights（如果[受支持](./platforms.md)）。 检测技术会监视应用，并使用我们称为“检测密钥”的唯一 GUID 将遥测数据定向到 Azure Application Insights 资源。
 
 不仅可以检测 Web 服务应用程序，还可以检测所有后台组件以及 Web 页面中的 JavaScript。 应用程序及其组件可以在任何地方运行 - 不必在 Azure 中托管。
 
@@ -49,29 +49,29 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 |  |  |
 | --- | --- |
-| [**智能检测和手动警报**](../../azure-monitor/app/proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../../azure-monitor/platform/alerts-log.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
-| [**应用程序映射**](../../azure-monitor/app/app-map.md)<br/>探索应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
-| [**探查器**](../../azure-monitor/app/profiler.md)<br/>检查抽样请求的执行配置文件。 |![探查器](./media/app-insights-overview/profiler.png) |
-| [**使用情况分析**](../../azure-monitor/app/usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
-| [**实例数据的诊断搜索**](../../azure-monitor/app/diagnostic-search.md)<br/>搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。  |![搜索遥测](./media/app-insights-overview/search-tn.png) |
-| [**聚合数据的指标资源管理器**](../../azure-monitor/platform/metrics-charts.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![指标](./media/app-insights-overview/metrics-tn.png) |
-| [**仪表板**](../../azure-monitor/app/overview-dashboard.md)<br/>混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。 |![仪表板示例](./media/app-insights-overview/dashboard-tn.png) |
-| [**实时指标流**](../../azure-monitor/app/live-stream.md)<br/>部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。 |![实时指标示例](./media/app-insights-overview/live-metrics-tn.png) |
-| [**分析**](../../azure-monitor/app/analytics.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |
-| [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>查看代码中的性能数据。 从堆栈跟踪转到代码。|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
-| [**快照调试器**](../../azure-monitor/app/snapshot-debugger.md)<br/>使用参数值调试从实时操作采样的快照。|![Visual Studio](./media/app-insights-overview/snapshot.png) |
-| [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>将使用指标与其他商业智能集成。| ![Power BI](./media/app-insights-overview/power-bi.png)|
+| [**智能检测和手动警报**](./proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../platform/alerts-log.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
+| [**应用程序映射**](./app-map.md)<br/>探索应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
+| [**探查器**](./profiler.md)<br/>检查抽样请求的执行配置文件。 |![探查器](./media/app-insights-overview/profiler.png) |
+| [**使用情况分析**](./usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
+| [**实例数据的诊断搜索**](./diagnostic-search.md)<br/>搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。  |![搜索遥测](./media/app-insights-overview/search-tn.png) |
+| [**聚合数据的指标资源管理器**](../platform/metrics-charts.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![指标](./media/app-insights-overview/metrics-tn.png) |
+| [**仪表板**](./overview-dashboard.md)<br/>混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。 |![仪表板示例](./media/app-insights-overview/dashboard-tn.png) |
+| [**实时指标流**](./live-stream.md)<br/>部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。 |![实时指标示例](./media/app-insights-overview/live-metrics-tn.png) |
+| [**分析**](../log-query/log-query-overview.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |
+| [**Visual Studio**](./visual-studio.md)<br/>查看代码中的性能数据。 从堆栈跟踪转到代码。|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
+| [**快照调试器**](./snapshot-debugger.md)<br/>使用参数值调试从实时操作采样的快照。|![Visual Studio](./media/app-insights-overview/snapshot.png) |
+| [**Power BI**](./export-power-bi.md)<br/>将使用指标与其他商业智能集成。| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>编写代码以对指标和原始数据运行查询。| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**连续导出**](../../azure-monitor/app/export-telemetry.md)<br/>原始数据到达后，立即将其批量导出到存储。 |![导出](./media/app-insights-overview/export-tn.png) |
+| [**连续导出**](./export-telemetry.md)<br/>原始数据到达后，立即将其批量导出到存储。 |![导出](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>如何使用 Application Insights？
 
 ### <a name="monitor"></a>监视
-在应用中安装 Application Insights，设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)，然后：
+在应用中安装 Application Insights，设置[可用性 Web 测试](./monitor-web-app-availability.md)，然后：
 
-* 为团队聊天室签出默认[应用程序仪表板](../../azure-monitor/app/overview-dashboard.md)，以便监视负载、响应能力和依赖项性能、页面加载和 AJAX 调用。
+* 为团队聊天室签出默认[应用程序仪表板](./overview-dashboard.md)，以便监视负载、响应能力和依赖项性能、页面加载和 AJAX 调用。
 * 发现最慢和多数情况下失败的请求。
-* 在部署新版本时查看[实时流](../../azure-monitor/app/live-stream.md)，快速掌握任何降级情况。
+* 在部署新版本时查看[实时流](./live-stream.md)，快速掌握任何降级情况。
 
 ### <a name="detect-diagnose"></a>检测、诊断
 当收到警报，或发现问题时：
@@ -81,7 +81,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 * 检查探查器、快照、堆栈转储和跟踪日志。
 
 ### <a name="build-measure-learn"></a>生成、衡量、学习
-[测量有效性](../../azure-monitor/app/usage-overview.md)（针对部署的每个新功能）。
+[测量有效性](./usage-overview.md)（针对部署的每个新功能）。
 
 * 规划以衡量客户使用新的 UX 或业务功能的方式。
 * 将自定义遥测写入代码。
@@ -93,41 +93,41 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 可通过多种方法开始使用。 可从最适合方法开始。 可在以后添加其他方法。
 
 * **运行时：检测服务器上的 Web 应用。** 非常适合已部署的应用程序。 避免任何代码更新。
-  * [**在 Azure Web 应用中托管的 ASP.NET 或 ASP.NET Core 应用程序**](../../azure-monitor/app/azure-web-apps.md)
-  * [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序](../../azure-monitor/app/azure-vm-vmss-apps.md)
-  * [在 VM 的 IIS 中托管的 ASP.NET 应用程序](../../azure-monitor/app/monitor-performance-live-website-now.md)
+  * [**在 Azure Web 应用中托管的 ASP.NET 或 ASP.NET Core 应用程序**](./azure-web-apps.md)
+  * [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序](./azure-vm-vmss-apps.md)
+  * [在 VM 的 IIS 中托管的 ASP.NET 应用程序](./monitor-performance-live-website-now.md)
 * **开发时：将 Application Insights 添加到代码。** 可以自定义遥测数据收集和发送其他遥测数据。
-  * [ASP.NET 应用程序](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core 应用程序](../../azure-monitor/app/asp-net-core.md)
-  * [.NET 控制台应用程序](../../azure-monitor/app/console.md)
-  * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node.js](../../azure-monitor/app/nodejs.md)
-  * [Python](../../azure-monitor/app/opencensus-python.md)
-  * [其他平台](../../azure-monitor/app/platforms.md)
-* 针对页面视图、AJAX 和其他客户端遥测 **[检测网页](../../azure-monitor/app/javascript.md)** 。
-* 通过与 Visual Studio App Center 集成 **[分析移动应用使用情况](../../azure-monitor/learn/mobile-center-quickstart.md)** 。
-* **[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)** - 从我们的服务器定期对网站执行 ping 操作。
+  * [ASP.NET 应用程序](./asp-net.md)
+  * [ASP.NET Core 应用程序](./asp-net-core.md)
+  * [.NET 控制台应用程序](./console.md)
+  * [Java](./java-get-started.md)
+  * [Node.js](./nodejs.md)
+  * [Python](./opencensus-python.md)
+  * [其他平台](./platforms.md)
+* 针对页面视图、AJAX 和其他客户端遥测 **[检测网页](./javascript.md)** 。
+* 通过与 Visual Studio App Center 集成 **[分析移动应用使用情况](../learn/mobile-center-quickstart.md)** 。
+* **[可用性测试](./monitor-web-app-availability.md)** - 从我们的服务器定期对网站执行 ping 操作。
 
 ## <a name="next-steps"></a>后续步骤
 在运行时开始使用：
 
-* [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS 服务器](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web 应用](../../azure-monitor/app/azure-web-apps.md)
+* [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](./azure-vm-vmss-apps.md)
+* [IIS 服务器](./monitor-performance-live-website-now.md)
+* [Azure Web 应用](./azure-web-apps.md)
 
 在开发时开始使用：
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
 
 
 ## <a name="support-and-feedback"></a>支持和反馈
 * 问题：
   * [故障排除][qna]
-  * [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+  * [Microsoft Q&A 问题页面](/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * 用户建议：
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
@@ -136,15 +136,16 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 
 <!--Link references-->
 
-[android]: ../../azure-monitor/learn/mobile-center-quickstart.md
+[android]: ../learn/mobile-center-quickstart.md
 [azure]: ../../insights-perf-analytics.md
-[client]: ../../azure-monitor/app/javascript.md
-[desktop]: ../../azure-monitor/app/windows-desktop.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[ios]: ../../azure-monitor/learn/mobile-center-quickstart.md
-[java]: ../../azure-monitor/app/java-get-started.md
+[client]: ./javascript.md
+[desktop]: ./windows-desktop.md
+[greenbrown]: ./asp-net.md
+[ios]: ../learn/mobile-center-quickstart.md
+[java]: ./java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[platforms]: ./platforms.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
+[qna]: ../faq.md
+[redfield]: ./monitor-performance-live-website-now.md
+

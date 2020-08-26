@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519331"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042660"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -26,12 +26,16 @@ ms.locfileid: "86519331"
 
 ## <a name="availability"></a>可用性
 
-- 发布状态：**正式发布版**
-- 必需的角色：**工作区所有者**可以启用/禁用 FIM （有关详细信息，请参阅[Azure role for Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)）。 **读者**可以查看结果。
-- 云：
-    - ✔ 商业云
-    - US Gov 云✔
-    - ✘中国 Gov/其他 Gov
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|必需的角色和权限：|**工作区所有者**可以启用/禁用 FIM (有关详细信息，请参阅[Log Analytics) 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)。<br>**读者**可以查看结果。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|||
+
+
+
 
 
 ## <a name="what-is-fim-in-security-center"></a>安全中心内的 FIM 是什么？
@@ -46,7 +50,7 @@ ms.locfileid: "86519331"
 安全中心会建议要监视的、可以轻松对其启用 FIM 的实体。 你也可以定义自己的 FIM 策略或要监视的实体。 本演练会演示这些操作。
 
 > [!NOTE]
-> 文件完整性监视（FIM）功能适用于 Windows 和 Linux 计算机和 Vm，并且在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
+> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机和 Vm，并且在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
 
 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，会获得一个“解决方案”类型的“更改跟踪”资源 。 有关数据收集频率的详细信息，请参阅 Azure 更改跟踪的[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 

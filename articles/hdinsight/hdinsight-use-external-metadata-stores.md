@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085899"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873086"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -38,10 +38,10 @@ HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部
 
 * 不可与其他群集共享默认元存储。
 
-* 默认的元存储使用基本的 Azure SQL 数据库，该数据库具有5个 DTU （数据库事务单位）限制。
-此默认元存储通常用于相对简单的工作负荷。 即不需要多个群集且不需要在群集生命周期之外保留的元数据的工作负荷。
+* 建议仅将默认元存储用于简单工作负荷。 即不需要多个群集且不需要在群集生命周期之外保留的元数据的工作负荷。
 
-* 对于生产工作负荷，我们建议迁移到外部元存储。 请参阅以下部分了解更多详细信息。
+> [!IMPORTANT]
+> 默认的元存储提供具有**基本第5级 DTU 限制**的 Azure SQL 数据库， (无法) 升级！ 适用于基本测试目的。 对于大型或生产工作负荷，我们建议迁移到外部元存储。
 
 ## <a name="custom-metastore"></a>自定义元存储
 
@@ -53,7 +53,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 通过自定义元存储，可将多个群集和群集类型附加到元存储。 例如，可跨交互式查询、Hive 和 HDInsight 中的群集的 Spark 共享单个元存储。
 
-* 根据所选的性能级别支付元存储（Azure SQL 数据库）的成本。
+* 根据所选的性能级别，按元存储 (Azure SQL 数据库) 的成本付费。
 
 * 可按需增加元存储。
 
@@ -81,9 +81,8 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 ## <a name="hive-metastore-guidelines"></a>Hive 元存储指南
 
-* 尽可能使用自定义元存储来帮助分离计算资源（正在运行的群集）和元数据（存储在元存储中）。
-
-* 首先使用 S2 层，它提供 50 DTU 和 250 GB 的存储空间。 如果空间不够，可扩大数据库。
+> [!NOTE]
+> 尽可能使用自定义元存储来帮助分离计算资源（正在运行的群集）和元数据（存储在元存储中）。 从 S2 层开始，提供 50 DTU 和 250 GB 的存储。 如果空间不够，可扩大数据库。
 
 * 如果你希望多个 HDInsight 群集访问单独的数据，请对每个群集上的元存储使用单独的数据库。 如果在多个 HDInsight 群集之间共享元存储，则意味着这些群集将使用相同的元数据和底层用户数据文件。
 

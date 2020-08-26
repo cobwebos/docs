@@ -5,21 +5,21 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 908c258dab5625cda7f2fa020257b08e68102a1d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082911"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835555"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 
 本文介绍如何使用 C# 部署 Azure 资源管理器模板。 创建的模板会在包含单个子网的新虚拟网络中部署运行 Windows Server 的单个虚拟机。
 
-有关虚拟机资源的详细说明，请参阅 [Azure 资源管理器模板中的虚拟机](template-description.md)。 有关模板中所有资源的详细信息，请参阅 [Azure 资源管理器模板演练](../../azure-resource-manager/resource-manager-template-walkthrough.md)。
+有关虚拟机资源的详细说明，请参阅 [Azure 资源管理器模板中的虚拟机](template-description.md)。 有关模板中所有资源的详细信息，请参阅 [Azure 资源管理器模板演练](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 完成这些步骤大约需要 10 分钟。
 
@@ -27,7 +27,7 @@ ms.locfileid: "82082911"
 
 在此步骤中，请确保已安装 Visual Studio 并已创建用于部署模板的控制台应用程序。
 
-1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
+1. 如果尚未安装，请安装 [Visual Studio](/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
 2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
 3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入 *myDotnetProject* 作为项目名称，选择项目位置，然后单击“确定”。   
 
@@ -325,5 +325,5 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果部署出现问题，后续措施是参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](../../resource-manager-common-deployment-errors.md)。
-* 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](csharp.md)。
+* 如果部署出现问题，后续措施是参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](../../azure-resource-manager/templates/common-deployment-errors.md)。
+* 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](../../azure-resource-manager/templates/deploy-rest.md)。

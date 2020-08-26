@@ -7,11 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082845"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什么是整理数据流？
 
@@ -27,7 +28,7 @@ ms.locfileid: "85921537"
 整理数据流对数据工程师或 "公民数据集成商" 特别有用。
 
 > [!NOTE]
-> 整理数据流当前在公共预览版中可用
+> 整理数据流当前在公共预览版中提供
 
 ## <a name="use-cases"></a>用例
 

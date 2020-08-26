@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8075de6690026a6d7ee08a581985744cf88ec6f4
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056950"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000595"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "86056950"
 
 当播放器请求某个流时，媒体服务将使用 AES 或 PlayReady 加密使用指定的密钥来对内容进行动态加密。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持简单 web 令牌（[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)）和 JSON web 令牌（JWT）格式的令牌。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持简单 web 令牌（[SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)）和 JSON web 令牌（JWT）格式的令牌。
 
 媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
@@ -490,4 +490,3 @@ public enum ContentKeyDeliveryType
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已配置了内容密钥的授权策略，可以查看[如何配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)了。
-

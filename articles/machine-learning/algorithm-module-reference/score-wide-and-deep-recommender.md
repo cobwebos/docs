@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/12/2020
+ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536209"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192750"
 ---
 # <a name="score-wide-and-deep-recommender"></a>为 Wide and Deep 推荐器评分
 
@@ -147,9 +147,6 @@ Wide and Deep 推荐器可生成两种不同类型的预测：
 
 - 第一列包含用户标识符。
 - 根据“向用户推荐的最大项目数”部分设置的值，将生成多个其他列。 每列都包含一个推荐项目（按标识符排列）。 这些建议按用户-项相关性排序，具有最高相关性的项位于“项 1”列中。
-
-> [!WARNING]
-> 无法使用[评估推荐器](evaluate-recommender.md)模块来评估这个已评分的数据集。
 
 ##  <a name="technical-notes"></a>技术说明
 

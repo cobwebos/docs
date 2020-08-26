@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: bca04317acf589e8bae46f086c6c79dfc82152a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6ea03b1ff2e2a1e9b7d5256a0f1417c5ac113e0e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176645"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067318"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入门：使用 PowerShell 上传、下载和列出 blob
 
@@ -36,7 +36,7 @@ ms.locfileid: "82176645"
 
 始终将 Blob 上传到容器中。 可以整理 Blob 组，就像在计算机的文件夹中整理文件一样。
 
-设置容器名称，然后使用 [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) 创建容器。 将权限设置为 `blob` 以允许对文件进行公共访问。 此示例中的容器名称是 quickstartblobs  。
+设置容器名称，然后使用 [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) 创建容器。 将权限设置为 `blob` 以允许对文件进行公共访问。 此示例中的容器名称是 quickstartblobs。
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -49,20 +49,35 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 
 
 要将文件上传到块 blob，请获取容器引用，然后获取对该容器中的块 blob 的引用。 具备 blob 引用后，可使用 [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) 将数据上传到其中。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖 Blob（如果该 Blob 存在）。
 
-以下示例将 Image001.jpg  和 Image002.png  从本地磁盘的 D:  \\_TestImages 文件夹上传到创建的容器中。
+以下示例将 Image001.jpg 和 Image002.png 从本地磁盘的 D:\\_TestImages 文件夹上传到创建的容器中。
 
 ```powershell
-# upload a file
-Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+# upload a file to the default account (inferred) access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image000.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
-# upload another file
+# upload a file to the Hot access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+  -Container $containerName `
+  -Blob "Image001.jpg" `
+  -Context $ctx 
+  -StandardBlobTier Hot
+
+# upload another file to the Cool access tier
 Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
+  -StandardBlobTier Cool
+
+# upload a file to a folder to the Archive access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
+  -Container $containerName `
+  -Blob "Foldername/Image003.jpg" `
+  -Context $ctx 
+  -StandardBlobTier Archive
 ```
 
 上传尽可能多的文件，然后继续操作。
@@ -79,7 +94,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 将 blob 下载到本地磁盘。 对于要下载的每个 blob，请设置名称并调用 [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) 以下载 blob。
 
-此示例将 blob 下载到本地磁盘的 D:  \\_TestImages\Downloads 中。 
+此示例将 blob 下载到本地磁盘的 D:\\_TestImages\Downloads 中。 
 
 ```powershell
 # download first blob

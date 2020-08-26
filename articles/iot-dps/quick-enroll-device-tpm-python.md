@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 3acb8b2ac75753a36097cb94a9294860c3f14354
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: dd34806cbfeeccadbaac247a9ea4d019cc22fc57
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608972"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876404"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入门：使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 

@@ -9,17 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998946"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限
 
 对于私有云 vCenter 的管理访问权限，可以暂时提升 CloudSimple 权限。  使用提升的权限，你可以安装 VMware 解决方案、添加标识源以及管理用户。
 
-可以在 vCenter SSO 域上创建新用户，并授予对 vCenter 的访问权限。  创建新用户时，请将其添加到用于访问 vCenter 的 CloudSimple 内置组。  有关详细信息，请参阅[VMware vCenter 的 CloudSimple 私有云权限模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
+可以在 vCenter SSO 域上创建新用户，并授予对 vCenter 的访问权限。  创建新用户时，请将其添加到用于访问 vCenter 的 CloudSimple 内置组。  有关详细信息，请参阅[VMware vCenter 的 CloudSimple 私有云权限模型](./learn-private-cloud-permissions.md)。
 
 > [!CAUTION]
 > 不要对管理组件进行任何配置更改。 在提升的特权状态中执行的操作可能会对系统产生负面影响，或者导致系统变得不可用。
@@ -46,7 +47,7 @@ ms.locfileid: "81870477"
 
     ![提升权限对话框](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 单击“确定”。
+7. 单击“确定”  。
 
 8. 升级过程可能需要几分钟的时间。 完成后，请单击“确定”****。
 
@@ -80,12 +81,12 @@ ms.locfileid: "81870477"
 
 2. 单击 "**取消升级**"。
 
-3. 单击“确定”。
+3. 单击“确定”  。
 
 > [!IMPORTANT]
 > 若要避免任何错误，请注销 vCenter，并在解除升级的权限后再次登录。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [设置要使用的 vCenter 标识源 Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* 安装备份解决方案以[备份工作负荷虚拟机](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)
+* [设置要使用的 vCenter 标识源 Active Directory](./set-vcenter-identity.md)
+* 安装备份解决方案以[备份工作负荷虚拟机](./backup-workloads-veeam.md)

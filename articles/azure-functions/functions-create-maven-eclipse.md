@@ -5,13 +5,13 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054723"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373311"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
 
@@ -28,7 +28,7 @@ ms.locfileid: "86054723"
 -  [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)，版本8。
 -  [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 -  支持 Java 和 Maven 的 [Eclipse](https://www.eclipse.org/downloads/packages/)。
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+-  [Azure CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > JAVA_HOME 环境变量必须设置为 JDK 的安装位置，以完成本快速入门。
@@ -43,7 +43,7 @@ ms.locfileid: "86054723"
 1. 请确保填写包括 `resourceGroup`、`appName` 和 `appRegion` 在内的所有字段的值（请使用 **fabrikam-function-20170920120101928** 之外的其他 appName），并最终单击“完成”****。
     ![Eclipse Maven 创建 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven 在新文件夹中创建名为 artifactId__ 的项目文件。 项目中生成的代码是一个简单的回显触发 HTTP 请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数。
+Maven 在新文件夹中创建名为 artifactId__ 的项目文件。 项目中生成的代码是一个简单的回显触发 HTTP 请求正文的 [HTTP 触发](./functions-bindings-http-webhook.md)函数。
 
 ## <a name="run-functions-locally-in-the-ide"></a>在 IDE 本地运行函数
 

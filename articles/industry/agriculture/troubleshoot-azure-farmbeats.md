@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497057"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797932"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>排查 Azure FarmBeats 问题
 
-本文提供常见 Azure FarmBeats 问题的解决方案。 有关更多帮助，请通过[支持论坛](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)联系我们，或通过 farmbeatssupport@microsoft.com 向我们发送电子邮件。
+本文提供常见 Azure FarmBeats 问题的解决方案。 有关更多帮助，请与我们 [的 Q&支持论坛](https://aka.ms/farmbeatssupport) 联系，或通过电子邮件发送给我们 farmbeatssupport@microsoft.com 。
 
 > [!NOTE]
   > 如果你在 4 月安装了 FarmBeats，但作业失败且错误消息为空，则你的安装可能尚未分配有任何批处理配额，无法优先支持关键运行状况和安全组织。 有关详细信息，请参阅 [此处](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) 。 需要请求将 VM 分配给 Batch 帐户才能成功运行作业。
@@ -59,7 +59,7 @@ ms.locfileid: "86497057"
 **纠正措施**
 
 1. 中转到 FarmBeats 资源组。
-2. 选择**事件中心**命名空间（"传感器-伙伴-eh-名称-名称"），单击 "事件中心"，然后检查分配给伙伴的事件中心内的传入消息数。
+2. 选择 **事件中心** 命名空间 ( "传感器-eh-命名空间-xxxx" ) ，单击 "事件中心"，然后检查分配给伙伴的事件中心内的传入消息数。
 3. 执行下列任一操作：
 
    - 如果没有传入消息，请联系你的设备合作伙伴。  
@@ -329,7 +329,7 @@ ms.locfileid: "86497057"
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats 项目":::
 
-3. 在数据工厂的 "概述" 页上，单击 "**创作和监视**"。 此时会在浏览器中打开一个新选项卡。 单击**监视器**
+3. 在数据工厂的 "概述" 页上，单击 " **创作和监视**"。 此时会在浏览器中打开一个新选项卡。 单击 **监视器**
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats 项目":::
 

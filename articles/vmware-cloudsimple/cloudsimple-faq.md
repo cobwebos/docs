@@ -1,6 +1,6 @@
 ---
 title: FAQ-Azure VMware 解决方案（按 CloudSimple）
-description: Azure VMware 解决方案的常见问题解答（按 CloudSimple）
+description: 这些常见问题适用于 Azure VMware 解决方案，CloudSimple 包括连接性、网络、安全性、存储、Azure 集成等。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025055"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140881"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple 有关 VMware 解决方案的常见问题
 
@@ -24,7 +25,7 @@ Azure VMware 解决方案在几分钟内，CloudSimple 将 VMware 工作负荷�
 
 **什么是 CloudSimple 私有云？**
 
-CloudSimple 私有云是专用的专用云，它包含部署在 Azure 位置 Microsoft Azure 基础结构（硬件和数据中心空间）上的高性能计算、存储和网络环境。  私有云提供本机 VMware "平台即服务"。 在 VMware 术语中，每个私有云只包含 vCenter Server 的一个实例。 VCenter Server 管理一个或多个 vSphere 群集中包含的多个 ESXi 节点，以及相应的虚拟 SAN （vSAN）存储。 CloudSimple 服务可以在你的 Azure 订阅中包含多个私有云。  有关更多详细信息，请参阅[私有云概述](cloudsimple-private-cloud.md)。
+CloudSimple 私有云是专用的专用云，由部署在 Microsoft Azure 基础结构上的高性能计算、存储和网络环境 (Azure 位置) 的硬件和数据中心空间。  私有云提供本机 VMware "平台即服务"。 在 VMware 术语中，每个私有云只包含 vCenter Server 的一个实例。 VCenter Server 管理一个或多个 vSphere 群集中包含的多个 ESXi 节点，以及相应的虚拟 SAN (vSAN) 存储。 CloudSimple 服务可以在你的 Azure 订阅中包含多个私有云。  有关更多详细信息，请参阅[私有云概述](cloudsimple-private-cloud.md)。
 
 **CloudSimple 服务提供在何处？**
 
@@ -75,7 +76,7 @@ Azure ExpressRoute 线路是一种高速、低延迟、安全的连接。  Cloud
 
 **哪些网络功能可用于我的私有云？**
 
-可以预配 Vlan （及其子网）和防火墙表，并分配映射到在私有云中运行的虚拟机的公共 IP 地址。 有关网络功能的详细信息，请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)、[防火墙表概述](cloudsimple-firewall-tables.md)和[公共 IP 地址概述](cloudsimple-public-ip-address.md)。
+你可以) 和防火墙表中预配 Vlan (及其子网，并分配映射到在私有云中运行的虚拟机的公共 IP 地址。 有关网络功能的详细信息，请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)、[防火墙表概述](cloudsimple-firewall-tables.md)和[公共 IP 地址概述](cloudsimple-public-ip-address.md)。
 
 **如何实现为私有云中的应用程序设置不同的子网？**
 
@@ -105,9 +106,9 @@ CloudSimple 提供了以下安全功能来保护私有云环境：
 
 CloudSimple 提供以下主机类型：
 
-* **CS28 节点：** CPU： 2x 2.2 GHz，总共28核，48 HT。  RAM： 256 GB。  存储空间： 1600 GB NVMe 缓存，5760 GB 数据（全部闪烁）。 网络： 4x25Gbe NIC
-* **CS36 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM： 512 GB。  存储： 3200 GB NVMe 缓存 11520 GB 数据（所有闪存）。  网络： 4x25Gbe NIC
-* **CS36m 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM： 576 GB。  存储： 3200 GB NVMe 缓存 13360 GB 数据（所有闪存）。  网络： 4x25Gbe NIC
+* **CS28 节点：** CPU： 2x 2.2 GHz，总共28核，48 HT。  RAM： 256 GB。  存储： 1600 GB NVMe 缓存，5760 GB 数据 (所有闪存) 。 网络： 4x25Gbe NIC
+* **CS36 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM： 512 GB。  存储： 3200 GB NVMe 缓存 11520 GB 数据 (所有闪存) 。  网络： 4x25Gbe NIC
+* **CS36m 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM： 576 GB。  存储： 3200 GB NVMe 缓存 13360 GB 数据 (所有闪存) 。  网络： 4x25Gbe NIC
 
 **所有硬件故障的处理方式是什么？**
 
@@ -120,11 +121,11 @@ CloudSimple 平台和我们的服务运营团队将不断监视所有 CloudSimpl
 CloudSimple 提供每个私有云的所有闪存 VMware vSAN 存储。  每个 vSphere 都创建有自己的 vSAN 数据存储。  有关详细信息，请参阅[私有云 VMware 组件-vSAN 存储](vmware-components.md#vsan-storage)。
 
 **是否支持数据加密？**
-是的。  你可以在私有云上设置 vSAN 存储，以使用部署在本地或 Azure 上的密钥管理服务器（KMS）来加密 vSAN 上存储的数据。
+是的。  你可以在私有云上设置 vSAN 存储，以使用部署在本地或 Azure 上的密钥管理服务器 (KMS) 来加密存储在 vSAN 上的数据。
 
 **如何处理失败的磁盘？**
 
-CloudSimple 连续监视私有云的所有硬件组件。  如果检测到磁盘故障或磁盘被标识为失败（基于试探法），则会将一个新节点自动添加到私有云。  将从私有云中删除具有失败或失败磁盘的节点。
+CloudSimple 连续监视私有云的所有硬件组件。  如果检测到磁盘故障，或者根据试探) 将磁盘标识为故障 (，则会将新节点自动添加到私有云。  将从私有云中删除具有失败或失败磁盘的节点。
 
 ## <a name="vmware"></a>VMware
 
@@ -137,7 +138,7 @@ CloudSimple 提供本机 VMware vSphere 解决方案。  用于批量数据迁�
 
 **是否可以安装任何 VMware 工具？**
 
-CloudSimple 提供本机 VMware vSphere 解决方案。  用于管理本地 vSphere 环境的所有 VMware 工具都可以在 CloudSimple 上使用。  CloudSimple 支持用于安装 VMware 工具的自带许可证（BYOL）模型。
+CloudSimple 提供本机 VMware vSphere 解决方案。  用于管理本地 vSphere 环境的所有 VMware 工具都可以在 CloudSimple 上使用。  CloudSimple 支持用于安装 VMware 工具的自带许可证 (BYOL) 模型。
 
 **更新和升级的管理方式是什么？**
 
@@ -162,4 +163,4 @@ CloudSimple 提供了从 Azure 门户管理私有云上的 VMware Vm 的独特�
 
 **Azure 有哪些授权权益？**
 
-使用 CloudSimple，可以利用 Azure 混合使用权益，并节省高达90% 的许可证。 此权益可节省你对 Microsoft 许可证的投资，并可降低相对于其他云解决方案的总体拥有成本。 还会获得 Windows Server 2008 和 Microsoft SQL Server 2008 的扩展安全更新。  自带许可（BYOL）模型有助于降低常见应用（例如 Veeam 和 Zerto）的成本。  
+使用 CloudSimple，可以利用 Azure 混合使用权益，并节省高达90% 的许可证。 此权益可节省你对 Microsoft 许可证的投资，并可降低相对于其他云解决方案的总体拥有成本。 还会获得 Windows Server 2008 和 Microsoft SQL Server 2008 的扩展安全更新。  "自带许可证 (BYOL") 模型可帮助你降低常见应用（如 Veeam 和 Zerto）的成本。  

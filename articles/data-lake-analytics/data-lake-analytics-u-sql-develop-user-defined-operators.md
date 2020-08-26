@@ -3,18 +3,16 @@ title: 开发 U SQL 用户定义的运算符-Azure Data Lake Analytics
 description: 了解如何开发可在 Azure Data Lake Analytics 作业中使用和重复使用的用户定义的运算符。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 771590a145d4da0a3a81050e6bbe8a9a4d528b30
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71cb6e026c81b00e475ae3f4e7fc4958a8de82a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121208"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131797"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
 本文介绍如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
@@ -24,7 +22,7 @@ ms.locfileid: "86121208"
 ### <a name="to-create-and-submit-a-u-sql-job"></a>创建和提交 U-SQL 作业
 
 1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”>“U-SQL 项目”****。
-2. 单击“确定”。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
+2. 单击“确定”  。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
 3. 在“解决方案资源管理器”**** 中，展开 Script.usql，并单击 “Script.usql.cs”****。
 4. 将以下代码粘贴到文件中：
 

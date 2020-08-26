@@ -1,26 +1,20 @@
 ---
 title: Azure 加密概述 | Microsoft Docs
-description: 了解 Azure 中的各种加密选项
+description: 了解 Azure 中的加密选项。 查看静态加密、传输中的加密信息和 Azure Key Vault 的密钥管理的信息。
 services: security
-documentationcenter: na
-author: Barclayn
-manager: barbkess
-editor: TomShinder
+author: msmbaldwin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4990d696986336e52fec3e87f4c3ea0c7517d3f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496377"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542953"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -119,7 +113,7 @@ Azure 提供了许多机制，用于在迁移数据时保持数据的私密性�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的数据链路层加密
 
-每当 Azure 客户流量在数据中心之间移动时（不是由 Microsoft （或代表 Microsoft）控制），使用[IEEE 802.1 AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)（也称为 MACsec）的数据链路层加密方法将在基础网络硬件之间通过点到点应用。  数据包会在发送之前在设备上加密和解密，从而阻止物理 "中间人" 或侦听/wiretapping 攻击。  由于此技术在网络硬件本身上集成，因此它在网络硬件上提供线路速率加密，而不会增加可度量的链接延迟。  默认情况下，此 MACsec 加密在某个区域内或各区域之间的所有 Azure 流量中处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
+每当 Azure 客户流量在数据中心之间移动时（不是由 Microsoft （或代表 Microsoft）控制），使用[IEEE 802.1 AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)（也称为 MACsec）的数据链路层加密方法将在基础网络硬件之间通过点到点应用。 数据包会在发送之前在设备上加密和解密，从而阻止物理 "中间人" 或侦听/wiretapping 攻击。 由于此技术在网络硬件本身上集成，因此它在网络硬件上提供线路速率加密，而不会增加可度量的链接延迟。 默认情况下，此 MACsec 加密对于某个区域内或各区域之间的所有 Azure 流量都处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
 
 ### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
 

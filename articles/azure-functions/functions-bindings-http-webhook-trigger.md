@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 437cbb87694adf89054161a7b0d40f6528b94199
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224088"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213926"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -482,7 +482,7 @@ public HttpResponseMessage<String> HttpTrigger(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
 | **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
@@ -674,7 +674,7 @@ public class HttpTriggerJava {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关经过身份验证的客户端的信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+有关经过身份验证的客户端的信息以 [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
 ```csharp
 using System.Net;
@@ -706,7 +706,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-有关经过身份验证的客户端的信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+有关经过身份验证的客户端的信息以 [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
 ```csharp
 using System.Net;
@@ -740,11 +740,11 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 # <a name="python"></a>[Python](#tab/python)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -816,15 +816,15 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 ## <a name="content-types"></a>内容类型
 
-将二进制和窗体数据传递到非 C # 函数要求使用适当的 content-type 标头。 支持的内容类型包括 `octet-stream` 二进制数据和[多部分类型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+将二进制文件和窗体数据传递给非 C# 函数需要使用适当的 content-type 标头。 支持的内容类型包括 `octet-stream`（适用于二进制数据）和[多部分类型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
 
 ### <a name="known-issues"></a>已知问题
 
-在非 C # 函数中，使用 content 类型发送的请求会 `image/jpeg` 导致 `string` 传递到函数的值。 在这种情况下，可以手动将 `string` 值转换为字节数组，以访问原始二进制数据。
+在非 C# 函数中，使用 content-type `image/jpeg` 发送的请求会导致向函数传递 `string` 值。 在这种情况下，可以手动将 `string` 值转换为字节数组以访问原始二进制数据。
 
 ## <a name="limits"></a>限制
 
-HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素指定。
+HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素指定。
 
 如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 

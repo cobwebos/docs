@@ -3,12 +3,12 @@ title: 安装 Microsoft Azure 恢复服务（MARS）代理
 description: 了解如何安装 Microsoft Azure 恢复服务（MARS）代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855232"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533472"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
@@ -42,10 +42,10 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
 ## <a name="modify-storage-replication"></a>修复存储复制
 
-默认情况下，保管库使用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md)。
 
 * 如果保管库是主要备份机制，建议使用 GRS。
-* 可以使用[本地冗余存储 (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 来降低 Azure 存储成本。
+* 可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) 来降低 Azure 存储成本。
 
 若要修改存储复制类型，请执行以下操作：
 
@@ -95,7 +95,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 * Azure 区域（取决于你的恢复服务保管库的位置）
 * Azure 存储（取决于你的恢复服务保管库的位置）
 
-有关详细信息，请参阅 [ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。
 
 > [!NOTE]
 > 对于新线路，公共对等互连已弃用。
@@ -155,7 +155,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
     ![使用注册服务器向导添加保管库凭据](./media/backup-configure-vault/register1.png)
 
-1. 在“加密设置”页上，指定用于加密和解密计算机备份的通行短语。
+1. 在“加密设置”页上，指定用于加密和解密计算机备份的通行短语。 有关允许的密码字符的详细信息，[请参阅此处](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)。
 
     * 将通行短语保存在安全位置。 还原备份时需要用到它。
     * 如果你丢失或忘记了该通行短语，Microsoft 将无法帮助你恢复备份数据。

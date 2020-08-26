@@ -3,12 +3,12 @@ title: 将 Azure 开发测试实验室集成到 Azure Pipelines
 description: 了解如何将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 080577a74a1cb168453c6a027d77ae395072ccc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480569"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288926"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>将 Azure 开发测试实验室集成到 Azure Pipelines CI/CD 管道
 
@@ -24,7 +24,7 @@ ms.locfileid: "85480569"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 注册或登录到你的[Azure DevOps](https://dev.azure.com)组织，并在组织中[创建一个项目](/vsts/organizations/projects/create-project)。 
   
@@ -109,11 +109,11 @@ ms.locfileid: "85480569"
    
 1. 对于每个变量，选择 "**添加**"，然后输入名称和值：
    
-   |“属性”|“值”|
+   |名称|值|
    |---|---|
    |*vmName*|在资源管理器模板中分配的 VM 名称|
    |*userName*|用于访问 VM 的用户名|
-   |*password*|用户名的密码。 选择锁定图标以隐藏并保护密码。
+   |password|用户名的密码。 选择锁定图标以隐藏并保护密码。
 
 ### <a name="create-a-devtest-labs-vm"></a>创建开发测试实验室 VM
 
@@ -127,7 +127,7 @@ ms.locfileid: "85480569"
 
 1. 在右窗格中填充表单，如下所示：
    
-   |字段|“值”|
+   |字段|值|
    |---|---|
    |**Azure RM 订阅**|在下拉列表中选择 "**可用 Azure 服务连接**" 或 "**可用 azure 订阅**中的服务连接" 或 "订阅"，并根据需要选择 "**授权**"。<br /><br />**注意：** 有关创建更受限制的权限连接到 Azure 订阅的信息，请参阅[azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)。|
    |**实验室名称**|选择将在其中创建实验室 VM 的现有实验室的名称。|
@@ -147,7 +147,7 @@ ms.locfileid: "85480569"
    
 1. 在右窗格中填充表单，如下所示：
    
-   |字段|“值”|
+   |字段|值|
    |---|---|
    |**Azure 连接类型**|选择 " **Azure 资源管理器**"。|
    |**Azure 订阅**|选择服务连接或订阅。| 
@@ -218,5 +218,5 @@ ms.locfileid: "85480569"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[使用 Resource Manager 模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)。
 - 若要深入了解适用于开发测试实验室自动化的资源管理器模板快速入门，请参阅[公共开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)。
-- 如有必要，请参阅[Azure DevOps 故障排除](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting)页。
+- 如有必要，请参阅[Azure DevOps 故障排除](/azure/devops/pipelines/troubleshooting)页。
  

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670349"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318396"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>使用 Azure Application Insights 了解客户对应用程序的使用情况
 
@@ -36,9 +36,9 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
     - ASP.NET 和 Web 开发
     - Azure 开发
 - 下载并安装 [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)。
-- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../../azure-monitor/app/asp-net.md)。 
-- [从应用程序发送遥测数据](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app)，添加自定义事件/页面视图
-- 发送[用户上下文](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)，跟踪用户在一段时间内执行的操作及充分利用使用情况功能。
+- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../app/asp-net.md)。 
+- [从应用程序发送遥测数据](../app/usage-overview.md#send-telemetry-from-your-app)，添加自定义事件/页面视图
+- 发送[用户上下文](../app/usage-send-user-context.md)，跟踪用户在一段时间内执行的操作及充分利用使用情况功能。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
@@ -102,66 +102,67 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
 
 1. 在菜单中选择“漏斗”  ，然后单击“新建”  。 
 
-    ![](media/tutorial-users/funnelsnew.png)
+    ![显示如何创建新漏斗的屏幕截图。](media/tutorial-users/funnelsnew.png)
 
-2. 键入“漏斗名称”  。
+2. 键入“漏斗名称”。
 3. 通过为每个步骤选择一个操作，创建至少具有两个步骤的漏斗。  使用 Application Insights 收集的使用情况数据生成操作列表。
 
-    ![](media/tutorial-users/funnelsedit.png)
+    ![显示如何在新漏斗中创建步骤的屏幕截图。](media/tutorial-users/funnelsedit.png)
 
-4. 单击“保存”  来保存漏斗，然后查看其结果。  漏斗右侧的窗口显示第一个活动之前和最后一个活动之后的最常见事件，帮助了解特定顺序下的用户倾向。
+4. 单击“保存”来保存漏斗，然后查看其结果。  漏斗右侧的窗口显示第一个活动之前和最后一个活动之后的最常见事件，帮助了解特定顺序下的用户倾向。
 
-    ![](media/tutorial-users/funnelsright.png)
+    ![显示新创建漏斗的事件结果的屏幕截图。](media/tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>了解哪些客户会返回
 **保留期**可帮助了解哪些用户会回到应用程序。  
 
-1. 在菜单中选择“保留期”  。
+1. 在菜单中选择“保留期”。
 2. 默认情况下，经过分析的信息包含执行任何操作后，再返回应用程序执行操作的用户。  例如，可将此筛选器更改为仅包含完成购买后返回应用程序的用户。
 
-    ![](media/tutorial-users/retentionquery.png)
+    ![显示如何设置保留筛选器的屏幕截图。](media/tutorial-users/retentionquery.png)
 
 3. 针对不同的持续时间以图表和表格的形式显示匹配标准的返回用户。  典型模式为返回用户的数量在一段时间内平稳下降。  从一个时段到下一个时段出现突然下降可能会引起关注。 
 
-    ![](media/tutorial-users/retentiongraph.png)
+    ![显示与为保留筛选器设置的条件匹配的用户图形的屏幕截图。](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>分析用户导航
 **用户流**可视化用户在应用程序的页面和功能之间导航的情况。  这有助于回答诸如用户通常从特定页面的哪个位置移动、用户通常如何退出应用程序以及是否存在任何定期重复的操作等问题。
 
-1.  在菜单中选择“用户流”  。
-2.  单击“新建”  来新建用户流，然后单击“编辑”  来编辑其详细信息。
-3.  将“时间范围”  增加为 7 天，然后选择初始事件。  用户流将跟踪从该事件开始的用户会话。
+1.  在菜单中选择“用户流”。
+2.  单击“新建”来新建用户流，然后单击“编辑”来编辑其详细信息。
+3.  将“时间范围”增加为 7 天，然后选择初始事件。  用户流将跟踪从该事件开始的用户会话。
 
-    ![](media/tutorial-users/flowsedit.png)
+    ![显示如何创建新用户流的屏幕截图。](media/tutorial-users/flowsedit.png)
 
 4.  此时会显示用户流，可查看不同用户路径及其会话计数。  蓝线指示用户在当前操作后执行的操作。  红线指示用户会话结束。
 
-    ![](media/tutorial-users/flows.png)
+    ![显示用户流的用户路径和会话计数的屏幕截图。](media/tutorial-users/flows.png)
 
-5.  若要从用户流中删除事件，请单击操作角落中的 **x**，然后单击“创建图形”  。  图表会重新绘制，并删除该事件的所有实例。  单击“编辑”  查看现在已添加到“已排除的事件”  中的事件。
+5.  若要从用户流中删除事件，请单击操作角落中的 **x**，然后单击“创建图形”。  图表会重新绘制，并删除该事件的所有实例。  单击“编辑”查看现在已添加到“已排除的事件”中的事件。
 
-    ![](media/tutorial-users/flowsexclude.png)
+    ![显示用户流的排除事件列表的屏幕截图。](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>整合使用情况数据
 **工作簿**可将数据可视化效果、Analytics 查询和文本合并到交互式文档中。  工作簿可用于对常见使用情况信息分组、整合来自特定事件的信息或向团队报告应用程序使用情况。
 
-1.  在菜单中选择“工作簿”  。
-2.  单击“新建”  以新建工作簿。
-3.  我们已经提供一个包含前一天的所有使用情况数据（显示为条形图）的查询。  用户可使用此查询、手动编辑此查询，或单击“示例查询”  来从其他有用查询中进行选择。
+1.  在菜单中选择“工作簿”。
+2.  单击“新建”以新建工作簿。
+3.  我们已经提供一个包含前一天的所有使用情况数据（显示为条形图）的查询。  用户可使用此查询、手动编辑此查询，或单击“示例查询”来从其他有用查询中进行选择。
 
-    ![](media/tutorial-users/samplequeries.png)
+    ![显示可以使用的示例查询列表的屏幕截图。](media/tutorial-users/samplequeries.png)
 
-4.  单击“完成编辑”  。
-5.  单击顶部窗格中的“编辑”  来编辑工作簿顶部的文本，  其采用 markdown 格式。
+4.  单击“完成编辑”。
+5.  单击顶部窗格中的“编辑”来编辑工作簿顶部的文本，  其采用 markdown 格式。
 
-    ![](media/tutorial-users/markdown.png)
+    ![显示如何编辑工作簿顶部文本的屏幕截图。](media/tutorial-users/markdown.png)
 
-6.  单击“添加用户”  ，添加包含用户信息的图表。  编辑图表的详细信息（如果需要），然后单击“完成编辑”  将其保存。
+6.  单击“添加用户”，添加包含用户信息的图表。  编辑图表的详细信息（如果需要），然后单击“完成编辑”将其保存。
 
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已学会如何分析用户，请继续完成下一教程，学习如何创建将此信息与其他有关应用程序的有用数据合并的自定义仪表板。
 
 > [!div class="nextstepaction"]
-> [创建自定义仪表板](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [创建自定义仪表板](./tutorial-app-dashboards.md)
+

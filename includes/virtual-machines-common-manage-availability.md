@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502262"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760579"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -32,9 +32,9 @@ ms.locfileid: "86502262"
 
 * [在可用性集中配置多个虚拟机以确保冗余]
 * [在可用性集中对 VM 使用托管磁盘]
-* [使用计划事件主动响应影响 VM 的事件](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [使用计划事件主动响应影响 VM 的事件](../articles/virtual-machines/linux/scheduled-events.md)
 * [将每个应用程序层配置到不同的可用性集中]
-* [将负载均衡器与可用性集组合在一起]
+* [将负载均衡器与可用性区域或可用性集组合在一起]
 * [使用可用性区域防范数据中心级故障]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>使用可用性区域防范数据中心级故障
@@ -53,7 +53,9 @@ Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 通过�
 可用性集是另一种数据中心配置，用于提供 VM 冗余和可用性。 数据中心内的这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 有关详细信息，请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。
 
 > [!IMPORTANT]
-> 可用性集中的单个实例虚拟机本身应对所有操作系统磁盘和数据磁盘使用高级 SSD 或超级磁盘，以便满足虚拟机连接至少达到 99.9% 的 SLA 要求。
+> 可用性集中的单个实例虚拟机本身应对所有操作系统磁盘和数据磁盘使用高级 SSD 或超级磁盘，以便满足虚拟机连接至少达到 99.9% 的 SLA 要求。 
+> 
+> 具有标准 SSD 的单实例虚拟机将具有至少 99.5% 的 SLA，而具有标准 HDD 的单实例虚拟机将具有至少 95% 的 SLA。  请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)
 
 基础 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域 。 对于给定的可用性集，默认情况下会分配五个非用户可配置的更新域（可以增加 Resource Manager 部署以最多提供 20 个更新域），以指示可同时重新启动的虚拟机和底层物理硬件组。 如果单个可用性集中配置了超过 5 个虚拟机，第 6 个虚拟机放置在第 1 个虚拟机所在的更新域中，第 7 个虚拟机放置在第 2 个虚拟机所在的更新域中，依此类推。 在计划内维护期间，更新域的重启顺序可能不会按序进行，但一次只重启一个更新域。 重启的更新域有 30 分钟的时间进行恢复，此时间过后，就会在另一更新域上启动维护操作。
 
@@ -65,7 +67,7 @@ Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 通过�
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>为可用性集中的 VM 使用托管磁盘
 如果当前使用的 VM 没有托管磁盘，则强烈建议[在可用性集中转换 VM，以便使用托管磁盘](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)。
 
-通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，[托管磁盘](../articles/virtual-machines/windows/managed-disks-overview.md)为可用性集提供了更佳的可靠性。 为此，会自动将磁盘放置在不同的存储容错域（存储群集）中，并使它们与 VM 容错域一致。 如果某个存储容错域因硬件或软件故障而失败，则只有其磁盘在该存储容错域上的 VM 实例会失败。
+通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，[托管磁盘](../articles/virtual-machines/managed-disks-overview.md)为可用性集提供了更佳的可靠性。 为此，会自动将磁盘放置在不同的存储容错域（存储群集）中，并使它们与 VM 容错域一致。 如果某个存储容错域因硬件或软件故障而失败，则只有其磁盘在该存储容错域上的 VM 实例会失败。
 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
@@ -95,11 +97,11 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>使用计划事件主动响应影响事件的 VM
 
-如果订阅[计划事件](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
+如果订阅[计划事件](../articles/virtual-machines/linux/scheduled-events.md)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>将负载均衡器与可用性区域或可用性集组合在一起
-将 [Azure 负载均衡器](../articles/load-balancer/load-balancer-overview.md)与可用性区域或可用性集组合在一起，以获取最高的应用程序复原能力。 Azure 负载均衡器将流量分布到多个虚拟机中。 对于标准层虚拟机来说，Azure 负载均衡器已包括在内。 并非所有虚拟机层都包括 Azure 负载均衡器。 有关对虚拟机进行负载均衡的更多信息，请阅读[对虚拟机进行负载均衡](../articles/virtual-machines/virtual-machines-linux-load-balance.md)。
+将 [Azure 负载均衡器](../articles/load-balancer/load-balancer-overview.md)与可用性区域或可用性集组合在一起，以获取最高的应用程序复原能力。 Azure 负载均衡器将流量分布到多个虚拟机中。 对于标准层虚拟机来说，Azure 负载均衡器已包括在内。 并非所有虚拟机层都包括 Azure 负载均衡器。 有关对虚拟机进行负载均衡的更多信息，请阅读[对虚拟机进行负载均衡](../articles/virtual-machines/linux/tutorial-load-balancer.md)。
 
 如果没有将负载均衡器配置为对多个虚拟机上的流量进行平衡，则任何计划内维护事件都会影响唯一的那个处理流量的虚拟机，导致应用程序层中断。 将同一层的多个虚拟机置于相同的负载均衡器和可用性集下可以确保至少有一个虚拟机实例能够持续处理流量。
 
@@ -108,7 +110,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 <!-- Link references -->
 [在可用性集中配置多个虚拟机以确保冗余]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[将负载均衡器与可用性集组合在一起]: #combine-a-load-balancer-with-availability-zones-or-sets
+[将负载均衡器与可用性区域或可用性集组合在一起]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [在可用性集中对 VM 使用托管磁盘]: #use-managed-disks-for-vms-in-an-availability-set
 [使用可用性区域防范数据中心级故障]: #use-availability-zones-to-protect-from-datacenter-level-failures

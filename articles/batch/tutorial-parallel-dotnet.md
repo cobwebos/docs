@@ -1,16 +1,16 @@
 ---
-title: 运行并行工作负载
+title: 使用 .NET API 运行并行工作负荷
 description: 教程 - 在 Azure Batch 中使用 Batch .NET 客户端库通过 ffmpeg 并行转码媒体文件
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062585"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -47,7 +47,7 @@ ms.locfileid: "82733067"
 
 1. 在 Azure 门户中，单击“更多服务”   >   “Batch 帐户”，然后单击 Batch 帐户的名称。
 3. 单击“应用程序”   >   “添加”。
-4. 对于“应用程序 ID”  ，请输入 *ffmpeg* 和包版本 *3.4*。 选择此前下载的 ffmpeg zip 文件，然后单击“确定”。  ffmpeg 应用程序包添加到 Batch 帐户。
+4. 对于“应用程序 ID”  ，请输入 *ffmpeg* 和包版本 *3.4*。 选择此前下载的 ffmpeg zip 文件，然后单击“确定”。 ffmpeg 应用程序包添加到 Batch 帐户。
 
 ![添加应用程序包](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -313,7 +313,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 运行任务之后，应用自动删除所创建的输入存储容器，并允许你选择是否删除 Batch 池和作业。 BatchClient 的 [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) 和 [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) 类都有相应的删除方法（在确认删除时调用）。 虽然作业和任务本身不收费，但计算节点收费。 因此，建议只在需要的时候分配池。 删除池时会删除节点上的所有任务输出。 但是，输出文件保留在存储帐户中。
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

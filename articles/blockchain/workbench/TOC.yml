@@ -52,7 +52,7 @@
     - name: 消息传送 API
       href: messages-overview.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+      href: /rest/api/azure-blockchain-workbench
 - name: 资源
   items:
     - name: 代码示例
@@ -60,7 +60,7 @@
     - name: 博客
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html'
+      href: /answers/topics/azure-blockchain-workbench.html
     - name: 社区支持
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow 支持

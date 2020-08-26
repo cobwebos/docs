@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
-ms.openlocfilehash: 858e6b9e0e40ab988a4cdf04b31580c1ca28d40a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cc96233ea6e2d02f3c3a2036466e3934aa234f5b
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79503523"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407961"
 ---
 通过本快速入门开始使用适用于 JavaScript 的必应新闻搜索客户端库来搜索新闻。 虽然必应新闻搜索具有与大多数编程语言兼容的 REST API，但该客户端库提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) 上找到此示例的源代码。
 

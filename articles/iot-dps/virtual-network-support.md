@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531051"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534594"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT 中心设备预配服务（DPS）对虚拟网络的支持
 
@@ -59,7 +59,7 @@ ms.locfileid: "86531051"
 
 * 当 DPS 资源和链接的中心位于不同云中时，专用终结点将无法与 DPS 一起使用。 例如， [Azure 政府版和全球 azure](../azure-government/documentation-government-welcome.md)。
 
-* 目前，[使用 DPS Azure Functions 的自定义分配策略](how-to-use-custom-allocation-policies.md)将不会使用 VNET 和专用终结点。 
+* 目前，将 Azure function 锁定到 VNET 和专用终结点时，[使用 DPS Azure Functions 的自定义分配策略](how-to-use-custom-allocation-policies.md)将不起作用。 
 
 * 最新的 DPS VNET 支持仅适用于进入 DPS 的数据。 数据传出（从 DPS 到 IoT 中心的流量）使用内部服务到服务机制，而不是专用 VNET。 当前不支持在 DPS 和 IoT 中心之间进行基于 VNET 的完全锁定的出口支持。
 
@@ -77,7 +77,7 @@ ms.locfileid: "86531051"
 
     ![配置新的专用终结点映射到的资源](./media/virtual-network-support/create-private-endpoint-basics.png)
 
-    | 字段 | 值 |
+    | 字段 | Value |
     | :---- | :-----|
     | **订阅** | 选择要包含专用终结点的所需 Azure 订阅。  |
     | **资源组** | 选择或创建一个资源组以包含专用终结点 |
@@ -90,7 +90,7 @@ ms.locfileid: "86531051"
 
     ![配置新的专用终结点映射到的资源](./media/virtual-network-support/create-private-endpoint-resource.png)
 
-    | 字段 | 值 |
+    | 字段 | Value |
     | :---- | :-----|
     | **订阅**        | 选择包含私有终结点将指向的 DPS 资源的 Azure 订阅。  |
     | **资源类型**       | 选择 " **ProvisioningServices/设备**"。 |
@@ -125,7 +125,7 @@ ms.locfileid: "86531051"
 
 2. 获得资源 ID 后，请按照_创建专用终结点资源_页上的步骤3中的 "[设置专用终结点](#set-up-a-private-endpoint)" 中的步骤进行操作。 单击 "**按资源 ID 或别名连接到 Azure 资源**"，并输入下表中的信息。 
 
-    | 字段 | 值 |
+    | 字段 | Value |
     | :---- | :-----|
     | **资源 ID 或别名** | 输入 DPS 资源的资源 ID。 |
     | **目标子资源** | 输入**iotDps** |

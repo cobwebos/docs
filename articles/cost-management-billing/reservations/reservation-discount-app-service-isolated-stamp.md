@@ -1,18 +1,18 @@
 ---
 title: Azure 应用服务的预留折扣
-description: 了解预留折扣如何应用于 Azure 应用服务独立印花。
+description: 了解预留折扣如何应用于 Azure 应用服务独立印花。 折扣将自动应用于区域中的印花费。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 97a0b63200951a30d1b5576fddbb5aa044a91a62
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a4229d60a31d61caf050dabf632c8718ef3c9f3
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200327"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460331"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>预留折扣如何应用于 Azure 应用服务独立印花
 
@@ -32,7 +32,7 @@ ms.locfileid: "77200327"
 
 因此，印花计量可以在印花生存期中在 Windows 和 Linux 之间来回变换。 另外，预留特定于操作系统。 需要购买一个支持计划部署到印花的辅助角色的预留。 仅限 Windows 的印花和混合印花使用 Windows 预留。 只包含 Linux 辅助角色的印花使用 Linux 预留。
 
-只购买 Linux 预留的前提是计划只  在印花中部署 Linux 辅助角色。
+只购买 Linux 预留的前提是计划只在印花中部署 Linux 辅助角色。
 
 ## <a name="discount-examples"></a>折扣示例
 

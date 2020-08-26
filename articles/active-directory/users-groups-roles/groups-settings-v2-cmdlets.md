@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727817"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794560"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
@@ -49,7 +50,7 @@ ms.locfileid: "84727817"
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 的联机参考文档。
+现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 的联机参考文档。
 
 > [!NOTE]
 > Azure AD PowerShell cmdlet 不适用于新版 Powershell 7，因为它基于 .Net Core。 我们意识到这一点，此 cmdlet 正在更新过程中。 从现在开始，我们建议使用 Windows Powershell 5.x 模块来执行 Azure AD PowerShell 操作。 
@@ -133,7 +134,7 @@ ms.locfileid: "84727817"
 ```
 
 > [!NOTE]
-> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter。
+> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)#BKMK_filter)中的 $filter。
 
 ## <a name="create-groups"></a>创建组
 
@@ -325,19 +326,19 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 * ssl-admin
 * webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>组写回到本地（预览）
+## <a name="group-writeback-to-on-premises-preview"></a>组写回本地 (预览) 
 
 如今，许多组仍在本地 Active Directory 管理。 为了应答将云组同步回本地的请求，Office 365 组写回功能 Azure AD 现在可供预览。
 
 Office 365 组在云中创建和管理。 使用写回功能，可以将 Office 365 组作为分发组写入到安装了 Exchange 的 Active Directory 林。 然后，具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。 组写回功能不支持 Azure AD 安全组或通讯组。
 
-有关更多详细信息，请参阅[Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
+有关更多详细信息，请参阅 [Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
 
-Office 365 组写回是 Azure Active Directory （Azure AD）的公共预览功能，适用于任何付费的 Azure AD 许可计划。 有关预览的一些法律信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Office 365 组写回是 Azure Active Directory () Azure AD 的公共预览功能，适用于任何付费 Azure AD 许可计划。 有关预览的一些法律信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
+如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。
 
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

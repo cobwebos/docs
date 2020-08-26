@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687967"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543480"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户将多个 IP 地址分配给虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "84687967"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>创建具有多个 IP 地址的 VM
 
-若要创建具有多个 IP 地址或一个静态专用 IP 地址的 VM，则必须使用 PowerShell 或 Azure CLI 来创建。 相关操作步骤，请单击本文顶部的 PowerShell 或 CLI 选项。 可使用单个动态专用 IP 地址和（可选）单个公共 IP 地址创建 VM。 请按照[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步骤使用门户。 创建 VM 后，可以按照本文[向 VM 添加 IP 地址](#add)部分中的以下步骤，可使用门户将 IP 地址类型从动态更改为静态并添加其他 IP 地址。
+若要创建具有多个 IP 地址或一个静态专用 IP 地址的 VM，则必须使用 PowerShell 或 Azure CLI 来创建。 相关操作步骤，请单击本文顶部的 PowerShell 或 CLI 选项。 可使用单个动态专用 IP 地址和（可选）单个公共 IP 地址创建 VM。 请按照[创建 Windows VM](../virtual-machines/windows/quick-create-portal.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步骤使用门户。 创建 VM 后，可以按照本文[向 VM 添加 IP 地址](#add)部分中的以下步骤，可使用门户将 IP 地址类型从动态更改为静态并添加其他 IP 地址。
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>将 IP 地址添加到 VM
 
@@ -48,12 +48,12 @@ ms.locfileid: "84687967"
 
 5. 在针对所选 NIC 显示的窗格中，单击“IP 配置”****。 单击“添加”****，根据要添加的 IP 地址的类型完成以下某个部分的步骤，然后单击“确定”****。 
 
-### <a name="add-a-private-ip-address"></a>**添加专用 IP 地址**
+### <a name="add-a-private-ip-address"></a>添加专用 IP 地址
 
 完成以下步骤，添加新的专用 IP 地址：
 
 1. 完成本文[核心步骤](#coreadd)部分中的步骤，并确保位于 VM 网络接口的 " **IP 配置**" 部分。  查看显示为默认值的子网（例如 10.0.0.0/24）。
-2. 单击“添加” 。 在出现的 "**添加 ip 配置**" 窗格中，使用新的*静态*专用 IP 地址创建一个名为*IPConfig-4*的 IP 配置，方法是选取最后一个八位字节的新编号，然后单击 **"确定"**。  （对于 10.0.0.0/24 子网，示例 IP 为*10.0.0.7*。）
+2. 单击“添加”  。 在出现的 "**添加 ip 配置**" 窗格中，使用新的*静态*专用 IP 地址创建一个名为*IPConfig-4*的 IP 配置，方法是选取最后一个八位字节的新编号，然后单击 **"确定"**。  （对于 10.0.0.0/24 子网，示例 IP 为*10.0.0.7*。）
 
     > [!NOTE]
     > 在添加静态 IP 地址时，必须在 NIC 连接到的子网中指定未使用的有效地址。 如果所选地址不可用，门户会对 IP 地址显示一个 X，而你必须选择其他地址。

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Heavy 寄回教程 | Microsoft Docs
-description: 了解如何将 Azure Data Box Heavy 寄送到 Microsoft
+description: 通过本教程了解如何寄回 Azure Data Box Heavy（包括准备装运、装运 Data Box Heavy）、验证数据上传以及擦除数据。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3aedfed980a61ea6718a02a188ff88d4941026d9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199177"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921004"
 ---
 ::: zone target = "docs"
 
@@ -77,7 +77,7 @@ ms.locfileid: "83199177"
     2. 拨打货运公司的本地号码以安排取件。
     3. 请确保发货标签显眼地显示在货件的外部。
     4. 确保已从设备中删除上次发货的旧发货标签。
-3. 承运人提取 Data Box Heavy 并进行扫描后，门户中的订单状态将更新为“已提货”。  此外还会显示一个跟踪 ID。
+3. 承运人提取 Data Box Heavy 并进行扫描后，门户中的订单状态将更新为“已提货”。 此外还会显示一个跟踪 ID。
 
 ::: zone target = "docs"
 
@@ -87,9 +87,9 @@ ms.locfileid: "83199177"
 
 验证完成后，Data Box Heavy 将连接到 Azure 数据中心的网络。 数据复制将自动开始。 根据数据大小，复制操作可能需要几小时到几天的时间才能完成。 可以在门户中监视复制作业的进度。
 
-复制完成后，订单状态将更新为“已完成”。 
+复制完成后，订单状态将更新为“已完成”。
 
-从源中删除数据之前，请确认数据已上传到 Azure。 你的数据可位于：
+从源中删除数据之前，请验证数据是否已上传到 Azure。 数据可能位于以下位置：
 
 - Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
 
@@ -98,17 +98,17 @@ ms.locfileid: "83199177"
 
     或者，可以转到 Azure 门户中的 Azure 存储帐户并从那里导航。
 
-- 托管磁盘资源组。 创建托管磁盘时，VHD 作为页 blob 进行上传，然后转换为托管磁盘。 托管磁盘会附加到在创建排序时指定的资源组上。 
+- 托管磁盘资源组。 创建托管磁盘时，会将 VHD 作为页 Blob 上传，然后将其转换为托管磁盘。 托管磁盘会附加到在创建订单时指定的资源组。 
 
-    - 如果在 Azure 中成功复制到托管磁盘，则可转到 Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组  。
+    - 如果已成功复制到 Azure 中的托管磁盘，则可转到 Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组。
 
         ![标识托管磁盘资源组](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
-        转到所记录的资源组，并找到你的托管磁盘。
+        转到记下的资源组，找到托管磁盘。
 
         ![附加到资源组的托管磁盘](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX/VHD 会作为页 blob 上传到暂存存储帐户，但 VHD 转换到托管磁盘将失败。 请转到临时“存储帐户”>“Blob”，然后选择相应的容器 - 标准 SSD、标准 HDD 或高级 SSD  。 VHD 作为页 blob 上传到暂存存储帐户。
+    - 如果复制了 VHDX 或动态/差分 VHD，则可以将 VHDX/VHD 作为页 Blob 上传到临时存储帐户，但无法将 VHD 转换为托管磁盘。 转到临时存储帐户 >“Blob”，然后选择适当的容器 - 标准 SSD、标准 HDD 或高级 SSD。 VHD 会作为页 Blob 上传到临时存储帐户中。
     
 ::: zone-end
 

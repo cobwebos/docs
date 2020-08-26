@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b4de8a5e96466ea324475030df1f00eb6bb5cf1a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380063"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118279"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教程：从 Android 应用程序将用户登录并调用 Microsoft Graph 
 
 >[!NOTE]
->本教程演示简化的示例，介绍如何使用面向 Android 的 MSAL。 简单起见，本教程仅使用“单帐户模式”。 你还可以查看存储库并克隆[预配置的示例应用](https://github.com/Azure-Samples/ms-identity-android-java/)，以探索更复杂的场景。 有关示例应用、配置和注册的详细信息，请查看[快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android)。 
+>本教程演示简化的示例，介绍如何使用面向 Android 的 MSAL。 简单起见，本教程仅使用“单帐户模式”。 你还可以查看存储库并克隆[预配置的示例应用](https://github.com/Azure-Samples/ms-identity-android-java/)，以探索更复杂的场景。 有关示例应用、配置和注册的详细信息，请查看[快速入门](./quickstart-v2-android.md)。 
 
 在本教程中，你将了解如何使用面向 Android 的 Microsoft 身份验证库将 android 应用与 Microsoft 标识平台集成。 你将了解如何登录/登出用户，获取用于调用 Microsoft Graph API 的访问令牌，以及针对 Graph API 发出请求。 
 
@@ -117,7 +117,7 @@ ms.locfileid: "81380063"
    ```
     
    >[!NOTE]
-   >本教程仅演示如何在单帐户模式下配置应用。 查看文档，详细了解[单帐户模式与多帐户模式](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)以及[配置应用](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
+   >本教程仅演示如何在单帐户模式下配置应用。 查看文档，详细了解[单帐户模式与多帐户模式](./single-multi-account.md)以及[配置应用](./msal-configuration.md)
    
 4. 在 **app** > **src** > **main** > **AndroidManifest.xml** 中，将以下 `BrowserTabActivity` 活动添加到应用程序主体。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
 
@@ -582,4 +582,4 @@ private void performOperationOnSignOut() {
 
 ## <a name="get-help"></a>获取帮助
 
-如果对本教程或 Microsoft 标识平台有疑问，请访问[帮助和支持](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)。
+如果对本教程或 Microsoft 标识平台有疑问，请访问[帮助和支持](./developer-support-help-options.md)。

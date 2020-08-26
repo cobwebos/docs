@@ -3,24 +3,27 @@ title: 快速入门：浏览器中适用于 JavaScript v10 的 Azure Blob 存储
 description: 了解如何在 HTML 页中使用 JavaScript v10 SDK 上传、列出和删除 blob。
 services: storage
 author: mhopkins-msft
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.service: storage
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161119"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429210"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>快速入门：在浏览器中使用 JavaScript v10 SDK 管理 blob
 
-本快速入门介绍如何使用完全在浏览器中运行的 JavaScript 代码来管理 Blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将使用必需的安全措施来确保对 Blob 存储帐户的访问受到保护。
+本快速入门介绍如何使用完全在浏览器中运行的 JavaScript 代码来管理 Blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将采取必要的安全措施来确保对 Blob 存储帐户的访问受到保护。
+
+> [!NOTE]
+> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：在浏览器中使用 JavaScript v12 SDK 管理 Blob](quickstart-blobs-javascript-browser.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,13 +37,13 @@ ms.locfileid: "82161119"
 
 必须先将帐户配置为启用[跨域资源共享](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)（简称 CORS），然后 Web 应用程序才能从客户端访问 Blob 存储。
 
-返回到 Azure 门户，然后选择存储帐户。 若要定义新的 CORS 规则，请导航到“设置”部分，然后单击“CORS”链接。   接下来，请单击“添加”按钮，打开“添加 CORS 规则”窗口。   对于本快速入门，请创建开放的 CORS 规则：
+返回到 Azure 门户，然后选择存储帐户。 若要定义新的 CORS 规则，请导航到“设置”部分，然后单击“CORS”链接。 接下来，请单击“添加”按钮，打开“添加 CORS 规则”窗口。 对于本快速入门，请创建开放的 CORS 规则：
 
 ![Azure Blob 存储帐户 CORS 设置](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
 下表描述了每项 CORS 设置，并对用于定义规则的值进行了说明。
 
-|设置  |值  | 说明 |
+|设置  |“值”  | 说明 |
 |---------|---------|---------|
 | 允许的域 | * | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `*` 意味着所有域都可以访问存储帐户。 |
 | 允许的方法     | delete、get、head、merge、post、options 和 put | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
@@ -124,7 +127,7 @@ az storage account generate-sas \
 
 ### <a name="configure-the-debugger"></a>配置调试器
 
-若要在 VS Code 中设置调试器扩展，请选择“调试”>“添加配置...”，然后根据在前面“先决条件”部分选择的扩展，选择“Chrome”或“Edge”。    此操作会创建 *launch.json* 文件并在编辑器中打开它。
+若要在 VS Code 中设置调试器扩展，请选择“调试”>“添加配置...”，然后根据在前面“先决条件”部分选择的扩展，选择“Chrome”或“Microsoft Edge”。 此操作会创建 *launch.json* 文件并在编辑器中打开它。
 
 接下来，修改 *launch.json* 文件，使 `url` 值包含 `/index.html`，如下所示：
 
@@ -150,7 +153,7 @@ az storage account generate-sas \
 
 ### <a name="launch-the-web-server"></a>启动 Web 服务器
 
-若要启动本地 Node.js Web 服务器，请选择“视图”>“终端”打开 VS Code 中的控制台窗口，然后输入以下命令。 
+若要启动本地 Node.js Web 服务器，请选择“视图”>“终端”打开 VS Code 中的控制台窗口，然后输入以下命令。
 
 ```console
 npx http-server
@@ -160,15 +163,15 @@ npx http-server
 
 ### <a name="start-debugging"></a>开始调试
 
-若要在附加了 VS Code 调试器的浏览器中启动 *index.html*，请选择“调试”>“开始调试”，或者在 VS Code 中按 F5。 
+若要在附加了 VS Code 调试器的浏览器中启动 *index.html*，请选择“调试”>“开始调试”，或者在 VS Code 中按 F5。
 
 显示的 UI 暂时不起任何作用，但在下一部分，你将会添加 JavaScript 代码以实现所示的每个函数。 然后可以设置断点，并在调试器在代码中暂停时与它交互。
 
-对 *index.html* 进行更改后，请务必重新加载页面，以便在浏览器中查看更改。 在 VS Code 中，还可以选择“调试”>“重新开始调试”，或按 CTRL + SHIFT + F5。 
+对 *index.html* 进行更改后，请务必重新加载页面，以便在浏览器中查看更改。 在 VS Code 中，还可以选择“调试”>“重新开始调试”，或按 CTRL + SHIFT + F5。
 
 ### <a name="add-the-blob-storage-client-library"></a>添加 Blob 存储客户端库
 
-若要调用 Blob 存储 API，请先[下载适用于 JavaScript 的 Azure 存储 SDK - Blob 客户端库](https://aka.ms/downloadazurestoragejsblob)，提取压缩内容，并将 azure-storage.blob.js 文件放入 azure-blob-javascript 文件夹   。
+若要调用 Blob 存储 API，请先[下载适用于 JavaScript 的 Azure 存储 SDK - Blob 客户端库](https://aka.ms/downloadazurestoragejsblob)，提取压缩内容，并将 azure-storage.blob.js 文件放入 azure-blob-javascript 文件夹 。
 
 接下来，将以下 HTML 粘贴到 *index.html* 中的 `</body>` 结束标记的后面（请替换占位符注释）。
 
@@ -180,11 +183,11 @@ npx http-server
 </script>
 ```
 
-此代码添加对脚本文件的引用，并为你自己的 JavaScript 代码提供一个位置。 在本快速入门中，我们将使用 azure-storage.blob.js 脚本文件，以便可以在 VS Code 中打开它、读取其内容，并设置断点  。 在生产环境中，应使用更精简的 *azure-storage.blob.min.js* 文件，该文件也已在 zip 文件中提供。
+此代码添加对脚本文件的引用，并为你自己的 JavaScript 代码提供一个位置。 在本快速入门中，我们将使用 azure-storage.blob.js 脚本文件，以便可以在 VS Code 中打开它、读取其内容，并设置断点。 在生产环境中，应使用更精简的 *azure-storage.blob.min.js* 文件，该文件也已在 zip 文件中提供。
 
 可以在[参考文档](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)中详细了解每个 Blob 存储函数。 请注意，SDK 中的某些函数只能在 Node.js 中使用，或只能在浏览器中使用。
 
-azure-storage.blob.js 中的代码导出名为 `azblob` 的全局变量，你将在 JavaScript 代码中使用该变量来访问 Blob 存储 API  。
+azure-storage.blob.js 中的代码导出名为 `azblob` 的全局变量，你将在 JavaScript 代码中使用该变量来访问 Blob 存储 API。
 
 ### <a name="add-the-initial-javascript-code"></a>添加初始 JavaScript 代码
 
@@ -258,7 +261,7 @@ deleteContainerButton.addEventListener("click", deleteContainer);
 
 ### <a name="list-blobs"></a>列出 Blob
 
-接下来，添加可在按下“List files”按钮时列出存储容器内容的代码。 
+接下来，添加可在按下“List files”按钮时列出存储容器内容的代码。
 
 ```javascript
 const listFiles = async () => {
@@ -294,7 +297,7 @@ listButton.addEventListener("click", listFiles);
 
 ### <a name="upload-blobs"></a>上传 Blob
 
-接下来，添加可在按下“Select and upload files”按钮时将文件上传到存储容器的代码。 
+接下来，添加可在按下“Select and upload files”按钮时将文件上传到存储容器的代码。
 
 ```javascript
 const uploadFiles = async () => {
@@ -318,11 +321,11 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-此代码将“Select and upload files”按钮连接到隐藏的 `file-input` 元素。  这样，按钮 `click` 事件便会触发文件输入 `click` 事件，并显示文件选取器。 选择文件并关闭对话框之后，将发生 `input` 事件并调用 `uploadFiles` 函数。 对于选择的每个文件，此函数将调用仅限浏览器的 [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函数。 每次调用都会返回一个约定，此约定将添加到某个列表，以便可以等待一次，导致并行上传文件。
+此代码将“Select and upload files”按钮连接到隐藏的 `file-input` 元素。 这样，按钮 `click` 事件便会触发文件输入 `click` 事件，并显示文件选取器。 选择文件并关闭对话框之后，将发生 `input` 事件并调用 `uploadFiles` 函数。 对于选择的每个文件，此函数将调用仅限浏览器的 [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函数。 每次调用都会返回一个约定，此约定将添加到某个列表，以便可以等待一次，导致并行上传文件。
 
 ### <a name="delete-blobs"></a>删除 Blob
 
-接下来，添加可在按下“Delete selected files”按钮时从存储容器中删除文件的代码。 
+接下来，添加可在按下“Delete selected files”按钮时从存储容器中删除文件的代码。
 
 ```javascript
 const deleteFiles = async () => {
@@ -350,7 +353,7 @@ deleteButton.addEventListener("click", deleteFiles);
 
 ### <a name="run-and-test-the-web-application"></a>运行并测试 Web 应用程序
 
-现在，可以启动该页面并试着体会 Blob 存储的工作方式。 如果发生任何错误（例如，在创建容器之前尝试列出文件时），“状态”窗格将显示收到的错误消息。  还可以在 JavaScript 代码中设置断点，以检查存储 API 返回的值。
+现在，可以启动该页面并试着体会 Blob 存储的工作方式。 如果发生任何错误（例如，在创建容器之前尝试列出文件时），“状态”窗格将显示收到的错误消息。 还可以在 JavaScript 代码中设置断点，以检查存储 API 返回的值。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -11,11 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ac32c41bd6b30c3edce68d67adc376e066d0bf5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213952"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797592"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中为表编制索引
 
@@ -141,6 +142,9 @@ GROUP BY
 ,       t.[name]
 ;
 ```
+
+>[!TIP]
+> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
 
 现在已创建视图，请运行此查询来识别哪些表的行组中包含的行少于 10 万个。 当然，如果要寻求更理想的段质量，可以将 10 万这个阈值增大。
 

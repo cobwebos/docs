@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 InsideView 的集成 | Microsoft Docs
 description: 本教程介绍如何在 Azure Active Directory 与 InsideView 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c489a7ab-6b1f-4efb-8a66-8bc13bca78c3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 4278f00b1026fe4d1b95634540d6d035d43ca5ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202326"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 的集成
 
@@ -171,7 +167,7 @@ ms.locfileid: "82202326"
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>   。 （例如：BrittaSimon@contoso.com。）
+    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 

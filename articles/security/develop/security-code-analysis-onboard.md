@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全代码分析载入指南
-description: 本文介绍如何安装 Microsoft 安全代码分析扩展
+description: 了解如何载入和安装 Microsoft 安全代码分析扩展。 请参阅先决条件和查看其他资源。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362051"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543021"
 ---
 # <a name="onboarding-and-installing"></a>加入和安装
 
@@ -50,7 +50,7 @@ Microsoft 安全代码分析入门的先决条件：
 
 - 区域–联系详细信息：cloudsupport@zones.com
 - Wortell –联系详细信息：info@wortell.nl
-- Logicalis –联系详细信息：Matthew.Curtis@us.logicalis.com 
+- Logicalis –联系详细信息：logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>成为合作伙伴
 
@@ -63,7 +63,7 @@ Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支�
 1. 选择 "**共享**"。
 1. 选择 Microsoft 安全代码分析扩展，然后选择 "**安装**"。
 1. 从下拉列表中，选择要在其上安装扩展的 Azure DevOps 组织。
-1. 选择“安装”。 安装完成后，可以开始使用扩展。
+1. 选择“安装”  。 安装完成后，可以开始使用扩展。
 
 >[!NOTE]
 > 即使您没有安装该扩展的访问权限，也可以继续执行安装步骤。 你可以在安装过程中请求 Azure DevOps 组织管理员的访问权限。

@@ -4,25 +4,25 @@ description: 监视 Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310457"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
-使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
+使用 [Application Insights](./app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
 
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> *强烈建议*为任何控制台应用程序使用[此处](../../azure-monitor/app/worker-service.md)的[applicationinsights.config WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包和相关说明。 此包面向 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) ，因此可在 .Net Core 2.1 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
+> *强烈建议*为任何控制台应用程序使用[此处](./worker-service.md)的[applicationinsights.config WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包和相关说明。 此包面向 [`NetStandard2.0`](/dotnet/standard/net-standard) ，因此可在 .Net Core 2.1 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
 
 ## <a name="getting-started"></a>入门
 
-* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md)。 对于应用程序类型，选择“常规”。
+* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](./create-new-resource.md)。 对于应用程序类型，选择“常规”。
 * 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。
 * 安装最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 包。
 * 在跟踪任何遥测之前，请先在代码中设置检测密钥（或设置 APPINSIGHTS_INSTRUMENTATIONKEY 环境变量）。 设置后，应能手动跟踪遥测并在 Azure 门户中查看
@@ -96,7 +96,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 ### <a name="configuring-telemetry-collection-from-code"></a>通过代码配置遥测集合
 > [!NOTE]
-> .NET Core 不支持读取配置文件。 可以考虑使用 [Application Insights SDK for ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+> .NET Core 不支持读取配置文件。 可以考虑使用 [Application Insights SDK for ASP.NET Core](./asp-net-core.md)
 
 * 在应用程序启动期间创建并配置 `DependencyTrackingTelemetryModule` 实例 - 该实例必须是单一实例，并在应用程序生存期中保留。
 
@@ -207,5 +207,6 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [监视依赖项](../../azure-monitor/app/asp-net-dependencies.md)，查看 REST、SQL 或其他外部资源是否会降低性能。
-* [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
+* [监视依赖项](./asp-net-dependencies.md)，查看 REST、SQL 或其他外部资源是否会降低性能。
+* [使用 API](./api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
+

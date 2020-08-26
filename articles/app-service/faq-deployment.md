@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671691"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080467"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的部署常见问题解答
 
@@ -39,7 +40,7 @@ ms.locfileid: "74671691"
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>如何从 Visual Studio 将 ASP.NET 应用程序部署到应用服务？
 <a id="deployasp"></a>
 
-教程[五分钟内在 Azure 中创建第一个 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)演示如何使用 Visual Studio 将 ASP.NET Web 应用程序部署到应用服务中的 Web 应用。
+教程[五分钟内在 Azure 中创建第一个 ASP.NET Web 应用](quickstart-dotnetcore.md)演示如何使用 Visual Studio 将 ASP.NET Web 应用程序部署到应用服务中的 Web 应用。
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>有哪些不同类型的部署凭据？
 

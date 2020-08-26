@@ -1,28 +1,29 @@
 ---
-title: 使用 Azure 托管标识进行身份验证
+title: 使用托管标识访问应用配置
 titleSuffix: Azure App Configuration
-description: 使用 Azure 托管标识对 Azure 应用配置进行身份验证
+description: 使用托管标识对 Azure 应用配置进行身份验证
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056839"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206840"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
+# <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识访问应用配置
 
-Azure Active Directory[托管标识](../active-directory/managed-identities-azure-resources/overview.md)简化了云应用程序的密钥管理。 使用托管标识，你的代码可以使用为其运行所在的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
+Azure Active Directory [托管标识](../active-directory/managed-identities-azure-resources/overview.md) 简化了云应用程序的密钥管理。 使用托管标识，你的代码可以使用为其运行所在的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。
 
 Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库内置了托管标识支持。 尽管不需要使用它，但托管标识不再需要包含机密的访问令牌。 你的代码只能使用服务终结点访问应用配置存储。 可以直接在代码中嵌入此 URL，而无需公开任何机密。
 
-本文说明如何利用托管标识访问应用配置。 它建立在快速入门中介绍的 Web 应用之上。 继续之前，请先[使用应用配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
+本文说明如何利用托管标识访问应用配置。 它建立在快速入门中介绍的 Web 应用之上。 继续之前，请先  [使用应用配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md) 。
 
-本文还演示如何将托管标识与应用配置的 Key Vault 引用结合使用。 使用单个托管标识，你可以通过应用配置从 Key Vault 和配置值无缝访问这两个机密。 如果希望探索此功能，请先完成[使用 ASP.NET Core Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
+本文还演示如何将托管标识与应用配置的 Key Vault 引用结合使用。 使用单个托管标识，你可以通过应用配置从 Key Vault 和配置值无缝访问这两个机密。 如果希望探索此功能，请先完成 [使用 ASP.NET Core Key Vault 引用](./use-key-vault-references-dotnet-core.md) 。
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
@@ -46,7 +47,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 若要在门户中设置托管标识，首先要创建一个应用程序，然后再启用该功能。
 
-1. 按通常的方式在[Azure 门户](https://portal.azure.com)中创建应用服务实例。 在门户网站中转到它。
+1. 按通常的方式在 [Azure 门户](https://portal.azure.com) 中创建应用服务实例。 在门户网站中转到它。
 
 1. 在左侧窗格向下滚动到“设置”组，然后选择“标识”********。
 
@@ -58,13 +59,13 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 ## <a name="grant-access-to-app-configuration"></a>授予对应用配置的访问权限
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 "**所有资源**"，并选择在快速入门中创建的应用配置存储。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 " **所有资源** "，并选择在快速入门中创建的应用配置存储。
 
 1. 选择“访问控制 (IAM)”。
 
 1. 在“检查访问权限”选项卡中，选择“添加角色分配”卡 UI 中的“添加”************。
 
-1. 在 "**角色**" 下，选择 "**应用配置数据读取器**"。 将“访问权限分配对象”下，选择“应用服务”（在“系统分配的托管标识”下）************。
+1. 在 " **角色**" 下，选择 " **应用配置数据读取器**"。 将“访问权限分配对象”下，选择“应用服务”（在“系统分配的托管标识”下）************。
 
 1. 在“订阅”下，选择 Azure 订阅****。 选择应用的应用服务资源。
 
@@ -72,19 +73,19 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
     ![添加托管标识](./media/add-managed-identity.png)
 
-1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照[使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)中的说明进行操作。
+1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照 [使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)中的说明进行操作。
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
-1. 添加对*Azure. Identity*包的引用：
+1. 添加对 *Azure. Identity* 包的引用：
 
     ```cli
     dotnet add package Azure.Identity
     ```
 
-1. 查找应用配置存储的终结点。 此 URL 在 Azure 门户中存储的 "**访问密钥**" 选项卡上列出。
+1. 查找应用配置存储的终结点。 此 URL 在 Azure 门户中存储的 " **访问密钥** " 选项卡上列出。
 
-1. 打开“appsettings.json”，并添加以下脚本**。 将 *\<service_endpoint>* URL 替换为你的应用配置存储的 URL，包括括号。 
+1. 打开“appsettings.json”，并添加以下脚本**。 将 *\<service_endpoint>* URL 替换为你的应用配置存储的 URL，包括括号。
 
     ```json
     "AppConfig": {
@@ -92,7 +93,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
     }
     ```
 
-1. 打开*Program.cs*，并添加对 `Azure.Identity` 和 `Microsoft.Azure.Services.AppAuthentication` 命名空间的引用：
+1. 打开 *Program.cs*，并添加对 `Azure.Identity` 和 `Microsoft.Azure.Services.AppAuthentication` 命名空间的引用：
 
     ```csharp-interactive
     using Azure.Identity;
@@ -133,7 +134,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
     ```
     ---
 
-1. 若要同时使用应用配置值和 Key Vault 引用，请按如下所示更新*Program.cs* 。 此代码使用创建一个新的 `KeyVaultClient` `AzureServiceTokenProvider` ，并将此引用传递给对方法的调用 `UseAzureKeyVault` 。
+1. 若要同时使用应用配置值和 Key Vault 引用，请按如下所示更新 *Program.cs* 。 此代码使用创建一个新的 `KeyVaultClient` `AzureServiceTokenProvider` ，并将此引用传递给对方法的调用 `UseAzureKeyVault` 。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -183,11 +184,14 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
     你现在可以像访问任何其他应用配置键一样访问 Key Vault 引用。 配置提供程序将使用 `KeyVaultClient` 你配置的进行身份验证，以便 Key Vault 和检索值。
 
+> [!NOTE]
+> `ManagedIdentityCredential` 仅支持托管标识身份验证。 它在本地环境中不起作用。 如果要在本地运行代码，请考虑使用 `DefaultAzureCredential` ，它也支持服务主体身份验证。 查看 [链接](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) 以获取详细信息。
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>从本地 Git 进行部署
 
-若要为应用程序使用 Kudu 生成服务器启用本地 Git 部署，最简单的方法是使用[Azure Cloud Shell](https://shell.azure.com)。
+若要为应用程序使用 Kudu 生成服务器启用本地 Git 部署，最简单的方法是使用 [Azure Cloud Shell](https://shell.azure.com)。
 
 ### <a name="configure-a-deployment-user"></a>配置部署用户
 
@@ -218,7 +222,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>部署项目
 
-在_本地终端窗口_中，将 Azure 远程计算机添加到本地 Git 存储库。 _\<url>_ 将替换为你从[启用使用 Kudu 的本地 git](#enable-local-git-with-kudu)中获取的 Git 远程 URL。
+在 _本地终端窗口_中，将 Azure 远程计算机添加到本地 Git 存储库。 _\<url>_ 将替换为你从[启用使用 Kudu 的本地 git](#enable-local-git-with-kudu)中获取的 Git 远程 URL。
 
 ```bash
 git remote add azure <url>
@@ -242,9 +246,9 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>使用其他语言的托管标识
 
-适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 配置其中一个提供程序时，可以使用存储的 URL 终结点，而不是其完整的连接字符串。 
+适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 配置其中一个提供程序时，可以使用存储的 URL 终结点，而不是其完整的连接字符串。
 
-例如，可以更新在快速入门中创建的 .NET Framework 控制台应用程序，以在*App.config*文件中指定以下设置：
+例如，可以更新在快速入门中创建的 .NET Framework 控制台应用程序，以在 *App.config* 文件中指定以下设置：
 
 ```xml
     <configSections>

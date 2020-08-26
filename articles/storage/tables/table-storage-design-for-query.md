@@ -1,18 +1,19 @@
 ---
 title: 为查询设计 Azure 表存储 |Microsoft Docs
-description: 在 Azure 表存储中设计查询的表。
+description: 在 Azure 表存储中设计查询的表。 选择适当的分区键，优化查询，并对表服务的数据进行排序。
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457638"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236329"
 ---
 # <a name="design-for-querying"></a>针对查询的设计
 表服务解决方案可能需要进行大量读取操作和/或大量写入操作。 本文重点介绍在将表服务设计为支持高效读取操作时需要牢记的事项。 通常，支持高效读取操作的设计对于写入操作来说也是高效的。 但是，在进行支持写入操作的设计时，还需牢记一些额外注意事项，具体请参阅文章[针对数据修改的设计](table-storage-design-for-modification.md)。
@@ -37,10 +38,10 @@ ms.locfileid: "75457638"
 | *列名* | *Data type* |
 | --- | --- |
 | **PartitionKey**（部门名称） |String |
-| **RowKey**（员工 ID） |String |
+| **RowKey** (员工 ID)  |String |
 | **名字** |String |
 | **姓氏** |String |
-| **年龄** |Integer |
+| **年** |Integer |
 | **EmailAddress** |String |
 
 有关一些直接影响查询设计的主要 Azure 表服务功能，请参阅文章：[Azure 表存储概述](table-storage-overview.md)。 这些功能产生了以下设计表服务查询的通用准则。 请注意，下述示例中所用的筛选器语法源自表服务 REST API，详细信息请参阅 [Query Entities](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)（查询实体）。  
@@ -82,12 +83,12 @@ ms.locfileid: "75457638"
 
 许多设计必须满足要求，才能允许根据多个条件查找实体。 例如，根据电子邮件、员工 ID 或姓氏查找员工实体。 [表设计模式](table-storage-design-patterns.md)中所述的模式解决了这些类型的要求，并介绍了相关方式来处理表服务不提供辅助索引的问题：  
 
-* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - 利用同一分区中的 **RowKey** 值存储每个实体的多个副本，实现快速、高效的查询，并借助不同的 **RowKey** 值替换排序顺序。  
-* [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序   。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值存储每个实体的多个副本)  (在同一分区中，从而实现快速高效的查找，并通过使用不同的 **RowKey** 值替换排序顺序。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序********。  
 * [索引实体模式](table-storage-design-patterns.md#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
 
 ## <a name="sorting-data-in-the-table-service"></a>对表服务中的数据进行排序
-表服务依次按 **PartitionKey** 和 **RowKey** 以升序排序返回实体。 这些键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。  
+表服务依次按 **PartitionKey** 和 **RowKey** 以升序排序返回实体。 这些键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是整数值，则应将员工 id **123** 转换为 **00000123**。  
 
 许多应用程序要求使用按不同顺序排序的数据：例如，按名称或按加入日期对员工进行排序。 以下模式解决了如何替换实体的排序顺序的问题：  
 

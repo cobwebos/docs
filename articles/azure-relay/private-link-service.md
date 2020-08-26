@@ -3,12 +3,12 @@ title: 将 Azure 中继与 Azure 专用链接服务集成
 description: 了解如何将 Azure 中继与 Azure 专用链接服务集成
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317322"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719421"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>与 Azure 中继与 Azure 专用链接（预览版）集成
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接（预览版）？](../private-link/private-link-overview.md)
@@ -207,7 +207,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 3. 应会看到，状态已更改为“已断开连接”。 然后你会发现，该终结点已在列表中消失。 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>验证专用链接连接是否有效
-应该验证专用终结点的同一子网内的资源是否通过其专用 IP 地址连接到 Azure 中继命名空间。
+应该验证专用终结点的虚拟网络中的资源是否通过其专用 IP 地址连接到 Azure 中继命名空间。
 
 为了进行此测试，请按照[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)中的步骤，创建一个虚拟机
 

@@ -9,13 +9,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 966fd5a3c89fb794b270a9cce6c45c43f4da7354
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 8e8118a32da296d090ba22122b5188f941419e94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494951"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502131"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 自动缩放虚拟机规模集
 此脚本创建运行 Ubuntu 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。
@@ -37,7 +37,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建资源组、虚拟机规模集和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 注释 |
 |---|---|
 | [az group create](/cli/azure/ad/group) | 创建用于存储所有资源的资源组。 |
 | [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |

@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
-ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d31be45f5cf608b7dfd727741de68544574d7f8a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76278514"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496451"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>适用于 Azure 春季云的 CI/CD
 

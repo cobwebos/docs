@@ -9,14 +9,14 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197662"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496400"
 ---
-# <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>将多重 AAD 身份验证与 Synapse SQL（针对 MFA 的 SSMS 支持）配合使用
+# <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>将多重 AAD 身份验证与 Synapse SQL（针对 MFA 的 SSMS 支持）配合使用
 
 Synapse SQL 支持使用 Active Directory 通用身份验证从 SQL Server Management Studio (SSMS) 进行连接。  
 

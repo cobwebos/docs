@@ -3,11 +3,12 @@ title: 成本分析和预算
 description: 了解如何进行成本分析，并为用于运行 Batch 工作负荷的基础计算资源和软件许可证设置预算。
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725765"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654236"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 成本分析和预算
 
@@ -67,7 +68,7 @@ Batch 池使用网络资源。 具体而言，对于 VirtualMachineConfiguration
 
 ### <a name="virtual-machine-os-disk-type"></a>虚拟机 OS 磁盘类型
 
-有多种 [VM OS 磁盘类型](../virtual-machines/windows/disks-types.md)。 大多数 VM 系列的大小都同时支持高级存储和标准存储。 如果你为池选择 VM 大小“S”，Batch 会配置高级 SSD OS 磁盘。 如果选择的是 VM 大小“非 S”，则会使用更便宜的标准 HDD 磁盘类型。 例如，高级 SSD OS 磁盘用于 `Standard_D2s_v3`，标准 HDD OS 磁盘用于 `Standard_D2_v3`。
+有多种 [VM OS 磁盘类型](../virtual-machines/disks-types.md)。 大多数 VM 系列的大小都同时支持高级存储和标准存储。 如果你为池选择 VM 大小“S”，Batch 会配置高级 SSD OS 磁盘。 如果选择的是 VM 大小“非 S”，则会使用更便宜的标准 HDD 磁盘类型。 例如，高级 SSD OS 磁盘用于 `Standard_D2s_v3`，标准 HDD OS 磁盘用于 `Standard_D2_v3`。
 
 高级 SSD OS 磁盘更昂贵，但具有更高的性能，并且包含高级磁盘的 VM 的启动速度比包含标准 HDD OS 磁盘的 VM 稍微快一些。 使用 Batch 时，通常不会经常使用 OS 磁盘，因为应用和任务文件位于 VM 临时 SSD 盘中。 因此，在许多情况下，对于在指定了 VM 大小“S”时预配的高级 SSD，无需支付增加的成本。
 

@@ -8,14 +8,15 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601441"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386446"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +57,7 @@ ms.locfileid: "85601441"
 另外，还可以通过“笔记本”页顶部的工具上传文件夹和文件，包括笔记本。  笔记本和大多数文本文件类型可在“预览”部分显示。  其他大多数文件类型没有预览功能。
 
 > [!IMPORTANT]
-> 笔记本和脚本中的内容可能会从会话中读取数据，并在 Azure 中不在组织的情况下访问数据。  仅从受信任的源加载文件。 有关详细信息，请参阅[安全代码最佳实践](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
+> 笔记本和脚本中的内容可能会从会话中读取数据，并在组织不在 Azure 中的情况下访问数据。  仅从受信任的源加载文件。 有关详细信息，请参阅[安全代码最佳做法](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
 
 ### <a name="clone-samples"></a>克隆示例
 
@@ -97,29 +98,29 @@ ms.locfileid: "85601441"
 
 若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。 
 
-你可以在不连接到计算实例的情况下编辑笔记本。  如果要在笔记本中运行单元，请选择或创建计算实例。  如果选择一个已停止的计算实例，则在运行第一个单元时，它将自动启动。
+你可以在不连接到计算实例的情况下编辑笔记本。  要运行笔记本中的单元格时，请选择或创建一个计算实例。  如果选择一个已停止的计算实例，则在你运行第一个单元时，该计算实例会自动启动。
 
-计算实例运行时，还可以在任何 Python 笔记本中使用[Intellisense](https://code.visualstudio.com/docs/editor/intellisense)支持的代码完成功能。
+如果计算实例正在运行，还可以在任何 Python Notebook 中使用由 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) 提供支持的代码完成功能。
 
 另外，还可以从笔记本工具栏中启动 Jupyter 或 JupyterLab。  Azure 机器学习不提供来自 Jupyter 或 JupyterLab 的更新，也不修复其中的 bug，因为这些开源产品不在 Microsoft 支持的范围内。
 
 ### <a name="use-intellisense"></a>使用 IntelliSense
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)是一项代码完成帮助，其中包含许多功能：列出成员、参数信息、快速信息和完成单词。 使用这些功能，可以详细了解使用的代码、跟踪键入的参数，还可通过轻敲几个按键来添加属性和方法调用。  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 这些功能可帮助你详细了解所使用的代码、跟踪正在键入的参数，只需几次击键即可添加对属性和方法的调用。  
 
-键入代码时，请使用 Ctrl + Space 来触发 IntelliSense。
+键入代码时，请使用“Ctrl+空格键”来触发 IntelliSense。
 
-### <a name="save-and-checkpoint-a-notebook"></a>保存和检查笔记本
+### <a name="save-and-checkpoint-a-notebook"></a>将笔记本保存并设置检查点
 
 Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
-在笔记本工具栏中，选择菜单，然后选择 **" &gt; 保存并检查点**" 以手动保存笔记本，然后将添加与该笔记本关联的检查点文件。
+在笔记本工具栏中，选择“菜单”，然后选择“文件”&gt;“保存并设置检查点”以手动保存笔记本，它会添加与笔记本关联的检查点文件。
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="笔记本工具栏中保存工具的屏幕截图":::
 
 每个笔记本每隔30秒自动保存一次。自动保存仅更新初始 *ipynb*   文件，而不更新检查点文件。
  
-在 "笔记本" 菜单中选择 "**检查点**" 创建命名的检查点，并将笔记本恢复为已保存的检查点。
+在“笔记本”菜单中选择“检查点”以创建命名检查点，并将笔记本还原为已保存的检查点。
 
 
 ### <a name="useful-keyboard-shortcuts"></a>有用的键盘快捷方式
@@ -149,7 +150,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 1. 选择笔记本工具栏中的“+”。 
 2. 为计算命名，并在“虚拟机大小”中选择一个大小。 
-3. 选择“创建”。
+3. 选择“创建” 。
 4. 计算实例会自动连接到笔记本，现在就可以运行单元格了。
 
 只有本人可以查看和使用自己创建的计算实例。  用户文件与 VM 分开存储，并在工作区中的所有计算实例之间共享。
@@ -184,11 +185,20 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。  若要向计算实例添加内核，请执行以下步骤：
 
 1. 选择笔记本工具栏中的“[打开终端](#terminal)”。
-1. 使用终端窗口创建新环境。
+1. 使用终端窗口创建新环境。  例如，以下代码将创建 `newenv` ：
+    ```shell
+    conda create --name newenv
+    ```
 1. 激活该环境。  例如，创建 `newenv` 的结果如下：
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
@@ -198,17 +208,17 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|颜色 |计算状态 |
+|Color |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
-| 红色 |计算失败 | 
+| Red |计算失败 | 
 | 黑色 | 已停止计算 |
 |  浅蓝色 |正在创建、正在启动、正在重新启动、正在设置计算 |
 |  灰色 |正在删除、正在停止计算 |
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|颜色 |内核状态 |
+|Color |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |

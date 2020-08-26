@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77021281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001819"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>教程：部署和演练持续患者监视应用模板
 
@@ -85,7 +85,10 @@ ms.locfileid: "77021281"
 >[!div class="mx-imgBorder"] 
 >![Smart Vitals Patch 设备模板](media/smart-vitals-device-template.png)
 
-如果单击“设备组”选项卡，则还将看到这些设备模板会自动为其创建设备组  。
+### <a name="device-groups"></a>设备组 
+通过设备组，可以对一组设备进行逻辑分组，然后还可以对它们执行批量查询或各种操作。 
+
+单击“设备组”选项卡时，你将看到我们已为应用程序中的各个设备模板创建了一些默认设备组。 你还会发现，我们已创建了其他两个示例设备组，名称分别是“预配设备”和“包含过期固件的设备”。 我们将使用这些示例设备组作为输入，来运行一些[作业](#jobs)。
 
 ### <a name="rules"></a>规则
 
@@ -100,22 +103,33 @@ ms.locfileid: "77021281"
 >[!div class="mx-imgBorder"] 
 >![Brace 温度过高规则](media/brace-temp-rule.png)
 
+### <a name="jobs"></a>作业
+
+通过作业，可以通过将[设备组](#device-groups)用作输入来对一组设备运行批量操作。 我们已为应用程序模板设定种子，其中包含两个示例作业，解决方案操作员可能需要在设备生命周期的某个阶段运行这两个作业：
+* 更新膝盖支架固件：此作业将在设备组“包含过期固件的设备”中查找设备，并运行命令以将这些设备更新到膝盖支架的最新固件版本。 此示例作业假设设备能够接收“更新”命令并且能够直接从云提取固件文件。  
+
+* 重新预配设备：如果有一组设备最近返回到医院，并且需要为下一批患者进行重新预配，则可以运行此作业，以便批量更新预配设备。 在这种情况下，我们将提取“预配设备”设备组中的所有设备，并执行命令来“重新预配”它们。 
+
 ### <a name="devices"></a>设备
 
-单击“设备”选项卡，然后选择 Smart Knee Brace 的实例   。 你将看到有三个视图可用于浏览所选特定设备的相关信息。 在为你的设备生成设备模板时，会创建并发布这些视图，这意味着它们在你连接或模拟的所有设备中将保持一致。
+单击“设备”选项卡，然后选择 Smart Knee Brace 的实例 。 你将看到有三个视图可用于浏览所选特定设备的相关信息。 在为你的设备生成设备模板时，会创建并发布这些视图，这意味着它们在你连接或模拟的所有设备中将保持一致。
 
-“仪表板”视图提供了来自面向操作员的设备的遥测和属性的概述  。
+“仪表板”视图提供了来自面向操作员的设备的遥测和属性的概述。
 
-“属性”选项卡可用于编辑云属性以及读取/写入设备属性  。
+“属性”选项卡可用于编辑云属性以及读取/写入设备属性。
 
-“命令”选项卡可用于运行已建模为设备模板一部分的命令  。
+“命令”选项卡可用于运行已建模为设备模板一部分的命令。
 
 >[!div class="mx-imgBorder"] 
 >![膝盖支架视图](media/knee-brace-dashboard.png)
 
+### <a name="data-export"></a>数据导出
+
+通过数据导出，可以将 IoT Central 设备数据连续导出到其他 Azure 设备，其中包括 [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)。
+
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用程序，请依次访问“管理”>“应用程序设置”，然后单击“删除”来删除该应用程序   。
+如果不打算继续使用此应用程序，请依次访问“管理”>“应用程序设置”，然后单击“删除”来删除该应用程序 。
 
 >[!div class="mx-imgBorder"] 
 >![删除应用](media/admin-delete.png)

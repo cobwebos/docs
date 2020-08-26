@@ -12,9 +12,13 @@
   items:
     - name: 在门户中创建 VM
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
-    - name: 创建仪表板 - ARM 模板
-      displayName: Resource Manager
-      href: quick-create-template.md
+    - name: 创建仪表板
+      items:
+        - name: Azure PowerShell
+          href: quickstart-portal-dashboard-powershell.md
+        - name: ARM 模板
+          displayName: Resource Manager
+          href: quick-create-template.md
 - name: 概念
   items:
     - name: 使用基于角色的访问控制共享仪表板
@@ -23,20 +27,16 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: 操作指南
   items:
-    - name: 设置 Azure 门户首选项
+    - name: 管理 Azure 门户设置和首选项
       href: set-preferences.md
-    - name: 设置所有用户的非活动超时设置
-      href: admin-timeout.md
-    - name: 启用高对比度或更改主题
-      href: azure-portal-change-theme-high-contrast.md
     - name: 对收藏夹执行添加、删除和排序操作
       href: azure-portal-add-remove-sort-favorites.md
-    - name: 创建并共享 Azure 仪表板
-      href: azure-portal-dashboards.md
-    - name: 使用自定义 markdown 磁贴
-      href: azure-portal-markdown-tile.md
-    - name: 导出或删除用户设置
-      href: azure-portal-export-delete-settings.md
+    - name: 创建 Azure 仪表板
+      items:
+        - name: 创建并共享 Azure 仪表板
+          href: azure-portal-dashboards.md
+        - name: 使用自定义 markdown 磁贴
+          href: azure-portal-markdown-tile.md
     - name: Azure 门户“操作说明”视频系列
       href: azure-portal-video-series.md
     - name: 创建和管理支持请求

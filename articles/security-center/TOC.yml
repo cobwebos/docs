@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: 设置电子邮件通知
       href: security-center-provide-security-contact-details.md
+    - name: 使用 ARM 模板创建对警报的自动响应
+      href: quickstart-automation-alert.md
 - name: 教程
   items:
     - name: 规划和操作指南
@@ -63,6 +65,8 @@
           href: security-center-policy-definitions.md
         - name: 使用建议增强安全性
           href: security-center-using-recommendations.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 威胁防护和安全警报
       items:
         - name: 安全中心的威胁防护概述
@@ -149,6 +153,8 @@
           href: workflow-automation.md
         - name: 导出建议
           href: continuous-export.md
+    - name: 使用资产清单管理资源
+      href: asset-inventory.md
     - name: 与其他工具和服务集成
       items:
         - name: 与 Windows Admin Center 集成

@@ -8,29 +8,29 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: abd322ce7f89be70cb7caf52b3155ba4be904ac9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73488424"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080243"
 ---
 # <a name="app-service-documentation"></a>应用服务文档
 使用 Azure 应用服务，可以采用所选编程语言构建和托管 Web 应用程序，不需要对基础结构进行管理，也不需要对语言或 Web 框架运行时进行管理。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps Services 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 
 ## <a name="windows-linux-and-docker"></a>Windows、Linux 和 Docker
-[Web 应用](/app-service/overview)是应用服务的主要产品/服务，用于使用 Windows 环境构建和托管 Web 应用程序。 喜欢使用 Linux 环境的开发人员可以选择[适用于 Linux 的应用服务](/app-service/containers/app-service-linux-intro)。 开发人员还可以直接将 Docker 映像部署到适用于 Linux 的应用服务来部署自定义运行时/框架。
+[Web 应用](/app-service/overview)是应用服务的主要产品/服务，用于使用 Windows 环境构建和托管 Web 应用程序。 喜欢使用 Linux 环境的开发人员可以选择[适用于 Linux 的应用服务](/app-service/overview#app-service-on-linux)。 开发人员还可以直接将 Docker 映像部署到适用于 Linux 的应用服务来部署自定义运行时/框架。
 
 ## <a name="5-minute-quickstarts"></a>5 分钟快速入门
 
 了解如何将应用服务用于 Web 应用来将第一个应用程序部署到云：
 
-- [.NET](/azure/app-service/app-service-web-get-started-dotnet)
-- [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
-- [PHP](/azure/app-service/app-service-web-get-started-php)
-- [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/containers/quickstart-python)
-- [HTML](/azure/app-service/app-service-web-get-started-html)
+- [.NET](/azure/app-service/quickstart-dotnetcore)
+- [Node.js](/azure/app-service/quickstart-nodejs)
+- [PHP](/azure/app-service/quickstart-php)
+- [Java](/azure/app-service/quickstart-java)
+- [Python](/azure/app-service/quickstart-python)
+- [HTML](/azure/app-service/quickstart-html)
 
 ## <a name="step-by-step-tutorials"></a>分步教程
 
@@ -38,9 +38,9 @@ ms.locfileid: "73488424"
 
 - 使用以下方法创建应用程序：
   - [将 .NET 与 Azure SQL DB 配合使用](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
-  - [将 Node.js 与 MongoDB 配合使用](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+  - [将 Node.js 与 MongoDB 配合使用](/azure/app-service/tutorial-nodejs-mongodb-app)
   - [将 Java 与 MySQL 配合使用](/app-service/app-service-web-tutorial-java-mysql)
-  - [将 Python 与 PostgreSQL 配合使用](/app-service/containers/tutorial-python-postgresql-app)
+  - [将 Python 与 PostgreSQL 配合使用](/app-service/tutorial-python-postgresql-app)
 - [将现有自定义域映射到应用程序](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [将 SSL 证书绑定到应用程序](/azure/app-service/configure-ssl-bindings)
 

@@ -1,14 +1,14 @@
 ---
 title: 教程：管理标记治理
 description: 本教程使用 Azure Policy 的修改效果来创建和执行新资源和现有资源上的标记治理模型。
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142259"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545499"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>教程：通过 Azure Policy 管理标记治理
 
@@ -45,7 +45,7 @@ Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理�
 
 ## <a name="configure-the-costcenter-tag"></a>配置 CostCenter 标记
 
-就特定于由 Azure Policy 管理的 Azure 环境而言，CostCenter 标记要求如下：
+就特定于由 Azure Policy 管理的 Azure 环境而言，CostCenter 标记要求会调用以下结果：
 
 - 拒绝缺少 CostCenter 标记的资源组
 - 修改资源以在缺少 CostCenter 标记时从父资源组添加此标记
@@ -107,7 +107,7 @@ Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理�
 
 ## <a name="configure-the-env-tag"></a>配置 Env 标记
 
-就特定于由 Azure Policy 管理的 Azure 环境而言，Env 标记要求如下：
+就特定于由 Azure Policy 管理的 Azure 环境而言，Env 标记要求会调用以下结果：
 
 - 根据资源组的命名方案修改资源组上的 Env 标记
 - 将资源组中所有资源的 Env 标记修改为与父资源组相同

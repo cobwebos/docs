@@ -12,17 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75374126"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654678"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure PowerShell 将磁盘连接到另一个 Windows VM 来修复所有错误，然后修复原始 VM。 
 
 > [!Important]
-> 本文中的脚本仅适用于使用[托管磁盘](../windows/managed-disks-overview.md)的 VM。 
+> 本文中的脚本仅适用于使用[托管磁盘](../managed-disks-overview.md)的 VM。 
 
  
 
@@ -41,7 +42,7 @@ ms.locfileid: "75374126"
 
 可以使用 VM 修复命令自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[使用 Azure 虚拟机修复命令修复 Windows VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-确保已安装[最新 Azure PowerShell](/powershell/azure/overview) 并登录到订阅：
+确保已安装[最新 Azure PowerShell](/powershell/azure/) 并登录到订阅：
 
 ```powershell
 Connect-AzAccount

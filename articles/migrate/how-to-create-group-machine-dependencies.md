@@ -3,18 +3,18 @@ title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109988"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829911"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
 本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项分析。 [依赖关系分析](concepts-dependency-visualization.md)有助于识别和了解要评估并迁移到 Azure 的计算机之间的依赖关系。
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 - 查看对以下项的基于代理的依赖项分析的支持和部署要求：
     - [VMware VM](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
@@ -31,7 +31,7 @@ ms.locfileid: "86109988"
     - 仅在设置了 Azure Migrate 设备并在 Azure Migrate 项目中发现计算机后才能附加工作区。
     - 请确保订阅中具有包含 Azure Migrate 项目的工作区。
     - 工作区必须位于美国东部、东南亚或欧洲西部区域。 其他区域中的工作区无法与项目相关联。
-    - 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域中。
+    - 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)的区域中。
     - 可以将新的或现有的 Log Analytics 工作区与 Azure Migrate 项目相关联。
     - 首次为计算机设置依赖项可视化效果时，将附加工作区。 Azure Migrate 项目的工作区在添加后就无法修改了。
     - 在 Log Analytics 中，与 Azure Migrate 关联的工作区标记有迁移项目密钥和项目名称。
@@ -76,10 +76,10 @@ ms.locfileid: "86109988"
 若要在 Windows 计算机上安装代理：
 
 1. 双击下载的代理。
-2. 在“欢迎”页面上，单击“下一步”。  在 "**许可条款**" 页上，单击 "**我同意**接受许可"。
-3. 在“目标文件夹”**** 中，保留或修改默认安装文件夹，然后选择“下一步”****。
-4. 在“代理安装选项”**** 中，选择“Azure Log Analytics”**** > “下一步”****。
-5. 单击“添加”**** 以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步” 。
+2. 在“欢迎”页面上，单击“下一步”。  在“许可条款”页面上，单击“我接受”以接受许可协议。
+3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。
+4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
+5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）来安装代理。
 - [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。
@@ -104,7 +104,7 @@ ms.locfileid: "86109988"
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用脚本来安装依赖项代理。
+- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。
 - [详细了解](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)依赖关系代理支持的操作系统。
 
 
@@ -119,11 +119,11 @@ ms.locfileid: "86109988"
 1. 在**Azure Migrate：服务器评估**中，单击 "**发现的服务器**"。
 2. 在 "**依赖关系**" 列中，单击要查看的每个计算机的 "**查看依赖关系**"。
 3. 在依赖关系映射上，可以看到以下内容：
-    - 到计算机的入站（客户端）和出站（服务器） TCP 连接。
+    - 入站 (客户端与计算机之间) 和出站 (服务器) TCP 连接。
     - 未安装依赖关系代理的依赖计算机按端口号进行分组。
     - 安装了依赖关系代理的依赖计算机显示为单独的框。
     - 在计算机内运行的进程。 展开每个计算机框可查看进程。
-    - 计算机属性（包括 FQDN、操作系统、MAC 地址）。 单击每个计算机框可查看详细信息。
+    - 计算机属性 (包括 FQDN、操作系统、MAC 地址) 。 单击每个计算机框可查看详细信息。
 
 4. 可通过单击时间范围标签中的持续时间，查看不同持续时间的依赖项。
     - 时间范围默认为 1 小时。 
@@ -138,7 +138,7 @@ ms.locfileid: "86109988"
     - 若要添加计算机，请再次运行发现，并验证是否发现了计算机。
 
 8. 如果想要为该组创建评估，请选中相应复选框，为该组创建新的评估。
-8. 单击“确定”**** 以保存组。
+8. 单击“确定”以保存组。
 
 创建组后，建议您在该组中的所有计算机上安装代理，然后将整个组的依赖项可视化。
 
@@ -151,7 +151,7 @@ ms.locfileid: "86109988"
 
 为依赖关系数据运行查询，如下所示：
 
-1. 安装代理后，请转到门户并单击“概述”****。
+1. 安装代理后，请转到门户并单击“概述”。
 2. 在**Azure Migrate：服务器评估**中，单击 "**概述**"。 单击向下箭头以展开 " **Essentials**"。
 3. 在**OMS 工作区**中，单击工作区名称。
 3. 在 "Log Analytics 工作区" 页上 > "**常规**"，单击 "**日志**"。
@@ -169,7 +169,7 @@ ms.locfileid: "86109988"
 
 查看一组 Vm 的入站连接。
 
-- 表中的连接指标（VMConnection）的记录并不表示单独的物理网络连接。
+- 表中用于连接指标的记录 (VMConnection) 不表示单独的物理网络连接。
 - 多个物理网络连接分组到一个逻辑连接中。
 - [详细了解](../azure-monitor/insights/service-map.md#connections)如何在 VMConnection 中聚合物理网络连接数据。
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>后续步骤
 
 为组[创建评估](how-to-create-assessment.md)。
-
-

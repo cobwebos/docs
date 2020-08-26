@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220588"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525141"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -51,21 +51,7 @@ ms.locfileid: "86220588"
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>创建虚拟 WAN
 
-从浏览器导航到 Azure 门户并使用 Azure 帐户登录。
-
-1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页。
-3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段 ：
-
-   ![虚拟 WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
-
-   * **订阅** - 选择要使用的订阅。
-   * **资源组** - 新建资源组或使用现有的资源组。
-   * **资源组位置** - 从下拉列表中选择资源位置。 WAN 是一个全局资源，不会驻留在某个特定区域。 但是，必须选择一个区域才能更轻松地管理和查找所创建的 WAN 资源。
-   * **名称** - 键入要用于称呼 WAN 的名称。
-   * **类型：** 基本或标准。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
-4. 填写完字段后，单击“审阅 + 创建”。
-5. 验证通过后，选择“创建”以创建虚拟 WAN。
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
 ## <a name="create-a-hub"></a><a name="hub"></a>创建中心
 

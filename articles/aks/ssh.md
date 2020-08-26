@@ -4,12 +4,12 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集节点建立 SS
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 70ebcb1f340ba28cf80ad3e24a464aad5584b3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82207150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015606"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -17,7 +17,7 @@ ms.locfileid: "82207150"
 
 本文介绍如何使用 AKS 节点的专用 IP 地址来与它们建立 SSH 连接。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -141,13 +141,15 @@ aks-nodepool1-79590246-0  10.240.0.4
 1. 运行 `debian` 容器映像，并在其上附加一个终端会话。 可以使用此容器来与 AKS 群集中的任何节点建立 SSH 会话：
 
     ```console
-    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
+    kubectl run -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
     > 如果使用 Windows Server 节点，请将节点选择器添加到命令，以在 Linux 节点上计划 Debian 容器：
     >
-    > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
+    > ```console
+    > kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
+    > ```
 
 1. 将终端会话连接到该容器后，使用 `apt-get` 安装 SSH 客户端：
 

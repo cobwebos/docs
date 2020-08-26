@@ -10,40 +10,40 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
-ms.custom: tracking-python
-ms.openlocfilehash: ea9e6e1f06bacd28a4e9894039de824c3a5b4af4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-python
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044934"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516379"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>教程：使用 Python 示例项目启动沉浸式阅读器
+# <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>教程：使用 Python 示例项目启动沉浸式阅读器
 
 在[概述](./overview.md)中，你了解了沉浸式阅读器是什么以及它如何实施经过验证的技术以提高语言学习者、新兴读者和有学习差异的学生的阅读理解能力。 本教程介绍如何创建启动沉浸式阅读器的 Python Web 应用程序。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用示例项目创建包含 Pip、Flask、Jinja 和 virtualenv 的 Python Web 应用
-> * 获取访问令牌
-> * 启动沉浸式阅读器以显示示例内容
+> * 使用示例项目创建包含 pip、Flask、Jinja 和 virtualenv 的 Python Web 应用。
+> * 获取访问令牌。
+> * 启动沉浸式阅读器以显示示例内容。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 为 Azure Active Directory 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./how-to-create-immersive-reader.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
-* [Git](https://git-scm.com/)
-* [沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)
+* [Git](https://git-scm.com/)。
+* [沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)。
 * [Python](https://www.python.org/downloads/) 和 [pip](https://docs.python.org/3/installing/index.html)。 从 Python 3.4 开始，Python 二进制安装程序默认随附 pip。
-* [Flask](https://flask.palletsprojects.com/en/1.0.x/)
-* [Jinja](http://jinja.pocoo.org/docs/2.10/)
-* [virtualenv](https://virtualenv.pypa.io/en/latest/) 和 [virtualenvwrapper-win for Windows](https://pypi.org/project/virtualenvwrapper-win/)，或 [virtualenvwrapper for OSX](https://virtualenvwrapper.readthedocs.io/en/latest/)
-* [requests 模块](https://pypi.org/project/requests/2.7.0/)
-* IDE 如 [Visual Studio Code](https://code.visualstudio.com/)
+* [Flask](https://flask.palletsprojects.com/en/1.0.x/)。
+* [Jinja](http://jinja.pocoo.org/docs/2.10/)。
+* [virtualenv](https://virtualenv.pypa.io/en/latest/) 和 [virtualenvwrapper-win for Windows](https://pypi.org/project/virtualenvwrapper-win/)，或 [virtualenvwrapper for OSX](https://virtualenvwrapper.readthedocs.io/en/latest/)。
+* [requests 模块](https://pypi.org/project/requests/2.7.0/)。
+* IDE，如 [Visual Studio Code](https://code.visualstudio.com/)。
 
 ## <a name="configure-authentication-credentials"></a>配置身份验证凭据
 
-创建一个名为 _.env_ 的新文件，并将以下代码粘贴到其中，提供在创建沉浸式阅读器资源时给出的值。
+创建名为 .env 的新文件，然后将以下名称和值粘贴到其中。 提供在创建沉浸式阅读器资源时给出的值。
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -52,9 +52,9 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-请确保不要将此文件提交到源代码管理中，因为它包含不应公开的机密。
+不要将此文件提交到源代码管理中，因为它包含不应公开的机密。
 
-**getimmersivereadertoken** API 终结点应该以某种形式的身份验证（例如，[OAuth](https://oauth.net/2/)）进行保护，以防止未经授权的用户获取令牌以用于你的沉浸式阅读器服务和计费；该内容超出了本教程的范围。
+采用某种形式的身份验证（例如 [OAuth](https://oauth.net/2/)）保护 getimmersivereadertoken API 终结点。 身份验证可防止未经授权的用户获取用于沉浸式阅读器服务和计费的令牌。 这超出了本教程的范围。
 
 ## <a name="create-a-python-web-app-on-windows"></a>在 Windows 中创建 Python Web 应用
 
@@ -62,7 +62,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 安装 [Git](https://git-scm.com/)。
 
-安装 Git 后，打开命令提示符并将沉浸式阅读器 SDK Git 存储库“克隆”到计算机上的某个文件夹
+安装 Git 后，打开命令提示符并将沉浸式阅读器 SDK Git 存储库克隆到计算机上的某个文件夹。
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -70,19 +70,19 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 安装 [Python](https://www.python.org/downloads/)。
 
-选中“将 Python 添加到 PATH”框。
+选中“将 Python 添加到 PATH”复选框。
 
 ![Python Windows 安装对话框 - 步骤 1](./media/pythoninstallone.jpg)
 
-通过选中相应的框添加可选功能，然后单击“下一步”按钮。
+通过选中复选框来添加“可选功能”，然后选择“下一步”。
 
 ![Python Windows 安装对话框 - 步骤 2](./media/pythoninstalltwo.jpg)
 
-选择“自定义安装”，将安装路径设置为根文件夹（例如 `C:\Python37-32\`），然后单击“安装”按钮。
+选择“自定义安装”，将安装路径设置为根文件夹（例如 `C:\Python37-32\`）。 然后选择“安装”。
 
 ![Python Windows 安装对话框 - 步骤 3](./media/pythoninstallthree.jpg)
 
-Python 安装完成后，打开命令提示符并运行 `cd` 切换到 Python Scripts 文件夹。
+Python 安装完成后，打开命令提示符并使用 `cd` 转到 Python Scripts 文件夹。
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -94,13 +94,13 @@ cd C:\Python37-32\Scripts
 pip install flask
 ```
 
-安装 Jinja2： 适用于 Python 的全功能模板引擎。
+安装 Jinja2： 它是适用于 Python 的全功能模板引擎。
 
 ```cmd
 pip install jinja2
 ```
 
-安装 virtualenv： 用于创建独立 Python 环境的工具。
+安装 virtualenv： 此工具可创建独立 Python 环境。
 
 ```cmd
 pip install virtualenv
@@ -124,19 +124,19 @@ pip install requests
 pip install python-dotenv
 ```
 
-创建虚拟环境
+创建虚拟环境。
 
 ```cmd
 mkvirtualenv advanced-python
 ```
 
-运行 `cd` 切换到示例项目的根文件夹。
+使用 `cd` 转到示例项目的根文件夹。
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
 ```
 
-将示例项目与环境相连接。 这会将新建的虚拟环境映射到示例项目的根文件夹。
+将示例项目与环境相连接。 此操作会将新建的虚拟环境映射到示例项目的根文件夹。
 
 ```cmd
 setprojectdir .
@@ -156,7 +156,7 @@ activate
 deactivate
 ```
 
-`(advanced-python)` 前缀现在应已消失，因为环境现已停用。
+`(advanced-python)` 前缀应已消失，因为环境已停用。
 
 若要重新激活环境，请从示例项目的根文件夹运行 `workon advanced-python`。
 
@@ -164,7 +164,7 @@ deactivate
 workon advanced-python
 ```
 
-### <a name="launch-the-immersive-reader-with-sample-content"></a>启动沉浸式阅读器以显示示例内容
+### <a name="start-the-immersive-reader-with-sample-content"></a>启动沉浸式阅读器以显示示例内容
 
 环境处于活动状态时，从示例项目的根文件夹输入 `flask run` 来运行示例项目。
 
@@ -172,7 +172,7 @@ workon advanced-python
 flask run
 ```
 
-打开浏览器并导航到 _http://localhost:5000_ 。
+打开浏览器并转到 http://localhost:5000 。
 
 ## <a name="create-a-python-web-app-on-osx"></a>在 OSX 中创建 Python Web 应用
 
@@ -180,7 +180,7 @@ flask run
 
 安装 [Git](https://git-scm.com/)。
 
-安装 Git 后，打开终端并将沉浸式阅读器 SDK Git 存储库“克隆”到计算机上的某个文件夹
+安装 Git 后，打开终端并将沉浸式阅读器 SDK Git 存储库克隆到计算机上的某个文件夹。
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -190,7 +190,7 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 现在，Python 根文件夹（例如 `Python37-32`）应会出现在 Applications 文件夹中。
 
-Python 安装完成后，打开终端并运行 `cd` 切换到 Python Scripts 文件夹。
+Python 安装完成后，打开终端并使用 `cd` 转到 Python Scripts 文件夹。
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -202,7 +202,7 @@ cd immersive-reader-sdk/js/samples/advanced-python
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ```
 
-然后运行以下命令为当前已登录的用户安装 pip，以避免权限问题。
+运行以下代码为当前已登录的用户安装 pip，以避免权限问题。
 
 ```bash
 python get-pip.py --user
@@ -214,10 +214,10 @@ sudo nano /etc/paths
 
 - 根据提示输入密码。
 - 将 pip 安装路径添加到 PATH 变量中。
-- 转到文件的底部，输入要添加的路径（作为列表中最后一项），例如`PATH=$PATH:/usr/local/bin`。
-- 按 Ctrl-X 退出。
-- 输入 `Y` 以保存修改的缓冲区。
-- 就这么简单！ 若要进行测试，请在新的终端窗口中键入 `echo $PATH`。
+- 转到文件的底部，输入要添加的路径（作为列表中最后一项），例如 `PATH=$PATH:/usr/local/bin`。
+- 选择 Ctrl+X 退出。
+- 输入“Y”以保存修改的缓冲区。
+- 就这么简单！ 若要进行测试，请在新的终端窗口中输入 `echo $PATH`。
 
 安装 Flask。
 
@@ -225,13 +225,13 @@ sudo nano /etc/paths
 pip install flask --user
 ```
 
-安装 Jinja2： 适用于 Python 的全功能模板引擎。
+安装 Jinja2： 它是适用于 Python 的全功能模板引擎。
 
 ```bash
 pip install Jinja2 --user
 ```
 
-安装 virtualenv： 用于创建独立 Python 环境的工具。
+安装 virtualenv： 此工具可创建独立 Python 环境。
 
 ```bash
 pip install virtualenv --user
@@ -255,25 +255,25 @@ pip install requests --user
 pip install python-dotenv --user
 ```
 
-选择要在其中保留虚拟环境的文件夹并运行此命令
+选择要在其中保留虚拟环境的文件夹并运行此命令：
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-运行 `cd` 切换到沉浸式阅读器 SDK Python 示例应用程序文件夹。
+使用 `cd` 转到沉浸式阅读器 SDK Python 示例应用程序文件夹。
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
 ```
 
-创建虚拟环境
+创建虚拟环境。
 
 ```bash
 mkvirtualenv -p /usr/local/bin/python3 advanced-python
 ```
 
-将示例项目与环境相连接。 这会将新建的虚拟环境映射到示例项目的根文件夹。
+将示例项目与环境相连接。 此操作会将新建的虚拟环境映射到示例项目的根文件夹。
 
 ```bash
 setprojectdir .
@@ -293,7 +293,7 @@ activate
 deactivate
 ```
 
-`(advanced-python)` 前缀现在应已消失，因为环境现已停用。
+`(advanced-python)` 前缀应已消失，因为环境已停用。
 
 若要重新激活环境，请从示例项目的根文件夹运行 `workon advanced-python`。
 
@@ -301,7 +301,7 @@ deactivate
 workon advanced-python
 ```
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>启动沉浸式阅读器以显示示例内容
+## <a name="start-the-immersive-reader-with-sample-content"></a>启动沉浸式阅读器以显示示例内容
 
 环境处于活动状态时，从示例项目的根文件夹输入 `flask run` 来运行示例项目。
 
@@ -309,9 +309,9 @@ workon advanced-python
 flask run
 ```
 
-打开浏览器并导航到 _http://localhost:5000_ 。
+打开浏览器并转到 http://localhost:5000 。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)
-* 在[ GitHub ](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)上查看代码示例
+* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)。
+* 在 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/) 上查看代码示例。

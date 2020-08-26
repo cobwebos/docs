@@ -1,6 +1,6 @@
 ---
 title: 关于 Azure 可用性区域中的区域冗余虚拟网络网关
-description: 了解可用性区域中的 VPN 网关和 ExpressRoute 网关。
+description: 在 Azure 可用性区域中部署 VPN 和 ExpressRoute 网关，为虚拟网络网关提供弹性、可伸缩性和更高的可用性。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,15 +9,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aed75c26880ae2c3e31b412496655e5225b2edc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864292"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035444"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
-可以在[Azure 可用性区域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 如果在 Azure 可用性区域中部署网关，可以在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。
+可以在[Azure 可用性区域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 可通过在 Azure 可用性区域中部署网关，在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。
 
 ### <a name="zone-redundant-gateways"></a><a name="zrgw"></a>区域冗余网关
 

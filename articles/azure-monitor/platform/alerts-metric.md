@@ -4,13 +4,14 @@ description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79369380"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065856"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -31,7 +32,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 3. 在加载的上下文窗格中单击“选择目标”，选择要发出警报的目标资源  。 使用“订阅”和“资源类型”下拉列表查找要监视的资源。   也可以使用搜索栏查找资源。
 
-4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
+4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
 
 5. 选择目标资源后，单击“添加条件”  。
 
@@ -87,9 +88,10 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 6. 单击“完成”保存所做的编辑。 
 
+
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
-前面的部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
+前面的部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
 
 1. 请参阅 Azure 门户，单击**Cloud Shell**。
 
@@ -133,10 +135,27 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
 
+## <a name="with-powershell"></a>使用 PowerShell
+
+指标警报规则提供了专用 PowerShell cmdlet：
+
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)：创建新的指标警报规则或更新现有的指标警报规则。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)：获取一个或多个指标警报规则。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：删除指标警报规则。
+
+## <a name="with-rest-api"></a>使用 REST API
+
+- [创建或更新](/rest/api/monitor/metricalerts/createorupdate)：创建新的指标警报规则或更新现有的指标警报规则。
+- [Get](/rest/api/monitor/metricalerts/get)：获取特定指标警报规则。
+- [按资源组列出](/rest/api/monitor/metricalerts/listbyresourcegroup)：获取特定资源组中指标警报规则的列表。
+- [按订阅列出](/rest/api/monitor/metricalerts/listbysubscription)：获取特定订阅中指标警报规则的列表。
+- [更新](/rest/api/monitor/metricalerts/update)：更新指标警报规则。
+- [删除](/rest/api/monitor/metricalerts/delete)：删除指标警报规则。
+
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md)。
+- [使用 Azure 资源管理器模板创建指标警报](./alerts-metric-create-templates.md)。
 - [了解指标警报的工作原理](alerts-metric-overview.md)。
 - [了解指标警报与动态阈值条件的工作原理](alerts-dynamic-thresholds.md)。
-- [了解指标警报的 Webhook 架构](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [了解指标警报的 Webhook 架构](./alerts-metric-near-real-time.md#payload-schema)
 

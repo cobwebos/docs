@@ -5,17 +5,18 @@ description: 了解如何使用 Azure 容器实例将 Azure 机器学习模型�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cbba0dd5341ad148831ac3b1f94685bf2beddd5a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087259"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855266"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,6 +27,11 @@ ms.locfileid: "86087259"
 - 正在测试一个开发中的模型。 
 
 有关 ACI 的配额和区域可用性的信息，请参阅 [Azure 容器实例的配额和区域可用性](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)文章。
+
+> [!IMPORTANT]
+> 强烈建议在部署到 Web 服务之前先进行本地调试。有关详细信息，请参阅[本地调试](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> 还可参阅 Azure 机器学习 - [部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,8 +56,9 @@ ms.locfileid: "86087259"
 要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置。 例如，核心数和内存。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 > [!NOTE]
-> * ACI 仅适用于大小 <1GB 的小型模型。 
-> * 建议使用单节点 AKS 对大型模型进行开发测试。
+> * ACI 仅适用于大小低于 1 GB 的小型模型。 
+> * 建议使用单节点 AKS 来开发-测试更大的模型。
+> * 每个容器)  (每个部署的模型数限制为1000。 
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
@@ -90,14 +97,12 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 > [!IMPORTANT]
 > 无需事先创建 ACI 容器即可进行测试。 将据需要创建 ACI 容器。
 
-## <a name="update-the-web-service"></a>更新 Web 服务
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

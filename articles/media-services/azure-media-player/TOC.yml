@@ -41,7 +41,7 @@
 - name: 参考
   items:
     - name: API
-      href: 'https://docs.microsoft.com/javascript/api/azuremediaplayer/?view=azure-node-latest'
+      href: /javascript/api/azuremediaplayer/?view=azure-node-latest
     - name: API 方法
       href: azure-media-player-api-methods.md
     - name: 选项

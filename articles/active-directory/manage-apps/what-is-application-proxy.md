@@ -6,18 +6,17 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: HT
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976500"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640508"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -77,7 +76,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 
 此功能的组件包括应用程序代理服务（在云中运行）、应用程序代理连接器（在本地服务器上运行的轻型代理）和 Azure AD（标识提供者）。 所有三个组件协同工作，为用户提供单一登录体验来访问本地 Web 应用程序。
 
-登录后，外部用户可在其桌面或 iOS/MAC 设备上使用熟悉的 URL 或[“我的应用”访问面板](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)访问本地 Web 应用程序。 例如，应用代理可为远程桌面、SharePoint 站点、Tableau、Qlik、Outlook Web 版和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
+登录后，外部用户可以使用熟悉的 URL 或其桌面或 iOS/MAC 设备上的 [应用](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) 访问本地 web 应用程序。 例如，应用代理可为远程桌面、SharePoint 站点、Tableau、Qlik、Outlook Web 版和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
 
 ![Azure AD 应用程序代理体系结构](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -100,7 +99,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 * [**基于表单或密码的身份验证**](application-proxy-configure-single-sign-on-password-vaulting.md)。 使用此身份验证方法时，用户在首次访问应用程序时使用用户名和密码登录。 首次登录后，Azure AD 会为应用程序提供用户名和密码。 在此方案中，身份验证由 Azure AD 处理。
 * [**SAML 身份验证**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 使用 SAML 2.0 或 WS 联合身份验证协议的应用程序支持基于 SAML 的单一登录。 Azure AD 使用 SAML 单一登录通过用户的 Azure AD 帐户对应用程序进行身份验证。
 
-有关支持的方法的详细信息，请参阅[选择单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+有关支持的方法的详细信息，请参阅[选择单一登录方法](sso-options.md#choosing-a-single-sign-on-method)。
 
 ### <a name="security-benefits"></a>安全优势
 

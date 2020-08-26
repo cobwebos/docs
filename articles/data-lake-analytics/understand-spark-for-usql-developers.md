@@ -1,19 +1,17 @@
 ---
 title: 了解 Azure Data Lake Analytics 的 SQL 开发人员 Apache Spark。
 description: 本文介绍 Apache Spark 的概念，以帮助你在 SQL 开发人员之间的差异。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
-ms.openlocfilehash: cb865ec4f5182a868450d1ff7c561a62f7ca3919
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 567574e65fcc1db3ef9e8aea73c6a59be0594f72
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106401"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132290"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>了解适用于 U-SQL 开发人员的 Apache Spark
 

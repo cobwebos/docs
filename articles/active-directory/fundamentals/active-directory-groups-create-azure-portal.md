@@ -2,7 +2,7 @@
 title: 创建基本组并添成员 - Azure Active Directory | Microsoft Docs
 description: 介绍如何使用 Azure Active Directory 创建基本组。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4539fe1d8f5fbfab8e73de3a9ac35baa154b142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604346"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797655"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
 可以使用 Azure Active Directory (Azure AD) 门户创建基本组。 对于本文而言，将由资源所有者（管理员）向单个资源中添加一个基本组，该组中将包括需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。

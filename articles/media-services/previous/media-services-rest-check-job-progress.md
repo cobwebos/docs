@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d5f3382965d9166fabf99ac650e707e29c38a72
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a8ada16bbfff66c60a1400542742396b667160dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000510"
 ---
 # <a name="how-to-check-job-progress"></a>如何：检查作业进度
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用作业的 State 属性来查看该作业的状态。 有关 State 属性的详细信息，请参阅[作业实体属性](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)。
+运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用作业的 State 属性来查看该作业的状态。 有关 State 属性的详细信息，请参阅[作业实体属性](/rest/api/media/operations/job#job_entity_properties)。
 
 ## <a name="connect-to-media-services"></a>连接到媒体服务
 
@@ -72,6 +72,6 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [媒体服务操作 REST API 概述](media-services-rest-how-to-use.md)

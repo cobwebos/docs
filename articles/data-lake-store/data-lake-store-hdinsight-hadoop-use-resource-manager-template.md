@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 593edecd2cc1bbdd3627430af41c64be4d6a022b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c54738b1ab3c90118c86bbf78bdcc3348658e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048713"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.locfileid: "85508633"
 在开始阅读本教程前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* **Azure PowerShell 1.0 或更高版本**。 请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 
     **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Storage Gen1 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)中所述。
@@ -68,7 +68,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 * [Microsoft.DataLakeStore/accounts](/azure/templates/microsoft.datalakestore/accounts)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft HDInsight/群集](/azure/templates/microsoft.hdinsight/clusters)
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)
 
 ## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>向 Data Lake Storage Gen1 上传示例数据
 该资源管理器模板模板会创建一个新的 Data Lake Storage Gen1 帐户，并将其与此 HDInsight 群集关联。 现在必须要将示例数据上传到 Data Lake Storage Gen1。 此教程中之后需要这些数据从访问 Data Lake Storage Gen1 帐户中数据的 HDInsight 群集运行作业。 有关如何上传数据的说明，请参阅[上传文件到 Data Lake Storage Gen1 帐户](data-lake-store-get-started-portal.md#uploaddata)。 如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
@@ -99,7 +99,7 @@ Set-AzContext -SubscriptionId <subscription ID>
    SELECT * FROM vehicles LIMIT 10;
    ```
 
-   应该会看到与下面类似的输出：
+   会得到类似于下面的输出：
 
    ```
    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1

@@ -4,12 +4,12 @@ description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor �
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef3fd6ce2a5be4f3d06a37b135e0f9cf0851effb
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116708"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
@@ -42,7 +42,7 @@ Azure 门户会提示你验证你用于 Azure Active Directory 群集的登录�
 >对你的群集的授权由 Kubernetes 以及为它配置的安全模型管理。 访问此功能的用户需要有权下载 Kubernetes 配置 (*kubeconfig*)，类似于运行 `az aks get-credentials -n {your cluster name} -g {your resource group}`。 如果启用了 Azure RBAC 并且 AKS 群集未启用 RBAC 授权，则此配置文件包含 **Azure Kubernetes 服务群集用户角色**的授权和身份验证令牌。 当为 AKS 启用了 Azure Active Directory (AD) 基于 SAML 的单一登录时，它包含有关 Azure AD 的信息和客户端注册详细信息。
 
 >[!IMPORTANT]
->此功能的用户需要具有群集的 [Azure Kubernetes 群集用户角色](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions)才能下载 `kubeconfig` 并使用此功能。 用户**不**需要具有群集的参与者访问权限便可使用此功能。
+>此功能的用户需要具有群集的 [Azure Kubernetes 群集用户角色](../../role-based-access-control/built-in-roles.md)才能下载 `kubeconfig` 并使用此功能。 用户**不**需要具有群集的参与者访问权限便可使用此功能。
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>将 clusterMonitoringUser 用于启用了 RBAC 的群集
 

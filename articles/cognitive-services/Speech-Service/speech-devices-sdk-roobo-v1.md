@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74815592"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387976"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频开发工具包
 
@@ -69,7 +69,7 @@ ms.locfileid: "74815592"
 
 ## <a name="audio"></a>音频
 
-Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [Roobo 站点](https://ddk.roobo.com/)上选择设备，然后选择页面底部的“Roobo 工具”链接。 
+Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [Roobo 站点](http://ddk.roobo.com/)上选择设备，然后选择页面底部的“Roobo 工具”链接。 
 
 ## <a name="next-steps"></a>后续步骤
 

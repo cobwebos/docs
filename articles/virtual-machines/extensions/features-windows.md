@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045903"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829078"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -35,8 +35,8 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 有许多不同的 Azure VM 扩展可用，每个都有特定用例。 示例包括：
 
 - 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure Desired State configuration extension](dsc-overview.md)（Azure Desired State Configuration 扩展）。
-- 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../log-analytics/log-analytics-azure-vm-extension.md)。
-- 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](../../chef/chef-automation.md)。
+- 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../azure-monitor/learn/quick-collect-azurevm.md)。
+- 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](/azure/developer/chef/windows-vm-configure)。
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 
@@ -65,18 +65,18 @@ Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 O
 
 #### <a name="network-access"></a>网络访问
 
-从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)版本的代理，则不需要允许访问 VM 区域中的 Azure 存储，因为可以使用代理将通信重定向到 Azure 结构控制器以进行代理通信（HostGAPlugin 功能通过专用 IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) 上的特权通道工作）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
+从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)版本的代理，则不需要允许访问 VM 区域中的 Azure 存储，因为可以使用代理将通信重定向到 Azure 结构控制器以进行代理通信（HostGAPlugin 功能通过专用 IP [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) 上的特权通道工作）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
 
 > [!IMPORTANT]
 > 如果已使用来宾防火墙或代理阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。 需要端口 80、443 和 32526。
 
-代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储或 Azure Active Directory 的扩展，可以使用 [Azure NSG 服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)允许访问存储或 AzureActiveDirectory。
+代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储或 Azure Active Directory 的扩展，可以使用 [Azure NSG 服务标记](../../virtual-network/security-overview.md#service-tags)允许访问存储或 AzureActiveDirectory。
 
 Windows 来宾代理不支持通过代理服务器重定向代理流量请求，这意味着 Windows 来宾代理将依赖自定义代理（如果有）通过 IP 168.63.129.16 访问 Internet 或主机上的资源。
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 
-有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage)。 以下示例列出 *WestUS* 位置的所有可用扩展：
+有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage)。 以下示例列出 *WestUS* 位置的所有可用扩展：
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -92,7 +92,7 @@ Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置
 
 ### <a name="powershell"></a>PowerShell
 
-存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选： 
+存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选： 
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-在以下示例中，VM 访问扩展用于将 Windows VM 的管理密码重置为临时密码。 有关 VM 访问扩展的详细信息，请参阅[重置 Windows VM 中的远程桌面服务](../windows/reset-rdp.md)。 运行此扩展后，应重置首次登录密码：
+在以下示例中，VM 访问扩展用于将 Windows VM 的管理密码重置为临时密码。 有关 VM 访问扩展的详细信息，请参阅[重置 Windows VM 中的远程桌面服务](../troubleshooting/reset-rdp.md)。 运行此扩展后，应重置首次登录密码：
 
 ```powershell
 $cred=Get-Credential
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzVMExtension` 命令可用于启动任何 VM 扩展。 有关详细信息，请参阅 [Set-AzVMExtension 参考](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)。
+`Set-AzVMExtension` 命令可用于启动任何 VM 扩展。 有关详细信息，请参阅 [Set-AzVMExtension 参考](/powershell/module/az.compute/set-azvmextension)。
 
 
 ### <a name="azure-portal"></a>Azure 门户
@@ -315,7 +315,7 @@ Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单�
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>在 VM 上使用 autoUpgradeMinorVersion 识别是否设置了扩展
 
-如果使用“autoUpgradeMinorVersion”预配了扩展，则可以从 VM 模型查看信息。 若要检查，请使用 [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 并提供资源组和 VM 名称，如下所示：
+如果使用“autoUpgradeMinorVersion”预配了扩展，则可以从 VM 模型查看信息。 若要检查，请使用 [Get-AzVm](/powershell/module/az.compute/get-azvm) 并提供资源组和 VM 名称，如下所示：
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -371,7 +371,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
+针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -407,7 +407,7 @@ Extensions[0]           :
 
 ### <a name="rerun-vm-extensions"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行 VM 扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension)，如下所示：
+在某些情况下，可能需要重新运行 VM 扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension)，如下所示：
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"

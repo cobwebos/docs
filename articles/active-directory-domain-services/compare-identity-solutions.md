@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555145"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489582"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
 
@@ -47,7 +47,7 @@ ms.locfileid: "84555145"
 
 使用 Azure AD DS 时，Microsoft 将为你部署和维护核心服务组件（托管域体验）。 你无需部署、管理、修补和保护 VM、Windows Server OS 或域控制器 (DC) 等组件的 AD DS 基础结构。
 
-Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这在一定程度上可以减轻设计和管理复杂性。 例如，无需设计和维护 AD 林、域、站点和复制链接。 你仍可以[在 Azure AD DS 和本地环境（目前为预览版）之间创建林信任][create-forest-trust]。
+Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这在一定程度上可以减轻设计和管理复杂性。 例如，无需设计和维护 AD 林、域、站点和复制链接。 你仍可以[在 Azure AD DS 和本地环境之间创建林信任][create-forest-trust]。
 
 对于在云中运行的、需要访问 Kerberos 或 NTLM 等传统身份验证机制的应用程序和服务，Azure AD DS 以极少量的管理开销提供托管域体验。 有关详细信息，请参阅 [Azure AD DS 中用户帐户、密码和管理的管理概念][administration-concepts]。
 

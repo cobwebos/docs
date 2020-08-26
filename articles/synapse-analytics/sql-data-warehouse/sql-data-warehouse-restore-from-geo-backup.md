@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205078"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075814"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 池的异地还原
 
@@ -36,7 +36,7 @@ ms.locfileid: "85205078"
 > 可以执行到第 2 代的异地还原！ 若要执行此操作，请将一个第 2 代 ServiceObjectiveName（例如 DW1000**c**）指定为可选参数。
 >
 
-1. 开始之前，请确保[安装 Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+1. 开始之前，请确保[安装 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 打开 PowerShell。
 3. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 4. 选择包含要还原的数据仓库的订阅。
@@ -77,23 +77,23 @@ $GeoRestoredDatabase.status
 按下述步骤从异地备份还原 SQL 池：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)帐户。
-2. 单击“+ 创建资源”  。
+2. 单击“+ 创建资源”。
 
    ![新建 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. 单击 "**数据库**"，然后单击 " **Azure Synapse Analytics （以前称为 SQL DW）**"。
+3. 依次单击“数据库”、“Azure Synapse Analytics”（以前称为“SQL DW”） 。
 
    ![新建 DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
-4. 填充在“基本信息”选项卡中请求的信息，然后  单击“下一步:  其他设置”。
+4. 填充在“基本信息”选项卡中请求的信息，然后单击“下一步:其他设置”。
 
    ![基础知识](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. 对于“使用现有的数据”参数，  请选择“备份”，然后从向下滚动选项中选择适当的备份。  单击“查看 + 创建”  。
+5. 对于“使用现有的数据”参数，请选择“备份”，然后从向下滚动选项中选择适当的备份。 单击“查看 + 创建”。
 
    ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. 数据仓库还原后，请检查“状态”是否为“联机”  。
+6. 数据仓库还原后，请检查“状态”是否为“联机”。
 
 ## <a name="next-steps"></a>后续步骤
 

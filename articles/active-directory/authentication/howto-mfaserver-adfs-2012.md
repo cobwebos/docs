@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8143149332a4a493a9a4d8d4a0d403420b87f75a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653353"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719472"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
@@ -83,7 +84,7 @@ ms.locfileid: "80653353"
 按照以下步骤编辑 MultiFactorAuthenticationAdfsAdapter.config 文件：
 
 1. 将“UseWebServiceSdk”节点设置为“true”。  
-2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如：https:\/\/contoso.com/\<certificatename>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx，其中 \<certificatename> 是证书的名称。  
+2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如： *https： \/ \/ Contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*，其中 *\<certificatename>* 是证书的名称。  
 3. 编辑 Register-MultiFactorAuthenticationAdfsAdapter.ps1 脚本，将 `-ConfigurationFilePath &lt;path&gt;` 添加到 `Register-AdfsAuthenticationProvider` 命令的末尾，其中 *&lt;path&gt;* 是 MultiFactorAuthenticationAdfsAdapter.config 文件的完整路径。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>使用用户名和密码配置 Web 服务 SDK
@@ -97,7 +98,7 @@ ms.locfileid: "80653353"
 
 如果不想使用用户名和密码，请按照以下步骤来使用客户端证书配置 Web 服务 SDK。
 
-1. 从证书颁发机构为运行 Web 服务 SDK 的服务器获取客户端证书。 了解如何[获取客户端证书](https://technet.microsoft.com/library/cc770328.aspx)。  
+1. 从证书颁发机构为运行 Web 服务 SDK 的服务器获取客户端证书。 了解如何[获取客户端证书](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770328(v=ws.10))。  
 2. 将客户端证书导入运行 Web 服务 SDK 的服务器上的本地计算机个人证书存储中。 请确保证书颁发机构的公共证书位于“受信任的根证书”证书存储中。  
 3. 将客户端证书的公钥和私钥导出到 .pfx 文件。  
 4. 将 Base64 格式的公钥导出到 .cer 文件。  

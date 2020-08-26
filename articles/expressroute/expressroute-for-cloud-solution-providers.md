@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67849267"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446771"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
 Microsoft 为传统经销商和分销商 (CSP) 提供超大规模的服务，允许他们为客户快速预配新服务和解决方案，而不需投资开发这些新服务。 为了让云解决方案提供商 (CSP) 能够直接管理这些新服务，Microsoft 提供了相应的程序和 API，以便 CSP 代表客户管理 Microsoft Azure 资源。 其中一项资源就是 ExpressRoute。 ExpressRoute 允许 CSP 将现有客户资源连接到 Azure 服务。 ExpressRoute 是一种高速专用通信链路，可以链接到 Azure 中的服务。 
@@ -60,7 +60,7 @@ Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编
 
 如何选择这两种模式取决于客户的需求，以及目前提供 Azure 服务的具体需要。 有关这些模型的详细信息以及关联的基于角色的访问控制、网络和标识设计模式在以下链接中有详尽介绍：
 
-* **基于角色的访问控制 (RBAC)** – RBAC 基于 Azure Active Directory。  有关 Azure RBAC 的详细信息，请参阅 [此处](../role-based-access-control/role-assignments-portal.md)。
+* **Azure 基于角色的访问控制（AZURE RBAC）** – RBAC 基于 Azure Active Directory。  有关 Azure RBAC 的详细信息，请参阅 [此处](../role-based-access-control/role-assignments-portal.md)。
 * **网络** – 介绍有关 Microsoft Azure 中网络的各种主题。
 * **Azure Active Directory (Azure AD)** – Azure AD 提供针对 Microsoft Azure 和第三方 SaaS 应用程序的标识管理。 有关 Azure AD 的详细信息，请参阅 [此处](https://azure.microsoft.com/documentation/services/active-directory/)。  
 
@@ -130,5 +130,5 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 如需更多信息，可单击以下链接：
 
 [云解决方案提供商计划中的 Azure](https://docs.microsoft.com/azure/cloud-solution-provider)。  
-[做好以云解决方案提供商身份进行事务处理的准备](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)。  
-[Microsoft 云解决方案提供商资源](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources)。
+[做好以云解决方案提供商身份进行事务处理的准备](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch)。  
+[Microsoft 云解决方案提供商资源](https://partner.microsoft.com/solutions/cloud-reseller-resources)。

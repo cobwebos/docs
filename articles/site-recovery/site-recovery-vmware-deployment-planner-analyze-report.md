@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 901f4a9d4fd53f665c3d078f5e463dcde2af1882
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699186"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654865"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署规划器报表以从 VMware 灾难恢复到 Azure
 
@@ -160,7 +161,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 ![VM-存储位置](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**复制存储类型**：标准或高级托管磁盘，用于复制要**放置的 vm**中提到的所有相应 vm。
+**复制存储类型**：标准或高级托管磁盘，用于复制要 **放置的 vm** 中提到的所有相应 vm。
 
 **日志存储帐户类型**：所有复制日志存储在标准存储帐户中。
 
@@ -177,7 +178,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **VM 名称**：VM 名称或 IP 地址，生成报告时在 VMListFile 中使用。 此列还列出附加到 VM 的磁盘 (VMDK)。 为了区分使用重复名称或 IP 地址的 vCenter VM，这些名称包含 ESXi 主机名称。 列出的 ESXi 主机是在其中放置了 VM 的主机，该 VM 是在分析期间通过工具发现后放置的。
 
-**VM 兼容性**：值为 **"是"** 和 **"是 \* **"。 **是** \*适用于 VM 适合[高级 ssd](../virtual-machines/windows/disks-types.md)的实例。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
+**VM 兼容性**：值为 **"是"** 和 **"是 \* **"。 **是** \*适用于 VM 适合[高级 ssd](../virtual-machines/disks-types.md)的实例。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15
 * 256 GB 到 512 GB 为 P20。
@@ -189,7 +190,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **存储类型**：标准或高级。
 
-**为复制创建的 Asrseeddisk （托管磁盘）**：启用复制时创建的磁盘的名称。 它将数据及其快照存储在 Azure 中。
+**为复制创建的 Asrseeddisk (托管磁盘) **：启用复制时创建的磁盘的名称。 它将数据及其快照存储在 Azure 中。
 
 **峰值读/写 IOPS (包括增长系数)**：磁盘上的峰值工作负荷读/写 IOPS（默认为第 95 百分位），包括将来的增长系数（默认为 30%）。 请注意，VM 的读/写 IOPS 总数并非总是该 VM 各个磁盘的读/写 IOPS 之和，因为在分析期间，该 VM 每分钟的读/写 IOPS 峰值是其各个磁盘的读/写 IOPS 之和的峰值。
 

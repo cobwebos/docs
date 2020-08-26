@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960456"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072018"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -147,12 +148,12 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |媒体服务动态保护 |
 | **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
-| **源** |媒体服务流式处理终结点 |
+| **格式** |媒体服务流式处理终结点 |
 | **密钥管理** |不需要参考实现 |
 | **内容管理** |一个 C# 控制台应用程序 |
 
@@ -226,7 +227,7 @@ DRM 子系统可能包含以下组件：
 有关 Azure AD 的信息：
 
 * 可以在 [Azure Active Directory 开发人员指南](../../active-directory/azuread-dev/v1-overview.md)中找到面向开发人员的信息。
-* 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-administer.md)中找到面向管理员的信息。
+* 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-whatis.md)中找到面向管理员的信息。
 
 ### <a name="some-issues-in-implementation"></a>实现中的一些问题
 请使用以下故障排除信息来帮助解决实现问题。
@@ -295,7 +296,7 @@ DRM 子系统可能包含以下组件：
 
 Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对此令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且来自 Azure AD，应用程序验证令牌的签名。 应用程序可以使用由 Azure AD 公开且包含在租户联合元数据文档中的公钥。 此公钥以及衍生它的签名密钥是由 Azure AD 中所有租户使用的同一个密钥。
 
-有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](../../active-directory/active-directory-signing-key-rollover.md)。
+有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](../../active-directory/develop/active-directory-signing-key-rollover.md)。
 
 在[公钥-私钥对](https://login.microsoftonline.com/common/discovery/keys/)之间：
 
@@ -328,7 +329,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 * Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
 * 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的“Authorization”标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 进行验证。 如果验证成功，则返回所需的资源。
 
-在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code)描绘了授权代码授予流的工作原理。
+在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)描绘了授权代码授予流的工作原理。
 
 在具有令牌限制的许可证获取中，遵循相同的受信任子系统模式。 媒体服务中的许可证传送服务是 Web API 资源，即 Web 应用程序需要访问的“后端资源”。 那么，访问令牌位于何处？
 
@@ -405,7 +406,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **域** |
+| **域名** | **Domain** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |
@@ -469,7 +470,7 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文档讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、媒体服务和媒体播放器。
 

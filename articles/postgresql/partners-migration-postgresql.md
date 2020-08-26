@@ -7,11 +7,12 @@ manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c2de10f5fbacd689a9ae92eb1f7295cccea3fb6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289775"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279255"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL 迁移合作伙伴
 为了广泛支持 Azure Database for PostgreSQL 解决方案，可从众多行业领先的合作伙伴和工具中进行选择。 本文重点介绍了提供支持 Azure Database for PostgreSQL 的迁移解决方案的 Microsoft 合作伙伴。
@@ -27,7 +28,7 @@ ms.locfileid: "76289775"
 | ![Pactera][6] |**Pactera**<br>Pactera 是一家全球性公司，为世界领先的企业提供咨询、数字、技术和运营服务。 从最初的工程设计到最近的数字转换，他们为客户提供了竞争优势。 其成熟的方法和工具可确保数据安全、可信和准确。|[网站][pactera_website]<br>[Twitter][pactera_twitter]<br>[联系人][pactera_contact] | |
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 Microsoft 的其他一些合作伙伴，请参阅 [Microsoft 合作伙伴网站](https://partner.microsoft.com/en-US/)。
+若要详细了解 Microsoft 的其他一些合作伙伴，请参阅 [Microsoft 合作伙伴网站](https://partner.microsoft.com/)。
 
 <!--Image references-->
 [1]: ./media/partner-migration-postgresql/SNP_Logo.png

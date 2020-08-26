@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: fd1a7f133c5719873133554fc2292e94e6fe26a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c7826b09ef063d572a98fb344f6862cc8310aa86
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75980333"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495960"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
 2. 单击“创建资源” > “监视 + 管理” > “备份和站点恢复”。
@@ -17,6 +17,6 @@ ms.locfileid: "75980333"
 4. [创建一个资源组](../articles/azure-resource-manager/templates/deploy-portal.md)或选择现有的资源组。 指定 Azure 区域。 
 5. 要从仪表板快速访问保管库，请单击“固定到仪表板” > “创建”。
 
-   ![新保管库](./media/site-recovery-create-vault/new-vault-settings.png)
+   ![恢复服务保管库创建选项的屏幕截图。](./media/site-recovery-create-vault/new-vault-settings.png)
 
-   新保管库会显示在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页面上。  
+   新保管库会显示在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页面上。

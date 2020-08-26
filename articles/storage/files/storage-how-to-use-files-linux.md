@@ -1,32 +1,32 @@
 ---
 title: 通过 Linux 使用 Azure 文件 | Microsoft Docs
-description: 了解如何在 Linux 上通过 SMB 装载 Azure 文件共享。
+description: 了解如何在 Linux 上通过 SMB 装载 Azure 文件共享。 请参阅必备组件列表。 查看 Linux 客户端上的 SMB 安全注意事项。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509840"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053161"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
 
 在 Linux 上装载 Azure 文件共享的建议方法是使用 SMB 3.0。 默认情况下，Azure 文件存储要求进行传输中加密，而只有 SMB 3.0 支持传输中加密。 Azure 文件存储也支持 SMB 2.1，但后者不支持传输中加密，同时出于安全原因，不可以使用 SMB 2.1 从另一 Azure 区域或本地装载 Azure 文件共享。 除非应用程序专门需要用到 SMB 2.1，否则几乎没有任何理由使用它，因为最近发布的最流行 Linux 分发版都支持 SMB 3.0：  
 
-| | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
+| Linux 分发版 | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
 | --- | :---: | :---: |
 | Ubuntu | 14.04+ | 16.04+ |
 | Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ | 10+ |
 | openSUSE | 13.2+ | 42.3+ |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12+ | 12 SP2+ |
 
 如果使用的是上表中未列出的 Linux 分发版，可以通过检查 Linux 内核版本，来确定所用 Linux 分发版是否支持提供加密功能的 SMB 3.0。 提供加密功能的 SMB 3.0 已添加到 Linux 内核版本 4.11。 `uname` 命令将返回所用 Linux 内核的版本：
 

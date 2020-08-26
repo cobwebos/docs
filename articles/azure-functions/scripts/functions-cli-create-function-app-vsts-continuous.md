@@ -3,13 +3,13 @@ title: 使用 DevOps 开发创建函数应用 - Azure CLI
 description: 创建 Function App 并从 Azure DevOps 部署函数代码
 ms.date: 07/03/2018
 ms.topic: sample
-ms.custom: mvc
-ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 773a08646f7a69e1ed828621bad48a6c6729eb88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75922645"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498512"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>在 Azure 中创建从 Azure DevOps 部署的函数
 

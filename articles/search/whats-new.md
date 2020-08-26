@@ -6,19 +6,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/10/2020
-ms.openlocfilehash: d2567a5a0374fd05f17e1153c3b2d7f3df50e0d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: c5990faab1e06961a2c3d577a4677d2e1d504699
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246990"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904058"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
 
-## <a name="feature-announcements"></a>功能增强
+## <a name="feature-announcements-in-2020"></a>2020 版功能公告
+
+### <a name="august-2020"></a>2020 年 8 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
+|---------|------------------|-------------|---------------|
+| [双重加密](search-security-overview.md#encryption) | 安全性 | 通过对新的搜索服务配置客户管理的密钥 (CMK) 加密，在存储层启用双重加密。 创建新服务，[配置客户管理的密钥并应用于](search-security-manage-encryption-keys.md)索引或同义词映射，可受益于对该内容进行的双重加密。 | 2020 年 8 月 1 日后在以下区域创建的所有搜索服务都公开可用：美国西部 2、美国东部、美国中南部、US Gov 弗吉尼亚州、US Gov 亚利桑那州。 使用门户、管理 REST API 或 SDK 创建服务。 |
+
+### <a name="july-2020"></a>2020 年 7 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
+|---------|------------------|-------------|---------------|
+| [Azure.Search.Documents 客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | 用于 .NET 的 Azure SDK | .NET 客户端库，由 Azure SDK 团队发布，旨在保持与其他 .NET 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30，但尚不支持知识存储、地理空间类型或 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)。 <br/><br/>有关详细信息，请参阅[快速入门：创建索引](search-get-started-dotnet.md)和[升级到 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式发布。 </br> 从 NuGet 安装 [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
+| [azure.search.documents 客户端库](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | 用于 Python 的 Azure SDK| Python 客户端库，由 Azure SDK 团队发布，旨在保持与其他 Python 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 PyPI 安装 [azure-search-documents 包](https://pypi.org/project/azure-search-documents/)。 |
+| [@azure/search-documents 客户端库](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | 用于 JavaScript 的 Azure SDK | JavaScript 客户端库，由 Azure SDK 团队发布，旨在保持与其他 JavaScript 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 npm 安装 [@azure/search-documents 包](https://www.npmjs.com/package/@azure/search-documents)。 |
 
 ### <a name="june-2020"></a>2020 年 6 月
 

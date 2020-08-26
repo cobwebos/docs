@@ -6,16 +6,16 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 06/30/2020
+ms.date: 08/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3505427ab88a2241aa2781366c3d15179b03f050
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 55bf91a0f01c66d43d87b734ce66b68f3995c1c3
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225591"
 ---
-# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
+# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等位置
 
 > [!div class="op_single_selector"]
 > * [按提供商列出的位置](expressroute-locations.md)
@@ -44,7 +44,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | --- | --- | --- |
 | **澳大利亚政府** |澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
 | **欧洲** | 法国中部、法国南部、德国北部、德国中西部、北欧、挪威东部、挪威西部、瑞士北部、瑞士西部、英国西部、英国南部、西欧 |阿姆斯特丹、阿姆斯特丹 2、柏林、哥本哈根、都柏林、法兰克福、日内瓦、伦敦、伦敦 2、马赛、米兰、慕尼黑、纽波特（威尔士）、奥斯陆、巴黎、斯塔万格、斯德哥尔摩、苏黎世 |
-| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大，芝加哥，达拉斯，丹佛，拉斯维加斯，洛杉矶，迈阿密，明尼阿波利斯，纽约，Queretaro (墨西哥) ，San Antonio，西雅图，硅谷，硅谷 Valley2，华盛顿特区，华盛顿 DC2，蒙特利尔，魁北克城，多伦多，范特区 |
+| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大，芝加哥，达拉斯，丹佛，拉斯维加斯，洛杉矶，洛杉矶 Angeles2，迈阿密，明尼阿波利斯，纽约，Queretaro (墨西哥) ，San Antonio，西雅图，硅谷，硅 Valley2，华盛顿特区，华盛顿 DC2，蒙特利尔，魁北克城，多伦多，范特区 |
 | **亚洲** | 东亚、东南亚 | 曼谷、中国香港特别行政区、中国香港特别行政区 2、雅加达、吉隆坡、新加坡、新加坡 2、中国台北 |
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 日本西部、日本东部 |大阪、东京、东京 2 |
@@ -82,7 +82,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Aryaka Networks](https://www.aryaka.com/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、圣保罗、西雅图、硅谷、新加坡、东京、华盛顿特区 |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |支持 |支持 |圣保罗 |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、法兰克福、伦敦、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
-| **[AT TOKYO](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | 支持 | 支持 | 东京 2 |
+| **[AT TOKYO](https://www.attokyo.com/connectivity/azure.html)** | 支持 | 支持 | 大阪、Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支持 | 支持 | 东京 |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |支持 |支持 |开普敦、约翰内斯堡|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支持 |支持 |蒙特利尔、多伦多、魁北克市 |
@@ -105,11 +105,11 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **du datamena** |支持 |支持 | 迪拜 2 |
 | **eir** |支持 |支持 |都柏林|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |支持 |支持 |新加坡、新加坡 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、都柏林、法兰克福、Geneva、香港特别行政区、伦敦、London2、洛杉矶、墨尔本、迈阿密、Milan、纽约、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、斯德哥尔摩、悉尼、东京、多伦多、华盛顿特区 |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、都柏林、法兰克福、Geneva、香港特别行政区、伦敦、London2、洛杉矶、洛杉矶、墨尔本、迈阿密、Milan、纽约、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、斯德哥尔摩、悉尼、东京、多伦多、 |
 | **Etisalat UAE** |支持 |支持 |迪拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |支持 |支持 |阿姆斯特丹，Amsterdam2，都柏林，法兰克福，伦敦 |
 | **FarEasTone** |支持 |支持 |台北|
-| **GÉANT** |支持 |支持 |阿姆斯特丹、都柏林、法兰克福、马赛 |
+| **GÉANT** |支持 |支持 |阿姆斯特丹、Amsterdam2、都柏林、法兰克福、马赛 |
 | **GTT** |支持 |支持 |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | 支持| 支持 | 金奈、孟买 |
 | **Intelsat** | 支持 | 支持 | 华盛顿特区 2 |
@@ -133,6 +133,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、洛杉矶、迈阿密、圣保罗、华盛顿特区 |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本、珀斯、悉尼、悉尼 2 |
+| **[称](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |支持 |支持 |阿姆斯特丹 2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、洛杉矶、大阪、新加坡、悉尼、东京、华盛顿特区 |
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |支持 |支持 |东京 |
 | **[NTT Global DataCenters EMEA](https://www.ntt.com/en/services/data-center.html)** |支持 |支持 |柏林 |
@@ -147,7 +148,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |支持 |支持 |首尔 |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | 支持 |支持 | 华盛顿特区 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支持 |支持 |金奈、孟买 2 |
-| **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |支持 |支持 |新加坡、新加坡 2 |
+| **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |支持 |支持 |香港 Kong2、新加坡、新加坡2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |支持 |支持 |大坂、东京 |
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |支持 |支持 |奥克兰、悉尼 |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
@@ -355,7 +356,7 @@ Azure 国家/地区云彼此独立，是全球商业 Azure 的一部分。 一�
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | 亚洲 |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | 欧洲 |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 北美 |
-| **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | 北美 |
+| **[Presidio](https://www.presidio.com/subpage/1107/microsoft-azure)** | 北美 |
 | **[sol-tec](https://www.sol-tec.com/what-we-do/)** | 欧洲 |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | 南美洲 |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | 澳大利亚 |

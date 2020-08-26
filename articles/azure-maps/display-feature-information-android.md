@@ -1,6 +1,6 @@
 ---
 title: 显示 Azure Maps Android SDK 中的功能信息 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure map Android SDK 显示地图上的功能信息。
+description: 了解如何在用户与地图功能交互时显示信息。 使用 Azure Maps Android SDK 显示 toast 消息和其他类型的消息。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75911687"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009029"
 ---
 # <a name="display-feature-information"></a>显示功能信息
 

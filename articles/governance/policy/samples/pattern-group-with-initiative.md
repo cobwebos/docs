@@ -4,10 +4,10 @@ description: 此 Azure Policy 模式通过示例介绍了如何将策略定义�
 ms.date: 06/29/2020
 ms.topic: sample
 ms.openlocfilehash: 065e7632d76feccdd6d2d5a411ba7cdf50aeaf68
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85565695"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy 模式：将策略定义分组

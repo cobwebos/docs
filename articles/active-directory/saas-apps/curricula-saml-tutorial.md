@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Curricula SAML 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Curricula SAML 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2018f871-f1d8-42ac-86e1-cda2c61d70f5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1709ada2284f315b79c1c8430c374e2ed73e8092
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 5d4f61afcf90ff8443010987b188c02de57eeb35
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236332"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542626"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-curricula-saml"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Curricula SAML 的集成
 

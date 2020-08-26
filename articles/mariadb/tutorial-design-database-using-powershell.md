@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.custom: mvc
-ms.openlocfilehash: 6af5fa85306db885359d3de66a9a50f187015b75
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6c17c746dfe0ce81da4cfe486b830837c37cdda4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023950"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496026"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>教程：使用 PowerShell 设计 Azure Database for MariaDB
 
@@ -206,7 +206,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有相同的服务器管理员登录名和密码，该登录名和密码在开始还原时对现有服务器有效。 可以从新服务器的“概述”页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将还原原始服务器中的防火墙规则。
+还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 

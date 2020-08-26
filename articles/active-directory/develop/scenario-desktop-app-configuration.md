@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558850"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121096"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的桌面应用：代码配置
 
@@ -106,8 +107,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 若要详细了解如何配置 MSAL.NET 桌面应用程序，请执行以下操作：
 
-- 如需 `PublicClientApplicationBuilder` 上提供的所有修饰符的列表，请参阅参考文档 [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
-- 如需 `PublicClientApplicationOptions` 中公开的所有选项的说明，请参阅参考文档中的 [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)。
+- 如需 `PublicClientApplicationBuilder` 上提供的所有修饰符的列表，请参阅参考文档 [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
+- 如需 `PublicClientApplicationOptions` 中公开的所有选项的说明，请参阅参考文档中的 [PublicClientApplicationOptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)。
 
 ### <a name="complete-example-with-configuration-options"></a>包含配置选项的完整示例
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399499"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167702"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -31,25 +31,19 @@ ms.locfileid: "81399499"
 
 * 语音合成-使用[语音 SDK](quickstarts/text-to-speech-audio-file.md)或[REST API](rest-text-to-speech.md)通过标准、神经或自定义语音转换文本到语音转换。
 
-* 异步合成长音频-使用[长音频 API](long-audio-api.md)异步合成文本到语音文件，使其超过10分钟（例如音频书籍或讲座）。 不同于使用语音 SDK 或语音到文本 REST API 执行的合成，响应不会实时返回。 预期是：异步发送请求，对响应进行轮询，并在服务提供时下载合成音频。 仅支持自定义的神经声音。
+* 长音频的异步合成 - 使用[长音频 API](long-audio-api.md) 异步合成 10 分钟以上的文本转语音文件（例如有声书籍或讲座）。 不同于使用语音 SDK 或语音转文本 REST API 执行的合成，响应不会实时返回。 预期会异步发送请求，以轮询的方式获取响应，并会下载合成音频（在服务提供该音频的情况下）。 仅支持自定义的神经声音。
 
 * 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 45 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
-* 神经语音-深入的神经网络用于克服传统语音合成的限制，与语言中的压力和 intonation 有关。 诗体论预测和语音合成是同时执行的，这将导致更流畅和自然的输出。 可以使用神经语音与聊天机器人和语音助手进行交互，使其更加自然和吸引，将电子书等数字文本转换为 audiobooks，并增强汽车内导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经声音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+* 神经语音 - 深层神经网络用于克服有关口语中的重读和语调的传统语音合成限制。 韵律预测和语音合成以同步方式执行，使输出听起来更流畅且自然。 使用神经语音可使得与聊天机器人和语音助手的交流更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 * 语音合成标记语言 (SSML) - 一种基于 XML 的标记语言，用于自定义语音转文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅 [SSML](speech-synthesis-markup.md)。
 
 ## <a name="get-started"></a>入门
 
-文本转语音服务通过[语音 SDK](speech-sdk.md) 提供。 有几种常见方案可作为快速入门，以各种语言和平台提供：
+请参阅[快速入门](get-started-text-to-speech.md)，了解文本到语音转换的入门教程。 通过[语音 SDK](speech-sdk.md)、 [REST API](rest-text-to-speech.md)和[语音 CLI](spx-overview.md)提供文本到语音服务
 
-* [将语音合成为音频文件](quickstarts/text-to-speech-audio-file.md)
-* [将语音合成到扬声器](quickstarts/text-to-speech.md)
-* [异步合成长型音频](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-如果你愿意，可以通过 [REST](rest-text-to-speech.md) 来访问文本转语音服务。
-
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
 GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流行编程语言的文本转语音转换。
 

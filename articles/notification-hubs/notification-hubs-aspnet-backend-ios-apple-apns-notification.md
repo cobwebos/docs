@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530160"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004181"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送推送通知
 
@@ -40,17 +40,17 @@ ms.locfileid: "86530160"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程假定你已按照[使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)中所述创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
+本教程假设你已按照[使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)中所述的要求创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
 如果要使用移动应用作为后端服务，请参阅[移动应用中的推送通知入门](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>修改 iOS 应用
 
-1. 打开[使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)教程中创建的单页视图应用。
+1. 打开你在[使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)教程中创建的单页视图应用。
 
    > [!NOTE]
-   > 本节假定项目配置了空的组织名称。 如果未配置，需要在所有类名前面追加组织名称。
+   > 本节假定项目配置了空的组织名称。 否则，请在所有类名前面添加组织名称。
 
 2. 在 `Main.storyboard` 文件中，添加屏幕截图中显示的对象库中的组件。
 
@@ -58,15 +58,15 @@ ms.locfileid: "86530160"
 
    * **用户名**：包含占位符文本“*输入用户名*”的 UITextField，直接位于发送结果标签的下面并受左右边距的限制。
    * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距的限制。 选中属性检查器中“返回密钥”下的“安全文本输入”选项   。
-   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项  
+   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项
    * **WNS**：标签和开关，用于已在中心设置 Windows 通知服务时，启用将通知发送到 Windows 通知服务。 请参阅 [Windows 入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。
    * **GCM**：标签和开关，用于已在中心设置 Google Cloud Messaging 时，启用将通知发送到 Google Cloud Messaging。 请参阅 [Android 入门](notification-hubs-android-push-notification-google-gcm-get-started.md)教程。
    * **APNS**：标签和开关，用于启用将通知发送到 Apple 平台通知服务。
    * **收件人用户名**：包含占位符文本“收件人用户名标记”的 UITextField，直接位于 GCM 标签下，受左右边距限制**。
 
-     [使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)教程中添加了一些组件。
+     在[使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)教程中添加了一些组件。
 
-3. 按 **Ctrl** 的同时从视图中的组件拖至 `ViewController.h` 并添加这些新插座。
+3. **按住 Ctrl**的同时从视图中的组件拖到 `ViewController.h` 并添加这些新插座：
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ ms.locfileid: "86530160"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. 在 `ViewController.h` 中，在 import 语句后面添加以下 `#define`。 将 `<Enter Your Backend Endpoint>` 占位符替换为在上一部分中用于部署应用后端的目标 URL。 例如，`http://your_backend.azurewebsites.net`。
+4. 在 `ViewController.h` 中，在 import 语句后面添加以下 `#define`。 将 `<Your backend endpoint>` 占位符替换为在上一部分中用于部署应用后端的目标 URL。 例如，`http://your_backend.azurewebsites.net`：
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. 在项目中，创建一个名为 `RegisterClient` 的新 Cocoa Touch 类，以便与你创建的 ASP.NET 后端交互。 创建继承自 `NSObject` 的类。 然后在 `RegisterClient.h` 中添加以下代码。
+5. 在项目中，创建一个名为 `RegisterClient` 的新 Cocoa Touch 类，以便与你创建的 ASP.NET 后端交互。 创建继承自 `NSObject`的类。 然后在中添加以下代码 `RegisterClient.h` ：
 
     ```objc
     @interface RegisterClient : NSObject
@@ -290,7 +290,7 @@ ms.locfileid: "86530160"
 
     该类需要设置其属性 `authorizationHeader`，才能正常工作。 登录后，由 `ViewController` 类设置此属性。
 
-8. 在 `ViewController.h` 中，为 `RegisterClient.h` 添加一个 `#import` 语句。 然后在 `@interface` 部分中添加设备令牌的声明以及对 `RegisterClient` 实例的引用：
+8. 在 `ViewController.h` 中，为 `RegisterClient.h` 添加一个 `#import` 语句。 然后，在 `@interface` 中添加设备令牌的声明和对 `RegisterClient` 实例的引用：
 
     ```objc
     #import "RegisterClient.h"
@@ -341,9 +341,9 @@ ms.locfileid: "86530160"
     }
     ```
 
-    请注意设置设备令牌如何启用 "**登录**" 按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 在正确设置设备令牌之前，你不想让**登录**操作可访问。 只要登录操作发生在推送注册前，即可分离这两个操作。
+    请注意设置设备令牌时如何启用“登录”按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 你不希望在正确设置设备令牌之前能够访问“登录”操作。 只要登录操作发生在推送注册前，即可分离这两个操作。
 
-11. 在 ViewController 中，使用以下代码段实现 "**登录"** 按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法。
+11. 在 ViewController.m 中，使用以下代码片段实现“登录”按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法。
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -418,7 +418,7 @@ ms.locfileid: "86530160"
     }
     ```
 
-12. 更新“**发送通知**”按钮的操作以使用 ASP.NET 后端，发送开关启用的任何 PNS。
+12. 更新“发送通知”按钮的操作以使用 ASP.NET 后端，发送开关启用的任何 PNS  。
 
     ```objc
     - (IBAction)SendNotificationMessage:(id)sender
@@ -479,22 +479,22 @@ ms.locfileid: "86530160"
 ## <a name="test-the-application"></a>测试应用程序
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知无法在模拟器中正常工作）。
-2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击 "**登录**"。
+2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击“登录”。
 
     ![iOS 测试应用程序][2]
 
-3. 应看到弹出窗口通知你注册成功。 单击“确定”。
+3. 应看到弹出窗口通知你注册成功。 单击 **“确定”** 。
 
     ![显示的 iOS 测试通知][3]
 
-4. 在*“*收件人用户名标记*”文本字段中，输入用于从另一台设备注册的用户名标记。
-5. 输入通知消息，并单击“**发送通知**”。 只有使用该用户名标记注册的设备才会收到通知消息。 该消息将只发送给那些用户。
+4. 在“*收件人用户名标记”文本字段中，输入用于从另一台设备注册的用户名标记  。
+5. 输入通知消息，并单击“发送通知”  。 只有使用该用户名标记注册的设备才会收到通知消息。 该消息将只发送给那些用户。
 
     ![iOS 测试带标记的通知][4]
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何向其标记与注册相关联的特定用户推送通知。 若要了解如何推送基于位置的通知，请转到以下教程： 
+本教程介绍了如何向其标记与注册相关联的特定用户推送通知。 若要了解如何推送基于位置的通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
 >[推送基于位置的通知](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

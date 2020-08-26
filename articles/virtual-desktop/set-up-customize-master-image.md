@@ -1,29 +1,27 @@
 ---
 title: 准备和自定义主 VHD 映像-Azure
 description: 如何准备、自定义 Windows 虚拟桌面映像并将其上传到 Azure。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832519"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009505"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
+本文介绍如何准备用于上传到 Azure 的主虚拟硬盘 (VHD) 映像，包括如何创建虚拟机 (Vm) 并在其上安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
 
 ## <a name="create-a-vm"></a>创建 VM
 
 Azure 映像库中提供了 Windows 10 企业多会话。 自定义此映像有两个选项。
 
-第一种方法是按照[从托管映像创建 VM](../virtual-machines/windows/create-vm-generalized-managed.md)中的说明在 Azure 中预配虚拟机（VM），然后跳到[软件准备和安装](set-up-customize-master-image.md#software-preparation-and-installation)。
+第一种方法是按照[从托管映像创建 vm](../virtual-machines/windows/create-vm-generalized-managed.md)中的说明在 Azure 中预配虚拟机 (vm) ，然后跳到[软件准备和安装](set-up-customize-master-image.md#software-preparation-and-installation)。
 
 第二种方法是在本地创建映像，方法是下载映像，预配 Hyper-v VM，并根据需要对其进行自定义以满足您的需要，我们将在下一节中介绍。
 
@@ -72,7 +70,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 如果用户需要访问某些 LOB 应用程序，我们建议在完成本部分说明后安装这些应用程序。
 
-### <a name="set-up-user-profile-container-fslogix"></a>设置用户配置文件容器（FSLogix）
+### <a name="set-up-user-profile-container-fslogix"></a> (FSLogix 设置用户配置文件容器) 
 
 若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](/fslogix/configure-cloud-cache-tutorial/)测试 FSLogix 容器的功能。
 
@@ -99,7 +97,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
-### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>为 Windows 10 电脑指定开始布局（可选）
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>为 Windows 10 电脑指定开始布局 (可选) 
 
 运行此命令以指定 Windows 10 电脑的开始布局。
 
@@ -140,18 +138,18 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>包括其他语言支持
 
-本文不介绍如何配置语言和区域支持。 有关详细信息，请参阅以下文章：
+本文不介绍如何配置语言和区域支持。 有关详细信息，请参阅下列文章：
 
 - [将语言添加到 Windows 映像](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [按需功能](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
-- [按需语言和区域功能（FOD）](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
+- [语言和区域功能点播 (FOD) ](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>其他应用程序和注册表配置
 
 本部分介绍应用程序和操作系统配置。 本节中的所有配置都是通过可通过命令行和 regedit 工具执行的注册表项来完成的。
 
 >[!NOTE]
->可以通过组策略对象（Gpo）或注册表导入来实现配置中的最佳实践。 管理员可以根据组织的要求选择任一选项。
+>你可以在配置中通过 (Gpo) 或注册表导入来实现组策略的最佳实践。 管理员可以根据组织的要求选择任一选项。
 
 若要在 Windows 10 企业多会话上查看遥测数据的反馈中心集合，请运行以下命令：
 
@@ -189,12 +187,12 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 以下说明将告诉你如何将主映像上传到 Azure 存储帐户。 如果还没有 Azure 存储帐户，请按照[本文](/azure/developer/javascript/tutorial-vscode-static-website-node-03)中的说明创建一个。
 
-1. 将 VM 映像（VHD）转换为固定（如果尚未这样做）。 如果未将图像转换为固定图像，则无法成功创建映像。
+1. 将 VM 映像 (VHD) 转换为固定（如果尚未这样做）。 如果未将图像转换为固定图像，则无法成功创建映像。
 
 2. 将 VHD 上传到存储帐户中的 blob 容器。 可以通过[存储资源管理器工具](https://azure.microsoft.com/features/storage-explorer/)快速上传。 若要详细了解存储资源管理器工具，请参阅[此文](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
     > [!div class="mx-imgBorder"]
-    > ![Microsoft Azure 存储资源管理器工具搜索窗口的屏幕截图。 选中 "将 .vhd 或 vhdx 文件作为页 blob 上传（推荐）" 复选框。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > ![Microsoft Azure 存储资源管理器工具搜索窗口的屏幕截图。 选中 "将 .vhd 或 vhdx 文件作为页 blob 上传 (建议) " 复选框。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. 接下来，请在浏览器中转到 Azure 门户，搜索 "Images"。 你的搜索应该会引导你到 "**创建映像**" 页，如以下屏幕截图所示：
 

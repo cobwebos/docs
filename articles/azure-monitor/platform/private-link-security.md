@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077178"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -69,6 +69,23 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 ![AMPLS A 拓扑关系图](./media/private-link-security/ampls-topology-a-1.png)
 
 ![AMPLS B 拓扑关系图](./media/private-link-security/ampls-topology-b-1.png)
+
+### <a name="consider-limits"></a>考虑限制
+
+在规划专用链接设置时，应该考虑以下几个限制：
+
+* VNet 只能连接到1个 AMPLS 对象。 这意味着，AMPLS 对象必须提供对 VNet 应有权访问的所有 Azure Monitor 资源的访问权限。
+* Azure Monitor 资源（工作区或 Application Insights 组件）最多可以连接到5个 AMPLSs。
+* AMPLS 对象最多可连接到20个 Azure Monitor 资源。
+* AMPLS 对象最多可连接到10个私有终结点。
+
+在下面的拓扑中：
+* 每个 VNet 连接到1个 AMPLS 对象，因此它无法连接到其他 AMPLSs。
+* AMPLS B 连接到 2 Vnet：使用2/10 的可能的专用终结点连接。
+* AMPLS A 连接到2个工作区和1个 Application insights 组件：使用3/20 的可能 Azure Monitor 资源。
+* 工作区2连接到 AMPLS A 和 AMPLS B：使用2/5 的可能的 AMPLS 连接。
+
+![AMPLS 限制关系图](./media/private-link-security/ampls-limits.png)
 
 ## <a name="example-connection"></a>示例连接
 
@@ -137,13 +154,13 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 ## <a name="configure-log-analytics"></a>配置 Log Analytics
 
-转到 Azure 门户。 在 Azure Monitor 中，Log Analytics 工作区资源是左侧的“网络隔离”菜单项。 你可通过此菜单控制两种不同的状态。 
+转到 Azure 门户。 在 Log Analytics 工作区资源的左侧有一个菜单项 "**网络隔离**"。 你可通过此菜单控制两种不同的状态。 
 
 ![LA 网络隔离](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 首先，可将该 Log Analytics 资源连接到你有权访问的任意 Azure Monitor 专用链接范围。 单击“添加”并选择 Azure Monitor 专用链接范围。  单击“应用”进行连接。 所有已连接的范围都显示在此屏幕中。 建立此连接后，已连接的虚拟网络中的网络流量可到达此工作区。 建立此连接的效果与我们在[连接 Azure Monitor 资源](#connect-azure-monitor-resources)中所做的从范围连接它的效果一样。  
 
-其次，你能控制可如何从上述专用链接范围外部访问该资源。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。 该数据包括访问工作簿、仪表板、基于查询 API 的客户端体验、Azure 门户中的见解等等。 Azure 门户外部运行的、要使用 Log Analytics 数据的体验也必须在专用链接的 VNET 中运行。
+其次，你能控制可如何从上述专用链接范围外部访问该资源。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。 该数据包括访问工作簿、仪表板、基于查询 API 的客户端体验、Azure 门户中的见解等等。 在 Azure 门户外运行的体验，还必须在专用链接的 VNET 中运行查询 Log Analytics 数据。
 
 仅可以此方式限制对工作区中数据的访问。 配置更改（例如打开或关闭这些访问设置）由 Azure 资源管理器进行管理。 使用适当的角色、权限、网络控件和审核来限制对资源管理器的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](roles-permissions-security.md)。
 
@@ -162,26 +179,26 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 请注意，不使用门户的体验也必须在包含受监视工作负载的专用链接的 VNET 中运行。 
 
-需要将托管受监视工作负载的资源添加到专用链接中。 可在此[文档](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)中了解如何对应用服务执行此操作。
+需要将托管受监视工作负载的资源添加到专用链接中。 可在此[文档](../../app-service/networking/private-endpoint.md)中了解如何对应用服务执行此操作。
 
 仅可以此方式限制对 Application Insights 资源中数据的访问。 配置更改（例如打开或关闭这些访问设置）由 Azure 资源管理器进行管理。 转而使用适当的角色、权限、网络控件和审核来限制对资源管理器的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](roles-permissions-security.md)。
 
 > [!NOTE]
 > 若要完全保护基于工作区的 Application Insights，需要锁定对 Application Insights 资源和基础 Log Analytics 工作区的访问。
 >
-> 代码级诊断（探查器/调试器）需要提供自己的存储帐户以支持专用链接。 下面是有关如何执行此操作的[文档](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage)。
+> 代码级诊断（探查器/调试器）需要提供自己的存储帐户以支持专用链接。 下面是有关如何执行此操作的[文档](../app/profiler-bring-your-own-storage.md)。
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令行
 
 可使用 Azure 资源管理器模板和命令行接口将前面描述的过程自动化。
 
-若要创建和管理专用链接范围，请使用 [az monitor private-link-scope](https://docs.microsoft.com/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。 通过该命令可创建范围、关联 Log Analytics 工作区和 Application Insights 组件，还可添加/删除/批准专用终结点。
+若要创建和管理专用链接范围，请使用 [az monitor private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。 通过该命令可创建范围、关联 Log Analytics 工作区和 Application Insights 组件，还可添加/删除/批准专用终结点。
 
-要管理网络访问，请在 [Log Analytics 工作区](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 组件](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
+要管理网络访问，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
 
 ## <a name="collect-custom-logs-over-private-link"></a>通过专用链接收集自定义日志
 
-在自定义日志的引入过程中会使用存储帐户。 默认使用服务托管的存储帐户。 但若要通过专用链接引入自定义日志，必须使用你自己的存储帐户并将其与 Log Analytics 工作区关联。 请查看更多详细信息，了解如何使用[命令行](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)设置此类帐户。
+在自定义日志的引入过程中会使用存储帐户。 默认使用服务托管的存储帐户。 但若要通过专用链接引入自定义日志，必须使用你自己的存储帐户并将其与 Log Analytics 工作区关联。 请查看更多详细信息，了解如何使用[命令行](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)设置此类帐户。
 
 要详细了解如何使用你自己的存储帐户，请参阅[使用客户拥有的存储帐户引入日志](private-storage.md)
 
@@ -189,7 +206,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 ### <a name="agents"></a>代理
 
-要将遥测数据安全地引入 Log Analytics 工作区，必须在专用网络上使用最新版本的 Windows 和 Linux 代理。 旧版本无法在专用网络上加载监视数据。
+必须在专用网络上使用最新版本的 Windows 和 Linux 代理，才能启用到 Log Analytics 工作区的安全引入。 旧版本无法在专用网络上加载监视数据。
 
 **Log Analytics Windows 代理**
 
@@ -210,7 +227,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="programmatic-access"></a>以编程方式访问
 
-要在专用网络上将 REST API、[CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 或 PowerShell 与 Azure Monitor 结合使用，请在防火墙中添加 AzureActiveDirectory 和 AzureResourceManager [服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) 。
+要在专用网络上将 REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) 或 PowerShell 与 Azure Monitor 结合使用，请在防火墙中添加 AzureActiveDirectory 和 AzureResourceManager [服务标记](../../virtual-network/service-tags-overview.md) 。
 
 通过添加这些标记，可执行查询日志数据、创建和管理 Log Analytics 工作区及 AI 组件等操作。
 

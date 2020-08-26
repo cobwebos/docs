@@ -1,6 +1,6 @@
 ---
 title: 使用 Socket.io 构建 Node.js 应用程序 - Azure
-description: 了解如何在 Azure 上托管的 node.js 应用程序中使用 socket.io。
+description: 使用本教程来了解如何托管套接字。Azure 上基于 IO 的聊天应用程序。 Socket.IO 为 node.js 服务器和客户端提供实时通信。
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 5bea3bec68217881729f1daf8d75837e1d67e8ce
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919968"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142462"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
 
@@ -43,7 +44,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
     PS C:\> md node
     ```
 
-3. 将目录更改为 c:\\node 目录 
+3. 将目录更改为 c:\\node 目录
 
     ```powershell
     PS C:\> cd node
@@ -70,7 +71,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 
    ![资源管理器，显示从存档中解压缩的 examples\\chat 目录的内容][chat-contents]
 
-   上面屏幕截图中突出显示的项目是从 examples\\chat 目录复制的文件 
+   上面屏幕截图中突出显示的项目是从 examples\\chat 目录复制的文件
 3. 在 C:\\node\\chatapp\\WorkerRole1 目录中，删除 server.js 文件，然后将 app.js 文件重命名为 server.js     。 这会删除前面由 Add-AzureNodeWorkerRole cmdlet 创建的默认 server.js 文件并替换为聊天示例中的应用程序文件   。
 
 ### <a name="modify-serverjs-and-install-modules"></a>修改 Server.js 并安装模块
@@ -123,16 +124,16 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
     ```
 
    > [!NOTE]
-   > 如果启动模拟器遇到问题，如 Start-AzureEmulator：发生意外故障。  详细信息：遇到意外错误。通信对象 System.ServiceModel.Channels.ServiceChannel 不能用于通信，因为它处于“出错”状态。
+   > 如果在启动模拟器遇到问题，例如：Start-AzureEmulator：发生意外失败。  详细信息：遇到意外错误。通信对象 System.ServiceModel.Channels.ServiceChannel 不能用于通信，因为它处于“出错”状态。
    >
-   > 重新安装 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7-确保版本匹配。
+   > 重新安装 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7 - 请确保版本匹配。
 
 2. 打开浏览器并导航到 **http://127.0.0.1** 。
-3. 当浏览器窗口打开时，输入一个昵称，并按 Enter。
-   这样，就可以用特定昵称发布消息。 要测试多用户功能，请使用同一 URL 打开另外的浏览器窗口但输入不同的昵称。
+3. 浏览器窗口打开后，输入昵称，并按 Enter。
+   这样，就可以用特定昵称发布消息。 要测试多用户功能，请使用同一 URL 打开其他浏览器窗口但输入不同的昵称。
 
-   ![显示来自用户 1 和用户 2 的聊天消息的两个浏览器窗口](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
-4. 测试应用程序之后，发出以下命令停止仿真程序：
+   ![显示用户 1 和用户 2 聊天消息的两个浏览器窗口](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
+4. 测试应用程序之后，发出以下命令停止模拟器：
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
@@ -145,7 +146,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
     ```
 
    > [!IMPORTANT]
-   > 确保使用唯一名称，否则发布过程会失败。 部署完成后，浏览器将打开并导航到已部署的服务。
+   > 确保使用唯一名称，否则发布过程会失败。 部署完成后，会打开浏览器并导航到已部署的服务。
    >
    > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为用户的订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的“将应用程序部署到 Azure”  部分
    >
@@ -154,19 +155,19 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
    ![显示托管在 Azure 上的服务的浏览器窗口][completed-app]
 
    > [!NOTE]
-   > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的**将应用程序部署到 Azure** 部分
+   > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的“将应用程序部署到 Azure”部分
    >
    >
 
 应用程序现在即可在 Azure 上运行，并可使用 Socket.IO 在不同客户端之间中继聊天消息。
 
 > [!NOTE]
-> 为简单起见，此示例仅限于连接到同一实例的用户之间的聊天。 这意味着如果云服务创建两个辅助角色实例，用户将只能够与连接到同一辅助角色实例的其他用户聊天。 要缩放应用程序以使用多个角色实例，可以使用像 Service Bus 这样的技术在实例之间共享 Socket.IO 存储状态。 有关示例，请参阅[用于 Node.js GitHub 存储库的 Azure SDK](https://github.com/WindowsAzure/azure-sdk-for-node) 中的服务总线队列和主题使用示例。
+> 为简单起见，此示例仅限于连接到同一实例的用户之间的聊天。 这意味着如果云服务创建两个辅助角色实例，用户将只能够与连接到同一辅助角色实例的其他用户聊天。 要缩放应用程序以使用多个角色实例，可以使用像 Service Bus 这样的技术在实例之间共享 Socket.IO 存储状态。 有关示例，请参阅 [Azure SDK for Node.js GitHub 存储库](https://github.com/WindowsAzure/azure-sdk-for-node)中的服务总线队列和主题使用示例。
 >
 >
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已了解如何创建在 Azure 云服务中托管的基本聊天应用程序。 若要了解如何在 Azure 网站中托管此应用程序，请参阅[在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序][chatwebsite]。
+在本教程中，已了解如何创建托管于 Azure 云服务中的基本聊天应用程序。 若要了解如何在 Azure 网站中托管此应用程序，请参阅[在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序][chatwebsite]。
 
 有关详细信息，另请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/azure/developer/javascript/)。
 

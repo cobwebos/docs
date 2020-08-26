@@ -1,7 +1,7 @@
 ---
 title: 管理并发
 titleSuffix: Azure Storage
-description: 了解如何管理 Blob、队列、表和文件服务的并发。
+description: 了解如何在 Azure 存储中管理 Blob、队列、表和文件服务的并发。 了解所使用的三个主要数据并发策略。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504281"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030378"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 
@@ -27,7 +27,7 @@ ms.locfileid: "85504281"
 
 本文概述 Azure 存储平台如何通过为所有这三个并发策略提供一类支持来简化开发。  
 
-## <a name="azure-storage-simplifies-cloud-development"></a>Azure 存储简化云开发
+## <a name="azure-storage-simplifies-cloud-development"></a>Azure 存储可简化云开发
 
 Azure 存储服务支持所有三个策略，尽管它具有独特的功能，可以为乐观并发和悲观并发提供完全支持，因为该服务旨在采用强大的一致性模型，该模型用于保证，当存储服务提交数据插入或更新操作时，所有对该数据的进一步访问都会显示最新更新。 存储平台如果使用最终一致性模型，则在一名用户执行写入与其他用户可以查看已更新的数据之间存在着时滞，因而会使客户端应用程序开发复杂化，以防不一致性影响最终用户。  
 
@@ -35,7 +35,7 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 
 ## <a name="managing-concurrency-in-blob-storage"></a>在 Blob 存储中管理并发
 
-可以选择使用乐观并发模型或悲观并发模型，来管理对 Blob 服务中的 Blob 和容器的访问。 如果没有明确指定策略，则上次编写者赢是默认策略。  
+可选择使用乐观并发模型或悲观并发模型，来管理对 Blob 服务中的 Blob 和容器的访问。 如果不显式明确指定策略，则上次编写赢得默认。  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Blob 和容器的乐观并发
 
@@ -44,12 +44,12 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 此进程的概述如下：  
 
 1. 从存储服务检索 Blob，响应包括用于在存储服务中标识对象当前版本的 HTTP ETag 标头值。
-2. 在更新 Blob 时，应会在步骤 1 中获得的 ETag 值包括在发送到服务的请求的 **If-Match** 条件标头中。
+2. 在更新 Blob 时，应将在步骤 1 中获得的 ETag 值包括在发送到服务的请求的 **If-Match** 条件标头中。
 3. 该服务会将请求中的 ETag 值与 Blob 的当前 ETag 值进行比较。
 4. 如果 Blob 的当前 ETag 值与请求的 **If-Match** 条件标头中的 ETag 的版本不同，则该服务将 412 错误返回到客户端。 这向客户端表明，其他进程自客户端检索到 Blob 起已更新该 Blob。
 5. 如果 Blob 的当前 ETag 值与请求的 **If-Match** 条件标头中的 ETag 的版本相同，则该服务将执行请求的操作，并更新该 Blob 的当前 ETag 值，以说明它已创建新版本。  
 
-以下 C# 代码段（使用客户端存储库 4.2.0）显示一个简单示例，说明如何根据从以前检索到或插入的 Blob 属性访问的 ETag 值构造 **If-Match AccessCondition**。 然后，在更新该 Blob 时使用 **AccessCondition** 对象：**AccessCondition** 对象将 **If-Match** 标头添加到请求中。 如果其他进程已更新该 Blob，则 Blob 服务将返回 HTTP 412（不满足前提条件）状态消息。 可以在此处下载完整示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
+以下 C# 代码段（使用客户端存储库 4.2.0）显示一个简单示例，说明如何根据从以前检索到或插入的 Blob 属性访问的 ETag 值构造 **If-Match AccessCondition**。 然后，在更新该 Blob 时使用 **AccessCondition** 对象：**AccessCondition** 对象将 **If-Match** 标头添加到请求中。 如果其他进程已更新该 Blob，则 Blob 服务返回 “HTTP 412 (不满足前提条件)”状态消息。 可以在此处下载完整示例：[Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发）。  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -84,11 +84,11 @@ catch (StorageException ex)
 }  
 ```
 
-Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Unmodified-Since 和 If-None-Match，以及这些标头的组合。 有关详细信息，请参阅[为 Blob 服务操作指定条件标头](https://msdn.microsoft.com/library/azure/dd179371.aspx)。  
+Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Unmodified-Since 和 If-None-Match，以及这些标头的组合  。 有关详细信息，请参阅[为 Blob 服务操作指定条件标头](https://msdn.microsoft.com/library/azure/dd179371.aspx)。  
 
-下表概述接受条件标头（例如请求中的 **If-Match**）的容器操作，以及在响应中返回 ETag 值的容器操作。  
+下表概述接受条件标头（例如请求中的 **If-Match** ）的容器操作，以及在响应中返回 ETag 值的容器操作。  
 
-| Operation | 返回容器的 ETag 值 | 接受条件标头 |
+| 操作 | 返回容器的 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 创建容器 |是 |否 |
 | 获取容器属性 |是 |否 |
@@ -100,11 +100,11 @@ Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Un
 | 租赁容器 |是 |是 |
 | 列出 Blob |否 |否 |
 
-(*) 将缓存由 SetContainerACL 定义的权限，传播这些权限的更新需要 30 秒的时间，在此期间，不保证更新是一致的。  
+(*) 缓存由 SetContainerACL 定义的权限，传播这些权限的更新需要 30 秒的时间，在此期间，不保证更新是一致的。  
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的 Blob 操作，以及在响应中返回 ETag 值的 Blob 操作。
 
-| Operation | 返回 ETag 值 | 接受条件标头 |
+| 操作 | 返回 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 放置 Blob |是 |是 |
 | 获取 Blob |是 |是 |
@@ -127,11 +127,11 @@ Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Un
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Blob 的悲观并发
 
-若要锁定 Blob 以供独占使用，可以对该 Blob 获得[租约](https://msdn.microsoft.com/library/azure/ee691972.aspx)。 在获取租约时，可以指定需要该租约的时长：该值可以介于 15 到 60 秒之间，也可以是无限期（相当于独占锁）。 可以续订有限期租约来延展该租约，也可以在租约完成后将其释放。 Blob 服务在有限期租约到期时会自动释放这些租约。  
+若要锁定 Blob 以供独占使用，可以对该 Blob 获得[租约](https://msdn.microsoft.com/library/azure/ee691972.aspx)。 在获取租约时，可以指定需要该租约的时长：该值可以介于 15 到 60 秒之间，也可以是无限期（相当于独占锁）。 可续订有限期租约来延长租约，也可在租约完成后将其释放。 Blob 服务在有限期租约到期时会自动释放这些租约。  
 
 租约允许支持各种同步策略，包括独占写入/共享读取、独占写入/独占读取和共享写入/独占读取。 如果租约存在，则存储服务会强制执行独占写入（放置、设置和删除操作），但是，若要确保读取操作的独占性，开发人员需要确保所有客户端应用程序都使用一个租约 ID，并且一次只有一个客户端具有有效的租约 ID。 不包括租约 ID 的读取操作会导致共享读取。  
 
-以下 C# 代码段显示一个示例，说明如何在 30 秒内对 Blob 获取独占租约，更新 Blob 的内容，并释放该租约。 尝试获取新租约时，如果 Blob 中已经存在有效租约，则 Blob 服务将返回“HTTP (409) 冲突”状态结果。 在发出请求以在存储服务中更新 Blob 时，以下代码段使用 **AccessCondition** 对象封装租约信息。  可以在此处下载完整示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+以下 C# 代码段显示一个示例，说明如何在 30 秒内对 Blob 获取独占租约，更新 Blob 的内容，并释放该租约。 尝试获取新租约时，如果 Blob 中已经存在有效租约，则 Blob 服务将返回“HTTP (409) 冲突”状态结果。 在发出请求以在存储服务中更新 Blob 时，以下代码段使用 **AccessCondition** 对象封装租约信息。  可以在此处下载完整示例：[Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发）。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -179,11 +179,11 @@ catch (StorageException ex)
 * 制作 Blob 快照 - 可选租约 ID（如果租约存在）
 * 复制 Blob - 如果目标 Blob 中存在租约，则需要提供租约 ID
 * 中止复制 Blob - 如果目标 Blob 中存在无限期租约，则需要提供租约 ID
-* 租用 Blob  
+* 租赁 Blob  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>容器的悲观并发
 
-同 Blob 中的租约一样，容器中的租约可以实现对同步策略（独占写入/共享读取、独占写入/独占读取和共享写入/独占读取）的支持，但是，与 Blob 不同，存储服务仅对删除操作强制实施独占性。 要删除具有活动租约的容器，客户端必须将活动租约 ID 包括在删除请求中。 在不包括租约 ID 的情况下，对租赁容器的其他所有容器操作都将成功，在这种情况下，这些操作是共享操作。 如果需要更新（放置或设置）或读取操作的独占性，则开发人员应确保所有客户端都使用一个租约 ID，而且一次只有一个客户端具有有效的租约 ID。  
+同 Blob 中的租约一样，容器中的租约可以实现对同步策略（独占写入/共享读取、独占写入/独占读取和共享写入/独占读取）的支持，但是，与 Blob 不同，存储服务仅对删除操作强制实施独占性。 要删除具有活动租约的容器，客户端必须将活动租约 ID 包括在删除请求中。 在不包括租约 ID 的情况下，对租赁容器的其他所有容器操作都会成功，在这种情况下，这些操作是共享操作。 如果需要更新（放置或设置）或读取操作的独占性，则开发人员应确保所有客户端都使用一个租约 ID，而且一次只有一个客户端具有有效的租约 ID。  
 
 以下容器操作可以使用租约来管理悲观并发：  
 
@@ -203,19 +203,19 @@ catch (StorageException ex)
 
 ## <a name="managing-concurrency-in-table-storage"></a>在表存储中管理并发
 
-在处理实体时，表服务使用乐观并发检查作为默认行为，而 Blob 服务不同，必须明确选择执行乐观并发检查。 表服务与 Blob 服务之间的另一个区别在于，使用表服务，只能管理实体的并发行为，而使用 Blob 服务，既可以管理容器的并发，又可以管理 Blob 的并发。  
+处理实体时，表服务使用乐观并发检查作为默认行为，而 Blob 服务不同，必须明确选择执行乐观并发检查。 表服务与 Blob 服务之间的另一个区别在于，使用表服务，只能管理实体的并发行为，而使用 Blob 服务，既可以管理容器的并发，又可以管理 Blob 的并发。  
 
-要使用乐观并发，并检查其他进程是否自你从表存储服务检索到实体起修改了该实体，可以使用在表服务返回实体时获得的 ETag 值。 此进程的概述如下：  
+若要使用乐观并发，并检查其他进程是否自从表存储服务检索到实体起修改了该实体，可使用在表服务返回实体时获得的 ETag 值。 此进程的概述如下：  
 
 1. 从表存储服务检索实体，响应包括用于标识与存储服务中的该实体关联的当前标识符的 ETag 值。
-2. 在更新实体时，应会在步骤 1 中获得的 ETag 值包括在发送到服务的请求的必需 **If-Match** 标头中。
+2. 更新实体时，应将在步骤 1 中获得的 ETag 值包括在发送到服务的请求的必需 **If-Match** 标头中。
 3. 该服务会将请求中的 ETag 值与实体的当前 ETag 值进行比较。
-4. 如果实体的当前 ETag 值与请求的必需 **If-Match** 标头中的 ETag 不同，则该服务将 412 错误返回到客户端。 这向客户端表明，其他进程自该客户端检索到实体起已更新该实体。
+4. 如果实体的当前 ETag 值与请求的必需 **If-Match** 标头中的 Etag 不同，则该服务将 412 错误返回到客户端。 这向客户端表明，其他进程自该客户端检索到实体起已更新该实体。
 5. 如果实体的当前 ETag 值与请求中的必需 **If-Match** 标头内的 ETag 相同，或者 **If-Match** 标头包含通配符 (*)，则服务执行请求的操作并更新实体的当前 ETag 值以指出已更新该值。  
 
 请注意，与 Blob 服务不同，表服务要求客户端将 If-Match 标头包括在更新请求中。 但是，如果客户端在请求中将 **If-Match** 标头设置为通配符 (*)，则可以强制执行非条件更新（“以最后写入者为准”策略）并绕过并发检查。  
 
-以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务将返回 HTTP 412 (不满足前提条件) 状态消息。  可以在此处下载完整示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务返回 HTTP 412 (不满足前提条件) 状态消息。  可以在此处下载完整示例：[Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发）。
 
 ```csharp
 try
@@ -242,7 +242,7 @@ customer.ETag = "*";
 
 下表概述表实体操作是如何使用 ETag 值的：
 
-| Operation | 返回 ETag 值 | 需要 If-match 请求标头 |
+| 操作 | 返回 ETag 值 | 需要 If-match 请求标头 |
 |:--- |:--- |:--- |
 | 查询实体 |是 |否 |
 | 插入实体 |是 |否 |
@@ -252,9 +252,9 @@ customer.ETag = "*";
 | 插入或替换实体 |是 |否 |
 | 插入或合并实体 |是 |否 |
 
-请注意，**插入或替换实体**和**插入或合并实体**操作不可以执行任何并发检查，因为这些操作*不会*将 ETag 值发送到表服务。  
+请注意，**插入或替换实体**和**插入或合并实体**操作不可以执行任何并发检查，因为这些操作不会将 ETag 值发送到表服务。  
 
-一般情况下，使用表的开发人员应依靠乐观并发来开发可伸缩的应用程序。 如果需要悲观锁定，则开发人员在访问表时可采用的一种方法是，为每个表分配指定的 Blob，并在对该表执行操作前获取 Blob 中的租约。 这种方法要求应用程序确保在对表执行操作前，所有数据访问路径都获得租约。 还应注意，最短租赁时间为 15 秒，所以要慎重考虑伸缩性。  
+一般情况下，使用表的开发人员应依靠乐观并发来开发可伸缩的应用程序。 如果需要悲观锁定，则开发人员在访问表时可采用的一种方法是，为每个表分配指定的 Blob，并在对该表执行操作前获取 Blob 中的租约。 这种方法要求应用程序确保在对表执行操作前，所有数据访问路径都获得租约。 还应注意，最短租赁时间为 15 秒，这要求慎重考虑可伸缩性。  
 
 有关详细信息，请参阅：  
 
@@ -273,9 +273,9 @@ customer.ETag = "*";
 
 ## <a name="managing-concurrency-in-azure-files"></a>在 Azure 文件中管理并发
 
-文件服务可以使用下面两个不同的协议终结点访问：SMB 和 REST。 REST 服务不支持乐观锁定或悲观锁定，并且所有更新将遵循上次编写者赢策略。 SMB 客户端如果装载文件共享，则可以充分利用文件系统锁定机制来管理对共享文件的访问，包括可以执行悲观锁定。 在打开文件后，SMB 客户端会同时指定文件访问权限和共享模式。 如果将“文件访问权限”选项设置为“写入”或“读取/写入”，同时将“文件共享”模式设置为“无”，则将导致文件在关闭前被 SMB 客户端锁定。 如果尝试对 SMB 客户端已锁定的文件执行 REST 操作，则 REST 服务将返回状态代码 409 (冲突)，以及错误代码 SharingViolation。  
+文件服务可以使用下面两个不同的协议终结点访问：SMB 和 REST。 REST 服务不支持乐观锁定或悲观锁定，并且所有更新将遵循上次编写者赢策略。 SMB 客户端如果装载文件共享，则可以充分利用文件系统锁定机制来管理对共享文件的访问，包括可以执行悲观锁定。 在打开文件后，SMB 客户端会同时指定文件访问权限和共享模式。 如果将“文件访问权限”选项设置为“读取”或“读取/写入”，同时将“文件共享”模式设置为“无”，则将导致文件在关闭前被 SMB 客户端锁定。 如果尝试对 SMB 客户端已锁定的文件执行 REST 操作，则 REST 服务返回状态代码 409 (冲突)，以及错误代码 SharingViolation。  
 
-当 SMB 客户端打开文件以进行删除时，会将该文件标记为待删除，直到该文件上的其他所有 SMB 客户端打开句柄关闭为止。 当文件标记为待删除时，对该文件执行的任何 REST 操作将返回状态代码 409 (冲突)，以及错误代码 SMBDeletePending。 不返回状态代码 404 (找不到)，因为 SMB 客户端在关闭文件前，可能无法删除待删除标志。 换而言之，仅当删除文件后，才应返回状态代码 404 (找不到)。 请注意，当文件处于 SMB 待删除状态时，它不会包含在“列出文件”结果中。 另请注意，“REST 删除文件”和“REST 删除目录”操作以原子方式提交，不会导致待删除状态。  
+当 SMB 客户端打开文件以进行删除时，会将该文件标记为待删除，直到该文件上的其他所有 SMB 客户端打开句柄关闭为止。 当文件标记为待删除时，对该文件执行的任何 REST 操作返回状态代码 409 (冲突)，以及错误代码 SMBDeletePending。 不返回状态代码 404 (找不到)，因为 SMB 客户端在关闭文件前，可能无法删除待删除标志。 换而言之，仅当删除文件后，才应返回状态代码 404 (找不到)。 请注意，当文件处于 SMB 待删除状态时，它不会包含在“列出文件”结果中。 另请注意，“REST 删除文件”和“REST 删除目录”操作以原子方式提交，不会导致待删除状态。  
 
 有关详细信息，请参阅：  
 
@@ -285,7 +285,7 @@ customer.ETag = "*";
 
 对于本博客中引用的完整示例应用程序：  
 
-* [Managing Concurrency using Azure Storage - Sample Application](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发 - 示例应用程序）  
+* [使用 Azure 存储管理并发 - 示例应用程序](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 有关 Azure 存储的详细信息，请参阅：  
 

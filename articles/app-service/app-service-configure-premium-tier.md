@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9ef246079fc95b79a2dc7a3d33eba79da70c55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050373"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
@@ -87,7 +87,7 @@ az appservice list-locations --sku P1V2
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
-可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 通过脚本在 **PremiumV2** 层中自动执行应用创建。
+可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/) 通过脚本在 **PremiumV2** 层中自动执行应用创建。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -115,5 +115,5 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>更多资源
 
-[纵向扩展 Azure 中的应用](manage-scale-up.md)  
+[ Azure 中纵向扩展应用](manage-scale-up.md)  
 [手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen1 跨区域迁移 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 的跨区域迁移。
+description: 了解当你计划并完成迁移到 Azure Data Lake Storage Gen1 时应考虑的事项，因为它在新区域中可用。
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba28d767c11c15b2dd70eeed2b39e13b084a7500
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60518473"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191346"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>跨区域迁移 Azure Data Lake Storage Gen1
 

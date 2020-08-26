@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 08/18/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 4ed4f69ea3c994d9d1cc71e26e35b8d2b6021982
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cd3fd41d281708f4c1d9616db47f751f60e055cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251413"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589905"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -51,7 +51,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 5. 在“身份验证”页上，配置以下选项：
     - 将“服务主体”字段保留为“(新)默认服务主体”以创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
-    - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
+    - 启用 Kubernetes 基于角色的访问控制 (RBAC) 选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
     或者，可以使用托管标识而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
@@ -92,10 +92,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 [Kubernetes 部署][kubernetes-deployment] - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 [Kubernetes 服务][kubernetes-service] - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
-> [!TIP]
-> 在本快速入门中，请手动创建应用程序清单并将其部署到 AKS 群集。 在更实际的方案中，可以使用 [Azure Dev Spaces][azure-dev-spaces] 直接在 AKS 群集中快速地循环访问代码并对其进行调试。 可以跨 OS 平台和开发环境使用 Dev Spaces，并可与团队中的他人进行协作。
-
-在 Cloud Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令创建一个名为 `azure-vote.yaml` 的文件。 然后复制以下 YAML 定义：
+在 Cloud Shell 中，使用编辑器创建一个名为 `azure-vote.yaml` 的文件，如 `code azure-vote.yaml`、`nano azure-vote.yaml` 或 `vi azure-vote.yaml`。 然后复制以下 YAML 定义：
 
 ```yaml
 apiVersion: apps/v1

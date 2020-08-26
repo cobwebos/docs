@@ -2,26 +2,21 @@
 title: 教程：将 Azure Active Directory 与 SAP Cloud Platform 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SAP Cloud Platform 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168858"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 

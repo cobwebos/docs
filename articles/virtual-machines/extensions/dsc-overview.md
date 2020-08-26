@@ -3,8 +3,8 @@ title: 适用于 Azure 的 Desired State Configuration 概述
 description: 了解如何使用 PowerShell Desired State Configuration (DSC) 的 Microsoft Azure 扩展处理程序。 本文包括先决条件、体系结构和 cmdlet。
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: dsc
@@ -13,14 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9b609fd81c9f1013d2308dccd8ed22fb82aac149
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188529"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503338"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -46,7 +47,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 本指南假设读者熟悉以下概念：
 
 - **配置**：DSC 配置文档。
-- **节点**：DSC 配置的目标。 在本文档中，“节点”一律指 Azure VM。 
+- **节点**：DSC 配置的目标。 在本文档中，“节点”一律指 Azure VM。
 - **配置数据**：包含配置的环境数据的 psd1 文件。
 
 ## <a name="architecture"></a>体系结构
@@ -59,7 +60,7 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 - 如果已指定 **wmfVersion** 属性，除非该 WMF 版本与 VM 的 OS 不兼容，否则将安装该版本。
 - 如果未指定 **wmfVersion** 属性，则安装 WMF 的最新适用版本。
 
-安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof（[托管对象格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)）文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
+安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof（[托管对象格式](/windows/win32/wmisdk/managed-object-format--mof-)）文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
 
 ### <a name="default-configuration-script"></a>默认配置脚本
 
@@ -80,8 +81,8 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-对于节点配置名称，请确保在 Azure State Configuration 中存在节点配置。  如果不存在，扩展部署将返回失败。  另外，请确保使用“节点配置”的名称而不是“配置”的名称。 
-配置在用于[编译节点配置（MOF 文件）](https://docs.microsoft.com/azure/automation/automation-dsc-compile)的脚本中定义。
+对于节点配置名称，请确保在 Azure State Configuration 中存在节点配置。  如果不存在，扩展部署将返回失败。  另外，请确保使用“节点配置”的名称而不是“配置”的名称。
+配置在用于[编译节点配置（MOF 文件）](../../automation/automation-dsc-compile.md)的脚本中定义。
 该名称始终为 Configuration 后接句点 `.` 以及 `localhost` 或特定计算机名。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>资源管理器模板中的 DSC 扩展
@@ -92,7 +93,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 用于管理 DSC 扩展的 PowerShell cmdlet 最适合用于交互式故障排除和信息收集方案。 可以使用 cmdlet 来打包、发布和监视 DSC 扩展部署。 DSC 扩展的 cmdlet 尚未更新，无法使用[默认配置脚本](#default-configuration-script)。
 
-**Publish-AzVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包  。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
+**Publish-AzVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
 
 该 cmdlet 创建的 .ps1 配置脚本位于存档文件夹根目录中的 .zip 文件内。 模块文件夹位于资源的存档文件夹中。
 
@@ -102,7 +103,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 **Get-AzVMDscExtensionStatus** cmdlet 检索由 DSC 扩展处理程序启用的 DSC 配置的状态。 可在一个或一组 VM 上执行此操作。
 
-**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。  而只删除扩展处理程序。
+**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。 而只删除扩展处理程序。
 
 有关资源管理器 DSC 扩展 cmdlet 的重要信息：
 
@@ -113,7 +114,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 ### <a name="get-started-with-cmdlets"></a>cmdlet 入门
 
-Azure DSC 扩展可在部署过程中使用 DSC 配置文档直接配置 Azure VM。 此步骤不会将节点注册到自动化。 不会集中管理节点。 
+Azure DSC 扩展可在部署过程中使用 DSC 配置文档直接配置 Azure VM。 此步骤不会将节点注册到自动化。 不会集中管理节点。
 
 下面是一个简单的配置示例。 在本地将配置保存为 iisInstall.ps1。
 
@@ -176,27 +177,27 @@ az vm extension set \
 在门户中设置 DSC：
 
 1. 转到某个 VM。
-2. 在“设置”  下选择“扩展”  。
-3. 在创建的新页面中，依次选择“添加”、“PowerShell Desired State Configuration”   。
-4. 在扩展信息页面底部，单击“创建”  。
+2. 在“设置”下选择“扩展”。
+3. 在创建的新页面中，依次选择“添加”、“PowerShell Desired State Configuration” 。
+4. 在扩展信息页面底部，单击“创建”。
 
 门户收集以下输入：
 
-- **配置模块或脚本**：这是必填字段（[默认配置脚本](#default-configuration-script)的窗体尚未更新。 配置模块和脚本需要一个包含配置脚本的 .ps1 文件，或者需要一个 .zip 文件，其中的 .ps1 配置脚本位于根目录。 如果使用 .zip 文件，则必须将所有依赖资源包含在 .zip 的模块文件夹中。 可以使用 Azure PowerShell SDK 随附的 Publish-AzureVMDscConfiguration -OutputArchivePath cmdlet 来创建 .zip 文件  。 系统会将 .zip 文件上传到用户 Blob 存储中，并使用 SAS 令牌对其进行保护。
+- **配置模块或脚本**：这是必填字段（[默认配置脚本](#default-configuration-script)的窗体尚未更新。 配置模块和脚本需要一个包含配置脚本的 .ps1 文件，或者需要一个 .zip 文件，其中的 .ps1 配置脚本位于根目录。 如果使用 .zip 文件，则必须将所有依赖资源包含在 .zip 的模块文件夹中。 可以使用 Azure PowerShell SDK 随附的 Publish-AzureVMDscConfiguration -OutputArchivePath cmdlet 来创建 .zip 文件。 系统会将 .zip 文件上传到用户 Blob 存储中，并使用 SAS 令牌对其进行保护。
 
 - **配置的模块限定名称**：可以在 .ps1 文件中包含多个配置函数。 请输入配置 .ps1 脚本的名称，后跟 \\ 和配置函数的名称。 例如，如果 .ps1 脚本的名称为 configuration.ps1，而配置为 **IisInstall**，请输入 **configuration.ps1\IisInstall**。
 
 - **配置参数**：如果配置函数采用参数，请使用 **argumentName1=value1,argumentName2=value2** 格式在此处输入。 此格式与 PowerShell cmdlet 或资源管理器模板中接受的配置参数格式不同。
 
-- **配置数据 PSD1 文件**：你的配置需要 PSD1 中的配置数据文件，请使用此字段选择数据文件并将其上传到你的用户 blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
+- **配置数据 PSD1 文件**：如果你的配置需要中的配置数据文件 `.psd1` ，请使用此字段选择数据文件并将其上传到你的用户 blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
 
 - **WMF 版本**：指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。
 
-- **数据收集**：确定扩展是否将收集遥测数据。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)。
+- **数据收集**：确定扩展是否将收集遥测数据。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/)。
 
 - **版本**：指定要安装的 DSC 扩展的版本。 有关版本信息，请参阅 [DSC 扩展版本历史记录](/powershell/scripting/dsc/getting-started/azuredscexthistory)。
 
-- **自动升级次要版本**：此字段映射到 cmdlet 中的 **AutoUpdate** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”  将指示扩展处理程序使用最新可用版本，“否”  将强制安装指定的版本  。 既不选择“是”  也不选择“否”  相当于选择“否”  。
+- **自动升级次要版本**：此字段映射到 cmdlet 中的 **AutoUpdate** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”将指示扩展处理程序使用最新可用版本，“否”将强制安装指定的版本。 既不选择“是”也不选择“否”相当于选择“否”。
 
 ## <a name="logs"></a>日志
 

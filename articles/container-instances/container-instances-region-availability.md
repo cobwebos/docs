@@ -4,12 +4,12 @@ description: Azure 容器实例服务的计算和内存资源在不同 Azure 区
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583908"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500600"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "82583908"
 
 ## <a name="availability---general"></a>可用性 - 常规
 
-使用 Linux 和[受支持](container-instances-faq.md#what-windows-base-os-images-are-supported)的基于 Windows Server 2016 的容器的容器组提供以下区域和最大资源。
+以下区域和最大资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
 
 | 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -37,7 +37,7 @@ ms.locfileid: "82583908"
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809 部署（预览版）
 
-使用基于 Windows Server 2019 的容器（预览版）的容器组可以使用以下区域和最大资源。
+以下区域和最大资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
 
 | 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -47,16 +47,13 @@ ms.locfileid: "82583908"
 
 ## <a name="availability---virtual-network-deployment"></a>可用性 - 虚拟网络部署
 
-以下区域和最大资源可用于在[Azure 虚拟网络](container-instances-vnet.md)中部署的容器组。
+以下区域和最大资源可供部署在 [Azure 虚拟网络](container-instances-vnet.md)中的容器组使用。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 资源（预览版）
 
 以下是使用 [GPU 资源](container-instances-gpu.md)（预览版）部署的容器组可以使用的区域和最大资源数。
-
-> [!IMPORTANT]
-> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

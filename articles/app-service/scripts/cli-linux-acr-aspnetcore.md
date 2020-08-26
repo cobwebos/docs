@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/13/2018
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 64177d00b302f9df8a0b28067031bd7cc1b3a156
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-dotnet, mvc, seodec18
+ms.openlocfilehash: 51f1b40a6b429d478432e6ab440be68f8405e49a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057773"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207645"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>在应用服务的 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core 应用
 

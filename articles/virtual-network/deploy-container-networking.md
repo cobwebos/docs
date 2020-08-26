@@ -1,6 +1,6 @@
 ---
 title: 部署 Azure 虚拟网络容器网络 | Microsoft Docs
-description: 了解如何为自行部署的 Kubernetes 群集或者使用 ACS-Engine 部署的 Kubernetes 群集，以及为 Docker 容器来部署 Azure 虚拟网络容器网络接口 (CNI) 插件。
+description: 了解如何部署用于 Kubernetes 群集的 Azure 虚拟网络容器网络接口（CNI）插件。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289590"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虚拟网络容器网络接口插件
 

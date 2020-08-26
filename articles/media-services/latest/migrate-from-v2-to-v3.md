@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9ec677e356f5d4e70a49c9de10f0fdb2039917d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79472061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078060"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -64,9 +65,9 @@ ms.locfileid: "79472061"
 
     * 管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、 
     * 查看（而不是管理）v3 [资产](assets-concept.md)、 
-    * [获取有关访问 API 的信息](access-api-portal.md)。 
+    * [获取有关访问 API 的信息](./access-api-howto.md)。 
 
-    对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+    对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 * 需要在帐户中预配媒体预留单位 (MRU) 才能控制作业的并发和性能，特别是涉及到视频或音频分析的那些作业。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用[适用于媒体服务 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 门户](../previous/media-services-portal-scale-media-processing.md)或 [v2 API](../previous/media-services-dotnet-encoding-units.md) 来管理 MRU。 无论使用的是媒体服务 v2 还是 v3 API，都需要预配 MRU。
 * 无法使用 v2 API 来管理通过 v3 API 创建的媒体服务实体。  
 * 并非 V2 API 中的所有实体都自动出现在 V3 API 中。  以下是这两个版本中不兼容的实体的示例：  

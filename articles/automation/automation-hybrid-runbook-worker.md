@@ -3,14 +3,14 @@ title: Azure 自动化混合 Runbook 辅助角色概述
 description: 本文概述了混合 Runbook 辅助角色，可以使用这些辅助角色在本地数据中心或云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186242"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448082"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -77,21 +77,26 @@ Azure Automation 服务的服务标记仅提供用于以下方案的 Ip：
 >[!NOTE]
 >服务标记**GuestAndHybridManagement**目前不支持 Azure 沙盒中的 runbook 作业执行，只能直接在混合 Runbook 辅助角色上执行。
 
+## <a name="support-for-impact-level-5-il5"></a>对影响级别5的支持（IL5）
+
+Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，以支持以下两种配置中的任何一种的影响级别5工作负荷：
+
+* [独立虚拟机](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 部署时，它们会将整个物理主机用于该 VM，并提供所需的隔离级别，以支持 IL5 工作负荷。
+
+* [Azure 专用主机](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)，提供可承载一个或多个虚拟机的物理服务器，专用于一个 Azure 订阅。
+
+>[!NOTE]
+>通过混合 Runbook 辅助角色进行的计算隔离适用于 Azure 商业版和美国政府云。 
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的更新管理
 
-启用 Azure 自动化[更新管理](automation-update-management.md)后，任何连接到 Log Analytics 工作区的计算机都会自动配置为混合 Runbook 辅助角色。 每个辅助角色都可以支持针对更新管理的 Runbook。
+启用 Azure 自动化[更新管理](update-management/update-mgmt-overview.md)后，任何连接到 Log Analytics 工作区的计算机都会自动配置为混合 Runbook 辅助角色。 每个辅助角色都可以支持针对更新管理的 Runbook。
 
 以这种方式配置的计算机未注册到已在自动化帐户中定义的任何混合 Runbook 辅助角色组。 你可以将计算机添加到混合 Runbook 辅助角色组，但必须同时为更新管理和混合 Runbook 辅助角色组成员身份使用同一帐户。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 
-除了混合 Runbook 辅助角色所需的标准地址和端口以外，更新管理还需要下表中的地址。 与以下地址的通信使用端口 443。
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+在混合 Runbook 辅助角色所需的标准地址和端口之上，更新管理在 "[网络规划](update-management/update-mgmt-overview.md#ports)" 部分中描述了其他网络配置要求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Azure Automation State Configuration
 
@@ -114,4 +119,5 @@ Azure Automation 服务的服务标记仅提供用于以下方案的 Ip：
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。
+
 * 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[排查混合 Runbook 辅助角色问题](troubleshoot/hybrid-runbook-worker.md#general)。

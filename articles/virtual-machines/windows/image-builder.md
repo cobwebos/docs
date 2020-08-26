@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119182"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027931"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览：使用 Azure 映像生成器创建 Windows VM
 
@@ -102,7 +102,7 @@ az group create -n $imageResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
-映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器将使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
 
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>创建用户分配的托管标识并授予权限 
 ```bash
@@ -237,7 +237,7 @@ dir c:\
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 完成后，删除资源。
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087830"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448383"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
@@ -27,7 +28,7 @@ ms.locfileid: "79087830"
 
 ## <a name="general-changes-from-v2"></a>v2 中的常规更改
 
-* 对于通过 v3 创建的资产，媒体服务仅支持 [Azure 存储服务器端存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
+* 对于通过 v3 创建的资产，媒体服务仅支持 [Azure 存储服务器端存储加密](../../storage/common/storage-service-encryption.md)。
     * 对于通过 v2 API 创建的，并采用媒体服务提供的[存储加密](../previous/media-services-rest-storage-encryption.md) (AES 256) 的资产，可以使用 v3 API。
     * 无法使用 v3 API 创建采用旧版 AES 256 [存储加密](../previous/media-services-rest-storage-encryption.md)的新资产。
 * v3 中[资产](assets-concept.md)的属性与 v2 不同，请参阅[属性如何映射](#map-v3-asset-properties-to-v2)。
@@ -82,16 +83,17 @@ ms.locfileid: "79087830"
     * 在输入不包含音频时插入静音曲目
     * 在输入不包含视频时插入视频轨道
 * 包含转码的直播活动目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
- 
+* 有关 `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` 使用 V2 REST API 的最佳实践和模式，请参阅示例代码。NETCore SDK。
+
 ## <a name="asset-specific-changes"></a>特定于资产的更改
 
 ### <a name="map-v3-asset-properties-to-v2"></a>将 v3 资产属性映射到 v2
 
-下表显示了 v3 中[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的属性如何映射到 v2 中资产的属性。
+下表显示了 v3 中[资产](/rest/api/media/assets/createorupdate#asset)的属性如何映射到 v2 中资产的属性。
 
 |v3 属性|v2 属性|
 |---|---|
-|`id` -（唯一）完整的 Azure 资源管理器路径，请参见[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate)中的示例||
+|`id` -（唯一）完整的 Azure 资源管理器路径，请参见[资产](/rest/api/media/assets/createorupdate)中的示例||
 |`name` -（唯一）请参阅[命名约定](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id` -（唯一）值以 `nb:cid:UUID:` 前缀开头。|
@@ -109,8 +111,8 @@ ms.locfileid: "79087830"
 |加密选项|说明|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，媒体服务管理的密钥。|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
-|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户托管的密钥。|支持|支持|
-|[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户托管密钥。|不支持|不支持|
+|[静态数据的存储服务加密](../../storage/common/storage-service-encryption.md)|由 Azure 存储提供的服务器端加密，由 Azure 或客户托管的密钥。|支持|支持|
+|[存储客户端加密](../../storage/common/storage-client-side-encryption.md)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户托管密钥。|不支持|不支持|
 
 <sup>1</sup> 虽然媒体服务确实支持处理明文形式（未经过任何形式的加密）的内容，但不建议这样做。
 

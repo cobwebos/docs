@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276645"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611120"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -151,11 +151,11 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
 
-* **关闭** - 在 WAL 中提供的信息最少。 在大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
 * **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
 * **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
 
-更改此参数后，需要重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
+更改此参数后，需要重启服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
 
 ### <a name="new-replicas"></a>新副本
 只读副本创建为新的 Azure Database for PostgreSQL 服务器。 无法将现有的服务器设为副本。 无法创建另一个只读副本的副本。
@@ -163,16 +163,19 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ### <a name="replica-configuration"></a>副本配置
 使用与主服务器相同的计算和存储设置创建副本。 创建副本后，可以更改多个设置，包括存储和备份保留期。
 
-在以下情况下，还可以在副本上更改 Vcore 和定价层：
-* PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于主服务器上的值，否则副本不会启动。 在 Azure Database for PostgreSQL 中， `max_connections` 参数值基于 SKU (vcore 和定价层) 。 有关详细信息，请参阅 [Azure Database for PostgreSQL 中的限制](concepts-limits.md)。 
-* 不支持缩放到基本定价层或从其进行缩放
-
-> [!IMPORTANT]
-> 将主服务器设置更新为新值之前，请将副本配置更新为一个相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
-
-在不遵守限制的情况下尝试更新上述服务器值会导致出错。
-
 创建副本时或之后，防火墙规则、虚拟网络规则和参数设置不会从主服务器继承到副本服务器。
+
+### <a name="scaling"></a>扩展
+缩放 Vcore 或常规用途与内存优化：
+* PostgreSQL 要求 `max_connections` 辅助服务器上的设置 [大于或等于主服务器上的设置](https://www.postgresql.org/docs/current/hot-standby.html)，否则，辅助服务器将无法启动。
+* 在 Azure Database for PostgreSQL 中，每台服务器允许的最大连接数已固定到计算 sku，因为连接占用了内存。 你可以了解 [max_connections 和计算 sku 之间的映射](concepts-limits.md)的详细信息。
+* **向上缩放**：首先向上扩展副本的计算，然后向上扩展主副本。 此顺序可防止错误违反 `max_connections` 要求。
+* **缩小**：首先缩小主副本的计算，然后缩小副本。 如果尝试缩放低于主副本的副本，则会出现错误，因为这违反了 `max_connections` 要求。
+
+缩放存储：
+* 所有副本都启用了存储自动增长，以防止从存储空间的副本复制问题。 无法禁用此设置。
+* 你还可以手动扩展存储，就像在任何其他服务器上一样
+
 
 ### <a name="basic-tier"></a>基本层
 基本层服务器仅支持相同区域复制。

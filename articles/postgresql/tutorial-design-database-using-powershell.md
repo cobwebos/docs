@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 67949cef755bb2dbefb62a69e6b394ebd74ea7f0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: b424213a1041c426653e5cb455615111c265746a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739534"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500055"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>教程：使用 PowerShell 设计 Azure Database for PostgreSQL - 单一服务器
 
@@ -215,7 +215,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有相同的服务器管理员登录名和密码，该登录名和密码在开始还原时对现有服务器有效。 可以从新服务器的“概述”页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将还原原始服务器中的防火墙规则。
+还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520742"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325366"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -43,7 +43,7 @@ ms.locfileid: "80520742"
  其他配置 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >如果从 Azure 门户中针对你的工作区的[数据菜单 Log Analytics 高级设置](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)中配置收集，则性能计数器的编辑配置文件和 Syslog 将会被覆盖。 要禁用所有代理的配置，则禁用从 Log Analytics“高级设置”收集，若禁用单个代理，则运行以下命令：  
+ >如果从 Azure 门户中针对你的工作区的[数据菜单 Log Analytics 高级设置](./agent-data-sources.md#configuring-data-sources)中配置收集，则性能计数器的编辑配置文件和 Syslog 将会被覆盖。 要禁用所有代理的配置，则禁用从 Log Analytics“高级设置”收集，若禁用单个代理，则运行以下命令：  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>安装错误代码
@@ -53,7 +53,7 @@ ms.locfileid: "80520742"
 | NOT_DEFINED | 由于未安装必需的依赖项，将不会安装 auoms auditd 插件 | Auoms 安装失败，请安装程序包 auditd。 |
 | 2 | 提供给 shell 捆绑包的选项无效。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况 |
 | 3 | 未向 shell 捆绑包提供任何选项。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况。 |
-| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行查看以验证你的代理服务器设置。 |
+| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行查看以验证你的代理服务器设置。 |
 | 5 | 必须以 root 身份执行 shell 捆绑包或在载入期间返回 403 错误。 使用 `sudo` 运行你的命令。 |
 | 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent-*x64.sh 程序包只能安装在 64 位系统上，而 omsagent-* x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
 | 17 | OMS 程序包安装失败。 仔细查看命令输出查找根源故障。 |
@@ -228,7 +228,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * 每秒转发的消息数太大，Log Analytics Linux 代理基本配置无法处理
 
 ### <a name="resolution"></a>解决方法
-* 验证 Syslog 的 Log Analytics 工作区中的配置是否具有所有设施和正确的日志级别。 查看[在 Azure 门户中配置 Syslog 收集](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
+* 验证 Syslog 的 Log Analytics 工作区中的配置是否具有所有设施和正确的日志级别。 查看[在 Azure 门户中配置 Syslog 收集](./data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * 验证本机 Syslog 消息守护程序（`rsyslog`、`syslog-ng`）是否能够接收转发的消息
 * 检查 Syslog 服务器的防火墙设置，以确保未阻止消息
 * 使用 `logger` 命令模拟向 Log Analytics 发送的 Syslog 消息
@@ -422,7 +422,7 @@ sudo sh ./onboard_agent.sh --purge
 ### <a name="resolution"></a>解决方法 
 执行以下步骤来更正问题。
 1. 从 Azure 门户中删除扩展。
-2. 按照[说明](../../azure-monitor/learn/quick-collect-linux-computer.md)安装代理。
+2. 按照[说明](../learn/quick-collect-linux-computer.md)安装代理。
 3. 运行以下命令重启代理：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
 * 等待几分钟，并将预配状态更改为“预配成功”。
 
@@ -444,3 +444,4 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. 通过执行以下命令升级程序包：`sudo sh ./omsagent-*.universal.x64.sh --upgrade`。
+

@@ -1,6 +1,6 @@
 ---
-title: 适用于 Azure SQL 数据库中的数据库的 VNet 终结点和规则
-description: 将子网标记为虚拟网络服务终结点。 然后，将终结点作为虚拟网络规则到 ACL 中的数据库。 然后，数据库接受来自子网上所有虚拟机和其他节点的通信。
+title: Azure SQL 数据库中数据库的 VNet 终结点和相关规则
+description: 将子网标记为虚拟网络服务终结点。 然后将终结点标记为适用于数据库 ACL 的虚拟网络规则。 然后，数据库就会接受来自子网上所有虚拟机和其他节点的通信。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 51d7ae8671d4b57e1822aa1c4ee5bf30a5f24cbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253981"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210390"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
+# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*虚拟网络规则*是一种防火墙安全功能，用于控制[azure SQL 数据库](sql-database-paas-overview.md)中的数据库和弹性池的服务器或[azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中的数据库是否接受从虚拟网络中的特定子网发送的通信。 本文介绍虚拟网络规则功能有时是安全允许与 Azure SQL 数据库和 SQL 数据仓库中的数据库进行通信的最佳选项。
+*虚拟网络规则*是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-paas-overview.md)中的数据库和弹性池的服务器或 [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中数据库的数据库服务器接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地启用到 Azure SQL 数据库中的数据库和 SQL 数据仓库的通信。
 
 > [!NOTE]
 > 本文适用于 Azure SQL 数据库和 Azure Synapse Analytics（以前的 SQL 数据仓库）。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指托管 Azure SQL 数据库和 Azure Synapse Analytics[ 的逻辑 SQL Server](logical-servers.md)。
@@ -31,8 +31,6 @@ ms.locfileid: "85253981"
 ## <a name="how-to-create-a-virtual-network-rule"></a>如何创建虚拟网络规则
 
 如果只创建虚拟网络规则，则可跳到[本文后面](#anchor-how-to-by-using-firewall-portal-59j)的步骤和说明。
-
-<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>虚拟网络规则详细信息
 
@@ -46,7 +44,7 @@ ms.locfileid: "85253981"
 
 ### <a name="server-level-not-database-level"></a>服务器级而非数据库级
 
-每个虚拟网络规则都适用于整个服务器，而不仅仅适用于服务器上的一个特定数据库。 换句话说，虚拟网络规则适用于服务器级而非数据库级。
+每个虚拟网络规则都适用于整个服务器，而不仅仅是该服务器上某个特定的数据库。 换句话说，虚拟网络规则适用于服务器级而非数据库级。
 
 - 与之不同的是，IP 规则适用于这其中的任一级别。
 
@@ -55,16 +53,16 @@ ms.locfileid: "85253981"
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
 - **网络管理员：** &nbsp; 启用终结点。
-- **数据库管理员：** &nbsp;更新访问控制列表（ACL）以向服务器添加给定子网。
+- **数据库管理员：** &nbsp;更新访问控制列表 (ACL)，将给定的子网添加到服务器。
 
-** RBAC 备用：
+RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+你可以选择使用 azure 中 [基于角色的访问控制 (AZURE RBAC) ][rbac-what-is-813s] 在 azure 中创建只具有必要的功能子集的单个自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
-> 在某些情况下，Azure SQL 数据库和 VNet 子网中的数据库位于不同的订阅中。 在这些情况下，必须确保以下配置：
+> 在某些情况下，Azure SQL 数据库中的数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
 >
 > - 两个订阅都必须属于同一 Azure Active Directory 租户。
 > - 用户具有启动操作所需的权限，例如启用服务终结点，以及向给定服务器添加 VNet-子网。
@@ -74,9 +72,9 @@ ms.locfileid: "85253981"
 
 对于 Azure SQL 数据库，虚拟网络规则功能具有以下限制：
 
-- 在 Azure SQL 数据库中的数据库的防火墙中，每个虚拟网络规则都引用一个子网。 所有这些引用的子网都必须托管在托管数据库的同一地理区域中。
+- 在 Azure SQL 数据库中数据库的防火墙中，每个虚拟网络规则都引用一个子网。 引用的所有这些子网都必须托管在同一个托管数据库的地理区域内。
 
-- 每个服务器最多可以有128个给定虚拟网络的 ACL 条目。
+- 对于任何给定的虚拟网络，每个服务器最多可拥有 128 个 ACL 条目。
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 
@@ -106,24 +104,24 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>将 VNet 服务终结点与 Azure 存储配合使用的影响
 
-Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连接。 如果选择将此功能与 Azure SQL 数据库使用的 Azure 存储帐户一起使用，则可能会遇到问题。 接下来会列出受此影响的 Azure SQL 数据库和 Azure SQL 数据仓库功能并对其进行讨论。
+Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连接。 如果选择将此功能与某个 Azure 存储帐户配合使用，而该帐户正由 Azure SQL 数据库使用，则可能会出现问题。 接下来会列出受此影响的 Azure SQL 数据库和 Azure SQL 数据仓库功能并对其进行讨论。
 
-### <a name="azure-synapse-polybase"></a>Azure Synapse PolyBase
+### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure Synapse PolyBase 和 COPY 语句
 
-PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果正从 Azure 存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure Synapse Analytics，若要启用 PolyBase 导入和导出方案，请执行如下所示的步骤：
+PolyBase 和 COPY 语句通常用于从 Azure 存储帐户将数据加载到 Azure Synapse 分析，以实现高吞吐量数据引入。 如果要将数据加载到其中的 Azure 存储帐户仅限制对一组 VNet 子网的访问，则在使用 PolyBase 并将 COPY 语句复制到存储帐户时，连接将中断。 若要启用导入和导出方案，可将 COPY 和 PolyBase 用于连接到受保护到 VNet 的 Azure 存储的 Azure Synapse Analytics，请按照以下步骤进行操作：
 
 #### <a name="prerequisites"></a>先决条件
 
 - 按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
-- **** 必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下**** 启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+- 必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 启用此配置将允许 PolyBase 和 COPY 语句使用强身份验证连接到存储帐户，在此情况下，网络流量将保留在 Azure 主干上。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
 #### <a name="steps"></a>步骤
 
-1. 在 PowerShell 中，将托管 Azure Synapse 的**服务器注册到**AZURE ACTIVE DIRECTORY （AAD）：
+1. 在 PowerShell 中，将托管 Azure Synapse 的服务器注册到 Azure Active Directory (AAD)：
 
    ```powershell
    Connect-AzAccount
@@ -138,10 +136,10 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Anal
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。**** **** 将**存储 Blob 数据参与者**RBAC 角色分配给托管 Azure Synapse Analytics 的服务器，该服务器已注册到你在步骤 #1 中注册 AZURE ACTIVE DIRECTORY （AAD）。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将 **存储 Blob 数据参与者** Azure 角色分配到托管 Azure Synapse Analytics 的服务器，该服务器已注册到 AZURE ACTIVE DIRECTORY (AAD) 如步骤 #1 中所述。
 
    > [!NOTE]
-   > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **通过 Polybase 连接到 Azure 存储帐户：**
 
@@ -182,7 +180,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNet 服务终结点的情况下，将 VNet 防火墙规则添加到服务器
 
-早在增强此功能以前，就要求你先打开 VNet 服务终结点，然后才能在防火墙中实施实时 VNet 规则。 与 Azure SQL 数据库中的数据库相关的终结点。 但现在从 2018 年 1 月开始，可以通过设置 **IgnoreMissingVNetServiceEndpoint** 标志来避开此要求。
+早在增强此功能以前，就要求你先打开 VNet 服务终结点，然后才能在防火墙中实施实时 VNet 规则。 这些终结点已将给定的 VNet 子网关联到 Azure SQL 数据库中的数据库。 但现在从 2018 年 1 月开始，可以通过设置 **IgnoreMissingVNetServiceEndpoint** 标志来避开此要求。
 
 仅设置防火墙规则不会帮助保护服务器。 还必须打开 VNet 服务终结点才能使安全性生效。 打开服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开”的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingVNetServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
@@ -190,34 +188,34 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="errors-40914-and-40615"></a>错误 40914 和 40615
 
-连接错误 40914 与虚拟网络规则**（如 Azure 门户中的“防火墙”窗格所指定）相关。 错误 40615 基本相似，不同之处在于与“防火墙”上的“IP 地址规则”** 相关。
+连接错误 40914 与虚拟网络规则（如 Azure 门户中的“防火墙”窗格所指定）相关。 错误 40615 基本相似，不同之处在于与“防火墙”上的“IP 地址规则”相关。
 
 ### <a name="error-40914"></a>错误 40914
 
-** 消息文本：无法打开登录时请求的服务器‘[服务器-名称]**’。 不允许客户端访问服务器。
+消息文本：无法打开登录时请求的服务器‘[服务器-名称]’。 不允许客户端访问服务器。
 
-** 错误说明：客户端位于包含虚拟网络服务器终结点的子网中。 但服务器没有虚拟网络规则，该规则授予子网与数据库进行通信的权限。
+错误说明：客户端位于包含虚拟网络服务器终结点的子网中。 不过，服务器没有授权子网与数据库进行通信的虚拟网络规则。
 
-错误解决方法**：在 Azure 门户的“防火墙”窗格中，使用虚拟网络规则控件为子网[添加虚拟网络规则](#anchor-how-to-by-using-firewall-portal-59j)。
+错误解决方法：在 Azure 门户的“防火墙”窗格中，使用虚拟网络规则控件为子网[添加虚拟网络规则](#anchor-how-to-by-using-firewall-portal-59j)。
 
 ### <a name="error-40615"></a>错误 40615
 
-** 消息文本：无法打开此登录请求的服务器“{0}”。 不允许 IP 地址为“{1}”的客户端访问此服务器。
+消息文本：无法打开此登录请求的服务器“{0}”。 不允许 IP 地址为“{1}”的客户端访问此服务器。
 
-*错误说明：* 客户端正在尝试从无权连接到服务器的 IP 地址进行连接。 服务器防火墙没有 IP 地址规则，该规则允许客户端从给定的 IP 地址与数据库进行通信。
+错误说明：客户端尝试从未经授权连接到服务器的 IP 地址进行连接。 服务器防火墙没有 IP 地址规则允许客户端从给定 IP 地址与数据库进行通信。
 
-错误解决方法**：输入客户端 IP 地址作为 IP 规则。 为此，可以使用 Azure 门户中的“防火墙”窗格。
+错误解决方法：输入客户端 IP 地址作为 IP 规则。 为此，可以使用 Azure 门户中的“防火墙”窗格。
 
 <a name="anchor-how-to-by-using-firewall-portal-59j"></a>
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>门户可以创建虚拟网络规则
 
-本部分说明如何使用[Azure 门户][http-azure-portal-link-ref-477t]在 Azure SQL 数据库中的数据库中创建*虚拟网络规则*。 此规则可告知数据库接受来自已标记为*虚拟网络服务终结点*的特定子网的通信。
+本部分介绍如何使用 [Azure 门户][http-azure-portal-link-ref-477t]在 Azure SQL 数据库中的数据库中创建虚拟网络规则。 此规则要求数据库接受来自特定子网的通信，该子网已被标记为“虚拟网络服务终结点”。
 
 > [!NOTE]
-> 如果打算将服务终结点添加到服务器的 VNet 防火墙规则，请首先确保为子网启用服务终结点。
+> 若要向服务器的 VNet 防火墙规则添加服务终结点，请确保为子网启用服务终结点。
 >
-> 如果没有为子网启用服务终结点，门户会要求你启用。 在添加规则的边栏选项卡上单击“启用”按钮。****
+> 如果没有为子网启用服务终结点，门户会要求你启用。 在添加规则的边栏选项卡上单击“启用”按钮。
 
 ## <a name="powershell-alternative"></a>PowerShell 备用
 
@@ -231,9 +229,9 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="prerequisites"></a>先决条件
 
-必须有一个子网已经使用特定的虚拟网络服务终结点类型名称进行标记，且该名称必须与 Azure SQL 数据库相关。**
+必须有一个子网已经使用特定的虚拟网络服务终结点类型名称进行标记，且该名称必须与 Azure SQL 数据库相关。
 
-- 相关的终结点类型名称为 **** Microsoft.Sql。
+- 相关的终结点类型名称为 Microsoft.Sql。
 - 如果子网可能未使用类型名称进行标记，请参阅[验证子网是否是终结点][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]。
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
@@ -242,26 +240,26 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 1. 登录到 [Azure 门户][http-azure-portal-link-ref-477t]。
 
-2. 搜索并选择“SQL Server”，然后选择你的服务器****。 在“安全性”下，选择“防火墙和虚拟网络”**** ****。
+2. 搜索并选择“SQL Server”，然后选择你的服务器。 在“安全性”下，选择“防火墙和虚拟网络” 。
 
-3. 将“允许访问 Azure 服务”控件设置为“禁用”。****
+3. 将“允许访问 Azure 服务”控件设置为“禁用”。
 
     > [!IMPORTANT]
-    > 如果将控制设置为 "打开"，则服务器将接受来自 Azure 边界内的任何子网的通信，即从可识别为 Azure 数据中心定义的范围内的某个 IP 地址发起。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
+    > 如果将此控件保留设置为“启用”，则服务器将接受来自 Azure 边界内任何子网的通信，即从识别为 Azure 数据中心定义的范围内的某个 IP 地址发起的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
 
-4. 在“虚拟网络”部分单击“+ 添加现有项”控件。**** ****
+4. 在“虚拟网络”部分单击“+ 添加现有项”控件。 
 
     ![单击“添加现有项(子网终结点，充当 SQL 规则)”。][image-portal-firewall-vnet-add-existing-10-png]
 
-5. 在新的“创建/更新”窗格的控件中填充 Azure 资源的名称。****
+5. 在新的“创建/更新”窗格的控件中填充 Azure 资源的名称。
 
     > [!TIP]
-    > 必须包括子网的正确地址前缀。**** 可以在门户中找到该值。
-    > 导航到“所有资源”****&gt;“所有类型”****&gt;“虚拟网络”****。 筛选器会显示虚拟网络。 单击虚拟网络，然后单击“子网”****。 “地址范围”列包含所需的地址前缀。****
+    > 必须包括子网的正确地址前缀。 可以在门户中找到该值。
+    > 导航到“所有资源”&gt;“所有类型”&gt;“虚拟网络”。 筛选器会显示虚拟网络。 单击虚拟网络，然后单击“子网”。 “地址范围”列包含所需的地址前缀。
 
     ![填充新规则的字段。][image-portal-firewall-create-update-vnet-rule-20-png]
 
-6. 单击窗格底部的“确定”按钮。****
+6. 单击窗格底部的“确定”按钮。
 
 7. 查看防火墙窗格中生成的虚拟网络规则。
 

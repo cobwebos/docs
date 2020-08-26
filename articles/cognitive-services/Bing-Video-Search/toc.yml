@@ -13,7 +13,7 @@
   items:
     - name: REST API
       items:
-        - name: '使用 C#'
+        - name: 使用 C#
           href: quickstarts/csharp.md
         - name: 使用 Java
           href: quickstarts/java.md
@@ -93,7 +93,7 @@
     - name: 知识库
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: 获取 API 密钥
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 试试看！
       href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8'
     - name: 适用于必应视频搜索 API 的分析

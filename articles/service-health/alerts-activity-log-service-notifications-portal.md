@@ -3,29 +3,29 @@ title: 使用 Azure 门户接收有关 Azure 服务通知的活动日志警报
 description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a8723698cddfb519687525820475517b93219a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567121"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499245"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>使用 Azure 门户创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
 
-本文说明如何使用 Azure 门户通过使用 Azure 门户为服务运行状况通知设置活动日志警报。  
+本文介绍如何使用 Azure 门户为服务运行状况通知设置活动日志警报。  
 
-服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中；鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。 
+服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。 由于活动日志中存储了大量信息，因此提供了一个单独的用户界面，用于更轻松地查看和设置有关服务运行状况通知的警报。 
 
-当 Azure 将服务运行状况通知发送到 Azure 订阅时，你可以收到警报。 可以基于以下内容配置警报：
+当 Azure 将服务运行状况通知发送到 Azure 订阅时，可以收到警报。 可以基于以下内容配置警报：
 
-- 服务运行状况通知的类别（服务问题、计划内维护、运行状况公告）。
+- 服务运行状况通知的类别（服务问题、计划内维护、运行状况通报、安全公告）。
 - 受影响的订阅。
 - 受影响的服务。
 - 受影响的区域。
 
 > [!NOTE]
-> 服务运行状况通知不会发送有关资源运行状况事件的警报。
+> 服务运行状况通知不发送资源运行状况事件的警报。
 
 还可以配置向其发送警报的人员：
 
@@ -40,7 +40,7 @@ ms.locfileid: "85567121"
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>使用 Azure 门户发出警报和新建操作组
+## <a name="create-service-health-alert-using-azure-portal"></a>使用 Azure 门户创建服务运行状况警报
 1. 在[门户](https://portal.azure.com)中，选择“服务运行状况”。
 
     ![“服务运行状况”服务](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -49,60 +49,37 @@ ms.locfileid: "85567121"
 
     ![“运行状况警报”选项卡](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. 选择“创建服务运行状况警报”****，并填写字段。
+1. 选择“添加服务运行状况警报”，并填写字段。
 
     ![“创建服务运行状况警报”命令](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. 选择要针对其发出警报的**订阅**、**服务**和**区域**。
+1. 选择要向其发出警报的**订阅**、**服务**和**区域**。
 
-    ![“添加活动日志警报”对话框](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    [![“添加活动日志警报”对话框](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png#lightbox)
 
-    > [!NOTE]
-    > 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
+> [!NOTE]
+>此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-1. 选择要针对其发出警报的**事件类型**：*服务问题*、*计划内维护*和*运行状况公告* 
+5. 选择要向你发出警报的**事件类型**：*服务问题*、*计划内维护*、*运行状况通报*和*安全建议*。
 
-1. 通过输入**警报规则名称**和**说明**定义警报详细信息。
+6. 单击 "**选择操作组**" 以选择现有操作组或创建新的操作组。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
-1. 选择要将警报保存到的**资源组**。
 
-1. 通过选择“新建操作组”**** 创建一个新操作组。 在 "**操作组名称**" 框中输入名称，然后在 "**短名称**" 框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
+7. 通过输入**警报规则名称**和**说明**定义警报详细信息。
 
-    ![创建新的操作组](media/alerts-activity-log-service-notifications/action-group-creation.png)
+8. 选择要将警报保存到的**资源组**。
 
-1. 通过提供接收方来定义接收方的列表：
 
-    a. **名称**：输入接收方的名称、别名或标识符。
-
-    b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
-
-    c. **详细信息**：根据所选操作类型，输入电话号码、电子邮件地址、Webhook URI 等。
-
-1. 选择“确定”**** 以创建操作组，然后选择“创建警报规则”**** 以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 
 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。 有关活动日志警报的 webhook 架构的信息，请参阅 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)。
 
->[!NOTE]
->这些步骤中定义的操作组可以作为现有操作组重复用于所有未来的警报定义。
->
-
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>使用 Azure 门户通过现有操作组发出警报
-
-1. 执行上一节中的步骤 1 至 6 来创建服务运行状况通知。 
-
-1. 在“定义操作组”**** 下，单击“选择操作组”**** 按钮。 选择适当的操作组。
-
-1. 选择“添加”**** 以添加操作组，然后选择“创建警报规则”**** 以完成警报。
-
-在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
-
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[设置 Azure 服务运行状况警报的最佳实践](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)。
+- 了解[设置 Azure 服务运行状况警报的最佳做法](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)。
 - 了解如何[为 Azure 服务运行状况设置移动推送通知](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)。
-- 了解如何[为现有问题管理系统配置 webhook 通知](service-health-alert-webhook-guide.md)。
+- 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 了解[服务运行状况通知](service-notifications.md)。
 - 了解[通知速率限制](../azure-monitor/platform/alerts-rate-limiting.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。

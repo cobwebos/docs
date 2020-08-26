@@ -3,11 +3,12 @@ title: Azure Site Recovery 中的物理服务器灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地物理服务器灾难恢复到 Azure 的过程中使用的组件和体系结构。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162831"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422651"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
 
@@ -28,16 +29,35 @@ ms.locfileid: "77162831"
 
 ![组件](./media/physical-azure-architecture/arch-enhanced.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>设置出站网络连接
+
+要使 Site Recovery 按预期运行，你需要修改出站网络连接，以允许你的环境进行复制。
+
+> [!NOTE]
+> Site Recovery 不支持使用身份验证代理来控制网络连接。
+
+### <a name="outbound-connectivity-for-urls"></a>URL 的出站连接
+
+如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 URL：
+
+| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
+| 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允许 VM 与 Site Recovery 服务进行通信。 |
+| 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
+
+
 ## <a name="replication-process"></a>复制过程
 
 1. 创建部署，包括本地和 Azure 组件。 在恢复服务保管库中，指定复制源和目标，设置配置服务器，创建复制策略并启用复制。
-1. 计算机使用复制策略进行复制，服务器数据的初始副本复制到 Azure 存储中。
-1. 完成初始复制后，开始将增量更改复制到 Azure。 计算机的受跟踪更改保存在扩展名为 _.hrl_ 的文件中。
-   - 计算机在 HTTPS 入站端口 443 上与配置服务器通信，进行复制管理。
-   - 计算机在 HTTPS 入站端口 9443（可修改）上将复制数据发送到进程服务器。
-   - 配置服务器通过 HTTPS 出站端口 443 与 Azure 协调复制管理。
-   - 进程服务器从源计算机接收数据、优化和加密数据，然后通过 HTTPS 出站端口 443 将其发送到 Azure 存储。
-   - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 如果将多台计算机分组到复制组，并且这些组在故障转移时共享崩溃一致且应用一致的恢复点，请使用多 VM 方案。 如果计算机运行相同的工作负载并需要保持一致，则这些组非常有用。
+1. 计算机使用复制策略进行复制，而服务器数据的初始副本将复制到 Azure 存储。
+1. 完成初始复制后，开始将增量更改复制到 Azure。 计算机的跟踪的更改保存在扩展名为_hrl_的文件中。
+   - 对于复制管理，计算机与 HTTPS 端口443入站上的配置服务器进行通信。
+   - 计算机将复制数据发送到 HTTPS 端口9443上的进程服务器（可以进行修改）。
+   - 配置服务器通过 HTTPS 端口443出站对复制管理进行协调。
+   - 进程服务器从源计算机接收数据、优化和加密数据，并通过 HTTPS 端口443出站将数据发送到 Azure 存储。
+   - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 如果将多台计算机分组到复制组，并且这些组在故障转移时共享崩溃一致且应用一致的恢复点，请使用多 VM 方案。 如果计算机运行相同的工作负荷并且需要保持一致，则这些组非常有用。
 1. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute[公共对等互连](../expressroute/about-public-peering.md)。
 
    > [!NOTE]

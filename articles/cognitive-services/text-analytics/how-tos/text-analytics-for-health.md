@@ -8,26 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122257"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167685"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：将文本分析用于运行状况（预览版）
+# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：将文本分析用于运行状况 (预览版) 
+
+> [!NOTE]
+> 运行状况容器的文本分析最近已更新。 有关最近更改的详细信息，请参阅[新增功能](../whats-new.md)。 请记得提取最新的容器以使用列出的更新。
 
 > [!IMPORTANT] 
-> 针对运行状况的文本分析是 "按原样" 和 "所有错误" 提供的预览功能。 因此，**不应在任何生产用途中实现或部署文本分析的运行状况（预览版）。** 针对运行状况的文本分析不是要用作医疗设备、临床支持、诊断工具或其他旨在用于诊断、硬化、缓解、治疗或防范疾病或其他情况的技术，Microsoft 不会授予使用此功能的任何许可或权利。 此功能不是专为实现或部署的，而是作为一种替代专业人员的医疗建议或医疗保健、诊断、治疗或医疗保健专业人员的临床判断，不应如此。 客户独自负责使用文本分析的健康状况。 Microsoft 不保证文本分析的运行状况或与功能连接的任何材料都足以满足任何医疗目的或满足任何人的健康或医疗要求。 
+> 针对运行状况的文本分析是 "按原样" 和 "所有错误" 提供的预览功能。 因此，**不应在任何生产用途中实现或部署运行状况 (预览版) 文本分析。** 针对运行状况的文本分析不是要用作医疗设备、临床支持、诊断工具或其他旨在用于诊断、硬化、缓解、治疗或防范疾病或其他情况的技术，Microsoft 不会授予使用此功能的任何许可或权利。 此功能不是专为实现或部署的，而是作为一种替代专业人员的医疗建议或医疗保健、诊断、治疗或医疗保健专业人员的临床判断，不应如此。 客户独自负责使用文本分析的健康状况。 Microsoft 不保证文本分析的运行状况或与功能连接的任何材料都足以满足任何医疗目的或满足任何人的健康或医疗要求。 
 
 
-Azure 文本分析 for Health 是一种容器化的服务，可从非结构化文本（如医生的说明、解雇摘要、临床文档和电子健康记录）中提取和标记相关的医疗信息。  
+针对运行状况的文本分析是一种容器化的服务，它从非结构化文本（如医生的说明、解雇摘要、临床文档和电子运行状况记录）提取和标记相关的医疗信息。  
 
 ## <a name="features"></a>功能
 
-运行状况容器文本分析当前在你自己的开发环境中针对英语文本执行命名实体识别（NER）、关系提取、实体求反和实体链接，以满足你的特定安全和数据管理要求。
+运行状况容器文本分析当前对你自己的开发环境中的英语文本 (NER) 、关系提取、实体求反和实体链接，以满足你的特定安全和数据管理要求。
 
 #### <a name="named-entity-recognition"></a>[命名实体识别](#tab/ner)
 
@@ -46,12 +49,12 @@ Azure 文本分析 for Health 是一种容器化的服务，可从非结构化�
 
 #### <a name="entity-linking"></a>[实体链接](#tab/entity-linking)
 
-实体链接消除不同的实体，方法是将文本中提到的命名实体关联到在概念的预定义数据库中找到的概念。 例如，统一的医疗语言系统（UMLS）。
+实体链接消除不同的实体，方法是将文本中提到的命名实体关联到在概念的预定义数据库中找到的概念。 例如，统一的医疗语言系统 (UMLS) 。
 
 > [!div class="mx-imgBorder"]
 > ![运行状况 EL](../media/ta-for-health/health-entity-linking.png)
 
-用于运行状况的文本分析支持链接到在统一的医疗语言系统（[UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)） Metathesaurus 知识源中找到的运行状况和生物医学词汇。
+用于运行状况的文本分析支持链接到统一医疗语言系统中找到的健康和生物医学词汇 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metathesaurus 知识库。
 
 #### <a name="negation-detection"></a>[求反检测](#tab/negation-detection) 
 
@@ -62,7 +65,7 @@ Azure 文本分析 for Health 是一种容器化的服务，可从非结构化�
 
 ---
 
-有关支持的实体的完整列表，请参阅医疗保健文本分析返回的[实体类别](../named-entity-types.md?tabs=health)。
+有关支持的实体的完整列表，请参阅由文本分析返回的[实体类别](../named-entity-types.md?tabs=health)。
 
 ## <a name="supported-languages"></a>支持的语言
 
@@ -80,8 +83,8 @@ Azure 文本分析 for Health 是一种容器化的服务，可从非结构化�
 
 可以通过多种方式来安装和运行容器。 
 
-1. 使用[Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
-2. 使用以下 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)脚本来自动执行资源部署容器配置。
+- 使用[Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
+- 使用以下 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)脚本来自动执行资源部署容器配置。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用于容器的 Web 应用安装容器
 
@@ -90,7 +93,7 @@ Azure[用于容器的 Web 应用](https://azure.microsoft.com/services/app-servi
 > [!NOTE]
 > 使用 Azure Web 应用时，将自动获取`<appservice_name>.azurewebsites.net`
 
-使用 Azure CLI 运行此 PowerShell 脚本，使用你的订阅和 HTTPS 上的容器映像创建用于容器的 Web 应用。 等待脚本完成（大约20分钟），然后提交第一个请求。
+使用 Azure CLI 运行此 PowerShell 脚本，使用你的订阅和 HTTPS 上的容器映像创建用于容器的 Web 应用。 等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -118,9 +121,10 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 ### <a name="install-the-container-using-azure-container-instance"></a>使用 Azure 容器实例安装容器
 
-还可以使用 Azure 容器实例（ACI）简化部署。 ACI 是一项资源，允许在托管的无服务器 Azure 环境中按需运行 Docker 容器。 
+你还可以使用 (ACI) 的 Azure 容器实例，以便更轻松地进行部署。 ACI 是一项资源，允许在托管的无服务器 Azure 环境中按需运行 Docker 容器。 
 
-有关使用 Azure 门户部署 ACI 资源的步骤，请参阅[如何使用 Azure 容器实例](text-analytics-how-to-use-container-instances.md)。 还可以使用以下 PowerShell 脚本 Azure CLI，这将使用容器映像在订阅上创建 ACI。  等待脚本完成（大约20分钟），然后提交第一个请求。
+有关使用 Azure 门户部署 ACI 资源的步骤，请参阅[如何使用 Azure 容器实例](text-analytics-how-to-use-container-instances.md)。 还可以使用以下 PowerShell 脚本 Azure CLI，这将使用容器映像在订阅上创建 ACI。  等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。  由于每个 ACI 资源的最大 Cpu 数的限制，如果你希望提交超过5个大文档 (每个请求) 约5000个字符，请不要选择此选项。
+有关可用性信息，请参阅[ACI 区域支持](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability)文章。 
 
 > [!NOTE] 
 > Azure 容器实例不包括对内置域的 HTTPS 支持。 如果需要 HTTPS，则需要手动配置它，包括创建证书和注册域。 可以通过下面的 NGINX 查找有关如何执行此操作的说明。
@@ -143,7 +147,7 @@ $DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-h
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 5 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```
@@ -223,12 +227,12 @@ docker-compose up
 
 
 ## <a name="example-api-request"></a>示例 API 请求
-容器提供了基于 REST 的查询预测终结点 API。
+该容器提供基于 REST 的查询预测终结点 API。
 
 使用下面的示例卷请求将查询提交到已部署的容器， `serverURL` 并将该变量替换为适当的值。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -268,8 +272,8 @@ example.json
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -282,8 +286,8 @@ example.json
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -291,8 +295,8 @@ example.json
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -338,50 +342,35 @@ example.json
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> 对于求反检测，在某些情况下，单个求反字词一次可以处理多个字词。 在 JSON 输出中，通过标志的布尔值表示已识别的实体的求反结果 `isNegated` ：
+### <a name="negation-detection-output"></a>求反检测输出
+
+使用求反检测时，在某些情况下，单个否定字词可以同时处理多个字词。 在 JSON 输出中，通过标志的布尔值表示已识别的实体的求反结果 `isNegated` ：
 
 ```json
 {
@@ -389,7 +378,7 @@ example.json
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -402,6 +391,33 @@ example.json
       "id": "0000023593"
     },
     ...
+```
+
+### <a name="relation-extraction-output"></a>关系提取输出
+
+关系提取输出包含对关系*源*及其*目标*的 URI 引用。 具有关系角色的实体 `ENTITY` 分配给 `target` 字段。 具有关系角色的实体 `ATTRIBUTE` 分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true` 。 
+
+```json
+"relations": [
+  {
+      "relationType": "DosageOfMedication",
+      "score": 1.0,
+      "bidirectional": false,
+      "source": "#/documents/2/entities/0",
+      "target": "#/documents/2/entities/1",
+      "entities": [
+          {
+              "id": "0",
+              "role": "ATTRIBUTE"
+          },
+          {
+              "id": "1",
+              "role": "ENTITY"
+          }
+      ]
+  },
+...
+]
 ```
 
 ## <a name="see-also"></a>另请参阅

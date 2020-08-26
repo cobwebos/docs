@@ -9,6 +9,7 @@ ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83117557"

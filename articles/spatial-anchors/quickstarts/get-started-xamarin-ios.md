@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 625a1a256ec5f1668c97e74c37e567a4ceb3612f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871161"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810099"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Xamarin iOS 应用
 
@@ -55,9 +55,7 @@ ms.locfileid: "83871161"
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-打开 `Xamarin/SampleXamarin.iOS/ViewControllers/DemoViewControllerBase.cs`
-
-找到 `StartSession()` 并添加以下行，替换之前的帐户域：`this.cloudSession.Configuration.AccountDomain = "MyAccountDomain";`。
+找到 `SpatialAnchorsAccountDomain` 字段并将 `Set me` 替换为帐户域。
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>将应用部署到 iOS 设备
 

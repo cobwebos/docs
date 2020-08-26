@@ -70,7 +70,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -103,13 +103,14 @@
           href: functions-bindings-example.md
         - name: 注册绑定扩展
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: 绑定表达式模式
           href: functions-bindings-expressions-patterns.md
         - name: 使用绑定返回值
           href: functions-bindings-return-value.md
         - name: 处理绑定错误
           href: functions-bindings-errors.md
-    - name: Languages
+    - name: 语言
       items:
         - name: 支持的语言
           href: supported-languages.md
@@ -119,7 +120,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -129,6 +130,10 @@
           href: functions-reference-python.md
         - name: TypeScript
           href: functions-reference-node.md#typescript
+    - name: 框架
+      items:
+        - name: Express.js
+          href: shift-expressjs.md
     - name: 安全性
       items:
         - name: 安全概述
@@ -259,7 +264,7 @@
         - name: 本地函数
           href: functions-runtime-install.md
         - name: 使用 Jenkins 插件进行部署
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: 配置
       items:
@@ -268,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: 设置运行时版本
           href: set-runtime-version.md
-        - name: 手动注册扩展
-          href: install-update-binding-extensions-manual.md
         - name: 禁用函数
           href: disable-function.md
         - name: 异地灾难恢复
@@ -341,8 +344,8 @@
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
-        - name: Python 依赖项疑难解答
-          href: recover-module-not-found.md
+        - name: Python 函数排除故障
+          href: recover-python-functions.md
 - name: 参考
   items:
     - name: API 参考

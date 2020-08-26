@@ -8,11 +8,13 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: c562aa462248ffcf7c71ad247e05f0a7de15cdb3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.custom: devx-track-java
+ms.openlocfilehash: fc78688a413bf182d2a0489189a3ad9348ac4d21
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168040"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308111"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
@@ -47,7 +49,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

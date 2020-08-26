@@ -2,13 +2,13 @@
 title: “部署到 Azure”按钮
 description: 使用此按钮从 GitHub 存储库部署 Azure 资源管理器模板。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079475"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按钮从 GitHub 存储库部署模板
 
@@ -28,7 +28,11 @@ ms.locfileid: "82744089"
 
 ## <a name="create-url-for-deploying-template"></a>创建用于部署模板的 URL
 
-若要为模板创建 URL，请从存储库中模板的原始 URL 开始：
+若要为模板创建 URL，请从存储库中的模板的原始 URL 开始。 若要查看原始 URL，请选择 "**原始**"。
+
+:::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="选择原始":::
+
+URL 的格式为：
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json

@@ -3,13 +3,13 @@ title: 在 Azure 中的 Service Fabric 上创建 .NET 应用
 description: 本教程介绍如何使用 ASP.NET Core 前端和 Reliable Services 有状态后端创建一个应用程序，然后将其部署到群集。
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 03320fe41bcac8b99a3475b52fcf1b41ea5aed89
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257118"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428360"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 
@@ -47,7 +47,7 @@ ms.locfileid: "86257118"
 
 2. 通过单击“文件”->“新建”->“项目”创建项目。
 
-3. 在“新建项目”对话框中，选择“云”>“Service Fabric 应用程序”。 
+3. 在“新建项目”对话框中，选择“云”>“Service Fabric 应用程序”。
 
 4. 将应用程序命名为“Voting”，然后单击“创建” 。
 
@@ -252,7 +252,7 @@ internal static Uri GetVotingDataServiceName(ServiceContext context)
 
 ### <a name="add-the-votescontrollercs-file"></a>添加 VotesController.cs 文件
 
-添加控制器用于定义投票操作。 右键单击“Controllers”文件夹，然后选择“添加”->“新建项”->“Visual C#”->“ASP.NET Core”->“类”。  将文件命名为“VotesController.cs”，然后单击“添加” 。  
+添加控制器用于定义投票操作。 右键单击“Controllers”文件夹，然后选择“添加”->“新建项”->“Visual C#”->“ASP.NET Core”->“类”。 将文件命名为“VotesController.cs”，然后单击“添加” 。  
 
 将 *VotesController.cs* 文件内容替换为以下内容，然后保存所做更改。  稍后在执行[更新 VotesController.cs 文件](#updatevotecontroller_anchor)时将会修改此文件，以读取和写入来自后端服务的投票数据。  现在，控制器会将静态字符串数据返回到视图中。
 
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 创建 VotingWeb 前端服务后，Visual Studio 会随机选择服务侦听的端口。  VotingWeb 服务充当此应用程序的前端并接受外部流量，因此让我们将此服务绑定到已知的固定端口。  [服务清单](service-fabric-application-and-service-manifests.md)声明服务终结点。
 
-在解决方案资源管理器中，打开“VotingWeb/PackageRoot/ServiceManifest.xml”。  在“Resources”部分中查找“Endpoint”元素，并将“Port”值更改为 8080。    若要在本地部署和运行应用程序，应用程序侦听端口必须为打开状态且在你的计算机上可用。
+在解决方案资源管理器中，打开“VotingWeb/PackageRoot/ServiceManifest.xml”。  在“Resources”部分中查找“Endpoint”元素，并将“Port”值更改为 8080。 若要在本地部署和运行应用程序，应用程序侦听端口必须为打开状态且在你的计算机上可用。
 
 ```xml
 <Resources>
@@ -597,7 +597,7 @@ public class VotesController : Controller
 
 ## <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
-在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据方案需要调整调试体验。 在此应用程序中，我们使用可靠字典将数据存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以在 Visual Studio 中更改“应用程序调试模式” （“Voting” 项目属性）。 
+在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据方案需要调整调试体验。 在此应用程序中，我们使用可靠字典将数据存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以在 Visual Studio 中更改“应用程序调试模式” （“Voting” 项目属性）。
 
 若要查看代码，请完成以下步骤：
 

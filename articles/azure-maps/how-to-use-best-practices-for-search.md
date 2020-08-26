@@ -1,18 +1,19 @@
 ---
 title: Azure Maps 搜索服务的最佳做法 | Microsoft Azure Maps
 description: 了解如何在 Microsoft Azure Maps 中使用搜索服务时应用最佳做法。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84264360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064270"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps 搜索服务的最佳做法
 
@@ -27,7 +28,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要调用任何 Azure Maps 服务 API，需要具有 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
+若要调用任何 Azure Maps 服务 API，需要具有 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
 
 有关 Azure Maps 中身份验证的信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
@@ -84,7 +85,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>地理实体类型的反向地理编码和筛选
 
-在[地址搜索反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 例如，yoi 可能需要提取城市的区域多边形。 若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
+在[地址搜索反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 例如，您可能希望提取城市的区域多边形。 若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
 
 生成的响应包含地域 ID 和匹配的实体类型。 如果提供了多个实体，则终结点将返回可用的最小实体。 可使用返回的几何图形 ID 通过 [Polygon 搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来获取地理位置的几何图形。
 
@@ -966,7 +967,7 @@ Geometry 响应类型可能包括在 `geometry` 和 `id` 下的 `dataSources` �
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请阅读以下文章：
+若要了解详细信息，请参阅：
 
 > [!div class="nextstepaction"]
 > [如何生成 Azure Maps 搜索服务请求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)

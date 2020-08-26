@@ -5,21 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639800"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717432"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密码重置写回在 Azure Active Directory 中的工作原理。
 
 Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在云中重置其密码，但大多数公司还具有其用户所在的本地 Active Directory 域服务 (AD DS) 环境。 密码写回是使用 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 启用的功能，可将云中的密码更改实时写回到现有的本地目录。 在此配置中，当用户在云中使用 SSPR 更改或重置其密码时，更新后的密码也将写回到本地 AD DS 环境
+
+> [!IMPORTANT]
+> 此概念文章向管理员说明了自助服务密码重置写回的工作原理。 如果你是已注册自助式密码重置的最终用户并且需要返回到你的帐户，请转到 https://aka.ms/sspr 。
+>
+> 如果你的 IT 团队尚未启用重置自己密码的功能，请联系支持人员以获得更多帮助。
 
 使用以下混合标识模型的环境支持密码写回：
 
@@ -36,7 +42,12 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 * 不需要任何入站防火墙规则：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
 > [!NOTE]
-> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 管理员可以在云中更改其密码，但不能使用密码重置来重置遗忘的密码。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
+> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 管理员可以在云中更改其密码，但不能使用密码重置来重置遗忘的密码。 有关受保护组的详细信息，请参阅 [AD DS 中的受保护帐户和组](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
+
+若要开始 SSPR 写回，请完成以下教程：
+
+> [!div class="nextstepaction"]
+> [教程：启用自助式密码重置 (SSPR) 写回](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>密码写回的工作原理
 
@@ -52,14 +63,14 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 1. 在消息到达服务总线后，密码重置终结点便自动唤醒，并看到有待处理的重置请求。
 1. 然后，服务使用云定位点属性查找用户。 若要成功完成此查找，必须符合以下条件：
 
-   * Active Directory 连接器空间中必须有用户对象。
+   * 该用户对象必须存在于 AD DS 连接器空间中。
    * 用户对象必须链接到相应的 metaverse (MV) 对象。
-   * 用户对象必须链接到相应的 Azure Active Directory 连接器对象。
-   * Active Directory 连接器对象与 MV 的链接必须设有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。
+   * 用户对象必须链接到相应的 Azure AD 连接器对象。
+   * 从 AD DS 连接器对象到 MV 的链接必须对该链接具有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx` 。
 
-   当云中有调用发出时，同步引擎使用 cloudAnchor 属性，查找 Azure Active Directory 连接器空间对象。 然后，它依次链接回 MV 对象和 Active Directory 对象。 由于同一用户可能有多个 Active Directory 对象（多林），因此同步引擎依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。
+   当从云中传入调用时，同步引擎使用 **cloudAnchor** 属性查找 Azure AD 连接器空间对象。 然后，它将链接回 MV 对象，然后再按照该链接返回到 AD DS 的对象。 由于同一用户可能有多个 AD DS 对象 (多林) ，因此，同步引擎将依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接来选择正确的对象。
 
-1. 找到用户帐户后，将尝试直接在相应的 Active Directory 林中重置密码。
+1. 找到用户帐户后，将尝试直接在相应的 AD DS 林中重置密码。
 1. 如果密码设置操作成功，将告知用户其密码已更改。
 
    > [!NOTE]
@@ -68,7 +79,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 1. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的原因如下：
     * 服务已关闭。
     * 用户选择的密码不符合组织策略。
-    * 在本地 Active Directory 中找不到用户。
+    * 在本地 AD DS 环境中找不到用户。
 
    错误消息会向用户提供指导，让他们尝试解决问题，而无需管理员的干预。
 
@@ -85,7 +96,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
    1. 加密密码将放入到使用 Microsoft TLS/SSL 证书通过加密通道发送到服务总线中继的 HTTPS 消息中。
    1. 此消息到达服务总线后，本地代理便会唤醒，并使用先前生成的强密码对服务总线进行身份验证。
    1. 本地代理选取加密的消息，并使用私钥解密消息。
-   1. 本地代理尝试通过 AD DS SetPassword API 设置密码。 执行此步骤可在云中实施 Active Directory 本地密码策略（例如复杂性、期限、历史记录和筛选器）。
+   1. 本地代理尝试通过 AD DS SetPassword API 设置密码。 此步骤允许在云中强制实施 AD DS 的本地密码策略 (例如复杂性、期限、历史记录和筛选) 器。
 * **消息过期策略**
    * 如果由于本地服务关闭而导致消息位于服务总线中，消息会超时并在几分钟后遭到删除。 消息超时和删除进一步提高了安全性。
 
@@ -94,9 +105,9 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 在用户提交密码重置请求后，重置请求会先经历多个加密步骤，然后才会到达本地环境。 这些加密步骤可确保实现最高的服务可靠性和安全性。 这些步骤如下所述：
 
 1. 使用 2048 位 RSA 密钥加密密码：在用户提交要写回本地的密码后，提交的密码本身会使用 2048 位 RSA 密钥进行加密。
-1. 使用 AES-GCM 进行包级加密：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
-1. 所有通信都是通过 TLS/SSL 进行的：与服务总线的所有通信都是在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
-1. **每隔六个月自动滚动更新密钥**：每隔六个月，或者每当在 Azure AD Connect 中禁用再重新启用密码写回时，滚动更新所有密钥，确保最高的服务安全性与可靠性。
+1. 使用 AES-GCM 进行包级加密：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何人通过查看或篡改内容来直接访问底层服务总线通道。
+1. **所有通信通过 TLS/SSL 进行**：与服务总线的所有通信都在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
+1. **每六个月自动滚动更新**：所有密钥每六个月滚动一次，或者每次禁用密码写回，然后在 Azure AD Connect 上重新启用，以确保最高的服务安全性和安全性。
 
 ### <a name="password-writeback-bandwidth-usage"></a>密码写回带宽用量
 
@@ -129,7 +140,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
    * 任何管理员自助强制更改密码操作（例如，密码到期）。
    * 源自[密码重置门户](https://passwordreset.microsoftonline.com)的任何管理员自助密码重置操作。
    * 任何管理员通过 [Azure 门户](https://portal.azure.com)发起的任何最终用户密码重置操作。
-   * 任何管理员通过 [Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) 发起的任何最终用户密码重置操作。
+   * 任何管理员通过 [Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) 发起的任何最终用户密码重置操作。
 
 ## <a name="unsupported-writeback-operations"></a>不支持的写回操作
 
@@ -138,7 +149,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 * **不支持的最终用户操作**
    * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Microsoft Graph API 重置自己的密码。
 * **不支持的管理员操作**
-   * 任何由管理员通过 PowerShell 版本 1、版本 2 或 Microsoft Graph API（支持 [Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)）发起的最终用户密码重置操作。
+   * 任何由管理员通过 PowerShell 版本 1、版本 2 或 Microsoft Graph API（支持 [Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)）发起的最终用户密码重置操作。
    * 任何管理员通过 [Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置操作。
    * 任何管理员都不能使用密码重置工具来重置其密码以进行密码写回。
 
@@ -150,4 +161,4 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 若要开始 SSPR 写回，请完成以下教程：
 
 > [!div class="nextstepaction"]
-> [教程：启用自助式密码重置 (SSPR) 写回](tutorial-enable-writeback.md)
+> [教程：启用自助式密码重置 (SSPR) 写回](./tutorial-enable-sspr-writeback.md)

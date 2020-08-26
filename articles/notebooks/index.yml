@@ -3,18 +3,18 @@ title: Azure Notebooks 预览版文档
 summary: Azure Notebooks 公共预览网站将于 2020 年 10 月 9 日停用并替换为 Visual Studio、Azure 和 GitHub 中的集成服务。 请在 https://notebooks.azure.com/Content/alternatives.html 上了解你的选项以及 Microsoft 的其他笔记本体验。
 metadata:
   title: Azure Notebooks 预览版文档
-  description: 了解如何通过托管的 Azure Notebooks 预览版服务创建、运行和共享 Jupyter 笔记本。
+  description: 了解如何通过托管的 Azure Notebooks 预览版服务创建、运行和共享 Jupyter Notebook。
   ms.service: azure-notebooks
   ms.topic: landing-page
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 0065b8b609ca9ef29365127333ad1a39f3327c1b
-  ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+  ms.openlocfilehash: cdc98d01a4fae5e4b09af001ec65dd7a29c34c0f
+  ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/09/2020
-  ms.locfileid: "86181414"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88640270"
 landingContent:
 - title: 关于 Azure Notebooks
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: azure-notebooks-samples.md
   - linkListType: get-started
     links:
-    - text: 访问 Azure Notebooks
+    - text: 访问 Azure Notebooks 文件
       url: https://notebooks.azure.com/
 - title: Azure Notebook 入门
   linkLists:
@@ -38,17 +38,17 @@ landingContent:
       url: /learn/modules/analyze-climate-data-with-azure-notebooks/
   - linkListType: tutorial
     links:
-    - text: 使用 Python 创建并运行 Jupyter 笔记本
+    - text: 使用 Python 创建并运行 Jupyter Notebook
       url: tutorial-create-run-jupyter-notebook.md
   - linkListType: quickstart
     links:
     - text: 登录并设置用户 ID
       url: quickstart-sign-in-azure-notebooks.md
-    - text: 创建和共享笔记本
+    - text: 创建和共享 Notebook
       url: quickstart-create-share-jupyter-notebook.md
-    - text: 克隆笔记本
+    - text: 克隆 Notebook
       url: quickstart-clone-jupyter-notebook.md
-    - text: 迁移本地 Jupyter 笔记本
+    - text: 迁移本地 Jupyter Notebook
       url: quickstart-migrate-local-jupyter-notebook.md
     - text: 在自定义环境下创建项目
       url: quickstart-create-jupyter-notebook-project-environment.md
@@ -64,7 +64,7 @@ landingContent:
       url: work-with-project-data-files.md
     - text: 创建和克隆项目
       url: create-clone-jupyter-notebooks.md
-    - text: 在笔记本中访问云数据
+    - text: 在 Notebook 中访问云数据
       url: access-data-resources-jupyter-notebooks.md
-    - text: 从笔记本中安装包
+    - text: 在 Notebook 中安装包
       url: install-packages-jupyter-notebook.md

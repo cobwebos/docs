@@ -15,11 +15,12 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77d465b5900a3c36e6c6b957431b9d6ba56f50a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764853"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386973"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
 [声明感知应用](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)对安全令牌服务 (STS) 执行重定向。 STS 请求用来自用户的凭据交换令牌，然后将用户重定向到应用程序。 使应用程序代理使用这些重定向有几种方式。 使用本文配置声明感知应用的部署。 
@@ -54,7 +55,6 @@ ms.locfileid: "84764853"
    ![添加终结点 - 设置受信任的 URL 值 - 屏幕截图](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>后续步骤
-* 为非声明感知应用程序[启用单一登录](configure-single-sign-on-non-gallery-applications.md)
 * [允许本地客户端应用与代理应用程序交互](application-proxy-configure-native-client-application.md)
 
 

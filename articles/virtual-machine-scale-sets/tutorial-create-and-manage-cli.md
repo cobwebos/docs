@@ -1,5 +1,5 @@
 ---
-title: 教程 - 创建和管理 Azure 虚拟机规模集
+title: 教程：创建和管理 Azure VM 规模集 - Azure CLI
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 author: ju-shim
 ms.author: jushiman
@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: e7267ca90ea11e63c5523dec0a3ee414f7b655b2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736435"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501638"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -34,7 +34,7 @@ ms.locfileid: "84736435"
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用“[az group create](/cli/azure/group)”命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -122,7 +122,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 实例映像
-在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
+在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看最常用映像的列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -168,7 +168,7 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 若要部署使用特定映像的规模集，请使用“Urn”列中的值。 指定映像时，可将映像版本号替换为 *latest*，以便选择最新的发行版。 在以下示例中，`--image` 参数用于指定最新版本的 CentOS 7.3 映像。
 
 > [!IMPORTANT]
-> 建议使用最新版本的映像。 指定“最新版本”以使用部署时可用的最新版本的映像。 请注意，即使使用的是“最新版本”，VM 映像部署后也不会自动更新，即使新版本可用也是如此。
+> 建议使用最新版本的映像。 指定“latest”以使用部署时可用的最新版本的映像。 请注意，即使使用的是“latest”，VM 映像部署后也不会自动更新，即使新版本可用也是如此。
 
 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
@@ -190,12 +190,12 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 
 | 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/linux/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
-| [存储优化](../virtual-machines/linux/sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
-| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
-| [高性能](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
+| [常规用途](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [计算优化](../virtual-machines/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [内存优化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [存储优化](../virtual-machines/sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [高性能](../virtual-machines/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
 若要查看在特定区域可用的 VM 实例大小的列表，请使用 [az vm list-sizes](/cli/azure/vm) 命令。
@@ -311,4 +311,4 @@ az group delete --name myResourceGroup --no-wait --yes
 请转到下一教程，了解规模集磁盘。
 
 > [!div class="nextstepaction"]
-> [将数据磁盘与规模集配合使用](tutorial-use-disks-cli.md)
+> [通过规模集使用数据磁盘](tutorial-use-disks-cli.md)

@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889629"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081094"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>将 Azure 与公有云进行连接
 
@@ -33,7 +34,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
  
 通过 Layer3 提供商进行连接时，Microsoft 会通过 BGP 将客户 VNET 路由播发给服务提供商。 提供商可以进行两种不同的实现。
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![显示第3层提供程序的关系图。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 提供商可能会将每个云提供商置于单独的 VRF 中，前提是来自所有云提供商的流量会到达客户路由器。 如果客户通过服务提供商运行 BGP，则默认情况下，这些路由会重新播发到其他云提供商。 
 
@@ -44,7 +45,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
 ### <a name="layer2-provider-and-direct-connection"></a>Layer2 提供商和直接连接
 
 虽然两种模型中的物理连接不同，但在 layer3 中，BGP 是在 MSEE 和客户路由器之间直接建立的。 就 ExpressRoute Direct 来说，客户直接连接到 MSEE。 而在使用 Layer2 时，服务提供商将 VLAN 从客户本地扩展到云。 客户在 layer2 网络之上运行 BGP，将其 DC 连接到云。
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![显示 L2 提供程序和直接连接的关系图。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 在两种情况下，客户将通过点到点方式连接到每个公有云。 客户会建立单独的 BGP 连接来连接到每个公有云。 默认情况下，一个云提供商接收的路由会播发到其他云提供商。 每个云提供商都有不同的前缀限制，因此客户在播发路由时应注意这些限制。 客户可以在播发其他公有云提供的路由时，与 Microsoft 一起使用常规 BGP 设置。
 
 ## <a name="direct-connection-with-expressroute"></a>通过 ExpressRoute 进行的直接连接

@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box Disk 自我托管交付 | Microsoft Docs
 description: 描述 Azure Data Box Disk 设备的自我托管交付工作流
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: f3292e2088397e332323bec71f9a5965eddd0fe0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945012"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783223"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box Disk 使用自我托管交付功能
 
@@ -28,7 +28,8 @@ ms.locfileid: "84945012"
 * 日本
 * 新加坡
 * 韩国
-* 印度（预览版）
+* 南非
+* 印度 (预览) 
 
 ## <a name="use-self-managed-shipping"></a>使用自我托管交付
 

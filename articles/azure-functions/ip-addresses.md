@@ -3,11 +3,12 @@ title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656769"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874072"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -38,7 +39,7 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 1. 登录到 [Azure 资源浏览器](https://resources.azure.com)。
 2. 选择“订阅”> {你的订阅} >“提供程序”>“Microsoft.Web”>“站点”。****
 3. 在 JSON 面板中，找到其 `id` 属性以函数应用名称结尾的站点。
-4. 参阅 `outboundIpAddresses` 和 `possibleOutboundIpAddresses`。 
+4. 请参见 `outboundIpAddresses` 和 `possibleOutboundIpAddresses`。 
 
 `outboundIpAddresses` 的集当前可供函数应用使用。 `possibleOutboundIpAddresses` 的集包括仅当函数应用[缩放到其他定价层](#outbound-ip-address-changes)时才可用的 IP 地址。
 
@@ -48,12 +49,13 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> 缩放按[消耗计划](functions-scale.md#consumption-plan)运行的函数应用时，可以分配新范围的出站 IP 地址。 按消耗计划运行时，可能需要将整个数据中心加入允许列表。
+> 缩放按[消耗计划](functions-scale.md#consumption-plan)运行的函数应用时，可以分配新范围的出站 IP 地址。 在消耗计划中运行时，您可能需要将整个数据中心添加到允许列表中。
 
 ## <a name="data-center-outbound-ip-addresses"></a>数据中心出站 IP 地址
 
-如果需要将函数应用使用的出站 IP 地址加入允许列表，另一种做法是将函数应用的数据中心（Azure 区域）加入允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
+如果需要将函数应用使用的出站 IP 地址添加到允许列表，另一个选项是将函数应用的数据中心 (Azure 区域) 添加到允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
 
 例如，应用于西欧区域的 JSON 片段可能如下所示：
 

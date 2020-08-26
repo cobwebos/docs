@@ -58,6 +58,8 @@
       href: remote-work-support.md
     - name: 网络规则中的 FQDN
       href: fqdn-filtering-network-rules.md
+    - name: 安全基线
+      href: security-baseline.md
 - name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署

@@ -1,21 +1,22 @@
 ---
-title: 管理读取副本-Azure PowerShell-Azure Database for PostgreSQL
-description: 了解如何使用 PowerShell 在 Azure Database for PostgreSQL 中设置和管理读取副本。
+title: 管理只读副本 - Azure PowerShell - Azure Database for PostgreSQL
+description: 了解如何使用 PowerShell 在 Azure Database for PostgreSQL 中设置和管理只读副本。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 45876c8e176a4f81abfd927b0e2a8df8fc26ac25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106775"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502524"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 在 Azure Database for PostgreSQL 中创建和管理读取副本
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 在 Azure Database for PostgreSQL 中创建和管理只读副本
 
-本文介绍如何使用 PowerShell 在 Azure Database for PostgreSQL 服务中创建和管理读取副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
+本文介绍如何使用 PowerShell 在 Azure Database for PostgreSQL 服务中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -32,12 +33,12 @@ ms.locfileid: "86106775"
 > 尽管 Az.PostgreSql PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.PostgreSql -AllowPrerelease`。
 > Az.PostgreSql PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
-如果选择在本地使用 PowerShell，请使用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
+如果选择在本地使用 PowerShell，请使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> 读取副本功能仅适用于常规用途或内存优化定价层中的 Azure Database for PostgreSQL 服务器。 请确保主服务器位于其中一个定价层中。
+> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for PostgreSQL 服务器。 请确保主服务器位于其中一个定价层中。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
 
@@ -106,4 +107,4 @@ Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 重新启动 Azure Database for PostgreSQL 服务器](howto-restart-server-powershell.md)
+> [使用 PowerShell 重启 Azure Database for PostgreSQL 服务器](howto-restart-server-powershell.md)

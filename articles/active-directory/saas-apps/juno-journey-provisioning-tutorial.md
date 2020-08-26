@@ -2,25 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Juno Journey 配置自动用户预配 | Microsoft 文档
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Juno Journey 及如何解除预配。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1a516374e0ac478b24fa1c3ced1627c4814f9bbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367591"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546877"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教程：为 Juno Journey 配置自动用户预配
 
@@ -151,7 +147,7 @@ ms.locfileid: "85367591"
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

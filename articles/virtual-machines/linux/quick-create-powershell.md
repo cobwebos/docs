@@ -5,19 +5,19 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 10/17/2018
+ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510321"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513445"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机
 
-Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 本快速入门展示了如何使用 Azure PowerShell 模块在 Azure 中部署 Linux 虚拟机 (VM)。 本快速入门使用 Canonical 提供的 Ubuntu 16.04 LTS 市场映像。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
+Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 本快速入门展示了如何使用 Azure PowerShell 模块在 Azure 中部署 Linux 虚拟机 (VM)。 本快速入门使用 Canonical 提供的 Ubuntu 18.04 LTS 市场映像。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -29,17 +29,18 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-ssh-key-pair"></a>创建 SSH 密钥对
 
-需要一个 SSH 密钥对才能完成本快速入门。 如果已有一个 SSH 密钥对，则可以跳过此步骤。
+使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建 SSH 密钥对。 如果已有一个 SSH 密钥对，则可以跳过此步骤。
 
-打开 bash shell，使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建一个 SSH 密钥对。 如果本地计算机上没有 bash shell，则可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。  
 
 ```azurepowershell-interactive
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-有关如何创建 SSH 密钥对的更多详细信息，包括 PuTTy 的用法，请参阅[如何将 SSH 密钥与 Windows 配合使用](ssh-from-windows.md)。
+系统会提示为密钥对提供文件名，也可以点击 Enter 以使用 `/home/<username>/.ssh/id_rsa` 默认位置。 如果需要，还能够为密钥创建密码。
 
-如果使用 Cloud Shell 创建 SSH 密钥对，则会将密钥对存储在[由 Cloud Shell 自动创建的存储帐户](../../cloud-shell/persisting-shell-storage.md)的容器映像中。 在检索密钥之前，请勿删除此存储帐户或其中的文件共享，否则将无法访问 VM。 
+有关如何创建 SSH 密钥对的更多详细信息，请参阅[如何将 SSH 密钥与 Windows 配合使用](ssh-from-windows.md)。
+
+如果使用 Cloud Shell 创建 SSH 密钥对，则会将密钥对存储在[由 Cloud Shell 自动创建的存储帐户](../../cloud-shell/persisting-shell-storage.md)中。 在检索密钥之前，请勿删除此存储帐户或其中的文件共享，否则将无法访问 VM。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -147,7 +148,7 @@ Set-AzVMOperatingSystem `
 Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
   -Id $nic.Id
@@ -178,7 +179,7 @@ New-AzVM `
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-使用创建 SSH 密钥对时使用过的 bash shell（例如 [Azure Cloud Shell](https://shell.azure.com/bash) 或本地 bash shell）将 SSH 连接命令粘贴到 shell 中，以便创建一个 SSH 会话。
+使用用于创建 SSH 密钥对的相同 shell，将以下命令粘贴到 shell 中以创建 SSH 会话。 将 10.111.12.123 替换为 VM 的 IP 地址。
 
 ```bash
 ssh azureuser@10.111.12.123

@@ -1,14 +1,14 @@
 ---
 title: 为开发测试实验室虚拟机创建自定义项目 | Microsoft Docs
-description: 了解如何创作自己的项目以用于 Azure 开发测试实验室。
+description: 了解如何在预配虚拟机后，创建与 Azure 开发测试实验室一起使用来部署和设置应用程序的项目。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857017"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270676"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
 
@@ -51,7 +51,7 @@ ms.locfileid: "85857017"
 | description |是 |实验室中显示的项目的说明。 |
 | iconUri |否 |实验室中显示的图表的 URI。 |
 | targetOsType |是 |在其中安装项目的 VM 的操作系统。 支持的选项为：Windows 和 Linux。 |
-| 参数 |否 |在计算机上运行项目安装命令时提供的值。 可帮助对项目进行自定义。 |
+| parameters |否 |在计算机上运行项目安装命令时提供的值。 可帮助对项目进行自定义。 |
 | runCommand |是 |在 VM 上执行的项目安装命令。 |
 
 ### <a name="artifact-parameters"></a>项目参数
@@ -83,7 +83,7 @@ ms.locfileid: "85857017"
 * 数组（任何有效的 JSON 数组）
 
 ## <a name="secrets-as-secure-strings"></a>安全字符串形式的机密
-将机密声明为安全字符串。 下面是 `parameters` 在文件的**artifactfile.js**部分中声明安全字符串参数的语法：
+将机密声明为安全字符串。 下面是 `parameters` 在文件的 **artifactfile.js** 部分中声明安全字符串参数的语法：
 
 ```json
 
@@ -103,7 +103,7 @@ ms.locfileid: "85857017"
   }
 ```
 
-有关 artifactfile.js和 artifact.ps1 （PowerShell 脚本）的完整示例，请参阅[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+有关完整的示例，请参阅 [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)上的 artifactfile.js和 artifact.ps1 (PowerShell 脚本) 。
 
 需要注意的另一个重要事项是，为用户调试捕获输出时不将机密记录到控制台。 
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282970"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>发布者验证（预览版）故障排除
 如果无法完成这个过程，或者在[发布者验证（预览版）](publisher-verification-overview.md)过程中遇到意外的行为，则在收到错误或看到意外行为时，应该首先执行以下操作： 
@@ -37,7 +37,7 @@ ms.locfileid: "85477033"
     1. 导航到 [MPN 注册页](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. 使用组织的主要 Azure AD 租户中的用户帐户登录 
     1. 如果 MPN 帐户已存在，则会识别此帐户，并将你添加到该帐户 
-    1. 导航到[“合作伙伴配置文件”页面](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile)，该页面上列出了 MPN ID 和主要帐户联系人
+    1. 导航到[“合作伙伴配置文件”页面](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)，该页面上列出了 MPN ID 和主要帐户联系人
 
 - 我不知道谁是我的 Azure AD 全局管理员（也称为公司管理员或租户管理员），如何找到他们？应用管理员呢？或其他管理员角色呢？
     1. 使用组织的主租户中的用户帐户登录到 [Azure AD 门户](https://aad.portal.azure.com)
@@ -45,14 +45,14 @@ ms.locfileid: "85477033"
     1. 单击“全局管理员”或所需的管理员角色
     1. 此时会显示分配了该角色的用户列表
 
-- 我不知道谁是我的 MPN 帐户管理员。转到 [MPN 用户管理页面](https://partner.microsoft.com/en-us/pcv/users) 并筛选用户列表，以查看具有各种管理员角色的用户。
+- 我不知道谁是我的 MPN 帐户管理员。转到 [MPN 用户管理页面](https://partner.microsoft.com/pcv/users) 并筛选用户列表，以查看具有各种管理员角色的用户。
 
 - 我收到一个错误，显示我的 MPN ID 无效，或我无权访问它。
-    1. 转到[合作伙伴配置文件](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile)并验证： 
+    1. 转到[合作伙伴配置文件](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)并验证： 
         - MPN ID 正确无误。 
         - 未显示错误或“挂起的操作”，并且“法律业务配置文件”和“合作伙伴信息”下的验证状态均显示为“已授权”或“成功”。
-    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。
-    1. 转到[“MPN 用户管理”页](https://partner.microsoft.com/en-us/pcv/users)，确认登录的用户是全局管理员、MPN 管理员或帐户管理员。
+    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。
+    1. 转到[“MPN 用户管理”页](https://partner.microsoft.com/pcv/users)，确认登录的用户是全局管理员、MPN 管理员或帐户管理员。
 
 - 当我登录到 Azure AD 门户时，我看不到任何已注册的应用程序。**为什么？** 
     应用注册可能是使用其他用户帐户或在其他租户中创建的。 确保在创建应用注册的租户中使用正确的帐户登录。

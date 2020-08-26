@@ -3,20 +3,20 @@ title: 已知问题与故障排除
 titleSuffix: Azure Machine Learning
 description: 获取有关在 Azure 机器学习中查找和更正错误或失败的帮助。 了解已知问题、故障排除和解决方法。
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
+ms.date: 08/13/2020
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536107"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757279"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -99,9 +99,9 @@ ms.locfileid: "86536107"
     
 * **KeyError：在本地计算或 Azure Databricks 群集上运行 AutoML 时的 "品牌"**
 
-    如果新环境是在2020年6月10日之后使用 SDK 1.7.0 或更早版本创建的，则在 py-cpuinfo 包中进行更新后，训练可能会因此错误而失败。 （在2020年6月10日或之前创建的环境不受影响，因为使用缓存的培训图像，所以试验在远程计算上运行。）若要解决此问题，请执行以下两个步骤之一：
+    如果新环境是在2020年6月10日之后使用 SDK 1.7.0 或更早版本创建的，则在 py-cpuinfo 包中进行更新后，训练可能会因此错误而失败。  (在2020年6月10日或之前创建的环境不受影响，因为使用缓存的培训图像，所以试验在远程计算上运行。 ) 若要解决此问题，请执行以下两个步骤之一：
     
-    * 将 SDK 版本更新为1.8.0 或更高版本（这也会将 py cpuinfo 降级到5.0.0）：
+    * 将 SDK 版本更新为1.8.0 或更高版本 (这还会将 py cpuinfo 降级到 5.0.0) ：
     
       ```bash
       pip install --upgrade azureml-sdk[automl]
@@ -121,6 +121,18 @@ ms.locfileid: "86536107"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure 机器学习 SDK 安装失败，出现异常： ModuleNotFoundError：没有名为 "ruamel" 或 "ImportError：没有名为 ruamel. yaml 的模块"**
+   
+   在适用于 Python 的 Azure 机器学习 SDK 的所有发行版本的 conda 基本环境中，在基本环境中安装适用于 Python 的 Azure 机器学习 SDK for)  ( Python 时遇到此问题。 请参阅以下解决方法：
+
+    * 避免在 conda 基本环境上安装 Python SDK，而是在新创建的用户环境上创建 conda 环境并安装 SDK。 最新的 pip 应在这个新的 conda 环境中工作。
+
+    * 若要在 docker 中创建映像，而不能脱离 conda 基本环境，请在 docker 文件中固定 pip<= 20.1.1。
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * 安装包时 Databricks 失败
 
     安装更多包时，Azure Databricks 上的 Azure 机器学习 SDK 安装失败。 某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，而与 Azure 机器学习 SDK 无关。 使用其他库时也可能会遇到此问题。 示例：
@@ -131,7 +143,7 @@ ms.locfileid: "86536107"
 
     或者，如果一直面临 Python 库的安装问题，可以使用初始化脚本。 此方法并不正式受到支持。 有关详细信息，请参阅[群集范围的初始化脚本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
 
-* **Databricks 导入错误：无法从“pandas._libs.tslibs”导入名称“Timedelta”** ：如果在使用自动机器学习时看到此错误，请在笔记本中运行以下两行：
+* **Databricks 导入错误：无法 `Timedelta` 从 `pandas._libs.tslibs` 导入名称**：如果你在使用自动机器学习时看到此错误，请在笔记本中运行以下两行：
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -163,8 +175,8 @@ ms.locfileid: "86536107"
 
 * **Azure 门户**：如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规“概述”页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
 
-* **Azure 机器学习 studio web 门户中支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
-  * Microsoft Edge （新的 Microsoft Edge，最新版本。 不是 Microsoft Edge 旧版）
+* **Azure 机器学习工作室 Web 门户支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
+  * Microsoft Edge（新的 Microsoft Edge（最新版）， 不是旧版 Microsoft Edge）
   * Safari（最新版本，仅限 Mac）
   * Chrome（最新版本）
   * Firefox（最新版本）
@@ -203,11 +215,11 @@ ms.locfileid: "86536107"
 |查看映像时，最近添加标签的映像不显示。     |   若要加载所有带标签的映像，请选择“第一个”按钮。 按下“第一个”按钮会返回到列表的最前面，但会加载所有带标签的数据。      |
 |在为对象检测提供标记时按 Esc 键会在左上角创建大小为零的标签。 在此状态下提交标签会失败。     |   单击标签旁边的打叉标记来删除该标签。  |
 
-### <a name="data-drift-monitors"></a><a name="data-drift"></a>数据偏移监视器
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> 数据偏移监视器
 
 数据偏移监视器的限制和已知问题：
 
-* 分析历史数据的时间范围限制为监视器频率设置的31个间隔。 
+* 分析历史数据时的时间范围限制为监视器频率设置的 31 个间隔。 
 * 除非未指定特征列表（使用所有特征），否则特征限制为 200 个。
 * 计算大小必须足够大才能处理数据。
 * 确保数据集包含处于给定监视器运行的开始和结束日期范围内的数据。
@@ -219,13 +231,13 @@ ms.locfileid: "86536107"
     | 分类 | string、bool、int、float | 特征中的唯一值数小于 100，并小于行数的 5%。 | Null 被视为其自身的类别。 | 
     | 数值 | int、float | 特征中的值为数字数据类型，且不符合分类特征的条件。 | 如果 15% 以上的值为 null，则会删除特征。 | 
 
-* 如果已[创建 datadrift 监视器](how-to-monitor-datasets.md)，但在 Azure 机器学习 studio 中看不到数据**集监视器**页上的数据，请尝试以下。
+* 如果已 [创建数据偏移监视器](how-to-monitor-datasets.md) ，但在 Azure 机器学习 studio 中看不到数据 **集监视器** 页上的数据，请尝试以下。
 
     1. 检查是否已在页面顶部选择了正确的日期范围。  
-    1. 在 "**数据集监视器**" 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
-    1. 如果运行已成功完成，请检查驱动程序日志以查看已生成的指标数，或者是否有任何警告消息。  单击试验后，在 "**输出 + 日志**" 选项卡中查找驱动程序日志。
+    1. 在“数据集监视器”选项卡上，选择试验链接以检查运行状态。  此链接位于表的最右侧。
+    1. 如果运行已成功完成，请检查驱动程序日志，以便查看已生成的指标数，或者查看是否有任何警告消息。  单击试验后，在“输出 + 日志”选项卡中查找驱动程序日志。
 
-* 如果 SDK `backfill()` 函数不生成预期的输出，则可能是由于身份验证问题所致。  创建要传入此函数的计算时，请不要使用 `Run.get_context().experiment.workspace.compute_targets` 。  相反，请使用[ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) （如下所示）创建传递到该函数的计算 `backfill()` ： 
+* 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -239,15 +251,36 @@ ms.locfileid: "86536107"
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
-* **计算准备时间较长：**
+* 计算准备时间很长：
 
-第一次连接或创建计算目标时，可能需要几分钟或更长时间。 
+第一次连接或创建计算目标可能需要几分钟甚至更长的时间。 
 
-从模型数据收集器中，最多可能需要10分钟的时间，数据才会到达 blob 存储帐户。 等待10分钟，以确保下面的单元格将运行。
+在模型数据收集器中，数据到达 blob 存储帐户最多需要（但通常不到）10 分钟。 等待 10 分钟以确保运行下面的单元。
 
 ```python
 import time
 time.sleep(600)
+```
+
+* **实时终结点的日志：**
+
+实时终结点的日志是客户数据。 对于实时终结点故障排除，可以使用以下代码来启用日志。 
+
+有关详细信息，请参阅 [本文](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)中的监视 web 服务终结点。
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+如果有多个租户，则可能需要先添加下面的身份验证代码 `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>训练模型
@@ -283,7 +316,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>自动化机器学习
 
-* **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 tensorflow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 tensorflow = = 1.12.0。 
+* **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 TensorFlow = = 1.12.0。 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -302,6 +335,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup 失败**： 
+    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 若要安装 Miniconda) ，请单击 [此处](https://docs.conda.io/en/latest/miniconda.html)。
+    * 通过运行命令确保安装了 conda 64 位，而不是32位 `conda info` 。 `platform`应该 `win-64` 适用于 Windows 或 `osx-64` for Mac。
+    * 确保已安装 conda 4.4.10 或更高版本。 可以通过命令检查版本 `conda -V` 。 如果你安装了以前的版本，则可以使用命令进行更新： `conda update conda` 。
+    * Linux `gcc: error trying to exec 'cc1plus'`
+      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 遇到错误，请使用管理中心捆绑命令安装 build essentials `sudo apt-get install build-essential` 。
+      * 将新名称作为第一个参数传递给 automl_setup 以创建新的 conda 环境。 使用查看现有的 conda 环境 `conda env list` ，并使用将其删除 `conda env remove -n <environmentname>` 。
+      
+* **automl_setup_linux sh 失败**：如果 automl_setup_linus，则在 Ubuntu Linux 出现错误： `unable to execute 'gcc': No such file or directory`-
+  1. 确保启用出站端口53和80。 在 Azure VM 上，可以通过在 Azure 门户中选择 VM 并单击 "网络" 来执行此操作。
+  2. 运行命令 `sudo apt-get update`
+  3. 运行命令 `sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`再次运行
+
+* **ipynb 失败**：
+  * 对于本地 conda，请首先确保 automl_setup 具有 susccessfully 运行。
+  * 确保 subscription_id 正确。 依次选择 "所有服务" 和 "订阅"，在 Azure 门户中查找 subscription_id。 Subscription_id 值中不应包含字符 "<" 和 ">"。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
+  * 确保参与者或所有者对订阅的访问权限。
+  * 检查该区域是否为受支持的区域之一： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` `australiaeast` `westus2` 、、和 `southcentralus` 。
+  * 使用 Azure 门户确保对区域的访问权限。
+  
+* **导入 AutoMLConfig 失败**：自动机器学习版本1.0.76 中存在包更改，这需要在更新到新版本之前卸载以前的版本。 如果 `ImportError: cannot import name AutoMLConfig` 从 1.0.76 v 到 v 1.0.76 或更高版本的 SDK 版本升级之后遇到此错误，请通过运行以下内容来解决该错误： `pip uninstall azureml-train automl` 和 `pip install azureml-train-auotml` 。 Automl_setup .cmd 脚本会自动执行此功能。 
+
+* **工作区。 from_config 失败**：如果调用 Ws = workspace from_config ( # A1 "失败-
+  1. 确保 ipynb 笔记本已成功运行。
+  2. 如果正在运行的文件夹不在运行的文件夹下运行 `configuration.ipynb` ，请将文件夹 aml_config，并将其包含的文件 config.js到新文件夹中。 From_config 读取笔记本文件夹或其父文件夹的 config.js。
+  3. 如果正在使用新的订阅、资源组、工作区或区域，请确保 `configuration.ipynb` 再次运行笔记本。 仅当工作区在指定的订阅下指定的资源组中已存在时，才能直接更改 config.js。
+  4. 若要更改区域，请更改工作区、资源组或订阅。 `Workspace.create` 如果工作区已经存在，则不会创建或更新它，即使指定的区域不同也是如此。
+  
+* **示例笔记本失败**：如果示例笔记本失败并出现错误，preperty、方法或库不存在：
+  * 确保已在 jupyter 笔记本中选择 correctcorrect 内核。 内核显示在笔记本页面的右上方。 默认值为 azure_automl。 请注意，内核将作为笔记本的一部分保存。 因此，如果切换到新的 conda 环境，则必须在笔记本中选择新内核。
+      * 对于 Azure Notebooks，它应为 Python 3.6。 
+      * 对于本地 conda 环境，该环境应为在 automl_setup 中指定的 conda envioronment 名称。
+  * 确保笔记本适用于你正在使用的 SDK 版本。 可以通过 `azureml.core.VERSION` 在 jupyter 笔记本单元中执行来检查 SDK 版本。 您可以通过单击该 `Branch` 按钮，选择该 `Tags` 选项卡，然后选择版本来从 GitHub 下载以前版本的示例笔记本。
+
+* **Windows 中的 Numpy 导入失败**：一些 windows 环境会看到一个错误，加载 Numpy 最新的 Python 版本3.6.8。 如果你看到此问题，请尝试 Python 版本3.6.7。
+
+* **Numpy 导入失败**：请在自动 ml conda 环境中检查 tensorflow 版本。 支持的版本为 1.13 <。 如果版本 >为1.13，则从环境中卸载 tensorflow，可以按如下所示检查 tensorflow 和 uninstall 的版本：
+  1. 启动命令行界面，激活安装了自动 ml 包的 conda 环境。
+  2. 输入 `pip freeze` 并查找 `tensorflow` ，如果找到，则列出的版本应为 < 1.13
+  3. 如果列出的版本不是受支持的版本，请 `pip uninstall tensorflow` 在命令外壳中输入 y 进行确认。
 
 ## <a name="deploy--serve-models"></a>部署和提供模型
 
@@ -369,6 +443,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 例如，如果尝试通过一个为实施远程执行操作而提交的机器学习管道创建或附加计算目标，会收到错误。
 
+## <a name="missing-user-interface-items-in-studio"></a>工作室中缺少用户界面项
+
+可以使用 Azure 基于角色的访问控制来限制可使用 Azure 机器学习执行的操作。 这些限制可以防止用户界面项显示在 Azure 机器学习工作室中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项不会出现在工作室中。
+
+有关详细信息，请参阅[管理用户和角色](how-to-assign-roles.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 请参阅更多有关 Azure 机器学习的故障排除文章：
@@ -376,5 +456,5 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 * [使用 Azure 机器学习解决 Docker 部署问题](how-to-troubleshoot-deployment.md)
 * [调试机器学习管道](how-to-debug-pipelines.md)
 * [从 Azure 机器学习 SDK 调试 ParallelRunStep 类](how-to-debug-parallel-run-step.md)
-* [使用 VS Code 的机器学习计算实例进行交互式调试](how-to-set-up-vs-code-remote.md)
+* [使用 VS Code 的机器学习计算实例进行交互式调试](how-to-debug-visual-studio-code.md)
 * [使用 Application Insights 调试机器学习管道](how-to-debug-pipelines-application-insights.md)

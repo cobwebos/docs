@@ -2,7 +2,7 @@
 title: Azure 媒体服务 v3 中的动态打包
 titleSuffix: Azure Media Services
 description: 本文概述了 Azure 媒体服务中的动态打包。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
-ms.author: juliako
-ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791599"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604574"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
@@ -28,18 +28,20 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)（源）表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点（标准或高级）的标准功能。
 
 > [!NOTE]
-> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>准备源文件供传输
 
 若要利用动态打包，需将夹层（源）文件[编码](encoding-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过下述流媒体协议传送视频。
+
+Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件。 如果使用的是备用编解码器（如 Dolby），则必须将音频文件编码为 MP4 容器。  
 
 > [!TIP]
 > 获取 MP4 和流式处理配置文件的一种方式是[使用媒体服务对夹层文件进行编码](#encode-to-adaptive-bitrate-mp4s)。 
 
 要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
 
-因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
+因此，用户只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 如果计划使用媒体服务动态加密来保护内容，请参阅[流式处理协议和加密类型](content-protection-overview.md#streaming-protocols-and-encryption-types)。
 
@@ -78,8 +80,10 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 以下步骤显示了常见的媒体服务流式处理工作流，其中动态打包与 Azure 媒体服务中的标准编码器一起使用。
 
-1. 上传输入文件，如 QuickTime/MOV 或 MXF 文件。 此文件也称为夹层文件或源文件。 有关受支持格式的列表，请参阅[标准编码器支持的格式](media-encoder-standard-formats.md)。
+1. [上传一个输入文件](job-input-from-http-how-to.md)，例如 MP4、QuickTime/MOV 或其他受支持的文件格式。 此文件也称为夹层文件或源文件。 有关受支持格式的列表，请参阅[标准编码器支持的格式](media-encoder-standard-formats.md)。
 1. 将夹层文件[编码](#encode-to-adaptive-bitrate-mp4s)为 H.264/AAC MP4 自适应比特率集。
+
+    如果已经有编码文件，只是想要复制并流式传输文件，请使用：[CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) 和 [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API。 将创建一个带有流式处理清单（.ism 文件）的新 MP4 文件。
 1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建[流式处理定位符](streaming-locators-concept.md)进行发布。
 1. 生成针对不同格式（HLS、MPEG-DASH 和平滑流式处理）的 URL。 流式处理终结点将负责为所有这些不同格式提供正确的清单和请求。
     
@@ -87,7 +91,7 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 ![使用动态打包进行按需流式处理的工作流关系图](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-上图中显示了下载路径，这只是为了向你展示可通过流式处理终结点（源）（在流式处理定位符上指定可下载的[流式处理策略](streaming-policy-concept.md)）直接下载 MP4 文件。<br/>动态包生成工具不会更改文件。 
+上图中显示了下载路径，这只是为了向你展示可通过流式处理终结点（源）（在流式处理定位符上指定可下载的[流式处理策略](streaming-policy-concept.md)）直接下载 MP4 文件。<br/>动态包生成工具不会更改文件。 如果希望绕过流式处理终结点（来源）功能，则可以选择使用 Azure blob 存储 API 直接访问 MP4 以便进行渐进式下载。 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 MP4
 
@@ -123,17 +127,17 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>动态打包支持的视频编解码器
 
-动态打包支持 MP4 文件，其中包含使用 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC)（MPEG-4 AVC 或 AVC1）或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding)（HEVC、hev1 或 hvc1）编码的视频。
+动态打包支持采用 MP4 容器文件格式，并包含使用 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC)（MPEG-4 AVC 或 AVC1）或是 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding)（HEVC、hev1 或 hvc1）进行编码的视频的视频文件。
 
 > [!NOTE]
-> 已使用动态打包测试了高达 4K 的分辨率和高达 60 帧/秒的帧速率。 [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 H.265。
+> 已使用动态打包测试了高达 4K 的分辨率和高达 60 帧/秒的帧速率。 [高级编码器](../previous/media-services-encode-asset.md#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 H.265。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>动态打包支持的音频编解码器
 
-动态打包支持采用以下协议编码的音频：
+动态打包还支持以 MP4 文件容器格式存储、包含使用以下编解码器之一编码的音频流的音频文件：
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)（AAC-LC、HE-AAC v1 或 HE-AAC v2）
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增强型 AC-3 或 E-AC3）
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)（AAC-LC、HE-AAC v1 或 HE-AAC v2）。 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增强型 AC-3 或 E-AC3）。  编码的音频必须以 MP4 容器格式存储，才能使用动态打包。
 * Dolby Atmos
 
    流式处理 Dolby Atmos 内容支持 MPEG-DASH 协议等标准，包括采用公共流式处理格式 (CSF) 或公共媒体应用程序格式 (CMAF) 分段的 MP4，以及通过具有 CMAF 的 HTTP Live Streaming (HLS)。
@@ -146,6 +150,10 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
     * DTS-HD Lossless (no core) (dtsl)
 
 动态打包支持使用 DASH 或 HLS（版本 4 或更高版本）的多音轨，用于流式传输包含使用多个编解码器和语言的多音轨的资产。
+
+对于以上所有音频编解码器，编码的音频必须以 MP4 容器格式存储，才能使用动态打包。 该服务不支持 blob 存储上的原始基本流文件格式（例如，不支持以下格式：.dts、.ac3）。 
+
+音频打包仅支持扩展名为 .mp4 或 .mp4a 的文件。 
 
 ### <a name="limitations"></a>限制
 

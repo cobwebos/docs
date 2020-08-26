@@ -11,16 +11,16 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027848"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245598"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
-[Azure Databricks](https://azure.microsoft.com/services/databricks/) 是基于Apache Spark 的快速、简单、协作型分析服务。 异常检测器 API 是 Azure 认知服务的一部分，可以用于监视时序数据。 按照本教程的说明，使用 Azure Databricks 以近实时方式对数据流运行异常检测。 我们将使用 Azure 事件中心引入推特数据，并使用 Spark 事件中心连接器将其导入 Azure Databricks。 然后，我们将使用 API 检测流式传输数据中的异常。 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) 是基于Apache Spark 的快速、简单、协作型分析服务。 异常检测器 API 是 Azure 认知服务的一部分，可以用于监视时序数据。 按照本教程的说明，使用 Azure Databricks 以近实时方式对数据流运行异常检测。 我们将使用 Azure 事件中心引入推特数据，并使用 Spark 事件中心连接器将其导入 Azure Databricks。 然后，我们将使用 API 检测流式传输数据中的异常。
 
 下图演示了应用程序流：
 
@@ -41,9 +41,9 @@ ms.locfileid: "86027848"
 
 > [!Note]
 > * 本教程引入了一个方法，用于为异常检测器 API 实现建议的[解决方案体系结构](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
-> * 本教程不能使用异常检测器 API 或 Azure Databricks 的免费试用版 (`F0`) 订阅来完成。 
+> * 本教程不能使用异常检测器 API 或 Azure Databricks 的免费试用版 (`F0`) 订阅来完成。
 
-创建 [Azure 订阅](https://azure.microsoft.com/free/)（如果没有）。
+创建 [Azure 订阅](https://azure.microsoft.com/free/cognitive-services)（如果没有）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ ms.locfileid: "86027848"
 
 - 用于访问事件中心命名空间的[连接字符串](../../../event-hubs/event-hubs-get-connection-string.md)。 该连接字符串应采用类似于
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 列中的一个值匹配。 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 列中的一个值匹配。
 
 - 事件中心的共享访问策略名称和策略密钥。
 
@@ -78,7 +78,7 @@ ms.locfileid: "86027848"
 
     选择“创建”。
 
-4. 创建工作区需要几分钟时间。 
+4. 创建工作区需要几分钟时间。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
@@ -98,7 +98,7 @@ ms.locfileid: "86027848"
    * 在本文中，请创建运行时为 **5.2** 的群集。 请勿选择 **5.3** 运行时。
    * 请务必选中“在不活动超过 \_\_ 分钟后终止”复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
 
-     选择“创建群集”。 
+     选择“创建群集”。
 4. 创建群集需要数分钟。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
@@ -285,7 +285,7 @@ while (!finished) {
       maxStatusId = Math.max(status.getId(), maxStatusId)
     }
   }
-  
+
   if (lowestStatusId == Long.MaxValue) {
     preMaxStatusId = maxStatusId
   }
@@ -325,7 +325,7 @@ pool.shutdown()
 
 在 **AnalyzeTweetsFromEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的异常检测器资源的值。 此 Notebook 读取前面使用 **SendTweetsToEventHub** Notebook 流式传输到事件中心的推文。
 
-首先，编写一个客户端来调用异常检测器。 
+首先，编写一个客户端来调用异常检测器。
 ```scala
 
 //
@@ -451,25 +451,25 @@ import scala.collection.immutable.ListMap
 
 class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
   override def inputSchema: StructType = new StructType().add("timestamp", TimestampType).add("value", FloatType)
-  
+
   override def bufferSchema: StructType = new StructType().add("point", MapType(TimestampType, FloatType))
-  
+
   override def dataType: DataType = BooleanType
-  
+
   override def deterministic: Boolean = false
-  
+
   override def initialize(buffer: MutableAggregationBuffer): Unit = {
     buffer(0) = Map()
   }
-  
+
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
     buffer(0) = buffer.getAs[Map[java.sql.Timestamp, Float]](0) + (input.getTimestamp(0) -> input.getFloat(1))
   }
-  
+
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
     buffer1(0) = buffer1.getAs[Map[java.sql.Timestamp, Float]](0) ++ buffer2.getAs[Map[java.sql.Timestamp, Float]](0)
   }
-  
+
   override def evaluate(buffer: Row): Any = {
     val points = buffer.getAs[Map[java.sql.Timestamp, Float]](0)
     if (points.size > 12) {
@@ -478,19 +478,19 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
       sorted_points.keys.foreach {
         key => detect_points = detect_points :+ new Point(key, sorted_points(key))
       }
-      
-      
+
+
       // 0.25 is maxAnomalyRatio. It represents 25%, max anomaly ratio in a time series.
       // 95 is the sensitivity of the algorithms.
       // Check Anomaly detector API reference (https://aka.ms/anomaly-detector-rest-api-ref)
-      
+
       val series: Series = new Series(detect_points.toArray, 0.25, 95, "hourly")
       val response: Option[AnomalySingleResponse] = AnomalyDetector.detectLatestPoint(series)
       if (!response.isEmpty) {
         return response.get.isAnomaly
       }
     }
-    
+
     return None
   }
 }
@@ -562,7 +562,7 @@ display(msgStream)
 // Aggregate Metric Count by Hour
 //
 
-// If you want to change granularity, change the groupBy window. 
+// If you want to change granularity, change the groupBy window.
 val groupStream = msgStream.groupBy(window($"timestamp", "1 hour"))
   .agg(avg("favorite").alias("average"))
   .withColumn("groupTime", $"window.start")
@@ -584,7 +584,8 @@ groupTime                       average
 
 ```
 
-然后，获取 Delta 的聚合输出结果。 由于异常检测需要较长的历史记录窗口，我们将使用 Delta 来保留需检测的时间点的历史记录数据。 将“[占位符: 表名]”替换为要创建的限定 Delta 表名（例如“tweets”）。 将“[占位符: 检查点的文件夹名称]”替换为一个字符串值，每次运行此代码时，该字符串值都是独一无二的（例如“etl-from-eventhub-20190605”）。
+然后，获取 Delta 的聚合输出结果。 由于异常检测需要较长的历史记录窗口，我们将使用 Delta 来保留需检测的时间点的历史记录数据。
+将“[占位符: 表名]”替换为要创建的限定 Delta 表名（例如“tweets”）。 将“[占位符: 检查点的文件夹名称]”替换为一个字符串值，每次运行此代码时，该字符串值都是独一无二的（例如“etl-from-eventhub-20190605”）。
 若要详细了解 Azure Databricks 上的 Delta Lake，请参阅 [Delta Lake Guide](https://docs.azuredatabricks.net/delta/index.html)（Delta Lake 指南）
 
 
@@ -615,7 +616,7 @@ twitterData.show(200, false)
 
 display(twitterData)
 ```
-输出如下： 
+输出如下：
 ```
 groupTime                       average
 2019-04-08T01:00:00.000+0000    25.6
@@ -628,7 +629,8 @@ groupTime                       average
 
 ```
 
-现在，聚合的时序数据已持续引入到 Delta 中。 然后，我们可以计划一个小时作业，用于检测最新时间点的异常。 将“[占位符: 表名]”替换为在上面选择的 Delta 表名。
+现在，聚合的时序数据已持续引入到 Delta 中。 然后，我们可以计划一个小时作业，用于检测最新时间点的异常。
+将“[占位符: 表名]”替换为在上面选择的 Delta 表名。
 
 ```scala
 //
@@ -667,7 +669,7 @@ spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
-结果如下： 
+结果如下：
 
 ```
 +--------------------+-------+
@@ -678,7 +680,7 @@ adResult.show()
 ```
 
 就这么简单！ 现已成功使用 Azure Databricks 以接近实时的速度将数据流式传输到 Azure 事件中心，通过事件中心连接器使用了流数据，然后对流数据运行了异常检测。
-虽然在本教程中粒度为小时，但我们始终可以根据自己的需要更改粒度。 
+虽然在本教程中粒度为小时，但我们始终可以根据自己的需要更改粒度。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -690,7 +692,7 @@ adResult.show()
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 继续学习下一教程，了解如何调用异常检测器 API 并使用 Power BI Desktop 将异常可视化。 
+本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 继续学习下一教程，了解如何调用异常检测器 API 并使用 Power BI Desktop 将异常可视化。
 
 > [!div class="nextstepaction"]
 >[使用 Power BI Desktop 进行批量异常检测](batch-anomaly-detection-powerbi.md)

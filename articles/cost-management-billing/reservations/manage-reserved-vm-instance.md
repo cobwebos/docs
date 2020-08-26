@@ -1,18 +1,18 @@
 ---
 title: 管理 Azure 预留
-description: 了解如何管理 Azure 预留。
+description: 了解如何管理 Azure 预留。 请参阅更改预留范围、拆分预留和优化预留使用的步骤。
 ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: f3e4a772382606178d6cd5b0dcb92b0d1bc28695
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434177"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461810"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 

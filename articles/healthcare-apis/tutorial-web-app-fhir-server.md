@@ -5,16 +5,17 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: fcad9356f87e76b14e0ef636389c11fd4290e12a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4b39c32da04efa3782cb2166c8e1137029b21258
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "84870493"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852950"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>部署用于从 FHIR 服务读取数据的 JavaScript 应用
 在本教程中，你将部署一个用于从 FHIR 服务读取数据的小型 JavaScript 应用。 本教程中的步骤包括：

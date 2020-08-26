@@ -1,17 +1,18 @@
 ---
 title: Azure API 管理的安全控制
-description: 用于评估 API 管理的安全控制的清单
+description: 查看用于评估 API 管理的安全控件清单。 其中包括网络、标识和数据保护控件。
 services: api-management
 author: vladvino
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a147179f7b55e43379b3c3fa3a7a0767cc97b198
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751139"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902569"
 ---
 # <a name="security-controls-for-api-management"></a>API 管理的安全控制
 
@@ -49,10 +50,10 @@ ms.locfileid: "75751139"
 | 安全控制 | Yes/No | 注释 | 文档 |
 |---|---|--|--|
 | 服务器端静态加密：Microsoft 管理的密钥 | 是 | 敏感数据（例如证书、密钥以及使用机密命名的值）使用服务托管的、基于服务实例的密钥进行加密。 |  |
-| 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 所有加密密钥都是基于服务实例的，也是通过服务托管的。 |  |
-| 列级加密（Azure 数据服务）| 不适用 | |  |
+| 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 所有加密密钥均基于服务实例，并由服务管理。 |  |
+| 列级加密（Azure 数据服务）| 空值 | |  |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | [快速路由](../expressroute/index.yml)和 VNet 加密由 [Azure 网络](../virtual-network/index.yml)提供。 |  |
-| 加密的 API 调用| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)经 TLS 进行管理平面调用。 需要有效 JSON web 令牌 (JWT)。  可以通过 TLS 以及某个受支持的身份验证机制（例如，客户端证书或 JWT）对数据平面调用进行保护。 |   |
+| 加密的 API 调用| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)经 TLS 进行管理平面调用。 需要有效 JSON web 令牌 (JWT)。  可以使用 TLS 和受支持的身份验证机制之一（例如客户端证书或 JWT）保护数据平面调用。 |   |
  |
 
 ## <a name="configuration-management"></a>配置管理
@@ -65,7 +66,7 @@ ms.locfileid: "75751139"
 
 此部分记录不影响 Azure API 管理的常见漏洞。
 
-| 漏洞               | 说明                                                                                                                                                                                                                                                                                                               |
+| 漏洞               | 描述                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed 是在实现 TLS SessionTicket 扩展过程中出现的漏洞，在某些 F5 产品中发现。 该漏洞会导致从取消初始化的内存中泄露（“溢出”）最多 31 字节的数据。 这是由 TLS 堆栈导致的，该堆栈填充了会话 ID，从客户端传递，在带有数据的情况下有 32 位长。 |
 

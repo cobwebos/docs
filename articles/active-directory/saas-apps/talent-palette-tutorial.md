@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Talent Palette 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Talent Palette 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 839dbf54-b636-477b-9cf8-157374c78e7a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dee0013d227cfc3809d9effe7f4f633bc22f6fa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b7cfa03aeb705ea7e7caf3254bc39d9fff722ce
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159908"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>教程：Azure Active Directory 与 Talent Palette 的集成
 

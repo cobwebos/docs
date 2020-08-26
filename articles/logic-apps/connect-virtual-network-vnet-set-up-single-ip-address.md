@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066392"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>为 Azure 逻辑应用中的一个或多个 integration services 环境设置单个 IP 地址
 
@@ -48,7 +49,7 @@ ms.locfileid: "82927133"
 
    ![设置用于定向出站流量的规则](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Property | “值” | 描述 |
+   | properties | 值 | 描述 |
    |----------|-------|-------------|
    | **路由名称** | <*唯一路由名称*> | 路由表中的路由的唯一名称 |
    | **地址前缀** | <*目标地址*> | 要在其中发送出站流量的目标系统的地址前缀。 请确保对此地址使用无类[域间路由（CIDR）表示法](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 在此示例中，此地址前缀用于 SFTP 服务器，这在 "[设置网络规则](#set-up-network-rule)" 一节中进行了介绍。 |
@@ -72,16 +73,16 @@ ms.locfileid: "82927133"
 
    **网络规则集合属性**
 
-   | Property | “值” | 描述 |
+   | properties | 值 | 描述 |
    |----------|-------|-------------|
    | **名称** | <*网络规则-集合名称*> | 网络规则集合的名称 |
    | **Priority** | <*优先级别*> | 用于运行规则集合的优先级顺序。 有关详细信息，请参阅[什么是 Azure 防火墙概念](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)？ |
-   | **Action** | **允许** | 要为此规则执行的操作类型 |
+   | **操作** | **允许** | 要为此规则执行的操作类型 |
    |||
 
    **网络规则属性**
 
-   | Property | “值” | 描述 |
+   | properties | 值 | 描述 |
    |----------|-------|-------------|
    | **名称** | <*网络规则-名称*> | 网络规则的名称 |
    | **协议** | <*连接-协议*> | 要使用的连接协议。 例如，如果使用 NSG 规则，请同时选择**tcp**和**UDP**，而不是仅选择**tcp**。 |
@@ -95,8 +96,8 @@ ms.locfileid: "82927133"
    * [配置网络规则](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure 防火墙规则处理逻辑](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Azure 防火墙常见问题解答](../firewall/firewall-faq.md)
-   * [Azure PowerShell： AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI： az 网络防火墙网络规则](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure PowerShell： AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+   * [Azure CLI： az 网络防火墙网络规则](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>后续步骤
 

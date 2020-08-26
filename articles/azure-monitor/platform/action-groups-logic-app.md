@@ -6,11 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78206230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321881"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -18,7 +19,7 @@ ms.locfileid: "78206230"
 
 ## <a name="overview"></a>概述
 
-触发 Azure Monitor 警报时，它将调用[操作组](../../azure-monitor/platform/action-groups.md)。 通过操作组可触发一个或多个操作，以告知其他人发生了警报，以及予以补救。
+触发 Azure Monitor 警报时，它将调用[操作组](./action-groups.md)。 通过操作组可触发一个或多个操作，以告知其他人发生了警报，以及予以补救。
 
 常规过程：
 
@@ -52,7 +53,7 @@ ms.locfileid: "78206230"
 
     ![HTTP 请求触发器](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 请求触发器")
 
-7.  选择“使用示例有效负载生成架构”。****
+7.  选择“使用示例有效负载生成架构”。
 
     ![使用示例有效负载](media/action-groups-logic-app/use-sample-payload-button.png "使用示例有效负载")
 
@@ -127,7 +128,7 @@ ms.locfileid: "78206230"
 
 14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。********
 
-15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅[在 Azure 门户中创建和管理操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)以创建一个。 切勿忘记保存更改。
+15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅[在 Azure 门户中创建和管理操作组](./action-groups.md)以创建一个。 切勿忘记保存更改。
 
     ![更新操作组](media/action-groups-logic-app/update-action-group.png "更新操作组")
 
@@ -293,7 +294,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 逻辑应用具有大量不同的连接器，可在广泛的应用程序和数据库中触发操作。 Slack、SQL Server、Oracle、Salesforce 只是一些示例。 有关连接器的详细信息，请参阅[逻辑应用连接器](../../connectors/apis-list.md)。  
 
 ## <a name="next-steps"></a>后续步骤
-* 参阅 [Azure 活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
-* 了解如何[配置发布 Azure 服务运行状况通知时的警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
-* 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。
+* 参阅 [Azure 活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
+* 了解如何[配置发布 Azure 服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
+* 详细了解[操作组](./action-groups.md)。
 

@@ -3,14 +3,14 @@ title: 在 Azure 中使用 Visual Studio Code 创建你的第一个函数
 description: 使用 Visual Studio Code 中的 Azure Functions扩展创建一个简单的 HTTP 触发函数并将其发布到 Azure。
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter, seo, tracking-python
+ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10d51102b49a15cfb6893de9da616a836663829e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833734"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213441"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建函数
 
@@ -40,7 +40,7 @@ ms.locfileid: "85833734"
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 Visual Studio Code 不是首选开发工具，请查看面向使用 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 的 Java 开发人员的类似教程。
+> 如果 Visual Studio Code 不是首选开发工具，请查看面向使用 [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、[Gradle](./functions-create-first-java-gradle.md) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 的 Java 开发人员的类似教程。
 ::: zone-end  
 
 ## <a name="configure-your-environment"></a>配置环境

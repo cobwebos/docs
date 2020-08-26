@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85448771"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225184"
 ---
 目前，超磁盘有其他限制，如下所示：
 
@@ -26,23 +26,32 @@ ms.locfileid: "85448771"
 
 |区域  |支持超磁盘的可用性区域数  |
 |---------|---------|
-|US Gov 弗吉尼亚州     |None         |
-|美国中南部     |None         |
+|US Gov 弗吉尼亚州     |无         |
+|US Gov 亚利桑那州     |无         |
+|美国中南部     |无         |
 |美国中部     |三个区域         |
-|美国西部     |None         |
+|美国西部     |无         |
 |美国西部 2    |三个区域         |
 |美国东部     |三个区域         |
-|美国东部 2     |两个区域         |
+|美国东部 2     |三个区域         |
 |东南亚     |三个区域         |
+|东亚     |无         |
 |北欧     |三个区域          |
 |西欧     |三个区域          |
 |英国南部     |三个区域          |
-|日本东部     |两个区域         |
+|Japan East     |三个区域         |
 |法国中部    |两个区域        |
+|Brazil South    |无        |
+|澳大利亚东部    |三个区域        |
+|加拿大中部 *    |三个区域        |
 
+\* 联系 Azure 支持部门以获取对此区域可用性区域的访问权限。
 
 - 仅支持以下 VM 系列：
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [Easv4](../articles/virtual-machines/eav4-easv4-series.md#easv4-series)
+    - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
+    - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)

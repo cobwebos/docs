@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284160"
 ---
 # <a name="create-application-with-simple-commands"></a>通过简单的命令创建应用程序
 
@@ -44,7 +44,7 @@ ms.locfileid: "85362401"
 
 1. 通过选择左侧窗格顶部的 "**新建命令**" 来创建新命令。 此时将打开**新的命令**窗口。
 1. 为 "**名称**" 字段提供值作为**TurnOn**。
-1. 选择“创建” 。
+1. 选择“创建”。
 
 中间窗格列出了命令的不同属性。 配置命令的以下属性。 有关命令的所有配置属性的说明，请参阅 "[引用](./custom-commands-references.md)"。
 
@@ -97,10 +97,10 @@ ms.locfileid: "85362401"
 1. 返回 "**完成规则**" 部分，选择 "**保存**" 以保存所有更改。 
 
 
- > [!NOTE]
+    > [!NOTE]
     > 不需要使用命令附带的默认完成规则。 如果需要，可以删除现有的默认完成规则并添加自己的规则。
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 
 使用 "测试聊天" 面板测试行为
 1. 选择位于右窗格顶部的 "**定型**" 图标。
@@ -142,7 +142,7 @@ ms.locfileid: "85362401"
 
 选择 "**保存**" 以保存对命令所做的所有更改。
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
 使用 "测试聊天" 面板测试行为
 1. 选择“训练”。 训练成功后，请选择 "**测试**"，然后尝试：

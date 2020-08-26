@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: how-to
 ms.date: 12/27/2019
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816726"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652628"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Azure 机器学习[计算实例（预览版）](concept-compute-instance.md)是�
 
 无需为计算实例安装或配置任何组件。  随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-若要了解有关计算实例的详细信息（包括如何安装包），请参阅[计算实例](concept-compute-instance.md)。
+若要了解有关计算实例的详细信息（包括如何安装包），请参阅 [计算实例](concept-compute-instance.md)。
 
 若要避免产生计算费用，请[停止计算实例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
@@ -215,7 +215,7 @@ Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它�
     conda activate myenv
     ```
 
-1. 克隆一组示例笔记本的 [GitHub 存储库](https://aka.ms/aml-notebooks)。
+1. 克隆一组示例笔记本的 [GitHub 存储库](https://github.com/Azure/MachineLearningNotebooks)。
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git

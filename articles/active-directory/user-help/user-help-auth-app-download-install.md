@@ -12,18 +12,19 @@ ms.topic: end-user-help
 ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266213"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798969"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下载并安装 Microsoft Authenticator 应用
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，则可以在[Azure Active Directory 的管理文档](https://docs.microsoft.com/azure/active-directory)中找到有关如何设置和管理你的 Azure Active Directory （Azure AD）环境的详细信息。
+>此内容适用于用户。 如果你是管理员，则可以在 [Azure Active Directory 的管理文档](../index.yml)中找到有关如何设置和管理你的 Azure Active Directory (Azure AD) 环境的详细信息。
 >
-> 如果在登录帐户时遇到问题，请参阅[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429)以获取帮助。  此外，在尝试登录到 Microsoft 帐户时，还可以获取有关收到["该 Microsoft 帐户不存在"](https://support.microsoft.com/help/13811)消息时要执行的操作的详细信息。
+> 如果在登录帐户时遇到问题，请参阅[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429)以获取帮助。  此外，在尝试登录到 Microsoft 帐户时，还可以获取有关收到 ["该 Microsoft 帐户不存在"](https://support.microsoft.com/help/13811) 消息时要执行的操作的详细信息。
 
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更加安全地使用帐户，因为密码可能被忘记、被盗或泄露。 双因素验证使用第二个因素，如手机，使其他人更难进入你的帐户。 可通过多种方式使用 Microsoft Authenticator 应用，包括：
 
@@ -33,7 +34,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 - **代码生成。** 作为支持验证器应用的任何其他帐户的代码生成器。
 
-身份验证器适用于任何使用双重验证的帐户，并支持基于时间的一次性密码（TOTP）标准。
+身份验证器适用于任何使用双重验证的帐户，并支持基于时间的一次性密码 (TOTP) 标准。
 
 你的组织可能要求你使用验证器应用登录并访问你组织的数据和文档。 即使你的用户名出现在应用程序中，也不会将该帐户设置为验证方法，直到你完成注册。 有关详细信息，请参阅[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)。
 
@@ -50,7 +51,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 ## <a name="next-steps"></a>后续步骤
 
-下载并安装应用后，请查看[验证器应用概述](user-help-auth-app-overview.md)以了解详细信息。 有关更多安装选项，请参阅：
+下载并安装应用后，请查看 [验证器应用概述](user-help-auth-app-overview.md) 以了解详细信息。 有关更多安装选项，请参阅：
 
 - **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
 

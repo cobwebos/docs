@@ -1,6 +1,5 @@
 ---
-title: 适合初学者的数据科学
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：针对初学者的数据科学-Azure
 description: 适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,15 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930142"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318719"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适合初学者的数据科学视频 1：5 个数据科学可解答的问题
+
 通过顶级数据科学家制作的“适合初学者的数据科学”  的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
 第一个视频是有关数据科学可回答的这类问题。 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)

@@ -56,7 +56,7 @@
     - name: VM 启动时出现停滞
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM 生命周期和状态
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM 无法启动
   items:
     - name: Linux
@@ -193,7 +193,7 @@
 - name: 虚拟磁盘管理问题
   items:
     - name: 概述
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: 常见问题解答
       href: ../windows/faq-for-disks.md
     - name: 删除存储资源时出错
@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: 脱机安装 Windows VM 代理
       href: install-vm-agent-offline.md
+    - name: 排查 Windows VM 代理问题
+      href: windows-azure-guest-agent.md
 - name: 备份和还原
   items:
     - name: 排查 Azure VM 上的备份失败问题

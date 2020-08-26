@@ -3,11 +3,12 @@ title: 使用 Azure 服务总线提高性能的最佳做法
 description: 介绍如何使用服务总线在交换中转消息时优化性能。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e0a6e54c1e941d7b7ff244ac40066a564e2ebbc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81e6fa1c6097f46bbfa3016beb1b7780ad3c351
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341104"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065295"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -39,7 +40,7 @@ AMQP 最有效，因为它可以保持与服务总线的连接。 它还实现�
 | <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
 | <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
-若要详细了解最低的 .NET Standard 平台支持，请参阅 [.NET 实现支持](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support)。
+若要详细了解最低的 .NET Standard 平台支持，请参阅 [.NET 实现支持](/dotnet/standard/net-standard#net-implementation-support)。
 
 ## <a name="reusing-factories-and-clients"></a>重用工厂和客户端
 
@@ -347,7 +348,7 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 目标：使包含大量发件人的队列或主题的吞吐量最大化。 每个发送方均以中等速率发送消息。 接收方的数目较小。
 
-服务总线最多可实现1000到消息实体的并发连接。 在命名空间级别强制实施此限制，并且队列/主题/订阅受每个命名空间的并发连接限制约束。 就队列而言，此数值在发送方和接收方之间共享。 如果发件人需要所有 1000 个连接，则将队列替换为主题和单个订阅。 主题接受来自发件人的最多 1000 个并发连接，而订阅则可接受来自接收方的其他 1000 个并发连接。 如果需要超过 1000 个并发发送方，则发送方应通过 HTTP 向服务总线协议发送消息。
+服务总线允许最多 1000 个与消息传送实体之间的并发连接。 在命名空间级别强制实施此限制，并且队列/主题/订阅受每个命名空间的并发连接限制约束。 就队列而言，此数值在发送方和接收方之间共享。 如果发件人需要所有 1000 个连接，则将队列替换为主题和单个订阅。 主题接受来自发件人的最多 1000 个并发连接，而订阅则可接受来自接收方的其他 1000 个并发连接。 如果需要超过 1000 个并发发送方，则发送方应通过 HTTP 向服务总线协议发送消息。
 
 若要使吞吐量最大化，则执行以下步骤：
 

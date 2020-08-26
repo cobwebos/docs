@@ -1,20 +1,20 @@
 ---
 title: 使用合作伙伴中心在 Azure 市场中创建 Azure IoT Edge 模块产品/服务
-description: 了解如何使用合作伙伴中心在 Azure 市场中创建、配置和发布 IoT Edge 模块产品/服务
+description: 了解如何使用合作伙伴中心在 Azure Marketplace 中创建、配置和发布 IoT Edge 模块产品。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: anbene
-ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: how-to
+author: keferna
+ms.author: keferna
+ms.date: 08/07/2020
+ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520266"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815770"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure 市场中创建、配置和发布 IoT Edge 模块产品/服务
+# <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
 本文介绍了如何创建和发布面向 Azure 市场的物联网 (IoT) Edge 模块产品/服务。 开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 确保你的帐户已注册加入商业市场计划。
 
@@ -27,7 +27,7 @@ ms.locfileid: "86520266"
     ![展示了左侧导航菜单。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 请确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 请确保在进行更改后始终重新发布。
 
 ### <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
@@ -50,10 +50,10 @@ ms.locfileid: "86520266"
 
 此页中包含链接，用于根据你所做的选择对此产品/服务执行操作。 例如：
 
-- 如果产品/服务是草稿版/草稿版[产品](update-existing-offer.md#delete-a-draft-offer)/服务
-- 如果产品/服务是实时的，则[停止销售产品](update-existing-offer.md#stop-selling-an-offer-or-plan)/服务）
-- 如果[产品/服务是预览版）](publishing-status.md#publisher-approval)
-- 如果尚未完成发布服务器注销-请[取消发布。](update-existing-offer.md#cancel-publishing)）
+- 如果产品/服务是草稿 - [删除草稿产品/服务](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务已上线 - [停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果产品/服务处于预览状态 - [上线](publishing-status.md#publisher-approval)
+- 如果还没有完成发布者注销 - [取消发布](update-existing-offer.md#cancel-publishing)。
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -79,8 +79,8 @@ ms.locfileid: "86520266"
 下面是其他一些潜在客户管理资源：
 
 - [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
 选择“保存草稿”，然后继续操作。
@@ -93,10 +93,10 @@ ms.locfileid: "86520266"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 " **物联网**  >  **IoT Edge" 模块**"   类别下。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 " **物联网**  >  **IoT Edge" 模块**"   类别下。
 
 #### <a name="legal"></a>合法
 
@@ -194,19 +194,24 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
 #### <a name="store-logos"></a>应用商店徽标
 
-按以下四个像素大小提供产品/服务徽标的 PNG 文件：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小型** 和 **中型** 徽标。 稍后可以选择将它们替换为不同的图像。
 
-- 小 (48 x 48)
-- 中 (90 x 90)
-- 大 (216 x 216)
-- 宽 (255 x 115)
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **中型** (90 x 90 px，可选) 
+- **小写** (48 x 48 px，可选) 
 
-所有四个徽标都是必需的，并且在市场一览中的不同位置上使用。
+在列表中的不同位置使用这些徽标：
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 
@@ -226,9 +231,9 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 1. 大徽标
 2. 类别
-3. 支持地址（链接）
+3. 支持地址 (链接) 
 4. 条款和条件
-5. 隐私策略地址（链接）
+5. 隐私策略地址 (链接) 
 6. 名称
 7. 总结
 8. 说明
@@ -284,15 +289,17 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 选择“保存草稿”，然后转到下一部分“计划概述”继续操作。
 
-### <a name="plan-overview"></a>计划概述
+## <a name="plan-overview"></a>计划概述
 
-使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划（以前称为 Sku）的不同之处在于可用的云，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
+使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
 
-在你创建计划后，“计划概述”选项卡显示：
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+
+创建计划后，“计划概述”选项卡将显示：
 
 - 计划名称
 - 定价模型
-- Azure 区域（全局或政府）
+- Azure 区域 (全局或政府) 
 - 当前发布状态
 - 任何可用操作
 
@@ -301,7 +308,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 - 删除草稿：如果计划状态为“草稿”。
 - 停止销售计划：如果计划状态为“已发布上线”。
 
-#### <a name="create-new-plan"></a>新建计划
+### <a name="create-new-plan"></a>新建计划
 
 选择“新建计划”。 此时，“新建计划”对话框显示。
 
@@ -320,9 +327,9 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 #### <a name="azure-regions"></a>Azure 区域
 
-IoT Edge 模块产品/服务的所有计划自动在**Azure Global**中提供。  使用 marketplace 的所有全球 Azure 区域中的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
+IoT Edge 模块产品/服务的所有计划自动在 **Azure Global**中提供。  使用 marketplace 的所有全球 Azure 区域中的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
 
-选择[Azure 政府](../../azure-government/documentation-government-welcome.md)版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要暂存和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
+选择 [Azure 政府](../../azure-government/documentation-government-welcome.md) 版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要暂存和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
 
 > [!NOTE]
 > 在您的计划发布并在特定区域中可用后，您将无法删除该区域。
@@ -333,7 +340,7 @@ IoT Edge 模块产品/服务的所有计划自动在**Azure Global**中提供。
 
 Azure 政府服务处理符合特定政府法规和要求的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 为了让受众注意到你在这些计划上获得的认证，可以提供最多 100 个链接来描述你的认证。 这些链接可以直接链接到你在这些计划上获得的认证一览，也可以链接到你自己的网站。 这些链接只对 Azure 政府客户可见。
 
-## <a name="plan-listing"></a>计划一览
+### <a name="plan-listing"></a>计划一览
 
 此选项卡显示同一个产品/服务内每个不同计划的具体信息。
 
@@ -353,7 +360,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 #### <a name="plan-examples"></a>计划示例
 
-下面是 Azure Marketplace 计划详细信息的示例（所有列出的价格仅用于示例目的，不打算反映实际成本）：
+下面是 Azure Marketplace 计划详细信息的示例 (列出的所有价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="说明 Azure Marketplace 计划详细信息。":::
 
@@ -363,7 +370,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 2. 计划名称
 3. 计划说明
 
-<br>下面是 Azure 门户计划详细信息的示例（所有列出的价格仅用于示例目的，不打算反映实际成本）：
+<br>下面是 Azure 门户计划详细信息的示例 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="说明 Azure 门户计划详细信息。":::
 
@@ -373,7 +380,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 2. 计划名称
 3. 计划说明
 
-## <a name="availability"></a>可用性
+### <a name="availability"></a>可用性
 
 若要隐藏已发布的产品/服务，以便客户无法在市场中搜索、浏览或购买它，请选中“可用性”选项卡上的“隐藏计划”复选框。
 
@@ -404,7 +411,7 @@ Azure 资源组名称：提供包含具有容器映像的 Azure 容器注册表�
 
 Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你前面提供的 Azure 资源组中。 只提供注册表名称，而不提供完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联的[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)）。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联) 的 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account) 。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="展示了“更新容器注册表”对话框。":::
 
@@ -418,7 +425,7 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 访问密钥
+1. 访问键
 2. 用户名
 3. 密码
 
@@ -436,7 +443,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 默认路由。 IoT Edge 中心管理模块、IoT 中心与设备之间的通信。 可以为模块和 IoT 中心之间的数据输入和输出设置路由，这样就能灵活地将消息发送到需要发送的位置，而无需使用其他服务来处理消息或编写额外的代码。 路由是使用名称/值对构造而成的。 最多可以定义五个默认路由名称，每个名称最长可包含 512 个字符。
 
-请确保在路由值中使用正确的[路由语法](../../iot-edge/module-composition.md#declare-routes)（通常定义为从/消息/* 到 $upstream）。 也就是说，任何模块发送的任何消息都发送到 IoT 中心。 若要引用模块，请使用它的默认模块名称，即不包含空格或特殊字符的产品/服务名称。 若要引用未知的其他模块，请使用 <FROM_MODULE_NAME> 约定来告知客户他们需要更新此信息。 有关 IoT Edge 路由的详细信息，请参阅[声明路由](../../iot-edge/module-composition.md#declare-routes)）。
+请确保使用正确的 [路由语法](../../iot-edge/module-composition.md#declare-routes)) 路由值中 (通常定义为 "FROM"/"message"/* $upstream) 。 也就是说，任何模块发送的任何消息都发送到 IoT 中心。 若要引用模块，请使用它的默认模块名称，即不包含空格或特殊字符的产品/服务名称。 若要引用未知的其他模块，请使用 <FROM_MODULE_NAME> 约定来告知客户他们需要更新此信息。 有关 IoT Edge 路由的详细信息，请参阅) [声明路由](../../iot-edge/module-composition.md#declare-routes) 。
 
 例如，如果模块 ContosoModule 侦听 ContosoInput 上的输入数据和 ContosoOutput 上的输出数据，最好定义以下两个默认路由：
 
@@ -445,14 +452,14 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 - 名称 #2：FromContosoModuleToCloud
 - 值 #2：FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，每个默认值必须小于 512 个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅[定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
+默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，并且每个默认值必须少于512个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅) 中 [定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties) 。
 
 例如，如果某个模块使用孪生所需属性支持可动态配置的刷新频率，最好定义以下默认孪生所需属性：
 
 - 名称 #1：RefreshRate
 - 值 #1：60
 
-默认环境变量。 环境变量提供了有助于配置过程的模块的补充信息。 环境变量是使用名称/值对创建的。 每个默认环境变量名称和值都必须小于 512 个字符，并且最多可以定义五个。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。
+默认环境变量。 环境变量提供了有助于配置过程的模块的补充信息。 环境变量是使用名称/值对创建的。 每个默认环境变量名称和值都必须少于512个字符，并且最多可以定义五个字符。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。
 
 例如，如果某个模块在启动之前需要接受使用条款，则你可以定义以下环境变量：
 
@@ -481,7 +488,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。
 
 ## <a name="next-steps"></a>后续步骤
 

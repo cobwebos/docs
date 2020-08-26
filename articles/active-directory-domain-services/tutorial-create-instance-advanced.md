@@ -1,6 +1,6 @@
 ---
-title: 教程 - 创建 Azure Active Directory 域服务托管域 | Microsoft Docs
-description: 本教程介绍如何使用 Azure 门户创建和配置 Azure Active Directory 域服务托管域并指定高级配置选项。
+title: 教程 - 创建自定义的 Azure Active Directory 域服务托管域 | Microsoft Docs
+description: 本教程介绍如何使用 Azure 门户创建和配置自定义的 Azure Active Directory 域服务托管域并指定高级配置选项。
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 78eef9c84bb7610b067855b22a3fa0f51bf08253
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024785"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491131"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务托管域
 
@@ -57,7 +57,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
-1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。 
+1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。
 1. 在“Azure AD 域服务”页上选择“创建”。 “启用 Azure AD 域服务”向导随即启动。
 1. 选择要在其中创建托管域的 Azure“订阅”。
 1. 选择托管域应属于的“资源组”。 选择“新建”，或选择现有的资源组。
@@ -100,7 +100,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     对于本教程，请选择“标准”SKU。
 1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。
 
-    *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
+    *资源*林仅同步直接在 Azure AD 中创建的用户和组。 创建资源林时，本地用户的密码哈希从不同步到托管域中。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
 
     对于本教程，请选择创建用户林。
 
@@ -131,7 +131,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     1. 如果选择创建虚拟网络，请输入虚拟网络的名称（例如 *myVnet*），然后提供地址范围（例如 *10.0.1.0/24*）。
     1. 创建具有明确名称的专用子网，例如 *DomainServices*。 提供地址范围，例如 *10.0.1.0/24*。
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [![创建用于 Azure AD 域服务的虚拟网络和子网](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     请确保选择专用 IP 地址范围内的某个地址范围。 选择公共地址空间中你不拥有的 IP 地址范围会导致 Azure AD DS 出错。
 
@@ -143,7 +143,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 名为“AAD DC 管理员”的特殊管理组用于管理 Azure AD DS 域。 此组的成员在已加入托管域的 VM 上拥有管理权限。 在加入域的 VM 上，此组将添加到本地管理员组。 此组的成员还可以使用远程桌面远程连接到已加入域的 VM。
 
 > [!IMPORTANT]
-> 你在使用 Azure AD DS 的托管域上不拥有“域管理员”或“企业管理员”权限。  这些权限由服务保留，不会提供给租户中的用户使用。
+> 你在使用 Azure AD DS 的托管域上不拥有“域管理员”或“企业管理员”权限。 这些权限由服务保留，不会提供给租户中的用户使用。
 >
 > “AAD DC 管理员”组允许执行某些特权操作。 这些操作包括将用户添加到已加入域的 VM 上的管理组，以及配置组策略。
 
@@ -159,7 +159,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="configure-synchronization"></a>配置同步
 
-Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。  如果选择同步所有用户和组，则以后无法选择仅执行按范围同步。 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。
+Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 现在可以更改同步范围，或在部署托管域后更改。 有关详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。
 
 1. 本教程选择了同步**所有**用户和组。 这是默认的同步选项。
 
@@ -191,7 +191,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
 成功部署 Azure AD DS 后，请配置虚拟网络，以允许其他连接的 VM 和应用程序使用托管域。 若要提供此连接，请更新虚拟网络的 DNS 服务器设置，以指向部署托管域的两个 IP 地址。
 
-1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。  第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
+1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。 第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
 
     列出的地址是在虚拟网络中使用的域控制器。 在本示例中，这些地址为 *10.0.1.4* 和 *10.0.1.5*。 稍后可在“属性”选项卡上找到这些 IP 地址。
 
@@ -233,7 +233,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
     ![选择配置文件](./media/tutorial-create-instance-advanced/select-profile.png)
 
-1. 在“个人资料”页上，选择“更改密码”。 
+1. 在“个人资料”页上，选择“更改密码”。
 1. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。
 1. 选择“提交”。
 

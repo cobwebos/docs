@@ -1,19 +1,20 @@
 ---
 title: 添加简单的数据层 |Microsoft Azure 映射
 description: 了解如何使用 Azure Maps Web SDK 提供的空间 IO 模块添加简单的数据层。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885963"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282800"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
@@ -113,7 +114,7 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 
 还会使用气泡层呈现分类。 默认情况下，群集的 radius 设置为 `16` 。 群集的颜色因群集中的点数而异，如下所示：
 
-| 点数 | 颜色    |
+| 点数 | Color    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

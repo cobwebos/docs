@@ -3,20 +3,20 @@ title: Azure PowerShell 脚本示例 - 为点到站点 VPN 配置本机 Azure �
 description: 使用自签名证书为点到站点 VPN 配置本机 Azure 证书身份验证。 本文使用 PowerShell。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: 6a82aedb20adb404cad6a51644b13a59be85ac2e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75867208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086959"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>使用 PowerShell 创建 VPN 网关并添加点到站点配置
+# <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>使用本机 Azure 证书身份验证配置点到站点 VPN
 
 此脚本创建基于路由的 VPN 网关，并使用本机 Azure 证书身份验证添加点到站点配置
 
@@ -121,4 +121,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

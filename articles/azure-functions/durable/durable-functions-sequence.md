@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b117fca23b26919f3c404dd32ba64c0c89d66ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033558"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -59,7 +60,7 @@ ms.locfileid: "77562049"
 
 所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 它是一个库，可用于以 JavaScript 编写 Durable Functions。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
 
-1. 此函数是一个[生成器函数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)。
+1. 此函数是一个[生成器函数](/scripting/javascript/advanced/iterators-and-generators-javascript)。
 2. 此函数包装在对 `durable-functions` 模块的 `orchestrator` 方法的调用（此处为 `df`）中。
 3. 此函数必须是同步的。 因为“orchestrator”方法处理“context.done”的调用，所以此函数应该只是“return”。
 

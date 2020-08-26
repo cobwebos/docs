@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.custom: mvc
-ms.openlocfilehash: a0ee237aa480e38f236ae44854415e3f88851f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052228"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502250"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure Database for MariaDB 服务器
 
@@ -64,13 +64,13 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 | 名称                       | mydemoserver     | 选择用于标识 Azure Database for MariaDB 服务器的在 Azure 中全局唯一的名称。 该服务器名称只能包含字母、数字和连字符 (-)。 在创建过程中，指定的任何大写字符将自动转换为小写。 必须包含 3 到 63 个字符。 |
 | ResourceGroupName          | myresourcegroup  | 提供 Azure 资源组的名称。                                                                                                                                                                                                                                                                                            |
 | SKU                        | GP_Gen5_2        | SKU 的名称。 请遵循简写约定：pricing-tier\_compute-generation\_vCores。 有关 SKU 参数的详细信息，请参阅此表格后面的信息。                                                                                                                                           |
-| BackupRetentionDay         | 7                | 保留备份的时长。 单位为天。 范围为 7-35。                                                                                                                                                                                                                                                                       |
-| GeoRedundantBackup         | 已启用          | 是否应该为此服务启用异地冗余备份。 不能为基本定价层级中的服务器启用此值，并且在创建服务器后无法更改此值。 允许的值：“Enabled”、“Disabled”。                                                                                                      |
+| BackupRetentionDay         | 7                | 备份保留时间。 单位为天。 范围为 7-35。                                                                                                                                                                                                                                                                       |
+| GeoRedundantBackup         | 已启用          | 是否应为此服务器启用异地冗余备份。 不能为基本定价层级中的服务器启用此值，并且在创建服务器后无法更改此值。 允许的值：“Enabled”、“Disabled”。                                                                                                      |
 | 位置                   | westus           | 服务器的 Azure 区域。                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | 已启用          | 是否应该为此服务器启用 SSL。 允许的值：“Enabled”、“Disabled”。                                                                                                                                                                                                                                                 |
-| StorageInMb                | 51200            | 服务器的存储容量（单位是兆字节）。 有效的 StorageInMb 最小为 5120 MB，以 1024 MB 为增量递增。 有关存储大小限制的详细信息，请参阅 [Azure Database for MariaDB 定价层](./concepts-pricing-tiers.md)。                                                                               |
+| StorageInMb                | 51200            | 服务器的存储容量（以 MB 为单位）。 有效的 StorageInMb 最小为 5120 MB，以 1024 MB 为增量递增。 有关存储大小限制的详细信息，请参阅 [Azure Database for MariaDB 定价层](./concepts-pricing-tiers.md)。                                                                               |
 | 版本                    | 5.7              | MariaDB 主版本。                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | 用于管理员登录的用户名。 它不能为“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”     。                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | 管理员的登录用户名。 不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | 管理员用户的密码，采用安全字符串格式。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。                                       |
 
 Sku 参数值遵循 pricing-tier\_compute-generation\_vCores 约定，如以下示例所示 。

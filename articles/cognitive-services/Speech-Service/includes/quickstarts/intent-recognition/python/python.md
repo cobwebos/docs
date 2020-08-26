@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d819eaa5c90e304a642efd3a6f2458cab4eefe7f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422181"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298782"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "81422181"
 将此代码插入 `quickstart.py`。 请确保更新以下值：
 
 * 将 `"YourLanguageUnderstandingSubscriptionKey"` 替换为 LUIS 预测密钥。
-* 将 `"YourLanguageUnderstandingServiceRegion"` 替换为 LUIS 位置。 使用[区域](https://aka.ms/speech/sdkregion)中的“区域标识符” 
+* 将 `"YourLanguageUnderstandingServiceRegion"` 替换为 LUIS 位置。 使用[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”
 
 >[!TIP]
 > 如果需要帮助查找这些值，请参阅[创建 LUIS 应用以进行意向识别](#create-a-luis-app-for-intent-recognition)。
@@ -68,6 +68,8 @@ ms.locfileid: "81422181"
 > 如果需要查找此值的帮助，请参阅[创建 LUIS 应用以进行意向识别](#create-a-luis-app-for-intent-recognition)。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
+
+此示例使用 `add_intents()` 函数添加显式定义的意向的列表。 如果要从模型中添加所有意向，请使用 `add_all_intents(model)` 并传递模型。
 
 ## <a name="recognize-an-intent"></a>识别意向
 

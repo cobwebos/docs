@@ -2,17 +2,18 @@
 title: 快速入门 - 适用于 Java 的 Azure Key Vault 客户端库
 description: 提供编写 Azure SDK 客户端库快速入门时要遵循的格式和内容准则。
 author: msmbaldwin
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 16248cd276b63e9570221626ec32d1d4723c4ebd
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 6c29141a2e255588ffa581b84ffeb4ddd7fdb703
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125594"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324703"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 客户端库
 
@@ -26,14 +27,19 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 简化和自动化与 TLS/SSL 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
-[源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API 参考文档](https://azure.github.io/azure-sdk-for-java) | [产品文档](index.yml) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+其他资源：
+
+* [源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault)
+* [API 参考文档](https://azure.github.io/azure-sdk-for-java)
+* [产品文档](index.yml)
+* [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 或更高版本
 - [Apache Maven](https://maven.apache.org)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
 
 本快速入门假设你在 Linux 终端窗口中运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 和 [Apache Maven](https://maven.apache.org)。
 
@@ -101,70 +107,19 @@ cd akv-java
 
 ### <a name="create-a-resource-group-and-key-vault"></a>创建资源组和 Key Vault
 
-本快速入门使用预先创建的 Azure Key Vault。 可以遵循 [Azure CLI 快速入门](quick-create-cli.md)、[Azure PowerShell 快速入门](quick-create-powershell.md)或 [Azure 门户快速入门](quick-create-portal.md)中的步骤创建 Key Vault。 或者，可运行以下 Azure CLI 命令。
-
-> [!Important]
-> 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
-
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
-```
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
-对基于云的应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault](../general/managed-identity.md)。
-
-不过，为了简单起见，本快速入门创建了一个需要使用服务主体和访问控制策略的桌面应用程序。 服务主体要求使用格式为“http://&lt;my-unique-service-principal-name&gt;”的唯一名称。
-
-使用 Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建服务主体：
-
-```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
-```
-
-此操作将返回一系列键/值对。 
-
-```console
-{
-  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-  "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-  "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
-}
-```
-
-请记下 clientId、clientSecret 和 tenantId，因为我们将在下两个步骤中使用它们。
+[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>为服务主体授予对 Key Vault 的访问权限
 
-通过将 clientId 传递给 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，为密钥保管库创建授予服务主体权限的访问策略。 授予服务主体对密钥和机密的 get、list 和 set 权限。
-
-```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
-```
+[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
 
 #### <a name="set-environmental-variables"></a>设置环境变量
 
-应用程序中的 DefaultAzureCredential 方法依赖于三个环境变量：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 使用将这些变量设置为在上述[创建服务主体](#create-a-service-principal)步骤中记下的 clientId、clientSecret 和 tenantId 值。 使用 `export VARNAME=VALUE` 格式设置环境变量。 （该方法只为当前 shell 和从 shell 创建的进程设置变量；若要将这些变量永久添加到环境中，请编辑 `/etc/environment ` 文件。） 
-
-还需要将密钥保管库名称另存为名为 `KEY_VAULT_NAME` 的环境变量。
-
-```console
-export AZURE_CLIENT_ID=<your-clientID>
-
-export AZURE_CLIENT_SECRET=<your-clientSecret>
-
-export AZURE_TENANT_ID=<your-tenantId>
-
-export KEY_VAULT_NAME=<your-key-vault-name>
-````
+[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
 
 ## <a name="object-model"></a>对象模型
 

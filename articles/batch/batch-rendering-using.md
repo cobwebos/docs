@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079245"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
 
@@ -19,7 +19,7 @@ ms.locfileid: "85965240"
 * API：
   * 使用任何 Batch API 编写代码。  开发人员可将 Azure Batch 功能集成到其现有应用程序或工作流（不管是在云中还是本地）中。
 * 命令行工具：
-  * 可以使用 [Azure 命令行](/cli/azure/)或 [PowerShell](/powershell/azure/overview) 来编写 Batch 脚本。
+  * 可以使用 [Azure 命令行](/cli/azure/)或 [PowerShell](/powershell/azure/) 来编写 Batch 脚本。
   * 具体而言，[Batch CLI 模板支持](./batch-cli-templates.md)可以简化创建池和提交作业的操作。
 * Batch Explorer UI：
   * [Batch Explorer](https://github.com/Azure/BatchLabs) 是一个跨平台客户端工具，使用它也可以管理和监视 Batch 帐户。

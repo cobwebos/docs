@@ -1,17 +1,17 @@
 ---
 title: 向现有 Azure 数据共享添加数据集
 description: 了解如何向 Azure 数据共享中的现有数据共享添加数据集，以及如何与相同的收件人共享数据集。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: c4aee1eb268c124586388eacf8c908c20d799bc9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110889"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513483"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>如何将数据集添加到 Azure 数据共享中的现有共享
 

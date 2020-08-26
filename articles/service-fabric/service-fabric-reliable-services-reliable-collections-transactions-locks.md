@@ -4,12 +4,12 @@ description: Azure Service Fabric 可靠状态管理器和可靠集合事务和�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245103"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500276"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
@@ -77,7 +77,7 @@ Reliable Queue 权衡严格事务性 FIFO 属性的并发。
 可靠集合 API 中的超时参数用于死锁检测。
 例如，两个事务（T1 和 T2）正在尝试读取和更新 K1。
 它们有可能发生死锁，因为它们最后都拥有共享锁。
-在这种情况下，其中一个操作或两个操作都会超时。在这种情况下，更新锁可以防止这种死锁。
+在这种情况下，其中一个操作或两个操作都将超时。在这种情况下，更新锁可以防止这种死锁。
 
 ## <a name="next-steps"></a>后续步骤
 

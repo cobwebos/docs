@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274130"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603895"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地加载数据
 
@@ -23,10 +23,11 @@ ms.locfileid: "86274130"
 
 下表介绍了每种文件类型和存储帐户所支持的身份验证方法。 这适用于源存储位置和错误文件位置。
 
-|                          |                CSV                |              Parquet              |                ORC                |
-| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  **Azure blob 存储**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
-| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
+|                          |                CSV                |              Parquet               |                ORC                 |
+| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
+|  **Azure blob 存储**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY               |              SAS/KEY               |
+| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS（blob 终结点）/MSI（dfs 终结点）/服务主体/密钥/AAD | SAS（blob 终结点）/MSI（dfs 终结点）/服务主体/密钥/AAD |
+
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 以 LF 作为行终止符的存储帐户密钥（Unix 样式的新行）
 
@@ -88,13 +89,13 @@ WITH (
    > [!NOTE]
    > 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)将该帐户**升级到 v2** 帐户。
 
-3. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  为 SQL Server 分配存储 Blob 数据所有者、参与者或读取者 RBAC 角色。
+3. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。 为 SQL Server 分配存储 Blob 数据所有者、参与者或读取者 Azure 角色。
 
    > [!NOTE]
-   > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+   > 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
    
     > [!IMPORTANT]
-    > 指定存储 Blob 数据所有者、参与者或读取着 RBAC 角色 。 这些角色不同于所有者、参与者和读取者 Azure 内置角色。 
+    > 指定存储 Blob 数据所有者、参与者或读取着 Azure 角色 。 这些角色不同于所有者、参与者和读取者 Azure 内置角色。 
 
     ![授予 RBAC 加载权限](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +113,10 @@ WITH (
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 身份验证 ((AAD))
 #### <a name="steps"></a>步骤
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  为 AAD Server 分配存储 Blob 数据所有者、参与者或读取者 RBAC 角色。 
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。 为 AAD Server 分配存储 Blob 数据所有者、参与者或读取者 Azure 角色。 
 
     > [!IMPORTANT]
-    > 指定存储 Blob 数据所有者、参与者或读取着 RBAC 角色 。 这些角色不同于所有者、参与者和读取者 Azure 内置角色。
+    > 指定存储 Blob 数据所有者、参与者或读取着 Azure 角色 。 这些角色不同于所有者、参与者和读取者 Azure 内置角色。
 
     ![授予 RBAC 加载权限](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 

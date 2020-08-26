@@ -7,11 +7,13 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726190"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488122"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 

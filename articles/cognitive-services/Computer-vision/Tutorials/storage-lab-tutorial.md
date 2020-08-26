@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 43172cb08bb1e31c8cff891628ca6ef85cb8c864
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f350aae32909de2b9be4384d921f7507a158f6ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404413"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243847"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据
 
@@ -31,7 +31,7 @@ GitHub 上的 [Azure 存储和认知服务实验室](https://github.com/Microsof
 > * 将元数据附加到 Azure 存储图像
 > * 使用 Azure 存储资源管理器查看图像元数据
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,7 +59,7 @@ GitHub 上的 [Azure 存储和认知服务实验室](https://github.com/Microsof
 
 ## <a name="add-computer-vision-credentials"></a>添加计算机视觉凭据
 
-接下来，向应用添加所需凭据，以便该应用能够访问计算机视觉资源
+接下来，向应用添加所需凭据，使其能够访问计算机视觉资源。
 
 在 Visual Studio 中打开 ASP.NET Web 应用程序，导航到项目根目录中的 **Web.config** 文件。 将以下语句添加到文件的 `<appSettings>` 节，将 `VISION_KEY` 替换为你在上一步复制的键，将 `VISION_ENDPOINT` 替换为你在此前的步骤中保存的 URL。
 

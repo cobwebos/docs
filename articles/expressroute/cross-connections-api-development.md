@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77187010"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921616"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API 开发和集成
 
@@ -29,7 +30,7 @@ ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 
 
 * 将来面向 ExpressRoute 合作伙伴的任何增强功能将在 ExpressRouteCrossConnection 资源中提供。
 
-* 合作伙伴可将[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)应用于 expressRouteCrossConnection 资源。 这些控制可以定义有关哪些用户帐户可以修改 expressRouteCrossConnection 资源以及添加/更新/删除对等互连配置的权限。
+* 合作伙伴可以将 azure [RBAC)  (azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)应用到 expressRouteCrossConnection 资源。 这些控制可以定义有关哪些用户帐户可以修改 expressRouteCrossConnection 资源以及添加/更新/删除对等互连配置的权限。
 
 * expressRouteCrossConnection 资源公开一些有助于排查 ExpressRoute 连接问题的 API。 这包括 ARP 表、BGP 路由表摘要和 BGP 路由表详细信息。 经典部署 API 不支持此功能。
 

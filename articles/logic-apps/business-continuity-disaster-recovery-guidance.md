@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066525"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure 逻辑应用的业务连续性和灾难恢复
 
@@ -157,7 +157,7 @@ Azure 逻辑应用提供[内置的触发器和操作以及数百个托管连接�
 
 若要最大程度地减少放弃的进行中工作流实例数，可以从可实现的各种消息模式中进行选择，例如：
 
-* [固定传送名单模式](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [固定传送名单模式](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   此企业消息模式将业务流程拆分为较小的阶段。 对于每个阶段，需设置一个逻辑应用来处理该阶段的工作负荷。 若要相互通信，逻辑应用可以使用异步消息传送协议，例如 Azure 服务总线队列或主题。 将流程划分为较小的阶段可以减少在有故障的逻辑应用实例上受到阻滞的业务流程的数目。 有关此模式的其他常规信息，请参阅[企业集成模式 - 传送名单](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html)。
 
@@ -165,7 +165,7 @@ Azure 逻辑应用提供[内置的触发器和操作以及数百个托管连接�
 
   ![将业务流程拆分为使用 Azure 服务总线队列相互通信的逻辑应用所表示的阶段](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  如果主要和辅助逻辑应用实例在其所在位置遵循相同的传送名单模式，你可以为这些实例设置[主动-主动角色](#roles)，通过这种方式实现[竞争性使用者模式](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers)。
+  如果主要和辅助逻辑应用实例在其所在位置遵循相同的传送名单模式，你可以为这些实例设置[主动-主动角色](#roles)，通过这种方式实现[竞争性使用者模式](/azure/architecture/patterns/competing-consumers)。
 
 * [进程管理器（中介）模式](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ Azure 逻辑应用提供[内置的触发器和操作以及数百个托管连接�
   例如，从消息队列（如 Azure 服务总线队列）读取消息时会使用服务器端状态，因为排队服务会在消息中维护锁，以防其他客户端读取相同的消息。
 
   > [!NOTE]
-  > 如果逻辑应用需要按特定顺序读取消息（例如，从服务总线队列读取），你可以使用竞争性使用者模式，但只能对服务总线会话结合使用此模式（也称为[顺序保护模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)）。  否则，必须使用主动-被动角色设置逻辑应用实例。
+  > 如果逻辑应用需要按特定顺序读取消息（例如，从服务总线队列读取），你可以使用竞争性使用者模式，但只能对服务总线会话结合使用此模式（也称为[顺序保护模式](/azure/architecture/patterns/sequential-convoy)）。  否则，必须使用主动-被动角色设置逻辑应用实例。
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Azure 逻辑应用提供[内置的触发器和操作以及数百个托管连接�
 
 * [主动-被动](#roles)：仅主要实例处于活动状态并处理所有工作，辅助实例只有在主要实例遇到中断或故障时才工作。 调用方或路由器决定何时调用辅助实例。
 
-可将 Azure API 管理这种建议的体系结构用作那些使用请求触发器的逻辑应用的代理。 API 管理提供[内置的跨区域复原能力，以及在多个终结点之间路由流量的功能](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)。
+可将 Azure API 管理这种建议的体系结构用作那些使用请求触发器的逻辑应用的代理。 API 管理提供[内置的跨区域复原能力，以及在多个终结点之间路由流量的功能](../api-management/api-management-howto-deploy-multi-region.md)。
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Webhook 触发器通过向服务传递回调 URL，为逻辑应用提供订阅�
 
 ### <a name="activate-your-secondary-instance"></a>激活辅助实例
 
-若要自动激活辅助实例，可以创建一个逻辑应用，用于调用 [Azure 资源管理器连接器](https://docs.microsoft.com/connectors/arm/)等管理 API，以便激活辅助位置中的相应逻辑应用。 在发生特定次数的失败后，可以扩展监视器应用来调用此激活逻辑应用。
+若要自动激活辅助实例，可以创建一个逻辑应用，用于调用 [Azure 资源管理器连接器](/connectors/arm/)等管理 API，以便激活辅助位置中的相应逻辑应用。 在发生特定次数的失败后，可以扩展监视器应用来调用此激活逻辑应用。
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ Webhook 触发器通过向服务传递回调 URL，为逻辑应用提供订阅�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 复原能力概述](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [特定 Azure 服务的复原能力检查表](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [在 Azure 中复原时的数据管理](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Azure 应用程序的备份和灾难恢复](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [发生区域范围的服务中断后进行恢复](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Azure 复原能力概述](/azure/architecture/framework/resiliency/overview)
+* [特定 Azure 服务的复原能力检查表](/azure/architecture/checklist/resiliency-per-service)
+* [在 Azure 中复原时的数据管理](/azure/architecture/framework/resiliency/data-management)
+* [Azure 应用程序的备份和灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [发生区域范围的服务中断后进行恢复](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Azure 服务的 Microsoft 服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/)

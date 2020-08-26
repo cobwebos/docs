@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360123"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447093"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -61,7 +61,7 @@ ms.locfileid: "85360123"
 
     a. **提供企业管理员凭据**：如果为需要设备写回的林提供企业管理员凭据，Azure AD Connect 将在配置设备写回期间自动准备林。
 
-    b. **下载 PowerShell 脚本**：Azure AD Connect 会自动生成 PowerShell 脚本，该脚本可以为设备写回准备 Active Directory。 如果无法在 Azure AD Connect 中提供企业管理员凭据，则建议下载 PowerShell 脚本。 将下载的 PowerShell 脚本 **CreateDeviceContainer.psq** 提供给设备将写回到的林的企业管理员。
+    b. **下载 PowerShell 脚本**：Azure AD Connect 会自动生成 PowerShell 脚本，该脚本可以为设备写回准备 Active Directory。 如果无法在 Azure AD Connect 中提供企业管理员凭据，则建议下载 PowerShell 脚本。 提供下载的 PowerShell 脚本**CreateDeviceContainer.ps1**到林的企业管理员，将设备写回到该林。
     ![准备 Active Directory 林](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     执行以下操作来准备 Active Directory 林：
@@ -85,7 +85,7 @@ ms.locfileid: "85360123"
 ## <a name="enable-conditional-access"></a>启用条件性访问
 [使用 Azure Active Directory Device Registration 设置本地条件性访问](../../active-directory/active-directory-device-registration-on-premises-setup.md)中提供了有关启用此方案的详细说明。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>写回复选框仍处于禁用状态
 如果未启用设备写回复选框，即使已遵循上述步骤，以下步骤还是会在启用此框之前引导完成安装向导正在验证的程序。
 
@@ -98,7 +98,7 @@ ms.locfileid: "85360123"
   * 打开“连接器”选项卡。****
   * 查找类型为 Active Directory 域服务的连接器并选择它。
   * 在“操作”下面，选择“属性”。********
-  * 转到“连接到 Active Directory 林”。**** 检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
+  * 转到“连接到 Active Directory 林”。 检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
     ![同步服务管理器中的连接器帐户](./media/how-to-connect-device-writeback/connectoraccount.png)
 
 在 Active Directory 中验证配置：
@@ -130,5 +130,5 @@ ms.locfileid: "85360123"
 * [使用 Azure Active Directory Device Registration 设置本地条件性访问](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 

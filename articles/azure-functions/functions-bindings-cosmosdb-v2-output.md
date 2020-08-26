@@ -1,19 +1,19 @@
 ---
-title: 函数1.x 和更高版本的输出绑定 Azure Cosmos DB
+title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 输出绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374332"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212759"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的输出绑定 Azure Cosmos DB
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
@@ -566,7 +566,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |**direction**     | 不适用 | 必须设置为 `out`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
@@ -591,7 +591,7 @@ Python 不支持特性。
 
 | 绑定 | 参考 |
 |---|---|
-| CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [CosmosDB 错误代码](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 <a name="host-json"></a>
 

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 脚本示例 - 下载设备配置模板 | Microsoft Docs
-description: 下载设备配置模板。
+description: 了解如何使用 PowerShell 脚本下载用于连接的 VPN 设备配置模板。
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
-ms.openlocfilehash: 11906dfa8a3d7c49b71ff1cdcc51d8ae5c6cbdc6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 283ddb12e497c242f1843840fe1f1ff208712626
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862404"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031704"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>使用 PowerShell 下载 VPN 设备模板
 
@@ -55,4 +55,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

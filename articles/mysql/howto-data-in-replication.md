@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: d1012a2afa84270089ae44b1c5d224e65a2e01ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 8/7/2020
+ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118556"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168212"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 
@@ -23,7 +23,7 @@ ms.locfileid: "86118556"
 > Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
 >
 
-若要在 Azure Database for MySQL 服务中创建副本，[数据传入复制](concepts-data-in-replication.md)在本地、虚拟机（vm）或云数据库服务中同步主 MySQL server 中的数据。 复制中数据以基于二进制日志 (binlog) 文件位置的从本机到 MySQL 的复制为基础。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
+若要在 Azure Database for MySQL 服务中创建副本，[数据传入复制](concepts-data-in-replication.md)需同步本地 MySQL 主服务器、虚拟机 (VM) 或云数据库服务中的数据。 复制中数据以基于二进制日志 (binlog) 文件位置的从本机到 MySQL 的复制为基础。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
 在执行本文中的步骤之前，请查看数据传入复制的[限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
@@ -37,11 +37,11 @@ ms.locfileid: "86118556"
    > 必须在“常规用途”或“内存优化”定价层中创建 Azure Database for MySQL 服务器。
    > 
 
-2. 创建相同的用户帐户和相应的特权
+1. 创建相同的用户帐户和相应的特权
 
    用户帐户不会从主服务器复制到副本服务器。 如果打算为用户提供访问副本服务器的权限，则需在这个新创建的 Azure Database for MySQL 服务器上手动创建所有帐户和相应的特权。
 
-3. 将主服务器的 IP 地址添加到副本的防火墙规则。 
+1. 将主服务器的 IP 地址添加到副本的防火墙规则。 
 
    使用 [Azure 门户](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md) 更新防火墙规则。
 
@@ -51,11 +51,11 @@ ms.locfileid: "86118556"
 
 1. 请先查看[主服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。 
 
-   例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址  ，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
+   例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
    
-   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)来连接到主服务器的连接。
+   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 来连接到主服务器的连接。
 
-2. 启用二进制日志记录
+1. 启用二进制日志记录
 
    运行以下命令以检查是否已在主服务器上启用了二进制日志记录： 
 
@@ -67,7 +67,7 @@ ms.locfileid: "86118556"
 
    如果返回了值为“OFF”的 `log_bin`，请将 my.cnf 文件编辑为 `log_bin=ON` 以启用二进制日志记录，并重启服务器使更改生效。
 
-3. 主服务器设置
+1. 主服务器设置
 
    “数据传入复制”要求参数 `lower_case_table_names` 在主服务器与副本服务器之间保持一致。 在 Azure Database for MySQL 中，该参数默认为 1。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "86118556"
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. 创建新的复制角色并设置权限
+1. 创建新的复制角色并设置权限
 
    在主服务器上创建一个配置有复制特权的用户帐户。 这可以通过 SQL 命令或 MySQL Workbench 之类的工具来完成。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档以了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/user-names.html)。 
 
@@ -103,20 +103,19 @@ ms.locfileid: "86118556"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中创建复制角色，请在“管理”面板中打开“用户和特权”面板。   然后单击“添加帐户”  。 
+   若要在 MySQL Workbench 中创建复制角色，请在“管理”面板中打开“用户和特权”面板。  然后单击“添加帐户”。 
  
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
-   在“登录名称”字段中键入用户名。  
+   在“登录名称”字段中键入用户名。 
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
  
-   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属实例”。    然后单击“应用”  ，创建复制角色。
+   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属实例”。   然后单击“应用”，创建复制角色。
 
    ![复制从属实例](./media/howto-data-in-replication/replicationslave.png)
 
-
-5. 将主服务器设置为只读模式
+1. 将主服务器设置为只读模式
 
    在开始转储数据库之前，需将服务器置于只读模式。 在只读模式下，主服务器无法处理任何写入事务。 评估对业务的影响，根据需要在非高峰时间计划只读窗口。
 
@@ -125,7 +124,7 @@ ms.locfileid: "86118556"
    SET GLOBAL read_only = ON;
    ```
 
-6. 获取二进制日志文件名和偏移量
+1. 获取二进制日志文件名和偏移量
 
    运行 [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令，确定当前的二进制日志文件名和偏移量。
     
@@ -138,11 +137,11 @@ ms.locfileid: "86118556"
  
 ## <a name="dump-and-restore-master-server"></a>转储并还原主服务器
 
-1. 从主服务器转储所有数据库
+1. 确定要将哪些数据库和表复制到 Azure Database for MySQL 并从主服务器执行转储。
+ 
+    可以使用 mysqldump 从主服务器转储数据库。 有关详细信息，请参阅[转储和还原](concepts-migrate-dump-restore.md)。 不需转储 MySQL 库和测试库。
 
-   可以使用 mysqldump 从主服务器转储数据库。 有关详细信息，请参阅[转储和还原](concepts-migrate-dump-restore.md)。 不需转储 MySQL 库和测试库。
-
-2. 将主服务器设置为读/写模式
+1. 将主服务器设置为读/写模式
 
    转储数据库后，将 MySQL 主服务器改回读/写模式。
 
@@ -151,7 +150,7 @@ ms.locfileid: "86118556"
    UNLOCK TABLES;
    ```
 
-3. 将转储文件还原到新服务器
+1. 将转储文件还原到新服务器
 
    将转储文件还原到在 Azure Database for MySQL 服务中创建的服务器。 请参阅[转储和还原](concepts-migrate-dump-restore.md)，了解如何将转储文件还原到 MySQL 服务器。 如果转储文件较大，请将它上传到副本服务器所在区域的 Azure 中的虚拟机。 将它从虚拟机还原到 Azure Database for MySQL 服务器。
 
@@ -175,33 +174,41 @@ ms.locfileid: "86118556"
    - master_ssl_ca：CA 证书的上下文。 如果不使用 SSL，请传入空字符串。
        - 建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
-> [!NOTE]
-> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置  。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
-
+   > [!NOTE]
+   > 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
+      
    **示例**
-
+   
    *使用 SSL 复制*
-
+   
    运行以下 MySQL 命令创建变量 `@cert`： 
-
-   ```sql
-   SET @cert = '-----BEGIN CERTIFICATE-----
-   PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
-   -----END CERTIFICATE-----'
-   ```
-
+   
+      ```sql
+      SET @cert = '-----BEGIN CERTIFICATE-----
+      PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
+      -----END CERTIFICATE-----'
+      ```
+   
    在域“companya.com”中托管的主服务器与 Azure Database for MySQL 中托管的副本服务器之间设置了使用 SSL 进行复制的功能。 将在副本上运行此存储过程。 
-
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
-   ```
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+      ```
    *不使用 SSL 复制*
-
+   
    在域“companya.com”中托管的主服务器与 Azure Database for MySQL 中托管的副本服务器之间设置了不使用 SSL 进行复制的功能。 将在副本上运行此存储过程。
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
+      ```
 
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
-   ```
+1. 筛选 
+ 
+   如果要跳过从主副本复制某些表，请更新 `replicate_wild_ignore_table` 副本服务器上的 server 参数。 您可以使用以逗号分隔的列表提供多个表模式。
+
+   查看 [MySQL 文档](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)详细了解此参数。 
+    
+   若要更新参数，可以使用 [Azure 门户](howto-server-parameters.md) 或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 1. 启动复制
 

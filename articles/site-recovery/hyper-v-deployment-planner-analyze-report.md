@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710263"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653573"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
@@ -178,7 +179,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **VM 名称**：生成报表时在 VMListFile 中使用的 VM 名称。 此列还列出附加到 VM 的磁盘 (VHD)。 这些名称包括 Hyper-V 主机名，其中的 VM 是此工具在分析期间发现它们时放置的。
 
-**VM 兼容性**：值为“是”和“是\*”。 ******** **是** \*适用于 VM 适合[高级 ssd](../virtual-machines/windows/disks-types.md)的实例。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
+**VM 兼容性**：值为“是”和“是\*”。 ******** **是** \*适用于 VM 适合[高级 ssd](../virtual-machines/disks-types.md)的实例。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15。
 * 256 GB 到 512 GB 为 P20。
@@ -257,7 +258,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **磁盘数**：VM 上的 VHD 总数。
 
-**磁盘大小（GB）**： VM 所有磁盘的总安装大小。 该工具还会显示 VM 中各个磁盘的磁盘大小。
+**磁盘大小 (GB) **： VM 所有磁盘的总安装大小。 该工具还会显示 VM 中各个磁盘的磁盘大小。
 
 **核心数**：VM 上的 CPU 核心数。
 
@@ -328,13 +329,13 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **卷(VHD 路径)**：VM 的 VHD 所驻留的卷名称。 
 
-**卷上的可用空间（GB）**： VM 的卷上的可用磁盘空间。 在计算卷上的可用空间时，会考虑由以前批次的 VM（其 VHD 位于同一卷上）用来进行增量复制的磁盘空间。 
+**卷上的可用空间 (GB) **： VM 的卷上的可用磁盘空间。 在计算卷上的可用空间时，会考虑由以前批次的 VM（其 VHD 位于同一卷上）用来进行增量复制的磁盘空间。 
 
 例如，VM1、VM2 和 VM3 驻留在路径为 E:\VHDpath 的卷上。 在复制前，卷上的可用空间为 500 GB。 VM1 属于第 1 批，VM2 属于第 2 批，VM3 属于第 3 批。 VM1 的可用空间为 500 GB。 VM2 的可用空间为 500 – VM1 进行增量复制所需的磁盘空间。 如果 VM1 需要 300 GB 的空间进行增量复制，则 VM2 的可用空间为 500 GB – 300 GB = 200 GB。 同样，假设 VM2 需要 300 GB 进行增量复制， 则 VM3 的可用空间为 200 GB - 300 GB = -100 GB。
 
 **卷上需要用于初始复制的存储(GB)**：VM 的卷上需要用于初始复制的存储空间。
 
-**卷上需要用于增量复制的存储空间（GB）**： VM 的卷上需要用于增量复制的可用存储空间。
+**卷上需要用于增量复制的存储空间 (GB) **： VM 在卷上所需的可用存储空间以进行增量复制。
 
 **在资源不足情况下为了避免复制失败而需要的额外存储(GB)**：卷上 VM 所需的额外存储空间。 这就是进行初始复制和增量复制的最高存储空间要求减去卷上的可用空间。
 
@@ -351,7 +352,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **此批次的增量复制所用的大致带宽**：此批次的 VM 增量复制所需的带宽。 
 
-**批处理的估计初始复制时间（HH： MM）**：估计的初始复制时间（以小时为单位）：分钟。
+**批处理 (的估计初始复制时间为 HH： MM) **：估计的初始复制时间（以小时为单位）：分钟。
 
 
 

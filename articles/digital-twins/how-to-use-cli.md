@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5272babf794529e5e9bd87a3c4a96e6df5758fb8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f13dc3e86b21a3f4113a7a7c6f477f239315a27
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537456"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499086"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>使用 Azure 数字孪生 CLI
 
@@ -25,13 +25,19 @@ ms.locfileid: "86537456"
 * 管理[路由](concepts-route-events.md)
 * 通过基于角色的访问控制（RBAC）配置[安全性](concepts-security.md)
 
-Azure 数字孪生命令是[适用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的一部分。 您可以在 `az iot` 命令集： [az dt](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)中查看这些命令的参考文档。
-
-## <a name="deploy-and-validate"></a>部署和验证
+## <a name="uses-deploy-and-validate"></a>使用（部署和验证）
 
 除了一般管理实例，CLI 也是用于部署和验证的有用工具。
 * 使用控制平面命令可重复或自动部署新的实例。
 * 数据平面命令可用于快速检查实例中的值，并验证操作是否按预期完成。
+
+## <a name="get-the-extension"></a>获取扩展
+
+Azure 数字孪生命令是[适用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的一部分。 您可以在 `az iot` 命令集： [az dt](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)中查看这些命令的参考文档。
+
+可以通过以下步骤确保具有最新版本的扩展。 可以在[Azure Cloud Shell](../cloud-shell/overview.md)或[本地 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)中运行这些命令。
+
+[!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

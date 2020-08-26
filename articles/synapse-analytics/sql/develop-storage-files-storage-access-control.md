@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255704"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987131"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
 
@@ -81,11 +81,17 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 可以使用授权和 Azure 存储类型的以下组合：
 
-|                     | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
+| 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS               | 支持      | 不支持   | 支持     |
-| 托管标识 | 支持      | 支持        | 支持     |
-| 用户标识    | 支持      | 支持        | 支持     |
+| SAS    | 支持\*      | 不支持   | 支持\*     |
+| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
+| [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持\*      | 支持\*        | 支持\*     |
+
+\* SAS 令牌和 Azure AD 标识可用于访问不受防火墙保护的存储。
+
+> [!IMPORTANT]
+> 访问受防火墙保护的存储时，仅可使用托管标识。 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
+>
 
 ## <a name="credentials"></a>凭据
 
@@ -109,11 +115,7 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-为了确保顺畅的 Azure AD 直通体验，默认情况下，所有用户都拥有使用 `UserIdentity` 凭据的权限。 这是在预配 Azure Synapse 工作区时通过自动执行以下语句实现的：
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+为了确保顺畅的 Azure AD 直通体验，默认情况下，所有用户都拥有使用 `UserIdentity` 凭据的权限。
 
 ## <a name="server-scoped-credential"></a>服务器范围的凭据
 
@@ -142,7 +144,7 @@ SQL 用户无法使用 Azure AD 身份验证来访问存储。
 
 以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据通过 SAS 令牌访问 Azure 存储上的任何文件。 创建此凭据后，用于执行 `OPENROWSET` 函数的 SQL 主体就可以读取与凭据名称中的 URL 匹配的 Azure 存储中受 SAS 密钥保护的文件。
 
-请将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称： 
+请将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称：
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -176,27 +178,46 @@ WITH IDENTITY='Managed Identity'
 
 如果 Azure AD 用户至少具有 `Storage Blob Data Owner`、`Storage Blob Data Contributor` 或 `Storage Blob Data Reader` 角色，则可访问 Azure 存储中的任意文件。 Azure AD 用户无需凭据即可访问存储。
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 SQL 用户无法使用 Azure AD 身份验证来访问存储。
 
 ### <a name="shared-access-signature"></a>[共享访问签名](#tab/shared-access-signature)
 
-下面的脚本创建一个凭据，该凭据用来通过其中指定的 SAS 令牌访问存储中的文件。
+下面的脚本创建一个凭据，该凭据用来通过其中指定的 SAS 令牌访问存储中的文件。 该脚本将创建一个示例外部数据源，该数据源使用此 SAS 令牌访问存储。
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
-下面的脚本创建一个数据库范围的凭据，该凭据可用于以服务托管标识的身份模拟当前的 Azure AD 用户。 
+下面的脚本创建一个数据库范围的凭据，该凭据可用于以服务托管标识的身份模拟当前的 Azure AD 用户。 该脚本将创建一个示例外部数据源，该数据源使用工作区标识访问存储。
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 数据库范围的凭据不需要匹配存储帐户的名称，因为它将在定义存储位置的 DATA SOURCE 中显式使用。
@@ -205,6 +226,11 @@ GO
 
 若要允许访问公开可用的文件，不需要使用数据库范围的凭据。 创建[不使用数据库范围的凭据的数据源](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)，以便访问 Azure 存储上公开可用的文件。
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 在外部数据源中使用数据库范围的凭据，以便指定将使用哪种身份验证方法来访问此存储：
@@ -218,7 +244,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>示例
 
-访问公开可用的数据源
+### <a name="access-a-publicly-available-data-source"></a>访问公开可用的数据源
 
 使用以下脚本创建一个表，用以访问公开可用的数据源。
 
@@ -243,11 +269,11 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
-使用凭据访问数据源
+### <a name="access-a-data-source-using-credentials"></a>使用凭据访问数据源
 
 修改以下脚本来创建一个外部表，用以使用 SAS 令牌、用户的 Azure AD 标识或工作区的托管标识来访问 Azure 存储。
 
@@ -288,7 +314,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

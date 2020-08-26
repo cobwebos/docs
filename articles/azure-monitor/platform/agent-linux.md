@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 965d5dd558d0da7a758db77330c9129ea0e8247c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637523"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543854"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>将 Linux 计算机连接到 Azure Monitor
 
@@ -154,6 +155,19 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
+
+## <a name="supported-linux-hardening"></a>支持的 Linux 强化
+OMS 代理对 Linux 提供了有限的自定义支持。 
+
+目前支持以下各项： 
+- FIPs
+
+以下项已计划，但尚不受支持：
+- CIS
+- SELINUX
+
+其他强化和自定义方法不受支持，也不会计划用于 OMS 代理。  
+
 
 ## <a name="upgrade-from-a-previous-release"></a>从以前的版本升级
 

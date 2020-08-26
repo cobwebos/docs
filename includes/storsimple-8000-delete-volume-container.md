@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67172997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102471"
 ---
 若要删除卷容器，则必须
  - 删除卷容器中的卷。 如果卷容器具有关联的卷，请首先使那些卷脱机。 请按照[使卷脱机](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)中的步骤操作。 卷处于脱机状态后，可以删除它们。 
@@ -36,6 +36,6 @@ ms.locfileid: "67172997"
 
 卷容器的列表将更新以反映删除的卷容器。
 
-![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
+!["卷容器" 页的屏幕截图。 卷容器的表格列表不再包含已删除的容器。](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 
 

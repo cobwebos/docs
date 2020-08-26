@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: c0e94c0bef5087665ca8746a65ccd34a0f61deef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829731"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500498"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -49,9 +50,9 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 | 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
 | 虚拟网络 |-v, --virtual-network |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 密钥类型 |-t, --key-type |要续订的密钥类型。 有效值：[Primary、Secondary] |
-| StaticIP |-p，--static ip\<static-ip\> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中为你选择一个。 |
+| StaticIP |-p, --static-ip \<static-ip\> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中为你选择一个。 |
 | 子网 |t, --subnet \<subnet\> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
-| VirtualNetwork |-v，--虚拟网络\<virtual-network\> |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| VirtualNetwork |-v, --virtual-network \<virtual-network\> |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 订阅 |-s, --subscription |订阅标识符。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>查看所有 Azure Redis 缓存命令

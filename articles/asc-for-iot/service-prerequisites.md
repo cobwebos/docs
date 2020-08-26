@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.custom: references_regions
-ms.openlocfilehash: 19e4ea37aa10c90d15a2b7dcdf962c131c8e473d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ce903271accd3f63df7634dc5045932655ac2a7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193219"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531143"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>用于 IoT 必备组件的 Azure 安全中心
 
@@ -29,7 +30,7 @@ ms.locfileid: "84193219"
 ## <a name="minimum-requirements"></a>最低要求
 
 - IoT 中心标准层
-  - RBAC 角色**所有者**级别权限
+  - Azure 角色**所有者**级别权限
 - [Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure 安全中心（推荐）
   - 使用 Azure 安全中心是一种建议，不是必需的。 如果没有 Azure 安全中心，你将无法在 IoT 中心内查看其他 Azure 资源。
@@ -60,8 +61,8 @@ Azure IoT 中心和 Azure 安全中心提供 IoT insights 和报告的 azure 安
 - 西欧
 - 北欧
 - 日本西部
-- 日本东部
-- 澳大利亚东南部
+- Japan East
+- Australia Southeast
 - 澳大利亚东部
 - 东亚
 - 东南亚
@@ -77,7 +78,7 @@ Azure IoT 中心和 Azure 安全中心提供 IoT insights 和报告的 azure 安
 在开始之前，请查看 IoT 中心位置以验证服务可用性。
 
 1. 打开 IoT 中心。
-1. 单击“概览”。 
+1. 单击“概览”。
 1. 验证列出的位置是否与其中一个[受支持的服务区域](#supported-service-regions)匹配。
 
 ## <a name="supported-platforms-for-agents"></a>支持的代理平台

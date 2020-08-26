@@ -3,14 +3,14 @@ title: Durable Functions 版本概述 - Azure Functions
 description: 了解 Durable Functions 版本。
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540343"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719404"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
@@ -24,7 +24,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 在 Durable Functions 2.x 中，我们引入了一个新的[实体函数](durable-functions-entities.md)概念。
 
-实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
+实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。 与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。 与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
 
 有关详细信息，请参阅[持久实体](durable-functions-entities.md)一文。
 
@@ -44,7 +44,29 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 ### <a name="upgrade-the-extension"></a>升级扩展
 
-在项目中安装 2.x 版 [Durable Functions 绑定扩展](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。 有关详细信息，请参阅[注册 Azure Functions 绑定扩展](../functions-bindings-register.md)。
+在项目中安装最新版本的 Durable Functions 绑定扩展。
+
+#### <a name="javascript-python-and-powershell"></a>JavaScript、Python 和 PowerShell
+
+Durable Functions 1.x 在 [Azure Functions 扩展包](../functions-bindings-register.md#extension-bundles)的版本2.x 中可用。
+
+若要更新项目中的扩展捆绑版本，请打开 host.js并更新 `extensionBundle` 部分以使用版本 2.x (`[2.*, 3.0.0)`) 。
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+更新 .NET 项目以使用最新版本的 [Durable Functions 绑定扩展](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。
+
+有关详细信息，请参阅[注册 Azure Functions 绑定扩展](../functions-bindings-register.md#local-csharp)。
 
 ### <a name="update-your-code"></a>更新代码
 
@@ -66,7 +88,7 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 
 #### <a name="public-interface-changes-net-only"></a>公共接口更改（仅 .NET）
 
-在 1.x 版中，Durable Functions 支持的各种“上下文”对象包含适合在单元测试中使用的抽象基类。  作为 Durable Functions 2.x 的一部分，这些抽象基类由接口取代。
+在 1.x 版中，Durable Functions 支持的各种“上下文”对象包含适合在单元测试中使用的抽象基类。 作为 Durable Functions 2.x 的一部分，这些抽象基类由接口取代。
 
 下表显示了主要更改：
 
@@ -85,4 +107,4 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 
 #### <a name="raise-event-changes"></a>引发事件更改
 
-在 Durable Functions 1.x 中，调用[引发事件](durable-functions-external-events.md#send-events)API 并指定不存在的实例导致了缄默失败。 从1.x 开始，将事件引发到不存在的业务流程将导致异常。
+在 Durable Functions 1.x 中，调用[引发事件](durable-functions-external-events.md#send-events) API 并指定不存在的实例会导致静默失败。 从 2.x 开始，将事件引发到不存在的业务流程会导致异常。

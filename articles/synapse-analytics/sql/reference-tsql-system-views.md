@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab6d7266daf96a38f81566725a6931aebaf7e7d9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e77c85b734784c37b8e0d599c02f8807123038dd
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527789"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796725"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL 中支持的系统视图
 Synapse SQL 中支持的 T-sql 语句的文档链接。
@@ -38,6 +38,7 @@ Synapse SQL 中支持的 T-sql 语句的文档链接。
 * [sys.pdw_nodes_partitions](/sql/relational-databases/system-catalog-views/sys-pdw-nodes-partitions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_nodes_pdw_physical_databases](/sql/relational-databases/system-catalog-views/sys-pdw-nodes-pdw-physical-databases-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_nodes_tables](/sql/relational-databases/system-catalog-views/sys-pdw-nodes-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.pdw_permanent_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_table_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-table-distribution-properties-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -45,7 +46,7 @@ Synapse SQL 中支持的 T-sql 语句的文档链接。
 * [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（预览版）
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（预览版）
 
-## <a name="sql-pool-dynamic-management-views-dmvs"></a>SQL 池动态管理视图（Dmv）
+## <a name="sql-pool-dynamic-management-views-dmvs"></a> (Dmv) 的 SQL 池动态管理视图
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -153,7 +154,7 @@ Synapse SQL 中支持的 T-sql 语句的文档链接。
 
 SQL 池公开了许多 SQL Server 动态管理视图 (DMV)。 在 SQL 池中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
 
-SQL 池和分析平台系统的并行数据仓库（PDW）使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。
+SQL 池和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。
 
 > [!NOTE]
 > 若要使用这些视图，请在名称中插入“pdw_nodes_”，如下表所示：
@@ -249,6 +250,6 @@ SQL 池和分析平台系统的并行数据仓库（PDW）使用相同的系统�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多参考信息，请参阅[SYNAPSE sql 中的 t-sql 语句](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)和[Synapse Sql 中的 t-sql 语言元素](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)。
+有关更多参考信息，请参阅 [SYNAPSE sql 中的 t-sql 语句](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)和 [Synapse Sql 中的 t-sql 语言元素](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)。
 
  

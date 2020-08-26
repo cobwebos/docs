@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603632"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212147"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线输出绑定
 
@@ -40,7 +40,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -91,7 +91,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -282,13 +282,13 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|主题名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
-|**accessRights**（仅限 v1）|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”**** 权限。 如果使用不具有“管理”**** 权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
+|**accessRights**（仅限 v1）|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -305,13 +305,13 @@ Python 不支持特性。
 * `out byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `out BrokeredMessage` - 如果函数退出时参数值为 null，Functions 不创建消息（适用于 Functions 1.x）
 * `out Message` - 如果函数退出时参数值为 null，Functions 不创建消息（适用于 Functions 2.x 及更高版本）
-* `ICollector<T>`或 `IAsyncCollector<T>` （对于异步方法）-用于创建多个消息。 调用 `Add` 方法时创建了一条消息。
+* `ICollector<T>` 或 `IAsyncCollector<T>`（适用于异步方法）- 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
 
 使用 C# 函数时：
 
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
-* 若要访问会话 ID，请绑定到 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
+* 若要访问会话 ID，请绑定到 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -328,7 +328,7 @@ Python 不支持特性。
 
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
-* 若要访问会话 ID，请绑定到 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
+* 若要访问会话 ID，请绑定到 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -336,11 +336,11 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用 [Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) 而不是内置的输出绑定。
+使用 [Azure 服务总线 SDK](../service-bus-messaging/index.yml) 而不是内置的输出绑定。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用 [Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) 而不是内置的输出绑定。
+使用 [Azure 服务总线 SDK](../service-bus-messaging/index.yml) 而不是内置的输出绑定。
 
 ---
 
@@ -348,8 +348,8 @@ Python 不支持特性。
 
 | 绑定 | 参考 |
 |---|---|
-| 服务总线 | [服务总线错误代码](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| 服务总线 | [服务总线限制](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| 服务总线 | [服务总线错误代码](../service-bus-messaging/service-bus-messaging-exceptions.md) |
+| 服务总线 | [服务总线限制](../service-bus-messaging/service-bus-quotas.md) |
 
 <a name="host-json"></a>  
 
@@ -388,7 +388,7 @@ Python 不支持特性。
 |---------|---------|---------|
 |prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>`false`仅在 c # 中支持将设置为。<br><br>如果设置为 `true` ，则触发器会在函数执行成功完成时自动完成该消息，否则将放弃该消息。<br><br>如果设置为 `false` ，则负责调用[MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)方法来完成、放弃或死信消息。 如果引发了异常（并且未 `MessageReceiver` 调用任何方法），则锁定会保持不变。 锁过期后，消息将重新排队 `DeliveryCount` 并递增，并且会自动续订锁定。<br><br>在非 C # 函数中，函数中的异常会导致运行时在 `abandonAsync` 后台调用。 如果未发生异常，则 `completeAsync` 在后台调用。 |
+|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
 |maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
 |maxConcurrentSessions|2000|每个缩放实例可以并发处理的最大会话数。|
 

@@ -1,21 +1,21 @@
 ---
 title: 向应用程序授予 Azure Key Vault 的访问权限 - Azure Key Vault | Microsoft Docs
-description: 了解如何为多个应用程序授予密钥保管库的访问权限
+description: 了解如何手动注册服务主体，并使用访问控制策略提供对 Azure Key Vault 的访问（这在某些情况下这可能是必要的）。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: d0607b1adb76fd32ce9f4dc9ebede92c7aa96862
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126223"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588682"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -39,7 +39,7 @@ Key Vault 最多支持 1024 个访问策略条目，每个条目可向“主体�
    - [使用 Azure CLI 创建 Key Vault](../secrets/quick-create-cli.md)
    - [使用 Azure PowerShell 创建 Key Vault](../secrets/quick-create-powershell.md)
    - [使用 Azure 门户创建 Key Vault](../secrets/quick-create-portal.md)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="grant-access-to-your-key-vault"></a>授予对 Key Vault 的访问权限
 
@@ -155,7 +155,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <ApplicationID-of-yo
 在 Azure PowerShell 中，可以通过将 objectId 传递到 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet 来实现此目的。 
 
 ```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys create,decrypt,delete,encrypt,get,list,unwrapKey,wrapKey -PermissionsToSecrets get,list,set,delete -ObjectId <Id>
+Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -PermissionsToKeys create,decrypt,delete,encrypt,get,list,unwrapKey,wrapKey -PermissionsToSecrets get,list,set,delete -ObjectId <Id>
 
 ```
 

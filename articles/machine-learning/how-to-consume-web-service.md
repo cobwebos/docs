@@ -5,18 +5,18 @@ description: 了解如何调用从 Azure 机器学习部署模型时生成的 We
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: ced9453982615485e25b56be9b7a36dc8f6ce988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974664"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652587"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -93,6 +93,9 @@ Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
+密钥与标记之间的主要区别在于， **密钥是静态的，可以手动重新生成**，并且 **令牌需要在过期时刷新**。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署****。 请参阅身份验证[操作说明](how-to-setup-authentication.md#web-service-authentication)，了解更多信息和特定代码示例。
+
+
 #### <a name="authentication-with-keys"></a>使用密钥进行身份验证
 
 为部署启用身份验证时，会自动创建身份验证密钥。
@@ -128,7 +131,7 @@ token, refresh_by = service.get_token()
 print(token)
 ```
 
-如果你有[Azure CLI 和机器学习扩展](reference-azure-machine-learning-cli.md)，则可以使用以下命令获取令牌：
+如果安装了 [Azure CLI 和机器学习扩展](reference-azure-machine-learning-cli.md)，则可使用以下命令获取令牌：
 
 ```azurecli
 az ml service get-access-token -n <service-name>
@@ -155,33 +158,9 @@ REST API 预期请求正文是采用以下结构的 JSON 文档：
 > [!IMPORTANT]
 > 数据结构需要符合服务中评分脚本和模型的预期。 评分脚本在将数据传递到模型之前可以修改数据。
 
-例如，[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例中的模型预期存在由 10 个数字构成的数组。 此示例的评分脚本从请求创建一个 Numpy 数组，并将其传递给模型。 以下示例演示此服务预期的数据：
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-Web 服务可以接受一个请求中的多个数据集。 它会返回包含响应数组的 JSON 文档。
-
 ### <a name="binary-data"></a>Binary data
 
-有关如何在服务中启用对二进制数据的支持的信息，请参阅[二进制数据](how-to-deploy-and-where.md#binary)。
+有关如何在服务中启用对二进制数据的支持的信息，请参阅[二进制数据](how-to-deploy-advanced-entry-script.md#binary-data)。
 
 > [!TIP]
 > 启用二进制数据支持这一操作是在部署的模型所使用的 score.py 文件中实现的。 从客户端中，使用编程语言的 HTTP 功能。 例如，以下代码片段将 JPG 文件的内容发送到 Web 服务：
@@ -196,7 +175,7 @@ Web 服务可以接受一个请求中的多个数据集。 它会返回包含响
 
 ### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
 
-有关在服务中启用 CORS 支持的信息，请参阅[跨源资源共享](how-to-deploy-and-where.md#cors)。
+有关在服务中启用 CORS 支持的信息，请参阅[跨源资源共享](how-to-deploy-advanced-entry-script.md#cors)。
 
 ## <a name="call-the-service-c"></a>调用服务 (C#)
 
@@ -518,6 +497,153 @@ print(resp.text)
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+
+## <a name="web-service-schema-openapi-specification"></a>Web 服务架构（OpenAPI 规范）
+
+如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)获取服务的 OpenAPI 规范的地址。 （例如 `print(service.swagger_uri)`。）使用 GET 请求，或在浏览器中打开 URI 以检索规范。
+
+以下 JSON 文档是为部署生成的架构（OpenAPI 规范）示例：
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for Azure Machine Learning myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+有关详细信息，请参阅 [OpenAPI 规范](https://swagger.io/specification/)。
+
+若要了解可根据规范创建客户端库的实用工具，请参阅 [swagger-codegen](https://github.com/swagger-api/swagger-codegen)。
+
+
+> [!TIP]
+> 部署服务后，可以检索架构 JSON 文档。 使用部署的 Web 服务中的 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如 `service.swagger_uri`）获取本地 Web 服务的 Swagger 文件的 URI。
 
 ## <a name="consume-the-service-from-power-bi"></a>通过 Power BI 使用服务
 

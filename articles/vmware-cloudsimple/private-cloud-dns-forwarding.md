@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091243"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>启用 CloudSimple 私有云 DNS 服务器以将本地资源的 DNS 查找转发到 DNS 服务器
 
@@ -26,12 +27,12 @@ ms.locfileid: "76961122"
 * 使用本地 Active Directory 作为私有云的标识源 vSphere
 * 使用 HCX 将虚拟机从本地迁移到私有云
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 必须将私有云网络中的网络连接提供给本地网络，才能进行 DNS 转发。  你可以使用以下内容设置网络连接：
 
 * [使用 ExpressRoute 从本地连接到 CloudSimple](on-premises-connection.md)
-* [设置站点到站点 VPN 网关](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [设置站点到站点 VPN 网关](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 为了使 DNS 转发正常工作，必须在此连接上打开防火墙端口。  使用的端口为 TCP 端口53或 UDP 端口53。
 

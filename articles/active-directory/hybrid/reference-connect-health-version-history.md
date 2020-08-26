@@ -13,14 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76897031"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165152"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -31,41 +32,49 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
 
+## <a name="april-2020"></a>2020 年 4 月
+**代理更新**
+
+- AD FS 的 Azure AD Connect Health 代理 (版本 3.1.77.0) 
+
+   1.   针对 "服务主体名称 (SPN) 用于 AD FS 服务" 的 Bug 修复，警报报告错误的警报。
+
+
 ## <a name="july-2019"></a>2019 年 7 月
 **代理更新**
-* AD FS 的 Azure AD Connect Health 代理（版本3.1.59.0） 
+* AD FS 的 Azure AD Connect Health 代理 (版本 3.1.59.0)  
    1. TestWindowsTransport 中的文本更改
    2. AD FS RP 上传的更改
    
-* AD FS 的 Azure AD Connect Health 代理（版本3.1.56.0） 
+* AD FS 的 Azure AD Connect Health 代理 (版本 3.1.56.0)  
    1. 添加 TestWindowsTransport 测试并删除 CheckOffice365Endpoints 测试中的 WsTrust 终结点检查
    2. 记录 OS 和 .NET 信息
    3. 将 RP 配置消息上传大小增加到1MB。
    4. Bug 修复
    
-* AD DS 的 Azure AD Connect Health 代理（版本3.1.56.0） 
+* AD DS 的 Azure AD Connect Health 代理 (版本 3.1.56.0)  
    1. 记录 OS 和 .NET 信息 
    2. Bug 修复
 
 ## <a name="may-2019"></a>2019 年 5 月
 **代理更新：** 
-* AD FS 的 Azure AD Connect Health 代理（版本3.1.51.0） 
+* AD FS 的 Azure AD Connect Health 代理 (版本 3.1.51.0)  
    1. Bug 修复，可区分共享同一客户端请求 id 的多个登录名。
    2. Bug 修复，用于分析语言本地化服务器上的错误用户名/密码错误。   
 
 ## <a name="april-2019"></a>2019 年 4 月
 **代理更新：** 
-* AD FS 的 Azure AD Connect Health 代理（版本3.1.46.0） 
+* AD FS 的 Azure AD Connect Health 代理 (版本 3.1.46.0)  
    1. 修复检查 ADFS 的重复 SPN 警报进程
 
 ## <a name="march-2019"></a>2019 年 3 月
 **代理更新：** 
-* AD DS 的 Azure AD Connect Health 代理（版本3.1.41.0）  
+* AD DS 的 Azure AD Connect Health 代理 (版本 3.1.41.0)   
    1. .NET 版本收集
    2. 缺少特定类别时的性能计数器集合改进
    3. 用于阻止生成多个监视代理实例的 Bug 修复
 
-* AD FS 的 Azure AD Connect Health 代理（版本3.1.41.0） 
+* AD FS 的 Azure AD Connect Health 代理 (版本 3.1.41.0)  
    1. 使用 ADFSToolBox 集成和升级 AD FS 测试脚本
    2. 实现 .NET 版本收集
    3. 缺少特定类别时的性能计数器集合改进
@@ -124,7 +133,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
   2. 修复了 Bug，进行了一般改进
 
 
-## <a name="march-2018"></a>2018 年 3 月
+## <a name="march-2018"></a>2018 年 3月
 **新的预览功能：**
 * 适用于 AD FS 的 Azure Active Directory Connect Health - 有风险的 IP 报表和警报。
 
@@ -216,7 +225,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 ## <a name="november-2015"></a>2015 年 11 月
 **新功能：**
 
-* 支持[基于角色的访问控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* 支持 azure [RBAC) 的基于角色的访问控制 (](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新的预览功能：**
 
@@ -252,4 +261,3 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](whatis-hybrid-identity-health.md)。
-

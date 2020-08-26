@@ -3,12 +3,12 @@ title: Azure Service Fabric 生产就绪情况核对清单
 description: 遵循最佳做法，让 Service Fabric 应用程序和群集做好生产准备。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610024"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835861"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -22,11 +22,11 @@ ms.locfileid: "85610024"
 1. 对主节点类型使用 D2v2 或更高版本的 SKU。 建议选择至少有 50 GB 硬盘容量的 SKU。
 1. 生产群集必须是[安全的](service-fabric-cluster-security.md)。 有关设置安全群集的示例，请参阅此[群集模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)。 使用证书的通用名称，避免使用自签名证书。
 1. 添加[容器和服务的资源约束](service-fabric-resource-governance.md)，以便它们消耗的节点资源不超过 75%。 
-1. 理解并设置[持续性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 对于运行有状态工作负载的节点类型，建议使用银级或更高的持续性级别。 主节点类型应将持续性级别设置为银级或更高级别。
+1. 理解并设置[持续性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 对于运行有状态工作负载的节点类型，建议使用银级或更高的持续性级别。
 1. 理解并选取节点类型的[可靠性级别](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。 建议使用银级或更高级别的可靠性。
 1. 对工作负载进行负载和缩放测试，确定群集的[容量需求](service-fabric-cluster-capacity.md)。 
 1. 服务和应用程序受到监视，并且系统会生成并存储应用程序日志，并会发送警报。 例如，请参阅[将日志记录添加到 Service Fabric 的应用程序](service-fabric-how-to-diagnostics-log.md)和[监视包含 Azure Monitor 日志的容器](service-fabric-diagnostics-oms-containers.md)。
-1. 通过警报监视群集（例如，对于[Azure Monitor 日志](service-fabric-diagnostics-event-analysis-oms.md)）。 
+1. 监视群集时会发出警报 (例如，) [Azure Monitor 日志](service-fabric-diagnostics-event-analysis-oms.md)。 
 1. 基础虚拟机规模集基础结构通过警报（例如，通过 [Azure Monitor 日志](service-fabric-diagnostics-oms-agent.md)）进行监视。
 1. 该群集始终具有[主要和辅助证书](service-fabric-cluster-security-update-certs-azure.md)（因此不会将你拒之门外）。
 1. 维护用于开发、暂存和生产的独立集群。 
@@ -35,7 +35,7 @@ ms.locfileid: "85610024"
 1. 为服务建立恢复点目标 (RPO)，设置[灾难恢复流程](service-fabric-disaster-recovery.md)并进行测试。
 1. 手动或以编程方式计划群集的[缩放](service-fabric-cluster-scaling.md)。
 1. 计划群集节点的[修补](service-fabric-patch-orchestration-application.md)。 
-1. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. 使用[故障分析服务](service-fabric-testability-overview.md)测试负载下的开发和暂存集群，并引入受控[混沌测试](service-fabric-controlled-chaos.md)。 
 1. 计划应用程序的[缩放](service-fabric-concepts-scalability.md)。 
 

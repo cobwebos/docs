@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055415"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326046"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -64,7 +64,7 @@ System Center Operations Manager 运行状况检查解决方案从以下源收�
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics 的 Operations Manager 运行方式帐户
 
-Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每个工作负荷需要特定于工作负荷的权限，才能在不同的安全上下文（例如域用户帐户）中运行管理包。 使用特权凭据配置 Operations Manager 运行方式帐户。 有关更多信息，请参阅 Operations Manager 文档中的[如何创建运行方式帐户](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)。
+Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每个工作负荷需要特定于工作负荷的权限，才能在不同的安全上下文（例如域用户帐户）中运行管理包。 使用特权凭据配置 Operations Manager 运行方式帐户。 有关更多信息，请参阅 Operations Manager 文档中的[如何创建运行方式帐户](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))。
 
 使用以下信息为 System Center Operations Manager 运行状况检查设置 Operations Manager 运行方式帐户。
 
@@ -82,7 +82,7 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 4. 在“常规属性”页上的“运行方式帐户类型:”列表中，选择“Windows”。************
 5. 在“显示名称”文本框中键入显示名称，并选择性地在“说明”框中键入说明，单击“下一步”。************
 6. 在“分发安全性”页上，选择“更安全”。********
-7. 单击**创建**。  
+7. 单击 **“创建”** 。  
 
 创建运行方式帐户后，需要将管理组中的管理服务器指定为该帐户的目标，并将其关联到某个预定义的运行方式配置文件，以便能够使用凭据运行工作流。  
 
@@ -147,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager 运行状况检查解决方案的管理包中包含一个名为“Microsoft System Center Operations Manager 运行运行状况检查规则”的规则。** 此规则负责执行运行状况检查。 若要启用该规则并配置频率，请使用以下过程。
 
-默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 请执行以下步骤。
+默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 使用以下步骤。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>为特定的管理服务器启用规则
 
@@ -203,13 +203,13 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 ## <a name="use-health-check-focus-area-recommendations"></a>使用运行状况检查重点区域建议
 
-在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 若要详细了解如何安装解决方案，请参阅[安装管理解决方案](../../azure-monitor/insights/solutions.md)。 安装完成后，可以通过使用 Azure 门户中工作区的“概述”**** 页上的“System Center Operations Manager 运行状况检查”磁贴来查看建议摘要。
+在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 若要详细了解如何安装解决方案，请参阅[安装管理解决方案](./solutions.md)。 安装完成后，可以通过使用 Azure 门户中工作区的“概述”**** 页上的“System Center Operations Manager 运行状况检查”磁贴来查看建议摘要。
 
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
-2. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
+2. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
 3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“工作区摘要”**** 菜单项。  
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。********
 5. 在“System Center Operations Manager 运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。****
@@ -229,7 +229,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../../azure-monitor/log-query/log-query-overview.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](../log-query/log-query-overview.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../../azure-monitor/log-query/log-query-overview.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](../log-query/log-query-overview.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,4 +295,5 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [搜索日志](../../azure-monitor/log-query/log-query-overview.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。
+- [搜索日志](../log-query/log-query-overview.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。
+

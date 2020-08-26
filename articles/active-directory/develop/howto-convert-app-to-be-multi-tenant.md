@@ -13,16 +13,16 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201960"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141357"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
-如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为*使应用程序成为多租户应用程序*。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
+如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为 *使应用程序成为多租户应用程序*。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
 
 如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按下应用程序中的[“使用 Microsoft 登录”按钮][AAD-App-Branding]。
 
@@ -47,7 +47,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 默认情况下，通过 Azure 门户创建的应用在创建应用时设置了一个全局唯一的应用 ID URI，但你可以更改此值。 例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。 如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
 
 > [!NOTE]
-> 默认情况下，本机客户端注册以及 [Microsoft 标识平台应用程序](./active-directory-appmodel-v2-overview.md)是多租户的。 不需要采取任何措施将这些应用程序注册转换为多租户。
+> 默认情况下，本机客户端注册以及 [Microsoft 标识平台应用程序](./v2-overview.md)是多租户的。 不需要采取任何措施将这些应用程序注册转换为多租户。
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>将代码更新为向 /common 发送请求
 
@@ -201,11 +201,11 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
+[AAD-Samples-MT]: /samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
-[MSFT-Graph-permission-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
+[MSFT-Graph-overview]: /graph/
+[MSFT-Graph-permission-scopes]: /graph/permissions-reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
@@ -226,9 +226,9 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: https://msdn.microsoft.com/library/azure/dn645542.aspx
+[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6

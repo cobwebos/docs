@@ -1,18 +1,18 @@
 ---
 title: 在 Azure 市场创建 Azure 虚拟机产品/服务
-description: 了解如何在 Azure 市场上使用所需 SKU 创建虚拟机产品/服务。
+description: 了解如何向 Azure Marketplace 发布虚拟机产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/07/2020
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110968"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816518"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -116,16 +116,16 @@ ms.locfileid: "86110968"
 
 ## <a name="properties"></a>属性
 
-在 "**属性**" 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
+在 " **属性** " 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
 ### <a name="category"></a>类别
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 虚拟机产品/服务始终显示在 Azure Marketplace 上的**计算**类别下。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 虚拟机产品/服务始终显示在 Azure Marketplace 上的 **计算** 类别下。
 
 ### <a name="legal"></a>合法
 
@@ -242,19 +242,24 @@ ms.locfileid: "86110968"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
 
 #### <a name="azure-marketplace-logos"></a>Azure 市场徽标
 
-按以下四个图像尺寸提供产品/服务徽标的 PNG 文件：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小型** 和 **中型** 徽标。 稍后可以选择将它们替换为不同的图像。
 
-- **小**（48 &times; 48 像素）
-- **中**（90 &times; 90 像素）
-- **大**（216 &times; 216 像素）
-- **宽**（255 &times; 115 像素）
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **中型** (90 x 90 px，可选) 
+- **小写** (48 x 48 px，可选) 
 
-所有这四种徽标都是必需的，它们显示在各种 Azure 市场列表中。
+在列表中的不同位置使用这些徽标：
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -286,7 +291,9 @@ ms.locfileid: "86110968"
 
 ## <a name="plan-overview"></a>计划概述
 
-在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 这些计划以前称为 SKU。 产品/服务需要至少一个计划，该计划可能因盈利受众、Azure 区域、功能或 VM 映像而不同。
+在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 产品/服务需要至少一个名为 "SKU)  (的计划，盈利受众、Azure 区域、功能或 VM 映像可能会有所不同。
+
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建计划后，选择“计划概述”选项卡以显示：
 
@@ -352,7 +359,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 #### <a name="plan-name"></a>计划名称
 
-此字段自动填充了你在创建计划时为计划命名的名称。 此名称在 Azure 市场中显示为此计划的标题。 它最多包含 100 个字符。
+此字段将自动填充你在创建计划时为其提供的名称。 此名称在 Azure 市场中显示为此计划的标题。 它最多包含 100 个字符。
 
 #### <a name="plan-summary"></a>计划摘要
 
@@ -368,7 +375,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 此窗格中，将配置：
 
-- 提供此计划的市场。
+- 提供此计划的市场。 每个计划都必须至少在一个 [市场](../marketplace-geo-availability-currencies.md)中可用。
 - 每小时价格。
 - 是让计划对所有人可见，还是仅对特定客户（专用受众）可见。
 
@@ -411,8 +418,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 **受限受众（Azure 订阅 ID）** ：使用 Azure 订阅 ID 分配将有权访问此专用计划的受众。 根据需要，提供已分配的每个 Azure 订阅 ID 的说明。 如果导入 CSV 电子表格，手动添加最多 10 个订阅 ID 或最多 20,000 个 ID。 Azure 订阅 ID 表示为 GUID，所有字母必须为小写。
 
 >[!Note]
->通过云解决方案提供商计划（CSP）的分销商建立的 Azure 订阅不支持专用产品/服务。
-
+>通过云解决方案提供商计划的经销商 (CSP) 建立的 Azure 订阅不支持专用产品/服务。
 
 #### <a name="hide-a-plan"></a>隐藏计划
 
@@ -459,7 +465,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 为虚拟机映像提供磁盘版本和共享访问签名 (SAS) URI。 为每个 VM 映像添加多达 16 个数据磁盘。 在指定的提交中，每个计划仅提供一个新的映像版本。 映像发布后，无法对其进行编辑，但可以将其删除。 删除版本会阻止新用户和现有用户部署已删除版本的新实例。
 
 - **光盘版本**：正在提供的映像的版本。
-- **SAS URI**：Azure 存储帐户中存储操作系统 VHD 的位置。 若要了解如何获取 SAS URI，请参阅[获取 VM 映像的共享访问签名 URI](get-sas-uri.md)。
+- **SAS URI**：Azure 存储帐户中存储操作系统 VHD 的位置。 若要了解如何获取 SAS URI，请参阅 [获取 VM 映像的共享访问签名 URI](get-sas-uri.md)。
 - 数据磁盘映像也是存储在其 Azure 存储帐户中的 VHD 共享访问签名 URI。
 - 计划中的每次提交只添加一个映像。
 
@@ -516,10 +522,10 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 此页还包含有助于处理产品/服务的链接（具体取决于其状态）：
 
-- 如果产品/服务是草稿：[删除草稿提议](update-existing-offer.md#delete-a-draft-offer)）
-- 如果产品/服务有效：[停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)）
-- 如果产品/服务为[预览版：上线](publishing-status.md#publisher-approval)）
-- 如果尚未完成发布服务器注销：[取消发布](update-existing-offer.md#cancel-publishing)）
+- 如果产品/服务是草稿：[删除产品/服务草稿](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务已上线：[停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果产品/服务处于预览状态：[上线](publishing-status.md#publisher-approval)
+- 如果尚未完成发布者注销：[取消发布](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>市场示例
 
@@ -533,7 +539,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 2. 价格
 3. 类别
 4. 条款和条件
-5. 隐私策略地址（链接）
+5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 说明
 8. 有用链接

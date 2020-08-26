@@ -3,18 +3,16 @@ title: 调试 U-SQL 作业-针对 Visual Studio 的 Azure Data Lake 工具代码
 description: 了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具本地运行和调试 U-SQL 作业。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: 141be5c2747ae5d0a812b1301b6af7203fe24351
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4b8285281119121b509c62b11bf48a5f70a9f0f0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110600"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125694"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>在 Visual Studio Code 中本地运行 U-SQL 并进行本地调试
 本文介绍如何在本地开发计算机上运行 U-SQL 作业，以让早期编码阶段提速，或在 Visual Studio Code 中本地调试代码。 有关针对 Visual Studio Code 的 Azure Data Lake 工具说明，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。

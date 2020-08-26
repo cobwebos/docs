@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 127f0cdfc8cecf9789a68210f4b7ce1927333cc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425356"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504528"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -30,7 +31,7 @@ ms.locfileid: "81425356"
 - 其他 Azure 跨平台命令行接口命令
 
 
-在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
+大多数区域都提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 > [!NOTE]
 > 本文未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用 Key Vault 中的密钥或机密。
@@ -95,7 +96,7 @@ az account set --subscription <subscription name or ID>
 
 ### <a name="create-a-new-resource-group"></a>创建新的资源组
 
-使用 Azure 资源管理器时，会在资源组中创建所有相关资源。 可在现有的资源组中创建 Key Vault。 如果想要使用新资源组，可以新建一个。
+使用 Azure Resource Manager 时，会在资源组中创建所有相关资源。 可在现有的资源组中创建 Key Vault。 如果想要使用新资源组，可以新建一个。
 
 ```azurecli
 az group create -n "ContosoResourceGroup" -l "East Asia"
@@ -127,7 +128,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 此命令的输出会显示创建的 Key Vault 的属性。 两个最重要的属性是：
 
-* **名称**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
+* **name**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
 * **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.net 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 到目前为止，尚未授权其他任何人。
@@ -146,7 +147,7 @@ az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-现在可以通过使用密钥的 URI，引用已创建或上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 始终会获取当前版本。 使用 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] 会获取此特定版本。 例如， **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 。 
+现在，可以通过使用密钥的 URI，引用已创建或上传到 Azure 密钥保管库的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 始终会获取当前版本。 使用 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] 会获取此特定版本。 例如， **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 。 
 
 将机密（名为 SQLPassword 的密码，其值为“hVFkk965BuUv”）添加到 Azure 密钥保管库。 
 
@@ -186,7 +187,7 @@ az keyvault certificate list --vault-name "ContosoKeyVault"
 
 此步骤通常由开发人员在独立的计算机上完成。 此步骤并非特定于 Azure Key Vault，本文介绍此步骤仅供你了解。 若要完成应用注册，你的帐户、保管库和应用程序需在同一个 Azure 目录中。
 
-使用密钥保管库的应用程序必须使用 Azure Active Directory 的令牌进行身份验证。  应用程序的所有者必须先将其注册到 Azure Active Directory 中。 注册结束后，应用程序所有者会获得以下值：
+使用密钥保管库的应用程序必须使用 Azure Active Directory 的令牌进行身份验证。  应用程序的所有者必须先将其注册到 Azure Active Directory 中。 注册结束后，应用程序所有者获得以下值：
 
 - **应用程序 ID**（也称为 AAD 客户端 ID 或 appID）
 - **身份验证密钥**（也称共享机密）。 
@@ -222,13 +223,13 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 为 Key Vault 启用高级策略。
 
- 为部署启用密钥保管库：允许虚拟机从保管库中检索作为机密存储的证书。
+ 为部署启用 Key Vault：允许虚拟机从保管库中检索作为机密存储的证书。
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-为磁盘加密启用密钥保管库：使用保管库进行 Azure 磁盘加密时需要。
+为磁盘加密启用 Key Vault：将保管库用于 Azure 磁盘加密时必需。
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"

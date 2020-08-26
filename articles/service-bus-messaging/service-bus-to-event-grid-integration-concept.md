@@ -6,11 +6,13 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 009e6a1b98e72d9618dc8ed3437d7ea90ab4afac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340572"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065108"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -39,9 +41,9 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-此外，服务总线使用标准的事件网格安全性和[身份验证机制](https://docs.microsoft.com/azure/event-grid/security-authentication)。
+此外，服务总线使用标准的事件网格安全性和[身份验证机制](../event-grid/security-authentication.md)。
 
-有关详细信息，请参阅 [Azure 事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema)。
+有关详细信息，请参阅 [Azure 事件网格事件架构](../event-grid/event-schema.md)。
 
 #### <a name="active-messages-available-event"></a>活动消息可用事件
 
@@ -130,7 +132,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 说明
 
-首先，请确保已安装 Azure CLI 2.0 或更高版本。 [下载安装程序](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
+首先，请确保已安装 Azure CLI 2.0 或更高版本。 [下载安装程序](/cli/azure/install-azure-cli?view=azure-cli-latest)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
 
 执行以下代码：
 
@@ -148,7 +150,7 @@ az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR 
 
 ## <a name="powershell-instructions"></a>PowerShell 说明
 
-确保已安装 Azure PowerShell。 [下载安装程序](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
+确保已安装 Azure PowerShell。 [下载安装程序](/powershell/azure/install-Az-ps)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
 
 ```powershell-interactive
 Connect-AzAccount
@@ -169,10 +171,10 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 ## <a name="next-steps"></a>后续步骤
 
 * 获取服务总线和事件网格的[示例](service-bus-to-event-grid-integration-example.md)。
-* 详细了解[事件网格](https://docs.microsoft.com/azure/event-grid/)。
-* 详细了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
-* 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/)的详细信息。
-* 详细了解[服务总线](https://docs.microsoft.com/azure/service-bus/)。
+* 详细了解[事件网格](../event-grid/index.yml)。
+* 详细了解 [Azure Functions](../azure-functions/index.yml)。
+* 了解有关[逻辑应用](../logic-apps/index.yml)的详细信息。
+* 详细了解[服务总线](/azure/service-bus/)。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

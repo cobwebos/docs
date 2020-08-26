@@ -5,19 +5,19 @@ description: 创建和管理 Azure SQL 数据库和 Azure SQL 托管实例的 Az
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: overview-samples, mvc, sqldbrb=2
+ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982739"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497165"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>适用于 Azure SQL 数据库和 SQL 托管实例的 Azure CLI 示例 
  
@@ -35,7 +35,7 @@ ms.locfileid: "85982739"
 
 下表包括一个链接，该链接指向用于管理 Azure SQL 数据库中的单个和共用数据库的 Azure CLI 脚本示例。 
 
-|区域|说明|
+|领域|说明|
 |---|---|
 |在 Azure SQL 数据库中创建数据库||
 | [创建单一数据库和配置防火墙规则](scripts/create-and-configure-database-cli.md) | 创建 SQL 数据库并配置服务器级防火墙规则。 |
@@ -63,7 +63,7 @@ ms.locfileid: "85982739"
 
 下表包括指向 Azure SQL 托管实例的 Azure CLI 脚本示例的链接。
 
-|区域|说明|
+|领域|说明|
 |---|---|
 | 创建 SQL 托管实例||
 | [创建 SQL 托管实例](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| 创建 SQL 托管实例。 |

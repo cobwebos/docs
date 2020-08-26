@@ -2,24 +2,20 @@
 title: 教程：使用 Azure Active Directory 为 Salesforce Sandbox 配置自动用户预配 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Salesforce 沙盒之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: bab73fda-6754-411d-9288-f73ecdaa486d
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48df954f680c6774b0aa189453615156f4f0b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543517"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 
@@ -59,7 +55,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分的目的是概述如何对 Salesforce 沙盒启用 Active Directory 用户帐户的用户预配。
 
-1. 在[Azure 门户](https://portal.azure.com)中，浏览到**Azure Active Directory > 企业应用 > 所有应用程序**"部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
 
 1. 如果已为 Salesforce Sandbox 配置单一登录，请使用搜索字段搜索 Salesforce Sandbox 实例。 否则，请选择“添加”**** 并在应用程序库中搜索“Salesforce Sandbox”****。 从搜索结果中选择 Salesforce Sandbox，并将其添加到应用程序列表。
 

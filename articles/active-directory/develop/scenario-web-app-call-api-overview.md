@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058409"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>方案：调用 Web API 的 Web 应用
 
@@ -48,7 +49,7 @@ ms.locfileid: "80881717"
 
 此方案的开发涉及以下具体任务：
 
-- 在[应用程序注册](scenario-web-app-call-api-app-registration.md)过程中，必须提供要与 Azure AD 共享的回复 URI、机密或证书。 如果你将应用部署到多个位置，请为每个位置提供此信息。
+- 在[应用程序注册](scenario-web-app-call-api-app-registration.md)过程中，必须提供要与 Azure AD 共享的回复 URI、机密或证书。 如果你将应用程序部署到多个位置，则将为每个位置提供一个回复 URI。
 - [应用程序配置](scenario-web-app-call-api-app-configuration.md)必须提供已在注册应用程序期间与 Azure AD 共享的客户端凭据。
 
 ## <a name="next-steps"></a>后续步骤

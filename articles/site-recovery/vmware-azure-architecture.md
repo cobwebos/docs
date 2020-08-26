@@ -7,11 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632526"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498946"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
 
@@ -29,10 +30,25 @@ ms.locfileid: "80632526"
 **VMware 服务器** | VMware VM 在本地 vSphere ESXi 服务器上托管。 我们建议使用 vCenter 服务器管理主机。 | 在 Site Recovery 部署期间，将 VMware 服务器添加到恢复服务保管库。
 **复制的计算机** | 移动服务将安装在复制的每个 VMware VM 上。 | 建议允许从进程服务器自动安装。 也可以手动安装此服务，或者使用 Configuration Manager 等自动部署方法。
 
-**VMware 到 Azure 体系结构**
+![显示 VMware 到 Azure 复制体系结构关系的示意图。](./media/vmware-azure-architecture/arch-enhanced.png)
 
-![组件](./media/vmware-azure-architecture/arch-enhanced.png)
+## <a name="set-up-outbound-network-connectivity"></a>设置出站网络连接
 
+要使 Site Recovery 按预期运行，你需要修改出站网络连接，以允许你的环境进行复制。
+
+> [!NOTE]
+> Site Recovery 不支持使用身份验证代理来控制网络连接。
+
+### <a name="outbound-connectivity-for-urls"></a>URL 的出站连接
+
+如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 URL：
+
+| **Name**                  | **商用**                               | **Government**                                 | **说明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
+| 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允许 VM 与 Site Recovery 服务进行通信。 |
+| 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
 
 ## <a name="replication-process"></a>复制过程
 
@@ -53,9 +69,7 @@ ms.locfileid: "80632526"
     - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
 5. 复制数据首先登陆 Azure 中的缓存存储帐户。 处理这些日志，并将数据存储在 Azure 托管磁盘（称为 asr 种子磁盘）中。 将在此磁盘上创建恢复点。
 
-**VMware 到 Azure 的复制过程**
-
-![复制过程](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+![显示 VMware 到 Azure 的复制过程的示意图。](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="resynchronization-process"></a>重新同步过程
 
@@ -90,9 +104,8 @@ ms.locfileid: "80632526"
     - 第 3 阶段：在工作负荷进行故障回复后，为本地 VM 重新启用复制。
     
  
-**从 Azure 进行 VMware 故障回复**
 
-![故障回复](./media/vmware-azure-architecture/enhanced-failback.png)
+![显示 Azure 中的 VMware 故障回复的示意图。](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>后续步骤

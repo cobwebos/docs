@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042117"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>为 Azure 应用配置使用专用终结点
 
@@ -22,9 +22,6 @@ ms.locfileid: "86026978"
 - 通过将防火墙配置为阻止所有到公共终结点上的应用配置的连接来保护应用程序的配置详细信息。
 - 提高虚拟网络（VNet）的安全性，确保数据不会从 VNet 中转义。
 - 使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)与专用对等互连连接到 VNet，从本地网络安全连接到应用配置存储。
-
-> [!NOTE]
-> 私有终结点功能现已在除印度中部*以外*的所有区域公开发布。 在**印度中部**区域，Azure 应用配置提供专用终结点作为公共预览。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。
 
 ## <a name="conceptual-overview"></a>概念概述
 

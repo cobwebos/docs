@@ -3,11 +3,12 @@ title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672810"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825947"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -27,9 +28,9 @@ ms.locfileid: "80672810"
 
 1. 在 Azure 门户中，单击“创建资源”。
 
-2. 在 Azure 市场中，单击“计算”，然后选择一个 VM 映像。
+2. 在 Azure Marketplace 中，单击 " **计算**"，然后选择 VM 映像。
 
-3. 根据适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) 的说明设置 VM。
+3. 根据适用于 [Windows](../virtual-machines/windows/quick-create-portal.md) 或 [Linux](../virtual-machines/linux/quick-create-portal.md) 的说明设置 VM。
 
 4. 在“管理”选项卡上，在“启用备份”中，单击“开启”。
 5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”。
@@ -47,6 +48,9 @@ ms.locfileid: "80672810"
 
       ![默认备份策略](./media/backup-during-vm-creation/daily-policy.png)
 
+>[!NOTE]
+>[SSE 和 PMK 是 Azure vm 的默认加密方法](backup-encryption.md) 。 Azure 备份支持这些 Azure Vm 的备份和还原。
+
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>虚拟机的 Azure 备份资源组
 
 备份服务将创建一个单独的资源组 (RG) 而非 VM 的资源组来存储还原点集合 (RPC)。 RPC 容纳托管 VM 的即时恢复点。 备份服务创建的资源组的默认命名格式为 `AzureBackupRG_<Geo>_<number>`。 例如：*AzureBackupRG_northeurope_1*。 现在可以自定义 Azure 备份创建的资源组名称。
@@ -54,15 +58,15 @@ ms.locfileid: "80672810"
 需要注意的要点：
 
 1. 可以使用 RG 的默认名称，也可以根据公司要求对其进行编辑。
-2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可以有 600 个 RPC。
+2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可以有600个 Rpc。
               ![创建策略时选择名称](./media/backup-during-vm-creation/create-policy.png)
 3. 该模式应遵循下面的 RG 命名规则，并且总长度不应超过允许的最大 RG 名称长度。
-    1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结尾。
+    1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结束。
     2. 资源组名称最多可包含 74 个字符，包括 RG 名称和后缀。
 4. 第一个 `<alpha-numeric-string>` 是必需的，但“n”后面的第二个是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
-5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧 RG 中，不会被删除，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
+5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RPs 仍将驻留在旧 RG 中，因此不会移动，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
 ![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
-6. 建议不要锁定为了供备份服务使用而创建的资源组。
+6. 建议不要锁定为备份服务使用而创建的资源组。
 
 若要使用 PowerShell 为虚拟机配置 Azure 备份资源组，请参阅[在快照保留期间创建 Azure 备份资源组](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)。
 

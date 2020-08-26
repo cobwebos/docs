@@ -86,9 +86,9 @@
       href: hyper-v-migration-architecture.md
     - name: 基于 VMware 代理的迁移体系结构
       href: agent-based-migration-architecture.md
-    - name: “Azure VM 评估”概述
+    - name: 评估概述（迁移到 Azure VM）
       href: concepts-assessment-calculation.md
-    - name: “AVS 评估”概述
+    - name: 评估概述（迁移到 AVS）
       href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: 用于评估的最佳做法
       href: best-practices-assessment.md
@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: 排查评估/依赖项可视化问题
       href: troubleshoot-assessment.md
+    - name: 排查无代理 VMware 迁移中的复制问题
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: 资源
   items:
     - name: 云采用框架中的迁移

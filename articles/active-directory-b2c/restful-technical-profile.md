@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203650"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041521"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个 RESTful 技术配置文件：
 
@@ -115,21 +115,21 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
-| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 `Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 |
-| AllowInsecureAuthInProduction| 否| 指示是否 `AuthenticationType` 可以 `none` 在生产环境中设置为（ `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md)的设置为 `Production` 或未指定）。 可能的值： true 或 false （默认值）。 |
-| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个输入声明调用的 HTTP 谓词如下所示：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
+| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None`值指示 REST API 是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 `Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 |
+| AllowInsecureAuthInProduction| 否| 指示是否可以在生产环境中将 `AuthenticationType` 设置为 `none`（将 [TrustFrameworkPolicy](trustframeworkpolicy.md) 的 `DeploymentMode` 设为 `Production` 或未指定）。 可能的值：true 或 false（默认值）。 |
+| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值： `Body` (默认值) 、、 `Form` `Header` `Url` 或 `QueryString` 。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `Url`该值是在 URL 中发送的输入声明，例如，https：//{claim1}. .com/{claim2}/{claim3}？ {claim4} = {claim5}。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个输入声明调用的 HTTP 谓词如下所示：<br /><ul><li>`Body`：POST</li><li>`Form`：POST</li><li>`Header`：GET</li><li>`Url`：GET</li><li>`QueryString`：GET</li></ul> |
 | ClaimsFormat | 否 | 当前未使用，可以忽略。 |
 | ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明名称。 |
-| DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回的错误消息](#returning-validation-error-message)部分。 |
+| DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-validation-error-message)部分。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
-| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认）。 使用此元数据从嵌套的 JSON 元素中读取数据。 在[OutputClaim](technicalprofiles.md#outputclaims)中，将设置 `PartnerClaimType` 为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
+| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 | UseClaimAsBearerToken| 否| 包含持有者令牌的声明的名称。|
 
 ## <a name="error-handling"></a>错误处理。
 
 以下元数据可用于配置 REST API 失败时显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#restful-service-error-messages)。
 
-| 属性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | DefaultUserMessageIfRequestFailed | 否 | 所有 REST API 异常的默认自定义错误消息。|
 | UserMessageIfCircuitOpen | 否 | 无法访问 REST API 时的错误消息。 如果未指定，则将返回 DefaultUserMessageIfRequestFailed。 |
@@ -154,7 +154,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `Basic`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 |
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
@@ -179,7 +179,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `ClientCertificate`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 |
 
@@ -200,7 +200,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `Bearer`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | 否 | OAuth 2.0 持有者令牌。 |
 
@@ -221,7 +221,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 ## <a name="returning-validation-error-message"></a>返回验证错误消息
 
-REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 4xx 错误消息，例如400（错误请求）或409（冲突）响应状态代码。 响应正文包含格式为 JSON 的错误消息：
+REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 4xx 错误消息，例如“400 (错误请求)”或“409 (冲突)”响应状态代码。 响应正文包含 JSON 格式的错误消息：
 
 ```json
 {
@@ -235,11 +235,11 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
 }
 ```
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| 版本 | 是 | 你的 REST API 版本。 例如：1.0。1 |
-| 状态 | 是 | 必须是409 |
-| 代码 | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
+| 版本 | 是 | REST API 版本。 例如：1.0.1 |
+| 状态 | 是 | 必须为 409 |
+| code | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
 | requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 |
 | userMessage | 是 | 向用户显示的错误消息。 |
 | developerMessage | 否 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 |

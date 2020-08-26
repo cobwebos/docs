@@ -8,7 +8,7 @@
   items:
     - name: 许可要求
       href: subscription-requirements.md
-    - name: 你不能管理的角色
+    - name: 不能使用 PIM 进行管理的角色
       href: pim-roles.md
     - name: 保护特权访问
       href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -18,7 +18,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: 电子邮件通知
       href: pim-email-notifications.md
-    - name: Microsoft 图形 API
+    - name: Microsoft Graph API 和 PIM
       href: pim-apis.md
 - name: 操作指南
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: 发现 Azure 资源
           href: pim-resource-roles-discover-resources.md
-        - name: 将访问权限授予其他人以管理 PIM
+        - name: 委托对 PIM 的访问权限
           href: pim-how-to-give-access-to-pim.md
         - name: 提升访问权限来管理所有订阅
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: 管理 Azure AD 角色
       items:
-        - name: 功能更新
+        - name: 功能概述
           href: azure-ad-roles-features.md
         - name: 适用于 Azure AD 角色的 PowerShell
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: 使用自定义角色
           href: pim-resource-roles-custom-role-policy.md
+    - name: 管理特权访问组（预览）
+      items:
+        - name: 特权访问概述
+          href: groups-features.md
+        - name: 让组受到管理
+          href: groups-discover-groups.md
+        - name: 分配成员或所有者
+          href: groups-assign-member-owner.md
+        - name: 审批请求
+          href: groups-approval-workflow.md
+        - name: 扩展或续订分配
+          href: groups-renew-extend.md
+        - name: 配置角色设置
+          href: groups-role-settings.md
+        - name: 查看审核历史记录
+          href: groups-audit.md
     - name: 排查 PIM 问题
       href: pim-troubleshoot.md
     - name: 访问评审
@@ -110,10 +126,10 @@
 - name: 参考
   items:
     - name: 图形 API
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
     - name: Azure AD CLI
-      href: 'https://docs.microsoft.com/cli/azure/ad'
+      href: /cli/azure/ad
     - name: 用于 Graph 的 Azure AD PowerShell
-      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
     - name: Azure AD 服务限制
       href: ../users-groups-roles/directory-service-limits-restrictions.md

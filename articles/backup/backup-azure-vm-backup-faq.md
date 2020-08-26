@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538762"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761502"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -99,11 +99,11 @@ Azure 虚拟机备份策略支持的最短保持期为 7 天，最长为 9999 �
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>能否备份或还原附加到 VM 的选择性磁盘？
 
-Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
+Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。 有关详细信息，请参阅 [Azure vm 的选择性磁盘备份和还原](selective-disk-backup-restore.md)。
 
-如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或一些数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在备份期间发生了租户更改，是否保留托管标识？
 
-若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件
+如果发生 [租户更改](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) ，则需要禁用并重新启用 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ，才能使备份再次工作。
 
 ## <a name="restore"></a>还原
 
@@ -192,3 +192,11 @@ VM 是使用已修改策略或新策略中的计划和保留设置备份的。
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>对于可与同一备份策略关联的 VM 数是否有限制？
 
 有，可以从门户关联到同一备份策略的 VM 数量限制为 100 个。 我们建议，如果 VM 数超过 100 个，请创建具有相同计划或不同计划的多个备份策略。
+
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看备份的保持期设置？
+
+目前，可以根据分配给 VM 的备份策略，在 (VM) 级别的备份项上查看保留设置。
+
+查看备份的保持设置的一种方法是，在 Azure 门户中导航到 VM 的 "备份项" [仪表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 单击指向其备份策略的链接可帮助你查看与 VM 关联的所有每日、每周、每月和每年保留点的保留期。
+
+你还可以使用 [备份资源管理器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 查看单个窗格内所有 vm 的保留设置。 导航到任何恢复服务保管库中的备份资源管理器，转到 " **备份项** " 选项卡，然后选择 "高级" 视图，查看每个 VM 的详细保留信息。

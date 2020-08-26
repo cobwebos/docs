@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079836"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
@@ -45,7 +45,7 @@ Windows VM 无法启动。 使用**启动诊断**来获取 VM 的屏幕截图时
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
 1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+2. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 3. 通过远程桌面连接到恢复 VM。 
 4. 如果 OS 磁盘已加密，则必须先关闭加密，然后才能进入下一步。 有关详细信息，请参阅[在无法启动的 VM 中解密加密的 OS 磁盘](troubleshoot-bitlocker-boot-error.md#solution)。
 
@@ -99,7 +99,7 @@ Windows VM 无法启动。 使用**启动诊断**来获取 VM 的屏幕截图时
         reg unload HKLM\BROKENSYSTEM
         ```
 
-3. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+3. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 4. 启动 VM 并访问串行控制台。
 5. 选择“发送不可屏蔽中断(NMI)”  以触发内存转储。
     ![有关发送不可屏蔽中断的位置的插图](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 PurelyHR 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 PurelyHR 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 86a9c454-596d-4902-829a-fe126708f739
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56049e1b1253cd749a8e16061957c6b5b8786e3c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 48db08f856407b2ceba32798ed0e39eab967b72d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72594529"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553302"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PurelyHR 集成
 

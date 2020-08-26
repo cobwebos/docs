@@ -1,6 +1,6 @@
 ---
 title: 创建、更改或删除 Azure 公共 IP 地址 | Microsoft Docs
-description: 了解如何创建、更改或删除公共 IP 地址。
+description: 创建、更改或删除公共 IP 地址。 还了解公共 IP 地址是具有其自己的可配置设置的资源。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2f71a1d26543e7436dee039592d120b52d5c9fea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c0766dc063932c5fdd41a4e21ac11befd84a0e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265103"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>创建、更改或删除公共 IP 地址
 
@@ -98,7 +98,7 @@ ms.locfileid: "84710960"
 
 了解如何将公共 IP 地址分配给以下资源：
 
-- [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM（创建时）或[现有 VM](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM（创建时）或[现有 VM](virtual-network-network-interface-addresses.md#add-ip-addresses)
 - [面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure 应用程序网关](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [使用 Azure VPN 网关建立站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

@@ -1,27 +1,22 @@
 ---
 title: PowerShell 模块 Windows 虚拟桌面 - Azure
 description: 如何安装和设置适用于 Windows 虚拟桌面的 PowerShell 模块。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 67276f7dedccc20fb768e717c237d04aa4b4a1cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212745"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007252"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此内容适用于 Azure 资源管理器集成的 Windows 虚拟桌面。
 
 Windows 虚拟桌面 PowerShell 模块已集成到 Azure PowerShell 模块中。 本文介绍如何设置 PowerShell 模块，以便针对 Windows 虚拟桌面运行 cmdlet。
 

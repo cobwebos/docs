@@ -20,7 +20,7 @@
       items:
         - name: 创建执行计划
           href: example-terraform-bash.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 适用于 Windows 用户的 PowerShell Cloud Shell
       href: cloud-shell-windows-users.md
@@ -32,6 +32,8 @@
       href: msi-authorization.md
     - name: 嵌入 Cloud Shell
       href: embed-cloud-shell.md
+    - name: Azure 虚拟网络中的 Cloud Shell
+      href: private-vnet.md
 - name: 使用 Cloud Shell 编辑器
   href: using-cloud-shell-editor.md
 - name: 故障排除和限制

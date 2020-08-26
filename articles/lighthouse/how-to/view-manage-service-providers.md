@@ -1,18 +1,21 @@
 ---
 title: 查看和管理服务提供商
 description: 客户可以使用 Azure 门户中的“服务提供商”页面来查看有关服务提供商、服务提供商产品/服务和委派资源的信息。
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273772"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167158"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 
-客户可以使用[Azure 门户](https://portal.azure.com)中的 "**服务提供商**" 页面来查看有关服务提供商和服务提供商产品/服务的详细信息，将特定资源委托给[Azure Lighthouse](../overview.md)，并购买新的服务提供商优惠。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
+客户可以使用[Azure 门户](https://portal.azure.com)中的 "**服务提供商**" 页面来查看有关服务提供商和服务提供商产品/服务的详细信息，将特定资源委托给[Azure Lighthouse](../overview.md)，并购买新的服务提供商优惠。
+
+> [!TIP]
+> 尽管我们将在此处参考服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)可以使用相同的过程来整合其管理体验。
 
 要访问 Azure 门户中的“服务提供者”页面****，客户可以选择“所有服务”****，然后搜索“服务提供商”并选择它。**** 他们还可以通过在 Azure 门户顶部附近的搜索框中输入 "服务提供商" 或 "Azure Lighthouse" 来找到它。
 

@@ -5,17 +5,18 @@ metadata:
   title: 通过 Azure 预留项进行保存
   description: 了解 Azure 预留如何帮助你通过为虚拟机、Azure Blob 存储或 Azure Data Lake Storage Gen2、SQL 数据库计算容量、Azure Cosmos DB 吞吐量和其他 Azure 资源的一年或三年计划预付费来节省资金。
   ms.service: cost-management-billing
+  ms.subservice: reservations
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
   ms.date: 04/30/2020
-  ms.openlocfilehash: 4706c13d6c9e354c6c7ca382f724a7b1094bdda3
-  ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+  ms.openlocfilehash: d8c7e7eee6307ce48e89cb5ade65d7dbff0f42d4
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/09/2020
-  ms.locfileid: "86207133"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88684688"
 landingContent:
 - title: 购买预留
   linkLists:

@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 脚本示例 - 配置 IPv6 前端 - 标准负载均衡器
 titlesuffix: Azure Virtual Network
-description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
+description: 了解如何使用标准负载均衡器在虚拟网络脚本示例中配置 IPv6 终结点。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 12233fd44a74d127e9b7de71971b9831cf80f7b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235035"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492932"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>使用标准负载均衡器（预览版）在虚拟网络脚本示例中配置 IPv6 终结点
 
@@ -285,7 +286,7 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络，如下所示：
 1. 在门户的搜索栏中输入 *dsVnet*。
-2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。**** 此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。 
+2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。 此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。 
 
 > [!NOTE]
 > 适用于 Azure 虚拟网络的 IPv6 可在此预览版本的只读 Azure 门户中使用。

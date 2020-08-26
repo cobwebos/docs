@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029835"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
@@ -24,7 +24,7 @@ Azure 认知搜索会定期发布功能更新。 这些更新有时（但并非�
 相同规则适用于 SDK 更新。 Azure 认知搜索 SDK 遵循[语义版本控制](https://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 仅在更改破坏了后向兼容性时，才会发布新的 SDK 主版本。 非破坏功能更新会增大次要版本号，Bug 修复仅增大内部版本号。
 
 > [!Important]
-> 适用于 .NET 的 Azure Sdk、Java、Python 和 JavaScript 正在推出 Azure 认知搜索的新客户端库。 目前，没有任何 Azure SDK 库支持最新的搜索 REST Api （2020-06-30）或管理 REST Api （2020-03-13），但这会随时间而改变。 可以定期查看此页面或有关功能增强的公告的[新增](whats-new.md)功能。 
+> 适用于 .NET 的 Azure Sdk、Java、Python 和 JavaScript 正在推出 Azure 认知搜索的新客户端库。 目前，没有任何 Azure SDK 库完全支持最新的搜索 REST Api （2020-06-30）或管理 REST Api （2020-03-13），但这会随时间而改变。 可以定期查看此页面或有关功能增强的公告的[新增](whats-new.md)功能。 
 
 ## <a name="rest-apis"></a>REST API
 
@@ -69,7 +69,7 @@ NuGet.org 上提供了包版本历史记录。此表提供了每个包页的链�
 
 | SDK 版本 | 状态 | 说明 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11。0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2019-05-06。 |
+| [Azure.Search.Documents 11。0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2020-06-30 REST API 但尚不支持、异地筛选器或[FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)。 |
 | [Microsoft Azure. 搜索10。0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | 发布时间可能为2019。 面向搜索 REST api 版本 = 2019-05-06。|
 | [Microsoft Azure. 搜索 8.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | 预览 | 2019年4月发布。 面向搜索 REST api 版本 = 2019-05-06-01.5.1-Preview。|
 | [3.0.0 的搜索](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | 面向管理 REST api 版本 = 2015-08-19。  |
@@ -88,7 +88,7 @@ NuGet.org 上提供了包版本历史记录。此表提供了每个包页的链�
 | [JavaScript azure-搜索11。0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2016-09-01。 |
 | [JavaScript-搜索](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | 面向管理 REST api 版本 = 2015-08-19。 |
 
-## <a name="azure-sdk-for-python"></a>Azure SDK for Python
+## <a name="azure-sdk-for-python"></a>用于 Python 的 Azure SDK
 
 | SDK 版本 | 状态 | 说明  |
 |-------------|--------|------------------------------|

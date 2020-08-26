@@ -2,15 +2,15 @@
 title: 开发人员最佳做法 - 保护 Azure Kubernetes 服务 (AKS) 中的 Pod
 description: 了解开发人员保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 services: container-service
-author: zr-msft
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 3a62dcbbec90ec73ded722a6efbbd5907fb21f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674034"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320674"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
@@ -51,15 +51,16 @@ kind: Pod
 metadata:
   name: security-context-demo
 spec:
+  securityContext:
+    fsGroup: 2000
   containers:
     - name: security-context-demo
       image: nginx:1.15.5
-    securityContext:
-      runAsUser: 1000
-      fsGroup: 2000
-      allowPrivilegeEscalation: false
-      capabilities:
-        add: ["NET_ADMIN", "SYS_TIME"]
+      securityContext:
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
 与群集操作员共同确定所需安全性上下文设置。 尝试设计应用程序，以尽量减少其他权限并访问 Pod 要求。 群集操作员还可实施其他安全功能来限制使用 AppArmor 和 seccomp（安全计算）进行的访问。 有关详细信息，请参阅[保护容器对资源的访问][apparmor-seccomp]。

@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 154e5b5d9639203810e9d16dec4e2907fe5ee80a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382930"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504290"
 ---
 # <a name="monitor-media-services-metrics"></a>监视媒体服务指标
 
@@ -28,7 +29,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 ## <a name="prerequisites"></a>必备条件
 
-- [创建媒体服务帐户](create-account-cli-how-to.md)
+- [创建媒体服务帐户](./create-account-howto.md)
 - 参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>在 Azure 门户中查看指标

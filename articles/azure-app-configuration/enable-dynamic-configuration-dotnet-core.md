@@ -11,19 +11,20 @@ ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: aebe7772c673162d60f35d6a81725ba1452d16a8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856498"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207077"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
 
-应用配置 .NET Core 客户端库支持按需更新一组配置设置，不需让应用程序重启。 可以这样实现这一点：首先从配置提供程序的选项中获取 `IConfigurationRefresher` 的实例，然后在代码中的任何位置调用该实例上的 `Refresh`。
+应用配置 .NET Core 客户端库支持按需更新一组配置设置，不需让应用程序重启。 可以这样实现这一点：首先从配置提供程序的选项中获取 `IConfigurationRefresher` 的实例，然后在代码中的任何位置调用该实例上的 `TryRefreshAsync`。
 
 为了使设置保持更新并避免对配置存储区进行太多的调用，对每个设置使用了一个缓存。 在设置的缓存值过期前，刷新操作不会更新该值，即使该值在配置存储区中已发生更改。 每个请求的默认过期时间为 30 秒，但是，如果需要，可以重写该过期时间。
 
@@ -45,7 +46,7 @@ ms.locfileid: "85856498"
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 
-打开 *Program.cs* 并更新文件以添加对 `System.Threading.Tasks` 命名空间的引用，在 `AddAzureAppConfiguration` 方法中指定刷新配置，并使用 `Refresh` 方法触发手动刷新。
+打开 *Program.cs* 并更新文件以添加对 `System.Threading.Tasks` 命名空间的引用，在 `AddAzureAppConfiguration` 方法中指定刷新配置，并使用 `TryRefreshAsync` 方法触发手动刷新。
 
 ```csharp
 using System;
@@ -84,14 +85,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-`ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
+`ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `TryRefreshAsync` 方法在代码中的任意位置触发刷新操作。
     
 > [!NOTE]
 > 配置设置的默认缓存过期时间为 30 秒，但是，可以通过调用作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项上的 `SetCacheExpiration` 方法来重写该过期时间。

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652062"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131831"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>教程：准备部署 Azure Stack Edge  
 
@@ -57,32 +57,35 @@ ms.locfileid: "83652062"
 
 * 你在资源组级别拥有对 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
-  * 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+  * 你应是订阅级别的“所有者”才能授予参与者访问权限。 若要向其他人授予参与者访问权限，在 Azure 门户中，转到“所有服务” > “订阅” > “访问控制(IAM)” > “+添加” > “添加角色分配”    。 有关详细信息，请参阅[教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+
+  * 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 资源提供程序。 有关如何注册资源提供程序的信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
 * 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 * 具有 Microsoft Azure 存储帐户和访问凭据。
+* 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
 
 ### <a name="for-the-azure-stack-edge-device"></a>对于 Azure Stack Edge 设备
 
 在部署物理设备之前，请确保：
 
-- 你已经查看配送包中包含的安全信息。
-- 在数据中心的标准 19 英寸机架中提供一个 1U 插槽用于安装设备的机架。
-- 将设备安全放置在平坦、稳定的水平工作台面上。
-- 用于安装设备的位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
-- 有权访问物理设备。
+* 你已经查看配送包中包含的安全信息。
+* 在数据中心的标准 19 英寸机架中提供一个 1U 插槽用于安装设备的机架。
+* 将设备安全放置在平坦、稳定的水平工作台面上。
+* 用于安装设备的位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
+* 有权访问物理设备。
 
 ### <a name="for-the-datacenter-network"></a>对于数据中心网络
 
 在开始之前，请确保：
 
-- 按你的 Azure Stack Edge 设备的网络要求配置数据中心内的网络。 有关详细信息，请参阅 [Azure Stack Edge 系统要求](azure-stack-edge-system-requirements.md)。
+* 按你的 Azure Stack Edge 设备的网络要求配置数据中心内的网络。 有关详细信息，请参阅 [Azure Stack Edge 系统要求](azure-stack-edge-system-requirements.md)。
 
-- 若要使 Azure Stack Edge 正常运行，请做好以下准备：
+* 若要使 Azure Stack Edge 正常运行，请做好以下准备：
 
-    - 使用至少 10 Mbps 的下载带宽以确保设备更新。
-    - 使用至少 20 Mbps 的专用上传和下载带宽传输文件。
+  * 使用至少 10 Mbps 的下载带宽以确保设备更新。
+  * 使用至少 20 Mbps 的专用上传和下载带宽传输文件。
 
 ## <a name="create-a-new-resource"></a>创建新资源
 
@@ -104,9 +107,9 @@ ms.locfileid: "83652062"
 
     ![搜索 Azure Stack Edge 服务](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
-3. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。 
+3. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。
     
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。     |
@@ -129,7 +132,7 @@ ms.locfileid: "83652062"
 
 6. 在完成时选择“下一步:查看 + 创建”。
 
-7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。   选择与“我已经查看隐私条款”对应的组合框。
+7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
     ![查看 Azure Stack Edge 资源详细信息和隐私条款](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
 
@@ -151,7 +154,7 @@ ms.locfileid: "83652062"
 
     ![选择“设备设置”](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。  选择复制图标复制密钥并将其保存供日后使用。
+2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
 
     ![获取激活密钥](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 
@@ -173,6 +176,3 @@ ms.locfileid: "83652062"
 
 > [!div class="nextstepaction"]
 > [安装 Azure Stack Edge](./azure-stack-edge-deploy-install.md)
-
-
-

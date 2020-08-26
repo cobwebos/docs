@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46f5644fb47b840f273ccab37da4f4743ad335f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053124"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒体服务 v3 帐户
 
@@ -42,4 +43,4 @@ ms.locfileid: "75980381"
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建帐户](create-account-cli-quickstart.md)
+[创建帐户](./create-account-howto.md)

@@ -1,18 +1,19 @@
 ---
 title: 本地化支持 | Microsoft Azure Maps
-description: 在本文中，你将了解 Microsoft Azure Maps 中服务支持的语言。
-author: philmea
-ms.author: philmea
+description: 查看哪些区域 Azure Maps 支持地图、搜索、路由、天气和流量事件等服务。 了解如何设置 View 参数。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746024"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037688"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
 
@@ -109,37 +110,37 @@ Azure Maps 已采用多种语言对其服务进行了本地化。 下表提供�
 > 2019 年 8 月 1 日之后，“视图”参数将定义上述新的国家/地区返回的地图内容。 Azure Maps 的“视图”参数（也称为“用户区域参数”）是一个两字母组成的 ISO-3166 国家/地区代码，它将显示该国家/地区的正确地图，其中指定了通过 Azure Maps 服务返回哪组地理位置存在争议的内容，包括地图上显示的边界和标签。 
 
 对于你的服务正在使用的 REST API 和 SDK，请确保根据需要设置“视图”参数。
->  
->
->  **REST API：**
->  
->  确保已根据需要设置“视图”参数。 “视图”参数指定了通过 Azure Maps 服务返回哪组地理位置存在争议的内容。 
->
->  受影响 Azure Maps REST 服务：
->    
->    * 获取地图图块
->    * 获取地图图像 
->    * 获取模糊搜索
->    * 获取 POI 搜索
->    * 获取 POI 类别搜索
->    * 获取附近搜索
->    * 获取地址搜索
->    * 获取结构化搜索地址
->    * 获取反向地址搜索
->    * 获取交叉路口反向地址搜索
->    * 发布在几何图形中的搜索
->    * 发布地址搜索批量预览
->    * 发布反向地址搜索批量预览
->    * 发布沿路线搜索
->    * 发布模糊搜索批量预览
->
->    
->  **SDK：**
->
->  请确保已根据需要设置“视图”参数，并且你具有最新版本的 Web SDK 和 Android SDK。 受影响的 SDK：
->
->    * Azure Maps Web SDK
->    * Azure Maps Android SDK
+  
+
+### <a name="rest-apis"></a>Rest Api
+  
+确保已根据需要设置“视图”参数。 “视图”参数指定了通过 Azure Maps 服务返回哪组地理位置存在争议的内容。 
+
+受影响 Azure Maps REST 服务：
+    
+ * 获取地图图块
+ * 获取地图图像 
+ * 获取模糊搜索
+ * 获取 POI 搜索
+ * 获取 POI 类别搜索
+ * 获取附近搜索
+ * 获取地址搜索
+ * 获取结构化搜索地址
+ * 获取反向地址搜索
+ * 获取交叉路口反向地址搜索
+ * 发布在几何图形中的搜索
+ * 发布地址搜索批量预览
+ * 发布反向地址搜索批量预览
+ * 发布沿路线搜索
+ * 发布模糊搜索批量预览
+
+ 
+### <a name="sdks"></a>SDK
+
+请确保已根据需要设置“视图”参数，并且你具有最新版本的 Web SDK 和 Android SDK。 受影响的 SDK：
+
+ * Azure Maps Web SDK
+ * Azure Maps Android SDK
 
 默认情况下，“视图”参数设置为“统一”，即使你未在请求中定义它也是如此。 确定你的用户的位置。 然后，为该位置正确设置“视图”参数。 或者，可设置“View=Auto”，这将根据请求的 IP 地址返回地图数据。  Azure Maps 中的“视图”参数在使用时必须遵守适用法律，包括提供你有权通过 Azure Maps 访问的地图、图像和其他数据及第三方内容的国家/地区所规定的地图相关法律。
 

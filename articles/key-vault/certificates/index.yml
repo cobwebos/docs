@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: be76cd9d3c358864d1278cad77be43048dec7a71
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423524"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88263446"
 landingContent:
 - title: 证书
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: 什么是 Key Vault 证书？
       url: about-certificates.md
+    - text: 关于软删除的重要新消息
+      url: ../general/soft-delete-change.md
     - text: Key Vault 证书入门
       url: certificate-scenarios.md
     - text: 证书创建方法
@@ -44,6 +46,18 @@ landingContent:
       url: quick-create-python.md
     - text: 在 Key Vault 中导入证书
       url: tutorial-import-certificate.md
+- title: Key Vault 证书的客户端库
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET 客户端库
+      url: /dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet
+    - text: Python 客户端库
+      url: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+    - text: Java 客户端库
+      url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.2.0/index.html
+    - text: Node.js 客户端库
+      url: /javascript/api/@azure/keyvault-certificates/?view=azure-node-latest
 - title: 有关 Key Vault 的详细信息
   linkLists:
   - linkListType: overview
@@ -53,7 +67,7 @@ landingContent:
     - text: 基本概念
       url: ../general/basic-concepts.md
     - text: 软删除概述
-      url: ../general/overview-soft-delete.md
+      url: ../general/soft-delete-overview.md
     - text: 安全概述
       url: ../general/overview-security.md
 - title: Microsoft Learn

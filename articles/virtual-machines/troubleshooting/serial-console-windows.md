@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146643"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423994"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -26,10 +26,12 @@ ms.locfileid: "86146643"
 
 串行控制台的工作方式与 VM 和虚拟机规模集实例的工作方式相同。 在本文档中，除非另有说明，否则所有对 VM 的提及都将隐式包含虚拟机规模集实例。
 
+在全球 Azure 区域和 Azure 政府公共预览版中，串行控制台已正式发布。 它在 Azure 中国云中尚不可用。
+
 有关适用于 Linux 的串行控制台文档，请参阅[适用于 Linux 的 Azure 串行控制台](serial-console-linux.md)。
 
 > [!NOTE]
-> 串行控制台在全球 Azure 区域中提供正式版，并在 Azure 政府中提供公共预览版。 它在 Azure 中国云中尚不可用。
+> 串行控制台当前与托管的启动诊断存储帐户不兼容。 若要使用串行控制台，请确保使用的是自定义的存储帐户。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -38,7 +40,7 @@ ms.locfileid: "86146643"
 
 - 使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
-- VM 或虚拟机规模集实例必须具有基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
+- VM 或虚拟机规模集实例必须具有基于密码的用户。 可以使用 VM 访问扩展的[重置密码](../extensions/vmaccess.md#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
 
 * 适用于虚拟机规模集实例的 VM 必须启用[启动诊断](boot-diagnostics.md)。
 
@@ -50,7 +52,7 @@ ms.locfileid: "86146643"
 > 如果在串行控制台中没有看到任何内容，请确保在 VM 或虚拟机规模集上启用了启动诊断。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>在自定义或更低版本的映像中启用串行控制台
-Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。
+Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。
 
 对于较旧的 Windows Server 映像（在 2018 年 2 月之前创建），可以通过 Azure 门户的运行命令功能自动启用串行控制台。 在 Azure 门户中，选择“运行命令”，然后从列表中选择名为“EnableEMS”的命令 。
 
@@ -76,11 +78,11 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 #### <a name="how-do-i-know-if-sac-is-enabled"></a>如何知道是否已启用 SAC？
 
-如果未启用 [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)，则串行控制台将不会显示 SAC 提示符。 在某些情况下，会显示 VM 运行状况信息，而在其他情况下则为空白。 如果使用的是 2018 年 2 月之前创建的 Windows Server 映像，则可能无法启用 SAC。
+如果未启用 [SAC](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10))，则串行控制台将不会显示 SAC 提示符。 在某些情况下，会显示 VM 运行状况信息，而在其他情况下则为空白。 如果使用的是 2018 年 2 月之前创建的 Windows Server 映像，则可能无法启用 SAC。
 
 ### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>在串行控制台中启用 Windows 启动菜单
 
-如果需要让 Windows 启动加载程序提示显示在串行控制台中，可以将以下附加选项添加到启动配置数据中。 有关详细信息，请参阅 [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)。
+如果需要让 Windows 启动加载程序提示显示在串行控制台中，可以将以下附加选项添加到启动配置数据中。 有关详细信息，请参阅 [bcdedit](/windows-hardware/drivers/devtest/bcdedit--set)。
 
 1. 通过使用远程桌面连接到 Windows VM 或虚拟机规模集实例。
 
@@ -126,7 +128,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 针对 Windows VM 中的串行控制台的使用情况，将启用函数密钥。 利用串行控制台下拉列表中的 F8 可以很方便地进入高级启动设置菜单，但串行控制台与所有其他功能键兼容。 可能需要在键盘上按 Fn  +  F1（或 F2、F3 等），具体取决于所使用的串行控制台的计算机 。
 
 ### <a name="use-wsl-in-serial-console"></a>在串行控制台中使用 WSL
-针对 Windows Server 2019 或更高版本，已启用 Windows Subsystem for Linux (WSL)，因此如果运行 Windows Server 2019 或更高版本，也可以启用 WSL 以用于串行控制台。 这对于熟悉 Linux 命令的用户可能有所帮助。 有关为 Windows Server 启用 WSL 的说明，请参阅[安装指南](https://docs.microsoft.com/windows/wsl/install-on-server)。
+针对 Windows Server 2019 或更高版本，已启用 Windows Subsystem for Linux (WSL)，因此如果运行 Windows Server 2019 或更高版本，也可以启用 WSL 以用于串行控制台。 这对于熟悉 Linux 命令的用户可能有所帮助。 有关为 Windows Server 启用 WSL 的说明，请参阅[安装指南](/windows/wsl/install-on-server)。
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>在串行控制台中重启 Windows VM/虚拟机规模集实例
 可以通过在串行控制台中导航到电源按钮并单击“重启 VM”来重启 VM。 这将发起 VM 重启，你将在 Azure 门户中看到有关重启的通知。
@@ -147,7 +149,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 来回发送的所有数据在线路上经过加密。
 
 ### <a name="audit-logs"></a>审核日志
-对串行控制台的所有访问目前都会记录在虚拟机的[启动诊断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)日志中。 Azure 虚拟机管理员拥有并可控制这些日志的访问权限。
+对串行控制台的所有访问目前都会记录在虚拟机的[启动诊断](./boot-diagnostics.md)日志中。 Azure 虚拟机管理员拥有并可控制这些日志的访问权限。
 
 > [!CAUTION]
 > 不会记录控制台的访问密码。 但是，如果在控制台中运行的命令包含或输出密码、机密、用户名或其他任何形式的个人身份信息 (PII)，则这些信息将写入到 VM 启动诊断日志。 这些信息是在实现串行控制台的回滚功能过程中连同其他所有可见文本一起写入的。 这些日志不断循环，只有对诊断存储帐户拥有读取权限的个人才能访问它们。 但是，我们建议遵循有关将远程桌面用于涉及机密和/或 PII 的任何操作的最佳做法。
@@ -173,7 +175,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 :------------------|:-----------------------------------------
 错误的防火墙规则 | 访问串行控制台，并修复 Windows 防火墙规则。
 文件系统损坏/检查 | 访问串行控制台并恢复文件系统。
-RDP 配置问题 | 访问串行控制台并更改设置。 有关详细信息，请参阅 [RDP 文档](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
+RDP 配置问题 | 访问串行控制台并更改设置。 有关详细信息，请参阅 [RDP 文档](/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
 网络锁定系统 | 通过 Azure 门户访问串行控制台以管理系统。 [Windows 命令：CMD 和 PowerShell](serial-console-cmd-ps-commands.md)。
 与引导加载程序交互 | 通过串行控制台访问 BCD。 有关详细信息，请参阅[在串行控制台中启用 Windows 启动菜单](#enable-the-windows-boot-menu-in-the-serial-console)。
 

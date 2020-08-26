@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005306"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -35,7 +35,7 @@ ms.locfileid: "86517735"
     * 当 Kubernetes 计划程序尝试在节点上放置 Pod 时，将使用 Pod 请求来确定哪个节点有足够的可用资源进行计划。
     * 如果未设置 Pod 请求，则默认情况下会将其设置为定义的限制。
     * 必须监视应用程序的性能并调整这些请求，这很重要。 如果发出的请求不足，应用程序可能会因节点计划过度而导致性能下降。 如果估算的请求数过高，则应用程序可能会更加难以进行计划。
-* **Pod CPU/内存限制**是 Pod 可以使用的最大 CPU 和内存量。 这些限制有助于定义因资源不足而导致节点不稳定时应终止的 Pod。 如果没有适当的限制，则会终止固定的 Pod，直到解除资源压力。
+* **Pod CPU/内存限制**是 Pod 可以使用的最大 CPU 和内存量。 内存限制有助于定义因资源不足而发生节点不稳定时应终止的 pod。 如果没有适当的限制，则会终止固定的 Pod，直到解除资源压力。 Pod 在一段时间内可能会超出 CPU 限制，但不会因超出 CPU 限制而终止 pod。 
     * Pod 限制有助于定义 Pod 何时失去对资源消耗的控制。 超出限制时，会首先终止该 Pod 来维护节点运行状况，最大程度地减少对共享节点的 Pod 的影响。
     * 如果未设置 Pod 限制，则会将其默认设置为给定节点上的最高可用值。
     * 设置的 pod 限制不应超过节点可以支持的限制。 每个 AKS 节点将为核心 Kubernetes 组件保留一定的 CPU 和内存量。 应用程序可能会尝试消耗节点上的大量资源，使其他 pod 能够成功运行。
@@ -74,7 +74,7 @@ spec:
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>针对 AKS 群集开发和调试应用程序
 
-**最佳做法指导** - 开发团队应该使用 Dev Spaces 针对 AKS 群集进行部署和调试。 此开发模型可确保在将应用部署到生产环境之前，实现基于角色的访问控制、网络或存储需求。
+**最佳做法指导** - 开发团队应该使用 Dev Spaces 针对 AKS 群集进行部署和调试。 此开发模型确保在将应用部署到生产环境之前，实现基于角色的访问控制 (RBAC) 、网络或存储需求。
 
 使用 Azure Dev Spaces 直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 已为 Dev Spaces 安装扩展，该扩展提供用于在 AKS 群集中运行和调试应用程序的选项。
 

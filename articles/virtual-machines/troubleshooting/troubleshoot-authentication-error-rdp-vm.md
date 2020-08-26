@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420815"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088557"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
 
@@ -276,8 +276,8 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 ## <a name="next-steps"></a>后续步骤
 
-[Win32_TSGeneralSetting 类的 SetEncryptionLevel 方法](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
+[Win32_TSGeneralSetting 类的 SetEncryptionLevel 方法](/windows/desktop/termserv/win32-tsgeneralsetting-setencryptionlevel)
 
-[配置服务器身份验证和加密级别](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
+[配置服务器身份验证和加密级别](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc770833(v=ws.11))
 
-[Win32_TSGeneralSetting 类](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
+[Win32_TSGeneralSetting 类](/windows/desktop/termserv/win32-tsgeneralsetting)

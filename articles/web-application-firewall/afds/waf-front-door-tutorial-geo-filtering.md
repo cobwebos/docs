@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb97a2d848441a153db47b41644a6226e9d75782
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fd38d900285f6cda0c98dd1f49076ea04180b18c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068310"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>为 Front Door 设置地区筛选 WAF 策略
 
@@ -26,7 +27,7 @@ ms.locfileid: "83747748"
 ### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 Azure PowerShell 提供一组可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型管理 Azure 资源的 cmdlet。 
 
-可以在本地计算机上安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 并在任何 PowerShell 会话中使用它。 遵照页面上的说明使用 Azure 凭据登录，并安装 Az PowerShell 模块。
+可以在本地计算机上安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 并在任何 PowerShell 会话中使用它。 遵照页面上的说明使用 Azure 凭据登录，并安装 Az PowerShell 模块。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用交互式登录对话框连接到 Azure
 

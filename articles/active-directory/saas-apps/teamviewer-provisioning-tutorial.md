@@ -2,28 +2,25 @@
 title: 教程：为 TeamViewer 配置 Azure Active Directory 的自动用户预配 |Microsoft Docs
 description: 了解如何从 Azure AD 自动预配和取消预配用户帐户。
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 73dd5494-f572-42bb-9071-d599361b9bd7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cb83b53b6516de58c99859f3a0d4c9122b78322
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77366430"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542167"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教程：为 TeamViewer 配置自动用户预配
 
-本教程介绍了需要在 TeamViewer 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动预配用户和组，并将其预配到[TeamViewer](https://www.teamviewer.com/buy-now/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 TeamViewer 和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会使用 Azure AD 预配服务自动预配用户和组，并将其预配到 [TeamViewer](https://www.teamviewer.com/buy-now/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -31,7 +28,7 @@ ms.locfileid: "77366430"
 > * 在 TeamViewer 中创建用户
 > * 在 TeamViewer 不需要访问权限时，删除其上的用户
 > * 使用户属性在 Azure AD 和 TeamViewer 之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)到 TeamViewer （推荐）
+> *  (推荐的[单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)到 TeamViewer) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,29 +36,29 @@ ms.locfileid: "77366430"
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
-* TeamViewer 的有效[Tensor 许可证](https://www.teamviewer.com/de/teamviewer-tensor/)。
-* 可用的[单一登录](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723)配置中的有效自定义标识符。
+* TeamViewer 的有效 [Tensor 许可证](https://www.teamviewer.com/de/teamviewer-tensor/) 。
+* 可用的 [单一登录](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) 配置中的有效自定义标识符。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 和 TeamViewer 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+3. 确定要 [在 Azure AD 和 TeamViewer 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 TeamViewer 以支持 Azure AD 的预配
+## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 TeamViewer 以支持 Azure AD 的预配
 
-1. 登录到[TeamViewer 管理控制台](https://login.teamviewer.com)。 导航到 "**编辑配置文件**"。
+1. 登录到 [TeamViewer 管理控制台](https://login.teamviewer.com)。 导航到 " **编辑配置文件**"。
 
     ![TeamViewer 管理控制台](./media/teamviewer-provisioning-tutorial/admin.png)
 
-2.  导航到 "**应用**"。 单击 "**创建脚本标记**"。
+2.  导航到 " **应用**"。 单击 " **创建脚本标记**"。
 
     ![TeamViewer 创建令牌](./media/teamviewer-provisioning-tutorial/createtoken.png)
 
-3.  提供脚本令牌的名称。 单击 "**保存**" 按钮。
+3.  提供脚本令牌的名称。 单击 " **保存** " 按钮。
 
     ![TeamViewer 令牌名称](./media/teamviewer-provisioning-tutorial/tokenname.png)
 
-4. 复制该**令牌**，然后单击 **"确定"**。 此值将在 Azure 门户中的 TeamViewer 应用程序的 "**机密令牌**" 字段中输入。
+4. 复制该 **令牌** ，然后单击 **"确定"**。 此值将在 Azure 门户中的 TeamViewer 应用程序的 " **机密令牌** " 字段中输入。
 
     ![TeamViewer 令牌](./media/teamviewer-provisioning-tutorial/token.png)
 
@@ -73,7 +70,7 @@ ms.locfileid: "77366430"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 TeamViewer 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 TeamViewer 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -94,13 +91,13 @@ ms.locfileid: "77366430"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，在 `ttps://webapi.teamviewer.com/scim/v2` " **Tentant URL** " 字段中输入，并输入之前在**机密令牌**中创建的脚本标记。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 TeamViewer。 如果连接失败，请确保你的 TeamViewer 帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，在 `ttps://webapi.teamviewer.com/scim/v2`  " **Tentant URL** " 字段中输入，并输入之前在 **机密令牌**中创建的脚本标记。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 TeamViewer。 如果连接失败，请确保你的 TeamViewer 帐户具有管理员权限，然后重试。
 
     ![预配](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -110,14 +107,14 @@ ms.locfileid: "77366430"
 
 7. 选择“保存”。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 TeamViewer**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 TeamViewer**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 TeamViewer 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 TeamViewer 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 TeamViewer API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 TeamViewer 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 TeamViewer 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 TeamViewer API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
    |userName|字符串|
-   |displayName|String|
+   |displayName|字符串|
    |活动|Boolean|
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -140,7 +137,7 @@ ms.locfileid: "77366430"
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

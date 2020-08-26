@@ -4,15 +4,15 @@ description: 了解如何为 Azure 市场的虚拟机 (VM) 产品/服务创建�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: dannyevers
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: afc012329d0d9e337dfca93a88615ba7c28f1754
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107149"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460359"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
 
@@ -43,7 +43,7 @@ ms.locfileid: "86107149"
 
 考虑使用以下其中一种脚本环境来帮助管理 VM 和 VHD：
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 此外，考虑将以下工具添加到开发环境：
@@ -77,6 +77,7 @@ ms.locfileid: "86107149"
 用于基于 Windows 的 VM 映像的操作系统 VHD 必须基于 Azure 批准的基础映像（包含 Windows Server 或 SQL Server）。 若要开始，请从 Azure 门户中的以下映像创建 VM：
 
 * Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2012 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)）
+* [Windows 10 IoT 企业版](/windows/iot-core/windows-iot-enterprise)
 * [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md)（Enterprise、Standard、Web）
 * [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md)（Enterprise、Standard、Web）
 
@@ -282,4 +283,4 @@ Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-h
 
 否则：
 
-* [验证 VM 映像](get-sas-uri.md)说明了如何测试和提交 VM 映像进行 Azure 市场认证，包括从何处获取用于 Azure 认证的认证测试工具，以及如何使用它来验证 VM 映像。
+* [从 VHD 部署的测试虚拟机（VM）](azure-vm-image-certification.md)说明了如何测试和提交 azure Marketplace 认证的 VM 映像，包括在何处获取*azure 认证工具的认证测试工具*，以及如何使用它来验证 VM 映像。

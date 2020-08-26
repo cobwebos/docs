@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119403"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688039"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
@@ -95,11 +95,23 @@ ms.locfileid: "85119403"
 
 消耗的 RU 会产生费用，将数据移入和移出 Cosmos 容器始终会消耗 RU。 租约容器消耗的 RU 也会产生费用。
 
+## <a name="where-to-host-the-change-feed-processor"></a>更改源处理器的宿主位置
+
+更改源处理器可以托管在支持长时间运行的进程或任务的任何平台中：
+
+* 连续运行 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
+* [Azure 虚拟机](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的进程。
+* [Azure Kubernetes 服务](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的后台作业。
+* [ASP.NET 托管服务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
+
+尽管更改源处理器可以在较短的生存期环境中运行，但由于租赁容器维持了状态，这些环境的启动和停止周期将增加接收通知的延迟， (因为每次启动环境时启动处理器的开销都) 。
+
 ## <a name="additional-resources"></a>其他资源
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub 上的用法示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [GitHub 上的其他示例](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub 上的完整示例应用程序](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub 上的其他使用情况示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [更改源处理器 Cosmos DB 研讨会实验室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>后续步骤
 

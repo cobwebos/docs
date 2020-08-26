@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench 预览版及其功能的概述。
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 384fa553204a5a86ad479f2cc623ebb70a9a6f5f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: fbd6be3907dbd10b003d065dfb14031a0e378478
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003135"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>什么是 Azure Blockchain Workbench？
 
@@ -55,7 +55,7 @@ Azure Blockchain Workbench 可自动将区块链上的数据与链下存储同�
 
 与 Microsoft 工程师和 Azure 区块链社区专家交流。
 
-* [有关 Azure Blockchain Workbench 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
+* [有关 Azure Blockchain Workbench 的 Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-workbench.html)
 * [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

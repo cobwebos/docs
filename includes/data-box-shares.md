@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 06/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b8ebd085edfdb130f44c477d7697807d349e4e5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5aaf0ce747b14b2fa9f2fcd9a65b774aa7d2db3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102484"
 ---
 根据选择的存储帐户，Data Box 将会：
 
@@ -22,8 +22,8 @@ ms.locfileid: "86208758"
 
 下表显示了 Data Box 上共享的 UNC 路径以及上传数据的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
  
-|                   |                                                            |
-|-------------------|--------------------------------------------------------------------------------|
+| Blob 和文件 | 路径和 URL |
+| --------------- | -------------- |
 | Azure 块 Blob | <li>UNC 共享路径：`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 页 Blob  | <li>UNC 共享路径：`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Azure 文件       |<li>UNC 共享路径：`\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      

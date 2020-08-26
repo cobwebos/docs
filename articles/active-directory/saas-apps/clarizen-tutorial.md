@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Clarizen 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Clarizen 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b34e6087f3a6e7f3cc0f46c53d4fe903838d210
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4e312c70e8d1630c1e8d1bb9a893b338383c7966
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158598"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 集成
 

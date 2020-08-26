@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266757"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283480"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -48,21 +48,21 @@ Azure 市场提供[开发人员工具](https://azuremarketplace.microsoft.com/ma
 
 在数据流的早期阶段验证输入可确保仅格式正确的数据才能进入工作流。 你不会希望格式不正确的数据保留在数据库中或在下游组件中触发故障。
 
-阻止列表和允许列表是执行输入语法验证的两种常规方法：
+黑名单和白名单是执行输入语法验证的两种常规方法：
 
-  - 阻止列表尝试检查给定用户输入是否包含“已知恶意”的内容。
+  - 黑名单尝试检查给定用户输入是否包含“已知恶意”的内容。
 
-  - 允许列表尝试检查给定用户输入是否与一组“已知良好”的输入匹配。 基于字符的允许列表是允许列表的一种形式，其中应用程序会检查用户输入是否仅包含“已知良好”的字符或输入是否与已知格式匹配。
+  - 白名单尝试检查给定用户输入是否与一组“已知良好”的输入匹配。 基于字符的白名单是白名单的一种形式，其中应用程序会检查用户输入是否仅包含“已知良好”的字符或输入是否与已知格式匹配。
     例如，这可能会涉及检查用户名是否仅包含字母数字字符或是否仅包含两个数字。
 
-允许列表是用于生成安全软件的首选方法。
-阻止列表容易出错，因为无法想到潜在错误输入的完整列表。
+白名单是用于生成安全软件的首选方法。
+黑名单容易出错，因为无法想到潜在错误输入的完整列表。
 
 在服务器上而不是在客户端（或在服务器上和客户端）执行此任务。
 
 ### <a name="verify-your-applications-outputs"></a>验证应用程序的输出
 
-以直观方式或在文档中呈现的所有输出始终都应进行编码和转义。 [转义](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29)（也称为输出编码）用于帮助确保不受信任的数据不会成为注入攻击的工具。 转义与数据验证相结合，可提供分层防御机制，从而整体提高系统的安全性。
+以直观方式或在文档中呈现的所有输出始终都应进行编码和转义。 [转义](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29)（也称为输出编码）用于帮助确保不受信任的数据不会成为注入攻击的工具。 转义与数据验证相结合，可提供分层防御机制，从而整体提高系统的安全性。
 
 转义可确保所有内容都显示为输出。 转义还使解释器知道不应执行数据，因此可防止攻击发生。 这是另一种常见攻击方法，称为跨站点脚本 (XSS)。
 
@@ -134,7 +134,7 @@ DAST 与静态应用程序安全测试 (SAST) 不同。 SAST 工具在代码未�
 
 在[模糊测试](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)中，通过有意将格式不正确的数据或随机数据引入应用程序来引发程序故障。 引发程序故障有助于在发布应用程序前揭示潜在的安全问题。
 
-[安全风险检测](https://docs.microsoft.com/security-risk-detection/)是 Microsoft 独有的模糊测试服务，用于发现软件中的安全关键 bug。
+[安全风险检测](https://www.microsoft.com/en-us/security-risk-detection/)是 Microsoft 独有的模糊测试服务，用于发现软件中的安全关键 bug。
 
 ### <a name="conduct-attack-surface-review"></a>执行攻击面评审
 

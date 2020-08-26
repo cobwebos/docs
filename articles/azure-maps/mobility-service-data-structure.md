@@ -1,19 +1,19 @@
 ---
 title: Azure Maps 中的移动服务数据结构 |Microsoft Azure 映射
-description: 在本文中，你将了解通过 Microsoft Azure 映射移动服务返回的公共字段和数据结构。
-author: philmea
-ms.author: philmea
+description: 了解如何将数据组织到 Azure Maps 移动服务中的大都市区。 查看哪些字段存储有关公共传输停止和行的信息。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478704"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033217"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps 移动服务中的数据结构
 
@@ -31,7 +31,7 @@ ms.locfileid: "80478704"
 
 ## <a name="stop-ids"></a>停止 Id
 
-传输停止可由两种类型的 Id （[一般传输源规范（GFTS）](http://gtfs.org/) id 和 AZURE MAPS 停止 id）引用。 GFTS ID 称为 stopKey，而 Azure Maps stop ID 称为 stopID。 当经常提到传输停止时，建议使用 Azure Maps 停止 ID。 只要物理停止存在，stopID 就会更稳定，并且可能会保持不变。 GTFS stop ID 会更频繁地更新。 例如，可以根据 GTFS 提供程序请求或发布新的 GTFS 版本时，更新 GTFS stop ID。 尽管物理停止没有变化，但 GTFS 停止 ID 可能会更改。
+传输停止可由两种 Id 类型引用：[常规传输源规范 (GFTS) ](http://gtfs.org/) id 和 AZURE MAPS 停止 id。 GFTS ID 称为 stopKey，而 Azure Maps stop ID 称为 stopID。 当经常提到传输停止时，建议使用 Azure Maps 停止 ID。 只要物理停止存在，stopID 就会更稳定，并且可能会保持不变。 GTFS stop ID 会更频繁地更新。 例如，可以根据 GTFS 提供程序请求或发布新的 GTFS 版本时，更新 GTFS stop ID。 尽管物理停止没有变化，但 GTFS 停止 ID 可能会更改。
 
 若要开始，可以使用 "[获取附近的传输 API](https://aka.ms/AzureMapsMobilityNearbyTransit)" 请求附近的传输停止。
 

@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389372"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520203"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -354,6 +354,51 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 选择“登录”，然后会显示用户登录屏幕。 登录后，SAML 断言会发回到示例应用程序。
 
+## <a name="enable-encypted-assertions"></a>启用来说断言
+若要加密发送回服务提供程序的 SAML 断言，Azure AD B2C 将使用服务提供程序公钥证书。 公钥必须存在于上述 ["samlMetadataUrl"](#samlmetadataurl) 中所述的 SAML 元数据中，作为 KeyDescriptor，使用 "Encryption"。
+
+下面是 SAML 元数据 KeyDescriptor 的一个示例，其中使用设置为 "加密"：
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+若要启用 Azure AD B2C 发送加密断言，请在信赖方技术配置文件中将 **WantsEncryptedAssertion** metadata 项设置为 true，如下所示：
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
+
 ## <a name="sample-policy"></a>示例策略
 
 我们提供了一个完整示例策略，可用于通过 SAML 测试应用进行测试。
@@ -369,6 +414,10 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 * 在应用程序/服务主体对象中的多个注销 URL 或注销 URL 的 POST 绑定。
 * 在应用程序/服务主体对象中指定用于验证 RP 请求的签名密钥。
 * 在应用程序/服务主体对象中指定令牌加密密钥。
+* 标识提供者发起的登录，Azure AD B2C 标识提供者。
+
+当前不支持以下 SAML 信赖方 (RP) 方案：
+* 标识提供者发起的登录，其中标识提供者是外部标识提供者，例如 ADFS。
 
 ## <a name="next-steps"></a>后续步骤
 

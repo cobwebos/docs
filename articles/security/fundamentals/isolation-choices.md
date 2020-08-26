@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021868"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533897"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 
@@ -63,9 +64,9 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 
 即使多个 Azure Active Directory 租户的元数据存储在同一个物理磁盘中，除目录服务定义的容器外，各容器之间仍没有任何关系，而目录服务是由租户管理员指定的。
 
-### <a name="azure-role-based-access-control-rbac"></a>Azure 基于角色的访问控制 (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 基于角色的访问控制（Azure RBAC）
 
-[Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 提供针对 Azure 的精细访问权限管理，有助于共享 Azure 订阅中提供的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
+[Azure 基于角色的访问控制（AZURE RBAC）](../../role-based-access-control/overview.md)可通过为 azure 提供精细的访问管理，帮助共享 azure 订阅中可用的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
 
@@ -75,9 +76,9 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 - **读取器**可以查看现有 Azure 资源。
 
-![Azure 基于角色的访问控制](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure 基于角色的访问控制（Azure RBAC）](./media/isolation-choices/azure-isolation-fig3.png)
 
-Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
+Azure 中的其他 Azure 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
 
 [RBAC 内置角色](../../role-based-access-control/built-in-roles.md)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 如果希望定义自己的角色以便进一步控制，请参阅如何[在 AZURE RBAC 中生成自定义角色](../../role-based-access-control/custom-roles.md)。
 
@@ -144,7 +145,7 @@ Azure 结构控制器负责将基础结构资源分配到租户工作负荷，�
 
 Azure 虚拟机监控程序会在虚拟机之间强制实施内存和流程的隔离，并通过安全方式将网络流量路由到来宾 OS 租户。 这样可以避免 VM 级别的侧信道攻击。
 
-在 Azure 中，根 VM 是特殊的：它运行称为根 OS 的强化操作系统，并托管了结构代理 (FA) 。 而 FA 又用于管理客户 VM 上来宾 OS 内的来宾代理 (GA)。 FA 还可管理存储节点。
+在 Azure 中，根 VM 是特殊的：它运行称为根 OS 的强化操作系统，并托管了结构代理 (FA) 。 在客户 Vm 上，使用 FAs 来管理来宾操作系统中的来宾代理（GA）。 FA 还可管理存储节点。
 
 Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计算节点。 FA 由结构控制器 (FC) 托管，位于计算节点和存储节点外部（计算和存储群集由单独的 FC 托管）。 如果客户在运行应用程序的同时更新其配置文件，FC 将与 FA 进行通信，然后 FA 将联系 GA，通知应用程序配置已更改。 出现硬件故障时，FC 会自动查找可用硬件并在该处重启 VM。
 
@@ -203,7 +204,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 可通过网络机制防止未经授权的用户访问 IP 存储数据，该机制用于分配到 IP 存储的专用流量或专用流量隧道。
 
-### <a name="encryption"></a>加密
+### <a name="encryption"></a>Encryption
 
 Azure 提供了以下加密类型来保护数据：
 
@@ -312,10 +313,10 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 **流量隔离**：[虚拟网络](../../virtual-network/virtual-networks-overview.md)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
 
-[子网](../../virtual-network/virtual-networks-overview.md)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](../../virtual-network/virtual-networks-overview.md)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
+[子网](../../virtual-network/virtual-networks-overview.md)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](../../virtual-network/virtual-networks-overview.md)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与子网关联时，ACL 规则将应用于该子网中的所有 VM 实例。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[Windows Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 这包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址的允许列表连接到特定终结点。
 
-- 了解[Azure 中的虚拟机隔离](../../virtual-machines/windows/isolation.md)。 Azure 计算提供隔离于特定硬件类型并专用于单个客户的虚拟机大小。
+- 了解[Azure 中的虚拟机隔离](../../virtual-machines/isolation.md)。 Azure 计算提供隔离于特定硬件类型并专用于单个客户的虚拟机大小。

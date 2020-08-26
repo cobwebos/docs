@@ -2,15 +2,15 @@
 title: ARM 模板常见问题解答
 description: 有关 Azure 资源管理器模板的常见问题解答 (FAQ)。
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296859"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327253"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -48,7 +48,7 @@ ms.locfileid: "85296859"
 
   若要了解有关新模板语言的信息，请[注册通知](https://aka.ms/armLangUpdates)。
 
-  对于模板规格的预览，请[加入等待列表](https://aka.ms/templateSpecsWaitlist)。
+  若要了解有关模板规范的信息，请参阅[Azure 资源管理器模板规范（预览版）](template-specs.md)。
 
 ## <a name="creating-and-testing-templates"></a>创建和测试模板
 
@@ -64,7 +64,7 @@ ms.locfileid: "85296859"
 
 * **是否可以在 ARM 模板中创建资源组并向其部署资源？**
 
-  是的，当你在 Azure 订阅级别部署模板时，可以在模板中创建资源组。 有关创建资源组和部署资源的示例，请参阅[资源组和资源](deploy-to-subscription.md#resource-group-and-resources)。
+  是的，当你在 Azure 订阅级别部署模板时，可以在模板中创建资源组。 有关创建资源组和部署资源的示例，请参阅[资源组和资源](deploy-to-subscription.md#resource-groups)。
 
 * **是否可以在 ARM 模板中创建订阅？**
 

@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dd00f800003724b3a5c15d265a5428272e1762fb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110345"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290215"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>使用“服务器评估”功能评估 VMware VM
 
@@ -42,12 +42,12 @@ ms.locfileid: "86110345"
 按如下所述设置新的 Azure Migrate 项目：
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
-2. 在“服务”下选择“Azure Migrate”。 
-3. 在“概览”中的“发现、评估和迁移服务器”下，选择“评估和迁移服务器”。  
+2. 在“服务”下选择“Azure Migrate”。
+3. 在“概览”中的“发现、评估和迁移服务器”下，选择“评估和迁移服务器”。
 
    ![用于评估和迁移服务器的按钮](./media/tutorial-assess-vmware/assess-migrate.png)
 
-4. 在“入门”中，选择“添加工具”。 
+4. 在“入门”中，选择“添加工具”。
 5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。     
 6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
@@ -58,8 +58,8 @@ ms.locfileid: "86110345"
 
    ![用于服务器评估工具的选项](./media/tutorial-assess-vmware/assessment-tool.png)
 
-9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
-10. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。 
+9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。
+10. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。
 11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
@@ -75,7 +75,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 ### <a name="download-the-ova-template"></a>下载 OVA 模板
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMWare vSphere 虚拟机监控程序”。  
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMware vSphere 虚拟机监控程序”  。
 3. 选择“下载”以下载 OVA 模板文件。
 
    ![用于下载 OVA 文件的选项](./media/tutorial-assess-vmware/download-ova.png)
@@ -115,7 +115,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
    ![用于部署 OVF 模板的菜单命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. 在“部署 OVF 模板向导”>“源”中，指定 OVA 文件的位置。
-3. 在“名称”和“位置”中，为 VM 指定一个易记名称。  选择要在其中托管 VM 的库存对象。
+3. 在“名称”和“位置”中，为 VM 指定一个易记名称。 选择要在其中托管 VM 的库存对象。
 4. 在“主机/群集”中，指定要在其上运行 VM 的主机或群集。
 5. 在“存储”中，指定 VM 的存储目标。
 6. 在“磁盘格式”中，指定磁盘类型和大小。
@@ -146,7 +146,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
      - 仅支持 HTTP 代理。
    - **时间同步**：设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
    - **安装更新**：设备可确保安装最新的更新。
-   - **安装 VDDK**：设备将检查是否已安装 VMWare vSphere 虚拟磁盘开发工具包 (VDDK)。 从 VMware 下载 VDDK 6.7（如果尚未安装它），并将下载的 zip 内容解压缩到设备上的指定位置。
+   - **安装 VDDK**：设备将检查是否已安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。 从 VMware 下载 VDDK 6.7（如果尚未安装它），并将下载的 zip 内容解压缩到设备上的指定位置。
 
      Azure Migrate 服务器迁移在迁移到 Azure 期间使用 VDDK 复制计算机。       
 
@@ -174,7 +174,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
     - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM），请参阅[此文](set-discovery-scope.md)中的说明，以限制 Azure Migrate 所使用的帐户。
 
 3. 选择“验证连接”，确保设备可以连接到 vCenter Server。
-4. 在“发现 VM 上的应用程序和依赖项”中，可以选择单击“添加凭据”，并指定与凭据相关的操作系统以及用户名和密码这两项凭据。  然后单击“添加”。
+4. 在“发现 VM 上的应用程序和依赖项”中，可以选择单击“添加凭据”，并指定与凭据相关的操作系统以及用户名和密码这两项凭据。 然后单击“添加”。
 
     - 如果已创建用于[应用程序发现功能](how-to-discover-applications.md)或[无代理依赖项分析功能](how-to-create-group-machine-dependencies-agentless.md)的帐户，则可选择在此处添加凭据。
     - 如果不使用这些功能，则可跳过此设置。
@@ -226,7 +226,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
    ![评估属性](./media/tutorial-assess-vmware/view-all.png)
 
-5. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+5. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。 组将要评估的一个或多个 VM 集合到一起。
 6. 在“将计算机添加到组”中，选择要添加到该组的 VM。
 7. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
 8. 选择“创建评估”以创建该组并运行评估。

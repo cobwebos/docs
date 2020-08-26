@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276050"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374144"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>快速入门：使用 Synapse Studio（预览版）
 
@@ -49,7 +49,7 @@ ms.locfileid: "86276050"
 ## <a name="query-files-on-storage-account"></a>查询存储帐户中的文件
 
 > [!IMPORTANT]
-> 你需要是基础存储上 `Storage Blob Reader` 角色的成员才能查询文件。 了解如何[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)。
+> 你需要是基础存储上 `Storage Blob Reader` 角色的成员才能查询文件。 了解如何[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)。
 
 1. 上传一些 `PARQUET` 文件。
 2. 选择一个或多个文件，然后创建新的 SQL 脚本或 Spark 笔记本来查看文件内容。 若要创建笔记本，需要[在 Synapse 工作区中创建 Apache Spark 池](quickstart-create-apache-spark-pool-studio.md)。
@@ -64,7 +64,7 @@ ms.locfileid: "86276050"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，使 Azure AD 用户能够查询文件。
+- 通过[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)，使 Azure AD 用户能够查询文件。
 - [使用 SQL 按需版本查询 Azure 存储中的文件](sql/on-demand-workspace-overview.md)
 - [使用 Azure 门户创建 Apache Spark 池](quickstart-create-apache-spark-pool-portal.md)
 - [创建有关 Azure 存储中存储的文件的 Power BI 报表](sql/tutorial-connect-power-bi-desktop.md)

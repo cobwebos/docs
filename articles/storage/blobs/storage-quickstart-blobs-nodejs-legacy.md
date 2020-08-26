@@ -3,20 +3,24 @@ title: 快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v10
 description: 使用适用于 JavaScript 的 Azure 存储客户端库 v10 在 Node.js 中创建、上传和删除 blob 与容器
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cb1e1baa63e5a38a7f3db251c6c6d551e999befc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78269502"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431064"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v10 SDK 管理 blob
 
 本快速入门介绍如何使用 Node.js 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载、列出和删除 Blob，并将管理容器。
+
+> [!NOTE]
+> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](storage-quickstart-blobs-nodejs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,7 +84,7 @@ Container "demo" is deleted
 Done
 ```
 
-如果为此快速入门使用新的存储帐户，则可能只会看到标签“容器:”  下列出的“demo”  容器。
+如果为此快速入门使用新的存储帐户，则可能只会看到标签“容器:”下列出的“demo”容器。
 
 ## <a name="understanding-the-code"></a>了解数据
 
@@ -363,7 +367,7 @@ const downloadedContent = await streamToString(downloadResponse.readableStreamBo
 console.log(`Downloaded blob content: "${downloadedContent}"`);
 ```
 
-响应以流的形式返回。 在此示例中，使用以下 streamToString  帮助程序函数将流转换为字符串。
+响应以流的形式返回。 在此示例中，使用以下 streamToString 帮助程序函数将流转换为字符串。
 
 ```javascript
 // A helper method used to read a Node.js readable stream into a string

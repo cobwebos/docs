@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187519"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448525"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 托管实例的网络拓扑
 
@@ -38,7 +39,7 @@ ms.locfileid: "84187519"
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
 
 - SQL 托管实例与本地连接隔离，但 Azure 数据库迁移服务实例已连接到本地网络。
-- 如果基于角色的访问控制 (RBAC) 策略已经到位，并且你需要限制用户访问托管 SQL 托管实例的同一订阅。
+- 如果 Azure 基于角色的访问控制（Azure RBAC）策略已准备就绪，并且你需要限制用户访问承载 SQL 托管实例的同一订阅。
 - 用于 SQL 托管实例和用于 Azure 数据库迁移服务的虚拟网络位于不同的订阅中。
 
 ![托管实例的网络拓扑与本地网络分离](media/resource-network-topologies/mi-isolated-workload.png)
@@ -63,7 +64,7 @@ ms.locfileid: "84187519"
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
 
 - SQL 托管实例在隔离虚拟网络中进行预配。
-- 如果基于角色的访问控制 (RBAC) 策略已经到位，并且你需要限制用户访问托管 SQL 托管实例的同一订阅。
+- 如果 Azure 基于角色的访问控制（Azure RBAC）策略已准备就绪，并且你需要将用户限制为访问承载 SQL 托管实例的同一订阅。
 - 用于 SQL 托管实例和用于 Azure 数据库迁移服务的虚拟网络位于不同的订阅中。
 
 ![独立 VNet 的云到云迁移的网络拓扑](media/resource-network-topologies/cloud-to-cloud-isolated.png)

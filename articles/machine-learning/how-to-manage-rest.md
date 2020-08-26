@@ -7,14 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560172"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846694"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -47,7 +48,7 @@ ms.locfileid: "84560172"
 - 客户端 ID（将与创建的令牌相关联）
 - 客户端机密（应予以保护）
 
-在根据[为 Azure 机器学习资源和工作流设置身份验证](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中所述创建服务主体后返回的响应中，应该可以获得这些值。 如果使用公司订阅，则可能无权创建服务主体。 在这种情况下，应使用[免费或付费的个人订阅](https://aka.ms/AMLFree)。
+应将这些值用于响应创建服务主体的响应。 在[为 Azure 机器学习资源和工作流设置身份验证](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中讨论了如何获取这些值。 如果使用公司订阅，则可能无权创建服务主体。 在这种情况下，应使用[免费或付费的个人订阅](https://aka.ms/AMLFree)。
 
 若要检索令牌，请执行以下操作：
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-请注意，若要列出试验，路径需以 `history/v1.0` 开头；若要列出模型，路径需以 `modelmanagement/v1.0` 开头。 REST API 划分为多个操作组，每个操作组具有不同的路径。 以下链接中的 API 参考文档列出了各项操作及其参数和响应代码。
+请注意，若要列出试验，路径需以 `history/v1.0` 开头；若要列出模型，路径需以 `modelmanagement/v1.0` 开头。 REST API 划分为多个操作组，每个操作组具有不同的路径。 
 
-|区域|`Path`|参考|
-|-|-|-|
-|项目|artifact/v2.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|数据存储|datastore/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|超参数优化|hyperdrive/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|模型|modelmanagement/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|运行历史记录|execution/v1.0/ and history/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/runs)|
+|区域|`Path`|
+|-|-|
+|Artifacts|/rest/api/azureml|
+|数据存储|/azure/machine-learning/how-to-access-data|
+|超参数优化|hyperdrive/v1.0/|
+|模型|modelmanagement/v1.0/|
+|运行历史记录|execution/v1.0/ and history/v1.0/|
 
 可以使用以下常规模式浏览 REST API：
 

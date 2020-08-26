@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: eec52fb2342ee85932a6e24aa4cb292496beccad
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074325"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中远程桌面频繁断开连接
 
@@ -95,7 +95,7 @@ ms.locfileid: "86087293"
 
 ### <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
-1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 将 OS 磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”  。 请注意分配给附加的 OS 磁盘的驱动器号。
 3. 在附加的 OS 磁盘上，浏览到 \windows\system32\config 文件夹  。 将此文件夹中的所有文件复制为备份，以备回滚之需。
 4. 启动注册表编辑器 (regedit.exe)。
@@ -183,9 +183,4 @@ ms.locfileid: "86087293"
 18. 重启 VM，并再次尝试使用 RDP 连接到它。
 
 ## <a name="need-help"></a>需要帮助？ 
-联系支持人员。 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
-
-
-
-
+联系支持人员。 如果仍需要帮助，可 [联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 来快速解决问题。

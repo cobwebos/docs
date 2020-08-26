@@ -8,11 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463444"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446855"
 ---
 # <a name="copy-a-blob-with-net"></a>使用 .NET 复制 Blob
 
@@ -22,7 +23,7 @@ ms.locfileid: "84463444"
 
 复制同一存储帐户中的 Blob 属于同步操作。 跨帐户复制属于异步操作。 [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) 和 [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) 方法返回用于检查状态或中止复制操作的复制 ID 值。
 
-复制操作的源 Blob 可以是块 Blob、追加 Blob、页 Blob 或快照。 如果目标 Blob 已存在，该 Blob 的类型必须与源 Blob 的类型相同。 将覆盖任何现有的目标 Blob。 
+复制操作的源 Blob 可以是块 Blob、追加 Blob、页 Blob 或快照。 如果目标 Blob 已存在，该 Blob 的类型必须与源 Blob 的类型相同。 将覆盖现有的目标 blob。
 
 当复制操作正在进行时，无法修改目标 Blob。 目标 Blob 只能有一个未完成的复制 Blob 操作。 换言之，一个 Blob 不能是多个挂起的复制操作的目标。
 
@@ -34,18 +35,18 @@ ms.locfileid: "84463444"
 
 复制操作可以采用以下任一形式：
 
-  - 可将源 Blob 复制到具有不同名称的目标 Blob。 目标 Blob 可以是相同类型（块、追加或页 Blob）的现有 Blob，也可以是复制操作创建的新 Blob。
-  - 可将源 Blob 复制到具有相同名称的目标 Blob，从而有效替换目标 Blob。 此类复制操作会删除所有未提交的块，并覆盖目标 Blob 的元数据。
-  - 可将 Azure 文件服务中的源文件复制到目标 Blob。 目标 Blob 可以是现有的块 Blob，也可以是复制操作创建的新块 Blob。 不支持从文件复制到页 Blob 或追加 Blob。
-  - 可以将快照复制到其基本 Blob 上。 通过将快照提升到基本 Blob 的位置，可还原早期版本的 Blob。
-  - 可将快照复制到具有不同名称的目标 Blob。 生成的目标 Blob 是可写的 Blob，而不是快照。
+- 可将源 Blob 复制到具有不同名称的目标 Blob。 目标 Blob 可以是相同类型（块、追加或页 Blob）的现有 Blob，也可以是复制操作创建的新 Blob。
+- 可将源 Blob 复制到具有相同名称的目标 Blob，从而有效替换目标 Blob。 此类复制操作会删除所有未提交的块，并覆盖目标 Blob 的元数据。
+- 可将 Azure 文件服务中的源文件复制到目标 Blob。 目标 Blob 可以是现有的块 Blob，也可以是复制操作创建的新块 Blob。 不支持从文件复制到页 Blob 或追加 Blob。
+- 可以将快照复制到其基本 Blob 上。 通过将快照提升到基本 Blob 的位置，可还原早期版本的 Blob。
+- 可将快照复制到具有不同名称的目标 Blob。 生成的目标 Blob 是可写的 Blob，而不是快照。
 
 ## <a name="copy-a-blob"></a>复制 Blob
 
 若要复制 Blob，请调用以下方法之一：
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 以下代码示例获取对先前创建的 Blob 的引用，并将其复制到同一容器中的新 Blob：
 

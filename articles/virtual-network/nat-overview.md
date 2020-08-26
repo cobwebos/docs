@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549571"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855793"
 ---
 # <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
@@ -32,12 +32,12 @@ ms.locfileid: "85549571"
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" width="256" title="虚拟网络 NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="虚拟网络 NAT">
 </p>
 
 
 
-图：*虚拟网络 NAT*
+*图：虚拟网络 NAT*
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>用于仅限出站连接的静态 IP 地址
 
@@ -74,10 +74,10 @@ NAT 及兼容的标准 SKU 功能可以识别流的启动方向。 入站和出�
 ![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
 -->
 <p align="center">
-  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="虚拟网络 NAT 流方向">
+  <img src="./media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="512" title="虚拟网络 NAT 流方向">
 </p>
 
-图：*虚拟网络 NAT 流方向*
+*图：虚拟网络 NAT 流方向*
 
 ## <a name="fully-managed-highly-resilient"></a>完全托管且具有较高的复原能力
 
@@ -103,7 +103,7 @@ NAT 默认是区域性的。 创建[可用性区域](../availability-zones/az-ov
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/az-directions.svg" width="512" title="使用可用性区域的虚拟网络 NAT">
+  <img src="./media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="512" title="使用可用性区域的虚拟网络 NAT">
 </p>
 
 图：*使用可用性区域的虚拟网络 NAT*
@@ -123,37 +123,22 @@ NAT 默认是区域性的。 创建[可用性区域](../availability-zones/az-ov
 
 在保持一般可用性的条件下，NAT 数据路径的可用性至少为 99.9%。
 
-
 ## <a name="pricing"></a>定价
 
-NAT 网关通过两个单独的计量器来计费：
-
-| 计量 | 费率 |
-| --- | --- |
-| 资源小时数 | 0\.045 美元/小时 |
-| 已处理的数据 | 0\.045 美元/GB |
-
-资源小时数包括 NAT 网关资源的存在持续时间。
-处理的数据包括 NAT 网关资源处理的所有流量。
+有关定价的详细信息，请参阅 [虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network)。
 
 ## <a name="availability"></a>可用性
 
-虚拟网络 NAT 和 NAT 网关资源在所有 Azure 公有云[区域](https://azure.microsoft.com/global-infrastructure/regions/)中都可用。
-
-## <a name="support"></a>支持
-
-通过正常的支持渠道为 NAT 提供支持。
+虚拟网络 NAT 和 NAT 网关资源在所有 Azure 云 [区域](https://azure.microsoft.com/global-infrastructure/regions/)的所有区域均可用。
 
 ## <a name="suggestions"></a>建议
 
 我们很想知道如何能够改进该服务。 请在 [UserVoice for NAT](https://aka.ms/natuservoice) 上为我们接下来要开发的功能提供建议和投票。
 
-
 ## <a name="limitations"></a>限制
 
 * NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。 基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
 * 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
-* 使用 NAT 时不支持 NSG 流日志记录。
 * NAT 不能跨多个虚拟网络。
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,12 +3,12 @@ title: 基于 VHD 文件创建 Azure 开发测试实验室自定义映像 | Micr
 description: 介绍如何使用 Azure 门户基于 VHD 文件在 Azure 开发测试实验室中创建自定义映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ba627421a43a8e4e7f193ad96da09da8934d028c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481266"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289401"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像
 
@@ -22,7 +22,7 @@ ms.locfileid: "85481266"
 
 以下步骤将引导使用 Azure 门户基于 VHD 文件创建自定义映像：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
 
@@ -69,7 +69,7 @@ ms.locfileid: "85481266"
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 
-- [自定义映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [自定义映像或公式？](./devtest-lab-faq.md#blog-post)
 - [复制 Azure 开发测试实验室间的自定义映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>后续步骤

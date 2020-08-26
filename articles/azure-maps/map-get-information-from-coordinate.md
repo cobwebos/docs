@@ -1,19 +1,20 @@
 ---
 title: 在地图上显示坐标信息 | Microsoft Azure Maps
 description: 了解如何在用户选择坐标时在地图上显示有关地址的信息。
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: eaf67fac19ab1e4bef5ebb1e791b7f40ae46cbf2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123983"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282851"
 ---
 # <a name="get-information-from-a-coordinate"></a>从坐标获取信息
 

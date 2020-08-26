@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDoS 保护
       href: ddos-best-practices.md
+    - name: DDoS 防护安全基线
+      href: ddos-protection-security-baseline.md
     - name: 无关联的 DNS 和子域接管
       href: subdomain-takeover.md
     - name: 安全混合网络体系结构
@@ -76,12 +78,16 @@
   items:
     - name: 数据安全与加密
       href: encryption-overview.md
+    - name: 双重加密
+      href: double-encryption.md
     - name: 磁盘加密
       items:
         - name: 最佳做法
           href: data-encryption-best-practices.md
         - name: 静态数据加密
           href: encryption-atrest.md
+        - name: 数据加密模型
+          href: encryption-models.md
         - name: 适用于虚拟机的 Azure 磁盘加密
           href: azure-disk-encryption-vms-vmss.md
     - name: 数据库安全

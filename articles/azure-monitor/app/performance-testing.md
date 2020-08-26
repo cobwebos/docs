@@ -4,16 +4,17 @@ description: 使用 Azure Application Insights 设置性能和负载测试
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669856"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024344"
 ---
 # <a name="performance-testing"></a>性能测试
 
 > [!NOTE]
-> 基于云的负载测试服务已弃用。 有关弃用、服务可用性和替代服务的更多信息，请参见[此处](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)。
+> 基于云的负载测试服务已弃用。 有关弃用、服务可用性和替代服务的更多信息，请参见[此处](/azure/devops/test/load-test/overview?view=azure-devops)。
 
 使用 Application Insights 可以为网站生成负载测试。 与[可用性测试](monitor-web-app-availability.md)一样，你可以从世界各地的 Azure 测试代理发送基本请求或[多步骤请求](availability-multistep.md)。 性能测试允许你在长达 60 分钟的时间内模拟多达 20,000 个并发用户。
 

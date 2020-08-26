@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506967"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639896"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
-在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。 但是，它们在性质上有限制。 
+在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](./metrics-supported.md)。 但是，它们在性质上有限制。 
 
 可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些**自定义**指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
 
@@ -26,18 +26,19 @@ Azure Monitor 自定义指标目前为公开预览版。
 
 可以通过多种方法将自定义指标发送到 Azure Monitor：
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
+- 在 [Windows 或 Linux AZURE VM](azure-monitor-agent-overview.md) 上安装 Azure Monitor 代理 (预览版) ，并使用 [数据收集规则](data-collection-rule-azure-monitor-agent.md) 将性能计数器发送到 Azure Monitor 度量值。
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
-- 将自定义指标[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
+- 将自定义指标[直接发送到 Azure Monitor REST API](./metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
 ## <a name="pricing-model-and-retention"></a>定价模型和保留期
 
-查看 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)，了解何时为自定义指标和指标查询启用计费的详细信息。 本页提供所有指标的特定价格详细信息，包括自定义指标和指标查询。 总而言之，将标准指标（平台指标）引入 Azure Monitor 度量值存储没有开销，但当自定义指标进入正式上市时，它们会产生成本。 指标 API 查询会产生成本。
+查看 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)，了解何时为自定义指标和指标查询启用计费的详细信息。 本页提供所有指标的特定价格详细信息，包括自定义指标和指标查询。 总而言之，将标准指标 (平台指标) 引入 Azure Monitor 指标存储不会产生成本，但自定义指标在输入正式上市后会产生成本。 指标 API 查询会产生成本。
 
 自定义指标的保留时间[与平台指标的保留时间相同](data-platform-metrics.md#retention-of-metrics)。 
 
 > [!NOTE]  
-> 通过 Application Insights SDK 发送到 Azure Monitor 的指标将按引入的日志数据计费。 仅当选择了 Application Insights 功能[在自定义指标维度上启用警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)时，它们才会产生额外的指标费用。 此复选框使用自定义指标 API 将数据发送到 Azure Monitor 指标数据库，以允许更复杂的警报。  详细了解 [Application Insights 定价模型](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和[你所在区域的定价](https://azure.microsoft.com/pricing/details/monitor/)。
+> 通过 Application Insights SDK 发送到 Azure Monitor 的指标将按引入的日志数据计费。 仅当选择了 Application Insights 功能[在自定义指标维度上启用警报](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)时，它们才会产生额外的指标费用。 此复选框使用自定义指标 API 将数据发送到 Azure Monitor 指标数据库，以允许更复杂的警报。  详细了解 [Application Insights 定价模型](../app/pricing.md#pricing-model)和[你所在区域的定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 
 ## <a name="how-to-send-custom-metrics"></a>如何发送自定义指标
@@ -46,8 +47,8 @@ Azure Monitor 自定义指标目前为公开预览版。
 
 ### <a name="authentication"></a>身份验证
 若要将自定义指标提交到 Azure Monitor，提交指标的实体需在请求的 **Bearer** 标头中提供有效的 Azure Active Directory (Azure AD) 令牌。 可通过几种支持的方法获取有效的持有者令牌：
-1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
-2. [Azure AD 服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
+1. [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
+2. [Azure AD 服务主体](../../active-directory/develop/app-objects-and-service-principals.md)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
 为了对请求进行身份验证，Azure Monitor 将使用 Azure AD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限。 可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围为该服务主体授予“监视指标发布者”角色。 范围的示例包括订阅、资源组或特定资源。
 
 > [!TIP]  
@@ -235,6 +236,7 @@ Azure Monitor 针对自定义指标实施以下用量限制：
  - [虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure 虚拟机（经典）](collect-custom-metrics-guestos-vm-classic.md)
  - [使用 Telegraf 代理的 Linux 虚拟机](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](./metrics-store-custom-rest-api.md)
  - [经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

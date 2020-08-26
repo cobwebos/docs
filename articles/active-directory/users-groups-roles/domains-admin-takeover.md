@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015878"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
@@ -112,7 +113,7 @@ ms.locfileid: "84732644"
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>用于“ForceTakeover”选项的 Azure AD PowerShell cmdlet
 可以查看在 [PowerShell 示例](#powershell-example)中使用的这些 cmdlet。
 
-cmdlet | 使用情况
+cmdlet | 用法
 ------- | -------
 `connect-msolservice` | 出现提示时，请登录到托管组织。
 `get-msoldomain` | 显示与当前组织关联的域名。
@@ -170,8 +171,8 @@ cmdlet | 使用情况
 ## <a name="next-steps"></a>后续步骤
 
 * [向 Azure AD 添加自定义域名](../fundamentals/add-custom-domain.md)
-* [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [如何安装和配置 Azure PowerShell](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet 参考](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 

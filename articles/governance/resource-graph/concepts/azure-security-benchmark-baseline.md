@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171799"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008995"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure 资源关系图 Azure 安全性基准
 
-此安全基线将[Azure 安全性基准](../../../security/benchmarks/overview.md)中的指南应用于 Azure 资源关系图。 Azure 安全基准提供了有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的**安全控件**进行分组，以及适用于 Azure 资源关系图的相关指南。 排除了不适用于 Azure 资源关系图的**控件**。 若要查看 Azure 资源图如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 虚拟网络安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将[Azure 安全性基准](../../../security/benchmarks/overview.md)中的指南应用于 Azure 资源关系图。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的**安全控件**进行分组，以及适用于 Azure 资源关系图的相关指南。 排除了不适用于 Azure 资源关系图的**控件**。 若要查看 Azure 资源图如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 虚拟网络安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 
 
@@ -26,7 +26,7 @@ ms.locfileid: "86171799"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**： Azure 资源关系图基于基于角色的访问控制 (RBAC) 提供对资源类型和属性的访问权限。 定期审核并查看授予安全主体的访问权限 (用户、组和服务帐户定期) ，确保查询返回相应资源的结果。
+**指南**： Azure 资源图提供了基于 azure 基于角色的访问控制 (azure RBAC) 的资源类型和属性的访问权限。 定期审核并查看授予安全主体的访问权限 (用户、组和服务帐户定期) ，确保查询返回相应资源的结果。
 
 * [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)
 
@@ -69,7 +69,7 @@ ms.locfileid: "86171799"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
 
@@ -82,7 +82,7 @@ ms.locfileid: "86171799"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -95,7 +95,7 @@ ms.locfileid: "86171799"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="next-steps"></a>后续步骤
 

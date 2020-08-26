@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207012"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823975"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -44,7 +44,9 @@ A. 使用 Azure Data Box，可以快速、廉价且安全地将数 TB 的数据�
 A. 如果要在 Azure 中传输 40-500 TB 的数据，则可以使用 Data Box。 对于 < 40 TB 的数据大小，请使用 Data Box Disk，对于 > 500 TB 的数据大小，请注册 [Data Box Heavy](data-box-heavy-overview.md)。
 
 ### <a name="q-what-is-the-price-of-data-box"></a>问： Data Box 的价格是多少？
-A. 使用 Data Box 10 天会产生少许费用。 在 Azure 门户中创建订单并选择产品型号时，将显示设备的费用。 寄送也是免费的，但是，Azure 存储会产生费用。 有关详细信息，请转到 [Azure Data Box 定价](https://azure.microsoft.com/pricing/details/storage/databox/)。 
+A. 使用 Data Box 10 天会产生少许费用。 在 Azure 门户中创建订单并选择产品型号时，将显示设备的费用。 还适用于 Azure 存储的标准寄送费用和费用。 对于导入订单，出口订单遵循类似的定价模型，但可能会收取额外的出口费用。 
+
+有关详细信息，请参阅 [Azure Data Box 定价](https://azure.microsoft.com/pricing/details/storage/databox/) 和 [出口费用](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>问： 在一个实例中使用 Data Box 最多可以传输多少数据？
 A. Data Box 的原始容量为 100 TB，可用容量为 80 TB。 使用 Data Box 最多可传输 80 TB 数据。 若要传输更多数据，需订购更多设备。
@@ -55,10 +57,22 @@ A.  有关 Data Box 在哪些国家/区域可用的信息，请转到[区域可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>问： 可在哪些区域使用 Data Box 存储数据？
 A. 美国、西欧、北欧、法国、英国、日本、澳大利亚和加拿大的所有区域均支持 Data Box。 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。
 
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>问： 如何将特定国家/地区的源数据导入到不同国家/地区的 Azure 区域，或将数据从一个国家/地区的 Azure 区域导出到另一个国家/地区？
+
+Data Box 仅支持在与目标相同的国家/地区内进行数据引入或传出，而不会跨越任何国际界限。 唯一的例外情况是欧盟 (欧盟) 中的订单，其中的数据框可以与任何欧盟国家/地区一起发运。
+
+例如，在导入方案中，如果你有想要移动到 Azure WestUS 存储帐户的本地数据，则可以通过以下方式实现此目的：
+
+1. 通过在 Cananda 中选择存储帐户，定购 Data Box 在加拿大。 该设备从加拿大的 Azure 数据中心发运到在创建订单时提供的加拿大)  (。
+
+2. 本地数据复制到 Data Box 完成后，将设备返回到加拿大的 Azure 数据中心。 然后，将 Data Box 上的数据上传到在创建订单时选择的加拿大 Azure 区域中的目标存储帐户。
+
+3. 然后，可以使用 AzCopy 之类的工具将数据复制到 WestUS 中的存储帐户。 此步骤将产生 Data Box 计费中未包含的 [标准存储](https://azure.microsoft.com/pricing/details/storage/) 和 [带宽费用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>问： 如果 Data Box 出现任何问题，应该与谁联系？
 A. 如果 Data Box 出现任何问题，请联系 [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)。
 
-### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>问： 我丢失了我的 Data Box。 丢失的设备是否也要付费？
+### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Q. 我丢失了我的 Data Box。 丢失的设备是否也要付费？
 A. 是的。 丢失或损坏的设备也会产生费用。 [定价页](https://azure.microsoft.com/pricing/details/storage/databox/)和[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)中提到了这笔费用。
 
 
@@ -77,7 +91,7 @@ A. 如果无法创建 Data Box 订单，有可能是订阅类型或访问权限�
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>问： 我订购了多台 Data Box 设备。 我无法创建其他任何订单。 这是为什么？
 A. 每个订阅在每个商务区域（国家和地区的组合）最多允许有五个有效订单。 如果需要订购更多设备，请联系 Microsoft 支持部门提高订阅限制。
 
-### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>问： 我在尝试创建订单时收到通知，提示 Data Box 服务不可用。 这是什么意思呢？
+### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>Q. 我在尝试创建订单时收到通知，提示 Data Box 服务不可用。 这是什么意思呢？
 A. 这表示 Data Box 服务在你所选的国家和地区组合中不可用。 更改此组合可能会允许使用 Data Box 服务。 有关该服务适用区域的列表，请转到 [Data Box 的适用区域](data-box-overview.md#region-availability)。
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>问： 我数天前订购了 Data Box。 何时能收到 Data Box？
@@ -180,16 +194,16 @@ A.  是的。 Data Box 最多支持 10 个存储帐户（常规用途帐户、�
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>问： 我的设备已送达，但似乎已损坏。 我该怎么办？
 A. 如果设备到达时已损坏或存在被篡改的证据，请不要使用该设备。 [请联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)并尽快退回设备。 还可以新建针对更换设备的 Data Box 订单。 在这种情况下，更换设备不收费。
 
-### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>问： 我可以自己提取 Data Box 订单吗？ 能否通过我选择的承运人退回 Data Box？
-A. 是的。 Microsoft 还提供自行管理的传送。 在下 Data Box 订单时，可以选择“自我管理的发货”选项。 有关详细信息，请参阅[Data Box 的自行托管发运](data-box-portal-customer-managed-shipping.md)。
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自己提取 Data Box 订单吗？ 能否通过我选择的承运人退回 Data Box？
+A. 是的。 Microsoft 还提供自行管理的传送。 在下 Data Box 订单时，可以选择“自我管理的发货”选项。 有关详细信息，请参阅 [Data Box 的自行托管发运](data-box-portal-customer-managed-shipping.md)。
 
-### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>问： 我的 Data Box 设备在运输过程中是否将跨越国家/地区边界？
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. 我的 Data Box 设备在运输过程中是否将跨越国家/地区边界？
 A. 所有 Data Box 设备都将从与其目的地相同的国家/地区发运，不会跨越任何国际边界。 唯一的例外是在欧盟 (EU) 的订单，设备可以在任何 EU 国家/地区之间发送。 这适用于 Data Box 和 Data Box Heavy 设备。
 
-### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>问： 我订购了美国东部的 Data Box，但收到的设备是从美国西部位置发货的。 我应该将设备退回到何处？
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Q. 我订购了美国东部的 Data Box，但收到的设备是从美国西部位置发货的。 我应该将设备退回到何处？
 A. 我们会尽快为你提供一个 Data Box 设备。 我们优先从离你的存储帐户位置最近的数据中心发货，但会从任何有可用库存的 Azure 数据中心发运设备。 你的 Data Box 应退回到发货标签中显示的发货地点。
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>问： 电子墨水显示屏未显示退货发货标签。 我该怎么办？
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. 电子墨水显示屏未显示退货发货标签。 我该怎么办？
 A. 如果电子墨水显示屏未显示退货发货标签，请执行以下步骤：
 - 取下上一次发货留下的旧发货标签和任何便签。
 - 在 Azure 门户中转到订单。 转到“概述”和“下载发货标签”。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
@@ -250,7 +264,7 @@ A.  以下报表可用于支持监管链：
 A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到承运人的网站，使用订单跟踪号码获取跟踪信息。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否自己将 Data Box 送到 Azure 数据中心？ 
-A.  不是。 如果你选择了 Microsoft 管理的装运，则无法传输该日期。 Azure 数据中心目前不接受客户或 UPS 以外的承运人交付 Data Box。
+A.  不是。 如果你选择了 Microsoft 托管的装运，则无法传输数据。 Azure 数据中心目前不接受客户或 UPS 以外的承运人交付 Data Box。
 
 如果选择了 "自行管理的装运"，则可以从 Azure 数据中心选择或删除 Data Box。
 

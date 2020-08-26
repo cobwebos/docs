@@ -5,18 +5,18 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556576"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373362"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
 本文介绍：
-- 如何使用 IntelliJ 创意创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
+- 如何使用 IntelliJ IDEA 创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
 - 在自己的计算机上的集成开发环境 (IDE) 中测试和调试函数的步骤
 - 将函数项目部署到 Azure Functions 的说明
 
@@ -30,7 +30,7 @@ ms.locfileid: "85556576"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 + [Azure 支持的 Java 开发工具包 (JDK)](https://aka.ms/azure-jdks)（适用于 Java 8）
-+ 已安装的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
++ 安装了 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
 + [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + 最新的 [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)
 
@@ -44,7 +44,7 @@ ms.locfileid: "85556576"
 2. 若要登录到你的 Azure 帐户，请打开边栏中的“Azure 资源管理器”，然后单击顶部栏中的“Azure 登录”图标（或者在 IDEA 菜单中选择“工具”>“Azure”>“Azure 登录”）。  
     ![“IntelliJ Azure 登录”命令][intellij-azure-login]
 
-3. 在“Azure 登录”窗口中选择“设备登录”，然后单击“登录”（[其他登录选项](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions)）。  
+3. 在“Azure 登录”窗口中选择“设备登录”，然后单击“登录”（[其他登录选项](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)）。  
 
    ![“Azure 登录”窗口，其中已选择“设备登录”][intellij-azure-popup]
 
@@ -56,7 +56,7 @@ ms.locfileid: "85556576"
 
    ![设备登录浏览器][intellij-azure-link-ms-account]
 
-6. 在“选择订阅”对话框中选择要使用的订阅，并单击“确定”。 
+6. 在“选择订阅”对话框中选择要使用的订阅，然后单击“确定”。 
 
    ![“选择订阅”对话框][intellij-azure-login-select-subs]
    
@@ -156,7 +156,7 @@ ms.locfileid: "85556576"
 我们已使用 HTTP 触发的函数创建 Java 函数项目，在本地计算机上运行该项目，并将其部署到 Azure。 现在，通过以下方式扩展函数
 
 > [!div class="nextstepaction"]
-> [添加 Azure 存储队列输出绑定](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [添加 Azure 存储队列输出绑定](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

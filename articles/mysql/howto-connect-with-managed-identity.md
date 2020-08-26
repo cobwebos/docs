@@ -6,22 +6,23 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3c13d37e62da8abfa860d5fdbdf186302519c93e
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120570"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606494"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用托管标识连接到 Azure Database for MySQL
 
-本文介绍如何使用 Azure 虚拟机 (VM) 的用户分配标识来访问 Azure Database for MySQL 服务器。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
+本文介绍如何使用 Azure 虚拟机 (VM) 的用户分配标识来访问 Azure Database for MySQL 服务器。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 
 
-> [!div class="checklist"]
-> * 授予 VM 对 Azure Database for MySQL 服务器的访问权限
-> * 在数据库中创建一个代表 VM 用户分配标识的用户
-> * 使用 VM 标识获取访问令牌，并使用它查询 Azure Database for MySQL 服务器
-> * 在 C# 示例应用程序中实现令牌检索
+学习如何：
+
+- 授予 VM 对 Azure Database for MySQL 服务器的访问权限
+- 在数据库中创建一个代表 VM 用户分配标识的用户
+- 使用 VM 标识获取访问令牌，并使用它查询 Azure Database for MySQL 服务器
+- 在 C# 示例应用程序中实现令牌检索
 
 > [!IMPORTANT]
 > 使用托管标识进行连接仅适用于 MySQL 5.7 和更高版本。

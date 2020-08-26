@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
+ms.custom: devx-track-java
 ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74888489"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319824"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
 
@@ -33,8 +35,8 @@ ms.locfileid: "74888489"
    - Apache Maven
    - Java 扩展包
 - 请确保设置 `JAVA_HOME` 和 `PATH` 环境变量。
-- [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。
-- 按照[访问 API](access-api-cli-how-to.md) 主题中的步骤进行操作。 记下订阅 ID、应用程序 ID（客户端 ID）、身份验证密钥（机密）和租户 ID，以便在后面的步骤中使用。
+- [创建媒体服务帐户](./create-account-howto.md)。 请务必记住资源组名称和媒体服务帐户名称。
+- 按照[访问 API](./access-api-howto.md) 主题中的步骤进行操作。 记下订阅 ID、应用程序 ID（客户端 ID）、身份验证密钥（机密）和租户 ID，以便在后面的步骤中使用。
 
 另请参阅：
 
@@ -93,7 +95,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. 若要创建发出请求所需的 Active Directory 凭据，请将以下代码添加到 App 类的 main 方法，然后设置从[访问 API](access-api-cli-how-to.md) 获取的值：
+1. 若要创建发出请求所需的 Active Directory 凭据，请将以下代码添加到 App 类的 main 方法，然后设置从[访问 API](./access-api-howto.md) 获取的值：
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -129,4 +131,4 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 现在可以包括 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` 并开始操作实体。
 
-有关更多代码示例，请参阅 [Java SDK 示例](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)存储库。
+有关更多代码示例，请参阅 [Java SDK 示例](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)存储库。

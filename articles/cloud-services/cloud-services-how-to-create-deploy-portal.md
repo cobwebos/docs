@@ -1,6 +1,6 @@
 ---
 title: 如何创建和部署云服务 | Microsoft Docs
-description: 了解如何使用 Azure 门户创建和部署云服务。
+description: 了解如何使用 "快速创建" 方法创建云服务，并使用 "上载" 在 Azure 中上传和部署云服务包。
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811338"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142377"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和*自定义创建*。

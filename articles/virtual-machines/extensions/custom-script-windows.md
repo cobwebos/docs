@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010931"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -74,7 +74,7 @@ ms.locfileid: "85478478"
 
 可将敏感数据存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
-这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
+这些项目应视为敏感数据，并在扩展的受保护设置配置中指定。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
 
 ```json
 {
@@ -111,7 +111,7 @@ ms.locfileid: "85478478"
 ```
 
 > [!NOTE]
-> managedIdentity 属性不得与 storageAccountName 或 storageAccountKey 属性一起使用
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
 
 > [!NOTE]
 > 在某个时间点，一个 VM 上只能安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
@@ -124,15 +124,15 @@ ms.locfileid: "85478478"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | 字符串 |
-| type | CustomScriptExtension | 字符串 |
+| publisher | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.10 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32-bit integer |
-| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
-| storageAccountName（例如） | examplestorageacct | 字符串 |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
-| managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON 对象 |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
+| storageAccountName（例如） | examplestorageacct | string |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |
 
 >[!NOTE]
 >这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
@@ -144,7 +144,7 @@ ms.locfileid: "85478478"
 * `timestamp`（可选，32 位整数）仅当需要更改此字段的值来触发脚本的重新运行时，才使用此字段。  任何整数值都是可以接受的，前提是必须不同于以前的值。
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
-* `managedIdentity`：（可选，JSON 对象）用于下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`：（可选，json 对象）用于下载文件的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`：（可选，字符串）托管标识的客户端 ID
   * `objectId`：（可选，字符串）托管标识的对象 ID
 
@@ -160,11 +160,11 @@ ms.locfileid: "85478478"
 > [!NOTE]
 > 此属性只能在受保护的设置中指定。
 
-CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设置中提供的 URL 下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 blob 或容器，用户不必传递机密（例如 SAS 令牌或存储帐户密钥）。
+CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设置中提供的 URL 下载文件的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 
-要使用此功能，用户必须向要运行 CustomScript 的 VM 或 VMSS 添加[系统分配的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)标识或[用户分配的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识，并[向 Azure 存储容器或 bob 授予托管标识访问权限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用此功能，用户必须将[系统分配的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)。
 
-要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 JSON 对象。 
+若要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 json 对象。 
 
 > 示例：
 >
@@ -176,9 +176,9 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 > }
 > ```
 
-要在目标 VM/VMSS 上使用用户分配的标识，请使用托管标识的客户端 ID 或对象 ID 配置“managedidentity”字段。
+若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
 
-> 示例：
+> 示例:
 >
 > ```json
 > {
@@ -196,7 +196,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 > ```
 
 > [!NOTE]
-> managedIdentity 属性不得与 storageAccountName 或 storageAccountKey 属性一起使用
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
-要在规模集上部署自定义脚本扩展，请参阅 [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
+要在规模集上部署自定义脚本扩展，请参阅 [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>经典 VM
 
@@ -301,7 +301,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 ### <a name="powershell"></a>PowerShell
 
-可使用 [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) cmdlet 将自定义脚本扩展添加到现有虚拟机。
+可使用 [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) cmdlet 将自定义脚本扩展添加到现有虚拟机。
 
 ```powershell
 # define your file URI

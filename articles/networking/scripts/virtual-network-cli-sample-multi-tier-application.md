@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: bcfe82dedcac01c60e93788b78fec779f0da7dbc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c0964eb5e44a0e1a2329ec6acef91d70cbd5c32f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530246"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503865"
 ---
 # <a name="use-an-azure-cli-script-sample-to-create-a-network-for-multi-tier-applications"></a>使用 Azure CLI 脚本示例为多层应用程序创建网络
 
@@ -45,7 +46,7 @@ az group delete --name MyResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/azure/network/vnet) | 创建 Azure 虚拟网络和前端子网。 |

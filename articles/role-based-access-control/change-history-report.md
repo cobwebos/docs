@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2020
+ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68b1cdede5fddd0bf74571da1924e0059a21d3af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 332d9a9ec28c4309fb1cf1d3e24d3cfd2d7d13d9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791803"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321966"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>查看 Azure RBAC 更改的活动日志
 
@@ -80,6 +81,7 @@ $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
                           serviceRequestId: 11111111-1111-1111-1111-111111111111
+                          eventCategory  : Administrative
 
 Caller                  : alain@example.com
 EventTimestamp          : 2/27/2020 9:18:05 PM
@@ -90,17 +92,29 @@ Properties              :
 
 ```
 
+如果使用服务主体来创建角色分配，则调用方属性将是对象 ID。 可以使用[AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)获取有关服务主体的信息。
+
+```Example
+Caller                  : 44444444-4444-4444-4444-444444444444
+EventTimestamp          : 6/4/2020 9:43:08 PM
+$_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
+Properties              : 
+                          statusCode     : Created
+                          serviceRequestId: 55555555-5555-5555-5555-555555555555
+                          category       : Administrative
+```
+
 ## <a name="azure-cli"></a>Azure CLI
 
 若要使用 Azure CLI 查看活动日志，请使用 [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) 命令。
 
-此命令列出了资源组中从 2 月 27 日起 7 天的活动日志：
+此命令列出2月27日在资源组中的活动日志，期待七天：
 
 ```azurecli
 az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
 ```
 
-此命令列出了授权资源提供程序从 2 月 27 日起 7 天的活动日志：
+此命令列出2月27日的授权资源提供程序的活动日志，期待七天：
 
 ```azurecli
 az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d

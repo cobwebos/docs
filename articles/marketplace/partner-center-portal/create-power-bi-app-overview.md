@@ -4,15 +4,15 @@ description: 本文介绍将 Power BI 应用程序发布到 Microsoft AppSource 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 9bf02fe6552b47070d4f79c4c497830ac2bfad84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121769"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317597"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 应用创建概述
 
@@ -42,7 +42,7 @@ ms.locfileid: "86121769"
 7. 经过认证后，请在其测试环境中查看应用并将其发布。 这会在 AppSource （它是 "上线"）上列出。
 8. 在 Power BI 中，将包发送到生产。 有关详细信息，请参阅[管理 Power BI 应用版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 查看下面的链接，这些链接提供了模板、提示和示例。
 
@@ -70,12 +70,12 @@ ms.locfileid: "86121769"
 
 ### <a name="business-requirements"></a>业务要求
 
-业务要求包括过程、合同和法律义务。 必须：
+业务要求包括过程、合同和法律义务。 必须具备以下条件：
 
 - 是注册的商用 marketplace 发布者。 如果你尚未注册，请按照在[合作伙伴中心创建商业 marketplace 帐户](create-account.md)中的步骤进行操作。
 - 提供满足在 AppSource 上列出的产品/服务的条件的内容。 有关详细信息，请参阅[AppSource 上的应用程序列表？下面是操作方法](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)。
 - 同意并遵循[Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [在合作伙伴中心创建 Power BI 应用产品/服务](create-power-bi-app-offer.md)

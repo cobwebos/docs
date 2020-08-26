@@ -1,16 +1,14 @@
 ---
 title: 将 Azure Functions 与 Azure 虚拟网络集成
 description: 演示如何将函数连接到 Azure 虚拟网络的分步教程
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 4/23/2020
-ms.author: alkarche
-ms.reviewer: glenga
-ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122620"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387517"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程：将 Functions 与 Azure 虚拟网络集成
 
@@ -72,7 +70,7 @@ ms.locfileid: "83122620"
 
     ![创建 VM 的 "网络" 选项卡](./media/functions-create-vnet/create-vm-2.png)
 
-    | 设置      | 建议的值  | 描述      |
+    | 设置      | 建议的值  | 说明      |
     | ------------ | ---------------- | ---------------- |
     | **名称** | myResourceGroup-vnet | 可以使用为虚拟网络生成的默认名称。 |
     | **地址范围** | 10.10.0.0/16 | 为虚拟网络使用单个地址范围。 |
@@ -141,7 +139,7 @@ ms.locfileid: "83122620"
 
 1. 选择 "**创建**"，将代理添加到 function app。
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
 1. 在浏览器中，尝试访问用作**后端 url**的 URL。 如预期那样，请求会超时。发生超时的原因是你的 WordPress 站点仅连接到你的虚拟网络而不是 internet。
 

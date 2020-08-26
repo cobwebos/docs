@@ -4,14 +4,15 @@ description: 排查 Azure 应用服务中的间歇性连接错误和相关性能
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
-ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: security-recommendations,fasttrack-edit
+ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252434"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763552"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -37,9 +38,11 @@ ms.locfileid: "85252434"
 
 ## <a name="avoiding-the-problem"></a>避免问题
 
+如果你的目标是一个支持服务终结点的 Azure 服务，则可通过使用[区域 VNet 集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服务终结点或专用终结点来避免 SNAT 端口耗尽问题。 使用区域 VNet 集成并将服务终结点置于集成子网中时，发往这些服务的应用出站流量不会有出站 SNAT 端口限制。 同样，如果使用区域 VNet 集成和专用终结点，则不会有将流量发往该目标的出站 SNAT 端口的问题。 
+
 避免 SNAT 端口问题意味着需要避免对同一主机和端口反复创建新连接。
 
-“Azure 的出站连接”文档的[解决问题部分](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving)介绍了缓解 SNAT 端口耗尽问题的一般策略。  这些策略中的以下策略适用于托管在 Azure 应用服务中的应用和功能。
+“Azure 的出站连接”文档的[解决问题部分](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving)介绍了缓解 SNAT 端口耗尽问题的一般策略。 这些策略中的以下策略适用于托管在 Azure 应用服务中的应用和功能。
 
 ### <a name="modify-the-application-to-use-connection-pooling"></a>修改应用程序以使用连接池
 
@@ -106,70 +109,70 @@ HTTP 连接池
 
 ### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>修改应用程序以使用主动性较低的重试逻辑
 
-* 有关其他指导和示例，请查看[重试模式](https://docs.microsoft.com/azure/architecture/patterns/retry)。
+* 有关其他指导和示例，请查看 [重试模式](https://docs.microsoft.com/azure/architecture/patterns/retry)。
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>使用 keepalive 重置出站空闲超时
 
-* 若要为 Node.js 应用实现 keepalive，请查看[节点应用程序是否发出过多出站呼叫](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
+* 若要实现 Node.js 应用的 Keep-Alive，请查看[我的 Node 应用程序正在发出过多的出站调用](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
 
 ### <a name="additional-guidance-specific-to-app-service"></a>特定于应用服务的其他指导：
 
 * [负载测试](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test)应以稳定的供电速度模拟实际数据。 在真实环境中测试应用和功能可以提前识别和解决 SNAT 端口耗尽问题。
-* 确保后端服务可以快速返回响应。 若要排查 Azure SQL 数据库的性能问题，请参阅[排查智能见解的 AZURE Sql 数据库性能问题](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)。
-* 将应用服务计划横向扩展到更多实例。 有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](https://docs.microsoft.com/azure/app-service/manage-scale-up)。 应用服务计划中的每个辅助角色实例都分配了多个 SNAT 端口。 如果你将使用情况分散到多个实例，则可能会将每个实例的 SNAT 端口使用情况获取为每个唯一远程终结点上建议的100出站连接限制。
-* 请考虑移动到[应用服务环境（ASE）](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)，其中你分配了一个出站 IP 地址，连接和 SNAT 端口限制更多。
+* 确保后端服务可以快速返回响应。 若要排查 Azure SQL 数据库的性能问题，请查看[使用智能见解排查 Azure SQL 数据库性能问题](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)。
+* 将应用服务计划横向扩展为更多实例。 有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](https://docs.microsoft.com/azure/app-service/manage-scale-up)。 应用服务计划中的每个辅助角色实例分配有多个 SNAT 端口。 如果将用量分散在多个实例之间，可能会使每个实例的 SNAT 端口用量不超过每个独特远程终结点的建议出站连接数限制（100 个）。
+* 考虑转移到[应用服务环境 (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)，其中分配了单个出站 IP 地址，且连接数和 SNAT 端口数限制要高得多。 在 ASE 中，每个实例的 SNAT 端口数基于 [Azure 负载平衡器预先分配表](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable) （例如，含1-50 个工作线程的 ase）每个实例有1024个预先分配的端口，而具有51-100 辅助角色实例的 ase 的每个实例都有512个预分配端口。
 
-避免出站 TCP 限制更易于解决，因为限制是由辅助角色的大小设置的。 可以查看[沙盒跨 VM 数字限制-TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)的限制
+避免超过出站 TCP 限制要更容易一些，因为这些限制是按辅助角色的大小设置的。 可以在[沙盒跨 VM 数字限制 - TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中查看限制
 
-|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|描述|小型 (A1)|中型 (A2)|大型 (A3)|隔离层 (ASE)|
 |---|---|---|---|---|---|
-|连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
+|连接|整个 VM 的连接数|1920|3968|8064|16,000|
 
-若要避免出站 TCP 限制，可以增加工作线程的大小，也可以水平横向扩展。
+若要避免超过出站 TCP 限制，可以增大辅助角色的大小，或者横向扩展。
 
 ## <a name="troubleshooting"></a>疑难解答
 
-了解这两种类型的出站连接限制以及应用的作用，应使故障排除变得更容易。 如果你知道你的应用程序对同一存储帐户进行多个调用，则可能会怀疑 SNAT 限制。 如果你的应用程序通过 internet 创建对终结点的大量调用，则你可能会认为你达到了 VM 限制。
+了解两种类型的出站连接限制以及应用的作用后，应该就可以更轻松地进行故障排除。 如果你知道自己的应用对同一存储帐户发出许多调用，可以怀疑达到了 SNAT 限制。 如果应用完全通过 Internet 向终结点发出大量的调用，可以怀疑达到了 VM 限制。
 
-如果你不知道应用程序的行为是否能够快速确定原因，应用服务中有一些工具和方法可帮助确定这一点。
+如果你对应用程序的行为认识不充分，以致无法快速判断原因，可以借助应用服务中的某些工具和技术做出判断。
 
 ### <a name="find-snat-port-allocation-information"></a>查找 SNAT 端口分配信息
 
-你可以使用[应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)来查找 snat 端口分配信息，并观察应用服务站点的 snat 端口分配指标。 若要查找 SNAT 端口分配信息，请执行以下步骤：
+你可以使用 [应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics) 来查找 snat 端口分配信息，并观察应用服务站点的 snat 端口分配指标。 若要查找 SNAT 端口分配信息，请执行以下步骤：
 
-1. 若要访问应用服务诊断，请导航到应用服务 web 应用或[Azure 门户](https://portal.azure.com/)中的应用服务环境。 在左侧导航窗格中，选择 "**诊断并解决问题**"。
-2. 选择可用性和性能类别
-3. 在类别下的可用磁贴列表中，选择 "SNAT 端口耗尽" 磁贴。 这种做法是将其保留在128以下。
-如果需要，你仍可以打开支持票证，支持工程师将从后端获取指标。
+1. 若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com/)中导航到你的应用服务 Web 应用或应用服务环境。 在左侧导航栏中，选择“诊断并解决问题”。
+2. 选择“可用性和性能”类别
+3. 在该类别下的可用磁贴列表中，选择“SNAT 端口耗尽”磁贴。 做法是将其保持在 128 以下。
+如果确实需要，仍可以开具支持票证，支持工程师会从后端为你提取指标。
 
-请注意，由于 SNAT 端口使用未作为指标提供，因此不能基于 SNAT 端口使用自动缩放，也不能基于 SNAT 端口分配指标配置自动缩放。
+请注意，由于 SNAT 端口用量不是以指标形式提供的，因此无法基于 SNAT 端口用量进行自动缩放，也无法基于 SNAT 端口分配指标配置自动缩放。
 
 ### <a name="tcp-connections-and-snat-ports"></a>TCP 连接和 SNAT 端口
 
-TCP 连接和 SNAT 端口不是直接相关的。 TCP 连接使用检测程序包含在任何应用服务站点的 "诊断和解决问题" 边栏选项卡中。 搜索短语 "TCP 连接" 以找到它。
+TCP 连接和 SNAT 端口并不直接相关。 任何应用服务站点的“诊断并解决问题”边栏选项卡中都包含了 TCP 连接用量检测程序。 搜索短语“TCP 连接”即可找到它。
 
-* SNAT 端口仅用于外部网络流，而 TCP 连接总数包含本地环回连接。
-* 如果不同的流在协议、IP 地址或端口上不同，则可以使用不同的流来共享 SNAT 端口。 TCP 连接指标计算每个 TCP 连接数。
-* TCP 连接限制发生在辅助实例级别。 对于 SNAT 端口限制，Azure 网络出站负载平衡不使用 TCP 连接指标。
-* [沙盒跨 VM 数字限制-Tcp 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中描述了 tcp 连接限制
+* SNAT 端口仅用于外部网络流，而 TCP 连接总数包括本地环回连接。
+* 如果协议、IP 地址或端口中的流不同，则一个 SNAT 端口可由不同的流共享。 TCP 连接指标统计每个 TCP 连接。
+* TCP 连接限制在辅助角色实例级别发生。 Azure 网络出站负载均衡不使用 TCP 连接指标来限制 SNAT 端口。
+* [沙盒跨 VM 数字限制 - TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中介绍了 TCP 连接限制
 
-|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|描述|小型 (A1)|中型 (A2)|大型 (A3)|隔离层 (ASE)|
 |---|---|---|---|---|---|
-|连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
+|连接|整个 VM 的连接数|1920|3968|8064|16,000|
 
 ### <a name="webjobs-and-database-connections"></a>Web 作业和数据库连接
  
-如果 SNAT 端口耗尽，在这种情况下，Web 作业无法连接到 SQL 数据库，则没有用于显示每个单独的 web 应用程序进程打开的连接数的指标。 若要查找有问题的 WebJob，请将多个 Web 作业移出到另一个应用服务计划，以查看该情况是否提高，或者是否在某个计划中仍有问题。 重复此过程，直到找到有问题的 Web 作业。
+如果 SNAT 端口耗尽，导致 WebJobs 无法连接到 SQL 数据库，则不会有任何指标显示每个 Web 应用程序进程打开的连接数。 若要查找有问题的 Web 作业，请将多个 Web 作业移到另一个应用服务计划，以确定情况是否有所改善，或者某个计划中仍有问题。 重复该过程，直到找出有问题的 Web 作业。
 
 ### <a name="using-snat-ports-sooner"></a>更快地使用 SNAT 端口
 
-你不能更改任何 Azure 设置以更快地释放已使用的 SNAT 端口，因为根据以下条件发布所有 SNAT 端口，并且该行为是设计使然。
+无法更改任何 Azure 设置来更快地释放已用的 SNAT 端口，因为所有 SNAT 端口是根据下面的条件释放的，且该行为是有意设计的。
  
-* 如果服务器或客户端发送 FINACK，则将在240秒后[释放 SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release)。
-* 如果检测到 RST，则会在15秒后释放 SNAT 端口。
-* 如果已达到空闲超时，则释放端口。
+* 如果服务器或客户端发送 FINACK，则会在 240 秒后[释放 SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release)。
+* 如果出现 RST，则会在 15 秒后释放 SNAT 端口。
+* 如果已达到空闲超时，则会释放端口。
  
 ## <a name="additional-information"></a>其他信息
 
-* [应用服务的 SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
+* [包含应用服务的 SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
 * [排查 Azure 应用服务中应用性能缓慢的问题](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)

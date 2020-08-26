@@ -3,24 +3,25 @@ title: 将环境连接到 Power BI - Azure 时序见解 | Microsoft Docs
 description: 了解如何将 Azure 时序见解连接到 Power BI，以便在整个组织中共享、绘制图表和显示数据。
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046710"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>在 Power BI 中可视化时序见解的数据
+# <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>在 Power BI 中直观显示 Azure 时序见解中的数据
 
-Azure 时序见解是可在云中存储、管理、查询和可视化时序数据的平台。 [Power BI](https://powerbi.microsoft.com) 是一个业务分析工具，它提供丰富的可视化功能让你在组织中共享见解和结果。 这两个服务现在可以集成到一起，以充分利用时序见解和 Power BI 固有的可视化功能。
+Azure 时序见解是可在云中存储、管理、查询和可视化时序数据的平台。 [Power BI](https://powerbi.microsoft.com) 是一个业务分析工具，它提供丰富的可视化功能让你在组织中共享见解和结果。 现在，这两项服务都可以集成，以充分利用 Azure 时序见解的固有可视化功能和 Power BI。
 
 将了解如何执行以下操作：
 
-* 使用云连接器将时序见解连接到 Power BI
+* 使用云连接器将 Azure 时序见解连接到 Power BI
 * 使用 Power BI 中的数据创建视觉对象
 * 将报表发布到 Power BI，然后与组织中的其他人共享
 
@@ -31,16 +32,18 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 ## <a name="prerequisites"></a>先决条件
 
 * 下载并安装最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
-* 具有或创建[Azure 时序见解预览版实例](time-series-insights-update-how-to-manage.md)
+* 具有或创建[Azure 时序见解 Gen2 环境](time-series-insights-update-how-to-manage.md)
 
 > [!IMPORTANT]
-> 目前，在为**热商店**配置的时序见解预览即*用即付*环境中目前支持 Power BI 连接器。
+>
+> * 目前仅在配置了**热存储**的 Azure 时序见解 Gen2 环境中支持连接器。
+> * 如果你有来自另一个 Azure AD 租户的 Azure 时序见解 Gen2 环境的来宾访问权限，你将无法访问该连接器。 了解[环境访问策略](./concepts-access-policies.md)。
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>将数据从时序见解连接到 Power BI
+## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>将数据从 Azure 时序见解连接到 Power BI
 
-若要将时序见解环境连接到 Power BI，请执行以下步骤：
+若要将 Azure 时序见解环境连接到 Power BI，请执行以下步骤：
 
-1. 打开时序见解资源管理器
+1. 打开 Azure 时序见解资源管理器
 1. 将数据导出为查询或原始数据
 1. 打开 Power BI Desktop
 1. 从自定义查询加载
@@ -49,10 +52,10 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 开始操作：
 
-1. 打开时序见解预览版资源管理器并整理数据。
+1. 打开 Azure 时序见解 Gen2 资源管理器并组织数据。
 1. 创建满意的视图后，请导航到 "**更多操作**" 下拉菜单，并选择 "**连接到 Power BI**"。
 
-    [![时序见解预览浏览器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure 时序见解 Gen2 资源管理器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. 在此选项卡中设置参数：
 
@@ -64,11 +67,11 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
        > 以后始终可以在 Power BI 中聚合数据，但聚合后无法还原为原始数据。 
        
        > [!NOTE]
-       > 原始事件级别数据的事件计数限制为 10 万个。
+       > 原始事件级别数据的事件计数限制为250000。
 
-       [![与](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![连接](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. 如果尚未为**热商店**配置时序见解实例，则会收到警告。
+   1. 如果尚未使用**热存储**配置 Azure 时序见解环境，将收到一条警告。
 
        [![热存储警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
@@ -81,9 +84,9 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
     [![主下拉列表](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. 搜索“时序见解”，依次选择“Azure 时序见解(Beta)”、“连接”。************
+1. 搜索**Azure 时序见解**，选择 " **azure 时序见解（Beta）**"，然后单击 "**连接**"。
 
-    [![将 Power BI 连接到时序见解](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![将 Power BI 连接到 Azure 时序见解](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     或者，导航到“Azure”选项卡，并依次选择“Azure 时序见解(Beta)”、“连接”。************
     
@@ -146,5 +149,3 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 * 了解 Azure 时序见解的 [Power BI 连接器概念](https://docs.microsoft.com/power-bi/desktop-query-overview)。
 
 * 详细了解 [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview)。
-
-* 阅读[时序见解 GA 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)和[时序见解预览资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)。

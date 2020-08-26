@@ -3,13 +3,13 @@ title: 使用 Azure Cosmos DB 和 Azure Functions 存储非结构化数据
 description: 使用 Azure Functions 和 Cosmos DB 存储非结构化数据
 ms.topic: quickstart
 ms.date: 04/14/2020
-ms.custom: mvc
-ms.openlocfilehash: 09d9bbca7119539f31a4cea056f338cf28dfcd23
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121838"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210876"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 

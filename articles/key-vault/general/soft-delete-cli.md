@@ -1,20 +1,20 @@
 ---
 title: Azure Key Vault - 如何将软删除与 CLI 配合使用
-description: 使用 CLI 代码剪辑进行软删除的用例示例
+description: 了解如何使用 Azure CLI 来使用 Azure Key Vault 的软删除功能，该功能允许恢复密钥保管库和密钥保管库对象。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: how-to
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202019"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585655"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新的密钥保管库
 
-通过向创建命令添加软删除启用标志，在创建时启用对新密钥保管库的软删除。
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+默认情况下，自动对所有密钥保管库启用软删除。 2020 年 12 月 31 日前，无法在禁用软删除的情况下创建新的密钥保管库。
 
 ### <a name="verify-soft-delete-enablement"></a>验证软删除支持
 
@@ -245,6 +241,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>其他资源
 
-- 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](overview-soft-delete.md)。
+- 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
 - 有关 Azure Key Vault 使用情况的综述，请参阅[什么是 Azure Key Vault？](overview.md)。
 

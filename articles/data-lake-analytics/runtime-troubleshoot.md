@@ -2,18 +2,17 @@
 title: 如何排查 Azure Data Lake Analytics 的 U SQL 运行时故障
 description: 了解如何对 SQL 运行时故障进行故障排除。
 services: data-lake-analytics
-author: guyhay
-ms.author: guyhay
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 1e3fb218e6cda5619bfa1a0936e07d6731a9cc93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73648449"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475254"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>了解如何排查由运行时更改引起的 SQL 运行时故障
 
@@ -47,11 +46,6 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 例如，release_20190318_adl_3394512_2 表示3394512年 3 18 2019 月版的运行时版本的第二个版本，而 release_20190318_adl_3394512_private 表示同一版本的专用生成。 注意：该日期与上次签入的时间有关，而不一定是正式发布日期。
 
-下面是当前可用的运行时版本。
-
-- release_20190318_adl_3394512
-- release_20190318_adl_5832669 当前默认值
-- release_20190703_adl_4713356
 
 ## <a name="troubleshooting-u-sql-runtime-version-issues"></a>排查 U-SQL 运行时版本问题
 

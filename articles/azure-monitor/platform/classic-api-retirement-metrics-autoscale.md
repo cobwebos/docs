@@ -4,12 +4,12 @@ description: 指标和自动缩放经典 API（也称为 Azure 服务管理 (ASM
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505425"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317376"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 
@@ -21,7 +21,7 @@ ms.locfileid: "86505425"
 
 如果你是通过 Azure 门户、[新的 Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)、PowerShell、CLI 或资源管理器模板管理自动缩放，则不需要采取任何措施。  
 
-如果你是通过 Azure 门户或各种[监视合作伙伴服务](../../azure-monitor/platform/partners.md)使用指标，则不需要采取任何措施。 Microsoft 正在配合监视合作伙伴迁移到新的 API。
+如果你是通过 Azure 门户或各种[监视合作伙伴服务](./partners.md)使用指标，则不需要采取任何措施。 Microsoft 正在配合监视合作伙伴迁移到新的 API。
 
 ## <a name="who-is-affected"></a>哪些用户受影响
 
@@ -89,3 +89,4 @@ ms.locfileid: "86505425"
 
 - [Azure Monitor 的新版 REST API](/rest/api/monitor/) 
 - [新版 Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

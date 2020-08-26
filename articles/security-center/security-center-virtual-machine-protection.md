@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d79d1bf846cc023b86c3e33b17c91cce77ffe9ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089866"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
 在 Azure 安全中心识别出潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
@@ -122,7 +123,7 @@ ms.locfileid: "85799728"
 
 
 ### <a name="app-services"></a><a name="app-services"></a>应用服务
-若要查看应用服务信息，你必须在安全中心的“标准”定价层上，并在订阅中启用应用服务。 有关如何启用此功能的说明，请参阅[使用 Azure 安全中心保护应用服务](security-center-app-services.md)。
+若要查看应用服务信息，你必须位于安全中心的标准定价层并在你的订阅中启用应用服务。 有关如何启用此功能的说明，请参阅[使用 Azure 安全中心保护应用服务](security-center-app-services.md)。
 
 在“应用服务”下，可以看到应用服务环境的列表，以及安全中心执行评估后提供的运行状况摘要。
 

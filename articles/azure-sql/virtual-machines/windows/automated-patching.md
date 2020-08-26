@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f1f564a36a3f0103832bc81bbbc65d2818c03143
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086755"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 虚拟机（资源管理器）上 SQL Server 的自动修补
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "86231998"
 
 **Azure PowerShell**：
 
-* 如果打算使用 PowerShell 配置自动修补，请[安装最新的 Azure PowerShell 命令](/powershell/azure/overview)。
+* 如果打算使用 PowerShell 配置自动修补，请[安装最新的 Azure PowerShell 命令](/powershell/azure/)。
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

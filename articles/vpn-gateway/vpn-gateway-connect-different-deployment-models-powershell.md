@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082046"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
 
@@ -37,7 +37,7 @@ ms.locfileid: "86040737"
 
 * 已创建了两个 VNet。 如果需要创建资源管理器虚拟网络，请参阅[创建资源组和虚拟网络](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)。 若要创建经典虚拟网络，请参阅[创建经典 VNet](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)。
 * 两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
-* 已安装最新的 PowerShell cmdlet。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
+* 已安装最新的 PowerShell cmdlet。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/) 。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
 
 ### <a name="example-settings"></a><a name="exampleref"></a>示例设置
 

@@ -2,23 +2,24 @@
 title: 如何使用非交互式登录保护单页面应用程序
 titleSuffix: Azure Maps
 description: 如何使用非交互式 Azure AD 基于角色的访问控制和 Azure Maps Web SDK 配置单页面应用程序。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d33fbdf2e95faaa82c13b4fc0d52ea3f188c3f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988318"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006411"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
-以下指南适用于使用 Azure Active Directory （Azure AD）的应用程序，以便在用户无法登录到 Azure AD 时提供 Azure Maps 应用程序的访问令牌。 此流需要托管 web 服务，该服务必须受保护才能仅由单页 web 应用程序访问。 有多个实现可实现 Azure AD 的身份验证。 本指南利用产品和 Azure 函数获取访问令牌。
+以下指南适用于使用 Azure Active Directory (Azure AD) 的应用程序，以便在用户无法登录 Azure Maps 时提供访问令牌，以 Azure AD 应用程序。 此流需要托管 web 服务，该服务必须受保护才能仅由单页 web 应用程序访问。 有多个实现可实现 Azure AD 的身份验证。 本指南利用产品和 Azure 函数获取访问令牌。
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -101,14 +102,14 @@ ms.locfileid: "84988318"
 
 ## <a name="grant-role-based-access"></a>授予基于角色的访问权限
 
-可以通过将系统分配的标识分配给一个或多个 Azure 角色定义来授予*基于角色的访问控制*（RBAC）。 若要查看 Azure Maps 可用的 RBAC 角色定义，请访问 "**访问控制（IAM）**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
+可以通过将系统分配的标识分配给一个或多个 Azure 角色定义，将*基于角色的访问控制授予 AZURE RBAC) access (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请**访问 (IAM) 的 "访问控制**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
 
-1. 中转到你的**Azure Maps 帐户**。 选择 "**访问控制（IAM）**  >  **角色分配**"。
+1. 中转到你的**Azure Maps 帐户**。 ** (IAM) **  >  **角色分配**选择 "访问控制"。
 
     > [!div class="mx-imgBorder"]
-    > ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![使用 Azure RBAC 授予访问权限](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 然后，选择“保存”。
+2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 再选择“保存”。
 
    * 有关[添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
 

@@ -11,14 +11,15 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-- tracking-python
+- devx-track-python
+- 'Role: Cloud Development'
 ms.date: 06/16/2020
-ms.openlocfilehash: f49f2156a6d0e1b5563145c00007746ef4a1bf51
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 3df26f78e66aa1806fd13fd1a46444bb5dc79742
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904901"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876217"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
@@ -80,7 +81,7 @@ az extension add --name azure-iot
 
     稍后会在快速入门中用到此值。
 
-1. 还需要使用来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
+1. 还需要使用与事件中心兼容的终结点、与事件中心兼容的路径和 IoT 中心的服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -131,7 +132,7 @@ az extension add --name azure-iot
 
 2. 在所选的文本编辑器中打开 read_device_to_cloud_messages_sync.py 文件。 更新以下变量并保存对文件所做的更改。
 
-    | 变量 | 值 |
+    | 变量 | Value |
     | -------- | ----------- |
     | `EVENTHUB_COMPATIBLE_ENDPOINT` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
     | `EVENTHUB_COMPATIBLE_PATH`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |

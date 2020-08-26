@@ -2,26 +2,26 @@
 title: 如何保护守护程序应用程序
 titleSuffix: Azure Maps
 description: 使用 Azure 门户管理身份验证以配置受信任的后台应用程序。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fa3492b0cd71e61900dc4be150cd0f0169379ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988346"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006632"
 ---
 # <a name="secure-a-daemon-application"></a>保护后台应用程序
 
 以下指南适用于受信任且安全的环境中托管的后台进程、计时器和作业。 示例包括 Azure Web 作业、Azure Function App、Windows 服务和任何其他可靠的后台服务。
 
 > [!Tip]
-> Microsoft 建议实现适用于生产应用程序的 Azure Active Directory （Azure AD）和基于角色的访问控制（RBAC）。 有关概念的概述，请参阅[Azure Maps Authentication](./azure-maps-authentication.md)。
+> Microsoft 建议实现 Azure Active Directory (Azure AD) 和 Azure 基于角色的访问控制 (用于生产应用程序的 Azure RBAC) 。 有关概念的概述，请参阅[Azure Maps Authentication](./azure-maps-authentication.md)。
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "84988346"
 > [!Tip]
 > 如果应用托管在 Azure 环境中，则应实现托管标识，以降低管理机密以 Azure Key Vault 进行身份验证所需的成本和复杂性。 请参阅以下 Azure Key Vault[教程，通过托管标识进行连接](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)。
 
-后台应用程序负责从安全存储中检索共享密钥。 具有 Azure Key Vault 的实现要求通过 Azure AD 进行身份验证才能访问机密。 相反，我们鼓励直接 Azure AD RBAC 身份验证 Azure Maps，因为使用共享密钥身份验证的其他复杂性和操作要求。
+后台应用程序负责从安全存储中检索共享密钥。 具有 Azure Key Vault 的实现要求通过 Azure AD 进行身份验证才能访问机密。 相反，我们鼓励直接 Azure AD 身份验证 Azure Maps，因为使用共享密钥身份验证的其他复杂性和操作要求。
 
 > [!IMPORTANT]
 > 为了简化密钥再生，建议应用程序一次使用一个密钥。 然后，应用程序可以重新生成未使用的密钥，并将新的再生密钥部署到受保护的机密存储区，如 Azure Key Vault。
@@ -107,24 +107,24 @@ ms.locfileid: "84988346"
         > [!div class="mx-imgBorder"]
         > ![添加客户端密码](./media/how-to-manage-authentication/add-key.png)
 
-### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>向后台应用程序授予基于角色的访问权限，以便 Azure Maps
+### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>向后台应用程序授予基于角色的访问权限以便 Azure Maps
 
-可以通过将创建的托管标识或服务主体分配给一个或多个 Azure Maps 访问控制角色定义来授予*基于角色的访问控制*（RBAC）。 若要查看 Azure Maps 可用的 RBAC 角色定义，请访问 "**访问控制（IAM）**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
+通过将创建的托管标识或服务主体分配给一个或多个 Azure Maps 角色定义，可以* (AZURE RBAC) 授予 azure 基于角色的访问控制*。 若要查看可用于 Azure Maps 的 Azure 角色定义，请**访问 (IAM) 的 "访问控制**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
 
 > [!div class="mx-imgBorder"]
 > ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. 中转到你的**Azure Maps 帐户**。 选择 "**访问控制（IAM）**"  >  **角色分配**。
+1. 中转到你的**Azure Maps 帐户**。 选择“访问控制(IAM)” > “角色分配”。
 
     > [!div class="mx-imgBorder"]
-    > ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![使用 Azure RBAC 授予访问权限](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. 在 "**角色分配**" 选项卡上，**添加**角色分配。 
     
     > [!div class="mx-imgBorder"]
     > ![添加角色分配](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. 选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择 "使用**用户分配**的托管标识系统**Azure AD 用户、组或服务主体**或托管标识" 分配的托管标识  /  **System assigned Managed identity**。 选择主体。 然后，选择“保存”。
+3. 选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择 "使用**用户分配**的托管标识系统**Azure AD 用户、组或服务主体**或托管标识" 分配的托管标识  /  **System assigned Managed identity**。 选择主体。 再选择“保存”。
 
     > [!div class="mx-imgBorder"]
     > ![添加角色分配](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

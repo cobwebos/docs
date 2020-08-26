@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e33cd64da32dcb918d30cd44f413748f719023b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e67dc0da7f81f73d8237769e7aea90f9bc1585
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771285"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833413"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -68,7 +69,7 @@ Jeff（工作负荷所有者）
 * 调查各种攻击
 * 与云工作负荷所有者协作应用补救措施
 
-安全中心使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。 用户打开安全中心时，只能看到有权访问的资源的相关信息。 这意味着，可以将资源所属的订阅或资源组的“所有者”、“参与者”或“读者”角色分配给用户。 除这些角色外，还有两个特定的安全中心角色：
+安全中心使用[AZURE RBAC)  (azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)，它提供可分配给 Azure 中的用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。 用户打开安全中心时，只能看到有权访问的资源的相关信息。 这意味着，可以将资源所属的订阅或资源组的“所有者”、“参与者”或“读者”角色分配给用户。 除这些角色外，还有两个特定的安全中心角色：
 
 - 安全读取者：属于此角色的用户只能查看安全中心配置（包括建议、警报、策略和运行状况），无法进行更改。
 - 安全管理员：与安全读取者一样，但它还可更新安全策略，消除建议和警报。
@@ -134,7 +135,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 ### <a name="agent"></a>Agent
 
-如果在安全策略中启用了自动预配，则会在所有支持的 Azure Vm 和创建的任何新 Vm 上安装 Log Analytics 代理（适用于[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)）。 如果 VM 或计算机已安装 Log Analytics 代理，则 Azure 安全中心将利用当前安装的代理。 代理的进程设计为无干扰性，对 VM 性能的影响非常小。
+如果在安全策略中启用了自动预配，则会在所有支持的 Azure Vm 和创建的任何新 Vm 上安装适用于[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) 的 Log Analytics 代理 (。 如果 VM 或计算机已安装 Log Analytics 代理，则 Azure 安全中心将利用当前安装的代理。 代理的进程设计为无干扰性，对 VM 性能的影响非常小。
 
 适用于 Windows 的 Log Analytics 代理要求使用 TCP 端口443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
 

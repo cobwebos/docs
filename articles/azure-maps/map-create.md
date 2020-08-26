@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure Maps 创建地图 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Microsoft Azure map Web SDK 在网页上呈现地图。
-author: Philmea
-ms.author: philmea
+description: 了解如何使用 Azure Maps Web SDK 将地图添加到网页。 了解动画、样式、照相机、服务和用户交互选项。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 9566bcc329b4d148fe9454fe70b556a9010fc4ac
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124017"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036464"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -26,7 +27,7 @@ ms.locfileid: "83124017"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="基本地图负载" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>方式" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
+请参阅 CodePen 上的 "通过 Azure Maps () 进行的<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 > [!TIP]
@@ -39,7 +40,7 @@ ms.locfileid: "83124017"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上 Azure Maps （）中的<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
@@ -127,6 +128,47 @@ map.setCamera({
 <iframe height='500' scrolling='no' title='将地图视图制成动画' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animate Map View</a>（将地图视图制成动画）。
 </iframe>
 
+## <a name="request-transforms"></a>请求转换
+
+有时，能够修改地图控件发出的 HTTP 请求会很有用。 例如：
+
+- 向磁贴请求添加其他标头。 这通常是针对密码保护的服务完成的。
+- 修改 Url 以通过代理服务运行请求。
+
+该映射的[服务选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions)具有一个 `transformRequest` ，可用于修改由映射发出的所有请求。 `transformRequest`选项是一个函数，该函数采用两个参数：一个字符串 URL，以及一个表示请求用途的资源类型字符串。 此函数必须返回[RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters)结果。
+
+```JavaScript
+transformRequest: (url: string, resourceType: string) => RequestParameters
+```
+
+下面的示例演示如何使用此方法， `https://example.com` 通过将用户名和密码添加为请求的标头来修改对大小的所有请求。
+
+```JavaScript
+var map = new atlas.Map('myMap', {
+    transformRequest: function (url, resourceType) {
+        //Check to see if the request is to the specified endpoint.
+        if (url.indexOf('https://examples.com') > -1) {
+            //Add custom headers to the request.
+            return {
+                url: url,
+                header: {
+                    username: 'myUsername',
+                    password: 'myPassword'
+                }
+            };
+        }
+
+        //Return the URL unchanged by default.
+        return { url: url };
+    },
+
+    authOptions: {
+        authType: 'subscriptionKey',
+        subscriptionKey: '<Your Azure Maps Key>'
+    }
+});
+```
+
 ## <a name="try-out-the-code"></a>试用代码
 
 查看代码示例。 您可以在 " **JS" 选项卡**中编辑 JavaScript 代码，然后在 "结果"**选项卡**上查看地图视图更改。还可以单击右上角的**CodePen 上**的 "编辑"，并在 CodePen 中修改代码。
@@ -155,4 +197,4 @@ map.setCamera({
 > [将控件添加到地图](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

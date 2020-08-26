@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757590"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717024"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>计划 Azure 多重身份验证部署
 
@@ -73,7 +74,7 @@ Microsoft 提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文�
 
 条件访问策略强制执行注册，要求未注册的用户在首次登录时完成注册，这是一个重要的安全注意事项。
 
-[Azure AD 标识保护](../identity-protection/howto-configure-risk-policies.md)为 Azure 多重身份验证过程提供注册策略和自动风险检测和修正策略。 可以创建策略，以便在存在标识泄露威胁时强制更改密码，或者在登录操作被以下[事件](../reports-monitoring/concept-risk-events.md)视为有风险时要求使用 MFA：
+[Azure AD 标识保护](../identity-protection/howto-identity-protection-configure-risk-policies.md)为 Azure 多重身份验证过程提供注册策略和自动风险检测和修正策略。 可以创建策略，以便在存在标识泄露威胁时强制更改密码，或者在登录操作被以下[事件](../identity-protection/overview-identity-protection.md)视为有风险时要求使用 MFA：
 
 * 已泄漏凭据
 * 从匿名 IP 地址登录
@@ -107,6 +108,9 @@ Azure Active Directory 标识保护检测到的某些风险检测是实时发生
 ## <a name="plan-authentication-methods"></a>计划身份验证方法
 
 管理员可以选择要为用户提供的[身份验证方法](../authentication/concept-authentication-methods.md)。 请务必允许多种身份验证方法，以便用户在其主要方法不可用时具有可用的备用方法。 管理员可以使用以下方法：
+
+> [!TIP]
+> Microsoft 建议使用移动应用作为 Azure 多重身份验证的主要方法，以获得最佳安全和用户体验。
 
 ### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
 
@@ -147,7 +151,7 @@ Azure Active Directory 标识保护检测到的某些风险检测是实时发生
 
 ### <a name="registration-with-identity-protection"></a>使用标识保护进行注册
 
-如果你的组织使用 Azure Active Directory 标识保护，请[配置 MFA 注册策略](../identity-protection/howto-mfa-policy.md)，以提示用户在下次以交互方式登录时进行注册。
+如果你的组织使用 Azure Active Directory 标识保护，请[配置 MFA 注册策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)，以提示用户在下次以交互方式登录时进行注册。
 
 ### <a name="registration-without-identity-protection"></a>不使用标识保护进行注册
 
@@ -161,7 +165,7 @@ Azure Active Directory 标识保护检测到的某些风险检测是实时发生
 2. 使用条件访问，对此组强制执行多重身份验证以访问所有资源。
 3. 定期重新评估组成员身份，并从组中删除已注册的用户。
 
-可以通过依赖于 [MSOnline PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)的 PowerShell 命令标识已注册和未注册的 Azure MFA 用户。
+可以通过依赖于 [MSOnline PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)的 PowerShell 命令标识已注册和未注册的 Azure MFA 用户。
 
 #### <a name="identify-registered-users"></a>标识已注册用户
 
@@ -277,7 +281,7 @@ NPS 扩展在 RADIUS 与基于云的 Azure MFA 之间充当适配器，以提供
 
 #### <a name="implementing-your-nps-server"></a>实现 NPS 服务器
 
-如果已部署并且正在使用 NPS 实例，请参阅[将现有 NPS 基础结构与 Azure 多重身份验证集成](howto-mfa-nps-extension.md)。 如果是第一次设置 NPS，请参阅[网络策略服务器 (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) 以查看说明。 可在[解决 Azure 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)一文中找到故障排除指南。
+如果已部署并且正在使用 NPS 实例，请参阅[将现有 NPS 基础结构与 Azure 多重身份验证集成](howto-mfa-nps-extension.md)。 如果是第一次设置 NPS，请参阅[网络策略服务器 (NPS)](/windows-server/networking/technologies/nps/nps-top) 以查看说明。 可在[解决 Azure 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)一文中找到故障排除指南。
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>为未注册 MFA 的用户准备 NPS
 
@@ -321,7 +325,7 @@ Windows 安全日志和 AD FS 管理员日志中的标准 AD FS 2016 和 2019 �
 
 在每个 AD FS 服务器上，本地计算机的“我的应用商店”中有一个名为“OU=Microsoft AD FS Azure MFA”的自签名 Azure MFA 证书，其中包含证书到期日期。 检查每个 AD FS 服务器上此证书的有效期，以确定到期日期。
 
-如果证书的有效期接近到期时间，[在每个 AD FS 服务器上生成并验证新的 MFA 证书](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)。
+如果证书的有效期接近到期时间，[在每个 AD FS 服务器上生成并验证新的 MFA 证书](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)。
 
 以下指南详细介绍了如何管理 AD FS 服务器上的 Azure MFA 证书。 使用 Azure MFA 配置 AD FS 时，通过 `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet 生成的证书的有效期为两年。 在到期之前续订并安装续订的证书，以避免 MFA 服务中断。
 
@@ -332,7 +336,7 @@ Windows 安全日志和 AD FS 管理员日志中的标准 AD FS 2016 和 2019 �
 1. 满足任何必需的先决条件
    1. 为任意混合方案部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
    1. 在为云访问发布的任意本地应用上部署 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)
-   1. 为任意 RADIUS 身份验证部署 [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+   1. 为任意 RADIUS 身份验证部署 [NPS](/windows-server/networking/technologies/nps/nps-top)
    1. 确保用户已升级到支持的 Microsoft Office 版本，并启用新式身份验证
 1. 配置所选的[身份验证方法](#choose-verification-options)
 1. 定义[命名网络位置](../conditional-access/location-condition.md#named-locations)
@@ -340,7 +344,7 @@ Windows 安全日志和 AD FS 管理员日志中的标准 AD FS 2016 和 2019 �
 1. 配置[条件访问策略](#create-conditional-access-policy)
 1. 配置 MFA 注册策略
    1. [已合并 MFA 和 SSPR](howto-registration-mfa-sspr-combined.md)
-   1. 使用[标识保护](../identity-protection/howto-mfa-policy.md)
+   1. 使用[标识保护](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
 1. 发送用户通信并使用户在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 上注册
 1. [跟踪注册者](#identify-non-registered-users)
 

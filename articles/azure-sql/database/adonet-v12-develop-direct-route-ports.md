@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: 85d8d288a8b2d0f256294b0c8975afc367e6e381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ddcd083dfae1d0d4b79cd534b6ae4d034903b9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736044"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759302"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,14 +37,14 @@ ms.locfileid: "84736044"
 
 ### <a name="inside-client-runs-on-azure"></a>*内部：* 客户端在 Azure 上运行
 
-当客户端在 Azure 云边界内运行时，它将使用我们可以调用*直接路由*来与 SQL 数据库进行交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何 Azure SQL 数据库网关。
+如果客户端在 Azure 云边界内部运行，则它使用我们所谓的直接路由来与 SQL 数据库交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何 Azure SQL 数据库网关。
 
 顺序如下：
 
 1. ADO.NET 4.5（或更高版本）发起与 Azure 云的简短交互，并接收动态识别的端口号。
 
    * 动态识别的端口号范围为 11000-11999。
-2. 然后，ADO.NET 直接连接到 SQL 数据库，中间没有中间件。
+2. 然后，ADO.NET 不通过任何中间件直接连接到 SQL 数据库。
 3. 查询直接发送到数据库，结果直接返回到客户端。
 
 确保 Azure 客户端计算机上 11000-11999 的端口范围已保留，供 ADO.NET 4.5 客户端与 SQL 数据库的交互使用。
@@ -77,7 +77,7 @@ ms.locfileid: "84736044"
 * ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在 [此处](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)访问 .NET 团队的博客通告。
   * 可以在 [此处](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)访问有关 ADO.NET 4.5.1 的博客文章。
 
-* Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux 和 macOS https://www.microsoft.com/download/details.aspx?id=56567
+* Microsoft ODBC Driver 17 for SQL Serverhttps://aka.ms/downloadmsodbcsql
 
 * 通过重定向连接到 Azure SQL 数据库 V12 https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 

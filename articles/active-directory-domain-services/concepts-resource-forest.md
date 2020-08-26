@@ -10,22 +10,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 310527d8e98e474faa43f19406f037e1a3835756
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040259"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480401"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory 的资源林概念和功能
 
-Azure Active Directory 域服务（Azure AD DS）为旧的本地业务线应用程序提供登录体验。 本地和云用户的用户、组和密码哈希会同步到 Azure AD DS 托管域。 这些同步密码哈希可为用户提供一组可用于本地 AD DS、Office 365 和 Azure Active Directory 的凭据。
+Azure Active Directory 域服务 (Azure AD DS) 为旧的本地业务线应用程序提供登录体验。 本地和云用户的用户、组和密码哈希会同步到 Azure AD DS 托管域。 这些同步密码哈希可为用户提供一组可用于本地 AD DS、Office 365 和 Azure Active Directory 的凭据。
 
 尽管安全并提供额外的安全好处，但某些组织无法将这些用户密码哈希同步到 Azure AD 或 Azure AD DS。 组织中的用户可能不知道其密码，因为他们只使用智能卡身份验证。 这些限制可防止某些组织使用 Azure AD DS 将本地经典应用程序直接迁移到 Azure。
 
-为了满足这些需求和限制，你可以创建使用资源林的托管域。 本文介绍什么是林，以及它们如何信任其他资源来提供安全的身份验证方法。 Azure AD DS 资源林目前为预览版。
-
-> [!IMPORTANT]
-> Azure AD DS 资源林目前不支持 Azure HDInsight 或 Azure 文件存储。 默认 Azure AD DS 用户林支持这两个附加服务。
+若有满足这些需求和限制，可以创建使用资源林的托管域。 本文介绍什么是林，以及它们如何信任其他资源来提供安全的身份验证方法。
 
 ## <a name="what-are-forests"></a>什么是林？
 
@@ -33,9 +31,9 @@ Azure Active Directory 域服务（Azure AD DS）为旧的本地业务线应用�
 
 在 Azure AD DS 托管域中，林只包含一个域。 本地 AD DS 林通常包含许多域。 在大型组织中，特别是在合并和收购之后，最终可能会得到多个本地林，每个林又包含多个域。
 
-默认情况下，托管域作为*用户*林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 用户帐户可以直接针对托管域进行身份验证，例如登录到已加入域的 VM。 当可以同步密码哈希，并且用户不使用独占登录方法（如智能卡身份验证）时，用户林可发挥作用。
+默认情况下，托管域是作为用户林创建的。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 用户帐户可以直接通过托管域进行身份验证，以便执行相关操作，例如登录到已加入域的 VM。 当可以同步密码哈希，并且用户不使用独占登录方法（如智能卡身份验证）时，用户林可发挥作用。
 
-在托管域*资源*林中，用户从本地 AD DS 对单向林*信任*进行身份验证。 采用此方法时，用户对象和密码哈希不会同步到托管域。 用户对象和凭据仅存在于本地 AD DS 中。 此方法使企业可以在 Azure 中托管依赖于经典身份验证（如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，不过可消除任何身份验证问题或疑虑。 Azure AD DS 资源林目前为预览版。
+在托管域*资源*林中，用户从本地 AD DS 对单向林*信任*进行身份验证。 采用此方法时，用户对象和密码哈希不会同步到托管域。 用户对象和凭据仅存在于本地 AD DS 中。 此方法使企业可以在 Azure 中托管依赖于经典身份验证（如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，不过可消除任何身份验证问题或疑虑。
 
 资源林还提供一次一个组件地直接迁移应用程序的功能。 许多旧的本地应用程序是多层的，通常使用 Web 服务器或前端以及许多数据库相关组件。 这些层使得难以在一步中将整个应用程序直接迁移到云。 利用资源林，可以分阶段地将应用程序提升到云，这样可以更轻松地将应用程序移动到 Azure。
 
@@ -115,7 +113,7 @@ AD DS Dc 使用以下协议之一对用户和应用程序进行身份验证：
 
 若要了解有关信任的详细信息，请参阅[林信任如何在 Azure AD DS 中发挥作用？][concepts-trust]
 
-若要开始使用资源林创建托管域，请参阅[创建和配置 AZURE AD DS 托管域][tutorial-create-advanced]。 随后可以[创建到本地域的出站林信任（预览）][create-forest-trust]。
+若要开始使用资源林创建托管域，请参阅[创建和配置 Azure AD DS 托管域][tutorial-create-advanced]。 然后，你可以[创建到本地域的出站林信任][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

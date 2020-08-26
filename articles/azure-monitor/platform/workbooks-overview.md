@@ -6,18 +6,22 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560149"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799559"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
 工作簿提供了一块灵活的画布，以用于分析数据以及在 Azure 门户中创建丰富的视觉报告。 使用工作簿可以在整个 Azure 中接入多个数据源，并将其组合成统一的交互式体验。 
+
+下面是有关如何创建工作簿的视频演练。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>数据源
 
@@ -52,9 +56,9 @@ ms.locfileid: "85560149"
 
 若要探索工作簿体验，请先导航到 Azure Monitor 服务。 为此，可以在 Azure 门户的搜索框中键入 **Monitor**。
 
-然后选择“工作簿(预览版)”。
+然后选择 "**工作簿**"。
 
-![在红色框中突出显示的工作簿预览版按钮的屏幕截图](./media/workbooks-overview/workbooks-preview.png)
+![在红色框中突出显示的工作簿按钮屏幕截图](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>库
 
@@ -127,4 +131,4 @@ ms.locfileid: "85560149"
 ## <a name="next-step"></a>后续步骤
 
 * [开始](workbooks-visualizations.md)详细了解工作簿的丰富可视化选项。
-* [控制](workbooks-access-control.md)和共享对工作簿资源的访问权限。
+* [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

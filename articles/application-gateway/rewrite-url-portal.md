@@ -7,20 +7,23 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2e2925723ee07ee2215bdd82bb730e31cdcdadc9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083151"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>重写 URL，Azure 应用程序网关-Azure 门户（预览版）
 
 本文介绍如何使用 Azure 门户配置[应用程序网关 V2 SKU](application-gateway-autoscaling-zone-redundant.md)实例以重写 URL。
 
+>[!NOTE]
+> URL 重写功能处于预览中，仅可用于应用程序网关 Standard_v2 和 WAF_v2 SKU。 不建议在生产环境中使用它。 若要了解有关预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 若要完成本文中的步骤，需要有应用程序网关 v2 SKU 实例。 V1 SKU 中不支持重写 URL。 如果没有 v2 SKU，请在开始之前创建[应用程序网关 v2 SKU](tutorial-autoscale-ps.md) 实例。
 
@@ -48,7 +51,7 @@ ms.locfileid: "86531085"
     
     b. 选择在“关联的路由规则”列表中列出的一个或多个规则。**** 这用于通过路由规则将重写配置关联到源侦听器。 你可以仅选择那些尚未与其他重写集相关联的路由规则。 已与其他重写集关联的规则将灰显。
     
-    c. 选择“下一步”。
+    c. 选择“**下一步**”。
     
     :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="关联到规则":::
 
@@ -98,7 +101,7 @@ ms.locfileid: "86531085"
     
    f. 选择“确定” 。
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Action":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="操作":::
 
 8. 单击 "**创建**" 创建重写集。
 

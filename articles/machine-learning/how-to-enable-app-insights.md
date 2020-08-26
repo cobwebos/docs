@@ -5,23 +5,23 @@ description: 使用 Azure Application Insights 监视通过 Azure 机器学习�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: ae66447e128b07ce942b8c2fcc66347a31cfe83f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743500"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848851"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何通过以下方式启用 Azure Application Insights，监视部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中 Web 服务终结点的模型以及从中收集数据： 
+本文介绍如何在 Azure Kubernetes Service (AKS) 或 Azure 容器)  (实例（通过通过查询日志和启用 Azure 应用程序 Insights）中收集和监视部署到 Azure Service 中 web 服务终结点的模型： 
 * [Azure 机器学习 Python SDK](#python)
 * [Azure 机器学习工作室](#studio) (https://ml.azure.com )
 
@@ -42,6 +42,18 @@ ms.locfileid: "84743500"
 
 * 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程
 
+## <a name="query-logs-for-deployed-models"></a>已部署模型的查询日志
+
+若要从以前部署的 Web 服务检索日志，请加载该服务并使用 `get_logs()` 函数。 日志可以包含有关部署期间发生的任何错误的详细信息。
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Web 服务元数据和响应数据
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ ms.locfileid: "84743500"
 若要将请求的信息记录到 Web 服务，请将 `print` 语句添加到 score.py 文件。 每个 `print` 语句都会在 Application Insights 的跟踪表中的消息 `STDOUT` 下生成一个条目。 `print` 语句的内容将依次包含在跟踪表的 `customDimensions` 和 `Contents` 下。 如果打印 JSON 字符串，它会在 `Contents` 下的跟踪输出中生成分层数据结构。
 
 你可以直接查询 Azure Application Insights 来访问此数据，或者设置到存储帐户的[连续导出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)以保留更长时间或进一步进行处理。 然后，可以在 Azure 机器学习中使用模型数据来设置标签、重新训练、可解释性、数据分析或其他用途。 
+
 
 <a name="python"></a>
 
@@ -128,6 +141,8 @@ ms.locfileid: "84743500"
 
 3. 生成一个映像并将它部署到 [AKS 或 ACI](how-to-deploy-and-where.md) 上。
 
+有关日志记录和数据收集的详细信息，请参阅在生产中[Azure 机器学习启用日志记录](how-to-enable-logging.md)和[从模型收集数据](how-to-enable-data-collection.md)。
+
 ### <a name="disable-tracking-in-python"></a>在 Python 中禁用跟踪
 
 若要禁用 Azure Application Insights，请使用以下代码：
@@ -153,15 +168,20 @@ ms.locfileid: "84743500"
 1. 选择“启用 Application Insights 诊断和数据收集”
 
     ![启用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>评估数据
+
+## <a name="view-metrics-and-logs"></a>查看指标和日志
+
 服务的数据将存储在 Azure Application Insights 帐户中，此帐户与 Azure 机器学习位于同一资源组。
 查看数据：
 
-1. 转到 [Azure 门户](https://ms.portal.azure.com/)中的 Azure 机器学习工作区，然后单击 Application Insights 链接
+1. 在[工作室](https://ml.azure.com/)中中转到 Azure 机器学习工作区。
+1. 选择“终结点”。
+1. 选择已部署的服务。
+1. 向下滚动以查找**Application Insights url**并选择链接。
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![定位 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 从“概述”选项卡或左侧列表的“监视”部分中，选择“日志” 。
+1. 在 Application Insights 中，从左侧列表中的 "**概述**" 选项卡或 "__监视__" 部分，选择 "__日志__"。
 
     [![监视的“概述”选项卡](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +206,7 @@ ms.locfileid: "84743500"
 
 可以根据需要使用 Azure 数据工厂、Azure ML Pipelines 或其他数据处理工具来转换数据。 转换数据后，可以在 Azure 机器学习工作区中将其注册为数据集。 若要执行此操作，请参阅[如何创建和注册数据集](how-to-create-register-datasets.md)。
 
-   [![连续导出](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="连续导出":::
 
 
 ## <a name="example-notebook"></a>示例笔记本

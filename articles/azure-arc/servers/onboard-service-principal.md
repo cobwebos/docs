@@ -1,23 +1,18 @@
 ---
 title: 将混合计算机大规模连接到 Azure
-description: 本文介绍如何使用 Azure Arc for servers（预览版）通过服务主体将计算机连接到 Azure。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.date: 02/04/2020
+description: 本文介绍如何使用支持 Azure Arc 的服务器 (预览版) 使用服务主体将计算机连接到 Azure。
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103783"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211410"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
-你可以根据自己的需求，使用多个灵活的选项，为环境中的多个 Windows 或 Linux 计算机启用 Azure Arc for servers（预览版）。 使用我们提供的模板脚本，可以自动完成每个安装步骤，包括与 Azure Arc 建立连接。但是，必须使用在目标计算机和 Azure 中拥有提升权限的帐户以交互方式执行此脚本。 若要将计算机连接到 Azure Arc for servers，可以使用 Azure Active Directory [服务主体](../../active-directory/develop/app-objects-and-service-principals.md)，而不要使用特权标识[以交互方式连接计算机](onboard-portal.md)。 服务主体是一种特殊的受限管理标识，它只被授予了使用 `azcmagent` 命令将计算机连接到 Azure 所需的最低权限。 这比使用较高特权的帐户（例如租户管理员）更安全，并且可以遵循我们的访问控制安全性最佳做法。 服务主体只会在加入期间使用，不会用于任何其他目的。  
+你可以在环境中启用启用了 Azure Arc 的服务器 (预览) ，其中包含几个灵活的选项，具体取决于你的要求。 使用我们提供的模板脚本，可以自动完成每个安装步骤，包括与 Azure Arc 建立连接。但是，必须使用在目标计算机和 Azure 中拥有提升权限的帐户以交互方式执行此脚本。 若要将计算机连接到已启用 Azure Arc 的服务器 (预览版) ，可以使用 Azure Active Directory [服务主体](../../active-directory/develop/app-objects-and-service-principals.md) ，而不是使用特权标识以 [交互方式连接计算机](onboard-portal.md)。 服务主体是一种特殊的受限管理标识，它只被授予了使用 `azcmagent` 命令将计算机连接到 Azure 所需的最低权限。 这比使用较高特权的帐户（例如租户管理员）更安全，并且可以遵循我们的访问控制安全性最佳做法。 服务主体只会在加入期间使用，不会用于任何其他目的。  
 
 安装和配置 Connected Machine 代理的安装方法要求你在计算机上拥有管理员权限。 在 Linux 上，需使用 root 帐户；在 Windows 上，需要以“本地管理员组”的成员身份使用这些方法。
 
@@ -25,7 +20,7 @@ ms.locfileid: "86103783"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-此过程结束时，即已成功将混合计算机连接到 Azure Arc for servers。
+在此过程结束时，已成功将混合计算机连接到已启用 Azure Arc 的服务器 (预览) 。
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>创建服务主体以用于大规模加入
 
@@ -76,7 +71,7 @@ ms.locfileid: "86103783"
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安装代理并连接到 Azure
 
-以下步骤使用脚本模板在混合计算机上安装并配置 Connected Machine 代理，该模板执行的步骤与[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文中所述的步骤类似。 不同之处在于，最后一步是通过 `azcmagent` 命令使用服务主体与 Azure Arc 建立连接。 
+以下步骤使用脚本模板在混合计算机上安装并配置 Connected Machine 代理，该模板执行的步骤与[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文中所述的步骤类似。 不同之处在于，最后一步是通过 `azcmagent` 命令使用服务主体与 Azure Arc 建立连接。
 
 下面是配置用于服务主体的 `azcmagent` 命令时需要指定的设置。
 
@@ -110,6 +105,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>此脚本仅支持在64位版本的 Windows PowerShell 中运行。
+>
+
 ### <a name="linux-installation-script"></a>Linux 安装脚本
 
 下面是适用于 Linux 的 Connected Machine 代理安装脚本示例，该脚本已修改为使用服务主体来支持完全自动化的非交互式代理安装。
@@ -131,12 +130,15 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-安装代理并将其配置为连接到 Azure Arc for servers（预览版）后，请转到 Azure 门户，以验证是否已成功连接服务器。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
+>[!NOTE]
+>若要运行**azcmagent**，必须具有 Linux 计算机上的*根*访问权限。
+
+安装代理并将其配置为连接到已启用 Azure Arc 的服务器 (预览) ，请参阅 Azure 门户，验证服务器是否已成功连接。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
 
 ![服务器连接成功](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 来管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 启用监视，等等。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
 - 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

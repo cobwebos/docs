@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, 比较, SDK, 差别, 硬件, 软件
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67452509"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031568"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect 与 Kinect Windows v2 的比较
 
@@ -22,18 +22,18 @@ Azure Kinect DK 硬件和软件开发工具包与 Kinect for Windows v2 之间�
 
 下表列出了 Azure Kinect 开发工具包与 Kinect for Windows v2 之间的大致差别。
 
-|    |      | Azure Kinect DK |  Kinect for Windows v2 |
-|----------|---------------|--------| ------------|
-| **音频** | 详细信息  | 7 麦克风环形阵列 | 4 麦克风线性相控阵列 |
+| 功能 | 类型 | Azure Kinect DK | Kinect for Windows v2 |
+| ------- | ---- | --------------- | --------------------- |
+| **音频：** | 详细信息  | 7 麦克风环形阵列 | 4 麦克风线性相控阵列 |
 | **运动传感器** | 详细信息 | 3 轴加速度传感器，3 轴陀螺仪 | 3 轴加速度传感器 |
-| **RGB 相机**    | 详细信息 | 3840 x 2160 像素 @30 fps | 1920 x 1080 像素 @30 fps |
-| **深度相机**  | 方法   | 时差测距 | 时差测距 |
+| **RGB 照相机**    | 详细信息 | 3840 x 2160 像素 @30 fps | 1920 x 1080 像素 @30 fps |
+| **深度照相机**  | 方法   | 时差测距 | 时差测距 |
 |                   | 解决方法 | 640 x 576 像素 @30 fps | 512 x 424 像素 @ 30 fps |
 |                   |            | 512 x 512 像素 @30 fps |                       |
 |                   |            | 1024x1024 像素 @15 fps |                       |
 | **连接** | 数据 | USB3.1 Gen 1，附带 USB Type-C  | USB 3.1 Gen 1|
 |  | 电源 | 外部 PSU 或 USB-C | 外部 PSU |
-|  | Synchronization | RGB 和深度内部同步，外部设备到设备同步| 仅限 RGB 和深度内部同步 |
+|  | 同步 | RGB 和深度内部同步，外部设备到设备同步| 仅限 RGB 和深度内部同步 |
 | **物理规格** | 维度 | 103 x 39 x 126 毫米 | 249 x 66 x 67 毫米 |
 |  | 重量 | 440 克 | 970 克 |
 | | 安装 | 一颗 ¼-20 UNC 螺丝。 四个内部螺丝固定点 | 一颗 ¼-20 UNC 螺丝 |
@@ -46,10 +46,10 @@ Azure Kinect DK 硬件和软件开发工具包与 Kinect for Windows v2 之间�
 
 | **功能**| **Azure Kinect** | **Kinect for Windows** | **说明** |
 |---------|---------|------------|---------|
-| **深度** | ✔️ | ✔️ |    |   |
+| **Depth** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **彩色** | ✔️ | ✔️ | 彩色格式支持差异，Azure Kinect DK 支持以下相机控件：曝光、白平衡、亮度、对比度、饱和度、清晰度和增益控制 |
-| **音频** | ✔️ | ✔️ | 通过语音 SDK 或 Windows 本机 API 访问 Azure Kinect DK 麦克风 |
+| **颜色** | ✔️ | ✔️ | 颜色格式支持差异，Azure Kinect 深色支持以下相机控件：曝光度、白平衡、亮度、对比度、饱和度、清晰度和增益控制 |
+| **音频：** | ✔️ | ✔️ | 通过语音 SDK 或 Windows 本机 API 访问 Azure Kinect DK 麦克风 |
 | **IMU** | ✔️ |  | Azure Kinect DK 有完整的 6 轴 IMU，Kinect for Windows 仅提供单轴 IMU |
 | **校准数据** | ✔️ | ✔️ | OpenCV 兼容的相机型号校准 |
 | **深度 RGB 内部同步** | ✔️ | ✔️ |  |
@@ -70,7 +70,7 @@ Azure Kinect SDK 的功能集与 Kinect for Windows v2 不同，详述如下：
 | 人体跟踪 | BodyFrame | 人体跟踪 SDK |
 | | BodyIndexFrame | 人体跟踪 SDK  |
 | 协调映射|CoordinateMapper| [传感器 SDK - 图像转换](use-image-transformation.md) |
-|人脸跟踪 | FaceFrame | [认知服务：人脸](https://azure.microsoft.com/services/cognitive-services/face/)       |
+|人脸跟踪 | FaceFrame | [认知服务：面部](https://azure.microsoft.com/services/cognitive-services/face/)       |
 |    语音识别    |    空值                      |    [认知服务：语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>后续步骤

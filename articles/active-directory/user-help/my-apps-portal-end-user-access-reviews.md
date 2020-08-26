@@ -12,11 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741922"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798017"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>在“我的应用”门户中执行访问评审
 
@@ -27,7 +28,7 @@ ms.locfileid: "83741922"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
+>此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="manage-access-reviews"></a>管理访问评审
 
@@ -57,7 +58,7 @@ ms.locfileid: "83741922"
     ![“访问评审”页，其中显示了评审详细信息](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >如果你是管理员，并且可以评审组织对组和应用的访问权限，则会显示不同的页面。 有关评审组织对组或应用的访问权限的详细信息，请参阅[在 Azure AD 访问评审中评审对组或应用程序的访问权限](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review)。
+    >如果你是管理员，并且可以评审组织对组和应用的访问权限，则会显示不同的页面。 有关评审组织对组或应用的访问权限的详细信息，请参阅[在 Azure AD 访问评审中评审对组或应用程序的访问权限](../governance/perform-access-review.md)。
 
 6. 选择“是”将保留该访问权限，选择“否”将删除该访问权限。
 

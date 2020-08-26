@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809179"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001598"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多个 IP 配置上进行负载均衡
 
@@ -38,7 +38,7 @@ ms.locfileid: "84809179"
 
 按照以下步骤来实现本文所概述的场景：
 
-1. 安装 Azure PowerShell 中的说明进行操作。 有关安装最新版本的 Azure PowerShell、选择订阅和登录帐户的信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
+1. 安装 Azure PowerShell 中的说明进行操作。 有关安装最新版本的 Azure PowerShell、选择订阅和登录帐户的信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/) 。
 2. 使用以下设置创建资源组：
 
     ```powershell
@@ -46,7 +46,7 @@ ms.locfileid: "84809179"
     $myResourceGroup = "contosofabrikam"
     ```
 
-    有关详细信息，请参阅[创建资源组](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)中的第 2 步。
+    有关详细信息，请参阅[创建资源组](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)中的第 2 步。
 
 3. [创建可用性集](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json)来包含 VM。 对于此场景，请使用以下命令：
 
@@ -54,14 +54,14 @@ ms.locfileid: "84809179"
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. 按照[创建 Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) 中步骤 3 至 5 的说明准备创建具有单个 NIC 的 VM。 执行步骤 6.1，使用以下命令而不是步骤 6.2：
+4. 按照[创建 Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) 中步骤 3 至 5 的说明准备创建具有单个 NIC 的 VM。 执行步骤 6.1，使用以下命令而不是步骤 6.2：
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    然后完成[创建 Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) 的步骤 6.3 至 6.8。
+    然后完成[创建 Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) 的步骤 6.3 至 6.8。
 
 5. 向每个 VM 中添加另一个 IP 配置。 按照[将多个 IP 地址分配给虚拟机](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add)文章中的说明执行操作。 请使用以下配置设置：
 

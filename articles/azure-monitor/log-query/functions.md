@@ -5,12 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2018
-ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/31/2020
+ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649399"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511932"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -18,20 +19,23 @@ ms.locfileid: "83649399"
 
 ## <a name="create-a-function"></a>创建函数
 
-通过 Azure 门户中的 Log Analytics，单击“保存”然后提供下表中的信息来创建一个函数。
+在 Azure 门户中单击“保存”，然后提供下表中的信息，使用 Log Analytics 创建函数。
 
 | 设置 | 说明 |
 |:---|:---|
 | 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
-| 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
+| Category       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
 
 
 
 
 ## <a name="use-a-function"></a>使用函数
 通过在另一个查询中添加其别名来使用函数。 可以像使用其他任何表一样使用它。
+
+## <a name="function-parameters"></a>函数参数 
+可以向函数添加参数，以便在调用某些变量时可以为其提供值。 当前使用参数创建函数的唯一方法是使用资源管理器模板。 有关示例，请参阅[Azure Monitor 中的日志查询资源管理器模板示例](../samples/resource-manager-log-queries.md#parameterized-function)。
 
 ## <a name="example"></a>示例
 以下示例查询将返回最近一天报告的所有缺失的安全更新。 使用别名 security_updates_last_day 将此查询另存为函数。 

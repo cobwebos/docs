@@ -1,5 +1,5 @@
 ---
-title: 升级到 Azure 认知搜索 .NET SDK 版本 10
+title: 升级到 .NET SDK 版本10
 titleSuffix: Azure Cognitive Search
 description: 从旧版本将代码迁移到 Azure 认知搜索 .NET SDK 版本 10。 了解新增功能和所需的代码更改。
 manager: nitinme
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562381"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905775"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>升级到 Azure 认知搜索 .NET SDK 版本 10
 
-如果使用的是版本9.0 或更早版本的[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文将帮助你将应用程序升级为使用版本10。
+如果你使用的是 9.0 或更低版本的 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文可帮助你升级应用程序，以使用版本 10。
 
 Azure 搜索在版本 10 中重命名为 Azure 认知搜索，但命名空间和包名不变。 以前的 SDK 版本（9.0 及更低版本）仍使用以前的名称。 若要详细了解如何使用 SDK（包括示例），请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](search-howto-dotnet-sdk.md)。
 
-版本10添加了多个功能和 bug 修复，使其与 REST API 版本的功能级别相同 `2019-05-06` 。 如果某项更改会中断现有的代码，我们将[逐步引导你解决相关的问题](#UpgradeSteps)。
+版本 10 中增加了多项功能和 bug 修复，使其功能级别与 REST API 版本 `2019-05-06` 相同。 如果某项更改会中断现有的代码，我们将[逐步引导你解决相关的问题](#UpgradeSteps)。
 
 > [!NOTE]
 > 如果你使用的是版本 8.0-preview 或更低版本，应先升级到版本 9，再升级到版本 10。 有关说明，请参阅[升级到 Azure 搜索 .NET SDK 版本 9](search-dotnet-sdk-migration-version-9.md)。
@@ -32,7 +32,7 @@ Azure 搜索在版本 10 中重命名为 Azure 认知搜索，但命名空间和
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>版本 10 中的新增功能
-Azure 认知搜索 .NET SDK 的第10版 REST API `2019-05-06` 具有以下更新：
+Azure 认知搜索 .NET SDK 版本 10 面向 REST API `2019-05-06`，其中包含以下更新：
 
 * 引入了两项新技能 - [条件技能](cognitive-search-skill-conditional.md)和[文本翻译技能](cognitive-search-skill-text-translation.md)。
 * 重新组织了[整形程序技能](cognitive-search-skill-shaper.md)输入的结构，以适应嵌套上下文的合并。 有关详细信息，请参阅此[示例 JSON 定义](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)。
@@ -68,7 +68,7 @@ Azure 认知搜索 .NET SDK 的第10版 REST API `2019-05-06` 具有以下更新
 
 版本 9 和更低版本中错误地指定了[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)的定义。 
 
-`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。  以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的**顶级字典属性** - 请求被视为来自 REST API 的有效请求。
+`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。 以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的**顶级字典属性** - 请求被视为来自 REST API 的有效请求。
 
 例如，如果你以前尝试按如下所示实例化 `WebApiSkill`：
 

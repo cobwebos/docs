@@ -1,6 +1,6 @@
 ---
 title: Azure 安全性简介 | Microsoft Docs
-description: 了解 Azure 安全性以及其服务和工作原理。
+description: 阅读本概述，亲自介绍 Azure 安全性、其各种服务和工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125662"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835929"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -142,7 +142,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](../../storage/blobs/security-recommendations.md)模型访问存储帐户的存储密钥的情况。
+可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 Azure 角色分配给特定范围内的组和应用程序来授予的。 可以使用[Azure 内置角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](../../storage/blobs/security-recommendations.md)模型访问存储帐户的存储密钥的情况。
 
 ### <a name="shared-access-signature"></a>共享访问签名
 [共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
@@ -233,11 +233,11 @@ Microsoft [Azure 应用程序网关](../../application-gateway/overview.md)以�
 
 ![应用程序网关](./media/overview/azure-security-fig2.png)
 
-它可让你通过将 CPU 密集型 TLS 终止功能卸载到应用程序网关（也称为 "TLS 卸载" 或 "TLS 桥接"）来优化 web 场工作效率。 它还提供第 7 层其他路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Azure 应用程序网关是第 7 层负载均衡器。
+它可让你通过将 CPU 密集型 TLS 终止功能卸载到应用程序网关来优化 web 场工作效率， (也称为 "TLS 卸载" 或 "TLS 桥接" ) 。 它还提供第 7 层其他路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Azure 应用程序网关是第 7 层负载均衡器。
 
 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
 
-应用程序提供许多应用程序传送控制器（ADC）功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、 [TLS 卸载](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)、自定义运行状况探测、多站点支持，以及许多其他功能。
+应用程序提供了许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、 [TLS 卸载](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)、自定义运行状况探测、多站点支持，以及许多其他功能。
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gateway/overview.md)的一项功能，它为使用应用程序网关实现标准应用程序传递控制 (ADC) 功能的 Web 应用程序提供保护。 Web 应用程序防火墙的此功能可以保护 Web 应用程序免受 OWASP 十大常见 Web 漏洞中的大部分漏洞的威胁。
@@ -301,7 +301,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 [Azure 备份](../../backup/backup-overview.md)是一种解决方案，无需资本投资便可保护应用程序数据，最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序，从而导致安全问题。 使用 Azure 备份可以保护运行 Windows 和 Linux 的虚拟机。
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
-组织的[业务连续性/灾难恢复（BCDR）](../../best-practices-availability-paired-regions.md)策略的一个重要部分就是在发生计划内和计划外中断时，如何将公司工作负荷和应用程序启动并运行。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
+组织的[业务连续性/灾难恢复 (BCDR) ](../../best-practices-availability-paired-regions.md)策略的一个重要部分就是在发生计划内和计划外中断时，如何将公司工作负荷和应用程序启动并运行。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
 ### <a name="sql-vm-tde"></a>SQL VM TDE
 SQL Server 加密功能包括[透明数据加密 (TDE)](../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)和列级加密 (CLE)。 这种加密形式要求客户管理和存储用于加密的加密密钥。
@@ -336,7 +336,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 -   [基于令牌的身份验证](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)启用通过 Azure Active Directory 进行身份验证。
 
--   [基于角色的访问控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
+-   使用 azure [RBAC)  (azure 基于角色的访问控制](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/)，你可以根据用户的已分配角色授予访问权限，这样就可以轻松地仅向用户提供执行作业职责所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
 
 -   [集成标识管理（混合标识）](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)能够保持对用户在内部数据中心和云平台中的访问控制，并为所有资源的身份验证和授权创建单个用户标识。
 

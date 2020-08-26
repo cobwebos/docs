@@ -1,23 +1,23 @@
 ---
-title: 连接到或安装 Apache Beeline-Azure HDInsight
-description: 了解如何连接到 Apache Beeline 客户端，以便在 HDInsight 上通过 Hadoop 运行 Hive 查询。 Beeline 是用于通过 JDBC 操作 HiveServer2 的实用工具。
+title: 连接到或安装 Apache Beeline - Azure HDInsight
+description: 了解如何连接到 Apache Beeline 客户端以通过 HDInsight 上的 Hadoop 运行 Hive 查询。 Beeline 是用于通过 JDBC 操作 HiveServer2 的实用工具。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076770"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754950"
 ---
-# <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>连接到 Apache Beeline on HDInsight 或本地安装
+# <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>连接到 HDInsight 上的 Apache Beeline 或将其安装在本地
 
-[Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell)是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 本文介绍如何通过不同类型的连接连接到 HDInsight 群集上安装的 Beeline 客户端。 还介绍了如何[在本地安装 Beeline 客户端](#install-beeline-client)。 
+[Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 是一个 Hive 客户端，它包含在 HDInsight 群集的头节点上。 本文介绍如何通过不同连接类型连接到 HDInsight 群集上安装的 Beeline 客户端。 还介绍了如何[在本地安装 Beeline 客户端](#install-beeline-client)。 
 
 ## <a name="types-of-connections"></a>连接类型
 
@@ -39,18 +39,18 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 将 `<headnode-FQDN>` 替换为群集头节点的完全限定域名。 若要查找头节点的完全限定域名，请使用[使用 Apache Ambari REST API 管理 HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) 文档中的信息。
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>到 HDInsight 企业安全性套餐（ESP）群集使用 Kerberos
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>使用 Kerberos 连接到 HDInsight 企业安全性套餐 (ESP) 群集
 
-将客户端从客户端连接到同一领域的同一领域中的计算机上的企业安全性套餐（ESP） Azure Active Directory 群集时，还必须指定 `<AAD-Domain>` 具有访问群集权限的域名和域用户帐户的名称 `<username>` ：
+从客户端连接到已加入 Azure Active Directory (AAD) 的企业安全性套餐 (ESP) 群集时，如果客户端所在的计算机与群集位于同一领域中，那么你还必须指定域名 `<AAD-Domain>` 和有权访问群集 `<username>` 的一个域用户帐户的名称：
 
 ```bash
 kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-将 `<username>` 替换为域中有权访问群集的帐户的名称。 将 `<AAD-DOMAIN>` 替换为群集加入到的 Azure Active Directory (AAD) 的名称。 将大写字符串用于 `<AAD-DOMAIN>` 值，否则不会找到凭据。 如果需要，请检查 `/etc/krb5.conf` 以找到领域名称。
+将 `<username>` 替换为域中有权访问群集的帐户的名称。 将 `<AAD-DOMAIN>` 替换为群集加入到的 Azure Active Directory (AAD) 的名称。 对于 `<AAD-DOMAIN>` 值，请使用大写字符串，否则会找不到凭据。 如果需要，请查看 `/etc/krb5.conf` 中是否有领域名。
 
-若要从 Ambari 查找 JDBC URL：
+若要从 Ambari 查找 JDBC URL，请执行以下任务：
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 `CLUSTERNAME` 是群集的名称。 确保 HiveServer2 正在运行。
 
@@ -58,7 +58,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认 `admin` ）和密码。 例如，使用 Beeline 从客户端系统连接到 `clustername.azurehdinsight.net` 地址。 此连接通过端口建立 `443` ，并使用 TLS/SSL 进行加密。
+使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认值为 `admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `clustername.azurehdinsight.net` 地址。 此连接通过端口 `443` 建立，并使用 TLS/SSL 进行加密。
 
 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
 
@@ -76,7 +76,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ### <a name="use-beeline-with-apache-spark"></a>将 Beeline 与 Apache Spark 配合使用
 
-Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 来解析查询，而不是 Hive。 和可提供更好的性能，具体取决于你的查询。
+Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 而不是 Hive 来解析查询。 并且，此服务可以提供更好的性能，具体取决于查询。
 
 #### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
 
@@ -164,5 +164,5 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关将 Beeline 客户端与 Apache Hive 结合使用的示例，请参阅[将 Apache Beeline 与 Apache Hive 配合使用](apache-hadoop-use-hive-beeline.md)
+* 有关将 Beeline 客户端与 Apache Hive 配合使用的示例，请参阅[将 Apache Beeline 与 Apache Hive 配合使用](apache-hadoop-use-hive-beeline.md)
 * 有关 HDInsight 中的 Hive 的更多常规信息，请参阅[将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)

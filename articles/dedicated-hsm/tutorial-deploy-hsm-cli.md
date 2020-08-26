@@ -8,17 +8,17 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e4403252396aab91fa960ed7258d433e27db950a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454306"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258250"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教程：使用 CLI 将 HSM 部署到现有虚拟网络中
 
@@ -38,7 +38,7 @@ Azure 专用 HSM 提供供单个客户使用的物理设备，由客户对设备
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 专用 HSM 目前在 Azure 门户中不可用。 与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将使用 Azure Cloud Shell 中的命令行 (CLI) 界面。 如果不熟悉 Azure CLI，请按以下入门说明操作：[Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+Azure 专用 HSM 目前在 Azure 门户中不可用。 与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将使用 Azure Cloud Shell 中的命令行 (CLI) 界面。 如果不熟悉 Azure CLI，请按以下入门说明操作：[Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
 假设：
 
@@ -63,15 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-以下命令验证专用 HSM 服务所需的网络功能。
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-两个命令都应该返回“已注册”状态（如下所示）。 如果这两个命令没有返回“已注册”，而你需要注册此服务，请与 Microsoft 客户代表联系。
+命令应该返回“已注册”状态（如下所示）。 如果命令没有返回“已注册”，你需要通过与 Microsoft 客户代表联系来注册此服务。
 
 ![订阅状态](media/tutorial-deploy-hsm-cli/subscription-status.png)
 

@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80550248"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114908"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>适用于 iOS 设备的共享设备模式
 
@@ -67,7 +67,7 @@ ms.locfileid: "80550248"
       - 键入：布尔
       - 值：True
 
-    有关使用 Intune 进行配置的详细信息，请参阅 [Intune 配置文档](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
+    有关使用 Intune 进行配置的详细信息，请参阅 [Intune 配置文档](/intune/configuration/ios-device-features-settings)。
 
 1. 接下来，配置 MDM 以通过 MDM 配置文件将 Microsoft Authenticator 应用推送到设备。
 

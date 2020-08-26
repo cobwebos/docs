@@ -15,7 +15,7 @@ ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: cde959d8e075b55cb6cbb37479ca49cdd8a8c0c1
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233731"

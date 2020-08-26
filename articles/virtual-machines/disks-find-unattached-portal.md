@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ad01155259ea03806f56c6e75b315ff85b606220
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302469"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542732"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>查找并删除未附加的 Azure 托管和非托管磁盘 - Azure 门户
 
@@ -26,7 +27,7 @@ ms.locfileid: "84302469"
 
     “磁盘”边栏选项卡上会显示所有磁盘的列表。 “所有者”列中含有“-”的任何磁盘都是未附加的磁盘 。
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [!["托管磁盘" 边栏选项卡的屏幕截图，如果磁盘在 "所有者" 列中，则它是一个未附加的磁盘。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. 选择要删除的未附加磁盘，随即会打开磁盘的边栏选项卡。
 1. 在磁盘的边栏选项卡上，确认磁盘状态为未附加，然后选择“删除”。
@@ -60,4 +61,4 @@ ms.locfileid: "84302469"
 
 如果要自动查找和删除未附加的存储帐户，请参阅 [CLI](linux/find-unattached-disks.md) 或 [PowerShell](windows/find-unattached-disks.md) 文章。
 
-有关详细信息，请参阅[删除存储帐户](../storage/common/storage-account-create.md#delete-a-storage-account)和[使用 PowerShell 标识孤立磁盘](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
+有关详细信息，请参阅[删除存储帐户](../storage/common/storage-account-create.md#delete-a-storage-account)和[使用 PowerShell 标识孤立磁盘](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell)

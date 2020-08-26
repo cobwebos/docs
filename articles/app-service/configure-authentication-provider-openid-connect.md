@@ -1,21 +1,21 @@
 ---
-title: " (预览配置 OpenID Connect 提供程序) "
+title: 配置 OpenID Connect 提供程序（预览）
 description: 了解如何为应用服务或 Azure Functions 应用配置 OpenID Connect 提供程序作为标识提供者。
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 1a4f956c15fae640c2a7978a14bb95328dc9aa71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209291"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413912"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>将应用服务或 Azure Functions 应用配置为使用 OpenID Connect 提供程序登录 (预览版) 
+# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>将应用服务或 Azure Functions 应用配置为使用 OpenID Connect 提供程序（预览版）登录
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本文介绍如何将 Azure App Service 或 Azure Functions 配置为使用符合[OpenID connect 规范](https://openid.net/connect/)的自定义身份验证提供程序。 OpenID Connect (OIDC) 是许多标识提供商 (Idp) 所使用的行业标准。 若要将应用配置为使用 adherent IDP，则无需了解规范的详细信息。
+本文介绍如何将 Azure App Service 或 Azure Functions 配置为使用符合[OpenID connect 规范](https://openid.net/connect/)的自定义身份验证提供程序。 OpenID Connect （OIDC）是许多标识提供者（Idp）使用的行业标准。 若要将应用配置为使用 adherent IDP，则无需了解规范的详细信息。
 
 你可以将应用程序配置为使用一个或多个 OIDC 提供程序。 每个必须在配置中为每个指定唯一名称，并且只有一个可用作默认重定向目标。
 
@@ -31,7 +31,7 @@ ms.locfileid: "86209291"
 >
 
 > [!NOTE]
-> 某些提供程序可能需要额外的配置步骤，以及如何使用它们所提供的值。 例如，Apple 提供的私钥不是自身用作 OIDC 客户端机密，而是必须使用它来创建一个将被视为在应用配置中提供的机密的 JWT (请参阅[使用 Apple 文档登录](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)的 "创建客户端密码" 部分) 
+> 某些提供程序可能需要额外的配置步骤，以及如何使用它们所提供的值。 例如，Apple 提供的私钥不是自身用作 OIDC 客户端机密，而是必须使用它来创建一个将被视为在应用程序配置中提供的机密的 JWT （请参阅[使用 Apple 文档登录](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)的 "创建客户端密码" 部分）
 >
 
 使用所选的设置名称，将客户端机密添加为应用的[应用程序设置](./configure-common.md#configure-app-settings)。 稍后记下该名称。
@@ -40,15 +40,15 @@ ms.locfileid: "86209291"
 
 如果无法使用配置元数据文档，则需要单独收集以下值：
 
-- 颁发者 URL (有时显示为 `issuer`) 
-- [OAuth 2.0 授权终结点](https://tools.ietf.org/html/rfc6749#section-3.1) (有时显示为 `authorization_endpoint`) 
-- [OAuth 2.0 令牌终结点](https://tools.ietf.org/html/rfc6749#section-3.2) (有时显示为 `token_endpoint`) 
-- [OAuth 2.0 JSON Web 密钥集](https://tools.ietf.org/html/rfc8414#section-2)文档的 URL (有时显示为 `jwks_uri`) 
+- 颁发者 URL （有时显示为 `issuer` ）
+- [OAuth 2.0 授权终结点](https://tools.ietf.org/html/rfc6749#section-3.1)（有时显示为 `authorization_endpoint` ）
+- [OAuth 2.0 令牌终结点](https://tools.ietf.org/html/rfc6749#section-3.2)（有时显示为 `token_endpoint` ）
+- [OAuth 2.0 JSON Web 密钥集](https://tools.ietf.org/html/rfc8414#section-2)文档的 URL （有时显示为 `jwks_uri` ）
 
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>向应用程序添加提供程序信息
 
 > [!NOTE]
-> 所需配置采用新的 API 格式，目前仅受[基于文件的配置 (预览) ](.\app-service-authentication-how-to.md#config-file)支持。 你将需要使用此类文件执行以下步骤。
+> 所需配置采用新的 API 格式，目前仅受[基于文件的配置（预览）](.\app-service-authentication-how-to.md#config-file)支持。 你将需要使用此类文件执行以下步骤。
 
 本部分将指导你更新配置，使之包括你的新 IDP。 下面是一个配置示例。
 
@@ -61,7 +61,7 @@ ms.locfileid: "86209291"
        "registration" : {},
        "login": {
              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-             "loginScopes": [],
+             "scope": [],
              "loginParameterNames": [],
        }
     }
@@ -92,7 +92,7 @@ ms.locfileid: "86209291"
 
 设置此配置后，即可在应用中使用 OpenID Connect 提供程序进行身份验证。
 
-示例配置可能如下所示 (使用 Apple 的登录作为示例，其中 APPLE_GENERATED_CLIENT_SECRET 设置指向根据[apple 文档](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)) 生成的 JWT：
+示例配置可能如下所示（使用 Apple 登录作为示例，其中 APPLE_GENERATED_CLIENT_SECRET 设置指向根据[Apple 文档](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)生成的 JWT）：
 
 ```json
 {
@@ -112,7 +112,7 @@ ms.locfileid: "86209291"
                         "secretSettingName": "APPLE_GENERATED_CLIENT_SECRET"
                     },
                     "openIdConnectConfiguration": {
-                        "authorizationEndpoint": "https://appleid.apple.com/.well-known/openid-configuration"
+                        "wellKnownOpenIdConfiguration": "https://appleid.apple.com/.well-known/openid-configuration"
                     }
                 },
                 "login": {

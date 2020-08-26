@@ -1,5 +1,5 @@
 ---
-title: 创建分布式表 - 超大规模 (Citus) - Azure Database for PostgreSQL
+title: 快速入门：创建服务器组 - 超大规模 (Citus) - Azure Database for PostgreSQL
 description: 本快速入门介绍如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中创建和查询分布式表。
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290325"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547692"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL - 超大规模 (Citus)
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建超大规模 (Citus) 服务器组
 
 用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 本快速入门介绍如何使用 Azure 门户创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组。 你将探究分布式数据：在节点之间将表分片、引入示例数据，以及运行在多个节点上执行的查询。
 
@@ -78,6 +78,8 @@ SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
+
 现已准备好加载数据。 仍然在 psql 中，执行 shell 命令来下载文件：
 
 ```sql
@@ -113,7 +115,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-到目前为止，查询只是涉及到 github\_events，但我们可将这些信息与 github\_users 合并。 由于我们基于同一个标识符 (`user_id`) 分片了用户和事件，因此，这两个表中具有匹配用户 ID 的行将[共置](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation)到同一个数据库节点，并可以轻松联接。
+到目前为止，查询只是涉及到 github\_events，但我们可将这些信息与 github\_users 合并。 由于我们基于同一个标识符 (`user_id`) 分片了用户和事件，因此，这两个表中具有匹配用户 ID 的行将[共置](concepts-hyperscale-colocation.md)到同一个数据库节点，并可以轻松联接。
 
 如果在 `user_id` 上联接，则 Hyperscale 可将联接执行下推到分片中，以便在工作器节点上并行执行。 例如，让我们查找创建了最多存储库的用户：
 

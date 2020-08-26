@@ -6,33 +6,34 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288908"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652842"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移到 Azure
 
 若要在 Microsoft Azure 上运行大型机工作负荷，需要知道大型机的功能与 Azure 的比较情况。 可大规模缩放的存储资源可帮助组织开始实现现代化，而不会放弃所依赖的应用程序。
 
-Azure 提供类似于大型机的功能和存储容量，相当于基于 IBM z14 的系统（在撰写本文时最新的模型）。 本文介绍如何在 Azure 上获得可比较的结果。
+Azure 提供了类似于大型机的功能和存储容量，该功能与基于 IBM z14 的系统 (在编写) 时最新的模型。 本文介绍如何在 Azure 上获得可比较的结果。
 
 ## <a name="mainframe-storage-at-a-glance"></a>大型机存储概览
 
-IBM 大型机的存储方式有两种。 第一种是直接访问存储设备（DASD）。 第二个是顺序存储。 对于管理存储，大型机提供了数据设施存储管理子系统（DFSMS）。 它管理对各种存储设备的数据访问。
+IBM 大型机的存储方式有两种。 第一种是 (DASD) 的直接访问存储设备。 第二个是顺序存储。 对于管理存储，大型机提供数据设施存储管理子系统 (DFSMS) 。 它管理对各种存储设备的数据访问。
 
-[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device)指的是辅助（而非内存中）存储的单独设备，该设备允许使用唯一地址直接访问数据。 最初，术语 "DASD" 应用于旋转磁盘、磁鼓或数据单元。 但是，这一术语现在也适用于固态存储设备（Ssd）、存储区域网络（San）、网络连接存储（NAS）和光驱。 出于本文档的目的，DASD 指的是旋转磁盘、San 和 Ssd。
+[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) 指的是辅助 (不在内存中) 存储的单独设备，它允许使用唯一地址直接访问数据。 最初，术语 "DASD" 应用于旋转磁盘、磁鼓或数据单元。 不过，现在，术语还适用于固态存储设备， (Ssd) 、存储区域网络 (SANs) 、网络连接存储 (NAS) 和光驱。 出于本文档的目的，DASD 指的是旋转磁盘、San 和 Ssd。
 
 与 DASD 存储不同的是，大型机上的顺序存储是指磁带驱动器，如磁带驱动器，其中的数据是从起始点访问的，然后读取或写入一行。
 
-通常使用光纤连接（FICON）连接存储设备，或使用[HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm)直接在大型机的 IO 总线上访问存储设备，这是一种 IBM 技术，用于服务器上的分区与虚拟机监控程序之间的高速通信。
+通常，存储设备使用光纤连接 (FICON) 连接，或使用 [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm)直接在大型机的 IO 总线上进行访问，这是一种 IBM 技术，适用于服务器上的分区与虚拟机监控程序之间的高速通信。
 
 大多数大型机系统将存储分为两种类型：
 
-- 每日操作都需要*联机存储*（也称为热存储）。 DASD 存储通常用于此目的。 但是，有序存储（例如每日磁带备份（逻辑或物理））也可用于实现此目的。
+- *联机存储* (也知道每日操作所需的热存储) 。 DASD 存储通常用于此目的。 不过，顺序存储（例如每日磁带备份 (逻辑或物理) ）也可用于实现此目的。
 
-- 不保证在给定时间装入*存档存储*（也称为冷存储）。 相反，它会根据需要进行装载和访问。 存档存储通常是使用顺序磁带备份（逻辑或物理）来实现的。
+- *存档存储* (也称为冷存储) 不保证在给定时间装入。 相反，它会根据需要进行装载和访问。 存档存储通常使用顺序磁带备份来实现， (逻辑或物理) 存储。
 
 ## <a name="mainframe-versus-io-latency-and-iops"></a>大型机与 IO 延迟和 IOPS
 
@@ -40,11 +41,11 @@ IBM 大型机的存储方式有两种。 第一种是直接访问存储设备（
 
 ## <a name="azure-storage-at-a-glance"></a>Azure 存储概览
 
-适用于存储的 Azure 基础结构即服务（[IaaS](https://azure.microsoft.com/overview/what-is-iaas/)）选项提供了类似的大型机容量。
+适用于存储的 Azure 基础结构即服务 ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) 选项提供了类似的大型机容量。
 
 Microsoft 为 Azure 中托管的应用程序提供了 pb 数量的存储空间，并提供了多个存储选项。 这些范围包括从 SSD 存储到高性能，以及用于大容量存储和存档的低成本 blob 存储。 此外，Azure 还为存储提供了一个数据冗余选项，这需要在大型机环境中进行更多的工作。
 
-Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disks-overview)、 [Azure 文件](/azure/storage/files/storage-files-introduction)和[azure blob](/azure/storage/blobs/storage-blobs-overview) ，如下表所示。 详细了解[何时使用每个](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)。
+Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azure 文件](../../../../storage/files/storage-files-introduction.md)和 [azure blob](../../../../storage/blobs/storage-blobs-overview.md) ，如下表所示。 详细了解 [何时使用每个](../../../../storage/common/storage-introduction.md)。
 
 <!-- markdownlint-disable MD033 -->
 
@@ -56,7 +57,7 @@ Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disk
 <tr><td>Azure 文件
 </td>
 <td>
-提供 SMB 接口、客户端库和允许从任意位置访问存储文件的<a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a>接口。
+提供 SMB 接口、客户端库和允许从任意位置访问存储文件的 <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> 接口。
 </td>
 <td><ul>
 <li>当应用程序使用本机文件系统 Api 在 Azure 中运行的应用程序与其他应用程序之间共享数据时，将应用程序直接迁移到云。</li>
@@ -66,7 +67,7 @@ Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disk
 </tr>
 <tr><td>Azure Blob
 </td>
-<td>提供客户端库和<a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a>接口，该接口允许在块 blob 中大规模存储和访问非结构化数据。 还支持 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a>，用于企业大数据分析解决方案。
+<td>提供客户端库和 <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> 接口，该接口允许在块 blob 中大规模存储和访问非结构化数据。 还支持 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a>，用于企业大数据分析解决方案。
 </td>
 <td><ul>
 <li>在应用程序中支持流式处理和随机访问方案。</li>
@@ -76,7 +77,7 @@ Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disk
 </tr>
 <tr><td>Azure 磁盘
 </td>
-<td>提供客户端库和<a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a>接口，该接口允许从附加的虚拟硬盘持久存储和访问数据。
+<td>提供客户端库和 <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> 接口，该接口允许从附加的虚拟硬盘持久存储和访问数据。
 </td>
 <td><ul>
 <li>使用本机文件系统 Api 的直接移动应用程序将数据读写到永久性磁盘。</li>
@@ -87,11 +88,11 @@ Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disk
 </table>
 <!-- markdownlint-enable MD033 -->
 
-## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure 热（联机）和冷（存档）存储
+## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure 热 (联机) 和冷 (存档) 存储
 
 给定系统的存储类型取决于系统的要求，其中包括存储大小、吞吐量和 IOPS。 对于大型机上的 DASD 类型存储，Azure 上的应用程序通常使用 Azure 磁盘驱动器存储。 对于大型机存档存储，请在 Azure 上使用 blob 存储。
 
-Ssd 在 Azure 上提供最高的存储性能。 提供以下选项（在撰写本文档时）：
+Ssd 在 Azure 上提供最高的存储性能。 此文档的撰写 (提供以下选项) ：
 
 | 类型         | 大小           | IOPS                  |
 |--------------|----------------|-----------------------|
@@ -104,10 +105,10 @@ Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，A
 ## <a name="next-steps"></a>后续步骤
 
 - [大型机迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 虚拟机上的大型机重新承载](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 虚拟机上的大型机重新承载](../overview.md)
 - [将大型机计算移到 Azure](mainframe-compute-Azure.md)
-- [确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [标准 SSD Azure VM 工作负荷的托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘](../../../../storage/common/storage-introduction.md)
+- [标准 SSD Azure VM 工作负荷的托管磁盘](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM 资源
 

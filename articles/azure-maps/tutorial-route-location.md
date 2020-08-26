@@ -1,20 +1,20 @@
 ---
 title: 教程：查找到某个位置的路线 | Microsoft Azure Maps
-description: 本教程介绍如何使用 Microsoft Azure Maps 路线规划服务在地图上呈现到某个位置（兴趣点）的路线。
-author: philmea
-ms.author: philmea
+description: 了解如何查找前往兴趣点的路线。 了解如何设置地址坐标和查询 Azure Maps 路线服务，以获取前往该点的方向。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 98c36176ecd2996e5f735c52017162a076ef4bde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 0ff604e920ca3e0708fc21a1cadfe61646f4e30b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333763"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037569"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 查找前往兴趣点的路线
 
@@ -27,7 +27,7 @@ ms.locfileid: "80333763"
 
 ## <a name="prerequisites"></a>先决条件
 
-在继续之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明操作，你需要定价层为 S1 的订阅。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+在继续之前，请按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明操作，你需要定价层为 S1 的订阅。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 <a id="getcoordinates"></a>
 
@@ -166,7 +166,7 @@ ms.locfileid: "80333763"
 
     此代码创建两个 [GeoJSON 点对象](https://en.wikipedia.org/wiki/GeoJSON)来表示路线的起点和终点，并将这些点添加到数据源。 将会向每个点添加 `title` 和 `icon` 属性。 最后一个块通过地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性使用起点和终点的纬度和经度来设置相机视图。
 
-3. 保存“MapRoute.html”文件并刷新浏览器  。 现在，地图的中心为西雅图，可以看到标记起点的蓝色图钉和标记终点的圆形蓝色图钉。
+3. 保存“MapRoute.html”文件并刷新浏览器****。 现在，地图的中心为西雅图，可以看到标记起点的蓝色图钉和标记终点的圆形蓝色图钉。
 
    ![在地图上查看路线的起点和终点](media/tutorial-route-location/map-pins.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "80333763"
 
 ## <a name="get-directions"></a>获取方向
 
-本部分介绍如何使用 Azure Maps 路线服务 API。 路线服务 API 查找从给定起点到终点的路线。 在此服务中，可以通过多个 API 来规划两个地点之间最快、最短、环保或令人兴奋的路线     。 此服务还允许用户使用 Azure 广泛的历史交通数据库来规划将来的路线。 用户可以查看任何选定日期和时间的路线走向预测。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 应该**在 map ready eventListener 中**添加以下所有功能，以确保在准备好访问地图资源后加载它们。
+本部分介绍如何使用 Azure Maps 路线服务 API。 路线服务 API 查找从给定起点到终点的路线。 在此服务中，可以通过多个 API 来规划两个地点之间最快、最短、环保或令人兴奋的路线********。 此服务还允许用户使用 Azure 广泛的历史交通数据库来规划将来的路线。 用户可以查看任何选定日期和时间的路线走向预测。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 应该**在 map ready eventListener 中**添加以下所有功能，以确保在准备好访问地图资源后加载它们。
 
 1. 在 GetMap 函数中，将以下内容添加到 JavaScript 代码。
 
@@ -205,7 +205,7 @@ ms.locfileid: "80333763"
     });
     ```
 
-3. 保存“MapRoute.html”文件并刷新 web 浏览器  。 要成功连接 Maps API，应看到类似于以下内容的地图。
+3. 保存“MapRoute.html”文件并刷新 web 浏览器****。 要成功连接 Maps API，应看到类似于以下内容的地图。
 
     ![Azure 地图控件和路线服务](./media/tutorial-route-location/map-route.png)
 

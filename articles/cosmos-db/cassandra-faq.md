@@ -4,13 +4,14 @@ description: 获取有关 Azure Cosmos DB 的 Cassandra API 的常见问题的�
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449730"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167600"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中 Cassandra API 的常见问题解答。
 
@@ -78,13 +79,13 @@ Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障�
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>主键是否映射到 Azure Cosmos DB 的分区键概念？
 
-是，分区键用来将实体放置在正确位置。 在 Azure Cosmos DB 中，它用来查找存储在物理分区中的正确逻辑分区。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。 此处，必须记住的一点是，逻辑分区不应当超出 10-GB 限制。
+是，分区键用来将实体放置在正确位置。 在 Azure Cosmos DB 中，它用来查找存储在物理分区中的正确逻辑分区。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。 此处的基本要点在于是逻辑分区不应超过 20 GB 的限制。
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>当收到分区已满通知时，会发生什么情况？
 
 Azure Cosmos DB 是基于服务级别协议 (SLA) 的系统。 可提供无限缩放，并在延迟、吞吐量、可用性和一致性方面提供保障。 此无限制的存储是通过使用分区作为键概念的数据水平横向扩展实现的。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。
 
-应当遵循每个逻辑分区的实体数或项数不超过 10-GB 的限制。 为确保应用程序能够很好地进行缩放，建议*不要*创建热分区，即，将所有信息存储在一个分区内并查询它。 只有存在数据倾斜时，也就是说，当一个分区键有大量数据（超过 10&nbsp;GB）时，才会发生此错误。 可以使用存储门户查明数据的分布。 修复此错误的方法是：重新创建表并选择一个细粒度的主键（分区键），这可以实现更好的数据分布。
+应遵循每个逻辑分区的实体或项的数量的 20 GB 限制。 为确保应用程序能够很好地进行缩放，建议*不要*创建热分区，即，将所有信息存储在一个分区内并查询它。 仅当数据歪斜时，此错误才会出现：也就是说，对于一个分区键，你有大量数据 (超过 20 GB) 。 可以使用存储门户查明数据的分布。 修复此错误的方法是：重新创建表并选择一个细粒度的主键（分区键），这可以实现更好的数据分布。
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>是否可以将 Cassandra API 用作具有数百万或数十亿分区键的键值存储？
 

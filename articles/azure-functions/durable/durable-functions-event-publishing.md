@@ -3,15 +3,16 @@ title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081740"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
-本文介绍了如何设置 Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](https://docs.microsoft.com/azure/event-grid/overview)。
+本文介绍了如何设置 Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](../../event-grid/overview.md)。
 
 此功能在以下场景中非常有用：
 
@@ -25,7 +26,7 @@ ms.locfileid: "83124216"
 
 * 在 Durable Functions 项目中安装 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。
 * 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows）或使用现有的 Azure 存储帐户。
-* 安装 [Azure CLI ](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
+* 安装 [Azure CLI ](/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
 
@@ -167,7 +168,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="add-an-event-grid-subscription"></a>添加事件网格订阅
 
-现在可以为创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
+现在可以为创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](../../event-grid/concepts.md)。
 
 1. 在新函数中，选择“集成”****，然后选择“事件网格触发器(eventGridEvent)”****。 
 

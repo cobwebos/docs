@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999609"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级权限 
 
@@ -51,7 +51,16 @@ Azure 文件支持完整的基本和高级 Windows Acl 集。 你可以通过装
 使用 Windows `net use` 命令装载 Azure 文件共享。 请记住，将以下示例中的占位符值替换为自己的值。 有关装载文件共享的详细信息，请参阅[将 Azure 文件共享用于 Windows](storage-how-to-use-files-windows.md)。 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN,   Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 如果在连接到 Azure 文件时遇到问题，请参阅在[Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)。 我们还提供了有关在阻止端口445时解决方案的[指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)。 

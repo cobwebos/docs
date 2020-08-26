@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134025"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927294"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在“Azure 政府”区域和“公用”区域之间移动 Azure VM 
 
@@ -53,7 +53,7 @@ ms.locfileid: "86134025"
 请确保 Azure 帐户具有将 VM 复制到 Azure 的权限。
 
 - 查看将计算机复制到 Azure 所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 验证和修改[基于角色的访问](../role-based-access-control/role-assignments-portal.md)权限。 
+- 验证和修改 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 
 
 ### <a name="set-up-an-azure-network"></a>设置 Azure 网络
 

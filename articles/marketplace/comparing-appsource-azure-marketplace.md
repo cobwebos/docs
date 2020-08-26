@@ -1,34 +1,34 @@
 ---
 title: 比较 Microsoft AppSource 和 Azure Marketplace
-description: 本文介绍 Microsoft 商用 marketplace 店面-Microsoft AppSource 和 Azure Marketplace 之间的差异。
+description: 本文介绍了 Microsoft 商业 marketplace 在线商店（Microsoft AppSource 和 Azure Marketplace）之间的差异。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121803"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607469"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>比较 Microsoft AppSource 和 Azure Marketplace
 
-Microsoft 商用 marketplace 包括[Microsoft AppSource](https://appsource.microsoft.com)和[Azure marketplace](https://azuremarketplace.microsoft.com)。 每个店面都提供独特的客户要求和不同的目标受众，因此你可以确保你的解决方案或服务可供适当的客户使用。
+Microsoft 商用 marketplace 包括 [Microsoft AppSource](https://appsource.microsoft.com) 和 [Azure marketplace](https://azuremarketplace.microsoft.com)。 每个在线商店都提供独特的客户要求和不同的目标受众，因此，你可以确保你的解决方案或服务可供适当的客户使用。
 
-## <a name="understanding-the-differences-between-storefronts"></a>了解店面之间的差异
+## <a name="understanding-the-differences-between-online-stores"></a>了解在线商店之间的差异
 
-若要选择店面，请首先确定产品/服务的目标受众。 如果你的目标是多个店面中的受众，可以发布一次产品/服务以在多个店面中销售。
+若要选择在线商店，请首先确定产品/服务的目标受众。 如果目标是多个在线商店中的受众，则可以发布一次，以便在多个商店中销售。
 
 | Azure 市场 | AppSource |
 |:--- |:--- |
 | IT 专业人员和开发人员 | 业务用户和业务决策者 |
 
-下表介绍了使用店面的好处：
+下表描述了使用在线商店的好处：
 
-| 好处 | Azure 市场 | AppSource |
+| 优点 | Azure 市场 | AppSource |
 |:--- |:--- | :--- |
 | **灵活计费** | Azure Marketplace 支持免费的、试用版、BYOL 的产品/服务类型。 事务提供是基于消耗的，也可以基于订阅。 基于消费的产品/服务按小时使用情况计费，并可提供初始免费期限。 基于订阅的服务按每个座位或按费率计费，按月或按年计费。| AppSource 支持免费的、试用版、BYOL 和 transact-sql 产品/服务类型。 事务提供是基于订阅的 SaaS 产品，每月或每年都可以按每个客户或按费率计费。 |
 |**与其他合作伙伴的连接**  | 目前无法将服务提供商或交付合作伙伴链接到你的产品/服务。 | 可将独立软件供应商、系统集成商和托管服务提供商链接到特定的实现方案。 你能以协作方式销售给新客户。 |
@@ -38,4 +38,4 @@ Microsoft 商用 marketplace 包括[Microsoft AppSource](https://appsource.micro
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[商业 marketplace 发布指南](./marketplace-publishers-guide.md)。
+* 查看 [商业 marketplace 发布指南](./marketplace-publishers-guide.md)。

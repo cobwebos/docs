@@ -14,11 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022117"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推送
 
@@ -121,7 +122,7 @@ ms.locfileid: "85248694"
 4. 现在我们必须处理传入通知，并使用上面的方法来检索要显示的内容。 首先，我们必须使 iOS 应用能在接收推送通知时在后台运行。 在 **XCode** 中，在左侧面板上选择应用项目，并单击中央窗格的“目标”**** 部分中的主应用目标。
 5. 然后，单击中央窗格顶部的“功能”**** 选项卡，并选中“远程通知”**** 复选框。
 
-    ![][IOS1]
+    ![XCode 的屏幕截图，其中已选择应用程序项目并打开 "功能" 选项卡。 选中 "远程通知" 复选框。][IOS1]
 
 6. 在 `AppDelegate.m` 中，添加以下方法来处理推送通知：
 

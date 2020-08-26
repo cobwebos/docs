@@ -1,231 +1,181 @@
 ---
-title: 使用 Azure Maps 搜索服务搜索位置 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用地理编码和反向地理编码的 Microsoft Azure 映射搜索服务搜索位置。
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: 使用 Azure Maps 搜索服务搜索位置
+description: 了解 Azure Maps 搜索服务。 请参阅如何将这组 Api 用于地理编码、反向地理编码、模糊搜索和反向交叉街道搜索。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517580"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037773"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure Maps 搜索服务搜索位置
 
-Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一组 RESTful api，旨在帮助开发人员按名称或类别搜索地址、位置、业务列表和其他地理信息。 除了支持传统的地理编码，服务还可以根据纬度和经度来反转地理编码地址和交叉街道。 搜索返回的纬度和经度值可用作其他 Azure Maps 服务（如[路由](https://docs.microsoft.com/rest/api/maps/route)和[天气](https://docs.microsoft.com/rest/api/maps/weather)服务）中的参数。
+[Azure Maps 搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一组 RESTful api，旨在帮助开发人员按姓名、类别和其他地理信息搜索地址、位置和业务列表。 除了支持传统的地理编码，服务还可以根据纬度和经度来反转地理编码地址和交叉街道。 搜索返回的纬度和经度值可用作其他 Azure Maps 服务（如[路由](https://docs.microsoft.com/rest/api/maps/route)和[天气](https://docs.microsoft.com/rest/api/maps/weather)服务）中的参数。
 
-在本文中，你将学习如何：
+本文介绍如何执行以下操作：
 
-* 使用[搜索地址 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)请求地址的纬度和经度坐标（地理编码地址位置）
-* 使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)搜索地址或兴趣点（POI）
-* 搜索地址以及属性和坐标
-* 进行[反向地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，将坐标位置转换为街道地址
-* 使用[搜索地址反向交叉街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)搜索交叉街道
+* 使用[搜索地址 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)为地址 (地理编码 address location) 请求纬度和经度坐标。
+* 使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) (POI) 搜索地址或兴趣点。
+* 进行[反向地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，将坐标位置转换为街道地址。
+* 使用[搜索地址反向交叉街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)将坐标位置转换为可识别人工的交叉街道。  大多数情况下，这是跟踪从设备或资产接收 GPS 源的应用程序所必需的，并且希望知道坐标所在的位置。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本文中的步骤，你需要先创建一个 Azure Maps 帐户，并向你显示 Maps 帐户订阅密钥。 按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
-本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
+本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
-## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>请求地址的纬度和经度（地理编码）
+## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>请求地址的纬度和经度 (地理编码) 
 
-在此示例中，我们使用 Azure Maps[获取搜索地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)将街道地址转换为纬度和经度坐标。 可以将完整或部分街道地址传递到 API，并接收包含详细地址属性（如街道、邮政编码和国家/地区）以及纬度和经度中的位置值的响应。
+在此示例中，我们将使用 Azure Maps[获取搜索地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)将地址转换为纬度和经度坐标。 此过程也称为*地理编码*。 除了返回坐标外，响应还会返回详细的地址属性，例如街道、邮政编码、市政府和国家/地区信息。
 
-如果你有一组要地理编码的地址，则可以使用[Post Search 地址批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch)通过单个 API 调用发送一批查询。
+>[!TIP]
+>如果你有一组要地理编码的地址，则可以使用[Post Search 地址批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch)通过单个 API 调用发送一批查询。
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**并将其命名为**地址搜索**"。
+1. 打开 Postman 应用。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。 本文档中的示例的其余部分将使用此集合。
 
-2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL，并选择授权协议（如果有）。****
+2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步中创建的集合，然后选择“保存”。
 
-![地址搜索](./media/how-to-search-for-address/address_search_url.png)
+3. 在 "生成器" 选项卡中选择 "**获取**HTTP" 方法，然后输入以下 URL。 在此请求中，我们要搜索特定的地址： `400 Braod St, Seattle, WA 98109` 。
 
-| 参数 | 建议的值 |
-|---------------|------------------------------------------------| 
-| HTTP 方法 | GET |
-| 请求 URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
-| 授权 | 无身份验证 |
+    对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。 请求应如下面的 URL 所示：
 
-3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：**** 
+    ```http
+    https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
+    ```
 
-![地址搜索](./media/how-to-search-for-address/address_search_params.png) 
+4. 单击蓝色的 "**发送**" 按钮。 响应正文将包含单一位置的数据。
 
-| 密钥 | 值 | 
-|------------------|-------------------------| 
-| api-version | 1.0 | 
-| subscription-key | \<your Azure Maps key\> | 
-| query | 400 Broad St, Seattle, WA 98109 | 
+5. 现在，我们将搜索包含多个可能位置的地址。 在 " **Params** " 部分中，将 `query` 键更改为 `400 Broad, Seattle` 。 单击蓝色的 "**发送**" 按钮。
 
-4. 单击“发送”并查看响应正文。**** 
+    :::image type="content" source="./media/how-to-search-for-address/search-address.png" alt-text="搜索地址":::
 
-本例中指定了完整地址查询，并在响应正文中收到了一条结果。 
+6. 接下来，尝试将 `query` 密钥设置为 `400 Broa` 。
 
-5. 在“参数”中，将查询字符串编辑为以下值： 
-
-    ```plaintext 
-        400 Broad, Seattle 
-    ``` 
-
-6. 将以下键/值对添加至 Params 部分****，并单击“发送”****： 
-
-| 密钥 | 值 | 
-|-----|------------| 
-| typeahead | true | 
-
-**typeahead** 标志告知地址搜索 API 要将查询视为部分输入，并返回预测值的数组。
+7. 单击“发送”按钮。  你现在可以看到响应包含来自多个国家/地区的响应。 若要将结果 geobias 到用户的相关区域，请始终向请求添加尽可能多的位置详细信息。
 
 ## <a name="using-fuzzy-search-api"></a>使用模糊搜索 API
 
-如果你不知道用户输入用于搜索查询，则建议使用 Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 。 该 API 将兴趣点（POI）搜索和地理编码组合到规范的 "单行搜索" 中。 例如，该 API 可以处理任何地址或 POI 令牌组合的输入。 还可以使用完全受坐标和半径约束的上下文位置 （纬度/经度对）为该 API 加权，或者在不使用任何地理偏置定位点的情况下，以更泛的方式执行该 API。
+Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)支持标准单行和自由格式搜索。 如果不知道搜索请求的用户输入类型，建议使用 Azure Maps 搜索模糊 API。  查询输入可以是完整或部分地址。 它还可以是 (POI) 令牌的兴趣点，如 POI、POI 类别或品牌名称。 而且，若要改善搜索结果的相关性，可以通过坐标位置和半径或通过定义边界框来约束查询结果。
 
-大多数搜索查询默认指定 `maxFuzzyLevel=1`，以提高性能并减少不正常的结果。 可以根据需要，通过传入查询参数 `maxFuzzyLevel=2` 或 `3`，按请求重写此默认值。
+>[!TIP]
+>大多数搜索查询默认为 maxFuzzyLevel = 1，以获得性能并减少异常结果。 您可以使用或参数调整色阶级别 `maxFuzzyLevel` `minFuzzyLevel` 。 有关 `maxFuzzyLevel` 和所有可选参数的完整列表的详细信息，请参阅[模糊搜索 URI 参数](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>使用模糊搜索搜索地址
 
-1. 打开 Postman 应用，单击“新建”>“新建”，选择“GET 请求”。**** 输入“模糊搜索”作为请求名称，选择用于保存该请求的集合或文件夹，单击“保存”。********
+在此示例中，我们将使用模糊搜索来搜索整个世界 `pizza` 。  接下来，我们将向您演示如何在特定国家/地区搜索范围。 最后，我们将向您演示如何使用坐标位置和半径来确定特定区域的搜索范围，并限制返回的结果数。
 
-2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。****
+>[!IMPORTANT]
+>若要将结果 geobias 为用户的相关领域，请始终添加尽可能多的位置详细信息。 若要了解详细信息，请参阅[搜索的最佳实践](how-to-use-best-practices-for-search.md#geobiased-search-results)。
 
-    ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_url.png)
+1. 打开 Postman 应用，单击 "**新建**"，然后选择 "**请求**"。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择 "**保存**"。
 
-    | 参数 | 建议的值 |
-    |---------------|------------------------------------------------|
-    | HTTP 方法 | GET |
-    | 请求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | 授权 | 无身份验证 |
+2. 在 "生成器" 选项卡中选择 "**获取**HTTP" 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。 请求应如下面的 URL 所示：
 
-    URL 路径中的 **json** 属性确定响应格式。 本文使用 json 以方便使用和提高可读性。 可以在 [Maps 功能 API 参考](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)的 **Get 模糊搜索**定义中找到可用的响应格式。
+    ```http
+   https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
+    ```
 
-3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：****
+    >[!NOTE]
+    >URL 路径中的 _json_ 属性确定响应格式。 本文使用 json 以方便使用和提高可读性。 若要查找其他受支持的响应格式，请参阅 `format` [URI 参数参考文档](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)中的参数定义。
 
-    ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_params.png)
+3. 单击“发送”并查看响应正文。****
 
-    | 密钥 | 值 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<your Azure Maps key\> |
-    | query | pizza |
-
-4. 单击“发送”并查看响应正文。****
-
-    "比萨饼" 的不明确查询字符串在 "比萨饼" 和 "餐馆" 类别中返回10个[兴趣点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse)（POI）。 每个结果都返回街道地址、纬度和经度值、查看端口和位置入口点。
+    "比萨饼" 的明确查询字符串返回了10个[兴趣点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse)， ("比萨饼" 和 "餐馆" 类别中的 POI) 。 每个结果都包含 "街道地址"、"纬度" 和 "经度" 值、"查看端口" 和位置入口点等详细信息。 对于此查询，结果现在会变化，并且不会绑定到任何引用位置。
   
-    此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 你可以使用**countrySet**参数来仅指定你的应用程序需要覆盖的国家/地区。 默认行为是搜索整个世界，可能会返回不必要的结果。
+    在下一步中，我们将使用 `countrySet` 参数来仅指定你的应用程序需要覆盖的国家/地区。 有关支持的国家/地区的完整列表，请参阅[搜索范围](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
 
-5. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
+4. 默认行为是搜索整个世界，可能会返回不必要的结果。 接下来，我们将仅搜索美国的比萨饼。 将 `countrySet` 键添加到**Params**节，并将其值设置为 `US` 。 将 `countrySet` 密钥设置为 `US` 会将结果绑定到美国。
 
-    | 密钥 | 值 |
-    |------------------|-------------------------|
-    | countrySet | 美国 |
-  
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="在美国中搜索比萨饼":::
+
     结果现在受限为国家/地区代码，查询返回了美国境内的比萨餐馆。
-  
-    要为某个位置提供结果，可以查询兴趣点，并在模糊搜索服务的调用中使用返回的纬度和经度值。 本例使用搜索服务返回了西雅图太空针塔 (Seattle Space Needle) 的位置，并使用了纬度 /经度 值来定位搜索。
-  
-6. 在“参数”中，输入以下键值对并单击“发送”：****
 
-    ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
-  
-    | 密钥 | 值 |
+5. 若要获取更具针对性的搜索，可以在/lon. 的范围内进行搜索。 坐标对。 在此示例中，我们将使用/lon。 的。 由于我们只想在400米的半径内返回结果，因此我们将添加 `radius` 参数。 此外，我们将添加参数，将 `limit` 结果限制为最近的五个比萨饼位置。
+
+    在 " **Params** " 部分中，添加以下键/值对：
+
+     | 键 | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
+    | radius | 400 |
+    | limit | 5|
 
+6. 单击“Send”。 响应包括位于西雅图太空针附近的比萨饼餐厅的结果。
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>使用反向地址搜索搜索街道地址
 
-Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)可帮助将坐标（例如：37.786505、-122.3862）转换为易于理解的街道地址。 大多数情况下，在跟踪应用程序时需要此操作，在这些应用程序中，你可以从设备或资产接收 GPS 源，并想知道坐标所在的地址。
-如果你有一组要反转地理编码的坐标位置，则可以使用[Post Search 地址反向批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch)通过单个 API 调用发送一批查询。
+Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)将坐标转换为可读街道地址。 此 API 通常用于使用 GPS 源的应用程序，并且想要发现特定坐标点上的地址。
 
+>[!IMPORTANT]
+>若要将结果 geobias 为用户的相关领域，请始终添加尽可能多的位置详细信息。 若要了解详细信息，请参阅[搜索的最佳实践](how-to-use-best-practices-for-search.md#geobiased-search-results)。
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**" 并将其命名为 "**反向地址搜索**"。
+>[!TIP]
+>如果你有一组要反转地理编码的坐标位置，则可以使用[Post Search 地址反向批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch)通过单个 API 调用发送一批查询。
 
-2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。****
+在此示例中，我们将使用几个可用的可选参数进行反向搜索。 有关可选参数的完整列表，请参阅[反向搜索参数](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。
+
+1. 在 Postman 应用中，单击 "**新建**"，然后选择 "**请求**"。 在“请求名称”中，输入请求名称。 选择在第一个部分中创建的集合，或创建一个新集合，然后选择 "**保存**"。
+
+2. 在 "生成器" 选项卡中选择 "**获取**HTTP" 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。 请求应如下面的 URL 所示：
+
+    ```http
+    https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
+    ```
+
+3. 单击 "**发送**"，并查看响应正文。 应该会看到一个查询结果。 该响应包括有关 Safeco Field 的关键地址信息。
   
-    ![反向地址搜索 URL](./media/how-to-search-for-address/reverse_address_search_url.png)
-  
-    | 参数 | 建议的值 |
-    |---------------|------------------------------------------------|
-    | HTTP 方法 | GET |
-    | 请求 URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | 授权 | 无身份验证 |
-  
-3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：****
-  
-    ![反向地址搜索参数](./media/how-to-search-for-address/reverse_address_search_params.png)
-  
-    | 密钥 | 值 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<your Azure Maps key\> |
-    | query | 47.591180,-122.332700 |
-  
-4. 单击“发送”并查看响应正文。****
+4. 现在，我们将以下键/值对添加到**Params**节：
 
-    该响应包括有关 Safeco Field 的关键地址信息。
-  
-5. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
+    | 键 | 值 | 返回
+    |-----|------------|------|
+    | number | 1 |响应可能包含街道两侧 (左/右) 以及数字的偏移位置。|
+    | returnSpeedLimit | 是 | 返回地址的速度限制。|
+    | returnRoadUse | 是 | 返回地址使用的公路类型。 有关所有可能的公路使用类型，请参阅[公路使用类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
+    | returnMatchType | 是| 返回匹配的类型。 对于所有可能的值，请参阅[反向地址搜索结果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-    | 密钥 | 值 |
-    |-----|------------|
-    | 数字 | true |
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="反向搜索。":::
 
-    如果[number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) query 参数与请求一起发送，则响应可能包含街道的一侧（左侧或右侧）以及该数字的偏移位置。
-  
-6. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
+5. 单击 "**发送**"，并查看响应正文。
 
-    | 密钥 | 值 |
-    |-----|------------|
-    | returnSpeedLimit | true |
-  
-    设置[returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)查询参数后，响应将返回已发布的速度限制。
+6. 接下来，我们将添加 `entityType` 密钥，并将其值设置为 `Municipality` 。 `entityType`该键将覆盖 `returnMatchType` 上一步中的密钥。 我们还需要删除 `returnSpeedLimit` 和， `returnRoadUse` 因为我们请求有关市政府的信息。  有关所有可能的实体类型，请参阅[实体类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)。
 
-7. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="搜索反向 entityType。":::
 
-    | 密钥 | 值 |
-    |-----|------------|
-    | returnRoadUse | true |
+7. 单击“Send”。 将结果与步骤5中返回的结果进行比较。  由于请求的实体类型现在为 `municipality` ，因此响应不包含街道地址信息。 此外，还 `geometryId` 可以使用返回的 Azure Maps 获取[搜索多边形 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来请求边界多边形。
 
-    如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回街道级别的反向地理编码的道路用途数组。
+>[!TIP]
+>若要获取有关这些参数的详细信息以及如何了解其他参数，请参阅 "[反向搜索参数" 部分](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。
 
-8. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
-
-    | 密钥 | 值 |
-    |-----|------------|
-    | roadUse | true |
-
-    可以使用[roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)查询参数将反向地理编码查询限制为特定类型的道路。
-  
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址跨街道搜索搜索交叉街道
 
-1. 在 Postman 中，单击 "**新建请求**" "  |  **GET 请求**" 并将其命名为 "**反向地址交叉街道搜索**"。
+在此示例中，我们将根据地址的坐标搜索交叉街道。
 
-2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。****
+1. 在 Postman 应用中，单击 "**新建**"，然后选择 "**请求**"。 在“请求名称”中，输入请求名称。 选择在第一个部分中创建的集合，或创建一个新集合，然后选择 "**保存**"。
+
+2. 在 "生成器" 选项卡中选择 "**获取**HTTP" 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。 请求应如下面的 URL 所示：
   
-    ![反向地址十字路口搜索](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ```http
+   https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
+    ```
+
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="搜索交叉街道。":::
   
-    | 参数 | 建议的值 |
-    |---------------|------------------------------------------------|
-    | HTTP 方法 | GET |
-    | 请求 URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | 授权 | 无身份验证 |
-  
-3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：****
-  
-    | 密钥 | 值 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<your Azure Maps key\> |
-    | query | 47.591180,-122.332700 |
-  
-4. 单击“发送”并查看响应正文。****
+3. 单击 "**发送**"，并查看响应正文。 你会注意到，响应包含的 `crossStreet` 值为 `Occidental Avenue South` 。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览[Azure Maps 搜索服务 REST API 文档](https://docs.microsoft.com/rest/api/maps/search)。
-- 了解[Azure Maps 搜索服务最佳实践](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)以及如何优化查询。
+> [!div class="nextstepaction"]
+> [Azure Maps 搜索服务 REST API](https://docs.microsoft.com/rest/api/maps/search)
+
+> [!div class="nextstepaction"]
+> [Azure Maps 搜索服务最佳实践](how-to-use-best-practices-for-search.md)

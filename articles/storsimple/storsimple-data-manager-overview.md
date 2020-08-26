@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Data Manager 概述 | Microsoft 文档
-description: 提供 StorSimple 数据管理器服务的概述
+description: 了解 StorSimple 数据管理器解决方案以及如何使用此服务编写使用 StorSimple 数据和其他 Azure 服务的应用程序。
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67876103"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183490"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
 
@@ -47,7 +47,7 @@ StorSimple 数据管理器服务从 StorSimple 8000 系列本地设备标识云�
 
 StorSimple 数据管理器在以下 7 个区域中提供：
 
- - 东南亚
+ - Southeast Asia
  - 美国东部
  - 美国西部
  - 美国西部 2
@@ -64,7 +64,7 @@ StorSimple 数据管理器在以下 7 个区域中提供：
 
 ## <a name="choosing-a-region"></a>选择一个区域
 
-建议：
+我们建议：
  - 源存储帐户（与 StorSimple 设备关联的帐户）和目标存储帐户（希望其中的数据采用本机格式）位于同一 Azure 区域中。
  - 在包含 StorSimple 存储帐户的区域中使用数据管理器和作业定义。 如果不可行，请在最近的 Azure 区域中使用数据管理器，然后在 StorSimple 存储帐户所在的同一区域中创建作业定义。 
 

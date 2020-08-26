@@ -6,11 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457127"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387143"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
 
@@ -20,18 +22,18 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 ## <a name="signalr-service-configuration"></a>SignalR 服务配置
 
-可以不同的模式配置 Azure SignalR 服务。 与 Azure Functions 一起使用时，必须以“无服务器”模式配置服务。 
+可以不同的模式配置 Azure SignalR 服务。 与 Azure Functions 一起使用时，必须以“无服务器”模式配置服务。
 
-在 Azure 门户中，找到 SignalR 服务资源的“设置”页。  将“服务模式”设置为“无服务器”。  
+在 Azure 门户中，找到 SignalR 服务资源的“设置”页。 将“服务模式”设置为“无服务器”。 
 
 ![SignalR 服务模式](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 ## <a name="azure-functions-development"></a>Azure Functions 开发
 
-使用 Azure Functions 和 Azure SignalR 服务构建的无服务器实时应用程序通常需要两个 Azure Functions：
+使用 Azure Functions 和 Azure SignalR 服务构建的无服务器实时应用程序通常需要两个 Azure 函数：
 
-* 一个“negotiate”函数，客户端调用该函数可获取有效的 SignalR 服务访问令牌和服务终结点 URL
-* 处理来自 SignalR 服务的消息并发送消息或管理组成员身份的一个或多个函数
+* “negotiate”函数：客户端调用该函数来获取有效的 SignalR 服务访问令牌和服务终结点 URL
+* 一个或多个用于处理来自 SignalR 服务的消息、发送消息或管理组成员身份的函数
 
 ### <a name="negotiate-function"></a>negotiate 函数
 
@@ -39,7 +41,7 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 使用 HTTP 触发的 Azure 函数和 *SignalRConnectionInfo* 输入绑定生成连接信息对象。 该函数必须包含以 `/negotiate` 结尾的 HTTP 路由。
 
-对于 c # 中的[基于类的模型](#class-based-model)，不需要*SignalRConnectionInfo*输入绑定，因此可以更轻松地添加自定义声明。 请参阅[基于类的模型中的协商体验](#negotiate-experience-in-class-based-model)
+通过使用 C# 中[基于类的模型](#class-based-model)，可无需执行 SignalRConnectionInfo 输入绑定，并可以轻松得多的方式添加自定义声明。 请参阅[基于类的模型中的协商体验](#negotiate-experience-in-class-based-model)
 
 有关如何创建 negotiate 函数的详细信息，请参阅 [*SignalRConnectionInfo* 输入绑定参考](../azure-functions/functions-bindings-signalr-service-input.md)。
 
@@ -47,9 +49,9 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>处理从 SignalR 服务发送的消息
 
-使用*SignalR 触发器*绑定处理从 SignalR 服务发送的消息。 当客户端发送消息或客户端连接或断开连接时，可以触发。
+使用 SignalR 触发器绑定来处理从 SignalR 服务发送的消息。 可在客户端发送消息或客户端连接或断开连接时通过触发功能收到通知。
 
-有关详细信息，请参阅[ *SignalR 触发器*绑定引用](../azure-functions/functions-bindings-signalr-service-trigger.md)
+有关详细信息，请参阅 [SignalR 触发器绑定参考](../azure-functions/functions-bindings-signalr-service-trigger.md)
 
 ### <a name="sending-messages-and-managing-group-membership"></a>发送消息和管理组成员身份
 
@@ -65,10 +67,10 @@ SignalR 具有“中心”的概念。 每个客户端连接以及从 Azure Func
 
 ## <a name="class-based-model"></a>基于类的模型
 
-基于类的模型专用于 c #。 使用基于类的模型可以拥有一致的 SignalR 服务器端编程体验。 它具有以下功能。
+基于类的模型专用于 C#。 使用基于类的模型可以拥有一致的 SignalR 服务器端编程体验。 该示例应用程序具有以下功能。
 
-* 更少的配置工作：类名称用作 `HubName` ，方法名称用作， `Event` 并 `Category` 根据方法名称自动确定。
-* 自动参数绑定： `ParameterNames` 和属性都不 `[SignalRParameter]` 需要。 参数按顺序自动绑定到 Azure Function 方法的参数。
+* 更少的配置工作：类名称用作 `HubName`，方法名称用作 `Event`，`Category` 根据方法名称自动确定。
+* 自动参数绑定：不需要 `ParameterNames` 和属性 `[SignalRParameter]`。 参数按顺序自动绑定到 Azure Function 方法的参数上。
 * 方便的输出和协商体验。
 
 以下代码演示了这些功能：
@@ -103,40 +105,40 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-要利用基于类的模型的所有函数都需要是继承自**ServerlessHub**的类的方法。 示例中的类名称 `SignalRTestHub` 是中心名称。
+需要利用基于类的模型的所有函数都需是继承自 ServerlessHub 的类的方法。 示例中的类名称 `SignalRTestHub` 是中心名称。
 
-### <a name="define-hub-method"></a>定义集线器方法
+### <a name="define-hub-method"></a>定义中心方法
 
-所有集线器方法都**必须**具有 `[SignalRTrigger]` 属性，并且**必须**使用无参数的构造函数。 然后将**方法名称**视为参数**事件**。
+所有中心方法必须具有 `[SignalRTrigger]` 属性，且必须使用无参数的构造函数 。 然后将方法名称视为参数 event 。
 
-默认情况下， `category=messages` 方法名称是以下名称之一：
+默认情况下，除了方法名称外，`category=messages` 是以下名称之一：
 
-* **OnConnected**：被视为`category=connections, event=connected`
-* **OnDisconnected**：被视为`category=connections, event=disconnected`
+* **OnConnected**：视为 `category=connections, event=connected`
+* **OnDisconnected**：视为 `category=connections, event=disconnected`
 
 ### <a name="parameter-binding-experience"></a>参数绑定体验
 
-在基于类的模型中， `[SignalRParameter]` 是不必要的，因为默认情况下所有自变量都标记为， `[SignalRParameter]` 但它是以下情况之一：
+在基于类的模型中，`[SignalRParameter]` 是不必要的，因为默认情况下，所有参数都标记为 `[SignalRParameter]`，除非是以下情况之一：
 
-* 自变量由绑定特性修饰。
-* 参数的类型为 `ILogger` 或`CancellationToken`
-* 参数由特性修饰`[SignalRIgnore]`
+* 参数由绑定属性修饰。
+* 参数的类型为 `ILogger` 或 `CancellationToken`
+* 参数由属性 `[SignalRIgnore]` 修饰
 
 ### <a name="negotiate-experience-in-class-based-model"></a>基于类的模型中的协商体验
 
-`[SignalR]`基于类的模型中的协商可以更灵活地使用，而不是使用 SignalR 输入绑定。 基类 `ServerlessHub` 具有方法
+与使用 SignalR 输入绑定 `[SignalR]` 相比，基于类的模型中的协商更为灵活。 基类 `ServerlessHub` 具有一个方法
 
 ```cs
 SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
 ```
 
-此功能用户自定义 `userId` 或 `claims` 在函数执行期间。
+此功能使用户可以在函数执行期间自定义 `userId` 或 `claims`。
 
 ## <a name="use-signalrfilterattribute"></a>使用 `SignalRFilterAttribute`
 
-用户可以继承和实现抽象类 `SignalRFilterAttribute` 。 如果在中引发异常 `FilterAsync` ， `403 Forbidden` 则将被发送回客户端。
+用户可以继承和实现抽象类 `SignalRFilterAttribute`。 如果 `FilterAsync` 中引发异常，会将 `403 Forbidden` 发送回客户端。
 
-下面的示例演示如何实现仅允许调用的客户筛选器 `admin` `broadcast` 。
+下面的示例演示如何实现仅允许 `admin` 调用 `broadcast` 的客户筛选器。
 
 ```cs
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
@@ -158,7 +160,7 @@ internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
 }
 ```
 
-利用特性来授权函数。
+利用属性对函数进行授权。
 
 ```cs
 [FunctionAuthorize]
@@ -176,8 +178,8 @@ SignalR 客户端应用程序可利用以多种语言之一编写的 SignalR 客
 
 若要连接到 SignalR 服务，客户端必须成功完成连接协商，具体包括以下步骤：
 
-1. 向上述 HTTP 协商终结点发出请求，以获取有效的连接信息**
-1. 使用服务终结点 URL 以及从协商终结点获取的访问令牌连接到 SignalR 服务**
+1. 向上述 HTTP 协商终结点发出请求，以获取有效的连接信息
+1. 使用服务终结点 URL 以及从协商终结点获取的访问令牌连接到 SignalR 服务
 
 SignalR 客户端 SDK 已包含执行协商握手所需的逻辑。 将协商终结点的 URL（不包括 `negotiate` 段）传递给 SDK 的 `HubConnectionBuilder`。 下面是一个 JavaScript 示例：
 
@@ -236,14 +238,14 @@ JavaScript/TypeScript 客户端向 negotiate 函数发出 HTTP 请求，以启�
 
 #### <a name="cloud---azure-functions-cors"></a>云 - Azure Functions CORS
 
-若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。**
+若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。
 
 > [!NOTE]
 > CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用[AZURE API 管理](#cloud---azure-api-management)启用 CORS。
 
 必须启用支持 Access-Control-Allow-Credentials 的 CORS 才能让 SignalR 客户端调用 negotiate 函数。 选中相应的复选框以启用 CORS。
 
-在“允许的源”部分添加一个包含 Web 应用程序源基本 URL 的条目。**
+在“允许的源”部分添加一个包含 Web 应用程序源基本 URL 的条目。
 
 ![配置 CORS](media/signalr-concept-serverless-development-config/cors-settings.png)
 
@@ -277,7 +279,7 @@ Azure API 管理提供一个可向现有后端服务添加功能的 API 网关�
 
 Azure Functions 提供内置身份验证，支持 Facebook、Twitter、Microsoft 帐户、Google 和 Azure Active Directory 等常用访问接口。 此功能可与 *SignalRConnectionInfo* 绑定集成，以便与已使用用户 ID 进行身份验证的 Azure SignalR 服务建立连接。 应用程序可以使用 *SignalR* 输出绑定来发送以该用户 ID 为目标的消息。
 
-在 Azure 门户中函数应用的“平台功能”选项卡上，打开“身份验证/授权”设置窗口。**** 遵循[应用服务身份验证](../app-service/overview-authentication-authorization.md)文档使用所选的标识提供者配置身份验证。
+在 Azure 门户中函数应用的“平台功能”选项卡上，打开“身份验证/授权”设置窗口。  遵循[应用服务身份验证](../app-service/overview-authentication-authorization.md)文档使用所选的标识提供者配置身份验证。
 
 配置后，经过身份验证的 HTTP 请求将包含 `x-ms-client-principal-name` 和 `x-ms-client-principal-id` 标头，而这些标头分别包含经过身份验证的标识的用户名和用户 ID。
 

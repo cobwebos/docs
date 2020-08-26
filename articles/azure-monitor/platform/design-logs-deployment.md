@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201287"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551316"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -25,7 +25,7 @@ Log Analytics 工作区可提供：
 
 * 数据存储的地理位置。
 * 遵循建议的设计策略之一授予不同的用户访问权限，以实现数据隔离。
-* 设置配置的范围，例如[定价层级](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)。
+* 设置配置的范围，例如[定价层级](./manage-cost-storage.md#changing-pricing-tier)、[保留期](./manage-cost-storage.md#change-the-data-retention-period)和[数据上限](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
 
 本文提供设计和迁移注意事项的详细概述、访问控制概述，我们为 IT 组织推荐的设计实施方案的介绍。
 
@@ -47,12 +47,12 @@ Log Analytics 工作区可提供：
 
 使用 Log Analytics 代理收集数据时，需要了解以下各项以规划代理部署：
 
-* 要从 Windows 代理收集数据，可以[配置每个代理以向一个或多个工作区报告](../../azure-monitor/platform/agent-windows.md)，即使它向 System Center Operations Manager 管理组报告也是如此。 Windows 代理最多可向四个工作区报告。
+* 要从 Windows 代理收集数据，可以[配置每个代理以向一个或多个工作区报告](./agent-windows.md)，即使它向 System Center Operations Manager 管理组报告也是如此。 Windows 代理最多可向四个工作区报告。
 * Linux 代理不支持多宿主，只能向一个工作区报告。
 
 如果使用 System Center Operations Manager 2012 R2 或更高版本：
 
-* 每个 Operations Manager 管理组[只能连接到一个工作区](../platform/om-agents.md)。 
+* 每个 Operations Manager 管理组[只能连接到一个工作区](./om-agents.md)。 
 * 向管理组报告的 Linux 计算机必须配置为直接向 Log Analytics 工作区报告。 如果 Linux 计算机已经是直接向工作区报告，并且你希望使用 Operations Manager 监视它们，请按照以下步骤[向 Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。 
 * 可以在 Windows 计算机上安装 Log Analytics Windows 代理，使其向与工作区集成的 Operations Manager 以及与其他工作区集成的 Operations Manager 报告。
 
@@ -127,17 +127,25 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 ## <a name="ingestion-volume-rate-limit"></a>引入量速率限制
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 每个工作区的默认引入速率阈值设置为 **6 GB/分钟**。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或[数据收集器 API](data-collector-api.md) 发送的数据。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 卷速率限制旨在将 Azure Monitor 客户与多租户环境中的突然引入峰值隔离开来。 工作区中定义了 500 MB (压缩) 的默认引入量速率阈值，此值转换为大约 **6 GB/最小值** （未压缩），这取决于日志长度及其压缩率。 卷速率限制适用于所有引入数据，无论是使用 [诊断设置](diagnostic-settings.md)、 [数据收集器 API](data-collector-api.md) 还是代理从 Azure 资源发送。
 
-如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过向 LAIngestionRate@microsoft.com 发送电子邮件或提交支持请求来请求增加工作区。
- 
-若要在工作区中收到此类事件的通知，请根据大于零的结果数，使用以下具有警报逻辑的查询创建[日志警报规则](alerts-log.md)。
+如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量的速率持续超出阈值，或者您很快就会到达此阈值，则可以通过打开支持请求来请求增加此阈值。 
 
-``` Kusto
+若要在你的工作区中收到 approching 或达到引入量速率限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，并在结果数为大于的情况下使用警报逻辑基数，计算时间为5分钟，频率为5分钟。
+
+引入量速率达到阈值的 80%：
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
+
+引入量速率达到阈值：
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 
 ## <a name="recommendations"></a>建议
@@ -166,3 +174,4 @@ Operation
 ## <a name="next-steps"></a>后续步骤
 
 若要实施本指南中建议的安全权限和控制措施，请查看[管理对日志的访问权限](manage-access.md)。
+

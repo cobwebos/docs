@@ -3,13 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
+ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 60d5fb524d07590ed28641a6c91b87dbeb7dfc9f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d04a13dae78057dfca52ed82bed278a8b132ded1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035745"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375504"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,10 +51,10 @@ public class App {
 
 ## <a name="create-a-speech-translation-configuration"></a>创建语音翻译配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关订阅的信息，例如密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 > [!TIP]
-> 无论是要执行语音识别、语音合成、翻译还是意向识别，都需要创建一个配置。
+> 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
 可以通过以下几种方法初始化 [`SpeechTranslationConfig`][config]：
 

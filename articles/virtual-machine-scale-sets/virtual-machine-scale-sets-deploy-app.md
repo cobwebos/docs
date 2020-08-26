@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124918"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080516"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
@@ -112,4 +113,4 @@ az vmss create \
 
 
 ## <a name="next-steps"></a>后续步骤
-生成应用程序并将其部署到规模集时，可参阅[规模集设计概述](virtual-machine-scale-sets-design-overview.md)。 若要深入了解如何管理规模集，请参阅[使用 PowerShell 管理规模集](virtual-machine-scale-sets-windows-manage.md)。
+生成应用程序并将其部署到规模集时，可参阅[规模集设计概述](virtual-machine-scale-sets-design-overview.md)。 若要深入了解如何管理规模集，请参阅[使用 PowerShell 管理规模集](./virtual-machine-scale-sets-manage-powershell.md)。

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 脚本示例 - 根据前缀删除容器 | Microsoft Docs
-description: 根据容器名称前缀删除 Azure 存储 blob 容器。
+description: 查看一个示例，该示例说明如何使用 Azure PowerShell 根据容器名称中的前缀删除 Azure Blob 存储。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 73c2f221d2ac0b3ceb76e3db0fdc6379a6dd330a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 18827beeb606694e2c9089f27570216d413aabd9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060886"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033540"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>根据容器名称前缀删除容器
 
@@ -48,6 +48,6 @@ Remove-AzResourceGroup -Name containerdeletetestrg
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 有关其他存储 PowerShell 脚本示例，可参阅 [Azure Blob 存储的 PowerShell 示例](../blobs/storage-samples-blobs-powershell.md)。

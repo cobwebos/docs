@@ -5,17 +5,17 @@ description: 了解如何在 Azure 门户中创建、查看和删除 Azure 机�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045699"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659749"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建并管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,8 @@ ms.locfileid: "86045699"
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws****。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。 工作区名称不区分大小写。
    订阅 |选择要使用的 Azure 订阅。
-   资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml****。 
+   资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml****。 你需要 *参与者* 或 *所有者* 角色才能使用现有的资源组。  有关访问权限的详细信息，请参阅 [管理对 Azure 机器学习工作区的访问](how-to-assign-roles.md)。
+   位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
    位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
    工作区版本 | 选择“基本”**** 或“企业”****。  此工作区版本决定了可访问的功能和定价。 详细了解[基本版和企业版产品/服务](overview-what-is-azure-ml.md#sku)。 
 

@@ -4,10 +4,10 @@ description: 在本教程中，我们使用 Azure 实验室服务设置带虚拟
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445128"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 

@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: charwen
-ms.openlocfilehash: b1efaecc0bb857478a6a9f94db33ddaf547f1ac2
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 673c0e7af4be330f3d63d2fe6ed68c73142da5d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084800"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
@@ -84,7 +84,7 @@ ms.locfileid: "85985201"
 ## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>创建新的虚拟网络和并存连接
 本过程指导创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
 
-1. 需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
+1. 需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
 2. 创建虚拟网络的架构。 有关配置架构的详细信息，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100.aspx)。
    
     在创建架构时，请确保使用以下值：
@@ -215,7 +215,7 @@ ms.locfileid: "85985201"
 > 
 > 
 
-1. 需要安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
+1. 需要安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
 2. 删除现有的 ExpressRoute 或站点到站点 VPN 网关。 使用下面的 cmdlet，并将值替换成自己的值。
    
     ```azurepowershell

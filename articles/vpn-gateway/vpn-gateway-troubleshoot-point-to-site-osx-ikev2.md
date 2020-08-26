@@ -1,17 +1,18 @@
 ---
 title: Azure VPN 网关：排查点到站点连接问题：Mac OS X 客户端
-description: 对 P2S Mac OS X VPN 客户端连接进行故障排除的步骤
+description: 了解如何使用本机 VPN 客户端和 IKEv2 从 Mac OS X 排查点到站点连接问题。
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: f88053c93884e10e46a0f7d70106bda67b057562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425709"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030653"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 

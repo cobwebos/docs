@@ -4,11 +4,12 @@ description: 本 .NET 教程可帮助你在 Azure 中开发使用服务总线队
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340301"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067828"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -23,11 +24,11 @@ ms.locfileid: "85340301"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-在本教程中，将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
+在本教程中，将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
 
 以下屏幕截图显示已完成的应用程序。
 
-![][0]
+![应用程序的 "提交" 页的屏幕截图。][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>方案概述：角色间通信
 若要提交处理命令，以 Web 角色运行的前端 UI 组件必须与以辅助角色运行的中间层逻辑进行交互。 此示例使用服务总线消息传送在各层之间进行通信。
@@ -36,7 +37,7 @@ ms.locfileid: "85340301"
 
 服务总线提供了两个实体以支持中转消息传送：队列和主题。 通过队列，发送到队列的每个消息均由一个接收方使用。 主题支持发布/订阅模式，在该模式中，每个已发布消息都将提供给在该主题中注册的订阅。 每个订阅都以逻辑方式保留自己的消息队列。 此外，还可以使用筛选规则配置订阅，这些规则可将传递给订阅队列的消息集限制为符合筛选条件的消息集。 以下示例使用服务总线队列。
 
-![][1]
+![显示 Web 角色、服务总线和辅助角色之间的通信的关系图。][1]
 
 与直接消息传送相比，此通信机制具有多项优势：
 
@@ -44,7 +45,7 @@ ms.locfileid: "85340301"
 * **负载量。** 在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序（辅助）预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这会直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。
 * **负载均衡。** 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载均衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们以其最大速率拉取消息）也是如此。 此模式通常称为 *使用者竞争* 模式。
   
-  ![][2]
+  ![显示 Web 角色、服务总线和两个辅助角色之间的通信的关系图。][2]
 
 以下各节讨论了实现此体系结构的代码。
 
@@ -63,27 +64,27 @@ ms.locfileid: "85340301"
 
 1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”  程序图标，并单击“以管理员身份运行”  。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
    
-   在 Visual Studio 的“文件”  菜单中，单击“新建”  ，并单击“项目”  。
+   在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”  。
    
-   ![][9]
-3.   在“角色”窗格中，双击“ASP.NET Web 角色”。
+   !["新项目" 对话框的屏幕截图，其中选择了 Cloud，Azure 云服务 Visual c # 突出显示了红色。][9]
+3. 在 "**角色**" 窗格中，双击 " **ASP.NET Web 角色**"。
    
-   ![][10]
+   ![选中 "ASP.NET" Web 角色并选择 "WebRole1" 的 "新建 Microsoft Azure 云服务" 对话框的屏幕截图。][10]
 4. 将鼠标指针停留在“Azure 云服务解决方案”  下的“WebRole1”  上，单击铅笔图标，并将 Web 角色重命名为“FrontendWebRole”  。 然后单击“确定”  。 （请确保输入“Frontend”而不是“FrontEnd”，此处为小写“e”。）
    
-   ![][11]
+   ![新的 "Microsoft Azure 云服务" 对话框的屏幕截图，解决方案已重命名为 FrontendWebRole。][11]
 5. 从“新建 ASP.NET 项目”  对话框的“选择模板”  列表中，单击“MVC”  。
    
-   ![][12]
+   ![Screenshotof "新建 ASP.NET 项目" 对话框，其中突出显示了 MVC 并以红色列出了 "更改身份验证" 选项。][12]
 6. 仍然在“新建 ASP.NET 项目”  对话框中，单击“更改身份验证”  按钮。 在“更改身份验证”对话框中，确保已选择“无身份验证”，然后单击“确定”    。 在本教程中，将部署无需用户登录名的应用。
    
-    ![][16]
+    !["更改身份验证" 对话框的屏幕截图，其中已选择 "无身份验证" 选项并以红色列出。][16]
 7. 返回到“新建 ASP.NET 项目”  对话框，单击“确定”  以创建项目。
-8. 在“解决方案资源管理器”  的“FrontendWebRole”  项目中，右键单击“引用”  ，并单击“管理 NuGet 包”  。
-9. 单击“浏览”  选项卡，然后搜索“WindowsAzure.ServiceBus”  。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。 
+8. 在**解决方案资源管理器**的**FrontendWebRole**项目中，右键单击 "**引用**"，然后单击 "**管理 NuGet 包**"。
+9. 单击“浏览”  选项卡，然后搜索“WindowsAzure.ServiceBus”  。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
    
-   ![][13]
+   ![突出显示了 Windowsazure.storage 的 "管理 NuGet 包" 对话框的屏幕截图，并以红色列出了 "安装" 选项。][13]
    
    请注意，现已引用所需的客户端程序集并已添加部分新代码文件。
 10. 在“解决方案资源管理器”  中，右键单击“模型”  ，并依次单击“添加”  和“类”  。 在“名称”  框中，键入名称“OnlineOrder.cs”  。 然后单击“添加”  。
@@ -165,16 +166,16 @@ ms.locfileid: "85340301"
 4. 在“生成”  菜单中，单击“生成解决方案”  以测试工作的准确性。
 5. 现在，为前面创建的 `Submit()` 方法创建视图。 在 `Submit()` 方法（不带任何参数的 `Submit()` 的重载函数）中右键单击，并选择“添加视图”  。
    
-   ![][14]
+   ![将焦点放在 Submit 方法上的代码的屏幕截图，并突出显示 "添加视图" 选项的下拉列表。][14]
 6. 此时会显示一个用于创建视图的对话框。 在“模板”  列表中，选择“创建”  。 在“模型类”  列表中，选择“OnlineOrder”  类。
    
-   ![][15]
+   !["添加视图" 对话框的屏幕截图，其中包含以红色列出的 "模板" 和 "模型类" 下拉列表。][15]
 7. 单击“添加”  。
 8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”中，双击“views/shared\\_Layout.cshtml”文件以在 Visual Studio 编辑器中将其打开。
-9. 将每一处 **My ASP.NET Application** 替换为 **Northwind Traders Products**。
+9. 将**ASP.NET 应用程序**的所有匹配项替换为**Northwind 商贸产品**。
 10. 删除“Home”  、“About”  和“Contact”  链接。 删除突出显示的代码：
     
-    ![][28]
+    ![突出显示了包含三行 H T M L 操作链接代码的代码屏幕截图。][28]
 11. 最后，修改提交页以包含有关队列的一些信息。 在“解决方案资源管理器”  中，双击“Views\Home\Submit.cshtml”  文件以在 Visual Studio 编辑器中将其打开。 `<h2>Submit</h2>`后面添加以下行。 `ViewBag.MessageCount` 当前为空。 稍后将填充它。
     
     ```html
@@ -182,7 +183,7 @@ ms.locfileid: "85340301"
     ```
 12. 现在，已实现 UI。 可以按 **F5** 运行应用程序并确认其按预期方式运行。
     
-    ![][17]
+    ![应用程序的 "提交" 页的屏幕截图。][17]
 
 ### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>编写用于将项提交到 Service Bus 队列的代码
 现在，将添加用于将项提交到队列的代码。 首先，将创建一个包含服务总线队列连接信息的类。 然后，将从 Global.aspx.cs 初始化连接。 最后，将更新你之前在 HomeController.cs 中创建的提交代码以便实际将项提交到服务总线队列。
@@ -289,31 +290,31 @@ ms.locfileid: "85340301"
        }
        else
        {
-           return View(order);
+           return View(order); 
        }
    }
    ```
 9. 现在，可以重新运行应用程序。 每提交订单时，消息计数都会增大。
    
-   ![][18]
+   ![应用程序的 "提交" 页的屏幕截图，消息计数递增为1。][18]
 
 ## <a name="create-the-worker-role"></a>创建辅助角色
 现在，将创建用于处理订单提交的辅助角色。 此示例使用“服务总线队列的辅助角色”  Visual Studio 项目模板。 已从门户中获取所需的凭据。
 
 1. 确保已将 Visual Studio 连接到 Azure 帐户。
-2. 在 Visual Studio 的“解决方案资源管理器”中，右键单击“MultiTierApp”项目下的“角色”文件夹。
+2. 在 Visual Studio 的**解决方案资源管理器**中，右键单击**MultiTierApp**项目下的 "**角色**" 文件夹。
 3. 单击“添加”  ，并单击“新建辅助角色项目”  。 此时会显示“添加新角色项目”  对话框。
    
-   ![][26]
+   !["解决方案资源管理器" 窗格的屏幕截图，其中突出显示了 "新建辅助角色项目" 选项和 "添加" 选项][26]
 4. 在“添加新角色项目”  对话框中，单击“服务总线队列的辅助角色”  。
    
-   ![][23]
+   !["Ad 新建角色项目" 对话框的屏幕截图，其中突出显示了 "服务总线队列" 选项和 "红色"。][23]
 5. 在“名称”  框中，将项目命名为“OrderProcessingRole”  。 然后单击“添加”  。
 6. 将在“创建服务总线命名空间”部分的步骤 9 中获取的连接字符串复制到剪贴板。
 7. 在“解决方案资源管理器”中，右键单击在步骤 5 中创建的“OrderProcessingRole”（确保右键单击“角色”下的“OrderProcessingRole”而不是类）。 然后单击“属性”  。
 8. 在“属性”对话框的“设置”选项卡中，在“Microsoft.ServiceBus.ConnectionString”的“值”框内单击，并粘贴在步骤 6 中复制的终结点值。
    
-   ![][25]
+   !["属性" 对话框的屏幕截图，其中选择了 "设置" 选项卡，并以红色列出了 "][25]
 9. 从队列中处理订单时，创建一个 **OnlineOrder** 类来表示这些订单。 可以重用已创建的类。 在“解决方案资源管理器”  中，右键单击“OrderProcessingRole”  类（右键单击类图标，而不是角色）。 单击“添加”  ，并单击“现有项”  。
 10. 浏览到 **FrontendWebRole\Models** 的子文件夹，然后双击“OnlineOrder.cs”  以将其添加到此项目中。
 11. 在 **WorkerRole.cs** 中，将 **QueueName** 变量的值 `"ProcessingQueue"` 更改为 `"OrdersQueue"`，如以下代码所示。
@@ -338,9 +339,9 @@ ms.locfileid: "85340301"
     ```
 14. 已完成此应用程序。 可以测试整个应用程序，方法是右键单击“解决方案资源管理器”中的 MultiTierApp 项目，选择“设置为启动项目”  ，然后按 F5。 请注意，消息计数不会递增，因为辅助角色会处理队列中的项并将其标记为完成。 可以通过查看 Azure 计算模拟器 UI 来查看辅助角色的跟踪输出。 可通过右击任务栏的通知区域中的模拟器图标并选择“显示计算模拟器 UI”  来执行此操作。
     
-    ![][19]
+    ![单击模拟器图标时显示的内容的屏幕截图。 在选项列表中显示计算模拟器 UI。][19]
     
-    ![][20]
+    ![Microsoft Azure 计算模拟器 (Express) "对话框的屏幕截图。][20]
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：  

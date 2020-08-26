@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563270"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509274"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -105,7 +105,7 @@ H265 编解码器未安装：
 
 模型超过所选 VM 的限制，尤其是最大多边形数：
 
-请参阅特定[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+请参阅特定 [服务器大小限制](../reference/limits.md#overall-number-of-polygons)。
 
 **模型不在相机截锥内：**
 
@@ -148,13 +148,13 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型加载后呈现棋盘模式
 
-如果呈现的图像如下所示： ![ 棋盘 ](../reference/media/checkerboard.png) ，呈现器将达到[标准 VM 大小的多边形限制](../reference/vm-sizes.md)。 若要缓解这种情况，请切换到**高级 VM**大小或减少可见多边形的数目。
+如果呈现的图像如下所示： ![ 棋盘 ](../reference/media/checkerboard.png) ，呈现器将达到 [标准配置大小的多边形限制](../reference/vm-sizes.md)。 若要缓解这种情况，请切换到 **高级** 配置大小或减少可见多边形的数目。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 中呈现的图像颠倒
 
-请确保遵循[Unity 教程：完全查看远程模型](../tutorials/unity/view-remote-models/view-remote-models.md)。 倒置图像表示创建离屏呈现目标需要 Unity。 当前不支持此行为，并在 HoloLens 2 上产生了巨大的性能影响。
+请确保遵循 [Unity 教程：完全查看远程模型](../tutorials/unity/view-remote-models/view-remote-models.md) 。 倒置图像表示创建离屏呈现目标需要 Unity。 当前不支持此行为，并在 HoloLens 2 上产生了巨大的性能影响。
 
-此问题的原因可能是 MSAA、HDR 或启用后处理。 请确保选择低质量配置文件并将其设置为 Unity 中的默认配置文件。 为此，请参阅*编辑 > 项目设置 ... > 质量*。
+此问题的原因可能是 MSAA、HDR 或启用后处理。 请确保选择低质量配置文件并将其设置为 Unity 中的默认配置文件。 为此，请参阅 *编辑 > 项目设置 ... > 质量*。
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>使用远程渲染 API 的 Unity 代码未编译
 
@@ -174,7 +174,7 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
     
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>由于缺少 AudioPluginMsHRTF.dll，Unity 项目的 Arm64 生成失败
 
-`AudioPluginMsHRTF.dll`Arm64 已添加到3.0.1 版中的*Windows Mixed Reality*包 *（xr. windowsmr）* 。 确保已通过 Unity 包管理器安装了版本3.0.1 或更高版本。 从 Unity 菜单栏中，导航到 "*窗口 >" 包管理器*"，并查找" *Windows Mixed Reality* "包。
+`AudioPluginMsHRTF.dll`已将 Arm64 的添加到*Windows Mixed Reality* (包 *) *版本3.0.1 中的 windowsmr。 确保已通过 Unity 包管理器安装了版本3.0.1 或更高版本。 从 Unity 菜单栏中，导航到 " *窗口 >" 包管理器* "，并查找" *Windows Mixed Reality* "包。
 
 ## <a name="unstable-holograms"></a>不稳定全息影像
 
@@ -188,13 +188,13 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ## <a name="z-fighting"></a>Z 冲突
 
-虽然 ARR 提供了[z 反击缓解功能](../overview/features/z-fighting-mitigation.md)，但在场景中仍会出现 z 向下。 本指南旨在解决这些剩余问题。
+虽然 ARR 提供了 [z 反击缓解功能](../overview/features/z-fighting-mitigation.md)，但在场景中仍会出现 z 向下。 本指南旨在解决这些剩余问题。
 
 ### <a name="recommended-steps"></a>建议的步骤
 
 使用以下工作流来缓解 z 反击：
 
-1. 用 ARR 的默认设置（在上的 z 反击缓解）测试场景
+1. 在) 上，用 ARR (的默认设置测试场景
 
 1. 通过其[API](../overview/features/z-fighting-mitigation.md)禁用 z 反击缓解 
 
@@ -204,9 +204,9 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ### <a name="investigating-remaining-z-fighting"></a>调查剩余的 z 反击
 
-如果以上步骤已经用完，并且其余 z 操作不可接受，则需要调查 z 反击的根本原因。 如[z 反击缓解功能页](../overview/features/z-fighting-mitigation.md)中所述，z 反击的主要原因有两个主要原因：深度精度损失在深度范围的最远位置，以及在处于共面状态时相交的图面。 深度精度损失是数学后果同样，只能通过执行上述步骤3来缓解。 共面图面表示源资产缺陷，并且更好地固定在源数据中。
+如果以上步骤已经用完，并且其余 z 操作不可接受，则需要调查 z 反击的根本原因。 如 [z 反击缓解功能页](../overview/features/z-fighting-mitigation.md)中所述，z 反击的主要原因有两个主要原因：深度精度损失在深度范围的最远位置，以及在处于共面状态时相交的图面。 深度精度损失是数学后果同样，只能通过执行上述步骤3来缓解。 共面图面表示源资产缺陷，并且更好地固定在源数据中。
 
-ARR 具有一项功能，用于确定表面是否可以进行 z 抵抗：[棋盘突出显示](../overview/features/z-fighting-mitigation.md)。 您还可以直观地确定导致 z 反击的原因。 下面的第一个动画显示距离中的深度精度丢失示例，第二个动画显示将近共面图面的示例：
+ARR 具有一项功能，用于确定表面是否可以进行 z 抵抗： [棋盘突出显示](../overview/features/z-fighting-mitigation.md)。 您还可以直观地确定导致 z 反击的原因。 下面的第一个动画显示距离中的深度精度丢失示例，第二个动画显示将近共面图面的示例：
 
 ![深度-精度-z-反击](./media/depth-precision-z-fighting.gif)  ![共面-z-反击](./media/coplanar-z-fighting.gif)
 
@@ -226,7 +226,7 @@ ARR 具有一项功能，用于确定表面是否可以进行 z 抵抗：[棋盘
 
 * 曲面将复制并翻转，使其在使用正面或背面剔除的呈现器中呈双面显示。
 
-    通过[模型转换](../how-tos/conversion/model-conversion.md)导入确定模型的主体 sidedness。 默认情况下，sidedness 为默认值。 图面将呈现为一个薄壁，其中的两侧都具有物理正确的照明。 Sidedness 可以由源资产中的标志隐含，或在[模型转换](../how-tos/conversion/model-conversion.md)期间显式强制。 此外，可以根据需要将[单面模式](../overview/features/single-sided-rendering.md)设置为 "正常"。
+    通过 [模型转换](../how-tos/conversion/model-conversion.md) 导入确定模型的主体 sidedness。 默认情况下，sidedness 为默认值。 图面将呈现为一个薄壁，其中的两侧都具有物理正确的照明。 Sidedness 可以由源资产中的标志隐含，或在 [模型转换](../how-tos/conversion/model-conversion.md)期间显式强制。 此外，可以根据需要将 [单面模式](../overview/features/single-sided-rendering.md) 设置为 "正常"。
 
 * 对象与源资产相交。
 

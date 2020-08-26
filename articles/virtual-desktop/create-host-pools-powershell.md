@@ -1,27 +1,22 @@
 ---
 title: 创建 Windows 虚拟桌面主机池 PowerShell - Azure
 description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主机池。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b064c6e4107da5695e2a9945240e4276ac795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211844"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121147"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
+# <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟机主机池
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
 
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以与多个 RemoteApp 组、一个桌面应用组和多个会话主机关联。
 
@@ -63,7 +58,7 @@ New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtuali
 接下来运行此 cmdlet，将 Azure Active Directory 用户组添加到主机池的默认桌面应用组：
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+“-DAG”> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 运行以下 cmdlet，将注册令牌导出到变量，稍后[将虚拟机注册到 Windows 虚拟桌面主机池](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)时会用到它。
@@ -121,6 +116,32 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 >[!IMPORTANT]
 >为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。 同时建议不要向 VM 分配公共 IP。
+
+## <a name="update-the-agent"></a>更新代理
+
+如果你在以下情况之一，则需要更新代理：
+
+- 要将以前注册的会话迁移到新的主机池
+- 更新后，会话主机不会显示在主机池中
+
+更新代理：
+
+1. 以管理员身份登录到 VM。
+2. 请先执行 "**服务**"，然后停止**Rdagent**和**远程桌面代理加载**器进程。
+3. 接下来，查找代理和加载程序 Msi。 它们将位于**C:\DeployAgent**文件夹中或在安装时保存到的任何位置。
+4. 找到以下文件并将其卸载：
+     
+     - RDInfra. RDAgent-x64-verx. x
+     - RDInfra. RDAgentBootLoader-x64
+
+   若要卸载这些文件，请右键单击每个文件名，然后选择 "**卸载**"。
+5. 还可以选择删除以下注册表设置：
+     
+     - 计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
+     - 计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. 卸载这些项后，这会删除与旧主机池的所有关联。 如果要将此主机重新注册到服务，请按照将[虚拟机注册到 WIndows 虚拟机主机池](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明进行操作。
+
 
 ## <a name="next-steps"></a>后续步骤
 

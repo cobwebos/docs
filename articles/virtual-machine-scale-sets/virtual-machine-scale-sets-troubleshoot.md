@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374587"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830676"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
 问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署一个与此类似的模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale ）。已定义了缩放规则，其效果良好，但无论在 VM 中施放多少负载，它都不会自动缩放。
@@ -23,7 +23,7 @@ ms.locfileid: "85374587"
 应考虑的一些事项包括：
 
 * 每个 VM 有多少个 vCPU，是否加载了所有 vCPU？
-  上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它可以加载单个 vCPU。 如果正在使用比单 vCPU VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此加载过程。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)检查 VM 中有多少个 vCPU
+  上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它可以加载单个 vCPU。 如果正在使用比单 vCPU VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此加载过程。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)检查 VM 中有多少个 vCPU
 * 虚拟机规模集中有多少个 VM，正在处理每个 VM 吗？
   
     仅当规模集中所有 VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
@@ -73,7 +73,7 @@ ms.locfileid: "85374587"
     如果数据不存在，则意味着问题与在 VM 中运行的诊断扩展相关。 如果数据存在，则意味着问题与缩放规则或 Insights 服务相关。 检查 [Azure 状态](https://azure.microsoft.com/status/)。
     
     完成这些步骤后，如果仍然存在自动缩放问题，则可以尝试使用以下资源： 
-    * 访问 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 论坛 
+    * 访问 [Microsoft Q&A 问题页面](/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 论坛 
     * 记录支持人员电话。 准备共享模板和性能数据的视图。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

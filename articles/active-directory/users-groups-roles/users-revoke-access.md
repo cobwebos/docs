@@ -1,5 +1,5 @@
 ---
-title: 撤消 Azure Active Directory 的紧急用户访问权限 |Microsoft Docs
+title: 撤消 Azure Active Directory 中的紧急用户访问 |Microsoft Docs
 description: 在 Azure Active Directory 中的 Azure AD 管理中心批量添加用户
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,15 @@ author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 06/26/2020
+ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ca5f7c6032a69286da72d8ef3640f64038eb3a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027182"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798408"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>撤消 Azure Active Directory 中的用户访问权限
 
@@ -37,9 +38,9 @@ ms.locfileid: "86027182"
 
 然后 Azure AD 重新评估其授权策略。 如果用户仍然获得授权，Azure AD 会颁发一个新的访问令牌和刷新令牌。
 
-如果必须在短于令牌生存期的时间内撤销访问权限（通常在一小时内），访问令牌可能是一个安全问题。 出于此原因，Microsoft 正在积极地将[连续访问评估](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation)引入到 Office 365 应用程序，这有助于确保访问令牌的不间断实时。  
+如果必须在短于令牌生存期的时间内撤销访问权限（通常在一小时内），访问令牌可能是一个安全问题。 出于此原因，Microsoft 正在积极地将 [连续访问评估](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) 引入到 Office 365 应用程序，这有助于确保访问令牌的不间断实时。  
 
-## <a name="session-tokens-cookies"></a>会话令牌（cookie）
+## <a name="session-tokens-cookies"></a>会话令牌 (cookie) 
 
 大多数基于浏览器的应用程序使用会话令牌，而不是访问和刷新令牌。  
 
@@ -59,13 +60,13 @@ ms.locfileid: "86027182"
 
 作为 Active Directory 中的管理员，请连接到本地网络，打开 PowerShell，并执行以下操作：
 
-1. 禁用 Active Directory 中的用户。 请参阅[ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps)。
+1. 禁用 Active Directory 中的用户。 请参阅 [ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps)。
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. 在 Active Directory 中两次重置用户密码。 请参阅[set-adaccountpassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)。
+1. 在 Active Directory 中两次重置用户密码。 请参阅 [set-adaccountpassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)。
 
     > [!NOTE]
     > 更改用户密码两次的原因是为了降低哈希传递的风险，尤其是在本地密码复制延迟的情况下。 如果您可以安全地假设此帐户不安全，则您只能重置密码一次。
@@ -82,18 +83,18 @@ ms.locfileid: "86027182"
 
 作为 Azure Active Directory 中的管理员，请打开 PowerShell，运行 ``Connect-AzureAD`` ，并执行以下操作：
 
-1. 禁用 Azure AD 中的用户。 请参阅[get-azureaduser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)。
+1. 禁用 Azure AD 中的用户。 请参阅 [get-azureaduser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)。
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. 撤消用户的 Azure AD 刷新令牌。 请参阅[AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。
+1. 撤消用户的 Azure AD 刷新令牌。 请参阅 [AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. 禁用用户的设备。 请参阅[get-azureaduserregistereddevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)。
+1. 禁用用户的设备。 请参阅 [get-azureaduserregistereddevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)。
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -101,9 +102,9 @@ ms.locfileid: "86027182"
 
 ## <a name="optional-steps"></a>可选步骤
 
-- [从 Intune 管理的应用程序中擦除公司数据](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe)。
+- [从 Intune 管理的应用程序中擦除公司数据](/mem/intune/apps/apps-selective-wipe)。
 
-- [擦除公司拥有的设备正在将设备重置为出厂默认设置](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe)。
+- [擦除公司拥有的设备正在将设备重置为出厂默认设置](/mem/intune/remote-actions/devices-wipe)。
 
 > [!NOTE]
 > 擦除后无法恢复设备上的数据。
@@ -112,9 +113,9 @@ ms.locfileid: "86027182"
 
 管理员完成上述步骤后，用户将无法获取与 Azure Active Directory 关联的任何应用程序的新令牌。 吊销和用户失去访问权限之间经过的时间取决于应用程序授予访问权限的方式：
 
-- 对于**使用访问令牌的应用程序**，当访问令牌过期时，用户将失去访问权限。
+- 对于 **使用访问令牌的应用程序**，当访问令牌过期时，用户将失去访问权限。
 
-- 对于**使用会话令牌的应用程序**，现有会话将在令牌过期后立即结束。 如果用户的禁用状态同步到了应用程序，则应用程序可以自动撤销用户的现有会话（如果配置为这样做）。  所花费的时间取决于应用程序和 Azure AD 之间的同步频率。
+- 对于 **使用会话令牌的应用程序**，现有会话将在令牌过期后立即结束。 如果用户的禁用状态同步到了应用程序，则应用程序可以自动撤销用户的现有会话（如果配置为这样做）。  所花费的时间取决于应用程序和 Azure AD 之间的同步频率。
 
 ## <a name="next-steps"></a>后续步骤
 

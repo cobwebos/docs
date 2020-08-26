@@ -13,10 +13,10 @@
       items:
         - name: 注册应用程序
           href: quickstart-register-app.md
-        - name: 配置用于访问 Web API 的应用
-          href: quickstart-configure-app-access-web-apis.md
-        - name: 配置用于公开 Web API 的应用
+        - name: 配置应用以公开 Web API
           href: quickstart-configure-app-expose-web-apis.md
+        - name: 配置应用以访问 Web API
+          href: quickstart-configure-app-access-web-apis.md
         - name: 修改应用支持的帐户
           href: quickstart-modify-supported-accounts.md
         - name: 删除应用
@@ -48,7 +48,7 @@
         - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
         - name: ASP.NET Core
-          href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+          href: 'https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/active-directory-dotnet-native-aspnetcore-v2/'
     - name: 移动和桌面应用
       items:
         - name: Android
@@ -298,6 +298,9 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: 单个和多个帐户公共客户端应用
               href: single-multi-account.md
+            - name: 处理错误和异常
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile'
             - name: 日志记录
               href: msal-logging.md?tabs=android
         - name: iOS 和 macOS
@@ -337,14 +340,12 @@
               href: msal-b2c-overview.md
             - name: 迁移到 MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
-            - name: 使用 MSAL.js 的单一登录
+            - name: 使用 MSAL.js 进行单一登录
               href: msal-js-sso.md
             - name: 注意事项 - IE
               href: msal-js-use-ie-browser.md
             - name: 已知问题 - IE 和 Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: 已知问题 - Safari
-              href: msal-js-known-issues-safari-browser.md
             - name: 处理错误和异常
               href: msal-handling-exceptions.md?tabs=javascript
             - name: 日志记录
@@ -467,13 +468,13 @@
     - name: 自动用户预配 (SCIM)
       items:
         - name: 自动用户预配是什么？
-          href: /azure/active-directory/app-provisioning/user-provisioning
+          href: ../app-provisioning/user-provisioning.md
         - name: 开发和集成 SCIM 终结点
-          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
         - name: 常见预配方案
-          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+          href: ../app-provisioning/scim-graph-scenarios.md
         - name: 使用 MS Graph 自动执行配置
-          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+          href: ../app-provisioning/application-provisioning-configure-api.md
     - name: Azure 门户帮助文章
       items:
         - name: 自定义开发的应用程序的令牌生存期默认设置
@@ -486,7 +487,7 @@
           href: active-directory-authentication-protocols.md
         - name: 委派权限与应用程序权限之间的差异
           href: delegated-and-app-perms.md
-        - name: 应用程序同意操作的工作原理
+        - name: 应用程序许可工作原理
           href: consent-framework-links.md
         - name: 为自定义开发的应用程序查找所需的特定 API
           href: api-find-an-api-how-to.md
@@ -514,6 +515,8 @@
           href: active-directory-claims-mapping.md
         - name: 配置可选声明
           href: active-directory-optional-claims.md
+        - name: 在声明中使用目录架构扩展属性
+          href: active-directory-schema-extensions.md
         - name: 配置令牌生存期
           href: active-directory-configurable-token-lifetimes.md
         - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
@@ -620,6 +623,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: 诊断身份验证期间的错误
           href: vs-active-directory-error.md
+    - name: 将应用推向市场
+      items:
+        - name: 发布到 App 源
+          href: v2-howto-get-appsource-certified.md
+        - name: 发布到 Azure AD 应用库
+          href: v2-howto-app-gallery-listing.md
+        - name: 发布到 Office 365 卖家仪表板
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
 - name: 参考
   items:
     - name: 应用程序清单
@@ -631,7 +642,7 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Microsoft Graph 中的标识和访问 API
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
+      href: /graph/api/resources/azure-ad-overview
     - name: 身份验证和授权错误代码
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
@@ -652,7 +663,7 @@
     - name: 尝试使用 Microsoft 登录
       href: 'https://azure.microsoft.com/develop/identity/signin/'
     - name: Azure 资源的托管标识
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md
     - name: 获取帮助
       displayName: 'support, help options'
       href: developer-support-help-options.md

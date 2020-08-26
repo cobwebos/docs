@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282477"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player 插件库 #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263731"
 | 插件名称                         | 演示 URL                    | 源代码                | 说明    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | 其他功能                 | | | |
-| **新增内容！** AMP360Video                | [演示](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | 此插件用于在 AMP 中可视化 360 视频，不管是在桌面设备上，还是在与 VR 兼容的设备中。 [此处](https://doc\.babylonjs\.com/extensions/amp360video)提供了完整文档： |
+| **新增内容！** AMP360Video                | [演示](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | 此插件用于在 AMP 中可视化 360 视频，不管是在桌面设备上，还是在与 VR 兼容的设备中。 [此处](https://doc.babylonjs.com/extensions/amp360video)提供了完整文档： |
 |  子画面提示                         | [演示](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | 此 Azure Media Player (AMP) 插件用于按时间线渲染根据 Azure Media Services (AMS) Media Encoder Standard (MES) 生成的视频缩略图子画面。 |
 | 诊断覆盖                 | [演示](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | 此插件显示：所有关键参数、视频统计信息、视频播放生命周期中的所有事件，以及受保护情况下的 DRM 保护信息（例如密钥 ID、许可证获取 URL）。                                                                                                                                                                      |
 | 帧速率和时间代码计算器 | 没有可用演示 | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | 此插件基于第一个 MPEG-DASH 视频片段的 `tfhd`/`trun` MP4 框计算视频的帧速率，分析 MPEG-DASH 客户端清单中的时间刻度值，并提供了一种在播放器中根据给定的绝对时间生成时间代码的方法（另外还可根据时间代码提供播放器绝对时间）。 |

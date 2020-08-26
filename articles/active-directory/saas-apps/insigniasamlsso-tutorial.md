@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Insignia SAML SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Insignia SAML SSO 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 828c981c-c3dd-4eb2-8699-0f732baa43f6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c7b62a65d3f0b3b4006c55f5323b1feb69cca9f1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 9d3463e04f06e02f8d27e633a10c22069ad9b57f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799838"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>教程：Azure Active Directory 与 Insignia SAML SSO 集成
 
@@ -116,7 +112,7 @@ ms.locfileid: "85799838"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Insignia SAML SSO 客户端支持团队](https://www.insigniasoftware.com/insignia/Techsupport.aspx)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Insignia SAML SSO 客户端支持团队](http://www.insigniasoftware.com/insignia/Techsupport.aspx)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -134,7 +130,7 @@ ms.locfileid: "85799838"
 
 ### <a name="configure-insignia-saml-sso-single-sign-on"></a>配置 Insignia SAML SSO 单一登录
 
-若要在 Insignia SAML - SSO 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Insignia SAML - SSO 支持团队](https://www.insigniasoftware.com/insignia/Techsupport.aspx)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Insignia SAML - SSO 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Insignia SAML - SSO 支持团队](http://www.insigniasoftware.com/insignia/Techsupport.aspx)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -189,7 +185,7 @@ ms.locfileid: "85799838"
 
 ### <a name="create-insignia-saml-sso-test-user"></a>创建 Insignia SAML SSO 测试用户
 
-本部分的内容是在 Insignia SAML SSO 中创建名为 Britta Simon 的用户。 与  [Insignia SAML SSO 支持团队](https://www.insigniasoftware.com/insignia/Techsupport.aspx)合作，在 Insignia SAML SSO 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分的内容是在 Insignia SAML SSO 中创建名为 Britta Simon 的用户。 与  [Insignia SAML SSO 支持团队](http://www.insigniasoftware.com/insignia/Techsupport.aspx)合作，在 Insignia SAML SSO 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

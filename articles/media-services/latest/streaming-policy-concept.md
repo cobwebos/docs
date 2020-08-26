@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582758"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544007"
 ---
 # <a name="streaming-policies"></a>流式处理策略
 
-在 Azure 媒体服务 v3 中，使用[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)可为[流式处理定位符](streaming-locators-concept.md)定义流式处理协议和加密选项。 媒体服务 v3 提供了一些预定义的流式处理策略，以便可以将它们直接用于试用版或生产版。 
+在 Azure 媒体服务 v3 中，使用[流式处理策略](/rest/api/media/streamingpolicies)可为[流式处理定位符](streaming-locators-concept.md)定义流式处理协议和加密选项。 媒体服务 v3 提供了一些预定义的流式处理策略，以便可以将它们直接用于试用版或生产版。 
 
 目前可用的预定义流式处理策略：<br/>
 * 'Predefined_DownloadOnly'
@@ -40,15 +40,15 @@ ms.locfileid: "80582758"
 
 单击图像查看其完整大小。  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![此图显示了一个决策树，旨在帮助您为方案选择预定义的流式传输策略。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 如果要加密内容，则需要创建[内容密钥策略](content-key-policy-concept.md)，明文流式处理或下载不需要**内容密钥策略**。 
 
-如果有特殊要求（例如，如果想要指定不同的协议，需要使用自定义密钥传送服务，或者需要使用明文音频轨道），则可以[创建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)自定义流式处理策略。 
+如果有特殊要求（例如，如果想要指定不同的协议，需要使用自定义密钥传送服务，或者需要使用明文音频轨道），则可以[创建](/rest/api/media/streamingpolicies/create)自定义流式处理策略。 
 
 ## <a name="get-a-streaming-policy-definition"></a>获取流式处理策略定义  
 
-若要查看流式处理策略的定义，请使用 [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) 并指定策略名称。 例如：
+若要查看流式处理策略的定义，请使用 [Get](/rest/api/media/streamingpolicies/get) 并指定策略名称。 例如：
 
 ### <a name="rest"></a>REST
 

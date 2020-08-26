@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169606"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927430"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
@@ -25,7 +25,7 @@ ms.locfileid: "86169606"
 
 ## <a name="configure-registry-authentication"></a>配置注册表身份验证
 
-在生产方案中，如果要提供对“无外设”服务和应用程序的访问权限，建议使用[服务主体](../container-registry/container-registry-auth-service-principal.md)配置注册表访问权限。 使用服务主体可以提供对容器映像的[基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
+在生产方案中，如果要提供对“无外设”服务和应用程序的访问权限，建议使用[服务主体](../container-registry/container-registry-auth-service-principal.md)配置注册表访问权限。 使用服务主体可以为容器映像提供[AZURE RBAC)  (azure 基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
 
 Azure 容器注册表提供了附加的[身份验证选项](../container-registry/container-registry-authentication.md)。
 

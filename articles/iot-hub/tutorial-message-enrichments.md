@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-azurecli
+ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770084"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500208"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教程：使用 Azure IoT 中心消息根据
 
@@ -76,7 +77,7 @@ ms.locfileid: "81770084"
 
 下面是脚本创建的资源。 "扩充"*是指资源*适用于带有根据的消息。 "*原始*" 表示资源适用于未得到丰富的消息。
 
-| “属性” | “值” |
+| 名称 | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | 原配  |
@@ -258,7 +259,7 @@ az iot hub route create \
 
 2. 将这些值添加到 ContosoStorageEndpointEnriched 终结点的列表。
 
-   | 键 | “值” | 终结点（下拉列表） |
+   | 键 | Value | 终结点（下拉列表） |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | Msds-devicelocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -296,7 +297,7 @@ az iot hub route create \
 
    下面是通过加载模板创建的资源。 "扩充"**是指资源**适用于带有根据的消息。 "**原始**" 表示资源适用于未得到丰富的消息。 这些值与 Azure CLI 脚本中使用的值相同。
 
-   | “属性” | 值 |
+   | 名称 | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名称 | 原配  |
@@ -309,7 +310,7 @@ az iot hub route create \
    | 路由名称 1 | ContosoStorageRouteOriginal |
    | 路由名称 2 | ContosoStorageRouteEnriched |
 
-1. 选择“保存”。 此时将显示 "**自定义部署**" 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 "**资源组**"。 请创建一个新的，或从下拉列表中选择一个。
+1. 选择“保存” 。 此时将显示 "**自定义部署**" 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 "**资源组**"。 请创建一个新的，或从下拉列表中选择一个。
 
    下面是 "**自定义部署**" 窗格的上半部分。 你可以查看在何处填充资源组。
 
@@ -355,7 +356,7 @@ az iot hub route create \
 
 发送多个存储消息后，查看数据。
 
-1. 选择 "**资源组**"。 找到资源组 " **ContosoResourcesMsgEn**"，并选择它。
+1. 选择“资源组”。 找到资源组 " **ContosoResourcesMsgEn**"，并选择它。
 
 2. 选择存储帐户，该帐户为**contosostorage**。 然后，在左窗格中选择 "**存储资源管理器（预览）** "。
 

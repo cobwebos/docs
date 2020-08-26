@@ -7,19 +7,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fc81b0c01bf749bf7f643833026e364fa7c8ebd2
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510821"
 ---
 # <a name="what-are-trainings-and-models"></a>什么是培训和模型？
 
 模型是为特定语言对提供翻译的系统。
-成功培训的结果即为一种模型。 在训练模型时，需要三个互相排斥的文档类型：定型、优化和测试。 还可以提供字典文档类型。 请 refere 到[句型对齐](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)。
+成功培训的结果即为一种模型。 在训练模型时，需要三个互相排斥的文档类型：定型、优化和测试。 还可以提供字典文档类型。 请参阅 [句子对齐](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)。
 
 如果在对训练进行排队时仅提供定型数据，自定义转换器将自动组装优化和测试数据。 它将使用培训文档中的一个随机句子子集，并从定型数据本身中排除这些句子。
 
@@ -27,7 +27,7 @@ ms.locfileid: "83996323"
 
 培训集中包含的文档由自定义翻译用作构建模型的基础。 在培训执行期间，这些文档中存在的句子是对齐的（或配对的）。 可以随意修改培训文档集。 可以在一个模型中包含你认为具有切线相关性的文档。 此外，在另一个模型中排除它们，以查看 [BLEU（双语评估研究）评分](what-is-bleu-score.md)中的影响。 只要保持调整集和测试集不变，就可以随意更改培训集的组成内容。 这种方法是修改翻译系统质量的一种有效方法。
 
-可以在一个项目中运行多个培训，并跨所有培训运行比较 [BLEU 评分](what-is-bleu-score.md)。 当运行多个培训以进行比较时，请确保每次都指定相同的调整/测试数据。 此外，还要确保在["测试"](how-to-view-system-test-results.md)选项卡中手动检查结果。
+可以在一个项目中运行多个培训，并跨所有培训运行比较 [BLEU 评分](what-is-bleu-score.md)。 当运行多个培训以进行比较时，请确保每次都指定相同的调整/测试数据。 另外，请务必在[“测试”](how-to-view-system-test-results.md)选项卡中手动检查结果。
 
 ## <a name="tuning-document-type-for-custom-translator"></a>自定义转换器的优化文档类型
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 RedVector 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 RedVector 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 99042f39-0ab2-475b-8df8-3016d7f875e9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: f3660956a3e66fc9a632eace378feb8873bceaf8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69b699ed54778f4c65a0517ac60b6a4a9dc39783
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506083"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>教程：Azure Active Directory 与 RedVector 集成
 

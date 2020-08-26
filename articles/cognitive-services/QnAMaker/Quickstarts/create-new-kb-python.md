@@ -3,14 +3,14 @@ title: 快速入门：创建知识库 - REST、Python - QnA Maker
 description: 此 Python 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, tracking-python
+ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 5facd58553a1a66d2c7986a0b7629f8a36b5c972
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: eea54d493a27373a682b361ab7138ae1fa527362
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608513"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873052"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：通过 Python 在 QnA Maker 中创建知识库
 
@@ -26,7 +26,7 @@ ms.locfileid: "84608513"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Python 3。7](https://www.python.org/downloads/)
+* [Python 3.7](https://www.python.org/downloads/)
 * 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ## <a name="create-a-knowledge-base-python-file"></a>创建知识库 Python 文件

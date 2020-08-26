@@ -6,11 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ff3ae9a787586a4d3f7c27353aca37326be32448
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698255"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432549"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
@@ -49,7 +51,7 @@ Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 J
 ```
 
 ### <a name="access-nested-fields-in-known-schema"></a>访问已知架构中的嵌套字段
-使用点表示法 (.) 可以轻松地直接从查询中访问嵌套字段。 例如，此查询选择上述 JSON 数据中 Location 属性下的纬度和经度坐标。 点表示法可用于浏览多个级别，如下所示。
+使用点表示法 (.) 可以轻松地直接从查询访问嵌套字段。 例如，此查询选择上述 JSON 数据中 Location 属性下的纬度和经度坐标。 点表示法可用于浏览多个级别，如下所示。
 
 ```SQL
 SELECT
@@ -104,7 +106,7 @@ FROM input
 }
 ```
 
-此处的目标是将本文顶部的示例数据集联接到该参考数据，并针对超出其阈值的每个传感器度量值输出一个事件。 这意味着，如果有多个传感器超出其各自的阈值，借助于联接，上述单个事件可以生成多个输出事件。 若要在不使用联接的情况下实现类似结果，请参阅下面的部分。
+此处的目标是将本文顶部的示例数据集联接到该参考数据，并针对高于其阈值的每个传感器度量值输出一个事件。 这意味着，如果有多个传感器超出其各自的阈值，借助于联接，上述单个事件可以生成多个输出事件。 若要在不使用联接的情况下实现类似结果，请参阅下面的部分。
 
 ```SQL
 SELECT
@@ -119,13 +121,13 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** 选择 *SensorReadings* 中的属性，该属性的名称与来自参考数据的属性名称匹配。 然后提取 *SensorReadings* 中的关联值。
+**GetRecordPropertyValue** 选择 *SensorReadings* 中名称与来自参考数据的属性名称匹配的属性。 然后从 *SensorReadings* 中提取关联的值。
 
 结果为：
 
 |DeviceID|SensorName|AlertMessage|
 |-|-|-|
-|12345|湿度|警报：传感器超出阈值|
+|12345|湿度|Alert :Sensor above threshold|
 
 ### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
 
@@ -205,7 +207,7 @@ return JSON.parse(string);
 
 数组数据类型是按顺序排列的值集合。 下面详细介绍一些针对数组值执行的典型操作。 这些事例使用函数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符。
 
-下面是单个事件的示例。 `CustomSensor03` 和 `SensorMetadata` 的类型均为 **array**：
+下面是单一事件的示例。 `CustomSensor03` 和 `SensorMetadata` 都是**数组**类型的：
 
 ```json
 {
@@ -299,7 +301,7 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
 |12345|制造商|ABC|
 |12345|版本|1.2.45|
 
-如果提取的字段需要在列中显示，则除了使用 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作以外，还可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
+如果提取的字段需要显示在列中，则除了 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作外，还可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
 
 ```SQL
 WITH DynamicCTE AS (

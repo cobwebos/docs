@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: dbe64bdcbff5592d271c773eff1d5c99c585fcd7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248010"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422804"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上 Service Fabric 群集的概述
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -105,6 +105,7 @@ Azure Service Fabric 群集是你拥有的，但部分由 Microsoft 管理的资
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 18.04 | 7.1 |
 
 有关其他信息，请参阅 [Azure 中支持的群集版本](./service-fabric-versions.md#supported-operating-systems)
 

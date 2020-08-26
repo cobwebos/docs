@@ -13,15 +13,16 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515066"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719183"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒体服务 v3 API 进行开发
 
-作为开发者，可以利用媒体服务 [REST API](https://docs.microsoft.com/rest/api/media/) 或客户端库，与 REST API 交互，以轻松创建、管理和维护自定义媒体工作流。 [媒体服务 v3](https://aka.ms/ams-v3-rest-sdk) API 基于 OpenAPI 规范（以前称为 Swagger）。
+作为开发者，可以利用媒体服务 [REST API](/rest/api/media/) 或客户端库，与 REST API 交互，以轻松创建、管理和维护自定义媒体工作流。 [媒体服务 v3](https://aka.ms/ams-v3-rest-sdk) API 基于 OpenAPI 规范（以前称为 Swagger）。
 
 本文论述使用媒体服务 v3 进行开发时适用于实体和 API 的规则。
 
@@ -53,7 +54,7 @@ ms.locfileid: "85515066"
    * REST 媒体服务的资源 URI。
    * Azure AD 应用值：客户端 ID 和客户端密码。
 
-   若要获取需要的所有值，请参阅[访问 Azure 媒体服务 API](access-api-cli-how-to.md)。
+   若要获取需要的所有值，请参阅[访问 Azure 媒体服务 API](./access-api-howto.md)。
 
 2. Azure AD 访问令牌发送到中间层。
 4. 中间层使用 Azure AD 令牌向 Azure 媒体 REST API 发送请求。
@@ -79,36 +80,36 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>资产内的文件名/blob 名
 
-资产内的文件名/blob 名必须符合 [blob 名称要求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和 [NTFS 名称要求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 有这些要求的原因是，可将文件从 blob 存储复制到本地 NTFS 磁盘进行处理。
+资产内的文件名/blob 名必须符合 [blob 名称要求](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)和 [NTFS 名称要求](/windows/win32/fileio/naming-a-file)。 有这些要求的原因是，可将文件从 blob 存储复制到本地 NTFS 磁盘进行处理。
 
 ## <a name="long-running-operations"></a>长期运行的操作
 
 在 Azure 媒体服务的 [swagger 文件](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json)中标记有 `x-ms-long-running-operation` 的操作为长期运行的操作。 
 
-如需了解如何跟踪异步 Azure 操作，请参阅[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)。
+如需了解如何跟踪异步 Azure 操作，请参阅[异步操作](../../azure-resource-manager/management/async-operations.md)。
 
 媒体服务拥有以下长期运行的操作：
 
-* [创建直播活动](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [更新直播活动](https://docs.microsoft.com/rest/api/media/liveevents/update)
-* [删除直播活动](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [启动直播活动](https://docs.microsoft.com/rest/api/media/liveevents/start)
-* [停止直播活动](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+* [创建直播活动](/rest/api/media/liveevents/create)
+* [更新直播活动](/rest/api/media/liveevents/update)
+* [删除直播活动](/rest/api/media/liveevents/delete)
+* [启动直播活动](/rest/api/media/liveevents/start)
+* [停止直播活动](/rest/api/media/liveevents/stop)
 
   停止活动时，使用 `removeOutputsOnStop` 参数删除所有关联的实时输出。  
-* [重置直播活动](https://docs.microsoft.com/rest/api/media/liveevents/reset)
-* [创建实时输出](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [删除实时输出](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [创建流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
-* [更新流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
-* [删除流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
-* [启动流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
-* [停止流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
-* [缩放流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+* [重置直播活动](/rest/api/media/liveevents/reset)
+* [创建实时输出](/rest/api/media/liveevents/create)
+* [删除实时输出](/rest/api/media/liveevents/delete)
+* [创建流式处理终结点](/rest/api/media/streamingendpoints/create)
+* [更新流式处理终结点](/rest/api/media/streamingendpoints/update)
+* [删除流式处理终结点](/rest/api/media/streamingendpoints/delete)
+* [启动流式处理终结点](/rest/api/media/streamingendpoints/start)
+* [停止流式处理终结点](/rest/api/media/streamingendpoints/stop)
+* [缩放流式处理终结点](/rest/api/media/streamingendpoints/scale)
 
 成功提交某个长期运行的操作后，你收到消息“202 已接受”，必须使用返回的操作 ID 轮询操作的完成情况。
 
-[跟踪异步 Azure 操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)一文深入说明了如何通过响应中返回的值跟踪异步 Azure 操作的状态。
+[跟踪异步 Azure 操作](../../azure-resource-manager/management/async-operations.md)一文深入说明了如何通过响应中返回的值跟踪异步 Azure 操作的状态。
 
 对于给定的直播活动或任何与之相关的实时输出，仅支持一个长期运行的操作。 启动长期运行的操作后，必须先完成该操作，再为同一个直播活动或任何关联的实时输出启动下一个长期运行的操作。 对于拥有多个实时输出的直播活动，你必须等到对某个实时输出的长期运行的操作完成后，才能为另一个实时输出触发长期运行的操作。 
 
@@ -147,7 +148,7 @@ AMSE 是一个开源项目，由社区提供支持（可以将问题报告给 ht
 
 ## <a name="see-also"></a>另请参阅
 
-若要获取需要的所有值，请参阅[访问 Azure 媒体服务 API](access-api-cli-how-to.md)。
+若要获取需要的所有值，请参阅[访问 Azure 媒体服务 API](./access-api-howto.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

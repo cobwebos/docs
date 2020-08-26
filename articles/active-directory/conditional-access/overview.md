@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051945"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234697"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -38,7 +38,8 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![概念性条件访问的流程](./media/overview/conditional-access-overview-how-it-works.png)
 
-完成第一因素身份验证后将强制执行条件访问策略。 在遇到拒绝服务 (DoS) 攻击等情景中，条件访问不应充当组织的第一道防线，但可以使用这些事件的信号来确定访问权限。
+> [!IMPORTANT]
+> 完成第一因素身份验证后将强制执行条件访问策略。 在遇到拒绝服务 (DoS) 攻击等情景中，条件访问不应充当组织的第一道防线，但它可以使用这些事件的信号来确定访问权限。
 
 ## <a name="common-signals"></a>常见信号
 
@@ -87,7 +88,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 了解其他组织如何使用 Azure AD 条件访问来定义和实施自动化的访问控制决策。 以下特选案例演示了如何满足这些客户的需求。
 
 * [Wipro 通过 Microsoft 云安全工具提高出差人员的工作效率，以改善客户的参与度。](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Azure AD 中的条件访问策略使公司能够与受信任的外部实体共享文档、资源和应用程序（这些实体可以使用自己的凭据），同时保持对自身企业数据的控制。
-* [跨国物流和运输公司 Aramex Delivery Limited 使用标识和访问管理解决方案设立了与云联网的办事处](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)。 确保 Aramex 远程员工的安全访问特别困难。 该公司目前正在应用条件访问，使这些员工能够从网络外部访问其 SaaS 应用程序。 条件访问规则将确定是否强制实施多重身份验证，只向适当的人员提供适当的访问权限。
+* [跨国物流和运输公司 Aramex Delivery Limited 使用标识和访问管理解决方案设立了与云联网的办事处](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)。 确保 Aramex 远程工作者的安全访问特别困难。 该公司目前正在应用条件访问，使这些远程工作者能够从网络外部访问其 SaaS 应用程序。 条件访问规则将确定是否强制实施多重身份验证，只向适当的人员提供适当的访问权限。
 
 ## <a name="license-requirements"></a>许可要求
 

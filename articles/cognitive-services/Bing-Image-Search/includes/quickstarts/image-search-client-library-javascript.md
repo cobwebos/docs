@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: df24e04373b60172236c462eb4461e59ba9d1415
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 953648f5cf83d5ffd22683ba0ce02335a637f18a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805695"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407212"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 此简单的 JavaScript 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 

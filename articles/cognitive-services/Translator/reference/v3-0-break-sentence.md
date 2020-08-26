@@ -1,23 +1,23 @@
 ---
-title: 转换器 BreakSentence 方法
+title: 翻译器 BreakSentence 方法
 titleSuffix: Azure Cognitive Services
-description: 转换器 BreakSentence 方法标识句子边界在文本段中的位置。
+description: 翻译器 BreakSentence 方法可标识一段文本中句子边界的位置。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588626"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903997"
 ---
-# <a name="translator-30-breaksentence"></a>翻译人员3.0： BreakSentence
+# <a name="translator-30-breaksentence"></a>翻译器 3.0：BreakSentence
 
 标识文本段中的句子边界的位置。
 
@@ -35,18 +35,18 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 | 查询参数 | 说明 |
 | -------| ----------- |
-| api-version <img width=200/>   | 必需的查询参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
-| 语言 | 可选查询参数  。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。 |
-| 脚本    | 可选查询参数  。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。  | 
+| api-version <img width=200/>   | 必需的查询参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
+| 语言 | 可选查询参数。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。 |
+| 脚本    | 可选查询参数。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。  | 
 
 请求标头包括：
 
-| 标头 | 说明 |
+| 头文件 | 说明 |
 | ------- | ----------- |
-| 身份验证标头 <img width=200/>  | 必需的请求标头  。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
-| Content-Type | 必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
-| Content-Length    | 必需的请求标头  。<br/>请求正文的长度。  | 
-| X-ClientTraceId   | **可选**。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。  | 
+| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length    | 必需的请求标头。<br/>请求正文的长度。  | 
+| X-ClientTraceId   | 可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。  | 
 
 ## <a name="request-body"></a>请求正文
 
@@ -61,7 +61,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 以下限制适用：
 
 * 数组最多可具有 100 个元素。
-* 数组元素的文本值不能超过 10,000 个字符（包括空格）。
+* 数组元素的文本值不能超过50000个字符，包括空格。
 * 请求中包含的整个文本不能超过 50,000 个字符（包括空格）。
 * 如果指定了 `language` 查询参数，则所有数组元素必须采用同一语言。 否则，将分别向每个数组元素应用语言自动检测。
 
@@ -69,11 +69,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `sentLen`：一个整数数组，表示文本元素中的句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。 
+  * `sentLen`：一组整数，表示文本元素中各个句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。 
 
   * `detectedLanguage`：一个对象，它通过以下属性描述检测到的语言：
 
-     * `language`：检测到的语言的代码。
+     * `language`：已检测语言的代码。
 
      * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
      
@@ -96,7 +96,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>X-RequestId</td>
@@ -141,7 +141,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 翻译器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
 
 ## <a name="examples"></a>示例
 

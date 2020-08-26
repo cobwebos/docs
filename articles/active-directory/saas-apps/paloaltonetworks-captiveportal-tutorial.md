@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Palo Alto Networks Captive Portal 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160166"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成
 
@@ -159,7 +154,7 @@ Palo Alto Networks Captive Portal 支持以下方案：
 
     1. 对于“姓名”，请输入 **BrittaSimon**。 
   
-    2. 对于“用户名”，请输入“BrittaSimon\@\<your_company_domain\>”。   例如，“BrittaSimon\@contoso.com”  。
+    2. 对于“用户名”，请输入 BrittaSimon\@\<your_company_domain\> 。 例如，“BrittaSimon\@contoso.com”  。
 
     3. 对于“密码”，请输入一个密码。  建议保留好所输入密码的记录。 可以选中“显示密码”复选框来显示密码。 
 

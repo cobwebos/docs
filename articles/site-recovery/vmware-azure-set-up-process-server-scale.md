@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711946"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292802"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
 
@@ -51,7 +52,7 @@ ms.locfileid: "84711946"
 下载进程服务器的安装文件，如下所示：
 
 1. 登录到 Azure 门户，并浏览到恢复服务保管库。
-2. 打开“Site Recovery 基础结构”   > “VMWare 和物理计算机”   > “配置服务器”  （在“针对 VMware 和物理计算机”下面）。
+2. 打开**Site Recovery 基础结构**  >  **vmware 和物理计算机**  >  **配置服务器**（适用于 vmware & 物理计算机）。
 3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”  。
 4. 在“添加进程服务器”   >  “选择要部署进程服务器的位置”  中，选择“在本地部署横向扩展进程服务器”  。
 
@@ -73,7 +74,7 @@ ms.locfileid: "84711946"
 运行以下命令进行安装：
 
 ```
-UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMware/NonVMware>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
 ```
 
 其中，命令行参数如下所示：
@@ -85,7 +86,7 @@ UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCred
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 cd C:\Temp\Extracted
-UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
+UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMware" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
 ```
 ### <a name="create-a-proxy-settings-file"></a>创建代理设置文件
 

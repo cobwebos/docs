@@ -1,32 +1,43 @@
 ---
-title: 超大规模（Citus）-Azure Database for PostgreSQL
+title: 传输层安全性（TLS）-超大规模（Citus）-Azure Database for PostgreSQL
 description: 用于配置 Azure Database for PostgreSQL-超大规模（Citus）和关联应用程序以正确使用 TLS 连接的说明和信息。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 659f86a107e4b08db4ec5195635ea32d2260d677
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071457"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure Database for PostgreSQL-超大规模（Citus）中配置 TLS
-与超大规模（Citus）协调器节点的客户端应用程序连接需要传输层安全性（TLS），以前称为安全套接字层（SSL）。 通过在数据库服务器与客户端应用程序之间强制实施 TLS 连接，可以加密服务器与应用程序之间的数据流，这有助于防止“中间人”攻击。
+超大规模（Citus）协调器节点要求客户端应用程序连接到传输层安全性（TLS）。 在数据库服务器和客户端应用程序之间强制 TLS，有助于在传输过程中保护数据的机密性。 下面所述的额外验证设置还可防止 "中间人" 攻击。
 
 ## <a name="enforcing-tls-connections"></a>强制实施 TLS 连接
-对于通过 Azure 门户预配的所有 Azure Database for PostgreSQL 服务器，默认情况下会启用 TLS 连接的强制。 
+应用程序使用 "连接字符串" 标识目标数据库和连接的设置。 不同的客户端需要不同的设置。 若要查看常见客户端使用的连接字符串的列表，请参阅 Azure 门户中服务器组的 "**连接字符串**" 部分。
 
-同样，在 Azure 门户中，用户服务器的“连接字符串”设置中预定义了连接字符串，该字符串中包含以通用语言使用 TLS 连接到数据库服务器所需的参数。 TLS 参数因连接器而异，例如“ssl=true”、“sslmode=require”或“sslmode=required”，以及其他变体。
+TLS 参数 `ssl` 和 `sslmode` 因连接器的功能而异，例如 `ssl=true` 或 `sslmode=require` `sslmode=required` 。
 
 ## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>确保应用程序或框架支持 TLS 连接
-某些使用 PostgreSQL 作为其数据库服务的应用程序框架在安装期间默认不启用 TLS。 如果 PostgreSQL 服务器强制实施 TLS 连接，但应用程序未配置 TLS，则应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 TLS 连接。
+某些应用程序框架默认情况下不会为 PostgreSQL 连接启用 TLS。 但是，如果没有安全连接，应用程序将无法连接到超大规模（Citus）协调器节点。 请查阅应用程序文档，了解如何启用 TLS 连接。
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>需要证书验证才可启用 TLS 连接性的应用程序
-在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件 (.cer) 生成的本地证书文件才能实现安全连接。 要连接到 Azure Database for PostgreSQL 超大规模（Citus）的证书位于上 https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem 。 下载证书文件并将其保存到首选位置。
+在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件 (.cer) 生成的本地证书文件才能实现安全连接。 要连接到 Azure Database for PostgreSQL 超大规模（Citus）的证书位于上 https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem 。 下载证书文件并将其保存到首选位置。
+
+> [!NOTE]
+>
+> 若要检查证书的真实性，可以使用 OpenSSL 命令行工具验证其 SHA-256 指纹：
+>
+> ```sh
+> openssl x509 -in DigiCertGlobalRootCA.crt.pem -noout -sha256 -fingerprint
+>
+> # should output:
+> # 43:48:A0:E9:44:4C:78:CB:26:5E:05:8D:5E:89:44:B4:D8:4F:96:62:BD:26:DB:25:7F:89:34:A4:43:C7:01:61
+> ```
 
 ### <a name="connect-using-psql"></a>使用 psql 进行连接
 下面的示例演示如何使用 psql 命令行实用工具连接到超大规模（Citus）协调器节点。 使用 `sslmode=verify-full` 连接字符串设置强制执行 TLS 证书验证。 将本地证书文件路径传递给 `sslrootcert` 参数。

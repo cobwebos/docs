@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 08/14/2020
 ms.author: banders
-ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2c9801cbca7ebd35ed331c88f745eaf5d4848c6f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043268"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243643"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -98,7 +98,7 @@ Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所�
 
 ## <a name="subscription-transfer-effects"></a>订阅转移的影响
 
-将 Azure 订阅转移到同一 Azure Active Directory 租户中的某个帐户后，以前拥有[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将保留其访问权限。
+将 Azure 订阅转移到同一 Azure Active Directory 租户中的某个帐户后，以前拥有 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将保留其访问权限。
 
 若要查看哪些用户对订阅拥有 RBAC 访问权限：
 

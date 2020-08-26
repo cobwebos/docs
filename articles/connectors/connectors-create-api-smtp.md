@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657004"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283939"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
@@ -64,7 +65,7 @@ ms.locfileid: "80657004"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/smtpconnector/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/smtpconnector/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。

@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: 使用 PowerShell 备份 Azure VM
       href: tutorial-backup-azure-vm.md
-    - name: 还原磁盘
+    - name: 使用 Azure CLI 还原 VM
       href: tutorial-restore-disk.md
     - name: 还原单个文件
       href: tutorial-restore-files.md
@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: 备份体系结构
       href: backup-architecture.md
+    - name: 指南和最佳做法
+      href: guidance-best-practices.md
 - name: 操作方法指南
   items:
     - name: 恢复服务保管库
@@ -121,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: 配置运行 Linux 的 Azure VM 的应用一致备份
               href: backup-azure-linux-app-consistent.md
+            - name: 选择性磁盘备份
+              href: selective-disk-backup-restore.md
         - name: 还原
           items:
             - name: 关于 Azure VM 还原
@@ -142,7 +146,11 @@
         - name: 概述
           href: backup-azure-sql-database.md
         - name: 备份
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: 从保管库备份多个 SQL Server VM
+              href: backup-sql-server-database-azure-vms.md
+            - name: 从 VM 窗格备份 SQL Server VM
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: 还原
           href: restore-sql-database-azure-vm.md
         - name: 管理
@@ -283,8 +291,10 @@
       items:
         - name: 概述
           href: offline-backup-overview.md
-        - name: 使用 Azure Data Box 进行脱机备份
+        - name: 使用 Azure Data Box 进行脱机备份 (MARS)
           href: offline-backup-azure-data-box.md
+        - name: 使用 Azure Data Box 进行脱机备份 (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: 使用导入/导出 (MARS) 进行脱机备份
           href: backup-azure-backup-import-export.md
         - name: 使用导入/导出 (DPM/MABS) 进行脱机备份
@@ -375,6 +385,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: 内置安全控件
           href: backup-security-controls.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 疑难解答

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072045"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务分片 MP4 实时引入规范 
 
@@ -48,7 +48,7 @@ ms.locfileid: "85958556"
 1. [1] 中的第 3.3.2 节定义了实时引入名为“StreamManifestBox”  的可选框。 由于 Azure 负载均衡器的路由逻辑，此框已被弃用。 引入到媒体服务时不应出现此框。 如果存在此框，媒体服务会以无提示方式将其忽略。
 1. 每个片段必须有在 [1] 的 3.2.3.2 中定义的“TrackFragmentExtendedHeaderBox”  框。
 1. 应使用第 2 版的“TrackFragmentExtendedHeaderBox”  框，才能在多个数据中心生成具有相同 URL 的媒体片段。 对于跨数据中心故障转移基于索引的流格式（例如 Apple HLS 和基于索引的 MPEG DASH），片段索引字段是必需的。 若要启用跨数据中心故障转移，片段索引必须在多个编码器之间同步，并且后续的每个媒体片段都必须增加 1，即使跨编码器重启或失败。
-1. [1] 中的第 3.3.6 节定义了名为“MovieFragmentRandomAccessBox”  （“mfra”  ）的框，此框可能会在实时引入结束时发送，表示通道流式传输结束 (EOS)。 媒体服务的引入逻辑使得 EOS 的使用方式已过时，不应发送实时引入的“mfra”  框。 如果已发送，媒体服务会以无提示方式将其忽略。 若要重置引入点的状态，建议使用[通道重置](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)。 此外，建议使用[程序停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)来结束演播与流。
+1. [1] 中的第 3.3.6 节定义了名为“MovieFragmentRandomAccessBox”  （“mfra”  ）的框，此框可能会在实时引入结束时发送，表示通道流式传输结束 (EOS)。 媒体服务的引入逻辑使得 EOS 的使用方式已过时，不应发送实时引入的“mfra”  框。 如果已发送，媒体服务会以无提示方式将其忽略。 若要重置引入点的状态，建议使用[通道重置](/rest/api/media/operations/channel#reset_channels)。 此外，建议使用[程序停止](/rest/api/media/operations/program#stop_programs)来结束演播与流。
 1. MP4 片段持续时间应为常量，以减小客户端清单的大小。 常量 MP4 片段持续时间也可以通过使用重复标记来改进客户端下载启发。 持续时间可能会波动，以补偿非整数帧速率。
 1. MP4 片段持续时间应该大约为 2 到 6 秒之间。
 1. MP4 片段时间戳和索引（“TrackFragmentExtendedHeaderBox”  、`fragment_ absolute_ time` 和 `fragment_index`）应以递增顺序送达。 尽管媒体服务在复制片段方面很有弹性，但是其根据媒体时间线重新排序片段的功能非常有限。
@@ -70,7 +70,7 @@ ms.locfileid: "85958556"
 1. 如果 HTTP POST 请求在流结束前终止或超时并出现一个 TCP 错误，则编码器必须使用新的连接来发出新的 POST 请求，并按照上述要求操作。 此外，编码器必须在流中为每个轨迹重新发送之前的两个 MP4 片段，并恢复流式传输，而不在媒体时间线上造成中断。 为每个轨迹重新发送最后两个 MP4 片段可确保不会丢失数据。 换句话说，如果流包含音频和视频轨迹，并且当前 POST 请求失败，则编码器必须重新连接，并为音频轨迹重新发送最后两个片段（先前已成功发送），为视频轨迹重新发送最后两个片段（先前已成功发送），以确保不会丢失任何数据。 编码器必须维护媒体片段的“转发”缓冲区，当重新连接时会重新发送此缓冲区。
 
 ## <a name="5-timescale"></a>5.时间刻度
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述了 SmoothStreamingMedia  （第 2.2.2.1 节）、StreamElement  （第 2.2.2.3 节）、StreamFragmentElement  （第 2.2.2.6 节）和 LiveSMIL  （第 2.2.7.3.1 节）的时间刻度使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流式处理格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流式处理引入数据。 由于 [Azure 媒体动态打包](media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90-KHz 时间刻度，为音频流使用 44.1 KHZ 或 48.1 KHZ 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 有关详细信息，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述了 SmoothStreamingMedia  （第 2.2.2.1 节）、StreamElement  （第 2.2.2.3 节）、StreamFragmentElement  （第 2.2.2.6 节）和 LiveSMIL  （第 2.2.7.3.1 节）的时间刻度使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流式处理格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流式处理引入数据。 由于 [Azure 媒体动态打包](./previous/media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90-KHz 时间刻度，为音频流使用 44.1 KHZ 或 48.1 KHZ 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 有关详细信息，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
 
 ## <a name="6-definition-of-stream"></a>6.“流”的定义
 流是指在撰写实时演播内容、处理流故障转移和冗余方案的实时引入中操作的基本单位。 流定义为一个唯一的分片 MP4 位流，其中可包含单个轨迹或多个轨迹。 完整实时演播可能包含一个或多个流，具体取决于实时编码器的配置。 以下示例演示了使用流撰写完整实时演播内容的各种选项。

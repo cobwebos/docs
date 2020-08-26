@@ -1,9 +1,9 @@
 ---
 title: 在 Azure AD 授权管理中查看访问包
-description: 了解如何在 Azure Active Directory 访问评审（预览版）中查看授权管理访问包的用户访问权限。
+description: 了解如何在 Azure Active Directory 访问评审 (Preview) 中查看授权管理访问包的用户访问权限。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,15 +16,16 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c44f2423cdc5c43638fe2515757bcb11a9814c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078421"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798437"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看访问包
 
-Azure AD 的权利管理简化了企业如何管理对组、应用程序和 SharePoint 站点的访问。 本文介绍用户如何对分配的访问包进行自我审查。
+Azure AD 的权利管理简化了企业如何管理对组、应用程序和 SharePoint 站点的访问。 本文介绍用户如何对分配的访问包进行自我审阅 () 。
 
 ## <a name="open-the-access-review"></a>打开访问评审
 
@@ -36,7 +37,7 @@ Azure AD 的权利管理简化了企业如何管理对组、应用程序和 Shar
 
 1. 单击 "**查看访问权限**" 链接。
 
-1. 如果你没有收到电子邮件，你还可以直接访问以 https://myaccess.microsoft.com 查找待定的访问评审。  （对于美国政府版，请改用 `https://myaccess.microsoft.us` 。）
+1. 如果你没有收到电子邮件，你还可以直接访问以 https://myaccess.microsoft.com 查找待定的访问评审。   (美国政府版，请 `https://myaccess.microsoft.us` 改用。 ) 
 
 1. 单击左侧导航栏上的 "**访问评审**" 可查看分配给你的待定访问评审的列表。
 

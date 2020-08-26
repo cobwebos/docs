@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80396612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022457"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019年8月版架构更新）
 
@@ -76,7 +76,7 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 
 旧字段使用以下格式：
 
-<索引值0） >|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+`<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>`
 
 我们不再跨网络安全组（NSG）聚合数据。 在更新后的架构中， **NSGList_s**仅包含一个 NSG。 此外， **NSGRules**仅包含一个规则。 我们删除了此处和其他字段中的复杂格式，如示例中所示。
 

@@ -2,21 +2,23 @@
 title: 使用 Java 和 Gradle 将函数发布到 Azure
 description: 使用 Java 和 Gradle 创建 HTTP 触发的函数并将其发布到 Azure。
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996631"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322170"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
 本文说明如何使用 Gradle 命令行工具生成和发布 Java 函数项目以 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。 
 
 > [!NOTE]
-> 如果 Gradle 不是你首选的开发工具，请使用[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、 [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)来查看适用于 Java 开发人员的类似教程。
+> 如果 Gradle 不是你首选的开发工具，请使用[Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、 [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)来查看适用于 Java 开发人员的类似教程。
 
 ## <a name="prerequisites"></a>先决条件
 

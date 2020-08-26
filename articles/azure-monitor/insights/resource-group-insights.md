@@ -7,11 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045774"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -45,10 +46,10 @@ ms.locfileid: "83798120"
 
    |         |          |
    | ---------------- |:-----|
-   | [**警报**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  查看、创建和管理警报。 |
-   | [**指标**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | 可视化并浏览基于指标的数据。    |
-   | [**活动日志**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Azure 中已发生的订阅级别事件。  |
-   | [**应用程序映射**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | 浏览分布式应用程序的拓扑，以识别性能瓶颈或故障作用点。 |
+   | [**警报**](../platform/alerts-overview.md)      |  查看、创建和管理警报。 |
+   | [**指标**](../platform/data-platform.md) | 可视化并浏览基于指标的数据。    |
+   | [**活动日志**](../platform/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
+   | [**应用程序映射**](../app/app-map.md) | 浏览分布式应用程序的拓扑，以识别性能瓶颈或故障作用点。 |
 
 ## <a name="failures-and-performance"></a>故障和性能
 
@@ -116,6 +117,6 @@ ms.locfileid: "83798120"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure 资源运行状况](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor 警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor 工作簿](../platform/workbooks-overview.md)
+- [Azure 资源运行状况](../../service-health/resource-health-overview.md)
+- [Azure Monitor 警报](../platform/alerts-overview.md)

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331083"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718537"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -37,9 +37,11 @@ ms.locfileid: "80331083"
 
 |角色| 操作系统/版本|
 |--|--|
-|Active Directory 联合身份验证服务 (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory 联合身份验证服务 (AD FS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
 |Azure AD Connect | 版本 1.0.9125 或更高版本|
-|Active Directory 域服务 (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory 域服务 (AD DS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
+
+不支持 Windows Server 核心安装。
 
 请注意，该服务提供的功能可能因角色和操作系统而有所不同。 换言之，并非所有功能都适用于所有操作系统版本。 有关详细信息，请参阅功能说明。
 
@@ -52,7 +54,7 @@ ms.locfileid: "80331083"
 
 许可信息还可在 [Azure AD 定价页](https://aka.ms/aadpricing)中找到。
 
-例如：
+示例：
 
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
@@ -96,28 +98,28 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在安装 Azure AD Connect Health 代理期间，是否必须重新启动服务器？**
 
-否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
 **问：Azure AD Connect Health 是否通过直通型 HTTP 代理进行工作？**
 
-是的。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
-阅读有关[为 Health 代理配置 HTTP 代理的](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)详细信息。
+是。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
+阅读有关 [为 Health 代理配置 HTTP 代理的](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)详细信息。
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
 
 1. 打开 internet Explorer >**设置**"  >  **Internet 选项**" "连接" "  >  **Connections**  >  **局域网设置**"。
-2. 选择 "**为 LAN 使用代理服务器**"。
-3. 如果针对 HTTP 和 HTTPS/Secure 有不同的代理端口，请选择 "**高级**"。
+2. 选择 " **为 LAN 使用代理服务器**"。
+3. 如果针对 HTTP 和 HTTPS/Secure 有不同的代理端口，请选择 " **高级** "。
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
-有关防火墙端口列表和其他连接要求，请参阅 "[要求" 部分](how-to-connect-health-agent-install.md#requirements)。
+有关防火墙端口列表和其他连接要求，请参阅 " [要求" 部分](how-to-connect-health-agent-install.md#requirements) 。
 
 **问：为什么在 Azure AD Connect Health 门户中看到两个同名的服务器？**
 
@@ -133,9 +135,9 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 由于下列可能的原因，Health 代理可能无法注册：
 
-* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅 "[要求" 部分](how-to-connect-health-agent-install.md#requirements)。
+* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅 " [要求" 部分](how-to-connect-health-agent-install.md#requirements) 。
 * 网络层会对出站通信进行 TLS 检测。 这会导致代理使用的证书被检查服务器/实体替换，并且无法执行完成代理注册所需的步骤。
-* 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可使用[基于角色的访问控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)将访问权限委派给其他用户。
+* 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可以使用 azure [RBAC)  (azure 基于角色的访问控制 ](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) 来委托其他用户的访问权限。
 
 **问：收到 "运行状况服务数据不是最新" 的警报。如何实现解决该问题？**
 
@@ -150,7 +152,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
 
-**问：我收到 "测试身份验证请求（综合事务）无法获取令牌" 的警报。如何实现解决该问题？**
+**问：收到 "测试身份验证请求 (综合事务) 未能获得令牌" 的警报。如何实现解决该问题？**
 
 当 AD FS 服务器上安装的 Health 代理无法获取由 Health 代理启动的作为综合事务一部分的令牌时，AD FS 的 Azure AD Connect Health 就会生成此警报。 Health 代理使用本地系统上下文，并尝试为自信赖方获取令牌。 这是一个全面测试，可确保 AD FS 处于发出令牌的状态。
 
@@ -192,10 +194,10 @@ CheckForMS17-010
 
 **问：为什么未生成 ADFS 审核？**
 
-请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关[ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的详细信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
+请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的详细信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
 
 **问：代理证书在过期之前是否自动续订？**
-代理证书将在到期日期前**6 个月**自动续订。 如果未续订，请确保该代理的网络连接稳定。 重新启动代理服务或更新到最新版本也可以解决此问题。
+代理证书将在到期日期前 **6 个月** 自动续订。 如果未续订，请确保该代理的网络连接稳定。 重新启动代理服务或更新到最新版本也可以解决此问题。
 
 
 ## <a name="related-links"></a>相关链接

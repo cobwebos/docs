@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133899"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495992"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 
@@ -32,7 +32,7 @@ a
 
 **本地到本地的体系结构**
 
-![本地到本地](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![显示本地到本地保护的关系图。](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>复制过程
 

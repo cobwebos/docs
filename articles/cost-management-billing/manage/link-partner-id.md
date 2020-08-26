@@ -4,31 +4,31 @@ description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 07/24/2020
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.topic: how-to
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743909"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529903"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
 Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实现业务和任务目标。 当代表客户管理、配置和支持 Azure 服务时，合作伙伴用户将需要访问客户的环境。 合作伙伴可以使用合作伙伴管理链接 (PAL) 将其合作伙伴网络 ID 与用于服务交付的凭据相关联。
 
-PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功。Microsoft 可以根据帐户的权限（RBAC 角色）和范围（订阅、资源组、资源），将影响力和 Azure 消费收入归结于组织。
+PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功。Microsoft 可以根据帐户的权限（Azure 角色）和范围（订阅、资源组、资源），将影响力和 Azure 消费收入归结于组织。
 
 ## <a name="get-access-from-your-customer"></a>从客户获取访问权限
 
 在你链接合作伙伴 ID 之前，客户必须使用以下选项之一，授权你访问其 Azure 资源：
 
-- **来宾用户**：客户可将你添加为来宾用户并分配任何基于角色的访问控制 (RBAC) 角色。 有关详细信息，请参阅[添加另一个目录中的来宾用户](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
+- **来宾用户**：客户可将你添加为来宾用户并分配任何 Azure 角色。 有关详细信息，请参阅[添加另一个目录中的来宾用户](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
 
-- **目录帐户**：客户可以为你在其自己的目录中创建用户帐户，并分配任何 RBAC 角色。
+- **目录帐户**：客户可以为你在其自己的目录中创建用户帐户，并分配任何 Azure 角色。
 
-- **服务主体**：客户可在其目录中为你的组织添加一个应用或脚本，并分配任何 RBAC 角色。 该应用或脚本的标识称为服务主体。
+- **服务主体**：客户可在其目录中为你的组织添加一个应用或脚本，并分配任何 Azure 角色。 该应用或脚本的标识称为服务主体。
 
 - **Azure Lighthouse**：你的客户可以委托一个订阅（或资源组），这样你的用户就可以通过你的租户在其上工作。 有关详细信息，请参阅 [Azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)。
 
@@ -168,9 +168,8 @@ C:\ az managementpartner delete --partner-id 12345
 
 PAL 收集哪些数据？
 
-与现有凭据的 PAL 关联不向 Microsoft 提供任何新的客户数据。 它只是向 Microsoft 提供遥测，合作伙伴可在其中积极参与客户的 Azure 环境。 Microsoft 可以根据客户向合作伙伴提供的帐户权限（RBAC 角色）和范围（管理组、订阅、资源组、资源），将来自客户环境的影响力和 Azure 消费收入归结于合作伙伴组织。 
+与现有凭据的 PAL 关联不向 Microsoft 提供任何新的客户数据。 它只是向 Microsoft 提供遥测，合作伙伴可在其中积极参与客户的 Azure 环境。 Microsoft 可以根据客户向合作伙伴提供的帐户权限（Azure 角色）和范围（管理组、订阅、资源组、资源），将来自客户环境的影响力和 Azure 消费收入归结于合作伙伴组织。 
 
 这是否会影响客户的 Azure 环境的安全性？
 
-PAL 关联只会将合作伙伴的 MPN ID 添加到已玉佩的凭据，而不会更改任何权限（RBAC 角色），也不会向合作伙伴或 Microsoft 提供额外的 Azure 服务数据。 
-
+PAL 关联只会将合作伙伴的 MPN ID 添加到已玉佩的凭据，而不会更改任何权限（Azure 角色），也不会向合作伙伴或 Microsoft 提供额外的 Azure 服务数据。 

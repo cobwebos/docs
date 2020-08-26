@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
-ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d961ab58e900a6d619ec64297c783abdb7b6ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091685"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -34,13 +35,13 @@ ms.locfileid: "77921073"
  
 |媒体处理器名称|停用日期|附加说明|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|2020年1月1日|[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)正在替换此媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
-|[Azure Media Indexer](media-services-index-content.md)|2023 年 3 月 1 日|[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)正在替换此媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|2020年1月1日|[Azure 媒体服务视频索引器](../video-indexer/index.yml)正在替换此媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
+|[Azure Media Indexer](media-services-index-content.md)|2023 年 3 月 1 日|[Azure 媒体服务视频索引器](../video-indexer/index.yml)正在替换此媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)|
 |[动作检测](media-services-motion-detection.md)|2020 年 6 月 1 日|目前无替换计划。|
 |[视频摘要](media-services-video-summarization.md)|2020 年 6 月 1 日|目前无替换计划。|
-|[视频光学字符识别](media-services-video-optical-character-recognition.md)|2020 年 6 月 1 日|[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)正在替换此媒体处理器。 另外，请考虑使用[Azure 媒体服务 V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)。 <br/>请参阅[比较 Azure 媒体服务 v3 预置和视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[面部检测器](media-services-face-and-emotion-detection.md)|2020 年 6 月 1 日|[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)正在替换此媒体处理器。 另外，请考虑使用[Azure 媒体服务 V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)。 <br/>请参阅[比较 Azure 媒体服务 v3 预置和视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[内容审查器](media-services-content-moderation.md)|2020 年 6 月 1 日|[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)正在替换此媒体处理器。 另外，请考虑使用[Azure 媒体服务 V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)。 <br/>请参阅[比较 Azure 媒体服务 v3 预置和视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
+|[视频光学字符识别](media-services-video-optical-character-recognition.md)|2020 年 6 月 1 日|[Azure 媒体服务视频索引器](../video-indexer/index.yml)正在替换此媒体处理器。 另外，请考虑使用[Azure 媒体服务 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预置和视频索引器](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[面部检测器](media-services-face-and-emotion-detection.md)|2020 年 6 月 1 日|[Azure 媒体服务视频索引器](../video-indexer/index.yml)正在替换此媒体处理器。 另外，请考虑使用[Azure 媒体服务 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预置和视频索引器](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[内容审查器](media-services-content-moderation.md)|2020 年 6 月 1 日|[Azure 媒体服务视频索引器](../video-indexer/index.yml)正在替换此媒体处理器。 另外，请考虑使用[Azure 媒体服务 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预置和视频索引器](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
 
 ## <a name="next-steps"></a>后续步骤
 

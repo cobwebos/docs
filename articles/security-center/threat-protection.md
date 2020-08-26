@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037182"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272495"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -54,11 +54,15 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
     Microsoft Defender ATP 在检测到威胁时会触发警报。 警报显示在安全中心仪表板上。 在仪表板中，可以透视 Microsoft Defender ATP 控制台，并执行详细调查来发现攻击范围。 有关 Microsoft Defender ATP 的详细信息，请参阅[将服务器加入 Microsoft Defender ATP 服务](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
-* **无文件攻击检测** <a name="windows-fileless"></a> - 针对终结点的无文件攻击经常发生。 为了避免被检测到，无文件攻击会将恶意有效负载注入到内存中。 攻击者有效负载会持久保存在遭到入侵的进程的内存中，执行各种恶意活动。
+* **Fileless 攻击检测** <a name="windows-fileless"></a> -Fileless 攻击会将恶意有效负载注入到内存中，以避免通过基于磁盘的扫描技术检测。 然后，攻击者的负载会在遭到攻击的进程中保持不变，并执行各种恶意活动。
 
-    自动内存取证技术使用无文件攻击检测来识别无文件攻击工具包、方法和行为。 此解决方案会定期在运行时扫描计算机，并直接从安全关键型进程的内存中提取见解。
+    自动内存取证技术使用无文件攻击检测来识别无文件攻击工具包、方法和行为。 此解决方案会定期在运行时扫描计算机，并直接从进程内存中提取见解。 适用于 Linux 的特定见解包括以下内容的标识： 
 
-    它会找出恶意利用、代码注入和恶意有效负载执行的证据。 无文件攻击检测会生成详细的安全警报，以加速警报会审、关联和下游响应速度。 此方法是对基于事件的 EDR 解决方案的补充，提供更大的检测范围。
+    - 众所周知的工具包和加密挖掘软件 
+    - 外壳代码是一小段代码，通常用作利用软件漏洞的有效负载。
+    - 进程内存中注入的恶意可执行文件
+
+    Fileless 攻击检测会生成详细的安全警报，其中包含具有其他进程元数据的说明，例如网络活动。 这加快了警报会审、相关和下游响应时间。 此方法补充基于事件的 EDR 解决方案，并提供更高的检测范围。
 
     有关无文件攻击检测警报的详细信息，请参阅[警报参考表](alerts-reference.md#alerts-windows)。
 
@@ -106,16 +110,17 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
 
 
-## <a name="threat-protection-for-containers"></a>容器的威胁防护<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>容器的威胁防护 <a name="azure-containers"></a>
 
 ### <a name="availability"></a>可用性
 
-- 发布状态：**公开上市**
-- 必需的角色：**安全管理员**可以解除警报。 **安全读取者**可以查看结果。
-- 云：<br>
-    ✔ 商业云<br>
-    ✘ US Gov<br>
-    ✘中国 Gov，其他 Gov
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|必需的角色和权限：|**安全管理员** 可以解除警报。<br>**安全读取者**可以查看结果。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -128,13 +133,13 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
 ## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>针对 SQL 数据库和 SQL 数据仓库的威胁防护 <a name="data-sql"></a>
 
-针对 Azure SQL 数据库的高级威胁防护会检测异常活动，这些活动指示存在访问或恶意利用数据库的非寻常且可能有害的企图。
+Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 出现可疑的数据库活动、潜在漏洞，或者 SQL 注入攻击以及异常的数据库访问和查询模式时，你会看到警报。
 
-适用于 Azure SQL 数据库和 SQL 的高级威胁防护是高级 SQL 安全功能[（](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)包括 Azure sql 数据库、Azure Sql 托管实例、Azure Sql 数据仓库数据库和 Azure 虚拟机上的 SQL server）的高级 SQL 安全统一包的高级威胁防护。
+适用于 Azure SQL 数据库和 SQL 的高级威胁防护是高级 SQL 安全功能 [ (广告) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 统一包的高级威胁防护，其中包括 Azure sql 数据库、Azure Sql 托管实例、Azure Sql 数据仓库数据库和 Azure 虚拟机上的 sql server。
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 * [如何为 Azure SQL 数据库启用高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何为 Azure 虚拟机上的 SQL 服务器启用高级威胁防护](security-center-iaas-advanced-data.md)
@@ -146,20 +151,19 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
 ### <a name="availability"></a>可用性
 
-- 发布状态：
-    - [Blob 存储](https://azure.microsoft.com/services/storage/blobs/)（正式发布）
-    - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)（预览）
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) （预览）
-- 云：<br>
-    ✔ 商业云<br>
-    ✔ US Gov<br>
-    ✘中国 Gov，其他 Gov
+|方面|详细信息|
+|----|:----|
+|发布状态：|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/) (公开上市) <br>[Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (预览) <br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (预览版) |
+|计价|标准层|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|||
+
 
 ### <a name="whats-protected"></a>受保护的内容
 
 Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活动。 无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。
 
-这一层保护使你*无*需成为安全专家，就能解决威胁，并可帮助你管理安全监视系统。
+这一层保护使你 *无* 需成为安全专家，就能解决威胁，并可帮助你管理安全监视系统。
 
 已保护你的存储帐户 
 
@@ -167,17 +171,17 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 当存在以下情况时，会触发安全警报：
 
-- **可疑活动**-例如，存储帐户已从称为 Tor 的活动退出节点的 IP 地址成功访问
-- **异常行为**-例如，对存储帐户的访问模式的更改
+- **可疑活动** -例如，存储帐户已从称为 Tor 的活动退出节点的 IP 地址成功访问
+- **异常行为** -例如，对存储帐户的访问模式的更改
 - 已**上传潜在恶意软件**-哈希信誉分析表明上传的文件包含恶意软件
 
 警报包含触发这些事件的事件的详细信息，并提供有关如何调查和修正威胁的建议。
 
 ### <a name="what-is-hash-reputation-analysis-for-malware"></a>什么是恶意软件的哈希信誉分析？
 
-若要确定上传的文件是否可疑，Azure 存储的威胁防护使用[Microsoft 威胁情报](https://go.microsoft.com/fwlink/?linkid=2128684)支持的哈希信誉分析。 威胁防护工具不会扫描已上传的文件，而是检查存储日志，并将新上载文件的哈希与已知病毒、特洛伊木马程序、间谍软件和勒索软件的哈希进行比较。 
+若要确定上传的文件是否可疑，Azure 存储的威胁防护使用 [Microsoft 威胁情报](https://go.microsoft.com/fwlink/?linkid=2128684)支持的哈希信誉分析。 威胁防护工具不会扫描已上传的文件，而是检查存储日志，并将新上载文件的哈希与已知病毒、特洛伊木马程序、间谍软件和勒索软件的哈希进行比较。 
 
-当怀疑某个文件包含恶意软件时，安全中心将显示一个警报，还可以选择通过电子邮件发送存储所有者以批准删除可疑文件。 若要设置自动删除哈希信誉分析指出包含恶意软件的文件，请部署[工作流自动化，使其在包含 "可能已上传到存储帐户的恶意软件" 的警报上触发](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)。
+当怀疑某个文件包含恶意软件时，安全中心将显示一个警报，还可以选择通过电子邮件发送存储所有者以批准删除可疑文件。 若要设置自动删除哈希信誉分析指出包含恶意软件的文件，请部署 [工作流自动化，使其在包含 "可能已上传到存储帐户的恶意软件" 的警报上触发](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)。
 
 
 
@@ -192,7 +196,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 * [Microsoft 的威胁情报功能](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> 可以按照[此博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的说明来模拟存储警报。
+> 可以按照 [此博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的说明来模拟存储警报。
 
 
 
@@ -224,13 +228,12 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 - 在发生可疑通信的整小时内，为虚拟机分配了同一个 IP 地址。 这也适用于作为托管服务（例如 AKS、Databricks）的一部分创建的 VM。
 
-有关 Azure 网络层警报的列表，请参阅[警报参考表](alerts-reference.md#alerts-azurenetlayer)。
-
-若要详细了解安全中心如何使用网络相关信号来应用威胁防护，请参阅[安全中心内的启发式 DNS 检测](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)。
+有关 Azure 网络层警报的列表，请参阅[警报引用表](alerts-reference.md#alerts-azurenetlayer)。
 
 
 
-## <a name="threat-protection-for-azure-management-layer-azure-resource-manager-preview"></a>针对 Azure 管理层（Azure 资源管理器）（预览版）的威胁防护 <a name ="management-layer"></a>
+
+## <a name="threat-protection-for-azure-management-layer-azure-resource-manager-preview"></a>Azure 管理层（Azure 资源管理器）的威胁防护（预览）<a name ="management-layer"></a>
 
 基于 Azure 资源管理器的安全中心保护层目前为预览版。
 
@@ -243,17 +246,17 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 >[!NOTE]
 > 上述几项分析由 Microsoft Cloud App Security 提供支持。 若要从这些分析中获益，必须激活 Cloud App Security 许可证。 如果你有 Cloud App Security 许可证，则默认会启用这些警报。 若要禁用警报：
 >
-> 1. 从安全中心的菜单中，选择 "**定价 & 设置**"。
+> 1. 从安全中心的菜单中，选择 " **定价 & 设置**"。
 > 1. 选择想要更改的订阅。
 > 1. 选择“威胁检测”。
-> 1. 清除 "**允许 Microsoft Cloud App Security 访问我的数据**"，然后选择 "**保存**"。
+> 1. 清除 " **允许 Microsoft Cloud App Security 访问我的数据**"，然后选择 " **保存**"。
 
 >[!NOTE]
 >安全中心将安全相关的客户数据存储在其资源所在的地理区域。 如果 Microsoft 尚未在该资源所在的地理位置部署安全中心，则数据将存储在美国。 启用 Cloud App Security 后，将根据 Cloud App Security 的地理位置规则存储此信息。 有关详细信息，请参阅[非区域性服务的数据存储](https://azuredatacentermap.azurewebsites.net/)。
 
 1. 设置要在其上安装代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
 
-1. 设置标准定价层，然后选择 "**保存**"。
+1. 设置标准定价层，然后选择 " **保存**"。
 
 
 
@@ -283,7 +286,7 @@ Azure 安全中心包含针对 Azure Key Vault 的 Azure 原生高级威胁防�
 
 Azure 应用程序网关提供的 Web 应用程序防火墙 (WAF) 可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
 
-Web 应用程序正逐渐成为利用常见已知漏洞的恶意攻击的目标。 应用程序网关 WAF 基于开放 Web 应用程序安全项目中的核心规则集 3.0 或 2.2.9。 WAF 会自动更新，以便在出现新漏洞后提供保护。 
+Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 应用程序网关 WAF 基于开放 Web 应用程序安全项目中的核心规则集 3.0 或 2.2.9。 WAF 会自动更新，以便在出现新漏洞后提供保护。 
 
 如果你有 Azure WAF 许可证，则无需进行额外的配置，就会将 WAF 警报流式传输到安全中心。 有关 WAF 生成的警报的详细信息，请参阅 [Web 应用程序防火墙 CRS 规则组和规则](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)。
 

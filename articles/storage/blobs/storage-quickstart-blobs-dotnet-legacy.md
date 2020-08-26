@@ -1,22 +1,25 @@
 ---
 title: 快速入门：适用于 .NET 的 Azure Blob 存储客户端库
-description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
+description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/20/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84455937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285282"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11
 
 适用于 .NET 的 Azure Blob 存储客户端库 v11 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
+
+> [!NOTE]
+> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12](storage-quickstart-blobs-dotnet.md)。
 
 使用适用于 .NET 的 Azure Blob 存储客户端库完成以下操作：
 
@@ -27,7 +30,12 @@ ms.locfileid: "84455937"
 * 列出容器中所有的 blob
 * 删除容器
 
-[API 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+其他资源：
+
+* [API 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -43,15 +51,15 @@ ms.locfileid: "84455937"
 
 ### <a name="create-the-project"></a>创建项目
 
-首先，创建名为 blob-quickstart 的 .NET Core 应用程序  。
+首先，创建名为 blob-quickstart 的 .NET Core 应用程序。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 blob-quickstart  的新控制台应用程序。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 blob-quickstart 的新控制台应用程序。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
 
    ```console
    dotnet new console -n blob-quickstart
    ```
 
-2. 切换到新建的 blob-quickstart 文件夹，并生成应用以验证一切是否正常  。
+2. 切换到新建的 blob-quickstart 文件夹，并生成应用以验证一切是否正常。
 
    ```console
    cd blob-quickstart
@@ -90,7 +98,7 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 从项目目录中执行以下操作：
 
-1. 在编辑器中打开 Program.cs  文件
+1. 在编辑器中打开 Program.cs 文件
 2. 删除 `Console.WriteLine` 语句
 3. 添加 `using` 指令
 4. 创建一个 `ProcessAsync` 方法，其中包含示例的主代码
@@ -132,8 +140,8 @@ namespace blob_quickstart
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。   在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
-4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。    下一步需将此连接字符串值添加到某个环境变量。
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。 在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
+4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。 下一步需将此连接字符串值添加到某个环境变量。
 
     ![显示如何从 Azure 门户复制连接字符串的屏幕截图](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
 

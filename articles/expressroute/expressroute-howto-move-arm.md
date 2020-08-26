@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: charwen
-ms.openlocfilehash: 5c4bbdde04176edf693fc58d172a7dcc250c495a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d094f614cbaf75158c38b86345fd5f925310d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84724995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039304"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型
 
@@ -21,7 +22,7 @@ ms.locfileid: "84724995"
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* 验证是否已在本地计算机上安装经典模块和 Az Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* 验证是否已在本地计算机上安装经典模块和 Az Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 查看[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](expressroute-move.md)中提供的信息。 请确保对限制和局限性有全面的了解。
 * 验证线路在经典部署模型中可完全正常运行。

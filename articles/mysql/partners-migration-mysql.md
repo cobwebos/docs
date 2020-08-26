@@ -6,11 +6,12 @@ ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 7f922275e5541baabc77a1efb19e48fa8be4c5ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289418"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285401"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL 迁移合作伙伴
 为了广泛支持你的 Azure Database for MySQL 解决方案，可以从众多行业领先的合作伙伴和工具中进行选择。 本文重点介绍了提供支持 Azure Database for MySQL 的迁移解决方案的 Microsoft 合作伙伴。
@@ -26,7 +27,7 @@ ms.locfileid: "76289418"
 | ![Pactera][6] |**Pactera**<br>Pactera 是一家全球性公司，为世界领先的企业提供咨询、数字、技术和运营服务。 从最初的工程设计到最近的数字转换，他们为客户提供了竞争优势。 其成熟的方法和工具可确保数据安全、可信和准确。|[网站][pactera_website]<br>[Twitter][pactera_twitter]<br>[联系人][pactera_contact] | |
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 Microsoft 的其他一些合作伙伴，请参阅 [Microsoft 合作伙伴网站](https://partner.microsoft.com/en-US/)。
+若要详细了解 Microsoft 的其他一些合作伙伴，请参阅 [Microsoft 合作伙伴网站](https://partner.microsoft.com/)。
 
 <!--Image references-->
 [1]: ./media/partner-migration-mysql/SNP_Logo.png

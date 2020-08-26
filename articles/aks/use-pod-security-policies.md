@@ -1,32 +1,28 @@
 ---
-title: 在 Azure Kubernetes Service （AKS）中使用 pod 安全策略
-description: 了解如何使用 Azure Kubernetes 服务（AKS）中的 PodSecurityPolicy 控制 pod 招生
+title: '使用 Azure Kubernetes Service 中的 pod 安全策略 (AKS) '
+description: 了解如何使用 Azure Kubernetes Service (AKS) 中的 PodSecurityPolicy 控制 pod 招生
 services: container-service
 ms.topic: article
-ms.date: 06/30/2020
-ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: 3c8ec61666942fc74dcb64c03c0e3f06986e8c37
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507074"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987267"
 ---
-# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-在 Azure Kubernetes Service （AKS）中使用 pod 安全策略保护群集
+# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-使用 Azure Kubernetes Service 中的 pod 安全策略保护群集 (AKS) 
 
 > [!WARNING]
-> **本文档中所述的功能 "pod 安全策略（预览版）" 设置为 "弃用"，在2020年10月15日之后将不再提供**，以支持[AKS 的 Azure 策略](use-pod-security-on-azure-policy.md)。
+> **本文档中所述的功能，pod 安全策略 (预览) ，已设置为弃用，在2020年10月15日之后将不再提供**，以支持[AKS 的 Azure 策略](use-pod-security-on-azure-policy.md)。
 >
-> 在弃用安全策略（预览版）后，必须在任何现有群集上禁用该功能，该功能使用不推荐使用的功能来执行将来的群集升级并保持在 Azure 支持范围内。
+> 在 pod 安全策略 (预览版) 弃用后，你必须使用不推荐使用的功能在任何现有群集上禁用该功能，以执行将来的群集升级并保持在 Azure 支持范围内。
 >
-> 强烈建议使用适用于 AKS 的 Azure 策略开始测试方案，此策略提供内置策略来保护 pod 和内置计划，这些策略可映射到 pod 安全策略。 单击此处了解有关[从 pod 安全策略（预览版）迁移到 Azure 策略的](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)信息。
+> 强烈建议使用适用于 AKS 的 Azure 策略开始测试方案，此策略提供内置策略来保护 pod 和内置计划，这些策略可映射到 pod 安全策略。 单击此处了解有关[从 pod 迁移到 Azure 策略 (预览) ](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)的信息。
 
 若要提高 AKS 群集的安全性，可以限制可计划的 pod。 请求不允许的资源的 pod 无法在 AKS 群集中运行。 使用 pod 安全策略定义此访问权限。 本文介绍如何在 AKS 中使用 pod 安全策略来限制 pod 的部署。
 
-> [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
->
-> * [AKS 支持策略][aks-support-policies]
-> * [Azure 支持常见问题][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -348,7 +344,7 @@ kubectl apply -f psp-deny-privileged-clusterrole.yaml
 现在，创建 ClusterRoleBinding 以使用上一步中创建的 ClusterRole。 创建名为 `psp-deny-privileged-clusterrolebinding.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: psp-deny-privileged-clusterrolebinding

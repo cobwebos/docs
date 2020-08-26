@@ -3,7 +3,7 @@ title: 请求访问包-Azure AD 的权利管理
 description: 了解如何使用 "我的访问门户" 请求访问 Azure Active Directory 授权管理中的访问包。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,11 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e744adeae55252ec70c8f766db1e29a3898886c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078110"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798488"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>请求访问 Azure AD 权限管理中的访问包
 
@@ -34,7 +35,7 @@ ms.locfileid: "85078110"
 
 **必备角色：** 者
 
-1. 查找与你合作的项目经理或业务经理发出的电子邮件或消息。 该电子邮件应该包含需访问的访问包的链接。 链接以开头 `myaccess` ，包含一个目录提示，并以访问包 ID 结尾。  （对于美国政府版，可以改为域 `https://myaccess.microsoft.us` 。）
+1. 查找与你合作的项目经理或业务经理发出的电子邮件或消息。 该电子邮件应该包含需访问的访问包的链接。 链接以开头 `myaccess` ，包含一个目录提示，并以访问包 ID 结尾。   (美国政府版，则可能改为域 `https://myaccess.microsoft.us` 。 ) 
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

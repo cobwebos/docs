@@ -4,16 +4,16 @@ description: 适用于指标遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540003"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320572"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) 支持两种类型的指标遥测：单个度量和预聚合指标。 单个度量只是一个名称和值。 预聚合指标指定在聚合时间间隔内指标的最小和最大值，以及它的标准偏差。
+[Application Insights](./app-insights-overview.md) 支持两种类型的指标遥测：单个度量和预聚合指标。 单个度量只是一个名称和值。 预聚合指标指定在聚合时间间隔内指标的最小和最大值，以及它的标准偏差。
 
 预聚合指标遥测假定聚合期间为一分钟。
 
@@ -65,6 +65,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[用于处理自定义事件和指标的 Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)。
+- 了解如何使用[用于处理自定义事件和指标的 Application Insights API](./api-custom-events-metrics.md#trackmetric)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
-- 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。
+- 查看 Application Insights 支持的[平台](./platforms.md)。
+

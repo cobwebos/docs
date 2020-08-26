@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: ce8a651fcdda657a1fffa523837181031e0bbc75
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119797"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837222"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数
 
@@ -29,16 +29,16 @@ ms.locfileid: "86119797"
 5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。
 ![全部重置为默认设置](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="setting-parameters-not-listed"></a>未列出设置参数
+## <a name="setting-parameters-not-listed"></a>设置参数未列出
 
-如果 Azure 门户中未列出您要更新的服务器参数，则可以选择使用在连接级别设置参数 `init_connect` 。 这会为每个连接到服务器的客户端设置服务器参数。 
+如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
-1. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MariaDB 服务器的“服务器参数”页。
-2. 搜索`init_connect`
-3. 按以下格式添加服务器参数： `SET parameter_name=YOUR_DESIRED_VALUE` 值列中的 "值"。
+1. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MySQL 服务器的“服务器参数”页。
+2. 搜索 `init_connect`
+3. 在 value 列的 value 中添加服务器参数，格式为 `SET parameter_name=YOUR_DESIRED_VALUE`。
 
-    例如，你可以通过将设置为来更改服务器的字符集 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. 单击“保存”以保存更改。
+    例如，可以通过将 `init_connect` 设置为 `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;` 来更改服务器的字符集
+4.  以保存更改。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
@@ -54,7 +54,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 应重启服务器，确保正确填充时区表。 若要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
+> 应重启服务器，确保正确填充时区表。 要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

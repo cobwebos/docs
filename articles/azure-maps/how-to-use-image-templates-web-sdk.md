@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Web SDK 中的图像模板 |Microsoft Azure 映射
-description: 在本文中，你将了解如何在 Microsoft Azure Map Web SDK 中将图像模板与 HTML 标记和各种层一起使用。
+description: 了解如何使用 Azure Maps Web SDK 将图像图标和图案填充多边形添加到地图中。 查看可用的图像和填充模式模板。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207084"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004664"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
@@ -59,7 +59,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的符号层" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>带有内置图标的笔符号层" 模板</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
+通过 CodePen 上的 () Azure Maps <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>，查看带有内置图标模板的笔符号层</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>使用沿行路径的图像模板
@@ -71,7 +71,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的线条层" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>带有内置图标模板的笔线层</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
+通过 CodePen 上的 () Azure Maps <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>，查看带有内置图标模板</a>的 "笔线层" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -86,7 +86,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="用内置图标模板填充多边形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用内置图标模板的笔填充多边形</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
+请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用内置图标模板的笔填充多边形</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -101,7 +101,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的 HTML 标记" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>使用内置图标模板的笔 HTML 标记</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
+通过 CodePen 上的 () Azure Maps，查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>带有内置图标模板</a>的 "笔 HTML 标记" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -139,7 +139,7 @@ SVG 图像模板支持以下占位符值：
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="将自定义图标模板添加到阿特拉斯命名空间" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "通过 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>将自定义图标模板添加到阿特拉斯命名空间</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () ，<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>以将自定义图标模板添加到阿特拉斯命名 Azure Maps 空间</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="list-of-image-templates"></a>映像模板列表
@@ -148,44 +148,337 @@ SVG 图像模板支持以下占位符值：
 
 **符号图标模板**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| marker | 标记-厚 | 标记-圆圈 | 标记-平 |
-|![标记图标](./media/image-templates/marker.png)|![标记-厚图标](./media/image-templates/marker-thick.png)|![标记-圆圈图标](./media/image-templates/marker-circle.png)|![标记-平面图标](./media/image-templates/marker-flat.png)|
-||||
-| 标记-正方形 | 标记-方形-分类 | 标记-箭头 | 标记球-pin | 
-|![标记-正方形图标](./media/image-templates/marker-square.png)|![标记-方形-群集图标](./media/image-templates/marker-square-cluster.png)|![标记-箭头图标](./media/image-templates/marker-arrow.png)|![标记球图标](./media/image-templates/marker-ball-pin.png)|
-||||
-| 标记-圆形 | 标记-方形舍入-分类 | 标志 | 标记-三角形 |
-| ![标记-圆形图标](./media/image-templates/marker-square-rounded.png) | ![标记-方形舍入-分类图标](./media/image-templates/marker-square-rounded-cluster.png) | ![标志图标](./media/image-templates/flag.png) | ![标记-三角形图标](./media/image-templates/flag-triangle.png) |
-||||
-| 三角形 | 三角形-粗 | 三角形-向上箭头 | 三角形-向左箭头 |
-| ![三角形图标](./media/image-templates/triangle.png) | ![三角形-厚图标](./media/image-templates/triangle-thick.png) | ![三角形-向上箭头图标](./media/image-templates/triangle-arrow-up.png) | ![三角形-向左箭头图标](./media/image-templates/triangle-arrow-left.png) |
-||||
-| 六边形 | 六边形-粗 | 六边形-圆形 | 六边形-粗 |
-| ![六边形图标](./media/image-templates/hexagon.png) | ![六边形-厚图标](./media/image-templates/hexagon-thick.png) | ![六边形圆形图标](./media/image-templates/hexagon-rounded.png) | ![六边形-粗图标](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| 固定 | 固定 | 圆角正方形 | 圆方形-粗 |
-| ![“固定”图标](./media/image-templates/pin.png) | ![固定线图标](./media/image-templates/pin-round.png) | ![圆角图标](./media/image-templates/rounded-square.png) | ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png) |
-||||
-| 向上箭头 | 向上箭头-细 | car ||
-| ![向上箭头图标](./media/image-templates/arrow-up.png) | ![向上箭头-细图标](./media/image-templates/arrow-up-thin.png) | ![汽车图标](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      marker
+   :::column-end:::
+   :::column span="":::
+      标记-厚
+   :::column-end:::
+   :::column span="":::
+      标记-圆圈
+   :::column-end:::
+   :::column span="":::
+      标记-平
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![标记图标](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-厚图标](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-圆圈图标](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-平面图标](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      标记-正方形
+   :::column-end:::
+   :::column span="":::
+      标记-方形-分类
+   :::column-end:::
+   :::column span="":::
+      标记-箭头
+   :::column-end:::
+   :::column span="":::
+      标记球-pin
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![标记-正方形图标](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-方形-群集图标](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-箭头图标](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记球图标](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      标记-圆形
+   :::column-end:::
+   :::column span="":::
+      标记-方形舍入-分类
+   :::column-end:::
+   :::column span="":::
+      flag
+   :::column-end:::
+   :::column span="":::
+      标记-三角形
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![标记-圆形图标](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-方形舍入-分类图标](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![标志图标](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![标记-三角形图标](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      三角形
+   :::column-end:::
+   :::column span="":::
+      三角形-粗
+   :::column-end:::
+   :::column span="":::
+      三角形-向上箭头
+   :::column-end:::
+   :::column span="":::
+      三角形-向左箭头
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![三角形图标](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![三角形-厚图标](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![三角形-向上箭头图标](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![三角形-向左箭头图标](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      六边形
+   :::column-end:::
+   :::column span="":::
+      六边形-粗
+   :::column-end:::
+   :::column span="":::
+      六边形-圆形
+   :::column-end:::
+   :::column span="":::
+      六边形-粗
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![六边形图标](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![六边形-厚图标](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![六边形圆形图标](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![六边形-粗图标](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      固定
+   :::column-end:::
+   :::column span="":::
+      固定
+   :::column-end:::
+   :::column span="":::
+      圆角正方形
+   :::column-end:::
+   :::column span="":::
+      圆方形-粗
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![“固定”图标](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![固定线图标](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![圆角图标](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      向上箭头
+   :::column-end:::
+   :::column span="":::
+      向上箭头-细
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![向上箭头图标](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![向上箭头-细图标](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![汽车图标](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **多边形填充图案模板**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| 检查 | 检查器-旋转 | 圆形 | 圆圈-间距 |
-| ![检查图标](./media/image-templates/checker.png) | ![检查器-旋转图标](./media/image-templates/checker-rotated.png) | ![圆圈图标](./media/image-templates/circles.png) | ![圆圈-间距图标](./media/image-templates/circles-spaced.png) |
-|||||
-| 斜上框线 | 对角线-向下移动 | 对角-条向上 | 对角线-向下移动 |
-| ![斜上框线图标](./media/image-templates/diagonal-lines-up.png) | ![斜向下箭头图标](./media/image-templates/diagonal-lines-down.png) | ![对角-条带图标](./media/image-templates/diagonal-stripes-up.png) | ![对角线-向下移动图标](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| 网格线 | 旋转网格线 | 旋转网格-条纹 | x 填充 |
-| ![网格线图标](./media/image-templates/grid-lines.png) | ![旋转网格线图标](./media/image-templates/rotated-grid-lines.png) | ![旋转网格线图标](./media/image-templates/rotated-grid-stripes.png) | ![x 填充图标](./media/image-templates/x-fill.png) |
-|||||
-| 之-字形 | 之-字形-垂直 | 点数 |  |
-| ![之-字形图标](./media/image-templates/zig-zag.png) | ![之-字形图标](./media/image-templates/zig-zag-vertical.png) | ![点图标](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      检查
+   :::column-end:::
+   :::column span="":::
+      检查器-旋转
+   :::column-end:::
+   :::column span="":::
+      圆形
+   :::column-end:::
+   :::column span="":::
+      圆圈-间距
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![检查图标](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![检查器-旋转图标](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![圆圈图标](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![圆圈-间距图标](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      斜上框线
+   :::column-end:::
+   :::column span="":::
+      对角线-向下移动
+   :::column-end:::
+   :::column span="":::
+      对角-条向上
+   :::column-end:::
+   :::column span="":::
+      对角线-向下移动
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![斜上框线图标](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![斜向下箭头图标](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![对角-条带图标](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![对角线-向下移动图标](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      网格线
+   :::column-end:::
+   :::column span="":::
+      旋转网格线
+   :::column-end:::
+   :::column span="":::
+      旋转网格-条纹
+   :::column-end:::
+   :::column span="":::
+      x 填充
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![网格线图标](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![旋转网格线图标](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![旋转网格线图标](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![x 填充图标](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      之-字形
+   :::column-end:::
+   :::column span="":::
+      之-字形-垂直
+   :::column-end:::
+   :::column span="":::
+      点数
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![之-字形图标](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![之-字形图标](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![点图标](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **预加载的图像图标**
 
@@ -213,7 +506,7 @@ SVG 图像模板支持以下占位符值：
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="图标模板选项" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上按 Azure Maps （）查看笔<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>图标模板选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+查看 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>图标模板 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

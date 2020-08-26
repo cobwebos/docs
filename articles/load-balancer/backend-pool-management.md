@@ -5,22 +5,22 @@ description: 开始了解如何配置和管理 Azure 负载均衡器的后端池
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: overview
+ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273755"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589667"
 ---
 # <a name="backend-pool-management"></a>后端池管理
 后端池是负载均衡器的一个关键组成部分。 后端池定义将在给定负载均衡规则下提供流量的资源的组。
 
 可以通过两种方法配置后端池：
 * 网络接口卡 (NIC)
-* 组合 IP 地址和虚拟网络 (VNET) 资源 ID
+* IP 地址和虚拟网络 (VNET) 资源 ID 的组合
 
 使用现有的虚拟机和虚拟机规模集时，通过 NIC 配置后端池。 此方法会在资源与后端池之间生成最直接的链接。 
 
@@ -255,10 +255,12 @@ JSON 请求正文：
 
   >[!IMPORTANT] 
   >此功能目前处于预览状态并具有以下限制：
-  >* 最多添加 100 个 IP 地址
+  >* 仅限标准负载均衡器
+  >* 后端池中的 100 IP 地址限制
   >* 后端资源必须与负载均衡器位于同一虚拟网络中
   >* Azure 门户目前不支持此功能
-  >* 仅限标准负载均衡器
+  >* 此功能当前不支持 ACI 容器
+  >* 负载均衡器或负载均衡器前端的服务不能放置在负载均衡器的后端池中
   
 ### <a name="powershell"></a>PowerShell
 创建新的后端池：
@@ -271,8 +273,7 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 使用现有虚拟网络中的新 IP 更新后端池：
@@ -281,18 +282,17 @@ New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBa
 $virtualNetwork = 
 Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
  
-$ip1 = 
-New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
 
 检索负载均衡器的后端池信息，确认此后端地址已添加到后端池：
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 创建网络接口并将它添加到后端池。 将 IP 地址设置为后端地址之一：
 

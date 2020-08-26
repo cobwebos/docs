@@ -9,11 +9,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919984"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079203"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -30,11 +32,11 @@ ms.locfileid: "85919984"
 
 ![Web 浏览器中显示“Hello World”网页][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 > [!NOTE]
 > 本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
-* 安装和配置[Azure Powershell]。
+* 安装和配置 [Azure PowerShell]。
 * 下载并安装 [用于 .NET 2.7 的 Azure SDK]。 在安装设置中，选择：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -42,8 +44,8 @@ ms.locfileid: "85919984"
 ## <a name="create-an-azure-cloud-service-project"></a>创建 Azure 云服务项目
 执行以下任务可创建一个新的 Azure 云服务项目以及基本的 Node.js 基架：
 
-1. 以管理员身份运行 **Windows PowerShell**；在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。********
-2. [连接 PowerShell] 到订阅。
+1. 以管理员身份运行 **Windows PowerShell**；在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。
+2. [将 PowerShell 连接] 到订阅。
 3. 输入以下 PowerShell cmdlet 来创建项目：
 
    ```powershell
@@ -176,10 +178,10 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 <!-- URL List -->
 
 [Azure 网站、云服务和虚拟机的比较]: /azure/architecture/guide/technology-choices/compute-decision-tree
-[使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[使用轻型 Web 应用]: ../app-service/quickstart-nodejs.md
+[Azure PowerShell]: /powershell/azure/
 [用于 .NET 2.7 的 Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
-[将 PowerShell 连接]: /powershell/azureps-cmdlets-docs
+[将 PowerShell 连接]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [创建 Azure 托管服务概述]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js 开发人员中心]: https://azure.microsoft.com/develop/nodejs/

@@ -12,7 +12,7 @@
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
@@ -67,7 +67,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+autosuggest'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
@@ -76,7 +76,7 @@
     - name: 知识库
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: 获取 API 密钥
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
     - name: 语言支持

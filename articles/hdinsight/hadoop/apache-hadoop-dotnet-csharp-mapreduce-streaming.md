@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77d8143743f899bcb9fd3927de223d84d406ed6f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0a20a120f72c70cb50cae37cece54d5efad31f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074806"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -47,7 +47,7 @@ HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.co
 
 * 将 .exe 文件上传到群集的方法。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具将文件上传到群集的主要存储。
 
-* 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/)。
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 

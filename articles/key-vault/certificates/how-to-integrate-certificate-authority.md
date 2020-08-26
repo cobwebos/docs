@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964492"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588919"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
 
@@ -70,7 +70,7 @@ Azure 密钥保管库用户可以直接从其 Key Vault 生成 DigiCert 证书�
 
 Azure PowerShell 用于通过命令或脚本创建和管理 Azure 资源。 Azure 托管 Azure Cloud Shell（一个可通过浏览器中的 Azure 门户使用的交互式 shell 环境）。
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -105,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 $issuerName = "DigiCertCA"
 ```
@@ -131,6 +131,16 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
  ![证书属性](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+- 能否通过 KeyVault 生成 digicert 通配符证书？ 
+   是的。 这取决于你如何配置了 digicert 帐户。
+- 如果我们要创建 EV 证书，我们应如何指定？ 
+   创建证书时，单击高级策略配置，然后指定证书类型。 支持的值包括：OV-SSL、EV-SSL
+- 通过集成创建 digicert 证书与直接通过 digicert 获取证书是否存在时间延迟？
+   否。 创建证书时，验证过程可能需要一些时间，并且验证依赖于 DigiCert 遵循的过程。
+
 
 ## <a name="next-steps"></a>后续步骤
 

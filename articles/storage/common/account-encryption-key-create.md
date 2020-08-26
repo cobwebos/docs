@@ -10,16 +10,17 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220824"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056714"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
-Azure 存储可对存储帐户中的所有数据进行静态加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 创建使用帐户加密密钥作为队列和表数据的帐户后，可以使用该存储帐户的 Azure Key Vault 来配置客户管理的密钥。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 创建使用帐户加密密钥作为队列和表数据的帐户后，可以使用该存储帐户的 Azure Key Vault 来配置客户管理的密钥。
 
 本文介绍如何创建一个存储帐户，该帐户依赖于该帐户的作用域。 首次创建帐户时，Microsoft 使用帐户密钥对帐户中的数据进行加密，而 Microsoft 管理密钥。 接下来，你可以为帐户配置客户管理的密钥，以利用这些权益，包括提供你自己的密钥、更新密钥版本、轮换密钥和吊销访问控制。
 
@@ -39,7 +40,7 @@ Azure 存储可对存储帐户中的所有数据进行静态加密。 默认情�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature)命令。
 
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -61,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -93,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -119,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -247,7 +248,7 @@ az storage account show /
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 

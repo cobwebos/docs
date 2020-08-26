@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373397"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212817"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > * 将本地应用程序添加到 Azure AD 租户
 > * 验证测试用户是否可以使用 Azure AD 帐户登录到该应用程序
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
 若要将本地应用程序添加到 Azure AD，需要：
 
@@ -47,7 +46,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 为了在生产环境中实现高可用性，我们建议提供多个 Windows 服务器。 对于本教程，使用一个 Windows 服务器便已足够。
 
 > [!IMPORTANT]
-> 如果要在 Windows Server 2019 上安装连接器，则必须在 WinHttp 组件中禁用 HTTP2 协议支持。 默认情况下，在受支持的操作系统的早期版本中已禁用此功能。 添加以下注册表项并重启服务器会在 Windows Server 2019 上禁用此功能。 请注意，这是计算机范围的注册表项。
+> 如果要在 Windows Server 2019 上安装连接器，则必须在 WinHttp 组件中禁用 HTTP2 协议支持，这样 Kerberos 约束委派才能正常工作。 默认情况下，在受支持的操作系统的早期版本中已禁用此功能。 添加以下注册表项并重启服务器会在 Windows Server 2019 上禁用此功能。 请注意，这是计算机范围的注册表项。
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -88,12 +87,12 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 1. 重新启动服务器。
 
-> [!IMPORTANT]
-> 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) 做准备，了解有用的参考和资源。
-
 ## <a name="prepare-your-on-premises-environment"></a>准备本地环境
 
 要为 Azure AD 应用程序代理准备环境，请首先启用与 Azure 数据中心的通信。 如果路径中有防火墙，请确保它已打开。 打开的防火墙允许连接器向应用程序代理发出 HTTPS (TCP) 请求。
+
+> [!IMPORTANT]
+> 如果要为 Azure 政府云安装连接器，请遵循[先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)和[安装步骤](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 这需要启用对一组不同 URL 的访问以及运行安装的其他参数。
 
 ### <a name="open-ports"></a>打开端口
 
@@ -114,13 +113,14 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 URL 来验证证书。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
 
 如果防火墙或代理允许配置 DNS 允许列表，则可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 
 要使用应用程序代理，请在与应用程序代理服务配合使用的每个 Windows 服务器上安装连接器。 连接器是一个代理，可以管理从本地应用程序服务器到 Azure AD 中应用程序代理的出站连接。 可以在同时安装了其他身份验证代理（例如 Azure AD Connect）的服务器上安装连接器。
+
 
 安装连接器：
 
@@ -135,7 +135,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 1. 阅读“服务条款”。 准备就绪后，选择“接受条款并下载”  。
 1. 在窗口底部，选择“运行”以安装连接器  。 此时会打开安装向导。
 1. 遵照向导中的说明安装服务。 当系统提示将连接器注册到 Azure AD 租户使用的应用程序代理时，请提供应用程序管理员凭据。
-    - 在 Internet Explorer (IE) 中，如果“IE 增强的安全配置”设置为“打开”，则可能不会显示注册屏幕。   若要访问，请按照错误消息中的说明进行操作。 确保“Internet Explorer 增强的安全性配置”设置为“关”   。
+    - 在 Internet Explorer (IE) 中，如果“IE 增强的安全配置”设置为“打开”，则可能不会显示注册屏幕。 若要访问，请按照错误消息中的说明进行操作。 确保“Internet Explorer 增强的安全性配置”设置为“关”   。
 
 ### <a name="general-remarks"></a>一般备注
 
@@ -167,8 +167,8 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 确认是否正确安装并注册了连接器：
 
-1. 单击“Windows”键并输入 *services.msc*，打开 Windows 服务管理器。 
-1. 检查以下两个服务的状态是否为“正在运行”。 
+1. 单击“Windows”键并输入 *services.msc*，打开 Windows 服务管理器。
+1. 检查以下两个服务的状态是否为“正在运行”。
    - Microsoft AAD 应用程序代理连接器将启用连接  。
    - **Microsoft AAD 应用程序代理连接器更新程序**是一个自动的更新服务。 该更新程序会检查连接器的新版本并根据需要更新连接器。
 
@@ -199,11 +199,11 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
     | 字段 | 说明 |
     | :---- | :---------- |
     | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”  。 默认情况下，后端应用程序超时的长度为 85 秒。 设置为 long 时，后端超时将增加到 180 秒。 |
-    | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。  如果使用远程桌面服务，请将此值设置为“否”。 |
-    | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。 
+    | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。|
+    | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
     | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)。
     | **转换标头中的 URL** | 除非应用程序要求在身份验证请求中包含原始主机标头，否则请将此值保留为“是”  。 |
-    | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”  。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。  有关详细信息，请参阅[使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视](application-proxy-integrate-with-microsoft-cloud-application-security.md)。 |
+    | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”  。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。 有关详细信息，请参阅[使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视](application-proxy-integrate-with-microsoft-cloud-application-security.md)。 |
 
 7. 选择 **添加** 。
 
@@ -234,6 +234,10 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 有关故障排除信息，请参阅[根据错误消息排查应用程序代理问题](application-proxy-troubleshoot.md)。
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请删除本教程中创建的资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你已准备了要与应用程序代理配合使用的本地环境，然后安装并注册了应用程序代理连接器。 接下来，你已将一个应用程序添加到 Azure AD 租户。 你已验证某个用户是否可以使用 Azure AD 帐户登录到该应用程序。
@@ -249,4 +253,4 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 现在可以配置应用程序的单一登录。 使用以下链接选择单一登录方法，并查找单一登录教程。
 
 > [!div class="nextstepaction"]
-> [配置单一登录](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [配置单一登录](sso-options.md#choosing-a-single-sign-on-method)

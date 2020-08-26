@@ -3,15 +3,16 @@ title: 使用 Azure 服务总线交换消息
 description: 在 Azure 逻辑应用中创建使用 Azure 服务总线发送和接收消息的自动化任务和工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141987"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853293"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -28,9 +29,9 @@ ms.locfileid: "84141987"
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 服务总线命名空间和消息传送实体，例如队列。 这些项和你的逻辑应用需使用同一 Azure 订阅。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
@@ -44,16 +45,16 @@ ms.locfileid: "84141987"
 
 确认逻辑应用有权访问服务总线命名空间。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在 [Azure 门户](https://portal.azure.com)中，用 Azure 帐户登录。
 
-1. 转到服务总线的命名空间。  在命名空间页上的“设置”下，选择“共享访问策略”。   在“声明”下，检查你是否有该命名空间的“管理”权限。  
+1. 转到服务总线的命名空间。 在命名空间页上的“设置”下，选择“共享访问策略”。  在“声明”下，检查你是否有该命名空间的“管理”权限。 
 
    ![管理服务总线命名空间的权限](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
 1. 获取服务总线命名空间的连接字符串。 在逻辑应用中提供连接信息时需要此字符串。
 
-   1. 在“共享访问策略”  窗格中，选择“RootManageSharedAccessKey”  。
-   
+   1. 在“共享访问策略”窗格中，选择“RootManageSharedAccessKey”。
+
    1. 在主连接字符串旁边选择复制按钮。 保存连接字符串供以后使用。
 
       ![复制服务总线命名空间连接字符串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -69,35 +70,38 @@ ms.locfileid: "84141987"
 
 1. 在搜索框中，输入“Azure 服务总线”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   例如，若要在有新项发送到服务总线队列时触发逻辑应用，请选择“队列中收到消息时(自动完成)”触发器。 
+   例如，若要在有新项发送到服务总线队列时触发逻辑应用，请选择“队列中收到消息时(自动完成)”触发器。
 
    ![选择服务总线触发器](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   所有服务总线触发器都是长轮询触发器。  此说明意味着，触发器在激发时会处理所有消息，然后等待 30 秒，让更多的消息出现在队列或主题订阅中。 如果在 30 秒内未显示任何消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
+   所有服务总线触发器都是长轮询触发器。 此说明意味着，触发器在激发时会处理所有消息，然后等待 30 秒，让更多的消息出现在队列或主题订阅中。 如果在 30 秒内未显示任何消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
-   某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。  这些触发器在触发时返回的消息数至少为 1，至多为触发器的**最大消息计数**属性指定的消息数。
+   某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的**最大消息计数**属性指定的消息数。
+
+    > [!NOTE]
+    > 自动完成触发器会自动完成一条消息，但只有在下一次触发器运行时才会完成。 此行为可能会影响逻辑应用的设计。 例如，如果你将自动完成触发器设置为每分钟检查一次消息，但在服务总线端将锁定持续时间设置为30秒，则结果为在完成该消息时出现 "锁定已过期" 的错误。 需要将锁定持续时间设置为长度超过轮询间隔的值。
 
 1. 如果触发器是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
 
    1. 请提供连接名称，并选择服务总线命名空间。
 
-      ![创建服务总线连接 - 第 1 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![屏幕截图，显示提供连接名称和选择服务总线命名空间](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
-      若要改为手动输入连接字符串，请选择“手动输入连接信息”  。 如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
+      若要改为手动输入连接字符串，请选择“手动输入连接信息”。 如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
 
-   1. 选择服务总线策略，然后选择“创建”。 
+   1. 选择服务总线策略，然后选择“创建”。
 
-      ![创建服务总线连接第 2 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![显示选择服务总线策略的屏幕截图](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. 选择所需的消息传送实体，例如某个队列或主题。 在此示例中，请选择服务总线队列。
    
-      ![选择服务总线队列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![显示选择服务总线队列的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
-1. 为所选触发器提供必需信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。 
+1. 为所选触发器提供必需信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。
 
    对于此示例的触发器，请选择轮询间隔和检查队列的频率。
 
-   ![设置轮询间隔](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![显示在服务总线触发器上设置轮询间隔的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    有关可用触发器和属性的详细信息，请参阅连接器的[参考页](/connectors/servicebus/)。
 
@@ -111,37 +115,37 @@ ms.locfileid: "84141987"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用。
 
-1. 在要添加操作的步骤下，选择“新建步骤”。 
+1. 在要添加操作的步骤下，选择“新建步骤”。
 
-   或者将鼠标指针移到这些步骤之间的箭头上，以便在步骤之间添加操作。 选择出现的加号 ( **+** )，然后选择“添加操作”  。
+   或者将鼠标指针移到这些步骤之间的箭头上，以便在步骤之间添加操作。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 在“选择操作”  下的搜索框中，输入“azure 服务总线”作为筛选器。 从操作列表中选择所需的操作。 
+1. 在“选择操作”下的搜索框中，输入“azure 服务总线”作为筛选器。 从操作列表中选择所需的操作。 
 
-   在此示例中，请选择“发送消息”操作。 
+   在此示例中，请选择“发送消息”操作。
 
-   ![选择服务总线操作](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![显示选择服务总线操作的屏幕截图](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. 如果操作是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
 
    1. 请提供连接名称，并选择服务总线命名空间。
 
-      ![创建服务总线连接 - 第 1 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![屏幕截图，显示提供连接名称和选择服务总线命名空间](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
-      若要改为手动输入连接字符串，请选择“手动输入连接信息”  。 如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
+      若要改为手动输入连接字符串，请选择“手动输入连接信息”。 如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
 
-   1. 选择服务总线策略，然后选择“创建”。 
+   1. 选择服务总线策略，然后选择“创建”。
 
-      ![创建服务总线连接第 2 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![显示选择服务总线策略并选择 "创建" 按钮的屏幕截图](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. 选择所需的消息传送实体，例如某个队列或主题。 在此示例中，请选择服务总线队列。
 
-      ![选择服务总线队列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![显示选择服务总线队列的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
-1. 为所选操作提供必要的详细信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。 
+1. 为所选操作提供必要的详细信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。
 
-   例如，选择“内容”和“内容类型”属性，以便将其添加到操作。   然后，指定要发送的消息的内容。
+   例如，选择“内容”和“内容类型”属性，以便将其添加到操作。  然后，指定要发送的消息的内容。
 
-   ![提供消息内容和详细信息](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![显示提供消息内容类型和详细信息的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    有关可用操作及其属性的详细信息，请参阅连接器的[参考页](/connectors/servicebus/)。
 
@@ -149,15 +153,15 @@ ms.locfileid: "84141987"
 
    例如，可以添加一个操作来发送电子邮件，确认消息已发送。
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 <a name="sequential-convoy"></a>
 
 ## <a name="send-correlated-messages-in-order"></a>按顺序发送相关消息
 
-如果需要按特定顺序发送相关消息，可以使用[Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)来使用[*顺序保护*模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。 相关消息有一个属性，该属性定义这些消息之间的关系，例如服务总线中[会话](../service-bus-messaging/message-sessions.md)的 ID。
+如果需要按特定顺序发送相关消息，可以使用[Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)来使用[*顺序保护*模式](/azure/architecture/patterns/sequential-convoy)。 相关消息具有一个可定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
 
-在创建逻辑应用时，可以选择 "**使用服务总线会话进行相关的按顺序传递**" 模板来实现顺序保护模式。 有关详细信息，请参阅按[顺序发送相关消息](../logic-apps/send-related-messages-sequential-convoy.md)。
+创建逻辑应用时，可以选择“使用服务总线会话的相关的按序送达”模板，该模板可实现“顺序保护”模式。 有关详细信息，请参阅[按顺序发送相关消息](../logic-apps/send-related-messages-sequential-convoy.md)。
 
 <a name="connector-reference"></a>
 
@@ -165,7 +169,7 @@ ms.locfileid: "84141987"
 
 服务总线连接器一次最多可以将 1,500 个服务总线的唯一会话保存到连接器缓存。 如果会话计数超过此限制，则将从缓存中删除旧会话。 有关详细信息，请参阅[消息会话](../service-bus-messaging/message-sessions.md)。
 
-有关由连接器的 Swagger 说明描述的触发器、操作和限制的其他技术详细信息，请查看 "[连接器引用" 页](/connectors/servicebus/)。 有关 Azure 服务总线消息传送的详细信息，请参阅[什么是 Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)？
+有关触发器、操作和限制（请参阅连接器的 Swagger 说明）的其他技术详细信息，请查看[连接器参考页](/connectors/servicebus/)。 有关 Azure 服务总线消息传送的详细信息，请参阅[什么是 Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)？
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,22 +1,22 @@
 ---
-title: 将 Azure 监视数据流式传输到事件中心
+title: 将 Azure 监视数据流式传输到事件中心和外部合作伙伴
 description: 了解如何将 Azure 监视数据流式传输到事件中心，以将数据获取到合作伙伴 SIEM 或分析工具。
-author: bwren
 services: azure-monitor
-ms.topic: conceptual
-ms.date: 11/15/2019
+author: bwren
 ms.author: bwren
+ms.topic: conceptual
+ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: 8bfec756c365c451a4e2b8236814454980d1d563
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318872"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
-Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 在大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用 [Azure 事件中心](../../event-hubs/index.yml)。 本文简要介绍了如何将不同源中的监视数据流式传输到事件中心，并提供详细指南的链接。
+# <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>将 Azure 监视数据流式传输到事件中心或外部合作伙伴
 
+Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用[Azure 事件中心](../../event-hubs/index.yml)。 本文提供了有关如何执行此操作的简要说明，并列出了可用于发送数据的一些合作伙伴。 有些与 Azure Monitor 有特殊的集成，可以托管在 Azure 上。  
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
@@ -38,7 +38,7 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 | [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，以将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 平台日志流式传输到 Azure 事件中心](./resource-logs.md#send-to-azure-event-hubs)。 |
 | [Azure 资源](data-sources.md#azure-resources) | 平台指标<br> 资源日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息，请参阅[将 Azure 资源日志流式传输到事件中心](./resource-logs.md#send-to-azure-event-hubs)。 |
 | [操作系统（来宾）](data-sources.md#operating-system-guest) | Azure 虚拟机 | 在 Azure 中的 Windows 和 Linux 虚拟机上安装 [Azure 诊断扩展](diagnostics-extension-overview.md)。 有关 Windows VM 的详细信息，请参阅[使用事件中心流式传输热路径中的 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md)；有关 Linux VM 的详细信息，请参阅[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。 |
-| [应用程序代码](data-sources.md#application-code) | Application Insights | Application Insights 不提供直接方法用于将数据流式传输到事件中心。 可以设置将 Application Insights 数据[连续导出](../../azure-monitor/app/export-telemetry.md)到存储帐户，然后根据[使用逻辑应用手动进行流式传输](#manual-streaming-with-logic-app)中所述，使用逻辑应用将数据发送到事件中心。 |
+| [应用程序代码](data-sources.md#application-code) | Application Insights | Application Insights 不提供直接方法用于将数据流式传输到事件中心。 可以设置将 Application Insights 数据[连续导出](../app/export-telemetry.md)到存储帐户，然后根据[使用逻辑应用手动进行流式传输](#manual-streaming-with-logic-app)中所述，使用逻辑应用将数据发送到事件中心。 |
 
 ## <a name="manual-streaming-with-logic-app"></a>使用逻辑应用手动进行流式传输
 对于无法直接流式传输到事件中心的数据，可以将其写入 Azure 存储，接着使用时间触发的逻辑应用[从 blob 存储中拉取数据](../../connectors/connectors-create-api-azureblobstorage.md#add-action)，然后[将其作为消息推送到事件中心](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)。 
@@ -58,8 +58,10 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 | LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
 |Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
+其他合作伙伴也可以使用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅[Azure Monitor 合作伙伴集成](partners.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](./activity-log.md#legacy-collection-methods)
-* [阅读 Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)
-* [根据活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)
+* [阅读 Azure 活动日志概述](./platform-logs-overview.md)
+* [根据活动日志事件设置警报](./alerts-log-webhook.md)
+

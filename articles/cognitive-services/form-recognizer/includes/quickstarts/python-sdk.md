@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3300bd53be36e34ff32267605352d6f80923724e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 4d2beeb93922d826ca57d7ea1c3fecc69166b266
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86277696"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246200"
 ---
 [参考文档](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [包 (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 包含一组训练数据的 Azure 存储 Blob。 有关整理训练数据集的提示和选项，请参阅[为自定义模型生成训练数据集](../../build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Train** 文件夹下的文件。
 * [Python 2.7、3.5 或更高版本](https://www.python.org/)
 

@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92660063a5699855b9ae2d745136327cf8bf287a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494694"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533914"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
 
@@ -99,7 +100,7 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_zrs` 在[区域冗余存储](../storage/common/storage-redundancy.md)中存储映像。
+> 你还可以通过添加 `--storage-account-type  premium_lrs` ，或者在创建映像版本时添加[区域冗余存储](../storage/common/storage-redundancy.md)，在高级存储中存储映像 `--storage-account-type  standard_zrs` 。
 >
 
 ## <a name="next-steps"></a>后续步骤

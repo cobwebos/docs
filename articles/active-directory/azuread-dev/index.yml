@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: azuread-dev
   ms.workload: identity
-  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 113a28ca5b4152ca8beedc7bdc3f1027c5acdf17
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77163205"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88116064"
 landingContent:
 - title: 针对开发人员的 Azure Active Directory
   linkLists:
@@ -23,12 +23,12 @@ landingContent:
     - text: 面向开发人员的 Azure Active Directory (v1.0)
       url: v1-overview.md
     - text: Microsoft 标识平台的发展
-      url: ../develop/about-microsoft-identity-platform.md
+      url: ./about-microsoft-identity-platform.md
     - text: Microsoft 标识平台 (v2.0)
       url: ../develop/v2-overview.md
   - linkListType: concept
     links:
-    - text: 为什么要更新到 Microsoft 标识平台 (v2.0)？
+    - text: 为何更新为 Microsoft 标识平台 (v2.0)？
       url: azure-ad-endpoint-comparison.md
     - text: 应用程序类型和方案
       url: app-types.md

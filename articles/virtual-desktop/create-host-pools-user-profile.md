@@ -1,23 +1,21 @@
 ---
 title: Windows 虚拟桌面 FSLogix 配置文件容器共享-Azure
 description: 如何使用基于虚拟机的文件共享为 Windows 虚拟桌面主机池设置 FSLogix 配置文件容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211827"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002597"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
-Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 我们不建议使用用户配置文件磁盘（UPD）解决方案，该解决方案将在未来版本的 Windows 虚拟桌面中弃用。
+Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 不建议使用用户配置文件磁盘 (UPD) 解决方案，这将在未来版本的 Windows 虚拟桌面中弃用。
 
 本文将介绍如何使用基于虚拟机的文件共享为主机池设置 FSLogix 配置文件容器共享。 强烈建议使用 Azure 文件而不是文件共享。 有关更多 FSLogix 文档，请参阅[FSLogix 站点](https://docs.fslogix.com/)。
 
@@ -68,7 +66,7 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 | 名称                | 类型               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| 已启用             | DWORD              | 1                                 |
 | VHDLocations        | 多字符串值 | "文件共享的网络路径"     |
 
 >[!IMPORTANT]

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084205"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中生成分面筛选器 
 
@@ -28,7 +28,7 @@ ms.locfileid: "72792898"
 
 分面为动态并在查询中返回。 搜索响应带有用于导航结果的分面类别。 如果不熟悉分面，可通过以下示例了解分面导航结构。
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![显示搜索对话框的图像，其中包含按业务标题分组的筛选的搜索结果。 箭头指示结果是分面导航结构中显示的方面。](./media/search-filters-facets/facet-nav.png)
 
 不熟悉分面导航并希望了解更多详情？ 请参阅[如何在 Azure 认知搜索中实现分面导航](search-faceted-navigation.md)。
 

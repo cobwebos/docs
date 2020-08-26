@@ -10,20 +10,20 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: af410310e3866b547b8c898a1cc4f91f4f851bc7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223017"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419523"
 ---
-# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID (预览版登录到 Azure Active Directory) 
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID （预览版）登录到 Azure Active Directory
 
-许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory (Azure AD) 。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
+许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory （Azure AD）。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
 
 一些组织尚未转换为使用混合身份验证，原因如下：
 
-* 默认情况下，Azure AD 用户主体名称 (UPN) 设置为与本地目录相同的 UPN。
+* 默认情况下，Azure AD 用户主体名称（UPN）设置为与本地目录相同的 UPN。
 * 更改 Azure AD UPN 将在本地和 Azure AD 环境之间创建错误匹配，这可能会导致某些应用程序和服务出现问题。
 * 由于业务或合规性原因，组织不希望使用本地 UPN 登录到 Azure AD。
 
@@ -158,6 +158,8 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
+
+应用策略后，最长可能需要一小时才能进行传播，使用户能够使用其备用登录 ID 进行登录。
 
 ## <a name="test-user-sign-in-with-email"></a>测试用户是否能够通过电子邮件登录
 

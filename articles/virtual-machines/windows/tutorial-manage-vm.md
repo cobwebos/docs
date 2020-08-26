@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 229df5d2f5186ad7cec08952f2a44790f9220dfe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b89b3e2cf799e1aa182f7005d92e2c91ce4b76ce
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100305"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263072"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -30,13 +30,13 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”区域中创建了名为“myResourceGroupVM”的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”  区域中创建了名为“myResourceGroupVM”  的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -50,13 +50,13 @@ New-AzResourceGroup `
 
 创建 VM 时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 此示例创建名为 *myVM* 的 VM，运行默认版本的 Windows Server 2016 Datacenter。
 
-使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 设置 VM 上管理员帐户所需的用户名和密码：
+使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 设置 VM 上管理员帐户所需的用户名和密码：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建 VM。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -87,19 +87,19 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-在“Windows 安全性”  窗口中，依次选择“更多选择”  、“使用其他帐户”  。 键入针对 VM 创建的用户名和密码，然后单击“确定”。 
+在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 键入针对 VM 创建的用户名和密码，然后单击“确定”。
 
 ## <a name="understand-marketplace-images"></a>了解市场映像
 
 Azure 市场包括许多可用于新建 VM 的映像。 在之前的步骤中，使用 Windows Server 2016 Datacenter 映像创建了 VM。 在此步骤中，我们将使用 PowerShell 模块在市场中搜索其他 Windows 映像，这些映像也可用作新 VM 的基础。 此过程包括查找发布者、产品/服务、SKU，以及用于[标识](cli-ps-findimage.md#terminology)映像的版本号（可选）。
 
-使用 [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) 命令返回映像发布者的列表：
+使用 [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) 命令返回映像发布者的列表：
 
 ```azurepowershell-interactive
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-使用 [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) 返回映像产品的列表。 使用此命令，返回筛选了指定发布者（名为 `MicrosoftWindowsServer`）的列表：
+使用 [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) 返回映像产品的列表。 使用此命令，返回筛选了指定发布者（名为 `MicrosoftWindowsServer`）的列表：
 
 ```azurepowershell-interactive
 Get-AzVMImageOffer `
@@ -117,7 +117,7 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-然后，使用 [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) 命令对发布者和产品名称进行筛选，以返回映像名称的列表。
+然后，使用 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) 命令对发布者和产品名称进行筛选，以返回映像名称的列表。
 
 ```azurepowershell-interactive
 Get-AzVMImageSku `
@@ -175,16 +175,16 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 
 | 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](sizes-compute.md)   | Fsv2          | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
-| [存储优化](sizes-storage.md)      | Lsv2、Ls              | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 专门针对大量图形绘制和视频编辑的 VM。       |
-| [高性能](sizes-hpc.md) | H        | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 |
+| [常规用途](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [计算优化](../sizes-compute.md)   | Fsv2          | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [内存优化](../sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [存储优化](../sizes-storage.md)      | Lsv2、Ls              | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
+| [GPU](../sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [高性能](../sizes-hpc.md) | H        | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 |
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
 
-若要查看在特定区域可用的 VM 大小的列表，请使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令。
+若要查看在特定区域可用的 VM 大小的列表，请使用 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令。
 
 ```azurepowershell-interactive
 Get-AzVMSize -Location "EastUS"
@@ -194,7 +194,7 @@ Get-AzVMSize -Location "EastUS"
 
 部署 VM 后，可调整其大小以增加或减少资源分配。
 
-调整 VM 大小之前，请检查所需的大小在当前 VM 群集上是否可用。 使用 [Get AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令返回大小的列表。
+调整 VM 大小之前，请检查所需的大小在当前 VM 群集上是否可用。 使用 [Get AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令返回大小的列表。
 
 ```azurepowershell-interactive
 Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
@@ -245,7 +245,7 @@ Azure VM 可能会处于多种电源状态之一。
 | - | VM 的电源状态未知。 |
 
 
-若要获取特定 VM 的状态，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 命令。 请确保为 VM 和资源组指定有效的名称。
+若要获取特定 VM 的状态，请使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 命令。 请确保为 VM 和资源组指定有效的名称。
 
 ```azurepowershell-interactive
 Get-AzVM `
@@ -262,13 +262,15 @@ Status
 PowerState/running
 ```
 
+若要检索订阅中所有 VM 的电源状态，请使用[虚拟机 - 列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)，并将参数 statusOnly 设置为 true。
+
 ## <a name="management-tasks"></a>管理任务
 
 在 VM 生命周期中，可能需要运行管理任务，例如启动、停止或删除 VM。 此外，可能还需要创建脚本来自动执行重复或复杂的任务。 使用 Azure PowerShell，可从命令行或脚本运行许多常见的管理任务。
 
 ### <a name="stop-a-vm"></a>停止 VM
 
-使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 停止并解除分配 VM：
+使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) 停止并解除分配 VM：
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -298,7 +300,7 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
+在本教程中，你已学习 VM 创建和管理的基本知识，例如如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM

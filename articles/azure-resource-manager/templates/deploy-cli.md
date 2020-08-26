@@ -2,16 +2,17 @@
 title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: a2a1c1fe63d0a841f57407ed5402d7ddca3fcea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: da865d3b425da6b5969e540a424b513d9a58bd9a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040799"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
-本文介绍了如何将 Azure CLI 与 Azure 资源管理器 (ARM) 模板配合使用，以便将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
+本文介绍如何使用 Azure 资源管理器模板（ARM 模板） Azure CLI 将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
 
 部署命令在 Azure CLI 版本 2.2.0 中已更改。 本文中的示例需要 Azure CLI 2.2.0 或更高版本。
 
@@ -63,7 +64,7 @@ ms.locfileid: "84432085"
 
 1. 登录到 Azure 帐户
 2. 创建用作已部署资源的容器的资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
-3. 将定义了要创建的资源的模板部署到资源组
+3. 将定义要创建的资源的模板部署到资源组。
 
 模板可以包括可用于自定义部署的参数。 例如，可以提供为特定环境（如开发环境、测试环境和生产环境）定制的值。 示例模板定义了存储帐户 SKU 的参数。
 
@@ -83,6 +84,32 @@ az deployment group create \
 ```output
 "provisioningState": "Succeeded",
 ```
+
+## <a name="deployment-name"></a>部署名称
+
+在前面的示例中，你已将部署命名为 `ExampleDeployment` 。 如果未提供部署的名称，将使用模板文件的名称。 例如，如果部署名为的模板 `azuredeploy.json` ，但未指定部署名称，则会将部署命名为 `azuredeploy` 。
+
+每次运行部署时，会在资源组的部署历史记录中添加一个包含部署名称的条目。 如果运行另一个部署并为其指定了相同的名称，则会将以前的条目替换为当前部署。 如果要在部署历史记录中维护唯一条目，请为每个部署指定唯一名称。
+
+若要创建唯一名称，可以分配一个随机数字。
+
+```azurecli-interactive
+deploymentName='ExampleDeployment'$RANDOM
+```
+
+或者，添加日期值。
+
+```azurecli-interactive
+deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
+```
+
+如果以相同的部署名称运行对同一资源组的并发部署，则只完成最后一个部署。 任何没有完成的同名部署都将替换为最后一个部署。 例如，如果你运行一个名为 `newStorage` 的部署，它将部署一个名为的存储帐户 `storage1` ，同时运行名为的另一个部署， `newStorage` 该部署将部署名为的存储帐户 `storage2` ，你只部署一个存储帐户。 生成的存储帐户名为 `storage2` 。
+
+但是，如果运行名为的部署 `newStorage` （部署名为的存储帐户 `storage1` ），并且在完成后立即运行名为的另一个部署 `newStorage` ，该部署将部署名为的存储帐户 `storage2` ，则你有两个存储帐户。 一个名为 `storage1` ，另一个名为 `storage2` 。 但是，部署历史记录中只有一个条目。
+
+为每个部署指定唯一名称时，可以在不发生冲突的情况下同时运行它们。 如果运行名为的部署 `newStorage1` ，该部署将部署名为的存储帐户 `storage1` ，同时运行名为的另一个部署，该部署将部署 `newStorage2` 名为的存储帐户 `storage2` ，则部署历史记录中有两个存储帐户和两个条目。
+
+若要避免与并发部署冲突并确保部署历史记录中的唯一条目，请为每个部署指定唯一名称。
 
 ## <a name="deploy-remote-template"></a>部署远程模板
 

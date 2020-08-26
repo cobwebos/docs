@@ -4,14 +4,15 @@ description: Av2 系列 VM 的规范。
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7d2064ec89e107aa219f34520f71ed8704bb7aeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac3f31fecd53ddf1dd8bb81229c67cb4bb60c34e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676924"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650632"
 ---
 # <a name="av2-series"></a>Av2 系列
 
@@ -27,19 +28,20 @@ ACU：100
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) |
-|---|---|---|---|---|---|---|
-| Standard_A1_v2  | 1 | 2  | 10 个 | 1000/20/10  | 2/2x500   | 2/250  |
-| Standard_A2_v2  | 2 | 4  | 20 个 | 2000/40/20  | 4/4x500   | 2/500  |
-| Standard_A4_v2  | 4 | 8  | 40 | 4000/80/40  | 8/8x500   | 4/1000 |
-| Standard_A8_v2  | 8 | 16 | 80 | 8000/160/80 | 16/16x500 | 8/2000 |
-| Standard_A2m_v2 | 2 | 16 | 20 个 | 2000/40/20  | 4/4x500   | 2/500  |
-| Standard_A4m_v2 | 4 | 32 | 40 | 4000/80/40  | 8/8x500   | 4/1000 |
-| Standard_A8m_v2 | 8 | 64 | 80 | 8000/160/80 | 16/16x500 | 8/2000 |
+
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数 | 预期网络带宽 (Mbps) 
+|---|---|---|---|---|---|---|---|
+| Standard_A1_v2  | 1 | 2  | 10 | 1000/20/10  | 2/2x500   | 2 | 250  |
+| Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4/4x500   | 2 | 500  |
+| Standard_A4_v2  | 4 | 8  | 40 | 4000/80/40  | 8/8x500   | 4 | 1000 |
+| Standard_A8_v2  | 8 | 16 | 80 | 8000/160/80 | 16/16x500 | 8 | 2000 |
+| Standard_A2m_v2 | 2 | 16 | 20 | 2000/40/20  | 4/4x500   | 2 | 500  |
+| Standard_A4m_v2 | 4 | 32 | 40 | 4000/80/40  | 8/8x500   | 4 | 1000 |
+| Standard_A8m_v2 | 8 | 64 | 80 | 8000/160/80 | 16/16x500 | 8 | 2000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -47,6 +49,10 @@ ACU：100
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>后续步骤
 

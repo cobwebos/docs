@@ -8,11 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 41157f26e4f87e59d5a0276ff72012ae20b70fbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 422f144f357d8f5af0c34e09eb7b995ab7a80896
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079768"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>使用 PowerShell 修改本地网络网关设置
 
@@ -27,7 +28,7 @@ ms.locfileid: "84986017"
 
 ## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
-安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
+安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/) 。
 
 ## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>修改 IP 地址前缀
 

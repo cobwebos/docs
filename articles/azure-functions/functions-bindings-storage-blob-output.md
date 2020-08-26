@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560020"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213071"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输出绑定
 
@@ -351,12 +352,12 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `blob`。 |
+|type | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#usage)部分中已阐述异常。 |
 |**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
 |**路径** |**BlobPath** | Blob 容器的路径。 |
 |连接 |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|不适用 | **Access** | 表示是要读取还是写入。 |
+|不适用 | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -378,8 +379,8 @@ Python 不支持特性。
 
 可以将函数参数声明为以下类型以写出到 blob 存储：
 
-* 字符串作为`func.Out(str)`
-* 流为`func.Out(func.InputStream)`
+* 字符串作为 `func.Out(str)`
+* 流为 `func.Out(func.InputStream)`
 
 有关详细信息，请参阅[输出示例](#example)。
 
@@ -393,9 +394,9 @@ Python 不支持特性。
 
 | 绑定 |  参考 |
 |---|---|
-| Blob | [Blob 错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
-| Blob、表、队列 |  [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob、表、队列 |  [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob | [Blob 错误代码](/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| Blob、表、队列 |  [存储错误代码](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob、表、队列 |  [故障排除](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>后续步骤
 

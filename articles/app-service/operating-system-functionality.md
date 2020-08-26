@@ -5,17 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671610"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080192"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
 
 > [!NOTE] 
-> 应用服务中的 [Linux 应用](containers/app-service-linux-intro.md)在其自己的容器中运行。 不允许访问主机操作系统，你具有对容器的根访问权限。 同样，对于[在 Windows 容器中运行的应用](app-service-web-get-started-windows-container.md)，你具有对容器的管理访问权限，但无法访问主机操作系统。 
+> 应用服务中的 [Linux 应用](overview.md#app-service-on-linux)在其自己的容器中运行。 不允许访问主机操作系统，你具有对容器的根访问权限。 同样，对于[在 Windows 容器中运行的应用](quickstart-custom-container.md?pivots=container-windows)，你具有对容器的管理访问权限，但无法访问主机操作系统。 
 >
 
 <a id="tiers"></a>
@@ -59,7 +60,7 @@ ms.locfileid: "74671610"
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>网络驱动器（即 UNC 共享）
+### <a name="network-drives-unc-shares"></a>网络驱动器 (UNC 共享) 
 应用服务中有一个独具特色的方面能够简化应用的部署和维护，这就是所有用户内容都存储在一组 UNC 共享中。 此模型很好地映射到具有多个负载均衡服务器的本地 Web 托管环境所用内容存储的公共模式。 
 
 在应用服务内，每个数据中心都创建了许多 UNC 共享。 在每个数据中心针对所有客户的某个百分比的用户内容将分配给各 UNC 共享。 此外，单个客户的订阅的所有文件内容将始终置于相同的 UNC 共享中。 

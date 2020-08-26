@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 3cf772fb10ee41887d76976b30e9bebaba51a2f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85830462"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281066"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
@@ -84,7 +84,7 @@ ms.locfileid: "85830462"
    * **身份验证类型**：若要创建 Linux VM，请选择“SSH 公钥”。 
 
         > [!NOTE]
-        > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+        > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
     * **用户名**：输入 VM 的管理员名称。
 
@@ -105,7 +105,7 @@ ms.locfileid: "85830462"
 1. 在下面的选项卡中对设置进行任何所需的更改，或保留默认设置。
 
     * **网络**
-    * **管理**
+    * **Management**
     * **来宾配置**
     * **标记**
 

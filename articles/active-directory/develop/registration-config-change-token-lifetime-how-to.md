@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: fc71ebe61fba8c1bdb6b7625b16a50d8995a581a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8de6a7aafdd402e4ee75862e69ac60af3af0e041
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80883347"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114925"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何为自定义开发的应用程序更改令牌生存期默认设置
 
@@ -28,5 +29,5 @@ ms.locfileid: "80883347"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Azure AD 中的可配置令牌生存期](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes)，了解如何配置 Azure AD 颁发的令牌生存期，包括如何为组织中的所有应用、多租户应用或组织中的特定服务主体设置令牌生存期。 
-* [Azure AD 令牌引用](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
+* 请参阅 [Azure AD 中的可配置令牌生存期](./active-directory-configurable-token-lifetimes.md)，了解如何配置 Azure AD 颁发的令牌生存期，包括如何为组织中的所有应用、多租户应用或组织中的特定服务主体设置令牌生存期。 
+* [Azure AD 令牌引用](./id-tokens.md)

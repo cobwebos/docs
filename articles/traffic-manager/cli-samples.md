@@ -1,6 +1,6 @@
 ---
 title: 适用于流量管理器的 Azure CLI 示例 | Microsoft 文档
-description: Azure CLI 示例
+description: 了解可用于将流量定向到多个区域以提高应用程序可用性的 Azure CLI 脚本。
 services: virtual-network
 documentationcenter: virtual-network
 author: rohinkoul
@@ -12,11 +12,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
-ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e46393c20a3409f4c7ce740cfd4f6f3710f25e26
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501876"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>适用于流量管理器的 Azure CLI 示例
 

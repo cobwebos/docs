@@ -2,29 +2,25 @@
 title: 教程：使用 Azure Active Directory 为 Tableau Online 配置自动用户预配 | Microsoft Docs
 description: 了解如何配置 Azure Active Directory 以自动将用户帐户预配到 Tableau Online 并取消其设置。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fae770950810899f7c6583fa401110c3e85022b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064199"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533411"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教程：为 Tableau Online 配置自动用户预配
 
-本教程演示在 Tableau Online 中执行的步骤，并 Azure Active Directory （Azure AD）将 Azure AD 配置为自动将用户和组预配到 Tableau 和取消其设置为联机。
+本教程演示在 Tableau Online 中执行的步骤，并 Azure Active Directory (Azure AD) 将 Azure AD 配置为自动将用户和组预配到 Tableau 和取消其设置为联机。
 
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理以及常见问题的信息，请参阅[使用 Azure Active Directory 自动将用户预配到软件即服务 (SaaS) 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
@@ -38,7 +34,7 @@ ms.locfileid: "77064199"
 *   Tableau Online 中具有管理员权限的用户帐户。
 
 > [!NOTE]
-> Azure AD 预配集成依赖于[Tableau Online REST API](https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm)。 此 API 可用于 Tableau Online 开发人员。
+> Azure AD 预配集成依赖于 [Tableau Online REST API](https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm)。 此 API 可用于 Tableau Online 开发人员。
 
 ## <a name="add-tableau-online-from-the-azure-marketplace"></a>从 Azure Marketplace 添加 Tableau Online
 在将 Tableau Online 配置为 Azure AD 的自动用户预配之前，请将 Azure Marketplace 中的 Tableau 联机添加到托管的 SaaS 应用程序列表。
@@ -65,7 +61,7 @@ ms.locfileid: "77064199"
 
 Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
-在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问 Tableau Online。 若要将这些用户或组分配到 Tableau Online，请按照[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明进行操作。
+在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问 Tableau Online。 若要将这些用户或组分配到 Tableau Online，请按照 [向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明进行操作。
 
 ### <a name="important-tips-for-assigning-users-to-tableau-online"></a>将用户分配到 Tableau Online 的重要提示
 
@@ -78,11 +74,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 本部分将指导你完成配置 Azure AD 预配服务的步骤。 使用它基于 Azure AD 中的用户或组分配在 Tableau Online 中创建、更新和禁用用户或组。
 
 > [!TIP]
-> 还可以为 Tableau Online 启用基于 SAML 的单一登录。 按照[Tableau Online 单一登录教程](tableauonline-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+> 还可以为 Tableau Online 启用基于 SAML 的单一登录。 按照 [Tableau Online 单一登录教程](tableauonline-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>在 Azure AD 中为 Tableau Online 配置自动用户预配
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" "  >  **所有应用程序**  >  **Tableau 联机**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" "  >  **所有应用程序**  >  **Tableau 联机**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -98,30 +94,30 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Tableau Online 预配模式](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. 在 "**管理员凭据**" 部分下，输入 Tableau Online 帐户的域、管理员用户名、管理员密码和内容 URL：
+5. 在 " **管理员凭据** " 部分下，输入 Tableau Online 帐户的域、管理员用户名、管理员密码和内容 URL：
 
-   * 在 "**域**" 框中，根据步骤6填写子域。
+   * 在 " **域** " 框中，根据步骤6填写子域。
 
-   * 在 "**管理员用户名**" 框中，填写 Clarizen 租户的管理员帐户的用户名。 例如 admin@contoso.com。
+   * 在 " **管理员用户名** " 框中，填写 Clarizen 租户的管理员帐户的用户名。 例如 admin@contoso.com。
 
-   * 在 "**管理员密码**" 框中，填写与管理员用户名对应的管理员帐户的密码。
+   * 在 " **管理员密码** " 框中，填写与管理员用户名对应的管理员帐户的密码。
 
-   * 在 "**内容 URL** " 框中，根据步骤6填写子域。
+   * 在 " **内容 URL** " 框中，根据步骤6填写子域。
 
-6. 登录到 Tableau Online 的管理帐户后，你可以从 "管理" 页的 URL 中获取 "**域**和**内容 url** " 的值。
+6. 登录到 Tableau Online 的管理帐户后，你可以从 "管理" 页的 URL 中获取 " **域** 和 **内容 url** " 的值。
 
     * Tableau Online 帐户的“域”可从 URL 的以下部分复制****：
 
         ![Tableau Online 域](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
 
-    * 可以从此节复制 Tableau Online 帐户的**内容 URL** 。 它是在帐户设置过程中定义的值。 在此示例中，该值为“contoso”：
+    * 可以从此节复制 Tableau Online 帐户的 **内容 URL** 。 它是在帐户设置过程中定义的值。 在此示例中，该值为“contoso”：
 
         ![Tableau Online 内容 URL](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > 你的域可能不同于此处显示的**域**。
+        > 你的域可能不同于此处显示的 **域** 。
 
-7. 填写步骤5中所示的框后，请选择 "**测试连接**" 以确保 Azure AD 可以联机连接到 Tableau。 如果连接失败，请确保 Tableau Online 帐户具有管理员权限，然后重试。
+7. 填写步骤5中所示的框后，请选择 " **测试连接** " 以确保 Azure AD 可以联机连接到 Tableau。 如果连接失败，请确保 Tableau Online 帐户具有管理员权限，然后重试。
 
     ![Tableau Online 测试连接](./media/tableau-online-provisioning-tutorial/TestConnection.png)
 
@@ -135,7 +131,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Tableau Online 用户同步](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Tableau Online 的用户属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作****。 若要保存任何更改，请选择“保存”。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Tableau Online 的用户属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作****。 若要保存任何更改，请选择“保存”。
 
     ![Tableau Online 匹配用户属性](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
@@ -143,13 +139,13 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Tableau Online 组同步](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-13. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Tableau Online 的组属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作****。 若要保存任何更改，请选择“保存”。
+13. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Tableau Online 的组属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作****。 若要保存任何更改，请选择“保存”。
 
     ![Tableau Online 匹配组属性](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
 14. 若要配置范围筛选器，请按照[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
 
-15. 若要为 Tableau Online 启用 Azure AD 预配服务，请在 "**设置**" 部分中，将 "**预配状态**" 更改为 **"打开**"。
+15. 若要为 Tableau Online 启用 Azure AD 预配服务，请在 " **设置** " 部分中，将 " **预配状态** " 更改为 **"打开**"。
 
     ![Tableau Online 预配状态](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 

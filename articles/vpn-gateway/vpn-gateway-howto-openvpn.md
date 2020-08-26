@@ -1,18 +1,18 @@
 ---
 title: 如何在 Azure VPN 网关上配置 OpenVPN：PowerShell
-description: 为 Azure VPN 网关配置 OpenVPN 的步骤
+description: 了解如何使用 PowerShell 在 Azure VPN 网关上为点到站点环境启用 OpenVPN 协议。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: de8d03467b5e44df1b9069c6db31d496785ff32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c13d14ad2d06cbc43d80c05258bdbd3303da4838
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983850"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036821"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>为 Azure 点到站点 VPN 网关配置 OpenVPN
 

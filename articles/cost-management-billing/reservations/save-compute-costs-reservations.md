@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 3f124e94398e53e3ab8ff7eb4b054d252129128b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986994"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760033"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -20,7 +20,7 @@ Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助�
 
 可以提前或每月为预留项付费。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。 每月付款适用于 Azure 预留项，而不适用于第三方产品。
 
-可以在 Azure 门户 ([https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)) 中购买预留项。
+可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中购买预留。
 
 ## <a name="why-buy-a-reservation"></a>为何购买预留项？
 

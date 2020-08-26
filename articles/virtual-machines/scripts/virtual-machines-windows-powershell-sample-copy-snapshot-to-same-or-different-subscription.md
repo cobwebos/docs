@@ -1,5 +1,5 @@
 ---
-title: 将托管磁盘的快照复制到订阅 - PowerShell 示例
+title: 从托管磁盘到订阅的快照 (Windows) - PowerShell
 description: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（移动）到同一或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: d5f110d8cf3324fa02a5b2e2500f743c57b1d229
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b5ac47c8074a3a7bec86a35075a98a141ea0ccd1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082420"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>使用 PowerShell 将托管磁盘的快照复制到同一订阅或不同订阅
+# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell-windows"></a>使用 PowerShell 将托管磁盘的快照复制到同一订阅或不同订阅 (Windows)
 
-此脚本会将托管磁盘的快照复制到同一订阅或不同订阅。 将此脚本用于以下方案：
+此脚本会将托管磁盘的快照复制到相同或不同的订阅。 将此脚本用于以下方案：
 
 1. 将高级存储 (Premium_LRS) 中的快照迁移到标准存储（Standard_LRS 或 Standard_ZRS）以降低成本。
 1. 将快照从本地冗余存储（Premium_LRS、Standard_LRS）迁移到区域冗余存储（Standard_ZRS），以从 ZRS 存储的更高可靠性中受益。
@@ -40,17 +40,17 @@ ms.locfileid: "81452275"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令并使用源快照的 Id 在目标订阅中创建新快照。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令，通过源快照的 ID 在目标订阅中创建快照。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
-| [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | 创建用于创建快照的快照配置。 它包括父快照的资源 Id 以及与父快照相同的位置。  |
-| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) | 使用作为参数传递的快照配置、快照名称和资源组名称创建快照。 |
+| [New-AzSnapshotConfig](/powershell/module/az.compute/new-azsnapshotconfig) | 创建用于创建快照的快照配置。 包括父快照的资源 ID 以及与父快照相同的位置。  |
+| [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) | 使用快照配置、快照名称和作为参数传递的资源组名称创建快照。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-[基于快照创建虚拟机](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[从快照创建虚拟机](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure Windows VM 文档](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 PowerShell 脚本示例。

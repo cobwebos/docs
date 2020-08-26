@@ -14,12 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63f2abe7a3890efbaf4c79186467a3eb20d8afda
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 16eaf5ab9b0af97e18a7253d132516a16003d25b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489973"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI 示例：重置帐户凭据
 
@@ -27,7 +28,7 @@ ms.locfileid: "80382981"
 
 ## <a name="prerequisites"></a>先决条件
 
-[创建媒体服务帐户](create-account-cli-how-to.md)。
+[创建媒体服务帐户](./create-account-howto.md)。
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

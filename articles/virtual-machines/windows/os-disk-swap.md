@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: c96fa4c453911c4ca4b8cf6d8f74647b4532109f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711538"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020332"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 更改 Azure VM 使用的 OS 磁盘
 
@@ -22,15 +23,15 @@ ms.locfileid: "84711538"
 需要停止/取消分配 VM，然后才可将该托管磁盘的资源 ID 替换为其他托管磁盘的资源 ID。
 
 请确保 VM 大小和存储类型与要附加的磁盘兼容。 例如，如果要使用的磁盘位于高级存储中，则 VM 需要能使用高级存储（如 DS 系列大小）。 这两个磁盘的大小也必须相同。
-并确保不会将未加密的 VM 与加密的 OS 磁盘混合使用，这是不受支持的。 如果 VM 未使用 Azure 磁盘加密，则交换的 OS 磁盘不应使用 Azure 磁盘加密。
+此外，不支持将未加密的 VM 与加密的 OS 磁盘混合使用。 如果 VM 不使用 Azure 磁盘加密，则要交换的 OS 磁盘不应使用 Azure 磁盘加密。
 
-使用 [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) 获取资源组中的磁盘列表
+使用 [Get-AzDisk](/powershell/module/az.compute/get-azdisk) 获取资源组中的磁盘列表
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-如果知道要使用的磁盘的名称，请将其设置为该 VM 的 OS 磁盘。 此示例停止/取消分配名为 myVM 的 VM，并将名为 newDisk 的磁盘分配为新的 OS 磁盘****。 
+如果知道要使用的磁盘的名称，请将其设置为该 VM 的 OS 磁盘。 此示例停止/取消分配名为 myVM 的 VM，并将名为 newDisk 的磁盘分配为新的 OS 磁盘 。 
  
 ```azurepowershell-interactive 
 # Get the VM 

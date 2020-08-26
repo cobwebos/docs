@@ -11,13 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/11/2020
 ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d8a60d6c4b3fb66b46742fbd99e3a73a63fff45
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779240"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136076"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器
 
@@ -25,7 +26,7 @@ ms.locfileid: "75779240"
 
 有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
 
-本主题展示了如何使用媒体服务 .NET SDK 为点播视频资产定义筛选器，以及如何创建[帐户筛选器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)和[资产筛选器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
+本主题展示了如何使用媒体服务 .NET SDK 为点播视频资产定义筛选器，以及如何创建[帐户筛选器](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)和[资产筛选器](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
 
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
@@ -33,13 +34,13 @@ ms.locfileid: "75779240"
 ## <a name="prerequisites"></a>必备条件 
 
 - 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
-- [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
-- 获取[访问 API](access-api-cli-how-to.md) 所需的信息
-- 查看[使用 Azure 媒体服务进行上传、编码和流式传输](stream-files-tutorial-with-api.md)来了解如何[开始使用 .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet)
+- [创建媒体服务帐户](./create-account-howto.md)。 请务必记住资源组名称和媒体服务帐户名称。 
+- 获取[访问 API](./access-api-howto.md) 所需的信息
+- 查看[使用 Azure 媒体服务进行上传、编码和流式传输](stream-files-tutorial-with-api.md)来了解如何[开始使用 .NET SDK](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk)
 
 ## <a name="define-a-filter"></a>定义筛选器  
 
-在 .NET 中，你使用 [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) 和 [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) 类配置曲目选择。 
+在 .NET 中，你使用 [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) 和 [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) 类配置曲目选择。 
 
 以下代码定义了一个筛选器，它包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
@@ -118,5 +119,3 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 ## <a name="next-steps"></a>后续步骤
 
 [流视频](stream-files-tutorial-with-api.md) 
-
-

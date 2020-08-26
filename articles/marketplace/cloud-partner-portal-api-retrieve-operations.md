@@ -4,15 +4,15 @@ description: 用于检索对产品/服务的所有操作或为指定的 operatio
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520283"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271937"
 ---
 # <a name="retrieve-operations"></a>检索操作
 
@@ -31,17 +31,17 @@ ms.locfileid: "86520283"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-|  **名称**          |      **说明**                                                                                           | **Data type** |
+|  **Name**          |      **说明**                                                                                           | **Data type** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  发布者标识符，例如 `Contoso`                                                                   |  字符串       |
 |  offerId           |  产品/服务标识符                                                                                              |  字符串       |
 |  operationId       |  唯一标识针对产品/服务的操作的 GUID。 可以使用此 API 检索 operationId，并且对于任何长时间运行的操作（如[发布产品/服务](./cloud-partner-portal-api-publish-offer.md) API），也会在响应的 HTTP 标头中返回 operationId。  |   Guid   |
-|  api-version       | API 的最新版本 |    日期      |
+|  api-version       | API 的最新版本 |    Date      |
 |  |  |  |
 
 ## <a name="header"></a>标头
 
-|  **名称**          |  **值**           |
+|  **Name**          |  **值**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  授权     | `Bearer YOUR_TOKEN`  |
@@ -169,19 +169,19 @@ ms.locfileid: "86520283"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**                    |  **说明**                                                                                  |
+|  **Name**                    |  **说明**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 唯一标识操作的 GUID                                                       |
 |  submissionType              | 标识为产品/服务报告的操作类型，例如 `Publish/GoLive`      |
 |  createdDateTime             | 创建操作时的 UTC 日期/时间                                                       |
 |  lastActionDateTime          | 上次更新操作时的 UTC 日期/时间                                       |
 |  status                      | 操作的状态 `not started` \| `running` \| `failed` \| `completed` 。 一次只能有一个操作具有状态 `running`。 |
-|  error                       | 操作失败的错误消息                                                               |
+|  错误                       | 操作失败的错误消息                                                               |
 |  |  |
 
 ### <a name="response-step-properties"></a>响应步骤属性
 
-|  **名称**                    |  **说明**                                                                                  |
+|  **Name**                    |  **说明**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | 此操作的估计持续时间 |
 | id | 步骤过程的唯一标识符 |

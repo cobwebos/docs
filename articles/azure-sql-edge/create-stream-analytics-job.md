@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515217"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321711"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge （预览版）中创建 Azure 流分析作业 
 
@@ -43,7 +43,6 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 |------------------|-------|--------|------------------|
 | Azure IoT Edge 中心 | 是 | 是 | 用于读取流数据并将其写入 Azure IoT Edge 中心的数据源。 有关详细信息，请参阅[IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
 | SQL 数据库 | N | Y | 将流式处理数据写入 SQL 数据库的数据源连接。 数据库可以是 Azure SQL Edge 中的本地数据库，也可以是 SQL Server 或 Azure SQL 数据库中的远程数据库。|
-| Azure Blob 存储 | N | Y | 将数据写入 Azure 存储帐户上的 blob 的数据源。 |
 | Kafka | Y | N | 从 Kafka 主题读取流式处理数据的数据源。 此适配器目前仅适用于 Azure SQL Edge 的 Intel 或 AMD 版本。 它不适用于 Azure SQL Edge 的 ARM64 版本。|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>示例：为 Azure IoT Edge 集线器创建外部流输入/输出对象
@@ -54,7 +53,8 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 
     ```sql
     Create External file format InputFileFormat
-    WITH (  
+    WITH 
+    (  
        format_type = JSON,
     )
     go
@@ -63,8 +63,10 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 2. 为 Azure IoT Edge 中心创建外部数据源。 以下 T-sql 脚本创建与在 Azure SQL Edge 相同 Docker 主机上运行的 IoT Edge 集线器的数据源连接。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
-    LOCATION = 'edgehub://'
+    CREATE EXTERNAL DATA SOURCE EdgeHubInput 
+    WITH 
+    (
+        LOCATION = 'edgehub://'
     )
     go
     ```
@@ -72,13 +74,15 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 3. 为 Azure IoT Edge 中心创建外部流对象。 以下 T-sql 脚本为 IoT Edge 中心创建流对象。 对于 IoT Edge 中心流对象，LOCATION 参数是要读取或写入的 IoT Edge 中心主题或通道的名称。
 
     ```sql
-    CREATE EXTERNAL STREAM MyTempSensors WITH (
-    DATA_SOURCE = EdgeHubInput,
-    FILE_FORMAT = InputFileFormat,
-    LOCATION = N'TemperatureSensors',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
-    )
+    CREATE EXTERNAL STREAM MyTempSensors 
+    WITH 
+    (
+        DATA_SOURCE = EdgeHubInput,
+        FILE_FORMAT = InputFileFormat,
+        LOCATION = N'TemperatureSensors',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
     go
     ```
 
@@ -107,9 +111,11 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
     * 使用前面创建的凭据。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
-    LOCATION = 'sqlserver://tcp:.,1433'
-    ,CREDENTIAL = SQLCredential
+    CREATE EXTERNAL DATA SOURCE LocalSQLOutput 
+    WITH 
+    (
+        LOCATION = 'sqlserver://tcp:.,1433',
+        CREDENTIAL = SQLCredential
     )
     go
     ```
@@ -117,12 +123,52 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 4. 创建外部流对象。 下面的示例创建一个指向表 dbo 的外部流对象 *。TemperatureMeasurements*，在数据库*MySQLDatabase*中。
 
     ```sql
-    CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
-    DATA_SOURCE = LocalSQLOutput,
-    LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
+    CREATE EXTERNAL STREAM TemperatureMeasurements 
+    WITH 
+    (
+        DATA_SOURCE = LocalSQLOutput,
+        LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
+    ```
+
+### <a name="example-create-an-external-stream-object-for-kafka"></a>示例：创建 Kafka 的外部流对象
+
+下面的示例在 Azure SQL Edge 中创建本地数据库的外部流对象。 此示例假设已将 kafka 服务器配置为使用匿名访问。 
+
+1. 使用 CREATE EXTERNAL DATA SOURCE 创建外部数据源。 下面的示例：
+
+    ```sql
+    Create EXTERNAL DATA SOURCE [KafkaInput] 
+    With
+    (
+        LOCATION = N'kafka://<kafka_bootstrap_server_name_ip>:<port_number>'
     )
+    GO
+    ```
+2. 为 kafka 输入创建外部文件格式。 下面的示例使用 Gzip 压缩过压缩创建了 JSON 文件格式。 
+
+   ```sql
+   CREATE EXTERNAL FILE FORMAT JsonGzipped  
+    WITH 
+    (  
+        FORMAT_TYPE = JSON , 
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
+    )
+   ```
+    
+3. 创建外部流对象。 下面的示例创建一个指向 Kafka 主题的外部流对象 `*TemperatureMeasurement*` 。
+
+    ```sql
+    CREATE EXTERNAL STREAM TemperatureMeasurement 
+    WITH 
+    (  
+        DATA_SOURCE = KafkaInput, 
+        FILE_FORMAT = JsonGzipped,
+        LOCATION = 'TemperatureMeasurement',     
+        INPUT_OPTIONS = 'PARTITIONS: 10' 
+    ); 
     ```
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>创建流式处理作业和流式处理查询
@@ -197,7 +243,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 
 流式处理作业可以具有以下状态之一：
 
-| 状态 | 说明 |
+| 状态 | 描述 |
 |--------| ------------|
 | 创建 | 流式处理作业已创建，但尚未启动。 |
 | 正在启动 | 流式处理作业处于开始阶段。 |
@@ -205,7 +251,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 | Processing | 流式处理作业正在运行，且正在处理输入。 此状态指示流式处理作业的正常运行状态。 |
 | 已降级 | 流式处理作业正在运行，但在输入处理期间出现一些非致命错误。 输入作业将继续运行，但将删除遇到错误的输入。 |
 | 已停止 | 流式处理作业已停止。 |
-| 已失败 | 流式处理作业失败。 这通常表示在处理过程中出现灾难性错误。 |
+| 失败 | 流式处理作业失败。 这通常表示在处理过程中出现灾难性错误。 |
 
 ## <a name="next-steps"></a>后续步骤
 

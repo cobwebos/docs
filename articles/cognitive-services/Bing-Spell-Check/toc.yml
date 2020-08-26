@@ -12,7 +12,7 @@
     - name: REST API
       expanded: true
       items:
-        - name: '使用 C#'
+        - name: 使用 C#
           href: quickstarts/csharp.md
         - name: 使用 Java
           href: quickstarts/java.md
@@ -26,7 +26,7 @@
           href: quickstarts/ruby.md
     - name: SDK 中 IsInRole 中的声明
       items:
-        - name: '使用 C#'
+        - name: 使用 C#
           href: sdk-quickstart-spell-check.md
 - name: 教程
   items:
@@ -81,7 +81,7 @@
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/bing-api'
     - name: 订阅密钥
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: UserVoice

@@ -9,13 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7cbd9250ecfb05e52204e1754046e02e4045fa6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734701"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283140"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入 Azure Active Directory 域服务托管域
 
@@ -137,10 +139,10 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     同样，必须以全部大写的形式输入托管域名。 在下面的示例中，名为的帐户 `contosoadmin@aaddscontoso.com` 用于初始化 Kerberos。 输入您自己的属于托管域的用户帐户：
 
     ```console
-    kinit contosoadmin@AADDSCONTOSO.COM
+    kinit -V contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最后，使用命令将计算机加入托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
+1. 最后，使用命令将 VM 加入到托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
@@ -181,7 +183,7 @@ rdns=false
 1. 若要应用更改，请重新启动 SSSD 服务：
 
     ```console
-    sudo service sssd restart
+    sudo systemctl restart sssd
     ```
 
 ## <a name="configure-user-account-and-group-settings"></a>配置用户帐户和组设置

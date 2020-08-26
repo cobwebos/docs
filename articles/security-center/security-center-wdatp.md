@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089696"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender 高级威胁防护与 Azure 安全中心
 
@@ -59,8 +59,9 @@ Microsoft Defender ATP 提供：
 
 若要将服务器加入到安全中心，请从“Microsoft Defender ATP 服务器加入”单击“转到 Azure 安全中心加入服务器”。
 
-1. 在“加入”区域中选择或创建用于存储数据的工作区。 <br>
-2. 如果看不到所有工作区，可能是由于缺少权限，请确保已将工作区设置到“Azure 安全标准”层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+1. 在“加入”区域中选择或创建用于存储数据的工作区。
+
+2. 如果看不到所有工作区，原因可能是缺少权限，请确保工作区设置为 "Azure 安全标准" 定价层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
     
 3. 选择“添加服务器”以查看有关如何安装 Log Analytics 代理的说明。 
 

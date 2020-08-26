@@ -2,13 +2,14 @@
 title: 管理 Azure Functions 中的连接
 description: 了解如何通过使用静态连接客户端来避免 Azure Functions 中的性能问题。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 5ab59d82ad4b11e4ac5179ef727392a83bb263e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505986"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213970"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -20,7 +21,7 @@ ms.locfileid: "86505986"
 
 此限制是按实例施加的。 [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
 
-进行故障排除时，请确保已启用函数应用 Application Insights。 Application Insights 使你可以查看函数应用的指标，如执行。 有关详细信息，请参阅[在 Application Insights 中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
+进行故障排除时，请确保已启用函数应用 Application Insights。 Application Insights 使你可以查看函数应用的指标，如执行。 有关详细信息，请参阅 [在 Application Insights 中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
 
 ## <a name="static-clients"></a>静态客户端
 
@@ -28,7 +29,7 @@ ms.locfileid: "86505986"
 
 在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
-- *不要*使用每个函数调用创建新的客户端。
+- *不要* 使用每个函数调用创建新的客户端。
 - ** 应创建一个可在每次调用函数时使用的静态客户端。
 - 如果不同的函数使用同一个服务，*请考虑*在共享的帮助程序类中创建单个静态客户端。
 
@@ -124,13 +125,13 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 连接
 
-函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架的基础提供程序，如[实体框架](/ef/ef6/)。 与 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
+函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架的基础提供程序，如 [实体框架](/ef/ef6/)。 与 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（如实体框架）通常从配置文件的**ConnectionStrings**节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
+> 某些数据框架（如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关为何建议静态客户端的详细信息，请参阅不[正确的实例化对立模式](/azure/architecture/antipatterns/improper-instantiation/)。
+有关为何建议静态客户端的详细信息，请参阅不 [正确的实例化对立模式](/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

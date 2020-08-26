@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042826"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
 使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码**及可能的错误原因的列表。  
@@ -27,19 +28,19 @@ ms.locfileid: "74887061"
 请求包含无效信息，并因以下可能的原因之一被拒绝：
 
 * 指定了不支持的 API 版本。 有关最新版本，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
-* 未指定媒体服务的 API 版本。 若要了解如何指定 API 版本，请参阅[媒体服务操作 REST API 参考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
+* 未指定媒体服务的 API 版本。 若要了解如何指定 API 版本，请参阅[媒体服务操作 REST API 参考](/rest/api/media/operations/azure-media-services-rest-api-reference)。
   
   > [!NOTE]
   > 如果使用 .NET 或 Java SDK 连接到媒体服务，每当尝试对媒体服务执行某种操作时，系统会自动指定 API 版本。
   > 
   > 
-* 指定了未定义的属性。 错误消息中给出了该属性名。 仅能指定是给定实体的成员的属性。 有关实体及其属性的列表，请参阅 [Azure 媒体服务 REST API 参考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
+* 指定了未定义的属性。 错误消息中给出了该属性名。 仅能指定是给定实体的成员的属性。 有关实体及其属性的列表，请参阅 [Azure 媒体服务 REST API 参考](/rest/api/media/operations/azure-media-services-rest-api-reference)。
 * 指定了一个无效的属性值。 错误消息中给出了该属性名。 有关有效属性类型及其值的信息，请访问之前的链接。
 * 缺少或需要属性值。
 * 指定的部分 URL 包含错误值。
 * 曾尝试更新 WriteOnce 属性。
 * 曾尝试创建一个作业，该作业的输入资产带有未指定或无法确定的 AssetFile。
-* 曾尝试更新 SAS 定位符。 只能创建或删除 SAS 定位符。 可以更新流式处理定位符。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
+* 曾尝试更新 SAS 定位符。 只能创建或删除 SAS 定位符。 可以更新流式处理定位符。 有关详细信息，请参阅[定位符](/rest/api/media/operations/locator)。
 * 提交了不支持的操作或查询。
 
 ## <a name="401-unauthorized"></a>401 未授权
@@ -95,10 +96,10 @@ ms.locfileid: "74887061"
 * 其他意外错误。
 
 ## <a name="503-service-unavailable"></a>503 服务不可用
-服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 对于发出过多服务请求的应用程序，媒体服务限制机制将限制其资源使用量。
+服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
 
 > [!NOTE]
-> 查看错误消息和错误代码字符串，获取收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
+> 检查错误消息和错误代码字符串以获取有关收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
 > 
 > 
 
@@ -108,7 +109,7 @@ ms.locfileid: "74887061"
 * “服务器正忙。 每秒超过 {0} 个请求可能会受到限制。”
 * “服务器正忙。 {1} 秒中超过 {0} 个请求可能会受到限制。”
 
-若要处理此错误，建议使用指数退让重试逻辑。 这意味着需要在重试之间使用渐进式（越来越长）的等待时长，从而生成连续错误响应。  有关详细信息，请参阅[暂时性故障处理应用程序块](https://msdn.microsoft.com/library/hh680905.aspx)。
+若要处理此错误，建议使用指数退让重试逻辑。 这意味着需要在重试之间使用渐进式（越来越长）的等待时长，从而生成连续错误响应。  有关详细信息，请参阅[暂时性故障处理应用程序块](/previous-versions/msp-n-p/hh680905(v=pandp.50))。
 
 > [!NOTE]
 > 如果使用[用于 .Net 的 Azure 媒体服务 SDK](https://github.com/Azure/azure-sdk-for-media-services/tree/master)，则该 SDK 已实现 503 错误的重试逻辑。  
@@ -116,11 +117,10 @@ ms.locfileid: "74887061"
 > 
 
 ## <a name="see-also"></a>另请参阅
-[媒体服务管理错误代码](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[媒体服务管理错误代码](/rest/api/media/)
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -7,12 +7,14 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-javascript
+- devx-track-azurecli
+ms.openlocfilehash: 31e7e7d6785e8fd52f4c76171f6ca9d7f5c8383c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78252192"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501315"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
 

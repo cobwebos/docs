@@ -1,6 +1,6 @@
 ---
 title: 身份验证 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中的身份验证缓解措施。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref
-ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 11158749f3cae222c0948286e7365b1629cebbf2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82607820"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543973"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施
 
-| 产品/服务 | 文章 |
+| 产品/服务 | 项目 |
 | --------------- | ------- |
 | **Web 应用程序**    | <ul><li>[考虑使用标准身份验证机制向 Web 应用程序进行身份验证](#standard-authn-web-app)</li><li>[应用程序必须安全处理失败的身份验证方案](#handle-failed-authn)</li><li>[启用升级或自适应的身份验证](#step-up-adaptive-authn)</li><li>[确保适当锁定管理界面](#admin-interface-lockdown)</li><li>[安全实施忘记密码功能](#forgot-pword-fxn)</li><li>[确保实施密码和帐户策略](#pword-account-policy)</li><li>[实施控制来防止用户名枚举](#controls-username-enum)</li></ul> |
 | **Database** | <ul><li>[尽可能使用 Windows 身份验证连接到 SQL Server](#win-authn-sql)</li><li>[尽可能使用 Azure Active Directory 身份验证连接到 SQL 数据库](#aad-authn-sql)</li><li>[使用 SQL 身份验证模式时，确保对 SQL Server 实施帐户和密码策略](#authn-account-pword)</li><li>[不要在包含的数据库中使用 SQL 身份验证](#autn-contained-db)</li></ul> |
@@ -133,7 +133,7 @@ ms.locfileid: "82607820"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 |
+| 组件               | 数据库 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | SQL Azure |
 | **属性**              | SQL 版本 - V12 |
@@ -144,7 +144,7 @@ ms.locfileid: "82607820"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 |
+| 组件               | 数据库 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -155,7 +155,7 @@ ms.locfileid: "82607820"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 |
+| 组件               | 数据库 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | OnPrem、SQL Azure |
 | **属性**              | SQL 版本 - MSSQL2012，SQL 版本 - V12 |
@@ -442,7 +442,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 |
+| 组件               | IoT 现场网关 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -564,7 +564,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 |
+| 组件               | Azure 存储 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -575,7 +575,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 |
+| 组件               | Azure 存储 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 空值 |

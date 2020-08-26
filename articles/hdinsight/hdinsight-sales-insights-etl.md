@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006426"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -33,7 +33,7 @@ ms.locfileid: "81535224"
 
 * [Azure 内置角色 - 所有者](../role-based-access-control/built-in-roles.md)的一个成员。
 
-* 如果使用 PowerShell 来触发数据工厂管道，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell 来触发数据工厂管道，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/)。
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller)，用以可视化本教程结束时生成的业务见解。
 
@@ -110,7 +110,7 @@ ms.locfileid: "81535224"
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>验证部署并收集资源信息
 
-1. 若要检查部署状态，请在 Azure 门户上转到资源组。 在“设置”  下，选择“部署”  ，然后选择你的部署。 在此处可以看到已成功部署的资源，以及仍在部署的资源。
+1. 若要检查部署状态，请在 Azure 门户上转到资源组。 在“设置”下，选择“部署”，然后选择你的部署。 在此处可以看到已成功部署的资源，以及仍在部署的资源。
 
 1. 若要查看群集的名称，请输入以下命令：
 
@@ -214,11 +214,11 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
     或
 
-* 打开数据工厂并选择“创作和监视”。  从门户触发 `IngestAndTransform` 管道。 有关通过门户触发管道的信息，请参阅[使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)。
+* 打开数据工厂并选择“创作和监视”。 从门户触发 `IngestAndTransform` 管道。 有关通过门户触发管道的信息，请参阅[使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)。
 
 若要验证管道是否已运行，可执行以下任一步骤：
 
-* 通过门户转到数据工厂的“监视”部分。 
+* 通过门户转到数据工厂的“监视”部分。
 * 在 Azure 存储资源管理器中，转到你的 Data Lake Storage Gen2 存储帐户。 转到 `files` 文件系统，然后转到 `transformed` 文件夹，并检查其内容以查看管道运行是否成功。
 
 有关使用 HDInsight 转换数据的其他方式，请参阅[这篇有关使用 Jupyter Notebook 的文章](/azure/hdinsight/spark/apache-spark-load-data-run-query)。
@@ -252,21 +252,21 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 1. 打开 Power BI Desktop。
 
-1. 在菜单中，导航到“获取数据”   > “更多...”   > “Azure”  “HDInsight Interactive Query” >   。
+1. 在菜单中，导航到“获取数据” > “更多...” > “Azure”“HDInsight Interactive Query” > 。
 
-1. 选择“连接”  。
+1. 选择“连接”。
 
-1. 在“HDInsight Interactive Query”  对话框中执行以下操作：
-    1. 在“服务器”  文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式输入 LLAP 群集的名称。
-    1. 在“数据库”  文本框中，输入 `default`。
+1. 在“HDInsight Interactive Query”对话框中执行以下操作：
+    1. 在“服务器”文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式输入 LLAP 群集的名称。
+    1. 在“数据库”文本框中，输入 `default`。
     1. 选择“确定”  。
 
-1. 在“AzureHive”  对话框中执行以下操作：
-    1. 在“用户名”  文本框中，输入 `admin`。
-    1. 在“密码”  文本框中，输入 `Thisisapassword1`。
-    1. 选择“连接”  。
+1. 在“AzureHive”对话框中执行以下操作：
+    1. 在“用户名”文本框中，输入 `admin`。
+    1. 在“密码”文本框中，输入 `Thisisapassword1`。
+    1. 选择“连接” 。
 
-1. 在“导航器”  中，选择 `sales` 和/或 `sales_raw` 以预览数据。 加载数据后，可以尝试创建仪表板。 若要开始使用 Power BI 仪表板，请参阅以下链接：
+1. 在“导航器”中，选择 `sales` 和/或 `sales_raw` 以预览数据。 加载数据后，可以尝试创建仪表板。 若要开始使用 Power BI 仪表板，请参阅以下链接：
 
 * [Power BI 设计器仪表板简介](https://docs.microsoft.com/power-bi/service-dashboards)
 * [教程：Power BI 服务入门](https://docs.microsoft.com/power-bi/service-get-started)

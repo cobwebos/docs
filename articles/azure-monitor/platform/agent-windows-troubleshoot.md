@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333509"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927311"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查 Log Analytics Windows 代理的问题 
 
@@ -37,8 +37,9 @@ ms.locfileid: "80333509"
 |*.ods.opinsights.azure.com |端口 443 |出站|是 |  
 |*.oms.opinsights.azure.com |端口 443 |出站|是 |  
 |\* .blob.core.windows.net |端口 443 |出站|是 |  
+|*. agentsvc.azure-automation.net |端口 443 |出站|是 |  
 
-有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook 或管理解决方案，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
+有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)。 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook 或管理解决方案，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 
 可通过多种方法验证代理是否能够成功与 Azure Monitor 通信。
 
@@ -103,4 +104,3 @@ Heartbeat
     |8000 |HealthService |此事件将指定与性能、事件或收集的其他数据类型相关的工作流是否无法将这些数据转发到服务，以引入到工作区。 | 来自源运行状况服务的事件 ID 2136 将连同此事件一起写入，可能表示代理无法与服务通信，原因可能是代理和身份验证设置的配置不当、网络中断，或者网络防火墙/代理不允许将计算机的 TCP 流量发送到服务。| 
     |10102 和 10103 |运行状况服务模块 |工作流无法解析数据源。 |如果指定的性能计数器或实例在计算机上不存在，或者在工作区数据设置中未正确定义，则可能会发生此错误。 如果这是用户指定的[性能计数器](data-sources-performance-counters.md#configuring-performance-counters)，请验证指定的信息是否遵循正确的格式，并在目标计算机上存在。 |
     |26002 |运行状况服务模块 |工作流无法解析数据源。 |如果指定的 Windows 事件日志在计算机上不存在，则可能会发生此错误。 如果预期不需要在计算机上此注册此事件日志，则可以安全忽略此错误；如果这是用户指定的[事件日志](data-sources-windows-events.md#configuring-windows-event-logs)，请验证指定的信息是否正确。 |
-

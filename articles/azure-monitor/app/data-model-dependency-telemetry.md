@@ -4,15 +4,16 @@ description: 适用于依赖项遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671913"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315965"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
+[Application Insights](./app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
 
 ## <a name="name"></a>名称
 
@@ -20,7 +21,7 @@ ms.locfileid: "77671913"
 
 ## <a name="id"></a>ID
 
-依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
+依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](./correlation.md)页。
 
 ## <a name="data"></a>data
 
@@ -32,7 +33,7 @@ ms.locfileid: "77671913"
 
 ## <a name="target"></a>目标
 
-依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
+依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](./correlation.md)页。
 
 ## <a name="duration"></a>Duration
 
@@ -57,8 +58,9 @@ ms.locfileid: "77671913"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 为 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 设置依赖项跟踪。
-- 为 [Java](../../azure-monitor/app/java-agent.md) 设置依赖项跟踪。
-- [编写自定义依赖项遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+- 为 [.NET](./asp-net-dependencies.md) 设置依赖项跟踪。
+- 为 [Java](./java-agent.md) 设置依赖项跟踪。
+- [编写自定义依赖项遥测](./api-custom-events-metrics.md#trackdependency)
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
-- 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。
+- 查看 Application Insights 支持的[平台](./platforms.md)。
+

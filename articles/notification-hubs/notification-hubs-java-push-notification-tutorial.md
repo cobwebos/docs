@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322935"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 
@@ -30,7 +31,7 @@ ms.locfileid: "86169538"
 本主题介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的关键功能。
 此项目为开源项目，可在 [Java SDK] 查看完整的 SDK 代码。
 
-通常情况下，如 MSDN 主题[通知中心 REST API](https://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。 此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。
+通常情况下，如 MSDN 主题[通知中心 REST API](/previous-versions/azure/reference/dn223264(v=azure.100)) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。 此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。
 
 SDK 目前支持以下内容：
 
@@ -41,7 +42,7 @@ SDK 目前支持以下内容：
 * 常规发送
 * 计划发送
 * 通过 Java NIO 的异步操作
-* 支持的平台： APNS (iOS) ，FCM (Android) ，WNS (Windows 应用商店应用) ，MPNS (Windows Phone) ，ADM (Amazon Kindle 激发) ，百度 (Android
+* 支持的平台： APNS （iOS）、FCM （Android）、WNS （Windows 应用商店应用）、MPNS （Windows Phone）、ADM （Amazon Kindle 激发）、百度（不包含 Google 服务的 Android）
 
 ## <a name="sdk-usage"></a>SDK 用法
 
@@ -387,7 +388,7 @@ hub.sendNotification(n);
   * [将跨平台通知发送到经身份验证的用户]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Get started tutorial]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [发送突发新闻]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [发送本地化的突发新闻]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md

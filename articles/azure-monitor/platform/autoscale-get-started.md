@@ -4,16 +4,17 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: db1814c0a27ac6d61c7353a2c66cb5a1a72688d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82801597"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794545"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
 
-Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>了解订阅中的自动缩放设置
 
@@ -112,6 +113,28 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 始终可单击“启用自动缩放”，再单击“保存”来恢复自动缩放。 
 
+## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到 (应用服务的正常实例) 
+
+向外扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 为此，请打开应用服务的门户，并选择 "**监视**" 下的**运行状况检查**。 选择 " **启用** "，并在应用程序中提供有效的 URL 路径，例如 `/health` 或 `/api/health` 。 单击“保存”  。
+
+### <a name="health-check-path"></a>运行状况检查路径
+
+路径必须在两分钟内响应，状态代码介于200与299之间 (包含) 。 如果路径在两分钟内未响应，或返回范围之外的状态代码，则实例将被视为 "不正常"。 运行状况检查与应用服务的身份验证和授权功能集成，即使启用了这些 microsoft.powershell.secuity 功能，系统也会到达终结点。 如果你使用自己的身份验证系统，运行状况检查路径必须允许匿名访问。 如果站点启用了 HTTP**s** ，则 healthcheck 将服从 http**s** ，并使用该协议发送请求。
+
+运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，路径应返回500级别的响应代码，以指示该应用程序不正常。
+
+### <a name="behavior"></a>行为
+
+如果提供了运行状况检查路径，应用服务会在所有实例上对路径进行 ping 操作。 如果在5个 ping 操作后未收到成功的响应代码，则将该实例视为 "不正常"。 不正常的实例 (s 将从负载均衡器轮换中排除) 。 此外，在纵向扩展或缩减时，应用服务会对运行状况检查路径进行 ping 操作，以确保新实例已准备好进行请求。
+
+其他正常运行的实例可能会提高负载。 若要避免出现剩余的情况，则不会再包括一半的实例。 例如，如果应用服务计划扩展到4个实例，其中3个实例不正常，最多2个将从 loadbalancer 旋转中排除。 其他2个实例 (1 正常，1个不正常) 将继续接收请求。 在所有实例都运行不正常的最糟糕的情况下，将不包括任何实例。
+
+如果实例在一小时内保持不正常，则会将其替换为新的实例。 每个应用服务计划中，最多只能将一个实例替换为每小时一次。
+
+### <a name="monitoring"></a>监视
+
+提供应用程序的运行状况检查路径后，可以使用 Azure Monitor 来监视站点的运行状况。 在门户中的 **运行状况检查** 边栏选项卡上，单击顶部工具栏中的 **度量值** 。 这会打开一个新的边栏选项卡，你可以在其中查看站点的历史运行状况状态并创建新的警报规则。 有关监视网站的详细信息， [请参阅 Azure Monitor 上的指南](../../app-service/web-sites-monitor.md)。
+
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
@@ -120,7 +143,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 [1]:https://portal.azure.com
 [2]: ./media/autoscale-get-started/azure-monitor-launch.png
 [3]: ./media/autoscale-get-started/discover-autoscale-azure-monitor.png
-[4]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
+[4]: ../../app-service/quickstart-dotnetcore.md
 [5]: ./media/autoscale-get-started/scale-setting-new-web-app.png
 [6]: ./media/autoscale-get-started/create-scale-setting-web-app.png
 [7]: ./media/autoscale-get-started/scale-in-recommendation.png
@@ -131,4 +154,3 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
-

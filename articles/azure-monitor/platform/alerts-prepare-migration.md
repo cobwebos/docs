@@ -6,19 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539543"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843379"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
-根据[之前的公告](monitoring-classic-retirement.md)，Azure Monitor 中的经典警报即将在 2019 年 9 月（原来是 2019 年 7 月）停用。 Azure 门户中为使用经典警报规则并想要自行触发迁移的客户提供了一个迁移工具。
-
 > [!NOTE]
-> 由于迁移工具的延迟推出，经典警报迁移的停用日期已从原来宣布的 2019 年 6 月 30 日推迟至 2019 年 8 月 31 日。
+> 如前所述[，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 这些警报的停用日期已进一步延长。 新日期即将发布。
+>
 
 如果你选择自愿将经典警报规则迁移到新的警报规则，请注意，这两个系统存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
 
@@ -71,7 +70,7 @@ ms.locfileid: "86539543"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤：
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤:
 
 1. 创建新的逻辑应用。
 

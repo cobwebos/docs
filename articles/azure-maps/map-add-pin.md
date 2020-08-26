@@ -1,6 +1,6 @@
 ---
 title: 向地图添加符号层 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用符号层自定义符号，并使用 Microsoft Azure map Web SDK 在地图上添加符号。
+description: 了解如何向地图添加自定义符号，如文本或图标。 若要实现此目的，请参阅如何在 Azure Maps Web SDK 中使用数据源和符号层。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: d705a43da2b2db37c6601f5865ad6e569688b2a7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77209692"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010185"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
@@ -30,7 +31,7 @@ ms.locfileid: "77209692"
 - PNG
 - SVG
 - BMP
-- GIF （无动画）
+- GIF 不 (动画) 
 
 ## <a name="add-a-symbol-layer"></a>添加符号层
 

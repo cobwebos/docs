@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 1dde59456126ce1221bdb71f09957c0fd3609427
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108697"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243745"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>将文本分析容器部署到 Azure 容器实例
 
@@ -23,7 +23,7 @@ ms.locfileid: "86108697"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 使用 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 

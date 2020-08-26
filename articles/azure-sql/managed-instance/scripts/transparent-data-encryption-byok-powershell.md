@@ -1,7 +1,7 @@
 ---
-title: PowerShell：启用自带密钥（BYOK） TDE
+title: PowerShell：启用“创建自己的密钥”(BYOK) TDE
 titleSuffix: Azure SQL Managed Instance
-description: 了解如何配置 Azure SQL 托管实例，开始使用 PowerShell 进行静态加密的自带密钥（BYOK）透明数据加密（TDE）。
+description: 了解如何配置 Azure SQL 托管实例，以开始使用创建自己的密钥 (BYOK) 透明数据加密 (TDE) 通过 PowerShell 进行静态加密。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -12,18 +12,18 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34d91b23b0383f4128b7f03619ad0e2b07496f33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014111"
 ---
-# <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>在 SQL 中透明数据加密托管实例使用你自己的密钥 Azure Key Vault
+# <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥在 SQL 托管实例中实现透明数据加密
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
-此 PowerShell 脚本示例使用 Azure Key Vault 中的密钥将透明数据加密（TDE）配置为 Azure SQL 托管实例的客户托管密钥。 这通常称为 TDE 的自带密钥（BYOK）方案。 若要了解详细信息，请参阅[AZURE SQL 透明数据加密与客户托管的密钥](../../database/transparent-data-encryption-byok-overview.md)。
+此 PowerShell 脚本实例使用 Azure Key Vault 中的密钥为 Azure SQL 托管实例配置使用客户托管密钥的透明数据加密 (TDE)。 这通常称为 TDE 的创建自己的密钥 (BYOK) 方案。 若要了解详细信息，请参阅[使用客户管理的密钥进行 Azure SQL 透明数据加密](../../database/transparent-data-encryption-byok-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,6 +45,6 @@ ms.locfileid: "84708421"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 SQL 托管实例的其他 PowerShell 脚本示例可在[ Azure SQL 托管实例 PowerShell 脚本](../../database/powershell-script-content-guide.md)中找到。

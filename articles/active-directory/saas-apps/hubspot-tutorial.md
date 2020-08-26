@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 HubSpot 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 与 HubSpot 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68944445"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
 
@@ -106,9 +101,9 @@ HubSpot 支持以下功能：
 
 1. 在“基本 SAML 配置”窗格中，若要配置“IDP 发起模式”，请完成以下步骤：  
 
-    1. 在“标识符”框中，输入具有以下模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>  。
+    1. 在“标识符”框中，输入具有以下模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>。
 
-    1. 在“回复 URL”框中，输入具有以下模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>  。
+    1. 在“回复 URL”框中，输入具有以下模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>。
 
     ![HubSpot 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -183,7 +178,7 @@ HubSpot 支持以下功能：
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入“brittasimon\@\<your-company-domain>.\<extension\>”   。 例如，brittasimon\@contoso.com  。
+    1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension\> 。 例如，brittasimon\@contoso.com  。
 
     1. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
 

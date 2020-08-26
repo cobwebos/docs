@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392826"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499970"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -32,11 +32,11 @@ ms.locfileid: "85392826"
 1. 在“虚拟机”页上，选择“添加” 。 此时将打开“创建虚拟机”页。
 1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup。 
 
-    ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
+    ![“项目详细信息”部分的屏幕截图，显示为虚拟机选择 Azure 订阅和资源组的位置](./media/quick-create-portal/project-details.png)
 
 1. 在“实例详细信息”下，键入“myVM”作为“虚拟机名称”，选择“美国东部”作为“区域”，并选择“Ubuntu 18.04 LTS”作为“映像”。 保留其他默认值。
 
-    ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
+    ![“实例详细信息”部分的屏幕截图，可在其中提供虚拟机的名称并选择其区域、映像和大小](./media/quick-create-portal/instance-details.png)
 
 1. 在“管理员帐户”下，选择“SSH 公钥” 。
 
@@ -44,11 +44,11 @@ ms.locfileid: "85392826"
 
 1. 对于“SSH 公钥源”，请保留默认的“生成新密钥对”，然后为“密钥对名称”键入 myKey 。
 
-    ![管理员帐户](./media/quick-create-portal/administrator-account.png)
+    ![管理员帐户部分的屏幕截图，可以在其中选择身份验证类型并提供管理员凭据](./media/quick-create-portal/administrator-account.png)
 
 1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。 
 
-    ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
+    ![“入站端口规则”部分的屏幕截图，可在其中选择允许建立入站连接的端口](./media/quick-create-portal/inbound-port-rules.png)
 
 1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
 
@@ -61,7 +61,7 @@ ms.locfileid: "85392826"
 1. 在新 VM 的页面上，选择公共 IP 地址并将其复制到剪贴板。
 
 
-    ![复制公共 IP 地址](./media/quick-create-portal/ip-address.png)
+    ![显示如何复制虚拟机的 IP 地址的屏幕截图](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
@@ -94,7 +94,7 @@ sudo apt-get -y install nginx
 
 使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 键入 VM 的公共 IP 地址作为 Web 地址。 可以在 VM 概览页上或此前使用过的 SSH 连接字符串中找到公共 IP 地址。
 
-![NGINX 默认站点](./media/quick-create-portal/nginx.png)
+![在浏览器中显示 NGINX 默认站点的屏幕截图](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

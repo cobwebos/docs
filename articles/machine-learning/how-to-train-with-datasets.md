@@ -5,18 +5,19 @@ description: 了解如何在训练中使用数据集
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 04/20/2020
-ms.custom: tracking-python
-ms.openlocfilehash: a9b9faed111e6126bfdb30e4237a988afd947823
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560144"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651210"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +80,7 @@ web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 ```
 
-TabularDataset 对象提供将 TabularDataset 中的数据加载到 pandas 或 spark 数据帧中的功能，以便你可以使用熟悉的数据准备和训练库，且无需离开笔记本。 若要利用此功能，请参阅[访问和浏览输入数据集](#access-and-explore-input-datasets)。
+TabularDataset 对象提供将 TabularDataset 中的数据加载到 pandas 或 Spark 数据帧中的功能，以便你可以使用熟悉的数据准备和培训库，而无需离开你的笔记本。 若要利用此功能，请参阅[访问和浏览输入数据集](#access-and-explore-input-datasets)。
 
 ### <a name="configure-the-estimator"></a>配置估算器
 
@@ -114,7 +115,7 @@ experiment_run.wait_for_completion(show_output=True)
 
 ### <a name="create-a-filedataset"></a>创建 FileDataset
 
-以下示例从 Web URL 创建未注册的 FileDataset。 从其他来源详细了解[如何创建数据集](https://aka.ms/azureml/howto/createdatasets)。
+以下示例从 Web URL 创建未注册的 FileDataset。 从其他来源详细了解[如何创建数据集](how-to-create-register-datasets.md)。
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -190,14 +191,13 @@ y_train = load_data(y_train_path, True).reshape(-1)
 y_test = load_data(y_test, True).reshape(-1)
 ```
 
-
 ## <a name="mount-vs-download"></a>装载和下载
 
 对于从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集，可以装载或下载任何格式的文件。 
 
-装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，这些计算包括 Azure 机器学习计算、虚拟机和 HDInsight。 
+**装载**数据集时，请将数据集引用的文件附加到 (装入点) 的目录，并使其在计算目标上可用。 基于 Linux 的计算支持装载，这些计算包括 Azure 机器学习计算、虚拟机和 HDInsight。 
 
-下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 
+**下载**数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 
 
 如果脚本处理数据集引用的所有文件，并且计算磁盘可以容纳整个数据集，则建议下载，以避免从存储服务流式传输数据的开销。 如果数据大小超出计算磁盘大小，则无法下载。 对于此方案，我们建议装载，因为在处理时只会加载脚本使用的数据文件。
 
@@ -217,6 +217,38 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+## <a name="access-datasets-in-your-script"></a>在脚本中访问数据集
+
+可以在本地以及在 Azure 机器学习计算等计算群集上远程访问已注册的数据集。 若要跨试验访问已注册的数据集，请使用以下代码按名称访问工作区和已注册的数据集。 默认情况下，`Dataset` 类中的 [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。
+
+```Python
+%%writefile $script_folder/train.py
+
+from azureml.core import Dataset, Run
+
+run = Run.get_context()
+workspace = run.experiment.workspace
+
+dataset_name = 'titanic_ds'
+
+# Get a dataset by name
+titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
+
+# Load a TabularDataset into pandas DataFrame
+df = titanic_ds.to_pandas_dataframe()
+```
+
+## <a name="accessing-source-code-during-training"></a>在训练期间访问源代码
+
+Azure Blob 存储具有比 Azure 文件共享更快的吞吐速度，并将扩展到大量并行启动的作业。 出于此原因，我们建议配置运行以使用 Blob 存储来传输源代码文件。
+
+下面的代码示例在运行配置中指定用于源代码传输的 Blob 数据存储。
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
+
 ## <a name="notebook-examples"></a>Notebook 示例
 
 [数据集笔记本](https://aka.ms/dataset-tutorial)演示了本文中的概念并在其基础上进行了扩展。
@@ -227,4 +259,4 @@ print (mounted_path)
 
 * 使用 FileDataset [训练图像分类模型](https://aka.ms/filedataset-samplenotebook)。
 
-* [通过管道使用数据集进行训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
+* [通过管道使用数据集进行训练](how-to-create-your-first-pipeline.md)。

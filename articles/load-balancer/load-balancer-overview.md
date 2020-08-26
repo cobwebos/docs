@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170558"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420322"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -32,7 +32,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 **[内部（或专用）负载平衡器](./components.md#frontend-ip-configurations)** 用于仅在前端需要专用 IP 的情况。 内部负载均衡器用于对虚拟网络内部的流量进行负载均衡。 负载均衡器前端可以在混合方案中从本地网络进行访问。
 
 <p align="center">
-  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure 负载均衡器">
+  <img src="./media/load-balancer-overview/load-balancer.svg" alt="Figure depicts both public and internal load balancers directing traffic to port 80 on multiple servers on a Web tier and port 443 on multiple servers on a business tier." width="512" title="Azure 负载均衡器">
 </p>
 
 图：*使用公共和内部负载均衡器对多层应用程序进行均衡*

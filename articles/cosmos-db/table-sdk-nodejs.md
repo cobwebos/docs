@@ -10,6 +10,7 @@ author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
 ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/29/2020
 ms.locfileid: "84167972"

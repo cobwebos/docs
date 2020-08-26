@@ -5,6 +5,7 @@ ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83682985"

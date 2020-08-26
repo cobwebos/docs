@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505442"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849013"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
+
 > [!WARNING]
-> 
-> 本文介绍如何使用资源管理器模板创建经典指标警报。 经典警报已于 2019 年 8 月停用，并将于 2020 年 6 月完全弃用。 你不能在公共 Azure 上新建经典警报。 Azure 的某些区域版本可能仍然有这个选项，但我们建议你尽可能改用模板创建[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [此文](alerts-metric-create-templates.md)提供了详细信息。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已[停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。
 >
 
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 经典指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -400,5 +400,6 @@ ms.locfileid: "86505442"
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解警报](alerts-overview.md)
-* [将诊断设置添加](../../azure-monitor/platform/diagnostic-settings-template.md) 到 Resource Manager 模板
+* [将诊断设置添加](./diagnostic-settings-template.md) 到 Resource Manager 模板
 * 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 模板参考。
+

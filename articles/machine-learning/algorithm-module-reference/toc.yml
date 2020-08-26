@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: 决策林回归
           href: decision-forest-regression.md
+        - name: 快速林分位回归
+          href: fast-forest-quantile-regression.md
         - name: 线性回归
           href: linear-regression.md
         - name: 神经网络回归
           href: neural-network-regression.md
+        - name: 泊松回归
+          href: poisson-regression.md
     - name: 群集
       items:
         - name: K 平均值聚类

@@ -1,5 +1,5 @@
 ---
-title: 什么是专用 HSM？ - Azure 专用 HSM | Microsoft Docs
+title: 排查专用 HSM 问题 - Azure 专用 HSM | Microsoft Docs
 description: 关于 Azure 专用 HSM 在 Azure 中提供符合 FIPS 140-2 级别 3 认证的密钥存储功能的概述
 services: dedicated-hsm
 author: msmbaldwin
@@ -9,18 +9,18 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209566"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590449"
 ---
-# <a name="troubleshooting"></a>疑难解答
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>排查 Azure 专用 HSM 服务问题
 
 Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azure 中注册和部署包含基础网络组件的 HSM 设备。 第二个方面是指配置 HSM 设备，做好与给定的工作负载或应用程序配合使用/集成的准备。 尽管 Azure 中的 Thales Luna Network HSM 设备与直接从 Thales 购买的相同，但由于它们是 Azure 中的资源，因此有一些独特的注意事项。 本文介绍了这些注意事项以及所产生的任何故障排除见解或最佳做法，确保关键信息的高可见性和访问权限。 开始使用此服务后，可通过向 Microsoft 或 Thales 发送支持请求直接获取权威信息。 
 

@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090376"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 接收和确认 B2B AS2 消息
 
@@ -34,7 +35,7 @@ ms.locfileid: "82792354"
 
   如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* 与 Azure 订阅相关联并已链接到逻辑应用的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)。 逻辑应用和集成帐户必须位于同一位置或 Azure 区域。
+* 与 Azure 订阅相关联并已链接到逻辑应用的[集成帐户](./logic-apps-enterprise-integration-create-integration-account.md)。 逻辑应用和集成帐户必须位于同一位置或 Azure 区域。
 
 * 已在集成帐户中至少定义了两个[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，并为这些合作伙伴创建了 [AS2 和 X12 协议](logic-apps-enterprise-integration-agreements.md)。
 

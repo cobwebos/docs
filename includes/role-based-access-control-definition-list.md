@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 11/24/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: eaca725e7139d9bc6bb13a696a1f7a8ff920675d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5927b77ac6b3a7c681196327600e34a7913fbc1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74710381"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507472"
 ---
-[Azure 基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md) 是用于管理对 Azure 资源的访问权限的授权系统。 若要确定用户、组、服务主体或托管标识有权访问的资源，请列出其角色分配。
+[Azure 基于角色的访问控制（AZURE RBAC）](../articles/role-based-access-control/overview.md)是用于管理对 Azure 资源的访问权限的授权系统。 若要确定用户、组、服务主体或托管标识有权访问的资源，请列出其角色分配。

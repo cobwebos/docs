@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186451"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606522"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>准备源计算机以推送安装移动代理
 
@@ -58,6 +59,7 @@ ms.locfileid: "74186451"
 11. 在“管理帐户”选项卡中，选择“添加帐户”。  
 12. 添加已创建的帐户。
 13. 输入为计算机启用复制时使用的凭据。
+1. 用于更新或保护 SUSE Linux Enterprise Server 11 SP3 计算机的其他步骤。 [确保配置服务器中提供最新版本](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。
 
 ## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
 
@@ -65,6 +67,6 @@ ms.locfileid: "74186451"
 
 ## <a name="next-steps"></a>后续步骤
 
-安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。  详细了解如何为 [VMware VM](vmware-azure-enable-replication.md) 和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
+安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。**** 详细了解如何为 [VMware VM](vmware-azure-enable-replication.md) 和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
 
 

@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037505"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903317"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
 
@@ -21,7 +22,7 @@ ms.locfileid: "86037505"
 
 使用 Azure 流分析可以快速创建实时仪表板和警报。 一个简单的解决方案就能从事件中心或 IoT 中心引入事件，并[在 Power BI 仪表板中馈送流数据集](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细教程[使用流分析来分析通话数据以及在 Power BI 仪表板中可视化结果](stream-analytics-manage-job.md)。
 
-![ASA Power BI 仪表板](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI 仪表板](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
 只需在 Azure 门户中花费几分钟时间即可构建此解决方案。 无需编写大量的代码，并可以使用 SQL 语言来表达业务逻辑。
 
@@ -31,7 +32,7 @@ ms.locfileid: "86037505"
 
 Power BI 仪表板提供较低的延迟，但无法用于生成完备的 Power BI 报表。 常见的报告模式是先将数据输出到 SQL 数据库。 然后使用 Power BI 的 SQL 连接器在 SQL 中查询最新数据。
 
-![ASA SQL 仪表板](media/stream-analytics-solution-patterns/sqldashboard.png)
+![ASA SQL 仪表板](media/stream-analytics-solution-patterns/sql-dashboard.png)
 
 使用 SQL 数据库可提供更大的灵活性，但会降低延迟。 此解决方案最适合延迟要求超过一秒的作业。 此方法可以最大程度地发挥 Power BI 的功能，以进一步细分报表数据，并提供多得多的可视化选项。 此外，你可以灵活地使用其他仪表板解决方案，例如 Tableau。
 
@@ -43,7 +44,7 @@ SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据
 
 必须实现下游事件使用者逻辑才能在现有的业务工作流中生成警报。 由于可以在 Azure Functions 中实现自定义逻辑，Azure Functions 是执行这种集成的最快方式。 在[从 Azure 流分析作业运行 Azure Functions](stream-analytics-with-azure-functions.md) 中可以找到有关使用 Azure 函数作为流分析作业输出的教程。 Azure Functions 还支持各种类型的通知，包括短信和电子邮件。 逻辑应用也可用于此类集成，它在流分析与逻辑应用之间使用事件中心。
 
-![ASA 事件消息传送应用](media/stream-analytics-solution-patterns/eventmessagingapp.png)
+![ASA 事件消息传送应用](media/stream-analytics-solution-patterns/event-messaging-app.png)
 
 另一方面，事件中心提供最灵活的集成点。 其他许多服务（例如 Azure 数据资源管理器和时序见解）可以使用来自事件中心的事件。 服务可以直接从 Azure 流分析连接到事件中心接收器，以完成解决方案。 对于此类集成方案，事件中心也是 Azure 上提供的最高吞吐量消息传送代理。
 
@@ -51,7 +52,7 @@ SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据
 
 可以使用 Azure 流分析和 Azure SignalR 服务创建自定义的实时可视化效果，例如仪表板或地图可视化效果。 使用 SignalR 可以更新 Web 客户端和实时显示动态内容。
 
-![ASA 动态应用](media/stream-analytics-solution-patterns/dynamicapp.png)
+![ASA 动态应用](media/stream-analytics-solution-patterns/dynamic-app.png)
 
 ## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>通过数据存储将实时见解整合到应用程序中
 
@@ -59,13 +60,13 @@ SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据
 
 高数据量通常会在基于 CRUD 的系统中产生性能瓶颈。 [事件寻源解决方案模式](/azure/architecture/patterns/event-sourcing)可用于解决性能瓶颈。 此外，从传统的数据存储中提取时态模式和见解也比较困难，且效率低下。 大量数据驱动的新式应用程序通常采用基于数据流的体系结构。 作为动态数据的计算引擎，Azure 流分析是该体系结构中的关键所在。
 
-![ASA 事件寻源应用](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![ASA 事件寻源应用](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
 在此解决方案模式中，事件由 Azure 流分析处理并聚合到数据存储中。 应用层使用传统的请求/响应模式来与数据存储交互。 由于流分析能够实时处理大量事件，因此应用程序具有高度可伸缩性，无需大量占用数据存储层。 数据存储层在本质上是系统中的具体化视图。 [到 Azure Cosmos DB 的 Azure 流分析输出](stream-analytics-documentdb-output.md)介绍了如何将 Cosmos DB 用作流分析输出。
 
 在处理逻辑比较复杂，且需要单独升级逻辑的特定部分的实际应用程序中，可将多个流分析作业作为中间事件代理与事件中心组合到一起。
 
-![ASA 复杂事件寻源应用](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![ASA 复杂事件寻源应用](media/stream-analytics-solution-patterns/event-sourcing-app-complex.png)
 
 此模式改善了系统的复原能力和可管理性。 但是，尽管流分析保证只处理一次，但重复事件仍可能会进入中间事件中心（这种情况很少见）。 下游流分析作业非常在回查窗口中使用逻辑键删除重复事件。 有关事件传递的详细信息，请参阅[事件传递保证](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)参考文章。
 
@@ -75,7 +76,7 @@ Azure 流分析引用数据功能是专门为警报阈值、处理规则和[地�
 
 此模式还可用于实现从引用数据定义规则阈值的规则引擎。 有关规则的详细信息，请参阅[在 Azure 流分析中处理基于阈值的可配置规则](stream-analytics-threshold-based-rules.md)。
 
-![ASA 引用数据应用](media/stream-analytics-solution-patterns/refdataapp.png)
+![ASA 引用数据应用](media/stream-analytics-solution-patterns/reference-data-app.png)
 
 ## <a name="add-machine-learning-to-your-real-time-insights"></a>将机器学习添加到实时见解
 
@@ -83,37 +84,34 @@ Azure 流分析的内置[异常情况检测模型](stream-analytics-machine-lear
 
 对于想要将联机训练和评分整合到同一流分析管道的高级用户，请参阅有关如何使用[线性回归](stream-analytics-high-frequency-trading.md)实现此目的的示例。
 
-![ASA 机器学习应用](media/stream-analytics-solution-patterns/mlapp.png)
+![ASA 机器学习应用](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>近实时数据仓库
+## <a name="real-time-data-warehousing"></a>实时数据仓库
 
-另一种常见模式是实时数据仓库，也称为流数据仓库。 除了从应用程序传入事件中心和 IoT 中心的事件以外，还可使用 [IoT Edge 上运行的 Azure 流分析](stream-analytics-edge.md)来满足数据清理、数据化减、数据存储和转发需求。 在 IoT Edge 上运行的流分析可以正常处理系统中的带宽限制和连接问题。 SQL 输出适配器可用于将数据输出到 SQL 数据仓库，但是，最大吞吐量限制为 10 MB/秒。
+另一种常见模式是实时数据仓库，也称为流数据仓库。 除了从应用程序传入事件中心和 IoT 中心的事件以外，还可使用 [IoT Edge 上运行的 Azure 流分析](stream-analytics-edge.md)来满足数据清理、数据化减、数据存储和转发需求。 在 IoT Edge 上运行的流分析可以正常处理系统中的带宽限制和连接问题。 写入 Azure Synapse Analytics 时，流分析可支持最多 200MB/秒的吞吐量速率。
 
-![ASA 数据仓库](media/stream-analytics-solution-patterns/datawarehousing.png)
+![ASA 数据仓库](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-改善吞吐量（但会在一定程度上增大延迟）的一种方法是将事件存档到 Azure Blob 存储中，然后[使用 Polybase 将其导入到 SQL 数据仓库](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)。 必须通过[按时间戳存档数据](stream-analytics-custom-path-patterns-blob-storage-output.md)并定期导入，将从流分析发往 blob 存储的输出，以及从 blob 存储发往 SQL 数据仓库的输入拼结到一起。
-
-在此使用模式中，Azure 流分析用作近实时 ETL 引擎。 新抵达的事件将持续转换并存储，以供下游分析服务使用。
-
-![ASA 高吞吐量数据仓库](media/stream-analytics-solution-patterns/datawarehousing2.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>存档实时数据用于分析
 
 大部分数据科学和分析活动仍脱机进行。 Azure 流分析可以通过 Azure Data Lake Store Gen2 输出和 Parquet 输出格式存档数据。 此功能消除了将数据直接馈送到 Azure Data Lake Analytics、Azure Databricks 和 Azure HDInsight 所造成的冲突。 在此解决方案中，Azure 流分析用作近实时 ETL 引擎。 可以使用各种计算引擎来探索 Data Lake 中存档的数据。
 
-![ASA 脱机分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
+> [!div class="mx-imgBorder"]
+> ![ASA 脱机分析](media/stream-analytics-solution-patterns/offline-analytics.png)
 
 ## <a name="use-reference-data-for-enrichment"></a>使用引用数据进行扩充
 
 ETL 引擎通常需要数据扩充。 Azure 流分析支持从 SQL 数据库和 Azure Blob 存储的[引用数据](stream-analytics-use-reference-data.md)扩充数据。 可以扩充进入 Azure Data Lake 和 SQL 数据仓库的数据。
 
-![使用数据扩充进行 ASA 脱机分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
+
+![使用数据扩充进行 ASA 脱机分析](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
 
 ## <a name="operationalize-insights-from-archived-data"></a>从存档的数据操作化见解
 
 如果将脱机分析模式与近实时应用程序模式相结合，则可以创建一个反馈循环。 该反馈循环可让应用程序自动调整数据的更改模式。 此反馈循环可以十分简单，只需更改警报的阈值；也可以十分复杂，需要重新训练机器学习模型。 可将同一个解决方案体系结构应用到在云中和 IoT Edge 中运行的 ASA 作业。
 
-![ASA 见解操作化](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![ASA 见解操作化](media/stream-analytics-solution-patterns/insights-operationalization.png)
 
 ## <a name="how-to-monitor-asa-jobs"></a>如何监视 ASA 作业
 
@@ -131,7 +129,7 @@ ETL 引擎通常需要数据扩充。 Azure 流分析支持从 SQL 数据库和 
 
     此指标反映处理管道滞后于挂钟时间的程度（秒）。 某些延迟归因于固有的处理逻辑。 因此，监视趋势的增长比监视绝对值重要得多。 应该通过应用程序设计而不是监视或警报来解决稳定态延迟。
 
-发生失败时，活动日志和[诊断日志](stream-analytics-job-diagnostic-logs.md)是开始查找错误的最佳位置。
+出现故障时，活动日志和[诊断日志](stream-analytics-job-diagnostic-logs.md)是开始查找错误的最佳位置。
 
 ## <a name="build-resilient-and-mission-critical-applications"></a>构建可复原的任务关键型应用程序
 
@@ -162,7 +160,7 @@ ETL 引擎通常需要数据扩充。 Azure 流分析支持从 SQL 数据库和 
 
 幸运的是，前面的数据存档模式可用于正常处理这些滞后的事件。 思路是，存档作业会在抵达时处理传入事件，并在事件时间将事件存档到 Azure Blob 或 Azure Data Lake Store 中适当的时间桶。 事件在多晚的时间抵达并不重要，它永远不会被删除。 它始终会进入适当的时间桶。 在恢复过程中，可以重新处理已存档的事件，并将结果回填到所选的存储。 这类似于 lambda 模式的实现方式。
 
-![ASA 回填](media/stream-analytics-solution-patterns/backfill.png)
+![ASA 回填](media/stream-analytics-solution-patterns/back-fill.png)
 
 必须使用脱机批处理系统完成回填过程，该系统的编程模型很可能与 Azure 流分析不同。 这意味着，必须重新实现整个处理逻辑。
 

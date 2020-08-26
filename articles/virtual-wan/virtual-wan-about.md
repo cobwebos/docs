@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143912"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604680"
 ---
-# <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
+# <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
 Azure 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和路由功能，提供单一操作界面。 这些功能包括分支连接（通过 SD-WAN 或 VPN CPE 等虚拟 WAN 合作伙伴设备的连接自动化）、站点到站点 VPN 连接、远程用户 VPN（点到站点）连接、专用 (ExpressRoute) 连接、云内部连接（虚拟网络的可中转连接）、VPN ExpressRoute 互连、路由、Azure 防火墙、专用连接加密。 无需所有这些用例即可开始使用虚拟 WAN。 可从一个用例开始，并随着情况变化对网络进行调整。
 
@@ -98,15 +98,15 @@ ExpressRoute 允许通过专用连接将本地网络连接到 Azure。 要创建
 * “无”状态表示虚拟中心未预配路由器。 如果虚拟 WAN 为“基本”类型，或者虚拟中心是在提供服务之前部署的，则可能会出现此状态。
 * “失败”状态表示在实例化过程中失败。 若要实例化或重置路由器，可以通过导航到 Azure 门户中的虚拟中心“概述”页面，找到“重置路由器”选项。
 
-每个虚拟中心路由器支持的聚合吞吐量上限为 50 Gbps。 虚拟网络连接之间的连接假设虚拟 WAN 中的所有 VNet 共有 2000 VM 工作负载。
+每个虚拟中心路由器支持的聚合吞吐量上限为 50 Gbps。 虚拟网络连接之间的连接假设所有连接到单个虚拟中心的 VNet 共有 2000 VM 工作负载。
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN 和 ExpressRoute 之间的传输连接
 
-虚拟 WAN 允许 VNet 和 ExpressRoute 之间的传输连接。 这意味着 VPN 连接的站点或远程用户可以与 ExpressRoute 连接的站点进行通信。 此外，还存在一个隐式假设，即已启用“分支到分支标记”。 在 Azure 门户中的“Azure 虚拟 WAN”设置中可找到此标记。 所有路由管理功能均由虚拟中心路由器提供，该路由器还启用了虚拟网络之间的传输连接。
+虚拟 WAN 允许 VNet 和 ExpressRoute 之间的传输连接。 这意味着 VPN 连接的站点或远程用户可以与 ExpressRoute 连接的站点进行通信。 此外，还存在一个隐式假设，即启用“分支到分支标记”，并在 VPN 和 ExpressRoute 连接中支持 BGP。 在 Azure 门户中的“Azure 虚拟 WAN”设置中可找到此标记。 所有路由管理功能均由虚拟中心路由器提供，该路由器还启用了虚拟网络之间的传输连接。
 
 ### <a name="custom-routing"></a><a name="routing"></a>自定义路由
 
-虚拟 WAN 提供了高级路由增强功能。 能够设置自定义路由表，通过路由关联和传播优化虚拟网络路由，使用标签对路由表进行逻辑分组以及简化众多网络虚拟设备或共享服务路由方案。
+虚拟 WAN 提供了高级路由增强功能。 能够设置自定义路由表，通过路由关联和传播优化虚拟网络路由，使用标签对路由表进行逻辑分组以及简化众多网络虚拟设备 (NVA) 或共享服务路由方案。
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>全局 VNet 对等互连
 
@@ -120,17 +120,21 @@ Azure 虚拟 WAN 提供了加密 ExpressRoute 流量的功能。 此方法通过
 
 有关位置信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
 
-## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>基本和标准虚拟 WAN 中的路由表
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>用于基本和标准虚拟 WAN 的路由表
 
-路由表现在具有关联和传播功能。 预先存在的路由表是不具有这些功能的路由表。 如果中心路由中具有预先存在的路由，并希望使用新功能，请考虑以下事项：
+路由表现在具有关联和传播功能。 预先存在的路由表是不具有这些功能的路由表。 如果中心路由中有预先存在的路由，并且你希望使用新功能，请考虑以下事项：
 
-* **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月第 3 周才能完成。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再尝试在 Azure 门户中的中心的“路由表”部分创建新的路由表。
+* **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月 17 日才能完成。 如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后尝试在 Azure 门户中的中心的“路由表”部分创建新的路由表。
 
-* **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月第 3 周才能完成。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
+* **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月 17 日才能完成。 如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
 
 ## <a name="faq"></a><a name="faq"></a>常见问题解答
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="view-the-latest-feature-updates"></a><a name="new"></a>查看最新功能更新
+
+订阅 RSS 源，并在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN)页面上查看最新的虚拟 WAN 功能更新。
 
 ## <a name="next-steps"></a>后续步骤
 

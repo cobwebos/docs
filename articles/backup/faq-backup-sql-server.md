@@ -4,11 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248254"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827233"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -29,7 +30,7 @@ ms.locfileid: "84248254"
 - 如果在还原期间选择覆盖数据库，则下一次日志/差异备份将会失败，并改为触发完整备份。
 - 如果由于数据库恢复模式发生更改而需要使用完整备份来重置日志链，则会在下一个计划时间自动触发完整备份。
 
-默认已为所有用户启用自动修复功能；但是，如果你要禁用它，请执行以下操作：
+默认情况下，为所有用户启用了自动修复功能。 但是，如果选择退出它，请执行以下步骤：
 
 - 在 SQL Server 实例上的 *C:\Program Files\Azure Workload Backup\bin* 文件夹中，创建或编辑 **ExtensionSettingsOverrides.json** 文件。
 - 在 **ExtensionSettingsOverrides.json** 中，设置 *{"EnableAutoHealer": false}* 。
@@ -47,19 +48,19 @@ ms.locfileid: "84248254"
 DefaultBackupTasksThreshold 的默认值为 **20**。
 
 3. 保存更改并关闭该文件。
-4. 在 SQL Server 实例上，打开“任务管理器”。  重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
- 尽管在备份应用程序消耗大量资源时此方法有所帮助，但使用 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) 可通过更常规的方式来指定传入应用程序请求可以使用的 CPU、物理 IO 和内存量限制。
+4. 在 SQL Server 实例上，打开“任务管理器”。 重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
+ 尽管在备份应用程序消耗大量资源时此方法有所帮助，但使用 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 可通过更常规的方式来指定传入应用程序请求可以使用的 CPU、物理 IO 和内存量限制。
 
 > [!NOTE]
-> 在 UX 中，你仍可以在任何给定时间继续执行并计划任意数量的备份，但是，根据上面的示例，它们将在如5的滑动窗口中进行处理。
+> 在 UX 中，你仍然可以在任何给定时间计划任意数量的备份。 不过，它们会在如上面的示例所示的滑动窗口中进行处理。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以从次要副本运行完整备份？
 
-根据 SQL 限制，只能针对次要副本运行“仅限复制的完整备份”，而不允许“完整备份”。
+根据 SQL 限制，你可以只在辅助副本上运行复制完整备份。 但是，不允许完整备份。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>是否可以保护本地的可用性组？
 
-不是。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
+否。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>是否可跨区域保护可用性组？
 
@@ -71,7 +72,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 
-“备份作业”菜单只显示按需备份作业。  对于计划的作业，请[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+“备份作业”菜单只显示按需备份作业。 对于计划的作业，请[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>未来的数据库会自动添加备份吗？
 
@@ -79,13 +80,13 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>如果从自动保护的实例中删除数据库，备份会发生什么情况？
 
-如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。 
+如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。
 
 停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果停止受保护数据库的备份操作，将出现怎样的备份行为？
 
-如果**停止备份但保留数据**，则将来的备份不会发生，现有的恢复点将保留不变。 数据库仍被视为受保护，并显示在“备份项”下。 
+如果**停止备份但保留数据**，则将来的备份不会发生，现有的恢复点将保留不变。 数据库仍被视为受保护，并显示在“备份项”下。
 
 如果**停止备份并删除数据**，则将来的备份不会发生，现有的恢复点也会一并删除。 该数据库被视为不受保护，并显示在“配置备份”中的实例下。 但是，与其他可以手动选择或者可以自动保护的受保护数据库不同，此数据库将会灰显，并且不可选择。 重新保护此数据库的唯一方法是对该实例禁用自动保护。 接下来可以选择此数据库并对其配置保护，或者对该实例重新启用自动保护。
 
@@ -97,7 +98,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>为什么不显示自动保护实例的已添加数据库？
 
-[添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，如果按下图所示选择“重新发现数据库”来手动运行发现，则可以立即发现并保护新的数据库： 
+[添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，如果按下图所示选择“重新发现数据库”来手动运行发现，则可以立即发现并保护新的数据库：
 
   ![手动发现新添加的数据库](./media/backup-azure-sql-database/view-newly-added-database.png)
 

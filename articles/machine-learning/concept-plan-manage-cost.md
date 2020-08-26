@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012682"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
 
@@ -80,7 +81,7 @@ AmlCompute 群集的设计旨在根据工作负载动态进行缩放。 群集�
 
 还可以配置节点在纵向缩减之前处于空闲状态的时间量。 默认情况下，纵向缩减之前的空闲时间设置为 120 秒。
 
-+ 如果执行迭代较少的试验，请缩短此时间以节省成本。 
++ 如果执行迭代较少的试验，请缩短此时间以节省成本。
 + 如果迭代较多的开发/测试试验，可能需要增加此时间，这样就不用在每次更改训练脚本或环境后为纵向扩展或纵向缩减付费。
 
 可以使用 [AmlCompute SDK 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)、[AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute) 以及 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) 来配置 AmlCompute 群集，以适应 Azure 门户中不断变化的工作负载要求。
@@ -106,31 +107,13 @@ AmlCompute 附带一个[配额（或限制）配置](how-to-manage-quotas.md#azu
 * 对于[超参数优化](how-to-tune-hyperparameters.md#early-termination)，请在老虎机策略、中间值停止策略或截断选择策略中定义提前终止策略。 若要进一步控制超参数整理，请使用 `max_total_runs` 或 `max_duration_minutes` 等参数。
 * 对于[自动化机器学习](how-to-configure-auto-train.md#exit)，请使用 `enable_early_stopping` 标志设置类似的终止策略。 另外，请使用诸如 `iteration_timeout_minutes` 和 `experiment_timeout_minutes` 等属性来控制运行的最长持续时间或整个试验的最长持续时间。
 
-## <a name="use-low-priority-vms"></a>使用低优先级 VM
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>使用低优先级 Vm
 
 Azure 允许在虚拟机规模集、Batch 和机器学习服务中将未利用的多余容量作为低优先级 VM 来使用。 这些容量分配是可预先抢占的，其价格比专用 VM 低。 通常，建议为 Batch 工作负载使用低优先级 VM。 如果可通过重新提交（对于 Batch 推理）或通过重启（对于具有检查点的深度学习培训）从中断中恢复，也应使用它们。
 
 低优先级 VM 具有与专用配额值（按 VM 系列）不同的单一配额。 了解[有关 AmlCompute 配额的详细信息](how-to-manage-quotas.md)。
 
-采用以下任一方式设置 VM 优先级：
-
-* 在工作室中，在创建 VM 时选择“低优先级”****。
-
-* 使用 Python SDK，在预配配置中设置 `vm_priority` 属性。  
-
-    ```python
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                               vm_priority='lowpriority',
-                                                               max_nodes=4)
-    ```
-
-* 使用 CLI 设置 `vm-priority`：
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
-    ```
-
- 低优先级 VM 不适用于计算实例，因为后者需要支持交互式笔记本体验。 
+ 低优先级 VM 不适用于计算实例，因为后者需要支持交互式笔记本体验。
 
 ## <a name="use-reserved-instances"></a>使用预留实例
 
@@ -143,5 +126,5 @@ Azure 机器学习计算本身就支持预留实例。 如果你购买了一年�
 
 了解有关以下方面的详细信息：
 * [管理和增加资源配额](how-to-manage-quotas.md)
-* [使用[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)管理成本。
+* [通过成本分析来管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
 * [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)。

@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239513"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499120"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
@@ -35,7 +35,7 @@ ms.locfileid: "80239513"
 
 在 Azure 中，可将相关的资源分配到资源组。 使用 `az group create` 创建一个资源组。 
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组 。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -43,7 +43,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-Azure 需要一个虚拟网络才能在创建的资源之间通信。  应用程序网关子网只能包含应用程序网关。 不允许其他资源。  可以创建应用程序网关的新子网，也可以使用现有的子网。 在此示例中，你将创建两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以根据用例将应用程序网关的前端 IP 配置为公共或专用。 在此示例中，你将选择公共前端 IP 地址。
+Azure 需要一个虚拟网络才能在创建的资源之间通信。  应用程序网关子网只能包含应用程序网关。 不允许其他资源。  可为应用程序网关创建新的子网，或者使用现有的子网。 在此示例中，你将创建两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以根据用例将应用程序网关的前端 IP 配置为公共或专用。 在此示例中，你将选择公共前端 IP 地址。
 
 若要创建虚拟网络和子网，请使用 `az network vnet create`。 运行 `az network public-ip create` 来创建公共 IP 地址。
 
@@ -159,13 +159,13 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建该网关以后，即可在“应用程序网关”页的“设置”部分查看以下设置：  
+Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建该网关以后，即可在“应用程序网关”页的“设置”部分查看以下设置： 
 
-- **appGatewayBackendPool**：位于“后端池”页。  它指定所需的后端池。
-- **appGatewayBackendHttpSettings**：位于“HTTP设置”页。  它指定应用程序网关使用端口 80 和 HTTP 协议进行通信。
-- **appGatewayHttpListener**：位于“侦听器”页。  它指定与 **appGatewayBackendPool** 关联的默认侦听器。
-- **appGatewayFrontendIP**：位于“前端 IP 配置”页。  它将 *myAGPublicIPAddress* 分配到 **appGatewayHttpListener**。
-- **rule1**：位于“规则”页。  它指定与 **appGatewayHttpListener** 关联的默认路由规则。
+- **appGatewayBackendPool**：位于“后端池”页。 它指定所需的后端池。
+- **appGatewayBackendHttpSettings**：位于“HTTP设置”页。 它指定应用程序网关使用端口 80 和 HTTP 协议进行通信。
+- **appGatewayHttpListener**：位于“侦听器”页。 它指定与 **appGatewayBackendPool** 关联的默认侦听器。
+- **appGatewayFrontendIP**：位于“前端 IP 配置”页。 它将 *myAGPublicIPAddress* 分配到 **appGatewayHttpListener**。
+- **rule1**：位于“规则”页。 它指定与 **appGatewayHttpListener** 关联的默认路由规则。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 

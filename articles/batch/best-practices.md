@@ -1,14 +1,14 @@
 ---
 title: 最佳实践
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 07/14/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497771"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191813"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -56,6 +56,14 @@ ms.locfileid: "86497771"
 Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch 方案或工作流时，请牢记这一点。
 
 如果某个节点发生故障，Batch 会代表你自动尝试恢复这些计算节点。 这可能会触发在恢复的节点上重新计划任何正在运行的任务。 若要详细了解中断的任务，请参阅[重试设计](#design-for-retries-and-re-execution)。
+
+### <a name="custom-image-pools"></a>自定义映像池
+
+使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 你可以使用受支持的 Azure Marketplace 映像创建池，或者可以 [使用共享映像库映像创建自定义映像](batch-sig-images.md)。 尽管你还可以使用 [托管映像](batch-custom-images.md) 创建自定义映像池，但建议尽可能使用共享映像库创建自定义映像。 使用共享映像库有助于更快地预配池、扩展更大数量的 Vm，并在预配 Vm 时提高可靠性。
+
+### <a name="third-party-images"></a>第三方映像
+
+可以使用发布到 Azure Marketplace 的第三方映像创建池。 使用用户订阅模式 Batch 帐户时，在使用某些第三方映像创建池时，你可能会看到错误 "因 marketplace 购买资格检查而失败"。 若要解决此错误，请接受映像的发行者设置的条款。 可以使用 [Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)来实现此目的。
 
 ### <a name="azure-region-dependency"></a>Azure 区域依赖项
 
@@ -123,7 +131,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>在 Windows 节点上为短任务使用池范围
 
-在批处理节点上计划任务时，可以选择是否使用任务范围或池范围运行任务。 如果任务仅运行很短时间，则任务范围可能会因为为该任务创建自动用户帐户所需的资源而低效。 为提高效率，请考虑将这些任务设置为池范围。 有关详细信息，请参阅以[具有池范围的自动用户身份运行任务](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)。
+在批处理节点上计划任务时，可以选择是否使用任务范围或池范围运行任务。 如果任务仅运行很短时间，则任务范围可能会因为为该任务创建自动用户帐户所需的资源而低效。 为提高效率，请考虑将这些任务设置为池范围。 有关详细信息，请参阅以 [具有池范围的自动用户身份运行任务](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)。
 
 ## <a name="nodes"></a>Nodes
 
@@ -149,7 +157,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="manage-os-upgrades"></a>管理 OS 升级
 
-对于用户订阅模式批处理帐户，自动 OS 升级可能会中断任务进度，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少这些中断导致的错误。 我们还建议[为不应运行任务的时间安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
+对于用户订阅模式批处理帐户，自动 OS 升级可能会中断任务进度，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks) 有助于减少这些中断导致的错误。 我们还建议 [为不应运行任务的时间安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
 ## <a name="isolation-security"></a>隔离安全性
 
@@ -178,7 +186,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 ### <a name="honoring-dns"></a>遵守 DNS
 
-确保系统遵守 Batch 帐户服务 URL 的 DNS 生存时间 (TTL)。 此外，请确保批处理服务的客户端和其他连接机制不依赖 IP 地址（或[创建具有静态公共 IP 地址的池](create-pool-public-ip.md)，如下所述）。
+确保系统遵守 Batch 帐户服务 URL 的 DNS 生存时间 (TTL)。 此外，请确保批处理服务的客户端和其他连接机制不依赖 IP 地址 (或 [创建一个具有静态公共 IP 地址的池](create-pool-public-ip.md) ，如下) 所述。
 
 如果请求收到 5xx 级别 HTTP 响应并且响应中包含“Connection: close”标头，则 Batch 服务客户端应遵循建议关闭现有连接，重新解析 Batch 帐户服务 URL 的 DNS，然后在新的连接上尝试后续请求。
 
@@ -188,7 +196,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 ### <a name="static-public-ip-addresses"></a>静态公共 IP 地址
 
-通常，批处理池中的虚拟机可通过公共 IP 地址进行访问，该地址可以在池的生存期内更改。 这可以使与数据库或其他外部服务进行交互，以限制对特定 IP 地址的访问。 若要确保池中的公共 IP 地址不会发生意外更改，可以使用您控制的一组静态公共 IP 地址创建一个池。 有关详细信息，请参阅[使用指定的公共 IP 地址创建 Azure Batch 池](create-pool-public-ip.md)。
+通常，批处理池中的虚拟机可通过公共 IP 地址进行访问，该地址可以在池的生存期内更改。 这可以使与数据库或其他外部服务进行交互，以限制对特定 IP 地址的访问。 若要确保池中的公共 IP 地址不会发生意外更改，可以使用您控制的一组静态公共 IP 地址创建一个池。 有关详细信息，请参阅 [使用指定的公共 IP 地址创建 Azure Batch 池](create-pool-public-ip.md)。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch 节点的基本依赖项
 

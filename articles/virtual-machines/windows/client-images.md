@@ -4,16 +4,16 @@ description: 如何使用 Visual Studio 订阅权益，在 Azure 中针对开发
 author: cynthn
 ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083268"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292058"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
 如果有相应的 Visual Studio（以前为 MSDN）订阅，可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企业版 (x64) 实施开发/测试方案。 本文概述在 Azure 中运行 Windows 7、Windows 8.1、Windows 10 企业版和使用以下 Azure 库映像所要满足的条件。
@@ -58,5 +58,4 @@ ms.locfileid: "82083268"
 ![Azure 帐户门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>后续步骤
-现在，可以使用 [PowerShell](quick-create-powershell.md)、[Resource Manager 模板](ps-template.md)或 [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 部署 VM。
-
+现在，可以使用 [PowerShell](quick-create-powershell.md)、[Resource Manager 模板](ps-template.md)或 [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) 部署 VM。

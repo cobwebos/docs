@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 54082daeeee2d5cc894aee49e2c3456e377637f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 318e41089f096f22d17faaa77863fe6af54a3553
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74771305"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483731"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放用于 MySQL 服务器的 Azure 数据库
 此示例 CLI 脚本在查询指标后为单个 Azure Database for MySQL 服务器缩放计算和存储。 计算可以增加或减少。 存储只能增加。
@@ -43,5 +43,5 @@ ms.locfileid: "74771305"
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for MySQL 计算和存储](../concepts-pricing-tiers.md)
-- 尝试其他脚本：[Azure Database for MySQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 请尝试其他脚本：[用于 MySQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)
 - 详细了解 [Azure CLI](/cli/azure)

@@ -1,19 +1,19 @@
 ---
 title: 向 Android maps 添加符号层 |Microsoft Azure 映射
-description: 在本文中，你将了解如何通过使用 Microsoft Azure map Android SDK 将符号层添加到地图上，从而在地图上呈现点数据。
-author: philmea
-ms.author: philmea
+description: 了解如何向地图添加标记。 查看一个示例，该示例使用 Azure Maps Android SDK 添加一个符号层，其中包含来自数据源的基于点的数据。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b6b73fef368dc8dec5d8c042cdac1d3cea899450
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242434"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037382"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加符号层 Android SDK
 

@@ -4,16 +4,16 @@ description: 本文提供有关如何为 Linux VM 启用 Microsoft Azure 磁盘�
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510546"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830438"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -34,7 +34,7 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 ### <a name="supported-vms"></a>支持的 VM
 
-Linux VM 具有[各种大小](sizes.md)。 Azure 磁盘加密不适用于[基本的 A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)，也不适用于不符合以下最低内存要求的虚拟机：
+Linux VM 具有[各种大小](../sizes.md)。 Azure 磁盘加密不适用于[基本的 A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)，也不适用于不符合以下最低内存要求的虚拟机：
 
 | 虚拟机 | 内存最低要求 |
 |--|--|
@@ -139,7 +139,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 经过了优化，可从命令行管理 Azure 资源。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux VM 上启用磁盘加密。 |
 | 密钥加密密钥 (KEK) | 可用于保护或包装机密的非对称密钥 (RSA 2048)。 可提供硬件安全模块 (HSM) 保护的密钥或软件保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
-| PowerShell cmdlet | 有关详细信息，请参阅 [Azure PowerShell cmdlet](/powershell/azure/overview)。 |
+| PowerShell cmdlet | 有关详细信息，请参阅 [Azure PowerShell cmdlet](/powershell/azure/)。 |
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71266063"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653539"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
@@ -37,9 +37,9 @@ ms.locfileid: "71266063"
 
 以下文章很好地概述了如何在 Azure 中使用 SAP HANA：
 
-- [在 Azure Vm 上手动安装单实例 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [在 Azure Vm 上手动安装单实例 SAP HANA](./hana-get-started.md)
 - [在 Azure VM 中设置 SAP HANA 系统复制](sap-hana-high-availability.md)
-- [备份 Azure VM 上的 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [备份 Azure VM 上的 SAP HANA](./sap-hana-backup-guide.md)
 
 熟悉关于 SAP HANA 的以下文章也是一个不错的主意：
 
@@ -52,24 +52,24 @@ ms.locfileid: "71266063"
 - [SAP HANA 服务自动重启](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [配置 SAP HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-除了熟悉如何在 Azure 中部署 VM 外，在 Azure 中定义可用性体系结构之外，我们还建议你先阅读[在 Azure 中管理 Windows 虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
+除了熟悉如何在 Azure 中部署 VM 外，在 Azure 中定义可用性体系结构之外，我们还建议你先阅读[在 Azure 中管理 Windows 虚拟机的可用性](../../windows/manage-availability.md)。
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure 组件的服务级别协议
 
 Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用性 SLA。 所有 SLA 都有文档记录。 有关详细信息，请参阅 [Microsoft Azure 服务级别协议](https://azure.microsoft.com/support/legal/sla/)。 
 
-[虚拟机的 sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)为三种不同的配置描述三个不同的 sla：
+[虚拟机的 sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 为三种不同的配置描述三个不同的 sla：
 
-- 将 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) 用于 OS 磁盘和所有数据磁盘的单个 VM。 此选项提供每月 99.9% 的正常运行时间。
-- 组织到 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中的多个（至少两个）VM。 此选项提供每月 99.95% 的正常运行时间。
-- 在[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中组织的多个（至少两个） vm。 此选项提供每月99.99% 的运行时间。
+- 将 [Azure 高级 SSD](../../managed-disks-overview.md) 用于 OS 磁盘和所有数据磁盘的单个 VM。 此选项提供每月 99.9% 的正常运行时间。
+- 组织到 [Azure 可用性集](../../windows/tutorial-availability-sets.md)中的多个（至少两个）VM。 此选项提供每月 99.95% 的正常运行时间。
+- 多 (在 [可用性区域](../../../availability-zones/az-overview.md)中组织的至少两个) vm。 此选项提供每月99.99% 的运行时间。
 
 对照 Azure 组件可以提供的 SLA 度量你的可用性要求。 然后，选择你的 SAP HANA 方案来实现所需级别的可用性。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[一个 Azure 区域内的 SAP HANA 可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)。
-- 了解[跨 Azure 区域的 SAP HANA 可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)。 
+- 了解[一个 Azure 区域内的 SAP HANA 可用性](./sap-hana-availability-one-region.md)。
+- 了解[跨 Azure 区域的 SAP HANA 可用性](./sap-hana-availability-across-regions.md)。 
 
 
 
@@ -86,5 +86,3 @@ Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用�
 
 
   
-
-

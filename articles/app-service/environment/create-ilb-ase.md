@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: c176a1169bf8acb41eeb59f916ba30df677184a3
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114635"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080586"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -48,7 +48,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 若要创建 ILB ASE，请执行以下操作：
 
-1. 在 Azure 门户中选择“创建资源”   > “Web”   > “应用服务环境”  。
+1. 在 Azure 门户中选择“创建资源” > “Web” > “应用服务环境”。
 
 2. 选择订阅。
 
@@ -71,14 +71,14 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
     ![ASE 网络][1]
 
-7. 依次选择“查看并创建”、“创建”。  
+7. 依次选择“查看并创建”、“创建”。 
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>在 ILB ASE 中创建应用 ##
 
 在 ILB ASE 中创建应用通常与在 ASE 中创建应用相同。
 
-1. 在 Azure 门户中，选择“创建资源” > “Web” > “Web 应用”。   
+1. 在 Azure 门户中，选择“创建资源” > “Web” > “Web 应用”。  
 
 1. 输入应用的名称。
 
@@ -92,7 +92,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 1. 选择或创建应用服务计划。 
 
-1. 准备就绪后，依次选择“查看并创建”、“创建”。  
+1. 准备就绪后，依次选择“查看并创建”、“创建”。 
 
 ### <a name="web-jobs-functions-and-the-ilb-ase"></a>Web 作业、函数和 ILB ASE 
 
@@ -100,7 +100,7 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 
 ## <a name="dns-configuration"></a>DNS 配置 
 
-使用外部 VIP 时，DNS 由 Azure 管理。 在 ASE 中创建的任何应用都会自动添加到 Azure DNS，这是一个公用 DNS。 在 ILB ASE 中，必须管理自己的 DNS。 对 ILB ASE 使用的域后缀取决于 ASE 的名称。 域后缀为 *&lt;ASE 名称&gt;.appserviceenvironment.net*。 ILB 的 IP 地址显示在门户中的“IP 地址”。  
+使用外部 VIP 时，DNS 由 Azure 管理。 在 ASE 中创建的任何应用都会自动添加到 Azure DNS，这是一个公用 DNS。 在 ILB ASE 中，必须管理自己的 DNS。 对 ILB ASE 使用的域后缀取决于 ASE 的名称。 域后缀为 *&lt;ASE 名称&gt;.appserviceenvironment.net*。 ILB 的 IP 地址显示在门户中的“IP 地址”。 
 
 若要配置 DNS：
 
@@ -160,4 +160,4 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此�
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
-[linuxapp]: ../containers/app-service-linux-intro.md
+[linuxapp]: ../overview.md#app-service-on-linux

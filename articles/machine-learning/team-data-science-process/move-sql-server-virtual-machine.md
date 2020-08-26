@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012172"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 
@@ -44,7 +44,7 @@ ms.locfileid: "86077025"
 * 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 * 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。
-* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>将数据从平面文件源移动到 Azure VM 上的 SQL Server
 如果数据位于平面文件中（以行/列格式排列），则可以通过以下方法将它移到 Azure 上的 SQL Server 虚拟机：
@@ -212,7 +212,7 @@ SQL Server Management Studio 中的数据库备份/还原选项的屏幕快照�
 ## <a name="resources"></a>资源
 [将数据库迁移到 Azure VM 上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Azure 虚拟机上的 SQL Server 概述](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+[Azure 虚拟机上 SQL Server 的概述](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

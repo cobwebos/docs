@@ -1,16 +1,17 @@
 ---
 title: 部署概述 - Avere vFXT for Azure
-description: Avere vFXT for Azure 部署概述
+description: 了解如何使用此概述为 Azure 群集部署 Avere vFXT。 相关文章具有特定的部署说明。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c63fdf2164dd4dce12912669eec29c79755cc2a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153677"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271220"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
 
@@ -71,8 +72,8 @@ VFXT 群集启动并运行后，在使用之前仍需执行一些配置步骤。
 
    由于 Avere vFXT 是可伸缩的多客户端缓存，将数据移动到新的后端存储容器的最佳方式是使用多客户端多线程文件复制策略。
 
-   如果需要将工作集数据移到新的 Blob 容器或其他后端存储系统，请按照将[数据移动到 vFXT 群集](avere-vfxt-data-ingest.md)中的说明进行操作。
+   如果需要将工作集数据移到新的 Blob 容器或其他后端存储系统，请按照将 [数据移动到 vFXT 群集](avere-vfxt-data-ingest.md)中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-继续[准备创建 Avere vFXT](avere-vfxt-prereqs.md)以完成必备任务。
+继续 [准备创建 Avere vFXT](avere-vfxt-prereqs.md) 以完成必备任务。

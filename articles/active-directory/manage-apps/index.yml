@@ -9,15 +9,15 @@ metadata:
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 10/10/2019
-  author: msmimart
-  ms.author: mimart
+  author: kenwith
+  ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
-  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85339199"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88209104"
 landingContent:
 - title: 关于应用程序管理
   linkLists:
@@ -25,8 +25,12 @@ landingContent:
     links:
     - text: 什么是应用程序管理？
       url: what-is-application-management.md
-    - text: SaaS 应用教程
-      url: /azure/active-directory/saas-apps/
+    - text: 什么是单一登录？
+      url: what-is-single-sign-on.md
+  - linkListType: quickstart
+    links:
+    - text: 快速入门系列
+      url: view-applications-portal.md
 - title: 管理云应用和单一登录
   linkLists:
   - linkListType: concept
@@ -35,16 +39,10 @@ landingContent:
       url: what-is-single-sign-on.md
     - text: 最终用户体验
       url: end-user-experiences.md
-  - linkListType: quickstart
-    links:
-    - text: 添加库应用
-      url: add-application-portal.md
   - linkListType: how-to-guide
     links:
-    - text: 添加非库应用
-      url: add-non-gallery-app.md
     - text: 配置单一登录
-      url: configure-single-sign-on-non-gallery-applications.md
+      url: configure-saml-single-sign-on.md
     - text: 向应用分配用户或组
       url: assign-user-or-group-access-portal.md
 - title: 为应用预配用户和组

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317988"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
 
@@ -41,21 +41,21 @@ ms.locfileid: "86499539"
 
 | 连接的源 | 支持 | 说明 |
 |---|---|---|
-| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
-| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
-| [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
+| [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
+| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [SCOM 管理组](../platform/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
 | [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必须在 Windows Server 2012 或更高版本的 Hyper-V 主机而非虚拟机上安装 Windows 或 Operations Manager 代理。
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 执行以下步骤，将容量和性能解决方案添加到工作区。
 
-- 使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中描述的过程，将容量和性能解决方案添加到 Log Analytics 工作区。
+- 使用[从解决方案库中添加 Log Analytics 解决方案](./solutions.md)中描述的过程，将容量和性能解决方案添加到 Log Analytics 工作区。
 
 ## <a name="management-packs"></a>管理包
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 更新容量和性能解决方案后，版本号会更改。
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../platform/om-agents.md)。
 
 ## <a name="using-the-solution"></a>使用解决方案
 
@@ -129,4 +129,5 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看详细的容量和性能数据。
+* 使用 [Log Analytics 中的日志搜索](../log-query/log-query-overview.md)查看详细的容量和性能数据。
+

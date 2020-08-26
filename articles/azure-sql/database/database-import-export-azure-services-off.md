@@ -1,6 +1,6 @@
 ---
-title: 导入或导出 Azure SQL 数据库，但不允许 Azure 服务访问该服务器。
-description: 导入或导出 Azure SQL 数据库，但不允许 Azure 服务访问该服务器。
+title: 导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器。
+description: 导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器。
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -11,16 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031478"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543752"
 ---
-# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库，但不允许 Azure 服务访问服务器
+# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文介绍如何在服务器上的 "*允许 Azure 服务*" 设置为 "*关闭*" 时导入或导出 azure SQL 数据库。 工作流使用 Azure 虚拟机运行 SqlPackage 来执行导入或导出操作。
+本文介绍如何在服务器上将“允许 Azure 服务”设置为“关闭”的情况下导入或导出数据库 。 工作流使用 Azure 虚拟机运行 SqlPackage 来执行导入或导出操作。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -33,9 +34,7 @@ ms.locfileid: "84031478"
 此模板允许你使用最新的修补版本，为 Windows 版本使用几个不同的选项部署简单的 Windows 虚拟机。 这会在资源组位置中部署 A2 大小 VM，并返回 VM 的完全限定域名。
 <br><br>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![显示标记为 "部署到 Azure" 按钮的图像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 有关详细信息，请参阅[WINDOWS VM 的非常简单的部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
 
@@ -47,7 +46,7 @@ ms.locfileid: "84031478"
 
    ![VM](./media/database-import-export-azure-services-off/vm.png)  
 
-2. 选择“连接”。
+2. 选择“连接” 。
 
    此时会显示远程桌面协议文件（.rdp 文件）窗体，其中包含虚拟机的公共 IP 地址和端口号。
 
@@ -58,13 +57,13 @@ ms.locfileid: "84031478"
    > [!NOTE]
    > 也可使用 SSH 连接到 VM。
 
-4. 关闭“连接到虚拟机”窗体。****
+4. 关闭“连接到虚拟机”窗体。
 5. 若要连接到 VM，请打开下载的 RDP 文件。
-6. 出现提示时，选择“连接”****。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
+6. 出现提示时，选择“连接”。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
-7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。****
+7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。
 
-8. 你可能会在登录过程中收到证书警告。 选择“是”或“继续”以继续连接。********
+8. 你可能会在登录过程中收到证书警告。 选择“是”或“继续”以继续连接。 
 
 ## <a name="install-sqlpackage"></a>安装 SqlPackage
 
@@ -78,7 +77,7 @@ ms.locfileid: "84031478"
 
 以下步骤针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，并启用从虚拟机的连接。
 
-1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。******** 此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称（例如**servername.database.windows.net**），并提供了进一步配置的选项。
+1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称（例如**servername.database.windows.net**），并提供了进一步配置的选项。
 
 2. 请复制此完全限定的服务器名称，以便在连接到服务器及其数据库时使用。
 
@@ -88,15 +87,15 @@ ms.locfileid: "84031478"
 
    ![服务器级别 IP 防火墙规则](./media/database-import-export-azure-services-off/server-firewall-rule.png)
 
-4. 在工具栏上选择“添加客户端 IP”，将虚拟机的公共 IP 地址添加到新的服务器级 IP 防火墙规则。**** 服务器级 IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+4. 在工具栏上选择“添加客户端 IP”，将虚拟机的公共 IP 地址添加到新的服务器级 IP 防火墙规则。 服务器级 IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 选择“保存”。 将为虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，并在服务器上打开端口1433。
+5. 选择“保存” 。 此时会针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，在服务器上打开端口 1433。
 
 6. 关闭“防火墙设置”页。
 
 ## <a name="export-a-database-using-sqlpackage"></a>使用 SqlPackage 导出数据库
 
-若要使用[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage)命令行实用工具导出 Azure SQL 数据库，请参阅[导出参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SqlPackage 实用工具随附了最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)；你也下载最新版本的 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
+若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令行实用工具导出 Azure SQL 数据库，请参阅[导出参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SqlPackage 实用工具随附了最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)；你也下载最新版本的 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
 
 我们建议在大多数生产环境中使用 SqlPackage 实用工具来实现缩放和提高性能。 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 
@@ -112,14 +111,14 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 在大多数生产环境中，建议使用 SqlPackage 而不是 Azure 门户来实现缩放和性能。 有关 SQL Server 客户咨询团队使用 `BACPAC` 文件进行迁移的博客，请参阅[使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
 
-以下 SqlPackage 命令将**AdventureWorks2017**数据库从本地存储导入到 Azure SQL 数据库。 它将创建名为 myMigratedDatabase**** 的新数据库，其中包含****“高级”服务层级和 P6**** 服务目标。 根据你的环境更改这些值。
+以下 SqlPackage 命令将 AdventureWorks2017 数据库从本地存储导入到某个 Azure SQL 数据库。 它将创建名为 myMigratedDatabase 的新数据库，其中包含“高级”服务层级和 P6 服务目标。 根据你的环境更改这些值。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> 若要从企业防火墙之后连接到 tAzure SQL 数据库，防火墙必须打开端口1433。
+> 若要从公司防火墙后连接到 Azure SQL 数据库，该防火墙必须打开端口 1433。
 
 此示例演示如何通过 Active Directory 通用身份验证，使用 SqlPackage 来导入数据库。
 

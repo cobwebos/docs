@@ -7,14 +7,14 @@ ms.subservice: imaging
 ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: dd0cf450ca63349d29aba3d65f3c76f40a44be2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792830"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503627"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
@@ -55,7 +55,7 @@ az vm create \
 ```
 
 > [!IMPORTANT]
-> [az vm create](/cli/azure/vm) 命令的输出中会显示 VM 的 ID  。 请将此 ID 复制到安全的位置，以便稍后在本教程中使用。
+> [az vm create](/cli/azure/vm) 命令的输出中会显示 VM 的 ID。 请将此 ID 复制到安全的位置，以便稍后在本教程中使用。
 
 [az vm create](/cli/azure/vm) 命令的输出中还会显示 VM 的公共 IP 地址。 通过 SSH 连接到 VM 的公共 IP 地址，如下所示：
 
@@ -86,17 +86,17 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="create-an-image-definition"></a>创建映像定义
 
-映像定义为映像创建逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 
 
 映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 
 
 请确保映像定义的类型正确。 如果已通用化 VM（使用适用于 Windows 的 Sysprep，或适用于 Linux 的 waagent -deprovision），则应使用 `--os-state generalized` 创建通用化映像定义。 若要在不删除现有用户帐户的情况下使用 VM，请使用 `--os-state specialized` 创建专用化映像定义。
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](../virtual-machines/linux/shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux OS 映像  。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -111,14 +111,14 @@ az sig image-definition create \
 ```
 
 > [!IMPORTANT]
-> 该命令的输出中会显示映像定义的 ID  。 请将此 ID 复制到安全的位置，以便稍后在本教程中使用。
+> 该命令的输出中会显示映像定义的 ID。 请将此 ID 复制到安全的位置，以便稍后在本教程中使用。
 
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 从 VM 创建映像版本。  
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch    。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此示例中，映像版本为 1.0.0，我们将在“美国中南部”区域创建 1 个副本，并在“美国东部 2”区域创建 1 个副本    。 复制区域必须包含源 VM 所在的区域。
 
@@ -135,9 +135,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> 需要等待映像版本的生成和复制完全完成，然后才能使用同一个托管映像来创建另一个映像版本。
+> 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_zrs` 在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中存储映像。
+> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_zrs` 在[区域冗余存储](../storage/common/storage-redundancy.md)中存储映像。
 >
 
 
@@ -150,7 +150,7 @@ az sig image-version create \
 
 使用 `--image` 的映像定义 ID 从可用的最新映像版本创建规模集实例。 还可以通过提供 `--image` 的映像版本 ID 从特定版本创建规模集实例。 
 
-从前面创建的最新 myImageDefinition 映像版本创建名为“myScaleSet”的规模集   。
+从前面创建的最新 myImageDefinition 映像版本创建名为“myScaleSet”的规模集 。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -197,7 +197,7 @@ az network public-ip show \
 
 ## <a name="share-the-gallery"></a>共享库
 
-可以使用基于角色的访问控制 (RBAC) 在订阅之间共享映像。 可以在库、映像定义或映像版本级别共享映像。 任何对映像版本具有读取权限的用户，即使跨订阅，也能够使用映像版本部署 VM。
+可以使用基于角色的访问控制 (RBAC) 在订阅之间共享映像。 可以在库、映像定义或映像版本中共享映像。 任何对映像版本具有读取权限的用户，即使跨订阅，也能够使用映像版本部署 VM。
 
 建议在库级别与其他用户进行共享。 若要获取库的对象 ID，请使用 [az sig show](/cli/azure/sig#az-sig-show)。
 
@@ -217,11 +217,11 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-有关如何使用 RBAC 共享资源的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)。
+有关如何使用 RBAC 共享资源的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../role-based-access-control/role-assignments-cli.md)。
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [az group delete](/cli/azure/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+若要删除规模集和其他资源，请使用 [az group delete](/cli/azure/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

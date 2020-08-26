@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76932405"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924268"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -29,7 +29,7 @@ Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上�
 
  Azure DNS 基于 Azure 资源管理器，后者提供以下功能：
 
-* [基于角色的访问控制](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：控制谁有权访问针对组织的特定操作。
+* [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：控制谁有权访问针对组织的特定操作。
 
 * [活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)：监视你的组织中的用户对资源进行了怎样的修改，或者在进行故障排除时查找错误。
 
@@ -70,4 +70,3 @@ Azure DNS 支持别名记录集。 可以使用别名记录集来引用 Azure �
 * 若要了解如何在 Azure DNS 中创建区域，请参阅[创建 DNS 区域](./dns-getstarted-create-dnszone-portal.md)。
 
 * 有关 Azure DNS 的常见问题，请参阅 [Azure DNS 常见问题](dns-faq.md)。
-

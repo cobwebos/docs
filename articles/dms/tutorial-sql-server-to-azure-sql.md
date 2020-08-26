@@ -3,8 +3,8 @@ title: 教程：将 SQL Server 脱机迁移到 SQL 单一数据库
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务从 SQL Server 脱机迁移到 Azure SQL 数据库。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d2353364767dfb1fd73d517926d0fa63c11a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087707"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库
 

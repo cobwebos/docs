@@ -3,12 +3,13 @@ title: Azure CLI 脚本示例 - Batch 中的 Windows 池
 description: 此脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中创建和管理 Windows 计算节点池的命令。
 ms.topic: sample
 ms.date: 12/12/2019
-ms.openlocfilehash: 6e7d53ea4ca0a320cd70563ed982c690fa30542c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8863831d236581f07df85acda26268659e3a7d8b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963965"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500259"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Windows 池
 

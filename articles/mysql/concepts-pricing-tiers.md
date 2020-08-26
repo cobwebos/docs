@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119882"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171003"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
 在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MySQL 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-| Attribute   | **基本** | **常规用途** | **内存优化** |
+| 属性   | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ ms.locfileid: "86119882"
 
 预配的存储是指可供 Azure Database for MySQL 服务器使用的存储容量。 此存储用于数据库文件、临时文件、事务日志和 MySQL 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-| 存储属性   | Basic | 常规用途 | 内存优化 |
+| 存储属性   | 基本 | 常规用途 | 内存优化 |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
@@ -67,7 +67,7 @@ ms.locfileid: "86119882"
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-如果可用存储小于预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，当可用存储不到 5 GB 时，会将该服务器标记为只读。
+如果可用存储小于预配存储大小的 5%，则预配存储小于等于 100 GB 的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，当可用存储不到 5 GB 时，会将该服务器标记为只读。
 
 例如，如果已预配 110 GB 的存储，而实际使用量超过 105 GB，则会将服务器标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 256 MB 时，服务器会标记为只读。
 
@@ -77,15 +77,15 @@ ms.locfileid: "86119882"
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 
-存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 对于低于等于 100 GB 预配存储的服务器，如果可用存储低于预配存储的10%，则预配的存储大小将增加 5 GB。 对于预配存储超过 100 GB 的服务器，预配的存储大小将在预配的存储大小低于 10 GB 时增加5%。 适用上面指定的最大存储限制。
+存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 对于预配存储小于等于 100 GB 的服务器，当可用存储小于预配存储的 10% 时，预配存储大小会增加 5 GB。 对于预配存储大于 100 GB 的服务器，可用存储空间小于预配存储大小 10 GB 时，预配存储大小会增加 5%。 适用上面指定的最大存储限制。
 
-例如，如果你预配了 1000 GB 的存储空间，并且实际利用率超过 990 GB，则服务器存储大小将增加到 1050 GB。 或者，如果已预配 10 GB 的存储，则当可用存储少于 1 GB 时，存储大小会增加到 15 GB。
+例如，如果已预配 1000 GB 的存储，而实际使用量超过 990 GB，则服务器存储大小会增加到 1050 GB。 或者，如果已预配 10 GB 的存储，则当可用存储少于 1 GB 时，存储大小会增加到 15 GB。
 
 请记住，存储只能增加，不能减少。
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>备份存储 
 
-服务自动对服务器进行备份。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 若要详细了解备份，请参阅[概念文章](concepts-backup.md)。
+Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出此数量的任何备份存储都按每月 GB 的费率计费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250 GB 的备份的存储按[定价模式](https://azure.microsoft.com/pricing/details/mysql/)收费。 若要了解影响备份存储使用情况、监视和控制备份存储成本的因素，可参阅[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 
@@ -97,7 +97,7 @@ ms.locfileid: "86119882"
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mysql/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。  如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”****，展开“数据库”**** 类别，选择“Azure Database for MySQL”**** 自定义选项。
+有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mysql/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”****，展开“数据库”**** 类别，选择“Azure Database for MySQL”**** 自定义选项。
 
 ## <a name="next-steps"></a>后续步骤
 

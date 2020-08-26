@@ -3,16 +3,16 @@ title: Azure 资源-QnA Maker
 description: QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何结合使用它们，可以在出现问题时查找并解决问题。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171068"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548423"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
-QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何_结合_使用它们，可以在出现问题时查找并解决问题。
+QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何 _结合_ 使用它们，可以在出现问题时查找并解决问题。
 
 ## <a name="resource-planning"></a>资源规划
 
@@ -32,7 +32,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 * **需要的服务吞吐量**：
     * 根据需要为应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](https://docs.microsoft.com/azure/app-service/manage-scale-up)或收缩应用。
-    * 这还会影响 Azure**认知搜索**SKU 选择，有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/search/search-sku-tier)。 此外，你可能还需要用副本调整认知搜索[容量](../../../search/search-capacity-planning.md)。
+    * 这还会影响 Azure **认知搜索** SKU 选择，有关详细信息，请参阅 [此处](https://docs.microsoft.com/azure/search/search-sku-tier)。 此外，你可能还需要用副本调整认知搜索 [容量](../../../search/search-capacity-planning.md) 。
 
 * **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，根据不同的使用者域的数量决定所需的知识库数。 一旦使用者域 (适用于一种语言) 应在一个知识库中。
 
@@ -64,11 +64,11 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 |升级|原因|
 |--|--|
-|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)QnA Maker 管理 SKU|你需要在知识库中具有更多的 QnA 对或文档源。|
-|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)应用服务 SKU 和检查认知搜索层并[创建认知搜索副本](../../../search/search-capacity-planning.md)|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
-|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)Azure 认知搜索服务|你计划有多个知识库。|
+|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker 管理 SKU|你需要在知识库中具有更多的 QnA 对或文档源。|
+|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) 应用服务 SKU 和检查认知搜索层并 [创建认知搜索副本](../../../search/search-capacity-planning.md)|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
+|[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure 认知搜索服务|你计划有多个知识库。|
 
-通过[在 Azure 门户中更新应用服务](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)来获取最新的运行时更新。
+通过 [在 Azure 门户中更新应用服务](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)来获取最新的运行时更新。
 
 ## <a name="resource-naming-considerations"></a>资源命名注意事项
 
@@ -116,7 +116,7 @@ QnA Maker 资源的资源名称（如 `qna-westus-f0-b` ）还用于命名其他
 
 #### <a name="language-usage"></a>语言用法
 
-在 QnA Maker 资源中创建的第一个知识库用于确定认知搜索资源及其所有索引的_单一_语言集。 只能为 QnA Maker 服务_设置一种语言_。
+在 QnA Maker 资源中创建的第一个知识库用于确定认知搜索资源及其所有索引的 _单一_ 语言集。 只能为 QnA Maker 服务 _设置一种语言_ 。
 
 ### <a name="qna-maker-resource"></a>QnA Maker 资源
 
@@ -126,19 +126,19 @@ QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处�
 
 #### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker 资源配置设置
 
-在[QnA Maker 门户](https://qnamaker.ai)中创建新知识库时，"**语言**" 设置是在资源级别应用的唯一设置。 您在为资源创建第一个知识库时选择语言。
+在 [QnA Maker 门户](https://qnamaker.ai)中创建新知识库时，" **语言** " 设置是在资源级别应用的唯一设置。 您在为资源创建第一个知识库时选择语言。
 
 ### <a name="app-service-and-app-service-plan"></a>应用服务和应用服务计划
 
 [应用服务](../../../app-service/index.yml)由客户端应用程序用于通过运行时终结点访问已发布的知识库。
 
-若要查询已发布的知识库，所有发布的知识库均使用相同的 URL 终结点，但在路由中指定**知识库 ID** 。
+若要查询已发布的知识库，所有发布的知识库均使用相同的 URL 终结点，但在路由中指定 **知识库 ID** 。
 
 `{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md)用于收集聊天日志和遥测数据。 查看常见的[Kusto 查询](../how-to/get-analytics-knowledge-base.md)以获取有关服务的信息。
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) 用于收集聊天日志和遥测数据。 查看常见的 [Kusto 查询](../how-to/get-analytics-knowledge-base.md) 以获取有关服务的信息。
 
 ## <a name="share-services-with-qna-maker"></a>与 QnA Maker 共享服务
 
@@ -156,44 +156,44 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 如果通过门户创建 QnA 服务及其依赖项 (如搜索) ，系统会为您创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
 
-了解[如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
+了解 [如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
 
 ## <a name="management-service-region"></a>管理服务区域
 
-QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此服务仅在**美国西部**区域提供。 此美国西部服务中未存储任何客户数据。
+QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此服务仅在 **美国西部** 区域提供。 此美国西部服务中未存储任何客户数据。
 
 ## <a name="keys-in-qna-maker"></a>QnA Maker 中的密钥
 
-QnA Maker 服务处理两种类型的密钥：**创作密钥**和用于在应用服务中托管的运行时的**查询终结点密钥**。
+QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应用服务中托管的运行时的 **查询终结点密钥** 。
 
-如果你正在寻找**订阅密钥**，[术语已更改](#subscription-keys)。
+如果你正在寻找 **订阅密钥**， [术语已更改](#subscription-keys)。
 
 通过 Api 向服务发出请求时使用这些密钥。
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|名称|位置|用途|
+|名称|位置|目的|
 |--|--|--|
-|创作密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用来访问 [QnA Maker 管理服务 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
-|查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 "**服务设置**" 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
+|创作密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 " **服务设置** " 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
 
 ### <a name="subscription-keys"></a>订阅密钥
 
-术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是**订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于运行时)  (使用的创作和查询终结点密钥。
+术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是 **订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于运行时)  (使用的创作和查询终结点密钥。
 
 您必须知道该密钥所访问的内容、知识库管理或知识库查询，才能知道您需要找到哪个密钥。
 
 ## <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
 
-* 通过[配置虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)来保护认知服务资源免受公共访问。
+* 通过 [配置虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)来保护认知服务资源免受公共访问。
 * 从公共访问中保护应用服务 (QnA 运行时) ：
     * 仅允许来自认知服务 Ip 的流量。 服务标记 "CognitiveServicesManagement" 中已包含这些项。 这对于创作 Api (创建/更新 KB) ，以相应地调用应用服务和更新 Azure 搜索服务是必需的。
     * 确保还允许使用其他入口点（如机器人服务） QnA Maker 门户 (可以是你的公司网络) 等。
-    * 查看[有关服务标记的详细信息。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+    * 查看 [有关服务标记的详细信息。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 QnA Maker[知识库](knowledge-base.md)
-* 了解[知识库生命周期](development-lifecycle-knowledge-base.md)
-* 查看服务和知识库[限制](../limits.md)
+* 了解 QnA Maker [知识库](knowledge-base.md)
+* 了解 [知识库生命周期](development-lifecycle-knowledge-base.md)
+* 查看服务和知识库 [限制](../limits.md)
 

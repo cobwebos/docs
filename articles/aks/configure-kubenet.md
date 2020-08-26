@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255432"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543361"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -30,7 +30,7 @@ ms.locfileid: "86255432"
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
-> 若要使用 Windows Server 节点池，必须使用 Azure CNI。 使用 kubenet 作为网络模型不适用于 Windows Server 容器。
+> 若要使用 Windows Server 节点池，必须使用 Azure CNI。 对于 Windows Server 容器，无法将 kubenet 用作网络模型。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -38,15 +38,26 @@ ms.locfileid: "86255432"
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>使用自有子网的 kubenet 网络概述
 
-在许多环境中，你已定义了具有分配的 IP 地址范围的虚拟网络和子网。 这些虚拟网络资源用于支持多个服务和应用程序。 若要提供网络连接，AKS 群集可以使用 *kubenet*（基本网络）或 Azure CNI（高级网络）。**
+在许多环境中，你已定义了具有分配的 IP 地址范围的虚拟网络和子网。 这些虚拟网络资源用于支持多个服务和应用程序。 若要提供网络连接，AKS 群集可以使用 *kubenet*（基本网络）或 Azure CNI（高级网络）。
 
 使用 *kubenet* 时，只有节点接收虚拟网络子网中的 IP 地址。 Pod 无法直接相互通信。 用户定义的路由 (UDR) 和 IP 转发用于不同节点中 Pod 之间的连接。 默认情况下，Udr 和 IP 转发配置由 AKS 服务创建和维护，但你必须选择为[自定义路由管理引入你自己的路由表][byo-subnet-route-table]。 此外，可以在接收分配的 IP 地址的服务后面部署 Pod，并对应用程序的流量进行负载均衡。 下图显示了 AKS 节点（不是 Pod）如何接收虚拟网络子网中的 IP 地址：
 
 ![使用 AKS 群集的 Kubenet 网络模型](media/use-kubenet/kubenet-overview.png)
 
-Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节点数不能超过 400 个。 *Kubenet*不支持 AKS[虚拟节点][virtual-nodes]和 Azure 网络策略。  可以使用[Calico 网络策略][calico-network-policies]，因为在 kubenet 中支持它们。
+Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节点数不能超过 400 个。 *Kubenet*不支持 AKS[虚拟节点][virtual-nodes]和 Azure 网络策略。  可以使用 [Calico 网络策略][calico-network-policies]，因为 kubenet 支持这些策略。
 
-使用 *Azure CNI* 时，每个 Pod 将接收 IP 子网中的 IP 地址，并且可以直接与其他 Pod 和服务通信。 群集的最大大小可为指定的 IP 地址范围上限。 但是，必须提前规划 IP 地址范围，AKS 节点根据它们支持的最大 Pod 数消耗所有 IP 地址。 *AZURE CNI*支持高级网络功能和方案，例如[虚拟节点][virtual-nodes]或 (azure 或 Calico) 的网络策略。
+使用 *Azure CNI* 时，每个 Pod 将接收 IP 子网中的 IP 地址，并且可以直接与其他 Pod 和服务通信。 群集的最大大小可为指定的 IP 地址范围上限。 但是，必须提前规划 IP 地址范围，AKS 节点根据它们支持的最大 Pod 数消耗所有 IP 地址。 *AZURE CNI*支持高级网络功能和方案，如[虚拟节点][virtual-nodes]或网络策略（azure 或 Calico）。
+
+### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制 & 注意事项
+
+* 在 kubenet 的设计中需要额外的跃点，这会将轻微延迟添加到 pod 通信。
+* 使用 kubenet 需要路由表和用户定义的路由，这会增加操作的复杂性。
+* 由于 kubenet 设计，kubenet 不支持直接 pod 寻址。
+* 与 Azure CNI 群集不同，多个 kubenet 群集无法共享子网。
+* **Kubenet 上不支持的**功能包括：
+   * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Calico 网络策略在 kubenet 上受支持
+   * [Windows 节点池](windows-node-limitations.md)
+   * [虚拟节点附加项](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP 地址可用性和耗尽
 
@@ -139,7 +150,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-现在，使用[az role assign create][az-role-assignment-create]命令为虚拟网络上的 AKS 群集*网络参与者*权限分配服务主体。 提供您自己的 *\<appId>* ，如上一个命令的输出中所示，创建服务主体：
+现在，使用 [az role assignment create][az-role-assignment-create] 命令为 AKS 群集的服务主体分配虚拟网络中的“网络参与者”权限。 根据上一命令的输出中所示，提供自己的 \<appId> 来创建服务主体：
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
@@ -147,7 +158,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>在虚拟网络中创建 AKS 群集
 
-现已创建虚拟网络和子网、已创建服务主体并为其分配了这些网络资源的使用权限。 现在，请使用 [az aks create][az-aks-create] 命令在虚拟网络和子网中创建 AKS 群集。 定义自己的服务主体 *\<appId>* 和 *\<password>* ，如上一个命令的输出中所示，创建服务主体。
+现已创建虚拟网络和子网、已创建服务主体并为其分配了这些网络资源的使用权限。 现在，请使用 [az aks create][az-aks-create] 命令在虚拟网络和子网中创建 AKS 群集。 根据上一命令的输出中所示，定义自己的服务主体 \<appId> 和 \<password> 来创建服务主体 。
 
 在创建群集的过程中还定义了以下 IP 地址范围：
 
@@ -195,31 +206,31 @@ az aks create \
     --client-secret <password>
 ```
 
-创建 AKS 群集时，会自动创建网络安全组和路由表。 这些网络资源可以通过 AKS 控制平面进行管理。 网络安全组自动与节点上的虚拟 NIC 相关联。 路由表自动与虚拟网络子网相关联。 在你创建和公开服务时，系统会自动更新网络安全组规则和路由表。
+创建 AKS 群集时，将自动创建网络安全组和路由表。 这些网络资源可以通过 AKS 控制平面进行管理。 网络安全组自动与节点上的虚拟 NIC 相关联。 路由表自动与虚拟网络子网相关联。 在你创建和公开服务时，系统会自动更新网络安全组规则和路由表。
 
-## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>自带 kubenet 的子网和路由表
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>在 kubenet 中自带子网和路由表
 
-使用 kubenet，路由表必须存在于群集子网 (s) 上。 AKS 支持引入你自己的现有子网和路由表。
+使用 kubenet 时，群集子网上必须存在路由表。 AKS 支持自带现有的子网和路由表。
 
-如果自定义子网不包含路由表，AKS 将为你创建一个路由表，并在整个群集生命周期中向其添加规则。 如果自定义子网在创建群集时包含路由表，AKS 将在群集操作期间确认现有路由表，并为云提供程序操作相应地添加/更新规则。
+如果自定义子网不包含路由表，AKS 会为你创建一个路由表，并在整个群集生命周期中向其添加规则。 如果在创建群集时自定义子网包含路由表，AKS 将在群集操作期间确认现有路由表，并相应地为云提供程序操作添加/更新规则。
 
 > [!WARNING]
-> 自定义规则可添加到自定义路由表并进行更新。 但是，规则由 Kubernetes 云提供程序添加，不能更新或删除。 给定路由表中必须始终存在 0.0.0.0/0 等规则，并映射到 internet 网关的目标，如 NVA 或其他出口网关。 更新仅修改自定义规则的规则时要格外小心。
+> 可以将自定义规则添加到自定义路由表中并进行更新。 但是，规则由 Kubernetes 云提供商添加，不能更新或删除。 诸如 0.0.0.0/0 的规则必须始终存在于给定的路由表中，并映射到 internet 网关的目标，例如 NVA 或其他出口网关。 在更新规则时，请注意只修改自定义规则。
 
-详细了解如何设置[自定义路由表][custom-route-table]。
+了解有关设置[自定义路由表][custom-route-table]的详细信息。
 
-Kubenet 网络需要已组织的路由表规则才能成功路由请求。 由于此设计，必须为依赖于它的每个群集仔细维护路由表。 多个群集无法共享路由表，因为来自不同群集的 pod CIDRs 可能会重叠，从而导致意外和中断的路由。 当在同一虚拟网络上配置多个群集或专用于每个群集的虚拟网络时，请确保考虑以下限制。
+Kubenet 网络需要使用经过规划和组织的路由表规则才能成功路由请求。 由于此原因，需要为依赖路由表的每个群集精心维护路由表。 多个群集无法共享一个路由表，因为不同群集的 Pod CIDR 可能会相互重叠，从而导致意外路由和路由中断。 在同一虚拟网络上配置多个群集或为每个群集设置专用虚拟网络时，请确保考虑以下限制。
 
-限制：
+的限制：
 
-* 必须在创建群集之前分配权限，确保使用的是对自定义子网和自定义路由表具有写入权限的服务主体。
-* Kubenet 中的自定义路由表当前不支持托管标识。
-* 在创建 AKS 群集之前，必须将自定义路由表关联到子网。
-* 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表中修改自定义规则。
-* 每个 AKS 群集必须为与群集关联的所有子网使用单个唯一的路由表。 不能重复使用具有多个群集的路由表，因为可能会出现重叠的 CIDRs 和冲突路由规则。
+* 必须在创建群集之前分配权限，请确保使用的服务主体具有对自定义子网和自定义路由表的写入权限。
+* kubenet 中的自定义路由表当前不支持托管标识。
+* 在创建 AKS 群集之前，需要将自定义路由表与子网关联。
+* 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表上修改自定义规则。
+* 每个 AKS 群集必须为与群集关联的所有子网使用同一个唯一的路由表。 由于可能存在重叠的 Pod CIDR 和发生路由规则冲突，无法对多个群集重复使用同一个路由表。
 
-创建自定义路由表并将它关联到虚拟网络中的子网后，可以创建一个使用路由表的新 AKS 群集。
-需要在计划部署 AKS 群集的位置使用子网 ID。 此子网还必须与自定义路由表相关联。
+创建自定义路由表并将其与虚拟网络中的子网关联后，可以创建使用路由表的新 AKS 群集。
+需要使用计划将 AKS 群集部署到的子网 ID。 此子网还必须与自定义路由表关联。
 
 ```azurecli-interactive
 # Find your subnet ID

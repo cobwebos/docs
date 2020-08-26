@@ -2,28 +2,23 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 F5 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 59a87abb-1ec1-4438-be07-5b115676115f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 60c699e35cb182c6a90ae60efe93303569a35014
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478048"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540765"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
+# <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教程：在 Azure Active Directory 与 F5 之间配置单一登录 (SSO)
 
 本教程介绍如何将 F5 与 Azure Active Directory (Azure AD) 集成。 将 F5 与 Azure AD 集成后，可以：
 
@@ -122,8 +117,8 @@ ms.locfileid: "80478048"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **F5**。 
-1. 在结果面板中选择“F5”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 **F5**。
+1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>配置并测试 F5 的 Azure AD 单一登录
 
@@ -142,7 +137,7 @@ ms.locfileid: "80478048"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
+1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
@@ -165,7 +160,7 @@ ms.locfileid: "80478048"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 F5”部分，根据要求复制相应的 URL。 
+1. 在“设置 F5”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -178,26 +173,26 @@ ms.locfileid: "80478048"
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 F5 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在“应用程序”列表中选择“F5”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在“应用程序”列表中选择“F5”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 1. 单击“条件访问”  。
 1. 单击“新建策略”  。
 1. 现在，可将 F5 应用视为 CA 策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
@@ -254,9 +249,9 @@ ms.locfileid: "80478048"
 
     * HeaderName：  MyAuthorization
 
-    * 标头值：%{session.saml.last.attr.name.Identity} 
+    * 标头值：%{session.saml.last.attr.name.Identity}
 
-    * 单击“保存并进行下一步” 
+    * 单击“保存并进行下一步”
 
     有关变量和值的完整列表，请参阅附录。 如果需要，可以添加更多标头。
 
@@ -298,9 +293,9 @@ ms.locfileid: "80478048"
  
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure18.png)
 
-1. 在这种情况下，我们会在外部将 HeaderApp2 作为 HTTPS 发布。在“BIG-IP 系统应如何处理 SSL 流量?”下我们指定“终止来自客户端的 SSL、发往服务器的纯文本(SSL 卸载)”   。 在“希望使用哪个 SSL 证书?”和“希望使用哪个 SSL 私钥?”下指定证书和密钥  。  在“希望虚拟服务器采用什么 IP 地址?”下指定虚拟服务器 IP  。 
+1. 在这种情况下，我们会在外部将 HeaderApp2 作为 HTTPS 发布。在“BIG-IP 系统应如何处理 SSL 流量?”下我们指定“终止来自客户端的 SSL、发往服务器的纯文本(SSL 卸载)”   。 在“希望使用哪个 SSL 证书?”和“希望使用哪个 SSL 私钥?”下指定证书和密钥  。 在“希望虚拟服务器采用什么 IP 地址?”下指定虚拟服务器 IP  。 
 
-    * 指定其他详细信息 
+    * 指定其他详细信息
 
         * FQDN  
 
@@ -358,15 +353,15 @@ ms.locfileid: "80478048"
 
     e. 单击“添加新行”，选择“AzureIDP”（如前面的步骤中创建的那样）   ，指定 
 
-    f. 匹配源   =  %{session.server.landinguri}  
+    f. 匹配源   =  %{session.server.landinguri} 
 
     g. 匹配值     = /  *
 
-    h. 单击“更新” 
+    h. 单击“更新”
 
     i. 单击 **“确定”**
 
-    j. SAML IDP 设置已完成 
+    j. SAML IDP 设置已完成
     
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure31.png)
 
@@ -376,7 +371,7 @@ ms.locfileid: "80478048"
 
     a. 单击“主页”>“访问”>“配置文件/策略”>“访问配置文件”  。
 
-    b. 单击“创建”按钮。 
+    b. 单击“创建”按钮。
 
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure32.png)
  
@@ -422,13 +417,13 @@ ms.locfileid: "80478048"
 
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure40.png)
  
-    b. 单击虚拟服务器，滚动至“访问策略”部分的“访问配置文件”下拉菜单，并选择已创建的 SAML 策略，本例中为 HeaderAppAzureSAMLPolicy  
+    b. 单击虚拟服务器，滚动至“访问策略”部分的“访问配置文件”下拉菜单，并选择已创建的 SAML 策略，本例中为 HeaderAppAzureSAMLPolicy
 
-    c. 单击“更新” 
+    c. 单击“更新”
  
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure41.png)
 
-    d. 创建一个 F5 BIG-IP iRule®，以便从传入断言中提取自定义 SAML 属性，并将其作为 HTTP 标头传递到后端测试应用程序。 单击“主页”>“本地流量”>“iRules”>“iRule 列表”> 单击“创建” 
+    d. 创建一个 F5 BIG-IP iRule®，以便从传入断言中提取自定义 SAML 属性，并将其作为 HTTP 标头传递到后端测试应用程序。 单击“主页”>“本地流量”>“iRules”>“iRule 列表”> 单击“创建”
 
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure42.png)
  
@@ -444,7 +439,7 @@ ms.locfileid: "80478048"
 
     set AZUREAD_EMAILADDRESS [ACCESS::session data get "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] if { $static::debug } { log local0. "AZUREAD_EMAILADDRESS = $AZUREAD_EMAILADDRESS" } if { !([HTTP::header exists "AZUREAD_EMAILADDRESS"]) } { HTTP::header insert "AZUREAD_EMAILADDRESS" $AZUREAD_EMAILADDRESS }}
 
-    下面是示例输出 
+    下面是示例输出
 
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure44.png)
  

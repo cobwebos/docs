@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9c1b694d3a50759dcf49222f4e6b27ac7b34f9e5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021647"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502148"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>结合使用 Azure Active Directory 身份验证与 Synapse SQL 进行身份验证
 
@@ -99,7 +99,7 @@ Azure AD 管理员登录名可以是 Azure AD 用户，也可以是 Azure AD 组
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-## <a name="connecting-using-azure-ad-identities"></a>使用 Azure AD 标识进行连接
+## <a name="connect-using-azure-ad-identities"></a>使用 Azure AD 标识进行连接
 
 Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据库的以下方法：
 

@@ -3,13 +3,15 @@ title: 快速入门：使用 Azure Application Insights 进行 Java Web 应用�
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537502"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326913"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
@@ -130,7 +132,7 @@ Application Insights SDK 按以下顺序查找密钥：
 2. 环境变量：APPINSIGHTS_INSTRUMENTATIONKEY
 3. 配置文件：ApplicationInsights.xml
 
-也可以 [在代码中设置方法](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
+也可以 [在代码中设置方法](./api-custom-events-metrics.md#ikey)：
 
 ```java
     String instrumentationKey = "00000000-0000-0000-0000-000000000000";
@@ -171,7 +173,7 @@ Application Insights SDK 按以下顺序查找密钥：
 ![钻取到特定示例视图](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>分析：功能强大的查询语言
-随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](../../azure-monitor/app/analytics.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
+随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](../log-query/log-query-overview.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
 
 ![分析示例](./media/java-get-started/0025.png)
 
@@ -263,7 +265,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
   * `tabular`：性能计数器数据采用表行格式
 
 #### <a name="windows-performance-counters"></a>Windows 性能计数器
-每个 [Windows 性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是类别的成员（就好比字段是类的成员）。 类别可以是全局的，也可以是带编号的实例或命名实例。
+每个 [Windows 性能计数器](/windows/win32/perfctrs/performance-counters-portal) 是类别的成员（就好比字段是类的成员）。 类别可以是全局的，也可以是带编号的实例或命名实例。
 
 ```XML
     <PerformanceCounters>
@@ -306,16 +308,17 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 * [监视器依赖项调用](java-agent.md)
 * [监视 Unix 性能计数器](java-collectd.md)
 * [将监视功能添加到网页](javascript.md)，监视器页面加载时间、AJAX 调用、浏览器异常。
-* 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)来跟踪浏览器或服务器中的使用情况。
-* 使用[分析](../../azure-monitor/app/analytics.md)从应用通过遥测执行功能强大的查询
+* 编写[自定义遥测](./api-custom-events-metrics.md)来跟踪浏览器或服务器中的使用情况。
+* 使用[分析](../log-query/log-query-overview.md)从应用通过遥测执行功能强大的查询
 * 有关详细信息，请访问[面向 Java 开发人员的 Azure](/java/azure)。
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#trackexception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
+

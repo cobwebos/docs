@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 映像生成器用于 Linux VM 的映像库（预览）
+title: 使用 Azure 映像生成器 & 适用于 Linux Vm 的共享映像库（预览版）
 description: 使用 Azure 映像生成器和共享映像库创建 Linux 虚拟机映像。
 author: cynthn
 ms.author: cynthn
@@ -8,15 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: ccb622f786e6df5271684cf2aabba36cd2f5184f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eeb8df2605bbe63fe72c5bd451b43111322a7f6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930686"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500906"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Linux 映像并将其分发到共享映像库 
 
-本文介绍如何使用 Azure 映像生成器和 Azure CLI，在[共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中创建映像版本，然后全局分发此映像。 还可以使用 [Azure PowerShell](../windows/image-builder-gallery.md).来实现此目的。
+本文介绍如何使用 Azure 映像生成器和 Azure CLI，在[共享映像库](../windows/shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 还可以使用 [Azure PowerShell](../windows/image-builder-gallery.md).来实现此目的。
 
 
 我们将使用一个示例 .json 模板来配置映像。 我们将使用的 .json 文件位于：[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json)。 
@@ -92,7 +93,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
-映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器将使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -105,7 +106,7 @@ imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $idenityName | grep "
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
 
-# this command will download a Azure Role Definition template, and update the template with the parameters specified earlier.
+# this command will download an Azure role definition template, and update the template with the parameters specified earlier.
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')

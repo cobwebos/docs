@@ -3,12 +3,12 @@ title: 详细了解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 8d578d6b3e0232d0733097d68bac22af566b2083
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246251"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836694"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -87,7 +87,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>应用程序生命周期
 与其他平台一样，Service Fabric 上的应用程序通常会经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 Service Fabric 为云应用程序的整个应用程序生命周期提供一流的支持：从开发到部署、到日常管理和维护，再到最终解除授权。 服务模型使多个不同角色可以独立参与到应用程序生命周期中。 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)一文提供了有关 API 的概述，以及在 Service Fabric 应用程序生命周期的各个阶段，它们是如何被不同角色所使用的。 
 
-可以使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/overview/azure/servicefabric) 和 [REST API](/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) 等工具来设置持续集成/持续部署管道。
+可以使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/overview/azure/servicefabric) 和 [REST API](/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) 等工具来设置持续集成/持续部署管道。
 
 ## <a name="test-applications-and-services"></a>测试应用程序和服务
 若要创建真正的云规模服务，请务必确保应用程序和服务能够经受住现实中发生的故障。 故障分析服务是在 Service Fabric 基础上专为测试服务构建的。 借助[故障分析服务](service-fabric-testability-overview.md)，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
@@ -110,7 +110,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 可在运行 Windows Server 或 Linux 的虚拟机或物理计算机上创建 Service Fabric 群集。 可在包含一组互连 Windows Server 或 Linux 计算机（本地计算机、Microsoft Azure 计算机或任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
 
 ### <a name="clusters-on-azure"></a>Azure 上的群集
-在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure Resource Manager 资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集已集成了 Azure 诊断和 Azure Monitor 日志。 群集节点类型是[虚拟机规模集](/azure/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
+在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure Resource Manager 资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集已集成了 Azure 诊断和 Azure Monitor 日志。 群集节点类型是[虚拟机规模集](../virtual-machine-scale-sets/index.yml)，因此自动缩放功能是内置的。
 
 可以通过 [Azure 门户](service-fabric-cluster-creation-via-portal.md)、[模板](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](./service-fabric-cluster-creation-via-arm.md) 在 Azure 上创建群集。
 

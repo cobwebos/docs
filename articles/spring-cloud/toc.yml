@@ -22,6 +22,8 @@
   items:
     - name: 手动扩缩应用
       href: spring-cloud-tutorial-scale-manual.md
+    - name: 自动缩放应用
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: 警报和操作组
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: 使用 IntelliJ 部署应用
@@ -38,6 +40,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: 使用托管标识将 Key Vault 连接到 Azure Spring Cloud 应用
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: 在虚拟网络中部署 Azure Spring Cloud
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: 示例
   items:
     - name: Azure Policy 内置策略定义
@@ -45,6 +49,8 @@
       href: ./policy-samples.md
 - name: 概念
   items:
+    - name: 了解应用和部署
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: 了解配额和限制
       href: spring-cloud-quotas.md
     - name: 了解指标

@@ -5,12 +5,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: e3edbcf9603657ce0c747b01b3c59c2923bc0181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9592b03f5bd9e9436db5665e040b4afd3b68b764
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208017"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562729"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -49,12 +49,12 @@ AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU �
 
 ## <a name="next-steps"></a>后续步骤
 
-某些默认限制和配额可以提高。 如果资源支持增加，请通过[Azure 支持请求][azure-support]增加请求（对于 "**问题类型**"，选择 "**配额**"）。
+某些默认限制和配额可以提高。 如果资源支持增加，请通过[Azure 支持请求][azure-support]增加 (对于 "**问题类型**"，选择 "**配额**) "。
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 
 <!-- LINKS - Internal -->
-[vm-skus]: ../virtual-machines/linux/sizes.md
+[vm-skus]: ../virtual-machines/sizes.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834372"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534798"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -45,11 +46,11 @@ ms.locfileid: "83834372"
 
 ### <a name="managing-administrative-access-to-key-vault"></a>管理对 Key Vault 的管理访问权限
 
-在资源组中创建密钥保管库时，使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 通过分配适当的 RBAC 角色可以在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 RBAC 角色：
+在资源组中创建密钥保管库时，使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可以通过分配相应的 Azure 角色，在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下作用域级别分配给 Azure 角色：
 
-- **订阅**：在订阅级别分配的 RBAC 角色适用于该订阅中的所有资源组和资源。
-- **资源组**：在资源组级别分配的 RBAC 角色适用于该资源组中的所有资源。
-- **特定资源**：为特定资源分配的 RBAC 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
+- **订阅**：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
+- **资源组**：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
+- **特定资源**：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
 
 有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -64,7 +65,7 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 > [!IMPORTANT]
 > 密钥保管库访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 如果授予某个用户创建和删除密钥的权限，该用户可以针对该密钥保管库中的所有密钥执行这些操作。
 
-若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](/cli/azure/install-azure-cli?view=azure-cli-latest)、[PowerShell](/powershell/azureps-cmdlets-docs) 或[密钥保管库管理 REST API](/rest/api/keyvault/)。
+若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](/cli/azure/install-azure-cli?view=azure-cli-latest)、[PowerShell](/powershell/azure/) 或[密钥保管库管理 REST API](/rest/api/keyvault/)。
 
 可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
 

@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731493"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705616"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量创建用户
 
@@ -33,12 +34,15 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 
 ![用于上传和调出的电子表格，说明了每一行和每一列的用途和值](./media/users-bulk-add/create-template-example.png)
 
+> [!WARNING]
+> 如果使用 CSV 模板只添加一个条目，则必须保留第3行并将新条目添加到第4行。
+
 ### <a name="csv-template-structure"></a>CSV 模板结构
 
 下载的 CSV 模板中的行如下所示：
 
 - **版本号**：包含版本号的第一行必须包含在上传的 CSV 中。
-- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Name [displayName] Required` 。 某些较旧版本的模板可能会略有不同。
+- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Name [displayName] Required`。 某些较旧版本的模板可能会略有不同。
 - 示例行：我们已经在模板中包含了一行示例，说明每列可接受的值。 必须删除示例行并将其替换为你自己的项。
 
 ### <a name="additional-guidance"></a>其他指南
@@ -47,6 +51,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 - 所需的列会先列出。
 - 建议不要将新列添加到模板。 所添加的任何其他列都会被忽略，不进行处理。
 - 建议尽可能经常下载 CSV 模板的最新版本。
+- 请确保检查任何字段前面/后面没有任何意外的空格。 对于 **用户主体名称**，具有此类空格会导致导入失败。
 
 ## <a name="to-create-users-in-bulk"></a>批量创建用户
 
@@ -58,7 +63,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 
 1. 打开 CSV 文件，并为每个要创建的用户添加一行。 只有“名称”、“用户主体名称”、“初始密码”和“阻止登录(是/否)”为必填项。 然后保存文件。
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![CSV 文件包含要创建的用户姓名和 ID](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. 在“批量创建用户”页中，在“上传 CSV 文件”下，浏览到该文件。 选择该文件并单击“提交”后，将启动对 CSV 文件的验证。
 1. 验证文件内容后，会看到“文件上传成功”的消息。 如果有错误，必须修正错误，然后才能提交作业。
@@ -71,7 +76,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 
 可在“批量操作结果”页中查看所有挂起的批量请求的状态。
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![在“批量操作结果”页中查看创建状态](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 接下来，可在 Azure 门户中或使用 PowerShell 查看已创建的用户是否存在于 Azure AD 组织中。
 

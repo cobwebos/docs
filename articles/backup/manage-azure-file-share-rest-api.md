@@ -3,16 +3,16 @@ title: 通过 Rest API 管理 Azure 文件共享备份
 description: 了解如何使用 REST API 管理和监视 Azure 备份所备份的 Azure 文件共享。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073255"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>通过 REST API 管理 Azure 文件共享备份
 
-本文介绍如何执行管理和监视[Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview)所备份的 azure 文件共享的任务。
+本文介绍如何执行管理和监视[Azure 备份](./backup-overview.md)所备份的 azure 文件共享的任务。
 
 ## <a name="monitor-jobs"></a>监视作业
 
@@ -38,7 +38,7 @@ Azure 备份服务会触发在后台运行的作业。 这包括触发备份、�
 }
 ```
 
-Azure 文件共享备份作业由**jobId**字段标识，并可使用 GET 请求按[此处](https://docs.microsoft.com/rest/api/backup/jobdetails/)所述进行跟踪。
+Azure 文件共享备份作业由**jobId**字段标识，并可使用 GET 请求按[此处](/rest/api/backup/jobdetails/)所述进行跟踪。
 
 ### <a name="tracking-the-job"></a>跟踪作业
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>停止保护并删除数据
 
-若要删除对受保护文件共享的保护并同时删除备份数据，请执行 "删除" 操作，如[此处](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)所述。
+若要删除对受保护文件共享的保护并同时删除备份数据，请执行 "删除" 操作，如[此处](/rest/api/backup/protecteditems/delete)所述。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

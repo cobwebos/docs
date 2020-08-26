@@ -5,17 +5,17 @@ description: 了解如何在 Azure 机器学习设计器中使用 Python (预览
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, devx-track-python
+ms.openlocfilehash: 7cb6fc0f4f2c2d3f57588d8ef0412177f612ee02
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206808"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853120"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中运行 Python 代码
 
@@ -26,6 +26,8 @@ ms.locfileid: "86206808"
 默认执行环境使用 Anacondas 发行版 Python。 有关预安装包的完整列表，请参阅[“执行 Python 脚本”模块参考](algorithm-module-reference/execute-python-script.md)页。
 
 ![执行 Python 输入映射](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>执行在设计器中编写的 Python
 

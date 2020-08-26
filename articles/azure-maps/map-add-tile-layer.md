@@ -1,6 +1,6 @@
 ---
 title: 向地图添加图块层 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure map Web SDK 覆盖地图上的图块层。 图块层允许您在地图上呈现图像。
+description: 了解如何在地图上叠加图像。 查看使用 Azure Maps Web SDK 向地图添加包含天气雷达图的图块层的示例。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: c96916c029c9c49ad7d4c493fed8859354508ebe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242298"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010168"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 

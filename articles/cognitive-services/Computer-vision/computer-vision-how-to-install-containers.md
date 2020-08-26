@@ -11,34 +11,34 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 75b71fe9a15b05679ab1b71b13bb0b1f51b7d1d1
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816142"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545635"
 ---
-# <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览）
+# <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览版）
 
-容器使你能够在自己的环境中运行计算机视觉 Api。 容器非常适合于特定的安全和数据管理要求。 本文介绍如何下载、安装和运行计算机视觉容器。
+借助容器，你可以在自己的环境中运行计算机视觉 API。 容器非常适合用于满足特定的安全性和数据管理要求。 在本文中，你将学习如何下载、安装和运行计算机视觉容器。
 
-"*读取*" 的单个 Docker 容器可用于计算机视觉。 利用 "*读取*容器"，您可以通过不同的图面和背景（如收据、海报和名片）来检测和提取不同对象图像中的*打印文本*。 此外，*读取*容器还会检测图像中的*手写文本*，并提供 PDF、TIFF 和多页文件支持。 有关详细信息，请参阅[读取](concept-recognizing-text.md#read-api)API 文档。
+单个 Docker 容器“读取”** 可用于计算机视觉。 借助读取** 容器，可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本**，例如收据、海报和名片。 此外，读取** 容器可检测图像中的手写** 文本，并提供 PDF、TIFF 和多页文件支持。 有关详细信息，请参阅[读取](concept-recognizing-text.md#read-api) API 文档。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-使用容器之前，必须满足以下先决条件：
+使用容器前，必须满足以下先决条件：
 
-|必选|目的|
+|必须|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **** 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|计算机视觉资源 |若要使用容器，必须具有：<br><br>Azure**计算机视觉**资源和关联的 API 密钥。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。<br><br>**{API_KEY}**： "**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}**： "**概述**" 页中提供的终结点|
+|计算机视觉资源 |若要使用容器，必须具有：<br><br>Azure 计算机视觉**** 资源和关联的 API 密钥及终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点****|
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-填写并提交[请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。 
+填写并提交 [请求窗体](https://aka.ms/cognitivegate) ，请求对容器的访问权限。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -50,13 +50,13 @@ ms.locfileid: "83816142"
 
 ### <a name="advanced-vector-extension-support"></a>高级矢量扩展支持
 
-**主**计算机是运行 docker 容器的计算机。 主机*必须支持*[高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)（AVX2）。 可以通过以下命令在 Linux 主机上检查 AVX2 支持：
+主**** 计算机是运行 docker 容器的计算机。 主机 *必须支持* (AVX2) 的 [高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) 。 可使用以下命令检查 Linux 主机是否提供 AVX2 支持：
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> *需要*主机计算机才能支持 AVX2。 如果不支持 AVX2，容器*将无法*正常运行。
+> 需要** 主计算机来支持 AVX2。 如果没有 AVX2 支持，容器将无法** 正常运行。
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
@@ -64,7 +64,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 
-要读取的容器映像可用。
+提供适用于读取的容器映像。
 
 | 容器 | 容器注册表/存储库/映像名称 |
 |-----------|------------|
@@ -72,7 +72,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
-### <a name="docker-pull-for-the-read-container"></a>读取容器的 Docker 请求
+### <a name="docker-pull-for-the-read-container"></a>适用于读取容器的 Docker 拉取
 
 ```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
@@ -103,8 +103,8 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 从容器映像中运行读取容器。
-* 分配8个 CPU 内核和16千兆字节（GB）的内存。
+* 从容器映像运行读取容器。
+* 分配 8 个 CPU 核心和 16 千兆字节 (GB) 内存。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
@@ -127,13 +127,13 @@ ApiKey={API_KEY}
 
 ### <a name="asynchronous-read"></a>异步读取
 
-你可以使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 操作来以异步方式读取图像，这与计算机视觉服务使用这些对应 REST 操作的方式类似。 异步 POST 方法将返回一个 `operationId` ，用作 HTTP GET 请求的标识符。
+可以同时使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
 
-在 swagger UI 中，选择将 `asyncBatchAnalyze` 其在浏览器中展开。 然后选择 "**试用**"  >  **Choose file**。 在此示例中，我们将使用下图：
+在 Swagger UI 中，选择 `asyncBatchAnalyze` 以在浏览器中将其展开。 然后选择“试用”**** > “选择文件”****。 在本示例中，我们将使用以下图像：
 
-![选项卡和空格](media/tabs-vs-spaces.png)
+![制表符与空格](media/tabs-vs-spaces.png)
 
-异步 POST 成功运行后，它将返回**HTTP 202**状态代码。 作为响应的一部分，有一个 `operation-location` 标头，其中包含请求的结果终结点。
+异步 POST 成功运行后，它会返回 HTTP 202**** 状态代码。 作为响应的一部分，有一个 `operation-location` 标头，其中包含请求的结果终结点。
 
 ```http
  content-length: 0
@@ -142,7 +142,7 @@ ApiKey={API_KEY}
  server: Kestrel
 ```
 
-`operation-location`是完全限定的 URL，通过 HTTP GET 访问。 下面是从 `operation-location` 上一个映像执行 URL 的 JSON 响应：
+`operation-location` 是完全限定的 URL，可通过 HTTP GET 访问。 以下是从上图执行 `operation-location` URL 的 JSON 响应：
 
 ```json
 {
@@ -188,7 +188,7 @@ ApiKey={API_KEY}
 
 ### <a name="synchronous-read"></a>同步读取
 
-您可以使用 `POST /vision/v2.0/read/core/Analyze` 操作来同步读取图像。 如果图像是完整的，则 API 会返回 JSON 响应。 唯一的例外情况是发生错误。 出现错误时，将返回以下 JSON：
+可以使用 `POST /vision/v2.0/read/core/Analyze` 操作来同步读取图像。 完整读取图像后，API 才会返回 JSON 响应。 唯一的例外是发生错误的情况。 发生错误时，将返回以下 JSON：
 
 ```json
 {
@@ -196,7 +196,7 @@ ApiKey={API_KEY}
 }
 ```
 
-JSON 响应对象与异步版本具有相同的对象关系图。 如果你是 JavaScript 用户并且需要类型安全，则可以使用以下类型将 JSON 响应转换为 `AnalyzeResult` 对象。
+JSON 响应对象具有与异步版本相同的对象图。 如果你是 JavaScript 用户并且需要类型安全性，则可以使用以下类型将 JSON 响应强制转换为 `AnalyzeResult` 对象。
 
 ```typescript
 export interface AnalyzeResult {
@@ -243,7 +243,7 @@ export interface Word {
 }
 ```
 
-有关示例用例，请参阅<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">此处 <span class="docon docon-navigate-external x-hidden-focus"></span> 的 TypeScript 沙箱</a>，并选择 "**运行**" 以可视化其易用性。
+有关示例用例，请<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">在此处查看 TypeScript 沙盒<span class="docon docon-navigate-external x-hidden-focus"></span></a>，然后选择“运行”**** 以直观显示其易用性。
 
 ## <a name="stop-the-container"></a>停止容器
 
@@ -257,7 +257,7 @@ export interface Word {
 
 ## <a name="billing"></a>计费
 
-认知服务容器使用 Azure 帐户中的相应资源将计费信息发送到 Azure。
+认知服务容器使用 Azure 帐户中的相应资源向 Azure 发送计费信息。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -271,10 +271,10 @@ export interface Word {
 
 在本文中，你已学习相关概念，以及计算机视觉容器的下载、安装和运行工作流。 综上所述：
 
-* 计算机视觉为 Docker 提供 Linux 容器，并封装读取。
-* 容器映像从 Azure 中的 "容器预览" 容器注册表下载。
+* 计算机视觉为 Docker 提供 Linux 容器，用于封装读取。
+* 可从 Azure 中的“容器预览版”容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
-* 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用读取容器中的操作。
+* 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用读取容器中的操作。
 * 必须在实例化容器时指定账单信息。
 
 > [!IMPORTANT]
@@ -282,7 +282,7 @@ export interface Word {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看配置设置的[容器](computer-vision-resource-container-config.md)
+* 查看[配置容器](computer-vision-resource-container-config.md)了解配置设置
 * 查看[计算机视觉概述](Home.md)，了解有关识别印刷文本和手写文本的详细信息
 * 有关该容器支持的方法的详细信息，请参阅[计算机视觉 API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)。
 * 参阅[常见问题解答 (FAQ)](FAQ.md)，以解决与计算机视觉功能相关的问题。

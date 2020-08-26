@@ -9,6 +9,7 @@ ms.date: 06/26/2019
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 投影, 取消投影, 转换, rgb-d, 点云
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931693"

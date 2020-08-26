@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75454195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082798"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>使用 OPC 保管库证书管理服务
 
@@ -37,7 +38,7 @@ ms.locfileid: "75454195"
 
 1. 在处打开证书服务 `https://myResourceGroup-app.azurewebsites.net` ，并登录。
 2. 请参阅**注册新**。 对于应用程序注册，用户需要至少分配编写者角色。
-2. 条目窗体遵循 OPC UA 中的命名约定。 例如，在以下屏幕截图中，会显示 OPC UA .NET Standard 堆栈中的[OPC Ua 引用服务器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference)示例的设置：
+2. 条目窗体遵循 OPC UA 中的命名约定。 例如，在以下屏幕截图中，会显示 OPC UA .NET Standard 堆栈中的[OPC Ua 引用服务器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer)示例的设置：
 
    ![UA 引用服务器注册的屏幕截图](media/howto-opc-vault-secure/reference-server-registration.png "UA 引用服务器注册")
 

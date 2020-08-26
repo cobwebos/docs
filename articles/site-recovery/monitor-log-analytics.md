@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529023"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495057"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
 
@@ -44,14 +44,14 @@ Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日
 
 1. 在保管库中，单击“诊断设置” > “添加诊断设置”。 
 
-    ![选择资源日志记录](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![显示 "添加诊断设置" 选项的屏幕截图。](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. 在“诊断设置”中，指定一个名称，并选中“发送到 Log Analytics”复选框 。
 3. 选择 Azure Monitor 日志订阅和 Log Analytics 工作区。
 4. 在切换选项中选择“Azure 诊断”。
 5. 在日志列表中，选择带有 **AzureSiteRecovery** 前缀的所有日志。 。
 
-    ![选择工作区](./media/monitoring-log-analytics/select-workspace.png)
+    ![诊断设置屏幕的屏幕截图。](./media/monitoring-log-analytics/select-workspace.png)
 
 Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDiagnostics**) 内。
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![查询 RPO](./media/monitoring-log-analytics/example1.png)
+![显示随 Site Recovery 复制的 Azure Vm 条形图的屏幕截图。](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>查询 Site Recovery 作业
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![查询计算机 RPO](./media/monitoring-log-analytics/example2.png)
+![跟踪特定 Azure VM RPO 的趋势图屏幕截图。](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>查询 Azure VM 的数据更改（变动）速率和上传速率
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![查询数据更改率](./media/monitoring-log-analytics/example3.png)
+![特定 Azure VM 的趋势图的屏幕截图。](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>查询 VMware 或物理计算机的数据更改（变动）速率和上传速率
 

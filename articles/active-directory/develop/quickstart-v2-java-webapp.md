@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
-ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: e13d5f3421f3c0d4f3e14da29581ca585e7f9438
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
+ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145859"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115214"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -212,7 +212,7 @@ ms.locfileid: "86145859"
 
 
 > [!IMPORTANT]
-> 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 有关如何使用证书的详细信息，请参阅[用于应用程序身份验证的证书凭据](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)。
+> 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 有关如何使用证书的详细信息，请参阅[用于应用程序身份验证的证书凭据](./active-directory-certificate-credentials.md)。
 
 ## <a name="more-information"></a>详细信息
 
@@ -254,11 +254,11 @@ import com.microsoft.aad.msal4j.*;
 了解有关权限和许可的详细信息：
 
 > [!div class="nextstepaction"]
-> [权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [权限和许可](./v2-permissions-and-consent.md)
 
 若要详细了解此方案的授权流，请查看 Oauth 2.0 授权代码流：
 
 > [!div class="nextstepaction"]
-> [授权代码 Oauth 流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [授权代码 Oauth 流](./v2-oauth2-auth-code-flow.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

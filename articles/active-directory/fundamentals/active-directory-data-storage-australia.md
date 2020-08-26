@@ -2,7 +2,7 @@
 title: 澳大利亚和新西兰客户的标识数据存储-Azure AD
 description: 了解 Azure Active Directory 为其澳大利亚客户存储标识相关数据的位置。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d651a1a6ce8ef412c148f16d0aa4412df94cb0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77370293"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799542"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 中的澳大利亚和新西兰客户的标识数据存储
 
@@ -31,7 +32,7 @@ ms.locfileid: "77370293"
 
 所有其他 Azure AD 服务在全球数据中心存储客户数据。 若要查找服务的数据中心，请参阅[Azure Active Directory –你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重身份验证（MFA）
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多因素身份验证 (MFA) 
 
 MFA 将标识客户数据存储在全球数据中心。 若要详细了解基于云的 Azure MFA 和 Azure MFA 服务器收集和存储的用户信息，请参阅[Azure 多重身份验证用户数据收集](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)。
 

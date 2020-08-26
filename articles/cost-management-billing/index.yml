@@ -5,17 +5,18 @@ metadata:
   title: Azure 成本管理 + 计费
   description: “Azure 成本管理 + 计费”可帮助你了解 Azure 计费、管理帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
   ms.service: cost-management-billing
+  ms.subservice: common
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 06/01/2020
-  ms.openlocfilehash: 04b52a6aff1a8a24f2aa9988afec60c69c88c138
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.date: 08/20/2020
+  ms.openlocfilehash: 1d3fafd26b5ad7f92d9280701a386a09f1ad3d22
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86113388"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88683124"
 landingContent:
 - title: 分析成本
   linkLists:
@@ -36,7 +37,7 @@ landingContent:
     - text: 将成本分析用于常见任务
       url: costs/cost-analysis-common-uses.md
     - text: 使用 Power BI 模板应用分析成本
-      url: https://docs.microsoft/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app
+      url: https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app
     - text: 使用 Power BI Desktop 进行连接
       url: /power-bi/desktop-connect-azure-cost-management
   - linkListType: tutorial
@@ -58,7 +59,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 通过自动化功能管理成本
-      url: https://docs.microsoft/azure/cost-management-billing/costs/manage-automation
+      url: https://docs.microsoft.com/azure/cost-management-billing/costs/manage-automation
     - text: 使用条款介绍
       url: understand/understand-usage.md
     - text: 发票条款介绍
@@ -71,6 +72,8 @@ landingContent:
     links:
     - text: 使用成本警报
       url: costs/cost-mgt-alerts-monitor-usage-spending.md
+    - text: 分摊成本
+      url: costs/allocate-costs.md
     - text: 查看和下载 Azure 发票
       url: understand/download-azure-invoice.md
     - text: 查看和下载 Azure 使用情况与费用
@@ -96,11 +99,11 @@ landingContent:
   - linkListType: learn
     links:
     - text: 立即开始优化成本
-      url: https://azure.microsoft/overview/cost-optimization/
+      url: https://azure.microsoft.com/overview/cost-optimization/
     - text: 预测 Azure 的成本并优化支出
-      url: https://docs.microsoft/learn/modules/predict-costs-and-optimize-spending/
+      url: https://docs.microsoft.com/learn/modules/predict-costs-and-optimize-spending/
     - text: Microsoft Azure 架构良好的框架 - 成本优化
-      url: https://docs.microsoft/learn/modules/azure-well-architected-cost-optimization/
+      url: https://docs.microsoft.com/learn/modules/azure-well-architected-cost-optimization/
 - title: 配置 Azure 成本管理 + 计费
   linkLists:
   - linkListType: concept

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659248"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446796"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -31,7 +32,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 - [OMS 移动应用](#oms-mobile-app)即将弃用。 
 - [NSG 解决方案即将被取代](#azure-network-security-group-analytics)为通过流量分析解决方案提供的增强功能。
 - 从 System Center Operations Manager 到 Log Analytics 的新连接需要[更新的管理包](#system-center-operations-manager)。
-- 有关改用[更新管理](../../automation/automation-update-management.md)的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
+- 有关改用[更新管理](../../automation/update-management/update-mgmt-overview.md)的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
 
 
 ## <a name="what-should-i-do-now"></a>现在应该做些什么？
@@ -40,7 +41,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 - 需[将用户权限迁移](#user-access-and-role-migration)到 Azure 门户。
 - 有关转移更新管理解决方案的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
 
-参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](oms-portal-faq.md)，了解有关如何过渡到 Azure 门户的信息。 
+参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](../overview.md)，了解有关如何过渡到 Azure 门户的信息。 
 
 ## <a name="user-access-and-role-migration"></a>用户访问权限和角色迁移
 与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中的访问管理的详细信息，请参阅[设计 Azure Monitor 日志工作区](design-logs-deployment.md)。
@@ -69,7 +70,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 
 ### <a name="alert-extension"></a>警报扩展  
 
-警报已[扩展到 Azure 门户](alerts-extend.md) 现有警报将继续列在 OMS 门户中，但你只能在 Azure 门户中管理它们。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
+警报已[扩展到 Azure 门户](./alerts-unified-log.md) 现有警报将继续列在 OMS 门户中，但你只能在 Azure 门户中管理它们。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
 
 ### <a name="alert-management-solution"></a>警报管理解决方案
 作为上次公告中的一个更改，[警报管理解决方案](alert-management-solution.md)在 Azure 门户中将继续可用并完全受支持。 可以继续从 Azure 市场安装该解决方案。
@@ -101,7 +102,7 @@ OMS 移动应用将随 OMS 门户一起淘汰。 无需使用 OMS 移动应用�
 可以继续依赖使用诊断设置将 NSG 日志发送到 Log Analytics，使现有的已保存搜索、警报和仪表板可继续工作。 在收到进一步的通告之前，已安装该解决方案的客户可以继续使用它。 从 9 月 5 日开始，“网络安全组分析”解决方案将从市场中删除，并通过社区以 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)的形式提供。
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-如果已[将 Operations Manager 管理组连接到 Log Analytics](om-agents.md)，该管理组可继续工作，而无需进行任何更改。 不过，对于新连接，必须遵照[使用 Microsoft System Center Operations Manager 管理包来配置 Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/) 中的指导。
+如果已[将 Operations Manager 管理组连接到 Log Analytics](om-agents.md)，该管理组可继续工作，而无需进行任何更改。 不过，对于新连接，必须遵照[使用 Microsoft System Center Operations Manager 管理包来配置 Operations Management Suite](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) 中的指导。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关从 OMS 门户转移到 Azure 门户的指导，请参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](oms-portal-faq.md)。
+- 有关从 OMS 门户转移到 Azure 门户的指导，请参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](../overview.md)。

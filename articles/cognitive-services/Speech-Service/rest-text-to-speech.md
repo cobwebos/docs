@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400168"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056799"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -41,7 +41,7 @@ ms.locfileid: "81400168"
 
 ### <a name="regions-and-endpoints"></a>区域和终结点
 
-| 区域 | 端点 |
+| 区域 | 终结点 |
 |--------|----------|
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -52,7 +52,7 @@ ms.locfileid: "81400168"
 | 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 日本东部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -67,9 +67,9 @@ ms.locfileid: "81400168"
 
 下表列出了文本转语音请求的必需和可选标头。
 
-| Header | 说明 | 必需/可选 |
+| 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
 
 ### <a name="request-body"></a>请求正文
 
@@ -167,29 +167,29 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出了文本转语音请求的必需和可选标头。
 
-| Header | 说明 | 必需/可选 |
+| 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必选 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必选 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
 
 ### <a name="audio-outputs"></a>音频输出
 
 这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 kHz、16 kHz 和 8 kHz 音频输出。
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24 kHz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
+> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 ogg-24khz-16bit-mono-opus 可以使用 [opus 编解码器](https://opus-codec.org/downloads/)进行解码
 
 ### <a name="request-body"></a>请求正文
 
@@ -200,7 +200,7 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-request"></a>示例请求
 
-此 HTTP 请求使用 SSML 指定语音和语言。 如果正文长度较长，并且生成的音频超过10分钟，则将其截断为10分钟。 换句话说，音频长度不能超过10分钟。
+此 HTTP 请求使用 SSML 指定语音和语言。 如果正文长度较长，并且生成的音频超过 10 分钟，则将其截断为 10 分钟。 换句话说，音频长度不能超过 10 分钟。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -241,6 +241,6 @@ Authorization: Bearer [Base64 access_token]
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services)
-- [用于长时间音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
+- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [自定义语音入门](how-to-custom-voice.md)

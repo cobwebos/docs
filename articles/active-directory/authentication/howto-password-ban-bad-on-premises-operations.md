@@ -11,21 +11,22 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419761"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>启用本地 Azure Active Directory 密码保护
 
-用户经常会创建密码，使用常用的词语，如学校、体育团队或名人。 这些密码易于猜测，并使基于字典的攻击变弱。 若要在组织中强制实施强密码，Azure Active Directory （Azure AD）密码保护提供了全局和自定义的禁止密码列表。 如果这些禁止密码列表中存在匹配项，则密码更改请求失败。
+用户经常创建包含本地常见字词（例如学校、运动团队或名人）的密码。 这些密码很容易猜出，对基于字典的攻击的抵御能力很弱。 若要在组织中强制实施强密码，Azure Active Directory （Azure AD）密码保护提供了全局和自定义的禁止密码列表。 如果这些禁止密码列表中存在匹配项，则密码更改请求失败。
 
 若要保护本地 Active Directory 域服务（AD DS）环境，可以安装并配置 Azure AD 密码保护，以便使用本地 DC。 本文说明如何为本地环境启用 Azure AD 密码保护。
 
 有关 Azure AD 密码保护在本地环境中的工作原理的详细信息，请参阅[如何为 Windows Server Active Directory 强制执行 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文说明如何为本地环境启用 Azure AD 密码保护。 在完成本文之前，请在本地 AD DS 环境中[安装并注册 Azure AD 密码保护代理服务和 DC 代理](howto-password-ban-bad-on-premises-deploy.md)。
 
@@ -39,7 +40,7 @@ ms.locfileid: "80652624"
 1. 建议最初将**模式**设置为 "*审核*"。 在你熟悉此功能以及对你组织中的用户产生的影响后，可以将**模式**切换为 "*强制*"。 有关详细信息，请参阅以下有关[操作模式](#modes-of-operation)的部分。
 1. 准备就绪后，选择“保存”。
 
-    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
+    [![在 Azure 门户中的身份验证方法下启用本地密码保护](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>操作模式
 

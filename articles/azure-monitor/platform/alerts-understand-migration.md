@@ -1,43 +1,33 @@
 ---
-title: 了解 Azure Monitor 警报的迁移工具
-description: 了解警报迁移工具的工作原理和如何排查问题。
+title: 了解 Azure Monitor 警报的迁移
+description: 了解警报迁移的工作方式，并解决问题。
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114304"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852389"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
+# <a name="understand-migration-options-to-newer-alerts"></a>了解迁移选项到新警报
 
-根据[之前的公告](monitoring-classic-retirement.md)，Azure Monitor 中的经典警报即将在 2019 年 8 月 31 日（原定于 2019 年 6 月 30 日）停用。 Azure 门户中为使用经典警报规则并想要自行触发迁移的客户提供了一个迁移工具。
+经典警报已[停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
 
-本文介绍自愿性迁移工具的工作原理。 此外还介绍了一些常见问题的补救措施。
-
-> [!NOTE]
-> 由于迁移工具的延迟推出，经典警报迁移的停用日期已从原来宣布的 2019 年 6 月 30 日[推迟至 2019 年 8 月 31 日](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)。
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>不会迁移的经典警报规则
+本文介绍了如何使用 "手动迁移" 和 "自主迁移" 工具来迁移剩余的警报规则。 此外还介绍了一些常见问题的补救措施。
 
 > [!IMPORTANT]
 > 活动日志警报（包括服务运行状况警报）和日志警报不受迁移的影响。 迁移仅适用于[此处](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)所述的经典警报规则。
 
-该工具几乎可以迁移所有的[经典警报规则](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)，不过也存在一些例外情况。 使用该工具（或者在 2019 年 9 月开始自动迁移期间）无法迁移以下警报规则：
-
-- 针对虚拟机来宾指标的经典警报规则（Windows 和 Linux）。 请参阅本文稍后所述的[有关在新指标警报中重新创建此类警报规则的指导](#guest-metrics-on-virtual-machines)。
-- 针对经典存储指标的经典警报规则。 请参阅[有关监视经典存储帐户的指导](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)。
-- 针对某些存储帐户指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#storage-account-metrics)。
-- 针对某些 Cosmos DB 指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#cosmos-db-metrics)。
-- 针对所有经典虚拟机和云服务指标（Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/个角色）的经典警报规则。 请参阅本文稍后所述的[详细信息](#classic-compute-metrics)。
-
-如果你的订阅包含任何此类经典规则，必须手动迁移。 由于我们无法提供自动迁移，任何此类现有经典指标警报会继续运行到 2020 年 6 月。 此缓冲期可让你从容地迁移到新警报。 还可以继续在2020年6月之前的列出异常上创建新的经典警报。 但对于其他所有内容，2019年8月后将不能创建新的经典警报。
-
 > [!NOTE]
-> 除了以上列出的异常，如果经典警报规则无效（即它们处于[弃用的指标](#classic-alert-rules-on-deprecated-metrics)或已删除的资源），则它们将不会迁移，并且在服务停用后将无法使用。
+> 如果经典警报规则无效（即它们处于[弃用的指标](#classic-alert-rules-on-deprecated-metrics)或已删除的资源），则它们将不会迁移，在服务停用后将无法使用。
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>将经典警报手动迁移到更新的警报
+
+对于手动迁移其剩余警报感兴趣的客户，可以使用以下部分来执行此操作。 这些部分还定义了资源提供程序停用的指标，当前无法直接迁移。
 
 ### <a name="guest-metrics-on-virtual-machines"></a>虚拟机上的来宾指标
 
@@ -63,7 +53,7 @@ ms.locfileid: "81114304"
 - SASThrottlingError
 - ThrottlingError
 
-必须基于[旧的和新的存储指标之间的映射](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)迁移针对 Percent 指标的经典警报规则。 需要相应地修改阈值，因为提供的新指标是绝对指标。
+必须基于[旧的和新的存储指标之间的映射](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)迁移针对 Percent 指标的经典警报规则。 需要相应地修改阈值，因为提供的新指标是绝对指标。
 
 必须将针对 AnonymousThrottlingError、SASThrottlingError 和 ThrottlingError 的经典警报规则拆分为两个新警报，因为没有任何合并的指标可提供相同的功能。 需要相应地调整阈值。
 
@@ -103,7 +93,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 ### <a name="classic-compute-metrics"></a>典型计算指标
 
-对于经典计算指标的任何警报都不会使用迁移工具迁移，因为新警报尚不支持经典计算资源。 将来会添加对这些资源类型的新警报的支持。 一旦可用，客户必须根据2020年6月之前的经典警报规则重新创建新的等效警报规则。
+对于经典计算指标的任何警报都不会使用迁移工具迁移，因为新警报尚不支持经典计算资源。 对这些资源类型的新警报的支持目前以公共预览版提供，客户可以根据其经典警报规则重新创建新的等效警报规则。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>针对已弃用指标的经典警报规则
 
@@ -160,7 +150,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 | SASSuccess | 包含维度 "ResponseType"="Success" 和 "Authentication"="SAS" 的事务指标 | |
 | ServerOtherError | 包含维度 "ResponseType"="ServerOtherError" 的事务指标 | |
 | ServerTimeOutError | 包含维度 "ResponseType"="ServerTimeOutError" 的事务指标  | |
-| 成功 | 包含维度 "ResponseType"="Success" 的事务指标 | |
+| Success | 包含维度 "ResponseType"="Success" 的事务指标 | |
 | TotalBillableRequests| 事务 | |
 | TotalEgress | 流出量 | |
 | TotalIngress | 流入量 | |
@@ -267,7 +257,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，策略可以阻止我们创建资源。 根据策略，无法迁移部分或全部规则。 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出了阻止进程的策略。 通过以下方法之一解决此问题：
 
 - 从策略分配中排除在迁移过程中的订阅或资源组。 [了解有关管理策略排除范围的详细信息](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 删除或更改 "audit" 或 "append" 的效果（例如，可以解决与缺少标记相关的问题）。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 例如，删除或更改 "audit" 或 "append" 的效果 (可以解决与缺少的标记) 相关的问题。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>后续步骤
 

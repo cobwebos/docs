@@ -6,12 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683295"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086653"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>映射数据流中的透视转换
 
@@ -19,6 +20,8 @@ ms.locfileid: "83683295"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 借助透视转换，可根据单个列的唯一行值创建多个列。 透视是一种聚合转换，需选择分组依据列并使用[聚合函数](data-flow-expression-functions.md#aggregate-functions)生成透视键。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
 
 ## <a name="configuration"></a>配置
 

@@ -1,83 +1,86 @@
 ---
 title: 在 Azure Kubernetes 服务 (AKS) 中自定义用户定义路由 (UDR)
-description: 了解如何在 Azure Kubernetes 服务 (AKS) 中定义自定义流出量路由
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中自定义出口路由
 services: container-service
 ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244440"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796963"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用用户定义的路由自定义群集传出
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用用户定义的路由自定义群集出口
 
-可以自定义 AKS 群集的流出量，以适应特定方案。 默认情况下，AKS 将预配标准 SKU 负载均衡器，以便对出口进行设置和使用。 但是，如果不允许公共 IP，或者流出量需要其他跃点，则默认设置可能无法满足所有方案的要求。
+可以根据具体的方案自定义 AKS 群集的出口。 默认情况下，AKS 将预配一个可设置并用于出口的标准 SKU 负载均衡器。 但是，如果禁用了公共 IP 或者出口需要额外的跃点，则默认设置可能不能满足所有方案的要求。
 
-本文介绍如何自定义群集的流出量路由以支持自定义网络方案，例如不允许使用公共 IP 并要求群集位于网络虚拟设备 (NVA) 后面的那些方案。
+本文介绍了如何自定义群集的出口路由以支持自定义网络方案，例如，禁用公共 IP 并要求群集位于网络虚拟设备 (NVA) 后面。
 
 ## <a name="prerequisites"></a>先决条件
 * Azure CLI 2.0.81 或更高版本
-* API `2020-01-01` 版或更高版本
+* API `2020-01-01` 或更高版本
 
 
 ## <a name="limitations"></a>限制
-* OutboundType 只能在群集创建时定义，以后不能更新。
-* 设置 `outboundType` 要求 AKS 群集具有 `vm-set-type` 的 `VirtualMachineScaleSets` 和 `Standard` 的 `load-balancer-sku`。
-* 将 `outboundType` 设置为 `UDR` 的值需要用户定义的路由，该路由具有群集的有效出站连接。
+* OutboundType 只能在创建群集时定义，以后无法对其进行更新。
+* 设置 `outboundType` 需要将 AKS 群集的 `vm-set-type` 指定为 `VirtualMachineScaleSets`，将 `load-balancer-sku` 指定为 `Standard`。
+* 将 `outboundType` 设置为 `UDR` 值需要用户定义的路由以及群集的有效出站连接。
 * 如果将 `outboundType` 设置为 `UDR` 的值，则意味着路由到负载均衡器的流入量源 IP 可能与群集的流出量目标地址不匹配。
 
 ## <a name="overview-of-outbound-types-in-aks"></a>AKS 中的出站类型概述
 
-可以使用唯一的 `outboundType` 类型的负载均衡器或用户定义的路由来自定义 AKS 群集。
+可以使用类型为或的唯一来自定义 AKS 群集 `outboundType` `loadBalancer` `userDefinedRouting` 。
 
 > [!IMPORTANT]
 > 出站类型仅影响群集的出口流量。 有关详细信息，请参阅[设置入口控制器](ingress-basic.md)。
 
 > [!NOTE]
-> 可以将自己的[路由表][byo-route-table]与 UDR 和 kubenet 网络一起使用。 请确保群集标识 (服务主体或托管标识) 具有对自定义路由表的参与者权限。
+> 可以将自己的[路由表][byo-route-table]与 UDR 和 kubenet 网络一起使用。 确保群集标识（服务主体或托管标识）具有对自定义路由表的“参与者”权限。
 
-### <a name="outbound-type-of-loadbalancer"></a>LoadBalancer 出站类型
+### <a name="outbound-type-of-loadbalancer"></a>loadBalancer 的出站类型
 
-如果 `loadBalancer` 设置了，AKS 将自动完成以下配置。 负载均衡器用于通过 AKS 分配的公共 IP 的流出量。 `loadBalancer` 出站类型支持 `loadBalancer` 类型的 Kubernetes 服务，该服务期望使用 AKS 资源提供程序创建的负载均衡器的流出量。
+如果设置了 `loadBalancer`，AKS 将自动完成以下配置。 对于经过 AKS 分配的公共 IP 的传出流量，将使用负载均衡器。 出站类型 `loadBalancer` 支持 `loadBalancer` 类型的 Kubernetes 服务，此类型的服务应收到由 AKS 资源提供程序创建的负载均衡器传出的流量。
 
 以下配置由 AKS 完成。
-   * 针对群集流出量预配公共 IP 地址。
-   * 将公共 IP 地址分配给负载均衡器资源。
-   * 为群集中的代理节点设置了负载均衡器的后端池。
+   * 为群集出口预配一个公共 IP 地址。
+   * 将该公共 IP 地址分配给负载均衡器资源。
+   * 为群集中的代理节点设置负载均衡器的后端池。
 
-下面是默认情况下在 AKS 群集中部署的网络拓扑，该网络拓扑使用的 `outboundType` 为 `loadBalancer`。
+下面是默认情况下在 AKS 群集中部署的网络拓扑，该拓扑使用类型为 `loadBalancer` 的 `outboundType`。
 
 ![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
 
-### <a name="outbound-type-of-userdefinedrouting"></a>UserDefinedRouting 出站类型
+### <a name="outbound-type-of-userdefinedrouting"></a>userDefinedRouting 的出站类型
 
 > [!NOTE]
-> 使用出站类型是一种高级网络方案，需要正确的网络配置。
+> 使用出站类型是一种高级网络方案，需要正确配置网络。
 
-如果 `userDefinedRouting` 设置了，则 AKS 不会自动配置出口路径。 必须由你完成出口设置。
+如果设置了 `userDefinedRouting`，则 AKS 不会自动配置出口路径。 必须由你完成出口设置。
 
-必须将 AKS 群集部署到具有以前配置的子网的现有虚拟网络，因为使用标准负载均衡器 (SLB) 体系结构时，必须建立显式出口。 因此，此体系结构需要显式将出口流量发送到设备（例如防火墙、网关、代理），或者允许网络地址转换 (NAT) 通过分配给标准负载均衡器或设备的公共 IP 完成。
+必须将 AKS 群集部署到具有以前配置的子网的现有虚拟网络，因为在不使用标准负载均衡器 (SLB) 体系结构时，必须建立显式出口。 因此，此体系结构需要向防火墙、网关、代理等设备显式发送出口流量，或需要允许网络地址转换 (NAT) 由分配给标准负载均衡器或设备的公共 IP 完成。
 
-AKS 资源提供程序将部署标准负载均衡器 (SLB)。 负载均衡器未使用任何规则进行配置，在[下一条规则之前，不会产生任何费用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不**会自动为 SLB 前端预配公共 IP 地址，也不会自动配置负载均衡器后端池。
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>用 userDefinedRouting 创建负载均衡器
 
-## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>使用 UDR 和 Azure 防火墙出站类型部署群集
+只有在部署了类型为 "loadBalancer" 的第一 Kubernetes 服务时，具有 UDR 的出站类型的 AKS 群集才能接收标准负载均衡器 (SLB) 。 负载均衡器配置了用于 *入站* 请求的公共 IP 地址和 *入站* 请求的后端池。 入站规则由 Azure 云提供商进行配置，但不会将出 **站公共 IP 地址或出站规则** 配置为具有 UDR 的出站类型。 你的 UDR 仍然是出口流量的唯一来源。
 
-若要说明使用用户定义的路由的出站类型的应用程序，可以在其自己的子网上使用 Azure 防火墙的虚拟网络上配置群集。 请参阅[通过 Azure 防火墙限制传出流量示例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)中的此示例。
+[在下一条规则之前](https://azure.microsoft.com/pricing/details/load-balancer/)，Azure 负载均衡器不会产生费用。
+
+## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>部署出站类型为 UDR 且具有 Azure 防火墙的群集
+
+若要演示如何应用出站类型为用户定义的路由的群集，可以通过其自己子网上的 Azure 防火墙的虚拟网络中配置一个群集。 请参阅[使用防火墙限制出口流量示例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)上的相应示例。
 
 > [!IMPORTANT]
-> UDR 的出站类型需要路由表中) 的 NVA (网络虚拟设备的路由（0.0.0.0/0 和下一跃点目标）。
-> 路由表已将默认 0.0.0.0/0 设置为 Internet，无需向 SNAT 发送公共 IP，只需添加此路由就不会为你提供出口。 AKS 将验证你是否不会创建指向 Internet，而是改为 NVA 或网关等的 0.0.0.0/0 路由。
-
+> UDR 的出站类型要求路由表中有 0.0.0.0/0 的路由和 NVA（网络虚拟设备）的下一个跃点目标。
+> 路由表已具有默认的 0.0.0.0/0 到 Internet 的路由，但没有连接 SNAT 的公共 IP，光是添加此路由不会为你提供出口。 AKS 将验证你是否不会创建指向 Internet，而是改为 NVA 或网关等的 0.0.0.0/0 路由。使用 UDR 的出站类型时，不会创建 **入站请求** 的负载均衡器公共 IP 地址，除非已配置了类型为 *loadbalancer* 的服务。 如果设置出站类型 UDR，则不会通过 AKS 创建 **出站请求** 的公共 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Azure 网络 UDR 概述](../virtual-network/virtual-networks-udr-overview.md)。
+参阅 [Azure 网络 UDR 概述](../virtual-network/virtual-networks-udr-overview.md)。
 
-请参阅[如何创建、更改或删除路由表](../virtual-network/manage-route-table.md)。
+参阅[如何创建、更改或删除路由表](../virtual-network/manage-route-table.md)。
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

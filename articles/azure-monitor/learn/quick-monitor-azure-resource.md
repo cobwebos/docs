@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443870"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324261"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>快速入门：使用 Azure Monitor 监视 Azure 资源
 创建 Azure 资源后，[Azure Monitor](../overview.md) 即会开始从这些资源中收集数据。 本快速入门中简单演练了为资源自动收集的数据以及如何在 Azure 门户中查看特定资源的数据。 之后，你可以添加配置来收集其他数据，并可以转到 Azure Monitor 菜单中使用相同工具访问为订阅中所有资源收集的数据。
@@ -70,4 +70,5 @@ ms.locfileid: "85443870"
 在本快速入门中，你查看了活动日志以及由 Azure Monitor 自动收集的 Azure 资源的指标。 请继续学习下一个快速入门，了解如何将活动日志收集到 Log Analytics 工作区中，并在其中使用 [日志查询](../log-query/log-query-overview.md)对其进行分析。
 
 > [!div class="nextstepaction"]
-> [将 Azure 活动日志发送到 Log Analytics 工作区](quick-monitor-azure-resource.md)
+> [将 Azure 活动日志发送到 Log Analytics 工作区]()
+

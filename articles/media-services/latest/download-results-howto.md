@@ -3,30 +3,26 @@ title: 下载作业结果 - Azure 媒体服务
 description: 本文演示如何下载作业结果。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
-ms.author: juliako
-ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: inhenkel
+ms.openlocfilehash: 0a2e4d1ac5cf0945ab75e58bb42d23d10d6c89aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80346306"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607242"
 ---
 # <a name="download-the-results-of-a-job"></a>下载作业结果
 
-在 Azure 媒体服务中，处理视频（例如编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)的结果。 然后，可以使用媒体服务和存储 API 将这些结果下载到本地文件夹。 
+在 Azure 媒体服务中，处理视频时 (例如，编码或分析) 需要创建输出 [资产](assets-concept.md) 来存储 [作业](transforms-jobs-concept.md)的结果。 然后，可以使用媒体服务和存储 API 将这些结果下载到本地文件夹。 
 
 本文演示如何使用 Java 和 .NET SDK 下载结果。
-
-## <a name="prerequisites"></a>先决条件 
-
-查看[管理资产](manage-asset-concept.md)。
 
 ## <a name="java"></a>Java
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: aahi
-ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413325"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986162"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -47,14 +47,14 @@ ms.locfileid: "85413325"
 | 瑞典语               |     `sv`      |     ✓      |            |                            |                    |
 | 土耳其语               |     `tr`      |     ✓      |            |                            |                    |
 
-### <a name="opinion-mining-v31-preview-only"></a>观点挖掘（仅限预览版）
+### <a name="opinion-mining-v31-preview-only"></a>观点挖掘 (3.1-仅预览) 
 
 | 语言              | 语言代码 | 从 v3 模型版本开始： |              说明 |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | 英语               |     `en`      |              2020-04-01              |                    |
 
 
-#### <a name="named-entity-recognition-ner"></a>[命名实体识别（NER）](#tab/named-entity-recognition)
+#### <a name="named-entity-recognition-ner"></a>[命名实体识别 (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
 > * NER v3 目前只支持英语和西班牙语语言。 如果使用其他语言调用 NER v3，则 API 将返回2.1 版结果，前提是版本2.1 支持该语言。

@@ -4,15 +4,15 @@ description: 将 Azure 应用服务中的应用与 Azure 虚拟网络集成。
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 06/08/2020
+ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7b6b310cdc03cb45fba6ba06dbcf2add9818f6cf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 88801e3f79884bbf3e7cd15e61572edf7763f83f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874208"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -173,7 +173,34 @@ Commands:
     list : List the virtual network integrations used in an appservice plan.
 ```
 
-对于需要网关的 VNet 集成，你可以使用 PowerShell 将应用服务与 Azure 虚拟网络集成。 如需随时可运行的脚本，请参阅[将 Azure 应用服务中的应用连接到 Azure 虚拟网络](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
+还提供了对区域 VNet 集成的 Powershell 支持，但你必须使用子网 resourceID 的属性数组创建通用资源
+
+```azurepowershell
+# Parameters
+$sitename="myWebApp"
+$resourcegroupname="myRG"
+$VNetname="myVNet"
+$location="myRegion"
+$integrationsubnetname = "myIntegrationSubnet"
+$subscriptionID = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+
+#Property array with the SubnetID
+$properties = @{
+      "subnetResourceId" = "/subscriptions/"+$subscriptionID+"/resourceGroups/"+$resourcegroupname+"/providers/Microsoft.Network/virtualNetworks/"+$VNetname+"/subnets/"+$integrationsubnetname;
+      }
+      
+#Creation of the VNet integration
+$resourceID = $sitename+"/VirtualNetwork"
+New-AzResource -ResourceName $resourceID `
+-Location $location  `
+-ResourceGroupName $resourcegroupname `
+-ResourceType Microsoft.Web/sites/networkConfig `
+-PropertyObject $properties 
+
+```
+
+
+对于需要网关的 VNet 集成，可以使用 PowerShell 将应用服务与 Azure 虚拟网络相集成。 如需随时可运行的脚本，请参阅[将 Azure 应用服务中的应用连接到 Azure 虚拟网络](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
 
 
 <!--Image references-->

@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c95f66a492f1fdb6f3c0aef6390f0b925dcf6e53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089358"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>使用 PowerShell 计算 blob 容器的大小
 
@@ -53,6 +53,6 @@ Remove-AzResourceGroup -Name bloblisttestrg
 
 有关为计费目的计算容器大小的脚本，请参阅[为计费目的计算 Blob 存储容器的大小](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)。
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure 存储的 PowerShell 示例](../blobs/storage-samples-blobs-powershell.md)中找到其他存储 PowerShell 脚本示例。

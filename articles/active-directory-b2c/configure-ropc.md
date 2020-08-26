@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/12/2020
+ms.topic: how-to
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636416"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482849"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -30,13 +30,14 @@ ms.locfileid: "83636416"
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3. 单击“用户流”，然后选择“新建用户流”。
-4. 单击“全部”选项卡，然后选择“使用 ROPC 登录”。
-5. 提供用户流名称，例如 ROPC_Auth。
-6. 在“应用程序声明”下，单击“显示更多”。
-7. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
-8. 选择“确定”，然后选择“创建” 。
-9. 单击“运行用户流”。
+3. 选择 "**用户流**"，然后选择 "**新建用户流**"。
+4. 选择 **"使用资源所有者密码凭据登录" （ROPC）**。
+5. 在 "**版本**" 下，确保选中 "**预览**"，然后选择 "**创建**"。
+7. 提供用户流名称，例如 ROPC_Auth。
+8. 在“应用程序声明”下，单击“显示更多”。
+9. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
+10. 选择“确定”，然后选择“创建” 。
+11. 单击“运行用户流”。
 
    你随后会看到一个终结点，如以下示例所示：
 
@@ -50,13 +51,13 @@ ms.locfileid: "83636416"
 ## <a name="test-the-user-flow"></a>测试用户流
 
 使用最喜欢的 API 开发应用程序来生成 API 调用，然后查看响应以调试用户流。 使用下表中的信息构建如下所示的调用作为 POST 请求的正文：
-- 将 \<tenant-name>.onmicrosoft.com 替换为 B2C 租户的名称。
-- 将 *\<B2C_1A_ROPC_Auth>* 替换为资源所有者密码凭据策略的全名。
-- 将 *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 替换为注册时提供的应用程序 ID。
+- 将* \<tenant-name> . onmicrosoft.com*替换为 B2C 租户的名称。
+- 将\<B2C_1A_ROPC_Auth> 替换为资源所有者密码凭据策略的全名。
+- 将 \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> 替换为注册中的应用程序 ID。
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-| 密钥 | 值 |
+| 键 | 值 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -131,7 +132,3 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 Azure AD B2C 实现符合公共客户端资源所有者密码凭据的 OAuth 2.0 标准，并且应与大多数客户端 SDK 兼容。 我们已在生产环境中针对适用于 iOS 的 AppAuth 和适用于 Android 的 AppAuth 广泛测试这一流程。 有关最新信息，请参阅[适用于 OAuth 2.0 的本机应用 SDK 和实现新式最佳做法的 OpenID Connect](https://appauth.io/)。
 
 从 GitHub 下载已配置为与 Azure AD B2C 一起使用的工作示例：[用于 Android](https://aka.ms/aadb2cappauthropc) 和[用于 iOS](https://aka.ms/aadb2ciosappauthropc)。
-
-
-
-

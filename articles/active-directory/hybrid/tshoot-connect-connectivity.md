@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356400"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541730"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>排查 Azure AD 连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -32,7 +32,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 在本文中，我们说明了 Fabrikam 如何通过其代理连接到 Azure AD。 代理服务器名为 fabrikamproxy，并使用端口 8080。
 
-首先，我们需要确保正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity)。
+首先，我们需要确保正确配置[**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ，并在 machine.config 文件更新后重新启动**Microsoft Azure AD 同步服务**。
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -50,7 +50,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | \*.verisign.com |HTTP/80 |用于下载 CRL 列表。 |
 | \*.entrust.net |HTTP/80 |用于为 MFA 下载 CRL 列表。 |
 | \*.windows.net |HTTPS/443 |用于登录 Azure AD。 |
-| secure.aadcdn.microsoftonline p.com |HTTPS/443 |用于 MFA。 |
+| secure.aadcdn.microsoftonline-p.com |HTTPS/443 |用于 MFA。 |
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
 
 ## <a name="errors-in-the-wizard"></a>向导中的错误

@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539799"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323513"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
-查明人们何时使用 Web 应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 使用 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 分析业务和使用情况遥测
+查明人们何时使用 Web 应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 使用 [Azure Application Insights](./app-insights-overview.md) 分析业务和使用情况遥测
 
 ![Application Insights 用户的屏幕截图](./media/usage-segmentation/0001-users.png)
 
@@ -29,9 +29,9 @@ ms.locfileid: "86539799"
 
 * **“用户”工具**：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
 * **“会话”工具**：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
-* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](../../azure-monitor/app/javascript.md)。 
+* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](./javascript.md)。 
 
-    自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
+    自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](./api-custom-events-metrics.md#trackevent)。
 
 ## <a name="querying-for-certain-users"></a>查询特定用户
 
@@ -62,5 +62,6 @@ ms.locfileid: "86539799"
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [工作簿](../platform/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
+

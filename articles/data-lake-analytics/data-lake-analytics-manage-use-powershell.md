@@ -3,18 +3,16 @@ title: 使用 Azure PowerShell 管理 Azure Data Lake Analytics
 description: 本文介绍如何使用 Azure PowerShell 管理 Data Lake Analytics 帐户、数据源、用户和作业。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: matt1883
-ms.author: mahi
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: a197ef645b4b3ba2cb656e93778d6546462f431a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121327"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125626"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -243,8 +241,8 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 使用 `-Result` 参数检测结束作业是否成功完成。 它具有下列值：
 
 * 已取消
-* 已失败
-* 无
+* 失败
+* None
 * 成功
 
 ``` powershell

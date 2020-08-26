@@ -9,15 +9,15 @@ metadata:
   ms.subservice: fhir
   ms.topic: landing-page
   ms.collection: collection
-  author: hansenms
-  ms.author: mihansen
-  ms.date: 11/06/2019
-  ms.openlocfilehash: 7940d28dc3ad0e77510fc0522224f81190dd0db7
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86521337"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88183439"
 landingContent:
 - title: Azure API for FHIR 入门
   linkLists:
@@ -25,11 +25,13 @@ landingContent:
     links:
     - text: 什么是 Azure API for FHIR？
       url: overview.md
+    - text: 什么是适用于 FHIR 的 Azure IoT 连接器（预览版）？
+      url: overview.md#azure-iot-connector-for-fhir-preview
   - linkListType: quickstart
     links:
     - text: 部署适用于 FHIR 的 API 服务器
       url: fhir-paas-portal-quickstart.md
-    - text: 部署 IoT 连接器（预览版）
+    - text: 部署适用于 FHIR 的 Azure IoT 连接器（预览版）
       url: iot-fhir-portal-quickstart.md
 - title: 设置教程
   linkLists:
@@ -41,6 +43,8 @@ landingContent:
       url: access-fhir-postman-tutorial.md
     - text: 智能集成来获取第三方应用和病历卡
       url: use-smart-on-fhir-proxy.md
+    - text: 通过 Azure IoT 中心接收设备数据
+      url: device-data-through-iot-hub.md
 - title: 注册应用进行 AD 身份验证
   linkLists:
   - linkListType: how-to-guide

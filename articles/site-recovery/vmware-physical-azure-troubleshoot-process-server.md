@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499749"
 ---
 # <a name="troubleshoot-the-process-server"></a>进程服务器故障排除
 
@@ -91,7 +91,7 @@ IP 地址 | 确保进程服务器具有静态 IPv4 地址，而未配置 NAT。
 
  初始和持续的复制失败通常是源计算机与进程服务器或者进程服务器与 Azure 之间的连接问题造成的。 下图汇总了这些步骤，后面是可帮助你执行这些步骤的过程。
 
-![对连接和复制进行故障排除](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![流程图显示了疑难解答连接和复制的步骤。](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>步骤 4：验证源计算机上的时间同步
@@ -170,7 +170,7 @@ IP 地址 | 确保进程服务器具有静态 IPv4 地址，而未配置 NAT。
   2. 选择“性能”选项卡 >“打开资源监视器”。
   3. 在“资源监视器”页中，选择“网络”选项卡。 在“网络活动的进程”下，检查 cbengine.exe 是否正在主动发送大量数据。
 
-       ![“网络活动的进程”下的卷](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![显示具有网络活动的进程下的大量卷的屏幕截图。](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   如果 cbengine.exe 未发送大量数据，请完成以下部分中的步骤。
 
@@ -179,7 +179,7 @@ IP 地址 | 确保进程服务器具有静态 IPv4 地址，而未配置 NAT。
 1. 在资源监视器中，选择 cbengine.exe。
 2. 在“TCP 连接”下，检查进程服务器与 Azure 存储之间是否建立了连接。
 
-  ![cbengine.exe 与 Azure Blob 存储 URL 之间的连接](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![显示 cbengine.exe 和 Azure Blob 存储 URL 之间的连接的屏幕截图。](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>检查服务
 

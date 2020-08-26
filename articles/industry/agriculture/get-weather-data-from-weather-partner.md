@@ -5,20 +5,24 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536617"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429270"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>从天气合作伙伴获取天气数据
 
-Azure FarmBeats 可帮助你使用基于 Docker 的连接器框架从天气数据提供商处引入天气数据。 使用此框架，天气数据提供程序实现了可与 FarmBeats 集成的 Docker。 目前仅支持[DTN](https://www.dtn.com/dtn-content-integration/)天气数据提供程序。
+Azure FarmBeats 可帮助你使用基于 Docker 的连接器框架从天气数据提供商处引入天气数据。 使用此框架，天气数据提供程序实现了可与 FarmBeats 集成的 Docker。 目前支持以下天气数据提供程序。
+
+  ![FarmBeats 合作伙伴](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 天气数据可用于在 FarmBeats 中生成可操作的见解和构建 AI 模型。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 若要获取天气数据，请确保已[安装 FarmBeats](https://aka.ms/farmbeatsinstalldocumentation)。 1.2.11 和更高版本中支持天气集成。 
 
@@ -26,7 +30,7 @@ Azure FarmBeats 可帮助你使用基于 Docker 的连接器框架从天气数�
 
 开始在 FarmBeats Datahub 上获取天气数据的步骤：
 
-1. 中转到你的 FarmBeats Datahub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger)。
+1. 中转到你的 FarmBeats Datahub Swagger `https://farmbeatswebsite-api.azurewebsites.net/swagger` 。
 
 2. 中转到/Partner API，然后发出 POST 请求。 使用以下输入有效负载：
 

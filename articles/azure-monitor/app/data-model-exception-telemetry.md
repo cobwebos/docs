@@ -4,15 +4,16 @@ description: 适用于异常遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6732fb3dde79abd5c69e2b0a91710bdd2356d6aa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671930"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320589"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>异常遥测：Application Insights 数据模型
 
-在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中，异常实例表示在受监视应用程序的执行过程中出现的已处理或未经处理的异常。
+在 [Application Insights](./app-insights-overview.md) 中，异常实例表示在受监视应用程序的执行过程中出现的已处理或未经处理的异常。
 
 ## <a name="problem-id"></a>问题 ID
 
@@ -39,5 +40,6 @@ ms.locfileid: "77671930"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
-- 了解如何[使用 Application Insights 诊断 Web 应用中的异常](../../azure-monitor/app/asp-net-exceptions.md)。
-- 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。
+- 了解如何[使用 Application Insights 诊断 Web 应用中的异常](./asp-net-exceptions.md)。
+- 查看 Application Insights 支持的[平台](./platforms.md)。
+

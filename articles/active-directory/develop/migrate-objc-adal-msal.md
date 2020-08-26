@@ -1,7 +1,7 @@
 ---
-title: ADAL 到 MSAL 的迁移指南（MSAL iOS/macOS） |Microsoft
+title: ADAL 到 MSAL 迁移指南 (MSAL iOS/macOS) |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解适用于 iOS/macOS 的 MSAL 与 ObjectiveC 的 Azure AD 身份验证库之间的差异（ADAL）。ObjC）以及如何迁移到适用于 iOS/macOS 的 MSAL。
+description: 了解适用于 iOS/macOS 的 MSAL 与 ObjectiveC (ADAL 的 Azure AD 身份验证库之间的差异。ObjC) 以及如何迁移到 MSAL for iOS/macOS。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,17 +13,18 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085171"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119923"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
 创建的 Azure Active Directory 身份验证库 ([ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)) 通过 v1.0 终结点使用 Azure Active Directory 帐户。
 
-适用于 iOS 和 macOS 的 Microsoft 身份验证库（MSAL）构建用于通过 Microsoft 标识平台（正式为 Azure AD v2.0 终结点）处理所有 Microsoft 标识，例如 Azure Active Directory （Azure AD）帐户、个人 Microsoft 帐户和 Azure AD B2C 帐户。
+适用于 iOS 和 macOS (MSAL) 的 Microsoft 身份验证库构建用于处理所有 Microsoft 标识，如 Azure Active Directory (Azure AD) 帐户、Microsoft 个人帐户和 Azure AD B2C 帐户通过 Microsoft 标识平台 (正式 Azure AD v2.0 终结点) 。
 
 Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要差异。 本文重点描述这些差异，并提供有关将应用从 ADAL 迁移到 MSAL 的指导。
 
@@ -32,7 +33,7 @@ Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要�
 ### <a name="who-can-sign-in"></a>谁可以登录
 
 * ADAL 仅支持工作和学校帐户（也称为 Azure AD 帐户）。
-* MSAL 支持个人 Microsoft 帐户（MSA 帐户），例如 Hotmail.com、Outlook.com 和 Live.com。
+* MSAL 支持 (MSA 帐户的个人 Microsoft 帐户) 例如 Hotmail.com、Outlook.com 和 Live.com。
 * MSAL 支持工作和学校帐户，并支持 Azure AD B2C 帐户。
 
 ### <a name="standards-compliance"></a>标准合规性
@@ -44,7 +45,7 @@ Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要�
 * Azure Active Directory v1.0 终结点要求在应用程序注册过程中提前声明所有权限。 这意味着，这些权限是静态的。
 * Microsoft 标识平台允许动态请求权限。 应用只能根据需求请求权限，并在需求提高时请求更多的权限。
 
-有关 Azure Active Directory v1.0 与 Microsoft 标识平台之间的差异的详细信息，请参阅[为何要更新到 Microsoft 标识平台 (v2.0)？](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)。
+有关 Azure Active Directory v1.0 与 Microsoft 标识平台之间的差异的详细信息，请参阅[为何要更新到 Microsoft 标识平台 (v2.0)？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL 与 MSAL 库的差异
 
@@ -60,7 +61,7 @@ MSAL 公共 API 反映 Azure AD v1.0 与 Microsoft 标识平台之间的一些�
 
 在 ADAL 中，应用必须提供资源标识符（例如 `https://graph.microsoft.com`）才能从 Azure Active Directory v1.0 终结点获取令牌。** 资源可以在应用清单中定义它可以识别的多个范围或 oAuth2Permissions。 这样，客户端应用便可以根据应用注册期间预定义的一组特定范围请求该资源的令牌。
 
-在 MSAL 中，应用不是提供单个资源标识符，而是为每个请求提供一组范围。 范围是资源标识符后接“资源/权限”格式的权限名称。 例如，`https://graph.microsoft.com/user.read`
+在 MSAL 中，应用不是提供单个资源标识符，而是为每个请求提供一组范围。 范围是资源标识符后接“资源/权限”格式的权限名称。 例如： `https://graph.microsoft.com/user.read`
 
 在 MSAL 中可通过两种方式提供范围：
 
@@ -76,7 +77,7 @@ MSAL 公共 API 反映 Azure AD v1.0 与 Microsoft 标识平台之间的一些�
 
 若要使用 `/.default` 范围，请将 `/.default` 追加到资源标识符。 例如：`https://graph.microsoft.com/.default`。 如果资源以斜杠 (`/`) 结尾，则仍应追加 `/.default`，包括前导正斜杠，也就是说，范围中应包含两个正斜杠 (`//`)。
 
-可在[此处](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope)阅读有关使用“/.default”范围的详细信息
+可在[此处](./v2-permissions-and-consent.md#the-default-scope)阅读有关使用“/.default”范围的详细信息
 
 ### <a name="supporting-different-webview-types--browsers"></a>支持不同的 WebView 类型和浏览器
 
@@ -139,7 +140,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
 
 ### <a name="broker-support"></a>中介支持
 
-从版本 0.3.0 开始，MSAL 使用 Microsoft Authenticator 应用为中介身份验证提供支持。 Microsoft Authenticator 还支持条件访问方案。 条件访问方案的示例包括要求用户通过 Intune 注册设备或使用 AAD 注册以获取令牌的设备符合性策略。 和移动应用管理（MAM）条件访问策略，在应用可以获取令牌之前需要符合性证明。
+从版本 0.3.0 开始，MSAL 使用 Microsoft Authenticator 应用为中介身份验证提供支持。 Microsoft Authenticator 还支持条件访问方案。 条件访问方案的示例包括要求用户通过 Intune 注册设备或使用 AAD 注册以获取令牌的设备符合性策略。 移动应用程序管理 (MAM) 条件性访问策略，该策略在应用可以获取令牌之前需要符合性证明。
 
 若要为应用程序启用中介：
 
@@ -206,7 +207,7 @@ iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
 
-[Intune MAM SDK](https://docs.microsoft.com/intune/app-sdk-get-started) 从版本 [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) 开始支持适用于 iOS 的 MSAL
+[Intune MAM SDK](/intune/app-sdk-get-started) 从版本 [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) 开始支持适用于 iOS 的 MSAL
 
 ## <a name="msal-and-adal-in-the-same-app"></a>同一应用中的 MSAL 和 ADAL
 
@@ -225,7 +226,7 @@ iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 重定向 URI 应采用以下格式：`msauth.<app.bundle.id>://auth`。 将 `<app.bundle.id>` 替换为应用程序的捆绑 ID。 在 [Azure 门户](https://aka.ms/MobileAppReg)中指定重定向 URI。
 
-（仅适用于 iOS）若要支持基于证书的身份验证，需要在应用程序和 Azure 门户中，使用以下格式额外注册一个重定向 URI：`msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如，`msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
+（仅适用于 iOS）若要支持基于证书的身份验证，需要在应用程序和 Azure 门户中，使用以下格式额外注册一个重定向 URI：`msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如： `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
 
 建议所有应用注册这两个重定向 URI。
 

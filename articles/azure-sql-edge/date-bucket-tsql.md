@@ -11,6 +11,7 @@ ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
 ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/31/2020
 ms.locfileid: "84233298"

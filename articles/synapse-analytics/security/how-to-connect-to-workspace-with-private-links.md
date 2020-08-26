@@ -1,5 +1,5 @@
 ---
-title: 使用专用链接连接到 Azure Synapse 工作区
+title: 使用专用链接连接到 Synapse 工作区
 description: 本文介绍如何使用专用链接连接到 Azure Synapse 工作区
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005967"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>使用专用链接连接到 Azure Synapse 工作区（预览版）
 
@@ -47,7 +47,7 @@ ms.locfileid: "85193866"
 
 在“配置”选项卡中，选择要在其中创建专用终结点的“虚拟网络”和“子网”  。 还需要创建映射到专用终结点的 DNS 记录。
 
-为“与专用 DNS 区域集成”选择“是”，以将专用终结点与专用 DNS 区域集成 。 如果没有与 VNet 关联的专用 DNS 区域，则会创建一个新的专用 DNS 区域。 完成时选择“查看 + 创建”。
+为“与专用 DNS 区域集成”选择“是”，以将专用终结点与专用 DNS 区域集成 。 如果没有与 Microsoft Azure 虚拟网络关联的专用 DNS 区域，则会创建一个新的专用 DNS 区域。 完成时选择“查看 + 创建”。
 
 ![选择订阅和区域详细信息](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "85193866"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[托管工作区 VNet](./synapse-workspace-managed-vnet.md)
+了解有关[托管工作区虚拟网络](./synapse-workspace-managed-vnet.md)的详细信息
 
 详细了解[托管专用终结点](./synapse-workspace-managed-private-endpoints.md)
 

@@ -11,6 +11,7 @@ ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83680874"

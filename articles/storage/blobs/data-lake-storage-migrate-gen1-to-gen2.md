@@ -1,6 +1,6 @@
 ---
 title: 将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
-description: 将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2。
+description: 将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2，这是在 Azure Blob 存储基础上构建的，它提供了一组专用于大数据分析的功能。
 author: normesta
 ms.topic: how-to
 ms.author: normesta
@@ -8,11 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25879178930c80f1265470645808d9ee81acafa8
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466011"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035121"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
@@ -80,7 +81,7 @@ Azure Data Lake Storage Gen2 是在[Azure Blob 存储](storage-blobs-introductio
    
 6. 搜索包含代码文件或 Databricks 笔记本中的字符串的 URI 引用， `adl://` APACHE HIVE HQL 文件或用作工作负荷的一部分的任何其他文件。 将这些引用替换为新存储帐户的[Gen2 格式的 URI](data-lake-storage-introduction-abfs-uri.md) 。 例如： Gen1 URI： `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能变为 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 。 
 
-7. 配置帐户的安全性，以包括[基于角色的访问控制（RBAC）角色](../common/storage-auth-aad-rbac-portal.md)、[文件和文件夹级别的安全性](data-lake-storage-access-control.md)、 [Azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
+7. 配置帐户的安全性，以包含[azure 角色](../common/storage-auth-aad-rbac-portal.md)、[文件和文件夹级别的安全性](data-lake-storage-access-control.md)、 [azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>步骤4：从 Gen1 切换到 Gen2
 
@@ -96,13 +97,13 @@ Azure Data Lake Storage Gen2 是在[Azure Blob 存储](storage-blobs-introductio
 |---|---|---|
 |数据组织|[分层命名空间](data-lake-storage-namespace.md)<br>文件和文件夹支持|[分层命名空间](data-lake-storage-namespace.md)<br>容器、文件和文件夹支持 |
 |异地冗余| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、 [ZRS](../common/storage-redundancy.md#zone-redundant-storage)、 [GRS](../common/storage-redundancy.md#geo-redundant-storage)、 [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共享访问密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体<br>[共享访问密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |授权|管理- [RBAC](../../role-based-access-control/overview.md)<br>数据- [acl](data-lake-storage-access-control.md)|管理- [RBAC](../../role-based-access-control/overview.md)<br>数据- [acl](data-lake-storage-access-control.md)， [RBAC](../../role-based-access-control/overview.md) |
 |加密–静态数据|服务器端–与[Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的或[客户管理](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的密钥|服务器端–与[Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的或[客户管理](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的密钥|
 |VNET 支持|[VNET 集成](../../data-lake-store/data-lake-store-network-security.md)|[服务终结点](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，[专用终结点](../common/storage-private-endpoints.md)|
 |开发人员体验|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、 [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、 [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、 [Python](../../data-lake-store/data-lake-store-data-operations-python.md)、 [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md) [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|公开发布- [REST](/rest/api/storageservices/data-lake-storage-gen2)、 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [Java](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)<br>公共预览版- [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、 [PowerShell](data-lake-storage-directory-file-acl-powershell.md)、 [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |资源日志|经典日志<br>[Azure Monitor 集成](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[经典日志](../common/storage-analytics-logging.md)-正式发布<br>Azure monitor 集成–时间线 TBD|
-|生态系统|[HDInsight （3.6）](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)， [Azure Databricks （3.1 及更高版本）](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)， [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)， [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight （3.6，4.0）](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)， [Azure Databricks （5.1 及更高版本）](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)， [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)， [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|生态系统|[HDInsight (3.6) ](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)， [Azure Databricks (3.1 及更高版本) ](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)， [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)， [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0) ](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks (5.1 及更高版本) ](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)、 [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 
@@ -206,4 +207,3 @@ Azure Data Lake Storage Gen2 是在[Azure Blob 存储](storage-blobs-introductio
 - 了解为存储帐户设置安全性的各个部分。 请参阅[Azure 存储安全指南](../common/storage-security-guide.md)。
 - 优化 Data Lake Store 的性能。 请参阅[优化 Azure Data Lake Storage Gen2 性能](data-lake-storage-performance-tuning-guidance.md)
 - 查看管理 Data Lake Store 的最佳实践。 请参阅[使用 Azure Data Lake Storage Gen2 的最佳实践](data-lake-storage-best-practices.md)
-

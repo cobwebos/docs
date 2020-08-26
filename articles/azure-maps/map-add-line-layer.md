@@ -1,6 +1,6 @@
 ---
 title: 向地图添加线条层 | Microsoft Azure Maps
-description: 本文介绍如何使用 Microsoft Azure Maps Web SDK 向地图添加线条层。
+description: 了解如何向 maps 添加行。 请参阅使用 Azure Maps Web SDK 添加线条图层的示例，以及使用符号和颜色渐变自定义线条。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: c473be25907eb3a761fbccd598bb9b732e5be5b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: c834ae6061fce6f2fc2f4cd7c4d80e036775b156
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802342"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010202"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>向地图添加线条层
 

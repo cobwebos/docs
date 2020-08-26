@@ -1,4 +1,4 @@
-- name: Windows 虚拟桌面 2020 春季版
+- name: Windows 虚拟桌面
   href: index.yml
 - name: 概述
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: 新增功能
       href: whats-new.md
-    - name: 2019 秋季版文档
+    - name: Windows 虚拟桌面（经典）文档
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教程
   items:
@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: 使用 PowerShell 管理应用组
           href: manage-app-groups-powershell.md
+    - name: 删除主机池
+      href: delete-host-pool.md
     - name: 创建配置文件容器
       items:
         - name: 使用基于 VM 的文件共享
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: 在主 VHD 映像中安装 Office
           href: install-office-on-wvd-master-image.md
+    - name: 自动缩放会话主机
+      href: set-up-scaling-script.md
     - name: 自定义源
       href: customize-feed-for-virtual-desktop-users.md
     - name: 使用服务诊断
@@ -108,8 +112,18 @@
       href: store-fslogix-profile.md
     - name: 合作伙伴集成
       href: partners.md
+    - name: Windows 虚拟桌面常见问题解答
+      href: faq.md
     - name: Windows 10 Enterprise 多会话常见问题解答
       href: windows-10-multisession-faq.md
+    - name: MSIX 应用附加
+      items:
+        - name: 什么是 MSIX 应用附加？
+          href: what-is-app-attach.md
+        - name: 术语表
+          href: app-attach-glossary.md
+        - name: 常见问题解答
+          href: app-attach-faq.md
     - name: 数据位置
       href: data-locations.md
 - name: 疑难解答
@@ -137,11 +151,15 @@
     - name: Linux 支持
       href: linux-overview.md
     - name: 支持的 RDP 文件设置
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: 网络指南
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 虚拟机大小调整指南
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
+    - name: Azure 命令行接口 (CLI)
+      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure 示例方案
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: 资源
   items:
     - name: PowerShell
@@ -153,7 +171,7 @@
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 学习路径
-      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
+      href: /learn/paths/m365-wvd/
     - name: 操作说明视频
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技术社区支持组

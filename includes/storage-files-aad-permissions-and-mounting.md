@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544550"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545225"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2为标识分配访问权限
 
@@ -28,7 +28,7 @@ ms.locfileid: "86544550"
 > [!IMPORTANT]
 > 对文件共享的完全管理控制（包括获取文件所有权的能力）需要使用存储帐户密钥。 Azure AD 凭据不支持管理控制。
 
-你可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识，以便授予共享级别权限。 请注意，共享级别 RBAC 角色分配可能需要一些时间才能生效。 
+你可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识，以便授予共享级别权限。 请注意，共享级别 Azure 角色分配可能需要一些时间才能生效。 
 
 > [!NOTE]
 > 如果计划使用本地 AD DS 进行身份验证，请记住将[AD DS 凭据同步到 Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) 。 从 AD DS 到 Azure AD 的密码哈希同步是可选的。 将向从本地 AD DS 同步的 Azure AD 标识授予共享级权限。
@@ -36,7 +36,7 @@ ms.locfileid: "86544550"
 一般的建议是使用对 AD 组（代表一组用户和标识）的高级访问权限管理的共享级别权限，然后利用 NTFS 权限对目录/文件级别上的粒度访问控制。 
 
 #### <a name="azure-portal"></a>Azure 门户
-若要将 RBAC 角色分配到 Azure AD 标识，请使用[Azure 门户](https://portal.azure.com)，请执行以下步骤：
+若要将 Azure 角色分配到 Azure AD 标识，请使用[Azure 门户](https://portal.azure.com)，请执行以下步骤：
 
 1. 在 Azure 门户中，请切换到文件共享，或[创建文件共享](../articles/storage/files/storage-how-to-create-file-share.md)。
 2. 选择“访问控制 (IAM)”。
@@ -46,7 +46,7 @@ ms.locfileid: "86544550"
 
 #### <a name="powershell"></a>PowerShell
 
-以下 PowerShell 示例演示了如何基于登录名将 RBAC 角色分配到 Azure AD 标识。 有关如何使用 PowerShell 分配 RBAC 角色的详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../articles/role-based-access-control/role-assignments-powershell.md)。
+以下 PowerShell 示例演示了如何基于登录名将 Azure 角色分配到 Azure AD 标识。 有关使用 PowerShell 分配 Azure 角色的详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../articles/role-based-access-control/role-assignments-powershell.md)。
 
 在运行以下示例脚本之前，请记得将占位符值（包括括号）替换为自己的值。
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>CLI
   
-以下 CLI 2.0 命令显示了如何基于登录名将 RBAC 角色分配到 Azure AD 标识。 有关 Azure CLI 分配 RBAC 角色的详细信息，请参阅[使用 rbac 和 Azure CLI 管理访问权限](../articles/role-based-access-control/role-assignments-cli.md)。 
+以下 CLI 2.0 命令显示了如何基于登录名将 Azure 角色分配到 Azure AD 标识。 有关将 Azure 角色分配到 Azure CLI 的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../articles/role-based-access-control/role-assignments-cli.md)。 
 
 在运行以下示例脚本之前，请记得将占位符值（包括括号）替换为自己的值。
 
@@ -130,7 +130,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4从已加入域的 VM 装载文件共享
 
-以下过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 请注意，共享级别 RBAC 角色分配可能需要一些时间才能生效。 
+以下过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 请注意，共享级别 Azure 角色分配可能需要一些时间才能生效。 
 
 使用已向其授予权限的 Azure AD 标识登录到 VM，如下图所示。 如果为 Azure 文件启用了本地 AD DS 身份验证，请使用 AD DS 凭据。 对于 Azure AD DS 身份验证，请用 Azure AD 凭据登录。
 

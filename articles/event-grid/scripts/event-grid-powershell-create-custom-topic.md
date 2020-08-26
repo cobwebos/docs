@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76719936"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460773"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>使用 PowerShell 创建事件网格自定义主题
 
@@ -36,9 +36,9 @@ ms.locfileid: "76719936"
 
 | Command | 说明 |
 |---|---|
-| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | 创建事件网格自定义主题。 |
+| [New-AzEventGridTopic](/powershell/module/az.eventgrid/new-azeventgridtopic) | 创建事件网格自定义主题。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
-* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/get-started-azureps)。

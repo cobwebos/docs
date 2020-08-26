@@ -1,13 +1,14 @@
 ---
 title: 针对受限制请求的指南
 description: 了解如何分组、错开、分页以及并行查询，以避免 Azure Resource Graph 限制请求。
-ms.date: 05/20/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682061"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541832"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中的受限制请求的指南
 
@@ -28,6 +29,8 @@ Azure Resource Graph 基于时段为每个用户分配配额数量。 例如，�
 
 - `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
 - `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间。
+
+当安全主体有权访问租户或管理组[查询范围](./query-language.md#query-scope)内的超过5000个订阅时，响应仅限于前5000个订阅，并且 `x-ms-tenant-subscription-limit-hit` 标头将作为返回 `true` 。
 
 为了说明标头的工作方式，我们来看看具有标头并且值为 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 查询响应。
 

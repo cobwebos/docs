@@ -1,6 +1,6 @@
 ---
 title: Azure 基础结构安全性 | Microsoft Docs
-description: 本文介绍 Microsoft 如何保护我们的 Azure 数据中心。
+description: 了解 Microsoft 如何保护 Azure 数据中心。 它们由 Microsoft 运营人员进行管理和监控。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72595406"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543922"
 ---
 # <a name="azure-infrastructure-security"></a>Azure 基础结构安全性
 Microsoft Azure 在由 Microsoft 管理和运营的数据中心运行。 这些地理位置分散的数据中心符合有关安全性和可靠性的关键行业标准，例如 ISO/IEC 27001:2013 和 NIST SP 800-53。 它们由 Microsoft 运营人员进行管理和监控。 这些运营人员在提供全球最大的全天候持续运行的联机服务方面拥有多年经验。

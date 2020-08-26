@@ -3,23 +3,23 @@ title: Azure CLI 示例 Windows
 description: Azure CLI 示例 Windows
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 11d0af0133a113382ea9ed03eeeb8686ebe0c73b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 8e83b289abd92d657b2e336aed3a74c10d6f6490
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203682"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501025"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure CLI 示例
 
 下表包含指向使用部署 Windows 虚拟机的 Azure CLI 生成的 bash 脚本的链接。
 
-| 脚本 | 说明 |
+| Script | 说明 |
 |---|---|
 |**创建虚拟机**||
 | [创建虚拟机](./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 使用最小配置创建 Windows 虚拟机。 |

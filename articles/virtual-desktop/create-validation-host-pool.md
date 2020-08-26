@@ -1,27 +1,22 @@
 ---
 title: Windows 虚拟桌面主机池服务更新 - Azure
 description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b74b7f0b79ad4064d7133a19316d6aec6bd5ba3a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611562"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008706"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
 
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 在将主机池部署到生产环境之前，强烈建议创建验证主机池。 更新首先应用于验证主机池，从而可以监视在将服务更新推广到生产环境之前监视它们。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在生产环境中对用户导致故障时间。
 
@@ -33,7 +28,7 @@ ms.locfileid: "82611562"
 > 建议保留验证主机池以测试所有将来的更新。
 
 >[!IMPORTANT]
->Windows 虚拟桌面 2020 春季版目前在启用和禁用验证环境时会遇到麻烦。 当解决此问题后，我们会更新本文。
+>集成 Azure 资源管理器的 Windows 虚拟桌面目前在启用和禁用验证环境时会遇到麻烦。 当解决此问题后，我们会更新本文。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +60,7 @@ cmdlet 的结果应类似于以下输出：
     HostPoolName        : hostpoolname
     FriendlyName        :
     Description         :
-    Persistent          : False 
+    Persistent          : False
     CustomRdpProperty   : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
@@ -80,7 +75,7 @@ cmdlet 的结果应类似于以下输出：
 
 ## <a name="next-steps"></a>后续步骤
 
-既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。 
+既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。
 
 > [!div class="nextstepaction"]
 > [设置服务警报](./set-up-service-alerts.md)

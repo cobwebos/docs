@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086347"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
@@ -38,7 +39,7 @@ ms.locfileid: "84712286"
 | Windows Media 视频 (WMV)/ASF（.wmv、.asf） |是 |
 | AVI（8 位/10 位未压缩）(.avi) |是 |
 | MP4（.mp4、.m4a、.m4v）/ISMV（.isma、.ismv） |是 |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |是 |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |是 |
 | Matroska/WebM (.mkv) |是 |
 | WAVE/WAV (.wav) |是 |
 | QuickTime (.mov) |是 |
@@ -53,7 +54,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 * MXF、GXF 和 QuickTime 文件，其中的音频曲目具有交错的立体声或 5.1 示例
 
-或
+or
 
 * MXF、GXF 和 QuickTime 文件，其中的音频以独立 PCM 轨道的形式携带，但可以从文件元数据推导频道映射（到立体声或 5.1 的映射）
 
@@ -111,8 +112,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md)
 
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)
-

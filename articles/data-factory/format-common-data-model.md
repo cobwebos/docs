@@ -5,37 +5,37 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083774"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905259"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的通用数据模型格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-通用数据模型（CDM）元数据系统可让数据及其含义在应用程序和业务流程之间轻松共享。 若要了解详细信息，请参阅[通用数据模型](https://docs.microsoft.com/common-data-model/)概述。
+通用数据模型 (CDM) 元数据系统使数据及其含义能够在应用程序和业务流程之间轻松共享。 若要了解详细信息，请参阅[通用数据模型](https://docs.microsoft.com/common-data-model/)概述。
 
-在 Azure 数据工厂中，用户可以使用映射数据流来转换[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) （ADLS Gen2）中存储的 CDM 实体。 选择 "model.js" 和 "清单样式" "CDM 源"，并写入 CDM 清单文件。
+在 Azure 数据工厂中，用户可以使用映射数据流从存储在[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) 中的 model.js和清单窗体上转换 CDM 实体中的数据。 你还可以使用 CDM 实体引用来传入 CDM 格式的数据，这些实体引用将以 CSV 或 Parquet 格式将数据置于分区文件夹中。 
 
 > [!NOTE]
-> 用于 ADF 数据流的通用数据模型（CDM）格式连接器目前以公共预览版形式提供。
+> 用于 ADF 数据流 (CDM) 格式连接器的通用数据模型目前作为公共预览版提供。
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
 通用数据模型作为[内联数据集](data-flow-source.md#inline-datasets)提供，同时将数据流映射为源和接收器。
 
 > [!NOTE]
-> 编写 CDM 实体时，必须已定义了现有的 CDM 实体定义（元数据架构）。 ADF 数据流接收器将读取该 CDM 实体文件，并将该架构导入到接收器中以便进行字段映射。
+> 在编写 CDM 的实体时，必须已将) 定义为用作参考的现有 CDM 实体定义 (元数据架构。 ADF 数据流接收器将读取该 CDM 实体文件，并将该架构导入到接收器中以便进行字段映射。
 
 ### <a name="source-properties"></a>源属性
 
 下表列出了 CDM 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 描述 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为`cdm` | 是 | `cdm` | format |
 | 元数据格式 | 数据实体引用所在的位置。 如果使用 CDM 版本1.0，则选择 "清单"。 如果使用1.0 之前的 CDM 版本，请选择 "model.js打开"。 | 是 | `'manifest'` 或 `'model'` | manifestType |
@@ -43,7 +43,7 @@ ms.locfileid: "86083774"
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | String | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | String | entityPath |
 | 清单文件：清单名称 | 清单文件的名称。 默认值为 "default"  | 否 | String | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore | 
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
 | 架构链接的服务 | 语料库所在的链接服务 | 是，如果使用清单 | `'adlsgen2'` 或 `'github'` | corpusStore | 
 | 实体引用容器 | 容器语料库处于 | 是，如果在 ADLS Gen2 中使用清单和语料库 | String | adlsgen2_fileSystem |
 | 实体引用存储库 | GitHub 存储库名称 | 是，如果使用 GitHub 中的清单和语料库 | String | github_repository |
@@ -52,9 +52,28 @@ ms.locfileid: "86083774"
 | 语料库实体 | 实体引用的路径 | 是 | String | 实体 |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
+### <a name="sink-settings"></a>接收器设置
+
+* 指向包含要写入的实体定义的 CDM 实体引用文件。
+
+![实体设置](media/data-flow/common-data-model-111.png "实体引用")
+
+* 定义要 ADF 用于写入实体的输出文件的分区路径和格式。
+
+![实体格式](media/data-flow/common-data-model-222.png "实体格式")
+
+* 设置清单文件的输出文件位置、位置和名称。
+
+![cdm 位置](media/data-flow/common-data-model-333.png "CDM 位置")
+
+
 #### <a name="import-schema"></a>导入架构
 
 CDM 仅可用作内联数据集，并且默认情况下不具有关联的架构。 若要获取列元数据，请单击 "**投影**" 选项卡中的 "**导入架构**" 按钮。这将允许你引用语料库指定的列名称和数据类型。 若要导入该架构，[数据流调试会话](concepts-data-flow-debug-mode.md)必须处于活动状态，并且您必须具有现有的 CDM 实体定义文件以指向。
+
+将数据流列映射到接收器转换中的实体属性时，请单击 "映射" 选项卡，然后选择 "导入架构"。 ADF 将读取你在接收器选项中所指向的实体引用，使你能够映射到目标 CDM 架构。
+
+![CDM 接收器设置](media/data-flow/common-data-model-444.png "CDM 映射")
 
 > [!NOTE]
 >  当对源自 Power BI 或 Power Platform 数据流的源类型使用 model.js时，可能会遇到源转换中的 "语料库路径为 null 或空" 错误。 这可能是由于文件 model.js上的分区位置路径存在格式问题。 若要解决此问题，请执行以下步骤： 
@@ -93,7 +112,7 @@ source(output(
 
 下表列出了 CDM 接收器支持的属性。 可以在 "**设置**" 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 描述 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为`cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 文件夹的容器名称 | 是 | String | fileSystem |

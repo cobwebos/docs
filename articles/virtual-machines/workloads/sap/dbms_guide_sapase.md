@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525256"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654593"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
-本文档介绍在 Azure IaaS 中部署 SAP 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 本文档介绍在 Linux 和 Windows 操作系统上运行的 SAP ASE。 Azure 支持的最低版本为 SAP ASE 16.0.02 （版本16支持包2）。 建议部署最新版本的 SAP 和最新的修补程序级别。  建议使用最小的 SAP ASE 16.0.03.07 （版本16支持包3修补程序级别7）。  最新版本的 SAP 可以在[目标 ASE 16.0 发行计划和 CR List 信息](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到。
+本文档介绍在 Azure IaaS 中部署 SAP 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 本文档介绍在 Linux 和 Windows 操作系统上运行的 SAP ASE。 Azure 支持的最低版本为 SAP ASE 16.0.02 (版本16支持包 2) 。 建议部署最新版本的 SAP 和最新的修补程序级别。  最小 SAP ASE 16.0.03.07 (版本16支持包3修补程序级别 7) 建议使用。  最新版本的 SAP 可以在 [目标 ASE 16.0 发行计划和 CR List 信息](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到。
 
 有关 SAP 应用程序或安装媒体位置的发布支持的其他信息，请参阅以下位置的 SAP 产品可用性矩阵：
 
@@ -33,7 +33,7 @@ ms.locfileid: "86525256"
 - [SAP 支持说明 #1590719](https://launchpad.support.sap.com/#/notes/1590719)
 - [SAP 支持说明 #1973241](https://launchpad.support.sap.com/#/notes/1973241)
 
-注释：在 SAP 世界内外的所有文档中，产品的名称被称为 Sybase ASE 或 SAP ASE，或在某些情况下均称为。 为了保持一致，我们在本文档中使用名称**SAP ASE** 。
+注释：在 SAP 世界内外的所有文档中，产品的名称被称为 Sybase ASE 或 SAP ASE，或在某些情况下均称为。 为了保持一致，我们在本文档中使用名称 **SAP ASE** 。
 
 ## <a name="operating-system-support"></a>操作系统支持
 SAP 产品可用性矩阵包含每个 SAP 应用程序支持的操作系统和 SAP 内核组合。  Linux 分发 SUSE 2.x、SUSE 4.6 和 Red Hat 7. x 完全受支持。  不支持作为 SAP ASE 的操作系统 Oracle Linux。  建议使用可用的最新 Linux 版本。 Windows 客户应该使用 Windows Server 2016 或 Windows Server 2019 版本。  更早版本的 Windows （如 Windows 2012）在技术上受支持，但我们始终建议使用最新的 Windows 版本。
@@ -54,24 +54,24 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 
 `cat /proc/meminfo` 
 
-页面大小通常为 2048 KB。 有关详细信息，请参阅文章[在 Linux 上的大型页面](https://help.sap.com/viewer/ecbccd52e7024feaa12f4e780b43bc3b/16.0.3.7/en-US/a703d580bc2b10149695f7d838203fad.html) 
+页面大小通常为 2048 KB。 有关详细信息，请参阅文章 [在 Linux 上的大型页面](https://help.sap.com/viewer/ecbccd52e7024feaa12f4e780b43bc3b/16.0.3.7/en-US/a703d580bc2b10149695f7d838203fad.html) 
 
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>针对 SAP ASE 部署的 VM 和磁盘结构的建议
 
-Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的任何 vm 类型都支持 sap ASE For Sap NetWeaver 应用程序 #1928533 用于中型 SAP ASE 数据库服务器的典型 vm 类型包括 Esv3。  大型多 tb 数据库可以利用 M 系列 VM 类型。 可以通过启用 M 系列写入加速器来改善 SAP ASE 事务日志磁盘写入性能。 由于 SAP ASE 执行日志写入的方式，应小心地测试写入加速器。  查看[SAP 支持说明 #2816580](../../windows/how-to-enable-write-accelerator.md)并考虑运行性能测试。  
+Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出的任何 vm 类型都支持 sap ASE For Sap NetWeaver 应用程序 #1928533 用于中型 SAP ASE 数据库服务器的典型 vm 类型包括 Esv3。  大型多 tb 数据库可以利用 M 系列 VM 类型。 可以通过启用 M 系列写入加速器来改善 SAP ASE 事务日志磁盘写入性能。 由于 SAP ASE 执行日志写入的方式，应小心地测试写入加速器。  查看 [SAP 支持说明 #2816580](../../how-to-enable-write-accelerator.md) 并考虑运行性能测试。  
 写入加速器仅适用于事务日志磁盘。 磁盘级别缓存应设置为 "无"。 如果 Azure 写入加速器与其他 DBMS 相比，没有显示类似的改进，别惊讶。 根据 SAP ASE 写入事务日志的方式，Azure 写入加速器不会有很小的加速。
 建议为数据设备和日志设备使用不同的磁盘。  系统数据库 sybsecurity 并且 `saptools` 不需要专用磁盘，可放置在包含 SAP 数据库数据和日志设备的磁盘上 
 
 ![SAP ASE 的存储配置](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
 ### <a name="file-systems-stripe-size--io-balancing"></a>文件系统，条带大小 & IO 均衡 
-除非另行配置，否则 SAP ASE 会按顺序将数据写入磁盘存储设备。 这意味着，具有四个设备的空 SAP ASE 数据库只会将数据写入第一个设备。  当第一个设备满时，其他磁盘设备将仅写入到中。  每个 SAP ASE 设备的读取和写入 IO 量可能不同。 若要平衡所有可用 Azure 磁盘上的磁盘 IO，需要使用 Windows 存储空间或 Linux LVM2。 在 Linux 上，建议使用 XFS 文件系统格式化磁盘。 应该使用性能测试来测试 LVM 条带大小。 128 KB 条带大小是一个很好的起点。 在 Windows 上，应测试 NTFS 分配单元大小（澳大利亚）。 64 KB 可用作起始值。 
+除非另行配置，否则 SAP ASE 会按顺序将数据写入磁盘存储设备。 这意味着，具有四个设备的空 SAP ASE 数据库只会将数据写入第一个设备。  当第一个设备满时，其他磁盘设备将仅写入到中。  每个 SAP ASE 设备的读取和写入 IO 量可能不同。 若要平衡所有可用 Azure 磁盘上的磁盘 IO，需要使用 Windows 存储空间或 Linux LVM2。 在 Linux 上，建议使用 XFS 文件系统格式化磁盘。 应该使用性能测试来测试 LVM 条带大小。 128 KB 条带大小是一个很好的起点。 在 Windows 上，应测试 (澳大利亚) 的 NTFS 分配单元大小。 64 KB 可用作起始值。 
 
 建议按照在 SAP 自适应服务器企业和[sap 支持说明 #1815695](https://launchpad.support.sap.com/#/notes/1815695)[中配置自动数据库空间扩展](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)一文中所述配置自动数据库扩展。 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure 虚拟机、磁盘和文件系统配置中的示例 SAP ASE 
-下面的模板显示适用于 Linux 和 Windows 的示例配置。 确认虚拟机和磁盘配置之前，请确保单个 VM 的网络和存储带宽配额足以满足业务要求。 同时请记住，不同的 Azure VM 类型具有不同的可附加到 VM 的最大磁盘数。 例如，E4s_v3 VM 的存储 IO 吞吐量限制为 48 MB/秒。 如果数据库备份活动所需的存储吞吐量超过 48 MB/秒，则更大的 VM 类型具有更大的存储带宽吞吐量是不可避免的。 配置 Azure 存储时，还需要记住，尤其是在[Azure 高级存储](../../windows/premium-storage-performance.md)中，每 GB 容量的吞吐量和 IOPS 都发生变化。 有关详细信息，请参阅本主题中的[如何在 Azure 中使用哪些磁盘类型？](../../windows/disks-types.md)。 特定 Azure VM 类型的配额记录在 "[内存优化" 虚拟机大小](../../sizes-memory.md)和链接到该虚拟机的文章中。 
+下面的模板显示适用于 Linux 和 Windows 的示例配置。 确认虚拟机和磁盘配置之前，请确保单个 VM 的网络和存储带宽配额足以满足业务要求。 同时请记住，不同的 Azure VM 类型具有不同的可附加到 VM 的最大磁盘数。 例如，E4s_v3 VM 的存储 IO 吞吐量限制为 48 MB/秒。 如果数据库备份活动所需的存储吞吐量超过 48 MB/秒，则更大的 VM 类型具有更大的存储带宽吞吐量是不可避免的。 配置 Azure 存储时，还需要记住，尤其是在 [Azure 高级存储](../../windows/premium-storage-performance.md) 中，每 GB 容量的吞吐量和 IOPS 都发生变化。 有关详细信息，请参阅本主题中的 [如何在 Azure 中使用哪些磁盘类型？](../../disks-types.md)。 特定 Azure VM 类型的配额记录在 " [内存优化" 虚拟机大小](../../sizes-memory.md) 和链接到该虚拟机的文章中。 
 
 > [!NOTE]
 >  如果 DBMS 系统从本地移至 Azure，则建议在 VM 上执行监视，并评估 CPU、内存、IOPS 和存储吞吐量。 将观测到的最大值与上面提到的文章中记录的 VM 配额限制进行比较
@@ -80,9 +80,9 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小介于 50 GB – 250 GB （如 SAP 解决方案管理器）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
-| VM 类型 | E4s_v3 （4 vCPU/32 GB RAM） | E4s_v3 （4 vCPU/32 GB RAM） | --- |
+| VM 类型 | E4s_v3 (4 vCPU/32 GB RAM)  | E4s_v3 (4 vCPU/32 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
 | SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备数 | 4 | 4 | ---|
@@ -92,7 +92,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
-| 数据磁盘的数量和类型 | 高级存储： 2 x P10 （RAID0） | 高级存储： 2 x P10 （RAID0）| 缓存 = 只读 |
+| 数据磁盘的数量和类型 | 高级存储： 2 x P10 (RAID0)  | 高级存储： 2 x P10 (RAID0) | 缓存 = 只读 |
 | 日志磁盘的数量和类型 | 高级存储： 1 x P20  | 高级存储： 1 x P20 | 缓存 = 无 |
 | ASE MaxMemory 参数 | 90% 的物理 RAM | 90% 的物理 RAM | 假设单个实例 |
 | 备份设备数 | 4 | 4| --- |
@@ -101,9 +101,9 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 例如，如果数据库大小介于 250 GB – 750 GB 之间，则中型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
-| VM 类型 | E16s_v3 （16 vCPU/128 GB RAM） | E16s_v3 （16 vCPU/128 GB RAM） | --- |
+| VM 类型 | E16s_v3 (vCPU/128 GB RAM)  | E16s_v3 (vCPU/128 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
 | SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备数 | 8 | 8 | ---|
@@ -113,7 +113,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
-| 数据磁盘的数量和类型 | 高级存储： 4 x P20 （RAID0） | 高级存储： 4 x P20 （RAID0）| 缓存 = 只读 |
+| 数据磁盘的数量和类型 | 高级存储： 4 x P20 (RAID0)  | 高级存储： 4 x P20 (RAID0) | 缓存 = 只读 |
 | 日志磁盘的数量和类型 | 高级存储： 1 x P20  | 高级存储： 1 x P20 | 缓存 = 无 |
 | ASE MaxMemory 参数 | 90% 的物理 RAM | 90% 的物理 RAM | 假设单个实例 |
 | 备份设备数 | 4 | 4| --- |
@@ -121,9 +121,9 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小介于 750 GB – 2000 GB （如大型 SAP Business Suite system）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
-| VM 类型 | E64s_v3 （64 vCPU/432 GB RAM） | E64s_v3 （64 vCPU/432 GB RAM） | --- |
+| VM 类型 | E64s_v3 (64 vCPU/432 GB RAM)  | E64s_v3 (64 vCPU/432 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
 | SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备数 | 16 | 16 | ---|
@@ -133,7 +133,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
-| 数据磁盘的数量和类型 | 高级存储： 4 x P30 （RAID0） | 高级存储： 4 x P30 （RAID0）| 缓存 = 只读 |
+| 数据磁盘的数量和类型 | 高级存储： 4 x P30 (RAID0)  | 高级存储： 4 x P30 (RAID0) | 缓存 = 只读 |
 | 日志磁盘的数量和类型 | 高级存储： 1 x P20  | 高级存储： 1 x P20 | 缓存 = 无 |
 | ASE MaxMemory 参数 | 90% 的物理 RAM | 90% 的物理 RAM | 假设单个实例 |
 | 备份设备数 | 4 | 4| --- |
@@ -142,9 +142,9 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小为 2 TB + 的小型 SAP ASE DB 服务器的配置示例，如更大的全局使用的 SAP 业务套件系统，如下所示
 
-| Configuration | Windows | Linux | 注释 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
-| VM 类型 | M 系列（1.0 到 4.0 TB RAM）  | M 系列（1.0 到 4.0 TB RAM） | --- |
+| VM 类型 | M 系列 (1.0 到 4.0 TB RAM)   | M 系列 (1.0 到 4.0 TB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
 | SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
 | 数据设备数 | 32 | 32 | ---|
@@ -154,7 +154,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
-| 数据磁盘的数量和类型 | 高级存储： 4 + x P30 （RAID0） | 高级存储： 4 + x P30 （RAID0）| 缓存 = 只读，考虑 Azure Ultra 磁盘 |
+| 数据磁盘的数量和类型 | 高级存储： 4 + x P30 (RAID0)  | 高级存储： 4 + x P30 (RAID0) | 缓存 = 只读，考虑 Azure Ultra 磁盘 |
 | 日志磁盘的数量和类型 | 高级存储： 1 x P20  | 高级存储： 1 x P20 | 缓存 = 无，考虑 Azure Ultra 磁盘 |
 | ASE MaxMemory 参数 | 90% 的物理 RAM | 90% 的物理 RAM | 假设单个实例 |
 | 备份设备数 | 16 | 16 | --- |
@@ -179,19 +179,19 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 * 假设可以在本地使用功能更强大的硬件（具有更多 CPU、更高 I/O 带宽或更少 I/O 延迟），则执行压缩的持续时间较短
 * 较小的数据库大小可以降低磁盘分配的成本
 
-数据和 LOB 压缩可以在 Azure 虚拟机托管的 VM 中运行，如同在本地运行一样。 有关如何检查是否已在现有 SAP ASE 数据库中使用压缩的更多详细信息，请查看[SAP 支持说明 1750510](https://launchpad.support.sap.com/#/notes/1750510)。 有关 SAP ASE 数据库压缩的更多详细信息，[请参阅 sap 支持说明 #2121797](https://launchpad.support.sap.com/#/notes/2121797)
+数据和 LOB 压缩可以在 Azure 虚拟机托管的 VM 中运行，如同在本地运行一样。 有关如何检查是否已在现有 SAP ASE 数据库中使用压缩的更多详细信息，请查看 [SAP 支持说明 1750510](https://launchpad.support.sap.com/#/notes/1750510)。 有关 SAP ASE 数据库压缩的更多详细信息， [请参阅 sap 支持说明 #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Azure 上的 SAP ASE 的高可用性 
-HADR 用户指南详细介绍了2个节点 SAP ASE "始终打开" 解决方案的设置和配置。  此外，还支持第三个灾难恢复节点。 SAP ASE 支持许多高可用配置，包括共享磁盘和本地操作系统群集（浮动 IP）。 Azure 上唯一受支持的配置是使用不带浮动 IP 的故障管理器。  浮动 IP 地址方法在 Azure 上不起作用。  SAP 内核是 "HA 感知" 应用程序，并了解主要和辅助 SAP ASE 服务器。 SAP ASE 和 Azure 之间没有密切的集成，不使用 Azure 内部负载均衡器。 因此，应遵循[SAP ASE HADR 用户指南](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)中的标准 sap ase 文档 
+HADR 用户指南详细介绍了2个节点 SAP ASE "始终打开" 解决方案的设置和配置。  此外，还支持第三个灾难恢复节点。 SAP ASE 支持许多高可用配置，包括共享磁盘和本机 OS 群集 (浮动 IP) 。 Azure 上唯一受支持的配置是使用不带浮动 IP 的故障管理器。  浮动 IP 地址方法在 Azure 上不起作用。  SAP 内核是 "HA 感知" 应用程序，并了解主要和辅助 SAP ASE 服务器。 SAP ASE 和 Azure 之间没有密切的集成，不使用 Azure 内部负载均衡器。 因此，应遵循[SAP ASE HADR 用户指南](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)中的标准 sap ase 文档 
 
 > [!NOTE]
 > Azure 上唯一受支持的配置是使用不带浮动 IP 的故障管理器。  浮动 IP 地址方法在 Azure 上不起作用。 
 
 ### <a name="third-node-for-disaster-recovery"></a>用于灾难恢复的第三个节点
-除了使用 SAP ASE Always On 来实现本地高可用性，你可能需要将配置扩展到另一个 Azure 区域中的异步复制的节点。 可在[此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到此类方案的文档。
+除了使用 SAP ASE Always On 来实现本地高可用性，你可能需要将配置扩展到另一个 Azure 区域中的异步复制的节点。 可在 [此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到此类方案的文档。
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE 数据库加密 & SSL 
-SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对数据库进行加密。  如果要使用加密，则建议使用 SAP 完全数据库加密。  请参阅中记录的详细信息：
+SAP 软件预配管理器 (SWPM) 正在提供一个在安装过程中对数据库进行加密的选项。  如果要使用加密，则建议使用 SAP 完全数据库加密。  请参阅中记录的详细信息：
 
 - [SAP 支持说明 #2556658](https://launchpad.support.sap.com/#/notes/2556658)
 - [SAP 支持说明 #2224138](https://launchpad.support.sap.com/#/notes/2224138)
@@ -199,7 +199,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 - [SAP 支持说明 #2593925](https://launchpad.support.sap.com/#/notes/2593925) 
 
 > [!NOTE]
-> 如果 SAP ASE 数据库已加密，则备份转储压缩将不起作用。 另请参阅[SAP 支持说明 #2680905](https://launchpad.support.sap.com/#/notes/2680905) 
+> 如果 SAP ASE 数据库已加密，则备份转储压缩将不起作用。 另请参阅 [SAP 支持说明 #2680905](https://launchpad.support.sap.com/#/notes/2680905) 
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure 上的 SAP ASE 部署清单
  
@@ -213,7 +213,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 - 考虑对 x 大系统使用 UltraDisk 
 - 运行 `saptune` LINUX 操作系统上的 SAP-ASE 
 - 通过数据库加密保护数据库–手动存储密钥 Azure Key Vault 
-- 完成[Azure 上的 SAP 清单](./sap-deployment-checklist.md) 
+- 完成 [Azure 上的 SAP 清单](./sap-deployment-checklist.md) 
 - 配置日志备份和完整备份 
 - 测试 HA/DR、备份和还原，并 & 批量测试 
 - 确认自动数据库扩展正在工作 
@@ -221,7 +221,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>使用 DBACockpit 监视数据库实例
 对于使用 SAP ASE 作为数据库平台的 SAP 系统，可以将 DBACockpit 作为事务 DBACockpit 中的嵌入式浏览器窗口或作为 Webdynpro 来访问。 但是，只在 DBACockpit 的 Webdynpro 实现中提供了用于监视和管理数据库的全部功能。
 
-与本地系统一样，需执行数个步骤，才能启用 DBACockpit 的 Webdynpro 实现所使用的所有 SAP NetWeaver 功能。 按照[SAP 支持说明 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，启用 webdynpro 并生成所需的应用。 按照上述说明中的说明进行操作时，还将配置 Internet 通信管理器（ `ICM` ）以及用于 http 和 https 连接的端口。 http 的默认设置如下所示：
+与本地系统一样，需执行数个步骤，才能启用 DBACockpit 的 Webdynpro 实现所使用的所有 SAP NetWeaver 功能。 按照 [SAP 支持说明 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，启用 webdynpro 并生成所需的应用。 按照上述说明中的说明进行操作时，还将配置 Internet 通信管理器 (`ICM`) 以及用于 http 和 https 连接的端口。 http 的默认设置如下所示：
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -237,7 +237,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 > 
 > 
 
-需要确保 ICM 使用完全限定的主机名，并且此名称可在打开 DBACockpit 的计算机上解析，具体取决于如何将托管 SAP 系统的 Azure 虚拟机连接到 AD 和 DNS。 请参阅[SAP 支持说明 #773830](https://launchpad.support.sap.com/#/notes/773830)以了解 ICM 如何根据配置文件参数确定完全限定的主机名，并在必要时显式设置参数 ICM/host_name_full。
+需要确保 ICM 使用完全限定的主机名，并且此名称可在打开 DBACockpit 的计算机上解析，具体取决于如何将托管 SAP 系统的 Azure 虚拟机连接到 AD 和 DNS。 请参阅 [SAP 支持说明 #773830](https://launchpad.support.sap.com/#/notes/773830) 以了解 ICM 如何根据配置文件参数确定完全限定的主机名，并在必要时显式设置参数 ICM/host_name_full。
 
 如果在仅限云的方案中部署 VM，而在本地与 Azure 之间没有跨界连接，则需要定义公共 IP 地址和 `domainlabel` 。 VM 的公共 DNS 名称格式如下所示：
 
@@ -282,7 +282,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 - SAP ASE 学习旅程-管理 & 监视
 - SAP ASE 学习旅程-安装 & 升级
 
-很有用。 另一个有用的文档是 sap[应用程序，适用于 Sap 自适应服务器企业迁移和运行时的最佳做法](https://assets.cdn.sap.com/sapcom/docs/2016/06/26450353-767c-0010-82c7-eda71af511fa.pdf)。
+很有用。 另一个有用的文档是 sap [应用程序，适用于 Sap 自适应服务器企业迁移和运行时的最佳做法](https://assets.cdn.sap.com/sapcom/docs/2016/06/26450353-767c-0010-82c7-eda71af511fa.pdf)。
 
 其他有用的 SAP 支持说明包括：
 
@@ -306,8 +306,8 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 - [SAP ASE 信息中心](http://infocenter.sybase.com/help/index.jsp) 
 - [带有第三个 DR 节点设置的 SAP ASE 始终启用](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
-每月新闻稿通过[SAP 支持说明发布 #2381575](https://launchpad.support.sap.com/#/notes/2381575) 
+每月新闻稿通过 [SAP 支持说明发布 #2381575](https://launchpad.support.sap.com/#/notes/2381575) 
 
 
 ## <a name="next-steps"></a>后续步骤
-查看[Azure 上的 SAP 工作负荷一文：规划和部署清单](./sap-deployment-checklist.md)
+查看 [Azure 上的 SAP 工作负荷一文：规划和部署清单](./sap-deployment-checklist.md)

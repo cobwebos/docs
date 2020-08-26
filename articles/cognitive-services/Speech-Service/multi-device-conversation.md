@@ -1,5 +1,5 @@
 ---
-title: 多设备对话（预览）-语音服务
+title: 多设备对话 (预览版) 语音服务
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401048"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921412"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话（预览版）？
+# <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话 (预览) ？
 
 **多设备对话**使你可以轻松地在多个客户端之间创建语音或文本对话，并协调它们之间发送的消息。
 
@@ -27,7 +27,7 @@ ms.locfileid: "81401048"
 - 轻松地转录每个客户端的音频，并通过可选的翻译向其他客户端发送脚本。
 - 在客户端之间轻松发送文本消息，并提供可选的翻译。
 
-可以构建跨设备阵列工作的功能或解决方案。 每个设备可以独立地将消息（转录音频或即时消息）发送到所有其他设备。
+可以构建跨设备阵列工作的功能或解决方案。 每个设备都可以独立发送消息 (将音频或即时消息的转录发送) 到所有其他设备。
 
 虽然[**会话**](conversation-transcription.md)脚本在具有多通道麦克风阵列的单个设备上工作，但**多设备会话**适用于具有多个设备的方案，每个设备都有一个麦克风。
 
@@ -37,10 +37,10 @@ ms.locfileid: "81401048"
 ## <a name="key-features"></a>主要功能
 
 - **实时**脚本–每个人都将收到会话的脚本，因此，他们可以实时跟踪文本或保存以供稍后使用。
-- **实时翻译**–对于超过60个支持的文本翻译[语言](language-support.md#text-languages)，用户可以将会话转换为其首选语言。
+- **实时翻译**–对于超过60个支持的文本翻译[语言](language-support.md#text-languages)，用户可以将会话转换为其首选语言 () 。
 - **可读的脚本**-通过标点和句尾，脚本和转换易于理解。
 - **语音或文本输入**–每个用户都可以在自己的设备上讲话或键入，具体取决于为参与者选择的语言启用的语言支持功能。 请参阅[语言支持](language-support.md#speech-to-text)。
-- **消息中继**-多设备会话服务将使用其所选的语言将一台客户端发送的消息分发给其他客户端。
+- **消息中继**-多设备会话服务会将一台客户端发送的消息以他们选择的语言)  (。
 - **消息标识**–用户在会话中收到的每条消息都将用发送它的用户的昵称进行标记。
 
 ## <a name="use-cases"></a>用例
@@ -60,13 +60,13 @@ ms.locfileid: "81401048"
 你还可以在屏幕上以及观众成员自己的设备上提供演示文稿和讲座的标题。 在受众加入会话代码后，他们可以在自己的设备上以其首选语言查看脚本。
 
 > [!NOTE]
-> 若要查看示例，请查看[演示文稿转换器](https://www.microsoft.com/translator/apps/presentation-translator/)，其中使用了多设备对话服务的 PowerPoint 外接程序。 可以在[此处](https://www.microsoft.com/download/details.aspx?id=55024)下载。
+> 若要查看示例，请查看[演示文稿转换器](https://www.microsoft.com/translator/apps/presentation-translator/)，其中使用了多设备对话服务的 PowerPoint 外接程序。 可以在[此处](https://download.cnet.com/s/powerpoint-add-in/)下载。
 
 ## <a name="how-it-works"></a>工作原理
 
-所有客户端都将使用语音 SDK 来创建或加入会话。 语音 SDK 与多设备会话服务进行交互，该服务管理会话的生存期，包括参与者列表、每个客户端选择的语言以及发送的消息。  
+所有客户端都将使用语音 SDK 来创建或加入会话。 语音 SDK 与多设备会话服务进行交互，该服务管理会话的生命周期，包括参与者列表，每个客户端所选的语言 (s) 以及发送的消息。  
 
-每个客户端都可以发送音频或即时消息。 服务将使用语音识别将音频转换为文本，并按原样发送即时消息。 如果客户端选择不同的语言，则该服务会将所有消息都转换为每个客户端的指定语言。
+每个客户端都可以发送音频或即时消息。 服务将使用语音识别将音频转换为文本，并按原样发送即时消息。 如果客户端选择不同的语言，则服务会将所有消息都转换为每个客户端) 的指定语言 (。
 
 ![多设备对话概述关系图](media/scenarios/multi-device-conversation.png)
 

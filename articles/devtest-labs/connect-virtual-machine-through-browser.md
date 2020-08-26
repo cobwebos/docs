@@ -3,16 +3,16 @@ title: 通过浏览器连接到你的虚拟机-Azure |Microsoft Docs
 description: 了解如何通过浏览器连接到你的虚拟机。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b1e50a15673199a4bf95956ae66e6b58d6d41d0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288063"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>通过浏览器连接到你的虚拟机 
 
-开发测试 Labs 与[Azure 堡垒](https://docs.microsoft.com/azure/bastion/)集成，使你能够通过浏览器连接到你的虚拟机。 有关如何在开发测试实验室中启用此功能的信息，请参阅在[实验室虚拟机上启用浏览器连接](enable-browser-connection-lab-virtual-machines.md)。
+开发测试 Labs 与[Azure 堡垒](../bastion/index.yml)集成，使你能够通过浏览器连接到你的虚拟机。 有关如何在开发测试实验室中启用此功能的信息，请参阅在[实验室虚拟机上启用浏览器连接](enable-browser-connection-lab-virtual-machines.md)。
 
 启用*浏览器连接*后，实验室用户可以通过浏览器访问虚拟机。  
 

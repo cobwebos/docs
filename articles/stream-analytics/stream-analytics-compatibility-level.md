@@ -6,11 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087859"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056510"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -141,11 +142,11 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 **1.1 级别：** CREATE TABLE 允许指定强架构。 流分析引擎验证数据是否符合此架构。 使用这一模型，该命令可以通过 NaN 值筛选事件。
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>对 JSON 格式的日期/时间字符串禁用自动向上转换
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>禁止在入口处将 datetime 字符串自动转换为 DateTime 类型
 
-**1.0 级别：** JSON 分析器会自动将包含日期/时间/时区信息的字符串值向上转换为日期/时间类型，然后转换为 UTC。 此行为导致了丢失时区信息。
+**1.0 级别：** JSON 分析器会自动将包含日期/时间/时区信息的字符串值转换为传入的日期时间类型，因此值立即丢失其原始格式和时区信息。 由于这是在入口上完成的，即使该字段未在查询中使用，也会转换为 UTC 日期时间。
 
-**1.1 级别：** 不再将包含日期/时间/时区信息的字符串值自动向上转换为日期/时间类型。 因此会保留时区信息。
+**1.1 级别：** 不会自动将包含日期/时间/时区信息的字符串值转换为 DATETIME 类型。 因此，将保留时区信息和原始格式设置。 但是，如果在查询中使用的 NVARCHAR (MAX) 字段 (DATEADD 函数的一部分（例如) ），则它将转换为 DATETIME 类型以执行计算，并将丢失其原始形式。
 
 ## <a name="next-steps"></a>后续步骤
 

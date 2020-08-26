@@ -4,13 +4,15 @@ description: 了解如何使用 Azure Cache for Redis 缓存 ASP.NET 页面输�
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456736"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705021"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 
@@ -55,7 +57,7 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 | *host* | string | "localhost" | Redis 服务器 IP 地址或主机名 |
 | *port* | 正整数 | 6379（非 TLS/SSL）<br/>6380（TLS/SSL） | Redis 服务器端口 |
 | *accessKey* | string | "" | 启用 Redis 授权时的 Redis 服务器密码。 该值默认为空字符串，即，会话状态提供程序在连接到 Redis 服务器时不使用任何密码。 **如果 Redis 服务器位于 Azure Redis 缓存等可公开访问的网络中，请务必启用 Redis 授权以提高安全性，并提供安全密码。** |
-| *ssl* | boolean | **false** | 是否要通过 TLS 连接到 Redis 服务器。 此值默认为“false”****，因为 Redis 并非现成支持 TLS。 **如果使用现成支持 SSL 的 Azure Redis 缓存，请务必将此属性设置为 true，以提高安全性。**<br/><br/>默认情况下，将为新缓存禁用非 TLS 端口。 为此设置指定“true”**** 可使用 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。 |
+| *ssl* | boolean | **false** | 是否要通过 TLS 连接到 Redis 服务器。 此值默认为“false”****，因为 Redis 并非现成支持 TLS。 **如果使用现成支持 SSL 的 Azure Redis 缓存，请务必将此属性设置为 true，以提高安全性。**<br/><br/>默认情况下，将为新缓存禁用非 TLS 端口。 如果此设置为 "true"， **则** 将其指定为使用非 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。 |
 | *databaseIdNumber* | 正整数 | 0 | 只能通过 web.config 或 AppSettings 指定此属性。**<br/><br/>指定要使用的 Redis 数据库。 |
 | *connectionTimeoutInMilliseconds* | 正整数 | 由 StackExchange.Redis 提供 | 用于在创建 StackExchange.Redis.ConnectionMultiplexer 时设置 *ConnectTimeout*。 |
 | *operationTimeoutInMilliseconds* | 正整数 | 由 StackExchange.Redis 提供 | 用于在创建 StackExchange.Redis.ConnectionMultiplexer 时设置 *SyncTimeout*。 |

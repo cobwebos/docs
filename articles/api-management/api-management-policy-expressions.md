@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理策略表达式 | Microsoft 文档
-description: 了解 Azure API 管理中的策略表达式。
+description: 了解 Azure API 管理中的策略表达式。 请参阅示例并查看其他可用资源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249812"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844234"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
-本文介绍 c # 7 中的策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
+本文讨论 C# 7 中的策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
 
 更多相关信息：
 
@@ -235,7 +235,7 @@ ms.locfileid: "86249812"
 |BasicAuthCredentials|Password：string<br /><br /> UserId：string|
 |Jwt AsJwt(input：this string)|input：string<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回类型为 `Jwt` 的对象；否则，此方法会返回 `null`。|
 |bool TryParseJwt(input：this string, result：out Jwt)|input：string<br /><br /> result：out Jwt<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回 `true` 且结果参数包含类型为 `Jwt` 的值；否则，此方法会返回 `false`。|
-|Jwt|Algorithm：string<br /><br /> 受众： IEnumerable<字符串\><br /><br /> 声明：IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime：DateTime?<br /><br /> Id：string<br /><br /> Issuer：string<br /><br /> IssuedAt：DateTime?<br /><br /> NotBefore：DateTime?<br /><br /> Subject：string<br /><br /> Type：string|
+|Jwt|Algorithm：string<br /><br /> 受众：IEnumerable<string\><br /><br /> 声明：IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime：DateTime?<br /><br /> Id：string<br /><br /> Issuer：string<br /><br /> IssuedAt：DateTime?<br /><br /> NotBefore：DateTime?<br /><br /> Subject：string<br /><br /> Type：string|
 |string Jwt.Claims.GetValueOrDefault(claimName：string, defaultValue：string)|claimName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的声明值或 `defaultValue`。|
 |byte[] Encrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 要加密的明文<br /><br />alg - 对称加密算法的名称<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回已加密的明文。|
 |byte[] Encrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm)|input - 要加密的明文<br /><br />alg - 加密算法<br /><br />返回已加密的明文。|

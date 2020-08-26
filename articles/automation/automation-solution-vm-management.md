@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185868"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064452"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
@@ -49,7 +49,7 @@ ms.locfileid: "86185868"
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>适用于预先存在的自动化帐户和 Log Analytics 工作区的权限
 
-若要使用现有的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM，需要对资源组作用域具有以下权限。 若要详细了解角色，请参阅 [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
+若要使用现有的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM，需要对资源组作用域具有以下权限。 若要了解有关角色的详细信息，请参阅[Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 | 权限 | 范围|
 | --- | --- |
@@ -107,7 +107,7 @@ ms.locfileid: "86185868"
 |Runbook | 参数 | 说明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 Auto-Stop 方案按每个资源创建警报。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`是一个逗号分隔的 Vm 列表，其中包含没有空格) 的 Vm (，例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可实现对 runbook 逻辑进行验证但不执行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`以逗号分隔的 Vm 列表（不含空格），例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可实现对 runbook 逻辑进行验证但不执行。|
 |AutoStop_Disable | 无 | 禁用 Auto-Stop 警报和默认计划。|
 |AutoStop_VM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 runbook 以停止经典 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |从父 runbook 调用。 警报规则调用此 runbook 以停止 VM。  |
@@ -173,7 +173,7 @@ ms.locfileid: "86185868"
 如果每个云服务有超过 20 个 VM，请参考以下建议：
 
 * 使用父 runbook ScheduledStartStop_Parent 创建多个计划，并为每个计划指定 20 个 VM。 
-* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表， (不) 空格。 
+* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表（无空格）。 
 
 否则，如果此功能的自动化作业运行超过三个小时，将根据[公平份额](automation-runbook-execution.md#fair-share)限制暂时将其卸载或停止。
 

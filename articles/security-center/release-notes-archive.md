@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519570"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167005"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -30,6 +30,19 @@ ms.locfileid: "86519570"
 - 已弃用的功能
 
 
+## <a name="february-2020"></a>2020 年 2 月
+
+### <a name="fileless-attack-detection-for-linux-preview"></a>面向 Linux 的无文件攻击检测（预览版）
+
+随着攻击者越来越多地采用更隐蔽的方法来避免被发现，除了 Windows 之外，Azure 安全中心还扩大了无文件攻击检测范围，现涵盖 Linux。 无文件攻击利用软件漏洞、将恶意有效负载注入良性系统进程，并隐藏在内存中。 这些技术：
+
+- 最大程度地减少或消除了磁盘上恶意软件的痕迹
+- 大大降低了基于磁盘的恶意软件扫描解决方案的检测机会
+
+为了应对这种威胁，Azure 安全中心于 2018 年 10 月发布了面向 Windows 的无文件攻击检测，现在还将该检测扩展到了 Linux 上。 
+
+
+
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="enhanced-secure-score-preview"></a>安全功能分数增强版（预览版）
@@ -38,14 +51,14 @@ Azure 安全中心的安全功能分数增强版现提供预览版。 在此版�
 
 请在预览阶段熟悉安全功能分数的更改之处，确定可帮助你进一步保护环境的其他修正措施。
 
-详细了解[增强安全分数（预览）](secure-score-security-controls.md)。
+详细了解[ (预览) 的增强安全分数](secure-score-security-controls.md)。
 
 
 
 ## <a name="november-2019"></a>2019 年 11 月
 
 11月的更新包括：
- - [北美区域中的 Azure Key Vault 威胁防护（预览版）](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [北美区域中的 Azure Key Vault 威胁防护 (预览) ](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
  - [针对 Azure 存储的威胁防护包括恶意软件信誉屏蔽](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
  - [使用逻辑应用实现工作流自动化（预览版）](#workflow-automation-with-logic-apps-preview)
  - [批量资源快速修复功能已推出正式版](#quick-fix-for-bulk-resources-generally-available)
@@ -59,7 +72,7 @@ Azure 安全中心的安全功能分数增强版现提供预览版。 在此版�
  - [支持导出建议和警报的高级集成（预览版）](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
  - [从 Windows 管理中心将本地服务器加入安全中心（预览版）](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
 
-### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>北美区域中的 Azure Key Vault 威胁防护（预览版）
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>北美区域中的 Azure Key Vault 威胁防护 (预览) 
 
 Azure Key Vault 是一个基本服务，它通过提供集中管理云中密钥、机密、加密密钥和策略的功能，来保护数据和提高云应用程序的性能。 由于 Azure Key Vault 存储敏感数据和业务关键数据，因此必须保证密钥保管库及其存储的数据的最高安全性。
 

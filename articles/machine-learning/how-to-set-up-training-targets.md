@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 07/08/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: ced05e8ccd04775df189e9dff1af1fdaa990f3b2
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147443"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751672"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 
 > [!NOTE]
-> Azure 机器学习可以将计算群集创建为永久性资源，或在请求运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。
+> Azure 机器学习计算群集可以创建为持久资源，也可以在你请求某个运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。
 
 ## <a name="whats-a-run-configuration"></a>什么是运行配置？
 
@@ -94,16 +94,15 @@ ML 管道不仅可以训练模型，还可以在训练之前准备数据并在�
 
 ### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure 机器学习计算群集
 
-Azure 机器学习计算群集是一种托管计算基础结构，可让你轻松创建单个或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
+Azure 机器学习计算群集是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
 
 可以使用 Azure 机器学习计算在云中的 CPU 或 GPU 计算节点群集之间分配训练进程。 有关包括 GPU 的 VM 大小的详细信息，请参阅 [GPU 优化的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
-Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas)。
+Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](how-to-manage-quotas.md)。
 
-还可以选择使用低优先级 VM 来运行部分或所有工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。  与普通 VM 相比，低优先级 VM 提供折扣费率，请参阅[计划和管理成本](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)。
 
 > [!TIP]
-> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 但是，还可以将群集扩展到数千个节点，只需[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，并请求将你的订阅、工作区或特定群集加入允许列表以禁用节点间通信即可。 
+> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 但是，可以将群集扩展到数千个节点，只需[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求将你的订阅、工作区或特定群集加入允许列表以禁用节点间通信即可。 
 
 可在不同的运行中重复使用 Azure 机器学习计算。 计算可与工作区中的其他用户共享，并在每次运行之后保留，它会根据提交的运行数以及群集上设置的 max_nodes 自动纵向扩展或缩减节点。 min_nodes 设置控制可用节点数的下限。
 
@@ -118,27 +117,161 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
    还可以在创建 Azure 机器学习计算时配置多个高级属性。 使用这些属性可以创建固定大小的持久性群集，或者在订阅中的现有 Azure 虚拟网络内创建持久性群集。  有关详细信息，请参阅 [AmlCompute 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )。
-    
-   或者，可以[在 Azure 机器学习工作室](#portal-create)中创建并附加持久性 Azure 机器学习计算资源。
 
+    或者，可以[在 Azure 机器学习工作室](#portal-create)中创建并附加持久性 Azure 机器学习计算资源。
+
+   
 1. **配置**：为持久性计算目标创建运行配置。
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低计算群集成本
 
-### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure 机器学习计算实例
+你还可以选择使用 [低优先级 vm](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负荷。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
 
-[Azure 机器学习计算实例](concept-compute-instance.md)是一种托管计算基础结构，可让你轻松创建单个 VM。 计算是在工作区区域内创建的，但与计算群集不同，实例无法与工作区中的其他用户共享。 此外，实例不会自动缩小。  您必须停止该资源以防产生费用。
-
-计算实例可以并行运行多个作业，并且有一个作业队列。 
-
-计算实例可以安全地运行[虚拟网络环境](how-to-enable-virtual-network.md#compute-instance)中的作业，而无需企业打开 SSH 端口。 作业在容器化环境中执行，并在 Docker 容器中打包模型依赖项。 
-
-1. **创建和附加**： 
+使用以下任一方法指定低优先级 VM：
     
-    [！笔记本-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance) ]
+* 在工作室中，在创建 VM 时选择“低优先级”****。
+    
+* 使用 Python SDK，在预配配置中设置 `vm_priority` 属性。  
+    
+    ```python
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                                vm_priority='lowpriority',
+                                                                max_nodes=4)
+    ```
+    
+* 使用 CLI 设置 `vm-priority`：
+    
+    ```azurecli-interactive
+    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
+    ```
+
+ ### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> 设置托管标识
+
+ Azure 机器学习计算群集还支持 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ，以验证对 Azure 资源的访问权限，而无需在代码中包含凭据。 托管标识分为两种类型：
+
+* **系统分配的托管标识**直接在 Azure 机器学习计算群集上启用。 系统分配的标识的生命周期直接绑定到计算群集。 如果删除了计算群集，Azure 会自动清理 Azure AD 中的凭据和标识。
+* **用户分配的托管标识**是通过 Azure 托管标识服务提供的独立 Azure 资源。 可以向多个资源分配用户分配的托管标识，并根据需要将其保留。
+
+使用以下任一方法为计算群集指定托管标识：
+    
+* 在工作室中，当计算群集创建或编辑计算群集详细信息时，切换 **将分配托管标识** ，并指定系统分配的标识或用户分配的标识。
+    
+* 使用 Python SDK，在预配配置中设置 `identity_type` 属性。  
+    
+    ```python
+    # configure cluster with a system-assigned managed identity
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=5,
+                                                            identity_type="SystemAssigned",
+                                                            )
+
+    # configure cluster with a user-assigned managed identity
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=5,
+                                                            identity_type="UserAssigned",
+                                                            identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
+
+    cpu_cluster_name = "cpu-cluster"
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+    ```
+
+* 使用 Python SDK， `identity_type` `identity_id` 如果在预配配置中创建用户分配的托管标识) 属性，请设置和 (。  
+    
+    ```python
+    # add a system-assigned managed identity
+    cpu_cluster.add_identity(identity_type="SystemAssigned")
+
+    # add a user-assigned managed identity
+    cpu_cluster.add_identity(identity_type="UserAssigned", 
+                                identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
+    ```
+    
+* 使用 CLI 在 `assign-identity` 群集创建过程中设置属性：
+    
+    ```azurecli
+    # create a cluster with a user-assigned managed identity
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+
+    # create a cluster with a system-managed identity
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '[system]'
+
+* Using the CLI, execute the following commands to assign a managed identity on an existing cluster:
+    
+    ```azurecli
+    # add a user-assigned managed identity
+    az ml computetarget amlcompute identity assign --name cpu-cluster '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+
+    # add a system-assigned managed identity
+    az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
+
+> [!NOTE]
+> Azure Machine Learning compute clusters support only **one system-assigned identity** or **multiple user-assigned identities**, not both concurrently.
+> 
+> Additionally, you can assign only one managed identity from the studio.
+
+#### Managed identity usage
+
+AML defines the **default managed identity** as the system-assigned managed identity or the first user-assigned managed identity.
+
+During a run there are two applications of an identity:
+1. The system uses an identity to setup the user's storage mounts, container registry, and datastores.
+    * In this case, the system will use the default managed identity.
+
+1. The user applies an identity to access resources from within the code for a submitted run
+    
+    * In this case, the user must provide the *client_id* corresponding to the managed identity they want to use to retrieve a credential. 
+    * Alternatively, AML exposes the user-assigned identity's client id through the *DEFAULT_IDENTITY_CLIENT_ID* environment variable.
+    
+    For example, to retrieve a token for a datastore with the default managed identity:
+    
+    ```python
+    client_id = os.environ.get('DEFAULT_IDENTITY_CLIENT_ID')
+    credential = ManagedIdentityCredential(client_id=client_id)
+    token = credential.get_token('https://storage.azure.com/')
+
+
+
+### <a id="instance"></a>Azure Machine Learning compute instance
+
+[Azure Machine Learning compute instance](concept-compute-instance.md) is a managed-compute infrastructure that allows you to easily create a single VM. The compute is created within your workspace region, but unlike a compute cluster, an instance cannot be shared with other users in your workspace. Also the instance does not automatically scale down.  You must stop the resource to prevent ongoing charges.
+
+A compute instance can run multiple jobs in parallel and has a job queue. 
+
+Compute instances can run jobs securely in a [virtual network environment](how-to-enable-virtual-network.md#compute-instance), without requiring enterprises to open up SSH ports. The job executes in a containerized environment and packages your model dependencies in a Docker container. 
+
+1. **Create and attach**: 
+    
+    ```python
+    import datetime
+    import time
+    
+    from azureml.core.compute import ComputeTarget, ComputeInstance
+    from azureml.core.compute_target import ComputeTargetException
+    
+    # Choose a name for your instance
+    # Compute instance name should be unique across the azure region
+    compute_name = "ci{}".format(ws._workspace_id)[:10]
+    
+    # Verify that instance does not exist already
+    try:
+        instance = ComputeInstance(workspace=ws, name=compute_name)
+        print('Found existing instance, use it.')
+    except ComputeTargetException:
+        compute_config = ComputeInstance.provisioning_configuration(
+            vm_size='STANDARD_D3_V2',
+            ssh_public_access=False,
+            # vnet_resourcegroup_name='<my-resource-group>',
+            # vnet_name='<my-vnet-name>',
+            # subnet_name='default',
+            # admin_user_ssh_public_key='<my-sshkey>'
+        )
+        instance = ComputeInstance.create(ws, compute_name, compute_config)
+        instance.wait_for_completion(show_output=True)
+    ```
 
 1. **配置**：创建运行配置。
     
@@ -158,9 +291,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
     run = experiment.submit(config=src)
     ```
 
-有关适用于计算实例的更多命令，请参阅笔记本[computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)。 此笔记本还可在 "*培训/computeinstance*" 的 "studio**示例**" 文件夹中找到。
-
-现在，已附加计算并配置运行，下一步是[提交定型运行](#submit)
+附加计算并配置运行后，下一步是[提交训练运行](#submit)
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机

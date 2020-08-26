@@ -3,12 +3,13 @@ title: 教程：将自定义事件发送到混合连接 - 事件网格
 description: 教程：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 混合连接用于终结点。
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 77633a717478ff143c3b084adc0b69019abb203f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114867"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832087"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教程：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 
@@ -16,7 +17,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定已有混合连接和侦听器应用程序。 若要开始使用混合连接，请参阅[中继混合连接入门 - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) 或[中继混合连接入门 - Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md)。
+本文假定已有混合连接和侦听器应用程序。 若要开始使用混合连接，请参阅[中继混合连接入门 - .NET](../azure-relay/relay-hybrid-connections-dotnet-get-started.md) 或[中继混合连接入门 - Node](../azure-relay/relay-hybrid-connections-node-get-started.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

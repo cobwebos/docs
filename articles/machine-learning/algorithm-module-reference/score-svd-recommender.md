@@ -8,12 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455972"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189816"
 ---
 # <a name="score-svd-recommender"></a>为 SVD 推荐器评分
 
@@ -106,9 +107,6 @@ SVD 推荐器可生成两种不同类型的预测：
 
 - 第一列包含用户标识符。
 - 根据“向用户推荐的最大项目数”部分设置的值，将生成多个其他列****。 每列都包含一个推荐项目（按标识符排列）。 这些建议项目按用户-项目相关性排序。 具有最高相关性的项目放在“项目 1”列中****。
-
-> [!WARNING]
-> 请勿使用[评估推荐器](evaluate-recommender.md)模块来评估此已评分的数据集。
 
 
 ##  <a name="technical-notes"></a>技术说明

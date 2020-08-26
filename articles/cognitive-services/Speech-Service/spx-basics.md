@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801863"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590211"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解语音 CLI 的基础知识
 
@@ -25,7 +25,19 @@ ms.locfileid: "85801863"
 
 ## <a name="basic-usage"></a>基本用法
 
-本部分介绍了一些基本的 SPX 命令，这些命令对于首次测试和试验通常非常有用。 首先，通过运行以下命令，使用默认麦克风执行一些语音识别。
+本部分介绍了一些基本的 SPX 命令，这些命令对于首次测试和试验通常非常有用。 首先，运行以下命令，查看内置于该工具的帮助。
+
+```shell
+spx
+```
+
+注意，另请参阅命令参数右侧列出的帮助主题。 你也可以按关键字搜索主题。 例如，输入以下命令，查看有关语音 CLI 示例的帮助主题列表：
+
+```shell
+spx help find --topics "examples"
+```
+
+现在，通过运行以下命令，使用语音服务通过默认麦克风执行一些语音识别。
 
 ```shell
 spx recognize --microphone

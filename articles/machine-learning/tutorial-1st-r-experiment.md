@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134689"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056357"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教程：使用 R 创建机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Azure 机器学习 R SDK 目前提供公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在本教程中，你将使用 Azure 机器学习 R SDK（预览版）创建逻辑回归模型，该模型预测交通事故中的死亡几率。 你将了解 Azure 机器学习云资源如何与 R 一起工作，提供一个可缩放的环境以用来训练和部署模型。  
 
@@ -67,7 +71,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 打开包含版本号的文件夹。  此数字表示 R SDK 的当前版本。
 
-1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。 
+1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。
 
     ![克隆文件夹](media/tutorial-1st-r-experiment/clone-folder.png)
 
@@ -98,22 +102,15 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 * 创建用于训练的远程计算目标
 
 ### <a name="install-required-packages"></a>安装所需程序包
-
- * 从 CRAN 安装最新版本。
-
-    ```R
-    # install the latest version from CRAN
-    install.packages("azuremlsdk")
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+计算实例已安装了来自 CRAN 的最新版本的 R SDK。 如果要从 GitHub 安装开发版本来获取最新的 bug 修补程序，请运行以下操作：
     
-* 或从 GitHub 安装开发版本。
+```R
+remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+azuremlsdk::install_azureml()
+```
 
-    ```R
-    # or install the development version from GitHub
-    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+> [!WARNING]
+> 在安装过程中，如果收到“`Would you like to install Miniconda? [Y/n]:`”提示，请使用“`n`”响应，因为计算实例已经安装了 Anaconda，并且不需要安装 Miniconda。
 
 现在，继续导入 azuremlsdk 包。
 

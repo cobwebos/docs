@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b04a0c4d2865cf72d9fbccb51f0f083872ea799
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037876"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>升级 Service Fabric 应用程序
 
@@ -49,6 +49,6 @@ ms.locfileid: "75614734"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Service Fabric PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/service-fabric/?view=azureservicefabricps)。
+有关 Service Fabric PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/service-fabric/overview?view=azureservicefabricps)。
 
 可以在 [Azure PowerShell 示例](../service-fabric-powershell-samples.md)中找到 Azure Service Fabric 的其他 Powershell 示例。

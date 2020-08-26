@@ -2,22 +2,22 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: de0c8fd674872a48a302a76a3f0951df13041206
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135069"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508499"
 ---
-本文提供信息和示例代码，以帮助你开始通过 C# 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 .NET 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
+本文提供信息和示例代码，以帮助你开始通过 C# 使用自定义视觉客户端库来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 .NET 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>获取自定义视觉客户端库和示例代码
 
 若要编写使用自定义视觉的 .NET 应用，需要自定义视觉 NuGet 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 

@@ -1,26 +1,26 @@
 ---
-title: PowerShell 示例-将用户分配到应用程序代理应用
-description: 将用户分配到 Azure Active Directory （Azure AD）应用程序代理应用程序的 PowerShell 示例。
+title: PowerShell 示例 - 将用户分配给应用程序代理应用
+description: PowerShell 示例，其中显示将一名用户分配给 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42667ebdfc37b679d56421e3a82d4a6aaaed8fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: addc3f091a2699079b0463b0d6e4d0cf097f3573
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483331"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507070"
 ---
-# <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>将用户分配到特定 Azure AD 应用程序代理应用程序
+# <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>将用户分配给特定的 Azure AD 应用程序代理应用程序
 
-使用此 PowerShell 脚本示例，可以将用户分配到特定的 Azure AD 应用程序代理应用程序。
+通过该 PowerShell 脚本示例，可将用户分配给特定的 Azure AD 应用程序代理应用程序。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "75483331"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-此示例需要用于图形模块（AzureAD）的[AzureAD V2 powershell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或[graph 模块预览版本](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)（AzureADPreview）的 AzureAD v2 powershell。
+此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -38,10 +38,10 @@ ms.locfileid: "75483331"
 
 | Command | 说明 |
 |---|---|
-| [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/new-azureaduserapproleassignment?view=azureadps-2.0) | 将用户分配到应用程序角色。 |
+| [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/new-azureaduserapproleassignment?view=azureadps-2.0) | 向应用程序角色分配用户。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure AD PowerShell 模块的详细信息，请参阅[Azure AD powershell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
+要详细了解 Azure AD PowerShell 模块，请参阅 [Azure AD PowerShell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 
-有关应用程序代理的其他 PowerShell 示例，请参阅[Azure AD 应用程序代理的 Azure AD powershell 示例](../application-proxy-powershell-samples.md)。
+有关应用程序代理的其他 PowerShell 示例，请参阅 [Azure AD 应用程序代理的 Azure AD PowerShell 示例](../application-proxy-powershell-samples.md)。

@@ -12,19 +12,23 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763731"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642021"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中将用户或组分配到企业应用
 
-本文介绍如何通过 Azure 门户或 PowerShell，在 Azure Active Directory (Azure AD) 中将用户或组分配到企业应用程序。 将某个用户分配到某个应用程序时，该应用程序会显示在该用户的[“我的应用”访问面板](https://myapps.microsoft.com/)中以方便访问。 如果应用程序公开角色，则你还可以将特定的角色分配给用户。
+本文介绍如何通过 Azure 门户或 PowerShell，在 Azure Active Directory (Azure AD) 中将用户或组分配到企业应用程序。 将用户分配到应用程序时，应用程序会显示在用户的 ["我的应用](https://myapps.microsoft.com/) " 中，以方便访问。 如果应用程序公开角色，则你还可以将特定的角色分配给用户。
 
 为了提高控制度，可将某些类型的企业应用程序配置为[需要进行用户分配](#configure-an-application-to-require-user-assignment)。 
 
 若要[将用户或组分配到企业应用](#assign-users-or-groups-to-an-app-via-the-azure-portal)，需要以全局管理员、应用程序管理员、云应用程序管理员或分配的企业应用所有者身份登录。
+
+> [!IMPORTANT]
+> 向应用程序分配组时，只有该组中的用户具有访问权限。 赋值不会级联到嵌套组。
 
 > [!NOTE]
 > 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 基于组的分配仅支持安全组。 目前不支持嵌套的组成员身份和 Office 365 组。 有关本文中讨论的功能的其他许可要求，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
@@ -41,7 +45,7 @@ ms.locfileid: "84763731"
 
 不需要分配时（由于已将此选项设置为“否”，或者应用程序使用另一种 SSO 模式），任何获得了应用程序的直接链接或应用程序“属性”页中的“用户访问 URL”的用户都可以访问该应用程序。   
 
-此设置不会影响应用程序是否显示在“我的应用”访问面板上。 将某个用户或组分配到应用程序后，应用程序会显示在用户的“我的应用”访问面板上。 有关背景信息，请参阅[管理对应用的访问](what-is-access-management.md)。
+此设置不会影响应用程序是否出现在 "我的应用" 中。 将某个用户或组分配到应用程序后，应用程序会显示在用户的“我的应用”访问面板上。 有关背景信息，请参阅[管理对应用的访问](what-is-access-management.md)。
 
 
 若要要求为应用程序分配用户，请执行以下操作：
@@ -137,7 +141,7 @@ ms.locfileid: "84763731"
 
 1. 运行命令 `$sp.AppRoles`，显示可用于 Workplace Analytics 应用程序的角色。 在此示例中，我们要为 Britta Simon 分配“分析员”（访问权限受限）角色。
 
-   ![显示使用 Workplace Analytics 应用程序的用户可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![显示使用 Workplace Analytics 角色的用户可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
 1. 将角色名称分配到 `$app_role_name` 变量。
 
@@ -157,7 +161,7 @@ ms.locfileid: "84763731"
 ## <a name="related-articles"></a>相关文章
 
 - [详细了解最终用户如何访问应用程序](end-user-experiences.md)
-- [规划 Azure AD 访问面板部署](access-panel-deployment-plan.md)
+- [规划应用程序部署 Azure AD](access-panel-deployment-plan.md)
 - [管理对应用的访问](what-is-access-management.md)
  
 ## <a name="next-steps"></a>后续步骤
@@ -165,4 +169,4 @@ ms.locfileid: "84763731"
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [删除企业应用的用户或组分配](remove-user-or-group-access-portal.md)
 - [禁用企业应用的用户登录](disable-user-sign-in-portal.md)
-- [更改企业应用的名称或徽标](change-name-or-logo-portal.md)
+- [Change the name or logo of an enterprise app](change-name-or-logo-portal.md)

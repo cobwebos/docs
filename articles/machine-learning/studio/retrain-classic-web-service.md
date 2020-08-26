@@ -1,6 +1,5 @@
 ---
-title: 重新训练经典 Web 服务
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：重新训练经典 web 服务-Azure
 description: 了解如何重新训练模型和更新经典 Web 服务以在 Azure 机器学习工作室（经典）中使用最新经过训练的模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: c1dd91a800c8e807d527f24a381262bde97d792c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: aa11d17aaba28819c4c5ecfb259eea2d8d12ce7d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080306"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431886"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务
+
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室（经典）Web 服务。 有关如何重新训练新的工作室（经典）Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。
 
@@ -40,12 +42,12 @@ ms.locfileid: "86080306"
 
 ### <a name="programmatically-add-an-endpoint"></a>以编程方式添加终结点
 
-可以使用此 [GitHub 存储库](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)中提供的示例代码添加评分终结点。
+你可以使用此[GitHub 存储库](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)中提供的示例代码来添加评分终结点。
 
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>使用 Azure Web 服务门户添加终结点
 
 1. 在机器学习工作室（经典）的左侧导航栏中，单击“Web 服务”。
-1. 在 Web 服务仪表板的底部，单击“管理终结点预览”  。
+1. 在 Web 服务仪表板的底部，单击“管理终结点预览”****。
 1. 单击“添加”  。
 1. 键入新终结点的名称及说明。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 
@@ -56,14 +58,14 @@ ms.locfileid: "86080306"
 请按照以下步骤使用 Web 门户获取正确的修补程序 URL：
 
 1. 登录到 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户。
-1. 单击“Web 服务”  或顶部的“经典 Web 服务”  。
+1. 单击“Web 服务”**** 或顶部的“经典 Web 服务”****。
 1. 单击你正在使用的计分 Web 服务（如果未修改 Web 服务的默认名称，则它将以“[Scoring Exp.]”结尾）。
-1. 单击“+新建”。 
+1. 单击 " **+ 新建**"。
 1. 添加终结点后，单击终结点名称。
-1. 在“修补程序”URL 下面，单击“API 帮助”打开修补帮助页。  
+1. 在“修补程序”URL 下面，单击“API 帮助”打开修补帮助页。********
 
 > [!NOTE]
-> 如果已向训练 Web 服务而非预测 Web 服务添加终结点，在单击“更新资源”链接时会收到以下错误  ：“抱歉，此功能不受支持或在此上下文中不可用”。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
+> 如果将终结点添加到定型 Web 服务而非预测 Web 服务，则在单击 "**更新资源**" 链接时，你将收到以下错误： "抱歉，但此功能在此上下文中不受支持或不可用。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
 >
 
 修补程序帮助页包含你必须使用的修补程序 URL，并提供可用于调用它的示例代码。
@@ -120,13 +122,13 @@ private async Task OverwriteModel()
 
 *Resources* 中的 *Name* 参数的值应与预测实验中已保存的训练模型的资源名称相匹配。 若要获取资源名称，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧菜单中，单击“机器学习”  。
-1. 在“名称”下，单击你的工作区，并单击“Web 服务”  。
-1. 在“名称”下，单击“人口普查模型 [预测实验]”  。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在左侧菜单中，单击“机器学习”****。
+1. 在“名称”下，单击你的工作区，并单击“Web 服务”****。
+1. 在“名称”下，单击“人口普查模型 [预测实验]”****。
 1. 单击已添加的新终结点。
-1. 在终结点仪表板上，单击“更新资源”  。
-1. 在 Web 服务的更新资源 API 文档页上，可以在“可更新资源”  下找到“资源名称”  。
+1. 在终结点仪表板上，单击“更新资源”****。
+1. 在 Web 服务的更新资源 API 文档页上，可以在“可更新资源”**** 下找到“资源名称”****。
 
 如果在完成更新终结点之前 SAS 令牌到期，必须使用作业 ID 执行 GET 操作，才能获取全新令牌。
 
@@ -137,4 +139,4 @@ private async Task OverwriteModel()
 若要了解有关如何管理 Web 服务或跟踪多个实验运行的详细信息，请参阅以下文章：
 
 * [探索 Web 服务门户](manage-new-webservice.md)
-* [管理实验迭代](manage-experiment-iterations.md)
+* [管理试验迭代](manage-experiment-iterations.md)

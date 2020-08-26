@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77472669"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723247"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
-诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储中。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
+诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储空间。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
 
 ## <a name="specify-a-storage-account"></a>指定存储帐户
 指定要在 ServiceConfiguration.cscfg 文件中使用的存储帐户。 帐户信息被定义为配置设置中的连接字符串。 以下示例显示的是在 Visual Studio 中针对新的云服务项目创建的默认连接字符串：

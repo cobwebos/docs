@@ -6,19 +6,20 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: c957e2ee1d1e596ca8e3525e0f4a9802c4039107
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 15ddf9392fffb8a9ed196b75b1c5e80d4484b0ad
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206812"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837238"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
 
 > [!NOTE]
-> 此功能在所有 Azure Database for PostgreSQL 单服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
+> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for PostgreSQL 服务器。 请确保数据库服务器是这些定价层中的一种。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -133,7 +134,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
+1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
@@ -144,7 +145,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据**** ****。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
 1. 选择“确定”。
 
@@ -176,7 +177,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | 服务器类型| 选择**PostgreSQL**。|
     | 服务器名称| 选择*mydemopostgresserver.privatelink.postgres.database.azure.com* |
     | 用户名 | 输入在 username@servername PostgreSQL 服务器创建过程中提供的用户名。 |
-    |密码 |输入在创建 PostgreSQL 服务器期间提供的密码。 |
+    |Password |输入在创建 PostgreSQL 服务器期间提供的密码。 |
     |SSL|选择 "**必需**"。|
     ||
 

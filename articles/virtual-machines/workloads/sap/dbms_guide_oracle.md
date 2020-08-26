@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525375"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690317"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -74,7 +74,7 @@ ms.locfileid: "86525375"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -247,7 +247,7 @@ ms.locfileid: "86525375"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -353,15 +353,15 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支持的操作�
 若要确定正确的临时文件空间，可在现有系统上检查临时文件的大小。
 
 ### <a name="storage-configuration"></a>存储配置
-仅支持一个使用 NTFS 格式化磁盘的 Oracle 实例。 所有数据库文件都必须存储在托管磁盘（推荐）或 VHD 的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)或 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 
+仅支持一个使用 NTFS 格式化磁盘的 Oracle 实例。 所有数据库文件都必须存储在托管磁盘（推荐）或 VHD 的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)或 [Azure 托管磁盘](../../managed-disks-overview.md)。 
 
-我们强烈建议使用 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 另外，我们强烈建议使用[高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
+我们强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)。 另外，我们强烈建议使用[高级 SSD](../../disks-types.md) 进行 Oracle Database 部署。
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅：
 
-- [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure 文件服务简介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [将连接保存到 Microsoft Azure 文件中](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘时，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
@@ -404,7 +404,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 
 #### <a name="write-accelerator"></a>写入加速器
-与 Azure 高级存储相比，Azure M 系列 VM 可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../linux/how-to-enable-write-accelerator.md)。
+与 Azure 高级存储相比，Azure M 系列 VM 可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>备份/还原
@@ -442,17 +442,17 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 ### <a name="storage-configuration"></a>存储配置
 
-Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。
+Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](../../managed-disks-overview.md)。
 
-对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../windows/premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
+对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
 
-强烈建议使用 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 另外，还强烈建议使用 [Azure 高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
+强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)。 另外，还强烈建议使用 [Azure 高级 SSD](../../disks-types.md) 进行 Oracle Database 部署。
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅以下主题： 
 
-- [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure 文件服务简介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [将连接保存到 Microsoft Azure 文件中](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 
@@ -498,7 +498,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 
 #### <a name="write-accelerator"></a>写入加速器
-对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../linux/how-to-enable-write-accelerator.md)。
+对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>备份/还原

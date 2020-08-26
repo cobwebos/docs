@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 5d1787b5bfc2939dca23c6898d89130aa3fcb170
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088370"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>适用于 Azure 虚拟网络的常见 PowerShell 命令
 
 如果想要创建虚拟机，需要创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)或了解可在其中添加 VM 的现有虚拟网络。 通常情况下，创建 VM 时，还需考虑创建本文所述资源。
 
-有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 如果运行本文中的多个命令，以下一些变量可能将对你有用：
 

@@ -1,6 +1,6 @@
 ---
 title: 升级 Azure 帐户
-description: 介绍如何升级 Azure 帐户。
+description: 了解如何升级 Azure 免费帐户或面向学生的 Azure 入门版帐户。 请参阅有关 Azure 支持计划的其他信息。
 keywords: 即用即付升级
 author: bandersmsft
 ms.reviewer: sasrin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29454bc5edb02ff571e06be3e9f203792d473aed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 596fd166153f9d1a319d428b3fe44388acc48efa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199443"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460586"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>升级 Azure 免费帐户或面向学生的 Azure 入门版帐户
 
@@ -30,12 +30,12 @@ ms.locfileid: "77199443"
 升级 Azure 免费帐户时，将保留你在注册后 30 天内剩余额度。 例如：如果在 11 月 1 日注册并在 11 月 5 日升级，则所有未使用的额度将在 11 月 30 日之前可用。 升级后的 12 个月内，你还可以访问免费服务。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 搜索“订阅”。 
+1. 搜索“订阅”。
 
     ![显示搜索的屏幕截图](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. 选择在注册 Azure 免费帐户时创建的订阅。
-1. 在订阅概述中，单击命令栏中的“升级订阅”按钮  。 如果没有看到升级订阅按钮，请单击页面顶部的升级横幅。
+1. 在订阅概述中，单击命令栏中的“升级订阅”按钮。 如果没有看到升级订阅按钮，请单击页面顶部的升级横幅。
 
     ![显示“升级”按钮的屏幕截图](./media/upgrade-azure-subscription/free-upgrade-button.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "77199443"
 
 1. 为订阅选择支持计划。 若要详细了解支持计划，请参阅 [Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
 
-1. 单击“升级”。 
+1. 单击“升级”。
 
 <a id="student"></a>
 
@@ -60,12 +60,12 @@ ms.locfileid: "77199443"
 如果符合条件，请使用以下步骤升级到 Azure 免费帐户。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 搜索“订阅”。 
+1. 搜索“订阅”。
 
     ![显示搜索的屏幕截图](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. 选择注册面向学生的 Azure 入门版帐户时创建的订阅。
-1. 在订阅概述中，单击命令栏中的“升级订阅”  。
+1. 在订阅概述中，单击命令栏中的“升级订阅”。
 
     ![对学生显示“升级”按钮的屏幕截图](./media/upgrade-azure-subscription/student-upgrade-ibiza.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "77199443"
 1. 你可能需要输入电话号码来验证身份。
 1. 键入订阅的名称。
 1. 为订阅选择支持计划。 若要详细了解支持计划，请参阅 [Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
-1. 单击“升级”。 
+1. 单击“升级”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144070"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716429"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
 
@@ -69,7 +69,7 @@ ms.locfileid: "82144070"
 * 在 iOS 设备上安装 Microsoft Authenticator 的要求。
 * 有关如何获取用户证书的说明。
 
-有关详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
+有关详细信息，请参阅[自定义 AD FS 登录页](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11))。
 
 ## <a name="use-modern-authentication-with-office-apps"></a>将新式身份验证用于 Office 应用
 

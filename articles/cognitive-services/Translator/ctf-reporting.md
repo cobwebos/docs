@@ -1,5 +1,5 @@
 ---
-title: 协作转换框架（CTF）报告-翻译人员
+title: 协作式翻译框架 (CTF) 报告-翻译
 titleSuffix: Azure Cognitive Services
 description: 如何使用协作性翻译框架 (CTF) 报告。
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584665"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244119"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
 > [!NOTE]
 > 不推荐使用此方法。 它在转换器的3.0 版中不可用。
 > 
-> 从2018年2月1日起，已弃用了以前可用于版本转换器的协作转换框架（CTF）。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已停用，将不会被替换。
+> 2018年2月1日起，已弃用 (CTF) 的协作翻译框架，此版本已在年2月1日推出。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已停用，将不会被替换。
 
 协作性翻译框架 (CTF) 报告 API 返回 CTF 存储中的统计信息和实际内容。 此 API 与 GetTranslations() 方法不同，因为它：
 * 仅从你的帐户（appId 或 Azure 市场帐户）返回已翻译的内容及其总计数。
@@ -69,14 +69,14 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 >            int? take);
 > ```
 
-**Parameters**
+**参数**
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix | **可选**：一个包含翻译 URI 前缀的字符串。|
 | from | **可选**：一个表示翻译文本语言代码的字符串。 |
-| 更改为 | **可选**：一个字符串，表示要将文本翻译成的语言代码。|
+| 设置为 | **可选**：一个字符串，表示要将文本翻译成的语言代码。|
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | user | **可选**：一个字符串，用于根据提交发起方筛选结果。 |
@@ -93,18 +93,18 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 
 结果集包含 **UserTranslationCount** 的数组。 每个 UserTranslationCount 都具有以下元素：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 |:---|:---|
 | 计数| 检索的结果数|
 | From | 源语言|
 | Rating| 提交者在 AddTranslation() 方法调用中应用的等级|
 | 功能| 目标语言|
-| URI| AddTranslation() 方法调用中应用的 URI|
+| Uri| AddTranslation() 方法调用中应用的 URI|
 | 用户| 用户名|
 
 **异常**
 
-| 异常 | 消息 | Conditions |
+| 异常 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制转换器将接受的字符数。</li></ul>|
@@ -140,14 +140,14 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 >             int? take);
 > ```
 
-**Parameters**
+**参数**
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix| **可选**：一个包含翻译 URI 前缀的字符串。|
 | from| **可选**：一个表示翻译文本语言代码的字符串。|
-| 更改为| **可选**：一个字符串，表示要将文本翻译成的语言代码。|
+| 设置为| **可选**：一个字符串，表示要将文本翻译成的语言代码。|
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | user| **可有可无.一个字符串，用于根据提交的发起方筛选结果**|
@@ -172,12 +172,12 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 |Rating |提交者在 AddTranslation() 方法调用中应用的等级|
 |功能|    目标语言|
 |TranslatedText|    在 AddTranslation() 方法调用中提交的翻译|
-|URI|   AddTranslation() 方法调用中应用的 URI|
+|Uri|   AddTranslation() 方法调用中应用的 URI|
 |用户   |用户名|
 
 **异常**
 
-| 异常 | 消息 | Conditions |
+| 异常 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制转换器将接受的字符数。</li></ul>|

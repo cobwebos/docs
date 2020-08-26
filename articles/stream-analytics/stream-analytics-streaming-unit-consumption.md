@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704176"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903555"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -27,7 +27,7 @@ SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗�
 
 2. 在资源列表中，找到要缩放的流分析作业，然后将其打开。 
 
-3. 在作业页中的“配置”标题下，选择“缩放”。   
+3. 在作业页中的“配置”标题下，选择“缩放”。  创建作业时，默认值为3。
 
     ![Azure 门户流分析作业配置][img.stream.analytics.preview.portal.settings.scale]
     
@@ -43,11 +43,11 @@ SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗�
 
 ## <a name="how-many-sus-are-required-for-a-job"></a>一个作业需要多少 SU？
 
-为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”**** 页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
+为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”  页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
 
-通常情况下，最佳做法是一开始为不使用 PARTITION BY**** 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
+通常情况下，最佳做法是一开始为未使用 PARTITION BY  的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
 
-有关选择适当数量 SU 的详细信息，请参阅此页：[缩放 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
+有关如何选择正确的 SU 数量的详细信息，请参阅此页：[扩展 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
 
 > [!Note]
 > 选择特定作业所需的 SU 数目时，需根据输入的分区配置以及为作业定义的查询来决定。 可为作业选择的最大数目为 SU 配额。 默认情况下，每个 Azure 订阅的配额为最多 500 个 SU，这适用于特定区域的所有分析作业。 若要增加订阅的 SU 数，使其超过此配额，请联系 [Microsoft 支持部门](https://support.microsoft.com)。 每个作业的 SU 有效值以 1、3、6 开始，往上再按 6 递增。
@@ -63,7 +63,7 @@ SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗�
 在比较一段时间内的使用情况时，请使用[事件速率指标](stream-analytics-monitoring.md)。 大于和等于指标显示读取和处理的事件数。 有指示错误事件数的指标，例如反序列化错误。 当每个时间单位的事件数增加时，在大多数情况下，SU% 会增加。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>时态元素中的有状态查询逻辑
-Azure 流分析作业的独有功能之一是执行有状态的处理，如开窗聚合、临时联接和临时分析函数。 其中的每个运算符都会保存状态信息。这些查询元素的最大窗口大小为 7 天。 
+Azure 流分析作业的独有功能之一是执行有状态的处理，如开窗聚合、临时联接和临时分析函数。 其中的每个运算符都会保存状态信息。 这些查询元素的最大窗口大小为 7 天。 
 
 多个流分析查询元素中都出现了时态窗口的概念：
 1. 开窗聚合：翻转窗口、跳跃窗口和滑动窗口 GROUP BY
@@ -111,7 +111,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
 在本示例中，有可能显示了很多广告，但很少有人点击它们，并且需要保留该时间范围内的所有事件。 内存消耗量与时间范围大小和事件发生速率成比例。 
 
-要修正此问题，请将事件发送到通过联接键（在本例中为 ID）分区的事件中心，并通过允许系统使用**PARTITION by**分别处理每个输入分区来横向扩展查询，如下所示：
+若要修正此问题，请将事件发送到按此事例)  (ID 分区的事件中心，并通过允许系统使用**PARTITION by**分别处理每个输入分区来横向扩展查询，如下所示：
 
    ```sql
    SELECT clicks.id
@@ -147,7 +147,7 @@ ASA 中的引用数据会被加载到内存中，以便快速查找。 在当前
 
 ## <a name="next-steps"></a>后续步骤
 * [在 Azure 流分析中创建可并行的查询](stream-analytics-parallelization.md)
-* [缩放 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
+* [扩展 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
 
 <!--Image references-->
 

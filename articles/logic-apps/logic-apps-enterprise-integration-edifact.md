@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001530"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDIFACT 消息以实现 B2B 企业集成
 
@@ -251,7 +251,7 @@ ms.locfileid: "82115527"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息（如连接器的 Swagger 文件所述的操作和限制），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/edifact/)。
+有关此连接器的更多技术详细信息（如连接器的 Swagger 文件所述的操作和限制），请参阅[连接器的参考页](/connectors/edifact/)。
 
 > [!NOTE]
 > 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。

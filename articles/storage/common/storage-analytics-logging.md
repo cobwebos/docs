@@ -1,19 +1,20 @@
 ---
 title: Azure 存储分析日志记录
-description: 了解如何记录针对 Azure 存储发出的请求的详细信息。
+description: 使用存储分析记录有关 Azure 存储请求的详细信息。 查看记录了哪些请求，如何存储日志，如何启用存储日志记录等。
 author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675923"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903215"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -29,7 +30,7 @@ ms.locfileid: "83675923"
 ## <a name="requests-logged-in-logging"></a>日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
 
- 将记录以下类型的已经过身份验证的请求：
+ 将记录以下类型的经过身份验证的请求：
 
 - 成功的请求
 - 失败的请求，包括超时、限制、网络、授权和其他错误
@@ -40,7 +41,7 @@ ms.locfileid: "83675923"
 
 ### <a name="logging-anonymous-requests"></a>记录匿名请求
 
- 将记录以下类型的匿名请求：
+ 记录以下类型的匿名请求：
 
 - 成功的请求
 - 服务器错误
@@ -63,7 +64,7 @@ ms.locfileid: "83675923"
 你可以使用大多数存储浏览工具查看 blob 的元数据；你也可以通过 PowerShell 或编程方式读取此信息。 下面的 PowerShell 代码片段是一个示例，该示例说明了如何按名称筛选日志 blob 的列表来指定时间，以及如何按元数据进行筛选以仅标识包含“写入”操作的日志。  
 
  ```powershell
- Get-AzureStorageBlob -Container '$logs' |  
+ Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
@@ -136,20 +137,20 @@ ms.locfileid: "83675923"
 
 ### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 启用存储日志记录  
 
- 你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储日志记录，具体方法是：使用 Azure PowerShell cmdlet Get-AzureStorageServiceLoggingProperty 检索当前设置，然后使用 cmdlet Set-AzureStorageServiceLoggingProperty 更改当前设置 。  
+ 你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储日志记录，方法是使用 Azure PowerShell cmdlet **AzStorageServiceLoggingProperty**检索当前设置，并使用 cmdlet **AzStorageServiceLoggingProperty**更改当前设置。  
 
  控制存储日志记录的 cmdlet 使用 LoggingOperations 参数，该参数是一个字符串，包含要记录的请求类型的逗号分隔列表。 三种可能的请求类型是“读取”、“写入”和“删除”  。 要关闭日志记录，请对 LoggingOperations 参数使用值“无” 。  
 
  以下命令在保留期设为 5 天的情况下，在默认存储帐户中为队列服务中的读取、写入和删除请求打开日志记录：  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  以下命令在默认存储帐户中为表服务关闭日志记录：  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
+Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  

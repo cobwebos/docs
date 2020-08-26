@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495959"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -80,7 +80,7 @@ ms.locfileid: "86134013"
 4. 下载 Azure Site Recovery 提供程序安装文件。
 5. 下载注册密钥。 安装提供程序时需要此密钥。 生成的密钥有效期为 5 天。
 
-    ![设置源](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![用于下载提供程序和注册密钥的选项的屏幕截图。](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. 在每个 VMM 服务器上安装提供程序。 无需在 Hyper-V 主机上显式安装任何组件。
 
@@ -94,7 +94,7 @@ ms.locfileid: "86134013"
 4. 在“安装”中接受或修改默认安装位置，并单击“安装”。
 5. 安装完成后，单击“注册”，以便在保管库中注册服务器。
 
-    ![安装位置](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![提供程序安装屏幕的屏幕截图，包括安装位置。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 单击“下一步”。
 7. 在“代理连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Azure。
    - 可指定提供程序应直接连接到 Internet 还是通过代理连接。 根据需要指定代理设置。
@@ -115,7 +115,7 @@ ms.locfileid: "86134013"
 1. 单击“准备基础结构” > “目标”，并选择目标 VMM 服务器 。
 2. 此时会显示与 Site Recovery 同步的 VMM 云。 选择目标云。
 
-   ![目标](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![目标 VMM 服务器和云选项的屏幕截图。](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
@@ -138,7 +138,7 @@ ms.locfileid: "86134013"
 5. 选择“删除副本 VM”，指定禁用对源 VM 的保护时应删除副本虚拟机。 如果启用此设置，禁用对源 VM 的保护时，将从站点恢复控制台中删除该 VM、在 VMM 控制台中删除 VMM 的站点恢复设置，并删除副本。
 6. 如果要通过网络进行复制，请在“初始复制方法”中指定是要启动还是计划初始复制。 要节省网络带宽，可以将它计划在非高峰时间运行。 然后单击“确定”。
 
-     ![复制策略](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![复制策略选项的屏幕截图。](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. 新策略自动与 VMM 云关联。 在“复制策略”中单击“确定”。  
 

@@ -1,6 +1,6 @@
 ---
 title: Microsoft 全球网络-Azure
-description: 介绍 Microsoft 如何构建其快速可靠的全球网络
+description: 了解 Microsoft 如何构建和运营世界上最大的主干网络之一，以及为什么要提供出色的云体验。
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125815"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280896"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 

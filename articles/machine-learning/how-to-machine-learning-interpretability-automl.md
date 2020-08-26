@@ -1,22 +1,23 @@
 ---
-title: '自动 ML (预览版中的 Explainability) '
+title: 自动 ML 中的 Explainability （预览版）
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解自动化 ML 模型如何确定特征重要性并做出预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.topic: conceptual
+ms.custom: how-to
+ms.author: mithigpe
+author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206606"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306411"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自动机器学习 (预览版中的模型说明) 
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自动机器学习（预览版）中的模型说明
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

@@ -1,17 +1,18 @@
 ---
 title: 什么是 Azure 云服务 | Microsoft Docs
-description: 了解什么是 Azure 云服务。
+description: 了解 Azure 云服务的功能，具体来说，它设计为支持可缩放、可靠且操作便宜的应用程序。
 services: cloud-services
 author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386844"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224282"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure 云服务的概述
 Azure 云服务是[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一个示例。 与 [Azure 应用服务](../app-service/overview.md)一样，此技术设计用于支持可缩放、可靠且运营成本低廉的应用程序。 同样，应用服务托管在虚拟机 (VM) 上，Azure 云服务也是如此。 但是，你对 VM 有更多的控制。 可以在使用 Azure 云服务的 VM 上安装自己的软件，并且可以远程访问它们。

@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027573"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445806"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
-Azure [更改跟踪](../../automation/change-tracking.md)允许你轻松识别更改，[更新管理](../../automation/automation-update-management.md)允许你管理 Azure Linux VM 的操作系统更新。
+Azure [更改跟踪](../../automation/change-tracking.md)允许你轻松识别更改，[更新管理](../../automation/update-management/update-mgmt-overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 管理 Linux 更新
@@ -77,7 +77,7 @@ az vm create \
 执行验证以确定是否为该 VM 启用了更新管理。
 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
-[Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。
+[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 若要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化运行针对 VM 的 Runbook，例如下载和应用更新。
 
@@ -87,8 +87,8 @@ az vm create \
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区
-* [自动化帐户](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区
+* [自动化帐户](../../automation/index.yml)
 * VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
 “更新管理”屏幕随即打开。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后选择“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
@@ -115,10 +115,10 @@ az vm create \
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
-| 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](../../automation/automation-update-management-groups.md)|
+| 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](../../automation/update-management/update-mgmt-groups.md)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示 。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
-|包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
+|包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) |
 |计划设置|选择启动时间，然后选择任“一次”或“重复”|
 | 前脚本 + 后脚本|选择要在部署前和部署后运行的脚本|
 | 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |
@@ -171,21 +171,21 @@ az vm create \
 
 ### <a name="track-changes"></a>跟踪更改
 
-在 VM 中的“操作”下选择“更改跟踪”。  选择“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后选择“+ 添加”以配置设置。 Linux 上的可用选项为“Linux 文件”。
+在 VM 中的“操作”下选择“更改跟踪”。 选择“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后选择“+ 添加”以配置设置。 Linux 上的可用选项为“Linux 文件”。
 
 有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/automation-tutorial-troubleshoot-changes.md)
 
 ### <a name="view-inventory"></a>查看清单
 
-在 VM 中的“操作”下选择“清单”。  在“软件”选项卡上有一个表，列出了已发现的软件。 可在表中查看每个软件记录的高级详细信息。 这些详细信息包括软件名称、版本、发布者和上次刷新时间。
+在 VM 中的“操作”下选择“清单”。 在“软件”选项卡上有一个表，列出了已发现的软件。 可在表中查看每个软件记录的高级详细信息。 这些详细信息包括软件名称、版本、发布者和上次刷新时间。
 
 ![查看清单](./media/tutorial-monitoring/inventory-view-results.png)
 
 ### <a name="monitor-activity-logs-and-changes"></a>监视活动日志和更改
 
-在 VM 的“更改跟踪”页中，选择“管理活动日志连接”。  此任务打开“Azure 活动日志”页。 选择“连接”，将更改跟踪连接到 VM 的 Azure 活动日志。
+在 VM 的“更改跟踪”页中，选择“管理活动日志连接”。 此任务打开“Azure 活动日志”页。 选择“连接”，将更改跟踪连接到 VM 的 Azure 活动日志。
 
-启用此设置后，导航到 VM 的“概览”页，然后选择“停止”以停止 VM。  出现提示时，选择“是”即可停止 VM。 将 VM 解除分配以后，请选择“启动”以重启 VM。
+启用此设置后，导航到 VM 的“概览”页，然后选择“停止”以停止 VM。 出现提示时，选择“是”即可停止 VM。 将 VM 解除分配以后，请选择“启动”以重启 VM。
 
 停止和启动 VM 时，会在活动日志中记录一个事件。 导航回到“更改跟踪”页。 选择页面底部的“事件”选项卡。 一段时间后，事件会显示在图表和表中。 可以选择每个事件来查看其详细信息。
 

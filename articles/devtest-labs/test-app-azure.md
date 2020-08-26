@@ -3,22 +3,22 @@ title: 如何在 Azure 中测试应用 | Microsoft Docs
 description: 了解如何在实验室中创建文件共享并将其装载到实验室中的本地计算机和虚拟机，然后将桌面/Web 应用程序部署到该文件共享并对其进行测试。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476489"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282239"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
 本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2019 将你的应用部署到文件共享，以便可以在实验室中的 VM 上运行应用。  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 1. [创建一个 Azure 订阅](https://azure.microsoft.com/free/)（如果没有订阅），并登录到 [Azure 门户](https://portal.azure.com)。
 2. 遵照[此文](devtest-lab-create-lab.md)中的说明，使用 Azure 开发测试实验室创建一个实验室。 将该实验室固定到仪表板，以便下次登录时可以轻松找到它。 使用 Azure 开发测试实验室可在 Azure 中快速创建资源，同时可以最大程度地减少浪费和控制成本。 有关开发测试实验室的详细信息，请参阅[概述](devtest-lab-overview.md)。 
-3. 遵照[创建存储帐户](../storage/common/storage-create-storage-account.md)一文中的说明，在实验室的资源组中创建一个 Azure 存储帐户。 在“创建存储帐户”页上，为“资源组”选择“使用现有项”，然后选择“实验室的资源组”。**************** 
+3. 遵照[创建存储帐户](../storage/common/storage-account-create.md)一文中的说明，在实验室的资源组中创建一个 Azure 存储帐户。 在“创建存储帐户”页上，为“资源组”选择“使用现有项”，然后选择“实验室的资源组”。**************** 
 4. 遵照[在 Azure 文件中创建文件共享](../storage/files/storage-how-to-create-file-share.md)一文中的说明，在 Azure 存储中创建文件共享。 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>在本地计算机上装载文件共享

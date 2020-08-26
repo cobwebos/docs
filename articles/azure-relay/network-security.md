@@ -3,12 +3,12 @@ title: Azure 中继的网络安全性
 description: 本文介绍如何配置专用终结点的访问权限
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322167"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532979"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 中继的网络安全性 
 本文介绍如何将以下安全功能与 Azure 中继配合使用： 
@@ -23,7 +23,7 @@ ms.locfileid: "85322167"
 ## <a name="ip-firewall"></a>IP 防火墙 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问中继命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
 
-在仅应从某些知名站点访问 Azure 中继的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将中继与 [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services) 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
+在仅应从某些知名站点访问 Azure 中继的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将中继与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
 IP 防火墙规则应用于中继命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与中继命名空间的允许 IP 规则不匹配，系统会拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 

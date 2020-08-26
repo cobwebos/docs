@@ -3,12 +3,12 @@ title: 监视任何环境中的 Java 应用程序 - Azure Monitor Application In
 description: 对在任何环境中运行的 Java 应用程序进行应用程序性能监视，而不需要检测该应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319697"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902076"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure Monitor Application Insights - 公共预览版
 
@@ -24,7 +24,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 **1.下载代理**
 
-下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
+下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 **2.将 JVM 指向该代理**
 
@@ -32,11 +32,11 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
-有关配置应用程序 JVM 参数的其他帮助，请参阅 [3.0 预览版：更新 JVM 参数的技巧](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
+有关配置应用程序 JVM 参数的其他帮助，请参阅 [3.0 预览版：更新 JVM 参数的技巧](./java-standalone-arguments.md)。
 
 **3.将代理指向 Application Insights 资源**
 
-如果还没有 Application Insights 资源，可以按照[资源创建指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)中的步骤创建一个新资源。
+如果还没有 Application Insights 资源，可以按照[资源创建指南](./create-new-resource.md)中的步骤创建一个新资源。
 
 通过设置环境变量，将代理指向 Application Insights 资源：
 
@@ -80,7 +80,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 * HTTP 代理
 * 自我诊断
 
-有关详细信息，请参阅 [3.0 公共预览版：配置选项](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)。
+有关详细信息，请参阅 [3.0 公共预览版：配置选项](./java-standalone-config.md)。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自动收集的请求、依赖项、日志和指标
 
@@ -126,7 +126,21 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 我们支持 Micrometer、OpenTelemetry API 和常用日志记录框架。 Application Insights Java 3.0 会自动捕获遥测，并将其与所有自动收集的遥测相关联。
 
-因此，我们目前不打算发布带有 Application Insights 3.0 的 SDK。
+### <a name="supported-custom-telemetry"></a>支持的自定义遥测
+
+下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过[Application Insights Java 2.X SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
+
+|                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
+|---------------------|------------|---------------------|---------|
+| **自定义事件**   |            |                     |  是    |
+| **自定义指标**  |  是       |                     |  是    |
+| **依赖关系**    |            |                     |  是    |
+| **异常**      |            |  是                |  是    |
+| **页面视图**      |            |                     |  是    |
+| **请求**        |            |                     |  是    |
+| **断**          |            |  是                |  是    |
+
+目前，我们并不打算发布带有 Application Insights 3.0 的 SDK。
 
 Application Insights Java 3.0 已在侦听发送到 Application Insights Java SDK 2.x 的遥测。 对于现有 2.x 用户来说，此功能是升级过程中的一个重要部分。在 OpenTelemetry API 正式发布之前，它填补了我们在自定义遥测支持方面的一个重要空白。
 

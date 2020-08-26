@@ -3,14 +3,14 @@ title: 快速入门：创建知识库 - REST、Java - QnA Maker
 description: 此 Java 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 5f1e1d8a8d2ac9ca3d14af09618cb0a2cc0cbb5f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2dcea06fa0cb61813330298c833be7eb21a63ae7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341246"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325944"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：通过 Java 在 QnA Maker 中创建知识库
 

@@ -12,11 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885525"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117203"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -61,7 +62,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 | ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
 | OWIN 中间件  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | 与身份验证或授权主题相关的其他任何方面 | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
@@ -77,8 +78,8 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
-* [Azure Active Directory 身份验证库（ADAL）](../azuread-dev/active-directory-authentication-libraries.md)库和 GitHub 存储库
-* [Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)库和 GitHub 存储库
+*  (ADAL) 库和 GitHub 存储库[Azure Active Directory 身份验证库](../azuread-dev/active-directory-authentication-libraries.md)
+*  (MSAL) 库和 GitHub 存储库的[Microsoft 身份验证库](reference-v2-libraries.md)
 
 ## <a name="open-a-support-request"></a>提出支持请求
 

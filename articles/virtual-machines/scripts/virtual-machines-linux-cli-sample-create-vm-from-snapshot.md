@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: ffc1a735f743796b73c2b58353638dba7ed60985
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6110ba2787cb99e20c099eb466e2dbd0c3df28e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458451"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085293"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>使用 CLI 从快照创建虚拟机
 
@@ -49,12 +49,12 @@ az group delete --name myResourceGroup
 
 | Command | 说明 |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | 使用快照名称和资源组名称获取快照。 返回对象的 ID 属性用于创建托管磁盘。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk) | 使用快照 ID、磁盘名称、存储类型和大小从快照创建托管磁盘  |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 使用托管 OS 磁盘创建 VM |
+| [az snapshot show](/cli/azure/snapshot) | 使用快照名称和资源组名称获取快照。 返回对象的 ID 属性用于创建托管磁盘。  |
+| [az disk create](/cli/azure/disk) | 使用快照 ID、磁盘名称、存储类型和大小从快照创建托管磁盘  |
+| [az vm create](/cli/azure/vm) | 使用托管 OS 磁盘创建 VM |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。

@@ -1,6 +1,5 @@
 ---
-title: 重新训练 Web 服务
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：重新训练 web 服务-Azure
 description: 了解如何更新 Web 服务以在 Azure 机器学习工作室（经典版）中使用新训练的机器学习模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: ee2a830d8d87ff2d82825791cb4d3554232cfa12
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9acb9db0024ea1601f82b96376f084536fbbeabb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086154"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431857"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
+
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+
 
 重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文展示了如何在工作室（经典版）中重新训练机器学习模型并将其部署为新的 Web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
 
@@ -48,10 +50,10 @@ ms.locfileid: "86086154"
 
     现在，将训练实验部署为重新训练 Web 服务，用于输出经过训练的模型和模型评估结果。
 
-1. 在实验画布的底部，单击“设置 Web 服务”  。
-1. 选择“部署 Web 服务[新建]”  。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”  页。
+1. 在实验画布的底部，单击“设置 Web 服务”****。
+1. 选择“部署 Web 服务[新建]”****。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”**** 页。
 1. 为 Web 服务键入名称，选择一个付款计划。
-1. 选择“部署”。 
+1. 选择“部署”。
 
 ## <a name="retrain-the-model"></a>重新训练模型
 
@@ -59,7 +61,7 @@ ms.locfileid: "86086154"
 
 使用以下步骤来调用重新训练 API：
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建”   > “项目”   > “Visual C#”   > “Windows 经典桌面”   > “控制台应用(.NET Framework)”  。
+1. 在 visual Studio 中创建 c # 控制台应用程序：**新**  >  **项目**  >  **visual c #**  >  **Windows 经典桌面**  >  **控制台应用（.NET Framework）**。
 1. 登录“机器学习 Web 服务”门户。
 1. 单击正在使用的 Web 服务。
 1. 单击“**使用**”。
@@ -68,7 +70,7 @@ ms.locfileid: "86086154"
 
 按照注释中指定的方式添加 NuGet 包 Microsoft.AspNet.WebApi.Client。 要添加对 Microsoft.WindowsAzure.Storage.dll 的引用，可能需要安装 [Azure 存储服务的客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)。
 
-以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”  页。
+以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”**** 页。
 
 ![使用页](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -80,21 +82,21 @@ ms.locfileid: "86086154"
 const string apiKey = "abc123"; // Replace this with the API key for the web service
 ```
 
-在“使用”页的“基本使用信息”部分中，找到主密钥，并将其复制到 **apikey** 声明。
+在 "**使用**" 页的 "**基本消耗信息**" 部分中，找到主键，并将其复制到**apikey**声明。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 
 BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.csv”）上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。
 
 1. 登录到 Azure 门户
-1. 在左侧导航栏中，单击“更多服务”  ，搜索“存储帐户”  ，然后选择它。
+1. 在左侧导航栏中，单击“更多服务”****，搜索“存储帐户”****，然后选择它。
 1. 从存储帐户列表中，选择一个来存储重新训练模型。
-1. 在左侧导航栏中，单击“访问密钥”  。
-1. 复制并保存“主访问密钥”  。
-1. 在左侧导航列中，单击“Blob”。 
+1. 在左侧导航栏中，单击“访问密钥”****。
+1. 复制并保存“主访问密钥”****。
+1. 在左侧导航列中，单击“Blob”。****
 1. 选择现有容器或创建新的容器并保存名称。
 
-找到“StorageAccountName”  、“StorageAccountKey”  和“StorageContainerName”  声明，然后更新从门户保存的值。
+找到“StorageAccountName”**、“StorageAccountKey”** 和“StorageContainerName”** 声明，然后更新从门户保存的值。
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -211,4 +213,4 @@ Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGro
 若要了解有关如何管理 Web 服务或跟踪多个实验运行的详细信息，请参阅以下文章：
 
 * [探索 Web 服务门户](manage-new-webservice.md)
-* [管理实验迭代](manage-experiment-iterations.md)
+* [管理试验迭代](manage-experiment-iterations.md)

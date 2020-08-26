@@ -3,19 +3,17 @@ title: QnA Maker 服务有哪些新功能？
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关 QnA Maker 的新闻。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 06/15/2020
-ms.author: diberry
-ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/16/2020
+ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791208"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836864"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -25,13 +23,19 @@ ms.locfileid: "84791208"
 
 了解 QnA Maker 的新增功能。
 
+### <a name="july-2020"></a>2020 年 7 月
+
+* [元数据：多个元数据对的 `OR` 逻辑组合](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* 将认知搜索终结点配置为私有，但仍可供 QnA Maker 访问的[步骤](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet)。
+* [90 天不活动](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)后，将删除免费认知搜索资源。
+
 ### <a name="june-2020"></a>2020 年 6 月
 
 * 更新了 [Power Virtual Agent](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) 教程，使步骤执行起来更迅速、更简单
 
 ### <a name="may-2020"></a>2020 年 5 月
 
-* [基于角色的访问控制 (RBAC)](concepts/role-based-access-control.md)
+* [Azure 基于角色的访问控制 (Azure RBAC)](concepts/role-based-access-control.md)
 * 用于回答的[富文本编辑](how-to/edit-knowledge-base.md#rich-text-editing-for-answer)
 
 ### <a name="march-2020"></a>2020 年 3 月

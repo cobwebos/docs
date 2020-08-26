@@ -1,5 +1,5 @@
 ---
-title: 定义数据类型
+title: Synapse SQL 中的表数据类型
 description: 用于在 Synapse SQL 中定义表数据类型的建议。
 services: synapse-analytics
 author: filippopovic
@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 312c58a7df09ebe3e0bdf0749f902199723a331b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a92d73941aac045534b6708c4b92d741c39ff781
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494961"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL 中的表数据类型
 
 用于在 Synapse SQL 中定义表数据类型的建议。 
 
-## <a name="what-are-the-data-types"></a>数据类型有哪些？
+## <a name="data-types"></a>数据类型
 
 Synapse SQL 支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的[数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 
 

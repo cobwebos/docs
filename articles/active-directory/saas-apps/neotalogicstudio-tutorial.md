@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Neota Logic Studio 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Neota Logic Studio 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 842605e6-a91d-42cc-a0bb-e23e67173ae2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: f9154f2eb04d8deade4bdcdf0b02ce0a5b59d7ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c4176ab3d16ab602036cb1fedcc2fde8a415d449
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160360"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>教程：Azure Active Directory 与 Neota Logic Studio 集成
 

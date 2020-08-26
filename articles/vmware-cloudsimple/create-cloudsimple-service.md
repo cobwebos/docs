@@ -1,6 +1,6 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-创建 CloudSimple 服务
-description: 描述如何在 Azure 门户中创建 CloudSimple 服务
+description: 了解如何在 Azure 门户中创建 CloudSimple 服务。 在开始之前，请查看所需的配置。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024817"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140541"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>通过 CloudSimple 服务创建 Azure VMware 解决方案
 
@@ -28,7 +29,7 @@ ms.locfileid: "77024817"
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 2. 搜索 " **CloudSimple Services**"。
     ![搜索 CloudSimple 服务](media/create-cloudsimple-service-search.png)
 3. 选择**CloudSimple Services**。

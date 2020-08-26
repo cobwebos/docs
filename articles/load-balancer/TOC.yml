@@ -4,31 +4,31 @@
   items:
     - name: 什么是 Azure 负载均衡器？
       href: load-balancer-overview.md
-    - name: 新增功能
-      href: whats-new.md
-    - name: 常见问题
-      href: load-balancer-faqs.md
 - name: 快速入门
   items:
-    - name: 创建负载均衡器 - 门户
+    - name: 创建公共负载均衡器 - 门户
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: 创建负载均衡器 - Azure CLI
-      href: quickstart-load-balancer-standard-public-cli.md
-    - name: 创建负载均衡器 - Azure PowerShell
+    - name: 创建公共负载均衡器 - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: 创建负载均衡器 - ARM 模板
+    - name: 创建公共负载均衡器 - Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+    - name: 创建公共负载均衡器 - ARM 模板
       href: quickstart-load-balancer-standard-public-template.md
     - name: 创建内部负载均衡器 - 门户
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: 创建内部负载均衡器 - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: 创建内部负载均衡器 - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: 创建内部负载均衡器 - ARM 模板
-      href: load-balancer-get-started-ilb-arm-template.md
+      href: quickstart-load-balancer-standard-internal-portal.md
   expanded: true
 - name: 教程
   items:
+    - name: Internal 负载均衡器（内部负载均衡器）
+      items:
+        - name: 创建内部负载均衡器 - 门户
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: 创建内部负载均衡器 - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: 创建内部负载均衡器 - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: 创建内部负载均衡器 - ARM 模板
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: 跨可用性区域对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
@@ -43,6 +43,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 新增功能
+      href: whats-new.md
     - name: 组件
       href: components.md
     - name: 概念
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: 后端池管理
       href: backend-pool-management.md
+    - name: 标准负载均衡器和虚拟机规模集
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 如何
   items:
     - name: 虚拟机规模集
@@ -91,14 +95,6 @@
           href: upgrade-basicInternal-standard.md
         - name: 升级内部负载均衡器 - 需要出站连接
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: 配置出站规则
-      items:
-        - name: 门户
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: 使用 IPv6 创建公共负载均衡器
       items:
         - name: Azure CLI
@@ -130,14 +126,18 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-- name: 疑难解答
-  items:
-    - name: 排查 Azure 负载均衡器问题
-      href: load-balancer-troubleshoot.md
-    - name: 排查常见部署错误
-      href: load-balancer-common-deployment-errors.md
-    - name: 解决常见的出站连接问题
-      href: troubleshoot-outbound-connection.md
+    - name: 仅出站的负载均衡器配置
+      href: egress-only.md
+    - name: 疑难解答
+      items:
+        - name: 对 Azure 负载均衡器进行故障排除
+          href: load-balancer-troubleshoot.md
+        - name: 排查常见部署错误
+          href: load-balancer-common-deployment-errors.md
+        - name: 排查常见的出站连接问题
+          href: troubleshoot-outbound-connection.md
+        - name: 排查资源运行状况和入站可用性问题
+          href: troubleshoot-rhc.md
 - name: 参考
   items:
     - name: 代码示例
@@ -175,3 +175,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 产品更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
+    - name: 常见问题解答
+      href: load-balancer-faqs.md

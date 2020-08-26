@@ -12,15 +12,16 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232108"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829622"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
 
-你的 Azure Active Directory （Azure AD）报告和监视解决方案取决于你的法律、安全和运营要求以及你的现有环境和过程。 本文介绍各种设计选项，并指导您正确部署策略。
+) 报表和监视解决方案的 Azure Active Directory (Azure AD 取决于你的法律、安全和运营要求以及你的现有环境和过程。 本文介绍各种设计选项，并指导您正确部署策略。
 
 ### <a name="benefits-of-azure-ad-reporting-and-monitoring"></a>Azure AD 报告和监视的优点
 
@@ -70,9 +71,9 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 在此项目中，你将定义将使用和监视报表的受众，并定义 Azure AD 监视体系结构。
 
-### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
+### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任，充分了解项目中的利益干系人角色。
+当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任，充分了解项目中的利益干系人角色。
 
 ### <a name="plan-communications"></a>规划沟通
 
@@ -98,10 +99,10 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 * 需要满足业务需求
 * 不适用
 
-|区域 |说明 |
+|领域 |说明 |
 |-|-|
 |保留| **日志保留期超过30天**。 由于法律或业务要求，需要将审核日志和登录日志 Azure AD 超过30天。 |
-|Analytics| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
+|分析| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
 | 操作见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用、趋势等。 |
 | 安全见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用情况、趋势等。 |
 | SIEM 系统中的集成      | **SIEM 集成**。 需要将 Azure AD 登录日志和审核日志集成并流式传输到现有的 SIEM 系统。 |
@@ -192,6 +193,4 @@ Azure AD 角色使你能够根据你的角色委托配置和查看 Azure AD 报�
 
 考虑实现[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
 
-考虑实施[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)
-
- 
+请考虑实现 azure [RBAC)  (基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)

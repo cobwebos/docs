@@ -10,15 +10,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373975"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648558"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
-本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
+本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](./overview.md)。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>何时使用规模集而不使用虚拟机？
 一般而言，规模集非常适合用于部署高可用性基础结构（其中的一组计算机采用类似配置）。 但是，有些功能只能在规模集中使用，还有些功能只能在 VM 中使用。 若要就何时使用每种技术做出明智的决策，我们首先应该大致了解可在规模集中使用，但不能在 VM 中使用的一些常用功能：
@@ -27,8 +27,8 @@ ms.locfileid: "85373975"
 
 - 指定规模集配置后，可以更新“容量”** 属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
 - 可以[使用 Azure 自动缩放来自动缩放规模集](./virtual-machine-scale-sets-autoscale-overview.md)，但不能使用它来自动缩放单个 VM。
-- 可以[重置规模集 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)，但[不能重置单个 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachines)。
-- 可以[过度预配](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码来执行此操作，否则不能过度配置单个 VM。
+- 可以[重置规模集 VM 的映像](/rest/api/compute/virtualmachinescalesets/reimage)，但[不能重置单个 VM 的映像](/rest/api/compute/virtualmachines)。
+- 可以[过度预配](#overprovisioning)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码来执行此操作，否则不能过度配置单个 VM。
 - 可以指定[升级策略](./virtual-machine-scale-sets-upgrade-scale-set.md)，方便在规模集中的各个 VM 上实施升级。 使用单个 VM 时，必须自行协调更新。
 
 ### <a name="vm-specific-features"></a>特定于 VM 的功能
@@ -42,7 +42,7 @@ ms.locfileid: "85373975"
 ## <a name="storage"></a>存储
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>使用 Azure 托管磁盘创建规模集
-可以使用 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)而不是传统的 Azure 存储帐户创建规模集。 托管磁盘可以提供以下优点：
+可以使用 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)而不是传统的 Azure 存储帐户创建规模集。 托管磁盘可以提供以下优点：
 - 无需为规模集 VM 预先创建一组 Azure 存储帐户。
 - 可以为规模集中的 VM 定义[附加的数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
 - 可以将规模集配置为[在一个规模集中最多支持 1,000 个 VM](virtual-machine-scale-sets-placement-groups.md)。 
@@ -68,4 +68,3 @@ ms.locfileid: "85373975"
 基于自定义映像（用户构建的映像）构建的规模集配置 Azure 托管磁盘后最多可拥有 600 个 VM 的容量。 如果规模集配置了用户管理的存储帐户，则必须在同一存储帐户中创建所有 OS 磁盘 VHD。 因此，基于自定义映像和用户管理的存储构建的规模集中 VM 的最大建议数目为 20。 如果关闭预配过度，最大可为 40。
 
 对于高出这些限制所允许的 VM，需要部署多个规模集，如[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)所示。
-

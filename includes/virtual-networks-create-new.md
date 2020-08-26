@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78244985"
 ---
 ## <a name="create-the-virtual-network"></a>创建虚拟网络
@@ -27,9 +27,9 @@ ms.locfileid: "78244985"
     |------------------|-----------------------------------------------------------------|
     | **项目详细信息**  |                                                                 |
     | 订阅     | 选择 Azure 订阅                                  |
-    | 资源组   | 选择“新建”  ，输入 **\<resource-group-name>** ，然后选择“确定”，或根据参数选择现有 **\<resource-group-name>** 。 |
+    | 资源组   | 选择“新建”，输入 \<resource-group-name>，然后选择“确定”，或根据参数选择一个现有的 \<resource-group-name>  。 |
     | **实例详细信息** |                                                                 |
-    | 名称             | 输入 **\<virtual-network-name>**                                    |
+    | 名称             | 输入“\<virtual-network-name>”                                    |
     | 区域           | 选择 **\<region-name>** |
 
 3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
@@ -38,7 +38,7 @@ ms.locfileid: "78244985"
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
-    | IPv4 地址空间 | 输入 **\<IPv4-address-space>** |
+    | IPv4 地址空间 | 输入“\<IPv4-address-space>” |
 
 5. 在“子网名称”  下，选择词语“默认”  。
 
@@ -46,8 +46,8 @@ ms.locfileid: "78244985"
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
-    | 子网名称 | 输入 **\<subnet-name>** |
-    | 子网地址范围 | 输入 **\<subnet-address-range>**
+    | 子网名称 | 输入“\<subnet-name>” |
+    | 子网地址范围 | 输入“\<subnet-address-range>”
 
 7. 选择“保存”。 
 

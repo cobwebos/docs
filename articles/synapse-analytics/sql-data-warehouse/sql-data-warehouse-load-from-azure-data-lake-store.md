@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213289"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533931"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>从适用于 Synapse SQL 的 Azure Data Lake Storage 加载数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "85213289"
 若要运行本教程，需要：
 
 * SQL 池。 请参阅[创建 SQL 池和查询数据](create-data-warehouse-portal.md)。
-* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定以下要加载的凭据之一：存储帐户密钥、共享访问签名（SAS）密钥、Azure 目录应用程序用户或将相应的 RBAC 角色提供给存储帐户的 AAD 用户。
+* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定要加载的以下凭据之一：存储帐户密钥、共享访问签名（SAS）密钥、Azure 目录应用程序用户或拥有存储帐户相应 Azure 角色的 AAD 用户。
 
 ## <a name="create-the-target-table"></a>创建目标表
 
@@ -132,7 +132,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > [!div class="nextstepaction"]
 > [了解如何为数据仓库开发表](sql-data-warehouse-tables-overview.md)
 
-有关加载示例和参考的详细信息，请参阅以下文档：
+有关加载示例和参考的详细信息，请查看以下文档：
 - [COPY 语句参考文档](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [复制每个身份验证方法的示例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [复制单个表的快速入门](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [每个身份验证方法的 COPY 示例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
+- [单个表的 COPY 快速入门](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)

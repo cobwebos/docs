@@ -4,12 +4,12 @@ description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了�
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170303"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533506"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -130,9 +130,9 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 1. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 1. 在“选择”字段中，输入应用程序的名称。 从列表中选择你的应用程序，然后选择“保存”。
 
-现在，应用程序应出现在访问控制设置中，同时已分配有 RBAC 角色。
+应用程序现在应显示在已分配 Azure 角色的访问控制设置中。
 
-![向应用程序分配 RBAC 角色](./media/batch-aad-auth/app-rbac-role.png)
+![将 Azure 角色分配到应用程序](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>分配自定义角色
 
@@ -193,7 +193,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 }
 ```
 
-有关创建自定义角色的更多常规信息，请参阅 [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
+有关创建自定义角色的更多常规信息，请参阅[Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>获取 Azure Active Directory 的租户 ID
 

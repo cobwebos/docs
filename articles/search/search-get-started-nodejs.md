@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: bd64faf46f91c3b73d58f7c226748cd0ac083701
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562145"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420849"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]

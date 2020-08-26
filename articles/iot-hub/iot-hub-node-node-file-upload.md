@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.custom: mqtt
-ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 469aed46fee5fd01ee0604f266de3d14f8b0fe40
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732253"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420747"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>通过 IoT 中心将设备中的文件上传到云 (Node.js)
 

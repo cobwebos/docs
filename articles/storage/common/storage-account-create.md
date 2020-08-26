@@ -9,17 +9,19 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82853497"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501349"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
 Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
-本操作指南文章介绍如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 [Azure 资源管理器模板](../../azure-resource-manager/management/overview.md)创建存储帐户。  
+本操作指南文章介绍如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 [Azure 资源管理器模板](../../azure-resource-manager/management/overview.md)创建存储帐户。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,12 +49,12 @@ Get-InstalledModule -Name "Az"
 
 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令：
 
-- 可以在 Azure Cloud Shell 中的 Azure 门户内运行 CLI 命令。
+- 可以在 Azure 门户的 Azure Cloud Shell 中运行 CLI 命令。
 - 可以安装 CLI 并在本地运行 CLI 命令。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Azure CLI 已预安装并配置为与帐户一起使用。 单击 Azure 门户右上部分菜单上的 " **Cloud Shell** " 按钮：
+Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 已预安装 Azure CLI 并将其配置为与帐户一起使用。 单击 Azure 门户右上部分菜单上的 " **Cloud Shell** " 按钮：
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
@@ -96,7 +98,7 @@ az login
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -108,7 +110,7 @@ az login
 
 可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘****。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -199,7 +201,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-你可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板来创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  。
+你可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板来创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -235,10 +237,10 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 删除存储帐户将删除整个帐户，包括该帐户中的所有数据，并且该操作无法撤销。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 导航到[Azure 门户](https://portal.azure.com)中的存储帐户。
-1. 单击 **“删除”** 。
+1. 单击“删除” 。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -287,7 +289,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 在本操作指南文章中，你已创建一个常规用途 v2 标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门之一。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [通过 Azure 门户使用 Blob](../blobs/storage-quickstart-blobs-portal.md)

@@ -4,21 +4,21 @@ description: 将 Amazon Web Services (AWS) EC2 Windows 实例移到 Azure 虚拟
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f66653996cb36e58054756ac877f859559609be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267092"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure 虚拟机
 
 如果你正在评估是否要使用 Azure 虚拟机托管工作负荷，可以导出现有的 Amazon Web Services (AWS) EC2 Windows VM 实例，然后将虚拟硬盘 (VHD) 上传到 Azure。 上传 VHD 后，可以通过该 VHD 在 Azure 中创建新的 VM。 
 
-本文介绍如何将单个 VM 从 AWS 移至 Azure。 如果想要将 VM 从 AWS 批量迁移到 Azure，请参阅[使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中的虚拟机迁移到 Azure](../../site-recovery/site-recovery-migrate-aws-to-azure.md)。
+本文介绍如何将单个 VM 从 AWS 移至 Azure。 如果想要将 VM 从 AWS 批量迁移到 Azure，请参阅[使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中的虚拟机迁移到 Azure](../../site-recovery/migrate-tutorial-aws-azure.md)。
 
 ## <a name="prepare-the-vm"></a>准备 VM 
  

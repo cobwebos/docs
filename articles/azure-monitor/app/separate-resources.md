@@ -3,12 +3,12 @@ title: 如何设计 Application Insights 部署 - 一个资源与多个资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516713"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258720"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -35,13 +35,13 @@ ms.locfileid: "86516713"
 
 ### <a name="other-things-to-keep-in-mind"></a>其他注意事项
 
--   你可能需要添加自定义代码，以确保有意义的值设置到 [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) 特性中。 如果没有为此特性设置有意义的值，则无任何门户体验可用。
+-   你可能需要添加自定义代码，以确保有意义的值设置到 [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 特性中。 如果没有为此特性设置有意义的值，则无任何门户体验可用。
 - 对于 Service Fabric 应用程序和经典云服务，SDK 会自动从 Azure 角色环境中读取并设置这些内容。 对于所有其他类型的应用，你可能需要对其显式设置。
 -   实时指标体验不支持按角色名称拆分。
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
-为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中而非在配置文件中设置 ikey。
+为了更轻松地更改 ikey，因为代码在生产阶段之间移动，而是在代码中动态引用密钥，而不是使用硬编码/静态值。
 
 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 

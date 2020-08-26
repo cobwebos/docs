@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078186"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报
 
@@ -46,7 +46,7 @@ ms.locfileid: "86536243"
 
    逻辑应用运行的可能状态如下：
 
-   | 状态 | 说明 |
+   | 状态 | 描述 |
    |--------|-------------|
    | 已取消 | 工作流正在运行，但收到取消请求 |
    | 失败 | 至少一个操作失败，并且工作流中未设置任何后续操作来处理该故障 |
@@ -86,7 +86,7 @@ ms.locfileid: "86536243"
      现在可以查看该步骤的信息（例如输入和输出），例如：
 
    > [!NOTE]
-   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 可以[在运行历史记录中隐藏输入和输出](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)，或使用 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 来控制用户对此信息的访问。
+   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 可以[在运行历史记录中隐藏输入和输出，](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)或使用[azure 基于角色的访问控制（Azure RBAC）](../role-based-access-control/overview.md)来控制用户对此信息的访问权限。
 
 <a name="review-trigger-history"></a>
 

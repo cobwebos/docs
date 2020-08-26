@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998929"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>将大型机计算移到 Azure
 
@@ -93,13 +94,13 @@ M 系列 Vm 最多可增加到128个 vcpu （本文撰写之时）。 M 系列 V
 
 基于 Azure 的解决方案的优点之一是可以横向扩展。缩放使得应用程序可使用几乎无限制的计算能力。 Azure 支持多种方法来横向扩展计算能力：
 
-- **跨群集负载平衡。** 在这种情况下，应用程序可以使用[负载均衡器](/azure/load-balancer/load-balancer-overview)或资源管理器来分散群集中多个 vm 之间的工作负荷。 如果需要更多计算容量，则会将其他 Vm 添加到群集。
+- **跨群集负载平衡。** 在这种情况下，应用程序可以使用[负载均衡器](../../../../load-balancer/load-balancer-overview.md)或资源管理器来分散群集中多个 vm 之间的工作负荷。 如果需要更多计算容量，则会将其他 Vm 添加到群集。
 
-- **虚拟机规模集。** 在此突发情况下，应用程序可以根据 VM 使用情况扩展到其他[计算资源](/azure/virtual-machine-scale-sets/overview)。 当需求下降时，规模集中的 Vm 数目也会下降，从而有效地使用计算能力。
+- **虚拟机规模集。** 在此突发情况下，应用程序可以根据 VM 使用情况扩展到其他[计算资源](../../../../virtual-machine-scale-sets/overview.md)。 当需求下降时，规模集中的 Vm 数目也会下降，从而有效地使用计算能力。
 
-- **PaaS 缩放。** Azure PaaS 产品/服务缩放计算资源。 例如， [Azure Service Fabric](/azure/service-fabric/service-fabric-overview)会分配计算资源来满足请求数量的增加。
+- **PaaS 缩放。** Azure PaaS 产品/服务缩放计算资源。 例如， [Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md)会分配计算资源来满足请求数量的增加。
 
-- **Kubernetes 群集。** Azure 上的应用程序可以将[Kubernetes 群集](/azure/aks/concepts-clusters-workloads)用于计算服务的指定资源。 Azure Kubernetes Service （AKS）是一种托管服务，用于协调 Azure 上的 Kubernetes 节点、池和群集。
+- **Kubernetes 群集。** Azure 上的应用程序可以将[Kubernetes 群集](../../../../aks/concepts-clusters-workloads.md)用于计算服务的指定资源。 Azure Kubernetes Service （AKS）是一种托管服务，用于协调 Azure 上的 Kubernetes 节点、池和群集。
 
 若要为横向扩展计算资源选择适当的方法，请务必了解 Azure 和大型机的不同之处。 关键是计算资源是否共享数据。 在 Azure 中，数据（默认情况下）通常不由多个 Vm 共享。 如果横向扩展计算群集中的多个 Vm 需要数据共享，则共享数据必须驻留在支持此功能的资源中。 在 Azure 上，数据共享涉及存储，如以下部分所述。
 
@@ -114,7 +115,7 @@ M 系列 Vm 最多可增加到128个 vcpu （本文撰写之时）。 M 系列 V
 ## <a name="next-steps"></a>后续步骤
 
 - [大型机迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 虚拟机上的大型机重新承载](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 虚拟机上的大型机重新承载](../overview.md)
 - [将大型机存储移到 Azure](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM 资源

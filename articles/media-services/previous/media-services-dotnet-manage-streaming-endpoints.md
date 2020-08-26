@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038726"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点  
 
 >[!NOTE]
->请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 此外，请查看 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
+>请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 此外，请查看 [StreamingEndpoint](/rest/api/media/operations/streamingendpoint)。
 
 本文中的代码演示如何使用 Azure 媒体服务 .NET SDK 执行以下任务：
 
@@ -149,4 +150,3 @@ namespace AMSStreamingEndpoint
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

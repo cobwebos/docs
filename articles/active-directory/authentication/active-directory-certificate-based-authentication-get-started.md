@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051347"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -93,7 +93,7 @@ ms.locfileid: "86202876"
     }
 ```
 
-对于此配置，可以使用 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0)：
+对于此配置，可以使用 [Azure Active Directory PowerShell 版本 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)：
 
 1. 使用管理员特权启动 Windows PowerShell。
 2. 安装 Azure AD 模块 [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 或更高版本。
@@ -122,7 +122,7 @@ ms.locfileid: "86202876"
 
 ### <a name="add"></a>添加
 
-若要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值：
+若要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值：
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"

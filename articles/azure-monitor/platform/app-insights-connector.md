@@ -6,26 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327100"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
 ![Application Insights 符号](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> 在[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)的支持下，不再需要 Application Insights 连接器管理解决方案。 该解决方案已被弃用并从 Azure 市场中删除，同时 Azure 商业云的 OMS 门户将于 2019 年 1 月 15 日正式弃用。 Azure 美国政府云将于 2019 年 3 月 30 日停用该门户。
+> 在[跨资源查询](../log-query/cross-workspace-query.md)的支持下，不再需要 Application Insights 连接器管理解决方案。 该解决方案已被弃用并从 Azure 市场中删除，同时 Azure 商业云的 OMS 门户将于 2019 年 1 月 15 日正式弃用。 Azure 美国政府云将于 2019 年 3 月 30 日停用该门户。
 >
 >现有连接将继续运行到 2019 年 6 月 30 日为止。  随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 有关使用 PowerShell 删除现有连接的脚本，请参阅下面的[使用 PowerShell 删除连接器](#removing-the-connector-with-powershell)。
 >
->有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)。 有关 OMS 门户弃用的详细信息，请参阅 [OMS 门户即将转移到 Azure](../../azure-monitor/platform/oms-portal-transition.md)。
+>有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)。 有关 OMS 门户弃用的详细信息，请参阅 [OMS 门户即将转移到 Azure](./oms-portal-transition.md)。
 >
 > 
 
-可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
+可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../app/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
 
 使用该解决方案时，可以：
 
@@ -43,10 +44,10 @@ ms.locfileid: "77665131"
 
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
-| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
-| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
-| [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
-| [Azure 存储帐户](collect-azure-metrics-logs.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
+| [Windows 代理](./agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
+| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
+| [SCOM 管理组](./om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
+| [Azure 存储帐户](./resource-logs.md#send-to-log-analytics-workspace) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,10 +57,10 @@ ms.locfileid: "77665131"
 
 ## <a name="configuration"></a>配置
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
+1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../insights/solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”**** 以打开 Application Insights。 然后，搜索 Application Insights。 
 3. 在“订阅”下，选择包含 Application Insights 资源的订阅，然后在“名称”下选择一个或多个应用程序。********
-4. 单击“保存” 。
+4. 单击“保存”。
 
 大约 30 分钟后，数据将会可用，Application Insights 磁贴中会更新数据，如下图所示：
 
@@ -143,7 +144,7 @@ ms.locfileid: "77665131"
 
 ### <a name="sample-corrected-data"></a>采样更正数据
 
-Application Insights 提供*[采样更正](../../azure-monitor/app/sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。****
+Application Insights 提供*[采样更正](../app/sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。****
 
 下面日志搜索查询中的采样更正示例：
 
@@ -162,8 +163,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 - 可用性
 - 例外
 - Requests
-- 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views)。
-- 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
+- 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../app/api-custom-events-metrics.md#page-views)。
+- 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../app/api-custom-events-metrics.md#trackevent)。
 
 数据可用后，Log Analytics 将从 Application Insights 接收该数据。
 
@@ -173,7 +174,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| Property | 描述 |
+| 属性 | 描述 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | ClientIP |   |
@@ -199,7 +200,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性特定的字段
 
-| Property | 描述 |
+| 属性 | 描述 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 测试的名称 |
@@ -241,7 +242,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| Property | 描述 |
+| 属性 | 描述 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
@@ -303,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-此脚本需要持有者身份验证令牌才能对 Azure Active Directory 进行身份验证。 检索此令牌的一种方法是使用 [REST API 文档站点](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)中的文章。 单击“试用”，然后登录 Azure 订阅****。 可从“请求预览”复制持有者令牌，如下图所示****。
+此脚本需要持有者身份验证令牌才能对 Azure Active Directory 进行身份验证。 检索此令牌的一种方法是使用 [REST API 文档站点](/rest/api/loganalytics/datasources/createorupdate)中的文章。 单击“试用”，然后登录 Azure 订阅****。 可从“请求预览”复制持有者令牌，如下图所示****。
 
 
 ![持有者令牌](media/app-insights-connector/bearer-token.png)
@@ -317,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用[日志搜索](../../azure-monitor/log-query/log-query-overview.md)可以查看 Application Insights 应用的详细信息。
+- 使用[日志搜索](../log-query/log-query-overview.md)可以查看 Application Insights 应用的详细信息。
+

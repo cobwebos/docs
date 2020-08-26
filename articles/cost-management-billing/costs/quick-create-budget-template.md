@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70408a3ed6638ec76af113c24cc3c8190a44f55c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252430"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445994"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入门：使用 ARM 模板创建预算
 
@@ -29,13 +29,31 @@ ms.locfileid: "86252430"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-ARM 模板仅支持 Azure 企业协议 (EA) 订阅。 该模板不支持其他订阅类型。
-
-若要创建和管理预算，必须具有参与者权限。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。 对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。
-
-创建预算后，至少需要对 Azure 帐户拥有读取权限才能查看预算。
-
 如果你有新订阅，则无法立即创建预算或使用其他成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
+
+以下 Azure 帐户类型和范围都支持预算：
+
+- Azure 基于角色的访问控制 (Azure RBAC) 范围
+    - 管理组
+    - 订阅
+- 企业协议范围
+    - 计费帐户
+    - 部门
+    - 注册帐户
+- 个人协议
+    - 计费帐户
+- Microsoft 客户协议范围
+    - 计费帐户
+    - 计费配置文件
+    - 发票科目
+    - 客户
+- AWS 范围
+    - 外部帐户
+    - 外部订阅
+
+若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
+
+对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。
 
 每个订阅支持以下 Azure 权限或范围，以便按用户和组进行预算。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
@@ -49,7 +67,7 @@ ARM 模板仅支持 Azure 企业协议 (EA) 订阅。 该模板不支持其他�
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/create-budget)。
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 模板中定义了一个 Azure 资源：
 
@@ -63,27 +81,29 @@ ARM 模板仅支持 Azure 企业协议 (EA) 订阅。 该模板不支持其他�
 
 2. 选择或输入以下值。
 
-   [![资源管理器模板，创建预算，部署门户](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="资源管理器模板，创建预算，部署门户]" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * 订阅：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”并输入资源组的唯一名称，然后单击“确定”；或者选择现有的资源组 。
-    * 位置：选择一个位置。 例如“美国中部”。
+    * 资源组：如果需要，请选择现有资源组或创建新资源组。
+    * 区域：选择 Azure 区域。 例如“美国中部”。
     * **预算名称**：为预算输入一个名称。 此名称在资源组中应是唯一的。 只允许输入字母数字、下划线和连字符。
-    * **数量**：输入要通过预算跟踪的总成本或使用量。
-    * **预算类别**：选择预算的类别，以及预算是要跟踪“成本”还是“用量” 。
+    * 数量：输入要通过预算跟踪的总成本。
     * **时间粒度**：输入预算覆盖的时间。 允许的值为“每月”、“每季度”或“每年”。 预算将在该时间粒度结束时重置。
     * **开始日期**：以 YYYY-MM-DD 格式输入预算月份的第一天作为开始日期。 将来的开始日期不能晚于自当前日期算起的三个月。 可以使用“时间粒度”时段指定过去的开始日期。
-    * **结束日期**：以 YYYY-MM-DD 格式输入预算的结束日期。 如果未提供，则默认值设置为从开始日期算起的 10 年。
-    * **运算符**：选择一个比较运算符。 可能的值包括 EqualTo、GreaterThan 或 GreaterThanOrEqualTo。
-    * **阈值**：输入通知的阈值。 当成本超过阈值时，会发送通知。 该值始终为百分比，并且必须介于 0 和 1000 之间。
-    * **联系人电子邮件**：输入超出阈值时要将预算通知发送到的电子邮件地址列表。 预期格式为 `["user1@domain.com","user2@domain.com"]`。
+    * **结束日期**：以 YYYY-MM-DD 格式输入预算的结束日期。 
+    * 第一个阈值：输入第一个通知的阈值。 当成本超过阈值时，会发送通知。 该值始终为百分比，并且必须介于 0 和 1000 之间。
+    * 第二个阈值：输入第二个通知的阈值。 当成本超过阈值时，会发送通知。 该值始终为百分比，并且必须介于 0 和 1000 之间。
     * **联系人角色**：输入超出阈值时要将预算通知发送到的联系人角色列表。 默认值为“所有者”、“参与者”和“读取者”。 预期格式为 `["Owner","Contributor","Reader"]`。
+    * 联系人电子邮件：输入超出阈值时要将预算通知发送到的电子邮件地址列表。 预期格式为 `["user1@domain.com","user2@domain.com"]`。
     * 联系人组：输入超出阈值时要将预算通知发送到的操作组资源 ID 列表（作为完整资源 URI）。 此字段接受字符串数组。 预期格式为 `["action group resource ID1","action group resource ID2"]`。 如果你不想使用操作组，请输入 `[]`。
-    * **资源筛选器**：输入针对资源的筛选器列表。 预期格式为 `["Resource Filter Name1","Resource Filter Name2"]`。 如果你不想应用筛选器，请输入 `[]`。 如果输入了资源筛选器，则还必须输入“计量器筛选器”值。
-    * **计量器筛选器**：输入针对计量器的筛选器列表，对于“用量”预算类别的预算，必须填写此字段。 预期格式为 `["Meter Filter Name1","Meter Filter Name2"]`。 如果未输入资源筛选器，请输入 `[]`。
-    * **我同意上述条款和条件**：选中。
+    * 资源组筛选器值：输入要筛选的资源组名称的列表。 预期格式为 `["Resource Group Name1","Resource Group Name2"]`。 如果你不想应用筛选器，请输入 `[]`。 
+    * 计量类别筛选器值：输入 Azure 服务计量器类别的列表。 预期格式为 `["Meter Category1","Meter Category2"]`。 如果你不想应用筛选器，请输入 `[]`。
+   
+3. 根据你的 Azure 订阅类型，执行以下操作之一：
+   - 选择“查看 + 创建”。
+   - 查看条款和条件，选择“我同意上述条款和条件”，然后选择“购买”。
 
-3. 选择“购买”。 成功部署预算后，将会收到通知：
+4. 如果选择“审阅 + 创建”，则将验证模板。 选择“创建”。  
 
    ![资源管理器模板，预算，部署门户通知](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

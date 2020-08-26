@@ -4,18 +4,20 @@ description: 用于发布指定产品/服务的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: e3bc420a60c514e704a6caa38acee155b4981552
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115581"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272039"
 ---
 # <a name="publish-an-offer"></a>发布产品/服务
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 启动指定产品/服务的发布过程。 此调用是一个长时间运行的操作。
 
@@ -24,17 +26,17 @@ ms.locfileid: "86115581"
 ## <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**      |    **说明**                               |  **Data type** |
+|  **Name**      |    **说明**                               |  **Data type** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | 发布者标识符，例如 `contoso`      |   String       |
-|  offerId       | 产品/服务标识符                                 |   String       |
-|  api-version   | API 最新版本                        |   日期         |
+|  publisherId   | 发布者标识符，例如 `contoso`      |   字符串       |
+|  offerId       | 产品/服务标识符                                 |   字符串       |
+|  api-version   | API 最新版本                        |   Date         |
 |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>标头
 ------
 
-|  **名称**        |    **值**          |
+|  **Name**        |    **值**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  授权   |  `Bearer YOUR_TOKEN`  |
@@ -57,11 +59,10 @@ ms.locfileid: "86115581"
 
 ### <a name="request-body-properties"></a>请求正文属性
 
-|  **名称**               |   **说明**                                                                                 |
+|  **Name**               |   **说明**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  notification-emails    | 逗号分隔的电子邮件地址列表，用于通知发布操作的进度。 |
 |  |  |
-
 
 ### <a name="response"></a>响应
 
@@ -73,14 +74,12 @@ ms.locfileid: "86115581"
 
 `Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
-
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |    **值**                                                                 |
+|  **Name**             |    **值**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | 位置    | 用于检索此操作的状态的相对路径     |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>响应状态代码
 

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure 机器学习文档
-summary: 了解如何使用 Azure 机器学习来大规模训练、部署和管理机器学习模型、AutoML 试验与管道。 教程、代码示例、API 参考和其他资源介绍了操作方法。
+summary: 了解如何使用 Azure 机器学习来大规模训练、部署和管理机器学习模型、使用 AutoML 和运行管道。  教程、代码示例、API 参考和其他资源介绍了操作方法。
 metadata:
   title: Azure 机器学习文档
-  description: 了解如何使用 Azure 机器学习来大规模训练、部署和管理机器学习模型、AutoML 试验与管道。 教程、代码示例、API 参考和其他资源介绍了操作方法。
+  description: 了解如何使用 Azure 机器学习来大规模训练、部署和管理机器学习模型、使用 AutoML 和运行管道。 教程、代码示例、API 参考和其他资源介绍了操作方法。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,79 +11,52 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 04/30/2020
-  ms.openlocfilehash: 57a16ca35699f11c55e12c494a4cbb93bac8a334
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 08/17/2020
+  ms.custom: contperfq1
+  ms.openlocfilehash: 63e1e9216a5150b957a34e15def9726167694978
+  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592995"
+  ms.lasthandoff: 08/16/2020
+  ms.locfileid: "88258705"
 landingContent:
 - title: 机器学习入门
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Python 笔记本
+    - text: 使用 Python 笔记本
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: 设计器（拖放式）
-      url: tutorial-designer-automobile-price-train-score.md
-    - text: AutoML（无代码/低代码）
+    - text: 使用 AutoML（无代码/低代码）
       url: tutorial-first-experiment-automated-ml.md
-    - text: RStudio
+    - text: 在设计器中（拖放式）
+      url: tutorial-designer-automobile-price-train-score.md
+    - text: 使用 RStudio
       url: tutorial-1st-r-experiment.md
-- title: 使用工作室 Web 体验
+- title: 将 ML 模型引入 Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将本地模型部署到云
+      url: how-to-deploy-existing-model.md
+- title: 在工作室中使用 AutoML 或拖动
   linkLists:
   - linkListType: overview
     links:
+    - text: 什么是自动化机器学习 (AutoML)？
+      url: concept-automated-ml.md
     - text: 什么是设计器（拖放式）？
       url: concept-designer.md
-    - text: 什么是自动化机器学习？
-      url: concept-automated-ml.md
     - text: 如何选择算法
       url: how-to-select-algorithms.md
   - linkListType: tutorial
     links:
     - text: AutoML：构建分类模型
       url: tutorial-first-experiment-automated-ml.md
-    - text: AutoML：训练和部署 ML 模型
-      url: how-to-use-automated-ml-for-ml-models.md
     - text: 设计器：预测汽车价格
       url: tutorial-designer-automobile-price-train-score.md
-    - text: 创建图像标记项目
+    - text: 标记图像进行分类
       url: tutorial-labeling.md
-- title: 使用 Python SDK
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 创建第一个 ML 试验
-      url: tutorial-1st-experiment-sdk-setup.md
-    - text: 对图像进行分类
-      url: tutorial-train-models-with-aml.md
-    - text: 使用 AutoML 预测出租车费用
-      url: tutorial-auto-train-models.md
-    - text: 创建 Azure ML 管道
-      url: tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
-    links:
-    - text: 设置你的环境
-      url: how-to-configure-environment.md
-    - text: 解释和说明模型
-      url: how-to-machine-learning-interpretability.md
-    - text: 深度学习与 ML
-      url: concept-deep-learning-vs-machine-learning.md
-    - text: 使用 Scikit-learn 进行训练
-      url: how-to-train-scikit-learn.md
-    - text: 使用 TensorFlow 进行训练
-      url: how-to-train-tensorflow.md
-    - text: 使用 PyTorch 进行训练
-      url: how-to-train-pytorch.md
-    - text: 使用 Keras 进行训练
-      url: how-to-train-keras.md
-    - text: 强化学习
-      url: how-to-use-reinforcement-learning.md
-    - text: 什么是 ML 管道？
-      url: concept-ml-pipelines.md
-- title: 部署和管理模型 (MLOps)
+- title: MLOps：部署和管理模型
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -95,6 +68,34 @@ landingContent:
       url: how-to-consume-web-service.md
     - text: 成批预测
       url: how-to-use-parallel-run-step.md
+    - text: MLOps 示例存储库
+      url: https://github.com/microsoft/MLOps
+- title: 使用 Python SDK 进行训练
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建第一个 ML 试验
+      url: tutorial-1st-experiment-sdk-setup.md
+    - text: 使用 AutoML 预测出租车费用
+      url: tutorial-auto-train-models.md
+    - text: 创建 Azure ML 管道
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: 对图像进行分类
+      url: tutorial-train-models-with-aml.md
+  - linkListType: how-to-guide
+    links:
+    - text: 设置你的环境
+      url: how-to-configure-environment.md
+    - text: 训练 Scikit-learn 模型
+      url: how-to-train-scikit-learn.md
+    - text: 训练 TensorFlow 模型
+      url: how-to-train-tensorflow.md
+    - text: 训练 PyTorch 模型
+      url: how-to-train-pytorch.md
+    - text: 训练 Keras 模型
+      url: how-to-train-keras.md
+    - text: 什么是 ML 管道？
+      url: concept-ml-pipelines.md
 - title: 转到参考文档
   linkLists:
   - linkListType: reference
@@ -103,8 +104,6 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
     - text: 设计器算法和模块
       url: algorithm-module-reference/module-reference.md
-    - text: MLOps 示例存储库
-      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: 机器学习 CLI

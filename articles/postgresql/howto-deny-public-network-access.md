@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: b51a79027ce834190a4fae5d893e47f2be16abf7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 01a256e17b1101782eaee9bebd85f5e7093773d3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287787"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>使用 Azure 门户 Azure Database for PostgreSQL 单个服务器拒绝公共网络访问
 
@@ -21,7 +21,7 @@ ms.locfileid: "86102185"
 
 若要完成本操作指南，需要：
 
-* [单台服务器 Azure Database for PostgreSQL](quickstart-create-PostgreSQL Single server-server-database-using-azure-portal.md)
+* [单台服务器 Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
 
 ## <a name="set-deny-public-network-access"></a>设置拒绝公共网络访问
 
@@ -37,10 +37,10 @@ ms.locfileid: "86102185"
 
 1. 单击“保存”以保存更改。
 
-1. 通知会确认已成功启用连接安全设置。
+1. 此时将显示一则通知，确认已成功启用了连接安全性设置。
 
     ![Azure Database for PostgreSQL 单一服务器拒绝网络访问成功](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何基于指标创建警报](howto-alert-on-metric.md)。
+了解[如何创建有关指标的警报](howto-alert-on-metric.md)。

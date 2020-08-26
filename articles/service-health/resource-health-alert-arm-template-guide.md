@@ -3,12 +3,12 @@ title: 用于创建资源运行状况警报的模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 399c37f123d06e251514d0cafc3c1c4918ce3edd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037910"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -25,7 +25,7 @@ ms.locfileid: "86255874"
 
 若要按本页中的说明操作，需事先进行几项设置：
 
-1. 需安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+1. 需安装 [Azure PowerShell 模块](/powershell/azure/install-az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
 ## <a name="instructions"></a>说明
@@ -454,5 +454,5 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 
 
 创建服务运行状况警报：
--  [配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [配置服务运行状况的警报](./alerts-activity-log-service-notifications-portal.md) 
 -  [Azure 活动日志事件架构](../azure-monitor/platform/activity-log-schema.md)

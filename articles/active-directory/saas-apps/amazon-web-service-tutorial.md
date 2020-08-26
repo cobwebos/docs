@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Amazon Web Services (AWS) 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 07/14/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683593"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -81,7 +77,7 @@ ms.locfileid: "83683593"
 1. 在“从库中添加”部分的搜索框中，键入 **Amazon Web Services (AWS)** 。
 1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>配置和测试 Amazon Web Services (AWS) 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>配置和测试 Amazon Web Services (AWS) 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置和测试 Amazon Web Services (AWS) 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Amazon Web Services (AWS) 中的相关用户之间建立链接关系。
 
@@ -105,7 +101,7 @@ ms.locfileid: "83683593"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，应用程序已预先配置，且已在 Azure 中预先填充了所需的 URL。 用户需要选择“保存”来保存配置。
+1. 在“基本 SAML 配置”部分中，使用相同默认值更新“标识符(实体 ID)”和“回复 URL”：`https://signin.aws.amazon.com/saml`。 必须选择“保存”以保存配置更改。
 
 1. 在配置多个实例时，请提供标识符值。 从第二个实例开始，请使用以下格式，并包含一个 **#** 符号来指定唯一的 SPN 值。
 
@@ -123,9 +119,17 @@ ms.locfileid: "83683593"
     | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”（步骤 3）对话框中，选择“添加证书”  。
 
-    ![证书下载链接](common/metadataxml.png)
+    ![创建新的 SAML 证书](common/add-saml-certificate.png)
+
+1. 生成新的 SAML 签名证书，然后选择“新建证书”。 输入证书通知的电子邮件地址。
+   
+    ![新的 SAML 证书](common/new-saml-certificate.png) 
+
+1. 在“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上。  
+
+    ![证书下载链接](./media/amazon-web-service-tutorial/certificate.png)
 
 1. 在“设置 Amazon Web Services (AWS)”部分中，根据要求复制相应的 URL。
 
@@ -140,8 +144,8 @@ ms.locfileid: "83683593"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -155,12 +159,12 @@ ms.locfileid: "83683593"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-amazon-web-services-aws-sso"></a>配置 Amazon Web Services (AWS) SSO
@@ -377,8 +381,6 @@ ms.locfileid: "83683593"
 * 角色必须满足以下要求才有资格从 AWS 导入 Azure AD：
 
   * 角色必须仅有一个在 AWS 中定义的 saml-provider
-
-  * 要导入的角色的角色 ARN 和 saml-provider ARN 的组合长度必须为 119 个字符或更少
 
 ## <a name="additional-resources"></a>其他资源
 

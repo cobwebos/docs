@@ -1,35 +1,30 @@
 ---
-title: 教程：Azure Active Directory 与 BeeLine 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 BeeLine 之间配置单一登录。
+title: 教程：Azure Active Directory 与 Beeline 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Beeline 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0726859d-1dac-44a0-810b-da56d89039ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0e41b9578beb68f497c1a0fa7968064b6b91cee
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 571ab3c3943faf6ef5cbccb401a5416c327e3975
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607984"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537737"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-beeline"></a>教程：Azure Active Directory 与 BeeLine 集成
+# <a name="tutorial-azure-active-directory-integration-with-beeline"></a>教程：Azure Active Directory 与 Beeline 集成
 
-本教程介绍如何将 BeeLine 与 Azure Active Directory (Azure AD) 集成。
-将 BeeLine 与 Azure AD 集成具有以下优势：
+在本教程中，了解如何将 Beeline 与 Azure Active Directory (Azure AD) 集成。
+将 Beeline 与 Azure AD 集成提供以下优势：
 
-* 可在 Azure AD 中控制谁有权访问 BeeLine。
-* 可让用户使用其 Azure AD 帐户自动登录 BeeLine（单一登录）。
+* 可在 Azure AD 中控制谁有权访问 Beeline。
+* 可让用户使用其 Azure AD 帐户自动登录 Beeline（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -37,22 +32,22 @@ ms.locfileid: "85607984"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 BeeLine 的集成，需要以下项：
+若要配置 Azure AD 与 Beeline 的集成，需要以下项目：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 BeeLine 单一登录的订阅
+* 已启用 Beeline 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* BeeLine 支持 IDP 发起的 SSO 
+* Beeline 仅支持 IDP 发起的 SSO
 
-## <a name="adding-beeline-from-the-gallery"></a>从库中添加 BeeLine
+## <a name="adding-beeline-from-the-gallery"></a>从库中添加 Beeline
 
-若要配置 BeeLine 与 Azure AD 的集成，需从库中将 BeeLine 添加到托管 SaaS 应用列表。
+要配置 Beeline 与 Azure AD 的集成，需要将库中的 Beeline 添加到托管的 SaaS 应用列表。
 
-**若要从库中添加 BeeLine，请执行以下步骤：**
+**若要从库中添加 Beeline，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -66,31 +61,31 @@ ms.locfileid: "85607984"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“BeeLine”，从结果面板中选择“BeeLine”，然后单击“添加”按钮以添加该应用程序    。
+4. 在搜索框中键入“Beeline”，从结果面板中选择“Beeline”，然后单击“添加”按钮以添加该应用程序  。
 
-     ![结果列表中的 BeeLine](common/search-new-app.png)
+     ![结果列表中的 Beeline](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置和测试 BeeLine 的 Azure AD 单一登录  。
-若要运行单一登录，需要在 Azure AD 用户与 BeeLine 中的相关用户之间建立链接关系。
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Beeline 的 Azure AD 单一登录。
+若要运行单一登录，需要在 Azure AD 用户与 Beeline 中的相关用户之间建立链接关系。
 
-若要配置和测试 BeeLine 的 Azure AD 单一登录，需完成以下构建基块：
+若要通过 Beeline 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 BeeLine 单一登录](#configure-beeline-single-sign-on)** - 在应用程序端配置单一登录。
+2. **[配置 Beeline 单一登录](#configure-beeline-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 BeeLine 测试用户](#create-beeline-test-user)** - 在 BeeLine 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+5. **[创建 Beeline 测试用户](#create-beeline-test-user)** - 在 Beeline 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 BeeLine 的 Azure AD 单一登录，请执行以下步骤：
+若要配置 Beeline 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“BeeLine”应用程序集成页上，单击“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Beeline”应用程序集成页上，单击“单一登录” 。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -106,19 +101,18 @@ ms.locfileid: "85607984"
 
     ![BeeLine 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://projects.beeline.net/<instancename>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://projects.beeline.com/<ProjInstanceName>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
 
     ```https
-    https://projects.beeline.net/<instancename>/SSO_External.ashx
-    https://projects.beeline.net/<companyname>/SSO_External.ashx
+    https://projects.beeline.com/<ProjInstanceName>/SSO_External.ashx
     ```
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [BeeLine 客户端支持团队](https://www.beeline.com/contact-us/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Beeline 客户端支持团队](https://www.beeline.com/support-beeline/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. BeeLine 应用程序需要采用特定格式的 SAML 断言。 请先与 [BeeLine 支持团队](https://www.beeline.com/contact-us/)协作，识别将映射到该应用程序的正确用户标识符。 此外，请接受 [BeeLine 支持团队](https://www.beeline.com/contact-us/)的指导，了解其要用于此映射的属性。 可从应用程序的“用户属性”  选项卡管理此属性的值。 以下屏幕截图显示一个示例。 此处我们已映射了带有“userprincipalname”属性的“用户标识符”声明，这可提供唯一用户 ID，也将在每个后续 SAML 响应中发送到 Beeline 应用程序。
+5. Beeline 应用程序需要采用特定格式的 SAML 断言。 请先与 [Beeline 支持团队](https://www.beeline.com/support-beeline/)协作，识别将映射到该应用程序的正确用户标识符。 此外，请接受 [ 支持团队](https://www.beeline.com/support-beeline/)的指导，了解其要用于此映射的属性。 可从应用程序的“用户属性”  选项卡管理此属性的值。 以下屏幕截图显示一个示例。 此处我们已映射了带有“userprincipalname”属性的“用户标识符”声明，这可提供唯一用户 ID，也将在每个后续 SAML 响应中发送到 Beeline 应用程序。
 
     ![image](common/edit-attribute.png)
 
@@ -126,29 +120,24 @@ ms.locfileid: "85607984"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 BeeLine”部分中，根据要求复制相应的 URL  。
+7. 在 [Azure 门户](https://portal.azure.com/)中的“Beeline”应用程序集成页上，选择“属性”并复制用户访问 URL。 
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+    ![复制用户访问 URL](media/beeline-tutorial/client-access-url.png)
 
-    a. 登录 URL
 
-    b. Azure AD 标识符
+### <a name="configure-beeline-single-sign-on"></a>配置 Beeline 单一登录
 
-    c. 注销 URL
-
-### <a name="configure-beeline-single-sign-on"></a>配置 BeeLine 单一登录
-
-若要在 BeeLine 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [BeeLine 支持团队](https://www.beeline.com/contact-us/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Beeline 端配置单一登录，需要将下载的“联合元数据 XML”以及来自 Azure 门户属性的用户访问 URL 发送给 [Beeline 支持团队](https://www.beeline.com/support-beeline/) 。 他们需要元数据和用户访问 URL，以便在两个端均正确配置 SAML SSO 连接。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -156,28 +145,28 @@ ms.locfileid: "85607984"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 对 BeeLine 的访问权限，使其能够使用 Azure 单一登录。
+在本部分中，通过授予 Britta Simon 对 Beeline 的访问权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“BeeLine”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Beeline”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“BeeLine”  。
+2. 在应用程序列表中，选择“Beeline”。
 
-    ![应用程序列表中的 BeeLine 链接](common/all-applications.png)
+    ![应用程序列表中的 Beeline 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -185,21 +174,21 @@ ms.locfileid: "85607984"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="create-beeline-test-user"></a>创建 BeeLine 测试用户
+### <a name="create-beeline-test-user"></a>创建 Beeline 测试用户
 
-在本部分中，在 Beeline 中创建名为 Britta Simon 的用户。 在执行单一登录前，Beeline 应用程序需要在应用程序中预配所有用户。 因此，请与 [BeeLine 支持团队](https://www.beeline.com/contact-us/)协作，将所有这些用户预配到应用程序中。
+在本部分中，在 Beeline 中创建用户 Britta Simon。 在执行单一登录前，Beeline 应用程序需要所有用户在应用程序中均进行了预配。 因此，请与 [Beeline 支持团队](https://www.beeline.com/support-beeline/)协作，将所有这些用户预配到应用程序中。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 BeeLine 磁贴时，应会自动登录到为其设置了 SSO 的 BeeLine。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Beeline 磁贴时，应会自动登录到在其中设置了 SSO 的 Beeline 实例。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

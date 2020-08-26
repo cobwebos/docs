@@ -5,18 +5,18 @@ description: 本文介绍如何使用 Azure 机器学习将启用 GPU 的 Tensor
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 344112e19adbfaa1b06eebab309f31ed4e070c7d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: e4c2426d5248582a1255b9d3702bdb1e6d046936
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076974"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751657"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -152,8 +152,8 @@ dependencies:
 - pip:
   # You must list azureml-defaults as a pip dependency
   - azureml-defaults>=1.0.45
-- numpy
-- tensorflow-gpu=1.12
+  - numpy
+  - tensorflow-gpu=1.12
 channels:
 - conda-forge
 ```
@@ -163,7 +163,7 @@ channels:
 ## <a name="define-the-deployment-configuration"></a>定义部署配置
 
 > [!IMPORTANT]
-> AKS 不允许 pod 共享 Gpu，因此，你可以只使用支持 GPU 的 web 服务的多个副本，因为群集中存在 Gpu。
+> AKS 不允许 Pod 共享 GPU，支持 GPU 的 Web 服务的副本数只能与群集中的 GPU 数相同。
 
 部署配置定义用于运行 web 服务的 Azure Kubernetes 服务环境：
 

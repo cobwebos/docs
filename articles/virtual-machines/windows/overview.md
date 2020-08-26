@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234962"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589616"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机
 
@@ -30,12 +30,12 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 应用程序使用的 VM 数可根据你的需要纵向扩展和横向扩展为任意数目。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>在创建 VM 之前需要考虑哪些因素？
-在 Azure 中构建应用程序基础结构时，始终要考虑多种[设计注意事项](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)。 在开始之前，必须考虑到 VM 的以下重要方面：
+在 Azure 中构建应用程序基础结构时，始终要考虑多种[设计注意事项](/azure/architecture/reference-architectures/n-tier/windows-vm)。 在开始之前，必须考虑到 VM 的以下重要方面：
 
 * 应用程序资源的名称
 * 资源的存储位置
 * VM 的大小
-* 可以创建的 VM 的数目上限
+* 可以创建的 VM 数目上限
 * VM 运行的操作系统
 * VM 在启动后的配置
 * VM 所需的相关资源
@@ -48,16 +48,20 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 | 方法 | 说明 |
 | --- | --- |
 | Azure 门户 |创建 VM 时，可从列表中选择位置。 |
-| Azure PowerShell |使用 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) 命令。 |
-| REST API |使用 [列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions) 操作。 |
-| Azure CLI |使用 [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) 操作。 |
+| Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
+| REST API |使用[列出位置](/rest/api/resources/subscriptions)操作。 |
+| Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作。 |
+
+### <a name="singapore-data-residency"></a>新加坡数据驻留
+
+在 Azure 中，将客户数据存储到一个区域的功能目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azuredatacentermap.azurewebsites.net/)。
 
 ## <a name="availability"></a>可用性
 Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
 
 ## <a name="vm-size"></a>VM 大小
-VM 的[大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)由所要运行的工作负荷决定。 然后，所选大小又会影响多个因素，例如处理能力、内存和存储容量。 Azure 提供各种大小来支持多种类型的用途。
+VM 的[大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
 
 Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)计费。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
 
@@ -74,20 +78,20 @@ Azure 提供许多[市场映像](https://azuremarketplace.microsoft.com/marketpl
 | 方法 | 说明 |
 | --- | --- |
 | Azure 门户 |选择要使用的映像时，系统会自动指定值。 |
-| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
-| REST API |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
+| REST API |[列出映像发布者](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[列出映像产品](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
 
 可以选择[上传并使用自己的映像](upload-generalized-managed.md)，在这种情况下，无需使用发布者名称、产品和 SKU。
 
 ### <a name="extensions"></a>扩展
-VM [扩展](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)通过部署后的配置和自动化任务来增加 VM 的功能。
+VM [扩展](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json)通过部署后的配置和自动化任务来增加 VM 的功能。
 
 可以使用扩展完成以下常见任务：
 
-* **运行自定义脚本** – 预配 VM 时，[自定义脚本扩展](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)可以通过运行脚本，帮助在 VM 上配置工作负荷。
-* **部署和管理配置** – 可以借助 [PowerShell Desired State Configuration (DSC) 扩展](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)在 VM 上设置用于管理配置和环境的 DSC。
-* **收集诊断数据** – 可以借助 [Azure 诊断扩展](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)将 VM 配置为收集诊断数据，然后，可以使用这些数据监视应用程序的运行状况。
+* **运行自定义脚本** – 预配 VM 时，[自定义脚本扩展](../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json)可以通过运行脚本，帮助在 VM 上配置工作负荷。
+* **部署和管理配置** – 可以借助 [PowerShell Desired State Configuration (DSC) 扩展](../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json)在 VM 上设置用于管理配置和环境的 DSC。
+* **收集诊断数据** – 可以借助 [Azure 诊断扩展](../extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)将 VM 配置为收集诊断数据，然后，可以使用这些数据监视应用程序的运行状况。
 
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
@@ -95,7 +99,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 | 资源 | 必选 | 说明 |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/management/overview.md) |是 |VM 必须包含在资源组中。 |
-| [存储帐户](../../storage/common/storage-create-storage-account.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
+| [存储帐户](../../storage/common/storage-account-create.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
 | [虚拟网络](../../virtual-network/virtual-networks-overview.md) |是 |VM 必须是虚拟网络的成员。 |
 | [公共 IP 地址](../../virtual-network/public-ip-addresses.md) |否 |可以向 VM 分配一个公共 IP 地址，以便远程访问它。 |
 | [网络接口](../../virtual-network/virtual-network-network-interface.md) |是 |VM 需要使用网络接口在网络中通信。 |
@@ -108,4 +112,3 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 - [门户](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)
-

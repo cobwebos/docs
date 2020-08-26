@@ -5,22 +5,21 @@ author: tfitzmac
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: f86eabc30114a3643f5d39297567411e88018378
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e4145484029539b3f800b2f431edefe56b908bca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75648524"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498627"
 ---
-# <a name="azure-cli-samples"></a>Azure CLI 示例
+# <a name="azure-cli-samples-for-azure-managed-applications"></a>Azure 托管应用程序的 Azure CLI 示例
 
 下表包含指向 Azure 托管应用程序的 bash 脚本的链接，这些脚本使用 Azure CLI。
 
-| | |
-|-|-|
-|**创建托管应用程序**||
+| 创建托管应用程序 | 说明 |
+| -------------------------- | ----------- |
 | [创建托管应用程序定义](scripts/managed-application-cli-sample-create-definition.md) | 在服务目录中创建托管应用程序定义。  |
 | [部署托管应用程序](scripts/managed-application-cli-sample-create-application.md) | 从服务目录部署托管应用程序。  |
-| | |
-|**更新托管资源组**||
+|**更新托管资源组**| **说明** |
 | [获取托管资源组中的资源并重设 VM 大小](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | 从托管资源组中获取资源并重设 VM 大小。 |

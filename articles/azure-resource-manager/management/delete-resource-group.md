@@ -3,13 +3,13 @@ title: 删除资源组和资源
 description: 介绍如何删除资源组和资源。 它介绍删除资源组时 Azure 资源管理器如何为资源的删除排序。 它描述响应代码以及资源管理器如何处理它们以确定是否成功删除。
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 2720a9ae8c0a67d8e6f9c1105b33c0a3c343cf47
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82136475"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498491"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 资源管理器资源组和资源删除
 

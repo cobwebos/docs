@@ -1,23 +1,24 @@
 ---
-title: 创建内部负载均衡器-Azure CLI
+title: 创建内部负载均衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 本文介绍如何使用创建内部负载均衡器 Azure CLI
+description: 本文介绍如何使用 Azure CLI 创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 9a1587efc07cf852fe9389cc9bf39e693373ef89
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921716"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502318"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -25,7 +26,7 @@ ms.locfileid: "85921716"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -61,7 +62,7 @@ ms.locfileid: "85921716"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)创建名为**MyLoadBalancer**的内部负载均衡器，其中包含名为**myFrontEnd**的前端 IP 配置，名为**myBackEndPool**的后端池，与专用 IP 地址**10.0.0.7**相关联。 
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为“myLoadBalancer”的内部负载均衡器，该负载均衡器包括名为“myFrontEnd”的前端 IP 配置，以及名为“myBackEndPool”的后端池（与专用 IP 地址 10.0.0.7 相关联）。 
 
 使用 `--sku basic` 创建基本负载均衡器。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
@@ -107,7 +108,7 @@ ms.locfileid: "85921716"
     --probe-name myHealthProbe  
 ```
 
-你还可以使用下面的配置和标准负载均衡器创建[HA 端口](load-balancer-ha-ports-overview.md)负载均衡器规则。
+还可以使用下面的配置通过标准负载均衡器创建 [HA 端口](load-balancer-ha-ports-overview.md)负载均衡器规则。
 
 ```azurecli-interactive
 az network lb rule create --resource-group myResourceGroupILB --lb-name myLoadBalancer --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name myFrontEnd --backend-address-pool-name myBackEndPool
@@ -139,7 +140,7 @@ done
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-使用[az vm availabilityset create](/cli/azure/network/nic)创建可用性集
+使用 [az vm availabilityset create](/cli/azure/network/nic) 创建可用性集
 
 ```azurecli-interactive
   az vm availability-set create \

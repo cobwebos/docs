@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
-ms.date: 06/29/2020
+ms.date: 07/25/2020
 ms.topic: overview
-ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970597"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541781"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
@@ -62,6 +62,10 @@ Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进�
 > Resource Graph 使用主体在登录期间可用的订阅。 若要查看在活动会话期间添加的新订阅的资源，主体必须刷新上下文。 此操作在注销并重新登录时自动发生。
 
 Azure CLI 和 Azure PowerShell 使用用户有权访问的订阅。 直接使用 REST API 时，订阅列表由用户提供。 如果用户有权访问列表中的任何订阅，则返回用户有权访问的订阅的查询结果。 此行为与调用 [Resource Groups - List](/rest/api/resources/resourcegroups/list) \- 时相同，你可以获得有权访问的资源组，而不会指示结果可能是部分的。 如果订阅列表中没有用户具有适当权限的订阅，则响应为“403 (已禁止)”。
+
+> [!NOTE]
+> 在 REST API 预览版 `2020-04-01-preview` 中，可能会省略订阅列表。
+> 如果未在请求中定义 `subscriptions` 和 `managementGroupId` 属性，范围将设置为“租户”。 有关详细信息，请参阅[查询范围](./concepts/query-language.md#query-scope)。
 
 ## <a name="throttling"></a>限制
 

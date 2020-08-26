@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 CS Stars 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 CS Stars 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b31bf14b01a215d99814ce57eb9cd5f2cb2773
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 981fc2eb083ff2b1c7b472210299b535f04c45d3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81869435"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>教程：Azure Active Directory 与 CS Stars 集成
 

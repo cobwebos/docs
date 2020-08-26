@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bb75405a1cd1e282023936673aa73be25556e0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044271"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529346"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -53,7 +53,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 从代理和 Azure 收集的事件在安全分析引擎中相关联，以为你提供量身定制的建议（强化任务），你应该遵循这些建议以确保工作负荷安全，并发出安全警报。 应尽快调查此类警报以确保没有针对工作负荷发生的恶意攻击。
 
-当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准层）。 内置的计划仅包含审核策略。 有关 Azure Policy 中的安全中心策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。
+当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准定价层）。 内置的计划仅包含审核策略。 有关 Azure Policy 中的安全中心策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。
 
 ## <a name="strengthen-security-posture"></a>加强安全态势
 

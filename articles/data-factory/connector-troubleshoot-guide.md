@@ -5,15 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/09/2020
+ms.date: 07/20/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: a1b2f74af02db1560dbcdd0bf0c72976dc6dcea8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044564"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -156,12 +157,28 @@ ms.locfileid: "84022327"
 - 消息：`Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
 
 
-### <a name="error-code--adlsgen2timeouterror"></a>错误代码：AdlsGen2TimeoutError
+### <a name="error-code-adlsgen2timeouterror"></a>错误代码： AdlsGen2TimeoutError
 
 - **消息**：`Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+
+### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>错误消息：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。
+
+- **症状**：复制活动失败，出现以下错误： 
+
+    ```
+    Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
+    ```
+
+- **原因**：在 TLS 握手期间证书验证失败。
+
+- **解决**方法：解决方法：使用暂存复制跳过 ADLS GEN1 的 TLS 验证。 你需要重现此问题并收集 netmon 跟踪，然后与网络团队合作，查看[本文](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace)后面的本地网络配置。
+
+
+    ![排查 ADLS Gen1](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>错误消息：远程服务器返回了错误：(403)已禁止
 
@@ -221,6 +238,7 @@ ms.locfileid: "84022327"
 - **原因：** 如果错误消息包含“InvalidOperationException”，这通常是由于输入数据无效导致的。
 
 - **建议**：若要确定哪个行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 参考文档： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
+
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>错误代码：SqlUnauthorizedAccess
@@ -371,7 +389,7 @@ ms.locfileid: "84022327"
 
 - **解决方法**：在复制活动接收器中的 Polybase 设置下，将“use type default”选项设置为 false。
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>错误消息：Java 异常消息:HdfsBridge::CreateRecordReader
+### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>错误消息： Java 异常消息： HdfsBridge：： CreateRecordReader
 
 - **症状**：使用 PolyBase 将数据复制到 Azure SQL 数据仓库时遇到以下错误：
 
@@ -423,7 +441,7 @@ ms.locfileid: "84022327"
 
 - 消息：`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如：'ColumnA,,ColumnB'。
+- **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如： "ColumnA，，ColumnB"。
 
 - **建议**：检查第一行，如果存在空值，请修复值。
 

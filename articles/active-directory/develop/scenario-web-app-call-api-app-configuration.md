@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 662520b9e31b4fe9a0925683fd0e661ce179e5b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 8827d413144d8bc6f00c3948a99be3ee3aa2264e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518141"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855434"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -49,10 +49,11 @@ public void ConfigureServices(IServiceCollection services)
 {
     // more code here
 
-    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
-            .AddMicrosoftWebAppCallsdWebApi(Configuration,
-                                           initialScopes: new string[] { "user.read" })
-            .AddInMemoryTokenCaches();
+    services.AddMicrosoftIdentityWebAppAuthentication(Configuration,
+                                                      "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi(
+                    initialScopes: new string[] { "user.read" })
+                .AddInMemoryTokenCaches();
 
     // more code here
 }
@@ -61,7 +62,7 @@ public void ConfigureServices(IServiceCollection services)
 若要详细了解令牌缓存，请参阅[令牌缓存序列化选项](#token-cache)
 
 > [!NOTE]
-> 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](https://docs.microsoft.com/aspnet/core/fundamentals)，尤其是[依赖关系注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)和[选项](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+> 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖关系注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -268,13 +269,13 @@ def authorized():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core 教程使用依赖关系注入，让你能够在应用的 Startup.cs 文件中确定令牌缓存实现。 Microsoft.Identity.Web 随附了[令牌缓存序列化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)中所述的预生成令牌缓存序列化程序。 一个有意思的地方是，可以选择 ASP.NET Core [分布式内存缓存](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)：
+ASP.NET Core 教程使用依赖关系注入，让你能够在应用的 Startup.cs 文件中确定令牌缓存实现。 Microsoft.Identity.Web 随附了[令牌缓存序列化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)中所述的预生成令牌缓存序列化程序。 一个有意思的地方是，可以选择 ASP.NET Core [分布式内存缓存](/aspnet/core/performance/caching/distributed#distributed-memory-cache)：
 
 ```csharp
 // Use a distributed token cache by adding:
-    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
-            .AddMicrosoftWebAppCallsWebApi(Configuration,
-                                           initialScopes: new string[] { "user.read" })
+    services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi(
+                initialScopes: new string[] { "user.read" })
             .AddDistributedTokenCaches();
 
 // Then, choose your implementation.
@@ -297,7 +298,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-有关令牌缓存提供程序的详细信息，请参阅 Microsoft 的[令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization)文章和[ASP.NET Core Web 应用教程 |](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)Web 应用教程的令牌缓存阶段。
+有关令牌缓存提供程序的详细信息，请参阅 Microsoft 的 [令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization) 文章和 [ASP.NET Core Web 应用教程 |](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) Web 应用教程的令牌缓存阶段。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

@@ -1,16 +1,17 @@
 ---
 author: areddish
+ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: cf25d69a1f3765613d0d19af8f8f1489d89db1ba
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: a822ab52024a801f4443a9dd864b4b96ec52d000
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135061"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511271"
 ---
-本文介绍如何开始通过 Java 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Java 应用程序的模板。
+本文介绍如何开始通过 Java 使用自定义视觉客户端库来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Java 应用程序的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -19,11 +20,11 @@ ms.locfileid: "82135061"
 - 已安装 [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>获取自定义视觉客户端库和示例代码
 
 若要编写使用自定义视觉的 Java 应用，需要自定义视觉 maven 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 
-可在 maven 中央存储库中找到自定义视觉 SDK：
+可在 maven 中央存储库中找到自定义视觉客户端库：
 - [定型 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [预测 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 

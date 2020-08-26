@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 创建 WAF 自定义规则
+title: 使用 WAF 自定义规则的 Azure PowerShell 脚本示例
 description: Azure PowerShell 脚本示例 - 在应用程序网关上创建 Web 应用程序防火墙的自定义规则
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: sample
 ms.date: 09/30/2019
 ms.author: victorh
-ms.openlocfilehash: 950f71c284268a9aa2773eb57213e266622d85bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b73b15e7f174868fa4c0a9518725a4585cf3dffe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73509551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035565"
 ---
 # <a name="create-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 WAF 自定义规则
 
@@ -71,4 +71,4 @@ Remove-AzResourceGroup -Name CustomRulesTest
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 WAF 自定义规则的详细信息，请参阅 [Web 应用程序防火墙的自定义规则](../ag/custom-waf-rules-overview.md)
-- 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+- 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

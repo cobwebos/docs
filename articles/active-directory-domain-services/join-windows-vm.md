@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024921"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723021"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>教程：将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -102,7 +102,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![在 Azure 门户中添加额外的虚拟网络 IP 地址范围](./media/join-windows-vm/add-vnet-address-range.png)
 
-1. 接下来，在虚拟网络窗口的左侧菜单中选择“子网”，然后选择“+ 子网”以添加子网。 
+1. 接下来，在虚拟网络窗口的左侧菜单中选择“子网”，然后选择“+ 子网”以添加子网。
 
 1. 选择“+ 子网”，然后输入子网名，如 management。 提供“地址范围(CIDR 块)”，如 10.0.5.0/24。 请确保此 IP 地址范围与任何其他现有的 Azure 或本地地址范围不重叠。 将其他选项保留默认值，然后选择“确定”。
 
@@ -140,7 +140,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 使用 Azure Bastion 创建 VM 并建立基于 Web 的 RDP 连接后，接下来将 Windows Server 虚拟机加入托管域。 此过程与连接到常规本地 Active Directory 域服务域的计算机相同。
 
 1. 如果在登录 VM 时服务器管理器默认情况下未打开，请选择“开始”菜单，然后选择“服务器管理器”。
-1. 在“服务器管理器”窗口的左窗格中选择“本地服务器”。  在右侧窗格的“属性”下选择“工作组” 。
+1. 在“服务器管理器”窗口的左窗格中选择“本地服务器”。 在右侧窗格的“属性”下选择“工作组” 。
 
     ![在 VM 上打开“服务器管理器”，并编辑工作组属性](./media/join-windows-vm/server-manager.png)
 
@@ -244,7 +244,7 @@ Windows Server VM 应成功加入托管域，加入方式与常规本地计算�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
-[password-sync]: active-directory-ds-getting-started-password-sync.md
+[password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

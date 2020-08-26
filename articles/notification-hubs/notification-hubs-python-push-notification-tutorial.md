@@ -16,19 +16,19 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: tracking-python
-ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-python
+ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220059"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852321"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-如 MSDN 文章[通知中心 REST API](https://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。
+如 MSDN 文章[通知中心 REST API](/previous-versions/azure/reference/dn223264(v=azure.100)) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。
 
 > [!NOTE]
 > 这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。 该示例是使用 Python 3.4 创建的。
@@ -68,7 +68,7 @@ hub.send_windows_notification(wns_payload)
 
 如果尚未实现，按照[入门教程]学至最后一节，必须在此过程中实现后端。
 
-有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)。 本节介绍访问通知中心 REST 终结点和发送通知所需的主要步骤的 Python 实现
+有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](/previous-versions/azure/reference/dn530746(v=azure.100))。 本节介绍访问通知中心 REST 终结点和发送通知所需的主要步骤的 Python 实现
 
 1. 解析连接字符串
 2. 生成授权令牌
@@ -103,7 +103,7 @@ class NotificationHub:
 
 ### <a name="create-security-token"></a>创建安全令牌
 
-有关创建安全令牌的详细信息，请访问[此处](https://msdn.microsoft.com/library/dn495627.aspx)。
+有关创建安全令牌的详细信息，请访问[此处](/previous-versions/azure/reference/dn495627(v=azure.100))。
 将以下方法添加到 `NotificationHub` 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
 
 ```python
@@ -164,7 +164,7 @@ class Notification:
 
 此类是一个容器，其中包含本机通知正文或一组模板通知的属性，以及一组包含格式（本机平台或模板）和平台特定属性（如 Apple 过期属性和 WNS 标头）的标头。
 
-请参阅[通知中心 REST API 文档](https://msdn.microsoft.com/library/dn495827.aspx)和具体的通知平台格式，了解所有可用选项。
+请参阅[通知中心 REST API 文档](/previous-versions/azure/reference/dn495827(v=azure.100))和具体的通知平台格式，了解所有可用选项。
 
 现在有了此类后，便可在 `NotificationHub` 类中编写发送通知方法了。
 
@@ -293,7 +293,7 @@ def send_template_notification(self, properties, tags=""):
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>使用调试属性启用详细的日志记录
 
 在初始化通知中心时启用调试属性会写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。
-[通知中心 TestSend 属性](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100))会返回有关通知发送结果的详细信息。
+[通知中心 TestSend 属性](/previous-versions/azure/reference/dn495827(v=azure.100))会返回有关通知发送结果的详细信息。
 若要使用它 - 请使用以下代码进行初始化：
 
 ```python
@@ -448,7 +448,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何为通知中心创建 Python REST 客户端。 此处你可以：
+本文介绍了如何为通知中心创建 Python REST 客户端。 可以从此页执行下列操作：
 
 - 下载完整的 [Python REST 包装器示例]，其中包含本文中的所有代码。
 - 在[突发新闻教程]中继续学习通知中心标记功能
@@ -456,9 +456,9 @@ hub.send_template_notification(template_payload)
 
 <!-- URLs -->
 [Python REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[突发新闻教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[本地化新闻教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[入门教程]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[突发新闻教程]: ./notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[本地化新闻教程]: ./notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

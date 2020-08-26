@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559920"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761689"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -162,7 +163,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-代码* _ \_ _ \_ py*将参数声明为 `func.ServiceBusMessage` ，这允许您在函数中读取队列消息。
+代码* _ \_ _ \_ py*将参数声明为 `func.QueueMessage` ，这允许您在函数中读取队列消息。
 
 ```python
 import logging
@@ -298,7 +299,7 @@ public class QueueTriggerDemo {
 }
 ```
 
-| Property    | 说明 |
+| 属性    | 说明 |
 |-------------|-----------------------------|
 |`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
 |`queueName`  | 在存储帐户中声明队列名称。 |
@@ -346,23 +347,23 @@ public class QueueTriggerDemo {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-队列项有效负载可通过 `context.bindings.<NAME>` ，其中 `<NAME>` 与*function.js上*的中定义的名称匹配。 如果有效负载为 JSON，则会将值反序列化为对象。
+队列项有效负载可通过 `context.bindings.<NAME>` ，其中 `<NAME>` 与 *function.js上*的中定义的名称匹配。 如果有效负载为 JSON，则会将值反序列化为对象。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为[QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)的参数访问队列消息。
+通过类型为 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)的参数访问队列消息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)批注使你可以访问触发函数的队列消息。
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)批注使你可以访问触发函数的队列消息。
 
 ---
 
 ## <a name="message-metadata"></a>消息元数据
 
-[队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些属性是[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)类的成员。
+[队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些属性是 [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 类的成员。
 
-|Property|类型|描述|
+|属性|类型|说明|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是一个字符串，与 `QueueTrigger` 中的属性命名的变量具有相同的值 `name` *function.json*。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
@@ -399,7 +400,7 @@ public class QueueTriggerDemo {
 
 可以在 [host.json 文件](functions-host-json.md#queues)中配置用于获取新批的批大小和阈值。 如果希望在函数应用中最大程度地降低查询触发的函数的并行执行，可以将批大小设置为 1。 只有当函数在单个虚拟机 (VM) 上运行时，此设置才可消除并发。 
 
-队列触发器会自动阻止函数多次处理队列消息；无需将函数编写为幂等函数。
+Queue 触发器会自动阻止函数多次处理队列消息。
 
 ## <a name="hostjson-properties"></a>host.json 属性
 
@@ -407,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>后续步骤
 
-- [写入队列存储消息（输出绑定）](./functions-bindings-storage-blob-output.md)
+- [将 blob 存储消息写入 (输出绑定) ](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

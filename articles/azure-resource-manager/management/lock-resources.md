@@ -3,12 +3,13 @@ title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 7fe735cf523758f51fd9d6751de8507b2af46737
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057579"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827276"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -21,7 +22,7 @@ ms.locfileid: "86057579"
 
 在父范围应用锁时，该范围内所有资源都会继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
-与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
+与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
 
 Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com`的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 

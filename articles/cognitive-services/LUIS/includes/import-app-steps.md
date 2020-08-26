@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 06/22/2020
 ms.author: diberry
 ms.openlocfilehash: 37f1b85b4ce8510d5e288df985a55dba659f0c9b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86035515"
 ---
 1. 在 [LUIS 门户](https://www.luis.ai)上的“我的应用”页上，选择“+ 新建对话应用”，然后选择“导入为 JSON”。 查找上一步中保存的 JSON 文件。 无需更改应用的名称。 选择“完成”

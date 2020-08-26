@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 770e037641ac8fbf75989dc94b66fd1df0689e50
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9c0c2673acf12ddf80b77be57acc5af55e7f160c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421670"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298886"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "81421670"
 将此代码插入 `recognizeIntent()` 方法。 请确保更新以下值：
 
 * 将 `"YourLanguageUnderstandingSubscriptionKey"` 替换为 LUIS 预测密钥。
-* 将 `"YourLanguageUnderstandingServiceRegion"` 替换为 LUIS 位置。  使用[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”。 
+* 将 `"YourLanguageUnderstandingServiceRegion"` 替换为 LUIS 位置。  使用[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”。
 
 >[!TIP]
 > 如果需要帮助查找这些值，请参阅[创建 LUIS 应用以进行意向识别](#create-a-luis-app-for-intent-recognition)。
@@ -73,6 +73,8 @@ ms.locfileid: "81421670"
 > 如果需要查找此值的帮助，请参阅[创建 LUIS 应用以进行意向识别](#create-a-luis-app-for-intent-recognition)。
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
+
+此示例使用 `AddIntent()` 函数单独添加意向。 如果要从模型中添加所有意向，请使用 `AddAllIntents(model)` 并传递模型。
 
 ## <a name="recognize-an-intent"></a>识别意向
 

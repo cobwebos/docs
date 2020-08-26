@@ -3,18 +3,16 @@ title: 适用于 Azure Data Lake 的 U-SQL 可编程性指南
 description: 了解 Azure Data Lake Analytics 中可用于创建基于云的大数据平台的服务集。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 2fb54c821c50ff8e1364a125cc5db181aedf0437
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110583"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288943"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
@@ -127,7 +125,7 @@ REFERENCE ASSEMBLY MyDB.[MyAssembly];
 
 
 ### <a name="use-assembly-versioning"></a>使用程序集版本控制
-U-SQL 当前使用 .NET Framework 4.5 版本。 因此请确保自己的程序集与该版本的运行时兼容。
+目前，U SQL 使用 .NET Framework 版本4.7.2。 因此请确保自己的程序集与该版本的运行时兼容。
 
 如上所述，U-SQL 以 64 位 (x64) 格式运行代码。 因此请确保将代码编译为在 x64 上运行。 否则将收到上面所示的不正确格式错误。
 
@@ -494,7 +492,7 @@ using System.IO;
 
 * 使用 SqlUserDefinedType 属性定义用户定义的类型。
 
-**SqlUserDefinedType** 用于将程序集中的类型定义标记为 U-SQL 中的用户定义的类型 (UDT)。 特性上的属性反映 UDT 的物理特征。 无法继承此类。
+**SqlUserDefinedType** 用于将程序集中的类型定义标记为 U-SQL 中的用户定义的类型 (UDT)。 特性上的属性反映 UDT 的物理特征。 此类不能被继承。
 
 SqlUserDefinedType 是 UDT 定义必需的特性。
 
@@ -789,11 +787,7 @@ namespace USQL_Programmability
             }
 
             return new FiscalPeriod(FiscalQuarter, FiscalMonth);
-        }
-
-
-
-        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
+        }        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
         public struct FiscalPeriod
         {
             public int Quarter { get; private set; }
@@ -910,7 +904,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 ```
 
-**SqlUserDefinedAggregate** 指示该类型应注册为用户定义的聚合。 无法继承此类。
+**SqlUserDefinedAggregate** 指示该类型应注册为用户定义的聚合。 此类不能被继承。
 
 SqlUserDefinedType 属性对于 UDAGG 定义是**可选**的。
 
@@ -1091,7 +1085,7 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** 属性指示该类型应注册为用户定义的提取器。 无法继承此类。
+**SqlUserDefinedExtractor** 属性指示该类型应注册为用户定义的提取器。 此类不能被继承。
 
 SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象的 AtomicFileProcessing 属性。
 
@@ -1269,7 +1263,7 @@ public class MyOutputter : IOutputter
 * 构造函数类用于将参数传递到用户定义的输出器。
 * `Close` 用于选择性地进行重写以发布开销状态或确定最后一行的写入时间。
 
-**SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 无法继承此类。
+**SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 此类不能被继承。
 
 SqlUserDefinedOutputter 是用户定义的输出器定义的可选属性。 用于定义 AtomicFileProcessing 属性。
 
@@ -1512,7 +1506,7 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** 指示该类型应注册为用户定义的处理器。 无法继承此类。
+**SqlUserDefinedProcessor** 指示该类型应注册为用户定义的处理器。 此类不能被继承。
 
 SqlUserDefinedProcessor 属性对于 UDP 定义是**可选**的。
 
@@ -1633,7 +1627,7 @@ public class ParserApplier : IApplier
 * 针对外部表的每一行进行调用。 返回 `IUpdatableRow` 输出行集。
 * 构造函数类用于将参数传递到用户定义的应用器。
 
-**SqlUserDefinedApplier** 指示该类型应注册为用户定义的应用器。 无法继承此类。
+**SqlUserDefinedApplier** 指示该类型应注册为用户定义的应用器。 此类不能被继承。
 
 **SqlUserDefinedApplier** 对于用户定义的应用器是**可选**的。
 
@@ -1847,7 +1841,7 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** 属性指示该类型应注册为用户定义的合并器。 无法继承此类。
+**SqlUserDefinedCombiner** 属性指示该类型应注册为用户定义的合并器。 此类不能被继承。
 
 **SqlUserDefinedCombiner** 用于定义合并器模式属性。 它也是用户定义的合并器定义的可选属性。
 
@@ -2107,7 +2101,7 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** 属性指示该类型应注册为用户定义的化简器。 无法继承此类。
+**SqlUserDefinedReducer** 属性指示该类型应注册为用户定义的化简器。 此类不能被继承。
 **SqlUserDefinedReducer** 是用户定义的化简器定义的可选属性。 可用于定义 IsRecursive 属性。
 
 * bool     IsRecursive    

@@ -4,15 +4,15 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832978"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874191"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -61,7 +61,7 @@ ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在 IP 地址下，提供一个名称，选择“任何”作为协议，将源和目标地址设置为 *，将端口设置为 123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在 "IP 地址" 下的 "规则" 部分中，提供一个名称，选择 "**任何**"、"将 * 设置为源" 和 "目标地址" 的协议，然后将端口设置为123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
 
    ![添加 NTP 网络规则][3]
    
@@ -114,7 +114,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -122,7 +122,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
@@ -225,7 +225,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |gr-Prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
@@ -237,7 +237,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -248,6 +248,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
+|oryx-cdn.microsoft.io:443 |
 | \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |\*。 data.mcr.microsoft.com:443 |
@@ -280,7 +281,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -288,7 +289,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |

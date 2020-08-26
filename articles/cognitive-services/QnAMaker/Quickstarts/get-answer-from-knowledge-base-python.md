@@ -3,14 +3,14 @@ title: 快速入门：从知识库获取答案 - REST、Python - QnA Maker
 description: 此基于 Python REST 的快速入门详细介绍如何以编程方式从知识库获取答案。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, tracking-python
+ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: d985bafe3303acdaf8b47e70a9d5368e3b26335c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2d693a63360890b9f658baa1a37d251f311d5617
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610128"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875007"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>快速入门：使用 Python 从知识库获取问题答案
 

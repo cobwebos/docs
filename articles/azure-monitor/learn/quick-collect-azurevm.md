@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067547"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
-[Azure Monitor](../overview.md) 可以直接从 Azure 虚拟机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 安装适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展允许 Azure Monitor 从 Azure VM 收集数据。 本快速入门介绍如何通过几个简单步骤，使用 VM 扩展从 Azure Linux 或 Windows VM 中配置和收集数据。  
+[Azure Monitor](../overview.md) 可以直接从 Azure 虚拟机将数据收集到 Log Analytics 工作区，以便进行详细信息和关联分析。 安装适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展允许 Azure Monitor 从 Azure VM 收集数据。 本快速入门介绍如何通过几个简单步骤，使用 VM 扩展从 Azure Linux 或 Windows VM 中配置和收集数据。  
  
 本快速入门假定你拥有现有 Azure 虚拟机。 如果没有，可根据 VM 快速入门[创建 Windows VM](../../virtual-machines/windows/quick-create-portal.md) 或[创建 Linux VM](../../virtual-machines/linux/quick-create-cli.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "84695362"
   
         ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
-3. 在“Log Analytics 工作区”窗格中提供所需的信息后，选择“确定”。   
+3. 在“Log Analytics 工作区”窗格中提供所需的信息后，选择“确定”。  
 
 在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。 
 
@@ -141,4 +141,4 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../../azure-monitor/learn/tutorial-viewdata.md)
+> [在 Log Analytics 中查看或分析数据](../log-query/get-started-portal.md)

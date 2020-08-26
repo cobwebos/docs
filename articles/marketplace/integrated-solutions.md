@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/15/2020
-ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54b34b1900fd928ea45d586bcdf6acd7d9a8a441
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119508"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287835"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>商业市场中集成的解决方案
 集成的解决方案将 Microsoft 合作伙伴提供的同类最佳技术与专家服务合作伙伴提供的咨询、部署和支持结合在一起。
@@ -44,7 +44,7 @@ ms.locfileid: "86119508"
 * [Loan Portfolio Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)（贷款项目组合分析）
 * [Healthcare Cloud Security Stack](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)（医疗保健云安全堆栈）
 * [DevOps Acceleration Engine](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)（DevOps 加速引擎）
-* [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)（Windows Server 终止支持）
+* [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/apps/stratum.eos_windows?tab=Overview)（Windows Server 终止支持）
 * [Rapid Datacenter Consolidation Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)（快速数据中心合并快速入门）
 * [DeviceTone IoT for Connected Field Service](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)（用于已连接的现场服务的 DeviceTone IoT）
 * [Unison：A Unified Marketing Management solution](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)（Unison：统一的营销管理解决方案）

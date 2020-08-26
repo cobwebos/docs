@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2020
+ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519571"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723956"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -29,21 +29,218 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 本页面会定期更新，请经常回来查看。 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
 
+
+## <a name="august-2020"></a>2020 年 8 月
+
+8月的更新包括：
+
+- [资产清单-资产安全状况的强大新视图](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [添加了对多重身份验证 (Azure Active Directory 安全默认值的支持) ](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
+- [添加了服务主体建议](#service-principals-recommendation-added)
+- [Vm 上的漏洞评估-合并建议和策略](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+- [新的 AKS 安全策略已添加到 ASC_default 计划-仅供个人预览版客户使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
+
+
+### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单-资产安全状况的强大新视图
+
+安全中心的资产清单 (当前为预览版) 提供一种方法来查看已连接到安全中心的资源的安全状况。
+
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
+
+您可以使用视图及其筛选器来浏览您的安全状况数据，并根据您的发现采取更多操作。
+
+了解有关 [资产清单](asset-inventory.md)的详细信息。
+
+
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>添加了对多重身份验证 (Azure Active Directory 安全默认值的支持) 
+
+安全中心已为 [安全默认设置](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)（Microsoft 的免费标识安全保护）提供完全支持。
+
+安全默认值提供预先配置的标识安全设置，以使你的组织免受与常见标识相关的攻击。 安全默认值已保护超过5000000个租户;50000租户还受安全中心保护。
+
+安全中心在标识 Azure 订阅时，无论是否启用了安全默认设置，现在都提供安全建议。 到目前为止，安全中心建议使用条件性访问启用多重身份验证，这是 Azure Active Directory (AD) premium 许可证的一部分。 对于使用 Azure AD 免费版的客户，我们现在建议启用安全默认设置。 
+
+我们的目标是鼓励更多客户通过 MFA 保护其云环境，并缓解最高的风险，这也是最有影响力的 [安全分数](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)。
+
+详细了解 [安全默认值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
+
+
+### <a name="service-principals-recommendation-added"></a>添加了服务主体建议
+
+添加了新的建议，建议安全中心客户使用管理证书管理其订阅，并切换到服务主体。
+
+建议使用 **服务主体来保护订阅，而不是管理证书** ，建议使用服务主体或 Azure 资源管理器更安全地管理你的订阅。 
+
+详细了解 [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。
+
+
+### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Vm 上的漏洞评估-合并建议和策略
+
+安全中心会检查你的 Vm 是否正在运行漏洞评估解决方案。 如果未找到漏洞评估解决方案，安全中心将提供建议以简化部署。
+
+如果发现漏洞，安全中心将提供一个建议，用于汇总调查结果，以便在必要时进行调查和修正。
+
+为了确保所有用户都能获得一致的体验，无论他们使用哪种扫描仪类型，都可以将四个建议合并为以下两个：
+
+|统一建议|更改描述|
+|----|:----|
+|**应在虚拟机上启用漏洞评估解决方案**|替换以下两个建议：<br> **•** 在虚拟机上启用内置漏洞评估解决方案 (由 "标准" 层附带的 "Qualys (支持的)  (") <br> **•** 漏洞评估解决方案应安装在虚拟机上 (现已弃用)  (标准和免费层) |
+|**应修正虚拟机中的漏洞**|替换以下两个建议：<br>**•** 更正虚拟机上发现的 (由 Qualys) 支持的漏洞， (现已弃用) <br>**•** 漏洞评估解决方案应修正的漏洞 (现已弃用) |
+|||
+
+现在，你将使用相同的建议部署安全中心的漏洞评估扩展或私下许可的解决方案 ( "BYOL" ) 来自合作伙伴（例如 Qualys 或 Rapid7）。
+
+此外，如果发现安全中心并向其报告了漏洞，则单个建议会提醒你发现发现，而不考虑发现它们的漏洞评估解决方案。
+
+#### <a name="updating-dependencies"></a>正在更新依赖项
+
+如果有脚本、查询或自动化引用前面的建议或策略密钥/名称，请使用以下表格更新引用：
+
+##### <a name="before-august-2020"></a>2020年8月之前
+
+|建议|范围|
+|----|:----|
+|**启用 (通过 Qualys) 支持的虚拟机上的内置漏洞评估解决方案 **<br>密钥：550e890b-e652-4d22-8274-60b3bdb24c63|内置|
+|修正虚拟机上发现的漏洞（由 Qualys 提供支持）<br>密钥：1195afff-c881-495e-9bc5-1486211ae03f|内置|
+|应在虚拟机上安装漏洞评估解决方案<br>密钥：01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
+|**应通过漏洞评估解决方案修复漏洞**<br>密钥：71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
+||||
+
+
+|策略|范围|
+|----|:----|
+|**应对虚拟机启用漏洞评估**<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9|内置|
+|**漏洞评估解决方案应修正的漏洞**<br>策略 ID：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
+||||
+
+
+##### <a name="from-august-2020"></a>自8月2020
+
+|建议|范围|
+|----|:----|
+|**应在虚拟机上启用漏洞评估解决方案**<br>密钥： ffff0522-1e88-47fc-8382-2a80ba848f5d|内置 + BYOL|
+|**应修正虚拟机中的漏洞**<br>密钥：1195afff-c881-495e-9bc5-1486211ae03f|内置 + BYOL|
+||||
+
+|策略|范围|
+|----|:----|
+|[**应在虚拟机上启用漏洞评估**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
+||||
+
+
+### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>新的 AKS 安全策略已添加到 ASC_default 计划-仅供个人预览版客户使用
+
+为了确保 Kubernetes 工作负荷在默认情况下是安全的，安全中心添加 Kubernetes 级别策略和强化建议，包括 Kubernetes 许可控制的强制选项。
+
+此项目的早期阶段包括个人预览版，并在默认情况下禁用新 () 策略添加到 ASC_default 计划。
+
+你可以放心地忽略这些策略，而不会对环境造成任何影响。 如果你想要启用它们，请在中注册预览， https://aka.ms/SecurityPrP 并从以下选项中进行选择：
+
+1. **单一预览** –只加入此个人预览版。 明确提及 "ASC 连续扫描" 作为要加入的预览。
+1. **正在进行的程序** -将添加到此和将来的专用预览。 你将需要完成个人资料和隐私协议。
+
+
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月的更新包括：
-- [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [虚拟机的漏洞评估现在适用于非 marketplace 映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
+- [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 (预览版) ](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [启用威胁防护功能的八个新建议](#eight-new-recommendations-to-enable-threat-protection-features)
+- [容器安全改进-更快速的注册表扫描和刷新文档](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [使用新建议更新的自适应应用程序控件，并支持路径规则中的通配符](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [已弃用六个 SQL 高级数据安全策略](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
 
-### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>虚拟机的漏洞评估现在适用于非 marketplace 映像
+
+部署漏洞评估解决方案时，安全中心以前在部署之前执行过验证检查。 检查是确认目标虚拟机的 marketplace SKU。 
+
+从此更新中，已删除该检查，你现在可以将漏洞评估工具部署到 "自定义" Windows 和 Linux 计算机。 自定义映像是你从 marketplace 默认值修改的映像。
+
+尽管你现在可以在多台计算机上部署由 Qualys) 支持的集成漏洞评估 (扩展，但仅当使用 [部署 Qualys 内置漏洞扫描程序](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中列出的操作系统时，才提供支持。
+
+详细了解 [虚拟机的集成漏洞扫描器 (仅) 标准层 ](built-in-vulnerability-assessment.md)。
+
+若要详细了解如何在 [部署合作伙伴漏洞扫描解决方案](partner-vulnerability-assessment.md)中使用 Qualys 或 Rapid7 中的专用许可漏洞评估解决方案。
+
+
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 (预览版) 
 
 Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活动。 当安全中心检测到访问或利用存储帐户的尝试时，会显示警报。 
 
 无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。 
 
-详细了解[Azure 存储的威胁保护](threat-protection.md#threat-protection-for-azure-storage-)。
+详细了解 [Azure 存储的威胁保护](threat-protection.md#threat-protection-for-azure-storage-)。
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>启用威胁防护功能的八个新建议
+
+添加了八个新建议以提供一种简单的方法来为以下资源类型启用 Azure 安全中心的威胁防护功能：虚拟机、应用服务计划、Azure SQL 数据库服务器、计算机上的 SQL server、Azure 存储帐户、Azure Kubernetes 服务群集、Azure 容器注册表注册表和 Azure Key Vault 保管库。
+
+新建议如下：
+
+- **应在 Azure SQL 数据库服务器上启用高级数据安全**
+- **应在计算机的 SQL 服务器上启用高级数据安全**
+- **应在 Azure 应用服务计划上启用高级威胁防护**
+- **应对 Azure 容器注册表的注册表启用高级威胁防护**
+- **应对 Azure Key Vault 的保管库启用高级威胁防护**
+- **应对 Azure Kubernetes 服务的群集启用高级威胁防护**
+- **应对 Azure 存储帐户启用高级威胁防护**
+- **应在虚拟机上启用高级威胁防护**
+
+这些新建议属于 " **启用高级威胁防护** " 安全控制。
+
+建议还包括快速修复功能。 
+
+> [!IMPORTANT]
+> 修正其中的任何建议将导致保护相关资源的费用。 如果当前订阅中有相关资源，则会立即开始使用这些费用。 如果以后再添加，则为。
+> 
+> 例如，如果订阅中没有任何 Azure Kubernetes Service 群集并且启用了威胁防护，则不会产生任何费用。 如果将来在同一订阅中添加群集，它将自动受到保护，并将在该时间开始收费。
+
+有关详细信息，请 [参阅安全建议参考页](recommendations-reference.md)。
+
+详细了解 [Azure 安全中心的威胁防护](https://docs.microsoft.com/azure/security-center/threat-protection)。
+
+
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全改进-更快速的注册表扫描和刷新文档
+
+作为容器安全域中的连续投资的一部分，我们非常乐意在安全中心对 Azure 容器注册表中存储的容器映像进行动态扫描，大大提高性能。 现在，扫描通常在大约两分钟内完成。 在某些情况下，可能需要最多15分钟。
+
+为了改进有关 Azure 安全中心容器安全功能的清晰度和指南，我们还刷新了容器安全文档页。 
+
+若要详细了解安全中心的容器安全性，请参阅以下文章：
+
+- [安全中心容器安全功能概述](https://docs.microsoft.com/azure/security-center/container-security)
+- [与 Azure 容器注册表集成的详细信息](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+- [与 Azure Kubernetes 服务集成的详细信息](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
+- [如何扫描注册表并强化 Docker 主机](https://docs.microsoft.com/azure/security-center/monitor-container-security)
+- [来自 Azure Kubernetes 服务群集的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [来自 Azure Kubernetes 服务主机的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
+- [容器的安全性建议](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+
+
+
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>使用新建议更新的自适应应用程序控件，并支持路径规则中的通配符
+
+自适应应用程序控件功能已收到两个重要更新：
+
+* 新的建议确定以前未允许的潜在合法行为。 **应更新自适应应用程序控制策略中**的新建议允许列表规则，提示你向现有策略添加新规则，以减少自适应应用程序控制违规警报中的误报数。
+
+* 路径规则现在支持通配符。 在此更新中，可以使用通配符配置允许的路径规则。 支持以下两种方案：
+
+    * 在路径末尾使用通配符以允许此文件夹和子文件夹中的所有可执行文件
+
+    * 使用路径中间的通配符启用具有更改的文件夹名称的已知可执行文件名称 (例如，具有已知可执行文件、自动生成的文件夹名称等) 的个人用户文件夹。
+
+
+[详细了解自适应应用程序控制](security-center-adaptive-application.md)。
+
 
 
 ### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>已弃用六个 SQL 高级数据安全策略
@@ -57,7 +254,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 - 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知”
 - 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知
 
-了解有关[内置策略](security-center-policy-definitions.md)的详细信息。
+了解有关 [内置策略](security-center-policy-definitions.md)的详细信息。
 
 
 
@@ -66,26 +263,26 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 ## <a name="june-2020"></a>2020 年 6 月
 
 6月的更新包括：
-- [安全分数 API （预览）](#secure-score-api-preview)
-- [SQL 计算机（Azure、其他云和本地）的高级数据安全性（预览版）](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
-- [将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议（预览版）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
+- [安全评分 API (预览) ](#secure-score-api-preview)
+- [适用于 SQL 计算机 (Azure、其他云和本地)  (预览版的高级数据安全) ](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
+- [ (预览版将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议) ](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
 - [用于大规模创建连续导出和工作流自动化配置的新策略](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
 - [使用 Nsg 保护非面向 internet 的虚拟机的新建议](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
 - [用于启用威胁防护和高级数据安全性的新策略](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
 
 
 
-### <a name="secure-score-api-preview"></a>安全分数 API （预览）
+### <a name="secure-score-api-preview"></a>安全评分 API (预览) 
 
-你现在可以通过[安全评分 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) （当前为预览版）访问评分。 利用 API 方法可以灵活地查询数据，并在一段时间内构建你自己的安全评分报表机制。 例如，可以使用**安全评分**API 来获取特定订阅的分数。 此外，你可以使用**安全分数控制**API 列出你的订阅的安全控制和当前分数。
+你现在可以通过 [安全分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (当前在预览版) 中来访问你的评分。 利用 API 方法可以灵活地查询数据，并在一段时间内构建你自己的安全评分报表机制。 例如，可以使用 **安全评分** API 来获取特定订阅的分数。 此外，你可以使用 **安全分数控制** API 列出你的订阅的安全控制和当前分数。
 
-有关安全分数 API 可以实现外部工具的示例，请参阅[GitHub 社区的 secure 评分区](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
+有关安全分数 API 可以实现外部工具的示例，请参阅 [GitHub 社区的 secure 评分区](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
-详细了解[Azure 安全中心中的安全分数和安全控制](secure-score-security-controls.md)。
+详细了解 [Azure 安全中心中的安全分数和安全控制](secure-score-security-controls.md)。
 
 
 
-### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>SQL 计算机（Azure、其他云和本地）的高级数据安全性（预览版）
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>适用于 SQL 计算机 (Azure、其他云和本地)  (预览版的高级数据安全) 
 
 Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure 中、其他云环境甚至本地计算机上的 SQL Server。 这会扩展 Azure 本机 SQL Server 的保护，以完全支持混合环境。
 
@@ -97,26 +294,26 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 1. 在安全中心的 "定价和设置" 页中启用可选捆绑。
 
-详细了解[SQL 虚拟机的高级数据安全性](security-center-iaas-advanced-data.md)。
+详细了解 [SQL 虚拟机的高级数据安全性](security-center-iaas-advanced-data.md)。
 
 
 
-### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议（预览版）
+### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a> (预览版将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议) 
 
-添加了两个新建议来帮助你将[Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)部署到 azure Arc 计算机，并确保它们受 Azure 安全中心保护：
+添加了两个新建议来帮助你将 [Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) 部署到 azure Arc 计算机，并确保它们受 Azure 安全中心保护：
 
-- **Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上（预览）**
-- **Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上（预览版）**
+- **Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) **
+- **Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) **
 
-这些新建议将出现在与现有（相关）建议相同的四个安全控件中，**应在计算机上安装监视代理**：修正安全配置、应用自适应应用程序控制、应用系统更新和启用 endpoint protection。
+这些新建议将与与现有 (相关的) 建议相同的四个安全控件中出现，并且 **应在计算机上安装监视代理**：修正安全配置、应用自适应应用程序控制、应用系统更新和启用 endpoint protection。
 
 建议还包括快速修复功能，可帮助加速部署过程。 
 
-在[计算和应用建议](recommendations-reference.md#recs-computeapp)表中了解有关这两个新建议的详细信息。
+在 [计算和应用建议](recommendations-reference.md#recs-computeapp) 表中了解有关这两个新建议的详细信息。
 
-若要详细了解 Azure 安全中心如何使用代理，请参阅[什么是 Log Analytics 代理？](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)。
+若要详细了解 Azure 安全中心如何使用代理，请参阅 [什么是 Log Analytics 代理？](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)。
 
-了解有关[Azure Arc 计算机扩展的](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)详细信息。
+了解有关 [Azure Arc 计算机扩展的](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)详细信息。
 
 
 
@@ -124,7 +321,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 自动执行组织的监视和事件响应过程可以极大地提高调查和缓解安全事件所花的时间。
 
-若要在整个组织中部署自动化配置，请使用这些内置的 "DeployIfdNotExist" Azure 策略来创建和配置[连续导出](continuous-export.md)和[工作流自动化](workflow-automation.md)过程：
+若要在整个组织中部署自动化配置，请使用这些内置的 "DeployIfdNotExist" Azure 策略来创建和配置 [连续导出](continuous-export.md) 和 [工作流自动化](workflow-automation.md) 过程：
 
 可在 Azure 策略中找到策略：
 
@@ -139,7 +336,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 [工作流自动化模板](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)入门。
 
-详细了解如何[通过策略持续导出 Azure 安全中心警报和建议](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)中的两个导出策略。
+详细了解如何 [通过策略持续导出 Azure 安全中心警报和建议](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)中的两个导出策略。
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>使用 Nsg 保护非面向 internet 的虚拟机的新建议
@@ -148,9 +345,9 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 - **应使用网络安全组来保护非面向 Internet 的虚拟机**
 
-现有建议、**面向 internet 的虚拟机应使用网络安全组进行保护**，而不区分面向 internet 的虚拟机和面向 Internet 的 vm。 对于这两种情况，如果未将 VM 分配到网络安全组，则会生成高严重性建议。 此新建议将非面向 internet 的计算机隔开，以减少误报并避免不必要的高严重性警报。
+现有建议、 **面向 internet 的虚拟机应使用网络安全组进行保护**，而不区分面向 internet 的虚拟机和面向 Internet 的 vm。 对于这两种情况，如果未将 VM 分配到网络安全组，则会生成高严重性建议。 此新建议将非面向 internet 的计算机隔开，以减少误报并避免不必要的高严重性警报。
 
-在[网络建议](recommendations-reference.md#recs-network)表中了解详细信息。
+在 [网络建议](recommendations-reference.md#recs-network) 表中了解详细信息。
 
 
 
@@ -166,15 +363,15 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [应在 Azure SQL 数据库服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [应在计算机的 SQL 服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
-| [应对存储帐户启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [应对 Azure 存储帐户启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
 | [应对 Azure Key Vault 的保管库启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [应在应用服务计划上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [应在 Azure 应用服务计划上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
 | [应对 Azure 容器注册表的注册表启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
 | [应对 Azure Kubernetes 服务的群集启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
 | [应在虚拟机上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-详细了解[Azure 安全中心的威胁防护](https://docs.microsoft.com/azure/security-center/threat-protection)。
+详细了解 [Azure 安全中心的威胁防护](https://docs.microsoft.com/azure/security-center/threat-protection)。
 
 
 
@@ -230,14 +427,14 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 - 重命名了推荐你在 VM 上启用 JIT 的建议。 之前称为“应在虚拟机上应用实时网络访问控制”，而现在叫做“应通过即时网络访问控制来保护虚拟机的管理端口”。
 
-- 建议已设置为仅在有管理端口打开时才触发。
+- 仅当存在打开的管理端口时，才会触发此建议。
 
 详细了解 [JIT 访问功能](security-center-just-in-time.md)。
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>自定义建议已移至单独的安全控件
 
-安全功能分数增强版引入的其中一个安全控件是“实现安全最佳做法”。 为订阅创建的所有自定义建议已自动放入该控件中。 
+增强安全分数引入的一个安全控制是 "实现安全最佳做法"。 为订阅创建的所有自定义建议已自动放入该控件中。 
 
 为便于查找自定义建议，我们已将这些建议移到一个名为“自定义建议”的专用安全控件中。 此控件不会影响你的安全功能分数。
 
@@ -250,7 +447,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 若要立即查看组织对每个攻击面的保护情况，请查看每个安全控件的分数。
 
-默认情况下，你的建议显示在安全控件中。 通过本次更新，你还可以列表的形式显示。 若要以简单列表的形式查看它们，且列表按受影响的资源的运行状况排序，请使用新的“按控件分组”开关。 开关位于门户中列表的上面。
+默认情况下，你的建议显示在安全控件中。 在此更新中，还可以将其显示为列表。 若要以简单列表的形式查看它们，且列表按受影响的资源的运行状况排序，请使用新的“按控件分组”开关。 开关位于门户中列表的上面。
 
 安全控件及其开关是新的安全功能分数体验的一部分。 请记得在门户中提供反馈。
 
@@ -260,7 +457,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>扩展了“实现安全最佳做法”这一安全控件 
 
-安全功能分数增强版引入的其中一个安全控件是“实现安全最佳做法”。 如果建议在此控件中显示，则不影响安全功能分数。 
+增强安全分数引入的一个安全控制是 "实现安全最佳做法"。 如果建议在此控件中显示，则不影响安全功能分数。 
 
 通过本次更新，已将三项建议从它们原先所在的控件移动到这个最佳做法控件中。 我们采取此步骤的原因是我们判定这三项建议的风险比最初设想的要低。
 
@@ -274,13 +471,13 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 添加到控件中的两项新建议如下：
 
-- **应在 Windows 虚拟机（预览版）上安装来宾配置扩展**-使用[Azure 策略来宾配置](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)在虚拟机中提供对服务器和应用程序设置的可见性（仅限 Windows）。
+- **应在 windows 虚拟机上安装来宾配置扩展 (预览) ** -使用 [Azure 策略来宾配置](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) 可在虚拟机内部向服务器和应用程序设置提供 (仅限 Windows 的) 中的可见性。
 
-- **应在你的计算机上启用 Windows Defender 攻击防护（预览版）** -Windows Defender 攻击防护利用 Azure 策略来宾配置代理。 攻击防护服务具有 4 个组件，旨在锁定设备来阻隔各种攻击途径，并阻止恶意软件攻击中常用的行为，同时让企业能够平衡其安全风险和生产力要求（仅限 Windows）。
+- **应在计算机上启用 Windows Defender 攻击防护 (预览) ** -Windows Defender exploit Guard 利用 Azure 策略来宾配置代理。 攻击防护服务具有 4 个组件，旨在锁定设备来阻隔各种攻击途径，并阻止恶意软件攻击中常用的行为，同时让企业能够平衡其安全风险和生产力要求（仅限 Windows）。
 
 要详细了解 Windows Defender 攻击防护，可参阅[创建和部署攻击防护策略](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)。
 
-详细了解[增强安全分数（预览版）](secure-score-security-controls.md)中的安全控制。
+了解更多有关安全控制的详细信息，请 [ (预览) ](secure-score-security-controls.md)。
 
 
 
@@ -302,7 +499,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 该转换的一些优势如下：
 
-- **主动和及时的恶意软件检测**-CDA 方法涉及到等待崩溃发生，然后运行分析以查找恶意项目。 使用无文件攻击检测后，可在内存中威胁正在运行时主动识别它们。 
+- **主动和及时的恶意软件检测** -CDA 方法涉及到等待崩溃发生，然后运行分析以查找恶意项目。 使用无文件攻击检测后，可在内存中威胁正在运行时主动识别它们。 
 
 - **警报信息更丰富** - 来自无文件攻击检测的安全警报包含 CDA 中不提供的丰富信息，例如有效网络连接信息。 
 
@@ -428,17 +625,4 @@ Azure 安全中心正在扩展其容器安全功能，现可保护 Azure Kuberne
 这些建议将不再在安全中心的建议列表中显示。 相关策略将不再包含在名为“安全中心默认设置”的计划中。
 
 详细了解[安全建议](recommendations-reference.md)。
-
-
-
-## <a name="february-2020"></a>2020 年 2 月
-
-### <a name="fileless-attack-detection-for-linux-preview"></a>面向 Linux 的无文件攻击检测（预览版）
-
-随着攻击者越来越多地采用更隐蔽的方法来避免被发现，除了 Windows 之外，Azure 安全中心还扩大了无文件攻击检测范围，现涵盖 Linux。 无文件攻击利用软件漏洞、将恶意有效负载注入良性系统进程，并隐藏在内存中。 这些技术：
-
-- 最大程度地减少或消除了磁盘上恶意软件的痕迹
-- 大大降低了基于磁盘的恶意软件扫描解决方案的检测机会
-
-为了应对这种威胁，Azure 安全中心于 2018 年 10 月发布了面向 Windows 的无文件攻击检测，现在还将该检测扩展到了 Linux 上。 
 

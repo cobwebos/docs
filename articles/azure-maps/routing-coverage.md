@@ -1,18 +1,19 @@
 ---
 title: 路由覆盖范围 |Microsoft Azure 映射
-description: 在本文中，你将了解 Microsoft Azure 地图的路由覆盖区域。
-author: Philmea
-ms.author: philmea
+description: 了解在不同区域中提供哪一级别的覆盖 Azure Maps 面，以便进行路由、路由和卡车路由。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123881"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030888"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps 路由覆盖区域
 

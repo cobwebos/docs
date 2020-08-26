@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023477"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -34,7 +34,7 @@ ms.locfileid: "85248275"
 
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
+* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。

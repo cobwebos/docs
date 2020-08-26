@@ -1,18 +1,17 @@
 ---
 title: 远程桌面客户端 Windows 虚拟桌面故障排除-Azure
 description: 如何解决在 Windows 虚拟桌面租户环境中设置客户端连接时遇到的问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006001"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134473"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>远程桌面客户端疑难解答
 
@@ -42,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 尝试与其他客户端（如 Windows 7 或 Windows 10 的远程桌面客户端）进行连接，并检查是否可以打开 web 客户端。
 
-### <a name="opening-another-site-fails"></a>打开另一个站点失败
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>连接到 web 客户端时无法打开其他网站
 
-这通常是由于网络连接问题或网络中断引起的。 建议联系网络支持。
+如果在连接到 web 客户端时无法打开其他网站，则可能是网络连接问题或网络中断。 建议联系网络支持。
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup 无法解析名称
+### <a name="nslookup-cant-resolve-the-name"></a>Nslookup 无法解析名称
 
-这通常是由于网络连接问题或网络中断引起的。 建议联系网络支持。
+如果 nslookup 无法解析该名称，则可能是网络连接问题或网络中断。 建议联系网络支持。
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>你的客户端无法连接，但网络上的其他客户端可以连接
 
@@ -59,11 +58,13 @@ nslookup rdweb.wvd.microsoft.com
 3. 清除浏览器缓存。 请参阅[清除浏览器缓存](https://binged.it/2RKyfdU)。
 4. 以专用模式打开浏览器。
 
-## <a name="web-client-does-not-show-my-resources"></a>Web 客户端未显示我的资源
+## <a name="client-doesnt-show-my-resources"></a>客户端不显示我的资源
 
-首先，请检查正在使用的 Azure Active Directory 帐户。 如果你已使用与 Winodws 虚拟桌面所要使用的帐户 Azure Active Directory 不同的帐户登录，则应使用专用浏览器窗口进行签名。
+首先，请检查正在使用的 Azure Active Directory 帐户。 如果已使用与要用于 Windows 虚拟桌面的帐户不同的 Azure Active Directory 帐户登录，则应注销或使用专用浏览器窗口。
 
-如果你使用的是 Windows 虚拟桌面秋季2019版，请使用[本文](./virtual-desktop-fall-2019/connect-web-2019.md)中的 web 客户端链接连接到你的资源。
+如果使用的是 Windows 虚拟桌面 (经典) ，请使用[本文](./virtual-desktop-fall-2019/connect-web-2019.md)中的 web 客户端链接连接到资源。
+
+如果这不起作用，请确保应用组与工作区关联。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web 客户端停止响应或断开连接
 
@@ -79,8 +80,8 @@ nslookup rdweb.wvd.microsoft.com
 
 1. 确认 web 客户端 URL 是正确的。
 2. 确认你使用的凭据适用于绑定到该 URL 的 Windows 虚拟桌面环境。
-3. 清除浏览器 cookie。 有关更多详细信息，请参阅[如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
-4. 清除浏览器缓存。 有关更多详细信息，请参阅为[浏览器清除浏览器缓存](https://binged.it/2RKyfdU)。
+3. 清除浏览器 cookie。 有关详细信息，请参阅[如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
+4. 清除浏览器缓存。 有关详细信息，请参阅为[浏览器清除浏览器缓存](https://binged.it/2RKyfdU)。
 5. 以专用模式打开浏览器。
 
 ## <a name="next-steps"></a>后续步骤

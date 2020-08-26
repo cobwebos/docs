@@ -7,25 +7,25 @@ ms.subservice: networking
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 80f7ba4a4493299d9d1795631401689f4619d873
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84da38fe71446c54f17c4d4329c7294c5e5176d2
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014621"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800188"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程会指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 在本教程中，你将了解如何执行以下操作：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网
 > * 创建公共 IP 地址
 > * 创建前端 VM
-> * 保护网络流量的安全
+> * 安全的网络流量
 > * 创建后端 VM
 
 
@@ -57,15 +57,15 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-subnet"></a>创建子网 
 
-本教程会创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
+本教程将创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
 
-创建虚拟网络之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”位置创建名为 *myRGNetwork* 的资源组：
+创建虚拟网络之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”位置创建名为 *myRGNetwork* 的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建一个名为 *myFrontendSubnet* 的子网配置：
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建一个名为 *myFrontendSubnet* 的子网配置：
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
 
-通过 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 使用 *myFrontendSubnet* 和 *myBackendSubnet* 创建名为“myVNet”的 VNET：
+通过 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 使用 *myFrontendSubnet* 和 *myBackendSubnet* 创建名为“myVNet”的 VNET：
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ $vnet = New-AzVirtualNetwork `
 
 可将分配方法设置为静态，这可确保分配给 VM 的 IP 地址保持不变，即使该 VM 处于解除分配状态也是如此。 如果使用静态 IP 地址，则无法指定 IP 地址本身。 该地址是从可用地址池中分配的。
 
-使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myPublicIPAddress* 的公共 IP 地址：
+使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myPublicIPAddress* 的公共 IP 地址：
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -116,7 +116,7 @@ $pip = New-AzPublicIpAddress `
 
 ## <a name="create-a-front-end-vm"></a>创建前端 VM
 
-VM 需要虚拟网络接口 (NIC) 才能在虚拟网络中进行通信。 使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建 NIC：
+VM 需要虚拟网络接口 (NIC) 才能在虚拟网络中进行通信。 使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 创建 NIC：
 
 ```azurepowershell-interactive
 $frontendNic = New-AzNetworkInterface `
@@ -127,13 +127,13 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 上管理员帐户所需的用户名和密码。 若要使用这些凭据连接到 VM，请执行其他步骤：
+使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 上管理员帐户所需的用户名和密码。 若要使用这些凭据连接到 VM，请执行其他步骤：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建 VM。
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -147,13 +147,13 @@ New-AzVM `
    -VirtualNetworkName myVNet
 ```
 
-## <a name="secure-network-traffic"></a>保护网络流量的安全
+## <a name="secure-network-traffic"></a>安全的网络流量
 
 网络安全组 (NSG) 包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络 (VNet) 的资源的网络流量。 NSG 可以关联到子网或单个网络接口。 与网络接口关联的 NSG 只会应用到关联的 VM。 将 NSG 关联到子网时，规则适用于连接到该子网的所有资源。
 
 ### <a name="network-security-group-rules"></a>网络安全组规则
 
-NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则会在优先级为 200 的规则之前评估。
+NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则将在优先级为 200 的规则之前评估。
 
 所有 NSG 都包含一组默认规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。
 
@@ -163,7 +163,7 @@ NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则
 
 ### <a name="create-network-security-groups"></a>创建网络安全组
 
-使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建名为 *myFrontendNSGRule* 的入站规则以允许 *myFrontendVM* 上的传入 Web 流量：
+使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建名为 *myFrontendNSGRule* 的入站规则以允许 *myFrontendVM* 上的传入 Web 流量：
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 添加名为 *myFrontendNSG* 的网络安全组：
+使用 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 添加名为 *myFrontendNSG* 的网络安全组：
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `
@@ -277,7 +277,7 @@ New-AzVM `
 > * 创建虚拟网络和子网
 > * 创建公共 IP 地址
 > * 创建前端 VM
-> * 保护网络流量的安全
+> * 安全的网络流量
 > * 创建后端 VM
 
 请继续学习下一教程，了解如何使用 Azure 备份监视和保护虚拟机上的数据。

@@ -3,17 +3,17 @@ title: Azure IoT Central 中的持续患者监视体系结构 | Microsoft Docs
 description: 了解持续患者监视解决方案体系结构。
 author: philmea
 ms.author: philmea
-ms.date: 10/24/2019
+ms.date: 7/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 92eb4157abb55b7056952d1fb064c7c7d7500335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0032f341330ad394241806a4fe61add530253f09
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77021690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116868"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持续患者监视体系结构
 
@@ -34,13 +34,13 @@ ms.locfileid: "77021690"
 本节会更详细地概述体系结构图的每个部分。
 
 ### <a name="ble-medical-devices"></a>BLE 医疗设备
-医疗保健 IoT 领域中使用的许多医用可穿戴设备都是低耗电蓝牙设备。 这些设备无法直接与云通信，需要通过网关。 此体系结构建议使用手机应用程序作为此网关。
+医疗保健 IoT 领域中使用的许多医用可穿戴设备都是低耗电蓝牙设备。 这些设备无法直接与云通信，需要通过网关。 此体系结构建议使用手机应用程序作为此网关。 
 
 ### <a name="mobile-phone-gateway"></a>手机网关
-该手机应用程序的主要功能是从医疗设备引入 BLE 数据，并将其传递给 Azure IoT Central。 此外，该应用还可以帮助指导患者完成设备设置和预配流程，并帮助他们查看其个人健康状况数据视图。 如果是在医院病房内，其他解决方案可以使用平板电脑网关或静态网关实现相同的通信流。
+该手机应用程序的主要功能是从医疗设备引入 BLE 数据，并将其传递给 Azure IoT Central。 此外，该应用还可以帮助指导患者完成设备设置和预配流程，并帮助他们查看其个人健康状况数据视图。 如果是在医院病房内，其他解决方案可以使用平板电脑网关或静态网关实现相同的通信流。 我们创建了一个适用于 Android 和 iOS 的开放源代码示例移动应用程序，你可以将它用作开始应用程序开发工作的起点。 有关 IoT Central 持续患者监视移动应用示例的详细信息，请参阅 [Azure 示例](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>导出到 Azure API for FHIR&reg;
-Azure IoT Central 符合 HIPAA 并通过 HITRUST&reg; 认证，但你可能还希望将与患者健康状况相关的数据发送到 Azure API for FHIR。 [Azure API for FHIR](../../healthcare-apis/overview.md) 是完全托管的、基于标准的、符合法规的临床健康状况数据 API，让你可以用健康状况数据创建新的参与系统。 它由云中托管的平台即服务 (PaaS) 产品/服务提供支持，通过 FHIR API 即可快速交换数据。 使用 IoT Central 的持续数据导出功能，可以将数据发送到 Azure API for FHIR。
+Azure IoT Central 符合 HIPAA 并通过 HITRUST&reg; 认证，但你可能还希望将与患者健康状况相关的数据发送到 Azure API for FHIR。 [Azure API for FHIR](../../healthcare-apis/overview.md) 是完全托管的、基于标准的、符合法规的临床健康状况数据 API，让你可以用健康状况数据创建新的参与系统。 它由云中托管的平台即服务 (PaaS) 产品/服务提供支持，通过 FHIR API 即可快速交换数据。 使用 IoT Central 的持续数据导出功能，可以通过[适用于 FHIR 的 Azure IoT 连接器](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart)将数据发送到 Azure API for FHIR。
 
 ### <a name="machine-learning"></a>机器学习
 聚合数据并将其转换为 FHIR 格式后，你可以生成机器学习模型，以便提供丰富的见解，让护理团队能够作出明智的决策。 可使用各种服务构建、训练和部署机器学习模型。 有关如何使用 Azure 机器学习产品/服务的详细信息，请参阅[机器学习文档](../../machine-learning/index.yml)。

@@ -1,24 +1,27 @@
 ---
 title: Azure Lighthouse 和 Azure 托管应用程序
-description: Azure Lighthouse 和 Azure 托管应用程序 .。。
-ms.date: 05/01/2020
+description: 了解 Azure Lighthouse 和 Azure 托管应用程序如何帮助实现不同的方案，以及如何将它们一起使用。
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121599"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163418"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 托管应用程序
 
 Azure 托管应用程序和 Azure Lighthouse 通过使服务提供商能够访问位于客户租户中的资源来工作。 了解它们的工作方式和它们可帮助启用的方案以及它们如何一起使用可能会很有帮助。
 
+> [!TIP]
+> 尽管我们指的是本主题中的服务提供商和客户，但[管理多个租户的企业](enterprise.md)可以使用相同的过程和工具。
+
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>比较 Azure Lighthouse 和 Azure 托管应用程序
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
-使用[Azure Lighthouse](../overview.md)，服务提供商可以直接在客户的订阅（或资源组）上执行各种管理任务。 这种访问是通过逻辑投影实现的，它允许服务提供商登录到自己的租户并访问属于客户租户的资源。 客户可以确定要委派给服务提供商的订阅或资源组，客户可以保持对这些资源的完全访问权限。 他们还可以随时删除服务提供商的访问权限。
+使用[Azure Lighthouse](../overview.md)，服务提供商可以直接在客户的订阅 (或资源组) 上执行各种管理任务。 这种访问是通过逻辑投影实现的，它允许服务提供商登录到自己的租户并访问属于客户租户的资源。 客户可以确定要委派给服务提供商的订阅或资源组，客户可以保持对这些资源的完全访问权限。 他们还可以随时删除服务提供商的访问权限。
 
 若要使用 Azure Lighthouse，通过[部署 ARM 模板](../how-to/onboard-customer.md)或通过[azure Marketplace 中的托管服务产品/服务](managed-services-offers.md)，客户载入用于[azure 委托的资源管理](azure-delegated-resource-management.md)。 你可以通过[链接你的合作伙伴 ID](../../cost-management-billing/manage/link-partner-id.md)跟踪对客户服务的影响。
 
@@ -42,7 +45,7 @@ Azure 托管应用程序通常用于特定客户需求，可通过完全由服�
 
 例如，客户可能想要通过 Azure Lighthouse 通过服务提供商提供托管服务，以便他们可以查看合作伙伴的操作以及对其委托订阅的持续控制。 但是，服务提供商可能不希望客户访问将存储在客户的租户中的某些资源，也不允许对这些资源进行任何自定义操作。 为了满足这些目标，服务提供商可以将专用产品/服务作为托管应用程序发布。 托管应用程序可以包括部署在客户的租户中的资源组，但不能由客户直接访问该资源组。
 
-客户也可能对多个服务提供商提供的托管应用程序感兴趣，无论他们是否还通过 Azure Lighthouse 使用托管服务。 此外，云解决方案提供商（CSP）计划中的合作伙伴可将其他 Isv 发布的某些托管应用程序转售给他们通过 Azure Lighthouse 支持的客户。 借助各种选项，服务提供商可以根据客户的需求选择适当的平衡，同时限制对资源的访问。
+客户也可能对多个服务提供商提供的托管应用程序感兴趣，无论他们是否还通过 Azure Lighthouse 使用托管服务。 此外，云解决方案提供商中的合作伙伴 (CSP) 计划可将其他 Isv 发布的某些托管应用程序转售给他们通过 Azure Lighthouse 支持的客户。 借助各种选项，服务提供商可以根据客户的需求选择适当的平衡，同时限制对资源的访问。
 
 ## <a name="next-steps"></a>后续步骤
 

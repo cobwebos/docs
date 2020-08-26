@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498944"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531253"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用用于密钥保管库的 Azure Monitor（预览版）监视密钥保管库服务
 用于密钥保管库的 Azure Monitor（预览版）通过提供密钥保管库请求、性能、故障和延迟的统一视图，对密钥保管库进行全面监视。
@@ -45,7 +45,7 @@ ms.locfileid: "86498944"
 
 在 Azure Monitor 中，可以查看订阅中多个密钥保管库的请求、延迟和故障详细信息，并帮助确定性能问题和限制方案。
 
-要查看所有订阅中存储帐户的利用率和操作情况，请执行以下步骤：
+若要查看所有订阅中的密钥保管库的使用情况和操作，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
@@ -124,13 +124,13 @@ ms.locfileid: "86498944"
 
 ## <a name="pin-and-export"></a>固定和导出
 
-可以将任一指标部分固定到 Azure 面板，方法是选择该部分右上角的图钉图标。
+可将任一指标部分固定到 Azure 仪表板，方法是选择该部分右上角的图钉图标。
 
-多订阅和密钥保管库概述或失败工作簿支持通过选择图钉图标左侧的 "下载" 图标来导出 Excel 格式的结果。
+在多订阅和密钥保管库“概览”或“失败”工作簿中，支持通过选择图钉图标左侧的下载图标来导出 Excel 格式的结果。
 
-![已选中固定图标的屏幕截图](./media/key-vaults-insights-overview/pin.png)
+![已选择的固定图标的屏幕截图](./media/key-vaults-insights-overview/pin.png)
 
-## <a name="customize-azure-monitor-for-key-vault"></a>自定义用于密钥保管库的 Azure Monitor
+## <a name="customize-azure-monitor-for-key-vault"></a>自定义 Azure Monitor for Key Vault
 
 本部分重点介绍编辑工作簿以自定义支持数据分析需求的常见方案：
 *  将工作簿的作用域限定为始终选择特定订阅或密钥保管库
@@ -154,11 +154,11 @@ ms.locfileid: "86498944"
 2. 在“概览”工作簿上，从命令栏中选择“编辑” 。
 3. 从“订阅”下拉列表中选择要用作默认订阅的一个或多个订阅。 请记住，工作簿最多支持选择 10 个订阅。
 4. 从“密钥保管库”下拉列表中选择要用作默认帐户的一个或多个帐户。 请记住，工作簿最多支持选择 200 个存储帐户。
-5. 选择命令栏中的“另存为”，以保存包含自定义项的工作簿副本，然后单击“完成编辑”返回到阅读模式。
+5. 从命令栏中选择“另存为”以使用你的自定义项保存工作簿的副本，然后单击“完成编辑”以返回到读取模式 。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-有关一般故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
+如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
 本部分将帮助你诊断和排查在使用用于密钥保管库的 Azure Monitor（预览版）时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
@@ -166,37 +166,37 @@ ms.locfileid: "86498944"
 
 要帮助解决使用用于密钥保管库的 Azure Monitor（预览版）标识的任何密钥保管库相关问题，请参阅 [Azure 密钥保管库文档](../../key-vault/index.yml)。
 
-### <a name="why-can-i-only-see-200-key-vaults"></a>为什么只能看到200的密钥保管库
+### <a name="why-can-i-only-see-200-key-vaults"></a>为什么只能看到 200 个密钥保管库
 
 最多只能选择和查看 200 个密钥保管库。 无论所选订阅数量是多少，所选密钥保管库的数目限制为 200。
 
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>为什么我在订阅选取器中看不到所有订阅
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>为什么在订阅选取器中看不到所有订阅
 
 我们只显示从所选订阅筛选器中选择的包含密钥保管库的订阅，你可在 Azure 门户标头的“目录 + 订阅”中选择这些订阅。
 
 ![订阅筛选器的屏幕截图](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>我收到一条错误消息，指出 "查询超出了允许的工作区/区域的最大数目"，现在该怎么办
+### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>我收到一条错误消息，指出“查询超出了允许的最大工作区数/区域数”，现在该怎么办
 
 目前，只能查询 25 个区域和 200 个工作区，要查看你的数据，需要减少订阅和/或资源组的数目。
 
-### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>我想要进行更改，或添加其他可视化效果以 Key Vault 见解，如何实现此目的
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>我想要在 Key Vault Insights 中进行更改或添加更多可视化效果，如何执行此操作
 
 要进行更改，请选择“编辑模式”修改工作簿，然后可以将工作保存为绑定到指定订阅和资源组的新工作簿。
 
-### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>固定工作簿的任何部分后的时间粒度
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>固定工作簿的任何部分后，时间粒度是多少
 
 我们使用“自动”时间粒度，因此，它取决于选择的时间范围。
 
-### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>工作簿的任何部分固定的时间范围
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>固定工作簿的任何部分后，时间范围是多少
 
 时间范围将取决于面板设置。
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>为什么在 "操作" & 延迟 "部分下看不到我的 Key Vault 的任何数据
+### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>为何在“操作和延迟”部分下看不到我的 Key Vault 的任何数据
 
 要查看基于日志的数据，需要为要监视的每个密钥保管库启用日志。 可在每个密钥保管库的诊断设置下完成此操作。 需要将数据发送到指定的 Log Analytics 工作区。
 
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>我已为我的 Key Vault 启用了日志，为什么我在操作 & 延迟时仍无法看到我的数据
+### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>我已经为 Key Vault 启用了日志，为何在“操作和延迟”下仍看不到我的数据
 
 目前，诊断日志无法追溯，只有在对密钥保管库执行了操作后，才会显示数据。 因此，此操作可能需要一段时间（几小时到一天），具体取决于密钥保管库的活动情况。
 

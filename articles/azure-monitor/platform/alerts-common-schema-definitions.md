@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013957"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -149,7 +149,7 @@ ms.locfileid: "85445366"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用常见架构会将电子邮件主题和/或有效负载架构恢复为如下所述的架构。 对于启用了常见架构的警报，大小上限为 256KB/警报。 如果搜索结果导致警报大小超出此阈值，就不会被嵌入日志警报有效负载。 可以通过检查标志 `IncludeSearchResults` 来确定这一点。 如果不包含搜索结果，应结合使用搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get)。 
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用常见架构会将电子邮件主题和/或有效负载架构恢复为如下所述的架构。 对于启用了常见架构的警报，大小上限为 256KB/警报。 如果搜索结果导致警报大小超出此阈值，就不会被嵌入日志警报有效负载。 可以通过检查标志 `IncludeSearchResults` 来确定这一点。 如果不包含搜索结果，应结合使用搜索查询与 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get)。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ ms.locfileid: "85445366"
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ ms.locfileid: "85445366"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[常见警报架构](https://aka.ms/commonAlertSchemaDocs)。
-- 了解[如何创建使用常见警报架构处理所有警报的逻辑应用](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)。 
-
+- 了解[如何创建使用常见警报架构处理所有警报的逻辑应用](./alerts-common-schema-integrations.md)。 

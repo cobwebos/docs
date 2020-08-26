@@ -10,13 +10,13 @@ metadata:
   ms.collection: M365-security-compliance
   author: mlottner
   ms.author: mlottner
-  ms.date: 09/23/2019
-  ms.openlocfilehash: 5a9f5c9d919c6c30c6318749ad2a62d40865e573
-  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+  ms.date: 07/15/2020
+  ms.openlocfilehash: 6047b647641033af415be86d8534bda9c857b608
+  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/07/2020
-  ms.locfileid: "82890906"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88067301"
 landingContent:
 - title: 关于适用于 IoT 的 Azure 安全中心
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: 适用于 IoT 的 Azure 安全中心是什么？
       url: overview.md
+    - text: Azure RTOS 安全解决方案
+      url: iot-security-azure-rtos.md
     - text: 规划解决方案
       url: service-prerequisites.md
   - linkListType: architecture
@@ -56,6 +58,8 @@ landingContent:
       url: quickstart-create-security-twin.md
     - text: 创建自定义安全警报
       url: quickstart-create-custom-alerts.md
+    - text: 调查安全警报
+      url: quickstart-investigate-security-alerts.md
 - title: 自定义解决方案
   linkLists:
   - linkListType: how-to-guide

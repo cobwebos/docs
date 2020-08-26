@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: e6ecd40d34233ba6f0b886f4b55aedf4339bf6de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba079e76ea806bb12bff16eb636d0fa21b0e152b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505187"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461725"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>删除和恢复 Azure Log Analytics 工作区
 
@@ -64,7 +64,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > [!IMPORTANT]
 > 请谨慎使用永久删除工作区操作，因为这是不可逆的，并且无法恢复工作区及其数据。
 
-添加 "-forceDelete" 标记以永久删除工作区：
+添加 "-ForceDelete" 标记以永久删除你的工作区。 "-ForceDelete" 选项当前可用于 Az. Microsoft.operationalinsights 2.3.0 或更高版本。 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
@@ -82,7 +82,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。 你将看到所选范围内的工作区列表。
 3. 单击左上侧菜单中的“恢复”，打开包含处于软删除状态且可恢复的工作区页面。
 

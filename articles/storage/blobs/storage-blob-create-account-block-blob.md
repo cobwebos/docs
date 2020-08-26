@@ -8,11 +8,13 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c23c034af40d7db2379f9d02357131a00482bd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463546"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495737"
 ---
 # <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
@@ -27,7 +29,7 @@ BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 无。
 
@@ -39,12 +41,12 @@ BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 
 
 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令：
 
-- 可以在 Azure Cloud Shell 中的 Azure 门户内运行 CLI 命令。
+- 可以在 Azure 门户的 Azure Cloud Shell 中运行 CLI 命令。
 - 可以安装 CLI 并在本地运行 CLI 命令。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Azure CLI 已预安装并配置为与帐户一起使用。 单击 Azure 门户右上部分菜单上的 " **Cloud Shell** " 按钮：
+Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 已预安装 Azure CLI 并将其配置为与帐户一起使用。 单击 Azure 门户右上部分菜单上的 " **Cloud Shell** " 按钮：
 
 [![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 

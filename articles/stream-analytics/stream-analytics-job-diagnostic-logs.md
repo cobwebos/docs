@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319348"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
 
@@ -59,13 +59,13 @@ ms.locfileid: "86044509"
 
 强烈建议打开资源日志并将它们发送到 Azure Monitor 日志。 默认情况下，它们处于“关闭”**** 状态。 若要打开它们，请完成以下步骤：
 
-1.  如果还没有[Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)，请创建一个。 建议将 Log Analytics 工作区置于流分析作业所在的同一区域。
+1.  如果还没有 Log Analytics 工作区，请创建一个。 建议将 Log Analytics 工作区置于流分析作业所在的同一区域。
 
 2.  登录 Azure 门户，导航到流分析作业。 在“监视”**** 下，选择“诊断日志”****。 然后选择“启用诊断”****。
 
     ![在边栏选项卡中导航到资源日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 "**发送到 Log Analytics** " 并选择工作区。 单击“保存” 。
+2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 "**发送到 Log Analytics** " 并选择工作区。 单击 **“保存”** 。
 
     ![资源日志设置](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
@@ -94,7 +94,7 @@ Azure 流分析捕获两种类别的资源日志：
 
 所有日志均以 JSON 格式存储。 每个项目均具有以下常见字符串字段：
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 ResourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如， **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
@@ -112,7 +112,7 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 
 作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。 你可以详细了解各种[输入和输出数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)的原因。
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 Source | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
@@ -138,12 +138,9 @@ Source | 发生错误的作业输入或输出的名称。
 错误 | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
 Message| 日志消息。
 类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError**** 或 BlobOutputAdapterInitializationFailure****。
-相关性 ID | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) 。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”**** 值。
+相关性 ID | GUID 。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”**** 值。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [流分析简介](stream-analytics-introduction.md)
-* [流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [缩放流分析作业](stream-analytics-scale-jobs.md)
-* [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [流分析数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

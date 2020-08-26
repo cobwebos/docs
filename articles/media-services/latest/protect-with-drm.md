@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4bc7fe4e464b07c77d5a857fb793faa4262f97e4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206845"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060611"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
 > [!NOTE]
-> 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
+> 尽管本教程使用了 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
 可以使用 Azure 媒体服务来传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。 如需深入说明，请参阅[使用动态加密保护内容](content-protection-overview.md)。
 
@@ -55,8 +55,8 @@ ms.locfileid: "86206845"
 * 查看[内容保护概述](content-protection-overview.md)一文。
 * 查看[使用访问控制设计多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)。
 * 安装 Visual Studio Code 或 Visual Studio。
-* 按照[本快速入门](create-account-cli-quickstart.md)所述，创建新的 Azure 媒体服务帐户。
-* 根据[访问 API](access-api-cli-how-to.md) 中所述，获取使用媒体服务 API 时所需的凭据
+* 按照[本快速入门](./create-account-howto.md)所述，创建新的 Azure 媒体服务帐户。
+* 根据[访问 API](./access-api-howto.md) 中所述，获取使用媒体服务 API 时所需的凭据
 * 在应用配置文件 (appsettings.json) 中设置相应的值。
 
 ## <a name="download-code"></a>下载代码
@@ -86,7 +86,7 @@ ms.locfileid: "86206845"
 
 ## <a name="get-or-create-an-encoding-transform"></a>获取或创建编码转换
 
-创建新实例时，需要指定希望生成的输出内容[转换](transforms-jobs-concept.md)。 所需参数是 `transformOutput` 对象，如以下代码所示。 每个 TransformOutput 都包含一个**预设**。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 
+创建新[转换](transforms-jobs-concept.md)实例时，需要指定希望生成的输出内容。 所需参数是 `transformOutput` 对象，如以下代码所示。 每个 TransformOutput 都包含一个**预设**。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 
 
 在创建新的**转换**之前，应该先检查是否已存在使用 **Get** 方法的转换，如以下代码中所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -94,7 +94,7 @@ ms.locfileid: "86206845"
 
 ## <a name="submit-job"></a>提交作业
 
-如上所述，**转换**对象为脚本，[作业则是](transforms-jobs-concept.md)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容  。 Job 指定输入视频位置和输出位置等信息  。
+如上所述，**转换**对象为脚本，[作业则是](transforms-jobs-concept.md)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 Job 指定输入视频位置和输出位置等信息。
 
 本教程基于直接从 [HTTPs 源 URL](job-input-from-http-how-to.md) 引入的文件创建作业的输入。
 
@@ -104,7 +104,7 @@ ms.locfileid: "86206845"
 
 该作业需要一些时间才能完成操作。 在该过程中，你应能够接收通知。 以下代码示例显示如何轮询服务以获取**作业**状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。 请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
+**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 
@@ -112,7 +112,7 @@ ms.locfileid: "86206845"
 
 内容密钥提供对资产的安全访问。 通过 DRM 加密内容时，需要创建[内容密钥策略](content-key-policy-concept.md)。 此策略配置如何将内容密钥传送到最终的客户端。 内容密钥与流定位器相关联。 媒体服务还提供密钥传送服务，将加密密钥和许可证传送给已授权的用户。
 
-需要在**内容密钥策略**上设置要求 (限制) ，才能传递具有指定配置的密钥。 此示例设置了以下配置和要求：
+需要在**内容密钥策略**上设置要求（限制），以传递具有指定配置的密钥。 此示例设置了以下配置和要求：
 
 * 配置
 
@@ -144,7 +144,7 @@ ms.locfileid: "86206845"
 
 ## <a name="get-a-test-token"></a>获取测试令牌
 
-本教程在内容密钥策略中指定使用令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用 [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) 格式的令牌，我们在示例中配置了此格式。
+本教程在内容密钥策略中指定使用令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用 [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) 格式的令牌，我们在示例中配置了此格式。
 
 ContentKeyPolicy 中使用了 ContentKeyIdentifierClaim，这意味着，提供给密钥传送服务的令牌必须包含 ContentKey 的标识符。 本示例未指定内容密钥，在创建流定位器时，系统会创建一个随机内容密钥。 若要生成测试令牌，必须获取要放入 ContentKeyIdentifierClaim 声明中的 ContentKeyId。
 
@@ -152,7 +152,7 @@ ContentKeyPolicy 中使用了 ContentKeyIdentifierClaim，这意味着，提供�
 
 ## <a name="build-a-streaming-url"></a>生成流 URL
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 后，可以获取流 URL。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径****。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
+创建 [StreamingLocator](/rest/api/media/streaminglocators) 后，可以获取流 URL。 若要生成 URL，需要连接 [StreamingEndpoint](/rest/api/media/streamingendpoints) 主机名称和流定位器路径****。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -164,7 +164,7 @@ ContentKeyPolicy 中使用了 ContentKeyIdentifierClaim，这意味着，提供�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换、StreamingLocators 等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码将删除已创建的资产和内容密钥策略：
+一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换、StreamingLocators 等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码可删除作业、已创建的资产和内容密钥策略：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 

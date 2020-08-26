@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e3eefb97c85b3865abbf116b9912dc45f6db8ce8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326862"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor 中的见解概述
 见解针对特定的应用程序和服务提供自定义的监视体验。 它们将数据存储在 [Azure Monitor 数据平台](../platform/data-platform.md)中，并利用其他 Azure Monitor 功能分析数据和发出警报，但可以收集更多数据，并在 Azure 门户中提供独特的用户体验。 可以通过 Azure 门户中“Azure Monitor”菜单的“见解”部分访问见解。
@@ -28,14 +29,14 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
 用于容器的 Azure Monitor 可监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
-请参阅[用于容器的 Azure Monitor 概述](../insights/container-insights-overview.md)。
+请参阅[用于容器的 Azure Monitor 概述](./container-insights-overview.md)。
 
 ![用于容器的 Azure Monitor](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>用于资源组的 Azure Monitor（预览版）
 用于资源组的 Azure Monitor 有助于会审和诊断各资源出现的任何问题，同时提供有关资源组整体运行状况和性能的上下文。
 
-请参阅[使用 Azure Monitor 监视资源组（预览版）](../insights/resource-group-insights.md)。
+请参阅[使用 Azure Monitor 监视资源组（预览版）](./resource-group-insights.md)。
 
 ![用于资源组的 Azure Monitor](media/insights-overview/resource-group-insights.png)
 
@@ -54,3 +55,4 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 ## <a name="next-steps"></a>后续步骤
 * 详细了解见解利用的 [Azure Monitor 数据平台](../platform/data-platform.md)。
 * 了解 [Azure Monitor 使用的不同数据源](../platform/data-sources.md)，以及每种见解收集的不同类型的数据。
+

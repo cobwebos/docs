@@ -3,12 +3,12 @@ title: 如何停止监视混合 Kubernetes 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器来停止监视混合 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091192"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>如何停止监视混合群集
 
@@ -16,7 +16,7 @@ ms.locfileid: "84885852"
 
 - Azure 上的 AKS 引擎和 Azure Stack
 - OpenShift 版本4及更高版本
-- 已启用 Azure Arc 的 Kubernetes（预览版）
+- 启用了 Azure Arc 的 Kubernetes（预览版）
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>如何使用 Helm 停止监视
 
@@ -120,4 +120,4 @@ ms.locfileid: "84885852"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。
+如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../platform/delete-workspace.md)。

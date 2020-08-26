@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084307"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
@@ -58,14 +58,14 @@ ms.locfileid: "86223595"
 
 ## <a name="sample"></a>示例
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>先决条件
 
 完成以下教程，熟悉相关概念以及常见的创建和配置步骤：
 
 1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
 2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，并接收通知。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
 完整的示例代码可在[通知中心示例]中找到。 它分为三个组件：
 
@@ -289,8 +289,8 @@ ms.locfileid: "86223595"
 <!-- Links -->
 [通知中心示例]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure 移动服务]: https://azure.microsoft.com/documentation/services/mobile-services/
-[Azure 服务总线]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[服务总线 Pub/Sub 编程]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure 服务总线]: ../service-bus-messaging/service-bus-messaging-overview.md
+[服务总线 Pub/Sub 编程]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md
-[通知中心 - Windows 通用教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[通知中心 - Windows 通用教程]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Azure 门户]: https://portal.azure.com/

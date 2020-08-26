@@ -11,6 +11,7 @@ ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733367"

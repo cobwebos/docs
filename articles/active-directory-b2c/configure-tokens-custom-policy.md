@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389524"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505455"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
 本文提供了有关在 Azure Active Directory B2C (Azure AD B2C) 中如何使用[自定义策略](custom-policy-overview.md)管理令牌、会话和单一登录 (SSO) 配置的信息。
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW 令牌生存期和声明配置
+## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT 令牌生存期和声明配置
 
 若要更改令牌生存期的设置，需要在想要影响的策略的信赖方文件中添加 [ClaimsProviders](claimsproviders.md) 元素。  **ClaimsProviders** 元素是 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素的子代。
 

@@ -4,15 +4,15 @@ description: 第 2 代 VM 的 Azure 支持概述
 author: ju-shim
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: e84d4d147490cd3b9d136f25a3707f5a74999f3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2a40c6158b5d29f695360c04a0d4376efd4238f9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288475"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -150,10 +150,10 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="frequently-asked-questions"></a>常见问题
 
 * **第 2 代 VM 是否已在所有 Azure 区域中推出？**  
-    是。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
+    是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-    不是。
+    否。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
@@ -184,7 +184,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。
 
 * **第 2 代 VM 是否支持加速网络？**  
-    是。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+    是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第 2 代是否支持 VHDX？**  
     否，第 2 代 VM 仅支持 VHD。

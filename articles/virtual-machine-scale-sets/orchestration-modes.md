@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011067"
 ---
 # <a name="orchestration-modes-preview"></a>业务流程模式（预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "84736996"
 
 ## <a name="orchestration-modes"></a>业务流程模式
 
-|                             | “orchestrationMode”:“VM” (VirtualMachine) | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
+| 功能                     | "orchestrationMode"： "VM" （VirtualMachine） | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM 配置模型      | 无                                       | 必须 |
 | 将新 VM 添加到规模集  | 创建 VM 时，会显式将 VM 添加到规模集。 | VM 是隐式创建的，将会根据 VM 配置模型、实例计数和自动缩放规则添加到规模集 | |
@@ -64,4 +64,4 @@ ms.locfileid: "84736996"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[可用性选项概述](availability.md)。
+有关详细信息，请参阅[可用性选项概述](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json)。

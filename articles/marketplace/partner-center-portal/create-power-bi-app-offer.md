@@ -1,20 +1,20 @@
 ---
-title: 在 Microsoft 商业市场中创建 Power BI 应用产品/服务
+title: 在 Microsoft AppSource 中创建 Power BI 应用服务
 description: 了解如何创建 Power BI 应用产品/服务并发布到 Microsoft AppSource。
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980335"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815398"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>为 Microsoft AppSource 创建 Power BI 应用
+# <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
 本文介绍如何创建 Power BI 应用程序产品/服务并发布到 Microsoft [AppSource](https://appsource.microsoft.com/)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "85980335"
    ![阐释左侧导航菜单。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> 发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 > [!IMPORTANT]
 > 如果未显示或未启用“Power BI 服务应用”，则帐户无权创建此产品/服务类型。 请检查是否已满足此产品/服务类型的所有[要求](create-power-bi-app-overview.md)，包括开发人员帐户注册。
@@ -55,10 +55,10 @@ ms.locfileid: "85980335"
 
 它包含用于根据你所做的选择对此产品/服务执行操作的链接。 例如：
 
-- 如果产品/服务是草稿版/草稿版[产品](update-existing-offer.md#delete-a-draft-offer)/服务
-- 如果产品/服务是实时的，则[停止销售产品](update-existing-offer.md#stop-selling-an-offer-or-plan)/服务）
-- 如果[产品/服务是预览版）](publishing-status.md#publisher-approval)
-- 如果尚未完成发布服务器注销-[取消发布](update-existing-offer.md#cancel-publishing)）
+- 如果产品/服务是草稿版的草稿 [提议](update-existing-offer.md#delete-a-draft-offer)) 
+- 如果产品/服务是实时的，则 [停止销售该产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)) 
+- 如果[产品/服务为预览版) ](publishing-status.md#publisher-approval)
+- 如果尚未完成发布服务器注销-请 [取消发布](update-existing-offer.md#cancel-publishing)) 
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -82,8 +82,8 @@ ms.locfileid: "85980335"
 下面是一些其他顾客连接管理资源：
 
 - [顾客连接管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [顾客连接管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -96,10 +96,10 @@ ms.locfileid: "85980335"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -128,7 +128,7 @@ ms.locfileid: "85980335"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。 还可以提供一个有用的链接，来使用与产品/服务列表中所使用的语言不同的语言提供内容。
 
-以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-power-bi-app.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -138,7 +138,7 @@ ms.locfileid: "85980335"
 2. 产品
 3. 类别
 4. 行业
-5. 支持地址（链接）
+5. 支持地址 (链接) 
 6. 使用条款
 7. 隐私策略
 8. 产品名称
@@ -202,16 +202,23 @@ ms.locfileid: "85980335"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供两个像素大小的产品/服务徽标的 PNG 文件：
-- 小 (48 x 48)
-- 大图 (216 x 216)
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-两种徽标都是必需的，并且在市场列表的不同位置上使用。
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
+
+在列表中的不同位置使用这些徽标：
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -253,4 +260,4 @@ ms.locfileid: "85980335"
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。

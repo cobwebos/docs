@@ -1,14 +1,14 @@
 ---
 title: 以编程方式创建策略
 description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 REST API 以编程方式创建和管理适用于 Azure Policy 的策略。
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969883"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548305"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
@@ -95,7 +95,7 @@ ms.locfileid: "85969883"
    - 订阅 - `/subscriptions/{subId}/`
    - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-有关使用资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅[Az. 资源](/powershell/module/az.resources/#policies)。
+有关使用资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [Az.Resources](/powershell/module/az.resources/#policies)。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>使用 ARMClient 创建并分配策略定义
 

@@ -3,20 +3,18 @@ title: 教程：Azure Notebook - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 本教程模拟 Azure Notebook 中的个性化体验创建服务循环系统，并为客户建议要订购哪种类型的咖啡。 用户及其偏好存储在用户数据集中。 此外还会提供有关咖啡的信息并将其存储在咖啡数据集中。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
-ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608479"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509903"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
 
@@ -625,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>验证新学习策略
 
-返回到 Azure Notebook，然后继续运行同一个循环，但这一次仅针对 2,000 个迭代运行。 定期刷新 Azure 门户中的指标图表，以查看调用服务的总次数。 针对循环的每个迭代调用排名和奖励大约 4,000 次后，迭代即告完成。
+返回到 Azure Notebooks 文件，然后继续运行同一个循环，但这一次仅针对 2,000 个迭代运行。 定期刷新 Azure 门户中的指标图表，以查看调用服务的总次数。 针对循环的每个迭代调用排名和奖励大约 4,000 次后，迭代即告完成。
 
 ```python
 # max iterations

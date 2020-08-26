@@ -1,7 +1,7 @@
 ---
 title: 教程 - 模拟从主要区域读取数据时出现的故障
 titleSuffix: Azure Storage
-description: 模拟为读取访问异地区域冗余存储 (RA-GZRS) 配置了存储帐户时，从主要区域读取数据时的错误。 发生错误后，请从次要区域读取数据。
+description: 模拟为读取访问异地区域冗余存储 (RA-GZRS) 配置了存储帐户时，从主要区域读取数据时的错误。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: f7a792eea28c6a6d05c4f295241291fdf2449467
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 59eb826d8d17ed2adb3027f0aab11a6933b47ae5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858895"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905731"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
@@ -34,7 +35,7 @@ ms.locfileid: "82858895"
 
 ## <a name="prerequisites"></a>先决条件
 
-开始学习本教程之前，请完成前一教程：[使用 Azure 存储实现应用程序数据的高可用性][previous-tutorial]。
+开始学习本教程之前，请完成前一教程：[使应用程序数据在 Azure 存储中高度可用][previous-tutorial]。
 
 若要使用静态路由模拟故障，需要使用权限提升的命令提示符。
 
@@ -102,9 +103,9 @@ route delete <destination_ip>
 
 以下部分介绍如何使用 fiddler 模拟失败和主终结点还原。
 
-### <a name="launch-fiddler"></a>启动 fiddler
+### <a name="launch-fiddler"></a>启动 Fiddler
 
-打开 Fiddler，依次选择“规则”和“自定义规则”。
+打开 Fiddler，选择“规则”和“自定义规则”。 
 
 ![自定义 Fiddler 规则](media/simulate-primary-region-failure/figure1.png)
 
@@ -130,7 +131,7 @@ route delete <destination_ip>
     */
 ```
 
-![粘贴自定义规则](media/simulate-primary-region-failure/figure2.png)
+![粘贴自定义的规则](media/simulate-primary-region-failure/figure2.png)
 
 ### <a name="start-and-pause-the-application"></a>启动和暂停应用程序
 

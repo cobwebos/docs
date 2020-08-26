@@ -2,24 +2,24 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 45dad7d7b176037087e37638db380294521a8e19
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135053"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511272"
 ---
-本文提供信息和示例代码，以帮助你开始通过 Go 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Go 应用程序的模板。
+本文提供信息和示例代码，以帮助你开始通过 Go 使用自定义视觉客户端库来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Go 应用程序的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>安装自定义视觉 SDK
+## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
-若要安装适用于 Go 的自定义视觉服务 SDK，请在 PowerShell 中运行以下命令：
+若要安装适用于 Go 的自定义视觉服务客户端库，请在 PowerShell 中运行以下命令：
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...

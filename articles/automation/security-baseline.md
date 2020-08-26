@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187415"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562678"
 ---
 # <a name="azure-security-baseline-for-automation"></a>用于自动化的 Azure 安全基线
 
@@ -34,7 +34,7 @@ ms.locfileid: "86187415"
 
 或者，如果你有特定的要求，还可以使用 Azure 防火墙来满足此要求。
 
-* [Azure 中的虚拟网络和虚拟机](../virtual-machines/windows/network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../virtual-machines/network-overview.md)
 
 * [如何创建虚拟网络](../virtual-network/quick-create-portal.md)
 
@@ -52,7 +52,7 @@ ms.locfileid: "86187415"
 
 **指南**： Azure Automation 目前没有针对混合 Runbook 辅助角色支持的专用网络的虚拟网络集成。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，请确保使用网络安全组 (NSG) 启用了包含这些辅助角色的子网，并将流日志配置为将日志转发到存储帐户进行流量审核。 你还可以将 NSG 流日志转发到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，请确保使用网络安全组 (NSG) 启用了包含这些辅助角色的子网，并将流日志配置为将日志转发到存储帐户进行流量审核。 你还可以将 NSG 流日志转发到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
 
 尽管 NSG 规则和用户定义的路由不适用于专用终结点，但仍支持出站连接的 NSG 流日志和监视信息，并且可以使用它们。
 
@@ -66,7 +66,7 @@ ms.locfileid: "86187415"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 Azure 安全中心监视：不适用
 
@@ -80,7 +80,7 @@ Azure 安全中心监视：不适用
 
 可以使用 Azure 安全中心的实时网络访问权限，在有限的时间段内将 Windows 虚拟机的公开权限限制为已批准的 IP 地址。 同时，使用 Azure 安全中心自适应网络强化建议进行 NSG 配置，以根据实际流量和威胁智能限制端口和源 Ip。
 
-* [如何配置 DDoS 保护](../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -108,7 +108,7 @@ Azure 安全中心监视：不适用
 
 **责任**：客户
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (ID/IP) 
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
 **指南**： Azure Automation 目前尚不支持混合 Runbook 辅助角色的虚拟网络集成。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
@@ -126,7 +126,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：目前不可用
 
@@ -160,7 +160,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：对 nsg 以及与网络安全和流量流相关的其他资源使用标记。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
+**指导**：将标记用于 NSG 以及其他与网络安全和流量流有关的资源。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
 
 使用标记相关的任何内置 Azure Policy 定义（例如“需要标记及其值”）来确保使用标记创建所有资源，并在有现有资源不带标记时发出通知。
 
@@ -196,7 +196,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Microsoft 维护 Azure 资源的时间源。 但是，你可以选择管理在 Windows 虚拟机上运行的任何混合 Runbook 辅助角色的时间同步设置。
 
-* [如何配置 Azure 计算资源的时间同步](../virtual-machines/windows/time-sync.md)
+* [如何为 Azure 计算资源配置时间同步](../virtual-machines/windows/time-sync.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -212,7 +212,7 @@ Azure 安全中心监视：不适用
 
 * [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
-* [如何开始将 Azure Monitor 与第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+* [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 * [将 Azure 自动化作业数据转发到 Azure Monitor 日志](./automation-manage-send-joblogs-log-analytics.md)
 
@@ -220,7 +220,7 @@ Azure 安全中心监视：不适用
 
 * [链接的 Log Analytics 工作区支持的区域](./how-to/region-mappings.md)
 
-* [查询更新管理日志](./automation-update-management-query-logs.md)
+* [查询更新管理日志](./update-management/update-mgmt-query-logs.md)
 
 **Azure 安全中心监视**：是
 
@@ -236,7 +236,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
@@ -264,7 +264,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
-**指南**：分析和监视日志中的异常行为，并定期检查结果。 使用 Azure Monitor 日志查询来查看日志，并对日志数据执行查询。
+**指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 日志查询来查看日志，并对日志数据执行查询。
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
@@ -304,7 +304,7 @@ Azure 安全中心监视：不适用
 
 * [如何为虚拟机启用来宾级别监视](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -324,7 +324,7 @@ Azure 安全中心监视：不适用
 
 * [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -448,7 +448,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
+**指南**：Azure AD 提供有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
 
 * [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -516,7 +516,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 使用独立的自动化帐户资源隔离环境。 混合 Runbook 辅助角色等资源应该由虚拟网络/子网分开、标记正确，并在网络安全组 (NSG) 或 Azure 防火墙中得到保护。 对于存储或处理敏感数据的虚拟机，执行策略和过程 () 在不使用时将其关闭。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 使用独立的自动化帐户资源隔离环境。 混合 Runbook 辅助角色等资源应该由虚拟网络/子网分开、标记正确，并在网络安全组 (NSG) 或 Azure 防火墙中得到保护。 对于存储或处理敏感数据的虚拟机，执行策略和过程 () 在不使用时将其关闭。
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -530,7 +530,7 @@ Azure 安全中心监视：不适用
 
 * [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [如何配置警报或警报，以及如何拒绝 Azure 防火墙](../firewall/threat-intel.md)
+* [如何通过 Azure 防火墙配置“警报”或“发出警报并拒绝”](../firewall/threat-intel.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -552,7 +552,7 @@ Azure 安全中心监视：不适用
 
 **指导**：加密传输中的所有敏感信息。 确保连接到 Azure 虚拟网络中的 Azure 资源的任何客户端都能够协商 TLS 1.2 或更高版本。 Azure 自动化通过 webhook、DSC 节点、混合 runbook 辅助角色) 完全支持并强制实施传输层 (TLS) 1.2 以及所有外部 HTPS 终结 (点的所有客户端调用或更高版本。
 
-请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。
+请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。
 
 * [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -598,7 +598,7 @@ Azure 安全中心监视：不适用
 
 **指南**：通过 Azure 自动化使用客户托管的密钥。 Azure 自动化支持使用客户管理的密钥来加密所有使用的安全资产，例如凭据、证书、连接和加密的变量。 将加密变量与 runbook 结合使用，以防止意外的公开。
 
-使用混合 Runbook 辅助角色时，虚拟机上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密 (ADE) 进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
+使用混合 Runbook 辅助角色时，虚拟机上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密 (ADE) 进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
 * [Azure 托管磁盘的服务器端加密](../virtual-machines/windows/disk-encryption.md)
 
@@ -646,11 +646,11 @@ Azure 安全中心监视：不适用
 
 如果使用 Azure 虚拟机支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-* [Azure 中的更新管理](./automation-update-management.md)
+* [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修补程序](./automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修补程序](./update-management/update-mgmt-manage-updates-for-vm.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -660,11 +660,11 @@ Azure 安全中心监视：不适用
 
 如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，则可以使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher (Updates Publisher) 等工具允许您将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-* [Azure 中的更新管理解决方案](./automation-update-management.md)
+* [Azure 中的更新管理解决方案](./update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修补程序](./automation-tutorial-update-management.md)
+* [管理 Azure VM 的更新和修补程序](./update-management/update-mgmt-manage-updates-for-vm.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -680,7 +680,7 @@ Azure 安全中心监视：不适用
 
 **指南**：使用默认风险评级 (Azure 安全中心提供的安全分数) ，以帮助确定发现的漏洞的修正。
 
-* [了解 Azure 安全中心安全分数](../security-center/secure-score-security-controls.md)
+* [了解 Azure 安全中心安全功能分数](../security-center/secure-score-security-controls.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -716,7 +716,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure 自动化资源。 定期协调清单，并确保及时从订阅中删除未经授权的资源。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure 自动化资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -770,7 +770,7 @@ Azure 安全中心监视：不适用
 
 * [在 Azure 自动化中管理模块](./shared-resources/modules.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -792,7 +792,7 @@ Azure 安全中心监视：不适用
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -818,7 +818,7 @@ Azure 安全中心监视：不适用
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -840,7 +840,7 @@ Azure 安全中心监视：不适用
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -848,7 +848,7 @@ Azure 安全中心监视：不适用
 
 **指南**：你的 azure 环境中部署的高风险应用程序可使用虚拟网络、子网、订阅和管理组等构造，使用单独的网络和资源容器进行隔离，可以使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 充分保护这些应用程序。
 
-* [Azure 中的虚拟网络和虚拟机](../virtual-machines/windows/network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../virtual-machines/network-overview.md)
 
 * [Azure 防火墙概述](../firewall/overview.md)
 
@@ -862,7 +862,7 @@ Azure 安全中心监视：不适用
 
 * [订阅决策指南](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -902,7 +902,7 @@ Azure 安全中心监视：不适用
 
 * [如何修正 Azure 安全中心建议](../security-center/security-center-remediate-recommendations.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -918,13 +918,13 @@ Azure 安全中心监视：不适用
 
 * [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-* [使用 Azure 资源管理器模板部署自动化帐户](./automation-create-account-template.md#deploy-the-template)
+* [使用 Azure 资源管理器模板部署自动化帐户](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
@@ -998,7 +998,7 @@ Azure 安全中心监视：不适用
 
 * [加入 Azure Automation State Configuration 管理的计算机](./automation-dsc-onboarding.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1028,7 +1028,7 @@ Azure 安全中心监视：不适用
 
 * [加入 Azure Automation State Configuration 管理的计算机](./automation-dsc-onboarding.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1056,15 +1056,15 @@ Azure 安全中心监视：不适用
 
 * [为自动化帐户使用客户管理的密钥](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-* [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -1082,7 +1082,7 @@ Azure 安全中心监视：不适用
 
 * [如何为云服务和虚拟机配置 Microsoft 反恶意软件](../security/fundamentals/antimalware.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1092,7 +1092,7 @@ Azure 安全中心监视：不适用
 
 * [了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1106,7 +1106,7 @@ Azure 安全中心监视：不适用
 
 * [Microsoft Defender 高级威胁防护](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1124,7 +1124,7 @@ Azure 安全中心监视：不适用
 
 * [Azure 自动化资源的 azure 资源管理器模板参考](/azure/templates/microsoft.automation/allversions)
 
-* [使用 Azure 资源管理器模板创建自动化帐户](./automation-create-account-template.md)
+* [使用 Azure 资源管理器模板创建自动化帐户](./quickstart-create-automation-account-template.md)
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1142,7 +1142,7 @@ Azure 安全中心监视：不适用
 
 **责任**：客户
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份任何客户托管的密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
 **指南**：使用 azure 资源管理器部署 azure 自动化帐户和相关资源。 Azure 资源管理器提供导出模板的功能，可以将这些模板用作还原 Azure Automation 帐户和相关资源的备份。 使用 Azure 自动化定期调用 Azure 资源管理器模板导出 API。 在 Azure Key Vault 中备份客户托管的密钥。 可以使用 Azure 门户或 PowerShell 将 runbook 导出到脚本文件。
 
@@ -1150,7 +1150,7 @@ Azure 安全中心监视：不适用
 
 * [Azure 自动化资源的 azure 资源管理器模板参考](/azure/templates/microsoft.automation/allversions)
 
-* [使用 Azure 资源管理器模板创建自动化帐户](./automation-create-account-template.md)
+* [使用 Azure 资源管理器模板创建自动化帐户](./quickstart-create-automation-account-template.md)
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1168,11 +1168,11 @@ Azure 安全中心监视：不适用
 
 责任：客户
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证包括客户托管密钥在内的所有备份
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
 **指南**：如果需要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。 测试已备份客户托管密钥的还原。
 
-* [利用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
+* [使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 
 * [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -1180,7 +1180,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -1218,13 +1218,13 @@ Azure 安全中心监视：不适用
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请明确标记订阅（例如 生产或非生产），并创建命名系统以清楚地标识和分类 Azure 资源，尤其是那些用于处理敏感数据的资源。 你要保证根据 Azure 资源以及事件的发生环境的重要性来设置警报修正的优先级。
+此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-* [使用标记组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)
+* [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -1232,9 +1232,9 @@ Azure 安全中心监视：不适用
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指南**：定期执行练习来测试系统的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
 
-* [NIST 出版物 - 适用于 IT 计划和功能的测试、培训和练习计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+* [NIST 发布 - IT 计划和功能的测试、训练和演练计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure 安全中心监视**：不适用
 
@@ -1242,7 +1242,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的一方访问了你的数据，Microsoft 将使用安全事件联系人信息来与你取得联系。 事后审查事件，确保问题得到解决。
+**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现数据被某方非法访问或未经授权访问，Microsoft 会使用安全事件联系信息联系用户。 事后审查事件，确保问题得到解决。
 
 * [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
@@ -1252,7 +1252,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 
@@ -1264,7 +1264,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
-**指南**：使用 Azure 安全中心的工作流自动化功能，可通过 "逻辑应用" 自动触发有关安全警报和建议的响应，以保护 Azure 资源。
+**指导**：使用 Azure 安全中心内的工作流自动化功能，通过“逻辑应用”针对安全警报和建议自动触发响应，以保护 Azure 资源。
 
 * [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
@@ -1278,7 +1278,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策。 针对 Microsoft 托管的云基础结构、服务和应用程序，使用 Microsoft 的战略和对红色组合和活动站点渗透测试的执行。
+**指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 * [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

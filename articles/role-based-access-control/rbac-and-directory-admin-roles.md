@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 64b4b0bd8c1e387229144e02293b573062ab196c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4c501368dfbeb95be1c5d2af9ff7aae3850257b3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087820"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761138"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -131,4 +131,3 @@ Azure AD 角色用于管理目录中的 Azure AD 资源，例如，创建或编�
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](overview.md)
 - [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Azure 经典订阅管理员](classic-administrators.md)
-- [云采用框架：Azure 中的资源访问管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

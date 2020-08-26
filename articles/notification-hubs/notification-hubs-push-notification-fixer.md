@@ -16,11 +16,12 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657492"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078028"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心内删除通知的问题
 
@@ -103,7 +104,7 @@ ms.locfileid: "77657492"
 
 在这种情况下，出错的注册会从数据库中删除。 然后，我们针对该批次中的其他设备重试通知传递。
 
-若要获取有关针对注册的失败传送尝试的更多错误消息，可以将通知中心 REST Api 用于[每条消息遥测：获取通知消息遥测](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry)和[PNS 反馈](https://msdn.microsoft.com/library/azure/mt705560.aspx)。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
+若要获取有关针对注册的失败传送尝试的更多错误消息，可以将通知中心 REST Api 用于[每条消息遥测：获取通知消息遥测](/rest/api/notificationhubs/get-notification-message-telemetry)和[PNS 反馈](/previous-versions/azure/reference/mt705560(v=azure.100))。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
 
 ## <a name="push-notification-service-issues"></a>推送通知服务问题
 
@@ -125,7 +126,7 @@ ms.locfileid: "77657492"
 
 #### <a name="push-notification-service-developer-portal"></a>推送通知服务开发人员门户
 
-在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅[教程：使用 Azure 通知中心将通知发送到通用 Windows 平台应用](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)。
+在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅[教程：使用 Azure 通知中心将通知发送到通用 Windows 平台应用](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
 
 #### <a name="azure-portal"></a>Azure 门户
 
@@ -162,7 +163,7 @@ ms.locfileid: "77657492"
 ![Visual Studio：测试发送](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> 用于编辑注册的 Visual Studio 功能只能在开发/测试有限的注册时使用。 如果需要批量编辑注册，请考虑使用[如何：批量导出和修改注册](https://msdn.microsoft.com/library/dn790624.aspx)中所述的导出和导入注册功能。
+> 用于编辑注册的 Visual Studio 功能只能在开发/测试有限的注册时使用。 如果需要批量编辑注册，请考虑使用[如何：批量导出和修改注册](/previous-versions/azure/azure-services/dn790624(v=azure.100))中所述的导出和导入注册功能。
 
 #### <a name="service-bus-explorer"></a>服务总线资源管理器
 
@@ -184,7 +185,7 @@ ms.locfileid: "77657492"
 
 有关将通知中心与 Visual Studio 服务器资源管理器搭配使用的详细信息，请参阅以下文章：
 
-* [如何查看通知中心的设备注册](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [如何查看通知中心的设备注册](/previous-versions/windows/apps/dn792122(v=win.10))
 * [深入了解：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]
 * [宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]
 
@@ -265,7 +266,7 @@ The Token obtained from the Token Provider is wrong
 
 #### <a name="programmatic-access"></a>以编程方式访问
 
-有关编程访问的详细信息，请参阅[以编程方式访问](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))。
+有关编程访问的详细信息，请参阅[以编程方式访问](/previous-versions/azure/azure-services/dn458823(v=azure.100))。
 
 > [!NOTE]
 > 与遥测相关的多项功能（例如，导出和导入注册、通过 API 进行遥测访问）只能在“标准”服务层级使用。 如果尝试从“免费”或“基本”服务层级使用这些功能，则在使用 SDK 时会收到异常消息。 如果直接从 REST API 使用这些功能，将会收到 HTTP 403（已禁止）错误。
@@ -287,13 +288,13 @@ The Token obtained from the Token Provider is wrong
 <!-- LINKS -->
 [通知中心概述]: notification-hubs-push-notification-overview.md
 [Azure 通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[模板]: https://msdn.microsoft.com/library/dn530748.aspx
+[模板]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [深入了解：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

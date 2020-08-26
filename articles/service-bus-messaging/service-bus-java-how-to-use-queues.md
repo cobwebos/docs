@@ -4,13 +4,13 @@ description: 本教程介绍如何创建 Java 应用程序来向 Azure 服务总
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 86097603b8b17b0e474cef4b57171bb51d5a1420
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 5447bea686db48157c721978f5510cd80e0924c6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338072"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065788"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入门：通过 Java 使用 Azure 服务总线队列发送和接收消息
 
@@ -172,7 +172,7 @@ public void run() throws Exception {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以在客户端对象上调用 **abandon()** 方法并使用通过 **getLockToken()** 获取的已收到消息的锁定令牌。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以在客户端对象上调用 **abandon()** 方法并使用通过 **getLockToken()** 获取的已收到消息的锁定令牌。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将自动解锁该消息并使它可再次被接收。
 
@@ -187,6 +187,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 有关详细信息，请参阅 [Java 开发人员中心](https://azure.microsoft.com/develop/java/)。
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
-[Azure Toolkit for Eclipse]: https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation
+[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

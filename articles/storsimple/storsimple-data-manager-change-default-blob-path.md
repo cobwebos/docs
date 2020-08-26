@@ -1,17 +1,17 @@
 ---
 title: 更改默认的 blob 路径
-description: 了解如何设置 Azure 函数以重命名 blob 文件路径
+description: 了解如何设置 Azure 函数以重命名默认 blob 文件路径，以及如何将 blob 移到其他位置。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504825"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183711"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
@@ -27,7 +27,7 @@ ms.locfileid: "85504825"
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。
 
-2. 单击“+ 创建资源”  。 在“搜索”**** 框中，输入“Function App”****，并按 Enter****。 在显示的应用列表中，选中并单击“Function App”****。
+2. 单击“+ 创建资源”。 在“搜索”**** 框中，输入“Function App”****，并按 Enter****。 在显示的应用列表中，选中并单击“Function App”****。
 
     ![在搜索框中输入“Function App”](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
@@ -209,7 +209,7 @@ ms.locfileid: "85504825"
         ```
 
     
-    4. 单击“保存” 。
+    4. 单击“ **保存**”。
 
         ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 

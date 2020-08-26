@@ -1,6 +1,6 @@
 ---
 title: 无密码登录 Microsoft Authenticator 应用-Azure Active Directory
-description: 使用 Microsoft Authenticator 应用（预览版）启用无密码登录 Azure AD
+description: 使用 Microsoft Authenticator 应用 () 预览启用无密码登录 Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601626"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717041"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用 (预览版启用无密码登录) 
 
 使用 Microsoft Authenticator 应用可以登录到任何 Azure AD 帐户，且无需输入密码。 类似于 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 的技术，Microsoft Authenticator 使用基于密钥的身份验证来启用绑定到设备的用户凭据，并使用生物识别特征或 PIN。 此身份验证方法可用于任何设备平台（包括移动设备）以及与 Microsoft 身份验证库集成的任何应用程序或网站。 
 
@@ -41,16 +41,16 @@ ms.locfileid: "85601626"
 
 ### <a name="enable-the-combined-registration-experience"></a>启用组合注册体验
 
-无密码身份验证方法的注册功能依赖于组合注册功能。 按照[启用组合的安全信息注册](howto-registration-mfa-sspr-combined.md)一文中的步骤启用合并注册。
+无密码身份验证方法的注册功能依赖于组合注册功能。 按照 [启用组合的安全信息注册](howto-registration-mfa-sspr-combined.md)一文中的步骤启用合并注册。
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>启用无密码手机登录身份验证方法
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 搜索并选择“Azure Active Directory”。 选择**安全**  >  **身份验证**方法  >  **身份验证方法策略（预览）**
-1. 在**无密码手机登录**下，选择以下选项
-   1. **启用**-是或否
-   1. **目标**-所有用户或选择用户
-1. **保存**以设置新策略
+1. 使用**全局管理员**帐户登录到[Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”。 选择 "**安全**  >  **身份验证方法**"  >  **身份验证方法策略 (预览) **
+1. 在 **无密码手机登录**下，选择以下选项
+   1. **启用** -是或否
+   1. **目标** -所有用户或选择用户
+1. **保存** 以设置新策略
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator 应用的用户注册和管理
 
@@ -58,17 +58,17 @@ ms.locfileid: "85601626"
 1. 如果尚未登录，请登录
 1. 单击 "**添加方法**"，选择 "验证器**应用**"，然后单击 "**添加**" 来添加验证器应用
 1. 按照说明在设备上安装和配置 Microsoft Authenticator 应用
-1. 单击 "**完成**"，完成身份验证器 MFA 应用安装流。 
-1. 在**Microsoft Authenticator**中，从 "帐户" 下拉菜单中选择 "**启用手机登录**"。
+1. 单击 " **完成** "，完成身份验证器 MFA 应用安装流。 
+1. 在 **Microsoft Authenticator**中，从 "帐户" 下拉菜单中选择 " **启用手机登录** "。
 1. 按照应用中的说明完成注册无密码手机登录。 
 
-组织可以让他们的用户登录到[你的手机，而不是你的密码，](../user-help/microsoft-authenticator-app-phone-signin-faq.md)以便在 Microsoft Authenticator 的应用程序中设置进一步的帮助并启用手机登录。 若要应用这些设置，你可能需要注销并重新登录到租户。 
+组织可以让他们的用户登录到 [你的手机，而不是你的密码，](../user-help/user-help-auth-app-sign-in.md) 以便在 Microsoft Authenticator 的应用程序中设置进一步的帮助并启用手机登录。 若要应用这些设置，你可能需要注销并重新登录到租户。 
 
 ## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录
 
-在公共预览版中，没有任何方法可以强制用户创建或使用此新凭据。 如果管理员已启用其租户 **，并且**用户已更新其 Microsoft Authenticator 应用程序以启用手机登录，则用户只会遇到无密码登录。
+在公共预览版中，没有任何方法可以强制用户创建或使用此新凭据。 如果管理员已启用其租户 **，并且** 用户已更新其 Microsoft Authenticator 应用程序以启用手机登录，则用户只会遇到无密码登录。
 
-在 web 上键入用户名并选择 "**下一步**" 后，将向用户显示一个数字，并在其 Microsoft Authenticator 应用中提示用户选择合适的号码进行身份验证，而不是使用其密码。 
+在 web 上键入用户名并选择 " **下一步**" 后，将向用户显示一个数字，并在其 Microsoft Authenticator 应用中提示用户选择合适的号码进行身份验证，而不是使用其密码。 
 
 ![使用 Microsoft Authenticator 应用程序的浏览器登录示例](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "85601626"
 
 用户有可能在某个时间点在其当前 Microsoft Authenticator 应用或更早的设备上创建无密码手机登录凭据。 一旦管理员启用了身份验证方法策略以无密码手机登录，则任何已注册了凭据的用户都将开始体验新的登录提示，无论是否已启用它们来使用该策略。 如果尚未允许用户使用策略，则在完成身份验证流后，用户将看到一个错误。 
 
-管理员可以选择允许用户使用无密码 phone 登录，或用户必须删除该方法。 如果用户不再有已注册的设备，则可以跳到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 该用户并将其删除。 如果它们仍在使用用于 MFA 的身份验证器，则可以从 Microsoft Authenticator 中选择 "**禁用"** 。  
+管理员可以选择允许用户使用无密码 phone 登录，或用户必须删除该方法。 如果用户不再有已注册的设备，则可以跳到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 该用户并将其删除。 如果它们仍在使用用于 MFA 的身份验证器，则可以从 Microsoft Authenticator 中选择 " **禁用"** 。  
 
 ### <a name="ad-fs-integration"></a>AD FS 集成
 
@@ -96,7 +96,7 @@ ms.locfileid: "85601626"
 
 ### <a name="intune-mobile-application-management"></a>Intune 移动应用程序管理 
 
-受要求移动应用程序管理（MAM）的策略的最终用户无法在 Microsoft Authenticator 应用中注册无密码凭据。 
+受策略要求移动应用程序管理 (MAM) 的最终用户无法在 Microsoft Authenticator 应用中注册无密码凭据。 
 
 > [!NOTE]
 > 设备注册不同于设备管理或 "MDM"。 它仅将设备 ID 和用户 ID 在 Azure AD 目录中一起关联。  

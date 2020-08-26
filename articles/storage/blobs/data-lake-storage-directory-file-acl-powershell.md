@@ -6,21 +6,21 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 08/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142541"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054300"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍如何使用 PowerShell 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[Gen1 到 Gen2 的映射](#gen1-gen2-map) | [提供反馈](https://github.com/Azure/azure-powershell/issues)
+[参考](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  | [Gen1 到 Gen2 的映射](#gen1-gen2-map)  | [提供反馈](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -264,7 +264,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 可以获取、设置和更新目录与文件的访问权限。 这些权限在访问控制列表 (ACL) 中捕获。
 
 > [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 为命令授权，请确保已为安全主体分配了[存储 Blob 数据所有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 若要使用 Azure Active Directory (Azure AD) 为命令授权，请确保已为安全主体分配了[存储 Blob 数据所有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ### <a name="get-an-acl"></a>获取 ACL
 
@@ -299,7 +299,7 @@ $file.ACL
 
 ![获取 ACL 输出](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
 
-在此示例中，所有者用户拥有读取、写入和执行权限。 所有者组仅拥有读取和执行权限。 有关这些访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
+在此示例中，所有者用户拥有读取、写入和执行权限。 所有者组仅拥有读取和执行权限。 有关访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
 ### <a name="set-an-acl"></a>设置 ACL
 

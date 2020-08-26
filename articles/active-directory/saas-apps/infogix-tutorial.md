@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Infogix Data3Sixty Govern 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aa3109b8-bdbe-45ae-933a-2eb4dc03855c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c46fe09691c270338e7ce60f8f0753e8c9b84948
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100344"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成
 

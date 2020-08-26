@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 向托管标识分配对资源的访问权限 - Azure AD
-description: 分步说明了如何使用 Azure CLI 在一个资源上分配托管标识、访问另一个资源。
+description: 分步说明如何使用 Azure CLI 将托管标识分配给一个资源，将访问权限分配给另一个资源。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,11 +15,13 @@ ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 454bc929e3a82aa889c99b9eb74eaee7e95c579f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: eb89f962251c8c83a0f01e67a1ae42203d7e69f9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608341"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494632"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 向托管标识分配对资源的访问权限
 
@@ -48,7 +50,7 @@ ms.locfileid: "85608341"
    az login
    ```
 
-2. 此示例要授予 Azure 虚拟机对存储帐户的访问权限。 首先，我们使用[az resource list](/cli/azure/resource/#az-resource-list)获取名为 myVM 的虚拟机的服务主体：
+2. 此示例要授予 Azure 虚拟机对存储帐户的访问权限。 首先，我们使用 [az resource list](/cli/azure/resource/#az-resource-list) 获取名为 myVM 的虚拟机的服务主体：
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)

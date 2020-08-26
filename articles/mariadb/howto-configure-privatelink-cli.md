@@ -6,19 +6,20 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 97901ee0c431699ac8217619042daefd86df2f38
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120970"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833158"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 创建和管理 Azure Database for MariaDB 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MariaDB 服务器中创建 VM。
 
 > [!NOTE]
-> 此功能适用于所有 Azure Database for MariaDB 支持常规用途和内存优化定价层的 Azure 区域。
+> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for MariaDB 服务器。 请确保数据库服务器是这些定价层中的一种。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -134,7 +135,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
+1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
@@ -145,7 +146,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据**** ****。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
 1. 选择“确定”。
 
@@ -177,12 +178,12 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     | 连接名称| 选择所选的连接名称。|
     | 主机名 | 选择*mydemoserver.privatelink.mariadb.database.azure.com* |
     | 用户名 | 输入在 *username@servername* MariaDB 服务器创建过程中提供的用户名。 |
-    | 密码 | 输入在创建 MariaDB 服务器期间提供的密码。 |
+    | Password | 输入在创建 MariaDB 服务器期间提供的密码。 |
     ||
 
 5. 选择 "**测试连接** **" 或 "确定"**。
 
-6. 同时从左侧菜单浏览数据库，并从 MariaDB 数据库创建或查询信息
+6.  (可以选择) 从左菜单浏览数据库，并从 MariaDB 数据库创建或查询信息
 
 8. 关闭与 myVm 的远程桌面连接。
 

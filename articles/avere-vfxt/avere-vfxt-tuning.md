@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT 群集优化 - Azure
-description: 用于优化 Avere vFXT for Azure 性能的自定义设置概述
+description: 了解 Avere vFXT for Azure 中的 vFXT 群集的一些自定义优化，可以使用支持代表。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 2d06e3cc80f05cc86980dd2570d1d4d203295ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d9f81c9438cb992f81bd3e6319532d67db75552
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505284"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272376"
 ---
 # <a name="cluster-tuning"></a>群集优化
 
@@ -51,4 +51,4 @@ ms.locfileid: "85505284"
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>帮助优化 Avere vFXT for Azure
 
-若要与支持人员联系以了解这些优化，请使用在[系统中获取帮助](avere-vfxt-open-ticket.md)中所述的过程。
+若要与支持人员联系以了解这些优化，请使用在 [系统中获取帮助](avere-vfxt-open-ticket.md)中所述的过程。

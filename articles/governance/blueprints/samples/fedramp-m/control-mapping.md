@@ -1,20 +1,20 @@
 ---
 title: FedRAMP Moderate 蓝图示例控件
 description: FedRAMP Moderate 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: c95b47034fbf18f2588e2c4134729162c9bb7cc5
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0dae1e9482c198fed5f0b1b2e46d222c46ca5555
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816261"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921701"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图 FedRAMP Moderate 蓝图示例如何映射到 FedRAMP Moderate 控件。 有关这些控件的详细信息，请参阅 [FedRAMP 安全控件基线](https://www.fedramp.gov/)。
 
-以下映射适用于 FedRAMP Moderate 控件。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“ **\[预览\]：审核 FedRAMP Moderate 控件并部署特定 VM 扩展以支持审核要求**内置策略计划。
+以下映射适用于 FedRAMP Moderate 控件。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“ **\[预览\]：审核 FedRAMP Moderate 控件并部署特定 VM 扩展以支持审核要求**内置策略计划。
 
 > [!IMPORTANT]
 > 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-m/control-mapping.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "83816261"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) 帐户管理 | 基于角色的方案
 
-Azure 实施了[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此外，此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
+Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此外，此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
 
 - 应该为 SQL 服务器预配 Azure Active Directory 管理员
 - 审核自定义 RBAC 规则的使用

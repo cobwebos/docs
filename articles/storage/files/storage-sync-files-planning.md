@@ -1,18 +1,19 @@
 ---
 title: 规划 Azure 文件同步部署 | Microsoft Docs
-description: 了解规划 Azure 文件部署时应考虑的问题。
+description: 使用 Azure 文件同步服务计划部署，该服务允许你在本地 Windows Server 或云 VM 上缓存多个 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552187"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553101"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -255,7 +256,7 @@ Azure 文件同步代理使用 Azure 文件同步 REST 协议和 FileREST 协议
 - 配置 Azure 文件同步以支持环境中的代理。
 - 限制 Azure 文件同步的网络活动。
 
-若要详细了解 Azure 文件同步和网络，请参阅[Azure 文件同步网络注意事项](storage-sync-files-networking-overview.md)。
+若要详细了解 Azure 文件同步和网络，请参阅 [Azure 文件同步网络注意事项](storage-sync-files-networking-overview.md)。
 
 ## <a name="encryption"></a>加密
 使用 Azure 文件同步时，需要考虑三个不同的加密层：对 Windows Server 的静态存储进行加密、在 Azure 文件同步代理与 Azure 之间的传输中进行加密，以及在 Azure 文件共享中对数据进行静态加密。 
@@ -357,10 +358,10 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 
 还可以使用 Data Box 将数据迁移到 Azure 文件同步部署。 大多数情况下，当客户想使用 Data Box 引入数据时，他们会这样做，因为他们认为这样会提高部署的速度，或者因为这样做有助于实施带宽受限的方案。 尽管使用 Data Box 将数据引入到 Azure 文件同步部署中会降低带宽利用率，但大多数情况下，使用上述方法之一来实现联机数据上传可能会更快。 若要详细了解如何使用 Data Box 将数据引入 Azure 文件同步部署，请参阅[使用 Azure Data Box 将数据迁移到 Azure 文件同步](storage-sync-offline-data-transfer.md)。
 
-客户在将数据迁移到新的 Azure 文件同步部署时常犯的一个错误是直接将数据复制到 Azure 文件共享，而不是复制到其 Windows 文件服务器上。 尽管 Azure 文件同步会标识 Azure 文件共享上的所有新文件，并将它们同步回 Windows 文件共享，但这通常比通过 Windows 文件服务器加载数据的速度要慢得多。 使用 Azure 复制工具（如 AzCopy）时，请务必使用最新版本。 检查 "[文件复制工具" 表](storage-files-migration-overview.md#file-copy-tools)以获取 Azure copy 工具的概述，以确保可以复制文件的所有重要元数据，例如时间戳和 acl。
+客户在将数据迁移到新的 Azure 文件同步部署时常犯的一个错误是直接将数据复制到 Azure 文件共享，而不是复制到其 Windows 文件服务器上。 尽管 Azure 文件同步会标识 Azure 文件共享上的所有新文件，并将它们同步回 Windows 文件共享，但这通常比通过 Windows 文件服务器加载数据的速度要慢得多。 使用 Azure 复制工具（如 AzCopy）时，请务必使用最新版本。 检查 " [文件复制工具" 表](storage-files-migration-overview.md#file-copy-tools) 以获取 Azure copy 工具的概述，以确保可以复制文件的所有重要元数据，例如时间戳和 acl。
 
 ## <a name="antivirus"></a>防病毒
-由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。 
+由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件，从而导致大量出口费用。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。 
 
 Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endpoint Protection (SCEP) 都会自动跳过读取设有此属性的文件。 我们已对这两个解决方案进行了测试并发现了一个小问题：向现有的同步组添加服务器时，在新服务器上会重新调用（下载）小于 800 字节的文件。 这些文件将保留在新服务器上并且不会分层，因为它们不符合分层大小要求 (> 64kb)。
 
@@ -368,15 +369,15 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 > 防病毒供应商可以使用 [Azure 文件同步防病毒兼容性测试套件](https://www.microsoft.com/download/details.aspx?id=58322)（可从 Microsoft 下载中心下载）来检查其产品与 Azure 文件同步的兼容性。
 
 ## <a name="backup"></a>备份 
-与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
+如果启用了云分层，则不应使用直接备份服务器终结点的解决方案或服务器终结点所在的 VM。 云分层仅导致在服务器终结点上存储数据的一个子集，并将完整的数据集驻留在 Azure 文件共享中。 根据所使用的备份解决方案，将跳过或不备份分层文件 (因为它们 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性集) ，或者它们将被召回到磁盘，导致大量出口费用。 建议使用云备份解决方案直接备份 Azure 文件共享。 有关详细信息，请参阅 [关于 azure 文件共享备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) 或与备份提供商联系，查看他们是否支持备份 Azure 文件共享。
 
-如果使用的是本地备份解决方案，则应在已禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
+如果希望使用本地备份解决方案，则应在禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
 
 > [!Note]  
 > 祼机 (BMR) 还原可能会导致意外的结果且当前不受支持。
 
 > [!Note]  
-> 如果使用 Azure 文件同步代理版本 9，启用了云分层的卷上现在支持 VSS 快照（包括“以前的版本”选项卡）。 但是，必须通过 PowerShell 实现以前版本的兼容性。 [了解操作方法](storage-files-deployment-guide.md)。
+> 如果使用 Azure 文件同步代理版本 9，启用了云分层的卷上现在支持 VSS 快照（包括“以前的版本”选项卡）。 但是，必须通过 PowerShell 实现以前版本的兼容性。 [了解操作方法](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

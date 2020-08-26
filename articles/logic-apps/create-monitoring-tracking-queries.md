@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090393"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>查看并创建用于在 Azure 逻辑应用 Azure Monitor 日志中监视和跟踪的查询
 
-您可以查看从[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)生成结果的基础查询，并创建根据特定条件筛选结果的查询。 例如，你可以根据特定的交换控制编号查找消息。 查询使用[Kusto 查询语言](https://aka.ms/LogAnalyticsLanguageReference)，如果想要查看不同的结果，可以对其进行编辑。 有关详细信息，请参阅[Azure Monitor 日志查询](../azure-monitor/log-query/query-language.md)。
+您可以查看从[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)生成结果的基础查询，并创建根据特定条件筛选结果的查询。 例如，你可以根据特定的交换控制编号查找消息。 查询使用[Kusto 查询语言](https://aka.ms/LogAnalyticsLanguageReference)，如果想要查看不同的结果，可以对其进行编辑。 有关详细信息，请参阅[Azure Monitor 日志查询](../azure-monitor/log-query/query-language.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 114b8b32d4abb1fd9b7e641625cd1b132470bafd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281440"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>将逻辑应用迁移到最新架构版本
 
@@ -39,4 +40,5 @@ ms.locfileid: "75666782"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[手动迁移逻辑应用](../logic-apps/logic-apps-schema-2015-08-01.md)
+* 了解如何[手动迁移逻辑应用](../logic-apps/logic-apps-schema-2016-04-01.md)
+

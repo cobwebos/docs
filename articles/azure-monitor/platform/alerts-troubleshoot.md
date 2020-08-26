@@ -6,11 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045249"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题
 
@@ -240,13 +241,13 @@ ms.locfileid: "84300767"
 
 1. **是否遇到了权限错误？**  
 
-    你应该拥有 [监视参与者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)，或者与操作规则和警报相关的特定权限。
+    你应该拥有 [监视参与者内置角色](../../role-based-access-control/built-in-roles.md#monitoring-contributor)，或者与操作规则和警报相关的特定权限。
 
 1. **是否已验证操作规则参数？**  
 
-    查看[操作规则文档](alerts-action-rules.md)或[操作规则 PowerShell Set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) 命令。 
+    查看[操作规则文档](alerts-action-rules.md)或[操作规则 PowerShell Set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) 命令。 
 
 
 ## <a name="next-steps"></a>后续步骤
-- 如果使用的是日志警报，另请参阅[排查日志警报问题](alert-log-troubleshoot.md)。
+- 如果使用的是日志警报，另请参阅[排查日志警报问题](./alerts-troubleshoot-log.md)。
 - 返回 [Azure 门户](https://portal.azure.com)，检查是否已遵循上述指导解决了问题 

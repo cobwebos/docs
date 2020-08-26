@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539816"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549559"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
-采样是 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的一项功能。 建议将它用于降低遥测流量、数据成本和存储成本，同时保留采用统计方式的应用程序数据的正确分析。 采样还有助于避免 Application Insights 限制遥测。 采样筛选器会选择相关项，以便可以在执行诊断调查时在不同项之间导航。
+采样是 [Azure Application Insights](./app-insights-overview.md) 中的一项功能。 建议将它用于降低遥测流量、数据成本和存储成本，同时保留采用统计方式的应用程序数据的正确分析。 采样还有助于避免 Application Insights 限制遥测。 采样筛选器会选择相关项，以便可以在执行诊断调查时在不同项之间导航。
 
 当指标计数显示在门户中时，它们会重新规范化以考虑到采样。 这样可以尽量减轻对统计的影响。
 
@@ -25,7 +25,7 @@ ms.locfileid: "86539816"
 * 固定速率采样可在最新版本的适用于 ASP.NET、ASP.NET Core、Java（代理和 SDK）和 Python 的 Application Insights SDK 中使用。
 * 引入采样适用于 Application Insights 服务终结点。 仅当没有其他采样生效时，才能应用引入采样。 如果 SDK 为遥测数据采样，则会禁用引入采样。
 * 对于 Web 应用程序，如果记录自定义事件，并需要确保事件集一同保留或一同丢弃，则事件必须具有相同的 `OperationId` 值。
-* 如果要编写分析查询，应[考虑采样](../../azure-monitor/log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
+* 如果要编写分析查询，应[考虑采样](../log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
 * 某些遥测类型（包括性能指标和自定义指标）始终会保留，而不管是否启用采样。
 
 下表汇总了适用于每个 SDK 和应用程序类型的采样类型：
@@ -72,13 +72,13 @@ ms.locfileid: "86539816"
 ### <a name="configuring-adaptive-sampling-for-aspnet-applications"></a>为 ASP.NET 应用程序配置自适应采样
 
 > [!NOTE]
-> 本部分适用于 ASP.NET 应用程序，而不适用于 ASP.NET Core 应用程序。 [稍后在本文档中了解如何为 ASP.NET Core 应用程序配置自适应采样。](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)
+> 本部分适用于 ASP.NET 应用程序，而不适用于 ASP.NET Core 应用程序。 [稍后在本文档中了解如何为 ASP.NET Core 应用程序配置自适应采样。](#configuring-adaptive-sampling-for-aspnet-core-applications)
 
-在 [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中，可以在 `AdaptiveSamplingTelemetryProcessor` 节点中调整多个参数。 显示的数字是默认值：
+在 [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) 中，可以在 `AdaptiveSamplingTelemetryProcessor` 节点中调整多个参数。 显示的数字是默认值：
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    自适应算法的目标速率旨在针对**每个服务器主机**。 如果在多台主机上运行 Web 应用，应减小此值以保留在 Application Insights 门户的目标流量速率以内。
+    自适应算法**在每个服务器主机上**要收集的[逻辑操作](./correlation.md#data-model-for-telemetry-correlation)的目标速率。 如果在多台主机上运行 Web 应用，应减小此值以保留在 Application Insights 门户的目标流量速率以内。
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   
@@ -146,7 +146,7 @@ ms.locfileid: "86539816"
     builder.Build();
     ```
 
-    （[了解遥测处理器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。）
+    （[了解遥测处理器](./api-filtering-sampling.md#filtering)。）
 
 也可以单独调整每个遥测类型的采样率，甚至可以完全排除特定类型的采取：
 
@@ -187,6 +187,8 @@ public void ConfigureServices(IServiceCollection services)
 > 如果使用此方法配置采样，请确保在调用 `AddApplicationInsightsTelemetry()` 时将 `aiOptions.EnableAdaptiveSampling` 属性设置为 `false`。
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility
+
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
     var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -210,7 +212,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>为 Azure Functions 配置自适应采样
 
-按照[此页](../../azure-functions/functions-monitoring.md#configure-sampling)中的说明配置 Azure Functions 中运行的应用的自适应采样。
+按照 [此页](../../azure-functions/functions-monitoring.md#configure-sampling) 中的说明配置 Azure Functions 中运行的应用的自适应采样。
 
 ## <a name="fixed-rate-sampling"></a>固定速率采样
 
@@ -222,7 +224,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-aspnet-applications"></a>为 ASP.NET 应用程序配置固定速率采样
 
-1. **禁用自适应采样**：在 [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中，删除或注释掉 `AdaptiveSamplingTelemetryProcessor` 节点。
+1. **禁用自适应采样**：在 [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) 中，删除或注释掉 `AdaptiveSamplingTelemetryProcessor` 节点。
 
     ```xml
     <TelemetryProcessors>
@@ -233,7 +235,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
         -->
     ```
 
-2. **启用固定速率采样模块。** 将以下代码片段添加到 [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md)：
+2. **启用固定速率采样模块。** 将以下代码片段添加到 [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md)：
    
     ```XML
     <TelemetryProcessors>
@@ -265,7 +267,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
     builder.Build();
     ```
 
-    （[了解遥测处理器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。）
+    （[了解遥测处理器](./api-filtering-sampling.md#filtering)。）
 
 ### <a name="configuring-fixed-rate-sampling-for-aspnet-core-applications"></a>为 ASP.NET Core 应用程序配置固定速率采样
 
@@ -311,7 +313,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-agent"></a>配置 Java 代理
 
-1. 下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
+1. 下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 1. 若要启用采样，请将以下内容添加到 `ApplicationInsights.json` 文件：
 
@@ -331,7 +333,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-sdk"></a>配置 Java SDK
 
-1. 使用最新的 [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md) 下载并配置 Web 应用程序。
+1. 使用最新的 [Application Insights Java SDK](./java-get-started.md) 下载并配置 Web 应用程序。
 
 2. 通过将以下代码片段添加到 `ApplicationInsights.xml` 文件，来**启用固定速率采样模块**：
 
@@ -366,7 +368,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>为 OpenCensus Python 应用程序配置固定速率采样
 
-使用最新的 [OpenCensus Azure Monitor 导出程序](../../azure-monitor/app/opencensus-python.md)检测应用程序。
+使用最新的 [OpenCensus Azure Monitor 导出程序](./opencensus-python.md)检测应用程序。
 
 > [!NOTE]
 > 固定速率采样不适用于指标导出程序。 这意味着，自定义指标是唯一不能配置采样的遥测类型。 指标导出程序将发送它跟踪的所有遥测数据。
@@ -446,7 +448,7 @@ handler = AzureLogHandler(
 
 与其他类型的采样一样，该算法会保留相关的遥测项。 例如，在“搜索”中检查遥测数据时，可以查找与特定异常相关的请求。 诸如请求速率和异常率等指标计数会正确保留。
 
-被采样丢弃的数据点将无法在任何 Application Insights 功能（如[连续导出](../../azure-monitor/app/export-telemetry.md)）中使用。
+被采样丢弃的数据点将无法在任何 Application Insights 功能（如[连续导出](./export-telemetry.md)）中使用。
 
 当自适应采样或固定速率采样正在运行时，不会运行引入采样。 使用 ASP.NET SDK 或 ASP.NET Core SDK 时，或者在 [Azure 应用服务](azure-web-apps.md)中或使用状态监视器启用 Application Insights 时，默认会启用自适应采样。 当 Application Insights 服务终结点收到遥测数据时，它会检查遥测数据，如果报告的采样率小于 100%（表示正在对遥测数据采样），将忽略设置的引入采样率。
 
@@ -473,7 +475,7 @@ handler = AzureLogHandler(
 
 **在以下情况下使用固定速率采样：**
 
-* 希望同步客户端和服务器之间的采样，因此，调查[搜索](../../azure-monitor/app/diagnostic-search.md)中的事件时，可以在客户端和服务器上的相关事件之间导航，例如页面视图和 HTTP 请求。
+* 希望同步客户端和服务器之间的采样，因此，调查[搜索](./diagnostic-search.md)中的事件时，可以在客户端和服务器上的相关事件之间导航，例如页面视图和 HTTP 请求。
 * 对应用的适当采样百分比有信心。 它应该足够高以获取准确指标，但应低于超出定价配额和限制的速率。
 
 **使用自适应采样：**
@@ -561,7 +563,7 @@ ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
 
 *我总是想要查看某些罕见的事件。如何让它们通过采样模块？*
 
-* 为此，最佳方法是编写一个自定义的 [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，以便在想要保留的遥测项中将 `SamplingPercentage` 设置为 100，如下所示。 由于保证初始化程序将在遥测处理器（包括采样）之前运行，因此可以确保所有采样技术都会出于任何采样考虑而忽略此项目。 自定义遥测初始化表达式在 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK 和 Java SDK 中可用。 例如，可以使用 ASP.NET SDK 配置遥测初始化表达式：
+* 为此，最佳方法是编写一个自定义的 [TelemetryInitializer](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，以便在想要保留的遥测项中将 `SamplingPercentage` 设置为 100，如下所示。 由于保证初始化程序将在遥测处理器（包括采样）之前运行，因此可以确保所有采样技术都会出于任何采样考虑而忽略此项目。 自定义遥测初始化表达式在 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK 和 Java SDK 中可用。 例如，可以使用 ASP.NET SDK 配置遥测初始化表达式：
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer
@@ -586,5 +588,6 @@ ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
 
 ## <a name="next-steps"></a>后续步骤
 
-* [筛选](../../azure-monitor/app/api-filtering-sampling.md)可以对 SDK 发送的内容提供更严格地控制。
+* [筛选](./api-filtering-sampling.md)可以对 SDK 发送的内容提供更严格地控制。
 * 请参阅开发人员网络文章[使用 Application Insights 优化遥测](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)。
+

@@ -15,11 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204809031bf0d32a998d8bcc435fe2500a025fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730928"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798391"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 
@@ -50,15 +51,15 @@ Azure AD 提供使用共享帐户的新方法，从而可以消除这些缺点�
 
 共享帐户不仅提高了监管力度和可用性，也增强了安全性。 有权使用凭据的用户看不到共享密码，而是通过协调的身份验证流程获取密码的使用权限。 此外，使用某些密码 SSO 应用程序可以选择让 Azure AD 定期滚动更新（更新）密码。 系统使用复杂的长密码来提高帐户安全性。 管理员可以轻松授予或吊销对应用程序的访问权限，还知道谁有权访问帐户以及谁曾经访问了帐户。
 
-Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计划，包括所有类型的密码单一登录应用程序。 可以共享应用库中数千个预先集成的应用程序的帐户，并可使用[自定义 SSO 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)自己的密码身份验证应用程序。
+Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计划，包括所有类型的密码单一登录应用程序。 可以共享应用库中数千个预先集成的应用程序的帐户，并可使用[自定义 SSO 应用](../manage-apps/what-is-single-sign-on.md)自己的密码身份验证应用程序。
 
 支持帐户共享的 Azure AD 功能包括：
 
-* [密码单一登录](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [密码单一登录](../manage-apps/sso-options.md#password-based-sso)
 * 密码单一登录代理
 * [组分配](groups-self-service-management.md)
 * 自定义密码应用
-* [应用使用情况仪表板/报告](../active-directory-passwords-get-insights.md)
+* [应用使用情况仪表板/报告](../authentication/howto-sspr-reporting.md)
 * 最终用户访问门户
 * [应用代理](../manage-apps/application-proxy.md)
 * [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -71,10 +72,10 @@ Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计�
 * 将应用程序配置为使用密码单一登录 (SSO)
 * 使用[基于组的分配](groups-saasapps.md)，并选择输入共享凭据的选项
 
-还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](../authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](groups-self-service-management.md)组管理来委派有关谁有权访问应用程序的管理权。
+还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](../authentication/concept-mfa-howitworks.md)），并可使用 [Azure AD 自助服务](groups-self-service-management.md)组管理来委派有关谁有权访问应用程序的管理权。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)
-* [使用条件访问保护应用](../active-directory-conditional-access-azure-portal.md)
+* [使用条件访问保护应用](../conditional-access/overview.md)
 * [自助服务组管理/SSAA](groups-self-service-management.md)

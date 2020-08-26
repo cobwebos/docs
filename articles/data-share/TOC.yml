@@ -6,6 +6,13 @@
       href: overview.md
     - name: 支持的数据存储
       href: supported-data-stores.md
+- name: 快速入门
+  items:
+    - name: 创建数据共享 - Azure 门户
+      href: share-your-data-portal.md
+    - name: 创建数据共享 - ARM 模板
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: 教程
   expanded: true
   items:
@@ -19,6 +26,8 @@
       href: terminology.md
     - name: 角色和要求
       href: concepts-roles-permissions.md
+    - name: 了解定价
+      href: concepts-pricing.md
 - name: 示例
   items:
     - name: 代码示例
@@ -29,12 +38,12 @@
   items:
     - name: 监视
       href: how-to-monitor.md
-    - name: 配置数据集映射
-      href: how-to-configure-mapping.md
     - name: 疑难解答
       href: data-share-troubleshoot.md
     - name: 添加数据集
       href: how-to-add-datasets.md
+    - name: 配置数据集映射
+      href: how-to-configure-mapping.md
     - name: 添加收件人
       href: how-to-add-recipients.md
     - name: 删除邀请
@@ -45,6 +54,9 @@
       href: security.md
     - name: 灾难恢复
       href: disaster-recovery.md
+    - name: 共享 Azure 数据资源管理器数据
+      href: /azure/data-explorer/data-share
+      maintainContext: true
 - name: 参考
   items:
     - name: .NET
@@ -54,7 +66,7 @@
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: azure-cli-references-for-data-share.md
+      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
 - name: 资源
   items:
     - name: Microsoft Q&A 问题页面

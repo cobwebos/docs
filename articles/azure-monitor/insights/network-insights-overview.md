@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654862"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128669"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure 网络监视器（预览版）
 Azure 网络监视器为已部署的所有网络资源提供运行状况和指标的全面视图，并且无需任何配置。 高级搜索功能可帮助标识资源依赖项，以启用相关方案，例如通过直接搜索托管网站名称来标识托管网站的资源。
@@ -47,7 +48,7 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 右侧的“警报”网格提供所有订阅中选定资源生成的所有警报的视图。 单击警报计数可导航到详细的警报页面。
 
 ## <a name="dependency-view"></a>“依赖项”视图
-“依赖项”视图有助于可视化资源的配置方式。 当前仅应用程序网关支持“依赖项”视图。 可以通过单击“指标”网格视图中的应用程序网关资源名称来访问“依赖项”视图。
+“依赖项”视图有助于可视化资源的配置方式。 目前，应用程序网关、虚拟 WAN 和负载均衡器现在支持依赖项视图。 例如，对于应用程序网关，可以通过在指标网格视图中单击应用程序网关资源名称来访问 "依赖关系" 视图。 这也适用于虚拟 WAN 和负载均衡器。 
 
 ![“应用程序网关”视图](media/network-insights-overview/application-gateway.png)
 
@@ -69,4 +70,4 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 
 ## <a name="next-steps"></a>后续步骤 
 
-- 要详细了解网络监视，请参阅[什么是 Azure 网络观察程序？](/azure/network-watcher/network-watcher-monitoring-overview)。
+- 要详细了解网络监视，请参阅[什么是 Azure 网络观察程序？](../../network-watcher/network-watcher-monitoring-overview.md)。

@@ -3,12 +3,12 @@ title: Azure 中继 .NET Standard API 概述 | Microsoft Docs
 description: 本文总结了 Azure 中继混合连接 .NET 标准 API 的一些关键技术。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d5aeed2ea76f47608ef03103b11fa236ec0362e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316838"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532894"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
@@ -82,7 +82,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>接收数据
 
-[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
+[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
 
 以下代码可从流中读取各行文本，直到请求取消为止：
 
@@ -109,14 +109,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>发送数据
 
-建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
+建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](/dotnet/api/system.io.stream?view=netcore-3.1)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象包装 `hybridConnectionStream` 对象。
+但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) 对象包装 `hybridConnectionStream` 对象。
 
 ```csharp
 // The StreamWriter object only needs to be created once

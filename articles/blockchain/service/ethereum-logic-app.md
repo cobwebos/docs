@@ -4,16 +4,16 @@ description: 将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用�
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077038"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
 
-将 [Ethereum 区块链连接器](https://docs.microsoft.com/connectors/blockchainethereum/)与 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/)配合使用可以执行智能合同操作和响应智能合同事件。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
+将 [Ethereum 区块链连接器](/connectors/blockchainethereum/)与 [Azure 逻辑应用](../../logic-apps/index.yml)配合使用可以执行智能合同操作和响应智能合同事件。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,14 +52,14 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 
     ![包含事件触发器属性的逻辑应用设计器](./media/ethereum-logic-app/event-properties.png)
 
-    | Property | 描述 |
+    | properties | 描述 |
     |----------|-------------|
     | **合同 ABI** | 合同应用程序二进制接口 (ABI) 定义智能合同接口。 有关详细信息，请参阅[获取合同 ABI](#get-the-contract-abi)。 |
     | **智能合同地址** | 合同地址是 Ethereum 区块链上的智能合同目标地址。 有关详细信息，请参阅[获取合同地址](#get-the-contract-address)。 |
     | **事件名称** | 选择要检查的智能合同事件。 该事件触发逻辑应用。 |
     | **间隔**和**频率** | 选择检查事件的频率。 |
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 若要完成逻辑应用，可添加一个新步骤，用于根据 Ethereum 区块链事件触发器执行操作。 例如发送电子邮件。
 
@@ -78,7 +78,7 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 1. 更改或[创建 API 连接](#create-an-api-connection)，该连接用于连接到 Azure 区块链服务。
 1. 根据所选的操作，提供有关智能合同函数的以下详细信息。
 
-    | Property | 描述 |
+    | properties | 描述 |
     |----------|-------------|
     | **合同 ABI** | 合同 ABI 定义智能合同接口。 有关详细信息，请参阅[获取合同 ABI](#get-the-contract-abi)。 |
     | **协定字节码** | 编译的智能合同字节码。 有关详细信息，请参阅[获取合同字节码](#get-the-contract-bytecode)。 |
@@ -153,7 +153,7 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 
 若要与 Azure 区块链服务成员建立连接，可能需要提供以下列表中的属性，具体取决于方案。
 
-| Property | 描述 |
+| properties | 描述 |
 |----------|-------------|
 |**连接名称** | API 连接的名称。 必需。 |
 |**Ethereum RPC 终结点** | Azure 区块链服务事务节点的 HTTP 地址。 必需。 有关详细信息，请参阅[获取 RPC 终结点](#get-the-rpc-endpoint)。 |

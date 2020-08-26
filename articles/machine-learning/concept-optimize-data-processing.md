@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解优化数据处理速度的最佳实践，以及 Azure 机器学习在大规模数据处理方面支持哪些集成。
 services: machine-learning
 ms.service: machine-learning
-author: sgilley
 ms.author: sgilley
+author: sdgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481878"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719268"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
 
@@ -45,7 +45,17 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 
 一个解决方案是增加 RAM 以适应内存中的数据帧。 建议将计算大小和处理能力设置为包含 2 倍大小的 RAM。 因此，如果数据帧为 10 GB，请使用至少具有 20 GB RAM 的计算目标，以确保可以将数据帧恰当地置于内存中并对其进行处理。 
 
-对于多个虚拟 CPU (vCPU)，请记住，所设置的分区应拟合计算机上的每个 vCPU 所能拥有的 RAM 容量。 也就是说，如果具有 16 GB RAM 4 个 vCPU，则每个 vCPU 需要大约 2-GB 的数据帧。
+对于多个虚拟 CPU (vCPU)，请记住，所设置的分区应拟合计算机上的每个 vCPU 所能拥有的 RAM 容量。 也就是说，如果具有 16 GB 的 RAM 4 个 vcpu，则需要每个 vCPU 大约 2 GB 的 dataframes。
+
+### <a name="local-vs-remote"></a>本地与远程
+
+你可能会注意到，当你在本地电脑与使用 Azure 机器学习设置的远程 VM 相比，某些 pandas 数据帧命令的执行速度更快。 你的本地电脑通常启用了页面文件，这允许你加载超出物理内存的内容，而你的硬盘将用作你的 RAM 的扩展。 目前，无需使用页面文件即可运行 Azure 机器学习 Vm，因此，只能加载与可用物理 RAM 一样多的数据。 
+
+对于计算密集型作业，建议选取更大的 VM 以提高处理速度。
+
+详细了解 [可用 VM 系列和 Azure 机器学习大小](concept-compute-target.md#supported-vm-series-and-sizes) 。 
+
+有关 RAM 规范，请参阅相应的 VM 系列页，例如 [Dv2-Dsv2 系列](../virtual-machines/dv2-dsv2-series-memory.md) 或 [NC 系列](../virtual-machines/nc-series.md)。
 
 ### <a name="minimize-cpu-workloads"></a>最小化 CPU 工作负载
 
@@ -65,7 +75,6 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 
 * 使用分布式框架横向扩展到群集。 采用这种方式，将拆分数据处理负载并在多个 CPU 上并行运行，最后收集最终结果。
 
-
 ### <a name="recommended-distributed-frameworks"></a>建议的分布式框架
 
 下表根据代码偏好或数据大小推荐与 Azure 机器学习集成的分布式框架。
@@ -77,9 +86,9 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 适用于小于 1 GB 的数据 | 在本地或对远程 Azure 机器学习计算实例执行 `Pandas`
 适用于大于 10 GB 的数据| 使用 `Ray`、`Dask` 或 `Spark` 移动到群集
 
-可以 `Dask` 在具有[dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure)包的 Azure ML 计算群集上创建群集。 或者，你可以 `Dask` 在计算实例上本地运行。
+可以使用 [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) 包在 Azure ML 计算群集上创建 `Dask` 群集。 或者，可以在计算实例上以本地方式运行 `Dask`。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 机器学习的数据引入选项](concept-data-ingestion.md)。
-* [使用 Azure 数据工厂进行数据引入](how-to-data-ingest-adf.md)。
+* [创建和注册数据集](how-to-create-register-datasets.md)。

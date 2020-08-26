@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628393"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319263"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目（预览） 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本教程介绍如何管理在构建机器学习模型时用作数据的图像的标记过程。 Azure 机器学习中的数据标记功能目前为公共预览版。
@@ -69,7 +69,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
     数据存储名称 | 为数据存储提供一个名称。  此处我们使用 labeling_tutorial。
     数据存储类型 | 选择存储的类型。  此处我们使用“Azure Blob 存储”，这是适用于图像的首选存储。
     帐户选择方法 | 选择“手动输入”。
-    代码 | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
+    URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     身份验证类型 | 选择“SAS 令牌”。
     帐户密钥 | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
@@ -98,14 +98,14 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 ### <a name="select-or-create-a-dataset"></a>选择或创建数据集
 
-1.   在“选择或创建数据集”窗体中，选择第二个选项“创建数据集”，然后选择“从数据存储”链接。  
+1.   在“选择或创建数据集”窗体中，选择第二个选项“创建数据集”，然后选择“从数据存储”链接。
 
 1. 在“从数据存储创建数据集”窗体中使用以下输入：
 
-    1. 在“基本信息”窗体中添加一个名称，此处我们使用 images-for-tutorial。   添加说明（如果需要）。  然后，选择“下一步”。
-    1. 在“选择数据存储”窗体中，使用下拉列表选择以前创建的数据存储，例如“tutorial_images (Azure Blob 存储)”  
-    1. 接下来，仍在“选择数据存储”窗体中，依次选择“浏览”、“MultiClass - DogsCats”。    选择“保存”并使用“/MultiClass - DogsCats”作为路径。 
-    1. 选择“下一步”来确认详细信息，然后选择“创建”以创建数据集。 
+    1. 在“基本信息”窗体中添加一个名称，此处我们使用 images-for-tutorial。  添加说明（如果需要）。  然后，选择“下一步”。
+    1. 在“选择数据存储”窗体中，使用下拉列表选择以前创建的数据存储，例如“tutorial_images (Azure Blob 存储)”
+    1. 接下来，仍在“选择数据存储”窗体中，依次选择“浏览”、“MultiClass - DogsCats”。  选择“保存”并使用“/MultiClass - DogsCats”作为路径。
+    1. 选择“下一步”来确认详细信息，然后选择“创建”以创建数据集。
     1. 在列表中选择数据集名称（例如“images-for-tutorial”）旁边的圆圈。
 
 1. 选择“下一步”继续创建项目。
@@ -118,7 +118,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 ### <a name="label-classes"></a>标签类
 
-1. 在“标签类”窗体中键入标签名称，然后选择“+ 添加标签”以键入下一个标签。   对于本项目，标签为“猫”、“狗”和“不确定”。  
+1. 在“标签类”窗体中键入标签名称，然后选择“+ 添加标签”以键入下一个标签。  对于本项目，标签为“猫”、“狗”和“不确定”。
 
 1. 添加所有标签后，选择“下一步”。
 
@@ -128,9 +128,9 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 1. 还可以直接在窗体中添加任务的简短说明。  键入“标记教程 - 猫和狗”。
 
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 
-1. 在“ML 辅助标记”窗体中，将复选框保留未选中状态。 ML 辅助标记所需的数据比在本教程中使用的数据更多。
+1. 如果使用的是企业版工作区，会看到“ML 辅助标记”部分。  将该复选框保留为未选中状态。 ML 辅助标记所需的数据比在本教程中使用的数据更多。
 
 1. 选择“创建项目”。
 
@@ -142,13 +142,11 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 ### <a name="tag-the-images"></a>标记图像
 
-在本教程部分，你要将角色从“项目管理员”切换为标记人员的角色。   任何对你的工作区具有参与者访问权限的人都可以成为标记人员。
+在本教程部分，你要将角色从“项目管理员”切换为标记人员的角色。  任何对你的工作区具有参与者访问权限的人都可以成为标记人员。
 
 1. 在[机器学习工作室](https://ml.azure.com)中，选择左侧的“数据标记”来找到你的项目。  
 
-1. 选择列表中的项目名称。
-
-1. 在项目名称下方，选择“标签数据”。
+1. 选择项目的“标签链接”。
 
 1. 阅读说明，然后选择“任务”。
 
@@ -196,7 +194,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 1. 选择项目名称链接。
 
-1. 依次选择“导出”、“作为 Azure ML 数据集导出”。  
+1. 依次选择“导出”、“作为 Azure ML 数据集导出”。 
 
     “导出”按钮的正下方会显示导出状态。 
 

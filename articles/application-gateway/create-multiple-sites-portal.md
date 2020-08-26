@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74075154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236181"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -29,17 +29,17 @@ ms.locfileid: "74075154"
 > * 创建路由规则
 > * 在域中创建 CNAME 记录
 
-![多站点路由示例](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="多站点应用程序网关":::
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="prerequisites"></a>先决条件
 
-通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-1. 选择 Azure 门户左侧菜单上的“创建资源”  。 此时会显示“新建”窗口。 
+1. 选择 Azure 门户左侧菜单上的“创建资源”  。 此时会显示“新建”窗口。
 
 2. 选择“网络”  ，然后在“特色”列表中选择“应用程序网关”   。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74075154"
    - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的  。
    - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
 
-     ![新建应用程序网关：基础](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="创建应用程序网关":::
 
 2.  Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在不同的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
@@ -66,7 +66,7 @@ ms.locfileid: "74075154"
 
     选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置   。
 
-     ![新建应用程序网关：虚拟网络](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="创建 VNet":::
     
 3. 在“基本信息”  选项卡上，接受其他设置的默认值，然后选择“下一步:  前端”。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74075154"
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定”     。 
 
-     ![新建应用程序网关：前端](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="创建 VNet":::
 
 3. 在完成时选择“下一步:**后端**。
 
@@ -96,7 +96,7 @@ ms.locfileid: "74075154"
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡    。
 4. 现在添加另一个名为“fabrikamPool”  的后端池。
 
-     ![新建应用程序网关：后端](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="创建后端":::
 
 4. 在“后端”  选项卡上，选择“下一步:  配置”。
 
@@ -119,7 +119,7 @@ ms.locfileid: "74075154"
 
    接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则   。
 
-   ![新建应用程序网关：侦听器](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="创建传递规则":::
 
 4. 在“后端目标”选项卡上，选择“contosoPool”为“后端目标”    。
 
@@ -128,7 +128,7 @@ ms.locfileid: "74075154"
 6. 在“添加传递规则”窗口上，选择“添加”以保存传递规则并返回到“配置”选项卡    。
 7. 选择“添加规则”  ，并为 Fabrikam 添加类似的规则、侦听器、后端目标和 HTTP 设置。
 
-     ![新建应用程序网关：传递规则](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 规则":::
 
 7. 在完成时选择“下一步:  标记”，然后选择“下一步:  查看 + 创建”。
 
@@ -150,9 +150,9 @@ ms.locfileid: "74075154"
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户中，选择“创建资源”。  此时会显示“新建”窗口。 
-2. 选择“计算”，然后在“常用”列表中选择“Windows Server 2016 Datacenter”    。 此时会显示“创建虚拟机”页。 <br>应用程序网关可以将流量路由到其后端池中使用的任何类型的虚拟机。 在此示例中，可以使用 Windows Server 2016 Datacenter。
-3. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值： 
+1. 在 Azure 门户中，选择“创建资源”。 此时会显示“新建”窗口。
+2. 选择“计算”，然后在“常用”列表中选择“Windows Server 2016 Datacenter”    。 此时会显示“创建虚拟机”页。<br>应用程序网关可以将流量路由到其后端池中使用的任何类型的虚拟机。 在此示例中，可以使用 Windows Server 2016 Datacenter。
+3. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值：
 
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
     - **虚拟机名称**：输入“contosoVM”  作为虚拟机的名称。
@@ -161,15 +161,15 @@ ms.locfileid: "74075154"
 4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
 5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
 6. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
-7. 在“管理”  选项卡上，将“启动诊断”  设置为“关闭”。  接受其他默认值，然后选择“复查 + 创建”。 
-8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。  
+7. 在“管理”  选项卡上，将“启动诊断”  设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
+8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 9. 等待虚拟机创建完成，然后再继续操作。
 
 ### <a name="install-iis-for-testing"></a>安装 IIS 进行测试
 
 本示例在虚拟机上安装 IIS，只为验证 Azure 是否已成功创建应用程序网关。
 
-1. 打开 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。   
+1. 打开 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。 
 
     ![安装自定义扩展](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -191,19 +191,19 @@ ms.locfileid: "74075154"
 
 ### <a name="add-backend-servers-to-backend-pools"></a>将后端服务器添加到后端池
 
-1. 选择“所有资源”，然后选择“myAppGateway”。  
+1. 选择“所有资源”，然后选择“myAppGateway”。
 
-2. 从左侧菜单中选择“后端池”。 
+2. 从左侧菜单中选择“后端池”。
 
 3. 选择 **contosoPool**。
 
-4. 在“目标”  下，从下拉列表中选择“虚拟机”。 
+4. 在“目标”  下，从下拉列表中选择“虚拟机”。
 
 5. 在“虚拟机”  和“网络接口”  下，从下拉列表中选择“contosoVM”  虚拟机及其关联的网络接口。
 
     ![添加后端服务器](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-6. 选择“保存”。 
+6. 选择“保存”。
 7. 重复此步骤，将 fabrikamVM  和接口添加到 fabrikamPool  。
 
 等待部署完成之后再继续下一步。
@@ -235,9 +235,9 @@ ms.locfileid: "74075154"
 若要删除资源组，请执行以下操作：
 
 1. 在 Azure 门户的左侧菜单上选择“资源组”  。
-2. 在“资源组”页的列表中搜索“myResourceGroupAG”，然后将其选中。  
+2. 在“资源组”页的列表中搜索“myResourceGroupAG”，然后将其选中。
 3. 在“资源组”页上，选择“删除资源组”   。
-4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”   
+4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

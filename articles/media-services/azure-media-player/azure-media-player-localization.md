@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82779036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087282"
 ---
-# <a name="localization"></a>本地化 #
+# <a name="azure-media-player-localization"></a>Azure Media Player 本地化 #
 
 多语言支持允许非英语区域设置的用户以本机方式与播放机交互。 Azure Media Player 将使用一种语言的全局字典来实例化，这将基于页面语言本地化错误消息。 开发人员还可以使用强制集语言创建播放机实例。 默认语言为英语（en）。
 
@@ -26,7 +26,7 @@ ms.locfileid: "82779036"
 
 Azure Media Player 当前支持以下语言及其相应的语言代码：
 
-| 语言            | 代码 | 语言                | 代码   | 语言                | 代码         |
+| Language            | 代码 | Language                | 代码   | Language                | 代码         |
 |---------------------|------|-------------------------|--------|-------------------------|--------------|
 | 英语 {默认}   | en   | 克罗地亚语                | hr     | 罗马尼亚语                | ro           |
 | 阿拉伯语              | ar   | 匈牙利语               | hu     | 斯洛伐克语                  | sk           |

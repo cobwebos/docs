@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66b0ba083dc05c10dbf001eebcbbdfa269285c2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537434"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318957"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -19,7 +20,7 @@ ms.locfileid: "81537434"
 
 有关这些命令的说明、自定义说明以及有关故障排除的信息，请参阅[详细说明](status-monitor-v2-detailed-instructions.md)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载并安装
 
@@ -70,18 +71,19 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  查看遥测：
 
-- [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
-- [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-- [使用分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
-- [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
+- [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+- [搜索事件和日志](./diagnostic-search.md)以诊断问题。
+- [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+- [创建仪表板](./overview-dashboard.md)。
 
  添加更多遥测：
 
 - [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
-- [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
-- [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
+- [添加 Web 客户端遥测](./javascript.md)，以查看网页代码中的异常并启用跟踪调用。
+- [将 Application Insights SDK 添加到代码](./asp-net.md)，以便插入跟踪和日志调用。
 
 使用 Application Insights 代理执行更多操作：
 
 - 有关此处找到的命令的说明，请查看[详细说明](status-monitor-v2-detailed-instructions.md)。
 - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
+

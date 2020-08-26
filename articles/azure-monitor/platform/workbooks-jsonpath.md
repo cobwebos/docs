@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081383"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何在工作簿中使用 JSONPath 转换 JSON 数据
 
-工作簿可以从多个源查询数据。 某些终结点（例如 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)或自定义终结点）可以返回 JSON 格式的结果。 如果查询的终结点返回的 JSON 数据未采用所需的格式进行配置，可以使用 JSONPath 来转换结果。
+工作簿可以从多个源查询数据。 某些终结点（例如 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)或自定义终结点）可以返回 JSON 格式的结果。 如果查询的终结点返回的 JSON 数据未采用所需的格式进行配置，可以使用 JSONPath 来转换结果。
 
 JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 与 XPath 类似，JSONPath 允许从 JSON 结构中提取和筛选数据。
 

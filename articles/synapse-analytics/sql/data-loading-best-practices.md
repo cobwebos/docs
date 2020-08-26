@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963880"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486810"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>为数据仓库加载数据的最佳做法
 
 有关加载数据的建议和性能优化
 
-## <a name="preparing-data-in-azure-storage"></a>在 Azure 存储中准备数据
+## <a name="prepare-data-in-azure-storage"></a>在 Azure 存储中准备数据
 
 若要尽量减少延迟，请将存储层和数据仓库并置。
 
@@ -34,13 +34,13 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 将大型压缩文件拆分为较小的压缩文件。
 
-## <a name="running-loads-with-enough-compute"></a>使用足够的计算资源运行负载
+## <a name="run-loads-with-enough-compute"></a>运行具有足够计算的负载
 
 若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期的加载作业较大，可以考虑在加载前纵向扩展 SQL 池。
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类或工作负载组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
 
-### <a name="example-of-creating-a-loading-user"></a>创建加载用户的示例
+### <a name="create-a-loading-user"></a>创建加载用户
 
 此示例为 staticrc20 资源类创建加载用户。 第一步是**连接到主服务器**并创建登录名。
 
@@ -62,7 +62,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 在静态而非动态资源类下运行负载。 使用静态资源类可确保不管[数据仓库单元](resource-consumption-models.md)如何，资源始终不变。 如果使用动态资源类，则资源因服务级别而异。 对于动态类，如果服务级别降低，则意味着可能需要对加载用户使用更大的资源类。
 
-## <a name="allowing-multiple-users-to-load"></a>允许多个用户进行加载
+## <a name="allow-multiple-users-to-load"></a>允许多个用户加载
 
 通常需要允许多个用户将数据加载到数据仓库中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。 可能不需要让所有加载用户都具有对所有架构的控制访问权限。 若要限制权限，请使用 DENY CONTROL 语句。
 
@@ -75,13 +75,13 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 现在 user_A 和 user_B 被锁在其他部门的架构之外。
 
-## <a name="loading-to-a-staging-table"></a>加载到临时表
+## <a name="load-to-a-staging-table"></a>加载到临时表
 
 若要尽量提高将数据移到数据仓库表中的加载速度，请将数据加载到临时表中。  将临时表定义为堆，并将轮循机制用于分发选项。
 
 可以认为，加载通常是一个两步的过程：首先将数据加载到临时表中，然后将数据插入生产数据仓库表中。 如果生产表使用哈希分发，在在使用哈希分发来定义临时表的情况下，加载和插入的总时间可能会更短。 加载到临时表需要的时间较长，但第二步将行插入到生产表中不会导致数据跨分布区移动。
 
-## <a name="loading-to-a-columnstore-index"></a>加载到列存储索引
+## <a name="load-to-a-columnstore-index"></a>加载到列存储索引
 
 列存储索引需要将数据压缩成高质量的行组，因此需要大量的内存。 若要最大程度地提高压缩和索引效率，列存储索引需将最多 1,048,576 行压缩到每个行组中。 存在内存压力时，列存储索引可能无法达到最大压缩率。 这反过来会影响查询性能。 若要进行深入了解，请参阅[列存储内存优化](data-load-columnstore-compression.md)。
 
@@ -92,19 +92,19 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 如前所述，通过 PolyBase 加载将提供 Synapse SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载并且必须使用 SQLBulkCopy API （或 BCP），则应考虑增加批大小以提高吞吐量-较好的经验法则是10到1M 行之间的批大小。
 
-## <a name="handling-loading-failures"></a>处理加载失败
+## <a name="manage-loading-failures"></a>管理加载失败
 
-使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。  此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。
+使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。 此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。
 
 若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。 如果外部数据记录的子集是脏的，可以通过使用 CREATE EXTERNAL TABLE 中的拒绝选项，选择拒绝这些查询记录。
 
-## <a name="inserting-data-into-a-production-table"></a>将数据插入生产表
+## <a name="insert-data-into-a-production-table"></a>将数据插入生产表
 
 可以使用 [INSERT 语句](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)将数据一次性加载到小型表中，甚至可以使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之类的语句定期重新加载某个查找。  但是，单独插入的效率不如执行大容量加载的效率。
 
 如果一天中有成千上万的单个插入，可将插入成批进行大容量加载。  制定将单个插入追加到某个文件的流程，然后创建另一流程来定期加载该文件。
 
-## <a name="creating-statistics-after-the-load"></a>创建加载后的统计信息
+## <a name="create-statistics-after-the-load"></a>创建加载后的统计信息
 
 为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  这可以手动完成，也可以启用[自动创建统计信息](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 

@@ -1,15 +1,16 @@
 ---
-title: 升级 Microsoft Azure 恢复服务（MARS）代理
-description: 了解如何升级 Microsoft Azure 恢复服务（MARS）代理。
+title: " (MARS) 代理升级 Microsoft Azure 恢复服务"
+description: 了解如何 (MARS) 代理升级 Microsoft Azure 恢复服务。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4fd5074b0c6195742935e0cf0e742a00a3549e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672880"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827318"
 ---
-# <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>升级 Microsoft Azure 恢复服务（MARS）代理
+# <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a> (MARS) 代理升级 Microsoft Azure 恢复服务
 
 在本文中，你将学习如何：
 
@@ -20,13 +21,13 @@ ms.locfileid: "78672880"
 
 对于 Azure 备份代理和 Azure 备份服务器的安装：
 
-1. 导航到可能由旧版代理备份的已注册服务器所在的恢复服务保管库。 可以在 Azure 发出的 Azure 备份更新警报中，找到包含旧版 Azure 备份代理的保管库的代表性列表。
-1. 在恢复服务保管库的左侧“设置”部分，选择“管理”部分下的“备份基础结构”。  
+1. 导航到恢复服务保管库，其中你的已注册服务器可能已由较旧版本的代理进行备份。 可以在 Azure 发出的 Azure 备份更新警报中，找到包含旧版 Azure 备份代理的保管库的代表性列表。
+1. 在恢复服务保管库的 "左侧**设置**" 部分中，选择 "**管理**" 部分下的 "**备份基础结构**"。
 1. 若要发现在安装 Azure 备份服务器过程中一起安装的 Azure 备份代理，请转到“管理服务器”下的“备份管理服务器”。  此时会列出包含 Azure 备份服务器安装的服务器，以及关联 Azure 备份代理的版本号。
 
     ![在安装 Azure 备份服务器过程中一起安装的 MARS 代理列表](./media/upgrade-mars-agent/backup-management-servers.png)
 
-1. 若要检查 Microsoft Azure 恢复服务（MARS）代理安装或 Azure 备份代理的代理版本，请在**管理服务器**下切换到**受保护的服务器**。 然后选择“备份管理类型”下的“Azure 备份代理”。 此时会列出包含 Azure 备份代理安装的服务器以及安装的版本号。
+1. 若要检查 Microsoft Azure 恢复服务 (MARS) 代理安装或 Azure 备份代理的代理版本，请在 "**管理服务器**" 下，选择 "**受保护的服务器**"。 然后选择“备份管理类型”下的“Azure 备份代理”。 此时会列出包含 Azure 备份代理安装的服务器以及安装的版本号。
 
     ![装有 MARS 代理的服务器列表](./media/upgrade-mars-agent/protected-servers.png)
 
@@ -49,15 +50,15 @@ ms.locfileid: "78672880"
     ![通过远程桌面连接连接到服务器](./media/upgrade-mars-agent/connect-to-server.png)
 
     >[!NOTE]
-    > 如果列出的服务器不存在或已被解除，则你可以忽略下面的剩余步骤，并跳转到下一台服务器。
+    > 如果列出的服务器不存在或已被取消，你可以忽略以下剩余步骤，并跳到下一个服务器。
 
 1. 输入管理登录详细信息并登录。
 
 1. 如果服务器或服务器的代理具有有限的 internet 访问权限，请确保将服务器/代理上的防火墙设置配置为允许使用适用于你正在使用的 Azure 云的 URL：
 
-    Azure 云 | URL
+    Azure 云 | 代码
     -- | ---
-    Azure 云（公共） |   `https://login.windows.net`
+    Azure 云 (公有)  |   `https://login.windows.net`
     Azure 中国世纪互联云   | `https://login.chinacloudapi.cn`
     Azure 美国政府云 |   `https://login.microsoftonline.us`
     Azure 德国云  |  `https://login.microsoftonline.de`

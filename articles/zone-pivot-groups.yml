@@ -83,7 +83,7 @@ groups:
   - id: programming-language-go
     title: Go
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
   - id: programming-language-ruby
@@ -468,10 +468,100 @@ groups:
     title: Kotlin (Android)
   - id: programming-language-swift
     title: Swift (iOS)
+- id: programming-languages-set-twenty-one
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+- id: programming-languages-set-twenty-two
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-spark-all-minus-sql
+  title: 编程语言
+  prompt: 选择语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
+- id: aml-control-methods
+  title: Azure 机器学习控制平面
+  prompt: 选择 Azure 机器学习控制平面接口
+  pivots:
+  - id: py-sdk
+    title: Python SDK
+  - id: cli
+    title: Azure CLI
+- id: speech-full-stack
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-spx
+    title: CLI
+- id: programming-languages-voice-assistants
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: 更多语言...
+- id: ams-lva-edge-programming-languages
+  title: IoT Edge 上的实时视频分析编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: 应用服务平台
+  prompt: 选择托管平台
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: 应用服务与自定义容器
+  prompt: 选择自定义容器平台
+  pivots:
+  - id: container-linux
+    title: Linux 容器
+  - id: container-windows
+    title: Windows 容器
 metadata:
-  ms.openlocfilehash: 1b217a4cece304da740c5402c8ae1665404a7d91
-  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  ms.openlocfilehash: e9997400e1ed6708889f5f9f70078f5d3ec4c282
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/07/2020
-  ms.locfileid: "86040531"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88691201"

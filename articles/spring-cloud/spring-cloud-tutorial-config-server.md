@@ -6,12 +6,13 @@ ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
-ms.translationtype: HT
+ms.custom: devx-track-java
+ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142187"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762349"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -145,14 +146,14 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
     * **基本身份验证**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮  。 在“编辑身份验证”窗格的“身份验证类型”下拉列表中选择“HTTP 基本”，然后输入你的用户名和密码/令牌以授权访问 Azure Spring Cloud  。 选择“确定”，然后选择“应用”完成配置服务器实例的设置 。
 
-    ![“编辑身份验证”窗格](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    ![编辑身份验证窗格基本身份验证](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
     > 一些 Git 存储库服务器（例如 GitHub）将个人令牌或访问令牌（例如密码）用于基本身份验证 。 你可以在 Azure Spring Cloud 中使用这种类型的令牌作为密码，因为它将永不过期。 但对于其他 Git 存储库服务器（例如 BitBucket 和 Azure DevOps），访问令牌将在一到两小时后过期。 这意味着，在将这些存储库服务器与 Azure Spring Cloud 一起使用时，此选项是不可行的。
 
     * **SSH**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮  。 在“编辑身份验证”窗格中的“身份验证类型”下拉列表中，选择“SSH”，然后输入“私钥”   。 （可选）指定“主机密钥”和“主机密钥算法” 。 请确保在配置服务器存储库中包含公钥。 选择“确定”，然后选择“应用”完成配置服务器实例的设置 。
 
-    ![“编辑身份验证”窗格](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+    ![编辑身份验证窗格 ssh 身份验证](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>模式存储库
 
@@ -181,6 +182,48 @@ spring:
 
 YAML 文件中的信息应显示在 Azure 门户中。 选择“应用”以完成操作。 
 
+## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>使用适用于 Azure 春季云配置的 Azure Repos
+
+Azure 春季云可以访问使用 SSH 保护的、使用 HTTP 基本身份验证保护的 Git 存储库。 我们将使用最后一个选项，因为它更易于使用 Azure Repos 进行创建和管理。
+
+### <a name="get-repo-url-and-credentials"></a>获取存储库 url 和凭据
+1. 在项目的 Azure Repos 门户中，单击 "克隆" 按钮：
+
+    ![克隆按钮](media/spring-cloud-tutorial-config-server/clone-button.png)
+
+1. 从文本框中复制克隆 URL。 此 URL 通常采用以下格式：
+
+    ```Text
+    https://<organization name>@dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    删除和之前的所有内容 `https://` `dev.azure.com` ，包括 `@` 。 生成的 URL 的格式应为：
+
+    ```Text
+    https://dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    保存此 URL，以便在下一部分中使用。
+
+1. 单击 "生成 Git 凭据"。 将显示用户名和密码。 保存以供下一部分使用。
+
+
+### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>配置 Azure Spring Cloud 以访问 Git 存储库
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+
+1. 转到 Azure Spring Cloud 的“概览”页。
+
+1. 选择要配置的服务。
+
+1. 在服务页的左窗格中的 " **设置**" 下，选择 " **配置服务器** " 选项卡。配置前面创建的存储库：
+   - 添加从上一部分保存的存储库 URL
+   - 单击 `Authentication` 并选择 `HTTP Basic`
+   - __用户名__是上一部分中保存的用户名
+   - __密码__是上一部分中保存的密码
+   - 单击 "应用" 并等待操作成功
+
+   ![Spring Cloud Config Server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
 ## <a name="delete-your-app-configuration"></a>删除应用配置
 

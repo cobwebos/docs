@@ -1,22 +1,22 @@
 ---
 title: 教程：将标识提供程序添加到应用
 titleSuffix: Azure AD B2C
-description: 了解如何使用 Azure 门户向 Azure Active Directory B2C 应用程序添加标识提供程序。
+description: 按照此教程进行操作，了解如何使用 Azure 门户将标识提供程序添加到 Azure Active Directory B2C 中的应用程序。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384900"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922143"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -133,7 +133,7 @@ ms.locfileid: "85384900"
 
 在本教程中，你已完成先决条件的一部分，创建了名为“B2C_1_signupsignin1”的注册和登录用户流。 在此部分中，将标识提供程序添加到 B2C_1_signupsignin1 用户流。
 
-1. 依次选择“用户流(策略)”和“B2C_1_signupsignin1”用户流。
+1. 选择“用户流”，然后选择“B2C_1_signupsignin1”用户流。
 2. 依次选择“标识提供程序”和所添加的“Facebook”和“Contoso Azure AD”标识提供程序。
 3. 选择“保存”。
 

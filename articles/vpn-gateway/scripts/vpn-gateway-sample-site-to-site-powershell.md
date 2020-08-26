@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 脚本示例 - 配置站点到站点 VPN | Microsoft Docs
-description: 配置站点到站点 VPN。
+description: 使用 PowerShell 创建基于路由的 VPN 网关，并配置 VPN 设备以添加站点到站点连接。
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
-ms.openlocfilehash: 9960b701f3c9766ab8d51c8fa5e575c1bdc5d5c5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fab1f4862cd1f2907d9bdc9f989fe24f1730002c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507530"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032435"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>使用 PowerShell 创建 VPN 网关并添加站点到站点连接
 
@@ -114,4 +114,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

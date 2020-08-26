@@ -3,23 +3,23 @@ title: 教程 - 创建和管理 Azure 预算
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a48e4b594b82f6e910db26fc2319032fbef30b6b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559323"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446003"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
 可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算对特定时期使用或订阅的 Azure 服务进行核算。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
 
-成本和使用情况数据通常在 12-16 小时内可用，每四小时针对这些成本评估预算。 电子邮件通知通常在 12-16 小时内收到。
+成本和使用情况数据通常在 20 小时内可用，每 12-14 小时针对这些成本评估预算。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
 
 在未来选择过期日期时，预算会在某个期间末（月末、季末或年末）自动重置为相同的预算金额。 由于预算是使用相同的预算金额重置的，因此如果未来时段的预算货币金额不同于现在，则需创建单独的预算。
 
@@ -40,7 +40,7 @@ ms.locfileid: "84559323"
 
 以下 Azure 帐户类型和范围都支持预算：
 
-- Azure 基于角色的访问控制范围
+- Azure 基于角色的访问控制 (Azure RBAC) 范围
     - 管理组
     - 订阅
 - 企业协议范围
@@ -101,11 +101,13 @@ ms.locfileid: "84559323"
 
 ![示例，显示通过每月成本数据进行的预算创建操作 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-配置预算金额后，选择“下一步”来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算阈值时，通常会在 20 小时内收到电子邮件通知。
+配置预算金额后，选择“下一步”来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
 
 如果要接收电子邮件，请将 azure-noreply@microsoft.com 添加到已批准的发件人列表，使电子邮件不会被发送到垃圾电子邮件文件夹。 有关通知的详细信息，请参阅[使用成本警报](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
 
 在下面的示例中，达到预算的 90% 时，会生成电子邮件警报。 如果使用预算 API 创建预算，也可将角色分配给人员来接收警报。 不支持在 Azure 门户中向人员分配角色。 有关 Azure 预算 API 的详细信息，请参阅[预算 API](/rest/api/consumption/budgets)。
+
+警报限制支持所提供的预算限额的 0.01% 到 1000% 范围。
 
 ![显示警报条件的示例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -113,7 +115,7 @@ ms.locfileid: "84559323"
 
 ![成本分析中显示的预算和支出示例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-在上面的示例中，你为订阅创建了一个预算。 还可以为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”&gt;“订阅”，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。  
+在上面的示例中，你为订阅创建了一个预算。 还可以为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”&gt;“订阅”，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。
 
 ### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>为合并的 Azure 和 AWS 成本创建预算
 

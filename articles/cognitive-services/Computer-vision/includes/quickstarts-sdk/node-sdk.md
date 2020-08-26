@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 556e56991d59eb65f789fde4d705706a03a63be9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841944"
 ---
 <a name="HOLTop"></a>
 
@@ -139,7 +140,7 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-定义帮助程序函数 `formatRectObjects`：
+定义帮助程序函数 `formatRectObjects` 以返回上、左、下、右坐标以及宽度和高度。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 

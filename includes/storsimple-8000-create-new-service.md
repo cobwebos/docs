@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76021028"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507211"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "76021028"
 
    2. 从下拉列表中选择 **“订阅”**。 该订阅将链接到计费帐户。 如果只有一个订阅，此字段不存在。
 
-   3. 对于“资源组”，请使用现有组或创建新组。************ 有关详细信息，请参阅 [Azure 资源组](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
+   3. 对于“资源组”，请使用现有组或创建新组。************ 有关详细信息，请参阅 [Azure 资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
    4. 提供你的服务的 **“位置”**。 一般情况下，请选择离要部署设备的地理区域最近的位置。 还可能需要考虑以下注意事项：
 

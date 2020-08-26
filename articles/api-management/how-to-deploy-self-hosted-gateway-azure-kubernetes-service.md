@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015215"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>部署到 Azure Kubernetes 服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "86254378"
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>将自承载网关部署到 AKS
 
-1. 在“设置”下选择“网关”。 
+1. 选择“部署和基础结构”下的“网关” 。
 2. 选择要部署的自承载网关资源。
 3. 选择“部署”。
 4. 请注意，“令牌”文本框中已自动生成使用默认“过期时间”和“机密密钥”值的新令牌。   根据需要调整其中的一个或两个值，然后选择“生成”以创建新令牌。

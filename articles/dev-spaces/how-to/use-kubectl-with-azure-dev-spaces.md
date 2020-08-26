@@ -7,6 +7,7 @@ description: 了解如何在启用 Azure Dev Spaces 的 Azure Kubernetes Service
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 ms.openlocfilehash: 7530cde68b2ce8d06fb7b16a9a147f0f0bc8645c
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438367"

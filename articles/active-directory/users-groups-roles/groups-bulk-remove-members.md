@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9084b486681ded0c194c93f07a404f5f5e88fa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf3cba5046a20b99212e89b378327765d22fa23
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728463"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421631"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中批量删除组成员
 
@@ -67,7 +68,7 @@ ms.locfileid: "84728463"
 
 可在“批量操作结果”页面中查看所有挂起的批量请求的状态。
 
-[![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
+[![在“批量操作结果”页面中查看状态](media/groups-bulk-remove-members/bulk-center.png)](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 要详细了解批量操作中每个行项，请选择“成功数”、“失败数”或“请求总数”列下的值  。 如果失败，则会列出失败原因。
 

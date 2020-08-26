@@ -4,15 +4,15 @@ description: 了解如何管理索引策略、在索引中包括或排除属性�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.custom: tracking-python
-ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: de9cdaf1dcc398c5db55de78643a19179f6bfdbc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261505"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876472"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -344,7 +344,7 @@ WHERE c.name = "Tim" AND c.age > 18
 [索引策略更新](index-policy.md#modifying-the-indexing-policy)会触发索引转换。 还可以通过 SDK 跟踪此转换的进度。
 
 > [!NOTE]
-> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 在重新编制索引期间，查询可能会在更新索引时返回部分结果。
+> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 了解有关[索引转换](indexing-policy.md#modifying-the-indexing-policy)的详细信息
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 

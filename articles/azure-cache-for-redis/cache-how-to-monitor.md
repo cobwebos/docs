@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 8dd228add317b5c4cd19f1d0daefa90ce3c937b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184865"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004851"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
 
@@ -99,7 +99,7 @@ ms.locfileid: "86184865"
 | 缓存命中数 |在指定的报告间隔期间，成功的键查找次数。 此数目映射到 Redis [INFO](https://redis.io/commands/info) 命令输出中的 `keyspace_hits`。 |
 | 缓存延迟（预览） | 基于缓存的节点间延迟计算缓存的延迟。 该指标以微秒为单位，具有三个维度：`Avg`、`Min` 和 `Max`，分别表示指定的报告间隔期间缓存的平均延迟、最小延迟和最大延迟。 |
 | 缓存未命中数 |在指定的报告间隔期间，失败的键查找次数。 此数目映射到 Redis INFO 命令输出中的 `keyspace_misses`。 缓存未命中并不一定意味着缓存出现了问题。 例如，在使用缓存端编程模式时，应用程序会首先查找缓存中的项。 如果该项不存在（缓存未命中），则将从数据库中检索该项并将其添加到下一次缓存中。 对于缓存端编程模式，缓存未命中是正常行为。 如果缓存未命中数大于预期值，请检查从缓存中填充并读取的应用程序逻辑。 如果由于内存压力而导致项目从缓存中逐出，则可能存在一些缓存未命中的情况，但指标 `Used Memory` 或 `Evicted Keys` 可以更好的监视内存压力。 |
-| 缓存读取量 |指定报告间隔期间，从缓存中读取的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 **此值对应于该缓存使用的网络带宽。如果要针对服务器端网络带宽限制设置警报，则可使用此 `Cache Read` 计数器来创建警报。请参阅[此表](cache-faq.md#cache-performance)，了解各种缓存定价层和大小所遵循的带宽限制。** |
+| 缓存读取量 |指定报告间隔期间，从缓存中读取的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 **此值对应于该缓存使用的网络带宽。如果要针对服务器端网络带宽限制设置警报，则可使用此 `Cache Read` 计数器来创建警报。请参阅[此表](cache-planning-faq.md#azure-cache-for-redis-performance)，了解各种缓存定价层和大小所遵循的带宽限制。** |
 | 缓存写入量 |指定报告间隔期间，写入缓存中的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 此值对应于从客户端发送到缓存的数据的网络带宽。 |
 | 连接的客户端数 |指定的报告间隔期间，客间户端与缓存的连接数。 此数目映射到 Redis INFO 命令输出中的 `connected_clients`。 一旦达到了[连接限制](cache-configure.md#default-redis-server-configuration)，则对缓存的后续连接尝试将失败。 即使没有任何活动的客户端应用程序，由于内部进程和连接，仍可能存在一些连接的客户端的实例。 |
 | CPU |指定报告间隔期间，用于 Redis 的 Azure 缓存服务器的 CPU 使用率（以百分比表示）。 此值映射到操作系统 `\Processor(_Total)\% Processor Time` 性能计数器。 |

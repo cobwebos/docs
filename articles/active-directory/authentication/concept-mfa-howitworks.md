@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5f8d08f0814ec69719c002ea9efd39bb38b7d16
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80667358"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718010"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 
@@ -41,7 +42,7 @@ Azure 多重身份验证可帮助保护对数据和应用程序的访问，同�
 
 ## <a name="available-verification-methods"></a>可用的验证方法
 
-当用户登录到应用程序或服务并收到 MFA 提示符时，他们可以从其注册的其他验证形式中选择一个。 管理员可能需要注册这些 Azure 多重身份验证方法，或者用户可以访问自己的["我的配置文件](https://myprofile.microsoft.com)" 来编辑或添加验证方法。
+当用户登录到应用程序或服务并收到 MFA 提示符时，他们可以从其注册的其他验证形式中选择一个。 管理员可能需要注册这些 Azure 多重身份验证方法，或者用户可以访问自己的 ["我的配置文件](https://myprofile.microsoft.com) " 来编辑或添加验证方法。
 
 以下附加形式的验证可用于 Azure 多重身份验证：
 
@@ -54,15 +55,15 @@ Azure 多重身份验证可帮助保护对数据和应用程序的访问，同�
 
 可以为 Azure 多重身份验证启用用户和组，以在登录事件期间提示进行其他验证。 默认情况下，所有 Azure AD 租户均可使用[安全默认设置](../fundamentals/concept-fundamentals-security-defaults.md)，以便为所有用户快速启用 Microsoft Authenticator 应用。
 
-对于更精细的控制，可以使用[条件性访问](../conditional-access/overview.md)策略来定义需要 MFA 的事件或应用程序。 当用户处于企业网络或已注册的设备上时，这些策略可允许定期登录事件，但在远程或个人设备上提示输入其他验证因素。
+对于更精细的控制，可以使用 [条件性访问](../conditional-access/overview.md) 策略来定义需要 MFA 的事件或应用程序。 当用户处于企业网络或已注册的设备上时，这些策略可允许定期登录事件，但在远程或个人设备上提示输入其他验证因素。
 
 ![有关条件访问如何保护登录过程的概览图](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关许可的信息，请参阅[Azure 多重身份验证的功能和许可证](concept-mfa-licensing.md)。
+若要了解有关许可的信息，请参阅 [Azure 多重身份验证的功能和许可证](concept-mfa-licensing.md)。
 
 若要查看正在运行的 MFA，请在以下教程中为一组测试用户启用 Azure 多重身份验证：
 
 > [!div class="nextstepaction"]
-> [启用 Azure 多重身份验证](tutorial-mfa-applications.md)
+> [启用 Azure 多重身份验证](./tutorial-enable-azure-mfa.md)

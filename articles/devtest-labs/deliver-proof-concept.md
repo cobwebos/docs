@@ -3,12 +3,12 @@ title: 提供概念证明-Azure 开发测试实验室 |Microsoft Docs
 description: 了解如何提供概念证明，以便 Azure 开发测试实验室可以成功纳入企业环境中。
 ms.topic: article
 ms.date: 06/2/2020
-ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288033"
 ---
 # <a name="deliver-a-proof-of-concept"></a>提供概念证明 
 
@@ -33,7 +33,7 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
 * [开发测试实验室企业文档](devtest-lab-guidance-prescriptive-adoption.md)
 * [Azure 网络简介](../virtual-network/virtual-networks-overview.md)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要使用开发测试实验室成功完成试验或概念证明，有几个前提条件： 
 
@@ -114,8 +114,8 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
 
 在发布完整的开发测试实验室解决方案之前，必须做出一些重要的规划和设计决策。 使用概念证明的经验有助于做出这些决策。 其他注意事项包括： 
 
-* **订阅拓扑**： Azure 中资源的企业级要求可以超出[单个订阅中的可用配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 这需要多个 Azure 订阅和/或服务请求以增加初始订阅限制。 务必提前决定如何将资源分布到多个订阅。 一个有价值的资源是[订阅决策指南](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)，因为以后很难将资源移到另一个订阅。 例如，在创建实验室后，无法将其移动到另一个订阅。  
-* **网络拓扑**：开发测试 Labs 自动创建的[默认网络基础结构](../app-service/networking-features.md)可能不足以满足企业用户的要求和限制。 常见的情况是，可以查看[Azure ExpressRoute 连接的虚拟网络](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)、跨订阅连接的[中心辐射](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，甚至[强制路由](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)以确保仅本地连接。 开发测试实验室允许将现有虚拟网络连接到实验室，以便在实验室中创建新的虚拟机时使用。 
+* **订阅拓扑**： Azure 中资源的企业级要求可以超出[单个订阅中的可用配额](../azure-resource-manager/management/azure-subscription-service-limits.md)。 这需要多个 Azure 订阅和/或服务请求以增加初始订阅限制。 务必提前决定如何将资源分布到多个订阅。 一个有价值的资源是[订阅决策指南](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)，因为以后很难将资源移到另一个订阅。 例如，在创建实验室后，无法将其移动到另一个订阅。  
+* **网络拓扑**：开发测试 Labs 自动创建的[默认网络基础结构](../app-service/networking-features.md)可能不足以满足企业用户的要求和限制。 常见的情况是，可以查看[Azure ExpressRoute 连接的虚拟网络](/azure/architecture/reference-architectures/hybrid-networking/)、跨订阅连接的[中心辐射](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，甚至[强制路由](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)以确保仅本地连接。 开发测试实验室允许将现有虚拟网络连接到实验室，以便在实验室中创建新的虚拟机时使用。 
 * **虚拟机的远程访问**：有许多选项可用于远程访问位于开发测试实验室中的虚拟机。 最简单的方法是使用公共 Ip 或共享公共 Ip。 这些是[实验室中可用的设置](devtest-lab-shared-ip.md)。 如果这些选项不足，还可以选择使用远程访问网关。 此选项显示在[开发测试实验室企业参考体系结构](devtest-lab-reference-architecture.md)上，并在[开发测试实验室远程桌面网关文档](configure-lab-remote-desktop-gateway.md)中进行了进一步说明。 企业还可以使用 ExpressRoute 或站点到站点 VPN 将其实验室连接到本地网络。 此选项可根据虚拟机的专用 IP 地址，实现到这些虚拟机的直接远程桌面或 SSH 连接，而不会向 internet 公开。 
 * **处理权限**：开发测试实验室中通常使用的两个主要权限是[所有者和实验室用户](devtest-lab-add-devtest-user.md)。 在推出开发测试实验室之前做出决定，这一点很重要，他们将获得实验室中每个级别的访问权限。 常见的模型是预算所有者（例如，团队主管）作为实验室所有者，将团队成员作为实验室用户。 此模型使负责预算的人员（团队主管）能够调整策略设置并使团队保持在预算内。  
 

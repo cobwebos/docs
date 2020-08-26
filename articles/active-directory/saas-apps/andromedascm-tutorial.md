@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Andromeda 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Andromeda 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 31fc1877dd0edd2fd670f0f9466692ac7bc8ad15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67107076"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077429"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 有关详细信息，请参阅 [Multitenant Hosting for Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)（Windows 10 多租户托管）。
@@ -55,7 +55,7 @@ if($adminAccount.Disabled)
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>使用多租户托管权限部署 Windows 10
-确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/overview)。 准备好 VHD 之后，即可使用 `Add-AzVhd` cmdlet 将 VHD 上传到 Azure 存储帐户，如下所示：
+确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/)。 准备好 VHD 之后，即可使用 `Add-AzVhd` cmdlet 将 VHD 上传到 Azure 存储帐户，如下所示：
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
+**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -106,7 +106,5 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>后续步骤
-- 深入了解[为 Windows 10 配置 VDA](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- 深入了解[为 Windows 10 配置 VDA](/windows/deployment/vda-subscription-activation)
 - 深入了解 [Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
-
-

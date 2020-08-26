@@ -53,12 +53,18 @@
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB 安全基线
       href: ../../mariadb/security-baseline.md
-    - name: Azure Database for PostgreSQL 安全基线
+    - name: Azure Database for PostgreSQL - 单一服务器安全基线
       href: ../../postgresql/security-baseline.md
+    - name: Azure Database for PostgreSQL - 超大规模服务器安全基线
+      href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks 安全基线
       href: ../../azure-databricks/security-baseline.md
+    - name: Azure 防火墙安全基线
+      href: ../../firewall/security-baseline.md
     - name: Azure Functions 安全基线
       href: ../../azure-functions/security-baseline.md
+    - name: Azure 机器学习安全基线
+      href: ../../machine-learning/security-baseline.md
     - name: Azure Policy 安全基线
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Resource Graph 安全基线
@@ -79,6 +85,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: 客户密码箱安全基线
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Data Lake Analytics 安全基线
+      href: ../../data-lake-analytics/security-baseline.md
+    - name: DDOS 防护安全基线
+      href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: 事件网格安全基线
+      href: ../../event-grid/security-baseline.md
     - name: 事件中心安全基线
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute 安全基线
@@ -91,7 +103,17 @@
       href: ../../logic-apps/security-baseline.md
     - name: 网络观察程序安全基线
       href: ../../network-watcher/security-baseline.md
+    - name: 安全中心基线
+      href: ../../security-center/security-baseline.md
+    - name: Service Fabric 基线
+      href: ../../service-fabric/security-baseline.md
     - name: 流分析基线
       href: ../../stream-analytics/security-baseline.md
     - name: Synapse Analytics 安全基线
       href: ../../synapse-analytics/security-baseline.md
+    - name: 虚拟机规模集安全基线
+      href: ../../virtual-machine-scale-sets/security-baseline.md
+    - name: 虚拟机 Linux 安全基线
+      href: ../../virtual-machines/linux/security-baseline.md
+    - name: 虚拟机 Windows 安全基线
+      href: ../../virtual-machines/windows/security-baseline.md

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: e0ecfd3acb6a8a1d40e006aef1bbf63eae0e1ff4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770792"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566278"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
 
@@ -38,7 +39,10 @@ ms.locfileid: "84770792"
 - Azure 安全中心
 
 >[!IMPORTANT]
-> - 启用工作区后，Azure Sentinel**目前不支持**将该工作区移动到其他资源组或订阅。 如果需要移动工作区，请联系 [Azure Sentinel](mailto:AzureSentinel@microsoft.com)。
+> **Azure Sentinel 客户：**
+> - 一旦部署到工作区上，Azure Sentinel **目前不支持** 将该工作区移动到其他资源组或订阅。 
+>
+>   如果已移动工作区，请禁用 **分析** 下的所有活动规则，并在五分钟后重新启用它们。 但在大多数情况下，这应该是有效的，但它不受支持，并且会自行承担。
 
 ### <a name="delete-solutions-in-azure-portal"></a>在 Azure 门户中删除解决方案
 在 Azure 门户中使用以下过程删除解决方案：

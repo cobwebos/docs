@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005899"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows 停止错误 - 状态无内存
 
@@ -26,7 +27,7 @@ ms.locfileid: "85660783"
 
 ## <a name="symptom"></a>症状
 
-当你使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)来查看虚拟机（VM）的屏幕截图时，你会看到屏幕截图显示了错误代码： `0xC0000017` 。 根据你所运行的 Windows 的版本，你可能会看到此代码显示在**Windows 启动管理器**或**恢复屏幕**中。
+当你使用[启动诊断](./boot-diagnostics.md)来查看虚拟机（VM）的屏幕截图时，你会看到屏幕截图显示了错误代码： `0xC0000017` 。 根据你所运行的 Windows 的版本，你可能会看到此代码显示在**Windows 启动管理器**或**恢复屏幕**中。
 
    **Windows 启动管理器**
 
@@ -56,7 +57,7 @@ ms.locfileid: "85660783"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 来准备一个修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>对于第2代 Vm，请为可扩展固件接口（EFI）分区分配一个字母：
@@ -93,7 +94,7 @@ ms.locfileid: "85660783"
 由于损坏的磁盘已附加到修复 VM，因此应该验证该磁盘上的操作系统是否有足够的可用空间来正常运行。 
 
 1. 右键单击附加磁盘的驱动器，然后选择 "**属性**"，检查磁盘是否已满。
-1. 如果磁盘的**可用空间小于 300 Mb**，请[使用 PowerShell 将其扩展到最大 1 Tb](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)。
+1. 如果磁盘的**可用空间小于 300 Mb**，请[使用 PowerShell 将其扩展到最大 1 Tb](../windows/expand-os-disk.md)。
 1. 磁盘大小为**1 Tb**后，将需要执行磁盘清理。 可以使用 "[磁盘清理" 工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)释放空间。
 1. 打开提升的命令提示符（以管理员身份运行）实例，并在驱动器上执行碎片整理：
 
@@ -222,4 +223,4 @@ ms.locfileid: "85660783"
    
 ### <a name="rebuild-the-vm"></a>重新生成 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新生成 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。

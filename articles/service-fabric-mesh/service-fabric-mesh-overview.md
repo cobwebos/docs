@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257807"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927022"
 ---
 # <a name="what-is-service-fabric-mesh"></a>什么是 Service Fabric 网格？
 
@@ -42,7 +42,7 @@ Service Fabric 网格支持可在容器中运行的任何编程语言或框架�
 
 - 无需显式预配和管理基础结构，即可部署和管理应用程序。  Service Fabric 网格会自动预配、升级、修补和维护底层基础结构。
 - 使用集成式工具设置持续集成，以轻松打包和部署应用程序。
-- 利用 Azure 资源管理器资源的所有功能。 这些功能的示例包括审核线索和[基于角色的访问控制](../role-based-access-control/overview.md))。 在 Azure 中部署到 Service Fabric 网格服务的所有资源都是 Azure 资源管理器资源。 这些资源包括应用程序、服务、机密，等等。
+- 利用 Azure 资源管理器资源的所有功能。 这些功能的示例包括审核线索和 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)）。 在 Azure 中部署到 Service Fabric 网格服务的所有资源都是 Azure 资源管理器资源。 这些资源包括应用程序、服务、机密，等等。
 - 使用 [Azure 门户](https://portal.azure.com)、资源管理器模板或 Azure CLI/PowerShell 库部署和管理资源。
 - 使用 [Application Insights](/azure/application-insights/)（或所选工具）设置操作监视和警报，以从平台捕获操作和诊断跟踪。
 - 使用 [Application Insights](/azure/application-insights/) 或所选工具访问应用程序模型发出的应用程序诊断信息。

@@ -1,27 +1,22 @@
 ---
 title: Windows 虚拟桌面中的委托访问-Azure
 description: 如何在 Windows 虚拟桌面部署上委派管理功能，包括示例。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 16b4fca475f91a8cb5b7f9a20ea5aa74b6b674a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612854"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010049"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
 
 Windows 虚拟桌面具有委派的访问模型，使你可以通过为特定用户分配角色来定义允许该用户拥有的访问量。 角色分配有三个组件：安全主体、角色定义和作用域。 Windows 虚拟桌面委托访问模型基于 Azure RBAC 模型。 若要详细了解特定的角色分配及其组件，请参阅[Azure 基于角色的访问控制概述](../role-based-access-control/built-in-roles.md)。
 
@@ -43,18 +38,18 @@ Windows 虚拟桌面委托访问为角色分配的每个元素支持以下值：
 
 在开始之前，请确保按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 Windows 虚拟桌面 PowerShell 模块（如果尚未安装）。
 
-在将应用程序组发布到用户或用户组时，Windows 虚拟桌面使用 Azure 基于角色的访问控制（RBAC）。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。  
+在将应用程序组发布到用户或用户组时，Windows 虚拟桌面将使用 Azure 基于角色的访问控制 (Azure RBAC) 。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。
 
 运行以下 cmdlet，将 Azure Active Directory 用户添加到应用组：
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 运行以下 cmdlet，将 Azure Active Directory 用户组添加到应用组：
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,17 +1,18 @@
 ---
 title: Azure VPN 网关：配置诊断资源日志事件的警报
-description: 针对 VPN 网关诊断资源日志事件配置警报的步骤
+description: 了解如何使用 Azure Monitor Log Analytics 根据 Azure VPN 网关上的资源日志事件设置警报。
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3417d2b6e105626bceb992db088a4d0113aa798f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8c688adda3924d0cea3c9b57d2d24ed3b3b1e68
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983081"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033167"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>针对 VPN 网关中的资源日志事件设置警报
 
@@ -38,39 +39,39 @@ Azure 中提供以下资源日志：
 
 2. 在“Log Analytics”页上选择“创建”。********
 
-   ![带有 "创建" 按钮的 Log Analytics 页面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Select")
+   ![带有 "创建" 按钮的 Log Analytics 页面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "选择")
 
 3. 选择“新建”并填写详细信息。****
 
-   ![创建 Log Analytics 工作区的详细信息](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Select")
+   ![创建 Log Analytics 工作区的详细信息](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "选择")
 
 4. 在 "**监视**  >  **诊断设置**" 边栏选项卡中找到 VPN 网关。
 
-   ![用于在诊断设置中查找 VPN 网关的选项](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Select")
+   ![用于在诊断设置中查找 VPN 网关的选项](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "选择")
 
 5. 若要启用诊断，请双击该网关，然后选择“启用诊断”。****
 
-   ![启用诊断的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Select")
+   ![启用诊断的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "选择")
 
 6. 填写详细信息，并确保选中“发送到 Log Analytics”和“TunnelDiagnosticLog”。******** 选择在步骤 3 中创建的 Log Analytics 工作区。
 
-   ![选中的复选框](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Select")
+   ![选中的复选框](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "选择")
 
    > [!NOTE]
    > 最初显示数据可能需要几个小时。
 
 7. 请参阅虚拟网络网关资源的 "概述"，并从 "**监视**" 选项卡中选择**警报**。然后创建新的警报规则，或编辑现有的警报规则。
 
-   ![用于创建新警报规则的选项](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
+   ![用于创建新警报规则的选项](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "选择")
 
-   ![点到站点](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
+   ![点到站点](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "选择")
 8. 选择 Log Analytics 工作区和资源。
 
-   ![工作区和资源的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Select")
+   ![工作区和资源的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "选择")
 
 9. 在“添加条件”下，选择“自定义日志搜索”作为信号逻辑。********
 
-   ![自定义日志搜索的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Select")
+   ![自定义日志搜索的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "选择")
 
 10. 在 "**搜索查询**" 文本框中输入以下查询。 根据需要替换 <> 和 TimeGenerated 中的值。
 
@@ -87,15 +88,15 @@ Azure 中提供以下资源日志：
 
     将阈值设置为 0，然后选择“完成”。****
 
-    ![输入查询并选择阈值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Select")
+    ![输入查询并选择阈值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "选择")
 
 11. 在“创建规则”页上的“操作组”部分下，选择“新建”。************ 填写详细信息，然后选择“确定”。****
 
-    ![新操作组的详细信息](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Select")
+    ![新操作组的详细信息](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "选择")
 
 12. 在“创建规则”页上，填写“自定义操作”的详细信息，并确保“操作组名称”部分中显示的名称正确。************ 选择“创建警报规则”以创建规则。****
 
-    ![用于创建规则的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Select")
+    ![用于创建规则的选择](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "选择")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>使用 PowerShell 设置警报
 

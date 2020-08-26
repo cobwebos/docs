@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Clever Nelly 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Clever Nelly 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af3c925e-92ec-431d-80cf-2e0861cd4ba5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac9647bf6a9e2e763bcfb6e3d840cdccd2b6c305
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9946abc89a924b1577743b64de234805e411793d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67595012"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520085"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>教程：将 Clever Nelly 与 Azure Active Directory 集成
 

@@ -1,19 +1,19 @@
 ---
 title: 查看和下载 Azure 使用情况与费用
-description: 介绍如何下载或查看 Azure 每日使用情况和费用。
+description: 了解如何下载或查看 Azure 每日使用情况和费用，并查看其他可用资源。
 keywords: 计费使用情况, 使用费, 使用情况下载, 查看使用情况, Azure 发票, Azure 使用情况
 author: bandersmsft
 ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/27/2020
+ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065729"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460501"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>查看和下载 Azure 使用情况与费用
 
@@ -21,12 +21,12 @@ ms.locfileid: "80065729"
 
 如果签订了 Microsoft 客户协议 (MCA)，则必须是计费对象信息所有者、参与者、读者或发票管理者，才能查看 Azure 使用情况和费用。  如果签订了 Microsoft 合作伙伴协议 (MPA)，则只有合作伙伴组织中的全局管理员和管理员代理角色才能查看和下载 Azure 使用情况和费用。 [在 Azure 门户中检查计费帐户类型](#check-your-billing-account-type)。
 
-根据使用的订阅类型，用于下载使用情况和费用的选项有所不同。 
+根据使用的订阅类型，用于下载使用情况和费用的选项有所不同。
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>从 Azure 门户下载使用情况 (.csv)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。   
+1. 搜索“成本管理 + 计费”。  
     ![显示 Azure 门户搜索的屏幕截图](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. 根据你的访问权限，可能需要选择一个计费帐户或计费对象信息。
 1. 在左侧菜单中，选择“账单”  下的“发票”  。
@@ -35,16 +35,15 @@ ms.locfileid: "80065729"
   ![显示“使用情况 + 费用”下载位置的屏幕截图](./media/download-azure-daily-usage/download-usage-others.png)  
 1. “下载”窗格将在右侧打开。 在“使用情况详细信息”部分，选择“下载”   。  
 
-
 ## <a name="download-usage-for-ea-customers"></a>下载 EA 客户的使用情况数据
 
 若要作为 EA 客户查看和下载使用情况数据，你必须是启用了“查看费用策略”的企业管理员、帐户所有者或部门管理员。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。   
+1. 搜索“成本管理 + 计费”。  
     ![显示 Azure 门户搜索的屏幕截图](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-1. 选择“使用情况 + 费用”。 
-1. 针对要下载的月份，选择“下载”。   
+1. 选择“使用情况 + 费用”。
+1. 针对要下载的月份，选择“下载”。  
     ![显示“使用情况 + 费用”下载位置的屏幕截图](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>下载未决费用的使用情况
@@ -52,12 +51,11 @@ ms.locfileid: "80065729"
 如果签订了 Microsoft 客户协议，则可以下载当前计费周期的每月至今使用量。 这些尚未计费的使用费。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 3. 选择计费对象信息。 根据你的访问权限，可能需要先选择一个计费帐户。
-4. 在“概述”  区域中，找到“本月至今累计费用”下面的下载链接。
-5. 选择“Azure 使用情况和费用”  。
-
-    ![显示从“概述”下载的屏幕截图](./media/download-azure-daily-usage/open-usage01.png)
+4. 在“概述”区域中，找到“最近费用”下的下载链接。
+5. 选择“下载使用量和价格”。  
+    :::image type="content" source="./media/download-azure-daily-usage/open-usage01.png" alt-text="显示从“概述”下载的屏幕截图" lightbox="./media/download-azure-daily-usage/open-usage01.png" :::
 
 ## <a name="check-your-billing-account-type"></a>检查计费帐户类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

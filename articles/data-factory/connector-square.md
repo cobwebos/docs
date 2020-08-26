@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410314"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529358"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Square 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,6 @@ ms.locfileid: "81410314"
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
-
 
 可以将数据从 Square 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -52,13 +51,23 @@ Square 链接的服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Square** | 是 |
+| connectionProperties | 定义如何连接到正方形的一组属性。 | 是 |
+| 在 `connectionProperties` 下： | | |
 | host | Square 实例的 URL。 （即 mystore.mysquare.com）  | 是 |
 | clientId | 与 Square 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Square 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| redirectUri | 在 Square 应用程序仪表板中分配重定向 URL。 （即，http:\//localhost:2500）  | 是 |
+| accessToken | 从平方根获取的访问令牌。 通过向经过身份验证的用户请求显式权限，授予对方形帐户的有限访问权限。 OAuth 访问令牌将在发出30天后过期，但刷新令牌不会过期。 使用刷新令牌可以刷新访问令牌。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 是 |
+| refreshToken | 从平方获得的刷新令牌。 用于在当前的访问令牌过期时获取新的访问令牌。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+
+方形支持两种类型的访问令牌：**个人**和**OAuth**。
+
+- 个人访问令牌用于获取对您自己的方形帐户中的资源的无限制的连接 API 访问权限。
+- OAuth 访问令牌用于获取对任何方形帐户的经过身份验证的连接型 API 访问权限。 当你的应用程序代表帐户所有者访问其他方帐户中的资源时，使用它们。 OAuth 访问令牌还可用于访问你自己的方形帐户中的资源。
+
+在数据工厂中，通过仅通过个人访问令牌进行身份验证 `accessToken` 时，通过 OAuth 进行身份验证时需要 `accessToken` 和 `refreshToken` 。 了解如何从[此处](https://developer.squareup.com/docs/build-basics/access-tokens)检索访问令牌。
 
 **示例：**
 
@@ -68,13 +77,25 @@ Square 链接的服务支持以下属性：
     "properties": {
         "type": "Square",
         "typeProperties": {
-            "host" : "mystore.mysquare.com",
-            "clientId" : "<clientId>",
-            "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
-            },
-            "redirectUri" : "http://localhost:2500"
+            "connectionProperties": {
+                "host": "<e.g. mystore.mysquare.com>", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<clientSecret>"
+                }, 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true 
+            }
         }
     }
 }

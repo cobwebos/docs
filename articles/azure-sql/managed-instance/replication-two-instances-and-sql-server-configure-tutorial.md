@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708512"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920137"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教程：在 Azure SQL 托管实例和 SQL Server 之间配置事务复制
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+通过事务复制可以将数据从一个数据库复制到 SQL Server 或 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)中托管的另一个数据库。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。 
+
+事务复制目前提供了用于 SQL 托管实例的公共预览版。 
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -30,11 +34,11 @@ ms.locfileid: "84708512"
 
 ![托管实例发布服务器、托管实例分发服务器与 SQL Server 订阅服务器之间的复制](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-本教程适用于经验丰富的受众，并假定用户熟悉如何在 Azure 中部署和连接到这两个托管实例和 SQL Server VM。 因此本教程中略去了某些步骤。
+本教程适用于经验丰富的受众，并假定用户熟悉如何在 Azure 中部署和连接到这两个托管实例和 SQL Server VM。 
 
-有关详细信息，请参阅 [Azure SQL 托管实例概述](sql-managed-instance-paas-overview.md)和 [SQL 事务复制](replication-transactional-overview.md)文章。
 
-若要配置托管实例发布服务器和托管实例订阅服务器之间的复制，请参阅[在两个托管实例之间配置事务复制](replication-between-two-instances-configure-tutorial.md)。
+> [!NOTE]
+> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。 配置[故障转移组的事务复制](replication-transactional-overview.md#with-failover-groups)时还有其他注意事项。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -180,7 +184,7 @@ Get-AzVirtualNetworkPeering `
 
 为工作目录[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，并在存储帐户中创建[文件共享](../../storage/files/storage-how-to-create-file-share.md)。
 
-按以下格式复制文件共享路径：`\\storage-account-name.file.core.windows.net\file-share-name`
+复制采用 `\\storage-account-name.file.core.windows.net\file-share-name` 格式的文件共享路径
 
 示例： `\\replstorage.file.core.windows.net\replshare`
 
@@ -247,6 +251,10 @@ GO
 1. 打开“新建查询”窗口，并运行以下 Transact-SQL 代码，在分发服务器托管实例上配置分发：
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,
@@ -277,7 +285,7 @@ GO
 1. 连接到 `sql-mi-publisher` 托管实例。
 1. 在“对象资源管理器”中，展开“复制”节点，然后右键单击“本地发布”文件夹  。 单击“新建发布...”。
 1. 选择“下一步”，离开“欢迎”页。
-1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一页**”。
+1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一步**”。
 1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一页**”。
 1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一页**”。
 1. 在“筛选器表行”页上，选择“下一步”而不添加任何筛选器 。
@@ -327,14 +335,14 @@ GO
 
 配置复制后，可对其进行测试，方法是：在发布服务器上插入新项并监视更改传播到订阅服务器。
 
-运行以下 T-SQL 代码片段可查看订阅服务器上的行：
+运行以下 T-SQL 代码片段以查看订阅服务器上的行：
 
 ```sql
 Use ReplSub
 select * from dbo.ReplTest
 ```
 
-运行以下 T-SQL 代码片段可在发布服务器上插入更多行，然后再次检查订阅服务器上的行。
+运行以下 T-SQL 代码片段以在发布服务器上插入附加的行，然后再次在订阅服务器上检查这些行。
 
 ```sql
 Use ReplTutorial
@@ -344,9 +352,9 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>清理资源
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到资源组。
-1. 选择托管实例，然后选择“删除”。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。 此过程可能需要一段时间才能在后台完成，在完成之前，你将无法删除“虚拟群集”或任何其他从属资源。 监视“活动”选项卡中的“删除”，确认已删除托管实例。
-1. 删除托管实例后，请将虚拟群集删除，方法是：在资源组中选择“虚拟群集”，然后选择“删除”。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。
-1. 删除所有剩余资源。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。
+1. 选择托管实例，然后选择“删除”。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。 此过程可能需要一段时间才能在后台完成，在完成之前，你将无法删除“虚拟群集”或任何其他从属资源。 监视“活动”选项卡中的“删除”，确认已删除托管实例。
+1. 删除托管实例后，请将虚拟群集删除，方法是：在资源组中选择“虚拟群集”，然后选择“删除”。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。
+1. 删除任何剩余资源。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。
 1. 删除资源组，方法是：选择“删除资源组”，键入资源组的名称 `myResourceGroup`，然后选择“删除” 。
 
 ## <a name="known-errors"></a>已知错误

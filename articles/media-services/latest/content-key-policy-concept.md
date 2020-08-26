@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49226ba703e8ade963b368616102db035b3c07ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092059"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
 
-若要针对流指定加密选项，需要创建[流策略](streaming-policy-concept.md)并将其与[流定位符](streaming-locators-concept.md)相关联。 创建[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)，用于配置如何将内容密钥（提供对[资产](assets-concept.md)的安全访问）传送到终端客户端。 需要针对内容密钥策略设置要求（限制），只有满足这些要求，才能将使用指定配置的密钥传送到客户端。 明文格式的流式传输或下载不需要内容密钥策略。 
+若要针对流指定加密选项，需要创建[流策略](streaming-policy-concept.md)并将其与[流定位符](streaming-locators-concept.md)相关联。 创建[内容密钥策略](/rest/api/media/contentkeypolicies)，用于配置如何将内容密钥（提供对[资产](assets-concept.md)的安全访问）传送到终端客户端。 需要针对内容密钥策略设置要求（限制），只有满足这些要求，才能将使用指定配置的密钥传送到客户端。 明文格式的流式传输或下载不需要内容密钥策略。 
 
 通常，你会将内容密钥策略关联到[流定位符](streaming-locators-concept.md)。 或者，可以在[流策略](streaming-policy-concept.md)中指定内容密钥策略（为高级方案创建自定义的流策略时）。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "80585996"
 * 如果确实需要创建新策略，则必须为资产创建新的流定位符。
 * 建议让媒体服务自动生成内容密钥。 
 
-   通常，你会使用生存期较长的密钥，并使用 [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get) 检查内容密钥策略是否存在。 若要获取密钥，需调用单独的操作方法来获取机密或凭据，请参阅下面的示例。
+   通常，你会使用生存期较长的密钥，并使用 [Get](/rest/api/media/contentkeypolicies/get) 检查内容密钥策略是否存在。 若要获取密钥，需调用单独的操作方法来获取机密或凭据，请参阅下面的示例。
 
 ## <a name="example"></a>示例
 

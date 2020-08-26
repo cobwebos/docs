@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74224732"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082165"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>将 Azure VM 连接到 HANA 大型实例
 
-[什么是 Azure 上的 SAP HANA（大型实例）？](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)一文 提到 Azure 中使用 SAP 应用程序层的 HANA 大型实例的最小部署如下所示：
+[什么是 Azure 上的 SAP HANA（大型实例）？](./hana-overview-architecture.md)一文 提到 Azure 中使用 SAP 应用程序层的 HANA 大型实例的最小部署如下所示：
 
 ![连接到了 Azure 上的 SAP HANA（大型实例）和本地的 Azure VNet](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -93,13 +94,13 @@ ms.locfileid: "74224732"
 
 最终需要提交给 Microsoft 的可选 IP 地址范围：
 
-- 如果选择使用[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)来启用从本地到 HANA 大型实例单元的直接路由，则需要保留另一个/29 个 IP 地址范围。 此范围不能与之前定义的任何其他 IP 地址范围重叠。
-- 如果选择使用[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)来启用从一个 azure 区域中的 Hana 大型实例租户直接路由到另一个 azure 区域中的另一个 Hana 大型实例租户，则需要保留另一个/29 个 IP 地址范围。 此范围不能与之前定义的任何其他 IP 地址范围重叠。
+- 如果选择使用[ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md)来启用从本地到 HANA 大型实例单元的直接路由，则需要保留另一个/29 个 IP 地址范围。 此范围不能与之前定义的任何其他 IP 地址范围重叠。
+- 如果选择使用[ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md)来启用从一个 azure 区域中的 Hana 大型实例租户直接路由到另一个 azure 区域中的另一个 Hana 大型实例租户，则需要保留另一个/29 个 IP 地址范围。 此范围不能与之前定义的任何其他 IP 地址范围重叠。
 
 有关 ExpressRoute 的详细信息 Global Reach 和有关 HANA 大型实例的用法，请查看文档：
 
-- [SAP HANA（大型实例）网络体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [将虚拟网络连接到 HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA（大型实例）网络体系结构](./hana-network-architecture.md)
+- [将虚拟网络连接到 HANA 大型实例](./hana-connect-vnet-express-route.md)
  
 需要定义和计划前面所述的 IP 地址范围。 但是，不必将其全部发送给 Microsoft。 需要提交到 Microsoft 的 IP 地址范围包括：
 

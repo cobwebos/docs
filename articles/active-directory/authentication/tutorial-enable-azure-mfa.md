@@ -5,23 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77154675"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718894"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>教程：使用 Azure 多重身份验证保护用户登录事件
 
 多重身份验证 (MFA) 是在登录事件期间提示用户完成其他形式的身份识别的过程。 此提示可以是让用户在手机上输入某个代码，或提供指纹扫描。 需要另一种形式的身份验证时，会提高安全性，因为攻击者并不容易获取或复制进行多重身份验证所需的额外内容。
 
 在特定的登录事件期间，可以通过 Azure 多重身份验证和条件访问策略来灵活地为用户启用 MFA。
+
+> [!IMPORTANT]
+> 本教程向管理员展示如何启用 Azure 多重身份验证。
+>
+> 如果 IT 团队尚未启用使用 Azure 多重身份验证的功能，或者你在登录过程中遇到问题，请联系支持人员获得更多帮助。
 
 本教程介绍如何执行下列操作：
 
@@ -34,13 +39,13 @@ ms.locfileid: "77154675"
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Premium 或试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 一个拥有全局管理员特权的帐户。 
+* 一个拥有全局管理员特权的帐户。
 * 你知道其密码的非管理员测试用户，例如 *testuser*。 本教程将使用此帐户测试最终用户的 Azure 多重身份验证体验。
-    * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)。
+    * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../fundamentals/add-users-azure-active-directory.md)。
 * 该非管理员用户所属的组，例如 *MFA-Test-Group*。 本教程将为此组启用 Azure 多重身份验证。
-    * 如需创建一个组，请参阅如何[在 Azure Active Directory 中创建组并添加成员](../active-directory-groups-create-azure-portal.md)。
+    * 如需创建一个组，请参阅[如何在 Azure Active Directory 中创建组并添加成员](../fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
@@ -52,17 +57,17 @@ ms.locfileid: "77154675"
 
 首先，按如下所述创建一个条件访问策略，并分配测试用户组：
 
-1. 使用拥有全局管理员权限的帐户登录到 [Azure 门户](https://portal.azure.com)。 
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。  
-1. 依次选择“条件访问”、“+ 新建策略”。  
-1. 输入策略的名称，例如“MFA 试验”。 
-1. 在“分配”下选择“用户和组”，然后选中“选择用户和组”单选按钮。   
-1. 选中“用户和组”对应的框，然后选择“选择”以浏览可用的 Azure AD 用户和组。  
-1. 浏览并选择 Azure AD 组（例如 *MFA-Test-Group*），然后选择“选择”。 
+1. 使用拥有全局管理员权限的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。
+1. 依次选择“条件访问”、“+ 新建策略”。
+1. 输入策略的名称，例如“MFA 试验”。
+1. 在“分配”下选择“用户和组”，然后选中“选择用户和组”单选按钮。
+1. 选中“用户和组”对应的框，然后选择“选择”以浏览可用的 Azure AD 用户和组。
+1. 浏览并选择 Azure AD 组（例如 *MFA-Test-Group*），然后选择“选择”。
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [ ![选择要与条件访问策略配合使用的 Azure AD 组](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
-1. 若要对该组应用条件访问策略，请选择“完成”。 
+1. 若要对该组应用条件访问策略，请选择“完成”。
 
 ## <a name="configure-the-conditions-for-multi-factor-authentication"></a>配置多重身份验证的条件
 
@@ -70,27 +75,27 @@ ms.locfileid: "77154675"
 
 对于本教程，请将条件访问策略配置为在用户登录到 Azure 门户时要求执行 MFA。
 
-1. 选择“云应用或操作”。  可以选择将条件访问策略应用到“所有云应用”，也可以“选择应用”。   为了提供灵活性，还可以从策略中排除某些应用。
+1. 选择“云应用或操作”。 可以选择将条件访问策略应用到“所有云应用”，也可以“选择应用”。 为了提供灵活性，还可以从策略中排除某些应用。
 
-    对于本教程，请在“包括”页上，选中“选择应用”单选按钮。  
+    对于本教程，请在“包括”页上，选中“选择应用”单选按钮。
 
-1. 选择“选择”，然后浏览可用的登录事件列表。 
+1. 选择“选择”，然后浏览可用的登录事件列表。
 
-    对于本教程，请选择“Microsoft Azure 管理”，以便将策略应用到 Azure 门户登录事件。 
+    对于本教程，请选择“Microsoft Azure 管理”，以便将策略应用到 Azure 门户登录事件。
 
-1. 若要将策略应用到选定的应用，请依次选择“选择”、“完成”。  
+1. 若要将策略应用到选定的应用，请依次选择“选择”、“完成”。 
 
     ![选择要包含在条件访问策略中的 Microsoft Azure 管理应用](media/tutorial-enable-azure-mfa/select-azure-management-app.png)
 
 使用访问控制可以定义授予用户访问权限所要满足的要求，例如，需要一个已批准的客户端应用，或使用已加入混合 Azure AD 的设备。 在本教程中，请将访问控制配置为在 Azure 门户登录事件期间要求执行 MFA。
 
-1. 在“访问控制”下选择“授予”，并确保已选中“授予访问权限”单选按钮。   
-1. 选中“需要多重身份验证”对应的复选框，然后选择“选择”。  
+1. 在“访问控制”下选择“授予”，并确保已选中“授予访问权限”单选按钮。
+1. 选中“需要多重身份验证”对应的复选框，然后选择“选择”。
 
-若要查看配置对用户产生的影响，可将条件访问策略设置为“仅限报告”；如果不想要立即使用策略，则可将其设置为“关闭”。   由于已经为本教程指定了目标测试用户组，因此让我们启用该策略，然后测试 Azure 多重身份验证。
+若要查看配置对用户产生的影响，可将条件访问策略设置为“仅限报告”；如果不想要立即使用策略，则可将其设置为“关闭”。 由于已经为本教程指定了目标测试用户组，因此让我们启用该策略，然后测试 Azure 多重身份验证。
 
 1. 将“启用策略”  开关设置为“开”  。
-1. 若要应用条件访问策略，请选择“创建”。 
+1. 若要应用条件访问策略，请选择“创建”。
 
 ## <a name="test-azure-multi-factor-authentication"></a>测试 Azure 多重身份验证
 
@@ -113,14 +118,14 @@ ms.locfileid: "77154675"
 
 如果你不再想要使用条件访问策略来启用本教程中配置的 Azure 多重身份验证，请使用以下步骤删除该策略：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。  
-1. 选择“条件访问”，然后选择创建的策略，例如“MFA 试验”  
-1. 选择“删除”，然后确认删除该策略。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。
+1. 选择“条件访问”，然后选择创建的策略，例如“MFA 试验”
+1. 选择“删除”，然后确认删除该策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用条件访问策略为选定的用户组启用了 Azure 多重身份验证。 你已了解如何执行以下操作：
+在本教程中，你已使用条件访问策略为选定的用户组启用了 Azure 多重身份验证。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建条件访问策略，以便为一组 Azure AD 用户启用 Azure 多重身份验证
@@ -128,4 +133,4 @@ ms.locfileid: "77154675"
 > * 以用户身份测试 MFA 过程
 
 > [!div class="nextstepaction"]
-> [为自助式密码重置 (SSPR) 启用密码写回](tutorial-enable-writeback.md)
+> [为自助式密码重置 (SSPR) 启用密码写回](./tutorial-enable-sspr-writeback.md)

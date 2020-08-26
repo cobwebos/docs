@@ -3,21 +3,22 @@ title: 监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs
 description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537519"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322595"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
 
-若要浏览 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
+若要浏览 [Application Insights](./app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
 
 如果已[使用 Application Insights 检测了 Java Web 服务][java]，则通常会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
 
 ## <a name="get-your-instrumentation-key"></a>获取检测密钥
-在 [Microsoft Azure 门户](https://portal.azure.com)中，打开要显示数据的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 （或[创建新资源](../../azure-monitor/app/create-new-resource.md )。）
+在 [Microsoft Azure 门户](https://portal.azure.com)中，打开要显示数据的 [Application Insights](./app-insights-overview.md) 资源。 （或[创建新资源](./create-new-resource.md)。）
 
 复制可标识资源的检测密钥。
 
@@ -104,7 +105,7 @@ ms.locfileid: "81537519"
 *在门户中看不到数据*
 
 * 打开[搜索][diagnostic]，查看原始事件是否已到达。 有时需较长时间才能在指标资源管理器中看到数据。
-* 可能需要[为传出数据设置防火墙例外](../../azure-monitor/app/ip-addresses.md)
+* 可能需要[为传出数据设置防火墙例外](./ip-addresses.md)
 * 在 Application Insights 插件中启用跟踪。 在 `<Plugin ApplicationInsightsWriter>` 中添加此行：
   * `SDKLogger true`
 * 打开终端并在详细模式下启动 collectd，查看其报告的任何问题：
@@ -120,13 +121,12 @@ Application Insights 写入插件与某些读取插件不兼容。 Application I
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

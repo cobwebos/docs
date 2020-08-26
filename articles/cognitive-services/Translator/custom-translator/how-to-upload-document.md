@@ -1,20 +1,20 @@
 ---
 title: 如何上传文档 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 文档上传功能将并行文档（两个文档（其中一个是源，另一个是转换）上载到服务中。
+description: 文档上传功能 (两个文档上传并行文档，其中一个是原点，另一个是转换) 到服务中。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: aaebf849cc69db7c85d1472f4d71774bc599be11
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8597b3e4ffab44672e88374010fa829211fbc18b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994297"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507285"
 ---
 # <a name="upload-a-document"></a>上传文档
 
@@ -24,7 +24,7 @@ ms.locfileid: "83994297"
 
 ## <a name="how-to-upload-document"></a>如何上传文档？
 
-在[自定义转换器](https://portal.customtranslator.azure.ai)门户中，单击 "文档" 选项卡以打开 "文档" 页。
+在[自定义翻译](https://portal.customtranslator.azure.ai)门户中，单击“文档”选项卡转到文档页。
 
 ![文档上传链接](media/how-to/how-to-upload-1.png)
 
@@ -61,11 +61,11 @@ ms.locfileid: "83994297"
 
     ![上传文档的对话框](media/how-to/how-to-upload-dialog.png)
 
-3.  目前，我们正在处理你的文档并尝试提取句子。 你可以单击 "查看上载进度" 来检查文档处理时的状态。
+3.  目前，我们正在处理你的文档并尝试提取句子。 你可以单击“查看上传进度”来查看文档的处理状态。
 
     ![显示正在处理上传文档的对话框](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  此页将显示上传的每个文件的处理状态以及任何错误。 你可以随时通过单击 "上传历史记录" 选项卡查看过去的上载状态。
+4.  此页将显示上传的每个文件的处理状态以及任何错误。 随时可以单击“上传历史记录”选项卡查看以往的上传状态。
 
     ![上传文档历史记录对话框](media/how-to/how-to-upload-document-history.png)
 

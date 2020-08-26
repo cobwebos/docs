@@ -6,11 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037306"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>如何在 Azure 春季云中自行诊断和解决问题
 Azure 春季云诊断是一种交互式体验，可帮助你对应用进行故障排除。 不需要任何配置。 当你发现问题时，Azure 春季云诊断会指出问题所在，并指导你获取有助于排查和解决此问题的信息。

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Rollbar 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Rollbar 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57537e54-9388-4272-a610-805ce45a451f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092682"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>教程：Azure Active Directory 与 Rollbar 的集成
 

@@ -5,13 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/28/2020
 ms.author: yushwang
-ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343143"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367719"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -38,6 +39,7 @@ ms.locfileid: "84343143"
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Arista | CloudEOS 路由器 | vEOS 4.24.0 FX | （未测试） | [配置指南](https://www.arista.com/en/cg-veos-router/veos-router-cloudeos-ipsec-connectivity-to-azure-virtual-network-gateway) |
 | Barracuda Networks, Inc. |Barracuda CloudGen 防火墙 |PolicyBased：5.4.3<br>RouteBased：6.2.0 |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
 | 检查点 |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |支持 |[配置指南*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
@@ -64,7 +66,8 @@ ms.locfileid: "84343143"
 | SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E 类 NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |不兼容 |[配置指南](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG 下一代防火墙 | XG v17 | （未测试） | [配置指南](https://community.sophos.com/kb/127546)<br><br>[配置指南 - 多个 SA](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | （未测试） | [配置指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未测试） | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347)
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未测试） | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347) |
+| 黑体 | 3E-636L3 | 5.2.0 生成-13  | （未测试） | [配置指南](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
 | WatchGuard |全部 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v4.32+ | （未测试） | [基于 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/)<br><br>[基于 IKEv2/IPsec 的BGP](https://businessforum.zyxel.com/discussion/2650/)|
 
@@ -173,7 +176,7 @@ ms.locfileid: "84343143"
 | 7 |DES           |SHA1              |无         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
-| 10 个|AES256        |SHA1              |14           |
+| 10|AES256        |SHA1              |14           |
 | 11|AES128        |SHA1              |1            |
 | 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
@@ -183,7 +186,7 @@ ms.locfileid: "84343143"
 | 17|AES256        |SHA256            |1            |
 | 18|AES256        |SHA256            |2            |
 | 19|AES256        |SHA256            |14           |
-| 20 个|AES256        |SHA1              |24           |
+| 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
 | 22|AES128        |SHA256            |无         |
 | 23|AES128        |SHA256            |1            |

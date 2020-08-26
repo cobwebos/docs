@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281474"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure 逻辑应用和 IBM 3270 连接器将 IBM 大型机上的 3270 屏幕驱动的应用集成到 Azure
 
@@ -288,11 +288,11 @@ ms.locfileid: "80371099"
 
 1. 添加方法的所有参数后，请定义每个参数的以下属性：
 
-   | 属性名称 | 可能值 | 
+   | 属性名称 | 可能的值 | 
    |---------------|-----------------|
    | **数据类型** | 字节、日期时间、小数、整数、长整数、短整数、字符串 |
    | **字段填充方法** | 参数支持以下填充类型，必要时留空： <p><p>- **类型**：按顺序在字段中输入字符。 <p>- **填充**：将字段内容替换为字符，如有必要，用空格填充。 <p>- **EraseEofType**：清除字段，然后在字段中按顺序输入字符。 |
-   | **格式字符串** | 某些参数数据类型使用格式字符串，告知 3270 连接器如何将屏幕中的文本转换为 .NET 数据类型： <p><p>- **Datetime**： datetime 格式字符串遵循[.net 自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期 `06/30/2019` 使用格式字符串 `MM/dd/yyyy`。 <p>- **Decimal**： decimal 格式字符串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，数字 `100.35` 使用格式字符串 `999V99`。 |
+   | **格式字符串** | 某些参数数据类型使用格式字符串，告知 3270 连接器如何将屏幕中的文本转换为 .NET 数据类型： <p><p>- **Datetime**： datetime 格式字符串遵循[.net 自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期 `06/30/2019` 使用格式字符串 `MM/dd/yyyy`。 <p>- **Decimal**： decimal 格式字符串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，数字 `100.35` 使用格式字符串 `999V99`。 |
    |||
 
 ## <a name="save-and-view-metadata"></a>保存并查看元数据
@@ -364,7 +364,7 @@ ms.locfileid: "80371099"
    | **集成帐户 ID** | 是 | <*集成帐户-名称*> | 集成帐户的名称 |
    | **集成帐户 SAS URL** | 是 | <*集成--SAS-URL*> | 集成帐户的共享访问签名 (SAS) URL，可以在 Azure 门户中基于集成帐户的设置生成此 URL。 <p>1. 在集成帐户菜单的 "**设置**" 下，选择 "**回调 URL**"。 <br>2. 在右侧窗格中，复制 "生成的**回调 URL** " 值。 |
    | **Server** | 是 | <*TN3270-名称*> | TN3270 服务的服务器名称 |
-   | 端口 | 否 | <*TN3270-端口*> | TN3270 服务器使用的端口。 如果留空，则连接器将使用 `23` 作为默认值。 |
+   | **Port** | 否 | <*TN3270-端口*> | TN3270 服务器使用的端口。 如果留空，则连接器将使用 `23` 作为默认值。 |
    | **设备类型** | 否 | <*IBM-终端模型*> | 要仿真的 IBM 终端的机型名称或型号。 如果留空，则连接器将使用默认值。 |
    | **代码页** | 否 | <*代码-页码*> | 主机的代码页号。 如果留空，则连接器将使用 `37` 作为默认值。 |
    | **逻辑单元名称** | 否 | <*逻辑单元名称*> | 要从主机请求的特定逻辑单元名称 |
@@ -409,7 +409,7 @@ ms.locfileid: "80371099"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/si3270/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/si3270/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
@@ -417,3 +417,4 @@ ms.locfileid: "80371099"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+

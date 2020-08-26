@@ -4,38 +4,41 @@ description: Azure IoT Edge 使用证书来验证设备、模块和叶节点设�
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247007"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210586"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 使用证书的方式
 
 IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-edge-runtime.md#iot-edge-hub)运行时模块的身份和合法性。 这些验证可实现运行时、模块和 IoT 设备之间的 TLS（传输层安全性）安全连接。 与 IoT 中心本身一样，IoT Edge 需要来自 IoT 下游（或叶）设备和 IoT Edge 模块的安全加密连接。 为了建立安全的 TLS 连接，IoT Edge 中心模块为连接客户端提供服务器证书链，以便它们验证其身份。
 
+>[!NOTE]
+>本文讨论了用于保护 IoT Edge 设备上不同组件之间或 IoT Edge 设备与任何叶设备之间的连接的证书。 你还可以使用证书对 IoT Edge 设备向 IoT 中心进行身份验证。 这些身份验证证书不同，本文未对其进行讨论。 有关使用证书对设备进行身份验证的详细信息，请参阅 [使用 x.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)。
+
 本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。 虽然脚本不同（Powershell 与 bash），但 Linux 和 Windows 之间的概念是相同的。
 
 ## <a name="iot-edge-certificates"></a>IoT Edge 证书
 
-通常，制造商不是 IoT Edge 设备的最终用户。 有时，两者之间的唯一关系是最终用户或操作员购买制造商生产的通用设备。 其他时候，制造商根据合同为运营商构建自定义设备。 IoT Edge 证书设计尝试考虑这两种情况。
-
-> [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。 此限制适用于设备 CA 证书、信任捆绑中的任何证书和用于 x.509 预配方法的设备 ID 证书。
+在 IoT Edge 设备上设置证书有两种常见方案。 有时，设备的最终用户（或操作员）购买由制造商制造的一般设备，然后管理证书本身。 其他情况下，制造商在合同中运行以生成操作员的自定义设备，并在从设备中进行操作之前进行某些初始证书签名。 IoT Edge 证书设计尝试考虑这两种情况。
 
 下图说明了 IoT Edge 证书使用情况。 根 CA 证书和设备 CA 证书之间可能存在零个、一个或多个中间签名证书，具体取决于所涉及的实体数量。 下面介绍一个用例。
 
 ![典型证书关系图](./media/iot-edge-certs/edgeCerts-general.png)
 
+> [!NOTE]
+> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。 此限制适用于设备 CA 证书、信任捆绑中的任何证书和用于 x.509 预配方法的设备 ID 证书。
+
 ### <a name="certificate-authority"></a>证书颁发机构
 
-证书颁发机构（简称“CA”）是颁发数字证书的实体。 证书颁发机构充当所有者和证书接收者之间的可信第三方。 数字证书可认证证书接收者对公钥的所有权。 使用证书信任链的方式是先颁发根证书，这是信任机构颁发的所有证书的基础。 之后，所有者可使用根证书颁发其他中间证书（“叶”证书）。
+证书颁发机构（简称“CA”）是颁发数字证书的实体。 证书颁发机构在证书的所有者和接收方之间充当受信任的第三方。 数字证书可认证证书接收者对公钥的所有权。 使用证书信任链的方式是先颁发根证书，这是信任机构颁发的所有证书的基础。 之后，所有者可使用根证书颁发其他中间证书（“叶”证书）。
 
 ### <a name="root-ca-certificate"></a>根 CA 证书
 
@@ -43,7 +46,7 @@ IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-e
 
 ### <a name="intermediate-certificates"></a>中间证书
 
-在创建安全设备的典型制造过程中，很少直接使用根 CA 证书，这主要是因为存在泄漏或暴露的风险。 根 CA 证书创建并对一个或多个中间 CA 证书进行数字签名。 可能只有一个中间证书，也可能存在中间证书链。 需要中间证书链的情景包括：
+在创建安全设备的典型制造过程中，很少直接使用根 CA 证书，这主要是因为存在泄漏或暴露的风险。 根 CA 证书创建并对一个或多个中间 CA 证书进行数字签名。 可能只有一个，或者其中可能存在这些中间证书的链。 需要中间证书链的情景包括：
 
 * 制造商各部门的层次结构。
 
@@ -59,7 +62,7 @@ IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-e
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge 工作负载 CA
 
-IoT Edge 首次启动时，[IoT Edge 安全管理器](iot-edge-security-manager.md)会生成工作负载 CA 证书，这是流程“操作员”端的第一个证书。 此证书由“设备 CA 证书”生成并签名。 此证书只是另一个中间签名证书，用于生成 IoT Edge 运行时使用的任何其他证书并对其签名。 今天，下一节主要讨论 IoT Edge 中心服务器证书，但将来可能涵盖用于对 IoT Edge 组件进行身份验证的其他证书。
+IoT Edge 首次启动时，[IoT Edge 安全管理器](iot-edge-security-manager.md)会生成工作负载 CA 证书，这是流程“操作员”端的第一个证书。 此证书由设备 CA 证书生成并进行签名。 此证书只是另一个中间签名证书，用于生成 IoT Edge 运行时使用的任何其他证书并对其签名。 今天，下一节主要讨论 IoT Edge 中心服务器证书，但将来可能涵盖用于对 IoT Edge 组件进行身份验证的其他证书。
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge 中心服务器证书
 

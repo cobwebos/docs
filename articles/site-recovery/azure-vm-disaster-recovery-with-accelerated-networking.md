@@ -9,11 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73622428"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835844"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
 
@@ -44,7 +45,7 @@ ms.locfileid: "73622428"
 
 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms
 
-有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="accelerated-networking-with-linux-vms"></a>Linux VM 的加速网络
 
@@ -65,7 +66,7 @@ ms.locfileid: "73622428"
 
 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受到支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
 
-有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="enabling-accelerated-networking-for-replicated-vms"></a>为复制的 VM 启用加速网络
 

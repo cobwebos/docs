@@ -1,18 +1,18 @@
 ---
 title: 限制和配额 IoT 即插即用预览 |Microsoft Docs
 description: 了解使用 IoT 即插即用预览时适用的限制、配额和限制。
-author: miagdp
-ms.author: miag
-ms.date: 04/01/2020
+author: prashmo
+ms.author: prashmo
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80518170"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337392"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT 即插即用预览限制、配额和限制
 
@@ -22,41 +22,19 @@ ms.locfileid: "80518170"
 
 对于公共预览版，以下限制和配额适用于 IoT 中心：
 
-| 限制、限制和限制 | 值 | 注意 |
+| 限制、限制和限制 | 值 | 说明 |
 |-----|-----|-----|
-| 每个中心可注册的设备功能模型（DCMs）或接口数量 | 1500 ||
-| 每个设备可以注册的接口的最大数目 | 40 ||
-| 每个设备可以注册的最大 DCMs 数 | 1 ||
-| 接口/DCM 文件的最大大小 | 512 KB ||
-| 接口名称的最大大小 | 256个字符 ||
-| 属性名的最大大小  | 64字节，深度为7个级别（为保留第一个级别 `$iotin` ） | 允许的字符： a-z、a-z、0-9 （不是第一个字符）和下划线。 |
-| 属性值的最大大小 | 512 字节 ||
-| 命令名称的最大大小 | 100字节 ||
+| 每个中心可注册的接口数 | 1500 ||
+| 组件名称的最大大小 | 1-64 个字符 | 允许的字符： a-z、a-z、0-9 （而不是第一个字符）和下划线（不作为第一个字符或最后一个字符）。 |
+| 属性名的最大大小 | 1-64 个字符 | 允许的字符： a-z、a-z、0-9 （而不是第一个字符）和下划线（不作为第一个字符或最后一个字符）。 |
+| 属性值的最大大小 | 与数字孪生定义语言[属性](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property)相同 | 深度为5个级别，并且不能是数组或包含数组的任何复杂架构 |
+| 命令名称的最大大小 | 1-64 个字符 | 允许的字符： a-z、a-z、0-9 （而不是第一个字符）和下划线（不作为第一个字符或最后一个字符）。|
 | 设备孪生的大小 | 与[IoT 中心限制](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size)相同 ||
-| 跨 SKU 的解析 API 调用（与设备无关） | 每秒100请求数 ||
-
-## <a name="model-repository"></a>模型存储库
-
-对于公共预览版，以下限制和配额适用于模型存储库：
-
-| 限制、限制和限制 | 值 |
-|-----|-----|
-| 每 Azure Active Directory 租户的公司型号存储库数 | 1 |
-| 每个模型存储库的授权密钥数 | 10  |
-| 每个公司模型存储库的模型数（DCMs 或接口）| 1500  |
-| 每 Azure Active Directory 租户的公共模型存储库中的模型数（DCMs 或接口）| 1500  |
-| 公司模型存储库中要删除的 DCMs 或接口数量 | 每秒10个查询（QPS）|
-| 租户创建/更新的模型存储库数| 1 QPS |
-| 在模型存储库中创建/更新/删除的授权密钥数 | 1 QPS|
-| 在公司模型存储库中创建的 DCMs 数 | 10 QPS |
-| 公司模型存储库中正在创建的接口数 | 10 QPS|
-| 在公共模型存储库中创建的 DCMs 的数目 | 10 QPS|
-| 公共模型存储库中正在创建的接口的数目 | 10 QPS|
 
 ## <a name="parser-library"></a>分析器库
 
-分析器库遵循适用于[数字克隆定义语言](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)的限制。
+分析器库遵循适用于[数字孪生定义语言](https://github.com/Azure/opendigitaltwins-dtdl)的限制。
 
 ## <a name="next-steps"></a>后续步骤
 
-建议的下一步是了解如何[连接到 IoT 即插即用设备并与之进行交互](./howto-develop-solution.md)。
+建议的下一步是查看[IoT 即插即用的体系结构](concepts-architecture.md)。

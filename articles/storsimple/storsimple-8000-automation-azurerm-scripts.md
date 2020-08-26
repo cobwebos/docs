@@ -1,16 +1,17 @@
 ---
 title: 使用 AzureRM PowerShell 脚本管理 StorSimple 设备
-description: 了解如何使用 Azure 资源管理器脚本自动执行 StorSimple 作业
+description: 了解如何使用基于 Azure 资源管理器 SDK 的脚本来管理 StorSimple 8000 系列设备。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513100"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183252"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 
@@ -53,8 +54,8 @@ ms.locfileid: "85513100"
 在开始之前，请确保具备以下条件：
 
 *   已安装 Azure PowerShell。 若要安装 Azure PowerShell 模块，请执行以下操作：
-    * 在 Windows 环境中，按照[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 中的步骤操作。 可以在 StorSimple 的 Windows Server 主机（如果使用）上安装 Azure PowerShell。
-    * 在 Linux 或 MacOS 环境中，按照[在 MacOS 或 Linux 上安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux) 中的步骤操作。
+    * 在 Windows 环境中，按照[安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的步骤操作。 可以在 StorSimple 的 Windows Server 主机（如果使用）上安装 Azure PowerShell。
+    * 在 Linux 或 MacOS 环境中，按照[在 MacOS 或 Linux 上安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的步骤操作。
 
 若要详细了解如何使用 Azure PowerShell，请转到 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 

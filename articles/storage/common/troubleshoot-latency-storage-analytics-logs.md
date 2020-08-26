@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075949"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
 
@@ -97,7 +97,7 @@ ms.locfileid: "86113099"
 
    下表提供了有关高延迟 OperationType 和 RequestStatus 结果的信息：
 
-   |   |RequestStatus=<br>成功|RequestStatus=<br>(SAS)NetworkError|建议|
+   | Blob 类型 |RequestStatus=<br>Success|RequestStatus=<br>(SAS)NetworkError|建议|
    |---|---|---|---|
    |GetBlob|是|否|[**GetBlob 操作：** RequestStatus = Success](#getblob-operation-requeststatus--success)|
    |GetBlob|否|是|[**GetBlob 操作：** RequestStatus = （SAS） NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|

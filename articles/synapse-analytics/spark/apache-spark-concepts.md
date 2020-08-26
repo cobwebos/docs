@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics 中的 Apache Spark - 核心概念
+title: Apache Spark 核心概念
 description: 本文介绍 Azure Synapse Analytics 中的 Apache Spark 以及不同的概念。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: aa1b4287899aaff9ede4832e999603773d79d28c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052332"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics 中的 Apache Spark 的核心概念
 

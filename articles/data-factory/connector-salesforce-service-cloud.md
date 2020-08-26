@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ec2aa5b1492534908adb55544623110242717609
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: d83dcc5c86f2dfed5f588738e7799dd708333da1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076780"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce Service Cloud 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +50,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 - 如果并发请求数超过限制，则将进行限制并且会看到随机失败。
 - 如果请求总数超过限制，会阻止 Salesforce 帐户 24 小时。
 
-在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)中的“API 请求限制”部分。
+在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](https://developer.salesforce.com/docs/atlas.en-us.218.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)中的“API 请求限制”部分。
 
 ## <a name="get-started"></a>入门
 
@@ -234,7 +234,7 @@ Salesforce 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceServiceCloudSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
-| externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce Service Cloud 对象中定义为“外部 ID 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
+| externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 服务云对象中定义为 "外部 ID 字段"。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce Service Cloud 的数据行计数。 | 否（默认值为5,000） |
 | ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
@@ -285,7 +285,7 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL 与 SQL 查询语法之间的差异
 
-从 Salesforce Service Cloud 中复制数据时，可以使用 SOQL 查询或 SQL 查询。 请注意，这两者具有不同的语法和功能支持，不要混用。 建议使用 Salesforce Service Cloud 原本就支持的 SOQL 查询。 下表列出了主要差异：
+从 Salesforce Service Cloud 中复制数据时，可以使用 SOQL 查询或 SQL 查询。 请注意，这两者具有不同的语法和功能支持，不要混用。 建议使用 Salesforce 服务云本机支持的 SOQL 查询。 下表列出了主要差异：
 
 | 语法 | SOQL 模式 | SQL 模式 |
 |:--- |:--- |:--- |
@@ -303,7 +303,7 @@ Salesforce 链接服务支持以下属性。
 * **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY:Truncated 错误
+### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY 错误：已截断
 
 如果遇到“MALFORMED_QUERY:Truncated”错误，通常是因为在数据中存在 JunctionIdList 类型列，而 Salesforce 在支持此类具有大量行的数据方面存在限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（可以将其划分为多个复制活动运行）。
 

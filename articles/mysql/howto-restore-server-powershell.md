@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 85c04c875e543a5c41e9ad5e736a7de77ac1dad0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119865"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837267"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>如何使用 PowerShell 来备份和还原 Azure Database for MySQL 服务器
 
@@ -29,7 +30,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 > 尽管 Az.MySql PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.MySql -AllowPrerelease`。
 > Az.MySql PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
-如果选择在本地使用 PowerShell，请使用[AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。
+如果选择在本地使用 PowerShell，请使用 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -132,4 +133,4 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 自定义 Azure Database for MySQL 服务器参数](howto-configure-server-parameters-using-powershell.md)
+> [如何使用 PowerShell 生成 Azure Database for MySQL 连接字符串](howto-connection-string-powershell.md)

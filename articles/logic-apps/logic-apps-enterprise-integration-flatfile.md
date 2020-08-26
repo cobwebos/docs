@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
-ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001479"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 对 Azure 逻辑应用中的平面文件进行编码或解码
 
@@ -24,7 +25,7 @@ ms.locfileid: "83005379"
 
 * 要在其中使用**平面文件**连接器的逻辑应用，以及用于启动逻辑应用工作流的触发器。 **平面文件**连接器仅提供操作，而不提供触发器。 可以使用触发器或其他操作将 XML 内容送入逻辑应用进行编码或解码。 如果你不熟悉逻辑应用，请查看[快速入门：创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* 与 Azure 订阅关联并链接到计划使用**平面文件**连接器的[逻辑应用](logic-apps-enterprise-integration-accounts.md#link-account)的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 逻辑应用和集成帐户必须存在于同一位置或 Azure 区域中。
+* 与 Azure 订阅关联并链接到计划使用**平面文件**连接器的[逻辑应用](./logic-apps-enterprise-integration-create-integration-account.md#link-account)的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 逻辑应用和集成帐户必须存在于同一位置或 Azure 区域中。
 
 * 已上传到集成帐户以便对 XML 内容进行编码或解码的平面文件[架构](logic-apps-enterprise-integration-schemas.md)
 

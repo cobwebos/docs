@@ -3,15 +3,16 @@ title: 模块克隆 JSON 架构-Azure
 description: 本主题介绍 IoT Edge 上的实时视频分析的模块克隆 JSON 架构。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053073"
 ---
 # <a name="module-twin-json-schema"></a>模块克隆 JSON 架构
 
-设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 有关详细说明，请参阅[了解和使用 IoT 中心的模块孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 有关详细说明，请参阅[了解和使用 IoT 中心的模块孪生](../../iot-hub/iot-hub-devguide-module-twins.md)
 
 本主题介绍 IoT Edge 上的实时视频分析的模块克隆 JSON 架构。
 
@@ -36,13 +37,13 @@ IoT Edge 上的实时视频分析公开以下模块克隆属性。
 |diagnosticsLevel |否 |是 |事件详细级别： <br/>信息 & # x02758;警告 & # x02758;错误 & # x02758;严重 & # x02758;内容 |
 |diagnosticsEventsOutputName |否 |是 |诊断事件的集线器输出。 <br/>（空表示不发布诊断）|
 |operationalEventsOutputName|否|是|操作事件的中心输出。<br/>（空表示不发布操作事件）
-|logLevel|否|是|下列情况之一： <br/>& # x000B7;详细<br/>& # x000B7;信息（默认值）<br/>& # x000B7;出现<br/>& # x000B7;条<br/>& # x000B7;内容|
+|logLevel|否|是|下列类型作之一： <br/>& # x000B7;详细<br/>& # x000B7;信息（默认值）<br/>& # x000B7;出现<br/>& # x000B7;条<br/>& # x000B7;内容|
 |logCategories|否|是|以下项的逗号分隔列表： Application、MediaPipeline、Events <br/>默认：应用程序，事件|
 |debugLogsDirectory|否|是|调试日志的目录。 如果生成了现有日志，则禁用 "调试日志"。
 
 <sup>*</sup>必须提供服务主体证书或密码。 
 
-无需重新启动模块即可更新动态属性。 可以按照[获取媒体服务 API 访问权限](../latest/access-api-cli-how-to.md)一文中的说明，获取其中几个属性的值。 
+无需重新启动模块即可更新动态属性。 可以按照[获取媒体服务 API 访问权限](../latest/access-api-howto.md)一文中的说明，获取其中几个属性的值。 
 
 有关可选诊断设置的角色的详细信息，请参阅有关[监视和日志记录](monitoring-logging.md)的文章。
 

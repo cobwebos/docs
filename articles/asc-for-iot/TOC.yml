@@ -5,6 +5,8 @@
   items:
     - name: 解决方案体系结构
       href: architecture.md
+    - name: Azure RTOS 的安全解决方案
+      href: iot-security-azure-rtos.md
     - name: 安全代理
       href: security-agent-architecture.md
     - name: Edge 安全模块
@@ -27,8 +29,12 @@
       href: quickstart-configure-your-solution.md
     - name: 创建适用于 IoT 的 Azure 安全中心模块克隆
       href: quickstart-create-security-twin.md
+    - name: 调查安全建议
+      href: quickstart-investigate-security-recommendations.md
     - name: 创建自定义安全警报
       href: quickstart-create-custom-alerts.md
+    - name: 调查安全警报
+      href: quickstart-investigate-security-alerts.md
 - name: 概念
   items:
     - name: 安全代理身份验证
@@ -53,9 +59,9 @@
       items:
         - name: 选择要部署的代理
           href: how-to-deploy-agent.md
-        - name: '在 Windows 设备上部署基于 C# 的安全代理'
+        - name: 在 Windows 设备上部署基于 C# 的安全代理
           href: how-to-deploy-windows-cs.md
-        - name: '在 Linux 设备上部署基于 C# 的安全代理'
+        - name: 在 Linux 设备上部署基于 C# 的安全代理
           href: how-to-deploy-linux-cs.md
         - name: 在 Linux 设备上部署基于 C 的安全代理
           href: how-to-deploy-linux-c.md
@@ -65,7 +71,7 @@
           href: troubleshoot-agent.md
         - name: 本地配置 C
           href: azure-iot-security-local-configuration-c.md
-        - name: '本地配置 C#'
+        - name: 本地配置 C#
           href: azure-iot-security-local-configuration-csharp.md
     - name: 部署 Edge 安全模块
       href: how-to-deploy-edge.md

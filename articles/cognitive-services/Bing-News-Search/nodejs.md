@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872053"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406599"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>快速入门：使用 Node.js 和必应新闻搜索 REST API 执行新闻搜索
 

@@ -3,16 +3,16 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255891"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717517"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
-[Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)是推荐用于 Azure 虚拟机的磁盘存储产品/服务，可以持久存储数据。 将你的节点类型所基于的虚拟机规模集升级为使用托管磁盘，可以改善 Service Fabric 工作负荷的复原能力。 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
+[Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)是推荐用于 Azure 虚拟机的磁盘存储产品/服务，可以持久存储数据。 将你的节点类型所基于的虚拟机规模集升级为使用托管磁盘，可以改善 Service Fabric 工作负荷的复原能力。 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 
 将 Service Fabric 群集节点升级为使用托管磁盘的一般策略是：
 
@@ -23,6 +23,9 @@ ms.locfileid: "86255891"
 3. 验证群集和新节点是否正常，然后删除原始规模集，以及已删除的节点的节点状态。
 
 本文将引导你完成将示例群集的主要节点类型升级为使用托管磁盘的步骤，同时避免发生任何群集停机（参阅下面的注释）。 示例测试群集的初始状态包括一个[银级持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的节点类型，该节点类型由包含五个节点的单个规模集提供支持。
+
+> [!NOTE]
+> 基本 SKU 负载均衡器的限制阻止添加其他规模集。 建议改用标准 SKU 负载均衡器。 有关详细信息，请参阅 [两个 sku 的比较](/azure/load-balancer/skus)。
 
 > [!CAUTION]
 > 仅当你依赖于群集 DNS 时（例如，在访问 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 时），才会在此过程中遇到服务中断。 [适用于前端服务的体系结构最佳做法](/azure/architecture/microservices/design/gateway)要求在你的节点类型的前面使用某种[负载均衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，以便无需中断服务即可进行节点交换。
@@ -266,7 +269,7 @@ Get-ServiceFabricClusterHealth
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **群集证书的指纹。**  (如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况状态，则可能已具有此项。 ) 从相同的证书边栏选项卡 (**证书**  >  *Your desired certificate*) 在 Azure 门户中，复制**x.509 sha-1 指纹 (十六进制) **：
+* **群集证书的指纹。** （如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况，则可能已获取此指纹。）在 Azure 门户上的同一证书边栏选项卡（“证书” > <所需的证书>）中，复制“X.509 SHA-1 指纹(十六进制)”：
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
@@ -362,7 +365,7 @@ foreach($name in $nodeNames){
 
 了解如何：
 
-* [纵向扩展 Service Fabric 群集主节点类型](service-fabric-scale-up-node-type.md)
+* [纵向扩展 Service Fabric 群集主节点类型](service-fabric-scale-up-primary-node-type.md)
 
 * [将规模集模板转换为使用托管磁盘](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 

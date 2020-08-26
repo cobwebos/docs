@@ -1,6 +1,6 @@
 ---
 title: 身份验证、请求和响应
-description: 对 AD 进行身份验证以使用 Key Vault
+description: 了解 Azure Key Vault 如何使用 JSON 格式的请求和响应，以及使用密钥保管库所需的身份验证。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430885"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191798"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 示例 - 网络
-description: Azure PowerShell 示例
+description: 了解网络 Azure PowerShell 示例，包括为多层应用程序创建虚拟网络的示例。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
-ms.openlocfilehash: 98b72dbb9f3b62fd5985f6245e52293ec31fc682
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: aa3304cbabb183368f0e47415e64120854f43535
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232536"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282069"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>适用于网络的 Azure PowerShell 示例
 
 下表包含指向使用 Azure PowerShell 生成的脚本的链接。
 
-| 脚本 | 描述 |
+| Script | 说明 |
 |-|-|
 |Azure 资源之间的连接 ||
 | [为多层应用程序创建虚拟网络](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | 创建包含前端和后端子网的虚拟网络。 传入前端子网的流量仅限 HTTP，而传入后端子网的流量限于 SQL、端口 1433。 |

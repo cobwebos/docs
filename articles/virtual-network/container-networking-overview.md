@@ -1,6 +1,6 @@
 ---
 title: Azure 虚拟网络容器网络 | Microsoft Docs
-description: 了解如何启用容器以使用 Azure 虚拟网络。
+description: 了解 Azure 虚拟网络容器网络接口 (CNI) 插件以及如何启用容器以使用 Azure 虚拟网络。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b2a0a0527ffaedacbabcf19435fbc1772b632816
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707491"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283208"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>启用容器以使用 Azure 虚拟网络功能
 

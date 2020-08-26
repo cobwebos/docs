@@ -3,12 +3,12 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610585"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281321"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -51,7 +51,7 @@ ms.locfileid: "85610585"
 
 临时 OS 磁盘不是特定的 Service Fabric 功能，而是映射到 Service Fabric 节点类型的 Azure“虚拟机规模集”的功能。 将它们与 Service Fabric 一起使用需要在群集 Azure 资源管理器模板中执行以下操作：
 
-1. 确保你的节点类型为临时 OS 磁盘指定[支持的 Azure VM 大小](../virtual-machines/windows/ephemeral-os-disks.md)，并且 VM 大小有足够的缓存大小来支持其 OS 磁盘大小（请参阅下文中的*注释*。）例如：
+1. 确保你的节点类型为临时 OS 磁盘指定[支持的 Azure VM 大小](../virtual-machines/ephemeral-os-disks.md)，并且 VM 大小有足够的缓存大小来支持其 OS 磁盘大小（请参阅下文中的*注释*。）例如：
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ ms.locfileid: "85610585"
 > 若要进行迁移，用户必须使用临时磁盘[添加](./virtual-machine-scale-set-scale-node-type-scale-out.md)新的 nodeType，将工作负荷移至新的 nodeType 并[删除](./service-fabric-how-to-remove-node-type.md)现有 nodeType。
 >
 
-有关详细信息和更多配置选项，请参阅 [Azure VM 的临时 OS 磁盘](../virtual-machines/windows/ephemeral-os-disks.md) 
+有关详细信息和更多配置选项，请参阅 [Azure VM 的临时 OS 磁盘](../virtual-machines/ephemeral-os-disks.md) 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>选择群集的持续性和可靠性级别

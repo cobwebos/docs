@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80396409"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827403"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -32,14 +32,14 @@ ms.locfileid: "80396409"
 * 代理和保管库凭据已下载到 DPM 服务器。
 * DPM 服务器上已安装代理。
 * DPM 服务器已使用保管库凭据注册。
-* 若要保护 Exchange 2016，请升级到 DPM 2012 R2 UR9 或更高版本
+* 如果要保护 Exchange 2016，请升级到 DPM 2012 R2 UR9 或更高版本
 
 ## <a name="dpm-protection-agent"></a>DPM 保护代理
 
 若要在 Exchange Server 上安装 DPM 保护代理，请遵循以下步骤：
 
-1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
-2. 通过在 DPM 管理员控制台中单击“管理”>“代理”>“安装”，在 Exchange 服务器上安装代理。 有关详细步骤，请参阅[安装 DPM 保护代理](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)。
+1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
+2. 通过在 DPM 管理员控制台中单击“管理”>“代理”>“安装”，在 Exchange 服务器上安装代理。 有关详细步骤，请参阅[安装 DPM 保护代理](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
 
@@ -49,7 +49,7 @@ ms.locfileid: "80396409"
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)。
+   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](/system-center/dpm/back-up-exchange)。
    >
    >
 
@@ -76,7 +76,7 @@ ms.locfileid: "80396409"
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果未针对数据库的至少一个 DAG 副本选择“完全备份”，则不会截断日志。
+   > 如果没有为数据库的至少一个 DAG 副本选择 "完全备份"，则不会截断日志。
    >
    >
 10. 配置“**短期备份**”的目标，并单击“**下一步**”。

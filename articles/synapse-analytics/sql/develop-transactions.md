@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 07c507eb139c4c4d339db1ede46956cb09a61dcf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962911"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500753"
 ---
-# <a name="using-transactions-in-sql-pool"></a>使用 SQL 池中的事务
+# <a name="use-transactions-in-sql-pool"></a>在 SQL 池中使用事务
 
 有关在开发解决方案时实现 SQL 池（数据仓库）中的事务的技巧。
 
@@ -183,7 +183,7 @@ SELECT @xact_state AS TransactionState;
 
 另外值得注意的是，SQL 池不实现或支持 ERROR_LINE() 函数。 如果代码中包含此函数，需要将它删除才能符合 SQL 池的要求。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](develop-label.md) 一文。
 
-## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
+## <a name="use-of-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
 THROW 是在 SQL 池中引发异常的新式做法，但也支持 RAISERROR。 不过，有些值得注意的差异。
 

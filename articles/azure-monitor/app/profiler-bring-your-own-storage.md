@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539850"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117383"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>为 Application Insights Profiler 和 Snapshot Debugger 配置自带存储（BYOS）
 
@@ -63,7 +63,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 如果还使用的是专用链接，则需要使用另外一个配置，以允许从你的虚拟网络连接到受信任的 Microsoft 服务。 请参阅[存储网络安全文档](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>将你的存储帐户链接到你的 Application Insights 资源
-若要为代码级诊断配置 BYOS （探查器/调试器），有两个选项：
+若要为代码级诊断配置 BYOS （探查器/调试器），有三个选项：
 
 * 使用 Azure PowerShell Cmdlet
 * 使用 Azure 命令行接口（CLI）
@@ -198,7 +198,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 1. 在 PowerShell 控制台中出现提示时提供以下参数：
     
-    |           参数           |                                说明                               |
+    |           参数           |                                描述                               |
     |-------------------------------|--------------------------------------------------------------------------|
     | application_insights_name     | 要启用 BYOS 的 Application Insights 资源的名称。            |
     | storage_account_name          | 要用作 BYOS 的存储帐户资源的名称。 |

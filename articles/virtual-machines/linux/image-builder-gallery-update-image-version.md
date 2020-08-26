@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 2b65dee27bf31a3cf49b59ddf982834b86dca4de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f233a6fc557d9dbb62585e8cca85f175b3bc3e26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82872128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010591"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>预览：使用 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>预览：使用 Linux 中的 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本
 
 本文介绍如何使用[共享映像库](shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 

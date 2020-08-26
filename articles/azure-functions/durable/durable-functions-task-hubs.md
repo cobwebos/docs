@@ -3,13 +3,14 @@ title: Durable Functions 中的任务中心 - Azure
 description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何任务中心。
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81604614"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432695"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -109,12 +110,12 @@ ms.locfileid: "81604614"
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
+    [DurableClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
     // Function input comes from the request content.
-    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    object eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
 
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -127,6 +128,19 @@ public static async Task<HttpResponseMessage> Run(
 > 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+`function.json` 文件中的任务中心属性通过应用设置进行设置：
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
 
 `function.json` 文件中的任务中心属性通过应用设置进行设置：
 

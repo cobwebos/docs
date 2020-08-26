@@ -3,12 +3,12 @@ title: 基于 VM 创建 Azure 开发测试实验室自定义映像 | Microsoft D
 description: 介绍如何通过 Azure 门户在 Azure 开发测试实验室中基于预配的 VM 创建自定义映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476591"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277021"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
 
@@ -18,7 +18,7 @@ ms.locfileid: "85476591"
 
 可基于预配的 VM 创建自定义映像，随后使用该自定义映像创建相同的 VM。 以下步骤演示了如何从 VM 创建自定义映像：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
 
@@ -43,7 +43,7 @@ ms.locfileid: "85476591"
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 
-- [自定义映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [自定义映像或公式？](./devtest-lab-faq.md#blog-post)
 - [复制 Azure 开发测试实验室间的自定义映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>后续步骤

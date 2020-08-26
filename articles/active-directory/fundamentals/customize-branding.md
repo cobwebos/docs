@@ -2,7 +2,7 @@
 title: 将品牌添加到组织的登录页面-Azure AD
 description: 有关如何将组织的品牌添加到 Azure Active Directory 登录页面的说明。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603904"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796788"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -79,7 +80,7 @@ ms.locfileid: "85603904"
 
         - **登录页背景色。** 指定在低带宽连接的情况下替代背景图像显示的十六进制颜色（例如，白色为 #FFFFFF）。 我们建议使用横幅徽标的主颜色或组织的颜色。
 
-        - **方形徽标图像。** 对于新的 Windows 10 企业版设备，请在安装过程中为用户显示你的组织徽标的 .png （首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
+        - **方形徽标图像。** 选择要在新的 Windows 10 企业版设备的设置过程中向用户显示的 png (首选) 或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
         
             图像的大小不能大于240x240 像素像素，并且文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
     

@@ -6,14 +6,14 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083134"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 WAF 自定义规则
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 Web 应用程序防火墙 (WAF) 自定义规则
 
 此脚本将创建使用自定义规则的应用程序网关 Web 应用程序防火墙。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
@@ -70,5 +70,5 @@ Remove-AzResourceGroup -Name CustomRulesTest
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 WAF 自定义规则的详细信息，请参阅 [Web 应用程序防火墙的自定义规则](../custom-waf-rules-overview.md)
-- 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+- 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 - 可以在 [Azure 应用程序网关文档](../powershell-samples.md)中找到其他应用程序网关 PowerShell 脚本示例。

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056661"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412943"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务（AKS）部署
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service （AKS）在 Azure 上提供托管的 Kubernetes 群集
 
 Kubernetes 根据虚拟机的可用计算资源和每个容器的资源要求，协调虚拟机群集并计划容器在这些虚拟机上运行。 容器组合到 pod 中，即 Kubernetes 的基本操作单元，而这些箱将扩展到所需的状态。
 
-出于管理和操作目的，AKS 群集中的节点需要访问某些端口和完全限定的域名 (FQDN)。 这些操作可以是与 API 服务器通信，或者下载并安装核心 Kubernetes 群集组件和节点安全更新。 Azure 防火墙可以帮助你锁定环境并筛选出站流量。
+为了便于管理和操作，AKS 群集中的节点需要访问特定的端口和完全限定的域名 (FQDN)。 这些操作可以是与 API 服务器通信，或者下载并安装核心 Kubernetes 群集组件和节点安全更新。 Azure 防火墙可以帮助你锁定环境并筛选出站流量。
 
 遵循本文中的指导原则，使用 Azure 防火墙为你的 Azure Kubernetes 群集提供额外的保护。
 
@@ -50,7 +50,9 @@ Azure 防火墙提供 AKS FQDN 标记以简化配置。 使用以下步骤可允
       若要更具体地了解，请参阅 **hcp. <location> 。* 下表中的 azmk8s.io 和地址。
    - 用于网络时间协议 (NTP) 时间同步 (Linux 节点) 的 UDP 端口 123。
    - 如果你有直接访问 API 服务器的 Pod，则还需要用于 DNS 的 UDP 端口 53。
-- 配置 AzureMonitor 和存储服务标记。 Azure Monitor 接收 log analytics 数据。 
+
+   有关详细信息，请参阅[在 Azure Kubernetes 服务中控制群集节点的出口流量（AKS）](../aks/limit-egress-traffic.md)。
+- 配置 AzureMonitor 和存储服务标记。 Azure Monitor 接收 log analytics 数据。
 
    你还可以分别允许工作区 URL： `<worksapceguid>.ods.opinsights.azure.com` 、和 `<worksapceguid>.oms.opinsights.azure.com` 。 可以通过以下方式之一来解决此操作：
 

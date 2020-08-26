@@ -1,17 +1,18 @@
 ---
 title: 创建基于路由的 Azure VPN 网关：CLI
-description: 快速了解如何使用 CLI 创建 VPN 网关
+description: 使用 Azure CLI 快速创建基于路由的 Azure VPN 网关，用于连接到本地网络的 VPN 连接或连接虚拟网络。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f451ace7ec3f032dc7752829d12a0a3598811b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987690"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036090"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 创建基于路由的 VPN 网关
 

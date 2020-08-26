@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223544"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225528"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>从托管映像迁移到共享映像库映像
 
@@ -54,9 +54,9 @@ $gallery = Get-AzGallery `
 
 创建映像定义时，请确保它包含所有正确信息。 由于托管映像始终会通用化，因此应设置 `-OsState generalized`。 
 
-若要详细了解可以为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+若要详细了解可以为映像定义指定的值，请参阅[映像定义](./windows/shared-image-galleries.md#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义名为 *myImageDefinition*，适用于通用化 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义名为 *myImageDefinition*，适用于通用化 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>获取托管映像
 
-可使用 [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage) 查看资源组中可用的映像列表。 了解映像名称及其所在的资源组后，就可以再次使用 `Get-AzImage` 来获取映像对象并将其存储在变量中以便以后使用。 此示例将从“myResourceGroup”资源组获取名为“myImage”的映像，并将其分配给变量“$managedImage” 。 
+可使用 [Get-AzImage](/powershell/module/az.compute/get-azimage) 查看资源组中可用的映像列表。 了解映像名称及其所在的资源组后，就可以再次使用 `Get-AzImage` 来获取映像对象并将其存储在变量中以便以后使用。 此示例将从“myResourceGroup”资源组获取名为“myImage”的映像，并将其分配给变量“$managedImage” 。 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -84,7 +84,7 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>创建映像版本
 
-使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 从托管映像创建映像版本。 
+使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 从托管映像创建映像版本。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -99,8 +99,8 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -GalleryImageDefinitionName $imageDefinition.Name `
    -GalleryImageVersionName '1.0.0' `
    -GalleryName $gallery.Name `
-   -ResourceGroupName $resourceGroup.ResourceGroupName `
-   -Location $resourceGroup.Location `
+   -ResourceGroupName $imageDefinition.ResourceGroupName `
+   -Location $imageDefinition.Location `
    -TargetRegion $targetRegions  `
    -Source $managedImage.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-31' `
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。 
 >
-> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_ZRS` 在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中存储映像。
+> 你还可以通过添加 `-StorageAccountType Premium_LRS` ，或者在创建映像版本时添加 [区域冗余存储](../storage/common/storage-redundancy.md) ，在高级存储中存储映像 `-StorageAccountType Standard_ZRS` 。
 >
 
 ## <a name="delete-the-managed-image"></a>删除托管映像
@@ -134,4 +134,4 @@ Remove-AzImage `
 
 确认复制完成后，可以从[通用化映像](vm-generalized-image-version-powershell.md)创建 VM。
 
-有关如何提供购买计划信息的信息，请参阅[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+有关如何提供购买计划信息的信息，请参阅 [创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。

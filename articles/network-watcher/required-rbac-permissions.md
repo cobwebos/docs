@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840547"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497301"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限
 
-通过 Azure 基于角色的访问控制 (RBAC)，你可以将具体操作仅分配给需要完成其分配的职责的组织成员。 若要使用网络观察程序功能，登录 Azure 所使用的帐户必须分配给[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)内置角色，或分配给[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)（已向自定义角色分配了以下各节中为每个网络观察程序功能列出的操作）。 若要了解有关网络观察程序的功能的详细信息，请参阅[什么是网络观察程序？](network-watcher-monitoring-overview.md)。
+使用 azure 基于角色的访问控制（Azure RBAC），可以仅向组织中的成员分配完成其已分配职责所需的特定操作。 若要使用网络观察程序功能，登录 Azure 所使用的帐户必须分配给[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)内置角色，或分配给[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)（已向自定义角色分配了以下各节中为每个网络观察程序功能列出的操作）。 若要了解有关网络观察程序的功能的详细信息，请参阅[什么是网络观察程序？](network-watcher-monitoring-overview.md)。
 
 ## <a name="network-watcher"></a>网络观察程序
 
@@ -103,7 +104,7 @@ ms.locfileid: "76840547"
 
 | 操作                                                           | 说明                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Authorization/\*/Read                                     | 用于提取 RBAC 角色分配和策略定义          |
+| Microsoft.Authorization/\*/Read                                     | 用于提取 Azure 角色分配和策略定义          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用于枚举订阅中的所有资源组    |
 | Microsoft.Storage/storageAccounts/Read                              | 用于获取指定存储帐户的属性   |
 | Microsoft.Storage/storageAccounts/listServiceSas/Action, </br> Microsoft.Storage/storageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用于获取共享访问签名 (SAS)，启用[对存储帐户的安全访问](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)并写入存储帐户 |

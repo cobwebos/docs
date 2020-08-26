@@ -1,20 +1,20 @@
 ---
-title: 快速入门：使用自定义视觉 SDK 创建对象检测
-description: 快速入门：使用自定义视觉 SDK 创建项目、添加标记、上传图像、训练项目以及检测对象。
+title: 快速入门：使用自定义视觉客户端库创建对象检测
+description: 快速入门：使用自定义视觉客户端库创建项目、添加标记、上传图像、训练项目以及检测对象。
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 08/17/2020
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 1a8541e0ac1f819bf8189e677a532244a0900789
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c6b40fe7abe0b7ad4b6993b55206eabc5b4681d0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610043"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511268"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>快速入门：使用自定义视觉 SDK 创建对象检测项目
 

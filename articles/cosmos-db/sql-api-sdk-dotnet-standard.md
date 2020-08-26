@@ -6,13 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 78e0e1cbd66a943c8f893d8f51821587a70a6a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f72530a504d7e7cf9d7167df51f2cc31a459e3c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392023"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590126"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK v3：下载和发行说明
 > [!div class="op_single_selector"]
@@ -24,6 +25,9 @@ ms.locfileid: "85392023"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)

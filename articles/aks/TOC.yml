@@ -52,8 +52,12 @@
     - name: 访问和标识
       href: concepts-identity.md
     - name: 安全性
-      href: concepts-security.md
-      items: null
+      items:
+        - name: 应用程序和群集的安全性
+          href: concepts-security.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: 网络
       href: concepts-network.md
     - name: 存储
@@ -66,6 +70,9 @@
       items:
         - name: 概述
           href: best-practices.md
+        - name: AKS 群集的基线体系结构
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: 适用于群集操作员
           items:
             - name: 多租户和群集隔离
@@ -134,7 +141,7 @@
           href: uptime-sla.md
         - name: 使用邻近放置组（预览版）
           href: reduce-latency-ppg.md
-        - name: 升级节点映像（预览版）
+        - name: 升级节点映像
           href: node-image-upgrade.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
@@ -163,6 +170,8 @@
         - name: 使用 Terraform 部署 AKS
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: 使用 Kubernetes 资源查看器（预览版）
+          href: kubernetes-portal.md
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
     - name: 配置数据卷
@@ -283,8 +292,8 @@
           href: windows-container-powershell.md
         - name: 远程连接
           href: rdp.md
-        - name: 已知的限制
-          href: windows-node-limitations.md
+        - name: Windows Server 容器常见问题解答
+          href: windows-faq.md
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
         - name: 创建用于 Windows Server 容器的 Dockerfile
@@ -294,7 +303,7 @@
     - name: 开发和运行应用程序
       items:
         - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
@@ -357,6 +366,8 @@
           href: ssh.md
         - name: Linux 性能工具
           href: troubleshoot-linux.md
+        - name: 检查资源运行状况事件（预览）
+          href: aks-resource-health.md
 - name: 参考
   items:
     - name: Azure CLI

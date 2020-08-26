@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 介绍如何使用 Azure Dev Spaces 准备项目
 keywords: azds，yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241629"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213416"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>准备 Azure Dev Spaces 项目的方式
 
@@ -20,7 +20,7 @@ Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kuber
 
 ## <a name="prepare-your-code"></a>准备你的代码
 
-若要在开发环境中运行应用程序，需要将其放在容器中，并需要定义应该如何将其部署到 Kubernetes。 若要容器化你的应用程序，你需要一个 Dockerfile。 若要定义将应用程序部署到 Kubernetes 的方式，需要一个[Helm 图](https://docs.helm.sh/)。 为帮助创建应用程序的 Dockerfile 和 Helm 图表，客户端工具提供 `prep` 以下命令：
+若要在开发环境中运行应用程序，需要将其放在容器中，并需要定义应该如何将其部署到 Kubernetes。 若要容器化你的应用程序，你需要一个 Dockerfile。 若要定义将应用程序部署到 Kubernetes 的方式，需要一个 [Helm 图](https://docs.helm.sh/)。 为帮助创建应用程序的 Dockerfile 和 Helm 图表，客户端工具提供 `prep` 以下命令：
 
 ```cmd
 azds prep --enable-ingress
@@ -32,9 +32,9 @@ azds prep --enable-ingress
 * Node.js
 * .NET Core
 
-*必须* `prep` 从包含源代码的目录运行该命令。 `prep`从正确的目录中运行命令，可让客户端工具识别语言，并创建相应的 Dockerfile 来容器化应用程序。 还可以 `prep` 从包含 Java 项目*pom.xml*文件的目录运行该命令。
+*必须* `prep` 从包含源代码的目录运行该命令。 `prep`从正确的目录中运行命令，可让客户端工具识别语言，并创建相应的 Dockerfile 来容器化应用程序。 还可以 `prep` 从包含 Java 项目 *pom.xml* 文件的目录运行该命令。
 
-如果在 `prep` 不包含源代码的目录中运行命令，则客户端工具不会生成 Dockerfile。 它还会显示一条错误消息，指出：*由于语言不受支持，无法生成 Dockerfile*。 如果客户端工具无法识别项目类型，也会出现此错误。
+如果在 `prep` 不包含源代码的目录中运行命令，则客户端工具不会生成 Dockerfile。 它还会显示一条错误消息，指出： *由于语言不受支持，无法生成 Dockerfile*。 如果客户端工具无法识别项目类型，也会出现此错误。
 
 运行 `prep` 命令时，可以选择指定 `--enable-ingress` 标志。 此标志通知控制器为此服务创建可通过 internet 访问的终结点。 如果未指定此标志，则只能从群集内部或使用客户端工具创建的 localhost 隧道访问该服务。 可以在运行 `prep` 命令后通过更新生成的 Helm 图表来启用或禁用此行为。
 
@@ -45,7 +45,7 @@ azds prep --enable-ingress
 
 `prep`命令还将 `azds.yaml` 在项目的根目录中生成一个文件。 Azure Dev Spaces 使用此文件生成、安装、配置和运行您的应用程序。 此配置文件列出 Dockerfile 和 Helm 图的位置，还在这些项目之上提供其他配置。
 
-下面是使用[.Net Core 示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)创建的 azds 文件示例：
+下面是使用 [.Net Core 示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)创建的 azds 文件示例：
 
 ```yaml
 kind: helm-release
@@ -96,19 +96,6 @@ configurations:
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何在开发环境中运行代码，请参阅[使用 Azure Dev Spaces 运行代码的工作原理][how-it-works-up]。
-
-若要开始使用 Azure Dev Spaces 准备你的 Azure 开发人员空间项目，请参阅以下快速入门：
-
-* [通过 Visual Studio Code 和 Java 快速循环访问和调试][quickstart-java]
-* [通过 Visual Studio Code 和 .NET 快速循环访问和调试][quickstart-netcore]
-* [通过 Visual Studio Code 和 Node.js快速循环访问和调试][quickstart-node]
-* [通过 Visual Studio 和 .NET Core 快速循环访问和调试][quickstart-vs]
-* [使用 CLI 在 Kubernetes 上开发应用程序][quickstart-cli]
+若要详细了解如何在开发环境中运行代码，请参阅 [使用 Azure Dev Spaces 运行代码的工作原理][how-it-works-up]。
 
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

@@ -2,14 +2,14 @@
 title: Azure 中的无服务器容器
 description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259507"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121657"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -21,6 +21,11 @@ ms.locfileid: "86259507"
 
 与虚拟机 (VM) 相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
 
+从 Docker Hub 引入 Linux 或 Windows 容器映像、专用 [Azure 容器注册表](../container-registry/index.yml)或其他基于云的 Docker 注册表。 Azure 容器实例会缓存几个常见的基础操作系统映像，有助于加快自定义应用程序映像的部署速度。
+
+> [!NOTE]
+> 目前无法将映像从本地注册表部署到 Azure 容器实例。
+
 ## <a name="container-access"></a>容器访问
 
 使用 Azure 容器实例可以通过公共 IP 地址和完全限定的域名 (FQDN) 直接向 Internet 公开容器组。 创建容器实例时，可以指定自定义的 DNS 名称标签，以便应用程序可在 *customlabel*.*azureregion*.azurecontainer.io 上访问。
@@ -30,10 +35,15 @@ ms.locfileid: "86259507"
 > [!IMPORTANT]
 > 从 2020 年 1 月 13 日开始，Azure 容器实例将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
 
-## <a name="hypervisor-level-security"></a>虚拟机监控程序级别的安全性
+## <a name="compliant-deployments"></a>合规部署
+
+### <a name="hypervisor-level-security"></a>虚拟机监控程序级别的安全性
 
 从历史上看，容器提供了应用程序依赖项隔离和资源调控功能，但不能认为其功能已强大到可以进行恶意的多租户使用。 Azure 容器实例保证容器中的应用程序像在 VM 中一样保持隔离状态。
 
+### <a name="customer-data"></a>客户数据
+
+ACI 服务存储确保容器组按预期运行所需的最少客户数据。 将客户数据存储到一个区域目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下[地域](https://azure.microsoft.com/global-infrastructure/geographies/)。 若要了解详细信息，请与 Azure 支持人员联系。
 
 ## <a name="custom-sizes"></a>自定义大小
 
@@ -68,7 +78,7 @@ Azure 容器实例支持对共享主机、本地网络、存储和生命周期�
 
 ## <a name="virtual-network-deployment"></a>虚拟网络部署
 
-Azure 容器实例的此功能目前可用于一部分 Azure 区域中的生产工作负荷，它支持[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
+Azure 容器实例允许[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 部署到虚拟网络的子网中时，容器实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083678"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure 春季云问题
 
@@ -157,7 +159,7 @@ Azure 春季云服务实例的名称将用于请求下的子域名称 `azureapps
 > [!WARNING]
 > 此过程使用测试终结点公开环境变量。  如果测试终结点可以公开访问，或者你已将域名分配给应用程序，请勿继续操作。
 
-1. 转到  `https://<your application test endpoint>/actuator/health` 。  
+1. 转到 `https://<your application test endpoint>/actuator/health`。  
     - 类似于 `{"status":"UP"}` 的响应表明终结点已启用。
     - 如果响应为负数，请在*POM.xml*文件中包含以下依赖项：
 
@@ -172,7 +174,7 @@ Azure 春季云服务实例的名称将用于请求下的子域名称 `azureapps
 
 1. 重启应用程序。
 
-1. 请参阅 `https://<your application test endpoint>/actuator/env` 并检查响应。  应如下所示：
+1. 请参阅 `https://<your application test endpoint>/actuator/env` 并检查响应。  它应如下所示：
 
     ```json
     {

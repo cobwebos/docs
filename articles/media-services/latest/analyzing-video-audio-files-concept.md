@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708954"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053471"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
 在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 若要了解何时使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
 
-若要使用媒体服务 v3 预设来分析内容，请创建一个**转换**，并提交使用以下预设之一的**作业**： [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
+若要使用媒体服务 v3 预设来分析内容，请创建一个**转换**，并提交使用以下预设之一的**作业**： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
 > 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
@@ -38,9 +38,9 @@ ms.locfileid: "84708954"
 
 |**预设名称**|**方案**|**详细信息**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语（ar-EG 和 ar-SY）、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并继续使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|检测视频中的人脸|描述在分析视频时要使用的设置，以便检测出现的所有人脸。|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语（ar-EG 和 ar-SY）、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并继续使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|检测视频中的人脸|描述在分析视频时要使用的设置，以便检测出现的所有人脸。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -67,7 +67,7 @@ ms.locfileid: "84708954"
 
 ### <a name="transcript"></a>脚本
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -105,7 +105,7 @@ ms.locfileid: "84708954"
 
 ### <a name="ocr"></a>ocr
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -148,12 +148,12 @@ ms.locfileid: "84708954"
 
 ### <a name="faces"></a>人脸
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|人脸 ID。|
 |name|人脸姓名。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
-|description|名人的说明。 |
+|说明|名人的说明。 |
 |thumbnailId|该人脸的缩略图 ID。|
 |knownPersonId|内部 ID（如果是已知人员）。|
 |referenceId|必应 ID（如果是必应名人）。|
@@ -193,7 +193,7 @@ ms.locfileid: "84708954"
 
 ### <a name="shots"></a>截图
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -250,7 +250,7 @@ ms.locfileid: "84708954"
 
 ### <a name="statistics"></a>statistics
 
-|“属性”|描述|
+|名称|描述|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -263,7 +263,7 @@ ms.locfileid: "84708954"
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -298,7 +298,7 @@ ms.locfileid: "84708954"
 
 ### <a name="labels"></a>标签
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
@@ -356,7 +356,7 @@ ms.locfileid: "84708954"
 
 ### <a name="keywords"></a>关键字
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -407,7 +407,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以请求人工审查内容，在这种情况下，`IsAdult` 属性将包含人工审查的结果。
 
-|“属性”|说明|
+|名称|说明|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|

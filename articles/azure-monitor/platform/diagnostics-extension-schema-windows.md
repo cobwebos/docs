@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: e078f81db75dd6b89a65ff2d00bb2805ea912d0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007922"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
 Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算资源的来宾操作系统和工作负荷中收集监视数据。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。
@@ -157,7 +157,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |子元素|说明|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 必需属性：<br /><br /> **provider** - EventSource 事件的类名称。<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|配置收集从 [EventSource 类](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)生成的事件。 必需属性：<br /><br /> **provider** - EventSource 事件的类名称。<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|必需属性：<br /><br /> **provider** - 事件提供程序的 GUID<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
@@ -165,7 +165,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
- 配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。  
+ 配置收集从 [EventSource 类](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)生成的事件。  
 
 |子元素|说明|  
 |--------------------|-----------------|  
@@ -208,7 +208,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |子元素|说明|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 值在 [UnitType 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中提供 |
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 值在 [UnitType 类](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中提供 |
 |**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。 注意如果要将事件上传到事件中心以获得资源 ID，则需要在*指标*元素下添加*resourceId*属性。|    
 
 
@@ -266,11 +266,11 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|属性|类型|描述|  
+|属性|类型|说明|  
 |---------------|----------|-----------------|  
 |name |字符串|标识 sinkname 的字符串。|  
 
-|元素|类型|描述|  
+|元素|类型|说明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
 |通道|string|每个对应一个流处理的其他筛选|  
@@ -282,7 +282,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  定义通过接收器的日志数据流的筛选器。  
 
-|元素|类型|描述|  
+|元素|类型|说明|  
 |-------------|----------|-----------------|  
 |**Channel**|string|在此页的其他位置查看说明。|  
 
@@ -293,7 +293,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|属性|类型|描述|  
+|属性|类型|说明|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**name**|**string**|要引用的通道的唯一名称|  

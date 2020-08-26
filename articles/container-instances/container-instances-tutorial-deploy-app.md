@@ -3,13 +3,13 @@ title: 教程 - 将容器应用部署到容器实例
 description: Azure 容器实例教程第 3 部分（共 3 部分）- 将容器应用程序部署到 Azure 容器实例
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78249958"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500566"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 

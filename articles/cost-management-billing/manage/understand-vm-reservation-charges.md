@@ -4,14 +4,14 @@ description: 了解如何将 Azure 虚拟机预留实例折扣应用于正在运
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018376"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192212"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>如何将 Azure 预留折扣应用于虚拟机
 
@@ -56,11 +56,15 @@ ms.locfileid: "84018376"
 
 ## <a name="discount-can-apply-to-different-sizes"></a>折扣适用于不同大小
 
-在购买预留 VM 实例时，如果选择“优化对象：实例大小灵活性”，则折扣覆盖范围将取决于所选的 VM 大小   。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+如果购买预留 VM 实例，并选择“针对实例大小灵活性进行优化”，则折扣覆盖范围适用于所选择的 VM 大小。 它还适用于相同系列实例大小灵活性组中的其他 VM 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>折扣仅适用于匹配的 ServiceType
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>高级存储 VM 无法获得非高级折扣
 
-预留折扣仅适用于 `AdditionalInfo` 中的 `ServiceType` 值与购买的预留匹配的 VM 使用情况。 应用预留折扣时会忽略 VM 使用的计量，仅评估 `ServiceType`。 了解你为其购买 VM 的服务类型。 你可以将非高级存储 VM 预留交换为高级存储预留，或以相反的方式进行交换。
+下面是一个示例。 假设你购买了五个 Standard_D1 VM 的预留，则预留折扣仅适用于 Standard_D1 VM 或同一实例系列中的其他 VM。 此折扣不适用于 Standard_DS1 VM 或 DS1 实例大小灵活性组中的其他大小。
+
+应用预留折扣时会忽略用于 VM 的计量，仅评估 ServiceType。 查看 `AdditionalInfo` 中的 `ServiceType` 值，确定 VM 的实例灵活性组/系列信息。 这些值位于使用情况 CSV 文件中。
+
+在购买后，不能直接更改预留的实例灵活性组/系列。 但是，可以将一个 VM 预留从一个实例灵活性组/系列交换到另一个实例灵活性组/系列。
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>可获得 VM 保留折扣的服务
 
@@ -70,7 +74,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 实例大小灵活性设置确定哪些服务可获得预留实例折扣。
 
-无论该设置是打开还是关闭，预留折扣在 *ConsumedService* 为 `Microsoft.Compute` 时会自动应用到任何匹配的 VM 使用量。 因此，请检查使用情况数据中的 ConsumedService  值。 示例包括：
+无论该设置是打开还是关闭，预留折扣在 *ConsumedService* 为 `Microsoft.Compute` 时会自动应用到任何匹配的 VM 使用量。 因此，请检查使用情况数据中的 ConsumedService** 值。 示例包括：
 
 - 虚拟机
 - 虚拟机规模集
@@ -79,7 +83,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - Azure Kubernetes 服务 (AKS)
 - Service Fabric
 
-打开此设置后，当 ConsumedService  为以下任一项时，预留折扣将自动应用于匹配的 VM 使用量：
+打开此设置后，当 ConsumedService** 为以下任一项时，预留折扣将自动应用于匹配的 VM 使用量：
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -87,7 +91,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-检查使用情况数据中的 ConsumedService  值，以确定该使用是否符合预留折扣的条件。
+检查使用情况数据中的 ConsumedService** 值，以确定该使用是否符合预留折扣的条件。
 
 有关实例大小灵活性的详细信息，请参阅[虚拟机预留实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 

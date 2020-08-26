@@ -4,13 +4,14 @@ description: 如何使用 Azure HPC 缓存 Azure Key Vault 来控制加密密钥
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/29/2020
+ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092518"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>将客户托管的加密密钥用于 Azure HPC 缓存
 
@@ -18,6 +19,8 @@ ms.locfileid: "85512914"
 
 > [!NOTE]
 > 默认情况下，在 Azure 中存储的所有数据（包括在缓存磁盘上）都使用 Microsoft 托管密钥进行静态加密。 如果要管理用于对数据进行加密的密钥，则只需按照本文中的步骤进行操作。
+
+即使你为缓存磁盘添加了客户密钥，Azure HPC 缓存还受托管磁盘上的[VM 主机加密](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)保护，这些磁盘保存缓存数据。 为双加密添加客户托管的密钥可为具有高安全性需求的客户提供额外的安全级别。 有关详细信息，请参阅[Azure 磁盘存储的服务器端加密](../virtual-machines/linux/disk-encryption.md)。
 
 此功能仅在 Azure HPC 缓存可用的某些 Azure 区域中提供。 有关详细信息，请参阅[区域可用性](hpc-cache-overview.md#region-availability)列表。
 

@@ -17,7 +17,7 @@ ms.locfileid: "86531079"
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，搜索并选择 "**开发测试实验室**"。 
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/search-select.png" alt-text="搜索并选择 "开发测试实验室"":::    
+    :::image type="content" source="./media/connect-linux-virtual-machine/search-select.png" alt-text="搜索并选择 开发测试实验室":::    
 1. 从实验室列表中，选择**实验室**。
 
     :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="选择实验室":::            

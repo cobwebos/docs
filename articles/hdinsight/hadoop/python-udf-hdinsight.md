@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive, tracking-python
-ms.openlocfilehash: 9bb27d1dd9c7bc5f067fa3d84f451537882150c5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
+ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087667"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874752"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
@@ -46,7 +46,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython
 > * 在本地开发环境中创建 Python 脚本。
 > * 使用 `scp` 命令或使用提供的 PowerShell 脚本将脚本上传到 HDInsight。
 >
-> 如果要使用[Azure Cloud Shell （bash）](https://docs.microsoft.com/azure/cloud-shell/overview)来使用 HDInsight，则必须：
+> 如果要使用[Azure Cloud Shell (bash) ](https://docs.microsoft.com/azure/cloud-shell/overview)与 HDInsight 配合使用，则必须执行以下操作：
 >
 > * 在 Cloud Shell 环境内部创建脚本。
 > * 使用 `scp` 将文件从 Cloud Shell 上传到 HDInsight。

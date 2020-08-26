@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081564"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028237"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
 在使用远程桌面与 Azure 中 Windows 虚拟机 (VM) 的连接时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
@@ -46,7 +46,7 @@ mstsc <File name>.RDP /admin
 
 如果实际上不需要两个以上同时与 VM 的远程桌面连接，可以使用服务器管理器删除远程桌面服务器角色。
 
-有关详细信息，请参阅博客文章 [Azure VM 失败并出现“没有可用的远程桌面许可证服务器”](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)。
+有关详细信息，请参阅博客文章 [Azure VM 失败并出现“没有可用的远程桌面许可证服务器”](/archive/blogs/mast/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available)。
 
 <a id="rdpname"></a>
 
@@ -111,6 +111,5 @@ mstsc <File name>.RDP /admin
 ## <a name="next-steps"></a>后续步骤
 如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-* 有关用于访问 VM 上运行的应用程序的故障排除步骤，请参阅[对在 Azure VM 上运行的应用程序的访问进行故障排除](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 如果在 Azure 中使用 Secure Shell (SSH) 连接到 Linux VM 时遇到问题，请参阅[对 Azure 中到 Linux VM 的 SSH 连接进行故障排除](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
+* 有关用于访问 VM 上运行的应用程序的故障排除步骤，请参阅[对在 Azure VM 上运行的应用程序的访问进行故障排除](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
+* 如果在 Azure 中使用 Secure Shell (SSH) 连接到 Linux VM 时遇到问题，请参阅[对 Azure 中到 Linux VM 的 SSH 连接进行故障排除](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。

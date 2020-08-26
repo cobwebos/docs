@@ -2,7 +2,7 @@
 title: Azure AD 令牌 & 声明类型
 description: 本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明
 documentationcenter: na
-author: rwike77
+author: kenwith
 services: active-directory
 manager: CelesteDG
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.date: 06/22/2018
-ms.author: ryanwi
-ms.reviewer: hirsin
+ms.author: kenwith
+ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 27582bf7f06a659a26f67c455cb9e196a9996781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830326"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114959"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
 
@@ -154,7 +154,7 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 
 ## <a name="related-content"></a>相关内容
 
-* 请参阅 [Policy 资源](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)，详细了解如何使用 Microsoft Graph API 管理令牌生存期策略。
+* 请参阅 [Policy 资源](/graph/api/resources/policy?view=graph-rest-beta)，详细了解如何使用 Microsoft Graph API 管理令牌生存期策略。
 * 有关通过 PowerShell cmdlet 管理策略的详细信息和示例，请参阅 [Azure AD 中的可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 
 * 将[自定义和可选声明](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)添加到应用程序的令牌。
 * 使用[带 SAML 的单一登录 (SSO)](single-sign-on-saml-protocol.md)。

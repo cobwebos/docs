@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79263642"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116455"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
 
@@ -31,15 +32,15 @@ ms.locfileid: "79263642"
 
 此问题的主要症状是 DC 代理管理事件日志中的30018事件。 此问题可能有几个可能的原因：
 
-1. DC 代理位于网络的隔离部分，不允许与已注册的代理建立网络连接。 此问题可能是良性的，因为其他 DC 代理可以与代理进行通信，以便从 Azure 下载密码策略。 下载之后，这些策略将通过复制 sysvol 共享中的策略文件，由独立 DC 获得。
+1. DC 代理位于网络的隔离部分，不允许与 () 的已注册代理建立网络连接。 此问题可能是良性的，只要其他 DC 代理可以与代理 () ，以便从 Azure 下载密码策略。 下载之后，这些策略将通过复制 sysvol 共享中的策略文件，由独立 DC 获得。
 
-1. 代理主机正在阻止访问 RPC 终结点映射器终结点（端口135）
+1. 代理主机正在阻止访问 RPC 终结点映射器终结点 (端口 135) 
 
    Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，以允许访问端口135。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须配置该防火墙以允许访问端口135。
 
-1. 代理主机正在阻止对代理服务侦听的 RPC 终结点（动态或静态）的访问
+1. 代理主机正在阻止访问 RPC 终结点， (代理服务侦听的动态或静态) 
 
-   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果代理服务已配置为侦听特定的静态 RPC 端口（使用 cmdlet），则此配置可能更具体 `Set-AzureADPasswordProtectionProxyConfiguration` 。
+   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果已将代理服务配置为侦听特定的静态 RPC 端口 (使用 cmdlet) ，则此配置可能会变得更为具体 `Set-AzureADPasswordProtectionProxyConfiguration` 。
 
 1. 代理主机未配置为允许域控制器登录到计算机。 此行为是通过 "从网络访问此计算机" 用户权限分配来控制的。 林中所有域中的所有域控制器都必须被授予此权限。 此设置通常会被约束为更大的网络强化工作量。
 
@@ -59,11 +60,11 @@ Azure AD 密码保护对 Microsoft 密钥分发服务提供的加密和解密功
 
 1. 确保已在域中的所有 Windows Server 2012 和更高版本的域控制器上启用并运行 KDS 服务。
 
-   默认情况下，KDS 服务的服务启动模式配置为手动（触发器启动）。 此配置意味着，当客户端首次尝试使用该服务时，它将按需启动。 此默认服务启动模式可用于 Azure AD 密码保护才能工作。
+   默认情况下，KDS 服务的服务启动模式配置为手动 (触发器开始) 。 此配置意味着，当客户端首次尝试使用该服务时，它将按需启动。 此默认服务启动模式可用于 Azure AD 密码保护才能工作。
 
    如果已将 KDS 服务启动模式配置为 "已禁用"，则必须先修复此配置，然后 Azure AD 密码保护才能正常工作。
 
-   此问题的简单测试是通过 Service management MMC 控制台或使用其他管理工具（例如，从命令提示符控制台运行 "net start kdssvc.dll"）手动启动 KDS 服务。 KDS 服务应成功启动并保持运行状态。
+   此问题的简单测试是通过服务管理 MMC 控制台手动启动 KDS 服务，或使用其他管理工具 (例如，从命令提示符控制台) 运行 "net start kdssvc.dll"。 KDS 服务应成功启动并保持运行状态。
 
    KDS 服务无法启动的最常见根本原因是 Active Directory 域控制器对象位于默认域控制器 OU 外。 此配置不受 KDS 服务支持，且不受 Azure AD 密码保护的限制。 此问题的解决方法是将域控制器对象移动到默认域控制器 OU 下的某个位置。
 
@@ -71,15 +72,28 @@ Azure AD 密码保护对 Microsoft 密钥分发服务提供的加密和解密功
 
    Windows Server 2016 中引入了 KDS 安全修补程序，用于修改 KDS 加密缓冲区的格式;有时，这些缓冲区在 Windows Server 2012 和 Windows Server 2012 R2 上无法解密。 反向方向是 KDS 在 Windows Server 2012 上加密的缓冲区，Windows Server 2012 R2 在 Windows server 2016 及更高版本上始终会成功解密。 如果 Active Directory 域中的域控制器运行的是这些操作系统的混合，则可能会报告偶尔 Azure AD 密码保护解密失败。 由于安全修补程序的性质，无法准确预测这些故障的时间或症状，并且假设它是不确定的，这 Azure AD 密码保护 DC 代理，在该代理上，域控制器将在给定的时间对数据进行加密。
 
-   Microsoft 正在调查此问题的修补程序，但尚未提供 ETA。 同时，除了不在 Active Directory 域中混合使用这些不兼容的操作系统以外，此问题没有解决方法。 换句话说，你应该只运行 Windows Server 2012 和 Windows Server 2012 R2 域控制器，或者只应运行 Windows Server 2016 及更高版本的域控制器。
+   除了在 Active Directory 域 (s) 中混合使用这些不兼容的操作系统以外，此问题没有解决方法。 换句话说，你应该只运行 Windows Server 2012 和 Windows Server 2012 R2 域控制器，或者只应运行 Windows Server 2016 及更高版本的域控制器。
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>DC 代理认为林尚未注册
+
+此问题的症状是在 DC Agent\Admin 通道中记录的30016事件，其中包含：
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+此问题有两个可能的原因。
+
+1. 林尚未注册。 若要解决此问题，请运行 "[部署要求](howto-password-ban-bad-on-premises-deploy.md)" 中所述的 AzureADPasswordProtectionForest 命令。
+1. 林已注册，但 DC 代理无法对林注册数据进行解密。 这种情况的根本原因与上面列出的 " [DC 代理无法加密或解密密码策略文件](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files)" 中 #2 的问题相同。 确认这一理论的一种简单方法是，你只会在运行 Windows server 2012 或 Windows Server 2012R2 域控制器上的 DC 代理上看到此错误，而在 Windows Server 2016 和更高版本的域控制器上运行的 DC 代理可以正常进行。 解决方法是相同的：将所有域控制器升级到 Windows Server 2016 或更高版本。
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>正在接受弱密码，但不应
 
 此问题可能有几个原因。
 
-1. 你的 DC 代理正在运行已过期的公共预览版软件版本。 请参阅[公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
+1. 你的 DC 代理 () 运行的公共预览版软件版本已过期。 请参阅[公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
 
-1. 你的 DC 代理无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
+1. DC 代理 (s) 无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
 
 1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
@@ -108,7 +122,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-当 Azure AD 密码保护记录 Active Directory DSRM 密码的密码验证事件日志事件时，事件日志消息应该不包括用户名。 出现此行为的原因是 DSRM 帐户是不属于实际 Active Directory 域的本地帐户。  
+如果 Azure AD 密码保护将密码验证事件日志事件 (s) 用于 Active Directory DSRM 密码，则事件日志消息应该不包含用户名。 出现此行为的原因是 DSRM 帐户是不属于实际 Active Directory 域的本地帐户。  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>由于使用弱 DSRM 密码，域控制器副本升级失败
 
@@ -198,7 +212,7 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 ## <a name="removal"></a>删除
 
-如果决定卸载 Azure AD 密码保护软件并清除域和林中的所有相关状态，则可以使用以下步骤完成此任务：
+如果决定卸载 Azure AD 密码保护软件并从域 (s) 和林的所有相关状态中清除，则可以使用以下步骤完成此任务：
 
 > [!IMPORTANT]
 > 必须按顺序执行这些步骤。 如果代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象。 如果 DC 代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象和 sysvol 状态。

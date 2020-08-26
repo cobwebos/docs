@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090274"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
@@ -35,10 +36,10 @@ ms.locfileid: "84190737"
     * [使用 Azure 逻辑应用计划和运行重复性自动任务、过程与工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [教程：使用 Azure 逻辑应用创建基于计划的自动化定期工作流](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * **收到电子邮件时**，触发器允许逻辑应用检查逻辑应用支持的任何邮件提供商提供的新电子邮件，例如[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、 [Gmail](https://docs.microsoft.com/connectors/gmail/)、 [Outlook.com](https://docs.microsoft.com/connectors/outlook/)等。
+  * **收到电子邮件时**，触发器允许逻辑应用检查逻辑应用支持的任何邮件提供商提供的新电子邮件，例如[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、 [Gmail](/connectors/gmail/)、 [Outlook.com](/connectors/outlook/)等。
 
     > [!IMPORTANT]
-    > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+    > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
     有关详细信息，请参阅以下主题：<p>
 
@@ -104,11 +105,11 @@ ms.locfileid: "84190737"
 * [概述：自动化逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [创建 Azure 资源管理器模板以自动化部署 Azure 逻辑应用](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [为 Azure 逻辑应用部署 Azure 资源管理器模板](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
-* [示例：从 azure 逻辑应用连接到 Azure 服务总线队列，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 azure 逻辑应用连接到 azure 存储帐户，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：为 Azure 逻辑应用设置函数应用操作，并使用 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 azure 逻辑应用连接到集成帐户，并使用 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [示例：从 azure 逻辑应用连接到 Azure 服务总线队列，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 azure 逻辑应用连接到 azure 存储帐户，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：为 Azure 逻辑应用设置函数应用操作，并使用 Azure DevOps 中的 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 azure 逻辑应用连接到集成帐户，并使用 Azure DevOps 中的 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 ### <a name="manage"></a>管理
 
@@ -142,7 +143,7 @@ Azure 逻辑应用集成了许多服务，例如 Azure Functions、Azure API 管
 * [教程：使用 Power BI 和 Azure 逻辑应用构建支持 AI 的社交仪表板](https://aka.ms/logicappsdemo)
 * [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [博客：使用 Azure 逻辑应用调用 SOAP 服务](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [博客：使用 Azure 逻辑应用调用 SOAP 服务](/archive/blogs/logicapps/using-soap-services-with-logic-apps)
 
 ## <a name="end-to-end-scenarios"></a>端到端方案
 

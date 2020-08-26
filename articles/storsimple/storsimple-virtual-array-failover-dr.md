@@ -1,6 +1,6 @@
 ---
 title: StorSimple 虚拟阵列的故障转移和灾难恢复
-description: 了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。
+description: 了解 Microsoft Azure StorSimple 虚拟阵列的灾难恢复，包括故障转移到另一个虚拟阵列的详细步骤。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515211"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184714"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 
@@ -121,12 +122,12 @@ ms.locfileid: "85515211"
 
 5. 在“停用”**** 边栏选项卡中，系统会提示进行确认。 设备停用是不可撤消的*永久性*过程。 还将提醒你使主机上的共享/卷脱机。 键入设备名称以确认，并单击“停用”****。
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![停用边栏选项卡的屏幕截图。 将填写 "设备名称" 框，并突出显示 "停用" 按钮。](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. 此时停用操作将启动。 停用操作成功完成后，将收到通知。
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![指示设备被停用的进度栏屏幕截图。](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. 在“设备”**** 页上，设备状态现在将更改为“已停用”。
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    !["设备" 页的屏幕截图。 将显示停用设备的属性，包括状态，该状态将列为 "已停用"。](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. 在“设备”**** 边栏选项卡上，选择并单击要故障转移的已停用源设备。 
 9. 在“设备仪表板”**** 边栏选项卡中，单击“故障转移”****。 
 10. 在“故障转移设备”**** 边栏选项卡中，执行以下操作：
@@ -139,22 +140,22 @@ ms.locfileid: "85515211"
 
     4. 单击 "**故障转移**"。
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![故障转移设备边栏选项卡的屏幕截图，其中填充了源和目标设备，选中了选项，并且突出显示了 "故障转移" 按钮。](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. 故障转移作业将启动，将收到通知。 转到“设备”>“作业”**** 以监视故障转移。
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![指示设备故障转移的进度栏屏幕截图。](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. 在“作业”**** 边栏选项卡中，会看到为源设备创建的故障转移作业。 此作业执行 DR 预检查。
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![显示故障转移作业已成功启动的屏幕截图。](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      成功完成 DR 预检查后，故障转移作业将为源设备上存在的每个共享/卷生成还原作业。
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![显示故障转移作业的详细信息（如状态、设备和持续时间）的屏幕截图。](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. 故障转移完成后，转到“设备”**** 边栏选项卡。
     
     1. 选择并单击在故障转移过程中用作目标设备的 StorSimple 设备。
     2. 转到“设置”>“管理”>“共享”**** 或“卷”****（如果是 iSCSI 服务器）。 在“共享”**** 边栏选项卡中，可以查看旧设备上的所有共享（卷）。
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![设备边栏选项卡的屏幕截图。 列出的目标设备的状态为 "联机"。](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. 需要[创建 DNS 别名](https://support.microsoft.com/kb/168322)，以使要尝试连接的所有应用程序都能重定向到新设备。
 
 ## <a name="errors-during-dr"></a>在 DR 期间出错

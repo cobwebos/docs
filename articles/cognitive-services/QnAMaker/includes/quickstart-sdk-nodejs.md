@@ -3,12 +3,13 @@ title: 快速入门：适用于 Node.js 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Maker 客户端库。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 7b3c5e69e820951896cb00b82295dc07ba698c94
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114503"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246205"
 ---
 可以使用适用于 Node.js 的 QnA Maker 客户端库执行以下操作：
 
@@ -27,7 +28,7 @@ ms.locfileid: "85114503"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版本的 [Node.js](https://nodejs.org)。
 * 有了 Azure 订阅后，在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以获取创作密钥和资源。 部署后，选择”转到资源”。
     * 需要从创建的资源获取密钥和资源名称，以便将应用程序连接到 QnA Maker API。 你稍后会在本快速入门中将密钥和资源名称粘贴到下文的代码中。
@@ -77,8 +78,8 @@ npm install @azure/ms-rest-js
 ## <a name="object-models"></a>对象模型
 
 QnA Maker 使用两种不同的对象模型：
-* **[QnAMakerClient](#qnamakerclient-object-model)** 是用于创建、管理、发布和下载知识库的对象。
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为[主动学习](../concepts/active-learning-suggestions.md)的一个环节）。
+* **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为[主动学习](../concepts/active-learning-suggestions.md)的一部分）。
 
 
 ### <a name="qnamakerclient-object-model"></a>QnAMakerClient 对象模型
@@ -122,7 +123,7 @@ QnA Maker 使用两种不同的对象模型：
 知识库为来自三个源的 [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) 对象存储问答对：
 
 * 对于**编辑内容**，请使用 [QnADTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest) 对象。
-    * 若要使用元数据和跟进提示，请使用编辑上下文，因为此数据是在单独的 QnA 对级别上添加的。
+    * 若要使用元数据和跟进提示，请使用编辑上下文，因为此数据是在单独的 QnA 对级别添加的。
 * 对于**文件**，请使用 [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) 对象。 FileDTO 包括文件名以及用于访问该文件的公共 URL。
 * 对于 URL，请使用一列字符串来表示公开可用的 URL。
 

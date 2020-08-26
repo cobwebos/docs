@@ -2,14 +2,14 @@
 title: 在用户帐户下运行任务
 description: 了解用户帐户的类型以及如何配置它们。
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142686"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719353"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
@@ -30,7 +30,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 - **命名用户帐户。** 创建池时，可为该池指定一个或多个命名用户帐户。 每个用户帐户在该池的每个节点上创建。 除了帐户名以外，还可以指定用户帐户密码、提升级别，对于 Linux 池，还可以指定 SSH 私钥。 添加任务时，可以指定任务应在其下运行的命名用户帐户。
 
 > [!IMPORTANT]
-> 批处理服务版本 2017-01-01.4.0 引入了一项重大更改，需要更新代码才能调用该版本。 如果要从旧版批处理迁移代码，请注意，REST API 或批处理客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 如果正在使用其中一个客户端库，请参阅将[代码更新到最新的 batch 客户端库](#update-your-code-to-the-latest-batch-client-library)。
+> 批处理服务版本 2017-01-01.4.0 引入了一项重大更改，需要更新代码才能调用该版本。 如果要从旧版批处理迁移代码，请注意，REST API 或批处理客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 如果正在使用其中一个客户端库，请参阅将 [代码更新到最新的 batch 客户端库](#update-your-code-to-the-latest-batch-client-library) 。
 
 ## <a name="user-account-access-to-files-and-directories"></a>用户帐户对文件和目录的访问权限
 
@@ -49,18 +49,13 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 ## <a name="auto-user-accounts"></a>自动用户帐户
 
-默认情况下，任务在批处理中的自动用户帐户下，以没有提升访问权限但具有任务范围的标准用户身份运行。 如果为任务范围配置了自动用户规范，批处理服务只为该任务创建自动用户帐户。
+默认情况下，任务以批处理方式在自动用户帐户下运行，作为无需提升访问权限的标准用户以及池范围。 池范围表示任务在可供池中任何任务使用的自动用户帐户下运行。 有关池范围的详细信息，请参阅以 [具有池范围的自动用户身份运行任务](#run-a-task-as-an-auto-user-with-pool-scope)。
 
-任务范围的替代设置为池范围。 如果为池范围配置了某个任务的自动用户规范，该任务会在可供池中任何任务使用的自动用户帐户下运行。 有关池范围的详细信息，请参阅以[具有池范围的自动用户身份运行任务](#run-a-task-as-an-auto-user-with-pool-scope)。
-
-在 Windows 和 Linux 节点上，默认范围不同：
-
-- 在 Windows 节点上，任务默认在任务范围下运行。
-- Linux 节点始终在池范围下运行。
+池范围的替代项为任务范围。 如果为任务范围配置了自动用户规范，批处理服务只为该任务创建自动用户帐户。
 
 自动用户规范有四种可能的配置，其中每种配置对应于一个唯一的自动用户帐户：
 
-- 具有任务范围的非管理员访问权限（默认的自动用户规范）
+- 具有任务范围的非管理员访问权限
 - 具有任务范围的管理员（提升的）访问权限
 - 具有池范围的非管理员访问权限
 - 具有池范围的管理员访问权限
@@ -75,7 +70,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 > [!NOTE]
 > 仅在必要时才使用提升的访问权限。 最佳做法建议，只授予实现所需结果而要必须用到的最低特权。 例如，如果某个启动任务要为当前用户而不是所有用户安装软件，可以避免向该任务授予提升的访问权限。 可以针对需要在同一帐户下运行的所有任务（包括启动任务）配置池范围和非管理员访问权限的自动用户规范。
 
-以下代码片段演示如何配置自动用户规范。 这些示例将提升级别设置为 `Admin`，将范围设置为 `Task`。 任务范围是默认设置，但此处出于示范目的包含了此设置。
+以下代码片段演示如何配置自动用户规范。 这些示例将提升级别设置为 `Admin`，将范围设置为 `Task`。
 
 #### <a name="batch-net"></a>批处理 .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>批处理 Python
@@ -113,7 +108,7 @@ batch_client.task.add(job_id=jobid, task=task)
 
 为自动用户指定池范围时，使用管理员访问权限运行的所有任务会在同一个池范围自动用户帐户下运行。 同样，不使用管理员权限运行的任务也在单个池范围自动用户帐户下运行。
 
-> [!NOTE] 
+> [!NOTE]
 > 两个池范围自动用户帐户是独立的帐户。 在池范围内管理帐户下运行的任务不能与标准帐户下运行的任务共享数据，反之亦然。
 
 在同一自动用户帐户下运行任务的优势在于，任务可与同一个节点上运行的其他任务共享数据。

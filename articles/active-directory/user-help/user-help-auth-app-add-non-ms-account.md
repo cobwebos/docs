@@ -11,11 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015964"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
@@ -49,7 +50,7 @@ ms.locfileid: "83741569"
 
 ### <a name="add-your-google-account-to-the-app"></a>向应用添加 Google 帐户
 
-1. 在电脑的 Google 页上，转到“设置可选第二步”部分，选择“Authenticator 应用”部分中的“设置”  。
+1. 在计算机上的 "Google 帐户安全性" 页上（ https://myaccount.google.com/security) 请参阅 "**添加更多步骤以验证是否是**" 部分），从 "**验证器应用**" 部分选择 "**设置**"。
 
 2. 在“从 Authenticator 应用获取验证码”页上，根据电话类型选择“Android”或“iPhone”，再选择“下一步”。
 
@@ -185,7 +186,7 @@ ms.locfileid: "83741569"
 
 10. 在计算机的“添加备份验证方法”页上，键入备份验证方法为 Amazon 帐户提供的六位数验证码，然后选择“验证验证码并继续” 。
 
-11. 在“**即将完成**”页上，决定是否让计算机成为受信任的设备，然后选择 **“知道了。启用双因素验证”****。
+11. 在“**即将完成**”页上，决定是否让计算机成为受信任的设备，然后选择 **“知道了。启用双因素验证”。
 
     此时，“高级安全设置”页显示，其中包含更新后的双因素验证详细信息。
 

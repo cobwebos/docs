@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261628"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551993"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI visual 入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "86261628"
 > [!NOTE]
 > 可以在 Power BI Desktop 和 Power BI 服务中创建和查看此视觉对象。 本文中的步骤和图示来自 Power BI Desktop。
 
-Power BI 的 Azure Maps 视觉对象提供了一组丰富的数据可视化效果，适用于地图上的空间数据。 估计，超过80% 的业务数据具有位置上下文。 Azure Maps 视觉对象可用于深入了解此位置上下文的关联方式，并影响你的业务数据。
+Power BI 的 Azure Maps 视觉对象提供了一组丰富的数据可视化效果，适用于地图上的空间数据。 估计超过 80% 的业务数据具有位置上下文。 Azure Maps 视觉对象可用于深入了解此位置上下文的关联方式，并影响你的业务数据。
 
 ![具有显示业务数据的 Azure Maps 视觉对象的 Power BI 桌面](media/power-bi-visual/azure-maps-visual-hero.png)
 
@@ -35,6 +35,9 @@ Azure Maps 视觉对象连接到在 Azure 中托管的云服务，以检索位�
 
 -   有关地图所关注区域的详细信息将发送到 Azure 以检索呈现地图画布所需的图像 (也称为地图图块) 。 
 -   "位置"、"纬度" 和 "经度" 存储桶中的数据可能发送到 Azure，以检索 (名为地理编码) 的进程的地图坐标。 
+-   如果启用了 Power BI 中的遥测选项，则可以在视觉对象 (的运行状况上收集遥测数据（即，崩溃报告) 。
+
+除了上述方案以外，不会将映射上重叠的其他数据发送到 Azure Maps 服务器。 所有数据呈现都在客户端本地进行。
 
 你或管理员可能需要更新你的防火墙，以允许访问使用以下 URL 的 Azure Maps 平台。
 
@@ -127,12 +130,12 @@ Azure Maps 视觉对象的 "**字段**" 窗格中提供以下数据存储桶。
 
 | 服务/应用                              | 是否支持 |
 |------------------------------------------|--------------|
-| Power BI Desktop                         | 适合          |
-| Power BI 服务 (app.powerbi.com)       | 适合          |
+| Power BI Desktop                         | “是”          |
+| Power BI 服务 (app.powerbi.com)       | “是”          |
 | Power BI 移动应用程序             | 是          |
-| Power BI 发布到 Web                  | 不适合           |
+| Power BI 发布到 Web                  | 否           |
 | Power BI Embedded                        | 否           |
-| Power BI 服务嵌入 (PowerBI.com) | 适合          |
+| Power BI 服务嵌入 (PowerBI.com) | “是”          |
 
 将来的更新中将添加对其他 Power BI 服务/应用的支持。
 

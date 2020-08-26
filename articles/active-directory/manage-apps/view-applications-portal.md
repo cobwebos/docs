@@ -12,17 +12,16 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055386"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117883"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>快速入门：查看使用 Azure Active Directory (Azure AD) 租户进行标识管理的应用程序列表
 
-将 Azure AD 用作组织使用的应用程序的标识和访问管理 (IAM) 系统以开始使用。 在本快速入门中，你将查看已设置为使用 Azure AD 租户作为其标识提供者的应用程序（也称为应用）。
+将 Azure AD 用作组织使用的应用程序的标识和访问管理 (IAM) 系统以开始使用。 在本快速入门中，你将查看已设置为使用 Azure AD 租户作为其标识提供者 (IdP) 的应用程序（也称为应用）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +30,7 @@ ms.locfileid: "86055386"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 >[!IMPORTANT]
->建议使用非生产环境来测试此快速入门中的步骤。
+>建议使用非生产环境来测试本快速入门中的步骤。
 
 ## <a name="find-the-list-of-applications-in-your-tenant"></a>查找租户中的应用程序列表
 
@@ -68,11 +67,17 @@ ms.locfileid: "86055386"
 3. 尝试输入应用程序名称的头几个字母。 此示例显示以 **Sales** 开头的所有应用程序。
     ![示例演示以 Sales 开头的所有应用](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+
+## <a name="clean-up-resources"></a>清理资源
+
+你没有在此快速入门中创建任何新资源，因此没有要清理的内容。
+
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何查看 Azure AD 租户中的应用程序， 以及如何按应用程序类型、状态和可见性筛选应用程序列表。 另外还介绍了如何搜索特定应用程序。
-
-- [添加应用](add-application-portal.md)
-- [配置应用](add-application-portal-configure.md)
-- [设置单一登录](add-application-portal-setup-sso.md)
-- [删除应用](delete-application-portal.md)
+请继续到下一篇文章，了解如何使用 Azure AD 作为应用的标识提供程序。
+> [!div class="nextstepaction"]
+> [添加应用](add-application-portal.md)

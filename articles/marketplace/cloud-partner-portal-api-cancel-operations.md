@@ -4,15 +4,15 @@ description: 用于取消产品/服务上当前正在进行的操作的 API
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: emuench
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 095d9cf68374ee81cafdb6e7a32df29a57d122cb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520368"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287928"
 ---
 # <a name="cancel-operation"></a>取消操作
 
@@ -27,17 +27,17 @@ ms.locfileid: "86520368"
 
 --------------
 
-|  **名称**    |      **说明**                                  |    **Data type**  |
+|  **Name**    |      **说明**                                  |    **Data type**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  发布者标识符，例如 `contoso`         |   字符串          |
 | offerId      |  产品/服务标识符                                     |   字符串          |
-| api-version  |  API 的当前版本                               |    日期           |
+| api-version  |  API 的当前版本                               |    Date           |
 |  |  |  |
 
 ## <a name="header"></a>标头
 ------
 
-|  **名称**              |  **值**         |
+|  **Name**              |  **值**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
 |  授权         |  持有者令牌 |
@@ -58,7 +58,7 @@ ms.locfileid: "86520368"
 
 ### <a name="request-body-properties"></a>请求正文属性
 
-|  **名称**                |  **说明**                                               |
+|  **Name**                |  **说明**                                               |
 |  --------                |  ---------------                                               |
 |  notification-emails     | 逗号分隔的电子邮件 ID 列表，用于通知发布操作的进度。 |
 |  |  |
@@ -75,7 +75,7 @@ ms.locfileid: "86520368"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |    **值**                       |
+|  **Name**             |    **值**                       |
 |  ---------            |    ----------                      |
 | 位置    | 用于检索此操作的状态的相对路径。 |
 |  |  |

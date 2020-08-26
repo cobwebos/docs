@@ -7,11 +7,13 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050366"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>将 Analysis Services 移到不同的区域
 
@@ -35,7 +37,7 @@ ms.locfileid: "84699424"
 将服务器移到其他区域之前，建议创建详细计划。 考虑其他可能需要移动的资源，例如网关和存储。 对于任何计划，在移动生产服务器之前，请务必使用测试服务器完成一个或多个试验性移动操作。
 
 > [!IMPORTANT]
-> 客户端应用程序和连接字符串使用完整服务器名称（包括服务器所在的区域的 Uri）连接到 Analysis Services。 例如 `asazure://westcentralus.asazure.windows.net/advworks01`。 将服务器移到其他区域时，会有效地在不同的区域中创建新的服务器资源，这将在服务器名称 Uri 中具有不同的区域。 在脚本中使用的客户端应用程序和连接字符串必须使用新的服务器名称 Uri 连接到新服务器。 使用[服务器名称别名](analysis-services-server-alias.md)可以减少服务器名称 Uri 必须更改的位置数，但必须在区域移动之前实现。
+> 客户端应用程序和连接字符串使用完整服务器名称（包括服务器所在的区域的 Uri）连接到 Analysis Services。 例如，`asazure://westcentralus.asazure.windows.net/advworks01`。 将服务器移到其他区域时，会有效地在不同的区域中创建新的服务器资源，这将在服务器名称 Uri 中具有不同的区域。 在脚本中使用的客户端应用程序和连接字符串必须使用新的服务器名称 Uri 连接到新服务器。 使用[服务器名称别名](analysis-services-server-alias.md)可以减少服务器名称 Uri 必须更改的位置数，但必须在区域移动之前实现。
 
 > [!IMPORTANT]
 > Azure 区域使用不同的 IP 地址范围。 如果为服务器和/或存储帐户所在的区域配置了防火墙例外，则可能需要配置其他 IP 地址范围。 若要了解详细信息，请参阅[Analysis Services 网络连接](analysis-services-network-faq.md)的常见问题。
@@ -201,7 +203,7 @@ ms.locfileid: "84699424"
 
 7. 验证模板编辑器是否显示了您的新目标服务器的正确属性。
 
-8. 选择“保存”。
+8. 选择“保存” 。
 
 9. 输入或选择属性值：
 

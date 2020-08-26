@@ -1,18 +1,18 @@
 ---
-title: 预览-将专色节点池添加到 Azure Kubernetes 服务（AKS）群集
-description: 了解如何向 Azure Kubernetes 服务（AKS）群集添加一个专色节点池。
+title: 预览-将专色节点池添加到 Azure Kubernetes 服务 (AKS) 群集
+description: 了解如何在 Azure Kubernetes Service (AKS) 群集中添加一个专色节点池。
 services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374604"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987284"
 ---
-# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>预览-将专色节点池添加到 Azure Kubernetes 服务（AKS）群集
+# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>预览-将专色节点池添加到 Azure Kubernetes 服务 (AKS) 群集
 
 点节点池是由[点虚拟机规模集][vmss-spot]支持的节点池。 通过将点 Vm 用于 AKS 群集，可以在 Azure 中充分利用未利用容量，同时节省大量成本。 可用的未利用容量取决于许多因素，包括节点大小、区域和当天的时间。
 
@@ -20,11 +20,11 @@ ms.locfileid: "85374604"
 
 专色节点非常适用于可处理中断、提前终止或逐出的工作负荷。 例如，工作负荷（如批处理作业、开发和测试环境以及大型计算工作负荷）可能是计划在点节点池上的候选项。
 
-本文介绍如何向现有的 Azure Kubernetes 服务（AKS）群集添加辅助点节点池。
+本文介绍如何将辅助点节点池添加到现有的 Azure Kubernetes 服务 (AKS) 群集。
 
 本文假设读者基本了解 Kubernetes 和 Azure 负载均衡器的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-此功能目前以预览版提供。
+此功能目前处于预览状态。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,11 +32,7 @@ ms.locfileid: "85374604"
 
 当你创建群集以使用点节点池时，该群集还必须将虚拟机规模集用于节点池和*标准*SKU 负载均衡器。 创建群集后，还必须添加其他节点池，才能使用点节点池。 稍后的步骤中介绍了添加其他节点池，但首先需要启用预览功能。
 
-> [!IMPORTANT]
-> AKS 预览功能是自助服务，选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能并不用于生产。 公共预览版中的功能低于 "最大努力" 支持。 仅在太平洋时区（PST）期间，AKS 技术支持团队提供协助。 有关其他信息，请参阅以下支持文章：
->
-> * [AKS 支持策略][aks-support-policies]
-> * [Azure 支持常见问题][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="register-spotpoolpreview-preview-feature"></a>注册 spotpoolpreview 预览功能
 
@@ -54,7 +50,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpre
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态**：
+准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -62,7 +58,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要创建使用点节点池的 AKS 群集，需要*AKS* CLI 扩展版本0.4.32 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要创建使用点节点池的 AKS 群集，需要*AKS* CLI 扩展版本0.4.32 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -85,7 +81,7 @@ az extension update --name aks-preview
 * 一个点节点池具有标签*kubernetes.azure.com/scalesetpriority:spot*、破坏*kubernetes.azure.com/scalesetpriority=spot:NoSchedule*和系统箱将具有抗关联。
 * 必须添加相应的[toleration][spot-toleration]来计划点节点池中的工作负荷。
 
-## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>将专色节点池添加到 AKS 群集
+## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>将现成节点池添加到 AKS 群集
 
 必须将一个专色节点池添加到已启用多个节点池的现有群集。 有关创建具有多个节点池的 AKS 群集的详细信息，请参阅[此处][use-multiple-node-pools]。
 

@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面 MSIX 应用附加 - Azure
 description: 如何为 Windows 虚拟桌面设置 MSIX 应用附加。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204465"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010151"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -29,7 +27,7 @@ ms.locfileid: "85204465"
 在开始之前，需要配置 MSIX 应用附加：
 
 - 访问 Windows 预览体验门户以获取支持 MSIX 应用附加 API 的 Windows 10 版本。
-- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面秋季2019版，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何部署 Windows 虚拟桌面2020版，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - .MSIX 打包工具。
 - Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享。
 
@@ -202,12 +200,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 1. 右键单击该包，选择“属性”。
 2. 在出现的窗口中，选择“数字签名”选项卡。选项卡上的列表中应该只有一个项，如下图所示。 选择该项以突出显示该项，然后选择“详细信息”。
-3. 出现“数字签名详细信息”窗口时，选择“常规”选项卡，然后选择“安装证书” 。
+3. 当 "数字签名详细信息" 窗口出现时，选择 "**常规**" 选项卡，然后选择 "**查看证书**"，然后选择 "**安装证书**"。
 4. 当安装程序打开时，选择“本地计算机”作为存储位置，然后选择“下一步” 。
 5. 如果安装程序询问你是否允许应用对设备进行更改，请选择“是”。
 6. 选择“将所有证书放入以下存储区”，然后选择“浏览” 。
 7. 当“选择证书存储”窗口出现时，选择“受信任的人员”，然后选择“确定” 。
-8. 选择“完成”。
+8. 选择 "**下一步**" 和 "**完成**"。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>为 MSIX 应用附加准备 PowerShell 脚本
 
@@ -220,7 +218,7 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
 
 每个阶段都会创建一个 PowerShell 脚本。 可在[此处](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)查看适用于每个阶段的示例脚本。
 
-### <a name="stage-the-powershell-script"></a>暂存 PowerShell 脚本
+### <a name="stage-powershell-script"></a>暂存 PowerShell 脚本
 
 在更新 PowerShell 脚本之前，请确保在 VHD 中具有卷的卷 GUID。 获取卷 GUID：
 
@@ -264,88 +262,48 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
     #MSIX app attach staging sample
 
     #region variables
-
     $vhdSrc="<path to vhd>"
-
     $packageName = "<package name>"
-
     $parentFolder = "<package parent folder>"
-
     $parentFolder = "\" + $parentFolder + "\"
-
     $volumeGuid = "<vol guid>"
-
     $msixJunction = "C:\temp\AppAttach\"
-
     #endregion
 
     #region mountvhd
-
     try
-
     {
-
-    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
-
-    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
-
+          Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+          Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
     }
-
     catch
-
     {
-
-    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
-
+          Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
     }
-
     #endregion
 
     #region makelink
-
     $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
     if (!(Test-Path $msixJunction))
-
     {
-
-    md $msixJunction
-
+         md $msixJunction
     }
 
     $msixJunction = $msixJunction + $packageName
-
     cmd.exe /c mklink /j $msixJunction $msixDest
-
     #endregion
 
     #region stage
-
-    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime]
-    | Out-Null
-
+    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-
-    $asTaskAsyncOperation =
-    $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
-    [Windows.Management.Deployment.DeploymentProgress])
-
+    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
+    $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-
     $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
-
     $path = ([System.Uri]$path).AbsoluteUri
-
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-
     $task
-
     #endregion
     ```
 
@@ -357,17 +315,12 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
 #MSIX app attach registration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
-
 #endregion
 
 #region register
-
 Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-
 #endregion
 ```
 
@@ -379,15 +332,11 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 #MSIX app attach deregistration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -PreserveRoamableApplicationData $packageName
-
 #endregion
 ```
 
@@ -399,21 +348,14 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #MSIX app attach de staging sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $msixJunction = "C:\temp\AppAttach\"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -AllUsers -Package $packageName
-
 cd $msixJunction
-
 rmdir $packageName -Force -Verbose
-
 #endregion
 ```
 
@@ -440,7 +382,7 @@ rmdir $packageName -Force -Verbose
 2. 在步骤 3 的脚本中更新以下变量：
       1. `$contentID` 是未编码的许可证文件 (.xml) 中的 ContentID 值。 可以在所选的文本编辑器中打开许可证文件。
       2. `$licenseBlob` 是已编码的许可证文件 (.bin) 中许可证 blob 的整个字符串。 可以在所选的文本编辑器中打开已编码的许可证文件。
-3. 在管理员 PowerShell 提示符中运行以下脚本。 建议在[暂存脚本](#stage-the-powershell-script)的末尾执行许可证安装，该脚本也需要在管理员提示符中运行。
+3. 在管理员 PowerShell 提示符中运行以下脚本。 建议在[暂存脚本](#stage-powershell-script)的末尾执行许可证安装，该脚本也需要在管理员提示符中运行。
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"

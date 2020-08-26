@@ -4,15 +4,15 @@ description: 云合作伙伴门户发布 API 的并发控制策略。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: emuench
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 1160d5568108e7936099cc5227b9e4cadbaddf36
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e468898daffe8fc42250575d3efa42f99279c410
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520334"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031642"
 ---
 # <a name="concurrency-control"></a>并发控制
 

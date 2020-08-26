@@ -1,24 +1,22 @@
 ---
-title: 为 Windows 虚拟桌面设置服务警报 - Azure
-description: 如何设置 Azure 服务运行状况以接收 Windows 虚拟桌面的服务通知。
-services: virtual-desktop
+title: 为 Windows 虚拟桌面（经典）设置服务警报 - Azure
+description: 如何设置 Azure 服务运行状况以接收 Windows 虚拟桌面（经典）的服务通知。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f2171d3271a4ffc4770dd0c9faea16c23e44d02
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259760"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005496"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>教程：为 Windows 虚拟桌面（经典）设置服务警报
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../set-up-service-alerts.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../set-up-service-alerts.md)。
 
 可以使用 Azure 服务运行状况监视 Windows 虚拟桌面的服务问题和运行状况公告。 Azure 服务运行状况可以通过不同类型的警报（例如，电子邮件或短信）通知你，帮助你了解问题的影响，并在问题解决时保持更新。 此外，Azure 服务运行状况还可以帮助你减少停机时间，并为可能影响资源可用性的计划内维护和更改做好准备。
 

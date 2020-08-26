@@ -10,12 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338050"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796402"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 
@@ -65,22 +66,22 @@ ms.locfileid: "84338050"
 
 下表描述了上述 JSON 中的属性：
 
-properties | 描述 | 必需 |
+属性 | 说明 | 必选 |
 -------- | ----------- | -------- |
 name | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
-type | 链接服务的类型。 例如：AzureStorage（数据存储）或 AzureBatch（计算）。 请参阅 typeProperties 说明。 | 是 |
-typeProperties | 每个数据存储或计算的类型属性各不相同。 <br/><br/> 有关支持的数据存储类型及其类型属性，请参阅本文中的[数据集类型](concepts-datasets-linked-services.md#dataset-type)表。 导航到数据存储连接器一文，了解特定于数据存储的类型属性。 <br/><br/> 有关支持的计算类型及其类型属性，请参阅[计算链接服务](compute-linked-services.md)。 | 是 |
+type | 链接服务的类型。 例如： AzureBlobStorage (数据存储) 或 AzureBatch (计算) 。 请参阅 typeProperties 说明。 | 是 |
+typeProperties | 每个数据存储或计算的类型属性各不相同。 <br/><br/> 有关支持的数据存储类型及其类型属性，请参阅 [连接器概述](copy-activity-overview.md#supported-data-stores-and-formats) 一文。 导航到数据存储连接器一文，了解特定于数据存储的类型属性。 <br/><br/> 有关支持的计算类型及其类型属性，请参阅[计算链接服务](compute-linked-services.md)。 | 是 |
 connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否
 
 ## <a name="linked-service-example"></a>链接服务示例
 
-以下链接服务是 Azure 存储链接服务。 请注意：type 设置为“AzureStorage”。 Azure 存储链接服务的类型属性包含连接字符串。 数据工厂服务使用此连接字符串在运行时连接到数据存储。
+以下链接服务是一个 Azure Blob 存储链接服务。 请注意，该类型设置为 "Azure Blob 存储"。 Azure Blob 存储链接服务的类型属性包含一个连接字符串。 数据工厂服务使用此连接字符串在运行时连接到数据存储。
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
@@ -94,7 +95,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 
 ## <a name="create-linked-services"></a>创建链接服务
 
-可以通过[管理中心](author-management-hub.md)和引用这些服务的任何活动、数据集或数据流在 Azure 数据工厂 UX 中创建链接服务。
+可以通过 [管理中心](author-management-hub.md) 和引用这些服务的任何活动、数据集或数据流在 Azure 数据工厂 UX 中创建链接服务。
 
 可以使用以下任一工具或 SDK 创建链接服务：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户。
 

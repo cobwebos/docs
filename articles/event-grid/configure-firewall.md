@@ -1,38 +1,38 @@
 ---
-title: 为 Azure 事件网格主题或域配置 IP 防火墙（预览版）
+title: 为 Azure 事件网格主题或域配置 IP 防火墙
 description: 本文介绍如何配置事件网格主题或域的防火墙设置。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1cb285af6a463b2e0f413b1f876df96f82bb7f93
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116465"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509412"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>为 Azure 事件网格主题或域配置 IP 防火墙（预览版）
-默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。 有关事件网格支持的网络安全功能的详细信息，请参阅[事件网格的网络安全](network-security.md)。
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置 IP 防火墙 
+默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。 有关事件网格支持的网络安全功能的详细信息，请参阅 [事件网格的网络安全](network-security.md)。
 
 本文介绍如何为 Azure 事件网格主题或域配置 IP 防火墙设置。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
-本部分说明如何使用 Azure 门户创建入站 IP 防火墙规则。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为**域**创建入站 IP 规则。 
+本部分说明如何使用 Azure 门户创建入站 IP 防火墙规则。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域**创建入站 IP 规则。 
 
-1. 在[Azure 门户](https://portal.azure.com)中，导航到事件网格主题或域，并切换到 "**网络**" 选项卡。
-2. 选择 "**公用网络**" 以允许所有网络（包括 internet）访问资源。 
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到事件网格主题或域，并切换到 " **网络** " 选项卡。
+2. 选择 " **公用网络** " 以允许所有网络（包括 internet）访问资源。 
 
-    可以使用基于 IP 的防火墙规则限制流量。 在无类域间路由（CIDR）表示法中指定单个 IPv4 地址或一系列 IP 地址。 
+    可以使用基于 IP 的防火墙规则限制流量。 在无类别的域间路由 (CIDR) 表示法中指定单个 IPv4 地址或一系列 IP 地址。 
 
     ![公用网络页面](./media/configure-firewall/public-networks-page.png)
-3. **仅**允许专用终结点连接访问此资源。 使用此页上的 "**专用终结点连接**" 选项卡可管理连接。 
+3. **仅**允许专用终结点连接访问此资源。 使用此页上的 " **专用终结点连接** " 选项卡可管理连接。 
 
     ![公用网络页面](./media/configure-firewall/private-endpoints-page.png)
-4. 在工具栏上选择“保存”。 
+4. 在工具栏上选择“保存”。  
 
 
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-本部分说明如何使用 Azure CLI 命令创建具有入站 IP 规则的主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为**域**创建入站 IP 规则。 
+本部分说明如何使用 Azure CLI 命令创建具有入站 IP 规则的主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域**创建入站 IP 规则。 
 
 
 ### <a name="prerequisites"></a>先决条件
@@ -160,14 +160,14 @@ az eventgrid topic update \
 
 
 ## <a name="use-powershell"></a>使用 PowerShell
-本部分演示如何使用 Azure PowerShell 命令通过入站 IP 防火墙规则创建 Azure 事件网格主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为**域**创建入站 IP 规则。 
+本部分演示如何使用 Azure PowerShell 命令通过入站 IP 防火墙规则创建 Azure 事件网格主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为 **域**创建入站 IP 规则。 
 
 ### <a name="prerequisites"></a>先决条件
-按照[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)中的说明来创建 Azure Active Directory 应用程序，并记下以下值：
+按照 [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md) 中的说明来创建 Azure Active Directory 应用程序，并记下以下值：
 
-- 目录(租户) ID
-- 应用程序（客户端） ID
-- 应用程序（客户端）机密
+- 目录（租户）ID
+- 应用程序 (客户端) ID
+- 应用程序 (客户端) 机密
 
 ### <a name="prepare-token-and-headers-for-rest-api-calls"></a>准备 REST API 调用的令牌和标头 
 运行以下先决条件命令以获取用于 REST API 调用的身份验证令牌，以及授权和其他标头信息。 
@@ -195,7 +195,7 @@ $Headers.Add("Content-Type","application/json")
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
 
 Invoke-RestMethod -Method 'Patch' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body `
     | ConvertTo-Json -Depth 5
@@ -208,7 +208,7 @@ Invoke-RestMethod -Method 'Patch' `
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
 
 Invoke-RestMethod -Method 'Patch' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body `
     | ConvertTo-Json -Depth 5
@@ -223,13 +223,13 @@ $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"pub
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body
 
 # verify that the topic was created
 Invoke-RestMethod -Method 'Get' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 ```
@@ -244,13 +244,13 @@ $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"pub
 
 # create the Event Grid topic
 Invoke-RestMethod -Method 'Put' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body`
 
 # verify that the topic was created
 Invoke-RestMethod -Method 'Get' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 
@@ -259,13 +259,13 @@ $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"pub
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body
 
 # verify that the topic was updated
 Invoke-RestMethod -Method 'Get' 
-    -Uri "https://management.azure.com/subscriptions/<AzURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AzURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 
@@ -276,4 +276,4 @@ Invoke-RestMethod -Method 'Get'
 * 有关监视事件传送的信息，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
 * 有关身份验证密钥的详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 若要解决网络连接问题，请参阅[排查网络连接问题](troubleshoot-network-connectivity.md)
+* 若要解决网络连接问题，请参阅 [排查网络连接问题](troubleshoot-network-connectivity.md)

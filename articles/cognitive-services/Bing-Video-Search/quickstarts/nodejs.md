@@ -10,12 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 693b8209498f07928c811fd084eaf259bcbcb5ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849631"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408095"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
 

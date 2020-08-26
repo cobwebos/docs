@@ -4,10 +4,11 @@ description: 了解 Azure Site Recovery 中的故障转移和故障回复。
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089526"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>关于本地灾难恢复故障转移/故障回复
 

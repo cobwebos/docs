@@ -10,12 +10,13 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: bad97f9bc9eaa3aad02dfcb5e82d2171e93f2dac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809012"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534067"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>为具有 Azure CLI 的容器或 blob 创建用户委托 SAS
 
@@ -39,7 +40,7 @@ ms.locfileid: "84809012"
 
 若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 Azure CLI 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey**操作的角色。 此权限允许 Azure AD 帐户请求*用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey**操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。
 
-如果你的权限不足，无法将 RBAC 角色分配到 Azure AD 安全主体，你可能需要要求帐户所有者或管理员分配必要的权限。
+如果你没有足够的权限将 Azure 角色分配到 Azure AD 安全主体，你可能需要要求帐户所有者或管理员分配必要的权限。
 
 下面的示例分配**存储 Blob 数据参与者**角色，其中包括 storageAccounts **//blobServices/generateUserDelegationKey**操作。 角色的作用域为存储帐户的级别。
 
@@ -52,7 +53,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-有关包含 storageAccounts/ **blobServices/generateUserDelegationKey**操作的内置角色的详细信息，请参阅[Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+有关内置角色的详细信息，包括**storageAccounts//blobServices/generateUserDelegationKey**操作，请参阅[Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>使用 Azure AD 凭据来保护 SAS
 
@@ -129,7 +130,7 @@ az storage account revoke-delegation-keys \
 ```
 
 > [!IMPORTANT]
-> 用户委托密钥和 RBAC 角色分配都是由 Azure 存储缓存的，因此，在启动吊销过程和现有用户委派 SAS 变为无效之间可能存在延迟。
+> 用户委托密钥和 Azure 角色分配都是由 Azure 存储缓存的，因此，在启动吊销过程和现有用户委派 SAS 变为无效之间可能存在延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

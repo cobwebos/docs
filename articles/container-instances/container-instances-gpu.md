@@ -2,13 +2,13 @@
 title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259596"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387077"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -33,14 +33,11 @@ ms.locfileid: "86259596"
 
 ## <a name="about-gpu-resources"></a>关于 GPU 资源
 
-> [!IMPORTANT]
-> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
-
 ### <a name="count-and-sku"></a>计数和 SKU
 
-若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源  ：
+若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源**：
 
-* **计数** - GPU 数量：1、2 或 4    。
+* **Count** -gpu 数： **1**、 **2**或**4**。
 * **SKU** -GPU SKU： **K80**、 **P100**或**V100**。 每个 SKU 都映射到以下支持 Azure GPU 的 VM 系列中的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
@@ -53,6 +50,9 @@ ms.locfileid: "86259596"
 
 部署 GPU 资源时，请设置适合工作负载的 CPU 和内存资源，最多可设置为上表所示的最大值。 这些值当前大于容器组中可用的 CPU 和内存资源（不含 GPU 资源）。  
 
+> [!IMPORTANT]
+> GPU 资源的默认[订阅限制](container-instances-quotas.md)（配额）因 SKU 而异。 P100 和 V100 Sku 的默认 CPU 限制最初设置为0。 若要请求增加可用区域，请提交[Azure 支持请求][azure-support]。
+
 ### <a name="things-to-know"></a>使用须知
 
 * **部署时间** - 创建包含 GPU 资源的容器组最多需要 8-10 分钟****。 这是因为需为预配和配置 Azure 中的 GPU VM 留出更多时间。 
@@ -63,7 +63,7 @@ ms.locfileid: "86259596"
 
 * **CUDA 驱动程序** - 具有 GPU 资源的容器实例使用 NVIDIA CUDA 驱动程序和容器运行时进行预配，因此可以使用专为 CUDA 工作负载开发的容器映像。
 
-  在此阶段，我们支持 CUDA 9.0。 例如，可以对 Docker 文件使用以下基础映像：
+  在此阶段，我们仅支持 CUDA 9.0。 例如，可以对 Docker 文件使用以下基本映像：
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow： 1.12.0-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     

@@ -4,22 +4,23 @@ description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
+ms.custom: devx-track-java
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 1118e584a235f90cc21c8d914f56ebcba7ea74f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0f7dfda46c7a4af8143c33b1b45001a88d3bed88
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319382"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍了如何使用 Java 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[Package (Maven) ](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
+[包（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -232,7 +233,7 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将 () 的空字符串传递给 `""` **DataLakeFileSystemClient. getDirectoryClient**方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串（）传递给 `""` **DataLakeFileSystemClient. getDirectoryClient**方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 

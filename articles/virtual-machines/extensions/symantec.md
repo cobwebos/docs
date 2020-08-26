@@ -1,24 +1,19 @@
 ---
 title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection
 description: 了解如何在使用经典部署模型创建的新的或现有的 Azure VM 上安装和配置 Symantec Endpoint Protection 安全扩展。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roiyz
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919900"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292425"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -74,10 +69,10 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 
 [Create]:../windows/classic/tutorial.md
 
-[PS]: /powershell/azureps-cmdlets-docs
+[PS]: /powershell/azure/
 
 [Agent]: https://go.microsoft.com/fwlink/p/?LinkId=403947
 
 [Logon]:../windows/classic/connect-logon.md
 
-[Ext]: https://go.microsoft.com/fwlink/p/?linkid=390493
+[Ext]: features-windows.md

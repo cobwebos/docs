@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Halosys 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Halosys 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 42a0eb7c-5cb7-44a9-b00b-b0e7df4b63e8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7cdc8dce8a4b30b543c4e332207354697a9e0d
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 5c5efdfb90f98374c988fa2908bf2cc32097042b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367659"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>教程：Azure Active Directory 与 Halosys 集成
 

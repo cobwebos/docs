@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 06/01/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: e97611cdfdca28b2c2b22f21d3aedcc79c4ee6d0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mimckitt, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: dad876868e632f5a9ca0f6ca484714868e452279
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198107"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498151"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
 
@@ -28,14 +28,14 @@ ms.locfileid: "83198107"
 > * 查看规模集实例的连接信息
 > * 在规模集中使用数据磁盘
 
-本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
+本教程在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="scale-set-overview"></a>规模集概述
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 这些放置组由配置类似的 VM 组成，与[可用性集](tutorial-availability-sets.md)相似。
 
-可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些规则基于 CPU 负载、内存用量或网络流量等指标触发。
+可以根据需要在规模集中创建 VM。 可以定义自动缩放规则来控制如何以及何时在规模集中添加或删除 VM。 这些规则基于 CPU 负载、内存用量或网络流量等指标触发。
 
 使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
 
@@ -244,7 +244,7 @@ az vmss disk detach \
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已创建虚拟机规模集。 你已了解如何执行以下操作：
+在本教程中，你已创建了一个虚拟机规模集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 cloud-init 创建用于缩放的应用
@@ -257,4 +257,4 @@ az vmss disk detach \
 请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
 
 > [!div class="nextstepaction"]
-> [均衡虚拟机的负载](tutorial-load-balancer.md)
+> [对虚拟机进行负载均衡](tutorial-load-balancer.md)

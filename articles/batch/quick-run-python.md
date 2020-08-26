@@ -1,31 +1,33 @@
 ---
-title: 使用 Python API 运行 Azure Batch 作业
-description: 使用 Batch Python 客户端库快速运行 Azure Batch 示例作业和任务。 了解 Batch 服务的关键概念。
+title: 快速入门 - 使用 Python API 运行 Azure Batch 作业
+description: 在本快速入门中，使用 Batch Python 客户端库运行 Azure Batch 示例作业和任务。 了解 Batch 服务的关键概念。
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
-- tracking-python
-ms.openlocfilehash: 5c4f8a90a43d19f3bc94da04681d9d690dc33e70
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+- devx-track-python
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561778"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511008"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
 
-在本快速入门中，你将使用 Python API 从应用运行 Azure Batch 作业。 该应用将输入数据文件上传到 Azure 存储，并创建一个包含 Batch 计算节点（虚拟机）的池  。 然后，它创建一个作业  ，该作业运行任务  ，以使用基本命令在池中处理每个输入文件。
+通过使用 Python API 从应用运行 Azure Batch 作业，开始使用 Azure Batch。 该应用将输入数据文件上传到 Azure 存储，并创建一个包含 Batch 计算节点（虚拟机）的池。 然后，它创建一个作业，该作业运行任务，以使用基本命令在池中处理每个输入文件。
 
-在这里，你将了解 Batch 服务的关键概念，并准备好尝试使用 Batch 处理更大规模、更现实的工作负荷。
+完成本快速入门以后，你将了解 Batch 服务的重要概念，并可使用更逼真的工作负载进行更大规模的 Batch 试用。
 
 ![Azure Batch 工作流概述](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- 一个 **Azure Batch** 帐户和一个关联的 **Azure 存储**帐户。 使用 [Azure 门户](quick-create-portal.md)或 [CLI](quick-create-cli.md) 创建这些帐户。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+- Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
+
 - [Python](https://python.org/downloads) 版本 2.7、3.3 或更高版本，包括 [pip](https://pip.pypa.io/en/stable/installing/) 包管理器
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -68,7 +70,7 @@ _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB
 python python_quickstart_client.py
 ```
 
-运行脚本后，请查看代码，了解应用程序的每个部分的作用。 
+运行脚本后，请查看代码，了解应用程序的每个部分的作用。
 
 运行示例应用程序时，控制台输出如下所示。 在执行期间启动池的计算节点时，会遇到暂停并看到`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`。 任务会排队，在第一个计算节点运行后马上运行。 转到 [Azure 门户](https://portal.azure.com)中的 Batch 帐户，监视 Batch 帐户中的池、计算节点、作业和任务。
 
@@ -102,9 +104,9 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 
 本快速入门中的 Python 应用执行以下操作：
 
-* 将三个小的文本文件上传到 Azure 存储帐户中的 Blob 容器。 这些文件是供 Batch 任务处理的输入。
-* 创建一个池，其中包含两个运行 Ubuntu 18.04 LTS 的计算节点。
-* 创建一个作业和三个任务，它们需要在节点上运行。 每个任务都使用 Bash shell 命令行来处理一个输入文件。
+- 将三个小的文本文件上传到 Azure 存储帐户中的 Blob 容器。 这些文件是供 Batch 任务处理的输入。
+- 创建一个池，其中包含两个运行 Ubuntu 18.04 LTS 的计算节点。
+- 创建一个作业和三个任务，它们需要在节点上运行。 每个任务都使用 Bash shell 命令行来处理一个输入文件。
 * 显示文件返回的任务。
 
 有关详细信息，请参阅文件 `python_quickstart_client.py` 和以下部分。
@@ -182,7 +184,7 @@ batch_service_client.job.add(job)
 
 此应用使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都使用 `command_line` 参数来处理输入 `resource_files` 对象。 在示例中，命令行运行 Bash shell `cat` 命令来显示文本文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
 
-然后，应用使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，应用使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) 方法将任务添加到作业，使任务按顺序在计算节点上运行。
 
 ```python
 tasks = list()

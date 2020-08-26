@@ -6,16 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382886"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320640"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，它可以提醒你。
+[Azure Application Insights](./app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，它可以提醒你。
 
 ## <a name="enable-alerts"></a>启用警报
 
@@ -24,7 +24,7 @@ ms.locfileid: "81382886"
 ![创建体验](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
+>  使用[新的统一警报](../platform/alerts-overview.md)时，必须在警报体验中配置预警规则严重性和[操作组](../platform/action-groups.md)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 
@@ -39,7 +39,7 @@ ms.locfileid: "81382886"
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>当 Y 个位置中有 X 个报告失败时发出警报
 
-创建新的可用性测试时，会在[新的统一警报体验](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)中默认启用“Y 个位置中的 X 个”警报规则。 可通过选择“经典”选项或选择禁用该警报规则来选择退出。
+创建新的可用性测试时，会在[新的统一警报体验](../platform/alerts-overview.md)中默认启用“Y 个位置中的 X 个”警报规则。 可通过选择“经典”选项或选择禁用该警报规则来选择退出。
 
 > [!NOTE]
 > 通过执行上述步骤，将操作组配置为在警报触发时接收通知。 如果不执行此步骤，则在规则触发时只会收到门户内通知。
@@ -47,7 +47,7 @@ ms.locfileid: "81382886"
 
 ### <a name="alert-on-availability-metrics"></a>根据可用性指标发出警报
 
-使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据分段聚合可用性发出警报以及测试持续时间指标：
+使用[新的统一警报](../platform/alerts-overview.md)时，可以根据分段聚合可用性发出警报以及测试持续时间指标：
 
 1. 在指标体验中选择 Application Insights 资源，然后选择可用性指标：
 
@@ -57,7 +57,7 @@ ms.locfileid: "81382886"
 
 ### <a name="alert-on-custom-analytics-queries"></a>根据自定义分析查询发出警报
 
-使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据[自定义日志查询](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这同样适用。
+使用[新的统一警报](../platform/alerts-overview.md)时，可以根据[自定义日志查询](../platform/alerts-unified-log.md)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这同样适用。
 
 > [!Tip]
 > 可用性数据的指标包括可能通过调用我们的 TrackAvailability SDK 提交的任何自定义可用性结果。 可以使用“根据指标发出警报”支持根据自定义可用性结果发出警报。
@@ -65,7 +65,7 @@ ms.locfileid: "81382886"
 
 ## <a name="automate-alerts"></a>自动发送警报
 
-若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)文档。
+若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)文档。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -75,3 +75,4 @@ ms.locfileid: "81382886"
 
 * [多步骤 Web 测试](availability-multistep.md)
 * [URL ping Web 测试](monitor-web-app-availability.md)
+

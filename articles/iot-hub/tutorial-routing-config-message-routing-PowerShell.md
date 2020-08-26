@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74084436"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>教程：使用 Azure PowerShell 配置 IoT 中心消息路由
@@ -144,7 +144,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 **resourceGroup**：此字段会在两个位置出现 - 请将两者设置为你的资源组。
 
-**名称**：此字段是要应用路由的 IoT 中心的名称。
+**name**：此字段是要应用路由的 IoT 中心的名称。
 
 **endpointName**：此字段是用于标识终结点的名称。 
 
@@ -162,7 +162,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 **condition**：此字段是用于筛选发送到此终结点的消息的查询。 路由到存储的消息的查询条件是 `level="storage"`。
 
-**enabled**：此字段默认为 `true`，表示应在创建消息路由后启用该路由。
+**enabled**：此字段默认为 `true`，指示消息路由应在创建后启用。
 
 请复制此脚本，并将其粘贴到 Cloud Shell 窗口中。
 

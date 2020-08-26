@@ -3,21 +3,24 @@ title: 快速入门：使用适用于 .NET 的 Azure 存储 v11 来管理队列
 description: 本快速入门介绍如何使用 .NET 的 Azure 存储客户端库创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71700efecfc173392562327f6d150d79d1a9c84f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807565"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292687"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列
 
 本快速入门介绍如何使用适用于 .NET 的 Azure 存储客户端库 11 版创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。 
+
+> [!NOTE]
+> 此快速启动使用 Azure 队列存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 .NET 的 Azure 队列存储客户端库 v12](storage-quickstart-queues-dotnet.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,7 +55,7 @@ ms.locfileid: "84807565"
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。  
+此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。 
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 

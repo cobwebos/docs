@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的 API 模板 | Microsoft 文档
-description: 了解如何在 Azure API 管理中自定义开发人员门户中的 API 页面的内容。
+description: 了解如何在 Azure API 管理中自定义开发人员门户中 API 页面的内容。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.custom: tracking-python
-ms.openlocfilehash: 193dc7a953bc746ec7211433f846343969176c96
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243692"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851708"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
-通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
+通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
 
-本部分中的模板可用于自定义开发人员门户中的 API 页面的内容。  
+本部分中的模板可用于自定义开发人员门户中 API 页面的内容。  
   
 -   [API 列表](#APIList)  
 -   [操作](#Product)  
--   [示例代码](#CodeSamples)  
+-   [代码示例](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
@@ -90,7 +90,7 @@ ms.locfileid: "86243692"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
@@ -114,7 +114,7 @@ ms.locfileid: "86243692"
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a>运作  
+## <a name="operation"></a><a name="Product"></a> 操作  
  **操作**模板可用于自定义开发人员门户中操作页的正文。  
   
  ![开发人员门户操作页](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 开发人员门户模板操作页")  
@@ -340,7 +340,7 @@ ms.locfileid: "86243692"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Operation` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
@@ -353,8 +353,8 @@ ms.locfileid: "86243692"
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
 |`sampleUrl`|string|当前操作的 URL。|  
-|`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
-|`consoleUrl`|URI|“试用”按钮的 URI。****|  
+|`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作菜单。|  
+|`consoleUrl`|URI|“试用”按钮的 URI。|  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
@@ -644,7 +644,7 @@ ms.locfileid: "86243692"
 }  
 ```  
   
-## <a name="code-samples"></a><a name="CodeSamples"></a>代码示例  
+## <a name="code-samples"></a><a name="CodeSamples"></a> 代码示例  
  以下模板用于在操作页上自定义各个代码示例的正文。  
   
  ![开发人员门户模板代码示例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 开发人员门户模板代码示例")  
@@ -657,7 +657,7 @@ ms.locfileid: "86243692"
   
 -   [JavaScript](#JavaScript)  
   
--   [目标 C](#ObjectiveC)  
+-   [Objective C](#ObjectiveC)  
   
 -   [PHP](#PHP)  
   
@@ -665,7 +665,7 @@ ms.locfileid: "86243692"
   
 -   [Ruby](#Ruby)  
   
-### <a name="curl"></a><a name="Curl"></a>Curl  
+### <a name="curl"></a><a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -683,7 +683,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -862,7 +862,7 @@ namespace CSHttpClientSample
 }     
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -897,7 +897,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="java"></a><a name="Stub"></a>.Java  
+### <a name="java"></a><a name="Stub"></a> Java  
  **DocumentationSamplesJava** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -958,7 +958,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -993,7 +993,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1047,7 +1047,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1159,7 +1159,7 @@ int main(int argc, const char * argv[])
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1194,7 +1194,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="php"></a><a name="PHP"></a>PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1249,7 +1249,7 @@ catch (HttpException $ex)
 ?>  
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1367,7 +1367,7 @@ except Exception as e:
 ####################################  
 ```
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1402,7 +1402,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="ruby"></a><a name="Ruby"></a>拼音  
+### <a name="ruby"></a><a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1438,7 +1438,7 @@ puts response.body
   
 ```  
   
-#### <a name="controls"></a>控件  
+#### <a name="controls"></a>控制  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  

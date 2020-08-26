@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089849"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -118,7 +118,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
     > [!NOTE]
     > 下拉菜单中只显示用户有权访问且 Azure 订阅包含的工作区。
 
-1. 选择“保存”。 系统会询问是否要重新配置受监视的 VM。
+1. 选择“保存” 。 系统会询问是否要重新配置受监视的 VM。
 
     - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Log Analytics 代理。
     - 如果希望在所有 VM 上应用新的工作区设置，请选择“是”。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
@@ -164,7 +164,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
 
-1. 如果订阅配置为标准层，则打开该订阅的安全策略，并选择“免费”层。
+1. 如果为标准层配置了订阅，请打开该订阅的安全策略，并选择 "**免费**" 层。
 
    ![定价层][1]
 

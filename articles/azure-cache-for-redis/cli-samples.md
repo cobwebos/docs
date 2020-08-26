@@ -1,33 +1,33 @@
 ---
-title: Redis 示例的 Azure Cache Azure CLI
-description: 适用于 Redis 的 Azure Cache Azure CLI 示例：创建缓存、删除缓存、获取缓存详细信息、主机名、端口和密钥，以及连接 web 应用。
+title: 通过 Azure CLI 管理 Redis 的 Azure 缓存
+description: Azure CLI 用于管理 Redis 的 Azure 缓存的示例：创建缓存、删除缓存、获取缓存详细信息、主机名、端口和密钥，以及连接 web 应用。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
-ms.openlocfilehash: c43e23b4bf46258cc91b06a0912d03e85a5c7a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75411346"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499596"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure CLI 的 Azure Redis 缓存示例
+# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>通过 Azure CLI 管理 Redis 的 Azure 缓存
 
 下表包含指向使用 Azure CLI 生成的 bash 脚本的链接。
 
-| | |
-|---|---|
-|**创建缓存**||
+| 创建缓存 | 说明 |
+| ------------ | ----------- |
 | [创建缓存](./scripts/create-cache.md) | 创建资源组和基本层 Azure Redis 缓存。 |
 | [使用群集创建高级缓存](./scripts/create-premium-cache-cluster.md) | 通过启用群集来创建资源组和高级层缓存。|
 | [获取缓存的详细信息](./scripts/show-cache.md) | 获取 Azure Redis 缓存实例的详细信息，包括预配状态。 |
 | [获取主机名、端口和密钥](./scripts/cache-keys-ports.md) | 获取 Azure Redis 缓存实例的主机名、端口和密钥。 |
-|**Web 应用和缓存**||
+|**Web 应用和缓存**| **说明**|
 | [将 Web 应用连接到 Azure Redis 缓存](./../app-service/scripts/cli-connect-to-redis.md) | 创建 Azure Web 应用和 Azure Redis 缓存，然后将 Redis 连接详细信息添加到应用设置。 |
-|**删除缓存**||
+|**删除缓存**| **说明** |
 | [删除缓存](./scripts/delete-cache.md) | 删除 Azure Redis 缓存实例  |
-| | |
 
 有关 Azure CLI 的详细信息，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 和 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。

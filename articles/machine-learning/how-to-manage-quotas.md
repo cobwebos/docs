@@ -5,17 +5,18 @@ description: 了解 Azure 机器学习资源的配额以及如何请求更多配
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
-ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting,contperfq4
+ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430466"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141119"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增加 Azure 机器学习资源的配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,13 +46,9 @@ ms.locfileid: "84430466"
 > 限制随时会变化。 始终可以在所有 Azure 的服务级别配额[文档](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)中找到最新的限制。
 
 ### <a name="virtual-machines"></a>虚拟机
-对于每个 Azure 订阅，可以跨服务使用或独立使用的虚拟机数量有限制。 基于总核心数和每个系列的区域级别也同样有此限制。
-
-虚拟机核心数既有区域总数限制，也有区域按大小系列（Dv2、F 等）限制，这两种限制单独实施。 例如，假设某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 该订阅可以部署 30 个 A1 VM、30 个 D1 VM，或者两者的组合，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
+对于每个 Azure 订阅，你的服务或独立虚拟机的数量有限制。 虚拟机核心数既有区域总数限制，也有区域按大小系列（Dv2、F 等）限制，这两种限制单独实施。 例如，假设某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 该订阅可以部署 30 个 A1 VM、30 个 D1 VM，或者两者的组合，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-有关配额限制更详细的最新列表，请查看[适用于 Azure 的配额文章](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
 在 [Azure 机器学习计算](concept-compute-target.md#azure-machine-learning-compute-managed)中，订阅中每个区域所允许的核心数和唯一计算资源数都有默认配额限制。 该配额与上述的 VM 核心配额不同，并且核心限制没有在这两种资源类型之间共享，因为 AmlCompute 是在托管代表模型中部署资源的托管服务。
@@ -71,7 +68,7 @@ ms.locfileid: "84430466"
 | 单个 Azure 机器学习计算 (AmlCompute) 资源中的最大节数点 | 100 个节点 |
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
-| 最长作业生存期 | 90 天<sup>1</sup> |
+| 最长作业生存期 | 21天<sup>1</sup> |
 | 低优先级节点上的最大作业生存期 | 7 天<sup>2</sup> |
 | 每个节点的最大参数服务器数 | 1 |
 
@@ -83,16 +80,10 @@ ms.locfileid: "84430466"
 - 管道中所允许的最大步骤数为 30,000
 - 每个月根据每个订阅的已发布管道的博客触发计划执行的基于计划的运行数与 Blob 提取数之和的最大数目为 100,000
 
-> [!NOTE]
-> 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
-
 ### <a name="container-instances"></a>容器实例
 
 可以在给定时间段内（以小时为范围）或在你的整个订阅中启动的容器实例数量也有限制。
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-有关配额限制更详细的最新列表，请在[此处](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)查看适用于 Azure 的配额文章。
+有关限制，请参阅[容器实例限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)。
 
 ### <a name="storage"></a>存储
 给定订阅中每个区域的存储帐户数量也有限制。 默认限制数量为 250，包括标准和高级存储帐户。 如果在某特定区域中需要的存储帐户多于 250 个，请通过 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
@@ -116,24 +107,26 @@ ms.locfileid: "84430466"
 
 ## <a name="view-your-usage-and-quotas"></a>查看使用情况和配额
 
-Azure 机器学习计算与订阅中的其他 Azure 资源配额分开管理。 若要查看此配额，需要向下钻取到机器学习服务。  
+订阅上 Azure 机器学习的计算配额与其他 Azure 资源配额分开管理。 若要查看此配额，需要向下钻取到机器学习服务。  
 
 1. 在左窗格中，选择“机器学习服务”，然后从显示的列表中选择任何工作区。
 
-1. 在下一个边栏选项卡中，在“支持 + 故障排除部分”下，选择“使用情况 + 配额”以查看当前配额限制和使用情况 。
+2. 在下一个边栏选项卡中，在“支持 + 故障排除部分”下，选择“使用情况 + 配额”以查看当前配额限制和使用情况 。
 
-1. 选择订阅以查看配额限制。 请记住筛选到所需的区域。
+3. 选择订阅以查看配额限制。 请记住筛选到所需的区域。
 
-1. 现在，可以在订阅级视图与工作区级视图之间切换：
+4. 现在，可以在订阅级视图与工作区级视图之间切换：
     + **订阅视图：** 在此视图中可以按 VM 系列查看核心配额的用量，按工作区展开此节点，然后按实际群集名称进一步展开此节点。 此视图最适合用于快速了解特定 VM 系列的核心用量详细信息，以查看各工作区的细分，以及按每个工作区的基础群集进一步提供的细分。 此视图中的一般约定是“(用量/配额)”，其中，用量是当前的已扩展核心数，配额是资源可以扩展到的逻辑最大核心数。 对于每个**工作区**，配额是工作区级配额（如前所述），表示特定 VM 系列可扩展到的最大核心数。 同理，对于**群集**，配额实际上是对应于群集可扩展到的最大节点数（由 max_nodes 属性定义）的核心数。
-
+    
     + **工作区视图：** 在此视图中可以按工作区查看核心配额的用量，按 VM 系列展开此节点，然后按实际群集名称进一步展开此节点。 此视图最适合快速了解特定工作区的核心使用情况的详细信息，以查看按 VM 系列列出的细分，以及进一步按每个系列的基础群集列出的细分。
 
 通过 Azure 门户可以轻松查看各种其他 Azure 资源的配额，例如虚拟机、存储和网络。
 
 1. 在左窗格上，选择“所有服务”，然后在“一般”类别下选择“订阅” 。
 
-1. 从订阅列表中选择要查找其配额的订阅。
+2. 从订阅列表中选择要查找其配额的订阅。
+
+3. 选择 "**使用情况 + 配额**" 以查看当前配额限制和使用情况。 使用筛选器选择提供程序和位置。 
 
 ## <a name="request-quota-increases"></a>请求增加配额
 
@@ -148,8 +141,4 @@ Azure 机器学习计算与订阅中的其他 Azure 资源配额分开管理。 
 
 ## <a name="next-steps"></a>后续步骤
 
-通过以下文章，了解详细信息：
-
 + [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)
-
-+ [如何增加配额](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

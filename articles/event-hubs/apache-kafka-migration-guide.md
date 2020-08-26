@@ -3,11 +3,12 @@ title: 迁移到用于 Apache Kafka 的 Azure 事件中心
 description: 本文介绍使用不同协议（AMQP、Apache Kafka 和 HTTPS）的使用者和生成者在使用 Azure 事件中心时如何交换事件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf585cdc0a43c595ec013ba78a2e3ae191c40b8d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090648"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>迁移到用于 Apache Kafka 的 Azure 事件中心生态系统
 Azure 事件中心公开了一个 Apache Kafka 终结点，使你能够使用 Kafka 协议连接到事件中心。 对现有 Kafka 应用程序稍作更改即可连接到 Azure 事件中心并充分利用 Azure 生态系统的优势。 用于 Kafka 的事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html) 及更高版本。
@@ -60,4 +61,4 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 - [针对事件中心的 Apache Kafka 故障排除指南](apache-kafka-troubleshooting-guide.md)
 - [常见问题解答 - 用于 Apache Kafka 的事件中心](apache-kafka-frequently-asked-questions.md)
 - [针对 Azure 事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
-- [建议的配置](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [建议的配置](apache-kafka-configurations.md)

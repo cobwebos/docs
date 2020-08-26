@@ -2,14 +2,14 @@
 title: Azure Migrate 支持矩阵
 description: 汇总了 Azure Migrate 服务的支持设置和限制。
 ms.topic: conceptual
-ms.date: 04/19/2020
+ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108747"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612106"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -21,14 +21,16 @@ ms.locfileid: "86108747"
 
 **部署** | **详细信息** 
 --- | --- 
-特定于应用的发现 | 可以发现 VMware VM 上运行的应用、角色和功能。 目前，此功能仅限于发现。 评估目前处于计算机级别。 我们尚未提供特定于应用、角色或功能的评估。 
-本地评估 | 评估 VMware VM、Hyper-V VM 和物理服务器上运行的本地工作负荷和数据。 使用 Azure Migrate 服务器评估和 Microsoft 数据迁移助手 (DMA) 以及其他工具和 ISV 产品/服务进行评估。
-本地迁移到 Azure | 将物理服务器、VMware VM、Hyper-V VM、物理服务器以及基于云的 VM 上运行的工作负荷和数据迁移到 Azure。 使用 Azure Migrate 服务器评估和 Azure 数据库迁移服务 (DMS) 以及其他工具和 ISV 产品/服务进行迁移。
+**发现** | 可以发现计算机元数据和动态性能数据。
+**应用程序发现** | 可以发现 VMware VM 上运行的应用、角色和功能。 目前，此功能仅限于发现。 评估目前处于计算机级别。 我们尚未提供应用、角色或基于功能的评估。 
+**评估** | 评估 VMware VM、Hyper-V VM 和物理服务器上运行的本地工作负荷和数据。 使用 Azure Migrate Server 评估、Microsoft 数据迁移助手 (DMA) 以及其他工具和 ISV 产品评估。
+**迁移** | 将物理服务器、VMware VM、Hyper-V VM、物理服务器以及基于云的 VM 上运行的工作负荷和数据迁移到 Azure。 使用 Azure Migrate 服务器评估和 Azure 数据库迁移服务 (DMS) 以及其他工具和 ISV 产品/服务进行迁移。
 
 > [!NOTE]
 > 目前，ISV 工具无法将数据发送到 Azure 政府中的 Azure Migrate。 可以使用集成的 Microsoft 工具，也可以独立使用合作伙伴工具。
 
 ## <a name="supported-tools"></a>支持的工具
+
 
 表中汇总了特定工具支持。
 
@@ -43,7 +45,7 @@ Azure Migrate 服务器迁移 | NA | 迁移 [VMware VM](tutorial-migrate-vmware.
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | 评估 SQL Server 的数据库。 | NA
 [DMS](../dms/dms-overview.md) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构 (VDI) | NA
-[Movere](https://www.movere.io/) | 评估 VMWare VM、Hyper-V VM、Xen VM、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
+[Movere](https://www.movere.io/) | 评估 VMware Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站 (包括 VDI) 、公有云工作负荷 | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 迁移 VMware VM、Hyper-V VM、Xen VM、KVM VM、物理计算机、公有云工作负荷 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。 | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷和 SQL Server 数据库。 | NA
@@ -73,7 +75,11 @@ Hyper-V VM    | 在单个项目中最多评估 35,000 个 Hyper-V VM。
 
 ## <a name="supported-geographies-public-cloud"></a>支持的地理区域（公有云）
 
-可以在公有云的多个地理位置中创建 Azure Migrate 项目。 尽管只能在这些地理区域中创建项目，但可以针对其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
+可以在公有云的多个地理位置中创建 Azure Migrate 项目。
+
+- 尽管只能在这些地理区域中创建项目，但可以针对其他目标位置评估或迁移计算机。
+- 项目地域仅用于存储已发现的元数据。
+- 创建项目时，请选择 "地理"。 项目和相关资源是在地理区域中的某个区域创建的。 区域由 Azure Migrate 服务分配。
 
 **地域** | **元数据存储位置**
 --- | ---

@@ -7,26 +7,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141885"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517908"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
 在本快速入门中，将示例标记工具和表单识别器 REST API 结合使用，通过手动标记的数据训练自定义模型。 有关此功能的详细信息，请参阅概述的[通过标签进行训练](../overview.md#train-with-labels)部分。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，必须具备以下条件：
 
-- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
+- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -133,7 +133,7 @@ ms.locfileid: "84141885"
    1. 单击 **+** 创建新标记。
    1. 输入标记名称。
    1. 按 Enter 保存标记。
-1. 在主编辑器中，单击并拖动以从突出显示的文本元素中选择一个或多个字词。
+1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。
 1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
     > 标记窗体时，请记住以下提示。
@@ -192,7 +192,7 @@ ms.locfileid: "84141885"
 
 单击左侧窗格中的“训练”图标以打开“训练”页。 然后单击“训练”按钮，开始训练模型。 训练过程完成后，你将看到以下信息：
 
-* **模型 ID** - 已创建和训练的模型的 ID。 每个训练调用都将创建一个具有自己的 ID 的新模型。 将此字符串复制到安全位置；如果要通过 REST API 进行预测调用，则需要使用此字符串。
+* **模型 ID** - 已创建和训练的模型的 ID。 每个训练调用都将创建一个具有自己的 ID 的新模型。 将此字符串复制到安全位置；如果要通过 [REST API](./curl-train-extract.md) 或[客户端库](./client-library.md)进行预测调用，则需要使用此字符串。
 * **平均准确度** - 模型的平均准确性。 可以通过再次标记其他表单和训练来创建新的模型，从而提高模型准确度。 建议首先标记五个表单，然后根据需要添加更多表单。
 * 标记列表，以及每个标记的估计准确度。
 

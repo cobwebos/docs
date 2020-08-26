@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058757"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
 
@@ -77,7 +77,7 @@ ms.locfileid: "86232230"
 
 如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以使用另一个 VM 执行以下缓解措施。
 
-1.  在故障排除 VM 上，下载 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
+1.  在故障排除 VM 上，下载 [PSTools](/sysinternals/downloads/pstools)。
 
 2.  打开 CMD 实例，然后通过 VM 的内部 IP (DIP) 访问该 VM。 
 

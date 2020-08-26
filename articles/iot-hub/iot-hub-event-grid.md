@@ -11,17 +11,19 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327644"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
 通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。 例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
 
-[Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格包含对 Azure 服务（如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)）的内置支持，还可使用 Webhook 向非 Azure 服务传递事件警报。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
+[Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格内置了对 Azure 服务（如[Azure Functions](../azure-functions/functions-overview.md)和[Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)）的支持，可以使用 webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
 ![Azure 事件网格体系结构](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -45,7 +47,7 @@ IoT 中心将发布以下事件类型：
 
 ## <a name="event-schema"></a>事件架构
 
-IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件  。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
+IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
 
 ### <a name="device-connected-schema"></a>设备已连接架构
 
@@ -76,7 +78,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 设备遥测消息必须采用有效的 JSON 格式，并且在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个属性都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。
 
-在通过选择终结点作为事件网格来将设备遥测事件发布到事件网格之前，你可以扩充设备遥测事件。 有关详细信息，请参阅[消息扩充概述](iot-hub-message-enrichments-overview.md)。
+在通过选择终结点作为事件网格来将设备遥测事件发布到事件网格之前，你可以扩充设备遥测事件。 有关详细信息，请参阅[Message 根据概述](iot-hub-message-enrichments-overview.md)。
 
 以下示例显示了设备遥测事件的架构：
 
@@ -168,7 +170,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 IoT 中心事件订阅可以根据事件类型、数据内容和使用者（即设备名称）来筛选事件。
 
-事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选   。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
+事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选 。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
 
 IoT 事件使用者使用的格式：
 

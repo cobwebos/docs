@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 207e5b8d9735004b6dc1a9662a3f66fbed8c2307
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187222"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422685"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 中的仪表板上添加自定义面板
 
@@ -31,7 +32,7 @@ ms.locfileid: "82187222"
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 应现完成[将自定义页面添加到远程监视解决方案加速器 Web UI](iot-accelerators-remote-monitoring-customize-page.md) 文章中的步骤，然后再继续操作。
 

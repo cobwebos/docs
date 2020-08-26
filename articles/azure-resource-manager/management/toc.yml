@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: 资源实例限制
       href: resources-without-resource-group-limit.md
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 如何
   items:
     - name: 移动 - 资源组/订阅
@@ -93,6 +98,12 @@
               href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 虚拟网络
               href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for PostgreSQL 服务器
+              href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for MariaDB 服务器
+              href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for MySQL 服务器
+              href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Tags
       items:
         - name: 决策指南

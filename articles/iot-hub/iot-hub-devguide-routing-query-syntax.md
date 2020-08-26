@@ -7,11 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688953"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336491"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -55,9 +59,10 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
 | iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
-| iothub-interface-name | 字符串 | 此值由用户设置，表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
+| dt-dataschema | string |  此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 若要查询，请使用 `$dt-dataschema`。 |
+| dt-主题 | string | 正在发送设备到云消息的组件的名称。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 若要查询，请使用 `$dt-subject`。 |
 
-如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了**contentType**、 **contentEncoding**和**EnqueuedTime**，还可以查询**connectionDeviceId**和**为 connectionmoduleid** 。
+如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了上表中的上述属性，还可以查询**connectionDeviceId**，**为 connectionmoduleid**。
 
 ### <a name="application-properties"></a>应用程序属性
 

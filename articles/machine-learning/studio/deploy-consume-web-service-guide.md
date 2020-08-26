@@ -1,6 +1,5 @@
 ---
-title: 部署和使用
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：部署和消耗-Azure
 description: 可以使用 Azure 机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 57856f449a4eb4ac53cda698e82569adeca8cade
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985527"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429233"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习工作室（经典）Web 服务：部署和使用
+
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 可以使用 Azure 机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
 
@@ -90,17 +91,17 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
 可以从 Azure 机器学习 Web 服务门户测试 Web 服务。 这包括测试请求-响应服务 (RRS) 和批处理执行服务 (BES) 接口。
 
-* [部署新的 web 服务](deploy-a-machine-learning-web-service.md)
+* [部署新 Web 服务](deploy-a-machine-learning-web-service.md)
 * [部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)
-* [教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
+* [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>从 Excel
 
 可以下载使用 Web 服务的 Excel 模板：
 
 * [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
-* [用于 Azure 机器学习 Web 服务的 Excel 外接程序](excel-add-in-for-web-services.md)
+* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 
-Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台（如 .NET、Python、R、Java 等）使用这些 Api。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 web 服务的 "**使用**情况" 页包含可帮助您入门的示例代码。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。

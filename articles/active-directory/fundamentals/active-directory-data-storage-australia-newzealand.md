@@ -2,37 +2,33 @@
 title: 适用于澳大利亚客户的标识数据存储-Azure AD
 description: 了解 Azure Active Directory 为其澳大利亚客户存储标识相关数据的位置。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.custom: it-pro, seodec18
+ms.date: 7/21/2020
+ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dc659f3d580646c1e86e5e97940268311e5546f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 494b949594574a55df405ec0447fa6c59f386f7d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460528"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799029"
 ---
-# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 中的澳大利亚和新西兰客户的标识数据存储
+# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>适用于澳大利亚和新西兰的客户数据存储 Azure Active Directory
 
-标识数据由 Azure AD 存储在地理位置，在订阅 Microsoft Online services （如 Office 365 和 Azure）时，该地址基于组织提供的地址。 若要了解标识客户数据的存储位置，可以使用 Microsoft 信任中心的 "[你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) " 部分。
+Azure Active Directory (Azure AD) 根据你在注册 Microsoft Online service 时提供的国家/地区将客户数据存储在地理位置。 Microsoft Online services 包括 Office 365 和 Azure。 
+
+有关 Azure AD 和其他 Microsoft 服务数据的位置的信息，请参阅 Microsoft 信任中心的 "[数据的位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)" 部分。
+
+从2020年2月26日开始，Microsoft 开始为新租户存储 Azure AD 的客户数据，这些数据使用澳大利亚或新西兰的新租户。 在5月1日到2020年10月 2020 31 日之间，Microsoft 会将具有澳大利亚或新西兰帐单地址的现有租户迁移到澳大利亚数据中心，而无需任何客户操作。 迁移过程不会对客户造成任何停机，也不会在迁移过程中影响租户的任何功能。
+
+此外，某些 Azure AD 功能尚不支持在澳大利亚存储客户数据。 有关特定功能信息，请参阅[Azure AD 数据图](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)。 例如，Microsoft Azure 多重身份验证将客户数据存储在美国，并对其进行全局处理。 [有关 Azure 多重身份验证，请参阅数据驻留和客户数据](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)。
 
 > [!NOTE]
-> 与 Azure AD 集成的服务和应用程序可以访问标识客户数据。 评估每个服务和应用程序，以确定特定服务和应用程序如何处理标识客户数据，以及这些数据是否符合公司的数据存储要求。 有关 Microsoft 服务的数据存放的详细信息，请参阅 Microsoft 信任中心的数据存储在何处？部分。
+> 与 Azure AD 集成的 Microsoft 产品、服务和第三方应用程序可以访问客户数据。 评估你使用的每个产品、服务和应用程序，以确定此特定产品、服务和应用程序如何处理客户数据，以及它们是否满足你公司的数据存储要求。 有关 Microsoft 服务的数据存放的详细信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
 
-对于在澳大利亚和新西兰提供地址并使用 Azure AD 免费版的客户，Azure AD 将 PII 数据保存在澳大利亚数据中心。 
-
-所有其他 Azure AD 高级服务将客户数据存储在全球数据中心。 若要查找服务的数据中心，请参阅[Azure Active Directory –你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
-
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重身份验证（MFA）
-
-中的 MFA 服务 Azure AD 将标识客户数据存储在静态全局数据中心中。 若要详细了解基于云的 Azure MFA 和 Azure MFA 服务器收集和存储的用户信息，请参阅[Azure 多重身份验证用户数据收集](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)。 如果客户使用 MFA，则其数据将存储在澳大利亚以外的其他位置。 
-
-## <a name="next-steps"></a>后续步骤
-有关上述任何功能的详细信息，请参阅以下文章：
-- [什么是多重身份验证？](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)

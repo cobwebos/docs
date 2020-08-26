@@ -1,20 +1,20 @@
 ---
 title: 教程：实现 IoT 空间分析 | Microsoft Azure Maps
 description: 将 IoT 中心与 Microsoft Azure Maps 服务 API 集成。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318920"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133395"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -110,7 +110,7 @@ Azure 函数中的代码将检查车辆是否已离开地理围栏。 如果车�
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
-若要基于 Azure Maps 空间分析实现业务逻辑，需要在创建的资源组中创建一个 Azure Maps 帐户。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明，在 S1 定价层中创建一个 Azure Maps 帐户订阅。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+若要基于 Azure Maps 空间分析实现业务逻辑，需要在创建的资源组中创建一个 Azure Maps 帐户。 按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明，在 S1 定价层中创建一个 Azure Maps 帐户订阅。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 
 

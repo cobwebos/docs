@@ -5,19 +5,21 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505084"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759727"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
 
 > [!IMPORTANT]
-> Azure Monitor 中的视图被分段并替换为提供其他功能的[工作簿](workbooks-overview.md)。 有关将现有视图转换为工作簿的详细信息，请参阅[Azure Monitor 查看设计器到工作簿过渡指南](view-designer-conversion-overview.md)"。
+> Azure Monitor 中的视图已转换为提供其他功能的[工作簿](workbooks-overview.md)。 有关将现有视图转换为工作簿的详细信息，请参阅[Azure Monitor 查看设计器到工作簿过渡指南](view-designer-conversion-overview.md)"。
+ 
+
 
 有关视图设计器的详细信息，请参阅：
 
@@ -32,7 +34,7 @@ ms.locfileid: "86505084"
 
 使用视图设计器创建的视图所包含的元素在下表中进行了说明：
 
-| 组成部分 | 说明 |
+| 部件 | 描述 |
 |:--- |:--- |
 | 磁贴 | 显示在 Azure Monitor“概述”**** 页上。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
@@ -49,7 +51,7 @@ ms.locfileid: "86505084"
 
 下表描述了这些选项：
 
-| 选项 | 说明 |
+| 选项 | 描述 |
 |:--|:--|
 | 刷新   | 使用最新数据刷新视图。 | 
 | 日志      | 打开[Log Analytics](../log-query/log-query-overview.md)用日志查询分析数据。 |
@@ -95,7 +97,7 @@ ms.locfileid: "86505084"
 
 ![编辑菜单](media/view-designer/edit-menu.png)
 
-| 选项 | 说明 |
+| 选项 | 描述 |
 |:--|:--|
 | 保存        | 保存所做的更改并关闭视图。 |
 | 取消      | 放弃所做的更改并关闭视图。 |

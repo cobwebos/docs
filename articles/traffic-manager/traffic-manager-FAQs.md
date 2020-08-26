@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a3293cac15636ddf29df24cc1eff471aee25ec1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416998"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926529"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -63,7 +64,7 @@ ms.locfileid: "84416998"
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 
 会，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，在执行地理、性能和子网路由方法的查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
-具体而言， [RFC 7871 – Dns 查询中的客户端子网](https://tools.ietf.org/html/rfc7871)，提供[dns （EDNS0）的扩展机制](https://tools.ietf.org/html/rfc2671)，可以从支持该机制的解析程序传递客户端子网地址。
+具体而言， [RFC 7871 – Dns 查询中的客户端子网](https://tools.ietf.org/html/rfc7871)，用于[为 dns (EDNS0) 提供扩展机制](https://tools.ietf.org/html/rfc2671)，该机制可通过支持的解析程序传递客户端子网地址。
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>什么是 DNS TTL，它如何影响我的用户？
 
@@ -305,7 +306,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure Resource Manager 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint)或[Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)添加其他订阅中的终结点。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可以使用 azure [RBAC)  (基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)授予这些权限。 可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint)或[Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)添加其他订阅中的终结点。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 

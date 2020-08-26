@@ -4,15 +4,15 @@ description: 在 Azure 市场中为虚拟硬盘 (VHD) 生成共享访问签名 (
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
-ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 07/29/2020
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536141"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538925"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
@@ -31,17 +31,15 @@ ms.locfileid: "86536141"
 
 有两个用于创建 SAS 地址 (URL) 的常用工具：
 
-* Microsoft 存储资源管理器 – 适用于 Windows、macOS 和 Linux 的图形工具。
+* **Microsoft Azure 存储资源管理器**– Azure 门户中可用的图形工具。
 * Microsoft Azure CLI – 建议用于非 Windows 操作系统，以及自动化或连续集成环境。
 
-### <a name="use-microsoft-storage-explorer"></a>使用 Microsoft 存储资源管理器
+### <a name="use-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 
-1. 下载并安装 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
-2. 打开资源管理器，然后在左侧菜单中选择“添加帐户”。 此时会显示“连接到 Azure 存储”对话框。
-3. 选择“添加 Azure 帐户”，然后选择“登录”。 完成所需步骤以登录 Azure 帐户。
-4. 在左侧的“资源管理器”窗格中，转到“存储帐户”并展开此节点。 
-5. 右键单击你的 VHD，然后选择“获取共享访问签名”。
-6. 此时会显示“共享访问签名”对话框。 完成以下字段：
+1. 在 Azure 门户中转到你的存储帐户。
+2. 在左侧的 "资源管理器" 窗格中，打开**存储资源管理器**（预览）工具。
+3. 右键单击 VHD，然后选择 "**获取共享访问签名**"。
+4. 此时会显示“共享访问签名”对话框。 完成以下字段：
 
     * 开始时间 – VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
     * 过期时间 – VHD 访问权限的过期日期。 请提供自当前日期开始算起的至少三周后的日期。
@@ -50,20 +48,11 @@ ms.locfileid: "86536141"
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="演示“共享访问签名”对话框":::
 
-7. 若要为此 VHD 创建关联 SAS URI，请选择“创建”。 该对话框会刷新并显示有关此操作的详细信息。
-8. 复制“URL”，并将其保存到位于安全位置的某个文本文件。
+5. 若要为此 VHD 创建关联 SAS URI，请选择“创建”。 该对话框会刷新并显示有关此操作的详细信息。
+6. 复制“URL”，并将其保存到位于安全位置的某个文本文件。
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="演示共享访问签名详细信息框":::
-
-    此生成的 SAS URL 适用于容器级访问权限。 若要使它具体化，请编辑文本文件以添加 VHD 名称（下一步）。
-
-9. 在 SAS URI（包括正斜杠）中的 vhds 字符串后面插入 VHD 名称。 最终 SAS URI 应如下所示：
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>` 例如，如果 VDH 名为 `TestRGVM2.vhd`，则生成的 SAS URI 将是：
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. 对要发布的计划中的每个 VHD 重复这些步骤。
+7. 对要发布的计划中的每个 VHD 重复这些步骤。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 

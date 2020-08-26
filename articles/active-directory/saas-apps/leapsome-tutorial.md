@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Leapsome 集成 | Microsoft Docs
 description: 了解如何配置 Azure Active Directory 和 Leapsome 之间的单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cb523e97-add8-4289-b106-927bf1a02188
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28b95e779e2b814b0ae91059c3edd12644d7c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c58c9febcbd8c1007938b16545337f07f1a0da63
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75430941"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Leapsome 的集成
 

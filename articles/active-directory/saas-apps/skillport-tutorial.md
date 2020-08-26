@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Skillport 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Skillport 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cceb0a98cc35a41d1d46b798c9caf08fae2e3748
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090573"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>教程：Azure Active Directory 与 Skillport 的集成
 
@@ -139,7 +135,7 @@ ms.locfileid: "67090573"
 
 ### <a name="configure-skillport-single-sign-on"></a>配置 Skillport 单一登录
 
-若要在 Skillport 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Skillport 支持团队](https://www.skillsoft.com/contact.asp) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Skillport 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Skillport 支持团队](https://www.skillsoft.com/about/contact-us) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -194,7 +190,7 @@ ms.locfileid: "67090573"
 
 ### <a name="create-skillport-test-user"></a>创建 Skillport 测试用户
 
-为创建 Skillport 测试用户，需联系 [Skillport 支持团队](https://www.skillsoft.com/contact.asp)，他们会根据最终用户的需求提供多种业务方案。 并在与用户进行讨论后对其进行配置。
+为创建 Skillport 测试用户，需联系 [Skillport 支持团队](https://www.skillsoft.com/about/contact-us)，他们会根据最终用户的需求提供多种业务方案。 并在与用户进行讨论后对其进行配置。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

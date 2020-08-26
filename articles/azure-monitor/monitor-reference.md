@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505714"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080858"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -147,9 +147,9 @@ ms.locfileid: "86505714"
 |零售搜索 - 通过必应 | 否 | 否 | 否 |  |
 |搜索 | 是 | 是 | 否 |  |
 |服务总线 | 是 | 是 | 否 |  |
-|Service Fabric | No | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
+|Service Fabric | 否 | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
 |注册门户 | 否 | 否 | 否 |  |
-|Site Recovery | 否 | 是 | 否 |  |
+|Site Recovery | 否 | “是” | 否 |  |
 |Spring Cloud 服务 | 否 | 否 | 否 |  |
 |SQL 数据仓库 | 是 | 是 | 否 |  |
 |SQL 数据库 | 是 | 是 | 否 |  |
@@ -166,7 +166,7 @@ ms.locfileid: "86505714"
 |虚拟机规模集 | 否 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
 |虚拟机 | 是 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
 |虚拟网络 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
-|虚拟网络 - NSG 流日志 | No | 是 | 否 |  |
+|虚拟网络 - NSG 流日志 | 否 | 是 | 否 |  |
 |VPN 网关 | 是 | 是 | 否 |  |
 |Windows 虚拟桌面 | 否 | 否 | 否 |  |
 
@@ -176,7 +176,7 @@ ms.locfileid: "86505714"
 
 | 产品/服务 | 说明 |
 |:---|:---|
-| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
+| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/update-management/update-mgmt-overview.md)。 |
 | [Azure 信息保护](/azure/information-protection/) | 对文档和电子邮件进行分类和选择性保护。 请参阅 [Azure 信息保护的中央报告](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
 | [Azure 安全中心](../security-center/index.yml) | 收集和分析安全事件并执行威胁分析。 请参阅 [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](../sentinel/index.yml) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云轨迹。 请参阅[连接数据源](../sentinel/connect-data-sources.md)。 |
@@ -220,7 +220,7 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 | 资源 | 方法 |
 |:---|:---|
 | 应用程序 | 使用 Application Insights 监视 Azure 以外的 web 应用程序。 请参阅[什么是 Application Insights？](./app/app-insights-overview.md)。 |
-| 虚拟机 | 使用 Log Analytics 代理从其他云环境中或本地的虚拟机的来宾操作系统收集数据。 请参阅[使用 Log Analytics 代理收集日志数据](platform/log-analytics-agent.md)。 |
+| 虚拟机 | 使用代理从其他云环境或本地的虚拟机的来宾操作系统中收集数据。 请参阅[Azure Monitor 代理概述](platform/agents-overview.md)。 |
 | REST API 客户端 | 可使用单独的 API 将数据从任何 REST API 客户端写入 Azure Monitor 日志和指标。 请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](platform/data-collector-api.md)，以及[使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](platform/metrics-store-custom-rest-api.md)。 |
 
 

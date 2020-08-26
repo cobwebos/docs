@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743569"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234765"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>排查常见的路由问题
 
@@ -29,17 +29,17 @@ ms.locfileid: "84743569"
 
 - 向后端发送的常规请求无需通过前门就会成功，但通过前门会导致503错误响应。
 
-- 在几秒钟后，前门出现故障（通常在30秒后）
+- 前盖中的故障显示 (几秒钟后，通常在30秒后) 
 
 ### <a name="cause"></a>原因
 
-当后端超过超时配置（默认为30秒）后，若要接收来自前门的请求或超出此超时值以将响应发送到来自前门的请求，则会出现此症状。 
+当后端超过超时配置时，会发生此症状 (默认值为30秒) 以接收来自前门的请求，或者，如果超过此超时值，则将响应发送到来自前门的请求。 
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
-- 直接将请求发送到后端（无需通过前门），并查看后端响应所需的正常时间。
+- 直接将请求发送到后端 (无需通过前门) ，并查看后端响应所需的正常时间。
 - 通过前门发送请求，并查看是否看到了503响应。 如果不是，则这可能不是超时问题。 请联系支持人员。
-- 如果通过前门导致错误响应代码为503，则配置前门的 sendReceiveTimeout 字段，将默认超时值扩展到4分钟（240秒）。 该设置位于下 `backendPoolSettings` ，并且将调用 `sendRecvTimeoutSeconds` 。 
+- 如果通过前门导致错误响应代码为503，则配置前门的 sendReceiveTimeout 字段，将默认超时时间)  (240 秒内扩展到4分钟。 该设置位于下 `backendPoolSettings` ，并且将调用 `sendRecvTimeoutSeconds` 。 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>发送到自定义域的请求将返回400状态代码
 
@@ -80,7 +80,7 @@ ms.locfileid: "84743569"
 有多个可能的原因会导致此症状：
 
 - 后端不是面向公众的后端，并且在前门中不可见。
-- 后端配置错误，这会导致前门发送错误的请求（即，后端仅接受 HTTP，但你未被取消选中允许使用 HTTPS，因此前门正在尝试转发 HTTPS 请求）。
+- 后端配置错误，这会导致前门发送错误的请求 (也就是说，后端仅接受 HTTP，但未被取消选中允许使用 HTTPS，因此前门尝试将 HTTPS 请求转发) 。
 - 后端拒绝了连同请求一起转发到后端的主机标头。
 - 后端的配置尚未完全部署。
 
@@ -98,11 +98,11 @@ ms.locfileid: "84743569"
 
 
 3. 检查路由规则设置
-    - 导航到应该从相关前端主机名路由到后端池的路由规则。 确保接受的协议已正确配置，否则，请确保 Front Door 在转发请求时使用的协议已正确配置。 "_接受的协议_" 字段确定前门应接受的请求，_转发协议_确定应该使用哪种协议前门将请求转发到后端。
+    - 导航到应该从相关前端主机名路由到后端池的路由规则。 确保接受的协议已正确配置，否则，请确保 Front Door 在转发请求时使用的协议已正确配置。 " _接受的协议_ " 字段确定前门应接受的请求， _转发协议_ 确定应该使用哪种协议前门将请求转发到后端。
          - 例如，如果后端仅接受 HTTP 请求，则以下配置有效：
             - 接受的协议是 HTTP 和 HTTPS。__ 转发协议是 HTTP。__ 匹配请求不起作用，因为 HTTPS 是允许的协议，如果请求作为 HTTPS 传入，则 Front Door 会尝试使用 HTTPS 将其转发。
 
-            - 接受的协议是 HTTP。__ 转发协议是匹配请求或 HTTPS。__
+            - 接受的协议是 HTTP。__ _转发协议_ 要么是匹配请求，要么是 HTTP。
 
     - “URL 重写”默认已禁用。仅当你要缩小想要提供的后端托管资源的范围时，才使用此字段。__ 禁用时，Front Door 会转发它收到的相同请求路径。 有可能此字段配置不当，而 Front Door 从不可用的后端请求资源，因此返回了 HTTP 404 状态代码。
 

@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82203245"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
@@ -29,20 +29,20 @@ ms.locfileid: "82203245"
 
 ## <a name="prerequisites"></a>先决条件
 
-请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>创建 API
 
-1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”  。
-2. 在左侧菜单中，选择“+ 添加 API”。 
-3. 从列表中选择“空白 API”。   
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”。
+2. 在左侧菜单中，选择“+ 添加 API”。
+3. 从列表中选择“空白 API”。  
     空白 API![](media/add-api-manually/blank-api.png)  
 4. 输入 API 的设置。 在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
-5. 选择“创建”  。
+5. 选择“创建” 。
 
-此时，API 管理中没有任何操作映射到后端 API 中的操作。 如果调用通过后端（而不是通过 API 管理）公开的操作，则会收到 404  错误。
+此时，API 管理中没有任何操作映射到后端 API 中的操作。 如果调用通过后端（而不是通过 API 管理）公开的操作，则会收到 404 错误。
 
 >[!NOTE] 
 > 默认情况下，在添加某个 API 时，除非已将某些操作列入允许列表，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要将后端服务的某个操作列入允许列表，请创建一个映射到后端操作的 APIM 操作。
@@ -54,18 +54,18 @@ ms.locfileid: "82203245"
 ### <a name="add-an-operation"></a>添加操作
 
 1. 选择上一步中创建的 API。
-2. 单击“+ 添加操作”。 
-3. 在“URL”中，选择“GET”，并在资源中输入“/get”。   
-4. 输入“FetchData”作为“显示名称”。  
-5. 选择“保存”。 
+2. 单击“+ 添加操作”。
+3. 在“URL”中，选择“GET”，并在资源中输入“/get”。 
+4. 输入“FetchData”作为“显示名称”。
+5. 选择“保存” 。
 
 ### <a name="test-an-operation"></a>测试操作
 
 在 Azure 门户中测试操作。 或者，可以在**开发人员门户**中测试操作。
 
-1. 选择“测试”选项卡。 
-2. 选择“FetchData”。 
-3. 按“发送”。 
+1. 选择“测试”选项卡。
+2. 选择“FetchData”。
+3. 按“发送”。
 
 随后将显示“http://httpbin.org/get”操作生成的响应。 若要转换操作，请参阅[转换和保护 API](transform-api.md)。
 
@@ -76,18 +76,18 @@ ms.locfileid: "82203245"
 ### <a name="add-the-operation"></a>添加操作
 
 1. 选择上一步中创建的 API。
-2. 单击“+ 添加操作”。 
-3. 在“URL”中，选择“GET”，并在资源中输入“/status/{code}”。    （可选）可以提供与此参数关联的某些信息。 例如，为“类型”输入“数字”，为“值”输入“200”（默认值）。    
-4. 输入“GetStatus”作为“显示名称”。 
-5. 选择“保存”。 
+2. 单击“+ 添加操作”。
+3. 在“URL”中，选择“GET”，并在资源中输入“/status/{code}”。  （可选）可以提供与此参数关联的某些信息。 例如，为“类型”输入“数字”，为“值”输入“200”（默认值）。
+4. 输入“GetStatus”作为“显示名称”。
+5. 选择“保存” 。
 
 ### <a name="test-the-operation"></a>测试操作 
 
 在 Azure 门户中测试操作。  或者，可以在**开发人员门户**中测试操作。
 
-1. 选择“测试”选项卡。 
-2. 选择“GetStatus”。  默认情况下，代码值设置为“200”。  可以更改默认值以测试其他值。 例如，键入“418”。 
-3. 按“发送”。 
+1. 选择“测试”选项卡。
+2. 选择“GetStatus”。 默认情况下，代码值设置为“200”。 可以更改默认值以测试其他值。 例如，键入“418”。
+3. 按“发送”。
 
     随后将显示“http://httpbin.org/status/200”操作生成的响应。 若要转换操作，请参阅[转换和保护 API](transform-api.md)。
 

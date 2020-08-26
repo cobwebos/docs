@@ -2,21 +2,21 @@
 title: 使用 Powershell 在 Application Insights 中设置警报 | Microsoft 文档
 description: 自动配置 Application Insights，以获取有关指标更改的电子邮件。
 ms.topic: conceptual
-ms.date: 10/31/2016
-ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/23/2016
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516951"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322459"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自动配置[警报](../../azure-monitor/platform/alerts-log.md)。
+可以在 [Application Insights](./app-insights-overview.md) 中自动配置[警报](../platform/alerts-log.md)。
 
-此外，可以[将 webhook 设置为自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。
+此外，可以[将 webhook 设置为自动执行对警报的响应](../platform/alerts-webhooks.md)。
 
 > [!NOTE]
 > 如果要同时创建资源和警报，请考虑[使用 Azure 资源管理器模板](powershell.md)。
@@ -30,7 +30,7 @@ ms.locfileid: "86516951"
 * 使用它来安装 Microsoft Azure Powershell
 
 ## <a name="connect-to-azure"></a>连接到 Azure
-启动 Azure PowerShell 并[连接到订阅](/powershell/azure/overview)：
+启动 Azure PowerShell 并[连接到订阅](/powershell/azure/)：
 
 ```azurepowershell
 Add-AzAccount
@@ -51,7 +51,7 @@ Get-AzAlertRule -ResourceGroup "Fabrikam" `
 Add-AzMetricAlertRule -Name "{ALERT NAME}" `
   -Description "{TEXT}" `
   -ResourceGroup "{GROUP NAME}" `
-  -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
+  -TargetResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
   -MetricName "{METRIC NAME}" `
   -Operator GreaterThan `
   -Threshold {NUMBER}  `
@@ -71,7 +71,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 ```azurepowershell
 Add-AzMetricAlertRule -Name "slow responses" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "request.duration" `
   -Operator GreaterThan `
   -Threshold 1 `
@@ -82,13 +82,13 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>示例 2
-我在应用程序中使用 [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) 报告名为“salesPerHour”的指标。 如果“salesPerHour”低于 100（平均值超出 24 小时），会向我的同事发送电子邮件。
+我在应用程序中使用 [TrackMetric()](./api-custom-events-metrics.md#trackmetric) 报告名为“salesPerHour”的指标。 如果“salesPerHour”低于 100（平均值超出 24 小时），会向我的同事发送电子邮件。
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
   -Description "slow sales alert" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "salesPerHour" `
   -Operator LessThan `
   -Threshold 100 `
@@ -98,7 +98,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-同一规则可用于通过使用另一跟踪调用（如 TrackEvent 或 trackPageView）的[测量参数](../../azure-monitor/app/api-custom-events-metrics.md#properties)报告的指标。
+同一规则可用于通过使用另一跟踪调用（如 TrackEvent 或 trackPageView）的[测量参数](./api-custom-events-metrics.md#properties)报告的指标。
 
 ## <a name="metric-names"></a>指标名称
 | 指标名称 | 屏幕名称 | 说明 |
@@ -124,22 +124,23 @@ Add-AzMetricAlertRule -Name "poor sales" `
 | `request.rate` |请求速率 |每秒应用程序所有请求的速率。 |
 | `requestFailed.count` |失败的请求 |响应代码中生成的 HTTP 请求计数 >= 400 |
 | `view.count` |页面视图 |网页的客户端用户请求的计数。 综合流量已筛选掉。 |
-| {自定义指标名称} |{指标名称} |由 [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](../../azure-monitor/app/api-custom-events-metrics.md#properties)中的指标值。 |
+| {自定义指标名称} |{指标名称} |由 [TrackMetric](./api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](./api-custom-events-metrics.md#properties)中的指标值。 |
 
 指标由不同的遥测模块发送：
 
 | 指标组 | 收集器模块 |
 | --- | --- |
-| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[浏览器 JavaScript](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[“性能”](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[依赖项](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| request、<br/>requestFailed |[服务器请求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[浏览器 JavaScript](./javascript.md) |
+| performanceCounter |[“性能”](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[依赖项](./configuration-with-applicationinsights-config.md) |
+| request、<br/>requestFailed |[服务器请求](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhook
-可[自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。 引发警报时，Azure 将调用所选的 Web 地址。
+可[自动执行对警报的响应](../platform/alerts-webhooks.md)。 引发警报时，Azure 将调用所选的 Web 地址。
 
 ## <a name="see-also"></a>另请参阅
 * [用于配置 Application Insights 的脚本](./create-new-resource.md#creating-a-resource-automatically)
 * [从模板创建 Application Insights 和 Web 测试资源](powershell.md)
 * [自动执行 Microsoft Azure 诊断到 Application Insights 的耦合](powershell-azure-diagnostics.md)
-* [自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)
+* [自动执行对警报的响应](../platform/alerts-webhooks.md)
+

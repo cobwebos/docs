@@ -3,13 +3,15 @@ title: Azure Functions SignalR 服务输出绑定
 description: 了解如何从 Azure Functions 发送 SignalR 服务消息。
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b401ff20b553629341c5190deb4cfc54c474d789
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77530245"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212576"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
 
@@ -483,7 +485,7 @@ public static Task RemoveFromGroup(
 
 以下示例将用户添加到组。
 
-示例*function.js*
+示例 *function.js*
 
 ```json
 {
@@ -521,7 +523,7 @@ public static Task Run(
 
 以下示例从组中删除用户。
 
-示例*function.js*
+示例 *function.js*
 
 ```json
 {
@@ -564,7 +566,7 @@ public static Task Run(
 
 以下示例将用户添加到组。
 
-示例*function.js*
+示例 *function.js*
 
 ```json
 {
@@ -592,7 +594,7 @@ module.exports = async function (context, req) {
 
 以下示例从组中删除用户。
 
-示例*function.js*
+示例 *function.js*
 
 ```json
 {
@@ -622,7 +624,7 @@ module.exports = async function (context, req) {
 
 以下示例将用户添加到组。
 
-示例*function.js*
+示例 *function.js*
 
 ```json
 {
@@ -649,7 +651,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 以下示例从组中删除用户。
 
-示例*function.js*
+示例 *function.js*
 
 ```json
 {
@@ -720,7 +722,7 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
@@ -728,11 +730,11 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|type| 不适用 | 必须设置为 `signalRConnectionInfo`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
-|**userId**|**Id**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
+|**userId**|**UserId**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
 ### <a name="signalr"></a>SignalR
@@ -741,7 +743,7 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `signalR`。|
+|type| 不适用 | 必须设置为 `signalR`。|
 |**direction**| 不适用 | 必须设置为 `out`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
@@ -751,4 +753,4 @@ public SignalRGroupAction removeFromGroup(
 
 ## <a name="next-steps"></a>后续步骤
 
-- [返回服务终结点 URL 和访问令牌（输入绑定）](./functions-bindings-signalr-service-input.md)
+- [返回服务终结点 URL 并 (输入绑定中的访问令牌) ](./functions-bindings-signalr-service-input.md)

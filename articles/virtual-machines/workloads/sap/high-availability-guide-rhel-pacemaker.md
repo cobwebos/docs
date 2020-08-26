@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85366810"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800256"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -120,12 +120,16 @@ ms.locfileid: "85366810"
    </code></pre>
 
    > [!IMPORTANT]
-   > 如果需要使用自定义角色更新 Azure 隔离代理，请确保更新自定义角色来将关闭操作包含在内。 有关详细信息，请参阅[为隔离代理创建自定义角色](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)。  
+   > 如果需要使用自定义角色更新 Azure 隔离代理，请确保更新自定义角色来将关闭操作包含在内。 有关详细信息，请参阅[为隔离代理创建自定义角色](#1-create-a-custom-role-for-the-fence-agent)。  
 
 1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
-   请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。
+   请替换以下命令中的 IP 地址和主机名。  
+
+   >[!IMPORTANT]
+   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用并且可能导致群集故障转移延迟，则群集通信将失败。
+   > 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。  
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -220,7 +224,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（关闭）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 来创建它
+默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（关闭）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](../../../role-based-access-control/role-assignments-powershell.md) 或 [Azure CLI](../../../role-based-access-control/role-assignments-cli.md) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
@@ -291,7 +295,7 @@ op monitor interval=3600
 </code></pre>
 
 > [!TIP]
->Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中所述的公共终结点建立出站连接并提供可能的解决方案。  
+>Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)中所述的公共终结点建立出站连接并提供可能的解决方案。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 ITRP 集成 | Microsoft Docs
 description: 本教程介绍如何在 Azure Active Directory 与 ITRP 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261187"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -179,7 +175,7 @@ ms.locfileid: "81261187"
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>   。 （例如：BrittaSimon@contoso.com。）
+    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 

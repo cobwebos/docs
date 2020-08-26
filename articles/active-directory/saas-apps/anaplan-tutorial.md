@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Anaplan 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Anaplan 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4a9c2914-6c8c-4a88-93e3-3753afb40e6b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe33dadae216e6f4b19033b6ac487df61839778c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f565621514996a45a6ae705de8b9f1129a27263e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73153003"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>教程：Azure Active Directory 与 Anaplan 集成
 

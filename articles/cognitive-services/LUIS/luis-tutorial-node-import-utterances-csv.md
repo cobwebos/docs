@@ -5,17 +5,18 @@ description: 了解如何使用 LUIS Authoring API 以编程方式从 CSV 格式
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3df1ccadb69f02272c44a0ba574805c816151dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520934"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以编程方式生成 LUIS 应用
 
@@ -26,12 +27,12 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
 ## <a name="prerequisites"></a>必备条件
 
 * 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-how-to-azure-subscription.md#authoring-key)。 使用此密钥调用 Authoring API。
-* 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 * 本文从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
 * 使用 NPM 安装最新的 Node.js。 从[此处](https://nodejs.org/en/download/)下载它。
 * **[建议]** 用于 IntelliSense 和调试的 Visual Studio Code 可从[此处](https://code.visualstudio.com/)免费下载。
 
-本文中的所有代码都在[Azure 示例语言理解 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)中提供。
+本文中的所有代码都可在 [Azure-Samples 语言理解 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)中找到。
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>将预先存在的数据映射到意向和实体
 即使系统在创建时未考虑使用 LUIS，如果它包含映射到用户不同操作的文本数据，也许能够从现有用户输入类别映射到 LUIS 中的意向。 如果可标识用户所说的重要单词或短语，这些单词可能会映射到实体。
@@ -196,4 +197,4 @@ upload done
 - [创建应用](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [添加意向](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
 - [添加实体](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e)
-- [添加最谈话](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)
+- [添加陈述](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

@@ -1,18 +1,19 @@
 ---
 title: 在 Azure 表存储设计中建模关系 |Microsoft Docs
-description: 了解设计桌面存储解决方案时的建模流程。
+description: 了解设计 Azure 表存储解决方案时的建模过程。 阅读有关一对多、一对一和继承关系的信息。
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457557"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271186"
 ---
 # <a name="modeling-relationships"></a>为关系建模
 本文讨论可帮助设计 Azure 表存储解决方案的建模流程。
@@ -35,7 +36,7 @@ ms.locfileid: "75457557"
 
 ![员工实体](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
 
-有关详细信息，请参阅本指南后面的[反规范化模式](table-storage-design-patterns.md#denormalization-pattern)。  
+有关详细信息，请参阅本指南后面的 [反规范化模式](table-storage-design-patterns.md#denormalization-pattern) 。  
 
 下表总结了上述每种方法对于存储具有一对多关系的员工和部门的优缺点。 还应考虑希望执行各种操作的频率：如果设计中包含的代价高昂的操作很少发生，则这可能是可以接受的。  
 
@@ -50,7 +51,7 @@ ms.locfileid: "75457557"
 <td>
 <ul>
 <li>可以使用单个操作来更新部门实体。</li>
-<li>如果需要在更新/插入/删除员工实体时修改部门实体，则可以使用 EGT 来保持一致性。 例如，如果维护每个部门的部门员工计数。</li>
+<li>如果需要在更新/插入/删除员工实体时修改部门实体，则可以使用实体组事务 * (EGT) 来保持一致性。 例如，如果维护每个部门的部门员工计数。</li>
 </ul>
 </td>
 <td>
@@ -92,14 +93,17 @@ ms.locfileid: "75457557"
 </tr>
 </table>
 
+* 有关详细信息，请参阅 [实体组事务](table-storage-design.md#entity-group-transactions)  
+
+
 如何在这些选项中进行选择，以及哪些优点和缺点最重要，取决于特定应用程序方案。 例如，修改部门实体的频率；所有员工查询是否都需要附加部门信息；有多接近对分区或存储帐户的伸缩性限制？  
 
 ## <a name="one-to-one-relationships"></a>一对一关系
-域模型可能包括实体之间的一对一关系。 如果需要在表服务中实现一对一关系，还必须选择在需要检索两个相关的实体时如何链接这两个实体。 此链接可为隐式或显式，前者基于键值中的约定，后者在每个实体中按 **PartitionKey** and **RowKey** 值的形式存储指向其相关实体的链接。 若要了解是否应在同一分区存储相关实体，请参阅[一对多关系](#one-to-many-relationships)部分。  
+域模型可能包括实体之间的一对一关系。 如果需要在表服务中实现一对一关系，还必须选择在需要检索两个相关的实体时如何链接这两个实体。 此链接可为隐式或显式，前者基于键值中的约定，后者在每个实体中按 **PartitionKey** and **RowKey** 值的形式存储指向其相关实体的链接。 有关是否应将相关实体存储在同一个分区中的讨论，请参阅[一对多关系](#one-to-many-relationships)这部分。  
 
 还有可能引导在表服务中实现一对一关系的实现注意事项：  
 
-* 处理大型实体，详细信息请参阅[大实体模式](table-storage-design-patterns.md#large-entities-pattern)。  
+* 处理大型实体 (有关详细信息，请参阅 [大型实体模式](table-storage-design-patterns.md#large-entities-pattern)) 。  
 * 实施访问控制（有关详细信息），请参阅“使用共享访问签名控制访问权限”。  
 
 ## <a name="join-in-the-client"></a>在客户端中联接

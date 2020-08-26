@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073685"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor 中的代理数据源
 Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  来自代理的数据存储为包含记录集的[日志数据](data-platform-logs.md)。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
@@ -46,7 +47,7 @@ Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  �
 ## <a name="data-collection"></a>数据收集
 数据源配置会在几分钟内传送到与 Azure Monitor 直接连接的各个代理。  指定的数据从代理收集，并按特定于每个数据源的时间间隔直接传送到 Azure Monitor。  请参阅每个数据源的文档以了解详情。
 
-对于已连接管理组中的 System Center Operations Manager 代理，数据源配置默认以每 5 分钟的间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由管理服务器转发到 Azure Monitor；或者不通过管理服务器，由代理将数据发送到 Azure Monitor。 有关详细信息，请参阅 [Azure 中的监视解决方案的数据收集详细信息](../insights/solutions-inventory.md)。  可以在[配置与 System Center Operations Manager 的集成](om-agents.md)中阅读有关连接 Operations Manager 和 Azure Monitor 以及修改配置传送频率的详细信息。
+对于已连接管理组中的 System Center Operations Manager 代理，数据源配置默认以每 5 分钟的间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由管理服务器转发到 Azure Monitor；或者不通过管理服务器，由代理将数据发送到 Azure Monitor。 有关详细信息，请参阅 [Azure 中的监视解决方案的数据收集详细信息](../monitor-reference.md)。  可以在[配置与 System Center Operations Manager 的集成](om-agents.md)中阅读有关连接 Operations Manager 和 Azure Monitor 以及修改配置传送频率的详细信息。
 
 如果代理无法连接到 Azure Monitor 或 Operations Manager，将继续收集在建立连接时传送的数据。  如果数据量达到客户端的最大缓存大小，或者如果代理无法在 24 小时内建立连接，则可能会丢失数据。
 

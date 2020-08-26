@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: 698220a7f81dc5fb9d70d2aa65e96dfa199af444
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80063847"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185241"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MariaDB 服务器
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for MariaDB 服务器
 
 Azure Database for MariaDB 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MariaDB 数据库。 本快速入门介绍了如何使用 Azure 门户在大约五分钟内创建 Azure Database for MariaDB 服务器。  
 

@@ -3,23 +3,28 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252719"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810110"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
-本指南包含有关使用 JavaScript 编写 Azure Functions 的复杂性的信息。
+本指南包含的详细信息可帮助你成功使用 JavaScript 开发 Azure Functions。
 
-JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
+作为 Express.js、Node.js 或 JavaScript 开发人员，如果不熟悉 Azure Functions，请首先阅读以下文章之一：
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 完成有关使用 [Visual Studio Code](functions-create-first-function-vs-code.md) 或[门户](functions-create-first-azure-function.md)创建第一个函数的 Functions 快速入门。
+| 入门 | 概念| 指导式学习 |
+| -- | -- | -- | 
+| <ul><li>[使用 Visual Studio CodeNode.js 函数](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[在终端/命令提示符下Node.js 函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[重构 Node.js 和 Express Api 到无服务器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-本文也支持 [TypeScript 应用开发](#typescript)。
+## <a name="javascript-function-basics"></a>JavaScript 函数基础知识
+
+JavaScript ( # A0) 函数是在 `function`) [上的 function.js中配置](functions-triggers-bindings.md)触发 (触发器时执行的已导出。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -118,7 +123,7 @@ module.exports = async function (context, req) {
    };
    ```
    
- - **使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 对象以输入的形式。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
+ - **使用 JavaScript [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) 对象以输入的形式。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
  
    ```javascript
    module.exports = async function(context) { 
@@ -559,11 +564,11 @@ module.exports = myObj;
 
 使用 `--inspect` 参数启动时，Node.js 进程会在指定端口上侦听调试客户端。 在 Azure Functions 2.x 中，可以指定要传递到运行代码的 Node.js 进程中的参数，方法是添加环境变量或应用设置 `languageWorkers:node:arguments = <args>`。 
 
-若要在本地进行调试，请在 [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) 文件的 `Values` 下添加 `"languageWorkers:node:arguments": "--inspect=5858"`，然后将调试程序附加到端口 5858。
+若要在本地进行调试，请在 [local.settings.json](./functions-run-local.md#local-settings-file) 文件的 `Values` 下添加 `"languageWorkers:node:arguments": "--inspect=5858"`，然后将调试程序附加到端口 5858。
 
 使用 VS Code 进行调试时，系统会使用项目的 launch.json 文件中的 `port` 值自动添加 `--inspect` 参数。
 
-在版本 1.x 中，设置 `languageWorkers:node:arguments` 将无效。 可以在 Azure Functions Core Tools 中使用 [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) 参数来选择调试端口。
+在版本 1.x 中，设置 `languageWorkers:node:arguments` 将无效。 可以在 Azure Functions Core Tools 中使用 [`--nodeDebugPort`](./functions-run-local.md#start) 参数来选择调试端口。
 
 ## <a name="typescript"></a>TypeScript
 
@@ -632,7 +637,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>选择单 vCPU 应用服务计划
 
-创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单 vCPU VM 实例来手动横向扩展，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)。
+创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单 vCPU VM 实例来手动横向扩展，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json)。
 
 ### <a name="cold-start"></a>冷启动
 

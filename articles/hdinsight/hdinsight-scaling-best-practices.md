@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006444"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
 
 HDInsight 提供弹性，可让你选择纵向扩展和纵向缩减群集中的工作器节点数。 这种弹性允许你在若干小时后或者在周末收缩群集。 还可以在业务需求高峰期扩展群集。
 
-在定期批处理之前纵向扩展群集，使群集拥有足够的资源。  在完成处理并且用量下降后，可将 HDInsight 群集纵向缩减为使用更少的工作器节点。
+在定期批处理之前纵向扩展群集，使群集拥有足够的资源。   在完成处理并且用量下降后，可将 HDInsight 群集纵向缩减为使用更少的工作器节点。
 
 可以使用下述方法之一手动缩放群集。 你还可以使用自动[缩放](hdinsight-autoscale-clusters.md)选项来自动增加和减少以响应某些指标。
 
@@ -106,6 +106,14 @@ Microsoft 提供以下实用程序来缩放群集：
 * Kafka
 
     执行缩放操作后，应重新均衡分区副本。 有关详细信息，请参阅[通过 Apache Kafka on HDInsight 实现数据的高可用性](./kafka/apache-kafka-high-availability.md)文档。
+
+* Apache Hive LLAP
+
+    缩放到 `N` 辅助角色节点后，HDInsight 会自动设置以下配置并重新启动 Hive。
+
+  * 最大并发查询总数：`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive 的 LLAP 使用的节点数：`num_llap_nodes  = N`
+  * 用于运行 Hive LLAP 守护程序的节点数：`num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地纵向缩减群集
 

@@ -6,15 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057613"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042048"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授予创建 Azure Enterprise 订阅（预览版）所需的访问权限
 
-作为[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 的 Azure 客户，你可以授予其他用户或服务主体创建计费到你的帐户的订阅所需的权限。 本文介绍如何使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 共享创建订阅的功能，以及如何审核订阅创建。 必须在想要共享的帐户上具备所有者角色。
+作为[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 的 Azure 客户，你可以授予其他用户或服务主体创建计费到你的帐户的订阅所需的权限。 本文介绍如何使用 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)来共享创建订阅的能力，以及如何审核订阅创建。 必须在想要共享的帐户上具备所有者角色。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -123,7 +124,7 @@ ms.locfileid: "86057613"
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
-    运行以下命令，并将替换 ```<enrollmentAccountObjectId>``` 为 `name` 你在第一步中复制的 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 替换 ```<userObjectId>``` 为从第二步复制的对象 ID。
+    运行以下命令，将替换 ```<enrollmentAccountObjectId>``` 为 `name` 你在第一步中复制的， (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 替换 ```<userObjectId>``` 为从第二步复制的对象 ID。
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -157,7 +158,7 @@ ms.locfileid: "86057613"
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    运行以下[AzRoleAssignment](../../role-based-access-control/role-assignments-powershell.md)命令，并将替换为 ```<enrollmentAccountObjectId>``` `ObjectId` 第一步中收集的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 替换 ```<userObjectId>``` 为第二步中收集的对象 ID。
+    运行以下[AzRoleAssignment](../../role-based-access-control/role-assignments-powershell.md)命令，将替换 ```<enrollmentAccountObjectId>``` 为 `ObjectId`)  (第一步中收集的 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 替换 ```<userObjectId>``` 为第二步中收集的对象 ID。
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -165,7 +166,7 @@ ms.locfileid: "86057613"
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
-    运行以下[az role 赋值 create](../../role-based-access-control/role-assignments-cli.md)命令，并将替换 ```<enrollmentAccountObjectId>``` 为 `name` 你在第一步中复制的 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 替换 ```<userObjectId>``` 为第二步中收集的对象 ID。
+    运行以下[az role 赋值 create](../../role-based-access-control/role-assignments-cli.md)命令，并将替换 ```<enrollmentAccountObjectId>``` 为 `name` 你在第一步中复制的 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 替换 ```<userObjectId>``` 为第二步中收集的对象 ID。
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -179,7 +180,7 @@ ms.locfileid: "86057613"
 
 若要通过此 API 跟踪创建的订阅，请使用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs)。 目前不可以使用 PowerShell、CLI 或 Azure 门户跟踪订阅创建信息。
 
-1. Azure AD 租户的租户管理员可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，然后将一个“读者”角色分配给 `/providers/microsoft.insights/eventtypes/management` 范围内的审核用户。
+1. Azure AD 租户的租户管理员可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，然后将一个“读者”角色分配给 `/providers/microsoft.insights/eventtypes/management` 范围内的审核用户。 此访问权限可用于 "[读取](../../role-based-access-control/built-in-roles.md#reader)者" 角色、"[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)" 角色或[自定义角色](../../role-based-access-control/custom-roles.md)。
 1. 审核用户可以调用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs) 查看订阅创建活动。 示例：
 
     ```

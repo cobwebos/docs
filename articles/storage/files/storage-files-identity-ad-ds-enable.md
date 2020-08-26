@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510465"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535070"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -30,7 +30,7 @@ AzFilesHybrid PowerShell 模块中的 cmdlet 进行必要的修改，并为你�
 
 - [下载并解压缩 AzFilesHybrid 模块](https://github.com/Azure-Samples/azure-files-samples/releases)（GA 模块： v 为 0.2.0 +）
 - 使用有权在目标 AD 中创建服务登录帐户或计算机帐户的 AD DS 凭据在加入本地 AD DS 域的设备中安装和执行模块。
--  使用同步到 Azure AD 的本地 AD DS 凭据运行该脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 RBAC 角色权限。
+-  使用同步到 Azure AD 的本地 AD DS 凭据运行该脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 Azure 角色权限。
 
 ### <a name="run-join-azstorageaccountforauth"></a>运行 AzStorageAccountForAuth
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters
@@ -85,7 +85,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>检查环境
 
-首先，您必须检查您的环境的状态。 具体而言，必须检查是否安装了[Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) ，以及是否正在用管理员权限执行 shell。 然后检查是否安装了[Az 2.0 模块](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果不是，则安装它。 完成这些检查后，请检查您的 AD DS，查看是否存在已使用 SPN/UPN 创建的[计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)是否为 "cifs/您的存储帐户名称-web.config"。 如果该帐户不存在，请创建一个，如下一节中所述。
+首先，您必须检查您的环境的状态。 具体而言，必须检查是否安装了[Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) ，以及是否正在用管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查您的 AD DS，查看是否存在已使用 SPN/UPN 创建的[计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)是否为 "cifs/您的存储帐户名称-web.config"。 如果该帐户不存在，请创建一个，如下一节中所述。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>手动创建代表 AD 中的存储帐户的标识
 

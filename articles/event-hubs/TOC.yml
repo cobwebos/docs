@@ -75,7 +75,7 @@
     - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
       href: event-hubs-kafka-stream-analytics.md
     - name: 使用事件中心将数据流式传输到 Azure Databricks
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: 示例
   items:
@@ -124,6 +124,9 @@
           href: network-security.md
         - name: 内置安全控件
           href: event-hubs-security-controls.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: AMQP 1.0 协议指南
@@ -185,6 +188,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: 将 Apache Kafka Connect 与中心集成（预览版）
           href: event-hubs-kafka-connect-tutorial.md
+        - name: 将 Apache Kafka Connect（预览版）与 Debezium 集成
+          href: event-hubs-kafka-connect-debezium.md
         - name: 将 Akka Streams 连接到事件中心
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: 常见问题解答 - 用于 Kafka 的事件中心
@@ -196,18 +201,18 @@
         - name: 设置诊断日志
           href: event-hubs-diagnostic-logs.md
         - name: 使用事件中心流式传输 Azure 诊断数据
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: 自动缩放吞吐量单位
           href: event-hubs-auto-inflate.md
         - name: 事件中心管理库
           href: event-hubs-management-libraries.md
     - name: 安全
       items:
-        - name: 配置 IP 防火墙
+        - name: 允许从特定 IP 地址访问
           href: event-hubs-ip-filtering.md
-        - name: 配置虚拟网络服务终结点
+        - name: 允许从特定虚拟网络访问
           href: event-hubs-service-endpoints.md
-        - name: 配置专用终结点
+        - name: 允许通过专用终结点访问
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
@@ -289,6 +294,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: 配额
       href: event-hubs-quotas.md
+    - name: Apache Kafka 配置
+      href: apache-kafka-configurations.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

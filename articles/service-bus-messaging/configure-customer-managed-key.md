@@ -3,12 +3,12 @@ title: 配置自己的密钥以用于加密 Azure 服务总线静态数据
 description: 本文介绍了如何配置自己的密钥以用于加密 Azure 服务总线静态数据。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475979"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067233"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 服务总线静态数据
 Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 服务总线高级层依赖于 Azure 存储来存储数据，默认情况下，存储在 Azure 存储中的所有数据将使用 Microsoft 管理的密钥进行加密。 
@@ -21,30 +21,30 @@ Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客
 > [!NOTE]
 > 对于用于服务端加密的客户管理密钥，需要注意一些事项。 
 >   * [Azure 服务总线高级层](service-bus-premium-messaging.md)支持此功能。 不能为标准层服务总线命名空间启用此功能。
->   * 只能为新的或空的命名空间启用加密。 如果命名空间包含数据，则加密操作将会失败。
+>   * 只能为新的或空的命名空间启用加密。 如果命名空间包含任何队列或主题，则加密操作将失败。
 
 可以使用 Azure Key Vault 管理密钥并审核密钥使用情况。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 
 本文介绍了如何使用 Azure 门户配置包含客户管理的密钥的密钥保管库。 若要了解如何使用 Azure 门户创建 Key Vault，请参阅[快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密](../key-vault/secrets/quick-create-portal.md)。
 
 > [!IMPORTANT]
-> 为 Azure 服务总线使用客户管理的密钥需要为密钥保管库配置两个必需的属性。 它们具有以下特点：“软删除”和“不清除”。   在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
+> 为 Azure 服务总线使用客户管理的密钥需要为密钥保管库配置两个必需的属性。 它们具有以下特点：“软删除”和“不清除”。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
 
 ## <a name="enable-customer-managed-keys"></a>启用客户管理的密钥
 若要在 Azure 门户中启用客户管理的密钥，请执行以下步骤：
 
 1. 导航到你的服务总线高级层命名空间。
-2. 在你的服务总线命名空间的“设置”页上，选择“加密”。  
-3. 选择“客户管理的密钥加密(静态)”，如下图所示。 
+2. 在你的服务总线命名空间的“设置”页上，选择“加密”。
+3. 选择“客户管理的密钥加密(静态)”，如下图所示。
 
     ![启用客户管理的密钥](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>设置密钥保管库与密钥
 
-启用客户管理的密钥后，需要将客户管理的密钥关联到 Azure 服务总线命名空间。 服务总线仅支持 Azure Key Vault。 如果启用了上一部分所述的“使用客户管理的密钥进行加密”选项，则需要将密钥导入 Azure Key Vault。  此外，必须为密钥配置“软删除”和“不清除”。   可以使用 [PowerShell](../key-vault/general/soft-delete-powershell.md) 或 [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) 配置这些设置。
+启用客户管理的密钥后，需要将客户管理的密钥关联到 Azure 服务总线命名空间。 服务总线仅支持 Azure Key Vault。 如果启用了上一部分所述的“使用客户管理的密钥进行加密”选项，则需要将密钥导入 Azure Key Vault。 此外，必须为密钥配置“软删除”和“不清除”。 可以使用 [PowerShell](../key-vault/general/soft-delete-powershell.md) 或 [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) 配置这些设置。
 
-1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
+1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/general/about-keys-secrets-certificates.md)。
 1. 若要在创建保管库时启用“软删除”和“清除保护”，请使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令。
 
     ```azurecli-interactive
@@ -70,7 +70,7 @@ Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客
         > [!NOTE]
         > 最多可以添加 3 个密钥来实现冗余。 如果某个密钥已过期或不可访问，则会使用其他密钥进行加密。
         
-    1. 填写密钥详细信息，然后单击“选择”。  然后，便可以使用客户管理的密钥来加密命名空间中的静态数据。 
+    1. 填写密钥详细信息，然后单击“选择”。 然后，便可以使用客户管理的密钥来加密命名空间中的静态数据。 
 
 
     > [!IMPORTANT]
@@ -323,5 +323,3 @@ Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客
 请参阅以下文章：
 - [服务总线概述](service-bus-messaging-overview.md)
 - [Key Vault 概述](../key-vault/general/overview.md)
-
-

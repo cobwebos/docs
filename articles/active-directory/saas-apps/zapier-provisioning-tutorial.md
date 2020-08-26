@@ -2,28 +2,25 @@
 title: 教程：为 Zapier 配置自动用户预配 Azure Active Directory |Microsoft Docs
 description: 了解如何自动将用户 Azure AD 帐户预配到 Zapier 以及取消其预配。
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 66e224f9-2311-4564-bb84-99fce59a398f
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4091e4fd544dbc6450bc14bd0e0731c4d3024592
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a6b4698a873d6bdba0c4145b5bf7bb486b5e1c5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76992152"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546136"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>教程：为 Zapier 配置自动用户预配
 
-本教程介绍了需要在 Zapier 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Zapier](https://zapier.com/pricing) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Zapier 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [Zapier](https://zapier.com/pricing) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +29,7 @@ ms.locfileid: "76992152"
 > * 当用户不再需要访问权限时，删除 Zapier 中的用户
 > * 使用户属性在 Azure AD 和 Zapier 之间保持同步
 > * 在 Zapier 中预配组和组成员身份
-> * 单一登录到 Zapier （推荐）
+> * 单一登录到 Zapier (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,19 +42,19 @@ ms.locfileid: "76992152"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 与 Zapier 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+3. 确定要 [在 Azure AD 与 Zapier 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-zapier-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Zapier 以支持 Azure AD 的预配
+## <a name="step-2-configure-zapier-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Zapier 以支持 Azure AD 的预配
 
-1. 登录到[Zapier 管理控制台](https://zapier.com/app/login/)。 导航到租户 ID 下的 "**设置**"。
+1. 登录到 [Zapier 管理控制台](https://zapier.com/app/login/)。 导航到租户 ID 下的 " **设置** "。
 
     ![Zapier 管理控制台](media/zapier-provisioning-tutorial/admin.png)
 
-2. 在 "**公司设置**" 下，选择 "**用户预配**"。
+2. 在 " **公司设置**" 下，选择 " **用户预配**"。
 
     ![Zapier 添加 SCIM](media/zapier-provisioning-tutorial/user.png)
 
-3. 复制**SCIM 基 URL**和**SCIM 持有者令牌**。 这些值将分别在 Azure 门户中的 Zapier 应用程序的 "预配" 选项卡中输入到 "租户 URL" 和 "机密令牌" 字段中。
+3. 复制 **SCIM 基 URL** 和 **SCIM 持有者令牌**。 这些值将分别在 Azure 门户中的 Zapier 应用程序的 "预配" 选项卡中输入到 "租户 URL" 和 "机密令牌" 字段中。
 
     ![Zapier 创建令牌](media/zapier-provisioning-tutorial/token.png)
 
@@ -69,7 +66,7 @@ ms.locfileid: "76992152"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 Zapier 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 Zapier 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -90,13 +87,13 @@ ms.locfileid: "76992152"
 
 3. 选择“预配”选项卡。
 
-   ![预配选项卡](common/provisioning.png)
+   ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
    ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入你的 ZAPIER**租户 URL**和**机密令牌**。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Zapier。 如果连接失败，请确保 Zapier 帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入你的 ZAPIER **租户 URL** 和 **机密令牌**。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Zapier。 如果连接失败，请确保 Zapier 帐户具有管理员权限，然后重试。
 
    ![预配](./media/zapier-provisioning-tutorial/provisioning.png)
 
@@ -106,26 +103,26 @@ ms.locfileid: "76992152"
 
 7. 选择“保存”。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Zapier**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Zapier**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Zapier 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Zapier 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Zapier API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Zapier 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Zapier 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Zapier API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |变量|类型|
    |---|---|
-   |userName|String|
+   |userName|字符串|
    |活动|Boolean|
    |externalId|字符串|
-   |name.givenName|String|
-   |name.familyName|String|
-   |emails[type eq "work"].value|String|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |emails[type eq "work"].value|字符串|
 
-10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Zapier**"。
+10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Zapier**"。
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Zapier 的组属性。 选为 "**匹配**" 属性的特性用于匹配 Zapier 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Zapier 的组属性。 选为 " **匹配** " 属性的特性用于匹配 Zapier 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     |变量|类型|
     |---|---|
-    |displayName|String|
+    |displayName|字符串|
     |members|参考|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -148,7 +145,7 @@ ms.locfileid: "76992152"
 配置预配后，请使用以下资源来监视部署：
 
 - 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-- 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+- 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 - 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

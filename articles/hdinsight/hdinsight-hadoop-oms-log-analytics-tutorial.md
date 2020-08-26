@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 05/13/2020
-ms.openlocfilehash: e4096b00ca1bbe1ad7d88c37a846d3f56b2860b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 531bbf40df4636ae62203d639deeeb9468c7bfe0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085321"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498185"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
@@ -40,7 +40,7 @@ ms.locfileid: "86085321"
 
   有关如何创建 HDInsight 群集的说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* 如果使用 PowerShell，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。 确保已安装了最新版本。 如有必要，请运行 `Update-Module -Name Az`。
+* 如果使用 PowerShell，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/)。 确保已安装了最新版本。 如有必要，请运行 `Update-Module -Name Az`。
 
 * 如果想要使用 Azure CLI，但尚未安装，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 

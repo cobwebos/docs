@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232655"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029274"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
@@ -89,7 +89,7 @@ ms.locfileid: "86232655"
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>使用运行时功能创建 Azure 自动化帐户
 需要做的第一件事是创建一个 Azure 自动化帐户来托管用于缩放虚拟机规模集实例的 Runbook。 最近，[Azure 自动化](https://azure.microsoft.com/services/automation/)引入了“运行方式帐户”功能，使用该功能可以代表用户设置服务主体来自动运行 Runbook。 有关详细信息，请参阅：
 
-* [Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](../automation/automation-sec-configure-azure-runas-account.md)
+* [Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>将 Azure 自动化垂直缩放 Runbook 导入到订阅中
 

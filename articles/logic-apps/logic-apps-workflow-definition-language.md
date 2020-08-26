@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078138"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用指南
 
@@ -74,9 +74,9 @@ ms.locfileid: "82611409"
 },
 ```
 
-| Attribute | 必须 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 描述 |
 |-----------|----------|------|-------------|
-| <*参数-名称*> | 是 | String | 要定义的参数的名称 |
+| <*参数-名称*> | 是 | 字符串 | 要定义的参数的名称 |
 | <*参数类型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 或 `secureobject` 类型，因为 `GET` 操作不返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
 | <*默认值-参数-值*> | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值。 `defaultValue` 属性是逻辑应用设计器正确显示参数所必需的，但是你可以指定空值。 |
 | <*数组-允许-参数-值*> | 否 | Array | 包含参数可接受的值的数组 |
@@ -112,13 +112,13 @@ ms.locfileid: "82611409"
 }
 ```
 
-| Attribute | 必须 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 描述 |
 |-----------|----------|------|-------------|
-| <*静态结果定义-名称*> | 是 | String | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
+| <*静态结果定义-名称*> | 是 | 字符串 | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
 | <*output-返回的特性和值*> | 是 | 多种多样 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
 | <*标头值*> | 否 | JSON | 操作返回的任何标头值 |
-| <*返回状态代码*> | 是 | String | 操作返回的状态代码 |
-| <*操作-状态*> | 是 | String | 操作的状态，例如 `Succeeded` 或 `Failed` |
+| <*返回状态代码*> | 是 | 字符串 | 操作返回的状态代码 |
+| <*操作-状态*> | 是 | 字符串 | 操作的状态，例如 `Succeeded` 或 `Failed` |
 |||||
 
 例如，在此 HTTP 操作定义中，`runtimeConfiguration.staticResult.name` 特性引用 `staticResults` 中的定义了操作模拟输出的 `HTTP0` 特性。 `runtimeConfiguration.staticResult.staticResultOptions` 特性指定 HTTP 操作的静态结果设置为 `Enabled`。
@@ -178,7 +178,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 "rainbowColorsCount": 7
 ```
 
-还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。** 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、[变量](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values)、显式值或常量的序列。 在工作流定义中，可以通过在表达式的前面加上 \@ 符号前缀在 JSON 字符串值中的任何位置使用表达式。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。
+还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。** 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、[变量](./logic-apps-create-variables-store-values.md)、显式值或常量的序列。 在工作流定义中，可以通过在表达式的前面加上 \@ 符号前缀在 JSON 字符串值中的任何位置使用表达式。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。
 
 例如，对于前面定义的 `customerName` 属性，可以通过在表达式中使用 [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 函数来获取属性值，并将该值分配给 `accountName` 属性：
 
@@ -275,14 +275,14 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 }
 ```
 
-| Attribute | 必须 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 描述 |
 |-----------|----------|------|-------------|
-| <*项名称*> | 是 | String | 输出返回值的密钥名称 |
+| <*项名称*> | 是 | 字符串 | 输出返回值的密钥名称 |
 | <*键类型*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
 | <*key-value*> | 是 | 与 <*键类型*相同> | 输出返回值 |
 |||||
 
-若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
+若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
 
 <a name="operators"></a>
 
@@ -307,4 +307,4 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[工作流定义语言操作和触发器](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* 了解如何使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows) 以编程方式创建和管理逻辑应用
+* 了解如何使用[工作流 REST API](/rest/api/logic/workflows) 以编程方式创建和管理逻辑应用

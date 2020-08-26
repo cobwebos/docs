@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Spacio 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Spacio 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9df8d199-b955-483c-aa4e-cabad1a0b9d6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 99b314fe34798099c73de419dc718c548fd5b623
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a38580dcd55ef9b9fca8fb2619d2aff124cb3c9e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090076"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>教程：Azure Active Directory 与 Spacio 集成
 

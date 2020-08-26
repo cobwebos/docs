@@ -3,15 +3,16 @@ title: 生产就绪情况和最佳实践-Azure
 description: 本文提供有关如何在生产环境中的 IoT Edge 模块上配置和部署实时视频分析的指导。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071942"
 ---
 # <a name="production-readiness-and-best-practices"></a>生产就绪情况和最佳做法
 
-本文提供有关如何在生产环境中的 IoT Edge 模块上配置和部署实时视频分析的指导。 还应查看在[生产中部署 IoT Edge 解决方案的准备](https://docs.microsoft.com/azure/iot-edge/production-checklist)工作一文，了解如何准备 IoT Edge 解决方案。 
+本文提供有关如何在生产环境中的 IoT Edge 模块上配置和部署实时视频分析的指导。 还应查看在[生产中部署 IoT Edge 解决方案的准备](../../iot-edge/production-checklist.md)工作一文，了解如何准备 IoT Edge 解决方案。 
 
 > [!NOTE]
 > 你应向组织的 IT 部门咨询与安全性相关的方面。

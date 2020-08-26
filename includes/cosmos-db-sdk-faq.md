@@ -2,36 +2,36 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 8/12/2020
 ms.author: sngun
-ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c5ed4e1bbe54c642202c19e1beb61de94b4f751
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67172701"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88515228"
 ---
 **1.如何向客户通知即将停用的 SDK？**
 
-Microsoft 会在即将停用的 SDK 的支持结束之前提前 12 个月进行通知，以便协助平稳地转换到支持的 SDK。 此外，会通过各种通信渠道（Azure 管理门户、开发人员中心、博客文章以及与分配的服务管理员的直接通信）来通知客户。
+Microsoft 将提供12个月的提前通知，使你能够快速过渡到受支持的 SDK。 此外，将通过各种通信渠道（Azure 门户、Azure 更新以及与分配的服务管理员的直接通信）通知客户。
 
-**2.在这 12 个月期间，客户是否可以使用“即将”停用的 Azure Cosmos DB SDK 来创作应用程序？** 
+**2. 在12个月期间，客户是否可以使用 "已停用" Azure Cosmos DB SDK 来创作应用程序？** 
 
-可以，客户在 12 个月宽限期内具有完全访问权限，可以使用“即将”停用的 Azure Cosmos DB SDK 创作、部署和修改应用程序。 在 12 个月宽限期内，建议客户根据相应情况迁移到支持的较新版本 Azure Cosmos DB SDK。
+是的，在12个月的通知期内，客户将拥有使用 "已停用" Azure Cosmos DB SDK 创作、部署和修改应用程序的完全访问权限。 在12个月的通知期内，建议客户根据需要迁移到支持的更新版本的 Azure Cosmos DB SDK。 
 
-**3.在 12 个月通知期之后，客户是否可以使用已停用的 Azure Cosmos DB SDK 创建和修改应用程序？**
+**3. 在停用日期之后，使用不受支持的 Azure Cosmos DB SDK 的应用程序会发生什么情况？** 
 
-在 12 个月通知期之后，SDK 会停用。 Azure Cosmos DB 平台不允许使用已停用 SDK 的应用程序对 Azure Cosmos DB 进行任何访问。 此外，Microsoft 不会对已停用的 SDK 提供客户支持。
+停用日期后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为已停用的 SDK 版本提供支持。 如果不想升级，则从 SDK 的已淘汰版本发送的请求将继续由 Azure Cosmos DB 服务提供服务。 
 
-**4. 使用不受支持的 Azure Cosmos DB SDK 版本的客户正在运行的应用程序会发生什么情况？**
+**4. 哪些 SDK 版本将包含最新的功能和更新？**
 
-任何使用已停用 SDK 版本连接 Azure Cosmos DB 服务的尝试都会被拒绝。 
+新功能和更新将仅添加到最新的受支持的主要 SDK 版本的最新次版本。 建议始终使用最新版本，以利用新功能、性能改进和 bug 修复。 如果你使用的是旧的、未停用的 SDK 版本，你的 Azure Cosmos DB 的请求仍将起作用，但你将无法访问任何新功能。  
 
-**5.新特性和功能是否会适用于所有未停用的 SDK？**
+**5. 如果我无法在截止日期之前更新应用程序，该怎么办？**
 
-新特性和功能只添加到新版本。 如果使用的是未停用的旧版本 SDK，则对 Azure Cosmos DB 进行的请求仍会与以前一样正常工作，但是你无法访问任何新功能。  
+我们建议尽早升级到最新 SDK。 SDK 标记为要停用后，你将有12个月来更新应用程序。 如果在停用日期后无法更新，则会继续 Azure Cosmos DB 提供从 SDK 的已淘汰版本发送的请求，因此正在运行的应用程序将继续工作。 但 Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为已停用的 SDK 版本提供支持。 
 
-**6.如果无法在截止日期之前更新应用程序，该怎么办？**
+如果你有支持计划并需要技术支持，[请通过归档支持票证联系我们。](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+    
 
-我们建议尽早升级到最新 SDK。 SDK 标记为要停用之后，会有 12 个月来更新应用程序。 如果由于任何原因而无法在此时间范围内完成应用程序更新，请在截止日期之前与 [Cosmos DB 团队](mailto:askcosmosdb@microsoft.com)联系并请求其帮助。
 

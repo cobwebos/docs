@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292825"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -41,7 +42,7 @@ ms.locfileid: "75497856"
 
 ### <a name="fail-over-to-azure"></a>故障转移到 Azure
 
-1. 在“设置”   > “复制的项”  中，单击计算机 >“故障转移”  。
+1. 在“设置” > “复制的项”中，单击计算机 >“故障转移”。
 2. 在“故障转移”中，选择要故障转移到的“恢复点”   。 可以使用以下选项之一：
    - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将计算机故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
@@ -83,7 +84,7 @@ ms.locfileid: "75497856"
 10. 请验证无法进行故障回复的下列情况：
     - 是否使用的是 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版。 升级到其他版本。
     - 你是否有 Windows Server 2008 R2 SP1 物理服务器。
-    - [已迁移](migrate-overview.md#what-do-we-mean-by-migration)的 VM。
+    - 已迁移的 VM。
     - 已移动到另一个资源组的 VM。
     - 已删除的副本 Azure VM。
     - 未受保护（复制到本地站点）的副本 Azure VM。

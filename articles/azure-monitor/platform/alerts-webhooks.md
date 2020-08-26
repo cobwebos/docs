@@ -6,13 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826904"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852100"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中对经典指标警报调用 Webhook
+
+> [!WARNING]
+> 本文介绍如何使用较旧的经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已[停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。
+>
 
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
 
@@ -21,11 +26,11 @@ ms.locfileid: "83826904"
 Azure 警报使用 HTTP POST 将警报内容以 JSON 格式发送到创建警报时提供的 Webhook URI。 本文中稍后将定义架构。 此 URI 必须是有效的 HTTP 或 HTTPS 终结点。 激活警报时，Azure 会针对每个请求发布一个条目。
 
 ## <a name="configure-webhooks-via-the-azure-portal"></a>通过 Azure 门户配置 Webhook
-若要添加或更新 Webhook URI，请在 [Azure 门户](https://portal.azure.com/)中转到“创建/更新警报”  。
+若要添加或更新 Webhook URI，请在 [Azure 门户](https://portal.azure.com/)中转到“创建/更新警报”****。
 
 ![“添加警报规则”窗格](./media/alerts-webhooks/Alertwebhook.png)
 
-还可以使用 [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../samples/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 将警报配置为发布到 Webhook URI。
+还可以使用 [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../samples/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](/rest/api/monitor/alertrules) 将警报配置为发布到 Webhook URI。
 
 ## <a name="authenticate-the-webhook"></a>对 webhook 进行身份验证
 Webhook 可使用基于令牌的身份验证进行身份验证。 保存的 Webhook URI 具有令牌 ID。 例如： `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -67,34 +72,34 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 ```
 
 
-| 字段 | 必需 | 一组固定值 | 注释 |
+| 字段 | 必需 | 一组固定值 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 状态 |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
+| 状态 |是 |Activated, Resolved |基于设置的条件的警报的状态。 |
 | 上下文 |Y | |警报上下文。 |
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
 | name |Y | |警报名称。 |
 | description |Y | |警报的说明。 |
-| conditionType |Y |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
-| condition |Y | |要基于 **conditionType** 值检查的特定字段。 |
+| conditionType |是 |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
+| condition |是 | |要基于 **conditionType** 值检查的特定字段。 |
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
-| metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
+| metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](/previous-versions/azure/reference/dn802430(v=azure.100))。 |
 | metricValue |用于指标警报 | |导致警报的实际度量值。 |
 | 阈值 |用于指标警报 | |会激活警报的阈值。 |
 | windowSize |用于指标警报 | |用于根据阈值监视警报活动的时间段。 此值必须介于 5 分钟到 1 天之间。 此值必须采用 ISO 8601 持续时间格式。 |
-| timeAggregation |用于指标警报 |“Average”、“Last”、“Maximum”、“Minimum”、“None”、“Total” |随着时间推移，收集的数据应如何组合。 默认值为 Average。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
-| operator |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
+| timeAggregation |用于指标警报 |“Average”、“Last”、“Maximum”、“Minimum”、“None”、“Total” |随着时间推移，收集的数据应如何组合。 默认值为 Average。 请参阅[允许的值](/previous-versions/azure/reference/dn802410(v=azure.100))。 |
+| 运算符后的表达式 |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
 | subscriptionId |Y | |Azure 订阅 ID。 |
 | resourceGroupName |Y | |受影响资源的资源组名称。 |
 | resourceName |Y | |受影响资源的资源名称。 |
 | resourceType |Y | |受影响资源的资源类型。 |
 | ResourceId |Y | |受影响资源的资源 ID。 |
 | resourceRegion |Y | |受影响资源的区域或位置。 |
-| portalLink |Y | |指向门户资源摘要页的直接链接。 |
-| properties |N |可选 |包含有关事件的详细信息的一组键/值对。 例如，`Dictionary<String, String>`。 properties 字段是可选的。 在自定义 UI 或基于逻辑应用的工作流中，用户可以输入键/值对，该键/值对可通过有效负载进行传递。 将自定义属性传递回 Webhook 的替代方法是通过 Webhook URI 本身（作为查询参数）。 |
+| portalLink |是 | |指向门户资源摘要页的直接链接。 |
+| properties |N |可选 |包含有关事件的详细信息的一组键/值对。 例如 `Dictionary<String, String>`。 properties 字段是可选的。 在自定义 UI 或基于逻辑应用的工作流中，用户可以输入键/值对，该键/值对可通过有效负载进行传递。 将自定义属性传递回 Webhook 的替代方法是通过 Webhook URI 本身（作为查询参数）。 |
 
 > [!NOTE]
-> 只能使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 设置“属性”字段。
+> 只能使用 [Azure Monitor REST API](/rest/api/monitor/alertrules) 设置“属性”**** 字段。
 >
 >
 
@@ -104,4 +109,3 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 * 了解如何[使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。
 * 了解如何[使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。
 * 了解如何[使用逻辑应用从 Azure 警报将消息发送到 Azure 队列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。
-

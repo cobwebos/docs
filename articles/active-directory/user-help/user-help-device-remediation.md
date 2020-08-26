@@ -13,11 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740993"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799411"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>针对“您无法从此处到达所需目的地”错误消息的潜在修补程序
 
@@ -67,6 +68,6 @@ ms.locfileid: "83740993"
 - **注册用于工作的个人设备。** 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，可以访问组织的受限资源。 有关详细信息和分步说明，请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
 
 ## <a name="next-steps"></a>后续步骤
-- [什么是 MyApps 门户？](active-directory-saas-access-panel-introduction.md)
+- [什么是 MyApps 门户？](./my-apps-portal-end-user-access.md)
 
 - [使用手机而非密码登录](user-help-auth-app-sign-in.md)

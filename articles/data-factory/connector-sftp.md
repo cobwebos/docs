@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 32650d44b452b90ffd2935eb31f7c7b958c0f7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: a03a141a4140ca4ac000a8e2afb8dd8f45d40662
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737746"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816586"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 SFTP 服务器复制数据
 
@@ -56,7 +56,7 @@ ms.locfileid: "84737746"
 
 SFTP 链接服务支持以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 Sftp。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
@@ -70,7 +70,7 @@ SFTP 链接服务支持以下属性：
 
 若要使用基本身份验证，请将“authenticationType”属性设置为“Basic” ，并指定下列属性以及上一部分介绍的 SFTP 连接器泛型属性：
 
-| Property | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -107,12 +107,12 @@ SFTP 链接服务支持以下属性：
 
 要使用 SSH 公钥身份验证，请将“authenticationType”属性设置为“SshPublicKey”，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| properties | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
 | privateKeyPath | 指定集成运行时可以访问的私钥文件的绝对路径。 只有在“connectVia”中指定了自承载类型的集成运行时的情况下，此项才适用。 | 指定 `privateKeyPath` 或 `privateKeyContent`。  |
 | privateKeyContent | Base64 编码的 SSH 私钥内容。 SSH 私钥应采用 OpenSSH 格式。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
-| passPhrase | 如果密钥文件受通行短语保护，请指定用于解密私钥的通行短语或密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是（如果私钥文件受通行短语的保护）。 |
+| passPhrase | 如果密钥文件或密钥内容受密码保护，请指定通行短语或密码对私钥进行解密。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，如果私钥文件或密钥内容受密码保护。 |
 
 > [!NOTE]
 > SFTP 连接器支持 RSA/DSA OpenSSH 密钥。 请确保密钥文件内容以“-----BEGIN [RSA/DSA] PRIVATE KEY-----”开头。 如果私钥文件是 PPK 格式的文件，请使用 PuTTY 工具将其从 PPK 格式转换为 OpenSSH 格式。 
@@ -184,7 +184,7 @@ SFTP 链接服务支持以下属性：
 
 SFTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 描述                                                  | 必需 |
+| 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 SftpLocation。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符来筛选文件夹，请跳过此设置并在活动源设置中指定路径。 | 否       |
@@ -226,7 +226,7 @@ SFTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
 SFTP 支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| Property                 | 描述                                                  | 必需                                      |
+| 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 SftpReadSettings。 | 是                                           |
 | 找到要复制的文件 |  |  |
@@ -235,7 +235,7 @@ SFTP 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 | 选项 2：通配符<br>- wildcardFileName | 指定的 folderPath/wildcardFolderPath 下带有通配符的文件名，用于筛选源文件。 <br>允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  如需更多示例，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)。 | 是 |
 | 选项 3：文件列表<br>- fileListPath | 表示要复制指定文件集。 指向一个文本文件，其中包含要复制的文件列表（每行一个文件，带有数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 如需更多示例，请参阅[文件列表示例](#file-list-examples)。 |否 |
 | ***其他设置*** |  | |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 *true*（默认值）和 *false*。<br>如果你配置了 `fileListPath`，则此属性不适用。 |否 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 *true*（默认值）和 *false*。<br>如果配置 `fileListPath`，则此属性不适用。 |否 |
 | deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制复制方案中有效，其中数据源存储为 Blob、ADLS Gen1、ADLS Gen2、S3、Google 云存储、文件、Azure 文件、SFTP 或 FTP。 默认值：false。 |否 |
 | modifiedDatetimeStart    | 文件根据“上次修改时间”属性进行筛选。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 到 `modifiedDatetimeEnd` 之间的范围内，则会选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
@@ -284,11 +284,11 @@ SFTP 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 ### <a name="sftp-as-a-sink"></a>以 SFTP 作为接收器
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 描述                                                  | 必需 |
+| 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 SftpWriteSettings。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
@@ -372,7 +372,7 @@ SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 FileShare。 |是 |
 | folderPath | 文件夹的路径。 支持通配符筛选器。 允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -421,7 +421,7 @@ SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下�
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 FileSystemSource |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹和子文件夹。<br/>允许的值为 true（默认值）和 false | 否 |

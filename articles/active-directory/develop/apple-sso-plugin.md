@@ -13,11 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98be2ef6a82c099425655fd7e5d25a4358844bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982576"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115435"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -69,7 +70,7 @@ ms.locfileid: "80982576"
   - `https://login.usgovcloudapi.net`
   - `https://login-us.microsoftonline.com`
 
-可以使用 Microsoft Intune 作为 MDM 服务来方便配置 Microsoft 企业 SSO 插件。 有关详细信息，请参阅 [Intune 配置文档](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
+可以使用 Microsoft Intune 作为 MDM 服务来方便配置 Microsoft 企业 SSO 插件。 有关详细信息，请参阅 [Intune 配置文档](/intune/configuration/ios-device-features-settings)。
 
 ## <a name="using-the-sso-extension-in-your-application"></a>在应用程序中使用 SSO 扩展
 

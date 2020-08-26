@@ -3,17 +3,17 @@ title: include 文件
 description: include 文件
 services: iot-hub
 ms.service: iot-hub
-author: dominicbetts
+author: robinsh
 ms.topic: include
 ms.date: 02/17/2019
-ms.author: dobett
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 2514325c93f0f72aa979f871e86e465093479402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f1f7d6f9ab6036fbcfcd1d19e175302bbd1a2a8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69558805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298784"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>自定义和扩展设备管理操作
 

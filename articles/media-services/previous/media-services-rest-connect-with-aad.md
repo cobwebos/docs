@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166359"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082726"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 通过 Azure 媒体服务使用 Azure AD 身份验证时，可以通过以下两种方式之一进行身份验证：
 
@@ -167,7 +167,7 @@ ms.locfileid: "86166359"
 本部分演示如何使用 Postman 访问资产 API********。
 
 1. 打开**Postman**。
-2. 选择“GET” ****。
+2. 选择 "**获取**"。
 3. 粘贴 REST API 终结点（例如，https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. 选择“授权”选项卡****。 
 5. 选择“持有者令牌”****。

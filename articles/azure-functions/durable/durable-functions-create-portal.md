@@ -4,12 +4,12 @@ description: 了解如何针对门户开发安装 Azure Functions 的 Durable Fu
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081910"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -17,12 +17,12 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 > [!NOTE]
 > 
-> * 如果是在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2019 开发](durable-functions-create-first-csharp.md)。
+> * 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2019 开发](durable-functions-create-first-csharp.md)。
 > * 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管任何函数的执行。 函数应用可让你将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 你可以创建 .NET 或 JavaScript 应用。
+必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 你可以创建 .NET 或 JavaScript 应用。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -58,8 +58,6 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
    ![Kudu 运行 npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. 最后，通过添加值为的应用设置，[启用兼容性模式](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` 。
-
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
 1. 在函数应用中，从左窗格中选择“函数”，然后从顶部菜单中选择“添加”。 

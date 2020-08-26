@@ -9,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 8252c9bf899811163193c9ed21f1f81c9fd0502f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080799"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854826"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>在 Azure 机器学习工作室（经典版）中使用 R
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 <!-- Stephen F Elston, Ph.D. -->
 本教程介绍如何使用机器学习工作室（经典版）创建、测试和执行 R 代码。 最后，你将获得一个完整的预测解决方案。  
@@ -222,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 我们已经在[加载数据集](#loading)中讨论过加载数据集。 一旦创建并测试上一节中所示的 R 脚本后，请执行以下操作：
 
-1. 将 R 脚本保存到 R 文件。 调用脚本文件“simpleplot.R”。 内容如下：
+1. 将 R 脚本保存到 R 文件。 调用脚本文件“simpleplot.R”。 下面是文件中的是：
 
    ```r
    ## Only one of the following two lines should be used
@@ -567,7 +570,7 @@ cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 
 本节我们将对数据框的一些列的值执行简单转换。 R 语言支持几乎所有值的转换。 后面的[延伸阅读](#appendixb)中的参考文献包含许多示例。
 
-如果看一下数据框摘要中的值，会发现一些奇怪的地方。 加利福尼亚州生产的冰激凌比牛奶还多吗？ 当然不是，这种说法毫无意义，这会让我们的一些冰激凌爱好者感到伤心。 这些数值的单位不同。 价格是以美制磅为单位计算的，牛奶的单位为 1 M 美制磅，冰激凌的单位为 1,000 美制加仑，奶酪的单位为 1,000 美制磅。 假设冰激凌每加仑的重量为 6.5 磅，那么我们可以轻松地使用乘法转换这些值，以便使它们的单位都为 1,000 磅。
+如果查看数据帧摘要中的值，则会在此处看到奇怪的内容。 加利福尼亚州生产的冰激凌比牛奶还多吗？ 当然不是，这种说法毫无意义，这会让我们的一些冰激凌爱好者感到伤心。 这些数值的单位不同。 价格是以美制磅为单位计算的，牛奶的单位为 1 M 美制磅，冰激凌的单位为 1,000 美制加仑，奶酪的单位为 1,000 美制磅。 假设冰淇淋的重量约为6.5 磅，则可以轻松地将这些值转换为相乘，因此它们的单位等于1000磅。
 
 对于预测模型，我们对数据的趋势和季节性调整使用乘法模型。 对数转换可以使用线性模型，从而简化了此过程。 可以在应用乘数的相同函数中应用对数转换。
 
@@ -770,7 +773,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 
 ### <a name="correlation-analysis"></a>相关性分析
 
-若要执行相关性分析，需要对变量进行去趋势和标准化处理。 我们只需使用 R `scale()` 函数，该函数可以同时对变量进行中心化和规范化处理。 该函数可能运行较快。 但是，我想要展示 R 中的防御性编程示例。
+若要执行相关性分析，需要对变量进行去趋势和标准化处理。 我们只需使用 R `scale()` 函数，该函数可以同时对变量进行中心化和规范化处理。 该函数可能运行较快。 但是，我想要在 R 中展示一个防御性编程的示例。
 
 以下显示的 `ts.detrend()` 函数执行了这两个操作。 以下两行代码对数据进行去趋势处理，并标准化值。
 
@@ -825,7 +828,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = d
 
 请注意，用于去趋势的线性回归是一个时序回归。 预测器变量是一个时序对象。  
 
-定义 `ts.detrend()` 函数后，就将其应用到数据框中的相关变量。 必须使用 `as.data.frame()` 将 `lapply()` 创建的结果列表强制转换为数据框。 由于 `ts.detrend()` 的防御性，处理一个变量的失败不会阻止其他变量的正常处理。  
+`ts.detrend()`定义后，我们会将其应用到数据帧中相关的变量。 必须使用 `as.data.frame()` 将 `lapply()` 创建的结果列表强制转换为数据框。 由于 `ts.detrend()` 的防御性，处理一个变量的失败不会阻止其他变量的正常处理。  
 
 最后一行代码创建了成对的散点图。 运行此 R 代码后，散点图的结果如图 17 所示。
 
@@ -1133,7 +1136,7 @@ lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
 有了趋势模型之后，我们需要继续深入并考虑季节效应。 我们使用一年中的月份作为线性模型中的虚拟变量，用于捕获按月效应。 请注意，在模型中引入因子变量时，不得计算截距。 否则，则会过多指定公式的参数，R 将删除一个所需因子，但保留截距项。
 
-既然我们有令人满意的趋势模型，则可以使用 `update()` 函数向现有模型添加新的项。 更新公式中的为 -1 删除截距项。 此时在 RStudio 中继续运行：
+由于我们有一个令人满意的趋势模型，因此我们可以使用 `update()` 函数向现有模型添加新术语。 更新公式中的为 -1 删除截距项。 此时在 RStudio 中继续运行：
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1335,7 +1338,7 @@ RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部�
 本 R 编程教程介绍了在 Azure 机器学习工作室（经典版）中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 
 * 可以从 Emmanuel Paradis 撰写的 [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)（面向初学者的 R 语言）入手。  
-* [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)（R 简介）（作者：W. N. Venables et. al.） 更深入地介绍了相关知识。
+* [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)（R 简介）（作者：W. N. Venables et al 更深入一些。
 
 有许多关于 R 的书籍可以帮助你入门。 以下是我发现的一些有用书籍：
 
@@ -1352,7 +1355,8 @@ RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部�
 下面是一些很好的 Internet 资源：
 
 * DataCamp 通过视频课程和编码练习在舒适的浏览器中教授 R。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 获取免费的[交互式 R 教程](https://www.datacamp.com/courses/introduction-to-r)。
-* Programiz 提供的 [Learn R Programming, The Definitive Guide](https://www.programiz.com/r-programming)（学习 R 编程 - 权威指南）。
+* [了解 R 编程，DataMentor 的明确指南](https://www.datamentor.io/r-programming/) 。
+* [R 编码员](https://r-coder.com/)。 入门详细的 R 教程和免费的 R 课程。
 * Clarkson 大学的 Kelly Black 编写的快速 [R 教程](https://www.cyclismo.org/tutorial/R/)。
 * [Top R language resources to improve your data skills](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)（用于改善数据技能的顶级 R 语言资源）中列出了 60 多个 R 资源。
 

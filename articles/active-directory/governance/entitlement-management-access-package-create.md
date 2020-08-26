@@ -3,7 +3,7 @@ title: 在授权管理中创建新的访问包-Azure AD
 description: 了解如何创建要在 Azure Active Directory 授权管理中共享的新资源访问包。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,11 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078945"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783631"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 
@@ -56,7 +57,7 @@ ms.locfileid: "85078945"
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -78,17 +79,17 @@ ms.locfileid: "85078945"
 
     ![访问包 - 基本信息](./media/entitlement-management-access-package-create/basics.png)
 
-    如果你是全局管理员、用户管理员或目录创建者，并且你想要在未列出的新目录中创建你的访问包，请单击 "**创建新目录**"。 输入目录的名称和说明，然后单击“创建”。****
+    如果你是全局管理员、用户管理员或目录创建者，并且你想要在未列出的新目录中创建你的访问包，请单击 " **创建新目录**"。 输入目录的名称和说明，然后单击“创建”。****
 
     正在创建的访问包及其包含的所有资源将添加到新目录中。 也可以稍后添加其他目录所有者。
 
-1. 单击“下一步” 。
+1. 单击“下一步”。
 
 ## <a name="resource-roles"></a>资源角色
 
 在“资源角色”选项卡上，选择要包含在访问包中的资源。**** 请求并接收访问包的用户将接收访问包中的所有资源角色。
 
-1. 单击要添加的资源类型（**组和团队**、**应用程序**或**SharePoint 站点**）。
+1. 单击要添加 (**组和团队**、 **应用程序**或 **SharePoint 站点**) 的资源类型。
 
 1. 在出现的“选择”窗格中，从列表中选择一个或多个资源。
 
@@ -98,17 +99,17 @@ ms.locfileid: "85078945"
 
     如果在现有目录中创建访问包，则可以选择该目录中现有的任何资源，而无需拥有该目录。
 
-    如果你是全局管理员、用户管理员或目录所有者，你可以选择其他选项来选择你拥有但尚未包含在目录中的资源。 如果选择当前不在所选目录中的资源，则这些资源也会添加到该目录，供其他目录管理员用来生成访问包。 如果只想选择当前在所选目录中的资源，请选中 "仅在选择窗格顶部**显示**" 复选框。
+    如果你是全局管理员、用户管理员或目录所有者，你可以选择其他选项来选择你拥有但尚未包含在目录中的资源。 如果选择当前不在所选目录中的资源，则这些资源也会添加到该目录，供其他目录管理员用来生成访问包。 如果只想选择当前在所选目录中的资源，请选中 "仅在选择窗格顶部 **显示** " 复选框。
 
 1. 选择资源后，在“角色”列表中选择要将用户分配到的资源角色。****
 
     ![访问包 - 资源角色选择](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 单击“下一步” 。
+1. 单击“下一步”。
 
-## <a name="requests"></a>Requests
+## <a name="requests"></a>请求
 
-在 "**请求**" 选项卡上，可以创建第一个策略来指定谁可以请求访问包和审批设置。 稍后，你可以创建更多的请求策略，以允许其他用户组使用其自己的审批设置来请求访问包。
+在 " **请求** " 选项卡上，可以创建第一个策略来指定谁可以请求访问包和审批设置。 稍后，你可以创建更多的请求策略，以允许其他用户组使用其自己的审批设置来请求访问包。
 
 ![访问包-请求选项卡](./media/entitlement-management-access-package-create/requests.png)
 
@@ -134,11 +135,11 @@ ms.locfileid: "85078945"
 
 你还可以使用 Microsoft Graph 创建访问包。  具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来
 
-1. [列出目录中的 accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ，并为未在目录中的任何资源[创建 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) 。
-1. [列出](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta)accessPackageCatalog 中每个 AccessPackageResource 的 accessPackageResourceRoles。 然后，在创建 accessPackageResourceRoleScope 时，此角色列表将用于选择角色。
-1. [创建 accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta)。
-1. [创建 accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
-1. 为访问包中所需的每个资源角色[创建一个 accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) 。
+1. [列出目录中的 accessPackageResources](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ，并为未在目录中的任何资源 [创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) 。
+1. [列出](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) accessPackageCatalog 中每个 AccessPackageResource 的 accessPackageResourceRoles。 然后，在创建 accessPackageResourceRoleScope 时，此角色列表将用于选择角色。
+1. [创建 accessPackage](/graph/api/accesspackage-post?view=graph-rest-beta)。
+1. [创建 accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
+1. 为访问包中所需的每个资源角色[创建一个 accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) 。
 
 ## <a name="next-steps"></a>后续步骤
 

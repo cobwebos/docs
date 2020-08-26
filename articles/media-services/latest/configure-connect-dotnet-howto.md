@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201116"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001309"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
 
@@ -26,7 +27,7 @@ ms.locfileid: "83201116"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称
+- [创建媒体服务帐户](./create-account-howto.md)。 请务必记住资源组名称和媒体服务帐户名称
 - 安装用于 .NET 开发的工具。 本文中的步骤演示如何使用 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 你也可以使用 Visual Studio Code，具体请参阅[使用 C#](https://code.visualstudio.com/docs/languages/csharp)。 或者，可以使用其他代码编辑器。
 
 > [!IMPORTANT]
@@ -38,7 +39,7 @@ ms.locfileid: "83201116"
 1. 在“文件”菜单中，单击“新建” > “项目”。   
 1. 创建 **.NET Core** 控制台应用程序。
 
-本主题中的示例应用面向 `netcoreapp2.0`。 代码使用从 C# 7.1 开始提供的“async main”。 有关更多详细信息，请参阅[此博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)。
+本主题中的示例应用面向 `netcoreapp2.0`。 代码使用从 C# 7.1 开始提供的“async main”。 有关更多详细信息，请参阅[此博客](/archive/blogs/benwilli/async-main-is-available-but-hidden)。
 
 ## <a name="add-required-nuget-packages"></a>添加所需的 NuGet 包
 
@@ -63,7 +64,7 @@ ms.locfileid: "83201116"
 
 ### <a name="set-values-in-appsettingsjson"></a>设置 appsettings.json 中的值
 
-根据[访问 API](access-api-cli-how-to.md) 中所述运行 `az ams account sp create` 命令。 该命令返回要复制到“appsettings.json”中的 JSON。
+根据[访问 API](./access-api-howto.md) 中所述运行 `az ams account sp create` 命令。 该命令返回要复制到“appsettings.json”中的 JSON。
  
 ## <a name="add-configuration-file"></a>添加配置文件
 
@@ -242,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>另请参阅
 
-* [.NET 参考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET 参考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * 有关更多代码示例，请参阅 [.NET SDK 示例](https://github.com/Azure-Samples/media-services-v3-dotnet)存储库。

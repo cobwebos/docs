@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519725"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553965"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -60,10 +60,19 @@ ms.locfileid: "86519725"
 
 基于 Azure 认知搜索构建的解决方案可能会在以下方面产生成本：
 
-+ 服务本身的成本，以最低配置（一个分区和副本）运行
-+ 添加容量（副本或分区）
-+ 带宽费用（出站数据传输） 
-+ 附加服务，例如 AI 扩充（在技能集中附加认知服务，用于定义 AI 处理或使用 Azure storage for 知识库）或在专用虚拟网络中部署搜索服务
++ 服务本身的成本，以最低配置 (一个分区和副本) 运行
+
++  (副本或分区添加容量) 
+
++ 带宽费用（出站数据传输）
+
++ 特定功能或功能所需的附加服务：
+
+  + AI 扩充 (需要[认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)) 
+  + 知识存储 (需要[Azure 存储](https://azure.microsoft.com/pricing/details/storage/)) 
+  + 增量扩充 (需要[Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充) 
+  + 客户管理的密钥和双加密 (需要[Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)) 
+  + 无 internet 访问模型的专用终结点 (需要[Azure 专用链接](https://azure.microsoft.com/pricing/details/private-link/)) 
 
 ### <a name="service-costs"></a>服务成本
 

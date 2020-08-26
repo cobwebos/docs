@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887891"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530259"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全一般信息和指南
 
@@ -62,7 +62,7 @@ ms.locfileid: "84887891"
 如果未启用分层命名空间：
 
 * 没有继承权限。
-* 只有工作文件系统权限是**存储数据 XXXX** RBAC 角色，才能直接在 Azure 门户中分配给用户。
+* 只有工作文件系统权限是**存储数据 XXXX** Azure 角色，才能直接在 Azure 门户中分配给用户。
 
 ### <a name="default-hdfs-permissions"></a>默认 HDFS 权限
 
@@ -149,7 +149,7 @@ Azure AD DS 会定期同步 Azure AD 的对象。 Azure 门户上的 "Azure AD D
 
 有关如何在 Windows Server VM 上安装 Active Directory 管理工具的步骤，请参阅[安装管理工具](../../active-directory-domain-services/tutorial-create-management-vm.md)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="cluster-creation-fails-repeatedly"></a>群集创建重复失败
 

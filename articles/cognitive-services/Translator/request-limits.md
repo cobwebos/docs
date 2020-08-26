@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561458"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903399"
 ---
 # <a name="request-limits-for-translator"></a>转换器的请求限制
 
@@ -23,18 +23,18 @@ ms.locfileid: "85561458"
 
 ## <a name="character-and-array-limits-per-request"></a>每个请求的字符和数组限制
 
-每个翻译请求在你要翻译为的所有目标语言中都限制为 5,000 个字符。 例如，发送 1,500 个字符的翻译请求以翻译成 3 种不同的语言，则请求大小为 1,500x3 = 4,500 个字符，这满足请求限制。 按字符收费，而不是按请求数收费。 建议发送较短的请求。
+每个转换请求在你要翻译到的所有目标语言中限制为10000个字符。 例如，发送3000个字符的翻译请求转换为3个不同的语言将导致请求大小为 3000x3 = 9000 个字符，这满足请求限制。 按字符收费，而不是按请求数收费。 建议发送较短的请求。
 
 下表列出了每个转换器操作的数组元素和字符限制。
 
 | Operation | 数组元素的最大大小 |    最大数组元素数 |    最大请求大小（字符数） |
 |:----|:----|:----|:----|
-| Translate | 5,000    | 100    | 5,000 |
-| Transliterate | 5,000    | 10    | 5,000 |
-| Detect | 10,000 |    100 |    50,000 |
-| BreakSentence | 10,000    | 100 |    50,000 |
-| 字典查找| 100 |    10    | 1,000 |
-| 字典示例 | 100 个用于文本，100 个用于翻译（总共 200 个）| 10|    2,000 |
+| Translate | 10,000    | 100   | 10,000 |
+| Transliterate | 5,000 | 10    | 5,000 |
+| Detect | 10,000 | 100 |   50,000 |
+| BreakSentence | 50,000    | 100 | 50,000 |
+| 字典查找| 100 |  10  | 1,000 |
+| 字典示例 | 100 个用于文本，100 个用于翻译（总共 200 个）| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>每小时的字符限制
 

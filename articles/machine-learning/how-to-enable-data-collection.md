@@ -5,18 +5,18 @@ description: 了解如何从已部署的 Azure 机器学习模型中收集数据
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: d7e3aeba14373861d831056678576c52f6b2184f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320181"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
 
@@ -71,7 +71,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 ## <a name="enable-data-collection"></a>启用数据收集
 
-无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用数据收集。
+无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py)。
 
 若要启用数据收集，需要：
 

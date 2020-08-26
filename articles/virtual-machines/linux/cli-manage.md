@@ -3,20 +3,21 @@ title: 常用的 Azure CLI 命令
 description: 了解一些常用 Azure CLI 命令，以便开始在 Azure 资源管理器模式下管理 VM
 author: RicksterCDN
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372240"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>用于管理 Azure 资源的常用 Azure CLI 命令
 
 可以通过 Azure CLI 在 macOS、Linux 和 Windows 上创建和管理 Azure 资源。 本文详述了一些最常用于创建和管理虚拟机 (VM) 的命令。
 
-本文需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 也可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
+本文需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 也可以通过浏览器使用 [Cloud Shell](../../cloud-shell/quickstart.md)。
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI 中的基本 Azure 资源管理器命令
 有关特定命令行开关和选项的详细帮助，可以通过键入 `az <command> <subcommand> --help` 来使用联机命令帮助和选项。
@@ -59,6 +60,3 @@ ms.locfileid: "78969256"
 
 ## <a name="next-steps"></a>后续步骤
 有关 CLI 命令的其他示例，请参阅[使用 Azure CLI 创建和管理 Linux VM](tutorial-manage-vm.md) 教程。
-
-
-

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263327"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447247"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证选项概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,9 +44,9 @@ ms.locfileid: "84263327"
 
     本地 Active Directory 域服务（AD DS）与 Azure 文件的集成提供了存储目录数据的方法，同时使其可供网络用户和管理员使用。 通过登录身份验证和对目录中对象的访问控制，安全与 AD DS 集成。 通过单一网络登录，管理员可以管理其整个网络中的目录数据和组织，授权网络用户可以访问网络上任何位置的资源。 AD DS 通常由本地环境中的企业采用，AD DS 凭据用作访问控制的标识。 有关详细信息，请参阅[Active Directory 域服务概述](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
--   **Azure 基于角色的访问控制 (RBAC)**
+-   **Azure 基于角色的访问控制（Azure RBAC）**
 
-    Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅[什么是 Azure 中基于角色的访问控制（RBAC）？](../../role-based-access-control/overview.md)。
+    Azure 基于角色的访问控制（Azure RBAC）可用于对 Azure 进行细致的访问管理。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅[什么是 azure 中的 azure 基于角色的访问控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
 
 ## <a name="common-use-cases"></a>常见用例
 
@@ -123,7 +123,7 @@ Azure 文件共享利用 Kerberos 协议在本地 AD DS 或 Azure AD DS 进行�
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>为 Azure 文件配置共享级别权限
 
-启用 Azure AD DS 或本地 AD DS 身份验证后，你可以使用内置 RBAC 角色或为 Azure AD 标识配置自定义角色，并将访问权限分配给存储帐户中的任何文件共享。 已分配的权限允许授予的标识仅获取对该共享的访问权限，而不是其他任何内容，甚至是根目录。 你仍需要分别为 Azure 文件共享配置目录或文件级权限。
+一旦启用 Azure AD DS 或本地 AD DS 身份验证，就可以使用 Azure 内置角色或为 Azure AD 标识配置自定义角色，并将访问权限分配给存储帐户中的任何文件共享。 已分配的权限允许授予的标识仅获取对该共享的访问权限，而不是其他任何内容，甚至是根目录。 你仍需要分别为 Azure 文件共享配置目录或文件级权限。
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>配置 Azure 文件的目录或文件级权限
 

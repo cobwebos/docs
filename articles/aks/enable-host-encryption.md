@@ -1,22 +1,22 @@
 ---
-title: 在 Azure Kubernetes Service （AKS）上启用基于主机的加密
-description: 了解如何在 Azure Kubernetes 服务（AKS）群集中配置基于主机的加密
+title: '在 Azure Kubernetes Service 上启用基于主机的加密 (AKS) '
+description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基于主机的加密
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517716"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986859"
 ---
-# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service （AKS）上基于主机的加密（预览版）
+# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
 
-通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以[在 Azure Kubernetes 服务中的 azure 磁盘后，按 "自带密钥（BYOK）"](azure-disk-customer-managed-keys.md)指定自己的托管密钥。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
+通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以[在 "自带密钥" 中指定自己的托管密钥， (在 Azure Kubernetes Service 中将 azure 磁盘与 azure 磁盘) ](azure-disk-customer-managed-keys.md)。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 此功能只能在创建群集或创建节点池时设置。
 
@@ -57,11 +57,7 @@ az provider register --namespace Microsoft.Compute
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
->
-> - [AKS 支持策略](support-policies.md)
-> - [Azure 支持常见问题](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
@@ -79,9 +75,9 @@ az extension update --name aks-preview
 
 - 只能在新的节点池或新群集上启用。
 - 只能在支持 Azure 托管磁盘的服务器端加密且仅支持特定[支持的 VM 大小][supported-sizes]的[azure 区域][supported-regions]中启用。
-- 需要一个基于虚拟机规模集（VMSS）的 AKS 群集和节点池作为*VM 集类型*。
+- 需要基于虚拟机规模集 (VMSS) 为*VM 集类型*的 AKS 群集和节点池。
 
-## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新群集上使用基于主机的加密（预览版）
+## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新群集上使用基于主机的加密 (预览) 
 
 将群集代理节点配置为在创建群集时使用基于主机的加密。 使用 `--aks-custom-headers` 标志设置 `EnableEncryptionAtHost` 标头。
 
@@ -91,7 +87,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 
 如果要创建不包含基于主机的加密的群集，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
 
-## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在现有群集上使用基于主机的加密（预览版）
+## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在现有群集上使用基于主机的加密 (预览) 
 
 通过向群集中添加新的节点池，可以在现有群集上启用基于主机的加密。 使用标志配置新的节点池以使用基于主机的加密 `--aks-custom-headers` 。
 

@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 1a26f3c1b57fd750cbb59f32ddc8bd0ea85293ca
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 568f49565c6e6d8062f8869566cf3879b7c97eaa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112708"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503321"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问审核日志
 
@@ -31,11 +32,11 @@ ms.locfileid: "86112708"
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
 >[!IMPORTANT]
-> 建议仅记录审核目的所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
 使用以下步骤启用和配置审核日志记录：
 
-1. 通过将“audit_logs_enabled”  参数设为“ON”来启用审核日志。 
+1. 通过将“audit_logs_enabled”参数设为“ON”来启用审核日志。 
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
@@ -50,7 +51,7 @@ ms.locfileid: "86112708"
     az mysql server configuration set --name audit_log_exclude_users --resource-group myresourcegroup --server mydemoserver --value "azure_superuser"
     ```
 
-1. 通过更新“audit_log_include_users”  参数，添加要包括在日志记录中的任何特定 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
+1. 通过更新“audit_log_include_users”参数，添加要包括在日志记录中的任何特定 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```

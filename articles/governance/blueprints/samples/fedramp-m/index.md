@@ -1,14 +1,14 @@
 ---
 title: FedRAMP Moderate 蓝图示例概述
 description: FedRAMP Moderate 蓝图示例概述。 此蓝图示例可帮助客户评估特定 FedRAMP Moderate 控制要求。
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: b25c000ac9593eb0997ae1d4f1f69a4e20732226
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 6d0ec128a09f3426dbcec63353f04395ed92996d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816210"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495788"
 ---
 # <a name="overview-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 蓝图示例概述
 

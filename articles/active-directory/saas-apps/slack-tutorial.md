@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Slack 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259280"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -42,6 +38,9 @@ ms.locfileid: "84259280"
 > [!NOTE]
 > 如果需要在一个租户中与多个 Slack 实例集成，则每个应用程序的标识符可以是变量。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
@@ -49,7 +48,7 @@ ms.locfileid: "84259280"
 * Slack 支持 SP 发起的 SSO
 * Slack 支持实时用户预配
 * Slack 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
-* 配置 Slack 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Slack 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-slack-from-the-gallery"></a>从库中添加 Slack
 
@@ -129,26 +128,26 @@ ms.locfileid: "84259280"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Slack 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在应用程序列表中，选择“Slack”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-slack-sso"></a>配置 Slack SSO
 
@@ -156,15 +155,15 @@ ms.locfileid: "84259280"
 
 2. 导航到“Microsoft Azure AD”，并转到“团队设置”。
 
-     ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-001.png)
+     ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. 在“团队设置”部分中，单击“身份验证”选项卡，并单击“更改设置”。
 
-    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-002.png)
+    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. 在“SAML 身份验证设置”对话框中，执行以下步骤：
 
-    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-003.png)
+    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  在“SAML 2.0 终结点(HTTP)”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
@@ -174,7 +173,7 @@ ms.locfileid: "84259280"
 
     d. 根据 Slack 团队的需要配置上述三个设置。 有关设置的详细信息，请在此处查看 **Slack 的 SSO 配置指南**。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-004.png)
+    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-expand.png)
 
     e. 单击“展开”并在“服务提供者颁发者”文本框中输入 `https://slack.com`。
 

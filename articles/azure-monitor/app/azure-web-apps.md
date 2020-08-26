@@ -2,17 +2,18 @@
 title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 08/06/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169929"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258738"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
-现在，可以比过去更轻松地针对 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)中运行的基于 ASP.NET 和 ASP.NET Core 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
+现在，可以比过去更轻松地针对 [Azure 应用服务](../../app-service/index.yml)中运行的基于 ASP.NET 和 ASP.NET Core 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
 > 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。  此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
@@ -26,19 +27,19 @@ ms.locfileid: "86169929"
 
 * 安装 Application Insights SDK 以**通过代码手动检测应用程序**。
 
-    * 此方法的可自定义性要高得多，但需要[添加 Application Insights SDK NuGet 包中的一个依赖项](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)。 使用此方法还需要自行管理对最新版本的包的更新。
+    * 此方法的可自定义性要高得多，但需要[添加 Application Insights SDK NuGet 包中的一个依赖项](./asp-net.md)。 使用此方法还需要自行管理对最新版本的包的更新。
 
-    * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) 一文。 对于基于 Linux 的工作负荷，这也是当前唯一支持的选项。
+    * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](./api-custom-events-metrics.md) 一文。 对于基于 Linux 的工作负荷，这也是当前唯一支持的选项。
 
 > [!NOTE]
-> 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会采用手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
+> 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会采用手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](#troubleshooting)。
 
 ## <a name="enable-agent-based-monitoring"></a>启用基于代理的监视
 
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的组合。 有关详细信息，请参阅[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的说明。
+> 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的组合。 有关详细信息，请参阅[故障排除部分](#troubleshooting)中的说明。
 
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
@@ -70,13 +71,13 @@ ms.locfileid: "86169929"
 
     * 例如，若要更改初始采样百分比，可以创建名为 `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage`、值为 `100` 的应用程序设置。
 
-    * 有关受支持自适应采样遥测处理器设置的列表，可以参阅[代码](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)和[相关的文档](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
+    * 有关受支持自适应采样遥测处理器设置的列表，可以参阅[代码](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)和[相关的文档](./sampling.md)。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 支持以下 .NET Core 版本：ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0
 
-基于代理/扩展的监视目前**不支持**将 .NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。）
+基于代理/扩展的监视目前**不支持**将 .NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
@@ -99,11 +100,11 @@ ms.locfileid: "86169929"
 
 # <a name="java"></a>[Java](#tab/java)
 
-基于 Java 应用服务的 Web 应用程序当前不支持基于自动代理/扩展的监视。 若要针对 Java 应用程序启用监视，需[手动检测应用程序](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)。
+基于 Java 应用服务的 Web 应用程序当前不支持基于自动代理/扩展的监视。 若要针对 Java 应用程序启用监视，需[手动检测应用程序](./java-get-started.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-基于 Python 应用服务的 Web 应用程序当前不支持基于自动代理/扩展的监视。 若要针对 Python 应用程序启用监视，需[手动检测应用程序](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
+基于 Python 应用服务的 Web 应用程序当前不支持基于自动代理/扩展的监视。 若要针对 Python 应用程序启用监视，需[手动检测应用程序](./opencensus-python.md)。
 
 ---
 
@@ -113,16 +114,14 @@ ms.locfileid: "86169929"
 
 可以选择为 ASP.NET 启用客户端监视。 若要启用客户端监视：
 
-* 选择“设置”>“应用程序设置”。
-   * 在“应用程序设置”下，添加新的**应用设置名称**和**值**：
+* **设置** **>****配置**
+   * 在 "应用程序设置" 下，创建一个 **新的应用程序设置**：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      值：`true`
 
    * **保存**设置并**重新启动**应用。
-
-![应用程序设置 UI 的屏幕截图](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
 若要禁用客户端监视，请从“应用程序设置”中删除关联的键值对，或将值设置为 false。
 
@@ -132,8 +131,8 @@ ms.locfileid: "86169929"
 
 如果出于某种原因想要禁用客户端监视：
 
-* 选择“设置” > “应用程序设置”。 
-   * 在“应用程序设置”下，添加新的**应用设置名称**和**值**：
+* **设置** **>****配置**
+   * 在 "应用程序设置" 下，创建一个 **新的应用程序设置**：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -141,19 +140,17 @@ ms.locfileid: "86169929"
 
    * **保存**设置并**重新启动**应用。
 
-![应用程序设置 UI 的屏幕截图](./media/azure-web-apps/appinsights-javascript-disabled.png)
-
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-若要针对 Node.js 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+若要针对 Node.js 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](./javascript.md)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-若要针对 Java 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+若要针对 Java 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](./javascript.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-若要针对 Python 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+若要针对 Python 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](./javascript.md)。
 
 ---
 
@@ -174,7 +171,7 @@ ms.locfileid: "86169929"
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>使用 Azure 资源管理器配置应用服务应用程序设置
 
-可以使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)来管理和配置应用服务的应用程序设置。 使用 Azure 资源管理器自动化部署新的应用服务资源或修改现有资源的设置时，可以使用此方法。
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)来管理和配置应用服务的应用程序设置。 使用 Azure 资源管理器自动化部署新的应用服务资源或修改现有资源的设置时，可以使用此方法。
 
 下面是应用服务的应用程序设置 JSON 基本结构：
 
@@ -339,14 +336,14 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 从版本 2.8.9 开始，将使用预装的站点扩展。 如果使用更低的版本，可通过两种方法之一进行更新：
 
-* [通过门户启用扩展进行升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)。 （即使已安装 Azure 应用服务的 Application Insights 扩展，UI 也只会显示“启用”按钮。 在幕后，旧的专用站点扩展将被删除。）
+* [通过门户启用扩展进行升级](#enable-application-insights)。 （即使已安装 Azure 应用服务的 Application Insights 扩展，UI 也只会显示“启用”按钮。 在幕后，旧的专用站点扩展将被删除。）
 
-* [通过 PowerShell 升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)：
+* [通过 PowerShell 升级](#enabling-through-powershell)：
 
-    1. 设置应用程序设置以启用预装的站点扩展 ApplicationInsightsAgent。 请参阅[通过 PowerShell 启用](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)。
+    1. 设置应用程序设置以启用预装的站点扩展 ApplicationInsightsAgent。 请参阅[通过 PowerShell 启用](#enabling-through-powershell)。
     2. 手动删除名为“Azure 应用服务的 Application Insights 扩展”的专用站点扩展。
 
-如果已从低于 2.5.1 的版本完成升级，请检查是否已从应用程序 bin 文件夹中删除了 ApplicationInsigths dll。[参阅故障排除步骤](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
+如果已从低于 2.5.1 的版本完成升级，请检查是否已从应用程序 bin 文件夹中删除了 ApplicationInsigths dll。[参阅故障排除步骤](#troubleshooting)。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -363,7 +360,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
     ![https://yoursitename.scm.azurewebsites/applicationinsights 结果页的屏幕截图](./media/azure-web-apps/app-insights-sdk-status.png)
 
     * 确认 `Application Insights Extension Status` 为 `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * 如果未运行，请遵照[启用 Application Insights 监视的说明](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)
+        * 如果未运行，请遵照[启用 Application Insights 监视的说明](#enable-application-insights)
 
     * 确认状态源存在并类似于：`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * 如果不存在类似的值，则表示应用程序当前未运行或不受支持。 为确保应用程序运行，请尝试手动访问应用程序 URL/应用程序终结点，以提供运行时信息。
@@ -396,19 +393,26 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 有关 Application Insights 代理/扩展的最新信息，请查看[发行说明](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)。
 
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>用 web 应用部署的默认网站不支持自动客户端监视
+
+使用 Azure 应用 Services 中的或运行时创建 web 应用时， `ASP.NET` `.NET Core` 它会将单个静态 HTML 页作为入门网站部署。 静态网页还会在 IIS 中加载 .NET 托管 web 部件。 这允许测试无代码置备服务器端监视，但不支持自动客户端监视。
+
+如果你想要在 Azure 应用 Services web 应用中测试无代码置备服务器和客户端监视的 ASP.NET 或 ASP.NET Core，我们建议遵循 [创建 ASP.NET Core web 应用](../../app-service/quickstart-dotnetcore.md) 和 [创建 ASP.NET Framework web 应用](../../app-service/quickstart-dotnet-framework.md) 的官方指南，并使用当前文章中的说明来启用监视。
+
 ### <a name="php-and-wordpress-are-not-supported"></a>不支持 PHP 和 WordPress
 
-不支持 PHP 和 WordPress 站点。 目前没有官方支持的 SDK/代理可用于在服务器端监视这些工作负荷。 但是，可以通过将客户端 javascript 添加到网页，使用 [JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) 在 PHP 或 WordPress 站点上手动检测客户端事务。
+不支持 PHP 和 WordPress 站点。 目前没有官方支持的 SDK/代理可用于在服务器端监视这些工作负荷。 但是，可以通过将客户端 javascript 添加到网页，使用 [JavaScript SDK](./javascript.md) 在 PHP 或 WordPress 站点上手动检测客户端事务。
 
 ### <a name="connection-string-and-instrumentation-key"></a>连接字符串和检测密钥
 
 使用无代码监视时，只需要连接字符串。 但是，我们仍然建议设置检测密钥，以便在执行手动检测时保持与旧版 SDK 的后向兼容性。
 
 ## <a name="next-steps"></a>后续步骤
-* [在实时应用上运行探查器](../app/profiler.md)。
+* [在实时应用上运行探查器](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
 * [将 Azure 诊断配置为](../platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../platform/data-platform.md)以确保服务可用且做出快速响应。
 * [接收警报通知](../platform/alerts-overview.md) 。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
 * [设置可用性 Web 测试](monitor-web-app-availability.md)，以便在站点关闭时发出警报。
+

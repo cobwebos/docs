@@ -7,11 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688970"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797796"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -25,9 +30,9 @@ ms.locfileid: "84688970"
 
 层还决定了 IoT 中心对所有操作强制实施的限制。
 
-### <a name="iot-plug-and-play"></a>IoT 即插即用
+## <a name="iot-plug-and-play"></a>IoT 即插即用
 
-在公开预览期间，IoT 即插即用设备将为每个接口发送单独的消息，这可能会增加计入消息配额的消息数量。
+IoT 即插即用设备为每个接口发送至少一条遥测消息（包括根），这可能会增加计入消息配额的消息数。
 
 ## <a name="operation-throttles"></a>操作限制
 
@@ -106,13 +111,14 @@ IoT 中心强制实施其他操作限制：
 | 自动设备和模块配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 50 个模块。 每个付费 SKU 中心 100 个部署（包括分层部署）。 每个免费 SKU 中心 10 个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
-| 共享访问策略 | 共享访问策略的最大数目为 16 |
+| 共享访问策略 | 共享访问策略的最大数目为16。 |
+| x509 CA 证书 | 可在 IoT 中心注册的 x509 CA 证书的最大数目为25。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 
 ## <a name="increasing-the-quota-or-throttle-limit"></a>提高配额或限制
 
-无论何时，都可通过[增加 IoT 中心内的预配单位数](iot-hub-upgrade.md)来提高配额或限制。
+在任意给定时间，你都可以通过 [增加 IoT 中心的预配单位数](iot-hub-upgrade.md)来提高配额或限制限制。
 
 ## <a name="latency"></a>延迟
 
@@ -122,9 +128,9 @@ IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和
 * 在离设备最近的 Azure 区域预配 IoT 中心。
 * 请考虑在设备上或在离设备近的网关上使用 Azure IoT Edge 执行易受延迟影响的操作。
 
-如上所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
+如前所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
 
-如果发现操作延迟意外增加，请与 [Microsoft 支持](https://azure.microsoft.com/support/options/)联系。
+如果发现操作延迟意外增加，请与 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)联系。
 
 ## <a name="next-steps"></a>后续步骤
 

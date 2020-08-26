@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770724"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611817"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -23,7 +23,7 @@ ms.locfileid: "84770724"
 [这里](sap-hana-backup-support-matrix.md#scenario-support)有我们目前支持的所有方案。
 
 >[!NOTE]
->RHEL（7.4、7.6、7.7 或 8.1）的 SAP HANA 备份预览[入门](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)。 如需深入咨询，请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们。
+>自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,60 +43,59 @@ ms.locfileid: "84770724"
 
 ## <a name="set-up-network-connectivity"></a>设置网络连接
 
-对于所有操作，SAP HANA VM 虚拟机需要与 Azure 公共 IP 地址建立连接。 如果未连接到 Azure 公共 IP 地址，VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）将失败。
+对于所有操作，在 Azure VM 上运行的 SAP HANA 数据库需要连接到 Azure 备份服务、Azure 存储和 Azure Active Directory。 这可以通过使用专用终结点，或允许访问所需的公共 IP 地址或 FQDN 来实现。 如果不允许正确连接到所需的 Azure 服务，则可能会导致诸如数据库发现、配置备份、执行备份和还原数据等操作失败。
 
-使用以下选项之一建立连接：
+下表列出了可用于建立连接的各种备选方案：
 
-### <a name="allow-the-azure-datacenter-ip-ranges"></a>允许 Azure 数据中心 IP 范围
+| **选项**                        | **优点**                                               | **缺点**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 专用终结点                 | 允许通过虚拟网络中的专用 IP 进行备份  <br><br>   提供网络和保管库端的精细控制 | 产生标准专用终结点[开销](https://azure.microsoft.com/pricing/details/private-link/) |
+| NSG 服务标记                  | 由于范围更改会自动合并，因此管理变得更容易   <br><br>   无额外成本 | 只可用于 NSG  <br><br>    提供对整个服务的访问 |
+| Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 只可用于 Azure 防火墙                         |
+| 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
+| 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
 
-此选项允许已下载文件中的 [IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 若要访问网络安全组 (NSG)，请使用 Set-AzureNetworkSecurityRule cmdlet。 如果安全收件人列表仅包含特定于区域的 IP，则还需更新 Azure Active Directory (Azure AD) 服务标记的安全收件人列表以启用身份验证。
+关于使用这些选项的更多细节如下：
 
-### <a name="allow-access-using-nsg-tags"></a>允许使用 NSG 标记进行访问
+### <a name="private-endpoints"></a>专用终结点
 
-如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 此外，还应允许使用 Azure AD 和 Azure 存储的[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，在连接后进行身份验证和数据传输。 这可以通过 Azure 门户或 PowerShell 来完成。
+使用专用终结点，可以从虚拟网络内的服务器安全地连接到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 在[此处](./private-endpoints.md)详细了解 Azure 备份的专用终结点。
 
-若要使用门户创建规则，请执行以下操作：
+### <a name="nsg-tags"></a>NSG 标记
 
-  1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
-  2. 在“设置”下，选择“出站安全规则”。 
-  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
-  4. 单击“添加”，保存新创建的出站安全规则。
+如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD 和 Azure 存储创建类似的 [NSG 规则](../virtual-network/security-overview.md#service-tags)，以便在连接后进行身份验证和数据传输。  以下步骤介绍了为 Azure 备份标记创建规则的过程：
 
-若要使用 PowerShell 创建规则，请执行以下操作：
+1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
 
- 1. 添加 Azure 帐户凭据并更新国家/地区云<br/>
-      `Add-AzureRmAccount`<br/>
+1. 在“设置”下选择“出站安全规则”。
 
- 2. 选择 NSG 订阅<br/>
-      `Select-AzureRmSubscription "<Subscription Id>"`
+1. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
- 3. 选择 NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+1. 单击“添加”，保存新创建的出站安全规则。
 
- 4. 为 Azure 备份服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](../virtual-network/service-tags-overview.md)。
 
- 5. 为 Azure 存储服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+### <a name="azure-firewall-tags"></a>Azure 防火墙标记
 
- 6. 为 AzureActiveDirectory 服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+如果使用 Azure 防火墙，请使用 *AzureBackup* [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)创建应用程序规则。 这允许对 Azure 备份进行所有出站访问。
 
- 7. 保存 NSG<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+### <a name="allow-access-to-service-ip-ranges"></a>允许访问服务 IP 范围
 
-**允许使用 Azure 防火墙标记进行访问**。 如果使用 Azure 防火墙，请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
+如果选择允许访问服务 IP，请参阅[此处](https://www.microsoft.com/download/confirmation.aspx?id=56519)的 JSON 文件中的 IP 范围。 你需要允许访问与 Azure 备份、Azure 存储和 Azure Active Directory 对应的 IP。
 
-**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 中备份 SAP HANA 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+### <a name="allow-access-to-service-fqdns"></a>允许访问服务 FQDN
 
-连接性选项包括以下优点和缺点：
+还可以使用以下 FQDN 以允许从服务器访问所需的服务：
 
-**选项** | **优点** | **缺点**
---- | --- | ---
-允许 IP 范围 | 无额外成本 | 管理起来很复杂，因为 IP 地址范围随时会变化 <br/><br/> 允许访问整个 Azure，而不只是 Azure 存储
-使用 NSG 服务标记 | 由于范围更改会自动合并，因此更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可与 NSG 配合使用 <br/><br/> 提供对整个服务的访问权限
-使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用
-使用 HTTP 代理 | 允许在代理中对存储 URL 进行精细控制 <br/><br/> 对 VM 进行单点 Internet 访问 <br/><br/> 不受 Azure IP 地址变化的影响 | 通过代理软件运行 VM 带来的额外成本
+| 服务    | 要访问的域名                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure 备份  | `*.backup.windowsazure.com`                             |
+| Azure 存储 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure AD      | 根据[这篇文章](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN |
+
+### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
+
+备份在 Azure VM 上运行的 SAP HANA 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 使用上面提到的 IP 和 FQDN 列表，以允许访问所需的服务。 不支持已经过身份验证的代理服务器。
 
 ## <a name="what-the-pre-registration-script-does"></a>注册前脚本的功能
 
@@ -146,15 +145,15 @@ hdbuserstore list
 
    ![添加恢复服务保管库](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-   此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值 
+   此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值
 
    ![创建恢复服务保管库](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * 名称：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
-   * 订阅：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅。
-   * 资源组：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”。<br>
-   要查看订阅中可用的资源组列表，请选择“使用现有资源”，然后从下拉列表框中选择一个资源。 若要创建新资源组，请选择“新建”，然后输入名称。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
-   * 位置：为保管库选择地理区域。 保管库必须与运行 SAP HANA 的虚拟机位于同一区域中。 我们使用了“美国东部 2”。
+   * **名称**：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
+   * **订阅**：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅。
+   * **资源组**：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”。<br>
+   要查看订阅中可用的资源组列表，请选择“使用现有资源”，然后从下拉列表框中选择一个资源。 若要创建新资源组，请选择“新建”，然后输入名称。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。
+   * **位置**：为保管库选择地理区域。 保管库必须与运行 SAP HANA 的虚拟机位于同一区域中。 我们使用了“美国东部 2”。
 
 5. 选择“查看 + 创建”。
 
@@ -208,7 +207,7 @@ hdbuserstore list
 
    ![输入新策略的名称](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
-2. 在“完整备份策略”中选择“备份频率” 。 可以选择“每日”或“每周” 。 对于本教程，我们选择了“每日”备份。
+2. 在“完整备份策略”中选择一个**备份频率**。 可以选择“每日”或“每周” 。 对于本教程，我们选择了“每日”备份。
 
    ![选择备份频率](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
@@ -220,7 +219,7 @@ hdbuserstore list
    * 每月和每年保留范围的行为类似。
 4. 在“完整备份策略”菜单中，单击“确定”接受设置 。
 5. 然后选择“差异备份”，以添加差异策略。
-6. 在“差异备份策略”中，选择“启用”打开频率和保留控件。  我们在每个星期日的凌晨 2:00 启用了差异备份，保持期为 30 天  。
+6. 在“差异备份策略”中，选择“启用”打开频率和保留控件。 我们在每个星期日的凌晨 2:00 启用了差异备份，保持期为 30 天  。
 
    ![差异备份策略](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 

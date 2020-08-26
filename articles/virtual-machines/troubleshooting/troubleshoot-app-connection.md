@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036431"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
 
@@ -117,7 +117,7 @@ ms.locfileid: "71058123"
   
   * 确保 VM 的终结点配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
   * 确保终结点上的访问控制列表 (ACL) 不会阻止来自 Internet 的传入流量。
-  * 有关详细信息，请参阅[如何对虚拟机设置终结点](../windows/classic/setup-endpoints.md)。
+  * 有关详细信息，请参阅[如何对虚拟机设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。
 * 对于使用 Resource Manager 部署模型创建的 VM：
   
   * 确保 VM 的入站 NAT 规则配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
@@ -138,11 +138,9 @@ ms.locfileid: "71058123"
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>步骤 4：如果无法访问应用程序，请使用“IP 验证”来检查设置。 
 
-有关详细信息，请参阅 [Azure network monitoring overview](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)（Azure 网络监视概述）。 
+有关详细信息，请参阅 [Azure network monitoring overview](../../network-watcher/network-watcher-monitoring-overview.md)（Azure 网络监视概述）。 
 
 ## <a name="additional-resources"></a>其他资源
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)
 
 [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
-
-

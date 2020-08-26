@@ -1,17 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 解决 VMware VM 灾难恢复中的故障回复
 description: 本文介绍了在 VMware VM 灾难恢复到 Azure 期间使用 Azure Site Recovery 排查故障回复和重新保护问题的方法。
-author: rajani-janaki-ram
-manager: gauravd
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: sharrai
+ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309945"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423110"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
 
@@ -28,7 +29,7 @@ ms.locfileid: "84309945"
 - 如果无法从进程服务器访问配置服务器，请使用 Telnet 在端口 443 上检查与配置服务器的连接。 也可以尝试从进程服务器 ping 配置服务器。 连接到配置服务器后，进程服务器也应会发出检测信号。
 - 作为物理本地服务器保护的 Windows Server 2008 R2 SP1 服务器无法从 Azure 故障回复到本地站点。
 - 在以下情况下无法进行故障回复：
-    - 已将计算机迁移到 Azure。 [了解详细信息](migrate-overview.md#what-do-we-mean-by-migration)。
+    - 已将计算机迁移到 Azure。 
     - 已将 VM 移到另一个资源组。
     - 已删除 Azure VM。
     - 已对 VM 禁用保护。
@@ -42,7 +43,7 @@ ms.locfileid: "84309945"
 
 ### <a name="error-code-95226"></a>错误代码 95226
 
-重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器  。
+重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器****。
 
 在下述情况中会发生此错误：
 
@@ -52,7 +53,7 @@ ms.locfileid: "84309945"
 若要解决此问题，请执行下列操作：
 
 * 检查 Azure VM 网络是否允许 Azure VM 与本地配置服务器进行通信。 可以设置本地数据中心的站点到站点 VPN，或在 Azure VM 的虚拟网络上配置具有专用对等互连的 Azure ExpressRoute 连接。
-* 如果 VM 可以与本地配置服务器通信，请登录到 VM。 然后检查 InMage Scout 应用程序服务。 如果看到该服务未运行，请手动启动该服务。 检查服务启动类型是否已设置为“自动”  。
+* 如果 VM 可以与本地配置服务器通信，请登录到 VM。 然后检查 InMage Scout 应用程序服务。 如果看到该服务未运行，请手动启动该服务。 检查服务启动类型是否已设置为“自动”****。
 
 ### <a name="error-code-78052"></a>错误代码 78052
 
@@ -63,7 +64,7 @@ ms.locfileid: "84309945"
 若要解决此问题，请执行下列操作：
 
 * 选择另一台主机上的另一个主目标服务器，以便重新保护在该主机上创建虚拟机，从而确保名称不发生冲突。
-* 还可以使用 vMotion 将主目标服务器移到另一台主机，这样就不会发生名称冲突。 如果现有 VM 是孤立的虚拟机，请将其重命名，以便在同一 ESXi 主机上创建新的 VM。
+* 还可以使用 VMotion 将主目标移动到不发生名称冲突的其他主机上。 如果现有 VM 是孤立的虚拟机，请将其重命名，以便在同一 ESXi 主机上创建新的 VM。
 
 
 ### <a name="error-code-78093"></a>错误代码 78093
@@ -79,7 +80,7 @@ ms.locfileid: "84309945"
 
 ### <a name="error-code-8061"></a>错误代码 8061
 
-无法通过 ESXi 主机访问数据存储  。
+无法通过 ESXi 主机访问数据存储****。
 
 针对故障回复检查[主目标先决条件和支持的数据存储](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server)。
 
@@ -90,11 +91,11 @@ ms.locfileid: "84309945"
 
 ### <a name="error-code-8038"></a>错误代码 8038
 
-**由于错误导致本地虚拟机无法启动。**
+**由于出错，无法启动本地虚拟机。**
 
 当本地 VM 在一个没有预配足够内存的主机上启动时，会发生此问题。 
 
 若要解决此问题，请执行下列操作：
 
 * 可以在 ESXi 主机上预配更多内存。
-* 另外，可以使用 vMotion 将 VM 迁移到另一台有足够内存的 ESXi 主机上以启动 VM。
+* 此外，还可以使用 VMotion 将 VM 移到另一个具有足够内存的 ESXi 主机来启动 VM。

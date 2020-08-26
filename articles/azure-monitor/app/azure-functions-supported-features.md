@@ -6,11 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033507"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
@@ -41,11 +42,11 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 | &bull; 采样                     | 是             | 是               | 
 | &bull; 检测信号                   |                 | 是               | 
 | | | | 
-| **Correlation**                       |                   |                   |               
+| **Correlation (相关性)**                        |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
-| **可配置性**                      |                   |                   |           
+| **可配置**                      |                   |                   |           
 | &bull; 完全可配置。<br/>请参阅 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) 了解相应说明。<br/>请参阅 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 了解所有选项。               |                   | 是                   | 
 
 
@@ -56,11 +57,11 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 
 ## <a name="live-metrics--secure-control-channel"></a>实时指标和安全控制通道
 
-指定的自定义筛选器条件将发回到 Application Insights SDK 中的“实时指标”组件。 筛选器可能包含 customerID 等敏感信息。 可以使用机密 API 密钥确保通道安全。 有关说明，请参阅[确保控制通道安全](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)。
+指定的自定义筛选器条件将发回到 Application Insights SDK 中的“实时指标”组件。 筛选器可能包含 customerID 等敏感信息。 可以使用机密 API 密钥确保通道安全。 有关说明，请参阅[确保控制通道安全](./live-stream.md#secure-the-control-channel)。
 
 ## <a name="sampling"></a>采样
 
-Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
+Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](../../azure-functions/functions-monitoring.md#configure-sampling)。
 
 如果你的项目依赖 Application Insights SDK 进行手动遥测跟踪，则当采样配置与 Functions 的采样配置不同时，可能会遇到奇怪的行为。 
 

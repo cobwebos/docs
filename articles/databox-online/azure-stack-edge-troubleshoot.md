@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 门户对 Azure Stack Edge 进行故障排除 |Microsoft Docs
-description: 介绍如何对 Azure Stack 边缘问题进行故障排除。
+description: 了解如何对 Azure Stack 边缘的问题进行故障排除。 您可以运行诊断、收集支持信息并使用日志进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 03/15/2019
+ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 00aae3386b3f648eafdef31dccb640d8120f7ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564005"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134558"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-issues"></a>排查 Azure Stack 边缘问题
 
@@ -22,39 +22,38 @@ ms.locfileid: "85564005"
 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 运行诊断
 > * 收集支持包
 > * 使用日志进行故障排除
-
 
 ## <a name="run-diagnostics"></a>运行诊断
 
 若要诊断和排查任何设备错误，可以运行诊断测试。 在设备的本地 Web UI 中执行以下步骤，以运行诊断测试。
 
-1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。**** 选择要运行的测试，然后单击“运行测试”。**** 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
+1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。**** 选择要运行的测试，然后选择 "**运行测试**"。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 系统会通知你设备正在运行测试。
 
     ![选择测试](media/azure-stack-edge-troubleshoot/run-diag-1.png)
- 
-2. 测试完成后，会显示结果。 
+
+2. 测试完成后，会显示结果。
 
     ![查看测试结果](media/azure-stack-edge-troubleshoot/run-diag-2.png)
 
-    如果未通过某项测试，会显示建议的措施的 URL。 可以单击该 URL 查看建议的措施。
- 
-    ![查看未通过测试的警告](media/azure-stack-edge-troubleshoot/run-diag-3.png)
+    如果未通过某项测试，会显示建议的措施的 URL。 选择 URL 以查看建议的操作。
 
+    ![查看未通过测试的警告](media/azure-stack-edge-troubleshoot/run-diag-3.png)
 
 ## <a name="collect-support-package"></a>收集支持包
 
 日志包由所有可帮助 Microsoft 支持部门排查任何设备问题的相关日志组成。 可以通过本地 Web UI 生成日志包。
 
-执行以下步骤收集支持包。 
+执行以下步骤收集支持包。
 
-1. 在本地 Web UI 中，转到“故障排除”>“支持”。**** 单击“创建支持包”。**** 系统随即开始收集支持包。 收集包可能需要几分钟时间。
+1. 在本地 Web UI 中，转到“故障排除”>“支持”。**** 选择 "**创建支持包**"。 系统随即开始收集支持包。 收集包可能需要几分钟时间。
 
     ![单击“添加用户”](media/azure-stack-edge-troubleshoot/collect-logs-1.png)
- 
-2. 创建支持包后，单击“下载支持包”。**** 压缩包将下载到所选的路径。 可以解压缩该包并查看系统日志文件。
+
+2. 创建支持包后，选择 "**下载支持包**"。 压缩包将下载到所选的路径。 可以解压缩该包并查看系统日志文件。
 
     ![单击“添加用户”](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
 
@@ -62,28 +61,27 @@ ms.locfileid: "85564005"
 
 相关错误文件中包含上传和刷新过程中遇到的任何错误。
 
-1. 若要查看错误文件，请转到共享，然后单击该共享以查看内容。 
+1. 若要查看错误文件，请前往你的共享并选择它以查看内容。 
 
       ![连接到共享内容并查看](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. 单击 " _Microsoft Azure Stack 边缘" 文件夹_。 此文件夹包含两个子文件夹：
+2. 选择_Microsoft Azure Stack Edge 文件夹_。 此文件夹包含两个子文件夹：
 
-    - Upload 文件夹：包含上传错误的日志文件。
-    - Refresh 文件夹：包含刷新期间发生的错误。
+    * Upload 文件夹：包含上传错误的日志文件。
+    * Refresh 文件夹：包含刷新期间发生的错误。
 
     下面是 refresh 文件夹中的日志文件示例。
 
-    ```
+    ```xml
     <root container="test1" machine="VM15BS020663" timestamp="03/18/2019 00:11:10" />
     <file item="test.txt" local="False" remote="True" error="16001" />
     <summary runtime="00:00:00.0945320" errors="1" creates="2" deletes="0" insync="3" replaces="0" pending="9" />
-    ``` 
+    ```
 
-3. 如果此文件中包含错误（在示例中已突出显示），请记下错误代码（在本例中为 16001）。 根据以下错误参考查找此错误代码的说明。
+3. 如果在示例) 中突出显示了此文件中的错误 (，请记下错误代码，在本例中为16001。 根据以下错误参考查找此错误代码的说明。
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
-
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[此版本中的已知问题](data-box-gateway-release-notes.md)。
+* 详细了解[此版本中的已知问题](data-box-gateway-release-notes.md)。

@@ -3,12 +3,12 @@ title: 快速入门：适用于 .NET 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 .NET 的 QnA Maker 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 06aaf8861a263711ab3d01e6355bc161538a3311
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: eecbf162f3bd043bf4aabe9796ee095667e0cc39
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114505"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246469"
 ---
 可以使用适用于 .NET 的 QnA Maker 客户端库执行以下操作：
 
@@ -27,7 +27,7 @@ ms.locfileid: "85114505"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或最新版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 * 拥有 Azure 订阅后，在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)来获取创作密钥和资源名称。 部署后，选择”转到资源”。
     * 需要从创建的资源获取密钥和资源名称，以便将应用程序连接到 QnA Maker API。 你稍后会在本快速入门中将密钥和资源名称粘贴到下文的代码中。
@@ -109,7 +109,7 @@ QnA Maker 使用两种不同的对象模型：
 
 预测 QnA Maker 客户端是一个 [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) 对象，它使用 Microsoft.Rest.ServiceClientCredentials 向 Azure 进行身份验证；Microsoft.Rest.ServiceClientCredentials 包含预测运行时密钥，发布知识库后进行创作客户端调用 `client.EndpointKeys.GetKeys` 可返回该密钥。
 
-使用 [GenerateAnswer](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswer?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_RuntimeExtensions_GenerateAnswer_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_IRuntime_System_String_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_) 方法从查询运行时获取答案。
+使用 [GenerateAnswer](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions) 方法从查询运行时获取答案。
 
 ## <a name="code-examples"></a>代码示例
 

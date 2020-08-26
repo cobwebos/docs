@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: db037668cec736bc3060b1cd3bb9651ee860a39b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261714"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446389"
 ---
-# <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB) 
+# <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff （Azure Cosmos DB）
 
-以指定的开始日期和*结束**日期*之间所跨的指定 DateTimePart 边界的带符号整数) 值形式返回计数 (。
+返回指定的开始日期和*结束**日期*之间所跨的指定 DateTimePart 边界的计数（以有符号整数值形式）。
   
 ## <a name="syntax"></a>语法
   
 ```sql
-DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
+DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 ```
 
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *DateTimePart*  
    DateTimeAdd 添加整数的日期部分。 此表列出了所有有效的 DateTimePart 参数：
 
 | DateTimePart | 缩写        |
 | ------------ | -------------------- |
-| 年龄         | "year"、"yyyy" 和 "yy" |
+| 年份         | "year"、"yyyy" 和 "yy" |
 | 月份        | "month"、"mm"、"m"   |
 | 天          | "day"、"dd"、"d"     |
 | 小时         | "hour"、"hh"         |
 | Minute       | "minute"、"mi"、"n"  |
-| 第二个       | "second"、"ss"、"s"  |
+| 秒       | "second"、"ss"、"s"  |
 | Millisecond  | "毫秒"，"ms"  |
 | 微秒  | "微秒"、"mcs" |
 | 纳秒   | "毫微秒"，"ns"   |
@@ -44,7 +44,7 @@ DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
 *StartDate*  
     UTC 日期和时间 ISO 8601 字符串值，格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
   
-  |格式|说明|
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|
@@ -65,7 +65,7 @@ DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
 
 返回一个有符号的整数值。
 
-## <a name="remarks"></a>注解
+## <a name="remarks"></a>备注
 
 DateTimeDiff 将返回 `undefined` ，原因如下：
 

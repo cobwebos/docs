@@ -1,28 +1,27 @@
 ---
 title: Azure 预留的自助交换和退款
-description: 了解如何进行 Azure 预留的交换或退款。
+description: 了解如何进行 Azure 预留的交换或退款。 要请求对预留进行交换或退款，必须具有预留订单的所有者访问权限。
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: f1323d21ee59386220a35cc31b17cab3441f0e0d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807683"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457628"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
-Azure 预留可以灵活地满足你不断变化的需求。 可将某个预留与同一类型的另一个预留进行交换，即可以交换虚拟机预留以购买任何虚拟机大小或区域的预留。 同样，可以交换 SQL PaaS 数据库预留以购买任何 SQL PaaS 数据库类型或区域的任何预留。 还可以请求对预留进行退款，但在 12 个月的滚动期限内已取消的预留承诺总数不能超过 50,000 美元。 Azure Databricks 预留容量、Azure VMware Solution by CloudSimple 预留、Azure Red Hat Open Shift 预留、Red Hat 计划和 SUSE Linux 计划不能申请退款。
+Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预留来交换同一类型的另一个预留。 例如，你可以通过交换虚拟机预留来购买其他任何 VM 大小或区域的另一个预留。 同样，可以交换 SQL PaaS 数据库预留以购买任何 SQL PaaS 数据库类型或区域的其他预留。 还可以对预留申请退款，但在 12 个月的滚动范围内，计费范围内（如 EA、Microsoft 客户协议和 Microsoft 合作伙伴协议）所有取消的预留承诺总额不得超过 50,000 美元。 Azure Databricks 预留容量、Azure VMware Solution by CloudSimple 预留、Azure Red Hat Open Shift 预留、Red Hat 计划和 SUSE Linux 计划不能申请退款。
 
 美国政府企业协议客户不能使用自助交换和取消功能。 可以使用其他美国政府订阅类型，包括即用即付和云解决方案提供商 (CSP)。
 
-若要请求对现有的预留进行交换或退款，你必须具有预留订单的所有者访问权限。 可[添加或更改可以管理预留的用户](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)。
-
 > [!NOTE]
-> Microsoft 目前不会对预留退款收取提前终止费。 但我们可能会对将来的退款收取该费用。 目前尚未确定收取此费用的日期。
+> - 若要请求对现有的预留进行交换或退款，你必须具有预留订单的所有者访问权限。 可[添加或更改可以管理预留的用户](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)。
+> - Microsoft 目前不会对预留退款收取提前终止费。 但我们可能会对将来的退款收取该费用。 目前尚未确定收取此费用的日期。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>如何对现有预留进行交换或退款
 
@@ -35,7 +34,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可将某个预留�
 1. 复查并完成交易。  
     [![显示要通过交换进行购买的 VM 产品的示例图像，完成返回](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png#lightbox)
 
-若要为某个预留退款，请转到“预留详细信息”，然后选择“退款”。 
+若要为某个预留退款，请转到“预留详细信息”，然后选择“退款”。
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>以非高级存储交换高级存储
 
@@ -76,7 +75,8 @@ Azure 预留可以灵活地满足你不断变化的需求。 可将某个预留�
 **退款策略**
 
 - 我们目前不会收取提前终止费，但将来可能会收取因取消而产生的 12% 的提前终止费。
-- 在为期 12 个月的滚动期限内，已取消的总承诺费用不能超过 50,000 美元。 示例：对于三年的预订，每月支付 100 美元并在第 18 个月退款，则取消的承诺为 1,800 美元。 退款后，新的可用退款限额为 48,200 美元。 此退款的 365天后，48,200 美元限额将增加 1800 美元，而新的池将为 50,000 美元。 所有其他预留取消将消耗同一池中的额度，并且适用于同一补充逻辑。
+- 对于计费对象信息或单个注册，取消的承诺总额在 12 个月滚动范围内不得超过 50,000 美元。 例如，对于三年的预留，每月支付 100 美元并在第 18 个月退款，则取消的承诺为 1,800 美元。 退款后，新的可用退款限额为 48,200 美元。 此退款的 365 天后，48,200 美元限额将增加 1800 美元，而新的池将为 50,000 美元。 计费对象信息或 EA 注册的所有其他预留取消将消耗同一池中的额度，并且适用于同一补充逻辑。
+- 对于计费对象信息或 EA 注册在 12 个月的时间段内超过 50,000 美元限额的任何退款，Azure 将不予处理。
 - 退款根据购买价格和当前预留价格中的最低者计算。
 - 只有预留订单所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 

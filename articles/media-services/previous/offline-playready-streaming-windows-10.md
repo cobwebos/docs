@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 001d408eaa7ce637bd7cc1f1183dd8748cddf539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8e637cd3691e7b1acf1988efe40fc80561a183
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189516"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091668"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理  
 
@@ -28,7 +28,7 @@ ms.locfileid: "82189516"
 > * [第 2 版](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用于 Windows 10/PlayReady 客户端的对 Azure 媒体服务的脱机支持。 可以通过以下文章了解对 iOS/FairPlay 和 Android/Widevine 设备的脱机模式支持：
 
@@ -48,7 +48,7 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 * 许多播放器、编码器工具都支持 MP4，但 MP4 容器和 DRM 之间不存在绑定；
 * 从长远来看，具有 CENC 的 CFF 是趋势。 然而，目前工具/播放机支持生态系统尚未出现。 现在需要一个解决方案。
  
-其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
+其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
 
 有以下两种方式用于承载 PlayReady 保护的 MP4，以便进行渐进式下载：
 

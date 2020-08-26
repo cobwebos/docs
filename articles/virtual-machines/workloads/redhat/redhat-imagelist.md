@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 Red Hat Enterprise Linux 映像 | Microsoft Docs
+title: Azure 中提供 Red Hat Enterprise Linux 映像
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838580"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291015"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中提供 Red Hat Enterprise Linux （RHEL）映像
 Azure 针对不同用例提供各种 RHEL 映像。
@@ -30,7 +31,7 @@ Azure 针对不同用例提供各种 RHEL 映像。
 > [!NOTE]
 > 不会再生成原始映像以支持 LVM 分区映像。 LVM 与较旧的原始（非 LVM）分区方案相比具有几个优点，包括更灵活的分区调整大小选项。
 
-产品/服务| SKU | 分区 | 设置 | 说明
+产品/服务| SKU | 分区 | 预配 | 说明
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理 |
 |             | 6.8      | RAW    | Linux 代理 |
@@ -54,10 +55,14 @@ RHEL          | 6.7      | RAW    | Linux 代理 |
 |             | 78-gen2  | LVM    | Linux 代理 | 已附加到常规存储库（RHEL 7.8 不可用 EUS）
 |             | 8-LVM    | LVM    | Linux 代理 | RHEL 2.x 映像系列。 已附加到常规存储库。
 |             | 8-lvm-gen2| LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.x 版映像。 已附加到常规存储库。
-|             | 8        | LVM    | Linux 代理 | RHEL 8.0 映像
+|             | 8        | LVM    | Linux 代理 | RHEL 8.0 映像。
 |             | 8-gen2   | LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.0 映像。
-|             | 8.1      | LVM    | Linux 代理 | RHEL 8.1 映像。 当前已附加到常规存储库。
+|             | 8.1      | LVM    | Linux 代理 | RHEL 8.2 映像。 当前已附加到常规存储库。
 |             | 81gen2   | LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.1 映像。 当前已附加到常规存储库。
+|             | 8.1-ci   | LVM    | Linux 代理 | RHEL 8.1 映像，使用 cloud init 作为预配代理。 当前已附加到常规存储库。
+|             | 81-ci-gen2| LVM    | Linux 代理 | Hyper-v 第2代-使用 cloud init 作为预配代理的 RHEL 8.1 映像。 当前已附加到常规存储库。
+|             | 8.2      | LVM    | Linux 代理 | RHEL 8.2 映像。 当前已附加到常规存储库。
+|             | 82gen2   | LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.1 映像。 当前已附加到常规存储库。
 RHEL-SAP      | 7.4      | LVM    | Linux 代理 | 适用于 SAP HANA 和商业应用的 RHEL 7.4。 附加到 E4S 存储库，将为 SAP 和 RHEL 提供高级版，以及基础计算费用。
 |             | 74sap-gen2| LVM    | Linux 代理 | 适用于 SAP HANA 和商业应用的 RHEL 7.4。 第2代映像。 附加到 E4S 存储库，将为 SAP 和 RHEL 提供高级版，以及基础计算费用。
 |             | 7.5       | LVM    | Linux 代理 | 适用于 SAP HANA 和商业应用的 RHEL 7.5。 附加到 E4S 存储库，将为 SAP 和 RHEL 提供高级版，以及基础计算费用。
@@ -83,8 +88,17 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux 代理 | RHEL 7.4，适用于具�
 rhel-byos     |rhel-lvm74| LVM    | Linux 代理 | RHEL 7.4 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
 |             |rhel-lvm75| LVM    | Linux 代理 | RHEL 7.5 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
 |             |rhel-lvm76| LVM    | Linux 代理 | RHEL 7.6 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
+|             |rhel-lvm76-gen2| LVM    | Linux 代理 | RHEL 7.6 第2代 BYOS 映像不会附加到任何更新源，而不会向 RHEL 高级版收费。
 |             |rhel-lvm77| LVM    | Linux 代理 | RHEL 7.7 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
-|             |rhel-lvm8 | LVM    | Linux 代理 | RHEL 8 BYOS 映像（RHEL 次版本显示在映像版本值中），不会附加到任何更新源，而不会向 RHEL 高级版收费。
+|             |rhel-lvm77-gen2| LVM    | Linux 代理 | RHEL 7.7 第2代 BYOS 映像不会附加到任何更新源，而不会向 RHEL 高级版收费。
+|             |rhel-lvm78| LVM    | Linux 代理 | RHEL 7.8 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
+|             |rhel-lvm78-gen2| LVM    | Linux 代理 | RHEL 7.8 第2代 BYOS 映像不会附加到任何更新源，而不会向 RHEL 高级版收费。
+|             |rhel-lvm8 | LVM    | Linux 代理 | RHEL 8.0 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
+|             |rhel-lvm8-gen2 | LVM    | Linux 代理 | RHEL 8.0 第2代 BYOS 映像不会附加到任何更新源，而不会向 RHEL 高级版收费。
+|             |rhel-lvm81 | LVM    | Linux 代理 | RHEL 8.1 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
+|             |rhel-lvm81-gen2 | LVM    | Linux 代理 | RHEL 8.1 第2代 BYOS 映像不会附加到任何更新源，而不会向 RHEL 高级版收费。
+|             |rhel-lvm82 | LVM    | Linux 代理 | RHEL 8.2 BYOS 映像不会附加到任何更新源，也不会向 RHEL 高级版收费。
+|             |rhel-lvm82-gen2 | LVM    | Linux 代理 | RHEL 8.2 第2代 BYOS 映像不会附加到任何更新源，而不会向 RHEL 高级版收费。
 
 > [!NOTE]
 > RHEL-SAP-HANA 产品产品的使用情况被视为 Red Hat 的生命周期。 现有部署将继续正常运行，但 Red Hat 建议客户从 RHEL-SAP HANA 映像迁移到 RHEL-SAP-HA 映像，其中包括 SAP HANA 存储库以及 HA 加载项。 [此处](https://access.redhat.com/articles/3751271)提供了有关 Red HAT 的 SAP 云产品/服务的更多详细信息。

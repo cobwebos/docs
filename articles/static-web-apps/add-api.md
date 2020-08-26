@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104106"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691490"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -21,11 +22,11 @@ ms.locfileid: "86104106"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。
-  - 如果没有帐户，可以[免费创建一个](https://azure.microsoft.com/free)。
+  - 如果没有帐户，可以 [免费创建一个](https://azure.microsoft.com/free)。
 - [Visual Studio Code](https://code.visualstudio.com/)
 - 适用于 Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 - [Live Server Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) 扩展。
-- [Node.js](https://nodejs.org/download/)在本地运行 API 应用
+- [Node.js](https://nodejs.org/download/) 在本地运行 API 应用
 
 ## <a name="create-a-git-repository"></a>创建 Git 存储库
 
@@ -62,9 +63,9 @@ ms.locfileid: "86104106"
 
 1. 根据提示提供以下信息：
 
-    - _选择语言_：选择**JavaScript**
+    - _选择语言_：选择 **JavaScript**
     - _为项目的第一个函数选择模板_：选择“HTTP 触发器”
-    - _提供函数名称_：输入**GetMessage**
+    - _提供函数名称_：输入 **GetMessage**
     - _授权级别_：选择“匿名”，这使任何人都可以调用你的函数终结点。
         - 若要了解授权级别，请参阅[授权密钥](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
@@ -133,26 +134,26 @@ Visual Studio Code 使用 HTTP 触发的函数生成 Azure Functions 项目。
 
 ## <a name="run-the-api-locally"></a>在本地运行 API
 
-Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) 集成，方便你在将内容发布到 Azure 之前在本地开发计算机上运行此项目。
+Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions-run-local.md) 集成，方便你在将内容发布到 Azure 之前在本地开发计算机上运行此项目。
 
 > [!TIP]
-> 在继续操作之前，请确保已安装[先决条件](#prerequisites)部分中列出的所有资源。
+> 在继续操作之前，请确保已安装 [先决条件](#prerequisites) 部分中列出的所有资源。
 
-1. 按**F5**运行函数以启动函数应用。
+1. 按 **F5** 运行函数以启动函数应用。
 
 1. 如果尚未安装 Azure Functions Core Tools，请在提示符下选择“安装”。
 
-    核心工具显示_终端_面板中正在运行的应用程序的输出。 作为输出的一部分，可以看到 HTTP 触发函数的 URL 终结点在本地运行。
+    核心工具显示 _终端_ 面板中正在运行的应用程序的输出。 作为输出的一部分，可以看到 HTTP 触发函数的 URL 终结点在本地运行。
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
 
-1. 在核心工具运行的情况下，导航到以下 URL 以验证 API 是否正常运行： <http://localhost:7071/api/message> 。
+1. 在核心工具运行的情况下，导航到以下 URL 以验证 API 是否正常运行： `http://localhost:7071/api/message` 。
 
    浏览器中的响应应类似于以下示例：
 
    :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
 
-1. 按**Shift + F5**停止调试会话。
+1. 按 **Shift + F5** 停止调试会话。
 
 ### <a name="call-the-api-from-the-application"></a>从应用程序调用 API
 
@@ -192,7 +193,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/a
    </html>
    ```
 
-1. 按**F5**启动 API 项目。
+1. 按 **F5** 启动 API 项目。
 
 1. 按 F1 并选择“Live Server:使用 Live Server 打开”来启动 Live Server。
 
@@ -203,7 +204,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/a
    > [!NOTE]
    > 可以使用其他 HTTP 服务器或代理来提供 `index.html` 文件。 从 `file:///` 访问 `index.html` 将不起作用。
 
-1. 按**Shift + F5**停止 API 项目。
+1. 按 **Shift + F5** 停止 API 项目。
 
 ### <a name="commit-and-push-your-changes-to-github"></a>提交所做的更改并将其推送到 GitHub
 
@@ -211,17 +212,17 @@ Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/a
 
 1. 按 F1 打开命令面板
 1. 键入“Git:Commit All”
-1. 添加提交消息，然后按**enter**
-1. 按**F1**
-1. 键入**Git： push**并按**enter**
+1. 添加提交消息，然后按 **enter**
+1. 按 **F1**
+1. 键入 **Git： push** 并按 **enter**
 
 ## <a name="create-a-static-web-app"></a>创建静态 Web 应用
 
 1. 导航到 [Azure 门户](https://portal.azure.com)
 1. 单击“创建资源”
-1. 搜索**静态 Web 应用**
-1. 单击**静态 Web 应用（预览）**
-1. 单击“创建” 
+1. 搜索 **静态 Web 应用**
+1. 单击 " **静态 Web 应用 (预览") **
+1. 单击“创建”
 
 接下来，添加特定于应用的设置。
 
@@ -244,9 +245,9 @@ Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/a
 1. 单击“查看 + 创建”。
 1. 单击“创建”按钮
 
-    单击 "_创建_" 按钮后，Azure 将执行两项任务。 首先，创建底层云服务来支持应用程序。 接下来，后台进程开始生成并部署应用程序。
+    单击 " _创建_ " 按钮后，Azure 将执行两项任务。 首先，创建底层云服务来支持应用程序。 接下来，后台进程开始生成并部署应用程序。
 
-1. 单击 "**转到资源**" 按钮，转到 web 应用的 "_概述_" 页。
+1. 单击 " **转到资源** " 按钮，转到 web 应用的 " _概述_ " 页。
 
     在后台生成应用时，可以单击包含用于查看生成状态的链接的标题。
 

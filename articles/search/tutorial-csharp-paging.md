@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: ad57fe01313957c4f3d23ef44d0e02ad11ab3fa8
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3fb77c147db0883dc1dc61040f916bcec88237c4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262168"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420611"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>教程：使用 .NET SDK 为搜索结果添加分页功能
 

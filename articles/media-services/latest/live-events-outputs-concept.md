@@ -14,11 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c41538acdb8ed94ee4995ad8d5f5e4cebb2e14d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043442"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -29,11 +30,11 @@ ms.locfileid: "81010573"
 
 ## <a name="live-events"></a>直播活动
 
-[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 创建实时事件时，会创建一个主要和辅助输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)（分段 MP4）输入协议将贡献源发送到该输入终结点。 对于 RTMP 引入协议，内容可以通过明文 (`rtmp://`) 或网络安全加密 (`rtmps://`) 的方式发送。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。  
+[直播活动](/rest/api/media/liveevents)负责引入和处理实时视频源。 创建实时事件时，会创建一个主要和辅助输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)（分段 MP4）输入协议将贡献源发送到该输入终结点。 对于 RTMP 引入协议，内容可以通过明文 (`rtmp://`) 或网络安全加密 (`rtmps://`) 的方式发送。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。  
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)可以设置为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
+[直播活动](/rest/api/media/liveevents)可以设置为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 这些类型是在创建期间使用 [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
 * **LiveEventEncodingType.None**：本地实时编码器发送多比特率流。 引入的流通过直播活动传递，而不会经过任何进一步的处理。 也称为“直通模式”。
 * **LiveEventEncodingType.Standard**：本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对。
@@ -86,7 +87,7 @@ ms.locfileid: "81010573"
 ### <a name="naming-rules"></a>命名规则
 
 * 最大直播活动名称为 32 个字符。
-* 该名称应遵循此[正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式：`^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
+* 该名称应遵循此[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)模式：`^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
 
 另请参阅[流式处理终结点命名约定](streaming-endpoint-concept.md#naming-convention)。
 
@@ -123,9 +124,9 @@ ms.locfileid: "81010573"
 
     |语言|启用虚 URL|设置访问令牌|
     |---|---|---|
-    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[properties.vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--vanity-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则
 
@@ -163,7 +164,7 @@ ms.locfileid: "81010573"
 
 ## <a name="live-event-preview-url"></a>直播活动预览 URL
 
-一旦实时事件开始接收贡献源，你就可以使用其预览终结点进行预览，并在进一步发布之前验证是否可以收到实时流。 确认预览流正常后，可以使用实时事件来确保可以通过一个或多个（预先创建的）流式处理终结点传送实时流。 为此，请针对实时事件创建新的[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)。
+一旦实时事件开始接收贡献源，你就可以使用其预览终结点进行预览，并在进一步发布之前验证是否可以收到实时流。 确认预览流正常后，可以使用实时事件来确保可以通过一个或多个（预先创建的）流式处理终结点传送实时流。 为此，请针对实时事件创建新的[实时输出](/rest/api/media/liveoutputs)。
 
 > [!IMPORTANT]
 > 确保视频流向预览 URL，然后再继续操作！
@@ -174,7 +175,7 @@ ms.locfileid: "81010573"
 
 ## <a name="live-outputs"></a>实时输出
 
-将流传输到[实时事件](https://docs.microsoft.com/rest/api/media/liveoutputs)后，可以通过创建[资产](https://docs.microsoft.com/rest/api/media/assets)、实时输出和[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)来启动流事件。 实时输出会存档流，并使观看者可通过[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使用该流。  
+将流传输到[实时事件](/rest/api/media/liveoutputs)后，可以通过创建[资产](/rest/api/media/assets)、实时输出和[流定位符](/rest/api/media/streaminglocators)来启动流事件。 实时输出会存档流，并使观看者可通过[流式处理终结点](/rest/api/media/streamingendpoints)使用该流。  
 
 有关实时输出的详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
 

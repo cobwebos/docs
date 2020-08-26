@@ -1,18 +1,20 @@
 ---
-title: 在 GitHub 操作中对 Azure 春季 Cloud 进行 Key Vault 身份验证
+title: 在 GitHub Actions 中使用密钥保管库对 Azure Spring Cloud 进行身份验证
 description: 如何使用带有 GitHub 操作的 Azure 春季 Cloud 的 CI/CD 工作流的密钥保管库
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484350"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076021"
 ---
-# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub 操作中对 Azure 春季 Cloud 进行 Key Vault 身份验证
+# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub Actions 中使用密钥保管库对 Azure Spring Cloud 进行身份验证
 Key vault 是存储密钥的安全位置。 企业用户需要在其控制范围内的 CI/CD 环境中存储凭据。 用于获取密钥保管库中凭据的密钥应限制为资源作用域。  它仅可以访问密钥保管库作用域，而不能访问整个 Azure 作用域。 它类似于只能打开一个强框的键，而不是可打开大楼中所有门的主密钥。 这是一种使用另一个密钥获取密钥的方法，这在 CICD 工作流中非常有用。 
 
 ## <a name="generate-credential"></a>生成凭据

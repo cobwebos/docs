@@ -9,11 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214445"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489701"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
@@ -25,6 +26,72 @@ ms.locfileid: "85214445"
 - 不带引号和带引号的值，以及转义字符
 
 上述所有类型都将在下文中进行介绍。
+
+## <a name="quickstart-example"></a>快速入门示例
+
+`OPENROWSET`函数可以通过提供文件的 URL 来读取 CSV 文件的内容。
+
+### <a name="read-a-csv-file"></a>读取 csv 文件
+
+查看文件内容的最简单方法 `CSV` 是提供 `OPENROWSET` 函数的文件 URL、指定 csv `FORMAT` 和 2.0 `PARSER_VERSION` 。 如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则您应该能够使用如下例所示的查询查看该文件的内容：
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+选项 `firstrow` 用于跳过在这种情况下表示标头的 CSV 文件中的第一行。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+### <a name="data-source-usage"></a>数据源使用情况
+
+前面的示例使用文件的完整路径。 作为替代方法，可以创建一个外部数据源，其中包含指向存储根文件夹的位置：
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+创建数据源后，可以在函数中使用该数据源和该文件的相对路径 `OPENROWSET` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+如果使用 SAS 密钥或自定义标识来保护数据源，则可以[使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+
+### <a name="explicitly-specify-schema"></a>显式指定架构
+
+`OPENROWSET`使您能够使用子句显式指定要读取的列 `WITH` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+子句中的数据类型后面的数字 `WITH` 表示 CSV 文件中的列索引。
+
+在以下部分中，可以了解如何查询各种类型的 CSV 文件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -147,7 +214,7 @@ WHERE
 > [!NOTE]
 > 如果省略 FIELDQUOTE 参数，此查询会返回相同的结果，因为 FIELDQUOTE 的默认值是双引号。
 
-## <a name="escaping-characters"></a>转义字符
+## <a name="escape-characters"></a>转义字符
 
 以下查询展示了如何读取包含标题行、包含 Unix 样式换行符、逗号分隔列和用于值内字段分隔符（逗号）的转义字符的文件。 请注意文件位置，相较其他示例中有何不同。
 
@@ -179,7 +246,7 @@ WHERE
 > [!NOTE]
 > 如果未指定 ESCAPECHAR，此查询将失败，因为 "Slov,enia" 中的逗号将被视为字段分隔符，而不是国家/地区名称的一部分。 "Slov,enia" 将被视为两个列。 因此，该特定行将比其他行多一列，并且比 WITH 子句中定义的列数多一列。
 
-### <a name="escaping-quoting-characters"></a>转义引用字符
+### <a name="escape-quoting-characters"></a>转义引用字符
 
 下面的查询显示了如何读取带有标题行的文件，其中包含 Unix 样式的新行、逗号分隔的列和值中的转义双引号字符。 请注意文件位置，相较其他示例中有何不同。
 
@@ -239,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>返回列的子集
+## <a name="return-a-subset-of-columns"></a>返回列的子集
 
 到目前为止，已通过使用 WITH 和列出所有列来指定了 CSV 文件架构。 可以通过对所需的每个列使用序号来仅指定查询中实际要用的列。 这样将忽略不需要使用的列。
 

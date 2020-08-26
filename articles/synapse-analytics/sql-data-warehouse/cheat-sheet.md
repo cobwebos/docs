@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d5004dc48fe3052d6632573da67f4069eb6fac1c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208172"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136093"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics（以前称为 SQL DW）的速查表
 
@@ -37,7 +37,7 @@ ms.locfileid: "85208172"
 
 ## <a name="data-migration"></a>数据迁移
 
-首先，请将数据载入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入临时表中。 使用以下配置：
+首先，请将数据载入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 存储。 接下来，使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（预览版）将数据加载到临时表中。 使用以下配置：
 
 | 设计 | 建议 |
 |:--- |:--- |
@@ -109,7 +109,7 @@ ms.locfileid: "85208172"
 
 ## <a name="maintain-statistics"></a>维护统计信息
 
- 在自动统计信息功能推出正式版之前，要求手动维护统计信息。 对数据做*重大*更改时务必更新统计信息。 这有助于优化查询计划。 如果发现维护所有统计信息所需时间太长，请更谨慎地选择包含统计信息的列。
+对数据做*重大*更改时务必更新统计信息。 请参阅[更新统计信息](sql-data-warehouse-tables-statistics.md#update-statistics)，确定是否发生重大更改。 更新的统计信息可以优化查询计划。 如果发现维护所有统计信息所需时间太长，请更谨慎地选择包含统计信息的列。
 
 还可以定义更新频率。 例如，可能想要更新每天都要添加新值的日期列。 对涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列进行信息统计，可以获得最大效益。
 
@@ -131,9 +131,7 @@ Azure Synapse 的一个重要功能是可以[管理计算资源](sql-data-wareho
 
 立即使用 Azure Functions 根据需要进行自动缩放：
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 ## <a name="optimize-your-architecture-for-performance"></a>优化体系结构以提高性能
 
@@ -143,6 +141,4 @@ Azure Synapse 的一个重要功能是可以[管理计算资源](sql-data-wareho
 
 单击一下即可在 SQL 池的 SQL 数据库中部署辐射型体系结构：
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

@@ -4,12 +4,12 @@ description: Azure 中适用于 Web 应用、虚拟机规模集和云服务的�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539527"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327049"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
@@ -22,7 +22,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
   自动缩放设置具有最大、最小和默认实例值。
 * 自动缩放作业始终读取要作为缩放依据的关联指标，检查它是否超过针对扩大或缩小配置的阈值。 可以在 [Azure 监视器自动缩放常用指标](autoscale-common-metrics.md)查看可以作为自动缩放依据的指标列表。
 * 所有阈值都在实例级别进行计算。 例如，“如果实例计数为 2，则在平均 CPU > 80% 时横向扩展增加 1 个实例”表示在所有实例间的平均 CPU 大于 80% 时进行扩大。
-* 所有自动缩放失败都会记录到活动日志中。 然后可以配置[活动日志警报](./../../azure-monitor/platform/activity-log-alerts.md)，以便在自动缩放失败时通过电子邮件、短信或 Webhook 获得通知。
+* 所有自动缩放失败都会记录到活动日志中。 然后可以配置[活动日志警报](./activity-log-alerts.md)，以便在自动缩放失败时通过电子邮件、短信或 Webhook 获得通知。
 * 同样，所有成功的缩放操作也会发布到活动日志中。 然后可以配置活动日志警报，以便在自动缩放操作成功时通过电子邮件、短信或 Webhook 获得通知。 还可以配置电子邮件或 Webhook 通知，以通过自动缩放设置上的通知选项卡获取有关成功缩放操作的通知。
 
 ## <a name="autoscale-best-practices"></a>自动缩放最佳做法
@@ -151,3 +151,4 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [创建活动日志警报以监视订阅上所有失败的自动横向缩减/横向扩展操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

@@ -2,14 +2,14 @@
 title: 在 Durable Functions 中处理外部事件 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理外部事件。
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165543"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014933"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -20,7 +20,7 @@ ms.locfileid: "86165543"
 
 ## <a name="wait-for-events"></a>等待事件
 
-"业务流程触发器绑定" 的[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) ( .net) 和 `waitForExternalEvent` (JavaScript) 方法允许[业务流程](durable-functions-bindings.md#orchestration-trigger)协调程序函数以异步方式等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
+业务流程触发器绑定的[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) （.net）、 `waitForExternalEvent` （JavaScript）和 `wait_for_external_event` （Python）方法允许[业务流程](durable-functions-bindings.md#orchestration-trigger)协调程序函数以异步方式等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -57,6 +57,22 @@ module.exports = df.orchestrator(function*(context) {
         // approval denied - send a notification
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    approved = context.wait_for_external_event('Approval')
+    if approved:
+        # approval granted - do the approved action
+    else:
+        # approval denied - send a notification
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---
@@ -116,9 +132,31 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    event1 = context.wait_for_external_event('Event1')
+    event2 = context.wait_for_external_event('Event2')
+    event3 = context.wait_for_external_event('Event3')
+
+    winner = context.task_any([event1, event2, event3])
+    if winner == event1:
+        # ...
+    elif winner == event2:
+        # ...
+    elif winner == event3:
+        # ...
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
-前面的示例侦听多个事件中的“任何一个”。  还可以等待“所有”事件。 
+前面的示例侦听多个事件中的“任何一个”。** 还可以等待“所有”事件。**
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -164,20 +202,39 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    application_id = context.get_input()
+    
+    gate1 = context.wait_for_external_event('CityPlanningApproval')
+    gate2 = context.wait_for_external_event('FireDeptApproval')
+    gate3 = context.wait_for_external_event('BuildingDeptApproval')
+
+    yield context.task_all([gate1, gate2, gate3])
+    yield context.call_activity('IssueBuildingPermit', application_id)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 `WaitForExternalEvent` 无限期地等待一些输入。  在等待时，可以安全地卸载函数应用。 对于此业务流程实例，如果某个事件到达，则会自动唤醒并立即处理该事件。
 
 > [!NOTE]
-> 如果函数应用使用消耗计划，当业务流程协调程序函数等待来自 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 的任务时，无论它等待多久，都不会产生账单费用。
+> 如果函数应用使用消耗计划，当业务流程协调程序函数正在等待 `WaitForExternalEvent` （.net）、 `waitForExternalEvent` （JavaScript）或（Python）中的任务时，无论 `wait_for_external_event` 它等待多长时间，都不会产生帐单费用。
 
 ## <a name="send-events"></a>发送事件
 
-可以使用[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) ( .net) 或 `raiseEventAsync` (JavaScript) 方法将外部事件发送到业务流程。 这些方法由[业务流程客户端](durable-functions-bindings.md#orchestration-client)绑定公开。 你还可以使用内置的 "[引发" 事件 HTTP API](durable-functions-http-api.md#raise-event)将外部事件发送到业务流程。
+您可以使用[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) （.net）或 `raiseEventAsync` （JavaScript）方法将外部事件发送到业务流程。 这些方法由[业务流程客户端](durable-functions-bindings.md#orchestration-client)绑定公开。 你还可以使用内置的 "[引发" 事件 HTTP API](durable-functions-http-api.md#raise-event)将外部事件发送到业务流程。
 
-引发的事件包括*实例 ID*、*事件名称*和*eventData*作为参数。 业务流程协调程序函数使用 `WaitForExternalEvent` ( .net) 或 `waitForExternalEvent` (JavaScript) api 来处理这些事件。 对于要处理的事件，该事件*名称*在发送和接收端上必须匹配。 事件数据还必须是 JSON 可序列化的。
+引发的事件包括*实例 ID*、*事件名称*和*eventData*作为参数。 业务流程协调程序函数使用 `WaitForExternalEvent` （.net）或 `waitForExternalEvent` （JavaScript） api 处理这些事件。 对于要处理的事件，该事件*名称*在发送和接收端上必须匹配。 事件数据还必须是 JSON 可序列化的。
 
-在内部，"raise 事件" 机制将排队由等待协调器函数选取的消息。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列**。 如果业务流程实例稍后开始侦听该事件名称，** 它将检查队列中的事件消息。
+在内部，"raise 事件" 机制将排队由等待协调器函数选取的消息。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列  。 如果业务流程实例稍后开始侦听该事件名称，  它将检查队列中的事件消息。
 
 > [!NOTE]
 > 如果没有具有指定*实例 ID* 的业务流程实例，则丢弃事件消息。
@@ -210,9 +267,20 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(instance_id:str, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    await client.raise_event(instance_id, 'Approval', True)
+```
+
 ---
 
-在内部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 将正在等待的业务流程协调程序函数选取的消息排入队列。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列**。 如果业务流程实例稍后开始侦听该事件名称，** 它将检查队列中的事件消息。
+在内部， `RaiseEventAsync` （.net）、 `raiseEvent` （JavaScript）或 `raise_event` （Python）排队等待协调器函数选取的消息。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列**。 如果业务流程实例稍后开始侦听该事件名称，** 它将检查队列中的事件消息。
 
 > [!NOTE]
 > 如果没有具有指定*实例 ID* 的业务流程实例，则丢弃事件消息。

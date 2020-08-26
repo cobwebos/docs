@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833266"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236737"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-如果将 web 应用、Linux 上的 web 应用、移动后端或 API 应用部署到[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)，则在**标准**、**高级**或**独立**应用服务计划层中运行时，可以使用单独的部署槽而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
+如果将 web 应用、Linux 上的 web 应用、移动后端或 API 应用部署到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)，则在 **标准**、 **高级**或 **独立** 应用服务计划层中运行时，可以使用单独的部署槽而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
 
 将应用程序部署到非生产槽具有以下优点：
 
@@ -58,7 +58,7 @@ ms.locfileid: "85833266"
    
     ![部署槽标题](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 为了提醒你正在查看部署槽，应用名称显示为 **\<app-name>/\<slot-name>** ，应用类型为**应用服务（槽）**。 也可以将槽视为资源组中具有相同名称的单独应用。
+    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 为了提醒你正在查看部署槽，应用名称显示为 **\<app-name>/\<slot-name>** ，应用类型为 **应用服务 (槽) **。 也可以将槽视为资源组中具有相同名称的单独应用。
 
 6. 选择此槽资源页中的应用 URL。 部署槽有其自己的主机名，同时也是动态应用。 若要限制对部署槽的公共访问权限，请参阅 [Azure 应用服务 IP 限制](app-service-ip-restrictions.md)。
 
@@ -288,7 +288,7 @@ ms.locfileid: "85833266"
 
 Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure 应用服务的部署槽的支持。
 
-有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/overview)。  
+有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/)。  
 
 ---
 ### <a name="create-a-web-app"></a>创建 Web 应用
@@ -423,7 +423,6 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
       ...
     </conditions>
     ```
-- 某些 [IP 限制规则](app-service-ip-restrictions.md)可能会阻止交换操作将 HTTP 请求发送到应用。 以 `10.` 和 `100.` 开头的 IPv4 地址范围是部署内部的地址。 应允许这些地址连接到你的应用。
 
 - 槽交换之后，应用可能会遇到意外的重启。 这是因为，在交换之后，主机名绑定配置会失去同步，这种情况本身不会导致重启。 但是，某些基础存储事件（例如存储卷故障转移）可能会检测到这些差异，因而强制所有工作进程重启。 为了尽量减少这种重启，请在所有槽中设置 [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` 应用设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。 但是，此应用设置不适用于 Windows Communication Foundation (WCF) 应用。
 

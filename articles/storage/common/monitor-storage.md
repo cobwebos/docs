@@ -1,6 +1,6 @@
 ---
 title: 监视 Azure 存储 | Microsoft Docs
-description: 了解如何监视 Azure 存储的性能和可用性。
+description: 了解如何监视 Azure 存储的性能和可用性。 监视 Azure 存储数据、了解配置以及分析指标和日志数据。
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182706"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836660"
 ---
 # <a name="monitor-azure-storage"></a>监视 Azure 存储
 
@@ -46,15 +46,15 @@ Azure 存储会收集与其他 Azure 资源类型相同的监视数据，如[监
 
 Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)。
 
-你可以根据需要继续使用经典指标和日志。 事实上，我们同时提供了经典指标和日志以及 Azure Monitor 中的指标和日志。 在 Azure 存储终止旧指标和日志上的服务之前，支持范围保持不变。
+如果需要，可以继续使用经典指标和日志。 实际上，经典指标和日志可与 Azure Monitor 中的指标和日志同时使用。 在 Azure 存储终止旧指标和日志的服务之前，支持范围保持不变。
 
-### <a name="logs-in-azure-monitor-preview"></a>Azure Monitor（预览版）中的日志
+### <a name="logs-in-azure-monitor-preview"></a>Azure Monitor 中的日志（预览版）
 
 仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。 Azure 存储日志包含有关成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。
 
 #### <a name="log-authenticated-requests"></a>记录经过身份验证的请求
 
- 将记录以下类型的已经过身份验证的请求：
+ 将记录以下类型的经过身份验证的请求：
 
 - 成功的请求
 - 失败的请求，包括超时、限制、网络、授权和其他错误
@@ -65,7 +65,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 #### <a name="log-anonymous-requests"></a>记录匿名请求
 
- 将记录以下类型的匿名请求：
+ 记录以下类型的匿名请求：
 
 - 成功的请求
 - 服务器错误
@@ -78,7 +78,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 系统会自动收集平台指标和活动日志，但你需要创建诊断设置来收集资源日志，或将其转发到 Azure Monitor 之外。 要了解使用 Azure 门户、Azure CLI 或 PowerShell 创建诊断设置的过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
 
-创建诊断设置时，请选择要为其启用日志的存储类型，如 blob、队列、表或文件。 Data Lake Storage Gen2 不会显示为存储类型。 这是因为 Data Lake Storage Gen2 是可用于 Blob 存储的一组功能。 
+创建诊断设置时，请选择要为其启用日志的存储类型，如 blob、队列、表或文件。 Data Lake Storage Gen2 不会显示为存储类型。 这是因为 Data Lake Storage Gen2 是适用于 Blob 存储的一组功能。 
 
 如果在 Azure 门户中创建诊断设置，则可以从列表中选择资源。 如果使用 PowerShell 或 Azure CLI，则需要使用存储类型的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
 
@@ -86,9 +86,9 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 | 类别 | 说明 |
 |:---|:---|
-| StorageRead | 对 blob 的读取操作。 |
-| StorageWrite | 对 blob 的写入操作。 |
-| StorageDelete | 对 blob 的删除操作。 |
+| StorageRead | 对对象的读取操作。 |
+| StorageWrite | 对象上的写入操作。 |
+| StorageDelete | 对对象的删除操作。 |
 
 ## <a name="analyze-metric-data"></a>分析指标数据
 
@@ -346,9 +346,9 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 |StorageQueueLogs | 描述队列中的活动的日志。|
 |StorageTableLogs| 描述表中的活动的日志。|
 
-Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是可以在 Blob 存储帐户上启用的一组功能。 如果已启用这些功能，日志将继续出现在 StorageBlobLogs 表中。 
+Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 它是可以在 Blob 存储帐户上启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLogs 表中。 
 
-### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储 Log Analytics 查询
+### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储日志分析查询
 
 你可在“日志搜索”栏中输入下面这些查询，以帮助监视 Azure 存储帐户。 这些查询使用[新语言](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
 

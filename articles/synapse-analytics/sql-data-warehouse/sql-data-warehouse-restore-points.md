@@ -11,12 +11,12 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 18d341db8538af12dbbabab4797459779a553e4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66a2dad9396e8bf7c8ef49db529f7a5486cc8a8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089201"
 ---
 # <a name="user-defined-restore-points"></a>用户定义的还原点
 
@@ -26,7 +26,7 @@ ms.locfileid: "85204993"
 
 若要创建用户定义的还原点，请使用 [New-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet。
 
-1. 开始之前，请确保[安装 Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+1. 开始之前，请确保[安装 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 打开 PowerShell。
 3. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 4. 选择包含要还原的数据库的订阅。

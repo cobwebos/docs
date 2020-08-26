@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258108"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125526"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
 Azure 数字孪生的核心是代表您的整个环境的克隆[图](concepts-twins-graph.md)。 克隆图形由通过**关系**连接的单个数字孪生组成。
 
-拥有工作[Azure 数字孪生实例](how-to-set-up-instance.md)并为客户端应用设置[身份验证](how-to-authenticate-client.md)后，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)在 Azure 数字孪生实例中创建、修改和删除数字孪生及其关系。 你还可以使用[.net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 数字孪生 CLI](how-to-use-cli.md)。
+一旦拥有工作[Azure 数字孪生实例](how-to-set-up-instance-scripted.md)，并在客户端应用程序中设置了[身份验证](how-to-authenticate-client.md)代码，就可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)来创建、修改和删除 Azure 数字孪生实例中的数字孪生和它们之间的关系。 还可以使用[.net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 数字孪生 CLI](how-to-use-cli.md)。
 
-本文重点介绍如何作为一个整体来管理关系和图形;若要使用单独的数字孪生，请参阅[操作方法：管理数字孪生](how-to-manage-twin.md)。
+本文重点介绍如何作为一个整体来管理关系和图形;若要使用单独的数字孪生，请参阅[*操作方法：管理数字孪生*](how-to-manage-twin.md)。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -31,8 +31,8 @@ Azure 数字孪生的核心是代表您的整个环境的克隆[图](concepts-tw
 关系是使用调用创建的 `CreateRelationship` 。 
 
 若要创建关系，需要指定：
-* 源克隆 ID (关系源自的位置) 
-* 目标克隆 ID (关系到达的位置) 
+* 源源源 ID （关系源自的位置）
+* 目标克隆 ID （关系到达的位置的位置）
 * 关系名称
 * 关系 ID
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-有关 helper 类的详细信息 `BasicRelationship` ，请参阅 how [To： Use The Azure 数字孪生 Api and sdk](how-to-use-apis-sdks.md)。
+有关 helper 类的详细信息 `BasicRelationship` ，请参阅 how [*To： Use The Azure 数字孪生 Api and sdk*](how-to-use-apis-sdks.md)。
 
 ## <a name="list-relationships"></a>列出关系
 
@@ -108,7 +108,7 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有�
 
 上面的代码示例重点介绍如何查找传出关系。 下面的示例类似，但却查找传入关系。 它还会在找到它们后将其删除。
 
-请注意，IncomingRelationship 调用不返回完整的
+请注意， `IncomingRelationship` 调用不返回关系的完整正文。
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -134,7 +134,7 @@ async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtI
 
 您可以使用删除关系 `DeleteRelationship(source, relId);` 。
 
-第一个参数指定源的源位置 (关系源自的位置) 。 另一个参数是关系 ID。 由于关系 Id 只在克隆的作用域内是唯一的，因此您需要同时使用的 ID 和关系 ID。
+第一个参数指定源克隆（关系源自的位置）。 另一个参数是关系 ID。 由于关系 Id 只在克隆的作用域内是唯一的，因此您需要同时使用的 ID 和关系 ID。
 
 ## <a name="create-a-twin-graph"></a>创建克隆图形 
 
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>用 CLI 管理关系
 
-孪生及其关系也可以使用 Azure 数字孪生 CLI 进行管理。 有关命令，请参阅[操作方法：使用 Azure 数字孪生 CLI](how-to-use-cli.md)。
+孪生及其关系也可以使用 Azure 数字孪生 CLI 进行管理。 有关命令，请参阅[*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何查询 Azure 数字孪生克隆图形：
-* [概念：查询语言](concepts-query-language.md)
-* [操作方法：查询双子图形](how-to-query-graph.md)
+* [*概念：查询语言*](concepts-query-language.md)
+* [*操作方法：查询双子图形*](how-to-query-graph.md)

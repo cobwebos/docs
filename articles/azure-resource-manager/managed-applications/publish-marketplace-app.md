@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054485"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480418"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>教程：在市场中发布 Azure 托管应用程序
 
@@ -98,7 +98,7 @@ SKU 在市场中显示在父级产品/服务下。 它在 Azure 门户中显示�
 
      有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。 自动允许 `*/read` 操作，因此你不需要包括该设置。
    * **PrincipalId**：此属性是被授予对客户订阅中资源的访问权限的用户、用户组或应用程序的 Azure Active Directory (Azure AD) 标识符。 Role Definition 描述权限。
-   * **角色定义**：此属性是 Azure AD 提供的所有基于角色的访问控制 (RBAC) 内置角色的列表。 你可以选择最合适的角色用于代表客户管理资源。
+   * **角色定义**：此属性是 Azure AD 提供的所有 Azure 内置角色的列表。 你可以选择最合适的角色用于代表客户管理资源。
    * **策略设置**：向托管应用程序应用 [Azure Policy](../../governance/policy/overview.md) 以指定所部署的解决方案的符合性要求。 从可用选项中，选择要应用的策略。 对于“策略参数”  ，请提供包含参数值的 JSON 字符串。 有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](../../governance/policy/samples/index.md)。
 
 可以添加多个授权。 我们建议你创建 AD 用户组，并在“PrincipalId”  中指定其 ID。 以此，可以将更多的用户添加到用户组，而无需更新 SKU。

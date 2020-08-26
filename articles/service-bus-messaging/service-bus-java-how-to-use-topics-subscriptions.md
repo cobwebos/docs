@@ -4,13 +4,13 @@ description: 在本快速入门中，先编写 Java 代码，将消息发送到�
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: fb8e5196077e60c20d9354459cafe85302ad0e45
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: b255c825e0576e983c821234c531a9442baf654b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341421"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065754"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
 
@@ -451,8 +451,8 @@ Message sending: Id = 9
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
 
-[Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
-[Azure Toolkit for Eclipse]: https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation
+[Azure SDK for Java]: /java/api/overview/azure/
+[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression

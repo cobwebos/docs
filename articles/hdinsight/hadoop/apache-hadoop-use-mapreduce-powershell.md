@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006596"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -25,7 +25,7 @@ ms.locfileid: "86202406"
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-* 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/)。
 
 ## <a name="run-a-mapreduce-job"></a>运行 MapReduce 作业
 

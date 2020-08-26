@@ -1,18 +1,18 @@
 ---
 title: 为 Microsoft 客户协议设置计费 - Azure
-description: 了解如何设置 Microsoft 客户协议的计费帐户。
+description: 了解如何设置 Microsoft 客户协议的计费帐户。 请参阅设置的先决条件并查看其他可用资源。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: 2b8ef67366df7c8a6ba76d2cdc693b36229b861b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80258050"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461844"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
@@ -196,7 +196,7 @@ ms.locfileid: "80258050"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "80258050"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
@@ -232,7 +232,7 @@ ms.locfileid: "80258050"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
@@ -248,9 +248,9 @@ ms.locfileid: "80258050"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
-   ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)。
+   ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png).
 
 3. 选择发票科目。 发票科目的名称与其在企业协议注册中的相应部门名称相同。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在计费帐户中，选择“计费配置文件”  ，然后选择“发票科目”  。 从发票科目列表中，选择一个发票科目。
 

@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2 
+ms.custom: devx-track-csharp, sqldbrb=2
 ms.devlang: dotnet
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 3f951c05100b5e36a2162e2422a066d563b24136
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 08/10/2020
+ms.openlocfilehash: 8fe541432366d3c2ac1dc1470fea66d328f79780
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250649"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213055"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "85250649"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure SQL 数据库中的数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
-  || SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
+  | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
   |:--- |:--- |:---|:---|
   | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) | [门户](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -39,7 +39,7 @@ ms.locfileid: "85250649"
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [从 VM 进行连接](../managed-instance/connect-vm-instance-configure.md)|
   |||[从本地建立的连接](../managed-instance/point-to-site-p2s-configure.md) | [连接到 SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) | [还原 Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) |
-  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 的一个 [BACPAC](database-import.md) 文件还原或导入 Adventure Works| 从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 的一个 [BACPAC](database-import.md) 文件还原或导入 Adventure Works|
+  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 的一个 [BACPAC](database-import.md) 文件还原或导入 Adventure Works| 从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](database-import.md) 文件还原或导入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -51,9 +51,9 @@ ms.locfileid: "85250649"
 
 获取连接到数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。 
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。
 
 3. 在“概述”页上，在“Server 名称”旁查看 Azure SQL 数据库中的数据库的完全限定服务器名称，或在“Host”旁边查看 Azure VM 上的 Azure SQL 托管实例或 SQL Server 的完全限定服务器名称（或 IP 地址）  。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
 
@@ -62,7 +62,7 @@ ms.locfileid: "85250649"
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>创建用于查询 Azure SQL 数据库中的数据库的代码
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。 
+1. 在 Visual Studio 中，创建新的项目。 
    
 1. 在“新建项目”对话框中，选择“Visual C#”，然后选择“控制台应用(.NET Framework)”  。
    
@@ -70,9 +70,9 @@ ms.locfileid: "85250649"
    
 1. 选择“项目” > “管理 NuGet 包” 。 
    
-1. 在“NuGet 包管理器”中，选择“浏览”选项卡，然后搜索并选择“System.Data.SqlClient”  。
+1. 在“NuGet 包管理器”中，选择“浏览”选项卡，然后搜索并选择“Microsoft.Data.SqlClient”  。
    
-1. 在“System.Data.SqlClient”页上选择“安装” 。 
+1. 在“Microsoft.Data.SqlClient”页上选择“安装” 。 
    - 如果出现提示，请选择“确定”继续安装。 
    - 如果显示“接受许可证”窗口，则选择“我接受” 。
    
@@ -85,7 +85,7 @@ ms.locfileid: "85250649"
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

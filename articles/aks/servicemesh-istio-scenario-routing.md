@@ -9,6 +9,7 @@ ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
 ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83799944"

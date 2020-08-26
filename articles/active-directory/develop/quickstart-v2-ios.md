@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554061"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115248"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -101,12 +101,12 @@ ms.locfileid: "85554061"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
-> 1. 如果为 [Azure AD 国家云](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)生成应用，请将以“let kGraphEndpoint”和“let kAuthority”开头的行替换为正确的终结点。 若要进行全局访问，请使用默认值：
+> 1. 如果为 [Azure AD 国家云](/graph/deployments#app-registration-and-token-service-root-endpoints)生成应用，请将以“let kGraphEndpoint”和“let kAuthority”开头的行替换为正确的终结点。 若要进行全局访问，请使用默认值：
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
-> 1. [此处](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)阐述了其他终结点。 例如，若要使用 Azure AD 德国云运行本快速入门，请使用以下代码：
+> 1. [此处](/graph/deployments#app-registration-and-token-service-root-endpoints)阐述了其他终结点。 例如，若要使用 Azure AD 德国云运行本快速入门，请使用以下代码：
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
@@ -269,6 +269,6 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何创建本快速入门中使用的应用程序
 
 > [!div class="nextstepaction"]
-> [适用于 iOS 和 macOS 的调用图 API 教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [适用于 iOS 和 macOS 的调用图 API 教程](./tutorial-v2-ios.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

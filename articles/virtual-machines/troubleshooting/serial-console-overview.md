@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656482"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374059"
 ---
 # <a name="azure-serial-console"></a>Azure 串行控制台
 
@@ -26,18 +27,18 @@ ms.locfileid: "83656482"
 
 串行控制台的工作方式与 VM 和虚拟机规模集实例的工作方式相同。 在本文档中，除非另有说明，否则所有对 VM 的提及都将隐式包含虚拟机规模集实例。
 
-> [!NOTE]
-> 串行控制台在全球 Azure 区域中提供正式版，并在 Azure 政府中提供公共预览版。 它在 Azure 中国云中尚不可用。
+在全球 Azure 区域和 Azure 政府公共预览版中，串行控制台已正式发布。 它在 Azure 中国云中尚不可用。
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>访问 Azure 串行控制台的先决条件
 若要在 VM 或虚拟机规模集实例上访问串行控制台，将需要以下各项：
 
 - 必须为 VM 启用启动诊断
-- 使用密码身份验证的用户帐户必须存在于 VM 中。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建基于密码的用户。 在“支持 + 故障排除”部分选择“重置密码”。 
+- 使用密码身份验证的用户帐户必须存在于 VM 中。 可以使用 VM 访问扩展的[重置密码](../extensions/vmaccess.md#reset-password)功能创建基于密码的用户。 在“支持 + 故障排除”部分选择“重置密码”。 
 - 访问串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+- 不支持经典部署。 VM 或虚拟机规模集实例必须使用 Azure 资源管理器部署模型。
 
 > [!NOTE]
-> 不支持经典部署。 VM 或虚拟机规模集实例必须使用 Azure 资源管理器部署模型。
+> 串行控制台当前与托管的启动诊断存储帐户不兼容。 若要使用串行控制台，请确保使用的是自定义的存储帐户。
 
 ## <a name="get-started-with-the-serial-console"></a>开始使用串行控制台
 只能通过 Azure 门户访问适用于 VM 和虚拟机规模集的串行控制台：
@@ -68,7 +69,7 @@ ms.locfileid: "83656482"
 
 
 ### <a name="tls-12-in-serial-console"></a>串行控制台中的 TLS 1.2
-串行控制台使用 TLS 1.2 端到端来保护服务中的所有通信。 串行控制台依赖于用户管理的启动诊断存储帐户，并且必须为存储帐户单独配置 TLS 1.2。 [此处](https://docs.microsoft.com/azure/storage/common/storage-security-tls)提供了操作说明。
+串行控制台使用 TLS 1.2 端到端来保护服务中的所有通信。 串行控制台依赖于用户管理的启动诊断存储帐户，并且必须为存储帐户单独配置 TLS 1.2。 [此处](../../storage/common/transport-layer-security-configure-minimum-version.md)提供了操作说明。
 
 ## <a name="advanced-uses-for-serial-console"></a>串行控制台的高级用途
 除了通过控制台访问 VM 之外，还可以使用 Azure 串行控制台来执行以下操作：

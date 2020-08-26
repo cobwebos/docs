@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：监视、指标和警报
-description: 此页提供有关 ExpressRoute 监视的信息
+description: 了解有关使用 Azure Monitor 的 Azure ExpressRoute 监视、指标和警报，一种是跨 Azure 的所有指标、警报和诊断日志的一站。
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6622a6e9f6865dbbafa145d6773440599b0c2777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3c42901b4ef503a6099b49db84012521a7eba9f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738900"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654559"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -33,8 +33,10 @@ ms.locfileid: "84738900"
 | --- | --- | --- | --- |
 |ARP 可用性|可用性|<ui><li>对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型（专用/公共/Microsoft）</ui></li>|ExpressRoute|
 |BGP 可用性|可用性|<ui><li> 对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型</ui></li>|ExpressRoute|
-|BitsInPerSecond|交通|<ui><li> 对等互连类型 (ExpressRoute)</ui></li><ui><li>链路 (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|交通| <ui><li>对等互连类型 (ExpressRoute)</ui></li><ui><li> 链路 (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|BitsInPerSecond|交通|<ui><li> 对等互连类型 (ExpressRoute)</ui></li><ui><li>链路 (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|交通| <ui><li>对等互连类型 (ExpressRoute)</ui></li><ui><li> 链路 (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|CPU 使用率|性能| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
+|每秒数据包数|性能| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
 |GlobalReachBitsInPerSecond|交通|<ui><li>对等互连线路密钥（服务密钥）</ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|交通|<ui><li>对等互连线路密钥（服务密钥）</ui></li>|Global Reach|
 |AdminState|物理连接|链接|ExpressRoute Direct|
@@ -103,17 +105,25 @@ ms.locfileid: "84738900"
 
 ![er direct 线路 Rx 轻型级别](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
 
+## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute 虚拟网络网关指标
+
+### <a name="cpu-utilization---split-instance"></a>CPU 利用率-拆分实例
+可以查看网关实例的 CPU 使用率。
+
+### <a name="packets-per-second---split-by-instance"></a>每秒数据包数-按实例拆分
+可以查看每秒遍历网关的数据包。
+
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 网关连接（以位/秒为单位）
 
 ![网关连接](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute 网关连接的警报
 
-1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”  。
+1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”****。
 
    ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. 单击“+选择目标”  ，然后选择 ExpressRoute 网关连接资源。
+2. 单击“+选择目标”****，然后选择 ExpressRoute 网关连接资源。
 
    ![目标]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. 定义警报详细信息。
@@ -130,7 +140,7 @@ ms.locfileid: "84738900"
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>为线路上的活动日志配置警报
 
-在**警报条件**中，可以选择“活动日志”  作为信号类型并选择“信号”。
+在**警报条件**中，可以选择“活动日志”**** 作为信号类型并选择“信号”。
 
   ![另一个](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
@@ -139,5 +149,5 @@ ms.locfileid: "84738900"
 配置 ExpressRoute 连接。
   
   * [创建和修改线路](expressroute-howto-circuit-arm.md)
-  * [创建和修改对等互连配置](expressroute-howto-routing-arm.md)
+  * [创建和修改对等配置](expressroute-howto-routing-arm.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

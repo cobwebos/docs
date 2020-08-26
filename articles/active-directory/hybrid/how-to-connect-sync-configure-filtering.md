@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357760"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061500"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -47,7 +47,7 @@ ms.locfileid: "85357760"
 
 为了防止意外删除许多对象，默认情况下已打开[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)功能。 如果由于筛选而删除了许多对象（默认为 500 个），则需要遵循本文中的步骤来允许将删除结果传播到 Azure AD。
 
-如果使用11月2015（[1.0.9125](reference-connect-version-history.md#1091250)）之前的内部版本、更改筛选器配置和使用密码哈希同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的 **完全同步** 操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
+如果使用11月 2015 ([1.0.9125](reference-connect-version-history.md)) 之前的内部版本、更改筛选器配置和使用密码哈希同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的 **完全同步** 操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
 
 如果在 Azure AD 中由于筛选错误导致用户对象被不慎删除，可以通过删除筛选配置在 Azure AD 中重新创建用户对象  。 然后再次同步目录。 此操作可以从 Azure AD 的回收站中还原用户。 但是，无法取消删除其他对象类型。 例如，如果意外删除了某个安全组，而该组用于将资源加入 ACL，则无法恢复该组及其 ACL。
 
@@ -80,7 +80,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 
 * [**基于组**](#group-based-filtering)：只能在初始安装时使用安装向导配置基于单个组的筛选。
 * [**基于域**](#domain-based-filtering)：使用此选项，可以选择要同步到 Azure AD 的域。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，还可以在同步引擎配置中添加和删除域。
-* [**组织单位（OU）**](#organizational-unitbased-filtering)：通过使用此选项，可以选择要同步到 Azure AD 的 ou。 此选项适用于所选 OU 中的所有对象类型。
+* [**组织单位 (OU) **](#organizational-unitbased-filtering)：通过使用此选项，你可以选择要同步到 Azure AD 的 ou。 此选项适用于所选 OU 中的所有对象类型。
 * [**基于属性**](#attribute-based-filtering)：使用此选项，可以根据对象属性值筛选对象。 也可以对不同的对象类型使用不同的筛选器。
 
 可以同时使用多个筛选选项。 例如，可以使用基于 OU 的筛选以便只包含某个 OU 中的对象。 同时，可以使用基于属性的筛选进一步筛选这些对象。 使用多个筛选方法时，筛选器之间使用逻辑“AND”。
@@ -202,7 +202,7 @@ Azure AD Connect 安装向导始终创建此配置。
 使用此配置时，在 ManagedObjects 下创建的新 OU 不会同步。
 
 ## <a name="attribute-based-filtering"></a>基于属性的筛选
-请确保使用11月2015（[1.0.9125](reference-connect-version-history.md#1091250)）或更高版本，以便执行这些步骤。
+请确保使用11月 2015 ([1.0.9125](reference-connect-version-history.md)) 或更高版本，以便执行这些步骤。
 
 > [!IMPORTANT]
 >Microsoft 建议不要修改由 **Azure AD Connect** 创建的默认规则。 如果想要修改规则，请克隆它，然后禁用原始规则。 对克隆的规则进行任何更改。 请注意，这样做（禁用原始规则）会丢失通过该规则启用的任何 bug 修复或功能。

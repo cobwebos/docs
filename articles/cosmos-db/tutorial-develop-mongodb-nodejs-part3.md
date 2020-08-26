@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e9cb30ca64fe697f9b8304f55381709083b8fbd2
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114378"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424233"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
 
@@ -41,7 +41,7 @@ ms.locfileid: "85114378"
 
 ## <a name="build-the-ui"></a>生成 UI
 
-1. 在 Visual Studio Code 中，单击“停止”按钮 ![Visual Studio Code 中的“停止”按钮](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) 停止 Node 应用。
+1. 在 Visual Studio Code 中，单击“停止”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png"::: 以停止 Node 应用。 
 
 2. 在 Windows 命令提示符或 Mac Terminal 窗口中输入以下命令，生成 heroes 组件。 在此代码中，g=generate（生成），c=component（组件），heroes=组件名称，并且由于使用的是平面文件结构 (--flat)，因此没有为其创建子文件夹。
 
@@ -486,7 +486,7 @@ ms.locfileid: "85114378"
 
     现在运行该应用。
 
-2. 在 Visual Studio Code 中，单击左侧的“调试”按钮![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然后单击“开始调试”按钮![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
+2. 在 Visual Studio Code 中，单击左侧的“调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::，然后单击“启动调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png":::。
 
 3. 现在请打开 Internet 浏览器，导航到 localhost:3000，然后就会看到该应用在本地运行。
 

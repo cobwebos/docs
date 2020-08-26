@@ -1,24 +1,22 @@
 ---
-title: 创建 Windows 虚拟桌面秋季2019主机池 PowerShell-Azure
-description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主机池。
-services: virtual-desktop
+title: 创建 Windows 虚拟桌面 (经典) 主机池 PowerShell-Azure
+description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面 (经典) 中创建主机池。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527636"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003549"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>使用 PowerShell 在 Windows 虚拟桌面 (经典) 中创建主机池
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../create-host-pools-powershell.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../create-host-pools-powershell.md)。
 
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 

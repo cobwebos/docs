@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3bf3086d255a6aacfe4001879b3a3f00df2ba219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466879daae65b8c7fa896b0ead417c8d5eb51e28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084324"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API 通过安全组视图分析虚拟机安全性
 
@@ -26,18 +26,21 @@ ms.locfileid: "84738715"
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
+> [!NOTE]
+> 安全组视图 API 不再维护，即将弃用。 请使用提供相同功能的[有效安全规则功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)。 
+
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 REST API 检索应用于虚拟机的有效安全规则
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在此方案中，将调用网络观察程序 Rest API 获取虚拟机的安全组视图。 通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的包含有效虚拟机的资源组已存在。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 本文中介绍的方案检索给定虚拟机的已应用有效安全规则。
 

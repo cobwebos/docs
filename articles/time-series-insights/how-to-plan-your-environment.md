@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0a17f28f2a87ae42b552bfa07732b8b8232ef5e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289896"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>规划 Azure 时序见解 Gen2 环境
 
@@ -78,7 +78,7 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 
 你现在可以配置 Azure 时序见解环境的时序模型。 通过新模型可以轻松查找和分析 IoT 数据。 它可实现时序数据的特选、维护和扩充，并可帮助准备供使用者使用的数据集。 模型使用时序 ID，这些 ID 映射到将唯一资源与变量（称为类型）和层次结构关联的实例。 有关详细信息，请参阅时序[模型](./concepts-model-overview.md)概述。
 
-模型是动态的，因此可以随时生成。 若要快速入门，请在将数据推送到 Azure 时序见解之前构建并上传。 若要生成模型，请阅读[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
+模型是动态的，因此可以随时生成。 若要快速入门，请在将数据推送到 Azure 时序见解之前构建并上传。 若要生成模型，请阅读[使用时序模型](/azure/time-series-insights/concepts-model-overview)。
 
 对于许多客户而言，时序模型映射到已实施的现有资产模型或 ERP 系统。 如果没有现有模型，则[提供](https://github.com/Microsoft/tsiclient)了预生成用户体验以快速启动并运行。 若要了解模型可如何帮助你，请查看[示例演示环境](https://insights.timeseries.azure.com/preview/demo)。
 

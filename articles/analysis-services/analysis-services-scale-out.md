@@ -4,14 +4,15 @@ description: 通过横向扩展复制 Azure Analysis Services 服务器。然后
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247995"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716922"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -49,7 +50,7 @@ ms.locfileid: "78247995"
 
 ### <a name="synchronization-mode"></a>同步模式
 
-默认情况下，查询副本会完全解除冻结，而不是以增量方式解除冻结。 解除冻结分阶段进行。 它们一次两个（假设至少有三个副本）地进行分离和附加，确保在任何给定时间进行查询都至少有一个副本保持联机状态。 某些情况下，当此过程正在进行时，客户端可能需要重新连接到其中一个联机副本。 使用 **ReplicaSyncMode** 设置（预览版），现在就可以指定查询副本同步以并行方式进行。 并行同步有以下优势： 
+默认情况下，查询副本会完全解除冻结，而不是以增量方式解除冻结。 解除冻结分阶段进行。 它们一次两个（假设至少有三个副本）地进行分离和附加，确保在任何给定时间进行查询都至少有一个副本保持联机状态。 某些情况下，当此过程正在进行时，客户端可能需要重新连接到其中一个联机副本。 通过使用 **ReplicaSyncMode** 设置，你现在可以指定并行进行查询副本同步。 并行同步有以下优势： 
 
 - 大大减少了同步时间。 
 - 跨副本数据更可能在同步过程中保持一致。 
@@ -171,7 +172,7 @@ ms.locfileid: "78247995"
 
 ## <a name="troubleshoot"></a>故障排除
 
-**问题：** 用户获取错误找**不到 \<Name of the server> 处于连接模式 "ReadOnly" 的服务器 "" 实例。**
+**问题：** 用户获取错误找 **不到 \<Name of the server> 处于连接模式 "ReadOnly" 的服务器 "" 实例。**
 
 **解决方案：** 选择“从查询池隔离处理服务器”选项时，使用默认连接字符串（不带 `:rw`）的客户端连接将重定向到查询池副本。  如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，执行同步时查询池中必须至少有两个服务器。 每个服务器单独同步，而其他服务器保持联机。 如果在处理期间选择在查询池中没有处理服务器，则可以选择将其从池中删除以进行处理，然后在处理完成后但在同步之前将其添加回池中。 可以使用内存和 QPU 指标来监视同步状态。
 

@@ -7,11 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76939426"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924999"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 
@@ -37,7 +38,7 @@ ms.locfileid: "76939426"
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>属于不同订阅的虚拟网络是否可以链接到专用区域？
 
-是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可向多个 RBAC 角色授予“写入”权限。 例如，经典网络参与者 RBAC 角色对虚拟网络具有写入权限，专用 DNS 区域参与者角色对专用 DNS 区域具有写入权限。 有关 RBAC 角色的详细信息，请参阅[基于角色的访问控制](../role-based-access-control/overview.md)。
+是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可以向多个 Azure 角色授予写入权限。 例如，经典网络参与者 Azure 角色对虚拟网络具有写入权限，专用 DNS 区域参与者角色对专用 DNS 区域具有写入权限。 有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 
@@ -57,15 +58,15 @@ ms.locfileid: "76939426"
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>删除链接到专用区域的链接虚拟网络时会发生什么情况？ 是否必须手动更新专用区域，才能从该区域中取消已链接虚拟网络的链接？
 
-不能。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
+否。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
 
-## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>即使专用区域（例如 private.contoso.com）已链接到虚拟网络，使用默认 FQDN （internal.cloudapp.net）的 DNS 解析仍有效？
+## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>使用默认 FQDN (internal.cloudapp.net 的 DNS 解析) 仍然有效，即使在专用区域 (例如，private.contoso.com) 是否已链接到虚拟网络？
 
 是的。 专用区域不会替换默认的 Azure 提供的 internal.cloudapp.net 区域。 不管依赖于 Azure 提供的 internal.cloudapp.net 还是自己的专用区域，都请使用要解析的区域的 FQDN。
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>链接的虚拟网络中虚拟机上的 DNS 后缀是否会更改为专用区域的 DNS 后缀？
 
-不能。 链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
+否。 链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
 有关如何更改此后缀的指导，请参阅 [使用动态 DNS 在自己的 DNS 服务器中注册主机名](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS 专用区域有哪些使用限制？

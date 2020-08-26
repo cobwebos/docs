@@ -12,16 +12,16 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 900e76fff3e5ccf88fa1e25ebea97f26e406a358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042547"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>将微聚焦企业服务器5.0 部署到 AKS
 
-在另一[篇文章](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)中，我介绍了在 Docker 容器中运行微聚焦企业服务器5.0 的步骤。 为此，我要向您展示如何进一步执行此操作，并将创建的 Docker 映像部署到 Azure Kubernetes 服务（AKS）。
+在另一[篇文章](./run-enterprise-server-container.md)中，我介绍了在 Docker 容器中运行微聚焦企业服务器5.0 的步骤。 为此，我要向您展示如何进一步执行此操作，并将创建的 Docker 映像部署到 Azure Kubernetes 服务（AKS）。
 
 Azure Kubernetes 服务是基于 Kubernetes 的托管业务流程服务。 它使你能够在容器主机的群集中部署、缩放和管理 Docker 容器（以及其他基于容器的应用程序）。
 
@@ -119,4 +119,4 @@ Kubernetes 应使用已创建部署的消息进行响应。
 
 ![将 acctdemo 作为正在运行的 pod 屏幕截图](media/deploy-image-9.png)
 
-祝贺你！ 你现在正在 Azure Kubernetes 服务中运行企业服务器。 在下一篇文章中，我将向您演示如何访问企业服务器管理控制台，以及如何利用 Kubernetes 来扩展部署。
+祝贺！ 你现在正在 Azure Kubernetes 服务中运行企业服务器。 在下一篇文章中，我将向您演示如何访问企业服务器管理控制台，以及如何利用 Kubernetes 来扩展部署。

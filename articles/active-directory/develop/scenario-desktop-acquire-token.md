@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 58be0315b272199e74f28654aae315a8c6c5f7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558820"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141289"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -174,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必需参数
 
-`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果令牌用于 Microsoft Graph，则可以在“权限”一节中每个 Microsoft Graph API 的 API 参考中找到所需范围。 例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，必须使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果令牌用于 Microsoft Graph，则可以在“权限”一节中每个 Microsoft Graph API 的 API 参考中找到所需范围。 例如，若要[列出用户的联系人](/graph/api/user-list-contacts)，必须使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 
 在 Android 上，还需要按如下所示使用 `.WithParentActivityOrWindow` 指定父活动，以便在交互后令牌返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
 
@@ -212,7 +213,7 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` 用于通过指定提示来控制与用户的交互。
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![显示提示结构中的字段的图像。 这些常量值通过定义 WithPrompt ( # A1 方法显示的提示类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 类定义以下常量：
 
@@ -277,7 +278,7 @@ MSAL.NET 团队已重新编写 UI 测试，以使用此扩展性机制。 如果
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>通过 SystemWebViewOptions 提供极佳体验
 
-在 MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，可以指定：
+在 MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，可以指定：
 
 - 在系统 Web 浏览器中出现登录或许可错误时，要转到的 URI (`BrowserRedirectError`) 或需要显示的 HTML 片段 (`HtmlMessageError`)。
 - 在成功完成登录或许可时，要转到的 URI (`BrowserRedirectSuccess`) 或需要显示的 HTML 片段 (`HtmlMessageSuccess`)。
@@ -424,21 +425,21 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 在 `PublicClientApplicationBuilder` 中传入的颁发机构需要：
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
-  - 适用于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
+  - 对于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
   - 不支持 Microsoft 个人帐户。 不能使用 /common 或 /consumers 租户。
 
 - 因为集成 Windows 身份验证是一个无提示流：
-  - 应用程序的用户必须事先同意使用该应用程序。
+  - 应用程序的用户必须已事先许可使用该应用程序。
   - 或者，租户管理员必须已事先许可租户中的所有用户使用该应用程序。
   - 换句话说：
     - 开发人员已在 Azure 门户中自行选择“授予”按钮。
-    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”按钮。  有关详细信息，请参阅[添加用于访问 Web API 的权限](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)。
-    - 或者，你已提供某种方式让用户许可应用程序。 有关详细信息，请参阅[请求单个用户的许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)。
-    - 或者，你已提供某种方式让租户管理员许可应用程序。 有关详细信息，请参阅[管理员许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)。
+    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”按钮。  有关详细信息，请参阅[添加用于访问 Web API 的权限](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+    - 或者，你已提供某种方式让用户许可应用程序。 有关详细信息，请参阅[请求单个用户的许可](./v2-permissions-and-consent.md#requesting-individual-user-consent)。
+    - 或者，你已提供某种方式让租户管理员许可应用程序。 有关详细信息，请参阅[管理员许可](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
 - 已针对 .NET Desktop、.NET Core 和 UWP 应用启用此流。
 
-有关许可的详细信息，请参阅 [Microsoft 标识平台的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+有关许可的详细信息，请参阅 [Microsoft 标识平台的权限和许可](./v2-permissions-and-consent.md)。
 
 ### <a name="learn-how-to-use-it"></a>了解其用法
 
@@ -452,7 +453,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 
 通常只需要一个参数 (`scopes`)。 根据 Windows 管理员设置策略的方式，有可能不允许 Windows 计算机上的应用程序查找已登录的用户。 在这种情况下，请使用另一个方法 `.WithUsername()`，并以 UPN 格式（例如 `joe@contoso.com`）传入已登录用户的用户名。 在 .NET Core 上，只有采用用户名的重载可用，因为 .NET Core 平台无法请求用于登录 OS 的用户名。
 
-以下示例演示了最新的用例，并解释了可能出现的各种异常及其缓解措施。
+下面的示例展示了最新的情况，并说明了可获取的异常类型以及缓解措施。
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -601,7 +602,7 @@ MSAL Python 中尚不支持此流。
 
 ### <a name="this-flow-isnt-recommended"></a>不建议使用此流
 
-不建议使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关详细信息，请参阅[如何解决日益增长的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 你还可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
+不建议使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 你还可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
 
 > [!NOTE]
 > 在某些情况下，使用用户名和密码非常有用，例如 DevOps 方案。 但是，如果你想在自行提供 UI 的交互式方案中使用用户名和密码，建议打消这个念头。 使用用户名和密码意味着会丧失许多功能：
@@ -924,7 +925,7 @@ if not result:
 
 如果你正在编写一个不包含 Web 控件的命令行工具，并且无法或者不想要使用前面所述的流，则需要使用设备代码流。
 
-使用 Azure AD 进行交互式身份验证需要 Web 浏览器。 有关详细信息，请参阅 [Web 浏览器的用法](https://aka.ms/msal-net-uses-web-browser)。 为了对不提供 Web 浏览器的设备或操作系统上的用户进行身份验证，设备代码流可让用户使用另一台设备（例如某台计算机或手机）以交互方式登录。 应用程序使用设备代码流通过为这些设备或 OS 设计的双步过程获取令牌。 此类应用程序的例子包括 iOT 上运行的应用程序或命令行工具 (CLI)。 其思路是：
+使用 Azure AD 的交互式身份验证需要 Web 浏览器。 有关详细信息，请参阅 [Web 浏览器的用法](https://aka.ms/msal-net-uses-web-browser)。 为了对不提供 Web 浏览器的设备或操作系统上的用户进行身份验证，设备代码流可让用户使用另一台设备（例如某台计算机或手机）以交互方式登录。 应用程序使用设备代码流通过为这些设备或 OS 设计的双步过程获取令牌。 此类应用程序的例子包括 iOT 上运行的应用程序或命令行工具 (CLI)。 其思路是：
 
 1. 每当需要用户身份验证时，应用就会为用户提供一个代码。 系统要求用户使用另一台设备（例如，已连接到 Internet 的智能手机）转到某个 URL（例如 `https://microsoft.com/devicelogin`）。 然后系统会提示用户输入代码。 完成此操作后，网页将引导用户进行常规的身份验证操作，其中包括同意提示和多重身份验证（如有必要）。
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/25/2020
+ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120834"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855707"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -28,19 +28,19 @@ ms.locfileid: "86120834"
     1. 在“新建”窗格中选择“存储” 。 “特别推荐”列表随即在右侧显示。
     1. 选择“存储帐户”开始创建帐户。 按照[创建存储帐户](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)中的说明操作。
 
-        ![创建 Azure 存储帐户的步骤](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
+        :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="创建 Azure 存储帐户的步骤。":::
 
         有关存储帐户的详细信息，请参阅[快速入门教程](../../storage/index.yml)。 有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
-1. 等待存储帐户预配完成。 此过程通常需要几分钟时间。 
+1. 等待存储帐户预配完成。 此过程通常需要几分钟时间。
 
 ## <a name="create-a-table-in-your-storage-account"></a>在存储帐户中创建表
 
-1. 在 Azure 门户的主页中，选择“查看所有资源”以访问存储帐户 。 也可以从 Azure 门户的左侧菜单栏中选择“所有资源”。
+1. 在 Azure 门户的 " **主页** " 页上，选择 " **查看所有资源** " 以访问存储帐户。 也可以从 Azure 门户的左侧菜单栏中选择“所有资源”。
 
-    ![访问 Azure 存储帐户](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="访问你的 Azure 存储帐户。":::
 
-1. 从“存储帐户”窗格中，选择“访问密钥”，然后复制该密钥的“连接字符串”值 。 保存此值，因为它是需要在发布门户中提供的“存储帐户连接字符串”值，需要提供该值才可接收 Azure 市场产品/服务的潜在顾客。 
+1. 从“存储帐户”窗格中，选择“访问密钥”，然后复制该密钥的“连接字符串”值 。 保存此值，因为它是需要在发布门户中提供的“存储帐户连接字符串”值，需要提供该值才可接收 Azure 市场产品/服务的潜在顾客。
 
     下面是连接字符串的示例。
 
@@ -48,13 +48,14 @@ ms.locfileid: "86120834"
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    ![Azure 存储密钥](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure 存储密钥。":::
+
 
 1. 从“存储帐户”窗格中，选择“表”，然后选择“+ 表”以创建表 。 输入表的名称，然后选择“确定”。 请保存此值，因为如果要将流配置为在收到潜在顾客时接收电子邮件通知，则需要此值。
 
     ![Azure 表](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    可以使用 [Azure 存储资源管理器](https://archive.codeplex.com/?p=azurestorageexplorer)或任何其他工具来查看存储表中的数据。 还可以导出 Azure 表中的数据。 
+    可以使用 [Azure 存储资源管理器](https://archive.codeplex.com/?p=azurestorageexplorer)或任何其他工具来查看存储表中的数据。 还可以导出 Azure 表中的数据。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>（可选）使用 Power Automate 获取潜在顾客通知
 
@@ -66,7 +67,7 @@ ms.locfileid: "86120834"
 
 1. 登录 Power Automate 帐户。
 1. 在左侧栏中，选择“我的流”。
-1. 在顶部栏中选择“+ 新建”。 
+1. 在顶部栏中选择“+ 新建”。
 1. 在下拉列表中，选择“+ 计划 - 从空白开始”。
 
    ![我的流 + 计划 - 从空白开始](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
@@ -90,7 +91,7 @@ ms.locfileid: "86120834"
 
     ![设置过去的时间间隔](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
-   >[!TIP] 
+   >[!TIP]
    >可以随时检查流以验证是否正确配置了每个步骤。 要检查流，请从“流”菜单栏中选择“流检查器” 。
 
    下一组步骤中，将连接到表，并设置处理逻辑以处理新的潜在顾客。
@@ -123,7 +124,7 @@ ms.locfileid: "86120834"
 
 1. 在“条件”窗口中，选择“选择值” 。 然后在弹出窗口中选择“表达式”。
 
-1. 将 `length(body('Get_entities')?['value'])` 粘贴到 fx 框中。 选择“确定”以添加此功能。 
+1. 将 `length(body('Get_entities')?['value'])` 粘贴到 fx 框中。 选择“确定”以添加此功能。
 
 1. 要完成条件设置：
     1. 从下拉列表中选择“大于”。
@@ -134,7 +135,7 @@ ms.locfileid: "86120834"
    在接下来的几个步骤中，将根据条件的结果设置要采取的操作：
 
    * 如果条件解析为“如果否”，则不执行任何操作。
-   * 如果条件解析为“如果是”，则触发连接 Office 365 帐户以发送电子邮件的操作。 
+   * 如果条件解析为“如果是”，则触发连接 Office 365 帐户以发送电子邮件的操作。
 
 1. 选择“如果是”下的“添加操作” 。
 

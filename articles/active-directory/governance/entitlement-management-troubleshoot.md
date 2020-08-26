@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145753"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783325"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -29,25 +29,25 @@ ms.locfileid: "86145753"
 
 ## <a name="administration"></a>管理
 
-* 如果在配置授权管理时收到 "拒绝访问" 消息，并且你是全局管理员，请确保目录中有[Azure AD Premium P2 (或 EMS E5) 许可证](entitlement-management-overview.md#license-requirements)。
+* 如果在配置授权管理时收到 "拒绝访问" 消息，并且你是全局管理员，请确保目录中有 [Azure AD Premium P2 (或 EMS E5) 许可证](entitlement-management-overview.md#license-requirements)。
 
-* 如果在创建或查看访问包时收到 "访问被拒绝" 消息，并且您是目录创建者组的成员，则必须在创建第一个访问包之前[创建目录](entitlement-management-catalog-create.md)。
+* 如果在创建或查看访问包时收到 "访问被拒绝" 消息，并且您是目录创建者组的成员，则必须在创建第一个访问包之前 [创建目录](entitlement-management-catalog-create.md) 。
 
 ## <a name="resources"></a>资源
 
-* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果应用程序没有任何资源角色，则权限管理会将用户分配到**默认访问**角色。
+* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果应用程序没有任何资源角色，则权限管理会将用户分配到 **默认访问** 角色。
 
-    请注意，Azure 门户可能还会显示不能选作应用程序的服务的服务主体。  特别是， **Exchange online**和**SharePoint online**是服务，而不是在目录中具有资源角色的应用程序，因此它们不能包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
+    请注意，Azure 门户可能还会显示不能选作应用程序的服务的服务主体。  特别是， **Exchange online** 和 **SharePoint online** 是服务，而不是在目录中具有资源角色的应用程序，因此它们不能包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
 
 * 要使组成为访问包中的资源，该组必须能够在 Azure AD 中可修改。  源自本地 Active Directory 的组无法分配为资源，因为无法在 Azure AD 中更改其所有者或成员属性。   也无法在 Azure AD 中修改作为通讯组在 Exchange Online 中创建的组。 
 
-* 无法将 SharePoint 联机文档库和单个文档添加为资源。  相反，请创建一个[Azure AD 安全组](../fundamentals/active-directory-groups-create-azure-portal.md)，在 access 包中包含该组和站点角色，然后在 SharePoint Online 中使用该组来控制对文档库或文档的访问。
+* 无法将 SharePoint 联机文档库和单个文档添加为资源。  相反，请创建一个 [Azure AD 安全组](../fundamentals/active-directory-groups-create-azure-portal.md)，在 access 包中包含该组和站点角色，然后在 SharePoint Online 中使用该组来控制对文档库或文档的访问。
 
-* 如果有已分配给要使用访问包管理的资源的用户，请确保已使用适当的策略将这些用户分配给访问包。 例如，你可能希望在访问包中包含一个组，该组中已有用户。 如果该组中的这些用户需要继续访问，则他们必须具有访问包的适当策略，以便不会失去对组的访问权限。 你可以通过请求用户请求包含该资源的访问包，或直接将其分配给访问包来分配访问包。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
+* 如果有已分配给要使用访问包管理的资源的用户，请确保已使用适当的策略将这些用户分配给访问包。 例如，你可能希望在访问包中包含一个组，该组中已有用户。 如果该组中的这些用户需要继续访问，则他们必须具有访问包的适当策略，以便不会失去对组的访问权限。 你可以通过请求用户请求包含该资源的访问包，或直接将其分配给访问包来分配访问包。 有关详细信息，请参阅 [更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
 
-* 删除团队的成员时，也会从 Microsoft 365 组中删除它们。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+* 删除团队的成员时，也会从 Microsoft 365 组中删除它们。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅 [组成员身份](/microsoftteams/office-365-groups#group-membership)。
 
-* 确保你的目录未在多地域进行配置。 权利管理当前不支持 SharePoint Online 的多地域位置。 SharePoint Online 站点必须位于默认地理位置，才能由权利管理进行管理。 有关详细信息，请参阅[OneDrive 和 SharePoint Online 中的多地理功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
+* 确保你的目录未在多地域进行配置。 权利管理当前不支持 SharePoint Online 的多地域位置。 SharePoint Online 站点必须位于默认地理位置，才能由权利管理进行管理。 有关详细信息，请参阅 [OneDrive 和 SharePoint Online 中的多地理功能](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 
 ## <a name="access-packages"></a>访问包
 
@@ -55,23 +55,23 @@ ms.locfileid: "86145753"
 
 ## <a name="external-users"></a>外部用户
 
-* 当外部用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。 如果外部用户仅访问**myaccess.microsoft.com** ，而不使用 "完全访问权限" 门户链接，则他们将在自己的组织中而不是在组织中看到可供他们使用的访问包。
+* 当外部用户要请求访问包的访问权限时，请确保他们使用访问包的 " **我的访问门户" 链接** 。 有关详细信息，请参阅 " [共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。 如果外部用户仅访问 **myaccess.microsoft.com** ，而不使用 "完全访问权限" 门户链接，则他们将在自己的组织中而不是在组织中看到可供他们使用的访问包。
 
-* 如果外部用户无法请求访问包的访问权限或无法访问资源，请务必检查[外部用户的设置](entitlement-management-external-users.md#settings-for-external-users)。
+* 如果外部用户无法请求访问包的访问权限或无法访问资源，请务必检查 [外部用户的设置](entitlement-management-external-users.md#settings-for-external-users)。
 
-* 如果以前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则其访问包将显示为未完全传递，直到其帐户在 SharePoint Online 中设置。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
+* 如果以前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则其访问包将显示为未完全传递，直到其帐户在 SharePoint Online 中设置。 有关共享设置的详细信息，请参阅 [查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
 
 ## <a name="requests"></a>请求
 
-* 当用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
+* 当用户要请求访问包的访问权限时，请确保他们使用访问包的 " **我的访问门户" 链接** 。 有关详细信息，请参阅 " [共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
 
 * 如果在浏览器设置为“专用”或“匿名”模式时打开“我的访问权限”门户，这可能会与登录行为产生冲突。 建议在访问“我的访问权限”门户时不要在浏览器的“专用”或“匿名”模式下使用。
 
-* 当尚未在你的目录中的用户登录到“我的访问权限”门户以请求访问包时，请确保他们使用其组织帐户进行身份验证。 组织帐户可以是资源目录中的帐户，也可以是其他目录中的帐户，该目录包含在访问包的其中一个策略中。 如果用户的帐户不是组织帐户，或者策略中不包含他们验证的目录，那么用户将看不到访问包。 有关详细信息，请参阅[请求访问访问包](entitlement-management-request-access.md)。
+* 当尚未在你的目录中的用户登录到“我的访问权限”门户以请求访问包时，请确保他们使用其组织帐户进行身份验证。 组织帐户可以是资源目录中的帐户，也可以是其他目录中的帐户，该目录包含在访问包的其中一个策略中。 如果用户的帐户不是组织帐户，或者策略中不包含他们验证的目录，那么用户将看不到访问包。 有关详细信息，请参阅 [请求访问访问包](entitlement-management-request-access.md)。
 
-* 如果阻止用户登录到资源目录，则他们将无法在“我的访问权限”门户中请求访问。 必须从用户配置文件中删除登录块，用户才可以请求访问。 若要删除登录块，请在 Azure 门户中单击 " **Azure Active Directory**"，单击 "**用户**"，单击用户，然后单击 "**配置文件**"。 编辑**设置**部分，并将 **"阻止登录**" 更改为 "**否**"。 有关详细信息，请参阅[使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  你还可以检查用户是否因[Identity Protection 策略](../identity-protection/howto-unblock-user.md)而被阻止。
+* 如果阻止用户登录到资源目录，则他们将无法在“我的访问权限”门户中请求访问。 必须从用户配置文件中删除登录块，用户才可以请求访问。 若要删除登录块，请在 Azure 门户中单击 " **Azure Active Directory**"，单击 " **用户**"，单击用户，然后单击 " **配置文件**"。 编辑 **设置** 部分，并将 **"阻止登录** " 更改为 " **否**"。 有关详细信息，请参阅 [使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  你还可以检查用户是否因 [Identity Protection 策略](../identity-protection/howto-identity-protection-remediate-unblock.md)而被阻止。
 
-* 在 "我的 Access" 门户中，如果某个用户既是请求者又是审批者，他们将不会在 "**审批**" 页上看到他们对访问包的请求。 此行为是有意行为 - 用户无法批准自己的请求。 确保他们请求的访问包在策略上配置了其他审批者。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
+* 在 "我的 Access" 门户中，如果某个用户既是请求者又是审批者，他们将不会在 " **审批** " 页上看到他们对访问包的请求。 此行为是有意行为 - 用户无法批准自己的请求。 确保他们请求的访问包在策略上配置了其他审批者。 有关详细信息，请参阅 [更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
 
 ### <a name="view-a-requests-delivery-errors"></a>查看请求的传递错误
 
@@ -85,7 +85,7 @@ ms.locfileid: "86145753"
 
 1. 选择要查看的请求。
 
-    如果请求有任何传递错误，**将无法传递**或**部分传递**请求状态。
+    如果请求有任何传递错误， **将无法传递** 或 **部分传递**请求状态。
 
     如果存在传递错误，则会在请求的详细信息窗格中显示传递错误的计数。
 
@@ -95,13 +95,13 @@ ms.locfileid: "86145753"
 
 如果在触发访问包重新处理请求后遇到错误，则必须等待系统重新处理请求。 系统多次尝试重新处理几个小时，因此在这段时间内不能强制重新处理。 
 
-您只能重新处理状态为 "传递" 的请求已**失败**或**部分传递**且完成时间不到一周。 否则 **，"重新**处理" 按钮将灰显。
+您只能重新处理状态为 "传递" 的请求已 **失败** 或 **部分传递** 且完成时间不到一周。 否则 **，"重新** 处理" 按钮将灰显。
 
 ![重新处理按钮灰显](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
-- 如果在试用时段内修复错误，请求状态将更改为 "正在**传递**"。 该请求将重新处理，而不需要用户执行其他操作。
+- 如果在试用时段内修复错误，请求状态将更改为 "正在 **传递**"。 该请求将重新处理，而不需要用户执行其他操作。
 
-- 如果在试用时段内未修复此错误，则请求状态可能为 "**未通过**" 或 "**部分送达**"。 然后 **，可以使用 "重新**处理" 按钮。 你将需要7天来重新处理请求。
+- 如果在试用时段内未修复此错误，则请求状态可能为 " **未通过** " 或 " **部分送达**"。 然后 **，可以使用 "重新** 处理" 按钮。 你将需要7天来重新处理请求。
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
@@ -113,13 +113,13 @@ ms.locfileid: "86145753"
 
 1. 单击要重新处理的请求。
 
-1. 在 "请求详细信息" 窗格中，单击 "重新处理**请求**"。
+1. 在 "请求详细信息" 窗格中，单击 "重新处理 **请求**"。
 
     ![重新处理失败的请求](./media/entitlement-management-troubleshoot/reprocess-request.png)
 
 ### <a name="cancel-a-pending-request"></a>取消挂起的请求
 
-您只能取消尚未传递或传递失败的挂起的请求。否则，"**取消**" 按钮将灰显。
+您只能取消尚未传递或传递失败的挂起的请求。否则，" **取消** " 按钮将灰显。
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
@@ -148,7 +148,7 @@ ms.locfileid: "86145753"
     | P3 | 目录中的所有用户 (包括来宾) 或特定连接的组织 |
     | P4 | 所有连接的组织或所有用户 (所有连接的组织 + 任何新的外部用户)  |
     
-    如果任何策略的优先级较高，则会忽略低优先级类别。 有关如何向请求者显示多个具有相同优先级的策略的示例，请参阅[选择策略](entitlement-management-request-access.md#select-a-policy)。
+    如果任何策略的优先级较高，则会忽略低优先级类别。 有关如何向请求者显示多个具有相同优先级的策略的示例，请参阅 [选择策略](entitlement-management-request-access.md#select-a-policy)。
 
 ## <a name="next-steps"></a>后续步骤
 

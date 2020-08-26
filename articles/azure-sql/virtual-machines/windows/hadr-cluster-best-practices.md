@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965476"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285622"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>群集配置最佳实践（Azure Vm 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "85965476"
 
 ## <a name="networking"></a>网络
 
-每个服务器（群集节点）和单个子网使用单个 NIC。 Azure 网络具有物理冗余，这使得 Azure 虚拟机来宾群集上不需要其他 Nic 和子网。 群集验证报告上有警告，提示你只能在一个网络上访问节点。 可以在 Azure 虚拟机来宾故障转移群集上忽略此警告。
+每个服务器（群集节点）和单个子网使用单个 NIC。 Azure 网络具有物理冗余，这使得 Azure 虚拟机来宾群集上不需要其他 Nic 和子网。 群集验证报告将发出警告，指出节点只能在单个网络上访问。 可以在 Azure 虚拟机来宾故障转移群集上忽略此警告。
 
 ## <a name="quorum"></a>Quorum
 
@@ -42,27 +42,26 @@ ms.locfileid: "85965476"
 
 仲裁资源会根据这些问题来保护群集。 
 
-若要使用 Azure Vm 上的 SQL Server 配置仲裁资源，可以使用以下见证服务器类型： 
+下表按建议用于 Azure VM 的顺序列出了可用的仲裁选项，磁盘见证是首选选项： 
 
 
 ||[磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[云见证](/windows-server/failover-clustering/deploy-cloud-witness)  |[文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**支持的 OS**| All |Windows Server 2016 及更高版本| Windows Server 2012 +|
-|**支持的 SQL Server 版本**|SQL Server 2019|SQL Server 2016 +|SQL Server 2016 +|
+|**支持的 OS**| 全部 |Windows Server 2016 及更高版本| Windows Server 2012 +|
+
 
 
 
 ### <a name="disk-witness"></a>磁盘见证
 
-磁盘见证是群集可用存储组中的小型群集磁盘。 此磁盘高度可用，可以在节点之间进行故障转移。 它包含群集数据库的副本，其默认大小通常小于 1 GB。 
+磁盘见证是群集可用存储组中的小型群集磁盘。 此磁盘高度可用，可以在节点之间进行故障转移。 它包含群集数据库的副本，其默认大小通常小于 1 GB。 磁盘见证是 Azure VM 的首选仲裁选项，因为它可以解决与云见证和文件共享见证不同的时间问题。 
 
 将 Azure 共享磁盘配置为磁盘见证。 
 
 若要开始，请参阅[配置磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支持的操作系统**：全部    
-**支持的 SQL 版本**： SQL Server 2019   
+**支持的操作系统**：全部   
 
 
 ### <a name="cloud-witness"></a>云见证
@@ -73,21 +72,18 @@ ms.locfileid: "85965476"
 
 
 **支持的操作系统**： Windows Server 2016 及更高版本   
-**支持的 SQL 版本**： SQL Server 2016 及更高版本     
 
 
 ### <a name="file-share-witness"></a>文件共享见证
 
 文件共享见证是通常在运行 Windows Server 的文件服务器上配置的 SMB 文件共享。 它在见证服务器日志文件中维护群集信息，但不存储群集数据库的副本。 在 Azure 中，可以将[azure 文件共享](../../../storage/files/storage-how-to-create-file-share.md)配置为用作文件共享见证，也可以在单独的虚拟机上使用文件共享。
 
-如果要使用另一个 Azure 文件共享，可以使用用于[装载高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)的相同过程进行装载。 
+如果要使用 Azure 文件共享，可以使用用于[装载高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)的相同过程进行装载。 
 
 若要开始，请参阅[配置文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
 **支持的操作系统**： Windows Server 2012 及更高版本   
-**支持的 SQL 版本**： SQL Server 2016 及更高版本   
-
 
 ## <a name="connectivity"></a>连接
 
@@ -147,7 +143,7 @@ Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理
 在 Azure 虚拟机上，Windows Server 2016 或更早版本不支持 MSDTC，原因如下：
 
 - 无法将群集 MSDTC 资源配置为使用共享存储。 在 Windows Server 2016 上，如果创建 MSDTC 资源，即使存储可用，它也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
-- 基本负载均衡器不处理 RPC 端口。
+- 基本负载均衡器不会处理 RPC 端口。
 
 
 ## <a name="next-steps"></a>后续步骤

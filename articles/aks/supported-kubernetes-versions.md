@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507057"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475186"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>支持的 `kubectl` 版本
+
+您可以使用 `kubectl` 相对于*kube-apiserver*版本的较早或较新的次要版本，这与 kubectl 的[Kubernetes 支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)一致。
+
+例如，如果你的*kube-apiserver*为*1.17*，则可以使用版本*1.16*来*1.18* `kubectl` 该*kube-apiserver*。
+
+若要安装或更新的版本 `kubectl` ，请运行 `az aks install-cli` 。
+
 ## <a name="release-and-deprecation-process"></a>发布和弃用过程
 
 可以在[AKS Kubernetes Release Calendar](#aks-kubernetes-release-calendar)上引用即将发布的版本和弃用功能。
@@ -120,7 +128,6 @@ AKS 有权在不事先发出通行的情况下添加新的版本，或者删除�
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
-
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes Release Calendar
 
@@ -162,13 +169,13 @@ az aks get-versions --location eastus --output table
 
 控制平面必须位于所有节点池的版本窗口中。 有关升级控制平面或节点池的详细信息，请访问有关[升级节点池](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)的文档。
 
-**升级时是否可以跳过版本？**
+**在群集升级期间，是否可以跳过多个 AKS 版本？**
 
-不，按照 kubernetes 最佳实践，AKS 只允许升级到受支持的下一个修补程序或次要版本。 Azure 门户将仅向你显示你可以升级到的版本，并且你可以在 CLI 上运行 `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` 来查看当前版本的可用升级。
+升级受支持的 AKS 群集时，无法跳过 Kubernetes 次版本。 例如，允许从 1.12.x 升级到 1.13.x，或者从 1.13.x 升级到 1.14.x，但不允许从 1.12.x 升级到 1.14.x。
 
-**如果我是支持的最新版本的多个版本，如何升级到受支持的版本？**
+若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再从 1.13.x 升级到 1.14.x。
 
-若要保持在支持范围内，你必须避免在当前支持的列表中出现的多个版本，但如果你在这种情况下，AKS 将始终允许升级到受支持的最低版本。
+仅当从不受支持的版本升级到受支持的版本时，才能跳过多个版本。 例如，从不受支持的*1.10. x*升级 > 支持的*1.15。*
 
 ## <a name="next-steps"></a>后续步骤
 

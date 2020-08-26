@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: 本文介绍 Azure Active Directory 中的单一登录 (SSO) SAML 协议
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076940"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118444"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 
@@ -48,9 +48,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| ID | 必需 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
-| 版本 | 必需 | 此参数应设置为 **2.0**。 |
-| IssueInstant | 必选 | 这是具有 UTC 值和[往返格式（“o”）](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期时间字符串。 Azure AD 需要这种类型的日期时间值，但不评估或使用该值。 |
+| ID | 必选 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
+| 版本 | 必选 | 此参数应设置为 **2.0**。 |
+| IssueInstant | 必选 | 这是具有 UTC 值和[往返格式（“o”）](/dotnet/standard/base-types/standard-date-and-time-format-strings)的日期时间字符串。 Azure AD 需要这种类型的日期时间值，但不评估或使用该值。 |
 | AssertionConsumerServiceUrl | 可选 | 如果提供，此参数必须与 Azure AD 中云服务的 `RedirectUri` 匹配。 |
 | ForceAuthn | 可选 | 一个布尔值。 如果为 true，意味着用户会被强制重新验证，即使他们具有与 Azure AD 之间的有效会话。 |
 | IsPassive | 可选 | 一个布尔值，指定 Azure AD 是否应该在没有用户交互的情况下使用会话 cookie（如果存在）以无提示方式验证用户。 如果为 true，Azure AD 会尝试使用会话 cookie 验证用户。 |
@@ -101,7 +101,7 @@ Azure AD 将忽略 `AllowCreate` 属性。
 ### <a name="signature"></a>签名
 `Signature`元素中的元素 `AuthnRequest` 是可选的。 如果存在签名，Azure AD 不会验证签名的身份验证请求。 仅通过响应已注册的断言使用者服务 URL 来提供请求者验证。
 
-### <a name="subject"></a>使用者
+### <a name="subject"></a>主题
 请勿包含 `Subject` 元素。 Azure AD 不支持为请求指定主题，如果提供主题，则将返回错误。
 
 ## <a name="response"></a>响应

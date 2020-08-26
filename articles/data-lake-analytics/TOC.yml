@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Data Lake Analytics？
       href: data-lake-analytics-overview.md
+    - name: Data Lake Analytics 中的新增功能
+      href: data-lake-analytics-whats-new.md
 - name: 入门
   items:
     - name: Azure 门户
@@ -21,7 +23,16 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
-- name: 如何
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Azure 安全基准的安全基线
+          href: security-baseline.md
+- name: 操作指南
   items:
     - name: 管理 Data Lake Analytics
       items:
@@ -87,7 +98,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: 浏览和查看作业
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: '调试自定义 C# 代码'
+            - name: 调试自定义 C# 代码
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: 排查定期作业的问题
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md

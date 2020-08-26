@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Degreed 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Degreed 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1eda2d1c-b5e2-4c53-ad46-bbeb91cd119a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6b02fd3593036a6620d7eeec42dd6bae373ca53
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52f2cc6a528e0d765178d71e8c2d196df71738d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158437"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>教程：Azure Active Directory 与 Degreed 集成
 
@@ -41,6 +36,9 @@ ms.locfileid: "73158437"
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 启用了 Degreed 单一登录的订阅
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -68,13 +66,13 @@ ms.locfileid: "73158437"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Degreed”，在结果面板中选择“Degreed”，然后单击“添加”按钮添加应用程序。   
+4. 在搜索框中，键入“Degreed”，在结果面板中选择“Degreed”，然后单击“添加”按钮添加应用程序。************
 
      ![结果列表中的 Degreed](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Degreed 的 Azure AD 单一登录。 
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Degreed 的 Azure AD 单一登录。****
 若要运行单一登录，需要在 Azure AD 用户与 Degreed 相关用户之间建立链接关系。
 
 若要配置并测试 Degreed 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -83,7 +81,7 @@ ms.locfileid: "73158437"
 2. **[配置 Degreed 单一登录](#configure-degreed-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Degreed 测试用户](#create-degreed-test-user) - 在 Degreed 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+5. [创建 Degreed 测试用户](#create-degreed-test-user) - 在 Degreed 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式****。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -92,7 +90,7 @@ ms.locfileid: "73158437"
 
 若要配置 Degreed 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Degreed** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Degreed** 应用程序集成页上，选择“单一登录”。****
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -104,7 +102,7 @@ ms.locfileid: "73158437"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Degreed 域和 URL 单一登录信息](common/sp-identifier.png)
 
@@ -113,13 +111,13 @@ ms.locfileid: "73158437"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://degreed.com/<instancename>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Degreed 客户端支持团队](mailto:admin@degreed.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Degreed 客户端支持团队](mailto:admin@degreed.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Degreed”部分，根据要求复制相应 URL  。
+6. 在“设置 Degreed”部分，根据要求复制相应 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -131,17 +129,17 @@ ms.locfileid: "73158437"
 
 ### <a name="configure-degreed-single-sign-on"></a>配置 Degreed 单一登录
 
-若要在 **Degreed** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Degreed 支持团队](mailto:admin@degreed.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Degreed** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Degreed 支持团队](mailto:admin@degreed.com)。**** 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,28 +147,28 @@ ms.locfileid: "73158437"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Degreed 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Degreed”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Degreed”************。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Degreed”。 
+2. 在应用程序列表中，选择“Degreed”。****
 
     ![应用程序列表中的 Degreed 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -178,11 +176,11 @@ ms.locfileid: "73158437"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-degreed-test-user"></a>创建 Degreed 测试用户
 

@@ -2,12 +2,13 @@
 title: Azure 服务总线故障排除指南 | Microsoft Docs
 description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340454"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067046"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -15,7 +16,7 @@ ms.locfileid: "85340454"
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
 以下步骤可帮助你排查 *.servicebus.windows.net 下所有服务的连接/证书/超时问题。 
 
-- 浏览至 `https://<yournamespace>.servicebus.windows.net/` 或使用 [wget](https://www.gnu.org/software/wget/)。 它可用于检查你是否有 IP 筛选、虚拟网络或证书链问题（在使用 Java SDK 时最常见）。
+- 浏览至 `https://<yournamespace>.servicebus.windows.net/` 或使用 [wget](https://www.gnu.org/software/wget/)。 它有助于检查是否存在 IP 筛选或虚拟网络或证书链问题，这在使用 java SDK 时很常见。
 
     成功消息的示例：
     
@@ -53,29 +54,51 @@ ms.locfileid: "85340454"
 - 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重启时可能出现的问题
-后端服务升级和重启可能会对应用程序造成以下影响：
 
+### <a name="symptoms"></a>症状
 - 可能会暂时限制请求。
 - 传入的消息/请求可能会减少。
 - 日志文件可能包含错误消息。
 - 应用程序可能会在几秒内断开与服务的连接。
 
-如果应用程序代码使用 SDK，则重试策略已内置且处于活动状态。 应用程序会重新连接，此操作不会对应用程序/工作流产生重大影响。
+### <a name="cause"></a>原因
+后端服务升级并重新启动可能会导致应用程序出现这些问题。
+
+### <a name="resolution"></a>解决方法
+如果应用程序代码使用 SDK，则重试策略已内置并处于活动状态。 应用程序会重新连接，此操作不会对应用程序/工作流产生重大影响。
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>未授权访问：需要发送声明
+
+### <a name="symptoms"></a>症状 
 尝试使用具有发送权限的用户分配的托管标识从本地计算机上的 Visual Studio 访问服务总线主题时，可能会出现此错误。
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
-要解决此错误，请安装 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) 库。  有关详细信息，请参阅[本地开发身份验证](..\key-vault\service-to-service-authentication.md#local-development-authentication)。 
+### <a name="cause"></a>原因
+标识无权访问服务总线主题。 
+
+### <a name="resolution"></a>解决方法
+要解决此错误，请安装 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) 库。  有关详细信息，请参阅[本地开发身份验证](../key-vault/general/service-to-service-authentication.md#local-development-authentication)。 
 
 要了解如何将权限分配给角色，请参阅[使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源](service-bus-managed-service-identity.md)。
+
+## <a name="service-bus-exception-put-token-failed"></a>服务总线异常： Put 标记失败
+
+### <a name="symptoms"></a>症状
+尝试使用同一服务总线连接发送超过1000条消息时，会收到以下错误消息： 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>原因
+使用单个到服务总线命名空间的连接来发送和接收消息的令牌数量有限制。 它是1000。 
+
+### <a name="resolution"></a>解决方法
+打开到服务总线命名空间的新连接以发送更多消息。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
 
 - [Azure 资源管理器异常](service-bus-resource-manager-exceptions.md)。 这篇文章列出了使用 Azure 资源管理器（通过模板或直接调用）与 Azure 服务总线进行交互时生成的异常。
-- [消息传送异常](service-bus-messaging-exceptions.md)。 这篇文章列出了 Azure 服务总线的 .NET Framework 生成的异常。 
-
+- [消息传送异常](service-bus-messaging-exceptions.md)。 这篇文章列出了 Azure 服务总线的 .NET Framework 生成的异常。

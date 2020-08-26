@@ -1,19 +1,19 @@
 ---
 title: 地域隔离区内的 GeoJSON 数据格式 |Microsoft Azure 映射
-description: 本文介绍如何准备可在 Microsoft Azure Map GET 和 POST 地域隔离区内 API 中使用的地域隔离区内数据。
-author: philmea
-ms.author: philmea
+description: 了解 Azure Maps 地域隔离区内数据。 请参阅如何在检索相对于地域隔离区内的坐标位置时使用 GET 地域隔离区内和 POST 地域隔离区内 Api。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7b9860908dd3bdf3dcda727f350578a97b890cac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335620"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037399"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "80335620"
 | startTime | datetime  | 是 | 有效时段的开始日期时间。 |
 | endTime   | datetime  | 是 |  有效时段的结束日期时间。 |
 | recurrenceType | 字符串 | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值为 `Daily`。|
-| businessDayOnly | 布尔值 | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
+| businessDayOnly | Boolean | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
 
 
 * 所有坐标值都表示为中定义的 "经度，纬度" `WGS84` 。

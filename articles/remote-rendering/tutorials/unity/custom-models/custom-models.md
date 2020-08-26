@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3753c809d8222030a885693ede800fe17c08b14b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200745"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224537"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>教程：接口和自定义模型
 
@@ -75,14 +75,14 @@ ms.locfileid: "86200745"
 1. 在 Assets/RemoteRenderingTutorial/Prefabs/AppMenu 中找到 AppMenu 预制项
 1. 将 AppMenu 预制项拖到场景中。
 1. 你可能会看到“TMP 导入工具”对话框，因为这是第一次在场景中加入“文本网格 Pro”资产。 按照“导入 TMP 基本要素”的提示操作。 然后关闭导入工具对话框，这里不需要示例和其他功能。
-1. AppMenu 配置为自动挂钩，并提供“同意连接到会话”的模式，以便能够删除之前放置的旁路。 在 RemoteRenderingCoordinator GameObject 上，按“请求授权时”事件上的“-”按钮，删除先前实现的授权旁路 。\
- ![删除旁路](./media/remove-bypass-event.png)。\
+1. AppMenu 配置为自动挂钩，并提供“同意连接到会话”的模式，以便能够删除之前放置的旁路。 在 RemoteRenderingCoordinator GameObject 上，按“请求授权时”事件上的“-”按钮，删除先前实现的授权旁路 。
+ ![删除旁路](./media/remove-bypass-event.png)。
 1. 在 Unity 编辑器中按“播放”来测试视图控制器。
 1. 在编辑器中，已配置了 MRTK，现在可以使用 WASD 键更改视图的位置，然后按住鼠标右键同时移动鼠标来更改视图方向。 尝试在各方向上稍微移动场景，感受控制的感觉。
 1. 在设备上，可以通过举起手掌来召唤 AppMenu，在 Unity 编辑器中，可以使用热键“M”来实现此目的。
 1. 如果看不到菜单，可按“M”键召唤菜单。 菜单将位于相机附近，便于交互。
-1. 授权现在显示为 AppMenu右侧的请求，从现在开始，使用授权应用管理远程渲染会话。\
- ![UI 授权](./media/authorize-request-ui.png)\
+1. 授权现在显示为 AppMenu右侧的请求，从现在开始，使用授权应用管理远程渲染会话。
+ ![UI 授权](./media/authorize-request-ui.png)
 1. 让 Unity 停止播放，以继续学习本教程。
 
 ## <a name="manage-model-state"></a>管理模型状态
@@ -105,19 +105,23 @@ ms.locfileid: "86200745"
 
     public class RemoteRenderedModel : BaseRemoteRenderedModel
     {
-        [SerializeField]
-        [Tooltip("The friendly name for this model")]
-        private string modelDisplayName;
-        [SerializeField]
-        [Tooltip("The URI for this model")]
-        private string modelPath;
-
         public bool AutomaticallyLoad = true;
 
         private ModelState currentModelState = ModelState.NotReady;
 
+        [SerializeField]
+        [Tooltip("The friendly name for this model")]
+        private string modelDisplayName;
         public override string ModelDisplayName { get => modelDisplayName; set => modelDisplayName = value; }
-        public override string ModelPath { get => modelPath; set => modelPath = value; }
+
+        [SerializeField]
+        [Tooltip("The URI for this model")]
+        private string modelPath;
+        public override string ModelPath
+        {
+            get => modelPath.Trim();
+            set => modelPath = value;
+        }
 
         public override ModelState CurrentModelState
         {
@@ -255,11 +259,11 @@ ms.locfileid: "86200745"
 现在通过再次加载测试模型来测试新脚本。 我们将创建一个包含脚本的游戏对象，并将其作为测试模型的父级。
 
 1. 在场景中创建新的空游戏对象并将其命名为 TestModel。
-1. 将 RemoteRenderedModel 脚本添加到 TestModel。\
+1. 将 RemoteRenderedModel 脚本添加到 TestModel。
 ![添加 RemoteRenderedModel 组件](./media/add-remote-rendered-model-script.png)
-1. 分别用“TestModel”和“builtin://Engine”填写 `Model Display Name` 和 `Model Path` 。\
+1. 分别用“TestModel”和“builtin://Engine”填写 `Model Display Name` 和 `Model Path` 。
 ![指定模型详细信息](./media/add-model-script.png)
-1. 将 TestModel 对象放置在相机前面，位置为 x = 0, y = 0, z = 3 。\
+1. 将 TestModel 对象放置在相机前面，位置为 x = 0, y = 0, z = 3 。
 ![位置对象](./media/test-model-position.png)
 1. 确保启用 AutomaticallyLoad。
 1. 在 Unity 编辑器中按“播放”来测试应用程序。
@@ -280,7 +284,7 @@ ms.locfileid: "86200745"
 ## <a name="load-and-rendering-a-custom-model"></a>加载和渲染自定义模型
 
 1. 在场景中创建新的空 GameObject，并将其命名为类似于自定义模型。
-1. 将 RemoteRenderedModel 脚本添加到新创建的 GameObject。\
+1. 将 RemoteRenderedModel 脚本添加到新创建的 GameObject。
  ![添加 RemoteRenderedModel 组件](./media/add-remote-rendered-model-script.png)
 1. 使用适当的模型名称填充 `Model Display Name`。
 1. 使用在上面的引入步骤中创建的模型共享访问签名 (SAS) URI 填充 `Model Path`。

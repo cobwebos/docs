@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '创建支持 Azure Arc 的加入服务主体 '
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050071"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>创建支持 Azure Arc 的加入服务主体（预览）
 
@@ -44,7 +45,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>分配权限
 
-创建新服务主体后，请将“用于 Kubernetes 加入的 Azure Arc”角色分配给新创建的主体。 这是具有有限权限的内置 Azure 角色，只允许主体向 Azure 注册群集。 主体无法更新、删除或修改订阅中的任何其他群集或资源。
+创建新的服务主体后，将 "Kubernetes Cluster-Azure Arc 载入" 角色分配给新创建的主体。 这是具有有限权限的内置 Azure 角色，只允许主体向 Azure 注册群集。 主体无法更新、删除或修改订阅中的任何其他群集或资源。
 
 由于功能有限，客户可以轻松地将此主体重用于加入多个群集。
 

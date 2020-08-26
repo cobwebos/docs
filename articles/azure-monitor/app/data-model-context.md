@@ -4,11 +4,12 @@ description: Application Insights 遥测上下文数据模型
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671857"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322663"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -38,14 +39,14 @@ ms.locfileid: "77671857"
 
 ## <a name="operation-id"></a>操作 ID
 
-根操作的唯一标识符。 此标识符允许跨多个组件对遥测分组。 请参阅[遥测关联](../../azure-monitor/app/correlation.md)，了解详细信息。 操作 ID 由请求或页面视图创建。 其他所有遥测将此字段设置为包含请求或页面视图的值。 
+根操作的唯一标识符。 此标识符允许跨多个组件对遥测分组。 请参阅[遥测关联](./correlation.md)，了解详细信息。 操作 ID 由请求或页面视图创建。 其他所有遥测将此字段设置为包含请求或页面视图的值。 
 
 最大长度：128
 
 
 ## <a name="parent-operation-id"></a>父操作 ID
 
-遥测项的直接父操作的唯一标识符。 请参阅[遥测关联](../../azure-monitor/app/correlation.md)，了解详细信息。
+遥测项的直接父操作的唯一标识符。 请参阅[遥测关联](./correlation.md)，了解详细信息。
 
 最大长度：128
 
@@ -75,7 +76,7 @@ ms.locfileid: "77671857"
 
 匿名用户 ID。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
 
-[采样](../../azure-monitor/app/sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
+[采样](./sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
 
 使用匿名用户 ID 存储用户名是字段误用。 使用已经过身份验证的用户 ID。
 
@@ -126,6 +127,7 @@ SDK 版本。 有关信息，请参阅[此文](https://github.com/microsoft/Appl
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[扩展和筛选遥测](../../azure-monitor/app/api-filtering-sampling.md)。
+- 了解如何[扩展和筛选遥测](./api-filtering-sampling.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
-- 查看标准上下文属性集合[配置](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
+- 查看标准上下文属性集合[配置](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
+

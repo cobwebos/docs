@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202207"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760935"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
 Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服务的引用。 可为 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)后面运行的服务启用专用链接访问，使该服务的使用者能够从其自己的 VNet 以私密方式访问该服务。 你的客户可在其 VNet 中创建专用终结点，然后将此终结点映射到此服务。 本文解释与服务提供商一方相关的概念。 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="专用链接服务工作流" border="true":::
+
+*图： Azure 专用链接服务。*
+
 ## <a name="workflow"></a>工作流
 
 ![专用链接服务工作流](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*图： Azure 私有链接服务工作流。*
 
 ### <a name="create-your-private-link-service"></a>创建专用链接服务
 

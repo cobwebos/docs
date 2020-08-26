@@ -2,13 +2,14 @@
 title: 标记资源、资源组和订阅以便对其进行逻辑组织
 description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056916"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499987"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
@@ -17,7 +18,7 @@ ms.locfileid: "86056916"
 有关如何实现标记策略的建议，请参阅[资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。
 
 > [!IMPORTANT]
-> 标记名称对操作不区分大小写。 将更新或检索带有标记名称的标记，而不考虑大小写。 但是，资源提供程序可能会保留为标记名称提供的大小写。 您将看到成本报表中的大小写。
+> 标记名称对于操作不区分大小写。 系统会更新或检索具有标记名称的标记，而不考虑大小写。 但是，资源提供程序可能会保留为标记名称提供的大小写。 你将在成本报表中看到该大小写。
 > 
 > 标记值区分大小写。
 
@@ -25,7 +26,7 @@ ms.locfileid: "86056916"
 
 ## <a name="required-access"></a>所需访问权限
 
-若要将标记应用到资源，必须对 Microsoft.Resources/tags 资源类型拥有写入权限****。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色可让你将标记应用到实体，无需访问该实体本身。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
+若要将标记应用到资源，必须对 Microsoft.Resources/tags 资源类型拥有写入权限。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色可让你将标记应用到实体，无需访问该实体本身。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
 
 [参与者](../../role-based-access-control/built-in-roles.md#contributor)角色还授予对任何实体应用标记所需的访问权限。 要将标记仅应用于一种资源类型，请使用该资源的参与者角色。 例如，要将标记应用到虚拟机，请使用[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
@@ -35,7 +36,7 @@ ms.locfileid: "86056916"
 
 Azure PowerShell 提供两个用于应用标记的命令 - [New-AzTag](/powershell/module/az.resources/new-aztag) 和 [Update-AzTag](/powershell/module/az.resources/update-aztag)。 必须安装 Az.Resources 模块 1.12.0 或更高版本。 可以使用 `Get-Module Az.Resources` 检查自己的版本。 可以安装该模块，或[安装 Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 或更高版本。
 
-New-AzTag 替换资源、资源组或订阅中的所有标记****。 调用该命令时，请传入要标记的实体的资源 ID。
+New-AzTag 替换资源、资源组或订阅中的所有标记。 调用该命令时，请传入要标记的实体的资源 ID。
 
 以下示例将一组标记应用到存储帐户：
 
@@ -70,7 +71,7 @@ Properties :
         Team         Compliance
 ```
 
-若要将标记添加到已经有标记的资源，请使用 Update-AzTag****。 将 -Operation 参数设置为 Merge**** ****。
+若要将标记添加到已经有标记的资源，请使用 Update-AzTag。 将 -Operation 参数设置为 Merge 。
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -106,7 +107,7 @@ Properties :
         Environment  Production
 ```
 
-将 -Operation 参数设置为 Replace 时，会将现有标记替换为新的标记集**** ****。
+将 -Operation 参数设置为 Replace 时，会将现有标记替换为新的标记集 。
 
 ```azurepowershell-interactive
 $tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
@@ -212,7 +213,7 @@ Get-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="remove-tags"></a>删除标记
 
-若要删除特定的标记，请使用 Update-AzTag 并将 -Operation 设置为 Delete**** **** ****。 传入要删除的标记。
+若要删除特定的标记，请使用 Update-AzTag 并将 -Operation 设置为 Delete  。 传入要删除的标记。
 
 ```azurepowershell-interactive
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
@@ -438,7 +439,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-from-resource-group"></a>应用资源组中的标记
 
-若要将资源组中的标记应用于资源，请使用 [resourceGroup](../templates/template-functions-resource.md#resourcegroup) 函数。 获取标记值时，请使用 `tags[tag-name]` 语法而不是 `tags.tag-name` 语法，因为有些字符在点表示法中无法正确解析。
+若要将资源组中的标记应用于资源，请使用[resourceGroup （）](../templates/template-functions-resource.md#resourcegroup)函数。 获取标记值时，请使用 `tags[tag-name]` 语法而不是 `tags.tag-name` 语法，因为有些字符在点表示法中无法正确解析。
 
 ```json
 {
@@ -472,7 +473,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>将标记应用到多个资源组或订阅
 
-可以通过部署 Microsoft.Resources/tags 资源类型，将标记添加到资源组或订阅****。 标记会应用到此部署的目标资源组或订阅。 每次部署模板时，都要替换以前应用的任何标记。
+可以通过部署 Microsoft.Resources/tags 资源类型，将标记添加到资源组或订阅。 标记会应用到此部署的目标资源组或订阅。 每次部署模板时，都要替换以前应用的任何标记。
 
 ```json
 {
@@ -578,7 +579,7 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境（例如，在生产环境中运行的 VM 的计费使用情况）对成本进行分类。
 
-可以通过 [Azure 资源使用情况与费率卡 API](../../cost-management-billing/manage/usage-rate-card-overview.md) 或者使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可从 [Azure 帐户中心](https://account.azure.com/Subscriptions)或 Azure 门户下载使用情况文件。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择**版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。****
+可以通过[Azure 资源使用情况和费率卡 api](../../cost-management-billing/manage/usage-rate-card-overview.md)或使用情况逗号分隔值（CSV）文件来检索有关标记的信息。 可从 [Azure 帐户中心](https://account.azure.com/Subscriptions)或 Azure 门户下载使用情况文件。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择**版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。****
 
 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](/rest/api/billing/)。
 
@@ -596,6 +597,8 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
    > 目前，Azure DNS 区域和流量管理器服务也不允许在标记中使用空格。
    >
    > Azure Front Door 不支持在标记名称中使用 `#`。
+   >
+   > Azure 自动化和 Azure CDN 仅支持15个资源标记。
 
 ## <a name="next-steps"></a>后续步骤
 

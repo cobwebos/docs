@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Soonr Workplace 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Soonr Workplace 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b75f5f00-ea8b-4850-ae2e-134e5d678d97
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0457f60335f6478d7d6e2144ae838e070dabde4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8a21fecbe39008a79b60bdc9f133c3540d440207
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67588137"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>教程：Azure Active Directory 与 Soonr Workplace 集成
 

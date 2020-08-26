@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-java
+ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537878"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586209"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 > [!div class="op_single_selector"]
@@ -25,6 +26,9 @@ ms.locfileid: "86537878"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -45,15 +49,17 @@ ms.locfileid: "86537878"
 > 此外，[Azure Cosmos DB 研讨会和实验室](https://aka.ms/cosmosworkshop)也是了解如何使用 Azure Cosmos DB Java SDK v4 的绝佳资源！
 >
 
-| |  |
+## <a name="helpful-content"></a>帮助内容
+
+| 内容 | 链接 |
 |---|---|
-| **SDK 下载** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
+|**SDK 下载**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API 文档** | [Java API 参考文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
-|**参与 SDK** | [GitHub 上用于 Java 的 Azure SDK 中央存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**入门** | [快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java)   [具有快速入门代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
-|**基本代码示例** | [Azure Cosmos DB：SQL API 的 Java 示例](sql-api-java-sdk-samples.md)   [具有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
-|**包含更改源的控制台应用**| [更改源 - Java SDK v4 示例](create-sql-api-java-changefeed.md)   [具有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
-|**Web 应用示例**| [使用 Java SDK v4 构建 Web 应用](sql-api-java-application.md)   [具有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
+|**参与 SDK** | [GitHub 上用于 Java 的 Azure SDK 中央存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
+|**入门** | [快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [具有快速入门代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**基本代码示例** | [Azure Cosmos DB：SQL API 的 Java 示例](sql-api-java-sdk-samples.md) <br> [带有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**包含更改源的控制台应用**| [更改源-Java SDK v4 示例](create-sql-api-java-changefeed.md) <br> [带有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
+|**Web 应用示例**| [使用 Java SDK v4 构建 web 应用](sql-api-java-application.md) <br> [带有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **性能提示**| [适用于 Java SDK v4 的性能提示](performance-tips-java-sdk-v4-sql.md)| 
 | **故障排除** | [排查 Java SDK v4 问题](troubleshoot-java-sdk-v4-sql.md) |
 | **从旧 SDK 迁移到 v4** | [迁移到 Java V4 SDK](migrate-java-v4-sdk.md) |
@@ -62,29 +68,52 @@ ms.locfileid: "86537878"
 
 ## <a name="release-history"></a>版本历史记录
 
-### <a name="420-2020-07-14"></a>4.2.0 （2020-07-14）
+### <a name="440-beta1-unreleased"></a>4.4.0 (未发布) 
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29) 
+#### <a name="new-features"></a>新增功能
+* 已将反应器的核心库版本更新为 `3.3.8.RELEASE` 。 
+* 已将反应器-netty 库版本更新为 `0.9.10.RELEASE` 。 
+* 已将 netty 库版本更新为 `4.1.51.Final` 。 
+* 为添加了新的重载 Api `upsertItem` `partitionKey` 。 
+* 添加了开放式遥测跟踪支持。 
+#### <a name="key-bug-fixes"></a>密钥错误修复
+* 修复了 SSLException 在网关模式下取消请求时引发的问题。
+* 修复了对存储过程执行的资源限制重试策略。
+* 修复了在日志级别调试模式下 SDK 挂起的问题。 
+* 修复了直接模式下延迟的定期高峰。 
+* 修复了高客户端初始化时间问题。 
+* 修复了用直接模式和网关模式自定义客户端时的 http 代理 bug。 
+* 修复了用户传递 null 选项的潜在 NPE。 
+* 已将 timeUnit 添加到 `requestLatency` 诊断字符串中。
+* 从诊断字符串中删除了重复的 uri 字符串。 
+* 为点操作修复了正确的 JSON 格式的诊断字符串。
+* 修复了与 `.single()` 运算符有关的问题，导致反应器链在未找到异常的情况下出现。 
+
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14) 
+#### <a name="new-features"></a>新增功能
 * 向添加了启用脚本日志记录的 API `CosmosStoredProcedureRequestOptions` 。
 * 更新 `DirectConnectionConfig` 默认值 `idleEndpointTimeout` 为1小时，默认值 `connectTimeout` 为5s。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>密钥错误修复
 * 修复 `GatewayConnectionConfig` `idleConnectionTimeout` 了重写的问题 `DirectConnectionConfig` `idleConnectionTimeout` 。
 * 修复了 `responseContinuationTokenLimitInKb` 中的 get 和 Set api `CosmosQueryRequestOptions` 。
 * 修复了在重新创建同名集合时查询和更改源的问题。
 * 修复了 top 查询引发 ClassCastException 的问题。
 * 修复了 order by 查询引发 NullPointerException 的问题。
-* 修复了在直接模式下处理取消的请求时出现的问题，从而导致 `onErrorDropped` 调用反应器。 
+* 修复了在直接模式下处理取消请求时的问题，从而导致 `onErrorDropped` 调用反应器。 
 
-### <a name="410-2020-06-25"></a>4.1.0 （2020-06-25）
-#### <a name="new-features"></a>新功能
+### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25) 
+#### <a name="new-features"></a>新增功能
 * 添加了对 `GROUP BY` 查询的支持。
 * 在 DirectConnectionConfig 中，将 maxConnectionsPerEndpoint 的默认值增加到了130。
 * 增加了 DirectConnectionConfig 中 maxRequestsPerConnection 到30的默认值。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>密钥错误修复
 * 修复了使用继续标记恢复时返回重复结果的 order by 查询的问题。 
 * 修复了值查询返回了嵌套对象的 null 值的问题。
 * 修复了 RntbdClientChannelPool 中的请求管理器的空指针异常。
 
 ### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
-#### <a name="new-features"></a>新功能
+#### <a name="new-features"></a>新增功能
 * 已将 `QueryRequestOptions` 重命名为 `CosmosQueryRequestOptions`。
 * 已将 `ChangeFeedProcessorBuilder` 更新为生成器模式。
 * 使用新的容器名称和子资源 API 更新了 `CosmosPermissionProperties`。
@@ -137,7 +166,8 @@ ms.locfileid: "86537878"
 * 通过删除双序列化/反序列化来进行查询优化。 
 * 通过删除不必要的来回复制来优化响应标头。 
 * 通过删除中间字符串实例化优化了 `ByteBuffer` 序列化/反序列化。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+
+#### <a name="key-bug-fixes"></a>密钥错误修复
 * 修复了 ConnectionPolicy `toString()` 空指针异常。
 * 修复了在按查询的值顺序分析查询结果时的问题。 
 * 修复了直接 TCP 客户端的套接字泄漏问题。
@@ -149,5 +179,5 @@ ms.locfileid: "86537878"
 ## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。

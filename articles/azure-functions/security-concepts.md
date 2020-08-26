@@ -3,19 +3,20 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259416"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850706"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
-对于 Web 或云托管应用程序来说，无服务器函数的安全开发、部署和操作的规划在诸多方面都几乎相同。 [Azure 应用服务](/azure/app-service/)提供函数应用的托管基础结构。 本文介绍了运行函数代码的安全策略，以及应用服务如何帮助你保护函数。 
+对于 Web 或云托管应用程序来说，无服务器函数的安全开发、部署和操作的规划在诸多方面都几乎相同。 [Azure 应用服务](../app-service/index.yml)提供函数应用的托管基础结构。 本文介绍了运行函数代码的安全策略，以及应用服务如何帮助你保护函数。 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-如需查看遵循 [Azure 安全基准检验](/azure/security/benchmarks/overview)的一组安全建议，请参阅 [Azure Functions 的 Azure 安全基线](security-baseline.md)。
+如需查看遵循 [Azure 安全基准检验](../security/benchmarks/overview.md)的一组安全建议，请参阅 [Azure Functions 的 Azure 安全基线](security-baseline.md)。
 
 ## <a name="secure-operation"></a>安全操作 
 
@@ -70,6 +71,18 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 若要了解有关访问密钥的更多信息，请参阅 [HTTP 触发器绑定文章](functions-bindings-http-webhook-trigger.md#obtaining-keys)。
 
+
+#### <a name="secret-repositories"></a>密钥存储库
+
+默认情况下，密钥存储在设置提供的帐户中的 Blob 存储容器中 `AzureWebJobsStorage` 。 您可以使用特定的应用程序设置来覆盖此行为，并将密钥存储在不同的位置。
+
+|位置  |设置 | 值 | 描述  |
+|---------|---------|---------|---------|
+|不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用独有的机密存储密钥之前对密钥进行加密。 |
+|文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥在文件系统上保留，在使用函数应用独有的机密存储之前加密。 |
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保管库必须具有与系统分配的托管资源的托管标识对应的访问策略。 访问策略应授予标识以下机密权限： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本地运行时，使用开发人员标识，并且设置必须位于[local.settings.js文件](functions-run-local.md#local-settings-file)中。 | 
+|Kubernetes 机密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName`（可选） | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 仅当在 Kubernetes 中运行函数运行时才受支持。 如果 `AzureWebJobsKubernetesSecretName` 未设置，则会将存储库视为只读。 在这种情况下，必须在部署之前生成值。 在部署到 Kubernetes 时，Azure Functions Core Tools 会自动生成值。|
+
 ### <a name="authenticationauthorization"></a>身份验证/授权
 
 虽然函数密钥可以为不需要的访问提供一些缓解措施，但真正保护函数终结点的唯一方法是实现对访问函数的客户端的主动身份验证。 然后，你可以根据身份做出授权决策。  
@@ -82,7 +95,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 #### <a name="user-management-permissions"></a>用户管理权限
 
-函数支持内置的[Azure 基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)。 函数支持的 RBAC 角色有[参与者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)和[读者](../role-based-access-control/built-in-roles.md#owner)。 
+函数支持[AZURE RBAC) 的内置 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。 函数支持的 Azure 角色为 "[参与者](../role-based-access-control/built-in-roles.md#contributor)"、"[所有者](../role-based-access-control/built-in-roles.md#owner)" 和 "[读者](../role-based-access-control/built-in-roles.md#owner)"。 
 
 权限在函数应用级别有效。 参与者角色是执行大多数函数应用级任务所必需的。 只有所有者角色才能删除函数应用。 
 
@@ -206,4 +219,3 @@ Azure Functions 工具集成可以简化将本地函数项目代码发布到 Azu
 
 + [适用于 Azure Functions 的 Azure 安全基线](security-baseline.md)
 + [Azure Functions 诊断](functions-diagnostics.md)
-        

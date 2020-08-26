@@ -3,12 +3,12 @@ title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 本文粗略概述了 Azure 服务总线（一种完全托管的企业集成消息代理）。
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 8583996cde23b056261662a0640aa310e63d45a9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341656"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501468"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -92,7 +92,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 ### <a name="security-protocols"></a>安全协议
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-服务总线支持多种安全协议，例如[共享访问签名](service-bus-sas.md) (SAS)、[基于角色的访问控制](authenticate-application.md) (RBAC)、[适用于 Azure 资源的托管标识](service-bus-managed-service-identity.md)。
+服务总线支持多种安全协议，例如[共享访问签名](service-bus-sas.md) (SAS)、[Azure 基于角色的访问控制 (Azure RBAC)](authenticate-application.md) 和[适用于 Azure 资源的托管标识](service-bus-managed-service-identity.md)。
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 

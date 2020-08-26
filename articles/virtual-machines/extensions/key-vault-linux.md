@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224258"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522285"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -71,11 +71,11 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 > [!NOTE]
 > 观察到的证书 URL 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> 当 VM 具有多个分配的标识时，"Authenticationsettings.instance.setsecretkey 中" 属性是可选的。
-> 它允许指定标识用于 Key Vault 的身份验证。
+> [!IMPORTANT]
+> 只有具有**用户分配标识**的 vm 才**需要**"authenticationsettings.instance.setsecretkey 中" 属性。
+> 它指定用于 Key Vault 身份验证的标识。
 
 
 ### <a name="property-values"></a>属性值
@@ -86,7 +86,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
+| pollingIntervalInS | 3600 | string |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
@@ -204,7 +204,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 请注意以下限制/要求：
 - Key Vault 限制：
   - 必须在部署时存在 
-  - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅如何[使用托管标识提供 Key Vault 身份验证](../../key-vault/managed-identity.md)
+  - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅如何[使用托管标识提供 Key Vault 身份验证](../../key-vault/general/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持

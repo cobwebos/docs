@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: d5e8f5e3939ade4e5344ef586a62b6a19082e34e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e499b27124ed5723fb19fecbe4091f17364aea5a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809044"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533982"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建用户委托 SAS
 
@@ -25,9 +25,9 @@ ms.locfileid: "84809044"
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>分配用于访问数据的 RBAC 角色
+## <a name="assign-azure-roles-for-access-to-data"></a>分配 Azure 角色以访问数据
 
-当 Azure AD 安全主体尝试访问 blob 数据时，该安全主体必须具有对资源的权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配允许访问 Azure 存储中的 blob 数据的 RBAC 角色。 若要了解如何通过 RBAC 分配权限，请参阅[使用 Azure Active Directory 授权访问 Azure Blob 和队列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中标题为“为访问权限分配 RBAC 角色”的部分。****
+当 Azure AD 安全主体尝试访问 blob 数据时，该安全主体必须具有对资源的权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配 Azure 角色，以授予对 Azure 存储中的 blob 数据的访问权限。 有关通过 RBAC 分配权限的信息，请参阅[使用 Azure Active Directory 授予对 azure blob 和队列的访问](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)权限中的 "为**访问权限分配 azure 角色**" 一节。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
@@ -235,7 +235,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)

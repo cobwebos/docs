@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664773"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322901"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -26,7 +27,7 @@ Azure Monitor 中的 VMware 监视解决方案是一个有助于针对大型 VMw
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 使用[安装监视解决方案](../insights/solutions.md#install-a-monitoring-solution)中所述的过程将 VMware 监视解决方案添加到订阅。
+* 使用[安装监视解决方案](./solutions.md#install-a-monitoring-solution)中所述的过程将 VMware 监视解决方案添加到订阅。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
 vSphere ESXi 主机 5.5、6.0 和 6.5
@@ -155,7 +156,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>从查询中创建警报
-创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](../platform/alerts-overview.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) 博客文章。
+创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](../platform/alerts-overview.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) 博客文章。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>需要对 ESXi 主机设置执行哪些操作？ 这对目前的环境有什么影响？
@@ -199,3 +200,4 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 * 使用 Log Analytics 中的[日志查询](../log-query/log-query-overview.md)可查看详细的 VMware 主机数据。
 * [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)显示了 VMware 主机数据。
 * 发生特定 VMware 主机事件时[创建警报](../platform/alerts-overview.md)。
+

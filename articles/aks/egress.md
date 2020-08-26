@@ -5,14 +5,14 @@ description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517767"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563239"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将静态公共 IP 地址用于 Azure Kubernetes 服务中的*基本*SKU 负载均衡器的出口流量（AKS）
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将静态公共 IP 地址用于 Azure Kubernetes 服务中的*基本*SKU 负载均衡器的出口流量 (AKS) 
 
 默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 相反，你可能需要分配要添加到服务访问允许列表的静态 IP 地址。
 
@@ -20,14 +20,14 @@ ms.locfileid: "86517767"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文假定你使用的是 Azure 基本负载均衡器。  建议使用[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)，并且可以使用更高级的功能来[控制 AKS 出口流量](https://docs.microsoft.com/azure/aks/limit-egress-traffic)。
+本文假定你使用的是 Azure 基本负载均衡器。  建议使用[Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)，并且可以使用更高级的功能来[控制 AKS 出口流量](./limit-egress-traffic.md)。
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 > [!IMPORTANT]
-> 本文使用带有单一节点池的*基本*SKU 负载均衡器。 此配置不可用于多个节点池，因为多个节点池不支持*基本*SKU 负载均衡器。 有关使用*标准*SKU 负载均衡器的更多详细信息，请参阅[使用 Azure KUBERNETES Service （AKS）中的公共标准负载均衡器][slb]。
+> 本文使用带有单一节点池的*基本*SKU 负载均衡器。 此配置不可用于多个节点池，因为多个节点池不支持*基本*SKU 负载均衡器。 有关使用*标准*SKU 负载均衡器的更多详细信息，请参阅[使用 Azure Kubernetes Service 中的公共标准负载均衡器 (AKS) ][slb] 。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 

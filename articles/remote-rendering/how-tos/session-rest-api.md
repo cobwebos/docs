@@ -5,15 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681241"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509835"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用会话管理 REST API
 
-若要使用 Azure 远程呈现功能，需要创建一个*会话*。 每个会话对应于在 Azure 中分配的虚拟机（VM）并等待客户端设备连接。 当设备连接时，VM 将呈现请求的数据，并将结果作为视频流提供。 在会话创建过程中，您选择了要在哪种服务器上运行，这会确定定价。 不再需要会话时，应停止此会话。 如果未手动停止，它将在会话的*租约时间*到期时自动关闭。
+若要使用 Azure 远程呈现功能，需要创建一个 *会话*。 每个会话都对应于要在 Azure 中分配的虚拟机 (VM) 正在等待客户端设备连接。 当设备连接时，VM 将呈现请求的数据，并将结果作为视频流提供。 在会话创建过程中，您选择了要在哪种服务器上运行，这会确定定价。 不再需要会话时，应停止此会话。 如果未手动停止，它将在会话的 *租约时间* 到期时自动关闭。
 
 我们在 "*脚本*" 文件夹（称为*RenderingSession.ps1*）中的 " [ARR 示例" 存储库](https://github.com/Azure/azure-remote-rendering)中提供了一个 PowerShell 脚本，它演示了如何使用我们的服务。 此脚本及其配置如下所述： [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
 
@@ -22,9 +23,9 @@ ms.locfileid: "80681241"
 
 ## <a name="regions"></a>区域
 
-请参阅要将请求发送到的基本 Url 的[可用区域列表](../reference/regions.md)。
+请参阅要将请求发送到的基本 Url 的 [可用区域列表](../reference/regions.md) 。
 
-对于下面的示例脚本，我们选择区域*westus2*。
+对于下面的示例脚本，我们选择区域 *westus2*。
 
 ### <a name="example-script-choose-an-endpoint"></a>示例脚本：选择终结点
 
@@ -34,7 +35,7 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>帐户
 
-如果没有远程呈现帐户，请[创建一个](create-an-account.md)。 每个资源都由 AccountId 标识，该*accountId*在整个会话 api 中使用。
+如果没有远程呈现帐户，请 [创建一个](create-an-account.md)。 每个资源都由 AccountId 标识，该 *accountId*在整个会话 api 中使用。
 
 ### <a name="example-script-set-accountid-and-accountkey"></a>示例脚本： Set accountId 和 accountKey
 
@@ -58,7 +59,7 @@ $token = $response.AccessToken;
 
 ## <a name="common-response-headers"></a>常见响应标头
 
-* 产品团队可以使用*MS CV*标头来跟踪服务中的调用。
+* 产品团队可以使用 *MS CV* 标头来跟踪服务中的调用。
 
 ## <a name="create-a-session"></a>创建会话
 
@@ -70,15 +71,15 @@ $token = $response.AccessToken;
 
 **请求正文：**
 
-* maxLeaseTime （timespan）： VM 将自动解除授权时的超时值
-* 模型（数组）：要预加载的资产容器 Url
-* size （string）： VM 大小（**"标准"** 或 **"高级"**）。 请参阅特定 [VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+* maxLeaseTime (timespan) ：会话将自动解除授权时的超时值
+*  (数组) 模型：要预加载的资产容器 Url
+* size (字符串) ：要配置的服务器大小 ([**"标准"**](../reference/vm-sizes.md) 或 [**"高级"**](../reference/vm-sizes.md)) 。 请参阅特定 [大小限制](../reference/limits.md#overall-number-of-polygons)。
 
 **响应**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId： GUID | 成功 |
+| 202 | -sessionId： GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>示例脚本：创建会话
 
@@ -110,7 +111,7 @@ RawContentLength  : 52
 
 ### <a name="example-script-store-sessionid"></a>示例脚本：存储 sessionId
 
-上述请求中的响应包含 SessionId，你需要为所有后续请求提供一个**sessionId**。
+上述请求中的响应包含 SessionId，你需要为所有后续请求提供一个 **sessionId**。
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
@@ -129,7 +130,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 **请求正文：**
 
-* maxLeaseTime （timespan）： VM 将自动解除授权时的超时值
+* maxLeaseTime (timespan) ：会话将自动解除授权时的超时值
 
 **响应**
 
@@ -251,13 +252,13 @@ RawContentLength  : 60
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions/*sessionId* | DELETE |
+| /v1/accounts/*accountId*/sessions/*sessionId* | 删除 |
 
 **响应**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
-| 204 | | 成功 |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>示例脚本：停止会话
 

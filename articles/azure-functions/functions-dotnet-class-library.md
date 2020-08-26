@@ -2,13 +2,14 @@
 title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.date: 07/24/2020
+ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506499"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206208"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -31,7 +32,7 @@ Functions 运行时版本使用特定版本的 .NET。 下表显示了可与项�
 | ---- | ---- |
 | Functions 3.x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
-| Functions 1.x | .NET Framework 4.6 |
+| Functions 1.x | .NET Framework 4.7 |
 
 若要了解详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
 
@@ -136,7 +137,7 @@ public static class BindingExpressionsExample
 
 生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
-此文件的用途是向缩放控制器提供信息以用于针对[消耗计划的缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
+此文件的用途是向缩放控制器提供信息以用于针对 [消耗计划的缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
 生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
 
@@ -204,9 +205,9 @@ Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install
 
 ## <a name="readytorun"></a>ReadyToRun
 
-可以将函数应用编译为[ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译的形式，它可以提高启动性能，从而有助于降低[冷启动](functions-scale.md#cold-start)在[消耗计划](functions-scale.md#consumption-plan)中运行时的影响。
+可以将函数应用编译为 [ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译的形式，它可以提高启动性能，从而有助于降低 [冷启动](functions-scale.md#cold-start) 在 [消耗计划](functions-scale.md#consumption-plan)中运行时的影响。
 
-ReadyToRun 在 .NET 3.0 中提供，并且需要[3.0 版本的 Azure Functions 运行时](functions-versions.md)。
+ReadyToRun 在 .NET 3.0 中提供，并且需要 [3.0 版本的 Azure Functions 运行时](functions-versions.md)。
 
 若要将你的项目编译为 ReadyToRun，请通过添加和元素更新你的项目文件 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 下面是用于发布到 Windows 32 位函数应用的配置。
 
@@ -220,7 +221,7 @@ ReadyToRun 在 .NET 3.0 中提供，并且需要[3.0 版本的 Azure Functions �
 ```
 
 > [!IMPORTANT]
-> ReadyToRun 当前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 另外，请注意函数应用中配置的 "位数"。 例如，如果 Azure 中的 function app 为 Windows 64 位，则必须在 Windows 上编译应用 `win-x64` 作为[运行时标识符](/dotnet/core/rid-catalog)。
+> ReadyToRun 当前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 另外，请注意函数应用中配置的 "位数"。 例如，如果 Azure 中的 function app 为 Windows 64 位，则必须在 Windows 上编译应用 `win-x64` 作为 [运行时标识符](/dotnet/core/rid-catalog)。
 
 还可以从命令行通过 ReadyToRun 生成应用。 有关详细信息，请参阅 `-p:PublishReadyToRun=true` 中的选项 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
 

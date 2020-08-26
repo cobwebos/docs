@@ -6,11 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79082755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092909"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
@@ -34,15 +35,15 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 开始将日志数据发送到 Azure Monitor。 存在多个选项：
 
-- 对于同步机制，可以直接调用[数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
+- 对于同步机制，可以直接调用[数据收集器 API](../platform/data-collector-api.md) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
 
   ![“选择操作”的屏幕截图](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- 对于异步选项，请使用数据收集器 API 来生成处理管道。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)。
+- 对于异步选项，请使用数据收集器 API 来生成处理管道。 有关详细信息，请参阅[此文](../platform/create-pipeline-datacollector-api.md)。
 
 ## <a name="correlating-data"></a>关联数据
 
-Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
+Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](../log-query/cross-workspace-query.md)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
 
 例如，可以将实验室清单和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与前述自定义表中存储的这些计算机位置相关联，则可在 Application Insights 或 Azure Monitor 上下文中运行以下查询：
 
@@ -56,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) 参考。
-- 有关[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)的详细信息。
+- 查看[数据收集器 API](../platform/data-collector-api.md) 参考。
+- 有关[跨资源联接](../log-query/cross-workspace-query.md)的详细信息。

@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "70067937"
 ---
 # <a name="mock-api-responses"></a>模拟 API 响应
@@ -97,7 +97,7 @@ ms.locfileid: "70067937"
 
     ![启用响应模拟](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”  。
 
 ## <a name="test-the-mocked-api"></a>测试模拟 API
 

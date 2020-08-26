@@ -4,26 +4,26 @@ description: 付款摘要显示了你通过产品/服务赚取的资金的详细
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535954"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479806"
 ---
 # <a name="payout-summary-overview"></a>付款摘要概述
 
 [付款摘要](./payout-summary.md)显示有关通过 Microsoft 赚取的资金的详细信息。 它还显示了收到付款的时间以及付款金额。
 
-如果你在 Azure 市场上销售产品/服务，你还可在付款摘要中看到有关成功付款的信息。 有关 Azure 市场付款的详细信息，请参阅 [Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)。
+如果你在 Azure 市场上销售产品/服务，你还可在付款摘要中看到有关成功付款的信息。 有关 Azure 市场付款的详细信息，请参阅 [Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
 
 > [!NOTE]
-> 要获得付款资格，你的收益必须达到 50 美元的[付款阈值](./payment-thresholds-methods-timeframes.md)。 有关付款阈值的详细信息，请参阅 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)。
+> 要获得付款资格，你的收益必须达到 50 美元的[付款阈值](./payment-thresholds-methods-timeframes.md)。 有关付款阈值的详细信息，请参阅 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
 
-合作伙伴中心的“分析”部分提供了交易发布选项的所有报告和见解，可使用门户右上角的以下图标进行访问：
+若要查看付出的详细信息，请登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)，并选择屏幕右上角的 "支出" 图标：
 
 ![展示了合作伙伴中心门户右上角的“付款”图标。](./media/payout-overview.png)
 

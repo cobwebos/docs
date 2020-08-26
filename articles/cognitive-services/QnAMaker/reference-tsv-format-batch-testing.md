@@ -3,19 +3,17 @@ title: Batch 测试 TSV 格式-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 了解用于批处理测试的 TSV 格式
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: dccf034b6497651db70b6cc09fff3f1b1d645a1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73507821"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132119"
 ---
 # <a name="batch-testing-tsv-format"></a>批处理测试 TSV 格式
 
@@ -48,13 +46,13 @@ batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.
 
 ## <a name="tsv-output-fields"></a>TSV 输出字段 
 
-|TSV 输出文件参数|说明|
+|TSV 输出文件参数|注释|
 |--|--|
 |KBID|在 "发布" 页上找到你的 KB ID。|
 |问题|输入文件中输入的问题。|
-|Answer|知识库的最佳答案。|
+|答案|知识库的最佳答案。|
 |应答 ID|应答 ID|
-|分数|答案的预测分数。 |
+|Score|答案的预测分数。 |
 |元数据标记|与返回的答卷关联|
 |预期的答案 ID|可选（仅当给定了预期的答案 ID 时）|
 |判断标签|可选，值可以是：正确或不正确（仅当给定了预期的答案时）|

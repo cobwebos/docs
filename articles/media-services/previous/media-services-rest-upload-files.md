@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d776362b0447b148c0b2bdedba1287fa56058b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000187"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户  
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86170779"
 > * [Portal](media-services-portal-upload-files.md)
 > 
 
-在媒体服务中，可以将数字文件上传到资产中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。 
+在媒体服务中，可以将数字文件上传到资产中。 [资产](/rest/api/media/operations/asset)实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。 
 
 本教程介绍如何上传文件及其关联的其他操作：
 
@@ -45,7 +45,7 @@ ms.locfileid: "86170779"
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
 - 查看[通过 ADD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
-- 另外，有关详细信息，请参阅[通过 Azure AD 身份验证使用 REST 访问媒体服务 API](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) 一文。
+- 另外，有关详细信息，请参阅[通过 Azure AD 身份验证使用 REST 访问媒体服务 API](./media-services-rest-connect-with-aad.md) 一文。
 - 根据[为媒体服务 REST API 调用配置 Postman](media-rest-apis-with-postman.md) 中所述配置 **Postman**。
 
 ## <a name="considerations"></a>注意事项
@@ -53,7 +53,7 @@ ms.locfileid: "86170779"
 使用媒体服务 REST API 时，需注意以下事项：
  
 * 访问媒体服务 REST API 访问实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。 <br/>本教程中使用的 Postman 集合负责设置所有必要的标头。
-* 为流式处理 (内容生成 Url 时，媒体服务将使用 IAssetFile.Name 属性的值，例如 http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters。 ) ，则不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
+* 为流式处理内容（例如，http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters 生成 Url 时，媒体服务将使用 IAssetFile.Name 属性的值。）出于此原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 * 名称长度不应超过 260 个字符。
 * 在媒体服务中进行处理时，系统支持的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 
@@ -106,7 +106,7 @@ ms.locfileid: "86170779"
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[本文](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
-将任何文件上传到 blob 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
+将任何文件上传到 blob 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](/rest/api/media/operations/accesspolicy)。
 
 ### <a name="create-an-access-policy"></a>创建访问策略
 
@@ -121,7 +121,7 @@ ms.locfileid: "86170779"
 
 ### <a name="overview"></a>概述
 
-[资产](https://docs.microsoft.com/rest/api/media/operations/asset)是媒体服务中多种类型的对象或多组对象（包括视频、音频、图像、缩略图集合、文本轨道和隐藏的解释性字幕文件）的容器。 在 REST API 中，创建资产需要向媒体服务发送 POST 请求，并将任何有关资产的属性信息放入请求正文中。
+[资产](/rest/api/media/operations/asset)是媒体服务中多种类型的对象或多组对象（包括视频、音频、图像、缩略图集合、文本轨道和隐藏的解释性字幕文件）的容器。 在 REST API 中，创建资产需要向媒体服务发送 POST 请求，并将任何有关资产的属性信息放入请求正文中。
 
 在创建资产时可以添加的属性之一是 **Options**。 可以指定以下加密选项之一：**None**（默认值，不使用加密）、**StorageEncrypted**（适用于已使用客户端存储加密预先加密的内容）、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 如果资产已加密，则需要配置传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)。
 
@@ -144,9 +144,9 @@ ms.locfileid: "86170779"
 
 设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将实际文件上传到 Azure BLOB 存储容器。 必须将文件作为块 blob 上传。 页 blob 不受 Azure 媒体服务支持。  
 
-有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
+有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)。
 
-若要检索实际上传 URL，请创建一个 SAS 定位符（参阅下文）。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
+若要检索实际上传 URL，请创建一个 SAS 定位符（参阅下文）。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅 [定位符](/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
@@ -175,9 +175,9 @@ SAS URL 采用以下格式：
 
 创建上传 URL 后，需要直接使用 Azure Blob API 编写一些代码，用于将文件上传到 SAS 容器。 有关详细信息，请参阅以下文章：
 
-- [使用 Azure 存储 REST API](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [将 Blob 上传到 Blob 存储](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [使用 Azure 存储 REST API](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [PUT Blob](/rest/api/storageservices/put-blob)
+- [将 Blob 上传到 Blob 存储](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>使用 Postman 上传文件
 
@@ -209,7 +209,7 @@ SAS URL 采用以下格式：
 
 ## <a name="validate"></a>验证
 
-若要验证是否已成功上传文件，可以查询 [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile)，并将 **ContentFileSize**（或其他详细信息）与希望在新资产中显示的信息进行比较。 
+若要验证是否已成功上传文件，可以查询 [AssetFile](/rest/api/media/operations/assetfile)，并将 **ContentFileSize**（或其他详细信息）与希望在新资产中显示的信息进行比较。 
 
 例如，以下 **GET** 操作将获取资产文件（在本例中为 BigBuckBunny.mp4 文件）的文件数据。 该查询使用前面设置的[环境变量](postman-environment.md)。
 
@@ -229,4 +229,3 @@ SAS URL 采用以下格式：
 现即可编码已上传的资产。 有关详细信息，请参阅[对资产进行编码](media-services-portal-encode.md)。
 
 也可使用 Azure Functions 根据到达已配置容器的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
-

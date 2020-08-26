@@ -3,18 +3,18 @@ title: Azure CDN 文档
 summary: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 也可以通过利用各种网络和路由优化来加速不能缓存的动态内容。
 metadata:
   title: Azure CDN 文档 - 教程和 API 参考
-  description: Azure 内容分发网络 (CDN) 是一种用于分发高带宽内容的全球 CDN 解决方案。 它可以托管在 Azure 中，也可以托管到任何其他位置。 借助 Azure CDN，可以通过使用距离最近的接入点 (POP) 服务器来缓存从 Azure Blob 存储、Web 应用程序或任何可公开访问的 Web 服务器加载的静态对象。 Azure CDN 也可以通过利用各种网络和路由优化来加速不能缓存的动态内容。
+  description: 了解 Azure 内容分发网络，它是一种用于分发高带宽内容的解决方案，可托管在 Azure 或其他任何位置。
   ms.service: azure-cdn
   ms.topic: landing-page
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: c3c9cd72a85744ac6b609b178ac4e7c2413b4080
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.openlocfilehash: ed3c4f1794407ccdb841ea3c6ca35ff4d8e1a808
+  ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85554307"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88192452"
 landingContent:
 - title: 关于 Azure CDN
   linkLists:

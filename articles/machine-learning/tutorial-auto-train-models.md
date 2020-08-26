@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
-ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 595440dc727f3faf1fa475266825a671f00d9153
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/14/2020
+ms.custom: devx-track-python
+ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143612"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120841"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,281 +70,18 @@ for sample_month in range(12):
 green_taxi_df.head(10)
 ```
 
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; } </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>vendorID</th>
-      <th>lpepPickupDatetime</th>
-      <th>lpepDropoffDatetime</th>
-      <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>...</th>
-      <th>paymentType</th>
-      <th>fareAmount</th>
-      <th>extra</th>
-      <th>mtaTax</th>
-      <th>improvementSurcharge</th>
-      <th>tipAmount</th>
-      <th>tollsAmount</th>
-      <th>ehailFee</th>
-      <th>totalAmount</th>
-      <th>tripType</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>131969</th>
-      <td>2</td>
-      <td>2015-01-11 05:34:44</td>
-      <td>2015-01-11 05:45:03</td>
-      <td>3</td>
-      <td>4.84</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>2</td>
-      <td>15.00</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1129817</th>
-      <td>2</td>
-      <td>2015-01-20 16:26:29</td>
-      <td>2015-01-20 16:30:26</td>
-      <td>1</td>
-      <td>0.69</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4.50</td>
-      <td>1.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1278620</th>
-      <td>2</td>
-      <td>2015-01-01 05:58:10</td>
-      <td>2015-01-01 06:00:55</td>
-      <td>1</td>
-      <td>0.45</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4.00</td>
-      <td>0.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>348430</th>
-      <td>2</td>
-      <td>2015-01-17 02:20:50</td>
-      <td>2015-01-17 02:41:38</td>
-      <td>1</td>
-      <td>0.00</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
-      <td>...</td>
-      <td>2</td>
-      <td>12.50</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1269627</th>
-      <td>1</td>
-      <td>2015-01-01 05:04:10</td>
-      <td>2015-01-01 05:06:23</td>
-      <td>1</td>
-      <td>0.50</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4.00</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>5.00</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>811755</th>
-      <td>1</td>
-      <td>2015-01-04 19:57:51</td>
-      <td>2015-01-04 20:05:45</td>
-      <td>2</td>
-      <td>1.10</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>2</td>
-      <td>6.50</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>737281</th>
-      <td>1</td>
-      <td>2015-01-03 12:27:31</td>
-      <td>2015-01-03 12:33:52</td>
-      <td>1</td>
-      <td>0.90</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
-      <td>...</td>
-      <td>2</td>
-      <td>6.00</td>
-      <td>0.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>113951</th>
-      <td>1</td>
-      <td>2015-01-09 23:25:51</td>
-      <td>2015-01-09 23:39:52</td>
-      <td>1</td>
-      <td>3.30</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>2</td>
-      <td>12.50</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>150436</th>
-      <td>2</td>
-      <td>2015-01-11 17:15:14</td>
-      <td>2015-01-11 17:22:57</td>
-      <td>1</td>
-      <td>1.19</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>1</td>
-      <td>7.00</td>
-      <td>0.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>1.75</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>432136</th>
-      <td>2</td>
-      <td>2015-01-22 23:16:33</td>
-      <td>2015-01-22 23:20:13</td>
-      <td>1</td>
-      <td>0.65</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>2</td>
-      <td>5.00</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-    </tr>
-  </tbody>
-</table>
-<p>10 行 × 23 列</p>
-</div>
-
+|vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType |fareAmount |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|    tripType|
+|----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4.84|无|无|-73.88|40.84|-73.94|...|2|15.00|0.50|0.50|0.3|0.00|0.00|nan|16.30|1.00
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0.69|无|无|-73.96|40.81|-73.96|...|2|4.50|1.00|0.50|0.3|0.00|0.00|nan|6.30|1.00
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0.45|无|无|-73.92|40.76|-73.91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nan|4.80|1.00
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|无|无|-73.81|40.70|-73.82|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|无|无|-73.92|40.76|-73.92|...|2|4.00|0.50|0.50|0|0.00|0.00|nan|5.00|1.00
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|无|无|-73.96|40.72|-73.95|...|2|6.50|0.50|0.50|0.3|0.00|0.00|nan|7.80|1.00
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0.90|无|无|-73.88|40.76|-73.87|...|2|6.00|0.00|0.50|0.3|0.00|0.00|nan|6.80|1.00
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3.30|无|无|-73.96|40.72|-73.91|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|无|无|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|1.00
+|432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|无|无|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|1.00
 
 至此，初始数据已加载。是时候定义函数了，以根据接取日期/时间字段创建各种基于时间的特征。 这将新建月份、日期、周几和时段字段，并允许模型将基于时间的季节性考虑在内。 请对数据帧使用 `apply()` 函数，以迭代方式将 `build_time_features()` 函数应用于出租车数据中的每一行。
 
@@ -362,280 +99,18 @@ green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day"]] = gree
 green_taxi_df.head(10)
 ```
 
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; } </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>vendorID</th>
-      <th>lpepPickupDatetime</th>
-      <th>lpepDropoffDatetime</th>
-      <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>...</th>
-      <th>improvementSurcharge</th>
-      <th>tipAmount</th>
-      <th>tollsAmount</th>
-      <th>ehailFee</th>
-      <th>totalAmount</th>
-      <th>tripType</th>
-      <th>month_num</th>
-      <th>day_of_month</th>
-      <th>day_of_week</th>
-      <th>hour_of_day</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>131969</th>
-      <td>2</td>
-      <td>2015-01-11 05:34:44</td>
-      <td>2015-01-11 05:45:03</td>
-      <td>3</td>
-      <td>4.84</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>11</td>
-      <td>6</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>1129817</th>
-      <td>2</td>
-      <td>2015-01-20 16:26:29</td>
-      <td>2015-01-20 16:30:26</td>
-      <td>1</td>
-      <td>0.69</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>20</td>
-      <td>1</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>1278620</th>
-      <td>2</td>
-      <td>2015-01-01 05:58:10</td>
-      <td>2015-01-01 06:00:55</td>
-      <td>1</td>
-      <td>0.45</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>348430</th>
-      <td>2</td>
-      <td>2015-01-17 02:20:50</td>
-      <td>2015-01-17 02:41:38</td>
-      <td>1</td>
-      <td>0.00</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>17</td>
-      <td>5</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1269627</th>
-      <td>1</td>
-      <td>2015-01-01 05:04:10</td>
-      <td>2015-01-01 05:06:23</td>
-      <td>1</td>
-      <td>0.50</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>5.00</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>811755</th>
-      <td>1</td>
-      <td>2015-01-04 19:57:51</td>
-      <td>2015-01-04 20:05:45</td>
-      <td>2</td>
-      <td>1.10</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>4</td>
-      <td>6</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>737281</th>
-      <td>1</td>
-      <td>2015-01-03 12:27:31</td>
-      <td>2015-01-03 12:33:52</td>
-      <td>1</td>
-      <td>0.90</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>113951</th>
-      <td>1</td>
-      <td>2015-01-09 23:25:51</td>
-      <td>2015-01-09 23:39:52</td>
-      <td>1</td>
-      <td>3.30</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>9</td>
-      <td>4</td>
-      <td>23</td>
-    </tr>
-    <tr>
-      <th>150436</th>
-      <td>2</td>
-      <td>2015-01-11 17:15:14</td>
-      <td>2015-01-11 17:22:57</td>
-      <td>1</td>
-      <td>1.19</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>1.75</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>11</td>
-      <td>6</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>432136</th>
-      <td>2</td>
-      <td>2015-01-22 23:16:33</td>
-      <td>2015-01-22 23:20:13</td>
-      <td>1</td>
-      <td>0.65</td>
-      <td>无</td>
-      <td>无</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>22</td>
-      <td>3</td>
-      <td>23</td>
-    </tr>
-  </tbody>
-</table>
-<p>10 行 × 27 列</p>
-</div>
+|vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType|fareAmount  |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|tripType|month_num|day_of_month|day_of_week|hour_of_day
+|----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|----|----|----
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4.84|无|无|-73.88|40.84|-73.94|...|2|15.00|0.50|0.50|0.3|0.00|0.00|nan|16.30|1.00|1|11|6|5
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0.69|无|无|-73.96|40.81|-73.96|...|2|4.50|1.00|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|20|1|16
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0.45|无|无|-73.92|40.76|-73.91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nan|4.80|1.00|1|1|3|5
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|无|无|-73.81|40.70|-73.82|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|17|5|2
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|无|无|-73.92|40.76|-73.92|...|2|4.00|0.50|0.50|0|0.00|0.00|nan|5.00|1.00|1|1|3|5
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|无|无|-73.96|40.72|-73.95|...|2|6.50|0.50|0.50|0.3|0.00|0.00|nan|7.80|1.00|1|4|6|19
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0.90|无|无|-73.88|40.76|-73.87|...|2|6.00|0.00|0.50|0.3|0.00|0.00|nan|6.80|1.00|1|3|5|12
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3.30|无|无|-73.96|40.72|-73.91|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|9|4|23
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|无|无|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|1.00|1|11|6|17
+|432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|无|无|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|22|3|23
 
 删除训练或其他特征生成不需要的一些列。
 
@@ -658,150 +133,16 @@ green_taxi_df.head(5)
 green_taxi_df.describe()
 ```
 
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; } .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; } </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>vendorID</th>
-      <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>dropoffLatitude</th>
-      <th>totalAmount</th>
-      <th>month_num</th>
-      <th>day_of_month</th>
-      <th>day_of_week</th>
-      <th>hour_of_day</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-    </tr>
-    <tr>
-      <th>平均值</th>
-      <td>1.78</td>
-      <td>1.37</td>
-      <td>2.87</td>
-      <td>-73.83</td>
-      <td>40.69</td>
-      <td>-73.84</td>
-      <td>40.70</td>
-      <td>14.75</td>
-      <td>6.50</td>
-      <td>15.13</td>
-      <td>3.27</td>
-      <td>13.52</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.41</td>
-      <td>1.04</td>
-      <td>2.93</td>
-      <td>2.76</td>
-      <td>1.52</td>
-      <td>2.61</td>
-      <td>1.44</td>
-      <td>12.08</td>
-      <td>3.45</td>
-      <td>8.45</td>
-      <td>1.95</td>
-      <td>6.83</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>-74.66</td>
-      <td>0.00</td>
-      <td>-74.66</td>
-      <td>0.00</td>
-      <td>-300.00</td>
-      <td>1.00</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>1.06</td>
-      <td>-73.96</td>
-      <td>40.70</td>
-      <td>-73.97</td>
-      <td>40.70</td>
-      <td>7.80</td>
-      <td>3.75</td>
-      <td>8.00</td>
-      <td>2.00</td>
-      <td>9.00</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>1.90</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>11.30</td>
-      <td>6.50</td>
-      <td>15.00</td>
-      <td>3.00</td>
-      <td>15.00</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>3.60</td>
-      <td>-73.92</td>
-      <td>40.80</td>
-      <td>-73.91</td>
-      <td>40.79</td>
-      <td>17.80</td>
-      <td>9.25</td>
-      <td>22.00</td>
-      <td>5.00</td>
-      <td>19.00</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>2.00</td>
-      <td>9.00</td>
-      <td>97.57</td>
-      <td>0.00</td>
-      <td>41.93</td>
-      <td>0.00</td>
-      <td>41.94</td>
-      <td>450.00</td>
-      <td>12.00</td>
-      <td>30.00</td>
-      <td>6.00</td>
-      <td>23.00</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+|vendorID|passengerCount|tripDistance|pickupLongitude|pickupLatitude|dropoffLongitude|dropoffLatitude|  totalAmount|month_num   day_of_month|day_of_week|hour_of_day
+|----|----|---|---|----|---|---|---|---|---|---|---
+|count|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00
+|平均值|1.78|1.37|2.87|-73.83|40.69|-73.84|40.70|14.75|6.50|15.13|3.27|13.52
+|std|0.41|1.04|2.93|2.76|1.52|2.61|1.44|12.08|3.45|8.45|1.95|6.83
+|min|1.00|0.00|0.00|-74.66|0.00|-74.66|0.00|-300.00|1.00|1.00|0.00|0.00
+|25%|2.00|1.00|1.06|-73.96|40.70|-73.97|40.70|7.80|3.75|8.00|2.00|9.00
+|50%|2.00|1.00|1.90|-73.94|40.75|-73.94|40.75|11.30|6.50|15.00|3.00|15.00
+|75%|2.00|1.00|3.60|-73.92|40.80|-73.91|40.79|17.80|9.25|22.00|5.00|19.00
+|max|2.00|9.00|97.57|0.00|41.93|0.00|41.94|450.00|12.00|30.00|6.00|23.00
 
 
 从汇总统计信息中可以看到，有几个字段包含离群值或会降低模型准确度的值。 首先筛选位于曼哈顿区域边界内的纬度/经度字段。 这会筛选出较长的出租车行程，或者在与其他特征的关系上属于离群值的行程。
@@ -863,12 +204,12 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 ### <a name="define-training-settings"></a>定义训练设置
 
-定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_minutes` 参数。
+定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_hours` 参数。
 
-|properties| 本教程中的值 |说明|
+|属性| 本教程中的值 |说明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
-|**experiment_timeout_minutes**|20|在试验结束之前，所有合并的迭代所花费的最大时间量（以分钟为单位）。|
+|**experiment_timeout_hours**|0.3|在试验结束之前，所有合并的迭代所花费的最大时间量（以小时为单位）。|
 |**enable_early_stopping**|True|如果分数在短期内没有提高，则进行标记，以提前终止。|
 |**primary_metric**| spearman_correlation | 要优化的指标。 将根据此指标选择最佳拟合模型。|
 |**featurization**| auto | 如果使用“auto”，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等）|
@@ -880,7 +221,7 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "experiment_timeout_minutes": 20,
+    "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
     "featurization": 'auto',
@@ -984,7 +325,9 @@ print(fitted_model)
 使用最佳模型针对测试数据集运行预测，以便预测出租车费。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（**行程费用**）的值。 输出 `y_predict` 中头 10 个预测的费用值。
 
 ```python
-y_predict = fitted_model.predict(x_test.values)
+y_test = x_test.pop("totalAmount")
+
+y_predict = fitted_model.predict(x_test)
 print(y_predict[:10])
 ```
 

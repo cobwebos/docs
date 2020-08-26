@@ -1,17 +1,17 @@
 ---
 title: 为 Microsoft Azure FXT Edge 文件服务器打开支持票证
-description: 使用 Azure FXT Edge 文件服务器系统的帮助打开票证的过程
+description: 请与 Microsoft 客户服务联系，并支持 Azure FXT Edge 文件系统的帮助。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b219afa329cc105fb70000d8a088d67883feed
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72255980"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184663"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>为 Azure FXT Edge 文件服务器打开支持票证
 
@@ -31,7 +31,7 @@ ms.locfileid: "72255980"
     1. 在 "**服务**" 下，选择 " **Azure FXT Edge 文件服务器**"。 您可能需要单击 "**所有服务**" 筛选器控件才能找到它。 
     1. 输入 "**摘要**"，并选择 "**问题类型**"。 
     ![空白支持请求窗体的屏幕截图](media/fxt-support-populated.png) 
-    1. 单击 **“下一步”** 以继续。 
+    1. 单击“下一步”以继续。 
 1. 在 "**详细信息**" 选项卡中，添加有关问题的详细信息以及与你联系的方式。 你可以上传与问题相关的文件。 
 1. 在 "查看" 和 "**创建**" 中，查看信息，然后单击 "**创建**" 按钮提交请求。
 

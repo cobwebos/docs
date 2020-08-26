@@ -9,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187668"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534339"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -126,7 +127,7 @@ ms.locfileid: "84187668"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| properties | 说明 | 必需？ |
+| 属性 | 说明 | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，请设置为 `Copy` | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -185,7 +186,7 @@ ms.locfileid: "84187668"
 除了将数据从源数据存储复制到接收器外，还可以进行配置，以便添加要一起复制到接收器的其他数据列。 例如：
 
 - 从基于文件的源复制时，将相对文件路径存储为一个附加列，用以跟踪数据来自哪个文件。
-- 添加包含 ADF 表达式的列，以附加 ADF 系统变量（例如管道名称/管道 ID），或存储来自上游活动输出的其他动态值。
+- 添加包含 ADF 表达式的列，附加 ADF 系统变量（如管道名称/管道 ID），或存储来自上游活动输出的其他动态值。
 - 添加一个包含静态值的列以满足下游消耗需求。
 
 可以在复制活动源选项卡上找到以下配置： 
@@ -197,7 +198,7 @@ ms.locfileid: "84187668"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
 
@@ -239,6 +240,19 @@ ms.locfileid: "84187668"
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>自动创建接收器表
+
+将数据复制到 SQL 数据库/Azure Synapse Analytics 时，如果目标表不存在，则复制活动支持根据源数据自动创建它。 它旨在帮助您快速开始加载数据，并评估 SQL 数据库/Azure Synapse Analytics。 数据引入后，可以根据需要查看和调整接收器表架构。
+
+将数据从任何源复制到以下接收器数据存储时，支持此功能。 可以在*ADF 创作 UI* （>*复制活动接收器*– >*表选项*– >*自动创建表*或 `tableOption` 复制活动接收器负载中的属性）中找到选项。
+
+- [Azure SQL 数据库](connector-azure-sql-database.md)
+- [Azure SQL 数据库托管实例](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics （以前称为 Azure SQL 数据仓库）](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![创建接收器表](media/copy-activity-overview/create-sink-table.png)
 
 ## <a name="fault-tolerance"></a>容错
 

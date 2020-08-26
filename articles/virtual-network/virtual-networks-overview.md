@@ -1,6 +1,6 @@
 ---
 title: Azure 虚拟网络 | Microsoft Docs
-description: 了解 Azure 虚拟网络概念和功能。
+description: 了解 Azure 虚拟网络的概念和功能，其中包括地址空间、子网、区域和订阅。
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 480e22b319edd03dc9bb9d666dd43718fb3c841b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040599"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507024"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -27,7 +27,7 @@ Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 VNet �
 ## <a name="vnet-concepts"></a>VNet 概念
 
 - **地址空间：** 创建 VNet 时，必须使用公共和专用 (RFC 1918) 地址指定自定义的专用 IP 地址空间。 Azure 从分配的地址空间中向虚拟网络中的资源分配一个专用 IP 地址。 例如，如果在地址空间为 10.0.0.0/16 的 VNet 中部署某个 VM，将为该 VM 分配类似于 10.0.0.4 的专用 IP。
-- **子网：** 使用子网可将虚拟网络划分为一个或多个子网络，并向每个子网分配一部分虚拟网络地址空间。 然后，可以在特定的子网中部署 Azure 资源。 就像在传统网络中一样，使用子网可将 VNet 地址空间划分为适合组织内部网络的网段。 这还会提高地址分配效率。 可以使用网络安全组保护子网中的资源。 有关详细信息，请参阅[安全组](security-overview.md)。
+- **子网：** 使用子网可将虚拟网络划分为一个或多个子网络，并向每个子网分配一部分虚拟网络地址空间。 然后，可以在特定的子网中部署 Azure 资源。 就像在传统网络中一样，使用子网可将 VNet 地址空间划分为适合组织内部网络的网段。 这还会提高地址分配效率。 可以使用网络安全组保护子网中的资源。 有关详细信息，请参阅[网络安全组](security-overview.md)。
 - **区域**：VNet 局限于一个区域/位置；但是，可以使用虚拟网络对等互连将不同区域的多个虚拟网络连接起来。
 - **订阅：** VNet 的范围限定为订阅。 可在每个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和 Azure [区域](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)中实现多个虚拟网络。
 
@@ -67,7 +67,7 @@ Azure 资源采用下述某种方式安全地相互通信：
 
 可使用以下两个选项中任意一个或同时使用这两个方案筛选子网之间的网络流量：
 
-- **安全组：** 网络安全组和应用程序安全组可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选出入资源的流量。 要了解详细信息，请参阅[网络安全组](security-overview.md#network-security-groups)或[应用程序安全组](security-overview.md#application-security-groups)。
+- 网络安全组：网络安全组和应用程序安全组可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选出入资源的流量。 要了解详细信息，请参阅[网络安全组](security-overview.md#network-security-groups)或[应用程序安全组](security-overview.md#application-security-groups)。
 - **网络虚拟设备：** 虚拟网络设备是可执行网络功能（例如防火墙、WAN 优化等）的 VM。 若要查看可在虚拟网络中部署的网络虚拟设备，请参阅 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。
 
 ## <a name="route-network-traffic"></a>路由网络流量

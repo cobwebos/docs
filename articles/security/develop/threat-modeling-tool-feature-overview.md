@@ -1,17 +1,18 @@
 ---
 title: Microsoft Threat Modeling Tool 功能概述 - Azure
-description: 了解威胁建模工具中提供的所有功能
+description: 了解 Threat Modeling Tool 中的所有可用功能，如分析视图和报表。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552111"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539996"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
 

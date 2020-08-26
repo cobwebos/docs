@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999507"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>计算要计费的 Blob 容器总大小
 
@@ -120,6 +120,6 @@ For-Each Signed Identifier[512 bytes]
 
 - 有关 Azure 存储计费的详细信息，请参阅[了解 Windows Azure 存储计费](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
-- 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+- 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)。
 
 - 有关其他存储 PowerShell 脚本示例，可查看[适用于 Azure 存储的 PowerShell 示例](../blobs/storage-samples-blobs-powershell.md)。

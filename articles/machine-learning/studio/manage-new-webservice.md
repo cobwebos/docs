@@ -1,6 +1,5 @@
 ---
-title: 管理 Web 服务
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：管理 web 服务-Azure
 description: 使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 893bb1ab7b3fd9d6b3416e0fa4bad29a3d6d518d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d40d67b40d9e269f9ed6552467918cc878ffd197
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709005"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430769"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure 机器学习工作室（经典）Web 服务门户管理 Web 服务
+
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+
 
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
 
@@ -30,7 +32,7 @@ ms.locfileid: "84709005"
 * 添加和删除终结点（仅限于经典 Web 服务）
 
 >[!NOTE]
->此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务  。
+>此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务****。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>用于管理基于资源管理器的新 Web 服务的权限
 
@@ -38,7 +40,7 @@ ms.locfileid: "84709005"
 
 如果用户没有访问 Azure 机器学习 Web 服务门户中的资源的正确权限，那么在尝试部署 Web 服务时会收到以下错误：
 
-*Web Service deployment failed.This account does not have sufficient access to the Azure subscription that contains the Workspace.In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.* （Web 服务部署失败。此帐户没有足够的权限访问工作区所属的 Azure 订阅。若要将 Web 服务部署到 Azure，必须邀请同一帐户加入工作区并为其授予对工作区所属的 Azure 订阅的访问权限。）
+*Web 服务部署失败。此帐户没有足够的权限访问包含工作区的 Azure 订阅。若要将 Web 服务部署到 Azure，必须将同一帐户加入工作区，并向其授予对包含工作区的 Azure 订阅的访问权限。*
 
 有关创建工作区的详细信息，请参阅[创建和共享 Azure 机器学习工作室（经典）工作区](create-workspace.md)。
 
@@ -151,7 +153,7 @@ ms.locfileid: "84709005"
 可以更新以下属性：
 
 * “**说明**”允许输入 Web 服务的说明。 “说明”是必填字段。
-* “**日志记录**”允许启用或禁用终结点上的错误记录。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
+* “**日志记录**”允许启用或禁用终结点上的错误记录。 有关日志记录的详细信息，请参阅[为机器学习 web 服务启用日志记录](web-services-logging.md)。
 * “**启用示例数据**”允许提供可用于测试请求 - 响应服务的示例数据。 如果在机器学习工作室（经典）中创建了 Web 服务，示例数据将来自用于训练模型的数据。 如果以编程方式创建服务，则从作为 JSON 包的一部分提供的示例数据中获取数据。
 
 

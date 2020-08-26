@@ -2,20 +2,20 @@
 title: 使用虚拟网络的方案
 description: 将容器组部署到 Azure 虚拟网络的方案、资源和限制。
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259548"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797848"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虚拟网络方案和资源
 
 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)为 Azure 资源和本地资源提供安全的专用网络。 将容器组部署到 Azure 虚拟网络后，容器可与该虚拟网络中的其他资源安全通信。 
 
-本文介绍虚拟网络方案、限制和资源。 有关使用 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
+本文提供有关虚拟网络方案、限制和资源的背景知识。 有关使用 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
 
 ## <a name="scenarios"></a>方案
 
@@ -24,24 +24,26 @@ ms.locfileid: "86259548"
 * 在同一子网中的容器组之间直接通信
 * 将容器实例的[基于任务](container-instances-restart-policy.md)的工作负荷输出发送到虚拟网络中的数据库
 * 从虚拟网络中的[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)检索容器实例的内容
-* 通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoute](../expressroute/expressroute-introduction.md)启用与本地资源的容器通信
-* 与[Azure 防火墙](../firewall/overview.md)集成，确定源自容器的出站流量 
-* 通过内部 Azure DNS 解析名称，以便与虚拟网络中的 Azure 资源（例如虚拟机）进行通信
-* 使用 NSG 规则控制对子网或其他网络资源的容器访问
+* 通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md) 实现容器与本地资源的通信
+* 与 [Azure 防火墙](../firewall/overview.md)集成，以确定源自容器的出站流量 
+* 通过内部 Azure DNS 解析名称，以便与虚拟网络中的 Azure 资源（例如虚拟机）通信
+* 使用 NSG 规则控制容器对子网或其他网络资源的访问
 
 ## <a name="unsupported-networking-scenarios"></a>不支持的网络方案 
 
 * **Azure 负载均衡器** - 不支持在网络容器组中将 Azure 负载均衡器置于容器实例之前
-* **全局虚拟网络对等互连**-不支持在 Azure 区域之间连接虚拟网络 (全局对等互连) 
+* **全球虚拟网络对等互连** - 不支持全球对等互连（跨 Azure 区域连接虚拟网络）
 * **公共 IP 或 DNS 标签** - 部署到虚拟网络的容器组目前不支持使用公共 IP 地址或完全限定的域名直接向 Internet 公开容器
 
 ## <a name="other-limitations"></a>其他限制
 
-* 当前，在部署到虚拟网络的容器组中仅支持 Linux 容器。
-* 若要将容器组部署到子网，子网不能包含其他资源类型。 将容器组部署到现有子网之前，请从该子网中删除所有现有资源，或创建新的子网。
+* 目前，部署到虚拟网络的容器组仅支持 Linux 容器。
+* 若要将容器组部署到某个子网，该子网不能包含其他资源类型。 将容器组部署到现有子网之前，请从该子网中删除所有现有资源，或创建新的子网。
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
-* 无法在部署到虚拟网络的容器组中启用[活动探测](container-instances-liveness-probe.md)或[准备情况探测](container-instances-readiness-probe.md)。
-* 由于涉及到额外的网络资源，对虚拟网络的部署通常比部署标准容器实例慢。
+* 不能在部署到虚拟网络的容器组中启用[运行情况探测](container-instances-liveness-probe.md)或[就绪情况探测](container-instances-readiness-probe.md)。
+* 由于涉及到其他网络资源，部署到虚拟网络通常比部署标准容器实例要慢。
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="where-to-deploy"></a>部署位置
 
@@ -75,7 +77,7 @@ ms.locfileid: "86259548"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
+* 有关使用 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
 * 若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )（使用 VNet 创建 Azure 容器组）。
 

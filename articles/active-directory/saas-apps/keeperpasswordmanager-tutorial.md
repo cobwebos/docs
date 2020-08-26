@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Keeper Password Manager & Digital Vault 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Keeper Password Manager & Digital Vault 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e1a98f6a-2dae-4734-bdbf-4fba742a61d2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71fecbe924c1511c247ff846d3b2a39d309ecf0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c6bd0c130e860a5700256a54c081cc046219b41a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159896"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>教程：Azure Active Directory 与 Keeper Password Manager & Digital Vault 集成
 
@@ -50,147 +45,109 @@ ms.locfileid: "73159896"
 
 * Keeper Password Manager & Digital Vault 支持**恰时**用户预配
 
+* 配置 Keeper Password Manager & Digital Vault 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
 ## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>从库中添加 Keeper Password Manager & Digital Vault
 
 若要配置 Keeper Password Manager & Digital Vault 与 Azure AD 的集成，需要从库中将 Keeper Password Manager & Digital Vault 添加到托管 SaaS 应用列表中。
 
-**若要从库中添加 Keeper Password Manager & Digital Vault，执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Keeper Password Manager & Digital Vault” 。
+1. 从结果面板中选择“Keeper Password Manager & Digital Vault”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+## <a name="configure-and-test-azure-ad-sso-for-keeper-password-manager--digital-vault"></a>为 Keeper Password Manager & Digital Vault 配置并测试 Azure AD SSO
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+使用名为 B.Simon 的测试用户配置并测试 Keeper Password Manager & Digital Vault 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Keeper Password Manager & Digital Vault 相关用户之间建立链接关系。
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+若要配置并测试 Keeper Password Manager & Digital Vault 的 Azure AD SSO，请完成以下构建基块：
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+1. **[配置 Keeper Password Manager & Digital Vault SSO](#configure-keeper-password-manager--digital-vault-sso)** - 在应用程序端配置单一登录设置。
+    * **[创建 Keeper Password Manager & Digital Vault 测试用户](#create-keeper-password-manager--digital-vault-test-user)** - 在 Keeper Password Manager & Digital Vault 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表现形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-4. 在搜索框中，键入“Keeper Password Manager & Digital Vault”，在结果面板中选择“Keeper Password Manager & Digital Vault”，然后单击“添加”按钮添加该应用程序    。
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-     ![结果列表中的 Keeper Password Manager & Digital Vault](common/search-new-app.png)
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Keeper Password Manager & Digital Vault”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
-在本部分中，基于名为“Britta Simon”的测试用户使用 Keeper Password Manager & Digital Vault 配置和测试 Azure AD 单一登录。 
-若要使单一登录有效，需要建立 Azure AD 用户与 Keeper Password Manager & Digital Vault 中相关用户之间的链接关系。
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-若要使用 Keeper Password Manager & Digital Vault 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **配置 Keeper Password Manager & Digital Vault 单一登录** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Keeper Password Manager & Digital Vault 测试用户](#create-keeper-password-manager--digital-vault-test-user)** - 在 Keeper Password Manager & Digital Vault 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表现形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    * 对于 Cloud SSO：`https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
+    * 对于本地 SSO：`https://<KEEPER_FQDN>/sso-connect/saml/login`
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    * 对于 Cloud SSO：`https://keepersecurity.com/api/rest/sso/saml/<CLOUD_INSTANCE_ID>`
+    * 对于本地 SSO：`https://<KEEPER_FQDN>/sso-connect`
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-若要使用 Keeper Password Manager & Digital Vault 配置 Azure AD 单一登录，需执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Keeper Password Manager & Digital Vault”应用程序集成页上，选择“单一登录”   。
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
-
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
-
-    ![Keeper Password Manager & Digital Vault 域和 URL 单一登录信息](common/sp-identifier-reply.png)
-
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect/saml/login`
-
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect`
-
-    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：
+    * 对于 Cloud SSO：`https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
+    * 对于本地 SSO：`https://<KEEPER_FQDN>/sso-connect/saml/sso`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Keeper Password Manager & Digital Vault 客户支持团队](https://keepersecurity.com/contact.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Keeper Password Manager & Digital Vault 客户支持团队](https://keepersecurity.com/contact.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Keeper Password Manager & Digital Vault”部分中，根据要求复制相应的 URL  。
+6. 在“设置 Keeper Password Manager & Digital Vault”部分中，根据要求复制相应的 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
-
-    b. Azure AD 标识符
-
-    c. 注销 URL
-
-### <a name="configure-keeper-password-manager--digital-vault-single-sign-on"></a>配置 Keeper Password Manager & Digital Vault 单一登录
-
-若要在“Keeper Password Manager & Digital Vault 配置”端配置单一登录，按 [Keeper 支持指南](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf)所给出的准则操作。
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”  。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Keeper Password Manager & Digital Vault 的权限，允许她使用 Azure 单一登录。
+在本部分中，你将通过授予 B.Simon 访问 Keeper Password Manager & Digital Vault 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Keeper Password Manager & Digital Vault”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Keeper Password Manager 和 Digital Vault”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+   ![“用户和组”链接](common/users-groups-blade.png)
 
-2. 在应用程序列表中，选择“Keeper Password Manager 和 Digital Vault”  。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![应用程序列表中的 Keeper Password Manager & Digital Vault 链接](common/all-applications.png)
+    ![“添加用户”链接](common/add-assign-user.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
-    ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+## <a name="configure-keeper-password-manager--digital-vault-sso"></a>配置 Keeper Password Manager & Digital Vault SSO
 
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+若要在“Keeper Password Manager & Digital Vault 配置”端配置单一登录，按 [Keeper 支持指南](https://docs.keeper.io/sso-connect-guide/)所给出的准则操作。****
 
 ### <a name="create-keeper-password-manager--digital-vault-test-user"></a>创建 Keeper Password Manager & Digital Vault 测试用户
 
 若要使 Azure AD 用户登录到 Keeper Password Manager & Digital Vault，需要将他们预配到 Keeper Password Manager & Digital Vault 中。 应用程序支持实时用户预配，且进行身份验证后，会在应用程序中自动创建用户。 若要手动设置用户，可以联系 [Keeper 支持人员](https://keepersecurity.com/contact.html)。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -204,3 +161,6 @@ ms.locfileid: "73159896"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [通过 Azure AD 试用 Keeper Password Manager & Digital Vault](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

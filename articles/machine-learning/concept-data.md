@@ -10,12 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552644"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651788"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -66,14 +67,17 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 
 ## <a name="datasets"></a>数据集
 
-Azure 机器学习数据集是指向存储服务中数据的引用。 它们不是你数据的副本，因此不会产生额外的存储成本。 若要与存储中的数据进行交互，请[创建一个数据集](how-to-create-register-datasets.md)以将数据打包成机器学习任务可用的对象。 将数据集注册到工作区可在不同的试验中共享和重用该数据集，而不会造成数据引入复杂性。
+Azure 机器学习数据集是指向存储服务中数据的引用。 它们不是你的数据的副本，因此不会产生额外的存储成本，且原始数据源的完整性不会有风险。
+
+ 若要与存储中的数据进行交互，请[创建一个数据集](how-to-create-register-datasets.md)以将数据打包成机器学习任务可用的对象。 将数据集注册到工作区可在不同的试验中共享和重用该数据集，而不会造成数据引入复杂性。
 
 可以从本地文件、公共 URL、[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)或经由数据存储的 Azure 存储服务创建数据集。 若要从内存中 pandas 数据帧创建数据集，请将数据写入本地文件（例如 parquet），然后从该文件创建数据集。  
 
 我们支持 2 种类型的数据集： 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 Pandas 或 Spark DataFrame 中，以便进一步处理和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
 
-+ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) 引用数据存储或公共 URL 中的单个或多个文件。 可以将 FileDatasets 引用的文件[下载或装载](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
++ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) 引用数据存储或公共 URL 中的单个或多个文件。 如果你的数据已清理并可在训练试验中使用，则可以将 FileDatasets 引用的 [文件下载或装载](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) 到你的计算目标。
+
++ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 pandas 或 Spark 数据帧，以便进一步操作和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
 
 可在以下文档中找到更多数据集功能：
 
@@ -114,5 +118,4 @@ Azure 机器学习提供了一个中心位置，用于创建、管理和监视�
 ## <a name="next-steps"></a>后续步骤 
 
 + 若要在 Azure 机器学习工作室或 Python SDK 中创建数据集，请[使用这些步骤](how-to-create-register-datasets.md)。
-+ 阅读[示例笔记本](https://aka.ms/dataset-tutorial)中的数据集训练示例。
-+ 有关数据偏移的示例，请参阅此[数据偏移教程](https://aka.ms/datadrift-notebook)。
++ 阅读[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)中的数据集训练示例。

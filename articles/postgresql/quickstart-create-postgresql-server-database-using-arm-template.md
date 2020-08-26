@@ -1,18 +1,18 @@
 ---
-title: 使用 ARM 模板创建 Azure DB for PostgreSQL
-description: 本文介绍如何使用 Azure 资源管理器模板创建 Azure Database for PostgreSQL 服务器。
+title: 快速入门：创建 Azure DB for PostgreSQL - ARM 模板
+description: 本文介绍如何使用 Azure 资源管理器模板创建 Azure Database for PostgreSQL 单一服务器。
 author: mgblythe
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 5bdcbe620e88700c5607162cd2471f6b2c3e7532
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 00e8910627690d4713a7a86a56262519610c2392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132840"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183847"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 ARM 模板创建 Azure Database for PostgreSQL 单一服务器
 

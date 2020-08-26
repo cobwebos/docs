@@ -5,13 +5,15 @@ description: 使用标签提供按环境配置值。
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 465ae86c5732c9dd54ade1b7096fa8415dfca513
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 689fdbd444aa4b20f5bef225faa259788c47cf9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118549"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206665"
 ---
 # <a name="use-labels-to-enable-configurations-for-different-environments"></a>使用标签为不同的环境启用配置
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 665bb89d929433db5868eff1c2a5d182d7a94d54
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79137316"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800273"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 
 
@@ -79,8 +80,8 @@ ms.locfileid: "79137316"
 | [MPEGDASH]        | 信息技术 - 通过 HTTP 的动态自适应流式处理 (DASH) - 第 1 部分：媒体展现说明和分段格式。 2014 年 5 月。 已发布。 URL： https://www.iso.org/standard/65274.html         |
 | [MPEGCMAF]        | 信息技术 - 多媒体应用程序格式 (MPEG-A) -- 第 19 部分：分段媒体的常用媒体应用程序格式 (CMAF)。 2018 年 1 月。 已发布。 URL： https://www.iso.org/standard/71975.html |
 | [MPEGCENC]        | 信息技术 -- MPEG 系统技术 -- 第 7 部分：ISO 基本媒体格式文件中的通用加密。 2016 年 2 月。 已发布。 URL： https://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | [“Microsoft 平滑流式处理协议”，2014 年 5 月 15 日](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
-| [MS-SSTR-Ingest]  | [Azure 媒体服务分片 MP4 实时引入规范](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [MS-SSTR]         | [“Microsoft 平滑流式处理协议”，2014 年 5 月 15 日](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-Ingest]  | [Azure 媒体服务分片 MP4 实时引入规范](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming。 2017 年 8 月。 信息。 [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Base16、Base32 和 Base64 数据编码 - [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | [RTMP]            | [“Adobe 实时消息传送协议”，2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
@@ -219,7 +220,7 @@ Azure 媒体服务实时事件和打包器可以接收这些计时元数据信�
 - (b)    传递该块，以通过 HLS 或 DASH 在 CMAF 片段中传送，或者 
 - (c)    将其转换为稀疏轨迹信号，以通过平滑流式处理 [MS-SSTR] 进行传送。
 
-除了带内“emsg”格式的 CMAF 或适用于 HLS 的 TS PES 数据包外，适用于 DASH (MPD) 和平滑流的清单将包含对带内事件流的引用（在平滑流中也称为“稀疏流轨迹”）。 
+除了带内“emsg”格式的 CMAF 或适用于 HLS 的 TS PES 数据包外，适用于 DASH (MPD) 和平滑流的清单将包含对带内事件流的引用（在平滑流中也称为“稀疏流轨迹”）。
 
 单个事件或其数据有效负载不会直接在 HLS、DASH 或平滑流清单中输出。 
 
@@ -254,7 +255,7 @@ Azure 媒体服务可以侦听和响应可用于在实时流中通知各种实�
 
 #### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>使用 Adobe RTMP 简单模式时的 HLS 清单输出示例
 
-参阅示例 [3.2.2 使用 Adobe 简单模式和 EXT-X-CUE 标记的 HLS 清单](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
+参阅示例 [3.2.2 使用 Adobe 简单模式和 EXT-X-CUE 标记的 HLS 清单](#322-apple-hls-with-adobe-primetime-ext-x-cue)
 
 ## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>2.1.4 使用“onAdCue”发送 RTMP 广告提示信号 - SCTE-35 模式
 
@@ -275,11 +276,15 @@ Azure 媒体服务可以侦听和响应可用于在实时流中通知各种实�
 
 ---
 
-#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>使用 SCTE-35 模式的示例 MPEG DASH .mpd 清单
-参阅[第 3.3.3.2 部分：使用 SCTE-35 的 DASH 清单示例](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+<!---
+#### Example MPEG DASH .mpd manifest with SCTE-35 mode
+See [Section 3.3.3.2 example DASH manifest with SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+--->
 
-#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>使用 SCTE-35 模式信号的 HLS .m3u8 清单示例
-参阅[第 3.2.1.1 部分：使用 SCTE-35 的 HLS 清单示例](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>示例 HLS m3u8-aapl-v3，SCTE-35 模式信号
+请参阅[3.2.1.1 示例 HLS manifest WITH SCTE-35 部分](#3211-example-hls-manifest-m3u8-showing-ext-x-cue-signaling-of-scte-35)
+
+
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 使用 Elemental Live“onCuePoint”和 RTMP 发送广告信号
 
@@ -288,18 +293,18 @@ Elemental Live 本地编码器支持在 RTMP 信号中使用广告标记。 Azur
 “onCuePoint”消息类型在 [Adobe-Flash-AS] 中定义，从 Elemental Live RTMP 输出发送时采用以下有效负载结构。
 
 
-| 属性   | 说明                                                                                                                                                                                                                     |
+| Property   | 说明                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name       | 在 Elemental Live 中的名称应为“**scte35**”。                                                                                                                                                                              |
 | time       | 时间线中提示点在视频文件中发生的时间（秒）                                                                                                                                           |
 | type       | 提示点的类型应设置为“**event**”。                                                                                                                                                                             |
-| 参数 | 名称/值对字符串的关联数组，包含 SCTE-35 消息中的信息，包括 ID 和持续时间。 这些值由 Azure 媒体服务分析，将包含在清单修饰标记中。 |
+| 参数 | 名称/值对字符串的关联数组，其中包含 SCTE-35 消息中的信息，包括 Id 和 duration。 这些值由 Azure 媒体服务分析，将包含在清单修饰标记中。 |
 
 
 使用此广告标记模式时，HLS 清单输出类似于 Adobe 的“简单”模式。
 
 
-#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>MPEG DASH MPD 单周期 Adobe 简单模式信号示例
+#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>示例 MPEG 破折号 MPD，单周期，Adobe 简单模式信号
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -354,9 +359,10 @@ Elemental Live 本地编码器支持在 RTMP 信号中使用广告标记。 Azur
 </MPD>
 ~~~
 
-#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>使用 EXT-X-CUE 标记的 HLS 播放列表 Adobe 简单模式信号示例（为简洁起见，已截断部分内容）
 
-以下示例显示了使用 Adobe 简单模式信号和传统 [Adobe-Primetime] EXT-X-CUE 标记的 RTMP 引入流的媒体服务动态打包器的输出。  
+#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>示例 HLS 播放列表，Adobe 简单模式使用 EXT X 提示标记 (截断了 "..."对于简洁) 
+
+下面的示例演示如何使用 Adobe "simple" 模式信号和旧 [Primetime] EXT X 提示标记，通过 RTMP 引入流的媒体服务动态包装器输出。  
 
 ~~~
 #EXTM3U
@@ -404,11 +410,12 @@ Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 
 ## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 分片 MP4 引入（平滑流式处理）
 
-有关实时流引入的要求，请参阅 [MS-SSTR-Ingest]。 以下各节提供有关引入超时呈现元数据的详细信息。  超时呈现元数据作为稀疏轨迹引入，Live Server Manifest Box（请参阅 MS-SSTR）和 Movie Box（“moov”）中都对稀疏轨迹进行了定义。  
+有关实时流引入的要求，请参阅 [MS-SSTR-Ingest]。 以下各节提供有关引入超时呈现元数据的详细信息。  计时演示元数据被引入为稀疏轨迹，这是在 "实时服务器清单" 框中定义的 (参阅 SSTR) ， ( "moov" ) 的 "电影" 框。  
 
-每个稀疏片段都包含 Movie Fragment Box（“moof”）和 Media Data Box（“mdat”），其中“mdat”块是二进制消息。
+每个稀疏片段都包含一个 ( "moof" ) 和 Media Data Box ( "mdat" ) 的电影片段，其中 "mdat" 是二进制消息。
 
-为了实现帧准确的广告插入，编码器必须在显示需要插入提示时拆分片段。  必须创建以新建 IDR 帧开头的新片段，或使用 [ISO-14496-12] 附录 I 中定义的类型 1 或 2 流访问点 (SAP)。这样，Azure 媒体打包器将正确生成 HLS 清单和 DASH 多时段清单，其中的新时段从帧准确的接合适配呈现时间开始。
+为了实现帧准确的广告插入，编码器必须在显示需要插入提示时拆分片段。  必须创建以新创建的 IDR 帧开头的新片段，或 (SAP) 类型为1或2的流访问点，如 [ISO-14496-12] 附录 I 中所定义。
+<!--- This allows the Azure Media Packager to properly generate an HLS manifest and a DASH multi-period manifest where the new Period begins at the frame-accurate splice conditioned presentation time. --->
 
 ### <a name="221-live-server-manifest-box"></a>2.2.1 Live Server Manifest Box
 
@@ -416,64 +423,64 @@ Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 
 | **属性名称** | **字段类型** | **必需？** | **说明**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBitrate      | Number         | 必须      |  必须为“0”，以指示具有未知、可变比特率的轨迹。                                                                                                                                                          |
-| parentTrackName    | String         | 必须      | **必须**是父级轨迹的名称，稀疏轨迹时间码与父级轨迹时间刻度一致。 父级轨迹不能为稀疏轨迹。                                                                             |
-| manifestOutput     | 布尔        | 必须      |  必须为“true”，以指示将在 Smooth 客户端清单中嵌入稀疏轨迹。                                                                                                                        |
-| 子类型            | String         | 必须      |  必须是四字符代码的“DATA”。                                                                                                                                                                                  |
-| Scheme             | String         | 必须      | **必须**为标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这**必须**为“urn:scte:scte35:2013:bin”，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 |
-| trackName          | String         | 必须      | **必须**为稀疏轨迹的名称。trackName 可用来区分具有相同方案的多个事件流。 每个唯一事件流**必须**具有唯一的轨迹名称。                                |
-| timescale          | Number         | 可选      | **必须**为父级轨迹时间刻度。                                                                                                                                                                               |
+| systemBitrate      | 数字         | 必选      | **必须**为 "0"，表示具有未知可变比特率的轨迹。                                                                                                                                                          |
+| parentTrackName    | String         | 必选      | **必须**为父轨迹的名称，稀疏轨迹时间代码的时间刻度为该名称。 父级轨迹不能为稀疏轨迹。                                                                             |
+| manifestOutput     | Boolean        | 必选      | **必须**为 "true"，以指示将在平滑客户端清单中嵌入稀疏轨迹。                                                                                                                        |
+| 子类型            | String         | 必选      | **必须**是四个字符代码 "DATA"。                                                                                                                                                                                  |
+| Scheme             | String         | 必选      | **必须**为标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这**必须**为“urn:scte:scte35:2013:bin”，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 |
+| trackName          | String         | 必选      | **必须**是稀疏轨迹的名称。TrackName 可用于区分具有相同方案的多个事件流。 每个唯一的事件流都**必须**有唯一的轨道名称。                                |
+| timescale          | 数字         | 可选      | **必须**为父轨迹的时间刻度。                                                                                                                                                                               |
 
 ---
 
 ### <a name="222-movie-box"></a>2.2.2 Movie Box
 
-作为稀疏轨迹的流标头的一部分，Movie Box（“moov”）将遵循 Live Server Manifest Box。
+"影片箱" ( "moov" ) 在 "实时服务器清单" 框中作为稀疏轨迹的流标头的一部分。
 
-如 [ISO-14496-12] 中定义的，“moov”块  应该包含 **TrackHeaderBox (‘tkhd’)** 块，且具有以下约束：
+"Moov" 框**应**包含在 [ISO-14496-12] 中定义的**TrackHeaderBox ( "tkhd" ) **框，且具有以下约束：
 
 | **字段名称** | **字段类型**          | **必需？** | **说明**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| duration       | 64 位无符号整数 | 必须      | **应该**为 0，因为轨迹块具有零个示例，且轨迹块中示例的总持续时间为 0。 |
+| duration       | 64 位无符号整数 | 必选      | **应**为0，因为跟踪框有零个样本，并且 "跟踪" 框中的样本的总持续时间为0。 |
 
 ---
 
-如 [ISO-14496-12] 中所述，“moov”块  应该包含 **HandlerBox (‘hdlr’)** ，且具有以下约束：
+"Moov" 框**应**包含在 [ISO-14496-12] 中定义的**HandlerBox ( "hdlr" ) ** ，其约束如下：
 
 | **字段名称** | **字段类型**          | **必需？** | **说明**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
-| handler_type   | 32 位无符号整数 | 必须      |  应该为“meta”。 |
+| handler_type   | 32 位无符号整数 | 必选      | **应**为 "meta"。 |
 
 ---
 
-如 [ISO-14496-12] 中所述，“stsd”块  应该包含带有编码名称的 MetaDataSampleEntry 块。  例如，对于 SCTE-35 消息，编码名称**应该**为“scte”。
+"Stsd" 框**应**包含带有编码名称的 MetaDataSampleEntry 框，如 [ISO-14496-12] 中所定义。  例如，对于 SCTE-35 消息，编码名称**应**为 "SCTE"。
 
 ### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 Movie Fragment Box 和 Media Data Box
 
-稀疏轨迹片段包含 Movie Fragment Box（“moof”）和 Media Data Box（“mdat”）。
+稀疏轨迹片段包含一个 ( "moof" ) 的影片片段框和一个媒体 Data Box ( "mdat" ) 。
 
 > [!NOTE]
 > 为了实现帧准确的广告插入，编码器必须在显示需要插入提示时拆分片段。  必须创建以新建 IDR 帧开头的，或者以 [ISO-14496-12] 附录 I 中定义的类型 1 或 2 流访问点 (SAP) 开头的新片段。
 > 
 
-如 [MS-SSTR] 中定义，MovieFragmentBox（“moof”）框  必须包含 **TrackFragmentExtendedHeaderBox (‘uuid’)** 框，且具有以下字段：
+MovieFragmentBox ( "moof" ) 框**必须**包含在 [MS-SSTR] 中定义的**TrackFragmentExtendedHeaderBox ( "uuid" ) **框，其中包含以下字段：
 
 | **字段名称**         | **字段类型**          | **必需？** | **说明**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
-| fragment_absolute_time | 64 位无符号整数 | 必须      | **必须**为事件的到达时间。 此值可使消息与父级轨迹保持一致。           |
-| fragment_duration      | 64 位无符号整数 | 必须      | **必须**为事件的持续时间。 持续时间可以为零，以指示持续时间未知。 |
+| fragment_absolute_time | 64 位无符号整数 | 必选      | **必须**是事件的到达时间。 此值可使消息与父级轨迹保持一致。           |
+| fragment_duration      | 64 位无符号整数 | 必选      | **必须**是事件的持续时间。 持续时间可以为零，以指示持续时间未知。 |
 
 ---
 
 
-MediaDataBox (‘mdat’) 框  必须采用以下格式：
+MediaDataBox ( "mdat" ) 框**必须**采用以下格式：
 
 | **字段名称**          | **字段类型**                   | **必需？** | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 版本                 | 32 位无符号整数 (uimsbf) | 必须      | 确定“mdat”块的内容格式。 将忽略无法识别的版本。 当前仅支持版本 1。                                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32 位无符号整数 (uimsbf) | 必须      | 标识消息的此实例。 具有等效语义的消息应具有相同的值；即，处理具有相同 ID 的任何一个事件消息块就足够了。                                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32 位无符号整数 (uimsbf) | 必须      | TrackFragmentExtendedHeaderBox 中指定的 fragment_absolute_time 总和以及 presentation_time_delta **必须**是事件的呈现时间。 按照 [ISO-14496-12] Annex I 中的定义，呈现时间和持续时间**应该**与类型 1 或 2 的流访问点保持一致。对于 HLS 出口，时间和持续时间**应该**与片段边界保持一致。 相同事件流中的不同事件消息的呈现时间和持续时间**不得**重叠。 |
-| message                 | Byte Array                       | 必须      | 事件消息。 对于 [SCTE-35] 消息，消息仍为二进制 binary splice_info_section()。 对于 [SCTE-35] 消息，这**必须**为 splice_info_section()，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 对于 [SCTE-35] 消息，二进制 splice_info_section() 是“mdat”块的有效负载，且它  不是 base64 编码。                                                                                                                     |
+| version                 | 32 位无符号整数 (uimsbf) | 必选      | 确定 "mdat" 框的内容的格式。 将忽略无法识别的版本。 当前仅支持版本 1。                                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32 位无符号整数 (uimsbf) | 必选      | 标识消息的此实例。 具有等效语义的消息应具有相同的值；即，处理具有相同 ID 的任何一个事件消息块就足够了。                                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32 位无符号整数 (uimsbf) | 必选      | 在 TrackFragmentExtendedHeaderBox 中指定的 fragment_absolute_time 和 presentation_time_delta 的总和**必须**是事件的呈现时间。 显示时间和持续时间**应**与流访问点 (类型为1或2的 SAP) 一致，如 [ISO-14496-12] 附录 I 中所定义。对于 HLS 出口，时间和持续时间**应**与段边界对齐。 同一事件流中不同事件消息的显示时间和持续时间**不得**重叠。 |
+| message                 | Byte Array                       | 必选      | 事件消息。 对于 [SCTE-35] 消息，消息仍为二进制 binary splice_info_section()。 对于 [SCTE-35] 消息，这**必须**为 splice_info_section()，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 对于 [SCTE-35] 消息， ( # A1 的二进制 splice_info_section 是 "mdat" 框的负载，它**不**是 base64 编码的。                                                                                                                     |
 
 ---
 
@@ -485,7 +492,7 @@ MediaDataBox (‘mdat’) 框  必须采用以下格式：
 
 ## <a name="3-timed-metadata-delivery"></a>3 超时元数据交付
 
-事件流数据对媒体服务不透明。 媒体服务仅传递引入终结点和客户端终结点之间的三条信息。 根据 [SCTE-35] 和/或客户端的流式处理协议，将向客户端传递以下属性：
+事件流数据对媒体服务不透明。 媒体服务仅传递引入终结点和客户端终结点之间的三条信息。 以下属性将传递给客户端，符合 [SCTE-35] 和/或客户端的流式处理协议：
 
 1.  架构 - 标识消息方案的 URN 或 URL。
 2.  呈现时间 - 媒体时间线上的事件的呈现时间。
@@ -495,7 +502,7 @@ MediaDataBox (‘mdat’) 框  必须采用以下格式：
 
 ## <a name="31-microsoft-smooth-streaming-manifest"></a>3.1 Microsoft 平滑流式处理清单  
 
-有关如何设置稀疏消息轨迹格式的详细信息，参阅稀疏轨迹处理 [MS-SSTR]。对于 [SCTE35] 消息，平滑流式处理会将 base64 编码的 splice_info_section() 输出到稀疏片段。
+请参阅稀疏轨迹处理 [SSTR]，了解有关如何设置稀疏消息轨迹格式的详细信息。对于 [SCTE35] 消息，平滑流式处理会将 base64 编码的 splice_info_section ( # A1 输出到稀疏片段。
 StreamIndex **必须**具有子类型“DATA”，CustomAttributes **必须**包含名称为“Schema”、值为“urn:scte:scte35:2013:bin”的属性。
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>演示 base64 编码 [SCTE35] splice_info_section() 的平滑客户端清单示例
@@ -541,21 +548,182 @@ StreamIndex **必须**具有子类型“DATA”，CustomAttributes **必须**包
 
 Azure 媒体服务支持在实时或按需事件期间使用以下 HLS 清单标记来通知广告权益信息。 
 
-- 在 Apple HLS [RFC8216] 中定义的 EXT-X-DATERANGE
-- 在 [Adobe-Primetime] 中定义的 EXT-X-CUE - 此模式被视为“传统”模式。 客户应尽可能地采用 EXT-X-DATERANGE 标记。
+<!--- EXT-X-DATERANGE as defined in Apple HLS [RFC8216] --->
+- 在 [Adobe-Primetime] 中定义的 EXT X 提示
+<!--- this mode is considered "legacy".  Customers should adopt the EXT-X-DATERANGE tag when possible. --->
 
 每个标记的数据输出根据所用的引入信号模式而异。 例如，使用 Adobe 简单模式进行的 RTMP 引入不包含完整的 SCTE-35 base64 编码有效负载。
 
-## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1 使用 EXT-X-DATERANGE 的 Apple HLS（建议）
+<!---
+## 3.2.1 Apple HLS with EXT-X-DATERANGE (recommended)
 
-Apple HTTP Live Streaming [RFC8216] 规范允许发送 [SCTE-35] 消息信号。 消息将根据标题为“将 SCTE-35 映射到 EXT-X-DATERANGE”的 [RFC8216] 部分插入到 EXT-X-DATERANGE 标记中的分段播放列表。  客户端应用层可以分析 M3U 播放列表并处理 M3U 标记，或通过 Apple Player Framework 接收事件。  
+The Apple HTTP Live Streaming [RFC8216] specification allows for signaling of [SCTE-35] messages. The messages are inserted into the segment playlist in an EXT-X-DATERANGE tag per [RFC8216] section titled "Mapping SCTE-35 into EXT-X-DATERANGE".  The client application layer can parse the M3U playlist and process M3U tags, or receive the events through the Apple player framework.  
 
-Azure 媒体服务（版本 3 API）中**建议**的方法是遵循 [RFC8216]，并将 EXT-X_DATERANGE 标记用于清单中的 [SCTE35] 广告权益修饰。
+The **RECOMMENDED** approach in Azure Media Services (version 3 API) is to follow [RFC8216] and use the EXT-X_DATERANGE tag for [SCTE35] ad avail decoration in the manifest.
+--->
 
-## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 显示 SCTE-35 的 EXT-X-DATERANGE 信号发送的示例 HLS 清单 .m3u8
 
-媒体服务动态打包器的以下示例 HLS 清单输出显示了使用来自 [RFC8216] 的 EXT-X-DATERANGE 标记在流中发送 SCTE-35 事件信号。 此外，此流包含 [Adobe-Primetime] 的“传统”EXT-X-CUE 标记。
+## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-cue-signaling-of-scte-35"></a>3.2.1.1 示例 HLS m3u8-aapl-v3 显示了 SCTE-35 的 EXT X 提示信号
 
+以下示例 HLS 媒体服务动态包装器的清单输出在 SCTE35 模式下显示 [Adobe-Primetime] 的 EXT X 提示标记。 
+
+~~~
+#EXTM3U
+#EXT-X-VERSION:8
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:2
+#EXT-X-INDEPENDENT-SEGMENTS
+#EXT-X-PROGRAM-DATE-TIME:2020-01-07T19:40:50Z
+#EXTINF:1.501500,no-desc
+Fragments(video=22567545,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22702680,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22837815,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22972950,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=23108085,format=m3u8-aapl-v8)
+#EXTINF:1.234567,no-desc
+Fragments(video=23243220,format=m3u8-aapl-v8)
+#EXTINF:0.016689,no-desc
+Fragments(video=23354331,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=0.000022
+#EXTINF:0.250244,no-desc
+Fragments(video=23355833,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=0.250267
+#EXTINF:0.850856,no-desc
+Fragments(video=23378355,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.101122
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=0.000000,TIME=260.610344,CUE="/DAgAAAAAAXdAP/wDwUAAAPqf0/+AWXk0wABAQEAAGB86Fo="
+#EXTINF:0.650644,no-desc
+Fragments(video=23454932,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.751767
+#EXTINF:0.050044,no-desc
+Fragments(video=23513490,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.801811
+#EXTINF:1.451456,no-desc
+Fragments(video=23517994,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=3.253267
+#EXTINF:1.501500,no-desc
+Fragments(video=23648625,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=4.754767
+#EXTINF:1.501500,no-desc
+Fragments(video=23783760,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=6.256267
+#EXTINF:1.501500,no-desc
+Fragments(video=23918895,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=7.757767
+#EXTINF:1.501500,no-desc
+Fragments(video=24054030,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=9.259267
+#EXTINF:1.501500,no-desc
+Fragments(video=24189165,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=10.760767
+#EXTINF:1.501500,no-desc
+Fragments(video=24324300,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=12.262267
+#EXTINF:1.501500,no-desc
+Fragments(video=24459435,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=13.763767
+#EXTINF:1.501500,no-desc
+Fragments(video=24594570,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=15.265267
+#EXTINF:1.501500,no-desc
+Fragments(video=24729705,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=16.766767
+#EXTINF:1.501500,no-desc
+Fragments(video=24864840,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=18.268267
+#EXTINF:1.501500,no-desc
+Fragments(video=24999975,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=19.769767
+#EXTINF:1.501500,no-desc
+Fragments(video=25135110,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=21.271267
+#EXTINF:1.501500,no-desc
+Fragments(video=25270245,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=22.772767
+#EXTINF:1.501500,no-desc
+Fragments(video=25405380,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=24.274267
+#EXTINF:1.501500,no-desc
+Fragments(video=25540515,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=25.775767
+#EXTINF:1.501500,no-desc
+Fragments(video=25675650,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=27.277267
+#EXTINF:1.501500,no-desc
+Fragments(video=25810785,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=28.778767
+#EXTINF:1.501500,no-desc
+Fragments(video=25945920,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=30.280267
+#EXTINF:1.501500,no-desc
+Fragments(video=26081055,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=31.781767
+#EXTINF:1.501500,no-desc
+Fragments(video=26216190,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=33.283267
+#EXTINF:1.501500,no-desc
+Fragments(video=26351325,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=34.784767
+#EXTINF:1.501500,no-desc
+Fragments(video=26486460,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=36.286267
+#EXTINF:1.501500,no-desc
+Fragments(video=26621595,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=37.787767
+#EXTINF:1.501500,no-desc
+Fragments(video=26756730,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=39.289267
+#EXTINF:1.501500,no-desc
+Fragments(video=26891865,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=40.790767
+#EXTINF:1.501500,no-desc
+Fragments(video=27027000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=42.292267
+#EXTINF:1.501500,no-desc
+Fragments(video=27162135,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=43.793767
+#EXTINF:1.501500,no-desc
+Fragments(video=27297270,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=45.295267
+#EXTINF:1.501500,no-desc
+Fragments(video=27432405,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=46.796767
+#EXTINF:1.501500,no-desc
+Fragments(video=27567540,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=48.298267
+#EXTINF:1.501500,no-desc
+Fragments(video=27702675,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=49.799767
+#EXTINF:1.501500,no-desc
+Fragments(video=27837810,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=51.301267
+#EXTINF:1.501500,no-desc
+Fragments(video=27972945,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=52.802767
+#EXTINF:1.501500,no-desc
+Fragments(video=28108080,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=54.304267
+#EXTINF:1.501500,no-desc
+Fragments(video=28243215,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=55.805767
+#EXTINF:1.501500,no-desc
+Fragments(video=28378350,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=57.307267
+#EXTINF:1.501500,no-desc
+Fragments(video=28513485,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=58.808767
+#EXTINF:1.501500,no-desc
+Fragments(video=28648620,format=m3u8-aapl-v8)
+
+~~~
+
+
+<!---
+THIS VERSION HAS THE HLSv8 DATERANGE Tags in it
 ~~~
 #EXTM3U
 #EXT-X-VERSION:8
@@ -754,28 +922,32 @@ Fragments(video=28648620,format=m3u8-aapl-v8)
 
 ~~~
 
+--->
 
-## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue-legacy"></a>3.2.2 将 Apple HLS 与 Adobe Primetime EXT-X-CUE 配合使用（传统方法）
+## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue"></a>3.2.2 Apple HLS with Adobe Primetime EXT X-提示
 
-Azure 媒体服务（版本 2 和 3 API）中还提供一种“传统”实现，该实现使用 [Adobe-Primetime]“SCTE-35 模式”中定义的 EXT-X-CUE 标记。 在此模式下，Azure 媒体服务会将 base64 编码的 [SCTE-35] splice_info_section() 嵌入到 EXT-X-CUE 标记中。  
+媒体服务 (版本2和 3 API) 支持在 [Primetime] "SCTE-35 Mode" 中定义的扩展 X 提示标记的输出。 在此模式下，Azure 媒体服务会将 base64 编码的 [SCTE-35] splice_info_section() 嵌入到 EXT-X-CUE 标记中。  
 
 “传统”EXT-X-CUE 标记的定义如下，也可以在 [Adobe-Primetime] 规范中以规范方式引用它。 应该只在有必要时才将它用于传统的 SCTE35 信号，否则应根据 EXT-X-DATERANGE 所述在 [RFC8216] 中定义建议的标记。 
 
-| **属性名称** | **类型**                      | **必需？**                             | **说明**                                                                                                                                                                                                                                                                          |
+| **属性名称** | **Type**                      | **必需？**                             | **说明**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 提示                | 带引号的字符串                 | 必须                                  | 如 [RFC4648] 中所述编码为 base64 字符串的消息。 对于 [SCTE-35] 消息，这是 base64 编码的 splice_info_section()。                                                                                                                                      |
-| TYPE               | 带引号的字符串                 | 必须                                  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，类型将采用特殊值“scte35”。                                                                                                                                                                          |
+| 提示                | 带引号的字符串                 | 必选                                  | 如 [RFC4648] 中所述编码为 base64 字符串的消息。 对于 [SCTE-35] 消息，这是 base64 编码的 splice_info_section()。                                                                                                                                      |
+| TYPE               | 带引号的字符串                 | 必选                                  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，该类型采用特殊值 "scte35"。                                                                                                                                                                          |
 | ID                 | 带引号的字符串                 | 必须                                  | 事件的唯一标识符。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                                                                              |
-| DURATION           | 十进制浮点数 | 必须                                  | 事件持续时间。 如果未知，该值**应该**为 0。 单位为小数形式的秒。                                                                                                                                                                                           |
-| 已用时间            | 十进制浮点数 | 可选，但是对于滑动窗口为必需 | 如果信号重复出现以便支持滑动呈现窗口，此字段**必须**为事件开始后已经过去的呈现时间量。 单位为小数形式的秒。 此值可能超过接合或片段的最初指定持续时间。 |
-| TIME               | 十进制浮点数 | 必须                                  | 事件的呈现时间。 单位为小数形式的秒。                                                                                                                                                                                                                        |
-
+| DURATION           | 十进制浮点数 | 必须                                  | 事件持续时间。 如果未知，则该值**应**为0。 单位为小数形式的秒。                                                                                                                                                                                           |
+| 已用时间            | 十进制浮点数 | 可选，但是对于滑动窗口为必需 | 当该信号重复以支持滑动显示窗口时，此字段**必须**为自事件开始后已经过去的呈现时间量。 单位为小数形式的秒。 此值可能超过接合或片段的最初指定持续时间。 |
+| TIME               | 十进制浮点数 | 必选                                  | 事件的呈现时间。 单位为小数形式的秒。                                                                                                                                                                                                                        |
 
 HLS 播放器应用程序层将使用 TYPE 执行以下操作：标识消息的格式、对消息进行解码、应用必要的时间转换以及处理事件。  根据事件的时间戳，事件时间在父级轨迹的片段播放列表中保持同步。  它们被插入在最近的片段（#EXTINF 标记）前面。
 
-### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>3.2.3 使用“传统”Adobe Primetime EXT-X-CUE 的 HLS .m3u8 清单示例
 
-以下示例演示使用 Adobe Primetime EXT-X-CUE 标记的 HLS 清单修饰。  “CUE”参数仅包含 TYPE 和 Duration 属性，这意味着，这是使用 Adobe“简单”模式信号的 RTMP 源。  如果这是 SCTE-35 模式信号，则标记将包含 base64 编码的二进制 SCTE-35 有效负载，如 [3.2.1.1 示例](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)中所示。
+### <a name="323-hls-m3u8-manifest-example-using-adobe-primetime-ext-x-cue"></a>3.2.3 HLS. m3u8-aapl-v3 manifest 示例使用 Adobe Primetime EXT X 提示
+
+以下示例演示使用 Adobe Primetime EXT-X-CUE 标记的 HLS 清单修饰。  "提示" 参数仅包含 "类型" 和 "持续时间" 属性，这意味着这是使用 Adobe "简单" 模式信号 RTMP 的源。  
+<!---If this was a SCTE-35 mode signal, the tag would include the base64 encoded binary SCTE-35 payload as seen in the [3.2.1.1 example](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35).
+--->
+
 
 ~~~
 #EXTM3U
@@ -838,9 +1010,9 @@ Fragments(video=4011702982,format=m3u8-aapl)
 
 ~~~
 
-### <a name="324-hls-message-handling-for-legacy-adobe-primetime-ext-x-cue"></a>3.2.4“传统”Adobe Primetime EXT-X-CUE 的 HLS 消息处理
+### <a name="324-hls-message-handling-for-adobe-primetime-ext-x-cue"></a>3.2.4 HLS 消息处理，用于 Adobe Primetime EXT X 提示
 
-事件会在每个视频和音频轨迹的片段播放列表中发出信号。根据 [Adobe-Primetime] 的要求，EXT-X-CUE 标记**必须**始终位于第一个 HLS 片段（用于接合结束或片段开始）之前或位于最后一个 HLS 片段（用于接合开始或片段结束）之后，以便其 TIME 和 DURATION 属性进行引用。
+事件在每个视频和音频轨的段播放列表中发出信号。EXT X 提示标记的位置**必须**始终位于第一个 HLS 段之前， (用于 "拼接外" 或 "段开始") ，或紧靠在 "时间" 和 "持续时间" 字段中的 "HLS" 或 "段结束")  (，其时间和持续时间属性引用的位置为 [Adobe-Primetime]。
 
 根据 [Adobe-Primetime] 的要求，启用滑动呈现窗口后，EXT-X-CUE 标记**必须**重复出现足够多的次数，以便始终在片段播放列表中完整介绍接合或片段，并且 ELASPED 属性**必须**用于指示接合或片段活跃的时间量。
 
@@ -851,10 +1023,10 @@ Fragments(video=4011702982,format=m3u8-aapl)
 [MPEGDASH] 提供三种方式来发出事件信号：
 
 1.  MPD EventStream 中发出信号的事件
-2.  使用事件消息框 ('emsg') 在带内发出信号的事件
+2.  使用事件消息框以带内信号的事件 ( "emsg" ) 
 3.  两者的组合
 
-MPD EventStream 中发出信号的事件可用于 VOD 流式处理，因为下载 MPD 后，客户端即可有权访问所有事件。 这也适用于 SSAI 信号，其中的下游 SSAI 供应商需要从多时段 MPD 清单分析信号，并动态插入广告内容。  带内 ('emsg') 解决方案可用于实时流式处理，其中的客户端无需再次下载 MPD，或者客户端与源之间不会发生任何 SSAI 清单操作。 
+MPD EventStream 中发出信号的事件可用于 VOD 流式处理，因为下载 MPD 后，客户端即可有权访问所有事件。 此方法也适用于 SSAI 信号，其中下游 SSAI 供应商需要分析 MPD 清单中的信号，并动态插入广告内容。  带内 ('emsg') 解决方案可用于实时流式处理，其中的客户端无需再次下载 MPD，或者客户端与源之间不会发生任何 SSAI 清单操作。 
 
 对于 DASH，Azure 媒体服务的默认行为是使用事件消息框 ('emsg') 在 MPD EventStream 中和带内发送信号。
 
@@ -870,26 +1042,28 @@ MPD EventStream 中发出信号的事件可用于 VOD 流式处理，因为下�
 
 事件的清单 (MPD) 修饰将使用 EventStream 元素在 MPD 中发送信号，该元素将显示在 Period 元素中。 使用的 schemeId 为 "urn:scte:scte35:2014:xml+bin"。
 
+
 > [!NOTE]
 > 为简明起见，[SCTE-35] 允许使用 Signal.Binary 元素（而不是 Signal.SpliceInfoSection 元素）中的 base64 编码部分来代替完整分析的提示消息的负载。
 > Azure 媒体服务使用此 'xml+bin' 方法在 MPD 清单中发出信号。
 > 这也是 [DASH-IF-IOP] 中建议使用的方法 - 请参阅标题为 [DASH IF IOP 的“广告插入事件流”指南](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html#ads-insertion-event-streams)的部分
 > 
 
+
 EventStream 元素具有以下属性：
 
-| **属性名称** | **类型**                | **必需？** | **说明**                                                                                                                                                                                                                                                                                                                                                                         |
+| **属性名称** | **Type**                | **必需？** | **说明**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scheme_id_uri      | string                  | 必须      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**应该**是用于标识消息方案的 URN 或 URL；根据 [SCTE-214-1] 部分 6.7.4 (MPD)，支持的输出 schemeId 应该是 "urn:scte:scte35:2014:xml+bin"，因为出于 MPD 的简洁性，该服务目前仅支持 "xml+bin"。 |
-| value              | string                  | 可选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值**必须**设为 事件流的名称（[MS-SSTR-Ingest] 的 trackName，或 [RTMP] 引入的 AMF 消息）。                                                                         |
+| scheme_id_uri      | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**应该**是用于标识消息方案的 URN 或 URL；根据 [SCTE-214-1] 部分 6.7.4 (MPD)，支持的输出 schemeId 应该是 "urn:scte:scte35:2014:xml+bin"，因为出于 MPD 的简洁性，该服务目前仅支持 "xml+bin"。 |
+| value              | 字符串                  | 可选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值**必须**设为 事件流的名称（[MS-SSTR-Ingest] 的 trackName，或 [RTMP] 引入的 AMF 消息）。                                                                         |
 | 时间刻度          | 32 位无符号整数 | 必须      | 时间刻度，以每秒为刻度单位。                                                                                                                                                                                                                                                                                                                                                     |
 
 
-### <a name="332-example-event-streams-for-mpeg-dash"></a>3.3.2 MPEG DASH 的示例事件流
+### <a name="332-example-event-streams-for-mpeg-dash"></a>MPEG 长划线的3.3.2 示例事件流
 
-#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1 使用 Adobe 简单模式的 RTMP 流的示例 MPEG DASH .mpd 清单信号发送
+#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1 示例 MPEG 破折号。 mpd 清单使用 Adobe 简单模式 RTMP 流式处理
 
-以下示例显示了使用 Adobe“简单”模式信号的 RTMP 流的媒体服务动态打包器的事件流摘录。
+以下示例显示了使用 Adobe "简单" 模式信号处理的 RTMP 流的媒体服务动态包装器中 EventStream 的摘录。
 
 ~~~ xml
 <!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
@@ -908,12 +1082,14 @@ EventStream 元素具有以下属性：
     </EventStream>
 ~~~
 
-#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 使用 Adobe SCTE-35 模式的 RTMP 流的示例 MPEG DASH .mpd 清单信号发送
 
-以下示例显示了使用 Adobe SCTE-35 模式信号的 RTMP 流的媒体服务动态打包器的事件流摘录。
+#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 示例 MPEG mpd 使用 Adobe SCTE-35 模式传输 RTMP 流
+
+下面的示例演示了使用 Adobe SCTE-35 模式发出信号的 RTMP 流的媒体服务动态包装器中的 EventStream。
+
+使用 xml + bin 样式发出的 EventStream 元素示例 [SCTE-214-1]
 
 ~~~ xml
-<!-- Example EventStream element using xml+bin style signaling per [SCTE-214-1] -->
 
       <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
         <Event presentationTime="2595092444" duration="11011000" id="1002">
@@ -929,16 +1105,19 @@ EventStream 元素具有以下属性：
       </EventStream>
 ~~~
 
+
+
 > [!IMPORTANT]
 > 请注意，presentationTime 是 [SCTE-35] 事件的呈现时间，经转换后相对于时段开始时间，而不是消息的抵达时间。
 > [MPEGDASH] 将 Event@presentationTime 定义为“指定相对于时段开始时间的事件的呈现时间”。
 > 呈现时间的值（以秒为单位）是此属性的值与 EventStream@timescale 属性的值相除的结果。
 > 如果不存在，则呈现时间值为 0。
 
-#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 使用 Adobe 简单模式信号的单周期事件流的示例 MPEG DASH 清单 (MPD)
 
-以下示例显示了使用 Adobe“简单”模式广告信号方法的源 RTMP 流的媒体服务动态打包器的输出。 输出是单周期清单，显示使用设置为“urn:com:adobe:dpi:simple:2015”的 schemeId URI、设置为“simplesignal”的值属性的事件流。
-每个简单信号在某个 Event 元素中提供，该元素中的 @presentationTime、@duration 和 @id 属性是根据传入的简单信号填充的。
+#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 示例 MPEG 虚线清单 (MPD) 与单周期 EventStream，使用 Adobe 简单模式信号
+
+下面的示例演示如何使用 Adobe 的 "简单" 模式 ad 信号方法为源 RTMP 流的媒体服务动态包装器提供输出。 输出是一个句点清单，显示使用 schemeId Uri 设置为 "urn： com： EventStream： dpi： simple： 2015" 且值属性设置为 "simplesignal" 的。
+在事件元素中提供每个简单信号，其中 @presentationTime ，、 @duration 和 @id 属性根据传入的简单信号进行填充。
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -991,10 +1170,11 @@ EventStream 元素具有以下属性：
 
 ~~~
 
-#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 使用 Adobe SCTE35 模式信号的多周期事件流的示例 MPEG DASH 清单 (MPD)
+<!---
+#### 3.3.3.2 Example MPEG DASH manifest (MPD) with multi-period, EventStream, using Adobe SCTE35 mode signaling
 
-以下示例显示了使用 Adobe SCTE35 模式信号的源 RTMP 流的媒体服务动态打包器的输出。
-在本例中，输出清单是包含 EventStream 元素的多周期 DASH .mpd，@schemeIdUri 属性设置为“urn:scte:scte35:2014:xml+bin”，@value 属性设置为“scte35”。 EventStream 中的每个 Event 元素包含完整的 base64 编码二进制 SCTE35 信号 
+The following example shows the output from the Media Services dynamic packager for a source RTMP stream using the Adobe SCTE35 mode signaling.
+In this case, the output manifest is a multi-period DASH .mpd with an EventStream element, and @schemeIdUri property set to "urn:scte:scte35:2014:xml+bin" and a @value property set to "scte35". Each Event element in the EventStream contains the full base64 encoded binary SCTE35 signal 
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1027,9 +1207,6 @@ EventStream 元素具有以下属性：
                 <SegmentTimeline>
                     <S t="7417856" d="133120"/>
                     <S d="132096" r="1"/>
-                    
-                    <!--> ... aduio segments truncated for sample brevity </-->
-
                 </SegmentTimeline>
             </SegmentTemplate>
             <ProducerReferenceTime id="7417856" type="0" wallClockTime="2020-01-07T19:40:50.037Z" presentationTime="7417856"/>
@@ -1121,9 +1298,12 @@ EventStream 元素具有以下属性：
 </MPD>
 
 ~~~
-### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG DASH 带内事件消息框信号
 
-带内事件流要求 MPD 具有适应集级别的 InbandEventStream 元素。  此元素具有一个必需的 schemeIdUri 属性和可选的时间刻度属性，该属性还显示在事件消息块（“emsg”）中。  **不应**存在具有未在 MPD 中定义的方案标识符的事件消息框。
+--->
+
+### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG 破折号带内事件消息框信号
+
+带内事件流要求 MPD 具有适应集级别的 InbandEventStream 元素。  此元素具有必需的 schemeIdUri 属性和可选时间刻度属性，该属性还显示在 ( "emsg" ) 的事件消息框中。  未在 MPD 中定义的方案标识符的事件消息框不**应**存在。
 
 对于带内 [SCTE-35] 负载，信号**必须**使用 schemeId = "urn:scte:scte35:2013:bin"。
 [SCTE-214-3] 部分 7.3.2（SCTE 35 提示消息的负载）中定义了 [SCTE-35] 带内消息的规范定义。
@@ -1132,36 +1312,37 @@ EventStream 元素具有以下属性：
 
 | **字段名称**          | **字段类型**          | **必需？** | **说明**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| scheme_id_uri           | string                  | 必须      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**必须**是用于标识消息方案的 URN。 对于 [SCTE-35] 消息，此值  必须是符合 [SCTE-214-3] 的 "urn:scte:scte35:2013:bin"          |
-| Value                   | string                  | 必须      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值将设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。 |
-| 时间刻度               | 32 位无符号整数 | 必须      | “emsg”块中的时间和持续时间字段的时间刻度（以“滴答数/秒”为单位）。                                                                                                                                                                                                            |
-| Presentation_time_delta | 32 位无符号整数 | 必须      | 此片段中的事件呈现时间的媒体呈现时间增量和最早的呈现时间。 呈现时间和持续时间**应该**与类型 1 或 类型 2 的流访问点 (SAP) 保持一致，如 [ISO-14496-12] 附录 I 中所述。                                  |
+| scheme_id_uri           | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**必须**是用于标识消息方案的 URN。 对于 [SCTE-35] 消息，此项**必须**为 "urn： SCTE： scte35：2013： bin" （符合 [SCTE-214-3]）          |
+| 值                   | 字符串                  | 必选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值将设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。 |
+| 时间刻度               | 32 位无符号整数 | 必选      | "Emsg" 框中的 "时间" 和 "持续时间" 字段的时间刻度，以每秒刻度数为单位。                                                                                                                                                                                                            |
+| Presentation_time_delta | 32 位无符号整数 | 必选      | 此片段中的事件呈现时间的媒体呈现时间增量和最早的呈现时间。 显示时间和持续时间**应**与流访问点 (类型为1或2的 SAP) 一致，如 [ISO-14496-12] 附录 I 中所定义。                                  |
 | event_duration          | 32 位无符号整数 | 必须      | 事件的持续时间或 0xFFFFFFFF，以指示未知的持续时间。                                                                                                                                                                                                                              |
-| ID                      | 32 位无符号整数 | 必须      | 标识消息的此实例。 具有等效语义的消息应具有相同的值。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                        |
-| Message_data            | Byte Array              | 必须      | 事件消息。 对于 [SCTE-35] 消息，消息数据是符合 [SCTE-214-3] 的二进制 binary splice_info_section()                                                                                                                                                                        |
+| ID                      | 32 位无符号整数 | 必选      | 标识消息的此实例。 具有等效语义的消息应具有相同的值。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                        |
+| Message_data            | Byte Array              | 必选      | 事件消息。 对于 [SCTE-35] 消息，消息数据是符合 [SCTE-214-3] 的二进制 binary splice_info_section()                                                                                                                                                                        |
 
 
-#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe 简单模式的示例 InBandEvenStream 实体
+#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe 简单模式示例 InBandEvenStream 实体
 ~~~ xml
 
       <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
 ~~~
 
-### <a name="335-dash-message-handling"></a>3.3.5 DASH 消息处理
+### <a name="335-dash-message-handling"></a>3.3.5 短划线消息处理
 
-对于视频和音频轨迹，事件都是“emsg”块内的带内信号。  所有片段请求都会发出信号，因为 presentation_time_delta 为 15 秒或更少。 
+对于视频和音频轨迹，事件在 "emsg" 框中带内信号。  所有片段请求都会发出信号，因为 presentation_time_delta 为 15 秒或更少。 
 
 启用滑动呈现窗口后，当事件消息的时间和持续时间之和小于清单中的媒体数据的时间时，将从 MPD 中删除事件消息。  换而言之，当事件消息引用的媒体时间滚出滑动呈现窗口时，将从清单中删除事件消息。
 
-## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4.面向编码器供应商的 SCTE-35 引入实现指南
+## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4. SCTE-35 引入编码器供应商实现指南
 
 以下指导原则针对编码器供应商在实施此规范时可能遇到的常见问题。  以下指导原则是根据真实的合作伙伴反馈收集的，旨在更轻松地为其他人实施此规范。 
 
-[SCTE-35] 消息针对 [MS-SSTR-Ingest] 使用方案 **“urn:scte:scte35:2013:bin”** 以二进制格式引入，并针对 [RTMP] 引入使用类型 **“scte35”** 。 为便于转换基于 MPEG-2 传输流呈现时间戳 (PTS) 的 [SCTE-35] 计时，事件呈现时间（对于平滑引入为 fragment_absolute_time 字段，对于 RTMP 引入为时间字段）在 PTS (pts_time + pts_adjustment of the splice_time()) 和媒体时间线之间提供了一种映射。 映射是必需的，因为 33 位 PTS 值每隔大约 26.5 小时将汇总一次。
+[35 SCTE] 使用方案 **"urn： SCTE： scte35：2013： bin"** 作为 [引入] 的 [SSTR] 引入的类型 **"scte35"** ，以二进制格式消息。 为便于转换基于 MPEG-2 传输流呈现时间戳 (PTS) 的 [SCTE-35] 计时，事件呈现时间（对于平滑引入为 fragment_absolute_time 字段，对于 RTMP 引入为时间字段）在 PTS (pts_time + pts_adjustment of the splice_time()) 和媒体时间线之间提供了一种映射。 映射是必需的，因为 33 位 PTS 值每隔大约 26.5 小时将汇总一次。
 
-平滑流式处理引入 [MS-SSTR-Ingest] 要求媒体数据框 (‘mdat’)  必须包含 [SCTE-35] 中所定义的 **splice_info_section()** 。 
+平滑流式处理摄取 [SSTR] 要求 Media Data Box ( "mdat" ) **必须**包含在 [SCTE-35] 中定义的**Splice_info_section ( # B3** 。 
 
-对于 RTMP 引入，AMF 消息的提示属性应设置为 [SCTE-35] 中定义的 base64 编码**splice_info_section()** 。  
+对于 RTMP 引入，AMF 消息的提示属性应设置为 [SCTE-35] 中定义的 base64 编码**splice_info_section()**。  
+
 
 如果消息采用上述格式，它们将发送到上面定义的 HLS、Smooth 和 DASH 客户端。  
 
@@ -1171,11 +1352,12 @@ EventStream 元素具有以下属性：
 
 ## <a name="change-history"></a>更改历史记录
 
-| Date     | 更改                                                                                                             |
+| 日期     | 更改                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| 07/2/19  | 修订了 SCTE35 的 RTMP 引入支持，添加了 Elemental Live 的 RTMP“onCuePoint”                                  |
+| 07/2/19  | 修订了 RTMP 引入支持，添加了 Elemental Live 的 RTMP "onCuePoint"                                            |
 | 08/22/19 | 已做出更新，将 OnUserDataEvent 添加到自定义元数据的 RTMP                                                          |
-| 1/08/20  | 修复了 RTMP 简单模式和 RTMP SCTE35 模式的错误。 已从“onCuePoint”更改为“onAdCue”。 更新了简单模式表。 |
+| 1/08/20  | 修复了在 RTMP Simple 和 RTMP SCTE35 模式下发生的错误。 从 "onCuePoint" 更改为 "onAdCue"。 更新了简单模式表。 |
+| 08/4/20  | 删除了对 DATERANGE 标记的支持，以便与生产服务中的实现匹配。    |
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

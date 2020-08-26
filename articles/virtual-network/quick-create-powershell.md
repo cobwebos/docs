@@ -1,7 +1,7 @@
 ---
 title: 创建虚拟网络 - 快速入门 - Azure PowerShell
 titlesuffix: Azure Virtual Network
-description: 本快速入门介绍如何使用 Azure 门户创建虚拟网络。 虚拟网络能让 Azure 资源（例如虚拟机）彼此之间私下通信以及与 Internet 进行通信。
+description: 本快速入门将使用 Azure 门户创建虚拟网络。 虚拟网络能让 Azure 资源互相通信以及与 Internet 通信。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,17 +14,18 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f469256841bf81f5e35ebf9c4a0fe322b513153d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707457"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056969"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入门：使用 PowerShell 创建虚拟网络
 
 虚拟网络能让 Azure 资源（例如虚拟机 (VM)）彼此之间以及与 Internet 进行私下通信。 本快速入门介绍如何创建虚拟网络。 创建虚拟网络后，将两个 VM 部署到该虚拟网络中。 然后可以从 Internet 连接到 VM，并通过虚拟网络进行私下通信。
 
+## <a name="prerequisites"></a>先决条件
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -219,6 +220,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了默认的虚拟网络和两个 VM。 你从 Internet 连接到了其中一个 VM，然后该 VM 与另一个 VM 进行了私下通信。 若要了解有关虚拟网络设置的详细信息，请参阅[管理虚拟网络](manage-virtual-network.md)。
-
-Azure 可让虚拟机彼此之间进行不受限制的私下通信。 默认情况下，Azure 仅允许从 Internet 到 Windows VM 的入站远程桌面连接。 要了解有关配置不同类型的 VM 网络通信的详细信息，请转到[筛选网络流量](tutorial-filter-network-traffic.md)教程。
+在本快速入门中，你创建了默认的虚拟网络和两个 VM。 从 Internet 连接到了其中一个 VM，并在两个 VM 之间进行了私下通信。
+Azure 可让 VM 之间进行不受限制的私下通信。 默认情况下，Azure 仅允许从 Internet 到 Windows VM 的入站远程桌面连接。 转到下一篇文章，详细了解如何配置不同类型的 VM 网络通信：
+> [!div class="nextstepaction"]
+> [筛选网络流量](tutorial-filter-network-traffic.md)

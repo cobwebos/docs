@@ -3,23 +3,23 @@ title: 模板部署 what-if（预览版）
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888742"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810065"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署 what-if 操作（预览版）
 
-在部署 Azure 资源管理器 (ARM) 模板之前，可以预览将要进行的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
+ (ARM 模板) 部署 Azure 资源管理器模板之前，可以预览将发生的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
 
 > [!NOTE]
 > what-if 操作目前以预览版提供。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告这些问题。
 
-可将 what-if 操作与 Azure PowerShell、Azure CLI 或 REST API 操作配合使用。 资源组和订阅级部署支持 What-if。
+可将 what-if 操作与 Azure PowerShell、Azure CLI 或 REST API 操作配合使用。 资源组、订阅、管理组和租户级别部署支持的假设。
 
 ## <a name="install-azure-powershell-module"></a>安装 Azure PowerShell 模块
 
@@ -102,7 +102,7 @@ Resource changes: 1 to modify.
 ```
 
 > [!NOTE]
-> 假设操作无法解析[reference 函数](template-functions-resource.md#reference)。 每次将属性设置为包含 reference 函数的模板表达式时，属性将更改的假设报告。 发生此行为的原因是，if 将属性的当前值（例如 `true` `false` 布尔值的或）与未解析的模板表达式进行比较。 很明显，这些值不匹配。 部署模板时，只有在模板表达式解析为其他值时，属性才会更改。
+> 假设操作无法解析[reference 函数](template-functions-resource.md#reference)。 每次将属性设置为包含 reference 函数的模板表达式时，属性将更改的假设报告。 发生此行为的原因是，if 将属性的当前值（如）与 `true` `false` 未解析的模板表达式) 的布尔值进行比较 (。 很明显，这些值不匹配。 部署模板时，只有在模板表达式解析为其他值时，属性才会更改。
 
 ## <a name="what-if-commands"></a>what-if 命令
 
@@ -125,20 +125,23 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要在部署模板前预览更改，请使用 [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) 或 [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)。
+若要在部署模板前预览更改，请使用：
 
-* 对于资源组部署，请使用 `az deployment group what-if`
-* 对于订阅级别部署，请使用 `az deployment sub what-if`
+* [az 部署组假设](/cli/azure/deployment/group#az-deployment-group-what-if)资源组部署
+* [az deployment sub if](/cli/azure/deployment/sub#az-deployment-sub-what-if) for 订阅级别部署
+* [az deployment mg](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if)对于管理组部署
+* [az deployment 租户](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if)，适用于租户部署
 
-可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) 或 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。
+可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到：
 
-* 对于资源组部署，请使用 `az deployment group create --confirm-with-what-if` 或 `-c`
-* 对于订阅级别的部署，请使用 `az deployment sub create --confirm-with-what-if` 或 `-c`
+* [az 部署组创建](/cli/azure/deployment/group#az-deployment-group-create)
+* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。
+* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [az 部署租户创建](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-上述命令返回适用于手动检查的文本摘要。 若要获取可通过编程方式检查更改的 JSON 对象，请使用：
+例如，使用 `az deployment group create --confirm-with-what-if` 或 `-c` 进行资源组部署。
 
-* 对于资源组部署，请使用 `az deployment group what-if --no-pretty-print`
-* 对于订阅级别部署，请使用 `az deployment sub what-if --no-pretty-print`
+上述命令返回适用于手动检查的文本摘要。 若要获取可通过编程方式检查更改的 JSON 对象，请使用 `--no-pretty-print` 开关。 例如，将 `az deployment group what-if --no-pretty-print` 用于资源组部署。
 
 若要返回没有颜色的结果，请打开 [Azure CLI 配置](/cli/azure/azure-cli-configuration)文件。 将“no_color”设置为“yes”。
 
@@ -147,7 +150,9 @@ Resource changes: 1 to modify.
 对于 REST API，请使用：
 
 * 对于资源组部署，请使用[部署 - What If](/rest/api/resources/deployments/whatif)
-* 对于订阅级别的部署，请使用[部署 - 订阅范围的 What If](/rest/api/resources/deployments/whatifatsubscriptionscope)
+* [部署-订阅部署的订阅范围 What If](/rest/api/resources/deployments/whatifatsubscriptionscope)
+* 部署-管理组部署的[管理组范围 What If](/rest/api/resources/deployments/whatifatmanagementgroupscope)
+* [部署-租户范围内](/rest/api/resources/deployments/whatifattenantscope)的租户部署 What If。
 
 ## <a name="change-types"></a>更改类型
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 请注意，输出顶部的颜色用于指示更改类型。
 
-输出的底部显示了“已删除所有者”标记。 地址前缀已从 10.0.0.0/16 更改为 10.0.0.0/15。 已删除名为 subnet001 的子网。 请记住，并未实际部署这些更改。 如果部署该模板，则可预览会发生的更改。
+输出的底部显示了“已删除所有者”标记。 地址前缀已从 10.0.0.0/16 更改为 10.0.0.0/15。 已删除名为 subnet001 的子网。 请记住，未部署这些更改。 如果部署该模板，则可预览会发生的更改。
 
 列出为已删除的某些属性实际上不会更改。 当属性不在模板中时，它们可能被错误地报告为已删除，但在部署过程中会自动设置为默认值。 此结果在 what-if 响应中被视为“干扰信息”。 最终部署的资源将具有为属性设置的值。 当 what-if 操作成熟时，将从结果中筛选出这些属性。
 

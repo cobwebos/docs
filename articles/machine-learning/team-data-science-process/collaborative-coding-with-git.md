@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721891"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090206"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
@@ -28,7 +29,7 @@ ms.locfileid: "76721891"
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-在“创建分支”  对话框中，提供新的分支名称和基本 Azure Repos Git 存储库和基分支。 基本存储库必须与工作项位于同一 Azure DevOps 项目中。 基分支可以是主分支或其他某个现有分支。 选择“创建分支”  。 
+在“创建分支”  对话框中，提供新的分支名称和基本 Azure Repos Git 存储库和基分支。 基本存储库必须与工作项位于同一 Azure DevOps 项目中。 基本分支可以是任何现有分支。 选择“创建分支”  。 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -50,7 +51,7 @@ git checkout <working branch name>
 
 一个好的做法是分别为每个用户情景工作项创建一个 Git 分支。 然后，根据用户情景分支分别为每个“任务”工作项创建一个分支。 如果安排了多个人员在处理同一项目的不同用户情景，或处理同一用户情景的不同任务，应按与“用户情景-任务”关系相应的层次结构来组织分支。 可以通过使每个团队成员处理不同的分支，或在处理同一分支时处理不同的代码或其他项目，从而最大程度地减少冲突。 
 
-下图展示了建议的 TDSP 分支策略。 你可能并不需要此处所示的许多分支，尤其是在只有一个或两个人参与同一个项目或者只有一个人参与某个用户情景的所有任务的情况下。 但是，将开发分支从主分支分离出来始终是一个很好的做法，可帮助防止发布分支因开发活动而中断。 可在[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)中查看 Git 分支模型的完整说明。
+下图展示了建议的 TDSP 分支策略。 你可能并不需要此处所示的许多分支，尤其是在只有一个或两个人参与同一个项目或者只有一个人参与某个用户情景的所有任务的情况下。 但从主要分支分离开发分支始终是一种很好的做法，可帮助防止发布分支被开发活动中断。 可在[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)中查看 Git 分支模型的完整说明。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
@@ -97,7 +98,7 @@ git push origin script
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-返回到左侧导航栏中的“存储库”  时，可以看到已切换到主分支，因为 `script` 分支已被删除。
+返回到左侧导航栏中的 "**存储库**" 时，可以看到已切换到主分支，因为 `script` 已删除该分支。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

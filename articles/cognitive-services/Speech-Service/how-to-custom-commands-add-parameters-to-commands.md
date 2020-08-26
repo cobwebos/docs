@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524295"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284143"
 ---
 # <a name="add-parameters-to-commands"></a>向命令添加参数
 
 本文介绍如何将参数添加到自定义命令。 参数是命令完成任务所需的信息。 在复杂的方案中，还可以使用参数定义触发自定义操作的条件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * [如何：用简单命令创建应用程序](./how-to-custom-commands-create-application-with-simple-commands.md)
@@ -47,25 +47,24 @@ ms.locfileid: "86524295"
        > [!div class="mx-imgBorder"]
        > ![创建所需的参数响应](media/custom-commands/add-required-on-off-parameter-response.png)
    
-   1. 现在，我们配置参数属性。 有关命令的所有配置属性的说明，请参阅 "[引用](./custom-commands-references.md)"。 按如下所示配置参数的其余属性：
+   1. 现在，我们配置参数属性。 有关命令的所有配置属性的说明，请参阅 "[引用](./custom-commands-references.md)"。 配置参数的属性，如下所示：
       
 
-       | Configuration      | 建议的值     | 说明                                                      |
+       | 配置      | 建议的值     | 说明                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | 名称               | `OnOff`           | 参数的描述性名称                                                                           |
        | 为全局          | unchecked       | 指示此参数的值是否全局应用于应用程序中所有命令的复选框|
-       | 必需           | checked         | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值 |
+       | 必须           | checked         | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值 |
        | 响应所需的参数      |简单编辑器 >`On or Off?`      | 在未知情况下询问此参数值的提示 |
        | 类型               | 字符串          | 参数的类型，例如 Number、String、Date Time 或 Geography   |
-       | Configuration      | 接受来自内部目录的预定义输入值 | 对于字符串，这会将输入限制为一组可能值 |
+       | 配置      | 接受来自内部目录的预定义输入值 | 对于字符串，这会将输入限制为一组可能值 |
        | 预定义的输入值     | `on`, `off`           | 可能的值及其别名集         |
        
         
-   1. 要添加预定义的输入值，请选择 "**添加预定义的输入**"，并在 "**新建项**" 窗口中键入上表中提供的**名称**。 在这种情况下，我们不使用别名，因此可将其留空。 
-
-    > [!div class="mx-imgBorder"]
-
-    > ![Create 参数](media/custom-commands/create-on-off-parameter.png)
+   1. 要添加预定义的输入值，请选择 "**添加预定义的输入**"，并在 "**新建项**" 窗口中键入上表中提供的**名称**。 在这种情况下，我们不使用别名，因此可将其留空。
+   
+      > [!div class="mx-imgBorder"]
+      > ![Create 参数](media/custom-commands/create-on-off-parameter.png)
 
    1. 选择 "**保存**" 以保存参数的所有配置。
  
@@ -78,10 +77,10 @@ ms.locfileid: "86524295"
        | ------------------ | --------------------- |
        | 名称               | `SubjectDevice`         |
        | 为全局          | unchecked             |
-       | 必需           | checked               |
+       | 必须           | checked               |
        | 响应所需的参数     | 简单编辑器 >`Which device do you want to control?`    | 
        | 类型               | 字符串                |          |
-       | Configuration      | 接受来自内部目录的预定义输入值 | 
+       | 配置      | 接受来自内部目录的预定义输入值 | 
        | 预定义的输入值 | `tv`, `fan`               |
        | 别名（ `tv` ）      | `television`, `telly`     |
 
@@ -107,7 +106,7 @@ turn something {OnOff}
 turn something
 ```
 
-选择“保存”。
+选择“保存” 。
 
 > [!TIP]
 > 示例句子编辑器使用大括号来引用参数。 - `turn {OnOff} the {SubjectDevice}`使用选项卡自动完成由以前创建的参数支持的功能。
@@ -118,16 +117,17 @@ turn something
 
 1. 在 "**条件**" 部分中，选择 "**添加条件**"。
 1. 在 "**新建条件**" 窗口的 "**类型**" 列表中，选择 "**必需参数**"。 在下面的检查列表中，选中 "**麦克风**" 和 " **SubjectDevice**"。
+1. 将**IsGlobal**保留为未选中状态。
 1. 选择“创建”。
 1. 在 "**操作**" 部分中，通过将鼠标悬停在操作上并选择 "编辑" 按钮来编辑现有的 "**发送语音响应**" 操作。 这一次，将使用新创建的**麦克风**和**SubjectDevice**参数
 
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. 选择“保存”。
+1. 选择“保存” 。
 
 ### <a name="try-it-out"></a>试试看
-1. 选择位于右窗格顶部的 "**定型**" 图标。
+1. 选择右窗格顶部的 "**训练**" 图标。
 
 1. 训练完成后，选择 "**测试**"。 **您的应用程序**窗口将出现。
  尝试几个交互。
@@ -147,7 +147,7 @@ turn something
 
 用以下配置添加新的参数**温度**
 
-| Configuration      | 建议的值     |
+| 配置      | 建议的值     |
 | ------------------ | ----------------|
 | 名称               | `Temperature`           |
 | 必须           | checked         |
@@ -166,7 +166,7 @@ change the temperature
 
 按照以下配置编辑现有的完成规则。
 
-| Configuration      | 建议的值     |
+| 配置      | 建议的值     |
 | ------------------ | ----------------|
 | 条件         | 要求的参数 > 温度           |
 | 操作           | 发送语音响应 >`Ok, setting temperature to {Temperature} degrees` |

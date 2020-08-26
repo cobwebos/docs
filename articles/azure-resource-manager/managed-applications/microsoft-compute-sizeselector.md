@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063663"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 元素
 
@@ -19,11 +20,11 @@ ms.locfileid: "75652042"
 
 用户会看到一个选择器，其中包含元素定义中的默认值。
 
-![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector.png)
 
 选择控件后，用户会看到可用大小的展开视图。
 
-![展开的 Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![展开的 Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector-expanded.png)
 
 ## <a name="schema"></a>架构
 

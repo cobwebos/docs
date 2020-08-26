@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5d325ac8da43f020f4ab39244d2e6a7dc6ed72b7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156602"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246276"
 ---
 开始使用适用于 .NET 的必应自动建议客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 
@@ -23,7 +23,7 @@ ms.locfileid: "86156602"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有 Azure 订阅，则[可以免费创建一个](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果还没有 Azure 订阅，则[可以免费创建一个](https://azure.microsoft.com/free/cognitive-services)。
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -31,12 +31,12 @@ ms.locfileid: "86156602"
 ## <a name="create-environment-variables"></a>创建环境变量
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之后创建的资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
+> 在 2019 年 7 月 1 日之后创建的资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。
 
 从创建的资源使用密钥和终结点，创建两个用于身份验证的环境变量：
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`：用于验证请求的资源密钥。
-* `AUTOSUGGEST_ENDPOINT`：用于发送 API 请求的资源终结点。 它应如下所示： `https://<your-custom-subdomain>.api.cognitive.microsoft.com`。 
+* `AUTOSUGGEST_ENDPOINT`：用于发送 API 请求的资源终结点。 它应如下所示： `https://<your-custom-subdomain>.api.cognitive.microsoft.com`。
 
 使用操作系统的说明。
 <!-- replace the below endpoint and key examples -->
@@ -72,9 +72,9 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 ## <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
-在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。 
+在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `bing-autosuggest-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*program.cs*。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `bing-autosuggest-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*program.cs*。
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -86,7 +86,7 @@ dotnet new console -n bing-autosuggest-quickstart
 dotnet build
 ```
 
-生成输出不应包含警告或错误。 
+生成输出不应包含警告或错误。
 
 ```console
 ...

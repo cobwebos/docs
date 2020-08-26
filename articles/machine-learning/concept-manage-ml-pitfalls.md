@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012716"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>通过自动化机器学习防止过度拟合和不均衡数据
 
@@ -101,7 +101,7 @@ ms.locfileid: "86147103"
 
 - 通过对较小的类进行上采样或对较大的类进行下采样，重新采样以均衡类的不均衡。 这些方法需要专业技能来处理和分析。
 
-- 查看不均衡数据的性能指标。 例如，F1 分数是精准率和召回率的加权平均值。 精准率测量分类器的准确度，低精准率表示存在大量假正例；召回率测量分类器的完成度，低召回率表示存在大量假反例。
+- 查看不均衡数据的性能指标。 例如，F1 分数是精度和召回的调和平均值。 精度测量分类器的 exactness，其中，较高的精度表示较少的假正值，而召回测量分类器的完整性，其中较高的回调表示较少的漏报。
 
 ## <a name="next-steps"></a>后续步骤
 

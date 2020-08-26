@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763c02cca954f7bcd3f9763bfe45f3954dacf0a7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653126"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719438"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -50,10 +51,10 @@ ms.locfileid: "80653126"
 
 请确保用于 Azure 多重身份验证的服务器满足以下要求：
 
-| Azure 多重身份验证服务器要求 | 描述 |
+| Azure 多重身份验证服务器要求 | 说明 |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
-| 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
+| 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (with [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) 仅) </li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7 中，所有版本都 (仅) [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
 | 权限 | 向 Active Directory 注册的域管理员或企业管理员帐户 |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA 服务器组件
@@ -80,15 +81,27 @@ Azure MFA 服务器由三个 Web 组件组成：
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
-| 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254 |
+| 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254   |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 如果不使用“事件确认”功能，并且用户也不在企业网络中的设备上使用移动应用进行验证，则只需以下范围：
 
 | IP 子网 | 网络掩码 | IP 范围 |
 |:---: |:---: |:---: |
-| 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
-| 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
-| 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
+| 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79|
+| 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79|
+| 70.37.154.200/29 |255.255.255.248  |70.37.154.201 – 70.37.154.206  |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 ## <a name="download-the-mfa-server"></a>下载 MFA 服务器
 
@@ -96,7 +109,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 搜索并选择“Azure Active Directory”。 选择 "**安全**  >  **MFA**"。
-3. 在 " **MANAGER MFA 服务器**" 下，选择 "**服务器设置**"。
+3. 在 " **MANAGER MFA 服务器**" 下，选择 " **服务器设置**"。
 4. **** 选择“下载”，按下载页上的说明保存安装程序。 
 
    ![从 Azure 门户下载 MFA 服务器](./media/howto-mfaserver-deploy/downloadportal.png)
@@ -160,7 +173,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure 多重身份验证服务器如何处理用户数据
 
-当你在本地使用多重身份验证（MFA）服务器时，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
+当你在本地使用多重身份验证 (MFA) 服务器时，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
 
 * 唯一 ID - 用户名或内部 MFA 服务器 ID
 * 名字和姓名（可选）
@@ -196,7 +209,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 
-升级到或安装 MFA 服务器版本 8.x 或更高版本后，建议禁用或删除较旧和较弱的密码套件，除非你的组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
+升级到或安装 MFA 服务器版本 8.x 或更高版本后，建议禁用或删除较旧和较弱的密码套件，除非你的组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

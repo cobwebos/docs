@@ -15,6 +15,7 @@ ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
 ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/01/2020
 ms.locfileid: "84266230"

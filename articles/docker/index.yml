@@ -3,19 +3,19 @@ title: “Azure 上的 Docker”文档
 summary: Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。 了解如何在 Azure 上利用 Docker。
 metadata:
   title: “Azure 上的 Docker”文档
-  description: Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。 了解如何在 Azure 上利用 Docker。
+  description: Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。
   services: multiple
   ms.service: multiple
   ms.topic: landing-page
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: daff334cbbe118d6fdbc42a5497313f9671fd7f1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 94d5dd74aad11e2271de52dd082cfb9287eb10c1
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78944017"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224571"
 landingContent:
 - title: 在 Azure 上部署 Docker
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 在 Azure 应用服务中使用 PostgreSQL 运行 Python (Django) Web 应用
-      url: ../app-service/containers/tutorial-python-postgresql-app.md
+      url: ../app-service/tutorial-python-postgresql-app.md
     - text: 使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
       url: ../jenkins/tutorial-jenkins-github-docker-cicd.md
 - title: 资源

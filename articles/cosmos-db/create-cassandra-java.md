@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB Cassandra API 生成 Java 应用
+title: 带有使用 Java 3.0 SDK 的 Azure Cosmos DB Cassandra API 的 Java 应用
 description: 本快速入门介绍如何配合 Azure 门户和 Java 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
 ms.service: cosmos-db
 author: TheovanKraay
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0136dce793fea1672b68062480420e5a05c75253
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 78a8e6cd777c239841f6d26e06a9fc348a221286
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118366"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323139"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v3 驱动程序）
 
@@ -148,7 +148,7 @@ ms.locfileid: "85118366"
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制用户名":::
 
-2. 使用 ![“复制”按钮](./media/create-cassandra-java/copy-button-azure-portal.png) 复制“联系点”值。
+2. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: 按钮复制“CONTACT POINT”值。 
 
 3. 打开 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources 文件夹中的 config.properties 文件。 
 

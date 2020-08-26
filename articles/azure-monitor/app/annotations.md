@@ -2,16 +2,17 @@
 title: Application Insights 的版本批注 | Microsoft 文档
 description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010695"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258418"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
-批注显示部署新生成的位置或其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
+批注显示部署新生成的位置或其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines 生成中的版本批注
 
@@ -33,7 +34,7 @@ ms.locfileid: "81010695"
 
 为每个 Azure Pipelines 发布模板单独创建一个 API 密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 或者，如果你没有，请[创建一个新的 Application Insights 资源](../../azure-monitor/app/app-insights-overview.md)。
+1. 登录到 [Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 或者，如果你没有，请[创建一个新的 Application Insights 资源](./app-insights-overview.md)。
    
 1. 打开“API 访问”**** 选项卡并复制 **Application Insights ID**。
    
@@ -68,6 +69,10 @@ ms.locfileid: "81010695"
    
 1. 在“发布模板”主窗口中选择“保存”以保存模板。****
 
+
+   > [!NOTE]
+   > API 密钥限制在 [REST API 速率限制文档](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)中进行了介绍。
+
 ## <a name="view-annotations"></a>查看批注
 
 
@@ -84,7 +89,7 @@ ms.locfileid: "81010695"
 
 ![工作簿窗格的屏幕截图，其中显示了带批注的时序记录查询](./media/annotations/workbooks-annotations.png)
 
-若要在工作簿中启用批注，请单击 "**高级设置**"，然后选择 "**显示批注**"。
+若要在工作簿中启用批注，请单击 " **高级设置** "，然后选择 " **显示批注**"。
 
 !["高级设置" 菜单的屏幕截图，其中的单词显示批注突出显示批注，设置旁边有一个选中标记，以启用它。](./media/annotations/workbook-show-annotations.png)
 
@@ -114,5 +119,6 @@ ms.locfileid: "81010695"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建工作项](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [使用 PowerShell 自动化](../../azure-monitor/app/powershell.md)
+* [创建工作项](./diagnostic-search.md#create-work-item)
+* [使用 PowerShell 自动化](./powershell.md)
+

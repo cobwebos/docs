@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 支持的 SQL 运算符，例如相等、比
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063576"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498831"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
 
@@ -35,6 +35,14 @@ ms.locfileid: "80063576"
 
 如果标量表达式的结果为 `Undefined`，则不会将该项包含在结果中，因为 `Undefined` 不等于 `true`。
 
+例如，下面的查询在数字和字符串值之间进行比较 `Undefined` 。 因此，筛选器不包含任何结果。
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
+
 ## <a name="logical-and-or-and-not-operators"></a>逻辑（AND、OR 和 NOT）运算符
 
 逻辑运算符对布尔值进行运算。 下表显示了这些运算符的逻辑真值表：
@@ -46,8 +54,8 @@ ms.locfileid: "80063576"
 |  | **True** | **False** | **尚未** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |False |Undefined |
-| **未定义** |True |Undefined |Undefined |
+| **False** |正确 |错误 |未定义 |
+| **未定义** |正确 |未定义 |未定义 |
 
 **AND 运算符**
 
@@ -55,9 +63,9 @@ ms.locfileid: "80063576"
 
 |  | **True** | **False** | **尚未** |
 | --- | --- | --- | --- |
-| **True** |True |False |Undefined |
-| **False** |False |False |False |
-| **未定义** |Undefined |False |Undefined |
+| **True** |正确 |False |未定义 |
+| **False** |False |错误 |错误 |
+| **未定义** |Undefined |错误 |未定义 |
 
 **NOT 运算符**
 
@@ -65,8 +73,8 @@ ms.locfileid: "80063576"
 
 |  | **NOT** |
 | --- | --- |
-| **True** |False |
-| **False** |True |
+| **True** |错误 |
+| **False** |正确 |
 | **未定义** |未定义 |
 
 **运算符优先级**

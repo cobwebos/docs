@@ -3,11 +3,12 @@ title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62c00c92ddd8265b1174cc195bfa83d533ec20d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341410"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079852"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -22,29 +23,29 @@ ms.locfileid: "85341410"
 
 身份验证步骤要求应用程序请求包含在运行时使用的 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure 函数应用）中运行，它可以使用托管标识来访问资源。 
 
-授权步骤需要将一个或多个 RBAC 角色分配给安全主体。 Azure 服务总线提供 RBAC 角色，这些角色涵盖了针对服务总线资源的权限集。 分配给安全主体的角色确定了该主体拥有的权限。 若要详细了解如何向 Azure 服务总线分配 RBAC 角色，请参阅[针对 Azure 服务总线的内置 RBAC 角色](#built-in-rbac-roles-for-azure-service-bus)。 
+授权步骤要求向安全主体分配一个或多个 Azure 角色。 Azure 服务总线提供了包含服务总线资源的权限集的 Azure 角色。 分配给安全主体的角色确定了该主体拥有的权限。 若要了解有关将 Azure 角色分配到 Azure 服务总线的详细信息，请参阅 azure[服务总线的 azure 内置角色](#azure-built-in-roles-for-azure-service-bus)。 
 
 向服务总线发出请求的本机应用程序和 Web 应用程序也可以使用 Azure AD 进行授权。 本文介绍如何请求访问令牌，并使用它针对服务总线资源进行请求授权。 
 
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>分配 RBAC 角色以授予访问权限
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 服务总线定义了一组内置的 RBAC 角色，它们包含用于访问服务总线实体的通用权限集。你也可以定义用于访问数据的自定义角色。
+## <a name="assigning-azure-roles-for-access-rights"></a>为访问权限分配 Azure 角色
+Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 服务总线定义一组 Azure 内置角色，其中包含用于访问服务总线实体的常用权限集，还可以定义用于访问数据的自定义角色。
 
-将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限可以局限到订阅、资源组或服务总线命名空间级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 Azure 资源的托管标识。
+将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限可以局限到订阅、资源组或服务总线命名空间级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 Azure 资源的托管标识。
 
-## <a name="built-in-rbac-roles-for-azure-service-bus"></a>适用于 Azure 服务总线的内置 RBAC 角色
-对于 Azure 服务总线，通过 Azure 门户和 Azure 资源管理 API 对命名空间和所有相关资源的管理已使用*基于角色的访问控制* (RBAC) 模型进行了保护。 Azure 提供以下内置 RBAC 角色，用于授权对服务总线命名空间的访问：
+## <a name="azure-built-in-roles-for-azure-service-bus"></a>Azure Service Bus 的 azure 内置角色
+对于 Azure 服务总线，通过 Azure 门户和 Azure 资源管理 API 对命名空间和所有相关资源的管理已使用 Azure RBAC 模型进行了保护。 Azure 提供以下 Azure 内置角色，用于授权访问服务总线命名空间：
 
 - [Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)：允许对服务总线命名空间及其实体（队列、主题、订阅和筛选器）进行数据访问
 - [Azure 服务总线数据发送者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)：使用此角色可以为服务总线命名空间及其实体提供发送访问权限。
 - [Azure 服务总线数据接收者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)：使用此角色可以为服务总线命名空间及其实体提供接收访问权限。 
 
 ## <a name="resource-scope"></a>资源范围 
-在将 RBAC 角色分配到某个安全主体之前，请确定该安全主体应该获取的访问范围。 最佳做法指出，最好是授予尽可能小的范围。
+向安全主体分配 Azure 角色之前，请确定安全主体应具有的访问权限的范围。 最佳做法指出，最好是授予尽可能小的范围。
 
 以下列表描述了可将服务总线资源访问权限限定到哪些级别，从最小的范围开始：
 
-- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 RBAC 角色分配用户/组/托管标识。 下面是使用 Azure CLI 命令 [az-role-assignment-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) 为服务总线 RBAC 角色分配标识的示例： 
+- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别将用户/组/托管标识分配到服务总线 Azure 角色。 下面是使用 Azure CLI 命令的一个示例： [az-role-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) To 向 Service Bus Azure 角色分配标识： 
 
     ```azurecli
     az role assignment create \
@@ -57,28 +58,28 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 - **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。 
+> 请记住，Azure 角色分配可能需要长达五分钟才能传播。 
 
-有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建自定义 RBAC 角色，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
+有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有关创建 Azure 自定义角色的详细信息，请参阅[azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
 在使用 Azure 资源的托管标识对 VM 中的服务总线资源授权之前，必须首先在 VM 上启用 Azure 资源的托管标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
 
-- [Azure 门户](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure 门户](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 模板](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure 资源管理器客户端库](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向 Azure AD 中的托管标识授予权限
-若要通过应用程序中的托管标识授权对服务总线服务的请求，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 服务总线定义 RBAC 角色，这些角色涵盖了从服务总线进行发送和读取操作所需的权限。 将 RBAC 角色分配到某个托管标识后，将在适当的范围授予该托管标识访问服务总线实体的权限。
+若要从应用程序中的托管标识对服务总线服务的请求进行授权，请先配置 Azure 基于角色的访问控制 (该托管标识的 Azure RBAC) 设置。 Azure 服务总线定义的 Azure 角色包含用于从服务总线进行发送和读取的权限。 将 Azure 角色分配到托管标识后，会向托管标识授予对相应范围内的服务总线实体的访问权限。
 
-若要详细了解如何分配 RBAC 角色，请参阅[使用 Azure Active Directory 进行身份验证和授权以访问服务总线资源](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)。
+有关分配 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证和授权，以访问服务总线资源](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>结合使用服务总线与 Azure 资源的托管标识
 若要将服务总线与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问服务总线资源。
 
-在这里，我们将使用一个在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/app-service-web-get-started-dotnet.md)
+在这里，我们将使用一个在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/quickstart-dotnetcore.md)
 
 创建应用程序后，请执行以下步骤： 
 
@@ -92,7 +93,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 现在，请将此服务标识分配给服务总线资源中所需范围中的某个角色。
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 门户分配 RBAC 角色
+### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
 若要为服务总线命名空间分配角色，请导航到 Azure 门户中的该命名空间。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
 
 > [!NOTE]
@@ -100,14 +101,14 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 > 
 > [创建服务总线消息传递命名空间](service-bus-create-namespace-portal.md)（如果没有该空间）。 
 
-1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。  
+1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。 
 1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示服务总线命名空间的访问控制设置  。
 1.  选择“角色分配”  选项卡以查看角色分配列表。
-3.  选择“添加”以添加新角色。 
+3.  选择“添加”以添加新角色。
 4.  在“添加角色分配”页上，选择要分配的 Azure 服务总线角色  。 然后通过搜索找到已注册的服务标识，以便分配该角色。
     
     ![“添加角色分配”页](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  选择“保存” 。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有 Azure 服务总线数据所有者。
+5.  选择“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有 Azure 服务总线数据所有者。
     
     ![分配给角色的标识](./media/service-bus-managed-service-identity/role-assigned.png)
 

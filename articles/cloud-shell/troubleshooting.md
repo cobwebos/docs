@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189456"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543446"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -142,26 +142,6 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 目前，`AzureAD.Standard.Preview`（基于 .NET Standard 的预览版本）模块不可用。 此模块提供与 `AzureAD` 相同的功能。
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer` 模块功能
-
-Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预发布版本支持。 具体而言，`Invoke-SqlCmd` 尚不可用。
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置
-
-使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Tab 自动补全可能引发 PSReadline 异常
-
-如果用户的 PSReadline EditMode 设置为 Emacs，用户尝试通过 Tab 自动补全显示所有可能性，而窗口大小过小，无法显示所有可能性，则 PSReadline 将引发未经处理的异常。
-
-### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距
-
-如果命令或用户操作显示进度栏（例如，在 `Azure:` 驱动器中的 Tab 自动补全），则光标可能设置不正确，且在以前的进度栏处出现间距。
-
-### <a name="random-characters-appear-inline"></a>随机字符以内联显示
-
-光标位置序列代码（例如 `5;13R`）可以在用户输入时显示。 这些字符可以手动删除。
-
 ## <a name="personal-data-in-cloud-shell"></a>Cloud Shell 中的个人数据
 
 Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕获和存储的数据用于为你的体验提供默认值，例如最近使用的 shell、首选字号、首选字体类型和支持云驱动器的文件共享详细信息。 如果想要导出或删除此数据，请使用以下说明。
@@ -171,7 +151,8 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 ### <a name="export"></a>导出
 若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令****。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![显示标记为 "启动 Azure Cloud Shell" 的按钮的图像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：
@@ -194,7 +175,8 @@ PowerShell：
 >[!Note]
 > 如果删除用户设置，不会删除实际的 Azure 文件共享。 请转到“Azure 文件”完成该操作。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![显示标记为 "启动 Azure Cloud Shell" 的按钮的图像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：

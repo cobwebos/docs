@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146417"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987165"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -64,6 +64,7 @@ ms.locfileid: "86146417"
 - 不支持通配符证书。
 - 不支持裸域。
 - 不可导出。
+- 应用服务环境 (ASE) 不支持
 - 不支持 A 记录。 例如，自动续订不适用于 A 记录。
 
 > [!NOTE]
@@ -194,7 +195,7 @@ ms.locfileid: "86146417"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| Key Vault | 包含要导入的证书的保管库。 |
+| 密钥保管库 | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。

@@ -6,33 +6,36 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
-ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/14/2020
+ms.custom: Build2020, devx-track-python
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023357"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507108"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-了解如何使用 Azure 机器学习以异步方式和并行方式对大量数据运行批量推理。 ParallelRunStep 提供现成的并行功能。
+本文介绍如何并行运行 Azure 机器学习模型，以快速计算大量数据。 
 
-借助 ParallelRunStep，可以轻松地将离线推理扩展到拥有数 TB 结构化或非结构化数据的大型计算机群集，从而提高工作效率和优化成本。
+通过大型数据集或使用复杂的模型进行推理可能会非常耗时。 通过 `ParallelRunStep` 类，可以并行执行处理，可能会更快地获得整体结果。 即使运行单个计算的速度非常快，但许多方案（对象检测、视频处理、自然语言处理等）都需要运行多个计算。 
+
+通过 `ParallelRunStep`，可轻松将批量推理扩展到大型计算机群集。 此类群集可以处理 TB 级结构化或非结构化数据，同时可提高工作效率和优化成本。
 
 本文介绍如何执行以下任务：
 
-> * 设置机器学习资源。
-> * 配置批量推理的数据输入和输出。
-> * 根据 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 数据集准备预先训练的映像分类模型。 
-> * 编写推理脚本。
-> * 创建一个包含 ParallelRunStep 的[机器学习管道](concept-ml-pipelines.md)，并对 MNIST 测试映像运行批量推理。 
-> * 使用新的数据输入和参数重新提交批量推理运行。 
+> 1. 设置机器学习资源。
+> 1. 配置批量推理的数据输入和输出。
+> 1. 根据 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 数据集准备预先训练的映像分类模型。 
+> 1.  编写推理脚本。
+> 1. 创建一个包含 ParallelRunStep 的[机器学习管道](concept-ml-pipelines.md)，并对 MNIST 测试映像运行批量推理。 
+> 1. 使用新的数据输入和参数重新提交批量推理运行。 
+> 1. 查看结果。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -100,6 +103,8 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+
 ## <a name="configure-inputs-and-output"></a>配置输入和输出
 
 ### <a name="create-a-datastore-with-sample-images"></a>使用示例映像创建数据存储
@@ -159,9 +164,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>准备模型
@@ -204,16 +207,16 @@ model = Model.register(model_path="models/",
 脚本必须包含两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
-    -  `mini_batch`：ParallelRunStep 将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 如果输入是 FileDataset，则 mini_batch 中的每个条目都将为文件路径；如果输入是 TabularDataset，则为 Pandas 数据帧。
-    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
+    -  `mini_batch``ParallelRunStep` 将调用 run 方法，并将列表或 pandas `DataFrame` 作为参数传递给该方法。 如果输入是 `FileDataset`，则 mini_batch 中的每个条目都将是文件路径；如果输入是 `TabularDataset`，则是 pandas `DataFrame`。
+    -  `response`：run() 方法应返回 pandas `DataFrame` 或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -266,17 +269,17 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="prepare-the-environment"></a>准备环境
 
-首先，指定脚本的依赖项。 这样就可以安装 pip 包并配置环境。 请始终包括 azureml-core 和 azureml-dataprep[pandas, fuse] 包 。
+首先，指定脚本的依赖项。 这样就可以安装 pip 包并配置环境。
 
-如果使用自定义 docker 映像 (user_managed_dependencies=True)，则还应该安装 conda。
+始终在 PIP 包列表中含入 **azureml-core** 和 **azureml-dataset-runtime[pandas, fuse]** 。 如果使用自定义 docker 映像 (user_managed_dependencies=True)，则还应该安装 conda。
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -286,9 +289,9 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>使用 ParallelRunConfig 指定参数
 
-`ParallelRunConfig` 是 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括以下所有各项：
+`ParallelRunConfig` 是 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括所有以下条目：
 - `entry_script`：作为将在多个节点上并行运行的本地文件路径的用户脚本。 如果 `source_directory` 存在，则使用相对路径。 否则，请使用计算机上可访问的任何路径。
-- `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；对于 FileDataset，默认值为 `10` 文件，对于 TabularDataset，默认值为 `1MB`。）
+- `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；默认值对于 `FileDataset` 是 `10` 个文件，对应 `TabularDataset` 是 `1MB`。）
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
     - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 `TabularDataset` 中的微批永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
 - `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将中止。 错误阈值适用于整个输入，而不适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
@@ -305,7 +308,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`：`run()` 方法调用超时（以秒为单位）。 （可选；默认值为 `60`）
 - `run_max_try`：微型批处理的 `run()` 的最大尝试次数。 如果引发异常，则 `run()` 失败；如果达到 `run_invocation_timeout`，则不返回任何内容（可选；默认值为 `3`）。 
 
-可以将 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 指定为 `PipelineParameter`，以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，并在稍后重新提交运行时更改这些值。 
+可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 `PipelineParameter`，并在稍后重新提交运行时更改这些值。 
 
 此示例假设你使用的是之前讨论的 `digit_identification.py` 脚本。 如果你使用自己的脚本，请相应地更改 `source_directory` 和 `entry_script` 参数。
 
@@ -379,7 +382,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>使用新的数据输入和参数重新提交运行
 
-由于你已将输入和多个配置设置为 `PipelineParameter`，因此可以使用不同的数据集输入重新提交批量推理运行，并微调参数，而不必创建全新的管道。 你将使用相同的数据存储，但仅使用单个映像作为数据输入。
+由于已将输入和几个配置设置为 `PipelineParameter`，因此可以重新提交一个具有不同数据集输入内容的批量推理运行，以及对参数进行微调，而不必创建全新的管道。 你将使用相同的数据存储，但仅使用单个映像作为数据输入。
 
 ```python
 path_on_datastore = mnist_blob.path('mnist/0.png')
@@ -392,6 +395,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>查看结果
+
+以上运行的结果作为输出数据写入在 `PipelineData` 对象中指定的 `DataStore`，此过程在这种情况下称为“推理”。 结果存储在默认 Blob 容器中，可以导航到存储帐户并通过存储资源管理器查看，文件路径为 azureml-blobstore-“GUID”/azureml/“RunId”/“output_dir”  。
+
+也可以下载此数据来查看结果。 下面是用于查看前 10 行内容的示例代码。
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,23 +1,21 @@
 ---
 title: FSLogix 配置文件容器 NetApp Windows 虚拟桌面-Azure
 description: 如何使用 Windows 虚拟桌面中的 Azure NetApp 文件创建 FSLogix 配置文件容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362979"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002813"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp 文件和 AD DS 创建配置文件容器
 
-建议使用 FSLogix 配置文件容器作为[Windows 虚拟桌面服务](overview.md)的用户配置文件解决方案。 FSLogix 配置文件容器将完整的用户配置文件存储在单个容器中，并设计为在非持久性远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 登录时，容器会使用本地支持的虚拟硬盘（VHD）和 Hyper-v 虚拟硬盘（VHDX）以动态方式附加到计算环境。 这些高级筛选器驱动程序技术允许用户配置文件立即可用，并与本地用户配置文件完全相同。 若要了解有关 FSLogix 配置文件容器的详细信息，请参阅[FSLogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)。
+建议使用 FSLogix 配置文件容器作为[Windows 虚拟桌面服务](overview.md)的用户配置文件解决方案。 FSLogix 配置文件容器将完整的用户配置文件存储在单个容器中，并设计为在非持久性远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 登录时，容器会使用本地支持的虚拟硬盘 (VHD) 和 Hyper-v 虚拟硬盘 (VHDX) 动态连接到计算环境。 这些高级筛选器驱动程序技术允许用户配置文件立即可用，并与本地用户配置文件完全相同。 若要了解有关 FSLogix 配置文件容器的详细信息，请参阅[FSLogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)。
 
 可以使用[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)创建 FSLogix 配置文件容器，这是一种易于使用的 azure 本机平台服务，可帮助客户快速、可靠地为其 Windows 虚拟桌面环境设置企业级 SMB 卷。 若要了解有关 Azure NetApp 文件的详细信息，请参阅[什么是 Azure Netapp 文件？](../azure-netapp-files/azure-netapp-files-introduction.md)
 
@@ -45,7 +43,7 @@ ms.locfileid: "85362979"
 
 若要开始，需要设置 Azure NetApp 文件帐户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
+1. 登录 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
 
 2. 选择搜索栏右侧的 " **Azure Cloud Shell" 图标**以打开 Azure Cloud Shell。
 
@@ -100,7 +98,7 @@ ms.locfileid: "85362979"
     - 对于 "**服务级别**"，请从下拉菜单中选择所需的值。 对于大多数环境，建议**高级**。
        >[!NOTE]
        >"高级" 设置提供适用于高级服务级别（256 MBps）的最小吞吐量。 对于生产环境，可能需要调整此吞吐量。 最终吞吐量基于[吞吐量限制](../azure-netapp-files/azure-netapp-files-service-levels.md)中所述的关系。
-    - 对于 "**大小（TiB）**"，输入最适合你的需求的容量池大小。 最小大小为 4 TiB。
+    - 对于 "**大小 (TiB") **，请输入最符合需要的容量池大小。 最小大小为 4 TiB。
 
 5. 完成后，选择“确定”****。
 
@@ -116,8 +114,8 @@ ms.locfileid: "85362979"
 2. 在 "**联接 Active Directory** " 页中输入以下值以联接连接：
 
     - 对于**主 dns**，请在你的环境中输入可以解析域名的 DNS 服务器的 IP 地址。
-    - 对于 "**域**"，输入完全限定的域名（FQDN）。
-    - 对于 " **SMB 服务器（计算机帐户）" 前缀**，请输入要追加到计算机帐户名称的字符串。
+    - 对于 "**域**"，输入完全限定的域名 (FQDN) 。
+    - 对于**SMB 服务器 (计算机帐户) 前缀**，请输入要追加到计算机帐户名称的字符串。
     - 对于 "**用户名**"，请输入具有执行域加入权限的帐户的名称。
     - 对于 "**密码**"，输入帐户的密码。
 
@@ -131,7 +129,7 @@ ms.locfileid: "85362979"
 
     - 对于 "**卷名称**"，请输入新卷的名称。
     - 对于 "**容量池**"，请从下拉菜单中选择刚创建的容量池。
-    - 对于 "**配额（GiB）**"，输入适合你的环境的卷大小。
+    - 对于 "**配额 (GiB") **，请输入适合你的环境的卷大小。
     - 对于 "**虚拟网络**"，请从下拉菜单中选择一个已连接到域控制器的现有虚拟网络。
     - 在 "**子网**" 下，选择 "**新建**"。 请记住，此子网将委托给 Azure NetApp 文件。
 
@@ -154,7 +152,7 @@ ms.locfileid: "85362979"
     > [!div class="mx-imgBorder"]
     > !["概述" 屏幕的屏幕截图，其中包含一个指向装入路径的红色箭头。](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在会话主机虚拟机（Vm）上配置 FSLogix
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在 (Vm) 的会话主机虚拟机上配置 FSLogix
 
 本部分基于[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
 
@@ -168,7 +166,7 @@ ms.locfileid: "85362979"
 
 5. 选中 "**我同意许可条款和条件**" 旁边的复选框。
 
-6. 选择“安装”。
+6. 选择“安装”  。
 
 7. 导航到**C： \\ Program Files \\ FSLogix \\ Apps**以确认已安装代理。
 
@@ -227,9 +225,9 @@ ms.locfileid: "85362979"
 
 5. 请在 "**概述**" 选项卡上，确认 FSLogix 配置文件容器正在使用空间。
 
-6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径**（在以下示例中，装载路径为 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 和）。
+6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径** (在下面的示例中，装载路径为 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 和) 。
 
-   在此文件夹中，应存在一个配置文件 VHD （或 VHDX），如以下示例中所示。
+   在此文件夹中，应存在一个配置文件 VHD (或 VHDX) ，如以下示例中所示。
 
    > [!div class="mx-imgBorder"]
    > ![装载路径中文件夹内容的屏幕截图。 内部是名为 "Profile_ssbb" 的单个 VHD 文件。](media/mount-path-folder.png)

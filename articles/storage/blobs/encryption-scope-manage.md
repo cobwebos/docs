@@ -1,30 +1,30 @@
 ---
-title: 创建和管理加密作用域（预览）
-description: ''
+title: " (预览创建和管理加密范围) "
+description: 了解如何创建加密范围以在容器或 blob 级别隔离 blob 数据。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531136"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564140"
 ---
-# <a name="create-and-manage-encryption-scopes-preview"></a>创建和管理加密作用域（预览）
+# <a name="create-and-manage-encryption-scopes-preview"></a> (预览创建和管理加密范围) 
 
-使用加密范围（预览版），可以在单个 blob 或容器级别管理加密。 加密范围在存储帐户中的安全 enclave 中隔离 blob 数据。 你可以使用加密作用域在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。 有关加密范围的详细信息，请参阅[Blob 存储的加密作用域（预览）](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview)。
+加密范围 (预览) 使你能够在单个 blob 或容器级别管理加密。 加密范围在存储帐户中的安全 enclave 中隔离 blob 数据。 你可以使用加密作用域在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。 有关加密范围的详细信息，请参阅[Blob 存储 (预览的加密范围) ](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview)。
 
 本文介绍如何创建加密作用域。 它还说明了在创建 blob 或容器时如何指定加密作用域。
 
 ## <a name="create-an-encryption-scope"></a>创建加密范围
 
-若要创建加密作用域，必须先创建 Azure 密钥保管库，并添加要用于此作用域的密钥。 Key vault 必须启用**软删除**和**清除保护**属性，且必须与存储帐户位于同一区域。 有关详细信息，请参阅[使用 Azure Key Vault 客户托管的密钥管理 Azure 存储加密](../common/encryption-customer-managed-keys.md)。
+你可以使用 Microsoft 管理的密钥或 Azure Key Vault 中存储的客户托管密钥来创建加密作用域。 若要使用客户托管的密钥创建加密作用域，必须先创建 Azure 密钥保管库，并添加要用于此作用域的密钥。 Key vault 必须启用**软删除**和**清除保护**属性，且必须与存储帐户位于同一区域。 有关详细信息，请参阅[使用 Azure Key Vault 客户托管的密钥管理 Azure 存储加密](../common/encryption-customer-managed-keys.md)。
 
 当你创建加密作用域时，它会自动启用。 创建加密作用域后，可以在创建 blob 时指定它。 你还可以在创建容器时指定默认的加密范围，该容器会自动应用到容器中的所有 blob。
 

@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318022"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -34,7 +34,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | [诊断设置](../platform/diagnostic-settings.md) | **是** | Azure 指标和日志数据将由 Azure 直接发送到 Azure Monitor 日志。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
+| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
 | [Windows 代理](../platform/agent-windows.md) | 否 | Azure SQL Analytics 不使用直接 Windows 代理。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | Azure SQL Analytics 不使用直接 Linux 代理。 |
 | [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | Azure SQL Analytics 不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
@@ -43,20 +43,20 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 下表概述了 Azure SQL Analytics 仪表板的两个版本的支持选项，一个适用于 Azure SQL 数据库，另一个用于 Azure SQL 托管实例数据库。
 
-| Azure SQL Analytics 选项 | 描述 | SQL Database 支持 | SQL 托管实例支持 |
+| Azure SQL Analytics 选项 | 说明 | SQL Database 支持 | SQL 托管实例支持 |
 | --- | ------- | ----- | ----- |
-| 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
-| 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
-| 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | 是 | 是 |
+| 资源（按类型） | 对监视的所有资源进行计数的透视。 | “是” | 是 |
+| 洞察力 | 提供对性能智能见解的分层向下钻取。 | “是” | 是 |
+| 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | “是” | 是 |
 | 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | 是 | 否 |
 | 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 否 |
 | 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |是 | 否 |
-| 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | 是 | 是 |
-| 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | 是 | 是 |
+| 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | “是” | 是 |
+| 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | “是” | 是 |
 
 ## <a name="configuration"></a>配置
 
-使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，将 Azure SQL Analytics （预览版）添加到 Log Analytics 工作区。
+使用[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md)中所述的过程，将 Azure SQL Analytics （预览版）添加到 Log Analytics 工作区。
 
 ### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>将 Azure SQL 数据库配置为流式传输诊断遥测
 
@@ -297,3 +297,4 @@ AzureDiagnostics
 - 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Azure SQL 数据。
 - [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示 Azure SQL 数据。
 - 发生特定 Azure SQL 事件时[创建警报](../platform/alerts-overview.md)。
+

@@ -10,6 +10,7 @@ ms.topic: conceptual
 keywords: Kinect, 传感器, 查看器, 外部同步, 相位延迟, 深度, RGB, 相机, 音频线, 录制器
 ms.openlocfilehash: 052f6f1ac9f90e764de25d1d4d1b25b3d50a848d
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931699"

@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290614"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -60,7 +60,7 @@ ms.locfileid: "86524159"
 
     ![对话框中有一个用于搜索所有触发器的框。 还有一个触发器，其中显示了 "请求/响应请求"，其中包含选择按钮。](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 选择“保存”。 保存时，会自动生成请求 URL。 
+3. 选择“保存” 。 保存时，会自动生成请求 URL。 
 
 4. 选择“新步骤”，并选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
 
@@ -77,7 +77,7 @@ ms.locfileid: "86524159"
 
     在以下示例中，从“人力资源”数据库返回了作业数据： 
 
-    ![标题为 "获取行（预览）" 的对话框具有两个文本框： "表名称"，其中包含 "HRJOBS" 且包含下拉列表和 "行 id"，其中包含 "SA_REP"。](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![标题为 "获取行（预览）" 的对话框具有两个文本框： "表名称"，其中包含 "H R 作业" 并且包含下拉列表和 "行 i d"，其中包含 "S A _ 代表"。](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. 在这个后续步骤中，可以使用任何其他连接器来生成工作流。 如果要测试从 Oracle 获取数据，请使用一个发送电子邮件连接器（如 Office 365 Outlook）向自己发送一封包含 Oracle 数据的电子邮件。 使用 Oracle 表中的动态令牌生成电子邮件的 `Subject` 和 `Body`：
 
@@ -122,10 +122,11 @@ ms.locfileid: "86524159"
 
 ## <a name="get-some-help"></a>获取帮助
 
-若要提问、解答问题和了解其他逻辑应用用户的活动，请访问[有关 Azure 逻辑应用的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。 
+若要提问、解答问题和了解其他逻辑应用用户的活动，请访问[有关 Azure 逻辑应用的 Microsoft 问答页面](/answers/topics/azure-logic-apps.html)。 
 
 可以在 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) 上投票并提交自己的创意，帮助改进逻辑应用和连接器。 
 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)，并在 [API 列表](apis-list.md)中了解逻辑应用中的可用连接器。
+

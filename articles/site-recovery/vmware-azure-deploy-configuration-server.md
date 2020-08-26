@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132157"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287729"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -66,7 +66,7 @@ ms.locfileid: "86132157"
 
 ## <a name="import-the-template-in-vmware"></a>在 VMware 中导入模板
 
-1. 使用 VMWare vSphere 客户端登录到 VMware vCenter 服务器或 vSphere ESXi 主机。
+1. 使用 VMware vSphere 客户端登录到 VMware vCenter 服务器或 vSphere ESXi 主机。
 2. 在“文件”菜单中，选择“部署 OVF 模板”以启动“部署 OVF 模板”向导    。
 
      ![部署 OVF 模板](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
@@ -98,7 +98,7 @@ ms.locfileid: "86132157"
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>将配置服务器注册到 Azure Site Recovery 服务
 
-1. 通过 VMWare vSphere 客户端控制台打开 VM。
+1. 从 VMware vSphere 客户端控制台中，打开 VM。
 2. VM 将启动并进入 Windows Server 2016 安装体验。 接受许可协议，然后输入管理员密码。
 3. 安装完成后，以管理员身份登录到 VM。
 4. 首次登录时，会在数秒内启动 Azure Site Recovery 配置工具。

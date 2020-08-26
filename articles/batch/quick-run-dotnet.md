@@ -1,29 +1,31 @@
 ---
-title: Azure 快速入门 - 运行 Batch 作业 - .NET
-description: 使用 Batch .NET 客户端库通过 C# 应用程序快速运行 Azure Batch 示例作业和任务。
+title: 快速入门 - 使用 .NET API 运行第一个 Azure Batch 作业
+description: 在本快速入门中，使用 Batch .NET 客户端库通过 C# 应用程序运行 Azure Batch 示例作业和任务。
 ms.topic: quickstart
-ms.date: 11/29/2018
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f17fc2103e4b8512e050d79f5a639b38d90a2a95
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117210"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511025"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
-本快速入门通过基于 Azure Batch .NET API 生成的 C# 应用程序运行 Azure Batch 作业。 此应用将多个输入数据文件上传到 Azure 存储，然后创建包含 Batch 计算节点（虚拟机）的*池*。 再然后，它创建一个示例*作业*，以便运行*任务*，在池中使用基本命令来处理每个输入文件。 完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
+实现 Azure Batch 入门，方法是通过基于 Azure Batch .NET API 生成的 C# 应用程序运行作业。 此应用将多个输入数据文件上传到 Azure 存储，然后创建包含 Batch 计算节点（虚拟机）的池。 再然后，它创建一个示例作业，以便运行任务，在池中使用基本命令来处理每个输入文件。
 
-![快速入门应用工作流](./media/quick-run-dotnet/sampleapp.png)
+完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+![概述 Azure Batch 应用工作流的关系图。](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>先决条件
 
-* 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
+- Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
+
+- 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -60,11 +62,11 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 若要查看运行中的 Batch 工作流，请在 Visual Studio 中构建并运行应用程序，或在命令行中使用 `dotnet build` 和 `dotnet run` 命令。 运行应用程序后，请查看代码，了解应用程序的每个部分的作用。 例如，在 Visual Studio 中：
 
-* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”。 
+- 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”。 
 
-* 出现提示时，请确认还原任何 NuGet 包。 如果需要下载缺少的包，请确保 [NuGet 包管理器](https://docs.nuget.org/consume/installing-nuget)已安装。
+- 出现提示时，请确认还原任何 NuGet 包。 如果需要下载缺少的包，请确保 [NuGet 包管理器](https://docs.nuget.org/consume/installing-nuget)已安装。
 
-然后运行它。 运行示例应用程序时，控制台输出如下所示。 在执行期间启动池的计算节点时，会遇到暂停并看到`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`。 任务会排队，在第一个计算节点运行后马上运行。 转到 [Azure 门户](https://portal.azure.com)中的 Batch 帐户，监视池、计算节点、作业和任务。
+运行示例应用程序时，控制台输出如下所示。 在执行期间启动池的计算节点时，会遇到暂停并看到`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`。 任务会排队，在第一个计算节点运行后马上运行。 转到 [Azure 门户](https://portal.azure.com)中的 Batch 帐户，监视池、计算节点、作业和任务。
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -93,17 +95,16 @@ stderr:
 
 以默认配置运行应用程序时，典型的执行时间大约为 5 分钟。 初始池设置需要最多时间。 若要再次运行该作业，请从以前的运行中删除该作业，不要删除池。 在预配置的池中，该作业数秒即可完成。
 
-
 ## <a name="review-the-code"></a>查看代码
 
 本快速入门中的 .NET 应用执行以下操作：
 
-* 将三个小的文本文件上传到 Azure 存储帐户中的 Blob 容器。 这些文件是供 Batch 处理的输入。
-* 创建一个池，其中包含运行 Windows Server 的计算节点。
-* 创建一个作业和三个任务，它们需要在节点上运行。 每个任务都使用 Windows 命令行来处理一个输入文件。 
-* 显示文件返回的任务。
+- 将三个小的文本文件上传到 Azure 存储帐户中的 Blob 容器。 这些文件是供 Batch 处理的输入。
+- 创建一个池，其中包含运行 Windows Server 的计算节点。
+- 创建一个作业和三个任务，它们需要在节点上运行。 每个任务都使用 Windows 命令行来处理一个输入文件。 
+- 显示文件返回的任务。
 
-有关详细信息，请参阅文件 `Program.cs` 和以下部分。 
+有关详细信息，请参阅文件 `Program.cs` 和以下部分。
 
 ### <a name="preliminaries"></a>初步操作
 
@@ -245,7 +246,6 @@ foreach (CloudTask task in completedtasks)
 ## <a name="next-steps"></a>后续步骤
 
 本快速入门运行了使用 Batch .NET API 生成的小应用，目的是创建 Batch 池和 Batch 作业。 该作业运行了示例任务，并下载了在节点上产生的输出。 了解 Batch 服务的重要概念以后，即可使用更逼真的工作负荷进行更大规模的 Batch 试用。 若要详细了解 Azure Batch 并使用实际的应用程序演练并行工作负荷，请继续学习 Batch .NET 教程。
-
 
 > [!div class="nextstepaction"]
 > [使用 .NET 处理并行工作负荷](tutorial-parallel-dotnet.md)

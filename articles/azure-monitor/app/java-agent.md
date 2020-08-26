@@ -3,11 +3,13 @@ title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537536"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371356"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
@@ -119,19 +121,20 @@ ms.locfileid: "81537536"
 
 若要搜索依赖项、异常和方法报告的单个实例，请打开[搜索][diagnostic]。
 
-[诊断依赖项问题 - 了解详细信息](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)。
+[诊断依赖项问题 - 了解详细信息](./asp-net-dependencies.md#diagnosis)。
 
 ## <a name="questions-problems"></a>存在疑问？ 遇到问题？
-* 没有数据？ [设置防火墙异常](../../azure-monitor/app/ip-addresses.md)
+* 没有数据？ [设置防火墙异常](./ip-addresses.md)
 * [Java 故障排除](java-troubleshoot.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
+

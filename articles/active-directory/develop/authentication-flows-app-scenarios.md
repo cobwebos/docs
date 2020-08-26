@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82593159"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115639"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -154,9 +154,9 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 有关详细信息，请参阅[调用 Web API 的移动应用](scenario-mobile-overview.md)。
 
 > [!NOTE]
-> 对于使用 MSAL.iOS、MSAL.Android 或 Xamarin 上的 MSAL.NET 的移动应用，可以应用应用保护策略。 例如，策略可以阻止用户复制受保护的文本。 移动应用由 Intune 托管，由 Intune 识别为托管应用。 有关详细信息，请参阅 [Microsoft Intune App SDK 概述](https://docs.microsoft.com/intune/app-sdk)。
+> 对于使用 MSAL.iOS、MSAL.Android 或 Xamarin 上的 MSAL.NET 的移动应用，可以应用应用保护策略。 例如，策略可以阻止用户复制受保护的文本。 移动应用由 Intune 托管，由 Intune 识别为托管应用。 有关详细信息，请参阅 [Microsoft Intune App SDK 概述](/intune/app-sdk)。
 >
-> [Intune 应用 SDK](https://docs.microsoft.com/intune/app-sdk-get-started) 独立于 MSAL 库，可自行与 Azure AD 交互。
+> [Intune 应用 SDK](/intune/app-sdk-get-started) 独立于 MSAL 库，可自行与 Azure AD 交互。
 
 ### <a name="protected-web-api"></a>受保护的 Web API
 
@@ -199,7 +199,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
    <td><a href="scenario-spa-overview.md"><img alt="Single-Page App" src="media/scenarios/spa-app.svg"></a></td>
    <td><a href="scenario-spa-overview.md">单页应用</a></td>
    <td><a href="v2-oauth2-implicit-grant-flow.md">隐式</a></td>
-   <td>工作或学校帐户、个人帐户和 Azure Active Directory B2C （Azure AD B2C）</td>
+   <td>工作或学校帐户、个人帐户和 Azure Active Directory B2C (Azure AD B2C) </td>
  </tr>
 
   <tr>
@@ -305,5 +305,5 @@ Microsoft 身份验证库支持多种平台：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[身份验证基础知识](authentication-scenarios.md)和 [Microsoft 标识平台中的访问令牌](access-tokens.md)。
+* 详细了解[身份验证基础知识](./authentication-vs-authorization.md)和 [Microsoft 标识平台中的访问令牌](access-tokens.md)。
 * 详细了解[如何保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)。

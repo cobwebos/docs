@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090291"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
@@ -137,11 +138,11 @@ ms.locfileid: "76721940"
     
     ![PowerShell 详细信息](./media/code-test/powershell_scripts.PNG)
 
-    如， 选择 "**保存 & 队列**" 以完成生成管道过程。
+    g. 选择 "**保存 & 队列**" 以完成生成管道过程。
 
     ![“保存并排队”按钮](./media/code-test/save_and_queue_build_definition.PNG)
 
-现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 （此处我们使用 master 作为存储库，但你可以定义任何分支。）此过程在代理计算机中运行**test1.py**文件，以确保代码中定义的所有内容都能正常运行。 
+现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 您可以定义任何分支。 此过程运行代理计算机中的 **test1.py** 文件，目的是确保代码中定义的所有内容都能正确运行。 
 
 如果警报设置正确，系统会在生成完成以后通过电子邮件通知你。 也可在 Azure DevOps 中检查生成状态。 如果生成失败，则可检查生成的详细信息，找出出错的片段。
 
@@ -153,8 +154,8 @@ ms.locfileid: "76721940"
 * 如需通过具体的示例来了解数据科学方案的单元测试，请参阅 [UCI 收入预测存储库](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)。
 * 请按你自己的数据科学项目的 UCI 收入预测方案中的上述大纲和示例进行操作。
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 * [Team Data Science Process](https://aka.ms/tdsp)
 * [Visual Studio 测试工具](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps 测试资源](https://www.visualstudio.com/team-services/)
-* [数据科学虚拟机](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

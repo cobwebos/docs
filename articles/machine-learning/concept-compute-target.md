@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/26/2020
-ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/27/2020
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199818"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141919"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
-“计算目标”**** 是用来运行训练脚本或托管服务部署的指定计算资源/环境。 此位置可以是你的本地计算机，也可以是基于云的计算资源。 如果使用计算目标，以后可以轻松地更改计算环境，不需更改代码。  
+“计算目标”是用来运行训练脚本或托管服务部署的指定计算资源/环境。 此位置可以是你的本地计算机，也可以是基于云的计算资源。 如果使用计算目标，以后可以轻松地更改计算环境，不需更改代码。  
 
 在典型的模型开发生命周期中，你可以：
 1. 首先，基于少量数据进行开发和试验。 在此阶段，我们建议使用本地环境（本地计算机或基于云的 VM）作为计算目标。 
@@ -52,9 +52,9 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 * Azure 机器学习工作室
 * Azure 门户
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) 类
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (预览) 
-* Resource Manager 模板
-* [适用于 Azure CLI 的](reference-azure-machine-learning-cli.md#resource-management)机器学习扩展。  
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)（预览版）
+* 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)。
+* [Azure CLI 的机器学习扩展](reference-azure-machine-learning-cli.md#resource-management)。  
 
 创建时，这些计算资源会自动成为工作区的一部分，这与其他类型的计算目标不同。
 
@@ -68,7 +68,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 
 > [!NOTE]
-> 当计算群集处于空闲状态时，它会措施到0个节点，因此不需要支付。  然而，计算*实例*始终处于打开和不自动缩放。  在不使用[计算实例时应停止计算实例](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)，以免产生额外的成本。
+> 当计算群集处于空闲状态时，它将自动缩放到 0 个节点，因此在不使用它时你无需付费。  但是，计算实例始终处于启用状态，并且不会自动缩放。  不使用计算实例时，应[停止计算实例](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)，以免产生额外费用。
 
 ### <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 
@@ -85,7 +85,9 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 | D | 无 |
 | Dv2 | 无 |  
 | DSv2 | 无 |  
-| FSv2 | 无 |  
+| FSv2 | 无 | 
+| HBv2 | 需要批准 |  
+| HCS | 需要批准 |  
 | M | 需要批准 |
 | NC | 无 |    
 | NCsv2 | 需要批准 |
@@ -100,7 +102,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 ## <a name="unmanaged-compute"></a>非托管计算
 
-非托管计算目标不是由 Azure 机器学习托管的。** 你将在 Azure 机器学习外部创建此类型的计算目标，然后将其附加到工作区。 对于非托管计算资源，可能需要执行额外的步骤才能保持或提高机器学习工作负荷的性能。
+非托管计算目标不是由 Azure 机器学习托管的。 你将在 Azure 机器学习外部创建此类型的计算目标，然后将其附加到工作区。 对于非托管计算资源，可能需要执行额外的步骤才能保持或提高机器学习工作负荷的性能。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 使用 .NET 向/从 Azure 事件中心发送/接收事件（最新版）
 description: 本文演练如何创建一个可使用最新 Azure.Messaging.EventHubs 包向/从 Azure 事件中心发送/接收事件的 .NET Core 应用程序。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 292e6e36337f565100c25d655882e60fa2a0bb6d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537133"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080049"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库向事件中心发送事件以及从事件中心接收事件。 

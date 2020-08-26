@@ -1,6 +1,6 @@
 ---
-title: 监视 Apache Spark 应用程序
-description: 使用 Azure Synapse Studio 监视 Apache Spark 应用程序。
+title: 使用 Synapse Studio 监视 Apache Spark 应用程序
+description: 使用 Synapse Studio 监视 Apache Spark 应用程序。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 20c4216e7af0cb4100204ebae1b484a53e3c50a6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971275"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387347"
 ---
-# <a name="use-the-azure-synapse-studio-to-monitor-your-apache-spark-applications"></a>使用 Azure Synapse Studio 监视 Apache Spark 应用程序
+# <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio 监视 Apache Spark 应用程序
 
 使用 Azure Synapse Analytics，可以使用 Apache Spark 在工作区中的 Apache Spark 池上运行笔记本、作业和其他类型的应用程序。
 
@@ -33,7 +33,7 @@ ms.locfileid: "85971275"
 
 在开始学习本教程之前，请确保满足以下要求：
 
-- Azure Synapse Studio 工作区。 有关说明，请参阅[创建 Azure Synapse Studio 工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)。
+- Synapse Studio 工作区。 有关说明，请参阅[创建 Synapse Studio 工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)。
 
 - Apache Spark 池。
 
@@ -147,4 +147,4 @@ ms.locfileid: "85971275"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关监视管道运行的详细信息，请参阅[监视管道运行 Azure Synapse Studio](how-to-monitor-pipeline-runs.md)一文。  
+有关监视管道运行的详细信息，请参阅[使用 Synapse Studio 运行监视管道](how-to-monitor-pipeline-runs.md)一文。  

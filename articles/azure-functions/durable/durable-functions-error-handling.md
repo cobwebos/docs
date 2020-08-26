@@ -2,14 +2,14 @@
 title: 处理 Durable Functions 中的错误 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理错误。
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081689"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -97,6 +97,33 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    transfer_details = context.get_input()
+
+    yield context.call_activity('DebitAccount', {
+         'account': transfer_details['sourceAccount'],
+         'amount' : transfer_details['amount']
+    })
+
+    try:
+        yield context.call_activity('CreditAccount', {
+                'account': transfer_details['destinationAccount'],
+                'amount': transfer_details['amount'],
+            })
+    except:
+        yield context.call_activity('CreditAccount', {
+            'account': transfer_details['sourceAccount'],
+            'amount': transfer_details['amount']
+        })
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -104,7 +131,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="automatic-retry-on-failure"></a>失败时自动重试
 
-调用活动函数或子业务流程函数时，可指定自动重试策略。 以下示例尝试调用某函数多达三次，每次重试之间等待 5 秒：
+调用活动函数或子业务流程函数时，可指定自动重试策略。 以下示例尝试调用某个函数多达 3 次，且每次重试之间等待 5 秒：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -143,20 +170,37 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    first_retry_interval_in_milliseconds = 5000
+    max_number_of_attempts = 3
+
+    retry_options = df.RetryOptions(first_retry_interval_in_milliseconds, max_number_of_attempts)
+
+    yield context.call_activity_with_retry('FlakyFunction', retry_options)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
-上一示例中的活动函数调用使用一个参数来配置自动重试策略。 可通过多种选项自定义自动重试策略：
+上一示例中的活动函数调用使用参数来配置自动重试策略。 可通过多种选项自定义自动重试策略：
 
-* **最大尝试次数**：最大重试尝试次数。
-* **首次重试间隔**：首次尝试重试前需要等待的时间。
+* **最大尝试次数**：重试的最大次数。
+* **首次重试间隔**：首次重试前需要等待的时间。
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
-* **最大重试间隔**：尝试重试之间需要等待的最长时间。
-* **重试超时**：执行重试所花费的最长时间。 默认行为是可无限期重试。
-* **处理**：可以指定用户定义的回叫来确定是否应该重试函数。
+* **最大重试间隔**：每次重试之间需要等待的最大时间。
+* **重试超时**：执行重试的最大时间。 默认行为是可无限期重试。
+* **句柄**：可以指定用户定义的回调来确定是否应重试某个函数。
 
 ## <a name="function-timeouts"></a>函数超时
 
-如果业务流程协调程序函数内的函数调用耗时太长才能完成，建议放弃该函数调用。 本示例中执行此操作的正确方法是将 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 与 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 结合使用，创建[持久计时器](durable-functions-timers.md)，如下例中所示：
+如果业务流程协调程序函数内的函数调用耗时太长才能完成，建议放弃该函数调用。 今天执行此操作的正确方法是使用[durable timer](durable-functions-timers.md) `context.CreateTimer` （.net）、 `context.df.createTimer` （javascript）或 `context.create_timer` （python）和 `Task.WhenAny` （.net）、 `context.df.Task.any` （javascript）或（python）来创建持久计时器 `context.task_any` ，如以下示例中所示：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -213,6 +257,28 @@ module.exports = df.orchestrator(function*(context) {
         return false;
     }
 });
+```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    deadline = context.current_utc_datetime + timedelta(seconds = 30)
+    
+    activity_task = context.call_activity('FlakyFunction')
+    timeout_task = context.create_timer(deadline)
+
+    winner = yield context.task_any(activity_task, timeout_task)
+    if winner == activity_task:
+        timeout_task.cancel()
+        return True
+    else:
+        return False
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---

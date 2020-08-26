@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78fa6b343a01e96c000b6c64a55d5fdf1f0284f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78197498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084647"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -26,7 +27,7 @@ ms.locfileid: "78197498"
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，使用这些 API 可以安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时传送视频流的形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -56,7 +57,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 要构建媒体服务解决方案，可以使用：
 
-* [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
+* [媒体服务 REST API](/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 可用的客户端 SDK 之一：
     * 适用于 .NET 的 Azure 媒体服务 SDK
     
@@ -70,7 +71,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) （Azure 媒体服务资源管理器 (AMSE) 是适用于 Windows 的 Winforms/C# 应用程序）
 
 > [!NOTE]
-> 若要获取最新版本的 Java SDK 并开始使用 Java 进行开发，请参阅[媒体服务的 Java 客户端 SDK 入门](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)。 <br/>
+> 若要获取最新版本的 Java SDK 并开始使用 Java 进行开发，请参阅[媒体服务的 Java 客户端 SDK 入门](./media-services-java-how-to-use.md)。 <br/>
 > 若要下载最新的媒体服务 PHP SDK，请在 [Packagist 存储库](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)中查找 0.5.7 版 Microsoft/WindowAzure 包。  
 
 ## <a name="code-samples"></a>代码示例

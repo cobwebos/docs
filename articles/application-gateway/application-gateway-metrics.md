@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84482637"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424386"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -23,7 +24,7 @@ ms.locfileid: "84482637"
 
 应用程序网关提供多个与请求和响应相关的内置计时指标，这些指标的度量单位均为毫秒。 
 
-![应用程序网关的计时指标关系图。](./media/application-gateway-metrics/application-gateway-metrics.png)
+![用于应用程序网关的计时指标图。](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -197,7 +198,7 @@ ms.locfileid: "84482637"
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
-[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="度量值视图。" lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
 若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
 

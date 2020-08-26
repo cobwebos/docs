@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011050"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>预览版：使用 PowerShell 创建和使用邻近放置组
 
@@ -29,7 +30,7 @@ ms.locfileid: "83727091"
 
 
 ## <a name="create-a-proximity-placement-group"></a>创建邻近放置组
-使用 [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet 创建邻近放置组。 
+使用 [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet 创建邻近放置组。 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 创建规模集时，可使用 `-ProximityPlacementGroup $ppg.Id` 引用邻近放置组 ID，以便在邻近放置组中创建规模集。
+使用 [New-AzVMSS](/powershell/module/az.compute/new-azvmss) 创建规模集时，可使用 `-ProximityPlacementGroup $ppg.Id` 引用邻近放置组 ID，以便在邻近放置组中创建规模集。
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

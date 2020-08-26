@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520794"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080824"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
-虽然 Azure 逻辑应用提供可用于逻辑应用工作流的[数百个连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
+虽然 Azure 逻辑应用提供可用于逻辑应用工作流的[数百个内置连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
 
 * 扩展当前系统集成和数据集成工作流。
 * 帮助客户使用服务来管理专业或个人任务。
@@ -30,12 +30,12 @@ ms.locfileid: "86520794"
 > [!TIP] 
 > 虽然可以将 API 部署为 Web 应用，但请考虑将 API 部署为 API 应用，这样可以更轻松地在云和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 例如，了解如何生成使用以下语言创建的 API 应用： 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
-> * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
-> * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/containers/quickstart-python.md)
-> * [Ruby](../app-service/containers/quickstart-ruby.md)
+> * [ASP.NET](../app-service/quickstart-dotnetcore.md). 
+> * [Java](../app-service/quickstart-java.md)
+> * [Node.js](../app-service/quickstart-nodejs.md)
+> * [PHP](../app-service/quickstart-php.md)
+> * [Python](../app-service/quickstart-python.md)
+> * [Ruby](../app-service/quickstart-ruby.md)
 >
 > 有关为逻辑应用生成的 API 应用示例，请访问 [Azure 逻辑应用 GitHub 存储库](https://github.com/logicappsio)或[博客](https://aka.ms/logicappsblog)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "86520794"
 * 在逻辑应用设计器中，显示在 Microsoft 托管连接器旁边（含图标）。
 * 仅适用于满足以下条件的连接器创建者和逻辑应用用户：在部署逻辑应用的区域中具有相同的 Azure Active Directory 租户和 Azure 订阅。
 
-还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Power Automate 和 Microsoft PowerApps 中的用户使用。
+还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Power Automate 和 Microsoft Power Apps 中的用户使用。
 
 有关自定义连接器的详细信息，请参阅 
 
@@ -100,9 +100,9 @@ ms.locfileid: "86520794"
    
    `202 ACCEPTED` 响应应包含这些标头：
    
-   * 必需：`location` 标头，用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径
+   * *必需*：用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径的 `location` 标头
 
-   * *可选*：`retry-after` 标头，用于指定引擎检查 `location` URL 获知作业状态之前应等待的秒数。 
+   * *可选*：用于指定引擎检查 `location` URL 获知作业状态之前应等待秒数的 `retry-after` 标头。 
 
      默认情况下，引擎每隔 20 秒检查一次。 若要指定不同的时间间隔，请包括 `retry-after` 标头和下次轮询前的秒数。
 
@@ -130,9 +130,9 @@ ms.locfileid: "86520794"
 
 对于此模式，在控制器上设置两个终结点：`subscribe` 和 `unsubscribe`
 
-*  `subscribe` 终结点：在执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
+*  `subscribe` 终结点：当执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
 
-* `unsubscribe` 终结点：如果已取消逻辑应用运行，逻辑应用引擎调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
+* `unsubscribe` 终结点：如果逻辑应用运行已取消，逻辑应用引擎将调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
 
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -222,7 +222,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 要使自定义 API 可供 Azure 中其他逻辑应用用户使用，必须添加安全性并将这些 API 注册为逻辑应用连接器。 有关详细信息，请参阅[自定义连接器概述](../logic-apps/custom-connector-overview.md)。 
 
-要使自定义 API 可供逻辑应用、Power Automate 和 Microsoft PowerApps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名连接器。 
+要使自定义 API 可供逻辑应用、Power Automate 和 Microsoft Power Apps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名你的连接器。 
 
 ## <a name="get-support"></a>获取支持
 

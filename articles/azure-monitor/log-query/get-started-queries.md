@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801421"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874055"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
 > [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](saved-queries.md)。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](saved-queries.md)。
 
 在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
@@ -71,7 +71,7 @@ search in (SecurityEvent) "Cryptographic"
 此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。
 
 > [!WARNING]
-> 搜索查询通常比基于表的查询慢，因为它们必须处理更多的数据。 
+> 搜索查询通常比基于表的查询慢，因为它们必须处理更多数据。 
 
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
@@ -181,7 +181,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** 保留结果集中的所有原始列，并定义其他列。 下面的查询使用 extend 来添加 EventCode 列。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，需要展开记录的详细信息才能查看它。
+**extend** 保留结果集中的所有原始列，并定义其他列。 以下查询使用 **extend** 添加 *EventCode* 列。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，你需要展开记录的详细信息才能查看此列。
 
 ```Kusto
 SecurityEvent
@@ -226,7 +226,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>按时间列汇总
 此外，分组结果可以基于时间列或其他连续值。 不过，只是汇总 `by TimeGenerated` 会针对时间范围内的每一毫秒创建组，因为这些值是唯一的。 
 
-若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去 7 天中每 1 小时时段的平均值：
+若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去 7 天内每 1 小时时段的平均值：
 
 ```Kusto
 Perf 

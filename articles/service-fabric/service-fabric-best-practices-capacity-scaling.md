@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261165"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824590"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
@@ -19,7 +19,7 @@ ms.locfileid: "86261165"
 除了考虑节点类型和群集特征以外，还要规划好生产环境中需要花费一小时以上才能完成的缩放操作。 不管要添加多少个 VM，都要考虑到这种情况。
 
 ## <a name="autoscaling"></a>自动缩放
-应该通过 Azure 资源管理器模板执行缩放操作，因为最佳做法是[将资源配置视为代码]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)。 
+应该通过 Azure 资源管理器模板执行缩放操作，因为最佳做法是[将资源配置视为代码](./service-fabric-best-practices-infrastructure-as-code.md)。 
 
 使用虚拟机规模集自动缩放会导致版本受控的资源管理器模板不准确地定义虚拟机规模集实例计数。 不准确的定义会增加将来的部署导致意外缩放操作的风险。 一般而言，如果存在以下情况，则应该使用自动缩放：
 

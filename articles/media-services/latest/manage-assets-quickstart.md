@@ -3,12 +3,15 @@ title: 使用门户上传、编码和流式传输内容 - Azure
 description: 本快速入门介绍如何使用门户通过 Azure 媒体服务上传、编码和流式传输内容。
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232468"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605672"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入门：使用门户上传、编码和流式传输内容
 
@@ -28,14 +31,13 @@ ms.locfileid: "86232468"
 
   * [云上传和存储](storage-account-concept.md)
   * [资产概念](assets-concept.md)
-  * [管理资产](manage-asset-concept.md)
 * 将高质量的数字媒体文件上传到一个资产（输入资产）后，可对其进行处理（编码或分析）。 处理的内容将进入另一个资产（输出资产）。 
     * 将上传的文件[编码](encoding-concept.md)为可在各种浏览器和设备上播放的格式。
     * [分析](analyzing-video-audio-files-concept.md)上传的文件。 
 
         目前，使用 Azure 门户时，可以执行以下操作：生成 TTML 和 WebVTT 隐藏式字幕文件。 采用这些格式的文件可用于使有听力障碍的用户能够访问音频和视频文件。 你还可以从内容中提取关键字。
 
-        要获得丰富的体验，使你能够从视频和音频文件中提取见解，请使用媒体服务 v3 预设（如[教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)中所述）。 <br/>如果需要更详细的见解，请直接使用[视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。    
+        要获得丰富的体验，使你能够从视频和音频文件中提取见解，请使用媒体服务 v3 预设（如[教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)中所述）。 <br/>如果需要更详细的见解，请直接使用[视频索引器](../video-indexer/index.yml)。    
 * 处理完内容后，即可将媒体内容交付给客户端播放器。 若要使输出资产中的视频可供客户端进行播放，必须创建流式处理定位符。 创建流式处理定位符时，需要指定流式处理策略 。 使用流式处理策略可为流式处理定位符定义流式处理协议和加密选项（如果有） 。
     
     审阅：

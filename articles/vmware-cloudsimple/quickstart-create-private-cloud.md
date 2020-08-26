@@ -9,17 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81867965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073904"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
 本文介绍如何创建 CloudSimple 私有云并设置私有云环境。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 查看[网络必备组件](cloudsimple-network-checklist.md)。
 
@@ -33,7 +34,7 @@ ms.locfileid: "81867965"
 
 私有云通过 CloudSimple 门户进行管理。 它们在自己的管理域中具有自己的 vCenter 服务器。 堆栈在专用节点和隔离的裸机硬件节点上运行。
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 2. 搜索 " **CloudSimple Services**"。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
 4. 从 "**概述**" 中，单击 "**创建私有云**" 以打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示，请用 Azure 登录凭据登录。  
@@ -65,7 +66,7 @@ ms.locfileid: "81867965"
 
 可以从 Azure 门户访问 CloudSimple 门户。  将使用 Azure 登录凭据通过单一登录（SSO）启动 CloudSimple 门户。  若要访问 CloudSimple 门户，需要授权**CloudSimple Service 授权**应用程序。  有关授予权限的详细信息，请参阅[同意 CloudSimple 服务授权应用程序](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)。
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 2. 搜索 " **CloudSimple Services**"。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
 4. 从 "概述" 中，单击 **"前往 CloudSimple 门户"** ，打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示，请用 Azure 登录凭据登录。  
@@ -113,7 +114,7 @@ ms.locfileid: "81867965"
 1. 启动 CloudSimple 门户，然后选择 "**网络**"。
 2. 选择**VPN 网关**。
 3. 在 VPN 网关列表中，单击 "点到站点 VPN 网关"。
-4. 选择 "**用户**"。
+4. 选择“用户”。
 5. 单击 "**下载我的 VPN 配置"**。
 
     ![下载 VPN 配置](media/download-p2s-vpn-configuration.png)
@@ -147,7 +148,7 @@ ms.locfileid: "81867965"
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>将环境连接到 Azure 虚拟网络
 
-CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure 上的虚拟网络连接到 ExpressRoute 线路。 有关设置连接的完整详细信息，请遵循[使用 ExpressRoute 的 Azure 虚拟网络连接](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)中的步骤。
+CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure 上的虚拟网络连接到 ExpressRoute 线路。 有关设置连接的完整详细信息，请遵循[使用 ExpressRoute 的 Azure 虚拟网络连接](./cloudsimple-azure-network-connection.md)中的步骤。
 
 ## <a name="sign-in-to-vcenter"></a>登录到 vCenter
 

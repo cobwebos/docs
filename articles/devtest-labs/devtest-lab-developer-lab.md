@@ -3,12 +3,12 @@ title: 使用面向开发人员的 Azure 开发测试实验室 | Microsoft Docs
 description: 了解 Azure 开发测试实验室的功能，这些功能可用于满足开发人员的要求以及可用于设置实验室的详细步骤。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481028"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293022"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
 可使用 Azure 开发测试实验室来实现许多关键方案，但其中一个主要方案涉及使用开发测试实验室为开发人员托管开发计算机。 在此方案中，开发测试实验室具有以下优势：
@@ -45,7 +45,7 @@ ms.locfileid: "85481028"
    | --- | --- |
    | [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 市场映像列入允许列表，仅使需用于开发人员的映像可供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让开发人员能够使用自定义映像快速创建 VM。|
-   | [了解映像工厂](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |观看介绍如何设置和使用映像工厂的视频。|
+   | [了解映像工厂](./devtest-lab-faq.md#blog-post) |观看介绍如何设置和使用映像工厂的视频。|
 
 3. 为开发人员计算机创建可重复使用的模板**** 
    
@@ -124,4 +124,3 @@ ms.locfileid: "85481028"
    | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用资源管理器模板在 Azure 开发测试实验室中创建实验室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

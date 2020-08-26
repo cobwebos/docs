@@ -1,17 +1,18 @@
 ---
 title: StorSimple 8000 系列更新5.1 发行说明
 description: 介绍 StorSimple 8000 系列更新5.1 的新功能、问题和解决方法。
-author: priestlg
+author: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.author: v-grpr
-ms.openlocfilehash: 27778ea232353dcaa6a38fa19abbd64b11c809e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: b706d702ad496d0526d02c4158123cc883505ddf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657918"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782339"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 系列更新5.1 发行说明
 
@@ -25,7 +26,7 @@ ms.locfileid: "80657918"
 
 > [!IMPORTANT]
 >
-> * 更新5.1 是必需更新，必须立即安装。 有关详细信息，请参阅如何[应用更新 5.1](storsimple-8000-install-update-51.md)。
+> * 更新5.1 是必需更新，必须立即安装。 有关详细信息，请参阅如何 [应用更新 5.1](storsimple-8000-install-update-51.md)。
 > * 更新5.1 只包含安全更新。 安装此更新大约需要30分钟。 强烈建议您应用更新5.1 以确保设备的操作。
 > * 对于新版本，由于我们分阶段推出更新，可能不能立即看到更新。 请等待几天，再次扫描更新，因为很快就会提供这些更新。
 
@@ -37,7 +38,7 @@ ms.locfileid: "80657918"
 
 ## <a name="known-issues-in-update-51-from-previous-releases"></a>以前版本中的更新5.1 中的已知问题
 
-更新5.1 中没有新的已知问题。 有关从以前的版本升级到更新5.1 的问题列表，请转到[update 3 发行说明](storsimple-update3-release-notes.md#known-issues-in-update-3)。
+更新5.1 中没有新的已知问题。 有关从以前的版本升级到更新5.1 的问题列表，请转到 [update 3 发行说明](storsimple-update3-release-notes.md#known-issues-in-update-3)。
 
 ## <a name="storsimple-cloud-appliance-updates-in-update-51"></a>更新5.1 中的 StorSimple 云设备更新
 
@@ -45,4 +46,4 @@ ms.locfileid: "80657918"
 
 ## <a name="next-step"></a>后续步骤
 
-了解如何在 StorSimple 设备上[安装更新 5.1](storsimple-8000-install-update-51.md) 。
+了解如何在 StorSimple 设备上 [安装更新 5.1](storsimple-8000-install-update-51.md) 。

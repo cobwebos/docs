@@ -1,6 +1,6 @@
 ---
 title: 在 Azure VM 中禁用来宾 OS 防火墙 | Microsoft Docs
-description: 了解排查来宾操作系统防火墙会筛选流向 VM 的部分或全部流量这类情况时使用的解决方法。
+description: 了解用于对以下情况进行故障排除时的解决方法，即来宾操作系统防火墙正在筛选发往 VM 的部分或全部流量。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774342"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009758"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -73,7 +74,7 @@ ms.locfileid: "83774342"
 
 #### <a name="mitigation-3-pstools-commands"></a>缓解措施 3：PSTools 命令
 
-1.  在故障排除 VM 上，下载 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
+1.  在故障排除 VM 上，下载 [PSTools](/sysinternals/downloads/pstools)。
 
 2.  打开 CMD 实例，然后通过其 DIP 访问 VM。
 
@@ -91,7 +92,7 @@ ms.locfileid: "83774342"
 
 1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表” 。
 
-2.  打开 TARGET MACHINE\SYSTEM 分支，然后指定以下值：
+2.  打开 TARGET MACHINE\SYSTEM 分支，指定以下值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -99,7 +100,7 @@ ms.locfileid: "83774342"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用远程服务控制台。
+3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用“远程服务控制台”。
 
 4.  打开 Services.msc 的实例。
 
@@ -107,7 +108,7 @@ ms.locfileid: "83774342"
 
 6.  选择“连接到另一台计算机”。
 
-7.  输入问题 VM 的专用 IP 地址 (DIP)。
+7.  输入问题 VM 的**专用 IP 地址 (DIP)** 。
 
 8.  重启本地防火墙策略。
 

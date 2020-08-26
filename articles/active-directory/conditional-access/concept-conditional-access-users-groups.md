@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80755256"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552894"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
 
@@ -39,7 +40,13 @@ ms.locfileid: "80755256"
    - 目录角色
       - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
    - 用户和组
-      - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
+      - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。 策略将应用于嵌套的用户和组。
+
+> [!WARNING]
+> 如果用户或组是超过2048个组的成员，则他们的访问可能会被阻止。 此限制适用于直接和嵌套组成员身份。
+
+> [!WARNING]
+> 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的[管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)或目录角色，如通过[自定义角色](../users-groups-roles/roles-create-custom.md)。
 
 ## <a name="exclude-users"></a>排除用户
 

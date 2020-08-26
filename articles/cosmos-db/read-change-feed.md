@@ -7,17 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697345"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236788"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源
 
-可以使用推送模型或拉取模型来处理 Azure Cosmos DB 更改源。 如果使用推送模型，客户端将从服务器请求工作，并且可以获得用于处理更改的业务逻辑。 但是，在检查更改以及存储上次已处理更改的状态时，所遇到的复杂情况将在服务器上进行处理。
+可以使用推送模型或拉取模型来处理 Azure Cosmos DB 更改源。 使用推送模型， (更改源的服务器) 将工作推送到具有用于处理此工作的业务逻辑的客户端。 但是，在服务器上处理检查工作和存储上次处理的工作的状态的复杂性。
 
-如果使用拉取模型，服务器会请求工作（通常从中心工作队列请求工作）。 在这种情况下，客户端不仅可以获得用于处理更改的业务逻辑，而且还能存储上次已处理更改的状态，这样，在多个客户端并行处理更改时可以处理负载均衡和处理错误。
+使用请求模型，客户端必须从服务器拉取工作。 在这种情况下，客户端不仅具有用于处理工作的业务逻辑，还会存储上次处理的工作的状态、跨多个客户端处理负载平衡并行处理工作以及处理错误。
 
 从 Azure Cosmos DB 更改源读取时，我们通常建议使用推送模型，因为这样就无需考虑以下事项：
 

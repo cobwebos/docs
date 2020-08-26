@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d2d3871dd9836e2c68155aa82ce01dced128bf3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038110"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>将 Illusive 攻击管理系统连接到 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Illusive 攻击管理系统数据连接器目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍了如何将[Illusive 攻击管理系统](https://www.illusivenetworks.com/technology/platform/attack-detection-system)连接到 Azure Sentinel。 Illusive 攻击管理系统数据连接器允许你在 Azure Sentinel 中共享 Illusive 的攻击面分析数据和事件日志，并在专用仪表板中查看此信息，该仪表板提供对组织的攻击面风险（ASM 仪表板）的深入了解，并跟踪组织网络中未经授权的横向移动（ADS 仪表板）。
 
@@ -34,7 +38,7 @@ ms.locfileid: "86531075"
 
 1. 登录到 Illusive 控制台，导航到 "设置->报告"。
 
-1. 查找 Syslog Serversץ
+1. 查找 Syslog 服务器。
 
 1. 提供以下信息：
    - 主机名： Linux Syslog 代理 IP 地址或 FQDN 主机名
@@ -44,7 +48,7 @@ ms.locfileid: "86531075"
 
 1. 若要添加 syslog 服务器，请单击 "添加"。
 
-1. 若要在 Illusive 攻击管理系统 Log Analytics 中使用相关架构，请搜索 "CommonSecurityLog"。
+1. 若要在 Illusive 攻击管理系统的**日志**中使用相关架构，请搜索**CommonSecurityLog**。
 
 ## <a name="next-steps"></a>后续步骤
 

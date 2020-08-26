@@ -13,17 +13,18 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00dfac7c3036c4fd457c5d3a6bb4eb7bd4e56998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb119ef0ffd4da4dc524c9d3c0a88b94e2251142
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731318"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423552"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>在 Azure Active Directory 门户中下载用户列表
 
 Azure Active Directory （Azure AD）支持批量用户导入（创建）操作。
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 
 若要从 Azure AD 管理中心下载用户列表，你必须使用分配给 Azure AD 中的一个或多个组织级管理员角色的用户登录（用户管理员是所需的最小角色）。 来宾邀请者和应用程序开发人员不被视为管理员角色。
 
@@ -71,7 +72,7 @@ Azure Active Directory （Azure AD）支持批量用户导入（创建）操作�
 
 你可以在 "**批量操作结果**" 页中查看挂起的批量请求的状态。
 
-[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
+[![检查 "批量操作结果" 页中的状态。](media/users-bulk-download/bulk-center.png)](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>大容量下载服务限制
 

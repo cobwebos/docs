@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074769"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 
@@ -35,7 +35,7 @@ HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-
 
 **将“所有者”角色添加到 Azure AD 应用程序**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到具有 HDInsight 群集的资源组，在本文的后面部分中你将在该群集上运行 Hive 查询。 如果有大量资源组，可以使用筛选器查找所需的资源组。
 1. 在“资源组”菜单中，选择“访问控制（标识和访问管理）”****。
 1. 选择“角色分配”**** 选项卡以查看当前的角色分配。
@@ -123,4 +123,4 @@ HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-
 
 * [在 Azure 门户中创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 * 了解如何[使用 Azure 资源管理器对服务主体进行身份验证](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
-* 了解 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)。
+* 了解[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md)。

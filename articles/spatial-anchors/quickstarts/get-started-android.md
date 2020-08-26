@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b7f924c7f115e8eddda93ea0c096ab94411da72
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652497"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810388"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android 应用
 
@@ -86,7 +86,7 @@ git submodule update --init --recursive
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-找到 `public AzureSpatialAnchorsManager(Session arCoreSession)` 并添加以下行，替换之前的帐户域：`spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");`。
+找到 `SpatialAnchorsAccountDomain` 字段并将 `Set me` 替换为帐户域。
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -96,7 +96,7 @@ git submodule update --init --recursive
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-找到 `AzureSpatialAnchorsApplication::StartCloudSession()` 并添加以下行，替换之前的帐户域：`m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");`。
+找到 `SpatialAnchorsAccountDomain` 字段并将 `Set me` 替换为帐户域。
 
 ---
 

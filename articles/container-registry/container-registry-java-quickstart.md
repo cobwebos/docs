@@ -2,15 +2,16 @@
 title: 快速入门 - 使用 Maven 和 Jib 生成 Java 容器映像并将其推送到 Azure 容器注册表
 description: 使用 Maven Jib 插件生成容器化 Java 应用并将其推送到 Azure 容器注册表。
 author: KarlErickson
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 87a4741ea8a64445c10c73bb1204aef1a2fcfaaf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 42200fe61b0ac73a63b9f8a3317687fac60c5c02
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248792"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078574"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入门：生成 Java 容器映像并将其推送到 Azure 容器注册表
 
@@ -177,4 +178,4 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
 * [Docker 上的 Spring Boot 入门](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
 * [将 Spring Boot 应用程序部署到 Azure 应用服务](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
-* [使用 Linux 上 Azure Web 应用的自定义 Docker 映像](../app-service/containers/tutorial-custom-docker-image.md)
+* [使用 Linux 上 Azure Web 应用的自定义 Docker 映像](../app-service/tutorial-custom-container.md)

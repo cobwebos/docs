@@ -1,21 +1,21 @@
 ---
-title: 在 Azure Notebooks 预览版上创建并共享 Jupyter 笔记本
-description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
+title: 在 Azure Notebooks 预览版上创建并共享 Jupyter Notebook
+description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter Notebook，然后与他人共享该 Notebook。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832094"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589327"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter 笔记本，然后与其他人共享该笔记本。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。
+在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter Notebook，然后与其他人共享该 Notebook。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter Notebook 而无需进行安装。
 
 ## <a name="prerequisites"></a>先决条件
 无。
@@ -43,13 +43,13 @@ ms.locfileid: "85832094"
 
 1. 几分钟后，Azure Notebooks 导航到新项目。 通过选择“+ 新建”下拉列表（可能仅显示为 +）并选择“笔记本”，向该项目添加笔记本    ：
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="新的空项目和“添加笔记本”命令。" lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
-1. 在出现的“创建新笔记本”弹出窗口中，输入笔记本的文件名，例如 HelloWorldInPython.ipynb（.ipynb 表示 IronPython (Jupyter) Notebook），并为语言（也称为内核）选择“Python 3.6”      ：
+1. 在出现的“创建新笔记本”弹出窗口中，输入笔记本的文件名，例如 HelloWorldInPython.ipynb（.ipynb 表示 IronPython (Jupyter) Notebook），并为语言（也称为内核）选择“Python 3.6”**************：
 
     ![“创建新笔记本”弹出窗口](media/quickstarts/new-notebook-popup.png)
 
-1. 选择“新建”以完成创建笔记本，该笔记本随后显示在项目的文件列表中  ：
+1. 选择“新建”以完成创建笔记本，该笔记本随后显示在项目的文件列表中：
 
     ![出现在项目文件列表中的新笔记本](media/quickstarts/new-notebook-created.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "85832094"
 
     ![Azure Notebooks 中新笔记本的视图](media/quickstarts/create-notebook-first-open.png)
 
-1. 默认情况下，笔记本有一个空代码单元。 要将单元类型更改为“Markdown”，请使用单元类型下拉列表选择“Markdown”   ：
+1. 默认情况下，笔记本有一个空代码单元。 要将单元类型更改为“Markdown”，请使用单元类型下拉列表选择“Markdown” ：
 
     ![更改新笔记本中的单元类型](media/quickstarts/create-notebook-cell-type.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "85832094"
     # Hello World in Python
     ```
 
-1. 由于你正在编辑 Markdown，因此文本显示为带有“#”的标题。 要将 Markdown 呈现为 HTML，请选择“运行”按钮  。 Azure Notebooks 随后自动创建一个新的代码单元：
+1. 由于你正在编辑 Markdown，因此文本显示为带有“#”的标题。 要将 Markdown 呈现为 HTML，请选择“运行”按钮。 Azure Notebooks 随后自动创建一个新的代码单元：
 
     ![单元的运行按钮和呈现的 Markdown](media/quickstarts/run-cell-markdown-render.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "85832094"
     print(msg)
     ```
 
-1. 选择“运行”  （键盘快捷方式：Shift+Enter）以运行代码。 在单元格下方，应看到类似于以下文本的成功输出：
+1. 选择“运行”（键盘快捷方式：Shift+Enter）以运行代码。 在单元格下方，应看到类似于以下文本的成功输出：
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -91,19 +91,19 @@ ms.locfileid: "85832094"
 
 1. 选择保存图标以保存你的工作：
 
-    ![Jupyter Notebook 工具栏上的保存图标](media/quickstarts/hello-results-save-icon.png)
+    ![Jupyter Notebook 工具栏上的“保存”图标](media/quickstarts/hello-results-save-icon.png)
 
-1. 选择“文件” > “关闭并停止”菜单命令来停止服务器并关闭浏览器窗口   。
+1. 选择“文件” > “关闭并停止”菜单命令来停止服务器并关闭浏览器窗口 。
 
 ## <a name="share-the-notebook"></a>共享笔记本
 
-要共享笔记本，请根据需要切换回项目页面，右键单击笔记本文件，选择“复制链接”（键盘快捷方式：Y），然后将该链接粘贴到相应的消息中（电子邮件、IM 等。）  。
+要共享笔记本，请根据需要切换回项目页面，右键单击笔记本文件，选择“复制链接”（键盘快捷方式：Y），然后将该链接粘贴到相应的消息中（电子邮件、IM 等。）****。
 
-在项目页面上，还可以使用“共享”菜单获取链接，使用链接创建电子邮件，或获取 HTML 和 Markdown 嵌入代码  ：
+在项目页面上，还可以使用“共享”菜单获取链接，使用链接创建电子邮件，或获取 HTML 和 Markdown 嵌入代码****：
 
 ![项目共享命令](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter 笔记本以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)

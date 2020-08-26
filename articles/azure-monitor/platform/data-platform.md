@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515523"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325570"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
@@ -36,7 +36,7 @@ Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连�
 
 Azure Monitor 中的指标存储在时序数据库中，该数据库经过优化，可用于分析带时间戳的数据。 因此，指标特别适合用于警报和快速检测问题。 它们可以告知系统的运行状况，但通常需要与日志相结合才能识别问题的根本原因。
 
-在 Azure 门户中使用 [Azure 指标资源管理器](../platform/metrics-getting-started.md)可以通过指标进行交互式分析。 可将指标添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果，以及用于近实时[警报](alerts-metric.md)。
+在 Azure 门户中使用 [Azure 指标资源管理器](./metrics-getting-started.md)可以通过指标进行交互式分析。 可将指标添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果，以及用于近实时[警报](alerts-metric.md)。
 
 在 [Azure Monitor 中的指标](data-platform-metrics.md)中详细了解 Azure Monitor 指标，包括其数据源。
 
@@ -90,3 +90,4 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 - 详细了解 [Azure Monitor 中的指标](data-platform-metrics.md)。
 - 详细了解 [Azure Monitor 中的日志](data-platform-logs.md)。
 - 了解适用于 Azure 中不同资源的[监视数据](data-sources.md)。
+

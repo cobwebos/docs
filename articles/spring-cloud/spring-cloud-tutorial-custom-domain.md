@@ -6,15 +6,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: devx-track-java
+ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780413"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374195"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>将现有自定义域映射到 Azure Spring Cloud
-分布式名称服务 (DNS) 是将网络节点名称存储在整个网络中的一种技术。 本教程使用 CNAME 记录来映射域（例如 www.contoso.com）。 本教程将使用证书保护自定义域，并介绍如何强制实施传输层安全性 (TLS)（也称为安全套接字层 (SSL)）。 
+域名服务 (DNS) 是将网络节点名称存储在整个网络中的一种技术。 本教程使用 CNAME 记录来映射域（例如 www.contoso.com）。 本教程将使用证书保护自定义域，并介绍如何强制实施传输层安全性 (TLS)（也称为安全套接字层 (SSL)）。 
 
 证书用于对 Web 流量进行加密。 可将这些 TLS/SSL 证书存储在 Azure Key Vault 中。 
 

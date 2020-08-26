@@ -1,6 +1,6 @@
 ---
 title: 了解如何使用 Azure 应用配置的快速入门
-description: 将 Azure 应用配置与 Java Spring 应用结合使用的快速入门。
+description: 在本快速入门中，使用 Azure 应用程序配置创建 Java Spring 应用，集中存储和管理与代码分离的应用程序设置。
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -9,13 +9,14 @@ editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
+ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085053"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586443"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
@@ -68,7 +69,7 @@ ms.locfileid: "82085053"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.1.2</version>
+        <version>1.1.5</version>
     </dependency>
     ```
 
@@ -78,7 +79,7 @@ ms.locfileid: "82085053"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.7</version>
     </dependency>
     ```
 

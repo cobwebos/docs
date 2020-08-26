@@ -13,11 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882533"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121028"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>准备用于生产的移动应用
 
@@ -35,7 +36,7 @@ ms.locfileid: "80882533"
 
 ## <a name="mitigate-and-investigate-issues"></a>缓解和调查问题
 
-若要更好地诊断应用中的问题，请收集数据。 有关可以收集的数据类型的信息，请参阅 [MSAL 应用程序中的日志记录](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)。
+若要更好地诊断应用中的问题，请收集数据。 有关可以收集的数据类型的信息，请参阅 [MSAL 应用程序中的日志记录](./msal-logging.md)。
 
 一些数据收集建议如下：
 

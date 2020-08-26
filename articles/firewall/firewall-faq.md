@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536963"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611171"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -95,8 +95,10 @@ Set-AzFirewall -AzureFirewall $azfw
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
-$azfw.Allocate($vnet,$publicip)
+$publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
+$publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
+$azfw.Allocate($vnet,@($publicip1,$publicip2))
+
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
@@ -113,7 +115,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
-是。 但是，将 UDR 配置为在同一 VNET 中的子网之间重定向流量时需要额外注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
+是的。 但是，将 UDR 配置为在同一 VNET 中的子网之间重定向流量时需要额外注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>是否在专用网络之间进行 Azure 防火墙出站 SNAT？
 
@@ -121,7 +123,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>是否支持强制隧道/链接到网络虚拟设备？
 
-创建新的防火墙时，支持强制隧道。 不能为强制隧道配置现有的防火墙。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。 
+创建新的防火墙时，支持强制隧道。 不能为强制隧道配置现有的防火墙。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
 Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接 。
 
@@ -133,15 +135,17 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
+当前只能在 FQDN 的左侧使用通配符。 例如，***. contoso.com** 和 ***contoso.com**。
+
 如果配置 * **.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
 
-## <a name="what-does-provisioning-state-failed-mean"></a>“预配状态:** 失败”意味着什么？
+## <a name="what-does-provisioning-state-failed-mean"></a>“预配状态:失败”意味着什么？
 
-每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。**
+每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。
 
 ## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure 防火墙如何处理计划内维护和计划外故障？
 Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于任何计划内维护，我们都可以通过连接清空逻辑来正常更新节点。  更新安排在每个 Azure 区域的非营业时间，这样可以进一步限制中断风险。  对于计划外问题，我们会实例化一个新节点来代替故障节点。  通常情况下，我们会在发生故障后 10 秒钟内重新建立到新节点的连接。
@@ -152,7 +156,7 @@ Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于�
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>防火墙名称是否存在字符限制？
 
-是。 防火墙名称有 50 个字符的限制。
+是的。 防火墙名称有 50 个字符的限制。
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>为何 Azure 防火墙需要 /26 子网大小？
 
@@ -160,7 +164,7 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-不是。 Azure 防火墙不需要大于 /26 的子网。
+否。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
@@ -168,20 +172,22 @@ Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙横向扩展需要多长时间？
 
-当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 横向扩展需要 5 到 7 分钟。 进行性能测试时，请确保测试至少10到15分钟，并启动新连接以利用新创建的防火墙节点。
+当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 Gbps，并在达到该数字的60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 
+
+进行性能测试时，请确保至少测试 10 到 15 分钟，并启动新连接以利用新创建的防火墙节点。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
 能。可以使用 Azure PowerShell 执行该操作：
 
 ```azurepowershell
-# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+# Add a Threat Intelligence allow list to an Existing Azure Firewall
 
-## Create the Whitelist with both FQDN and IPAddresses
+## Create the allow list with both FQDN and IPAddresses
 
 $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
@@ -189,9 +195,10 @@ $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
 
 ## Or Update FQDNs and IpAddresses separately
 
-$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
-$fw.ThreatIntelWhitelist.FQDNs = @("fqdn1", "fqdn2", …)
-$fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
+$fw = Get-AzFirewall -Name $firewallname -ResourceGroupName $RG
+$fw.ThreatIntelWhitelist.IpAddresses = @($fw.ThreatIntelWhitelist.IpAddresses + $ipaddresses)
+$fw.ThreatIntelWhitelist.fqdns = @($fw.ThreatIntelWhitelist.fqdns + $fqdns)
+
 
 Set-AzFirewall -AzureFirewall $fw
 ```
@@ -204,13 +211,13 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 
 是的。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
 
-## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>是否可以将 IP 组移动到其他资源组？
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>能否将 IP 组移到其他资源组？
 
 否，目前不支持将 IP 组移动到其他资源组。
 
-## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火墙的 TCP 空闲超时是多少？
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火墙的 TCP 空闲超时是多长时间？
 
-网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有任何活动时立即将其关闭。 Azure 防火墙 TCP 空闲超时为4分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则无法保证已维护 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅[.net 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有活动时迅速将其关闭。 Azure 防火墙 TCP 空闲超时为 4 分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则不能保证维持 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以部署没有公共 IP 地址的 Azure 防火墙？
 
@@ -218,4 +225,4 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 
 ## <a name="where-does-azure-firewall-store-customer-data"></a>Azure 防火墙将客户数据存储在何处？
 
-Azure 防火墙不会将客户数据从其部署到的区域中移出或存储。
+Azure 防火墙不会将客户数据从它所部署到的区域中移出或存储。

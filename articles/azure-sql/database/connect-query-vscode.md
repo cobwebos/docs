@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267250"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515047"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入门：使用 Visual Studio Code 进行连接和查询 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,9 +29,9 @@ ms.locfileid: "84267250"
 
 - Azure SQL 数据库或 Azure SQL 托管实例中的数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
-  || Azure SQL Database | Azure SQL 托管实例 |
+  | 操作 | Azure SQL Database | Azure SQL 托管实例 |
   |:--- |:--- |:---|
-  | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) |
+  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) |
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [来自虚拟机 (VM) 的连接](../managed-instance/connect-vm-instance-configure.md)|
@@ -74,7 +74,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页 。
 
@@ -86,7 +86,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 打开新的 Visual Studio Code 窗口。
 
-2. 按 Ctrl+N 。 这会打开一个新的纯文本文件。
+2. 按 **Ctrl**+**N**。 这会打开一个新的纯文本文件。
 
 3. 选择状态栏右下角的“纯文本”。
 
@@ -101,13 +101,13 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板 。
 
-2. 选择“MS SQL:Connect”，然后选择“Enter” 。
+2. 选择“MS SQL:Connect”，然后选择 **Enter**。
 
 3. 选择“创建连接配置文件”。
 
-4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续。
+4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择 **Enter** 以继续。
 
-   | properties       | 建议的值 | 说明 |
+   | 属性       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |
@@ -115,7 +115,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    | **用户名** | 用户名 | 用于创建服务器的服务器管理员帐户的用户名。 |
    | **密码(SQL 登录名)** | 密码 | 用于创建服务器的服务器管理员帐户的密码。 |
    | **是否保存密码？** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
-   | 输入此配置文件的名称 | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
+   | **输入此配置文件的名称** | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
 
    如果成功，会显示通知，指出已创建并连接配置文件。
 
@@ -132,13 +132,13 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. 按 Ctrl+Shift+E 运行查询并显示来自 `Product` 和 `ProductCategory` 表的结果  。
+2. 按 **Ctrl**+**Shift**+**E** 来运行查询并显示来自 `Product` 和 `ProductCategory` 表的结果。
 
     ![从 2 个表中检索数据的查询](./media/connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>插入数据
 
-运行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
+运行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句来向 `SalesLT.Product` 表中添加新产品。
 
 1. 将之前的查询替换为此查询。
 
@@ -166,7 +166,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="update-data"></a>更新数据
 
-运行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句更新已添加的产品。
+运行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句来更新已添加的产品。
 
 1. 将之前的查询替换为此查询：
 
@@ -180,7 +180,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="delete-data"></a>删除数据
 
-运行以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句删除新产品。
+运行以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句来删除新产品。
 
 1. 将之前的查询替换为此查询：
 

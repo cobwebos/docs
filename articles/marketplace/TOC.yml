@@ -8,7 +8,7 @@
     - name: 商业市场概述和权益
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 一个市场，两个店面
+        - name: 一个市场，两个在线商店
           href: ./comparing-appsource-azure-marketplace.md
         - name: 发布选项和注意事项
           href: ./determine-your-listing-type.md
@@ -60,6 +60,8 @@
         - name: 市场权益
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Azure 使用承诺权益
+              href: ./azure-consumption-commitment-benefit.md
             - name: 联合销售合作伙伴参与
               href: ./marketplace-co-sell.md
             - name: 首选解决方案
@@ -119,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技术资产常见问题解答
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: 认证 Azure VM 映像
+                - name: 测试通过 VHD 部署的虚拟机
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI
                   items:
@@ -167,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: 创建 SaaS 产品/服务
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: 适用于 SaaS 的 Azure AD 身份验证
+              items:
+                - name: Azure AD 和 SaaS 概述
+                  href: ./azure-ad-saas.md
+                - name: 可发生交易的产品/服务的登陆页
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: 免费或试用版产品/服务的登陆页
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS 履行 API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

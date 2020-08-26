@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80298335"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305204"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
@@ -89,7 +89,7 @@ Log Analytics 网关支持以下语言：
 
 Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为了确保传输到 Log Analytics 的数据的安全性，请将网关配置为至少使用 TLS 1.2。 旧版 TLS 或 SSL 容易受到攻击。 尽管这些协议目前允许后向兼容，但请勿使用。  
 
-有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
+有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](./data-security.md#sending-data-securely-using-tls-12)。 
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
 
@@ -124,7 +124,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 若要使用安装向导安装网关，请执行以下步骤。 
 
 1. 在目标文件夹中，双击“Log Analytics gateway.msi”。****
-1. 在“欢迎”页上，选择“下一步”。 
+1. 在“欢迎”页上，选择“下一步”。
 
    ![网关安装向导中的“欢迎”页屏幕截图](./media/gateway/gateway-wizard01.png)
 
@@ -149,11 +149,11 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>使用命令行安装 Log Analytics 网关
 
-网关的下载文件是一个 Windows Installer 包，它支持通过命令行或其他自动化方法以无提示方式完成安装。 如果你不熟悉 Windows Installer 的标准命令行选项，请参阅[命令行选项](https://docs.microsoft.com/windows/desktop/Msi/command-line-options)。
+网关的下载文件是一个 Windows Installer 包，它支持通过命令行或其他自动化方法以无提示方式完成安装。 如果你不熟悉 Windows Installer 的标准命令行选项，请参阅[命令行选项](/windows/desktop/msi/command-line-options)。
  
 下表突出显示了安装程序支持的参数。
 
-|参数| 备注|
+|参数| 说明|
 |----------|------| 
 |PORTNUMBER | 网关侦听的 TCP 端口号 |
 |PROXY | 代理服务器的 IP 地址 |
@@ -185,11 +185,11 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 ## <a name="configure-network-load-balancing"></a>配置网络负载均衡
 
-你可以使用 Microsoft[网络负载平衡（nlb）](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)、 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)或基于硬件的负载均衡器来配置使用网络负载平衡（nlb）的高可用性网关。 负载均衡器通过在其节点之间重定向 Log Analytics 代理或 Operations Manager 管理服务器请求的连接来管理流量。 如果一台网关服务器出现故障，流量将重定向到其他节点。
+你可以使用 Microsoft[网络负载平衡（nlb）](/windows-server/networking/technologies/network-load-balancing)、 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)或基于硬件的负载均衡器来配置使用网络负载平衡（nlb）的高可用性网关。 负载均衡器通过在其节点之间重定向 Log Analytics 代理或 Operations Manager 管理服务器请求的连接来管理流量。 如果一台网关服务器出现故障，流量将重定向到其他节点。
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft 网络负载均衡
 
-若要了解如何设计和部署 Windows Server 2016 网络负载均衡群集，请参阅[网络负载均衡](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)。 以下步骤介绍如何配置 Microsoft 网络负载均衡群集。  
+若要了解如何设计和部署 Windows Server 2016 网络负载均衡群集，请参阅[网络负载均衡](/windows-server/networking/technologies/network-load-balancing)。 以下步骤介绍如何配置 Microsoft 网络负载均衡群集。  
 
 1. 使用管理帐户登录到属于 NLB 群集的 Windows 服务器。  
 2. 在服务器管理器中打开网络负载均衡管理器，单击“工具”，并单击“网络负载均衡管理器”。********
@@ -248,7 +248,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 首次向 Log Analytics 工作区注册 Operations Manager 管理组时，操作控制台中不会显示为管理组指定代理配置的选项。 只有在成功向服务注册管理组之后，此选项才可用。  
 
-若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤：
+若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤:
 
 1. 打开权限提升的命令提示符：
 
@@ -329,7 +329,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 | **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |Key |获取服务的配置 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |密钥 |获取服务的配置 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |密钥（必需） <br> 值 |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |获取中继（上游）代理的地址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码（安全字符串） |设置中继（上游）代理的地址（和凭据） |1. 设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -340,7 +340,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 | `Remove-OMSGatewayAllowedClientCertificate` |使用者（必需） |从允许列表中删除客户端证书使用者 |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |获取当前允许的客户端证书使用者（仅限本地配置的允许使用者，而不是自动下载的允许使用者） |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 若要收集网关记录的事件，应该安装 Log Analytics 代理。
 
@@ -388,4 +388,5 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 ## <a name="next-steps"></a>后续步骤
 
-[添加数据源](../../azure-monitor/platform/agent-data-sources.md)以便从连接的源中收集数据，并将数据存储在 Log Analytics 工作区中。
+[添加数据源](./agent-data-sources.md)以便从连接的源中收集数据，并将数据存储在 Log Analytics 工作区中。
+

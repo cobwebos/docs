@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Bitly 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Bitly 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d142154c-dba5-4c71-a160-915431304fc6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbda372b3fd9c24b2147c17ffdbef228a18abdb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6e4d907707454fd7be7fe4f15a94830a5179f4e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74085160"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551719"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bitly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Bitly 的集成
 

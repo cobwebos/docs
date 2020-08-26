@@ -1,30 +1,29 @@
 ---
-title: Windows 虚拟桌面诊断问题 - Azure
-description: 如何使用 Windows 虚拟桌面诊断功能来诊断问题。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 诊断问题-Azure
+description: 如何使用 Windows 虚拟桌面 (经典) 诊断功能来诊断问题。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235549"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009335"
 ---
-# <a name="identify-and-diagnose-issues"></a>识别和诊断问题
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>确定和诊断 Windows 虚拟桌面 (经典) 中的问题
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../diagnostics-role-service.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../diagnostics-role-service.md)。
 
 Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 每当用户与系统交互时，Windows 虚拟桌面角色就会记录诊断活动。 每个日志都包含相关信息，例如事务中涉及的 Windows 虚拟桌面角色、错误消息、租户信息和用户信息。 诊断活动由最终用户和管理操作创建，可分为三个主要的存储桶：
 
 * 源订阅活动：最终用户每当尝试通过 Microsoft 远程桌面应用程序连接到其源时都会触发这些活动。
 * 连接活动：最终用户每当尝试通过 Microsoft 远程桌面应用程序连接到桌面或 RemoteApp 时都会触发这些活动。
 * 管理活动：管理员每当在系统上执行管理操作（如创建主机池、将用户分配到应用组和创建角色分配）时都会触发这些活动。
-  
+
 由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当最终用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
 
 首先，[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
@@ -38,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Windows 虚拟桌面诊断只使用一个 PowerShell cmdlet，但包含许多可选参数来帮助缩小问题范围和隔离问题。 以下部分列出了可用于诊断问题的 cmdlet。 大多数筛选器可以一起应用。 括在括号中的值（如 `<tenantName>`）应替换为适用于你的情况的值。
 
 >[!IMPORTANT]
->诊断功能适用于单用户故障排除。 使用 PowerShell 的所有查询都必须包含 -UserName 或 -ActivityID 参数。  对于监视功能，请使用 Log Analytics。 有关如何向工作区发送诊断数据的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics-2019.md)。 
+>诊断功能适用于单用户故障排除。 使用 PowerShell 的所有查询都必须包含 -UserName 或 -ActivityID 参数。  对于监视功能，请使用 Log Analytics。 有关如何向工作区发送诊断数据的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics-2019.md)。
 
 ### <a name="filter-diagnostic-activities-by-user"></a>按用户筛选诊断活动
 

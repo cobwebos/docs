@@ -13,11 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: e13e6d9ac2f4600e41f221efd23997f712dffc54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032079"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
 本文逐步讲解如何使用 [Terraform AzureRM 提供程序](https://www.terraform.io/docs/providers/azurerm/index.html)创建资源组。

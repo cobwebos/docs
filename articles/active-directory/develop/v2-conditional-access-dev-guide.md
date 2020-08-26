@@ -14,11 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771071"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120620"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -32,7 +33,7 @@ ms.locfileid: "83771071"
 
 对于构建 Azure AD 应用的开发人员，本文演示了条件访问的使用方法，并介绍了访问应用了条件访问策略且你无权控制的资源时将产生的影响。 此外，本文还探讨了条件访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的影响。
 
-本文假定已了解[单租户](quickstart-register-app.md)和[多租户](howto-convert-app-to-be-multi-tenant.md)应用以及[常见的身份验证模式](authentication-scenarios.md)。
+本文假定已了解[单租户](quickstart-register-app.md)和[多租户](howto-convert-app-to-be-multi-tenant.md)应用以及[常见的身份验证模式](./authentication-vs-authorization.md)。
 
 > [!NOTE]
 > 使用此功能需要 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -51,7 +52,7 @@ ms.locfileid: "83771071"
 * 使用 MSAL.js 的单页应用
 * 调用资源的 Web 应用
 
-条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件访问策略，请参阅[快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA](../conditional-access/app-based-mfa.md)。
+条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件访问策略，请参阅[快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA](../authentication/tutorial-enable-azure-mfa.md)。
 
 根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。
 
@@ -92,7 +93,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>先决条件
 
-Azure AD 条件访问是 [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 包含的一项功能。 拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。
+Azure AD 条件访问是 [Azure AD Premium](../fundamentals/active-directory-whatis.md) 包含的一项功能。 拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定应用场景的注意事项
 
@@ -179,7 +180,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>另请参阅
 
-* 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](/azure/active-directory/conditional-access/overview)。
+* 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](../conditional-access/overview.md)。
 * 有关更多的 Azure AD 代码示例，请参阅[示例](sample-v2-code.md)。
 * 有关 MSAL SDK 的详细信息以及如何访问参考文档，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](howto-convert-app-to-be-multi-tenant.md)。

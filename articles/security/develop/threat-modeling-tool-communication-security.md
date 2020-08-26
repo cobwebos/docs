@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 的通信安全
 titleSuffix: Azure
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中公开的通信安全威胁的缓解措施。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 8cb74a020590fc55dcd1f046ba667be3d6640b3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73210da43c9919af1d92d0e8c354e1d7f9c77bed
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203737"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543939"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -31,12 +31,12 @@ ms.locfileid: "82203737"
 | **Azure 数据工厂** | <ul><li>[将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
 | **标识服务器** | <ul><li>[确保发往标识服务器的所有流量都通过 HTTPS 连接传输](#identity-https)</li></ul> |
 | **Web 应用程序** | <ul><li>[验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书](#x509-ssltls)</li><li>[在 Azure 应用服务中为自定义域配置 TLS/SSL 证书](#ssl-appservice)</li><li>[强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输](#appservice-https)</li><li>[启用 HTTP 严格传输安全性 (HSTS)](#http-hsts)</li></ul> |
-| **数据库** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
+| **Database** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
 | **Azure 存储** | <ul><li>[确保与 Azure 存储之间的通信通过 HTTPS 进行](#comm-storage)</li><li>[如果无法启用 HTTPS，请在下载 Blob 后验证 MD5 哈希](#md5-https)</li><li>[使用 SMB 3.0 兼容的客户端来确保传输到 Azure 文件共享的数据经过加密](#smb-shares)</li></ul> |
 | **移动客户端** | <ul><li>[实施证书绑定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输](#webapi-https)</li></ul> |
-| **用于 Redis 的 Azure 缓存** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
+| **Azure Redis 缓存** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
 | **IoT 现场网关** | <ul><li>[保护设备与现场网关之间的通信](#device-field)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用 SSL/TLS 保护设备与云网关之间的通信](#device-cloud)</li></ul> |
 
@@ -44,7 +44,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 事件中心 | 
+| **组件**               | Azure 事件中心 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -55,7 +55,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
+| **组件**               | Dynamics CRM | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -66,7 +66,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 数据工厂 | 
+| **组件**               | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 链接服务类型-Azure 和本地 |
@@ -88,7 +88,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -99,7 +99,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
@@ -110,7 +110,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
@@ -143,7 +143,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -165,10 +165,10 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
+| **组件**               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem |
-| **特性**              | SQL 版本 - MsSQL2016，SQL 版本 - MsSQL2012，SQL 版本 - MsSQL2014 |
+| **属性**              | SQL 版本 - MsSQL2016，SQL 版本 - MsSQL2012，SQL 版本 - MsSQL2014 |
 | **参考**              | [启用数据库引擎的加密连接](https://msdn.microsoft.com/library/ms191192)  |
 | **步骤** | 启用 TLS 加密可以提高在 SQL Server 实例与应用程序之间通过网络传输的数据的安全性。 |
 
@@ -179,7 +179,7 @@ ms.locfileid: "82203737"
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
-| **特性**              | 空值  |
+| **属性**              | 空值  |
 | **参考**              | [Azure 存储传输级加密 – 使用 HTTPS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
 | **步骤** | 为了确保传输中 Azure 存储数据的安全性，请在调用 REST API 或访问存储中的对象时，始终使用 HTTPS 协议。 此外，可以使用共享访问签名，它除了可以委派对 Azure 存储对象的访问权限，还能指定在使用共享访问签名时只能使用 HTTPS 协议，确保任何使用 SAS 令牌发出链接的人都使用正确的协议。|
 
@@ -190,7 +190,7 @@ ms.locfileid: "82203737"
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | StorageType - Blob |
+| **属性**              | StorageType - Blob |
 | **参考**              | [Windows Azure Blob MD5 概述](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
 | **步骤** | <p>Windows Azure Blob 服务提供相应的机制来确保应用程序和传输层的数据完整性。 如果出于任何原因需要使用 HTTP 而不是 HTTPS，并且使用的是块 Blob，则可以使用 MD5 检查，帮助验证正在传输的 Blob 的完整性。</p><p>这会有助于防止网络/传输层错误，但不一定可帮助防止中间攻击。 如果可以使用提供传输级安全的 HTTPS，则使用 MD5 检查就很多余且不必要。</p>|
 
@@ -198,7 +198,7 @@ ms.locfileid: "82203737"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 移动客户端 | 
+| **组件**               | 移动客户端 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 文件 |
@@ -212,7 +212,7 @@ ms.locfileid: "82203737"
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Windows Phone |
-| **特性**              | 空值  |
+| **属性**              | 空值  |
 | **参考**              | [证书和公钥绑定](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) |
 | **步骤** | <p>证书绑定可以防范中间人 (MITM) 攻击。 绑定是将主机与其预期 X509 证书或公钥相关联的过程。 某个主机知悉或者识别到某个证书或公钥后，该证书或公钥将关联或“绑定”到该主机。 </p><p>因此，当攻击者尝试展开 TLS MITM 攻击时，在 TLS 握手期间，攻击者服务器中的密钥将与绑定证书的密钥不同，因此会丢弃该请求，阻止 MITM。可以通过实现 ServicePointManager 的 `ServerCertificateValidationCallback` 委派来完成证书绑定。</p>|
 
@@ -286,7 +286,7 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 空值  |
@@ -337,7 +337,7 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 空值  |
@@ -378,7 +378,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 用于 Redis 的 Azure 缓存 | 
+| **组件**               | 用于 Redis 的 Azure 缓存 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -391,7 +391,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
+| **组件**               | IoT 现场网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -402,7 +402,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
+| **组件**               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |

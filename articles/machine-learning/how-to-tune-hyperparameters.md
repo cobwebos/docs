@@ -8,14 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 03/30/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 93418369724286e8b8c967754b2fb37135094008
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: c1c11d16be6bd5eb7381a811216323680fe74c08
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027583"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849363"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型的超参数
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -378,7 +379,7 @@ RunDetails(hyperdrive_run).show()
 
 [![超参数优化并行坐标](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-还可将 Azure Web 门户中的所有超参数优化运行可视化。 若要详细了解如何在 Web 门户中查看试验，请参阅[如何跟踪试验](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)。
+还可将 Azure Web 门户中的所有超参数优化运行可视化。 若要详细了解如何在 Web 门户中查看试验，请参阅[如何跟踪试验](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
 
 ## <a name="find-the-best-model"></a>找到最佳模型
 

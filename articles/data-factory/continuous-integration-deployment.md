@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336871"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815787"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -48,7 +49,7 @@ ms.locfileid: "85336871"
 
 1.  在拉取请求获得批准并已将更改合并到主分支后，更改将发布到开发工厂。
 
-1.  团队在准备好将更改部署到测试或 UAT 工厂后，会转到其 Azure Pipelines 发布阶段，并会将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
+1.  当团队准备好将更改部署到测试或 UAT (用户验收测试) 工厂时，团队会转到其 Azure Pipelines 版本，并将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
 
 1.  在测试工厂中验证更改后，将使用下一个管道发布任务部署到生产工厂。
 
@@ -97,7 +98,7 @@ ms.locfileid: "85336871"
 
     ![阶段视图](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  创建新任务。 搜索 " **ARM 模板部署**"，然后选择 "**添加**"。
+    b.  创建新任务。 搜索 " **ARM 模板部署**"，然后选择 " **添加**"。
 
     c.  在“部署任务”中，选择目标数据工厂的订阅、资源组和位置。 根据需要提供凭据。
 
@@ -112,7 +113,7 @@ ms.locfileid: "85336871"
     h. 选择“增量”作为“部署模式”。 
 
     > [!WARNING]
-    > 如果选择“完整”作为“部署模式”，可能会删除现有资源，包括目标资源组中未在资源管理器模板中定义的所有资源。 
+    > 在完整部署模式下，资源组中存在但在新资源管理器模板中未指定的资源将被 **删除**。 有关详细信息，请参阅 [Azure 资源管理器部署模式](../azure-resource-manager/templates/deployment-modes.md)
 
     ![数据工厂生产部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -623,7 +624,7 @@ ms.locfileid: "85336871"
 - 按照设计，数据工厂不允许挑拣提交内容或选择性地发布资源。 发布将包含数据工厂中发生的所有更改。
 
     - 数据工厂实体相互依赖。 例如，触发器依赖于管道，而管道又依赖于数据集和其他管道。 选择性发布资源子集可能会导致意外的行为和错误。
-    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅[修补程序生产环境](#hotfix-production-environment)。
+    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅 [修补程序生产环境](#hotfix-production-environment)。
 
 -   无法从专用分支发布。
 

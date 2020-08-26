@@ -90,7 +90,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳做法
+- name: 最佳实践
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
@@ -143,6 +143,9 @@
           href: cluster-security-certificates.md
         - name: Service Fabric 中的证书管理
           href: cluster-security-certificate-management.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Azure 安全基准的安全基线
           href: security-baseline.md
     - name: 术语
@@ -632,7 +635,7 @@
             - name: 使用 Azure Pipelines 设置持续集成
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: 使用 Jenkins 部署 Linux 应用程序
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: 设置和配置反向代理
       items:
         - name: 设置和配置反向代理
@@ -668,7 +671,7 @@
                 - name: 以编程方式横向扩展
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: 纵向扩展主节点类型
-                  href: service-fabric-scale-up-node-type.md
+                  href: service-fabric-scale-up-primary-node-type.md
                 - name: 添加节点类型
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: 删除节点类型

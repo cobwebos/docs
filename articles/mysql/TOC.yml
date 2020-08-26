@@ -1,4 +1,4 @@
-- name: 用于 MySQL 的 Azure DB 文档
+- name: Azure DB for MySQL 文档
   href: index.yml
 - name: 概述
   items:
@@ -28,6 +28,12 @@
           href: connect-php.md
         - name: Java
           href: connect-java.md
+        - name: 将 Java 与 Spring Data JDBC 配合使用
+          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: 将 Java 与 Spring Data JPA 配合使用
+          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: 将 Java 与 Spring Data R2DBC 配合使用
+          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
         - name: .NET
           href: connect-csharp.md
         - name: Python
@@ -57,10 +63,10 @@
     - name: 2 - 创建 Web 应用
       items:
         - name: 将 Wordpress 与 MySQL 配合使用创建多容器应用
-          href: ../app-service/containers/tutorial-multi-container-app.md
+          href: ../app-service/tutorial-multi-container-app.md
           maintainContext: true
         - name: 将 PHP 与 MySQL 配合使用
-          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          href: ../app-service/tutorial-php-mysql-app.md
           maintainContext: true
 - name: 示例
   items:
@@ -130,7 +136,7 @@
           href: concepts-audit-logs.md
         - name: 查询存储
           href: concepts-query-store.md
-        - name: 查询性能见解
+        - name: Query Performance Insight
           href: concepts-query-performance-insight.md
         - name: 性能建议
           href: concepts-performance-recommendations.md
@@ -138,6 +144,8 @@
           href: concepts-server-parameters.md
     - name: 开发
       items:
+        - name: 应用程序最佳做法
+          href: app-development-best-practices.md
         - name: 驱动程序和工具兼容性
           href: concepts-compatibility.md
         - name: 应用程序开发
@@ -148,10 +156,14 @@
           href: concepts-aks.md
         - name: Java
           items:
-            - name: 配置 Spring Data JDBC
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
-            - name: 配置 Spring Data JPA
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
+            - name: 使用 Java 和 JDBC
+              href: connect-java.md
+            - name: 使用 Spring Data JDBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: 使用 Spring Data JPA
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: 使用 Spring Data R2DBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
     - name: 复制
       items:
         - name: 复制中数据
@@ -191,7 +203,11 @@
         - name: 创建用户
           href: howto-create-users.md
         - name: 连接字符串
-          href: howto-connection-string.md
+          items:
+            - name: 连接应用程序
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: 配置 SSL
           href: howto-configure-ssl.md
         - name: 配置 TLS
@@ -246,6 +262,8 @@
           href: howto-read-replicas-powershell.md
     - name: 疑难解答
       items:
+        - name: 排查常见错误
+          href: howto-troubleshoot-common-errors.md
         - name: 排查连接错误
           href: howto-troubleshoot-common-connection-issues.md
         - name: 查询性能故障排除

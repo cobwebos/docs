@@ -1,5 +1,5 @@
 ---
-title: 创建托管专用终结点以连接到数据源结果。
+title: 创建托管专用终结点以连接到数据源结果
 description: 本文介绍如何从 Azure Synapse 工作区创建到数据源的托管专用终结点。
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065474"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>创建到数据源的托管专用终结点（预览）
 
@@ -31,12 +31,12 @@ ms.locfileid: "85193883"
 
 ## <a name="step-3-select-the-data-source-type"></a>步骤3：选择数据源类型
 
-选择数据源类型。 在这种情况下，目标数据源是 ADLS Gen2 帐户。 选择“继续”。
+选择数据源类型。 在这种情况下，目标数据源是 ADLS Gen2 帐户。 选择**继续**。
 ![选择目标数据源类型](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步骤4：输入有关数据源的信息
 
-在下一个窗口中，输入有关数据源的信息。 在此示例中，我们要创建一个 ADLS Gen2 帐户的托管专用终结点。 输入托管专用终结点的**名称**。 提供**Azure 订阅**和**存储帐户名称**。 选择“创建”。
+在下一个窗口中，输入有关数据源的信息。 在此示例中，我们要创建一个 ADLS Gen2 帐户的托管专用终结点。 输入托管专用终结点的**名称**。 提供**Azure 订阅**和**存储帐户名称**。 选择“创建” 。
 ![输入目标数据源详细信息](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>步骤5：验证托管专用终结点是否已成功创建

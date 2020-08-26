@@ -4,14 +4,14 @@ description: 了解在 Azure 中运行虚拟机的可用性功能
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 39674e17c16870ba170242ee17cdc17fde4e5798
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531019"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815600"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
 
@@ -47,19 +47,19 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 ## <a name="virtual-machines-scale-sets"></a>虚拟机规模集 
 
-使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新许多 VM。 建议在一个规模集内创建两个或多个 VM，使应用程序高度可用，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 规模集本身是免费的，你只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集内的虚拟机可以跨多个更新域和容错域部署，以最大程度地提高因数据中心中断、计划内或计划外维护事件而导致停机时的可用性和复原能力。 规模集内的虚拟机还可以部署到单个可用性区域或按地区进行部署。 可用性区域部署选项可能因业务流程模式而异。
+使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新许多 VM。 建议在一个规模集内创建两个或多个 VM，使应用程序高度可用，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 规模集本身是免费的，你只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](./disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集内的虚拟机可以跨多个更新域和容错域部署，以最大程度地提高因数据中心中断、计划内或计划外维护事件而导致停机时的可用性和复原能力。 规模集内的虚拟机还可以部署到单个可用性区域或按地区进行部署。 可用性区域部署选项可能因业务流程模式而异。
 
 **容错域和更新域**
 
-虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
+虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](./windows/manage-availability.md)。
 
 
 ## <a name="availability-sets"></a>可用性集
-可用性集是数据中心内的 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 可用性集本身是免费的，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](./windows/disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。
+可用性集是数据中心内的 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 可用性集本身是免费的，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](./disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。
 
 在可用性集中，VM 自动分布到这些容错域中。 此方法可限制潜在物理硬件故障、网络中断或断电的影响。
 
-对于使用 [Azure 托管磁盘](./windows/faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 
+对于使用 [Azure 托管磁盘](./faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 
 
 在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。 可以阅读有关这些适用于 [Linux VM](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) 或 [Windows VM](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) 的托管磁盘容错域的详细信息。
 
@@ -72,4 +72,3 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 ## <a name="next-steps"></a>后续步骤
 现在即可开始使用这些可用性和冗余功能构建 Azure 环境。 有关最佳实践的信息，请参阅 [Azure 可用性的最佳实践](/azure/architecture/checklist/resiliency-per-service)。
-

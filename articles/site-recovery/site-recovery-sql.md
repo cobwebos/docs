@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133709"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824522"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
@@ -47,6 +47,8 @@ Azure IaaS VM 上的或本地的 SQL Server。| 使用 Azure Site Recovery 进�
 > * 对于 Azure、Hyper-V、VMware 或物理基础结构中的任何部署，都可以选择使用 Site Recovery。 请遵照本文档末尾的指导来了解[如何使用 Site Recovery 帮助保护 SQL Server 群集](#how-to-help-protect-a-sql-server-cluster)。
 > * 确保在计算机上观测到的数据更改率在 [Site Recovery 限制](vmware-physical-azure-support-matrix.md#churn-limits)范围内。 更改率以每秒写入字节数度量。 对于运行 Windows 的计算机，可以选择任务管理器中的“性能”选项卡来查看此更改率。  观测每个磁盘的写入速度。
 > * Site Recovery 支持复制存储空间直通上的故障转移群集实例。 有关详细信息，请参阅[如何启用存储空间直通复制](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
+> 
+> 将 SQL 工作负荷迁移到 Azure 时，建议对[Azure 虚拟机上的 SQL Server 应用性能指导原则](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
 
 ## <a name="disaster-recovery-of-an-application"></a>应用程序的灾难恢复
 
@@ -54,18 +56,18 @@ Site Recovery 借助恢复计划来协调整个应用程序的测试故障转移
 
 需要满足一些先决条件才能确保根据需要完全自定义恢复计划。 任何 SQL Server 部署通常都需要一个 Active Directory 部署。 它还需要应用层的连接。
 
-### <a name="step-1-set-up-active-directory"></a>步骤 1：设置 Active Directory
+### <a name="step-1-set-up-active-directory"></a>步骤1：设置 Active Directory
 
 在辅助恢复站点上安装 Active Directory，使 SQL Server 能够正常运行。
 
-* **小型企业**：你有少量的应用程序和适用于本地站点的单个域控制器。 若要故障转移整个站点，请使用 Site Recovery 复制。 此服务会将域控制器复制到辅助数据中心或 Azure。
-* **大中型企业**：你可能需要设置其他域控制器。
+* **小型企业**：你有少量的应用程序和用于本地站点的单个域控制器。 若要故障转移整个站点，请使用 Site Recovery 复制。 此服务会将域控制器复制到辅助数据中心或 Azure。
+* **大中型企业**：可能需要设置其他域控制器。
   - 如果你有大量的应用程序、使用 Active Directory 林，并且想要按应用程序或工作负荷进行故障转移，请在辅助数据中心或 Azure 中设置另一个域控制器。
   -  如果你使用 Always On 可用性组恢复到远程站点，请在辅助站点或 Azure 中设置另一个域控制器。 此域控制器供已恢复的 SQL Server 实例使用。
 
 本文中的说明假设辅助位置中提供了域控制器。 有关详细信息，请参阅[使用 Site Recovery 帮助保护 Active Directory](site-recovery-active-directory.md) 的过程。
 
-### <a name="step-2-ensure-connectivity-with-other-tiers"></a>步骤 2：确保与其他层建立连接
+### <a name="step-2-ensure-connectivity-with-other-tiers"></a>步骤2：确保与其他层的连接
 
 在目标 Azure 区域中运行数据库层后，确保与应用层和 Web 层建立连接。 提前采取必要的步骤来验证与测试故障转移建立的连接。
 
@@ -74,7 +76,7 @@ Site Recovery 借助恢复计划来协调整个应用程序的测试故障转移
 * [根据云灾难恢复设计应用程序](../azure-sql/database/designing-cloud-solutions-for-disaster-recovery.md)
 * [弹性池灾难恢复策略](../azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
-### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>步骤 3：与 Always On、活动异地复制和自动故障转移组互操作
+### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>步骤3：与 Always On、活动异地复制和自动故障转移组进行互操作
 
 BCDR 技术 Always On、活动异地复制和自动故障转移组为目标 Azure 区域中运行的 SQL Server 提供辅助副本。 应用程序故障转移的第一步是将此副本指定为主副本。 此步骤假设次要区域中已有一个域控制器。 如果你选择执行自动故障转移，则可能不需要执行该步骤。 只有在完成数据库故障转移后，才故障转移 Web 层和应用层。
 

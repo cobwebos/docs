@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195241"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531500"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 的 Azure 安全基线
 
@@ -50,7 +50,7 @@ Azure 专用链接概述：https://docs.microsoft.com/azure/private-link/private
 
 **指导**：使用 Azure 安全中心并遵循网络保护建议来帮助保护与 Azure Cosmos 帐户相关的网络资源。
 
-虚拟机部署到 Azure Cosmos 帐户所在的同一虚拟网络中后，可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+虚拟机部署到 Azure Cosmos 帐户所在的同一虚拟网络中后，可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
 
 了解 Azure 安全中心提供的网络安全性： https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
@@ -78,7 +78,7 @@ Azure 安全中心监视：是
 
 在与 Azure Cosmos DB 实例相关联的虚拟网络上启用 DDoS 保护，以防范 DDoS 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-如何 configureAzure Cosmos DB 高级威胁防护：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+如何配置 Azure Cosmos DB 高级威胁防护：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 如何配置 DDoS 保护： https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -115,13 +115,13 @@ Azure 安全中心监视：是
 **指导**：不适用；建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指导**：对于需要访问 Azure Cosmos 帐户的资源，请使用虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 AzureCosmosDB），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：对于需要访问 Azure Cosmos 帐户的资源，可以使用虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 AzureCosmosDB），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 有关使用服务标记的详细信息： https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
@@ -137,7 +137,7 @@ Azure 安全中心监视：是
 
 - Cosmos DB 应使用虚拟网络服务终结点
 
-你还可以使用 Azure 蓝图将关键环境项目（例如 Azure 资源管理器模板、基于角色的访问控制 (RBAC) 和策略）打包到单个蓝图定义，以简化大规模的 Azure 部署。 你可以通过版本控制轻松地在新的订阅和环境中应用蓝图并对控制和管理进行微调。
+还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、基于角色的访问控制 (RBAC)和策略），来简化大规模的 Azure 部署。 可以轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 如何配置和管理 Azure Policy： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -165,7 +165,7 @@ Azure 安全中心监视：是
 
 如何在 Azure Monitor 中创建警报： https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 责任：客户
 
@@ -202,7 +202,7 @@ Azure 安全中心监视：不适用
 
 如何启用 Azure 活动日志的诊断设置： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Azure 安全中心监视**：目前不可用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -286,7 +286,7 @@ Azure 安全中心监视：不适用
 
 **指导**：可以使用 Azure 门户中的“标识和访问控制(IAM)”窗格配置基于角色的访问控制 (RBAC)，并维护有关 Azure Cosmos DB 资源的库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
 
-Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC。 在 Azure Active Directory (AD) 中创建了配置文件的个人可将这些 RBAC 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。
+Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC。 在 Azure Active Directory （AD）中具有配置文件的个人可以将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 资源的资源和操作的访问权限。
 
 还可以使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。 
 
@@ -324,7 +324,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指导**：不适用；Azure Cosmos DB 不支持管理员帐户。  所有访问都与 Azure Active Directory 和 Azure 基于角色的访问控制 (RBAC) 相集成。
+**指导**：不适用；Azure Cosmos DB 不支持管理员帐户。  所有访问都与 Azure Active Directory 和 Azure 基于角色的访问控制（Azure RBAC）相集成。
 
 
 
@@ -354,7 +354,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
@@ -366,7 +366,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
@@ -380,7 +380,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 了解 Azure AD 风险检测： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -412,7 +412,7 @@ Azure 安全中心监视：是
 
 如何使用 Azure 标识访问评审： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure 安全中心监视**：是
+Azure 安全中心监视：是
 
 **责任**：客户
 
@@ -462,7 +462,7 @@ Azure 安全中心监视：是
 
 如何创建和使用标记： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 责任：客户
 
@@ -516,7 +516,7 @@ Cosmos DB 安全性概述： https://docs.microsoft.com/azure/cosmos-db/database
 
 **指导**：自动数据标识、分类和丢失防护功能尚不适用于 Azure Cosmos DB。 但是，可以使用 Azure 认知搜索集成进行分类和数据分析。 还可以实施第三方解决方案（如果出于合规性目的而需要如此）。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 使用 Azure 认知搜索为 Azure Cosmos DB 数据编制索引： https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp;bc=/azure/cosmos-db/breadcrumb/toc.json
 
@@ -528,7 +528,7 @@ Cosmos DB 安全性概述： https://docs.microsoft.com/azure/cosmos-db/database
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基于角色的访问控制 (RBAC)。 在 Azure Active Directory 中创建了配置文件的个人可将这些 RBAC 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
+**指导**：Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基于角色的访问控制 (RBAC)。 在 Azure Active Directory 中有配置文件的个人可以将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 资源的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
 
 如何在 Azure Cosmos DB 中实施 RBAC： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -584,7 +584,7 @@ Microsoft 管理 Cosmos DB 的底层基础结构，并实施了严格控制来�
 
 **指导**：请遵循 Azure 安全中心针对 Azure Cosmos DB 实例提供的建议。 
 
-Microsoft 在支持 Azure Cosmos DB 实例的底层主机上执行系统修补和漏洞管理。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+Microsoft 在支持 Azure Cosmos DB 实例的底层主机上执行系统修补和漏洞管理。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
 
@@ -597,7 +597,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -606,7 +606,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -615,7 +615,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 指南：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -624,7 +624,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -678,7 +678,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 
 **指导**：不适用；此项指导适用于计算资源和 Azure（作为一个整体）。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -705,7 +705,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项基线适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -723,7 +723,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -748,7 +748,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -767,7 +767,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -776,7 +776,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项指导适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -805,7 +805,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -817,7 +817,7 @@ Azure 安全中心监视：不适用
 
 了解 Azure Policy 效果： https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 
@@ -826,7 +826,7 @@ Azure 安全中心监视：不适用
 **指导**：不适用；此项指导适用于计算资源。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -844,7 +844,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -862,7 +862,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -880,7 +880,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **指导**：不适用；此项指导适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -896,7 +896,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -931,7 +931,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 **指导**：不适用；此项指导适用于计算资源。 在支持 Azure 服务的基础主机（例如 Azure App Service）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -939,7 +939,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **指南**：在支持 Azure 服务的基础主机（例如 Azure App Service）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
 
-你需负责预先扫描要上传到非计算 Azure 资源（包括 Azure Cosmos DB）的任何文件。 Microsoft 无法访问客户数据，因此无法代表您对客户内容进行反恶意软件扫描。
+你需负责预先扫描要上传到非计算 Azure 资源（包括 Azure Cosmos DB）的任何文件。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 
 
 **Azure 安全中心监视**：不适用
@@ -951,7 +951,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 **指导**：不适用；基准适用于计算资源。 支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
 
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：共享
 
@@ -1050,7 +1050,7 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -1058,13 +1058,13 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities（IT 规划和功能的测试、培训与演练计划指南）： https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：客户
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。
 
 如何设置 Azure 安全中心安全联系人： https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 

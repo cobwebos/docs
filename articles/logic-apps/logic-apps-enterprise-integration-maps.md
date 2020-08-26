@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072655"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用带有 Enterprise Integration Pack 的 Azure 逻辑应用中的映射转换 XML
 
@@ -42,7 +43,7 @@ ms.locfileid: "75979410"
     | [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 借助此工具可以更轻松地管理存储帐户和 Blob 容器。 若要使用存储资源管理器，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 若要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 <p>或者，在 Azure 门户中找到并选择你的存储帐户。 在存储帐户菜单中选择“存储资源管理器”。  |
     |||
 
-  * 对于映射，目前可以使用 [Azure 逻辑应用 REST API - 映射](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)添加较大的映射。
+  * 对于映射，目前可以使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)添加较大的映射。
 
 创建和添加映射时不需要逻辑应用。 但是，若要使用映射，逻辑应用需要链接到存储该映射的集成帐户。 了解[如何将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 如果没有逻辑应用，请了解[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -219,7 +220,7 @@ ms.locfileid: "75979410"
 
 ### <a name="add-maps-more-than-2-mb"></a>添加 2 MB 以上的映射
 
-目前，若要添加较大的映射，需要使用 [Azure 逻辑应用 REST API - 映射](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)。
+目前，若要添加较大的映射，需要使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。
 
 <!--
 

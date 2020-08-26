@@ -1,19 +1,20 @@
 ---
 title: 绘图工具模块 |Microsoft Azure 映射
 description: 本文介绍如何使用 Microsoft Azure Map Web SDK 设置绘图选项数据
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4c00639c02f8834a24a3828ac5b8ba828d0e1733
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282817"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用绘图工具模块
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009690"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -46,9 +46,9 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 ## <a name="solution"></a>解决方案
 
 >[!NOTE]
->如果使用的是站点到站点 VPN 和强制隧道，请参阅 [Use Azure custom routes to enable KMS activation with forced tunneling](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)（使用 Azure 自定义路由通过强制隧道启用 KMS 激活）。 
+>如果使用的是站点到站点 VPN 和强制隧道，请参阅 [Use Azure custom routes to enable KMS activation with forced tunneling](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md)（使用 Azure 自定义路由通过强制隧道启用 KMS 激活）。 
 >
->如果使用的是 ExpressRoute 且已发布默认路由，请参阅[能否阻止与连接到 ExpressRoute 线路的虚拟网络建立 Internet 连接？](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)。
+>如果使用的是 ExpressRoute 且已发布默认路由，请参阅[能否阻止与连接到 ExpressRoute 线路的虚拟网络建立 Internet 连接？](../../expressroute/expressroute-faqs.md)。
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>步骤 1 配置相应的 KMS 客户端安装密钥
 
@@ -61,7 +61,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. 如果 **slmgr.vbs /dlv** 显示 RETAIL channel，运行以下命令，以设置适用于所用 Windows Server 版本的 [KMS 客户端安装密钥](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396)，并强制重试激活操作： 
+2. 如果 **slmgr.vbs /dlv** 显示 RETAIL channel，运行以下命令，以设置适用于所用 Windows Server 版本的 [KMS 客户端安装密钥](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396)，并强制重试激活操作： 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -77,7 +77,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>第 2 步：验证 VM 与 Azure KMS 服务的连接
 
-1. 将 [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) 工具下载并提取到未激活的 VM 中的本地文件夹。 
+1. 将 [PSping](/sysinternals/downloads/psping) 工具下载并提取到未激活的 VM 中的本地文件夹。 
 
 2. 转到“开始”，搜索 Windows PowerShell，右键单击 Windows PowerShell，再选择“以管理员身份运行”。
 
@@ -102,7 +102,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
   
     另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
-5. 验证使用 "[网络观察程序" 下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)，使下一个跃点类型从相关的 VM 指向目标 IP 23.102.135.246 （对于 kms.core.windows.net）或适用于你所在区域的相应 kms 终结点的 IP 是**Internet**。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系，并使用它们来确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
+5. 验证使用 "[网络观察程序" 下一跃点](../../network-watcher/network-watcher-next-hop-overview.md)，使下一个跃点类型从相关的 VM 指向目标 IP 23.102.135.246 （对于 kms.core.windows.net）或适用于你所在区域的相应 kms 终结点的 IP 是**Internet**。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系并进行协作，以便确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](./custom-routes-enable-kms-activation.md)。
 
 6. 验证成功连接到 kms.core.windows.net 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 
@@ -112,7 +112,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
     如果激活成功，会返回如下信息：
     
-    正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。 
+    正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。
 
 ## <a name="faq"></a>常见问题 
 
@@ -130,7 +130,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 激活已过期，会出现什么情况？ 
 
  
-如果宽限期已过期且 Windows 仍未激活，Windows Server 2008 R2 及更高版本的 Windows 会显示有关激活的其他通知。 桌面壁纸会保持黑色不变，并且 Windows 更新会仅安装安全更新程序和关键更新，而不安装可选更新。 请参阅[授权条件](https://technet.microsoft.com/library/ff793403.aspx)页底部的“通知”部分。   
+如果宽限期已过期且 Windows 仍未激活，Windows Server 2008 R2 及更高版本的 Windows 会显示有关激活的其他通知。 桌面壁纸会保持黑色不变，并且 Windows 更新会仅安装安全更新程序和关键更新，而不安装可选更新。 请参阅[授权条件](/previous-versions/tn-archive/ff793403(v=technet.10))页底部的“通知”部分。   
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 

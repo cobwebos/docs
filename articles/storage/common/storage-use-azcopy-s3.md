@@ -1,19 +1,19 @@
 ---
 title: 使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储 | Microsoft Docs
-description: 使用 AzCopy 和 Amazon S3 桶传输数据
+description: 使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储。 AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513762"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037110"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -40,7 +40,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 收集 AWS 访问密钥和机密访问密钥，然后设置以下环境变量：
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -49,9 +49,6 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 ## <a name="copy-objects-directories-and-buckets"></a>复制对象、目录和桶
 
 AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此数据将在 AWS S3 与存储服务器之间直接复制。 这些复制操作不会占用计算机的网络带宽。
-
-> [!IMPORTANT]
-> 此功能目前处于预览状态。 如果你决定在完成复制操作后从 S3 桶中删除数据，请务必在删除数据之前，确认是否已将数据正确复制到存储帐户。
 
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
@@ -73,7 +70,7 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 >
 > 也可以使用虚拟托管样式的 URL（例如：`http://bucket.s3.amazonaws.com`）。 
 >
-> 若要详细了解桶的虚拟托管，请参阅 [桶的虚拟托管]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
+> 若要详细了解桶的虚拟托管，请参阅 [桶的虚拟托管]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
 
 ### <a name="copy-a-directory"></a>复制目录
 
@@ -84,6 +81,19 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 | **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+
+> [!NOTE]
+> 此示例将添加 `--recursive` 标记以复制所有子目录中的文件。
+
+### <a name="copy-the-contents-of-a-directory"></a>复制目录的内容
+
+可以复制目录的内容，而无需使用通配符 ( * ) 来复制包含目录本身。
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>复制桶
 
@@ -127,7 +137,7 @@ AzCopy 会处理可能出现的两个最常见问题：包含句点的桶，以�
 
 AWS S3 和 Azure 允许在对象键名称中使用不同的字符集。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)了解 AWS S3 使用的字符。 在 Azure 端，Blob 对象键遵守 [C# 标识符](https://docs.microsoft.com/dotnet/csharp/language-reference/)的命名规则。
 
-在 AzCopy `copy` 命令中，可为 `s2s-invalid-metadata-handle` 可选标志提供一个值，用于指定如何处理其中的元数据包含不兼容键名称的文件。 下表描述了每个标志值。
+在 AzCopy `copy` 命令中，可为 `s2s-handle-invalid-metadata` 可选标志提供一个值，用于指定如何处理其中的元数据包含不兼容键名称的文件。 下表描述了每个标志值。
 
 | 标志值 | 说明  |
 |--------|-----------|

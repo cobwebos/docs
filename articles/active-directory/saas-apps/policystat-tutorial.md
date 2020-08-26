@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 PolicyStat 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 PolicyStat 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af5eb0f1-1c8e-4809-b0c4-8ccfb915ca42
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142004"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
 
@@ -40,6 +36,9 @@ ms.locfileid: "84142004"
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 已启用 PolicyStat 单一登录的订阅
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -67,7 +66,7 @@ ms.locfileid: "84142004"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **PolicyStat**，在结果面板中选择“PolicyStat”，然后单击“添加”按钮添加该应用程序。 
+4. 在搜索框中键入 **PolicyStat**，在结果面板中选择“PolicyStat”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的“PolicyStat”](common/search-new-app.png)
 
@@ -90,7 +89,7 @@ ms.locfileid: "84142004"
 
 若要配置 PolicyStat 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/) 中的“PolicyStat”应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/) 中的“PolicyStat”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -117,7 +116,7 @@ ms.locfileid: "84142004"
 
     ![证书下载链接](common/metadataxml.png)
 
-5. PolicyStat 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
+5. PolicyStat 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。
 
     ![image](common/edit-attribute.png)
 
@@ -131,7 +130,7 @@ ms.locfileid: "84142004"
     
     ![image](common/new-save-attribute.png)
 
-    ![image](./media/policystat-tutorial/attribute01.png)
+    ![图像](./media/policystat-tutorial/attribute01.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
@@ -159,11 +158,11 @@ ms.locfileid: "84142004"
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 PolicyStat 公司站点。
 
-2. 单击“管理员”选项卡，并单击左侧导航窗格中的“单一登录配置”。 
+2. 单击“管理员”选项卡，并单击左侧导航窗格中的“单一登录配置”。
    
     ![“管理员”菜单](./media/policystat-tutorial/ic808633.png "“管理员”菜单")
 
-3. 单击“IDP 元数据”，并在“IDP 元数据”部分执行以下步骤： 
+3. 单击“IDP 元数据”，并在“IDP 元数据”部分执行以下步骤：
    
     ![单一登录配置](./media/policystat-tutorial/ic808636.png "单一登录配置")
    
@@ -171,9 +170,9 @@ ms.locfileid: "84142004"
 
     b. 单击 **“保存更改”** 。
 
-4. 单击“配置属性”，并在“配置属性”部分执行以下步骤： 
+4. 单击“配置属性”，并在“配置属性”部分执行以下步骤：
    
-    a. 在“用户名属性”文本框中，键入“uid”。 
+    a. 在“用户名属性”文本框中，键入“uid”。
 
     b. 在“名字属性”文本框中，键入 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 中的名字属性声明名称。
 
@@ -183,7 +182,7 @@ ms.locfileid: "84142004"
 
     e. 单击 **“保存更改”** 。
 
-5. 在“设置”部分，选择“启用单一登录集成”。 
+5. 在“设置”部分，选择“启用单一登录集成”。
    
     ![单一登录配置](./media/policystat-tutorial/ic808634.png "单一登录配置")
 
@@ -192,7 +191,7 @@ ms.locfileid: "84142004"
 
 在本部分中，通过为你自己的帐户授予访问 PolicyStat 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“PolicyStat”。  
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“PolicyStat”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -212,7 +211,7 @@ ms.locfileid: "84142004"
 
 6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。 
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-policystat-test-user"></a>创建 PolicyStat 测试用户
 

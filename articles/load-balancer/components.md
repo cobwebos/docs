@@ -6,17 +6,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205409"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589701"
 ---
 # <a name="azure-load-balancer-components"></a>Azure 负载均衡器组件
 
@@ -75,7 +75,7 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 例如，使用端口 80 的负载均衡规则将流量从前端 IP 路由到后端实例的端口 80。
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="负载均衡规则">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="负载均衡规则">
 </p>
 
 图：负载均衡规则
@@ -97,7 +97,7 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部网络虚拟设备 (NVA) 的高可用性和缩放。 当大量端口必须进行负载均衡时，此功能可以帮助完成。
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA 端口规则">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="HA 端口规则">
 </p>
 
 图：HA 端口规则
@@ -111,7 +111,7 @@ HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部�
 例如需要让远程桌面协议 (RDP) 或安全外壳 (SSH) 会话对后端池中的 VM 实例进行分隔。 可将多个内部终结点映射到同一前端 IP 地址上的多个端口。 可以使用前端 IP 地址来远程管理 VM，无需额外配置跳转盒。
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="入站 NAT 规则">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="入站 NAT 规则">
 </p>
 
 图：入站 NAT 规则

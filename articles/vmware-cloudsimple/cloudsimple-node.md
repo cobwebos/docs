@@ -1,6 +1,6 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-节点概述
-description: 了解有关 CloudSimple 节点和概念的信息。
+description: 了解 CloudSimple 的概念，包括节点、预配的节点、私有云，以及通过 CloudSimple 节点的 VMware 解决方案 Sku。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024919"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140830"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple 节点概述
 
@@ -38,7 +39,7 @@ ms.locfileid: "77024919"
 | SKU           | CS28-节点                 | CS36-节点                 | CS36m-节点                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
 | 区域        | 美国东部、美国西部            | 美国东部、美国西部            | 西欧                 |
-| CPU           | 2x 2.2 GHz，28个内核（56 HT） | 2x 2.3 GHz，36核心（72 HT） | 2x 2.3 GHz，36核心（72 HT） |
+| CPU           | 2x 2.2 GHz，28核 (56 HT)  | 2x 2.3 GHz，36核 (72 HT)  | 2x 2.3 GHz，36核 (72 HT)  |
 | RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
 | 缓存磁盘    | 1.6-TB NVMe                 | 3.2-TB NVMe                 | 3.2-TB NVMe                 |
 | 容量磁盘 | 5.625 TB Raw                | 11.25 TB Raw                | 15.36 TB Raw                |
@@ -57,5 +58,5 @@ ms.locfileid: "77024919"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[预配节点](create-nodes.md)
-* 了解[私有云](cloudsimple-private-cloud.md)
+* 了解如何 [预配节点](create-nodes.md)
+* 了解 [私有云](cloudsimple-private-cloud.md)

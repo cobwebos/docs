@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505680"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321898"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>使用资源管理器模板创建操作组
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置操作组。 使用模板，可以自动设置可以在某些类型的警报中重复使用的操作组。 这些操作组可确保警报触发时所有相应的当事方可以收到通知。
@@ -163,6 +163,7 @@ ms.locfileid: "86505680"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。
+* 详细了解[操作组](./action-groups.md)。
 * 详细了解[警报](alerts-overview.md)。
-* 了解如何[使用资源管理器模板添加警报](../../azure-monitor/platform/alerts-activity-log.md)。
+* 了解如何[使用资源管理器模板添加警报](./alerts-activity-log.md)。
+

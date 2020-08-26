@@ -1,14 +1,14 @@
 ---
 title: 部署 ISO 27001 蓝图示例
 description: 独立 ISO 27001 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 9eaf559f0c1e6c99d3a2469d63eddea1c1ae9867
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006800"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>部署 ISO 27001 蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "86044645"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
 1. 在“其他示例”下找到“ISO 27001”蓝图示例，然后选择“使用此示例”。
 

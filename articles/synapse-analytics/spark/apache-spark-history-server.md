@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse 中使用扩展 Spark 历史记录服务器调试应用-Apache Spark
+title: 使用扩展 Spark 历史记录服务器调试应用
 description: 使用扩展 Spark 历史记录服务器在 Azure Synapse Analytics 中调试和诊断 Spark 应用程序。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059991"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark 历史记录服务器来调试和诊断 Apache Spark 应用程序
 
@@ -122,11 +122,11 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 |颜色|含义|
 |-|-|
-|绿色|已成功完成：作业已成功完成。|
+|Green|已成功完成：作业已成功完成。|
 |橙色|重试：失败但不影响作业最终结果的任务实例。 这些任务包括可能稍后会成功的重复或重试实例。|
 |蓝色|正在运行：任务正在运行。|
-|白色|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
-|红色|失败：任务失败。|
+|白种人|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
+|Red|失败：任务失败。|
 
 下图显示了绿色、橙色和蓝色状态颜色。
 
@@ -157,7 +157,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 在 "作业关系图" 选项卡上，如果有任务满足以下条件，则会显示一个工具提示和一个小图标：
 
-|条件|描述|
+|条件|说明|
 |-|-|
 |数据倾斜|数据读取大小 > 此阶段中所有任务的平均数据读取大小 * 2 和数据读取大小 > 10 MB|
 |时间偏差|此阶段内所有任务的执行时间 > 平均执行时间 * 2 和执行时间 > 2 分钟|

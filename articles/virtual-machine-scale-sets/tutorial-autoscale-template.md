@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84629552"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
@@ -64,7 +64,7 @@ ms.locfileid: "84629552"
 
 此规则使用以下参数：
 
-| 参数         | 说明                                                                                                         | 值           |
+| 参数         | 说明                                                                                                         | Value           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | 监视和应用规模集操作的性能指标。                                                   | CPU 百分比  |
 | *timeGrain*       | 为进行而收集指标分析的频率。                                                                   | 1 分钟        |
@@ -72,9 +72,9 @@ ms.locfileid: "84629552"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 5 分钟       |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| direction       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
-| type            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
-| *value*           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
+| *direction*       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
+| *type*            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
+| value           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |
 
 以下规则将添加到上一部分中的 *Microsoft.insights/autoscalesettings* 资源提供程序的概要文件节：

@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85a9c758f46150c422b55c6ac5cf7e62a429c74f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211653"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797762"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -75,6 +75,9 @@ select *
 from cte;
 ```
 
+>[!TIP]
+> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
+
 trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
 
 - BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批负荷，使之包含更多的行。 另外，请重新评估分区方案，避免其太过细化，因为行组无法跨越分区边界。
@@ -99,7 +102,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
-有关列存储内存需求的深入讨论，请参阅视频[SYNAPSE SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请参阅视频 [SYNAPSE SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 

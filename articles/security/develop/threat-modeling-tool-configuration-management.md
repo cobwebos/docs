@@ -1,7 +1,7 @@
 ---
 title: 为 Microsoft Threat Modeling Tool 配置管理
 titleSuffix: Azure
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 的配置管理。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 391851927d03a557483afa2656e315b28c613956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f34a98ccbe069a5cb9e2c26a88e486b27f016fe1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322627"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540013"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -40,7 +41,7 @@ ms.locfileid: "85322627"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -72,18 +73,18 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
 | **参考**              | [XSS 保护筛选器](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
-| **步骤** | <p>X-XSS-Protection 响应标头配置控制浏览器的跨站点脚本筛选器。 此响应标头可使用以下值：</p><ul><li>`0:`：禁用筛选器</li><li>`1: Filter enabled`：如果检测到跨站点脚本攻击，浏览器将净化页面以阻止攻击</li><li>`1: mode=block : Filter enabled` 列中的一个值匹配。 检测到 XSS 攻击时，浏览器将阻止呈现页面，而不是净化页面</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled` 列中的一个值匹配。 浏览器将净化页面并报告违规。</li></ul><p>这是一个 Chromium 函数，它利用 CSP 违规报告将详细信息发送到所选的 URI。 最后 2 个选项被视为安全值。</p>|
+| **步骤** | <p>X-XSS-Protection 响应标头配置控制浏览器的跨站点脚本筛选器。 此响应标头可使用以下值：</p><ul><li>`0:`：禁用筛选器</li><li>`1: Filter enabled`：如果检测到跨站点脚本攻击，浏览器将净化页面以阻止攻击</li><li>`1: mode=block : Filter enabled`. 检测到 XSS 攻击时，浏览器将阻止呈现页面，而不是净化页面</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. 浏览器将净化页面并报告违规。</li></ul><p>这是一个 Chromium 函数，它利用 CSP 违规报告将详细信息发送到所选的 URI。 最后 2 个选项被视为安全值。</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET 应用程序在部署之前必须禁用跟踪和调试
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -94,7 +95,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -105,7 +106,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -140,7 +141,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 空值  |
@@ -171,7 +172,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 空值  |
@@ -197,7 +198,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -208,7 +209,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -273,7 +274,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
@@ -284,7 +285,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
+| **组件**               | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | 不适用，SQL 版本 - V12 |
@@ -295,7 +296,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5 |
 | **属性**              | 空值  |
@@ -391,7 +392,7 @@ public class ResourcesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 6 |
 | **属性**              | 空值  |
@@ -483,7 +484,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -494,7 +495,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| **组件**               | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -505,7 +506,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| **组件**               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -516,7 +517,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| **组件**               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -527,7 +528,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| **组件**               | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -538,7 +539,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
+| **组件**               | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -549,7 +550,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
+| **组件**               | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -560,7 +561,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
+| **组件**               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
@@ -571,7 +572,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| **组件**               | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -604,7 +605,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 空值  |
@@ -627,7 +628,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 空值  |

@@ -1,6 +1,6 @@
 ---
 title: 敏感数据 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中的敏感数据缓解措施。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ab22e9843ca133274361838eeb49abbe326588dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8f8b18d36453ac65300a5dd19fa7e07b1449bc28
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502227"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538942"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -247,7 +248,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure Document DB | 
+| 组件               | Azure Document DB | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -324,7 +325,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -335,7 +336,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |

@@ -11,11 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674587"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067403"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -92,7 +93,7 @@ ms.locfileid: "83674587"
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>使用不同的 Azure Active Directory 租户
 
-Azure Repos Git 存储库可以位于不同的 Azure Active Directory 租户中。 若要指定不同的 Azure AD 租户，必须对所用 Azure 订阅拥有管理员权限。
+Azure Repos Git 存储库可以位于不同的 Azure Active Directory 租户中。 若要指定不同的 Azure AD 租户，必须对所用 Azure 订阅拥有管理员权限。 有关详细信息，请参阅[更改订阅管理员](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator)
 
 ### <a name="use-your-personal-microsoft-account"></a>使用 Microsoft 个人帐户
 
@@ -210,11 +211,11 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 ### <a name="permissions"></a>权限
 
-通常，你不希望每个团队成员都有更新工厂的权限。 建议使用以下权限设置：
+通常不希望每个团队成员都有权更新数据工厂。 建议使用以下权限设置：
 
-*   所有团队成员都应具有对数据工厂的读取权限。
-*   只允许选定的一组人员发布到工厂。 为此，他们必须在工厂所在的资源组上具有“数据工厂参与者”角色。 有关权限的详细信息，请参阅 [Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
-   
+*   所有团队成员都应具有数据工厂的读取权限。
+*   只应允许一组选择的人员发布到数据工厂。 为此，它们必须具有包含数据工厂的**资源组**的 "**数据工厂参与者**" 角色。 有关权限的详细信息，请参阅 [Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
+
 建议不要允许直接签入到协作分支。 此限制有助于防止出现 bug，因为每个签入都将经历[创建功能分支](source-control.md#creating-feature-branches)中描述的拉取请求审阅过程。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>使用 Azure Key Vault 中的密码

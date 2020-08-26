@@ -10,15 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 08/14/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26d52eed02c9d25ed2f18afa3a5262ba9224b0ba
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112643"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224843"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 可在以下方案中使用此活动：
@@ -59,6 +61,7 @@ ms.locfileid: "84112643"
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 - `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
 - “获取元数据”活动不支持文件夹/文件的通配符筛选器。
+- `structure``columnCount`从二进制、JSON 或 XML 文件获取元数据时，不支持和。
 
 **关系数据库**
 
@@ -98,13 +101,36 @@ ms.locfileid: "84112643"
 
 ```json
 {
-    "name": "MyActivity",
-    "type": "GetMetadata",
-    "typeProperties": {
-        "fieldList" : ["size", "lastModified", "structure"],
-        "dataset": {
-            "referenceName": "MyDataset",
-            "type": "DatasetReference"
+    "name":"MyActivity",
+    "type":"GetMetadata",
+    "dependsOn":[
+
+    ],
+    "policy":{
+        "timeout":"7.00:00:00",
+        "retry":0,
+        "retryIntervalInSeconds":30,
+        "secureOutput":false,
+        "secureInput":false
+    },
+    "userProperties":[
+
+    ],
+    "typeProperties":{
+        "dataset":{
+            "referenceName":"MyDataset",
+            "type":"DatasetReference"
+        },
+        "fieldList":[
+            "size",
+            "lastModified",
+            "structure"
+        ],
+        "storeSettings":{
+            "type":"AzureBlobStorageReadSettings"
+        },
+        "formatSettings":{
+            "type":"JsonReadSettings"
         }
     }
 }
@@ -114,18 +140,22 @@ ms.locfileid: "84112643"
 
 ```json
 {
-    "name": "MyDataset",
-    "properties": {
-    "type": "AzureBlob",
-        "linkedService": {
-            "referenceName": "StorageLinkedService",
-            "type": "LinkedServiceReference"
+    "name":"MyDataset",
+    "properties":{
+        "linkedServiceName":{
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "typeProperties": {
-            "folderPath":"container/folder",
-            "filename": "file.json",
-            "format":{
-                "type":"JsonFormat"
+        "annotations":[
+
+        ],
+        "type":"Json",
+        "typeProperties":{
+            "location":{
+                "type":"AzureBlobStorageLocation",
+                "fileName":"file.json",
+                "folderPath":"folder",
+                "container":"container"
             }
         }
     }
@@ -136,7 +166,7 @@ ms.locfileid: "84112643"
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 
-属性 | 描述 | 必须
+属性 | 说明 | 必须
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
 dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是

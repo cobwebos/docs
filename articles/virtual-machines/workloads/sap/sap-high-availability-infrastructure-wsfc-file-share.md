@@ -13,14 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201670"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855370"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
@@ -56,11 +57,7 @@ ms.locfileid: "83201670"
 [sap-ascs-high-availability-multi-sid-wsfc]:sap-ascs-high-availability-multi-sid-wsfc.md
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-[sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]:sap-high-availability-infrastructure-wsfc-shared-disk.md#47d5300a-a830-41d4-83dd-1a0d1ffdbe6a
-[sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e
-[sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30
-[sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]:sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e
-[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c
+[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]:sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c
 [sap-high-availability-installation-wsfc-file-share]:sap-high-availability-installation-wsfc-file-share.md
@@ -249,19 +246,11 @@ ms.locfileid: "83201670"
 
 若要准备 Azure 基础结构，请完成以下操作：
 
-* [准备体系结构模板 1、2、3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [部署 vm][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
-* [创建 Azure 虚拟网络][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
+* [创建和配置适用于 SAP ASCS 的 Azure 负载均衡器][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
 
-* [设置所需的 DNS IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]。
-
-* [设置 SAP 虚拟机的静态 IP 地址][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
-
-* [为 Azure 内部负载均衡器设置静态 IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
-
-* [为 Azure 内部负载均衡器设置默认 ASCS/SCS 负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
-
-* [更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
+* [如果使用排入队列复制服务器 2 (ERS2) ，请执行 ERS2 的 Azure 负载均衡器配置 ][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。 
 
 * [将 Windows 虚拟机添加到域][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507924"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510005"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -46,12 +46,12 @@ ms.locfileid: "86507924"
 
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
-| 网络 |LAN/WAN  |SDN（软件定义的网络）|
-| **安全组** |IP/端口限制工具 |[网络安全组（NSG）](https://azure.microsoft.com/blog/network-security-groups) |
+| **联网** |LAN/WAN  |SDN（软件定义的网络）|
+| **安全组** |IP/端口限制工具 |[网络安全组 (NSG) ](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 | **计划内维护** |修补/升级|[可用性集](../../windows/infrastructure-example.md)（由 Azure 管理的修补/升级） |
 | **资源** |专用  |与其他客户端共享|
-| **Regions** |数据中心 |[区域对](../../regions.md#region-pairs)|
+| **区域** |数据中心 |[区域对](../../regions.md#region-pairs)|
 | **存储** |SAN/物理磁盘 |[Azure 托管的存储](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 | **缩放** |垂直缩放 |横向缩放|
 
@@ -72,11 +72,11 @@ ms.locfileid: "86507924"
 
 ### <a name="generate-an-awr-report"></a>生成 AWR 报表
 
-如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 如果你有 Oracle 实例的[诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)，则可以运行 oracle AWR 报表来获取指标（IOPS、Mbps、gib 等等）。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
+如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 如果你有 Oracle 实例的 [诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) ，则可以运行 oracle AWR 报表来获取指标 (IOPS、Mbps、gib 等等) 。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
 
 可考虑分别在正常工作负荷与峰值工作负荷期间运行 AWR 报表，以便进行比较。 根据这些报表，可基于平均工作负荷或最大工作负荷来调整虚拟机的大小。
 
-下面是一个示例，说明如何生成 AWR 报表（使用 Oracle 企业管理器生成 AWR 报表，如果当前安装有一个）：
+以下示例演示了如何生成 AWR 报表 (使用 Oracle 企业管理器生成 AWR 报表，如果当前安装具有一个) ：
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,9 +143,9 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 与本地部署相比，网络延迟更高。 减少网络往返次数可显著提高性能。
 - 若要减少网络往返，可在同一虚拟机上合并事务繁多的应用或“聊天式”应用。
-- 使用带有[加速](../../../virtual-network/create-vm-accelerated-networking-cli.md)网络的虚拟机以获得更好的网络性能。
-- 对于某些 Linux 发行版，请考虑启用[剪裁/取消映射支持](../../linux/configure-lvm.md#trimunmap-support)。
-- 在单独的虚拟机上安装[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
+- 使用带有 [加速](../../../virtual-network/create-vm-accelerated-networking-cli.md) 网络的虚拟机以获得更好的网络性能。
+- 对于某些 Linux 发行版，请考虑启用 [剪裁/取消映射支持](../../linux/configure-lvm.md#trimunmap-support)。
+- 在单独的虚拟机上安装 [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
 - 默认情况下，linux 上并未启用大页面。 请考虑启用大型页面并 `use_large_pages = ONLY` 在 Oracle DB 上设置。 这可以帮助提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到详细信息。
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
@@ -187,7 +187,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 使用数据压缩来降低 I/O（针对数据和索引）。
 - 将重做日志、system、temps 和 undo TS 分隔在不同的数据磁盘上。
 - 不要将任何应用程序文件放在默认 OS 磁盘 (/dev/sda) 中。 这些磁盘未针对快速 VM 启动时间进行优化，可能无法为应用程序提供良好的性能。
-- 在高级存储上使用 M 系列 Vm 时，请在重做日志磁盘上启用[写入加速器](../../linux/how-to-enable-write-accelerator.md)。
+- 在高级存储上使用 M 系列 Vm 时，请在重做日志磁盘上启用 [写入加速器](../../how-to-enable-write-accelerator.md) 。
 
 ### <a name="disk-cache-settings"></a>磁盘缓存设置
 
@@ -201,12 +201,12 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 **建议**
 
-为了最大限度地提高吞吐量，建议对主机缓存启用 "**无**"。 请注意，对于高级存储，在使用“只读”**** 或“无”**** 选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
+为了最大限度地提高吞吐量，建议对主机缓存启用 " **无** "。 请注意，对于高级存储，在使用“只读”**** 或“无”**** 选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk02.png)
 
-- 对于 OS 磁盘，请使用默认**读取/写入**缓存。
-- 对于 SYSTEM、TEMP 和 UNDO，请使用**None**进行缓存。
+- 对于 OS 磁盘，请使用默认 **读取/写入** 缓存。
+- 对于 SYSTEM、TEMP 和 UNDO，请使用 **None** 进行缓存。
 - 对于 DATA，使用“无”**** 选项进行缓存。 但是，如果数据库为只读或读取密集型数据库，请使用“只读”**** 缓存。
 
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。

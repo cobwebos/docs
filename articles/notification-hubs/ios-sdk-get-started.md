@@ -3,17 +3,17 @@ title: 使用 Azure 通知中心和 iOS SDK 向 iOS 发送推送通知
 description: 在本教程，你将学习如何使用 Azure 通知中心和 Apple Push Notification 服务向 iOS 设备发送推送通知。
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bf6477fed1840daa326f411862a7304018f39e3c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252196"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042439"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用发送推送通知
 
@@ -103,6 +103,9 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>为通知中心创建证书
 
+> [!NOTE]
+> 在发布 iOS 13 后，只能使用基于令牌的身份验证接收无声通知。 如果将基于证书的身份验证用于 APNS 凭据，则必须改用基于令牌的身份验证。
+
 需要提供证书才能使通知中心与 APNS 一起使用。 **** 可通过以下两种方式之一实现此目的：
 
 - 创建可直接上传到通知中心的 .p12 文件。 ****
@@ -185,7 +188,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
    该令牌值稍后将用于配置通知中心。
 
-完成这些步骤后，你应具有稍后要在 [使用 APNS 信息配置通知中心](notification-hubs-ios-push-notifications-swift-apps-get-started.md#configure-your-notification-hub-with-apns-information)中用到的下列信息：
+完成这些步骤后，你应具有稍后要在 [使用 APNS 信息配置通知中心](#configure-the-notification-hub-with-apns-information)中用到的下列信息：
 
 - 团队 ID（请参阅步骤 1） 
 - 捆绑包 ID（请参阅步骤 1） 
@@ -264,7 +267,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>使用 APNS 信息配置通知中心
 
-在“通知服务”下，选择“Apple (APNS)”，然后根据之前在 [为通知中心创建证书](notification-hubs-ios-push-notifications-swift-apps-get-started.md#creating-a-certificate-for-notification-hubs)部分中选择的方法，执行相应的步骤。 ****  ****  
+在“通知服务”下，选择“Apple (APNS)”，然后根据之前在 [为通知中心创建证书](#create-a-certificate-for-notification-hubs)部分中选择的方法，执行相应的步骤。 ****  ****  
 
 > [!NOTE]
 > 仅当希望将推送通知发送给从应用商店购买应用的用户时，才对“应用程序模式”使用“生产”。 
@@ -306,4 +309,4 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 在本教程中，你在 Azure 中创建并配置了一个通知中心，并已它其配置为允许通过 Apple Push Notification 服务 (APNS) 将通知发送到你的应用程序。 接下来，我们将创建一个示例 iOS 应用程序并集成 Azure 通知中心 SDK，使其能够接收通过 Azure 门户发送的推送通知。 根据所选的语言，前往以下教程：
 
-- [教程：使用 Swift 与 iOS 应用集成](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+- [教程：使用 Swift 与 iOS 应用集成]()

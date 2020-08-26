@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080346"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -32,7 +32,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 有许多不同的 Azure VM 扩展可用，每个都有特定用例。 示例包括：
 
 - 使用适用于 Linux 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure 所需状态配置扩展](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)。
-- 使用 Microsoft Monitoring Agent VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[如何监视 Linux VM](../linux/tutorial-monitoring.md)。
+- 使用 Microsoft Monitoring Agent VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[如何监视 Linux VM](../linux/tutorial-monitor.md)。
 - 使用 Chef 或 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Chef 文档](https://docs.chef.io/azure_portal.html)或 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在 VM 上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](custom-script-linux.md)（Linux VM“自定义脚本”扩展）。
@@ -65,7 +65,7 @@ Linux 代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加
 > [!IMPORTANT]
 > 如果已使用来宾防火墙阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。
 
-代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
+代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](../../virtual-network/security-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
 
 为了重定向代理流量请求，Linux 代理有代理服务器支持。 但是，此代理服务器支持不应用扩展。 必须配置每个单独的扩展来使用代理。
 
@@ -259,7 +259,7 @@ Goal state agent: 2.2.18
 
 “目标状态代理”是自动更新版本。
 
-强烈建议始终自动更新代理，[AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)。 如果不启用它，则需要始终手动更新代理，且不会获得 bug 和安全修补程序。
+强烈建议始终自动更新代理，[AutoUpdate.Enabled=y](./update-linux-agent.md)。 如果不启用它，则需要始终手动更新代理，且不会获得 bug 和安全修补程序。
 
 #### <a name="extension-updates"></a>扩展更新
 

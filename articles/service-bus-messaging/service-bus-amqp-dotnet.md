@@ -3,12 +3,12 @@ title: .NET 和 AMQP 1.0 中的 Azure 服务总线 | Microsoft Docs
 description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .NET 应用程序使用 Azure 服务总线。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340192"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067097"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -16,7 +16,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
 
-默认情况下，服务总线 .NET 客户端库使用 AMQP 协议与 Service Bus 服务通信。 你还可以将 AMQP 显式指定为传输类型，如下一节所示。 
+默认情况下，服务总线 .NET 客户端库使用 AMQP 协议与服务总线服务进行通信。 还可以显式指定 AMQP 作为传输类型，如以下部分所示。 
 
 在当前版本中，有一些在使用 AMQP 时不受支持的 API 功能。 这些不受支持的功能在[行为差异](#behavioral-differences)部分列出。 在使用 AMQP 时，一些高级配置设置还具有不同的含义。
 
@@ -99,7 +99,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 * [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)：控制应用于链接的初始额度。 默认值为 0。
 * [MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)：控制在打开连接时协商期间提供的最大 AMQP 帧大小。 默认值为 65,536 字节。
 * [MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)：如果可批量传输，则此值确定发送处置的最大延迟。 默认情况下由发送方/接收方继承。 单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
-* **[Messagingfactorysettings.operationtimeout. messagingfactorysettings.amqptransportsettings.batchflushinterval. messagingfactorysettings.amqptransportsettings.usesslstreamsecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**：控制是否在 TLS 连接上建立 AMQP 连接。 默认值为 **true**。
+* [MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)：控制是否通过 TLS 连接建立 AMQP 连接。 默认值为 **true**。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -109,7 +109,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 * [AMQP 1.0 协议指南]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
@@ -117,4 +117,3 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 [Azure portal]: https://portal.azure.com
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
 [AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
-

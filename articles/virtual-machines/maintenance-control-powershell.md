@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028645"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
@@ -33,7 +34,7 @@ Install-Module -Name Az.Maintenance
 
 如果在本地安装，请确保以管理员身份打开 PowerShell 提示符。
 
-还可能会要求你确认是否要从不*受信任的存储库*进行安装。 键入 `Y` 或选择“全是”以安装该模块。
+系统还可能会要求你确认是否要从不受信任的存储库进行安装。 键入 `Y` 或选择“全是”以安装该模块。
 
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
@@ -46,7 +47,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-使用 [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) 创建维护配置。 此示例创建名为 myConfig 的维护配置，该配置的范围限定为主机。 
+使用 [New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration) 创建维护配置。 此示例创建名为 myConfig 的维护配置，该配置的范围限定为主机。 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -60,7 +61,7 @@ $config = New-AzMaintenanceConfiguration `
 
 如果尝试创建同名的但位于不同位置的配置，则会收到错误。 配置名称必须是你的订阅特有的。
 
-可以使用 [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration) 来查询可用的维护配置。
+可以使用 [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration) 来查询可用的维护配置。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -68,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>分配此配置
 
-使用 [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) 将配置分配到隔离的 VM 或 Azure 专用主机。
+使用 [New-AzConfigurationAssignment](/powershell/module/az.maintenance/new-azconfigurationassignment) 将配置分配到隔离的 VM 或 Azure 专用主机。
 
 ### <a name="isolated-vm"></a>隔离的 VM
 
@@ -105,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>检查是否有挂起的更新
 
-使用 [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) 查看是否存在挂起的更新。 使用 `-subscription` 指定 VM 的 Azure 订阅（如果其订阅不同于你登录到的订阅）。
+使用 [Get-AzMaintenanceUpdate](/powershell/module/az.maintenance/get-azmaintenanceupdate) 查看是否存在挂起的更新。 使用 `-subscription` 指定 VM 的 Azure 订阅（如果其订阅不同于你登录到的订阅）。
 
 如果没有可显示的更新，此命令不会返回任何内容。 否则，它会返回一个 PSApplyUpdate 对象：
 
@@ -151,7 +152,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>应用更新
 
-使用 [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) 应用挂起的更新。
+使用 [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) 应用挂起的更新。
 
 ### <a name="isolated-vm"></a>隔离的 VM
 
@@ -182,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>检查更新状态
-使用 [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) 检查更新状态。 对 `-ApplyUpdateName` 参数使用 `default` 时，以下命令会显示最新更新的状态。 可以使用更新的名称（由 [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) 命令返回）来获取特定更新的状态。
+使用 [Get-AzApplyUpdate](/powershell/module/az.maintenance/get-azapplyupdate) 检查更新状态。 对 `-ApplyUpdateName` 参数使用 `default` 时，以下命令会显示最新更新的状态。 可以使用更新的名称（由 [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) 命令返回）来获取特定更新的状态。
 
 ```text
 Status         : Completed
@@ -226,7 +227,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>删除维护配置
 
-使用 [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) 删除维护配置。
+使用 [Remove-AzMaintenanceConfiguration](/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) 删除维护配置。
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `

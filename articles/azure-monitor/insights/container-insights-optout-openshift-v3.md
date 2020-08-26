@@ -3,16 +3,16 @@ title: 如何停止监视 Azure Red Hat OpenShift v3 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器来停止监视 Azure Red Hat OpenShift 群集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196187"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815430"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止监视 Azure Red Hat OpenShift v3 群集
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止监视 Azure Red Hat OpenShift v3 群集 
 
-启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。  
+启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。 
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
@@ -22,11 +22,11 @@ ms.locfileid: "82196187"
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="create-template"></a>创建模板
 
-1. 将以下 JSON 语法复制并粘贴到文件中：
+1. 将以下 JSON 语法复制并粘贴到该文件中：
 
     ```json
     {
@@ -84,7 +84,7 @@ ms.locfileid: "82196187"
     }
     ```
 
-4. 使用 OpenShift 群集的值编辑**aroResourceId**和**aroResourceLocation**的值，你可以在所选群集的 "**属性**" 页上找到这些值。
+4. 使用 OpenShift 群集的值编辑 **aroResourceId** 和 **aroResourceLocation** 的值，你可以在所选群集的 " **属性** " 页上找到这些值。
 
     ![容器属性页面](media/container-insights-optout-openshift/cluster-properties-page.png)
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>后续步骤
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../platform/delete-workspace.md)。

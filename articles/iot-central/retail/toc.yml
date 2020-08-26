@@ -30,6 +30,22 @@
       items:
         - name: 创建微履行中心应用程序
           href: tutorial-micro-fulfillment-center.md
+    - name: 视频分析 - 对象和运动检测
+      items:
+        - name: 0 - 部署对象和运动检测应用程序
+          href: tutorial-video-analytics-deploy.md
+        - name: 1 - 创建视频分析应用程序
+          href: tutorial-video-analytics-create-app.md
+        - name: 2 - 配置 IoT Edge 设备
+          items:
+            - name: 在边缘上创建视频分析设备 (Linux VM)
+              href: tutorial-video-analytics-iot-edge-vm.md
+            - name: 在边缘上创建视频分析设备 (Intel NUC)
+              href: tutorial-video-analytics-iot-edge-nuc.md
+        - name: 3 -监视和管理视频分析应用程序
+          href: tutorial-video-analytics-manage.md
+        - name: 4 - 修改和生成实时视频分析网关模块
+          href: tutorial-video-analytics-build-module.md
 - name: 概念
   items:
     - name: 互联物流应用模板体系结构
@@ -42,6 +58,8 @@
       href: store-analytics-architecture.md
     - name: 微履行中心应用模板体系结构
       href: architecture-micro-fulfillment-center.md
+    - name: 视频分析应用模板体系结构
+      href: architecture-video-analytics.md
     - name: 连接
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: 什么是应用程序模板？
@@ -50,8 +68,6 @@
   items:
     - name: 连接设备
       items:
-        - name: 准备和连接 MXChip IoT DevKit
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: 准备和连接 Rigado Cascade 500
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: 准备和连接 RuuviTag 设备
@@ -135,9 +151,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: 客户数据请求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: 支持的浏览器

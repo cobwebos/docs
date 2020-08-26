@@ -3,12 +3,12 @@ title: 快速入门：使用浏览器查询预测 - LUIS
 description: 本快速入门在浏览器中使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769972"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245989"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>快速入门：使用用户文本查询预测运行时
 
@@ -19,7 +19,7 @@ ms.locfileid: "81769972"
 若要查询公共应用，需要：
 
 * 语言理解 (LUIS) 资源信息：
-    * 预测密钥  - 可从 [LUIS 门户](https://www.luis.ai/)获取。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
+    * 预测密钥  - 可从 [LUIS 门户](https://www.luis.ai/)获取。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
     * 预测终结点子域  - 该子域也是 LUIS 资源的名称  。
 * LUIS 应用 ID - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公共 IoT 应用 ID。 快速入门代码中使用的用户查询特定于该应用。
 

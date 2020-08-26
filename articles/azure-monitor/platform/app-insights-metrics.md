@@ -7,18 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664909"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327066"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
 使用基于 Application Insights 日志的指标可以分析受监视应用的运行状况、创建功能强大的仪表板，以及配置警报。 有两种类型的指标：
 
-* [基于日志的指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](https://docs.microsoft.com/azure/kusto/query/)。
-* [标准指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
+* [基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](/azure/kusto/query/)。
+* [标准指标](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
 
 由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。  因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。  在[指标资源管理器](metrics-getting-started.md)中使用[命名空间选择器](metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
 
@@ -37,11 +38,11 @@ ms.locfileid: "77664909"
 - 所选的“拆分图表”维度将转换为额外的 summarize 属性。  例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。
 
 > [!NOTE]
-> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。  对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) 和 [Azure Monitor](../../azure-monitor/overview.md) 的全部功能的好办法。
+> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。  对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../log-query/get-started-portal.md) 和 [Azure Monitor](../overview.md) 的全部功能的好办法。
 
 ## <a name="availability-metrics"></a>可用性指标
 
-参考“可用性”类别中的指标可以了解在世界各地预测到的 Web 应用程序运行状况。 [配置可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)，以开始使用此类别中的任何指标。
+参考“可用性”类别中的指标可以了解在世界各地预测到的 Web 应用程序运行状况。 [配置可用性测试](../app/monitor-web-app-availability.md)，以开始使用此类别中的任何指标。
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>可用性 (availabilityResults/availabilityPercentage)
 “可用性”指标显示未检测到任何问题的 Web 测试运行的百分比。  可能的最小值为 0，表示所有 Web 测试运行均失败。 值 100 表示所有 Web 测试运行都符合验证条件。
@@ -58,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>可用性测试持续时间 (availabilityResults/duration)
 
-“可用性测试持续时间”指标显示运行 Web 测试所花费的时间。  对于[多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)，该指标反映所有步骤的总执行时间。
+“可用性测试持续时间”指标显示运行 Web 测试所花费的时间。  对于[多步骤 Web 测试](../app/availability-multistep.md)，该指标反映所有步骤的总执行时间。
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
@@ -91,7 +92,7 @@ availabilityResults
 浏览器指标由 Application Insights JavaScript SDK 从实际的最终用户浏览器收集。 它们提供 Web 应用用户体验的深入见解。 通常不会对浏览器指标采样，这意味着，在用量数字方面，与服务器端指标相比，它们提供的精度更高，而后者的采样可能会导致结果有偏差。
 
 > [!NOTE]
-> 若要收集浏览器指标，必须使用 [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) 来检测应用程序。
+> 若要收集浏览器指标，必须使用 [Application Insights JavaScript SDK](../app/javascript.md) 来检测应用程序。
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>浏览器页面加载时间 (browserTimings/totalDuration)
 
@@ -209,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>异常数 (exceptions/count)
 
-每当你将异常记录到 Application Insights 时，都会调用 SDK 的 [trackException() 方法](../../azure-monitor/app/api-custom-events-metrics.md#trackexception)。 “异常数”指标显示记录的异常数。
+每当你将异常记录到 Application Insights 时，都会调用 SDK 的 [trackException() 方法](../app/api-custom-events-metrics.md#trackexception)。 “异常数”指标显示记录的异常数。
 
 |度量单位|支持的聚合|预先聚合的维度|注释|
 |---|---|---|---|
@@ -223,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失败的请求数 (请求/失败)
 
-标记为失败的受跟踪服务器请求计数。  默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在[自定义遥测初始化表达式](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
+标记为失败的受跟踪服务器请求计数。  默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在[自定义遥测初始化表达式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
 
 |度量单位|支持的聚合|预先聚合的维度|注释|
 |---|---|---|---|
@@ -253,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>性能计数器
 
-使用“性能计数器”类别中的指标可以访问 [Application Insights 收集的系统性能计数器](../../azure-monitor/app/performance-counters.md)。
+使用“性能计数器”类别中的指标可以访问 [Application Insights 收集的系统性能计数器](../app/performance-counters.md)。
 
 ### <a name="available-memory-performancecountersavailablememory"></a>可用内存 (performanceCounters/availableMemory)
 
@@ -491,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 E Sales Manager Remix 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 E Sales Manager Remix 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202390"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555383"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -48,7 +43,7 @@ ms.locfileid: "82202390"
 若要测试本教程中的步骤，请遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- 如果没有 Azure AD 试用环境，可以 [获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，会在测试环境中测试 Azure AD 单一登录。 
@@ -61,7 +56,7 @@ ms.locfileid: "82202390"
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>从库中添加 E Sales Manager Remix
 若要配置 E Sales Manager Remix 与 Azure AD 的集成，请执行以下操作，从库中将 E Sales Manager Remix 添加到托管 SaaS 应用列表：
 
-1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”****。 
+1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择 " **Azure Active Directory**"。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -166,9 +161,9 @@ ms.locfileid: "82202390"
 
     f. 在“标识提供者登录 URL”框中，粘贴前面从 Azure 门户复制的 SAML 单一登录服务 URL****。
 
-    如， 在“标识提供者注销 URL”框中，粘贴前面从 Azure 门户复制的注销 URL 值。****
+    g. 在“标识提供者注销 URL”框中，粘贴前面从 Azure 门户复制的注销 URL 值。****
 
-    h.如果该值不存在，请单击“添加行”。 选择“设置完成”。****
+    h. 选择“设置完成”。****
 
 > [!TIP]
 > 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 在 " **Active Directory**  >  **企业应用程序**" 部分添加应用后，请选择 "**单一登录**" 选项卡，然后在底部的 "**配置**" 部分访问嵌入式文档。 有关嵌入式文档功能的详细信息，请参阅 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)。
@@ -202,7 +197,7 @@ ms.locfileid: "82202390"
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。****
 
-    c. 选中 "**显示密码**" 复选框，然后记下 "**密码**" 框中显示的值。
+    c. 选中 " **显示密码** " 复选框，然后记下 " **密码** " 框中显示的值。
 
     d. 选择“创建”。
  
@@ -244,11 +239,11 @@ ms.locfileid: "82202390"
 
     ![“企业应用程序”和“所有应用程序”链接][201] 
 
-1. 在**应用程序**列表中，选择 " **E Sales Manager Remix**"。
+1. 在 **应用程序** 列表中，选择 " **E Sales Manager Remix**"。
 
     ![“E Sales Manager Remix”链接](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. 在左窗格中，选择 "**用户和组**"。
+1. 在左窗格中，选择 " **用户和组**"。
 
     ![“用户和组”链接][202]
 

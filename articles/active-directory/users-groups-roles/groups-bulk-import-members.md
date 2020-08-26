@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742006"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421665"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中批量添加组成员
 
@@ -69,7 +69,7 @@ ms.locfileid: "84742006"
 
 可在“批量操作结果”页面中查看所有挂起的批量请求的状态。
 
-[![](media/groups-bulk-import-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![检查 "批量操作结果" 页中的状态。](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 要详细了解批量操作中每个行项，请选择“成功数”、“失败数”或“请求总数”列下的值  。 如果失败，则会列出失败原因。
 

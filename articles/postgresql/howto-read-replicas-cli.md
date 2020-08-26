@@ -6,12 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: de74258cadcdf81da211561a84ff06927830e690
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 491b3ecfc950fa5f76bfe78eec52e81433294c23
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274401"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500072"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>通过 Azure CLI、REST API 创建和管理只读副本
 
@@ -22,11 +23,11 @@ ms.locfileid: "86274401"
 
 若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
 
-* **关闭** - 在 WAL 中提供的信息最少。 在大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
 * **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
 * **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
 
-更改此参数后，需要重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
+更改此参数后，需要重启服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
 
 ## <a name="azure-cli"></a>Azure CLI
 可以使用 Azure CLI 创建和管理只读副本。

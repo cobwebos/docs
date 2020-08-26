@@ -2,14 +2,14 @@
 title: 选择池的 VM 大小
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 08/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143536"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005146"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -35,12 +35,12 @@ ms.locfileid: "86143536"
 | DC | 无 |
 | Dv2, DSv2 | 所有大小 |
 | Dv3, Dsv3 | 所有大小 |
-| Dav4<sup>1</sup> | 无（尚不可用） |
-| Dasv4<sup>1</sup> | 除 Standard_D48as_v4、Standard_D64as_v4、Standard_D96as_v4 之外的所有大小 |
+| Dav4<sup>1</sup> | 所有大小 |
+| Dasv4<sup>1</sup> | 所有大小 |
 | Ddv4、Ddsv4 |  无（尚不可用） |
 | Ev3, Esv3 | 除 E64is_v3 和 E64i_v3 之外的所有大小 |
-| Eav4<sup>1</sup> | 除 Standard_E48a_v4、Standard_E64a_v4、Standard_E96a_v4 之外的所有大小 |
-| Easv4<sup>1</sup> | 除 Standard_E48as_v4、Standard_E64as_v4、Standard_E96as_v4 之外的所有大小 |
+| Eav4<sup>1</sup> | 所有大小 |
+| Easv4<sup>1</sup> | 所有大小 |
 | Edv4, Edsv4 |  无（尚不可用） |
 | F, Fs | 所有大小 |
 | Fsv2 | 所有大小 |

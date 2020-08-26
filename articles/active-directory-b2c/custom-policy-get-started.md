@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/28/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389286"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163180"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -86,7 +87,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 接下来，通过添加范围公开 API：
 
-1. 在“管理”下，选择“公开 API” 。
+1. 在左侧菜单中的 "**管理**" 下，选择 "**公开 API**"。
 1. 选择“添加范围”，然后选择“保存并继续”以接受默认的应用程序 ID URI 。
 1. 输入以下值，创建允许在 Azure AD B2C 租户中执行自定义策略的范围：
     * **范围名称**：`user_impersonation`
@@ -109,13 +110,13 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 接下来，指定应将应用程序视为公共客户端：
 
-1. 在“管理”下，选择“身份验证”。 
+1. 在左侧菜单中的“管理”下，选择“身份验证” 。
 1. 在“高级设置”下，启用“将应用程序视为公共客户端”（选择“是”）  。 请确保已在应用程序清单中设置 "allowPublicClient": true。 
 1. 选择“保存”。
 
 现在，向你先前在 IdentityExperienceFramework 注册中公开的 API 范围授予权限：
 
-1. 在“管理”下选择“API 权限”。
+1. 在左侧菜单中的 "**管理**" 下，选择 " **API 权限**"。
 1. 在“已配置权限”下，选择“添加权限”。
 1. 选择“我的 API”选项卡，然后选择“IdentityExperienceFramework”应用程序 。
 1. 在“权限”下，选择你先前定义的 user_impersonation 范围 。
@@ -212,6 +213,6 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。
+接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。 有关设置 Azure AD 作为标识提供者的信息，请参阅[使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant-custom.md)。 
 
-要了解如何将 Azure AD 设置为标识提供者，请参阅[使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant-custom.md)。
+请访问我们的[合作伙伴库](partner-gallery.md)，了解有关如何使用自定义策略实现 ISV 集成的详细信息。 

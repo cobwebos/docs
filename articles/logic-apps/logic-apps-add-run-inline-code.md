@@ -6,11 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453500"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420118"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加和运行代码片段
 
@@ -127,7 +129,7 @@ ms.locfileid: "75453500"
 
 此表包含有关这些子属性的详细信息：
 
-| Property | 类型 | 描述 |
+| 属性 | 类型 | 描述 |
 |----------|------|-------|
 | `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个*键-值*对，其中键是操作的名称，值等效于调用带有的[操作（）函数](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者用下划线（_）替换操作名称中的空格（""）。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
 | `trigger` | Object | 触发器中的 Result 对象并等效于调用[trigger （）函数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
@@ -220,7 +222,7 @@ ms.locfileid: "75453500"
    | 参数 | 说明 |
    |-----------|-------------|
    | **操作** | 包括先前操作的结果。 请参阅[包括操作结果](#action-results)。 |
-   | 触发器 | 包含触发器的结果。 请参阅[包含触发器结果](#trigger-results)。 |
+   | **触发器** | 包含触发器的结果。 请参阅[包含触发器结果](#trigger-results)。 |
    |||
 
 <a name="trigger-results"></a>

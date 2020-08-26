@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 07/31/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650654"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515350"
 ---
 ## <a name="1-download-the-file"></a>1.下载文件
 
@@ -31,7 +31,7 @@ $PROFILE.VpnProfileSASUrl
 
 * AzureVPN
 * 泛型
-* OpenVPN（如果已在网关上启用 OpenVPN 和 Azure AD 身份验证设置）。 对于 VPN 网关，请参阅[创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 对于虚拟 WAN，请参阅[创建租户 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
+* OpenVPN （如果已通过**Azure 证书**启用了 OpenVPN 或网关上的**RADIUS 身份验证**设置）。 对于 VPN 网关，请参阅[创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 对于虚拟 WAN，请参阅[创建租户 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
 
 ## <a name="3-retrieve-information"></a>3.检索信息
 

@@ -8,12 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.custom: mqtt
-ms.openlocfilehash: 71ef7a8da6e575e995696ebaf14b265babf9aecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- mqtt
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: 1933a53b6e69a6179faaa0bd6b86619478159b3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984918"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322918"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -117,10 +121,10 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 C 的 Azure IoT 中心服务 SDK：
 
-适用于 C 语言的 Azure IoT 服务 SDK 不再处于积极开发阶段。
-我们将继续修复严重错误，如故障、数据损坏和安全漏洞。 但我们不会添加任何新功能，也不会修复不重要的 bug。
+适用于 C 的 Azure IoT 服务 SDK 不再处于活动开发状态。
+我们将持续解决崩溃、数据损坏、安全漏洞等严重 bug。 但我们不会添加任何新功能，也不会修复不严重的 bug。
 
-Azure IoT 服务 SDK 支持采用更高级别的语言（[c #](https://github.com/Azure/azure-iot-sdk-csharp)、 [Java](https://github.com/Azure/azure-iot-sdk-java)、 [Node](https://github.com/Azure/azure-iot-sdk-node)、 [Python](https://github.com/Azure/azure-iot-sdk-python)）。
+在更高级别的语言（[C#](https://github.com/Azure/azure-iot-sdk-csharp)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[Node](https://github.com/Azure/azure-iot-sdk-node)、[Python](https://github.com/Azure/azure-iot-sdk-python)）中可使用 Azure IoT 服务 SDK 支持。
 
 * 从[apt 下载-get、MBED、ARDUINO IDE 或 NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [源代码](https://github.com/Azure/azure-iot-sdk-c)

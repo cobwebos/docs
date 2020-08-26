@@ -37,6 +37,11 @@
       href: best-practices.md
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 操作指南
   items:
     - name: 列出角色定义

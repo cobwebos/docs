@@ -7,13 +7,13 @@ ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: bcfbcc4f78e14edc40abccf4a697b00bc7a3f014
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82098010"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496179"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
@@ -25,7 +25,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。  
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -37,9 +37,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM。 此示例使用 azureuser  作为管理用户名。 
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 myVM 的 VM。 此示例使用 azureuser 作为管理用户名。 
 
-你将需要提供符合 [Azure VM 密码要求](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+你将需要提供符合 [Azure VM 密码要求](./faq.md#what-are-the-password-requirements-when-creating-a-vm
 )的密码。 使用以下示例时，系统将提示你在命令行中输入密码。 你还可以在 `--admin-password` 参数中添加密码值。 用户名和密码将在以后连接到 VM 时使用。
 
 ```azurecli-interactive
@@ -109,7 +109,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Windows VM 的教程。
+在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要深入了解 Azure 虚拟机，请继续学习 Windows VM 教程。
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)

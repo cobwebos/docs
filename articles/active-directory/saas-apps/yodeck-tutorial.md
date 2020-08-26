@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Yodeck 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Yodeck 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086475"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>教程：Azure Active Directory 与 Yodeck 集成
 
@@ -119,33 +115,43 @@ ms.locfileid: "67086475"
 
 ### <a name="configure-yodeck-single-sign-on"></a>配置 Yodeck 单一登录
 
+1. 若要在 Yodeck 中自动完成配置，需要单击“安装扩展”安装“我的应用安全登录浏览器扩展”  。
+
+    ![图像](./media/target-process-tutorial/install_extension.png)
+
+1. 将该扩展添加到浏览器后，单击“设置 Yodeck”定向到 Yodeck 应用程序。 在此处提供管理员凭据以登录到 Yodeck。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+    **如果要手动配置应用程序，请执行以下步骤：**
+
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Yodeck 公司站点。
 
-2. 单击页面右上角的“用户设置”选项表单，然后选择“帐户设置”   。
+1. 单击页面右上角的“用户设置”选项表单，然后选择“帐户设置”********。
 
     ![Yodeck 配置](./media/yodeck-tutorial/configure1.png)
 
-3. 选择“SAML”并执行以下步骤  ：
+1. 选择“SAML”并执行以下步骤****：
 
     ![Yodeck 配置](./media/yodeck-tutorial/configure2.png)
 
-    a. 选择“从 URL 导入”  。
+    a. 选择“从 URL 导入”****。
 
-    b. 在“URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值，然后单击“导入”    。
+    b. 在“URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值，然后单击“导入”************。
     
-    c. 导入“应用联合元数据 URL”后，其余字段将自动填充  。
+    c. 导入“应用联合元数据 URL”后，其余字段将自动填充****。
 
-    d. 单击“保存”  。
+    d. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -153,27 +159,27 @@ ms.locfileid: "67086475"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Yodeck 的访问权限来支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Yodeck”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Yodeck”************。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Yodeck”  。
+2. 在应用程序列表中，选择“Yodeck”****。
 
     ![应用程序列表中的 Yodeck 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -181,11 +187,11 @@ ms.locfileid: "67086475"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-yodeck-test-user"></a>创建 Yodeck 测试用户
 
@@ -195,27 +201,27 @@ ms.locfileid: "67086475"
 
 1. 以管理员身份登录到 Yodeck 公司站点。
 
-2. 单击页面右上角的“用户设置”选项表单，然后选择“用户”   。
+2. 单击页面右上角的“用户设置”选项表单，然后选择“用户”********。
 
     ![添加员工](./media/yodeck-tutorial/user1.png)
 
-3. 单击“+用户”以打开“用户详细信息”选项卡   。
+3. 单击“+用户”以打开“用户详细信息”选项卡********。
 
     ![添加员工](./media/yodeck-tutorial/user2.png)
 
-4. 在“用户详细信息”  对话框页上，执行以下步骤：
+4. 在“用户详细信息”**** 对话框页上，执行以下步骤：
 
     ![添加员工](./media/yodeck-tutorial/user3.png)
 
-    a. 在“名字”文本框中，键入用户的名字（如“Britta”）   。
+    a. 在“名字”文本框中，键入用户的名字（如“Britta”）********。
 
-    b. 在“姓氏”  文本框中，键入用户的姓氏（如“Simon”  ）。
+    b. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
 
     c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 brittasimon@contoso.com）。
 
-    d. 根据组织要求选择适当的“帐户权限”选项  。
+    d. 根据组织要求选择适当的“帐户权限”选项****。
     
-    e. 单击“保存”  。
+    e. 单击“ **保存**”。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

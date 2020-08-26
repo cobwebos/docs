@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1-性能优化
-description: 描述如何优化 Azure Data Lake Storage Gen1 以提高性能。
+description: 了解如何在 Azure Data Lake Storage Gen1 中使用所有可用的吞吐量，以便尽可能多地执行读写操作来获得最佳性能。
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855913"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190241"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>优化性能 Azure Data Lake Storage Gen1
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 | AdlCopy    | Azure Data Lake Analytics 单元 | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)。         |
 | DistCp            | -m (mapper) | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)。                             |
 | Azure 数据工厂| parallelCopies | [链接](../data-factory/copy-activity-performance.md)。                          |
-| Sqoop           | fs.azure.block.size, -m (mapper) | [链接](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)。        |
+| Sqoop           | fs.azure.block.size, -m (mapper) | [链接](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。        |
 
 ## <a name="structure-your-data-set"></a>调整数据集结构
 
@@ -124,7 +124,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 除上述常规准则外，每个应用程序都有不同的参数，可用于优化该特定应用程序。 下表列出了一些参数和链接，有助于开始对每个应用程序执行性能优化。
 
-| 工作负荷               | 用于设置任务数的参数                                                         |
+| 工作负载               | 用于设置任务数的参数                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
 | [HDInsight 上的 Spark](data-lake-store-performance-tuning-spark.md)  | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |

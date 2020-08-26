@@ -7,14 +7,15 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944573"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836870"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
@@ -31,7 +32,7 @@ ms.locfileid: "78944573"
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-创建 VM。 在此示例中，VM 名为 *myVM*，VM 大小为 *Standard_D2s_v3*，但应选择你认为最适合你的工作负荷的 [VM 大小](sizes.md)。
+创建 VM。 在此示例中，VM 名为 *myVM*，VM 大小为 *Standard_D2s_v3*，但应选择你认为最适合你的工作负荷的 [VM 大小](../sizes.md)。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -156,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>后续步骤
 有关 MySQL 的详细信息，请参阅 [MySQL 文档](https://dev.mysql.com/doc)。
-
-
-
-

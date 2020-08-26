@@ -42,7 +42,7 @@
           href: network-security.md
     - name: 混合连接协议
       href: relay-hybrid-connections-protocol.md
-- name: 操作方式
+- name: 如何
   items:
     - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
@@ -81,7 +81,7 @@
           href: /dotnet/api/microsoft.azure.relay
         - name: Microsoft.ServiceBus
           href: /dotnet/api/Microsoft.ServiceBus
-    - name: 例外
+    - name: 异常
       href: relay-exceptions.md
     - name: 端口设置
       href: relay-port-settings.md
@@ -92,7 +92,7 @@
     - name: 常见问题解答
       href: relay-faq.md
     - name: 博客
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+      href: /archive/blogs/servicebus/
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 定价计算器

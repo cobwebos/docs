@@ -15,7 +15,7 @@
 - name: 操作指南
   items:
     - name: Azure 机器学习中的数据集
-      href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
 - name: 示例
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

@@ -6,15 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 08/21/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 85689661e7f0d170cd88edde8985f46285e679c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3aadab1b4af80f98c57a279b69606a02846e996
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987785"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716837"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,16 +33,18 @@ ms.locfileid: "84987785"
 
 ## <a name="supported-data-stores"></a>支持的数据存储
 
-目前，以下数据存储的数据工厂 UI 支持链接服务参数化。 对于所有其他数据存储，可以通过选择“连接”选项卡上的**代码**图标并使用 JSON 编辑器来参数化链接的服务。
+目前，数据工厂 UI 支持以下数据存储的链接服务参数化。 对于所有其他数据存储，可以通过选择“连接”选项卡上的**代码**图标并使用 JSON 编辑器来参数化链接的服务。
 
 - Amazon Redshift
-- Azure Cosmos DB （SQL API）
+- Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
-- Azure SQL Database
+- Azure SQL 数据库
 - Azure Synapse Analytics（以前称为 SQL DW）
 - MySQL
 - Oracle
 - SQL Server
+- 泛型 HTTP
+- 泛型 REST
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 

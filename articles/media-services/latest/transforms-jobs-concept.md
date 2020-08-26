@@ -12,15 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73571235"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543055"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
-本主题提供有关[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)的详细信息，并解释这些实体之间的关系。
+本主题提供有关[转换](/rest/api/media/transforms)和[作业](/rest/api/media/jobs)的详细信息，并解释这些实体之间的关系。
 
 ## <a name="overview"></a>概述
 
@@ -57,7 +58,7 @@ ms.locfileid: "73571235"
 
 ### <a name="viewing-schema"></a>查看架构
 
-在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的“架构”定义。 也可以在 [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) 或其他媒体服务 v3 SDK 参考文档中查看预设定义（例如 **StandardEncoderPreset**）。
+在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的“架构”定义。 也可以在 [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) 或其他媒体服务 v3 SDK 参考文档中查看预设定义（例如 **StandardEncoderPreset**）。
 
 ### <a name="creating-transforms"></a>创建转换
 
@@ -65,7 +66,7 @@ ms.locfileid: "73571235"
 
 ### <a name="updating-transforms"></a>更新转换
 
-如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。 此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
+如果需要更新[转换](/rest/api/media/transforms)，请使用“更新”操作。 此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
 
 ### <a name="transform-object-diagram"></a>转换对象关系图
 
@@ -73,11 +74,11 @@ ms.locfileid: "73571235"
 
 选择图像查看其完整大小。  
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
+[![显示转换对象及其引用的对象的关系图，包括对象之间的类派生关系。](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>作业
 
-**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
+**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>来自 HTTPS 的作业输入
 
@@ -93,7 +94,7 @@ ms.locfileid: "73571235"
 
 ### <a name="updating-jobs"></a>更新作业
 
-对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
+对[作业](/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
 
 ### <a name="job-object-diagram"></a>作业对象关系图
 
@@ -101,7 +102,7 @@ ms.locfileid: "73571235"
 
 单击图像查看其完整大小。  
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
+[![显示作业对象及其引用的对象的关系图，包括对象之间的类派生关系。](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>配置媒体预留单位
 
@@ -115,7 +116,7 @@ ms.locfileid: "73571235"
 
 ## <a name="see-also"></a>另请参阅
 
-* [错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [错误代码](/rest/api/media/jobs/get#joberrorcode)
 * [媒体服务实体的筛选、排序和分页](entities-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
