@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271237"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891855"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -33,7 +33,7 @@ ms.locfileid: "88271237"
 
 此外，当客户使用 Azure AD 作为应用的标识提供者时，有许多好处。 其中包括：
 
-- 为用户提供单一登录。 使用 SSO，可让客户更轻松地使用单一登录来降低支持成本。 如果启用一次单击 SSO，则客户的 IT 管理员无需了解如何配置应用程序以在其组织中使用。 若要了解有关单一登录的详细信息，请参阅 [什么是单一登录？](../manage-apps/what-is-single-sign-on.md)。
+- 为用户提供单一登录。 使用 SSO，可让客户更轻松地使用单一登录来降低支持成本。 如果启用一次单击 SSO，则客户的 IT 管理员无需了解如何配置应用程序以在其组织中使用。 若要详细了解单一登录，请参阅[什么是单一登录？](../manage-apps/what-is-single-sign-on.md)。
 - 可以在 Microsoft 365 应用程序库、Microsoft 365 应用程序启动器和 Office.com 上的 Microsoft 搜索中发现你的应用程序。 
 - 集成的应用管理。 若要详细了解 Azure AD 中的应用管理，请参阅 [什么是应用程序管理？](../manage-apps/what-is-application-management.md)。
 - 应用可以使用 [图形 API](https://docs.microsoft.com/graph/) 来访问在 Microsoft 生态系统中推动用户工作效率的数据。
@@ -61,7 +61,7 @@ ms.locfileid: "88271237"
 6. 加入 Microsoft 合作伙伴网络。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要一个永久帐户来测试至少注册了两个用户。
 
@@ -98,7 +98,7 @@ OAuth 2.0 是一种 [行业标准](https://oauth.net/2/) 的授权协议。 Open
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2.0 或 WS-ADDRESSING
 
-SAML 是适用于 web 应用程序的成熟且广泛采用的单一登录标准。 若要了解有关 Azure 如何使用 SAML 的详细信息，请参阅 [Azure 如何使用 saml 协议](active-directory-saml-protocol-reference.md)。 
+SAML 是适用于 web 应用程序的成熟且广泛采用的 [单一登录标准](https://www.oasis-open.org/standards#samlv2.0) 。 若要了解有关 Azure 如何使用 SAML 的详细信息，请参阅 [Azure 如何使用 saml 协议](active-directory-saml-protocol-reference.md)。 
 
 Web Services 联合身份验证 (的 WS) 是一个 [行业标准](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) ，通常用于使用 .net 平台开发的 web 应用程序。
 

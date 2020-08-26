@@ -4,15 +4,16 @@ description: 了解帮助购买 Azure 预留项的要点。
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287636"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686201"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -71,7 +72,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
 - [数据资源管理器](/azure/data-explorer/pricing-reserved-capacity)
-- [磁盘存储](../../virtual-machines/linux/disks-reserved-capacity.md)
+- [磁盘存储](../../virtual-machines/disks-reserved-capacity.md)
 - [专用主机](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [软件计划](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [存储](../../storage/blobs/storage-blob-reserved-capacity.md)

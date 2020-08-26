@@ -4,15 +4,16 @@ description: 本文帮助你确定要购买哪种预留项。
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759881"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684739"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>确定要购买的预留项
 
@@ -38,7 +39,7 @@ ms.locfileid: "87759881"
 
 忽略当天使用时间小于 24 小时的资源。
 
-若要在实例大小系列级别进行分析，可以从 [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) 获取实例大小灵活性值。 将这些值与数据合并即可执行分析。 有关实例大小灵活性的详细信息，请参阅[虚拟机预留实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+若要在实例大小系列级别进行分析，可以从 [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) 获取实例大小灵活性值。 将这些值与数据合并即可执行分析。 有关实例大小灵活性的详细信息，请参阅[虚拟机预留实例的虚拟机大小灵活性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>分析所购买的 Azure Synapse Analytics 预留实例的用量
 

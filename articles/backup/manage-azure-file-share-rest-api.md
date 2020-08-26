@@ -3,16 +3,16 @@ title: 通过 Rest API 管理 Azure 文件共享备份
 description: 了解如何使用 REST API 管理和监视 Azure 备份所备份的 Azure 文件共享。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073255"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892841"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>通过 REST API 管理 Azure 文件共享备份
 
-本文介绍如何执行管理和监视[Azure 备份](./backup-overview.md)所备份的 azure 文件共享的任务。
+本文介绍如何执行管理和监视 [Azure 备份](./backup-overview.md)所备份的 azure 文件共享的任务。
 
 ## <a name="monitor-jobs"></a>监视作业
 
@@ -22,7 +22,7 @@ Azure 备份服务会触发在后台运行的作业。 这包括触发备份、�
 
 触发备份等操作将始终返回响应中的 jobID。
 
-例如，[触发器备份 REST API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share)操作的最终响应如下所示：
+例如， [触发器备份 REST API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share) 操作的最终响应如下所示：
 
 ```json
 {
@@ -38,7 +38,7 @@ Azure 备份服务会触发在后台运行的作业。 这包括触发备份、�
 }
 ```
 
-Azure 文件共享备份作业由**jobId**字段标识，并可使用 GET 请求按[此处](/rest/api/backup/jobdetails/)所述进行跟踪。
+Azure 文件共享备份作业由 **jobId** 字段标识，并可使用 GET 请求按 [此处](/rest/api/backup/jobdetails/) 所述进行跟踪。
 
 ### <a name="tracking-the-job"></a>跟踪作业
 
@@ -46,7 +46,7 @@ Azure 文件共享备份作业由**jobId**字段标识，并可使用 GET 请求
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-{JobName} 是上面提到的 "jobId"。 响应始终为 "200 正常"，**状态**字段指示作业状态。 完成后， **extendedInfo**部分会显示有关该作业的更多详细信息。
+{JobName} 是上面提到的 "jobId"。 响应始终为 "200 正常"， **状态** 字段指示作业状态。 完成后， **extendedInfo** 部分会显示有关该作业的更多详细信息。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
@@ -60,7 +60,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response-example"></a>响应示例
 
-提交*GET* URI 后，将返回200响应。
+提交 *GET* URI 后，将返回200响应。
 
 ```http
 HTTP/1.1" 200
@@ -113,7 +113,7 @@ HTTP/1.1" 200
 
 若要更改文件共享受保护的策略，可以使用与启用保护相同的格式。 只需在请求策略中提供新策略 ID 并提交请求。
 
-例如：若要将*testshare*的保护策略从*schedule1*更改为*schedule2*，请在请求正文中提供*schedule2* ID。
+例如：若要将 *testshare* 的保护策略从 *schedule1* 更改为 *schedule2*，请在请求正文中提供 *schedule2* ID。
 
 ```json
 {
@@ -127,7 +127,7 @@ HTTP/1.1" 200
 
 ## <a name="stop-protection-but-retain-existing-data"></a>停止保护，但保留现有数据
 
-您可以删除受保护的文件共享的保护，但保留已备份的数据。 为此，请在用于[启用备份](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share)和提交请求的请求正文中删除策略。 一旦删除与策略的关联，就不再触发备份，也不会创建新的恢复点。
+您可以删除受保护的文件共享的保护，但保留已备份的数据。 为此，请在用于[启用备份](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share) 和提交请求的请求正文中删除策略。 一旦删除与策略的关联，就不再触发备份，也不会创建新的恢复点。
 
 ```json
 {
@@ -142,7 +142,7 @@ HTTP/1.1" 200
 
 ### <a name="sample-response"></a>示例响应
 
-停止对文件共享的保护是一个异步操作。 操作创建需要跟踪的其他操作。 创建另一个操作时，它将返回两个响应：202（接受）和200（在该操作完成时）。
+停止对文件共享的保护是一个异步操作。 操作创建需要跟踪的其他操作。 它将返回两个响应： 202 (在创建另一个操作时接受) ，并在该操作完成时返回200。
 
 成功接受操作时的响应标头：
 
@@ -190,13 +190,13 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>停止保护并删除数据
 
-若要删除对受保护文件共享的保护并同时删除备份数据，请执行 "删除" 操作，如[此处](/rest/api/backup/protecteditems/delete)所述。
+若要删除对受保护文件共享的保护并同时删除备份数据，请执行 "删除" 操作，如 [此处](/rest/api/backup/protecteditems/delete)所述。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-参数 {容器} 和 {protectedItemName} 在[此处](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)设置。
+参数 {容器} 和 {protectedItemName} 在 [此处](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)设置。
 
 下面的示例触发操作以停止保护受*azurefilesvault*保护的*testshare*文件共享。
 
@@ -207,8 +207,8 @@ DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f4
 ### <a name="responses"></a>响应
 
 删除保护是一个异步操作。 操作创建需要单独跟踪的其他操作。
-当创建另一个操作时，它将返回两个响应：202（已接受），并在该操作完成时返回204（NoContent）。
+它将返回两个响应： 202 (在创建另一操作时接受) ，204 (NoContent 在该操作完成时) 。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[排查为 Azure 文件共享配置备份时遇到的问题](troubleshoot-azure-files.md)。
+* 了解如何 [排查为 Azure 文件共享配置备份时遇到的问题](troubleshoot-azure-files.md)。

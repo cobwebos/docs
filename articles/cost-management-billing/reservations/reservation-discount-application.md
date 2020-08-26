@@ -4,15 +4,16 @@ description: 本文帮助你了解在一般情况下如何应用预留实例折�
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: cd09bb7bde759c543b066070c5d2450404949610
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1c038e896a9f9fc65c3b2201b3e763e966285c56
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627103"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684671"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>如何应用预留折扣
 
@@ -38,7 +39,7 @@ ms.locfileid: "82627103"
 
 服务计划：
 
-- 虚拟机预留实例：购买预留项时，如果选择“针对实例大小灵活性进行优化”  ，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+- 虚拟机预留实例：购买预留项时，如果选择“针对实例大小灵活性进行优化”  ，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 - Azure 存储预留容量：你可以购买标准 Azure 存储帐户的预留容量（单位为每月 100 TiB 或 1 PiB）。 若要了解哪些区域支持 Azure 存储预留容量，请参阅[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。 Azure 存储预留容量可用于所有访问层（热、冷、存档）和任何复制配置（LRS、GRS 或 ZRS）。
 - SQL 数据库预留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](understand-reservation-charges.md)。
 - Azure Cosmos DB 预留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](understand-cosmosdb-reservation-charges.md)。

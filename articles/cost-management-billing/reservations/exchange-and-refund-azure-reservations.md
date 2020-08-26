@@ -3,15 +3,16 @@ title: Azure 预留的自助交换和退款
 description: 了解如何进行 Azure 预留的交换或退款。 要请求对预留进行交换或退款，必须具有预留订单的所有者访问权限。
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f1323d21ee59386220a35cc31b17cab3441f0e0d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457628"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684416"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
