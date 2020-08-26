@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份 DPM 工作负荷
 description: 了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 备份
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 91fd8559b1561ae83967c7fc74a2390ce2460c95
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825964"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892314"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 服务器的 Azure 备份
 
@@ -51,7 +51,7 @@ Sample DPM scripts: Get-DPMSampleScript
 
 以下步骤引导用户创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
 
-1. 首次使用 Azure 备份时，必须使用 **Register-AzResourceProvider** cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+1. 如果是首次使用 Azure 备份，则必须使用 **AzResourceProvider** Cmdlet 将 Azure 恢复服务提供程序注册到订阅。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -72,7 +72,7 @@ Sample DPM scripts: Get-DPMSampleScript
 4. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md) 或 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md)。 以下示例显示，testVault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
 
    > [!TIP]
-   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
+   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，可以方便地将备份恢复服务保管库对象存储在变量中。
    >
    >
 
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>网络
 
-如果 DPM 计算机与 Internet 上 Azure 备份服务的连接是通过代理服务器建立的，则只有提供代理服务器设置，才能成功备份。 为此，可以结合 ```-ProxyServer``` 和 ```-ProxyPort```、 ```-ProxyUsername```和 ```ProxyPassword``` 参数使用 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet。 此示例未使用代理服务器，因此我们要显式清除任何代理相关的信息。
+如果 DPM 计算机与 Internet 上 Azure 备份服务的连接是通过代理服务器建立的，则只有提供代理服务器设置，才能成功备份。 为此，可以结合 ```-ProxyServer``` 和 ```-ProxyPort```、 ```-ProxyUsername```和 ```ProxyPassword``` 参数使用 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet。 在此示例中，没有代理服务器，因此我们要显式清除任何与代理相关的信息。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -209,7 +209,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ### <a name="encryption-settings"></a>加密设置
 
-发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。 必须妥善保管设置好的通行短语，并保证其安全。
+发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。 设置此信息后，务必确保安全安全。
 
 在以下示例中，第一个命令会将字符串 ```passphrase123456789``` 转换为安全字符串，并将安全字符串分配给名为 ```$Passphrase``` 的变量。 第二个命令会将 ```$Passphrase``` 中的安全字符串设置为加密备份的密码。
 
@@ -220,7 +220,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 ```
 
 > [!IMPORTANT]
-> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，将无法从 Azure 还原数据。
+> 设置密码后，请确保密码信息安全可靠。 如果没有此通行短语，将无法从 Azure 还原数据。
 >
 >
 
@@ -255,7 +255,7 @@ $MPG = Get-ModifiableProtectionGroup $PG
 
 ### <a name="adding-group-members-to-the-protection-group"></a>将组成员添加到保护组
 
-每个 DPM 代理知道它安装所在服务器上数据源列表。 要将数据源添加到保护组，DPM 代理需要先将数据源列表发回给 DPM 服务器。 然后选择一个或多个数据源，并将其添加到保护组。 实现此目的需要执行的 PowerShell 步骤包括：
+每个 DPM 代理知道它所安装到的服务器上的数据源列表。 要将数据源添加到保护组，DPM 代理需要先将数据源列表发回给 DPM 服务器。 然后选择一个或多个数据源，并将其添加到保护组。 实现此目的需要执行的 PowerShell 步骤包括：
 
 1. 通过 DPM 代理获取 DPM 管理的所有服务器的列表。
 2. 选择特定的服务器。
@@ -268,7 +268,7 @@ $MPG = Get-ModifiableProtectionGroup $PG
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-现在使用 [Get-DPMDatasource](/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) cmdlet 获取 ```$server``` 上的数据源列表。 在本示例中，我们将筛选要为备份配置的卷 `D:\`。 然后，使用 [Add-DPMChildDatasource](/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) cmdlet 将此数据源添加到保护组。 请记得使用 *modifiable* 保护组对象 ```$MPG``` 来完成添加。
+现在使用 [Get-DPMDatasource](/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) cmdlet 获取 ```$server``` 上的数据源列表。 在此示例中，我们将筛选 `D:\` 要为备份配置的卷。 然后，使用 [Add-DPMChildDatasource](/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) cmdlet 将此数据源添加到保护组。 请记得使用 *modifiable* 保护组对象 ```$MPG``` 来完成添加。
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
@@ -289,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>设置保留范围
 
-使用 [Set-DPMPolicyObjective](/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) cmdlet 设置备份点保留。 尽管在定义备份计划之前设置保留点看起来有点奇怪，但使用 ```Set-DPMPolicyObjective``` cmdlet 会自动设置稍后可修改的默认备份计划。 始终可以先设置备份计划，再设置保留策略。
+使用 [Set-DPMPolicyObjective](/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) cmdlet 设置备份点保留。 尽管在定义备份计划之前设置保留点看起来有点奇怪，但使用 ```Set-DPMPolicyObjective``` cmdlet 会自动设置稍后可修改的默认备份计划。 始终可以先设置备份计划，然后再设置保留策略。
 
 以下示例中的 cmdlet 将设置磁盘备份的保留参数。 这会将备份保留 10 天，并每隔 6 小时在生产服务器和 DPM 服务器之间同步数据。 ```SynchronizationFrequencyMinutes``` 不会定义创建备份点的频率，只会定义数据复制到 DPM 服务器的频率。  此设置可防止备份变得太大。
 

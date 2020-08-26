@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1d405aff5233f38aee2031220fd119693da64abb
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751714"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892858"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，你也可以选择使用现有资源。 可以通过向模板提供其他参数来使用现有资源。 例如，如果你想要使用现有的存储帐户，请将 **storageAccountOption** 值设置为 **existing**，并在 **storageAccountName** 参数中提供存储帐户的名称。
 
 > [!IMPORTANT]
-> 若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。
+> 若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。 工作区的 _默认_ 存储帐户不支持高级存储或分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

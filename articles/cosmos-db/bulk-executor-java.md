@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309148"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892603"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -27,7 +27,7 @@ ms.locfileid: "87309148"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
-* 无需 Azure 订阅即可免费[试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
+* 无需 Azure 订阅即可免费 [试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
 
 * [Java 开发工具包 (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
   - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
@@ -183,7 +183,8 @@ ms.locfileid: "87309148"
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
    |Duration getTotalTimeTaken()  |   批量更新 API 调用完成执行所花费的总时间。      |
-   |List\<Exception> getErrors()   |       如果分批提供给批量更新 API 调用的某些文档无法插入，则获取错误列表。      |
+   |List\<Exception> getErrors()   |       获取与更新操作相关的操作或网络问题的列表。      |
+   |列出 \<BulkUpdateFailure> getFailedUpdates ( # A1   |       获取无法完成的更新列表，以及导致失败的特定异常。|
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 

@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252345"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690436"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>快速入门：使用 ARM 模板添加 Azure 角色分配
 
@@ -39,7 +39,7 @@ ms.locfileid: "86252345"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)。 该模板具有三个参数和资源部分。 请注意，资源部分包含角色分配的三个要素：安全主体、角色定义和作用域。
 
-:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -79,7 +79,7 @@ ms.locfileid: "86252345"
 
     [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建新的资源组，[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 命令部署模板以添加角色分配。
 
-    会得到类似于下面的输出：
+    应该会看到与下面类似的输出：
 
     ```azurepowershell
     PS> New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleAssignmentName $roleAssignmentName -roleDefinitionID $roleDefinitionId -principalId $principalId

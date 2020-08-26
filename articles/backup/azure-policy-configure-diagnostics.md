@@ -3,12 +3,12 @@ title: 大规模配置保管库诊断设置
 description: 使用 Azure Policy 为给定范围内的所有保管库配置 Log Analytics 诊断设置
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824043"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892229"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大规模配置保管库诊断设置
 
@@ -20,9 +20,9 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-* 此策略可以一次应用于某个特定订阅中的所有恢复服务保管库（或该特定订阅中的资源组）。 分配策略的用户需要对向其分配策略的订阅具有“所有者”访问权限。
+* 此策略可以一次应用于某个特定订阅中的所有恢复服务保管库（或该特定订阅中的资源组）。 分配策略的用户需要有权访问策略分配到的订阅的 **所有者** 。
 
-* 将向其发送诊断数据的用户 (指定的 "LA" 工作区) 可以与分配该策略的保管库位于不同的订阅中。 用户需要对存在指定 LA 工作区的订阅具有“读者”、“参与者”或“所有者”访问权限。
+* 将向其发送诊断数据的用户 (指定的 "LA" 工作区) 可以与分配该策略的保管库位于不同的订阅中。 用户需要具有 **读取**者、 **参与者** 或 **所有者** 对指定的 LA 工作区所在的订阅的访问权限。
 
 * 当前不支持管理组范围。
 

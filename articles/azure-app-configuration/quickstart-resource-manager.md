@@ -9,12 +9,12 @@ ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235173"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661463"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>快速入门：使用应用程序配置和资源管理器模板（ARM 模板）自动部署 VM
 
@@ -32,7 +32,7 @@ ms.locfileid: "88235173"
 
 ## <a name="review-the-templates"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。 [第一个模板](https://azure.microsoft.comresources/templates/101-app-configuration-store/)创建应用程序配置存储：
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。 [第一个模板](https://azure.microsoft.com/resources/templates/101-app-configuration-store/)创建应用程序配置存储：
 
 :::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 

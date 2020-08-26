@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 26531e80292a53400671ac3507b47371c1fbbcad
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566159"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796810"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>快速入门：将 Unity 示例部署到桌面
 
@@ -57,7 +57,7 @@ ms.locfileid: "88566159"
 1. 将配置更改为“发布”和“x86”。 
 1. 将调试模式切换为“本地计算机”。
   ![解决方案配置](./media/unity-deploy-config-pc.png)
-1. 生成解决方案 (F7)。
+1. 生成解决方案。
 
 ## <a name="launch-the-sample-project"></a>启动示例项目
 

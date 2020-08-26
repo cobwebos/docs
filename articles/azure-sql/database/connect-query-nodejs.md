@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-javascript 
-ms.openlocfilehash: 8c2df57f56ad30c6cf6a2ac84a32baa79ea91955
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-javascript
+ms.openlocfilehash: c079d9bad15de6dac93cd9be23631786673bd009
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384746"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756378"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -149,7 +149,7 @@ ms.locfileid: "87384746"
           console.log("%s\t%s", column.metadata.colName, column.value);
         });
       });
-      
+
       connection.execSql(request);
     }
     ```

@@ -3,12 +3,12 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826916"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892433"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -51,9 +51,9 @@ ms.locfileid: "88826916"
 * 创建 NT SERVICE\AzureWLBackupPluginSvc 帐户，以发现虚拟机上的数据库。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。
 * Azure 备份使用 NT AUTHORITY\SYSTEM 帐户来发现 VM 上运行的数据库。 此帐户必须是 SQL 上的公共登录名。
 
-如果未在 Azure Marketplace 中创建 SQL Server VM，或者使用的是 SQL 2008 和 2008 R2，则可能会收到 **UserErrorSQLNoSysadminMembership** 错误。
+如果未在 Azure Marketplace 中创建 SQL Server VM，或者使用的是 SQL 2008 或 2008 R2，则可能会收到 **UserErrorSQLNoSysadminMembership** 错误。
 
-有关在使用 Windows 2008 R2 上运行的 **SQL 2008** 和 **2008 R2** 时如何授予权限，请参阅[此文](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)。
+对于在 Windows 2008 R2 上运行的 **SQL 2008** 和 **2008 R2** 的情况下提供权限，请参阅 [此处](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)。
 
 对于所有其他版本，可使用以下步骤解决权限问题：
 

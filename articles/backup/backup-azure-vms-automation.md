@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份和恢复 Azure VM
 description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Azure VM
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826440"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892399"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -104,7 +104,7 @@ ms.locfileid: "88826440"
     ```
 
    > [!TIP]
-   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
+   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，可以方便地将备份恢复服务保管库对象存储在变量中。
    >
    >
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 在定义保护策略后，还必须为相应的项启用该策略。 请使用 [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 来启用保护。 启用保护需要两个对象 - 项和策略。 将策略与保管库关联之后，将在策略计划中定义的时间触发备份工作流。
 
 > [!IMPORTANT]
-> 当使用 PowerShell 同时为多个 Vm 启用备份时，请确保单个策略没有超过100个关联的 Vm。 这是[建议的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超过100个 Vm，但计划在将来添加该检查，则 PowerShell 客户端不会显式阻止。
+> 当使用 PowerShell 同时为多个 Vm 启用备份时，请确保单个策略没有超过100个关联的 Vm。 这是[建议的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果 Vm 超过100，但计划在将来添加该检查，则 PowerShell 客户端不会显式阻止。
 
 以下示例使用策略 NewPolicy 为项 V2VM 启用保护。 根据 VM 是否已加密以及采用了何种加密类型，示例将有所不同。
 
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> 如果你使用的是 Azure 政府云，请使用 [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数 ServicePrincipalName 的值 ff281ffe-705c-4f53-9f37-a40e6f2c68f3。
+> 如果你使用的是 Azure 政府云，请使用 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数**ServicePrincipalName**的值。
 >
 
 ## <a name="monitoring-a-backup-job"></a>监视备份作业
@@ -294,7 +294,7 @@ Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200 -VaultId $targe
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that you want to start the backup)
 $UtcTime = $UtcTime.ToUniversalTime()
 $SchPol.ScheduleRunTimes[0] = $UtcTime
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -323,7 +323,7 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-默认值为2，则用户可以将值设置为最小值为1，最大值为5。 对于每周备份策略，时间段设置为5，并且无法更改。
+默认值为2。 最小值为1，最大值为5。 对于每周备份策略，时间段设置为5，并且无法更改。
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>在快照保留期间创建 Azure 备份资源组
 
@@ -365,7 +365,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>更改备份项的策略
 
-用户可以修改现有策略，也可以将备份项的策略从 Policy1 更改为 Policy2。 若要切换备份项的策略，请提取相关策略并备份项，并使用 [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令以备份项作为参数。
+可以修改现有策略，也可以将备份项的策略从 Policy1 更改为 Policy2。 若要切换备份项的策略，请提取相关策略并备份项，并使用 [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令以备份项作为参数。
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 提供了附加参数 TargetResourceGroupName 来指定托管磁盘要还原到的 RG。
 
 > [!IMPORTANT]
-> 强烈建议使用 **TargetResourceGroupName** 参数来还原托管磁盘，因为它可以显著提高性能。 如果未指定此参数，则无法从即时还原功能中受益，还原操作将在比较中变慢。 如果要将托管磁盘还原为非托管磁盘，则不要提供此参数，并通过提供参数来明确目的 `-RestoreAsUnmanagedDisks` 。 `-RestoreAsUnmanagedDisks`参数可从 Azure PowerShell 3.7.0 开始使用。 在将来的版本中，为正确的还原体验提供其中一个参数是必需的。
+> 强烈建议使用 **TargetResourceGroupName** 参数还原托管磁盘，因为这样可以显著提高性能。 如果未指定此参数，则无法从即时还原功能中受益，还原操作将在比较中变慢。 如果要将托管磁盘还原为非托管磁盘，则不要提供此参数，并通过提供参数来明确目的 `-RestoreAsUnmanagedDisks` 。 `-RestoreAsUnmanagedDisks`参数可从 Azure PowerShell 3.7.0 开始使用。 在将来的版本中，为正确的还原体验提供其中一个参数是必需的。
 >
 >
 
@@ -544,7 +544,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-模板不能直接访问，因为它在客户的存储帐户和给定容器下。 需要完整的 URL（连同临时 SAS 令牌）才能访问此模板。
+模板不能直接访问，因为它在客户的存储帐户和给定容器下。 需要完整的 URL（以及临时 SAS 令牌）才能访问此模板。
 
 1. 首先从 templateBlobURI 中提取模板名称。 此格式如下所述。 可以在 PowerShell 中使用 split 操作从此 URL 中提取最终模板名称。
 
@@ -570,7 +570,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 以下部分列出了使用“VMConfig”文件创建 VM 所需的步骤。
 
 > [!NOTE]
-> 强烈建议使用上面详述的部署模板来创建 VM。 本部分（要点 1-6）不久将被弃用。
+> 强烈建议使用上述部署模板来创建 VM。 本部分（要点 1-6）不久将被弃用。
 
 1. 查询已还原磁盘属性以获取作业详细信息。
 

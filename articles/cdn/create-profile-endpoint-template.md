@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: 39f10ed627320527a7a34fec52d540739f36e9ce
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554422"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705922"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>快速入门：创建 Azure CDN 配置文件和终结点 - ARM 模板
 
@@ -42,7 +42,7 @@ ms.locfileid: "85554422"
 * 配置文件
 * 端点
 
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="45-117":::
+:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json":::
 
 模板中定义了一个 Azure 资源：
 

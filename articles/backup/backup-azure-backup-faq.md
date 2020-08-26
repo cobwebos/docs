@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827386"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892756"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "88827386"
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>在保管库中可以保护多少个数据源/项？
 
-在一个保管库中，可以跨所有工作负荷（IaaS VM、SQL、AFS 等）保护多达 2000 个数据源/项。
+可以在保管库中的所有工作负荷 (例如 IaaS VM、SQL、AFS) 上保护最多2000数据源/项。
 例如，如果已在保管库中保护了 500 个 VM 和 400 个 Azure 文件存储共享，则最多只能保护其中的 1100 个 SQL 数据库。
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>每个保管库可以创建多少个策略？
@@ -39,7 +39,7 @@ ms.locfileid: "88827386"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
 
-是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 

@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117241"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892977"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -153,7 +153,7 @@ PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>在计算和存储模拟器中运行应用程序
 
-Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署到云之前在该本地环境中测试此应用程序。 模拟器与 Azure 环境之间存在一些差异。 若要更好地了解该模拟器，请参阅[使用 Azure 存储模拟器进行开发和测试](storage/common/storage-use-emulator.md)。
+Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署到云之前在该本地环境中测试此应用程序。 模拟器与 Azure 环境之间存在一些差异。 若要更好地了解这一点，请参阅 [使用 Azure 存储模拟器进行开发和测试](storage/common/storage-use-emulator.md)。
 
 请注意，必须本地安装 PHP 才能使用计算模拟器。 计算模拟器将使用本地 PHP 安装来运行应用程序。
 

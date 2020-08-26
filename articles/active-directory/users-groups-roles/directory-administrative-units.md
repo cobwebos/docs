@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475781"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795892"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 中的管理单元管理（预览）
 
@@ -47,8 +47,8 @@ ms.locfileid: "87475781"
 在此预览版中，可以使用 Azure 门户、PowerShell cmdlet 和脚本或 Microsoft Graph 对管理单元进行管理。 请参阅我们的文档获取详细信息：
 
 - [创建、删除、填充角色并将其添加到管理单元](roles-admin-units-manage.md)：完成操作指南过程
-- [处理管理单元](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)：如何使用 PowerShell 处理管理单元
-- [管理单元 Graph 支持](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta)：有关适用于管理单元的 Microsoft Graph 的详细文档。
+- [处理管理单元](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)：如何使用 PowerShell 处理管理单元
+- [管理单元 Graph 支持](/graph/api/resources/administrativeunit?view=graph-rest-beta)：有关适用于管理单元的 Microsoft Graph 的详细文档。
 
 ### <a name="planning-your-administrative-units"></a>规划管理单元
 

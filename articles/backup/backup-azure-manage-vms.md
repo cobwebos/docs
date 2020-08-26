@@ -3,16 +3,16 @@ title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: cbe0ccef9df27af032cf849b302f6a6211383fe8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531955"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892161"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
-本文介绍如何管理 azure[备份服务](backup-overview.md)备份的 azure 虚拟机（vm）。 本文还概述了可以在保管库仪表板上找到的备份信息。
+本文介绍如何管理 azure 虚拟机 (通过 [Azure 备份服务](backup-overview.md)备份的 vm) 。 本文还概述了可以在保管库仪表板上找到的备份信息。
 
 在 Azure 门户中，可以使用恢复服务保管库仪表板访问保管库信息，包括：
 
@@ -40,12 +40,12 @@ ms.locfileid: "87531955"
 
     此时会显示订阅中的恢复服务保管库列表。
 
-1. 为方便使用，请选择保管库名称旁边的固定图标，并选择 "**固定到仪表板**"。
+1. 为方便使用，请选择保管库名称旁边的固定图标，并选择 " **固定到仪表板**"。
 1. 打开保管库仪表板。
 
     ![打开保管库仪表板和“设置”窗格](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-1. 在 "**备份项**" 磁贴中，选择 " **Azure 虚拟机**"。
+1. 在 " **备份项** " 磁贴中，选择 " **Azure 虚拟机**"。
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
@@ -64,15 +64,15 @@ ms.locfileid: "87531955"
 修改现有的备份策略：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 打开保管库仪表板。
-2. 从 "**管理 > 备份策略**中，选择**Azure 虚拟机**类型的备份策略。
-3. 选择 "**修改**" 并更改设置。
+2. 从 " **管理 > 备份策略**中，选择 **Azure 虚拟机**类型的备份策略。
+3. 选择 " **修改** " 并更改设置。
 
 ### <a name="switch-backup-policy"></a>切换备份策略
 
 若要管理备份策略，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 打开保管库仪表板。
-2. 在 "**备份项**" 磁贴中，选择 " **Azure 虚拟机**"。
+2. 在 " **备份项** " 磁贴中，选择 " **Azure 虚拟机**"。
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
@@ -145,11 +145,11 @@ ms.locfileid: "87531955"
     ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 > [!NOTE]
-> 完成删除操作后，备份的数据将保留14天（[软删除状态](./soft-delete-virtual-machines.md)）。 <br>此外，还可以[启用或禁用软删除](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
+> 完成删除操作后，备份的数据将保留14天（ [软删除状态](./soft-delete-virtual-machines.md)）。 <br>此外，还可以 [启用或禁用软删除](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
 
 ## <a name="resume-protection-of-a-vm"></a>恢复对 VM 的保护
 
-如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”。 如果选择 "[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)" 选项或[删除备份数据](#delete-backup-data)，则此选项不可用。
+如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”。 如果选择 " [停止保护并删除备份数据](#stop-protection-and-delete-backup-data) " 选项或 [删除备份数据](#delete-backup-data)，则此选项不可用。
 
 若要恢复 VM 保护，请执行以下操作：
 
@@ -168,7 +168,7 @@ ms.locfileid: "87531955"
 
   ![选择“停止备份”](./media/backup-azure-manage-vms/stop-backup-button.png)
 
-* 在保管库项仪表板中，选择“删除备份数据”。 如果已选择 "停止 VM 保护期间[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)" 选项，则会启用此选项。
+* 在保管库项仪表板中，选择“删除备份数据”。 如果已选择 "停止 VM 保护期间 [停止保护并保留备份数据](#stop-protection-and-retain-backup-data) " 选项，则会启用此选项。
 
   ![选择“删除备份”](./media/backup-azure-manage-vms/delete-backup-button.png)
 
@@ -186,9 +186,9 @@ ms.locfileid: "87531955"
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主数据源不再存在的备份项
 
-* 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并出现 UserErrorVmNotFoundV2 错误。 对于失败的按需备份作业（未显示 "失败的计划作业"），备份预检查将显示为 "严重"。
+* 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并出现 UserErrorVmNotFoundV2 错误。 备份预检查将为 "失败的按需备份作业" 显示为 "严重" (失败的计划作业不) 显示。
 * 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最后一个恢复点除外）将根据备份策略中设置的保留范围进行清理。
-* 如果用户不再需要已删除资源的备份项/数据，由于最后一个恢复点会永久保留，并且会按适用的备份定价向用户收费，建议用户删除主数据源不再存在的备份项目，从而避免产生任何额外费用。
+* 建议删除主数据源不再存在的备份项，以避免任何额外成本，如果不再需要删除资源的备份项/数据，因为最后一个恢复点将被永久保留，并且根据适用的备份定价对该用户收费。
 
 ## <a name="next-steps"></a>后续步骤
 

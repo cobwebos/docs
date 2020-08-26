@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320674"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893115"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
@@ -85,7 +85,7 @@ spec:
 
 Azure 资源的托管标识允许 Pod 向支持它的 Azure 服务（如存储或 SQL）验证自身的身份。 已向该 Pod 分配 Azure 标识，允许 Pod 对 Azure Active Directory 进行身份验证并接收数字令牌。 可向其他 Azure 服务展示此数字令牌，以检查该 Pod 是否有权访问该服务并执行所需操作。 采用此方法时，对于数据库连接字符串等，无需使用机密。 下图显示了简化后的 Pod 托管标识工作流：
 
-![Azure 中简化后的 Pod 托管标识工作流](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Azure 中简化后的 Pod 托管标识工作流":::
 
 使用托管标识，应用程序代码无需包含凭据即可访问 Azure 存储等服务。 由于每个 Pod 都使用自己的标识进行身份验证，因此可审核并评价访问权限。 如果应用程序与其他 Azure 服务连接，请使用托管标识来限制凭据重用，避免凭据暴露。
 
@@ -97,7 +97,7 @@ Azure 资源的托管标识允许 Pod 向支持它的 Azure 服务（如存储�
 
 当应用程序需要凭据时，它们会与数字保管库通信，检索最新的机密内容，然后连接到所需的服务。 此数字保管库可以是 Azure Key Vault。 下图显示了使用 Pod 托管标识从 Azure Key Vault 检索凭据的简化工作流：
 
-![使用 Pod 托管标识从 Key Vault 检索凭据的简化工作流](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="使用 Pod 托管标识从 Key Vault 检索凭据的简化工作流":::
 
 使用 Key Vault，可存储并定期轮换凭据、存储帐户密钥或证书等机密。 可使用[适用于 Secrets Store CSI 驱动程序的 Azure 密钥保管库提供程序](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)将 Azure 密钥保管库与 AKS 群集集成。 Secrets Store CSI 驱动程序允许 AKS 群集以本机方式检索密钥保管库中的机密内容，并仅将其安全地提供给发出请求的 Pod。 与群集操作员一起将 Secrets Store CSI 驱动程序部署到 AKS 工作器节点上。 可使用 Pod 托管标识来请求访问密钥保管库，并通过 Secrets Store CSI 驱动程序检索所需的机密内容。
 

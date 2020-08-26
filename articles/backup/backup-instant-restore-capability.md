@@ -4,17 +4,17 @@ description: Azure 即时还原功能以及有关 VM 备份堆栈、资源管理
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825845"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892620"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
-> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。
+> 根据用户的反馈，我们已将 **VM 备份堆栈 V2** 重命名为 " **即时还原** "，以减少对 Azure Stack 功能的混淆。
 > 所有 Azure 备份用户现在已升级到**即时还原**。
 
 即时还原的新模型提供以下功能增强：
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-每个策略的默认快照保留期设置为 2 天。 用户可以将此值更改为 1 到 5 天。 就每周策略来说，快照保留期固定为 5 天。
+每个策略的默认快照保留期设置为 2 天。 最小值为1，最大值为5天。 就每周策略来说，快照保留期固定为 5 天。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

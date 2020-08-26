@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213789"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797099"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-支持扩展属性和自定义扩展属性作为动态成员身份规则中的字符串属性。 [扩展属性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持扩展属性和自定义扩展属性作为动态成员身份规则中的字符串属性。 [扩展属性](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[自定义扩展属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)与本地 Windows Server AD 或连接的 SaaS 应用程序同步，格式为 `user.extension_[GUID]_[Attribute]`，其中：
+[自定义扩展属性](../hybrid/how-to-connect-sync-feature-directory-extensions.md)与本地 Windows Server AD 或连接的 SaaS 应用程序同步，格式为 `user.extension_[GUID]_[Attribute]`，其中：
 
 * [GUID] 是 Azure AD 中用于在 Azure AD 中创建属性的应用程序的唯一标识符
 * [Attribute] 是属性创建时的名称
@@ -393,7 +393,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | （device.systemLabels - 包含“M365Managed”）
 
 > [!Note]  
-> 对于 deviceOwnership，在创建设备的动态组时，需要将该值设置为“Company”。 而在 Intune 上，设备所有权表示为 Corporate。 请参阅 [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)，了解更多详细信息。 
+> 对于 deviceOwnership，在创建设备的动态组时，需要将该值设置为“Company”。 而在 Intune 上，设备所有权表示为 Corporate。 请参阅 [OwnerTypes](/intune/reports-ref-devices#ownertypes)，了解更多详细信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

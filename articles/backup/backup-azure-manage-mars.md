@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b6f6d9ca94b2fda54c9f9aa8048660af450e0d31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757160"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893062"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -80,7 +80,7 @@ ms.locfileid: "88757160"
     ![选择要删除的项](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
-    > 从策略中彻底删除卷时请谨慎。  如果需要再次添加该卷，该卷将被视为新卷。 下一次计划备份将执行初始备份（完整备份），而不是增量备份。 如果以后需要临时删除和添加项，我们建议使用“排除设置”而不是“删除项”，以确保执行增量备份而不是完整备份。 
+    > 从策略中彻底删除卷时请谨慎。  如果需要再次添加该卷，该卷将被视为新卷。 下一次计划备份将执行初始备份（完整备份），而不是增量备份。 如果需要在以后临时删除和添加项，则建议使用 **排除项设置** ，而不是 **删除项** ，以确保进行增量备份而不是完整备份。
 
 2. 完成后续步骤，然后选择 " **完成** " 以完成操作。
 

@@ -3,12 +3,12 @@ title: 将系统状态还原为 Windows Server
 description: 有关从 Azure 中的备份还原 Windows Server 系统状态的分步说明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827097"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892535"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -154,7 +154,7 @@ ms.locfileid: "88827097"
     ![启动还原系统状态文件](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
-    >如果以 DSRM 模式执行还原，请不要选择 " **自动重新启动服务器"** 选项。
+    >如果在 DSRM 模式下执行还原，请不要选择 " **自动重新启动服务器"** 选项。
 
 1. 成功完成还原后，需要在正常模式下重新启动服务器。 打开命令提示符，然后键入以下命令： `bcdedit /deletevalue safeboot`
 1. 重新启动服务器。

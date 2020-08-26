@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7e89188e7ebc979c403b86ee26c876e8c40aa208
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260563"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705429"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - ARM 模板
 
@@ -37,7 +37,7 @@ ms.locfileid: "86260563"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/fw-docs-qs)。
 
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
+:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -65,7 +65,7 @@ ms.locfileid: "86260563"
    - 管理员用户名：键入管理员用户帐户的用户名 
    - 管理员密码：键入管理员密码或密钥
 
-3. 选择“我同意上述条款和条件”，然后选择“购买” 。 部署可能需要 10 分钟或更长时间才能完成。
+3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 10 分钟或更长时间才能完成。
 
 ## <a name="validate-the-deployment"></a>验证部署
 
