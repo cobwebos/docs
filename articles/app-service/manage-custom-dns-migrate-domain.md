@@ -4,14 +4,14 @@ description: 了解如何在不停机的情况下，将已分配到实时站点�
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782203"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871388"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -59,31 +59,27 @@ ms.locfileid: "88782203"
 
 ### <a name="enable-the-domain-for-your-app"></a>启用应用的域
 
-在 [Azure 门户](https://portal.azure.com)中的应用页的左侧导航窗格中，选择“自定义域”。 
+1. 在 [Azure 门户](https://portal.azure.com)中的应用页的左侧导航窗格中，选择“自定义域”。 
 
-![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”页中，选择“添加主机名”旁的 + 图标。
+1. 在 " **自定义域** " 页中，选择 " **添加自**定义域"。
 
-![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入要迁移的完全限定的域名，该域名对应于所创建的 TXT 记录，例如 `contoso.com` 、 `www.contoso.com` 或 `*.contoso.com` 。
+1. 键入要迁移的完全限定的域名，该域名对应于所创建的 TXT 记录，例如 `contoso.com` 、 `www.contoso.com` 或 `*.contoso.com` 。 选择“验证”。
 
-选择“验证”。
+    “添加自定义域”按钮随即激活。 
 
-“添加主机名”按钮会被激活。 
+1. 请确保“主机名记录类型”设置为你想要迁移的 DNS 记录类型。 选择“添加主机名”。
 
-请确保“主机名记录类型”设置为你想要迁移的 DNS 记录类型。
+    ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-选择“添加主机名”。
+    新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
-![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
-
-![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-你的自定义 DNS 名称现已在 Azure 应用中启用。 
+    你的自定义 DNS 名称现已在 Azure 应用中启用。 
 
 ## <a name="remap-the-active-dns-name"></a>重新映射活动 DNS 名称
 
@@ -97,9 +93,7 @@ ms.locfileid: "88782203"
 
 若要重新映射 A 记录，需要应用服务应用的外部 IP 地址，此地址显示在“自定义域”页中。
 
-通过选择右上角的 X 关闭“添加主机名”页。 
-
-在“自定义域”页面中，复制应用的 IP 地址。
+在“自定义域”页中，复制应用的 IP 地址。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 

@@ -296,7 +296,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -377,6 +377,8 @@
           href: partner-itsme.md
         - name: LexisNexis
           href: partner-lexisnexis.md
+        - name: Jumio
+          href: partner-jumio.md
         - name: Onfido
           href: partner-onfido.md
         - name: Trusona
@@ -385,6 +387,8 @@
           href: partner-twilio.md
         - name: TypingDNA
           href: partner-typingdna.md
+        - name: WhoIAM
+          href: partner-whoiam.md
     - name: 使用 b2clogin.com
       items:
         - name: b2clogin.com 概述

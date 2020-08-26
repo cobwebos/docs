@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037144"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871235"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -138,7 +138,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 | **语法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>'  --include-after <Date-Time-in-ISO-8601-format>` |
 | **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-after '2020-08-19T15:04:00Z'` |
 
-有关详细参考信息，请参阅[azcopy copy](storage-ref-azcopy-copy.md)参考文档。
+有关详细参考信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 ## <a name="download-files"></a>下载文件
 
@@ -234,7 +234,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 | **示例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory' --include-after '2020-08-19T15:04:00Z'` |
 
 
-有关详细参考信息，请参阅[azcopy copy](storage-ref-azcopy-copy.md)参考文档。
+有关详细参考信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 ## <a name="copy-files-between-storage-accounts"></a>在存储帐户之间复制文件
 
@@ -306,7 +306,8 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 >
 > |方案|标志|
 > |---|---|
-> |指定下载时应验证 MD5 哈希的严格程度。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
+> |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
 > |基于模式排除文件。|**--exclude-path**|
 > |指定你希望与同步相关的日志条目达到何种详细程度。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > 

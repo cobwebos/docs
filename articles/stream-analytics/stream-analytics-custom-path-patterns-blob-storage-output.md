@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747633"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869807"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -44,7 +44,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ![“客户端”容器](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-每个文件夹都可能包含多个 blob，其中每个 blob 包含一个或多个记录。 在上面的示例中，标记为“06000000”的文件夹中有一个 blob，其中包含以下内容：
+每个文件夹都可能包含多个 blob，其中每个 blob 包含一个或多个记录。 在上面的示例中，文件夹中有一个名为 "06000000" 的 blob，其中包含以下内容：
 
 ![blob 内容](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>示例
 
-根据 [Azure 流分析 Azure 门户](stream-analytics-quick-create-portal.md)快速入门指南中的说明，创建存储帐户、资源组、流分析作业和输入源。 使用在快速入门指南中使用的同一示例数据，该数据也可以在 [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) 上获取。
+根据 [Azure 流分析 Azure 门户](stream-analytics-quick-create-portal.md) 快速入门指南创建存储帐户、资源组、流分析作业和输入源。 使用在快速入门指南中使用的同一示例数据，该数据也可以在 [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) 上获取。
 
 使用以下配置创建 Blob 输出接收器：
 
