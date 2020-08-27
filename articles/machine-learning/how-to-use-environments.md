@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1994407de579e8fd7bc6dfc2ecc9f021d1bf0ec5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3368a42248e084476eb27318abbcd1ca9fbfdacf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853246"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927538"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -242,7 +242,11 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-可以首先使用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 方法在本地生成映像。 设置可选参数 `pushImageToWorkspaceAcr = True` 会将生成的映像推送到 Azure ML 工作区容器注册表中。 
+可以首先使用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 方法在本地生成映像。 若要生成 docker 映像，请设置可选参数 `useDocker=True` 。 若要将生成的映像推送到 AzureML 工作区容器注册表，请设置 `pushImageToWorkspaceAcr=True` 。
+
+```python
+build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
+```
 
 > [!WARNING]
 >  更改环境中的依赖项或通道的顺序将产生新的环境，并将需要新的映像生成。 此外， `build()` 如果存在新版本，则为现有映像调用方法将更新其依赖项。 

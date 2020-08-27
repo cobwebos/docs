@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923868"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -270,7 +270,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。
 
-此示例获取**容器**的根目录的 acl，然后将 acl 打印到控制台。
+此示例获取 **容器** 的根目录的 acl，然后将 acl 打印到控制台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -297,7 +297,7 @@ $file.ACL
 
 下图显示了获取目录 ACL 后的输出。
 
-![获取 ACL 输出](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
+![获取目录的 ACL 输出](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
 
 在此示例中，所有者用户拥有读取、写入和执行权限。 所有者组仅拥有读取和执行权限。 有关访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
@@ -305,7 +305,7 @@ $file.ACL
 
 使用 `set-AzDataLakeGen2ItemAclObject` cmdlet 为所有者用户、所有者组或其他用户创建 ACL。 然后使用 `Update-AzDataLakeGen2Item` cmdlet 提交 ACL。
 
-此示例在**容器**的根目录中为所属用户、拥有组或其他用户设置 acl，然后将 acl 打印到控制台。
+此示例在 **容器** 的根目录中为所属用户、拥有组或其他用户设置 acl，然后将 acl 打印到控制台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -344,31 +344,9 @@ $file.ACL
 
 下图显示了设置文件 ACL 后的输出。
 
-![获取 ACL 输出](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
+![获取文件的 ACL 输出](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
 
 在此示例中，所有者用户和所有者组只拥有读取和写入权限。 所有其他用户拥有写入和执行权限。 有关这些访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
-
-
-### <a name="set-acls-on-all-items-in-a-container"></a>在容器中的所有项目上设置 Acl
-
-可以将 `Get-AzDataLakeGen2Item` 和 `-Recurse` 参数与 cmdlet 一起使用以 `Update-AzDataLakeGen2Item` 递归方式设置容器中的目录和文件的 ACL。 
-
-```powershell
-$filesystemName = "my-file-system"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-
-$Token = $Null
-do
-{
-     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Count -le 0) { Break;}
-     $items | Update-AzDataLakeGen2Item -Acl $acl
-     $Token = $items[$items.Count -1].ContinuationToken;
-}
-While ($Token -ne $Null) 
-```
 
 ### <a name="add-or-update-an-acl-entry"></a>添加或更新 ACL 条目
 
@@ -404,6 +382,10 @@ foreach ($a in $aclnew)
 }
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
 ```
+
+### <a name="set-an-acl-recursively-preview"></a>以递归方式设置 ACL (预览) 
+
+您可以在父目录的现有子项目上递归地添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。 有关详细信息，请参阅 [设置访问控制列表 (acl) 递归 Azure Data Lake Storage Gen2](recursive-access-control-lists.md)。
 
 <a id="gen1-gen2-map"></a>
 

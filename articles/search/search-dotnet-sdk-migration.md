@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 10e6d0a183afdda2bf89014bb72f58d03a3013ec
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3b3d88c9e605889846808bb53063b06a3e980049
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171884"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929748"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
 
@@ -25,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文有助于升级应用程序，以便使用版本 3。
+如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](/dotnet/api/overview/azure/search)，本文有助于升级应用程序，以便使用版本 3。
 
 有关包括示例的 SDK 的更多常规演练，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
 

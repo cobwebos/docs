@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d0391f3724533410a66f8d01bf77f5a3c5c8d9da
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209331"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936718"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入门：使用 v10 客户端库创建搜索索引
 
@@ -24,7 +24,7 @@ ms.locfileid: "88209331"
 
 ## <a name="about-this-quickstart"></a>关于本快速入门
 
-在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft azure](https://docs.microsoft.com/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
+在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft azure](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
 
 本文介绍如何创建应用程序。 你还可以 [下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
 
@@ -47,9 +47,9 @@ ms.locfileid: "88209331"
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
@@ -102,7 +102,7 @@ ms.locfileid: "88209331"
 
 ### <a name="add-class-method-files-to-your-project"></a>将类“.Method”文件添加到你的项目
 
-若要在控制台中生成有意义的输出，需要执行此步骤。 将结果打印到控制台窗口时，必须以字符串形式返回 Hotel 对象的各个字段。 此步骤实现 [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) 来执行此任务，方法是将所需的代码复制到两个新文件中。
+若要在控制台中生成有意义的输出，需要执行此步骤。 将结果打印到控制台窗口时，必须以字符串形式返回 Hotel 对象的各个字段。 此步骤实现 [ToString()](/dotnet/api/system.object.tostring?view=netframework-4.8) 来执行此任务，方法是将所需的代码复制到两个新文件中。
 
 1. 将两个空的类定义添加到你的项目：Address.Methods.cs、Hotel.Methods.cs
 
@@ -197,15 +197,15 @@ ms.locfileid: "88209331"
     该字段的特性决定字段在应用程序中的使用方式。 例如，`IsSearchable` 属性必须分配给每个应包含在全文搜索中的字段。 
     
     > [!NOTE]
-    > 在 .NET SDK 中，必须显式将字段属性化为 [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 和 [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行为与 REST API 相反，后者基于数据类型隐式启用属性（例如，简单的字符串字段是自动可搜索的）。
+    > 在 .NET SDK 中，必须显式将字段属性化为 [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 和 [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行为与 REST API 相反，后者基于数据类型隐式启用属性（例如，简单的字符串字段是自动可搜索的）。
 
     类型为 `string` 的索引中必须恰好有一个字段为“密钥”字段，用于唯一地标识每个文档。 在此架构中，密钥为 `HotelId`。
 
-    在此索引中，“说明”字段使用可选的 [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 属性，该属性在需要替代默认标准 Lucene 分析器时指定。 `description_fr` 字段使用法语 Lucene 分析器 ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因为该字段存储法语文本。 `description` 使用可选的 Microsoft 语言分析器 ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
+    在此索引中，“说明”字段使用可选的 [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 属性，该属性在需要替代默认标准 Lucene 分析器时指定。 `description_fr` 字段使用法语 Lucene 分析器 ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因为该字段存储法语文本。 `description` 使用可选的 Microsoft 语言分析器 ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
 
-1. 在 Program.cs 中，使用存储在应用程序配置文件 (appsettings.json) 中的值，创建 [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 类的实例，以连接到服务。 
+1. 在 Program.cs 中，使用存储在应用程序配置文件 (appsettings.json) 中的值，创建 [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 类的实例，以连接到服务。 
 
-   `SearchServiceClient` 具有 [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 属性，提供创建、列出、更新或删除 Azure 认知搜索索引所需的所有方法。 
+   `SearchServiceClient` 具有 [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 属性，提供创建、列出、更新或删除 Azure 认知搜索索引所需的所有方法。 
 
     ```csharp
     using System;
@@ -305,7 +305,7 @@ ms.locfileid: "88209331"
 
 在 Azure 认知搜索中，文档这一数据结构既是索引输入，也是查询输出。 文档输入从外部数据源获取，可能是数据库中的行、Blob 存储中的 blob 或磁盘上的 JSON 文档。 在此示例中，我们采用了快捷方式，并在代码本身中嵌入了四个酒店的 JSON 文档。 
 
-上传文档时，必须使用 [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 对象。 `IndexBatch` 包含 [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 对象的集合，其中每个对象均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
+上传文档时，必须使用 [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 对象。 `IndexBatch` 包含 [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 对象的集合，其中每个对象均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
 
 1. 在 Program.cs 中，创建文档和索引操作的数组，然后将该数组传递给 `IndexBatch`。 以下文档符合酒店和地址类定义的 hotel-quickstart 索引。
 
@@ -427,7 +427,7 @@ ms.locfileid: "88209331"
     }
     ```
 
-    初始化 `IndexBatch` 对象后，即可通过对 [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) 对象调用 [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，将其发送到索引。 `Documents` 是 `SearchIndexClient` 的属性，后者提供在索引中添加、修改、删除或查询文档的方法。
+    初始化 `IndexBatch` 对象后，即可通过对 [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) 对象调用 [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，将其发送到索引。 `Documents` 是 `SearchIndexClient` 的属性，后者提供在索引中添加、修改、删除或查询文档的方法。
 
     `Index` 方法的调用周围的 `try`/`catch` 捕获索引失败，如果服务负载过大，可能发生索引失败。 在生产代码中，可以延迟已失败的文档索引编制并重试，也可以像示例那样记录并继续运行，还能以满足应用程序数据一致性要求的其他方式进行处理。
 
@@ -451,10 +451,10 @@ ms.locfileid: "88209331"
 
 对第一个文档编制索引后，可立即获取查询结果，但索引的实际测试应等到对所有文档编制索引后进行。 
 
-此部分添加了两个功能：查询逻辑和结果。 对于查询，请使用 [`Search`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-) 方法。 此方法采用搜索文本以及其他[参数](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet)。 
+此部分添加了两个功能：查询逻辑和结果。 对于查询，请使用 [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
+) 方法。 此方法采用搜索文本以及其他[参数](/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet)。 
 
-[`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) 类表示结果。
+[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) 类表示结果。
 
 
 1. 在 Program.cs 中，创建 WriteDocuments 方法，该方法用于将搜索结果输出到控制台。
@@ -554,7 +554,7 @@ ms.locfileid: "88209331"
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
@@ -570,4 +570,4 @@ ms.locfileid: "88209331"
 希望优化并节省云支出？
 
 > [!div class="nextstepaction"]
-> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -2,14 +2,15 @@
 title: 适用于 .NET 应用的 Azure 应用程序 Insights Snapshot Debugger
 description: 生产 .NET 应用中出现异常时会自动收集调试快照
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325638"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935800"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](./app-insights-overview.md) 中的 Snapshot Debugger 可以监视来自 Web 应用的异常遥测。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](./asp-net-exceptions.md)区域中。
@@ -117,7 +118,7 @@ ms.locfileid: "87325638"
 对于 Azure 计算和其他类型，请确保符号文件位于主应用程序 .dll 所在的同一文件夹（通常为 `wwwroot/bin`）中，或者可通过当前路径访问。
 
 > [!NOTE]
-> 有关可用的不同符号选项的详细信息，请参阅[Visual Studio 文档](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> 有关可用的不同符号选项的详细信息，请参阅 [Visual Studio 文档](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )。 为了获得最佳结果，建议使用 "完整"、"可移植" 或 "嵌入"。
 
 ### <a name="optimized-builds"></a>优化的内部版本

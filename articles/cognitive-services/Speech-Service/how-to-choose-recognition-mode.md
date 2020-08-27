@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 82ff34b945e93ffbf43e3a264a09e0af7b8660e5
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 29dcd3ddc32ac92f7543e5d7648680e36f50dcfb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405086"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934593"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>选择语音识别模式
 
@@ -68,7 +68,7 @@ result = speech_recognizer.recognize_once()
 
 ::: zone pivot="programming-language-javascript"
 
-有关使用函数的详细信息 `recognizeOnceAsync` ，请参阅[适用于 JavaScript 的语音 SDK 文档](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)。
+若要详细了解如何使用 `recognizeOnceAsync` 函数，请参阅[适用于 JavaScript 的语音 SDK 文档](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)。
 
 ```JavaScript
 recognizer.recognizeOnceAsync((result)=>{}, (error)=>{}));
@@ -84,7 +84,7 @@ recognizer.recognizeOnceAsync((result)=>{}, (error)=>{}));
 
 ## <a name="continuous"></a>连续
 
-如果需要长时间运行的识别，请使用启动和相应的停止功能进行连续识别。 Start 函数将启动并继续处理所有最谈话，直到调用 stop 函数或过多的静默时间为止。 使用连续模式时，请确保注册到发生事件时将触发的各种事件。 例如，当发生语音识别时，将触发 "已识别" 事件。 需要有一个事件处理程序来处理识别。
+如果需要长时间运行的识别，请使用启动函数和相应的停止函数进行连续识别。 启动函数会启动并持续处理所有言语，直到你调用停止函数或者静默时间过长为止。 使用连续模式时，请确保注册到进行语音识别时会触发的各种事件。 例如，进行语音识别时，会触发“已识别”事件。 需要有一个事件处理程序来处理识别。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -196,7 +196,7 @@ recognizer.stopContinuousRecognitionAsync(()=>{}, (error)=>{});
 
 ::: zone pivot="programming-language-csharp"
 
-有关使用函数的详细信息 `EnableDictation` ，请参阅[.NET Speech SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)。
+有关如何使用 `EnableDictation` 函数的详细信息，请参阅 [.NET 语音 SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)。
 
 ```csharp
 // Enable diction
@@ -206,7 +206,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-有关使用函数的详细信息 `EnableDictation` ，请参阅[c + + 语音 SDK 文档](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)。
+有关如何使用 `EnableDictation` 函数的详细信息，请参阅 [C++ 语音 SDK 文档](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)。
 
 ```cpp
 // Enable diction
@@ -216,7 +216,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-有关使用函数的详细信息 `enableDictation` ，请参阅[JAVA Speech SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)。
+有关如何使用 `enableDictation` 函数的详细信息，请参阅 [Java 语音 SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)。
 
 ```java
 // Enable diction
@@ -226,7 +226,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-有关使用函数的详细信息 `enable_dictation` ，请参阅[PYTHON 语音 SDK 文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)。
+有关如何使用 `enable_dictation` 函数的详细信息，请参阅 [Python 语音 SDK 文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)。
 
 ```python
 # Enable diction
@@ -237,7 +237,7 @@ SpeechConfig.enable_dictation()
 
 ::: zone pivot="programming-language-javascript"
 
-有关使用函数的详细信息 `enableDictation` ，请参阅[适用于 JavaScript 的语音 SDK 文档](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)。
+若要详细了解如何使用 `enableDictation` 函数，请参阅[适用于 JavaScript 的语音 SDK 文档](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)。
 
 ```JavaScript
 // Enable diction

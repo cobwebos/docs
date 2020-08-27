@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85f3b9862bd8155c1a4b11860dc82d92a2f9e810
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792019"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936089"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 认知搜索中已弃用的认知技能
 
@@ -38,7 +38,7 @@ ms.locfileid: "72792019"
 
 改用 [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 它提供 NamedEntityRecognitionSkill 的大多数功能，且质量更高。 它还在复杂的输出字段中提供更丰富的信息。
 
-若要迁移到[实体识别技能](cognitive-search-skill-entity-recognition.md)，需对技能定义进行下述一个或多个更改。 可以使用[更新技能集 API](https://docs.microsoft.com/rest/api/searchservice/update-skillset) 更新技能定义。
+若要迁移到[实体识别技能](cognitive-search-skill-entity-recognition.md)，需对技能定义进行下述一个或多个更改。 可以使用[更新技能集 API](/rest/api/searchservice/update-skillset) 更新技能定义。
 
 > [!NOTE]
 > 目前不支持作为概念的置信度分数。 `minimumPrecision` 参数存在于 `EntityRecognitionSkill` 上，可供将来使用，并可实现后向兼容。

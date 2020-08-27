@@ -1,23 +1,23 @@
 ---
 title: 关键短语提取认知技能
 titleSuffix: Azure Cognitive Search
-description: 计算非结构化的文本，并针对每个记录返回 Azure 认知搜索的 AI 扩充管道中的关键短语列表。
+description: 在 Azure 认知搜索中的 AI 扩充管道中，计算非结构化的文本，并针对每个记录返回关键短语列表。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080815"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936055"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 
-关键短语提取技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+关键短语提取技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 如果你需要快速确定记录中的谈话要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回“food”和“wonderful staff”。
 
@@ -31,7 +31,7 @@ ms.locfileid: "85080815"
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -39,7 +39,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 | 输入                | 说明 |
 |---------------------|-------------|
-| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)。 |
+| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)。 |
 | `maxKeyPhraseCount`   | （可选）要生成的关键短语的最大数量。 |
 
 ## <a name="skill-inputs"></a>技能输入
@@ -47,11 +47,11 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 | 输入  | 说明 |
 |--------------------|-------------|
 | `text` | 要分析的文本。|
-| `languageCode`    |  表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| `languageCode`    |  表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>技能输出
 
-| 输出     | 描述 |
+| 输出     | 说明 |
 |--------------------|-------------|
 | `keyPhrases` | 从输入文本中提取的关键短语的列表。 关键短语按重要性顺序返回。 |
 
@@ -67,7 +67,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 }
 ```
 
-然后，你的技能定义可能如下所示：
+然后，技能定义可能会如下所示：
 
 ```json
  {
@@ -93,7 +93,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 ##  <a name="sample-output"></a>示例输出
 
-对于上面的示例，你的技能的输出将写入到被称为 "document/myKeyPhrases" 的扩充树中的新节点，因为这是 `targetName` 我们指定的。 如果未指定，则 `targetName` 它将是 "document/keyPhrases"。
+对于上面的示例，技能输出将写入到扩充树中名为“document/myKeyPhrases”的新节点，因为这是我们指定的 `targetName`。 如果未指定 `targetName`，则为“document/keyPhrases”。
 
 #### <a name="documentmykeyphrases"></a>document/myKeyPhrases 
 ```json
@@ -107,7 +107,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
             ]
 ```
 
-您可以使用 "document/myKeyPhrases" 作为其他技能的输入，或者使用作为[输出字段映射](cognitive-search-output-field-mapping.md)的源。
+可以使用“document/myKeyPhrases”作为其他技能的输入，或者将其作为[输出字段映射](cognitive-search-output-field-mapping.md)的源。
 
 ## <a name="errors-and-warnings"></a>错误和警告
 如果提供了不支持的语言代码，会生成错误且不提取关键短语。

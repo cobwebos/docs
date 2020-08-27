@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496411"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928517"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
 
@@ -34,7 +34,7 @@ ms.locfileid: "86496411"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你有[azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[azure 认知搜索服务](search-create-service-portal.md)和[索引](search-what-is-an-index.md)。  
+本文假设你有 [azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[azure 认知搜索服务](search-create-service-portal.md)和 [索引](search-what-is-an-index.md)。  
 
 ## <a name="create-security-field"></a>创建安全字段
 
@@ -109,13 +109,13 @@ api-key: [admin key]
 }
 ```
 
-有关添加或更新文档的完整详细信息，可以阅读[编辑文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
+有关添加或更新文档的完整详细信息，可以阅读[编辑文档](/rest/api/searchservice/addupdate-or-delete-documents)。
    
 ## <a name="apply-the-security-filter"></a>应用安全筛选器
 
 若要基于 `group_ids` 访问权限修整文档，应发出包含 `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` 筛选器的搜索查询，其中，'group_id1, group_id2,...' 是搜索请求发出者所属的组。
 此筛选器匹配其 `group_ids` 字段包含某个给定标识符的所有文档。
-有关使用 Azure 认知搜索搜索文档的完整详细信息，可以阅读[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+有关使用 Azure 认知搜索搜索文档的完整详细信息，可以阅读[搜索文档](/rest/api/searchservice/search-documents)。
 请注意，此示例演示如何使用 POST 请求搜索文档。
 
 发出 HTTP POST 请求：

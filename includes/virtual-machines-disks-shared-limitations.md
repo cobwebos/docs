@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88809830"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944495"
 ---
 启用共享磁盘仅适用于磁盘类型的子集。 目前只有超磁盘和高级 Ssd 可以启用共享磁盘。 已启用共享磁盘的每个托管磁盘受到下列限制，按磁盘类型进行组织：
 
@@ -50,10 +50,15 @@ ms.locfileid: "88809830"
 - 美国西部 2
 - 美国中西部
 - 美国中南部
+- 美国中北部
 - 美国中部
+- 西欧
+- 北欧
 - 韩国中部
 - 加拿大中部
 - 加拿大东部
+- 日本东部
+- 日本西部
 - US Gov 弗吉尼亚州
 - US Gov 亚利桑那州
 

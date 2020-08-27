@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986665"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929068"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
@@ -27,13 +28,13 @@ ms.locfileid: "84986665"
 
 需要准备好以下各项：
 
-- 两个面部订阅密钥，一个用于现有数据，另一个用于迁移到。 若要订阅面部服务并获取你的密钥，请按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明进行操作。
+- 两个面部订阅密钥，一个用于现有数据，另一个用于迁移到。 若要订阅面部服务并获取你的密钥，请按照 [创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明进行操作。
 - 与目标订阅相对应的人脸订阅 ID 字符串。 在 Azure 门户中选择“概述”可以找到该字符串。  
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-本指南使用一个简单的控制台应用来运行人脸数据迁移。 有关完整实现，请参阅 GitHub 上的[面部快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)。
+本指南使用一个简单的控制台应用来运行人脸数据迁移。 有关完整实现，请参阅 GitHub 上的 [面部快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) 。
 
 1. 在 Visual Studio 中创建新的控制台应用 .NET Framework 项目。 将其命名为 **FaceApiSnapshotSample**。
 1. 获取所需的 NuGet 包。 在解决方案资源管理器中，右键单击该项目并选择“管理 NuGet 包”  。 选择“浏览”选项卡，然后选择“包括预发行版”   。 找到并安装以下包：

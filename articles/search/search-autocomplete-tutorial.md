@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: be873ed122bb521ce00e2d18d55a9be8197a0048
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413011"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936752"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>向客户端应用添加自动完成和建议
 
@@ -23,7 +23,7 @@ ms.locfileid: "87413011"
 若要在 Azure 认知搜索中实现这些体验，需要：
 
 + 在后端上有一个建议器**。
-+ 一个在请求中指定[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)或[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) API 的查询**。
++ 一个在请求中指定[自动完成](/rest/api/searchservice/autocomplete)或[建议](/rest/api/searchservice/suggestions) API 的查询**。
 + 一个用于在客户端应用中处理“边键入边搜索”交互的 UI 控件**。 对于此目的，我们建议使用现有的 JavaScript 库。
 
 在 Azure 认知搜索中，自动完成的查询和建议的结果是在搜索索引中从已向建议器注册的选定字段中检索的。 建议器是索引的一部分，它指定哪些字段将提供完成查询和/或建议结果的内容。 创建并加载索引后，将在内部创建建议器数据结构，以存储用于对部分查询进行匹配的前缀。 对于建议，选择唯一或者至少不重复的适当字段对于实现该体验至关重要。 有关详细信息，请参阅[创建建议器](index-add-suggesters.md)。
@@ -54,16 +54,16 @@ API 不会对部分查询施加最小长度要求；查询长度可以短至一�
 
 请参考 REST 和 .NET SDK 参考页的以下链接：
 
-+ [建议 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [自动完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [建议 REST API](/rest/api/searchservice/suggestions) 
++ [自动完成 REST API](/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>构建响应
 
-对自动完成和建议的响应是你可能对模式的期望：[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response)返回字词列表，[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions#response)返回字词加上文档 ID，以便你提取文档（使用[查找文档](https://docs.microsoft.com/rest/api/searchservice/lookup-document) API 提取详细信息页的特定文档）。
+对自动完成和建议的响应是你可能对模式的期望：[自动完成](/rest/api/searchservice/autocomplete#response)返回字词列表，[建议](/rest/api/searchservice/suggestions#response)返回字词加上文档 ID，以便你提取文档（使用[查找文档](/rest/api/searchservice/lookup-document) API 提取详细信息页的特定文档）。
 
-响应格式由请求中的参数确定。 对于自动完成，请设置 [autocompleteMode](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) 来确定是要对一个还是两个字词执行文本完成****。 对于建议，你选择的字段确定了响应的内容。
+响应格式由请求中的参数确定。 对于自动完成，请设置 [autocompleteMode](/rest/api/searchservice/autocomplete#autocomplete-modes) 来确定是要对一个还是两个字词执行文本完成****。 对于建议，你选择的字段确定了响应的内容。
 
 对于建议，应进一步优化响应，以避免重复或看似无关的结果。 若要控制结果，请在请求中包含更多参数。 以下参数适用于自动完成和建议，但对于建议（尤其是建议器包含多个字段的情况）可能更有必要。
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 如果使用 C# 和 MVC 应用程序，可以在 Controllers 目录下的 HomeController.cs 文件中为建议的结果创建类****。 在 .NET 中，Suggest 函数基于 [DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)。
 
-`InitSearch` 方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关 .NET SDK 的详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)。
+`InitSearch` 方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关 .NET SDK 的详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](./search-howto-dotnet-sdk.md)。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -175,7 +175,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Suggest 函数采用两个参数，用于确定是要返回命中的突出显示内容，还是在返回搜索词输入的同时返回模糊匹配结果。 该方法创建 [SuggestParameters 对象](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)，该对象随后会传递给 Suggest API。 然后，结果将转换成 JSON，以便在客户端中显示。
+Suggest 函数采用两个参数，用于确定是要返回命中的突出显示内容，还是在返回搜索词输入的同时返回模糊匹配结果。 该方法创建 [SuggestParameters 对象](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)，该对象随后会传递给 Suggest API。 然后，结果将转换成 JSON，以便在客户端中显示。
 
 ## <a name="autocomplete"></a>自动完成
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Autocomplete 函数
 
-Autocomplete 基于 [DocumentsOperationsExtensions.Autocomplete 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)。 与建议一样，此代码块位于 HomeController.cs 文件中****。
+Autocomplete 基于 [DocumentsOperationsExtensions.Autocomplete 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)。 与建议一样，此代码块位于 HomeController.cs 文件中****。
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -243,7 +243,7 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-Autocomplete 函数采用搜索字词输入。 该方法创建 [AutoCompleteParameters 对象](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。 然后，结果将转换成 JSON，以便在客户端中显示。
+Autocomplete 函数采用搜索字词输入。 该方法创建 [AutoCompleteParameters 对象](/rest/api/searchservice/autocomplete)。 然后，结果将转换成 JSON，以便在客户端中显示。
 
 ## <a name="next-steps"></a>后续步骤
 
