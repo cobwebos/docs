@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852780"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936123"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>示例：使用 Python 创建自定义技能
 
@@ -26,12 +26,12 @@ ms.locfileid: "87852780"
 
 + 查看[自定义技能接口](cognitive-search-custom-skill-interface.md)，其中介绍了自定义技能应该实现的输入/输出接口。
 
-+ 设置环境 我们已根据[此端到端教程](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01)使用 Visual Studio Code 和 Python 扩展设置了无服务器 Azure 函数。 本教程将引导你安装以下工具和组件： 
++ 设置环境 我们已根据[此端到端教程](/azure/python/tutorial-vs-code-serverless-python-01)使用 Visual Studio Code 和 Python 扩展设置了无服务器 Azure 函数。 本教程将引导你安装以下工具和组件： 
 
   + [Python 3.75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [适用于 Visual Studio Code 的 Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>创建 Azure 函数
@@ -270,5 +270,5 @@ POST [Function URL you copied above]
 + [强大技能：自定义技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
 + [将自定义技能添加到 AI 扩充管道](cognitive-search-custom-skill-interface.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [创建技能组合 (REST)](/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080849"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936072"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
-**实体识别**技能从文本中提取各种类型的实体。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+**实体识别**技能从文本中提取各种类型的实体。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -29,7 +29,7 @@ ms.locfileid: "85080849"
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -45,7 +45,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 描述                   |
+| 输入名称      | 说明                   |
 |---------------|-------------------------------|
 | `languageCode`    | 可选。 默认值为 `"en"`。  |
 | `text`          | 要分析的文本。          |
@@ -53,7 +53,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 ## <a name="skill-outputs"></a>技能输出
 
 > [!NOTE]
-> 并非所有实体类别都支持所有语言。 `"Person"`、`"Location"` 和 `"Organization"` 实体类别支持上面的完整语言列表。 只有 _de_、_en_、_es_、_fr_ 和 _zh-hans_ 支持 `"Quantity"`、`"Datetime"`、`"URL"` 和 `"Email"` 类型的提取。 有关详细信息，请参阅[文本分析 API 的语言和区域支持](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)。  
+> 并非所有实体类别都支持所有语言。 `"Person"`、`"Location"` 和 `"Organization"` 实体类别支持上面的完整语言列表。 只有 _de_、_en_、_es_、_fr_ 和 _zh-hans_ 支持 `"Quantity"`、`"Datetime"`、`"URL"` 和 `"Email"` 类型的提取。 有关详细信息，请参阅[文本分析 API 的语言和区域支持](../cognitive-services/text-analytics/language-support.md)。  
 
 | 输出名称      | 说明                   |
 |---------------|-------------------------------|
@@ -187,7 +187,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。  [可在此处找到更多详细信息。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](../cognitive-services/text-analytics/overview.md) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。  [可在此处找到更多详细信息。](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>错误案例
 如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。

@@ -1,19 +1,19 @@
 ---
 title: 使用 Active Directory 修剪结果的安全筛选器
 titleSuffix: Azure Cognitive Search
-description: Azure 的文档级别的安全特权认知搜索搜索结果，使用安全筛选器和 Azure Active Directory （AAD）标识。
+description: 使用安全筛选器和 Azure Active Directory (AAD) 标识的 Azure 认知搜索搜索结果的文档级别安全权限。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b8fd25e209316e828e234b4c64c8b2a2152de6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080499"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928575"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 认知搜索结果的安全筛选器
 
@@ -30,7 +30,7 @@ ms.locfileid: "85080499"
 > [!NOTE]
 > 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://github.com/Azure-Samples/search-dotnet-getting-started)找到完整的源代码。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 认知搜索中的索引必须有一个[安全字段](search-security-trimming-for-azure-search.md)用于存储对文档拥有读取访问权限的组标识列表。 此用例假设某个安全对象项（例如个人的大学申请）与指定谁有权访问该项（招生人员）的安全字段之间存在一对一的对应关系。
 
@@ -40,14 +40,14 @@ Azure 认知搜索中的索引必须有一个[安全字段](search-security-trim
 
 ### <a name="register-your-application-with-aad"></a>将应用程序注册到 AAD
 
-此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)才能执行以下步骤。
+此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](../active-directory/develop/quickstart-create-new-tenant.md)才能执行以下步骤。
 
-1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” > “添加应用”。
-2. 输入应用程序的名称，单击“创建”。  
+1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” > “添加应用”。 
+2. 输入应用程序的名称，单击“创建”。 
 3. 在“我的应用程序”页中选择新注册的应用程序。
-4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。
-5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。
-6. 在“选择权限”中添加以下委托权限，单击“确定”： 
+4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。  
+5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。 
+6. 在“选择权限”中添加以下委托权限，单击“确定”：
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**
@@ -63,7 +63,7 @@ Azure 认知搜索中的索引必须有一个[安全字段](search-security-trim
 
 用户和组的成员身份可能很不稳定，尤其是在大型组织中。 生成用户和组标识的代码应该以足够高的频率运行，以拾取组织成员身份的更改。 同样，Azure 认知搜索索引需有类似的更新计划，以反映受允许用户和资源的当前状态。
 
-### <a name="step-1-create-aad-group"></a>步骤 1：创建 [AAD 组](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-group"></a>步骤 1：创建 [AAD 组](/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>步骤 2：创建 [AAD 用户](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-user"></a>步骤 2：创建 [AAD 用户](/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -98,9 +98,9 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>步骤 4：缓存组标识符
-（可选）为了降低网络延迟，可以缓存用户与组之间的关联，以便在发出搜索请求后，可以从缓存返回组，免除与 AAD 之间的一次往返。 可以使用 [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) 发送包含多个用户的单个 Http 请求并生成缓存。
+（可选）为了降低网络延迟，可以缓存用户与组之间的关联，以便在发出搜索请求后，可以从缓存返回组，免除与 AAD 之间的一次往返。 可以使用 [AAD Batch API](/graph/json-batching) 发送包含多个用户的单个 Http 请求并生成缓存。
 
-Microsoft Graph 能够处理大量的请求。 如果发出无以数计的请求，Microsoft Graph 将会失败并返回 HTTP 状态代码 429。 有关详细信息，请参阅 [Microsoft Graph 限制](https://developer.microsoft.com/graph/docs/concepts/throttling)。
+Microsoft Graph 能够处理大量的请求。 如果发出无以数计的请求，Microsoft Graph 将会失败并返回 HTTP 状态代码 429。 有关详细信息，请参阅 [Microsoft Graph 限制](/graph/throttling)。
 
 ## <a name="index-document-with-their-permitted-groups"></a>使用受允许的组编制文档索引
 
@@ -138,7 +138,7 @@ _indexClient.Documents.Index(batch);
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>步骤 1：检索用户的组标识符
 
-如果用户的组尚未缓存或缓存已过期，请发出[组](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0)请求
+如果用户的组尚未缓存或缓存已过期，请发出[组](/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0)请求
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -182,7 +182,7 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 响应包含文档的筛选列表，该列表由用户有权查看的文档构成。 根据搜索结果页的构造方式，可能需要包含视觉线索来反映筛选的结果集。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本演练已介绍如何使用 AAD 登录名筛选 Azure 认知搜索结果中的文档，以及修剪与请求中提供的筛选器不匹配的文档结果。
 

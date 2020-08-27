@@ -8,20 +8,20 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 087989638193bb59001ed33c4ee253d61682d8bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080801"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935987"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
-语言检测  技能检测输入文本的语言，并报告在请求中提交的每个文档的单一语言代码。 语言代码配有表示分析长度的得分。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+语言检测  技能检测输入文本的语言，并报告在请求中提交的每个文档的单一语言代码。 语言代码配有表示分析长度的得分。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 当需要提供文本的语言作为其他技能（例如，[情绪分析技能](cognitive-search-skill-sentiment.md)或[文本拆分技能](cognitive-search-skill-textsplit.md)）的输入时，此功能尤其有用。
 
-语言检测利用必应的自然语言处理库，此类库超出为文本分析列出的[受支持的语言和区域](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)的数目。 语言的具体列表未发布，但包含所有广泛传播的语言，以及变体、方言和某些区域性的和文化性的语言。 如果你的内容是采用不常用的语言表达的，可以[尝试语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)，看是否会返回一个代码。 无法检测到的语言的响应为 `unknown`。
+语言检测利用必应的自然语言处理库，此类库超出为文本分析列出的[受支持的语言和区域](../cognitive-services/text-analytics/language-support.md)的数目。 语言的具体列表未发布，但包含所有广泛传播的语言，以及变体、方言和某些区域性的和文化性的语言。 如果你的内容是采用不常用的语言表达的，可以[尝试语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)，看是否会返回一个代码。 无法检测到的语言的响应为 `unknown`。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -33,7 +33,7 @@ ms.locfileid: "85080801"
 Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到语言检测技能之前需要拆分数据，可以使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到语言检测技能之前需要拆分数据，可以使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-inputs"></a>技能输入
 
@@ -45,7 +45,7 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="skill-outputs"></a>技能输出
 
-| 输出名称    | 描述 |
+| 输出名称    | 说明 |
 |--------------------|-------------|
 | `languageCode` | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
 | `languageName` | 语言的名称。 例如，“英语”。 |

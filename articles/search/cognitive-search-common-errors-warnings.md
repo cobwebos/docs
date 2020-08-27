@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221320"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935545"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -21,10 +21,10 @@ ms.locfileid: "84221320"
 
 当错误计数超过 [maxFailedItems](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) 时，索引编制操作停止。 
 
-如果你希望索引器忽略这些错误（并跳过“失败的文档”），请考虑按[此处](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述更新 `maxFailedItems` 和 `maxFailedItemsPerBatch`。
+如果你希望索引器忽略这些错误（并跳过“失败的文档”），请考虑按[此处](/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述更新 `maxFailedItems` 和 `maxFailedItemsPerBatch`。
 
 > [!NOTE]
-> 每个失败的文档及其文档键（如果有）将在索引器执行状态中显示为错误。 如果已将索引器设置为容错，则以后可以使用[索引 API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 手动上传文档。
+> 每个失败的文档及其文档键（如果有）将在索引器执行状态中显示为错误。 如果已将索引器设置为容错，则以后可以使用[索引 API](/rest/api/searchservice/addupdate-or-delete-documents) 手动上传文档。
 
 本文中的错误信息可帮助你解决错误，使索引编制能够继续。
 
@@ -71,7 +71,7 @@ ms.locfileid: "84221320"
 
 | Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 缺少文档键 | 文档键不能缺失或为空 | 确保所有文档都有有效的文档键。 文档键是通过将 "key" 属性设置为[索引定义](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body)的一部分来确定的。 在特定文档上找不到标记为 "key" 的属性时，索引器将发出此错误。 |
+| 缺少文档键 | 文档键不能缺失或为空 | 确保所有文档都有有效的文档键。 文档键是通过将 "key" 属性设置为 [索引定义](/rest/api/searchservice/create-index#request-body)的一部分来确定的。 在特定文档上找不到标记为 "key" 的属性时，索引器将发出此错误。 |
 | 文档键无效 | 文档键的长度不能超过 1024 个字符 | 根据验证要求修改文档键。 |
 | 无法将字段映射应用到某个字段 | 无法将映射函数 `'functionName'` 应用到字段 `'fieldName'`。 数组不能为 null。 参数名称: bytes | 请反复检查索引器中定义的[字段映射](search-indexer-field-mappings.md)，并与失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
 | 无法读取字段值 | 无法读取列 `'fieldName'` 在索引 `'fieldIndex'` 处的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误:0 - 远程主机强行关闭了现有连接。 | 这些错误的常见原因是数据源的底层服务出现了意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
@@ -155,7 +155,7 @@ ms.locfileid: "84221320"
 | 由于服务正在承受其他负载（例如查询或索引编制），连接到目标索引时出现问题（重试后仍会出现）。 | 未能建立连接，因此无法更新索引。 搜索服务的负载过重。 | [扩展搜索服务](search-capacity-planning.md)
 | 搜索服务正在根据服务更新进行修补，或者处于拓扑重新配置过程的中途。 | 未能建立连接，因此无法更新索引。 搜索服务当前已关闭/搜索服务正在过渡。 | 根据 [SLA 文档](https://azure.microsoft.com/support/legal/sla/search/v1_0/)，为服务至少配置 3 个可用性为 99.9% 的副本
 | 底层计算/网络资源发生故障（罕见情况） | 未能建立连接，因此无法更新索引。 发生未知的失败。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)，以从失败状态继续工作。
-| 由于出现网络问题，在超时期限内未确认对目标索引发出的索引编制请求。 | 无法及时与搜索索引建立连接。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)，以从失败状态继续工作。 此外，如果此错误持续出现，请尝试减小索引器的[批大小](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)。
+| 由于出现网络问题，在超时期限内未确认对目标索引发出的索引编制请求。 | 无法及时与搜索索引建立连接。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)，以从失败状态继续工作。 此外，如果此错误持续出现，请尝试减小索引器的[批大小](/rest/api/searchservice/create-indexer#parameters)。
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>
 
@@ -171,11 +171,11 @@ ms.locfileid: "84221320"
 | 在源文档中发现了未知类型。 | 无法为未知类型“_unknown_”编制索引 |
 | 源文档中对地理位置点使用了不兼容的表示法。 | 不支持 WKT 点字符串文本。 请改用 GeoJson 点文本 |
 
-对于所有这些情况，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[索引器的数据类型映射](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，确保正确生成索引架构，并设置适当的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息中的详细信息可帮助跟踪不匹配问题的起因。
+对于所有这些情况，请参阅[支持的数据类型](/rest/api/searchservice/supported-data-types)和[索引器的数据类型映射](/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，确保正确生成索引架构，并设置适当的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息中的详细信息可帮助跟踪不匹配问题的起因。
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>错误：由于表采用了组合主键，无法使用集成的更改跟踪策略
 
-这适用于 SQL 表，此错误通常发生在将键定义为组合键，或者在表定义了唯一聚集索引时（在 SQL 索引而不是 Azure 搜索索引中）。 主要原因是在使用[唯一聚集索引](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情况下将键属性修改为组合主键。 在这种情况下，请确保 SQL 表不采用唯一聚集索引，或者，请将键字段映射到某个保证不包含重复值的字段。
+这适用于 SQL 表，此错误通常发生在将键定义为组合键，或者在表定义了唯一聚集索引时（在 SQL 索引而不是 Azure 搜索索引中）。 主要原因是在使用[唯一聚集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情况下将键属性修改为组合主键。 在这种情况下，请确保 SQL 表不采用唯一聚集索引，或者，请将键字段映射到某个保证不包含重复值的字段。
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 
@@ -255,8 +255,8 @@ ms.locfileid: "84221320"
 ```
 
 下面是可能生成此错误消息的每项技能当前支持的语言的一些参考资源：
-* [文本分析支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)（[KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)，[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、[SentimentSkill](cognitive-search-skill-sentiment.md) 和 [PIIDetectionSkill](cognitive-search-skill-pii-detection.md)）
-* [翻译服务支持的语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)（[文本 TranslationSkill](cognitive-search-skill-text-translation.md)）
+* [文本分析支持的语言](../cognitive-services/text-analytics/language-support.md)（[KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)，[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、[SentimentSkill](cognitive-search-skill-sentiment.md) 和 [PIIDetectionSkill](cognitive-search-skill-pii-detection.md)）
+* [翻译服务支持的语言](../cognitive-services/translator/language-support.md)（[文本 TranslationSkill](cognitive-search-skill-text-translation.md)）
 * [文本 SplitSkill](cognitive-search-skill-textsplit.md) 支持的语言：`da, de, en, es, fi, fr, it, ko, pt`
 
 <a name="skill-input-was-truncated"></a>
@@ -304,7 +304,7 @@ ms.locfileid: "84221320"
 
 ## <a name="warning-some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>警告：某些数据在投影期间已丢失。 表“Y”中行“X”的字符串属性“Z”太长。
 
-[表存储服务](https://azure.microsoft.com/services/storage/tables)对[实体属性](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types)的大小施加了限制。 字符串最多只能包含 32,000 个字符。 如果所要投影的行中的字符串属性超过 32,000 个字符，只会保留前 32,000 个字符。 若要解决此问题，请避免投影其字符串属性超过 32,000 个字符的行。
+[表存储服务](https://azure.microsoft.com/services/storage/tables)对[实体属性](/rest/api/storageservices/understanding-the-table-service-data-model#property-types)的大小施加了限制。 字符串最多只能包含 32,000 个字符。 如果所要投影的行中的字符串属性超过 32,000 个字符，只会保留前 32,000 个字符。 若要解决此问题，请避免投影其字符串属性超过 32,000 个字符的行。
 
 <a name="truncated-extracted-text-to-x-characters"></a>
 
@@ -326,13 +326,13 @@ ms.locfileid: "84221320"
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>警告：数据更改检测策略配置为使用键列“X”
-[数据更改检测策略](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)对它们用于检测更改的列提出了特定的要求。 其中的一项要求是，每当源项发生更改时，都要更新此列。 另一要求是，此列的新值大于以前的值。 键列不满足此要求，因为每次更新时它们不会更改。 若要解决此问题，请为更改检测策略选择另一个列。
+[数据更改检测策略](/rest/api/searchservice/create-data-source#data-change-detection-policies)对它们用于检测更改的列提出了特定的要求。 其中的一项要求是，每当源项发生更改时，都要更新此列。 另一要求是，此列的新值大于以前的值。 键列不满足此要求，因为每次更新时它们不会更改。 若要解决此问题，请为更改检测策略选择另一个列。
 
 <a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>
 
 ## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>警告：文档文本看似经过 UTF-16 编码，但缺少字节顺序标记
 
-[索引器分析模式](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters)在分析文本之前需要知道文本的编码方式。 两种最常见的文本编码方式是 UTF-16 和 UTF-8。 UTF-8 是可变长度的编码，其中每个字符的长度为 1 字节到 4 字节。 UTF-16 是固定长度的编码，其中每个字符的长度为 2 字节。 UTF-16 具有两个不同的变体：“big endian”和“little endian”。 文本编码由“字节顺序标记”（文本前面的一系列字节）确定。
+[索引器分析模式](/rest/api/searchservice/create-indexer#blob-configuration-parameters)在分析文本之前需要知道文本的编码方式。 两种最常见的文本编码方式是 UTF-16 和 UTF-8。 UTF-8 是可变长度的编码，其中每个字符的长度为 1 字节到 4 字节。 UTF-16 是固定长度的编码，其中每个字符的长度为 2 字节。 UTF-16 具有两个不同的变体：“big endian”和“little endian”。 文本编码由“字节顺序标记”（文本前面的一系列字节）确定。
 
 | 编码 | 字节顺序标记 |
 | --- | --- |
@@ -348,4 +348,4 @@ ms.locfileid: "84221320"
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告：Cosmos DB 集合“X”采用延迟索引策略。 某些数据可能已丢失
 
-无法以一致的方式查询采用[延迟](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode)索引策略的集合，从而导致索引器缺少数据。 若要解决此警告，请将索引策略更改为“一致”。
+无法以一致的方式查询采用[延迟](/azure/cosmos-db/index-policy#indexing-mode)索引策略的集合，从而导致索引器缺少数据。 若要解决此警告，请将索引策略更改为“一致”。

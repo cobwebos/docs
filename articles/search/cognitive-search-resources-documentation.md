@@ -8,48 +8,48 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 3399ace71d3a28ea903991e0439f1c9ddcc939d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935341"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
-AI 扩充是基于索引器的索引的外接程序，它在非文本源和无差别文本中查找潜在信息，并将其转换为 Azure 认知搜索中的全文可搜索内容。 
+AI 扩充是基于索引器的索引的加载项，用于查找非文本源和无差别文本中的潜在信息，并将其转换为 Azure 认知搜索中的全文可搜索内容。 
 
-对于内置处理，会在内部调用认知服务中预先训练的 AI 模型来执行分析。 你还可以使用 Azure 机器学习、Azure Functions 或其他方法来集成自定义模型。
+进行内置处理时，系统会在内部调用认知服务中预先训练的 AI 模型来执行分析。 你也可以使用 Azure 机器学习、Azure Functions 或其他方法来集成自定义模型。
 
-下面是 AI 扩充文档的合并列表。
+下面是 AI 扩充文档的综合列表。
 
 ## <a name="concepts"></a>概念
 
-+ [AI 根据](cognitive-search-concept-intro.md)
-+ [技能集](cognitive-search-working-with-skillsets.md)
++ [AI 扩充](cognitive-search-concept-intro.md)
++ [技能组](cognitive-search-working-with-skillsets.md)
 + [调试会话](cognitive-search-debug-session.md)
 + [知识存储](knowledge-store-concept-intro.md)
 + [投影](knowledge-store-projection-overview.md)
-+ [增量扩充（重复使用缓存的已扩充文档）](cognitive-search-incremental-indexing-conceptual.md)
++ [增量扩充（重复使用缓存的扩充文档）](cognitive-search-incremental-indexing-conceptual.md)
 
 ## <a name="hands-on-walkthroughs"></a>动手演练
 
-+ [快速入门：在 Azure 门户中创建认知技能组合](cognitive-search-quickstart-blob.md)
++ [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
 + [教程：通过调试会话诊断、修复并提交对技能组合的更改](cognitive-search-tutorial-debug-sessions.md)
 
 ## <a name="knowledge-stores"></a>知识存储
 
-+ [快速入门：在 Azure 门户中创建知识库](knowledge-store-create-portal.md)
-+ [使用 REST 和 Postman 创建知识库](knowledge-store-create-rest.md)
++ [快速入门：在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)
++ [使用 REST 和 Postman 创建知识存储](knowledge-store-create-rest.md)
 + [使用存储资源管理器查看知识存储](knowledge-store-view-storage-explorer.md)
 + [使用 Power BI 连接知识存储](knowledge-store-connect-power-bi.md)
-+ [投影示例（如何调整和导出根据）](knowledge-store-projections-examples.md)
++ [投影示例（如何整形和导出扩充内容）](knowledge-store-projections-examples.md)
 
 ## <a name="custom-skills-advanced"></a>自定义技能（高级）
 
 + [如何定义自定义技能接口](cognitive-search-custom-skill-interface.md)
-+ [示例：使用 Azure Functions （和必应实体搜索 Api）创建自定义技能](cognitive-search-create-custom-skill-example.md)
++ [示例：使用 Azure Functions（和必应实体搜索 API）创建自定义技能](cognitive-search-create-custom-skill-example.md)
 + [示例：使用 Python 创建自定义技能](cognitive-search-custom-skill-python.md)
 + [示例：使用窗体识别器创建自定义技能](cognitive-search-custom-skill-form.md) 
 + [示例：使用 Azure 机器学习创建自定义技能](cognitive-search-tutorial-aml-custom-skill.md) 
@@ -57,8 +57,8 @@ AI 扩充是基于索引器的索引的外接程序，它在非文本源和无�
 ## <a name="how-to-guidance"></a>操作说明指南
 
 + [附加认知服务资源](cognitive-search-attach-cognitive-services.md)
-+ [定义技能组合](cognitive-search-defining-skillset.md)
-+ [引用技能组合中的注释](cognitive-search-concept-annotations-syntax.md)
++ [定义技能集](cognitive-search-defining-skillset.md)
++ [在技能组中引用注释](cognitive-search-concept-annotations-syntax.md)
 + [将字段映射到索引](cognitive-search-output-field-mapping.md)
 + [处理和提取图像中的信息](cognitive-search-concept-image-scenarios.md)
 + [为增量扩充配置缓存](search-howto-incremental-index.md)
@@ -92,12 +92,12 @@ AI 扩充是基于索引器的索引的外接程序，它在非文本源和无�
 
 ## <a name="apis"></a>API
 
-+ [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Create 技能组合（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Create 索引器（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [REST API](/rest/api/searchservice/)
+  + [创建技能组 (api-version=2020-06-30)](/rest/api/searchservice/create-skillset)
+  + [创建索引器 (api-version=2020-06-30)](/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-+ [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)
++ [Azure 认知搜索 REST API](/rest/api/searchservice/)
 + [Azure 认知搜索中的索引器](search-indexer-overview.md)
 + [什么是 Azure 认知搜索？](search-what-is-azure-search.md)

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9008b30fd89e9d57923f6c612b7a454aa1ba528e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084086"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935834"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 delimitedText 分析模式和 Blob 索引器为 CSV blob 编制索引
 
@@ -32,7 +32,7 @@ id, datePublished, tags
 > 请遵循[一对多索引](search-howto-index-one-to-many-blobs.md)中的索引器配置建议从一个 Azure Blob 输出多个搜索文档。
 
 ## <a name="setting-up-csv-indexing"></a>设置 CSV 索引
-若要对 CSV blob 编制索引，请使用 `delimitedText` 分析模式根据[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)请求创建或更新索引器定义：
+若要对 CSV blob 编制索引，请使用 `delimitedText` 分析模式根据[创建索引器](/rest/api/searchservice/create-indexer)请求创建或更新索引器定义：
 
 ```http
     {
@@ -98,4 +98,3 @@ id, datePublished, tags
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
 如果有功能请求或改进建议，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 上提供相关意见。
-

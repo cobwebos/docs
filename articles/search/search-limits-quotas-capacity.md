@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749482"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926858"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -44,8 +44,8 @@ ms.locfileid: "88749482"
 | 每个索引的最大复杂集合字段数目 |40 |40 |40 |40 |40 |40 |40 |40 |
 | 每个文档的所有复杂集合的最大元素数目&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | 复杂字段的最大深度 |10 |10 |10 |10 |10 |10 |10 |10 |
-| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |1 |1 |
-| 每个索引的最大[计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |100 |100 |
+| 每个索引最大[建议器](/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |1 |1 |
+| 每个索引的最大[计分配置文件](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |100 |100 |
 | 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>2</sup> 在 2017 年 12 月之前创建的基本服务对索引数的限制较低（为 5 个而不是 15 个）。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
@@ -58,7 +58,7 @@ ms.locfileid: "88749482"
 
 自 2018 年 10 月起，在任何区域的任何可计费层（基本、S1、S2、S3、S3 HD）创建的任何新服务都不再有任何文档计数限制。 2018 年 10 月之前创建的旧服务可能仍受文档计数限制的约束。
 
-若要确定服务是否有文档数限制，请使用 [GET 服务统计信息 REST API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)。 文档数限制会在响应中反映出来，`null` 表示没有限制。
+若要确定服务是否有文档数限制，请使用 [GET 服务统计信息 REST API](/rest/api/searchservice/get-service-statistics)。 文档数限制会在响应中反映出来，`null` 表示没有限制。
 
 > [!NOTE]
 > 尽管该服务不会施加文档数限制，但在“基本”、S1、S2 和 S3 搜索服务中，每个索引的分片限制大约为 240 亿个文档。 对于 S3 HD，每个索引的分片限制为 20 亿个文档。 对于分片限制而言，复杂集合的每个元素都计为一个单独的文档。
@@ -120,7 +120,7 @@ ms.locfileid: "88749482"
 
 ## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 
-调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)和[个人信息检测](cognitive-search-skill-pii-detection.md)的 [AI 扩充管道](cognitive-search-concept-intro.md)会受到数据限制的约束。 记录的最大大小应为 50,000 个字符（通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量）。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)和[个人信息检测](cognitive-search-skill-pii-detection.md)的 [AI 扩充管道](cognitive-search-concept-intro.md)会受到数据限制的约束。 记录的最大大小应为 50,000 个字符（通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量）。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>限制
 
@@ -141,7 +141,7 @@ ms.locfileid: "88749482"
 * $Orderby 子句中最多 32 字段
 * 最大搜索词大小为 UTF-8 编码文本的 32,766 字节（32 KB 减 2 个字节）
 
-<sup>1</sup> 在 Azure 认知搜索中，请求正文受 16 MB 上限的约束，这会针对不受理论限制约束的单个字段或集合的内容施加实际限制（有关字段组合和限制的详细信息，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)）。
+<sup>1</sup> 在 Azure 认知搜索中，请求正文受 16 MB 上限的约束，这会针对不受理论限制约束的单个字段或集合的内容施加实际限制（有关字段组合和限制的详细信息，请参阅[支持的数据类型](/rest/api/searchservice/supported-data-types)）。
 
 ## <a name="api-response-limits"></a>API 响应限制
 * 每页搜索结果最多返回 1000 个文档

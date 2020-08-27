@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 99b29839028432a6b760265b641d35cdf33ee57f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122126"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927489"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -43,12 +43,12 @@ Azure Migrate 设备用于以下应用场景。
 要求 | **VMware** 
 --- | ---
 **权限** | 若要在本地或远程访问设备 Web 应用，需要成为设备计算机上的域管理员或本地管理员。
-**设备组件** | 设备包括以下组件：<br/><br/> - 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 评估代理：该代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。<br/>- DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。<br/>- 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
+**设备组件** | 设备包括以下组件：<br/><br/> - 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。<br/>- DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。<br/>- 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
 **支持的部署** | 使用 OVA 模板部署为 VMware VM。<br/><br/> 使用 PowerShell 安装脚本部署为 VMware VM 或物理计算机。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可在 vCenter Server 上发现 10,000 个 VMware VM。<br/> 设备可以连接到单个 vCenter Server。
-**OVA 模板** | 从门户或 https://aka.ms/migrate/appliance/vmware 下载。<br/><br/> 下载大小为 10.9 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**PowerShell 脚本** | 请参阅此[文](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)。<br/><br/> 
+**OVA 模板** | 从门户或从[此处](https://go.microsoft.com/fwlink/?linkid=2140333)下载<br/><br/> 下载大小为 11.6 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+**PowerShell 脚本** | 请参阅此 [文](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)。<br/><br/> 
 **软件/硬件** |  设备应在具有 Windows Server 2016、32-GB RAM、8 个 vCPU、约 80 GB 磁盘存储和一个外部虚拟交换机的计算机上运行。<br/> 设备需要直接访问或通过代理访问 Internet。<br/><br/> 如果在 VMware VM 上运行设备，vCenter Server 上需要有足够的资源来分配给满足要求的 VM。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。
 **VMware 要求** | 如果将设备部署为 VMware VM，必须将其部署在运行版本 5.5 或更高版本的 ESXi 主机上。<br/><br/> 运行 5.5、6.0、6.5 或 6.7 的 vCenter Server。
 **VDDK（无代理迁移）** | 如果将设备部署为 VMware VM，并且运行的是无代理迁移，则必须在设备 VM 上安装 VMware vSphere VDDK。
@@ -63,12 +63,12 @@ Azure Migrate 设备用于以下应用场景。
 要求 | **Hyper-V** 
 --- | ---
 **权限** | 若要在本地或远程访问设备 Web 应用，需要成为设备计算机上的域管理员或本地管理员。
-**设备组件** | 设备包括以下组件：<br/><br/>- 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 评估代理：该代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。
+**设备组件** | 设备包括以下组件：<br/><br/>- 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。
 **支持的部署** | 使用 VHD 模板部署为 Hyper-V VM。<br/><br/> 使用 PowerShell 安装脚本部署为 Hyper-V VM 或物理计算机。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可发现 5000 个 Hyper-V VM。<br/> 一个设备最多可连接到 300 个 Hyper-V 主机。
-**VHD 模板** | 包含 VHD 的压缩文件夹。 从门户或 https://aka.ms/migrate/appliance/hyperv 下载。<br/><br/> 下载大小为 10 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**PowerShell 脚本** | 请参阅此[文](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
+**VHD 模板** | 包含 VHD 的压缩文件夹。 从门户或从 [此处](https://go.microsoft.com/fwlink/?linkid=2140422)下载。<br/><br/> 下载大小为 10.4 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+**PowerShell 脚本** | 请参阅此 [文](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
 **软件/硬件***   |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果将设备作为 Hyper-V VM 运行，Hyper-V 主机上需要有足够的资源来分配 16-GB RAM、8 个 vCPU、约 80 GB 的存储空间，以及设备 VM 的一个外部交换机。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。 
 **Hyper-V 要求** | 如果使用 VHD 模板部署设备，那么 Azure Migrate 提供的设备 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主机必须运行 Windows Server 2012 R2 或更高版本。 
 **哈希值 - VHD** | [验证](tutorial-assess-hyper-v.md#verify-security) VHD 模板哈希值。
@@ -80,11 +80,11 @@ Azure Migrate 设备用于以下应用场景。
 要求 | **物理服务器** 
 --- | ---
 **权限** | 若要在本地或远程访问设备 Web 应用，需要成为设备计算机上的域管理员或本地管理员。
-**设备组件** | 设备包括以下组件： <br/><br/> - 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 评估代理：该代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。
+**设备组件** | 设备包括以下组件： <br/><br/> - 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。
 **支持的部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。 可从门户下载该脚本。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可以发现1000个物理服务器。
-**PowerShell 脚本** | 从门户下载压缩文件夹中的脚本 (AzureMigrateInstaller.ps1)。 [了解详细信息](tutorial-assess-physical.md#set-up-the-appliance)。 或者，也可以[直接下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下载大小为 63.1 MB。
+**PowerShell 脚本** | 从门户或 [此处](https://go.microsoft.com/fwlink/?linkid=2140334) ( # A0) 下载压缩文件夹中的脚本。 [了解详细信息](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)。<br/><br/> 下载大小为 85 MB。
 **软件/硬件** |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。<br/> 不支持在具有 Windows Server 2019 的计算机上运行设备。
 **哈希值** | [验证](deploy-appliance-script.md#verify-file-security) PowerShell 脚本哈希值。
 
@@ -218,7 +218,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 **数据** | **注册表位置** | **Key**
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
 提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
@@ -240,7 +240,7 @@ Parent  | Get-help  | Parent
 名称  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
-版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
+Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Version 
 
 #### <a name="windows-vm-operating-system-data"></a>Windows VM 操作系统数据
 
@@ -249,17 +249,17 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
 名称  | Win32_operatingsystem  | Caption
-版本  | Win32_operatingsystem  | 版本
+Version  | Win32_operatingsystem  | Version
 体系结构  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-vm-apps-data"></a>Linux VM 应用数据
 
 此设备从每个启用了应用程序发现的 VM 收集的已安装应用程序数据。 根据 VM 的操作系统，运行一个或多个命令。 这些数据将发送到 Azure。
 
-数据  | Command
+数据  | 命令
 --- | --- 
 名称 | rpm，dpkg，对齐
-版本 | rpm，dpkg，对齐
+Version | rpm，dpkg，对齐
 提供程序 | rpm，dpkg，对齐
 
 #### <a name="linux-vm-operating-system-data"></a>Linux VM 操作系统数据
@@ -295,7 +295,7 @@ TCP 连接状态 | netstat
 
 **数据** | **WMI 类** | **WMI 类属性**
 --- | --- | ---
-进程名 | Win32_Process | ExecutablePath
+进程名称 | Win32_Process | ExecutablePath
 进程参数 | Win32_Process | CommandLine
 应用程序名称 | Win32_Process | ExecutablePath 属性的 VersionInfo.ProductName 参数
 
@@ -422,7 +422,7 @@ NIC MAC 地址 | ip addr show $nic \| grep ether  \| awk '{print $2}'
 
 下面是设备收集并发送到 Azure 的 Windows 服务器性能数据。
 
-**Data** | **WMI 类** | **WMI 类属性**
+**数据** | **WMI 类** | **WMI 类属性**
 --- | --- | ---
 CPU 使用率 | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
 内存使用率 | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
@@ -465,7 +465,7 @@ NIC 计数 | lshw -class network \| grep eth[0-60] \| wc -l
 可以使用以下任一方法启用自动更新：
 
 - 从 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance 删除 AutoUpdate 注册表项。
-- 等到发现完成后，在设备配置管理器中启用。
+- 单击 "**设置先决条件**" 面板中的 "**查看设备服务**" 以打开自动更新。
 
 删除注册表项的步骤：
 
@@ -475,24 +475,24 @@ NIC 计数 | lshw -class network \| grep eth[0-60] \| wc -l
 
 若要从设备配置管理器中启用，在发现完成后，执行以下操作：
 
-1. 在设备计算机上，打开“设备配置管理器”。
-2. 在“设备服务” > “已关闭 Azure Migrate 组件的自动更新”中，单击用于启用自动更新的按钮。
+1. 在设备配置管理器上，请参阅 **设置先决条件** 面板
+2. 在最新更新检查中，单击 " **查看设备服务** " 并单击链接以打开自动更新。
 
-    ![启用自动更新](./media/migrate-appliance/turn-on.png)
+    ![启用自动更新](./media/migrate-appliance/autoupdate-off.png)
 
 ### <a name="check-the-appliance-services-version"></a>查看设备服务版本
 
 可以使用以下方法之一查看设备服务版本：
 
-- 在设备配置管理器中，等待发现完成后查看。
+- 在 "设备配置管理器" 中，请参阅 **设置先决条件** 面板。
 - 在设备计算机的“控制面板” > “程序和功能”中查看。
 
-若要在设备配置管理器中查看，请执行以下操作：
+若要签入设备配置管理器：
 
-1. 待发现完成后，打开“设备配置管理器”（位于设备 Web 应用中）。
-2. 在“设备服务”中，确认设备服务版本。
+1. 在设备配置管理器上，请参阅 **设置先决条件** 面板
+2. 在最新更新检查中，单击 " **查看设备服务**"。
 
-    ![检查版本](./media/migrate-appliance/version.png)
+    ![检查版本](./media/migrate-appliance/versions.png)
 
 若要在控制面板中查看，请执行以下操作：
 

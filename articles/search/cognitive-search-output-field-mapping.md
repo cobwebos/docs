@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935358"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何将 AI 扩充字段映射到可搜索索引
 
@@ -32,7 +32,7 @@ ms.locfileid: "88214023"
 * 你没有技能组合，但正在索引 Cosmos DB 数据库中的复杂类型。 要访问该复杂类型的节点，并将其映射到索引中的字段。
 
 > [!NOTE]
-> 我们最近在输出字段映射上启用了映射函数的功能。 有关映射函数的更多详细信息，请参阅[字段映射函数](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
+> 我们最近在输出字段映射上启用了映射函数的功能。 有关映射函数的更多详细信息，请参阅[字段映射函数](./search-indexer-field-mappings.md#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
 

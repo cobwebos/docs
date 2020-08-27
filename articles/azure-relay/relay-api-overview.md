@@ -2,13 +2,14 @@
 title: Azure 中继 API 概述 | Microsoft Docs
 description: 本文概述了可用的 Azure 中继 API（.NET Standard、.NET Framework、Node.js 等）
 ms.topic: article
+ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98bbb1ecc7e870ff9b7687284e7087d44375d275
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316955"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935715"
 ---
 # <a name="available-relay-apis"></a>可用的中继 API
 
@@ -22,7 +23,7 @@ ms.locfileid: "85316955"
 | --- | --- | --- | --- |
 | .NET Standard | 混合连接 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET framework | WCF 中继 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 空值 |
-| 节点 | 混合连接 | [Websocket`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 请求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| 节点 | 混合连接 | [WebSockets：`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets：`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 请求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>其他信息
 
@@ -38,7 +39,7 @@ ms.locfileid: "85316955"
 
 上表中列出的混合连接模块使用在 Azure 中继服务上而非在本地网络堆栈上进行侦听的备用实现替代或修正了现有 Node.js 模块。
 
-`hyco-https`模块 amends 并部分重写核心 Node.js 模块， `http` 并 `https` 提供与依赖于这些核心模块的许多现有 Node.js 模块和应用程序兼容的 HTTPS 侦听器实现。
+`hyco-https` 模块修正并部分替代核心 Node.js 模块 `http` 和 `https`，提供了一个与依赖于这些核心模块的许多现有 Node.js 模块和应用程序兼容的 HTTPS 侦听器实现。
 
 `hyco-ws` 和 `hyco-websocket` 模块修正了 Node.js 的常用 `ws` 和 `websocket` 模块，提供了备用侦听器实现，这些实现使得依赖于上述任一模块的模块和应用程序能够在混合连接中继后面工作。
 

@@ -9,26 +9,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed5d1f5b35bc9b6dee234678fa82af95e1d53bc7
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553984"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928813"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 中配置客户管理的密钥以进行数据加密认知搜索
 
-Azure 认知搜索会自动用[服务托管的密钥](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)加密静态的索引内容。 如果需要更多的保护，可以使用在 Azure Key Vault 中创建和管理的密钥来补充使用额外加密层的默认加密。 本文将指导你完成设置 CMK 加密的步骤。
+Azure 认知搜索会自动用 [服务托管的密钥](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)加密静态的索引内容。 如果需要更多的保护，可以使用在 Azure Key Vault 中创建和管理的密钥来补充使用额外加密层的默认加密。 本文将指导你完成设置 CMK 加密的步骤。
 
-CMK 加密依赖于[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 在 Azure Key Vault 中，如果[启用日志记录](../key-vault/general/logging.md)，还可以审核密钥用法。  
+CMK 加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 在 Azure Key Vault 中，如果 [启用日志记录](../key-vault/general/logging.md)，还可以审核密钥用法。  
 
 当创建这些对象时，将对客户托管的密钥进行加密，将其应用于各个索引或同义词映射，并且不会在搜索服务级别上指定。 只能加密新的对象。 无法加密已存在的内容。
 
 密钥不需要位于同一密钥保管库中。 单个搜索服务可以托管多个加密索引或同义词映射，每个索引使用自己的客户托管的加密密钥进行加密，并存储在不同的密钥保管库中。 还可以在同一服务中托管未使用客户管理的密钥加密的索引和同义词映射。 
 
-## <a name="double-encryption"></a>双加密
+## <a name="double-encryption"></a>双重加密
 
-对于在2020年8月1日之后创建的服务，以及在特定区域中创建的服务，CMK 加密的作用域包括临时磁盘，从而实现[完全双重加密](search-security-overview.md#double-encryption)（当前在这些区域中提供）： 
+对于在2020年8月1日之后创建的服务，以及在特定区域中创建的服务，CMK 加密的作用域包括临时磁盘，从而实现 [完全双重加密](search-security-overview.md#double-encryption)（当前在这些区域中提供）： 
 
 + 美国西部 2
 + 美国东部
@@ -44,18 +44,18 @@ CMK 加密依赖于[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
 
-+ [创建 Azure Key Vault 资源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)，或在 Azure 认知搜索所在的同一订阅中查找现有保管库。 此功能具有相同的订阅要求。
++ [创建 Azure Key Vault 资源](../key-vault/secrets/quick-create-portal.md#create-a-vault) ，或在 Azure 认知搜索所在的同一订阅中查找现有保管库。 此功能具有相同的订阅要求。
 
-+ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 用于配置任务。
++ [Azure PowerShell](/powershell/azure/) 或 [Azure CLI](/cli/azure/install-azure-cli) 用于配置任务。
 
-+ [Postman](search-get-started-postman.md)、 [AZURE POWERSHELL](search-create-index-rest-api.md)和[.net SDK preview](https://aka.ms/search-sdk-preview)可用于调用创建包含加密密钥参数的索引和同义词映射的 REST API。 目前尚不支持将键添加到索引或同义词映射。
++ [Postman](search-get-started-postman.md)、 [AZURE POWERSHELL](./search-get-started-powershell.md) 和 [.net SDK preview](https://aka.ms/search-sdk-preview) 可用于调用创建包含加密密钥参数的索引和同义词映射的 REST API。 目前尚不支持将键添加到索引或同义词映射。
 
 >[!Note]
-> 由于与客户管理的密钥加密的性质，如果 Azure 密钥保管库密钥被删除，Azure 认知搜索将无法检索数据。 若要防止意外 Key Vault 删除密钥导致的数据丢失，必须在密钥保管库上启用软删除和清除保护。 默认情况下会启用软删除，因此，只有在你特意禁用了此功能时才会遇到问题。 清除保护默认情况下未启用，但 Azure 认知搜索 CMK 加密是必需的。 有关详细信息，请参阅[软删除](../key-vault/key-vault-ovw-soft-delete.md)和[清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)概述。
+> 由于与客户管理的密钥加密的性质，如果 Azure 密钥保管库密钥被删除，Azure 认知搜索将无法检索数据。 若要防止意外 Key Vault 删除密钥导致的数据丢失，必须在密钥保管库上启用软删除和清除保护。 默认情况下会启用软删除，因此，只有在你特意禁用了此功能时才会遇到问题。 清除保护默认情况下未启用，但 Azure 认知搜索 CMK 加密是必需的。 有关详细信息，请参阅 [软删除](../key-vault/general/soft-delete-overview.md) 和 [清除保护](../key-vault/general/soft-delete-overview.md#purge-protection) 概述。
 
 ## <a name="1---enable-key-recovery"></a>1 - 启用密钥恢复
 
-Key vault 必须启用**软删除**和**清除保护**。 可以使用门户或以下 PowerShell 或 Azure CLI 命令设置这些功能。
+Key vault 必须启用 **软删除** 和 **清除保护** 。 可以使用门户或以下 PowerShell 或 Azure CLI 命令设置这些功能。
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
@@ -117,9 +117,9 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
 如果可能，请使用托管标识。 它是将标识分配给搜索服务的最简单方式，应该可在大多数方案中使用。 如果你对索引和同义词映射使用多个密钥，或者解决方案位于不符合基于标识的身份验证条件的分布式体系结构中，请使用本文末尾所述的高级[外部托管 Azure Active Directory 方法](#aad-app)。
 
- 一般情况下，搜索服务可以使用托管标识对 Azure Key Vault 进行身份验证，而无需在代码中存储凭据。 此类托管标识的生命周期与只包含一个托管标识的搜索服务的生命周期密切相关。 [详细了解托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+ 一般情况下，搜索服务可以使用托管标识对 Azure Key Vault 进行身份验证，而无需在代码中存储凭据。 此类托管标识的生命周期与只包含一个托管标识的搜索服务的生命周期密切相关。 [详细了解托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
-1. [登录到 Azure 门户](https://portal.azure.com)并打开搜索服务概述页。 
+1. [登录到 Azure 门户](https://portal.azure.com) 并打开搜索服务概述页。 
 
 1. 在左侧导航窗格中单击“标识”，将其状态更改为“开”，然后单击“保存”。  
 
@@ -129,11 +129,11 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
 若要使搜索服务能够使用 Key Vault 密钥，需要向搜索服务授予特定的访问权限。
 
-可在任意给定时间撤销访问权限。 撤销后，使用该 Key Vault 的任何搜索服务索引或同义词映射都将不可用。 以后还原 Key Vault 访问权限会还原索引/同义词映射访问权限。 有关详细信息，请参阅[保护对 Key Vault 的访问](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)。
+可在任意给定时间撤销访问权限。 撤销后，使用该 Key Vault 的任何搜索服务索引或同义词映射都将不可用。 以后还原 Key Vault 访问权限会还原索引/同义词映射访问权限。 有关详细信息，请参阅[保护对 Key Vault 的访问](../key-vault/general/secure-your-key-vault.md)。
 
 1. [登录到 Azure 门户](https://portal.azure.com)并打开 Key Vault 概述页。 
 
-1. 从左侧导航窗格中选择 "**访问策略**" 设置，然后单击 " **+ 添加新**"。
+1. 从左侧导航窗格中选择 " **访问策略** " 设置，然后单击 " **+ 添加新**"。
 
    ![添加新的 Key Vault 访问策略](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "添加新的 Key Vault 访问策略")
 
@@ -143,7 +143,7 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
 1. 单击“密钥权限”，然后选择“获取”、“解包密钥”和“包装密钥”。   可以使用 Azure Data Lake Storage 或 Azure 存储模板快速选择所需的权限。
 
-   必须向 Azure 认知搜索授予以下[访问权限](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)：
+   必须向 Azure 认知搜索授予以下[访问权限](../key-vault/keys/about-keys.md#key-operations)：
 
    * 获取 - 可让搜索服务检索 Key Vault 中密钥的公共部分
    * 包装密钥 - 可让搜索服务使用密钥来保护内部加密密钥
@@ -151,9 +151,9 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
    ![选择 Key Vault 访问策略密钥权限](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "选择 Key Vault 访问策略密钥权限")
 
-1. 对于**密钥权限**，请选择 "*获取*"。
+1. 对于 **密钥权限**，请选择 " *获取*"。
 
-1. 对于**证书权限**，请选择 "*获取*"。
+1. 对于 **证书权限**，请选择 " *获取*"。
 
 1. 单击“确定”，然后**保存**访问策略更改。
 
@@ -162,9 +162,9 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
 ## <a name="5---encrypt-content"></a>5 - 加密内容
 
-若要在索引或同义词映射上添加客户托管的密钥，必须使用[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)或 SDK。 门户不会公开同义词映射或加密属性。 使用有效的 API 时，索引和同义词映射都支持顶级**encryptionKey**属性。 
+若要在索引或同义词映射上添加客户托管的密钥，必须使用 [搜索 REST API](/rest/api/searchservice/) 或 SDK。 门户不会公开同义词映射或加密属性。 使用有效的 API 时，索引和同义词映射都支持顶级 **encryptionKey** 属性。 
 
-使用密钥保管**库 Uri**、**密钥名称**和密钥保管库密钥的**密钥版本**，创建**encryptionKey**定义，如下所示：
+使用密钥保管 **库 Uri**、 **密钥名称** 和密钥保管库密钥的 **密钥版本** ，创建 **encryptionKey** 定义，如下所示：
 
 ```json
 {
@@ -194,7 +194,7 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 ```
 
 ## <a name="example-index-encryption"></a>示例：索引加密
-[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)中提供了有关通过 REST API 创建新索引的详细信息。本文的唯一差别在于，需要将加密密钥详细信息指定为索引定义的一部分： 
+[创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)中提供了有关通过 REST API 创建新索引的详细信息。本文的唯一差别在于，需要将加密密钥详细信息指定为索引定义的一部分： 
 
 ```json
 {
@@ -222,7 +222,7 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
 ## <a name="example-synonym-map-encryption"></a>示例：同义词映射加密
 
-[创建同义词映射（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)中提供了有关通过 REST API 创建新同义词映射的详细信息。本文的唯一差别在于，需要将加密密钥详细信息指定为同义词映射定义的一部分： 
+[创建同义词映射（Azure 认知搜索 REST API）](/rest/api/searchservice/create-synonym-map)中提供了有关通过 REST API 创建新同义词映射的详细信息。本文的唯一差别在于，需要将加密密钥详细信息指定为同义词映射定义的一部分： 
 
 ```json
 {   
@@ -254,9 +254,9 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 为了适应这种拓扑，Azure 认知搜索支持使用 Azure Active Directory (AAD) 应用程序在搜索服务与 Key Vault 之间进行身份验证。    
 若要在门户中创建 AAD 应用程序：
 
-1. [创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)。
+1. [创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-1. [获取应用程序 ID 和身份验证密钥](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，因为创建加密的索引时需要用到这些信息。 需要提供的值包括**应用程序 ID** 和**身份验证密钥**。
+1. [获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，因为创建加密的索引时需要用到这些信息。 需要提供的值包括**应用程序 ID** 和**身份验证密钥**。
 
 >[!Important]
 > 决定使用 AAD 应用程序而不是托管标识进行身份验证时，请考虑到以下事实：Azure 认知搜索无权代表你管理 AAD 应用程序，需要由你自己管理 AAD 应用程序，例如，定期轮换应用程序身份验证密钥。
@@ -265,20 +265,20 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 
 ## <a name="work-with-encrypted-content"></a>使用加密内容
 
-使用 CMK 加密，你会注意到由于额外的加密/解密工作而导致索引和查询的延迟。 Azure 认知搜索不记录加密活动，但你可以通过 key vault 日志记录监视密钥访问。 建议在设置密钥保管库的过程中[启用日志记录](../key-vault/general/logging.md)。
+使用 CMK 加密，你会注意到由于额外的加密/解密工作而导致索引和查询的延迟。 Azure 认知搜索不记录加密活动，但你可以通过 key vault 日志记录监视密钥访问。 建议在设置密钥保管库的过程中 [启用日志记录](../key-vault/general/logging.md) 。
 
 应在一段时间内发生密钥轮换。 旋转键时，请务必遵循此顺序：
 
 1. [确定索引或同义词映射使用的键](search-security-get-encryption-keys.md)。
 1. [在 key vault 中创建新密钥](../key-vault/keys/quick-create-portal.md)，但保留原始密钥可用。
-1. 更新索引或同义词映射上[的 encryptionKey 属性](https://docs.microsoft.com/rest/api/searchservice/update-index)，以使用新值。 只能更新最初使用此属性创建的对象以使用其他值。
+1. 更新索引或同义词映射上[的 encryptionKey 属性](/rest/api/searchservice/update-index)，以使用新值。 只能更新最初使用此属性创建的对象以使用其他值。
 1. 禁用或删除密钥保管库中的上一个密钥。 监视密钥访问以验证是否正在使用新密钥。
 
 出于性能方面的考虑，搜索服务会缓存此密钥长达几个小时。 如果在不提供新密钥的情况下禁用或删除该密钥，则查询将继续暂时工作，直到缓存过期。 但是，一旦搜索服务无法解密内容，你就会收到以下消息： "访问被禁止。 使用的查询密钥可能已被吊销-请重试。 " 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你不熟悉 Azure 安全体系结构，请查看 [Azure 安全文档](https://docs.microsoft.com/azure/security/)，具体而言，是以下文章：
+如果你不熟悉 Azure 安全体系结构，请查看 [Azure 安全文档](../security/index.yml)，具体而言，是以下文章：
 
 > [!div class="nextstepaction"]
-> [静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [静态数据加密](../security/fundamentals/encryption-atrest.md)

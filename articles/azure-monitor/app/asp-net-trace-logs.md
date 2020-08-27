@@ -2,13 +2,14 @@
 title: 在 Application Insights 中浏览 .NET 跟踪日志
 description: 由 Trace、NLog 或 Log4Net 生成的搜索日志。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: c192ae8fad6cf463af892018fcac385b3bdcd345
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c17f1f4eb8d2fb680f31a42009247b25c74941c9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321320"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936446"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 和 Python 跟踪日志
 

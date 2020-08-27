@@ -3,13 +3,13 @@ title: Application Insights SDK 中的筛选和预处理 |Microsoft Docs
 description: 编写遥测处理器和遥测初始值设定项，以便在遥测发送到 Application Insights 门户之前，对数据进行筛选或向其添加属性。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.custom: devx-track-javascript
-ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: c42b3a79e1c816e92c71e41a738bbb116a39aee1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366749"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936548"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中筛选和预处理遥测
 
@@ -17,16 +17,16 @@ ms.locfileid: "87366749"
 
 * [采样](sampling.md)可在不影响统计信息的情况下减少遥测量。 它将相关的数据点保持在一起，以便你可以在诊断问题时在它们之间导航。 在门户中，总计相乘以补偿采样。
 * 通过遥测处理器进行筛选，可以在将遥测发送到服务器之前，筛选出 SDK 中的遥测数据。 例如，可以通过排除机器人请求减少遥测量。 与采样相比，筛选是更基本的减少流量的方法。 它使您可以更好地控制传输的内容，但会影响统计信息。 例如，你可以筛选出所有成功的请求。
-* [遥测初始值设定项向](#add-properties)从应用发送的任何遥测添加或修改属性，其中包括来自标准模块的遥测。 例如，可以添加计算值或版本号，以便在门户中筛选数据。
+* [遥测初始值设定项向](#add-properties) 从应用发送的任何遥测添加或修改属性，其中包括来自标准模块的遥测。 例如，可以添加计算值或版本号，以便在门户中筛选数据。
 * [SDK API](./api-custom-events-metrics.md) 用于发送自定义事件和指标。
 
 开始之前：
 
-* 为应用程序安装适当的 SDK： [ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、[非 HTTP/Worker for .Net/.net Core](worker-service.md)或[JavaScript](javascript.md)。
+* 为应用程序安装适当的 SDK： [ASP.NET](asp-net.md)、 [ASP.NET CORE](asp-net-core.md)、 [非 HTTP/Worker for .Net/.net Core](worker-service.md)或 [JavaScript](javascript.md)。
 
 <a name="filtering"></a>
 
-## <a name="filtering"></a>筛选
+## <a name="filtering"></a>Filtering
 
 此方法可让你直接控制遥测流中包含或排除的内容。 可以通过筛选删除要发送到 Application Insights 的遥测项。 可以结合采样或单独使用筛选。
 
@@ -43,7 +43,7 @@ ms.locfileid: "87366749"
 
 1. 若要创建筛选器，请实现 `ITelemetryProcessor`。
 
-    遥测处理器构造一系列处理。 实例化遥测处理器时，将为您提供对链中下一个处理器的引用。 将遥测数据点传递到处理方法时，它将执行其工作，然后调用（或不调用）链中的下一个遥测处理器。
+    遥测处理器构造一系列处理。 实例化遥测处理器时，将为您提供对链中下一个处理器的引用。 将遥测数据点传递到处理方法时，它将执行其工作，然后调用 (或不调用链中的下一个遥测处理器) 。
 
     ```csharp
     using Microsoft.ApplicationInsights.Channel;
@@ -80,7 +80,7 @@ ms.locfileid: "87366749"
 
 2. 添加处理器。
 
-ASP.NET**应用**
+ASP.NET **应用**
 
 在 ApplicationInsights.config 中插入此代码片段：
 
@@ -113,12 +113,12 @@ builder.Build();
 
 此点之后创建的遥测客户端将使用您的处理器。
 
-ASP.NET**核心/辅助角色服务应用**
+ASP.NET **核心/辅助角色服务应用**
 
 > [!NOTE]
 > 使用或添加处理器 `ApplicationInsights.config` `TelemetryConfiguration.Active` 对 ASP.NET Core 应用程序无效，或者使用 Applicationinsights.config. WorkerService SDK。
 
-对于使用[ASP.NET Core](asp-net-core.md#adding-telemetry-processors)或[WorkerService](worker-service.md#adding-telemetry-processors)编写的应用，通过使用上的扩展方法来添加新的遥测处理器， `AddApplicationInsightsTelemetryProcessor` `IServiceCollection` 如所示。 在类的方法中调用此方法 `ConfigureServices` `Startup.cs` 。
+对于使用 [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) 或 [WorkerService](worker-service.md#adding-telemetry-processors)编写的应用，通过使用上的扩展方法来添加新的遥测处理器， `AddApplicationInsightsTelemetryProcessor` `IServiceCollection` 如所示。 在类的方法中调用此方法 `ConfigureServices` `Startup.cs` 。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -225,7 +225,7 @@ public void Process(ITelemetry item)
 
 例如，web 包的 Application Insights 会收集有关 HTTP 请求的遥测数据。 默认情况下，它会将响应代码为的任何请求标记为失败，>为400。 但如果想要将400视为成功，则可以提供设置 success 属性的遥测初始值设定项。
 
-如果提供了遥测初始值设定项，只要调用任何 Track * （）方法，就会调用它。 这包括由标准遥测模块调用的 `Track()` 方法。 按照约定，这些模块不会设置已由初始值设定项设置的任何属性。 在调用遥测处理器之前调用遥测初始值设定项。 因此，由初始值设定项完成的任何扩充对于处理器来说都是可见的。
+如果提供了遥测初始值设定项，只要调用任何 Track * ( # A1 方法，就会调用它。 这包括由标准遥测模块调用的 `Track()` 方法。 按照约定，这些模块不会设置已由初始值设定项设置的任何属性。 在调用遥测处理器之前调用遥测初始值设定项。 因此，由初始值设定项完成的任何扩充对于处理器来说都是可见的。
 
 **定义初始值设定项**
 
@@ -292,14 +292,14 @@ protected void Application_Start()
 }
 ```
 
-请参阅[此示例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)的更多。
+请参阅 [此示例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)的更多。
 
-ASP.NET**核心/辅助服务应用：加载初始值设定项**
+ASP.NET **核心/辅助服务应用：加载初始值设定项**
 
 > [!NOTE]
 > 使用或添加初始值设定 `ApplicationInsights.config` 项 `TelemetryConfiguration.Active` 对 ASP.NET Core 应用程序或 WorkerService SDK 无效。
 
-对于使用[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)或[WorkerService](worker-service.md#adding-telemetryinitializers)编写的应用，通过将新的遥测初始值设定项添加到依赖关系注入容器来完成，如下所示。 这是在方法中完成的 `Startup.ConfigureServices` 。
+对于使用 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 或 [WorkerService](worker-service.md#adding-telemetryinitializers)编写的应用，通过将新的遥测初始值设定项添加到依赖关系注入容器来完成，如下所示。 这是在方法中完成的 `Startup.ConfigureServices` 。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -353,13 +353,13 @@ ASP.NET**核心/辅助服务应用：加载初始值设定项**
 </script>
 ```
 
-有关遥测项上可用的非自定义属性的摘要，请参阅[Application Insights 导出数据模型](./export-data-model.md)。
+有关遥测项上可用的非自定义属性的摘要，请参阅 [Application Insights 导出数据模型](./export-data-model.md)。
 
 可添加任意数量的初始值设定项。 它们按其添加顺序进行调用。
 
 ### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python 遥测处理器
 
-OpenCensus Python 中的遥测处理器是在导出遥测之前调用的回调函数。 回调函数必须接受[信封](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)数据类型作为其参数。 若要筛选出要导出的遥测，请确保回调函数返回 `False` 。 可以在[GitHub 上](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)的信封中查看 Azure Monitor 数据类型的架构。
+OpenCensus Python 中的遥测处理器是在导出遥测之前调用的回调函数。 回调函数必须接受[信封](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)数据类型作为其参数。 若要筛选出要导出的遥测，请确保回调函数返回 `False` 。 可以在 [GitHub 上](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)的信封中查看 Azure Monitor 数据类型的架构。
 
 > [!NOTE]
 > 您可以 `cloud_RoleName` 通过更改 `ai.cloud.role` 字段中的属性进行修改 `tags` 。

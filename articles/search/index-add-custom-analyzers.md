@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a9f8b02d8821c76b2a7766f35244834934db1d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935902"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加自定义分析器
 
@@ -53,7 +53,7 @@ ms.locfileid: "86511392"
 
  `tokenizer_name` 是 tokenizer 的名称，`token_filter_name_1` 和 `token_filter_name_2` 是标记筛选器的名称，`char_filter_name_1` 和 `char_filter_name_2` 是字符筛选器的名称（请参阅 [Tokenizer](#Tokenizers)、[标记筛选器](#TokenFilters)和字符筛选器表来了解有效值）。
 
-分析器定义是较大索引的一部分。 有关索引其余部分的信息，请参阅[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+分析器定义是较大索引的一部分。 有关索引其余部分的信息，请参阅[创建索引 API](/rest/api/searchservice/create-index)。
 
 ```
 "analyzers":(optional)[
@@ -133,7 +133,7 @@ ms.locfileid: "86511392"
 
 ## <a name="test-custom-analyzers"></a>测试自定义分析器
 
-可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 中的**测试分析器操作**来查看分析器如何将给定文本分解成多个标记。
+可以使用 [REST API](/rest/api/searchservice/test-analyzer) 中的**测试分析器操作**来查看分析器如何将给定文本分解成多个标记。
 
 **请求**
 ```
@@ -200,7 +200,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 #### <a name="predefined-analyzers"></a>预定义分析器
 
-| 在任务栏的搜索框中键入 | 说明 |
+| 类型 | 说明 |
 | ---- | ----------- |  
 |名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|分析器类型来自受支持分析器列表。 请参阅下面[分析器](#AnalyzerTable)表中的 **analyzer_type** 列。|  
@@ -225,7 +225,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
  字符筛选器用于在 tokenizer 处理输入文本之前准备输入文本。 例如，它们可以替换某些字符或符号。 可以在自定义分析器中使用多个字符筛选器。 字符筛选器按列出的顺序运行。  
 
-| 在任务栏的搜索框中键入 | 说明 |
+| 类型 | 说明 |
 | ---- | ----------- | 
 |名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面[字符筛选器](#char-filters-reference)表中的 **char_filter_type** 列。|  
@@ -238,7 +238,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
  可以为每个自定义分析器指定一个 tokenizer。 如果需要多个 tokenizer，则可以创建多个自定义分析器，并在索引架构中逐个字段地分配它们。  
 自定义分析器可以使用带有默认或自定义选项的预定义 tokenizer。  
 
-| 在任务栏的搜索框中键入 | 说明 |
+| 类型 | 说明 |
 | ---- | ----------- | 
 |名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|Tokenizer 名称来自受支持 tokenizer 列表。 请参阅下面 [Tokenizer](#Tokenizers) 表中的 **tokenizer_type** 列。|  
@@ -249,7 +249,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
  标记筛选器用于筛选出或修改由 tokenizer 生成的标记。 例如，可以指定将所有字符转换为小写的小写筛选器。   
 可以在自定义分析器中使用多个标记筛选器。 标记筛选器按列出的顺序运行。  
 
-| 在任务栏的搜索框中键入 | 说明 |
+| 类型 | 说明 |
 | ---- | ----------- |  
 |名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|标记筛选器名称来自受支持标记筛选器列表。 请参阅下面[标记筛选器](#TokenFilters)表中的 **token_filter_type** 列。|  
@@ -372,6 +372,6 @@ analyzer_type 仅适用于可自定义的分析器。 如果没有选项（比�
 
 
 ## <a name="see-also"></a>另请参阅  
- [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure 认知搜索 REST API](/rest/api/searchservice/)   
  [Azure 认知搜索中的分析器 > 示例](search-analyzers.md#examples)    
- [创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)

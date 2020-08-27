@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201399"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935783"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 认知搜索中的 OData 全文搜索函数 - `search.ismatch` 和 `search.ismatchscoring`
 
-Azure 认知搜索支持使用 `search.ismatch` 和 `search.ismatchscoring` 函数在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)上下文中进行全文搜索。 可以通过这些函数将全文搜索与严格的布尔筛选配合使用，所用方式在仅仅使用 [搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的顶级 `search` 参数的情况下无法实现。
+Azure 认知搜索支持使用 `search.ismatch` 和 `search.ismatchscoring` 函数在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)上下文中进行全文搜索。 可以通过这些函数将全文搜索与严格的布尔筛选配合使用，所用方式在仅仅使用 [搜索 API](/rest/api/searchservice/search-documents) 的顶级 `search` 参数的情况下无法实现。
 
 > [!NOTE]
-> `search.ismatch` 和 `search.ismatchscoring` 函数只在[搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的筛选器中受支持。 它们在[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) API 或[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API 中不受支持。
+> `search.ismatch` 和 `search.ismatchscoring` 函数只在[搜索 API](/rest/api/searchservice/search-documents) 的筛选器中受支持。 它们在[建议](/rest/api/searchservice/suggestions) API 或[自动完成](/rest/api/searchservice/autocomplete) API 中不受支持。
 
 ## <a name="syntax"></a>语法
 
@@ -76,7 +76,7 @@ search_mode ::= "'any'" | "'all'"
 | `queryType` | `Edm.String` | `'simple'` 或 `'full'`；默认为 `'simple'`。 指定 `search` 参数中使用的查询语言。 |
 | `searchMode` | `Edm.String` | `'any'` 或 `'all'`，默认为 `'any'`。 指示必须匹配 `search` 参数中的任意搜索词还是全部搜索词才能将文档视为匹配。 在 `search` 参数中使用 [Lucene 布尔运算符](query-lucene-syntax.md#bkmk_boolean)时，这些运算符的优先级高于该参数。 |
 
-所有上述参数均相当于[搜索 API 中的相应搜索请求参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+所有上述参数均相当于[搜索 API 中的相应搜索请求参数](/rest/api/searchservice/search-documents)。
 
 `search.ismatch` 函数返回类型为 `Edm.Boolean` 的值，这样你就可以使用布尔[逻辑运算符](search-query-odata-logical-operators.md)通过其他筛选器子表达式对其进行编辑。
 
@@ -96,7 +96,7 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="examples"></a>示例
 
-查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)相同。
+查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](/rest/api/searchservice/search-documents)相同。
 
 ```odata-filter-expr
     search.ismatchscoring('waterfront')
@@ -133,4 +133,4 @@ search_mode ::= "'any'" | "'all'"
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
 - [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)

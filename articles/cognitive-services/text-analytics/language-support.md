@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986162"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932961"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -39,13 +39,13 @@ ms.locfileid: "87986162"
 | 意大利语               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 日语              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 韩语                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| 挪威语(博克马尔语)   |     `no`      |     ✓      |            |                            |                    |
+| 挪威语(博克马尔语)   |     `no`      |     ✓      |     ✓       |        2020-07-01         |                    |
 | 波兰语                |     `pl`      |     ✓      |            |                            |                    |
 | 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` 也接受 |
 | 俄语               |     `ru`      |     ✓      |            |                            |                    |
 | 西班牙语               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 瑞典语               |     `sv`      |     ✓      |            |                            |                    |
-| 土耳其语               |     `tr`      |     ✓      |            |                            |                    |
+| 土耳其语               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>观点挖掘 (3.1-仅预览) 
 

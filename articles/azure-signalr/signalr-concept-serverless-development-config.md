@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387143"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928558"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
 
@@ -41,7 +41,7 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 使用 HTTP 触发的 Azure 函数和 *SignalRConnectionInfo* 输入绑定生成连接信息对象。 该函数必须包含以 `/negotiate` 结尾的 HTTP 路由。
 
-通过使用 C# 中[基于类的模型](#class-based-model)，可无需执行 SignalRConnectionInfo 输入绑定，并可以轻松得多的方式添加自定义声明。 请参阅[基于类的模型中的协商体验](#negotiate-experience-in-class-based-model)
+通过使用 C# 中[基于类的模型](#class-based-model)，可无需执行 SignalRConnectionInfo 输入绑定，并可以轻松得多的方式添加自定义声明。 请参阅 [基于类的模型中的协商体验](#negotiate-experience-in-class-based-model)
 
 有关如何创建 negotiate 函数的详细信息，请参阅 [*SignalRConnectionInfo* 输入绑定参考](../azure-functions/functions-bindings-signalr-service-input.md)。
 
@@ -206,7 +206,7 @@ SDK 根据约定自动将 `/negotiate` 追加到 URL，然后使用该 URL 开�
 
 ## <a name="azure-functions-configuration"></a>Azure Functions 配置
 
-与 Azure SignalR 服务集成的 azure Function apps 可以像使用[持续部署](../azure-functions/functions-continuous-deployment.md)、 [zip 部署](../azure-functions/deployment-zip-push.md)和[从包运行](../azure-functions/run-functions-from-deployment-package.md)这样的技术一样部署，如任何典型的 azure function app。
+与 Azure SignalR 服务集成的 azure Function apps 可以像使用 [持续部署](../azure-functions/functions-continuous-deployment.md)、 [zip 部署](../azure-functions/deployment-zip-push.md)和 [从包运行](../azure-functions/run-functions-from-deployment-package.md)这样的技术一样部署，如任何典型的 azure function app。
 
 但是，对于使用 SignalR 服务绑定的应用，需要注意几个特殊事项。 如果客户端在浏览器中运行，则必须启用 CORS。 如果应用需要身份验证，则你可以将协商终结点与应用服务身份验证集成。
 
@@ -241,7 +241,7 @@ JavaScript/TypeScript 客户端向 negotiate 函数发出 HTTP 请求，以启�
 若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。
 
 > [!NOTE]
-> CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用[AZURE API 管理](#cloud---azure-api-management)启用 CORS。
+> CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用 [AZURE API 管理](#cloud---azure-api-management) 启用 CORS。
 
 必须启用支持 Access-Control-Allow-Credentials 的 CORS 才能让 SignalR 客户端调用 negotiate 函数。 选中相应的复选框以启用 CORS。
 

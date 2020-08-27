@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903776"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926824"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $orderby 语法
 
@@ -93,4 +93,4 @@ sortable_function ::= geo_distance_call | 'search.score()'
 - [如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
 - [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)

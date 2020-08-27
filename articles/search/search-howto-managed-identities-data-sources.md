@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553158"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936582"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>使用托管标识设置到数据源的索引器连接（预览版）
 
@@ -31,7 +31,7 @@ Azure 认知搜索中的[索引器](search-indexer-overview.md)是一种爬网�
 
 ## <a name="using-managed-identities"></a>使用托管标识
 
-[标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)在 Azure Active Directory (Azure AD) 中为 Azure 服务提供了一个自动托管标识。 可以在 Azure 认知搜索中使用此功能来创建一个具有不包含任何凭据的连接字符串的数据源对象。 这样，将通过基于角色的访问控制 (RBAC) 向搜索服务授予对数据源的访问权限。
+[标识](../active-directory/managed-identities-azure-resources/overview.md)在 Azure Active Directory (Azure AD) 中为 Azure 服务提供了一个自动托管标识。 可以在 Azure 认知搜索中使用此功能来创建一个具有不包含任何凭据的连接字符串的数据源对象。 这样，将通过基于角色的访问控制 (RBAC) 向搜索服务授予对数据源的访问权限。
 
 使用托管标识设置数据源时，可以更改数据源凭据，而索引器仍可以连接到数据源。 还可以在代码中创建数据源对象，而无需包括帐户密钥，也无需使用 Key Vault 来检索帐户密钥。
 

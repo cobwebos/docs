@@ -3,16 +3,16 @@ title: 如何面向 Azure Functions 运行时版本
 description: Azure Functions 支持多个版本的运行时。 了解如何在 Azure 中指定函数应用的运行时版本。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830863"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926569"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
-函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主版本：[1.x、2.x 和 3.x](functions-versions.md)。 默认情况下，在运行时的版本2.x 中创建函数应用。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
+函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主版本：[1.x、2.x 和 3.x](functions-versions.md)。 默认情况下，函数应用采用 3.x 版的运行时创建。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
 
 ## <a name="automatic-and-manual-version-updates"></a>自动和手动版本更新
 
@@ -42,19 +42,16 @@ Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VER
 > [!IMPORTANT]
 > 虽然运行时版本由 `FUNCTIONS_EXTENSION_VERSION` 设置决定，但你应该在 Azure 门户中进行此更改，而不是直接更改设置。 这是因为该门户会验证你的更改，并根据需要进行其他相关更改。
 
-### <a name="from-the-azure-portal"></a>通过 Azure 门户
+# <a name="portal"></a>[门户](#tab/portal)
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
 > 使用 Azure 门户，无法更改已包含函数的函数应用的运行时版本。
 
-### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>通过 Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-还可以通过 Azure CLI 查看和更新 `FUNCTIONS_EXTENSION_VERSION`。
-
->[!NOTE]
->因为运行时版本可能会影响其他设置，因此，应当在门户中更改版本。 当你更改运行时版本时，门户会自动进行其他必需的更新，例如 Node.js 版本和运行时堆栈。  
+还可以通过 Azure CLI 查看和更新 `FUNCTIONS_EXTENSION_VERSION`。  
 
 使用 Azure CLI 时，可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令查看当前的运行时版本。
 
@@ -93,16 +90,36 @@ az functionapp config appsettings list --name <function_app> \
 可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令更新函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 设置。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <function_app> \
---resource-group <my_resource_group> \
---settings FUNCTIONS_EXTENSION_VERSION=<version>
+az functionapp config appsettings set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--settings FUNCTIONS_EXTENSION_VERSION=<VERSION>
 ```
 
-将 `<function_app>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<my_resource_group>`。 另外，将 `<version>` 替换为 1.x 运行时的有效版本或版本 2.x 的 `~2`。
+将 `<FUNCTION_APP>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<RESOURCE_GROUP>`。 此外，将替换为 `<VERSION>` 特定版本、或 `~3` `~2` `~1` 。
 
 可以通过在前面代码示例中选择“试一试”**** 运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az-login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+若要检查 Azure Functions 运行时，请使用以下 cmdlet： 
+
+```powershell
+Get-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE_GROUP>"
+```
+
+将替换 `<FUNCTION_APP>` 为函数应用和的名称 `<RESOURCE_GROUP>` 。 `FUNCTIONS_EXTENSION_VERSION`在哈希表中返回该设置的当前值。
+
+使用以下脚本更改函数运行时：
+
+```powershell
+Update-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE_GROUP>" -AppSetting @{"FUNCTIONS_EXTENSION_VERSION" = "<VERSION>"} -Force
+```
+
+与之前一样， `<FUNCTION_APP>` 将替换为函数应用的名称，将替换为 `<RESOURCE_GROUP>` 资源组的名称。 此外，请 `<VERSION>` 将替换为特定版本或主要版本，如 `~2` 或 `~3` 。 您可以 `FUNCTIONS_EXTENSION_VERSION` 在返回的哈希表中验证设置的更新值。 
+
+---
+
+在对应用程序设置进行更改后，函数应用将重新启动。
 
 ## <a name="next-steps"></a>后续步骤
 

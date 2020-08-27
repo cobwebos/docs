@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73496430"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936735"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>使用 AI 了解 Blob 存储数据
 
@@ -24,7 +24,7 @@ Azure Blob 存储中的数据通常是各种非结构化内容，例如图像、
 + 检测语言，将文本翻译成不同的语言
 + 使用命名实体识别 (NER) 处理文本，以查找对人员、日期、地点或组织的引用 
 
-尽管你可能只需要其中的一种 AI 功能，但通常会将其中的多个转换为同一管道（例如，从扫描的图像中提取文本，然后查找其中所引用的所有日期和位置）。 
+虽然您可能只需要其中的一种 AI 功能，但通常会将其中的多个功能组合到相同的管道中 (例如，从扫描的图像中提取文本，然后查找其中所引用的所有日期和位置) 。 
 
 AI 扩充将创建新信息，这些信息以文本的形式捕获，并存储在字段中。 扩充后，可以通过全文搜索从搜索索引访问此信息，或者将扩充的文档发回到 Azure 存储，以便为新的应用体验提供支持，包括探索用于发现或分析方案的数据。 
 
@@ -112,8 +112,8 @@ AI 扩充的输出是 Azure 认知搜索中的搜索索引，或者是 Azure 存
 
 使用 AI 扩充可以更多地充分利用 Azure 存储空间中的数据，包括以不同方式合并认知服务，以及在不存在方案的现有认知服务的情况下创作自定义技能。 可通过以下链接了解详细信息。
 
-+ [使用 Azure 门户上传、下载和列出 Blob（Azure Blob 存储）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [使用 Azure 门户上传、下载和列出 Blob（Azure Blob 存储）](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [设置 Blob 索引器（Azure 认知搜索）](search-howto-indexing-azure-blob-storage.md) 
 + [AI 扩充概述（Azure 认知搜索）](cognitive-search-concept-intro.md) 
 + [创建技能集（Azure 认知搜索）](cognitive-search-defining-skillset.md)
-+ [在批注树中映射节点（Azure 认知搜索）](cognitive-search-output-field-mapping.md)
++ [在 (Azure 认知搜索的批注树中映射节点) ](cognitive-search-output-field-mapping.md)

@@ -3,12 +3,12 @@ title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172123"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936225"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -17,7 +17,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 本文基于[概述文章](./event-hubs-about.md)中的信息编写，并提供有关事件中心组件和功能的技术和实现详细信息。
 
 ## <a name="namespace"></a>命名空间
-事件中心命名空间提供由其[完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)引用的唯一作用域容器，你可以在其中创建一个或多个事件中心或 Kafka 主题。 
+事件中心命名空间提供由其 [完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)引用的唯一作用域容器，你可以在其中创建一个或多个事件中心或 Kafka 主题。 
 
 ## <a name="event-hubs-for-apache-kafka"></a>用于 Apache Kafka 的事件中心
 
@@ -37,7 +37,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 TLS 开销。 对于活动频繁的发布者，AMQP 的性能更高。
 
-![事件中心](./media/event-hubs-features/partition_keys.png)
+![分区键](./media/event-hubs-features/partition_keys.png)
 
 事件中心可确保按顺序将共享分区键值的所有事件传送到同一分区。 如果将分区键与发布者策略结合使用，则发布者的标识与分区键的值必须匹配。 否则会出错。
 
@@ -75,7 +75,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 每个使用者组的分区上最多可以有 5 个并发读取者，但是**建议每个使用者组的分区上只有一个活动接收者**。 在单个分区中，每个读取者接收所有消息。 如果在同一分区上有多个读取者，则处理重复消息。 需在代码中处理此问题，这并非易于处理的。 但是，在某些情况下，这是一种有效的方法。
 
-Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详细信息，以确保每个分区都有一个读取器，并读取事件中心的所有分区。 这样，你的代码就可以将精力集中于处理从事件中心读取的事件，使它可以忽略分区的很多详细信息。 有关详细信息，请参阅[连接到分区](#connect-to-a-partition)。
+Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详细信息，以确保每个分区都有一个读取器，并读取事件中心的所有分区。 这样，你的代码就可以将精力集中于处理从事件中心读取的事件，使它可以忽略分区的很多详细信息。 有关详细信息，请参阅 [连接到分区](#connect-to-a-partition)。
 
 以下示例显示了使用者组 URI 约定：
 
@@ -86,13 +86,13 @@ Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详�
 
 下图显示了事件中心流处理体系结构：
 
-![事件中心](./media/event-hubs-features/event_hubs_architecture.png)
+![事件中心体系结构](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>流偏移量
 
 偏移量  是事件在分区中的位置。 可以将偏移量视为客户端游标。 偏移量是事件的字节编号。 有了该偏移量，事件使用者（读取者）便可以在事件流中指定要从其开始读取事件的点。 可以时间戳或者偏移量值的形式指定偏移量。 使用者负责在事件中心服务的外部存储其自身的偏移量值。 在分区中，每个事件都包含一个偏移量。
 
-![事件中心](./media/event-hubs-features/partition_offset.png)
+![分区偏移量](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>检查点
 
@@ -113,7 +113,7 @@ Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详�
 
 #### <a name="connect-to-a-partition"></a>连接到分区
 
-连接到分区时，常见的做法是使用租用机制来协调读取者与特定分区的连接。 这样一来，使用者组中的每个分区都有可能只有一个活动的读取者。 使用事件中心 Sdk 中的客户端（充当智能使用者代理）可以简化检查点、租用和管理读取器的操作。 这些是：
+连接到分区时，常见的做法是使用租用机制来协调读取者与特定分区的连接。 这样一来，使用者组中的每个分区都有可能只有一个活动的读取者。 使用事件中心 Sdk 中的客户端（充当智能使用者代理）可以简化检查点、租用和管理读取器的操作。 它们是：
 
 - [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) for .net
 - [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) for Java
@@ -138,10 +138,10 @@ Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详�
 有关事件中心的详细信息，请访问以下链接：
 
 - 事件中心入门
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题](event-hubs-faq.md)

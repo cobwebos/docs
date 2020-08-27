@@ -2,13 +2,14 @@
 title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518078"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936514"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -207,7 +208,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` 中的完整设置列表
 
-|设置 | 描述 | 默认
+|设置 | 说明 | 默认
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | 启用/禁用 `PerformanceCounterCollectionModule` | 是
 |EnableRequestTrackingTelemetryModule   | 启用/禁用 `RequestTrackingTelemetryModule` | 是

@@ -3,12 +3,12 @@ title: 使用事件处理程序主机接收事件 - Azure 事件中心 | Microso
 description: 本文介绍 Azure 事件中心中的事件处理程序主机，它简化了检查点操作、租用和读取事件的管理。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002516"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936174"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
@@ -192,10 +192,10 @@ Epoch 功能可让用户确保在任意时间点使用者组中只有一个接�
 熟悉事件处理程序主机后，请参阅以下文章来详细了解事件中心：
 
 - 事件中心入门
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题](event-hubs-faq.md)

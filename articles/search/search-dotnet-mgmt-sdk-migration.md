@@ -9,25 +9,25 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076410"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936701"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升级 Azure 搜索 .NET 管理 SDK 的版本
 
 本文介绍如何迁移到 Azure 搜索 .NET 管理 SDK 的后续版本，该版本用于预配或取消预配搜索服务、调整容量以及管理 API 密钥。
 
-管理 Sdk 针对特定版本的管理 REST API。 有关概念和操作的详细信息，请参阅[搜索管理（REST）](https://docs.microsoft.com/rest/api/searchmanagement/)。
+管理 Sdk 针对特定版本的管理 REST API。 有关概念和操作的详细信息，请参阅 [搜索管理 (REST) ](/rest/api/searchmanagement/)。
 
 ## <a name="versions"></a>版本
 
 | SDK 版本 | 对应的 REST API 版本 | 功能添加或行为更改 |
 |-------------|--------------------------------|-------------------------------------|
-| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api 版本 = 2020-30-20 | 添加终结点安全（IP 防火墙和与[Azure 专用链接](../private-link/private-endpoint-overview.md)的集成） |
-| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api 版本 = 2019-10-01 | 可用性改进。 [列表查询密钥](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice)的重大更改（GET 已停止）。 |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api 版本 = 2020-30-20 | 添加端点安全 (IP 防火墙并与 [Azure Private Link](../private-link/private-endpoint-overview.md) 集成)  |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api 版本 = 2019-10-01 | 可用性改进。  (GET) 终止的 [列表查询密钥](/rest/api/searchmanagement/querykeys/listbysearchservice) 的重大更改。 |
 | [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api 版本 = 2015-08-19  | 第一个版本 |
 
 ## <a name="how-to-upgrade"></a>如何升级
@@ -46,17 +46,17 @@ ms.locfileid: "87076410"
 
 ### <a name="new-apis"></a>新 API
 
-| API | Category| 详细信息 |
+| API | 类别| 详细信息 |
 |-----|--------|------------------|
-| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP 防火墙 | 将对服务终结点的访问限制到允许的 IP 地址的列表。 请参阅[配置 IP 防火墙](service-configure-firewall.md)了解概念和门户说明。 |
-| [共享的专用链接资源](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | 专用链接 | 创建要由搜索服务使用的共享专用链接资源。  |
-| [专用终结点连接](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | 专用链接 | 通过专用终结点建立和管理搜索服务的连接。 请参阅创建概念和门户说明的[专用终结点](service-create-private-endpoint.md)。|
-| [专用链接资源](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | 专用链接 | 对于具有专用终结点连接的搜索服务，获取同一个虚拟网络中使用的所有服务的列表。 如果你的搜索解决方案包括从 Azure 数据源（Azure 存储、Cosmos DB、Azure SQL）提取的索引器，或者使用认知服务或 Key Vault，则这些资源中的所有资源都应具有虚拟网络中的终结点，并且此 API 应返回列表。 |
-| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| 专用链接 | 这是创建或更新服务请求的属性。 禁用时，专用链接是唯一的访问模态。 |
+| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP 防火墙 | 将对服务终结点的访问限制到允许的 IP 地址的列表。 请参阅 [配置 IP 防火墙](service-configure-firewall.md) 了解概念和门户说明。 |
+| [共享的专用链接资源](/rest/api/searchmanagement/sharedprivatelinkresources) | 专用链接 | 创建要由搜索服务使用的共享专用链接资源。  |
+| [专用终结点连接](/rest/api/searchmanagement/privateendpointconnections) | 专用链接 | 通过专用终结点建立和管理搜索服务的连接。 请参阅创建概念和门户说明的 [专用终结点](service-create-private-endpoint.md) 。|
+| [专用链接资源](/rest/api/searchmanagement/privatelinkresources/) | 专用链接 | 对于具有专用终结点连接的搜索服务，获取同一个虚拟网络中使用的所有服务的列表。 如果搜索解决方案包括从 Azure 数据源提取的索引器 (Azure 存储、Cosmos DB、Azure SQL) ，或者使用认知服务或 Key Vault，则所有这些资源都应在虚拟网络中具有终结点，并且此 API 应返回列表。 |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| 专用链接 | 这是创建或更新服务请求的属性。 禁用时，专用链接是唯一的访问模态。 |
 
-### <a name="breaking-changes"></a>重大更改
+### <a name="breaking-changes"></a>中断性变更
 
-你不能再对[列出查询密钥](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice)请求使用 GET。 在以前的版本中，你可以使用 GET 或 POST，在此版本中，在所有发布中，只支持 POST。 
+你不能再对 [列出查询密钥](/rest/api/searchmanagement/querykeys/listbysearchservice) 请求使用 GET。 在以前的版本中，你可以使用 GET 或 POST，在此版本中，在所有发布中，只支持 POST。 
 
 ## <a name="upgrade-to-20"></a>升级到2。0
 
@@ -70,4 +70,4 @@ ms.locfileid: "87076410"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果遇到问题，则[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)发布问题的最佳论坛。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 请务必使用“[search]”来标记问题标题。
+如果遇到问题，则 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)发布问题的最佳论坛。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 请务必使用“[search]”来标记问题标题。
