@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: cdf71f939d6e5e1ada0ba141dce3bcba9d7d9b01
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529788"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917986"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 Blob 索引器为 JSON Blob 编制索引
 
@@ -37,7 +37,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档（分析模式为 
 
 ### <a name="1---prepare-source-data"></a>1 - 准备源数据
 
-[登录到 Azure 门户](https://portal.azure.com/)并[创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含数据。 可将“公共访问级别”设为任何有效值。
+[登录到 Azure 门户](https://portal.azure.com/)并[创建一个 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)用于包含数据。 可将“公共访问级别”设为任何有效值。
 
 在“导入数据”向导中检索数据时，需要用到存储帐户名称、容器名称和访问密钥。 
 
@@ -77,7 +77,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档（分析模式为 
 
 可以通过单击属性列顶部的复选框，来批量选择属性。 对于应该返回给客户端应用并且需要接受全文搜索处理的每个字段，请选择“可检索”和“可搜索”。   你会注意到，无法对整数进行全文搜索或模糊搜索（数字按原义评估，通常在筛选器中使用）。
 
-有关详细信息，请查看[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)和[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)的说明。 
+有关详细信息，请查看[索引属性](/rest/api/searchservice/create-index#bkmk_indexAttrib)和[语言分析器](/rest/api/searchservice/language-support)的说明。 
 
 花费片刻时间来检查所做的选择。 运行向导后，将创建物理数据结构，到时，除非删除再重新创建所有对象，否则无法编辑这些字段。
 
@@ -110,9 +110,9 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档（分析模式为 
 
 对于基于代码的 JSON 索引编制，请使用 [Postman](search-get-started-postman.md) 和 REST API 创建这些对象：
 
-+ [索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [索引](/rest/api/searchservice/create-index)
++ [数据源](/rest/api/searchservice/create-data-source)
++ [索引器](/rest/api/searchservice/create-indexer)
 
 操作顺序要求按此顺序创建并调用对象。 与门户工作流相比，基于代码的方法要求通过一个可用的索引来接受通过“创建索引器”请求发送的 JSON 文档。 
 
@@ -120,9 +120,9 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
 
 | JSON 文档 | parsingMode | 说明 | 可用性 |
 |--------------|-------------|--------------|--------------|
-| 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 认知搜索文档。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
-| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 认知搜索文档。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
-| 每个 Blob 有多个 | `jsonLines` | 分析包含换行符分隔的多个 JSON 实体（“数组”）的 Blob，其中的每个实体将成为独立的 Azure 认知搜索文档。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
+| 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 认知搜索文档。 | [REST](/rest/api/searchservice/indexer-operations) API 和 [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
+| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 认知搜索文档。  | [REST](/rest/api/searchservice/indexer-operations) API 和 [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
+| 每个 Blob 有多个 | `jsonLines` | 分析包含换行符分隔的多个 JSON 实体（“数组”）的 Blob，其中的每个实体将成为独立的 Azure 认知搜索文档。 | [REST](/rest/api/searchservice/indexer-operations) API 和 [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 汇编请求的输入
 
@@ -168,7 +168,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
 
 索引在 Azure 认知搜索中存储可搜索的内容。 若要创建索引，请提供一个架构，用于在文档、属性和其他构造中指定可以塑造搜索体验的字段。 如果创建与源具有相同字段名称和数据类型的索引，索引器将会匹配源和目标字段，使你无需显式映射字段。
 
-以下示例演示了一个[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)请求。 该索引包含一个可搜索的 `content` 字段，该字段存储从 Blob 提取的文本：   
+以下示例演示了一个[创建索引](/rest/api/searchservice/create-index)请求。 该索引包含一个可搜索的 `content` 字段，该字段存储从 Blob 提取的文本：   
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -280,10 +280,10 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
 
 .NET SDK 完全可与 REST API 搭配使用。 我们建议查看前面的 REST API 部分，以了解相关概念、工作流和要求。 然后，可以参阅以下 .NET API 参考文档，在托管代码中实现 JSON 索引器。
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 

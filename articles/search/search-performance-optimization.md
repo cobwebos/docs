@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212387"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934950"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放
 
@@ -30,7 +30,7 @@ ms.locfileid: "77212387"
 
 1. 从较小的每秒查询数 (QPS) 开始，并逐渐增加在测试中执行的数量，直到查询延迟降到定义的目标之下为止。 这是一个重要的基准，可帮助你计划应用程序在使用量增长方面的规模。
 
-1. 只要有可能，请重用 HTTP 连接。 如果使用 Azure 认知搜索 .NET SDK，这意味着你应该重用某个实例或 [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) 实例，并且如果使用 REST API，就应该重用单个 HttpClient。
+1. 只要有可能，请重用 HTTP 连接。 如果使用 Azure 认知搜索 .NET SDK，这意味着你应该重用某个实例或 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) 实例，并且如果使用 REST API，就应该重用单个 HttpClient。
 
 1. 差异化查询请求的主旨，以针对索引的不同组成部分执行搜索。 差异化很重要，因为如果不断执行相同的搜索请求，那么比起包含一个更加迥然不同的查询集，数据的缓存将开始使性能看起变得更好。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77212387"
 + Azure 认知搜索不会在后台运行索引编制任务。 如果服务同时处理查询和索引编制工作负荷，请考虑到这一点：将索引编制作业引入查询测试，或者探讨在非高峰期运行索引编制作业的选项。
 
 > [!Tip]
-> 您可以使用负载测试工具来模拟真实的查询负载。 尝试使用[Azure DevOps 进行负载测试，](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops)或使用其中一种[替代方法](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)。
+> 您可以使用负载测试工具来模拟真实的查询负载。 尝试使用 [Azure DevOps 进行负载测试，](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) 或使用其中一种 [替代方法](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)。
 
 ## <a name="scale-for-high-query-volume"></a>高查询量的规模
 
@@ -55,7 +55,7 @@ ms.locfileid: "77212387"
 
 + **在更高的层上创建新服务**  
 
-  Azure 认知搜索分为多个级别，每个[层](https://azure.microsoft.com/pricing/details/search/)提供不同级别的性能。 在某些情况下，你可能会遇到如此多的查询，因为你所在的层不能提供足够的周转时间，甚至在副本被极限时也是如此。在这种情况下，请考虑移动到性能较高的层，如标准 S3 层，这是为具有大量文档和极高查询工作负荷的方案而设计的。
+  Azure 认知搜索分为多个级别，每个 [层](https://azure.microsoft.com/pricing/details/search/) 提供不同级别的性能。 在某些情况下，你可能会遇到如此多的查询，因为你所在的层不能提供足够的周转时间，甚至在副本被极限时也是如此。在这种情况下，请考虑移动到性能较高的层，如标准 S3 层，这是为具有大量文档和极高查询工作负荷的方案而设计的。
 
 ## <a name="scale-for-slow-individual-queries"></a>用于慢速单个查询的缩放
 
@@ -81,7 +81,7 @@ ms.locfileid: "77212387"
 
 + 对于只读工作负荷（查询），需要有两个副本才能实现高可用性
 
-+ 用于读写工作负荷（查询和索引）的高可用性的三个或更多副本
++ 三个或更多副本以实现读写工作负荷的高可用性 (查询和索引) 
 
 有关这方面的更多详细信息，请访问 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
@@ -99,7 +99,7 @@ Azure 认知搜索当前不提供自动化方法来跨区域异地复制 Azure �
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>跨多个服务保持数据同步
 
-有两个选项可让分布式搜索服务保持同步，其中包括使用[azure 认知搜索索引器](search-indexer-overview.md)或推送 API （也称为[azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)）。  
+有两个选项可让分布式搜索服务保持同步，其中包括使用 [azure 认知搜索索引器](search-indexer-overview.md) 或推送 API (也称为 [azure 认知搜索 REST API](/rest/api/searchservice/)) 。  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>使用索引器更新多个服务中的内容
 
@@ -111,7 +111,7 @@ Azure 认知搜索当前不提供自动化方法来跨区域异地复制 Azure �
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>使用 REST API 在多个服务中推送内容更新
 
-如果使用 Azure 认知搜索 REST API [推送 Azure 认知搜索索引中的内容](https://docs.microsoft.com/rest/api/searchservice/update-index)，则可以在需要更新时，可以通过将更改推送到所有搜索服务，以保持各种搜索服务同步。 在代码中，请确保处理好这种情况：对一个搜索服务的更新失败，但对于其他搜索服务成功。
+如果使用 Azure 认知搜索 REST API [推送 Azure 认知搜索索引中的内容](/rest/api/searchservice/update-index)，则可以在需要更新时，可以通过将更改推送到所有搜索服务，以保持各种搜索服务同步。 在代码中，请确保处理好这种情况：对一个搜索服务的更新失败，但对于其他搜索服务成功。
 
 ## <a name="leverage-azure-traffic-manager"></a>利用 Azure 流量管理器
 
@@ -121,7 +121,7 @@ Azure 认知搜索当前不提供自动化方法来跨区域异地复制 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解每种定价层和服务限制，请参阅[服务限制](search-limits-quotas-capacity.md)。 有关分区和副本组合的详细信息，请参阅[规划容量](search-capacity-planning.md)。
+若要详细了解每种定价层和服务限制，请参阅 [服务限制](search-limits-quotas-capacity.md)。 有关分区和副本组合的详细信息，请参阅 [规划容量](search-capacity-planning.md) 。
 
 有关本文所述技术的性能和演示的讨论，请观看以下视频：
 

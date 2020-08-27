@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052625"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934491"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 
@@ -57,7 +58,7 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 
 ## <a name="migration-guides"></a>迁移指南
 
-如果你的应用程序、工具或产品正在使用[语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)，我们已创建了可帮助你迁移到语音服务的指南。
+如果你的应用程序、工具或产品正在使用 [语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)，我们已创建了可帮助你迁移到语音服务的指南。
 
 * [从语音翻译 API 迁移到语音服务](how-to-migrate-from-translator-speech-api.md)
 

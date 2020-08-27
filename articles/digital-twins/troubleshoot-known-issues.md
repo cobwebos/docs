@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661480"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921063"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -51,7 +51,9 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>交互式浏览器身份验证问题
 
-当使用最新版本 () **1.2.0**库的最新版本在 Azure 数字孪生应用程序中** [Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) **编写身份验证代码时， [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法可能会遇到问题。
+使用 1.2.0 ** [Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)库**的版本**1.2.0**在 azure 数字孪生应用程序中编写身份验证代码时，可能会遇到[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法问题。
+
+这不是最新版本的库。 最新版本为 **1.2.2**。
 
 受影响的方法在以下文章中使用： 
 * [*教程：* 为客户端应用编写代码](tutorial-code.md)
@@ -62,10 +64,7 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
-若要解决此问题，请让应用程序显式使用 Azure. 标识版本 **1.1.1**。 对于此版本的库，浏览器应按照预期方式进行加载和身份验证。
-
->[!NOTE]
-> 无需指定任何版本即可添加库，因为它仍然默认为最新 **1.2.0**。 你需要显式指定版本 **1.1.1** 。
+若要解决此问题，请更新应用程序以使用 Azure. 标识版本 **1.2.2**。 对于此版本的库，浏览器应按照预期方式进行加载和身份验证。
 
 ### <a name="possible-causes"></a>可能的原因
 

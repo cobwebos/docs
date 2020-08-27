@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828653"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795586"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 中的自定义管理员角色（预览版）
 
@@ -46,7 +46,7 @@ Azure AD 内置和自定义角色的运作思路类似于 [Azure 基于角色的
 
 1. 根据具体情况，Azure AD 会执行以下操作之一：
 
-    - 基于用户访问令牌中的 [wids 声明](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)评估用户的角色成员身份。
+    - 基于用户访问令牌中的 [wids 声明](../develop/access-tokens.md)评估用户的角色成员身份。
     - 检索为用户应用于（直接或通过组成员身份）执行操作的资源的所有角色分配。
 
 1. Azure AD 确定 API 调用中的操作是否包含在用户针对此资源拥有的角色中。

@@ -3,18 +3,18 @@ title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Python SDK
 description: 在启用了分层命名空间 (HNS) 的存储帐户中使用 Python 来管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
-ms.date: 04/10/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 762f616a27338750973e843a999b36a22171fbcd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3056e167a7482cb2967a68bbf1cd40e4bad49093
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847595"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923834"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -196,7 +196,7 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **_Get_root_directory_client FileSystemClient**方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **_Get_root_directory_client FileSystemClient** 方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录 
 
@@ -332,6 +332,10 @@ def list_directory_contents():
     except Exception as e:
      print(e) 
 ```
+
+## <a name="set-an-acl-recursively-preview"></a>以递归方式设置 ACL (预览) 
+
+您可以在父目录的现有子项目上递归地添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。 有关详细信息，请参阅 [设置访问控制列表 (acl) 递归 Azure Data Lake Storage Gen2](recursive-access-control-lists.md)。
 
 ## <a name="see-also"></a>另请参阅
 

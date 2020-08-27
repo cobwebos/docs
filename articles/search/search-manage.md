@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835946"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935035"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +33,9 @@ Azure 认知搜索是一种完全托管的、基于云的搜索服务，用于�
 * 使用左边的“密钥”页管理访问。
 * 使用左边的“缩放”页调整容量。
 
-在门户中执行的相同任务也可以通过[管理 API](https://docs.microsoft.com/rest/api/searchmanagement/) 和 [Az.Search PowerShell 模块](search-manage-powershell.md)以编程方式处理。 管理任务完全呈现在门户和程序设计界面中。 任何特定管理任务都不会只能通过一种形式使用。
+在门户中执行的相同任务也可以通过[管理 API](/rest/api/searchmanagement/) 和 [Az.Search PowerShell 模块](search-manage-powershell.md)以编程方式处理。 管理任务完全呈现在门户和程序设计界面中。 任何特定管理任务都不会只能通过一种形式使用。
 
-Azure 认知搜索充分利用其他 Azure 服务进行更深入的监视和管理。 通过搜索服务单独存储的唯一数据是内容（索引、索引器和数据源定义，以及其他对象）。 报告到门户页面的指标按照滚动的 30 天周期从内部日志中拉取。 对于用户控制的日志保留和其他事件，需要 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)。 
+Azure 认知搜索充分利用其他 Azure 服务进行更深入的监视和管理。 通过搜索服务单独存储的唯一数据是内容（索引、索引器和数据源定义，以及其他对象）。 报告到门户页面的指标按照滚动的 30 天周期从内部日志中拉取。 对于用户控制的日志保留和其他事件，需要 [Azure Monitor](../azure-monitor/index.yml)。 
 
 ## <a name="fixed-service-properties"></a>固定的服务属性
 
@@ -58,7 +58,7 @@ Azure 认知搜索充分利用其他 Azure 服务进行更深入的监视和管�
 
 服务预配设备的权限是通过角色分配授予的。 Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 
 
-在 Azure 认知搜索环境中， [azure 角色分配](search-security-rbac.md)将确定谁可以执行任务，无论他们使用的是[门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
+在 Azure 认知搜索环境中， [azure 角色分配](search-security-rbac.md) 将确定谁可以执行任务，无论他们使用的是 [门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是 [管理 REST api](/rest/api/searchmanagement/search-howto-management-rest-api)：
 
 * 创建或删除服务
 * 缩放服务
@@ -73,12 +73,12 @@ Azure 认知搜索充分利用其他 Azure 服务进行更深入的监视和管�
 
 在基本层以及更高层上，Microsoft 会监视所有 Azure 认知搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
-Azure 认知搜索利用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) 来收集和存储索引及查询活动。 搜索服务仅单独存储其内容（索引、索引器定义、数据源定义、技能组定义、同义词映射）。 高速缓存信息和记录的信息是脱离服务而存储的，通常存储在 Azure 存储帐户中。 有关记录索引和查询工作负载的详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
+Azure 认知搜索利用 [Azure Monitor](../azure-monitor/index.yml) 来收集和存储索引及查询活动。 搜索服务仅单独存储其内容（索引、索引器定义、数据源定义、技能组定义、同义词映射）。 高速缓存信息和记录的信息是脱离服务而存储的，通常存储在 Azure 存储帐户中。 有关记录索引和查询工作负载的详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
 
 就有关服务的一般信息而言，只需使用 Azure 认知搜索本身内置的设施就可以通过以下方式获取信息：
 
 * 使用服务“概述”页面，通过通知、属性和状态消息。
-* 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 来[获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)。 在编程层不提供新信息或操作。 接口是存在的，这样你便可以编写脚本。
+* 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](/rest/api/searchmanagement/) 来[获取服务属性](/rest/api/searchmanagement/services)。 在编程层不提供新信息或操作。 接口是存在的，这样你便可以编写脚本。
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
 
@@ -86,8 +86,8 @@ Azure 认知搜索利用 [Azure Monitor](https://docs.microsoft.com/azure/azure-
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 
-* [获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [计数文档](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [获取索引统计信息](/rest/api/searchservice/Get-Index-Statistics)
+* [计数文档](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>灾难恢复和服务中断
 
@@ -135,7 +135,7 @@ Azure 认知搜索利用 [Azure Monitor](https://docs.microsoft.com/azure/azure-
 
 无法通过任何检测方法确定哪些索引分片存储在特定分区上。 每个分区提供大约 25 GB 的存储，因此需要将存储减少到可让所拥有分区数能容纳的大小。 如果要还原为一个分区，则所有 12 个分片都需要适合。
 
-为了帮助实现未来规划，可能需要检查存储（使用[获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)），了解实际使用了多少空间。 
+为了帮助实现未来规划，可能需要检查存储（使用[获取索引统计信息](/rest/api/searchservice/Get-Index-Statistics)），了解实际使用了多少空间。 
 
 ## <a name="next-steps"></a>后续步骤
 

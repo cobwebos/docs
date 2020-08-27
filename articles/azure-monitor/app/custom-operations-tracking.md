@@ -2,14 +2,15 @@
 title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320368"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933301"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -478,7 +479,7 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 Application Insights 中的[遥测关联](correlation.md)基础知识。
-- 查看相关数据如何支持[事务诊断体验](./transaction-diagnostics.md)和[应用程序映射](./app-map.md)。
+- 查看相关数据如何支持 [事务诊断体验](./transaction-diagnostics.md) 和 [应用程序映射](./app-map.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](./data-model.md)。
 - 向 Application Insights 报告自定义[事件和指标](./api-custom-events-metrics.md)。
 - 查看上下文属性集合的标准[配置](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562302"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923069"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 认知搜索中的筛选器 
 
@@ -61,7 +61,7 @@ ms.locfileid: "85562302"
 筛选是配合搜索发生的，限定要将哪些文档包含在下游处理流程中进行文档检索和相关性评分。 与搜索字符串搭配使用时，筛选器能够有效减小后续搜索操作的重调集。 如果单独使用（例如，在 `search=*` 中查询字符串为空时），筛选条件是唯一的输入。 
 
 ## <a name="defining-filters"></a>定义筛选器
-筛选器是使用 [Azure 认知搜索中支持的 OData V4 语法子集](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)构建的 OData 表达式。 
+筛选器是使用 [Azure 认知搜索中支持的 OData V4 语法子集](/rest/api/searchservice/odata-expression-syntax-for-azure-search)构建的 OData 表达式。 
 
 可为每个**搜索**操作指定一个筛选器，但筛选器本身可以包含多个字段和多个条件，如果使用 **ismatch** 函数，则还可以包含多个全文搜索表达式。 在多部分筛选表达式中，可按任意顺序指定谓词（受运算符优先顺序规则的约束）。 如果尝试按特定的顺序重新排列谓词，性能不会有明显的提升。
 
@@ -95,7 +95,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>筛选器使用模式
 
-以下示例演示了筛选器方案的多种使用模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples)。
+以下示例演示了筛选器方案的多种使用模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](./search-query-odata-filter.md#examples)。
 
 + 单独使用 **$filter** 而不使用查询字符串：如果筛选表达式能够完全限定所需的文档，则此模式很有效。 不使用查询字符串也就不会执行词法或语言分析、评分和排名。 请注意，搜索字符串只是一个星号，表示“匹配所有文档”。
 
@@ -135,9 +135,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="field-requirements-for-filtering"></a>与筛选相关的字段要求
 
-在 REST API 中，默认为简单字段启用了可筛选性。  可筛选字段会增大索引大小；对于不打算真正在筛选器中使用的字段，请务必设置 `"filterable": false`。 有关字段定义设置的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+在 REST API 中，默认为简单字段启用了可筛选性。  可筛选字段会增大索引大小；对于不打算真正在筛选器中使用的字段，请务必设置 `"filterable": false`。 有关字段定义设置的详细信息，请参阅[创建索引](/rest/api/searchservice/create-index)。
 
-在 .NET SDK 中，可筛选性默认为“关”。  可以通过将相应 [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) 对象的 [IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)设置为 `true`，使某个字段可筛选。 也可以使用 [IsFilterable 特性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)以声明方式实现此目的。 在以下示例中，该特性已在一个映射到索引定义的模型类的 `BaseRate` 属性中设置。
+在 .NET SDK 中，可筛选性默认为“关”。  可以通过将相应 [Field](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) 对象的 [IsFilterable 属性](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)设置为 `true`，使某个字段可筛选。 也可以使用 [IsFilterable 特性](/dotnet/api/microsoft.azure.search.isfilterableattribute)以声明方式实现此目的。 在以下示例中，该特性已在一个映射到索引定义的模型类的 `BaseRate` 属性中设置。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-若要学习更多示例，请参阅 [OData 筛选表达式语法 > 示例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples)。
+若要学习更多示例，请参阅 [OData 筛选表达式语法 > 示例](./search-query-odata-filter.md#examples)。
 
 ## <a name="see-also"></a>另请参阅
 
 + [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
-+ [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-+ [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [搜索文档 REST API](/rest/api/searchservice/search-documents)
++ [简单的查询语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene 查询语法](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [支持的数据类型](/rest/api/searchservice/supported-data-types)

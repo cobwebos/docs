@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561771"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934967"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用“完整的”Lucene 搜索语法（Azure 认知搜索中的高级查询）
 
@@ -147,7 +147,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在 `state` 字段中搜索两个不同位置的情况一样。 此外，请确保运算符大写，就像你看到的 NOT 和 AND 一样。
 
-在 **fieldName:searchExpression** 中指定的字段必须是可搜索的字段。 有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+在 **fieldName:searchExpression** 中指定的字段必须是可搜索的字段。 有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)。
 
 > [!NOTE]
 > 在以上示例中，不需要使用 `searchFields` 参数，因为查询的每个部分都显式指定了一个字段名称。 但是，如果需要运行查询，则仍可使用 `searchFields` 参数，其中的某些部分局限于特定字段，其余部分可以应用到多个字段。 例如，查询 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 只将 `senior NOT junior` 匹配到 `business_title` 字段，而它则会将“external”与 `posting_type` 字段匹配。 在 **fieldName:searchExpression** 中提供的字段名称始终优先于 `searchFields` 参数，这就是在此示例中我们不需在 `searchFields` 参数中包括 `business_title` 的原因。
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![正则表达式查询](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> 不会对正则表达式查询进行[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)。 对不完整查询字词执行的唯一转换操作是转换为小写。
+> 不会对正则表达式查询进行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 对不完整查询字词执行的唯一转换操作是转换为小写。
 >
 
 ## <a name="example-7-wildcard-search"></a>示例 7：通配符搜索
@@ -278,18 +278,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![通配符查询](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> 不会对通配符查询进行[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)。 对不完整查询字词执行的唯一转换操作是转换为小写。
+> 不会对通配符查询进行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 对不完整查询字词执行的唯一转换操作是转换为小写。
 >
 
 ## <a name="next-steps"></a>后续步骤
 请尝试在代码中指定 Lucene 查询分析器。 以下链接介绍如何为 .NET 和 REST API 设置搜索查询。 链接使用默认的简单语法，因此需要应用从本文中所学知识指定 **queryType**。
 
-* [使用 .NET SDK 查询索引](search-query-dotnet.md)
-* [使用 REST API 查询索引](search-create-index-rest-api.md)
+* [使用 .NET SDK 查询索引](./search-get-started-dotnet.md)
+* [使用 REST API 查询索引](./search-get-started-powershell.md)
 
 可在以下链接找到其他语法参考、查询体系结构和示例：
 
 + [简单语法查询示例](search-query-simple-examples.md)
 + [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
-+ [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [完整 Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [简单的查询语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [完整 Lucene 查询语法](/rest/api/searchservice/lucene-query-syntax-in-azure-search)

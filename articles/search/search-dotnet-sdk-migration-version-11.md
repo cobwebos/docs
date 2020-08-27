@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 182d9a77700577c583bbdcd6f2620c0603569dd0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870198"
+ms.locfileid: "88935222"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本11
 
-如果你使用的是版本10.0 或更低版本的 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文将帮助你升级到版本11。
+如果你使用的是版本10.0 或更低版本的 [.NET SDK](/dotnet/api/overview/azure/search)，本文将帮助你升级到版本11。
 
-版本11是完全重新设计的客户端库，由 Azure SDK 开发团队发布 (以前版本由 Azure 认知搜索开发团队) 生成。 为了更好地与其他 Azure 客户端库保持一致，已对库进行了重新设计，从而依赖于 [Azure Core](https://docs.microsoft.com/dotnet/api/azure.core) 和 [System.Text.Js](https://docs.microsoft.com/dotnet/api/system.text.json)，并为常见任务实现了熟悉的方法。
+版本11是完全重新设计的客户端库，由 Azure SDK 开发团队发布 (以前版本由 Azure 认知搜索开发团队) 生成。 为了更好地与其他 Azure 客户端库保持一致，已对库进行了重新设计，从而依赖于 [Azure Core](/dotnet/api/azure.core) 和 [System.Text.Js](/dotnet/api/system.text.json)，并为常见任务实现了熟悉的方法。
 
 你在新版本中注意到的一些主要区别包括：
 
@@ -38,7 +38,7 @@ ms.locfileid: "88870198"
 
 + [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)
 
-+ [客户端库的 API 参考](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [客户端库的 API 参考](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
 
 ## <a name="client-differences"></a>客户端差异
 
@@ -46,9 +46,9 @@ ms.locfileid: "88870198"
 
 | 操作范围 | &nbsp; (v10) 搜索 | Azure.Search.Documents &nbsp; (v11)  |
 |---------------------|------------------------------|------------------------------|
-| 用于查询和填充索引的客户端。 | [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) |
-| 用于索引、分析器、同义词映射的客户端 | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| 用于索引器、数据源、技能集的客户端 | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**new**) ](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| 用于查询和填充索引的客户端。 | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
+| 用于索引、分析器、同义词映射的客户端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
+| 用于索引器、数据源、技能集的客户端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**new**) ](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` 在两个版本中均存在，但支持不同的功能。 在版本10中， `SearchIndexClient` 创建索引和其他对象。 在版本11中， `SearchIndexClient` 适用于现有索引。 若要避免在更新代码时产生混淆，请注意更新客户端引用的顺序。 遵循 [升级步骤](#UpgradeSteps) 中的顺序应有助于缓解任何字符串替换问题。
@@ -63,57 +63,57 @@ ms.locfileid: "88870198"
 
 | 版本10 | 版本11等效项 |
 |------------|-----------------------|
-| [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey` (作为一项公开功能存在于 [预览版 SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) 中)  | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| [SearchCredentials](/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) |
+| `EncryptionKey` (作为一项公开功能存在于 [预览版 SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) 中)  | [SearchResourceEncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>索引、分析器、同义词映射
 
 | 版本10 | 版本11等效项 |
 |------------|-----------------------|
-| [Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
-| [字段](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
-| [DataType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
-| [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (还 `AnalyzerName` `LexicalAnalyzerName`)  |
-| [AnalyzeRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
-| [StandardAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
-| [StandardTokenizer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (还 `StandardTokenizerV2` `LuceneStandardTokenizerV2`)  |
-| [TokenInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.tokeninfo) | [AnalyzedTokenInfo](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzedtokeninfo) |
-| [分词器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.tokenizer) | [LexicalTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicaltokenizer) (还 `TokenizerName` `LexicalTokenizerName`)  |
-| [SynonymMap. 格式](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap.format) | 无。 删除对的引用 `Format` 。 |
+| [Index](/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) |
+| [字段](/dotnet/api/microsoft.azure.search.models.field) | [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) |
+| [DataType](/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
+| [ItemError](/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
+| [分析器](/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (还 `AnalyzerName` `LexicalAnalyzerName`)  |
+| [AnalyzeRequest](/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
+| [StandardAnalyzer](/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
+| [StandardTokenizer](/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (还 `StandardTokenizerV2` `LuceneStandardTokenizerV2`)  |
+| [TokenInfo](/dotnet/api/microsoft.azure.search.models.tokeninfo) | [AnalyzedTokenInfo](/dotnet/api/azure.search.documents.indexes.models.analyzedtokeninfo) |
+| [分词器](/dotnet/api/microsoft.azure.search.models.tokenizer) | [LexicalTokenizer](/dotnet/api/azure.search.documents.indexes.models.lexicaltokenizer) (还 `TokenizerName` `LexicalTokenizerName`)  |
+| [SynonymMap. 格式](/dotnet/api/microsoft.azure.search.models.synonymmap.format) | 无。 删除对的引用 `Format` 。 |
 
-简化了字段定义： [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield)、 [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield)、 [ComplexField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.complexfield) 是用于创建字段定义的新 api。
+简化了字段定义： [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield)、 [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield)、 [ComplexField](/dotnet/api/azure.search.documents.indexes.models.complexfield) 是用于创建字段定义的新 api。
 
 ### <a name="indexers-datasources-skillsets"></a>索引器、数据源、技能集
 
 | 版本10 | 版本11等效项 |
 |------------|-----------------------|
-| [索引器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
-| [DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
-| [技能](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [技能集](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
+| [索引器](/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
+| [DataSource](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
+| [技能](/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
+| [技能集](/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
+| [DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
 
 ### <a name="data-import"></a>数据导入
 
 | 版本10 | 版本11等效项 |
 |------------|-----------------------|
-| [IndexAction](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction) | [IndexDocumentsAction](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsaction) |
-| [IndexBatch](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch) | [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch) |
+| [IndexAction](/dotnet/api/microsoft.azure.search.models.indexaction) | [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction) |
+| [IndexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch) | [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) |
 
 ### <a name="query-definitions-and-results"></a>查询定义和结果
 
 | 版本10 | 版本11等效项 |
 |------------|-----------------------|
-| [DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | [SearchResult](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresult-1) 或 [SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1)，具体取决于结果是单个文档还是多个文档。 |
-| [DocumentSuggestResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.suggestresults-1) |
-| [SearchParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions)  |
+| [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | [SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) 或 [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1)，具体取决于结果是单个文档还是多个文档。 |
+| [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
+| [SearchParameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-in-version-11"></a>版本11中的内容
 
-Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本。 REST API 被视为服务的基础，而各个 Sdk 包装了 REST API 版本。 作为 .NET 开发人员，如果您需要有关特定对象或操作的更多背景知识，那么查看 [REST API 文档](https://docs.microsoft.com/rest/api/searchservice/) 会很有帮助。
+Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本。 REST API 被视为服务的基础，而各个 Sdk 包装了 REST API 版本。 作为 .NET 开发人员，如果您需要有关特定对象或操作的更多背景知识，那么查看 [REST API 文档](/rest/api/searchservice/) 会很有帮助。
 
 版本11针对 [2020-06-30 搜索服务](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)。 由于第11版也是从根本上构建的新的客户端库，因此，大多数开发工作的重点是使用版本10，并且某些 REST API 功能支持仍处于挂起状态。
 
@@ -126,8 +126,8 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
 
 版本11.1 添加了以下内容：
 
-+ 11.1) 中添加了[FieldBuilder](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.fieldbuilder) (
-+ [序列化程序属性](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclientoptions.serializer) (添加到 11.1) 以支持自定义序列化
++ 11.1) 中添加了[FieldBuilder](/dotnet/api/azure.search.documents.indexes.fieldbuilder) (
++ [序列化程序属性](/dotnet/api/azure.search.documents.searchclientoptions.serializer) (添加到 11.1) 以支持自定义序列化
 
 ### <a name="pending-features"></a>挂起的功能
 
@@ -156,9 +156,9 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
 
 1. 对于需要 JSON 序列化的类，请将替换 `using Newtonsoft.Json` 为 `using System.Text.Json.Serialization` 。
 
-1. 修改客户端身份验证代码。 在以前的版本中，你将使用客户端对象上的属性设置 API 密钥 (例如，) 的 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 属性。 在当前版本中，使用 [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) 类作为凭据传递密钥，以便在需要时可以更新 API 密钥，而无需创建新的客户端对象。
+1. 修改客户端身份验证代码。 在以前的版本中，你将使用客户端对象上的属性设置 API 密钥 (例如，) 的 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 属性。 在当前版本中，使用 [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) 类作为凭据传递密钥，以便在需要时可以更新 API 密钥，而无需创建新的客户端对象。
 
-   已简化了客户端属性 `Endpoint` ， `ServiceName` 并 `IndexName` (适当的) 。 下面的示例使用系统 [Uri](https://docs.microsoft.com/dotnet/api/system.uri) 类提供要读入密钥值的终结点和 [环境](https://docs.microsoft.com//dotnet/api/system.environment) 类：
+   已简化了客户端属性 `Endpoint` ， `ServiceName` 并 `IndexName` (适当的) 。 下面的示例使用系统 [Uri](/dotnet/api/system.uri) 类提供要读入密钥值的终结点和 [环境](/dotnet/api/system.environment) 类：
 
    ```csharp
    Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
@@ -167,11 +167,11 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
    SearchIndexClient indexClient = new SearchIndexClient(endpoint, credential);
    ```
 
-1. 为索引器相关对象添加新的客户端引用。 如果使用索引器、数据源或技能集，请将客户端引用更改为 [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此客户端是版本11中的新客户端，没有 antecedent。
+1. 为索引器相关对象添加新的客户端引用。 如果使用索引器、数据源或技能集，请将客户端引用更改为 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此客户端是版本11中的新客户端，没有 antecedent。
 
-1. 更新查询和数据导入的客户端引用。 应将 [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) 的实例更改为 [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)。 若要避免名称混乱，请确保在继续下一步之前捕获所有实例。
+1. 更新查询和数据导入的客户端引用。 应将 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) 的实例更改为 [SearchClient](/dotnet/api/azure.search.documents.searchclient)。 若要避免名称混乱，请确保在继续下一步之前捕获所有实例。
 
-1. 更新索引、索引器、同义词映射和分析器对象的客户端引用。 应将 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) 的实例更改为 [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient)。 
+1. 更新索引、索引器、同义词映射和分析器对象的客户端引用。 应将 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 的实例更改为 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)。 
 
 1. 尽可能多地使用新库的 Api 来更新类、方法和属性。 [命名差异](#naming-differences)部分是一个启动位置，但你也可以查看[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
 
@@ -195,4 +195,4 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
 
 + [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [GitHub 上的示例](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
-+ [Azure.Search.Docargumentable API 参考](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [Azure.Search.Docargumentable API 参考](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)

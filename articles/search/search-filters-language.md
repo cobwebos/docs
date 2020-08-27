@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084188"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923103"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中按语言筛选 
 
@@ -37,11 +37,11 @@ ms.locfileid: "87084188"
   ![显示房地产示例的 "字段" 屏幕的屏幕截图。 突出显示一组字段，指出语言分析器分配与突出显示的字段的语言对应的方式。](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> 有关通过语言分析器显示字段定义的代码示例，请参阅[定义索引 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) 和[定义索引 (REST)](search-create-index-rest-api.md)。
+> 有关通过语言分析器显示字段定义的代码示例，请参阅[定义索引 (.NET)](./search-get-started-dotnet.md) 和[定义索引 (REST)](./search-get-started-powershell.md)。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 
-编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
+编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](./search-get-started-dotnet.md)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
 
 ## <a name="constrain-the-query-and-trim-results"></a>约束查询和修剪结果
 
@@ -63,7 +63,6 @@ parameters =
 ## <a name="see-also"></a>另请参阅
 
 + [Azure 认知搜索中的筛选器](search-filters.md)
-+ [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [语言分析器](/rest/api/searchservice/language-support)
 + [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
-+ [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-
++ [搜索文档 REST API](/rest/api/searchservice/search-documents)
