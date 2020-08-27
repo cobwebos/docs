@@ -3,12 +3,12 @@ title: 规划应用 - LUIS
 description: 概述相关应用意向和实体，然后在语言理解智能服务 (LUIS) 中创建应用程序计划。
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892909"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>使用主题域和数据提取规划 LUIS 应用架构
 
@@ -36,7 +36,7 @@ LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票�
 
 ## <a name="create-example-utterances-for-each-intent"></a>为每个意向创建示例陈述
 
-首先，避免为每个意向创建太多言语。 确定了意向后，为每个意向创建 15 到 30 个示例言语。 每个言语应不同于前面提供的言语。 最谈话中的一个很好的优点包括字数统计、字词选择、动词时态和[标点](luis-reference-application-settings.md#punctuation-normalization)。
+首先，避免为每个意向创建太多言语。 确定了意向后，为每个意向创建 15 到 30 个示例言语。 每个言语应不同于前面提供的言语。 最谈话中的一个很好的优点包括字数统计、字词选择、动词时态和 [标点](luis-reference-application-settings.md#punctuation-normalization)。
 
 有关详细信息，请参阅[了解适用于 LUIS 应用的言语](luis-concept-utterance.md)。
 
@@ -47,13 +47,13 @@ LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票�
 确定要在应用中使用哪些实体后，请记住，有不同类型的实体可用于捕获对象类型间的关系。 [LUIS 中的实体](luis-concept-entity-types.md)提供有关不同类型的详细信息。
 
 > [!TIP]
-> LUIS 为常见的对话用户方案提供[预先构建的实体](luis-prebuilt-entities.md)。 考虑从使用预生成的实体着手，方便应用程序开发。
+> LUIS 为常见的对话用户方案提供 [预先构建的实体](luis-prebuilt-entities.md) 。 考虑从使用预生成的实体着手，方便应用程序开发。
 
 ## <a name="resolution-with-intent-or-entity"></a>用意向或实体解决？
 
 在许多情况下，尤其是在使用自然对话时，用户提供的查询文本可以包含多个函数或意向。 为了解决这种情况，一般的经验法则是了解输出的表示形式可以在意向和实体中完成。 此表示形式应该可映射到客户端应用程序操作，并且无需限制为方法。
 
-**Ent 是一**种概念，即操作（通常理解为意向）也可以作为实体来捕获，并在输出 JSON 中依赖于此形式，你可以将其映射到特定的操作。 "_求反_" 是一种常见的用法，可以利用这种依赖关系和实体来实现完全提取。
+**Ent 是一** 种概念，即 (通常理解为意向的操作) 也可以作为实体来捕获，并在输出 JSON 中依赖此窗体，然后可以将其映射到特定的操作。 "_求反_" 是一种常见的用法，可以利用这种依赖关系和实体来实现完全提取。
 
 请考虑以下两个最谈话，它们非常接近 word 选项，但具有不同的结果：
 
@@ -64,7 +64,7 @@ LUIS 应用以主题域为中心。 例如，可能有一个用于预订门票�
 
 使用机器学习实体创建单一意图，而不是使用两个不同的方法 `FlightAction` 。 机器学习实体应提取计划和取消请求以及源或目标位置的操作的详细信息。
 
-`FlightAction`实体将在机器学习实体和子实体的以下 suedo 架构中进行构造：
+`FlightAction`实体将在机器学习实体和子实体的以下伪架构中进行构造：
 
 * FlightAction
     * 操作

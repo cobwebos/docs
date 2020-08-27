@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383624"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936412"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -37,7 +37,7 @@ ms.locfileid: "87383624"
 
 - 主权云或混合云环境
 
-    用户可以将数据发送到定义的[Azure 政府区域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
+    用户可以将数据发送到定义的 [Azure 政府区域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
     使用连接字符串可以定义 Intranet 服务器或混合云设置的终结点设置。 
 
 ## <a name="getting-started"></a>入门
@@ -150,7 +150,7 @@ ms.locfileid: "87383624"
 以下 SDK 版本支持连接字符串：
 - .NET 和 .NET Core v2.12.0
 - Java v2.5.1 和 Java 3.0
-- JavaScript v 2.3。0
+- JavaScript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
 
@@ -221,7 +221,7 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[JavaScript](#tab/js)
 
-重要提示： JavaScript 不支持使用环境变量。
+重要说明：JavaScript 不支持使用环境变量。
 
 使用代码片段：
 

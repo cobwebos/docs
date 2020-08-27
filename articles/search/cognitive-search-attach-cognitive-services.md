@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564436"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924971"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 认知搜索中的技能组 
 
@@ -27,7 +27,7 @@ Azure 认知搜索依赖于认知服务，这包括用于图像分析和光学�
 
 ## <a name="how-billing-works"></a>计费原理
 
-+ Azure 认知搜索使用你在技能组上提供的认知服务资源密钥为图像和文本扩充计费。 计费技能的执行是[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。
++ Azure 认知搜索使用你在技能组上提供的认知服务资源密钥为图像和文本扩充计费。 计费技能的执行是 [认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
 + 图像提取是在扩充之前在破解文档时发生的一项 Azure 认知搜索操作。 图像提取是可计费的。 有关图像提取定价，请参阅 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)。
 
@@ -170,5 +170,5 @@ Content-Type: application/json
 ## <a name="next-steps"></a>后续步骤
 + [Azure 认知搜索定价页面](https://azure.microsoft.com/pricing/details/search/)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [创建技能组合 (REST)](/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

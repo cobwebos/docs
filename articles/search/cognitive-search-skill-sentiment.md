@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503211"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935273"
 ---
 # <a name="sentiment-cognitive-skill"></a>情绪认知技能
 
- 情绪技能可沿着一个积极-消极连续统评估非结构化文本，对于每个记录，会返回一个介于 0 和 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+情绪技能可沿着一个积极-消极连续统评估非结构化文本，对于每个记录，会返回一个介于 0 和 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -29,7 +29,7 @@ ms.locfileid: "86503211"
 Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为 5000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 5000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 
 ## <a name="skill-parameters"></a>技能参数
@@ -38,14 +38,14 @@ Microsoft.Skills.Text.SentimentSkill
 
 | 参数名称 | 说明 |
 |----------------|----------------------|
-| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md) |
 
 ## <a name="skill-inputs"></a>技能输入 
 
 | 输入名称 | 说明 |
 |--------------------|-------------|
 | `text` | 要分析的文本。|
-| `languageCode`    |  （可选）表示记录的语言的字符串。 如果未指定此属性，则默认值为“en”。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md)。|
+| `languageCode`    |  （可选）表示记录的语言的字符串。 如果未指定此属性，则默认值为“en”。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)。|
 
 ## <a name="skill-outputs"></a>技能输出
 
@@ -110,7 +110,7 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>备注
+## <a name="notes"></a>注释
 如果为空，则不为这些记录返回情绪分数。
 
 ## <a name="error-cases"></a>错误案例

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146181"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934916"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
 本文介绍如何获取返回的查询响应，其中包含匹配文档的总数、已分页的结果、已排序的结果和突出显示的字词。
 
-响应的结构由查询中的参数决定：REST API 中的[搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)，或 .NET SDK 中的 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
+响应的结构由查询中的参数决定：REST API 中的[搜索文档](/rest/api/searchservice/Search-Documents)，或 .NET SDK 中的 [DocumentSearchResult 类](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
 ## <a name="result-composition"></a>结果的构成
 
@@ -98,7 +98,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ## <a name="hit-highlighting"></a>突出显示
 
-命中项突出显示是指对结果中的匹配字词应用文本格式设置（例如粗体或黄色突出显示），以便轻松找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中词突出显示说明。 
+命中项突出显示是指对结果中的匹配字词应用文本格式设置（例如粗体或黄色突出显示），以便轻松找到匹配项。 [查询请求](/rest/api/searchservice/search-documents)上提供了命中词突出显示说明。 
 
 若要启用“命中词突出显示”，请添加 `highlight=[comma-delimited list of string fields]` 以指定将要使用突出显示的字段。 突出显示适合用于较长的内容字段（如“说明”字段），因为在这些字段中，匹配内容不是立即就能看到。 只有定义被特性化为“可搜索”的字段才适用“命中词突出显示”****。
 
@@ -142,4 +142,4 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 + 门户中的[应用程序生成器](search-create-app-portal.md)可以创建带有搜索栏、分面导航和包含图像的结果区域的 HTML 页面。
 + [使用 C# 创建你的第一个应用](tutorial-csharp-create-first-app.md)教程介绍了如何构建正常运行的客户端。 示例代码演示了分页查询、命中项突出显示和排序。
 
-几个代码示例包含一个 web 前端接口，可在此处找到：纽约的 "[城市作业" 演示应用](https://aka.ms/azjobsdemo)、[使用实时演示网站的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+几个代码示例包含一个 web 前端接口，可在此处找到：纽约的 " [城市作业" 演示应用](https://aka.ms/azjobsdemo)、 [使用实时演示网站的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。

@@ -4,12 +4,12 @@ description: 本文介绍有关 Azure 备份监视警报和 Azure 备份报告�
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 2112a439585e6b111614e728dbc4a1a5eb4ee3d2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827165"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892552"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "88827165"
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>配置 LA 工作区后，报告中是否会显示我的所有数据？
 
- 在你配置诊断设置后生成的所有数据都会推送到 LA 工作区，并会显示在报告中。 不会为报表推送正在进行的作业。 作业完成或失败后，会将其发送到报告。
+ 在你配置诊断设置后生成的所有数据都会推送到 LA 工作区，并会显示在报告中。 不会为报表推送正在进行的作业。 作业完成或失败后，会将其发送到报表。
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报表？
 

@@ -1,7 +1,7 @@
 ---
-title: 使用 .NET 内容审查器审核作业
+title: 通过 .NET 使用审核作业 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 使用内容审查器 .NET SDK 来启动 Azure 内容审查器中图像或文本内容的端到端内容审核作业。
+description: 使用内容审查器 .NET SDK，可以在 Azure 内容审查器中对图像或文本内容启动端到端内容审核作业。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,25 +10,26 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76294331"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936310"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业（.NET）
+# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业 (.NET)
 
-裁决作业作为内容审核、工作流和评论功能的一种包装。 本指南提供了信息和代码示例，帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ：
+审核作业充当内容审核、工作流和审阅功能的一种包装器。 本指南中的信息和代码示例可帮助你开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)来执行下列操作：
 
 - 启动审核工作以扫描和创建人工审查器评审
 - 获取待处理的评审状态
 - 跟踪和获取评审的最终状态
-- 将评审结果提交给回调 URL
+- 将审阅结果提交至回调 URL
 
 ## <a name="prerequisites"></a>先决条件
 
-- 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
+- 在内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点上登录或创建帐户。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
 
@@ -80,7 +81,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 将**add-azureendpoint**和**CMSubscriptionKey**字段更新为你的终结点 URL 和订阅密钥的值。
+> 使用终结点 URL 和订阅密钥的值更新“AzureEndpoint”**** 和“CMSubscriptionKey”**** 字段。
 
 ```csharp
 /// <summary>
@@ -127,7 +128,7 @@ public static class Clients
 > 将 TeamName 常数设置为创建内容审查器订阅时使用的名称。 从内容审查器网站检索 TeamName。
 > 登录后，从“设置”****（齿轮）菜单中选择“凭据”****。
 >
-> 你的团队名称是 " **API** " 部分中 " **Id** " 字段的值。
+> 团队名称是“API”**** 部分中的“ID”**** 字段值。
 
 ```csharp
 /// <summary>

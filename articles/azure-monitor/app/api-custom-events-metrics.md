@@ -3,13 +3,13 @@ title: 用于处理自定义事件和指标的 Application Insights API | Micros
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 430ec96006ed8f564ea5bbd0a28beca858ebe1ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366866"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936565"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -59,7 +59,7 @@ ms.locfileid: "87366866"
 
 对于 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) 应用和[用于 .NET/.NET Core 的非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议从依赖关系注入容器获取 `TelemetryClient` 的实例，如各自的相关文档中所述。
 
-如果使用 AzureFunctions v2 + 或 Azure WebJobs v3 +-请遵循以下文档：https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+如果使用 AzureFunctions v2 + 或 Azure WebJobs v3 +-请遵循以下文档： https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -692,7 +692,7 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 在[指标资源管理器](../platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
 
-还可以[搜索](./diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
+还可以 [搜索](./diagnostic-search.md) 具有特定用户名和帐户的客户端数据点。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
 
@@ -825,7 +825,7 @@ requests
 * 从 customDimensions 或 customMeasurements JSON 中提取值的时候，会有动态类型，所以必须将其转换为 `tostring` 或 `todouble`。
 * 考虑到[采样](./sampling.md)的可能性，需要使用 `sum(itemCount)` 而非 `count()`。
 
-## <a name="timing-events"></a><a name="timed"></a>计时事件
+## <a name="timing-events"></a><a name="timed"></a> 计时事件
 
 有时，需要绘制图表来呈现执行某个操作花费了多少时间。 例如，你可能想要知道用户在游戏中考虑如何选择时花费了多少时间。 为此，可以使用度量参数。
 
@@ -883,7 +883,7 @@ gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-*Visual Basic*
+Visual Basic
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
@@ -1001,7 +1001,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>设置所选自定义遥测的检测密钥
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> 设置所选自定义遥测的检测密钥
 
 *C#*
 

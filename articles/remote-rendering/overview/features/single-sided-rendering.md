@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 1a9f80166e47b17644b37d4bc9b93e1abefe3432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aff636adff48a8882c152eab398a96a8d28f84e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022754"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892739"
 ---
-# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided":::着色
+# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: 着色
 
 大多数呈现器使用[背面剔除](https://en.wikipedia.org/wiki/Back-face_culling)来提高性能。 但是，在使用[剪切平面](cut-planes.md)来切开网格时，用户常常将查看三角形的背面。 如果这些三角形被剔除，那么结果看起来没有说服力。
 
@@ -27,7 +27,7 @@ ms.locfileid: "84022754"
 
 :::no-loc text="single-sided":::呈现设置仅对已使用设置为的选项进行[转换](../../how-tos/conversion/configure-model-conversion.md)的网格有效 `opaqueMaterialDefaultSidedness` `SingleSided` 。 此选项默认设置为 `DoubleSided`。
 
-## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided":::呈现设置
+## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided"::: 呈现设置
 
 有 3 种不同的模式：
 
@@ -55,13 +55,13 @@ void ChangeSingleSidedRendering(AzureSession session)
 ```cpp
 void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
 {
-    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+    ApiHandle<SingleSidedSettings> settings = session->Actions()->GetSingleSidedSettings();
 
     // Single-sided geometry is rendered as is
-    settings->Mode(SingleSidedMode::Normal);
+    settings->SetMode(SingleSidedMode::Normal);
 
     // Single-sided geometry is always rendered double-sided
-    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
+    settings->SetMode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

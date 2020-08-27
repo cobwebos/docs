@@ -8,19 +8,19 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2e35ba083e376f519ccbc32c71c1ac9b1e03a41
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080743"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935290"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>PII 检测认知技能
 
 > [!IMPORTANT] 
 > 此技能目前为公共预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持门户或 .NET SDK。
 
-**PII 检测**技能可以从输入文本中提取个人身份信息，并可让你通过多种方式在该文本中屏蔽此类信息。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+**PII 检测**技能可以从输入文本中提取个人身份信息，并可让你通过多种方式在该文本中屏蔽此类信息。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -32,7 +32,7 @@ ms.locfileid: "85080743"
 Microsoft.Skills.Text.PIIDetectionSkill
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到技能之前需要将其拆分，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到技能之前需要将其拆分，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -48,7 +48,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 描述                   |
+| 输入名称      | 说明                   |
 |---------------|-------------------------------|
 | `languageCode`    | 可选。 默认值为 `en`。  |
 | `text`          | 要分析的文本。          |
@@ -57,7 +57,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| `piiEntities` | 复杂类型的数组，包含以下字段： <ul><li>text（提取的实际 PII）</li> <li>type</li><li>subType</li><li>score（值越高意味着它越有可能是一个真实的实体）</li><li>offset（输入文本中）</li><li>length</li></ul> </br> [可在此处找到可能的类型和子类型。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `piiEntities` | 复杂类型的数组，包含以下字段： <ul><li>text（提取的实际 PII）</li> <li>type</li><li>subType</li><li>score（值越高意味着它越有可能是一个真实的实体）</li><li>offset（输入文本中）</li><li>length</li></ul> </br> [可在此处找到可能的类型和子类型。](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal) |
 | `maskedText` | 如果 `maskingMode` 设置为 `none` 以外的值，则此输出将是对由所选 `maskingMode` 描述的输入文本执行屏蔽后的字符串结果。  如果 `maskingMode` 设置为 `none`，则不会提供此输出。 |
 
 ##    <a name="sample-definition"></a>示例定义
@@ -127,7 +127,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 }
 ```
 
-请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。  [可在此处找到更多详细信息。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](../cognitive-services/text-analytics/overview.md) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。  [可在此处找到更多详细信息。](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-and-warning-cases"></a>错误和警告案例
 如果文档的语言代码不受支持，则会返回警告，并且不提取任何实体。

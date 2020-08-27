@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 5ac1248ddcdf8c0eef68b7c32e322398fa01a6f2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 97d1c14a61e98f98e45e25668841cee1ad9ce0d1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260583"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705463"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入门：创建 Azure 防火墙和 IP 组 - ARM 模板
 
@@ -35,7 +35,7 @@ ms.locfileid: "86260583"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 

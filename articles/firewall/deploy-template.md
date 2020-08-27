@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260622"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705123"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>快速入门：部署具有可用性区域的 Azure 防火墙 - ARM 模板
 
@@ -43,7 +43,7 @@ ms.locfileid: "86260622"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 

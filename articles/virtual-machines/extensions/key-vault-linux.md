@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6702ab3753604af50e21f931dd23f63de3c1451
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522285"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936191"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -83,16 +83,16 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForLinux | string |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
+| type | KeyVaultForLinux | 字符串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
+| pollingIntervalInS | 3600 | 字符串 |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
-| msiEndpoint | http://169.254.169.254/metadata/identity | string |
+| msiEndpoint | http://169.254.169.254/metadata/identity | 字符串 |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
 
@@ -130,6 +130,8 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
+> [!WARNING]
+> PowerShell 客户端通常将添加 `\` 到 `"` settings.js中，这会导致 akvvm_service 失败并出现错误： `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 可以使用 Azure PowerShell，将 Key Vault VM 扩展部署到现有虚拟机或虚拟机规模集。 
 

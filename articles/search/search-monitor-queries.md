@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552532"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935069"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的查询请求
 
@@ -100,7 +100,7 @@ ms.locfileid: "85552532"
 
 为了让用户快速查看当前数字，服务“概述”页上的“监视”选项卡会显示三个按固定间隔以小时、天和周度量的指标（“搜索延迟”、“每秒搜索查询数(每搜索单位)”和“受限制的搜索查询百分比”），并提供用于更改聚合类型的选项。**** **** **** ****
 
-若要进行更深入的浏览，请从“监视”菜单中打开指标资源管理器，以便可以分层、放大和可视化数据，从而浏览趋势或异常情况。**** 在这篇[有关创建指标图表的教程](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)中详细了解指标资源管理器。
+若要进行更深入的浏览，请从“监视”菜单中打开指标资源管理器，以便可以分层、放大和可视化数据，从而浏览趋势或异常情况。**** 在这篇[有关创建指标图表的教程](../azure-monitor/learn/tutorial-metrics-explorer.md)中详细了解指标资源管理器。
 
 1. 在“监视”部分下，选择“指标”打开指标资源管理器，其中的数据范围是根据搜索服务设置的。****
 

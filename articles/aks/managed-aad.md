@@ -3,14 +3,14 @@ title: 在 Azure Kubernetes 服务中使用 Azure AD
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure AD
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661055"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936990"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-托管 Azure Active Directory 集成
 
@@ -37,17 +37,19 @@ AKS 托管 Azure Active Directory 集成在 [支持 AKS](https://azure.microsoft
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure CLI 版本2.9.0 或更高版本
-* 版本不低于 [1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) 的 Kubectl
+* Azure CLI 版本2.11.0 或更高版本
+* Kubectl，最低版本为 [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) 或 [kubelogin](https://github.com/Azure/kubelogin)
+* 如果使用的是 [helm](https://github.com/helm/helm)，则 helm 3.3 的最低版本。
 
 > [!Important]
-> 必须使用版本不低于 1.18 的 Kubectl
+> 必须使用最低版本为1.18.1 或 kubelogin 的 Kubectl。 如果不使用正确的版本，你会注意到身份验证问题。
 
-若要安装 kubectl，请使用以下命令：
+若要安装 kubectl 和 kubelogin，请使用以下命令：
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 对于其他操作系统，请遵循[这些说明](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。

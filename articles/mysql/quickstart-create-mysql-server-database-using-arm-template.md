@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: ed908c4711812302fffac2e1ce59d2196426b74c
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 47c203eaea0c3fc2a39267ed78eb603c4836cd2b
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185853"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660275"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
 
@@ -48,7 +48,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/)。
 
-:::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
+:::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json":::
 
 该模板定义了五个 Azure 资源：
 

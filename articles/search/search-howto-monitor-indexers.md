@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf7ae504e57d0b7947f4ff7dc48d50b2e0141eea
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529737"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936633"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何监视 Azure 认知搜索索引器的状态和结果
 
@@ -80,7 +80,7 @@ Azure 认知搜索提供有关每个索引器的当前和历史运行的状态�
 
 ## <a name="monitor-using-rest-apis"></a>使用 REST API 进行监视
 
-可以使用[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
+可以使用[“获取索引器状态”命令](/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -125,7 +125,7 @@ api-key: [Search service admin key]
 
 重置索引器以刷新其更改跟踪状态时，将添加一个“重置”状态的独立执行历史记录条目。 
 
-有关状态代码和索引器监视数据的详细信息，请参阅 [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
+有关状态代码和索引器监视数据的详细信息，请参阅 [GetIndexerStatus](/rest/api/searchservice/get-indexer-status)。
 
 <a name="dotnetsdk"></a>
 
@@ -184,8 +184,8 @@ Latest run
 
 重置索引器以刷新其更改跟踪状态时，将添加一个“重置”状态的独立历史记录条目。 
 
-有关状态代码和索引器监视信息的详细信息，请参阅 REST API 中的 [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
+有关状态代码和索引器监视信息的详细信息，请参阅 REST API 中的 [GetIndexerStatus](/rest/api/searchservice/get-indexer-status)。
 
 可以通过枚举 `IndexerExecutionResult.Errors` 和 `IndexerExecutionResult.Warnings` 列表来检索有关文档特定的错误或警告的详细信息。
 
-有关用于监视索引器的 .NET SDK 类的详细信息，请参阅 [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) 和 [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)。
+有关用于监视索引器的 .NET SDK 类的详细信息，请参阅 [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) 和 [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)。

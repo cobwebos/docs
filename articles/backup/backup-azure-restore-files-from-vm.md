@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827131"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892569"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -285,7 +285,7 @@ mount [RAID Disk Path] [/mountpath]
 | openSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
-> 我们在装有 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时发现一些问题，我们正在与 SLES 团队一起进行调查。
+> 我们发现，在使用 SLES 12 SP4 操作系统的计算机上运行文件恢复脚本时，我们发现了一些问题，我们正在使用 SLES 团队进行调查。
 > 目前，可在使用 SLES 12 SP2 和 SP3 OS 版本的计算机上正常运行文件恢复脚本。
 >
 

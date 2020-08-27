@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1e19fd41b4d98cb401582cd86232d8ada25733
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76838252"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935511"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何处理和提取 AI 扩充方案中的图像中的信息
 
@@ -42,7 +42,7 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 
 将规范化图像的最大宽度和高度默认设置为 2000 像素是考虑到 [OCR 技术](cognitive-search-skill-ocr.md)所能够支持的最大大小以及[图像分析技术](cognitive-search-skill-image-analysis.md)。 [OCR 技能](cognitive-search-skill-ocr.md)支持非英语语言的最大宽度和高度为 4200，支持英语语言的最大宽度和高度为 10000。  如果增加最大限制，则根据技能组定义和文档语言，对较大的图像进行处理可能会失败。 
 
-可以指定[索引器定义](https://docs.microsoft.com/rest/api/searchservice/create-indexer)中所述的 imageAction，如下所示：
+可以指定[索引器定义](/rest/api/searchservice/create-indexer)中所述的 imageAction，如下所示：
 
 ```json
 {
@@ -214,7 +214,7 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 ```
 
 ## <a name="see-also"></a>另请参阅
-+ [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [创建索引器 (REST)](/rest/api/searchservice/create-indexer)
 + [图像分析技能](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
 + [文本合并技术](cognitive-search-skill-textmerger.md)
