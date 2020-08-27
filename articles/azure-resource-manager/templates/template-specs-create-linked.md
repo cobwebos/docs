@@ -2,13 +2,13 @@
 title: 使用链接模板创建模板规范
 description: 了解如何创建具有链接模板的模板规范。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/27/2020
+ms.openlocfilehash: a70d4be2810b8d5a19fa9d806444cac1674e1a05
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936361"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959215"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教程：使用链接模板创建模板规范 (预览) 
 
@@ -245,7 +245,7 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> 获取模板规范 id 时出现一个已知问题，然后将其分配给 Windows PowerShell 中的变量。
+> 获取模板规范 ID 并将其分配到 Windows PowerShell 中的变量时存在一个已知问题。
 
 ---
 

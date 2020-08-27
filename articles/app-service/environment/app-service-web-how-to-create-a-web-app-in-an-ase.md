@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080603"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962513"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
 > [!NOTE]
-> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从[应用服务环境简介](intro.md)开始。
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从 [应用服务环境简介](intro.md)开始。
 > 
 
 ## <a name="overview"></a>概述
@@ -40,10 +40,10 @@ ms.locfileid: "88080603"
     如果有多个订阅，请注意，若要在应用服务环境中创建应用，需要使用创建环境时所用的订阅来创建应用。 
 3. 选择或创建资源组。
    
-    *资源组*可让你将相关的 azure 资源作为一个单元进行管理，在建立*azure 基于角色的访问控制 (* 适用于你的应用的 azure RBAC) 规则时非常有用。 有关详细信息，请参阅 [Azure Resource Manager 概述][ResourceGroups]。 
+    *资源组* 可让你将相关的 azure 资源作为一个单元进行管理，在建立 *azure 基于角色的访问控制 (* 适用于你的应用的 azure RBAC) 规则时非常有用。 有关详细信息，请参阅 [Azure Resource Manager 概述][ResourceGroups]。 
 4. 选择或创建应用服务计划。
    
-    应用服务计划** 是一组托管的 Web 应用。  选择定价时，支付的价格通常适用于应用服务计划而不是单个应用。 在 ASE 中，为分配给 ASE 的计算实例而不是向 ASP 列出的内容付费。  要增加 Web 应用的实例数，增加应用服务计划的实例数即可，此操作将影响该计划中的所有 Web 应用。  某些功能（如站点槽位或虚拟网络集成）在计划内也有数量限制。  有关详细信息，请参阅[Azure App Service 计划概述](../overview-hosting-plans.md)
+    应用服务计划** 是一组托管的 Web 应用。  选择定价时，支付的价格通常适用于应用服务计划而不是单个应用。 在 ASE 中，为分配给 ASE 的计算实例而不是向 ASP 列出的内容付费。  要增加 Web 应用的实例数，增加应用服务计划的实例数即可，此操作将影响该计划中的所有 Web 应用。  某些功能（如站点槽位或虚拟网络集成）在计划内也有数量限制。  有关详细信息，请参阅 [Azure App Service 计划概述](../overview-hosting-plans.md)
    
     可以通过查看计划名称下注释的位置，来识别 ASE 中的应用服务计划。  
    
@@ -57,7 +57,7 @@ ms.locfileid: "88080603"
     如果 ASE 使用内部 VIP，则该 ASE 中应用的 URL 为：[站点名称**].[在 ASE 创建过程中指定的子域**]   
     在 ASE 创建过程中选择 ASP 后，可在“名称”**** 下看到子域更新
 
-## <a name="create-an-app-service-plan"></a><a name="createplan"></a>创建应用服务计划
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> 创建应用服务计划
 在应用服务环境中创建应用服务计划时，由于 ASE 中没有共享的辅助角色，因此辅助角色的选择会有所不同。  必须使用的辅助角色是管理员分配给 ASE 的辅助角色。 这意味着，若要创建新计划，你需要将更多的工作线程分配给 ASE 辅助角色池，而不是该辅助池中所有计划的实例总数。  如果 ASE 辅助角色池中没有足够的辅助角色来创建计划，则需要与 ASE 管理员合作来添加辅助角色。
 
 而应用服务环境托管的应用服务计划还有另一项差异，那就是缺少定价选项。  如果拥有应用服务环境，是在为系统所用的计算资源付费，且该环境中的计划不产生附加的费用。  一般说来，创建应用服务计划时即选择了决定计费的定价计划。  应用服务环境本质上是一个可以在其中创建内容的专用位置。  只为环境付费而不为托管内容付费。
@@ -105,4 +105,4 @@ ms.locfileid: "88080603"
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: /powershell/azure/?view=azps-3.8.0

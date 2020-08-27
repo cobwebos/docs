@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9ef246079fc95b79a2dc7a3d33eba79da70c55a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4db7c6bf29d0874b5441a8a0eb90f7d1ada33d9c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050373"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962428"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
@@ -43,7 +43,7 @@ az appservice list-locations --sku P1V2
 
 选择“生产”  ，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”  。
 
-![显示应用的建议定价层的屏幕截图。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![屏幕截图，显示应用的建议定价层。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > 如果未看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，或者这些选项灰显，则 **PremiumV2** 可能在包含应用服务计划的基础应用服务部署中不可用。 有关更多详细信息，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
@@ -58,15 +58,15 @@ az appservice list-locations --sku P1V2
 
 在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。****
 
-![显示如何纵向扩展应用服务计划的屏幕截图。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![屏幕截图，显示如何纵向扩展应用服务计划。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 选择“生产”****，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”****。
 
-![显示应用的建议定价层的屏幕截图。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![屏幕截图，显示应用的建议定价层。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 如果操作成功完成，则应用的概述页会显示它目前处于 **PremiumV2** 层中。
 
-![在应用的 "概述" 页上显示 "PremiumV2" 定价层的屏幕截图。](media/app-service-configure-premium-tier/finished.png)
+![屏幕截图，显示应用的概览页上的 PremiumV2 定价层。](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>如果遇到错误
 
@@ -81,7 +81,7 @@ az appservice list-locations --sku P1V2
 - 创建**新**资源组，然后在**新**资源组中创建**新**应用和应用服务计划，并在创建过程中选择所需的 Azure 区域。  创建新应用服务计划时，**必须**选择 **PremiumV2** 计划。  这可以确保资源组、应用服务计划和 Azure 区域的组合可让你在支持 **PremiumV2** 的应用服务部署中创建应用服务计划。  然后，将应用程序代码重新部署到新建的应用和应用服务计划。 以后可以根据需要，将应用服务计划从 **PremiumV2** 纵向缩减以节省成本，同时仍可使用 **PremiumV2** 成功纵向扩展。
 - 如果应用已在现有的**高级**层中运行，则可将应用以及所有应用设置、连接字符串和部署配置克隆到使用 **PremiumV2** 的新应用服务计划。
 
-    ![显示如何克隆应用程序的屏幕截图。](media/app-service-configure-premium-tier/clone-app.png)
+    ![屏幕截图，显示如何克隆应用。](media/app-service-configure-premium-tier/clone-app.png)
 
     在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。****
 
@@ -116,4 +116,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>更多资源
 
 [ Azure 中纵向扩展应用](manage-scale-up.md)  
-[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)
+[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md)

@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961884"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
-本文介绍有关在 Azure App Service (上运行的[Windows Node.js 应用程序](quickstart-nodejs.md?pivots=platform-windows)的最佳做法和故障排除步骤[，) 。](https://github.com/azure/iisnode)
+本文介绍 Azure 应用服务上运行的 [Windows Node.js 应用程序](quickstart-nodejs.md?pivots=platform-windows)的最佳做法和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
 
 > [!WARNING]
 > 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，问题修复后，请交换过渡槽与生产槽。
@@ -205,7 +205,7 @@ http.createServer(function (req, res) {
 
 ![显示 profile.cpuprofile 文件的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 "**配置文件**" 选项卡。选择 "**加载**" 按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
+请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 中按 F12，并选择“配置文件”选项卡。单击“加载”按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
 
 ![显示已加载的 profile.cpuprofile 文件的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
@@ -274,8 +274,8 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
 * [Azure 应用服务中的 Node.js Web 应用入门](quickstart-nodejs.md)
-* [如何在 Azure 应用服务中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [如何在 Azure 应用服务中调试 Node.js Web 应用](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
-* [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure 应用服务 Web 应用：Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)
 * [Kudu 调试控制台探秘](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e1fa2fe11873d08fae5add1ee3206f6f887975eb
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960911"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。
@@ -122,7 +122,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
  - Ubuntu、Debian：`apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-Python2 可执行文件必须使用以下过程化名为*python* ：
+Python2 可执行文件必须使用以下过程化名为 *python* ：
 
 1. 运行以下命令以查看任何当前的 python 别名（如果存在）。 如果是这样，请记下下一步的优先级。
  
@@ -213,9 +213,6 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 对于 Linux 代理，代理服务器在安装过程中指定，或者[在安装后](agent-manage.md#update-proxy-settings)通过修改 proxy.conf 配置文件来指定。  Linux 代理的代理配置值具有以下语法：
 
 `[protocol://][user:password@]proxyhost[:port]`
-
-> [!NOTE]
-> 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
 |properties| 说明 |
 |--------|-------------|

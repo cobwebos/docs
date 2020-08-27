@@ -5,26 +5,26 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610235"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962870"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>使用流量管理器集成在 Azure 应用服务中配置自定义域名
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name.md)。
+> 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
-使用[Azure 流量管理器](/azure/traffic-manager/)将流量负载平衡到[Azure App Service](overview.md)时，可以使用** \<traffic-manager-endpoint> trafficmanager.net**访问应用服务应用。 还可以将自定义域名（例如 www\.contoso.com）与应用服务应用相关联，为用户提供更易识别的域名。
+使用[Azure 流量管理器](../traffic-manager/index.yml)将流量负载平衡到[Azure App Service](overview.md)时，可以使用** \<traffic-manager-endpoint> trafficmanager.net**访问应用服务应用。 还可以将自定义域名（例如 www\.contoso.com）与应用服务应用相关联，为用户提供更易识别的域名。
 
 本文介绍如何使用与[流量管理器](../traffic-manager/traffic-manager-overview.md)集成的应用服务应用配置自定义域名。
 
 > [!NOTE]
-> 使用流量管理器终结点配置域名时仅支持[CNAME](https://en.wikipedia.org/wiki/CNAME_record)记录。 由于不支持 A 记录，因此也不支持根域映射，例如 contoso.com。
+> 使用流量管理器终结点配置域名时仅支持 [CNAME](https://en.wikipedia.org/wiki/CNAME_record) 记录。 由于不支持 A 记录，因此也不支持根域映射，例如 contoso.com。
 > 
 
 ## <a name="prepare-the-app"></a>准备应用
@@ -55,21 +55,21 @@ ms.locfileid: "82610235"
 
 ## <a name="create-traffic-manager-endpoint"></a>创建流量管理器终结点
 
-按[添加或删除终结点](../traffic-manager/traffic-manager-endpoints.md)中的步骤操作，在流量管理器配置文件中将应用服务应用添加为终结点。
+按[添加或删除终结点](../traffic-manager/traffic-manager-manage-endpoints.md)中的步骤操作，在流量管理器配置文件中将应用服务应用添加为终结点。
 
 如果应用服务应用已处于受支持的定价层，则当你添加终结点时，它会显示在可用应用服务目标列表中。 如果应用未列出，请[验证应用的定价层](#prepare-the-app)。
 
 ## <a name="create-the-cname-mapping"></a>创建 CNAME 映射
 > [!NOTE]
-> 若要配置已[购买的应用服务域](manage-custom-dns-buy-domain.md)，请跳过此部分并转到 "[启用自](#enable-custom-domain)定义域"。
+> 若要配置已 [购买的应用服务域](manage-custom-dns-buy-domain.md)，请跳过此部分并转到 " [启用自](#enable-custom-domain)定义域"。
 > 
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-虽然每个域提供程序的具体内容各不相同，但你可以将[非根自定义域名](#what-about-root-domains)（例如**www.contoso.com** *）映射**到*与你的应用集成的流量管理器域名（**contoso.trafficmanager.net**）。 
+虽然每个域提供程序的具体内容各不相同，但你可以将[非根自定义域名](#what-about-root-domains) (如**www.contoso.com** *) 映射**到*与你的应用集成 (**contoso.trafficmanager.net**) 的流量管理器域名。 
 
 > [!NOTE]
-> 如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建其他 CNAME 记录。 例如，若要提前将**www \. contoso.com**绑定到你的应用，请创建从**AWVERIFY**到**contoso.trafficmanager.net**的 CNAME 记录。 然后，可以将 "www \. contoso.com" 添加到应用程序，而无需更改 "www" CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
+> 如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建其他 CNAME 记录。 例如，若要提前将 **www \. contoso.com** 绑定到你的应用，请创建从 **AWVERIFY** 到 **contoso.trafficmanager.net**的 CNAME 记录。 然后，可以将 "www \. contoso.com" 添加到应用程序，而无需更改 "www" CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
 
 在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
 

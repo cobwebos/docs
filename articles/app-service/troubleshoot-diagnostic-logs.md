@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207536"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962173"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -46,12 +46,12 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 对“应用程序日志记录(文件系统)”和/或“应用程序日志记录(Blob)”选择“打开”。   
 
-“文件系统”选项用于临时调试，在 12 小时后会自行关闭。 “Blob”选项用于长期日志记录，需要提供一个要将日志写入到的 Blob 存储容器。  “Blob”选项还会在日志消息中包含其他信息，例如日志消息的来源 VM 实例 ID (`InstanceId`)、线程 ID (`Tid`) 和更详细的时间戳 ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks))。
+“文件系统”选项用于临时调试，在 12 小时后会自行关闭。 “Blob”选项用于长期日志记录，需要提供一个要将日志写入到的 Blob 存储容器。  “Blob”选项还会在日志消息中包含其他信息，例如日志消息的来源 VM 实例 ID (`InstanceId`)、线程 ID (`Tid`) 和更详细的时间戳 ([`EventTickCount`](/dotnet/api/system.datetime.ticks))。
 
 > [!NOTE]
 > 目前，只有 .NET 应用程序日志可以写入到 blob 存储。 Java、PHP、Node.js、Python 应用程序日志只能存储在应用服务文件系统上（无需修改代码即可将日志写入外部存储）。
 >
-> 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 为此，请按以下步骤操作：
+> 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-account-create.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 为此，请按以下步骤操作：
 >
 > 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
@@ -74,9 +74,9 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 若要在 [Azure 门户](https://portal.azure.com)中启用适用于 Linux 应用或自定义容器应用的应用程序日志记录，请导航到应用并选择 " **应用服务日志**"。
 
-在 " **应用程序日志记录**" 中，选择 " **文件系统**"。
+在“应用程序日志记录”中，选择“文件系统”。
 
-在 " **配额 (MB) **中，指定应用程序日志的磁盘配额。 在“保留期(天)”中，设置日志要保留的天数。
+在“配额(MB)”中，为应用程序日志指定磁盘配额。 在“保留期(天)”中，设置日志要保留的天数。
 
 完成后，选择“保存”。
 
@@ -89,7 +89,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 在“保留期(天)”中，设置日志要保留的天数。
 
 > [!NOTE]
-> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
+> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-account-create.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
 >
 > 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
@@ -116,7 +116,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- 默认情况下，ASP.NET Core 使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 日志记录提供程序。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging/)。
+- 默认情况下，ASP.NET Core 使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 日志记录提供程序。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/)。
 
 ## <a name="stream-logs"></a>流式传输日志
 
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>在本地终端中
 
-若要在本地控制台中流式传输日志，请[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并[登录帐户](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 登录后，请按照 [Cloud Shell 的说明进行操作](#in-cloud-shell)
+若要在本地控制台中流式传输日志，请[安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录帐户](/cli/azure/authenticate-azure-cli)。 登录后，请按照 [Cloud Shell 的说明进行操作](#in-cloud-shell)
 
 ## <a name="access-log-files"></a>访问日志文件
 
@@ -162,7 +162,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 - Linux/容器应用： `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
 - Windows 应用：`https://<app-name>.scm.azurewebsites.net/api/dump`
 
-对于 Linux/容器应用，ZIP 文件包含 docker 主机和 docker 容器的控制台输出日志。 对于向外扩展的应用程序，ZIP 文件包含每个实例的一组日志。 在应用服务文件系统中，这些日志文件是 */home/LogFiles* 目录的内容。
+对于 Linux/容器应用，ZIP 文件包含 docker 主机和 docker 容器的控制台输出日志。 对于横向扩展的应用，ZIP 文件包含每个实例的一组日志。 在应用服务文件系统中，这些日志文件是“/home/LogFiles”目录的内容。
 
 对于 Windows 应用，该 ZIP 文件包含应用服务文件系统中 *D:\Home\LogFiles* 目录的内容。 其结构如下：
 
@@ -192,7 +192,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceEnvironmentPlatformLogs | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | TBD | 通过 FTP 和 Kudu 进行的文件更改 |
-| AppServiceAppLogs | TBA | Java SE & Tomcat | 应用程序日志 |
+| AppServiceAppLogs | TBA | Java SE 和 Tomcat | 应用程序日志 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 来自 IP 规则的请求 |
 | AppServicePlatformLogs  | TBA | 是 | 容器日志 |
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280913"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962530"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -118,7 +118,7 @@ ASE 在以下端口上与可通过 Internet 访问的地址通信：
 
 使用 ILB ASE 时，无法从 VNet 外部访问 SCM 站点。 某些功能无法从应用门户运行，因为它们需要访问应用的 SCM 站点。 可以直接连接到 SCM 站点，而不使用门户。 
 
-如果 ILB ASE 是域名*contoso.appserviceenvironment.net* ，而你的应用名称为*testapp*，则会在*testapp.contoso.appserviceenvironment.net*上访问应用。 在*testapp.scm.contoso.appserviceenvironment.net*上访问了与之配合的 SCM 站点。
+如果 ILB ASE 是域名 *contoso.appserviceenvironment.net* ，而你的应用名称为 *testapp*，则会在 *testapp.contoso.appserviceenvironment.net*上访问应用。 在 *testapp.scm.contoso.appserviceenvironment.net*上访问了与之配合的 SCM 站点。
 
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 
@@ -138,7 +138,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ### <a name="app-assigned-ip-addresses"></a>应用分配的 IP 地址 ###
 
-使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要详细了解如何将应用配置为具有其自己的 IP 地址，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](../configure-ssl-bindings.md)。
+使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要详细了解如何将应用配置为具有自己的 IP 地址，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](../configure-ssl-bindings.md)。
 
 当应用使用其自身的基于 IP 的 SSL 地址时，ASE 将保留两个映射到该 IP 地址的端口。 它们分别用于 HTTP 流量和 HTTPS 流量。 这些端口列在 ASE UI 上的“ IP 地址”部分中。 流量必须能够从 VIP 抵达这些端口，否则无法访问应用。 配置网络安全组 (NSG) 时，请务必牢记此要求。
 
@@ -153,23 +153,23 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 要使 ASE 正常运行，必须在 NSG 中添加允许流量的条目：
 
 **入站**
-* 端口454455上的 IP 服务标记 AppServiceManagement 中的 TCP
-* 端口16001上的负载均衡器中的 TCP
+* 来自端口 454、455 上 IP 服务标记 AppServiceManagement 的 TCP 流量
+* 来自端口 16001 上负载均衡器的 TCP 流量
 * 在所有端口上允许不同 ASE 子网之间发送的流量
 
 **Outbound**
-* UDP 到端口53上的所有 Ip
-* UDP 到端口123上的所有 Ip
-* TCP 到端口80、443上的所有 Ip
-* TCP 到 IP 服务标记 AzureSQL 上的端口1433
-* TCP 到端口12000上的所有 Ip
+* 发往端口 53 上所有 IP 的 UDP 流量
+* 发往端口 123 上所有 IP 的 UDP 流量
+* 发往端口 80、443 上所有 IP 的 TCP 流量
+* 发往端口 1433 上 IP 服务标记 AzureSQL 的 TCP 流量
+* 发往端口 12000 上所有 IP 的 TCP 流量
 * 在所有端口上允许发往 ASE 子网的流量
 
-这些端口不包括成功使用应用所需的端口。 例如，你的应用可能需要在端口3306上调用 MySQL 服务器。 端口123上的网络时间协议（NTP）是操作系统使用的时间同步协议。 NTP 终结点并不特定于应用服务，可能因操作系统而异，并且不是定义完善的地址列表。 若要防止时间同步问题，则需要允许 UDP 流量发送到端口123上的所有地址。 发往端口12000流量的出站 TCP 适用于系统支持和分析。 终结点是动态的，并且不是定义完善的地址集。
+这些端口不包括成功使用应用所需的端口。 例如，应用可能需要在端口 3306 上调用 MySQL 服务器。 端口 123 上的网络时间协议 (NTP) 是操作系统使用的时间同步协议。 NTP 终结点不特定于应用服务，可因操作系统而异，并且不是定义完善的地址列表。 若要防止时间同步问题，则需要允许 UDP 流量发送到端口 123 上的所有地址。 端口 12000 的出站 TCP 流量用于系统支持和分析。 终结点是动态的，并且不是一组定义完善的地址。
 
 常规应用访问端口为：
 
-| 用途 | 端口 |
+| 使用 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -182,7 +182,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 默认规则允许 VNet 中的 IP 与 ASE 子网对话。 另一条默认规则允许负载均衡器（亦称为公共 VIP）与 ASE 通信。 选择“添加”图标旁边的“默认规则”即可查看此规则。******** 如果在默认规则的前面放置一条拒绝其他任何流量的规则，则会阻止 VIP 与 ASE 之间的流量。 要阻止来自 Vnet 内部的流量，请自行添加规则以允许入站。 使用等效于 AzureLoadBalancer 的源，其目标为“任何”，端口范围为 \*。******** 由于 ASE 子网将应用 NSG 规则，因此无需指定具体的目标。
 
-若向应用分配了 IP 地址，请确保端口保持打开。 若要查看端口，请选择 "**应用服务环境**  >  **IP 地址**"。  
+若向应用分配了 IP 地址，请确保端口保持打开。 可在“应用服务环境” > “IP 地址”中查看端口。   
 
 下列出站规则中显示的所有项均是必需项，最后一项除外。 使用这些端口可以通过网络访问本文前面所述的 ASE 依赖项。 阻止其中的任意一个，ASE 都将停止工作。 列表中的最后一项可让 ASE 与 VNet 中的其他资源通信。
 
@@ -192,16 +192,16 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ## <a name="routes"></a>路由 ##
 
-强制隧道是指，在 VNet 中设置路由时，使出站流量不直接前往 Internet，而是前往诸如 ExpressRoute 网关或虚拟设备的其他位置。  如果需要以这种方式配置 ASE，请阅读有关[使用强制隧道配置应用服务环境][forcedtunnel]的文档。  该文档将介绍可用于 ExpressRoute 和强制隧道的选项。
+强制隧道是指，在 VNet 中设置路由时，使出站流量不直接前往 Internet，而是前往诸如 ExpressRoute 网关或虚拟设备的其他位置。  如果需要以这样的方式配置 ASE，请阅读有关[为应用服务环境配置强制隧道][forcedtunnel]的文档。  该文档将介绍可用于 ExpressRoute 和强制隧道的选项。
 
 在门户中创建 ASE 时，我们还在随 ASE 创建的子网上创建一组路由表。  这些路由只是指示将出站流量直接发送到 Internet。  
 若要手动创建同样的路由，请执行以下步骤：
 
-1. 转到 Azure 门户。 选择 "**网络**  >  **路由表**"。
+1. 转到 Azure 门户。 选择“网络” > “路由表”。 
 
 2. 在 Vnet 所在的位置新建一个路由表。
 
-3. 在路由表 UI 中选择 "**路由**" "  >  **添加**"。
+3. 在路由表 UI 中选择“路由” > “添加”。 
 
 4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存” 。
 
@@ -244,14 +244,14 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ASEManagement]: ./management-addresses.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [forcedtunnel]: ./forced-tunnel-support.md

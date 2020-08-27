@@ -1,23 +1,23 @@
 ---
-title: 排查性能降低问题
-description: 了解如何解决 Azure 应用服务中的应用性能低的问题，包括监视应用行为、收集数据和缓解该问题。
+title: 对性能降低进行故障排除
+description: 了解如何解决 Azure 应用服务中的应用性能缓慢问题，包括监视应用行为、收集数据和缓解问题。
 tags: top-support-issue
 keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170760"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958246"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
+如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 
 ## <a name="symptom"></a>症状
 浏览应用时，页面加载缓慢，并且有时还会超时。
@@ -43,10 +43,10 @@ ms.locfileid: "84170760"
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
-每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
+每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../service-health/service-notifications.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
+此选项可让你找出应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
 
 可能需要在应用中监视的一些指标包括
 
@@ -54,21 +54,21 @@ ms.locfileid: "84170760"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* Requests
+* 请求
 
 ![监视应用性能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 有关详细信息，请参阅：
 
 * [监视 Azure 应用服务中的应用](web-sites-monitor.md)
-* [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [接收警报通知](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>监视 Web 终结点状态
 如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。
 
 终结点监视可从测试 Web URL 的响应时间和运行时间的分布式地理位置配置 Web 测试。 该测试可对 Web URL 执行 HTTP GET 操作，以从每个位置确定响应时间和运行时间。 每个已配置位置每 5 分钟运行一次测试。
 
-将使用 HTTP 响应代码监视运行时间，并且以毫秒为单位计算响应时间。 如果 HTTP 响应代码大于或等于 400 或响应时间超过 30 秒，则监视测试失败。 如果从所有指定的位置监视测试均成功，则终结点被视为可用。
+使用 HTTP 响应代码监视运行时间，并且以毫秒为单位计算响应时间。 如果 HTTP 响应代码大于或等于 400 或响应时间超过 30 秒，则监视测试失败。 如果从所有指定的位置监视测试均成功，则终结点被视为可用。
 
 有关详细信息，请参阅[在 Azure 应用服务中监视应用](web-sites-monitor.md)
 
@@ -137,7 +137,7 @@ Kudu 提供的一些信息和功能包括：
 
 Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可以使用 Kudu 和 SysInternals 工具 Procdump 创建内存转储。 这些内存转储是进程的快照，通常可帮助排查较复杂的应用问题。
 
-有关 Kudu 提供的功能的详细信息，请参阅[应该了解的 Azure DevOps 工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
+有关 Kudu 提供的功能的详细信息，请参阅[你应该了解的 Azure DevOps 工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
 <a name="mitigate"></a>
 
@@ -152,13 +152,13 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使应用程序并非 .NET 应用，这些设置的工作方式也仍然相同。
+AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间），回收应用程序的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使应用程序并非 .NET 应用，这些设置的工作方式也仍然相同。
 
-有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
+有关详细信息，请参阅 [自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
 #### <a name="restart-the-app"></a>重启应用
 重启通常是在发生一次性问题后进行恢复的最简单方式。 [Azure 门户](https://portal.azure.com/)上的应用边栏选项卡中提供了用于停止或重启应用的选项。
 
  ![重启应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)。

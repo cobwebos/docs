@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874191"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962496"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
 应用服务环境 (ASE) 需要访问许多的外部依赖项才能正常运行。 ASE 驻留在客户的 Azure 虚拟网络 (VNet) 中。 客户必须允许 ASE 依赖项流量，对于想要锁定从 VNet 传出的所有流量的客户而言，这是一个问题。
 
-有许多用于管理 ASE 的入站终结点。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.microsoft.com/azure/app-service/environment/management-addresses)文档中发布。 还有一个名为 AppServiceManagement 的服务标记，可以与网络安全组 (NSG) 一起使用来保护入站流量。
+有许多用于管理 ASE 的入站终结点。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](./management-addresses.md)文档中发布。 还有一个名为 AppServiceManagement 的服务标记，可以与网络安全组 (NSG) 一起使用来保护入站流量。
 
 ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
 
@@ -55,13 +55,13 @@ ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。
 
    ![选择服务终结点][2]
   
-1. 在 ASE 所在的 VNet 中创建名为 AzureFirewallSubnet 的子网。 遵循 [Azure 防火墙文档](https://docs.microsoft.com/azure/firewall/)中的指导创建 Azure 防火墙。
+1. 在 ASE 所在的 VNet 中创建名为 AzureFirewallSubnet 的子网。 遵循 [Azure 防火墙文档](../../firewall/index.yml)中的指导创建 Azure 防火墙。
 
 1. 在 Azure 防火墙 UI >“规则”>“应用程序规则集合”中，选择“添加应用程序规则集合”。 提供名称、优先级，并设置“允许”。 在“FQDN 标记”部分提供名称，将源地址设置为 *，然后选择“应用服务环境 FQDN 标记”和“Windows 更新”。 
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在 "IP 地址" 下的 "规则" 部分中，提供一个名称，选择 "**任何**"、"将 * 设置为源" 和 "目标地址" 的协议，然后将端口设置为123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分的“IP 地址”下，提供一个名称，选择“任何”作为协议，将源和目标地址设置为 *，并将端口设置为 123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
 
    ![添加 NTP 网络规则][3]
    
@@ -69,7 +69,7 @@ ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。
 
    ![添加 NTP 服务标记网络规则][6]
    
-1. 使用[应用服务环境管理地址]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。 将虚拟设备路由添加到 0.0.0.0/0 的路由表，并将 Azure 防火墙专用 IP 地址用作下一跃点。 
+1. 使用[应用服务环境管理地址]( ./management-addresses.md)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。 将虚拟设备路由添加到 0.0.0.0/0 的路由表，并将 Azure 防火墙专用 IP 地址用作下一跃点。 
 
    ![创建路由表][4]
    
@@ -77,7 +77,7 @@ ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。
 
 #### <a name="deploying-your-ase-behind-a-firewall"></a>在防火墙后部署 ASE
 
-在防火墙后部署 ASE 的步骤与使用 Azure 防火墙配置现有 ASE 的步骤相同，不过，需要创建 ASE 子网，然后遵循上述步骤。 若要在现有的子网中创建 ASE，需要根据[使用资源管理器模板创建 ASE](https://docs.microsoft.com/azure/app-service/environment/create-from-template) 文档中所述使用资源管理器模板。
+在防火墙后部署 ASE 的步骤与使用 Azure 防火墙配置现有 ASE 的步骤相同，不过，需要创建 ASE 子网，然后遵循上述步骤。 若要在现有的子网中创建 ASE，需要根据[使用资源管理器模板创建 ASE](./create-from-template.md) 文档中所述使用资源管理器模板。
 
 ## <a name="application-traffic"></a>应用程序流量 
 
@@ -88,7 +88,7 @@ ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。
 
 如果应用程序有依赖项，则需要将这些依赖项添加到 Azure 防火墙。 创建允许 HTTP/HTTPS 流量的应用程序规则，并针对其他方面的控制创建网络规则。 
 
-如果你知道应用程序请求流量将来自哪个地址范围，则可将该范围添加到要分配给 ASE 子网的路由表。 如果地址范围很大或未指定，则你可以使用应用程序网关等网络设备来提供一个要添加到路由表的地址。 有关在 ILB ASE 中配置应用程序网关的详细信息，请阅读[将 ILB ASE 与应用程序网关集成](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+如果你知道应用程序请求流量将来自哪个地址范围，则可将该范围添加到要分配给 ASE 子网的路由表。 如果地址范围很大或未指定，则你可以使用应用程序网关等网络设备来提供一个要添加到路由表的地址。 有关在 ILB ASE 中配置应用程序网关的详细信息，请阅读[将 ILB ASE 与应用程序网关集成](./integrate-with-application-gateway.md)
 
 使用应用程序网关只是系统配置方法的一个例子。 如果遵循此路径，则需要将路由添加到 ASE 子网路由表，以便发送到应用程序网关的回复流量直接通过该路由传送。 
 
@@ -100,7 +100,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)详细了解 Azure Monitor 日志。
+首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](../../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志。
  
 ## <a name="dependencies"></a>依赖项
 
@@ -114,7 +114,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -122,7 +122,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 端点 | 详细信息 |
+| 终结点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
@@ -139,7 +139,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
 |graph.microsoft.com:443 |
 |login.live.com:443 |
@@ -225,7 +225,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
 |gr-Prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
@@ -251,7 +251,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |oryx-cdn.microsoft.io:443 |
 | \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
-|\*。 data.mcr.microsoft.com:443 |
+|\*.data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
 |apt-mo.trafficmanager.net:80 |
@@ -269,7 +269,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 ## <a name="us-gov-dependencies"></a>US Gov 依赖项
 
-对于 US Gov 区域的 ASE，请按照本文档中[在 ASE 中配置 Azure 防火墙](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)部分的说明为 ASE 配置 Azure 防火墙。
+对于 US Gov 区域的 ASE，请按照本文档中[在 ASE 中配置 Azure 防火墙](#configuring-azure-firewall-with-your-ase)部分的说明为 ASE 配置 Azure 防火墙。
 
 如果要在 US Gov 中使用 Azure 防火墙以外的设备 
 

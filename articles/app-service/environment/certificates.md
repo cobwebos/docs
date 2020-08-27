@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831873"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962037"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
-应用服务环境 (ASE) 是在 Azure 虚拟网络 (VNet) 中运行的 Azure 应用服务的部署。 可以使用能够通过 Internet 访问的应用程序终结点或者 VNet 中的应用程序终结点来部署 ASE。 如果使用可通过 Internet 访问的终结点部署 ASE，则该部署称为外部 ASE。 如果使用 VNet 中的终结点部署 ASE，则该部署称为 ILB ASE。 可以在[创建和使用 ILB ASE](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) 文档中详细了解 ILB ASE。
+应用服务环境 (ASE) 是在 Azure 虚拟网络 (VNet) 中运行的 Azure 应用服务的部署。 可以使用能够通过 Internet 访问的应用程序终结点或者 VNet 中的应用程序终结点来部署 ASE。 如果使用可通过 Internet 访问的终结点部署 ASE，则该部署称为外部 ASE。 如果使用 VNet 中的终结点部署 ASE，则该部署称为 ILB ASE。 可以在[创建和使用 ILB ASE](./create-ilb-ase.md) 文档中详细了解 ILB ASE。
 
 ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使用的功能不能在多租户应用服务中使用。 
 
@@ -61,7 +61,7 @@ Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $passw
 - 基于 IP 的 SSL，仅在外部 ASE 中受支持。  ILB ASE 不支持基于 IP 的 SSL。
 - KeyVault 托管的证书 
 
-有关上载和管理这些证书的说明，请访问在[Azure App Service 中添加 TLS/SSL 证书](../configure-ssl-certificate.md)。  如果只需将证书配置为与分配到 Web 应用的自定义域名相匹配，则遵照这些说明操作即可。 若要上传使用默认域名的 ILB ASE Web 应用的证书，则需要根据前文所述，在证书的 SAN 中指定 scm 站点。 
+[在 Azure 应用服务中添加 TLS/SSL 证书](../configure-ssl-certificate.md)中提供了有关上传和管理这些证书的说明。  如果只需将证书配置为与分配到 Web 应用的自定义域名相匹配，则遵照这些说明操作即可。 若要上传使用默认域名的 ILB ASE Web 应用的证书，则需要根据前文所述，在证书的 SAN 中指定 scm 站点。 
 
 ## <a name="tls-settings"></a>TLS 设置 
 
