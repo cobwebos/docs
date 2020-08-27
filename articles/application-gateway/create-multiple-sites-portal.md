@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236181"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723990"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -78,7 +78,7 @@ ms.locfileid: "88236181"
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定”     。 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="创建 VNet":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="创建另一个 VNet":::
 
 3. 在完成时选择“下一步:**后端**。
 
@@ -156,14 +156,14 @@ ms.locfileid: "88236181"
 
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
     - **虚拟机名称**：输入“contosoVM”  作为虚拟机的名称。
-    - **用户名**：输入 *azureuser* 作为管理员用户名。
-    - **密码**：输入 *Azure123456!* 作为管理员密码。
-4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
-5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
-6. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
-7. 在“管理”  选项卡上，将“启动诊断”  设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
-8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
-9. 等待虚拟机创建完成，然后再继续操作。
+    - **用户名**：为管理员用户名输入一个名称。
+    - 密码：输入管理员的密码。
+1. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
+2. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
+3. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
+4. 在“管理”  选项卡上，将“启动诊断”  设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
+5. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
+6. 等待虚拟机创建完成，然后再继续操作。
 
 ### <a name="install-iis-for-testing"></a>安装 IIS 进行测试
 
@@ -173,7 +173,7 @@ ms.locfileid: "88236181"
 
     ![安装自定义扩展](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. 运行以下命令以在虚拟机上安装 IIS： 
+2. 运行以下命令以在虚拟机上安装 IIS，并将 <location\> 替换为自己的资源组区域： 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -184,7 +184,7 @@ ms.locfileid: "88236181"
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
       -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
+      -Location <location>
     ```
 
 3. 使用以前完成的步骤创建第二个虚拟机并安装 IIS。 使用“fabrikamVM”  作为虚拟机名称和 **Set-AzVMExtension** cmdlet 的 **VMName** 设置。

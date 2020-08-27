@@ -10,19 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027624"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918819"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
 
 本文介绍如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。 若要建立与自定义命令应用程序的连接，需要：
 
-- 发布自定义命令应用程序并获取应用程序标识符（应用程序 ID）
-- 使用语音 SDK 创建通用 Windows 平台（UWP）客户端应用程序，以便与自定义命令应用程序对话
+- 发布自定义命令应用程序，并获取应用程序标识符 (应用 ID) 
+- 使用 Speech SDK 创建一个通用 Windows 平台 (UWP) 客户端应用程序，以允许你与自定义命令应用程序通信
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,17 +33,17 @@ ms.locfileid: "86027624"
 
 还需要：
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)或更高版本。 本指南基于 Visual Studio 2019。
-> * 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南基于 Visual Studio 2019。
+> * 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md) 或创建一个 [Azure 门户](https://portal.azure.com)
 > * [启用设备进行开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
 
 1. 打开以前创建的自定义命令应用程序
 1. 单击 "**设置**"，选择 " **LUIS 资源**"
-1. 如果未分配**预测资源**，请选择查询预测密钥或创建一个新的预测密钥
+1. 如果未分配 **预测资源** ，请选择查询预测密钥或创建一个新的预测密钥
 
-    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅[创建 LUIS 资源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅 [创建 LUIS 资源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
 
 1. 返回到编辑命令，选择 "**发布**"
 
@@ -64,7 +65,7 @@ ms.locfileid: "86027624"
 
 通过添加 XAML 代码创建应用程序的用户界面。
 
-1. 在**解决方案资源管理器**中，打开`MainPage.xaml`
+1. 在 **解决方案资源管理器**中，打开 `MainPage.xaml`
 
 1. 在设计器的 XAML 视图中，将整个内容替换为以下代码片段：
 
@@ -128,7 +129,7 @@ ms.locfileid: "86027624"
 
 按如下所示添加代码隐藏源：
 
-1. 在**解决方案资源管理器**中，打开代码隐藏源文件 `MainPage.xaml.cs` （在下分组 `MainPage.xaml` ）
+1. 在**解决方案资源管理器**中，打开代码隐藏源文件 `MainPage.xaml.cs` (在) 下进行分组 `MainPage.xaml`
 
 1. 将文件的内容替换为以下代码： 
 
@@ -300,9 +301,9 @@ ms.locfileid: "86027624"
     > 如果看到错误： "类型" 对象 "在未被引用的程序集中定义
     > 1. 向右客户端解决方案。
     > 1. 选择 "**管理解决方案的 NuGet 包**"，选择 "**更新**" 
-    > 1. 如果在更新列表中看到**NETCore** ，请将**NETCore**更新到最新版本
+    > 1. 如果在更新列表中看到 **NETCore** ，请将 **NETCore** 更新到最新版本
 
-1. 将以下代码添加到的方法体中：`InitializeDialogServiceConnector`
+1. 将以下代码添加到的方法体中： `InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -319,7 +320,7 @@ ms.locfileid: "86027624"
 
 1. 将字符串 `YourApplicationId` 、 `YourSpeechSubscriptionKey` 和替换 `YourServiceRegion` 为你自己的应用、语音订阅和[区域](regions.md)的值
 
-1. 将以下代码片段追加到的方法体末尾`InitializeDialogServiceConnector`
+1. 将以下代码片段追加到的方法体末尾 `InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -403,7 +404,7 @@ ms.locfileid: "86027624"
 
 1. 从菜单栏中，选择 "**文件**" "  >  **全部保存**" 以保存所做的更改
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
 1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 编译代码时应不会出错。
 
@@ -415,9 +416,9 @@ ms.locfileid: "86027624"
 
    ![麦克风访问权限请求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. 选择 "**对话**"，并将英文短语或句子说入设备的麦克风。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
+1. 选择 " **对话**"，并将英文短语或句子说入设备的麦克风。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [操作说明：将活动发送到客户端应用程序（预览版）](./how-to-custom-commands-send-activity-to-client.md)
+> [操作说明：将活动发送到客户端应用程序 (预览) ](./how-to-custom-commands-send-activity-to-client.md)

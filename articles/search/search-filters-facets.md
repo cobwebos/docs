@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084205"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923120"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中生成分面筛选器 
 
@@ -38,7 +38,7 @@ ms.locfileid: "87084205"
 
 通过将 `facetable` 属性设置为 `true`，便可在创建索引时逐字段启用分面。 通常，对于此类字段，还应该将 `filterable` 属性设置为 `true`，使搜索应用程序能够根据最终用户选择的分面，基于这些字段进行筛选。 
 
-使用 REST API 创建索引时，可能会在分面导航中使用的任何[字段类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)默认将被标记为 `facetable`：
+使用 REST API 创建索引时，可能会在分面导航中使用的任何[字段类型](/rest/api/searchservice/supported-data-types)默认将被标记为 `facetable`：
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
@@ -77,11 +77,11 @@ ms.locfileid: "87084205"
 ```
 
 > [!Note]
-> 此索引定义复制自[使用 REST API 创建 Azure 认知搜索索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
+> 此索引定义复制自[使用 REST API 创建 Azure 认知搜索索引](./search-get-started-powershell.md)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 
-编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
+编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](./search-get-started-dotnet.md#1---create-an-index)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
 
 ## <a name="add-facet-filters-to-a-query"></a>将分面筛选器添加到查询
 
@@ -124,5 +124,5 @@ if (!String.IsNullOrEmpty(categoryFacet))
 ## <a name="see-also"></a>另请参阅
 
 + [Azure 认知搜索中的筛选器](search-filters.md)
-+ [创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [创建索引 REST API](/rest/api/searchservice/create-index)
++ [搜索文档 REST API](/rest/api/searchservice/search-documents)
