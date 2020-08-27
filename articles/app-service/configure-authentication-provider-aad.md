@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: cdbce7c11bc3184b624fa00f3ac33db7ad8730d8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077420"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962139"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -85,25 +85,25 @@ ms.locfileid: "88077420"
    > [!NOTE]
    > 此值是应用注册的应用 ID URI。 如果 Web 应用需要访问云中的 API，则在配置云应用服务资源时，需要提供该 Web 应用的“应用程序 ID URI”。 例如，如果你希望云服务显式向该 Web 应用授予访问权限，则可以使用此 URI。
 
-1. 选择“添加范围”。 
+1. 选择“添加范围”。
    1. 在“范围名称”中输入 *user_impersonation*。
    1. 在文本框中，输入许可范围名称，以及希望在许可页上向用户显示的说明。 例如，输入“访问我的应用”。
-   1. 选择“添加作用域”。
+   1. 选择“添加范围”。
 1. （可选）若要创建客户端机密，请选择“证书和机密” > “新建客户端机密” > “添加”。   复制页面中显示的客户端机密值。 它不会再次显示。
 1. （可选）若要添加多个回复 URL，请选择“身份验证”。
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>在应用服务应用中启用 Azure Active Directory
 
-1. 在 [Azure 门户]中搜索并选择“应用服务”，然后选择应用。
+1. 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。
 1. 在左窗格中的“设置”下，选择“身份验证/授权” > “启用”。  
 1. （可选）默认情况下，应用服务身份验证允许未经身份验证的用户访问你的应用。 若要强制执行用户身份验证，请将“请求未经验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。
-1. 在“验证提供程序”下，选择“Azure Active Directory” 。
+1. 在“身份验证提供程序”下，选择“Azure Active Directory”。
 1. 在“管理模式”中，选择“高级”，然后根据下表来配置应用服务身份验证：
 
     |字段|说明|
     |-|-|
     |客户端 ID| 使用应用注册的应用（客户端）ID。 |
-    |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，将替换为 *\<authentication-endpoint>* 你的[云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如，"" （ https://login.microsoft.com 适用于全局 Azure) ），同时将替换 *\<tenant-id>* 为在其中创建了应用注册的**目录 (租户) ID** 。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 和 Azure Functions 应用的应用程序，请 `/v2.0` 在 URL 中省略。|
+    |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，将替换为 *\<authentication-endpoint>* 你的 [云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如，"" （ https://login.microsoft.com 适用于全局 Azure) ），同时将替换 *\<tenant-id>* 为在其中创建了应用注册的 **目录 (租户) ID** 。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 的应用程序以及对于 Azure Functions 应用，请在 URL 中省略 `/v2.0`。|
     |客户端密码（可选）| 使用在应用注册中生成的客户端机密。|
     |允许的令牌受众| 如果这是云应用或服务器应用，并且你希望允许使用 Web 应用中的身份验证令牌，请在此处添加 Web 应用的应用 ID URI。 系统始终会将配置的“客户端 ID”隐式视为允许的受众。 |
 
@@ -120,7 +120,7 @@ ms.locfileid: "88077420"
 1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
 
     > [!NOTE]
-    > 对于Microsoft Store 应用程序，请改用[包 SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) 作为 URI。
+    > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
 1. 选择“创建”。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  

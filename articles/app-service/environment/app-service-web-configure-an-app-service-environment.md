@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74687260"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962581"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>配置应用服务环境 v1
 
 > [!NOTE]
-> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从[应用服务环境简介](intro.md)开始。
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从 [应用服务环境简介](intro.md)开始。
 > 
 
 ## <a name="overview"></a>概述
@@ -129,7 +129,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”**** 部�
 
 ![“设置”边栏选项卡和“属性”][4]
 
-**设置**  > **Ip 地址**：在 ASE 中创建 ip 安全套接字层（SSL）应用时，需要 IP SSL 地址。 要获取该地址，ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但可以添加更多地址。 额外的 IP SSL 地址需要付费，如[应用服务定价][AppServicePricing]（在有关 SSL 连接的一节中）所述。 额外的价格是 IP SSL 价格。
+**设置**  > **Ip 地址**：在 ASE 中创建 ip 安全套接字层 (SSL) 应用时，需要一个 IP SSL 地址。 要获取该地址，ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但可以添加更多地址。 额外的 IP SSL 地址需要付费，如[应用服务定价][AppServicePricing]（在有关 SSL 连接的一节中）所述。 额外的价格是 IP SSL 价格。
 
 **设置**  > **前端池**  / **辅助池**：其中每个资源池刀片提供仅查看该资源池的信息的功能，以及提供完全缩放该资源池的控件。  
 
@@ -185,7 +185,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”**** 部�
 ![删除应用服务环境 UI][9]  
 
 ## <a name="getting-started"></a>入门
-若要开始使用应用服务环境，请参阅[如何创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。
+若要开始使用应用服务环境，请参阅 [如何创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -206,7 +206,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”**** 部�
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md

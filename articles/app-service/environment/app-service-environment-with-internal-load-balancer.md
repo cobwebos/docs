@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220807"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962547"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
 
@@ -50,7 +50,7 @@ ms.locfileid: "86220807"
 3. 选择或创建资源组。
 4. 选择或创建 VNet。
 5. 创建子网（如果选择 VNet）。
-6. 选择 "**虚拟网络/位置-> VNet 配置**"，并将 "VIP 类型" 设置为 "内部"。
+6. 选择 " **虚拟网络/位置-> VNet 配置** "，并将 "VIP 类型" 设置为 "内部"。
 7. 提供子域名称（此名称是一个子域，用于此 ASE 中创建的应用）。
 8. 选择“确定”，然后选择“创建”。********
 
@@ -140,9 +140,9 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 [WhatisASE]: app-service-app-service-environment-intro.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

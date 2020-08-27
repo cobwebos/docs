@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8545c4f8c0dc86d83e0711147a1bda608c2897f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020160"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962479"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用
 
@@ -18,7 +18,7 @@ ms.locfileid: "84020160"
 
 * [纵向扩展](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：获取更多 CPU、内存、磁盘空间和额外功能，例如专用虚拟机 (VM)、自定义域和证书、过渡槽、自动缩放以及更多功能。 可以通过更改应用所属的应用服务计划的定价层来提升。
 * [横向扩展](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：增加用于运行应用的 VM 实例数。
-  可以根据定价层，最多向外缩放到 30 个实例。 独立层中的[应用服务环境](environment/intro.md)会进一步将横向扩展计数增加到 100 个实例。 有关横向扩展的详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。 可在该文中了解如何使用自动缩放，即根据预定义的规则和计划自动缩放实例计数。
+  可以根据定价层，最多向外缩放到 30 个实例。 独立层中的[应用服务环境](environment/intro.md)会进一步将横向扩展计数增加到 100 个实例。 有关横向扩展的详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md)。 可在该文中了解如何使用自动缩放，即根据预定义的规则和计划自动缩放实例计数。
 
 缩放设置仅需几秒即可应用，并且会影响[应用服务计划](../app-service/overview-hosting-plans.md)中的所有应用。
 缩放设置不需要更改代码或重新部署应用程序。
@@ -77,7 +77,7 @@ ms.locfileid: "84020160"
 
 ## <a name="more-resources"></a>更多资源
 
-[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)  
+[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md)  
 [为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->

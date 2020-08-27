@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668023"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958382"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 TLS/SSL 证书问题
 
@@ -131,7 +131,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 #### <a name="solution"></a>解决方案
 
 - 咨询订阅管理员，确保有权将主机名添加到应用。
-- 如果需要更多子域，我们建议将域托管服务更改为 Azure 域服务 (DNS)。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+- 如果需要更多子域，我们建议将域托管服务更改为 Azure 域服务 (DNS)。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website)。
 
 ### <a name="dns-cant-be-resolved"></a>无法解析 DNS
 
@@ -270,7 +270,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **购买网站的自定义域后是否必须配置该域？**
 
-通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请观看[Azure App Service 自助：在 Channel9 上添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。
+通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请观看 [Azure App Service 自助：在 Channel9 上添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) 。
 
 **是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
 
@@ -310,7 +310,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **是否可将域从一个订阅转移到另一个订阅？**
 
-可以使用 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 将域转移到另一个订阅/资源组。
+可以使用 [Move-AzResource](/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 将域转移到另一个订阅/资源组。
 
 **如果我当前没有 Azure 应用服务应用，该如何管理自定义域？**
 

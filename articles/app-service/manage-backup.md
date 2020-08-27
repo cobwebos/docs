@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075466"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961918"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -42,7 +42,7 @@ ms.locfileid: "87075466"
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
 * 备份和还原功能要求应用服务计划处于标准层、高级层或隔离层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
-* 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+* 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
 * 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果配置备份，备份将失败。
 * 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。
@@ -74,7 +74,7 @@ ms.locfileid: "87075466"
 
 4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”。
 
-5. 在仍处于打开状态的 "**备份配置**" 页上，你可以配置 "**备份数据库**"，然后选择要包含在备份中的数据库（SQL 数据库或 MySQL），然后单击 **"确定"**。
+5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，接着选择要包含在备份中的数据库（SQL 数据库或 MySQL），然后单击“确定”  。
 
     ![选择存储帐户](./media/manage-backup/configure-database.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "87075466"
 ## <a name="how-backups-are-stored"></a>如何存储备份
 对应用进行了一次或多次备份后，可在存储帐户的“容器”页中看到备份以及应用。 在存储帐户中，每个备份都由一个 `.zip` 文件和一个 `.xml` 文件组成，前者包含备份数据，后者包含 `.zip` 文件内容的清单。 如果想要在无需实际执行应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
 
-应用的数据库备份存储在 .zip 文件的根目录中。 对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。 若要基于 BACPAC 导出在 Azure SQL 数据库中创建数据库，请参阅[导入 BACPAC 文件，在 AZURE Sql 数据库中创建数据库](../azure-sql/database/database-import.md)。
+应用的数据库备份存储在 .zip 文件的根目录中。 对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。 若要基于 BACPAC 导出在 Azure SQL 数据库中创建数据库，请参阅[导入 BACPAC 文件以在 Azure SQL 数据库中创建数据库](../azure-sql/database/database-import.md)。
 
 > [!WARNING]
 > 改动 **websitebackups** 容器中的任何文件都导致备份无效，进而无法还原。
@@ -169,4 +169,4 @@ ms.locfileid: "87075466"
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>后续步骤
-有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。 
+有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。

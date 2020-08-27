@@ -2,13 +2,13 @@
 title: 将模板规范部署为链接模板
 description: 了解如何在链接部署中部署现有模板规范。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/27/2020
+ms.openlocfilehash: dd1bb00c1cfd737478a8d5f6ebffdb57e5e1640e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918377"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959198"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程： (预览版将模板规范部署为链接模板) 
 
@@ -130,7 +130,7 @@ id = $(az template-specs show --name $templateSpecName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 获取模板规范 id 时出现一个已知问题，然后将其分配给 Windows PowerShell 中的变量。
+> 获取模板规范 ID 并将其分配到 Windows PowerShell 中的变量时存在一个已知问题。
 
 ---
 

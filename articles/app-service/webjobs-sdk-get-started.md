@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612480"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959046"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -184,7 +184,7 @@ ms.locfileid: "88612480"
 
    `QueueTrigger` 特性告知运行时，在名为 `queue` 的 Azure 存储队列中写入新消息时，应调用此函数。 队列消息的内容将提供给 `message` 参数中的方法代码。 在方法的正文中处理触发器数据。 在此示例中，代码只是记录消息。
 
-   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
+   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -280,7 +280,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    由于在 `ProcessQueueMessage` 函数中使用了 `QueueTrigger` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
 
-   由于[队列轮询指数退让](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
+   由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
 
    控制台输出如下所示：
 
@@ -329,7 +329,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    |名称  |连接字符串  |数据库类型|
    |---------|---------|------|
-   |AzureWebJobsStorage | {前面复制的存储连接字符串}|“自定义”|
+   |AzureWebJobsStorage | {前面复制的存储连接字符串}|自定义|
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
@@ -339,7 +339,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 1. 向项目添加 Application Insights 连接，以便在本地运行。 在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示：
 
@@ -444,7 +444,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 1. 刷新“队列”页后新消息消失，因为它已由 Azure 中运行的函数处理。
 
    > [!TIP]
-   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)导致的延迟。
+   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)导致的延迟。
 
 ### <a name="view-logs-in-application-insights"></a>在 Application Insights 中查看日志
 

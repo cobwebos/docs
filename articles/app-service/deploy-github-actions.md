@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080277"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962564"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
@@ -36,7 +36,7 @@ ms.locfileid: "88080277"
 
 # <a name="user-level-credentials"></a>[用户级凭据](#tab/userlevel)
 
-可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -61,7 +61,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="app-level-credentials"></a>[应用级凭据](#tab/applevel)
 
-你可以使用应用的发布配置文件来使用应用级凭据。 在门户中，切换到应用的 "管理" 页。 在 "**概述**" 页中，单击 "**获取发布配置文件**" 选项。
+你可以使用应用的发布配置文件来使用应用级凭据。 在门户中，切换到应用的 "管理" 页。 在 " **概述** " 页中，单击 " **获取发布配置文件** " 选项。
 
 稍后你将需要该文件的内容。
 
@@ -71,9 +71,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="user-level-credentials"></a>[用户级凭据](#tab/userlevel)
 
-在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
 
-要使用[用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
+要使用 [用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
 
 以后配置工作流文件时，请使用机密来输入 `creds` Azure 登录操作。 例如：
 
@@ -85,9 +85,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="app-level-credentials"></a>[应用级凭据](#tab/applevel)
 
-在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
 
-若要使用[应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 为机密指定名称，如 `azureWebAppPublishProfile` 。
+若要使用 [应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 为机密指定名称，如 `azureWebAppPublishProfile` 。
 
 稍后在配置工作流文件时，请使用 " `publish-profile` 部署 Azure Web 应用" 操作的输入的机密。 例如：
     

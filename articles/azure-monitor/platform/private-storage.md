@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318889"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962666"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
 
@@ -40,7 +40,7 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 
 - 可以访问写入日志进行存储的 VNet 中的资源。
 - 必须与其所链接到的工作区位于同一区域。
-- 允许 Azure Monitor 访问-如果选择限制存储帐户访问选择网络，请确保允许此例外：*允许受信任的 Microsoft 服务访问此存储帐户*。
+- 允许 Azure Monitor 访问-如果选择限制存储帐户访问选择网络，请确保允许此例外： *允许受信任的 Microsoft 服务访问此存储帐户*。
 
 ## <a name="process-to-configure-customer-owned-storage"></a>配置客户所有的存储的过程
 使用自己的存储帐户进行数据引入的基本过程如下所示：
@@ -54,7 +54,7 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 ## <a name="command-line-and-rest-api"></a>命令行和 REST API
 
 ### <a name="command-line"></a>命令行
-若要创建和管理链接存储帐户，请使用[az monitor log analytics 工作区链接存储](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
+若要创建和管理链接存储帐户，请使用 [az monitor log analytics 工作区链接存储](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
 
 ### <a name="request-and-cli-values"></a>请求和 CLI 值
 
@@ -77,6 +77,8 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
 ```
 
+
+## <a name="get-linked-storage-accounts"></a>获取链接的存储帐户
 
 ### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>获取所有数据源类型的链接存储帐户
 
@@ -235,5 +237,5 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关设置专用链接的详细信息，请参阅[使用 Azure 专用链接安全地将网络连接到 Azure Monitor](private-link-security.md)
+- 有关设置专用链接的详细信息，请参阅 [使用 Azure 专用链接安全地将网络连接到 Azure Monitor](private-link-security.md)
 

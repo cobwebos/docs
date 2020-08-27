@@ -10,14 +10,14 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 30d5fa329131cdfd380a84843b3ba202b2e22e39
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 5d94da91428da2270e0f690df4dcd43ae43d8597
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080124"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961646"
 ---
-# <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Java 应用
+# <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
 ::: zone pivot="platform-windows"  
 
@@ -31,8 +31,8 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 
 否则，则部署方法将取决于存档类型：
 
-- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)。
-- 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)。
+- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
+- 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。
 
 不要使用 FTP 来部署 .war 或 .jar。 FTP 工具设计用来上传启动脚本、依赖项或其他运行时文件。 它不是用于部署 Web 应用的最佳选项。
 
@@ -56,7 +56,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 #### <a name="analyze-jfr-files"></a>分析 `.jfr` 文件
 
-使用 [FTPS](deploy-ftp.md) 将 JFR 文件下载到本地计算机。 如果要分析 JFR 文件，请下载并安装 [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/)。 有关 Zulu Mission Control 的说明，请参阅 [Azul 文档](https://docs.azul.com/zmc/)和[安装说明](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
+使用 [FTPS](deploy-ftp.md) 将 JFR 文件下载到本地计算机。 如果要分析 JFR 文件，请下载并安装 [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/)。 有关 Zulu Mission Control 的说明，请参阅 [Azul 文档](https://docs.azul.com/zmc/)和[安装说明](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
 
 ### <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
@@ -68,7 +68,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 可以在 */LogFiles/Application/* 目录中找到 Java 和 Tomcat 应用日志。
 
-如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
+如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](../azure-monitor/app/java-trace-logs.md)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
 
 ## <a name="customization-and-tuning"></a>自定义和优化
@@ -144,7 +144,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="secure-applications"></a>安全应用程序
 
-在应用服务中运行的 Java 应用程序与其他应用程序具有相同的一组[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。
+在应用服务中运行的 Java 应用程序与其他应用程序具有相同的一组 [安全最佳做法](../security/fundamentals/paas-applications-using-app-services.md) 。
 
 ### <a name="authenticate-users-easy-auth"></a>对用户进行身份验证（简易身份验证）
 
@@ -172,7 +172,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-若要注销用户，请使用 `/.auth/ext/logout` 路径。 若要执行其他操作，请参阅介绍[应用服务身份验证和授权的用法](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)的文档。 还可以阅读关于 Tomcat [HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法的官方文档。 以下 Servlet 方法是基于你的应用服务配置解除冻结的：
+若要注销用户，请使用 `/.auth/ext/logout` 路径。 若要执行其他操作，请参阅介绍[应用服务身份验证和授权的用法](./app-service-authentication-how-to.md)的文档。 还可以阅读关于 Tomcat [HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法的官方文档。 以下 Servlet 方法是基于你的应用服务配置解除冻结的：
 
 ```java
 public boolean isSecure()
@@ -186,7 +186,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-按照 Azure App Service 中的 "[保护自定义 DNS 名称](configure-ssl-bindings.md)" 中的说明操作，上传现有的 TLS/SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+按照[在 Azure 应用服务中使用 TLS 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 TLS/SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
 
 ### <a name="use-keyvault-references"></a>使用 Key Vault 引用
 
@@ -235,7 +235,7 @@ public int getServerPort()
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [下载](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [下载](https://dev.mysql.com/downloads/connector/j/)（选择“独立于平台”） |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 若要将 Tomcat 配置为使用 Java Database Connectivity (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 
@@ -321,13 +321,13 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 主版本更新将通过适用于 Windows 的 Azure 应用服务中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
 
-支持的 JDK 将在每年的 1 月、4 月、7 月和 10 月按季度自动修补。 有关 Azure 上的 Java 的详细信息，请参阅[此支持文档](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+支持的 JDK 将在每年的 1 月、4 月、7 月和 10 月按季度自动修补。 有关 Azure 上的 Java 的详细信息，请参阅[此支持文档](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 ### <a name="security-updates"></a>安全更新
 
 重大安全漏洞的修补程序和修复程序将在 Azul Systems 提供后立即发布。 “重大”漏洞是根据 [NIST 常见漏洞评分系统版本 2](https://nvd.nist.gov/vuln-metrics/cvss) 提供的基本评分 9.0 或以上来定义的。
 
-Tomcat 8.0 [已经在 2018 年 9 月 30 日生命周期终止 (EOL)。](https://tomcat.apache.org/tomcat-80-eol.html) 尽管运行时在 Azure App Service 仍可用，但 Azure 不会对 Tomcat 8.0 应用安全更新。 如果可能，请将你的应用程序迁移到 Tomcat 8.5 或 9.0。 Tomcat 8.5 和 9.0 在 Azure 应用服务上都可用。 有关详细信息，请查看 [Tomcat 官方网站](https://tomcat.apache.org/whichversion.html)。 
+Tomcat 8.0 [已经在 2018 年 9 月 30 日生命周期终止 (EOL)。](https://tomcat.apache.org/tomcat-80-eol.html) 尽管该运行时在 Azure 应用服务上仍然可用，但 Azure 不会为 Tomcat 8.0 应用安全更新。 如果可能，请将你的应用程序迁移到 Tomcat 8.5 或 9.0。 Tomcat 8.5 和 9.0 在 Azure 应用服务上都可用。 有关详细信息，请查看 [Tomcat 官方网站](https://tomcat.apache.org/whichversion.html)。 
 
 ### <a name="deprecation-and-retirement"></a>弃用和停用
 
@@ -343,14 +343,14 @@ Tomcat 8.0 [已经在 2018 年 9 月 30 日生命周期终止 (EOL)。](https://
 
 ### <a name="runtime-support"></a>运行时支持
 
-如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 本主题提供了对 Windows 上的 Azure 应用服务的支持的 Java 运行时声明。
 
 - 若要详细了解如何使用 Azure 应用服务托管 Web 应用程序，请参阅[应用服务概述](overview.md)。
-- 有关 Java on Azure 开发的信息，请参阅 [Azure for Java 开发人员中心](https://docs.microsoft.com/java/azure/?view=azure-java-stable)。
+- 有关 Java on Azure 开发的信息，请参阅 [Azure for Java 开发人员中心](/java/azure/?view=azure-java-stable)。
 
 ::: zone-end
 
@@ -366,8 +366,8 @@ Linux 上的 Azure 应用服务使 Java 开发人员能在完全托管的基于 
 
 否则，则部署方法将取决于存档类型：
 
-- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)。
-- 若要部署 Java SE 映像中的 .jar 文件，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)。
+- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
+- 若要部署 Java SE 映像中的 .jar 文件，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。
 
 不要使用 FTP 来部署 .war 或 .jar。 FTP 工具设计用来上传启动脚本、依赖项或其他运行时文件。 它不是用于部署 Web 应用的最佳选项。
 
@@ -390,9 +390,9 @@ Linux 上的 Azure 应用服务使 Java 开发人员能在完全托管的基于 
 通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用日志位于 /home/LogFiles/Application/ 目录中。
 
 >[!NOTE]
->在 12 小时后禁用记录到本地应用服务文件系统这项功能仅适用于基于 Windows 的应用服务。 只能使用 [Azure Monitor（预览版）](/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview)配置适用于基于 Linux 的应用服务的 Azure Blob 存储日志记录功能 
+>在 12 小时后禁用记录到本地应用服务文件系统这项功能仅适用于基于 Windows 的应用服务。 只能使用 [Azure Monitor（预览版）](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)配置适用于基于 Linux 的应用服务的 Azure Blob 存储日志记录功能 
 
-如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
+如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](../azure-monitor/app/java-trace-logs.md)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
 ### <a name="troubleshooting-tools"></a>故障排除工具
 
@@ -439,7 +439,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 ### <a name="analyzing-recordings"></a>分析记录
 
-使用 [FTPS](deploy-ftp.md) 将 JFR 文件下载到本地计算机。 如果要分析 JFR 文件，请下载并安装 [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/)。 有关 Zulu Mission Control 的说明，请参阅 [Azul 文档](https://docs.azul.com/zmc/)和[安装说明](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
+使用 [FTPS](deploy-ftp.md) 将 JFR 文件下载到本地计算机。 如果要分析 JFR 文件，请下载并安装 [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/)。 有关 Zulu Mission Control 的说明，请参阅 [Azul 文档](https://docs.azul.com/zmc/)和[安装说明](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
@@ -520,7 +520,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="secure-applications"></a>安全应用程序
 
-在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。
+在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](../security/fundamentals/paas-applications-using-app-services.md)。
 
 ### <a name="authenticate-users-easy-auth"></a>对用户进行身份验证（简易身份验证）
 
@@ -548,7 +548,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-若要注销用户，请使用 `/.auth/ext/logout` 路径。 若要执行其他操作，请参阅介绍[应用服务身份验证和授权的用法](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)的文档。 还可以阅读关于 Tomcat [HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法的官方文档。 以下 Servlet 方法是基于你的应用服务配置解除冻结的：
+若要注销用户，请使用 `/.auth/ext/logout` 路径。 若要执行其他操作，请参阅介绍[应用服务身份验证和授权的用法](./app-service-authentication-how-to.md)的文档。 还可以阅读关于 Tomcat [HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法的官方文档。 以下 Servlet 方法是基于你的应用服务配置解除冻结的：
 
 ```java
 public boolean isSecure()
@@ -583,7 +583,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 如果要在 Java 密钥存储中使用证书加密 JDBC 连接，可能需要其他配置。 请参阅适用于你所选的 JDBC 驱动程序的文档。
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
-- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [SQL Server](/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
@@ -668,7 +668,7 @@ keyStore.load(
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [下载](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [下载](https://dev.mysql.com/downloads/connector/j/)（选择“独立于平台”） |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 若要将 Tomcat 配置为使用 Java Database Connectivity (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 
@@ -831,7 +831,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>将 Redis 作为会话缓存与 Tomcat 配合使用
 
-可将 Tomcat 配置为使用外部会话存储，例如 [Azure Cache for Redis](/azure/azure-cache-for-redis/)。 这样，你就能在用户被转到另一个应用实例时（例如，发生自动缩放、重启或故障转移时）保存用户会话状态（例如购物车数据）。
+可将 Tomcat 配置为使用外部会话存储，例如 [Azure Cache for Redis](../azure-cache-for-redis/index.yml)。 这样，你就能在用户被转到另一个应用实例时（例如，发生自动缩放、重启或故障转移时）保存用户会话状态（例如购物车数据）。
 
 若要将 Tomcat 与 Redis 配合使用，必须将应用配置为使用 [PersistentManager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) 实现。 以下步骤以 [Pivotal 会话管理器：redis-store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) 为例，对此过程进行了说明。
 
@@ -883,7 +883,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
     此文件指定并配置应用的会话管理器实现。 它使用你在上一步中设置的环境变量，将你的帐户信息保存在源文件以外。
 
-3. 使用 FTP 将会话管理器的 JAR 文件上传到应用服务实例，并将它放到 /home/tomcat/lib 目录中。 有关详细信息，请参阅[使用 FTP/S 将应用部署到 Azure 应用服务](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
+3. 使用 FTP 将会话管理器的 JAR 文件上传到应用服务实例，并将它放到 /home/tomcat/lib 目录中。 有关详细信息，请参阅[使用 FTP/S 将应用部署到 Azure 应用服务](./deploy-ftp.md)。
 
 4. 禁用应用服务实例的[会话相关性 cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)。 禁用方法是：在 Azure 门户中导航到自己的应用，然后转到“配置”>“常规设置”>“ARR 相关性”，将相关性设置为“禁用” 。 也可以使用以下 CLI 命令：
 

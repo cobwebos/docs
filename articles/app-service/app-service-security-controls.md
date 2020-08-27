@@ -5,12 +5,12 @@ author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b0c336d9d9c463a7ed7acf42eaf292ecce4f1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93e5123e5b61c9013177f7f3c908578b68da52d6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831142"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962921"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure 应用服务的安全控制
 
@@ -39,8 +39,8 @@ ms.locfileid: "85831142"
 
 | 安全控制 | Yes/No | 注释 |  文档
 |---|---|--|
-| 身份验证| 是 | 客户可以在应用服务上构建应用程序，这些应用程序可自动与[Azure Active Directory （Azure AD）](../active-directory/index.yml)以及其他 OAuth 兼容标识提供程序集成，以便对应用服务资产进行管理访问，所有访问都由 Azure AD 身份验证的主体和 Azure RBAC 的组合控制。 | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
-| 授权| 是 | 对于应用服务资产的管理访问权限，所有访问都由 Azure AD 身份验证主体和 Azure RBAC 的组合控制。  | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
+| 身份验证| 是 | 客户可以构建基于应用服务的应用程序，这些应用程序自动集成 [Azure Active Directory (Azure AD)](../active-directory/index.yml) 以及其他与 OAuth 兼容的标识提供者。对应用服务资产进行管理访问时，所有访问都是通过组合使用 Azure AD 身份验证主体和 Azure RBAC 来控制的。 | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
+| 授权| 是 | 对应用服务资产进行管理访问时，所有访问都可以通过组合使用 Azure AD 身份验证主体和 Azure RBAC 进行控制。  | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>数据保护
 
@@ -49,7 +49,7 @@ ms.locfileid: "85831142"
 | 服务器端静态加密：Microsoft 管理的密钥 | 是 | 网站文件内容存储在 Azure 存储中，后者自动对内容进行静态加密。 <br><br>客户提供的机密会进行静态加密。 机密在存储到应用服务配置数据库中时会进行静态加密。<br><br>本地附加的磁盘可以由网站选择性地用作临时存储 (D:\local and %TMP%)。 本地附加的磁盘不进行静态加密。 | [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户可以选择将应用程序机密存储在 Key Vault 中，在运行时检索它们。 | [使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）](app-service-key-vault-references.md)
 | 列级加密（Azure 数据服务）| 空值 | |
-| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 客户可以将网站配置为要求将 HTTPS 用于入站流量。  | [How to make an Azure App Service HTTPS only](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/)（如何将 Azure 应用服务设置为“仅限 HTTPS”）（博客文章）
+| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 客户可以将网站配置为要求将 HTTPS 用于入站流量。  | [How to make an Azure App Service HTTPS only](/archive/blogs/benjaminperkins/how-to-make-an-azure-app-service-https-only)（如何将 Azure 应用服务设置为“仅限 HTTPS”）（博客文章）
 | 加密的 API 调用| 是 | 可以通过基于 HTTPS 的 [Azure 资源管理器](../azure-resource-manager/index.yml)调用进行管理调用，以便配置应用服务。 |
 
 ## <a name="configuration-management"></a>配置管理

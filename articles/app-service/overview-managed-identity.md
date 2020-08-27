@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211882"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961578"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -43,7 +43,7 @@ ms.locfileid: "88211882"
 
 
 > [!NOTE] 
-> 若要在 Azure 门户中的 " **企业应用程序**" 下查找 web 应用或槽应用的托管标识，请在 " **用户设置** " 部分中查看。 通常，槽名称类似于 `<app name>/slots/<slot name>` 。
+> 若要在 Azure 门户中查找 Web 应用或槽应用的托管标识，请在“企业应用程序”下查看“用户设置”部分。 通常，槽名称与 `<app name>/slots/<slot name>` 类似。
 
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
@@ -52,7 +52,7 @@ ms.locfileid: "88211882"
 
 - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 - 通过单击下面每个代码块右上角的“试用”按钮，来使用嵌入的 Azure Cloud Shell。
-- 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.31 或更高版本）。 
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](/cli/azure/install-azure-cli)（2.0.31 或更高版本）。 
 
 以下步骤将指导你完成使用 CLI 创建 Web 应用并为其分配标识的操作：
 
@@ -109,7 +109,7 @@ ms.locfileid: "88211882"
 
 1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)：
+2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/?view=azps-4.1.0#functions)：
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -177,7 +177,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用程序新标识的唯一标识符。 在 Azure AD 中，服务主体的名称与你为应用服务或 Azure Functions 实例提供的名称相同。
 
-如果需要在模板中的后一阶段引用这些属性，可以通过带标志的[ `reference()` 模板函数](../azure-resource-manager/templates/template-functions-resource.md#reference)来执行 `'Full'` 此操作，如下例所示：
+如果需要稍后在模板中引用这些属性，则可通过带有 `'Full'` 标志的 [`reference()` 模板函数](../azure-resource-manager/templates/template-functions-resource.md#reference)进行引用，如以下示例所示：
 
 ```json
 {
@@ -219,7 +219,7 @@ tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用
 
 1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下面的脚本还利用了 `New-AzUserAssignedIdentity`，必须根据[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装它。
+2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下面的脚本还利用了 `New-AzUserAssignedIdentity`，必须根据[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装它。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -315,7 +315,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 ### <a name="using-the-rest-protocol"></a>使用 REST 协议
 
 > [!NOTE]
-> 此协议的某个旧版本（使用“2017-09-01”API 版本）使用 `secret` 标头而不是 `X-IDENTITY-HEADER`，并且仅接受用户分配的标识的 `clientid` 属性。 它还返回时间戳格式的 `expires_on`。 MSI_ENDPOINT 可用作 IDENTITY_ENDPOINT 的别名，MSI_SECRET 可用作 IDENTITY_HEADER 的别名。 此版本的协议当前需要用于 Linux 消耗托管计划。
+> 此协议的某个旧版本（使用“2017-09-01”API 版本）使用 `secret` 标头而不是 `X-IDENTITY-HEADER`，并且仅接受用户分配的标识的 `clientid` 属性。 它还返回时间戳格式的 `expires_on`。 MSI_ENDPOINT 可用作 IDENTITY_ENDPOINT 的别名，MSI_SECRET 可用作 IDENTITY_HEADER 的别名。 目前，Linux 消耗托管计划需要此协议版本。
 
 有托管标识的应用定义了两个环境变量：
 
@@ -327,7 +327,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 > | 参数名称    | In     | 说明                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | 查询  | 应获取其令牌的资源的 Azure AD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。    |
-> | api-version       | 查询  | 要使用的令牌 API 版本。 请使用 "2019-08-01" 或更高版本 (，除非使用目前仅提供 "2017-09-01" 的 Linux 使用-请参阅上面) 的注释。                                                                                                                                                                                                                                                                 |
+> | api-version       | 查询  | 要使用的令牌 API 版本。 请使用“2019-08-01”或更高版本（使用 Linux 消耗计划的情况除外，该计划目前仅提供“2017-09-01”，请查看上面的说明）。                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | 标头 | IDENTITY_HEADER 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。                                                                                                                                                                                                    |
 > | client_id         | 查询  | （可选）要使用的用户分配的标识的客户端 ID。 不能在包含 `principal_id`、`mi_res_id` 或 `object_id` 的请求中使用。 如果省略所有 ID 参数（`client_id`、`principal_id`、`object_id` 和 `mi_res_id`），则使用系统分配的标识。                                             |
 > | principal_id      | 查询  | （可选）要使用的用户分配的标识的主体 ID。 `object_id` 是可以改用的别名。 不能在包含 client_id、mi_res_id 或 object_id 的请求中使用。 如果省略所有 ID 参数（`client_id`、`principal_id`、`object_id` 和 `mi_res_id`），则使用系统分配的标识。 |
@@ -347,7 +347,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 > | resource      | 请求访问令牌时所针对的资源，与请求的 `resource` 查询字符串参数匹配。                                                                                                                               |
 > | token_type    | 指示令牌类型值。 Azure AD 支持的唯一一个类型是 FBearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 
-此响应与 [Azure AD 服务到服务访问令牌请求的响应](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
+此响应与 [Azure AD 服务到服务访问令牌请求的响应](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
 
 ### <a name="rest-protocol-examples"></a>REST 协议示例
 
@@ -456,7 +456,7 @@ $accessToken = $tokenResponse.access_token
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
 
-如果要使用用户分配的托管标识，则可以将 `AzureServicesAuthConnectionString` 应用程序设置设置为 `RunAs=App;AppId=<clientId-guid>` 。 将替换 `<clientId-guid>` 为要使用的标识的客户端 ID。 可以通过使用自定义应用程序设置并将其值传递到 AzureServiceTokenProvider 构造函数来定义多个这样的连接字符串。
+若要使用用户分配的托管标识，可以将 `AzureServicesAuthConnectionString` 应用程序设置设为 `RunAs=App;AppId=<clientId-guid>`。 将 `<clientId-guid>` 替换为要使用的标识的客户端 ID。 可以通过使用自定义应用程序设置并将其值传递给 AzureServiceTokenProvider 构造函数来定义多个这样的连接字符串。
 
 ```csharp
     var identityConnectionString1 = Environment.GetEnvironmentVariable("UA1_ConnectionString");
@@ -466,7 +466,7 @@ $accessToken = $tokenResponse.access_token
     var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
 ```
 
-若要详细了解如何配置 AzureServiceTokenProvider 以及它所公开的操作，请参阅 [microsoft.azure.services.appauthentication 参考] 和 [应用服务和包含 MSI .net 的 KeyVault 示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要详细了解如何配置 AzureServiceTokenProvider 及其公开的操作，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]以及[将应用服务和 KeyVault 与 MSI .NET 示例配合使用](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
 

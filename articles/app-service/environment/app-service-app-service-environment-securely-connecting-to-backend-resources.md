@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 68667908d25813b61b6a725fddce9ab438a248d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833114"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961799"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>从应用服务环境安全地连接到后端资源
-由于应用服务环境始终创建于 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中，因此从应用服务环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。**** 截至2016年6月，还可以将 Ase 部署到使用公用地址范围或 RFC1918 地址空间（专用地址）的虚拟网络中。  
+由于应用服务环境始终创建于 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中，因此从应用服务环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。**** 截至2016年6月，还可以将 Ase 部署到使用公用地址范围或 RFC1918 地址空间 (专用地址) 的虚拟网络中。  
 
 例如，SQL Server 可能在已锁定端口 1433 的虚拟机群集上运行。  此终结点可能已纳入 ACL，只允许从相同虚拟网络上的其他资源进行访问。  
 
@@ -23,14 +23,14 @@ ms.locfileid: "85833114"
 
 对于所有这些方案，在应用服务环境上运行的应用可能会安全地连接到各种服务器和资源。 如果应用的出站流量在同一虚拟网络中的专用终结点应用服务环境运行，或连接到相同的虚拟网络，则它将仅流过虚拟网络。  到专用终结点的出站流量不会流经公共 Internet。
 
-一个问题适用于从应用服务环境到虚拟网络中的终结点的出站流量。 应用服务环境无法访问与应用服务环境位于**同一**子网中的虚拟机的终结点。 如果将应用服务环境部署到由应用服务环境专门使用的子网中，则此限制通常不会出现问题。
+一个问题适用于从应用服务环境到虚拟网络中的终结点的出站流量。 应用服务环境无法访问与应用服务环境位于 **同一** 子网中的虚拟机的终结点。 如果将应用服务环境部署到由应用服务环境专门使用的子网中，则此限制通常不会出现问题。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>出站连接和 DNS 要求
 若要让应用服务环境正常运行，需具有对各个终结点的出站访问权限。 [Network Configuration for ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)（ExpressRoute 的网络配置）一文的“所需的网络连接”部分中提供了 ASE 所用外部终结点的完整列表。
 
-应用服务环境要求为虚拟网络配置有效 DNS 基础结构。  如果 DNS 配置在创建应用服务环境之后发生更改，则开发人员可以强制应用服务环境选取新的 DNS 配置。 在门户的 "应用服务环境管理" 边栏选项卡顶部，选择 "**重新启动**" 图标以触发滚动环境重启，这将导致环境选取新的 DNS 配置。
+应用服务环境要求为虚拟网络配置有效 DNS 基础结构。  如果 DNS 配置在创建应用服务环境之后发生更改，则开发人员可以强制应用服务环境选取新的 DNS 配置。 在门户的 "应用服务环境管理" 边栏选项卡顶部，选择 " **重新启动** " 图标以触发滚动环境重启，这将导致环境选取新的 DNS 配置。
 
 还建议提前设置 vnet 中的任何自定义 DNS 服务器，然后再创建应用服务环境。  如果在创建应用服务环境期间更改虚拟网络的 DNS 配置，将导致应用服务环境创建过程失败。 在 VPN 网关的另一端，如果存在无法访问或不可用的自定义 DNS 服务器，则应用服务环境创建过程也会失败。
 
@@ -49,7 +49,7 @@ ms.locfileid: "85833114"
 
 ![网络访问控制列表示例][NetworkAccessControlListExample]
 
-在与 SQL Server 相同的虚拟网络中应用服务环境运行的任何应用程序都可能连接到 SQL Server 实例。 使用 SQL Server 虚拟机的**VNet 内部**IP 地址。  
+在与 SQL Server 相同的虚拟网络中应用服务环境运行的任何应用程序都可能连接到 SQL Server 实例。 使用 SQL Server 虚拟机的 **VNet 内部** IP 地址。  
 
 以下连接字符串示例使用其专用 IP 地址引用 SQL Server。
 
@@ -88,16 +88,16 @@ Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityG
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [ControlInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
-[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
+[SiteToSite]: ../../vpn-gateway/vpn-gateway-multi-site.md
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
-[NetworkAccessControlLists]: https://azure.microsoft.com/documentation/articles/virtual-networks-acl/
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkAccessControlLists]: /previous-versions/azure/virtual-network/virtual-networks-acl
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [ControlInboundASE]:  app-service-app-service-environment-control-inbound-traffic.md
 
 <!-- IMAGES -->
 [SqlServerEndpoint]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/SqlServerEndpoint01.png
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
-[DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png 
+[DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png

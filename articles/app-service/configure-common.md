@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213581"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962887"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -19,7 +19,7 @@ ms.locfileid: "88213581"
 
 ## <a name="configure-app-settings"></a>配置应用设置
 
-在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用标志将应用设置传递到容器， `--env` 以便在容器中设置环境变量。
+在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用 `--env` 标志将应用设置传递到容器，以在容器中设置环境变量。
 
 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "88213581"
 
 对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置应用设置类似于在 Web.config  或 appsettings.json  中的 `<appSettings>` 内进行设置，但应用服务中的值会替代 Web.config  或 appsettings.json  中的值。 可以在 Web.config  或 appsettings.json  中保留开发设置（例如，本地 MySQL 密码），但在应用服务中保留生产机密（例如 Azure MySQL 数据库密码）会更安全。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
-同样，在运行时将应用设置作为环境变量获取。 有关特定语言堆栈的步骤，请参阅：
+同样，其他语言堆栈也会在运行时获取应用设置作为环境变量。 有关特定的语言堆栈步骤，请参阅：
 
 - [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](configure-language-nodejs.md#access-environment-variables)
@@ -44,7 +44,7 @@ ms.locfileid: "88213581"
 应用程序设置在存储时始终进行加密（静态加密）。
 
 > [!NOTE]
-> 也可以使用 [Key Vault 引用](app-service-key-vault-references.md)从 [Key Vault](/azure/key-vault/) 解析应用设置。
+> 也可以使用 [Key Vault 引用](app-service-key-vault-references.md)从 [Key Vault](../key-vault/index.yml) 解析应用设置。
 
 ### <a name="show-hidden-values"></a>显示隐藏的值
 
@@ -59,7 +59,7 @@ ms.locfileid: "88213581"
 完成后，单击“更新”。  别忘了返回“配置”页并单击“保存”。  
 
 > [!NOTE]
-> 在默认的 Linux 容器或自定义 Linux 容器中，应用设置名称中的任何嵌套 JSON 密钥结构都 `ApplicationInsights:InstrumentationKey` 需要在应用服务中配置为 `ApplicationInsights__InstrumentationKey` 密钥名称。 换句话说，任何一个 `:` 都应该替换为 `__` (双下划线) 。
+> 在默认 Linux 容器或自定义 Linux 容器中，需要在应用服务中将应用设置名称（如 `ApplicationInsights:InstrumentationKey`）中的任何嵌套 JSON 密钥结构配置为密钥名称的 `ApplicationInsights__InstrumentationKey`。 换而言之，应将任何 `:` 替换为 `__`（双下划线）。
 >
 
 ### <a name="edit-in-bulk"></a>批量编辑
@@ -96,13 +96,13 @@ ms.locfileid: "88213581"
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
-* SQLServer `SQLCONNSTR_`  
+* SQLServer：`SQLCONNSTR_`  
 * MySQL： `MYSQLCONNSTR_` 
-* SQLAzure `SQLAZURECONNSTR_` 
+* SQLAzure：`SQLAZURECONNSTR_` 
 * 自定义：`CUSTOMCONNSTR_`
-* PostgreSQL `POSTGRESQLCONNSTR_`  
+* PostgreSQL：`POSTGRESQLCONNSTR_`  
 
-例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定语言堆栈的步骤，请参阅：
+例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定的语言堆栈步骤，请参阅：
 
 - [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](configure-language-nodejs.md#access-environment-variables)
@@ -115,7 +115,7 @@ ms.locfileid: "88213581"
 连接字符串在存储时始终进行加密（静态加密）。
 
 > [!NOTE]
-> 也可以使用 [Key Vault 引用](app-service-key-vault-references.md)从 [Key Vault](/azure/key-vault/) 解析连接字符串。
+> 也可以使用 [Key Vault 引用](app-service-key-vault-references.md)从 [Key Vault](../key-vault/index.yml) 解析连接字符串。
 
 ### <a name="show-hidden-values"></a>显示隐藏的值
 
@@ -168,15 +168,15 @@ ms.locfileid: "88213581"
 - **平台设置**：用于配置托管平台的设置，包括：
     - **位数**：32 位或 64 位。
     - **WebSocket 协议**：例如，[ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
-    - **Always On**：即使在没有流量的情况，也仍会加载应用。 对于连续性 WebJobs 或使用 CRON 表达式触发的 WebJobs，它是必需的。
+    - **Always On**：即使没有流量，也保持应用的加载状态。 对于连续性 WebJobs 或使用 CRON 表达式触发的 WebJobs，它是必需的。
       > [!NOTE]
-      > 使用 Always On 功能时，前端负载均衡器会将请求发送到应用程序根目录。 无法配置应用服务的此应用程序终结点。
+      > 借助 Always On 功能，前端负载均衡器会将请求发送到应用程序根目录。 无法配置应用服务的此应用程序终结点。
     - **托管管道版本**：IIS [管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。 
     - **HTTP 版本**：设置为 **2.0** 以启用对 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) 协议的支持。
     > [!NOTE]
-    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器通过 HTTP/2 连接到应用程序，请保护自定义 DNS 名称。 有关详细信息，请参阅 [在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器使用 HTTP/2 连接到应用，请保护自定义 DNS 名称。 有关详细信息，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 相关性**：在多实例部署中，请确保在会话的整个生存期内，将客户端路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。 
-- **调试**：启用 [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或 [Node.js](configure-language-nodejs.md#debug-remotely) 应用的远程调试。 此选项在 48 小时后会自动关闭。
+- **调试**：为 [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、[ASP.NET Core](/visualstudio/debugger/remote-debugging-azure) 或 [Node.js](configure-language-nodejs.md#debug-remotely) 应用启用远程调试。 此选项在 48 小时后会自动关闭。
 - **传入的客户端证书**：要求在[相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
 
 ## <a name="configure-default-documents"></a>配置默认文档
@@ -215,17 +215,17 @@ ms.locfileid: "88213581"
 
 ### <a name="containerized-apps"></a>容器化应用
 
-你可以 [为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击 " **新建 Azure 存储** "，并按如下所示配置自定义存储：
+你可以 [为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击“新 Azure 存储装载”，然后按如下所示配置自定义存储：
 
 - **名称**：显示名称。
-- **配置选项**： **基本** 或 **高级**。
-- **存储帐户**：包含所需容器的存储帐户。
-- **存储类型**： **Azure Blob** 或 **azure 文件**。
+- **配置选项**：“基本”或“高级”。
+- **存储帐户**：具有所需容器的存储帐户。
+- **存储类型**：“Azure Blob”或“Azure 文件存储”。
   > [!NOTE]
-  > Windows 容器应用仅支持 Azure 文件。
+  > Windows 容器应用仅支持 Azure 文件存储。
 - **存储容器**：对于基本配置，为所需的容器。
-- **共享名**：对于高级配置，为文件共享名称。
-- **访问密钥**：对于高级配置，为 "访问密钥"。
+- **共享名**：对于高级配置，为文件共享名。
+- **访问密钥**：对于高级配置，为访问密钥。
 - **装载路径**：容器中用于装载自定义存储的绝对路径。
 
 有关详细信息，请参阅 [从应用服务中的容器访问 Azure 存储为网络共享](configure-connect-to-azure-storage.md)。

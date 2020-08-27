@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987029"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958654"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -93,7 +93,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 | 类型 | 描述 |
+| 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `grant_type` | 必选 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必须 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
@@ -153,7 +153,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上面的访问令牌是 Microosft 图形的1.0 版格式的令牌。 这是因为令牌格式基于所访问的**资源**，并且与用于请求它的终结点无关。 Microsoft Graph 设置为接受 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 其他应用可能表示它们需要 v2.0 格式令牌、1.0 格式令牌，甚至是专用或加密的令牌格式。  V1.0 和 v2.0 终结点都可以发出令牌的格式，这种方式使得资源始终可以获得正确的令牌格式，而不考虑客户端请求令牌的方式或位置。 
+> 上面的访问令牌是用于 Microsoft Graph 的1.0 版格式的令牌。 这是因为令牌格式基于所访问的 **资源** ，并且与用于请求它的终结点无关。 Microsoft Graph 设置为接受 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 其他应用可能表示它们需要 v2.0 格式令牌、1.0 格式令牌，甚至是专用或加密的令牌格式。  V1.0 和 v2.0 终结点都可以发出令牌的格式，这种方式使得资源始终可以获得正确的令牌格式，而不考虑客户端请求令牌的方式或位置。 
 >
 > 只有应用程序才能查看访问令牌。 客户端**不得**检查它们。 在代码中检查其他应用的访问令牌将导致应用在应用更改其令牌的格式或开始对其进行加密时意外中断。 
 

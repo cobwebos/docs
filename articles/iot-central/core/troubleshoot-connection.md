@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816059"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958093"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>排查设备中的数据不会显示在 Azure 中的原因 IoT Central
 
@@ -95,8 +95,6 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-### <a name="interpreting-terminal-output"></a>解释终端输出
-
 如果你看到数据显示在终端中，则数据将与 IoT Central 的应用程序一样。
 
 如果在几分钟后看不到任何数据，请尝试在 `Enter` `return` 键盘上按或键，以防输出停滞。
@@ -133,7 +131,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | 设备预配状态 | 说明 | 可能的缓解 |
 | - | - | - |
-| 已预配 | 无立即识别的问题。 | 空值 |
+| 已预配 | 无立即识别的问题。 | 不适用 |
 | 已注册 | 设备尚未连接到 IoT Central。 | 检查设备日志是否存在连接问题。 |
 | 已阻止 | 设备被阻止连接到 IoT Central。 | 设备被阻止连接到 IoT Central 应用程序。 在 IoT Central 中取消阻止设备，然后重试。 若要了解详细信息，请参阅 [阻止设备](concepts-get-connected.md#device-status-values)。 |
 | 审批 | 设备未批准。 | 未批准设备连接到 IoT Central 应用程序。 批准 IoT Central 中的设备，然后重试。 若要了解详细信息，请参阅 [批准设备](concepts-get-connected.md#connect-without-registering-devices) |
@@ -187,8 +185,6 @@ https://aka.ms/iotcentral-docs-dps-SAS",
     az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-- 如果希望使用 GUI，请使用 IoT Central **原始数据** 视图，查看是否没有建模。 **原始数据**视图不会检测设备是否发送格式错误的 JSON。
-
 `uamqp`首次运行命令时，系统可能会提示您安装库 `validate` 。
 
 以下输出显示了来自 validate 命令的示例错误和警告消息：
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="原始数据视图的屏幕截图":::
+如果希望使用 GUI，请使用 IoT Central **原始数据** 视图，查看是否没有建模。 **原始数据**视图不会检测设备是否发送格式错误的 JSON。
 
-### <a name="interpreting-terminal-output"></a>解释终端输出
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="原始数据视图的屏幕截图":::
 
 检测到问题后，你可能需要更新设备固件，或创建一个新的设备模板来对以前未建模的数据建模。
 
@@ -215,9 +211,6 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 ## <a name="next-steps"></a>后续步骤
 
-如果无法使用本指南进行故障排除并解决问题，请打开支持票证。 Azure 客户可在 Azure 门户中创建和管理支持请求：
-
-- [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [适用于美国政府的 Azure 门户](https://portal.azure.us/)
+如果需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家 [并 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)。 或者，你可以提交 [Azure 支持票证](https://portal.azure.com/#create/Microsoft.Support)。
 
 有关详细信息，请参阅 [Azure IoT 支持和帮助选项](../../iot-fundamentals/iot-support-help.md)。

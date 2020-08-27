@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236737"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962156"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-如果将 web 应用、Linux 上的 web 应用、移动后端或 API 应用部署到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)，则在 **标准**、 **高级**或 **独立** 应用服务计划层中运行时，可以使用单独的部署槽而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
+将 Web 应用、Linux 上的 Web 应用、移动后端或 API 应用部署到 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”、“高级”或“隔离”应用服务计划层中运行，则可以使用单独的部署槽，而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
 
 将应用程序部署到非生产槽具有以下优点：
 
@@ -58,11 +58,11 @@ ms.locfileid: "88236737"
    
     ![部署槽标题](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 为了提醒你正在查看部署槽，应用名称显示为 **\<app-name>/\<slot-name>** ，应用类型为 **应用服务 (槽) **。 也可以将槽视为资源组中具有相同名称的单独应用。
+    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 为了提醒你正在查看的是部署槽，应用名称会显示为“\<app-name>/\<slot-name>”，应用类型会显示为“应用服务(槽)”。 也可以将槽视为资源组中具有相同名称的单独应用。
 
 6. 选择此槽资源页中的应用 URL。 部署槽有其自己的主机名，同时也是动态应用。 若要限制对部署槽的公共访问权限，请参阅 [Azure 应用服务 IP 限制](app-service-ip-restrictions.md)。
 
-即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。
+即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](./deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ ms.locfileid: "88236737"
 
 1. 如果启用了[本地缓存](overview-local-cache.md)，则会通过对每个源槽实例上的应用程序根 ("/") 发出 HTTP 请求，来触发本地缓存初始化。 等到每个实例返回了任何 HTTP 响应。 本地缓存初始化会导致每个实例再次重启。
 
-1. 如果结合[自定义预热](#Warm-up)启用了[自动交换](#Auto-Swap)，则会通过对每个源槽实例上的应用程序根 ("/") 发出 HTTP 请求，来触发[应用程序初始化](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)。
+1. 如果结合[自定义预热](#Warm-up)启用了[自动交换](#Auto-Swap)，则会通过对每个源槽实例上的应用程序根 ("/") 发出 HTTP 请求，来触发[应用程序初始化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)。
 
     如果未指定 `applicationInitialization`，则向每个实例上的源槽的应用程序根触发 HTTP 请求。 
     
@@ -183,7 +183,7 @@ ms.locfileid: "88236737"
 
 若要配置自动交换：
 
-1. 转到应用的资源页。 选择**部署槽位**  >  *\<desired source slot>*  >  **配置**  >  **常规设置**。
+1. 转到应用的资源页。 选择“部署槽” > “\<desired source slot>” > “配置” > “常规设置”。
    
 2. 对于“启用自动交换”，请选择“打开”。  为“自动交换部署槽”选择所需的目标槽，然后选择在命令栏上“保存”。  
    
@@ -222,7 +222,7 @@ ms.locfileid: "88236737"
 
 ## <a name="monitor-a-swap"></a>监视交换
 
-如果[交换操作](#AboutConfiguration)需要很长时间才能完成，则可以在[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中获取有关交换操作的信息。
+如果[交换操作](#AboutConfiguration)需要很长时间才能完成，则可以在[活动日志](../azure-monitor/platform/platform-logs-overview.md)中获取有关交换操作的信息。
 
 在门户的应用资源页上的左窗格中，选择“活动日志”。
 
@@ -274,7 +274,7 @@ ms.locfileid: "88236737"
 
 ## <a name="delete-a-slot"></a>删除槽
 
-搜索并选择应用。 选择 "**部署槽**  >  *\<slot to delete>*  >  **概述**"。 应用类型将显示为“应用服务(槽)”，以提醒你正在查看部署槽。 在命令栏上选择“删除”。  
+搜索并选择应用。 选择“部署槽” > “\<slot to delete>” > “概述”。 应用类型将显示为“应用服务(槽)”，以提醒你正在查看部署槽。 在命令栏上选择“删除”。  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>使用资源管理器模板自动执行
 
-[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)是用于自动部署和配置 Azure 资源的声明性 JSON 文件。 为了使用资源管理器模板交换槽，你将在 Microsoft.Web/sites/slots 和 Microsoft.Web/sites 资源中设置两个属性：
+[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)是用于自动部署和配置 Azure 资源的声明性 JSON 文件。 为了使用资源管理器模板交换槽，你将在 Microsoft.Web/sites/slots 和 Microsoft.Web/sites 资源中设置两个属性：
 
 - `buildVersion`：这是一个字符串属性，表示槽中部署的应用的当前版本。 例如：“v1”、“1.0.0.1”或“2019-09-20T11:53:25.2887393-07:00”。
 - `targetBuildVersion`：这是一个字符串属性，指定槽应使用哪个 `buildVersion`。 如果 targetBuildVersion 不等于当前的 `buildVersion`，则此属性会通过查找指定了 `buildVersion` 的槽来触发交换操作。

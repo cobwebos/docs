@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448200"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961901"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -71,7 +71,7 @@ ms.locfileid: "87448200"
     ![“隔离”定价层][2]
 
     > [!NOTE]
-    > Linux 应用和 Windows 应用不能位于同一个应用服务计划中，但可以在同一应用服务环境中。
+    > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。
     >
 
 1. 选择“查看 + 创建”，确保信息正确，然后选择“创建”。 
@@ -134,7 +134,7 @@ SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用�
 
 在 Azure DNS 专用区域中配置 DNS：
 
-1. 创建一个名为 &lt; ASE name. appserviceenvironment.net 的 Azure DNS 专用区域 &gt; 。
+1. 创建名为“&lt;ASE 名称&gt;.appserviceenvironment.net”的 Azure DNS 专用区域
 1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
 1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
 1. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录
@@ -196,7 +196,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 **创建警报**
 
-若要针对日志创建警报，请按照[使用 Azure Monitor 创建、查看和管理日志警报][logalerts]中的说明进行操作。 简单地说：
+若要针对日志创建警报，请按[使用 Azure Monitor 创建、查看和管理日志警报][logalerts]中的说明操作。 简单地说：
 
 * 在 ASE 门户中打开“警报”页面
 * 选择“新建警报规则”
@@ -213,18 +213,18 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 
-如果使用的是 https://resources.azure.com ，请按照以下步骤设置**upgradePreferences**值：
+如果使用的是 https://resources.azure.com ，请按照以下步骤设置 **upgradePreferences** 值：
 
 1. 请参阅 resources.azure.com，然后用 Azure 帐户登录。
 1. 浏览资源到订阅 \/ \[ 订阅名称 \] \/ resourceGroups \/ \[ 资源组名称 \] \/ 提供程序 \/ \/ hostingEnvironments \/ \[ ASE 名称 \] 。
-1. 在顶部选择 "**读/写**"。
-1. 选择“编辑”。
-1. 将**upgradePreference**设置为所需的三个值中的任何一个。
-1. 选择 "**修补**"。
+1. 在顶部选择 " **读/写** "。
+1. 选择“编辑”  。
+1. 将 **upgradePreference** 设置为所需的三个值中的任何一个。
+1. 选择 " **修补**"。
 
 ![azure com 显示的资源][5]
 
-当你有多个 Ase 时， **upgradePreferences**功能最有意义，因为你的 "早期" ase 将在 "延迟" ase 之前升级。 当你有多个 Ase 时，应将你的开发和测试 Ase 设置为 "提前"，并将生产 Ase 设置为 "延迟"。
+当你有多个 Ase 时， **upgradePreferences** 功能最有意义，因为你的 "早期" ase 将在 "延迟" ase 之前升级。 当你有多个 Ase 时，应将你的开发和测试 Ase 设置为 "提前"，并将生产 Ase 设置为 "延迟"。
 
 ## <a name="pricing"></a>定价
 
@@ -254,7 +254,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 ## <a name="ase-cli"></a>ASE CLI
 
-有一些命令行功能可用于管理 ASE。  Az cli 命令如下所示。
+可通过命令行功能管理 ASE。  下面对 az cli 命令进行了说明。
 
 ```azurecli
 C:\>az appservice ase --help
@@ -302,5 +302,5 @@ For more specific examples, use: az find "az appservice ase"
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/platform/alerts-log.md

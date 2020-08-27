@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081045"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961867"
 ---
 # <a name="deployment-best-practices"></a>部署最佳实践
 
@@ -22,7 +22,7 @@ ms.locfileid: "88081045"
 
 ### <a name="deployment-source"></a>部署源
 
-部署源是应用程序代码的位置。 对于生产应用，部署源通常是由版本控制软件（例如[GitHub、BitBucket 或 Azure Repos](deploy-continuous-deployment.md)）托管的存储库。 对于开发和测试方案，部署源可以是[本地计算机上的项目](deploy-local-git.md)。 应用服务还支持[OneDrive 和 Dropbox 文件夹](deploy-content-sync.md)作为部署源。 尽管云文件夹可以轻松地开始使用应用服务，但通常不建议将此源用于企业级的生产应用程序。 
+部署源是应用程序代码的位置。 对于生产应用，部署源通常是由版本控制软件（例如 [GitHub、BitBucket 或 Azure Repos](deploy-continuous-deployment.md)）托管的存储库。 对于开发和测试方案，部署源可以是 [本地计算机上的项目](deploy-local-git.md)。 应用服务还支持 [OneDrive 和 Dropbox 文件夹](deploy-content-sync.md) 作为部署源。 尽管云文件夹可以轻松地开始使用应用服务，但通常不建议将此源用于企业级的生产应用程序。 
 
 ### <a name="build-pipeline"></a>生成管道
 
@@ -30,20 +30,20 @@ ms.locfileid: "88081045"
 
 ### <a name="deployment-mechanism"></a>部署机制
 
-部署机制是用于将生成的应用程序放入 web 应用程序的 */home/site/wwwroot 中*目录的操作。 */Wwwroot*目录是由 web 应用的所有实例共享的已装载存储位置。 当部署机制将应用程序放在此目录中时，实例会收到同步新文件的通知。 应用服务支持以下部署机制：
+部署机制是用于将生成的应用程序放入 web 应用程序的 */home/site/wwwroot 中* 目录的操作。 */Wwwroot*目录是由 web 应用的所有实例共享的已装载存储位置。 当部署机制将应用程序放在此目录中时，实例会收到同步新文件的通知。 应用服务支持以下部署机制：
 
-- Kudu 终结点： [Kudu](https://github.com/projectkudu/kudu/wiki)是一种开源开发人员生产力工具，它作为 Windows 应用服务中的单独进程运行，并作为 Linux 应用服务中的第二个容器运行。 Kudu 处理连续部署并提供用于部署的 HTTP 终结点，如 zipdeploy。
-- FTP 和 WebDeploy：使用您的[站点或用户凭据](deploy-configure-credentials.md)，可以[通过 FTP](deploy-ftp.md)或 WebDeploy 上传文件。 这些机制不会经过 Kudu。  
+- Kudu 终结点： [Kudu](https://github.com/projectkudu/kudu/wiki) 是一种开源开发人员生产力工具，它作为 Windows 应用服务中的单独进程运行，并作为 Linux 应用服务中的第二个容器运行。 Kudu 处理连续部署并提供用于部署的 HTTP 终结点，如 zipdeploy。
+- FTP 和 WebDeploy：使用您的 [站点或用户凭据](deploy-configure-credentials.md)，可以 [通过 FTP](deploy-ftp.md) 或 WebDeploy 上传文件。 这些机制不会经过 Kudu。  
 
 部署工具（例如 Azure Pipelines、Jenkins 和编辑器插件）使用这些部署机制之一。
 
 ## <a name="use-deployment-slots"></a>使用部署槽位
 
-请尽可能在部署新的生产版本时使用[部署槽位](deploy-staging-slots.md)。 使用标准应用服务计划层或更好的应用程序层时，可将应用部署到过渡环境，验证更改，以及执行冒烟测试。 准备就绪后，可以交换过渡和生产槽。 交换操作得到预热必要的辅助角色实例，以匹配生产规模，从而消除停机。
+请尽可能在部署新的生产版本时使用 [部署槽位](deploy-staging-slots.md) 。 使用标准应用服务计划层或更好的应用程序层时，可将应用部署到过渡环境，验证更改，以及执行冒烟测试。 准备就绪后，可以交换过渡和生产槽。 交换操作得到预热必要的辅助角色实例，以匹配生产规模，从而消除停机。
 
 ### <a name="continuously-deploy-code"></a>连续部署代码
 
-如果你的项目已指定用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽。  (这称为[Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。 ) 这使您的利益干系人可以轻松地评估和测试已部署的分支。 
+如果你的项目已指定用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽。  (这称为 [Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。 ) 这使您的利益干系人可以轻松地评估和测试已部署的分支。 
 
 永远不应为生产槽启用持续部署。 相反，生产分支 (经常) 应部署到非生产槽上。 准备好释放基本分支后，将其交换到生产槽中。 交换到生产中（而不是部署到生产环境）可防止停机，并使你能够通过再次交换回滚更改。 
 
@@ -65,11 +65,11 @@ ms.locfileid: "88081045"
 
 ### <a name="use-azure-devops"></a>使用 Azure DevOps
 
-应用服务通过部署中心为容器[提供内置持续交付](deploy-continuous-deployment.md)。 导航到[Azure 门户](https://portal.azure.com/)中的应用，然后在 "**部署**" 下选择 "**部署中心**"。 按照说明选择存储库和分支。 这会配置 DevOps 生成和发布管道，以便在将新提交推送到所选分支时自动生成、标记和部署容器。
+应用服务通过部署中心为容器 [提供内置持续交付](deploy-continuous-deployment.md) 。 导航到[Azure 门户](https://portal.azure.com/)中的应用，然后在 "**部署**" 下选择 "**部署中心**"。 按照说明选择存储库和分支。 这会配置 DevOps 生成和发布管道，以便在将新提交推送到所选分支时自动生成、标记和部署容器。
 
 ### <a name="use-github-actions"></a>使用 GitHub 操作
 
-还可以[通过 GitHub 操作](deploy-container-github-action.md)自动化容器部署。  以下工作流文件将使用提交 ID 构建并标记容器，并将其推送到容器注册表，并使用新的映像标记更新指定的站点槽。
+还可以 [通过 GitHub 操作](deploy-container-github-action.md)自动化容器部署。  以下工作流文件将使用提交 ID 构建并标记容器，并将其推送到容器注册表，并使用新的映像标记更新指定的站点槽。
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps
@@ -127,7 +127,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="java"></a>Java
 
-使用 Kudu [zipdeploy/](deploy-zip.md) API 部署 JAR 应用程序，并使用[WARDEPLOY/](deploy-zip.md#deploy-war-file) for WAR 应用。 如果你使用的是 Jenkins，则可以在部署阶段直接使用这些 Api。 有关详细信息，请参阅[此文章](../jenkins/execute-cli-jenkins-pipeline.md)。
+使用 Kudu [zipdeploy/](deploy-zip.md) API 部署 JAR 应用程序，并使用 [WARDEPLOY/](deploy-zip.md#deploy-war-file) for WAR 应用。 如果你使用的是 Jenkins，则可以在部署阶段直接使用这些 Api。 有关详细信息，请参阅[此文章](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)。
 
 ### <a name="node"></a>节点
 
@@ -141,19 +141,19 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="local-cache"></a>本地缓存
 
-Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提供。 但是，某些应用程序只需要高性能的只读内容存储，其可在高可用性下运行。 这些应用程序可以受益于使用[本地缓存](overview-local-cache.md)。 对于内容管理站点（例如 WordPress），不建议使用本地缓存。
+Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提供。 但是，某些应用程序只需要高性能的只读内容存储，其可在高可用性下运行。 这些应用程序可以受益于使用 [本地缓存](overview-local-cache.md)。 对于内容管理站点（例如 WordPress），不建议使用本地缓存。
 
-始终将本地缓存与[部署槽位](deploy-staging-slots.md)一起使用，以防止停机。 有关将这些功能一起使用的信息，请参阅[此部分](overview-local-cache.md#best-practices-for-using-app-service-local-cache)。
+始终将本地缓存与 [部署槽位](deploy-staging-slots.md) 一起使用，以防止停机。 有关将这些功能一起使用的信息，请参阅 [此部分](overview-local-cache.md#best-practices-for-using-app-service-local-cache) 。
 
 ### <a name="high-cpu-or-memory"></a>高 CPU 或内存
 
 如果你的应用服务计划使用超过90% 的可用 CPU 或内存，则基础虚拟机在处理你的部署时可能会遇到问题。 发生这种情况时，请暂时向上缩放实例计数以执行部署。 完成部署后，可以将实例计数返回到它以前的值。
 
-有关最佳实践的详细信息，请访问[应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，以了解特定于资源的可操作最佳方案。
+有关最佳实践的详细信息，请访问 [应用服务诊断](./overview-diagnostics.md) ，以了解特定于资源的可操作最佳方案。
 
-- 在[Azure 门户](https://portal.azure.com)中导航到 Web 应用。
-- 在左侧导航栏中单击 "**诊断和解决问题**"，这将打开应用服务诊断。
-- 选择**最佳方案**主页磁贴。
-- 若要查看应用的当前状态，请单击 "**可用性最佳实践 & 性能**" 或 "**最佳实践**" 以查看应用的当前状态。
+- 在 [Azure 门户](https://portal.azure.com)中导航到 Web 应用。
+- 在左侧导航栏中单击 " **诊断和解决问题** "，这将打开应用服务诊断。
+- 选择 **最佳方案** 主页磁贴。
+- 若要查看应用的当前状态，请单击 " **可用性最佳实践 & 性能** " 或 " **最佳实践** " 以查看应用的当前状态。
 
 你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` 。

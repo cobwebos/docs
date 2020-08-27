@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87a8291387d50fae7027d007eedf49fa55b39b74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052776"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962088"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -41,8 +41,8 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 应用的非共享专用入站地址 | 应用分配的地址 |
 | 从一组妥善定义的地址限制对应用的访问 | 访问限制 |
-| 限制从 VNet 中的资源访问应用 | 服务终结点 </br> ILB ASE </br> 专用终结点（预览） |
-| 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关上用于入站通信的专用 IP </br> 服务终结点（预览） |
+| 限制从 VNet 中的资源访问应用 | 服务终结点 </br> ILB ASE </br> 专用终结点 (预览)  |
+| 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关上用于入站通信的专用 IP </br> 服务终结点 (预览)  |
 | 使用 WAF 保护我的应用 | 应用程序网关 + ILB ASE </br> 包含服务终结点的应用程序网关 </br> 提供访问限制的 Azure Front Door |
 | 对发往不同区域中的应用的流量进行负载均衡 | 提供访问限制的 Azure Front Door | 
 | 对同一区域中的流量进行负载均衡 | [包含服务终结点的应用程序网关][appgwserviceendpoints] | 
@@ -81,11 +81,11 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 * 支持应用的基于 IP 的 SSL 需求
 * 为应用设置一个不与其他任何组件共享的专用地址
 
-可以通过在[Azure App Service 中添加 TLS/SSL 证书][appassignedaddress]教程来了解如何在应用程序上设置一个地址。 
+可以通过有关[在 Azure 应用服务中添加 TLS/SSL 证书][appassignedaddress]的教程，学习如何在应用上设置地址。 
 
 ### <a name="access-restrictions"></a>访问限制 
 
-访问限制功能使你可以基于原始 IP 地址筛选**入站**请求。 筛选操作在前端角色上发生，这些前端角色位于运行应用的辅助角色的上游。 由于前端角色位于辅助角色的上游，因此可将访问限制功能视为应用的网络级保护机制。 使用该功能可以生成按优先顺序评估的允许和拒绝地址块列表。 它类似于 Azure 网络中的网络安全组 (NSG) 功能。  可以在 ASE 或多租户服务中使用此功能。 在 ILB ASE 中使用时，可以限制从专用地址块进行的访问。
+使用访问限制功能可以基于来源 IP 地址筛选入站请求。 筛选操作在前端角色上发生，这些前端角色位于运行应用的辅助角色的上游。 由于前端角色位于辅助角色的上游，因此可将访问限制功能视为应用的网络级保护机制。 使用该功能可以生成按优先顺序评估的允许和拒绝地址块列表。 它类似于 Azure 网络中的网络安全组 (NSG) 功能。  可以在 ASE 或多租户服务中使用此功能。 在 ILB ASE 中使用时，可以限制从专用地址块进行的访问。
 
 ![访问限制](media/networking-features/access-restrictions.png)
 
@@ -111,9 +111,9 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 
 可以在[配置服务终结点访问限制][serviceendpoints]教程中详细了解如何配置包含你的应用的服务终结点
 
-### <a name="private-endpoint-preview"></a>专用终结点（预览）
+### <a name="private-endpoint-preview"></a>专用终结点 (预览) 
 
-专用终结点是一个网络接口，可通过 Azure 专用链接将你私下安全地连接到你的 Web 应用。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将 Web 应用引入 VNet。 此功能仅适用于**入站**流到 Web 应用。
+专用终结点是一个网络接口，可通过 Azure 专用链接将你私下安全地连接到你的 Web 应用。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将 Web 应用引入 VNet。 此功能仅适用于 **入站** 流到 Web 应用。
 [为 Azure Web 应用使用专用终结点（预览版）][privateendpoints]
  
 ### <a name="hybrid-connections"></a>混合连接
@@ -223,12 +223,12 @@ ASE 提供最佳的隔离和专用应用托管，但也附带了一些管理难�
 可以在其他前端应用中使用 VNet 集成，并在 API 应用及其子网中使用服务终结点，让多个前端应用使用同一个 API 应用。  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
-[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
-[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
-[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[appassignedaddress]: ./configure-ssl-certificate.md
+[iprestrictions]: ./app-service-ip-restrictions.md
+[serviceendpoints]: ./app-service-ip-restrictions.md
+[hybridconn]: ./app-service-hybrid-connections.md
+[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
+[vnetintegration]: ./web-sites-integrate-with-vnet.md
+[networkinfo]: ./environment/network-info.md
+[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
+[privateendpoints]: ./networking/private-endpoint.md

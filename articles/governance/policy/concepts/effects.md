@@ -1,14 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544717"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958756"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -479,14 +479,33 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
 
 ## <a name="modify"></a>修改
 
-修改用于在创建或更新时在资源上添加、更新或删除标记。 常见的示例是在 costCenter 等资源上更新标记。 修改策略应始终将 `mode` 设置为 _索引_，除非目标资源为资源组。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。 单个修改规则可以有任意数量的操作。
+Modify 用于在创建或更新时在资源上添加、更新或删除属性或标记。
+常见的示例是在 costCenter 等资源上更新标记。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。 单个修改规则可以有任意数量的操作。
+
+修改支持以下操作：
+
+- 添加、替换或删除资源标记。 对于标记，修改策略应该 `mode` 设置为 _索引_ ，除非目标资源是资源组。
+- 添加或替换 `identity.type` 虚拟机和虚拟机规模集的托管标识类型 () 的值。
+- 添加或替换 (预览) 的某些别名的值。
+  - 使用 `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
+    在 Azure PowerShell 获取可与 Modify 一起使用的别名列表。
 
 > [!IMPORTANT]
-> 修改当前仅用于标记。 如果你正在管理标记，则建议使用修改替代附加，因为修改提供其他操作类型和修正现有资源的能力。 但是，如果无法创建托管标识，则建议使用附加。
+> 如果你正在管理标记，则建议使用修改，而不是将追加作为修改提供其他操作类型和修正现有资源的能力。 但是，如果无法创建托管标识或修改尚不支持资源属性的别名，则建议使用 Append。
 
 ### <a name="modify-evaluation"></a>修改评估
 
-在创建或更新资源期间，修改会在资源提供程序处理请求之前进行评估。 当满足策略规则的 **if** 条件时，修改会在资源上添加或更新标记。
+在创建或更新资源期间，修改会在资源提供程序处理请求之前进行评估。 满足策略规则的 **if** 条件时，修改操作将应用于请求内容。 每个修改操作都可以指定确定应用时间的条件。 将跳过其条件计算结果为 _false_ 的操作。
+
+指定别名时，将执行以下附加检查以确保修改操作不会以导致资源提供程序拒绝的方式更改请求内容：
+
+- 别名映射到的属性在请求的 API 版本中标记为 "可修改"。
+- 修改操作中的标记类型与请求的 API 版本中的属性的预期标记类型匹配。
+
+如果其中任一检查失败，则策略评估将回退到指定的 **conflictEffect**。
+
+> [!IMPORTANT]
+> 修改包含别名的定义的建议使用_审核_**冲突效果**，以避免使用 API 版本（其中映射的属性不可修改）的失败请求。 如果 API 版本的别名行为不同，则可以使用条件修改操作来确定用于每个 API 版本的修改操作。
 
 当使用修改效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合 if 条件的任意资源标记为不符合。
 
@@ -498,7 +517,7 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
   - 定义的角色必须包括所有授予[参与者](../../../role-based-access-control/built-in-roles.md#contributor)角色的操作。
 - conflictEffect（可选）
-  - 确定在多个策略定义修改同一属性的情况下，哪个策略定义“胜出”。
+  - 确定当多个策略定义修改相同的属性或在修改操作对指定的别名不起作用时，哪些策略定义 "入选"。
     - 对于新的或更新的资源，具有 Deny 的策略定义优先。 具有 Audit 的策略定义会跳过所有操作。 如果多个策略定义具有 Deny，则该请求作为冲突被拒绝。 如果所有策略定义都具有 Audit，则不处理冲突策略定义的任何操作。
     - 对于现有资源，如果多个策略定义具有 Deny，则符合性状态为“冲突” 。 如果一个或更少的策略定义具有 Deny，则每个分配都返回“不符合”的符合性状态 。
   - 可用值：audit、deny、disabled  。
@@ -513,6 +532,9 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
     - **值** (可选)
       - 要设置标记的值。
       - 如果**操作**是 _addOrReplace_ 或_添加_，则需要此属性。
+    - **条件** (可选) 
+      - 一个字符串，其中包含其 [策略函数](./definition-structure.md#policy-functions) 的计算结果为 _true_ 或 _false_的 Azure 策略语言表达式。
+      - 不支持以下策略函数： `field()` 、 `resourceGroup()` 、 `subscription()` 。
 
 ### <a name="modify-operations"></a>修改操作
 
@@ -548,9 +570,9 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
 
 |Operation |说明 |
 |-|-|
-|addOrReplace |将定义的标记和值添加到资源，即使已存在具有不同值的标记。 |
-|添加 |将定义的标记和值添加到资源。 |
-|删除 |从资源中删除定义的标记。 |
+|addOrReplace |将已定义的属性或标记和值添加到资源，即使已经存在具有不同值的属性或标记。 |
+|“添加” |将已定义的属性或标记和值添加到资源。 |
+|移除 |从资源中删除定义的属性或标记。 |
 
 ### <a name="modify-examples"></a>修改示例
 
@@ -593,6 +615,28 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+示例3：确保存储帐户不允许 blob 公共访问，仅在使用大于或等于 "2019-04-01" 的 API 版本评估请求时应用修改操作：
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159977"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958989"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
 
@@ -32,15 +32,15 @@ ms.locfileid: "82159977"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何解决 CPU 占用高的问题？
 
-在某些 CPU 占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 其他情况下，高 CPU 占用可能是由错误循环或编码实践导致的。 深入了解 CPU 占用升高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 有关详细信息，请参阅[捕获和分析 Web 应用高 CPU 占用的转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
+在某些 CPU 占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 其他情况下，高 CPU 占用可能是由错误循环或编码实践导致的。 深入了解 CPU 占用升高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 有关详细信息，请参阅[捕获和分析 Web 应用高 CPU 占用的转储文件](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何解决内存占用高的问题？
 
-在某些内存占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他情况下，代码中存在的 bug 可能会导致内存泄漏。 此外，编码实践也可能会增大内存占用。 深入了解内存占用高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可高效执行这两个步骤。 有关详细信息，请参阅[捕获和分析 Web 应用间歇性高内存的转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
+在某些内存占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他情况下，代码中存在的 bug 可能会导致内存泄漏。 此外，编码实践也可能会增大内存占用。 深入了解内存占用高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可高效执行这两个步骤。 有关详细信息，请参阅[捕获和分析 Web 应用间歇性高内存的转储文件](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 实现应用服务 Web 应用的自动化？
 
-可以使用 PowerShell cmdlet 管理和维护应用服务 Web 应用。 在我们的博客文章 [Automate web apps hosted in Azure App Service by using PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)（使用 PowerShell 实现 Azure 应用服务中托管的 Web 应用的自动化）中，我们将说明如何使用基于 Azure Resource Manager 的 PowerShell cmdlet 自动执行常见任务。 此博客文章中还包含适用于各种 Web 应用管理任务的示例代码。 有关所有应用服务 Web 应用 cmdlet 的说明和语法，请参阅 [Az.Websites](/powershell/module/az.websites)。
+可以使用 PowerShell cmdlet 管理和维护应用服务 Web 应用。 在我们的博客文章 [Automate web apps hosted in Azure App Service by using PowerShell](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way)（使用 PowerShell 实现 Azure 应用服务中托管的 Web 应用的自动化）中，我们将说明如何使用基于 Azure Resource Manager 的 PowerShell cmdlet 自动执行常见任务。 此博客文章中还包含适用于各种 Web 应用管理任务的示例代码。 有关所有应用服务 Web 应用 cmdlet 的说明和语法，请参阅 [Az.Websites](/powershell/module/az.websites)。
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>如何查看 Web 应用的事件日志？
 
@@ -81,7 +81,7 @@ ms.locfileid: "82159977"
 * 已在门户中停止 Web 应用。
 * Web 应用已达到资源配额限制，该限制可能适用于免费或共享缩放服务计划。
 
-若要了解导致错误的原因并解决问题，请按照 [Web 应用：“错误 403 - 此 Web 应用已停止”](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)中的步骤执行。
+若要了解导致错误的原因并解决问题，请按照 [Web 应用：“错误 403 - 此 Web 应用已停止”](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped)中的步骤执行。
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>可从何处了解有关各种应用服务计划的配额和限制的详细信息？
 
@@ -167,7 +167,7 @@ WebJobs 专用于后台处理。 可在 WebJobs 中执行任意数量的后台�
 
 早期 [Kestrel 版本](https://github.com/aspnet/KestrelHttpServer/issues/1182)的已知问题可能会导致托管于应用服务中的 ASP.NET Core 1.0 应用间歇性地停止响应。 还可能会看到以下消息：“指定的 CGI 应用程序遇到错误，服务器终止了该进程”。
 
-已在 Kestrel 版本 1.0.2 中修复了此问题。 此版本包含在 ASP.NET Core 1.0.3 更新中。 若要解决此问题，请确保将你的应用依赖项更新为使用 Kestrel 1.0.2。 或者，可以使用博客文章 [ASP.NET Core 1.0 slow perf issues in App Service web apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)（应用服务 Web 应用中 ASP.NET Core 1.0 低性能问题）中介绍的两种解决方法之一。
+已在 Kestrel 版本 1.0.2 中修复了此问题。 此版本包含在 ASP.NET Core 1.0.3 更新中。 若要解决此问题，请确保将你的应用依赖项更新为使用 Kestrel 1.0.2。 或者，可以使用博客文章 [ASP.NET Core 1.0 slow perf issues in App Service web apps](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites)（应用服务 Web 应用中 ASP.NET Core 1.0 低性能问题）中介绍的两种解决方法之一。
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>在 Web 应用的文件结构中找不到日志文件。 如何找到它们？
@@ -188,4 +188,4 @@ WebJobs 专用于后台处理。 可在 WebJobs 中执行任意数量的后台�
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>如何使用 Visual Studio 远程调试应用服务 Web 应用？
 
-有关如何使用 Visual Studio 调试 Web 应用的详细演练，请参阅 [Remote debug your App Service web app](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/)（远程调试应用服务 Web 应用）。
+有关如何使用 Visual Studio 调试 Web 应用的详细演练，请参阅 [Remote debug your App Service web app](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app)（远程调试应用服务 Web 应用）。

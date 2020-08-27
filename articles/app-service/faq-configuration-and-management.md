@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159994"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962343"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "82159994"
     * 值 = *所需时区*
 3. 选择“保存” 。
 
-对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列了解接受的值。 对于在 Linux 上运行的应用服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：中美洲/Adak。
+对于在 Windows 上运行的应用服务，请参阅[默认时区](/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列了解接受的值。 对于在 Linux 上运行的应用服务，将 [TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 设置为时区值。 下面是 TZ 数据库名称的示例：中美洲/Adak。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为什么连续 Web 作业有时会失败？
 
@@ -147,7 +147,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何添加 URL 重写规则？
 
-若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅 [Azure 应用服务：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅 [Azure 应用服务：了解 URL 重写](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制应用服务的入站流量？
 
@@ -222,7 +222,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 * 错误的网络安全组会阻碍应用服务环境的网络连接要求。
 * 强制隧道处于打开状态。
 
-有关详细信息，请参阅[部署（创建）新 Azure 应用服务环境时的常见问题](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/)。
+有关详细信息，请参阅[部署（创建）新 Azure 应用服务环境时的常见问题](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase)。
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>为什么无法删除应用服务计划？
 
@@ -286,7 +286,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 
-若要查找应用服务中安装的 Microsoft.NET 版本，最快的方法是使用 Kudu 控制台。 可以从门户或使用应用服务应用的 URL，来访问 Kudu 控制台。 有关详细说明，请参阅[确定应用服务中安装的 .NET 版本](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/)。
+若要查找应用服务中安装的 Microsoft.NET 版本，最快的方法是使用 Kudu 控制台。 可以从门户或使用应用服务应用的 URL，来访问 Kudu 控制台。 有关详细说明，请参阅[确定应用服务中安装的 .NET 版本](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services)。
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>为什么自动缩放不按预期方式工作？
 

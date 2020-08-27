@@ -1,23 +1,23 @@
 ---
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636302"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958739"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-可以通过修正将不符合 deployIfNotExists 或 modify 策略的资源置于符合状态。 无论是向管理组、订阅、资源组还是单个资源分配该策略，都可以通过指示 Azure Policy 在现有资源上运行已分配策略的 deployIfNotExists 效果或标记 operations 来完成修正。 本文介绍了使用 Azure Policy 了解并完成修正所需执行的步骤。
+可以通过修正将不符合 deployIfNotExists 或 modify 策略的资源置于符合状态。 更正是通过指示 Azure 策略对现有资源运行 **deployIfNotExists** 效果或已分配策略的 **修改操作** 来完成的，无论该分配是对管理组、订阅、资源组还是单个资源。 本文介绍了使用 Azure Policy 了解并完成修正所需执行的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 托管标识的_位置_不会影响其对 Azure 策略的操作。
+Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 托管标识的位置不会影响它对 Azure Policy 的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="托管标识 - 缺少角色" border="false":::
 
@@ -180,7 +180,7 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>在策略分配期间通过 Azure 门户创建修正任务
 
-创建修正任务的一种简化方法是在策略分配期间通过 Azure 门户执行此操作。 如果要分配的策略定义是**deployIfNotExists**或**修改**效果，则 "**更正**" 选项卡上的向导将提供 "_创建修正任务_" 选项。 如果选择此选项，则会创建与策略分配相同的补救任务。
+创建修正任务的一种简化方法是在策略分配期间通过 Azure 门户执行此操作。 如果要分配的策略定义是 deployIfNotExists 或 Modify 效果 ，“修正”选项卡上的向导会提供“创建修正任务”选项。 如果选择此选项，则会在分配策略的同时创建修正任务。
 
 ## <a name="next-steps"></a>后续步骤
 

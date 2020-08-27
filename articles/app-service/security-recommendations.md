@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eba08211355b0f57dd9dd11ec4c18d5912208ec8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546703"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962207"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 
-本文包含适用于 Azure 应用服务的安全建议。 实施这些建议将有助于你履行我们的共享职责模型中描述的安全职责，并改进 Web 应用解决方案的总体安全性。 若要详细了解 Microsoft 如何实现服务提供商责任，请阅读[Azure 基础结构安全性](../security/fundamentals/infrastructure.md)。
+本文包含适用于 Azure 应用服务的安全建议。 实施这些建议将有助于你履行我们的共享职责模型中描述的安全职责，并改进 Web 应用解决方案的总体安全性。 若要详细了解 Microsoft 如何实现服务提供商责任，请阅读 [Azure 基础结构安全性](../security/fundamentals/infrastructure.md)。
 
 ## <a name="general"></a>常规
 
@@ -38,19 +38,19 @@ ms.locfileid: "80546703"
 | 建议 | 注释 |
 |-|-|
 | 将 HTTP 重定向到 HTTPS | 默认情况下，客户端可以使用 HTTP 或 HTTPS 连接到 Web 应用。 建议将 HTTP 重定向到 HTTPS，因为 HTTPS 使用 SSL/TLS 协议来提供既加密又经过身份验证的安全连接。 |
-| 加密与 Azure 资源的通信 | 当应用连接到 Azure 资源（例如 [SQL 数据库](https://azure.microsoft.com/services/sql-database/)或 [Azure 存储](/azure/storage/)）时，连接一直保持在 Azure 中。 由于连接经过 Azure 中的共享网络，因此应始终加密所有通信。 |
+| 加密与 Azure 资源的通信 | 当应用连接到 Azure 资源（例如 [SQL 数据库](https://azure.microsoft.com/services/sql-database/)或 [Azure 存储](../storage/index.yml)）时，连接一直保持在 Azure 中。 由于连接经过 Azure 中的共享网络，因此应始终加密所有通信。 |
 | 需要尽可能新的 TLS 版本 | 从 2018 年开始，新的 Azure 应用服务应用使用 TLS 1.2。 更新版的 TLS 包含针对旧协议版本的安全改进。 |
 | 使用 FTPS | 应用服务支持使用 FTP 和 FTPS 来部署文件。 尽可能使用 FTPS 而不是 FTP。 如果未使用这两种协议或其中一种协议，则应[将其禁用](deploy-ftp.md#enforce-ftps)。 |
-| 保护应用程序数据 | 请勿将应用程序密钥（例如数据库凭据、API 令牌或私钥）存储在代码或配置文件中。 广为接受的方法是使用所选语言的标准模式将它们作为[环境变量](https://wikipedia.org/wiki/Environment_variable)进行访问。 在 Azure 应用服务中，可以通过[应用设置](web-sites-configure.md)和[连接字符串](web-sites-configure.md)定义环境变量。 应用设置和连接字符串以加密方式存储在 Azure 中。 只有在应用启动并将应用设置注入应用的进程内存中之前，才会对应用设置进行解密。 加密密钥会定期轮换。 或者，可以将 Azure 应用服务应用与 [Azure Key Vault](/azure/key-vault/) 集成，以实现高级密钥管理。 通过[使用托管标识访问 Key Vault](../key-vault/tutorial-web-application-keyvault.md)，应用服务应用可以安全地访问所需的机密。 |
+| 保护应用程序数据 | 请勿将应用程序密钥（例如数据库凭据、API 令牌或私钥）存储在代码或配置文件中。 广为接受的方法是使用所选语言的标准模式将它们作为[环境变量](https://wikipedia.org/wiki/Environment_variable)进行访问。 在 Azure 应用服务中，可以通过[应用设置](./configure-common.md)和[连接字符串](./configure-common.md)定义环境变量。 应用设置和连接字符串以加密方式存储在 Azure 中。 只有在应用启动并将应用设置注入应用的进程内存中之前，才会对应用设置进行解密。 加密密钥会定期轮换。 或者，可以将 Azure 应用服务应用与 [Azure Key Vault](../key-vault/index.yml) 集成，以实现高级密钥管理。 通过[使用托管标识访问 Key Vault](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)，应用服务应用可以安全地访问所需的机密。 |
 
 ## <a name="networking"></a>网络
 
 | 建议 | 注释 |
 |-|-|
 | 使用静态 IP 限制 | 使用 Windows 上的 Azure 应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。  |
-| 选择独立定价层 | 除了独立定价层，所有层都在 Azure 应用服务的共享网络基础结构上运行应用。 通过在专用[应用服务环境](environment/intro.md)中运行应用，隔离层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](/azure/virtual-network/)实例中运行。|
-| 在访问本地资源时使用安全连接 | 你可以使用[混合连接](app-service-hybrid-connections.md)、[虚拟网络集成](web-sites-integrate-with-vnet.md)或[应用服务环境](environment/intro.md)来连接到本地资源。 |
-| 限制向入站网络流量公开 | 可以通过网络安全组限制网络访问并控制公开的终结点数。 有关详细信息，请参阅[如何控制到应用服务环境的入站流量](environment/app-service-app-service-environment-control-inbound-traffic.md)。 |
+| 选择独立定价层 | 除了独立定价层，所有层都在 Azure 应用服务的共享网络基础结构上运行应用。 通过在专用 [应用服务环境](environment/intro.md)中运行应用，隔离层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](../virtual-network/index.yml)实例中运行。|
+| 在访问本地资源时使用安全连接 | 你可以使用 [混合连接](app-service-hybrid-connections.md)、 [虚拟网络集成](web-sites-integrate-with-vnet.md)或 [应用服务环境](environment/intro.md) 来连接到本地资源。 |
+| 限制向入站网络流量公开 | 可以通过网络安全组限制网络访问并控制公开的终结点数。 有关详细信息，请参阅 [如何控制到应用服务环境的入站流量](environment/app-service-app-service-environment-control-inbound-traffic.md)。 |
 
 ## <a name="monitoring"></a>监视
 
@@ -60,4 +60,4 @@ ms.locfileid: "80546703"
 
 ## <a name="next-steps"></a>后续步骤
 
-咨询你的应用程序提供商，以确定是否还要满足其他安全要求。 有关开发安全的应用程序的详细信息，请参阅[安全开发文档](../security/fundamentals/abstract-develop-secure-apps.md)。
+咨询你的应用程序提供商，以确定是否还要满足其他安全要求。 有关开发安全的应用程序的详细信息，请参阅[安全开发文档](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)。

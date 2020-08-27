@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327338"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961969"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -54,11 +54,11 @@ ms.locfileid: "87327338"
 
 ### <a name="overview-workbook"></a>“概述”工作簿
 
-在所选订阅的“概述”工作簿中，表内显示订阅中分组的最多 10 个存储帐户的交互式存储指标和服务可用性状态。 可以根据你从下面的下拉列表中选择的选项来筛选结果：
+在所选订阅的 **概述** 工作簿中，表显示订阅中分组最多5个存储帐户的交互式存储指标和服务可用性状态。 可以根据你从下面的下拉列表中选择的选项来筛选结果：
 
 * 订阅 - 只列出包含存储帐户的订阅。  
 
-* 存储帐户 - 默认情况下，预先选择 10 个存储帐户。 如果你在范围选择器中选择所有或多个存储帐户，最多会返回 200 个存储帐户。 例如，如果你选择的三个订阅共有 573 个存储帐户，那么只会显示 200 个帐户。 
+* **存储帐户** -默认情况下，预先选择5个存储帐户。 如果你在范围选择器中选择所有或多个存储帐户，最多会返回 200 个存储帐户。 例如，如果你选择的三个订阅共有 573 个存储帐户，那么只会显示 200 个帐户。 
 
 * **时间范围** - 默认情况下，系统会根据你所做的选择显示过去 4 小时的相应信息。
 

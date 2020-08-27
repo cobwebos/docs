@@ -5,21 +5,21 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 04e496806f2c388eb3a69df1b4cc3897b8132f6c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985676"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962904"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 
-如果意外删除了 Azure 应用服务中的应用，则可以使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令将其还原。
+如果意外删除了 Azure 应用服务中的应用，则可以使用 [Az PowerShell 模块](/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令将其还原。
 
 > [!NOTE]
-> - 初始删除 30 天后，已删除的应用将从系统中清除。 清除应用后，将无法恢复。
+> - 初始删除 30 天后，已删除的应用将从系统中清除。 清除应用后，将无法恢复它。
 > - 消耗计划不支持撤消删除功能。
-> - 在应用服务环境中运行的应用服务应用不支持快照。 因此，应用服务环境中运行的应用服务应用不支持删除功能和克隆功能。
+> - 在应用服务环境中运行的应用服务应用不支持快照。 因此，应用服务环境中运行的应用服务应用不支持撤消删除功能和克隆功能。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>重新注册应用服务资源提供程序
@@ -66,14 +66,14 @@ Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetA
 
 命令的输入包括：
 
-- **目标资源组**：要在其中还原应用的目标资源组
+- **目标资源组**：要将应用还原到的目标资源组
 - **名称**：应用的名称，应全局唯一。
 - **TargetAppServicePlanName**：链接到该应用的应用服务计划
 
 默认情况下，`Restore-AzDeletedWebApp` 会同时还原应用配置以及任何内容。 如果只想还原内容，请在此 cmdlet 中使用 `-RestoreContentOnly` 标志。
 
 > [!NOTE]
-> 如果应用已在应用服务环境中托管，然后从中删除，则只有当相应应用服务环境仍然存在时，才能还原它。
+> 如果应用以前托管在应用服务环境中，然后被删除，则还原该应用的前提是相应的应用服务环境仍然存在。
 >
 
-可在以下文章中找到完整的 cmdlet 参考信息：[Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp)。
+可在以下文章中找到完整的 cmdlet 参考信息：[Restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp)。

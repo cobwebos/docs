@@ -4,18 +4,18 @@ description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414932"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961510"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
 本文介绍如何有关[应用服务](overview.md)中的 OS 或软件的特定版本信息。 
 
-应用服务是一种平台即服务，这意味着，Azure 会自行管理 OS 和应用程序堆栈，而你只需管理自己的应用程序及其数据。 在 [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/)中，能够以更高的力度控制 OS 和应用程序堆栈。 考虑到这一点，应用服务用户了解以下方面的详细信息总会有好处：
+应用服务是一种平台即服务，这意味着，Azure 会自行管理 OS 和应用程序堆栈，而你只需管理自己的应用程序及其数据。 在 [Azure 虚拟机](../virtual-machines/index.yml)中，能够以更高的力度控制 OS 和应用程序堆栈。 考虑到这一点，应用服务用户了解以下方面的详细信息总会有好处：
 
 -   如何以及何时应用 OS 更新？
 -   应用服务如何修补重大漏洞（例如零日漏洞）？
@@ -25,13 +25,13 @@ ms.locfileid: "87414932"
 
 ## <a name="how-and-when-are-os-updates-applied"></a>如何以及何时应用 OS 更新？
 
-Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务器和来宾虚拟机 (VM)。 这两种方案会根据每月的[周二修补](https://technet.microsoft.com/security/bulletins.aspx)计划更新。 这些更新会自动应用，保证达到 Azure 服务的高可用性 SLA。 
+Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务器和来宾虚拟机 (VM)。 这两种方案会根据每月的[周二修补](/security-updates/)计划更新。 这些更新会自动应用，保证达到 Azure 服务的高可用性 SLA。 
 
 有关如何应用更新的详细信息，请参阅[揭示应用服务 OS 背后的秘密](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)。
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure 如何处理重大漏洞？
 
-当严重漏洞需要立即修补（如[零天漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）时，将根据具体情况来处理高优先级更新。
+当严重漏洞需要立即修补（如 [零天漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）时，将根据具体情况来处理高优先级更新。
 
 访问 [Azure 安全博客](https://azure.microsoft.com/blog/topics/security/)，及时了解 Azure 中的关键安全公告。 
 
@@ -55,7 +55,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ### <a name="new-major-and-minor-versions"></a>新的主要版本和次要版本
 
-添加新的主要版本或次要版本后，该版本与现有版本一并安装。 可将应用手动升级到新版本。 如果在配置文件（例如 `web.config` 和 `package.json`）中配置了运行时版本，则需要使用相同的方法升级。 如果使用应用服务设置配置了运行时版本，则可以在 [Azure 门户](https://portal.azure.com)中或者在 [Cloud Shell](../cloud-shell/overview.md) 中运行 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令来更改此版本，如以下示例所示：
+添加新的主要版本或次要版本后，该版本与现有版本一并安装。 可将应用手动升级到新版本。 如果在配置文件（例如 `web.config` 和 `package.json`）中配置了运行时版本，则需要使用相同的方法升级。 如果使用应用服务设置配置了运行时版本，则可以在 [Azure 门户](https://portal.azure.com)中或者在 [Cloud Shell](../cloud-shell/overview.md) 中运行 [Azure CLI](/cli/azure/get-started-with-azure-cli) 命令来更改此版本，如以下示例所示：
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -81,12 +81,12 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `dotnet --version` |
 | PHP 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `php --version` |
-| 默认的 Node.js 版本 | 在[Cloud Shell](../cloud-shell/overview.md)中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| 默认的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md)中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |  
 | Java 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `java -version` |  
 
 > [!NOTE]  
-> 访问注册表位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`，其中存储了有关[“KB”修补](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)的信息。该位置已被锁定。
+> 访问注册表位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`，其中存储了有关[“KB”修补](/security-updates/SecurityBulletins/securitybulletins)的信息。该位置已被锁定。
 >
 >
 

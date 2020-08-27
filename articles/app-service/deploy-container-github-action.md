@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 21019917f37ad95dc15056daa51b3d9e53ec06fa
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6af23aba28ce3cda9982878ed08ec515aa25633a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962598"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 操作将自定义容器部署到应用服务
 
-使用 [GitHub Actions](https://help.github.com/en/articles/about-github-actions)，你可以灵活地生成自动化软件开发生命周期工作流。 [对于容器的 Azure App Service 操作](https://github.com/Azure/webapps-container-deploy)，可以使用 GitHub 操作自动化工作流，以便部署自定义容器[应用服务](overview.md)。
+可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 [对于容器的 Azure App Service 操作](https://github.com/Azure/webapps-container-deploy)，可以使用 GitHub 操作自动化工作流，以便部署自定义容器[应用服务](overview.md)。
 
 > [!IMPORTANT]
 > GitHub Actions 当前为 beta 版本。 必须首先使用 GitHub 帐户[注册才能加入预览](https://github.com/features/actions)。
@@ -33,7 +33,7 @@ ms.locfileid: "88082947"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -58,9 +58,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
 
-将[创建服务主体](#create-a-service-principal)的 JSON 输出的内容粘贴为机密变量的值。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
+将 [创建服务主体](#create-a-service-principal) 的 JSON 输出的内容粘贴为机密变量的值。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
 
 以后配置工作流文件时，请使用机密来输入 `creds` Azure 登录操作。 例如：
 
@@ -112,7 +112,7 @@ jobs:
 
 若要将映像部署到应用服务中的自定义容器，请使用 `azure/webapps-container-deploy@v1` 操作。 该操作有五个参数：
 
-| **Parameter**  | **解释**  |
+| **参数**  | **解释**  |
 |---------|---------|
 | **app-name** | （必需）应用服务应用的名称 | 
 | **slot-name** | （可选）输入生产槽以外的现有槽 |

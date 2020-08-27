@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690249"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959147"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -153,7 +153,7 @@ SCIM RFC 中定义了多个终结点。 可以从 /User 终结点开始，然后
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和管理员查询用户。  
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和成员查询组。  
 * 接受使用一个持有者令牌对应用程序进行 Azure AD 身份验证和授权。
-* 支持软删除用户 `active=false` 并还原用户 `active=true` 。
+* 支持软删除用户 `active=false` 并还原用户 `active=true` (用户对象应在请求中返回，无论用户是否) 活动。 只有当用户从应用程序中进行了硬删除时，才应返回该用户。 
 
 实现 SCIM 终结点时，请遵循以下一般准则，以确保与 Azure AD 兼容：
 

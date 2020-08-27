@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b168328f64f599de109dbd0a5bd95c0a26f5f902
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082949"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961850"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 
@@ -55,7 +55,7 @@ ms.locfileid: "88082949"
 
 ## <a name="automate-with-cli"></a>使用 CLI 进行自动化
 
-若要使用 Azure CLI 配置 CI/CD，请运行[az webapp deployment container config](https://docs.microsoft.com/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config)命令生成 webhook URL。 URL 可用于配置 DockerHub 或 Azure 容器注册表。
+若要使用 Azure CLI 配置 CI/CD，请运行 [az webapp deployment container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) 命令生成 webhook URL。 URL 可用于配置 DockerHub 或 Azure 容器注册表。
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true

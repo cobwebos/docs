@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080926"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958927"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>应用程序网关与服务终结点的集成
 应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文逐步介绍如何使用应用服务（多租户）对其进行配置，并讨论有关 ILB 和外部 ASE 的注意事项。
@@ -84,6 +84,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关应用服务环境的详细信息，请参阅[应用服务环境文档](https://docs.microsoft.com/azure/app-service/environment)。
+有关应用服务环境的详细信息，请参阅[应用服务环境文档](/azure/app-service/environment)。
 
 若要进一步保护 Web 应用，请参阅 [Azure Web 应用程序防火墙文档](../../web-application-firewall/ag/ag-overview.md)中有关应用程序网关上的 Web 应用程序防火墙的信息。
