@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 10a75d19b7fb134b8e7498c422742e00f6475da5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690198"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918462"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题 (常见问题) 
 
@@ -289,7 +290,7 @@ WebSocket
 
 你是否能帮助填充以下测试指标，包括要测试的函数，以及如何测试 SDK 和 REST Api？ 特别是 "交互式" 和 "对话" 中的差异，我在现有的文档/示例中看不到这些差异。
 
-| 终结点                                                | 功能测试                                                   | SDK 中 IsInRole 中的声明 | REST API |
+| 端点                                                | 功能测试                                                   | SDK 中 IsInRole 中的声明 | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 | `/speech/synthesize/cognitiveservices/v1`               | 文本 (文本到语音转换的合成)                                   |     | 是      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | 认知服务本地听写 v1 websocket 终结点        | 是 | 否       |
@@ -366,7 +367,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 
-**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如 `-p 5001:5000`。
+**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如，`-p 5001:5000`。
 
 
 <br>
@@ -394,7 +395,7 @@ Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 
 **答案：** 与我们的最新 `en-US` 信息，我们建议使用超过6个并发请求的更多 docker 容器。 它获取的 crazier 超过16个内核，并且 (NUMA) 节点敏感的情况下，它将成为非一致性内存访问。 下表描述了每个语音容器的最小和建议的资源分配。
 
-# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
 
 | 容器      | 最小值             | 建议         |
 |----------------|---------------------|---------------------|
@@ -406,7 +407,7 @@ Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 |-----------------------|---------------------|---------------------|
 | 自定义语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 | 容器      | 最小值             | 建议         |
 |----------------|---------------------|---------------------|

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763c02cca954f7bcd3f9763bfe45f3954dacf0a7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: bbe8b4176e33ff04ff8033af3b50cbdd0d882ae2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719438"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919567"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -27,7 +27,11 @@ ms.locfileid: "88719438"
 本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。 如果已安装 MFA 服务器，但需进行升级，请参阅[升级到最新的 Azure 多重身份验证服务器](howto-mfaserver-deploy-upgrade.md)。 若要了解如何只安装 Web 服务，请参阅[部署 Azure 多重身份验证服务器移动应用 Web 服务](howto-mfaserver-deploy-mobileapp.md)。
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+>
+> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
 ## <a name="plan-your-deployment"></a>规划部署
 
@@ -106,6 +110,13 @@ Azure MFA 服务器由三个 Web 组件组成：
 ## <a name="download-the-mfa-server"></a>下载 MFA 服务器
 
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
+
+> [!IMPORTANT]
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望 (MFA) 的用户需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+>
+> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。 仅当你是现有的 MFA 服务器客户时，以下步骤才适用。
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 搜索并选择“Azure Active Directory”。 选择 "**安全**  >  **MFA**"。

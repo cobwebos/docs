@@ -10,22 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: f9670733f8aa040b87cec20ac28aacc636c04698
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056204"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918649"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>实时对话对话 (预览) 
 
-通过语音 SDK 的**ConversationTranscriber** API，你可以通过使用或将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话 `PullStream` `PushStream` 。 本主题要求你了解如何在 Speech SDK (版本1.8.0 或更高版本中使用语音到文本) 。 有关详细信息，请参阅[什么是语音服务](overview.md)。
+通过语音 SDK 的 **ConversationTranscriber** API，你可以通过使用或将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话 `PullStream` `PushStream` 。 本主题要求你了解如何在 Speech SDK (版本1.8.0 或更高版本中使用语音到文本) 。 有关详细信息，请参阅 [什么是语音服务](overview.md)。
 
 ## <a name="limitations"></a>限制
 
 - Windows、Linux 和 Android 上的 c + +、c # 和 Java 支持 ConversationTranscriber API。
-- 目前在以下区域的 "en-us" 和 "zh-chs" 语言中提供： _centralus_和_eastasia_。
-- 需要一个带有播放引用流的7个 mic 循环多麦克风阵列。 麦克风阵列应满足[我们的规范](https://aka.ms/sdsdk-microphone)。
+- 目前在以下区域的 "en-us" 和 "zh-chs" 语言中提供： _centralus_ 和 _eastasia_。
+- 需要一个带有播放引用流的7个 mic 循环多麦克风阵列。 麦克风阵列应满足 [我们的规范](https://aka.ms/sdsdk-microphone)。
 - [语音设备 SDK](speech-devices-sdk.md)提供了合适的设备和演示会话脚本的示例应用。
 
 ## <a name="optional-sample-code-resources"></a>可选的示例代码资源
@@ -37,7 +38,7 @@ ms.locfileid: "88056204"
 
 ## <a name="prerequisites"></a>先决条件
 
-语音服务订阅。 如果没有 Azure 帐户，可以创建[一个免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。
+语音服务订阅。 如果没有 Azure 帐户，可以创建 [一个免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/) 。
 
 ## <a name="create-voice-signatures"></a>创建语音签名
 
@@ -50,7 +51,7 @@ ms.locfileid: "88056204"
 
 ### <a name="sample-code"></a>代码示例
 
-下面的示例演示了使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名替换为 "YourServiceRegion"，并将 " `{region}` " (_centralus_或_eastasia_) 。
+下面的示例演示了使用 c # 中 [的 REST API](https://aka.ms/cts/signaturegenservice) 以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名替换为 "YourServiceRegion"，并将 " `{region}` " (_centralus_ 或 _eastasia_) 。
 
 ```csharp
 class Program

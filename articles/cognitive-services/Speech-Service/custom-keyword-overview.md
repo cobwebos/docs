@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760543"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918887"
 ---
 # <a name="what-is-a-keyword"></a>什么是关键字？
 
@@ -29,12 +30,12 @@ ms.locfileid: "87760543"
 |----------|----------|
 | 关键字自定义 | 作为品牌的扩展，关键字可强化你与客户建立的权益。 借助 Speech Studio 上的自定义关键字门户，你可以指定最能代表品牌的任何单词或短语。 您可以通过选择适当的发音来进一步个性化关键字，这将由生成的关键字模型来接受。
 | 关键字验证 | 如果在本地检测到的关键字有很高的置信度，则会将音频发送到云，以便进一步验证用户是否使用了关键字。 关键字验证通过降低不正确的本地检测并保护用户隐私的影响，提供额外的安全层。
-| 语音助手 & 语音 SDK 集成 | 可以通过语音 SDK 轻松地在设备或应用程序中集成从 Speech Studio 上的自定义关键字生成的关键字。 只需将 SDK 指向由 Speech Studio 提供的关键字模型，你的产品就会激活语音，并受关键字验证的支持。 您可以通过构建自己的[语音助手](voice-assistants.md)来完成产品的语音体验。
+| 语音助手 & 语音 SDK 集成 | 可以通过语音 SDK 轻松地在设备或应用程序中集成从 Speech Studio 上的自定义关键字生成的关键字。 只需将 SDK 指向由 Speech Studio 提供的关键字模型，你的产品就会激活语音，并受关键字验证的支持。 您可以通过构建自己的 [语音助手](voice-assistants.md)来完成产品的语音体验。
 
 ## <a name="get-started-with-custom-keywords"></a>自定义关键字入门
 
-* 有关基本用法和设计模式，请参阅[自定义关键字基础知识](custom-keyword-basics.md)。
-* 如何[使用 c # 通过语音 SDK 对产品进行语音激活](tutorial-voice-enable-your-bot-speech-sdk.md)
+* 有关基本用法和设计模式，请参阅 [自定义关键字基础知识](custom-keyword-basics.md) 。
+* 如何 [使用 c # 通过语音 SDK 对产品进行语音激活](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="choose-an-effective-keyword"></a>选择有效关键字
 

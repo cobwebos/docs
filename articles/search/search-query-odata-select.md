@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206881"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919652"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $select 语法
 
@@ -32,7 +32,7 @@ ms.locfileid: "86206881"
 
 ## <a name="syntax"></a>语法
 
-**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$select**参数的语法：
+**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$select** 参数的语法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -117,4 +117,4 @@ field_path ::= identifier('/'identifier)*
 - [如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
 - [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)

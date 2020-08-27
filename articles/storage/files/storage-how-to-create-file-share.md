@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525643"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930666"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> 预览版 Az PowerShell 模块中提供了通过 PowerShell 设置和更改层的功能。 这些 cmdlet 或其输出可能会在正式可用的 Az PowerShell 模块中发布之前发生更改，因此请使用此功能创建脚本。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 最新 Azure CLI 更新中提供了用于创建或将文件共享移动到特定层的功能。 更新 Azure CLI 特定于所使用的操作系统/Linux 分发。 有关如何更新系统上 Azure CLI 的说明，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -282,6 +285,10 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> 在 `--access-tier` 最新的 Azure CLI 包中提供了使用参数设置层的功能。 此命令或其输出可能会在标记为 "已公开发布" 之前发生更改，因此请使用此功能创建脚本。
+
 ---
 
 ## <a name="next-steps"></a>后续步骤

@@ -2,16 +2,17 @@
 title: 管理 Azure Application Insights 的使用情况和成本 | Microsoft docs
 description: 在 Application Insights 中管理遥测量并监视成本。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309675"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930479"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -57,7 +58,7 @@ ms.locfileid: "87309675"
 ![选择定价](./media/pricing/pricing-001.png)
 
 A. 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](./sampling.md)后）。  
-B. 对[多步骤 web 测试](./availability-multistep.md)收取单独的费用。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
+B. 对 [多步骤 web 测试](./availability-multistep.md)收取单独的费用。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
 C. 查看上个月的数据量趋势。  
 D. 启用数据引入[采样](./sampling.md)。
 E. 设置每日数据量上限。  
@@ -174,7 +175,7 @@ union (AppAvailabilityResults),
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况
 
-Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中心提供了大量实用功能。 例如，通过“成本分析”功能，可以查看 Azure 资源的支出。 按资源类型添加筛选器（对于 Application Insights，将其添加到 microsoft.insights/components），可以跟踪自己的资源支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  对于当前定价计划中的 Application Insights 资源，由于所有 Azure Monitor 组件只有一个日志后端，因此大多数使用情况将“计量类别”显示为“Log Analytics”。 
+Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中心提供了大量实用功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 按资源类型添加筛选器（对于 Application Insights，将其添加到 microsoft.insights/components），可以跟踪自己的资源支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  对于当前定价计划中的 Application Insights 资源，由于所有 Azure Monitor 组件只有一个日志后端，因此大多数使用情况将“计量类别”显示为“Log Analytics”。 
 
 通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，可以更好地了解你的使用情况。
 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -203,7 +204,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
     
 * **限制**：此项将数据速率限制为每秒 32,000 个事件，取每个检测密钥 1 分钟的平均值。 每分钟会评估一次应用发送的数据量。 如果超出一分钟内的平均每秒速率，服务器将拒绝某些请求。 SDK 将缓冲数据，然后尝试重新发送该数据。 它会在几分钟内出现传播高峰。 如果应用连续以超出限制的速率发送数据，一些数据会被丢弃。 （ASP.NET、Java 和 JavaScript SDK 会尝试以这种方式重新发送；其他 SDK 可能会只是丢弃超出限制的数据。）如果发生超出限制的情况，会显示一个通知，警告发生了这种情况。
 
-## <a name="manage-your-maximum-daily-data-volume"></a>管理每日数据量上限
+## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
 可以使用每日容量上限，限制所收集的数据。 但是，如果达到上限，会丢失当天剩余时间从应用程序发送的所有遥测数据。 不建议使应用程序达到每日上限。 达到每日上限后，无法跟踪应用程序的运行状况和性能。
 
@@ -230,7 +231,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 * 已达到 Application Insights 组件的每日上限
 
 ## <a name="sampling"></a>采样
-[采样](./sampling.md)是一种降低遥测发送到应用的速率的方法，同时保留在诊断搜索过程中查找相关事件的能力。 此外，还可保留正确的事件计数。
+[采样](./sampling.md) 是一种降低遥测发送到应用的速率的方法，同时保留在诊断搜索过程中查找相关事件的能力。 此外，还可保留正确的事件计数。
 
 采样是降低费用同时又不超出每月配额的有效方式。 采样算法会保留遥测的相关项，这样，当使用“搜索”时便可查找与特定异常相关的请求。 该算法还保留正确计数，使用户可在指标资源管理器中看到请求率、异常率和其他计数的正确值。
 
@@ -319,7 +320,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 方案                               | 每日节点计数总数 |
+| 场景                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

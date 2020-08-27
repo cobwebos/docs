@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053994"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919516"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
@@ -25,7 +25,11 @@ ms.locfileid: "88053994"
 如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+>
+> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
 升级步骤速览：
 
@@ -102,7 +106,7 @@ ms.locfileid: "88053994"
 
    完成这一步后，便无法在此 AD FS 群集中通过 MFA 服务器进行双重验证，除非完成到第 8 步。
 
-4. 通过运行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本，注销 AD FS 适配器的较旧版本。 确保 *-Name*参数 ("WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication" ) 与步骤3中显示的名称相匹配。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
+4. 通过运行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本，注销 AD FS 适配器的较旧版本。 确保 *-Name* 参数 ("WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication" ) 与步骤3中显示的名称相匹配。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
 5. 通过运行 Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本注册新的 AD FS 适配器。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
 6. 在从 AD FS 场中删除的每个服务器上重新启动 AD FS 服务。
 7. 将更新后的服务器重新添加到 AD FS 场，并删除场中的其他服务器。

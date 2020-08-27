@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abfb970ca322724adb0f8919b7509bc8a641378
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b945b984210dc3fc3338da8a5670a7813198e40
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652800"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919465"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
 
@@ -27,7 +27,11 @@ ms.locfileid: "80652800"
 * 受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。 目前只支持终端服务。  
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+>
+> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
 > [!NOTE]
 > 不支持使用此功能为 Windows Server 2012 R2 上的终端服务提供安全保障。
@@ -42,9 +46,9 @@ ms.locfileid: "80652800"
 5. 单击 "**添加 ...** "
 6. 使用“受信任 IP”选项卡，可以跳过从特定 IP 发起的 Windows 会话的 Azure 多重身份验证。 例如，如果员工可以在办公室和家里使用应用程序，你可以决定不让其在办公室进行 Azure 多重身份验证时电话响铃。 为此，可将办公室子网指定为受信任 IP 条目。
 7. 单击 "**添加 ...** "
-8. 如果要跳过单个 IP 地址，请选择 "**单个 ip** "。
-9. 如果要跳过整个 IP 范围，请选择 " **Ip 范围**"。 示例：10.63.193.1-10.63.193.100。
-10. 如果要使用子网表示法指定 Ip 范围，请选择 "**子网**"。 输入子网的起始 IP，并从下拉列表中选取适当的子网掩码。
+8. 如果要跳过单个 IP 地址，请选择 " **单个 ip** "。
+9. 如果要跳过整个 IP 范围，请选择 " **Ip 范围** "。 示例：10.63.193.1-10.63.193.100。
+10. 如果要使用子网表示法指定 Ip 范围，请选择 " **子网** "。 输入子网的起始 IP，并从下拉列表中选取适当的子网掩码。
 11. 单击 **“确定”** 。
 
 ## <a name="next-steps"></a>后续步骤

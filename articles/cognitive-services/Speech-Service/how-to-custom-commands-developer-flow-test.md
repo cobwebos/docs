@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: a7992a2a27822f87cc8667ff86f642d1d47d09aa
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec8e40c0908855cd06d647bdd9121106e3553c11
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307463"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918904"
 ---
 # <a name="test-your-custom-commands-application"></a>测试自定义命令应用程序
 
@@ -30,19 +31,19 @@ ms.locfileid: "85307463"
 
 ## <a name="test-with-windows-voice-assistant-client"></a>用 Windows 语音助手客户端进行测试
 
-Windows 语音助手客户端是 c # 中的一个 Windows Presentation Foundation （WPF）应用程序，可以在创建自定义客户端应用程序之前轻松地测试与机器人的交互。
+Windows 语音助手客户端是 c # 中的一种 Windows Presentation Foundation (WPF) 应用程序，使您可以轻松地在创建自定义客户端应用程序之前测试与机器人的交互。
 
 该工具可以接受自定义命令应用程序 ID。 它允许您测试在自定义命令服务上托管的任务完成或命令和控制方案。
 
-若要设置客户端，请签出[Windows 语音助手客户端](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf)。
+若要设置客户端，请签出 [Windows 语音助手客户端](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf)。
 
 > [!div class="mx-imgBorder"]
 > ![WVAC 创建配置文件](media/custom-commands/conversation.png)
 
 ## <a name="test-with-speech-sdk-enabled-client-applications"></a>测试已启用 Speech SDK 的客户端应用程序 
-语音软件开发工具包（SDK）公开了许多语音服务功能，可用于开发启用了语音功能的应用程序。 它还可在许多编程语言和所有平台上使用。
+ (SDK) 的语音软件开发工具包公开了许多语音服务功能，可用于开发启用了语音功能的应用程序。 它还可在许多编程语言和所有平台上使用。
 
-使用 Speech SDK 设置通用 Windows 平台（UWP）客户端应用程序，并将其与自定义命令应用程序集成：  
+使用 Speech SDK 设置通用 Windows 平台 (UWP) 客户端应用程序，并将其与自定义命令应用程序集成：  
 - [如何：使用语音 SDK 与客户端应用程序集成](./how-to-custom-commands-setup-speech-sdk.md)
 - [如何：将活动发送到客户端应用程序](./how-to-custom-commands-send-activity-to-client.md)
 - [如何：设置 web 终结点](./how-to-custom-commands-setup-web-endpoints.md)

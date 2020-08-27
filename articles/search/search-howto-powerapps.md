@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751066"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918037"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教程：从 Power Apps 查询认知搜索索引
 
@@ -261,5 +261,4 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 使用 Power Apps 可以快速开发自定义应用。 了解如何连接到搜索索引后，接下来请详细了解如何在自定义 Power App 中创建丰富的可视化体验。
 
 > [!div class="nextstepaction"]
-> [Power Apps 学习目录](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
-
+> [Power Apps 学习目录](/powerapps/learning-catalog/get-started)
