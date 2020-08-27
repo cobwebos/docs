@@ -4,14 +4,14 @@ description: 列出可跨 Azure 区域移动的 Azure 资源类型
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040962"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948107"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -121,6 +121,7 @@ ms.locfileid: "87040962"
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -200,7 +201,7 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | apiapps | 是（使用模板）<br/><br/> [将应用服务应用移到另一个区域](../../app-service/manage-move-across-regions.md) | 
+> | apiapps | 是（使用模板）<br/><br/> [将应用服务应用移动到其他区域](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | 否 | 
 > | gateways | 否 | 
 
@@ -249,14 +250,14 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | batchaccounts |  Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动批处理帐户](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts |  Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板来导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动 Batch 帐户](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | clusters | 否 <br/><br/> Azure Batch AI 服务已[停](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai)用。
+> | clusters | 否 <br/><br/> Azure Batch AI 服务已 [停](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai)用。
 > | fileservers | 否 | 
 > | jobs | 否 | 
 > | workspaces | 否 | 
@@ -355,7 +356,7 @@ ms.locfileid: "87040962"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | accounts | 否 | 
-> | 认知搜索 | 支持手动步骤。<br/><br/> 了解如何[将 Azure 认知搜索服务转移到另一个区域](../../search/search-howto-move-across-regions.md)
+> | 认知搜索 | 支持手动步骤。<br/><br/> 了解如何 [将 Azure 认知搜索服务转移到另一个区域](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -410,7 +411,7 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | containerservices | 否。<br/><br/> 服务已[停](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)用。
+> | containerservices | 否。<br/><br/> 服务[已停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -447,7 +448,7 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | resourceproviders | 否 | 
+> | resourceproviders | 不适合 | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -568,9 +569,9 @@ ms.locfileid: "87040962"
 > | ------------- | ----------- |
 > | artifactsources | 否 | 
 > | rollouts | 否 |  
-> | servicetopologies | 否 | 
-> | servicetopologies / services | 否 |  
-> | servicetopologies / services / serviceunits | 否 | 
+> | servicetopologies | 不适合 | 
+> | servicetopologies / services | 不适合 |  
+> | servicetopologies / services / serviceunits | 不适合 | 
 > | steps | 否 | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -589,7 +590,7 @@ ms.locfileid: "87040962"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | 控制器 | 否 | 
-> | AKS 群集 | 否<br/><br/> [了解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region)有关移动到另一个区域的详细信息。
+> | AKS 群集 | 不适合<br/><br/> [了解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) 有关移动到另一个区域的详细信息。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -599,7 +600,7 @@ ms.locfileid: "87040962"
 > | labcenters | 否 | 
 > | labs | 否 | 
 > | labs / environments | 否 |  
-> | labs / servicerunners | 否 | 
+> | labs / servicerunners | 不适合 | 
 > | labs / virtualmachines | 否 |  
 > | schedules | 否 |  
 
@@ -638,7 +639,7 @@ ms.locfileid: "87040962"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | clusters | 否 |  
-> | namespaces | 是（带模板）<br/><br/> [将事件中心命名空间移动到另一个区域](../../event-hubs/move-across-regions.md) | 
+> | namespaces | 是（带模板）<br/><br/> [将事件中心命名空间移到另一个区域](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
@@ -715,7 +716,7 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | checknameavailability |  否。<br/><br/> IoT Central 适用于地理位置，而不是区域。
+> | checknameavailability |  否。<br/><br/> IoT Central 使用地理位置而不是区域。
 > | graph | 否
 
 ## <a name="microsoftiothub"></a>Microsoft.IoTHub
@@ -723,7 +724,7 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> |  iothub |  是（克隆中心） <br/><br/> [将 IoT 中心克隆到另一个区域](../../iot-hub/iot-hub-how-to-clone.md)
+> |  iothub |  是 (克隆中心)  <br/><br/> [将 IoT 中心克隆到另一个区域](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
@@ -907,7 +908,7 @@ ms.locfileid: "87040962"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是 <br/><br/> 你可以将现有配置导出为模板，并在新区域中部署模板。 了解如何移动[外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)或[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)负载均衡器。 |
+> | loadbalancers | 是 <br/><br/> 可以将现有配置导出为模板，然后在新区域中部署该模板。 了解如何移动[外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)或[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)负载均衡器。 |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
@@ -923,7 +924,7 @@ ms.locfileid: "87040962"
 > | privatednszones/virtualnetworklinks |  否 |  
 > | privateendpoints | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是<br/><br/> 可以将现有的公共 IP 地址配置导出为模板，并在新区域中部署模板。 [了解](../../virtual-network/move-across-regions-publicip-portal.md)有关移动公共 IP 地址的详细信息。 |
+> | publicipaddresses | 是<br/><br/> 可以将现有公共 IP 地址配置导出为模板，然后在新区域中部署该模板。 [详细了解](../../virtual-network/move-across-regions-publicip-portal.md)如何移动公共 IP 地址。 |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -1011,7 +1012,7 @@ ms.locfileid: "87040962"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | vaults | 否。<br/><br/> 不支持将 Azure 备份的恢复服务保管库移动到 azure 区域。<br/><br/> 在 Azure Site Recovery 的恢复服务保管库中，可以在目标区域中[禁用并重新创建保管库](../../site-recovery/move-vaults-across-regions.md)。 | 
+> | vaults | 否。<br/><br/> 不支持跨 Azure 区域移动 Azure 备份的恢复服务保管库。<br/><br/> 在 Azure Site Recovery 的恢复服务保管库中，可以在目标区域中[禁用并重新创建保管库](../../site-recovery/move-vaults-across-regions.md)。 | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1027,6 +1028,14 @@ ms.locfileid: "87040962"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | 查询 |  否 |  
+
+## <a name="microsoftresources"></a>Microsoft.Resources
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 区域移动 |
+> | ------------- | ----------- |
+> | deploymentScripts |  是<br/><br/>[将 Microsoft .Resources 资源移动到新区域](microsoft-resources-move-regions.md) |
+> | templateSpecs |  是<br/><br/>[将 Microsoft .Resources 资源移动到新区域](microsoft-resources-move-regions.md) |  
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
@@ -1116,7 +1125,7 @@ ms.locfileid: "87040962"
 > | appliancedefinitions | 否 | 
 > | appliances | 否 | 
 > | applicationdefinitions | 否 | 
-> | 服务 | 否 | 
+> | applications | 否 | 
 > | jitrequests | 否 | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -1138,7 +1147,7 @@ ms.locfileid: "87040962"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | sqlvirtualmachinegroups |  否 |  
-> | sqlvirtualmachines |  否 |  
+> | sqlvirtualmachines |  不适合 |  
 
 ## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
 

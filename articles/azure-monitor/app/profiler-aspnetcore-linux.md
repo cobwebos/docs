@@ -2,16 +2,17 @@
 title: 使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用 | Microsoft Docs
 description: 有关如何使用 Application Insights Profiler 的概念概述和分步教程。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078081"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930377"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -106,7 +107,7 @@ ms.locfileid: "88078081"
 
     ![设置 Git 存储库](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-有关更多部署选项，请参阅[应用服务文档](https://docs.microsoft.com/azure/app-service)。
+有关更多部署选项，请参阅 [应用服务文档](https://docs.microsoft.com/azure/app-service)。
 
 ## <a name="deploy-your-project"></a>部署项目
 

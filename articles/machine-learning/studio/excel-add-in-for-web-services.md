@@ -1,5 +1,5 @@
 ---
-title: ML Studio （经典）：用于 web 服务的 Excel 外接程序-Azure
+title: ML Studio (经典) ：用于 web 服务的 Excel 外接程序-Azure
 description: 如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432485"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950045"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>适用于 Azure 机器学习工作室（经典）Web 服务的 Excel 加载项
 
-**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
@@ -28,7 +28,10 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 1. 打开“[示例 Excel 文件](https://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。 
  
     > [!NOTE]
-    > 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有**服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
+    > - 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有**服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
+    > - Azure 机器学习 Excel 外接程序将调用要加载的 Office 外接程序存储区。 如果你的组织禁止访问 Office 外接程序存储区，则加载外接程序时将会出现错误。 对于这种情况，请从 Microsoft 365 管理中心部署 Azure 机器学习 Excel 外接程序。 然后调用外接程序，通过粘贴 URL 和 API 密钥来手动添加 web 服务。
+
+ 
 
 2. 通过单击来选择 Web 服务，在此示例中为“Titanic 存活者预测器（Excel 外接程序示例）[分数]”。
    
@@ -40,7 +43,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
    
     ![预测部分](./media/excel-add-in-for-web-services/image1.png)
 
-部署 Web 服务或使用现有的 Web 服务。 有关部署 web 服务的详细信息，请参阅[教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
+部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 
 获取 Web 服务的 API 密钥。 执行此操作的位置取决于是否发布了新的机器学习 Web 服务的经典机器学习 Web 服务。
 
@@ -68,7 +71,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 ## <a name="steps-to-add-a-new-web-service"></a>添加新 Web 服务的步骤
 
-1. 部署 Web 服务或使用现有的 Web 服务。 有关部署 web 服务的详细信息，请参阅[教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
+1. 部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 2. 单击“**使用**”。
 3. 查找**基本使用信息**部分。 复制并保存**主密钥**和**请求-响应** URL。
 4. 在 Excel 中，转到“Web 服务”**** 部分（如果在“预测”**** 部分中，请单击返回箭头转到 Web 服务列表）。
@@ -77,7 +80,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 5. 单击“**添加 Web 服务**”。
 6. 将 URL 粘贴到标记为 **URL** 的 Excel 外接程序文本框中。
 7. 将 API/主密钥粘贴到标记为 **API 密钥**的文本框中。
-8. 单击“添加”  。
+8. 单击“添加”。
    
     ![经典 Web 服务的 URL 和 API 密钥。](./media/excel-add-in-for-web-services/image6.png)
 9. 若要使用 Web 服务，请按照前面的指导操作：“使用现有 Web 服务的步骤”。

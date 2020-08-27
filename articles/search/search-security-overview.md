@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225268"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928762"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
@@ -38,7 +38,7 @@ ms.locfileid: "88225268"
 
 对于由搜索服务在内部处理的数据，下表介绍了 [数据加密模型](../security/fundamentals/encryption-models.md)。 某些功能（如知识库、增量扩充和基于索引器的索引）、对其他 Azure 服务中的数据结构进行读取或写入。 这些服务独立于 Azure 认知搜索提供自己的加密支持级别。
 
-| “模型” | 键&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 适用于 |
+| 模型 | 键&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 适用于 |
 |------------------|-------|-------------|--------------|------------|
 | 服务器端加密 | Microsoft 管理的密钥 | 无 (内置)  | 无，适用于所有区域，适用于 24 2018 年1月之后创建的内容。 | 内容 (索引和同义词映射) 和定义 (索引器、数据源、技能集)  |
 | 服务器端加密 | 客户管理的密钥 | Azure Key Vault | 适用于所有区域中的可计费层，适用于2019年1月之后创建的内容。 | 数据磁盘) 内容 (索引和同义词映射 |
@@ -54,7 +54,7 @@ ms.locfileid: "88225268"
 
 <a name="double-encryption"></a>
 
-### <a name="double-encryption"></a>双加密
+### <a name="double-encryption"></a>双重加密
 
 在 Azure 认知搜索中，双加密是 CMK 的扩展。 它被理解为 CMK 的两倍加密 (一次，并再次通过服务托管的密钥) 和全面的作用域，其中包含写入到数据磁盘的长期存储以及写入临时磁盘的短期存储。 CMK 在 1 2020 年8月之前之间的差异，以及在 Azure 认知搜索中使 CMK 成为双重加密功能，这是临时磁盘上的静态数据加密。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88225268"
 
 可以使用门户[配置入站访问](service-configure-firewall.md)。
 
-或者，可以使用管理 REST API。 带有 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) 参数的 API 版本 2020-03-13 允许你标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内），通过这种方式限制对该服务的访问。
+或者，可以使用管理 REST API。 带有 [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) 参数的 API 版本 2020-03-13 允许你标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内），通过这种方式限制对该服务的访问。
 
 ### <a name="private-endpoint-no-internet-traffic"></a>专用终结点 (无 Internet 流量) 
 
@@ -127,7 +127,7 @@ Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overvie
 
 ## <a name="administrative-rights"></a>管理权限
 
-Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是 [门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是 [管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是 [门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是 [管理 REST api](/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 相反，对服务上托管的内容（如创建或删除索引的能力）的管理权限是授予，如 [前一部分](#index-access)中所述。
 

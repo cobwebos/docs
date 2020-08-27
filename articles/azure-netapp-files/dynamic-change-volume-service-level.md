@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fb83b30f0844b9bf0e362e6f1e3a3822ba0044d1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078948"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949994"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
 
-可以通过将卷移到使用所需的[服务级别](azure-netapp-files-service-levels.md)的其他容量池来更改现有卷的服务级别。 此卷的就地服务级别更改不需要迁移数据。 它也不会影响对卷的访问。  
+可以通过将卷移到使用所需的 [服务级别](azure-netapp-files-service-levels.md) 的其他容量池来更改现有卷的服务级别。 此卷的就地服务级别更改不需要迁移数据。 它也不会影响对卷的访问。  
 
-此功能可让你满足需求的工作负荷需求。  您可以更改现有卷以使用较高的服务级别来提高性能，或使用较低的服务级别进行成本优化。 例如，如果卷当前位于使用*标准*服务级别的容量池中，并且你希望卷使用*高级*服务级别，则可以将该卷动态移到使用*高级*服务级别的容量池。  
+此功能可让你满足需求的工作负荷需求。  您可以更改现有卷以使用较高的服务级别来提高性能，或使用较低的服务级别进行成本优化。 例如，如果卷当前位于使用 *标准* 服务级别的容量池中，并且你希望卷使用 *高级* 服务级别，则可以将该卷动态移到使用 *高级* 服务级别的容量池。  
 
-要移动卷的容量池必须已经存在。 容量池可以包含其他卷。  若要将卷移动到全新容量池，需要在移动卷之前[创建容量池](azure-netapp-files-set-up-capacity-pool.md)。  
+要移动卷的容量池必须已经存在。 容量池可以包含其他卷。  若要将卷移动到全新容量池，需要在移动卷之前 [创建容量池](azure-netapp-files-set-up-capacity-pool.md) 。  
 
 ## <a name="considerations"></a>注意事项
 
@@ -48,15 +48,16 @@ ms.locfileid: "88078948"
 2. 检查功能注册的状态： 
 
     > [!NOTE]
-    > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态**注册**后再继续。
+    > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
+你还可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) 并 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 注册功能并显示注册状态。 
 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>将卷移动到另一个容量池
 
-1.  在 "卷" 页上，右键单击要更改其服务级别的卷。 选择 "**更改池**"。
+1.  在 "卷" 页上，右键单击要更改其服务级别的卷。 选择 " **更改池**"。
 
     ![右键单击 "卷"](../media/azure-netapp-files/right-click-volume.png)
 

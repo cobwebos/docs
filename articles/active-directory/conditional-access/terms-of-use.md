@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184340"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948906"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -50,7 +50,7 @@ Azure AD 使用条款提供以下功能：
 - 列出已接受或尚未接受使用条款的人员。
 - 有助于符合隐私法规。
 - 显示使用条款活动的日志，以了解合规性和进行审核。
-- 使用[Microsoft Graph api](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement)创建和管理使用条款 (当前) 预览版。
+- 使用 [Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) 创建和管理使用条款 (当前) 预览版。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,17 +80,17 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
    ![用于指定使用条款设置的新使用条款窗格](./media/terms-of-use/new-tou.png)
 
-1. 在 "**名称**" 框中，输入将在 Azure 门户中使用的使用条款的名称。
+1. 在 " **名称** " 框中，输入将在 Azure 门户中使用的使用条款的名称。
 1. 在“显示名称”框中，输入用户登录时看到的标题。****
-1. 对于**使用条款文档**，请浏览到已完成的使用条款，并选择它。
+1. 对于 **使用条款文档**，请浏览到已完成的使用条款，并选择它。
 1. 选择使用条款文档的语言。 可以通过语言选项上传多个版本的使用条款，每个版本的语言各不相同。 最终用户看到的使用条款版本取决于其浏览器首选项。
-1. 若要要求最终用户在接受使用条款之前查看使用条款，请设置 "**要求用户将使用条款展开**为**启用**"。
-1. 若要要求最终用户接受从其访问的每个设备上使用的条款，请设置 "**要求用户在每台设备上同意** **"。** 如果启用此选项，则用户可能需要安装其他应用程序。 有关详细信息，请参阅[按设备使用条款](#per-device-terms-of-use)。
-1. 如果要按计划使使用条款同意过期，请将**同意过期**为 **"开"**。 设置为“打开”时，会显示另外两项计划设置。
+1. 若要要求最终用户在接受使用条款之前查看使用条款，请设置 " **要求用户将使用条款展开** 为 **启用**"。
+1. 若要要求最终用户接受从其访问的每个设备上使用的条款，请设置 "**要求用户在每台设备上同意** **"。** 如果启用此选项，则用户可能需要安装其他应用程序。 有关详细信息，请参阅 [按设备使用条款](#per-device-terms-of-use)。
+1. 如果要按计划使使用条款同意过期，请将 **同意过期** 为 **"开"**。 设置为“打开”时，会显示另外两项计划设置。
 
    ![用于设置开始日期、频率和持续时间的“使同意状态过期”设置](./media/terms-of-use/expire-consents.png)
 
-1. 使用**过期开始时间**和**频率**设置来指定使用期限的计划。 下表显示了几项示例设置的结果：
+1. 使用 **过期开始时间** 和 **频率** 设置来指定使用期限的计划。 下表显示了几项示例设置的结果：
 
    | 过期开始日期 | 频率 | 结果 |
    | --- | --- | --- |
@@ -99,25 +99,25 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
    例如，如果将过期开始日期设置为“1 月 1 日”，将频率设置为“每月”，则两个用户的过期计划如下：********
 
-   | 用户 | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
+   | User | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
 
-1. 使用 "**重新接受前的持续时间" 需要 (天) **设置以指定用户必须面向的使用条款。 这可以让用户遵照自己的计划。 例如，如果将持续时间设置为 **30** 天，则两个用户的计划如下：
+1. 使用 " **重新接受前的持续时间" 需要 (天) ** 设置以指定用户必须面向的使用条款。 这可以让用户遵照自己的计划。 例如，如果将持续时间设置为 **30** 天，则两个用户的计划如下：
 
-   | 用户 | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
+   | User | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 1 月 31 日 | 3 月 2 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 14 日 | 3 月 16 日 | 4 月 15 日 |
 
    可以结合使用“使同意状态过期”和“需要重新接受使用条款之前的持续时间(天)”设置，但一般只使用其中的一项。********
 
-1. 在 "**条件性访问**" 下，使用 "**使用条件性访问策略模板**" 列表选择模板以强制使用使用条款。
+1. 在 " **条件性访问**" 下，使用 " **使用条件性访问策略模板** " 列表选择模板以强制使用使用条款。
 
    ![用于选择策略模板的“条件访问”下拉列表](./media/terms-of-use/conditional-access-templates.png)
 
-   | 模板 | 描述 |
+   | 模板 | 说明 |
    | --- | --- |
    | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建后，可能需要注销再登录。 |
    | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建后，需要注销再登录。 |
@@ -127,9 +127,9 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
    >[!IMPORTANT]
    >条件访问策略控制（包括使用条款）不支持对服务帐户强制实施。 我们建议从条件访问策略中排除所有服务帐户。
 
-    可以使用自定义条件访问策略将使用条款细化，向下细化到特定云应用程序或用户组。 有关详细信息，请参阅[快速入门：访问云应用之前要求接受使用条款](require-tou.md)。
+    可以使用自定义条件访问策略将使用条款细化，向下细化到特定云应用程序或用户组。 有关详细信息，请参阅 [快速入门：访问云应用之前要求接受使用条款](require-tou.md)。
 
-1. 单击“创建”。
+1. 单击“创建”。 
 
    选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
 
@@ -147,7 +147,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
    ![列出已接受和拒绝条款的用户数的使用条款边栏选项卡](./media/terms-of-use/view-tou.png)
 
-1. 对于 "使用条款"，请单击 "**被接受**" 或 "已**拒绝**" 下的数字查看用户的当前状态。
+1. 对于 "使用条款"，请单击 " **被接受** " 或 "已 **拒绝** " 下的数字查看用户的当前状态。
 
    ![列出已接受条款的用户的使用条款同意窗格](./media/terms-of-use/accepted-tou.png)
 
@@ -201,7 +201,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 用户可按以下过程查看已接受的使用条款。
 
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
+1. 登录 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
 1. 在右上角单击自己的姓名，然后选择“个人资料”。****
 
    ![“我的应用”站点，其中已打开用户的窗格](./media/terms-of-use/tou14.png)
@@ -248,7 +248,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 ## <a name="per-device-terms-of-use"></a>按设备实施的使用条款
 
-"**要求用户同意每个设备"** 设置使你能够要求最终用户接受其所访问的每个设备上的使用条款。 最终用户将需要在 Azure AD 中注册其设备。 设备注册后，将使用设备 ID 在每个设备上强制实施使用条款。
+" **要求用户同意每个设备"** 设置使你能够要求最终用户接受其所访问的每个设备上的使用条款。 最终用户将需要在 Azure AD 中注册其设备。 设备注册后，将使用设备 ID 在每个设备上强制实施使用条款。
 
 下面是支持的平台和软件列表。
 
@@ -279,11 +279,11 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 ### <a name="register-an-ios-device"></a>注册 iOS 设备
 
-如果用户使用的是 iOS 设备，则系统会提示他们安装[Microsoft Authenticator 应用](https://apps.apple.com/us/app/microsoft-authenticator/id983156458)。
+如果用户使用的是 iOS 设备，则系统会提示他们安装 [Microsoft Authenticator 应用](https://apps.apple.com/us/app/microsoft-authenticator/id983156458)。
 
 ### <a name="register-an-android-device"></a>注册 Android 设备
 
-如果用户正在使用 Android 设备，则系统会提示他们安装[Microsoft Authenticator 应用](https://play.google.com/store/apps/details?id=com.azure.authenticator)。
+如果用户正在使用 Android 设备，则系统会提示他们安装 [Microsoft Authenticator 应用](https://play.google.com/store/apps/details?id=com.azure.authenticator)。
 
 ### <a name="browsers"></a>浏览器
 
@@ -322,7 +322,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 大多数组织都有适当的流程，使其员工同意其组织的使用条款和隐私声明。 但是，对于通过 SharePoint 或 Teams 添加的 Azure AD 企业到企业 (B2B) 来宾，如何强制要求他们同样表示同意？ 使用条件性访问和使用条款，你可以直接对 B2B 来宾用户强制实施策略。 在邀请兑换流期间，用户会看到使用条款。 这种支持目前处于预览状态。
 
-仅当用户在 Azure AD 中具有来宾帐户时，才显示使用条款。 SharePoint Online 当前有一个[即席外部共享接收方体验](/sharepoint/what-s-new-in-sharing-in-targeted-release)，可共享不需要用户拥有来宾帐户的文档或文件夹。 在这种情况下，将不会显示使用条款。
+仅当用户在 Azure AD 中具有来宾帐户时，才显示使用条款。 SharePoint Online 当前有一个 [即席外部共享接收方体验](/sharepoint/what-s-new-in-sharing-in-targeted-release) ，可共享不需要用户拥有来宾帐户的文档或文件夹。 在这种情况下，将不会显示使用条款。
 
 ![已选中 "用户和组" 窗格-"包括所有来宾用户的选项卡" 选项](./media/terms-of-use/b2b-guests.png)
 
@@ -343,7 +343,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 ![云应用窗格，其中已选择 Microsoft Intune 应用](./media/terms-of-use/cloud-app-intune.png)
 
 > [!NOTE]
-> Intune 注册应用不支持[按设备使用条款](#per-device-terms-of-use)。
+> Intune 注册应用不支持 [按设备使用条款](#per-device-terms-of-use)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -381,10 +381,10 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：将阻止此用户访问该应用程序。 用户需要重新登录并接受条款才能获取访问权限。
 
 **问：是否可以 unaccept 以前接受的使用条款？**<br />
-答：你可以[查看以前接受的使用条款](#how-users-can-review-their-terms-of-use)，但目前尚不能 unaccept。
+答：你可以 [查看以前接受的使用条款](#how-users-can-review-their-terms-of-use)，但目前尚不能 unaccept。
 
 **问：如果我还使用 Intune 条款和条件，会发生什么情况？**<br />
-答：如果你已配置 Azure AD 使用条款和[Intune 条款和条件](/intune/terms-and-conditions-create)，则用户需要接受这两者。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
+答：如果你已配置 Azure AD 使用条款和 [Intune 条款和条件](/intune/terms-and-conditions-create)，则用户需要接受这两者。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 **问：使用条款服务使用哪些终结点进行身份验证？**<br />
 答：使用条款利用以下用于身份验证的终结点： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果你的组织针对注册实施 URL 允许列表，则需要将这些终结点以及用于登录的 Azure AD 终结点添加到该允许列表。

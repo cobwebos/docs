@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f1860f9645a50789803d509a6a1ea98bc0ea1a9e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856042"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950130"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>IoT 即插即用预览版开发人员指南
 
@@ -47,7 +47,7 @@ DeviceClient.CreateFromConnectionString(
 
 已将模型 ID 公告添加到 Sdk 的下一版本
 
-|SDK 中 IsInRole 中的声明|版本|
+|SDK 中 IsInRole 中的声明|Version|
 |---|-------|
 |C-SDK|1.3.9|
 |.NET|1.27.0|
@@ -57,7 +57,7 @@ DeviceClient.CreateFromConnectionString(
 
 ## <a name="dps-payload"></a>DPS 有效负载
 
-使用 [设备预配服务 (DPS) ](/iot-dps/) 的设备可以包括 `modelId` 使用以下 JSON 有效负载的预配过程中要使用的。
+使用 [设备预配服务 (DPS) ](../iot-dps/about-iot-dps.md) 的设备可以包括 `modelId` 使用以下 JSON 有效负载的预配过程中要使用的。
 
 ```json
 {
@@ -69,7 +69,7 @@ DeviceClient.CreateFromConnectionString(
 
 如 [了解 IoT 即插即用模型中的组件](concepts-components.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
 
-### <a name="telemetry"></a>遥测技术
+### <a name="telemetry"></a>遥测
 
 没有组件的模型不需要任何特殊属性。
 

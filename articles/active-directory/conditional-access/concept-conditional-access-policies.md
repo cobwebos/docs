@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295327"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948379"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
@@ -44,7 +44,7 @@ ms.locfileid: "80295327"
 
 #### <a name="sign-in-risk"></a>登录风险
 
-对于具有[Azure AD Identity Protection](../identity-protection/overview.md)的组织而言，生成的风险检测可能会影响你的条件访问策略。
+对于具有 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)的组织而言，生成的风险检测可能会影响你的条件访问策略。
 
 #### <a name="device-platforms"></a>设备平台
 
@@ -72,7 +72,7 @@ ms.locfileid: "80295327"
 
 ### <a name="grant"></a>授予
 
-[Grant](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
+[Grant](concept-conditional-access-grant.md) 为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
 
 #### <a name="block-access"></a>阻止访问
 
@@ -95,7 +95,7 @@ ms.locfileid: "80295327"
 
 ### <a name="session"></a>会话
 
-[会话控制](concept-conditional-access-session.md)可限制体验 
+[会话控制](concept-conditional-access-session.md) 可限制体验 
 
 - 使用应用所强制实施的限制
    - 目前仅适用于 Exchange Online 和 SharePoint Online。
@@ -115,15 +115,15 @@ ms.locfileid: "80295327"
 条件访问策略必须至少包含以下内容才能实施：
 
 - 策略的**名称**。
-- **分配**
+- **类别**
    - 要应用策略的**用户和/或组**。
    - 要应用策略的**云应用或操作**。
-- 访问控制 
+- **访问控制**
    - **授予**或**阻止**控制
 
 ![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-本文[常见的条件性访问策略](concept-conditional-access-policy-common.md)包括一些我们认为对大多数组织有用的策略。
+本文 [常见的条件性访问策略](concept-conditional-access-policy-common.md) 包括一些我们认为对大多数组织有用的策略。
 
 ## <a name="next-steps"></a>后续步骤
 

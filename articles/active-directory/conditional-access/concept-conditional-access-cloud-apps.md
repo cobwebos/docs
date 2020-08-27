@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846303"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948396"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -115,7 +115,7 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 
 - 通过 [Azure AD 应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序
 - [从库中添加的应用程序](../manage-apps/add-application-portal.md)
-- [不在库中的自定义应用程序](../manage-apps/add-non-gallery-app.md)
+- [不在库中的自定义应用程序](../manage-apps/view-applications-portal.md)
 - [通过应用交付控制器和网络发布的传统应用程序](../manage-apps/secure-hybrid-access.md)
 - 使用[基于密码的单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)的应用程序
 

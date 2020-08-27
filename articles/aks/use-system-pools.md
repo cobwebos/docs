@@ -5,12 +5,13 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 8c808bda624cca3bd7bd28c6adfbdfb52fa2c068
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562814"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949773"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
@@ -28,14 +29,14 @@ ms.locfileid: "87562814"
 创建和管理支持系统节点池的 AKS 群集时存在以下限制。
 
 * 请参阅 [Azure Kubernetes 服务 (AKS) 中可用的配额、虚拟机大小限制和区域][quotas-skus-regions]。
-* AKS 群集必须构建为虚拟机规模集，作为 VM 类型和*标准*SKU 负载均衡器。
+* 必须将虚拟机规模集用作 VM 类型并使用标准 SKU 负载均衡器来生成 AKS 群集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须为 1 到 12 个字符。 对于 Windows 节点池，长度必须在 1 到 6 个字符之间。
 * 必须使用 2020-03-01 版或更高版的 API 版本设置节点池模式。 在 2020-03-01 之前的 API 版本上创建的集群仅包含用户节点池，但可以按照[更新池模式步骤](#update-existing-cluster-system-and-user-node-pools)进行迁移，通过这种方式包含系统节点池。
 * 节点池模式是必需属性，当使用 ARM 模板或直接 API 调用时，必须显式设置该属性。
 
 ## <a name="system-and-user-node-pools"></a>系统节点池和用户节点池
 
-对于系统节点池，AKS 会自动将标签**kubernetes.azure.com/mode： system**分配给其节点。 这会导致 AKS 在包含此标签的节点池上计划系统盒。 此标签不会阻止你计划系统节点池上的应用程序箱。 但是，我们建议你将关键系统箱从应用程序盒中隔离开来，以防意外地终止系统箱配置错误或恶意应用程序箱。 可以通过创建专用系统节点池来强制执行此行为。 使用 `CriticalAddonsOnly=true:NoSchedule` 破坏可防止在系统节点池上计划应用程序箱。
+对于系统节点池，AKS 会自动为其节点分配“kubernetes.azure.com/mode: system”标签。 这使 AKS 倾向于在包含此标签的节点池上计划系统 Pod。 此标签不会阻止你在系统节点池上计划应用程序 Pod。 但是，我们建议将关键系统 Pod 与应用程序 Pod 隔离，以防配置错误或未授权的应用程序 Pod 意外终止系统 Pod。 可以通过创建专用系统节点池来强制执行此行为。 使用 `CriticalAddonsOnly=true:NoSchedule` 污点可防止在系统节点池上计划应用程序 Pod。
 
 系统节点池存在以下限制：
 
@@ -48,7 +49,7 @@ ms.locfileid: "87562814"
 
 对于节点池，可以执行以下操作：
 
-* 创建专用系统节点池 (更喜欢将系统盒计划给) 的节点池 `mode:system`
+* 创建专用系统节点池（优先将系统 Pod 计划到 `mode:system` 的节点池）
 * 将系统节点池更改为用户节点池，但前提是 AKS 群集中有另一个可以取代它的系统节点池。
 * 将用户节点池更改为系统节点池。
 * 删除用户节点池。
@@ -58,7 +59,7 @@ ms.locfileid: "87562814"
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>创建包含系统节点池的新 AKS 群集
 
-创建新的 AKS 群集时，会自动创建包含单个节点的系统节点池。 初始节点池默认为某种类型模式的系统。 当你用创建新的节点池时 `az aks nodepool add` ，这些节点池是用户节点池，除非显式指定模式参数。
+创建新的 AKS 群集时，会自动创建包含单个节点的系统节点池。 初始节点池默认为某种类型模式的系统。 使用 `az aks nodepool add` 创建新节点池时，除非显式指定模式参数，否则这些节点池为用户节点池。
 
 以下示例在“eastus”区域创建名为“myResourceGroup”的资源组 。
 
@@ -66,7 +67,7 @@ ms.locfileid: "87562814"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个名为*myAKSCluster*的群集，其中包含一个包含一个节点的专用系统池。 对于生产工作负荷，请确保使用至少包含三个节点的系统节点池。 此操作可能需要几分钟才能完成。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建包含一个专用系统池（包含一个节点）的名为 myAKSCluster 的群集。 对于生产工作负荷，请确保使用至少包含三个节点的系统节点池。 此操作可能需要几分钟才能完成。
 
 ```azurecli-interactive
 # Create a new AKS cluster with a single system pool
@@ -76,11 +77,11 @@ az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-s
 ## <a name="add-a-dedicated-system-node-pool-to-an-existing-aks-cluster"></a>将专用系统节点池添加到现有 AKS 群集
 
 > [!Important]
-> 创建节点池后，无法通过 CLI 更改节点 taints。
+> 创建节点池后，无法通过 CLI 更改节点污点。
 
-可将一个或多个系统节点池添加到现有 AKS 群集。 建议将应用程序 pod 计划在用户节点池上，并专门将系统节点池专用于关键系统箱。 这可以防止恶意应用程序箱意外终止系统箱。 将此行为与 `CriticalAddonsOnly=true:NoSchedule` 系统节点池的[破坏][aks-taints]强制执行。 
+可将一个或多个系统节点池添加到现有 AKS 群集。 建议在用户节点池上计划应用程序 Pod，并将系统节点池专用于关键系统 Pod。 这样可防止非授权应用程序 Pod 意外终止系统 Pod。 通过 `CriticalAddonsOnly=true:NoSchedule` [污点][aks-taints]为系统节点池强制执行此行为。 
 
-以下命令将添加默认计数为三个节点的模式类型系统专用节点池。
+以下命令添加模式类型系统的专用节点池，其默认计数为三个节点。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -89,7 +90,7 @@ az aks nodepool add \
     --name systempool \
     --node-count 3 \
     --node-taints CriticalAddonsOnly=true:NoSchedule \
-    --mode system
+    --mode System
 ```
 ## <a name="show-details-for-your-node-pool"></a>显示节点池的详细信息
 
@@ -99,7 +100,7 @@ az aks nodepool add \
 az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n systempool
 ```
 
-将为系统节点池定义“系统”类型的模式，并为用户节点池定义“用户”类型的模式。  对于系统池，验证破坏是否设置为 `CriticalAddonsOnly=true:NoSchedule` ，这将阻止在此节点池上按计划运行应用程序箱。
+将为系统节点池定义“系统”类型的模式，并为用户节点池定义“用户”类型的模式。  对于系统池，请验证污点是否设置为 `CriticalAddonsOnly=true:NoSchedule`，这将防止在此节点池上计划应用程序 Pod。
 
 ```output
 {
@@ -170,7 +171,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除群集，请使用[az group delete][az-group-delete]命令删除 AKS 资源组：
+若要删除群集，请使用 [az group delete][az-group-delete] 命令删除 AKS 资源组：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

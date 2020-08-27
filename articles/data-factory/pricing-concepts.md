@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949944"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -132,7 +132,7 @@ ms.locfileid: "81414940"
 
 作为一位数据工程人员，你负责设计、构建和测试每天映射数据流。 你将在早上登录 ADF UI，并为数据流启用调试模式。 调试会话的默认 TTL 为60分钟。 你一整天就会工作8小时，因此调试会话永远不会过期。 因此，一天的费用将为：
 
-**8（小时） x 8 （计算优化的内核数） x $0.193 = $12.35**
+**8 (小时) x 8 (计算优化内核) x $0.193 = $12.35**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>在 blob 存储区中转换数据和映射数据流
 
@@ -165,7 +165,47 @@ ms.locfileid: "81414940"
   - 监视  = 2\*000005 = $0.00001 [1 监视 = $0.25/50000 = 0.000005]
 - 管道业务流程 &amp; 执行 = **$1.463**
   - 活动运行 = 001\*2 = 0.002 [1 运行 = $1/1000 = 0.001]
-  - 数据流活动 = $1.461 按比例20分钟（执行时间为10分钟 + 10 分钟 TTL）。 Azure Integration Runtime 上的 $ 0.274/小时，具有16个核心一般计算
+  - 数据流活动 = $1.461 按比例20分钟 (10 分钟执行时间 + 10 分钟 TTL) 。 Azure Integration Runtime 上的 $ 0.274/小时，具有16个核心一般计算
+
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Azure 数据工厂托管 VNET 中的数据集成
+在这种情况下，你想要删除 Azure Blob 存储中的原始文件并将数据从 Azure SQL 数据库复制到 Azure Blob 存储。 你将在不同的管道上执行两次此执行。 这两个管道的执行时间重叠。
+![Scenario4 ](media/pricing-concepts/scenario-4.png) 若要实现此方案，需要创建具有以下项的两个管道：
+  - 管道活动–删除活动。
+  - 一个复制活动，其中包含要从 Azure Blob 存储复制的数据的输入数据集。
+  - 用于 Azure SQL 数据库上的数据的输出数据集。
+  - 用于执行管道的计划触发器。
+
+
+| **操作** | **类型和单元** |
+| --- | --- |
+| 创建链接的服务 | 4读取/写入实体 |
+| 创建数据集 | 8个读取/写入实体 (4 个，用于创建数据集，4个用于链接服务引用)  |
+| 创建管道 | 6用于创建管道的 (2 读取/写入实体，4表示数据集引用)  |
+| 获取管道 | 2 个读/写实体 |
+| 运行管道 | 6活动运行 (2 用于触发器运行，4表示活动运行)  |
+| 执行删除活动：每个执行时间 = 5 分钟第一条管道中的 Delete 活动执行时间为 10:00 AM UTC 到 10:05 AM UTC。 第二个管道中的 Delete 活动执行时间为 10:02 AM UTC 到 10:07 AM UTC。|托管 VNET 中7分钟内的最小活动执行。 在托管 VNET 中，管道活动最多支持50并发。 |
+| 复制数据假设：每次执行时间 = 10 分钟。第一条管道中的复制执行时间为 10:06 AM UTC 到 10:15 AM UTC。 第二个管道中的 Delete 活动执行时间为 10:08 AM UTC 到 10:17 AM UTC。 | 10 * 4 Azure Integration Runtime (默认 DIU 设置 = 4) 有关数据集成单元和优化复制性能的详细信息，请参阅 [此文](copy-activity-performance.md) |
+| 监视管道假设：只发生2个运行 | 6监视运行记录重试 (2 对于管道运行，4表示活动运行)  |
+
+
+**方案总定价： $0.45523**
+
+- 数据工厂操作 = $0.00023
+  - 读/写 = 20 * 00001 = $0.0002 [1 R/W = $ 0.50/50000 = 0.00001]
+  - 监视 = 6 * 000005 = $0.00003 [1 监视 = $ 0.25/50000 = 0.000005]
+- 管道业务流程 & 执行 = $0.455
+  - 活动运行 = 0.001 * 6 = 0.006 [1 运行 = $ 1/1000 = 0.001]
+  - 数据移动活动 = $0.333 (按比例执行时间为10分钟。 Azure Integration Runtime 上的定价为 $0.25/小时）
+  - 管道活动 = $0.116 (按7分钟执行时间。 Azure Integration Runtime 上的 $ 1/小时) 
+
+> [!NOTE]
+> 这些价格仅用于示例目的。
+
+**常见问题解答**
+
+问：如果我想要运行超过50的管道活动，可以同时执行这些活动吗？
+
+答：允许最大50并发管道活动。  51th 管道活动将排入队列，直到打开 "自由槽"。 对于外部活动是相同的。 允许最大800个并发外部活动。
 
 ## <a name="next-steps"></a>后续步骤
 

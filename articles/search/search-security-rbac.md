@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009199"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928677"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>设置 azure 角色以实现 Azure 认知搜索的管理访问权限
 
@@ -30,7 +30,7 @@ ms.locfileid: "88009199"
 | --- | --- |
 | 所有者 |创建或删除服务或者服务上的任何对象，包括 API 密钥、索引、索引器、索引器数据源和索引器计划。<p>查看服务状态，包括计数和存储大小。<p>添加或删除角色成员身份（仅所有者才能管理角色成员身份）。<p>订阅管理员和服务所有者拥有所有者角色的自动成员身份。 |
 | 参与者 |与所有者相同的访问级别，减去 Azure 角色管理。 例如，参与者可创建或删除对象，或查看和重新生成 [API 密钥](search-security-api-keys.md)，但不能修改角色成员身份。 |
-| [搜索服务参与者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | 等效于参与者角色。 |
+| [搜索服务参与者内置角色](../role-based-access-control/built-in-roles.md#search-service-contributor) | 等效于参与者角色。 |
 | 读取器 |查看服务概要和指标。 此角色的成员无法查看索引、索引器、数据源或密钥信息。  |
 
 角色不授予对服务终结点的访问权限。 搜索服务操作（例如索引管理、索引填充和搜索数据的查询）可通过 API 密钥而非角色进行控制。 有关详细信息，请参阅[管理 API 密钥](search-security-api-keys.md)。

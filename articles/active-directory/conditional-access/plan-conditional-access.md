@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339731"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948889"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -77,17 +77,17 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 * [Conditional Access in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)（企业移动性 + 安全性中的条件访问）
 
 
-#### <a name="online-courses-on-pluralsight"></a>PluralSight 的在线课程
+#### <a name="online-courses-on-pluralsight"></a>PluralSight 上的在线课程
 
 * [Design Identity Management in Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)（在 Microsoft Azure 中设计标识管理）
 * [Design Authentication for Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)（设计 Microsoft Azure 身份验证）
 * [Design Authorization for Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)（设计 Microsoft Azure 授权）
 
-## <a name="plan-the-deployment-project"></a>计划部署项目
+## <a name="plan-the-deployment-project"></a>规划部署项目
 
-在环境中确定此部署的策略时，请考虑你的组织需求。
+在环境中确定此部署的策略时，请考虑组织的需求。
 
-### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
+### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
 如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并确保项目角色明确。
 
@@ -103,7 +103,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 > 若要推出非特定于管理员的新策略，请排除所有管理员。 这可确保管理员仍可以访问策略，并在出现重大影响时进行更改或撤销。 在应用到所有用户之前，请始终使用较小的用户组验证策略。
 
 ## <a name="understand-ca-policy-components"></a>了解 CA 策略组件
-CA 策略是 if-then 语句：如果满足分配，则应用这些访问控制。
+CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问控制。
 
 配置 CA 策略时，条件称为“分配”。 通过 CA 策略，你可以根据某些分配对组织的应用强制实施访问控制。
 
@@ -116,9 +116,9 @@ CA 策略是 if-then 语句：如果满足分配，则应用这些访问控制�
 
 * 受策略影响的[用户和组](concept-conditional-access-users-groups.md)
 
-* 策略将应用到的[云应用或操作](concept-conditional-access-cloud-apps.md) 
+* 将应用策略的[云应用或操作](concept-conditional-access-cloud-apps.md) 
 
-* 策略将应用到的[条件](concept-conditional-access-conditions.md)。
+* 将应用策略的[条件](concept-conditional-access-conditions.md)。
 
 [访问控制](concept-conditional-access-policies.md)设置确定如何强制实施策略：
 
@@ -195,7 +195,7 @@ CA 策略是 if-then 语句：如果满足分配，则应用这些访问控制�
 ![访问令牌颁发示意图](media/plan-conditional-access/CA-policy-token-issuance.png)
 
 > [!NOTE]
-> 如果不需要执行任何操作，并且没有有效的 CA 策略，则默认行为是颁发访问令牌。 
+> 如果不需要分配，并且没有任何有效的 CA 策略，则默认行为是颁发一个访问令牌。 
 
 例如，请在以下情况下考虑使用策略：
 
@@ -216,7 +216,7 @@ CA 策略是 if-then 语句：如果满足分配，则应用这些访问控制�
 
 ### <a name="minimize-the-number-of-ca-policies"></a>最大程度地减少 CA 策略的数量
 
-为每个应用创建一个策略并不是很有效，而且会导致难以管理。 条件访问只会对每个用户应用前 195 个策略。 我们建议你对应用进行分析，并按对相同用户具有相同的资源要求将应用分组。 例如，如果所有 Microsoft 365 应用或所有 HR 应用对相同用户具有相同的要求，请创建一个策略，并包括应用到的所有应用。 
+为每个应用创建一个策略并不是很有效，而且会导致难以管理。 条件访问只会对每个用户应用前 195 个策略。 我们建议你对应用进行分析，并按对相同用户具有相同的资源要求将应用分组。 例如，如果所有 Microsoft 365 应用或所有 HR 应用对同一用户具有相同的要求，请创建一个策略，并包括应用该策略的所有应用。 
 
 ### <a name="set-up-emergency-access-accounts"></a>设置紧急访问帐户
 
@@ -313,7 +313,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 * [管理员的访问](howto-conditional-access-policy-admin-mfa.md)
 
-* [访问特定的应用](app-based-mfa.md)
+* [访问特定的应用](../authentication/tutorial-enable-azure-mfa.md)
 
 * [对于所有用户](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -384,18 +384,18 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 | - | - | - |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户在受信任的位置/工作时登录到应用| 不提示用户执行 MFA |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户不在受信任的位置/工作时登录到应用| 提示用户执行 MFA，他们可以成功登录 |
-| [要求执行 MFA（针对管理员）](howto-baseline-protect-administrators.md)| 全局管理员登录到应用| 提示管理员执行 MFA |
-| [有风险的登录](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| 用户使用未经批准的浏览器登录应用| 提示管理员执行 MFA |
+| [要求执行 MFA（针对管理员）](../fundamentals/concept-fundamentals-security-defaults.md)| 全局管理员登录到应用| 提示管理员执行 MFA |
+| [有风险的登录](../identity-protection/howto-identity-protection-configure-risk-policies.md)| 用户使用未经批准的浏览器登录应用| 提示管理员执行 MFA |
 | [设备管理](require-managed-devices.md)| 经授权的用户尝试从已授权的设备登录| 授予访问权限 |
 | [设备管理](require-managed-devices.md)| 经授权的用户尝试从未授权的设备登录| 阻止访问 |
-| [有风险用户的密码更改](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| 经授权的用户尝试使用已泄密的凭据登录（高风险登录）| 根据策略提示用户更改密码或阻止访问 |
+| [有风险用户的密码更改](../identity-protection/howto-identity-protection-configure-risk-policies.md)| 经授权的用户尝试使用已泄密的凭据登录（高风险登录）| 根据策略提示用户更改密码或阻止访问 |
 
 
 ### <a name="configure-the-test-policy"></a>配置测试策略
 
 在 [Azure 门户](https://portal.azure.com/)中，你将在“Azure Active Directory”>“安全性”>“条件访问”下配置 CA 策略。
 
-如果要了解有关如何创建 CA 策略的详细信息，请参阅以下示例：[用户登录到 Azure 门户时提示执行 MFA 的 CA 策略](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。 此快速入门可帮助你：
+如果要了解有关如何创建 CA 策略的详细信息，请参阅以下示例：[用户登录到 Azure 门户时提示执行 MFA 的 CA 策略](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 此快速入门可帮助你：
 
 * 熟悉用户界面
 
@@ -442,7 +442,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 > [!NOTE]
 >  应该慎用此选项，仅在用户受信任的情况下才使用。 应该尽快将该用户加回到策略或组中。
 
-* 删除策略。 如果不再需要该策略，请将其[删除](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。
+* 删除策略。 如果不再需要该策略，请将其[删除](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 
 ## <a name="manage-access-to-cloud-apps"></a>管理对云应用的访问权限
 
@@ -501,4 +501,4 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 [详细了解标识保护](../identity-protection/overview-identity-protection.md)
 
-[利用 Microsoft Graph API 管理 CA 策略](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[利用 Microsoft Graph API 管理 CA 策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

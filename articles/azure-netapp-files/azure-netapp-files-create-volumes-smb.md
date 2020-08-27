@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080501"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950368"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -172,11 +172,13 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
         检查功能注册的状态： 
 
         > [!NOTE]
-        > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态**注册**后再继续。
+        > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
+        
+        你还可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) 并 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 注册功能并显示注册状态。 
 
     * 凭证，包括“用户名”和“密码” 
 
@@ -197,7 +199,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 2. 单击“+ 添加卷”以创建卷。  
     此时将显示“创建卷”窗口。
 
-3. 在 "创建卷" 窗口中，单击 "**创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
+3. 在 "创建卷" 窗口中，单击 " **创建** "，并在 "基本信息" 选项卡下提供以下字段的信息：   
     * **卷名称**      
         指定要创建的卷的名称。   
 
@@ -228,9 +230,9 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
+    * 如果要将现有的快照策略应用到卷，请单击 " **显示高级" 部分** 将其展开，然后在下拉菜单中选择一个快照策略。 
 
-        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        有关创建快照策略的信息，请参阅 [管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232346"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949168"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory 标识保护术语表
 
@@ -56,7 +56,7 @@ Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示�
 ### <a name="investigation"></a>调查
 检查风险检测相关活动、日志和其他相关信息的过程，确定是否需要采取补救或缓解措施，了解标识如何遭到入侵，以及遭到入侵的标识如何被利用。
 
-### <a name="leaked-credentials"></a>已泄漏凭据
+### <a name="leaked-credentials"></a>凭据泄露
 研究人员发现当前用户凭据（用户名和密码）公开发布在黑暗网络 (Dark Web) 时触发的风险检测。
 
 ### <a name="mitigation"></a>缓解操作
@@ -89,7 +89,7 @@ Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示�
 ### <a name="remediated-risk-detection"></a>已补救（风险检测）
 “标识保护”自动设置的风险检测状态，指示已使用此风险检测类型的标准补救措施来补救此风险检测。 例如，当用户密码重置时，指示以前的密码已遭入侵的风险检测可自动补救。
 
-### <a name="remediation"></a>补救
+### <a name="remediation"></a>修正
 保护以前疑似或已知遭到入侵的标识或设备的措施。 补救措施可让标识或设备还原到安全状态，解决以前与标识或设备关联的风险检测。
 
 ### <a name="resolved-risk-detection"></a>已解决（风险检测）
@@ -160,4 +160,4 @@ Azure Active Directory 中导致目录容易遭到入侵或威胁的配置或状
 
 ## <a name="see-also"></a>请参阅
 
-- [Azure Active Directory 标识保护](../active-directory-identityprotection.md)
+- [Azure Active Directory 标识保护](./overview-identity-protection.md)

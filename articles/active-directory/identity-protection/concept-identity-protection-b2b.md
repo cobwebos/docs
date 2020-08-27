@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72881306"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949190"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 
@@ -33,9 +33,9 @@ B2B 协作用户的用户风险在其主目录中进行评估。 用户尝试访
 
 由于资源目录中的 B2B 协作用户的标识已存在，因此在此实现中存在一些限制。 主要限制如下：
 
-- 如果来宾用户触发 Identity Protection 用户风险策略来强制重置密码，则**将阻止**用户进行密码重置。 此块的原因是无法在资源目录中重置密码。
+- 如果来宾用户触发 Identity Protection 用户风险策略来强制重置密码，则 **将阻止**用户进行密码重置。 此块的原因是无法在资源目录中重置密码。
 - **来宾用户不会出现在有风险的用户报表中**。 此可见性损失是因为 B2B 用户的主目录中发生了风险评估。
-- 管理员无法在其资源目录中**消除或修正有风险的 B2B 协作用户**。 此功能损失是因为资源目录中的管理员无法访问 B2B 用户的主目录。
+- 管理员无法在其资源目录中 **消除或修正有风险的 B2B 协作用户** 。 此功能损失是因为资源目录中的管理员无法访问 B2B 用户的主目录。
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>为什么无法在目录中修正有风险的 B2B 协作用户？
 
@@ -53,4 +53,4 @@ B2B 用户的风险评估和修正发生在其主目录中。 由于此事实，
 
 请参阅以下有关 Azure AD B2B 协作的文章：
 
-- [什么是 Azure AD B2B 协作？](../b2b/what-is-b2b.md)
+- [什么是 Azure AD B2B 协作？](../external-identities/what-is-b2b.md)

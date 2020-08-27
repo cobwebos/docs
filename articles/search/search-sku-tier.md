@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553965"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922797"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -33,7 +33,7 @@ ms.locfileid: "87553965"
 | [IP 防火墙访问](service-configure-firewall.md) | 在免费层上不可用。 |
 | [与 Azure 专用链接集成](service-create-private-endpoint.md) | 在免费层上不可用。 |
 
-大多数功能在每个层上都可用，包括免费，但占用大量资源的功能可能无法正常工作，除非你给予了足够的容量。 例如， [AI 扩充](cognitive-search-concept-intro.md)具有长时间运行的技能，在免费服务上超时，除非数据集很小。
+大多数功能在每个层上都可用，包括免费，但占用大量资源的功能可能无法正常工作，除非你给予了足够的容量。 例如， [AI 扩充](cognitive-search-concept-intro.md) 具有长时间运行的技能，在免费服务上超时，除非数据集很小。
 
 ## <a name="tiers-skus"></a>层 (SKU)
 
@@ -68,11 +68,11 @@ ms.locfileid: "87553965"
 
 + 特定功能或功能所需的附加服务：
 
-  + AI 扩充 (需要[认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)) 
-  + 知识存储 (需要[Azure 存储](https://azure.microsoft.com/pricing/details/storage/)) 
-  + 增量扩充 (需要[Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充) 
-  + 客户管理的密钥和双加密 (需要[Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)) 
-  + 无 internet 访问模型的专用终结点 (需要[Azure 专用链接](https://azure.microsoft.com/pricing/details/private-link/)) 
+  + AI 扩充 (需要 [认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)) 
+  + 知识存储 (需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)) 
+  + 增量扩充 (需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充) 
+  + 客户管理的密钥和双加密 (需要 [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)) 
+  + 无 internet 访问模型的专用终结点 (需要 [Azure 专用链接](https://azure.microsoft.com/pricing/details/private-link/)) 
 
 ### <a name="service-costs"></a>服务成本
 
@@ -84,7 +84,7 @@ ms.locfileid: "87553965"
 
 ### <a name="bandwidth-charges"></a>带宽费用
 
-使用[索引器](search-indexer-overview.md)可能会影响计费，具体取决于服务的位置。 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
+使用 [索引器](search-indexer-overview.md) 可能会影响计费，具体取决于服务的位置。 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
 
 + Microsoft 不会对入站到 Azure 上的任何服务的任何数据收费，也不会对 Azure 认知搜索的任何出站数据收费。
 + 在多服务解决方案中，如果所有服务位于同一个区域，将不会对通过网络传输的数据收费。
@@ -98,7 +98,7 @@ ms.locfileid: "87553965"
 | 操作 | 计费影响 |
 |-----------|----------------|
 | 文档破解、文本提取 | 免费 |
-| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在[索引器配置](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上阐述了图像提取费率。|
+| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在[索引器配置](/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上阐述了图像提取费率。|
 | [内置认知技能](cognitive-search-predefined-skills.md) | 计费费率与直接使用认知服务执行任务的费率相同。 |
 | 自定义技能 | 自定义技能是你提供的功能。 使用自定义技能的费用完全取决于自定义代码是否调用其他计量的服务。 |
 
@@ -130,7 +130,7 @@ SU 是服务使用的副本数和分区数的乘积：  **(R x P = SU)** 。
 
 + 针对索引编制等资源密集型操作纵向扩展，然后针对常规查询工作负荷向下重新调整。 首先对 Azure 认知搜索使用最低的配置（由一个分区和一个副本组成的一个 SU），然后监视用户活动，以识别指示需要更多容量的使用模式。 如果有可预测的模式，也许可以使用活动来同步规模（需要编写代码来自动化此过程）。
 
-此外，请访问[计费和成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)获取与支出相关的内置工具和功能。
+此外，请访问[计费和成本管理](../cost-management-billing/manage/getting-started.md)获取与支出相关的内置工具和功能。
 
 不可能临时关闭搜索服务。 专用资源始终运行，是在服务的生存期内专门分配给你使用的。 删除服务这项操作是永久性的，也会删除其关联的数据。
 
@@ -155,7 +155,7 @@ SU 是服务使用的副本数和分区数的乘积：  **(R x P = SU)** 。
 
 若要确定索引大小，必须[生成一个索引](search-what-is-an-index.md)。 其大小将基于导入的数据和索引配置，例如是否启用建议器、筛选和排序。
 
-对于全文搜索，主数据结构是一个[反转索引](https://en.wikipedia.org/wiki/Inverted_index)结构，其特征不同于源数据。 对于倒排索引，大小和复杂度由内容决定，不一定是输入的数据量。 具有高度冗余的大型数据源可能会导致比包含高度可变内容的较小数据集更小的索引。 因此，很难根据原始数据集的大小来推断索引大小。
+对于全文搜索，主数据结构是一个 [反转索引](https://en.wikipedia.org/wiki/Inverted_index) 结构，其特征不同于源数据。 对于倒排索引，大小和复杂度由内容决定，不一定是输入的数据量。 具有高度冗余的大型数据源可能会导致比包含高度可变内容的较小数据集更小的索引。 因此，很难根据原始数据集的大小来推断索引大小。
 
 > [!NOTE] 
 > 即使估算将来的索引和存储需求类似于猜测，但也值得一试。 如果层级容量经证实过低，将需要在更高的层级上预配新服务，然后[重新加载索引](search-howto-reindex.md)。 服务无法从一个 SKU 就地升级到另一个。
@@ -175,7 +175,7 @@ SU 是服务使用的副本数和分区数的乘积：  **(R x P = SU)** 。
 
 专用资源可以适应更大的采样和处理时间，并可以在开发期间对索引数量、大小和查询量进行更贴近实际的估算。 某些客户会直接选择计费层，然后在开发项目成熟后重新进行评估。
 
-1. [检查每个层级的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits)以确定较低层级是否可以支持需要的索引数量。 在“基本”、“S1”和“S2”层中，索引数限制分别为 15、50 和 200。 “存储优化”层的索引数限制为 10 个，因为它旨在支持少量的极大型索引。
+1. [检查每个层级的服务限制](./search-limits-quotas-capacity.md#index-limits)以确定较低层级是否可以支持需要的索引数量。 在“基本”、“S1”和“S2”层中，索引数限制分别为 15、50 和 200。 “存储优化”层的索引数限制为 10 个，因为它旨在支持少量的极大型索引。
 
 1. [在可计费层中创建服务](search-create-service-portal.md)：
 

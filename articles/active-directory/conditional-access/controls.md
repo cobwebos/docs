@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922085"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948294"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
 
@@ -53,7 +53,7 @@ ms.locfileid: "88922085"
 
 ## <a name="known-limitations"></a>已知的限制
 
-自定义控件不能与要求 Azure 多重身份验证的身份保护自动化一起使用、Azure AD 自助服务密码重置 (SSPR) 、满足多重身份验证声明要求、将特权标识管理器中的角色提升 (PIM) 或作为 Intune 设备注册的一部分。
+自定义控件不能与要求 Azure 多重身份验证的身份保护自动化一起使用、Azure AD 自助服务密码重置 (SSPR) 、满足多重身份验证声明要求、提升特权标识管理器中的角色 (PIM) 、在 Intune 设备注册过程中，或者在将设备加入 Azure AD 时使用。
 
 ## <a name="next-steps"></a>后续步骤
 

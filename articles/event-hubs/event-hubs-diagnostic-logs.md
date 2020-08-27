@@ -3,12 +3,12 @@ title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521932"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927725"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -61,18 +61,18 @@ ms.locfileid: "86521932"
 
 名称 | 说明
 ------- | -------
-TaskName | 描述失败的任务
-ActivityId | 用于跟踪的内部 ID
-trackingId | 用于跟踪的内部 ID
-resourceId | Azure 资源管理器资源 ID
-eventHub | 事件中心的完整名称（包括命名空间名称）
-partitionId | 要写入到的事件中心分区
-archiveStep | 可能值：ArchiveFlushWriter、DestinationInit
-startTime | 失败开始时间
-失败 | 发生失败的次数
-durationInSeconds | 失败持续时间
-message | 错误消息
-category | ArchiveLogs
+`TaskName` | 描述失败的任务
+`ActivityId` | 用于跟踪的内部 ID
+`trackingId` | 用于跟踪的内部 ID
+`resourceId` | Azure Resource Manager 资源 ID
+`eventHub` | 事件中心的完整名称（包括命名空间名称）
+`partitionId` | 要写入到的事件中心分区
+`archiveStep` | 可能值：ArchiveFlushWriter、DestinationInit
+`startTime` | 失败开始时间
+`failures` | 发生失败的次数
+`durationInSeconds` | 失败持续时间
+`message` | 错误消息
+`category` | ArchiveLogs
 
 以下代码是存档日志 JSON 字符串的示例：
 
@@ -99,15 +99,15 @@ category | ArchiveLogs
 
 名称 | 说明
 ------- | -------
-ActivityId | 内部 ID，用于跟踪目的 |
-EventName | 操作名称 |
-resourceId | Azure 资源管理器资源 ID |
-SubscriptionId | 订阅 ID |
-EventTimeString | 操作时间 |
-EventProperties | 操作属性 |
-状态 | 操作状态 |
-调用方 | 操作的调用方（Azure 门户或管理客户端） |
-类别 | OperationalLogs |
+`ActivityId` | 内部 ID，用于跟踪目的 |
+`EventName` | 操作名称 |
+`resourceId` | Azure Resource Manager 资源 ID |
+`SubscriptionId` | 订阅 ID |
+`EventTimeString` | 操作时间 |
+`EventProperties` | 操作属性 |
+`Status` | 操作状态 |
+`Caller` | 操作的调用方（Azure 门户或管理客户端） |
+`Category` | OperationalLogs |
 
 以下代码是运行日志 JSON 字符串的示例：
 
@@ -131,9 +131,9 @@ Example:
 
 | 名称 | 说明 |
 | ---- | ----------- | 
-| TrackingId | 内部 ID，用于跟踪目的 |
-| ResourceId | Azure 资源管理器资源 ID。 |
-| 消息 | 信息性消息，提供有关自动膨胀操作的详细信息。 此消息包含给定命名空间的吞吐量单位的以前值和当前值，以及触发了 TU 膨胀的因素。 |
+| `TrackingId` | 内部 ID，用于跟踪目的 |
+| `ResourceId` | Azure 资源管理器资源 ID。 |
+| `Message` | 信息性消息，提供有关自动膨胀操作的详细信息。 此消息包含给定命名空间的吞吐量单位的以前值和当前值，以及触发了 TU 膨胀的因素。 |
 
 下面是一个示例自动缩放事件： 
 
@@ -150,13 +150,13 @@ Kafka 协调器日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- | 
-| RequestId | 请求 ID，用于跟踪目的 |
-| ResourceId | Azure 资源管理器资源 ID |
-| Operation | 组协调期间执行的操作的名称 |
-| ClientId | 客户端 ID |
-| NamespaceName | 命名空间名称 | 
-| SubscriptionId | Azure 订阅 ID |
-| 消息 | 信息性或警告消息，提供有关组协调期间执行的操作的详细信息。 |
+| `RequestId` | 请求 ID，用于跟踪目的 |
+| `ResourceId` | Azure Resource Manager 资源 ID |
+| `Operation` | 组协调期间执行的操作的名称 |
+| `ClientId` | 客户端 ID |
+| `NamespaceName` | 命名空间名称 | 
+| `SubscriptionId` | Azure 订阅 ID |
+| `Message` | 信息性或警告消息，提供有关组协调期间执行的操作的详细信息。 |
 
 ### <a name="example"></a>示例
 
@@ -178,14 +178,14 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- |
-| TrackingId | 跟踪 ID，用于跟踪目的。 |
-| NamespaceName | 命名空间名称 |
-| Eventhub | 事件中心名称 |
-| PartitionId | Partition ID |
-| GroupId | 组 ID |
-| ClientId | 客户端 ID |
-| ResourceId | Azure 资源管理器资源 ID。 |
-| 消息 | 信息性消息，提供有关错误的详细信息 |
+| `TrackingId` | 跟踪 ID，用于跟踪目的。 |
+| `NamespaceName` | 命名空间名称 |
+| `Eventhub` | 事件中心名称 |
+| `PartitionId` | 分区 ID |
+| `GroupId` | 组 ID |
+| `ClientId` | 客户端 ID |
+| `ResourceId` | Azure 资源管理器资源 ID。 |
+| `Message` | 信息性消息，提供有关错误的详细信息 |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中心虚拟网络连接事件架构
 
@@ -193,13 +193,13 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---  | ----------- | 
-| SubscriptionId | Azure 订阅 ID |
-| NamespaceName | 命名空间名称 |
-| IPAddress | 连接到事件中心服务的客户端的 IP 地址 |
-| 操作 | 评估连接请求时事件中心服务执行的操作。 支持的操作为“接受连接”和“拒绝连接” 。 |
-| 原因 | 提供执行操作的原因 |
-| Count | 给定操作的发生次数 |
-| ResourceId | Azure 资源管理器资源 ID。 |
+| `SubscriptionId` | Azure 订阅 ID |
+| `NamespaceName` | 命名空间名称 |
+| `IPAddress` | 连接到事件中心服务的客户端的 IP 地址 |
+| `Action` | 评估连接请求时事件中心服务执行的操作。 支持的操作为“接受连接”和“拒绝连接” 。 |
+| `Reason` | 提供执行操作的原因 |
+| `Count` | 给定操作的发生次数 |
+| `ResourceId` | Azure 资源管理器资源 ID。 |
 
 ### <a name="example"></a>示例
 
@@ -221,14 +221,14 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- | 
-| 类别 | 消息类别的类型。 以下值之一：“错误”和“信息”  |
-| ResourceId | 内部资源 ID，包括 Azure 订阅 ID 和命名空间名称 |
-| KeyVault | Key Vault 资源的名称 |
-| 密钥 | Key Vault 密钥的名称。 |
-| 版本 | Key Vault 密钥的版本 |
-| Operation | 对服务器请求执行的操作的名称 |
-| 代码 | 状态代码 |
-| 消息 | 消息，提供有关错误或信息性消息的详细信息 |
+| `Category` | 消息类别的类型。 以下值之一：“错误”和“信息”  |
+| `ResourceId` | 内部资源 ID，包括 Azure 订阅 ID 和命名空间名称 |
+| `KeyVault` | Key Vault 资源的名称 |
+| `Key` | Key Vault 密钥的名称。 |
+| `Version` | Key Vault 密钥的版本 |
+| `Operation` | 对服务器请求执行的操作的名称 |
+| `Code` | 状态代码 |
+| `Message` | 消息，提供有关错误或信息性消息的详细信息 |
 
 
 
@@ -236,7 +236,7 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 - [事件中心简介](./event-hubs-about.md)
 - [事件中心示例](sdks.md)
 - 事件中心入门
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
