@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 85c6d58d78f095f2f221476a91ecae8da0213963
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502080"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928592"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
@@ -23,11 +23,11 @@ ms.locfileid: "87502080"
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - 如果你打算使用 Azure CLI，请[安装最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- 如果你打算使用 Azure PowerShell，请[安装最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)。
+- 如果要使用 Azure PowerShell 模块，请 [安装最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)。
 
 ## <a name="restrictions"></a>限制
 
-现在，只能在启用了大文件共享的帐户上使用本地冗余存储（LRS）或区域冗余存储（ZRS）。 不能使用异地冗余存储（GZRS）、异地冗余存储（GRS）、读取访问异地冗余存储（RA-GRS）或读取访问地域冗余存储（RA-GZRS）。
+现在，只能在已启用大型文件共享的帐户上使用本地冗余存储 (LRS) 或区域冗余存储 (ZRS) 。 不能使用区域冗余存储 (GZRS) ，异地冗余存储 (GRS) ，读取访问异地冗余存储 (GRS) 或读取访问地域冗余存储 (RA-GZRS) 。
 
 在帐户中启用大型文件共享是一个不可逆的过程。 启用后，你将无法将你的帐户转换为 GZRS、GRS、GRS 或 GZRS。
 
@@ -46,7 +46,7 @@ ms.locfileid: "87502080"
 
 1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 该名称的长度必须是 3 到 24 个字符，只能包含数字和小写字母。
 1. 选择存储帐户的位置。
-1. 将复制设置为**本地冗余存储**或**区域冗余存储**。
+1. 将复制设置为 **本地冗余存储** 或 **区域冗余存储**。
 1. 将以下字段保留其默认值：
 
    |字段  |Value  |

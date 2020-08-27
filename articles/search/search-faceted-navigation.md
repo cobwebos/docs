@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd00c357a422a407a3367e45531e3443577f9bec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171935"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923239"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
 
@@ -63,7 +63,7 @@ ms.locfileid: "86171935"
 
 ### <a name="query-basics"></a>查询基础知识
 
-在 Azure 认知搜索中，通过一个或多个查询参数指定请求（有关每个参数的描述，请参阅[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)）。 所有查询参数都不是必需的，但必须至少有一个查询参数，才能使查询有效。
+在 Azure 认知搜索中，通过一个或多个查询参数指定请求（有关每个参数的描述，请参阅[搜索记录](/rest/api/searchservice/Search-Documents)）。 所有查询参数都不是必需的，但必须至少有一个查询参数，才能使查询有效。
 
 精度（表示能够筛选出不相关的匹配记录）通过以下一个或两个表达式实现：
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 认知搜索 API）](/rest/api/searchservice/Search-Documents)。
 
 通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索， 同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。 单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq 'Red'`。
 
@@ -319,7 +319,7 @@ Content type
 
 **确保获取准确的分面计数**
 
-在某些情况下，可能发现分面计数与结果集不匹配（请参阅 [Azure 认知搜索中的分面导航（Microsoft 问答页面）](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)）。
+在某些情况下，可能发现分面计数与结果集不匹配（请参阅 [Azure 认知搜索中的分面导航（Microsoft 问答页面）](/answers/topics/azure-cognitive-search.html)）。
 
 由于分片体系结构，分面计数可能不准确。 每个搜索索引具有多个分片，每个分片报告按记录计数排序的前 N 个分面，并合并到单个结果中。 如果某些分片具有大量匹配值，而其他分片的值很少，你可能会发现某些分面值丢失或未计入结果中。
 
@@ -333,7 +333,7 @@ Content type
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>基于范围进行筛选
-基于值的范围分面是常见的搜索应用程序要求。 数值数据和 DateTime 值都支持范围。 可在[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中阅读有关每种方法的详细信息。
+基于值的范围分面是常见的搜索应用程序要求。 数值数据和 DateTime 值都支持范围。 可在[搜索记录（Azure 认知搜索 API）](/rest/api/searchservice/Search-Documents)中阅读有关每种方法的详细信息。
 
 Azure 认知搜索通过提供两种用于计算范围的方法，简化范围构造。 对于这两种方法，Azure 认知搜索根据用户提供的输入创建适当的范围。 例如，如果用户指定范围值为 10|20|30，它会自动创建范围 0-10、10-20、20-30。 应用程序可以选择性地删除任何空间隔。 
 
@@ -404,4 +404,3 @@ Azure 认知搜索作业门户演示包含本文中参考的示例。
 
 * [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [实现分面搜索时的前端问题 – 第 1 部分](https://articles.uie.com/faceted_search2/)
-

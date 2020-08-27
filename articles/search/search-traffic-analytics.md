@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2a65d31bd7cde0a1f456212a19c06f6b940ce602
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420067"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922726"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集遥测数据以用于分析搜索流量
 
 搜索流量分析是一种用于收集遥测数据的模式，它收集有关用户与 Azure 认知搜索应用程序之间的交互（例如用户发起的单击事件和键盘输入）的遥测数据。 使用此信息，你可以确定搜索解决方案的有效性，包括热门搜索词、点击率以及哪些查询输入产生了零个结果。
 
-此模式依赖于 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)（[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) 的一项功能）来收集用户数据。 你还需要向客户端代码中添加检测机制，如本文中所述。 最后，你将需要一个报告机制来分析数据。 建议使用 Power BI，但你可以使用应用程序仪表板或可连接到 Application Insights 的任何工具。
+此模式依赖于 [Application Insights](../azure-monitor/app/app-insights-overview.md)（[Azure Monitor](../azure-monitor/index.yml) 的一项功能）来收集用户数据。 你还需要向客户端代码中添加检测机制，如本文中所述。 最后，你将需要一个报告机制来分析数据。 建议使用 Power BI，但你可以使用应用程序仪表板或可连接到 Application Insights 的任何工具。
 
 > [!NOTE]
 > 本文中所述的模式适用于你添加到客户端的代码生成的高级方案和点击流数据。 相比之下，服务日志易于设置，提供各种指标，且无需编写任何代码即可在门户中操作。 建议对所有方案启用日志记录。 有关详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
@@ -43,19 +43,19 @@ ms.locfileid: "87420067"
 
 ## <a name="1---set-up-application-insights"></a>1 - 设置 Application Insights
 
-选择现有的 Application Insights 资源，如果没有 Application Insights 资源，则[创建一个资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。 如果使用“搜索流量分析”页，则可以复制应用程序在连接到 Application Insights 时所需的检测密钥。
+选择现有的 Application Insights 资源，如果没有 Application Insights 资源，则[创建一个资源](../azure-monitor/app/create-new-resource.md)。 如果使用“搜索流量分析”页，则可以复制应用程序在连接到 Application Insights 时所需的检测密钥。
 
-有了 Application Insights 资源后，可以按照[适用于受支持语言和平台的说明](https://docs.microsoft.com/azure/azure-monitor/app/platforms)来注册应用。 注册只是将 Application Insights 中的检测密钥添加到代码，以设置关联。 选择现有的资源时，可以在门户或“搜索流量分析”页中找到该密钥。
+有了 Application Insights 资源后，可以按照[适用于受支持语言和平台的说明](../azure-monitor/app/platforms.md)来注册应用。 注册只是将 Application Insights 中的检测密钥添加到代码，以设置关联。 选择现有的资源时，可以在门户或“搜索流量分析”页中找到该密钥。
 
 以下步骤反映了适用于某些 Visual Studio 项目类型的快捷方式。 只需单击几下鼠标，即可创建资源并注册应用。
 
-1. 对于 Visual Studio 和 ASP.NET 开发，请打开你的解决方案，并选择“项目” > “添加 Application Insights 遥测”**** ****。
+1. 对于 Visual Studio 和 ASP.NET 开发，请打开你的解决方案，并选择“项目” > “添加 Application Insights 遥测” 。
 
-1. 单击“开始”。****
+1. 单击“开始”。
 
-1. 通过提供 Microsoft 帐户、Azure 订阅和 Application Insights 资源（某个新资源是默认资源）来注册你的应用。 单击“注册”****。
+1. 通过提供 Microsoft 帐户、Azure 订阅和 Application Insights 资源（某个新资源是默认资源）来注册你的应用。 单击“注册”。
 
-此时，你已经为应用程序设置了应用程序监视，这意味着，将使用默认指标跟踪所有页面加载。 有关上述步骤的详细信息，请参阅[启用 Application Insights 服务器端遥测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)。
+此时，你已经为应用程序设置了应用程序监视，这意味着，将使用默认指标跟踪所有页面加载。 有关上述步骤的详细信息，请参阅[启用 Application Insights 服务器端遥测](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)。
 
 ## <a name="2---add-instrumentation"></a>2 - 添加检测
 
@@ -63,15 +63,15 @@ ms.locfileid: "87420067"
 
 ### <a name="step-1-create-a-telemetry-client"></a>步骤 1：创建遥测客户端
 
-创建一个用于将事件发送到 Application Insights 的对象。 可以将检测机制添加到服务器端应用程序代码或在浏览器中运行的客户端代码中，此处的代码以 C# 和 JavaScript 变体表示（对于其他语言，请参阅[支持的平台和框架](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)的完整列表）。 选择可提供所需信息深度的方法。
+创建一个用于将事件发送到 Application Insights 的对象。 可以将检测机制添加到服务器端应用程序代码或在浏览器中运行的客户端代码中，此处的代码以 C# 和 JavaScript 变体表示（对于其他语言，请参阅[支持的平台和框架](../azure-monitor/app/platforms.md)的完整列表）。 选择可提供所需信息深度的方法。
 
 服务器端遥测将捕获应用程序层（例如，在云中作为 Web 服务运行的应用程序，或者在企业网络中作为本地应用运行的应用程序）的指标。 服务器端遥测捕获搜索和单击事件、结果中文档的位置以及查询信息，但数据收集范围将限定为该层上可用的任何信息。
 
-在客户端上，可以使用附加的代码来操作查询输入、添加导航或包含上下文（例如，从主页或产品页发起的查询）。 如果此描述符合你的解决方案，则你可以选择启用客户端检测机制，使遥测数据反映附加的详细信息。 如何收集这些附加详细信息超出了此模式的范围，但你可以查看[适用于网页的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) 来获取更多指导。 
+在客户端上，可以使用附加的代码来操作查询输入、添加导航或包含上下文（例如，从主页或产品页发起的查询）。 如果此描述符合你的解决方案，则你可以选择启用客户端检测机制，使遥测数据反映附加的详细信息。 如何收集这些附加详细信息超出了此模式的范围，但你可以查看[适用于网页的 Application Insights](../azure-monitor/app/javascript.md#explore-browserclient-side-data) 来获取更多指导。 
 
 **使用 C#**
 
-对于 C#，如果项目是 ASP.NET，则可以在应用程序配置（例如 appsettings.json）中找到 InstrumentationKey****。 如果你不确定密钥的位置，请再次参考注册说明。
+对于 C#，如果项目是 ASP.NET，则可以在应用程序配置（例如 appsettings.json）中找到 InstrumentationKey。 如果你不确定密钥的位置，请再次参考注册说明。
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -209,19 +209,19 @@ appInsights.trackEvent("Click", {
 
 检测到应用并确认应用程序已正确连接到 Application Insights 后，下载一个预定义的报表模板以在 Power BI Desktop 中分析数据。 该报告包含预定义的图表和表，它们可用于分析为搜索流量分析捕获的其他数据。
 
-1. 在 Azure 认知搜索仪表板左侧导航窗格中，在“设置”**** 下，单击“搜索流量分析”****。
+1. 在 Azure 认知搜索仪表板左侧导航窗格中，在“设置”下，单击“搜索流量分析”。
 
-1. 在“搜索流量分析”**** 页面上，在步骤 3 中，单击“获取 Power BI Desktop”**** 以安装 Power BI。
+1. 在“搜索流量分析”页面上，在步骤 3 中，单击“获取 Power BI Desktop”以安装 Power BI。
 
    ![获取 Power BI 报表](./media/search-traffic-analytics/get-use-power-bi.png "获取 Power BI 报表")
 
-1. 在同一页面上，单击“下载 Power BI 报表”****。
+1. 在同一页面上，单击“下载 Power BI 报表”。
 
 1. 该报表将在 Power BI Desktop 中打开，并且会提示你连接到 Application Insights 并提供凭据。 可以在你的 Application Insights 资源的 Azure 门户页面中找到连接信息。 对于凭据，请提供用于门户登录的相同用户名和密码。
 
    ![连接到 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "连接到 Application Insights")
 
-1. 单击“加载”。****
+1. 单击“加载”。
 
 该报表包含图表和表，可帮助你做出更明智的决策来提高搜索性能和相关性。
 
@@ -238,6 +238,6 @@ appInsights.trackEvent("Click", {
 
 检测搜索应用程序，以获取提供深入见解的有关搜索服务的强大数据。
 
-你可以查找有关 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 的更多信息并访问[定价页面](https://azure.microsoft.com/pricing/details/application-insights/)来详细了解其各种服务层级。
+你可以查找有关 [Application Insights](../azure-monitor/app/app-insights-overview.md) 的更多信息并访问[定价页面](https://azure.microsoft.com/pricing/details/application-insights/)来详细了解其各种服务层级。
 
-了解有关创建出色报告的详细信息。 有关详细信息，请参阅 [Power BI Desktop 入门](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)。
+了解有关创建出色报告的详细信息。 有关详细信息，请参阅 [Power BI Desktop 入门](/power-bi/fundamentals/desktop-getting-started)。

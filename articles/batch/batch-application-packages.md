@@ -3,13 +3,13 @@ title: 将应用程序包部署到计算节点
 description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
 ms.topic: how-to
 ms.date: 04/26/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147215"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921998"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 

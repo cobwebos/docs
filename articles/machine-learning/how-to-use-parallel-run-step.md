@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507108"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651193"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -202,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>编写推理脚本
 
 >[!Warning]
->下面的代码只是[示例笔记本](https://aka.ms/batch-inference-notebooks)使用的示例。 你需要为方案创建自己的脚本。
+>下面的代码只是[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)使用的示例。 你需要为方案创建自己的脚本。
 
 脚本必须包含两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
@@ -214,7 +214,7 @@ model = Model.register(model_path="models/",
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -421,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解此过程的端到端运行机制，请尝试[批处理推理笔记本](https://aka.ms/batch-inference-notebooks)。 
+若要了解此过程的端到端运行机制，请尝试[批处理推理笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)。 
 
 有关 ParallelRunStep 的调试和故障排除指导，请参阅[操作指南](how-to-debug-parallel-run-step.md)。
 

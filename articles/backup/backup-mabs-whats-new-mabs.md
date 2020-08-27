@@ -3,12 +3,12 @@ title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648745"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893181"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份 Server 中的新增功能 (MABS) 
 
@@ -37,7 +37,7 @@ MABS V2 引入了[新式备份存储](backup-mabs-add-storage.md) (MBS)，从而
 >[!NOTE]
 > MABS V3 支持备份 ReFS 卷上存储的 Hyper-V VM
 
->无关紧要我们发现了一些备份删除了重复数据删除的 ReFS 卷的问题。 我们正在努力解决它们；一旦有修补程序可用，我们将立即更新此部分。 在此之前，我们从 MABSv3 UR1 中删除对已删除重复的 ReFS 卷的支持。
+>无关紧要我们发现了一些备份删除了重复数据删除的 ReFS 卷的问题。 我们正在努力解决这些问题，并将在提供修补程序后立即更新此部分。 在此之前，我们从 MABSv3 UR1 中删除对已删除重复的 ReFS 卷的支持。
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware 解决方案保护支持
 

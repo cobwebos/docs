@@ -3,13 +3,13 @@ title: 使用多实例任务运行 MPI 应用程序
 description: 了解如何在 Azure Batch 中使用多实例任务类型执行消息传递接口 (MPI) 应用程序。
 ms.topic: how-to
 ms.date: 03/13/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66cedc4cdb7c55401b7dbbc892687d08f56eb875
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147368"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926365"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 

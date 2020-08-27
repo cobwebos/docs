@@ -70,7 +70,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: Javascript
+        - name: JavaScript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -120,7 +120,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -175,6 +175,7 @@
               href: functions-develop-vs.md
             - name: Core Tools 开发
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: 创建函数
           items:
             - name: HTTP 触发器

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f371f52b0a110afeef6f3f72fb459b30842f77eb
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723701"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930156"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>连接 Azure Functions 应用以处理数据
 
@@ -36,11 +36,11 @@ ms.locfileid: "88723701"
 
 在 Visual Studio 2019 中，选择 " *文件" > "新建项目*"。 搜索 *Azure Functions* 模板，将其选中，然后按 "下一步"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio： 新建项目 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio： "新建项目" 对话框":::
 
 指定函数应用的名称，并按 "创建"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： 配置项目 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： "配置项目" 对话框":::
 
 选择 " *事件网格" 触发器* 并按 "创建"。
 
@@ -84,7 +84,7 @@ namespace FunctionSample
 
 Function app 使用 [适用于 (.net 的 Azure IoT 数字克隆客户端库 ) ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)与 Azure 数字孪生交互。 若要使用 SDK，需要在项目中包含以下包：
 * `Azure.DigitalTwins.Core` (版本 `1.0.0-preview.2`) 
-* `Azure.Identity` (版本 `1.1.1`) 
+* `Azure.Identity`
 
 若要配置 Azure SDK 管道以便正确设置 Azure Functions，还需要：
 * `Azure.Net.Http`

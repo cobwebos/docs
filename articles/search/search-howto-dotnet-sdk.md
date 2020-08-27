@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9b08dff01ad125fb7e0a52674e25a4a973df7c16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905417"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927044"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>如何在 .NET 应用程序中使用 (v10) 
 
-本文介绍如何使用 c # 和[Azure 认知搜索 (v10) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)来创建和管理搜索对象。 版本10是最新版本的 Microsoft. Azure。 前进后，将在 Azure SDK 团队[Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme)中推出新功能。
+本文介绍如何使用 c # 和 [Azure 认知搜索 (v10) .NET SDK](/dotnet/api/overview/azure/search)来创建和管理搜索对象。 版本10是最新版本的 Microsoft. Azure。 前进后，将在 Azure SDK 团队 [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) 中推出新功能。
 
 如果现有或即时开发项目，请继续使用版本10。 对于新项目，或若要使用新功能，应将现有的搜索解决方案转换为新库。
 
@@ -36,14 +36,14 @@ SDK 中的其他 NuGet 程序包有：
 
 各种客户端库定义 `Index`、`Field` 和 `Document` 等类，以及 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 等操作。 这些类已组织成以下命名空间：
 
-* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft.Azure.Search](/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search.Models](/dotnet/api/microsoft.azure.search.models)
 
 如果想要为 SDK 的未来更新提供反馈，请参阅我们的[反馈页](https://feedback.azure.com/forums/263029-azure-search/)，或者在 [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 上创建问题并在问题标题中提到“Azure 认知搜索”。
 
-.NET SDK 面向 `2019-05-06` 版 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
+.NET SDK 面向 `2019-05-06` 版 [Azure 认知搜索 REST API](/rest/api/searchservice/)。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
 
-此 SDK 不支持[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 认知搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
+此 SDK 不支持[管理操作](/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 认知搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>升级到最新版本的 SDK
 如果你已在使用较旧版本的 Azure 认知搜索 .NET SDK，并且想要升级到最新的正式版，[此文](search-dotnet-sdk-migration-version-9.md)介绍了操作方法。
@@ -138,7 +138,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> 在典型的搜索应用程序中，索引管理和填充可由搜索查询中的一个单独的组件处理。 `Indexes.GetClient` 对于填充索引很方便，因为使用它则无需提供额外的 `SearchCredentials`。 它通过向新 `SearchIndexClient` 传递用于创建 `SearchServiceClient` 的管理密钥来实现此目的。 但是，在执行查询的应用程序中，最好是直接创建 `SearchIndexClient` ，这样可以传入查询密钥（只允许读取数据）而不是管理密钥。 这与最小特权原则一致，可帮助使应用程序更安全。 可在[此处](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)了解有关管理密钥和查询密钥的详细信息。
+> 在典型的搜索应用程序中，索引管理和填充可由搜索查询中的一个单独的组件处理。 `Indexes.GetClient` 对于填充索引很方便，因为使用它则无需提供额外的 `SearchCredentials`。 它通过向新 `SearchIndexClient` 传递用于创建 `SearchServiceClient` 的管理密钥来实现此目的。 但是，在执行查询的应用程序中，最好是直接创建 `SearchIndexClient` ，这样可以传入查询密钥（只允许读取数据）而不是管理密钥。 这与最小特权原则一致，可帮助使应用程序更安全。 可在[此处](/rest/api/searchservice/#authentication-and-authorization)了解有关管理密钥和查询密钥的详细信息。
 > 
 > 
 
@@ -264,7 +264,7 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 >
 > 
 
-除了字段，还可以向索引添加计分配置文件、建议器或 CORS 选项（为简洁起见，示例中省略了这些参数）。 可在 [SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)以及 [Azure 认知搜索 REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)中，找到有关 Index 对象及其组成部分的详细信息。
+除了字段，还可以向索引添加计分配置文件、建议器或 CORS 选项（为简洁起见，示例中省略了这些参数）。 可在 [SDK 参考](/dotnet/api/microsoft.azure.search.models.index)以及 [Azure 认知搜索 REST API 参考](/rest/api/searchservice/)中，找到有关 Index 对象及其组成部分的详细信息。
 
 ### <a name="populating-the-index"></a>填充索引
 `Main` 中的下一步骤填充新建的索引。 此索引填充操作是通过以下方法完成的：（为方便演示，某些代码已替换为“...”。  有关完整的数据填充代码，请参阅完整的示例解决方案。）
@@ -395,7 +395,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 此方法的第三部分是处理索引重要错误情况的 catch 块。 如果 Azure 认知搜索服务无法为批中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生此异常。 **强烈建议在代码中显式处理这种情况。** 可以延迟为失败的文档编制索引，并重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
 
 > [!NOTE]
-> 可以使用 [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) 方法来构造一个新的批处理，其中仅包含上次调用 `Index` 时失败的操作。 在 [StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) 上有如何正确使用该方法的讨论。
+> 可以使用 [`FindFailedActionsToRetry`](/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) 方法来构造一个新的批处理，其中仅包含上次调用 `Index` 时失败的操作。 在 [StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) 上有如何正确使用该方法的讨论。
 >
 >
 
@@ -470,7 +470,7 @@ public partial class Hotel
 
 第二个要注意的问题是，每个属性使用 `IsFilterable`、`IsSearchable`、`Key` 和 `Analyzer` 等属性进行修饰。 这些属性直接映射到 [Azure 认知搜索索引中的相应字段属性](/rest/api/searchservice/create-index)。 `FieldBuilder` 类使用这些属性来构造索引的字段定义。
 
-有关 `Hotel` 类的第三个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在类似的类型映射。 [Azure 认知搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
+有关 `Hotel` 类的第三个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在类似的类型映射。 [Azure 认知搜索 .NET SDK 参考](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
 
 你是否注意到了 `SmokingAllowed` 属性？
 
@@ -481,7 +481,7 @@ public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => 
 
 此属性的 `JsonIgnore` 特性告知 `FieldBuilder` 不要将其序列化为字段形式的索引。  这是创建可在应用程序中用作帮助器的客户端计算属性的极佳方法。  在这种情况下，`SmokingAllowed` 属性将反映 `Rooms` 集合中的任何 `Room` 是否允许吸烟。  如果全部为 false，则表示整个酒店不允许吸烟。
 
-某些属性（例如 `Address` 和 `Rooms`）是 .NET 类的实例。  这些属性表示更复杂的数据结构，因此，需要在索引中使用[复杂数据类型](https://docs.microsoft.com/azure/search/search-howto-complex-data-types)的字段。
+某些属性（例如 `Address` 和 `Rooms`）是 .NET 类的实例。  这些属性表示更复杂的数据结构，因此，需要在索引中使用[复杂数据类型](./search-howto-complex-data-types.md)的字段。
 
 `Address` 属性表示 `Address` 类中的多个值，定义如下：
 
@@ -562,7 +562,7 @@ namespace AzureSearch.SDKHowTo
 使用自己的类来与索引中的文档交互的功能可以朝两个方向进行；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，我们会在下一节中对此进行介绍。
 
 > [!NOTE]
-> Azure 认知搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本教程中的示例代码仅使用后者。 [`Document` 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)继承自 `Dictionary<string, object>`。
+> Azure 认知搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本教程中的示例代码仅使用后者。 [`Document` 类](/dotnet/api/microsoft.azure.search.models.document)继承自 `Dictionary<string, object>`。
 > 
 >
 
@@ -649,12 +649,12 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-每次执行查询时，此方法首先创建一个新的 `SearchParameters` 对象。 此对象用于为查询指定其他选项，如排序、筛选、分页和分面。 在此方法中，我们要为不同查询设置 `Filter`、`Select`、`OrderBy` 和 `Top` 属性。 所有 `SearchParameters` 属性在[此处](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)进行了说明。
+每次执行查询时，此方法首先创建一个新的 `SearchParameters` 对象。 此对象用于为查询指定其他选项，如排序、筛选、分页和分面。 在此方法中，我们要为不同查询设置 `Filter`、`Select`、`OrderBy` 和 `Top` 属性。 所有 `SearchParameters` 属性在[此处](/dotnet/api/microsoft.azure.search.models.searchparameters)进行了说明。
 
 下一步是实际执行搜索查询。 使用 `Documents.Search` 方法运行搜索。 对于每个查询，我们将要使用的搜索文本（或 `"*"`，如果没有搜索文本）作为字符串传递，还会传递先前创建的搜索参数。 此外，我们指定 `Hotel` 作为 `Documents.Search` 的类型参数，这指示 SDK 将搜索结果中的文档反序列化为类型为 `Hotel` 的对象。
 
 > [!NOTE]
-> 可在[此处](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)找到有关搜索查询表达式语法的详细信息。
+> 可在[此处](/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)找到有关搜索查询表达式语法的详细信息。
 > 
 > 
 
@@ -709,7 +709,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-此查询使用 OData `$filter` 表达式 `Rooms/any(r: r/BaseRate lt 100)` 来筛选索引中的文档。 这会使用 [any 运算符](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators)将“BaseRate lt 100”应用到 Rooms 集合中的每个项。 可在[此处](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)找到有关 Azure 认知搜索支持的 OData 语法的详细信息。
+此查询使用 OData `$filter` 表达式 `Rooms/any(r: r/BaseRate lt 100)` 来筛选索引中的文档。 这会使用 [any 运算符](./search-query-odata-collection-operators.md)将“BaseRate lt 100”应用到 Rooms 集合中的每个项。 可在[此处](./query-odata-filter-orderby-syntax.md)找到有关 Azure 认知搜索支持的 OData 语法的详细信息。
 
 下面是查询的结果：
 
@@ -769,6 +769,6 @@ WriteDocuments(results);
 本教程到此步骤结束，但不要就此打住。 **后续步骤提供了详细了解 Azure 认知搜索的其他资源。
 
 ## <a name="next-steps"></a>后续步骤
-* 浏览 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 的参考资料。
-* 查看[命名约定](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)，了解命名各种对象的规则。
-* 查看 Azure 认知搜索中[受支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
+* 浏览 [.NET SDK](/dotnet/api/microsoft.azure.search) 和 [REST API](/rest/api/searchservice/) 的参考资料。
+* 查看[命名约定](/rest/api/searchservice/Naming-rules)，了解命名各种对象的规则。
+* 查看 Azure 认知搜索中[受支持的数据类型](/rest/api/searchservice/Supported-data-types)。

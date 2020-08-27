@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553074"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917969"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用托管标识设置到 Azure 存储帐户的连接（预览）
 
@@ -68,7 +68,7 @@ ms.locfileid: "88553074"
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引存储帐户中的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引存储帐户中的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
 从存储帐户编制索引时，数据源必须具有以下必需属性：
 
@@ -83,7 +83,7 @@ ms.locfileid: "88553074"
         * ResourceId=/subscriptions/你的订阅 ID/resourceGroups/你的资源组名称/providers/Microsoft.Storage/storageAccounts/你的存储帐户名称/;*  *
 * container 指定存储帐户中的容器或表名称。 默认情况下，容器中的所有 Blob 都可检索。 如果只想为特定虚拟目录中的 Blob 编制索引，可以使用可选的 **query** 参数指定该目录。
 
-如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 创建 Blob 数据源对象的示例：
+如何使用 [REST API](/rest/api/searchservice/create-data-source) 创建 Blob 数据源对象的示例：
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -118,7 +118,7 @@ api-key: [admin key]
     }
 ```
 
-有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
+有关创建索引的详细信息，请参阅[创建索引](/rest/api/searchservice/create-index)
 
 ### <a name="5---create-the-indexer"></a>5 - 创建索引器
 
@@ -143,7 +143,7 @@ Blob 索引器的索引器定义示例：
 
 此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
 
 有关定义索引器计划的详细信息，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 

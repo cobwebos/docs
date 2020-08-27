@@ -11,12 +11,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 03/15/2020
-  ms.openlocfilehash: f70bdf831d5b65aab9d6d01f88122d1a0fdd9957
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 13bb875c371458969ae5b4e8592085c5faa2c947
+  ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83200404"
+  ms.lasthandoff: 08/26/2020
+  ms.locfileid: "88927419"
 highlightedContent:
   items:
   - title: 在 Azure 消息传送服务之间进行选择
@@ -74,13 +74,13 @@ conceptualContent:
       text: 查看详细信息
   - title: 发送和接收事件
     links:
-    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+    - url: ../event-hubs/event-hubs-dotnet-standard-getstarted-send.md
       itemType: quickstart
       text: 使用 .NET Core 向/从 Azure 事件中心发送/接收事件
     - url: ../event-hubs/event-hubs-java-get-started-send.md
       itemType: quickstart
       text: 使用 Java 向/从 Azure 事件中心发送/接收事件
-    - url: ../event-hubs/get-started-python-send-v2.md
+    - url: ../event-hubs/event-hubs-python-get-started-send.md
       itemType: quickstart
       text: 使用 Python 向/从事件中心发送/接收事件
     footerLink:

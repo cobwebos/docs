@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611817"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757483"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -125,7 +125,7 @@ hdbuserstore list
 >[!NOTE]
 > 请确保 `/usr/sap/{SID}/home/.hdb/` 下有一组唯一的 SSFS 文件。 此路径中应只有一个文件夹。
 
-## <a name="create-a-recovery-service-vault"></a>创建恢复服务保管库
+## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
 恢复服务保管库是用于存储在不同时间创建的备份和恢复点的实体。 恢复服务保管库还包含与受保护虚拟机关联的备份策略。
 
@@ -149,7 +149,7 @@ hdbuserstore list
 
    ![创建恢复服务保管库](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * **名称**：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
+   * 名称：该名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
    * **订阅**：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅。
    * **资源组**：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”。<br>
    要查看订阅中可用的资源组列表，请选择“使用现有资源”，然后从下拉列表框中选择一个资源。 若要创建新资源组，请选择“新建”，然后输入名称。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。
@@ -159,7 +159,7 @@ hdbuserstore list
 
    ![选择“查看和创建”](./media/tutorial-backup-sap-hana-db/review-create.png)
 
-现已创建恢复服务保管库。
+现在，恢复服务存储库已创建。
 
 ## <a name="discover-the-databases"></a>发现数据库
 

@@ -1,26 +1,20 @@
 ---
 title: 教程 - 使用 Azure CLI 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure CLI 为虚拟机创建和管理 Azure 磁盘
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 48d9c51c5d008bf652e782573c891cb0e0580f8c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831305"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757667"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -49,20 +43,20 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 
-Azure 提供两种类型的磁盘：标准磁盘和高级磁盘。
+Azure 提供两种类型的磁盘。
 
-### <a name="standard-disk"></a>标准磁盘
+**标准磁盘** - 受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负荷。
 
-标准存储由 HDD 提供支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负荷。
+**高级磁盘** - 由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 [大小名称](../vm-naming-conventions.md)中带有“S”的 VM 大小通常支持高级存储。 例如，DS 系列、DSv2 系列、GS 系列和 FS 系列 VM 都支持高级存储。 选择磁盘大小时，大小值将向上舍入到下一类型。 例如，如果磁盘大小大于 64 GB，但小于 128 GB，则磁盘类型为 P10。 
 
-### <a name="premium-disk"></a>高级磁盘
+<br>
 
-高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将向上舍入到下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
 
-### <a name="premium-disk-performance"></a>高级磁盘性能
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-尽管上表确定了每个磁盘的最大 IOPS，但还可通过条带化多个数据磁盘实现更高级别的性能。 例如，Standard_GS5 VM 最多可实现 80,000 IOPS。 若要详细了解每个 VM 的最大 IOPS，请参阅 [Linux VM 大小](../sizes.md)。
+预配高级存储磁盘时，可以获得该磁盘的容量、IOPS 和吞吐量保证，这与标准存储不同。 例如，如果创建 P50 磁盘，Azure 将为此磁盘预配 4,095-GB 存储容量、7,500 IOPS 和 250-MB/秒的吞吐量。 应用程序可以使用全部或部分容量与性能。 高级 SSD 磁盘的设计目的是在 99.9% 的时间内提供较低的个位数毫秒延迟以及上表所述的目标 IOPS 和吞吐量。
+
+尽管上表确定了每个磁盘的最大 IOPS，但还可通过条带化多个数据磁盘实现更高级别的性能。 例如，可向 Standard_GS5 VM 附加 64 个数据磁盘。 如果这些磁盘的大小都为 P30，则最大可实现 80,000 IOPS。 若要详细了解每个 VM 的最大 IOPS，请参阅 [VM 类型和大小](../sizes.md)。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -119,16 +113,17 @@ az vm disk attach \
 ssh 10.101.10.10
 ```
 
-使用 `fdisk` 对磁盘进行分区。
+使用 `parted` 对磁盘进行分区。
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-使用 `mkfs` 命令将文件系统写入分区。
+使用 `mkfs` 命令将文件系统写入分区。 使用 `partprobe` 使 OS 知道所做的更改。
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 装载新磁盘，使其在操作系统中可访问。
@@ -137,18 +132,19 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-现在可以通过 datadrive 装入点访问磁盘，可运行 `df -h` 命令对此进行验证。
+现在可以通过 `/datadrive` 装载点访问磁盘，可运行 `df -h` 命令对此进行验证。
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-输出显示新驱动器装载在 /datadrive 上。
+输出显示新驱动器装载在 `/datadrive` 上。
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -164,11 +160,22 @@ sudo -i blkid
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-在 /etc/fstab 文件中添加类似于以下内容的行。
+> [!NOTE]
+> 错误地编辑 **/etc/fstab** 文件可能会导致系统无法引导。 如果没有把握，请参考分发的文档来获取有关如何正确编辑该文件的信息。 另外，建议在编辑前备份 /etc/fstab 文件。
+
+在文本编辑器中打开 `/etc/fstab` 文件，如下所示：
+
+```bash
+sudo nano /etc/fstab
+```
+
+向 /etc/fstab 文件中添加如下一行，并将 UUID 值替换为你自己的值。
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
 ```
+
+编辑完文件后，使用 `Ctrl+O` 写入文件，然后使用 `Ctrl+X` 退出编辑器。
 
 配置磁盘后，请关闭 SSH 会话。
 
@@ -182,7 +189,7 @@ exit
 
 ### <a name="create-snapshot"></a>创建快照
 
-创建虚拟机磁盘快照前，需要磁盘 ID 或名称。 使用 [az vm show](/cli/azure/vm#az-vm-show) 命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在变量中，以便能够在稍后的步骤中使用。
+创建快照之前，需要磁盘的 ID 或名称。 使用 [az vm show](/cli/azure/vm#az-vm-show) 显示磁盘 ID。 在此示例中，磁盘 ID 存储在变量中，以便能够在稍后的步骤中使用。
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -192,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-获取虚拟机磁盘 ID 后，使用以下命令可创建磁盘快照。
+有了 ID 后，请使用 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) 创建该磁盘的快照。
 
 ```azurecli-interactive
 az snapshot create \
@@ -203,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>从快照创建磁盘
 
-然后，可将此快照转换为可用于重新创建虚拟机的磁盘。
+然后可以使用 [az disk create](/cli/azure/disk#az-disk-create) 将此快照转换为可用于重新创建虚拟机的磁盘。
 
 ```azurecli-interactive
 az disk create \
@@ -214,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>从快照还原虚拟机
 
-若要演示如何还原虚拟机，请删除现有虚拟机。
+若要演示如何还原虚拟机，请使用 [az vm delete](/cli/azure/vm#az-vm-delete) 删除现有虚拟机。
 
 ```azurecli-interactive
 az vm delete \
@@ -236,7 +243,7 @@ az vm create \
 
 需要将所有数据磁盘重新附加到虚拟机。
 
-先使用 [az disk list](/cli/azure/disk#az-disk-list) 命令找到数据磁盘名称。 此示例将磁盘名称放在名为“datadisk”的变量中，将在下一步中使用该变量。
+使用 [az disk list](/cli/azure/disk#az-disk-list) 命令找到数据磁盘名称。 此示例将磁盘名称放在名为 `datadisk` 的变量中，会在下一步中使用该变量。
 
 ```azurecli-interactive
 datadisk=$(az disk list \

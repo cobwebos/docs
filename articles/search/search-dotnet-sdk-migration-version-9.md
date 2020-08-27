@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db2017a3bb1a8910049527796f422227b741b960
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562357"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923188"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>升级到 Azure 搜索 .NET SDK 版本 9
 
-如果你使用的是版本 7.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文可帮助你升级应用程序，以使用版本 9。
+如果你使用的是版本 7.0-preview 或更早版本的 [Azure 搜索 .NET SDK](/dotnet/api/overview/azure/search)，本文可帮助你升级应用程序，以使用版本 9。
 
 > [!NOTE]
 > 若要使用版本 8.0-preview 来评估尚未推出正式版的功能，也可以遵照本文中的说明从旧版升级到 8.0-preview。
@@ -35,9 +35,9 @@ Azure 搜索 .NET SDK 的版本 9 包含了许多针对早期版本进行的更�
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>版本 9 中的新增功能
-Azure 搜索 .NET SDK 的版本9面向 Azure 搜索 REST API 2019-05-06 版，具有以下功能：
+Azure 搜索 .NET SDK 的版本 9 面向 Azure 搜索 REST API 的 2019-05-06 版，具有以下功能：
 
-* [AI 扩充](cognitive-search-concept-intro.md)是从图像、blob 和其他非结构化数据源提取文本的能力-丰富内容，使其在 Azure 搜索索引中更具可搜索性。
+* [AI 扩充](cognitive-search-concept-intro.md)是从图像、Blob 和其他非结构化数据源中提取文本的功能 - 扩充内容以使其在 Azure 搜索索引中更易于搜索。
 * 使用[复杂类型](search-howto-complex-data-types.md)支持几乎可为 Azure 搜索索引中的任何嵌套式 JSON 结构建模。
 * [自动完成](search-autocomplete-tutorial.md)可以取代**建议** API 来实现“一边键入，一边搜索”的行为。 “自动完成”是指“完成”用户当前键入的单词或短语。
 * [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。
@@ -181,7 +181,7 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 如果使用返回 `Document` 的类型实例的“动态类型化”`Search`、`Suggest` 或 `Get` API，请注意，它们现在会将空的 JSON 数组反序列化为 `object[]` 而不是 `string[]`。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
 我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。

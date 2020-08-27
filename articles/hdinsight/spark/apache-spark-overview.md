@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc,seoapr2020
+ms.custom: contperfq1
 ms.topic: overview
-ms.date: 04/17/2020
-ms.openlocfilehash: e933d48a60a01bdbf00205a389778b9a3befeede
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/21/2020
+ms.openlocfilehash: 2cbe0b520156e77308f61a725937ac415cb80473
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188219"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756939"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -29,7 +29,7 @@ Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数�
 
 HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出了在 HDInsight 中创建 Spark 群集的优势。
 
-| Feature | 说明 |
+| 功能 | 说明 |
 | --- | --- |
 | 轻松创建 |可以使用 Azure 门户、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 中创建新的 Spark 群集。 请参阅 [HDInsight 中的 Apache Spark 群集入门](apache-spark-jupyter-spark-sql-use-portal.md)。 |
 | 易于使用 |HDInsight 中的 Spark 群集包括 Jupyter 和 Apache Zeppelin Notebook。 可以使用这些笔记本执行交互式数据处理和可视化。 请参阅[将 Apache Zeppelin 笔记本与 Apache Spark 配合使用](apache-spark-zeppelin-notebook.md)和[在 Apache Spark 群集上加载数据并运行查询](apache-spark-load-data-run-query.md)。|
@@ -67,7 +67,7 @@ SparkContext 可连接到多种类型的群集管理器，可跨应用程序分�
 
 SparkContext 在工作节点上运行用户的主函数，并执行各种并行操作。 然后，SparkContext 收集操作的结果。 工作节点从 Hadoop 分布式文件系统读取数据并将数据写入其中。 工作节点还将已转换数据作为弹性分布式数据集 (RDD) 缓存在内存中。
 
-SparkContext 连接到 Spark 主节点，负责将应用程序转换为各个任务的有向图 (DAG)。 这些任务在工作节点上的执行程序进程内执行。 每个应用程序都有其自己的执行程序进程。 这些进程会在整个应用程序的持续时间内保持运行，并在多个线程中运行任务。
+SparkContext 连接到 Spark 主节点，负责将应用程序转换为各个任务的有向图 (DAG)。 在工作器节点上的执行程序进程内执行的任务。 每个应用程序都有其自己的执行程序进程。 这些进程会在整个应用程序的持续时间内保持运行，并以多个线程的形式运行任务。
 
 ## <a name="spark-in-hdinsight-use-cases"></a>HDInsight 中的 Spark 用例
 
@@ -108,3 +108,4 @@ HDInsight 中的 Spark 群集提供丰富的支持，供你生成实时分析解
 在此概述中，可了解 Azure HDInsight 中 Apache Spark 的一些基础知识。 了解如何创建 HDInsight Spark 群集并运行一些 Spark SQL 查询：
 
 * [在 HDInsight 中创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [优化 Spark 作业的性能](apache-spark-perf.md)

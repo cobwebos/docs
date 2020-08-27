@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f6e1a7b8ac4dce0504fca5f03090588a75ae1ef
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 6198475025ff5222edeeb14cf25634ad2d916a1f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732435"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651431"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -35,48 +35,48 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 若要创建基于 HDInsight 的 Apache Kafka 群集，请使用以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在顶部菜单中，选择“+ 创建资源”  。
+1. 在顶部菜单中，选择“+ 创建资源”。
 
     ![Azure 门户创建资源 HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
+1. 选择“分析” > “Azure HDInsight”，转到“创建 HDInsight 群集”页。
 
-1. 在“基本信息”选项卡中提供以下信息： 
+1. 在“基本信息”选项卡中提供以下信息：
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |订阅    |  从下拉列表中选择用于此群集的 Azure 订阅。 |
-    |资源组     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
+    |资源组     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在此示例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |群集名称   | 输入任何全局唯一的名称。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |区域    | 从下拉列表中，选择在其中创建群集的区域。  选择的区域与你越靠近，性能就越好。 |
-    |群集类型| 选择“选择群集类型”，打开一个列表  。 从列表中选择“Kafka”作为群集类型。 |
+    |群集类型| 选择“选择群集类型”，打开一个列表。 从列表中选择“Kafka”作为群集类型。|
     |版本|将指定群集类型的默认版本。 若要指定不同的版本，请从下拉列表中选择。|
-    |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
-    |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
+    |群集登录用户名和密码    | 默认登录名为“admin”。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”。|
+    |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
    ![Azure 门户创建群集基本信息](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
     每个 Azure 区域（位置）均提供_容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
-    为实现数据的高可用性，请选择包含三个容错域的区域（位置）  。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
+    为实现数据的高可用性，请选择包含三个容错域的区域（位置）。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
 
-    选择页面底部的“下一步:  存储 >>”选项卡转到存储设置。
+    选择页面底部的“下一步:存储 >>”选项卡转到存储设置。
 
-1. 在“存储”  选项卡中，提供以下值：
+1. 在“存储”选项卡中，提供以下值：
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
-    |主存储类型|使用默认值“Azure 存储”。 |
-    |选择方法|使用默认值“从列表中选择”。 |
-    |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
+    |主存储类型|使用默认值“Azure 存储”。|
+    |选择方法|使用默认值“从列表中选择”。|
+    |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
+    ![HDInsight Linux 入门之提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
 
-    选择“安全性 + 网络”选项卡。 
+    选择“安全性 + 网络”选项卡。
 
 1. 对于本快速入门，请保留默认的安全设置。 若要详细了解企业安全性套餐，请访问[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)。 若要了解如何使用自己的密钥进行 Apache Kafka 磁盘加密，请访问[客户管理的密钥磁盘加密](../disk-encryption.md)
 
@@ -84,17 +84,17 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
    ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
-    选择“配置 + 定价”选项卡。 
+    选择“配置 + 定价”选项卡。
 
-1. 若要保证 Apache Kafka on HDInsight 的可用性，“工作器节点”的“节点数”条目必须设置为 3 或以上。   默认值为 4。
+1. 若要保证 Apache Kafka on HDInsight 的可用性，“工作器节点”的“节点数”条目必须设置为 3 或以上。 默认值为 4。
 
-    “每个工作器节点的标准磁盘数”条目配置 Apache Kafka on HDInsight 的可伸缩性。  Apache Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Apache Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”  (HDD) 或“高级”  (SSD)。 磁盘类型取决于辅助角色节点（Apache Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
+    “每个工作器节点的标准磁盘数”条目配置 Apache Kafka on HDInsight 的可伸缩性。 Apache Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Apache Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 磁盘类型取决于辅助角色节点（Apache Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
    ![设置 Apache Kafka 群集大小](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
 
-    选择“查看 + 创建”  选项卡。
+    选择“查看 + 创建”选项卡。
 
-1. 查看群集的配置。 更改所有不正确的设置。 最后，选择“创建”  以创建群集。
+1. 查看群集的配置。 更改所有不正确的设置。 最后，选择“创建”以创建群集。
 
     ![kafka 群集配置摘要](./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png)
 
@@ -134,7 +134,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
 
-使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机   。 这些主机配合 Apache Kafka API 和 Kafka 随附的许多实用程序一起使用。
+使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机 。 这些主机配合 Apache Kafka API 和 Kafka 随附的许多实用程序一起使用。
 
 在本部分中，可以从群集上的 Apache Ambari REST API 获取主机信息。
 
@@ -200,9 +200,9 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 ## <a name="manage-apache-kafka-topics"></a>管理 Apache Kafka 主题
 
-Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工具来管理主题。
+Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具来管理主题。
 
-* 若要创建主题，请在 SSH 连接中使用以下命令  ：
+* 若要创建主题，请在 SSH 连接中使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -230,7 +230,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
             * 纵向扩展群集
 
-* 若要列出主题，请使用以下命令  ：
+* 若要列出主题，请使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -238,7 +238,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
     此命令列出 Apache Kafka 群集上可用的主题。
 
-* 若要删除主题，使用以下命令  ：
+* 若要删除主题，使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS
@@ -257,7 +257,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者  使用。 生产者与使用者通过 Kafka 代理服务通信  。 HDInsight 群集中的每个工作节点都是 Apache Kafka 代理主机。
+Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用者*使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个工作节点都是 Apache Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 
@@ -277,11 +277,11 @@ Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
 
-    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
+    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者要从流的开头开始读取，以便检索所有记录。
 
     如果使用的是较旧版本的 Kafka，请将 `--bootstrap-server $KAFKABROKERS` 替换为 `--zookeeper $KAFKAZKHOSTS`。
 
-4. 使用 __Ctrl + C__ 阻止使用者。
+4. 使用 __Ctrl + C__ 停止使用者。
 
 还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Apache Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
 
@@ -291,9 +291,9 @@ Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
-2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
-3. 选择“删除资源组”，然后进行确认。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
+2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。
+3. 选择“删除资源组”，然后进行确认。
 
 > [!WARNING]  
 > 删除基于 HDInsight 的 Apache Kafka 群集会删除存储在 Kafka 中的任何数据。

@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: bb23a47b702237cad55ded2fa46400eba0997264
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082839"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648626"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>快速入门：使用 ARM 模板创建 Linux 虚拟机规模集
 
@@ -36,7 +36,7 @@ ARM 模板允许部署相关资源的组。 在单个模板中，可以创建虚
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)。
 
-:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
+:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -48,9 +48,9 @@ ARM 模板允许部署相关资源的组。 在单个模板中，可以创建虚
 
 ### <a name="define-a-scale-set"></a>定义规模集
 
-突出显示的部分是规模集资源定义。 若要使用模板创建规模集，请定义相应的资源。 虚拟机规模集资源类型的核心部件包括：
+若要使用模板创建规模集，请定义相应的资源。 虚拟机规模集资源类型的核心部件包括：
 
-| properties                     | 属性说明                                  | 示例模板值                    |
+| 属性                     | 属性说明                                  | 示例模板值                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | 规模集名称                                       | myScaleSet                                |
