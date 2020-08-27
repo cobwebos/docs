@@ -1,20 +1,21 @@
 ---
-title: 了解 Azure 外部服务收费 | Microsoft Docs
+title: 了解 Azure 外部服务收费
 description: 了解 Azure 中外部服务（以前称为市场）的计费。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 120f60698851bcdaf39f989b4d36c0436b716833
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8da85ec5781ff9575cf380092fea9e41d6af8786
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117859"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686116"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>了解 Azure 外部服务收费
 外部服务由 Azure 市场中的第三方软件供应商发布。 例如，SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。 某些 Microsoft 产品也通过 Azure 市场销售。

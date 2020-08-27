@@ -3,15 +3,16 @@ title: 使用 REST API 查看 Azure 企业注册计费数据
 description: 了解如何使用 Azure REST API 来查看企业合约计费信息。
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: article
-ms.date: 02/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d42a9cfa15b532a98b632331f592d7e51bc09f0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 979ed8c759676911a11cc62d7a00ad53361e19e0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202856"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684760"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 Azure REST API 查看企业合约计费信息
 

@@ -4,15 +4,16 @@ description: 了解 Azure 预留项和定价以节省虚拟机、SQL 数据库�
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
+ms.subservice: reservations
+ms.topic: overview
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760033"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682580"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -109,7 +110,6 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 - **Azure Red Hat OpenShift** - 预留项适用于 OpenShift 费用，而不适用于 Azure 基础结构费用。
 
 对于 Windows 虚拟机和 SQL 数据库，预留折扣不适用于软件费用。 可以通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来涵盖许可费用。
-
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

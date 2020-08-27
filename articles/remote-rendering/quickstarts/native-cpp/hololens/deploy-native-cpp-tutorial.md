@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b3909281cf475a003ffaaef6f6f48441337728e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810220"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892654"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>快速入门：将原生 C++ 示例部署到 HoloLens
 
@@ -62,7 +62,6 @@ C++ HoloLens 教程位于子目录 NativeCpp/HoloLens 中。
 ![Visual Studio 配置](media/vs-config-native-cpp-tutorial.png)
 
 由于帐户凭据在教程的源代码中进行了硬编码，因此请将其更改为有效凭据。 为此，请在 Visual Studio 中打开文件 `HolographicAppMain.cpp` 并更改类 `HolographicAppMain` 的构造函数中创建前端的部分：
-
 
 ```cpp
 // 2. Create front end

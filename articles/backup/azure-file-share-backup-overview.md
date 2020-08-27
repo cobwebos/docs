@@ -3,16 +3,16 @@ title: 关于 Azure 文件共享备份
 description: 了解如何在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823874"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892246"
 ---
 # <a name="about-azure-file-share-backup"></a>关于 Azure 文件共享备份
 
-Azure 文件共享备份是一种基于云的本机备份解决方案，用于保护云中的数据，并消除了本地备份解决方案所涉及的额外维护开销。 Azure 备份服务与 Azure 文件同步的集成顺畅，并使你能够集中处理文件共享数据以及备份。 这种简单、可靠和安全的解决方案使你可以通过几个简单的步骤来配置企业文件共享的保护，并且可以在发生任何灾难情况时恢复数据。
+Azure 文件共享备份是一种基于云的本机备份解决方案，用于保护云中的数据，并消除了本地备份解决方案所涉及的额外维护开销。 Azure 备份服务与 Azure 文件同步的集成顺畅，并使你能够集中处理文件共享数据以及备份。 这种简单、可靠和安全的解决方案使你可以通过几个简单的步骤来配置企业文件共享的保护，并且可以在任何灾难方案中恢复数据。
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Azure 文件共享备份的主要优点
 

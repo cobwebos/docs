@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520866"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689841"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建策略分配以识别不合规的资源
 
@@ -32,7 +32,7 @@ ms.locfileid: "88520866"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
 
-:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json":::
 
 该模板中定义了以下资源：
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192705"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795353"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助注册？
 
@@ -64,7 +64,7 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是可应用于托管或非�
 有关 Flow 和 PowerApps 试用版注册的详细信息，请参阅以下文章：
 
 * [如何禁止现有用户开始使用 Power BI？](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [组织中 Flow 问答](https://docs.microsoft.com/flow/organization-q-and-a)
+* [组织中 Flow 问答](/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>这些控制方式如何配合工作？
 可以结合使用这两个参数，以更准确地定义如何控制自助注册。 例如，以下命令允许用户执行自助注册，但前提是这些用户已在 Azure AD 中拥有一个帐户（换言之，需要首先创建电子邮件验证帐户的用户无法执行自助注册）：
