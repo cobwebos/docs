@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: erhopf
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2b3f7934a24f67992d6b80ac359c29ebe2a40b09
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: b6c7f6d8cd4638dd2b7a1f6cc23b192ed6803b41
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849550"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921131"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -197,11 +197,11 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>客户密码箱
 
-[Microsoft Azure 的客户密码箱](../security/fundamentals/customer-lockbox-overview.md)提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此方法。 有关如何启动、跟踪和存储客户密码箱请求以便以后查看和审核的信息，请参阅[客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 
+[Microsoft Azure 的客户密码箱](../security/fundamentals/customer-lockbox-overview.md) 提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此方法。 有关如何启动、跟踪和存储客户密码箱请求以便以后查看和审核的信息，请参阅 [客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 
 
 此认知服务提供客户密码箱：
 
-* 翻译工具
+* 转换器
 
 对于以下服务，Microsoft 工程师将无法访问 E0 层中的任何客户数据： 
 
@@ -211,16 +211,16 @@ NSString* value =
 * 个性化体验创建服务
 
 > [!IMPORTANT]
-> 对于**窗体识别器**，Microsoft 工程师将无法访问2020年7月10日之后创建的资源中的任何客户数据。
+> 对于 **窗体识别器**，Microsoft 工程师将无法访问2020年7月10日之后创建的资源中的任何客户数据。
 
 若要请求使用 E0 SKU，请填写并提交此 [请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 E0 SKU 用于 LUIS 后，需要从 Azure 门户创建新资源，并选择 E0 作为定价层。 用户无法从 F0 升级到新的 E0 SKU。
 
 语音服务当前不支持客户密码箱。 但是，可以使用 "将自己的存储 (BYOS") 来存储客户数据，从而使你能够实现与客户密码箱相似的数据控制。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 当使用自定义功能（如自定义语音和自定义语音）时，将在你的 BYOS () 和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
 
 > [!IMPORTANT]
-> Microsoft 不**会**使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 
+> Microsoft 不 **会** 使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 探索各种[认知服务](welcome.md)
-* 详细了解[认知服务虚拟网络](cognitive-services-virtual-networks.md)
+* 详细了解 [认知服务虚拟网络](cognitive-services-virtual-networks.md)

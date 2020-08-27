@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201542"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934848"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
 
@@ -178,7 +178,7 @@ variable ::= identifier | field_path
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-查找描述为多边形的给定视区内的所有酒店（其中 `Location` 是 Edm.GeographyPoint 类型的字段）。 多边形必须处于闭合状态，这意味着第一个点集和最后一个点集必须相同。 此外，[点必须以逆时针顺序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+查找描述为多边形的给定视区内的所有酒店（其中 `Location` 是 Edm.GeographyPoint 类型的字段）。 多边形必须处于闭合状态，这意味着第一个点集和最后一个点集必须相同。 此外，[点必须以逆时针顺序列出](/rest/api/searchservice/supported-data-types#Anchor_1)。
 
 ```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -214,7 +214,7 @@ variable ::= identifier | field_path
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 ```
 
-查找包含“waterfront”一词的文档。 此筛选器查询与包含 [ 的](https://docs.microsoft.com/rest/api/searchservice/search-documents)搜索请求`search=waterfront`相同。
+查找包含“waterfront”一词的文档。 此筛选器查询与包含 [ 的](/rest/api/searchservice/search-documents)搜索请求`search=waterfront`相同。
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
@@ -249,4 +249,4 @@ variable ::= identifier | field_path
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
 - [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)

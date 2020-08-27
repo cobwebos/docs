@@ -10,25 +10,26 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: pafarley
-ms.openlocfilehash: cbc899d1278a2afcdf4948a88b54af81954f1eba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205595"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934746"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
 
 训练模型后，可以通过将图像提交到预测 API 终结点以编程方式测试图像。
 
 > [!NOTE]
-> 本文档演示如何使用 C# 将图像提交到预测 API。 有关详细信息和示例，请参阅[预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
+> 本文档演示如何使用 C# 将图像提交到预测 API。 有关详细信息和示例，请参阅 [预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
 
 ## <a name="publish-your-trained-iteration"></a>发布定型的迭代
 
 从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡____。
 
-若要将图像提交到预测 API，首先需要发布迭代进行预测，这可以通过选择 "__发布__" 并为已发布的迭代指定名称来完成。 这会使你的模型可通过自定义视觉 Azure 资源的预测 API 进行访问。
+若要将图像提交到预测 API，首先需要发布迭代进行预测，这可以通过选择 " __发布__ " 并为已发布的迭代指定名称来完成。 这会使你的模型可通过自定义视觉 Azure 资源的预测 API 进行访问。
 
 ![显示 "性能" 选项卡，并在 "发布" 按钮的周围显示一个红色矩形。](./media/use-prediction-api/unpublished-iteration.png)
 
@@ -38,14 +39,14 @@ ms.locfileid: "86205595"
 
 ## <a name="get-the-url-and-prediction-key"></a>获取 URL 和预测密钥
 
-在您的模型发布后，您可以通过选择 "__预测 URL__" 来检索所需的信息。 这将打开一个对话框，其中包含有关使用预测 API 的信息，包括__预测 URL__和__预测键__。
+在您的模型发布后，您可以通过选择 " __预测 URL__" 来检索所需的信息。 这将打开一个对话框，其中包含有关使用预测 API 的信息，包括 __预测 URL__ 和 __预测键__。
 
 !["性能" 选项卡显示在 "预测 URL" 按钮周围显示一个红色矩形。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![将显示 "性能" 选项卡，并在 "预测 URL" 值周围显示一个红色矩形，用于使用图像文件和预测键值。](./media/use-prediction-api/prediction-api-info.png)
 
 
-在本指南中，你将使用本地映像，因此，**如果你有一个图像文件**到临时位置，请复制下的 URL。 同时复制相应的__预测密钥__值。
+在本指南中，你将使用本地映像，因此， **如果你有一个图像文件** 到临时位置，请复制下的 URL。 同时复制相应的 __预测密钥__ 值。
 
 ## <a name="create-the-application"></a>创建应用程序
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2211dbe8a5e336ec10562bb8a66ed0e8cc2a9e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208731"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935171"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -30,7 +30,7 @@ ms.locfileid: "88208731"
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
-> 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)。
+> 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](../data-factory/index.yml)。
 
 ## <a name="set-up-field-mappings"></a>设置字段映射
 
@@ -47,7 +47,7 @@ ms.locfileid: "88208731"
 
 ## <a name="map-fields-using-the-rest-api"></a>使用 REST API 映射字段
 
-使用[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API 请求创建新的索引器时，可以添加字段映射。 可以使用[更新索引器](https://docs.microsoft.com/rest/api/searchservice/update-indexer) API 请求来管理现有索引器的字段映射。
+使用[创建索引器](/rest/api/searchservice/create-Indexer) API 请求创建新的索引器时，可以添加字段映射。 可以使用[更新索引器](/rest/api/searchservice/update-indexer) API 请求来管理现有索引器的字段映射。
 
 例如，下面演示了如何将一个源字段映射到具有不同名称的目标字段：
 
@@ -80,7 +80,7 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-the-net-sdk"></a>使用 .NET SDK 映射字段
 
-在 .NET SDK 中，使用 [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) 类定义字段映射，该类包含属性 `SourceFieldName` 和 `TargetFieldName`，以及可选的 `MappingFunction` 引用。
+在 .NET SDK 中，使用 [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) 类定义字段映射，该类包含属性 `SourceFieldName` 和 `TargetFieldName`，以及可选的 `MappingFunction` 引用。
 
 可以在构造索引器时指定字段映射，以后也可以通过直接设置 `Indexer.FieldMappings` 属性来指定字段映射。
 
@@ -125,7 +125,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档键（转换前后）的长度不能超过 1,024 个字符。
+Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档键（转换前后）的长度不能超过 1,024 个字符。
 
 在搜索时检索编码的键时，可以使用 `base64Decode` 函数获取原始键值，然后使用该值来检索源文档。
 
@@ -200,10 +200,10 @@ Azure 认知搜索支持两种不同的 Base64 编码。 在编码和解码同�
 
 Azure 认知搜索支持 URL 安全的 base64 编码和正常的 base64 编码。 在索引编制期间经过 base64 编码的字符串在以后应使用相同的编码选项进行解码，否则结果将与原始字符串不匹配。
 
-如果将用于编码或解码的 `useHttpServerUtilityUrlTokenEncode` 或 `useHttpServerUtilityUrlTokenDecode` 参数分别设置为 `true`，则 `base64Encode` 的行为与 [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 类似，`base64Decode` 的行为与 [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) 类似。
+如果将用于编码或解码的 `useHttpServerUtilityUrlTokenEncode` 或 `useHttpServerUtilityUrlTokenDecode` 参数分别设置为 `true`，则 `base64Encode` 的行为与 [HttpServerUtility.UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) 类似，`base64Decode` 的行为与 [HttpServerUtility.UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8) 类似。
 
 > [!WARNING]
-> 如果使用 `base64Encode` 来生成密钥值，则必须将 `useHttpServerUtilityUrlTokenEncode` 设置为 true。 只能将 URL 安全的 base64 编码用于密钥值。 请参阅[命名规则（Azure 认知搜索）](https://docs.microsoft.com/rest/api/searchservice/naming-rules)，了解对密钥值中字符的整套限制。
+> 如果使用 `base64Encode` 来生成密钥值，则必须将 `useHttpServerUtilityUrlTokenEncode` 设置为 true。 只能将 URL 安全的 base64 编码用于密钥值。 请参阅[命名规则（Azure 认知搜索）](/rest/api/searchservice/naming-rules)，了解对密钥值中字符的整套限制。
 
 Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编码。 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 选项利用了此内置功能。 如果使用 .NET Core 或其他框架，建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
 

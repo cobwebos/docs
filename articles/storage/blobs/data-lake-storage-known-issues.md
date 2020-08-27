@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056072"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923732"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -60,9 +60,9 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell 和 Azure CLI 中的文件系统支持
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>支持设置访问控制列表 (Acl 递归) 
 
-- 获取和设置 ACL 的操作当前不是递归的。
+在 [公共预览版](recursive-access-control-lists.md)中，能够以递归方式将 ACL 更改从父目录应用于子项目。 在此功能的当前版本中，你可以使用 PowerShell、.NET SDK 和 Python SDK 应用 ACL 更改。 尚不支持 Java SDK、Azure CLI、Azure 门户或 Azure 存储资源管理器。
 
 <a id="known-issues-tools"></a>
 
@@ -90,7 +90,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>访问控制列表 (ACL) 和匿名读取访问
 
-如果已将[匿名读取访问](storage-manage-access-to-resources.md)授予容器，则 ACL 对该容器或该容器中的文件没有影响。
+如果已授予对某个容器的[匿名读取访问权限](storage-manage-access-to-resources.md)，则 ACL 对该容器或该容器中的文件没有影响。
 
 ## <a name="premium-performance-blockblobstorage-storage-accounts"></a>高性能 BlockBlobStorage 存储帐户
 

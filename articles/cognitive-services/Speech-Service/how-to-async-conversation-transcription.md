@@ -10,23 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-one
-ms.openlocfilehash: 65a6fd7e0e1e64a459a46c0f97a2afdbc03573a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b2dfa8d474f10d6b4ca1c46ac2b575e8d8407ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284196"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934629"
 ---
 # <a name="asynchronous-conversation-transcription"></a>异步对话听录
 
-在本文中，使用**RemoteConversationTranscriptionClient** API 演示了异步对话脚本。 如果已将会话脚本配置为执行异步脚本，并拥有 `conversationId` ，则可以 `conversationId` 使用**RemoteConversationTranscriptionClient** API 获取与关联的脚本。
+在本文中，使用 **RemoteConversationTranscriptionClient** API 演示了异步对话脚本。 如果已将会话脚本配置为执行异步脚本，并拥有 `conversationId` ，则可以 `conversationId` 使用 **RemoteConversationTranscriptionClient** API 获取与关联的脚本。
 
 ## <a name="asynchronous-vs-real-time--asynchronous"></a>异步与实时 + 异步
 
 对于异步脚本，会流式传输会话音频，但不需要实时返回脚本。 相反，发送音频后，使用 `conversationId` 的 `Conversation` 来查询异步脚本的状态。 异步脚本准备就绪后，你将获得 `RemoteConversationTranscriptionResult` 。
 
-使用实时和异步，你可以实时地获取脚本，但也可以通过使用进行查询 `conversationId` （类似于异步方案）来获取脚本。
+通过实时加上异步，你可以实时地获取脚本，但也可以通过使用 `conversationId` 类似于异步方案) 的 (进行查询来获取脚本。
 
 完成异步脚本需要执行两个步骤。 第一步是上传音频，只选择 "异步" 或 "实时" 和 "异步"。 第二步是获取脚本结果。
 

@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891089"
+ms.locfileid: "88923443"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
 可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 认知搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 认知搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 认知搜索中完整实现](search-lucene-query-architecture.md)  。 
 
 > [!NOTE]
-> 完整 Lucene 语法用于在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 的**搜索**参数中传递的查询表达式，不要与用于该 API 的 [$filter](search-filters.md) 参数的 [OData 语法](query-odata-filter-orderby-syntax.md)相混淆。 这两个不同的语法有各自的用于构造查询、转义字符串等操作的规则。
+> 完整 Lucene 语法用于在[搜索文档](/rest/api/searchservice/search-documents) API 的**搜索**参数中传递的查询表达式，不要与用于该 API 的 [$filter](search-filters.md) 参数的 [OData 语法](query-odata-filter-orderby-syntax.md)相混淆。 这两个不同的语法有各自的用于构造查询、转义字符串等操作的规则。
 
 ## <a name="invoke-full-parsing"></a>调用完整分析
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-有关其他示例，请参阅[在 Azure 认知搜索中生成查询的 Lucene 查询语法示例](search-query-lucene-examples.md)。 有关指定查询参数的完整条件的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+有关其他示例，请参阅[在 Azure 认知搜索中生成查询的 Lucene 查询语法示例](search-query-lucene-examples.md)。 有关指定查询参数的完整条件的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)。
 
 > [!NOTE]  
 >  Azure 认知搜索还支持[简单查询语法](query-simple-syntax.md)，即可用于简单关键字搜索的简易可靠的查询语言。  
@@ -139,7 +139,7 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在 `artists` 字段中搜索两个不同艺术家的情况一样。  
 
-`fieldName:searchExpression` 中指定的字段必须是 `searchable` 字段。  有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。  
+`fieldName:searchExpression` 中指定的字段必须是 `searchable` 字段。  有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引](/rest/api/searchservice/create-index)。  
 
 > [!NOTE]
 > 使用字段化搜索表达式时，不需使用 `searchFields` 参数，因为每个字段化搜索表达式都有一个显式指定的字段名称。 但是，如果需要运行查询，则仍可使用 `searchFields` 参数，其中的某些部分局限于特定字段，其余部分可以应用到多个字段。 例如，查询 `search=genre:jazz NOT history&searchFields=description` 只将 `jazz` 匹配到 `genre` 字段，而它则会将 `NOT history` 与 `description` 字段匹配。 在 `fieldName:searchExpression` 中提供的字段名称始终优先于 `searchFields` 参数，这就是在此示例中我们不需在 `searchFields` 参数中包括 `genre` 的原因。
@@ -202,6 +202,6 @@ Azure 认知搜索使用基于频率的计分 ([TF-IDF](https://en.wikipedia.org
 
 + [简单搜索的查询示例](search-query-simple-examples.md)
 + [完整 Lucene 搜索的查询示例](search-query-lucene-examples.md)
-+ [搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [搜索文档](/rest/api/searchservice/Search-Documents)
 + [用于筛选器和排序的 OData 表达式语法](query-odata-filter-orderby-syntax.md)   
-+ [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)   
++ [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)

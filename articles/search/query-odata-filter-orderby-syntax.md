@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165203"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923392"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 
@@ -91,25 +91,25 @@ Rooms/any(room: room/Type eq 'deluxe')
 
 ### <a name="using-field-paths"></a>使用字段路径
 
-[Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 的许多参数中使用字段路径。 下表列出了可以使用字段路径的所有位置，以及字段路径用法的任何限制：
+[Azure 认知搜索 REST API](/rest/api/searchservice/) 的许多参数中使用字段路径。 下表列出了可以使用字段路径的所有位置，以及字段路径用法的任何限制：
 
 | API | 参数名称 | 限制 |
 | --- | --- | --- |
-| [创建](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | 无 |
-| [创建](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能引用**可搜索**字段 |
-| [创建](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能引用**可筛选**字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | 当 `queryType` 为 `full` 时，该参数为 `search` | 只能引用**可搜索**字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | 只能引用**可分面**字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | 只能引用**可搜索**字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | 只能引用**可搜索**字段 |
-| [建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | 只能引用属于[建议器](index-add-suggesters.md)的字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | 只能引用**可筛选**字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents)和[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | 只能引用**可排序**字段 |
-| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[查找](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | 只能引用**可检索**字段 |
+| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | 无 |
+| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能引用**可搜索**字段 |
+| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能引用**可筛选**字段 |
+| [搜索](/rest/api/searchservice/search-documents) | 当 `queryType` 为 `full` 时，该参数为 `search` | 只能引用**可搜索**字段 |
+| [搜索](/rest/api/searchservice/search-documents) | `facet` | 只能引用**可分面**字段 |
+| [搜索](/rest/api/searchservice/search-documents) | `highlight` | 只能引用**可搜索**字段 |
+| [搜索](/rest/api/searchservice/search-documents) | `searchFields` | 只能引用**可搜索**字段 |
+| [建议](/rest/api/searchservice/suggestions)和[自动完成](/rest/api/searchservice/autocomplete) | `searchFields` | 只能引用属于[建议器](index-add-suggesters.md)的字段 |
+| [搜索](/rest/api/searchservice/search-documents)、[建议](/rest/api/searchservice/suggestions)和[自动完成](/rest/api/searchservice/autocomplete) | `$filter` | 只能引用**可筛选**字段 |
+| [搜索](/rest/api/searchservice/search-documents)和[建议](/rest/api/searchservice/suggestions) | `$orderby` | 只能引用**可排序**字段 |
+| [搜索](/rest/api/searchservice/search-documents)、[建议](/rest/api/searchservice/suggestions)和[查找](/rest/api/searchservice/lookup-document) | `$select` | 只能引用**可检索**字段 |
 
 ## <a name="constants"></a>常量
 
-OData 中的常量是给定[实体数据模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 类型的文本值。 有关 Azure 认知搜索中受支持类型的列表，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 不支持集合类型的常量。
+OData 中的常量是给定[实体数据模型](/dotnet/framework/data/adonet/entity-data-model) (EDM) 类型的文本值。 有关 Azure 认知搜索中受支持类型的列表，请参阅[支持的数据类型](/rest/api/searchservice/supported-data-types)。 不支持集合类型的常量。
 
 下表显示了 Azure 认知搜索支持的每个数据类型的常量示例：
 
@@ -131,7 +131,7 @@ OData 中的字符串常量由单引号分隔。 如果需要使用本身可能�
 例如，带有无格式撇号的短语（如“Alice's car”）将在 OData 中表示为字符串常量 `'Alice''s car'`。
 
 > [!IMPORTANT]
-> 以编程方式构建筛选器时，请记住转义来自用户输入的字符串常量，这一点很重要。 这是为了减小[注入攻击](https://wikipedia.org/wiki/SQL_injection)的可能性，尤其是在使用筛选器实现[安全修整](search-security-trimming-for-azure-search.md)时。
+> 以编程方式构建筛选器时，请记住转义来自用户输入的字符串常量，这一点很重要。 这是为了减小 [注入攻击](https://wikipedia.org/wiki/SQL_injection)的可能性，尤其是在使用筛选器实现 [安全修整](search-security-trimming-for-azure-search.md)时。
 
 ### <a name="constants-syntax"></a>常量语法
 
@@ -211,7 +211,7 @@ boolean_literal ::= 'true' | 'false'
 
 但是，大多数情况下，需要使用更复杂的表达式来引用多个字段和常量。 这些表达式的生成方式根据参数而异。
 
-以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select**参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select** 参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -243,6 +243,6 @@ select_expression ::= '*' | field_path(',' field_path)*
 
 - [Azure 认知搜索中的分面导航](search-faceted-navigation.md)
 - [Azure 认知搜索中的筛选器](search-filters.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)
 - [Lucene 查询语法](query-lucene-syntax.md)
 - [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)

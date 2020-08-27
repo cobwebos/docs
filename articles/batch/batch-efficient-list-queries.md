@@ -3,22 +3,22 @@ title: 设计高效列表查询
 description: 在请求批处理资源（例如池、作业、任务和计算节点）的相关信息时对查询进行筛选可提高性能。
 ms.topic: how-to
 ms.date: 06/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960599"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933508"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
 
 几乎所有批处理应用程序都需执行某类监视操作或其他查询批处理服务的操作（通常按固定的时间间隔）。 例如，若要确定作业中是否还有排队的任务，必须获取作业中每个任务的相关数据。 若要确定池中节点的状态，必须获取池中每个节点的相关数据。 本文介绍如何以最有效方式执行此类查询。
 
-可以通过减少使用[批处理 .net](/dotnet/api/microsoft.azure.batch)库查询作业、任务、计算节点和其他资源时，减少服务返回的数据量，从而提高 Azure Batch 应用程序的性能。
+可以通过减少使用 [批处理 .net](/dotnet/api/microsoft.azure.batch) 库查询作业、任务、计算节点和其他资源时，减少服务返回的数据量，从而提高 Azure Batch 应用程序的性能。
 
 > [!NOTE]
-> Batch 服务为作业中的任务计数常见方案提供 API 支持，并在 Batch 池中计算计算节点的数量。 对于这些方案可以调用[获取任务计数](/rest/api/batchservice/job/gettaskcounts)和[列出池节点计数](/rest/api/batchservice/account/listpoolnodecounts)操作，而不是使用列表查询。 这些操作比列表查询效率更高，但返回的信息可能并不总是最新的。 有关详细信息，请参阅[按状态对任务计数和计算节点计数](batch-get-resource-counts.md)。
+> Batch 服务为作业中的任务计数常见方案提供 API 支持，并在 Batch 池中计算计算节点的数量。 对于这些方案可以调用[获取任务计数](/rest/api/batchservice/job/gettaskcounts)和[列出池节点计数](/rest/api/batchservice/account/listpoolnodecounts)操作，而不是使用列表查询。 这些操作比列表查询效率更高，但返回的信息可能并不总是最新的。 有关详细信息，请参阅 [按状态对任务计数和计算节点计数](batch-get-resource-counts.md)。
 
 ## <a name="specify-a-detail-level"></a>指定详细信息级别
 
@@ -84,7 +84,7 @@ expand 字符串只有在列出作业、作业计划、任务和池中使用时�
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>filter、select 和 expand 字符串的规则
 
-- Filter、select 和 expand 字符串中属性名称的显示方式应与其在[BATCH REST](/rest/api/batchservice/) API 中的显示方式相同，即使使用的是[batch .net](/dotnet/api/microsoft.azure.batch)或其他某个批处理 sdk 时也是如此。
+- Filter、select 和 expand 字符串中属性名称的显示方式应与其在 [BATCH REST](/rest/api/batchservice/) API 中的显示方式相同，即使使用的是 [batch .net](/dotnet/api/microsoft.azure.batch) 或其他某个批处理 sdk 时也是如此。
 - 所有属性名称均区分大小写，但属性值不区分大小写。
 - 日期/时间字符串可以采用两种格式中的一种，并且必须在前面加上 `DateTime`。
   
@@ -139,7 +139,7 @@ filter、select 和 expand 字符串中的属性名称必须反映其 REST API �
 ### <a name="mappings-for-filter-strings"></a>filter 字符串的映射
 
 - **.NET 列表方法**：此列中的每个 .NET API 方法都接受 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 对象作为参数。
-- **REST 列表请求**：此列中的每个 REST API 页面都包含一个表，该表指定了 filter 字符串中允许的属性和操作。 构造[ODATADetailLevel FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)字符串时，请使用这些属性名称和操作。
+- **REST 列表请求**：此列中的每个 REST API 页面都包含一个表，该表指定了 filter 字符串中允许的属性和操作。 构造 [ODATADetailLevel FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) 字符串时，请使用这些属性名称和操作。
 
 | .NET 列表方法 | REST 列表请求 |
 | --- | --- |
@@ -157,7 +157,7 @@ filter、select 和 expand 字符串中的属性名称必须反映其 REST API �
 ### <a name="mappings-for-select-strings"></a>select 字符串的映射
 
 - **Batch.NET 类型**：Batch.NET API 类型。
-- **REST API 实体**：此列中的每一页都包含一个或多个表，其中列出了类型的 REST API 属性名称。 在构造 *select* 字符串时使用这些属性名称。 构造[ODATADetailLevel. odatadetaillevel.selectclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)字符串时，请使用这些相同的属性名。
+- **REST API 实体**：此列中的每一页都包含一个或多个表，其中列出了类型的 REST API 属性名称。 在构造 *select* 字符串时使用这些属性名称。 构造 [ODATADetailLevel. odatadetaillevel.selectclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) 字符串时，请使用这些相同的属性名。
 
 | Batch .NET 类型 | REST API 实体 |
 | --- | --- |
@@ -172,7 +172,7 @@ filter、select 和 expand 字符串中的属性名称必须反映其 REST API �
 
 针对 [ODATADetailLevel.FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) 构造 filter 字符串时，请查阅上表，在“filter 字符串的映射”下找到与所希望执行的列表操作相对应的 REST API 文档页。 会在该页第一个多行表中找到可筛选属性及其支持的运算符。 例如，如果希望检索其退出代码不为零的所有任务，则可查看[列出与作业相关联的任务](/rest/api/batchservice/task/list)上的此行，此行指定了相应的属性字符串以及允许的运算符：
 
-| properties | 允许的操作 | 类型 |
+| 属性 | 允许的操作 | 类型 |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -184,7 +184,7 @@ filter、select 和 expand 字符串中的属性名称必须反映其 REST API �
 
 若要构造 [ODATADetailLevel.SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)，请查阅上表，在“select 字符串的映射”下导航到与所列实体类型相对应的 REST API 页。 会在该页第一个多行表中找到可选择属性及其支持的运算符。 例如，如果希望仅检索列表中每个任务的 ID 和命令行，则可在[获取有关任务的信息](/rest/api/batchservice/task/get)的相应表中找到这些行：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -197,7 +197,7 @@ filter、select 和 expand 字符串中的属性名称必须反映其 REST API �
 
 ### <a name="efficient-list-queries-code-sample"></a>高效列表查询代码示例
 
-GitHub 上的[EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries)示例项目显示了在应用程序中查询如何提高性能。 此 C# 控制台应用程序创建大量的任务并将其添加到作业。 然后，它对 [JobOperations.ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) 方法进行多次调用，并传递配置了不同属性值的 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 对象，以改变要返回的数据量。 生成的输出如下所示：
+GitHub 上的 [EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) 示例项目显示了在应用程序中查询如何提高性能。 此 C# 控制台应用程序创建大量的任务并将其添加到作业。 然后，它对 [JobOperations.ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) 方法进行多次调用，并传递配置了不同属性值的 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 对象，以改变要返回的数据量。 生成的输出如下所示：
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -217,7 +217,7 @@ Sample complete, hit ENTER to continue...
 
 ### <a name="batchmetrics-library-and-code-sample"></a>BatchMetrics 库和代码示例
 
-除了上述 EfficientListQueries 代码示例， [BatchMetrics](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchMetrics)示例项目还演示了如何使用批处理 API 有效地监视 Azure Batch 作业进度。
+除了上述 EfficientListQueries 代码示例， [BatchMetrics](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchMetrics) 示例项目还演示了如何使用批处理 API 有效地监视 Azure Batch 作业进度。
 
 [BatchMetrics](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchMetrics) 示例包括一个可以合并到用户自己的项目中的 .NET 类库项目，以及一个简单的命令行程序，可用于练习和演示库的使用。
 
@@ -240,8 +240,8 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[使用并发节点任务最大限度地 Azure Batch 计算资源使用情况](batch-parallel-node-tasks.md)。 某些类型的工作负荷可以从在更大（但更少）计算节点上执行并行任务中获益。 若需详细了解此类方案，请查看文章中的[示例方案](batch-parallel-node-tasks.md#example-scenario)。
-- 了解如何[通过按状态对任务和节点进行计数来监视 Batch 解决方案](batch-get-resource-counts.md)
+- 了解如何 [使用并发节点任务最大限度地 Azure Batch 计算资源使用情况](batch-parallel-node-tasks.md)。 某些类型的工作负荷可以从更大的 (上执行并行任务，但) 计算节点更少。 若需详细了解此类方案，请查看文章中的[示例方案](batch-parallel-node-tasks.md#example-scenario)。
+- 了解如何 [通过按状态对任务和节点进行计数来监视 Batch 解决方案](batch-get-resource-counts.md)
 
 
 [api_net]: /dotnet/api/microsoft.azure.batch

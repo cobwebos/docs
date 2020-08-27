@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 0f113c22d28b4ae211562974d1c3292f54351498
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1042383e285780f5ee9297b1c87615bbdd2fe1b6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035511"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925245"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +37,7 @@ using Microsoft.CognitiveServices.Speech.Translation;
 
 ## <a name="sensitive-data-and-environment-variables"></a>敏感数据和环境变量
 
-本文中的示例源代码依赖于用于存储敏感数据的环境变量，如语音资源订阅密钥和区域。 `Program` 类包含从主机环境变量（即 `SPEECH__SUBSCRIPTION__KEY` 和 `SPEECH__SERVICE__REGION`）分配的两个 `static readonly string` 值。 这两个字段都在类范围内，因此可以在类的方法主体中访问它们。 有关环境变量的详细信息，请参阅[环境变量和应用程序配置](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)。
+本文中的示例源代码依赖于用于存储敏感数据的环境变量，如语音资源订阅密钥和区域。 `Program` 类包含从主机环境变量（即 `SPEECH__SUBSCRIPTION__KEY` 和 `SPEECH__SERVICE__REGION`）分配的两个 `static readonly string` 值。 这两个字段都在类范围内，因此可以在类的方法主体中访问它们。 有关环境变量的详细信息，请参阅 [环境变量和应用程序配置](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)。
 
 ```csharp
 public class Program
@@ -53,10 +54,10 @@ public class Program
 
 ## <a name="create-a-speech-translation-configuration"></a>创建语音翻译配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关订阅的信息，例如密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 > [!TIP]
-> 无论是要执行语音识别、语音合成、翻译还是意向识别，都需要创建一个配置。
+> 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
 可以通过以下几种方法初始化 [`SpeechTranslationConfig`][config]：
 

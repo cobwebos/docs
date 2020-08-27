@@ -4,18 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 58fa9361cc591f7d2b78a19f3db620112e288592
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 51b919c97a15946f57211cf8fe12d7c5efe435bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284198"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934628"
 ---
 ## <a name="upload-the-audio"></a>上传音频
 
-在可以执行异步脚本之前，需要使用 Microsoft 认知语音客户端 SDK （版本1.13.0 或更高版本）将音频发送到会话脚本服务。
+在执行异步脚本之前，需要使用 Microsoft 认知语音客户端 SDK (版本1.13.0 或更高版本) 发送音频到会话脚本服务。
 
-此示例代码演示如何为仅限异步模式创建会话 transcriber。 为了将音频流式传输到 transcriber，可以[通过语音 SDK 实时添加从转录对话](../../../../how-to-use-conversation-transcription.md)派生的音频流代码。 
+此示例代码演示如何为仅限异步模式创建会话 transcriber。 为了将音频流式传输到 transcriber，可以 [通过语音 SDK 实时添加从转录对话](../../../../how-to-use-conversation-transcription.md)派生的音频流代码。 
 
 ```csharp
 async Task CompleteContinuousRecognition(ConversationTranscriber recognizer, string conversationId)
@@ -93,7 +94,7 @@ async Task UploadAudio()
 }
 ```
 
-如果需要实时_加上_异步，注释和取消注释相应的代码行，如下所示：
+如果需要实时 _加上_ 异步，注释和取消注释相应的代码行，如下所示：
 
 ```csharp
 // Set the property for asynchronous transcription
@@ -105,11 +106,11 @@ speechConfig.SetServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 ## <a name="get-transcription-results"></a>获取脚本结果
 
-通过 NuGet 安装**cognitiveservices account 1.13.0 或更高版本**。
+通过 NuGet 安装 **cognitiveservices account 1.13.0 或更高版本** 。
 
 ### <a name="sample-transcription-code"></a>示例脚本代码
 
-获得之后 `conversationId` ，在客户端应用程序中创建远程对话脚本客户端**RemoteConversationTranscriptionClient** ，以查询异步脚本的状态。 创建**RemoteConversationTranscriptionOperation**的对象，以获取长时间运行的[操作](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt)对象。 你可以检查操作的状态，或者等待它完成。 
+获得之后 `conversationId` ，在客户端应用程序中创建远程对话脚本客户端 **RemoteConversationTranscriptionClient** ，以查询异步脚本的状态。 创建  **RemoteConversationTranscriptionOperation** 的对象，以获取长时间运行的 [操作](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) 对象。 你可以检查操作的状态，或者等待它完成。 
 
 ```csharp
 // Create the speech config

@@ -10,13 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 49daf816c4075820c9efc93611f33c4854a6042d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: d82445499ffa42b1e3a0e949d95eadf61dfdd4c1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849567"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925073"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解令牌获取图像的见解
 
@@ -52,7 +52,7 @@ ms.locfileid: "87849567"
 }
 ```
 
-本文中的示例展示了如何使用见解标记。 可以从 `Image` /IMAGES/SEARCH API 响应中的对象获取见解令牌。 有关获取 insights 令牌的信息，请参阅[什么是必应图像搜索 API？](../Bing-Image-Search/overview.md)。
+本文中的示例展示了如何使用见解标记。 可以从 `Image` /IMAGES/SEARCH API 响应中的对象获取见解令牌。 有关获取 insights 令牌的信息，请参阅 [什么是必应图像搜索 API？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -264,7 +264,7 @@ namespace VisualSearchInsightsToken
 
 若要运行此应用程序，请执行以下步骤：
 
-1. 下载或安装[Gson Java 库](https://github.com/google/gson)。 还可以通过 Maven 获取 Gson。
+1. 下载或安装 [Gson Java 库](https://github.com/google/gson)。 还可以通过 Maven 获取 Gson。
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 将提供的代码添加到一个名为 `VisualSearch.java` 的文件中。
 4. 将 `subscriptionKey` 值替换为你的订阅密钥。
@@ -373,7 +373,7 @@ public class InsightsToken {
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
-* 若要运行此代码，必须具有[Node.js 6](https://nodejs.org/en/download/) 。
+* 若要运行此代码，必须具有 [Node.js 6](https://nodejs.org/en/download/) 。
 
 ## <a name="run-the-javascript-application"></a>运行 JavaScript 应用程序
 
@@ -438,7 +438,7 @@ function requestCallback(err, res, body) {
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
-* 若要运行此代码，必须具有[Python 3](https://www.python.org/) 。
+* 若要运行此代码，必须具有 [Python 3](https://www.python.org/) 。
 
 ## <a name="run-the-python-application"></a>运行 Python 应用程序
 

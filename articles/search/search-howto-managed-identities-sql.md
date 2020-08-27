@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553132"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924123"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用托管身份 (预览设置到 Azure SQL 数据库的索引器连接) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "88553132"
 
 在下一步连接到数据库时，需要连接到对数据库具有管理员访问权限的 Azure Active Directory (Azure AD) 帐户，以便授予搜索服务访问数据库的权限。
 
-按照[此处](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)的说明，授予 Azure AD 帐户对数据库的管理员访问权限。
+按照[此处](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database)的说明，授予 Azure AD 帐户对数据库的管理员访问权限。
 
 ### <a name="3---assign-the-search-service-permissions"></a>3 - 分配搜索服务权限
 
@@ -97,9 +97,9 @@ ms.locfileid: "88553132"
 
 ### <a name="5---create-the-data-source"></a>5 - 创建数据源
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面是一个示例，说明如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源，以便为 Azure SQL 数据库中的数据编制索引。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面是一个示例，说明如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源，以便为 Azure SQL 数据库中的数据编制索引。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
-使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)创建数据源时，数据源必须具有以下必需属性：
+使用 [REST API](/rest/api/searchservice/create-data-source)创建数据源时，数据源必须具有以下必需属性：
 
 * **name** 是搜索服务中数据源的唯一名称。
 * “类型”为 `azuresql`
@@ -109,7 +109,7 @@ ms.locfileid: "88553132"
         * Initial Catalog|Database=database name;ResourceId=/subscriptions/your subscription ID/resourceGroups/your resource group name/providers/Microsoft.Sql/servers/your SQL Server name/;Connection Timeout=connection timeout length;*    *
 * “容器”指定要编制索引的表或视图的名称。
 
-如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 创建 Azure SQL 数据源对象的示例：
+如何使用 [REST API](/rest/api/searchservice/create-data-source) 创建 Azure SQL 数据源对象的示例：
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +144,7 @@ api-key: [admin key]
 }
 ```
 
-有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
+有关创建索引的详细信息，请参阅[创建索引](/rest/api/searchservice/create-index)
 
 ### <a name="7---create-the-indexer"></a>7 - 创建索引器
 
@@ -169,13 +169,13 @@ api-key: [admin key]
 
 此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
 
 有关定义索引器计划的详细信息，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 ## <a name="troubleshooting"></a>疑难解答
 
-如果在索引器尝试连接数据源时出现错误，指出不允许客户端访问服务器，请查看[常见索引器错误](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting)。
+如果在索引器尝试连接数据源时出现错误，指出不允许客户端访问服务器，请查看[常见索引器错误](./search-indexer-troubleshooting.md)。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184646"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933658"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -48,13 +48,13 @@ Log Analytics 的默认定价是基于引入的数据量的即用即付模型，
 
 Log Analytics 专用群集是收集到单个托管 Azure 数据资源管理器群集中的工作区集合，用于支持高级方案，例如[客户托管的密钥](customer-managed-keys.md)。  与即用即付定价相比，Log Analytics 专用群集仅支持 1000 GB/天起、25% 折扣的产能预留定价模型。 将按即用即付费率对超出预留级别的任何使用量进行计费。 在增加预留级别后，群集产能预留具有 31 天的承诺期。 套餐周期期间，不能减少产能预留级别，但可以随时增加。 详细了解[创建 Log Analytics 群集](customer-managed-keys.md#create-cluster-resource)并[将工作区与其关联](customer-managed-keys.md#workspace-association-to-cluster-resource)。  
 
-使用 `Sku` 下的 `Capacity` 参数，通过 Azure 资源管理器以编程方式配置群集产能预留级别。 `Capacity` 指定 GB 为单位，并且值可以为 1000 GB/天或更大，增量为 100 GB/天。 这是[Azure Monitor 客户管理的密钥](customer-managed-keys.md#create-cluster-resource)的详细信息。 如果群集需要的预留超过 2000 GB/天，请通过 [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) 联系我们。
+使用 `Sku` 下的 `Capacity` 参数，通过 Azure 资源管理器以编程方式配置群集产能预留级别。 `Capacity` 指定 GB 为单位，并且值可以为 1000 GB/天或更大，增量为 100 GB/天。 这是 [Azure Monitor 客户管理的密钥](customer-managed-keys.md#create-cluster-resource)的详细信息。 如果群集需要的预留超过 2000 GB/天，请通过 [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) 联系我们。
 
 对于群集上的使用情况，有两种计费模式。 `billingType`[配置群集](customer-managed-keys.md#cmk-management)时，可以通过参数指定这些参数。 这两种模式是： 
 
 1. **群集**：在这种情况下 (这是默认) ，引入数据的计费在群集级别完成。 将聚合与群集关联的每个工作区中的引入数据数量，以计算群集的每日账单。 请注意，在跨群集中所有工作区的聚合数据聚合之前，将在工作区级别应用基于 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的按节点分配。 
 
-2. **工作区**：在为每个工作区的[Azure 安全中心](https://docs.microsoft.com/azure/security-center/)中的每个节点分配记帐后，群集的容量保留成本将按节点分配给群集中的工作区 (。 ) 如果某一天的工作区中的总数据量引入小于产能预留量，则每个工作区都按每 GB 的有效容量预留费率对其引入数据进行计费，方法是将其计费，并将容量预留的未使用部分计费到群集资源。 如果某一天的工作区中的总数据量引入超过了容量预留量，则每个工作区都将根据该日期的引入数据的一小部分按容量预留量计费，并且每个工作区都按容量预留量的一小部分引入数据计费。 如果一天的工作区引入的总数据量超出容量预留，则不会对群集资源计费。
+2. **工作区**：在为每个工作区的 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/) 中的每个节点分配记帐后，群集的容量保留成本将按节点分配给群集中的工作区 (。 ) 如果某一天的工作区中的总数据量引入小于产能预留量，则每个工作区都按每 GB 的有效容量预留费率对其引入数据进行计费，方法是将其计费，并将容量预留的未使用部分计费到群集资源。 如果某一天的工作区中的总数据量引入超过了容量预留量，则每个工作区都将根据该日期的引入数据的一小部分按容量预留量计费，并且每个工作区都按容量预留量的一小部分引入数据计费。 如果一天的工作区引入的总数据量超出容量预留，则不会对群集资源计费。
 
 在群集计费选项中，数据保留期按工作区级别计费。 请注意，群集计费在创建群集时开始，无论工作区是否已关联到群集。 另请注意，与群集关联的工作区不再具有定价层。
 
@@ -100,7 +100,7 @@ Azure 在 [Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-ma
 
 在 2018 年 4 月 2 日之前拥有 Log Analytics 工作区或 Application Insights 资源的订阅，或与 2019 年 2 月 1 日之前开始的企业协议链接的订阅，将继续有权使用旧定价层：免费定价层、独立定价层（每 GB）和按节点定价层 (OMS)。    免费定价层中的工作区将每日数据引入限制为 500 MB（[Azure 安全中心](https://docs.microsoft.com/azure/security-center/)收集的安全数据类型除外），数据保留期限制为 7 天。 免费定价层仅用于评估目的。 独立定价层或按节点定价层中的工作区具有用户可配置的 30 至 730 天的保留期。
 
-独立定价层上的使用情况由引入数据量计费。 它在**Log Analytics**服务中报告，计量器名为 "数据已分析"。 
+独立定价层上的使用情况由引入数据量计费。 它在 **Log Analytics** 服务中报告，计量器名为 "数据已分析"。 
 
 按节点定价层按小时粒度对每个受监视的 VM（节点）收费。 对于每个受监视的节点，每天为工作区分配 500 MB 的不计费数据。 此分配在工作区级别聚合。 超出每日数据分配聚合的引入数据在数据超额时按 GB 计费。 请注意，如果工作区位于“按节点”定价层中，则在账单上，对于 Log Analytics 使用情况，该服务将是 Insight and Analytics。 使用三计量报告：
 
@@ -119,7 +119,7 @@ Azure 在 [Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-ma
 2. 如果工作区位于旧版按节点层，将使用当前 [Azure 安全中心基于节点的定价模型](https://azure.microsoft.com/pricing/details/security-center/)对 Azure 安全中心进行计费。 
 3. 在其他定价层（包括产能预留）中，如果 Azure 安全中心在 2017 年 6 月 19 日之前已启用，将仅针对 Log Analytics 数据引入对 Azure 安全中心进行计费。 否则，将使用当前 Azure 安全中心基于节点的定价模型对 Azure 安全中心进行计费。
 
-有关定价层限制的更多详细信息[，请参阅 Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)。
+有关定价层限制的更多详细信息 [，请参阅 Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)。
 
 旧版定价层都没有基于区域的定价。  
 
@@ -135,7 +135,7 @@ Azure 在 [Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-ma
 若要设置工作区的默认保留期，请执行以下操作： 
  
 1. 在 Azure 门户中，从工作区的左窗格中，选择“使用情况和预估成本”。
-2. 在 "**使用情况和预估成本**" 页上，单击页面顶部的 "**数据保留**"。
+2. 在“使用情况和预估成本”页面上，单击页面顶部的“数据保留” 。
 3. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。
 
     ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
@@ -150,7 +150,7 @@ Azure 在 [Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-ma
 
 默认情况下，基于工作区的 Application Insights 资源（`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents` 和 `AppTraces`）中的数据类型也保留 90 天，并且对于这 90 天的保留期，不收取任何费用。 可以使用按数据类型保留功能调整其保留期。 
 
-请注意，Log Analytics[清除 API](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge)不会影响保留计费，并且适用于非常有限的情况。 若要减少留成帐单，必须为工作区或特定数据类型减少保持期。 
+请注意，Log Analytics [清除 API](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) 不会影响保留计费，并且适用于非常有限的情况。 若要减少留成帐单，必须为工作区或特定数据类型减少保持期。 
 
 ### <a name="retention-by-data-type"></a>按数据类型保留
 
@@ -199,9 +199,9 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
-可以配置工作区的每日上限并限制每日引入量，但请谨慎设置，因为目标是避免达到每日限制。  否则，会丢失该天剩余时间的数据，这可能会影响其功能依赖于工作区中提供的最新数据的其他 Azure 服务和解决方案。  因此，需要具有在支持 IT 服务的资源的运行状况受到影响时监视和接收警报的能力。  每日上限旨在用作一种方法，用于管理来自托管资源的**意外增加**的数据量，并保持在限制范围内，或者当你希望限制工作区的计划外费用时使用。 不适合设置每日上限，以便在工作区中每天都能满足这一要求。
+可以配置工作区的每日上限并限制每日引入量，但请谨慎设置，因为目标是避免达到每日限制。  否则，会丢失该天剩余时间的数据，这可能会影响其功能依赖于工作区中提供的最新数据的其他 Azure 服务和解决方案。  因此，需要具有在支持 IT 服务的资源的运行状况受到影响时监视和接收警报的能力。  每日上限旨在用作一种方法，用于管理来自托管资源的 **意外增加** 的数据量，并保持在限制范围内，或者当你希望限制工作区的计划外费用时使用。 设置的每日上限不应是工作区每日可达到的量。
 
-每个工作区在一天中的不同时间应用每日上限。 "重置时间" 显示在 "**每日上限**" 页中 (参见下面) 。 无法配置此 reset 小时。 
+每个工作区在一天中的不同时间应用每日上限。 "重置时间" 显示在 " **每日上限** " 页中 (参见下面) 。 无法配置此 reset 小时。 
 
 达到每日限制后，在当天的剩余时间会停止收集应计费数据类型。 应用每日上限所固有的延迟意味着不会精确地在指定的每日上限级别应用 cap。 选定 Log Analytics 工作区的页面顶部会显示警告横幅，同时会将一个操作事件发送到“LogManagement”类别下的“操作”表。****** 在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。 我们建议基于此操作事件定义一个警报规则，并将其配置为在达到每日数据限制时发出通知。 
 
@@ -220,7 +220,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 以下步骤说明如何配置一个限制来管理 Log Analytics 工作区每日引入的数据量。  
 
 1. 在工作区的左窗格中，选择“使用情况和预估成本”。
-2. 在所选工作区的 "**使用情况和预估成本**" 页上，单击页面顶部的 "**数据上限**"。 
+2. 在所选工作区的 " **使用情况和预估成本** " 页上，单击页面顶部的 " **数据上限** "。 
 3. 每日上限默认为“关闭”。 单击“打开”将其启用，然后设置数据量限制（以 GB/天为单位）。
 
     ![Log Analytics 配置数据限制](media/manage-cost-storage/set-daily-volume-cap-01.png)
@@ -300,7 +300,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-请注意，子句 `where _IsBillable = true` 从某些解决方案中筛选掉没有引入费用的数据类型。 [了解更多](log-standard-properties.md#_isbillable)相关信息 `_IsBillable` 。
+请注意，子句 `where _IsBillable = true` 从某些解决方案中筛选掉没有引入费用的数据类型。 [了解更多](log-standard-properties.md#_isbillable) 相关信息 `_IsBillable` 。
 
 ### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
 
@@ -415,7 +415,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 若要更深入地了解特定数据类型的数据源，请使用下面这些有用的示例查询：
 
 + 基于工作区的 Application Insights 资源
-  - 有关详细信息[，请参阅管理 Application Insights 的使用情况和成本](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources)
+  - 有关详细信息 [，请参阅管理 Application Insights 的使用情况和成本](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources)
 + “安全”解决方案
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + “日志管理”解决方案
@@ -438,7 +438,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 
 | 高数据量来源 | 如何减少数据量 |
 | -------------------------- | ------------------------- |
-| 容器见解         | [将 Container Insights 配置](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost)为仅收集你需要的数据。 |
+| 容器见解         | [将 Container Insights 配置](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) 为仅收集你需要的数据。 |
 | 安全性事件            | 选择[通用或最低安全性事件](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [审核文件系统](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [审核内核对象](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [审核句柄操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 审核可移动存储 |
 | 性能计数器       | 更改[性能计数器配置](data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
 | 事件日志                 | 更改[事件日志配置](data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
@@ -568,14 +568,14 @@ union *
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>当数据收集量很高时创建警报
 
-本部分介绍如何使用 Azure Monitor[日志警报](alerts-unified-log.md)，在过去24小时内创建的数据卷超过指定的数量。 
+本部分介绍如何使用 Azure Monitor [日志警报](alerts-unified-log.md)，在过去24小时内创建的数据卷超过指定的数量。 
 
 若要在过去24小时内引入的计费数据量为大于 50 GB 时发出警报，请执行以下步骤： 
 
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - **搜索查询**到 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
+   - **搜索查询** 到 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
    - 警报逻辑基于结果数，条件大于阈值 0 
    - 每*1440*分钟一次运行一次的**时间段**（ *1440*分钟和**警报频率**）。
 - **定义警报详细信息**指定以下项：
@@ -588,7 +588,7 @@ union *
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>使用 Log Analytics 的数据传输费用
 
-向 Log Analytics 发送数据可能会产生数据带宽费用。 如 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域内的 Azure 服务之间的数据传输按出站数据传输以正常费率计费。 入站数据传输是免费的。 但是，与 Log Analytics 数据引入的成本相比，这项费用微不足道（几个百分点）。 因此控制 Log Analytics 的成本需要专注于[引入数据量](#understanding-ingested-data-volume)。 
+向 Log Analytics 发送数据可能会产生数据带宽费用。 如 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域内的 Azure 服务之间的数据传输按出站数据传输以正常费率计费。 入站数据传输是免费的。 但是，与 Log Analytics 数据引入的成本相比，这项费用微不足道（几个百分点）。 因此控制 Log Analytics 的成本需要专注于 [引入数据量](#understanding-ingested-data-volume)。 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因
@@ -603,8 +603,8 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 |停止收集的原因| 解决方案| 
 |-----------------------|---------|
-|达到了工作区的每日上限|等到收集自动重启，或者根据“管理每日最大数据量”中所述提高每日数据量限制。 每日上限重置时间显示在 "**每日上限**" 页上。 |
-| 你的工作区已达到[数据引入量速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 默认的摄取量速率阈值 500 MB (压缩的) 适用于工作区（大约**6 GB/最小**）的工作区-根据日志长度和其压缩率，实际大小可能会有所不同。 此阈值适用于所有引入数据，无论是使用[诊断设置](diagnostic-settings.md)、[数据收集器 API](data-collector-api.md)还是代理从 Azure 资源发送。 如果将数据发送到工作区中配置的阈值高于80% 的工作区，则每隔6小时就会将事件发送到工作区中的*操作*表，同时将继续超出阈值。 当引入 volume rate 高于阈值时，某些数据会被删除，并且每隔6小时就会将事件发送到工作区中的*操作*表，而阈值仍会被超过。 如果引入量的速率持续超出阈值，或者您很快就会到达，则可以通过打开支持请求来请求在您的工作区中增加它。 若要在你的工作区中收到此类事件的通知，请使用以下查询创建[日志警报规则](alerts-log.md)，该规则使用以下查询，其中的结果大于数为0，评估期为5分钟，频率为5分钟。 引入量速率达到80% 的阈值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` 。 已达到引入速率阈值阈值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` 。 |
+|达到了工作区的每日上限|等到收集自动重启，或者根据“管理每日最大数据量”中所述提高每日数据量限制。 每日上限重置时间显示在 " **每日上限** " 页上。 |
+| 你的工作区已达到 [数据引入量速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 默认的引入量速率阈值为 500 M（压缩量），适用于工作区，大约等于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 此阈值适用于所有引入的数据，无论是使用[诊断设置](diagnostic-settings.md)、[数据收集器 API](data-collector-api.md) 还是代理从 Azure 发送都适用。 如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率继续超过阈值，或者预计很快会达到阈值，你可打开支持请求，请求在工作区中调高阈值。 若要在你的工作区中收到此类事件的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，该规则基于结果大于零的结果数、5分钟的评估期和频率为5分钟。 引入量速率达到80% 的阈值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` 。 已达到引入速率阈值阈值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` 。 |
 |达到旧版免费定价层的每日限制 |等到下一天收集自动重启，或者更改为付费定价层。|
 |Azure 订阅由于以下原因处于挂起状态：<br> 免费试用已结束<br> Azure 许可已过期<br> 已达到每月支出限制（例如，在 MSDN 或 Visual Studio 订阅上）|转换为付费订阅<br> 删除限制，或者等到限制重置|
 
@@ -612,7 +612,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 ## <a name="limits-summary"></a>限制摘要
 
-还有一些其他 Log Analytics 限制，其中一些限制依赖于 Log Analytics 定价层。 它们在[Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)中进行了介绍。
+还有一些其他 Log Analytics 限制，其中一些限制依赖于 Log Analytics 定价层。 它们在 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)中进行了介绍。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201991"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934831"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 认知搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
 
@@ -84,7 +84,7 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 
 `geo.intersects` 函数使用类型为 `Edm.GeographyPoint` 的变量并使用常量 `Edm.GeographyPolygon`，在点位于多边形边界内的情况下返回 `Edm.Boolean` -- `true`，否则返回 `false`。
 
-多边形是二维表面，作为定义边界环的一系列点存储（参见以下[示例](#examples)）。 多边形需要处于闭合状态，这意味着第一个点集和最后一个点集必须相同。 [多边形中的点必须采用逆时针顺序](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+多边形是二维表面，作为定义边界环的一系列点存储（参见以下[示例](#examples)）。 多边形需要处于闭合状态，这意味着第一个点集和最后一个点集必须相同。 [多边形中的点必须采用逆时针顺序](/rest/api/searchservice/supported-data-types#Anchor_1)。
 
 ### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>跨越 180 度经线的地理空间查询和多边形
 
@@ -109,7 +109,7 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-查找描述为多边形的给定视区内的所有酒店（其中 location 是 `Edm.GeographyPoint` 类型的字段）。 请注意，多边形是闭合的（第一个点集和最后一个点集必须相同），且[这些点必须按逆时针顺序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+查找描述为多边形的给定视区内的所有酒店（其中 location 是 `Edm.GeographyPoint` 类型的字段）。 请注意，多边形是闭合的（第一个点集和最后一个点集必须相同），且[这些点必须按逆时针顺序列出](/rest/api/searchservice/supported-data-types#Anchor_1)。
 
 ```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -134,4 +134,4 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
 - [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)

@@ -3,23 +3,23 @@ title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 .NET SDK
 description: 使用 Azure 存储客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 06775948a10b88c123fab4d71d83ec97fb9fc140
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79d9adb4527be27ca5a502622b343fb430602020
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528631"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923902"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍了如何使用 .NET 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[包（NuGet）](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  | [API 参考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
+[包 (NuGet) ](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  | [API 参考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -205,7 +205,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串（）传递给 `""` [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient)方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将 () 的空字符串传递给 `""` [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) 方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
@@ -362,6 +362,10 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 
 }
 ```
+
+## <a name="set-an-acl-recursively-preview"></a>以递归方式设置 ACL (预览) 
+
+您可以在父目录的现有子项目上递归地添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。 有关详细信息，请参阅 [设置访问控制列表 (acl) 递归 Azure Data Lake Storage Gen2](recursive-access-control-lists.md)。
 
 ## <a name="see-also"></a>另请参阅
 

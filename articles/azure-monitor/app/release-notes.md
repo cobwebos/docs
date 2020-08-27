@@ -2,13 +2,14 @@
 title: Azure Application Insights 的发行说明 | Microsoft docs
 description: Application Insights SDK 的最新更新。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 07/27/2020
-ms.openlocfilehash: 59e10bff6d0e2246b130f97ce9b21cd9685bde30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315472"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934270"
 ---
 # <a name="release-notes---application-insights"></a>发行说明-Application Insights
 

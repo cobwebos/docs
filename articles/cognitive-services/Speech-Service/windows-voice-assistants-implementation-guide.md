@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 726dd4e18565174c8bbf49b204af64129e607db5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714723"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934440"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>在 Windows 上实现语音助手
 
@@ -29,15 +30,15 @@ ms.locfileid: "83714723"
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>确保麦克风可用且可访问，然后监视其状态
 
-MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用[AppCapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、 [DeviceWatcher](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)和[MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362)类分别检查麦克风隐私访问、设备是否存在以及设备状态（如音量和静音）。
+MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用 [AppCapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、 [DeviceWatcher](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)和 [MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) 类检查) 的麦克风隐私访问、设备是否存在以及设备状态 (如。
 
 ### <a name="register-the-application-with-the-background-service"></a>向后台服务注册应用程序
 
-为了让 MVA 在后台启动应用程序，需要将应用程序注册到后台服务。 请参阅[此处](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)的有关后台服务注册的完整指南。
+为了让 MVA 在后台启动应用程序，需要将应用程序注册到后台服务。 请参阅 [此处](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)的有关后台服务注册的完整指南。
 
 ### <a name="unlock-the-limited-access-feature"></a>解锁受限访问功能
 
-使用你的 Microsoft 提供的有限访问权限功能密钥解锁语音助手功能。 使用 Windows SDK 中的[LimitedAccessFeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362)类执行此操作。
+使用你的 Microsoft 提供的有限访问权限功能密钥解锁语音助手功能。 使用 Windows SDK 中的 [LimitedAccessFeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) 类执行此操作。
 
 ### <a name="register-the-keyword-for-the-application"></a>为应用程序注册关键字
 
@@ -69,15 +70,15 @@ private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsyn
 
 ### <a name="verify-that-the-voice-activation-setting-is-enabled"></a>验证是否已启用语音激活设置
 
-若要使用语音激活，用户需要为其系统启用语音激活，并为应用程序启用语音激活。 你可以在 "Windows 设置" 中的 "语音激活隐私设置" 下找到此设置。 若要检查应用程序中语音激活设置的状态，请使用中的实例 `ActivationSignalDetectionConfiguration` 注册关键字。 上的[AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128)字段 `ActivationSignalDetectionConfiguration` 包含一个枚举值，该值描述语音激活设置的状态。
+若要使用语音激活，用户需要为其系统启用语音激活，并为应用程序启用语音激活。 你可以在 "Windows 设置" 中的 "语音激活隐私设置" 下找到此设置。 若要检查应用程序中语音激活设置的状态，请使用中的实例 `ActivationSignalDetectionConfiguration` 注册关键字。 上的 [AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128) 字段 `ActivationSignalDetectionConfiguration` 包含一个枚举值，该值描述语音激活设置的状态。
 
 ### <a name="retrieve-a-conversationalagentsession-to-register-the-app-with-the-mva-system"></a>检索 ConversationalAgentSession 以向 MVA 系统注册应用程序
 
-`ConversationalAgentSession`是 Windows SDK 中的一个类，它允许应用程序使用应用状态（空闲、检测、侦听、工作、说话）更新 Windows，并接收事件，如激活检测和系统状态更改（如屏幕锁定）。 检索 AgentSession 的实例还可将应用程序注册为 Windows，并按语音激活。 最佳做法是保持对的引用 `ConversationalAgentSession` 。 若要检索会话，请使用 `ConversationalAgentSession.GetCurrentSessionAsync` API。
+`ConversationalAgentSession`是 Windows SDK 中的一个类，它允许你的应用程序使用应用程序状态更新 Windows (空闲、检测、侦听、工作、说话) 和接收事件，如激活检测和系统状态更改，如屏幕锁定。 检索 AgentSession 的实例还可将应用程序注册为 Windows，并按语音激活。 最佳做法是保持对的引用 `ConversationalAgentSession` 。 若要检索会话，请使用 `ConversationalAgentSession.GetCurrentSessionAsync` API。
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>倾听两个激活信号： OnBackgroundActivated 和 OnSignalDetected
 
-Windows 将在通过以下两种方式之一来检测关键字时发出通知。 如果应用未处于活动状态（即，你没有对的非释放实例的引用 `ConversationalAgentSession` ），则它将启动你的应用程序并在应用程序的 App.xaml.cs 文件中调用 OnBackgroundActivated 方法。 如果事件参数的 `BackgroundActivatedEventArgs.TaskInstance.Task.Name` 字段与字符串 "AgentBackgroundTrigger" 相匹配，则应用程序启动将由语音激活触发。 应用程序需要重写此方法，并检索 ConversationalAgentSession 的实例以向现在处于活动状态的窗口发出信号。 当应用程序处于活动状态时，Windows 将使用事件发出声音激活的信号 `ConversationalAgentSession.OnSignalDetected` 。 一旦检索到此事件，就添加一个事件处理程序 `ConversationalAgentSession` 。
+Windows 将在通过以下两种方式之一来检测关键字时发出通知。 如果应用不处于活动状态 (即，你没有对) 的未释放实例的引用 `ConversationalAgentSession` ，则它将启动你的应用程序并在应用程序的 App.xaml.cs 文件中调用 OnBackgroundActivated 方法。 如果事件参数的 `BackgroundActivatedEventArgs.TaskInstance.Task.Name` 字段与字符串 "AgentBackgroundTrigger" 相匹配，则应用程序启动将由语音激活触发。 应用程序需要重写此方法，并检索 ConversationalAgentSession 的实例以向现在处于活动状态的窗口发出信号。 当应用程序处于活动状态时，Windows 将使用事件发出声音激活的信号 `ConversationalAgentSession.OnSignalDetected` 。 一旦检索到此事件，就添加一个事件处理程序 `ConversationalAgentSession` 。
 
 ## <a name="keyword-verification"></a>关键字验证
 
@@ -85,7 +86,7 @@ Windows 将在通过以下两种方式之一来检测关键字时发出通知。
 
 ### <a name="retrieve-activation-audio"></a>检索激活音频
 
-创建[AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph)并将其传递到的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 这会加载在*检测到关键字之前约3秒开始*音频的图形音频缓冲区。 随附这一额外的领先音频是为了容纳各种关键字长度和发言人速度。 然后，处理来自音频图形的[QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362)事件以检索音频数据。
+创建 [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) 并将其传递到的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 这会加载在 *检测到关键字之前约3秒开始*音频的图形音频缓冲区。 随附这一额外的领先音频是为了容纳各种关键字长度和发言人速度。 然后，处理来自音频图形的 [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) 事件以检索音频数据。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -102,7 +103,7 @@ audioGraph.QuantumStarted += OnQuantumStarted;
 
 ### <a name="transition-from-compact-view-to-full-view"></a>从紧凑视图过渡到完整视图
 
-当应用程序第一次通过语音激活时，它会在精简视图中启动。 请阅读[语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview)，以获取有关 Windows 上的语音助手的不同视图和它们之间的转换。
+当应用程序第一次通过语音激活时，它会在精简视图中启动。 请阅读 [语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) ，以获取有关 Windows 上的语音助手的不同视图和它们之间的转换。
 
 若要将精简视图转换为完整应用视图，请使用 w API `TryEnterViewModeAsync` ：
 
@@ -115,9 +116,9 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 以下步骤介绍了在 Windows 上启用语音助手以运行上述锁定的要求，包括对示例代码的引用和有关管理应用程序生命周期的指导原则。
 
-有关设计以上锁定体验的指导，请访问[最佳做法指南](windows-voice-assistants-best-practices.md)。
+有关设计以上锁定体验的指导，请访问 [最佳做法指南](windows-voice-assistants-best-practices.md)。
 
-应用显示超出锁定状态的视图时，会将其视为 "展台模式"。 有关实现使用展台模式的应用的详细信息，请参阅[展台模式文档](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)。
+应用显示超出锁定状态的视图时，会将其视为 "展台模式"。 有关实现使用展台模式的应用的详细信息，请参阅 [展台模式文档](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)。
 
 ### <a name="transitioning-above-lock"></a>转换超过锁
 
@@ -148,7 +149,7 @@ conversationalAgentSession.SystemStateChanged += (s, e) =>
 若要在上方或下方锁定时以编程方式适当关闭应用程序，请使用 `WindowService.CloseWindow()` API。 这会触发所有 UWP 生命周期方法（包括 OnSuspend），使应用程序能够 `ConversationalAgentSession` 在关闭前释放其实例。
 
 > [!NOTE]
-> 应用程序可以在不关闭[以下锁定实例](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)的情况下关闭。 在这种情况下，以上锁定视图需要 "清除"，确保在屏幕解锁后，不存在将尝试操作以上锁定视图的事件处理程序或任务。
+> 应用程序可以在不关闭 [以下锁定实例](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)的情况下关闭。 在这种情况下，以上锁定视图需要 "清除"，确保在屏幕解锁后，不存在将尝试操作以上锁定视图的事件处理程序或任务。
 
 ## <a name="next-steps"></a>后续步骤
 

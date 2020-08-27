@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 5171db64f931d59d4f5b66143072cfc8153e8775
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145285"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935188"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 认知搜索中的并发
 
@@ -26,10 +26,10 @@ ms.locfileid: "86145285"
 
 乐观并发通过写入索引、索引器、数据源和 synonymMap 资源的 API 调用中的访问条件检查实现。
 
-所有资源都具有[*实体标记 (ETag) *](https://en.wikipedia.org/wiki/HTTP_ETag)提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
+所有资源都具有 [*实体标记 (ETag) *](https://en.wikipedia.org/wiki/HTTP_ETag) 提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
 
-+ REST API 在请求头使用 [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)。
-+ .NET SDK 通过 accessCondition 对象，对资源设置 [If-Match | If-Match-None 标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 来设置 ETag。 从 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) 继承的任何对象都具有 accessCondition 对象。
++ REST API 在请求头使用 [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)。
++ .NET SDK 通过 accessCondition 对象，对资源设置 [If-Match | If-Match-None 标头](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 来设置 ETag。 从 [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) 继承的任何对象都具有 accessCondition 对象。
 
 每次更新资源时，其 ETag 将自动更改。 实现并发管理时，只需对更新请求设置一个前提条件，要求远程资源的 ETag 与在客户端上修改的资源副本的 ETag 相同。 如果并发进程已更改远程资源，ETag 将不满足前提条件，请求将失败并出现 HTTP 412。 如果使用 .NET SDK，这表示为 `CloudException`，此时 `IsAccessConditionFailed()` 扩展方法返回 true。
 
@@ -217,6 +217,6 @@ ms.locfileid: "86145285"
 
 ## <a name="see-also"></a>另请参阅
 
-[常见的 HTTP 请求和响应标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[索引操作 (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[常见的 HTTP 请求和响应标头](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP 状态代码](/rest/api/searchservice/http-status-codes)
+[索引操作 (REST API)](/rest/api/searchservice/index-operations)
