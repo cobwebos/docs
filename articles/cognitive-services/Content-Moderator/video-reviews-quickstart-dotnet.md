@@ -10,16 +10,17 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931678"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919312"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
-本文提供信息和代码示例来帮助你快速开始使用[内容审查器 SDK 和 c #](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ：
+本文提供了信息和代码示例，帮助你快速开始结合使用[内容审查器 SDK 和 C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 来执行以下操作：
 
 - 为人工审查器创建视频评论
 - 将帧添加到审查
@@ -29,7 +30,7 @@ ms.locfileid: "72931678"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
+- 在内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点上登录或创建帐户。
 - 本文假定[已审查视频（请见快速入门）](video-moderation-api.md)并已获取响应数据。 你需要它来为人工审查器创建基于帧的审查。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
@@ -92,7 +93,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>添加私有属性
 
-将以下私有属性添加到命名空间**VideoReviews**，类**程序**。 将`AzureEndpoint`和`CMSubscriptionKey`字段更新为你的终结点 URL 和订阅密钥的值。 可以在 Azure 门户的资源的 "**快速启动**" 选项卡中找到这些项。
+将以下专用属性添加到 VideoReviews**** 命名空间中的 Program**** 类。 使用终结点 URL 和订阅密钥的值更新 `AzureEndpoint` 和 `CMSubscriptionKey` 字段。 可在 Azure 门户中资源的“快速启动”**** 选项卡中找到它们。
 
 
 ```csharp
@@ -131,7 +132,7 @@ namespace VideoReviews
 
 ### <a name="create-content-moderator-client-object"></a>创建内容审查器客户端对象
 
-将以下方法定义添加到命名空间**VideoReviews**，类**程序**。
+将以下方法定义添加到 VideoReviews**** 命名空间中的 Program**** 类。
 
 ```csharp
 /// <summary>
@@ -157,15 +158,15 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有以下必需参数：
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
-1. **\<IList CreateVideoReviewsBodyItem>** 对象。 每个 CreateVideoReviewsBodyItem **** 对象表示一次视频审查。 本快速入门一次创建一条评论。
+1. 一个 **IList\<CreateVideoReviewsBodyItem>** 对象。 每个 CreateVideoReviewsBodyItem **** 对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
-- **内容**。 要评论的视频的 URL。
-- **Id 为**。 要分配给视频评论的 ID。
-- **状态**。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
+- Content****。 要评论的视频的 URL。
+- ContentId****。 要分配给视频评论的 ID。
+- Status****。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
 
 > [!NOTE]
-> **CreateVideoReviews**返回> 的\<IList 字符串。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。 
+> **CreateVideoReviews** 返回 IList\<string>。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。 
 
 将以下方法定义添加到 VideoReviews 命名空间中的 Program 类。
 
@@ -215,18 +216,18 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 1. 一个字符串，包含应为“application/json”的 MIME 类型。
 1. 内容审查器团队名称。
 1. **CreateVideoReviews** 返回的视频评论 ID。
-1. **\<IList VideoFrameBodyItem>** 对象。 每个“VideoFrameBodyItem”**** 对象表示一个视频帧。
+1. 一个 **IList\<VideoFrameBodyItem>** 对象。 每个“VideoFrameBodyItem”**** 对象表示一个视频帧。
 
 “VideoFrameBodyItem”**** 具有以下属性：
 - **Timestamp**。 一个包含视频帧在视频中所用时间（以秒为单位）的字符串。
 - FrameImage****。 视频帧的 URL。
-- **Metadata**。 IList\<VideoFrameBodyItemMetadataItem>。 “VideoFrameBodyItemMetadataItem”**** 只是一个键/值对。 有效键包括：
-- **reviewRecommended**。 如果推荐视频帧的人工审查，则为 True。
-- **adultScore**。 评估视频帧中成人内容严重性的值，范围从 0 到 1。
-- **一个**。 如果视频包含成人内容，则为 True。
-- **racyScore**。 评估视频帧中不雅内容严重性的值，范围从 0 到 1。
-- **r**。 如果视频帧包含不雅内容，则为 True。
-- ReviewerResultTags****。 IList\<VideoFrameBodyItemReviewerResultTagsItem>。 “VideoFrameBodyItemReviewerResultTagsItem”**** 只是一个键/值对。 应用程序可以使用这些标记来组织视频帧。
+- Metadata****。 一个 IList\<VideoFrameBodyItemMetadataItem>。 “VideoFrameBodyItemMetadataItem”**** 只是一个键/值对。 有效键包括：
+- reviewRecommended****。 如果推荐视频帧的人工审查，则为 True。
+- adultScore****。 评估视频帧中成人内容严重性的值，范围从 0 到 1。
+- a****。 如果视频包含成人内容，则为 True。
+- racyScore****。 评估视频帧中不雅内容严重性的值，范围从 0 到 1。
+- r****。 如果视频帧包含不雅内容，则为 True。
+- ReviewerResultTags****。 一个 IList\<VideoFrameBodyItemReviewerResultTagsItem>。 “VideoFrameBodyItemReviewerResultTagsItem”**** 只是一个键/值对。 应用程序可以使用这些标记来组织视频帧。
 
 > [!NOTE]
 > 本快速入门教程为“adultScore”**** 和“racyScore”**** 属性生成随机值。 在生产应用程序中，将从[视频审查服务](video-moderation-api.md)中获取这些值，部署为 Azure 媒体服务。
@@ -541,7 +542,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>查看视频审查
 
-最后，在 "**查看**>**视频**" 屏幕上的内容审查器审阅工具帐户中可以看到视频审阅。
+最后，你会在“审查”****>“视频”**** 屏幕上的内容审查器中看到视频审查。
 
 ![用于人工审查器的视频审查](images/ams-video-review.PNG)
 

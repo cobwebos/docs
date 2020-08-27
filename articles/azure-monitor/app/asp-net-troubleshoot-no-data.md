@@ -2,13 +2,14 @@
 title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: eeae4503111897d7a2fa64bc2a69c13381515157
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936463"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -206,7 +207,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ### <a name="net-core"></a>.NET Core
 
-1. 从 NuGet 安装 ASP.NET Core 包的[APPLICATION INSIGHTS SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 安装的版本必须与当前安装的版本匹配 `Microsoft.ApplicationInsights` 。
+1. 从 NuGet 安装 ASP.NET Core 包的 [APPLICATION INSIGHTS SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 。 安装的版本必须与当前安装的版本匹配 `Microsoft.ApplicationInsights` 。
 
    最新版本的 Applicationinsights.config 是2.14.0，它是指 Applicationinsights.config 版本2.14.0。 因此，要安装的 Applicationinsights.config 版本应为2.14.0。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517641"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686042"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教程：将 Atlassian Cloud 与 Azure Active Directory 集成
 
@@ -149,7 +149,7 @@ ms.locfileid: "88517641"
 
    ![图像](./media/atlassian-cloud-tutorial/copy-urls.png)
 
-   ![图像](./media/atlassian-cloud-tutorial/edit-button.png)
+   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
 
    ![图像](./media/atlassian-cloud-tutorial/urls.png)
    
@@ -169,7 +169,7 @@ ms.locfileid: "88517641"
 
       ![图像](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlassian Cloud 需要 nameidentifier（唯一用户标识符）映射到用户的电子邮件 (user.email)  。 编辑“源属性”，并将其更改为 user.mail 。 保存对声明所做的更改。
+      b. Atlassian Cloud 期望 nameidentifier（唯一用户标识符）映射到用户的电子邮件 (user.email)  。 编辑“源属性”，并将其更改为 user.mail 。 保存对声明所做的更改。
 
       ![图像](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
@@ -179,9 +179,9 @@ ms.locfileid: "88517641"
       
    1. 针对无 Office 365 许可证的 Azure AD 租户的属性映射 
 
-      a. 单击 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress 声明。
+      a. 单击 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 声明。
 
-      ![图像](./media/atlassian-cloud-tutorial/email-address.png)
+      ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
       b. 尽管 Azure 不会为在 Azure AD 租户中创建的无 Office 365 许可证的用户填充 user.mail 属性，但会将此类用户的电子邮件存储在 userprincipalname 属性中 。 Atlassian Cloud 期望 nameidentifier（唯一用户标识符）映射到用户的电子邮件 (user.userprincipalname)  。  编辑“源属性”，并将其更改为 user.userprincipalname 。 保存对声明所做的更改。
 
@@ -201,7 +201,7 @@ ms.locfileid: "88517641"
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。
+   1. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

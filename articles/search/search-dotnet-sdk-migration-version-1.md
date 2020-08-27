@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c8e44a3d57ee519ff792de97ed2b3d183bf666b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171952"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923358"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
 
-如果使用的是版本 1.0.2-preview 或更早版本的 [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文有助于升级应用程序，以便使用版本 1.1。
+如果使用的是版本 1.0.2-preview 或更早版本的 [Azure 搜索 .NET SDK](/dotnet/api/overview/azure/search)，本文有助于升级应用程序，以便使用版本 1.1。
 
 有关包括示例的 SDK 的更多常规演练，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
 
@@ -401,4 +401,3 @@ Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 由于此原因，最佳做法仍建议在模型类中使用可以为 null 的类型。
 
 有关此 Bug 和修复的更多详细信息，请参阅 [GitHub 上的此问题](https://github.com/Azure/azure-sdk-for-net/issues/1063)。
-

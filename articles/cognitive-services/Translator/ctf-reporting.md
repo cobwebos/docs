@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244119"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934372"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
@@ -29,11 +30,11 @@ ms.locfileid: "88244119"
 * 无需匹配源句即可返回已翻译的内容及其总计数。
 * 不返回自动翻译（机器翻译）。
 
-## <a name="endpoint"></a>终结点
+## <a name="endpoint"></a>端点
 CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfreporting.svc 。
 
 ## <a name="methods"></a>方法
-| 名称 | 描述|
+| 名称 | 说明|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 获取用户创建的翻译计数。 |
 | GetUserTranslations 方法 | 检索用户创建的翻译。 |
@@ -71,7 +72,7 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 
 **参数**
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix | **可选**：一个包含翻译 URI 前缀的字符串。|
@@ -93,18 +94,18 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 
 结果集包含 **UserTranslationCount** 的数组。 每个 UserTranslationCount 都具有以下元素：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 |:---|:---|
 | 计数| 检索的结果数|
 | From | 源语言|
 | Rating| 提交者在 AddTranslation() 方法调用中应用的等级|
-| 功能| 目标语言|
+| 目标| 目标语言|
 | Uri| AddTranslation() 方法调用中应用的 URI|
-| 用户| 用户名|
+| User| 用户名|
 
 **异常**
 
-| 异常 | Message | 条件 |
+| 异常 | Message | Conditions |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制转换器将接受的字符数。</li></ul>|
@@ -142,7 +143,7 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 
 **参数**
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix| **可选**：一个包含翻译 URI 前缀的字符串。|
@@ -164,20 +165,20 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 
 结果集包含 **UserTranslation** 的数组。 每个 UserTranslation 都具有以下元素：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 |:---|:---|
 | CreatedDateUtc| 使用 AddTranslation() 创建条目的日期|
 | From| 源语言|
 | OriginalText| 提交请求时使用的源语言文本|
 |Rating |提交者在 AddTranslation() 方法调用中应用的等级|
-|功能|    目标语言|
+|目标|    目标语言|
 |TranslatedText|    在 AddTranslation() 方法调用中提交的翻译|
 |Uri|   AddTranslation() 方法调用中应用的 URI|
-|用户   |用户名|
+|User   |用户名|
 
 **异常**
 
-| 异常 | Message | 条件 |
+| 异常 | Message | Conditions |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制转换器将接受的字符数。</li></ul>|

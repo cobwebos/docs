@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890325"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "88826406"
 
 ### <a name="discover-unprotected-azure-vms"></a>发现未受保护的 Azure VM
 
-首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](/rest/api/backup/protectioncontainers/refresh)触发的。 这是一种异步 POST 操作，可确保保险库获取当前订阅中所有未受保护的 VM 的最新列表并“缓存”它们。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
+首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](/rest/api/backup/protectioncontainers/refresh)触发的。 这是一项异步 *POST*  操作，可确保保管库获取当前订阅中所有未受保护的 VM 的最新列表，并将其 "缓存"。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01

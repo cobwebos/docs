@@ -2,15 +2,16 @@
 title: '自定义提供程序 c # RESTful 终结点引用'
 description: '提供 Azure 自定义提供程序 c # RESTful 终结点的基本参考。 终结点是通过 Azure function app 提供的。'
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651171"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935630"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>自定义提供程序 c # RESTful 终结点引用
 
@@ -18,7 +19,7 @@ ms.locfileid: "75651171"
 
 ## <a name="azure-function-app-restful-endpoint"></a>Azure function app RESTful 终结点
 
-以下代码适用于 Azure function app。 若要了解如何设置 Azure function app 以使用 Azure 自定义提供程序，请参阅[设置 Azure 自定义提供程序的 Azure Functions 教程](./tutorial-custom-providers-function-setup.md)。
+以下代码适用于 Azure function app。 若要了解如何设置 Azure function app 以使用 Azure 自定义提供程序，请参阅 [设置 Azure 自定义提供程序的 Azure Functions 教程](./tutorial-custom-providers-function-setup.md)。
 
 ```csharp
 #r "Newtonsoft.Json"

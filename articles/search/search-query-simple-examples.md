@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3ea1c42234267bdbc5f8a7d35f0fd73bbb59b33c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553424"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918020"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
 
 在 Azure 认知搜索中，[简单查询语法](query-simple-syntax.md)调用默认查询分析器，用于对索引执行全文搜索查询。 此分析程序速度快，处理对象是全文搜索、筛选及分面搜索和地理搜索等常见方案。 
 
-在本文中，我们将使用示例来阐释简单语法，并填写[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作的 `search=` 参数。
+在本文中，我们将使用示例来阐释简单语法，并填写[搜索文档](/rest/api/searchservice/search-documents)操作的 `search=` 参数。
 
 备选的查询语法是[完整的 Lucene](query-lucene-syntax.md)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
 
@@ -103,7 +103,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-2-look-up-by-id"></a>示例 2：按 ID 查找
 
-本示例不太典型，但在评估搜索行为时，可以检查特定文档的整个内容，以理解它为何包含或不包含在结果中。 若要返回整个文档，请使用[查找操作](https://docs.microsoft.com/rest/api/searchservice/lookup-document)传入文档 ID。
+本示例不太典型，但在评估搜索行为时，可以检查特定文档的整个内容，以理解它为何包含或不包含在结果中。 若要返回整个文档，请使用[查找操作](/rest/api/searchservice/lookup-document)传入文档 ID。
 
 所有文档都有一个唯一标识符。 要在查找查询中试用此语法，请先返回一个文档 ID 列表，以便找到要使用的文档。 对于纽约工作岗位，标识符存储在 `id` 字段中。
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>示例 3：筛选器查询
 
-[筛选器语法](https://docs.microsoft.com/azure/search/search-query-odata-filter)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
+[筛选器语法](./search-query-odata-filter.md)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -147,7 +147,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)。
+有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](./search-query-odata-full-text-search-functions.md#examples)。
 
 ## <a name="example-4-range-filters"></a>示例 4：范围筛选器
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-5-geo-search"></a>示例 5：地理搜索
 
-示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
+示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](./search-query-odata-geo-spatial-functions.md#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
 
 为方便阅读，以下示例采用 POST 格式：
 
@@ -288,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ## <a name="next-steps"></a>后续步骤
 尝试在代码中指定查询。 以下链接介绍如何使用默认的简单语法为 .NET 和 REST API 设置搜索查询。
 
-* [使用 .NET SDK 查询索引](search-query-dotnet.md)
-* [使用 REST API 查询索引](search-create-index-rest-api.md)
+* [使用 .NET SDK 查询索引](./search-get-started-dotnet.md)
+* [使用 REST API 查询索引](./search-get-started-powershell.md)
 
 可在以下链接找到其他语法参考、查询体系结构和示例：
 
 + [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
 + [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
-+ [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [完整 Lucene 查询](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [筛选器和 Orderby 语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [简单的查询语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [完整 Lucene 查询](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [筛选器和 Orderby 语法](/rest/api/searchservice/odata-expression-syntax-for-azure-search)

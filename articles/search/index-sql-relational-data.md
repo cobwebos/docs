@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c70b42e7d0f647a3b2b60d29b5098a791e4975f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82117563"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924514"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>如何为 Azure 认知搜索中要导入和编制索引的 SQL 关系数据建模
 
@@ -107,7 +107,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 此行集现已准备好导入 Azure 认知搜索。
 
 > [!NOTE]
-> 此方法假设嵌入的 JSON 低于 [SQL Server 的最大列大小限制](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)。 
+> 此方法假设嵌入的 JSON 低于 [SQL Server 的最大列大小限制](/sql/sql-server/maximum-capacity-specifications-for-sql-server)。 
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>为一对多关系的“多”端使用复杂集合
 

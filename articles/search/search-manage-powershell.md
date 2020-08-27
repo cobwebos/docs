@@ -9,22 +9,22 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f189d1889f3ca3a3aa3234432452b1b3d696c04
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021896"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935086"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
 > * [门户](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-可以在 Windows、Linux 或[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search** 模块扩展了 [Azure PowerShell](https://docs.microsoft.com/powershell/)，完全可与[搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) 搭配使用，并可执行以下任务：
+可以在 Windows、Linux 或 [Azure Cloud Shell](../cloud-shell/overview.md) 上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search** 模块扩展了 [Azure PowerShell](/powershell/)，完全可与[搜索管理 REST API](/rest/api/searchmanagement) 搭配使用，并可执行以下任务：
 
 > [!div class="checklist"]
 > * [列出订阅中的搜索服务](#list-search-services)
@@ -36,7 +36,7 @@ ms.locfileid: "87021896"
 
 偶尔，系统会询问有关任务未  在上述列表中出现的问题。 目前，不能使用 **Az.Search** 模块或管理 REST API 来更改服务器名称、区域或层。 创建服务时，会分配专用资源。 因此，更改底层硬件（位置或节点类型）需要新的服务。 类似地，没有任何工具或 API 可将一个服务中的内容（例如索引）传输到另一个服务。
 
-在服务中，内容创建和管理通过[搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) 完成。 尽管没有专用的 PowerShell 命令可用于内容，但可以编写 PowerShell 脚本来调用 REST 或 .NET API 以创建并加载索引。
+在服务中，内容创建和管理通过[搜索服务 REST API](/rest/api/searchservice/) 或 [.NET SDK](/dotnet/api/?term=microsoft.azure.search) 完成。 尽管没有专用的 PowerShell 命令可用于内容，但可以编写 PowerShell 脚本来调用 REST 或 .NET API 以创建并加载索引。
 
 <a name="check-versions-and-load"></a>
 
@@ -90,7 +90,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>列出订阅中的服务
 
-以下命令摘自 [**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)，它会返回有关订阅中已预配的现有资源和服务的信息。 如果你不知道已经创建了多少个搜索服务，则这些命令会返回该信息，省得要在门户中查找。
+以下命令摘自 [**Az.Resources**](/powershell/module/az.resources/?view=azps-1.4.0#resources)，它会返回有关订阅中已预配的现有资源和服务的信息。 如果你不知道已经创建了多少个搜索服务，则这些命令会返回该信息，省得要在门户中查找。
 
 第一个命令返回所有搜索服务。
 
@@ -116,7 +116,7 @@ ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroup
 
 ## <a name="import-azsearch"></a>导入 Az.Search
 
-[**Az.Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) 中的命令只有在加载该模块之后才可用。
+[**Az.Search**](/powershell/module/az.search/?view=azps-1.4.0#search) 中的命令只有在加载该模块之后才可用。
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
@@ -148,7 +148,7 @@ Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 
 ## <a name="get-search-service-information"></a>获取搜索服务信息
 
-导入 **Az.Search** 之后，如果你知道哪个资源组包含你的搜索服务，请运行 [Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) 返回服务定义，包括名称、区域、层级、副本计数和分区计数。
+导入 **Az.Search** 之后，如果你知道哪个资源组包含你的搜索服务，请运行 [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) 返回服务定义，包括名称、区域、层级、副本计数和分区计数。
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -170,7 +170,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>创建或删除服务
 
-[**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 用于[创建新的搜索服务](search-create-service-portal.md)。
+[**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 用于[创建新的搜索服务](search-create-service-portal.md)。
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
@@ -191,7 +191,7 @@ Tags
 
 ## <a name="regenerate-admin-keys"></a>重新生成管理员密钥
 
-[**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 用于滚动更新管理 [API 密钥](search-security-api-keys.md)。 两个管理密钥是使用每个服务创建的，用于进行身份验证访问。 需要在每个请求中提供密钥。 这两个管理密钥在功能上是等效的，授予对搜索服务的完全写入访问权限，并可以检索任何信息，或创建和删除任何对象。 这两个密钥可以换用。 
+[**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 用于滚动更新管理 [API 密钥](search-security-api-keys.md)。 两个管理密钥是使用每个服务创建的，用于进行身份验证访问。 需要在每个请求中提供密钥。 这两个管理密钥在功能上是等效的，授予对搜索服务的完全写入访问权限，并可以检索任何信息，或创建和删除任何对象。 这两个密钥可以换用。 
 
 一次只能重新生成其中的一个密钥（指定为 `primary` 或 `secondary` 密钥）。 为避免服务中断，在滚动更新主密钥时，请记得将所有客户端代码更新为使用辅助密钥。 请避免在操作是正在进行时更改密钥。
 
@@ -213,7 +213,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>创建或删除查询密钥
 
-使用 [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) 创建查询 [API 密钥](search-security-api-keys.md)，用于从客户端应用对 Azure 认知搜索索引进行只读访问。 查询密钥用于对特定的索引进行身份验证，以检索搜索结果。 查询密钥不授予对服务中其他项（例如索引、数据源或索引器）的只读访问权限。
+使用 [**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) 创建查询 [API 密钥](search-security-api-keys.md)，用于从客户端应用对 Azure 认知搜索索引进行只读访问。 查询密钥用于对特定的索引进行身份验证，以检索搜索结果。 查询密钥不授予对服务中其他项（例如索引、数据源或索引器）的只读访问权限。
 
 无法提供密钥供 Azure 认知搜索使用。 API 密钥由服务生成。
 
@@ -223,7 +223,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>缩放副本和分区
 
-[**Set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) 用于[增加或减少副本与分区](search-capacity-planning.md)，以调整服务中的可计费资源。 增加副本或分区会增大费用，两者都提供固定和可变的费率。 如果你暂时需要更大的处理能力，可以增加副本和分区来处理工作负荷。 “概述”门户页中的监视区域提供有关查询延迟、每秒查询数和限制的磁贴，指示当前容量是否足够。
+[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) 用于[增加或减少副本与分区](search-capacity-planning.md)，以调整服务中的可计费资源。 增加副本或分区会增大费用，两者都提供固定和可变的费率。 如果你暂时需要更大的处理能力，可以增加副本和分区来处理工作负荷。 “概述”门户页中的监视区域提供有关查询延迟、每秒查询数和限制的磁贴，指示当前容量是否足够。
 
 添加或删除资源可能需要一段时间。 容量调整在后台发生，使现有工作负荷能够继续运行。 附加容量准备就绪后，将立即用于处理传入的请求，无需进行额外的配置。 
 
