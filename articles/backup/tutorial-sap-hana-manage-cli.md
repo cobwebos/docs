@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489429"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757347"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="protect-new-databases-added-to-an-sap-hana-instance"></a>保护添加到 SAP HANA 实例的新数据库
 
-[使用恢复服务保管库注册 SAP HANA 实例](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance)会自动发现此实例上的所有数据库。
+[使用恢复服务保管库注册 SAP HANA 实例](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance)会自动发现该实例上的所有数据库。
 
 但是，如果以后将新数据库添加到 SAP HANA 实例，请使用 [az backup protectable-item initialize](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) cmdlet。 此 cmdlet 会发现添加的新数据库。
 

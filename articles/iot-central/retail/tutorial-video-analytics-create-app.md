@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037822"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762771"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建视频分析 - 对象和运动检测应用程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "88037822"
 
 ## <a name="initial-setup"></a>初始设置
 
-在这些教程中，你将更新并使用多个配置文件。 这些文件的初始版本在 [LVA-gateway](https://github.com/Azure/live-video-analytics) GitHub 存储库中提供。 该存储库还包括一个 scratchpad 文本文件，你可下载该文件并将其用于记录部署的服务中的配置值。
+在这些教程中，你将更新并使用多个配置文件。 这些文件的初始版本在 [LVA-gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) GitHub 存储库中提供。 该存储库还包括一个 scratchpad 文本文件，你可下载该文件并将其用于记录部署的服务中的配置值。
 
 在本地计算机上创建一个名为 lva-configuration 的文件夹以保存这些文件的副本。 然后右键单击以下每个链接，并选择“另存为”将文件保存到 lva-configuration 文件夹中：
 
@@ -98,7 +98,7 @@ ms.locfileid: "88037822"
 
 若要创建新的视频分析应用程序，请执行以下操作：
 
-1. 选择“视频分析 - 对象和运动检测”应用程序模板。 此模板包括本教程中使用的设备的设备模板， 还提供用于监视视频的操作员面板。
+1. 选择“视频分析 - 对象和运动检测”应用程序模板。 此模板包括本教程中使用的设备的设备模板， 模板包括运算符可用于执行任务（如监视和管理相机）的示例仪表板。
 
 1. （可选）选择一个友好的应用程序名称  。 此应用程序基于名为 Northwind Traders 的虚构零售商店。 本教程使用 Northwind Traders 视频分析作为应用程序名称。
 

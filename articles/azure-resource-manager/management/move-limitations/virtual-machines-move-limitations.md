@@ -2,13 +2,13 @@
 title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063101"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933233"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -18,7 +18,6 @@ ms.locfileid: "87063101"
 
 以下方案尚不受支持：
 
-* 可用性区域中的托管磁盘不能移动到其他订阅。
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 不能跨订阅移动从具有附加计划的 Marketplace 资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
@@ -27,7 +26,7 @@ ms.locfileid: "87063101"
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
-不能移动与密钥保管库集成的虚拟机来实现适用于[Linux vm 的 Azure 磁盘加密](../../../virtual-machines/linux/disk-encryption-overview.md)或[适用于 Windows Vm 的 azure 磁盘加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移动 VM，必须禁用加密。
+不能移动与密钥保管库集成的虚拟机来实现适用于 [Linux vm 的 Azure 磁盘加密](../../../virtual-machines/linux/disk-encryption-overview.md) 或 [适用于 Windows Vm 的 azure 磁盘加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移动 VM，必须禁用加密。
 
 ```azurecli-interactive
 az vm encryption disable --resource-group demoRG --name myVm1

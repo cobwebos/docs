@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043891"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716106"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
 
@@ -100,7 +100,9 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
 
 ## <a name="troubleshoot"></a>疑难解答
 
-如果颁发的证书在 Azure 门户中处于“已禁用”状态，请继续查看“证书操作”以查看该证书的错误消息。
+- 错误类型“指定的 X.509 证书内容中终端实体证书的公钥与指定私钥的公共部分不一致。请检查证书是否有效”。如果你不将 CSR 与启动的同一 CSR 请求合并，则会发生此错误。 每次创建 CSR 时，它都会创建一个在合并签名请求时必须匹配的私钥。
+    
+- 如果颁发的证书在 Azure 门户中处于“已禁用”状态，请继续查看“证书操作”以查看该证书的错误消息。
 
 有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 

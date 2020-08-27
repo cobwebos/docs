@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854731"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930904"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -27,6 +27,7 @@ ms.locfileid: "88854731"
 
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 终结点，这些终结点用于添加：
     * 命名实体识别的其他政府和国家特定 [实体类别](named-entity-types.md?tabs=personal) 。
+    * 情绪分析 v3 中的挪威语和土耳其语支持。
 * 对于超过已发布 [数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
 * 返回偏移量的终结点现在支持可选的 `stringIndexType` 参数，该参数将调整返回的 `offset` `length` 值和值，以匹配支持的 [字符串索引方案](concepts/text-offsets.md)。
 

@@ -3,12 +3,12 @@ title: 异地灾难恢复 - Azure 事件中心| Microsoft Docs
 description: 如何使用地理区域进行故障转移并在 Azure 事件中心执行灾难恢复
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320540"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934066"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复和异地复制对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
@@ -167,10 +167,10 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 有关事件中心的详细信息，请访问以下链接：
 
 - 事件中心入门
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [事件中心常见问题解答](event-hubs-faq.md)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

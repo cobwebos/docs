@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3e1845eee9832770cc289821c60097e69eec6c08
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749458"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932009"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教程：使用推送 API 优化索引编制
 
@@ -21,7 +21,7 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 本教程介绍了如何使用[推送模型](search-what-is-data-import.md#pushing-data-to-an-index)通过分批处理请求并使用指数回退重试策略来高效地为数据编制索引。 你可以[下载并运行该应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)。 本文介绍了该应用程序的主要方面，以及为数据编制索引时要考虑的因素。
 
-本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 执行以下任务：
+本教程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 执行以下任务：
 
 > [!div class="checklist"]
 > * 创建索引
@@ -111,7 +111,7 @@ API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创�
 
 ### <a name="creating-the-index"></a>创建索引
 
-此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
+此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
 
 数据模型由 Hotel 类定义，该类还包含对 Address 类的引用。 FieldBuilder 向下钻取多个类定义，从而为索引生成复杂的数据结构。 元数据标记用于定义每个字段的属性，例如字段是否可搜索或可排序。
 
@@ -162,8 +162,8 @@ List<Hotel> hotels = dg.GetHotels(100000, "large");
 
 Azure 认知搜索支持使用以下 API 将单个或多个文档加载到索引中：
 
-+ [Add, Update, or Delete Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)（添加、更新或删除文档 (REST API)）
-+ [indexAction 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)或 [indexBatch 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [Add, Update, or Delete Documents (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)（添加、更新或删除文档 (REST API)）
++ [indexAction 类](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)或 [indexBatch 类](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 分批为文档编制索引可显著提高索引编制性能。 这些批中的每一批最多可以包含 1000 个文档或大约 16 MB。
 
@@ -258,14 +258,14 @@ await TestBatchSizes(indexClient, numTries: 3);
 
 上面提到的几个重要注意事项会影响最佳线程数。 你可以修改此示例并测试不同的线程数，以确定适合你的方案的最佳线程数。 但是，只要有多个线程并发运行，就应该能够利用大部分提升的效率。
 
-当你增加命中搜索服务的请求时，可能会遇到表示请求没有完全成功的 [HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)。 在编制索引期间，有两个常见的 HTTP 状态代码：
+当你增加命中搜索服务的请求时，可能会遇到表示请求没有完全成功的 [HTTP 状态代码](/rest/api/searchservice/http-status-codes)。 在编制索引期间，有两个常见的 HTTP 状态代码：
 
 + **503 服务不可用** - 此错误表示系统负载过重，当前无法处理请求。
 + **207 多状态** - 此错误意味着某些文档成功，但至少一个文档失败。
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>实现指数回退重试策略
 
-如果失败，则应使用[指数回退重试策略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)来重试请求。
+如果失败，则应使用[指数回退重试策略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)来重试请求。
 
 Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，但你需要实现自己的逻辑来重试 207。 还可以使用 [Polly](https://github.com/App-vNext/Polly) 等开源工具来实现重试策略。 
 
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-请务必捕获 [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet)，因为这些异常指示索引编制操作仅部分成功 (207)。 应使用 `FindFailedActionsToRetry` 方法重试失败的项，该方法可以轻松创建仅包含失败项的新批次。
+请务必捕获 [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet)，因为这些异常指示索引编制操作仅部分成功 (207)。 应使用 `FindFailedActionsToRetry` 方法重试失败的项，该方法可以轻松创建仅包含失败项的新批次。
 
 还应当捕获 `IndexBatchException` 以外的异常，并指示请求完全失败。 这些异常不太常见，特别是在 .NET SDK 中，因为它会自动重试 503。
 
@@ -346,7 +346,7 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 
 ### <a name="programatically"></a>采用编程方式
 
-可以使用两个主要选项来检查索引中的文档数：[对文档计数 API](https://docs.microsoft.com/rest/api/searchservice/count-documents) 和[获取索引统计信息 API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)。 这两个路径可能都需要额外花费时间进行更新，因此，如果返回的文档数低于你最初预计的值，请不要惊慌。
+可以使用两个主要选项来检查索引中的文档数：[对文档计数 API](/rest/api/searchservice/count-documents) 和[获取索引统计信息 API](/rest/api/searchservice/get-index-statistics)。 这两个路径可能都需要额外花费时间进行更新，因此，如果返回的文档数低于你最初预计的值，请不要惊慌。
 
 #### <a name="count-documents"></a>计数文档
 
@@ -370,7 +370,7 @@ IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(config
 
   ![Azure 认知搜索索引列表](media/tutorial-optimize-data-indexing/portal-output.png "Azure 认知搜索索引列表")
 
-“文档计数”和“存储大小”基于[获取索引统计信息 API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)，可能需要花费几分钟时间进行更新。
+“文档计数”和“存储大小”基于[获取索引统计信息 API](/rest/api/searchservice/get-index-statistics)，可能需要花费几分钟时间进行更新。
 
 ## <a name="reset-and-rerun"></a>重置并重新运行
 

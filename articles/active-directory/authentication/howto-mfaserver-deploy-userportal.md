@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c88a54661e8fee2dd7c3b4dc34336d44a6803090
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719455"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919584"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -29,7 +29,11 @@ ms.locfileid: "88719455"
 根据环境情况，可能需要将用户门户部署在 Azure 多重身份验证服务器所在的服务器上，或者部署在其他面向 Internet 的服务器上。
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 想要用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+>
+> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
 ![MFA 服务器用户门户登录页](./media/howto-mfaserver-deploy-userportal/portal.png)
 

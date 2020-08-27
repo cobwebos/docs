@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75371932"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>配置连接字符串
 
-在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制**连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 请替换以下示例中的 **\<storageConnectionString\>** ：
+在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制**连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的“\<storageConnectionString\>”：
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m

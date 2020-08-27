@@ -1,14 +1,14 @@
 ---
 title: 高级查询示例
 description: 使用 Azure Resource Graph 运行一些高级查询，包括使用列、列出使用的标记以及使用正则表达式匹配资源。
-ms.date: 07/14/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ba00144a53afd041abe2513862d8a05a51e78809
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534781"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795671"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Advanced Resource Graph 查询示例
 
@@ -29,6 +29,7 @@ ms.locfileid: "87534781"
 - [在资源组中查找具有特定标记的存储帐户](#join-findstoragetag)
 - [将两个查询的结果合并为单个结果](#unionresults)
 - [使用 DisplayNames 包括租户和订阅名称](#displaynames)
+- [按电源状态扩展属性汇总虚拟机](#vm-powerstate)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -525,9 +526,42 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 ---
 
+## <a name="summarize-virtual-machine-by-the-power-states-extended-property"></a><a name="vm-powerstate"></a>按电源状态扩展属性汇总虚拟机
+
+此查询使用虚拟机上的[扩展属性](../concepts/query-language.md#extended-properties)按电源状态进行汇总。
+
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "Resources | where type == 'microsoft.compute/virtualmachines' | summarize count() by tostring(properties.extended.instanceView.powerState.code)"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachines' | summarize count() by tostring(properties.extended.instanceView.powerState.code)"
+```
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png"::: 在 Azure Resource Graph 资源管理器中尝试此查询：
+
+- Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.us <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure 中国世纪互联门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
+---
+
 ## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>使用 DisplayNames 包括租户和订阅名称
 
-此查询使用新的 **Include** 参数和选项 _DisplayNames_ 将 **subscriptionDisplayName** 和 **tenantDisplayName** 添加到结果中。 此参数仅可用于 Azure CLI 和 Azure PowerShell。
+此查询使用 Include 参数和选项 DisplayNames 将 subscriptionDisplayName 和 tenantDisplayName 添加到结果中 。 此参数仅可用于 Azure CLI 和 Azure PowerShell。
 
 ```azurecli-interactive
 az graph query -q "limit 1" --include displayNames

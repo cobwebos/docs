@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将 AWS VM 迁移到 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611426"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762413"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -379,7 +379,7 @@ ms.locfileid: "88611426"
 **答：** 目前，我们不支持为此工作流导入评估。 临时解决方法是，导出评估，然后在“启用复制”步骤期间手动选择 VM 建议。
   
 **问题：** 我在尝试发现我的 AWS VM 时收到“未能提取 BIOS GUID”错误   
-**答：** 请查看 AWS VM 支持的操作系统。  
+**答：** 始终使用根登录进行身份验证，而不是使用任何伪用户。 另外，请查看 AWS VM 支持的操作系统。  
 
 **问题：** 我的复制状态为“未进行”    
 **答：** 请检查复制设备是否满足要求。 确保已在复制设备 TCP 端口 9443 和 HTTPS 443 上启用了所需端口以进行数据传输。 确保没有复制设备的陈旧重复版本连接到同一项目。   

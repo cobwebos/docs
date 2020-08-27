@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7120f95b8b61fc08759f4d15061ec530849dfc05
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: d1258786ec6f611bea5f73f3cb1c176738733acd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406514"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919057"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
-若要获取用户问题的预测答案，请使用 GenerateAnswer API。 发布知识库时，可以在 "**发布**" 页上查看有关如何使用此 API 的信息。 你还可以配置 API 来基于元数据标记筛选答案，并通过测试查询字符串参数来测试终结点中的知识库。
+若要获取用户问题的预测答案，请使用 GenerateAnswer API。 发布知识库时，可以在 " **发布** " 页上查看有关如何使用此 API 的信息。 你还可以配置 API 来基于元数据标记筛选答案，并通过测试查询字符串参数来测试终结点中的知识库。
 
 QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加元数据。 然后，你可以使用此信息对用户查询的结果进行筛选，以及存储可在后续对话中使用的其他信息。 有关详细信息，请参阅[知识库](../Concepts/knowledge-base.md)。
 
@@ -36,17 +36,17 @@ QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加�
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>通过 GenerateAnswer API 获取答案预测
 
-在机器人或应用程序中使用[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)可以通过用户问题查询知识库，以便从问题和答案对中获得最佳匹配。
+在机器人或应用程序中使用 [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 可以通过用户问题查询知识库，以便从问题和答案对中获得最佳匹配。
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>发布以获取 GenerateAnswer 终结点
 
-从[QnA Maker 门户](https://www.qnamaker.ai)或使用[API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)发布知识库后，可以获取 GenerateAnswer 终结点的详细信息。
+从 [QnA Maker 门户](https://www.qnamaker.ai)或使用 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)发布知识库后，可以获取 GenerateAnswer 终结点的详细信息。
 
 获取终结点详细信息：
-1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
-1. 在**知识库**中，选择 "**查看**知识库" 代码。
+1. 登录 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
+1. 在 **知识库**中，选择 " **查看** 知识库" 代码。
     ![我的知识库的屏幕截图](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 获取 GenerateAnswer 终结点的详细信息。
 
@@ -62,9 +62,9 @@ QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加�
 
 POST 请求使用：
 
-* 必需的[URI 参数](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* 必需的 [URI 参数](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * 必需的标头属性， `Authorization` 用于安全性
-* 必需的[正文属性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
+* 必需的 [正文属性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
 
 GenerateAnswer URL 具有以下格式：
 
@@ -72,7 +72,7 @@ GenerateAnswer URL 具有以下格式：
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-请记住，使用带有尾随空格的字符串的值设置的 HTTP 标头属性， `Authorization` `EndpointKey` 然后在 "**设置**" 页上找到终结点键。
+请记住，使用带有尾随空格的字符串的值设置的 HTTP 标头属性， `Authorization` `EndpointKey` 然后在 " **设置** " 页上找到终结点键。
 
 示例 JSON 正文如下所示：
 
@@ -92,7 +92,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-了解有关[rankerType](../concepts/best-practices.md#choosing-ranker-type)的详细信息。
+了解有关 [rankerType](../concepts/best-practices.md#choosing-ranker-type)的详细信息。
 
 以前的 JSON 只请求30% 或高于阈值分数的答案。
 
@@ -128,7 +128,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>将 QnA Maker 与 C 中的机器人配合使用#
 
-机器人框架使用[GETANSWER API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)提供对 QnA Maker 的属性的访问权限：
+机器人框架使用 [GETANSWER API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)提供对 QnA Maker 的属性的访问权限：
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -147,7 +147,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>将 QnA Maker 与机器人一起使用 Node.js
 
-机器人框架使用[GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)提供对 QnA Maker 的属性的访问权限：
+机器人框架使用 [GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)提供对 QnA Maker 的属性的访问权限：
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -167,7 +167,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>使用元数据筛选自定义元数据标记的答案
 
-通过添加元数据，可以按这些元数据标记筛选答案。 从 "**视图选项**" 菜单添加 "元数据" 列。 通过选择元数据图标来添加元数据对，将元数据添加到知识库中 **+** 。 此对包含一个键和一个值。
+通过添加元数据，可以按这些元数据标记筛选答案。 从 " **视图选项** " 菜单添加 "元数据" 列。 通过选择元数据图标来添加元数据对，将元数据添加到知识库中 **+** 。 此对包含一个键和一个值。
 
 ![添加元数据的屏幕截图](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -189,7 +189,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ### <a name="logical-and-by-default"></a>逻辑与默认值
 
-若要在查询中组合多个元数据筛选器，请将其他元数据筛选器添加到属性的数组 `strictFilters` 。 默认情况下，这些值在逻辑上组合在一起（和）。 逻辑组合要求所有筛选器都与 QnA 对匹配，以便在答案中返回该对。
+若要在查询中组合多个元数据筛选器，请将其他元数据筛选器添加到属性的数组 `strictFilters` 。 默认情况下，这些值按逻辑组合 (和) 。 逻辑组合要求所有筛选器都与 QnA 对匹配，以便在答案中返回该对。
 
 这等效于将 `strictFiltersCompoundOperationType` 属性与的值一起使用 `AND` 。
 
@@ -215,8 +215,8 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ### <a name="metadata-examples-in-quickstarts"></a>快速入门中的元数据示例
 
 有关元数据的详细信息，请参阅 QnA Maker 门户中的元数据：
-* [创作-将元数据添加到 QnA 对](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
-* [查询预测-按元数据筛选应答](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
+* [创作 - 将元数据添加到 QnA 对](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [查询预测 - 按元数据筛选应答](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 
@@ -269,7 +269,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|Success|
+|2xx|成功|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|
@@ -279,7 +279,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="next-steps"></a>后续步骤
 
-"**发布**" 页还提供了使用 Postman 或卷曲[生成答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)的信息。
+" **发布** " 页还提供了使用 Postman 或卷曲 [生成答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) 的信息。
 
 > [!div class="nextstepaction"]
 > [获取有关知识库的分析](../how-to/get-analytics-knowledge-base.md)

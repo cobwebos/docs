@@ -3,13 +3,13 @@ title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.custom: devx-track-javascript, devx-track-dotnet
+ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258738"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933777"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 

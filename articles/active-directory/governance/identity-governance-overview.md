@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb7ab566d861e0c4256acda8f8facd1e94d4ad6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796771"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783291"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -58,9 +58,9 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 
 通常，IT 部门会将访问权限审批决策委托给业务决策人。  此外，IT 部门可能涉及到用户本身的事务。  例如，访问公司位于欧洲的市场营销应用程序中的机密客户数据的用户需要知道该公司的策略。 来宾用户可能不知道他们受邀访问的组织的数据处理要求。
 
-组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../app-provisioning/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../b2b/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。   使用 [Azure AD 权利管理](entitlement-management-overview.md)还可以定义不同组、团队成员身份、应用程序角色以及 SharePoint Online 角色的用户如何请求访问权限。
+组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../app-provisioning/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../external-identities/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。   使用 [Azure AD 权利管理](entitlement-management-overview.md)还可以定义不同组、团队成员身份、应用程序角色以及 SharePoint Online 角色的用户如何请求访问权限。
 
-当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件访问策略可以显示[使用条款](../conditional-access/terms-of-use.md)，并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
+当用户尝试访问应用程序时，Azure AD 会实施[条件访问](../conditional-access/index.yml)策略。 例如，条件访问策略可以显示[使用条款](../conditional-access/terms-of-use.md)，并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
 
 ## <a name="privileged-access-lifecycle"></a>特权访问权限生命周期
 
@@ -100,6 +100,4 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 - [Azure AD 权利管理是什么？](entitlement-management-overview.md)
 - [Azure AD 访问评审是什么？](access-reviews-overview.md)
 - [什么是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
-- [“使用条款”可以用来做什么？](active-directory-tou.md)
-
-
+- [“使用条款”可以用来做什么？](../conditional-access/terms-of-use.md)

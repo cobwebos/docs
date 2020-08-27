@@ -4,12 +4,12 @@ description: 在本教程中，你将了解如何使用 Azure CLI 从 Azure 备�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 282f0ee61ffae455d6d3e49ea445d5ddc2fe56ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500821"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762277"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
 
@@ -181,7 +181,7 @@ Name                                  Resource
 
 使用上述还原点名称和还原模式，让我们通过 [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 创建恢复配置对象。 我们来看看此 cmdlet 中其余每个参数的含义：
 
-* **- target - container - name** 这是成功注册到恢复服务保管库并且与要还原的数据库位于同一区域中的 SAP HANA 服务器的名称。 在本教程中，我们会将数据库作为文件还原到受保护的同一 SAP HANA 服务器，名为 hxehost。
+* **--target-container-name**：这是成功注册到恢复服务保管库并且与要还原的数据库位于同一区域中的 SAP HANA 服务器的名称。 在本教程中，我们会将数据库作为文件还原到受保护的同一 SAP HANA 服务器，名为 hxehost。
 * **- rp - name** 对于时间点还原，还原点名称将为“DefaultRangeRecoveryPoint”
 
 ```azurecli-interactive

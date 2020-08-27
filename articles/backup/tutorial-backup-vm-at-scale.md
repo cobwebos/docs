@@ -4,12 +4,12 @@ description: 在本教程中，了解如何创建恢复服务保管库、定义�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263412"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757500"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -136,7 +136,7 @@ ms.locfileid: "88263412"
 
 1. 在上下文菜单上，选择“立即备份”。
 
-    ![上下文菜单](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![上下文菜单 - 选择“立即备份”](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     “立即备份”菜单随即打开。
 
@@ -166,7 +166,7 @@ ms.locfileid: "88263412"
 
 1. 在“备份项”菜单中，选择省略号以打开上下文菜单。
 
-    ![上下文菜单](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![在“备份项”菜单中，打开“上下文”菜单](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. 在上下文菜单上，选择“停止备份”以打开“停止备份”菜单。
 

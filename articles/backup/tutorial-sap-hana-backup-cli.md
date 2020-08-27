@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 将 Azure VM 上运�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489497"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762396"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 

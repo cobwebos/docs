@@ -1,16 +1,16 @@
 ---
-title: 教程：创建内容库以在 Azure VMware 解决方案 (AVS) 中部署 VM
-description: 本 Azure VMware 解决方案 (AVS) 教程介绍如何创建内容库以在 AVS 私有云中部署 VM。
+title: 教程：创建内容库以在 Azure VMware 解决方案中部署 VM
+description: 本 Azure VMware 解决方案教程介绍如何创建内容库以在 Azure VMware 解决方案私有云中部署 VM。
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612786"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750557"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>教程：创建内容库以在 Azure VMware 解决方案 (AVS) 中部署 VM
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>教程：创建内容库以在 Azure VMware 解决方案中部署 VM
 
 内容库以库项的形式存储和管理内容。 单个库项由用于部署虚拟机 (VM) 的一个或多个文件组成。 
  
@@ -22,7 +22,7 @@ ms.locfileid: "88612786"
 
 ## <a name="prerequisites"></a>先决条件
 
-学习本教程需要具备 NSX-T 逻辑交换机段和托管式 DHCP 服务。  请参阅[如何在 Azure VMware 解决方案 (AVS) 预览版中管理 DHCP](manage-dhcp.md) 以了解详细信息。
+学习本教程需要具备 NSX-T 逻辑交换机段和托管式 DHCP 服务。  请参阅[如何在 Azure VMware 解决方案预览版中管理 DHCP](manage-dhcp.md) 以了解详细信息。
 
 ## <a name="create-a-content-library"></a>创建内容库
 

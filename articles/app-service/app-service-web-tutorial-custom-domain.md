@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190071"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782305"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -277,7 +277,7 @@ ms.locfileid: "88190071"
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>在应用中启用 CNAME 记录映射
 
-现在，可以将任何与通配符名称匹配的子域添加到应用中（例如 `sub1.contoso.com` 和 `sub2.contoso.com` 都匹配 `*.contoso.com`）。
+现在，可以将任何与通配符名称匹配的子域（例如 `sub1.contoso.com`、`sub2.contoso.com` 和 `*.contoso.com` 都匹配 `*.contoso.com`）添加到应用中。
 
 在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 

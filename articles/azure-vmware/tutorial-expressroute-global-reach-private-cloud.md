@@ -1,18 +1,18 @@
 ---
 title: 将本地环境与私有云对等互连
-description: 在此 Azure VMware 解决方案 (AVS) 教程中，你将在 AVS 中创建与私有云的 ExpressRoute Global Reach 对等互连。
+description: 在此 Azure VMware 解决方案教程中，你将在 Azure VMware 解决方案中创建与私有云的 ExpressRoute Global Reach 对等互连。
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093359"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750452"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教程：将本地环境与私有云对等互连
 
-ExpressRoute Global Reach 会将本地环境连接到私有云。 ExpressRoute Global Reach 连接是在私有云 ExpressRoute 线路和本地环境的现有 ExpressRoute 连接之间建立的。  我们提供了关于使用 Azure CLI 和 PowerShell 配置 ExpressRoute Global Reach 的说明，并已通过特定详细信息和示例扩展了 [CLI 命令](../expressroute/expressroute-howto-set-global-reach-cli.md)，以便帮助你在本地环境和 Azure VMware Solution (AVS) 私有云之间配置 ExpressRoute Global Reach 对等互连。   
+ExpressRoute Global Reach 会将本地环境连接到私有云。 ExpressRoute Global Reach 连接是在私有云 ExpressRoute 线路和本地环境的现有 ExpressRoute 连接之间建立的。  我们提供了关于使用 Azure CLI 和 PowerShell 配置 ExpressRoute Global Reach 的说明，并已通过特定详细信息和示例扩展了 [CLI 命令](../expressroute/expressroute-howto-set-global-reach-cli.md)，以便帮助你在本地环境和 Azure VMware 解决方案私有云之间配置 ExpressRoute Global Reach 对等互连。   
 
 通过 ExpressRoute Global Reach 在两个 ExpressRoute 线路之间启用连接之前，请查看有关如何[在不同的 Azure 订阅之间启用连接](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)的文档。  [配置 Azure 到私有云网络](tutorial-configure-networking.md)时使用的 ExpressRoute 线路要求，在使用 Global Reach 与 ExpressRoute 网关或其他 ExpressRoute 线路对等互连时创建并使用授权密钥。 你已使用了 ExpressRoute 线路的授权密钥，接下来你会再创建一个授权密钥，以便与本地 ExpressRoute 线路对等互连。
 
@@ -33,11 +33,11 @@ ExpressRoute Global Reach 会将本地环境连接到私有云。 ExpressRoute G
 - 用于将本地环境连接到 Azure 的正常运行的 ExpressRoute 独立线路 – 从对等互连过程的角度而言，这是线路 1。
 - 用于 ExpressRoute Global Reach 对等互连的 /29 非重叠[网络地址块](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings)。
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>在 AVS 私有云中创建 ExpressRoute 授权密钥
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>在 Azure VMware 解决方案私有云中创建 ExpressRoute 授权密钥
 
 1. 从私有云“管理”下的“概述”中，选择“连接 > ExpressRoute > 请求授权密钥” 。
 
-   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="选择“连接 > ExpressRoute > 请求授权密钥”以启动新请求":::
+   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="选择“连接”>“ExpressRoute”>“请求授权密钥”以启动新请求。":::
 
 2. 输入授权密钥的名称，并选择“创建”。 
 

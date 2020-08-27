@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81418977"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
@@ -54,7 +54,7 @@ ms.locfileid: "81418977"
 
 1.  在“新建数据工厂”  窗格的“名称”下输入 **ADFTutorialDataFactory**  。
 
-    Azure 数据工厂的名称必须 *全局唯一*。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用 **\<yourname\>ADFTutorialDataFactory**）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](https://docs.microsoft.com/azure/data-factory/naming-rules)一文。
+    Azure 数据工厂的名称必须 *全局唯一*。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用“\<yourname\>ADFTutorialDataFactory”）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](https://docs.microsoft.com/azure/data-factory/naming-rules)一文。
 
     ![为新数据工厂提供一个名称](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 

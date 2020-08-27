@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816399"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933489"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -77,8 +77,8 @@ $TriggerMetadata.sys
 | 属性   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
-| MethodName | 触发的函数的名称     | string   |
-| RandGuid   | 此函数执行的唯一 guid | string   |
+| MethodName | 触发的函数的名称     | 字符串   |
+| RandGuid   | 此函数执行的唯一 guid | 字符串   |
 
 每个触发器类型都有一组不同的元数据。 例如，的 `$TriggerMetadata` `QueueTrigger` 包含、、等 `InsertionTime` `Id` `DequeueCount` 。 有关队列触发器的元数据的详细信息，请参阅 [队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的 [触发器](functions-triggers-bindings.md) 的相关文档，了解触发器元数据内部的内容。
 
@@ -276,7 +276,7 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
 * Hashtable
-* string
+* 字符串
 * byte[]
 * int
 * Double
@@ -299,10 +299,10 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 (object) |
 | **`Headers`** | 包含请求标头的字典。                | Dictionary<string，string><sup>*</sup> |
-| **`Method`** | 请求的 HTTP 方法。                                | string                    |
+| **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string，string><sup>*</sup> |
 | **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string，string><sup>*</sup> |
-| **`Url`** | 请求的 URL。                                        | string                    |
+| **`Url`** | 请求的 URL。                                        | 字符串                    |
 
 <sup>*</sup> 所有 `Dictionary<string,string>` 键都不区分大小写。
 
@@ -313,7 +313,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | 对象 (object)                    |
-| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | string                    |
+| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
 
@@ -384,14 +384,60 @@ param([string] $myBlob)
 
 ## <a name="powershell-versions"></a>PowerShell 版本
 
-下表显示了每个主要版本的函数运行时支持的 PowerShell 版本，以及所需的 .NET 版本：
+下表显示了适用于每个主要版本的函数运行时的 PowerShell 版本以及所需的 .NET 版本：
 
 | Functions 版本 | PowerShell 版本                               | .NET 版本  | 
 |-------------------|--------------------------------------------------|---------------|
-| 1.x (建议)  | PowerShell 7 (建议) <br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 3.1 |
+| 1.x (建议)  | PowerShell 7 (建议) <br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 可以通过从任何函数进行打印来查看当前版本 `$PSVersionTable` 。
+
+### <a name="running-local-on-a-specific-version"></a>在特定版本上运行本地
+
+在本地运行时，Azure Functions 运行时默认为使用 PowerShell Core 6。 若要在本地运行时改为使用 PowerShell 7，则需要将设置添加 `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` 到 `Values` 项目根目录中的 local.setting.json 文件的数组。 在 PowerShell 7 上本地运行时，文件中的 local.settings.js如以下示例所示： 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>更改 PowerShell 版本
+
+函数应用必须运行在版本2.x 上才能从 PowerShell Core 6 升级到 PowerShell 7。 若要了解如何执行此操作，请参阅 [查看和更新当前运行时版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
+
+使用以下步骤可更改函数应用使用的 PowerShell 版本。 可以在 Azure 门户中或使用 PowerShell 执行此操作。
+
+# <a name="portal"></a>[门户](#tab/portal)
+
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的函数应用。
+
+1. 在“设置”下，选择“配置”**** ****。 在 " **常规设置** " 选项卡中，找到 **PowerShell 版本**。 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="选择 function app 使用的 PowerShell 版本"::: 
+
+1. 选择所需的 **PowerShell Core 版本** ，并选择 " **保存**"。 当警告你等待重新启动时，选择 " **继续**"。 函数应用在所选 PowerShell 版本上重新启动。 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+运行以下脚本以更改 PowerShell 版本： 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+将 `<SUBSCRIPTION_ID>` 、 `<RESOURCE_GROUP>` 和替换 `<FUNCTION_APP>` 为你的 AZURE 订阅的 ID，将分别替换为资源组和函数应用的名称。  同时，将替换 `<VERSION>` 为 `~6` 或 `~7` 。 您可以 `powerShellVersion` 在返回的哈希表中验证设置的更新值 `Properties` 。 
+
+---
+
+在对配置进行更改后将重新启动函数应用。
 
 ## <a name="dependency-management"></a>依赖项管理
 
