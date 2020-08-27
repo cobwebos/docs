@@ -1,7 +1,7 @@
 ---
 title: 创建自定义关键字-语音服务
 titleSuffix: Azure Cognitive Services
-description: 设备始终侦听关键字（或短语）。 当用户显示关键字时，设备会将所有后续音频发送到云，直到用户停止说话。 自定义关键字是区分设备并增强品牌的有效方法。
+description: 设备始终 (或短语) 侦听关键字。 当用户显示关键字时，设备会将所有后续音频发送到云，直到用户停止说话。 自定义关键字是区分设备并增强品牌的有效方法。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/20/2019
 ms.author: trbye
-ms.openlocfilehash: cef47d1c6598e73d2c17c6799f3de90458206a8d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096259"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919006"
 ---
 # <a name="custom-keyword-basics"></a>自定义关键字基础知识
 
@@ -23,21 +24,21 @@ ms.locfileid: "87096259"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文中的步骤需要语音订阅和语音 SDK。 如果还没有订阅，请[免费试用语音服务](get-started.md)。 若要获取 SDK，请参阅适用于你的平台的[安装指南](quickstarts/setup-platform.md)。
+本文中的步骤需要语音订阅和语音 SDK。 如果还没有订阅，请 [免费试用语音服务](get-started.md)。 若要获取 SDK，请参阅适用于你的平台的 [安装指南](quickstarts/setup-platform.md) 。
 
 ## <a name="create-a-keyword-in-speech-studio"></a>在 Speech Studio 中创建关键字
 
 你需要先使用[Speech Studio](https://aka.ms/sdsdk-speechportal)上的 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页创建关键字，然后才能使用自定义关键字。 提供关键字后，它会生成一个 `.table` 可与语音 SDK 一起使用的文件。
 
 > [!IMPORTANT]
-> 自定义关键字模型和生成的 `.table` 文件**只能**在 Speech Studio 中创建。
+> 自定义关键字模型和生成的 `.table` 文件 **只能** 在 Speech Studio 中创建。
 > 不能从 SDK 或 REST 调用创建自定义关键字。
 
-1. 转到[Speech Studio](https://aka.ms/sdsdk-speechportal)并**登录**，如果还没有语音订阅，请选择 "[**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"。
+1. 转到 [Speech Studio](https://aka.ms/sdsdk-speechportal) 并 **登录** ，如果还没有语音订阅，请选择 " [**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"。
 
-1. 在 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页上，创建一个**新项目**。 
+1. 在 " [自定义关键字](https://aka.ms/sdsdk-wakewordportal) " 页上，创建一个 **新项目**。 
 
-1. 输入**名称**和可选**描述**，并选择语言。 每种语言都需要一个项目，并且支持目前仅限于该 `en-US` 语言。
+1. 输入 **名称**和可选 **描述**，并选择语言。 每种语言都需要一个项目，并且支持目前仅限于该 `en-US` 语言。
 
     ![描述关键字项目](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -45,21 +46,21 @@ ms.locfileid: "87096259"
 
     ![选择关键字项目](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. 若要创建新的关键字模型，请单击 "**训练模型**"。
+1. 若要创建新的关键字模型，请单击 " **训练模型**"。
 
-1. 输入模型的**名称**、可选**描述**和所选**关键字**，然后单击 "**下一步**"。 请参阅有关选择有效关键字的[准则](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword)。
+1. 输入模型的 **名称** 、可选 **描述**和所选 **关键字** ，然后单击 " **下一步**"。 请参阅有关选择有效关键字的 [准则](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) 。
 
     ![输入关键字](media/custom-keyword/custom-kws-portal-new-model.png)
 
-1. 门户为关键字创建候选发音。 通过单击 "播放" 按钮来倾听每个候选项，并删除任何不正确的发音旁边的检查。 仅选中好发音后，单击 "**训练**" 开始生成关键字模型。 
+1. 门户为关键字创建候选发音。 通过单击 "播放" 按钮来倾听每个候选项，并删除任何不正确的发音旁边的检查。 仅选中好发音后，单击 " **训练** " 开始生成关键字模型。 
 
     ![查看关键字](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. 生成模型最多可能需要30分钟时间。 模型完成后，关键字列表将从**处理**更改为**成功**。 然后，你可以下载该文件。
+1. 生成模型最多可能需要30分钟时间。 模型完成后，关键字列表将从 **处理** 更改为 **成功** 。 然后，你可以下载该文件。
 
     ![查看关键字](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. 下载的文件是 `.zip` 存档文件。 解压缩存档，并看到一个扩展名为的文件 `.table` 。 这是你在下一部分中与 SDK 一起使用的文件，因此请务必记下其路径。 文件名镜像关键字名称，例如，关键字**激活设备**具有文件名 `Activate_device.table` 。
+1. 下载的文件是 `.zip` 存档文件。 解压缩存档，并看到一个扩展名为的文件 `.table` 。 这是你在下一部分中与 SDK 一起使用的文件，因此请务必记下其路径。 文件名镜像关键字名称，例如，关键字 **激活设备** 具有文件名 `Activate_device.table` 。
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>结合使用关键字模型和 SDK
 
@@ -81,8 +82,8 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 ```
 
 > [!NOTE]
-> 此处显示的示例使用本地关键字识别，因为它不需要 `SpeechConfig` 用于身份验证上下文的对象，也不会与后端联系。 但是，可以[使用连续后端连接](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)来运行关键字识别和验证。
+> 此处显示的示例使用本地关键字识别，因为它不需要 `SpeechConfig` 用于身份验证上下文的对象，也不会与后端联系。 但是，可以 [使用连续后端连接](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)来运行关键字识别和验证。
 
 ## <a name="next-steps"></a>后续步骤
 
-通过[语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)测试自定义关键字。
+通过 [语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)测试自定义关键字。

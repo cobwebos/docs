@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922085"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
 
 自定义控件是 Azure Active Directory 的预览功能。 使用自定义控件时，用户将被重定向到兼容服务，以满足 Azure Active Directory 之外的身份验证要求。 若要满足此控件要求，用户浏览器将重定向到外部服务，执行任何所需的身份验证，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
 
 > [!NOTE]
-> 有关我们计划自定义控件功能的更改的详细信息，请参阅2020年2月[新增内容更新](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)。
+> 有关我们计划自定义控件功能的更改的详细信息，请参阅2020年2月 [新增内容更新](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)。
 
 ## <a name="creating-custom-controls"></a>创建自定义控件
 
@@ -33,11 +33,11 @@ ms.locfileid: "85253301"
 
 创建自定义控件的选项位于“条件访问”  页的“管理”  部分中。
 
-![控制](./media/controls/82.png)
+![条件访问中的自定义控件接口](./media/controls/custom-controls-conditional-access.png)
 
 单击“新建自定义控件”  ，打开包含控件 JSON 数据文本框的边栏选项卡。  
 
-![控制](./media/controls/81.png)
+![新建自定义控件](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>删除自定义控件
 
@@ -53,7 +53,7 @@ ms.locfileid: "85253301"
 
 ## <a name="known-limitations"></a>已知的限制
 
-自定义控件不能与要求 Azure 多重身份验证的身份保护自动化一起使用、Azure AD 自助服务密码重置（SSPR）、满足多重身份验证声明要求，或者用于提升特权标识管理器（PIM）中的角色。
+自定义控件不能与要求 Azure 多重身份验证的身份保护自动化一起使用、Azure AD 自助服务密码重置 (SSPR) 、满足多重身份验证声明要求、将特权标识管理器中的角色提升 (PIM) 或作为 Intune 设备注册的一部分。
 
 ## <a name="next-steps"></a>后续步骤
 

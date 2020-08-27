@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826234"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892331"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "88826234"
 
 错误代码： VMRestorePointInternalError
 
-如果在备份时， **事件查看器应用程序日志** 将显示消息错误 **应用程序名称： IaaSBcdrExtension.exe** 然后，确认 VM 中配置的防病毒程序正在限制备份扩展的执行。
+如果在备份时， **事件查看器应用程序日志** 将显示消息错误 **应用程序名称： IaaSBcdrExtension.exe** 然后，确认 VM 中配置的防病毒软件限制了备份扩展的执行。
 若要解决此问题，请将下面的目录排除在防病毒配置中，然后重试备份操作。
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 这将确保通过主机而不是来宾来拍摄快照。 请重试备份操作。
 
-**步骤 2**：尝试将备份计划更改到 VM 的负载较小（CPU/IOPS 等较小）的某个时间
+**步骤 2**：尝试将备份计划更改为 VM 低于负载 (的时间，例如更少的 CPU 或 IOps) 
 
 **步骤 3**：尝试 [增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/) ，然后重试该操作
 
@@ -246,7 +246,7 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 错误代码：ExtensionVCRedistInstallationFailure <br/> 错误消息：由于 Visual C++ Redistributable for Visual Studio 2012 安装失败，因此快照操作失败。
 
 * 导航到 `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` 并安装 vcredist2013_x64。<br/>请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，将 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值设置为 **3**，而不是 **4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务 。
-* 检查事件日志以验证是否注意到与访问相关的问题。 例如：*Product:Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key:Software\Classes.System error 5.请验证你是否拥有足够的权限访问该注册表项，或者与支持人员联系。* <br><br> 确保管理员或用户帐户有足够的权限更新注册表项“HKEY_LOCAL_MACHINE\SOFTWARE\Classes”。 提供足够的权限并重启 Windows Azure 来宾代理。<br><br> <li> 如果你安装了防病毒产品，请确保它们具有正确的排除规则以允许安装。
+* 检查事件日志以验证是否注意到了访问相关问题。 例如：*Product:Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key:Software\Classes.System error 5.请验证你是否拥有足够的权限访问该注册表项，或者与支持人员联系。* <br><br> 确保管理员或用户帐户有足够的权限更新注册表项“HKEY_LOCAL_MACHINE\SOFTWARE\Classes”。 提供足够的权限并重启 Windows Azure 来宾代理。<br><br> <li> 如果你安装了防病毒产品，请确保它们具有正确的排除规则以允许安装。
 
 ### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy - 在 VM 上配置了防止快照操作的无效策略
 

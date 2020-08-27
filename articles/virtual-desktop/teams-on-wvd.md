@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509597"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922559"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上使用 Microsoft 团队
 
 >[!IMPORTANT]
->Microsoft 365 政府环境不支持团队媒体优化。
+>Microsoft 365 政府 (GCC) 环境支持团队介质优化。 适用于团队的媒体优化不支持 GCC （高）或 DoD。
 
 >[!NOTE]
 >Microsoft 团队的媒体优化仅适用于 Windows 10 计算机上的 Windows 桌面客户端。 媒体优化需要 Windows 桌面客户端版本1.2.1026.0 或更高版本。
@@ -32,7 +32,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 - 为 Microsoft 团队[准备你的网络](/microsoftteams/prepare-network/)。
 - 在 Windows 10 或 Windows 10 IoT 企业设备上安装 [Windows 桌面客户端](connect-windows-7-10.md) ，该设备满足 [Windows 电脑上团队](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)的 Microsoft 团队硬件要求。
 -  (VM) 连接到 Windows 10 多会话或 Windows 10 企业版虚拟机。
-- 使用每计算机安装在主机上安装 "团队" 桌面应用程序。 Microsoft 团队的媒体优化要求团队桌面应用版本1.3.00.4461 或更高版本。
+- 使用每计算机安装在主机上[下载](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app)并安装团队桌面应用。 Microsoft 团队的媒体优化要求团队桌面应用版本1.3.00.4461 或更高版本。
 
 ## <a name="install-the-teams-desktop-app"></a>安装团队桌面应用
 
@@ -94,8 +94,8 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 
         这会将团队安装到64位操作系统上的程序文件 (x86) 文件夹，并安装32位操作系统上的 Program Files 文件夹。 此时，黄金映像设置已完成。 对于非持久设置，需要为每台计算机安装团队。
 
-        安装团队时可以设置两个标志， **ALLUSER = 1** ， **ALLUSERS = 1**。 了解这些参数之间的差异非常重要。 **ALLUSER = 1**参数仅在 VDI 环境中用于指定每台计算机的安装。 可以在非 VDI 和 VDI 环境中使用 **ALLUSERS = 1** 参数。 设置此参数时，团队计算机范围的安装程序将显示在 "控制面板" 的 "程序和功能" 中，并在 "Windows 设置" 中 & 功能 "。 计算机上具有管理员凭据的所有用户都可以卸载团队。 
-       
+        安装团队时可以设置两个标志， **ALLUSER = 1** ， **ALLUSERS = 1**。 了解这些参数之间的差异非常重要。 **ALLUSER = 1**参数仅在 VDI 环境中用于指定每台计算机的安装。 可以在非 VDI 和 VDI 环境中使用 **ALLUSERS = 1** 参数。 设置此参数时，团队计算机范围的安装程序将显示在 "控制面板" 的 "程序和功能" 中，并在 "Windows 设置" 中 & 功能 "。 计算机上具有管理员凭据的所有用户都可以卸载团队。
+
         > [!NOTE]
         > 此时，用户和管理员无法在登录时对团队禁用自动启动。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079446"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922746"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词
 
@@ -22,8 +22,8 @@ ms.locfileid: "85079446"
 在 Azure 认知搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。   本示例介绍了用于添加同义词并将其与现有索引一起使用的基本步骤。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 类创建同义词映射。 
-> * 在应该支持通过同义词进行查询扩展的字段上设置 [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) 属性。
+> * 使用 [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 类创建同义词映射。 
+> * 在应该支持通过同义词进行查询扩展的字段上设置 [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) 属性。
 
 可以照常查询启用了同义词的字段。 访问同义词不需其他的查询语法。
 
@@ -38,8 +38,8 @@ ms.locfileid: "85079446"
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 认知搜索服务](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET 库](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [如何通过 .NET 应用程序使用 Azure 认知搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Microsoft.Azure.Search .NET 库](/dotnet/api/overview/azure/search)
+* [如何通过 .NET 应用程序使用 Azure 认知搜索](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>概述
 
@@ -77,7 +77,7 @@ ms.locfileid: "85079446"
       Console.ReadKey();
   }
 ```
-有关如何创建和填充示例索引的步骤，请参阅[如何使用 .NET 应用程序中的 Azure 认知搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)。
+有关如何创建和填充示例索引的步骤，请参阅[如何使用 .NET 应用程序中的 Azure 认知搜索](./search-howto-dotnet-sdk.md)。
 
 ## <a name="before-queries"></a>“启用前”查询
 
@@ -173,7 +173,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="next-steps"></a>后续步骤
 
-本示例使用 C# 代码演示了同义词功能，创建并发布了映射规则，然后在查询中调用同义词映射。 可以在 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 参考文档中找到更多信息。
+本示例使用 C# 代码演示了同义词功能，创建并发布了映射规则，然后在查询中调用同义词映射。 可以在 [.NET SDK](/dotnet/api/microsoft.azure.search) 和 [REST API](/rest/api/searchservice/) 参考文档中找到更多信息。
 
 > [!div class="nextstepaction"]
 > [如何在 Azure 认知搜索中使用同义词](search-synonyms.md)
