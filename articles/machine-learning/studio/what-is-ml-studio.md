@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: 0dff28d5bfb2623a7362dc9b8aeb0840ac4e1e49
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 22f0b7af7434288bea45e6edcf4868dcffe526db
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430103"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690708"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>什么是机器学习工作室（经典版）？
 
@@ -29,7 +29,7 @@ Microsoft Azure 机器学习工作室（经典版）是一个协作型拖放式�
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>机器学习工作室（经典版）交互式工作区
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 若要开发预测分析模型，通常使用一个或多个源中的数据，然后通过各种数据操作和统计函数对该数据进行转换和分析，生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断趋于一致，直到已训练的有效模型令人满意。
 

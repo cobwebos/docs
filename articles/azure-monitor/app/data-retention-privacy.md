@@ -3,13 +3,13 @@ title: Azure Application Insights 中的数据保留和存储 | Microsoft Docs
 description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245938"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929323"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 

@@ -4,15 +4,16 @@ description: 了解如何在 Azure 门户中检查免费服务使用情况。 �
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 03efb7e4d0aa06e4c33a94f15621d58330e52e50
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 787d54ba2050a0293957310dbc8377b83a7f7bfc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461861"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690045"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>检查 Azure 免费帐户中包含的免费服务的使用情况
 

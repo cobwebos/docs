@@ -1,5 +1,5 @@
 ---
-title: 光学字符识别 (OCR) -计算机视觉
+title: 光学字符识别 (OCR) - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与光学字符识别相关的概念 (使用计算机视觉 API 打印和手写文本的图像和文档的 OCR) 。
 services: cognitive-services
@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: cb931d0b9c3dd4d3fa0fa69f69f5f90fc37ea8f6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207225"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929187"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
@@ -26,15 +26,15 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 计算机视觉 [读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 是 Azure 的最新 OCR 技术，它以多种语言提取打印文本 () ，手写文本仅 (英语的图像和多页面 PDF 文档中的) 、数字和货币符号。 它经过优化，可以从带有混合语言的文本繁重图像和多页面 PDF 文档中提取文本。 它支持在同一图像或文档中检测打印文本和手写文本。
 
-![OCR 如何通过提取的文本将图像和文档转换为结构化输出](./Images/how-ocr-works.svg)
+![OCR 如何将图像和文档转换为带有提取文本的结构化输出](./Images/how-ocr-works.svg)
 
 ## <a name="input-requirements"></a>输入要求
 读取 API 的 **读取** 操作将图像和文档作为其输入。 它们具有以下要求：
 
-* 支持的文件格式： JPEG、PNG、BMP、PDF 和 TIFF
-* 对于 PDF 和 TIFF，最多处理2000页。 对于免费层订阅服务器，只处理前两页。
-* 文件大小必须小于 50 MB 且至少为 50 x 50 像素到 10000 x 10000 像素。
-* PDF 尺寸必须最大为 17 x 17 英寸，对应于法律或 A3 纸张大小和更小的尺寸。
+* 支持的文件格式：JPEG、PNG、BMP、PDF 和 TIFF
+* 对于 PDF 和 TIFF，最多处理 2000 页。 对于免费层订阅服务器，只处理前两页。
+* 文件大小必须小于 50 MB，且尺寸介于 50 x 50 和 10000 x 10000 像素之间。
+* PDF 尺寸必须为 17 x 17 英寸或更小，对应于 Legal 或 A3 纸张尺寸及更小。
 
 > [!NOTE]
 > **语言输入** 
@@ -63,7 +63,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 > [!NOTE]
 > 免费层将请求速率限制为每分钟20个调用。 付费层允许每秒10个请求 (RPS) ，可以根据请求增加。 使用 Azure 支持渠道或你的帐户团队 (RPS) 速率请求一个更高的请求。
 
-当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应包含图像或文档中提取的文本内容。 JSON 响应维护已识别单词的原始行组。 它包括提取的文本行及其边界框坐标。 每个文本行都包含其坐标和置信度分数的所有提取单词。
+当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应包含图像或文档中提取的文本内容。 JSON 响应会维护已识别单词的原始分组。 其中包括提取的文本行及其边界框坐标。 每个文本行都包含所有提取的单词及其坐标和可信度分数。
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
@@ -177,17 +177,17 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 ## <a name="ocr-api"></a>OCR API
 
-[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)使用较旧的识别模式，仅支持图像，并以同步方式执行，并立即返回检测到的文本。 请参阅 [OCR 支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) ，然后阅读 API。
+[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 使用较旧的识别模式，仅支持图像，且以同步方式执行，并立即返回检测到的文本。 请参阅 [OCR 支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) ，然后阅读 API。
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 
-与所有认知服务一样，使用读取/OCR 服务的开发人员应了解 Microsoft 针对客户数据的策略。 若要了解详细信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center/product-overview) 上的认知服务页。
+与所有认知服务一样，使用读取/OCR 服务的开发人员应了解 Microsoft 针对客户数据的策略。 有关详细信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center/product-overview)中的“认知服务”页。
 
 > [!NOTE]
 > 计算机 Vison 2.0 RecognizeText 操作被弃用，以支持本文涵盖的新读取 API。 现有客户应 [使用读取操作转换为](upgrade-api-versions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Read 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)。
+- 了解[读取 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)。
 - 了解 [Read 3.1 公共预览版 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) 增加了简体中文支持。
 - 按照 [提取文本](./QuickStarts/CSharp-hand-text.md) 快速入门中的步骤，使用 c #、Java、JavaScript 或 Python 以及 REST API 来实现 OCR。
