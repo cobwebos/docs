@@ -3,24 +3,24 @@ title: 自动缩放 Azure Batch 池中的计算节点
 description: 对云池启用自动缩放功能可以动态调整池中计算节点的数目。
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387466"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932315"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
 Azure Batch 可以根据定义的参数自动缩放池，节省时间和资金。 使用自动缩放时，批处理动态地在任务需求增加时将节点添加到池，并在任务需求降低时删除计算节点。
 
-若要在计算节点池上启用自动缩放，请将池与你定义的*自动缩放公式*关联。 Batch 服务使用自动缩放公式来确定执行工作负荷所需的节点数。 这些节点可以是专用节点，也可以是[低优先级节点](batch-low-pri-vms.md)。 然后，Batch 会定期检查服务指标数据，并使用它根据公式和你定义的时间间隔来调整池中的节点数。
+若要在计算节点池上启用自动缩放，请将池与你定义的 *自动缩放公式* 关联。 Batch 服务使用自动缩放公式来确定执行工作负荷所需的节点数。 这些节点可以是专用节点，也可以是 [低优先级节点](batch-low-pri-vms.md)。 然后，Batch 会定期检查服务指标数据，并使用它根据公式和你定义的时间间隔来调整池中的节点数。
 
 你可以在创建池时启用自动缩放，也可以将其应用于现有池。 Batch 使可以在将公式分配给池之前先评估公式，以及监视自动缩放运行的状态。 使用自动缩放配置池后，可以在以后对该公式做出更改。
 
 > [!IMPORTANT]
-> 创建批处理帐户时，可以指定[池分配模式](accounts.md)，该模式确定是在 Batch 服务订阅（默认设置）还是用户订阅中分配池。 如果使用默认的 Batch 服务配置创建了 Batch 帐户，则该帐户将限制为可用于处理的最大核心数。 Batch 服务最多只能将计算节点数扩展到该核心数限制。 出于此原因，Batch 服务可能达不到自动缩放公式所指定的目标计算节点数。 请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)了解有关查看和提高帐户配额的信息。
+> 创建批处理帐户时，可以指定 [池分配模式](accounts.md)，该模式确定是否在批处理服务订阅中分配池 (默认) 或用户订阅。 如果使用默认的 Batch 服务配置创建了 Batch 帐户，则该帐户将限制为可用于处理的最大核心数。 Batch 服务最多只能将计算节点数扩展到该核心数限制。 出于此原因，Batch 服务可能达不到自动缩放公式所指定的目标计算节点数。 请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)了解有关查看和提高帐户配额的信息。
 >
 >如果你创建了具有用户订阅模式的帐户，则帐户会在订阅的核心配额中共享。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束条件](../azure-resource-manager/management/azure-subscription-service-limits.md)中的[虚拟机限制](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits)。
 
@@ -28,7 +28,7 @@ Azure Batch 可以根据定义的参数自动缩放池，节省时间和资金�
 
 自动缩放公式是定义的包含一个或多个语句的字符串值。 自动缩放公式会分配给池的 [autoScaleFormula](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) 属性 (Batch .NET)。 Batch 服务使用公式来确定池中可供下一个处理间隔使用的目标计算节点数。 公式字符串不能超过 8 KB，最多可以包含100个用分号分隔的语句，可以包括换行符和注释。
 
-可以将自动缩放公式视为 Batch 自动缩放“语言”。 公式语句是自由格式的表达式，可以包括服务定义的变量（由 Batch 服务定义）和用户定义的变量。 公式可以使用内置类型、运算符和函数对这些值执行各种运算。 例如，语句可以采用以下格式：
+可以将自动缩放公式视为 Batch 自动缩放“语言”。 公式语句是自由格式的表达式，可以包括批处理服务) 和用户定义的变量 (定义的服务定义变量。 公式可以使用内置类型、运算符和函数对这些值执行各种运算。 例如，语句可以采用以下格式：
 
 ```
 $myNewVariable = function($ServiceDefinedVariable, $myCustomVariable);
@@ -43,7 +43,7 @@ $variable2 = function2($OtherServiceDefinedVariable, $variable1);
 
 在自动缩放公式中包含这些语句可实现计算节点的目标数。 专用节点和低优先级节点都有其自己的目标设置。 自动缩放公式可以包含专用节点的目标值和/或低优先级节点的目标值。
 
-节点的目标数可以大于、小于或等于池中该节点类型的当前数目。 Batch 按特定的[自动缩放间隔](#automatic-scaling-interval)计算池的自动缩放公式。 Batch 将池中每种节点类型的目标数调整成在求值时自动缩放公式所指定的数目。
+节点的目标数可以大于、小于或等于池中该节点类型的当前数目。 Batch 按特定的 [自动缩放间隔](#automatic-scaling-interval)计算池的自动缩放公式。 Batch 将池中每种节点类型的目标数调整成在求值时自动缩放公式所指定的数目。
 
 ### <a name="sample-autoscale-formulas"></a>示例自动缩放公式
 
@@ -75,7 +75,7 @@ $TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicated
 $NodeDeallocationOption = taskcompletion;
 ```
 
-稍后将详细介绍[如何创建自动缩放公式](#write-an-autoscale-formula)，并查看本主题后面的其他[示例自动缩放公式](#example-autoscale-formulas)。
+稍后将详细介绍 [如何创建自动缩放公式](#write-an-autoscale-formula) ，并查看本主题后面的其他 [示例自动缩放公式](#example-autoscale-formulas) 。
 
 ## <a name="variables"></a>变量
 
@@ -94,7 +94,7 @@ $NodeDeallocationOption = taskcompletion;
 
 您可以获取和设置这些服务定义的变量的值，以管理池中计算节点的数目。
 
-| 变量 | 描述 |
+| 变量 | 说明 |
 | --- | --- |
 | $TargetDedicatedNodes |池的专用计算节点的目标数。 此值指定为目标，因为池可能无法始终达到所需的节点数。 例如，如果在池达到初始目标之前专用节点的目标数被自动缩放评估修改，则池可能不会达到目标。 <br /><br /> 如果目标超过 Batch 帐户节点或核心配额，则在 Batch 服务模式下创建的帐户中的池可能无法实现其目标。 如果目标超出了订阅的共享核心配额，则在用户订阅模式下创建的帐户中的池可能无法实现其目标。|
 | $TargetLowPriorityNodes |池的低先级计算节点的目标数。 此指定为目标，因为池可能无法始终达到所需的节点数。 例如，如果在池达到初始目标之前，低优先级节点的目标数被自动缩放评估修改，则池可能不会达到目标。 如果目标超过 Batch 帐户节点或核心配额，则池也可能不会实现其目标。 <br /><br /> 有关低优先级计算节点的详细信息，请参阅[在 Batch 中使用低优先级 VM](batch-low-pri-vms.md)。 |
@@ -133,7 +133,7 @@ $NodeDeallocationOption = taskcompletion;
 | $PreemptedNodeCount | 池中处于预占状态的节点数。 |
 
 > [!TIP]
-> 这些只读服务定义的变量是*对象*，它们提供各种方法来访问与每个关联的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#obtain-sample-data)。
+> 这些只读服务定义的变量是 *对象* ，它们提供各种方法来访问与每个关联的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#obtain-sample-data)。
 
 ## <a name="types"></a>类型
 
@@ -142,7 +142,7 @@ $NodeDeallocationOption = taskcompletion;
 - Double
 - doubleVec
 - doubleVecList
-- string
+- 字符串
 - timestamp-包含以下成员的复合结构：
   - year
   - month (1-12)
@@ -167,7 +167,7 @@ $NodeDeallocationOption = taskcompletion;
 
 上一部分中列出的类型允许以下操作。
 
-| 操作 | 支持的运算符 | 结果类型 |
+| Operation | 支持的运算符 | 结果类型 |
 | --- | --- | --- |
 | double *operator* double |+, -, *, / |Double |
 | double *operator* timeinterval |* |timeinterval |
@@ -178,8 +178,8 @@ $NodeDeallocationOption = taskcompletion;
 | timeinterval *operator* timestamp |+ |timestamp |
 | timestamp *operator* timeinterval |+ |timestamp |
 | timestamp *operator* timestamp |- |timeinterval |
-| *运算符*double |-, ! |Double |
-| *运算符*timeinterval |- |timeinterval |
+| *运算符* double |-, ! |Double |
+| *运算符* timeinterval |- |timeinterval |
 | double *operator* double |<, <=, ==, >=, >, != |Double |
 | string *operator* string |<, <=, ==, >=, >, != |Double |
 | timestamp *operator* timestamp |<, <=, ==, >=, >, != |Double |
@@ -190,7 +190,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="functions"></a>函数
 
-在定义自动缩放公式时，可以使用这些预定义**函数**。
+在定义自动缩放公式时，可以使用这些预定义 **函数** 。
 
 | 函数 | 返回类型 | 说明 |
 | --- | --- | --- |
@@ -222,12 +222,12 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="metrics"></a>指标
 
-在定义公式时，可以同时使用资源和任务指标。 可根据获取和求值的度量值数据对池中专用节点的目标数目进行调整。 有关每个指标的详细信息，请参阅上面的[Variables](#variables)部分。
+在定义公式时，可以同时使用资源和任务指标。 可根据获取和求值的度量值数据对池中专用节点的目标数目进行调整。 有关每个指标的详细信息，请参阅上面的 [Variables](#variables) 部分。
 
 <table>
   <tr>
     <th>指标</th>
-    <th>描述</th>
+    <th>说明</th>
   </tr>
   <tr>
     <td><b>资源</b></td>
@@ -269,7 +269,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="obtain-sample-data"></a>获取示例数据
 
-自动缩放公式的核心操作是获取任务和资源指标数据（示例），然后基于该数据调整池大小。 因此，清楚地了解自动缩放公式如何与示例进行交互是非常重要的。
+自动缩放公式的核心操作是获取任务和资源指标数据 (示例) ，然后根据该数据调整池大小。 因此，清楚地了解自动缩放公式如何与示例进行交互是非常重要的。
 
 ### <a name="methods"></a>方法
 
@@ -283,11 +283,11 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | 方法 | 说明 |
 | --- | --- |
-| GetSample() |`GetSample()` 方法返回数据样本的向量。<br/><br/>一个样本最好包含 30 秒钟的度量值数据。 换而言之，将每隔 30 秒获取一次样本。 但如下所示，样本在收集后需经历一定的延迟才能供公式使用。 因此，并非一段指定时间内的所有样本都可用于公式求值。<ul><li>`doubleVec GetSample(double count)`：指定要从收集的最新样本获取的样本数。 `GetSample(1)` 返回最后一个可用样本。 但对于这样的指标，不应 `$CPUPercent` `GetSample(1)` 使用，因为不知道收集样本的*时间*。 它可能是最新的，也可能是由于系统问题，它可能会很旧。 在这种情况下，最好使用如下所示的时间间隔。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`：指定用于收集样本数据的时间范围。 （可选）它还指定必须在请求的时间范围内提供的样本的百分比。 例如， `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 如果历史记录中存在过去10分钟的所有样本，将返回20个样本 `CPUPercent` 。 如果历史记录的最后一分钟不可用，则只返回18个样本。 在这种情况下 `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` ，会因为只有90% 的样本可用而失败，但 `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` 会成功。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`：指定用于收集数据的时间范围，同时包含开始时间和结束时间。 如上所述，收集样本后和可用于公式的时间之间存在延迟。 使用 `GetSample` 方法时，请考虑到这种延迟。 请参阅下面的 `GetSamplePercent`。 |
+| GetSample() |`GetSample()` 方法返回数据样本的向量。<br/><br/>一个样本最好包含 30 秒钟的度量值数据。 换而言之，将每隔 30 秒获取一次样本。 但如下所示，样本在收集后需经历一定的延迟才能供公式使用。 因此，并非一段指定时间内的所有样本都可用于公式求值。<ul><li>`doubleVec GetSample(double count)`：指定要从收集的最新样本获取的样本数。 `GetSample(1)` 返回最后一个可用样本。 但对于这样的指标，不应 `$CPUPercent` `GetSample(1)` 使用，因为不知道收集样本的 *时间* 。 它可能是最新的，也可能是由于系统问题，它可能会很旧。 在这种情况下，最好使用如下所示的时间间隔。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`：指定用于收集样本数据的时间范围。 （可选）它还指定必须在请求的时间范围内提供的样本的百分比。 例如， `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 如果历史记录中存在过去10分钟的所有样本，将返回20个样本 `CPUPercent` 。 如果历史记录的最后一分钟不可用，则只返回18个样本。 在这种情况下 `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` ，会因为只有90% 的样本可用而失败，但 `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` 会成功。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`：指定用于收集数据的时间范围，同时包含开始时间和结束时间。 如上所述，收集样本后和可用于公式的时间之间存在延迟。 使用 `GetSample` 方法时，请考虑到这种延迟。 请参阅下面的 `GetSamplePercent`。 |
 | GetSamplePeriod() |返回在历史样本数据集中采样的期间。 |
 | Count() |返回度量值历史记录中的样本总数。 |
 | HistoryBeginTime() |返回度量值最旧可用数据样本的时间戳。 |
-| GetSamplePercent() |返回给定时间间隔的可用样本百分比。 例如 `doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`。 由于 `GetSample` 方法失败，因此如果返回的样本百分比低于指定的 `samplePercent`，则可先使用 `GetSamplePercent` 方法进行检查。 然后，如果存在的样本数量不足，用户可以执行其他操作，无需停止自动缩放评估。 |
+| GetSamplePercent() |返回给定时间间隔的可用样本百分比。 例如，`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`。 由于 `GetSample` 方法失败，因此如果返回的样本百分比低于指定的 `samplePercent`，则可先使用 `GetSamplePercent` 方法进行检查。 然后，如果存在的样本数量不足，用户可以执行其他操作，无需停止自动缩放评估。 |
 
 ### <a name="samples"></a>示例
 
@@ -297,7 +297,7 @@ Batch 服务定期获取任务和资源指标的样本，使其可供自动缩�
 
 将 `samplePercent` 传递到 `GetSample()` 方法，或调用 `GetSamplePercent()` 方法时，“百分比”是指 Batch 服务记录的样本可能的总数与自动缩放公式可用的样本数之间的比值。
 
-让我们以 10 分钟的时间跨度为例。 由于每隔30秒记录样本一次，在这10分钟的时间跨度内，Batch 记录的样本的最大总数为20个样本（每分钟2个）。 但是，由于报告机制固有的延迟，并且 Azure 中存在其他问题，可能只有 15 个样本可供自动缩放公式读取。 因此，举例来说，在这 10 分钟内，记录的样本总数只有 75% 可供公式使用。
+让我们以 10 分钟的时间跨度为例。 由于样本每30秒记录一次，每隔30秒记录一次，因此批处理记录的样本的最大总数为20个样本 (每分钟) 。 但是，由于报告机制固有的延迟，并且 Azure 中存在其他问题，可能只有 15 个样本可供自动缩放公式读取。 因此，举例来说，在这 10 分钟内，记录的样本总数只有 75% 可供公式使用。
 
 ### <a name="getsample-and-sample-ranges"></a>GetSample() 和样本范围
 
@@ -339,7 +339,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 - 始终将最大专用节点数限制为 400。
 - 减少节点数时，不要删除正在运行任务的节点;如有必要，请等待任务完成，然后再删除节点。
 
-公式中的第一个语句将增加 CPU 使用率高的节点数。 我们将定义一个语句，该语句 `$totalDedicatedNodes` 使用110大于100% 的专用节点当前目标数的值的值填充用户定义的变量（），但前提是过去10分钟内的最小平均 CPU 使用率高于70%。 否则，它将使用最新专用节点数的值。
+公式中的第一个语句将增加 CPU 使用率高的节点数。 我们将定义一个语句，该语句 () ，其 `$totalDedicatedNodes` 值为110% 的专用节点当前目标数的值，但前提是过去10分钟内的最小平均 CPU 使用率高于70%。 否则，它将使用最新专用节点数的值。
 
 ```
 $totalDedicatedNodes =
@@ -425,7 +425,7 @@ await pool.CommitAsync();
 > [!IMPORTANT]
 > 创建启用了自动缩放的池时，不要在对**batchclient.pooloperations.createpool**的调用上指定_TargetDedicatedNodes_参数或_targetLowPriorityNodes_参数。 应该指定池中的 **AutoScaleEnabled** 和**AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。
 >
-> 若要手动调整启用了自动缩放的池的大小（例如，使用[BatchClient. PoolOperations. batchclient.pooloperations.resizepoolasync 来调整](/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync)），必须先禁用池的自动缩放，并调整其大小。
+> 若要手动调整启用了自动缩放的池的大小 (例如，使用 [BatchClient. PoolOperations. batchclient.pooloperations.resizepoolasync 来调整](/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync)) ，必须先禁用池的自动缩放，然后重设其大小。
 
 ### <a name="python"></a>Python
 
@@ -488,7 +488,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 > [!NOTE]
 > 如果在 .NET 中创建池时指定了**batchclient.pooloperations.createpool**方法的*targetDedicatedNodes*或*targetLowPriorityNodes*参数的值，或者为另一种语言的可比较参数指定了值，则在计算自动缩放公式时，将忽略这些值。
 
-此 c # 示例使用[Batch .net](/dotnet/api/microsoft.azure.batch)库启用现有池的自动缩放。
+此 c # 示例使用 [Batch .net](/dotnet/api/microsoft.azure.batch) 库启用现有池的自动缩放。
 
 ```csharp
 // Define the autoscaling formula. This formula sets the target number of nodes
@@ -535,7 +535,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
     在此 REST API 请求中，指定 URI 中的池 ID，以及请求正文的 *autoScaleFormula* 元素中的自动缩放公式。 操作的响应包含任何可能与该公式相关的错误信息。
 
-此[Batch .net](/dotnet/api/microsoft.azure.batch)示例计算自动缩放公式。 如果池尚未使用自动缩放，则首先启用自动缩放。
+此 [Batch .net](/dotnet/api/microsoft.azure.batch) 示例计算自动缩放公式。 如果池尚未使用自动缩放，则首先启用自动缩放。
 
 ```csharp
 // First obtain a reference to an existing pool
@@ -615,7 +615,7 @@ AutoScaleRun.Results:
 
 ## <a name="get-information-about-autoscale-runs"></a>获取有关自动缩放运行的信息
 
-为确保公式按预期执行，建议定期检查 Batch 在池上执行的自动缩放运行的结果。 为此，请获取（或刷新）对池的引用，然后检查其上次自动缩放运行的属性。
+为确保公式按预期执行，建议定期检查 Batch 在池上执行的自动缩放运行的结果。 为此，请) 对池的引用获取 (或刷新，然后检查其最后一次自动缩放运行的属性。
 
 在 Batch .NET 中，[CloudPool.AutoScaleRun ](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) 属性具有多个属性，其提供了有关在池上执行的最新自动缩放运行的信息：
 
@@ -625,7 +625,7 @@ AutoScaleRun.Results:
 
 在 REST API 中，[获取有关池的信息](/rest/api/batchservice/get-information-about-a-pool)请求返回有关池的信息，其中包括 [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) 属性中最新自动缩放运行的信息。
 
-下面的 c # 示例使用 Batch .NET 库来打印有关池_myPool_上最后一次自动缩放运行的信息。
+下面的 c # 示例使用 Batch .NET 库来打印有关池 _myPool_上最后一次自动缩放运行的信息。
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");
@@ -738,5 +738,5 @@ string formula = string.Format(@"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何在[池中的计算节点上同时执行多个任务](batch-parallel-node-tasks.md)。 与自动缩放一起，这有助于降低某些工作负荷的作业持续时间，从而节省资金。
-- 了解如何[有效地查询 Azure Batch 服务](batch-efficient-list-queries.md)，以提高效率。
+- 了解如何在 [池中的计算节点上同时执行多个任务](batch-parallel-node-tasks.md)。 与自动缩放一起，这有助于降低某些工作负荷的作业持续时间，从而节省资金。
+- 了解如何 [有效地查询 Azure Batch 服务](batch-efficient-list-queries.md) ，以提高效率。

@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171901"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923205"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
 
-如果使用的是版本 4.0-预览版或更早版本的[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文将帮助你将应用程序升级为使用版本5。
+如果你使用的是 4.0-preview 版或更早版本的 [.NET SDK](/dotnet/api/overview/azure/search)，本文可帮助你升级应用程序，以使用版本 5。
 
 有关包括示例的 SDK 的更多常规演练，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
 
@@ -35,7 +35,7 @@ Azure 搜索 .NET SDK 的版本 5 包含了某些针对早期版本进行的更�
 Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2017-11-11。 这使得可在 .NET 应用程序中使用 Azure 搜索的新功能，如下所示：
 
 * [同义词](search-synonyms.md)
-* 现可以编程方式访问索引器执行历史记录中的警告（有关更多详细信息，请参阅 [.NET 引用](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 属性）。
+* 现可以编程方式访问索引器执行历史记录中的警告（有关更多详细信息，请参阅 [.NET 引用](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 属性）。
 * 支持 .NET Core 2。
 * 新的包结构支持使用仅需要的 SDK 的部件（有关详细信息，请参阅[版本 5 中的重大更改](#ListOfChanges)）。
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113079"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932060"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的 OData 集合筛选器问题
 
@@ -174,7 +174,7 @@ ms.locfileid: "74113079"
   - 涉及 `eq`、`lt`、`le`、`gt` 或 `ge` 的简单比较表达式可与 `and`/`or` 合并。 例如：
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - 使用 `and`（合取）合并的比较表达式可以通过 `or` 进一步合并。 此窗体在布尔逻辑中称为 "[析取范式 Normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" （DNF）。 例如：
+  - 使用 `and`（合取）合并的比较表达式可以通过 `or` 进一步合并。 此窗体在布尔逻辑中称为 "[析取范式 Normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) 。 例如：
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - 适用于 `all` 的规则：
   - 简单的相等性表达式不能有效地与任何其他表达式合并。 例如，允许以下表达式：
@@ -188,7 +188,7 @@ ms.locfileid: "74113079"
   - 涉及 `ne`、`lt`、`le`、`gt` 或 `ge` 的简单比较表达式可与 `and`/`or` 合并。 例如：
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - 使用 `or`（析取）合并的比较表达式可以通过 `and` 进一步合并。 此窗体在布尔逻辑中称为 "[联合 Normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" （.cnf）。 例如：
+  - 使用 `or`（析取）合并的比较表达式可以通过 `and` 进一步合并。 此窗体在布尔逻辑中称为 "[联合 Normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (.cnf) 。 例如：
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
@@ -229,4 +229,4 @@ ms.locfileid: "74113079"
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
 - [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/Search-Documents)

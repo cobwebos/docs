@@ -2,19 +2,19 @@
 title: 快速入门：导出 Microsoft Azure Data Box 的数据
 description: 了解如何在 Azure 门户中快速导出 Azure Data Box 数据
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
 ms.date: 07/17/2020
-ms.author: v-grpr
+ms.author: twooley
 ms.localizationpriority: high
-ms.openlocfilehash: fbe14151845d19dd1d0f2a4069afb2badb125077
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 55366096a9eef7380ad8df855931c4d675973631
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122229"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783053"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>快速入门：开始使用 Azure Data Box 从 Azure 导出数据
 
