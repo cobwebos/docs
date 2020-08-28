@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320487"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022490"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>什么是用于 VM 的 Azure Monitor？
 
@@ -26,10 +26,6 @@ ms.locfileid: "87320487"
 - 托管在其他云环境中的虚拟机
   
 
-
->[!NOTE]
->我们最近根据我们从公共预览版客户收到的反馈，宣布了对运行状况功能所[做的更改](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-)。 考虑到我们将进行的更改数，我们将停止为新客户提供运行状况功能。 现有客户可继续使用运行状况功能。 有关更多详细信息，请参阅我们的[公开上市常见问题解答](vminsights-ga-release-faq.md)。  
 
 
 用于 VM 的 Azure Monitor 将其数据存储在 Azure Monitor 日志中，这使得它能够提供强大的聚合和筛选功能，并在一段时间内分析数据趋势。 可以直接从虚拟机的单个 VM 查看此数据，也可以使用 Azure Monitor 提供多个 Vm 的聚合视图。
@@ -58,5 +54,5 @@ ms.locfileid: "87320487"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关为虚拟机启用监视的要求和方法，请参阅[部署用于 VM 的 Azure Monitor](vminsights-enable-overview.md) 。
+- 有关为虚拟机启用监视的要求和方法，请参阅 [部署用于 VM 的 Azure Monitor](vminsights-enable-overview.md) 。
 

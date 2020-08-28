@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515655"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022456"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK Data Lake Storage Gen1 的文件系统操作
 
@@ -25,7 +26,7 @@ ms.locfileid: "85515655"
 
 本文介绍如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作。 文件系统操作包括在 Data Lake Storage Gen1 帐户中创建文件夹、上传文件、下载文件，等等。
 
-有关如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行帐户管理操作的说明，请参阅[使用 .NET sdk 在 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
+有关如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行帐户管理操作的说明，请参阅 [使用 .NET sdk 在 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,25 +34,25 @@ ms.locfileid: "85515655"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 
 [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) 上的代码示例逐步讲解了在存储中创建文件、连接文件、下载文件以及在存储中删除某些文件的过程。 本文的此部分演练代码的主要组成部分。
 
-1. 在 Visual Studio 中，选择 "**文件**" 菜单，选择 "**新建**"，然后选择 "**项目**"。
-1. 选择 "**控制台应用（.NET Framework）**"，然后选择 "**下一步**"。
+1. 在 Visual Studio 中，选择 " **文件** " 菜单，选择 " **新建**"，然后选择 " **项目**"。
+1. 选择 " **控制台应用 (" .NET Framework ") **，然后选择" **下一步**"。
 1. 在“项目名称”**** 中，输入 `CreateADLApplication`，然后选择“创建”****。
 1. 将 NuGet 包添加到项目。
 
    1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” ****。
-   1. 在 " **NuGet 包管理器**" 选项卡中，确保 "**包源**" 设置为 " **nuget.org**"。此外，请确保选中 "**包括预发行**版" 复选框。
+   1. 在 " **NuGet 包管理器** " 选项卡中，确保 " **包源** " 设置为 " **nuget.org**"。此外，请确保选中 " **包括预发行** 版" 复选框。
    1. 搜索并安装以下 NuGet 包：
 
-      * `Microsoft.Azure.DataLake.Store`-本文使用的是1.0.0。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`-本文使用的是 v1.0。
+      * `Microsoft.Azure.DataLake.Store` -本文使用的是1.0.0。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -本文使用的是 v1.0。
 
-      关闭**NuGet 包管理器**。
+      关闭 **NuGet 包管理器**。
 
 1. 打开“Program.cs” ****，删除现有代码，并包含以下语句，添加对命名空间的引用。
 

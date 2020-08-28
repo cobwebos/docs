@@ -1,9 +1,9 @@
 ---
 title: 使用 Azure PowerShell 创建、列出和删除用户分配的托管标识 - Azure AD
-description: 分步说明如何使用 Azure PowerShell 创建、列出和删除用户分配的托管标识。
+description: 分步说明如何使用 Azure PowerShell 创建、列出和删除用户分配托管标识。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,22 +13,22 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675c9a795a75f2a37e107ab9e8129a761581cde0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9861b257ee487824db26288925a786a9a6aeee34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608443"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014211"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>使用 Azure PowerShell 创建、列出或删除用户分配的托管标识
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>使用 Azure PowerShell 创建、列出和删除用户分配托管标识
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Azure 资源的托管标识为 Azure 服务提供了 Azure Active Directory 中的托管标识。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中输入凭据了。 
+Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个托管标识。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中输入凭据了。 
 
-本文介绍如何使用 Azure PowerShell 创建、列出和删除用户分配的托管标识。
+本文将介绍如何使用 Azure PowerShell 创建、列出和删除用户分配托管标识。
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 

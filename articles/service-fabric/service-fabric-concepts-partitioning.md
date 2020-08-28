@@ -3,12 +3,13 @@ title: Service Fabric 服务分区
 description: 介绍如何对 Service Fabric 有状态服务进行分区。 使用分区可以将数据存储在本地计算机上，以便数据和计算可以一起扩展。
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045410"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005422"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上获取。
@@ -21,11 +22,11 @@ ms.locfileid: "86045410"
 
 ![无状态服务](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-实际上有两种类型的无状态服务解决方案。 第一个服务是在外部保持其状态的服务，例如，在 Azure SQL 数据库中的数据库中（如存储会话信息和数据的网站）。 第二种是不管理任何持久状态的仅计算服务（如计算器或图像缩略）。
+实际上有两种类型的无状态服务解决方案。 第一个服务是在外部保持其状态的服务，例如，在 Azure SQL 数据库中的数据库中， (如存储会话信息和数据) 的网站。 第二种是不管理任何持久状态的仅计算服务（如计算器或图像缩略）。
 
 在任一情况下，对无状态服务进行分区都是非常少见的方案 — 通常通过添加更多实例实现可伸缩性和可用性。 对于无状态服务实例要考虑多个分区的唯一情况是在需要满足特殊路由请求时。
 
-例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 如果你可以对无状态服务进行分区，另一个示例是当你具有真正分区的后端（例如，SQL 数据库中的分片数据库），并且你想要控制哪个服务实例应写入数据库分片，或在无状态服务中执行其他需要与后端中使用的分区信息相同的准备工作。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
+例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 可以对无状态服务进行分区的另一个示例是，当你具有真正分区的后端 (例如，SQL 数据库) 中的分片数据库，并且你想要控制哪个服务实例应写入数据库分片，或在无状态服务中执行其他需要与后端中使用的分区信息相同的准备工作。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
 
 本演练的其余部分侧重于有状态服务。
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509274"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014585"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -34,6 +34,14 @@ ms.locfileid: "88509274"
 检查 GPU 是否支持硬件视频解码。 请参阅[开发电脑](../overview/system-requirements.md#development-pc)。
 
 如果在具有两个 GPU 的笔记本电脑上工作，则默认情况下运行的 GPU 可能不提供硬件视频解码功能。 如果是这样，请尝试强制应用使用另一个 GPU。 通常可以在 GPU 驱动程序设置中执行此操作。
+
+## <a name="retrieve-sessionconversion-status-fails"></a>检索会话/转换状态失败
+
+发送 REST API 命令过于频繁会导致服务器中止并最终返回故障。 限制情况下的 http 状态代码为 429 ( "请求太多" ) 。 根据经验法则，在 **后续调用之间应有5-10 秒**的延迟。
+
+请注意，此限制不仅影响直接调用时的 REST API 调用，还会影响其 c #/C + + 对应项，例如 `Session.GetPropertiesAsync` 、 `Session.RenewAsync` 或 `Frontend.GetAssetConversionStatusAsync` 。
+
+如果你遇到服务器端限制，请更改代码以降低调用次数。 服务器每分钟会重置限制状态，因此在一分钟后重新运行代码是安全的。
 
 ## <a name="h265-codec-not-available"></a>H265 编解码器不可用
 

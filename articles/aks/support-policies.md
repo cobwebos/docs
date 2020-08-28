@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050684"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012341"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -20,7 +20,7 @@ ms.locfileid: "87050684"
 ## <a name="service-updates-and-releases"></a>服务更新和版本
 
 * 有关发行信息，请参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases)。
-* 有关预览版功能的信息，请参阅 [AKS 预览版功能和相关项目](https://github.com/Azure/AKS/blob/master/previews.md)。
+* 有关预览版功能的信息，请参阅 [AKS 预览版功能和相关项目](https://awesomeopensource.com/projects/aks?categoryPage=11)。
 
 ## <a name="managed-features-in-aks"></a>AKS 中的托管功能
 
@@ -52,7 +52,7 @@ AKS 不是完全托管型的群集解决方案。 某些组件（例如工作器
 Microsoft 为以下各项提供技术支持：
 
 > [!NOTE]
-> Microsoft/AKS 采取的任何群集操作都是以内置 Kubernetes 角色 `aks-service` 和内置角色绑定来进行的 `aks-service-rolebinding` 。 此角色允许 AKS 对群集问题进行故障排除，但是不能修改权限，也不能创建角色或角色绑定，或其他高权限操作。 仅在具有实时 (JIT) 访问权限的活动支持票证下启用角色访问。
+> Microsoft/AKS 所执行的任何群集操作都是经用户同意，在内置 Kubernetes 角色 `aks-service` 和内置角色绑定 `aks-service-rolebinding` 下执行的。 此角色允许 AKS 对群集问题进行故障排除和诊断，但不能修改权限，也不能创建角色或角色绑定或者其他高权限操作。 仅在具有实时 (JIT) 访问权限的活动支持票证下启用角色访问。
 
 * 连接到 Kubernetes 服务提供和支持的所有 Kubernetes 组件，例如 API 服务器。
 * Kubernetes 控制平面服务（例如 Kubernetes 主节点、API 服务器、etcd 和 kube-dns）的管理、运行时间、QoS 和操作。
@@ -137,7 +137,7 @@ AKS 代表客户管理工作器节点的生命周期和操作 - **不支持**修
 
 ## <a name="network-ports-access-and-nsgs"></a>网络端口、访问和 NSG
 
-作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用阻止出站端口443的防火墙规则）和将 Url 添加到允许列表等操作都可以使群集似乎。
+作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入允许列表等操作可能导致群集不受支持。
 
 > [!NOTE]
 > 目前，AKS 不允许完全锁定群集的出口流量。 若要控制可供群集用于出站流量的 URL 和端口的列表，请参阅[限制出口流量](limit-egress-traffic.md)。
@@ -149,7 +149,7 @@ AKS 仅支持上游 Kubernetes 项目中的稳定功能。 除非另有说明，
 在以下两种情况下，alpha 或 beta 功能可能在正式版发布之前便已推出：
 
 * 客户已与 AKS 产品、支持或工程团队会谈，团队请求他们尝试这些新功能。
-* 这些功能已[通过功能标志启用](https://github.com/Azure/AKS/blob/master/previews.md)。 客户必须明确选择使用这些功能。
+* 这些功能已[通过功能标志启用](https://awesomeopensource.com/projects/aks?categoryPage=11)。 客户必须明确选择使用这些功能。
 
 ## <a name="preview-features-or-feature-flags"></a>预览功能或功能标志
 

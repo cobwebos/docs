@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 069e0f2d14dafe0de208ac69d2d652361a11ee34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934508"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012426"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -192,33 +192,38 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > 调整讲话风格的操作仅适用于神经语音。
 
-默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经声音，你可以调整说话样式，以表达不同的情感（如 cheerfulness、理解和冷静），或使用元素优化各种方案（例如自定义服务、newscasting 和语音助手）的声音  `mstts:express-as`   。 这是语音服务特有的可选元素。
+默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经声音，你可以调整说话样式以表达不同的情感，例如 cheerfulness、理解和冷静，或使用元素为不同的方案（如客户服务、newscasting 和语音助手）优化声音 `mstts:express-as` 。 这是语音服务特有的可选元素。
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
-更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
+更改将应用于句子级别，样式因声音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。 可以通过 [语音列表 API](rest-text-to-speech.md#get-a-list-of-voices)查询每个语音支持的样式。
+
+对于中文语音 XiaoxiaoNeural，可以进一步更改讲话风格的强度以更好地适应用例。 您可以指定更强或更柔和的样式， `styledegree` 使语音更具表现力或温柔。
 
 **语法**
 
 ```xml
-<mstts:express-as style="string"></mstts:express-as>
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+> [!NOTE]
+> 目前 `styledegree` 仅支持 XiaoxiaoNeural。 
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
+| `styledegree` | 指定讲话样式的强度。 **接受的值**：0.01 到2（含）。 默认值为1，表示预定义的样式强度。 最小单位为0.01，这将导致目标样式略有不同。 如果值为2，则将导致默认样式强度加倍。  | 目前 (可选的， `styledegree` 仅支持 XiaoxiaoNeural。 ) |
 
 参考下表来确定每种神经语音支持的讲话风格。
 
 | 语音                   | Style                     | 说明                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | 用于新闻交付的正式、自信和权威音|
-|                         | `style="newscast-casual"` | 一般新闻交付的通用和休闲音       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | 表达一种正式、自信和权威性的新闻传递音 |
+|                         | `style="newscast-casual"` | 表达一般新闻交付的通用和休闲音        |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="chat"`            | 表达轻松随意的语气                         |
 |                         | `style="cheerful"`        | 表达积极愉快的语气                         |
@@ -226,6 +231,15 @@ speechConfig!.setPropertyTo(
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
+|                         | `style="chat"`            | 表达 chit-聊天的随意和宽松音           |
+|                         | `style="calm"`            | 在说话时，表示一个超酷、收集和组合的态度。 与其他类型的语音相比，音调、音调、诗体论更加统一。                                |
+|                         | `style="cheerful"`        | 以更高的音调和沉默能量表示 upbeat 和热情色调                         |
+|                         | `style="sad"`             | 表达了 sorrowful 的音调，具有较高的音调、降低强度以及降低沉默能量。 此情感的常见指标将在语音中 whimpers 或哭泣。            |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和更高的沉默能量表示生气和厌恶的音调。 演讲者的状态为 irate、displeased 和生气。       |
+|                         | `style="fearful"`         | 以更高的音调、更高的沉默能量和更快的速度来表达恐惧和紧张的音调。 演讲者处于 tenseness 和 uneasiness 状态。                          |
+|                         | `style="disgruntled"`     | 表达 disdainful 和抱怨。 此情感的语音显示 displeasure 和蔑视。              |
+|                         | `style="serious"`         | 表示严格和命令音。 演讲者经常听起来 stiffer，并通过固定的步调来放松。          | |                         | `style="affectionate"`    | 用较高的音调和沉默能量表达一 affectionate。 演讲者处于一种状态，它吸引了侦听器的注意力。 演讲者的 "个性" 通常是 endearing 的。          |     
+|                         | `style="gentle"`          | 以较低的音调和沉默的能源表达轻度、令人愉快的语气         |   
 |                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | 以友好热情的语气为客户提供支持  | 
 
@@ -239,6 +253,18 @@ speechConfig!.setPropertyTo(
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+此 SSML 代码片段说明了如何 `styledegree` 使用属性来更改 XiaoxiaoNeural 说话样式的强度。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
         </mstts:express-as>
     </voice>
 </speak>

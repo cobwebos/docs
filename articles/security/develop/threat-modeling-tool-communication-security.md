@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 73210da43c9919af1d92d0e8c354e1d7f9c77bed
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d795d30e3ad420e0fed002baddf37469ddcf995
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543939"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004556"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -36,7 +37,7 @@ ms.locfileid: "87543939"
 | **移动客户端** | <ul><li>[实施证书绑定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输](#webapi-https)</li></ul> |
-| **Azure Redis 缓存** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
+| **Azure Cache for Redis** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
 | **IoT 现场网关** | <ul><li>[保护设备与现场网关之间的通信](#device-field)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用 SSL/TLS 保护设备与云网关之间的通信](#device-cloud)</li></ul> |
 
@@ -70,7 +71,7 @@ ms.locfileid: "87543939"
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 链接服务类型-Azure 和本地 |
-| **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)，[数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)， [数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **步骤** | <p>需要使用数据管理网关 (DMG) 工具连接到受企业网络或防火墙保护的数据源。</p><ol><li>锁定计算机可以隔离 DMG 工具，防止不正常的程序损坏源计算机或者窥视其数据。 （例如， 必须安装最新的更新、启用所需的最少量端口、预配受控帐户、审核启用、启用磁盘加密，等等。）</li><li>必须经常或者每当 DMG 服务帐户密码续订时轮替数据网关密钥</li><li>通过链接服务传输的数据必须加密</li></ol> |
 
 ## <a name="ensure-that-all-traffic-to-identity-server-is-over-https-connection"></a><a id="identity-https"></a>确保发往标识服务器的所有流量都通过 HTTPS 连接传输
@@ -176,7 +177,7 @@ ms.locfileid: "87543939"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -187,7 +188,7 @@ ms.locfileid: "87543939"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -209,7 +210,7 @@ ms.locfileid: "87543939"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Windows Phone |
 | **属性**              | 空值  |
@@ -286,7 +287,7 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 空值  |
@@ -297,7 +298,7 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 空值  |
@@ -326,7 +327,7 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 空值  |

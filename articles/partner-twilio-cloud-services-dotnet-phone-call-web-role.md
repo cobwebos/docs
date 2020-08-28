@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
-ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272553"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022337"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫
 本指南演示如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序提示用户使用给定的号码和消息进行呼叫，如下面的屏幕截图中所示。
@@ -29,7 +30,7 @@ ms.locfileid: "81272553"
 需要执行以下操作才能使用本主题中的代码：
 
 1. 从 [Twilio 控制台][twilio_console]获取 Twilio 帐户和身份验证令牌。 若要开始 Twilio，请在上注册 [https://www.twilio.com/try-twilio][try_twilio] 。 你可以在中评估定价 [https://www.twilio.com/pricing][twilio_pricing] 。 有关 Twilio 提供的 API 的信息，请参阅 [https://www.twilio.com/voice/api][twilio_api] 。
-2. 将 *Twilio .NET 库*添加到 Web 角色。 请参阅本主题后面的**将 Twilio 库添加到 web 角色项目**。
+2. 将 *Twilio .NET 库*添加到 Web 角色。 请参阅本主题后面的 **将 Twilio 库添加到 web 角色项目**。
 
 应熟悉如何[在 Azure 中创建基本 Web 角色][azure_webroles_get_started]。
 
@@ -38,12 +39,12 @@ ms.locfileid: "81272553"
 
 1. 在 Visual Studio 中打开解决方案。
 2. 右键单击“引用”****。
-3. 单击 "**管理 NuGet 包**"。
+3. 单击 " **管理 NuGet 包**"。
 4. 单击“联机”。****
 5. 在联机搜索框中，键入 *twilio*。
 6. 单击 Twilio 程序包对应的“安装”。****
 
-以下代码演示了如何创建 Web 窗体来检索用于发起呼叫的用户数据。 在此示例中，将创建一个名为**TwilioCloud**的 ASP.NET Web 角色。
+以下代码演示了如何创建 Web 窗体来检索用于发起呼叫的用户数据。 在此示例中，将创建一个名为 **TwilioCloud** 的 ASP.NET Web 角色。
 
 ```aspx
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master"

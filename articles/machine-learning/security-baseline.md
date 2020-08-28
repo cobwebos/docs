@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642797"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015078"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>适用于 Azure 机器学习的 Azure 安全基线
 
@@ -188,7 +188,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：对 Azure 资源启用诊断设置，以便访问审核、安全和诊断日志。 自动可用的活动日志包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
+**指南**：对 Azure 资源启用诊断设置，以便访问审核、安全和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
 你还可以将机器学习服务操作日志关联起来，以提高安全性和符合性。
 
@@ -270,9 +270,9 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，为 Azure 云服务和虚拟机的 Microsoft 反恶意软件启用反恶意软件事件收集。
 
-- [如何为虚拟机配置 Microsoft 反恶意软件](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [如何为虚拟机配置 Microsoft 反恶意软件](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [如何配置适用于云服务的 Microsoft 反恶意软件扩展](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [如何配置适用于云服务的 Microsoft 反恶意软件扩展](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [了解 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
@@ -493,7 +493,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供内置 RBA
 
 **指南**：在网络外围使用 Azure Marketplace 中的第三方解决方案来监视敏感信息的未授权传输，并在通知信息安全专业人员时阻止此类传输。 
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。 
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。 
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -515,7 +515,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供内置 RBA
 
 **指南**：目前尚不 Azure 机器学习支持数据标识、分类和丢失防护功能。 如有必要，请实现第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -847,7 +847,7 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。 此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。 
+**指南**：使用 Azure Policy [拒绝] 和 [不存在时部署] 在 Azure 资源中强制实施安全设置。 此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。 
  
  
  
