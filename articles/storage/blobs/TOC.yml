@@ -739,6 +739,8 @@
               href: data-lake-storage-explorer.md
             - name: Hadoop 文件系统 CLI
               href: data-lake-storage-use-hdfs-data-lake-storage.md
+            - name: 以递归方式设置 ACL
+              href: recursive-access-control-lists.md
         - name: 查询
           items:
             - name: 使用“查询加速”筛选数据

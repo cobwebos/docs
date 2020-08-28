@@ -43,7 +43,7 @@
           href: plan-an-application-integration.md
         - name: 规划库中未列出的应用
           href: non-gallery-apps.md
-        - name: 规划访问面板部署
+        - name: 计划“我的应用”部署
           href: access-panel-deployment-plan.md
         - name: 开发人员指南
           href: developer-guidance-for-integrating-applications.md

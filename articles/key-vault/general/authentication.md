@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589976"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930853"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
 
@@ -112,14 +112,9 @@ Azure Key Vault 是一个机密管理解决方案，你可以使用该解决方�
 1. 创建证书
 
     * 选项 1：使用 [OpenSSL](https://www.openssl.org/) 创建证书（仅出于测试目的，请不要在生产中使用自签名证书）
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * 选项 2：使用密钥保管库创建证书。 [在 Azure Key Vault 中创建证书](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. 下载 PEM 格式的证书
+1. 下载 PEM/PFX 格式的证书
 1. 登录到 Azure 门户，然后导航到 Azure Active Directory
 1. 单击“应用注册”
 1. 选择在第 1 部分中创建的服务主体。

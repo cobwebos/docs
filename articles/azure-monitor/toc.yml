@@ -210,33 +210,13 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: 工作区
-          items:
-            - name: 设计工作区部署
-              href: platform/design-logs-deployment.md
-            - name: 创建工作区
-              items:
-                - name: 使用 Azure 门户
-                  href: learn/quick-create-workspace.md
-                - name: 使用 Azure CLI
-                  href: learn/quick-create-workspace-cli.md
-                - name: 使用 PowerShell
-                  href: platform/powershell-workspace-configuration.md
-                - name: 使用 Resource Manager 模板
-                  href: platform/template-workspace-configuration.md
-            - name: 删除和恢复工作区
-              href: platform/delete-workspace.md
-            - name: 移动工作区
-              href: platform/move-workspace.md
-            - name: 适用于服务提供商的设计
-              href: platform/service-providers.md
-            - name: 管理访问权限
-              href: platform/manage-access.md
         - name: 日志查询概述
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
         - name: 简单日志体验
           href: log-query/simple-logs.md
+        - name: 审核日志查询
+          href: log-query/query-audit.md
         - name: 教程
           items:
             - name: Log Analytics 教程
@@ -315,6 +295,26 @@
               href: log-query/query-optimization.md
             - name: 分析文本数据
               href: log-query/parse-text.md
+        - name: 工作区
+          items:
+            - name: 设计工作区部署
+              href: platform/design-logs-deployment.md
+            - name: 创建工作区
+              items:
+                - name: 使用 Azure 门户
+                  href: learn/quick-create-workspace.md
+                - name: 使用 Azure CLI
+                  href: learn/quick-create-workspace-cli.md
+                - name: 使用 PowerShell
+                  href: platform/powershell-workspace-configuration.md
+            - name: 删除和恢复工作区
+              href: platform/delete-workspace.md
+            - name: 移动工作区
+              href: platform/move-workspace.md
+            - name: 适用于服务提供商的设计
+              href: platform/service-providers.md
+            - name: 管理访问权限
+              href: platform/manage-access.md
     - name: 指标资源管理器
       items:
         - name: 指标资源管理器入门
@@ -462,7 +462,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -1132,24 +1132,28 @@
           href: platform/workbooks-visualizations.md
         - name: 数据源
           href: platform/workbooks-data-sources.md
-        - name: 使用 Azure 资源管理器进行部署
-          href: platform/workbooks-automate.md
+        - name: 参数
+          items:
+            - name: 参数摘要
+              href: platform/workbooks-parameters.md
+            - name: 下拉参数
+              href: platform/workbooks-dropdowns.md
+            - name: 交互式参数
+              href: platform/workbooks-interactive.md
+            - name: 时间参数
+              href: platform/workbooks-time.md
+            - name: 文本参数
+              href: platform/workbooks-text.md
         - name: 配置
           items:
             - name: 访问控制
               href: platform/workbooks-access-control.md
-            - name: 参数
-              items:
-                - name: 参数摘要
-                  href: platform/workbooks-parameters.md
-                - name: 下拉参数
-                  href: platform/workbooks-dropdowns.md
-                - name: 交互式参数
-                  href: platform/workbooks-interactive.md
-                - name: 时间参数
-                  href: platform/workbooks-time.md
-                - name: 文本参数
-                  href: platform/workbooks-text.md
+            - name: 使用 Azure 资源管理器进行部署
+              href: platform/workbooks-automate.md
+            - name: 将工作簿移动到其他区域
+              href: platform/workbooks-move-region.md
+            - name: 将工作簿模板移动到其他区域
+              href: platform/workbook-templates-move-region.md
         - name: 将视图转换为工作簿
           items:
             - name: 转换概述

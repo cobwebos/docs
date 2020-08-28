@@ -27,13 +27,13 @@
     - name: 发送和接收事件
       items:
         - name: .NET (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python（azure-eventhub 版本 5）
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript（azure/event-hubs 版本 5）
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C（仅发送）
@@ -43,13 +43,9 @@
     - name: 发送和接收事件（旧版本/包）
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python（azure-eventhub 版本 1）
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript（azure/event-hubs 版本 2）
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 捕获事件
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: 使用资源管理器模板启用事件中心捕获
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 5）
-          href: get-started-capture-python-v2.md
-        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 1）
+        - name: 使用 Python 读取捕获的数据
           href: event-hubs-capture-python.md
     - name: 流式传输到用于 Apache Kafka 的事件中心
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md

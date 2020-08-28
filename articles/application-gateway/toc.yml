@@ -4,8 +4,6 @@
   items:
     - name: 关于应用程序网关
       href: overview.md
-    - name: 新增功能
-      href: whats-new.md
 - name: 快速入门
   expanded: true
   items:
@@ -92,7 +90,7 @@
       href: application-gateway-web-app-overview.md
     - name: WebSocket 支持
       href: application-gateway-websocket.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: application-gateway-faq.md
 - name: 操作指南
   items:

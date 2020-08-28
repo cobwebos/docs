@@ -59,6 +59,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks 安全基线
       href: ../../azure-databricks/security-baseline.md
+    - name: Azure DNS 安全基线
+      href: ../../dns/security-baseline.md
     - name: Azure 防火墙安全基线
       href: ../../firewall/security-baseline.md
     - name: Azure Functions 安全基线

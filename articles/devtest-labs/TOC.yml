@@ -8,7 +8,7 @@
       href: lab-services-overview.md
 - name: 快速入门
   items:
-    - name: 创建实验室 - ARM 模板
+    - name: 创建实验室 - 资源管理器模板
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
 - name: 教程
@@ -75,6 +75,8 @@
       items:
         - name: 创建实验室
           href: devtest-lab-create-lab.md
+        - name: 创建已网络隔离的实验室
+          href: network-isolation.md
         - name: 使用资源管理器模板创建或修改实验室
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: 为实验室虚拟机指定资源组

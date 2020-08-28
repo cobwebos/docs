@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: 创建其他订阅
               href: manage/create-subscription.md
+            - name: 以编程方式创建订阅
+              href: manage/programmatically-create-subscription.md
+            - name: 授予访问权限以创建 EA 订阅
+              href: manage/grant-access-to-create-subscription.md
             - name: 导出订阅信息
               href: manage/export-subscriptions.md
             - name: 更改信用卡

@@ -6,6 +6,10 @@
       href: overview.md
     - name: 与上一版本之间的差异
       href: overview-differences.md
+- name: 快速入门
+  items:
+    - name: 浏览示例方案
+      href: quickstart-adt-explorer.md
 - name: 教程
   items:
     - name: 为客户端应用编写代码
@@ -76,6 +80,8 @@
       items:
         - name: 从 IoT 中心引入遥测数据
           href: how-to-ingest-iot-hub-data.md
+        - name: 与逻辑应用集成
+          href: how-to-integrate-logic-apps.md
     - name: 连接输出
       items:
         - name: 管理终结点和路由
@@ -88,8 +94,6 @@
           href: how-to-integrate-maps.md
         - name: 与 Azure 时序见解集成
           href: how-to-integrate-time-series-insights.md
-        - name: 与逻辑应用集成
-          href: how-to-integrate-logic-apps.md
     - name: 疑难解答
       items:
         - name: 查看 Azure Monitor 中的指标

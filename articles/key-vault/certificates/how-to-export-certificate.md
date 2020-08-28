@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 408b507ff23a2a20c5ed6d2fc32fd5dbf5dbab5d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827505"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930887"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>从 Azure Key Vault 中导出证书
 
@@ -36,10 +36,7 @@ ms.locfileid: "88827505"
 - **可导出**：用于创建证书的策略指示密钥可导出。
 - **不可导出**：用于创建证书的策略指示密钥不可导出。 在这种情况下，当以机密的形式进行检索时，私钥不是值的一部分。
 
-Key Vault 支持两种类型的密钥：
-
-- **RSA**：可导出
-- **HSM RSA**：不可导出
+支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM 等（参见[此处](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅与 RSA 和 EC 一起使用。 HSM 密钥不可导出。
 
 有关详细信息，请参阅[关于 Azure Key Vault 证书](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)。
 

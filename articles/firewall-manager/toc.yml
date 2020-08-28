@@ -46,6 +46,8 @@
       href: dns-settings.md
     - name: 部署多个公共 IP - PowerShell
       href: multiple-public-ip-powershell.md
+    - name: 定义规则层次结构
+      href: rule-hierarchy.md
 - name: 参考
   items:
     - name: Azure CLI
