@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903215"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021164"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -137,7 +137,7 @@ ms.locfileid: "87903215"
 
 ### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 启用存储日志记录  
 
- 你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储日志记录，方法是使用 Azure PowerShell cmdlet **AzStorageServiceLoggingProperty**检索当前设置，并使用 cmdlet **AzStorageServiceLoggingProperty**更改当前设置。  
+ 你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储日志记录，方法是使用 Azure PowerShell cmdlet **AzStorageServiceLoggingProperty** 检索当前设置，并使用 cmdlet **AzStorageServiceLoggingProperty** 更改当前设置。  
 
  控制存储日志记录的 cmdlet 使用 LoggingOperations 参数，该参数是一个字符串，包含要记录的请求类型的逗号分隔列表。 三种可能的请求类型是“读取”、“写入”和“删除”  。 要关闭日志记录，请对 LoggingOperations 参数使用值“无” 。  
 

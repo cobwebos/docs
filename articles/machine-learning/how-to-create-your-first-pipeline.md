@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: feaba9616c524cf72a21785643f746123dc74757
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ddf4336015ad172cdf13e224b10ca2536e8f6a25
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927674"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018070"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -53,12 +53,13 @@ ws = Workspace.from_config()
 
 * 设置一个数据存储，用于访问管道步骤中所需的数据。
 
-* 配置 `Dataset` 对象，使之指向驻留在数据存储中的或可在数据存储中访问的持久性数据。 为在 `OutputFileDatasetConfig` 管道步骤之间传递的临时数据配置对象或创建输出。     * 将 `Dataset` 对象配置为指向驻留在数据存储中或可在其中访问的持久性数据。 为在管道步骤间传递的临时数据配置 `PipelineData` 对象。 
-> [!NOTE]   
->`OutputFileDatasetConfig`类是一个试验性预览功能，随时可能会更改。    
->   
->有关详细信息，请参阅 https://aka.ms/azuremlexperimental。
+* 配置 `Dataset` 对象，使之指向驻留在数据存储中的或可在数据存储中访问的持久性数据。 为在管道步骤间传递的临时数据配置 `PipelineData` 对象。 
 
+    > [!TIP]
+    > 公共预览版类中提供了在管道步骤之间传递临时数据的改善体验  `OutputFileDatasetConfig` 。  此类是一个试验性预览功能，随时可能会更改。
+    > 
+    >有关实验功能的详细信息，请参阅 https://aka.ms/azuremlexperimental 。
+    
 * 设置[计算目标](concept-azure-machine-learning-architecture.md#compute-targets)，管道步骤将在其上运行。
 
 ### <a name="set-up-a-datastore"></a>设置数据存储
@@ -81,7 +82,7 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 步骤通常使用数据并生成输出数据。 步骤可以创建数据，例如模型、包含模型和依赖文件的目录，或临时数据。 然后，此数据可供管道中的其他后续步骤使用。 若要详细了解如何将管道连接到数据，请参阅[如何访问数据](how-to-access-data.md)和[如何注册数据集](how-to-create-register-datasets.md)这两篇文章。 
 
-### <a name="configure-data-using-dataset-and-outputfiledatasetconfig-objects"></a>使用 `Dataset` 和 `OutputFileDatasetConfig` 对象配置数据
+### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>用 `Dataset` 和对象配置 `PipelineData` 数据
 
 向管道提供数据的首选方法是使用 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) 对象。 `Dataset` 对象指向驻留在数据存储中的或者可从数据存储或 Web URL 访问的数据。 `Dataset` 类是抽象类，因此，你将创建一个 `FileDataset` 的实例（引用一个或多个文件）或一个 `TabularDataset` 的实例（基于一个或多个包含分隔数据列的文件创建）。
 
@@ -93,18 +94,20 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
-
-中间数据 (或步骤) 的输出由 [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) 对象表示。 `output_data1` 生成为步骤的输出，并用作一个或多个后续步骤的输入。 `OutputFileDatasetConfig` 在步骤之间引入数据依赖项，并在管道中创建隐式执行顺序。 稍后在创建管道步骤时将使用此对象。 中间数据（或步骤输出）由 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象表示。 `output_data1` 生成为步骤的输出，并用作一个或多个后续步骤的输入。 `PipelineData` 在步骤之间引入数据依赖项，并在管道中创建隐式执行顺序。 稍后在创建管道步骤时将使用此对象。
-
-`OutputFileDatasetConfig` 对象返回目录，并且默认情况下将输出写入工作区的默认数据存储。
+中间数据（或步骤输出）由 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象表示。 `output_data1` 生成为步骤的输出，并用作一个或多个后续步骤的输入。 `PipelineData` 在步骤之间引入数据依赖项，并在管道中创建隐式执行顺序。 稍后在创建管道步骤时将使用此对象。
 
 ```python
-from azureml.pipeline.core import OutputFileDatasetConfig
+from azureml.pipeline.core import PipelineData
 
-output_data1 = OutputFileDatasetConfig()
+output_data1 = PipelineData(
+    "output_data1",
+    datastore=def_blob_store,
+    output_name="output_data1")
+
 ```
 
-有关使用数据集和 OutputFileConfig 对象的更多详细信息和示例代码，请将 [数据移入和移入 ML 管道步骤 (Python) ](how-to-move-data-in-out-of-pipelines.md)。
+> [!TIP]
+> 还可以通过公共预览版类将中间数据保存在管道步骤之间 `OutputFileDatasetConfig` 。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
 
 ## <a name="set-up-a-compute-target"></a>设置计算目标
 
@@ -181,10 +184,8 @@ else:
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
-
 dataprep_source_dir = "./dataprep_src"
 entry_point = "prepare.py"
-
 # `my_dataset` as defined above
 ds_input = my_dataset.as_named_input('input1')
 
@@ -193,6 +194,8 @@ data_prep_step = PythonScriptStep(
     script_name=entry_point,
     source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
+    outputs=[output_data1],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
@@ -201,7 +204,7 @@ data_prep_step = PythonScriptStep(
 
 上面的代码演示了一个典型的初始管道步骤。 在此示例的目录) 中，你的数据准备代码位于子目录中 (`"prepare.py"` `"./dataprep.src"` 。 作为管道创建过程的一部分，此目录被压缩并上传到， `compute_target` 该步骤会运行指定为的值的脚本 `script_name` 。
 
-`arguments`值指定步骤的输入和输出。 在上面的示例中，基线数据是 `my_dataset` 数据集。 将相应的数据下载到计算资源，因为代码将其指定为 `as_download()` 。 该脚本 `prepare.py` 执行任何适合手头任务的数据转换任务，并将数据输出到 `output_data1` 类型为的 `OutputFileDatasetConfig` 。 有关详细信息，请参阅将 [数据移入和移入 ML 管道步骤 (Python) ](how-to-move-data-in-out-of-pipelines.md)。 
+`arguments`、 `inputs` 和 `outputs` 值指定步骤的输入和输出。 在上面的示例中，基线数据是 `my_dataset` 数据集。 将相应的数据下载到计算资源，因为代码将其指定为 `as_download()` 。 该脚本 `prepare.py` 执行任何适合手头任务的数据转换任务，并将数据输出到 `output_data1` 类型为的 `PipelineData` 。 有关详细信息，请参阅将 [数据移入和移入 ML 管道步骤 (Python) ](how-to-move-data-in-out-of-pipelines.md)。 
 
 步骤将使用配置在定义的计算机上运行 `compute_target` `aml_run_config` 。 
 
@@ -213,9 +216,11 @@ data_prep_step = PythonScriptStep(
 train_source_dir = "./train_src"
 train_entry_point = "train.py"
 
-training_results = OutputFileDatasetConfig(name = "training_results", 
-                                           destination=def_blob_store)
+training_results = PipelineData(name = "training_results", 
+                                datastore=def_blob_store,
+                                output_name="training_results")
 
+    
 train_step = PythonScriptStep(
     script_name=train_entry_point,
     source_directory=train_source_dir,
@@ -226,7 +231,11 @@ train_step = PythonScriptStep(
 )
 ```
 
-上面的代码与数据准备步骤中的代码非常相似。 训练代码位于与数据准备代码不同的目录中。 `OutputFileDatasetConfig`数据准备步骤的输出 `output_data1` 将用作定型步骤的_输入_。 创建一个新的 `OutputFileDatasetConfig` 对象， `training_results` 用于保存后续比较或部署步骤的结果。 
+上面的代码与数据准备步骤中的代码非常相似。 训练代码位于与数据准备代码不同的目录中。 `PipelineData`数据准备步骤的输出 `output_data1` 将用作定型步骤的_输入_。 创建一个新的 `PipelineData` 对象， `training_results` 用于保存后续比较或部署步骤的结果。 
+
+
+> [!TIP]
+> 为了获得更好的体验，并能够在管道运行结束时将中间数据写回到数据存储，请使用公共预览类 `OutputFileDatasetConfig` 。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
 
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
@@ -245,10 +254,12 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>使用数据集 
 
-从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集可以用作任何管道步骤的输入。 你可以将输出写入到 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)、 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)，如果要将数据写入特定数据存储，请使用 [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)。 
+从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集可以用作任何管道步骤的输入。 可以将输出写入 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)、[DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)，如果要将数据写入特定数据存储，请使用 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)。 
 
 > [!IMPORTANT]
-> `OutputFileDatasetConfig`仅 Azure Blob、Azure 文件共享、ADLS 第1代和 ADLS gen 2 数据存储支持将输出数据写入到使用的数据存储。 目前 [ADLS Gen 2 数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py)不支持此功能。
+> 仅 Azure Blob 和 Azure 文件共享数据存储支持使用 PipelineData 将输出数据写回到数据存储。 
+>
+> 若要将输出数据写入 Azure Blob，Azure 文件共享，ADLS 第1代和 ADLS Gen 2 数据存储使用公共预览类 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py) 。
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -319,7 +330,8 @@ pipeline_run1.wait_for_completion()
 * 将项目快照从与工作区关联的 Blob 存储下载到计算目标。
 * 生成对应于管道中每个步骤的 Docker 映像。
 * 将每个步骤的 Docker 映像从容器注册表下载到计算目标。
-* 配置对 `Dataset` 和 `OutputFileDatasetConfig` 对象的访问权限。 对于 `as_mount()` 访问模式，熔断器用于提供虚拟访问。 如果不支持装载，或者用户将访问权限指定为 `as_download()`，则改为将数据复制到计算目标。
+* 配置对 `Dataset` 和 `PipelineData` 对象的访问权限。 在 `as_mount()` 访问模式下，FUSE 用于提供虚拟访问。 如果不支持装载，或者用户将访问权限指定为 `as_download()`，则改为将数据复制到计算目标。
+
 * 运行在步骤定义中指定的计算目标中的步骤。 
 * 创建项目，例如日志、stdout 和 stderr、指标以及步骤指定的输出。 然后上传这些项目并将其保存在用户的默认数据存储中。
 

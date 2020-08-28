@@ -3,12 +3,13 @@ title: 在 Linux 中调试 Azure Service Fabric 应用
 description: 了解如何在本地 Linux 开发计算机上监视和诊断 Service Fabric 服务。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 523cb0d1a8e8f322c1936f1fe52a954399b2acc5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247551"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999761"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>在本地 Linux 计算机开发设置中监视和诊断服务
 

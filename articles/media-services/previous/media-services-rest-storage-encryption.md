@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79f85473f4eb1839a283ce4fc0d3311defaa741e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439606"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999617"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容 
 
@@ -111,7 +112,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
 
     对于存储空间加密，应在请求正文中包括以下属性。
 
-    请求正文属性    | 描述
+    请求正文属性    | 说明
     ---|---
     ID | 使用以下格式生成 ContentKey ID：“nb:kid:UUID:\<NEW GUID>”。
     ContentKeyType | 内容密钥类型是一个整数，用于定义密钥。 存储加密格式的值为 1。
@@ -199,7 +200,7 @@ Date: Thu, 05 Feb 2015 07:52:30 GMT
 
 创建内容密钥时必须设置的值之一是内容密钥类型。 使用存储加密时，该值应设置为“1”。 
 
-下面的示例演示如何创建**ContentKey** ，并将**ContentKeyType**设置为存储加密（"1"），并将**ProtectionKeyType**设置为 "0"，以指示保护密钥 ID 是 x.509 证书指纹。  
+下面的示例演示如何创建一个 **ContentKey** ，其中 **ContentKeyType** 设置为存储加密 ( "1 ) "，将 **ProtectionKeyType** 设置为 "0"，以指示保护密钥 ID 是 x.509 证书指纹。  
 
 请求
 

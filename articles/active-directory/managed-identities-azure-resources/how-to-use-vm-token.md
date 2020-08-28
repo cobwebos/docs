@@ -3,7 +3,7 @@ title: 使用虚拟机上的托管标识获取访问令牌 - Azure AD
 description: 在虚拟机上使用 Azure 资源的托管标识获取 OAuth 访问令牌的分步说明和示例。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608375"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016132"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -47,7 +47,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 客户端应用程序可以请求 Azure 资源的托管标识的[仅限应用的访问令牌](../develop/developer-glossary.md#access-token)用于访问给定的资源。 令牌[基于 Azure 资源的托管标识服务主体](overview.md#managed-identity-types)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/v2-oauth2-client-creds-grant-flow.md)中用作持有者令牌。
 
-| 链接 | 描述 |
+| 链接 | 说明 |
 | -------------- | -------------------- |
 | [使用 HTTP 获取令牌](#get-a-token-using-http) | Azure 资源的托管标识令牌终结点的协议详细信息 |
 | [使用用于 .NET 的 Microsoft.Azure.Services.AppAuthentication 库获取令牌](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | 从 .NET 客户端使用 Microsoft.Azure.Services.AppAuthentication 库的示例
@@ -64,7 +64,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 用于获取访问令牌的基本接口基于 REST，因此，在 VM 上运行的、可发出 HTTP REST 调用的任何客户端应用程序都可以访问该接口。 此接口类似于 Azure AD 编程模型，不同的是，客户端使用虚拟机上的终结点（而不是使用 Azure AD 终结点）。
 
-使用 Azure 实例元数据服务 (IMDS) 终结点（推荐使用）  的示例请求：
+使用 Azure 实例元数据服务 (IMDS) 终结点（推荐使用）的示例请求：
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `mi_res_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 mi_res_id（Azure 资源 ID）。 如果 VM 有用户分配的多个托管标识，则为必需的。 |
 
-使用 Azure 资源托管标识 VM 扩展终结点（计划于 2019 年 1 月弃用）  的示例请求：
+使用 Azure 资源托管标识 VM 扩展终结点（计划于 2019 年 1 月弃用）的示例请求：
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | 未由 Azure 资源的托管标识使用。 |
@@ -373,15 +373,15 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 | 状态代码 | 错误 | 错误说明 | 解决方案 |
 | ----------- | ----- | ----------------- | -------- |
-| 400 错误的请求 | invalid_resource | AADSTS50001：在 *\<URI\>* 名为的租户中找不到名为的应用程序 *\<TENANT-ID\>* 。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。\ | （仅限 Linux） |
+| 400 错误的请求 | invalid_resource | AADSTS50001：在名为 \<TENANT-ID\> 的租户中找不到名为 \<URI\> 的应用程序 。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。\ | （仅限 Linux） |
 | 400 错误的请求 | bad_request_102 | 未指定必需的元数据标头 | 请求中缺少 `Metadata` 请求标头字段，或者该字段的格式不正确。 必须将该值指定为 `true`（全小写）。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
-| 401 未授权 | unknown_source | 未知源*\<URI\>* | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://localhost:50342/oauth2/token`。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
+| 401 未授权 | unknown_source | 未知源 \<URI\> | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://localhost:50342/oauth2/token`。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
 |           | invalid_request | 请求中缺少必需的参数、包含无效的参数值、多次包含某个参数，或格式不正确。 |  |
 |           | unauthorized_client | 客户端无权使用此方法请求访问令牌。 | 此错误是由于某个请求未使用本地环回来调用扩展导致的，或者是由于发出请求的 VM 没有为 Azure 资源正确配置托管标识导致的。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。 |
 |           | access_denied | 资源所有者或授权服务器拒绝了请求。 |  |
 |           | unsupported_response_type | 授权服务器不支持使用此方法获取访问令牌。 |  |
 |           | invalid_scope | 请求的范围无效、未知或格式不正确。 |  |
-| 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅中的日志*\<file path\>* | 验证是否在 VM 上启用了 Azure 资源的托管标识。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅前面 REST 部分中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](services-support-msi.md)。
+| 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅 \<file path\> 中的日志 | 验证是否在 VM 上启用了 Azure 资源的托管标识。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅前面 REST 部分中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](services-support-msi.md)。
 
 ## <a name="retry-guidance"></a>重试指南 
 

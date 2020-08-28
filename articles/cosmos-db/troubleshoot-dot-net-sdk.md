@@ -8,12 +8,13 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290914"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021895"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 
@@ -49,28 +50,28 @@ ms.locfileid: "87290914"
 * 由于客户端计算机上的资源不足，你可能会遇到连接/可用性问题。 我们建议监视运行 Azure Cosmos DB 客户端的节点上的 CPU 利用率，如果这些节点的负载较大，请纵向/横向扩展节点。
 
 ### <a name="check-the-portal-metrics"></a>检查门户指标
-检查[门户指标](monitor-accounts.md)有助于确定问题是否与客户端相关，或者服务是否有问题。 例如，如果指标包含较高速率-受限请求（HTTP 状态代码429），这意味着请求受到限制，则检查 "[请求速率太大](troubleshoot-request-rate-too-large.md)" 部分。 
+检查[门户指标](monitor-accounts.md)有助于确定问题是否与客户端相关，或者服务是否有问题。 例如，如果指标中包含较高比率的速率受限请求（HTTP 状态代码 429，表示请求受到限制），请查看[请求速率过大](troubleshoot-request-rate-too-large.md)部分。 
 
-## <a name="common-error-status-codes"></a>常见错误状态代码<a id="error-codes"></a>
+## <a name="common-error-status-codes"></a>常见错误状态代码 <a id="error-codes"></a>
 
 | 状态代码 | 说明 | 
 |----------|-------------|
-| 400 | 错误的请求（取决于错误消息）| 
-| 401 | [未经授权](troubleshoot-unauthorized.md) | 
+| 400 | 错误请求（取决于错误消息）| 
+| 401 | [未授权](troubleshoot-unauthorized.md) | 
 | 404 | [找不到资源](troubleshoot-not-found.md) |
-| 408 | [请求超时](troubleshoot-dot-net-sdk-request-timeout.md) |
-| 409 | 如果为写入操作中的资源提供的 ID 已被现有资源占用，则冲突失败。 使用资源的另一个 ID 来解决此问题，因为 ID 在具有相同分区键值的所有文档中必须是唯一的。 |
-| 410 | 消失异常（不应违反 SLA 的暂时性故障） |
-| 412 | 前置条件失败是指操作指定的 eTag 与服务器上可用的版本不同。 它是开放式并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
+| 408 | [请求已超时](troubleshoot-dot-net-sdk-request-timeout.md) |
+| 409 | 冲突失败是指为写入操作中的资源提供的 ID 已被现有资源使用。 对资源使用另一个 ID 可解决此问题，因为 ID 在具有相同分区键值的所有文档中必须唯一。 |
+| 410 | 消失异常（不应违反 SLA 的瞬间失败） |
+| 412 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是乐观并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
 | 413 | [请求实体太大](concepts-limits.md#per-item-limits) |
 | 429 | [请求过多](troubleshoot-request-rate-too-large.md) |
-| 449 | 仅在写入操作时发生的暂时性错误，可安全重试 |
-| 500 | 由于意外的服务错误，操作失败。 联系支持人员。 请参阅归档[Azure 支持问题](https://aka.ms/azure-support)。 |
+| 449 | 仅在进行写入操作时才发生的暂时性错误，可安全重试 |
+| 500 | 操作由于意外服务错误而失败。 联系支持人员。 请参阅“申报 [Azure 支持问题](https://aka.ms/azure-support)”。 |
 | 503 | [服务不可用](troubleshoot-service-unavailable.md) | 
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
-如果应用部署在[没有公共 IP 地址的 Azure 虚拟机](../load-balancer/load-balancer-outbound-connections.md)上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)将与 VM 外部的任何终结点建立连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。 这种情况可能会导致连接限制、连接关闭或上述[请求超时](troubleshoot-dot-net-sdk-request-timeout.md)。
+如果应用部署在[没有公共 IP 地址的 Azure 虚拟机](../load-balancer/load-balancer-outbound-connections.md)上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。 这种情况可能会导致连接限制、连接关闭或上述[请求超时](troubleshoot-dot-net-sdk-request-timeout.md)。
 
  仅当 VM 具有专用 IP 地址且连接到公共 IP 地址时，才会使用 Azure SNAT 端口。 有两种解决方法可以避免 Azure SNAT 限制（前提是已在整个应用程序中使用单个客户端实例）：
 
@@ -80,7 +81,7 @@ ms.locfileid: "87290914"
 * [将公共 IP 分配给 Azure VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)。
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>高网络延迟
-可以使用 V2 SDK 中的[诊断字符串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet)或 V3 SDK 中的[诊断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)来识别高网络延迟。
+可以使用 V2 SDK 中的 [diagnosticsstring](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) 或 V3 SDK 中的 [diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) 来识别网络延迟过高的情况。
 
 如果未发生[超时](troubleshoot-dot-net-sdk-request-timeout.md)，并且诊断根据 `ResponseTime` 和 `RequestStartTime`之差显示单个请求的延迟明显较高（在本示例中超过 300 毫秒），如下所示：
 
@@ -105,7 +106,7 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[.Net V3](performance-tips-dotnet-sdk-v3-sql.md)和[.Net V2](performance-tips.md)的性能准则
+* 了解 [.NET V3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.NET V2](performance-tips.md) 的性能准则
 * 了解[基于 Reactor 的 Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
 
  <!--Anchors-->

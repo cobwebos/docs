@@ -5,21 +5,21 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447688"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003348"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
 本文讨论在计算机上部署更新管理功能时可能遇到的问题。 对于混合 Runbook 辅助角色代理，可使用代理故障排除程序来确定底层问题。 若要了解有关故障排除程序的详细信息，请参阅[排查 Windows 更新代理问题](update-agent-issues.md)和[排查 Linux 更新代理问题](update-agent-issues-linux.md)。 有关其他功能部署问题，请参阅[排查功能部署问题](onboarding.md)。
 
 >[!NOTE]
->如果在 Windows 计算机上部署更新管理时遇到问题，请打开 Windows 事件查看器，然后在本地计算机上的**应用程序和服务日志**下检查**Operations Manager**事件日志。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
+>如果在 Windows 计算机上部署更新管理功能时遇到问题，请打开 Windows 事件查看器，查看本地计算机上“应用程序和服务日志”下的 Operations Manager 事件日志 。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>方案：收到“未能启用更新解决方案”错误
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>场景：收到“无法启用更新解决方案”错误
 
 ### <a name="issue"></a>问题
 
@@ -45,7 +45,7 @@ Error details: Failed to enable the Update solution
 
 * 转到[网络配置](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理功能正常工作。  
 
-* 检查作用域配置问题。 [作用域配置](../update-management/update-mgmt-scope-configuration.md)决定为更新管理配置哪些计算机。 如果计算机显示在工作区中，但未显示在更新管理中，则必须将作用域配置设置为以计算机为目标。 若要了解作用域配置，请参阅[在工作区中启用计算机](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
+* 检查作用域配置问题。 [作用域配置](../update-management/update-mgmt-scope-configuration.md)决定为更新管理配置哪些计算机。 如果计算机显示在工作区中但未显示在“更新管理”中，则必须将范围配置设置为将该计算机作为目标。 若要了解作用域配置，请参阅[在工作区中启用计算机](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
 
 * 按照[从本地 Windows 计算机删除混合 Runbook 辅助角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[从本地 Linux 计算机删除混合 Runbook 辅助角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步骤删除辅助角色配置。
 
@@ -69,7 +69,7 @@ Error details: Failed to enable the Update solution
 
 3. 请将该更新标记为“已拒绝”，除非对更新有疑问。 
 
-4. 选择“计算机”，然后在“合规性”列中，强制执行重新扫描，以检查合规性 。 请参阅[管理 vm 的更新](../update-management/update-mgmt-manage-updates-for-vm.md)。
+4. 选择“计算机”，然后在“合规性”列中，强制执行重新扫描，以检查合规性 。 请参阅[管理 VM 的更新](../update-management/update-mgmt-manage-updates-for-vm.md)。
 
 5. 对于其他被取代的更新，请重复上述步骤。
 
@@ -103,7 +103,7 @@ Error details: Failed to enable the Update solution
 
 1. 根据操作系统，运行适用于 [Windows](update-agent-issues.md#troubleshoot-offline) 或 [Linux](update-agent-issues-linux.md#troubleshoot-offline) 的故障排除程序。
 
-2. 请确保你的计算机向正确的工作区报告。 有关如何验证此方面的指南，请参阅[验证代理与 Log Analytics 的连接](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
+2. 请确保你的计算机向正确的工作区报告。 有关如何验证此方面的指导，请参阅 [验证代理与 Azure Monitor 的连接](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor)。 此外，请确保此工作区已链接到 Azure 自动化帐户。 若要进行验证，请转到自动化帐户，选择“相关资源”下的“链接的工作区” 。
 
 3. 确保链接到自动化帐户的 Log Analytics 工作区中显示计算机。 在 Log Analytics 工作区中运行以下查询。
 
@@ -387,7 +387,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * 计算机已关闭且无法访问。
 * 计算机存在网络连接问题，因此无法访问计算机上的混合辅助角色。
 * 某个 MMA 更新更改了源计算机的 ID。
-* 如果在自动化帐户中达到了200并发作业的限制，则会限制更新运行。 每个部署均视为一项作业，更新部署中的每台计算机均计为一个作业。 自动化帐户中当前运行的其他任何自动化作业或更新部署均计入并发作业，受其数量限制的约束。
+* 如果在自动化帐户中达到了 200 个并发作业的限制，则更新运行会受到限制。 每个部署均视为一项作业，更新部署中的每台计算机均计为一个作业。 自动化帐户中当前运行的其他任何自动化作业或更新部署均计入并发作业，受其数量限制的约束。
 
 ### <a name="resolution"></a>解决方法
 

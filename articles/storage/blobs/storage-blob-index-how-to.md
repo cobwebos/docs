@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500379"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018869"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储上的数据
 
@@ -22,7 +23,7 @@ Blob 索引标记使用键/值标记特性对存储帐户中的数据进行分�
 若要详细了解 Blob 索引，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 > [!NOTE]
-> Blob 索引处于公共预览阶段，可在**加拿大中部**、**加拿大东部**、**法国中部**和**法国南部**地区使用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
+> Blob 索引处于公共预览阶段，可在 **加拿大中部**、 **加拿大东部**、 **法国中部** 和 **法国南部** 地区使用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 # <a name="portal"></a>[门户](#tab/azure-portal)
@@ -32,7 +33,7 @@ Blob 索引标记使用键/值标记特性对存储帐户中的数据进行分�
 # <a name="net"></a>[.NET](#tab/net)
 由于 Blob 索引为公共预览版，因此将在预览版 NuGet 源中发布 .NET 存储包。 从现在到正式发布之前的这段时间内，此库可能会更改。 
 
-1. 将 Visual Studio 项目设置为开始处理适用于 .NET 的 Azure Blob 存储客户端库 v12。 若要了解详细信息，请参阅[.Net 快速入门](storage-quickstart-blobs-dotnet.md)
+1. 将 Visual Studio 项目设置为开始处理适用于 .NET 的 Azure Blob 存储客户端库 v12。 若要了解详细信息，请参阅 [.Net 快速入门](storage-quickstart-blobs-dotnet.md)
 
 2. 在 NuGet 包管理器中，找到 "12.5.0" 包，并安装**项目的版本**" **12.5.0-preview.6** " 或更高版本。 还可以运行 ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` 命令
 

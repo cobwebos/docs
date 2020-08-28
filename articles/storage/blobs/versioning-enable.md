@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067267"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001053"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>启用和管理 blob 版本控制 (预览) 
 
@@ -22,7 +23,7 @@ ms.locfileid: "88067267"
 
 本文介绍如何使用 Azure 门户或 Azure 资源管理器模板启用或禁用存储帐户的 blob 版本控制。
 
-启用 blob 版本控制之前，必须注册预览。 若要了解有关 blob 版本控制的详细信息（包括如何注册预览版），请参阅[blob 版本控制 (预览) ](versioning-overview.md)。
+启用 blob 版本控制之前，必须注册预览。 若要了解有关 blob 版本控制的详细信息（包括如何注册预览版），请参阅 [blob 版本控制 (预览) ](versioning-overview.md)。
 
 ## <a name="enable-blob-versioning"></a>启用 Blob 版本控制
 
@@ -31,21 +32,21 @@ ms.locfileid: "88067267"
 在 Azure 门户中启用 blob 版本控制：
 
 1. 导航到门户中的存储帐户。
-1. 在 " **Blob 服务**" 下，选择 "**数据保护**"。
-1. 在 "**版本控制**" 部分，选择 "**已启用**"。
+1. 在 " **Blob 服务**" 下，选择 " **数据保护**"。
+1. 在 " **版本控制** " 部分，选择 " **已启用**"。
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="显示如何在 Azure 门户中启用 blob 版本控制的屏幕截图":::
 
 # <a name="template"></a>[模板](#tab/template)
 
-若要启用具有模板的 blob 版本控制，请创建一个模板，并将**IsVersioningEnabled**属性**设置为 true**。 以下步骤介绍如何在 Azure 门户中创建模板。
+若要启用具有模板的 blob 版本控制，请创建一个模板，并将 **IsVersioningEnabled** 属性 **设置为 true**。 以下步骤介绍如何在 Azure 门户中创建模板。
 
 1. 在 Azure 门户中，选择“创建资源”。
 1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。 
-1. 选择 "**模板部署**"，选择 "**创建**"，然后选择 **"在编辑器中生成自己的模板"**。
+1. 选择 " **模板部署**"，选择 " **创建**"，然后选择 **"在编辑器中生成自己的模板"**。
 1. 在模板编辑器中，粘贴以下 JSON。 将 `<accountName>` 占位符替换为存储帐户的名称。
 1. 保存模板。
-1. 指定帐户的资源组，然后选择 "**购买**" 按钮部署模板并启用 blob 版本控制。
+1. 指定帐户的资源组，然后选择 " **购买** " 按钮部署模板并启用 blob 版本控制。
 
     ```json
     {
@@ -66,13 +67,13 @@ ms.locfileid: "88067267"
     }
     ```
 
-有关 Azure 门户中的模板部署资源的详细信息，请参阅[部署具有 Azure 门户的资源](../../azure-resource-manager/templates/deploy-portal.md)。
+有关 Azure 门户中的模板部署资源的详细信息，请参阅 [部署具有 Azure 门户的资源](../../azure-resource-manager/templates/deploy-portal.md)。
 
 ---
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以触发新版本
 
-下面的代码示例演示如何使用适用于 .NET 的 Azure 存储客户端库（版本[12.5.0](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) ）或更高版本触发创建新版本。 运行此示例之前，请确保已为存储帐户启用了版本控制。
+下面的代码示例演示如何使用适用于 .NET 的 Azure 存储客户端库（版本 [12.5.0](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) ）或更高版本触发创建新版本。 运行此示例之前，请确保已为存储帐户启用了版本控制。
 
 该示例创建一个块 blob，然后更新该 blob 的元数据。 更新 blob 的元数据会触发新版本的创建。 该示例将检索初始版本和当前版本，并显示只有当前版本包括元数据。
 

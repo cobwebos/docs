@@ -3,12 +3,12 @@ title: Azure 备份的软删除
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 921d04c530695ee8909fb17b216029849c4fc4a2
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a23d9d1e2ceeb767784490ba65542a5e91b6785b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892467"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004912"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
@@ -164,7 +164,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何针对软删除的资源再次触发计划的备份？
 
-先取消删除，然后执行恢复操作，即可再次保护资源。 恢复操作将关联某个备份策略，以触发具有选定保持期的计划备份。 此外，在恢复操作完成后，垃圾回收器会立即运行。 若要从超出到期日期的恢复点执行还原，建议在触发恢复操作之前执行此还原操作。
+先取消删除，然后执行恢复操作，即可再次保护资源。 恢复操作将关联某个备份策略，以触发具有选定保持期的计划备份。 此外，在恢复操作完成后，垃圾回收器会立即运行。 如果要从超过其到期日期的恢复点执行还原，则建议在触发恢复操作之前执行还原。
 
 ### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>如果保管库中存在软删除的项，我是否可以删除该保管库？
 
