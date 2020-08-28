@@ -9,12 +9,13 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 0a8eca9e7b3e890b67daf915ffe733dd54ef5896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8fa1e258b07ab98040cbbc5217be789e0bb1b783
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515041"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020127"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 获取存储帐户类型和 SKU 名称
 
@@ -24,9 +25,9 @@ ms.locfileid: "85515041"
 
 ## <a name="about-account-type-and-sku-name"></a>关于帐户类型和 SKU 名称
 
-**帐户类型**：有效的帐户类型包括 `BlobStorage` 、 `BlockBlobStorage` 、、 `FileStorage` `Storage` 和 `StorageV2` 。 [Azure 存储帐户概述](storage-account-overview.md)提供详细信息，包括对各种存储帐户的说明。
+**帐户类型**：有效的帐户类型包括 `BlobStorage`、`BlockBlobStorage`、`FileStorage`、`Storage` 和 `StorageV2`。 [Azure 存储帐户概述](storage-account-overview.md)提供详细信息，包括对各种存储帐户的说明。
 
-**Sku 名称**：有效的 sku 名称包括 `Premium_LRS` 、 `Premium_ZRS` 、、 `Standard_GRS` `Standard_GZRS` 、、、 `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` 和 `Standard_ZRS` 。 SKU 名称区分大小写，并且是[SkuName 类](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)中的字符串字段。
+**Sku 名称**：有效的 sku 名称包括 `Premium_LRS` 、 `Premium_ZRS` 、、 `Standard_GRS` `Standard_GZRS` 、、、 `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` 和 `Standard_ZRS` 。 SKU 名称区分大小写，并且是 [SkuName 类](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)中的字符串字段。
 
 ## <a name="retrieve-account-information"></a>检索帐户信息
 

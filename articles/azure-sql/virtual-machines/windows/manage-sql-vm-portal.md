@@ -12,24 +12,24 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f502183b8240515ee136ce27d99bd4b5d6277c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668995"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010165"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在[Azure 门户](https://portal.azure.com)中， **SQL 虚拟机**（vm）资源是一个独立的管理服务。 可以使用它同时查看所有 SQL Server VM，以及修改专用于 SQL Server 的设置： 
+在 [Azure 门户](https://portal.azure.com)中， [**SQL 虚拟机**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源是一种独立的管理服务，用于在 Azure vm 上管理 SQL Server。 可以使用它同时查看所有 SQL Server VM，以及修改专用于 SQL Server 的设置： 
 
 ![SQL 虚拟机资源](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>备注
 
-- 我们建议在 Azure 中使用 SQL 虚拟机资源来查看和管理 SQL Server VM。 但，SQL 虚拟机资源目前不支持管理[已终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 要管理已终止支持的 SQL Server VM 的设置，请改用已弃用的 [SQL Server 配置选项卡](#access-the-sql-server-configuration-tab)。 
+- 建议使用 [**SQL 虚拟机**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源来查看和管理 Azure 中的 SQL Server vm。 但，SQL 虚拟机资源目前不支持管理[已终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 要管理已终止支持的 SQL Server VM 的设置，请改用已弃用的 [SQL Server 配置选项卡](#access-the-sql-server-configuration-tab)。 
 - SQL 虚拟机资源仅可用于[已向 SQL VM 资源提供程序注册的](sql-vm-resource-provider-register.md) SQL Server VM。 
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "84668995"
    选择你的 SQL Server VM 可打开该 SQL 虚拟机资源： 
 
 
-   ![SQL 虚拟机资源](./media/manage-sql-vm-portal/sql-vm-resource.png)
+   ![查看 SQL 虚拟机资源](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
 > SQL 虚拟机资源用于专用的 SQL Server 设置。 选择“虚拟机”框中的 VM 名称，以打开特定于该 VM 但不专用于 SQL Server 的设置。 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685402"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020348"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -164,7 +164,7 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-- **MMS 代理**：查看支持的 [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)和 [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) 操作系统。
+- **MMS 代理**：查看支持的 [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)和 [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) 操作系统。
 - **依赖关系代理**：支持的 [Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) 操作系统。
 
 ## <a name="visualize-dependencies-for--hour"></a>可视化 > 小时的依赖项

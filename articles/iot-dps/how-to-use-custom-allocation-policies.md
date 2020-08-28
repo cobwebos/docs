@@ -7,12 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453944"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001954"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -51,7 +52,7 @@ ms.locfileid: "75453944"
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>创建预配服务和两个部门 IoT 中心
 
-在本部分中，将使用 Azure Cloud Shell 创建预配服务，并使用两个 IoT 中心来表示**Contoso 烤面包机分部**和**contoso 热度泵**。
+在本部分中，将使用 Azure Cloud Shell 创建预配服务，并使用两个 IoT 中心来表示 **Contoso 烤面包机分部** 和 **contoso 热度泵**。
 
 > [!TIP]
 > 本文中使用的命令在 "美国西部" 位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以通过一个词或多字格式指定位置;例如： westus、美国西部、美国西部等。此值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
@@ -113,7 +114,7 @@ ms.locfileid: "75453944"
 
     **运行时堆栈**：从下拉列表中选择“.NET Core”。 
 
-    **区域**：选择你的资源组所在的同一区域。 此示例使用**美国西部**。
+    **区域**：选择你的资源组所在的同一区域。 此示例使用 **美国西部**。
 
     > [!NOTE]
     > 默认已启用 Application Insights。 本文不需要 Application Insights，但它可以帮助你了解和调查处理自定义分配时遇到的任何问题。 如果需要，可以禁用 Application Insights，方法是选择“监视”选项卡，然后对“启用 Application Insights”选择“否”。   

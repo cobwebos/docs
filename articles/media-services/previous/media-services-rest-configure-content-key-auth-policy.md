@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 43a63a47b5973820bd0cc5376ec0f0e9e54a245d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000595"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010199"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -31,7 +32,7 @@ ms.locfileid: "87000595"
 
 当播放器请求某个流时，媒体服务将使用 AES 或 PlayReady 加密使用指定的密钥来对内容进行动态加密。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持简单 web 令牌（[SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)）和 JSON web 令牌（JWT）格式的令牌。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持简单 web 令牌中的令牌 ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) ，以及 JSON web 令牌 (JWT) 格式。
 
 媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
@@ -53,7 +54,7 @@ ms.locfileid: "87000595"
 > [!NOTE]
 > 使用媒体服务 REST API 时，需注意以下事项。
 > 
-> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[Media Services REST API 开发的设置](media-services-rest-how-to-use.md)。
+> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅 [Media Services REST API 开发的设置](media-services-rest-how-to-use.md)。
 > 
 > 
 > 
@@ -305,7 +306,7 @@ Date: Tue, 10 Feb 2015 09:10:37 GMT
 ## <a name="playready-dynamic-encryption"></a>PlayReady 动态加密
 可以使用媒体服务配置相应的权限和限制，这样当用户尝试播放受保护的内容时，PlayReady DRM 运行时就会强制实施这些权限和限制。 
 
-使用 PlayReady 保护内容时，需要在授权策略中指定的一项内容是定义[PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 
+使用 PlayReady 保护内容时，需要在授权策略中指定的一项内容是定义 [PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 
 
 ### <a name="open-restriction"></a>开放限制
 开放限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。

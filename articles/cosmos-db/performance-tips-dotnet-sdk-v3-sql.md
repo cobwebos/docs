@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 399dec9bbe1fa92836e4a04f995d48de189867eb
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718401"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019923"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -68,7 +69,7 @@ Azure Cosmos DB 是一种快速灵活的分布式数据库，可通过保证的�
 
 客户端连接到 Azure Cosmos DB 的方式对性能有重大影响，尤其是在观察到的客户端延迟方面。 有两个密钥配置设置可用于配置客户端连接策略：连接 *模式* 和连接 *协议*。 两种可用的连接模式为：
 
-   * 直接模式 (默认值) 
+   * 直接模式（默认）
 
      直接模式支持通过 TCP 协议建立连接，如果使用的是 [Cosmos/.Net V3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3)，则这是默认的连接模式。 直接模式提供更好的性能，并且所需的网络跃点数比网关模式更少。
 
@@ -108,7 +109,7 @@ new CosmosClientOptions
 
 **临时端口耗尽**
 
-如果在实例上看到的连接量较高或端口使用率高，请首先验证客户端实例是否单一实例。 换句话说，客户端实例在应用程序的生存期内应是唯一的。
+如果实例上的连接量较高或端口使用率较高，请先确认客户端实例是否为单一实例。 换句话说，客户端实例在应用程序生存期内应是唯一的。
 
 当它在 TCP 协议上运行时，客户端使用长期连接来优化延迟。 这与 HTTPS 协议相反，后者会在两分钟处于非活动状态后终止连接。
 

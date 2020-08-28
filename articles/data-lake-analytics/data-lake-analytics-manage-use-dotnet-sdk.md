@@ -7,12 +7,13 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: 12043ead1c7d59cc3955bb927fabb54278c18bd5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b06530488e74120f3cc511694d290840269db453
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127683"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020059"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>通过 .NET 应用管理 Azure Data Lake Analytics
 
@@ -23,7 +24,7 @@ ms.locfileid: "87127683"
 ## <a name="prerequisites"></a>先决条件
 
 * **安装了 Visual C++ 的 Visual studio 2015、Visual Studio 2013 更新4或 Visual studio 2012**。
-* **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  使用[Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
+* **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
 * **所需的 NuGet 包**
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包

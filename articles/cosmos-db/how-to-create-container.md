@@ -1,22 +1,22 @@
 ---
 title: 在 Azure Cosmos DB 中创建容器
-description: 了解如何使用 Azure 门户、.NET、Java、Python、Node.js 和其他 Sdk 在 Azure Cosmos DB 中创建容器。
+description: 了解如何使用 Azure 门户、.NET、Java、Python、Node.js 和其他 SDK 在 Azure Cosmos DB 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498355"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019991"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
 
-本文介绍使用 Azure 门户、Azure CLI、PowerShell 或受支持的 Sdk 创建 Azure Cosmos 容器（集合、表或图形）的不同方式。 本文演示如何创建容器、指定分区键和预配吞吐量。
+本文介绍如何使用 Azure 门户、Azure CLI、PowerShell 或受支持 SDK 以不同方式来创建 Azure Cosmos 容器（集合、表或图形）。 本文演示如何创建容器、指定分区键和预配吞吐量。
 
 > [!NOTE]
 > 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。
@@ -112,7 +112,7 @@ ms.locfileid: "87498355"
 
 下面的链接说明如何使用 Azure CLI 为 Azure Cosmos DB 创建容器资源。
 
-有关所有 Azure Cosmos DB Api 的所有 Azure CLI 示例的列表，请参阅[Azure Cosmos DB Azure CLI 示例](cli-samples.md)。
+有关所有 Azure Cosmos DB API 的所有 Azure CLI 示例的列表，请参阅 [Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)。
 
 * [使用 Azure CLI 创建容器](manage-with-cli.md#create-a-container)
 * [使用 Azure CLI 为 Azure Cosmos DB for MongoDB API 创建集合](./scripts/cli/mongodb/create.md)
@@ -124,17 +124,17 @@ ms.locfileid: "87498355"
 
 下面的链接说明如何使用 PowerShell 为 Azure Cosmos DB 创建容器资源。
 
-有关所有 Azure Cosmos DB Api 中所有 PowerShell 示例的列表，请参阅[PowerShell 示例](powershell-samples.md)
+有关所有 Azure Cosmos DB API 的所有 PowerShell 示例的列表，请参阅 [PowerShell 示例](powershell-samples.md)
 
 * [使用 PowerShell 创建容器](manage-with-powershell.md#create-container)
-* [使用 PowerShell 为 MongoDB API Azure Cosmos DB 创建集合](./scripts/powershell/mongodb/create.md)
+* [使用 PowerShell 为 Azure Cosmos DB for MongoDB API 创建集合](./scripts/powershell/mongodb/create.md)
 * [使用 PowerShell 创建 Cassandra 表](./scripts/powershell/cassandra/create.md)
 * [使用 PowerShell 创建 Gremlin 图](./scripts/powershell/gremlin/create.md)
 * [使用 PowerShell 创建表 API 表](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>使用 .NET SDK 创建容器
 
-如果在创建集合时遇到超时异常，请执行读取操作来验证是否已成功创建集合。 在成功完成集合创建操作之前，读取操作将引发异常。 有关创建操作支持的状态代码的列表，请参阅 Azure Cosmos DB 文章的[HTTP 状态代码](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
+如果创建集合时遇到超时异常，请执行读取操作来验证是否已成功创建集合。 成功完成集合创建操作之前，读取操作将引发异常。 有关创建操作所支持的状态代码列表，请参阅 [Azure Cosmos DB 的 HTTP 状态代码](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)一文。
 
 ### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL API 和 Gremlin API
 

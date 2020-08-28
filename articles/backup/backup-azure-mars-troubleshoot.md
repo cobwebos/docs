@@ -3,12 +3,12 @@ title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763501"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019617"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -83,7 +83,7 @@ ms.locfileid: "88763501"
 
 ## <a name="backup-jobs-completed-with-warning"></a>备份作业已完成，但出现警告
 
-- 当 MARS 代理在备份过程中循环访问文件和文件夹时，可能会遇到各种情况，这些情况可能会导致备份标记为已完成，但出现警告。 在这些情况下，作业显示为已完成，但出现警告。 这样是可以的，但这意味着至少有一个文件未能备份成功。 即作业跳过了该文件，但备份了数据源中的所有其他相关文件。
+- 当 MARS 代理在备份过程中循环访问文件和文件夹时，可能会遇到各种情况，这些情况可能会导致备份标记为已完成，但出现警告。 在这些情况下，作业显示为已完成，但出现警告。 这很好，但这意味着至少有一个文件无法备份。 即作业跳过了该文件，但备份了数据源中的所有其他相关文件。
 
   ![备份作业已完成，但出现警告](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 

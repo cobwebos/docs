@@ -3,12 +3,12 @@ title: 管理 Azure 恢复服务保管库和服务器
 description: 本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756055"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002124"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -16,7 +16,7 @@ ms.locfileid: "88756055"
 
 ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
-本文的先决条件是：一个 Azure 订阅、一个恢复服务保管库，并且至少为该保管库配置了一个备份项。
+本文的先决条件包括： Azure 订阅、恢复服务保管库以及为保管库配置至少一个备份项。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "88756055"
 
 1. 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 在门户中，选择“所有服务”。
+2. 在门户中，选择“所有服务”。 
 
    ![打开恢复服务保管库列表步骤 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 

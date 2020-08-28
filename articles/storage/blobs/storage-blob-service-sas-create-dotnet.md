@@ -10,12 +10,13 @@ ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034714"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001938"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建服务 SAS
 
@@ -29,7 +30,7 @@ ms.locfileid: "88034714"
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-创建新的[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然后，调用[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)以获取 SAS 令牌字符串。 
+创建新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然后，调用 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以获取 SAS 令牌字符串。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
@@ -85,7 +86,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-创建新的[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然后，调用[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)以获取 SAS 令牌字符串。 
+创建新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然后，调用 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以获取 SAS 令牌字符串。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 

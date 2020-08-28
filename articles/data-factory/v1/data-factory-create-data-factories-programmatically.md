@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023477"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019889"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -445,7 +446,7 @@ ms.locfileid: "87023477"
     }
     ```
 
-15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 "**引用**"，然后单击 "**添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
+15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 " **引用**"，然后单击 " **添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
 15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。 
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9c7a29ebb355a5733201ff01af9e38f371def1cf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2dff01841a97de4a7683f1bf4a0dbb3125b5dbd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962809"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019413"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 发布媒体服务内容  
 > [!div class="op_single_selector"]
@@ -99,11 +100,11 @@ ms.locfileid: "85962809"
 
 输出：
 
-- 使用平滑流式处理协议的客户端流式处理清单的 URL： \
+- 用于使用平滑流式处理协议进行客户端流式处理的清单的 URL：\
   `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
-- 使用 HLS 协议的客户端流式处理清单的 URL： \
+- 用于使用 HLS 协议进行客户端流式处理的清单的 URL：\
   `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
-- 使用 MPEG 短划线协议的客户端流式处理清单的 URL： \
+- 用于使用 MPEG DASH 协议进行客户端流式处理的清单的 URL：\
   `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 > [!NOTE]

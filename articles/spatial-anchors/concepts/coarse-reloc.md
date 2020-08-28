@@ -8,16 +8,17 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202376"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003178"
 ---
 # <a name="coarse-relocalization"></a>粗略重新局部化
 
-粗 relocalization 是提供问题初始答案的一项功能：我的*设备现在的位置/我应该观察哪些内容？* 响应并不精确，但其形式如下：*你接近这些定位点，尝试查找其中一个*。
+粗 relocalization 是提供问题初始答案的一项功能：我的 *设备现在的位置/我应该观察哪些内容？* 响应并不精确，但其形式如下： *你接近这些定位点，尝试查找其中一个*。
 
 通过将各种设备上的传感器读数与创建和查询定位点相关联，来 relocalization。 对于户外方案，传感器数据通常是 (全球定位系统设备的) 位置。 如果 GPS 不可用或不可靠 (如室内) ，则传感器数据包括 WiFi 接入点和范围内的蓝牙信标。 所有收集的传感器数据都有助于维护空间索引。 Azure 空间锚点使用此空间来快速确定设备约100米以内的锚。
 
@@ -122,9 +123,9 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 |                 | 室内 | 室外 |
 |-----------------|---------|----------|
-| **GPS**         | 禁用 | 启用 |
-| **Wlan**        | 启用 |  (可选)  |
-| **BLE 信标** |  (带有注意事项的可选)  | 禁用 |
+| **GPS**         | 关闭 | 启用 |
+| **Wlan**        | 开 |  (可选)  |
+| **BLE 信标** |  (带有注意事项的可选)  | 关 |
 
 ### <a name="enabling-gps"></a>启用 GPS
 
@@ -636,9 +637,9 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 ## <a name="expected-results"></a>预期结果
 
-消费者级 GPS 设备通常非常不精确。 按[Zandenbergen 和 Barbeau (2011) ][6]进行的调查报告，使用辅助 gps 将移动电话的中值的准确性 (gps) 约为7米，要忽略的值非常大！ 为了应对这些测量错误，服务将定位点视为 GPS 空间中的概率分布。 因此，定位点现在是最有可能 (的空间区域，超过95% 的置信度) 包含其真实的未知 GPS 位置。
+消费者级 GPS 设备通常非常不精确。 按 [Zandenbergen 和 Barbeau (2011) ][6] 进行的调查报告，使用辅助 gps 将移动电话的中值的准确性 (gps) 约为7米，要忽略的值非常大！ 为了应对这些测量错误，服务将定位点视为 GPS 空间中的概率分布。 因此，定位点现在是最有可能 (的空间区域，超过95% 的置信度) 包含其真实的未知 GPS 位置。
 
-用 GPS 进行查询时，会应用相同的推理。 设备在其真正的未知 GPS 位置附近表示为另一个空间置信区。 发现附近的定位点可转换为仅查找置信区*近近*于设备置信区的定位点，如下图所示：
+用 GPS 进行查询时，会应用相同的推理。 设备在其真正的未知 GPS 位置附近表示为另一个空间置信区。 发现附近的定位点可转换为仅查找置信区 *近近* 于设备置信区的定位点，如下图所示：
 
 ![选择包含 GPS 的定位点候选项](media/coarse-reloc-gps-separation-distance.png)
 
@@ -658,9 +659,9 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
-| **GPS**         | 空值 | 通过[LocationManager][3] api 支持 (GPS 和网络)  | 通过[CLLocationManager][4] api 支持 |
-| **Wlan**        | 支持，每3秒约扫描一次 | 。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅[Android 文档][5]。 | 不适用-无公共 API |
-| **BLE 信标** | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] |
+| **GPS**         | 不适用 | 通过 [LocationManager][3] api 支持 (GPS 和网络)  | 通过 [CLLocationManager][4] api 支持 |
+| **Wlan**        | 支持，每3秒约扫描一次 | 支持。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅 [Android 文档][5]。 | 不适用-无公共 API |
+| **BLE 信标** | 仅限 [Eddystone][1] 和 [iBeacon][2] | 仅限 [Eddystone][1] 和 [iBeacon][2] | 仅限 [Eddystone][1] 和 [iBeacon][2] |
 
 ## <a name="next-steps"></a>后续步骤
 

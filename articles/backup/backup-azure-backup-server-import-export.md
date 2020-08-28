@@ -3,12 +3,12 @@ title: DPM 和 Azure 备份服务器的脱机备份
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文说明 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890070"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002005"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 备份服务器 (MABS) 的脱机备份工作流
 
@@ -192,7 +192,7 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 
 ### <a name="complete-the-workflow"></a>完成工作流
 
-导入作业完成后，存储帐户中将提供初始备份数据。 在下一次计划备份时，Azure 备份将数据内容从存储帐户复制到恢复服务保管库。
+导入作业完成后，存储帐户中将提供初始备份数据。 下一次运行计划的备份时，Azure 备份会将数据内容从存储帐户复制到恢复服务保管库。
 
 在下一个计划的联机副本创建作业时，Data Protection Manager 会对初始备份复制执行增量备份。
 
