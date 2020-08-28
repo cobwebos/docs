@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495057"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006935"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
 
@@ -20,7 +20,7 @@ ms.locfileid: "87495057"
 
 Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日志，以及其他监视数据。 在 Azure Monitor 日志中，可以使用 Log Analytics 编写和测试日志查询，并以交互方式分析日志数据。 可以可视化和查询日志结果，并配置警报来根据监视的数据采取措施。
 
-对于 Site Recovery，Azure Monitor 日志可帮助你执行以下操作：
+对于 Site Recovery，你可以使用 Azure Monitor 日志来帮助你执行以下操作：
 
 - **监视 Site Recovery 运行状况和状态**。 例如，可以监视复制运行状况、测试故障转移状态、Site Recovery 事件、受保护计算机的恢复点目标 (RPO)，以及磁盘/数据更改率。
 - **为 Site Recovery 设置警报**。 例如，可以针对计算机运行状况、测试故障转移状态或 Site Recovery 作业状态配置警报。
@@ -62,14 +62,14 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 1. 转到 Log Analytics 工作区并单击“高级设置”。
 2. 单击“连接的源”页面，然后选择“Windows Server” 。
 3. 在进程服务器上下载 Windows 代理（64 位）。 
-4. [获取工作区 ID 和密钥](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [获取工作区 ID 和密钥](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [将代理配置为使用 TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. 通过提供获取的工作区 ID 和密钥[完成代理安装](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+6. 通过提供获取的工作区 ID 和密钥[完成代理安装](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 7. 安装完成后，转到 Log Analytics 工作区并单击“高级设置”。 转到“数据”页并单击“Windows 性能计数器” 。 
 8. 单击“+”添加以下两个计数器，采样间隔为 300 秒：
 
-    - ASRAnalytics(*)\SourceVmChurnRate
-    - ASRAnalytics(*)\SourceVmThrpRate
+    - ASRAnalytics ( * ) \SourceVmChurnRate
+    - ASRAnalytics ( * ) \SourceVmThrpRate
 
 变动和上传速率数据将开始输入工作区。
 

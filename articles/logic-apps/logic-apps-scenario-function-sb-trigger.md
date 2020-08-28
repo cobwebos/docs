@@ -6,16 +6,17 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001411"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013769"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
-当需要部署长时间运行的侦听器或任务时，可以使用[Azure Functions](../azure-functions/functions-overview.md)来触发逻辑应用。 例如，可以创建一个在[Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)队列上侦听的 azure 函数，并立即将逻辑应用作为推送触发器。
+当需要部署长时间运行的侦听器或任务时，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 来触发逻辑应用。 例如，可以创建一个在 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md) 队列上侦听的 azure 函数，并立即将逻辑应用作为推送触发器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +50,7 @@ ms.locfileid: "87001411"
 
    1. 在请求触发器中，选择“使用示例有效负载生成架构”。
 
-   1. 在 "**输入或粘贴示例 JSON 负载**" 下，输入示例负载，然后选择 "**完成**"。
+   1. 在 " **输入或粘贴示例 JSON 负载**" 下，输入示例负载，然后选择 " **完成**"。
 
       ![输入示例有效负载](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 

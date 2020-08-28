@@ -9,25 +9,34 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: e6fd405d1969a2f40a5f0c3466a57fbec60723e9
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 254732630dcf28b90413a1269a34d3aa388cb06c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141153"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997857"
 ---
 # <a name="supported-data-types"></a>支持的数据类型
 
 下表列出了 Azure 时序见解第 2 代支持的数据类型
 
-| 数据类型 | 说明 | 示例 | Parquet 中的属性列名称
-|---|---|---|---|
-| **bool** | 具有两种状态之一的数据类型：`true` 或 `false`。 | `"isQuestionable" : true` | isQuestionable_bool
-| **datetime** | 表示某个时刻，通常以日期和当天的时间表示。 以 [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式表示。 日期/时间属性始终以 UTC 格式存储。 如果格式正确，将应用时区偏移，然后以 UTC 格式存储值。 有关环境时间戳属性和日期/时间偏移的详细信息，请参阅[此](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)部分 | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` | eventProcessedLocalTime_datetime
-| **double** | 一个双精度 64 位数字  | `"value": 31.0482941` | value_double
-| **long** | 已签名的 64 位整数  | `"value" : 31` | value_long
-| **string** | 文本值，必须包含有效的 UTF-8。 Null 字符串和空字符串的处理方式相同。 |  `"site": "DIM_MLGGG"` | site_string
-| **dynamic** | 一个复杂的（非基元）类型，由数组或属性包（字典）组成。 目前只会将基元的字符串化 JSON 数组或不包含 TS ID 或时间戳属性的对象数组存储为动态数组。 请阅读此[文章](./concepts-json-flattening-escaping-rules.md)，了解对象如何平展，以及数组如何展开。 作为此类型存储的负载属性可通过 Azure 时序见解 Gen2 资源管理器和 `GetEvents`   查询 API 进行访问。 |  `"values": "[197, 194, 189, 188]"` | values_dynamic
+| 数据类型 | 说明 | 示例 | [时序表达式语法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Parquet 中的属性列名称
+|---|---|---|---|---|
+| **bool** | 具有两种状态之一的数据类型：`true` 或 `false`。 | `"isQuestionable" : true` | `$event.isQuestionable.Bool` 或 `$event['isQuestionable'].Bool` | `isQuestionable_bool`
+| **datetime** | 表示某个时刻，通常以日期和当天的时间表示。 以 [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式表示。 日期/时间属性始终以 UTC 格式存储。 如果格式正确，将应用时区偏移，然后以 UTC 格式存储值。 有关环境时间戳属性和日期/时间偏移的详细信息，请参阅[此](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)部分 | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  如果 "eventProcessedLocalTime" 是事件源时间戳： `$event.$ts` 。 如果它是另一个 JSON 属性： `$event.eventProcessedLocalTime.DateTime` 或 `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
+| **double** | 一个双精度 64 位数字  | `"value": 31.0482941` | `$event.value.Double` 或 `$event['value'].Double` |  `value_double`
+| **long** | 已签名的 64 位整数  | `"value" : 31` | `$event.value.Long` 或 `$event['value'].Long` |  `value_long`
+| **string** | 文本值，必须包含有效的 UTF-8。 Null 字符串和空字符串的处理方式相同。 |  `"site": "DIM_MLGGG"`| `$event.site.String` 或 `$event['site'].String`| `site_string`
+| **dynamic** | 一个复杂的（非基元）类型，由数组或属性包（字典）组成。 目前只会将基元的字符串化 JSON 数组或不包含 TS ID 或时间戳属性的对象数组存储为动态数组。 请阅读此[文章](./concepts-json-flattening-escaping-rules.md)，了解对象如何平展，以及数组如何展开。 仅可通过 `Explore Events` 在 TSI 资源管理器中选择以查看原始事件或通过 [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) 用于客户端分析的查询 API 来访问存储为此类型的负载属性   。 |  `"values": "[197, 194, 189, 188]"` | 目前尚不支持引用时序表达式中的动态类型 | `values_dynamic`
+
+> [!NOTE]
+> 支持64位整数值，但 Azure 时序见解资源管理器可以安全表示的最大数字为 9007199254740991 (2 ^ 53-1) ，因为存在 JavaScript 限制。 如果使用上面的数据模型中的数字，则可以通过创建 [时序模型变量](/concepts-variables#numeric-variables) 并 [转换](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) 该值来减小大小。
+
+> [!NOTE]
+> **字符串** 类型不可为 null：
+>   * 时序 [表达式 (TSX) ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) 在时序 [查询](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) 中表示，比较空字符串 (**""**) 相对于 **NULL** 的值的行为方式相同： `$event.siteid.String = NULL` 等效于 `$event.siteid.String = ''` 。
+>   * 即使原始事件包含空字符串，API 也可能返回 **NULL** 值。
+>   * 不要依赖**字符串**列中的**NULL**值进行比较或计算，而是将其视为与空字符串相同的方式。
 
 ## <a name="sending-mixed-data-types"></a>发送混合数据类型
 

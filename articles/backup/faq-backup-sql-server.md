@@ -4,18 +4,18 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890549"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006136"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
 本文将会解答有关备份 Azure 虚拟机 (VM) 上运行的 SQL Server 数据库以及使用 [Azure 备份](backup-overview.md)服务的常见问题。
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>是否可以对同一台计算机上的 IaaS VM 和 SQL Server 使用 Azure 备份？
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>是否可以在同一台计算机上为 IaaS VM 和 SQL Server 使用 Azure 备份？
 
 是，可以同时在同一 VM 上进行 VM 备份和 SQL 备份。 对于这种情况，在内部，我们将在 VM 上触发仅限复制的完整备份，以避免截断日志。
 

@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 SQL Server
 description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 备份 SQL Server 数据库所需的配置。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: caf3d49c9b921cab97054a97ece271e484a734bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003638"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005201"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 
@@ -24,10 +24,10 @@ ms.locfileid: "87003638"
 
 * 如果具有包含远程文件共享上的文件的数据库，则保护将失败，错误 ID 为 104。 MABS 不支持对远程文件共享上的 SQL Server 数据进行保护。
 * MABS 无法保护远程 SMB 共享上存储的数据库。
-* 确保将[可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
-* 必须将系统帐户**NTAuthority\System**显式添加到 SQL Server 上的 Sysadmin 组。
-* 为部分包含的数据库执行备用位置恢复时，必须确保目标 SQL 实例启用了 "[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)" 功能。
-* 为文件流数据库执行备用位置恢复时，必须确保目标 SQL 实例启用了 "[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)" 功能。
+* 确保[将可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 必须将系统帐户 **NTAuthority\System** 显式添加到 SQL Server 上的 Sysadmin 组。
+* 在为部分包含的数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)功能。
+* 在为文件流数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)功能。
 * 对 SQL Server AlwaysOn 的保护：
   * 在创建保护组时，MABS 检测可用性组。
   * MABS 检测到故障转移并继续保护数据库。
@@ -40,12 +40,12 @@ ms.locfileid: "87003638"
     * 任意副本 - 备份可以在可用性组中的任何可用性副本上进行。 将根据每个节点的备份优先级来确定要从中备份的节点。
   * 注意以下事项：
     * 可以从任何可读副本（即主副本、同步辅助副本、异步辅助副本）进行备份。
-    * 如果将任何副本排除在备份之外（例如启用了 "**排除副本**" 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
+    * 如果将任何副本排除在备份之外（例如启用了 " **排除副本** " 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
     * 如果有多个副本可用和可读，则将选择具有最高备份优先级的节点进行备份。
     * 如果所选节点上的备份失败，则备份操作将失败。
     * 不支持恢复到原始位置。
-* SQL Server 2014 或更高版本的备份问题：
-  * SQL server 2014 添加了一项新功能，用于[在 Microsoft Azure Blob 存储中创建本地 SQL Server 的数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用于保护此配置。
+* SQL Server 2014 或更高版本备份问题：
+  * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用于保护此配置。
   * 对于 SQL AlwaysOn 选项，存在一些 "首选辅助" 备份首选项的已知问题。 MABS 始终从辅助副本进行备份。 如果找不到辅助副本，则备份将失败。
 
 ## <a name="before-you-start"></a>开始之前
@@ -95,12 +95,12 @@ ms.locfileid: "87003638"
     初始备份副本需要传输整个数据源（SQL Server 数据库）。 备份数据会从生产服务器（SQL Server 计算机）转移到 MABS。 如果此备份很大，通过网络传输数据可能会造成带宽拥塞。 出于此原因，管理员可以选择使用可移动媒体以“手动”方式传输初始备份。 或者，他们可以在指定的时间“自动通过网络”传输数据。
 
     初始备份完成后，备份将在初始备份副本的基础上以增量方式继续进行。 增量备份往往比较小，能轻松地通过网络传输。
-1. 选择何时运行一致性检查。 然后选择“下一步”。
+1. 选择何时运行一致性检查。 然后，选择“下一步”。
 
     ![选择何时运行一致性检查](./media/backup-azure-backup-sql/pg-consistent.png)
 
     MABS 可以运行一致性检查来检查备份点的完整性。 它会计算生产服务器（在本示例中为 SQL Server 计算机）上的备份文件和 MABS 中该文件的已备份数据的校验和。 如果检查发现冲突，则认为 MABS 中的备份文件已损坏。 MABS 通过发送与校验和不匹配部分相对应的块，来修复备份的数据。 由于一致性检查是对性能影响很大的操作，因此管理员可以选择是按计划运行还是自动运行一致性检查。
-1. 选择要在 Azure 中保护的数据源。 然后，选择“下一步”****。
+1. 选择要在 Azure 中保护的数据源。 然后，选择“下一步”。
 
     ![选择要在 Azure 中保护的数据源](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. 如果你是管理员，可以选择适合组织策略的备份计划和保留策略。
@@ -130,7 +130,7 @@ ms.locfileid: "87003638"
 1. 选择如何将初始备份副本传输到 Azure。
 
     * “自动通过网络”选项按照备份计划将数据传输到 Azure。
-    * 有关**脱机备份**的详细信息，请参阅[脱机备份概述](offline-backup-overview.md)。
+    * 有关 **脱机备份**的详细信息，请参阅 [脱机备份概述](offline-backup-overview.md)。
 
     选择传输机制后，选择“下一步”。
 1. 在“摘要”页上复查策略详细信息。 然后选择“创建组”。 可以选择“关闭”，并在“监视”工作区中监视作业进度。 
@@ -164,7 +164,7 @@ ms.locfileid: "87003638"
 1. 右键单击数据库名称并选择“恢复”。
 
     ![从 Azure 恢复数据库](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM 会显示恢复点的详细信息。 选择“**下一步**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 然后选择“下一步”。
+1. DPM 会显示恢复点的详细信息。 选择“**下一步**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 然后，选择“下一步”。
 
     ![将数据库恢复到其原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

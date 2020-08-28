@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
-ms.openlocfilehash: d16082ed9c7a78cfd02afc1e89ec002a5743d675
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085746"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000305"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -134,7 +135,7 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="configure-the-eventhubwriter"></a>配置 EventHubWriter
 
-1. 如果尚未安装最新版本的 HDInsight tools for Visual Studio，请参阅[开始使用 hdinsight tools For Visual studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
+1. 如果尚未安装最新版本的 HDInsight tools for Visual Studio，请参阅 [开始使用 hdinsight tools For Visual studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
 2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
 

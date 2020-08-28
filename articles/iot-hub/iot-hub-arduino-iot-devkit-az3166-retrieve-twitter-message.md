@@ -9,18 +9,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560977"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004303"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
 此项目演示如何 Azure Functions 通过动作传感器触发事件。 该应用会检索包含 Arduino 草图中配置的 # 井号标签的随机推文。 该推文显示在 DevKit 屏幕上。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 完成[入门指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)来实现以下目的：
 
@@ -116,7 +117,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
    ![设备上传](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
-2. DevKit 将重新启动并开始运行代码。
+2. DevKit 重新启动并开始运行代码。
 
 可能会出现“错误: AZ3166: 未知的包”错误消息。 如果未正确刷新开发板包索引，则会出现此错误。 要解决此问题，请查看 [IoT DevKit 常见问题解答中的“unknown package”（未知程序包）错误](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
@@ -138,7 +139,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 ### <a name="processing"></a>正在处理...
 
-![Processing](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
+![正在处理](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
 
 ### <a name="press-b-to-read"></a>按 B 读取...
 

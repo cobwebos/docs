@@ -3,12 +3,12 @@ title: Linux VM 的应用程序一致性备份
 description: 创建 Linux 虚拟机到 Azure 的应用程序一致性备份。 本文介绍如何配置脚本框架以备份 Azure 部署的 Linux VM。 本文还包括故障排除信息。
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407092"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999234"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的应用程序一致性备份
 
@@ -58,7 +58,7 @@ ms.locfileid: "87407092"
 
     - **timeoutInSeconds**：指定操作前脚本和操作后脚本的单次超时（最大值可以为 1800）。
 
-    - **continueBackupOnFailure**：如果希望在操作前脚本或操作后脚本失败时 Azure 备份故障回复到文件系统/崩溃一致性备份，请将此值设置为 true。  如果脚本失败，则将此项设置为**false**会导致备份失败（除非你具有单磁盘 VM，而不考虑此设置，则回退到崩溃一致的备份）。 当**continueBackupOnFailure**值设置为 false 时，如果备份失败，则会根据服务中的重试逻辑，尝试重试备份操作（针对规定尝试次数）。
+    - **continueBackupOnFailure**：如果希望在操作前脚本或操作后脚本失败时 Azure 备份故障回复到文件系统/崩溃一致性备份，请将此值设置为 true。  如果将此选项设置为 " **false** "，则在出现脚本 (失败时，备份将失败，除非你有一个单磁盘 VM，该 VM 将回退到崩溃一致的备份，而不考虑此设置) 。 当 **continueBackupOnFailure** 值设置为 false 时，如果备份失败，则将根据服务 (中的重试逻辑尝试) 的尝试次数。
 
     - fsFreezeEnabled：指定为了确保文件系统一致性，在创建 VM 快照时是否应调用 Linux fsfreeze。**** 建议将此设置保留为 true，除非必须禁用 fsfreeze 才能让应用程序正常工作。****
 

@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891464"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003518"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 进行身份验证
 
-在本部分中，我们将介绍如何使用 C# API 进行身份验证。
+在本部分中，我们将介绍如何使用 API 进行身份验证和会话管理。
+
+> [!CAUTION]
+本章所述的函数在内部发出对服务器的 REST 调用。 对于所有 REST 调用，通常情况下，发送这些命令会导致服务器中止并返回故障。 `SessionGeneralContext.HttpResponseCode`在本例中，成员的值为 429 ( "请求太多" ) 。 根据经验法则，在 **后续调用之间应有5-10 秒**的延迟。
+
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 

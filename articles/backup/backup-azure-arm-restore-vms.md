@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3212ba621f02740e9b27c28da854eef70dce64a6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826508"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006576"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -87,7 +87,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 作为[还原选项](#restore-options)之一，你可以从还原点快速创建磁盘。 然后，在磁盘上，你可以执行以下操作之一：
 
-- 使用执行还原操作期间生成的模板来自定义设置，并触发 VM 部署。 编辑默认模板设置，然后提交模板进行 VM 部署。
+- 使用在还原操作过程中生成的模板自定义设置，并触发 VM 部署。 编辑默认模板设置，然后提交模板进行 VM 部署。
 - [将已还原的磁盘附加](../virtual-machines/windows/attach-managed-disk-portal.md)到现有 VM。
 - 使用 PowerShell 从已还原的磁盘[创建新的 VM](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
 

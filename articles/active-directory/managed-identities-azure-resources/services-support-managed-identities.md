@@ -2,21 +2,21 @@
 title: 支持托管标识的 Azure 服务 - Azure AD
 description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务列表
 services: active-directory
-author: MarkusVi
-ms.author: markvi
+author: barclayn
+ms.author: barclayn
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
-manager: markvi
+manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1d9bd6ccc0f92ab28088e886c5bd17d79bc6cea3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873579"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007621"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -63,7 +63,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 不可用 | 不可用 | 不可用 | 
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-启用 Azure Arc 的 Kubernetes 目前[支持系统分配的标识](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)。 所有启用了 Azure Arc 的 Kubernetes 代理使用托管服务标识证书来与 Azure 通信。
+启用 Azure Arc 的 Kubernetes 目前 [支持系统分配的标识](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)。 所有启用了 Azure Arc 的 Kubernetes 代理使用托管服务标识证书来与 Azure 通信。
 
 ### <a name="azure-blueprints"></a>Azure 蓝图
 
@@ -250,7 +250,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 
-有关详细信息，请参阅[如何为 Azure 弹簧 Cloud 应用程序启用系统分配的托管标识](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
+有关详细信息，请参阅 [如何为 Azure 弹簧 Cloud 应用程序启用系统分配的托管标识](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
 
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集
@@ -293,7 +293,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 | 
 | 用户分配 | [在支持的区域中可用](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 不可用 | 不可用 | 不可用 |
 
-若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅[映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
+若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅 [映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服务
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |

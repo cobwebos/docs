@@ -3,12 +3,13 @@ title: 管理库 – Azure 事件中心 | Microsoft Docs
 description: 本文提供有关可用于从 .NET 管理 Azure 事件中心命名空间和实体的库的信息。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79656d95cf925c21b0f0c5f2b3bafe6348e0b553
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 74392fbf0b2c0b81898410af8027a4f13fc52b67
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074835"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013990"
 ---
 # <a name="event-hubs-management-libraries"></a>事件中心管理库
 

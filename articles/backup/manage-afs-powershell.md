@@ -3,12 +3,12 @@ title: 使用 PowerShell 管理 Azure 文件共享备份
 description: 了解如何使用 PowerShell 管理和监视 Azure 备份服务备份的 Azure 文件共享。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: bb400c25ca6b1deebaef6af6fe4b322951dfcdcc
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e2f07e56fb9a8715b1b53165ab5f4b45b4e20ccb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826746"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000220"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>使用 PowerShell 管理 Azure 文件共享备份
 
@@ -87,7 +87,7 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-输出中的“Job ID”属性对应于备份服务为“停止保护”操作创建的作业的作业 ID。 若要跟踪作业的状态，请使用 [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。
+输出中的 "作业 ID" 属性对应于 "停止保护" 操作的备份服务创建的作业的作业 ID。 若要跟踪作业的状态，请使用 [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>停止保护而不保留恢复点
 

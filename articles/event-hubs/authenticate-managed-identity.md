@@ -3,12 +3,13 @@ title: 使用 Azure Active Directory 对托管标识进行身份验证
 description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的托管标识进行身份验证的信息
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: c74e49eff8233d9918fcdb55e6fa2ad8d7517f6f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079135"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010012"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
 Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -27,7 +28,7 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向 Azure AD 中的托管标识授予权限
 若要通过应用程序中的托管标识授权对事件中心服务的请求，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 事件中心定义的 Azure 角色包含用于从事件中心进行发送和读取的权限。 将 Azure 角色分配到托管标识后，会向托管标识授予适当范围内的事件中心数据的访问权限。
 
-有关分配 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证以访问事件中心资源](authorize-access-azure-active-directory.md)。
+有关分配 Azure 角色的详细信息，请参阅 [使用 Azure Active Directory 进行身份验证以访问事件中心资源](authorize-access-azure-active-directory.md)。
 
 ## <a name="use-event-hubs-with-managed-identities"></a>将事件中心与托管标识结合使用
 若要将事件中心与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问事件中心资源。

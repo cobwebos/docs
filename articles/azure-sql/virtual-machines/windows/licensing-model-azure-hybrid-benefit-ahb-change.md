@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668893"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010212"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>在 Azure 中更改 SQL 虚拟机的许可模式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,7 +156,9 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 ## <a name="known-errors"></a>已知错误
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>找不到资源组“\<resource-group>”下的资源“Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>”。
+查看常见的错误及其解决方法。 
+
+**\<resource-group>找不到资源组 "" 下的资源 "SqlVirtualMachine/SqlVirtualMachines/" \<resource-group> 。**
 
 尝试在尚未注册到 SQL VM 资源提供程序的 SQL Server VM 上更改许可模式时，将发生此错误：
 
@@ -165,7 +167,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 需要先将订阅注册到资源提供程序，然后[将 SQL Server VM 注册到资源提供程序](sql-vm-resource-provider-register.md)。 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>虚拟机“\<vmname\>”与多个 NIC 相关联
+**虚拟机 " \<vmname\> " 具有多个关联的 NIC**
 
 此错误发生在具有多个 NIC 的虚拟机上。 请先删除其中一个 NIC，再更改许可模式。 虽然可以在更改许可模式后将该 NIC 再添加回 VM，但将不再支持 Azure 门户中的操作（如自动备份和修补）。 
 

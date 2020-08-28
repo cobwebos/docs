@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999336"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -186,7 +186,7 @@ ms.locfileid: "88892161"
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主数据源不再存在的备份项
 
-* 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并出现 UserErrorVmNotFoundV2 错误。 备份预检查将为 "失败的按需备份作业" 显示为 "严重" (失败的计划作业不) 显示。
+* 如果在不停止保护的情况下删除或移动为 Azure 备份配置的 Azure Vm，则计划的备份作业和按需 (即席) 备份作业将失败，并出现错误 UserErrorVmNotFoundV2。 备份预检查将为 "失败的按需备份作业" 显示为 "严重" (失败的计划作业不) 显示。
 * 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最后一个恢复点除外）将根据备份策略中设置的保留范围进行清理。
 * 建议删除主数据源不再存在的备份项，以避免任何额外成本，如果不再需要删除资源的备份项/数据，因为最后一个恢复点将被永久保留，并且根据适用的备份定价对该用户收费。
 

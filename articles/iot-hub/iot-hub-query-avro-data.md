@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73605616"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004062"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
-本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 [消息路由](iot-hub-devguide-messages-d2c.md)允许使用基于消息属性、消息正文、设备孪生标记和设备孪生属性的丰富查询来筛选数据。 若要了解有关消息路由中查询功能的详细信息，请参阅关于[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)的文章。
+本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 [消息路由](iot-hub-devguide-messages-d2c.md)允许使用基于消息属性、消息正文、设备孪生标记和设备孪生属性的丰富查询来筛选数据。 若要了解有关消息路由中查询功能的详细信息，请参阅关于 [消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)的文章。
 
 面对这一挑战，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，默认情况下，IoT 中心会写入 Avro 格式的内容，该格式同时具有消息正文属性和消息属性。 Avro 格式不用于其他任何终结点。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。 IoT 中心现在支持将数据写入 JSON 中的 Blob 存储和 AVRO。
 
-有关详细信息，请参阅[使用 Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage)。
+有关详细信息，请参阅 [使用 Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 为了解决非关系大数据需求和格式并应对这一挑战，可以使用许多大数据模式来对数据进行转换和缩放。 其中的一个模式“按查询付费”是 Azure Data Lake Analytics，它是本文重点要讨论的内容。 虽然可以在 Hadoop 或其他解决方案中轻松执行查询，但 Data Lake Analytics 通常更适合“按查询付费”方式。
 

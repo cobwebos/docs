@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何排查在使用 Azure 备份对 SAP HANA 数据库进行备份时可能发生的常见错误。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826984"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004164"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上的 SAP HANA 数据库备份问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "88826984"
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **错误消息**      | <span style="font-weight:normal">Azure 备份没有所需的角色权限，无法执行备份</span>    |
+| **错误消息**      | <span style="font-weight:normal">Azure 备份没有执行备份所需的角色权限</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | 可能的原因    | 角色可能已被覆盖。                          |
 | **建议的操作** | 若要解决该问题，请运行“发现数据库”窗格中的脚本，或在[此处](https://aka.ms/scriptforpermsonhana)下载该脚本。 或者，将“SAP_INTERNAL_HANA_SUPPORT”角色添加到工作负荷备份用户 (AZUREWLBACKUPHANAUSER)。 |
@@ -31,7 +31,7 @@ ms.locfileid: "88826984"
 
 | 错误消息      | <span style="font-weight:normal">未能连接到 HANA 系统</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| 可能的原因    | SAP HANA 实例可能已关闭。<br/>未设置 Azure 备份在与 HANA 数据库交互时所需的权限。 |
+| 可能的原因    | SAP HANA 实例可能已关闭。<br/>未设置 Azure 备份与 HANA 数据库进行交互所需的权限。 |
 | **建议的操作** | 检查 SAP HANA 数据库是否已启动。 如果数据库已启动并在运行，请检查是否设置了所有所需权限。 如果缺少任何权限，请运行[注册前脚本](https://aka.ms/scriptforpermsonhana)添加缺少的权限。 |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
@@ -45,14 +45,14 @@ ms.locfileid: "88826984"
 
 | 错误消息      | <span style="font-weight:normal">指定的 SAP HANA 操作不受支持</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| 可能的原因    | 适用于 SAP HANA 的 Azure 备份不支持在 SAP HANA 本机客户端 (Studio/Cockpit/DBA Cockpit) 上执行的增量备份和操作 |
+| 可能的原因    | 适用于 SAP HANA 的 Azure 备份不支持在 SAP HANA native clients (Studio/考核中心考核中心执行增量备份和操作)  |
 | **建议的操作** | 有关详细信息，请参阅[此文](./sap-hana-backup-support-matrix.md#scenario-support)。 |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
 | 错误消息      | <span style="font-weight:normal">此 SAP HANA 数据库不支持请求的备份类型</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| 可能的原因    | Azure 备份不支持增量备份和使用快照的备份 |
+| 可能的原因    | Azure 备份不支持使用快照进行增量备份和备份 |
 | **建议的操作** | 有关详细信息，请参阅[此文](./sap-hana-backup-support-matrix.md#scenario-support)。 |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -73,7 +73,7 @@ ms.locfileid: "88826984"
 
 | 错误消息      | <span style="font-weight:normal">检测到无效的 backint 配置</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| 可能的原因    | 为 Azure 备份指定了错误的后备参数 |
+| 可能的原因    | 不正确地为 Azure 备份指定了后备参数 |
 | **建议的操作** | 检查是否设置了以下 (backint) 参数：<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>如果 HOST 中存在基于 backint 的参数，请删除这些参数。 如果在 HOST 级别不存在参数，但在数据库级别手动修改了相应参数，请根据前面所述将其还原为适当的值。 或者，从 Azure 门户运行[停止保护并保留备份数据](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)，然后选择“恢复备份”。 |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore

@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: b53ddb9cd6f6aae25086f44e4f5a8b189293b11c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 83fc8316171601b7a55e4fc2cb83f49978269150
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052621"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999557"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务  
 
@@ -81,7 +82,7 @@ ms.locfileid: "87052621"
     </smil>
 ```
 
-获得自适应比特率设置后，可以利用动态打包。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
+获得自适应比特率设置后，可以利用动态打包。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅 [动态打包](media-services-dynamic-packaging-overview.md)。
 
 以下代码示例使用 Azure 媒体服务 .NET SDK 扩展。  请确保更新代码，以指向输入 MP4 文件和 .ism 文件所在的文件夹， 并指向 MediaPackager_ValidateTask.xml 文件所在的位置。 此 XML 文件的定义请参见 [Azure 媒体包装器的任务预设](/previous-versions/azure/reference/hh973635(v=azure.100))一文。
 

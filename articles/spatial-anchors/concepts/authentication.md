@@ -8,12 +8,13 @@ ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456498"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997160"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空间定位点身份验证和授权
 
@@ -174,14 +175,14 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
         1.  在 Azure 门户中，导航到“Azure Active Directory”并选择“应用注册” 
         2.  选择“新建应用程序注册”
         3.  输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 点击“创建”。
-        4.  在该应用程序上，点击 "**设置**"，然后选择 "**证书和密钥**" 选项卡。创建新的客户端密码，选择一个持续时间，然后单击 "**添加**"。 请确保保存机密值，因为需要将其包含在 web 服务的代码中。
+        4.  在该应用程序上，点击 " **设置**"，然后选择 " **证书和密钥** " 选项卡。创建新的客户端密码，选择一个持续时间，然后单击 " **添加**"。 请确保保存机密值，因为需要将其包含在 web 服务的代码中。
     2.  向应用程序和/或用户授予对你的资源的访问权限：
         1.  在 Azure 门户中导航到你的空间定位点资源
         2.  切换到“访问控制(标识和访问管理)”选项卡
         3.  点击“添加角色分配”
         1.  [选择一个角色](#role-based-access-control)
         2.  在“选择”字段中，输入你创建的且要向其分配访问权限的应用程序的名称。 如果你希望应用的用户对空间定位点帐户拥有不同的角色，应在 Azure AD 中注册多个应用程序，并为每个应用程序单独分配角色。 然后实现授权逻辑，以便为用户使用适当的角色。
-        3.  注意-在 "**添加角色分配**" 选择中，你希望将 "**分配访问权限**" 设置为 "Azure AD 用户、组或服务主体"。
+        3.  注意-在 " **添加角色分配** " 选择中，你希望将 " **分配访问权限** " 设置为 "Azure AD 用户、组或服务主体"。
     3.  点击“保存”。
 2.  在代码中（注意：可以使用 GitHub 上包含的服务示例）：
     1.  确保使用自己的 Azure AD 应用程序的应用程序 ID、应用程序机密和重定向 URI 作为 MSAL 中的 client ID、secret 和 RedirectUri 参数

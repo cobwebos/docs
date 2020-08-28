@@ -11,13 +11,13 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
-ms.custom: ''
-ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c29909d70b0fd55e4b680c79928cdc5d05b494fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039136"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003722"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用内容感知编码预设来查找给定分辨率的最佳比特率值
 
@@ -25,7 +25,7 @@ ms.locfileid: "87039136"
 
 应该了解自己正在处理的内容，并根据单个视频的复杂性自定义/优化编码梯度。 在每种分辨率下有一个比特率，超过该比特率会感知不到任何质量提升 – 编码器将以此最佳比特率运行。 下一级优化是基于内容选择分辨率 – 例如，降到 720p 以下不会使 PowerPoint 演示文稿的视频受益。 接下来，可以进一步在编码器中优化视频中每个拍摄画面的设置。 
 
-Microsoft 的[自适应流式处理](autogen-bitrate-ladder.md)预设部分寻址源视频的质量和分辨率的变化问题。 我们的客户混合使用不同的内容，其中某些内容的分辨率为 1080p，有些为 720p，还有少部分为标清或更低分辨率。 此外，并非所有源内容都是电影或电视演播室提供的高质量夹层文件。 自适应流式处理预设解决了这些问题，它可以确保比特率梯度永不超过输入夹层文件的分辨率或平均比特率。 但是，此预设不会检查除分辨率和比特率以外的源属性。
+Microsoft 的 [自适应流式处理](autogen-bitrate-ladder.md) 预设部分寻址源视频的质量和分辨率的变化问题。 我们的客户混合使用不同的内容，其中某些内容的分辨率为 1080p，有些为 720p，还有少部分为标清或更低分辨率。 此外，并非所有源内容都是电影或电视演播室提供的高质量夹层文件。 自适应流式处理预设解决了这些问题，它可以确保比特率梯度永不超过输入夹层文件的分辨率或平均比特率。 但是，此预设不会检查除分辨率和比特率以外的源属性。
 
 ## <a name="the-content-aware-encoding"></a>内容感知编码 
 
@@ -58,7 +58,7 @@ Microsoft 的[自适应流式处理](autogen-bitrate-ladder.md)预设部分寻�
 有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
 
 > [!NOTE]
-> 请确保使用**ContentAwareEncoding**预设 not ContentAwareEncodingExperimental。
+> 请确保使用预设的 ContentAwareEncoding 而不使用 ContentAwareEncodingExperimental。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -77,12 +77,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> 使用预设的编码作业 `ContentAwareEncoding` 将根据输出分钟数计费。 
+> 使用 `ContentAwareEncoding` 预设的编码作业按输出分钟数计费。 
   
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：使用媒体服务 v3 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
 * [教程：基于 URL 对远程文件进行编码并流式传输视频 - REST](stream-files-tutorial-with-rest.md)
-* [教程：根据 URL 编码远程文件并流式传输视频-CLI](stream-files-cli-quickstart.md)
-* [教程：根据 URL 编码远程文件并流式传输视频-.NET](stream-files-dotnet-quickstart.md)
-* [教程：根据 URL 编码远程文件并流式传输视频 Node.js](stream-files-nodejs-quickstart.md)
+* [教程：基于 URL 对远程文件进行编码并流式传输视频 - CLI](stream-files-cli-quickstart.md)
+* [教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET](stream-files-dotnet-quickstart.md)
+* [教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js](stream-files-nodejs-quickstart.md)

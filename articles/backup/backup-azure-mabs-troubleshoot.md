@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 70431ee42566d1cbba5ed239b9da55c2ff7a2afe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893011"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999217"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 还原 | **错误代码**：CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：原始和外部 DPM 服务器必须注册到同一保管库 | **原因**：当你尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，并且如果要恢复的服务器和从其备份数据的原始服务器不与同一恢复服务保管库相关联时，会出现此问题。<br/> <br/>解决方法：若要解决此问题，请确保原始服务器和备用服务器都注册到同一保管库。|
+| 还原 | **错误代码**：CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：原始和外部 DPM 服务器必须注册到同一保管库 | **原因**：当你尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，并且如果要恢复的服务器和从其备份数据的原始服务器未关联到同一恢复服务保管库时，会出现此问题。<br/> <br/>**解决方法**：若要解决此问题，请确保将原始服务器和备用服务器注册到同一保管库。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM 的联机恢复点创建作业失败
 

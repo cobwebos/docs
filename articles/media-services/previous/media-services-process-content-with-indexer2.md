@@ -14,17 +14,18 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: d4589e2e923bf4068cc3a707c69f0304a1539745
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 82c69d67d261c493d89f259720e1f903824d6ef8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011543"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013599"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 预览版为媒体文件编制索引
 
 > [!NOTE]
-> 将停用**Azure Media Indexer 2**媒体处理器。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)将替换此旧媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
+> 将停用 **Azure Media Indexer 2** 媒体处理器。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。 [Azure 媒体服务视频索引器](../video-indexer/index.yml) 将替换此旧媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
 Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件和内容可供搜索，以及生成隐藏式字幕跟踪****。 与 [Azure Media Indexer](media-services-index-content.md)以前的版本相比， **Azure Media Indexer 2 预览版** 执行索引的速度更快，并提供更广泛的语言支持。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话，简体）、葡萄牙语、阿拉伯语、俄语和日语。
 
@@ -86,7 +87,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 * 日语 [JaJp]
 * 俄语 [RuRu]
 * 英式英语 [EnGb]
-* 西班牙语（墨西哥） [EsMx] 
+* 西班牙语 (墨西哥) [EsMx] 
 
 ## <a name="supported-file-types"></a>支持的文件类型
 
@@ -119,7 +120,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

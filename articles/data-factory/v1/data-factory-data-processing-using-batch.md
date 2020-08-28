@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321399"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998061"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -578,7 +579,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > " **Batch 帐户**" 边栏选项卡中的 URL 采用以下格式： \<accountname\> 。 \<region\>batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
+      > " **Batch 帐户** " 边栏选项卡中的 URL 采用以下格式： \<accountname\> 。 \<region\>batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -973,7 +974,7 @@ test custom activity Microsoft test custom activity Microsoft
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
   * [Batch 基本信息](../../azure-sql/database/sql-database-paas-overview.md)
-  * [批处理功能概述](../../batch/batch-service-workflow-features.md)）
+  * [批处理功能概述](../../batch/batch-service-workflow-features.md)) 
   * [在 Azure 门户中创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)
   * [适用于 .NET 的 Batch 客户端库入门](../../batch/quick-run-dotnet.md)
 
