@@ -96,6 +96,8 @@
       href: language-packs.md
 - name: 概念
   items:
+    - name: 身份验证
+      href: authentication.md
     - name: 安全 URL 列表
       href: safe-url-list.md
     - name: Windows 虚拟桌面环境

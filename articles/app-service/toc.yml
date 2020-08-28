@@ -301,7 +301,7 @@
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: 迁移助手指南
       href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
-    - name: 最佳做法
+    - name: 最佳实践
       href: app-service-best-practices.md
     - name: 示例
       href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
@@ -310,7 +310,7 @@
     - name: Cookbook
       items:
         - name: 参考体系结构
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 疑难解答

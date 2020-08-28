@@ -59,7 +59,7 @@
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新

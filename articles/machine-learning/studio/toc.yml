@@ -5,7 +5,7 @@
   items:
     - name: 机器学习工作室（经典版）
       displayName: overview
-      href: what-is-ml-studio.md
+      href: studio-classic-overview.md
     - name: 比较我们的 ML 产品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: 快速入门

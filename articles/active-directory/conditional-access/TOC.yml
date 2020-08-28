@@ -25,7 +25,7 @@
           href: concept-conditional-access-users-groups.md
         - name: 云应用或操作
           href: concept-conditional-access-cloud-apps.md
-        - name: 条件
+        - name: Conditions
           href: concept-conditional-access-conditions.md
     - name: 访问控制
       items:
@@ -52,7 +52,7 @@
   items:
     - name: 计划条件访问部署
       href: plan-conditional-access.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: best-practices.md
     - name: 常用条件访问策略
       items:
@@ -119,7 +119,7 @@
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新

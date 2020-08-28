@@ -166,7 +166,7 @@
                 - name: 配置 Spring Data JPA
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: 配置 Spring Data R2DBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql
         - name: 复制
           items:
             - name: 只读副本
@@ -291,7 +291,7 @@
           items:
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md

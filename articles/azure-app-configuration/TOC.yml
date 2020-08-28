@@ -132,7 +132,7 @@
         - name: 用于 .NET 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring 提供程序
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+          href: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
         - name: 用于 Java 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: 用于 Python 的 Azure SDK
