@@ -4,12 +4,12 @@ description: 本文介绍如何为本地 Windows 服务器解决系统状态备�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824264"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022354"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份的问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "88824264"
 建议你在开始排查系统状态备份之前执行以下验证步骤：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [确保在 MARS 代理和 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [确保 MARS 代理与 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 如有必要，请重启并重试操作
 - [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [检查其他进程或防病毒软件是否正在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
@@ -137,7 +137,7 @@ Microsoft 软件影子副本提供程序(SWPRV) | 手动
 
 | 症状 | 解决方法
 | -- | --
-| - MARS 代理失败，显示错误消息：由于包含系统文件的卷上磁盘空间不足，使影子副本卷无法增长，备份失败 <br/><br/> - volsnap 系统事件日志中出现以下错误/警告日志：“卷 C: 上的磁盘空间不足，C: 影子副本的影子副本存储无法增长，由于此故障，卷 C: 的所有影子副本都存在被删除的风险” | - 释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间供影子副本增长 <br/><br/> - 配置影子副本空间时，可以限制用于影子副本的空间量。 有关详细信息，请参阅[此文](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
+| - MARS 代理失败，显示错误消息：由于包含系统文件的卷上磁盘空间不足，使影子副本卷无法增长，备份失败 <br/><br/> - volsnap 系统事件日志中出现以下错误/警告日志：“卷 C: 上的磁盘空间不足，C: 影子副本的影子副本存储无法增长，由于此故障，卷 C: 的所有影子副本都存在被删除的风险” | -释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间用于卷影副本增长 <br/><br/> - 配置影子副本空间时，可以限制用于影子副本的空间量。 有关详细信息，请参阅[此文](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI 分区已锁定
 

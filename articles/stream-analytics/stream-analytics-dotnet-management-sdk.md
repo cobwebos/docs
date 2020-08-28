@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077748"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015588"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过管理 .NET SDK 设置和运行使用 .NET 版流分析 API 的分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
@@ -212,7 +212,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 ## <a name="create-a-stream-analytics-output-target"></a>创建流分析输出目标
 创建输出目标类似于创建流分析输入源。 像输入源一样，输出目标将绑定到特定作业。 要将同一输出目标用于不同的作业，必须再次调用该方法并指定不同的作业名称。
 
-以下代码将创建一个输出目标（Azure SQL 数据库）。 可以自定义输出目标的数据类型和/或序列化类型。
+下面的代码 (Azure SQL 数据库) 创建输出目标。 可以自定义输出目标的数据类型和/或序列化类型。
 
    ```csharp
    // Create an output

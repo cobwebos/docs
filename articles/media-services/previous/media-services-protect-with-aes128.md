@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 143583cf11da7687ae99121a2893be1c54810add
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f9d86f979fb27052e7abec43bc94b95705f5ceb5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087341"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012936"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -55,9 +56,9 @@ ms.locfileid: "87087341"
 
 4. [配置内容密钥的授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。 必须配置内容密钥授权策略。 客户端必须符合该策略才能将内容密钥传送到客户端。
 
-5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。 （AES-128 需要相同的 IV 进行加密和解密。）此配置还包括传送协议（例如，MPEG-短线、HLS、平滑流式处理或全部）和动态加密类型（例如信封或无动态加密）。
+5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。  (AES-128 需要相同的 IV 进行加密和解密。 ) 配置还包括传递协议 (例如，MPEG-短线、HLS、平滑流式处理或所有) 和动态加密的类型 (例如，信封或无动态加密) 。
 
-    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 （例如，如果添加一个仅将 HLS 指定为协议的策略，则为。）如果根本没有定义任何资产传送策略，则例外。 此时，允许所有明文形式的协议。
+    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 例如，如果添加了一个仅将 HLS 指定为协议的策略，则 (。如果根本没有定义任何资产传送策略，则 ) 例外。 此时，允许所有明文形式的协议。
 
 6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator)以获取流式处理 URL。
 
@@ -159,7 +160,7 @@ ms.locfileid: "87087341"
 
 对于 HLS，根清单将划分成段文件。 
 
-例如，根清单是： http： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest （format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3）。 它包含段文件名的列表。
+例如，根清单是： http： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) 。 它包含段文件名的列表。
 
 ```text
 . . . 
@@ -170,7 +171,7 @@ QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
 …
 ```
 
-如果在文本编辑器中打开某个段文件（例如，http： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels （514369）/Manifest （视频，格式 = m3u8-aapl-v3-流式处理 m3u8-aapl-v3），则它将包含 #EXT X 键，这表示该文件已加密。
+如果在文本编辑器中打开某个段文件 (例如，http： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369) /manifest (视频，格式 = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) ，则它包含 #EXT X 键，这表示该文件已加密。
 
 ```text
 #EXTM3U

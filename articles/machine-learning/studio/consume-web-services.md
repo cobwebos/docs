@@ -7,14 +7,14 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18, devx-track-python, devx-track-javascript
+ms.custom: seodec18, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: bbecafbbd988530231d71892fb12a55c1a605442
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d17e63bce2be5a871184411aaae410acd840951
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844365"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015010"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用机器学习 Studio (经典) web 服务
 
@@ -45,7 +45,7 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
-登录到[Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
+登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
 
 为新的机器学习 Web 服务检索 API 密钥：
 
@@ -72,7 +72,7 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 ## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>连接到机器学习 Web 服务
 可使用支持 HTTP 请求和响应的编程语言连接到机器学习 Web 服务。 可从机器学习 Web 服务帮助页，查看 C#、Python 和 R 示例。
 
-**机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅[教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
+**机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
 机器学习 API 帮助包含有关预测 Web 服务的详细信息。
 
 1. 单击正在使用的 Web 服务。
@@ -99,7 +99,7 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 **在 Visual Studio 中安装 Microsoft.AspNet.WebApi.Client NuGet**
 
 1. 发布 UCI 下载数据集：成人 2 类数据集 Web 服务。
-2. 单击 "**工具**" "  >  **NuGet 包管理器**" "  >  **包管理器控制台**"。
+2. 单击“工具” > “NuGet 包管理器” > “包管理器控制台”。
 3. 选择 **Microsoft.AspNet.WebApi.Client 安装包**。
 
 **运行代码示例**

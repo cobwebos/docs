@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661548"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012998"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -165,6 +165,30 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 `RetrieveModelWithDependencies`调用不仅返回所请求的模型，而且还返回请求的模型所依赖的所有模型。
 
 模型不一定精确地以其上传到的文档形式返回。 Azure 数字孪生仅保证返回窗体在语义上是等效的。 
+
+### <a name="update-models"></a>更新模型
+
+将模型上载到实例后，整个模型接口就是不可变的。 这意味着不存在模型的传统 "编辑"。
+
+相反，如果要在 Azure 数字孪生中对模型进行更改（如更改 `DisplayName` 或 `Description` ），则执行此操作的方法是上传同一模型的 **较新版本** 。 这将覆盖原始模型。
+
+为此，请从原始模型的 DTDL 开始。 更新要更改的所有字段。
+
+然后，通过更新模型的字段将其标记为较新版本的模型 `id` 。 模型 ID 的最后一个部分（之后 `;` ）表示模型号。 若要指示这现在是此模型的更新版本，请将值末尾的数字递增 `id` 为大于当前版本号的任何数字。
+
+例如，如果之前的模型 ID 如下所示：
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+此模型的版本2可能如下所示：
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+然后，将新版本的模型上传到实例。 它将取代旧版本，使用此模型创建的新孪生将使用更新的版本。
 
 ### <a name="remove-models"></a>删除模型
 

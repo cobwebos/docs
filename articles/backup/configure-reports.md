@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826848"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022388"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -109,7 +109,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 ###### <a name="inactive-resources"></a>非活动资源
 
-使用此视图，您可以识别在很长一段时间内未成功备份的那些备份项。 这可能意味着正在备份的底层计算机不再存在 (，因此会导致备份失败) ，或者存在一些问题，导致无法可靠地执行备份。
+使用此视图，您可以识别在很长一段时间内未成功备份的那些备份项。 这可能意味着正在备份的底层计算机不再存在 (，因此会导致备份失败) ，或在阻止备份被可靠处理的计算机上出现一些问题。
 
 若要查看非活动资源，请导航到 " **优化** " 选项卡，然后选择 " **非活动资源** " 磁贴。 选择此磁贴会显示一个网格，其中包含所选范围内的所有非活动资源的详细信息。 默认情况下，此网格显示在过去7天内没有恢复点的项。 若要在不同时间范围内查找非活动资源，可以在该选项卡的顶部调整 **时间范围** 筛选器。
 

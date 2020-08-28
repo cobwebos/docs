@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023256"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012189"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
@@ -36,7 +36,7 @@ ms.locfileid: "87023256"
 
 ![媒体服务内容保护工作流](./media/content-protection/content-protection.svg)
   
-&#42;*动态加密支持128明文密钥、cbc 和 CENC。有关详细信息，请参阅[支持矩阵](#streaming-protocols-and-encryption-types)。*
+&#42; *动态加密支持128明文密钥、cbc 和 CENC。有关详细信息，请参阅 [支持矩阵](#streaming-protocols-and-encryption-types)。*
 
 本文解释的概念和术语可帮助你了解媒体服务的内容保护功能。
 
@@ -60,7 +60,7 @@ ms.locfileid: "87023256"
    可以创建一个内容密钥策略，用于配置如何将内容密钥（提供对资产的安全访问）传送到终端客户端：  
 
    * 定义许可证传送授权。 基于 JSON Web 令牌 (JWT) 中的声明指定授权检查逻辑。
-   * 配置[PlayReady](playready-license-template-overview.md)、 [Widevine](widevine-license-template-overview.md)和/或[FairPlay](fairplay-license-overview.md)许可证。 使用这些模板可为每个 DRM 配置权利和权限。
+   * 配置 [PlayReady](playready-license-template-overview.md)、 [Widevine](widevine-license-template-overview.md)和/或 [FairPlay](fairplay-license-overview.md) 许可证。 使用这些模板可为每个 DRM 配置权利和权限。
 
      ```
      ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
@@ -88,7 +88,7 @@ ms.locfileid: "87023256"
 基于播放器 SDK 的视频播放器应用（本机或基于浏览器）需要满足以下要求：
 
 * 播放器 SDK 支持所需的 DRM 客户端。
-* 播放机 SDK 支持所需的流式处理协议：平滑、短划线和/或 HTTP Live Streaming （HLS）。
+* 播放机 SDK 支持所需的流式处理协议：平滑、破折号和/或 HTTP Live Streaming (HLS) 。
 * 播放器 SDK 可以处理许可证获取请求中 JWT 令牌的传递。
 
 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
@@ -249,7 +249,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 > [!NOTE]
 > Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 如果收到 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` 错误，请确保指定适当的流式处理策略。
 
@@ -265,5 +265,5 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 * [使用 DRM 提供保护](protect-with-drm.md)
 * [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
 * [存储端加密](storage-account-concept.md#storage-side-encryption)
-* [常见问题解答](frequently-asked-questions.md)
+* [常见问题](frequently-asked-questions.md)
 * [JSON Web 令牌处理程序](/dotnet/framework/security/json-web-token-handler)

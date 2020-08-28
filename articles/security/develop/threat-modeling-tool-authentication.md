@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 11158749f3cae222c0948286e7365b1629cebbf2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: has-adal-ref, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 65e680a14cfc878b6dc406a179a0aa3afe038563
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543973"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004708"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施
 
@@ -133,7 +133,7 @@ ms.locfileid: "87543973"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 |
+| **组件**               | 数据库 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | SQL Azure |
 | **属性**              | SQL 版本 - V12 |
@@ -144,7 +144,7 @@ ms.locfileid: "87543973"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 |
+| **组件**               | 数据库 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -155,7 +155,7 @@ ms.locfileid: "87543973"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 |
+| **组件**               | 数据库 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | OnPrem、SQL Azure |
 | **属性**              | SQL 版本 - MSSQL2012，SQL 版本 - V12 |
@@ -442,7 +442,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 |
+| **组件**               | IoT 现场网关 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -564,7 +564,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 |
+| **组件**               | Azure 存储 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -575,7 +575,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 |
+| **组件**               | Azure 存储 |
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 空值 |

@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892637"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022405"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -169,7 +169,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
     ![状态成功](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
 >[!NOTE]
-> 当你希望更新/更改加密密钥时，此过程保持不变。 如果希望从其他 Key Vault 中更新和使用某个密钥 (不同于当前使用) 的密钥，请确保：
+> 当你希望更新/更改加密密钥时，此过程保持不变。 如果要从其他 Key Vault 中更新和使用某个密钥 (不同于当前所用) 的密钥，请确保：
 >
 > - Key Vault 与恢复服务保管库位于同一区域
 >
@@ -242,7 +242,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 不可以，保管库在过去不能对任何项进行任何保护。
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一个使用 CMK 加密的保管库。 以后是否可以使用平台托管密钥恢复到加密，即使已将备份项保护到保管库？
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一个使用 CMK 加密的保管库。 以后是否可以使用平台托管密钥恢复到加密，即使已将备份项保护到保管库？
 
 否，启用 CMK 加密后，无法将其还原为使用平台管理的密钥。 你可以根据要求更改所用的密钥。
 

@@ -3,12 +3,12 @@ title: 安全功能概述
 description: 了解 Azure 备份中的安全功能，这些功能可帮助你保护备份数据并满足企业的安全需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890461"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012545"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中的安全功能概述
 
@@ -34,7 +34,7 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 ## <a name="internet-connectivity-not-required-for-azure-vm-backup"></a>无需建立 Internet 连接即可创建 Azure VM 备份
 
-备份 Azure VM 需要将虚拟机磁盘中的数据移到恢复服务保管库。 但是，所需的通信和数据传输全部只在 Azure 主干网络中发生，无需访问虚拟网络。 因此，你无需允许访问任何 IP 或 FQDN 即可备份受保护的网络中的 Azure VM。
+备份 Azure VM 需要将虚拟机磁盘中的数据移到恢复服务保管库。 但是，所需的通信和数据传输全部只在 Azure 主干网络中发生，无需访问虚拟网络。 因此，放置在受保护网络中的 Azure VM 备份不需要你授予对任何 IP 或 FQDN 的访问权限。
 
 ## <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -70,7 +70,7 @@ Azure 备份服务使用 Microsoft Azure 恢复服务 (MARS) 代理将本地计�
 
 * 删除的备份数据自删除之日起会额外保留 14 天。 这可以确保能够在给定的时间段内恢复数据，因此即使遭到攻击，也不会丢失数据。 此外，还保留了更多的最小恢复点，以防止数据损坏。 [详细了解如何恢复已删除的备份数据](./backup-azure-security-feature.md#recover-deleted-backup-data)。
 
-* 对于使用 Microsoft Azure 恢复服务 (MARS) 代理备份的数据，使用密码来确保数据在上传到 Azure 备份之前被加密，且仅在从 Azure 备份下载后才被解密。 密码详细信息仅提供给创建密码的用户以及使用该密码配置的代理。 不会通过服务传输任何信息，也不会与服务共享任何信息。 这可以全面确保数据的安全性，因为在没有通行短语的情况下，无法使用无意中公开的任何数据（例如，在网络中出现中间人攻击时就是如此），而通行短语不会在网络中发送。
+* 对于使用 Microsoft Azure 恢复服务 (MARS) 代理备份的数据，使用密码来确保数据在上传到 Azure 备份之前被加密，且仅在从 Azure 备份下载后才被解密。 通行短语详细信息仅适用于创建通行短语的用户，以及使用它配置的代理。 不会通过服务传输任何信息，也不会与服务共享任何信息。 这可确保数据的完整安全性，因为任何无意中公开 (（例如，在没有通行短语的情况下攻击) 无法使用，且密码不通过网络发送。
 
 ## <a name="compliance-with-standardized-security-requirements"></a>符合标准化安全要求
 

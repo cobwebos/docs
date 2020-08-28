@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f34a98ccbe069a5cb9e2c26a88e486b27f016fe1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9410f06298bd40fe6e0bf8f3fca1be4b87f793ed
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540013"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004487"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -289,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | 不适用，SQL 版本 - V12 |
-| **参考**              | [如何配置 AZURE SQL 数据库防火墙](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[为数据库引擎访问配置 Windows 防火墙](https://msdn.microsoft.com/library/ms175043) |
+| **参考**              | [如何配置 AZURE SQL 数据库防火墙](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、 [为数据库引擎访问配置 Windows 防火墙](https://msdn.microsoft.com/library/ms175043) |
 | **步骤** | 防火墙系统有助于阻止对计算机资源进行未经授权的访问。 要通过防火墙访问 SQL Server 数据库引擎的实例，必须将运行 SQL Server 的计算机上的防火墙配置为允许这种访问 |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>确保已在 ASP.NET Web API 中启用 CORS 的情况下只允许受信任的来源
@@ -583,7 +583,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -594,7 +594,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |

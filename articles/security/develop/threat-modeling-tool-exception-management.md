@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 05e9e627afecfc95e03eae39eed1183857df8b4b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f68bc5e4604f35f9c4c45cd3e38ddaf8d24cd03
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539928"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004453"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -33,7 +34,7 @@ ms.locfileid: "87539928"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 空值  |
@@ -57,7 +58,7 @@ ms.locfileid: "87539928"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 泛型、NET Framework 3 |

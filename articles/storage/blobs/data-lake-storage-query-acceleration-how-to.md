@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Data Lake Storage 查询加速来筛选数据（预览版） |Microsoft Docs
-description: 使用 "查询加速（预览版）" 检索存储帐户中的数据子集。
+title: 使用 Azure Data Lake Storage 查询加速 (预览版) 来筛选数据 |Microsoft Docs
+description: 使用 "查询加速 (预览") 从存储帐户检索数据的子集。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,21 +8,22 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6de6661e5c970c7c3cbfc944b8539060b8844a36
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465858"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005218"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查询加速来筛选数据（预览）
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查询加速 (预览来筛选数据) 
 
-本文介绍如何使用查询加速（预览版）从存储帐户中检索数据的子集。 
+本文介绍如何使用查询加速 (预览) 从存储帐户检索数据子集。 
 
-查询加速（预览版）是 Azure Data Lake Storage 的一种新功能，它使应用程序和分析框架可以通过仅检索执行给定操作所需的数据来大幅优化数据处理。 若要了解详细信息，请参阅[Azure Data Lake Storage 查询加速（预览版）](data-lake-storage-query-acceleration.md)。
+查询加速 (预览) 是 Azure Data Lake Storage 的一种新功能，它使应用程序和分析框架可以通过仅检索执行给定操作所需的数据来大幅优化数据处理。 若要了解详细信息，请参阅 [Azure Data Lake Storage Query 加速度 (preview) ](data-lake-storage-query-acceleration.md)。
 
 > [!NOTE]
-> 查询加速功能处于公共预览阶段，在加拿大中部和法国中部区域提供。 若要查看限制，请参阅[已知问题](data-lake-storage-known-issues.md)一文。 若要注册预览版，请参阅[此窗体](https://aka.ms/adls/qa-preview-signup)。  
+> 查询加速功能处于公共预览阶段，在加拿大中部和法国中部区域提供。 若要查看限制，请参阅 [已知问题](data-lake-storage-known-issues.md) 一文。 若要注册预览版，请参阅 [此窗体](https://aka.ms/adls/qa-preview-signup)。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +31,7 @@ ms.locfileid: "84465858"
 
 - 若要访问 Azure 存储，需要一个 Azure 订阅。 如果还没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- **常规用途 v2**存储帐户。 请参阅[创建存储帐户](../common/storage-quickstart-create-account.md)。
+- **常规用途 v2**存储帐户。 请参阅 [创建存储帐户](../common/storage-quickstart-create-account.md)。
 
 - [.NET SDK](https://dotnet.microsoft.com/download)。 
 
@@ -38,14 +39,14 @@ ms.locfileid: "84465858"
 
 - 若要访问 Azure 存储，需要一个 Azure 订阅。 如果还没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- **常规用途 v2**存储帐户。 请参阅[创建存储帐户](../common/storage-quickstart-create-account.md)。
+- **常规用途 v2**存储帐户。 请参阅 [创建存储帐户](../common/storage-quickstart-create-account.md)。
 
-- [Java 开发工具包（JDK）](/java/azure/jdk/?view=azure-java-stable)版本8或更高版本。
+- [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 或更高版本。
 
 - [Apache Maven](https://maven.apache.org/download.cgi)。 
 
   > [!NOTE] 
-  > 本文假设已使用 Apache Maven 创建了一个 Java 项目。 有关如何使用 Apache Maven 创建项目的示例，请参阅[设置](storage-quickstart-blobs-java.md#setting-up)。
+  > 本文假设已使用 Apache Maven 创建了一个 Java 项目。 有关如何使用 Apache Maven 创建项目的示例，请参阅 [设置](storage-quickstart-blobs-java.md#setting-up)。
   
 ---
 
@@ -57,7 +58,7 @@ ms.locfileid: "84465858"
 
 2. 将此文件的内容提取到您的项目目录。
 
-3. 在文本编辑器中打开项目文件（*.csproj*），并在元素内添加这些包引用 \<Project\> 。
+3. 在文本编辑器中打开项目文件 (*.csproj*) ，并将这些包引用添加到 \<Project\> 元素内部。
 
    ```xml
    <ItemGroup>
@@ -81,14 +82,14 @@ ms.locfileid: "84465858"
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. 在项目的根目录中创建目录。 根目录是包含**pom.xml**文件的目录。
+1. 在项目的根目录中创建目录。 根目录是包含 **pom.xml** 文件的目录。
 
    > [!NOTE]
-   > 本文中的示例假定目录的名称为**lib**。
+   > 本文中的示例假定目录的名称为 **lib**。
 
 2. 下载查询加速包。 你可以使用以下链接获取包含这些包的压缩 .zip 文件： [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) 。 
 
-3. 将此 .zip 文件中的文件提取到你创建的目录中。 在本示例中，该目录的名称为**lib**。 
+3. 将此 .zip 文件中的文件提取到你创建的目录中。 在本示例中，该目录的名称为 **lib**。 
 
 4. 在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。 
 
@@ -155,7 +156,7 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析库添加 using 语句。 本文中显示的示例使用 NuGet 上提供的[CsvHelper](https://www.nuget.org/packages/CsvHelper/)库分析 CSV 文件。 因此，我们会将这些 `using` 语句添加到代码文件的顶部。
+查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析库添加 using 语句。 本文中显示的示例使用 NuGet 上提供的 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 库分析 CSV 文件。 因此，我们会将这些 `using` 语句添加到代码文件的顶部。
 
 ```csharp
 using CsvHelper;
@@ -198,7 +199,7 @@ import org.apache.commons.csv.*;
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为[流](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)对象传输回应用程序。
+Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为 [流](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) 对象传输回应用程序。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -368,5 +369,5 @@ static void QueryMysteryBooks(BlobClient blobClient)
 ## <a name="next-steps"></a>后续步骤
 
 - [查询加速注册表单](https://aka.ms/adls/qa-preview-signup)    
-- [Azure Data Lake Storage 查询加速（预览版）](data-lake-storage-query-acceleration.md)
-- [查询加速 SQL 语言参考（预览版）](query-acceleration-sql-reference.md)
+- [Azure Data Lake Storage 查询加速 (预览版) ](data-lake-storage-query-acceleration.md)
+- [查询加速 SQL 语言参考 (预览) ](query-acceleration-sql-reference.md)

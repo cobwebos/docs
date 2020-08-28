@@ -3,12 +3,12 @@ title: 将 Windows 系统状态备份到 Azure
 description: 了解如何将 Windows Server 计算机的系统状态备份到 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824455"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013429"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
 
@@ -86,11 +86,11 @@ ms.locfileid: "88824455"
 
     ![下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保管库凭据下载到 **下载** 文件夹。 保管库凭据下载完成后，会显示一个弹出窗口，询问你是要打开还是要保存凭据。 选择“保存”。 如果意外选择了 " **打开**"，则让尝试打开保管库凭据的对话框失败。 你将无法打开保管库凭据。 继续执行下一步。 保管库凭据位于 " **下载** " 文件夹中。
+    保管库凭据下载到 **下载** 文件夹。 保管库凭据下载完成后，会显示一个弹出窗口，询问你是要打开还是要保存凭据。 选择“保存” 。 如果意外选择了 " **打开**"，则让尝试打开保管库凭据的对话框失败。 你将无法打开保管库凭据。 继续执行下一步。 保管库凭据位于 " **下载** " 文件夹中。
 
     ![已下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
-   > 保管库凭据只能保存到打算使用代理的 Windows Server 的本地位置。
+   > 保管库凭据必须仅保存到要在其上使用代理的 Windows Server 的本地位置。
    >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]

@@ -10,12 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1eb105671883d88d8fe34b9741d402d311556a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82859011"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013055"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>使用异地冗余设计高度可用的应用程序
 
@@ -23,7 +24,7 @@ ms.locfileid: "82859011"
 
 Azure 存储为异地冗余复制提供两个选项。 这两个选项之间的唯一差别在于如何在主要区域中复制数据：
 
-* 区域[冗余存储（GZRS）](storage-redundancy.md)：使用*区域冗余存储（ZRS）* 在主要区域的三个 Azure 可用性区域之间同步复制数据，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问权限异地冗余存储（GZRS）。
+* 区域[冗余存储 (GZRS) ](storage-redundancy.md)：使用*区域冗余存储 (ZRS) *以同步方式跨主要区域的三个 Azure 可用性区域复制数据，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用 (GZRS) 的读取访问区域冗余存储。
 
     对于需要最大可用性和持久性的方案，Microsoft 建议使用 GZRS/RA-GZRS。
 

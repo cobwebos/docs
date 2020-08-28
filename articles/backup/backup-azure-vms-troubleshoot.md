@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892331"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014652"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -29,9 +29,9 @@ ms.locfileid: "88892331"
   * 请确保其他备份服务未运行。
 * 在 `Services.msc` 中确保 **Windows Azure 来宾代理**服务处于“正在运行”状态。 如果 **Windows Azure 来宾代理**服务缺失，请按照[在恢复服务保管库中备份 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent) 中的说明来安装它。
 * **事件日志**可能会显示来自其他备份产品的备份失败，例如 Windows Server backup，不是由于 Azure 备份而导致的。 通过以下步骤确定问题是否来自 Azure 备份：
-  * 如果事件源或消息的“备份”条目出现错误，请检查 Azure IaaS VM Backup 备份是否已成功，以及是否已使用所需快照类型创建一个还原点。
+  * 如果事件源或消息中的条目 **备份** 有错误，请检查 AZURE IaaS VM 备份是否成功，以及是否使用所需的快照类型创建了还原点。
   * 如果 Azure 备份正常运行，则问题可能出在其他备份解决方案。
-  * 下面是一个示例，介绍了事件查看器错误 517，其中的 Azure 备份正常运行，但“Windows Server 备份”发生故障：<br>
+  * 下面是事件查看器错误517的示例，其中，Azure 备份正常运行，但 "Windows Server 备份" 失败：<br>
     ![Windows Server 备份故障](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * 如果 Azure 备份故障，则请在本文的“常见 VM 备份错误”部分查找相应的错误代码。
 
@@ -203,7 +203,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤：
 
-* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>或
+* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>or
 * 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
 ### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-由于存储帐户中的可用空间不足，无法复制虚拟机的快照

@@ -3,12 +3,13 @@ title: 使用共享访问签名进行 Azure 服务总线访问控制
 description: 根据如何使用共享访问签名进行服务总线访问控制，并详细介绍如何使用 Azure 服务总线进行 SAS 授权。
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066179"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012069"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
@@ -49,7 +50,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 将为授权规则分配主要密钥和辅助密钥。  它们是加密形式的强密钥。 请不要遗失或透漏这些密钥 - 在 [Azure 门户][Azure portal]中总要用到它们。 可以使用其中一个生成的密钥，并且随时可以重新生成密钥。 如果重新生成或更改策略中的密钥，以前基于该密钥颁发的所有令牌会立即失效。 但是，基于此类令牌创建的现有连接将继续工作，直到该令牌过期。
 
-创建服务总线命名空间时，系统会自动为该命名空间创建名为 **RootManageSharedAccessKey** 的策略规则。 此策略具有整个命名空间的“管理”权限。 建议将此规则视为 **root** 管理帐户，且不要在应用程序中使用它。 可以通过 PowerShell 或 Azure CLI 在门户的 "**配置**" 选项卡中创建其他策略规则。
+创建服务总线命名空间时，系统会自动为该命名空间创建名为 **RootManageSharedAccessKey** 的策略规则。 此策略具有整个命名空间的“管理”权限。 建议将此规则视为 **root** 管理帐户，且不要在应用程序中使用它。 可以通过 PowerShell 或 Azure CLI 在门户的 " **配置** " 选项卡中创建其他策略规则。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
 
@@ -91,7 +92,7 @@ URI 必须采用[百分比编码格式](/dotnet/api/system.web.httputility.urlen
 SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的所有资源有效。
 
 > [!NOTE]
-> 有关使用不同编程语言生成 SAS 令牌的示例，请参阅[生成 sas 令牌](/rest/api/eventhub/generate-sas-token)。 
+> 有关使用不同编程语言生成 SAS 令牌的示例，请参阅 [生成 sas 令牌](/rest/api/eventhub/generate-sas-token)。 
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 
