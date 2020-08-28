@@ -3,12 +3,13 @@ title: 事件网格异步操作的状态
 description: 介绍如何在 Azure 中跟踪事件网格异步操作。 它显示用于获取长时间运行操作的状态的值。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103324"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011678"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>跟踪事件网格异步 Azure 操作
 某些 Azure REST 操作以异步方式运行，因为操作无法快速完成。 本文介绍如何通过响应中返回的值跟踪异步操作的状态。  

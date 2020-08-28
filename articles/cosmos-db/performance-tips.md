@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: bc73292d7ed01468fc31e5a6203a4ba53a6425a2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505761"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008363"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>适用于 Azure Cosmos DB 和 .NET SDK v2 的性能提示
 
@@ -108,18 +109,18 @@ new ConnectionPolicy
 
 **临时端口耗尽**
 
-如果在实例上看到的连接量较高或端口使用率高，请首先验证客户端实例是否单一实例。 换句话说，客户端实例在应用程序的生存期内应是唯一的。
+如果实例上的连接量较高或端口使用率较高，请先确认客户端实例是否为单一实例。 换句话说，客户端实例在应用程序生存期内应是唯一的。
 
-在 TCP 协议上运行时，客户端通过使用长期连接（而不是 HTTPS 协议）来优化延迟，后者在2分钟处于非活动状态后终止连接。
+当在 TCP 协议上运行时，客户端使用长生存期连接（而非 HTTPS 协议）来优化延迟，后者在处于非活动状态 2 分钟后即终止连接。
 
-在具有稀疏访问权限的情况下，如果在与网关模式访问比较时发现连接计数更高，则可以：
+在具有稀疏访问且与网关模式访问相比连接计数更高的情况下，可以：
 
-* 将 [ConnectionPolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) 属性配置为 `PrivatePortPool` (与 framework 版本>= 4.6.1 和 .net core 版本 >= 2.0) 一起使用：此属性允许 SDK 为不同 Azure Cosmos DB 目标终结点使用少量临时端口。
-* 配置 [ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) 属性必须大于或等于10分钟。 建议值介于20分钟到24小时之间。
+* 将 [ConnectionPolicy.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) 属性配置为 `PrivatePortPool`（Framework 版本 >= 4.6.1 且 .NET Core 版本 >= 2.0 时有效）：此属性使 SDK 可以针对不同 Azure Cosmos DB 目标终结点使用一小部分临时端口。
+* 配置 [ConnectionPolicy.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) 属性必须大于或等于 10 分钟。 建议值介于 20 分钟到 24 小时之间。
 
 **调用 OpenAsync 以避免首次请求时启动延迟**
 
-默认情况下，第一个请求因为需要提取地址路由表而有较高的延迟。 使用 [SDK V2](sql-api-sdk-dotnet.md)时，请在 `OpenAsync()` 初始化过程中调用一次，以避免第一次请求时的此启动延迟。 调用如下所示： `await client.OpenAsync();`
+默认情况下，第一个请求因为需要提取地址路由表而有较高的延迟。 使用 [SDK V2](sql-api-sdk-dotnet.md) 时，请在初始化期间调用 `OpenAsync()` 一次，以避免在首次请求时出现这种启动延迟。 调用如下所示：`await client.OpenAsync();`
 
 > [!NOTE]
 > `OpenAsync` 会生成多个请求，这些请求用于获取帐户中所有容器的地址路由表。 如果帐户有多个容器，但其应用程序访问的是其中的一部分，则 `OpenAsync` 会生成不必要数量的流量，导致初始化速度缓慢。 因此，在这种情况下使用 `OpenAsync` 可能不起作用，因为它会降低应用程序启动速度。
@@ -130,7 +131,7 @@ new ConnectionPolicy
 
 :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB 连接策略" border="false":::
 
-**增加线程/任务的数目**
+**增加线程/任务数目**
 <a id="increase-threads"></a>
 
 由于对 Azure Cosmos DB 的调用是通过网络执行的，因此可能需要改变请求的并行度，以便最大程度地减少客户端应用程序等待请求的时间。 例如，如果使用 .NET [任务并行库](https://msdn.microsoft.com//library/dd460717.aspx)，请创建大约数百个在 Azure Cosmos DB 中进行读取或写入操作的任务。
@@ -212,7 +213,7 @@ IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollectio
 
 **增加线程/任务数目**
 
-请参阅本文的 "网络" 部分中的 [增加线程/任务的数量](#increase-threads) 。
+请参阅本文“网络”部分中的[增加线程/任务数目](#increase-threads)。
 
 ## <a name="indexing-policy"></a>索引编制策略
  

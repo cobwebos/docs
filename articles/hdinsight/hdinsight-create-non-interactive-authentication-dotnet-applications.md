@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074769"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021759"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 
-在应用程序自身的标识（非交互式）或应用程序的已登录用户标识（交互式）下运行 Microsoft .NET Azure HDInsight 应用程序。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。
+在应用程序自身的标识下运行 Microsoft .NET Azure HDInsight 应用程序， (非交互式) 或在应用程序的已登录用户的标识下 (交互式) 。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。
 
 从非交互式 .NET 应用程序，需要：
 
@@ -45,7 +45,7 @@ HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-
 ## <a name="develop-an-hdinsight-client-application"></a>开发 HDInsight 客户端应用程序
 
 1. 创建 C# 控制台应用程序。
-2. 添加以下[NuGet](https://www.nuget.org/)包：
+2. 添加以下 [NuGet](https://www.nuget.org/) 包：
 
     * `Install-Package Microsoft.Azure.Common.Authentication -Pre`
     * `Install-Package Microsoft.Azure.Management.HDInsight -Pre`
@@ -123,4 +123,4 @@ HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-
 
 * [在 Azure 门户中创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 * 了解如何[使用 Azure 资源管理器对服务主体进行身份验证](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
-* 了解[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md)。
+* 了解 azure [RBAC)  (基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md)。

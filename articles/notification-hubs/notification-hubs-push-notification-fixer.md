@@ -16,12 +16,13 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5139f75084eb0646db2fc8b05b04aaf3ddb2a12
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078028"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010777"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心内删除通知的问题
 
@@ -33,7 +34,7 @@ ms.locfileid: "87078028"
 
 在典型的发送通知流中，消息从*应用程序后端*发送到通知中心。 通知中心处理所有注册。 它会考虑配置的标记和标记表达式，以确定目标。 目标是指需要接收推送通知的注册。 这些注册可能跨越所有受支持的平台：Android、百度（中国的 Android 设备）、Fire OS (Amazon) iOS、Windows 和 Windows Phone。
 
-确定目标之后，通知中心将通知推送到设备平台的*推送通知服务*。 例如，适用于 iOS 和 macOS 的 Apple 推送通知服务（APNs）以及适用于 Android 设备的 Firebase Cloud 消息（FCM）。 通知中心推送跨多批注册拆分的通知。 通知中心基于你在 Azure 门户的“配置通知中心”  下设置的凭据，向各自的推送通知服务验证身份。 然后，推送通知服务将通知转发到各自的*客户端设备*。
+确定目标之后，通知中心将通知推送到设备平台的*推送通知服务*。 示例包括适用于 iOS 和 macOS 的 Apple 推送通知服务 (APNs) ，以及适用于 Android 设备的 Firebase Cloud 消息传送 (FCM) 。 通知中心推送跨多批注册拆分的通知。 通知中心基于你在 Azure 门户的“配置通知中心”  下设置的凭据，向各自的推送通知服务验证身份。 然后，推送通知服务将通知转发到各自的*客户端设备*。
 
 通知传递的最后一步在平台推送通知服务与设备之间进行。 通知传送可能会在推送通知过程的四个阶段（客户端、应用程序后端、通知中心和平台推送通知服务）中的任何一个阶段失败。 有关通知中心体系结构的详细信息，请参阅[通知中心概述]。
 
@@ -43,7 +44,7 @@ ms.locfileid: "87078028"
 
 ## <a name="notification-hubs-misconfiguration"></a>通知中心配置错误
 
-若要将通知发送到各自的推送通知服务，通知中心必须在应用程序环境中对自身进行身份验证。 必须使用目标平台的通知服务（Microsoft、Apple、Google 等）创建开发人员帐户。 然后，必须将应用程序注册到 OS，你在该 OS 中获取与目标 PNS 配合使用的令牌或密钥。
+若要将通知发送到各自的推送通知服务，通知中心必须在应用程序环境中对自身进行身份验证。 你必须创建一个开发人员帐户，其中包含目标平台的通知服务 (Microsoft、Apple、Google 等 ) 。 然后，必须将应用程序注册到 OS，你在该 OS 中获取与目标 PNS 配合使用的令牌或密钥。
 
 你必须将平台凭据添加到 Azure 门户中。 如果设备未收到任何通知，第一步是确保在通知中心配置正确的凭据。 凭据必须与在平台特定开发人员帐户下创建的应用程序相匹配。
 
@@ -69,7 +70,7 @@ ms.locfileid: "87078028"
 
 ### <a name="fcm-configuration"></a>FCM 配置
 
-1. 确保从 Firebase 获取的*服务器密钥*与你在 Azure 门户中注册的服务器密钥匹配。
+1. 确保从 Firebase 获取的 *服务器密钥* 与你在 Azure 门户中注册的服务器密钥匹配。
 
    ![Firebase 服务器密钥][3]
 
@@ -104,7 +105,7 @@ ms.locfileid: "87078028"
 
 在这种情况下，出错的注册会从数据库中删除。 然后，我们针对该批次中的其他设备重试通知传递。
 
-若要获取有关针对注册的失败传送尝试的更多错误消息，可以将通知中心 REST Api 用于[每条消息遥测：获取通知消息遥测](/rest/api/notificationhubs/get-notification-message-telemetry)和[PNS 反馈](/previous-versions/azure/reference/mt705560(v=azure.100))。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
+若要获取有关针对注册的失败传送尝试的更多错误消息，可以将通知中心 REST Api 用于 [每条消息遥测：获取通知消息遥测](/rest/api/notificationhubs/get-notification-message-telemetry) 和 [PNS 反馈](/previous-versions/azure/reference/mt705560(v=azure.100))。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
 
 ## <a name="push-notification-service-issues"></a>推送通知服务问题
 
@@ -114,7 +115,7 @@ ms.locfileid: "87078028"
 
 如果推送通知服务尝试传递通知，但设备处于脱机状态，则推送通知服务会存储通知。 通知只会存储有限的一段时间。 等设备可用时再将通知传递到设备。
 
-每个应用仅存储一个最新通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致上一个通知被放弃。 仅保留最新通知称为 FCM 中的在 APNs 和*折叠*中的*合并*。 （FCM 使用折叠键。）如果设备长时间处于脱机状态，则会放弃为该设备存储的通知。 有关详细信息，请参阅[APNs 概述]和[关于 FCM 消息]。
+每个应用仅存储一个最新通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致上一个通知被放弃。 仅保留最新通知称为 FCM 中的在 APNs 和*折叠*中的*合并*。  (FCM 使用折叠键 ) 。在设备长时间处于脱机状态时，将放弃为设备存储的通知。 有关详细信息，请参阅 [APNs 概述] 和 [关于 FCM 消息]。
 
 在通知中心，可以使用泛型 SendNotification API 通过 HTTP 标头来传递合并密钥。 例如，对于 .NET SDK，你会使用 `SendNotificationAsync`。 SendNotification API 还会将按原样传递的 HTTP 标头传递到各自的推送通知服务。
 
@@ -126,7 +127,7 @@ ms.locfileid: "87078028"
 
 #### <a name="push-notification-service-developer-portal"></a>推送通知服务开发人员门户
 
-在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅[教程：使用 Azure 通知中心将通知发送到通用 Windows 平台应用](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅 [教程：使用 Azure 通知中心将通知发送到通用 Windows 平台应用](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
 
 #### <a name="azure-portal"></a>Azure 门户
 
@@ -163,7 +164,7 @@ ms.locfileid: "87078028"
 ![Visual Studio：测试发送](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> 用于编辑注册的 Visual Studio 功能只能在开发/测试有限的注册时使用。 如果需要批量编辑注册，请考虑使用[如何：批量导出和修改注册](/previous-versions/azure/azure-services/dn790624(v=azure.100))中所述的导出和导入注册功能。
+> 用于编辑注册的 Visual Studio 功能只能在开发/测试有限的注册时使用。 如果需要批量编辑注册，请考虑使用 [如何：批量导出和修改注册](/previous-versions/azure/azure-services/dn790624(v=azure.100))中所述的导出和导入注册功能。
 
 #### <a name="service-bus-explorer"></a>服务总线资源管理器
 

@@ -3,12 +3,12 @@ title: 关于 Azure 虚拟机还原过程
 description: 了解 Azure 备份服务如何还原 Azure 虚拟机
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5458d02e241860a98d1ab5f64df141132813f8dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761383"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011950"
 ---
 # <a name="about-azure-vm-restore"></a>关于 Azure VM 还原
 
@@ -16,7 +16,7 @@ ms.locfileid: "88761383"
 
 ## <a name="concepts"></a>概念
 
-- **恢复点**（也称为**还原点**）：恢复点是所备份的原始数据的副本。
+- **恢复点** (也称为 " **还原点**) ：恢复点是要备份的原始数据的副本。
 
 - **层（快照与保管库）** ：Azure VM 备份分两个阶段进行：
 

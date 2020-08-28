@@ -4,12 +4,13 @@ description: 在本教程中，你将创建 .NET Core 控制台应用程序来�
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337548"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021657"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -378,7 +379,7 @@ namespace CoreReceiverApp
 }
 ```
 
-运行该程序，并再次检查门户。 “活动消息计数”和“当前”值现在为 **0**。 
+运行该程序，并再次检查门户。 “活动消息计数”和“当前”值现在为 **0**。
 
 ![收到消息后的队列][queue-message-receive]
 

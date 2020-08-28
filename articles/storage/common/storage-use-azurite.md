@@ -7,12 +7,13 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089407"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001903"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>将 Azurite 模拟器用于本地 Azure 存储开发
 
@@ -65,7 +66,7 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:队列主机** - 队列服务的侦听终结点。 默认设置为 127.0.0.1。
    - **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
    - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false**秒。
-   - **Azurite：跳过 Api 版本检查**-跳过请求 api 版本检查。 默认值是 **false**秒。
+   - **Azurite：跳过 Api 版本检查** -跳过请求 api 版本检查。 默认值是 **false**秒。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -312,7 +313,7 @@ Azurite 通过为 `--oauth` 开关指定 `basic` 参数来支持基本身份验�
 
 ### <a name="skip-api-version-check"></a>跳过 API 版本检查
 
-**可选**-启动时，Azurite 检查请求的 API 版本是否有效。 以下命令跳过 API 版本检查：
+**可选** -启动时，Azurite 检查请求的 API 版本是否有效。 以下命令跳过 API 版本检查：
 
 ```console
 azurite --skipApiVersionCheck
@@ -327,7 +328,7 @@ azurite --skipApiVersionCheck
 
 ### <a name="well-known-storage-account-and-key"></a>已知的存储帐户和密钥
 
-Azurite 接受旧式 Azure 存储仿真器使用的众所周知的帐户和密钥。
+Azurite 接受旧版 Azure 存储模拟器使用的众所周知帐户和密钥。
 
 - 帐户名称：`devstoreaccount1`
 - 帐户密钥：`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
@@ -561,5 +562,5 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 存储仿真器进行开发和测试](storage-use-emulator.md)介绍了旧式 Azure 存储仿真器（现已由 Azurite 取代）。
-- [配置 Azure 存储连接字符串](storage-configure-connection-string.md)说明了如何汇编有效的 Azure 存储连接字符串。
+- [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md) ，使旧的 Azure 存储模拟器被 Azurite 取代。
+- [配置 Azure 存储连接字符串](storage-configure-connection-string.md) 说明了如何汇编有效的 Azure 存储连接字符串。

@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584873"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998066"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建 Azure 机器学习数据集
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "88584873"
 
 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](../machine-learning/concept-data.md#data-workflow)一文。
 
-Azure 开放式数据集是特选的公共数据集，可用于添加特定于方案的功能，以丰富预测解决方案并提高其准确性。 请参阅可帮助你训练机器学习模型的公共域数据的 [开放数据集目录](https://azure.microsoft.com/services/op[en-datasets/catalog/) ，例如：
+Azure 开放式数据集是特选的公共数据集，可用于添加特定于方案的功能，以丰富预测解决方案并提高其准确性。 请参阅可帮助你训练机器学习模型的公共域数据的 [开放数据集目录](https://azure.microsoft.com/en-in/services/open-datasets/catalog/) ，例如：
 
 * [等](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [普查](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)
@@ -42,7 +42,7 @@ Azure 开放式数据集是特选的公共数据集，可用于添加特定于�
 
 对于本文，你需要：
 
-* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有订阅，请在开始之前创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * 一个 [Azure 机器学习工作区](../machine-learning/how-to-manage-workspace.md)。
 
@@ -50,12 +50,12 @@ Azure 开放式数据集是特选的公共数据集，可用于添加特定于�
 
     * 创建一个 [Azure 机器学习的计算实例](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)，该实例是一个完全配置且托管的开发环境，其中包括集成的笔记本和已安装的 SDK。
 
-    **OR**
+    **或者**
 
     * 使用你自己的 Python 环境，并使用 [这些说明](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)自行安装 SDK。
 
 > [!NOTE]
-> 某些数据集类依赖于 [dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) 包，此包仅兼容64位 Python。 对于 Linux 用户，仅在以下分发版上支持这些类： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。
+> 某些数据集类依赖于 [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) 包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux（7、8）、Ubuntu（14.04、16.04、18.04）、Fedora（27、28）、Debian（8、9）和 CentOS (7)。
 
 ## <a name="create-datasets-with-the-sdk"></a>用 SDK 创建数据集
 
@@ -101,7 +101,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 你还可以使用 [Azure 机器学习 studio](https://ml.azure.com)创建 Azure 开放数据集中的 Azure 机器学习数据集，这是一个合并的 web 界面，其中包含用于针对所有技能级别的数据科学专业人员执行数据科学方案的机器学习工具。
 
 > [!Note]
-> 通过 Azure 机器学习 studio 创建的数据集自动注册到工作区。
+> 通过 Azure 机器学习工作室创建的数据集会自动注册到工作区。
 
 1. 在工作区中，选择“资产”下的“数据集”选项卡。  在“创建数据集”下拉菜单中，选择“从开放数据集”。 
 
@@ -120,7 +120,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="access-datasets-for-your-experiments"></a>为试验访问数据集
 
-在机器学习试验中使用您的数据集来训练 ML 模型。 [详细了解如何使用数据集进行训练](../machine-learning/how-to-train-with-datasets.md)。
+在机器学习试验中使用数据集来训练 ML 模型。 [详细了解如何使用数据集进行训练](../machine-learning/how-to-train-with-datasets.md)。
 
 ## <a name="example-notebooks"></a>示例笔记本
 

@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳实践和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825573"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000356"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -214,7 +214,7 @@ Azure 备份服务的功能可让你灵活地管理你的成本，并仍能满�
 
 * Azure 备份使用 Azure Vm 的快照，并将它们与磁盘存储在一起，以提升恢复点的创建速度并加速还原操作。 这称为 "即时还原"。 默认情况下，即时还原快照保留两天。 此功能通过减少还原时间，允许从这些快照还原操作。 它减少了从保管库转换和复制数据所需的时间。 因此，可以查看 7 天内创建的快照的相应存储成本。 [在此处了解详细信息](backup-instant-restore-capability.md#configure-snapshot-retention)。
 
-* 默认情况下，Azure 备份保管库的存储复制类型设置为异地冗余 (GRS) 。 保护项后无法更改此选项。 异地冗余存储 (GRS) 提供比本地冗余存储 (LRS) 更高的数据持久性，允许选择使用跨区域还原并增加成本。 在较低的成本和更高的数据持续性之间检查最适合你的方案的权衡。 [在此处了解详细信息](backup-create-rs-vault.md#set-storage-redundancy)
+* 默认情况下，Azure 备份保管库的存储复制类型设置为异地冗余 (GRS) 。 保护项后无法更改此选项。 异地冗余存储 (GRS) 提供比本地冗余存储 (LRS) 更高的数据持久性，允许选择使用跨区域还原并增加成本。 在较低的成本和更高的数据持续性之间检查利弊，并确定最适合你的方案。 [在此处了解详细信息](backup-create-rs-vault.md#set-storage-redundancy)
 
 * 如果要保护 VM 和 VM 自身内运行的工作负荷，请查看是否需要这种双重保护。
 

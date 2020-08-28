@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5782c8b96534722a1e03ce619504e513a1c5e048
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a10dec01757fd344c9fa2bc92082082d2af085e9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539792"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000560"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -669,7 +670,7 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 空值  |
@@ -680,7 +681,7 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
+| **组件**               | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 空值  |

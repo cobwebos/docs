@@ -6,17 +6,15 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom:
-- mvc
-- amqp
+ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683994"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012324"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -65,7 +63,7 @@ ms.locfileid: "81683994"
 
 在 Visual Studio Code 中打开 **remote-monitoring-services-dotnet-master\storage-adapter** 文件夹。 单击任意“还原”按钮，修复未解决的依赖项****。
 
-打开文件**上的 vscode/launch.js** ，并将 Cosmos DB 连接字符串分配到**电脑 \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING**环境变量。
+打开文件 **上的 vscode/launch.js** ，并将 Cosmos DB 连接字符串分配到 **电脑 \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** 环境变量。
 
 > [!NOTE]
 > 在计算机本地运行微服务时，它仍然需要 Azure 中的 Cosmos DB 实例才能正常运行。
@@ -202,7 +200,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 * 将存储帐户连接字符串分配到 **PCS\_AZURE\_STORAGE\_ACCOUNT** 环境变量。
 * 将 cosmos DB 连接字符串分配到 **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** 环境变量。
 
-打开**WebService\appsettings.ini**文件，并按如下所述修改设置：
+打开 **WebService\appsettings.ini** 文件，并按如下所述修改设置：
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>将解决方案配置为包含新的设备模型文件
 

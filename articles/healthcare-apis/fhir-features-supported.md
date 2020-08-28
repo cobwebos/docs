@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999999"
 ---
 # <a name="features"></a>功能
 
@@ -57,7 +57,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 |-----------------------|-----------|-----------|-----------|---------|
 | Number                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
-| 字符串                | 是       | 是       | 是       |         |
+| String                | 是       | 是       | 是       |         |
 | 令牌                 | 是       | 是       | 是       |         |
 | 参考             | 是       | 是       | 是       |         |
 | 合成             | 是       | 是       | 是       |         |
@@ -98,7 +98,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | 搜索操作       | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
-| `_sort`                 | 否        | 否        | 否        |         |
+| `_sort`                 | 否        | 部分   | 部分        |   支持 `_sort=_lastUpdated`       |
 | `_score`                | 否        | 否        | 否        |         |
 | `_count`                | 是       | 是       | 是       |         |
 | `_summary`              | 部分   | 部分   | 部分   | 支持 `_summary=count` |

@@ -4,12 +4,12 @@ description: 了解虚拟机的软删除如何使备份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889819"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022235"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虚拟机的软删除
 
@@ -82,7 +82,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>使用 Azure PowerShell 撤销删除操作
 
-首先，获取处于软删除状态（即将删除）的相关备份项。
+首先，提取处于软删除状态的相关备份项， (即，将) 删除。
 
 ```powershell
 

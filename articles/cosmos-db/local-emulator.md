@@ -6,12 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 08/19/2020
-ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ece2fdf5c75decb9a2139b973ad4bbb3f0803a0b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607538"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011168"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -90,7 +91,7 @@ Azure Cosmos 模拟器启动时，会在浏览器中自动打开 Azure Cosmos �
 
 ## <a name="authenticating-requests"></a>对请求进行身份验证
 
-与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos 模拟器发出的每个请求都必须进行身份验证。 Azure Cosmos 模拟器支持单一固定帐户和用于主密钥身份验证的公开的身份验证密钥。 此帐户和密钥是允许用于 Azure Cosmos 模拟器的唯一凭据。 它们分别是：
+与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos 模拟器发出的每个请求都必须进行身份验证。 Azure Cosmos 模拟器支持单一固定帐户和用于主密钥身份验证的公开的身份验证密钥。 此帐户和密钥是允许用于 Azure Cosmos 模拟器的唯一凭据。 它们具有以下特点：
 
 ```bash
 Account name: localhost:<port>
@@ -270,7 +271,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 |FailOnSslCertificateNameMismatch | 默认情况下，模拟器会重新生成自签名的 TLS/SSL 证书（如果证书的 SAN 不包含模拟器主机的域名、本地 IPv4 地址、“localhost”和“127.0.0.1”）。 启用此选项后，模拟器在启动时会失败。 然后，你应使用 /GenCert 选项来创建并安装新的自签名 TLS/SSL 证书。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | 生成并安装新的自签名 TLS/SSL 证书。 选择性地包含用于通过网络访问模拟器的其他 DNS 名称的列表（以逗号分隔）。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>：其他 dns 名称的逗号分隔列表（可选）  |
 | DirectPorts |指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗号分隔的 4 个端口的列表 |
-| 密钥 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
+| 键 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
 | EnableRateLimiting | 指定已启用请求速率限制行为。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |指定已禁用请求速率限制行为。 |Microsoft.Azure.Cosmos.Emulator.exe /DisableRateLimiting | |
 | NoUI | 不显示模拟器用户界面。 | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
@@ -539,7 +540,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果收到“服务不可用”消息，模拟器可能无法初始化网络堆栈。 请查看是否安装了 Pulse 安全客户端或 Juniper 网络客户端，因为其网络筛选器驱动程序可能会导致该问题。 卸载第三方网络筛选器驱动程序通常可修复此问题。 或者，使用 /DisableRIO 启动模拟器，这会将模拟器网络通信切换到常规 Winsock。 
 
-- 如果你遇到 **"禁止"，则 "消息"： "请求是在传输协议或密码中使用禁止的加密进行的。检查帐户 SSL/TLS 允许的最小协议设置 ... "** 连接问题，这可能是由于 OS 中的全局更改 (例如有问必答 Preview Build 20170) 或启用 TLS 1.3 作为默认值的浏览器设置导致的。 使用 SDK 对 Cosmos 模拟器执行请求时可能会发生类似的错误，例如 **Microsoft.Azure.Documents.DocumentClientException：请求是在传输协议或密码中使用禁止的加密进行的。检查 "帐户 SSL/TLS 允许的最小协议" 设置**。 此时应该会出现这种情况，因为 Cosmos 模拟器仅接受并使用 TLS 1.2 协议。 建议的解决方法是将设置和默认值更改为 TLS 1.2;例如，在 IIS 管理器中，导航到 "站点"-> "默认网站"，找到端口8081的 "网站绑定" 并对其进行编辑以禁用 TLS 1.3。 可以通过 "设置" 选项对 Web 浏览器执行类似操作。
+- 如果你遇到 **"禁止"，则 "消息"： "请求是在传输协议或密码中使用禁止的加密进行的。检查帐户 SSL/TLS 允许的最小协议设置 ... "** 连接问题，这可能是由于 OS 中的全局更改 (例如有问必答 Preview Build 20170) 或启用 TLS 1.3 作为默认值的浏览器设置导致的。 使用 SDK 对 Cosmos 模拟器执行请求时可能会发生类似的错误，例如 **Microsoft.Azure.Documents.DocumentClientException：请求是在传输协议或密码中使用禁止的加密进行的。检查 "帐户 SSL/TLS 允许的最小协议" 设置**。 此时这是预期情况，因为 Cosmos 模拟器仅接受并使用 TLS 1.2 协议。 建议的解决方法是将设置和默认值更改为 TLS 1.2;例如，在 IIS 管理器中，导航到 "站点"-> "默认网站"，找到端口8081的 "网站绑定" 并对其进行编辑以禁用 TLS 1.3。 可以通过“设置”选项对 Web 浏览器执行类似操作。
 
 - 在模拟器运行时，如果计算机进入了睡眠模式或运行了任何 OS 更新，则你可能会看到“服务当前不可用”消息。 请右键单击 Windows 通知托盘中显示的图标，再选择“重置数据”来重置模拟器的数据。
 
