@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823975"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051162"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -61,7 +61,7 @@ A. 美国、西欧、北欧、法国、英国、日本、澳大利亚和加拿�
 
 Data Box 仅支持在与目标相同的国家/地区内进行数据引入或传出，而不会跨越任何国际界限。 唯一的例外情况是欧盟 (欧盟) 中的订单，其中的数据框可以与任何欧盟国家/地区一起发运。
 
-例如，在导入方案中，如果你有想要移动到 Azure WestUS 存储帐户的本地数据，则可以通过以下方式实现此目的：
+例如，在导入方案中，如果你有想要移动到 Azure WestUS 存储帐户的加拿大的源数据，则可以通过以下方式实现此目的：
 
 1. 通过在 Cananda 中选择存储帐户，定购 Data Box 在加拿大。 该设备从加拿大的 Azure 数据中心发运到在创建订单时提供的加拿大)  (。
 
@@ -155,7 +155,7 @@ A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”。 �
 A.  Data Box 的可用存储容量为 80 TB。 对于大小介于 40 TB - 80 TB 之间的数据，使用一台 Data Box 设备即可。 对于高达 500 TB 的大型数据大小，可以订购多台 Data Box 设备。 对于大小超过 500 TB 的数据，请注册 Data Box Heavy。  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>问： Data Box 支持的最大块 Blob 和页 Blob 大小是什么？ 
-A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。
+A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>问： 如何知道我的数据在传输过程中是否安全？ 
 A. 已实现多个安全功能，可在数据传输期间保护 Data Box。 其中包括防篡改封条、硬件和软件篡改检测和设备解锁密码。 有关详细信息，请参阅 [Azure Data Box 安全性和数据保护](data-box-security.md)。

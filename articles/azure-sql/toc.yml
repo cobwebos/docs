@@ -986,9 +986,11 @@
                 - name: 许可模型
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: 版本
+                - name: 更改版本
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: 更改版本
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: 存储
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault 集成
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性组
                   items:
+                    - name: Azure 门户
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell 或 Az CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure 快速入门模板
@@ -1194,7 +1198,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

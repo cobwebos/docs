@@ -3,21 +3,23 @@ title: 将墨迹数据发送到墨迹识别器 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何针对不同的应用程序调用墨迹分析器 API
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/24/2020
+ms.author: aahi
+ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221102"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051094"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>将墨迹数据发送到墨迹识别器 API 
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 数字墨迹是以数字形式表示手写和绘制等输入内容的技术。 此功能通常是使用一个数字化器实现的，该数字化器可以捕获输入设备（例如手写笔）的动作。 随着设备中不断推出丰富的数字墨迹书写体验，可以通过人工智能和机器学习来识别任意上下文中的书写形状和文本。 使用墨迹识别器 API 可以发送墨迹笔划及获取其详细信息。 
 

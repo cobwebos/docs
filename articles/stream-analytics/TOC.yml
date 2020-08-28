@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: 加密数据
           href: data-protection.md
+        - name: 异地冗余
+          href: geo-redundancy.md
     - name: 构建解决方案
       items:
         - name: Twitter 情绪分析

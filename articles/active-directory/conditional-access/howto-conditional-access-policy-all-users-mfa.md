@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a45ce7bee04716612431effe77315d739f328dba
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283038"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049292"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件访问：要求所有用户执行 MFA
 
@@ -53,7 +53,7 @@ ms.locfileid: "87283038"
    1. 选择“完成” 。
 1. 在“云应用或操作” > “包括”下，选择“所有云应用”。
    1. 在“排除”下，选择任何不需要多重身份验证的应用程序。
-1. 在 "**条件**  >  " "**客户端应用（预览）**" 下，在 "**选择将应用此策略的客户端应用"** 下，保留所有默认设置，然后选择 "**完成**
+1. 在 "**条件**  >  **客户端应用 (预览") **下，在 "**选择要应用此策略的客户端应用**，保留所有默认值并选择"**完成**"。
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
 1. 确认设置，然后将“启用策略”设置为“打开”。 
 1. 选择“创建”，以便创建启用策略所需的项目。
@@ -68,7 +68,7 @@ ms.locfileid: "87283038"
    1. 配置：“是”。
    1. 包括：“任何位置”。
    1. 排除：“所有受信任的位置”。
-   1. 选择“完成” 。
+   1. 选择“完成”  。
 1. 选择“完成” 。
 1. 保存策略更改。
 
@@ -76,6 +76,6 @@ ms.locfileid: "87283038"
 
 [常用条件访问策略](concept-conditional-access-policy-common.md)
 
-[使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+[使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

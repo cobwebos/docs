@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e80db84789ab5c8b0f07bc6a76ae99f8db3c8b80
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923868"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051026"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -85,7 +85,7 @@ $ctx = $storageAccount.Context
 
 容器充当文件的文件系统。 可以使用 `New-AzStorageContainer` cmdlet 创建一个文件系统。 
 
-此示例创建一个名为的容器 `my-file-system` 。
+此示例创建一个名为 `my-file-system` 的容器。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 使用 `New-AzDataLakeGen2Item` cmdlet 创建目录引用。 
 
-此示例将一个名为 `my-directory` 的目录添加到容器中。
+此示例将名为 `my-directory` 的目录添加到容器中。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -125,6 +125,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> 若要获取容器的根目录，请忽略 `-Path` 参数。
 
 ## <a name="rename-or-move-a-directory"></a>重命名或移动目录
 
@@ -202,7 +204,8 @@ $properties.Group
 $properties.Owner
 ```
 
-若要列出容器的内容，请 `-Path` 从命令中省略参数。
+> [!NOTE]
+> 若要列出容器的根目录的内容，请忽略 `-Path` 参数。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
@@ -227,6 +230,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> 若要将文件上传到容器的根目录，请忽略 `-Path` 参数。
 
 ## <a name="show-file-properties"></a>显示文件属性
 
@@ -270,7 +276,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。
 
-此示例获取 **容器** 的根目录的 acl，然后将 acl 打印到控制台。
+此示例获取某个容器根目录的 ACL，然后将该 ACL 输出到控制台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -299,13 +305,13 @@ $file.ACL
 
 ![获取目录的 ACL 输出](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
 
-在此示例中，所有者用户拥有读取、写入和执行权限。 所有者组仅拥有读取和执行权限。 有关访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
+在此示例中，所有者用户拥有读取、写入和执行权限。 所有者组仅拥有读取和执行权限。 有关这些访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
 ### <a name="set-an-acl"></a>设置 ACL
 
 使用 `set-AzDataLakeGen2ItemAclObject` cmdlet 为所有者用户、所有者组或其他用户创建 ACL。 然后使用 `Update-AzDataLakeGen2Item` cmdlet 提交 ACL。
 
-此示例在 **容器** 的根目录中为所属用户、拥有组或其他用户设置 acl，然后将 acl 打印到控制台。
+此示例针对所有者用户、所有者组或其他用户的容器根目录设置 ACL，然后将 ACL 输出到控制台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -393,7 +399,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表显示了用于 Data Lake Storage Gen1 映射到 Data Lake Storage Gen2 的 cmdlet 的 cmdlet。
 
-|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet| 说明 |
+|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet| 备注 |
 |--------|---------|-----|
 |AzDataLakeStoreChildItem|AzDataLakeGen2ChildItem|默认情况下，AzDataLakeGen2ChildItem cmdlet 仅列出第一级子项。 -递归参数以递归方式列出子项目。 |
 |AzDataLakeStoreItem<br>AzDataLakeStoreItemAclEntry<br>AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission|AzDataLakeGen2Item|AzDataLakeGen2Item cmdlet 的输出项具有以下属性： Acl、所有者、组和权限。|

@@ -10,14 +10,21 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 启动 Spring Cloud 应用 - 门户
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: 启动 Spring Cloud 应用 - Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: 启动 Spring Cloud 应用 - 源
-      href: spring-cloud-launch-from-source.md
-    - name: 启动 Spring Cloud 应用 - Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: 启动你的第一个应用
+      href: spring-cloud-quickstart.md
+    - name: 生成和运行微服务
+      expanded: true
+      items:
+        - name: 示例应用简介
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: 预配 Azure Spring Cloud 服务
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: 设置配置服务器
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: 构建和部署应用
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: 使用日志、指标和跟踪
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: 教程
   items:
     - name: 手动扩缩应用

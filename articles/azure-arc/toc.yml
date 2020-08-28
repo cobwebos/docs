@@ -1,0 +1,10 @@
+- name: Azure Arc 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Arc
+      href: arc-overview.md
+- name: 已启用 Arc 的服务器 >
+  href: ./servers/overview.md
+- name: 已启用 Arc 的 Kubernetes >
+  href: ./kubernetes/overview.md

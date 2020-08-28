@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640542"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049054"
 ---
 # <a name="configure-password-based-single-sign-on"></a>配置基于密码的单一登录
 
@@ -37,7 +37,7 @@ ms.locfileid: "88640542"
 
 -   允许管理员指定个人或组在使用更新凭据功能登录到应用程序时使用的用户名和密码 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 使用 Azure AD 作为标识提供者 (IdP) 并设置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
@@ -52,6 +52,9 @@ ms.locfileid: "88640542"
 ## <a name="basic-configuration"></a>基本配置
 
 在 [快速入门系列](view-applications-portal.md)中，你已了解如何将应用添加到你的租户，以便 Azure AD 知道该应用程序是否被用作应用程序 (IdP) 的标识提供者。 某些应用已预先配置，它们显示在 Azure AD 库中。 其他应用不在库中，您必须创建一个通用应用并进行手动配置。 基于密码的 SSO 选项可能不可用，具体取决于应用程序。 如果在应用的 "单一登录" 页上看不到 "基于密码的选项" 列表，则它将不可用。
+
+> [!IMPORTANT]
+> 基于密码的 SSO 需要 "我的应用" 浏览器扩展。 若要了解详细信息，请参阅 [计划应用部署](access-panel-deployment-plan.md)。
 
 基于密码的 SSO 的配置页面非常简单。 它仅包含应用程序使用的登录页的 URL。 此字符串必须是包含 "用户名" 输入字段的页面。
 

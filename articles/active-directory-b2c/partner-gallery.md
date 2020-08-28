@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814209"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049854"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
@@ -31,6 +31,7 @@ ms.locfileid: "88814209"
 | :--- | :--- |
 | ![徽标](./media/partner-gallery/arkose-logo.png) | [Arkose 实验室](./partner-arkose-labs.md) 是一种欺诈防御解决方案提供商，可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户。
 | ![徽标](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) 是一种身份验证和校对提供程序，它根据用户属性执行风险评估，以防止欺诈。|
+| ![徽标](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) 是真正的无密码身份验证提供程序，它将密码替换为公钥加密，消除了欺诈、仿冒和凭据重用。|
 | ![徽标](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) 是具有 ID 验证解决方案、欺诈防御解决方案、合规性解决方案和其他信息的身份验证和校对提供程序。|
 | ![徽标](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) 是一种电子识别、身份验证和信任服务 (eiDAS) 相容的数字标识解决方案，允许用户安全登录，无需使用智能卡读卡器、密码、双因素身份验证和多个 PIN 代码。 |
 | ![徽标](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一种 ID 验证服务，用于启用实时自动 ID 验证，从而保护客户数据。 |

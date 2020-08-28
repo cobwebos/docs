@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381afdbb57e2de41382a10c1912abac980e89cbd
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948464"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049530"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
@@ -85,7 +85,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 1. 导航到“Azure 门户” > “Azure Active Directory” > “登录”。  
 1. 如果未显示“客户端应用”列，请单击“列” > “客户端应用”添加该列。 
-1. **添加筛选器**  > **客户端应用**> 选择所有旧的身份验证协议。 在筛选对话框 blox 外选择，以应用您的选择并关闭对话框。
+1. **添加筛选器**  > **客户端应用**> 选择所有旧的身份验证协议。 选择 "筛选" 对话框外部，以应用所做选择并关闭对话框。
 
 筛选将仅显示通过旧式身份验证协议进行的登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 “基本信息”选项卡下的“客户端应用”字段将指示使用了哪个旧式身份验证协议。
 
@@ -122,7 +122,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+- [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 - 如果你还不熟悉配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用进行多重身份验证 (MFA)](../authentication/tutorial-enable-azure-mfa.md) 的示例。
 - 有关新式身份验证支持的详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
 - [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

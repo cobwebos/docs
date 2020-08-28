@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716293"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049564"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -92,7 +92,7 @@ ms.locfileid: "88716293"
 
 ### <a name="contingencies-for-user-lockout"></a>用户锁定应急计划
 
-或者，组织也可以创建应急策略。 若要创建应急策略，就必须在业务连续性、运营成本、财务成本和安全风险之间定义权衡标准。 例如，可以仅针对一部分用户、一部分应用、一部分客户端或一部分位置激活应急策略。 在未实施缓解方法的中断期间，应急策略将为管理员和最终用户提供对应用和资源的访问权限。 在未使用时，Microsoft 建议在 [仅报告模式下](../conditional-access/howto-conditional-access-report-only.md) 启用应变策略，以便管理员可以监视策略需要打开时的潜在影响。
+或者，组织也可以创建应急策略。 若要创建应急策略，就必须在业务连续性、运营成本、财务成本和安全风险之间定义权衡标准。 例如，可以仅针对一部分用户、一部分应用、一部分客户端或一部分位置激活应急策略。 在未实施缓解方法的中断期间，应急策略将为管理员和最终用户提供对应用和资源的访问权限。 在未使用时，Microsoft 建议在 [仅报告模式下](../conditional-access/howto-conditional-access-insights-reporting.md) 启用应变策略，以便管理员可以监视策略需要打开时的潜在影响。
 
  了解你在中断期间可能面临的风险有助于降低风险，是规划过程中的关键环节。 若要创建应急计划，请首先确定组织的以下业务要求：
 

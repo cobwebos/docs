@@ -4,12 +4,12 @@ description: 数据驻留和有关启用了 Azure Arc 的服务器的信息 (预
 ms.topic: reference
 ms.date: 08/25/2020
 ms.custom: references_regions
-ms.openlocfilehash: 028398c27dde9760192d366b9e8a91dca8e429cf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f207f5889c1764eebcc6081960ff70c0d5bca3a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860740"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048850"
 ---
 # <a name="azure-arc-enabled-servers-preview-data-residency"></a>已启用 Azure Arc 的服务器 (预览版) ：数据驻留
 
@@ -34,4 +34,4 @@ ms.locfileid: "88860740"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 复原](/architecture/reliability/architect)设计的详细信息。
+了解有关 [Azure 复原](/azure/architecture/reliability/architect)设计的详细信息。
