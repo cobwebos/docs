@@ -3,12 +3,12 @@ title: '启用了 Azure Arc 的服务器 (预览版的 VM 扩展管理) '
 description: 已启用 Azure Arc 的服务器 (预览版) 可以管理虚拟机扩展的部署，这些扩展提供部署后配置和自动化任务以及非 Azure Vm。
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213119"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018155"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>启用了 Azure Arc 的服务器 (预览版的虚拟机扩展管理) 
 
@@ -89,7 +89,7 @@ VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShel
 
     ![安装 Log Analytics VM 扩展](./media/manage-vm-extensions/mma-extension-config.png)
 
-    若要完成安装，你需要提供工作区 ID 和主密钥。 如果你不熟悉如何查找此信息，请参阅 [获取工作区 ID 和密钥](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)。
+    若要完成安装，你需要提供工作区 ID 和主密钥。 如果你不熟悉如何查找此信息，请参阅 [获取工作区 ID 和密钥](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
 
 4. 确认提供所需信息后，选择 " **创建**"。 将显示部署的摘要，你可以查看部署的状态。
 
@@ -707,7 +707,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 可以从 Azure 门户检索有关扩展部署状态的数据。
 

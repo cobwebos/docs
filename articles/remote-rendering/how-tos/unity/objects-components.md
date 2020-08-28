@@ -5,18 +5,19 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: e55589a388a1883f42284f2e20c6d5619b63f48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 662c28196b06f5fbe49f69cb7145fdd33805e000
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565474"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019039"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>与 Unity 游戏对象和组件交互
 
-Azure 远程呈现（ARR）针对大量对象进行了优化（请参阅[限制](../../reference/limits.md)）。 尽管可以在主机上管理大型和复杂的层次结构，但在低功率设备上，在 Unity 中复制它们都是不可行的。
+Azure 远程渲染 (ARR) 经过优化，可用于大量对象 (请参阅 [限制](../../reference/limits.md)) 。 尽管可以在主机上管理大型和复杂的层次结构，但在低功率设备上，在 Unity 中复制它们都是不可行的。
 
-因此，当在主机上加载模型时，Azure 远程呈现会镜像客户端设备上有关模型结构的信息（这会产生网络流量），但不会复制 Unity 中的对象和组件。 相反，它要求您手动请求所需的 Unity 游戏对象和组件，以便您可以将系统开销限制在实际所需的范围之外。 这样，就可以更好地控制客户端性能。
+因此，当在主机上加载模型时，Azure 远程呈现会镜像客户端设备上有关模型结构的信息 (这将导致网络流量) ，但不会复制 Unity 中的对象和组件。 相反，它要求您手动请求所需的 Unity 游戏对象和组件，以便您可以将系统开销限制在实际所需的范围之外。 这样，就可以更好地控制客户端性能。
 
 因此，Azure 远程呈现的 Unity 集成附带了附加功能，可根据需要复制远程呈现结构。
 
@@ -82,7 +83,7 @@ async void LoadModelWithAwait()
 }
 ```
 
-上面的代码示例通过 SAS 使用模型加载路径，因为内置模型已加载。 通过 blob 容器（使用和）对模型进行寻址 `LoadModelAsync` `LoadModelParams` 完全类似。
+上面的代码示例通过 SAS 使用模型加载路径，因为内置模型已加载。 使用 (的 blob 容器来寻址模型 `LoadModelAsync` ， `LoadModelParams`) 完全类似。
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
@@ -104,7 +105,7 @@ var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteMa
 
 ## <a name="coupled-lifetimes"></a>耦合生存期
 
-远程[实体](../../concepts/entities.md)和 Unity 游戏对象的生存期是耦合的，而是通过绑定 `RemoteEntitySyncObject` 。 如果调用 `UnityEngine.Object.Destroy(...)` 此类游戏对象，也会删除远程实体。
+远程 [实体](../../concepts/entities.md) 和 Unity 游戏对象的生存期是耦合的，而是通过绑定 `RemoteEntitySyncObject` 。 如果调用 `UnityEngine.Object.Destroy(...)` 此类游戏对象，也会删除远程实体。
 
 若要销毁 Unity 游戏对象，而不影响远程实体，首先需要对调用 `Unbind()` `RemoteEntitySyncObject` 。
 

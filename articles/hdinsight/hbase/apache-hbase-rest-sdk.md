@@ -6,14 +6,14 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 9d03a201711488b1c0a3f4f2bab0981f83374a5d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7c62f1875fe44aa001323af5d83a0007ee18f11d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085576"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017339"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
 
@@ -114,7 +114,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 实现了[Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
+HBase 实现了 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
 
 ![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 

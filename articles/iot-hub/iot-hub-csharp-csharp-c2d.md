@@ -14,12 +14,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 0b4fbe4ab7accec18f48e6319e16d10f083a8709
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327440"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008329"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 
@@ -61,7 +62,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 在本部分中，会修改在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中创建的设备应用，以接收来自 IoT 中心的云到设备消息。
 
-1. 在 Visual Studio 的**SimulatedDevice**项目中，将以下方法添加到**SimulatedDevice**类。
+1. 在 Visual Studio 的 **SimulatedDevice** 项目中，将以下方法添加到 **SimulatedDevice** 类。
 
    ```csharp
     private static async void ReceiveC2dAsync()
@@ -114,7 +115,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
    ![在 Visual Studio 中配置新项目](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
-1. 在解决方案资源管理器中，右键单击新项目，然后选择 "**管理 NuGet 包**"。
+1. 在解决方案资源管理器中，右键单击新项目，然后选择 " **管理 NuGet 包**"。
 
 1. 在“管理 NuGet 程序包”中，选择“浏览”，然后搜索并选择“Microsoft.Azure.Devices”。 选择“安装”。
 
@@ -126,7 +127,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    using Microsoft.Azure.Devices;
    ```
 
-1. 将以下字段添加到 Program 类。 将 `{iot hub connection string}` 占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中记下的 iot 中心连接字符串。 将 `{device id}` 占位符值替换为在将[遥测从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门中添加的设备的设备 ID。
+1. 将以下字段添加到 Program 类。 将 `{iot hub connection string}` 占位符值替换为之前在 [获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中记下的 iot 中心连接字符串。 将 `{device id}` 占位符值替换为在将 [遥测从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md) 快速入门中添加的设备的设备 ID。
 
    ``` csharp
    static ServiceClient serviceClient;
@@ -134,7 +135,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    static string targetDevice = "{device id}";
    ```
 
-1. 将以下方法添加到**Program**类，以将消息发送到设备。
+1. 将以下方法添加到 **Program** 类，以将消息发送到设备。
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -161,7 +162,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 在 "**通用属性**  >  " "**启动项目**" 中，选择 "**多启动项目**"，然后选择 " **SimulatedDevice** " 和 " **SendCloudToDevice**" 的**启动**操作。 选择“确定”保存更改。
 
-1. 按 **F5**。 这两个应用程序应该都会启动。 选择**SendCloudToDevice**窗口，然后按**enter**。 应会看到设备应用正在接收的消息。
+1. 按 **F5**。 这两个应用程序应该都会启动。 选择 **SendCloudToDevice** 窗口，然后按 **enter**。 应会看到设备应用正在接收的消息。
 
    ![应用接收消息](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
@@ -208,7 +209,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-1. 按 **F5** 运行应用。 你应看到这两个应用程序都启动。 选择**SendCloudToDevice**窗口，然后按**enter**。 应会看到设备应用正在接收的消息，几秒钟后，**SendCloudToDevice** 应用程序将收到反馈消息。
+1. 按 **F5** 运行应用。 你应看到这两个应用程序都启动。 选择 **SendCloudToDevice** 窗口，然后按 **enter**。 应会看到设备应用正在接收的消息，几秒钟后，**SendCloudToDevice** 应用程序将收到反馈消息。
 
    ![应用接收消息](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 

@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: f953b21a221967c2310b2fc70056d48863149821
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4c75af054a342e74606696f09c227822f385e096
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220042"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017985"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>从 Azure 通知中心安全地推送通知
 
@@ -45,9 +46,9 @@ ms.locfileid: "86220042"
    * 此设备将联系请求安全有效负载的后端。
    * 此应用可以将有效负载显示为设备上的通知。
 
-请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。 这可以保证完全无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，此设备应用在收到通知时应显示提示用户启动应用的通用通知。 然后应用会对用户进行身份验证，并显示通知有效负载。
+请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。 这可以保证完全无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，此设备应用在收到通知时应显示提示用户启动应用的通用通知。 然后，应用对用户进行身份验证并显示通知有效负载。
 
-本安全推送教程演示如何安全地发送推送通知。 本教程以[通知用户](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)教程为基础，因此应先完成该教程中的步骤。
+本安全推送教程演示如何安全地发送推送通知。 本教程以“[通知用户](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)”教程为基础，因此应先完成该教程中的步骤。
 
 > [!NOTE]
 > 本教程假设已根据[通知中心入门（Windows 应用商店）](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中所述创建并配置了通知中心。
@@ -159,7 +160,7 @@ ms.locfileid: "86220042"
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. 在解决方案资源管理器的**NotifyUserWindowsPhone (Windows Phone 8.1) **项目中，右键单击 "**引用**"，然后单击 "**添加引用 ...**"。在 "引用管理器" 对话框中，选中 " **PushBackgroundComponent**" 旁边的框，然后单击 **"确定"**。
+11. 在解决方案资源管理器的 **NotifyUserWindowsPhone (Windows Phone 8.1) ** 项目中，右键单击 " **引用**"，然后单击 " **添加引用 ...**"。在 "引用管理器" 对话框中，选中 " **PushBackgroundComponent**" 旁边的框，然后单击 **"确定"**。
 12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“**通知**”下，将“****”设置为“****”。
 
     ![解决方案资源管理器的窗口的屏幕截图，其中的 "支持 Toast" 选项设置为 "是"，以红色显示。][3]
@@ -168,7 +169,7 @@ ms.locfileid: "86220042"
 15. 在“**应用设置**”下的 **Package.appxmanifest** 中，在“**入口点**”字段中键入 **PushBackgroundComponent.PushBackgroundTask**。
 
     ![解决方案资源管理器窗口的屏幕截图，其中包含可用声明、支持的声明、推送通知和以红色列出的入口点选项。][13]
-16. 在 "**文件**" 菜单中，单击 "**全部保存**"。
+16. 在 " **文件** " 菜单中，单击 " **全部保存**"。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -177,7 +178,7 @@ ms.locfileid: "86220042"
 1. 在 Visual Studio 中运行此 **AppBackend** Web API 应用程序。 将显示 ASP.NET 网页。
 2. 在 Visual Studio 中运行此 **NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone 应用。 Windows Phone 模拟器会自动运行并加载应用程序。
 3. 在 **NotifyUserWindowsPhone** 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的值。
-4. 在 **NotifyUserWindowsPhone** 应用 UI 中，单击“**登录并注册**”。 然后单击“发送推送”****。
+4. 在 **NotifyUserWindowsPhone** 应用 UI 中，单击“**登录并注册**”。 然后单击“发送推送” 。
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

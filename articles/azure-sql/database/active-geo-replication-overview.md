@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448740"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018359"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,7 +83,7 @@ ms.locfileid: "87448740"
 > 如果主数据库上有架构更新，则日志重播会在辅助数据库上延迟。 因为架构更新需要在辅助数据库上有架构锁。
 
 > [!IMPORTANT]
-> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它也不保证可用性区域的隔离。 使用具有[区域冗余配置](high-availability-sla.md#zone-redundant-configuration)的业务关键或高级服务层来实现可用性区域隔离。
+> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它也不保证可用性区域的隔离。 使用具有 [区域冗余配置](high-availability-sla.md#zone-redundant-configuration) 的业务关键或高级服务层来实现可用性区域隔离。
 >
 
 - **计划的故障转移**
@@ -127,23 +127,23 @@ ms.locfileid: "87448740"
 由于辅助数据库上的计算大小较小而在主数据库上进行的事务日志速率限制是使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待类型报告的，可通过 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图查看。
 
 > [!NOTE]
-> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅[事务日志速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
+> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅 [事务日志速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](purchasing-models.md)。
 
 ## <a name="cross-subscription-geo-replication"></a>跨订阅异地复制
 
-若要在属于不同订阅的两个数据库之间设置活动异地复制（无论是在同一个租户下），必须遵循本部分中所述的特殊步骤。  此过程基于 SQL 命令，要求：
+若要在属于不同订阅的两个数据库之间设置活动异地复制 (是在同一租户下，还是不) ，则必须遵循本部分中所述的特殊步骤。  此过程基于 SQL 命令，要求：
 
 - 在两个服务器上创建特权登录
-- 将 IP 地址添加到在两个服务器上执行更改的客户端（例如运行 SQL Server Management Studio 的主机的 IP 地址）的允许列表。
+- 将 IP 地址添加到在两个服务器上执行更改的客户端允许列表， (如运行 SQL Server Management Studio) 的主机的 IP 地址。
 
 执行更改的客户端需要对主服务器的网络访问。 尽管客户端的相同 IP 地址必须添加到辅助服务器上的允许列表中，但并不严格要求与辅助服务器建立网络连接。
 
 ### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主服务器上
 
-1. 将 IP 地址添加到执行更改的客户端允许列表（有关详细信息，请参阅[配置防火墙](firewall-configure.md)）。
-1. 创建专用于设置活动异地复制的登录名（并根据需要调整凭据）：
+1. 将 IP 地址添加到执行更改的客户端允许列表中 (有关详细信息，请参阅 [配置防火墙](firewall-configure.md)) 。
+1. 创建专用于设置活动异地复制 (的登录名，并根据需要调整凭据) ：
 
    ```sql
    create login geodrsetup with password = 'ComplexPassword01'
@@ -178,7 +178,8 @@ ms.locfileid: "87448740"
 
 ### <a name="on-the-master-of-the-secondary-server"></a>辅助服务器的主服务器上
 
-1. 将 IP 地址添加到执行更改的客户端允许列表中。 它必须与主服务器的 IP 地址完全相同。
+1. 将客户端 IP 地址添加到辅助服务器的 "防火墙规则" 下的 "允许" 列表中。 验证是否已将在主服务器上添加的客户端 IP 地址完全相同的客户端 IP 地址添加到辅助副本。 在运行 ALTER DATABASE ADD 辅助命令以启动异地复制之前，必须执行此步骤。
+
 1. 使用相同的用户名密码和 SID，在主服务器上创建相同的登录名：
 
    ```sql
@@ -195,7 +196,7 @@ ms.locfileid: "87448740"
 ### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主服务器上
 
 1. 使用新登录名登录到主服务器的主服务器。
-1. 在辅助服务器上创建源数据库的辅助副本（根据需要调整数据库名称和服务器名称）：
+1. 在辅助服务器上创建源数据库的辅助副本 (根据需要调整数据库名称和 servername) ：
 
    ```sql
    alter database dbrep add secondary on server <servername>
@@ -238,14 +239,14 @@ ms.locfileid: "87448740"
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅[azure 基于角色的访问控制（AZURE RBAC）](../../role-based-access-control/overview.md)。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL：管理单一数据库和共用数据库的故障转移
 
 > [!IMPORTANT]
 > 这些 Transact-SQL 命令仅适用于活动异地复制，不适用于故障转移组。 因此，它们也不适用于 SQL 托管实例的实例，因为它们仅支持故障转移组。
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 参数为现有数据库创建辅助数据库，并开始数据复制 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS 将辅助数据库切换为主数据库，启动故障转移 |

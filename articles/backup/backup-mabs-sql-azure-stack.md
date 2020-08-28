@@ -3,12 +3,12 @@ title: 在 Azure Stack 上备份 SQL Server 工作负荷
 description: 本文介绍如何配置 Microsoft Azure 备份服务器 (MABS) 以在 Azure Stack 上保护 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032640"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017951"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>在 Azure Stack 上备份 SQL Server
 
@@ -24,10 +24,10 @@ ms.locfileid: "87032640"
 
 * 如果具有包含远程文件共享上的文件的数据库，则保护将失败，错误 ID 为 104。 MABS 不支持对远程文件共享上的 SQL Server 数据进行保护。
 * MABS 无法保护远程 SMB 共享上存储的数据库。
-* 确保将[可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
-* 必须将系统帐户**NTAuthority\System**显式添加到 SQL Server 上的 Sysadmin 组。
-* 为部分包含的数据库执行备用位置恢复时，必须确保目标 SQL 实例启用了 "[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)" 功能。
-* 为文件流数据库执行备用位置恢复时，必须确保目标 SQL 实例启用了 "[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)" 功能。
+* 确保[将可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 必须将系统帐户 **NTAuthority\System** 显式添加到 SQL Server 上的 Sysadmin 组。
+* 在为部分包含的数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)功能。
+* 在为文件流数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)功能。
 * 对 SQL Server AlwaysOn 的保护：
   * 在创建保护组时，MABS 检测可用性组。
   * MABS 检测到故障转移并继续保护数据库。
@@ -40,12 +40,12 @@ ms.locfileid: "87032640"
     * 任意副本 - 备份可以在可用性组中的任何可用性副本上进行。 将根据每个节点的备份优先级来确定要从中备份的节点。
   * 注意以下事项：
     * 可以从任何可读副本（即主副本、同步辅助副本、异步辅助副本）进行备份。
-    * 如果将任何副本排除在备份之外（例如启用了 "**排除副本**" 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
+    * 如果将任何副本排除在备份之外（例如启用了 " **排除副本** " 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
     * 如果有多个副本可用和可读，则将选择具有最高备份优先级的节点进行备份。
     * 如果所选节点上的备份失败，则备份操作将失败。
     * 不支持恢复到原始位置。
-* SQL Server 2014 或更高版本的备份问题：
-  * SQL server 2014 添加了一项新功能，用于[在 Microsoft Azure Blob 存储中创建本地 SQL Server 的数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用于保护此配置。
+* SQL Server 2014 或更高版本备份问题：
+  * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用于保护此配置。
   * 对于 SQL AlwaysOn 选项，存在一些 "首选辅助" 备份首选项的已知问题。 MABS 始终从辅助副本进行备份。 如果找不到辅助副本，则备份将失败。
 
 ## <a name="before-you-start"></a>开始之前
@@ -101,7 +101,7 @@ ms.locfileid: "87032640"
 
     ![一致性检查](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    Azure 备份服务器可以通过执行一致性检查来检查备份点的完整性。 Azure 备份服务器会计算生产服务器（在本方案中为 SQL Server 计算机）上的备份文件和该文件的已备份数据的校验和。 如果存在冲突，则会认为 Azure 备份服务器上的备份文件已损坏。 Azure 备份服务器 会发送与校验和不匹配部分相对应的块来纠正备份的数据。 由于一致性检查对性能要求较高，因此你可以计划一致性检查或者自动运行它。
+    Azure 备份服务器可以通过执行一致性检查来检查备份点的完整性。 Azure 备份服务器会计算生产服务器（在本方案中为 SQL Server 计算机）上的备份文件和该文件的已备份数据的校验和。 如果存在冲突，则假定 Azure 备份服务器上的备份文件已损坏。 Azure 备份服务器 会发送与校验和不匹配部分相对应的块来纠正备份的数据。 由于一致性检查对性能要求较高，因此你可以计划一致性检查或者自动运行它。
 
 10. 如果要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
 
@@ -157,7 +157,7 @@ ms.locfileid: "87032640"
 
 若要从 Azure 中恢复受保护的实体（SQL Server 数据库），必须执行以下步骤。
 
-1. 打开 Azure 备份服务器管理控制台。 导航到“恢复”工作区，可以在其中看到受保护的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择指定为**在线**点的一个**恢复开始**时间。
+1. 打开 Azure 备份服务器管理控制台。 导航到“恢复”工作区，可以在其中看到受保护的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择从指定为**联机**点的**恢复**时间。
 
     ![选择恢复点](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. 右键单击数据库名称，并单击“**恢复**”。

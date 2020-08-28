@@ -3,12 +3,12 @@ title: Azure 备份诊断事件的数据模型
 description: 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的资源特定模式。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892518"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017577"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 备份诊断事件的数据模型
 
@@ -135,8 +135,8 @@ ms.locfileid: "88892518"
 | JobUniqueId                    | 文本          | 用于标识作业的唯一 ID                                |
 | ProtectedContainerUniqueId     | 文本          | 与作业关联的受保护服务器的唯一标识符 |
 | RecoveryJobDestination         | 文本          | 恢复作业的目标，数据将恢复到其中   |
-| RecoveryJobRPDateTime          | DateTime      | 要恢复的恢复点的创建日期和时间 |
-| RecoveryJobLocation            | 文本          | 要恢复的恢复点已还原到的位置 |
+| RecoveryJobRPDateTime          | DateTime      | 创建要恢复的恢复点的日期和时间 |
+| RecoveryJobLocation            | 文本          | 要恢复的恢复点的存储位置 |
 | RecoveryLocationType           | 文本          | 恢复位置的类型                                |
 | schemaVersion                  | 文本          | 架构的当前版本，例如 **V2**            |
 | 状态                          | 文本          | 作业对象的当前状态，例如 Active、Deleted |

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 0a20a120f72c70cb50cae37cece54d5efad31f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58f807a5a036f14af9baede604debe9d577cdbf6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074806"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000679"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -31,9 +31,9 @@ HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.co
 
 在本文档中用于流式处理的基本流程如下所示：
 
-1. Hadoop 在 STDIN 上将数据传递到映射器（在本示例中为*mapper.exe* ）。
+1. Hadoop 将数据传递到映射器 (此示例中的 *mapper.exe*) STDIN。
 2. 映射器处理数据，并向 STDOUT 发出制表符分隔的键/值对。
-3. 输出由 Hadoop 读取，然后传递到 STDIN 上的化简器（在此示例中为*reducer.exe* ）。
+3. 输出由 Hadoop 读取，然后传递到化简器 (*reducer.exe* 在此示例中) STDIN。
 4. 化简器将读取制表符分隔的键/值对、处理数据，并将结果作为制表符分隔的键/值对在 STDOUT 上发出。
 5. 该输出由 Hadoop 读取，并写入输出目录。
 
@@ -149,7 +149,7 @@ namespace reducer
 
 1. 在 Visual Studio 中，选择“视图” > “服务器资源管理器”。 
 
-1. 右键单击 " **Azure**"，选择 "**连接到 Microsoft Azure 订阅 ...**"，然后完成登录过程。
+1. 右键单击 " **Azure**"，选择 " **连接到 Microsoft Azure 订阅 ...**"，然后完成登录过程。
 
 1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
 
@@ -194,7 +194,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
-    * 如果默认存储为**Data Lake Storage Gen1**：
+    * 如果默认存储为 **Data Lake Storage Gen1**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -253,7 +253,7 @@ namespace reducer
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 作业完成后，输出将下载到名为*output.txt*的文件。 以下文本是 `output.txt` 文件中数据的示例：
+此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 作业完成后，输出将下载到名为 *output.txt*的文件。 以下文本是 `output.txt` 文件中数据的示例：
 
 ```output
 you     1128

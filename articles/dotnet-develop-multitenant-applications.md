@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81481836"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017696"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租户应用程序
 多租户应用程序是一种共享资源，允许 "单独租户中的用户" 查看应用程序，就像它是自己的应用程序一样。 在多租户应用程序中，一种典型的方案是，来自不同租户的应用程序的所有用户都可能希望自定义用户体验，但也有相同的基本业务要求。 大型多租户应用程序的示例包括 Office 365、Outlook.com 和 visualstudio.com。

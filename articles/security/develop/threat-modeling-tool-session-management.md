@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: has-adal-ref, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: b6cb79c4310237e2052ff7eca59a5e2d356968a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543684"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000458"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
 | 产品/服务 | 文章 |
@@ -73,7 +73,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| **组件**               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 空值  |
-| **参考**              | [Authentication 的 Forms 元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **参考**              | [身份验证 (ASP.NET 设置架构) 的 Forms 元素 ](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
 | **步骤** | 将窗体身份验证票证 Cookie 超时设置为 15 分钟|
 
 ### <a name="example"></a>示例

@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826933"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017560"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -175,7 +175,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Virtual machine .Provisioning.Allow file access                            | Virtual machine .Provisioning.Allow file access                            |
 | Virtual machine .Provisioning.Allow read-only disk access                  | Virtual machine .Provisioning.Allow read-only disk access                  |
 | Virtual machine .Provisioning.Allow virtual machine download               | Virtual machine .Provisioning.Allow virtual machine download               |
-| Virtual machine .Snapshot management. Create snapshot                      | Virtual machine .Snapshot management. Create snapshot                      |
+| Virtual machine .Snapshot management. 创建快照                      | Virtual machine .Snapshot management. Create snapshot                      |
 | Virtual machine .Snapshot management.Remove Snapshot                       | Virtual machine .Snapshot management.Remove Snapshot                       |
 | Virtual machine .Snapshot management.Revert to snapshot                    | Virtual machine .Snapshot management.Revert to snapshot                    |
 
@@ -281,7 +281,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定凭据](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 选择 " **添加** " 将 VMware 服务器添加到 "服务器" 列表中。 选择“下一步”  。
+6. 选择 " **添加** " 将 VMware 服务器添加到 "服务器" 列表中。 然后，选择“下一步”。
 
     ![添加 VMWare 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -309,14 +309,14 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 1. 在 " **选择保护组类型** " 页上，选择 " **服务器** "，然后选择 " **下一步**"。 此时会显示“选择组成员”页。
 
-1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 选择“下一步”  。
+1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后，选择“下一步”。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
 1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
 
     ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。 选择“下一步”  。
+1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。 然后，选择“下一步”。
 
     ![选择数据保护方法](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -333,7 +333,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
    - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 进行任何所需的更改，然后选择 " **下一步**"。
    - **数据大小：** 保护组中数据的大小。
-   - **磁盘空间：** 为保护组建议的磁盘空间量。 若要修改此设置，所分配的总空间应比每个数据源预计增长量略大。
+   - **磁盘空间：** 为保护组建议的磁盘空间量。 如果要修改此设置，应该分配的总空间应略大于你估计每个数据源的增长量。
    - **共置数据：** 如果启用共置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
    - **自动增长：** 如果启用此设置，当受保护组中的数据超过初始分配时，Azure 备份服务器会尝试将磁盘大小增加 25%。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
@@ -347,17 +347,17 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 选择“下一步”  。
+1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 然后，选择“下一步”。
       - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
       - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。
 
-1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 您可以单独选择成员，或选择 " **全选** " 以选择所有成员。 选择“下一步”  。
+1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 您可以单独选择成员，或选择 " **全选** " 以选择所有成员。 然后，选择“下一步”。
 
     ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在“指定联机备份计划”页中，指定将数据从本地存储备份到 Azure 的频率。
 
-    - 将根据计划生成数据的云恢复点。 选择“下一步”  。
+    - 将根据计划生成数据的云恢复点。 然后，选择“下一步”。
     - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。
 
     ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
@@ -454,7 +454,7 @@ Windows Registry Editor Version 5.00
         Vcentervm1                   Contoso.COM       NoDatasourcesProtected
         ```
 
-  2. 选择 VMware 主机，并列出 VMware 主机的 VM 保护。
+  2. 选择 VMware 主机，然后列出 VMware 主机的 VM 保护。
 
         ```powershell
         $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire

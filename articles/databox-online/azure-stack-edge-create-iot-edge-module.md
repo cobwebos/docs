@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8cea74ec24efa7562caab5074d87d436cddaffb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339886"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018478"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>开发 c # IoT Edge 模块，以将文件移动到 Azure Stack 边缘
 
@@ -49,7 +50,7 @@ Azure Stack 边缘设备可以部署和运行 IoT Edge 模块。 Edge 模块实�
 
     - 该设备还具有一个关联的 IoT 中心资源。
     - 该设备已配置 Edge 计算角色。
-    有关详细信息，请参阅为你的 Azure Stack 边缘[配置计算](azure-stack-edge-deploy-configure-compute.md#configure-compute)。
+    有关详细信息，请参阅为你的 Azure Stack 边缘 [配置计算](azure-stack-edge-deploy-configure-compute.md#configure-compute) 。
 
 - 以下开发资源：
 
@@ -64,7 +65,7 @@ Azure Stack 边缘设备可以部署和运行 IoT Edge 模块。 Edge 模块实�
 Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 可以在云中使用的两个常见 Docker 注册表服务分别是 Azure 容器注册表和 Docker 中心。 本文使用容器注册表。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 选择“创建资源”>“容器”>“容器注册表”****。 单击“创建”。
+2. 选择“创建资源”>“容器”>“容器注册表”****。 单击“创建”。 
 3. 提供：
 
    1. Azure 中的唯一“注册表名称”****，可包含 5 到 50 个字母数字字符。
@@ -124,7 +125,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-1. 在 VS Code 资源管理器中，打开 "**模块 > FileCopyModule > Program.cs**"。
+1. 在 VS Code 资源管理器中，打开 " **模块 > FileCopyModule > Program.cs**"。
 2. 在 FileCopyModule namespace**** 的顶部，为稍后要使用的类型添加三个 using 语句。 Microsoft.Azure.Devices.Client.Transport.Mqtt**** 是一种协议，可将消息发送到 IoT Edge 中心。
 
     ```
@@ -143,7 +144,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. 紧跟在上一步后，添加**FileEvent**类以定义消息正文。
+4. 紧跟在上一步后，添加 **FileEvent** 类以定义消息正文。
 
     ```
     /// <summary>
@@ -159,7 +160,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     }
     ```
 
-5. 在**Init 方法**中，代码创建并配置**ModuleClient**对象。 该对象允许模块使用 MQTT 协议连接到本地 Azure IoT Edge 运行时，以发送并接收消息。 在 Init 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 代码注册 FileCopy 回调，以通过 input1**** 终结点从 IoT Edge 中心接收消息。 将**Init 方法**替换为以下代码。
+5. 在 **Init 方法**中，代码创建并配置 **ModuleClient** 对象。 该对象允许模块使用 MQTT 协议连接到本地 Azure IoT Edge 运行时，以发送并接收消息。 在 Init 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 代码注册 FileCopy 回调，以通过 input1**** 终结点从 IoT Edge 中心接收消息。 将 **Init 方法** 替换为以下代码。
 
     ```
     /// <summary>
@@ -181,7 +182,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     }
     ```
 
-6. 删除**PipeMessage 方法**的代码，并在其位置插入**FileCopy**的代码。
+6. 删除 **PipeMessage 方法** 的代码，并在其位置插入 **FileCopy**的代码。
 
     ```
         /// <summary>
@@ -239,7 +240,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     ```
 
 7. 保存此文件。
-8. 你还可以下载此项目的[现有代码示例](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable)。 然后，你可以在本示例中验证针对**program.cs**文件保存的文件。
+8. 你还可以下载此项目的 [现有代码示例](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) 。 然后，你可以在本示例中验证针对 **program.cs** 文件保存的文件。
 
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
@@ -271,10 +272,10 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
     可能会看到可以忽略的以下警告：
 
-    *Program .cs （77，44）：警告 CS1998：此异步方法缺少 "await" 运算符，将同步运行。请考虑使用 "await" 运算符等待非阻塞 API 调用，或使用 "await （...）" 在后台线程上执行占用大量 CPU 的工作。*
+    *Program.cs (77，44) ： warning CS1998：此异步方法缺少 "await" 运算符，将同步运行。请考虑使用 "await" 运算符等待非阻塞 API 调用，或使用 "await ( ... ) " 在后台线程上执行占用大量 CPU 的工作。*
 
 4. 可在 VS Code 集成终端中查看具有标记的完整容器映像地址。 映像地址根据 module.json 文件中的信息生成，其格式为 `<repository>:<version>-<platform>`。 对于本文，它应类似于 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要在 Azure Stack Edge 上部署和运行此模块，请参阅[添加模块](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步骤。
+若要在 Azure Stack Edge 上部署和运行此模块，请参阅 [添加模块](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步骤。

@@ -4,12 +4,12 @@ description: 了解 Azure 备份中的加密功能如何帮助你保护你的备
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f55deba58cd7b725bd030409296794e5de911c09
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763637"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017900"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure 备份中的加密
 

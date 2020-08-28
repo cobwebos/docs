@@ -4,22 +4,22 @@ description: Azure 即时还原功能以及有关 VM 备份堆栈、资源管理
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892620"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000373"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
 > 根据用户的反馈，我们已将 **VM 备份堆栈 V2** 重命名为 " **即时还原** "，以减少对 Azure Stack 功能的混淆。
-> 所有 Azure 备份用户现在已升级到**即时还原**。
+> 所有 Azure 备份用户现已升级到 " **即时还原**"。
 
 即时还原的新模型提供以下功能增强：
 
-* 可以使用执行备份作业期间创建的用于恢复的快照，而无需等待将数据传输到保管库的操作完成。 它缩短了快照在触发还原之前复制到保管库的等待时间。
+* 能够使用快照作为备份作业的一部分来执行，而无需等待数据传输到保管库即可完成恢复。 它缩短了快照在触发还原之前复制到保管库的等待时间。
 * 默认情况下，可在本地保留快照两天，这缩短了备份和还原时间。 此默认快照保留期值可配置为 1 到 5 天的任何值。
 * 最大支持 32 TB 的磁盘大小。 Azure 备份不建议调整磁盘大小。
 * 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
@@ -37,7 +37,7 @@ ms.locfileid: "88892620"
 
 ![VM 备份堆栈资源管理器部署模型中的备份作业 - 存储和保管库](./media/backup-azure-vms/instant-rp-flow.png)
 
-默认情况下，快照将保留两天。 此功能允许从保管库中的这些快照执行还原操作，并可缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。
+默认情况下，快照将保留两天。 此功能允许从保管库中的这些快照执行还原操作，并可缩短还原时间。 它减少了从保管库转换和复制数据所需的时间。
 
 ## <a name="feature-considerations"></a>功能注意事项
 
@@ -108,9 +108,9 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 新模型不允许删除 (Tier2) 的还原点，除非删除快照 (Tier1) 。 建议将还原点（第 2 层）保留期设置为大于快照保留期。
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>为何我即使在备份策略中设置了保留期，我的快照也仍然存在？
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>为什么快照仍存在，即使是在备份策略中设置的保留期后？
 
-如果恢复点具有快照，并且是可用的最新 RP，则会一直保留，直到下一次成功备份。 这符合当前设计的“垃圾回收”(GC) 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。
+如果恢复点具有快照，并且它是可用的最新恢复点，则将其保留到下一个成功备份。 这取决于指定的 "垃圾回收" (GC) 策略。 它要求至少存在一个最新的恢复点，以防所有后续备份由于 VM 中的问题而失败。 在正常情况下，恢复点在过期后的24小时内会被清除。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要即时还原功能。 是否可以禁用它？
 

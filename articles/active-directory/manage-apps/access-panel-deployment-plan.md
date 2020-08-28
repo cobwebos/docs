@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930530"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017713"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>规划应用程序部署 Azure Active Directory
 
-Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，可帮助降低支持成本、提高工作效率和安全性，并减少用户不满。 系统包括详细的报告，用于跟踪何时访问系统并通知管理员误用或滥用。
+Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，可帮助降低支持成本、提高工作效率和安全性，并减少用户不满。 系统包括详细的报告，用于跟踪何时访问系统并通知管理员误用或滥用。 若要了解如何从最终用户的角度使用我的应用，请参阅 [我的应用门户的帮助](../user-help/my-apps-portal-end-user-access.md)。
 
 通过使用 Azure AD 我的应用程序，你可以：
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 **提供直观的用户体验**：我的应用程序为您提供了一个平台，用于所有 Azure 单一登录 (SSO) 连接的应用程序。 你有一个统一门户来查找现有设置和新功能（如组管理和自助密码重置），因为它们已经添加。 直观的体验使用户能够更快地工作并提高工作效率，同时降低其不满。
 
-**提高工作效率**： "我的应用" 中的所有用户应用程序都启用了 SSO。 跨企业应用程序和 Microsoft 365 启用 SSO，通过减少或消除额外的登录提示来创建出色的登录体验。 我的应用使用自助服务和动态成员身份，并提高标识系统的整体安全性。 它通过确保适当的人员管理对应用程序的访问来实现此功能。 我的应用程序充当一个连贯的登陆页面，可用于快速查找资源和继续工作任务。
+**提高工作效率**： "我的应用" 中的所有用户应用程序都启用了 SSO。 跨企业应用程序和 Microsoft 365 启用 SSO，通过减少或消除额外的登录提示来创建出色的登录体验。 我的应用使用自助服务和动态成员身份，并提高标识系统的整体安全性。 我的应用程序可确保适当的人员管理对应用程序的访问。 我的应用程序充当一个连贯的登陆页面，可用于快速查找资源和继续工作任务。
 
 **管理成本**：启用具有 Azure AD 的应用可帮助 divestment 本地基础结构。 它提供一致的门户来查找所有应用、请求访问资源和管理帐户，从而降低了支持成本。
 
@@ -90,6 +90,10 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 | 用户体验| 用户了解浏览器的兼容性。 |
 | 支持| 用户可以找到对应用问题的支持。 |
 
+
+> [!TIP]
+> 当使用应用程序代理进行远程处理时，我的应用可以与内部公司 Url 一起使用。 若要了解详细信息，请参阅 [教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
+
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>部署 Azure AD 应用的最佳做法
 
 我的应用程序的功能可以逐渐启用。 建议遵循以下部署顺序：
@@ -122,11 +126,11 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 | 确定试点组| 确定要使用的 Azure AD 安全组，并确保所有试点成员都是组的一部分。 |
 | 确定要为生产启用的组。| 确定要使用的 Azure AD 安全组或同步到 Azure AD 的 Active Directory 组。 确保所有试点成员都是组的一部分。 |
 | 允许用户使用 SSO 实现某些类型的应用程序| 联合 SSO，OAuth，密码 SSO，应用代理 |
-| 允许用户使用自助服务密码重置 | 是 |
-| 允许用户使用多重身份验证| 是 |
+| 允许用户使用自助服务密码重置 | 适合 |
+| 允许用户使用多重身份验证| 适合 |
 | 允许用户对特定类型的组使用自助服务组管理| 安全组、Microsoft 365 组 |
-| 允许用户使用自助服务应用管理| 是 |
-| 允许用户使用访问评审| 是 |
+| 允许用户使用自助服务应用管理| 适合 |
+| 允许用户使用访问评审| 适合 |
 
 ### <a name="plan-consent-strategy"></a>计划同意策略
 
@@ -189,7 +193,7 @@ Microsoft 为应用程序提供 [电子邮件和其他通信的可自定义模�
 
 ## <a name="plan-your-my-apps-deployment"></a>规划我的应用部署
 
-我的应用程序的基础是应用程序启动器门户，用户可在该门户中访问 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。 "我的应用" 页为用户准备了一个开始其工作的位置，并可访问所需的应用程序。 在这里，用户可以找到他们有权访问单一登录的所有应用程序的列表。 
+我的应用程序的基础是应用程序启动器门户，用户可在该门户中访问 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。 "我的应用" 页为用户提供了一个开始工作的位置，并可访问所需的应用程序。 在这里，用户可以找到他们有权访问单一登录的所有应用程序的列表。 
 
 > [!NOTE]
 > Microsoft 365 应用启动器中将显示相同的应用程序。
@@ -255,7 +259,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 如果在测试或部署过程中要添加组，但不允许应用程序显示在 "我的应用" 中，请参阅 [在 Azure Active Directory 中的用户体验中隐藏应用程序](hide-application-from-user-portal.md)。
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>将 Microsoft Microsoft 365 应用程序部署到我的应用程序
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>将 Microsoft 365 应用程序部署到我的应用程序
 
 对于 Microsoft 365 应用程序，用户会根据分配给他们的许可证接收 Office 副本。 访问 Office 应用程序的先决条件是向用户分配与 Office 应用程序关联的正确许可证。 向用户分配许可证时，他们将自动在 "我的应用" 页和 Microsoft 365 应用启动器中看到与该许可证关联的应用程序。
 
@@ -303,7 +307,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 ## <a name="manage-your-implementation"></a>管理实现
 
-应使用最小特权角色来完成 Azure Active Directory 中所需的任务。 [查看可用的不同角色](../users-groups-roles/directory-assign-admin-roles.md) ，并选择正确的角色以解决此应用程序的每个角色的需求。 某些角色可能需要在部署完成后暂时应用并删除。
+使用最小特权角色来完成 Azure Active Directory 中所需的任务。 [查看可用的不同角色](../users-groups-roles/directory-assign-admin-roles.md) ，并选择正确的角色以解决此应用程序的每个角色的需求。 某些角色可能需要在部署完成后暂时应用并删除。
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|

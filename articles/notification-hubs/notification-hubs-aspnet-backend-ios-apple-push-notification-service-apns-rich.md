@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9d47974554534a0614eb98b473c1e5539ff4d9aa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530128"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018002"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心富推送
 
@@ -137,7 +138,7 @@ ms.locfileid: "86530128"
     }
     ```
 8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，并选择“发布”****。
-9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有的或新的网站，并记下 "**连接**" 选项卡中的 "**目标 URL** " 属性。在本教程的后面部分，我们将此 URL 称为*后端终结点*。 单击“发布”。
+9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有的或新的网站，并记下 "**连接**" 选项卡中的 "**目标 URL** " 属性。在本教程的后面部分，我们将此 URL 称为*后端终结点*。 单击“发布”。 
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
 

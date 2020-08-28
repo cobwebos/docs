@@ -3,18 +3,18 @@ title: 将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 description: 有关使用 Azure 备份服务备份 SQL Server 数据库的简介
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876302"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017305"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 
 本文将引导你使用 Azure 备份完成 SQL Server 数据库的备份配置步骤。
 
-若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有，只需几分钟就能创建一个免费帐户。 有关详细信息，请参阅[创建 Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有，只需几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [创建 Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 若要将 SQL Server 数据库备份到 Azure 并从 Azure 恢复该数据库：
 
@@ -29,28 +29,28 @@ ms.locfileid: "87876302"
 
 * 如果具有包含远程文件共享上的文件的数据库，则保护将失败，错误 ID 为 104。 DPM 不支持对远程文件共享上的 SQL Server 数据进行保护。
 * DPM 无法保护远程 SMB 共享上存储的数据库。
-* 确保将[可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
-* 必须将系统帐户**NTAuthority\System**显式添加到 SQL Server 上的 Sysadmin 组。
-* 为部分包含的数据库执行备用位置恢复时，必须确保目标 SQL 实例启用了 "[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)" 功能。
-* 为文件流数据库执行备用位置恢复时，必须确保目标 SQL 实例启用了 "[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)" 功能。
+* 确保[将可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 必须将系统帐户 **NTAuthority\System** 显式添加到 SQL Server 上的 Sysadmin 组。
+* 在为部分包含的数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)功能。
+* 在为文件流数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)功能。
 * 对 SQL Server AlwaysOn 的保护：
   * 在创建保护组时，DPM 将在运行查询时检测可用性组。
   * DPM 将检测故障转移并继续保护数据库。
   * DPM 支持一个 SQL Server 实例的多站点群集配置。
 * 当你保护使用 AlwaysOn 功能的数据库时，DPM 有以下限制：
-  * DPM 将遵循在 SQL Server 中根据以下备份首选项为可用性组设置的备份策略：
+  * DPM 将遵循 SQL Server 基于备份首选项设置的可用性组的备份策略，如下所示：
     * 首选辅助副本 - 除了主副本是唯一在线副本的情况之外，备份应在辅助副本上进行。 如果有多个辅助副本可用，则将选择具有最高备份优先级的节点进行备份。 如果只有主副本可用，则备份应在主副本上进行。
     * 仅辅助副本 - 不应在主副本上执行备份。 如果主副本是唯一在线副本，则不应进行备份。
     * 主副本 - 备份应始终在主副本上进行。
     * 任意副本 - 备份可以在可用性组中的任何可用性副本上进行。 将根据每个节点的备份优先级来确定要从中备份的节点。
   * 注意以下事项：
     * 可以从任何可读副本（即主副本、同步辅助副本、异步辅助副本）进行备份。
-    * 如果将任何副本排除在备份之外（例如启用了 "**排除副本**" 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
+    * 如果将任何副本排除在备份之外（例如启用了 " **排除副本** " 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
     * 如果有多个副本可用和可读，则将选择具有最高备份优先级的节点进行备份。
     * 如果所选节点上的备份失败，则备份操作将失败。
     * 不支持恢复到原始位置。
-* SQL Server 2014 或更高版本的备份问题：
-  * SQL server 2014 添加了一项新功能，用于[在 Microsoft Azure Blob 存储中创建本地 SQL Server 的数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 DPM 无法用于保护此配置。
+* SQL Server 2014 或更高版本备份问题：
+  * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 DPM 无法用于保护此配置。
   * 对于 SQL AlwaysOn 选项，存在一些 "首选辅助" 备份首选项的已知问题。 DPM 始终从辅助副本进行备份。 如果找不到辅助副本，则备份将失败。
 
 ## <a name="before-you-start"></a>开始之前
@@ -144,7 +144,7 @@ ms.locfileid: "87876302"
 1. 选择如何将初始备份副本传输到 Azure。
 
     * “自动通过网络”选项按照备份计划将数据传输到 Azure。
-    * 有关**脱机备份**的详细信息，请参阅[脱机备份概述](offline-backup-overview.md)。
+    * 有关 **脱机备份**的详细信息，请参阅 [脱机备份概述](offline-backup-overview.md)。
 
     选择传输机制后，选择“下一步”。
 

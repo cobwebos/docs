@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950147"
+ms.locfileid: "89018053"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,6 +129,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 > [!TIP]
 > 可以在工作区中的“终结点”选项卡中找到“已发布的管道”的运行。 可以在“试验”或“管道”中找到“未发布的管道”的运行。 
+
+有关从中进行日志记录和跟踪的详细信息 `ParallelRunStep` ，请参阅 [ParallelRunStep 的调试和故障排除](how-to-debug-parallel-run-step.md)。
 
 ## <a name="logging-in-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器中登录 (预览版) 
 

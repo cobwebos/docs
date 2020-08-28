@@ -3,12 +3,12 @@ title: DPM 和 MABS Azure Data Box 的脱机备份
 description: 你可以使用 Azure Data Box 将初始备份数据从 DPM 和 MABS 脱机。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 33515cdd943f3816328bfd77d831288c5ee0a608
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017594"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (预览版的 Azure Data Box 进行脱机种子设定) 
 
@@ -149,7 +149,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
           - Azure.Storage       4.6.1<br>
      >  - Azure AD 应用程序注册为 AzureOfflineBackup_\<object GUID of the user>。
 
-13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一步**”。
+13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一页**”。
 
     ![选择 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
     > 例如，如果磁盘的路径为 `\\mydomain\myserver\disk1\` ，并且 *disk1* 包含一个名为 *PageBlob*的目录，则 DPM/MABS 服务器向导上提供的路径为 `\\mydomain\myserver\disk1\` 。
     > 如果[设置 Azure Data Box 100 TB 设备](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，请提供以下信息作为设备 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 的网络路径。
 
-15. 选择“**下一步**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
+15. 选择“**下一页**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
 
     ![检测 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -203,7 +203,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
 
 ## <a name="troubleshooting"></a>疑难解答
 
-DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为你创建 Azure AD 应用程序。 此应用程序需要配置脱机种子设定策略时创建并上传的身份验证证书。
+DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为你创建 Azure AD 应用程序。 此应用程序需要一个证书，用于在配置脱机种子设定策略时创建和上载的身份验证。
 
 我们使用 Azure PowerShell 创建证书并将证书上传到 Azure AD 应用程序。
 

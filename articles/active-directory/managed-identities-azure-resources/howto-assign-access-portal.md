@@ -3,7 +3,7 @@ title: 使用 Azure 门户授予托管标识对资源的访问权限 - Azure AD
 description: 分步说明如何使用 Azure 门户授予一个资源上的托管标识对另一个资源的访问权限。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2af718c3555176167eb154b0a718218c42e93dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8126f6314044fc2ee816e9150e9595719d63eff
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608290"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009196"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 门户授予托管标识对资源的访问权限
 
@@ -35,13 +35,13 @@ ms.locfileid: "85608290"
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 RBAC 授予托管标识对另一资源的访问权限
 
-在 Azure 资源（如[AZURE VM](qs-configure-portal-windows-vm.md)或[azure 虚拟机规模集](qs-configure-portal-windows-vmss.md)）上启用托管标识后：
+在 Azure 资源（如 [Azure VM](qs-configure-portal-windows-vm.md) 或 [Azure 虚拟机规模集](qs-configure-portal-windows-vmss.md)）上启用托管标识后，请执行以下操作：
 
 1. 使用帐户登录 [Azure 门户](https://portal.azure.com)，此帐户与已在其下配置托管标识的 Azure 订阅相关联。
 
 2. 转到要对其修改访问控制的相应资源。 此示例要授予 Azure 虚拟机对存储帐户的访问权限，所以导航到存储帐户。
 
-3. 选择资源的“访问控制(IAM)”页面，然后选择“+ 添加角色分配”   。 然后依次指定“角色”、“将访问权限分配到”和相应的“订阅”    。 在搜索条件区域下，应该会看到该资源。 选择该资源，并选择“保存”  。 
+3. 选择资源的“访问控制(IAM)”页面，然后选择“+ 添加角色分配” 。 然后依次指定“角色”、“将访问权限分配到”和相应的“订阅”  。 在搜索条件区域下，应该会看到该资源。 选择该资源，并选择“保存”。 
 
    ![“访问控制(IAM)”屏幕截图](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

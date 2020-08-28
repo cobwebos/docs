@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: abf4cb33fa953ec9a257397551b3d17752fe67f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a17ab97dbfa1819154695f4c287b59db90f34334
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070734"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018988"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器
 
@@ -52,7 +53,7 @@ Azure 存储中的 Blob 已组织成容器。 必须先创建容器，才能上�
 
 如果已存在同名的容器，**Create** 和 **CreateAsync** 方法将引发异常。
 
-**CreateIfNotExists** 和 **CreateIfNotExistsAsync** 方法返回一个指示是否已创建容器的布尔值。 如果已存在具有相同名称的容器，则这些方法将返回**False**以指示未创建新的容器。
+**CreateIfNotExists** 和 **CreateIfNotExistsAsync** 方法返回一个指示是否已创建容器的布尔值。 如果已存在具有相同名称的容器，则这些方法将返回 **False** 以指示未创建新的容器。
 
 将立即在存储帐户下创建容器。 无法将一个容器嵌套在另一个容器下。
 
@@ -158,11 +159,11 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
 ---
 
-如果容器不存在， **Delete**和**DeleteAsync**方法将引发异常。
+如果容器不存在， **Delete** 和 **DeleteAsync** 方法将引发异常。
 
-**DeleteIfExists** 和 **DeleteIfExistsAsync** 方法返回一个指示是否已删除容器的布尔值。 如果指定的容器不存在，则这些方法将返回**False**以指示未删除容器。
+**DeleteIfExists** 和 **DeleteIfExistsAsync** 方法返回一个指示是否已删除容器的布尔值。 如果指定的容器不存在，则这些方法将返回 **False** 以指示未删除容器。
 
-删除容器后，不能创建名称*至少*为30秒的容器。 尝试使用同一名称创建容器将失败，并出现 HTTP 错误代码409（冲突）。 容器或其包含的 blob 上的任何其他操作都将失败，并出现 HTTP 错误代码404（未找到）。
+删除容器后，不能创建名称 *至少* 为30秒的容器。 尝试使用同一名称创建容器将失败，并出现 HTTP 错误代码 409 (冲突) 。 容器或其包含的 blob 上的任何其他操作都将失败，并出现 HTTP 错误代码 404 (找不到) 。
 
 下面的示例将删除指定的容器，并在该容器不存在时处理异常：
 
@@ -228,7 +229,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Create Container 操作](/rest/api/storageservices/create-container)
 - [Delete Container 操作](/rest/api/storageservices/delete-container)

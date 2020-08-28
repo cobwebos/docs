@@ -3,12 +3,12 @@ title: 在 Azure Stack 上备份 SharePoint 场
 description: 在 Azure Stack 上使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319cf064ab2bab20e4140f8a208be843df7fa71
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538779"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017962"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
 
@@ -84,7 +84,7 @@ MABS 的 Azure 备份支持以下方案：
 
     展开 SharePoint 服务器时，MABS 会查询 VSS，以查看 MABS 可以保护的数据。  如果 SharePoint 数据库是远程数据库，则 MABS 将连接到该数据库。 如果未显示 SharePoint 数据源，请检查 VSS 编写器是否在 SharePoint 服务器和任何远程 SQL Server 上运行，并确保 MABS 代理同时安装在 SharePoint 服务器和远程 SQL Server 上。 此外，请确保不会像 SQL Server 数据库一样在其他位置保护 SharePoint 数据库。
 
-1. 在“选择数据保护方法”中，指定要如何处理短期和长期备份。 短期备份始终是磁盘优先，可以选择使用 Azure 备份从磁盘备份到 Azure 云（短期或长期）。
+1. 在“选择数据保护方法”中，指定要如何处理短期和长期备份。 短期 \- 备份始终是磁盘，可以选择通过 Azure 备份从磁盘备份到 azure 云， \( 用于短期或长期 \- \) 。
 
 1. 在“选择短期目标”中，指定要如何备份到磁盘上的短期存储。   在“保持期”中，指定要在磁盘上保留数据的时间长度。 在“同步频率”中，指定要对磁盘运行增量备份的频率。 如果不想设置备份间隔，可以选中“就在恢复点之前”，以便 MABS 将计划在每个恢复点之前运行快速完整备份。
 
@@ -128,7 +128,7 @@ MABS 的 Azure 备份支持以下方案：
 
 1. 在 MABS 管理员控制台中，单击“监视” > “操作” > “选项” > “警报发布” > “发布活动警报”    
 
-2. 启用“警报发布”后，用户可能需要将所有现有 MABS 警报将发布到“MABS 警报”事件日志 。 在 MABS 服务器上安装的 Operations Manager 代理随后会将这些警报发布到 Operations Manager，并在生成新警报时继续更新控制台。
+2. 启用“警报发布”后，用户可能需要将所有现有 MABS 警报将发布到“MABS 警报”事件日志 。 安装在 MABS 服务器上的 Operations Manager 代理随后会将这些警报发布到 Operations Manager，并在生成新警报时继续更新控制台。
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>使用 MABS 从磁盘还原 SharePoint 项
 
@@ -161,7 +161,7 @@ MABS 的 Azure 备份支持以下方案：
    >
 8. 选择要使用的“恢复过程”。
 
-   * 如果 SharePoint 场未更改，并且与正在还原的恢复点相同，请选择“不使用恢复场进行恢复”。
+   * 如果 SharePoint 场未更改，并且与正在还原的恢复点相同，请选择 " **不使用恢复场进行恢复** "。
    * 如果 SharePoint 场自创建恢复点后已更改，请选择“使用恢复场进行恢复”  。
 
      ![恢复过程](./media/backup-azure-backup-sharepoint/recovery-process.png)
@@ -169,7 +169,7 @@ MABS 的 Azure 备份支持以下方案：
 
     ![暂存位置 1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    MABS 将托管 SharePoint 项的内容数据库附加到临时 SQL Server 实例。 MABS 将从内容数据库恢复该项，并将它放在 MABS 上的暂存文件位置。 现在，需要将暂存位置中的已恢复项导出到 SharePoint 场上的暂存位置。
+    MABS 将承载 SharePoint 项的内容数据库附加到临时 SQL Server 实例。 MABS 将从内容数据库恢复该项，并将它放在 MABS 上的暂存文件位置。 现在，需要将暂存位置中的已恢复项导出到 SharePoint 场上的暂存位置。
 
     ![暂存位置 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. 选择“**指定恢复选项**”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。 单击“下一步”。

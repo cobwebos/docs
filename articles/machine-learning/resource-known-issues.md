@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757279"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018716"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -184,6 +184,8 @@ ms.locfileid: "88757279"
 ## <a name="set-up-your-environment"></a>设置你的环境
 
 * **创建 AmlCompute 时出错**：如果用户在 GA 发布之前已通过 Azure 门户创建了自己的 Azure 机器学习工作区，则他们很可能无法在该工作区中创建 AmlCompute。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。
+
+* **Azure 容器注册表当前不支持资源组名称中的 unicode 字符**：由于 ACR 请求的资源组名称包含 unicode 字符，因此可能会失败。 若要缓解此问题，我们建议在具有不同名称的资源组中创建一个 ACR。
 
 ## <a name="work-with-data"></a>处理数据
 

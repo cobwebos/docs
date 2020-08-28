@@ -3,12 +3,12 @@ title: Azure Migrate 中的发现、评估和依赖项分析问题
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d4f833926541bafbae211caff37e5974b57e1047
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263497"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019005"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -156,7 +156,7 @@ Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我是否需要为依赖关系可视化付费？
 
-否。 了解有关 [Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
+不行。 了解有关 [Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>对于基于代理的依赖项可视化，我应该安装什么？
 
@@ -181,13 +181,13 @@ Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure
 对于基于代理的依赖项可视化：
 
 - 使用 [脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)。
-- 对于 MMA，请 [使用命令行或自动化](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)，或使用 [脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
+- 对于 MMA，请 [使用命令行或自动化](../azure-monitor/platform/log-analytics-agent.md#installation-options)，或使用 [脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
 - 除了脚本以外，还可以使用部署工具（如 Microsoft Endpoint Configuration Manager 和 [Intigua](https://www.intigua.com/intigua-for-azure-migration) ）来部署代理。
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA 支持哪些操作系统？
 
-- 查看 [MMA 支持的 Windows 操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)的列表。
-- 查看 [MMA 支持的 Linux 操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)的列表。
+- 查看 [MMA 支持的 Windows 操作系统](../azure-monitor/platform/log-analytics-agent.md#installation-options)的列表。
+- 查看 [MMA 支持的 Linux 操作系统](../azure-monitor/platform/log-analytics-agent.md#installation-options)的列表。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>是否可将依赖项显示超过一小时？
 

@@ -4,12 +4,12 @@ description: 本文介绍 Microsoft Azure 备份服务器 (MABS) v3 的已知问
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 884e850255856b39ccbe52544a47a7453e975960
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826610"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017934"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
 
@@ -81,7 +81,7 @@ ms.locfileid: "88826610"
 1. 在 Web 门户 URL 上，DPMReports 文件夹以 `DPMReports_<GUID>` 的格式存在
 
     >[!NOTE]
-    >始终只有一个使用此命名约定的文件夹。 如果 MABS 是从以前的版本升级的，则可能还存在另一个旧文件夹，但无法将其打开。
+    >始终只有一个文件夹具有此命名约定。 如果 MABS 是从以前的版本升级的，则可能还存在另一个旧文件夹，但无法将其打开。
 
     ![DPMReports 文件夹](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
 
