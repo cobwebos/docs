@@ -6,12 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: dba0fccaa3eb79ad297ce80462efea5b69a4a009
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497046"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017135"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库或容器上预配自动缩放吞吐量
 
@@ -244,23 +245,23 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="cassandra-api"></a>Cassandra API
 
-可以使用[CQL 命令](manage-scale-cassandra.md#use-autoscale)、 [Azure CLI](cli-samples.md)、 [Azure PowerShell](powershell-samples.md)或[Azure 资源管理器模板](resource-manager-samples.md)来预配 Cassandra API Azure Cosmos DB 帐户。
+可以使用 [CQL 命令](manage-scale-cassandra.md#use-autoscale)、[Azure CLI](cli-samples.md)、[Azure PowerShell](powershell-samples.md) 或 [Azure 资源管理器模板](resource-manager-samples.md)来预配用于 Cassandra API 的 Azure Cosmos DB 帐户，以进行自动缩放。
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 
-可以使用[mongodb 扩展命令](mongodb-custom-commands.md)、 [Azure CLI](cli-samples.md)、 [Azure PowerShell](powershell-samples.md)或[Azure 资源管理器模板](resource-manager-samples.md)为 mongodb API Azure Cosmos DB 帐户设置自动缩放。
+可以使用 [MongoDB 扩展命令](mongodb-custom-commands.md)、[Azure CLI](cli-samples.md)、[Azure PowerShell](powershell-samples.md) 或 [Azure 资源管理器模板](resource-manager-samples.md)来配置用于 MongoDB API 的 Azure Cosmos DB 帐户，以进行自动缩放。
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 
-可以使用 Azure 资源管理器模板为所有 Azure Cosmos DB Api 预配数据库或容器级别资源的自动缩放吞吐量。 有关示例，请参阅[Azure 资源管理器模板 Azure Cosmos DB](resource-manager-samples.md) 。
+Azure 资源管理器模板可用于在数据库或容器级资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅 [Azure Cosmos DB 的 Azure 资源管理器模板](resource-manager-samples.md)。
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 可用于为所有 Azure Cosmos DB Api 预配数据库或容器级别资源的自动缩放吞吐量。 有关示例，请参阅[Azure Cosmos DB Azure CLI 示例](cli-samples.md)。
+Azure CLI 可用于在数据库或容器级资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅[用于 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell 可用于为所有 Azure Cosmos DB Api 预配数据库或容器级别资源的自动缩放吞吐量。 有关示例，请参阅[Azure Cosmos DB Azure PowerShell 示例](powershell-samples.md)。
+Azure PowerShell 可用于在数据库或容器级资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅[适用于 Azure Cosmos DB 的 Azure PowerShell 示例](powershell-samples.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

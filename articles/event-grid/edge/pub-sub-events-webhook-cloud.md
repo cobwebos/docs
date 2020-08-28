@@ -7,30 +7,31 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: ff49e9baf83d52ba7c40d0c0a9efbd72cee66cd9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171493"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998979"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布、订阅事件
 
-本文逐步讲解在 IoT Edge 上使用事件网格发布和订阅事件所需的所有步骤。 本教程使用和 Azure 函数作为事件处理程序。 有关其他目标类型，请参阅[事件处理程序](event-handlers.md)。
+本文逐步讲解在 IoT Edge 上使用事件网格发布和订阅事件所需的所有步骤。 本教程使用和 Azure 函数作为事件处理程序。 有关其他目标类型，请参阅 [事件处理程序](event-handlers.md)。
 
-在继续之前，请参阅[事件网格概念](concepts.md)，以了解什么是事件网格主题和订阅。
+在继续之前，请参阅 [事件网格概念](concepts.md) ，以了解什么是事件网格主题和订阅。
 
-## <a name="prerequisites"></a>必备知识 
+## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
-* **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
-* **Azure IoT 中心和 IoT Edge 设备**-按照[Linux](../../iot-edge/quickstart-linux.md)或[Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作（如果尚未安装）。
+* **Azure 订阅** -如果你还没有帐户，请创建一个 [免费帐户](https://azure.microsoft.com/free) 。 
+* **Azure IoT 中心和 IoT Edge 设备** -按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md) 快速入门中的步骤进行操作（如果尚未安装）。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>在 Azure 门户中创建 Azure 函数
 
-按照[教程](../../azure-functions/functions-create-first-azure-function.md)中所述的步骤创建 Azure 功能。 
+按照 [教程](../../azure-functions/functions-create-first-azure-function.md) 中所述的步骤创建 Azure 功能。 
 
 将代码片段替换为以下代码：
 
@@ -56,16 +57,16 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-在新函数中，选择右上角的 "**获取函数 URL** "，选择 "默认 (**功能键**") ，然后选择 "**复制**"。 您将在本教程的后面部分使用 "函数 URL" 值。
+在新函数中，选择右上角的 " **获取函数 URL** "，选择 "默认 (**功能键** ") ，然后选择 " **复制**"。 您将在本教程的后面部分使用 "函数 URL" 值。
 
 > [!NOTE]
-> 有关使用 EventGrid 事件触发器响应事件的更多示例和教程，请参阅[Azure Functions](../../azure-functions/functions-overview.md)文档。
+> 有关使用 EventGrid 事件触发器响应事件的更多示例和教程，请参阅 [Azure Functions](../../azure-functions/functions-overview.md) 文档。
 
 ## <a name="create-a-topic"></a>创建主题
 
 作为事件的发布者，需要创建事件网格主题。 主题指的是发布者可将事件发送到的终结点。
 
-1. 创建具有以下内容的 topic2.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 topic2.js。 有关有效负载的详细信息，请参阅 [API 文档](api.md) 。
 
     ```json
          {
@@ -108,7 +109,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 创建具有以下内容的 subscription2.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 subscription2.js。 有关有效负载的详细信息，请参阅 [API 文档](api.md) 。
 
     ```json
         {
@@ -157,7 +158,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="publish-an-event"></a>发布事件
 
-1. 创建具有以下内容的 event2.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 event2.js。 有关有效负载的详细信息，请参阅 [API 文档](api.md) 。
 
     ```json
         [
@@ -182,7 +183,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="verify-event-delivery"></a>验证事件传递
 
-可以在函数的 "**监视**" 选项下的 "Azure 门户中查看传递的事件。
+可以在函数的 " **监视** " 选项下的 "Azure 门户中查看传递的事件。
 
 ## <a name="cleanup-resources"></a>清理资源
 
@@ -198,9 +199,9 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 在本教程中，您创建了事件网格主题、订阅和已发布的事件。 现在，你已了解基本步骤，请参阅以下文章：
 
-* 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
-* 创建/更新具有[筛选器](advanced-filtering.md)的订阅。
+* 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅 [故障排除指南](troubleshoot.md)。
+* 创建/更新具有 [筛选器](advanced-filtering.md)的订阅。
 * 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上设置事件网格模块的持久性
-* 按照[文档](configure-client-auth.md)配置客户端身份验证
+* 按照 [文档](configure-client-auth.md) 配置客户端身份验证
 * 遵循本[教程](forward-events-event-grid-cloud.md)将事件转发到云中的 Azure 事件网格
 * [监视边缘上的主题和订阅](monitor-topics-subscriptions.md)

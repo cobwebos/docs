@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-csharp
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072081"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006646"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
 
@@ -43,7 +43,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 以下函数执行以下操作：
 
 * 创建**资产** 
-* 获取资产的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)
+* 获取[存储中资产容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写[SAS URL](../../storage/common/storage-sas-overview.md)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -139,8 +139,8 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 1. 在 Azure 门户中，导航到与媒体服务帐户关联的存储帐户。 
 1. 找到其名称为你的输出资产的容器。 
-1. 在容器中找到 .ism 文件，然后单击“编辑 Blob”（在右窗口中）。**** 
-1. 通过添加已上传的包含描述性音频的仅限音频的 MP4 文件（AAC 编解码器）的相关信息，对 .ism 文件进行编辑，在完成后按“保存”。****
+1. 在容器中找到 .ism 文件，然后单击“编辑 Blob”（在右窗口中）。 
+1. 通过添加已上传的包含描述性音频的仅限音频的 MP4 文件（AAC 编解码器）的相关信息，对 .ism 文件进行编辑，在完成后按“保存”。
 
     若要指示描述性音频轨道，需将“accessibility”和“role”参数添加到 .ism 文件。 你有责任正确设置这些参数，以将音频轨道作为音频描述发信号。 例如，将 `<param name="accessibility" value="description" />` 和 `<param name="role" value="alternate" />` 添加到特定音频轨道的 .ism 文件中，如以下示例所示。
  
@@ -206,7 +206,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
 
-创建 [StreamingLocator](/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName****。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
+创建 [StreamingLocator](/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 
 > [!IMPORTANT]
 > 使用自定义的[流策略](/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于流式处理策略条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略。
@@ -234,7 +234,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL:”框中，粘贴从应用程序获取的某个流式处理 URL 值****。 
+2. 在“URL:”框中，粘贴从应用程序获取的某个流式处理 URL 值。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
 3. 按“更新播放器”。
