@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/10/2020
-ms.openlocfilehash: 37f4b7208d7c8fafcd3aa1d25106a2cd5e4949c6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c4b29db8bbcb741116fcd425b4489973228066e6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449938"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021589"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
@@ -23,9 +23,9 @@ ms.locfileid: "87449938"
 * 将自动化帐户链接到 Log Analytics 工作区（如果尚未链接）。
 * 启用更新管理。
 
-该模板不会自动启用一个或多个 Azure 或非 Azure Vm 上的更新管理。
+该模板不会自动对一个或多个 Azure VM 或非 Azure VM 启用更新管理。
 
-如果已在订阅中支持的区域中部署了 Log Analytics 工作区和自动化帐户，则不会链接该工作区和帐户。 使用此模板将成功创建链接并部署更新管理。
+如果已在订阅支持的区域中部署了 Log Analytics 工作区和自动化帐户，不会链接该工作区和帐户。 使用此模板可以成功创建链接并部署更新管理。
 
 ## <a name="api-versions"></a>API 版本
 
@@ -33,7 +33,7 @@ ms.locfileid: "87449938"
 
 | 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区 | workspaces | 2020-03-01-预览 |
+| 工作区 | workspaces | 2020-03-01-preview |
 | 自动化帐户 | automation | 2018-06-30 |
 | 解决方案 | solutions | 2015-11-01-preview |
 
@@ -62,11 +62,11 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
 >如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。
 >
 
-JSON 模板可为其他参数指定默认值，这些参数可能用作环境中的标准配置。 可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)。
+JSON 模板为其他参数指定默认值，这些参数将会用作环境中的标准配置。 可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)。
 
 如果你不熟悉 Azure 自动化和 Azure Monitor，则务必要了解以下配置详细信息，以免在尝试创建、配置和使用链接到新自动化帐户的 Log Analytics 工作区时出现错误，这一点非常重要。
 
-* 查看[其他详细信息](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以充分了解工作区配置选项，如访问控制模式、定价层、保留期和产能预留级别。
+* 查看[更多详细信息](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以充分了解工作区配置选项，如访问控制模式、定价层、保留期和容量预留级别。
 
 * 由于只有某些区域支持链接订阅中的 Log Analytics 工作区和自动化帐户，因此请查看[工作区映射](../how-to/region-mappings.md)以指定内联或参数文件中支持的区域。
 
@@ -74,7 +74,7 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
 
 ## <a name="deploy-template"></a>部署模板
 
-1. 将以下 JSON 语法复制并粘贴到文件中：
+1. 将以下 JSON 语法复制并粘贴到该文件中：
 
     ```json
     {
@@ -150,7 +150,7 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "name": "[parameters('sku')]",
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -192,7 +192,7 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
                 "sku": {
                     "name": "Basic"
                 }
-            },
+            }
         },
         {
             "apiVersion": "2020-03-01-preview",
@@ -235,8 +235,8 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要将更新管理用于 Vm，请参阅[管理 vm 的更新和修补程序](update-mgmt-manage-updates-for-vm.md)。
+* 若要对 VM 使用更新管理，请参阅[管理 VM 的更新和修补程序](update-mgmt-manage-updates-for-vm.md)。
 
-* 如果不再想要使用更新管理并且想要删除它，请参阅[删除更新管理功能](update-mgmt-remove-feature.md)中的说明。
+* 如果不再想使用更新管理并且希望删除它，请参阅[删除更新管理功能](update-mgmt-remove-feature.md)中的说明。
 
 * 若要从更新管理中删除 VM，请参阅[从更新管理中删除 VM](update-mgmt-remove-vms.md)。

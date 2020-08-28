@@ -3,13 +3,13 @@ title: 服务总线死信队列 | Microsoft 文档
 description: 介绍 Azure 服务总线中的死信队列。 服务总线队列和主题订阅提供一个名为死信队列的辅助子队列。
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511205"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021674"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -58,7 +58,7 @@ DLQ 不会自动执行清理操作。 消息将保留在 DLQ 中，直到显式�
 
 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性设置为 **true**（默认值是 **false**）时，所有到期的消息将移到 DLQ，并指定 `TTLExpiredException` 原因代码。
 
-仅当至少有一个活动的接收器从主队列或订阅请求时，才会清除过期的消息并将其移到 DLQ，并且在过期消息过期后，也不会清除[延迟的消息](./message-deferral.md)并将其移动到死信队列。 这些行为是由设计决定的。
+仅当至少有一个活动的接收器从主队列或订阅请求时，才会清除过期的消息并将其移到 DLQ，并且在过期消息过期后，也不会清除 [延迟的消息](./message-deferral.md) 并将其移动到死信队列。 这些行为是由设计决定的。
 
 ## <a name="errors-while-processing-subscription-rules"></a>处理订阅规则时的错误
 

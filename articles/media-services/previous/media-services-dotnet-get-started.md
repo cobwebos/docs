@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2c79566f51647492118f307e1c9737b98b1be484
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d29c0636ef6bd01560fba3b1b5bdd227c5116b09
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543582"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020620"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容  
 
@@ -81,7 +82,7 @@ ms.locfileid: "87543582"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），并复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
 
 ## <a name="connect-to-the-media-services-account"></a>连接到媒体服务帐户
@@ -152,7 +153,7 @@ ms.locfileid: "87543582"
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>创建新资产并上传视频文件
 
-在媒体服务中，可以将数字文件上传（引入）到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及有关这些文件的元数据）。 文件上传完成后，你的内容将安全地存储在云中，以便进行进一步处理和流式处理。 资产中的文件称为 **资产文件**。
+在媒体服务中，可以将数字文件上传（引入）到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件 (以及有关这些文件的元数据。 ) 上传文件后，你的内容将安全地存储在云中，以便进行进一步处理和流式处理。 资产中的文件称为 **资产文件**。
 
 下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。 **CreateFromFile** 创建指定的源文件所要上传到的新资产。
 
@@ -246,11 +247,11 @@ ms.locfileid: "87543582"
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的流 URL 采用以下格式：
 
-{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest **（格式 = mpd-csf）**
+{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest** (format = mpd-csf) **
 
 #### <a name="a-streaming-url-for-hls-has-the-following-format"></a>HLS 的流 URL 采用以下格式：
 
-{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest **（format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3）**
+{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest** (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) **
 
 #### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>平滑流式处理的流式处理 URL 采用以下格式：
 

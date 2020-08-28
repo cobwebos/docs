@@ -9,21 +9,21 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 83827c7a39b2833ce1301e78a0bef4e6d61ec62b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: cba56e699afed8178f93bceddf6bf32a242ed124
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185292"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020841"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
 Blob 软删除可防止意外或错误地修改或删除数据。 为存储帐户启用 blob 软删除后，在指定的保持期内，在删除存储帐户中的 blob、blob 版本 (预览) 和快照时，可能会恢复这些 blob。
 
-如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用 blob 软删除。 本文介绍如何为 blob 启用软删除。 有关 blob 软删除的详细信息，请参阅[blob 的软删除](soft-delete-blob-overview.md)。
+如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用 blob 软删除。 本文介绍如何为 blob 启用软删除。 有关 blob 软删除的详细信息，请参阅 [blob 的软删除](soft-delete-blob-overview.md)。
 
-若要了解如何同时为容器启用软删除，请参阅[启用和管理容器的软删除](soft-delete-container-enable.md)。
+若要了解如何同时为容器启用软删除，请参阅 [启用和管理容器的软删除](soft-delete-container-enable.md)。
 
 ## <a name="enable-blob-soft-delete"></a>启用 blob 软删除
 
@@ -33,8 +33,8 @@ Blob 软删除可防止意外或错误地修改或删除数据。 为存储帐�
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到存储帐户。
 1. 在 " **Blob 服务**" 下找到 "**数据保护**" 选项。
-1. 将 " **Blob 软删除**" 属性设置为 "*已启用*"。
-1. 在 "**保留策略**" 下，指定软删除的 Blob 由 Azure 存储保留多长时间。
+1. 将 " **Blob 软删除** " 属性设置为 " *已启用*"。
+1. 在 " **保留策略**" 下，指定软删除的 Blob 由 Azure 存储保留多长时间。
 1. 保存所做更改。
 
 ![选择了数据保护 blob 服务的 Azure 门户的屏幕截图。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
@@ -82,7 +82,7 @@ $MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourc
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
-若要恢复意外删除的 blob，请在这些 blob 上调用 "**撤消删除 blob** "。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例在容器中的所有软删除 blob 和活动 blob 上调用**撤消删除 Blob** ：
+若要恢复意外删除的 blob，请在这些 blob 上调用 " **撤消删除 blob** "。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例在容器中的所有软删除 blob 和活动 blob 上调用 **撤消删除 Blob** ：
 
 ```powershell
 # Create a context by specifying storage account name and key
@@ -164,7 +164,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-若要恢复意外删除的 blob，请在这些 blob 上调用 "**撤消删除 blob** "。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例在容器中的所有软删除 blob 和活动 blob 上调用**撤消删除 Blob** ：
+若要恢复意外删除的 blob，请在这些 blob 上调用 " **撤消删除 blob** "。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例在容器中的所有软删除 blob 和活动 blob 上调用 **撤消删除 Blob** ：
 
 ```csharp
 // Recover all blobs in a container
@@ -174,7 +174,7 @@ foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobLis
 }
 ```
 
-若要恢复到特定的 blob 版本，请首先调用 "**撤消删除 blob** " 操作，然后将所需的快照复制到 blob 上。 下面的示例将块 blob 恢复到其最新生成的快照：
+若要恢复到特定的 blob 版本，请首先调用 " **撤消删除 blob** " 操作，然后将所需的快照复制到 blob 上。 下面的示例将块 blob 恢复到其最新生成的快照：
 
 ```csharp
 // Undelete

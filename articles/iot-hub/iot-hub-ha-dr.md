@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260167"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021416"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -41,7 +41,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 
 在极少见的情况下，电源故障或其他涉及到实物资产的故障会导致数据中心遇到长时间的服务中断。 此类事件非常罕见，在此期间，上述区域内部 HA 不一定总能发挥作用。 IoT 中心提供多种解决方案，用于在发生此类长时间服务中断后进行恢复。 
 
-在这种情况下，客户可以使用的恢复选项是[Microsoft 启动的故障转移](#microsoft-initiated-failover)和[手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 执行上述任一选项从主要区域故障转移 IoT 中心时，中心将在对应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)完全正常运行。
+在这种情况下，客户可以使用的恢复选项是 [Microsoft 启动的故障转移](#microsoft-initiated-failover) 和 [手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 如果执行了其中任一选项从主要区域执行 IoT 中心故障转移，则该中心将在相应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)中完全正常运行。
 
 这两个故障转移选项提供以下恢复点目标 (RPO)：
 
@@ -57,12 +57,14 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 
 <sup>1</sup>手动故障转移期间无法恢复云到设备的消息和父作业。
 
-完成 IoT 中心的故障转移操作后，来自设备和后端应用程序的所有操作预期可继续进行，无需人工干预。 这意味着，设备到云的消息应会继续正常工作，并且整个设备注册表会保持不变。 可以借助前面配置的相同订阅来使用通过事件网格发出的事件，前提是这些事件网格订阅仍然可用。
+完成 IoT 中心的故障转移操作后，来自设备和后端应用程序的所有操作预期可继续进行，无需人工干预。 这意味着，设备到云的消息应会继续正常工作，并且整个设备注册表会保持不变。 可以借助前面配置的相同订阅来使用通过事件网格发出的事件，前提是这些事件网格订阅仍然可用。 自定义终结点无需进行其他处理。
 
 > [!CAUTION]
-> - 故障转移后，IoT 中心内置事件终结点的事件中心兼容名称和终结点会发生变化。 使用事件中心客户端或事件处理器主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果直接在应用程序中使用与事件中心兼容的名称和终结点，则在故障转移后，需要[获取新的与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)才能继续操作。 如果使用 Azure Functions 或 Azure 流分析来连接内置终结点，可能需要执行**重启**。
+> - 故障转移后，IoT 中心内置事件终结点的事件中心兼容名称和终结点会发生变化。 使用事件中心客户端或事件处理程序主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果在应用程序中直接使用事件中心兼容的名称和终结点，则需在故障转移后[提取新的事件中心兼容终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)，这样才能继续操作。 
 >
-> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 
+> - 如果使用 Azure Functions 或 Azure 流分析来连接内置事件终结点，可能需要执行 **重启**。 这是因为在故障转移过程中，上一个偏移量不再有效。
+>
+> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 若要了解详细信息，请参阅 [Azure 存储为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 
@@ -80,13 +82,13 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 
 有关分步说明，请参阅[教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
 
-### <a name="running-test-drills"></a>运行测试训练
+### <a name="running-test-drills"></a>运行测试演练
 
 不应针对生产环境中使用的 IoT 中心执行测试演练。
 
 ### <a name="dont-use-manual-failover-to-migrate-iot-hub-to-a-different-region"></a>不要使用手动故障转移将 IoT 中心迁移到另一个区域
 
-手动故障转移*不*应作为一种机制，用于在 Azure 地域配对区域之间永久迁移中心。 这样做会增加从旧主要区域中的设备对 IoT 中心执行的操作的延迟。
+不应使用手动故障转移作为在 Azure 异地配对区域之间永久迁移中心的机制。 否则，会增大从驻留在旧主要区域中的设备针对 IoT 中心执行的操作的延迟。
 
 ## <a name="failback"></a>故障回复
 
@@ -109,22 +111,22 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 ## <a name="achieve-cross-region-ha"></a>实现跨区域 HA
 
 如果 Microsoft 发起的故障转移或手动故障转移选项提供的 RTO 无法满足企业的运行时间目标，应考虑在每个设备上实施自动跨区域故障转移机制。
-IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内。 本文将讨论用于提供高可用性和灾难恢复功能的*区域性故障转移*部署模型。
+本文不讨论 IoT 解决方案中部署拓扑的完整处理方式。 本文讨论了用于实现高可用性和灾难恢复的 *区域故障转移* 部署模型。
 
 在区域故障转移模型中，解决方案后端主要在一个数据中心位置运行。 辅助 IoT 中心和后端部署在另一个数据中心位置。 如果主要区域中的 IoT 中心遭遇服务中断或者从设备到主要区域的网络连接中断，设备将使用辅助服务终结点。 可以通过实现跨区域故障转移模型而不是保留在单个区域中来提高解决方案可用性。 
 
 概括而言，为了实现 IoT 中心的区域故障转移模型，需要执行以下步骤：
 
-* **辅助 IoT 中心和设备路由逻辑**：如果主要区域的服务中断，设备必须开始连接到次要区域。 由于大多数服务状态感知的性质，解决方案管理员通常触发区域间的故障转移过程。 要使新终结点与设备通信，同时保留过程控制权，最佳方式是让它们定期在*监护*服务中检查是否存在当前活动的终结点。 该监护服务可以是 Web 应用程序，可使用 DNS 重定向技术将它复制并使其可访问（例如，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)）。
+* **辅助 IoT 中心和设备路由逻辑**：如果主要区域的服务中断，设备必须开始连接到次要区域。 由于大多数服务状态感知的性质，解决方案管理员通常触发区域间的故障转移过程。 若要实现新终结点与设备间的通信并掌控此过程，最好让其定期检查  服务中是否存在当前活动的终结点。 该监护服务可以是 Web 应用程序，可使用 DNS 重定向技术将它复制并使其可访问（例如，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)）。
 
    > [!NOTE]
    > IoT 中心服务不是 Azure 流量管理器中受支持的终结点类型。 我们建议在提议的监护服务中实现终结点运行状况探测 API，使之与 Azure 流量管理器集成。
 
-* **标识注册表复制**：为了可用，辅助 IoT 中心必须包含能够连接到解决方案的所有设备标识。 解决方案应该保留设备标识的异地复制备份，并在切换设备的活动终结点之前将其上传到辅助 IoT 中心。 IoT 中心的设备标识导出功能在此背景下非常有用。 有关详细信息，请参阅 [IoT 中心开发人员指南 - 标识注册表](iot-hub-devguide-identity-registry.md)。
+* **标识注册表复制**：若要进行使用，次要 IoT 中心必须包含所有可连接到解决方案的设备标识。 解决方案应该保留设备标识的异地复制备份，并在切换设备的活动终结点之前将其上传到辅助 IoT 中心。 IoT 中心的设备标识导出功能在此情景中很有用。 有关详细信息，请参阅 [IoT 中心开发人员指南 - 标识注册表](iot-hub-devguide-identity-registry.md)。
 
-* **合并逻辑**：当主要区域再次可供使用时，已在辅助站点中创建的所有状态和数据都必须迁移回主要区域。 此状态和数据主要与设备标识和应用程序元数据相关，必须与主要 IoT 中心以及主要区域中的任何其他应用程序特定存储合并。 
+* **合并逻辑**：当主要区域再次可供使用时，所有在辅助站点中创建的状态和数据都必须迁移回到主要区域。 此状态和数据主要与设备标识和应用程序元数据相关，必须与主要 IoT 中心以及主要区域中的任何其他应用程序特定存储合并。 
 
-为简化此步骤，应当使用幂等操作。 幂等操作可以将副作用降到最低，包括来自最终一致的事件分布的副作用，以及来自事件的重复项目或失序传送的副作用。 此外，应用程序逻辑应该设计为能够容许潜在的不一致或稍微过期的状态。 之所以发生此情况是因为系统需要额外的时间来根据恢复点目标 (RPO) 修复自身。
+可使用幂等操作简化此步骤。 幂等操作可最大程度降低事件的最终一致分布以及事件的重复项/失序传送所造成的副作用。 此外，应用程序逻辑应该设计为能够容许潜在的不一致或稍微过期的状态。 之所以发生此情况是因为系统需要额外的时间来根据恢复点目标 (RPO) 修复自身。
 
 ## <a name="choose-the-right-hadr-option"></a>选择适当的 HA/DR 选项
 
@@ -132,9 +134,9 @@ IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内�
 
 | HA/DR 选项 | RTO | RPO | 是否需要人工干预？ | 实施复杂性 | 附加成本影响|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft 发起的故障转移 |2 - 26 小时|参考上面的 RPO 表|否|无|None|
-| 手动故障转移 |10 分钟 - 2 小时|参考上面的 RPO 表|适合|极低。 只需从门户触发此操作。|无|
-| 跨区域 HA |小于 1 分钟|取决于自定义 HA 解决方案的复制频率|不适合|高|超过 1 个 IoT 中心的 1 倍|
+| Microsoft 发起的故障转移 |2 - 26 小时|参考上面的 RPO 表|否|无|无|
+| 手动故障转移 |10 分钟 - 2 小时|参考上面的 RPO 表|是|极低。 只需从门户触发此操作。|无|
+| 跨区域 HA |小于 1 分钟|取决于自定义 HA 解决方案的复制频率|否|高|超过 1 个 IoT 中心的 1 倍|
 
 ## <a name="next-steps"></a>后续步骤
 

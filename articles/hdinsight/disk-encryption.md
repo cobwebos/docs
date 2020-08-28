@@ -1,43 +1,56 @@
 ---
-title: Azure HDInsight 的客户管理的密钥磁盘加密
-description: 本文介绍如何使用 Azure Key Vault 中你自己的加密密钥来加密 Azure HDInsight 群集中托管磁盘上存储的数据。
+title: 静态数据的双加密
+titleSuffix: Azure HDInsight
+description: 本文介绍 Azure HDInsight 群集上的静态数据的两层加密。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/10/2020
+ms.openlocfilehash: a78b56de537cfac0da48814afe9b07d911a61af1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387840"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020742"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
+# <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据的双加密
 
-Azure HDInsight 支持使用客户管理的密钥，来加密附加到 HDInsight 群集虚拟机的托管磁盘和资源磁盘上的数据。 借助此功能，可以使用 Azure Key Vault 来管理用于保护 HDInsight 群集上的静态数据的加密密钥。
+本文介绍 Azure HDInsight 群集中静态数据的加密方法。 静态数据加密是指附加到 HDInsight 群集虚拟机的 (数据磁盘、OS 磁盘和临时磁盘) 托管磁盘上的加密。 
 
-通过 Azure 存储服务加密 (SSE) 保护 HDInsight 中的所有托管磁盘。 默认情况下，这些磁盘上的数据使用 Microsoft 托管密钥进行加密。 如果为 HDInsight 启用客户管理的密钥，请提供加密密钥，使 HDInsight 能够通过 Azure Key Vault 来使用和管理这些密钥。
+本文档不会探讨 Azure 存储帐户中存储的数据。 群集中可能附加了一个或多个 Azure 存储帐户，其中的加密密钥可能是由 Microsoft 托管的或者客户自己管理的，但加密服务是不同的。 有关 Azure 存储加密的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
-本文档不会探讨 Azure 存储帐户中存储的数据。 有关 Azure 存储加密的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。 群集中可能附加了一个或多个 Azure 存储帐户，其中的加密密钥可能是由 Microsoft 托管的或者客户自己管理的，但加密服务是不同的。
+## <a name="introduction"></a>介绍
 
-## <a name="introduction"></a>简介
+Azure 中有三个主要托管磁盘角色：数据磁盘、操作系统磁盘和临时磁盘。 有关不同类型的托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。 
 
-客户管理的密钥加密是在群集创建期间处理的单步骤过程，不收取额外的费用。 需要做的就是将 HDInsight 注册为 Azure Key Vault 的托管标识，并在创建群集时添加加密密钥。
+HDInsight 在两个不同的层中支持多种类型的加密：
 
-群集每个节点上的资源磁盘和托管磁盘均已使用对称数据加密密钥 (DEK) 进行加密。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。
+- 服务器端加密 (SSE) -SSE 由存储服务执行。 在 HDInsight 中，SSE 用于对 OS 磁盘和数据磁盘进行加密。 它默认为启用状态。 SSE 是第1层加密服务。
+- 使用平台托管密钥进行主机加密-类似于 SSE，此类型的加密由存储服务执行。 不过，它仅适用于临时磁盘，默认情况下不启用。 主机加密也是第1层加密服务。
+- 使用客户托管密钥进行静态加密-可在数据和临时磁盘上使用这种类型的加密。 默认情况下不启用此功能，并要求客户通过 Azure 密钥保管库提供自己的密钥。 静态加密是第2层加密服务。
+
+下表汇总了这些类型。
+
+|群集类型 |OS 磁盘（托管磁盘） |数据磁盘（托管磁盘） |临时数据磁盘（本地 SSD） |
+|---|---|---|---|
+|Kafka、有加速写入的 HBase|Layer1：默认情况下， [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Layer1： [默认情况下](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) ，第2层：默认情况下使用 CMK 的静态加密|Layer1：使用 PMK 在主机上进行可选加密，第2层：使用 CMK 的静态静态加密|
+|所有其他群集（Spark、Interactive、Hadoop、无加速写入的 HBase）|Layer1：默认情况下， [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|空值|Layer1：使用 PMK 在主机上进行可选加密，第2层：使用 CMK 的静态静态加密|
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户托管密钥进行静态加密
+
+客户管理的密钥加密是在群集创建期间处理的单步骤过程，不收取额外的费用。 只需使用 Azure Key Vault 向托管标识授权，并在创建群集时添加加密密钥。
+
+群集的每个节点上的数据磁盘和临时磁盘都使用对称数据加密密钥进行加密 (DEK) 。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。
+
+对于附加到群集 Vm 的 OS 磁盘，只 (PMK) 提供一个加密层。 如果方案需要 CMK 加密，则建议客户避免将敏感数据复制到操作系统磁盘。
 
 如果在存储磁盘加密密钥的密钥保管库上启用密钥保管库防火墙，则必须将用于部署群集的区域的 HDInsight 区域资源提供程序 IP 地址添加到密钥保管库防火墙配置。 这是必需的，因为 HDInsight 不是受信任的 Azure 密钥保管库服务。
 
 可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 轮换密钥时，HDInsight 群集在几分钟内即可开始使用新密钥。 启用[软删除](../key-vault/general/soft-delete-overview.md)密钥保护功能可以防范勒索软件和意外删除。 未启用此项保护功能的 Key Vault 不受支持。
 
-|群集类型 |OS 磁盘（托管磁盘） |数据磁盘（托管磁盘） |临时数据磁盘（本地 SSD） |
-|---|---|---|---|
-|Kafka、有加速写入的 HBase|[SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE 加密 + 可选 CMK 加密|可选 CMK 加密|
-|所有其他群集（Spark、Interactive、Hadoop、无加速写入的 HBase）|SSE 加密|空值|可选 CMK 加密|
-
-## <a name="get-started-with-customer-managed-keys"></a>客户托管密钥入门
+### <a name="get-started-with-customer-managed-keys"></a>客户托管密钥入门
 
 若要创建已启用客户管理的密钥的 HDInsight 群集，请完成以下步骤：
 
@@ -48,19 +61,21 @@ Azure HDInsight 支持使用客户管理的密钥，来加密附加到 HDInsight
 1. 创建已启用客户管理的密钥的 HDInsight 群集
 1. 转换加密密钥
 
-## <a name="create-managed-identities-for-azure-resources"></a>创建 Azure 资源的托管标识
+以下各部分详细介绍了每个步骤。
+
+### <a name="create-managed-identities-for-azure-resources"></a>创建 Azure 资源的托管标识
 
 创建用户分配的托管标识，以便向 Key Vault 进行身份验证。
 
 有关具体步骤，请参阅[创建用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 有关 Azure HDInsight 中托管标识的工作原理的详细信息，请参阅 [Azure HDInsight 中的托管标识](hdinsight-managed-identities.md)。 将托管标识资源 ID 添加到 Key Vault 访问策略时，请务必保存该 ID。
 
-## <a name="create-azure-key-vault"></a>创建 Azure Key Vault
+### <a name="create-azure-key-vault"></a>创建 Azure Key Vault
 
 创建密钥保管库。 有关具体步骤，请参阅[创建 Azure Key Vault](../key-vault/secrets/quick-create-portal.md)。
 
 HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，则可以将密钥导入 Azure Key Vault。 请记住，密钥保管库必须启用“软删除”****。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
 
-## <a name="create-key"></a>创建密钥
+### <a name="create-key"></a>创建密钥
 
 1. 在新密钥保管库中，导航到“设置” > “密钥” > “生成/导入”。**** **** ****
 
@@ -78,7 +93,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![获取密钥标识符](./media/disk-encryption/get-key-identifier.png)
 
-## <a name="create-access-policy"></a>创建访问策略
+### <a name="create-access-policy"></a>创建访问策略
 
 1. 在新密钥保管库中，导航到“设置” > “访问策略” > “+ 添加访问策略”。**** **** ****
 
@@ -100,17 +115,17 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![保存 Azure Key Vault 访问策略](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
-## <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>创建支持客户管理的密钥磁盘加密的群集
+### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>创建支持客户管理的密钥磁盘加密的群集
 
-现在已准备好新建 HDInsight 群集。 客户管理的密钥只能在群集创建期间应用于新群集。 无法从客户管理的密钥群集中删除加密，无法将客户管理的密钥添加到现有群集。
+现在已准备好新建 HDInsight 群集。 客户托管的密钥只能在群集创建过程中应用于新群集。 无法从客户管理的密钥群集中删除加密，且不能将客户托管的密钥添加到现有群集。
 
-### <a name="using-the-azure-portal"></a>使用 Azure 门户
+#### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
 在群集创建期间，提供完整的“密钥标识符”****，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 还需要将托管标识分配给集群并提供密钥 URI。
 
 ![创建新群集](./media/disk-encryption/create-cluster-portal.png)
 
-### <a name="using-azure-cli"></a>使用 Azure CLI
+#### <a name="using-azure-cli"></a>使用 Azure CLI
 
 以下示例演示如何使用 Azure CLI 来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅 [Azure CLI az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
 
@@ -124,7 +139,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 --assign-identity MyMSI
 ```
 
-### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+#### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
 以下示例演示如何使用 Azure 资源管理器模板来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅[什么是 ARM 模板？](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)。
 
@@ -338,17 +353,17 @@ New-AzResourceGroupDeployment `
 }
 ```
 
-## <a name="rotating-the-encryption-key"></a>转换加密密钥
+### <a name="rotating-the-encryption-key"></a>转换加密密钥
 
 在某些情况下，在创建 HDInsight 群集后，你可能想要更改它使用的加密密钥。 可以通过门户轻松实现此目的。 对于此操作，群集必须有权访问当前密钥和所需的新密钥，否则轮换密钥操作将会失败。
 
-### <a name="using-the-azure-portal"></a>使用 Azure 门户
+#### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
 若要轮换密钥，需要基密钥保管库 URI。 完成此操作后，转到门户中的“HDInsight 群集属性”部分，单击“磁盘加密密钥 URL”下的“更改密钥”。**** **** 输入新密钥的 URL，并提交轮换密钥的操作。
 
 ![轮换磁盘加密密钥](./media/disk-encryption/change-key.png)
 
-### <a name="using-azure-cli"></a>使用 Azure CLI
+#### <a name="using-azure-cli"></a>使用 Azure CLI
 
 以下示例演示如何轮换现有 HDInsight 群集的磁盘加密密钥。 有关详细信息，请参阅 [Azure CLI az hdinsight rotate-disk-encryption-key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)。
 
@@ -385,9 +400,6 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 
 由于仅支持已启用“软删除”的密钥，因此，如果 Key Vault 中的密钥已恢复，则群集应重新获得对密钥的访问权限。 若要恢复 Azure Key Vault 密钥，请参阅 [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) 或 [az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)。
 
-**会加密哪些磁盘类型？是否还会加密 OS 磁盘/资源磁盘？**
-
-会加密资源磁盘和数据磁盘/托管磁盘。 OS 磁盘不加密。
 
 **如果群集已纵向扩展，新节点是否无缝支持客户管理的密钥？**
 
@@ -396,6 +408,64 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 **是否可以在我的位置使用客户管理的密钥？**
 
 可以在所有公有云和国家云中使用 HDInsight 客户管理的密钥。
+
+## <a name="encryption-at-host-using-platform-managed-keys"></a>使用平台托管密钥在主机上加密
+
+### <a name="enable-in-the-azure-portal"></a>在 Azure 门户中启用
+
+在 Azure 门户中创建群集期间，可以在主机上启用加密。
+
+> [!Note]
+> 启用 "在主机上加密" 时，不能将应用程序从 Azure marketplace 添加到 HDInsight 群集。
+
+:::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="在主机上启用加密。":::
+
+使用此选项可以 [在主机上](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) 使用 PMK 对 HDInsight vm 临时数据磁盘进行加密。 仅 [支持在有限区域中的特定 VM sku 上](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) 加密，且 HDInsight 支持 [以下节点配置和 sku](./hdinsight-supported-node-configuration.md)。
+
+若要了解 HDInsight 群集的正确 VM 大小，请参阅 [为 Azure HDInsight 群集选择正确的 vm 大小](hdinsight-selecting-vm-size.md)。 启用 "在主机上加密" 时，Zookeeper 节点的默认 VM SKU 将为 DS2V2。
+
+### <a name="enable-using-powershell"></a>使用 PowerShell 进行启用
+
+以下代码片段演示了如何使用 PowerShell 在启用主机的情况下创建新的 Azure HDInsight 群集。 它使用参数 `-EncryptionAtHost $true` 来启用此功能。
+
+```powershell
+$storageAccountResourceGroupName = "Group"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = Get-AzStorageAccountKey `
+    -ResourceGroupName $storageAccountResourceGroupName `
+    -Name $storageAccountName | %{ $_.Key1 }
+$storageContainer = "container002"
+# Cluster configuration info
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 4 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -HttpCredential $clusterCreds `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainer $storageContainer `
+    -SshCredential $clusterCreds `
+    -EncryptionAtHost $true `
+```
+
+### <a name="enable-using-azure-cli"></a>启用 Azure CLI
+
+以下代码片段演示了如何使用 Azure CLI 在启用主机的情况下创建新的 Azure HDInsight 群集。 它使用参数 `--encryption-at-host true` 来启用此功能。
+
+```azurecli
+az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
+-p "HttpPassword1234!" \\
+--storage-account MyStorageAccount --encryption-at-host true
+```
 
 ## <a name="next-steps"></a>后续步骤
 

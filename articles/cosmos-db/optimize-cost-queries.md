@@ -6,20 +6,21 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/24/2020
-ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c6ff67e3c1588f6671173d6fa1eec3dc15883291
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318260"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020909"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
 Azure Cosmos DB 提供了丰富的数据库操作，包括对容器中的项进行操作的关系和分层查询。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 可以考虑将请求单位 (RU) 视为执行各种数据库操作以提供请求所需的资源的单一度量值，而无需虑和管理硬件资源。 本文介绍如何评估查询的请求单位费用，并在性能和成本方面优化查询。
 
-通常，按如下所示，按从最快/最高效的方式对读取 Azure Cosmos DB：  
+Azure Cosmos DB 中的读取通常按吞吐量从最快/效率最高到较慢/效率较低进行排序，如下所示：  
 
-* 点读取次数（对单个项 ID 和分区键的键/值查找）。
+* 点读取（对单个项 ID 和分区键进行键/值查找）。
 
 * 单个分区键内具有筛选器子句的查询。
 
@@ -27,7 +28,7 @@ Azure Cosmos DB 提供了丰富的数据库操作，包括对容器中的项进�
 
 * 不包含筛选器的查询。
 
-由于项 ID 上的键/值查找是最有效的读取类型，因此应确保项 ID 具有有意义的值。
+因为对项 ID 进行键/值查找是最高效的读取方式，所以应确保项 ID 具有有意义的值。
 
 从一个或多个分区读取数据的查询会导致较高的延迟并使用较多的请求单位数。 因为每个分区都具有针对所有属性的自动索引编制，因此，可以基于索引高效地执行查询。 通过使用并行选项，可以更快地进行使用多个分区的查询。 若要了解有关分区和分区键的详细信息，请参阅[在 Azure Cosmos DB 中进行分区](partitioning-overview.md)。
 
@@ -112,5 +113,5 @@ Total Query Execution Time               :   �
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)
 * 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
-* 详细了解[Azure Cosmos DB 保留的容量](cosmos-db-reserved-capacity.md)
+* 详细了解 [Azure Cosmos DB 保留的容量](cosmos-db-reserved-capacity.md)
 

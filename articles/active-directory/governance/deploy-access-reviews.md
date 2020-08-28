@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853031"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011338"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -182,7 +182,7 @@ ms.locfileid: "88853031"
 
 * 组 [成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步到 Azure AD，或者在 Azure AD 或 Office 365 中创建，包括 Microsoft 团队) 。
 
-* 将资源 (组、应用和站点分组) 为单个包以管理访问权限的[访问包](/entitlement-management-overview.md)。
+* 将资源 (组、应用和站点分组) 为单个包以管理访问权限的[访问包](/azure/active-directory/governance/entitlement-management-overview)。
 
 * Azure AD 在 Privileged Identity Management 中定义的[角色和 Azure 资源角色](../privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
@@ -241,7 +241,7 @@ ms.locfileid: "88853031"
 
 **示例访问评审计划**
 
-| 组件| 值 |
+| 组件| “值” |
 | - | - |
 | **要查看的资源**| 访问 Microsoft Dynamics |
 | **查看频率**| 每月一次 |
@@ -422,7 +422,7 @@ ms.locfileid: "88853031"
 | 操作方法文章| 说明 |
 | - | - |
 | [创建访问评审](entitlement-management-access-reviews-create.md)| 启用访问包的审核。 |
-| [执行访问评审](/entitlement-management-access-reviews-review-access.md)| 为分配到访问包的其他用户执行访问评审。 |
+| [执行访问评审](entitlement-management-access-reviews-review-access.md)| 为分配到访问包的其他用户执行访问评审。 |
 | [自行查看分配的访问包 (s) ](entitlement-management-access-reviews-self-review.md)| 自动查看分配的访问包 (s)  |
 
 

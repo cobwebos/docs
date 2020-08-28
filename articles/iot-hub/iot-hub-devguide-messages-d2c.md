@@ -10,12 +10,13 @@ ms.date: 05/15/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327712"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021232"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -37,8 +38,7 @@ IoT 中心有一个默认的内置终结点（消息/事件），此终结点与
 
 每条消息都路由到与它的路由查询匹配的所有终结点。 换句话说，消息可以路由到多个终结点。
 
-
-如果你的自定义终结点具有防火墙配置，请考虑使用 Microsoft 受信任的第一方例外，为你的 IoT 中心提供对特定终结点（ [Azure 存储](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、 [azure 事件中心](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)和[azure 服务总线](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)）的访问权限。 这适用于使用[托管服务标识](./virtual-network-support.md)的 IoT 中心的选择区域。
+如果你的自定义终结点具有防火墙配置，请考虑使用 Microsoft 受信任的第一方例外，为你的 IoT 中心提供对特定终结点（ [Azure 存储](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、 [azure 事件中心](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) 和 [azure 服务总线](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)）的访问权限。 这适用于使用 [托管服务标识](./virtual-network-support.md)的 IoT 中心的选择区域。
 
 IoT 中心目前支持以下终结点：
 
@@ -47,19 +47,23 @@ IoT 中心目前支持以下终结点：
  - 服务总线队列和服务总线主题
  - 事件中心
 
-### <a name="built-in-endpoint"></a>内置终结点
+## <a name="built-in-endpoint-as-a-routing-endpoint"></a>作为路由终结点的内置终结点
 
 可以使用标准[事件中心集成和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收来自内置终结点（消息/事件）的设备到云的消息。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。
 
-### <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage-as-a-routing-endpoint"></a>作为路由终结点的 Azure 存储
 
 IoT 中心可将消息路由到以下两个存储服务：[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)和 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) 帐户。 Azure Data Lake Storage 帐户是在 Blob 存储之上构建的启用[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)的存储帐户。 这两个存储服务都使用 blob 作为其存储。
 
-IoT 中心支持将数据以 [Apache Avro](https://avro.apache.org/) 格式和 JSON 格式写入 Azure 存储。 默认值为 AVRO。 只有在配置 Blob 存储终结点时才能设置编码格式。 不能编辑现有终结点的格式。 使用 JSON 编码时，必须在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个值都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。 您可以使用 IoT 中心的 Create 或 Update REST API （特别是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 门户、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)）选择编码格式。 下图说明如何在 Azure 门户中选择编码格式。
+IoT 中心支持将数据以 [Apache Avro](https://avro.apache.org/) 格式和 JSON 格式写入 Azure 存储。 默认值为 AVRO。 使用 JSON 编码时，必须在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个值都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。
+
+编码格式只能在配置 blob 存储终结点时设置;不能为现有终结点编辑该终结点。 若要为现有终结点切换编码格式，则需要删除并使用所需的格式重新创建自定义终结点。 一个有用的策略可能是使用所需的编码格式创建新的自定义终结点，并将并行路由添加到该终结点。 通过这种方式，你可以在删除现有终结点之前验证数据。
+
+您可以使用 IoT 中心的 Create 或 Update REST API （特别是 [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 门户、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)）选择编码格式。 下图显示了如何在 Azure 门户中选择编码格式。
 
 ![Blob 存储终结点编码](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT 中心将在消息达到特定大小或在经过一定的时间后，对消息进行批处理并将数据写入存储。 IoT 中心默认为以下文件命名约定： 
+IoT 中心将在消息达到特定大小或在经过一定的时间后，对消息进行批处理并将数据写入存储。 IoT 中心默认为以下文件命名约定：
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -89,12 +93,11 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ![选择 Azure Date Lake Gen2 存储](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
-
-### <a name="service-bus-queues-and-service-bus-topics"></a>服务总线队列和服务总线主题
+## <a name="service-bus-queues-and-service-bus-topics-as-a-routing-endpoint"></a>作为路由终结点的服务总线队列和服务总线主题
 
 用作 IoT 中心终结点的服务总线队列和主题不能启用“会话”或“重复项检测”。 如果启用了其中任一选项，该终结点将在 Azure 门户中显示为“无法访问”。
 
-### <a name="event-hubs"></a>事件中心
+## <a name="event-hubs-as-a-routing-endpoint"></a>作为路由终结点的事件中心
 
 除了与事件中心兼容的内置终结点外，还可以将数据路由到事件中心类型的自定义终结点。 
 
@@ -123,7 +126,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="non-telemetry-events"></a>非遥测事件
 
-除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生更改事件（在公共预览版中）。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为**数字克隆更改事件**，IoT 中心会在数据源[属性](../iot-pnp/iot-plug-and-play-glossary.md)设置或更改时发送消息，[并在基础](../iot-pnp/iot-plug-and-play-glossary.md)设备克隆发生更改事件时发送消息。
+除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生更改事件（在公共预览版中）。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为 [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为 **数字克隆更改事件** ，IoT 中心会在数据源 [属性](../iot-pnp/iot-plug-and-play-glossary.md) 设置或更改时发送消息， [并在基础](../iot-pnp/iot-plug-and-play-glossary.md) 设备克隆发生更改事件时发送消息。
 
 [IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布设备事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
 

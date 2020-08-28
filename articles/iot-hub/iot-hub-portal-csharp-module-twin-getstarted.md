@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模块身份 & 模块（门户和 .NET）
+title: 'Azure IoT 中心模块标识 & 模块 (门户和 .NET) '
 description: 了解如何使用门户和 .NET 创建模块标识和更新模块孪生。
 author: robinsh
 manager: philmea
@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: a10c8b21da1e4dc08a186ccb6ba6528b7a655943
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759777"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022065"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>使用门户和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -32,7 +32,7 @@ ms.locfileid: "81759777"
 * 如何使用 .NET 设备 SDK 更新设备的模块孪生。
 
 > [!NOTE]
-> 有关可用于构建在设备和解决方案后端上运行的应用程序的 Azure IoT Sdk 的信息，请参阅[Azure Iot sdk](iot-hub-devguide-sdks.md)。
+> 有关可用于构建在设备和解决方案后端上运行的应用程序的 Azure IoT Sdk 的信息，请参阅 [Azure Iot sdk](iot-hub-devguide-sdks.md)。
 >
 
 ## <a name="prerequisites"></a>先决条件

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 | Microsoft Docs
-description: Azure 媒体内容审查器媒体处理器可帮助检测视频中可能存在的成人和猥亵内容。
+description: Azure 媒体内容审查器媒体处理器可以帮助检测视频中可能存在的成人和猥亵内容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954696"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022201"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
 

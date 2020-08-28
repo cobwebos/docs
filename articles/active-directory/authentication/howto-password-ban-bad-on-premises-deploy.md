@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718945"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003535"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>规划和部署本地 Azure Active Directory 密码保护
 
@@ -42,13 +42,15 @@ ms.locfileid: "88718945"
 * 用户经常使用不安全的密码。
 * 他们需要通知用户即将执行的安全强制更改、可能对这些更改的影响，以及如何选择更安全的密码。
 
-还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅下列文章：
+还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅以下文章：
 
 * [Ntdsutil.exe 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [由于目录服务修复模式密码弱，域控制器副本升级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [由于本地管理员密码弱，域控制器降级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 在一个合理的时间段内，在审核模式下运行此功能后，可以将该配置从 *审核* 切换为 " *强制执行* "，以要求更安全的密码。 此期间的其他监视是一个不错的主意。
+
+请注意，Azure AD 密码保护只能在密码更改或设置操作期间验证密码。 在部署 Azure AD 密码保护之前，已接受并存储在 Active Directory 中的密码永远不会进行验证，并且将继续按原样工作。 随着时间的推移，所有用户和帐户最终会开始使用 Azure AD 密码保护验证密码，因为其现有密码会正常过期。 配置了 "密码永不过期" 的帐户不受此干扰。
 
 ### <a name="multiple-forest-considerations"></a>多林注意事项
 
@@ -88,7 +90,7 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
     * 默认情况下，RPC 服务器端口是动态 RPC 端口，但可以配置为 [使用静态端口](#static)。
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
 
-    |**终结点**|**用途**|
+    |**终结点**|**目的**|
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|

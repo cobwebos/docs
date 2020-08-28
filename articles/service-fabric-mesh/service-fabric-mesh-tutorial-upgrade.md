@@ -5,13 +5,13 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 876359b45daa280a1f5701f2490ce505327f309b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75351719"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010998"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教程：了解如何使用 Visual Studio 升级 Service Fabric 应用程序
 
@@ -61,7 +61,7 @@ ms.locfileid: "75351719"
 > 默认情况下，与 profile.yaml 文件对等的参数文件将用于提供该 profile.yaml 文件的值。
 > 例如，“环境”>“云”>“parameters.yaml”提供了“环境”>“云”>“profile.yaml”的参数值。
 >
-> 可以通过将以下内容添加到 yaml 文件来替代此项： `parametersFilePath=”relative or full path to the parameters file”` 例如， `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或`parametersFilePath=”..\CommonParameters.yaml”`
+> 可以通过将以下内容添加到 yaml 文件来替代此项： `parametersFilePath=”relative or full path to the parameters file”` 例如， `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或 `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 
@@ -125,7 +125,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 无论是进行代码升级还是配置升级（在本例中我们同时执行这两者），要在 Azure 上升级 Service Fabric 网格应用，请在 Visual Studio 中右键单击“todolistapp”****，然后选择“发布...”****
 
-接下来，查看“发布 Service Fabric 应用程序”对话框。****
+接下来，查看“发布 Service Fabric 应用程序”对话框。
 
 使用“目标配置文件”**** 下拉列表选择要用于此部署的 profile.yaml 文件。 若要在云中升级应用，应在下拉列表中选择“cloud.yaml”****，其中 `WebFrontEnd_cpu` 将使用该文件中定义的 1.0。
 
@@ -157,6 +157,6 @@ The application was deployed successfully and it can be accessed at http://10.00
 > [!div class="checklist"]
 > * 如何使用 Visual Studio 升级 Service Fabric 网格应用
 
-进入下一教程：
+转到下一教程：
 > [!div class="nextstepaction"]
 > [清理 Service Fabric 网格资源](service-fabric-mesh-tutorial-cleanup-resources.md)

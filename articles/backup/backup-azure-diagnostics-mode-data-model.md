@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890257"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020943"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -109,7 +109,7 @@ ms.locfileid: "88890257"
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的订阅标识符 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的订阅标识符 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的订阅标识符 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序，例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型，例如 Vaults |
 
@@ -128,7 +128,7 @@ ms.locfileid: "88890257"
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的订阅标识符 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的订阅标识符 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的订阅标识符 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序，例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型，例如 Vaults |
 
@@ -159,12 +159,12 @@ ms.locfileid: "88890257"
 | DataTransferredInMB_s | Number |此作业传输的数据量，以 MB 为单位|
 | JobUniqueId_g |文本 |用于标识作业的唯一 ID |
 | RecoveryJobDestination_s |文本 | 恢复作业的目标，数据将恢复到其中 |
-| RecoveryJobRPDateTime_s |DateTime | 要恢复的恢复点的创建日期和时间 |
-| RecoveryJobRPLocation_s |文本 | 要恢复的恢复点已还原到的位置|
+| RecoveryJobRPDateTime_s |DateTime | 创建要恢复的恢复点的日期和时间 |
+| RecoveryJobRPLocation_s |文本 | 要恢复的恢复点的存储位置|
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID”|
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型。 例如 Vaults |
 
@@ -212,7 +212,7 @@ ms.locfileid: "88890257"
 | SourceSystem |文本 ||当前数据的源系统 - Azure |
 | ResourceId |文本 ||正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 ||正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 ||正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 ||正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 ||正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |文本 ||正在收集其数据的资源类型。 例如 Vaults |
 
@@ -235,7 +235,7 @@ ms.locfileid: "88890257"
 | SourceSystem |文本 ||当前数据的源系统 - Azure |
 | ResourceId |文本 ||正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 ||正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 ||正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 ||正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 ||正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |文本 ||正在收集其数据的资源类型。 例如 Vaults |
 
@@ -278,7 +278,7 @@ ms.locfileid: "88890257"
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型。 例如 Vaults |
 | StorageUniqueId_s |文本 |用于标识存储实体的唯一 ID |
@@ -319,7 +319,7 @@ ms.locfileid: "88890257"
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型。 例如 Vaults |
 
@@ -472,7 +472,7 @@ ms.locfileid: "88890257"
 
 由于 V1 架构位于弃用路径上，因此建议在 Azure 备份诊断数据的所有自定义查询中仅使用 V2 架构。 下面的示例演示如何更新查询以删除 V1 架构的依赖项：
 
-1. 确定查询是否正使用仅适用于 V1 架构的任何字段。 假设你有一个用于列出所有备份项及其关联的受保护服务器的查询，如下所示：
+1. 确定查询是否正在使用仅适用于 V1 架构的任何字段。 假设你有一个用于列出所有备份项及其关联的受保护服务器的查询，如下所示：
 
     ````Kusto
     AzureDiagnostics

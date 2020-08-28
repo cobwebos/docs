@@ -8,13 +8,13 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828041"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021147"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 
@@ -74,7 +74,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 1. 确保“状态”设置为“打开”。
 1. 选择要监视的服务指标。
 1. 指定用来指示保留度量值和日志数据的时间长度的保留期策略。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 [Azure 门户](https://portal.azure.com)目前不允许你在存储帐户中配置分钟指标。 必须使用 PowerShell 或以编程方式启用分钟指标。
 

@@ -1,54 +1,53 @@
 ---
-title: 将 Windows 计算机连接到 Azure Monitor | Microsoft Docs
+title: 在 Windows 计算机上安装 Log Analytics 代理
 description: 本文介绍如何使用适用于 Windows 的 Log Analytics 代理将在其他云中或本地托管的 Windows 计算机连接到 Azure Monitor。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/07/2019
-ms.openlocfilehash: 80ece5b0704869c31ab0656eed922b3f21ba9928
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/03/2020
+ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505748"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003365"
 ---
-# <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
+# <a name="install-log-analytics-agent-on-windows-computers"></a>在 Windows 计算机上安装 Log Analytics 代理
+本文详细介绍如何使用以下方法在 Windows 计算机上安装 Log Analytics 代理：
 
-若要使用 Azure Monitor 在本地数据中心或其他云环境中监视和管理虚拟机或物理计算机，需部署 Log Analytics 代理（也称为 Microsoft Monitoring Agent [MMA]），并将其配置为向一个或多个 Log Analytics 工作区报告。 该代理还支持用于 Azure 自动化的混合 Runbook 辅助角色。  
+* 使用 [安装向导](#install-agent-using-setup-wizard) 或 [命令行](#install-agent-using-command-line)进行手动安装。
+* [Azure 自动化所需状态配置 (DSC) ](#install-agent-using-dsc-in-azure-automation)。 
 
-在受到监视的 Windows 计算机上，该代理被列为 Microsoft Monitoring Agent 服务。 Microsoft Monitoring Agent 服务从日志文件和 Windows 事件日志、性能数据及其他遥测数据中收集事件。 即使代理无法与 Azure Monitor（其报告对象）保持通信，也会持续在受监视计算机的磁盘上运行收集的数据，并对这些数据进行排队。 还原连接后，Microsoft Monitoring Agent 服务会向该服务发送所收集的数据。
+>[!IMPORTANT]
+> 本文中所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效的选项，请参阅 [安装选项](log-analytics-agent.md#installation-options) 。
 
-可使用以下方法之一安装代理。 大多数安装采用这些方法的组合，根据实际情况安装不同的计算机组。  有关使用每种方法的详细信息在本文中后面提供。
+> [!NOTE]
+> 如果需要将代理配置为向多个工作区报告，则不能在初始设置期间执行此操作，而只能在之后通过从控制面板或 PowerShell 更新设置执行，如[添加或删除工作区](agent-manage.md#adding-or-removing-a-workspace)中所述。  
 
-* 手动安装。 可以使用安装向导通过命令行在计算机上手动运行安装程序，也可以使用现有软件分发工具进行部署。
-* Azure 自动化 Desired State Configuration (DSC)。 配合使用 Azure 自动化中的 DSC 以及已部署在环境中的 Windows 计算机的脚本。  
-* PowerShell 脚本。
-* 适用于在 Azure Stack 中运行 Windows 本地环境的虚拟机的资源管理器模板。 
+## <a name="supported-operating-systems"></a>支持的操作系统
 
->[!NOTE]
->Azure 安全中心 (ASC) 依赖于 Microsoft Monitoring Agent（也称为 Log Analytics Windows 代理），并将在部署过程中安装和配置它来向 Log Analytics 工作区报告。 ASC 包括一个自动预配选项，该选项允许在订阅中的所有 VM 上自动安装 Log Analytics Windows 代理，并将其配置为向特定工作区报告。 有关此选项的详细信息，请参阅[启用 Log Analytics 代理自动预配](../../security-center/security-center-enable-data-collection.md#auto-provision-mma)。
->
+有关 Log Analytics 代理支持的 Windows 版本的列表，请参阅 [Azure Monitor 代理概述](agents-overview.md#supported-operating-systems) 。
 
-如果需要将代理配置为向多个工作区报告，则不能在初始设置期间执行此操作，而只能在之后通过从控制面板或 PowerShell 更新设置执行，如[添加或删除工作区](agent-manage.md#adding-or-removing-a-workspace)中所述。  
+### <a name="sha-2-code-signing-support-requirement"></a>SHA-1 代码签名支持要求 
+Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签名。 此更改将影响使用旧版 OS 上的 Log Analytics 代理作为任何 Azure 服务（Azure Monitor、Azure 自动化、Azure 更新管理、Azure 更改跟踪、Azure 安全中心、Azure Sentinel、Windows Defender ATP）一部分的客户。 除非你在旧版 OS 版本（Windows 7、Windows Server 2008 R2 和 Windows Server 2008）上运行代理，否则更改不需要任何客户操作。 在 2020 年 8 月 17 日之前，在旧版 OS 版本上运行的客户必须在其计算机上执行以下操作，否则其代理会停止将数据发送到其 Log Analytics 工作区：
 
-若要了解支持的配置，请查看[支持的 Windows 操作系统](log-analytics-agent.md#supported-windows-operating-systems)和[网络防火墙配置](log-analytics-agent.md#network-requirements)。
+1. 为 OS 安装最新服务器包。 必需的服务包版本包括：
+    - Windows 7 SP1
+    - Windows Server 2008 SP2
+    - Windows Server 2008 R2 SP1
 
-## <a name="obtain-workspace-id-and-key"></a>获取工作区 ID 和密钥
-在安装适用于 Windows 的 Log Analytics 代理前，需要先获得 Log Analytics 工作区的工作区 ID 和秘钥。  安装期间每种安装方法都需要此信息才能正确配置代理，以及确保它能在 Azure 商业版和美国政府云中与 Azure Monitor 成功通信。 
+2. 要为 OS 安装 SHA-2 签名 Windows 更新，请参阅[适用于 Windows 和 WSUS 的 2019 SHA-2 代码签名支持要求](https://support.microsoft.com/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)
+3. 更新到 Windows 代理的最新版本（版本 10.20.18029）。
+4. 建议将代理配置为[使用 TLS 1.2](agent-windows.md#configure-agent-to-use-tls-12)。 
 
-1. 在 Azure 门户中，搜索并选择“Log Analytics 工作区”。
-2. 在 Log Analytics 工作区列表中，选择要将代理配置为向其报告的工作区。
-3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
-4. 选择“已连接的源”，然后选择“Windows 服务器” 。   
-5. 将**工作区 ID** 和**主密钥**复制并粘贴到常用编辑器。    
+## <a name="network-requirements"></a>网络要求
+请参阅 [Log Analytics 代理概述](log-analytics-agent.md#network-requirements) ，了解 Windows 代理的网络要求。
+
+
    
 ## <a name="configure-agent-to-use-tls-12"></a>将代理配置为使用 TLS 1.2
-若要为 Windows 代理与 Log Analytics 服务之间的通信使用 [TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) 协议，可以在将代理安装在虚拟机上之前或之后执行以下步骤来启用该协议。
-
->[!NOTE]
->若要将运行 Windows Server 2008 SP2 x64 的 VM 配置为使用 TLS 1.2，在执行以下步骤之前，需要先安装以下 [SHA-2 代码签名支持更新](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)。 
->
+[TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) 协议确保传输中数据的安全性，以便在 Windows 代理和 Log Analytics 服务之间进行通信。 如果在 [默认情况下未启用 tls 1.2 的操作系统](data-security.md#sending-data-securely-using-tls-12)上安装，则应使用以下步骤配置 tls 1.2。
 
 1. 找到以下注册表子项：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. 在“Protocols”下为 TLS 1.2 创建一个子项：HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2
@@ -66,7 +65,7 @@ ms.locfileid: "86505748"
 4. 在此子项下创建值为 **1**的 DWORD 值 **SchUseStrongCrypto**。 
 5. 重启系统以使设置生效。 
 
-## <a name="install-the-agent-using-setup-wizard"></a>使用安装向导安装代理
+## <a name="install-agent-using-setup-wizard"></a>使用安装向导安装代理
 以下步骤在计算机上使用代理的设置向导在 Azure 和 Azure 政府云中安装并配置 Log Analytics 代理。 如果希望了解如何将代理配置为也向 System Center Operations Manager 管理组进行报告，请参阅[使用代理设置向导部署 Operations Manager 代理](/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)。
 
 1. 在 Log Analytics 工作区中，从先前导航到的“Windows 服务器”页，根据 Windows 操作系统的处理器体系结构选择相应的“下载 Windows 代理”版本。    
@@ -82,9 +81,9 @@ ms.locfileid: "86505748"
 8. 在“准备安装”页上检查所做的选择，并单击“安装”。 
 9. 在“配置已成功完成”页上，单击“完成”。 
 
-完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 要确认其正在向 Log Analytics 报告，请参阅[验证代理与 Log Analytics 的连接](#verify-agent-connectivity-to-log-analytics)。 
+完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 要确认其正在向 Log Analytics 报告，请参阅[验证代理与 Log Analytics 的连接](#verify-agent-connectivity-to-azure-monitor)。 
 
-## <a name="install-the-agent-using-the-command-line"></a>使用命令行安装代理
+## <a name="install-agent-using-command-line"></a>使用命令行安装代理
 下载的代理文件是自包含安装包。  代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确安装。    
 
 >[!NOTE]
@@ -118,7 +117,7 @@ ms.locfileid: "86505748"
     >[!NOTE]
     >需要将参数 OPINSIGHTS_WORKSPACE_ID 和 OPINSIGHTS_WORKSPACE_KEY 的字符串值封装在双引号中，以指示 Windows Installer 将其解释为包的有效选项。 
 
-## <a name="install-the-agent-using-dsc-in-azure-automation"></a>使用 Azure 自动化中的 DSC 安装代理
+## <a name="install-agent-using-dsc-in-azure-automation"></a>使用 Azure 自动化中的 DSC 安装代理
 
 可通过以下脚本示例，使用 Azure Automation DSC 安装代理。   如果没有自动化帐户，请在使用 Automation DSC 前查看 [Azure 自动化入门](../../automation/index.yml)，了解创建自动化账户的需求和步骤。  如果不熟悉 Automation DSC，请参阅 [Automation DSC 入门](../../automation/automation-dsc-getting-started.md)。
 
@@ -133,7 +132,7 @@ ms.locfileid: "86505748"
 
 32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示。  **MMAgent.ps1** 脚本中的 `ProductId` 值必须与 32 位或 64 位代理安装程序包的产品代码匹配。
 
-要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](/windows/win32/msi/platform-sdk-components-for-windows-installer-developers)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Microsoft 最有价值专家 (MVP) 编写的[示例脚本](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-the-agent-using-the-command-line)部分下的第一个步骤中演示了此操作。  
+要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](/windows/win32/msi/platform-sdk-components-for-windows-installer-developers)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Microsoft 最有价值专家 (MVP) 编写的[示例脚本](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-agent-using-command-line)部分下的第一个步骤中演示了此操作。  
 
 1. 从 [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 将 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
 2.    为 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 创建 Azure 自动化变量资产。 将 OPSINSIGHTS_WS_ID 设置为 Log Analytics 工作区 ID，将 OPSINSIGHTS_WS_KEY 设置为工作区的主键 。
@@ -179,7 +178,7 @@ Configuration MMAgent
 5. [将 MMAgent.ps1 配置脚本导入](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation)到自动化帐户。 
 6. [将 Windows 计算机或节点分配](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration)到配置。 15 分钟内，该节点会检查其配置，代理会被推送到该节点。
 
-## <a name="verify-agent-connectivity-to-log-analytics"></a>验证代理与 Log Analytics 的连接
+## <a name="verify-agent-connectivity-to-azure-monitor"></a>验证代理与 Azure Monitor 的连接
 
 代理安装完毕后，可通过两种方式来验证是否成功连接和完成报告。  
 
@@ -197,7 +196,14 @@ Configuration MMAgent
     | where TimeGenerated > ago(30m)  
     ```
 
-在返回的搜索结果中，应可以看到计算机的检测信号记录，该记录指示计算机已连接到服务，并向其报告。   
+在返回的搜索结果中，应可以看到计算机的检测信号记录，该记录指示计算机已连接到服务，并向其报告。
+
+## <a name="cache-information"></a>缓存信息
+
+Log Analytics 代理中的数据将缓存在本地计算机上的 *C:\Program Files\Microsoft 监视 Agent\Agent\Health 服务状态* ，然后再发送到 Azure Monitor。 代理每隔20秒尝试上传一次。 如果该操作失败，它将等待呈指数级增加的时间，直到成功为止。 它将在第二次尝试之前等待30秒，在下一次重试之前60秒，120秒，8.5 依此类推，直到再次成功连接。 此等待时间略有随机化，可避免所有代理同时尝试连接。 达到最大缓冲区后，会丢弃最早的数据。
+
+默认缓存大小为 50 MB，但可以配置为最小为 5 MB，最大值为 1.5 GB。 它存储在注册表项中 *HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\persistence 缓存的最大值*。 该值表示页数，每页 8 KB。
+
 
 ## <a name="next-steps"></a>后续步骤
 

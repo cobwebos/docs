@@ -4,12 +4,13 @@ description: 本 .NET 教程可帮助你在 Azure 中开发使用服务总线队
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 746257195220d26ad5d011a39022a3957e8cb1ae
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067828"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021776"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -68,7 +69,7 @@ ms.locfileid: "88067828"
 2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”  。
    
    !["新项目" 对话框的屏幕截图，其中选择了 Cloud，Azure 云服务 Visual c # 突出显示了红色。][9]
-3. 在 "**角色**" 窗格中，双击 " **ASP.NET Web 角色**"。
+3. 在 " **角色** " 窗格中，双击 " **ASP.NET Web 角色**"。
    
    ![选中 "ASP.NET" Web 角色并选择 "WebRole1" 的 "新建 Microsoft Azure 云服务" 对话框的屏幕截图。][10]
 4. 将鼠标指针停留在“Azure 云服务解决方案”  下的“WebRole1”  上，单击铅笔图标，并将 Web 角色重命名为“FrontendWebRole”  。 然后单击“确定”  。 （请确保输入“Frontend”而不是“FrontEnd”，此处为小写“e”。）
@@ -81,7 +82,7 @@ ms.locfileid: "88067828"
    
     !["更改身份验证" 对话框的屏幕截图，其中已选择 "无身份验证" 选项并以红色列出。][16]
 7. 返回到“新建 ASP.NET 项目”  对话框，单击“确定”  以创建项目。
-8. 在**解决方案资源管理器**的**FrontendWebRole**项目中，右键单击 "**引用**"，然后单击 "**管理 NuGet 包**"。
+8. 在 **解决方案资源管理器**的 **FrontendWebRole** 项目中，右键单击 " **引用**"，然后单击 " **管理 NuGet 包**"。
 9. 单击“浏览”  选项卡，然后搜索“WindowsAzure.ServiceBus”  。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
    
    ![突出显示了 Windowsazure.storage 的 "管理 NuGet 包" 对话框的屏幕截图，并以红色列出了 "安装" 选项。][13]
@@ -172,7 +173,7 @@ ms.locfileid: "88067828"
    !["添加视图" 对话框的屏幕截图，其中包含以红色列出的 "模板" 和 "模型类" 下拉列表。][15]
 7. 单击“添加”  。
 8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”中，双击“views/shared\\_Layout.cshtml”文件以在 Visual Studio 编辑器中将其打开。
-9. 将**ASP.NET 应用程序**的所有匹配项替换为**Northwind 商贸产品**。
+9. 将 **ASP.NET 应用程序** 的所有匹配项替换为 **Northwind 商贸产品**。
 10. 删除“Home”  、“About”  和“Contact”  链接。 删除突出显示的代码：
     
     ![突出显示了包含三行 H T M L 操作链接代码的代码屏幕截图。][28]

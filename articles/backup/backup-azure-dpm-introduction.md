@@ -3,12 +3,12 @@ title: 准备 DPM 服务器以备份工作负荷
 description: 本文介绍如何使用 Azure 备份服务准备将 System Center Data Protection Manager (DPM) 备份到 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890801"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021028"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
 
@@ -46,7 +46,7 @@ VMware VM 上的 DPM | System Center 2012 R2 更新汇总 5 或更高版本。
 支持的应用 | [了解](/system-center/dpm/dpm-protection-matrix) DPM 可以进行哪些备份。
 支持的文件类型 | 使用 Azure 备份，可以备份下列文件类型：<br> <li>加密 (仅限完整备份) <li> 支持压缩 (增量备份)  <li> 支持稀疏 (增量备份) <li> 压缩的稀疏 (被视为稀疏) 
 不受支持的文件类型 | <li>区分大小写的文件系统上的服务器<li>  (跳过的硬链接) <li>  (跳过重新分析点) <li> 已 (跳过加密和压缩的) <li> 已 (跳过加密和稀疏) <li> 压缩流<li> 分析流
-本地存储 | 要备份的每台计算机上的可用本地存储必须至少为要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
+本地存储 | 要备份的每台计算机都必须具有本地可用存储空间，其大小至少为要备份的数据大小的5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
 保管库存储 | 可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如虚拟机或数据库）的大小不应超过 54,400 GB。
 Azure ExpressRoute | 可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。<br/><br/> **使用公共对等互连**：确保访问以下域/地址：<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>-根据恢复服务保管库的位置 (Microsoft Azure 区域) <br/><br/>- Azure 存储（取决于恢复服务保管库的位置）<br/><br/>有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。<br/><br/>**注意**：对于新线路，公共对等互连已弃用。
 Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安装 DPM SP1 汇总 2 或更高版本。 这是代理安装所必需的。<br/><br/> 本文介绍如何部署最新版本的 Azure 备份代理（也称为 Microsoft Azure 恢复服务 (MARS) 代理）。 如果已部署早期版本，请更新到最新版本以确保备份按预期运行。

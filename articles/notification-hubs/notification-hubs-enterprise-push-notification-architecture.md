@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084307"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003620"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
@@ -51,7 +52,7 @@ ms.locfileid: "87084307"
 1. 移动 应用程序
    * 接收并显示通知
 
-### <a name="benefits"></a>优势
+### <a name="benefits"></a>优点
 
 1. 接收方（通过通知中心的移动应用/服务）和发送方（后端系统）之间的这种解耦使得只需要最小的更改即可集成其他后端系统。
 1. 这还使得采用多个移动应用的方案能够从一个或多个后端系统接收事件。  
@@ -65,13 +66,13 @@ ms.locfileid: "87084307"
 1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
 2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，并接收通知。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
 完整的示例代码可在[通知中心示例]中找到。 它分为三个组件：
 
 1. **EnterprisePushBackendSystem**
 
-    a. 此项目使用**Windowsazure.storage** NuGet 包，并基于[服务总线 Pub/Sub 编程]。
+    a. 此项目使用 **Windowsazure.storage** NuGet 包，并基于 [服务总线 Pub/Sub 编程]。
 
     b. 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
 
@@ -269,7 +270,7 @@ ms.locfileid: "87084307"
 ### <a name="running-the-sample"></a>运行示例
 
 1. 确保 WebJob 成功运行并且计划为“连续运行”。
-2. 运行**EnterprisePushMobileApp**，这会启动 Windows 应用商店应用。
+2. 运行 **EnterprisePushMobileApp**，这会启动 Windows 应用商店应用。
 3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知****：
 
     ![运行企业推送后端系统应用和应用发送的消息的控制台屏幕截图。][5]
