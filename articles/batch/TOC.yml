@@ -134,6 +134,8 @@
           href: batch-sig-images.md
         - name: 使用托管映像资源创建池
           href: batch-custom-images.md
+        - name: 在启用磁盘加密的情况下创建池
+          href: disk-encryption.md
         - name: 在虚拟网络中创建池
           href: batch-virtual-network.md
         - name: 创建具有公共 IP 地址的池

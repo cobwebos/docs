@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398cf947f0a2d250c3cd0ed73a75bc3c091e5f7a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561027"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047524"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
@@ -204,6 +204,15 @@ ms.locfileid: "82561027"
       * 如果部署到单个设备，请输入“IoT Edge设备 ID”。
       * 如果要部署到多个设备，请指定设备“目标条件”。 目标条件是用于在 IoT 中心匹配一组 IoT Edge 设备的筛选器。 若想将设备标记用作条件，则需要使用 IoT 中心设备孪生更新对应的设备标记。 在高级设置中更新“IoT Edge 部署 ID”和“IoT Edge 部署优先级” 。 有关为多个设备创建部署的详细信息，请参阅[了解 IoT Edge 自动部署](module-deployment-monitoring.md)。
     * 展开“高级设置”，选择“IoT Edge 部署 ID”，然后放置变量 `$(System.TeamProject)-$(Release.EnvironmentName)`。 这样会将项目和发布名称映射为你的 IoT Edge 部署 ID。
+
+>[!NOTE]
+>如果要在管道中使用 **分层部署** ，则 Azure DevOps 中的 Azure IoT Edge 任务尚不支持分层部署。
+>
+>但是，可以使用 [Azure DevOps 中的 Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) 将部署创建为分层部署。 对于 " **内联脚本** " 值，你可以使用 [az iot edge deployment create 命令](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
+>
+>   ```azurecli-interactive
+>   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true
+>   ```
 
 12. 选择“保存”，将更改保存到新发布管道。 从菜单中选择“管道”，返回管道视图。
 

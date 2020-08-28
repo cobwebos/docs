@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853921"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047622"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -57,7 +57,7 @@ Azure Cosmos DB 每隔4小时自动备份一次数据，在任何时间点都存
 
    * **备份保留** 期-它表示保留每个备份的时间段。 你可以在数小时或数天内配置。 最小保持期不能小于备份间隔 (的两倍) 小时，并且不能超过720小时。
 
-   * **保留的数据副本** -默认情况下，会免费提供数据的两个备份副本。 如果需要额外的副本，则必须通过 Azure 门户创建支持请求，并将对其他副本收费。 请参阅 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/) 中的 "已用存储" 部分，了解其他副本的确切价格。
+   * **保留的数据副本** -默认情况下，会免费提供数据的两个备份副本。 如果需要两个以上的副本，则还需支付额外费用。 请参阅 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/) 中的 "已用存储" 部分，了解其他副本的确切价格。
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="为现有的 Azure Cosmos 帐户配置备份间隔和保留期" border="true":::
 

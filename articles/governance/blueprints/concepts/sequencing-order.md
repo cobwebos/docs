@@ -1,18 +1,18 @@
 ---
 title: 了解部署排序顺序
 description: 了解在蓝图分配过程中部署蓝图项目的默认顺序，以及如何自定义部署顺序。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970614"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051468"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
-在处理蓝图定义的分配时，Azure 蓝图使用**排序顺序**来确定创建资源的顺序。 本文解释了以下概念：
+在处理蓝图定义的分配时，Azure 蓝图使用 **排序顺序** 来确定创建资源的顺序。 本文解释了以下概念：
 
 - 使用的默认序列化顺序
 - 如何自定义顺序
@@ -28,17 +28,17 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 - 订阅级别“角色分配”项目按项目名称排序****
 - 订阅级别“策略分配”项目按项目名称排序****
-- 订阅级别**Azure 资源管理器模板**（ARM 模板）项目按项目名称排序
+- 订阅级别 **Azure 资源管理器模板** (ARM 模板) 按项目名称排序的项目
 - “资源组”项目（包括子项目）按占位符名称排序****
 
 在每个**资源组**项目中，将按照以下顺序排列在该资源组中创建的项目：
 
 - 资源组子“角色分配”项目按项目名称排序****
 - 资源组子“策略分配”项目按项目名称排序****
-- 资源组子**Azure 资源管理器模板**（ARM 模板）项目按项目名称排序
+- 资源组子 **Azure 资源管理器模板** (ARM 模板) 按项目名称排序的项目
 
 > [!NOTE]
-> 使用[伪像（）](../reference/blueprint-functions.md#artifacts)可对所引用的项目创建隐式依赖项。
+> 使用 [ ( # B1 的项目 ](../reference/blueprint-functions.md#artifacts) 将在所引用的项目上创建隐式依赖项。
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
@@ -112,7 +112,7 @@ standard-rg 将按默认排序顺序进行处理****。
 }
 ```
 
-根据 "**等待我**" 资源组的定义，订阅级别模板项目的定义如下所示：
+根据 " **等待我** " 资源组的定义，订阅级别模板项目的定义如下所示：
 
 ```json
 {
@@ -141,8 +141,8 @@ standard-rg 将按默认排序顺序进行处理****。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](lifecycle.md)。
-- 了解如何使用[静态和动态参数](parameters.md)。
-- 了解如何利用[蓝图资源锁定](resource-locking.md)。
+- 了解[蓝图生命周期](./lifecycle.md)。
+- 了解如何使用[静态和动态参数](./parameters.md)。
+- 了解如何利用[蓝图资源锁定](./resource-locking.md)。
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
 - 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

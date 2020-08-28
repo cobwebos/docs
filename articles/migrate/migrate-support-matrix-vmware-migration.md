@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869093"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051111"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -117,6 +117,7 @@ vSphere/ESXI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 **Azure 要求** | 有关最新信息，请查看 Site Recovery 的 [Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 [计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 要求。 对于 VMware 迁移，Azure Migrate 具有相同的要求。
 **移动服务** | 必须在要迁移的每个 VM 上安装移动服务代理。
 **UEFI 启动** | 支持。
+**UEFI-安全启动**         | 不支持迁移。
 **目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、高级 SSD) 的托管磁盘。
 **磁盘大小** | 2 TB 操作系统磁盘;8 TB （适用于数据磁盘）。
 **磁盘限制** |  每个虚拟机最多63个磁盘。

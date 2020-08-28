@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9b3f2f8a6a8a1e4f287af45f994c0f0b1d479811
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001002"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047446"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明
 
@@ -45,7 +45,7 @@ ms.locfileid: "89001002"
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**工作负荷管理-门户体验**|用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。 可以配置[工作负荷组](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)和[工作负荷分类器](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)（含重要性）。|
-|**改进的表映射目录视图**|新的目录视图 [sys.databases pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) 将永久用户表 **object_ids** 映射到其物理表名称。 此视图提供针对当前 [sys.databases pdw_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?view=sqlallproducts-allversions)的优化性能。|
+|**改进的表映射目录视图**|新的目录视图 [sys.databases pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) 将永久用户表 **object_ids** 映射到其物理表名称。|
 
 ## <a name="july-2020"></a>2020 年 7 月
 

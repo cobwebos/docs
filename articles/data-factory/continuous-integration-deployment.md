@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: f44c3ac51bfc509df0b8f2b82c2d6259bba0aa3c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815787"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047661"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -625,6 +625,8 @@ ms.locfileid: "88815787"
 
     - 数据工厂实体相互依赖。 例如，触发器依赖于管道，而管道又依赖于数据集和其他管道。 选择性发布资源子集可能会导致意外的行为和错误。
     - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅 [修补程序生产环境](#hotfix-production-environment)。
+
+- Azure 数据工厂团队不建议为数据工厂中的单个实体 (管道、数据集等) 分配 RBAC 控件。 例如，如果开发人员有权访问管道或数据集，则他们应该能够访问数据工厂中的所有管道或数据集。 如果你认为需要在数据工厂中实现许多 RBAC 角色，请查看部署第二个数据工厂。
 
 -   无法从专用分支发布。
 

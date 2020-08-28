@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948056"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049071"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>条件性访问：基于用户风险的条件性访问
 
@@ -54,7 +54,7 @@ Microsoft 与研究人员、执法部门、Microsoft 的各种安全团队以及
 1. 在 "**控制**  >  **访问**" 下，选择 "**允许访问**"，然后选择 "**需要密码更改**"。
    1. 选择“选择”  。
 1. 将 " **强制实施策略** " 设置为 **"开"**。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -62,7 +62,7 @@ Microsoft 与研究人员、执法部门、Microsoft 的各种安全团队以及
 
 [基于登录风险的条件访问](howto-conditional-access-policy-risk.md)
 
-[使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+[使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 

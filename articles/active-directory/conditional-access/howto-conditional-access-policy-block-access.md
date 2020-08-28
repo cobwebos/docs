@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995303"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049258"
 ---
 # <a name="conditional-access-block-access"></a>条件访问：阻止访问
 
@@ -25,7 +25,7 @@ ms.locfileid: "83995303"
 > [!CAUTION]
 > 阻止策略配置不当可能会导致组织被锁定，无法使用 Azure 门户。
 
-这样的策略可能会产生意外的副作用。 在启用之前，正确的测试和验证至关重要。 在进行更改时，管理员应使用条件访问[仅报告模式](concept-conditional-access-report-only.md)和[What If 工具](what-if-tool.md)等工具进行更改。
+这样的策略可能会产生意外的副作用。 在启用之前，正确的测试和验证至关重要。 在进行更改时，管理员应使用条件访问 [仅报告模式](concept-conditional-access-report-only.md) 和 [What If 工具](what-if-tool.md) 等工具进行更改。
 
 ## <a name="user-exclusions"></a>排除用户
 
@@ -38,7 +38,7 @@ ms.locfileid: "83995303"
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-如果用户不在受信任的网络中，以下步骤将帮助创建条件访问策略来阻止访问除 [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) 之外的所有应用。 将这些策略设置为[仅限报表模式](howto-conditional-access-report-only.md)，以便管理员可以确定他们将对现有用户产生的影响。 当管理员确认策略按预期方式应用时，他们可以打开这些策略的开关  。
+如果用户不在受信任的网络中，以下步骤将帮助创建条件访问策略来阻止访问除 [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) 之外的所有应用。 将这些策略设置为 [仅限报表模式](howto-conditional-access-insights-reporting.md) ，以便管理员可以确定他们将对现有用户产生的影响。 当管理员确认策略按预期方式应用时，他们可以打开这些策略的开关  。
 
 如果不在受信任的位置上，则第一个策略将阻止访问除 Office 365 应用程序之外的所有应用。
 
@@ -84,6 +84,6 @@ ms.locfileid: "83995303"
 
 [条件访问常见策略](concept-conditional-access-policy-common.md)
 
-[使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+[使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

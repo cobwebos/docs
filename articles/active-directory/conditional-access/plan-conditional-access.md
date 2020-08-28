@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948889"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049921"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -242,7 +242,7 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
 [仅限报告模式](concept-conditional-access-report-only.md)允许管理员在其环境中启用 CA 策略之前评估其影响。
 
-了解如何[在 CA 策略上配置仅限报告模式](howto-conditional-access-report-only.md)。
+了解如何[在 CA 策略上配置仅限报告模式](howto-conditional-access-insights-reporting.md)。
 
 ### <a name="plan-for-disruption"></a>为应对中断做好计划
 

@@ -2,28 +2,34 @@
 title: 入站/出站 IP 地址
 description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地址、这些地址何时更改以及如何查找应用的地址。
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537621"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050686"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
-[Azure 应用服务](overview.md)是一个多租户服务（[应用服务环境](environment/intro.md)除外）。 不在应用服务环境中（不在[隔离层](https://azure.microsoft.com/pricing/details/app-service/)中）的应用与其他应用共享网络基础结构。 因此，应用的入站和出站 IP 地址可能不同，在某些情况下甚至可能会更改。 
+[Azure 应用服务](overview.md)是一个多租户服务（[应用服务环境](environment/intro.md)除外）。 不在应用服务环境中（不在[隔离层](https://azure.microsoft.com/pricing/details/app-service/)中）的应用与其他应用共享网络基础结构。 因此，应用的入站和出站 IP 地址可能不同，在某些情况下甚至可能会更改。
 
 [应用服务环境](environment/intro.md)使用专用网络基础结构，因此，应用服务环境中运行的应用将获取静态专用 IP 地址用于入站和出站连接。
+
+## <a name="how-ip-addresses-work-in-app-service"></a>IP 地址在应用服务中的工作方式
+
+应用服务应用在应用服务计划中运行，应用服务计划部署到 Azure 基础结构中的一个部署单元中， (内部称为 web 空间) 。 为每个部署单位分配最多五个虚拟 IP 地址，其中包含一个公用入站 IP 地址和四个出站 IP 地址。 同一部署单元中的所有应用服务计划和在其中运行的应用程序实例共享同一组虚拟 IP 地址。 为了应用服务环境 ([隔离层](https://azure.microsoft.com/pricing/details/app-service/) 中的应用服务计划) ，应用服务计划是部署单元本身，因此，虚拟 IP 地址是专用的。
+
+由于不允许在部署单位之间移动应用服务计划，因此，分配给应用的虚拟 IP 地址通常会保持不变，但会出现例外情况。
 
 ## <a name="when-inbound-ip-changes"></a>入站 IP 更改时
 
 不管横向扩展的实例数如何，每个应用只有一个入站 IP 地址。 执行以下操作之一时，入站 IP 地址可能会更改：
 
-- 删除应用，然后在不同的资源组中重新创建它。
-- 删除资源组和区域组合中的最后一个应用，然后重新创建它。
-- 删除现有的 TLS 绑定，例如在证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-certificate)）这样做。
+- 删除应用并在不同的资源组中重新创建该应用 (部署单位可能会改变) 。
+- 删除资源组 _和_ 区域组合中的最后一个应用并重新创建它 (部署单位可能会) 更改。
+- 删除基于 IP 的现有 TLS/SSL 绑定，如证书续订期间 (参阅 [续订证书](configure-ssl-certificate.md#renew-certificate)) 。
 
 ## <a name="find-the-inbound-ip"></a>找到入站 IP
 
@@ -39,9 +45,13 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="when-outbound-ips-change"></a>出站 IP 更改时
 
-不管横向扩展的实例数如何，每个应用在任意给定时间具有指定数目的出站 IP 地址。 从应用服务应用发起的任何出站连接（例如，与后端数据库的连接）使用某个出站 IP 地址作为源 IP 地址。 无法预先知道给定的应用实例要使用哪个 IP 地址来发起出站连接，因此，后端服务必须向应用的所有出站 IP 地址开放其防火墙。
+不管横向扩展的实例数如何，每个应用在任意给定时间具有指定数目的出站 IP 地址。 从应用服务应用发起的任何出站连接（例如，与后端数据库的连接）使用某个出站 IP 地址作为源 IP 地址。 在运行时随机选择要使用的 IP 地址，因此后端服务必须打开应用程序的所有出站 IP 地址的防火墙。
 
-在较低层（“基本”、“标准”和“高级”）与“高级 V2”层之间缩放应用时，应用的出站 IP 地址集会发生更改。   
+当您执行下列操作之一时，您的应用程序的出站 IP 地址集会发生更改：
+
+- 删除应用并在不同的资源组中重新创建该应用 (部署单位可能会改变) 。
+- 删除资源组 _和_ 区域组合中的最后一个应用并重新创建它 (部署单位可能会) 更改。
+- 在较低级别 (**基本**、 **标准**和 **高级**) 以及 **高级 V2** 层之间进行缩放， (IP 地址可能会从设置) 中增加或减少。
 
 无论是哪个定价层，你都可以通过查找 `possibleOutboundIpAddresses` 属性或者在 Azure 门户的“属性”边栏选项卡中的“其他出站 IP 地址”字段中查找你的应用可以使用的所有可能的出站 IP 地址。 请参阅[查找出站 IP](#find-outbound-ips)。
 

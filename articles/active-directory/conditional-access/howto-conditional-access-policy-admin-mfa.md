@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc38e576f53c3623bacc374a00adcb4cced01517
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552877"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049343"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -67,10 +67,10 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
       * 用户管理员
    
       > [!WARNING]
-      > 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的[管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)或目录角色，如通过[自定义角色](../users-groups-roles/roles-create-custom.md)。
+      > 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的 [管理单元](../users-groups-roles/roles-admin-units-assign-roles.md) 或目录角色，如通过 [自定义角色](../users-groups-roles/roles-create-custom.md)。
 
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
-   1. 选择“完成”。
+   1. 选择“完成”  。
 1. 在“云应用或操作” > “包含”下方，选择“所有云应用” ，然后选择“完成”。
 1. 在 "**条件**  >  **客户端应用 (预览") **下，在 "**选择要应用此策略的客户端应用**，保留所有默认值并选择"**完成**"。
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
@@ -81,6 +81,6 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
 
 [常用条件访问策略](concept-conditional-access-policy-common.md)
 
-[使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+[使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

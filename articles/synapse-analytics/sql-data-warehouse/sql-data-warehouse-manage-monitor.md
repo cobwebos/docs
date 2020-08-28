@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211691"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048018"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>使用 DMV 监视 Azure Synapse Analytics SQL 池工作负载
 
@@ -102,8 +102,8 @@ ORDER BY step_index;
 
 若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
 
-* 针对 SQL 操作  继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
-* 针对数据移动操作  继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
+* 针对 **SQL 操作**继续执行步骤3： OnOperation、RemoteOperation、ReturnOperation。
+* 继续执行 **数据移动操作**的步骤4： ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>步骤 3：调查分布式数据库上的 SQL
 

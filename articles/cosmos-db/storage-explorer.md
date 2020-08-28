@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799105"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047473"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器处理数据
 
@@ -75,7 +75,7 @@ ms.locfileid: "88799105"
 
 3. 目前仅支持 SQL API。 粘贴 **连接字符串**，输入 **帐户标签**，选择 " **下一步** " 查看摘要，然后选择 " **连接** 到连接 Azure Cosmos DB 帐户"。 有关检索主连接字符串的信息，请参阅[获取连接字符串](manage-with-powershell.md#list-keys)。
 
-    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="从 模拟器 对话框连接到 Cosmos DB":::
+    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="从 "模拟器" 对话框连接到 Cosmos DB":::
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB 资源管理
@@ -95,7 +95,7 @@ ms.locfileid: "88799105"
 
 * 右键单击 Azure Cosmos DB 帐户或数据库，可以选择“在门户中打开”，然后在 Azure 门户上通过浏览器管理资源。
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="在门户中打开":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="在门户中打开":::
 
 * 还可以将 Azure Cosmos DB 帐户、数据库、集合添加到“快速访问”。
 * 通过“从此处搜索”可以在所选路径下进行关键字搜索。
@@ -106,25 +106,25 @@ ms.locfileid: "88799105"
 
 #### <a name="create-a-database"></a>创建数据库
 
--   右键单击 Azure Cosmos DB 帐户，选择“创建数据库”，输入数据库名称，然后按 **Enter** 以完成。
+- 右键单击 Azure Cosmos DB 帐户，选择“创建数据库”，输入数据库名称，然后按 **Enter** 以完成。
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="在 Azure Cosmos 帐户中创建数据库":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="在 Azure Cosmos 帐户中创建数据库":::
 
 #### <a name="delete-a-database"></a>删除数据库
 
 - 右键单击该数据库，选择 " **删除数据库**"，然后在弹出窗口中选择 **"是"** 。 数据库节点会删除，并且 Azure Cosmos DB 帐户会自动刷新。
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="删除第一个数据库":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="删除第一个数据库":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="删除第二个数据库":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="删除第二个数据库":::
 
 #### <a name="create-a-collection"></a>创建集合
 
 1. 右键单击数据库，选择“创建集合”，然后提供以下信息，如“集合 ID”、“存储容量”等。单击“确定”完成。
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="在数据库中创建第一个集合":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="在数据库中创建第一个集合":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="在数据库中创建第二个集合":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="在数据库中创建第二个集合":::
 
 2. 选择 " **无限制** " 以指定分区键，然后选择 **"确定"** 完成操作。
 
@@ -146,7 +146,7 @@ ms.locfileid: "88799105"
 
 - 若要创建新文档，请在左窗口中打开 " **文档** "，选择 " **新建文档**"，在右窗格中编辑内容，然后选择 " **保存**"。 还可以更新现有文档，然后选择 " **保存**"。 可以通过单击“放弃”来放弃更改。
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="新建文档":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="新建文档":::
 
 #### <a name="delete-a-document"></a>删除文档
 
@@ -156,7 +156,7 @@ ms.locfileid: "88799105"
 
 - 通过输入 [SQL 查询](how-to-sql-query.md) 来编辑文档筛选器，然后选择 " **应用**"。
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="查询特定文档":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="查询特定文档":::
 
 ### <a name="graph-management"></a>图形管理
 
@@ -165,7 +165,7 @@ ms.locfileid: "88799105"
 1. 若要创建新顶点，请在左侧窗口中打开 **Graph** ，选择 " **新建顶点**"，编辑内容，然后选择 **"确定"**。
 2. 若要修改现有顶点，请在右窗格中选择 "笔" 图标。
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="修改关系图的顶点":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="修改关系图的顶点":::
 
 #### <a name="delete-a-graph"></a>创建图形
 
@@ -175,7 +175,7 @@ ms.locfileid: "88799105"
 
 - 通过输入 [gremlin 查询](gremlin-support.md) 来编辑图形筛选器，然后选择 " **应用筛选器**"。
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="运行图形查询":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="运行图形查询":::
 
 ### <a name="table-management"></a>表管理
 
@@ -184,33 +184,34 @@ ms.locfileid: "88799105"
 1. 若要创建新表，请从左侧窗口打开 **实体** ，选择 " **添加**"，在 " **添加实体** " 对话框中编辑内容，单击 "按钮" " **添加属性**" "添加属性"，然后选择 " **插入**"。
 2. 若要修改表，请选择 " **编辑**"，修改内容，然后选择 " **更新**"。
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="创建和修改表":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="创建和修改表":::
 
 #### <a name="import-and-export-table"></a>导入和导出表
 
 1. 若要导入，请选择 " **导入** " 按钮，然后选择一个现有表。
 2. 若要导出，请选择 " **导出** " 按钮，然后选择一个目标。
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="导入或导出表":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="导入或导出表":::
 
 #### <a name="delete-entities"></a>删除实体
 
 - 选择实体，然后选择 " **删除**" 按钮。
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="删除表":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="删除表":::
 
 #### <a name="query-table"></a>查询表
 
 - 单击 " **查询** " 按钮，输入查询条件，然后选择 " **执行查询** " 按钮。 单击“关闭查询”按钮关闭“查询”窗格。
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="从表中查询数据":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="从表中查询数据":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理存储过程、触发器和 UDF
 
 * 若要创建存储过程，请在左侧树中，右键单击 " **存储过程**"，再选择 " **创建存储过程**"，在左侧输入名称，在右侧窗口中键入存储过程脚本，然后选择 " **创建**"。
 * 您还可以编辑现有的存储过程，方法是双击，进行更新，然后单击 " **更新** " 进行保存，或选择 " **放弃** " 以取消更改。
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="创建和管理存储过程":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="创建和管理存储过程":::
+
 * 适用于**触发器**和 **UDF** 的操作与**存储过程**类似。
 
 ## <a name="troubleshooting"></a>故障排除

@@ -1,42 +1,42 @@
 ---
 title: 将策略设计为代码工作流
 description: 了解如何设计工作流以将 Azure Policy 定义部署为代码并自动验证资源。
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131491"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047320"
 ---
 # <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流
 
 随着你在云治理旅程中取得进展，需要从在 Azure 门户中或通过各种 SDK 手动管理每个策略定义，转变为在企业范围内更易于管理和重复进行的某个过程。 在云中大规模管理系统的两个主要方法是：
 
-- 基础结构即代码：将定义你的环境的内容（从 Azure 资源管理器模板（ARM 模板）到 azure 的 azure 策略定义）的所有内容都视为源代码。
+- 基础结构即代码：将定义你的环境的内容从 Azure 资源管理器模板中的所有内容都 (ARM 模板) 到 azure 蓝图，作为源代码。
 - DevOps：人员、过程和产品的联合，以便向最终用户持续交付价值。
 
 策略即代码是这些概念的组合。 实质上，是将策略定义保留在源代码管理中，并在每次进行更改后，都测试并验证更改。 但是，这不应是涉及基础结构即代码或 DevOps 的策略的范围。
 
-验证步骤还应是其他持续集成或持续部署工作流的组成部分。 示例包括部署应用程序环境或虚拟基础结构。 通过使 Azure 策略验证成为生成和部署过程的早期组件，应用程序和运营团队会发现他们的更改是否不符合要求，长时间太晚，它们正在尝试在生产环境中进行部署。
+验证步骤还应是其他持续集成或持续部署工作流的组成部分。 示例包括部署应用程序环境或虚拟基础结构。 通过使 Azure Policy 验证成为生成和部署过程的早期组成部分，应用程序和运营团队可提前很长时间发现他们的更改是否不合规，而不会等到为时已晚或是尝试在生产环境中进行部署时。
 
-## <a name="definitions-and-foundational-information"></a>定义和基础信息
+## <a name="definitions-and-foundational-information"></a>定义和基本信息
 
-在将策略详细信息作为代码工作流获取之前，请查看以下定义和示例：
+在详细了解策略即代码工作流前，请查看以下定义和示例：
 
 - [策略定义](./definition-structure.md)
 - [计划定义](./initiative-definition-structure.md)
 
-文件名称与策略或计划定义的部分保持一致：
-- `policy(set).json`-整个定义
-- `policy(set).parameters.json`- `properties.parameters` 定义的部分
-- `policy.rules.json`- `properties.policyRule` 定义的部分
-- `policyset.definitions.json`- `properties.policyDefinitions` 定义的部分
+文件名与策略或计划定义的一部分保持一致：
+- `policy(set).json` - 整个定义
+- `policy(set).parameters.json` - 定义的 `properties.parameters` 部分
+- `policy.rules.json` - 定义的 `properties.policyRule` 部分
+- `policyset.definitions.json` - 定义的 `properties.policyDefinitions` 部分
 
-[Azure 策略 GitHub](https://github.com/Azure/azure-policy/)存储库中提供了这些文件格式的示例：
+[Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy/)中提供这些文件格式的示例：
 
-- 策略定义：[向资源添加标记](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- Policy 定义：[将标记添加到资源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - 计划定义：[计费标记](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>工作流概述
@@ -110,7 +110,8 @@ ms.locfileid: "87131491"
 > [!NOTE]
 > 尽管强制模式非常有用，但它不能替代在各种条件下对策略定义进行全面测试。 应使用 `PUT` 和 `PATCH` REST API 调用、合规与不合规的资源以及边缘事例（如资源中缺少属性）对策略定义进行测试。
 
-部署分配之后，使用 Policy SDK [获取新分配的合规性数据](../how-to/get-compliance-data.md)。 用于测试策略和分配的环境应同时具有合规与不合规的资源。 与用于代码的良好单元测试一样，需要测试资源是否如同预期，并且是否也没有假正或假负。 如果仅针对期望的内容进行测试和验证，则策略可能会产生意外和无法识别的影响。 有关详细信息，请参阅[评估新 Azure Policy 定义的影响](./evaluate-impact.md)。
+部署分配后，请使用策略 SDK 或 [Azure 策略相容性扫描 GitHub 操作](https://github.com/marketplace/actions/azure-policy-compliance-scan) 获取新分配的 [符合性数据](../how-to/get-compliance-data.md) 。 用于测试策略和分配的环境应同时具有合规与不合规的资源。
+与用于代码的良好单元测试一样，需要测试资源是否如同预期，并且是否也没有假正或假负。 如果仅针对期望的内容进行测试和验证，则策略可能会产生意外和无法识别的影响。 有关详细信息，请参阅[评估新 Azure Policy 定义的影响](./evaluate-impact.md)。
 
 ### <a name="enable-remediation-tasks"></a>启用修正任务
 
@@ -133,7 +134,7 @@ ms.locfileid: "87131491"
 
 ## <a name="process-integrated-evaluations"></a>过程集成评估
 
-策略即代码的常规工作流用于大规模开发策略和计划并部署到环境。 但是，对于在 Azure 中部署或创建资源的任何工作流（例如部署应用程序或运行 ARM 模板），策略评估应是部署过程的一部分。
+策略即代码的常规工作流用于大规模开发策略和计划并部署到环境。 但是，对于在 Azure 中部署或创建资源的任何工作流（例如部署应用程序，或运行 ARM 模板创建基础结构），策略评估应是部署过程的一部分。
 
 在这些情况下，在对测试订阅或资源组进行应用程序或基础结构部署之后，应针对该范围进行策略评估，以检查现有策略和计划的验证。 虽然其 enforcementMode 在此类环境中可以配置为 disabled，但尽早知道应用程序或基础结构部署是否违反策略定义会十分有用。 因此，此策略评估应是这些工作流中的一个步骤，并使创建不合规资源的部署失败。
 

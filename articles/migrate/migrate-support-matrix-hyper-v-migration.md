@@ -3,12 +3,12 @@ title: Azure Migrate 中的 Hyper-v 迁移支持
 description: 了解支持 Azure Migrate 的 Hyper-v 迁移。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871490"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051145"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 迁移的支持矩阵
 
@@ -26,7 +26,10 @@ ms.locfileid: "88871490"
 | **部署**       | Hyper-v 主机可以是独立的，也可以部署到群集中。 <br/>在 Hyper-v 主机上安装了 (Hyper-v 复制提供程序) Azure Migrate 复制软件。|
 | **权限**           | 你需要在 Hyper-v 主机上具有管理员权限。 |
 | **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2 （含最新更新）。 请注意，还支持这些操作系统的服务器核心安装。 |
+| **其他软件要求** | .NET Framework 4.7 或更高版本 |
 | **端口访问** |  HTTPS 端口443上的出站连接，用于发送 VM 复制数据。
+| **可用磁盘空间 (缓存) ** |  600 GB |
+| **可用磁盘空间（保留磁盘）** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
@@ -39,6 +42,7 @@ ms.locfileid: "88871490"
 | **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
 | **UEFI 启动**                  | 支持。 确保选择 Azure 第2代 VM 支持的 VM 大小  |
+| **UEFI-安全启动**         | 不支持迁移。|
 | **磁盘大小**                  | 对于 OS 磁盘为 2 TB，数据磁盘为 4 TB。|
 | **磁盘编号** | 每个 VM 最多16个磁盘。|
 | **加密磁盘/卷**    | 不支持迁移。|

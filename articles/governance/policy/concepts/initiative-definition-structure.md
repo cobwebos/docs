@@ -3,12 +3,12 @@ title: 计划定义结构的详细信息
 description: 描述如何使用策略计划定义对策略定义进行分组，以便部署到组织中的 Azure 资源。
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544632"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048493"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy 计划定义结构
 
@@ -284,7 +284,7 @@ Microsoft 创建的法规遵从性内置包含有关每个控件的其他信息�
 
 - 在 Azure 门户上显示的有关合规性计划 **控制** 的概述。
 - 通过 REST API 提供。 请参阅 `Microsoft.PolicyInsights` 资源提供程序和 [policyMetadata 操作组](/rest/api/policy-insights/policymetadata/getresource)。
-- 通过 Azure CLI 提供。 请参阅 [az policy metadata](/cli/azure/policy/metadata?view=azure-cli-latest) 命令。
+- 通过 Azure CLI 提供。 请参阅 [az policy metadata](/cli/azure/policy/metadata) 命令。
 
 > [!IMPORTANT]
 > 合规性的元数据对象是 _只读_ 的，不能由客户创建。

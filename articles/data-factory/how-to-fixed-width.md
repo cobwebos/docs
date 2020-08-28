@@ -8,28 +8,28 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23b812da8c84ebf055ac4eabdc4649828c139a7f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414378"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051009"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>使用数据工厂映射数据流处理固定长度文本文件
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 通过使用在 Microsoft Azure 数据工厂中映射数据流，可以转换固定宽度文本文件中的数据。 在下面的任务中，我们将为不带分隔符的文本文件定义一个数据集，然后基于序号位置设置子字符串拆分。
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-1. 选择 " **+ 新建管道**" 以创建新管道。
+1. 选择 " **+ 新建管道** " 以创建新管道。
 
 2. 添加一个数据流活动，该活动将用于处理固定宽度的文件：
 
     ![固定宽度管道](media/data-flow/fwpipe.png)
 
-3. 在 "数据流" 活动中，选择 "**新建映射**数据流"。
+3. 在 "数据流" 活动中，选择 " **新建映射**数据流"。
 
 4. 添加源、派生列、选择和接收器转换：
 
@@ -57,11 +57,11 @@ ms.locfileid: "81414378"
     1234567813572468
     ```
 
-7. 在源转换的 "**投影**" 选项卡上，应看到一个名为 " *Column_1*" 的字符串列。
+7. 在源转换的 " **投影** " 选项卡上，应看到一个名为 " *Column_1*" 的字符串列。
 
 8. 在派生列中，创建一个新列。
 
-9. 我们将为列指定简单名称，如*col1*。
+9. 我们将为列指定简单名称，如 *col1*。
 
 10. 在 "表达式生成器" 中，键入以下内容：
 
@@ -71,7 +71,7 @@ ms.locfileid: "81414378"
 
 11. 对需要分析的所有列重复步骤10。
 
-12. 选择 "**检查**" 选项卡以查看将生成的新列：
+12. 选择 " **检查** " 选项卡以查看将生成的新列：
 
     ![一下](media/data-flow/fwinspect.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "81414378"
 
     ![固定宽度接收器](media/data-flow/fwsink.png)
 
-    输出如下所示：
+    下面是输出的效果：
 
     ![固定宽度输出](media/data-flow/fxdoutput.png)
 
@@ -91,4 +91,4 @@ ms.locfileid: "81414378"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用映射数据流[转换](concepts-data-flow-overview.md)生成数据流逻辑的其余部分。
+* 使用映射数据流 [转换](concepts-data-flow-overview.md)生成数据流逻辑的其余部分。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee4c7776dbddf089d290d760d6c0689ba9c0102
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 717e81a1385b04d3152beac39105c56754c55c40
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283021"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049275"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件访问：要求将 MFA 用于 Azure 管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "87283021"
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成” 。
 1. 在“云应用或操作” > “包括”下，依次选择“选择应用”、“Microsoft Azure 管理”、“选择”、“完成”。   
-1. 在 "**条件**  >  " "**客户端应用（预览）**" 下，在 "**选择将应用此策略的客户端应用"** 下，保留所有默认设置，然后选择 "**完成**
+1. 在 "**条件**  >  **客户端应用 (预览") **下，在 "**选择要应用此策略的客户端应用**，保留所有默认值并选择"**完成**"。
 1. 在“访问控制” > “授予”下，依次选择“"授予访问权限”、“需要多重身份验证”和“选择”。
 1. 确认设置，然后将“启用策略”设置为“打开”。 
 1. 选择“创建”，以便创建启用策略所需的项目。
@@ -59,6 +59,6 @@ ms.locfileid: "87283021"
 
 [条件访问常见策略](concept-conditional-access-policy-common.md)
 
-[使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+[使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

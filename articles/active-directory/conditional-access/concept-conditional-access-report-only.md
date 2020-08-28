@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204185"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049377"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什么是条件访问仅限报告模式？
 
@@ -26,7 +26,7 @@ ms.locfileid: "84204185"
 
 - 可以在仅限报告模式下启用条件访问策略。
 - 在登录过程中，将评估仅限报告模式下的策略，但不强制执行这些策略。
-- 结果记录在登录日志详细信息的 "**条件访问**" 和 "**仅报告**" 选项卡中。
+- 结果记录在登录日志详细信息的 " **条件访问** " 和 " **仅报告** " 选项卡中。
 - 具有 Azure Monitor 订阅的客户可以使用条件访问见解工作簿来监视其条件访问策略的影响。
 
 > [!WARNING]
@@ -38,7 +38,7 @@ ms.locfileid: "84204185"
 
 如果针对给定登录评估仅限报告模式下的策略，则有四个新的可能结果值：
 
-| 结果 | 描述 |
+| 结果 | 说明 |
 | --- | --- |
 | 仅报告：成功 | 满足所有配置的策略条件、所需的非交互式授权控制和会话控制。 例如，通过令牌中已经存在的 MFA 声明来满足多重身份验证要求，或者通过在符合的设备上执行设备检查来满足符合设备策略。 |
 | 仅报告：失败 | 满足所有配置的策略条件，但并未满足所有所需的非交互式授权控制或会话控制。 例如，策略适用于配置了阻止控制的用户，或者未通过符合设备策略的设备。 |
@@ -51,4 +51,4 @@ ms.locfileid: "84204185"
  
 ## <a name="next-steps"></a>后续步骤
 
-[在条件性访问策略中配置仅报告模式](howto-conditional-access-report-only.md)
+[在条件性访问策略中配置仅报告模式](howto-conditional-access-insights-reporting.md)

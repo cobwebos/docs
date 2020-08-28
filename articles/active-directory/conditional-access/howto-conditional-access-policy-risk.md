@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2564e3f246d23028d6c73832a25f37110e7670c8
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948090"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049037"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>条件性访问：登录基于风险的条件性访问
 
@@ -58,7 +58,7 @@ ms.locfileid: "88948090"
 1. 在 "**控制**  >  **访问**" 下，选择 "**允许访问**"，然后选择 "**需要多重身份验证**"。
    1. 选择“选择”  。
 1. 将 " **强制实施策略** " 设置为 **"开"**。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -66,7 +66,7 @@ ms.locfileid: "88948090"
 
 [基于用户风险的条件访问](howto-conditional-access-policy-risk-user.md)
 
-[使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
+[使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835878"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049683"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -18,7 +18,7 @@ ms.locfileid: "87835878"
 
 要使 Site Recovery 复制正常运行，必须具有从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
-| **名称**                  | **商用**                               | **政府机关**                                 | **说明** |
+| **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。 |
@@ -68,11 +68,11 @@ ms.locfileid: "87835878"
 此示例演示如何为要复制的 VM 配置 NSG 规则。
 
 - 如果使用 NSG 规则控制出站连接，请对所有必需的 IP 地址范围使用端口 443 的“允许 HTTPS 出站”规则。
-- 此示例假设 VM 源位置是 "**美国东部**"，目标位置是 "**美国中部**"。
+- 此示例假设 VM 源位置是 " **美国东部** "，目标位置是 " **美国中部**"。
 
 #### <a name="nsg-rules---east-us"></a>NSG 规则 - 美国东部
 
-1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用**目标服务标记**： _EastUS_和**目标端口范围**： _443_。
+1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用 **目标服务标记**： _EastUS_ 和 **目标端口范围**： _443_。
 
      :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="storage-tag":::
 
@@ -80,11 +80,8 @@ ms.locfileid: "87835878"
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
 
-1. 为与目标位置相对应的 Site Recovery IP 创建 HTTPS 端口 443 出站规则：
-
-   | 位置 | Site Recovery IP 地址 | Site Recovery 监视 IP 地址 |
-   | --- | --- | --- |
-   | 美国中部 | 40.69.144.231 | 52.165.34.144 |
+1. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
+1. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 #### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部
 
@@ -100,11 +97,8 @@ ms.locfileid: "87835878"
    - **目标服务标记**：_AzureActiveDirectory_
    - **目标端口范围**：_443_
 
-1. 为与源位置相对应的 Site Recovery IP 创建 HTTPS 端口 443 出站规则：
-
-   | 位置 | Site Recovery IP 地址 | Site Recovery 监视 IP 地址 |
-   | --- | --- | --- |
-   | 美国东部 | 13.82.88.226 | 104.45.147.24 |
+1. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS () 443 安全规则，该规则对应于源位置。 这样就可以访问 Site Recovery 监视功能。
+1. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
 

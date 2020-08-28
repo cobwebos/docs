@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815046"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047099"
 ---
 # <a name="what-is-risk"></a>什么是风险？
 
@@ -39,7 +39,6 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 | 风险检测 | 说明 |
 | --- | --- |
 | 凭据泄露 | 此风险检测类型表示用户的有效凭据已泄漏。 当网络犯罪分子泄露合法用户的有效密码时，他们通常会共享这些凭据。 通常，这种共享方式是通过公开发布到暗 web、粘贴站点或通过贸易并在黑色市场上销售凭据来完成的。 当 Microsoft 泄漏的凭据服务从深色 web、粘贴站点或其他源获取用户凭据时，将根据 Azure AD 用户的当前有效凭据来检查它们以查找有效匹配项。 有关泄漏的凭据的详细信息，请参阅 [常见问题](#common-questions)。 |
-| 密码喷涂 | 密码喷涂攻击是指使用常见密码以统一暴力破解方式攻击多个用户名以获取未经授权的访问。 执行密码喷涂攻击时，会触发此风险检测。 |
 | Azure AD 威胁智能 | 此风险检测类型表示对于给定用户异常的用户活动，或者与基于 Microsoft 内部和外部威胁智能源的已知攻击模式一致。 |
 
 ### <a name="sign-in-risk"></a>登录风险
@@ -57,6 +56,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 | 管理员确认用户遭入侵 | Offline | 此检测表明管理员已在有风险的用户 UI 或使用 riskyUsers API 中选择了 "确认用户泄露"。 若要查看已确认此用户已泄露的管理员，请通过 UI 或 API) 检查用户的风险历史记录 (。 |
 | 恶意 IP 地址 | Offline | 此检测表明登录是通过恶意 IP 地址进行的。 由于 IP 地址或其他 IP 信誉源接收到无效的凭据，因此 IP 地址会根据高故障率被视为恶意。 |
 | 可疑收件箱操作规则 | Offline | 此检测由 [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)发现。 这项检测会对环境进行分析，并在用户收件箱中设置删除或移动邮件或文件夹的可疑规则时触发警报。 此检测可能表示用户的帐户被泄露，消息将被有意隐藏，邮箱将用于在组织中分发垃圾邮件或恶意软件。 |
+| 密码喷涂 | Offline | 密码喷涂攻击是指使用常见密码以统一暴力破解方式攻击多个用户名以获取未经授权的访问。 执行密码喷涂攻击时，会触发此风险检测。 |
 | Impossible travel | Offline | 此检测由 [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#impossible-travel)发现。 此项检测可识别来源于保持一定地理距离的位置的两个用户活动（一个或多个会话），而完成这两个活动的时间段短于该用户从第一个位置旅行到第二个位置所需的时间，这表示另一个用户在使用相同的凭据。 |
 
 ### <a name="other-risk-detections"></a>其他风险检测

@@ -1,34 +1,34 @@
 ---
 title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383596"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051496"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
-仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及_拒绝分配_的应用，请参阅[保护新资源](../tutorials/protect-new-resources.md)教程。
+仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及 _拒绝分配_的应用，请参阅 [保护新资源](../tutorials/protect-new-resources.md) 教程。
 
 > [!NOTE]
 > Azure 蓝图部署的资源锁仅适用于蓝图分配部署的资源。 现有资源，如资源组中已存在的资源，不会向其添加锁。
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
-锁定模式适用于蓝图分配，它有三个选项： "**不锁定**"、"**只读**" 或 "不**删除**"。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
+锁定模式适用于蓝图分配，它有三个选项： " **不锁定**"、" **只读**" 或 "不 **删除**"。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
 但是，锁定模式不能在 Azure 蓝图之外更改。
 
-蓝图分配中的项目创建的资源具有四种状态：**未锁定**、**只读**、**无法编辑/删除**或**无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
+蓝图分配中的项目创建的资源具有四种状态： **未锁定**、 **只读**、 **无法编辑/删除**或 **无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
 
-|Mode|项目资源类型|状态|说明|
+|“模式”|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
-|只读|非资源组|只读|以任何方式都无法更改资源 -- 无更改且无法将其删除。|
+|只读|非资源组|只读|不能以任何方式更改资源。 无更改并且无法删除。|
 |不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
 
 ## <a name="overriding-locking-states"></a>重写锁定状态
@@ -39,7 +39,7 @@ ms.locfileid: "81383596"
 
 ### <a name="assign-at-management-group"></a>在管理组分配
 
-阻止订阅所有者删除蓝图分配的另一个选项是将蓝图分配到管理组。 在此方案中，只有管理组的**所有者**具有删除蓝图分配所需的权限。
+阻止订阅所有者删除蓝图分配的另一个选项是将蓝图分配到管理组。 在此方案中，只有管理组的 **所有者** 具有删除蓝图分配所需的权限。
 
 若要将蓝图分配到管理组而不是订阅，REST API 调用会更改为如下所示：
 
@@ -105,19 +105,19 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="蓝图拒绝对资源组的分配" border="false":::
 
-每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
+每个模式的 [拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) 如下所示：
 
-|Mode |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
+|“模式” |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|只读 |**\*** |**\*/read** |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
-|不要删除 |**\*/delete** | |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|只读 |**\*** |**\*/read** |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|不要删除 |**\*/delete** | |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>从拒绝分配中排除主体
 
-在某些设计或安全方案中，可能需要将主体从蓝图分配创建的[拒绝分配](../../../role-based-access-control/deny-assignments.md)中排除。 此步骤在 REST API 中完成，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多5个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。 下面的分配定义是包含**excludedPrincipals**的请求正文示例：
+在某些设计或安全方案中，可能需要将主体从蓝图分配创建的 [拒绝分配](../../../role-based-access-control/deny-assignments.md) 中排除。 此步骤在 REST API 中完成，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多5个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。 下面的分配定义是包含 **excludedPrincipals**的请求正文示例：
 
 ```json
 {
@@ -161,7 +161,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>排除拒绝分配中的操作
 
-与在蓝图分配中排除[拒绝分配](../../../role-based-access-control/deny-assignments.md)中的[主体](#exclude-a-principal-from-a-deny-assignment)类似，你可以排除特定的[RBAC 操作](../../../role-based-access-control/resource-provider-operations.md)。 在**properties**块中，可以在**excludedPrincipals**所在的同一位置添加**excludedActions** ：
+与在蓝图分配中排除[拒绝分配](../../../role-based-access-control/deny-assignments.md)中的[主体](#exclude-a-principal-from-a-deny-assignment)类似，你可以排除特定的[RBAC 操作](../../../role-based-access-control/resource-provider-operations.md)。 在 **properties** 块中，可以在 **excludedPrincipals** 所在的同一位置添加 **excludedActions** ：
 
 ```json
 "locks": {
@@ -177,13 +177,13 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 },
 ```
 
-尽管**excludedPrincipals**必须是显式的，但**excludedActions**项可以将与 `*` RBAC 操作的通配符匹配配合使用。
+尽管 **excludedPrincipals** 必须是显式的，但 **excludedActions** 项可以将与 `*` RBAC 操作的通配符匹配配合使用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 按照[保护新资源](../tutorials/protect-new-resources.md)教程操作。
-- 了解[蓝图生命周期](lifecycle.md)。
-- 了解如何使用[静态和动态参数](parameters.md)。
-- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
+- 按照 [保护新资源](../tutorials/protect-new-resources.md) 教程操作。
+- 了解[蓝图生命周期](./lifecycle.md)。
+- 了解如何使用[静态和动态参数](./parameters.md)。
+- 了解如何自定义[蓝图排序顺序](./sequencing-order.md)。
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
 - 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

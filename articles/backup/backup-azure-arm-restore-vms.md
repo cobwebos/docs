@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 3212ba621f02740e9b27c28da854eef70dce64a6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006576"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050414"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -200,7 +200,7 @@ Azure 备份提供多种方法用于还原 VM。
 **还原单一域中的多个域控制器 VM** | 如果可以通过网络访问同一个域中的其他域控制器，则可以像还原任何 VM 一样还原域控制器。 对于域中剩余的最后一个域控制器，或者在隔离的网络中执行恢复，请使用[林恢复](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **还原一个林中的多个域** | 建议使用[林恢复](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
-**还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项会将 VHD 复制到指定的存储帐户，然后，你可以根据配置，使用[内部](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)或[外部](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md) 或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)创建 VM。
+**还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项会将 VHD 复制到指定的存储帐户，然后，你可以根据配置，使用[内部](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)或[外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md) 或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)创建 VM。
 **NIC/子网上的网络安全组 (NSG)** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
 **区域固定的 VM** | 如果备份使用 Azure 备份) 固定到区域 (的 Azure VM，则可以将其在固定的区域中还原。 [了解详细信息](../availability-zones/az-overview.md)
 **还原任何可用性集中的 VM** | 从门户还原 VM 时，没有选择可用性集的选项。 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则使用提供的模板或 PowerShell 从磁盘创建 VM 时，可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。

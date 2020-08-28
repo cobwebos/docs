@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918938"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050176"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -170,7 +170,7 @@ ms.locfileid: "88918938"
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果存储在此容器中。 如果未指定，Microsoft 会将结果存储在由 Microsoft 管理的存储容器中。 当通过调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)来删除听录时，结果数据也会被删除。
+      可选 URL，其中包含 [服务即席 SAS](../../storage/common/storage-sas-overview.md) 到 Azure 中的可写容器。 结果存储在此容器中。 **不**支持具有存储访问策略的 SAS。 如果未指定，Microsoft 会将结果存储在由 Microsoft 管理的存储容器中。 当通过调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)来删除听录时，结果数据也会被删除。
 :::row-end:::
 
 ### <a name="storage"></a>存储

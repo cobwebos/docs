@@ -1,18 +1,18 @@
 ---
 title: 使用参数创建动态蓝图
 description: 了解静态和动态参数，以及如何使用它们创建安全、动态的蓝图。
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970631"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051553"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
-具有各种项目的完全定义的蓝图，如资源组、Azure 资源管理器模板（ARM 模板）、策略或角色分配，可在 Azure 中快速创建和一致地创建对象。 为灵活使用这些可重复使用的设计模式和容器，Azure 蓝图支持参数。 参数在定义和分配期间均创建灵活性，以更改蓝图部署的项目的属性。
+具有各种项目（如资源组、Azure 资源管理器模板 (ARM 模板) 、策略或角色分配）的完全定义的蓝图提供了在 Azure 中快速创建和一致地创建对象的过程。 为灵活使用这些可重复使用的设计模式和容器，Azure 蓝图支持参数。 参数在定义和分配期间均创建灵活性，以更改蓝图部署的项目的属性。
 
 一个简单的示例是资源组项目。 创建资源组后，必须向其提供两个所需值：名称和位置。 将资源组添加到蓝图时，如果参数不存在，则会定义该蓝图每次使用的名称和位置。 这种重复会导致每次使用蓝图时都在同一资源组中创建项目。 资源组内的资源会重复并产生冲突。
 
@@ -28,15 +28,15 @@ ms.locfileid: "85970631"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 和 secureObject 参数
 
-虽然 ARM 模板_项目_支持**secureString**和**secureObject**类型的参数，但 Azure 蓝图要求每个参数都与 Azure Key Vault 进行连接。 此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持这种安全措施，检测 ARM 模板_项目_中是否包含任一安全参数。 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
+虽然 ARM 模板 _项目_ 支持 **secureString** 和 **secureObject** 类型的参数，但 Azure 蓝图要求每个参数都与 Azure Key Vault 进行连接。 此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持这种安全措施，检测 ARM 模板 _项目_中是否包含任一安全参数。 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
 
 - Key Vault 资源 ID
 - Key Vault 机密名称
 - Key Vault 机密版本
 
-如果蓝图分配使用**系统分配的托管标识**，则引用的 Key Vault_必须_存在于指定了蓝图定义的同一订阅中。
+如果蓝图分配使用 **系统分配的托管标识**，则引用的 Key Vault _必须_ 存在于指定了蓝图定义的同一订阅中。
 
-如果蓝图分配使用**用户分配的托管标识**，则引用的 Key Vault_可能_存在于集中订阅中。 在蓝图分配之前，必须向托管标识授予对 Key Vault 的适当权限。
+如果蓝图分配使用 **用户分配的托管标识**，则引用的 Key Vault _可能_ 存在于集中订阅中。 在蓝图分配之前，必须向托管标识授予对 Key Vault 的适当权限。
 
 > [!IMPORTANT]
 > 在这两种情况下，Key Vault 必须对在 "**访问策略**" 页上配置的**模板部署启用对 Azure 资源管理器的访问**。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)。
@@ -53,13 +53,13 @@ ms.locfileid: "85970631"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面中选择“蓝图定义”  。
+1. 从左侧页面中选择“蓝图定义”。
 
-1. 单击现有蓝图，然后单击 "**编辑蓝图**" 或单击 " **+ 创建蓝图**"，并在 "**基本**信息" 选项卡上填写信息。
+1. 选择现有蓝图，然后选择 " **编辑蓝图** "，或选择 " **+ 创建蓝图** " 并在 " **基本** 信息" 选项卡上填写信息。
 
-1. 单击“下一步: 项目”或单击“项目”选项卡********。
+1. 选择 " **下一步：项目** " 或选择 " **项目** " 选项卡。
 
-1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”********。 单击项目行，编辑项目参数。
+1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”********。 选择项目行来编辑项目参数。
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="蓝图定义上的蓝图参数" border="false":::
 
@@ -164,23 +164,23 @@ ms.locfileid: "85970631"
 
 ### <a name="dynamic-parameters"></a>动态参数
 
-与静态参数相对的是“动态参数”****。 此参数未在蓝图中定义，而是在每次分配蓝图期间定义的。 在资源组示例中，使用**动态参数**对资源组名称有意义。 每次分配蓝图时，它将提供不同的名称。 有关蓝图函数的列表，请参阅[蓝图函数](../reference/blueprint-functions.md)参考。
+与静态参数相对的是“动态参数”****。 此参数未在蓝图中定义，而是在每次分配蓝图期间定义的。 在资源组示例中，使用**动态参数**对资源组名称有意义。 每次分配蓝图时，它将提供不同的名称。 有关蓝图函数的列表，请参阅 [蓝图函数](../reference/blueprint-functions.md) 参考。
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面中选择“蓝图定义”  。
+1. 从左侧页面中选择“蓝图定义”。
 
-1. 右键单击要分配的蓝图。 选择 "**分配蓝图**" 或单击要分配的蓝图，然后单击 "**分配蓝图**" 按钮。
+1. 右键单击要分配的蓝图。 选择 " **分配蓝图** " 或选择要分配的蓝图，然后使用 " **分配蓝图** " 按钮。
 
-1. 在 "**分配蓝图**" 页上，找到 "**项目参数**" 部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项****。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配__****。
+1. 在 " **分配蓝图** " 页上，找到 " **项目参数** " 部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项****。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配__****。
 
    :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="蓝图分配期间的蓝图动态参数" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>从 REST API 设置动态参数
 
-在分配期间设置**动态参数**是通过直接输入值完成的。 提供的值不是使用函数[（如参数（））](../reference/blueprint-functions.md#parameters)，而是提供一个合适的字符串。 资源组的项目是使用“模板名称”、**name** 和 **location** 属性定义的。 所包含项目的所有其他参数都在**parameters**具有 **\<name\>** 和**值**键对的参数下定义。 如果为分配期间未提供的动态参数配置了蓝图，则分配将会失败。
+在分配期间设置**动态参数**是通过直接输入值完成的。 提供的值是适当的字符串，而不是使用函数（如 [ ( # B1 的参数 ](../reference/blueprint-functions.md#parameters)）。 资源组的项目是使用“模板名称”、**name** 和 **location** 属性定义的。 所包含项目的所有其他参数都在**parameters**具有 **\<name\>** 和**值**键对的参数下定义。 如果为分配期间未提供的动态参数配置了蓝图，则分配将会失败。
 
 - REST API URI
 
@@ -233,9 +233,9 @@ ms.locfileid: "85970631"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[蓝图函数](../reference/blueprint-functions.md)的列表。
-- 了解[蓝图生命周期](lifecycle.md)。
-- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
-- 了解如何利用[蓝图资源锁定](resource-locking.md)。
+- 请参阅 [蓝图函数](../reference/blueprint-functions.md)的列表。
+- 了解[蓝图生命周期](./lifecycle.md)。
+- 了解如何自定义[蓝图排序顺序](./sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](./resource-locking.md)。
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
 - 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

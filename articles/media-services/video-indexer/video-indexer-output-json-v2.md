@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604784"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050856"
 ---
 # <a name="examine-the-video-indexer-output"></a>检查视频索引器输出
 
@@ -27,7 +27,7 @@ ms.locfileid: "88604784"
 
 ![洞察力](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-本文检查视频索引器输出 (JSON 内容) 。 有关可供使用的功能和见解的信息，请参阅 [视频索引器见解](video-indexer-overview.md#video-insights)。
+本文检查视频索引器输出 (JSON 内容) 。 <br/>有关可供使用的功能和见解的信息，请参阅 [视频索引器见解](video-indexer-overview.md#video-insights)。
 
 > [!NOTE]
 > 视频索引器中所有访问令牌的有效期为一小时。
@@ -518,7 +518,7 @@ instances|此块的时间范围列表。|
 |id|品牌 ID。|
 |name|品牌名称。|
 |referenceId | 品牌维基百科 URL 的后缀。 例如，"Target_Corporation" 是的后缀 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
-|referenceUrl | 品牌的维基百科 URL（如果存在）。 例如， https://en.wikipedia.org/wiki/Target_Corporation 。
+|referenceUrl | 品牌的维基百科 URL（如果存在）。 例如， [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |description|品牌说明。|
 |标记|与此品牌关联的预定义标记的列表。|
 |confidence|视频索引器品牌检测器的置信度值 (0-1)。|
@@ -585,7 +585,7 @@ instances|此块的时间范围列表。|
 |名称|说明|
 |---|---|
 |id|音频效果 ID。|
-|type|音频效果类型（例如鼓掌、语音、静音）。|
+|类型|音频效果类型（例如鼓掌、语音、静音）。|
 |instances|出现此音频效果的时间范围列表。|
 
 ```json
@@ -699,7 +699,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 |名称|说明|
 |---|---|
 |id|情感 ID。|
-|type|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
+|类型|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
 |instances|出现该情感的时间范围列表。|
 
 ```json
