@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824944"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055628"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -24,9 +24,21 @@ ms.locfileid: "88824944"
 
 ## <a name="query-syntax"></a>查询语法
 
-本部分包含的示例查询阐释了查询语言结构并执行了可能的查询操作。
+本部分包含的示例查询阐释了查询语言结构并在 [数字孪生](concepts-twins-graph.md)上执行可能的查询操作。
 
-获取 [数字孪生](concepts-twins-graph.md) 按属性 (包括 ID 和元数据) ：
+### <a name="select-top-items"></a>选择顶级项
+
+您可以使用子句在查询中选择多个 "top" 项 `Select TOP` 。
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE ...
+```
+
+### <a name="query-by-property"></a>按属性查询
+
+获取数字孪生按 **属性** (包括 ID 和元数据) ：
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -38,24 +50,29 @@ AND T.Temperature = 70
 > [!TIP]
 > 使用元数据字段查询数字克隆的 ID `$dtId` 。
 
-你还可以通过其 *标记* 属性获取孪生，如 [向数字孪生添加标记](how-to-use-tags.md)中所述。
+还可以基于 **是否定义了某个属性**来获取孪生。 下面是一个查询，用于获取具有定义的 *Location* 属性的孪生：
+
+```sql
+SELECT *
+FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+```
+
+这可以帮助你按 *标记* 属性获取孪生，如 [向数字孪生添加标记](how-to-use-tags.md)中所述。 下面是一个查询，用于获取用 *red*标记的所有孪生：
+
 ```sql
 select * from digitaltwins where is_defined(tags.red) 
 ```
 
-### <a name="select-top-items"></a>选择顶级项
-
-您可以使用子句在查询中选择多个 "top" 项 `Select TOP` 。
+还可以基于 **属性的类型**来获取孪生。 下面是一个可获取孪生的查询，其 *温度* 属性为数字：
 
 ```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE property = 42
+SELECT * FROM DIGITALTWINS T
+WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>按模型查询
 
-`IS_OF_MODEL`运算符可用于基于克隆的[模型](concepts-models.md)进行筛选。 它支持继承，并且具有多个重载选项。
+`IS_OF_MODEL`运算符可用于基于克隆的[**模型**](concepts-models.md)进行筛选。 它支持继承，并且具有多个重载选项。
 
 最简单的用法 `IS_OF_MODEL` 仅采用 `twinTypeName` 参数： `IS_OF_MODEL(twinTypeName)` 。
 下面是传递此参数中的值的查询示例：
@@ -87,7 +104,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>基于关系的查询
 
-当基于数字孪生关系进行查询时，Azure 数字孪生查询语言具有特殊的语法。
+当基于数字孪生 **关系**进行查询时，Azure 数字孪生查询语言具有特殊的语法。
 
 关系将被提取到子句中的查询范围内 `FROM` 。 "经典" SQL 类型语言中的一个重要区别在于，此子句中的每个表达式 `FROM` 不是一个表; 相反， `FROM` 子句表示跨实体关系遍历，并使用 Azure 数字孪生版本编写 `JOIN` 。 
 
@@ -117,7 +134,8 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
 
-类似于通过 DTDL 描述的数字孪生的方式，关系也可以具有属性。 使用 Azure 数字孪生查询语言，可以通过将别名分配给子句内的关系，来筛选和投影关系 `JOIN` 。 
+类似于通过 DTDL 描述的数字孪生的方式，关系也可以具有属性。 您可以基于孪生的 **关系的属性**来查询。
+使用 Azure 数字孪生查询语言，可以通过将别名分配给子句内的关系，来筛选和投影关系 `JOIN` 。 
 
 例如，假设有一个具有*reportedCondition*属性的*servicedBy*关系。 在下面的查询中，为此关系提供了一个 "R" 别名，以便引用其属性。
 
@@ -142,10 +160,20 @@ SELECT LightBulb
 FROM DIGITALTWINS Room 
 JOIN LightPanel RELATED Room.contains 
 JOIN LightBulb RELATED LightPanel.contains 
-WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
-AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
-AND Room.$dtId IN [‘room1’, ‘room2’] 
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1') 
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1') 
+AND Room.$dtId IN ['room1', 'room2'] 
 ```
+
+### <a name="other-compound-query-examples"></a>其他复合查询示例
+
+您可以使用组合运算符 **组合** 以上任意类型的查询，以便在单个查询中包含更多详细信息。 下面是一些其他查询多个类型为一次的克隆说明符的复合查询示例。
+
+| 说明 | 查询 |
+| --- | --- |
+| 在 *房间 123* 具有的设备中，返回服务于操作员角色的 MxChip 设备 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
+| 获取具有名为*id1*的关系*的孪生* | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| 获取*floor11*包含的此聊天室模型的所有聊天室 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 

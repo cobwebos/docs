@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853358"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068637"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -287,45 +287,45 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 | 源 | ID | 说明 |
 |-----|-----|-----|
-| User | surname | 家族名称 |
-| User | givenname | 名 |
-| User | displayname | 显示名称 |
-| User | objectid | ObjectID |
-| User | mail | 电子邮件地址 |
-| User | userprincipalname | 用户主体名称 |
-| User | department|部门|
-| User | onpremisessamaccountname | 本地 SAM 帐户名称 |
-| User | netbiosname| NetBios 名称 |
-| User | dnsdomainname | DNS 域名 |
-| User | onpremisesecurityidentifier | 本地安全标识符 |
-| User | companyname| 组织名称 |
-| User | streetaddress | 街道地址 |
-| User | postalcode | 邮政编码 |
-| User | preferredlanguange | 首选语言 |
-| User | onpremisesuserprincipalname | 本地 UPN |
-| User | mailNickname | 邮件别名 |
-| User | extensionattribute1 | 扩展属性 1 |
-| User | extensionattribute2 | 扩展属性 2 |
-| User | extensionattribute3 | 扩展属性 3 |
-| User | extensionattribute4 | 扩展属性 4 |
-| User | extensionattribute5 | 扩展属性 5 |
-| User | extensionattribute6 | 扩展属性 6 |
-| User | extensionattribute7 | 扩展属性 7 |
-| User | extensionattribute8 | 扩展属性 8 |
-| User | extensionattribute9 | 扩展属性 9 |
-| User | extensionattribute10 | 扩展属性 10 |
-| User | extensionattribute11 | 扩展属性 11 |
-| User | extensionattribute12 | 扩展属性 12 |
-| User | extensionattribute13 | 扩展属性 13 |
-| User | extensionattribute14 | 扩展属性 14 |
-| User | extensionattribute15 | 扩展属性 15 |
-| User | othermail | 其他邮件 |
-| User | country | 国家/地区 |
-| User | city | 城市 |
-| User | state | 状态 |
-| User | jobtitle | 职务 |
-| User | employeeid | 员工 ID |
-| User | facsimiletelephonenumber | 传真电话号码 |
+| 用户 | surname | 家族名称 |
+| 用户 | givenname | 名 |
+| 用户 | displayname | 显示名称 |
+| 用户 | objectid | ObjectID |
+| 用户 | mail | 电子邮件地址 |
+| 用户 | userprincipalname | 用户主体名称 |
+| 用户 | department|部门|
+| 用户 | onpremisessamaccountname | 本地 SAM 帐户名称 |
+| 用户 | netbiosname| NetBios 名称 |
+| 用户 | dnsdomainname | DNS 域名 |
+| 用户 | onpremisesecurityidentifier | 本地安全标识符 |
+| 用户 | companyname| 组织名称 |
+| 用户 | streetaddress | 街道地址 |
+| 用户 | postalcode | 邮政编码 |
+| 用户 | preferredlanguange | 首选语言 |
+| 用户 | onpremisesuserprincipalname | 本地 UPN |*
+| 用户 | mailNickname | 邮件别名 |
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
+| 用户 | othermail | 其他邮件 |
+| 用户 | country | 国家/地区 |
+| 用户 | city | 城市 |
+| 用户 | state | 状态 |
+| 用户 | jobtitle | 职务 |
+| 用户 | employeeid | 员工 ID |
+| 用户 | facsimiletelephonenumber | 传真电话号码 |
 | User | assignedroles | 分配给用户的应用角色列表|
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objectid | ObjectID |
@@ -340,6 +340,8 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 - JwtClaimType 必须包含要在 JWT 中发出的声明的名称。
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。
+
+* **onPremisesUserPrincipalName 特性：** 使用备用 ID 时，本地属性 userPrincipalName 与 Azure AD 属性 onPremisesUserPrincipalName 同步。 仅当配置备用 ID 但也可通过 MS Graph Beta 获取时，此属性才可用 https://graph.microsoft.com/beta/me/ 。
 
 > [!NOTE]
 > 受限声明集中的声明的 Name 和 URI 不能用于声明类型元素。 有关详细信息，请参阅本文后面的“例外和限制”部分。
@@ -388,25 +390,25 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 |源|ID|说明|
 |-----|-----|-----|
-| User | mail|电子邮件地址|
-| User | userprincipalname|用户主体名称|
-| User | onpremisessamaccountname|本地 Sam 帐户名称|
-| User | employeeid|员工 ID|
-| User | extensionattribute1 | 扩展属性 1 |
-| User | extensionattribute2 | 扩展属性 2 |
-| User | extensionattribute3 | 扩展属性 3 |
-| User | extensionattribute4 | 扩展属性 4 |
-| User | extensionattribute5 | 扩展属性 5 |
-| User | extensionattribute6 | 扩展属性 6 |
-| User | extensionattribute7 | 扩展属性 7 |
-| User | extensionattribute8 | 扩展属性 8 |
-| User | extensionattribute9 | 扩展属性 9 |
-| User | extensionattribute10 | 扩展属性 10 |
-| User | extensionattribute11 | 扩展属性 11 |
-| User | extensionattribute12 | 扩展属性 12 |
-| User | extensionattribute13 | 扩展属性 13 |
-| User | extensionattribute14 | 扩展属性 14 |
-| User | extensionattribute15 | 扩展属性 15 |
+| 用户 | mail|电子邮件地址|
+| 用户 | userprincipalname|用户主体名称|
+| 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
+| 用户 | employeeid|员工 ID|
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允许用于 SAML NameID 的转换方法
 

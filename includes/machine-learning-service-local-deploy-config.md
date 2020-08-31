@@ -6,7 +6,7 @@ ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 60c754aeec3157abee02eb136dcf148c440d8da0
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477266"

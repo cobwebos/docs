@@ -5,8 +5,6 @@
   items:
     - name: 什么是 Azure Spring Cloud？
       href: spring-cloud-overview.md
-    - name: 面向 Spring 微服务应用的 Java 和基础操作系统
-      href: spring-cloud-principles-microservice-apps.md
 - name: 快速入门
   expanded: true
   items:

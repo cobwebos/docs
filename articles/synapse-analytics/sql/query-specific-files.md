@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496213"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055560"
 ---
 # <a name="use-file-metadata-in-queries"></a>在查询中使用文件元数据
 
-根据[查询文件夹和多个文件](query-folders-multiple-csv-files.md)一文中所述，SQL 按需版本查询服务可处理多个文件和文件夹。 本文介绍如何在查询中使用有关文件和文件夹名称的元数据信息。
+根据 [查询文件夹和多文件](query-folders-multiple-csv-files.md) 一文中所述，SQL 点播可以处理多个文件和文件夹。 本文介绍如何在查询中使用有关文件和文件夹名称的元数据信息。
 
 有时，可能会需要知道哪个文件或文件夹源与结果集中的某个特定行相关。
 

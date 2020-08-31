@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654270"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055679"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) 节点映像升级
 
@@ -20,6 +20,10 @@ AKS 支持升级节点上的映像，因此你可以使用最新的 OS 和运行
 如果你有兴趣了解 AKS 提供的最新映像，请参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases) ，了解详细信息。
 
 有关升级群集的 Kubernetes 版本的信息，请参阅 [Upgrade a AKS cluster][upgrade-cluster]。
+
+## <a name="limitations"></a>限制
+
+* AKS 群集必须对节点使用虚拟机规模集。
 
 ## <a name="install-the-aks-cli-extension"></a>安装 AKS CLI 扩展
 

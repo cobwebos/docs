@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 1a645a333db9b24005639f4adbb2913a2b887b66
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607151"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055662"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作伙伴中心内的市场见解仪仪表板
 
@@ -66,7 +66,10 @@ ms.locfileid: "88607151"
 
 ## <a name="marketplace-insights-summary"></a>市场见解摘要
 
-市场见解摘要部分显示所选日期范围的“页面访问次数”、“行动号召单击次数”和“唯一访问者数量”  。
+Marketplace Insights 摘要部分显示了所选日期范围内的 **页面访问**次数、 **操作调用**和 **唯一访问者** 。
+
+>[!NOTE]
+>Marketplace Insights 仪表板提供点击流数据，不应与潜在客户目标终结点中生成的潜在顾客关联。
 
 ### <a name="page-visits"></a>页面访问次数
 

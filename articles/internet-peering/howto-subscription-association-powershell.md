@@ -8,18 +8,19 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c0ad9ae885a458da5df8975d5d13018fd92bbdaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aed079c467139ac5819951c5895ba753ee38ae2d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710773"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067733"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>使用 PowerShell 将对等 ASN 关联到 Azure 订阅
 
 提交对等互连请求之前，应首先使用以下步骤将 ASN 与 Azure 订阅关联。
 
-如果愿意，可以使用[门户](howto-subscription-association-portal.md)完成本指南。
+如果愿意，可以使用 [门户](howto-subscription-association-portal.md)完成本指南。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
@@ -42,7 +43,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> 等待*RegistrationState*在继续之前 "已注册"。 执行命令可能需要5到30分钟。
+> 等待 *RegistrationState* 在继续之前 "已注册"。 执行命令可能需要5到30分钟。
 
 ### <a name="update-the-peer-information-associated-with-this-subscription"></a>更新与此订阅关联的对等信息
 
@@ -62,9 +63,9 @@ New-AzPeerAsn `
 
 一个订阅可以有多个 Asn。 更新每个 ASN 的对等互连信息。 请确保每个 ASN 的 "名称" 是唯一的。
 
-对等端应在[PeeringDB](https://www.peeringdb.com)上具有完整的和最新的配置文件。 在注册过程中，我们将使用此信息来验证对等方的详细信息，例如 NOC 信息、技术联系人信息，以及它们在对等互连设施上的存在性等。
+对等端应在 [PeeringDB](https://www.peeringdb.com)上具有完整的和最新的配置文件。 在注册过程中，我们将使用此信息来验证对等方的详细信息，例如 NOC 信息、技术联系人信息，以及它们在对等互连设施上的存在性等。
 
-请注意，在上面的**输出中，** 将显示实际订阅 ID。
+请注意，在上面的 **输出中，** 将显示实际订阅 ID。
 
 ## <a name="view-status-of-a-peerasn"></a>查看 PeerASN 的状态
 
@@ -98,7 +99,7 @@ Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
 ## <a name="delete-peerasn"></a>删除 PeerAsn
-当前不支持删除 PeerASN。 如果需要删除 PeerASN，请联系[Microsoft 对等互连](mailto:peering@microsoft.com)。
+当前不支持删除 PeerASN。 如果需要删除 PeerASN，请联系 [Microsoft 对等互连](mailto:peering@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
 

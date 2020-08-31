@@ -7,13 +7,14 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 7638b44dc3e727e2530e656541272ddad292d1fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77327689911a0fc36df14f69ef4d48e5cb120375
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002465"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067750"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
@@ -69,10 +70,10 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |参数         |说明 |
 |------------------|------------|
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在**澳大利亚**、**亚太**、**欧洲**、**美国**、**英国**和**日本**地区创建 IoT Central 应用程序。 |
+|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在 **澳大利亚**、 **亚太**、 **欧洲**、 **美国**、 **英国**和 **日本** 地区创建 IoT Central 应用程序。 |
 |名称              |应用程序在 Azure 门户中的名称。 |
 |子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 `https://mysubdomain.azureiotcentral.com`。 |
-|SKU               |目前，可以使用**ST1**或**ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+|SKU               |目前，可以使用 **ST1** 或 **ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 |模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 |DisplayName       |UI 中显示的应用程序名称。 |
 

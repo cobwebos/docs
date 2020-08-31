@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5334a1196ac8044c56e615cf8894b44646b48fb4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88615102"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067699"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 数字孪生中的查询单位 
 
@@ -20,7 +20,9 @@ Azure 数字孪生**Query unit (QU) **是一个按需计算单元，用于使用
 
 它提取了执行 Azure 数字孪生所支持的查询操作所需的系统资源（如 CPU、IOPS 和内存），使您可以改为跟踪查询单位的使用情况。
 
-查询的复杂性会影响执行该查询所使用的 QUs 的数量。 
+用于执行查询的查询单位量受 .。。
+* 查询的复杂性 
+* 结果集的大小 (因此，返回10个结果的查询将消耗更多的 QUs，而不是仅返回一个结果的类似复杂度的查询) 
 
 本文介绍如何了解查询单位并跟踪查询单位消耗量。
 

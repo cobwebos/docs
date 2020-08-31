@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 46aae2acb1f35eb22259e1e648fb869c23f26c9c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500787"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067665"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>适用于 Azure Database for PostgreSQL 单一服务器的 Azure 安全基线
 
@@ -46,7 +46,7 @@ ms.locfileid: "87500787"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置和流量
 
-**指南**：Azure Database for PostgreSQL 实例在专用终结点中受到保护时，可以在同一虚拟网络中部署虚拟机。 可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：Azure Database for PostgreSQL 实例在专用终结点中受到保护时，可以在同一虚拟网络中部署虚拟机。 可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的一些优点是能够用于直观呈现网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
 
 如何为 Azure Database for PostgreSQL 配置专用链接： https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
@@ -76,7 +76,7 @@ ms.locfileid: "87500787"
 
 如何配置 DDoS 保护： https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -152,9 +152,9 @@ Azure 安全中心监视：是
 
 如何创建和使用标记： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具监视网络资源配置并检测更改
 
@@ -166,7 +166,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -191,7 +191,7 @@ Azure 安全中心监视：不适用
 
 如何加入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure 安全中心监视**：目前不可用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -228,7 +228,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
@@ -242,7 +242,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：启用针对异常活动的警报
 
@@ -260,7 +260,7 @@ Azure 安全中心监视：不适用
 
 如何加入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -318,9 +318,9 @@ Azure Database for PostgreSQL 不支持内置基于角色的访问控制，但�
 
 如何更新管理员密码： https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -333,7 +333,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用 Azure Active Directory 的单一登录 (SSO)
 
@@ -349,7 +349,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -375,7 +375,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
 
@@ -391,7 +391,7 @@ Azure 安全中心监视：不适用
 
 了解 Azure AD 风险检测： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -401,9 +401,9 @@ Azure 安全中心监视：是
 
 如何在 Azure 中配置命名位置： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -417,7 +417,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期评审和协调用户访问权限
 
@@ -443,7 +443,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 如何将 Azure 活动日志集成到 Azure Monitor： https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure 安全中心监视**：目前不可用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -489,7 +489,7 @@ Azure AD 标识保护概述： https://docs.microsoft.com/azure/active-directory
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -539,25 +539,25 @@ Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、
 
 **指南**：数据标识、分类和丢失防护功能尚不可用于 Azure Database for PostgreSQL。 在合规性目的需要时，实现第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 了解 Azure 中的客户数据保护： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure 安全中心监视**：目前不可用
 
-责任：共享
+**责任**：共享
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 azure 基于角色的访问控制（azure RBAC）来控制对 Azure Database for PostgreSQL 控制平面（如 Azure 门户）的访问。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 RBAC 不影响数据库中的用户权限。
+**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure Database for PostgreSQL 控制平面的访问 (例如 Azure 门户) 。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 Azure RBAC 不影响数据库中的用户权限。
 
-如何在 Azure 中配置 RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+如何配置 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 如何使用 SQL 为 Azure Database for PostgreSQL 配置用户访问权限： https://docs.microsoft.com/azure/postgresql/howto-create-users
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
@@ -596,7 +596,7 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
@@ -614,7 +614,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -622,7 +622,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -630,7 +630,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -660,7 +660,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -670,7 +670,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -684,7 +684,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：维护已批准 Azure 资源和软件标题的清单
 
@@ -696,7 +696,7 @@ Azure 安全中心内 Azure PaaS 服务的功能覆盖范围： https://docs.mic
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指南**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -856,13 +856,13 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系统配置管理工具
 
-**指南**：使用“Microsoft.DBforPostgreSQL”命名空间中的 Azure Policy 别名创建自定义策略，以审核和强制执行系统配置，并针对其发出警报。 此外，还需开发用于管理策略异常的进程和管道。
+**指南**：使用“Microsoft.DBforPostgreSQL”命名空间中的 Azure Policy 别名创建自定义策略，以审核和强制执行系统配置，并针对其发出警报。 另外，开发一个用于管理策略例外的流程和管道。
 
 如何配置和管理 Azure Policy： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
@@ -884,7 +884,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -892,7 +892,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
-**指南**：对于在 Azure 应用服务上运行的用于访问 Azure Database for PostgreSQL 实例的 Azure 虚拟机或 Web 应用程序，请结合使用托管服务标识与 Azure Key Vault，以简化和保护 Azure Database for PostgreSQL 机密管理。 确保启用 Key Vault 软删除。
+**指南**：对于在 Azure 应用服务上运行的用于访问 Azure Database for PostgreSQL 实例的 Azure 虚拟机或 Web 应用程序，请结合使用托管服务标识与 Azure Key Vault，以简化和保护 Azure Database for PostgreSQL 机密管理。 请确保启用 Key Vault 软删除。
 
 如何与 Azure 托管标识集成： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
@@ -900,7 +900,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 如何使用托管标识提供 Key Vault 身份验证： https://docs.microsoft.com/azure/key-vault/managed-identity
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -910,7 +910,7 @@ Azure 安全中心监视：是
 
 对于在 Azure 应用服务上运行的用于访问 Azure Database for PostgreSQL 服务器的 Azure 虚拟机或 Web 应用程序，请结合使用托管服务标识与 Azure Key Vault ，以存储和检索 Azure Database for PostgreSQL 服务器的凭据。 请确保启用 Key Vault 软删除。
 
-使用托管标识在 Azure Active Directory (AD) 中为 Azure 服务提供一个自动托管标识。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
+使用托管标识在 Azure Active Directory (AD) 中为 Azure 服务提供一个自动托管标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 如何配置托管标识： https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
@@ -936,7 +936,7 @@ Azure 安全中心监视：是
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务）的基础主机上启用，但不会对客户内容运行。
 
@@ -945,15 +945,15 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **责任**：Microsoft
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
 **指南**：Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for PostgreSQL）的基础主机上启用，但不会对客户内容运行。
 
 预扫描要上传到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure Database for PostgreSQL 等。Microsoft 无法访问这些实例中的数据。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：共享
+**责任**：共享
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
@@ -977,7 +977,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 了解 Azure Database for PostgreSQL 初始配置： https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：共享
 
@@ -1041,9 +1041,9 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
+此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
 **Azure 安全中心监视**：不适用
 
@@ -1087,7 +1087,7 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 如何配置工作流自动化和逻辑应用： https://docs.microsoft.com/azure/security-center/workflow-automation
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 

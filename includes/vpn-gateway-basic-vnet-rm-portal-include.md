@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/03/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78301926"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89052467"
 ---
 可以通过以下步骤使用资源管理器部署模型和 Azure 门户创建一个 VNet。 有关虚拟网络的详细信息，请参阅[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
@@ -46,14 +46,13 @@ ms.locfileid: "78301926"
 
    ![“IP 地址”选项卡](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "“IP 地址”选项卡")  
    - **IPv4 地址空间**：默认情况下，系统会自动创建一个地址空间。 可以单击该地址空间，将其调整为反映你自己的值。 还可以添加更多的地址空间。
-   - **IPv6**：如果配置需要 IPv6 地址空间，请选中“添加 IPv6 地址空间”框以输入该信息。 
-   - **子网**：如果你使用默认地址空间，则系统会自动创建一个默认子网。 如果更改了地址空间，则需要添加子网。 选择“+ 添加子网”打开“添加子网”窗口。   配置以下设置，然后选择“添加”以添加值： 
-      - **子网名称**：在此示例中，我们已将子网命名为“FrontEnd”。
+   - **子网**：如果你使用默认地址空间，则会自动创建一个默认子网。 如果你更改地址空间，则需要添加一个子网。 选择“+添加子网”，打开“添加子网”窗口 。 配置以下设置，然后选择“添加”来添加值：
+      - **子网名称**：在本例中，我们已将子网命名为“FrontEnd”。
       - **子网地址范围**：此子网的地址范围。
 
-1. 在“安全性”选项卡上，此时请保留默认值： 
+1. 暂时在“安全”选项卡上保留默认值：
 
-   - **DDos 防护**：基本
+   - **DDoS 防护**：基本
    - **防火墙**：已禁用
-1. 选择“查看 + 创建”以验证虚拟网络设置。 
-1. 验证设置后，选择“创建”。 
+1. 选择“审阅 + 创建”，验证虚拟网络设置。
+1. 验证设置后，选择“创建”。

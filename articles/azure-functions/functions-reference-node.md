@@ -5,26 +5,26 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810110"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055322"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
-本指南包含的详细信息可帮助你成功使用 JavaScript 开发 Azure Functions。
+本指南包含有助于成功使用 JavaScript 开发 Azure Functions 的详细信息。
 
-作为 Express.js、Node.js 或 JavaScript 开发人员，如果不熟悉 Azure Functions，请首先阅读以下文章之一：
+作为 Express.js、Node.js 或 JavaScript 开发人员，如果不熟悉 Azure Functions，请考虑先阅读以下文章之一：
 
 | 入门 | 概念| 指导式学习 |
 | -- | -- | -- | 
-| <ul><li>[使用 Visual Studio CodeNode.js 函数](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[在终端/命令提示符下Node.js 函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[重构 Node.js 和 Express Api 到无服务器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 Node.js 函数](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[使用终端/命令提示符的 Node.js 函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 函数基础知识
 
-JavaScript ( # A0) 函数是在 `function`) [上的 function.js中配置](functions-triggers-bindings.md)触发 (触发器时执行的已导出。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
+JavaScript (Node.js) 函数是导出的 `function`，它在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -183,15 +183,38 @@ module.exports = async function (context, req) {
 `dataType` 的选项为 `binary`、`stream` 和 `string`。
 
 ## <a name="context-object"></a>上下文对象
-运行时使用 `context` 对象将数据传入和传出函数，并能与其进行通信。 上下文对象可用于从绑定读取和设置数据、写入日志，以及当导出的函数是同步函数时使用 `context.done` 回调。
 
-`context` 对象始终是传递给函数的第一个参数。 之所以需要包含此对象，是因为它包含 `context.done` 和 `context.log` 等重要方法。 可以按个人喜好为对象命名（例如 `ctx` 或 `c`）。
+运行时使用 `context` 对象向函数和运行时传递数据。 用于读取和设置绑定中的数据，并用于写入日志， `context` 对象始终是传递到函数的第一个参数。
+
+对于采用同步代码的函数，上下文对象包括在 `done` 函数完成处理时调用的回调。 `done`编写异步代码时，无需显式调用; 将 `done` 隐式调用回调。
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+传递到函数的上下文公开一个 `executionContext` 属性，该属性是一个具有以下属性的对象：
+
+| 属性名称  | 类型  | 说明 |
+|---------|---------|---------|
+| `invocationId` | String | 提供特定函数调用的唯一标识符。 |
+| `functionName` | String | 提供正在运行的函数的名称 |
+| `functionDirectory` | String | 提供函数应用目录。 |
+
+下面的示例演示如何返回 `invocationId` 。
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 

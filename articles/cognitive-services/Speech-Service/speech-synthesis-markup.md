@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 069e0f2d14dafe0de208ac69d2d652361a11ee34
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012426"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055543"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -238,7 +238,8 @@ speechConfig!.setPropertyTo(
 |                         | `style="angry"`           | 以较低的音调、较高的强度和更高的沉默能量表示生气和厌恶的音调。 演讲者的状态为 irate、displeased 和生气。       |
 |                         | `style="fearful"`         | 以更高的音调、更高的沉默能量和更快的速度来表达恐惧和紧张的音调。 演讲者处于 tenseness 和 uneasiness 状态。                          |
 |                         | `style="disgruntled"`     | 表达 disdainful 和抱怨。 此情感的语音显示 displeasure 和蔑视。              |
-|                         | `style="serious"`         | 表示严格和命令音。 演讲者经常听起来 stiffer，并通过固定的步调来放松。          | |                         | `style="affectionate"`    | 用较高的音调和沉默能量表达一 affectionate。 演讲者处于一种状态，它吸引了侦听器的注意力。 演讲者的 "个性" 通常是 endearing 的。          |     
+|                         | `style="serious"`         | 表示严格和命令音。 演讲者经常听起来 stiffer，并通过固定的步调来放松。          |
+|                         | `style="affectionate"`    | 用较高的音调和沉默能量表达一 affectionate。 演讲者处于一种状态，它吸引了侦听器的注意力。 演讲者的 "个性" 通常是 endearing 的。          |     
 |                         | `style="gentle"`          | 以较低的音调和沉默的能源表达轻度、令人愉快的语气         |   
 |                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | 以友好热情的语气为客户提供支持  | 

@@ -13,12 +13,13 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
-ms.openlocfilehash: e7729318e6121b0072546b8e111a8b782e95906d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183386"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067818"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 
@@ -42,7 +43,7 @@ ms.locfileid: "86183386"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 2. 导航到 [Azure 门户](https://portal.azure.com)。 
-3. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。   
+3. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
 2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为**名称**。 
@@ -80,7 +81,7 @@ ms.locfileid: "86183386"
 2. 在“活动”工具箱中展开“常规”，将**存储过程**活动拖放到管道设计器图面。 
 
     ![拖放存储过程活动](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 在 Azure SQL 数据库中创建一个与数据库的连接，该数据库承载 (SSIDB 数据库) 的 SSIS 目录。 
+3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 与托管 SSIS 目录（SSIDB 数据库）的 Azure SQL 数据库中的数据库建立连接。 
    
     ![“新建链接服务”按钮](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. 在“新建链接服务”窗口中执行以下步骤： 
@@ -125,7 +126,7 @@ ms.locfileid: "86183386"
 
     ![立即触发](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
 
-2. 在“管道运行”窗口中选择“完成”。  
+2. 在“管道运行”窗口中选择“完成”。 
 3. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
 
     ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
@@ -196,7 +197,7 @@ ms.locfileid: "86183386"
 * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
-创建链接服务以将承载 SSIS 目录的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
+创建一个链接服务，将托管 SSIS 目录的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
 
 1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 AzureSqlDatabaseLinkedService.json 的 JSON 文件，并在其中包含以下内容 ： 
 
