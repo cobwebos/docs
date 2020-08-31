@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049241"
+ms.locfileid: "89068620"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
 
@@ -37,10 +37,10 @@ ms.locfileid: "89049241"
 1. 在“云应用或操作”下，选择“所有云应用”。
    1. 选择“完成”。
 1. 在 "**条件**  >  **客户端应用**" 下，将**配置**设置为 **"是"**。
-   1. 仅检查 **Exchange ActiveSync 客户端** 和 **其他客户端**的框。
-   1. 选择“完成”。
+   1. 仅检查 **Exchange ActiveSync 客户端** 和 **其他客户端**的框。 若要在 Azure 中部署 Exchange ActiveSync 条件访问策略，用户还必须是全局管理员。
+   1. 选择“完成”  。
 1. 在“访问控制” > “授予”下，选择“阻止访问”。
-   1. 选择“选择”。
+   1. 选择“选择”  。
 1. 确认设置并将“启用策略”设置为“仅限报告”。
 1. 选择“创建”进行创建并启用策略。
 

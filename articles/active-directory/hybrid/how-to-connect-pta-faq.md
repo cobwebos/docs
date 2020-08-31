@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358287"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071425"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -37,18 +37,18 @@ ms.locfileid: "85358287"
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>能否在 [Microsoft Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用直通身份验证？
 
-不能。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
+不是。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>是否可以在传递身份验证中使用[条件访问](../active-directory-conditional-access-azure-portal.md)？
 
 是的。 所有条件访问功能（包括 Azure 多重身份验证）都使用传递身份验证。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>传递身份验证是否支持使用“备用 ID”（而非“userPrincipalName”）作为其用户名？
-是的，传递身份验证（PTA）和密码哈希同步（PHS）都支持使用非 UPN 值登录（例如，备用电子邮件）。 有关[备用登录 ID](../authentication/howto-authentication-use-email-signin.md)的详细信息。
+是的，通过 PTA) 和密码哈希同步 (PHS) ， (同时支持使用非 UPN 值（例如备用电子邮件）的登录。 有关 [备用登录 ID](../authentication/howto-authentication-use-email-signin.md)的详细信息。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
-不能。 直通身份验证不__ 自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+不是。 直通身份验证不__ 自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
 
 ## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>从密码哈希同步切换到直通身份验证时会发生什么情况？
 
@@ -75,7 +75,7 @@ ms.locfileid: "85358287"
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>传递身份验证通过端口 80 和 443 传递什么内容？
 
 - 身份验证代理通过端口 443 为所有功能操作发出 HTTPS 请求。
-- 身份验证代理通过端口80发出 HTTP 请求以下载 TLS/SSL 证书吊销列表（Crl）。
+- 身份验证代理通过端口80发出 HTTP 请求，以下载)  (Crl 的 TLS/SSL 证书吊销列表。
 
      >[!NOTE]
      >最近的更新减少了功能所需的端口数。 如果有较旧版 Azure AD Connect 或身份验证代理，也请打开以下端口：5671、8080、9090、9091、9350、9352 和 10100-10120。
@@ -107,13 +107,13 @@ ms.locfileid: "85358287"
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>我是否必须手动续订由传递身份验证代理使用的证书？
 
-使用基于证书的身份验证保护各传递身份验证代理与 Azure AD 之间的通信。 这些[证书每隔几个月自动续订 Azure AD](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents)。 无需手动续订这些证书。 可以根据需要清除已过期的旧证书。
+使用基于证书的身份验证保护各传递身份验证代理与 Azure AD 之间的通信。 这些 [证书每隔几个月自动续订 Azure AD](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents)。 无需手动续订这些证书。 可以根据需要清除已过期的旧证书。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
 
 只要直通身份验证正在运行，它就会保持活动状态，并不断处理用户登录请求。 如果要卸载身份验证代理，请转到“控制面板”->“程序”->“程序和功能”****，卸载“Microsoft Azure AD Connect 身份验证代理”**** 和“Microsoft Azure AD Connect 代理更新程序”**** 程序。
 
-如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“直通身份验证”边栏选项卡，将看到显示为“非活动”状态**** 的身份验证代理。 这是_预期_情况。 该身份验证代理在几天后将自动从列表中删除。
+如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“直通身份验证”边栏选项卡，将看到显示为“非活动”状态**** 的身份验证代理。 这是 _预期_情况。 10天后，身份验证代理会自动从列表中删除。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>我已使用 AD FS 登录到 Azure AD。 如何将它切换为传递身份验证？
 
@@ -121,7 +121,7 @@ ms.locfileid: "85358287"
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>是否能在多林 Active Directory 环境中使用直通身份验证？
 
-是的。 如果 Active Directory 林之间存在林信任（双向），并且已正确配置了名称后缀路由，则支持多林环境。
+是的。 如果在您的 Active Directory 林之间存在林信任 (双向) 并且已正确配置了名称后缀路由，则支持多林环境。
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>直通身份验证是否跨多个身份验证代理提供负载均衡？
 
@@ -144,11 +144,11 @@ ms.locfileid: "85358287"
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>能否在未运行 Azure AD Connect 的服务器上安装第一个传递身份验证代理？
 
-不，_不_支持此方案。
+不， _不_ 支持此方案。
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>为什么需要仅限云的全局管理员帐户才能启用传递身份验证？
 
-建议使用仅限云的全局管理员帐户启用或禁用传递身份验证。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 这样做可确保你不被锁定在租户之外。
+建议使用仅限云的全局管理员帐户启用或禁用传递身份验证。 了解如何 [添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 这样做可确保你不被锁定在租户之外。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>如何禁用传递身份验证？
 

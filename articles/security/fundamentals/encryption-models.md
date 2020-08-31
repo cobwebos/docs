@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227028"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89143727"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -159,9 +159,9 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | 文本翻译                  | 是                | 是                | -                  |
 | Power BI                         | 是                | 预览，RSA 2048 位 | -                  |
 | **分析**                    |                    |                    |                    |
-| Azure 流分析           | 是                | 暂无\*            | -                  |
-| 事件中心                       | 是                | 是，所有 RSA 长度。 | -                  |
-| 函数                        | 是                | 是，所有 RSA 长度。 | -                  |
+| Azure 流分析           | 是                | 暂无\*              | -                  |
+| 事件中心                       | 是                | 是                | -                  |
+| 函数                        | 是                | 是                | -                  |
 | Azure Analysis Services          | 是                | -                  | -                  |
 | Azure 数据目录               | 是                | -                  | -                  |
 | Azure HDInsight                  | 是                | 全部                | -                  |
@@ -175,9 +175,9 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | 容器实例              | 是                | 是                | -                  |
 | 容器注册表               | 是                | 是                | -                  |
 | **计算**                      |                    |                    |                    |
-| 虚拟机                 | 是                | 是，RSA 2048 位  | -                  |
-| 虚拟机规模集        | 是                | 是，RSA 2048 位  | -                  |
-| SAP HANA                         | 是                | 是，RSA 2048 位  | -                  |
+| 虚拟机                 | 是                | 是                | -                  |
+| 虚拟机规模集        | 是                | 是                | -                  |
+| SAP HANA                         | 是                | 是                | -                  |
 | 应用服务                      | 是                | 是\*\*            | -                  |
 | 自动化                       | 是                | 是\*\*            | -                  |
 | Azure Functions                  | 是                | 是\*\*            | -                  |
@@ -187,13 +187,13 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | 服务总线                      | 是                | 是                | -                  |
 | 站点恢复                    | 是                | 是                | -                  |
 | **数据库**                    |                    |                    |                    |
-| 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                |
-| Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                |
+| 虚拟机上的 SQL Server   | 是                | 是                | 是                |
+| Azure SQL 数据库               | 是                | 是，RSA 3072 位  | 是                |
 | Azure SQL Database for MariaDB   | 是                | -                  | -                  |
 | Azure SQL Database for MySQL     | 是                | 是                | -                  |
 | Azure SQL Database for PostgreSQL | 是               | 是                | -                  |
-| Azure Synapse Analytics          | 是                | 是，RSA 2048 位  | -                  |
-| SQL Server Stretch Database      | 是                | 是，RSA 2048 位  | 是                |
+| Azure Synapse Analytics          | 是                | 是，RSA 3072 位  | -                  |
+| SQL Server Stretch Database      | 是                | 是，RSA 3072 位  | 是                |
 | 表存储                    | 是                | 是                | 是                |
 | Azure Cosmos DB                  | 是                | 是                | -                  |
 | Azure Databricks                 | 是                | 是                | -                  |
@@ -203,7 +203,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | Azure Repos                      | 是                | -                  | 是                |
 | **标识**                     |                    |                    |                    |
 | Azure Active Directory           | 是                | -                  | -                  |
-| Azure Active Directory 域服务 | 是          | 是，RSA 2048 位  | -                  |
+| Azure Active Directory 域服务 | 是          | 是                | -                  |
 | **集成**                  |                    |                    |                    |
 | 服务总线                      | 是                | 是                | 是                |
 | 事件网格                       | 是                | -                  | -                  |
@@ -220,20 +220,20 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | 适用于 IoT 的 Azure 安全中心    | 是                | 是                | -                  |
 | Azure Sentinel                   | 是                | 是                | -                  |
 | **存储**                      |                    |                    |                    |
-| Blob 存储                     | 是                | 是，RSA 2048 位  | 是                |
-| 高级 Blob 存储             | 是                | 是，RSA 2048 位  | 是                |
+| Blob 存储                     | 是                | 是                | 是                |
+| 高级 Blob 存储             | 是                | 是                | 是                |
 | 磁盘存储                     | 是                | 是                | -                  |
 | 超级磁盘存储               | 是                | 是                | -                  |
 | 托管磁盘存储             | 是                | 是                | -                  |
-| 文件存储                     | 是                | 是，RSA 2048 位  | -                  |
-| 文件高级存储             | 是                | 是，RSA 2048 位  | -                  |
-| 文件同步                        | 是                | 是，RSA 2048 位  | -                  |
+| 文件存储                     | 是                | 是                | -                  |
+| 文件高级存储             | 是                | 是                | -                  |
+| 文件同步                        | 是                | 是                | -                  |
 | 队列存储                    | 是                | 是                | 是                |
 | Avere vFXT                       | 是                | -                  | -                  |
 | 用于 Redis 的 Azure 缓存            | 是                | 暂无\*              | -                  |
 | Azure NetApp 文件               | 是                | 是                | -                  |
-| 存档存储                  | 是                | 是，RSA 2048 位  | -                  |
-| StorSimple                       | 是                | 是，RSA 2048 位  | 是                |
+| 存档存储                  | 是                | 是                | -                  |
+| StorSimple                       | 是                | 是                | 是                |
 | Azure 备份                     | 是                | 是                | 是                |
 | Data Box                         | 是                | -                  | 是                |
 | Data Box Edge                    | 是                | 是                | -                  |

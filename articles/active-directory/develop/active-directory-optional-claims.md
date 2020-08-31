@@ -12,12 +12,12 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853594"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068720"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用程序提供可选声明
 
@@ -58,7 +58,7 @@ ms.locfileid: "88853594"
 | `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
 | `vnet`                     | VNET 说明符信息。 | JWT        |           |      |
 | `fwd`                      | IP 地址。| JWT    |   | 添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址 |
-| `ctry`                     | 用户所在国家/地区 | JWT |  | Azure AD 将返回 `ctry` 可选声明（如果存在），并且该字段的值为标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
+| `ctry`                     | 用户所在国家/地区 | JWT、SAML |  | Azure AD 将返回 `ctry` 可选声明（如果存在），并且该字段的值为标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
 | `tenant_ctry`              | 资源租户所在的国家/地区 | JWT | | 与 `ctry` 管理员在租户级别上设置的除外。 还必须是标准的双字母值。 |
 | `xms_pdl`             | 首选数据位置   | JWT | | 对于多地域租户，首选数据位置是显示用户所在地理区域的由三个字母组成的代码。 有关详细信息，请参阅[有关首选数据位置的 Azure AD Connect 文档](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)。<br/>例如：`APC` 表示“亚太”。 |
 | `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“zh-cn”）。 |
@@ -136,7 +136,7 @@ ms.locfileid: "88853594"
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 **通过应用程序清单配置可选声明：**
 

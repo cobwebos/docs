@@ -246,7 +246,7 @@
               href: application-types.md
             - name: 分配了意外的用户
               href: ways-users-get-assigned-to-applications.md
-        - name: 排查访问面板问题
+        - name: 我的应用疑难解答
           items:
             - name: 管理浏览器扩展
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: 无法登录
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: 安装浏览器扩展时出错
-              href: access-panel-extension-problem-installing.md
             - name: 使用自助服务应用访问权限时出错
               href: access-panel-troubleshoot-self-service-access.md
         - name: 排查本地应用故障

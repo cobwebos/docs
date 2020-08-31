@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652628"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144883"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "88652628"
 
 | 环境 | 优点 | 缺点 |
 | --- | --- | --- |
-| [基于云的 Azure 机器学习计算实例（预览版）](#compute-instance) | 最容易入门。 整个 SDK 已安装在工作区 VM 中，笔记本教程已预先克隆，随时可供运行。 | 缺少对开发环境和依赖项的控制。 Linux VM 会产生额外的成本（可以停止不使用的 VM，以免产生费用）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
+| [基于云的 Azure 机器学习计算实例](#compute-instance) | 最容易入门。 整个 SDK 已安装在工作区 VM 中，笔记本教程已预先克隆，随时可供运行。 | 缺少对开发环境和依赖项的控制。 Linux VM 会产生额外的成本（可以停止不使用的 VM，以免产生费用）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本地环境](#local) | 可以全面控制开发环境和依赖项。 使用所选的任何生成工具、环境或 IDE 来运行。 | 入门需要更长的时间。 必须安装必要的 SDK 包，此外，必须安装一个环境（如果尚未安装）。 |
 | [Azure Databricks](#aml-databricks) | 非常适合用于在可缩放的 Apache Spark 平台上运行大规模的密集型机器学习工作流。 | 对于试验性机器学习或较小规模的试验和工作流而言性能过剩。 Azure Databricks 会产生额外的成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | 类似于基于云的计算实例（已预装 Python 和 SDK），但预装了其他流行的数据科学和机器学习工具。 易于缩放，并可与其他自定义工具和工作流结合使用。 | 与基于云的计算实例相比，入门过程更慢。 |
@@ -55,11 +55,11 @@ Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure �
 
 ## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>自己的基于云的计算实例
 
-Azure 机器学习[计算实例（预览版）](concept-compute-instance.md)是一个安全的基于云的 Azure 工作站，为数据科学家提供 Jupyter Notebook 服务器、JupyterLab 和一个准备妥当的 ML 环境。
+Azure 机器学习 [计算实例](concept-compute-instance.md) 是一种基于云的安全 Azure 工作站，它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 和完全准备好的 ML 环境。
 
 无需为计算实例安装或配置任何组件。  随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-若要了解有关计算实例的详细信息（包括如何安装包），请参阅 [计算实例](concept-compute-instance.md)。
+若要了解计算实例的详细信息（包括如何安装包），请参阅[计算实例](concept-compute-instance.md)。
 
 若要避免产生计算费用，请[停止计算实例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
@@ -156,7 +156,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
     此示例使用 Python 3.7.7 创建环境，但可以选择任何特定的子版本。 使用某些主要版本（建议使用 3.5+）时，不一定能够保证 SDK 的兼容性。如果遇到错误，我们建议在 Anaconda 环境中尝试不同的版本/子版本。 下载组件和包时，创建环境需要花费几分钟。
 
-1. 在新环境中运行以下命令，以启用环境特定的 IPython 内核。 这可以确保在 Anaconda 环境中使用 Jupyter 笔记本时，内核和包导入的行为符合预期：
+1. 在新环境中运行以下命令，启用特定于环境的 I Python 内核。 这可以确保在 Anaconda 环境中使用 Jupyter 笔记本时，内核和包导入的行为符合预期：
 
     ```bash
     conda install notebook ipykernel
@@ -306,10 +306,10 @@ Azure Databricks 如何使用 Azure 机器学习：
    |SDK 包附加项|Source|PyPi 名称|
    |----|---|---|
    |对于 Databricks| 上传 Python Egg 或 PyPI | azureml-sdk[databricks]|
-   |对于包含自动化<br> ML 功能的 Databricks| 上传 Python Egg 或 PyPI | azureml-sdk[automl]|
+   |对于包含自动化<br> ML 功能的 Databricks| 上传 Python Egg 或 PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > 无法安装其他 SDK 附加项。 请仅选择上述选项中的一个 [databricks] 或 [automl]。
+   > 无法安装其他 SDK 附加项。 仅选择上述选项之一 [ `databricks` ] 或 [ `automl` ]。
 
    * 不要选择“自动附加到所有群集”。
    * 选择群集名称旁边的“附加”。

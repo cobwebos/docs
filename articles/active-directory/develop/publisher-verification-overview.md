@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120773"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068467"
 ---
 # <a name="publisher-verification-preview"></a>发布者验证（预览版）
 
@@ -42,13 +42,13 @@ ms.locfileid: "88120773"
 
 -  一个有效的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/membership)帐户的 MPN ID，该帐户已完成[验证](/partner-center/verification-responses)过程。 这个 MPN 帐户必须是贵组织的[合作伙伴全局帐户 (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga)。 
 
--  一个 Azure AD 租户，具有经 DNS 验证的[自定义域](../fundamentals/add-custom-domain.md)。 自定义域必须与上一步中验证时使用的电子邮件地址的域相匹配。 
+-  在 Azure AD 租户中注册的应用，其中配置了 [发布者域](howto-configure-publisher-domain.md) 。
 
--  一个在 Azure AD 租户中注册的应用，使用之前使用的相同域配置了[发布者域](howto-configure-publisher-domain.md)。 
+-  MPN 帐户验证期间使用的电子邮件地址的域必须与应用上配置的发布服务器域或添加到 Azure AD 租户的 DNS 验证的 [自](../fundamentals/add-custom-domain.md) 定义域相匹配。 
 
 -  执行验证的用户必须获得授权，才能对 Azure AD 中的应用注册和合作伙伴中心中的 MPN 帐户进行更改。 
 
-    -  在 Azure AD 中，此用户必须是应用的所有者或拥有以下[角色](../users-groups-roles/directory-assign-admin-roles.md)之一。应用程序管理员、云应用程序管理员和全局管理员。 
+    -  在 Azure AD 此用户必须是以下 [角色](../users-groups-roles/directory-assign-admin-roles.md)之一的成员： "应用程序管理员"、"云应用程序管理员" 或 "全局管理员"。 
 
     -  在合作伙伴中心，该用户必须拥有以下[角色](/partner-center/permissions-overview)之一。MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。
     

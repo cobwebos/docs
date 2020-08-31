@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bce1f00603d9304fc544fb92d4cc5f1a429504ed
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039171"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068994"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>如何启动 Azure 流分析作业
 
@@ -36,9 +37,9 @@ ms.locfileid: "86039171"
 
 ## <a name="visual-studio"></a>Visual Studio
 
-在作业视图中，选择绿色箭头按钮启动作业。 设置“作业输出启动模式”并选择“启动”。   作业状态将更改为“正在运行”。 
+在作业视图中，选择绿色箭头按钮启动作业。 设置“作业输出启动模式”并选择“启动”。******** 作业状态将更改为“正在运行”。****
 
-“作业输出启动模式”有三个选项：  *JobStartTime*、*CustomTime* 和 *LastOutputEventTime*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
+**作业输出启动模式**有三个选项： *JobStartTime*、 *CustomTime*和*LastOutputEventTime*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
 
 
 ## <a name="powershell"></a>PowerShell

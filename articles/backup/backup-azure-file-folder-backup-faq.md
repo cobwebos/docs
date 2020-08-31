@@ -3,16 +3,16 @@ title: Microsoft Azure 恢复服务 (MARS) 代理– FAQ
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874616"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144458"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务 (MARS) 代理
 
-本文解答了有关将数据备份到[Azure 备份](backup-overview.md)服务中的 MICROSOFT AZURE 恢复服务 (MARS) 代理的常见问题。
+本文解答了有关将数据备份到 [Azure 备份](backup-overview.md) 服务中的 MICROSOFT AZURE 恢复服务 (MARS) 代理的常见问题。
 
 ## <a name="configure-backups"></a>配置备份
 
@@ -22,7 +22,7 @@ ms.locfileid: "87874616"
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>在哪里可以下载保管库凭据文件？
 
-在 Azure 门户中，导航到保管库的 "**属性**"。 在 "**备份凭据**" 下，选中 "**已使用最新的恢复服务代理**" 复选框。 选择“下载”。
+在 Azure 门户中，导航到保管库的 " **属性** "。 在 " **备份凭据**" 下，选中 " **已使用最新的恢复服务代理**" 复选框。 选择“下载”。
 
 ![下载凭据](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "87874616"
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>密码允许使用哪些字符？
 
-该通行短语应使用 ASCII 字符集中的字符，其[ascii 值小于或等于 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)。
+该通行短语应使用 ASCII 字符集中的字符，其 [ascii 值小于或等于 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以从哪些驱动器备份文件和文件夹？
 
@@ -183,7 +183,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 * 如果你在同一台计算机上卸载并重新注册该代理，
   * *相同的密码*，则可以还原已备份的数据。
   * *不同密码*，则无法还原已备份的数据。
-* 如果在*其他计算机*上安装代理，
+* 如果在 *其他计算机* 上安装代理，
   * 原始计算机)  (使用*相同的密码*，则可以还原已备份的数据。
   * *不同密码*，则无法还原已备份的数据。
 * 如果原始计算机已损坏（阻止你通过 MARS 控制台重新生成通行短语），但你可以还原或访问 MARS 代理使用的原始暂存文件夹，则你也许可以还原（如果忘记了密码）。 若要获取更多帮助，请联系客户支持人员。
@@ -199,7 +199,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>我的备份作业运行失败或运行时间过长。 我的保留期已过。 是否仍可以还原？
 
-作为一种安全措施，Azure 备份将保留最后一个恢复点，即使该恢复点已超过保持期。 备份恢复和全新恢复点变为可用后，将根据指定的保留期删除旧的恢复点。
+作为一种安全措施，Azure 备份将保留最新的恢复点，即使该恢复点超过保留期也是如此。 备份恢复和全新恢复点变为可用后，将根据指定的保留期删除旧的恢复点。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？
 

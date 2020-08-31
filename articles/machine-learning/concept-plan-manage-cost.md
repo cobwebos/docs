@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3173f81f84463cde488dcbf0242f8d65c5b9c9fe
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012682"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144985"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
 
@@ -69,7 +69,7 @@ Enterprise 版预览版无 ML 附加费用。 Enterprise 版正式发布后，�
 
 Azure 机器学习用户可以使用托管 Azure 机器学习计算群集（也称为 AmlCompute）。 AmlCompute 支持多种 GPU 和 CPU 选项。 AmlCompute 是由 Azure 机器学习代表你的订阅在内部进行托管的。 它在 Azure IaaS 云规模上提供相同的企业级安全性、合规性和治理功能。
 
-由于这些计算池位于 Azure IaaS 基础结构内，因此，你可以按照与基础结构的其余部分相同的安全性和合规性要求来部署、缩放和管理训练。  这些部署在你的订阅中发生，遵循你的治理规则。 详细了解 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)。
+由于这些计算池位于 Azure IaaS 基础结构内，因此，你可以按照与基础结构的其余部分相同的安全性和合规性要求来部署、缩放和管理训练。  这些部署在你的订阅中发生，遵循你的治理规则。 了解有关 [Azure 机器学习计算](how-to-create-attach-compute-sdk.md#amlcompute)的详细信息。
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>配置训练群集以实现自动缩放
 
@@ -107,7 +107,7 @@ AmlCompute 附带一个[配额（或限制）配置](how-to-manage-quotas.md#azu
 * 对于[超参数优化](how-to-tune-hyperparameters.md#early-termination)，请在老虎机策略、中间值停止策略或截断选择策略中定义提前终止策略。 若要进一步控制超参数整理，请使用 `max_total_runs` 或 `max_duration_minutes` 等参数。
 * 对于[自动化机器学习](how-to-configure-auto-train.md#exit)，请使用 `enable_early_stopping` 标志设置类似的终止策略。 另外，请使用诸如 `iteration_timeout_minutes` 和 `experiment_timeout_minutes` 等属性来控制运行的最长持续时间或整个试验的最长持续时间。
 
-## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>使用低优先级 Vm
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> 使用低优先级 Vm
 
 Azure 允许在虚拟机规模集、Batch 和机器学习服务中将未利用的多余容量作为低优先级 VM 来使用。 这些容量分配是可预先抢占的，其价格比专用 VM 低。 通常，建议为 Batch 工作负载使用低优先级 VM。 如果可通过重新提交（对于 Batch 推理）或通过重启（对于具有检查点的深度学习培训）从中断中恢复，也应使用它们。
 
@@ -127,4 +127,4 @@ Azure 机器学习计算本身就支持预留实例。 如果你购买了一年�
 了解有关以下方面的详细信息：
 * [管理和增加资源配额](how-to-manage-quotas.md)
 * [通过成本分析来管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
-* [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)。
+* 用 [SDK](how-to-create-attach-compute-sdk.md#amlcompute) 或在 [工作室](how-to-create-attach-compute-studio.md#amlcompute)中创建 Azure 机器学习计算。

@@ -25,9 +25,9 @@
         - name: 托管磁盘
           items:
             - name: 使用 CLI 在可用性区域中添加托管磁盘
-              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
+              href: ../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm
             - name: 使用 PowerShell 在可用性区域中添加托管磁盘
-              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+              href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
         - name: 虚拟机规模集
           items:
             - name: 在可用性区域中创建规模集
@@ -58,11 +58,11 @@
                 - name: 使用 Azure 跨可用性区域对 VM 进行负载均衡 (CLI)
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: 公共 IP 地址
-          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL 数据库
           items:
             - name: 将可用性区域与 SQL 数据库配合使用
-              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
         - name: 存储
           items:
             - name: 区域冗余存储
@@ -70,11 +70,11 @@
         - name: 事件中心
           items:
             - name: 事件中心异地灾难恢复
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
+              href: ../event-hubs/event-hubs-geo-dr.md#availability-zones
         - name: 服务总线
           items:
             - name: 服务总线异地灾难恢复
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
+              href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones
         - name: VPN 网关
           items:
             - name: 创建区域冗余的虚拟网关
@@ -83,6 +83,10 @@
           items:
             - name: 创建区域冗余的虚拟网关
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: 应用程序网关 v2
+          items:
+            - name: 自动缩放和区域冗余应用程序网关 v2
+              href: ../application-gateway/application-gateway-autoscaling-zone-redundant.md
         - name: 标识
           items:
             - name: 创建 Azure Active Directory 域服务实例
