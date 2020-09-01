@@ -36,11 +36,11 @@ ms.locfileid: "88930156"
 
 在 Visual Studio 2019 中，选择 " *文件" > "新建项目*"。 搜索 *Azure Functions* 模板，将其选中，然后按 "下一步"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio： "新建项目" 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio： 新建项目 对话框":::
 
 指定函数应用的名称，并按 "创建"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： "配置项目" 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： 配置项目 对话框":::
 
 选择 " *事件网格" 触发器* 并按 "创建"。
 
