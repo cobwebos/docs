@@ -1,20 +1,20 @@
 ---
 title: 表单识别器静态数据的服务加密
 titleSuffix: Azure Cognitive Services
-description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你通过自己的密钥（称为客户管理的密钥（CMK））管理你的认知服务订阅。 本文介绍窗体识别器的静态数据加密，以及如何启用和管理 CMK。
+description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你通过自己的密钥（称为客户托管密钥 (CMK) ）管理你的认知服务订阅。 本文介绍窗体识别器的静态数据加密，以及如何启用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: cf2a6a96517d1c3d63989bc511957019f078cd42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86b15b0059c2e3466ef65daeb53780798b3882d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090869"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079245"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>格式识别静态数据的加密
 

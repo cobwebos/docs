@@ -8,22 +8,23 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: be4bab10d369fcefe626bbe890acfff7fc7004b0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700291"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079058"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>使用 PowerShell 创建或修改直接对等互连
 
 本文介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 Microsoft 直接对等互连。 本文还介绍了如何检查资源的状态、对其进行更新、删除和取消预配。
 
-如果愿意，可以使用 Azure[门户](howto-direct-portal.md)完成本指南。
+如果愿意，可以使用 Azure [门户](howto-direct-portal.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](prerequisites.md)和[直接对等互连演练](walkthrough-direct-all.md)。
-* 如果你已与 Microsoft 建立直接对等互连连接，但未将其转换为 Azure 资源，请参阅[使用 PowerShell 将旧直接对等互连转换为 azure 资源](howto-legacy-direct-powershell.md)。
+* 如果你已与 Microsoft 建立直接对等互连连接，但未将其转换为 Azure 资源，请参阅 [使用 PowerShell 将旧直接对等互连转换为 azure 资源](howto-legacy-direct-powershell.md)。
 
 ### <a name="work-with-azure-powershell"></a>使用 Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]

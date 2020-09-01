@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958756"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079653"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -488,7 +488,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除属性或�
 - 添加或替换 `identity.type` 虚拟机和虚拟机规模集的托管标识类型 () 的值。
 - 添加或替换 (预览) 的某些别名的值。
   - 使用 `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
-    在 Azure PowerShell 获取可与 Modify 一起使用的别名列表。
+    在 Azure PowerShell **4.6.0** 或更高版本中，获取可用于修改的别名列表。
 
 > [!IMPORTANT]
 > 如果你正在管理标记，则建议使用修改，而不是将追加作为修改提供其他操作类型和修正现有资源的能力。 但是，如果无法创建托管标识或修改尚不支持资源属性的别名，则建议使用 Append。
@@ -572,7 +572,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除属性或�
 |-|-|
 |addOrReplace |将已定义的属性或标记和值添加到资源，即使已经存在具有不同值的属性或标记。 |
 |“添加” |将已定义的属性或标记和值添加到资源。 |
-|移除 |从资源中删除定义的属性或标记。 |
+|删除 |从资源中删除定义的属性或标记。 |
 
 ### <a name="modify-examples"></a>修改示例
 

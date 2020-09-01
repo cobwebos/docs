@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117095"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89094118"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的配置设置。
 
@@ -59,6 +59,7 @@ ms.locfileid: "80117095"
       "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
       "trackingStoreNamePrefix": "DurableTask",
+      "useLegacyPartitionManagement": true,
       "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
@@ -83,9 +84,10 @@ ms.locfileid: "80117095"
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
     "extendedSessionIdleTimeoutInSeconds": 30,
+    "useAppLease": true,
     "useGracefulShutdown": false
   }
-  }
+ }
 }
 
 ```
@@ -104,7 +106,7 @@ ms.locfileid: "80117095"
 |maxConcurrentOrchestratorFunctions |10 倍于当前计算机上的处理器数|可以在单个主机实例上并发处理的业务流程协调程序函数的最大数目。|
 |maxQueuePollingInterval|30 秒|最大的控制和工作项队列轮询时间间隔，采用 *hh:mm:ss* 格式。 值越高，可能导致的消息处理延迟也越高。 值越低，可能导致的存储成本会越高，因为存储事务数增高。|
 |azureStorageConnectionStringName |AzureWebJobsStorage|应用设置的名称，其中的 Azure 存储连接字符串用于管理基础的 Azure 存储资源。|
-|trackingStoreConnectionStringName||连接字符串的名称，用于“历史记录”和“实例”表。 如果未指定，则使用 `azureStorageConnectionStringName` 连接。|
+|trackingStoreConnectionStringName||连接字符串的名称，用于“历史记录”和“实例”表。 如果未指定，则使用 `connectionStringName` (Durable 2.x) 或 `azureStorageConnectionStringName` (Durable 1.x) 连接。|
 |trackingStoreNamePrefix||指定 `trackingStoreConnectionStringName` 时用于“历史记录”和“实例”表的前缀。 如果未设置，则默认前缀值为 `DurableTask`。 如果 `trackingStoreConnectionStringName` 未指定，则“历史记录”和“实例”表会使用 `hubName` 值作为其前缀，`trackingStoreNamePrefix` 的任何设置都会被忽略。|
 |traceInputsAndOutputs |false|一个指示是否跟踪函数调用的输入和输出的值。 跟踪函数执行事件时的默认行为是在函数调用的序列化输入和输出中包括字节数。 此行为提供的有关输入和输出情况的信息是最少的，不会导致日志膨胀，也不会无意中将敏感信息公开。 将此属性设置为 true 会导致默认函数日志记录将函数输入和输出的整个内容都记录下来。|
 |logReplayEvents|false|一个值，该值指示是否将业务流程重播事件写入到 Application Insights。|
@@ -113,6 +115,8 @@ ms.locfileid: "80117095"
 |eventGridPublishRetryCount|0|发布到事件网格主题失败时要重试的次数。|
 |eventGridPublishRetryInterval|5 分钟|事件网格发布重试间隔（采用 *hh:mm:ss* 格式）。|
 |eventGridPublishEventTypes||要发布到事件网格的事件类型列表。 如果未指定，则将发布所有事件类型。 允许的值包括 `Started`、`Completed`、`Failed`、`Terminated`。|
+|useAppLease|是|如果设置为 `true`，应用将要求在处理任务中心消息之前获取应用级别 blob 租约。 有关详细信息，请参阅[灾难恢复和地理分布](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md)文档。 从 v2.3.0 开始可用。
+|useLegacyPartitionManagement|是|如果设置为 `false`，则将使用分区管理算法，该算法可减少在横向扩展时重复执行函数的可能性。从 v2.3.0 开始可用。 在将来的版本中，默认值将更改为 `false`。|
 |useGracefulShutdown|false|（预览）启用正常关闭以减少主机关闭导致进程内函数执行失败的机会。|
 
-许多此类设置用于优化性能。 有关详细信息，请参阅[性能和缩放](../articles/azure-functions/durable-functions-perf-and-scale.md)。
+许多此类设置用于优化性能。 有关详细信息，请参阅[性能和规模](../articles/azure-functions/durable-functions-perf-and-scale.md)。

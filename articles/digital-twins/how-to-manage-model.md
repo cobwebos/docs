@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012998"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079770"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -170,9 +170,9 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 将模型上载到实例后，整个模型接口就是不可变的。 这意味着不存在模型的传统 "编辑"。
 
-相反，如果要在 Azure 数字孪生中对模型进行更改（如更改 `DisplayName` 或 `Description` ），则执行此操作的方法是上传同一模型的 **较新版本** 。 这将覆盖原始模型。
+相反，如果要在 Azure 数字孪生中对模型进行更改，则执行此操作的方法是上传同一模型的 **较新版本** 。 在预览期间，推进模型版本将只允许您删除字段，而不是添加新的字段 (添加新字段，只需 [创建一个全新的模型](#create-models)) 。
 
-为此，请从原始模型的 DTDL 开始。 更新要更改的所有字段。
+若要创建现有模型的新版本，请从原始模型的 DTDL 开始。 更新要更改的字段。
 
 然后，通过更新模型的字段将其标记为较新版本的模型 `id` 。 模型 ID 的最后一个部分（之后 `;` ）表示模型号。 若要指示这现在是此模型的更新版本，请将值末尾的数字递增 `id` 为大于当前版本号的任何数字。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 256751e452be539084a7dc022dc56c0f60e910e6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044169"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079177"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure 数据工厂的 azure 安全基线
 
@@ -28,7 +28,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
-**指南**：创建 AZURE-SSIS INTEGRATION RUNTIME （IR）时，可以选择将其与虚拟网络结合使用。 这将允许 Azure 数据工厂创建某些网络资源，例如网络安全组（NSG）和负载均衡器。 你还可以提供自己的静态公共 IP 地址，或让 Azure 数据工厂为你创建一个。 在 Azure 数据工厂自动创建的 NSG 上，默认情况下，端口3389对所有流量开放。 锁定此关闭以确保只有管理员才有权访问。
+**指南**： (IR) 创建 Azure-SSIS Integration Runtime 时，可以选择将其与虚拟网络结合使用。 这将允许 Azure 数据工厂创建某些网络资源，例如网络安全组 (NSG) 和负载均衡器。 你还可以提供自己的静态公共 IP 地址，或让 Azure 数据工厂为你创建一个。 在 Azure 数据工厂自动创建的 NSG 上，默认情况下，端口3389对所有流量开放。 锁定此关闭以确保只有管理员才有权访问。
 
 可以在虚拟网络中的本地计算机或 Azure 虚拟机上部署自承载 IRs。 确保虚拟网络子网部署已将 NSG 配置为仅允许管理访问。 默认情况下，Azure-SSIS IR 在每个要保护的 IR 节点上的 windows 防火墙规则中不允许端口3389出站。 可以通过将 NSG 与子网关联并设置严格规则来保护虚拟网络配置的资源。
 
@@ -54,7 +54,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**：使用 Azure 安全中心并修正与 Integration Runtime 部署相关联的虚拟网络和网络安全组的网络保护建议。
 
-此外，为 NSG 保护 Integration Runtime 部署并将日志发送到 Azure 存储帐户以进行流量审核，启用网络安全组（NSG）流日志。
+此外，为 NSG 保护 Integration Runtime 部署并将日志发送到 Azure 存储帐户，以便为流量审核启用网络安全组 (NSG) 流日志。
 
 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
@@ -82,9 +82,9 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**：在与 Integration Runtime 部署相关联的虚拟网络上启用 DDoS 保护标准，以防范分布式拒绝服务攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-* [如何配置 DDoS 保护](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [如何配置 DDoS 防护](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
-* [了解 Azure 安全中心的集成式威胁情报](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [了解 Azure 安全中心集成的威胁情报](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
 
 **Azure 安全中心监视**：是
 
@@ -92,7 +92,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：启用 NSG 的网络安全组（NSG）流日志，保护 Integration Runtime 部署，并将日志发送到 Azure 存储帐户以进行流量审核。
+**指南**：启用网络安全组 (NSG) 流日志来保护 Integration Runtime 部署，并将日志发送到 Azure 存储帐户以进行流量审核。
 
 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
@@ -106,9 +106,9 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **责任**：客户
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：若要检查 Azure-SSIS IR 的出站流量，可以通过 azure ExpressRoute 强制隧道或支持 IDS/IPS 功能的 azure Marketplace 中的网络虚拟设备（NVA）将从 Azure-SSIS IR 发起的流量路由到本地防火墙设备。 如果不需要基于有效负载检查的入侵检测和/或防护，则可以使用包含威胁情报功能的 Azure 防火墙。
+**指南**：若要检查 Azure-SSIS IR 的出站流量，可以通过 azure ExpressRoute 强制隧道或从支持 IDS/IPS 功能的 azure MARKETPLACE (NVA) 将从 Azure-SSIS IR 启动的流量路由到本地防火墙设备。 如果不需要基于有效负载检查的入侵检测和/或防护，则可以使用包含威胁情报功能的 Azure 防火墙。
 
 * [将 Azure-SSIS Integration Runtime 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
 
@@ -132,7 +132,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：使用虚拟网络服务标记定义网络安全组（NSG）或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 DataFactoryManagement），可以允许或拒绝相应服务的入站流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用虚拟网络服务标记来定义网络安全组 (NSG) 或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称 (例如 DataFactoryManagement) ，可以允许或拒绝相应服务的入站流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 * [了解并使用服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
@@ -140,7 +140,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -155,7 +155,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
@@ -169,7 +169,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -199,13 +199,13 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**：通过 Azure Monitor 引入日志来聚合由 Azure 数据工厂生成的安全数据。 在 Azure Monitor 中，可以查询配置为接收 Azure 数据工厂活动日志的 Log Analytics 工作区。 将 Azure 存储帐户用于长期/存档日志存储或事件中心，以便将数据导出到其他系统。
 
-或者，你可以将和机载数据启用到 Azure Sentinel 或第三方安全事件和事件管理（SIEM）。你还可以将 Azure 数据工厂与 Git 集成，以利用多种源代码管理的优点，例如跟踪/审核更改的能力，以及恢复引入 bug 的更改的能力。
+或者，你可以将和机载数据启用到 Azure Sentinel 或第三方安全事件和事件管理 (SIEM) 。你还可以将 Azure 数据工厂与 Git 集成，以利用多种源代码管理的优点，例如跟踪/审核更改的能力，以及恢复引入 bug 的更改的能力。
 
 * [如何配置诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
 
 * [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-* [如何开始将 Azure Monitor 与第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+* [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 * [Azure 数据工厂中的源代码管理](https://docs.microsoft.com/azure/data-factory/source-control)
 
@@ -229,7 +229,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，则可以使用 Azure Monitor 从虚拟机收集数据。 安装 Log Analytics VM 扩展后，Azure Monitor 从 Azure Vm 收集数据。 然后，Azure 安全中心可以为虚拟机提供安全事件日志监视。 给定安全事件日志生成的数据量，默认情况下不存储它。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，则可以使用 Azure Monitor 从虚拟机收集数据。 安装 Log Analytics VM 扩展后，Azure Monitor 从 Azure Vm 收集数据。 然后，Azure 安全中心可以为虚拟机提供安全事件日志监视。 考虑到安全事件日志生成的数据量，默认情况下不会存储它。
 
 如果你的组织想要保留安全事件日志数据，则可以将其存储在数据收集层中，此时可在 Log Analytics 中查询该数据。
 
@@ -251,15 +251,15 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
 **指南**：对 Azure 数据工厂启用诊断设置，并将日志发送到 Log Analytics 工作区。 使用 Log Analytics 分析和监视日志中的异常行为，并定期检查结果。 确保还为任何与 Azure 数据工厂部署相关的数据存储启用诊断设置。 请参阅每个服务的安全基线，获取有关如何启用诊断设置的指导。
 
-如果在 Azure 虚拟机（VM）中运行 Integration Runtime，还应为 VM 启用诊断设置。
+如果要在 Azure 虚拟机中运行 Integration Runtime (VM) ，还应为 VM 启用诊断设置。
 
-或者，可以将数据启用并加入 Azure Sentinel 或第三方 SIEM。
+或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
 * [Log Analytics 架构](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)
 
@@ -275,7 +275,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**：通过转到 Azure Monitor 中的 "警报指标" 部分，可以对数据工厂中支持的指标发出警报 &amp; 。
 
-配置 Azure 数据工厂的诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中，配置发生一组预定义的条件时要触发的警报。 或者，可以将数据启用并加入 Azure Sentinel 或第三方 SIEM。
+配置 Azure 数据工厂的诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中，配置发生一组预定义的条件时要触发的警报。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
 此外，请确保为与您的数据存储相关的服务启用诊断设置。 可以参考每项服务的安全基线以获得指导。
 
@@ -285,13 +285,13 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 * [如何在 Log Analytics 工作区中配置警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
-**指南**：如果你在 Azure 虚拟机中运行你的 Integration Runtime，则可以使用适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件，并配置虚拟机以将事件记录到 Azure 存储帐户。 配置 Log Analytics 工作区以从存储帐户中引入事件，并在适当的位置创建警报。 遵循 Azure 安全中心中的建议： "计算 &amp; 应用"。
+**指南**：如果你在 Azure 虚拟机中运行你的 Integration Runtime，则可以使用适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件，并配置虚拟机以将事件记录到 Azure 存储帐户。 配置 Log Analytics 工作区以从存储帐户中引入事件，并视具体情况创建警报。 请遵循 Azure 安全中心中的建议：“计算和应用”。&amp;
 
 * [如何为云服务和虚拟机配置 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -311,7 +311,7 @@ Azure 安全中心监视：是
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行你的 Integration Runtime，则可以启用命令行审核日志记录。 Azure 安全中心为 Azure Vm 提供安全事件日志监视。 安全中心在所有受支持的 Azure Vm 以及在启用自动预配时创建的任何新的 Azure Vm 以及手动安装代理时，预配 Microsoft Monitoring Agent。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，则可以启用命令行审核日志记录。 Azure 安全中心为 Azure Vm 提供安全事件日志监视。 安全中心在所有受支持的 Azure Vm 以及在启用自动预配时创建的任何新的 Azure Vm 以及手动安装代理时，预配 Microsoft Monitoring Agent。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。
 
 * [Azure 安全中心中的数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
 
@@ -325,15 +325,15 @@ Azure 安全中心监视：是
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：在 Azure 数据工厂中，确保定期跟踪和协调用户访问权限。 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。  
+**指南**：在 Azure 数据工厂中，确保定期跟踪和协调用户访问权限。 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
 
-此外，在租户级别，Azure Active Directory （AD）具有内置角色，必须显式分配这些角色并且可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员且对 Azure 数据工厂实例的控制平面具有管理访问权限的帐户。
+此外，在租户级别，Azure Active Directory (AD) 具有必须显式分配并可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员且对 Azure 数据工厂实例的控制平面具有管理访问权限的帐户。
 
-尽管建议使用 Azure AD 方法来管理用户访问权限，但请记住，如果在 Azure 虚拟机（VM）中运行 Integration Runtime，VM 也可能具有本地帐户。 应查看和管理本地和域帐户，通常只需最小的占用空间。 此外，我们还建议您查看特权标识管理器以了解 "实时" 功能，以降低管理权限的可用性。
+尽管建议使用 Azure AD 方法来管理用户访问权限，但请记住，如果在 Azure 虚拟机 (VM) 中运行 Integration Runtime，则 VM 也可能具有本地帐户。 通常应以最少使用量原则来查看和管理本地帐户及域帐户。 此外，我们还建议您查看特权标识管理器以了解 "实时" 功能，以降低管理权限的可用性。
 
 * [Azure 数据工厂的角色和权限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
-* [特权标识管理器的信息](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [有关 Privileged Identity Manager 的信息](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 * [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -347,28 +347,28 @@ Azure 安全中心监视：是
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**： Azure 数据工厂使用 AZURE ACTIVE DIRECTORY （AD）提供对 Azure 门户以及 Azure 数据工厂控制台的访问。 Azure AD 没有默认密码的概念，但你有责任更改或不允许使用任何自定义或第三方应用程序的默认密码。
+**指南**： Azure 数据工厂使用 AZURE ACTIVE DIRECTORY (AD) 提供对 Azure 门户以及 Azure 数据工厂控制台的访问。 Azure AD 没有默认密码的概念，但你有责任更改或不允许使用任何自定义或第三方应用程序的默认密码。
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：创建围绕使用专用管理帐户来访问 azure 控制平面（Azure 门户）以及 Azure 数据工厂控制台的标准操作过程。 使用 Azure 安全中心的标识和访问管理来监视 Azure AD 中的管理帐户数。
+**指南**：创建有关使用专用管理帐户来访问 Azure 控制平面的标准操作过程 (Azure 门户) 以及 Azure 数据工厂控制台。 使用 Azure 安全中心的标识和访问管理来监视 Azure AD 中的管理帐户数。
 
-此外，为帮助跟踪专用管理帐户，可以使用 Azure 安全中心或内置 Azure Policy 中的建议，例如：
+此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心或内置的 Azure 策略提供的建议，例如：
 - 应该为你的订阅分配了多个所有者
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 - 应从订阅中删除拥有所有者权限的外部帐户
 
-如果在 Azure 虚拟机上运行 Integration Runtime，还可以使用 Azure 特权标识管理器（PIM）配置 Azure 虚拟机上的管理员帐户。 Azure 特权标识管理器提供多个选项，例如，实时提升、多重身份验证和委托选项，使权限仅适用于特定的时间框架，并需要另一个人员进行批准。
+如果在 Azure 虚拟机上运行 Integration Runtime，还可以使用 Azure 特权标识管理器 (PIM) 配置 Azure 虚拟机上的管理员帐户。 Azure 特权标识管理器提供多个选项，例如，实时提升、多重身份验证和委托选项，使权限仅适用于特定的时间框架，并需要另一个人员进行批准。
 
-* [了解 Azure 安全中心的标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [了解 Azure 安全中心标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 * [如何使用 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-* [特权标识管理器的信息](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [有关 Privileged Identity Manager 的信息](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 * [Azure 数据工厂的角色和权限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -378,7 +378,7 @@ Azure 安全中心监视：是
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
-**指南**：使用 Azure 应用注册（服务主体）检索应用程序或函数可用于访问恢复服务保管库并与之进行交互的令牌。
+**指南**：使用 Azure 应用注册 (服务主体) 检索应用程序或函数可用来访问和与恢复服务保管库进行交互的令牌。
 
 * [如何调用 Azure REST API](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
@@ -390,7 +390,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -398,7 +398,7 @@ Azure 安全中心监视：是
 
 * [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-* [如何在 Azure 安全中心内监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 **Azure 安全中心监视**：是
 
@@ -406,7 +406,7 @@ Azure 安全中心监视：是
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：将特权访问工作站 (PAW) 与为登录和配置 Azure 资源而配置的多重身份验证 (MFA) 结合使用。
+**指南**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并配置 Azure 资源。
 
 * [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -414,13 +414,13 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：对来自管理帐户的可疑活动进行日志和警报
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：在环境中发生可疑活动或不安全活动时，使用 Azure Active Directory 安全报告生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
+**指导**：使用 Azure Active Directory 安全报告在环境中发生可疑活动或不安全的活动时生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
-如果你在 Azure 虚拟机（VM）上运行你的 Integration Runtime，则还可以将 VM 加入 Azure Sentinel。 Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。
+如果要在 Azure 虚拟机上运行 Integration Runtime (VM) ，还可以将 VM 加入 Azure Sentinel。 Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。
 
 * [如何确定标记为存在风险活动的 Azure AD 用户](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -440,13 +440,13 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
 **指南**：可以将数据工厂与代表特定数据工厂的 Azure 资源的托管标识相关联。 可将此托管标识用于 Azure SQL 数据库身份验证。 指定的工厂可以使用此标识访问数据库数据或从/向数据库复制数据。
 
-如果在 Azure 虚拟机上运行 Integration Runtime （IR），则可以使用托管标识向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，而无需在代码中使用任何凭据。 在虚拟机上运行的代码可以使用托管标识请求支持 Azure AD 身份验证的服务的访问令牌。
+如果在 Azure 虚拟机上运行 Integration Runtime (IR) ，则可以使用托管标识向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，而无需在代码中使用任何凭据。 在虚拟机上运行的代码可以使用托管标识请求支持 Azure AD 身份验证的服务的访问令牌。
 
 * [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -476,11 +476,11 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视器尝试访问停用的凭据
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指南**：你有权访问 AZURE ACTIVE DIRECTORY （AD）登录活动、审核和风险事件日志源，它们允许你与任何 SIEM/监视工具集成。 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 可以在 Log Analytics 中配置所需的日志警报。
+**指导**：你有权访问 Azure Active Directory (AD) 登录活动、审核和风险事件日志源，以便与任何 SIEM/监视工具集成。 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 可以在 Log Analytics 中配置所需的日志警报。
 
-如果要在 Azure 虚拟机（VM）中运行 Integration Runtime，请将 VM 加入 Azure Sentinel。 Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。
+如果要在 Azure 虚拟机中运行 Integration Runtime (VM) ，并将 VM 加入 Azure Sentinel。 Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -494,7 +494,7 @@ Azure 安全中心监视：是
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）作为 Azure 数据工厂资源（如 Azure SQL 数据库或 Azure 虚拟机）的中央身份验证和授权系统。 对于控制平面（Azure 门户）中帐户登录行为的偏差，可使用 Azure AD 标识保护和风险检测功能进行配置，使其在检测到与用户标识相关的可疑操作时自动进行响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure 数据工厂资源（如 Azure SQL 数据库或 Azure 虚拟机）的中央身份验证和授权系统。 对于控制平面（Azure 门户）中帐户登录行为的偏差，可使用 Azure AD 标识保护和风险检测功能进行配置，使其在检测到与用户标识相关的可疑操作时自动进行响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
 * [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -518,7 +518,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="data-protection"></a>数据保护
 
@@ -540,7 +540,7 @@ Azure 安全中心监视：是
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 集成运行时应由虚拟网络（VNet）/子网分隔并正确标记。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 集成运行时应由虚拟网络 (VNet) /子网，并相应地进行标记。
 
  你还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。
 
@@ -554,13 +554,13 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
-**指南**：对于数据源（例如 Azure SQL 数据库），存储或处理 Azure 数据工厂部署的敏感信息，使用标记将相关资源标记为敏感资源。
+**指南**：对于数据源 (如 Azure SQL 数据库) 存储或处理 Azure 数据工厂部署的敏感信息时，请使用标记将相关资源标记为敏感资源。
 
-在 "专用" 链接可用时，请使用专用终结点来保护链接到 Azure 数据工厂管道的任何资源。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 还可以通过在网络安全组（NSG）上配置一组严格的出站规则并将该 NSG 与子网相关联，来降低数据渗透的风险。
+在 "专用" 链接可用时，请使用专用终结点来保护链接到 Azure 数据工厂管道的任何资源。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 还可以通过在网络安全组中配置一组严格的出站规则 (NSG) 并将该 NSG 与子网相关联，从而降低数据渗透的风险。
 
 * [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -584,7 +584,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：是
 
-责任：共享
+**责任**：共享
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
@@ -598,15 +598,15 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）基于角色的访问控制（RBAC）来控制对 Azure 数据工厂控制平面（Azure 门户）的访问。
+**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure 数据工厂控制平面的访问 (Azure 门户) 。
 
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。  
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
 
-有关数据工厂数据源（如 Azure SQL 数据库），请参阅该服务的安全基线，以了解有关 RBAC 的详细信息。
+有关数据工厂数据源（如 Azure SQL 数据库），请参阅该服务的安全基线，了解有关 Azure RBAC 的详细信息。
 
-* [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Azure 数据工厂的角色和权限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -618,7 +618,7 @@ Azure 安全中心监视：是
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 存储或计算资源。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -630,7 +630,7 @@ Azure 安全中心监视：是
 
 **指南**：建议为任何与 Azure 数据工厂部署相关的数据存储启用数据加密机制。 有关静态数据的加密的详细信息，请参阅该服务的安全基线。
 
-如果在 Azure 虚拟机中运行 Integration Runtime，则 Windows 虚拟机（VM）上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密（ADE）加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
+如果在 Azure 虚拟机中运行 Integration Runtime，则 Windows 虚拟机 (VM) 上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密 (ADE) 进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
 可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中将其用于传递到活动。 你还可以存储数据存储的凭据，并在 Azure Key Vault 中进行计算。 执行使用数据存储/计算的活动时，Azure 数据工厂将检索凭据。
 
@@ -670,7 +670,7 @@ Azure 安全中心监视：是
 
 **指南**：如果使用 Azure sql 数据库作为数据存储，请为 Azure sql 数据库启用高级数据安全，并按照 Azure 安全中心提供的建议，在 Azure sql server 上执行漏洞评估。
 
-如果要在 Azure 虚拟机（VM）中运行 Integration Runtime，请按照 Azure 安全中心的建议执行 Vm 上的漏洞评估。 使用 Azure 安全建议的或第三方解决方案来执行虚拟机的漏洞评估。
+如果要在 Azure 虚拟机中运行 Integration Runtime (VM) ，请按照 Azure 安全中心的建议执行 Vm 上的漏洞评估。 使用建议的 Azure 安全或第三方解决方案对虚拟机执行漏洞评估。
 
 * [如何对 Azure SQL 数据库运行漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
@@ -684,9 +684,9 @@ Azure 安全中心监视：是
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，请使用 azure 更新管理解决方案管理 vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请使用 azure 更新管理解决方案来管理 vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [Azure 中的更新管理解决方案](https://docs.microsoft.com/azure/automation/automation-update-management)
 
@@ -700,7 +700,7 @@ Azure 安全中心监视：是
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动修补程序管理解决方案
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行你的 Integration Runtime，则可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+**指南**：如果在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，则可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
 * [Azure 中的更新管理解决方案](https://docs.microsoft.com/azure/automation/automation-update-management)
 
@@ -750,7 +750,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -760,13 +760,13 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
+**指南**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-此外，使用 Azure 策略将对可以使用以下内置策略定义在客户订阅中创建的资源类型进行限制：
+此外，在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -786,7 +786,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -800,13 +800,13 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，请利用 Azure 虚拟机清单自动收集有关虚拟机上所有软件的信息。 可以通过 Azure 自动化在工作负荷和资源的部署、操作和解除授权过程中进行完全的控制。
+**指南**：如果要在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，利用 Azure 虚拟机清单自动收集有关虚拟机上所有软件的信息。 可以通过 Azure 自动化在工作负荷和资源的部署、操作和解除授权过程中进行完全的控制。
 
-注意：可从 Azure 门户获取软件名称、版本、发布者和刷新时间。 若要获取安装日期和其他信息的访问权限，客户需要启用来宾级别诊断，并将 Windows 事件日志引入 Log Analytics 工作区。
+注意：可从 Azure 门户获得软件名称、版本、发布者和刷新时间。 若要获得安装日期和其他信息的访问权限，客户需要启用来宾级诊断并将 Windows 事件日志置于 Log Analytics 工作区中。
 
 * [Azure 自动化简介](https://docs.microsoft.com/azure/automation/automation-intro)
 
@@ -814,11 +814,11 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指南**：如果你在 Azure 虚拟机中运行你的 Integration Runtime，azure 自动化会在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 你可以使用更改跟踪来确定在虚拟机上安装的所有软件。 你可以实现自己的进程，或使用 Azure 自动化状态配置来删除未经授权的软件。
+**指南**：如果你在 Azure 虚拟机中运行你的 Integration Runtime，azure 自动化会在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 可以使用更改跟踪来识别虚拟机上安装的所有软件。 可以实现自己的过程，也可以使用 Azure Automation State Configuration 来删除未经授权的软件。
 
 * [Azure 自动化简介](https://docs.microsoft.com/azure/automation/automation-intro)
 
@@ -828,11 +828,11 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，请使用 Azure 安全中心自适应应用程序控制，以确保仅执行经过授权的软件，并且阻止所有未经授权的软件在 vm 上执行。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请使用 Azure 安全中心自适应应用程序控制，以确保仅执行经过授权的软件，并阻止所有未经授权的软件在 vm 上执行。
 
 * [如何使用 Azure 安全中心自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
@@ -852,11 +852,11 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
-### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护批准的软件标题的清单
+### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指南**：自适应应用程序控制是 Azure 安全中心的一个智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可在 azure 和非 Azure 计算机（Windows 和 Linux）上运行。 如果这不能满足组织的要求，请实现第三方解决方案。
+**指南**：自适应应用程序控制是 Azure 安全中心的一个智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 azure 和非 azure 计算机上 (Windows 和 Linux) 上运行。 如果这不能满足组织的要求，请实现第三方解决方案。
 
 请注意，这仅适用于在 Azure 虚拟机中运行 Integration Runtime。
 
@@ -866,7 +866,7 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器的交互能力
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
 **指南**：配置 Azure 条件访问，使其通过为“Microsoft Azure 管理”应用配置“阻止访问”，来限制用户与 Azure 资源管理器进行交互的能力。
 
@@ -874,7 +874,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
@@ -890,7 +890,7 @@ Azure 安全中心监视：是
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：可以使用虚拟网络、子网、订阅、管理组等隔离部署在 azure 环境中的高风险应用程序，并使用 Azure 防火墙、Web 应用程序防火墙（WAF）或网络安全组（NSG）对其进行充分的保护。
+**指导**：可以使用虚拟网络、子网、订阅、管理组等隔离 Azure 环境中部署的高风险应用程序，并使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 对其进行充分保护。
 
 * [Azure 中的虚拟网络和虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
 
@@ -908,7 +908,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="secure-configuration"></a>安全配置
 
@@ -924,7 +924,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
@@ -940,7 +940,7 @@ Azure 安全中心监视：是
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指导**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
+**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -950,15 +950,15 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，请注意，有几个选项可用于维护用于部署的 vm 的安全配置：
-- Azure 资源管理器模板：这些是用于从 Azure 门户部署 VM 的基于 JSON 的文件，需要维护自定义模板。 Microsoft 对基本模板执行维护。
-- 自定义虚拟硬盘（VHD）：在某些情况下，可能需要使用自定义 VHD 文件，如处理无法通过其他方式管理的复杂环境时。 -Azure 自动化状态配置：部署基本操作系统后，可使用此功能对设置进行更细致的控制，并通过自动化框架进行强制。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请注意，有几个选项可用于维护用于部署的 vm 的安全配置：
+- Azure 资源管理器模板：这些是基于 JSON 的文件，用于从 Azure 门户部署 VM，并且需要维护自定义模板。 Microsoft 对基本模板进行维护。
+- 自定义虚拟硬盘 (VHD)：在某些情况下，可能需要使用自定义 VHD 文件，例如在处理无法通过其他方式管理的复杂环境时。 -Azure 自动化状态配置：部署基本操作系统后，可使用此功能对设置进行更细致的控制，并通过自动化框架进行强制。
 
-在大多数情况下，与 Azure 自动化所需状态配置结合的 Microsoft 基本 VM 模板可以帮助满足和维护安全要求。
+对于大部分方案，Microsoft 基本 VM 模板与 Azure Automation Desired State Configuration 相结合可以帮助满足和维护安全要求。
 
 * [有关如何下载 VM 模板的信息](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
 
@@ -980,19 +980,19 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：如果使用自定义映像，请使用基于角色的访问控制（RBAC），以确保只有经过授权的用户才能访问该映像。 对于容器映像，请将其存储在 Azure 容器注册表中，并利用 RBAC 确保只有授权用户才能访问这些映像。
+**指南**：如果使用自定义映像，请使用 azure RBAC)  (azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有经过授权的用户才能访问这些映像。
 
 "数据工厂参与者" 角色可用于创建和管理数据工厂，以及其中的子资源。
 
-* [了解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [了解容器注册表的 RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [了解容器注册表的 Azure RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Azure 数据工厂的角色和权限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -1000,7 +1000,7 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署适用于 Azure 资源的配置管理工具
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
 **指南**：使用内置 azure 策略定义以及 "DataFactory" 命名空间中的 azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 另外，开发一个用于管理策略例外的流程和管道。
 
@@ -1008,7 +1008,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署操作系统的配置管理工具
 
@@ -1020,7 +1020,7 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：对 Azure 资源实现自动配置监视
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
 **指南**：使用内置 azure 策略定义以及 "DataFactory" 命名空间中的 azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 使用 Azure Policy“[审核]”、“[拒绝]”和“[不存在则部署]”自动强制实施 Azure 资源的配置。
 
@@ -1068,7 +1068,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -1112,7 +1112,7 @@ Azure 安全中心监视：是
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指南**：部署后，默认情况下，适用于 Azure 的 Microsoft 反恶意软件将自动安装最新的签名、平台和引擎更新。 请遵循 Azure 安全中心中的建议：“计算和应用”用于确保所有终结点都具有最新的签名。 Windows OS 可以通过附加的安全性进行进一步保护，以通过与 Azure 安全中心集成的 Microsoft Defender 高级威胁防护服务来限制受病毒或恶意软件攻击的风险。
+**指南**：部署后，默认情况下，适用于 Azure 的 Microsoft 反恶意软件将自动安装最新的签名、平台和引擎更新。 请遵循 Azure 安全中心中的建议：“计算和应用”用于确保所有终结点都具有最新的签名。 通过与 Azure 安全中心集成的 Microsoft Defender 高级威胁防护服务，可以使用附加的安全性进一步保护 Windows OS，以降低基于病毒或恶意软件进行攻击的风险。
 
 * [如何为 Azure 云服务和虚拟机部署 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -1128,7 +1128,7 @@ Azure 安全中心监视：是
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，请启用 azure 备份并配置 VM，并为自动备份提供所需的频率和保留期。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请启用 azure 备份并配置 VM，并为自动备份提供所需的频率和保留期。
 
 对于任何数据存储，请参阅该服务的安全基准，以获取有关如何执行定期、自动备份的建议。
 
@@ -1140,9 +1140,9 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份任何客户托管的密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，请启用 azure 备份和目标 azure vm，以及所需的频率和保留期。 在 Azure Key Vault 中备份客户托管的密钥。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请启用 azure 备份和目标 azure vm，以及所需的频率和保留期。 在 Azure Key Vault 中备份客户托管的密钥。
 
 对于任何数据存储，请参阅该服务的安全基准，以获取有关如何执行定期、自动备份的建议。
 
@@ -1154,7 +1154,7 @@ Azure 安全中心监视：是
 
 **责任**：客户
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证包括客户托管密钥在内的所有备份
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
 **指南**：如果你在 Azure 虚拟机中运行 Integration Runtime，请确保在 azure 备份中定期执行内容数据还原。 如有必要，请测试将内容还原到隔离的 VLAN 中。 定期测试还原已备份的客户管理的密钥。
 
@@ -1170,7 +1170,7 @@ Azure 安全中心监视：是
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：如果你在 Azure 虚拟机（VM）中运行 Integration Runtime，并将该 Vm 与 Azure 备份一起返回，则会使用存储服务加密（SSE）将 vm 静态加密。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
+**指南**：如果你在 Azure 虚拟机上运行 INTEGRATION RUNTIME (VM) ，并使用 Azure 备份将该 vm 恢复到 azure 备份，则会使用存储服务加密 (SSE) 对 vm 进行静态加密。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
 
 * [VM 的软删除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
 
@@ -1194,7 +1194,7 @@ Azure 安全中心监视：是
 
 * [Microsoft 安全响应中心事件分析](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-* [客户还可以利用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+* [客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Azure 安全中心监视**：不适用
 
@@ -1202,7 +1202,7 @@ Azure 安全中心监视：是
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
@@ -1212,7 +1212,7 @@ Azure 安全中心监视：是
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
 
 * [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
@@ -1222,7 +1222,7 @@ Azure 安全中心监视：是
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
 
 * [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
@@ -1240,7 +1240,7 @@ Azure 安全中心监视：是
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -1254,13 +1254,13 @@ Azure 安全中心监视：是
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队练习](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**： 
+**指导**： 
 
-* [遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 * [可在此处详细了解如何针对 Microsoft 托管云基础结构、服务和应用程序执行红队测试和实时站点渗透测试，以及 Microsoft 的相关策略](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

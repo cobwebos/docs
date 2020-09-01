@@ -8,24 +8,25 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 579af2d5cbe0f3dcdbdf749894d5c400112f37cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 98341fbbbcafb6aee938870c22050c6edec352ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710790"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079041"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>使用 PowerShell 通过直接对等互连启用 Azure 对等互连服务
 
-本文介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型在直接对等互连上启用 Azure 对[等服务](overview-peering-service.md)。
+本文介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型在直接对等互连上启用 Azure 对 [等服务](overview-peering-service.md) 。
 
-如果愿意，可以使用 Azure[门户](howto-peering-service-portal.md)完成本指南。
+如果愿意，可以使用 Azure [门户](howto-peering-service-portal.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
-* 在开始配置之前，请查看[先决条件](prerequisites.md)。
+* 在开始配置之前，请查看 [先决条件](prerequisites.md) 。
 * 在订阅中选择要为其启用对等互连服务的直接对等互连。 如果没有，请转换旧直接对等互连，或创建新的直接对等互连：
-    * 若要转换旧版直接对等互连，请按照[使用 PowerShell 将旧直接对等互连转换为 Azure 资源](howto-legacy-direct-powershell.md)中的说明进行操作。
-    * 若要创建新的直接对等互连，请按照[使用 PowerShell 创建或修改直接对等](howto-direct-powershell.md)互连中的说明进行操作。
+    * 若要转换旧版直接对等互连，请按照 [使用 PowerShell 将旧直接对等互连转换为 Azure 资源](howto-legacy-direct-powershell.md)中的说明进行操作。
+    * 若要创建新的直接对等互连，请按照 [使用 PowerShell 创建或修改直接对等](howto-direct-powershell.md)互连中的说明进行操作。
 
 ### <a name="work-with-azure-powershell"></a>使用 Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
@@ -42,7 +43,7 @@ ms.locfileid: "84710790"
 
 ## <a name="modify-a-direct-peering-connection"></a>修改直接对等连接
 
-如果需要修改连接设置，请参阅[使用 PowerShell 创建或修改直接对等互连](howto-direct-powershell.md)中的 "修改直接对等互连" 一节。
+如果需要修改连接设置，请参阅 [使用 PowerShell 创建或修改直接对等互连](howto-direct-powershell.md)中的 "修改直接对等互连" 一节。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -56,4 +57,4 @@ ms.locfileid: "84710790"
 Get-Help Get-AzPeering -detailed
 ```
 
-有关常见问题，请参阅对[等互连服务常见问题解答](service-faqs.md)。
+有关常见问题，请参阅对 [等互连服务常见问题解答](service-faqs.md)。

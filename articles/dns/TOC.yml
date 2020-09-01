@@ -33,6 +33,8 @@
           href: dns-delegate-domain-azure-dns.md
         - name: 为 Web 应用创建自定义 DNS 记录
           href: dns-web-sites-custom-domain.md
+        - name: 创建新的子 DNS 区域
+          href: tutorial-public-dns-zones-child.md
         - name: 流量管理器的别名记录
           href: tutorial-alias-tm.md
         - name: 公共 IP 地址的别名记录

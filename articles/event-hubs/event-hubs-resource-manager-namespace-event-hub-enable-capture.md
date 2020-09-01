@@ -3,13 +3,13 @@ title: 创建启用了捕获的事件中心 - Azure 事件中心 | Microsoft Doc
 description: 使用 Azure 资源管理器模板创建包含一个事件中心的 Azure 事件中心命名空间并启用捕获
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d8c8913cfe674c04f90fe02b88fc9739b2404aa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 1ba98bb47d53e3f95a1f212c5dc9459f983a30c2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499460"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079755"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -23,7 +23,7 @@ ms.locfileid: "87499460"
 
 如需完整的模板，请单击以下 GitHub 链接：
 
-- [事件中心和允许捕获到存储的模板][Event Hub and enable Capture to Storage template] 
+- [事件中心和启用“捕获到存储”模板][Event Hub and enable Capture to Storage template] 
 - [事件中心和允许捕获到 Azure Data Lake Store 的模板][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
@@ -41,7 +41,7 @@ ms.locfileid: "87499460"
 
 [![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
@@ -225,7 +225,7 @@ ms.locfileid: "87499460"
 }
 ```
 
-如果选择 Azure Data Lake Store 第1代作为目标，请使用以下参数。 必须在要捕获事件的 Data Lake Store 路径上设置权限。 若要设置权限，请参阅将[数据捕获到 Azure Data Lake Storage 第1代](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
+如果选择 Azure Data Lake Store 第1代作为目标，请使用以下参数。 必须在要捕获事件的 Data Lake Store 路径上设置权限。 若要设置权限，请参阅将 [数据捕获到 Azure Data Lake Storage 第1代](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -268,7 +268,7 @@ ms.locfileid: "87499460"
 
 ## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>要针对 Azure 存储（作为已捕获事件的目标）进行部署的资源
 
-创建包含一个事件中心的 **** EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
+创建包含一个事件中心的  EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
 
 ```json
 "resources":[  

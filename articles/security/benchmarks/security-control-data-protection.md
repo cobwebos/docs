@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045529"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078990"
 ---
 # <a name="security-control-data-protection"></a>安全控制：数据保护
 
@@ -34,7 +34,7 @@ ms.locfileid: "86045529"
 |--|--|--|
 | 4.2 | 13.2、2.10 | 客户 |
 
-使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure 基于角色的访问控制（Azure RBAC）来控制对 Azure 资源的访问权限。 
+使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure 资源的访问。 
 
 - [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -76,7 +76,7 @@ ms.locfileid: "86045529"
 
 使用 Azure 信息保护标识 Office 365 文档中的敏感信息。
 
-使用 Azure SQL 信息保护来帮助对 Azure SQL 数据库中存储的信息进行分类和标记。
+使用 Azure SQL 信息保护有助于对 Azure SQL 数据库中存储的信息进行分类和标记。
 
 - [如何实现 Azure SQL 数据发现](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 
@@ -84,15 +84,15 @@ ms.locfileid: "86045529"
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
 | 4.6 | 14.6 | 客户 |
 
-使用 Azure AD RBAC 控制对数据和资源的访问，否则请使用特定于服务的访问控制方法。
+使用 azure RBAC)  (基于角色的访问控制来控制对数据和资源的访问，否则使用服务特定的访问控制方法。
 
-- [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
@@ -102,7 +102,7 @@ ms.locfileid: "86045529"
 
 如果需要在计算资源上确保合规性，则实施第三方工具（如基于主机的自动数据丢失防护解决方案），以便对数据强制实施访问控制，即使数据从系统复制也是如此。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 

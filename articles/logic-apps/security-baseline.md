@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7dc0913ab206c6b9152d7d6155642c28b430d6f2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836320"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079636"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>逻辑应用的 Azure 安全基线
 
@@ -40,7 +40,7 @@ ms.locfileid: "87836320"
 
 * [了解 Azure 中的服务标记](../virtual-network/service-tags-overview.md)
 
-* [使用 integration service 环境 (ISEs) 了解 Azure 逻辑应用对 Azure 虚拟网络资源的访问权限](./connect-virtual-network-vnet-isolated-environment-overview.md)
+* [使用 integration service 环境 (ISEs) 了解 Azure 逻辑应用对 Azure 虚拟网络资源的访问权限 ](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
 * [了解虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
 
@@ -62,7 +62,7 @@ ms.locfileid: "87836320"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
-**指南**：如果在 integration service 环境中运行逻辑应用 (ISE) 使用外部访问点，则可以使用网络安全组 (NSG) 来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：如果在 integration service 环境中运行逻辑应用 (ISE) 使用外部访问点，则可以使用网络安全组 (NSG) 来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 * [了解 ISE 终结点访问](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
@@ -114,7 +114,7 @@ ms.locfileid: "87836320"
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：如果在 integration service 环境中运行逻辑应用 (ISE) 使用外部访问点，则可以使用网络安全组 (NSG) 来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：如果在 integration service 环境中运行逻辑应用 (ISE) 使用外部访问点，则可以使用网络安全组 (NSG) 来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 若要提供更多有关网络流量的保护和信息，可以参考仅在每个应用程序网关实例上启用了访问日志时才生成的日志。 可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。
 
@@ -182,7 +182,7 @@ ms.locfileid: "87836320"
 
 应启用 DDoS 防护标准版
 
-还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、基于角色的访问控制 (RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+你还可以使用 Azure 蓝图通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -557,7 +557,7 @@ Azure 逻辑应用支持系统分配的和用户分配的托管标识。 逻辑�
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
 * [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -573,7 +573,7 @@ Azure 逻辑应用支持系统分配的和用户分配的托管标识。 逻辑�
 
 创建 ISE 时，可以选择使用内部或外部访问终结点。 你的选择将确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。
 
-此外，为各个安全域（如环境类型和数据敏感度级别）使用单独的订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure 资源的访问权限。
+此外，为各个安全域（如环境类型和数据敏感度级别）使用单独的订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure 资源的访问。
 
 * [了解逻辑应用的连接器](../connectors/apis-list.md)
 
@@ -641,7 +641,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 **指导**：可以仅允许特定的用户或组运行特定的任务，例如管理、编辑和查看逻辑应用。 要控制其权限，请使用 azure RBAC)  (Azure 基于角色的访问控制，以便可以将自定义或内置角色分配给 Azure 订阅中的成员：
 - 逻辑应用参与者：允许管理逻辑应用，但不允许更改其访问权限。
@@ -799,7 +799,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -877,7 +877,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **指导**：业务运营所需的与逻辑应用相关的资源可能会给组织带来较高的风险，应将其隔离在其自己的虚拟机和/或虚拟网络中，并通过 Azure 防火墙或网络安全组进行充分的保护。
 
-业务运营所需的逻辑应用可能会给组织带来较高的风险，应尽可能通过具有特定权限和 RBAC 边界的单独资源组将其隔离。
+对于业务操作所需的逻辑应用，但可能会因为具有特定权限的独立资源组和 Azure RBAC 边界，在可能的情况下隔离组织的风险。
 
 * [如何创建虚拟网络](../virtual-network/quick-create-portal.md)
 
@@ -885,7 +885,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 * [如何创建管理组](../governance/management-groups/create.md)
 
-* [如何通过 RBAC 保护对逻辑应用的访问](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [如何通过 Azure RBAC 保护对逻辑应用的访问](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure 安全中心监视**：空值
 
@@ -1217,7 +1217,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
@@ -1275,7 +1275,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
+**指导**：请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 * [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

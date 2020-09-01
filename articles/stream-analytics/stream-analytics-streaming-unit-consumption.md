@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 08/28/2020
+ms.openlocfilehash: e568051bfd5ac58f283eac7f9dc8a72be5c9dbbb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903555"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079670"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -20,14 +20,14 @@ ms.locfileid: "87903555"
 
 为了实现低延迟流式处理，Azure 流分析作业将执行内存中的所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
-SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗量。 对于占用最小内存的流式处理作业，此指标通常介于 10% 到 20%。 如果 SU 利用率较低并且输入事件积压，则可能表示工作负荷需更多的计算资源，这就需要增加 SU 的数目。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 Microsoft 建议针对 SU 利用率指标达到 80% 设置警报，以防止资源耗尽。 有关详细信息，请参阅[教程：为 Azure 流分析作业设置警报](stream-analytics-set-up-alerts.md)。
+SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗量。 对于占用最小内存的流式处理作业，此指标通常介于 10% 到 20%。 如果 SU% 使用率高 (超过 80% ) ，或者输入事件获得囤积的 (即使使用的是低 SU%，因为它不显示 CPU 使用量) ，你的工作负荷可能需要更多的计算资源，这需要增加 SUs 的数量。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 Microsoft 建议针对 SU 利用率指标达到 80% 设置警报，以防止资源耗尽。 有关详细信息，请参阅[教程：为 Azure 流分析作业设置警报](stream-analytics-set-up-alerts.md)。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>配置流分析流式处理单元 (SU)
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
 2. 在资源列表中，找到要缩放的流分析作业，然后将其打开。 
 
-3. 在作业页中的“配置”标题下，选择“缩放”。  创建作业时，默认值为3。
+3. 在作业页中的“配置”标题下，选择“缩放”。   创建作业时，SU 的默认数量为 3。
 
     ![Azure 门户流分析作业配置][img.stream.analytics.preview.portal.settings.scale]
     
@@ -58,9 +58,9 @@ SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗�
 
 请注意，具有复杂查询逻辑的作业即使在不连续接收输入事件时也可能具有较高的 SU% 利用率。 这可能发生在输入和输出事件突然激增之后。 如果查询很复杂，作业可能会继续在内存中维护状态。
 
-在回到预期水平之前，SU% 利用率可能会在短时间内突然降至 0。 发生这种情况是由于暂时性错误或系统启动升级。 如果查询未[完全并行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)，增加作业的流式处理单位数可能无法降低 SU% 的利用率。
+在回到预期水平之前，SU% 利用率可能会在短时间内突然降至 0。 发生这种情况是由于暂时性错误或系统启动升级。 如果查询未[完全并行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)，增加作业的流单元数量可能不会降低 SU% 利用率。
 
-在比较一段时间内的使用情况时，请使用[事件速率指标](stream-analytics-monitoring.md)。 大于和等于指标显示读取和处理的事件数。 有指示错误事件数的指标，例如反序列化错误。 当每个时间单位的事件数增加时，在大多数情况下，SU% 会增加。
+比较一段时间内的利用率时，请使用[事件速率指标](stream-analytics-monitoring.md)。 InputEvents 和 OutputEvents 指标显示读取和处理的事件数量。 还有一些指标可以指示错误事件的数量，如反序列化错误。 当每个时间单位的事件数增加时，大多数情况下 SU% 会增加。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>时态元素中的有状态查询逻辑
 Azure 流分析作业的独有功能之一是执行有状态的处理，如开窗聚合、临时联接和临时分析函数。 其中的每个运算符都会保存状态信息。 这些查询元素的最大窗口大小为 7 天。 
@@ -111,7 +111,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
 在本示例中，有可能显示了很多广告，但很少有人点击它们，并且需要保留该时间范围内的所有事件。 内存消耗量与时间范围大小和事件发生速率成比例。 
 
-若要修正此问题，请将事件发送到按此事例)  (ID 分区的事件中心，并通过允许系统使用**PARTITION by**分别处理每个输入分区来横向扩展查询，如下所示：
+若要修正此问题，请将事件发送到按联接键（在本示例中为 ID）分区的事件中心，并通过允许系统使用 PARTITION BY 单独处理每个输入分区来横向扩展查询，如下所示：
 
    ```sql
    SELECT clicks.id

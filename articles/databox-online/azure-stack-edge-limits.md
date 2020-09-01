@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8bbcf3f61121813b91cb951809992d10977a640c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922704"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079806"
 ---
 # <a name="azure-stack-edge-limits"></a>Azure Stack Edge 限制
 
@@ -29,9 +29,9 @@ ms.locfileid: "87922704"
 
 | 说明 | 值 |
 |---|---|
-|否。 设备的文件数 |1 亿 |
-|否。 设备的共享数 |24 |
-|否。 每个容器的共享数 |1 |
+|不是。 设备的文件数 |1 亿 |
+|不是。 设备的共享数 |24 |
+|不是。 每个容器的共享数 |1 |
 |写入到共享的最大文件大小| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
