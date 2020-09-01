@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723956"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177238"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -82,7 +82,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 为了确保所有用户都能获得一致的体验，无论他们使用哪种扫描仪类型，都可以将四个建议合并为以下两个：
 
-|统一建议|更改描述|
+|统一建议|更改说明|
 |----|:----|
 |**应在虚拟机上启用漏洞评估解决方案**|替换以下两个建议：<br> **•** 在虚拟机上启用内置漏洞评估解决方案 (由 "标准" 层附带的 "Qualys (支持的)  (") <br> **•** 漏洞评估解决方案应安装在虚拟机上 (现已弃用)  (标准和免费层) |
 |**应修正虚拟机中的漏洞**|替换以下两个建议：<br>**•** 更正虚拟机上发现的 (由 Qualys) 支持的漏洞， (现已弃用) <br>**•** 漏洞评估解决方案应修正的漏洞 (现已弃用) |
@@ -98,7 +98,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 ##### <a name="before-august-2020"></a>2020年8月之前
 
-|建议|范围|
+|建议|作用域|
 |----|:----|
 |**启用 (通过 Qualys) 支持的虚拟机上的内置漏洞评估解决方案 **<br>密钥：550e890b-e652-4d22-8274-60b3bdb24c63|内置|
 |修正虚拟机上发现的漏洞（由 Qualys 提供支持）<br>密钥：1195afff-c881-495e-9bc5-1486211ae03f|内置|
@@ -107,7 +107,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 ||||
 
 
-|策略|范围|
+|策略|作用域|
 |----|:----|
 |**应对虚拟机启用漏洞评估**<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9|内置|
 |**漏洞评估解决方案应修正的漏洞**<br>策略 ID：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -116,13 +116,13 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 ##### <a name="from-august-2020"></a>自8月2020
 
-|建议|范围|
+|建议|作用域|
 |----|:----|
 |**应在虚拟机上启用漏洞评估解决方案**<br>密钥： ffff0522-1e88-47fc-8382-2a80ba848f5d|内置 + BYOL|
 |**应修正虚拟机中的漏洞**<br>密钥：1195afff-c881-495e-9bc5-1486211ae03f|内置 + BYOL|
 ||||
 
-|策略|范围|
+|策略|作用域|
 |----|:----|
 |[**应在虚拟机上启用漏洞评估**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
 ||||
@@ -159,11 +159,11 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 从此更新中，已删除该检查，你现在可以将漏洞评估工具部署到 "自定义" Windows 和 Linux 计算机。 自定义映像是你从 marketplace 默认值修改的映像。
 
-尽管你现在可以在多台计算机上部署由 Qualys) 支持的集成漏洞评估 (扩展，但仅当使用 [部署 Qualys 内置漏洞扫描程序](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中列出的操作系统时，才提供支持。
+尽管你现在可以在多台计算机上部署 (由 Qualys 提供支持的集成漏洞评估扩展) ，但仅当你使用的操作系统[部署到标准层 vm](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms)时，才提供支持。
 
-详细了解 [虚拟机的集成漏洞扫描器 (仅) 标准层 ](built-in-vulnerability-assessment.md)。
+详细了解 [虚拟机的集成漏洞扫描器 (仅) 标准层 ](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
 
-若要详细了解如何在 [部署合作伙伴漏洞扫描解决方案](partner-vulnerability-assessment.md)中使用 Qualys 或 Rapid7 中的专用许可漏洞评估解决方案。
+若要详细了解如何在 [部署合作伙伴漏洞扫描解决方案](deploy-vulnerability-assessment-vm.md)中使用 Qualys 或 Rapid7 中的专用许可漏洞评估解决方案。
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 (预览版) 
@@ -236,7 +236,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
     * 在路径末尾使用通配符以允许此文件夹和子文件夹中的所有可执行文件
 
-    * 使用路径中间的通配符启用具有更改的文件夹名称的已知可执行文件名称 (例如，具有已知可执行文件、自动生成的文件夹名称等) 的个人用户文件夹。
+    * 使用路径中间的通配符启用具有更改的文件夹名称的已知可执行文件名称 (例如，使用已知可执行文件、自动生成的文件夹名称等个人用户文件夹，) 。
 
 
 [详细了解自适应应用程序控制](security-center-adaptive-application.md)。
@@ -415,7 +415,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 “在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供支持）”
 
-详细了解[安全中心集成的虚拟机漏洞评估](built-in-vulnerability-assessment.md)。
+详细了解[安全中心集成的虚拟机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
 
 
 

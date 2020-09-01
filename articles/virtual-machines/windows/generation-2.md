@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500304"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146634"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -30,6 +30,8 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
+* [Dsv4 系列](../dv4-dsv4-series.md)
+* [Ddsv4 系列](../ddv4-ddsv4-series.md)
 * [Dasv4 系列](../dav4-dasv4-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
 * [Easv4 系列](../eav4-easv4-series.md)
@@ -78,7 +80,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
-| Feature | 第 1 代 | 第 2 代 |
+| 功能 | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
@@ -110,7 +112,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 1. 选择“创建资源”。
 1. 在左侧的“Azure 市场”中单击“查看全部”。
 1. 选择支持 Gen2 的映像。
-1. 单击“创建”。
+1. 单击**创建**。
 1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
 1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
@@ -156,10 +158,10 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="frequently-asked-questions"></a>常见问题
 
 * **第 2 代 VM 是否已在所有 Azure 区域中推出？**  
-    是。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
+    是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   不是。
+   否。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
@@ -190,7 +192,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。
 
 * **第 2 代 VM 是否支持加速网络？**  
-    是。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+    是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第2代 Vm 是否在 Azure 中支持安全启动或 vTPM？**
     Azure 中的第1代和第2代虚拟机不支持安全启动或 vTPM。 

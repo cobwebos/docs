@@ -4,12 +4,12 @@ description: Azure 门户中的 Azure 资源图资源管理器支持键盘快捷
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848757"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146430"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure 资源 Graph 资源管理器的键盘快捷方式
 
@@ -22,7 +22,6 @@ ms.locfileid: "88848757"
 |注释/撤销注释 |<kbd>CTRL</kbd>+<kbd>/</kbd> | <kbd>Port</kbd>+<kbd>/</kbd> |
 |减少缩进 |<kbd>CTRL</kbd> +<kbd>[</kbd> |<kbd>Cmd</kbd> +<kbd>[</kbd> |
 |增加缩进 |<kbd>CTRL</kbd> +<kbd>]</kbd> |<kbd>Cmd</kbd> +<kbd>]</kbd> |
-|全选 |<kbd>CTRL</kbd> +<kbd>一个</kbd> |<kbd>Cmd</kbd> +<kbd>一个</kbd> |
 |下移行 |<kbd>ALT</kbd> +<kbd>↓</kbd> |<kbd>选项</kbd> +<kbd>↓</kbd> |
 |向上移动一行 |<kbd>ALT</kbd> +<kbd>↑</kbd> |<kbd>选项</kbd> +<kbd>↑</kbd> |
 |Replace |<kbd>CTRL</kbd> +<kbd>F</kbd> |<kbd>Cmd</kbd> +<kbd>ALT</kbd> +<kbd>F</kbd> |

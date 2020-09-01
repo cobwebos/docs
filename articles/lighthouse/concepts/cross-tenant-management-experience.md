@@ -3,16 +3,16 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ad1c0944076f24363961da21ee347dbd7c0239c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163503"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146906"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
-作为服务提供商，你可以使用[Azure Lighthouse](../overview.md)在你自己的 Azure Active Directory (Azure AD) 租户内管理多个客户的资源。 可以使用[Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)跨托管租户执行许多任务和服务。
+作为服务提供商，你可以使用 [Azure Lighthouse](../overview.md) 在你自己的 Azure Active Directory (Azure AD) 租户内管理多个客户的资源。 可以使用 [Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)跨托管租户执行许多任务和服务。
 
 > [!TIP]
 > 还可[在具有多个其自己的 Azure AD 租户的企业中](enterprise.md)使用 Azure 委托资源管理，以简化跨租户管理。
@@ -33,9 +33,9 @@ Azure Lighthouse 允许更灵活地管理多个客户的资源，而无需登录
 
 可以直接在门户中对委派资源执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）对委派资源执行管理任务。 在处理委托的资源时，只要跨租户管理支持该功能，并且用户具有相应的权限，可以使用所有现有 API。
 
-Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription)显示 `HomeTenantId` `ManagedByTenantIds` 每个订阅的和属性，使你能够确定返回的订阅是属于托管租户还是属于你的管理租户。
+Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription) 显示 `HomeTenantId` `ManagedByTenantIds` 每个订阅的和属性，使你能够确定返回的订阅是属于托管租户还是属于你的管理租户。
 
-同样，Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。
+同样，Azure CLI 命令（如 [az account list](/cli/azure/account#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。
 
 > [!TIP]
 > 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
@@ -48,12 +48,12 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure Arc](../../azure-arc/index.yml)：
 
-- 大规模管理混合服务器-[用于服务器的 Azure Arc (预览) ](../../azure-arc/servers/overview.md)：
+- 大规模管理混合服务器- [用于服务器的 Azure Arc (预览) ](../../azure-arc/servers/overview.md)：
   - [将 Azure 外部的 Windows Server 或 Linux 计算机连接](../../azure-arc/servers/onboard-portal.md)到 Azure 中的委派订阅和/或资源组
   - 使用 Azure 构造（如Azure Policy 和标记）管理连接的计算机
   - 确保跨客户的混合环境应用相同的一组策略
   - 使用 Azure 安全中心监视客户混合环境中的符合性
-- 大规模管理混合 Kubernetes 群集-[启用 Azure Arc 的 Kubernetes (预览) ](../../azure-arc/kubernetes/overview.md)：
+- 大规模管理混合 Kubernetes 群集- [启用 Azure Arc 的 Kubernetes (预览) ](../../azure-arc/kubernetes/overview.md)：
   - 将[Kubernetes 群集连接](../../azure-arc/kubernetes/connect-cluster.md)到 azure 中的委托订阅和/或资源组
   - 对连接的群集[使用 GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - 跨连接群集强制实施策略
@@ -82,13 +82,13 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 - 查看委派订阅的活动日志详细信息
 - Log analytics：从多个租户中的远程工作区查询数据
 - 在通过 webhook 管理租户中触发自动化的客户租户（如 Azure 自动化 runbook 或 Azure Functions）中创建警报
-- 对于 SAP 工作负荷，请[使用跨客户租户的聚合视图监视 Sap 解决方案指标](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
+- 对于 SAP 工作负荷，请 [使用跨客户租户的聚合视图监视 Sap 解决方案指标](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure 网络](../../networking/networking-overview.md)：
 
-- 在托管租户中部署和管理[Azure 虚拟网络](../../virtual-network/index.yml)和虚拟网络接口卡 (vnic) 
+- 在托管租户中部署和管理 [Azure 虚拟网络](../../virtual-network/index.yml) 和虚拟网络接口卡 (vnic) 
 - 部署和配置 [Azure 防火墙](../../firewall/overview.md)，以保护客户的虚拟网络资源
-- 管理连接服务，如[Azure 虚拟 WAN](../../virtual-wan/virtual-wan-about.md)、 [ExpressRoute](../../expressroute/expressroute-introduction.md)和[VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- 管理连接服务，如 [Azure 虚拟 WAN](../../virtual-wan/virtual-wan-about.md)、 [ExpressRoute](../../expressroute/expressroute-introduction.md)和 [VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 - 使用 Azure Lighthouse 支持 [Azure 网络 MSP 计划](../../networking/networking-partners-msp.md)的关键方案
 
 [Azure Policy](../../governance/policy/index.yml)：
@@ -97,7 +97,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 - 在委派的订阅中创建和编辑策略定义
 - 在委派的订阅中分配客户定义的策略定义
 - 客户将看到由服务提供商和自己创建的策略
-- 可以[修正 deployIfNotExists 或修改托管租户内的分配](../how-to/deploy-policy-remediation.md)
+- 可以 [修正 deployIfNotExists 或修改托管租户内的分配](../how-to/deploy-policy-remediation.md)
 
 [Azure Resource Graph](../../governance/resource-graph/index.yml)：
 
@@ -140,7 +140,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 - 使用虚拟机扩展在 Azure Vm 上提供部署后配置和自动化任务
 - 使用启动诊断对 Azure Vm 进行故障排除
 - 使用串行控制台访问 Vm
-- 通过[策略使用托管标识](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)，将 vm 与密码、机密或加密密钥的 Azure Key Vault 集成，以确保机密存储在托管租户的 Key Vault 中
+- 通过 [策略使用托管标识](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)，将 vm 与密码、机密或加密密钥的 Azure Key Vault 集成，以确保机密存储在托管租户的 Key Vault 中
 - 请注意，不能使用 Azure Active Directory 远程登录到 Vm
 
 支持请求：
@@ -158,5 +158,5 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过[使用 azure 资源管理器模板](../how-to/onboard-customer.md)或[向 azure Marketplace 发布专用或公共托管服务产品/服务](../how-to/publish-managed-services-offers.md)，将客户加入 azure Lighthouse。
+- 通过 [使用 azure 资源管理器模板](../how-to/onboard-customer.md) 或 [向 azure Marketplace 发布专用或公共托管服务产品/服务](../how-to/publish-managed-services-offers.md)，将客户加入 azure Lighthouse。
 - 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](../how-to/view-manage-customers.md)。

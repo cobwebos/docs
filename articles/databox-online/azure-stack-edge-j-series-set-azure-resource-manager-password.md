@@ -1,23 +1,23 @@
 ---
-title: 在 Azure Stack Edge 设备上设置 Azure 资源管理器密码
-description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge 上运行的 Azure 资源管理器。
+title: 在 Azure Stack Edge GPU 设备上设置 Azure 资源管理器密码
+description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge GPU 上运行的 Azure 资源管理器。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d56f12c746383576a32e2c0ade542bc8aedff22d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d64db4ab8da1f5f0f4c2dc69b2bc6d4da66c8e91
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083774"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146277"
 ---
 # <a name="set-azure-resource-manager-password"></a>设置 Azure 资源管理器密码
 
-[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]
+<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 本文介绍如何设置 Azure 资源管理器密码。 在通过 Azure 资源管理器连接到设备本地 Api 时，需要设置此密码。
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df8a75c2297dc68549b2788a2d78dd2c7f576bc2
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853375"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146838"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure 机器学习（预览版）跟踪模型指标并部署 ML 模型
 
@@ -105,7 +105,7 @@ with mlflow.start_run():
 
 使用 Azure 机器学习进行 MLflow 跟踪，你可以将远程运行中记录的指标和项目存储在 Azure 机器学习工作区中。
 
-远程运行可以让你通过更强大的计算（例如启用 GPU 的虚拟机或机器学习计算群集）训练模型。 请参阅[为模型训练设置计算目标](how-to-set-up-training-targets.md)，了解不同的计算选项。
+远程运行可以让你通过更强大的计算（例如启用 GPU 的虚拟机或机器学习计算群集）训练模型。 请参阅 [使用计算目标进行模型定型](how-to-set-up-training-targets.md) 了解不同的计算选项。
 
 使用 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) 类配置计算和训练运行环境。 将 `mlflow` 和 `azureml-mlflow` pip 包包含在环境的 [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) 部分中。 然后，将远程计算作为计算目标构造 [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py)。
 
@@ -138,7 +138,7 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-在具有此计算和训练运行配置的情况下，使用 `Experiment.submit('train.py')` 方法提交运行。 此方法自动设置 MLflow 跟踪 URI，并将日志记录从 MLflow 定向到你的工作区。
+在具有此计算和训练运行配置的情况下，使用 `Experiment.submit('train.py')` 方法提交运行。 此方法会自动设置 MLflow 跟踪 URI 并将记录从 MLflow 定向到工作区。
 
 ```Python
 run = exp.submit(src)
@@ -267,7 +267,7 @@ model_save_path = 'model'
 
 ### <a name="deploy-the-model"></a>部署模型
 
-使用 Azure 机器学习 SDK 将模型部署为 web 服务。
+使用 Azure 机器学习 SDK 将模型部署为 Web 服务。
 
 首先，请指定部署配置。 Azure 容器实例 (ACI) 适合用于快速的开发测试部署，而 Azure Kubernetes 服务 (AKS) 适合用于可缩放的生产部署。
 
@@ -286,7 +286,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-然后，使用 Azure 机器学习 SDK [deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)方法注册和部署模型。 
+然后，使用 Azure 机器学习 SDK [deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 方法来注册和部署模型。 
 
 ```python
 (webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),

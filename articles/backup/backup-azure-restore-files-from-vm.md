@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7ff746b85142714c129c04e7f8a3d20ac4b6cb53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020161"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178514"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -285,7 +285,7 @@ mount [RAID Disk Path] [/mountpath]
 | openSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
-> 我们发现，在使用 SLES 12 SP4 操作系统的计算机上运行文件恢复脚本时，我们发现了一些问题，我们正在使用 SLES 团队进行调查。
+> 我们发现，在计算机上运行具有 SLES 12 SP4 OS 的文件恢复脚本时，我们发现了一些问题，我们正在与 SLES 团队进行调查。
 > 目前，可在使用 SLES 12 SP2 和 SP3 OS 版本的计算机上正常运行文件恢复脚本。
 >
 
@@ -348,7 +348,7 @@ mount [RAID Disk Path] [/mountpath]
 - 用户每次下载脚本时，Azure 备份将开始准备用于下载的恢复点。 对于大磁盘，此过程需要相当长的时间。 如果连续出现大量请求，目标准备将造成下载激增。 因此，建议从门户/PowerShell/CLI 下载脚本，等待 20 - 30 分钟（探索性步骤），然后运行该脚本。 此时，目标应准备就绪，可以从脚本进行连接。
 - 在文件恢复后，请确保返回到门户，然后选择无法在其中装入卷的恢复点的 " **卸载磁盘** "。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果从虚拟机恢复文件时遇到问题，请查看下表了解更多信息。
 

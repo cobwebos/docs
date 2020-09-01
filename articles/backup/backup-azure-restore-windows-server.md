@@ -3,12 +3,12 @@ title: 使用 MARS 代理将文件还原到 Windows 服务器
 description: 在本文中，了解如何使用 Microsoft Azure 恢复服务 (MARS) 代理将存储在 Azure 中的数据还原到 Windows 服务器或 Windows 计算机。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 59e212b31d79c0d9a75369e542fee5e86f29653a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0d2f9e8197ac397bf61e4cb293e354a10ba0e1da
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018903"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178551"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理将文件还原到 Windows 服务器
 
@@ -23,7 +23,7 @@ ms.locfileid: "89018903"
 > 若要使用“即时还原”还原数据，必须安装 [2017 年 1 月 Azure 备份更新](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) 。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [2017 年 1 月 Azure 备份更新](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) ，获取支持“即时还原”的区域的最新列表。
 >
 
-在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用“即时还原”，请下载 MARS 更新，并按照提及“即时还原”的过程进行操作。
+在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储数据，则会将其转换为恢复服务保管库。 如果要使用“即时还原”，请下载 MARS 更新，并按照提及“即时还原”的过程进行操作。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 

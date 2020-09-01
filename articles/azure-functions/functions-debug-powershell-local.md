@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799360"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177085"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>本地调试 PowerShell Azure Functions
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>设置附加点
 
 若要调试任何 PowerShell 函数，该函数需要停止才能附加调试器。 该 `Wait-Debugger` cmdlet 将停止执行并等待调试器。
+
+>[!NOTE]
+>使用 PowerShell 7 时，无需 `Wait-Debugger` 在代码中添加调用。
 
 只需添加对 `Wait-Debugger` 语句上方的 cmdlet 的调用 `if` ，如下所示：
 
@@ -243,11 +246,11 @@ PowerShell 扩展使用 `Debug-Runspace` ，后者又依赖于 PowerShell 的 `B
 
 如果发生此中断，请运行 `continue` 或 `c` 命令跳过此断点。 然后，在预期的断点处停止。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果在调试过程中遇到困难，应检查以下各项：
 
-| 勾选标记 | 操作 |
+| 检查 | 操作 |
 |------|------|
 | `func --version`从终端运行。 如果收到一个 `func` 找不到的错误，则可能是本地变量中缺少 ( # A0) 的核心工具 `path` 。| [重新安装核心工具](functions-run-local.md#v2)。|  
 | 在 Visual Studio Code 中，默认终端需要有权访问 func.exe。 请确保未使用未安装核心工具的默认终端，如适用于 Linux 的 Windows 子系统 (WSL) 。  | 将 Visual Studio Code 中的默认 shell 设置为 PowerShell 7 (推荐的) 或 Windows PowerShell 5.1。|

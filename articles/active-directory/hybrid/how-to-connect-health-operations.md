@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828789"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177612"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -74,7 +74,7 @@ ms.locfileid: "87828789"
 2. 在操作栏中的“服务器”边栏选项卡上，单击“删除”。********
 ![Azure AD Connect Health 删除服务器的屏幕截图](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. 在确认框中键入服务器名称以进行确认。
-4. 单击“删除” 。
+4. 单击 **“删除”** 。
 
 用于 Azure Active Directory 域服务的 Azure AD Connect Health：
 
@@ -82,7 +82,7 @@ ms.locfileid: "87828789"
 2. 选择要删除的域控制器。
 3. 在操作栏中，单击“删除所选项”****。
 4. 确认删除服务器的操作。
-5. 单击“删除” 。
+5. 单击 **“删除”** 。
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>从 Azure AD Connect Health Service 中删除服务实例
 在某些情况下，可能需要删除某个服务实例。 以下是关于从 Azure AD Connect Health 服务中删除服务实例的说明。
@@ -99,19 +99,19 @@ ms.locfileid: "87828789"
 2. 在操作栏中的“服务”边栏选项卡上，单击“删除”********。 
 ![Azure AD Connect Health 删除服务的屏幕截图](./media/how-to-connect-health-operations/DeleteServer.png)
 3. 在确认框中键入服务名称（例如：sts.contoso.com）以进行确认。
-4. 单击“删除” 。
+4. 单击 **“删除”** 。
    <br><br>
 
 [//]: # (开始 RBAC 部分)
-## <a name="manage-access-with-role-based-access-control"></a>使用基于角色的访问控制管理访问权限
-用于 Azure AD Connect Health 的 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)提供对除全局管理员以外的用户和组的访问权限。 RBAC 会将角色分配给目标用户和组，并提供一个机制将全局管理员的权限限制到目录以内。
+## <a name="manage-access-with-azure-rbac"></a>使用 Azure RBAC 管理访问权限
+用于 Azure AD Connect Health 的 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)提供对除全局管理员以外的用户和组的访问权限。 Azure RBAC 将角色分配给目标用户和组，并提供一种机制来限制目录中的全局管理员。
 
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支持以下内置角色：
 
 | 角色 | 权限 |
 | --- | --- |
-| 所有者 |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
+| Owner |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
 | 参与者 |参与者可以在 Azure AD Connect Health 中从门户中*查看所有信息*（例如查看警报信息）以及*更改设置*（例如设置电子邮件通知）。 |
 | 读取器 |读取者可以在 Azure AD Connect Health 中从门户*查看所有信息*（例如查看警报）。 |
 
@@ -133,14 +133,14 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”**** 部分中，单击“用户”****。<br>
    ![Azure AD Connect Health 资源边栏的屏幕截图](./media/how-to-connect-health-operations/startRBAC.png)
-2. 选择“添加”。
+2. 选择“添加”   。
 3. 在“选择角色”**** 窗格中，选择一个角色（例如“所有者”****）。<br>
-   ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Azure AD Connect Health 和 Azure RBAC 配置菜单的屏幕截图](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。
-   ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Azure AD Connect Health 和 Azure RBAC 角色列表的屏幕截图](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. 选择“确定”。<br>
 6. 完成角色分配后，用户和组将显示在列表中。<br>
-   ![Azure AD Connect Health RBAC 用户窗口的屏幕截图（其中突出显示了新用户）](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![突出显示 Azure AD Connect Health 和 Azure RBAC 和新用户的屏幕截图](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 现在，列出的用户和组具有基于所分配角色的相应访问权限。
 
@@ -153,7 +153,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>步骤 3：与用户或组共享边栏选项卡位置
 1. 分配权限后，用户可以转到[此处](https://aka.ms/aadconnecthealth)，访问 Azure AD Connect Health。
 2. 在边栏选项卡上，用户可将边栏选项卡或卡上的其他部件固定到仪表板。 只需单击“固定到仪表板”**** 图标。<br>
-   ![Azure AD Connect Health RBAC 固定边栏选项卡的屏幕截图（其中突出显示了固定图标）](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![Azure AD Connect Health 和 Azure RBAC 固定边栏选项卡的屏幕截图，其中突出显示了 pin 图标](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > 分配有“读取者”角色的用户无法从 Azure 市场获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
@@ -161,8 +161,8 @@ Azure AD Connect Health 支持两个级别的访问管理：
 >
 
 ### <a name="remove-users-or-groups"></a>删除用户或组
-可删除已添加到 Azure AD Connect Health RBAC 中的用户或组。 只需右键单击用户或组，然后选择“删除”****。<br>
-![Azure AD Connect Health RBAC 用户窗口的屏幕截图（其中突出显示了“删除”）](./media/how-to-connect-health-operations/RBAC_remove.png)
+可删除添加到 Azure AD Connect Health 和 Azure RBAC 的用户或组。 只需右键单击用户或组，然后选择“删除”****。<br>
+![突出显示了 "删除" 的 Azure AD Connect Health 和 Azure RBAC 的屏幕截图](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (结束 RBAC 部分)
 

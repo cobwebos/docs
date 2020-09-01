@@ -3,12 +3,12 @@ title: 将系统状态还原为 Windows Server
 description: 有关从 Azure 中的备份还原 Windows Server 系统状态的分步说明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892535"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178580"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -112,7 +112,7 @@ ms.locfileid: "88892535"
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>对 Windows Server 应用已恢复的系统状态
 
-使用 Azure 恢复服务代理将系统状态还原为文件后，使用 Windows Server 备份实用工具将已恢复的系统状态应用到 Windows Server。 已在服务器上提供 Windows Server 备份实用工具。 以下步骤介绍如何应用已恢复的系统状态。
+使用 Azure 恢复服务代理将系统状态恢复为文件后，请使用 Windows Server 备份实用程序将已恢复的系统状态应用于 Windows Server。 已在服务器上提供 Windows Server 备份实用工具。 以下步骤介绍如何应用已恢复的系统状态。
 
 1. 打开 Windows Server 备份管理单元。 如果不知道该管理单元的安装位置，请在计算机或服务器中搜索“Windows Server 备份”****。
 

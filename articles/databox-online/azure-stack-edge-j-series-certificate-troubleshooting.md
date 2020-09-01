@@ -1,19 +1,19 @@
 ---
-title: 通过 Azure Stack Edge 进行证书疑难解答 |Microsoft Docs
-description: 介绍如何排查 Azure Stack Edge 设备的证书错误。
-services: Azure Stack Edge
+title: 带有 GPU 的 Azure Stack 边缘的证书疑难解答 |Microsoft Docs
+description: 介绍如何排查 Azure Stack Edge GPU 设备的证书错误。
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 2614928985070e47fa8c4b77a3068d480d362093
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e16121005a34f67ba4ce940e08cb632c1206ad6a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083097"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146209"
 ---
 # <a name="troubleshooting-certificate-errors"></a>证书错误疑难解答
 

@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Stack Edge 的证书 |Microsoft Docs
-description: 描述如何将证书与 Azure Stack Edge 设备一起使用，包括使用的原因，以及如何在设备上上传证书。
+title: 将证书与 Azure Stack Edge GPU 一起使用 |Microsoft Docs
+description: 描述如何将证书与 Azure Stack Edge GPU 设备一起使用，其中包括使用原因，以及如何在设备上上传证书。
 services: Azure Stack Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e257ecbcc608dfc6ecb9aedae69eeef083395836
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083686"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147076"
 ---
 # <a name="use-certificates-with-azure-stack-edge-series"></a>将证书用于 Azure Stack Edge 系列 
 
@@ -385,7 +385,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![导出证书1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
-2. 证书向导将打开。 选择格式为 **DER 编码的二进制 x.509 ( .cer) **。 选择“**下一页**”。
+2. 证书向导将打开。 选择格式为 **DER 编码的二进制 x.509 ( .cer) **。 选择“**下一步**”。
 
     ![导出证书2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 

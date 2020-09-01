@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651909"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146753"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -24,7 +24,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 
 可以使用计算实例作为在云中进行机器学习的完全配置和托管的开发环境。 还可以在开发和测试中将它们用作训练和推理的计算目标。  
 
-对于生产级模型训练，请使用具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)。 对于生产级模型部署，请使用 [Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
+对于生产级模型训练，请使用具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-create-attach-compute-sdk.md#amlcompute)。 对于生产级模型部署，请使用 [Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
 
 ## <a name="why-use-a-compute-instance"></a>为何使用计算实例？
 
@@ -40,7 +40,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和环境
 
 > [!IMPORTANT]
-> 以下标记 (预览) 的工具目前处于公共预览版中。
+> 下面标记了“（预览版）”的工具目前为公共预览版。
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 机器学习计算实例可以在工作区中的完全集成式笔记本体验中创作、训练和部署模型。
@@ -126,7 +126,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * 通过 SSH 连接到计算实例。 默认已禁用 SSH 访问，但可以在创建计算实例时启用。 SSH 访问是通过公钥/私钥机制实现的。 选项卡中将提供 IP 地址、用户名和端口号等 SSH 连接详细信息。
 * 获取有关特定计算实例的详细信息，例如 IP 地址和区域。
 
-使用 [RBAC](/azure/role-based-access-control/overview) 可以控制工作区中的哪些用户可以创建、删除、启动、停止和重启计算实例。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例的创建者具有专用的计算实例，具有根访问权限，并且可以通过 Jupyter/JupyterLab/RStudio 终端。 计算实例具有创建者用户的单用户登录名，所有操作将使用该用户的标识进行试验运行的 RBAC 控制和权限划分。 SSH 访问是通过公钥/私钥机制控制的。
+使用 [RBAC](/azure/role-based-access-control/overview) 可以控制工作区中的哪些用户可以创建、删除、启动、停止和重启计算实例。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例的创建者拥有专用的计算实例，具有根访问权限，且可从终端通过 Jupyter/JupyterLab/RStudio 进入。 计算实例具有创建者用户的单用户登录名，所有操作将使用该用户的标识进行试验运行的 RBAC 控制和权限划分。 SSH 访问是通过公钥/私钥机制控制的。
 
 可以通过 RBAC 来控制这些操作：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -138,27 +138,16 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>创建计算实例
 
-在 Azure 机器学习工作室的工作区中，当你准备好运行某个笔记本时，请从“计算”部分或“笔记本”部分创建新的计算实例。
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新建计算实例":::
-
-
-|字段  |说明  |
-|---------|---------|
-|计算名称     |  <li>名称是必须提供的，且长度必须介于 3 到 24 个字符之间。</li><li>有效字符为大小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报</li><li>如果在名称中使用了 **-** 字符，在此字符之后必须至少跟有一个字母</li>     |
-|虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
-|虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
-|启用/禁用 SSH 访问     |   默认情况下会禁用 SSH 访问。  SSH 访问 在创建后无法更改。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互模式进行调试，请确保启用访问权限   |
-|高级设置     |  可选。 配置虚拟网络 指定**资源组**、**虚拟网络**和**子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](how-to-enable-virtual-network.md#compute-instance)。        |
+在 Azure 机器学习 studio 的工作区中，当你准备好运行某个笔记本时，请从 "**计算**" 部分或在 "**笔记本**" 部分[创建新的计算实例](how-to-create-attach-compute-studio.md#compute-instance)。 
 
 也可以通过以下方式创建实例
 * 直接从[集成式笔记本体验](tutorial-1st-experiment-sdk-setup.md#azure)
 * 在 Azure 门户中配置
-* 从 Azure 资源管理器模板。 有关示例模板，请参阅 [创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
+* 通过 Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
 * 使用 Azure 机器学习 SDK
 * 从 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md#computeinstance)
 
-应用于计算实例创建过程的每区域每 VM 系列专用核心数配额和区域总配额 与 Azure 机器学习训练计算群集配额统一并共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
+每个区域中每个区域的专用核心数（适用于计算实例创建）都是统一的，并与 Azure 机器学习定型计算群集配额进行共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
 
 ## <a name="compute-target"></a>计算目标
 

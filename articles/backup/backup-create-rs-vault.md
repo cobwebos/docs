@@ -4,12 +4,12 @@ description: 本文介绍如何创建和配置恢复服务保管库，用于存�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7f7b024c30706f3823d500729b428bebdabf25ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014790"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177187"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -57,7 +57,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 >- 所有 Azure 公共区域中现已推出跨区域还原 (CRR) 功能的预览版。
 >- CRR 是保管库级别的选用功能（默认已禁用），适用于任何 GRS 保管库。
 >- 选择启用后，备份项最长可能需要在 48 小时后才出现在次要区域中。
->- 目前仅支持对备份管理类型-ARM Azure VM 的 CRR (不支持经典 Azure VM) 。  如果其他管理类型支持 CRR，则会**自动**注册这些类型。
+>- 目前仅支持对备份管理类型-ARM Azure VM 的 CRR (不支持经典 Azure VM) 。  如果其他管理类型支持 CRR，则会 **自动** 注册。
 >- 首次启动保护后，不能再将跨区域还原恢复为 GRS 或 LRS。
 
 ### <a name="configure-cross-region-restore"></a>配置跨区域还原

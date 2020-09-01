@@ -11,17 +11,17 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650309"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146583"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松地将训练脚本提交到[各种计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。 该模式提供了很强的灵活性和最大程度的控制度。
+凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松地将训练脚本提交到[各种计算目标](how-to-set-up-training-targets.md)。 该模式提供了很强的灵活性和最大程度的控制度。
 
 
 借助估算器类，可以更轻松地通过深入学习和强化学习来训练模型。 它提供了一个高级抽象，可便于轻松地构造运行配置。 可以创建泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，并使用它在所选的任何计算目标（无论是本地计算机、Azure 中的单个 VM 还是 Azure 中的 GPU 群集）上提交使用任何所选的学习框架（如 scikit-learn）的训练脚本。 对于 PyTorch、TensorFlow、Chainer 和强化学习任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 和[强化学习](how-to-use-reinforcement-learning.md)估算器来简化这些框架的使用。
@@ -29,7 +29,7 @@ ms.locfileid: "88650309"
 ## <a name="train-with-an-estimator"></a>使用估算器进行训练
 
 创建[工作区](concept-workspace.md)并设置[开发环境](how-to-configure-environment.md)后，在 Azure 机器学习中训练模型包括以下步骤：  
-1. 创建[远程计算目标](how-to-set-up-training-targets.md)（注意：也可将本地计算机用作计算目标）
+1.  (创建 [远程计算目标](how-to-create-attach-compute-sdk.md) ，或者也可以使用本地计算机作为计算目标) 
 2. 将[训练数据](how-to-access-data.md)上传到数据存储（可选）
 3. 创建[训练脚本](tutorial-train-models-with-aml.md#create-a-training-script)
 4. 创建 `Estimator` 对象
@@ -39,7 +39,7 @@ ms.locfileid: "88650309"
 
 ### <a name="single-node-training"></a>单节点训练
 
-对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 你应该已经创建了[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 和 [FileDataset](how-to-create-register-datasets.md) 对象 `ds`。
+对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 你应该已经创建了[计算目标](how-to-create-attach-compute-sdk.md#amlcompute)对象 `compute_target` 和 [FileDataset](how-to-create-register-datasets.md) 对象 `ds`。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -63,7 +63,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹从本地计算机复制到远程计算。
 `script_params`| 字典，指定要以 `<command-line argument, value>` 对的形式传递到训练脚本 `entry_script` 的命令行参数。 若要在 `script_params` 中指定详细标志，请使用 `<command-line argument, "">`。
-`compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 （请注意，尽管 AmlCompute 群集是常用目标，也可以选择其他计算目标类型，如 Azure VM，或甚至是本地计算机。）
+`compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-create-attach-compute-sdk.md#amlcompute)) 群集。 （请注意，尽管 AmlCompute 群集是常用目标，也可以选择其他计算目标类型，如 Azure VM，或甚至是本地计算机。）
 `entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件及其依赖的其他任何文件都应位于此文件夹中。
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  
 
@@ -93,7 +93,7 @@ print(run.get_portal_url())
 
 以下代码演示了如何为 Keras 模型执行分布式训练。 此外，它没有使用默认 Azure 机器学习映像，而是指定 Docker 中心 `continuumio/miniconda` 的自定义 Docker 映像来进行训练。
 
-应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target`。 按如下所示创建估算器：
+应已创建[计算目标](how-to-create-attach-compute-sdk.md#amlcompute)对象 `compute_target`。 按如下所示创建估算器：
 
 ```Python
 from azureml.train.estimator import Estimator

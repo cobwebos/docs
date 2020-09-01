@@ -4,12 +4,12 @@ description: 本文介绍如何将 Azure 事件网格自定义主题从一个区
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: f33636f7033495a1e437715cc89c492889e4dfe0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083647"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145327"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>将 Azure 事件网格自定义主题移到另一个区域
 出于多种原因，你可能需要将资源移到另一个区域。 例如，若要充分利用新的 Azure 区域，以满足内部策略和调控要求，或者响应容量规划要求。 
@@ -80,6 +80,8 @@ ms.locfileid: "89083647"
 ## <a name="verify"></a>Verify
 
 1. 部署成功后，选择“转到资源”。 
+
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="转到资源":::
 1. 确认您看到了该自定义主题的 **事件网格主题** 页。   
 1. 按照将 [自定义事件路由到 web 终结点](custom-event-quickstart-portal.md#send-an-event-to-your-topic) 中的步骤将事件发送到主题。 验证是否调用了 webhook 事件处理程序。 
 

@@ -3,12 +3,12 @@ title: DPM 和 MABS Azure Data Box 的脱机备份
 description: 你可以使用 Azure Data Box 将初始备份数据从 DPM 和 MABS 脱机。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017594"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177680"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (预览版的 Azure Data Box 进行脱机种子设定) 
 
@@ -149,7 +149,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
           - Azure.Storage       4.6.1<br>
      >  - Azure AD 应用程序注册为 AzureOfflineBackup_\<object GUID of the user>。
 
-13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一页**”。
+13. 选择已解包、连接并解锁 Data Box 磁盘的正确数据框顺序。 选择“下一步”  。
 
     ![选择 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
     > 例如，如果磁盘的路径为 `\\mydomain\myserver\disk1\` ，并且 *disk1* 包含一个名为 *PageBlob*的目录，则 DPM/MABS 服务器向导上提供的路径为 `\\mydomain\myserver\disk1\` 。
     > 如果[设置 Azure Data Box 100 TB 设备](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，请提供以下信息作为设备 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 的网络路径。
 
-15. 选择“**下一页**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
+15. 选择“下一步”  。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
 
     ![检测 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 

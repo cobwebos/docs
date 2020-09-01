@@ -1,7 +1,7 @@
 ---
 title: 试验跟踪和部署模型
 titleSuffix: Azure Data Science Virtual Machine
-description: 了解如何通过 Azure 机器学习服务和/或 MLFlow 跟踪和记录 DSVM 的试验。
+description: 了解如何通过 Azure 机器学习和/或 MLFlow 从 DSVM 跟踪和记录试验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,14 +9,14 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 687cd6570a9518be6f398a40fcd2d0e10a9634f2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817401"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146889"
 ---
-# <a name="track-experiments-and-deploy-models-in-azureml"></a>在 AzureML 中跟踪试验和部署模型
+# <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure 机器学习中跟踪试验和部署模型
 
 通过跟踪试验并监视运行指标来改进模型创建过程。 本文介绍如何使用 [MLflow](https://mlflow.org/) API 将日志记录代码添加到训练脚本，并 Azure 机器学习中跟踪试验。
 

@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: 保护远程辅助角色
           href: concept-secure-remote-workers.md
-        - name: 连续访问评估
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: 组和用户
       items:
         - name: 组和访问管理

@@ -1,7 +1,7 @@
 ---
 title: 云中的安全数据访问
 titleSuffix: Azure Machine Learning
-description: 了解如何从 Azure 机器学习安全地连接到数据，以及如何使用数据集和数据存储来执行 ML 任务。 数据存储可以存储来自 Azure Blob、Azure Data Lake Gen 1 和 Azure Data Lake Gen 2、SQL DB、Databricks 等的数据
+description: 了解如何从 Azure 机器学习安全地连接到数据，以及如何使用数据集和数据存储来执行 ML 任务。 数据存储可以存储 Azure Blob 中的数据，Azure Data Lake 第 1 & 2、SQL 数据库和 Azure Databricks。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651788"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146681"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
 Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存储服务上提供抽象层，让你可以安全地访问和使用数据，而无需编写特定于存储类型的代码。 Azure 机器学习还提供了以下数据功能：
 
+*    与 Pandas 和 Spark DataFrames 的互操作性
 *    数据世系的版本控制和跟踪
 *    数据标记 
 *    数据偏差监视
-*    与 Pandas 和 Spark DataFrames 的互操作性
-
+    
 ## <a name="data-workflow"></a>数据工作流
 
 准备好在基于云的存储解决方案中使用数据时，建议使用以下数据发送工作流。 此工作流假设你拥有 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，并在 Azure 中的基于云的存储服务中拥有数据。 
@@ -67,17 +67,23 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 
 ## <a name="datasets"></a>数据集
 
-Azure 机器学习数据集是指向存储服务中数据的引用。 它们不是你的数据的副本，因此不会产生额外的存储成本，且原始数据源的完整性不会有风险。
+Azure 机器学习数据集是指向存储服务中数据的引用。 它们不是 dataBy 创建 Azure 机器学习数据集的副本，而是创建对数据源位置的引用以及其元数据的副本。 
 
- 若要与存储中的数据进行交互，请[创建一个数据集](how-to-create-register-datasets.md)以将数据打包成机器学习任务可用的对象。 将数据集注册到工作区可在不同的试验中共享和重用该数据集，而不会造成数据引入复杂性。
+由于数据集是延迟计算的，而数据仍保留在其现有位置，因此你
 
-可以从本地文件、公共 URL、[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)或经由数据存储的 Azure 存储服务创建数据集。 若要从内存中 pandas 数据帧创建数据集，请将数据写入本地文件（例如 parquet），然后从该文件创建数据集。  
+* 不会产生额外的存储成本。
+* 不要无意中更改原始数据源。
+* 提高 ML 工作流性能速度。
 
-我们支持 2 种类型的数据集： 
+若要与存储中的数据进行交互，请[创建一个数据集](how-to-create-register-datasets.md)以将数据打包成机器学习任务可用的对象。 将数据集注册到工作区可在不同的试验中共享和重用该数据集，而不会造成数据引入复杂性。
 
-+ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) 引用数据存储或公共 URL 中的单个或多个文件。 如果你的数据已清理并可在训练试验中使用，则可以将 FileDatasets 引用的 [文件下载或装载](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) 到你的计算目标。
+可以从本地文件、公共 URL、[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)或经由数据存储的 Azure 存储服务创建数据集。 
 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 pandas 或 Spark 数据帧，以便进一步操作和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
+有2种类型的数据集： 
+
++ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) 引用数据存储或公共 URL 中的单个或多个文件。 如果数据已被清理并且可用于训练试验，则可以[下载或装载 FileDataset 引用的文件](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
+
++ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 Pandas 或 Spark DataFrame 中，以便进一步处理和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
 
 可在以下文档中找到更多数据集功能：
 

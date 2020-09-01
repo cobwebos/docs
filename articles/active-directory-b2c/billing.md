@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f9adf6ce4559234eec74c92f09aa752eb1f9ab51
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386056"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177323"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
 
@@ -132,12 +133,25 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>更改 Azure AD B2C 租户计费订阅
 
-如果源订阅和目标订阅存在于同一 Azure Active Directory 租户中，则可以将 Azure AD B2C 租户移到另一个订阅。
+### <a name="move-using-azure-resource-manager"></a>使用 Azure 资源管理器移动
+
+如果源订阅和目标订阅存在于同一 Azure Active Directory 租户中，则可以使用 Azure 资源管理器将 Azure AD B2C 租户转移到另一个订阅。
 
 若要了解如何将 Azure 资源（如 Azure AD B2C 租户）移到其他订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 在开始移动之前，请务必阅读整篇文章，以充分了解此类移动的限制和要求。 除了移动资源的说明之外，它还包括一些重要信息，如移动前检查清单以及如何验证移动操作。
 
+### <a name="move-by-un-linking-and-re-linking"></a>通过取消链接和重新链接进行移动
+
+如果源订阅和目标订阅与不同的 Azure Active Directory 租户相关联，则无法通过 Azure 资源管理器执行移动，如上文所述。 但是，您仍然可以通过取消链接源订阅中的 Azure AD B2C 租户并将其重新链接到目标订阅来实现相同的最终结果。 此方法是安全的，因为唯一删除的对象是 *计费链接*，而不是 Azure AD B2C 租户本身。 用户、应用、用户流等均不会受到影响。
+
+1. 在 Azure AD B2C 目录本身 [中，从](user-overview.md#guest-user) 目标 Azure 订阅链接) 到的目标 Azure AD 租户 (，并确保此用户在 Azure AD B2C 中具有 **全局管理员** 角色。
+1. 导航到表示源 Azure 订阅中 Azure AD B2C 的 *Azure 资源* ，如以上 [管理 Azure AD B2C 租户资源](#manage-your-azure-ad-b2c-tenant-resources) 部分中所述。 请勿切换到实际 Azure AD B2C 租户。
+1. 单击 "**概述**" 页上的 "**删除**" 按钮。 这不 *会删除相关* Azure AD B2C 租户的用户或应用程序。 它仅删除源订阅的计费链接。
+1. 使用在步骤 1 Azure AD B2C 中作为管理员添加的用户帐户登录到 Azure 门户。 然后导航到目标 Azure 订阅，该订阅链接到目标 Azure Active Directory 租户。 
+1. 按照上面的 [创建链接](#create-the-link) 过程，在目标订阅中重新建立计费链接。
+1. Azure AD B2C 资源现在已移动到目标 Azure 订阅 (链接到目标 Azure Active Directory) ，并将通过此订阅进行计费。
+
 ## <a name="next-steps"></a>后续步骤
 
-有关最新定价信息，请参阅[Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
+有关最新定价信息，请参阅 [定价 Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。

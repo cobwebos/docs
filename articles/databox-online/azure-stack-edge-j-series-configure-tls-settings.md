@@ -1,19 +1,19 @@
 ---
-title: 在访问 Azure Stack Edge 设备的 Windows 客户端上配置 TLS 1。2
-description: 介绍如何在访问 Azure Stack Edge 设备的 Windows 客户端上配置 TLS 1.2。
+title: 在访问 Azure Stack Edge GPU 设备的 Windows 客户端上配置 TLS 1。2
+description: 介绍如何在 Windows 客户端上配置 TLS 1.2，该客户端访问 Azure Stack 边缘 GPU 设备。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/06/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 552e44e4d3d1b9e237d6ee99d82b946d34fa5e3d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: fdd88a902e812c89270a175aef4bf0de197c6e9b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083093"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146124"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>在访问 Azure Stack Edge 设备的 Windows 客户端上配置 TLS 1。2
 

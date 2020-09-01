@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ddf4336015ad172cdf13e224b10ca2536e8f6a25
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018070"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144067"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -111,7 +111,8 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-a-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，术语“计算”（或“计算目标”）是指在机器学习管道中执行计算步骤的计算机或群集 。 有关计算目标的完整列表，请参阅 [设置和使用计算目标](how-to-set-up-training-targets.md) ，了解如何创建并将其附加到工作区。 无论是定型模型还是运行管道步骤，创建和或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
+
+在 Azure 机器学习中，术语“计算”（或“计算目标”）是指在机器学习管道中执行计算步骤的计算机或群集 。   有关计算目标的完整列表，请参阅 [模型定型的计算目标](concept-compute-target.md#train) ，并 [创建计算目标](how-to-create-attach-compute-sdk.md) 以了解如何创建并将其附加到工作区。   无论是定型模型还是运行管道步骤，创建和或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
 
 > [!IMPORTANT]
 > 内部远程作业不支持对计算目标执行管理操作。 由于机器学习管道作为远程作业提交，因此请勿对管道内的计算目标使用管理操作。

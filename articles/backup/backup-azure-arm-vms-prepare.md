@@ -3,12 +3,12 @@ title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826304"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145648"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -80,7 +80,7 @@ ms.locfileid: "88826304"
 
       ![添加虚拟机](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. 将打开“选择虚拟机”窗格。 使用策略选择要备份的 Vm。 然后选择“确定”。 
+1. 将打开“选择虚拟机”窗格。 使用策略选择要备份的 Vm。 然后选择“确定”。
 
    * 随后将验证选定的 VM。
    * 只能选择与保管库位于同一区域中的 VM。
@@ -128,7 +128,7 @@ ms.locfileid: "88826304"
 2. 在 " **备份项目**" 中，选择 " **Azure 虚拟机**"。
 3. 在 " **备份项** " 列表中，选择省略号 ( ") "。
 4. 选择 " **立即备份**"。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。 
+5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。
 6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="verify-backup-job-status"></a>验证备份作业状态
@@ -155,7 +155,7 @@ ms.locfileid: "88826304"
 失败 | 失败 | 失败
 
 现在借助此功能，对于同一 VM，两个备份可以并行运行，但在任一阶段（快照、将数据传输到保管库）中，只有一个子任务可以运行。 因此，在正在进行的备份作业导致第二天的备份失败时，这种分离功能将避免这种情况。 后续几天的备份可以完成快照，而如果之前的备份作业正在进行状态，则会跳过将 **数据传输到保管库** 的过程。
-在保管库中创建的增量恢复点将捕获在保管库中创建的上一个恢复点的所有变动。 用户不会对用户造成任何影响。
+在保管库中创建的增量恢复点将捕获保管库中创建的最近恢复点的所有改动。 用户不会对用户造成任何影响。
 
 ## <a name="optional-steps"></a>可选步骤
 

@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014652"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178005"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -103,18 +103,60 @@ ms.locfileid: "89014652"
 错误代码：ExtensionFailedVssWriterInBadState <br/>
 错误消息：快照操作失败，因为 VSS 编写器处于错误状态。
 
-请重启处于错误状态的 VSS 编写器。 在提升的命令提示符处，运行 ```vssadmin list writers```。 输出包含所有 VSS 编写器及其状态。 对于每个状态不为“[1] 稳定”的 VSS 编写器，要重启 VSS 编写器，请在提升权限的命令提示符处运行以下命令：
+发生此错误的原因是 VSS 编写器处于错误的状态。 Azure 备份扩展与 VSS 编写器进行交互，以拍摄磁盘快照。 若要解决此问题，请执行以下步骤：
 
-* ```net stop serviceName```
-* ```net start serviceName```
+请重启处于错误状态的 VSS 编写器。
+- 在提升的命令提示符处，运行 ```vssadmin list writers```。
+- 输出包含所有 VSS 编写器及其状态。 对于状态不 **稳定为 [1]** 的每个 vss 编写器，请重新启动相应的 vss 编写器服务。 
+- 若要重新启动该服务，请从提升的命令提示符运行以下命令：
 
-另一个有用的过程是从权限提升的命令提示符处运行以下命令（以管理员身份）。
+ ```net stop serviceName``` <br>
+ ```net start serviceName```
+
+> [!NOTE]
+> 重新启动某些服务可能会影响你的生产环境。 请确保遵循审批过程，并在计划的停机时间重启服务。
+ 
+   
+如果重新启动 VSS 编写器未解决此问题，并且问题仍然存在，原因是超时，则：
+- 在提升的命令提示符下运行以下命令-prompt (作为管理员) 阻止为 blob 快照创建线程。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-添加此注册表项将导致不会为 blob 快照创建线程，并阻止超时。
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState-由于 VSS (卷影复制) 服务处于错误状态，快照操作失败
+
+错误代码： ExtensionFailedVssServiceInBadState <br/>
+错误消息：快照操作失败，因为 VSS (卷影复制) 服务处于错误状态。
+
+发生此错误的原因是 VSS 服务处于错误状态。 Azure 备份扩展与 VSS 服务交互，以拍摄磁盘快照。 若要解决此问题，请执行以下步骤：
+
+) 服务重新启动 VSS (卷影复制。
+- 导航到 services.msc 并重新启动 "卷影复制服务"。<br>
+（或者）<br>
+- 在提升的命令提示符下运行以下命令：
+
+ ```net stop VSS``` <br>
+ ```net start VSS```
+
+ 
+如果问题仍然存在，请在计划的停机时间重新启动 VM。
+
+### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable-VM 创建失败，因为所选 VM 大小不可用
+
+错误代码： UserErrorSkuNotAvailable 错误消息： VM 创建失败，因为所选 VM 大小不可用。 
+ 
+发生此错误的原因是在还原操作过程中选择的 VM 大小不受支持。 <br>
+
+若要解决此问题，请在还原操作期间使用 " [还原磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) " 选项。 使用[Powershell cmdlet](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)从[可用的支持 vm 大小](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support)列表中使用这些磁盘创建 vm。
+
+### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM 创建失败，因为市场采购订单请求不存在
+
+错误代码： UserErrorMarketPlaceVMNotSupported 错误消息： VM 创建失败，因为市场采购订单请求不存在。 
+ 
+Azure 备份支持 Azure Marketplace 中提供的 Vm 的备份和还原。 如果尝试使用特定计划/发布服务器设置（) 该设置不再在 Azure Marketplace 中提供）还原 VM (，则会发生此错误，请在 [此处了解详细信息](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)。
+- 若要解决此问题，请在还原操作期间使用 " [还原磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) " 选项，然后使用 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 或 [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) cmdlet 创建 vm，其中包含与 VM 相对应的最新 marketplace 信息。
+- 如果发布服务器没有任何 Marketplace 信息，你可以使用数据磁盘来检索你的数据，并且可以将其附加到现有 VM。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 无法分析备份扩展的配置
 
@@ -203,7 +245,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤：
 
-* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>or
+* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>或
 * 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
 ### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-由于存储帐户中的可用空间不足，无法复制虚拟机的快照

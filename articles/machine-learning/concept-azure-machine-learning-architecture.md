@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: b90cda409096f940d6c2b1c64517731e81c41fbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069148"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146770"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -106,7 +106,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 可以将运行配置保存到包含定型脚本的目录中的文件中。   也可以将它构造为内存中对象，并用于提交运行。
 
-有关示例运行配置，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
+有关运行配置的示例，请参阅 [使用计算目标来训练模型](how-to-set-up-training-targets.md)。
 
 ### <a name="estimators"></a>估算器
 

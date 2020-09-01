@@ -3,12 +3,12 @@ title: 创建和使用资源文件
 description: 了解如何从各种输入源创建 Batch 资源文件。 本文介绍有关如何创建这些文件并将其置于 VM 上的一些常用方法。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964016"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146294"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > 若要访问容器，必须同时拥有 `Read` 和 `List` 权限；而如果要访问 blob，只需要 `Read` 权限即可。
 
-配置权限后，创建 SAS 令牌并格式化 SAS URL 以访问存储容器。 使用存储容器的格式化 SAS URL，通过 [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 生成资源文件。
+配置权限后，创建 SAS 令牌并格式化 SAS URL 以访问存储容器。 使用存储容器的格式化 SAS URL，通过 [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl) 生成资源文件。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -93,13 +93,13 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 Batch 作业可能包含多个任务，这些任务都使用相同的公共文件。 如果在许多任务之间共享公共任务文件，那么使用应用程序包来包含文件（而不是使用资源文件）可能是更好的选择。 应用程序包优化了下载速度。 此外，应用程序包中的数据缓存在任务之间，因此，如果任务文件不经常更改，应用程序包可能非常适合你的解决方案。 借助应用程序包，无需手动管理多个资源文件或生成 SAS URL 即可访问 Azure 存储中的文件。 Batch 在后台与 Azure 存储协作存储应用程序包，并将其部署到计算节点。
 
-如果每个任务本身包含许多独有的文件，那么资源文件是最佳选择，因为通常需要更新或替换那些使用独有文件的任务，这对于应用程序包内容而言并不简单。 资源文件使更新、添加或编辑单个文件的操作更具灵活性。
+如果每个任务都具有该任务独有的多个文件，则资源文件是最佳选项，因为通常需要更新或替换使用唯一文件的任务，这并不像应用程序包内容那样简单。 资源文件使更新、添加或编辑单个文件的操作更具灵活性。
 
 ### <a name="number-of-resource-files-per-task"></a>每个任务的资源文件数
 
 如果在任务上指定了几百个资源文件，Batch 可能会因为任务太大而拒绝该任务。 最好是将任务本身的资源文件数量减到最小，从而使任务保持较小规模。
 
-如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
+如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
 
 ## <a name="next-steps"></a>后续步骤
 

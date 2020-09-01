@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 2a40c6158b5d29f695360c04a0d4376efd4238f9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 927908fa708e7e687bf82400c10e08fbcccdef19
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288475"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145019"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -29,7 +29,11 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
+* [Dsv4 系列](../dv4-dsv4-series.md)
+* [Ddsv4 系列](../ddv4-ddsv4-series.md)
+* [Dasv4 系列](../dav4-dasv4-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
+* [Easv4 系列](../eav4-easv4-series.md)
 * [Fsv2 系列](../fsv2-series.md)
 * [GS 系列](../sizes-previous-gen.md#gs-series)
 * [HB 系列](../hb-series.md)
@@ -72,7 +76,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
-| Feature | 第 1 代 | 第 2 代 |
+| 功能 | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 启动             | PCAT         | UEFI |
 | 磁盘控制器 | IDE          | SCSI |
@@ -104,7 +108,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 1. 选择“创建资源”。
 1. 在左侧的“Azure 市场”中单击“查看全部”。
 1. 选择支持 Gen2 的映像。
-1. 单击“创建”。
+1. 单击**创建**。
 1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
 1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。

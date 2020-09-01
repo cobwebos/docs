@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份和恢复 Azure VM
 description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Azure VM
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892399"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178125"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -474,7 +474,7 @@ $restorejob
 #### <a name="restore-managed-disks"></a>还原托管磁盘
 
 > [!NOTE]
-> 如果备份的 VM 具有托管磁盘，并且你想要将其还原为托管磁盘，我们从 Azure PowerShell RM 模块 v 6.7.0 引入了相关功能。 更高版本
+> 如果受支持的 VM 具有托管磁盘，并且你想要将其还原为托管磁盘，则已引入 Azure PowerShell RM 模块 v 6.7.0 中的功能。 开始.
 >
 >
 

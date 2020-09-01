@@ -1,5 +1,5 @@
 ---
-title: 在 Microsoft Azure Stack Edge 设备上运行 GPU 模块 |Microsoft Docs
+title: 在 Microsoft Azure Stack Edge GPU 设备上运行 GPU 模块 |Microsoft Docs
 description: 描述如何通过 Azure 门户在 Azure Stack 边缘设备上配置和运行 GPU 上的模块。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 307cfde3d983c5d821090e5b03e9bf4e9dd6f5fa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 19b6001e7bf5038b4c5e6112266d1e5dfc0a792b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083096"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146311"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>在 Azure Stack 边缘设备上的 GPU 上配置和运行模块
 

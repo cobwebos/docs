@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 665451af58ab7648461eb749e6ea23cd0d648680
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8ae2da130f61d31db4904ed2dd5ac18444929950
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009249"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177493"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>使用 PowerShell 向托管标识分配对资源的访问权限
 
@@ -36,7 +36,7 @@ ms.locfileid: "89009249"
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 安装[最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)（如果尚未安装）。
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 RBAC 授予托管标识对另一资源的访问权限
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 Azure RBAC 将托管标识访问权限分配给另一资源
 
 在 Azure 资源（[如 Azure VM](qs-configure-powershell-windows-vm.md)）上启用托管标识后：
 

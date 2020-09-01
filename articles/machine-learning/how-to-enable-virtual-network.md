@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 343063c74912b234268757c36384ea876c068c21
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824196"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146806"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用专用虚拟网络进行训练和推理期间的网络隔离
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -438,7 +438,7 @@ except ComputeTargetException:
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-创建过程完成后，请在试验中使用该群集训练模型。 有关详细信息，请参阅[选择并使用用于训练的计算目标](how-to-set-up-training-targets.md)。
+创建过程完成后，请在试验中使用该群集训练模型。 有关详细信息，请参阅 [使用计算目标进行定型](how-to-set-up-training-targets.md)。
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
@@ -667,7 +667,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > * Azure 机器学习工作区区域应为 " [privated 链接已启用" 区域](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)。 
 > * Azure 容器注册表必须是高级版。 若要详细了解如何升级，请参阅[更改 SKU](/azure/container-registry/container-registry-skus#changing-skus)。
 > * Azure 容器注册表必须与用于训练或推理的存储帐户和计算目标位于同一虚拟网络和子网中。
-> * Azure 机器学习工作区必须包含 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)。
+> * Azure 机器学习工作区必须包含 [Azure 机器学习计算群集](how-to-create-attach-compute-sdk.md#amlcompute)。
 >
 >     如果 ACR 位于虚拟网络后面，Azure 机器学习无法使用它来直接生成 Docker 映像。 而是使用计算群集来生成映像。
 
@@ -828,14 +828,15 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
     保留网络安全组的默认出站规则。 有关详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的“默认安全规则”。
 
+
     如果你不想要使用默认出站规则，同时想要限制虚拟网络的出站访问，请参阅[限制来自虚拟网络的出站连接](#limiting-outbound-from-vnet)部分。
 
-1. 将 VM 或 HDInsight 群集附加到 Azure 机器学习工作区。 有关详细信息，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md)。
+1. 将 VM 或 HDInsight 群集附加到 Azure 机器学习工作区。 有关详细信息，请参阅 [使用计算目标进行模型定型](how-to-set-up-training-targets.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [设置训练环境](how-to-set-up-training-targets.md)
+* [使用模型训练的计算目标](how-to-set-up-training-targets.md)
 * [设置专用终结点](how-to-configure-private-link.md)
 * [模型部署位置](how-to-deploy-and-where.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)

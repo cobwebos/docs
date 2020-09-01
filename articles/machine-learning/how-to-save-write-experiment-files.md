@@ -12,25 +12,25 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319569"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144026"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍在试验中保存输入文件以及写入输出文件的位置，以防止出现存储空间上限错误和试验延迟。
 
-在[计算目标](how-to-set-up-training-targets.md)上启动训练运行时，它们会与外部环境隔离。 此设计的目的是确保试验的可再现性和可移植性。 如果在相同或不同的计算目标上运行同一脚本两次，可获得相同的结果。 在此设计中，可将计算目标视为无状态计算资源，其中每个资源与完成后运行的作业无关联。
+在[计算目标](concept-compute-target.md)上启动训练运行时，它们会与外部环境隔离。 此设计的目的是确保试验的可再现性和可移植性。 如果在相同或不同的计算目标上运行同一脚本两次，可获得相同的结果。 在此设计中，可将计算目标视为无状态计算资源，其中每个资源与完成后运行的作业无关联。
 
 ## <a name="where-to-save-input-files"></a>保存输入文件的位置
 
 在对计算目标或本地计算机启动试验之前，必须确保所需文件对该计算目标可用，例如需要运行的代码的依赖项文件和数据文件。
 
-Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想要上传的敏感数据，请使用[. ignore file](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不要将其包含在源目录中。 而是使用数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)访问数据。
+Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想上传的敏感数据，请使用 [.ignore 文件](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不将其包含在源目录中。 改为使用[数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)来访问数据。
 
 试验快照的存储空间上限为 300 MB 和/或 2000 个文件。
 
@@ -79,4 +79,4 @@ Jupyter 笔记本| 创建 `.amlignore` 文件或将笔记本移动到新的空�
 
 * 详细了解如何[访问数据存储中的数据](how-to-access-data.md)。
 
-* 详细了解[如何设置训练目标](how-to-set-up-training-targets.md)。
+* 详细了解如何使用 [PYTHON SDK](how-to-create-attach-compute-sdk.md) 创建计算目标或使用 [studio](how-to-create-attach-compute-studio.md)。

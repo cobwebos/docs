@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117220"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178937"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -29,7 +29,7 @@ ms.locfileid: "88117220"
 > 请考虑使用 Azure 资源的托管标识作为应用程序标识，而不是创建服务主体。 如果代码在支持托管标识的服务上运行并访问支持 Azure AD 身份验证的资源，则托管标识是更好的选择。 若要详细了解 Azure 资源的托管标识（包括当前支持它的服务），请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>应用注册、应用对象和服务主体
-无法使用 Azure 门户直接创建服务主体。  通过 Azure 门户注册应用程序时，会在主目录或租户中自动创建应用程序对象和服务主体。  有关应用注册、应用对象和服务主体之间关系的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
+无法使用 Azure 门户直接创建服务主体。  如果通过 Azure 门户注册应用程序，则将在你的主目录或租户中自动创建应用程序对象和服务主体。  有关应用注册、应用对象和服务主体之间关系的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 ## <a name="permissions-required-for-registering-an-app"></a>注册应用所需的权限
 
@@ -87,7 +87,7 @@ ms.locfileid: "88117220"
 
 ## <a name="assign-a-role-to-the-application"></a>将角色分配给应用程序
 
-若要访问订阅中的资源，必须将角色分配给应用程序。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
+若要访问订阅中的资源，必须将角色分配给应用程序。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
@@ -107,7 +107,7 @@ ms.locfileid: "88117220"
 
    ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”  完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
+1. 选择“保存”完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 若要管理服务主体（权限、用户同意权限、查看已同意的用户、查看权限、查看登录信息等），请访问“企业应用程序”。
 
@@ -159,7 +159,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
     ![选择“上传证书”并选择要添加的证书](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. 选择“添加”  。
+1. 选择“添加”   。
 
 在应用程序注册门户中将证书注册到你的应用程序后，你需要启用客户端应用程序代码以使用该证书。
 
@@ -178,7 +178,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
    ![复制机密值，因为以后不再可以检索到此值](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>在资源上配置访问策略
-请记住，你可能需要在应用程序需要访问的资源上配置其他权限。 例如，你还必须[更新密钥保管库的访问策略](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)，以使应用程序能够访问密钥、机密或证书。  
+请记住，可能需要对应用程序需要访问的资源配置附加权限。 例如，你还必须[更新密钥保管库的访问策略](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)，以使应用程序能够访问密钥、机密或证书。  
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到密钥保管库并选择“访问策略”。  
 1. 选择“添加访问策略”，然后选择要授予应用程序的密钥、机密和证书权限。  选择之前创建的服务主体。
@@ -187,5 +187,5 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用 Azure PowerShell 创建服务主体](howto-authenticate-service-principal-powershell.md)。
-* 若要了解有关指定安全策略的信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。  
+* 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。  
 * 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。

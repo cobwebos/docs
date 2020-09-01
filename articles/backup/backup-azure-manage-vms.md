@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999336"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145427"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -121,7 +121,7 @@ ms.locfileid: "88999336"
 * **停止保护并删除备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM 并删除所有恢复点。 你将无法还原 VM，也无法使用“恢复备份”选项。
 
 >[!NOTE]
->如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但始终会保留一个最后的恢复点，直至你显式停止备份并删除数据。
+>如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但最新的恢复点将始终保留，直到你停止备份并删除数据。
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>停止保护并保留备份数据
@@ -187,8 +187,8 @@ ms.locfileid: "88999336"
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主数据源不再存在的备份项
 
 * 如果在不停止保护的情况下删除或移动为 Azure 备份配置的 Azure Vm，则计划的备份作业和按需 (即席) 备份作业将失败，并出现错误 UserErrorVmNotFoundV2。 备份预检查将为 "失败的按需备份作业" 显示为 "严重" (失败的计划作业不) 显示。
-* 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最后一个恢复点除外）将根据备份策略中设置的保留范围进行清理。
-* 建议删除主数据源不再存在的备份项，以避免任何额外成本，如果不再需要删除资源的备份项/数据，因为最后一个恢复点将被永久保留，并且根据适用的备份定价对该用户收费。
+* 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点 (除了最近的恢复点) 会根据备份策略中设置的保留期进行清理。
+* 如果不再需要删除资源的备份项/数据，因为最近的恢复点将被永久保留，并且根据适用的备份定价对用户收费，则建议删除主数据源不再存在的备份项。
 
 ## <a name="next-steps"></a>后续步骤
 

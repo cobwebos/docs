@@ -41,6 +41,8 @@
       href: location-condition.md
     - name: 假设分析工具
       href: what-if-tool.md
+    - name: 连续访问评估
+      href: concept-continuous-access-evaluation.md
     - name: 自定义控件
       href: controls.md
     - name: 经典策略迁移
@@ -90,13 +92,13 @@
       href: terms-of-use.md
     - name: 登录频率和浏览器持久性控制
       href: howto-conditional-access-session-lifetime.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查登录问题
           href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具排查问题
           href: troubleshoot-conditional-access-what-if.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faqs.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md

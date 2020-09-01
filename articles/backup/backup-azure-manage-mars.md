@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893062"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145563"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -173,7 +173,7 @@ ms.locfileid: "88893062"
 
 本部分讨论使用 MARS 保护的源计算机不再可用的情况，因为它已被删除、损坏、感染了恶意软件/勒索软件或已停止使用。
 
-对于这些计算机，Azure 备份服务确保最后一个恢复点不会过期 (也就是说，不会根据备份策略中指定的保留规则将) 修剪。 因此，你可以安全地还原计算机。  考虑可以对备份数据执行的以下方案：
+对于这些计算机，Azure 备份服务可确保最近的恢复点不会过期 (也就是说，不会根据备份策略中指定的保留规则将) 修剪。 因此，你可以安全地还原计算机。  考虑可以对备份数据执行的以下方案：
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>方案1：源计算机不可用，不再需要保留备份数据
 

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8682342d23c37d527528de0b525dbdd49a52676e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853392"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144100"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 包在 Python (preview 中 & 预测来说明 ML 模型) 
 
@@ -275,7 +275,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md#amlcompute)。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
+1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅 [创建具有 PYTHON SDK 的计算目标](how-to-create-attach-compute-sdk.md#amlcompute) 。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
 
 1. 下载本地 Jupyter 笔记本中的解释。
 

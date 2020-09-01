@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017713"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146617"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>规划应用程序部署 Azure Active Directory
 
@@ -55,11 +55,8 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 我的应用程序是免费的，不需要任何许可证即可在基本级别使用。 但是，目录中的对象数以及要部署的其他功能可能需要额外的许可证。 某些具有许可要求的常见 Azure AD 情况包括以下安全功能：
 
 * [Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
 * [基于组的成员身份](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
 * [自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
 * [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 请参阅 [Azure AD 的完整许可指南](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -69,7 +66,6 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 在开始此项目之前，请完成以下先决条件：
 
 * [集成应用程序 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
 * [管理 Azure AD 用户和组基础结构](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>计划 Azure AD 应用部署
@@ -126,11 +122,11 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 | 确定试点组| 确定要使用的 Azure AD 安全组，并确保所有试点成员都是组的一部分。 |
 | 确定要为生产启用的组。| 确定要使用的 Azure AD 安全组或同步到 Azure AD 的 Active Directory 组。 确保所有试点成员都是组的一部分。 |
 | 允许用户使用 SSO 实现某些类型的应用程序| 联合 SSO，OAuth，密码 SSO，应用代理 |
-| 允许用户使用自助服务密码重置 | 适合 |
-| 允许用户使用多重身份验证| 适合 |
+| 允许用户使用自助服务密码重置 | 是 |
+| 允许用户使用多重身份验证| 是 |
 | 允许用户对特定类型的组使用自助服务组管理| 安全组、Microsoft 365 组 |
-| 允许用户使用自助服务应用管理| 适合 |
-| 允许用户使用访问评审| 适合 |
+| 允许用户使用自助服务应用管理| 是 |
+| 允许用户使用访问评审| 是 |
 
 ### <a name="plan-consent-strategy"></a>计划同意策略
 
@@ -139,7 +135,6 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 若要使用管理员许可，你必须是组织的全局管理员，并且应用程序必须是：
 
 * 已在你的组织中注册
-
 * 已在另一 Azure AD 组织中注册，并且之前至少被一个用户同意
 
 有关详细信息，请参阅 [在 Azure Active Directory 中配置最终用户同意应用程序的方式](configure-user-consent.md)。
@@ -180,9 +175,7 @@ Microsoft 为应用程序提供 [电子邮件和其他通信的可自定义模�
 如果必须集成基于密码的 SSO 应用程序，则应定义一种机制，用于使用 [受支持的浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大规模部署扩展。 选项包括：
 
 * [Internet Explorer 组策略](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
 * [Internet Explorer Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
 * [适用于 Chrome、Firefox、Microsoft Edge 或 IE 的用户驱动的下载和配置](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 不使用基于密码的 SSO 应用程序的用户也将受益于该扩展。 这些优势包括：从其搜索栏启动任何应用、查找对最近使用的应用程序的访问权限，以及链接到 "我的应用程序" 页。
@@ -294,7 +287,6 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>应用程序自助服务功能测试用例示例
 
-
 | 业务案例| 预期结果 |
 | - | - |
 | 用户可以管理应用程序的成员身份| 用户可以添加/删除有权访问该应用程序的成员 |
@@ -319,22 +311,5 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 你可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 来管理你的角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
 
-### <a name="troubleshoot-my-apps-issues"></a>排查应用问题
-
-通过常见方案为你的支持组织创建故障排除指南，这些方案指向 Microsoft 文档的解决方案。 你可能想要创建一些指导，以将支持分解为你的组织所使用的层。
-
-有关参考，请参阅以下故障排除指南：
-
-[不显示应用程序](access-panel-troubleshoot-application-not-appearing.md)
-
-[出现意外应用程序](access-panel-troubleshoot-unexpected-application.md)
-
-[用户无法登录 "我的应用"](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[使用自助应用程序访问时的问题](access-panel-troubleshoot-self-service-access.md)
-
-[浏览器扩展问题](manage-access-panel-browser-extension.md)
-
 ## <a name="next-steps"></a>后续步骤
-
 [规划 Azure 多重身份验证的部署](https://aka.ms/deploymentplans/mfa)

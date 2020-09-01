@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5f7d547ad549b2747ae41182ee4058b001d9e78a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960820"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146379"
 ---
 # <a name="using-certificates-with-batch"></a>将证书与 Batch 配合使用
 
@@ -39,6 +39,6 @@ ms.locfileid: "85960820"
 
 ## <a name="next-steps"></a>后续步骤
 
-Batch 具有证书 API [AZ batch 证书创建](/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
+Batch 具有证书 API [AZ batch 证书创建](/cli/azure/batch/certificate)
 
 有关使用 Key Vault 的信息，请参阅[使用 Batch 安全地访问 Key Vault](credential-access-key-vault.md)。

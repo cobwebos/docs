@@ -151,10 +151,10 @@
               href: azure-stack-edge-monitor.md
             - name: 使用 Kubernetes 仪表板
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 设备问题
-              href: azure-stack-edge-troubleshoot.md
+              href: azure-stack-edge-gpu-troubleshoot.md
             - name: 订购问题
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: 请联系 Microsoft 支持部门

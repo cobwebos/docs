@@ -4,12 +4,12 @@ description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d847dd926d157e455a6ef4e0c58c9dd204a1ecc7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921998"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146453"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -334,8 +334,8 @@ foreach (ApplicationSummary app in applications)
 * [Batch REST API][api_rest] 还提供应用程序包的使用支持。 有关示例，请参阅[将池添加到帐户][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，了解如何使用 REST API 指定要安装的包。 若要深入了解如何使用 Batch REST API 获取应用程序信息，请参阅[应用程序][rest_applications]。
 * 了解如何以编程方式[使用 Batch Management .NET 管理 Azure Batch 帐户和配额](batch-management-dotnet.md)。 [Batch Management .NET][api_net_mgmt] 库可以启用 Batch 应用程序或服务的帐户创建和删除功能。
 
-[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_net]: /dotnet/api/overview/azure/batch/client
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management
 [api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
