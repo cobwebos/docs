@@ -75,7 +75,7 @@ ms.locfileid: "89047473"
 
 3. 目前仅支持 SQL API。 粘贴 **连接字符串**，输入 **帐户标签**，选择 " **下一步** " 查看摘要，然后选择 " **连接** 到连接 Azure Cosmos DB 帐户"。 有关检索主连接字符串的信息，请参阅[获取连接字符串](manage-with-powershell.md#list-keys)。
 
-    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="从 "模拟器" 对话框连接到 Cosmos DB":::
+    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="从 模拟器 对话框连接到 Cosmos DB":::
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB 资源管理
