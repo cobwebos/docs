@@ -1,20 +1,20 @@
 ---
-title: 快速入门：在组织外共享 - Azure Data Share
-description: 快速入门 - 使用 Azure Data Share 和资源管理器模板与客户和合作伙伴共享数据
+title: 在组织外共享（ARM 模板）- Azure Data Share 快速入门
+description: 在本快速入门中，了解如何使用 Azure Data Share 和资源管理器模板与客户和合作伙伴共享数据。
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575633"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654100"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>教程：使用 Azure Data Share 和资源管理器模板共享数据
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>快速入门：使用 Azure Data Share 和资源管理器模板共享数据
 
 了解如何从 Azure 存储帐户使用 Azure 资源管理器模板设置新的 Azure Data Share，然后开始与 Azure 组织外部的客户和合作伙伴共享数据。 有关支持的数据存储的列表，请参阅 [Azure Data Share 中支持的数据存储](./supported-data-stores.md)。
 
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建 Azure Data Share 并邀请收件人。 若要了解有关数据使用者如何接受和接收数据共享，请继续学习[接受和接收数据](subscribe-to-data-share.md)教程。
+本快速入门介绍了如何创建 Azure Data Share 并邀请收件人。 若要了解有关数据使用者如何接受和接收数据共享，请继续学习[接受和接收数据](subscribe-to-data-share.md)教程。

@@ -5,16 +5,16 @@ description: 了解新版本的 Azure 数字孪生中的更改内容
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826817"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181419"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>新的 Azure 数字孪生与以前的版本 (2018) 有何不同？
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>新版 Azure 数字孪生是指什么？ 它与之前的版本 (2018) 有何区别？
 
 Azure 数字孪生的第一个公共预览版已于 2018 年 10 月发布。 虽然以前版本的核心概念现在已延续到公共预览版中的新服务，但是许多接口和实现细节都已更改，以使该服务更加灵活和可访问。 这些更改是由客户反馈推动的。
 
@@ -44,5 +44,4 @@ Azure 数字孪生的第一个公共预览版已于 2018 年 10 月发布。 虽
 
 接下来，通过第一个教程深入研究如何使用 Azure 数字孪生：
 
-> [!div class="nextstepaction"]
-> [*教程：* 为客户端应用编写代码](tutorial-code.md)
+[*教程：* 为客户端应用编写代码](tutorial-code.md)

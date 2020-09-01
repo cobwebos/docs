@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 7fab15ae4e9e58af58a4490beb2d512379976d1c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263882"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181097"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>利用资产清单和管理工具浏览和管理资源
 
@@ -38,7 +38,7 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览|
-|计价|免费|
+|计价|Free|
 |必需的角色和权限：|所有用户|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
 |||
@@ -102,6 +102,9 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 1. 若要使用 " **安全结果" 包含** 筛选器，请输入从 "ID"、"安全检查" 或 "CVE" 名称中查找 "筛选器"，以筛选受影响的资源：
 
     !["安全发现包含" 筛选器](./media/asset-inventory/security-findings-contain-elements.png)
+
+    > [!TIP]
+    > **安全发现包含**和**标记**筛选器仅接受单个值。 若要按多个筛选，请使用 " **添加筛选器**"。
 
 1. 若要使用 " **定价层** " 筛选器，请选择一个或多个选项 (可用、部分或标准) ：
 

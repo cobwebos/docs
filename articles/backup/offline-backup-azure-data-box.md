@@ -3,12 +3,12 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 从 MARS 代理脱机将较大的初始备份数据植入恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761553"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180926"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
@@ -21,7 +21,7 @@ ms.locfileid: "88761553"
 
 本文介绍如何使用 Azure Data Box 从 MARS 代理脱机将较大的初始备份数据植入恢复服务保管库。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 以下 Windows Sku 支持通过使用 Azure Data Box 从 MARS 代理播种数据的过程。
 
@@ -56,7 +56,7 @@ ms.locfileid: "88761553"
 >[!IMPORTANT]
 >单个服务器的初始备份数据必须包含在单个 Azure Data Box 实例或 Azure Data Box 磁盘中，并且不能在相同或不同 Sku 的多个设备之间共享。 但 Azure Data Box 设备可以包含来自多个服务器的初始备份。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure 订阅和所需权限
 
@@ -195,7 +195,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 
     ![获取订阅 ID Data Box 作业](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“**下一步**”。
+1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“下一步”  。
 
     ![选择 Data Box 订单](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -247,7 +247,7 @@ MARS 代理将开始备份您选择的 Azure Data Box 设备上的数据。 此�
 
 - MARS 代理成功创建对应于初始备份的恢复点之后，可以删除与 Azure Data Box 作业关联的存储帐户或特定内容。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure Active Directory (Azure AD 应用程序。 此应用程序需要一个证书，用于在配置脱机种子设定策略时创建和上载的身份验证。 我们使用 Azure PowerShell 创建证书并将其上传到 Azure AD 应用程序。
 
@@ -310,7 +310,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure A
     >- 在已连接到 Azure 的 PowerShell 中运行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
     > - 请参阅名为 CurrentUserId 的注册表路径 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` 。 *CurrentUserId*
 
-6. 右键单击在上一步骤中添加的字符串并选择“修改”。 在 "值" 中，提供你在步骤2中导出的证书的指纹。 选择“确定” 。
+6. 右键单击在上一步骤中添加的字符串并选择“修改”。 在 "值" 中，提供你在步骤2中导出的证书的指纹。 选择“确定”。
 
 7. 若要获取指纹值，请双击该证书。 选择“详细信息”选项卡，并向下滚动，直到看到指纹字段。 选择“指纹”并复制其值。
 

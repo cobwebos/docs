@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
 ms.custom: references_regions
-ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050059"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723718"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什么是已启用 Azure Arc 的 Kubernetes 预览版？
 
@@ -27,9 +27,21 @@ ms.locfileid: "87050059"
 > [!NOTE]
 > 启用了 Azure Arc 的 Kubernetes 处于预览状态。 建议不要将它用于生产工作负载。
 
+## <a name="supported-kubernetes-distributions"></a>支持的 Kubernetes 分布
+
+启用 Azure Arc 的 Kubernetes 可以与任何云本机计算基础 (CNCF) 认证的 Kubernetes 群集协同工作，例如 Azure 上的 AKS 引擎、Azure Stack Hub 上的 AKS 引擎、GKE、EKS 和 VMware vSphere 群集。
+
+启用 Azure Arc 的 Kubernetes 功能已由 Arc 团队在以下分发版上进行了测试：
+* RedHat OpenShift 4.3
+* Rancher RKE 1.0.8
+* Canonical Charmed Kubernetes 1.18
+* AKS 引擎
+* Azure Stack Hub 上的 AKS 引擎
+* 群集 API 提供程序 Azure
+
 ## <a name="supported-scenarios"></a>支持的方案 
 
-已启用 Azure Arc 的 Kubernetes 支持以下方案： 
+启用 Azure Arc 的 Kubernetes 支持以下方案： 
 
 * 连接在 Azure 外部运行的 Kubernetes，以便用于库存、分组和标记。
 
@@ -41,10 +53,10 @@ ms.locfileid: "87050059"
 
 ## <a name="supported-regions"></a>支持的区域 
 
-以下区域目前支持已启用 Azure Arc 的 Kubernetes： 
+以下区域目前支持启用 Azure Arc 的 Kubernetes： 
 
 * 美国东部 
-* 西欧 
+* 西欧
 
 ## <a name="next-steps"></a>后续步骤
 

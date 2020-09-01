@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192279"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853274"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -78,8 +78,8 @@ SignalR 服务将监视应用程序服务器的检测信号。
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>服务模式 `Default`/`Serverless`/`Classic` 的含义是什么？ 如何选择？
 
 模式：
-* `Default` 模式需要中心服务器。 当没有可用于中心的服务器连接时，客户端尝试连接到该中心将失败。
-* `Serverless` 模式不允许任何服务器连接，即它将拒绝所有服务器连接，所有客户端必须处于无服务器模式。
+* `Default` 模式需要中心服务器。 在此模式下，Azure SignalR 会将客户端流量路由到其连接的中心服务器连接。 Azure SignalR 将检查连接的中心服务器。 如果找不到连接的中心服务器，Azure SignalR 将拒绝传入的客户端连接。 在此模式下，你还可使用管理 API 直接通过 Azure SignalR 管理已连接的客户端。
+* `Serverless` 模式不允许任何服务器连接，也就是说它将拒绝所有服务器连接。 所有客户端必须处于无服务器模式。 客户端连接到 Azure SignalR 时，用户通常使用 Azure 函数之类的无服务器技术来处理中心逻辑。 请参阅使用 Azure SignalR 的无服务器模式的[简单示例](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu)。
 * `Classic` 模式为混合状态。 当中心具有服务器连接时，新客户端将被路由到中心服务器；否则，客户端将进入无服务器模式。
 
   这可能会导致某些问题，例如，所有服务器连接暂时丢失，某些客户端将进入无服务器模式，而不是路由到中心服务器。

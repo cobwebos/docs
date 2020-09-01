@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 6c29240aa3267cd93ba0c3de1f0c797ce1a1483c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: de0847beb92ebc95e1998d88cae93dbc19c3fb27
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083611"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180042"
 ---
 # <a name="azure-stack-edge-with-gpu-preview-release-notes"></a>带有 GPU 预览发行说明的 Azure Stack 边缘
 
@@ -31,7 +31,7 @@ ms.locfileid: "89083611"
 
 下表提供了 Azure Stack Edge 设备的已知问题的摘要。
 
-| 不是。 | Feature | 问题 | 解决方法/备注 |
+| 不能。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>在连接到设备的 PowerShell 窗口中，运行 `Add-HcsComputeNetwork` 。 </li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
 | **2.** |刷新| 不支持对通过 **刷新** 还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如，一系列操作，例如：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST Api 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行的常规文件复制来替换整个 blob。|
@@ -46,7 +46,7 @@ ms.locfileid: "89083611"
 |**11x17.**|Kubernetes |Kubernetes 当前不允许多协议 LoadBalancer 服务。 例如，需要同时侦听 TCP 和 UDP 的 DNS 服务。 |若要解决 Kubernetes 与 MetalLB 的这一限制，两个服务 (一个用于 TCP，一个用于 UDP) ，可以在同一 pod 选择器上创建一个。 这些服务使用相同的共享密钥和 loadBalancerIP 来共享相同的 IP 地址。 如果服务数多于可用 IP 地址，则还可以共享 Ip。 <br> 有关详细信息，请参阅 [IP 地址共享](https://metallb.universe.tf/usage/#ip-address-sharing)。|
 |**10.**|Kubernetes 群集|现有 Azure IoT Edge marketplace 模块将不会在 Kubernetes 群集上作为 Azure Stack Edge 设备上 IoT Edge 的托管平台运行。|在将这些模块部署到 Azure Stack Edge 设备上之前，需要对其进行修改。 有关详细信息，请参阅修改 marketplace Azure IoT Edge 模块，使其在 Azure Stack Edge 设备上运行。<!-- insert link-->|
 |**9.**|Kubernetes |Azure Stack Edge 设备上的 Kubernetes 上的 Azure IoT Edge 不支持基于文件的绑定装入。|IoT Edge 使用转换层将选项转换 `ContainerCreate` 为 Kubernetes 构造。 `Binds`不能将映射创建到 hostpath 目录，也不能创建基于文件的绑定装载，因此无法将其绑定到 IoT Edge 容器中的路径。|
-
+|**毫米.**|Kubernetes |如果为 IoT Edge 提供自己的证书，并将其添加到 Azure Stack Edge 设备上，则不会在 Helm 图更新过程中选取新证书。|若要解决此问题，请 [连接到设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md)。 重新启动 `iotedged` 和 pod `edgehub` 。|
 
 ## <a name="next-steps"></a>后续步骤
 

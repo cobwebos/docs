@@ -1,6 +1,6 @@
 ---
 title: 概述 - 创建适用于 Azure 的 Linux 映像
-description: 概述如何将 Linux VM 映像引入到 Azure 或新建映像以在 Azure 中使用。
+description: 如何将 Linux VM 映像引入到 Azure 或新建映像以在 Azure 中使用。
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502174"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815294"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -25,7 +25,7 @@ ms.locfileid: "86502174"
 ## <a name="difference-between-managed-disks-and-images"></a>托管磁盘和映像之间的差异
 
 
-Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](../windows/faq-for-disks.md#managed-disks)或用作映像的源。 
+Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](../faq-for-disks.md#managed-disks)或用作映像的源。 
 
 Azure 托管磁盘是单个的 VHD。 可以使用现有 VHD 和根据其创建托管磁盘，或者从头开始创建一个空托管磁盘。 可以通过将磁盘附加到 VM 来借助托管磁盘创建 VM，但一个 VM 只能使用一个 VHD。 OS 属性无法修改，Azure 只会尝试开启 VM 和启动磁盘。 
 

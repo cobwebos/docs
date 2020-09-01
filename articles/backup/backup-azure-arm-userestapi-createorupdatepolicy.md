@@ -1,15 +1,15 @@
 ---
 title: 使用 REST API 创建备份策略
-description: 本文介绍如何使用 REST API 创建和管理备份策略（计划和保留期）。
+description: 在本文中，你将了解如何使用 REST API 创建和管理备份策略 (计划和保留) 。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 4678c6aaa03d511da35d5efee2b1e75d08546781
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006255"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179600"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 

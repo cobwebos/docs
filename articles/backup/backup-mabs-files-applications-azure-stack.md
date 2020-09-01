@@ -3,16 +3,16 @@ title: 在 Azure Stack VM 中备份文件
 description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和恢复到 Azure Stack 环境。
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: caac247b5a972c515b4350f1b0c79792bbf75537
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825794"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180977"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
 
-可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护相同虚拟网络中任何 Azure Stack 服务器上的文件。 安装 Azure 备份服务器后，可添加 Azure 磁盘以增加可用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。
+可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护相同虚拟网络中任何 Azure Stack 服务器上的文件。 安装 Azure 备份服务器后，请添加 Azure 磁盘以增加用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。
 
 > [!NOTE]
 > 尽管 Azure 备份服务器和 System Center Data Protection Manager (DPM) 类似，但不支持将 DPM 与 Azure Stack 一起使用。
@@ -46,13 +46,13 @@ ms.locfileid: "88825794"
 
     Microsoft 建议将共用保护策略的所有数据放入同一个保护组。 有关规划和部署保护组的完整信息，请参阅 System Center DPM 文章[部署保护组](/system-center/dpm/create-dpm-protection-groups)。
 
-4. 在“选择数据保护方法”屏幕中，键入保护组的名称。  选中“我想使用以下介质进行短期保护:”和“我需要在线保护”对应的复选框。   选择“**下一页**”。
+4. 在“选择数据保护方法”屏幕中，键入保护组的名称。  选中“我想使用以下介质进行短期保护:”和“我需要在线保护”对应的复选框。   选择“下一步”  。
 
     ![选择数据保护方法](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     若要选择“我需要在线保护”，必须先选中“我想使用以下介质进行短期保护: 磁盘”。   Azure 备份服务器不能保护磁带，因此，磁盘是短期保护的唯一选择。
 
-5. 在“指定短期目标”屏幕中，选择要在磁盘中保存恢复点的时间长短，以及何时保存增量备份。  选择“**下一页**”。
+5. 在“指定短期目标”屏幕中，选择要在磁盘中保存恢复点的时间长短，以及何时保存增量备份。  选择“下一步”  。
 
     > [!IMPORTANT]
     > **不**应在 Azure 备份服务器附加的磁盘上保留操作恢复（备份）数据超过 5 天。

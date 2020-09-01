@@ -3,16 +3,17 @@ title: 通过自动化功能管理 Azure 成本
 description: 本文介绍如何通过自动化功能管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 08/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 0727f98b917944f3721c6c6758fde05c2efd8773
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449825"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684399"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -79,11 +80,181 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 
 ## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>使用导出功能定期检索大型成本数据集
 
-导出功能是用于定期计划成本数据转储的解决方案。 对于使用情况文件可能过大而无法采用使用情况详细信息 API 可靠地调用和下载数据的组织，建议检索未聚合的成本数据。 数据放置在所选的 Azure 存储帐户中。 因此，可以将其加载到你自己的系统中，并根据团队的需要对其进行分析。 若要在 Azure 门户中配置导出，请参阅[导出数据](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data)。
+可以定期从成本管理进行导出，导出大量数据。 建议通过导出的方式来检索未聚合的成本数据。 特别是当使用情况文件太大而无法使用“使用情况详细信息 API”可靠地调用和下载时。 导出的数据置于你所选择的 Azure 存储帐户中。 因此，可以将其加载到你自己的系统中，并按需对其进行分析。 若要在 Azure 门户中配置导出，请参阅[导出数据](tutorial-export-acm-data.md)。
+
+如果要在不同范围自动执行导出，可以首先了解下一部分的示例 API 请求。 可以使用导出 API 创建自动导出，作为常规环境配置的一部分。 自动导出有助于确保你拥有所需的数据。 扩展 Azure 用途时，可以在自己组织的系统中使用。
+
+### <a name="common-export-configurations"></a>常用导出配置
+
+在创建第一个导出之前，请考虑你的方案和启用该方案所需的配置选项。 请考虑以下导出选项：
+
+- **定期** - 确定导出作业的运行频率以及何时将文件放入 Azure 存储帐户。 你可以选择“每天”、“每周”和“每月”。 尝试配置定期，使其与组织内部系统使用的数据导入作业匹配。
+- **定期间隔** - 确定导出有效期。 文件仅在定期间隔内导出。
+- **时间范围** - 确定在给定运行中由导出生成的数据量。 常用选项是 MonthToDate 和 WeekToDate。
+- **StartDate** - 配置何时开始导出计划。 将在 StartDate 上创建一个导出，然后根据周期创建导出。
+- **类型** - 导出类型分为以下三种：
+  - ActualCost - 显示指定时间段内的总使用量和费用，这些总使用量和费用已累积显示在帐单上。
+  - AmortizedCost - 显示指定时间段内的总使用量和成本，并均摊适用的预留购买成本。
+  - 用法 - 2020 年 7 月 20 日之前创建的所有导出均为“用法”类型。 将所有计划的导出更新为 ActualCost 或 AmortizedCost。
+- **列** - 定义要包含在导出文件中的数据字段。 它们与“用法详细信息 API”中可用的字段相对应。 有关详细信息，请参阅[使用情况详细信息 API](/rest/api/consumption/usagedetails/list)。
+
+### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>每天为订阅创建本月至今导出
+
+请求 URL：`PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
+
+```json
+{
+  "properties": {
+    "schedule": {
+      "status": "Active",
+      "recurrence": "Daily",
+      "recurrencePeriod": {
+        "from": "2020-06-01T00:00:00Z",
+        "to": "2020-10-31T00:00:00Z"
+      }
+    },
+    "format": "Csv",
+    "deliveryInfo": {
+      "destination": {
+        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
+        "container": "{yourContainer}",
+        "rootFolderPath": "{yourDirectory}"
+      }
+    },
+    "definition": {
+      "type": "ActualCost",
+      "timeframe": "MonthToDate",
+      "dataSet": {
+        "granularity": "Daily",
+        "configuration": {
+          "columns": [
+            "Date",
+            "MeterId",
+            "ResourceId",
+            "ResourceLocation",
+            "Quantity"
+          ]
+        }
+      }
+    }
+}
+```
+
+### <a name="automate-alerts-and-actions-with-budgets"></a>通过预算自动执行警报和操作
+
+可通过以下两个组件最大化云投资价值。 一个是自动创建预算。 另一个是配置基于成本的业务流程，以应对预算警报。 可以通过多种方法自动执行 Azure 预算创建。 超过配置的警报阈值时，会发生各种警报响应。
+
+以下各节介绍了可用选项，并提供了示例 API 请求，以帮助你开始使用预算自动化。
+
+#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>如何根据预算限额计算成本
+
+每天根据预算限额计算一次成本。 创建新预算或在预算重置日时，与限额相比的成本为零/Null，因为可能没有进行计算。
+
+当 Azure 检测到你的成本已超过阈值时，系统将在检测期间的一小时内触发通知。
+
+#### <a name="view-your-current-cost"></a>查看当前成本
+
+若要查看当前成本，需要使用[查询 API](/rest/api/cost-management/query) 进行 GET 调用。
+
+对预算 API 的 GET 调用不返回“成本分析”中显示的当前成本。 相反，此调用返回上次计算的成本。
+
+### <a name="automate-budget-creation"></a>自动创建预算
+
+可以使用[预算 API](/rest/api/consumption/budgets) 自动创建预算。 你也可以使用[预算模板](quick-create-budget-template.md)创建预算。 模板是使 Azure 部署标准化同时确保适当配置和强制实施成本控制的简单方法。
+
+#### <a name="common-budgets-api-configurations"></a>常见预算 API 配置
+
+可以通过多种方法在 Azure 环境中配置预算。 首先考虑方案，然后确定启用该方案的配置选项。 查看以下选项：
+
+- **时间粒度** - 表示预算用于累积和计算成本的重复周期。 最常用的选项是“每月”、“每季度”和“每年”。
+- **时间段** - 表示预算有效期。 仅当预算仍然有效时，系统才会主动监控预算并向你发出通知。
+- **通知**
+  - 联系电子邮件 - 当预算累积成本且超过定义的阈值时，电子邮件地址会收到警报。
+  - 联系角色 - 在给定范围内具有匹配的 Azure RBAC 角色的所有用户都会收到带有此选项的电子邮件警报。 例如，订阅所有者可能会收到在订阅范围内创建的预算警报。
+  - 联系人组 - 超出警报阈值时，预算将调用已配置的操作组。
+- **成本维度筛选器** - 可以通过成本分析或查询 API 进行的筛选，也可以对预算进行。 使用此筛选器，可以缩小对于预算要监视的成本范围。
+
+确定满足你需求的预算创建选项后，请使用 API 创建预算。 以下示例可帮助你开始使用常见预算配置。
+
+**创建筛选到多种资源和标记的预算**
+
+请求 URL：`PUT https://management.azure.com/subscriptions/{SubscriptionId} /providers/Microsoft.Consumption/budgets/{BudgetName}/?api-version=2019-10-01`
+
+```json
+{
+  "eTag": "\"1d34d016a593709\"",
+  "properties": {
+    "category": "Cost",
+    "amount": 100.65,
+    "timeGrain": "Monthly",
+    "timePeriod": {
+      "startDate": "2017-10-01T00:00:00Z",
+      "endDate": "2018-10-31T00:00:00Z"
+    },
+    "filter": {
+      "and": [
+        {
+          "dimensions": {
+            "name": "ResourceId",
+            "operator": "In",
+            "values": [
+              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{meterName}",
+              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{meterName}"
+            ]
+          }
+        },
+        {
+          "tags": {
+            "name": "category",
+            "operator": "In",
+            "values": [
+              "Dev",
+              "Prod"
+            ]
+          }
+        },
+        {
+          "tags": {
+            "name": "department",
+            "operator": "In",
+            "values": [
+              "engineering",
+              "sales"
+            ]
+          }
+        }
+      ]
+    },
+    "notifications": {
+      "Actual_GreaterThan_80_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 80,
+        "contactEmails": [
+          "user1@contoso.com",
+          "user2@contoso.com"
+        ],
+        "contactRoles": [
+          "Contributor",
+          "Reader"
+        ],
+        "contactGroups": [
+          "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/actionGroups/{actionGroupName}
+        ],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+```
+
+### <a name="configure-cost-based-orchestration-for-budget-alerts"></a>为预算警报配置基于成本的业务流程
+
+可以配置预算以使用 Azure 操作组启动自动执行操作。 若要详细了解使用预算自动执行操作，请参阅[使用 Azure 预算自动化](../manage/cost-management-budget-scenario.md)。
 
 ## <a name="data-latency-and-rate-limits"></a>数据延迟和速率限制
 
-我们建议每天调用 API 的次数不超过一次。 从 Azure 资源提供程序接收新的使用情况数据时，每隔 4 小时刷新一次成本管理数据。 更频繁地调用不会提供任何其他数据。 相反，它会创建增加的负载。 若要详细了解数据更改的频率和数据延迟的处理方式的详细信息，请参阅[了解成本管理数据](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data)。
+我们建议每天调用 API 的次数不超过一次。 从 Azure 资源提供程序接收新的使用情况数据时，每隔 4 小时刷新一次成本管理数据。 更频繁地调用不会提供任何其他数据。 相反，它会创建增加的负载。 若要详细了解数据更改的频率和数据延迟的处理方式的详细信息，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>错误代码 429 - 调用计数超出了速率限制
 

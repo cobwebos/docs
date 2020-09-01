@@ -1,22 +1,23 @@
 ---
-title: 从 Azure Notebooks 预览版导出 Jupyter 笔记本项目
-description: 快速导出 Jupyter 笔记本项目。
+title: 从 Azure Notebooks 预览版导出 Jupyter Notebook 项目
+description: 快速导出 Jupyter Notebook 项目。
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832026"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892093"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>快速入门：导出 Azure Notebooks 预览版中的 Jupyter 笔记本项目
+# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>快速入门：导出 Azure Notebooks 预览版中的 Jupyter Notebook 项目
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-在本快速入门中，你将下载一个 Azure 笔记本项目，以在其他 Jupyter Notebook 解决方案中使用。 
+在本快速入门中，你将下载一个 Azure Notebooks 项目，以在其他 Jupyter Notebook 解决方案中使用。 
 
 ## <a name="prerequisites"></a>先决条件
+
 现有的 Azure Notebooks 项目。
 
 ## <a name="export-an-azure-notebooks-project"></a>导出 Azure Notebooks 项目
@@ -31,7 +32,7 @@ ms.locfileid: "85832026"
 1. 单击“下载”按钮，以触发包含所有项目文件的 zip 文件下载。
 1. 或者，在特定项目页面中，单击“下载项目”按钮以下载给定项目的所有文件。
 
-下载项目文件后，可以将其与其他 Jupyter Notebook 解决方案一起使用。 以下各部分中介绍的一些选项包括： 
+下载项目文件后，可以将其与其他 Jupyter 笔记本解决方案一起使用。 以下各部分中介绍的一些选项包括： 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
 - [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces)
 - [Azure 机器学习](#use-notebooks-with-azure-machine-learning)
@@ -49,7 +50,7 @@ ms.locfileid: "85832026"
 
 ## <a name="use-notebooks-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Notebooks
 
-[VS Code](https://code.visualstudio.com/) 是可在本地使用或连接到远程计算的免费代码编辑器。 结合 Python 扩展，它为 Python 开发提供了完整的环境，包括使用 Jupyter 笔记本的丰富本机体验。 
+[VS Code](https://code.visualstudio.com/) 是可在本地使用或连接到远程计算的免费代码编辑器。 结合 Python 扩展，它为 Python 开发提供了完整的环境，包括使用 Jupyter Notebooks 的丰富本机体验。 
 
 ![VS Code Jupyter Notebook 支持](media/vs-code-jupyter-notebook.png)
 

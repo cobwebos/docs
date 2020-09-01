@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
-ms.date: 02/27/2020
-ms.openlocfilehash: 31e8506067133304144614ff58974ee21e9680be
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.custom: contperfq1
+ms.date: 08/21/2020
+ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709226"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754865"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
@@ -132,3 +132,6 @@ HDInsight 群集包括 Spark、HBase、Kafka、Hadoop 和其他群集，支持�
 ## <a name="next-steps"></a>后续步骤
 
 * [在 HDInsight 中创建 Apache Hadoop 群集](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [创建 Apache Spark 群集 - 门户](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* [规划 Azure HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)
+* [Azure HDInsight 中的企业安全性](./domain-joined/hdinsight-security-overview.md)

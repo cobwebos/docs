@@ -3,17 +3,18 @@ title: 快速入门 - 通过成本分析了解 Azure 成本
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560583"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718520"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -161,6 +162,10 @@ ms.locfileid: "84560583"
 
 如果需要完整的非聚合数据集，请从计费帐户下载。 然后从门户左侧导航窗格中的服务列表中转到“成本管理 + 计费”。 如果适用，请选择你的计费帐户。 转到“使用情况 + 费用”，然后选择所需计费周期的“下载”图标 。
 
+## <a name="clean-up-resources"></a>清理资源
+
+- 如果已固定成本分析的自定义视图，但你不再需要它，请转到固定该视图的仪表板，然后删除固定视图。
+- 如果下载了使用情况数据文件且不再需要这些文件，请确保将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

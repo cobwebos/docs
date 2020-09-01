@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033636"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750199"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -51,7 +51,7 @@ Durable Functions 以透明方式使用事件溯源。 在后台，业务流程�
 > 要使重播模式正常可靠工作，业务流程协调程序函数代码必须是确定性的。 有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)主题。
 
 > [!NOTE]
-> 如果业务流程协调程序函数发出日志消息，重播行为可能导致发出重复的日志消息。 请参阅[日志记录](durable-functions-diagnostics.md#logging)主题来详细了解此行为的发生原因及其解决方法。
+> 如果业务流程协调程序函数发出日志消息，重播行为可能导致发出重复的日志消息。 请参阅[日志记录](durable-functions-diagnostics.md#app-logging)主题，详细了解此行为发生的原因及其解决方法。
 
 ## <a name="orchestration-history"></a>业务流程历史记录
 

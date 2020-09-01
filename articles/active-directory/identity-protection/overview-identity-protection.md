@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509104"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815175"
 ---
 # <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
@@ -52,9 +52,10 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 | 异常位置登录 | 从异常位置（基于用户最近的登录）进行登录。 |
 | 匿名 IP 地址 | 从匿名 IP 地址登录（例如：Tor 浏览器，匿名程序 VPN）。 |
 | 不熟悉的登录属性 | 使用给定用户最近未曾出现过的属性进行登录。 |
-| 受恶意软件感染的 IP 地址 | 从受恶意软件感染的 IP 地址进行登录 |
-| 凭据泄漏 | 此风险检测指示用户的有效凭据已泄漏 |
-| Azure AD 威胁智能 | Microsoft 的内部和外部威胁智能源已识别出已知的攻击模式 |
+| 受恶意软件感染的 IP 地址 | 从受恶意软件感染的 IP 地址进行登录。 |
+| 凭据泄漏 | 此风险检测指示用户的有效凭据已泄漏。 |
+| 密码喷射 | 表示使用常见密码以统一的暴力攻击方式攻击了多个用户名。 |
+| Azure AD 威胁智能 | Microsoft 的内部和外部威胁智能源已识别出已知的攻击模式。 |
 
 要详细了解这些风险以及如何/何时计算，请参阅[什么是风险](concept-identity-protection-risks.md)一文。
 

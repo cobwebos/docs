@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4183ed7343434b575015e94afb4111b3d14c5e3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b51eb7e59e32985363d83c3d515fa7f54babac1f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071544"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179448"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -35,7 +35,7 @@ ms.locfileid: "89071544"
 | 要求 | 说明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一个功能，它需要与 Azure AD Premium 配合使用。 <br /><br />有关详细信息，请参阅[Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)入门 <br />若要免费试用 30 天，请参阅 [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
-| 必须是 Azure AD 的全局管理员才能开始使用 Azure AD Connect Health |默认情况下，只有全局管理员才能安装和配置运行状况代理、访问信息，以及在 Azure AD Connect Health 中执行任何操作。 有关详细信息，请参阅 [Administering your Azure AD directory](../fundamentals/active-directory-administer.md)（管理 Azure AD 目录）。 <br /><br /> 使用 azure RBAC)  (azure 基于角色的访问控制，你可以允许 Azure AD Connect Health 到组织中的其他用户的访问。 有关详细信息，请参阅 [适用于 Azure AD Connect Health 的 AZURE RBAC) 的 azure 基于角色的访问控制 (。](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**重要说明：** 在安装代理时使用的帐户必须是工作帐户或学校帐户， 而不能是 Microsoft 帐户。 有关详细信息，请参阅 [Sign up for Azure as an organization](../fundamentals/sign-up-organization.md)（以组织身份注册 Azure） |
+| 必须是 Azure AD 的全局管理员才能开始使用 Azure AD Connect Health |默认情况下，只有全局管理员才能安装和配置运行状况代理、访问信息，以及在 Azure AD Connect Health 中执行任何操作。 有关详细信息，请参阅 [Administering your Azure AD directory](../fundamentals/active-directory-administer.md)（管理 Azure AD 目录）。 <br /><br /> 使用 azure RBAC)  (azure 基于角色的访问控制，你可以允许 Azure AD Connect Health 到组织中的其他用户的访问。 有关详细信息，请参阅 [适用于 Azure AD Connect Health 的 AZURE RBAC) 的 azure 基于角色的访问控制 (。](how-to-connect-health-operations.md#manage-access-with-azure-rbac) <br /><br />**重要说明：** 在安装代理时使用的帐户必须是工作帐户或学校帐户， 而不能是 Microsoft 帐户。 有关详细信息，请参阅 [Sign up for Azure as an organization](../fundamentals/sign-up-organization.md)（以组织身份注册 Azure） |
 | Azure AD Connect Health 代理已安装在每台目标服务器上 | Azure AD Connect Health 要求在目标服务器上安装和配置 Health 代理，以便接收数据并提供监视和分析功能。 <br /><br />例如，要从 AD FS 基础结构获取数据，必须将代理安装在 AD FS 和 Web 应用程序代理服务器上。 同样，要获取 AD DS 本地基础结构的相关数据，必须将代理安装在域控制器上。 <br /><br /> |
 | Azure 服务终结点的出站连接 | 在安装期间和运行时，代理需要连接到 Azure AD Connect Health 服务终结点。 如果使用防火墙阻止出站连接，请确保在允许列表中添加以下终结点。 请参阅[出站连接终结点](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |基于 IP 地址的出站连接 | 若要了解如何基于 IP 地址在防火墙上进行筛选，请参阅 [Azure IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653)（Azure IP 范围）。|
@@ -82,15 +82,15 @@ ms.locfileid: "89071544"
 在安装之前，请确保 AD FS 服务器主机名是唯一的，并且未存在于 AD FS 服务中。
 若要启动代理安装，请双击下载的 .exe 文件。 在第一个屏幕上，单击“安装”。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/install1.png)
+![Azure AD Connect Health AD FS 安装开始](./media/how-to-connect-health-agent-install/install1.png)
 
 安装完成后，单击“立即配置”。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/install2.png)
+![Azure AD Connect Health AD FS 安装完成](./media/how-to-connect-health-agent-install/install2.png)
 
 此时会启动 PowerShell 窗口，从而启动代理注册过程。 出现提示时，请使用 Azure AD 帐户登录，该帐户具有执行代理注册所需的访问权限。 默认情况下，全局管理员帐户具有访问权限。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/install3.png)
+![Azure AD Connect Health AD FS 配置登录](./media/how-to-connect-health-agent-install/install3.png)
 
 登录后，将继续 PowerShell。 完成后，可以关闭 PowerShell，因为配置已完成。
 
@@ -98,7 +98,7 @@ ms.locfileid: "89071544"
 
 如果不满足前面部分中所述的所有先决条件，PowerShell 窗口中会出现警告。 请务必在安装代理之前满足[要求](how-to-connect-health-agent-install.md#requirements)。 以下屏幕截图是这些错误的一个示例。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/install4.png)
+![Azure AD Connect Health AD FS 配置脚本](./media/how-to-connect-health-agent-install/install4.png)
 
 若要验证代理是否已安装，请在服务器上查看以下服务。 如果已完成配置，这些服务应已运行。 否则，它们会停止，直到完成配置。
 
@@ -106,7 +106,7 @@ ms.locfileid: "89071544"
 * Azure AD Connect Health AD FS Insights 服务
 * Azure AD Connect Health AD FS Monitoring 服务
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+![Azure AD Connect Health AD FS 服务](./media/how-to-connect-health-agent-install/install5.png)
 
 ### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>在 Windows Server 2008 R2 服务器上的代理安装
 
@@ -140,7 +140,7 @@ ms.locfileid: "89071544"
 7. 在“操作”**** 窗格中，单击“编辑联合身份验证服务属性”****。
 8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
 9. 选中 **“成功审核”** 和 **“失败审核”** 复选框。
-10. 单击“确定”。
+10. 单击" **确定**"。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 
@@ -231,21 +231,21 @@ ms.locfileid: "89071544"
 
 若要启动代理安装，请双击下载的 .exe 文件。 在第一个屏幕上，单击“安装”。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install1.png)
+![AD DS 安装开始 Azure AD Connect Health 代理](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install1.png)
 
 安装完成后，单击“立即配置”。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install2.png)
+![AD DS 安装完成的 Azure AD Connect Health 代理](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install2.png)
 
 此时会启动一个命令提示符，其后面是执行 Register-AzureADConnectHealthADDSAgent 的一些 PowerShell 命令。 根据系统的提示登录到 Azure。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install3.png)
+![AD DS 配置登录的 Azure AD Connect Health 代理](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install3.png)
 
 登录后，将继续 PowerShell。 完成后，可以关闭 PowerShell，因为配置已完成。
 
 此时，服务应会自动启动，使代理能够监视和收集数据。 如果不满足前面部分中所述的所有先决条件，PowerShell 窗口中会出现警告。 请务必在安装代理之前满足[要求](how-to-connect-health-agent-install.md#requirements)。 以下屏幕截图是这些错误的一个示例。
 
-![验证用于 AD DS 的 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install4.png)
+![AD DS 配置脚本的 Azure AD Connect Health 代理](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install4.png)
 
 若要验证代理是否已安装，请在域控制器上查看以下服务。
 
@@ -254,12 +254,12 @@ ms.locfileid: "89071544"
 
 如果已完成配置，这些服务应已运行。 否则，它们会停止，直到完成配置。
 
-![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
+![AD DS 服务的 Azure AD Connect Health 代理](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
 ### <a name="quick-agent-installation-in-multiple-servers"></a>在多个服务器中安装快速代理
 
 1. 使用密码在 Azure AD 中创建用户帐户。
-2. 通过门户为 Azure AD Connect Health 中的本地 AAD 帐户分配 **所有者** 角色。 请按照 [此处](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)的步骤操作。 将角色分配给所有服务实例。 
+2. 通过门户为 Azure AD Connect Health 中的本地 AAD 帐户分配 **所有者** 角色。 请按照 [此处](how-to-connect-health-operations.md#manage-access-with-azure-rbac)的步骤操作。 将角色分配给所有服务实例。 
 3. 在本地域控制器中下载 .exe MSI 文件以进行安装。
 4. 运行以下脚本以进行注册。 将参数替换为创建的新用户帐户及其密码。 
 
@@ -295,7 +295,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 这些命令接受“凭据”作为参数，以便以非交互方式完成注册，或者在服务器-核心计算机上进行该操作。
 * 可以在作为参数传递的 PowerShell 变量中捕获凭据。
 * 可以提供任何 Azure AD 标识，只要该标识具有注册代理所需的访问权限且尚未启用 MFA。
-* 默认情况下，全局管理员有权执行代理注册。 也可允许其他特权较小的标识执行此步骤。 详细了解 azure [RBAC)  (azure 基于角色的访问控制 ](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。
+* 默认情况下，全局管理员有权执行代理注册。 也可允许其他特权较小的标识执行此步骤。 详细了解 azure [RBAC)  (azure 基于角色的访问控制 ](how-to-connect-health-operations.md#manage-access-with-azure-rbac)。
 
 ```powershell
     $cred = Get-Credential

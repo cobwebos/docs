@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337647"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855628"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 
@@ -61,6 +61,10 @@ IoT 即插即用适用于两种类型的开发人员：
 
 > [!Important]
 > IoT 即插即用设备必须通过 WebSocket 使用 MQTT 或 MQTT。 其他协议（例如 AMQP 或 HTTP）对于实现 IoT 即插即用设备是无效的。
+
+## <a name="device-certification"></a>设备认证
+
+[IoT 即插即用认证计划](howto-certify-device.md)验证设备是否符合 IoT 即插即用认证要求。 可将已验证的设备添加到公共 [Azure IoT 认证设备目录](https://aka.ms/devicecatalog)。
 
 ## <a name="regional-availability"></a>区域可用性
 

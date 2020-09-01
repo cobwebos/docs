@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792538"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179838"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理具有 UNH2.5 段的 EDIFACT 文档
 
@@ -57,12 +57,10 @@ ms.locfileid: "74792538"
 
 1. 在 EDIFACT 协议的发送设置中配置架构。
 
-1. 选择 EDIFACT 协议，并单击“编辑为 JSON”  。  在发送协议 **schemaReferences** 中添加 UNH2.5 值
+1. 选择 EDIFACT 协议，然后选择 " **编辑为 JSON**"。 将 UNH 2.5 值添加到发送协议的 `schemaReferences` 部分：
 
-1. 选择 EDIFACT 协议，并选择“编辑为 JSON”  。 将 UNH 2.5 值添加到发送协议的 `schemaReferences` 部分：
-
-   ![将 UNH2.5 添加到发送协议](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
+   ![将 UNH 2.5 添加到发送协议](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[集成帐户协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* 了解有关[集成帐户协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)的详细信息

@@ -1,28 +1,28 @@
 ---
 title: 简介
-description: 了解使用 Azure VMware 解决方案 (AVS) 在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
+description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84749675"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752127"
 ---
-# <a name="what-is-azure-vmware-solution-avs-preview"></a>什么是 Azure VMware 解决方案 (AVS) 预览版？
+# <a name="what-is-azure-vmware-solution-preview"></a>什么是 Azure VMware 解决方案预览版？
 
-Azure VMware 解决方案 (AVS) 可为你在 Azure 中提供私有云。 私有云包含从专用裸机 Azure 基础设施构建的 vSphere 群集。 可将私有云群集从 3 个主机扩展到 16 个主机，获得在单个私有云中部署多个群集的功能。 所有私有云中都预配了 vCenter Server、vSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、创建或部署新的虚拟机，并从私有云使用 Azure 服务。
+Azure VMware 解决方案可为你在 Azure 中提供私有云。 私有云包含从专用裸机 Azure 基础设施构建的 vSphere 群集。 可将私有云群集从 3 个主机扩展到 16 个主机，获得在单个私有云中部署多个群集的功能。 所有私有云中都预配了 vCenter Server、vSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、创建或部署新的虚拟机，并从私有云使用 Azure 服务。
 
-AVS 是经过 VMware 验证的解决方案，我们会持续对增强和升级进行验证和测试。 私有云基础设施和软件由 Microsoft 管理和维护，使你可以专注于在私有云中开发和运行工作负载。
+Azure VMware 解决方案是经过 VMware 验证的解决方案，我们会持续对增强和升级进行验证和测试。 私有云基础设施和软件由 Microsoft 管理和维护，使你可以专注于在私有云中开发和运行工作负载。
 
 下图显示了 Azure、Azure 服务和本地环境中的私有云与 VNet 之间的邻近性。 从私有云对 Azure 服务或 VNet 进行网络访问可以提供 SLA 驱动的 Azure 服务终结点集成。 从本地环境进行的私有云访问使用 ExpressRoute Global Reach 建立私密且安全的连接。
 
-![AVS 私有云与 Azure 和本地的邻近性图像](./media/adjacency-overview-drawing-final.png)
+![Azure VMware 解决方案私有云与 Azure 和本地的邻近性图像](./media/adjacency-overview-drawing-final.png)
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 
-AVS 私有云和群集是从裸机超融合 Azure 基础设施主机构建的。 高端主机具有 576 GB RAM 和 Intel 18 核 2.3 GHz 双处理器。 HE 主机具有两个 vSAN 磁盘组，其中采用总共 15.36 TB (SSD) 的原始 vSAN 容量层和 3.2 TB (NVMe) vSAN 缓存层。
+Azure VMware 解决方案私有云和群集是从裸机超融合 Azure 基础设施主机构建的。 高端主机具有 576 GB RAM 和 Intel 18 核 2.3 GHz 双处理器。 HE 主机具有两个 vSAN 磁盘组，其中采用总共 15.36 TB (SSD) 的原始 vSAN 容量层和 3.2 TB (NVMe) vSAN 缓存层。
 
 通过 Azure 门户或 Azure CLI 部署新的私有云。
 
@@ -36,17 +36,17 @@ AVS 私有云和群集是从裸机超融合 Azure 基础设施主机构建的。
 
 ## <a name="access-and-security"></a>访问和安全性
 
-为了增强安全性，AVS 私有云使用 vSphere 基于角色的访问控制。 vSphere SSO LDAP 功能可与 Azure Active Directory 集成。 有关标识和特权的详细信息，请参阅[访问权限和标识概念](concepts-identity.md)一文。
+为了增强安全性，Azure VMware 解决方案私有云使用 vSphere 基于角色的访问控制。 vSphere SSO LDAP 功能可与 Azure Active Directory 集成。 有关标识和特权的详细信息，请参阅[访问权限和标识概念](concepts-identity.md)一文。
 
 默认已启用 vSAN 静态数据加密，此功能用于提供 vSAN 数据存储安全性。 [存储概念](concepts-storage.md)一文中对此做了详细介绍。
 
 ## <a name="host-and-software-lifecycle-maintenance"></a>主机和软件生命周期维护
 
-定期升级 AVS 私有云和 VMware 软件可确保最新的安全性、稳定性并在私有云中运行功能集。 [升级概念](concepts-upgrades.md)一文中提供了有关平台维护和升级的更多详细信息。
+定期升级 Azure VMware 解决方案私有云和 VMware 软件可确保在私有云中运行的安全性、稳定性和功能集是最新的。 [升级概念](concepts-upgrades.md)一文中提供了有关平台维护和升级的更多详细信息。
 
 ## <a name="monitoring-your-private-cloud"></a>监视私有云
 
-可以使用 [Azure Monitor 中的日志](../azure-monitor/overview.md)来收集 AVS 私有云中运行的虚拟机上的日志。 可以使用在本地 VM 上运行的相同查询，在 AVS 私有云运行的 Linux 和 Windows 虚拟机上[下载并安装 MMA 代理](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)。 可以像平时在虚拟机上那样运行相同的查询。 若要详细了解如何创建查询，请参阅[如何编写查询](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)。
+可使用 [Azure Monitor 中的日志](../azure-monitor/overview.md)来收集 Azure VMware 解决方案私有云中运行的虚拟机上的日志。 可使用在本地 VM 上运行的相同查询，在 Azure VMware 解决方案私有云中运行的 Linux 和 Windows 虚拟机上[下载并安装 MMA 代理](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)。 可以像平时在虚拟机上那样运行相同的查询。 若要详细了解如何创建查询，请参阅[如何编写查询](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)。
 
 ## <a name="next-steps"></a>后续步骤
 

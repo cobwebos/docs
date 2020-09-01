@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225356"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181436"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虚拟机认证过程中的问题和解决方案 
 
@@ -29,7 +29,7 @@ ms.locfileid: "88225356"
 
 当使用属于另一发布服务器的基本映像并且已更新该映像时，将发生此错误。 在这种情况下，你将不能发布映像。
 
-若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅以下文章：
+若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅下列文章：
 
 - [Linux 映像](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows 映像](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
@@ -63,7 +63,7 @@ ms.locfileid: "88225356"
 
 预配问题可能包括以下故障方案：
 
-|场景|错误|Reason|解决方案|
+|方案|错误|Reason|解决方案|
 |---|---|---|---|
 |1|虚拟硬盘 (VHD 无效) |如果 VHD 页脚中的指定 cookie 值不正确，则 VHD 将被视为无效。|重新创建映像并提交请求。|
 |2|无效的 blob 类型|VM 预配失败，因为使用的块是 blob 类型而不是页类型。|重新创建映像并提交请求。|
@@ -84,7 +84,7 @@ ms.locfileid: "88225356"
 
 有关选择已批准基准的详细信息，请参阅 [创建 Azure 虚拟机技术资产](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)。
 
-## <a name="tool-kit-test-case-execution-failed"></a>工具包测试用例执行失败
+## <a name="tool-kit-test-case-execution-failed"></a>工具包测试用例执行失败 
 
 Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD 或映像是否与 Azure 环境兼容。
 
@@ -94,7 +94,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|场景|测试用例|说明|
+|方案|测试用例|描述|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -111,9 +111,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了在执行前面的测试用例时发现的常见错误：
  
-|场景|测试用例|错误|解决方案|
+|方案|测试用例|错误|解决方案|
 |---|---|---|---|
-|1|Linux 代理版本测试用例|最低 Linux 代理版本为2.241 或更高版本。 此要求是必需的，因为2020年5月1日。|必须用 [提交请求](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)所需的版本更新映像。|
+|1|Linux 代理版本测试用例|最低 Linux 代理版本为2.2.41 或更高版本。 此要求是必需的，因为2020年5月1日。|请更新 Linux 代理版本，该版本应为2.241 或更高版本。 有关详细信息，可以访问 [Linux 代理版本更新页](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。|
 |2|Bash 历史记录测试用例|如果提交图像的 bash 历史记录大小超过 1 kb (KB) ，将会出现错误。 大小限制为 1 KB，以确保不会在 bash 历史记录文件中捕获任何潜在的敏感信息。|若要解决此问题，请将 VHD 装载到任何其他工作 VM，并进行所需的任何更改 (例如，删除 *bash* history 文件) 将大小减小到小于或等于 1 KB。|
 |3|必需的内核参数测试用例|如果 **console** 的值未设置为 **ttyS0**，则会收到此错误。 通过运行以下命令进行检查：<br>`cat /proc/cmdline`|将 **console** 的值设置为 **ttyS0**，然后重新提交请求。|
 |4|ClientAlive 间隔测试用例|如果该测试用例的工具包结果提供了失败的结果，则 **ClientAliveInterval**的值不正确。|将 **ClientAliveInterval** 的值设置为小于或等于235，然后重新提交请求。|
@@ -122,7 +122,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|场景 |测试事例|说明|
+|方案 |测试事例|描述|
 |---|---|---|---|
 |1|OS 体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -154,7 +154,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 有关操作系统磁盘大小的限制，请参阅以下规则。 提交任何请求时，验证 OS 磁盘大小是否在 Linux 或 Windows 的限制范围内。
 
-|(OS)|推荐的 VHD 大小|
+|OS|推荐的 VHD 大小|
 |---|---|
 |Linux|30 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
@@ -186,7 +186,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server 2019|不可用|
+|Windows Server 2019|NA|
 
 ## <a name="sack-vulnerability-patch-verification"></a>SACK 漏洞修补程序验证
 
@@ -261,7 +261,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
     
 请参阅下表，了解当你使用共享访问签名 (SAS) URL 下载 VM 映像时出现的任何问题。
 
-|场景|错误|Reason|解决方案|
+|方案|错误|Reason|解决方案|
 |---|---|---|---|
 |1|找不到 Blob|VHD 可以从指定位置删除或移动。|| 
 |2|Blob 正在使用中|VHD 由其他内部进程使用。|使用 SAS URL 下载 VHD 时，VHD 应处于已使用状态。|
@@ -324,7 +324,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 步骤 1。 部署 VM，并单击 Azure 门户上的 "运行命令" 选项。
 ![Azure 门户上运行命令](./media/vm-certification-issues-solutions-3.png)
 
-步骤 2。 选择第一个选项 "RunShellScript"，并运行以下命令。
+步骤 2. 选择第一个选项 "RunShellScript"，并运行以下命令。
 
 命令： "cat/dev/null > ~/bash_history && history-c" ![ Bash history 命令（在 Azure 门户上）](./media/vm-certification-issues-solutions-4.png)
 
@@ -363,7 +363,8 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
    4.    版本–请求其异常的 VM 产品/服务的版本
    5.   异常类型–测试，锁定 VM，自定义模板
    6.   请求原因–导致此异常的原因，以及有关要免除的测试的信息 
-   7.   附件-附加任何重要性证据文档。 对于锁定的 Vm，附加测试报告和自定义模板，提供自定义 ARM 模板作为附件。 为自定义模板附加锁定 Vm 和自定义 ARM 模板的报告失败将导致拒绝请求
+   7. 已请求此异常的时间线-日期 
+   8.   附件-附加任何重要性证据文档。 对于锁定的 Vm，附加测试报告和自定义模板，提供自定义 ARM 模板作为附件。 为自定义模板附加锁定 Vm 和自定义 ARM 模板的报告失败将导致拒绝请求
 
 
 ## <a name="next-steps"></a>后续步骤

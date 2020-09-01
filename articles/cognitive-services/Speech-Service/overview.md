@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 06/25/2020
+ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167736"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825339"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -24,7 +24,7 @@ ms.locfileid: "88167736"
 > [!IMPORTANT]
 > 语音服务已替代必应语音 API 和语音翻译。 有关迁移说明，请参阅_操作指南 > 迁移_。
 
-这些功能构成了语音服务。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
+以下功能是语音服务的一部分。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
 | 服务 | 功能 | 说明 | SDK 中 IsInRole 中的声明 | REST |
 |---------|---------|-------------|-----|------|
@@ -42,20 +42,61 @@ ms.locfileid: "88167736"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="try-the-speech-service"></a>试用语音服务
+## <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
-我们提供了适用于大多数流行编程语言的快速入门，旨在帮助你在 10 分钟以内运行代码。 下表包含有关每项功能在最流行编程语言中的用法的快速入门。 使用左侧的导航栏可以浏览其他语言和平台。
+若要执行以下步骤，需要一个 Microsoft 帐户和一个 Azure 帐户。 如果没有 Microsoft 帐户，可以在 [Microsoft 帐户门户](https://account.microsoft.com/account)上注册一个免费帐户。 选择“Microsoft 登录”，然后，当系统要求登录时，选择“创建 Microsoft 帐户” 。 按步骤创建并验证新的 Microsoft 帐户。
 
-| 语音转文本 (SDK) | 文本转语音 (SDK) | 翻译 (SDK) |
-|----------------------|----------------------|-------------------|
-| [识别来自音频文件的语音](quickstarts/speech-to-text-from-file.md) | [将语音合成为音频文件](quickstarts/text-to-speech-audio-file.md) | [将语音转换为文本](quickstarts/translate-speech-to-text.md) |
-| [使用麦克风识别语音](quickstarts/speech-to-text-from-microphone.md) | [将语音合成到扬声器](quickstarts/text-to-speech.md) | [将语音翻译为多种目标语言](quickstarts/translate-speech-to-text-multiple-languages.md) |
-| [识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) | [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [将语音转换为语音](quickstarts/translate-speech-to-speech.md) |
+具有 Azure 帐户后，请转到 [Azure 注册页面](https://azure.microsoft.com/free/ai/)，选择“免费开始使用”，然后使用 Microsoft 帐户创建新的 Azure 帐户。
 
 > [!NOTE]
-> “语音转文本”和“文本转语音”功能也有 REST 终结点和相关联的快速入门。
+> 语音服务有两个服务层级：免费和订阅，它们具有不同的限制和优势。 注册 Azure 免费帐户时，该帐户附带 200 美元的服务额度，可用于支付长达 30 天的付费语音服务订阅。
+>
+> 如果使用免费的低流量语音服务层级，即使是在免费试用帐户或服务额度过期之后，也仍可以保留此免费订阅。
+>
+> 有关详细信息，请参阅[认知服务定价 - 语音服务](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
-在你有机会使用语音服务后，请尝试一下我们的教程，了解如何解决各种情况。
+### <a name="create-the-azure-resource"></a>创建 Azure 资源
+
+若要将语音服务资源（免费层或付费层）添加到 Azure 帐户，请执行以下步骤：
+
+1. 使用你的 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com/)。
+
+1. 选择门户左上角的“创建资源”。  如果未看到“创建资源”，可通过选择屏幕左上角的折叠菜单找到它。
+
+1. 在“新建”窗口中的搜索框内键入“语音”，然后按 ENTER。 
+
+1. 在搜索结果中，选择“语音”。 
+
+   ![语音搜索结果](media/index/speech-search.png)
+
+1. 选择“创建”，然后： 
+
+   - 为新资源指定唯一的名称。 名称有助于区分绑定到同一服务的多个订阅。
+   - 选择新资源关联的 Azure 订阅，以确定计费方式。
+   - 选择将使用资源的[区域](regions.md)。
+   - 选择免费 (F0) 或付费 (S0) 定价层。 若要查看每个层的定价和用量配额的完整信息，请选择“查看全部定价详细信息”  。
+   - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
+   - 选择“创建”  。 系统随后会将你转到部署概述，并显示部署进度消息。
+
+> [!NOTE]
+> 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。
+
+部署新的语音资源需要花费片刻时间。 部署完成后，选择“转到资源”，然后在左侧导航窗格中选择“密钥”以显示语音服务订阅密钥。   每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 若要将密钥快速复制/粘贴到代码编辑器或其他位置，请选择每个密钥旁边的复制按钮，切换窗口，然后将剪贴板中的内容粘贴到所需位置。
+
+> [!IMPORTANT]
+> 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 安全存储密钥 - 例如，使用 Azure Key Vault。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
+
+## <a name="complete-a-quickstart"></a>完成快速入门
+
+我们提供了适用于大多数流行编程语言的快速入门，旨在让你了解基本设计模式并帮助你在 10 分钟以内运行代码。 请参阅以下列表，了解每项功能的快速入门。
+
+* [语音转文本快速入门](speech-to-text-basics.md)
+* [文本转语音快速入门](get-started-text-to-speech.md)
+* [语音翻译快速入门](speech-translation-basics.md)
+* [意向识别快速入门](quickstarts/intent-recognition.md)
+* [说话人辨识快速入门](speaker-recognition-basics.md)
+
+在你有机会开始使用语音服务后，请尝试一下我们的教程，了解如何处理各种情况。
 
 - [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
 - [教程：使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
@@ -74,6 +115,8 @@ GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方
 
 语音服务能够很好地与内置模型配合工作，但是，你可能想要根据自己的产品或环境，进一步自定义和优化体验。 自定义选项的范围从声学模型优化，到专属于自有品牌的语音字体。
 
+其他产品提供了针对特定用途（如卫生保健或保险）而优化的语音模型，但可供所有人平等地使用。 Azure 语音的自定义功能将成为你的独特竞争优势部分，而其他任何用户或客户都无法使用。 换句话说，你的模型是私人的，仅针对你的用例进行自定义调整。
+
 | 语音服务 | 平台 | 说明 |
 | -------------- | -------- | ----------- |
 | 语音转文本 | [自定义语音识别](https://aka.ms/customspeech) | 根据需要和可用数据自定义语音识别模型。 克服语音识别障碍，如说话风格、词汇和背景噪音。 |
@@ -90,4 +133,5 @@ GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [免费获取语音服务订阅密钥](get-started.md)
+> [开始使用语音转文本](speech-to-text-basics.md)
+> [开始使用文本转语音](get-started-text-to-speech.md)

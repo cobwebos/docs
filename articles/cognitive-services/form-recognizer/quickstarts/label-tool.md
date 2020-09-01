@@ -7,26 +7,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 91050311e5e0604af44731f7bf6e1a818ec464cc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517908"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852730"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
 在本快速入门中，将示例标记工具和表单识别器 REST API 结合使用，通过手动标记的数据训练自定义模型。 有关此功能的详细信息，请参阅概述的[通过标签进行训练](../overview.md#train-with-labels)部分。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，必须具备以下条件：
 
-- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到表单识别器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -52,14 +56,35 @@ ms.locfileid: "88517908"
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
+
+
+
+
 1. 通过 `docker pull` 命令获取示例标记工具容器。
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
+    # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+    ```
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    ```
+
+    ---
+
 1. 现在，已准备好通过 `docker run` 运行容器。
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
+    # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
+    ```
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview    
+    ```
+
+    --- 
 
    此命令将使示例标记工具可通过 web 浏览器提供。 转到  `http://localhost:3000` 。
 
@@ -95,9 +120,10 @@ ms.locfileid: "88517908"
 
 * **显示名称** - 连接显示名称。
 * **说明** - 项目说明。
-* **SAS URL** - Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 将到期时间设置为你使用服务后的某个时间。 确保选中“读取”、“写入”、“删除”和“列表”权限，然后单击“创建”    。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+* **SAS URL** - Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 将到期时间设置为你使用服务后的某个时间。 确保选中“读取”、“写入”、“删除”和“列表”权限，然后单击“创建”    。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 
-![示例标记工具的连接设置](../media/label-tool/connections.png)
+:::image type="content" source="../media/label-tool/connections.png" alt-text="示例标记工具的连接设置。":::
+
 
 ## <a name="create-a-new-project"></a>创建新项目
 
@@ -111,7 +137,7 @@ ms.locfileid: "88517908"
 * **API 密钥** - 表单识别器订阅密钥。
 * **说明** -（可选）项目说明
 
-![示例标记工具上的“新建项目”页](../media/label-tool/new-project.png)
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="示例标记工具上的“新建项目”页面。":::
 
 ## <a name="label-your-forms"></a>标记表单
 
@@ -125,10 +151,15 @@ ms.locfileid: "88517908"
 
 单击左侧窗格中的“对所有文件运行 OCR"，以获取每个文档的文本布局信息。 标记工具将在每个文本元素周围绘制边界框。
 
+它还将显示已自动提取的表。 单击文档左侧的表/网格图标可查看提取的表。 在本快速入门中，由于表内容是自动提取的，因此我们不会对表内容进行标记，而是依靠自动提取。
+
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="示例标记工具中的表可视化效果。":::
+
 ### <a name="apply-labels-to-text"></a>将标签应用于文本
 
 接下来创建标记（标签），并将其应用到希望模型识别的文本元素。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
 1. 首先，使用标记编辑器窗格创建要识别的标记。
    1. 单击 **+** 创建新标记。
    1. 输入标记名称。
@@ -146,7 +177,30 @@ ms.locfileid: "88517908"
     > * 使用 + 右侧的按钮搜索、重命名、重新排序和删除标记。
     > * 若要在不删除标记本身的情况下删除已应用的标记，请在文档视图上选择带标记的矩形，并按 Delete 键。
 
-![示例标记工具的主编辑器窗口](../media/label-tool/main-editor.png)
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1) 
+1. 首先，使用标记编辑器窗格创建要识别的标记。
+   1. 单击 **+** 创建新标记。
+   1. 输入标记名称。
+   1. 按 Enter 保存标记。
+1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 预览版中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
+1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
+    > [!Tip]
+    > 标记窗体时，请记住以下提示。
+    > * 只能将一个标记应用到所选的每个文本元素。
+    > * 每页只能应用每个标记一次。 如果某个值多次显示在同一窗体中，将为每个实例创建不同的标记。 例如：“invoice# 1”、“invoice# 2”等。
+    > * 标记不能跨页。
+    > * 按照值在窗体中的显示方式标记值；不要尝试使用两个不同的标记将值拆分为两个部分。 例如，即使某个地址字段跨越多行，也应使用单个标记对其进行标记。
+    > * 不要在标记的字段中包含键 &mdash; 仅包含值。
+    > * 系统应自动检测表数据，最终的输出 JSON 文件中将提供这些数据。 但是，如果模型无法检测所有表数据，你也可以手动标记这些字段。 使用不同的标签标记表中的每个单元格。 如果窗体中的表包含不同的行数，请确保使用可能最大的表标记至少一个窗体。
+    > * 使用 + 右侧的按钮搜索、重命名、重新排序和删除标记。
+    > * 若要在不删除标记本身的情况下删除已应用的标记，请在文档视图上选择带标记的矩形，并按 Delete 键。
+
+
+---
+
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="示例标记工具的主编辑器窗口。":::
+
 
 按照上述步骤标记至少五个窗体。
 
@@ -166,6 +220,7 @@ ms.locfileid: "88517908"
     * default、`dmy`、`mdy`、`ymd`
 * `time`
 * `integer`
+* `selectionMark` - _v2.1-preview.1 中的新增内容！_
 
 > [!NOTE]
 > 请参阅以下日期格式设置规则：
@@ -196,14 +251,31 @@ ms.locfileid: "88517908"
 * **平均准确度** - 模型的平均准确性。 可以通过再次标记其他表单和训练来创建新的模型，从而提高模型准确度。 建议首先标记五个表单，然后根据需要添加更多表单。
 * 标记列表，以及每个标记的估计准确度。
 
-![训练视图](../media/label-tool/train-screen.png)
+
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="训练视图。":::
 
 训练完成后，检查“平均准确度”值。 如果该值较低，应添加更多输入文档，并重复上述步骤。 已标记的文档将保留在项目索引中。
 
 > [!TIP]
 > 还可以使用 REST API 调用来运行训练过程。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](./python-labeled-data.md)。
 
-## <a name="analyze-a-form"></a>分析表单
+## <a name="compose-trained-models"></a>组合已训练的模型
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+此功能目前在 v2.1. 预览版中提供。 
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1) 
+
+通过模型组合，最多可将 100 个模型组合到一个模型 ID。 通过此组合模型 ID 调用分析时，表单识别器首先将对你提交的表单进行分类、将其匹配到最佳匹配模型，然后返回该模型的结果。 当传入的表单可能属于多个模板中的一个模板时，这非常有用。
+
+若要在示例标记工具中组合模型，请单击左侧的模型组合（合并箭头）图标。 在左侧，选择要组合在一起的模型。 带有箭头图标的模型是已组合的模型。 单击“组合”按钮。 在弹出窗口中，为新的组合模型命名，然后单击“组合”。 操作完成后，新的组合模型应出现在列表中。 
+
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型组合 UX 视图。":::
+
+---
+
+## <a name="analyze-a-form"></a>分析表单 
 
 单击左侧的“预测(灯泡)”图标以测试模型。 上传训练过程中未使用的表单文档。 然后单击右侧的“预测”按钮，获取表单的键/值预测。 该工具将在边界框中应用标记，并报告每个标记的置信度。
 
@@ -228,7 +300,7 @@ ms.locfileid: "88517908"
 
 ### <a name="resume-a-project"></a>恢复项目
 
-最后，转到主页（房子图标），然后单击“打开云项目”。 然后选择 blob 存储连接，并选择项目的 .vott 文件。 应用程序将加载项目的设置，因为它具有安全令牌。
+最后，转到主页（房子图标），然后单击“打开云项目”。 然后选择 Blob 存储连接，并选择项目的 .fott 文件。 应用程序将加载项目的设置，因为它具有安全令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

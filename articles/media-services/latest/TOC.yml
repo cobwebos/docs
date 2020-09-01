@@ -7,6 +7,8 @@
     - name: 媒体服务中的新增功能
       displayName: release notes
       href: release-notes.md
+    - name: 媒体服务符合性
+      href: concept-compliance.md
 - name: 快速入门
   items:
     - name: 设置你的环境
@@ -45,33 +47,34 @@
           href: encrypt-content-quickstart.md
 - name: 教程
   items:
-    - name: 对远程文件进行编码并流式传输视频
+    - name: .NET
       items:
-        - name: 使用 REST
-          displayName: 'encoding, job, transform'
+        - name: 对远程文件 REST 进行编码和流式传输
           href: stream-files-tutorial-with-rest.md
-        - name: 使用 CLI
-          href: stream-files-cli-quickstart.md
-        - name: （使用 .NET）
+        - name: 对远程文件 .NET 进行编码和流式传输
           href: stream-files-dotnet-quickstart.md
-        - name: 利用 Node.js
+        - name: 对上传的文件进行编码和流式传输
+          href: stream-files-tutorial-with-api.md
+        - name: 实时流式处理
+          href: stream-live-tutorial-with-api.md
+        - name: 分析视频
+          href: analyze-videos-tutorial-with-api.md
+        - name: 通过 AES-128 进行动态加密
+          href: protect-with-aes128.md
+        - name: 通过 DRM 进行动态加密
+          href: protect-with-drm.md
+    - name: CLI
+      items:
+        - name: 对远程文件 CLI 进行编码和流式传输
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: 对远程文件 Node.js 进行编码和流式传输
           href: stream-files-nodejs-quickstart.md
-    - name: 在 Azure 日志分析中存储 AMS 事件
-      href: tutorial-events-log-analytics.md
-    - name: 对上传的文件和流视频进行编码
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: 实时流式处理
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: 分析视频
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: 通过 AES-128 进行动态加密
-      href: protect-with-aes128.md
-    - name: 通过 DRM 进行动态加密
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure 门户
+      items:
+        - name: 在 Azure 日志分析中存储 AMS 事件
+          href: tutorial-events-log-analytics.md
 - name: 示例
   items:
     - name: 媒体服务 v3 示例

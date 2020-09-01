@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: c789a5fdd2aed7a904dc71065340b3c921ac9abb
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146600"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181708"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
@@ -28,7 +28,7 @@ ms.locfileid: "89146600"
 
 使用此功能，可以：
 
--   允许用户从[应用程序访问面板](https://myapps.microsoft.com/)自己发现应用程序，而无需求助 IT 组。
+-   让用户从 [应用](https://myapps.microsoft.com/) 程序自行发现应用程序，而无需麻烦 IT 组。
 -   将这些用户添加到预配置组，以便查看请求访问的用户、删除访问权限以及管理分配给用户的角色。
 -   （可选）允许某人批准应用程序访问请求，使 IT 组不必这样做。
 -   （可选）最多配置 10 个可以批准访问此应用程序的人员。
@@ -57,14 +57,14 @@ ms.locfileid: "89146600"
 13. **可选：** **对于公开角色的应用程序**，如果想要将自助服务批准的用户分配给角色，请选择 " **此应用程序中应向哪个角色分配用户？** " 旁边的选择器，以选择应将这些用户分配到的角色。
 14. 选择顶部的 " **保存** " 按钮以完成操作。
 
-完成自助服务应用程序配置后，用户可以导航到其 [应用程序访问面板](https://myapps.microsoft.com/) ，然后选择 " **+ 添加** " 按钮以查找已启用自助访问的应用。 业务审批人还可以在其[应用程序访问面板](https://myapps.microsoft.com/)中看到通知。 可以启用电子邮件，在用户请求需要审批人批准的应用程序的访问权限时，向审批人发送电子邮件通知。 
+完成自助服务应用程序配置后，用户可以导航到 ["我的应用](https://myapps.microsoft.com/) "，然后选择 " **+ 添加** " 按钮以查找已启用自助访问的应用。 业务审批者还会在其 ["我的应用"](https://myapps.microsoft.com/) 页中看到通知。 可以启用电子邮件，在用户请求需要审批人批准的应用程序的访问权限时，向审批人发送电子邮件通知。 
 
 这些批准仅支持单个审批工作流，意味着如果指定多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
 ## <a name="things-to-check-if-self-service-isnt-working"></a>若要检查自助服务是否工作不起作用
 -   确保已让用户或组能够请求自助应用程序访问。
--   确保用户在进行自助应用程序访问时所访问的位置正确。 用户可以导航到其 [应用程序访问面板](https://myapps.microsoft.com/) ，然后选择 " **+ 添加** " 按钮以查找已启用自助访问的应用。
--   如果最近配置了自助应用程序访问，请在几分钟后尝试再次登录到用户的访问面板，以查看是否显示了自助服务访问更改。
+-   确保用户在进行自助应用程序访问时所访问的位置正确。 用户可以导航到 ["我的应用](https://myapps.microsoft.com/) " 页，然后选择 " **+ 添加** " 按钮以查找已启用自助访问的应用。
+-   如果最近配置了自助应用程序访问，请在几分钟后尝试再次登录到用户的 "我的应用"，以查看是否显示了自助服务访问更改。
 
 ## <a name="next-steps"></a>后续步骤
 [为自助组管理设置 Azure Active Directory](../users-groups-roles/groups-self-service-management.md)

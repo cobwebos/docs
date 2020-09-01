@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795909"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179566"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -310,11 +310,11 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>清点托管的虚拟机中的特权帐户
 
-通常不需要向用户授予对所有 Azure 订阅或资源的无限制权限。 使用 Azure AD 管理员角色可以仅向用户授予他们在完成工作时所需的访问权限。 可以使用 Azure AD 管理员角色，让一个管理员只管理某个订阅中的 VM，让另一个管理员管理同一订阅中的 SQL 数据库。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。
+通常不需要向用户授予对所有 Azure 订阅或资源的无限制权限。 使用 Azure AD 管理员角色可以仅向用户授予他们在完成工作时所需的访问权限。 可以使用 Azure AD 管理员角色，让一个管理员只管理某个订阅中的 VM，让另一个管理员管理同一订阅中的 SQL 数据库。 有关详细信息，请参阅 [什么是 Azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>为 Azure AD 管理员角色实施 PIM
 
-将 Privileged Identity Management 与 Azure AD 管理员角色配合使用，对 Azure 资源的访问权限进行管理、控制和监视。 可以缩短特权的暴露时间并通过报告和警报增加对使用情况的可见性，从而使用 PIM 提供保护。 有关详细信息，请参阅[使用 Privileged Identity Management 管理对 Azure 资源的 RBAC 访问](../../role-based-access-control/best-practices.md)。
+将 Privileged Identity Management 与 Azure AD 管理员角色配合使用，对 Azure 资源的访问权限进行管理、控制和监视。 可以缩短特权的暴露时间并通过报告和警报增加对使用情况的可见性，从而使用 PIM 提供保护。 有关详细信息，请参阅 [什么是 Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>使用 Azure 日志集成将相关的 Azure 日志发送到 SIEM 系统
 

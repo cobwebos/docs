@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: db3bfddd3376a013cc8921f9e0b94bd30bfe041f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146634"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181521"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -29,7 +29,8 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 
 * [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
-* [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
+* [DSv2 系列](../dv2-dsv2-series.md) 
+* [Dsv3 系列](../dv3-dsv3-series.md)
 * [Dsv4 系列](../dv4-dsv4-series.md)
 * [Ddsv4 系列](../ddv4-ddsv4-series.md)
 * [Dasv4 系列](../dav4-dasv4-series.md)
@@ -39,10 +40,12 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [GS 系列](../sizes-previous-gen.md#gs-series)
 * [HB 系列](../hb-series.md)
 * [HC 系列](../hc-series.md)
-* [Ls 系列](../sizes-previous-gen.md#ls-series)和 [Lsv2 系列](../lsv2-series.md)
+* [Ls 系列](../sizes-previous-gen.md#ls-series) 
+* [Lsv2 系列](../lsv2-series.md)
 * [M 系列](../m-series.md)
 * [Mv2 系列](../mv2-series.md)<sup>1</sup>
-* [NCv2 系列](../ncv2-series.md)和 [NCv3 系列](../ncv3-series.md)
+* [NCv2 系列](../ncv2-series.md) 
+* [NCv3 系列](../ncv3-series.md)
 * [ND 系列](../nd-series.md)
 * [NVv3 系列](../nvv3-series.md)
 
@@ -84,7 +87,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 |---------|--------------|--------------|
 | 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
-| VM 大小         | 所有 VM 大小 | 仅限支持高级存储的 VM |
+| VM 大小         | 所有 VM 大小 | [查看可用大小](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 代与第 2 代的功能
 

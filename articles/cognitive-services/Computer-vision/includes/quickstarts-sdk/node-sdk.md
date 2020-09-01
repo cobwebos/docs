@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4d025057cf8992e1dc54a0fd4a07814c7cbb13d3
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841944"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748742"
 ---
 <a name="HOLTop"></a>
 
@@ -208,9 +208,9 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>读取印刷体文本和手写文本
+## <a name="extract-text-ocr-with-read"></a>通过 Read 提取文本 (OCR)
 
-计算机视觉可以读取图像中的可见文本，并将其转换为字符流。
+计算机视觉可以提取图像中的可见文本，并将其转换为字符流。 此示例使用读取操作。
 
 > [!NOTE]
 > 还可以从本地图像读取文本。 请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的示例代码以了解涉及本地图像的方案。
@@ -221,17 +221,17 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>调用识别 API
+### <a name="call-the-read-api"></a>调用读取 API
 
-添加以下代码，该代码针对给定图像调用 `recognizeText` 函数。
+添加以下代码，该代码针对给定图像调用 `readTextFromURL` 和 `readTextFromFile` 函数。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-定义 `recognizeText` 函数。 这会在客户端对象上调用 **recognizeText** 方法，该方法返回一个操作 ID 并启动异步进程来读取图像的内容。 然后，它会使用操作 ID 每隔一秒钟检查一次操作，直到返回结果。 然后它会返回提取的结果。
+定义 `readTextFromURL` 和 `readTextFromFile` 函数。 它们调用客户端对象上的 read 和 readInStream 方法，这些方法返回操作 ID 并启动异步进程来读取图像的内容 。 然后它们使用操作 ID 来检查操作状态，直到返回结果。 然后它们会返回提取的结果。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-然后定义帮助程序函数 `printRecText`，该函数将某项识别操作的结果输出到控制台。
+然后定义帮助程序函数 `printRecText`，该函数将读取操作的结果输出到控制台。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 

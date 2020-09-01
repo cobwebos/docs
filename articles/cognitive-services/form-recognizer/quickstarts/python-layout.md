@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 1777d4d09dfb12f490245f726715aed4eefd6227
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6c18df2d90f8d6efc9425f2d9fdff057e06ad51
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517789"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719090"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入门：使用表单识别器 REST API 和 Python 提取文本和布局信息
 
@@ -45,9 +45,10 @@ ms.locfileid: "88517789"
 1. 将 `<path to your form>` 替换为本地表单文档的路径。
 1. 将 `<subscription key>` 替换为从上一步复制的订阅密钥。
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0) 
     ```python
     ########### Python Form Recognizer Async Layout #############
-
+    
     import json
     import time
     from requests import get, post
@@ -76,7 +77,44 @@ ms.locfileid: "88517789"
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+    ```   
+    # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)  
+    ```python
+    ########### Python Form Recognizer Async Layout #############
+    
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<Endpoint>"
+    apim_key = "<Subscription Key>"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/Layout/analyze"
+    source = r"<path to your form>"
+    
+    headers = {
+        # Request headers
+        'Content-Type': 'application/json',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % resp.text)
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit()
+    ```  
+    
+    
+      ---
+
 
 1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognizer-layout.py*。
 1. 打开命令提示符窗口。
@@ -84,9 +122,19 @@ ms.locfileid: "88517789"
 
 你将收到 `202 (Success)` 响应，其中包括 **Operation-Location** 标头，脚本会将其输出到控制台。 此标头包含一个可用于查询异步操作状态和获取结果的操作 ID。 在以下示例值中，`operations/` 后面的字符串就是操作 ID。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```console
 https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
-```
+``` 
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)  
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```  
+
+---
+    
+
+
 
 ## <a name="get-the-layout-results"></a>获取布局结果
 
@@ -124,159 +172,237 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>检查响应
 
-脚本会向控制台输出响应，直到“分析布局”操作完成。 然后，它将以 JSON 格式输出已提取的数据。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"pageResults"` 字段显示表中的每个文本段，均带有行-列坐标。
+脚本会向控制台输出响应，直到“分析布局”操作完成。 然后，它将以 JSON 格式输出已提取的数据。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"selectionMarks"` 节点（在 v2.1 预览版中）显示每个选择标记（复选框、单选框），并显示其状态是“已选中”还是“未选中”。 `"pageResults"` 字段显示表中的每个文本段，均带有行-列坐标。
 
 请查看以下发票图像及其相应的 JSON 输出。 为了简单起见，已缩短输出。
 
-> [!div class="mx-imgBorder"]
-> ![带有表的 Contoso 发票票据](../media/contoso-invoice.png)
+:::image type="content" source="../media/contoso-invoice.png" alt-text="包含表的 Contoso 项目声明文档。":::
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```json
-{ 
-  "status":"succeeded",
-  "createdDateTime":"2019-11-12T19:55:36Z",
-  "lastUpdatedDateTime":"2019-11-12T19:55:43Z",
-  "analyzeResult":{ 
-    "version":"2.0.0",
-    "readResults":[ 
-      { 
-        "page":1,
-        "language":"en",
-        "angle":0,
-        "width":8.5,
-        "height":11,
-        "unit":"inch",
-        "lines":[ 
-          { 
-            "language":"en",
-            "boundingBox":[ 
-              0.5384,
-              1.1583,
-              1.4466,
-              1.1583,
-              1.4466,
-              1.3534,
-              0.5384,
-              1.3534
-            ],
-            "text":"Contoso",
-            "words":[ 
-              { 
-                "boundingBox":[ 
-                  0.5384,
-                  1.1583,
-                  1.4466,
-                  1.1583,
-                  1.4466,
-                  1.3534,
-                  0.5384,
-                  1.3534
-                ],
-                "text":"Contoso",
-                "confidence":1
-              }
-            ]
-          },
-          { 
-            "language":"en",
-            "boundingBox":[ 
-              0.7994,
-              1.5143,
-              1.3836,
-              1.5143,
-              1.3836,
-              1.6154,
-              0.7994,
-              1.6154
-            ],
-            "text":"Address:",
-            "words":[ 
-              { 
-                "boundingBox":[ 
-                  0.7994,
-                  1.5143,
-                  1.3836,
-                  1.5143,
-                  1.3836,
-                  1.6154,
-                  0.7994,
-                  1.6154
-                ],
-                "text":"Address:",
-                "confidence":1
-              }
-            ]
-          },
-          ...
-          { 
-            "language":"en",
-            "boundingBox":[ 
-              6.2285,
-              3.4114,
-              6.3919,
-              3.4114,
-              6.3919,
-              3.5119,
-              6.2285,
-              3.5119
-            ],
-            "text":"PT",
-            "words":[ 
-              { 
-                "boundingBox":[ 
-                  6.2285,
-                  3.4114,
-                  6.3919,
-                  3.4114,
-                  6.3919,
-                  3.5119,
-                  6.2285,
-                  3.5119
-                ],
-                "text":"PT",
-                "confidence":1
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "pageResults":[ 
-      { 
-        "page":1,
-        "tables":[ 
-          { 
-            "rows":2,
-            "columns":6,
-            "cells":[ 
-              { 
-                "rowIndex":0,
-                "columnIndex":0,
-                "text":"Invoice Number",
-                "boundingBox":[ 
-                  0.5075,
-                  2.8088,
-                  1.9061,
-                  2.8088,
-                  1.9061,
-                  3.3219,
-                  0.5075,
-                  3.3219
-                ],
-                "elements":[ 
-                  "#/readResults/0/lines/8/words/0",
-                  "#/readResults/0/lines/8/words/1"
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-08-20T20:36:52Z",
+    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
+    "analyzeResult": {
+        "version": "2.0.0",
+        "readResults": [
+            {
+                "page": 1,
+                "language": "en",
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "boundingBox": [
+                            0.5826,
+                            0.4411,
+                            2.3387,
+                            0.4411,
+                            2.3387,
+                            0.7969,
+                            0.5826,
+                            0.7969
+                        ],
+                        "text": "Contoso, Ltd.",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5826,
+                                    0.4411,
+                                    1.744,
+                                    0.4411,
+                                    1.744,
+                                    0.7969,
+                                    0.5826,
+                                    0.7969
+                                ],
+                                "text": "Contoso,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8448,
+                                    0.4446,
+                                    2.3387,
+                                    0.4446,
+                                    2.3387,
+                                    0.7631,
+                                    1.8448,
+                                    0.7631
+                                ],
+                                "text": "Ltd.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
                 ]
-              },
-              ...
-            ]
-          }
+            }
+        ],
+        "pageResults": [
+            {
+                "page": 1,
+                "tables": [
+                    {
+                        "rows": 5,
+                        "columns": 5,
+                        "cells": [
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 0,
+                                "text": "Training Date",
+                                "boundingBox": [
+                                    0.5133,
+                                    4.2167,
+                                    1.7567,
+                                    4.2167,
+                                    1.7567,
+                                    4.4492,
+                                    0.5133,
+                                    4.4492
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/14/words/0",
+                                    "#/readResults/0/lines/14/words/1"
+                                ]
+                            },
+                            ...
+                        ]
+                    },
+                    ...
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }
 ```
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)   
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-08-20T20:40:50Z",
+    "lastUpdatedDateTime": "2020-08-20T20:40:55Z",
+    "analyzeResult": {
+        "version": "2.1.0",
+        "readResults": [
+            {
+                "page": 1,
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "boundingBox": [
+                            0.5826,
+                            0.4411,
+                            2.3387,
+                            0.4411,
+                            2.3387,
+                            0.7969,
+                            0.5826,
+                            0.7969
+                        ],
+                        "text": "Contoso, Ltd.",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5826,
+                                    0.4411,
+                                    1.744,
+                                    0.4411,
+                                    1.744,
+                                    0.7969,
+                                    0.5826,
+                                    0.7969
+                                ],
+                                "text": "Contoso,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8448,
+                                    0.4446,
+                                    2.3387,
+                                    0.4446,
+                                    2.3387,
+                                    0.7631,
+                                    1.8448,
+                                    0.7631
+                                ],
+                                "text": "Ltd.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
+                        ]
+                    }
+                ],
+                "selectionMarks": [
+                    {
+                        "boundingBox": [
+                            3.9737,
+                            3.7475,
+                            4.1693,
+                            3.7475,
+                            4.1693,
+                            3.9428,
+                            3.9737,
+                            3.9428
+                        ],
+                        "confidence": 0.989,
+                        "state": "selected"
+                    },
+                    ...
+                ]
+            }
+        ],
+        "pageResults": [
+            {
+                "page": 1,
+                "tables": [
+                    {
+                        "rows": 5,
+                        "columns": 5,
+                        "cells": [
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 0,
+                                "text": "Training Date",
+                                "boundingBox": [
+                                    0.5133,
+                                    4.2167,
+                                    1.7567,
+                                    4.2167,
+                                    1.7567,
+                                    4.4492,
+                                    0.5133,
+                                    4.4492
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/12/words/0",
+                                    "#/readResults/0/lines/12/words/1"
+                                ]
+                            },
+                            ...
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ]
+    }
+}
+``` 
+
+---
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

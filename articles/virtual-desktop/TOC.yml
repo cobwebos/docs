@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: 安装语言包
       href: language-packs.md
+    - name: 使用 Azure 顾问
+      href: azure-advisor.md
     - name: 解决建议
       href: azure-advisor-recommendations.md
 - name: 概念

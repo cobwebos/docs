@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
-ms.date: 07/25/2020
+ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541781"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798527"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
@@ -37,6 +37,9 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 - 访问资源提供程序返回的属性，而无需对每个资源提供程序进行单独调用。
 - 查看过去 14 天对资源所做的更改历史记录，以了解更改了哪些属性以及何时更改。 （预览版）
+
+> [!NOTE]
+> 作为预览功能，一些 `type` 对象可提供其他非资源管理器属性。 有关详细信息，请参阅[扩展属性（预览版）](./concepts/query-language.md#extended-properties)。
 
 ## <a name="how-resource-graph-is-kept-current"></a>如何让 Resource Graph 保持最新
 

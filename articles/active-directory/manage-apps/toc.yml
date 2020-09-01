@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: “用户同意”错误
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: 从自定义门户登录时出现问题
-              href: application-sign-in-other-problem-deeplink.md
-            - name: 从访问面板登录时出现问题
+            - name: 从我的应用进行登录时出现问题
               href: application-sign-in-other-problem-access-panel.md
             - name: 应用程序登录页上的错误
               href: application-sign-in-problem-application-error.md
-            - name: 使用密码单一登录时出现的问题 - 非库应用
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: 使用密码单一登录时出现的问题 - 库应用
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: 登录到 Microsoft 应用时出现问题
               href: application-sign-in-problem-first-party-microsoft.md
             - name: 使用联合单一登录时出现的问题 - 非库应用
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: 排查单一登录问题
           items:
+            - name: 排查基于密码的单一登录问题
+              href: troubleshoot-password-based-sso.md
             - name: 配置联合单一登录时常见的问题 - 库应用
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: 配置联合单一登录时常见的问题 - 非库应用
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: 配置密码时常见的问题 - 库应用
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: 配置密码时常见的问题 - 非库应用
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: 排查应用列表和分配问题
           items:
             - name: 为租户管理应用程序列表
@@ -248,16 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: 我的应用疑难解答
           items:
-            - name: 管理浏览器扩展
-              href: manage-access-panel-browser-extension.md
             - name: 应用未出现
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: 出现意外的应用
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: 无法登录
-              href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: 使用自助服务应用访问权限时出错
-              href: access-panel-troubleshoot-self-service-access.md
         - name: 排查本地应用故障
           items:
             - name: 应用程序代理故障排除

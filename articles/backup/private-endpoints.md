@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e9fe46bf3f7528b3a6a08a7c8d90ea6f9117cdd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017662"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179226"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -239,7 +239,7 @@ ms.locfileid: "89017662"
 当 VNet 中为保管库创建的专用终结点获得批准后，即可开始使用它们来执行备份和还原。
 
 >[!IMPORTANT]
->在继续操作之前，请确保已成功完成文档中所述的所有步骤。 概括起来，必须完成以下清单中的步骤：
+>在继续操作之前，请确保已成功完成本文档中所述的所有步骤。 概括起来，必须完成以下清单中的步骤：
 >
 >1. 已创建 (新的) 恢复服务保管库
 >1. 已启用保管库，以使用系统分配的托管标识

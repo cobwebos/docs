@@ -3,12 +3,12 @@ title: " (MARS) 代理升级 Microsoft Azure 恢复服务"
 description: 了解如何 (MARS) 代理升级 Microsoft Azure 恢复服务。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: c822c75fa1232d2304b5bcb4a0afe4323e52287f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007360"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181470"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a> (MARS) 代理升级 Microsoft Azure 恢复服务
 
@@ -56,7 +56,7 @@ ms.locfileid: "89007360"
 
 1. 如果服务器或服务器的代理具有有限的 internet 访问权限，请确保将服务器/代理上的防火墙设置配置为允许使用适用于你正在使用的 Azure 云的 URL：
 
-    Azure 云 | 代码
+    Azure 云 | URL
     --- | ---
     Azure 云 (公有)  |   `https://login.windows.net`
     Azure 中国世纪互联云   | `https://login.chinacloudapi.cn`
@@ -71,7 +71,7 @@ ms.locfileid: "89007360"
 
     ![Microsoft Azure 恢复服务代理升级向导](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. 选择“**下一页**”。
+1. 选择“下一步”  。
 
 1. 选择 " **升级**"。
 
@@ -81,7 +81,7 @@ ms.locfileid: "89007360"
 
 ## <a name="for-system-center-data-protection-manager-sc-dpm-customers"></a>对于 System Center Data Protection Manager (SC DPM) 客户
 
-如果在 System Center Data Protection Manager (SC DPM) 服务器上安装 Azure 备份代理，则需要执行以下步骤来确定 DPM 服务器是否需要 Azure 备份代理更新：
+如果已在 System Center Data Protection Manager (SC DPM) 服务器上安装 Azure 备份代理，则需要按照以下步骤来确定 DPM 服务器是否需要 Azure 备份代理更新：
 
 1. 以管理员身份登录到 SC DPM 服务器。
 2. 打开 DPM 控制台。

@@ -11,12 +11,12 @@ ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 9b6759fedab8d72b883698b9d04c0e2b7df2fdcc
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: eb44456815642989a6f2b36cb15e159318018644
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505388"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723327"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>快速入门：使用表单识别器客户端库
 
@@ -29,6 +29,10 @@ ms.locfileid: "88505388"
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
+
+> [!NOTE]
+> 客户端库通用版本 v2.0 中支持表单识别器的最新版本。 
+
 
 ::: zone pivot="programming-language-csharp"
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心的警报验证（EICAR 测试文件） |Microsoft Docs
+title: Azure 安全中心)  (EICAR 测试文件的警报验证 |Microsoft Docs
 description: 本文档介绍了如何在 Azure 安全中心验证安全警报。
 services: security-center
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791174"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180467"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure 安全中心中的警报验证（EICAR 测试文件）
+# <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？

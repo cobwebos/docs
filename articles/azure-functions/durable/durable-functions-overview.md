@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272342"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660676"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -704,8 +704,9 @@ Durable Functions 的计费与 Azure Functions 一样。 有关详细信息，�
 * [使用 Visual Studio 2019 的 C#](durable-functions-create-first-csharp.md)
 * [使用 Visual Studio Code 的 JavaScript](quickstart-js-vscode.md)
 * [Python 使用 Visual Studio Code](quickstart-python-vscode.md)
+* [使用 Visual Studio Code 的 PowerShell](quickstart-powershell-vscode.md)
 
-在两个快速入门中，请在本地创建并测试“hello world”持久函数。 然后将函数代码发布到 Azure。 创建的函数将协调对其他函数的调用并将其链接在一起。
+在这些快速入门中，请在本地创建并测试“hello world”持久函数。 然后将函数代码发布到 Azure。 创建的函数将协调对其他函数的调用并将其链接在一起。
 
 ## <a name="learn-more"></a>了解详细信息
 

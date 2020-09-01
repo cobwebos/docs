@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836898"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723549"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -24,7 +24,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 表单识别器包括下列服务：
 * **自定义模型** - 从表单中提取键值对和表数据。 这些模型都是用你自己的数据训练的，因此是针对你的表单量身定制的。
-* **预生成的收据模型** - 使用预生成的模型从美国销售收据中提取数据。
+* **预生成模型** - 使用预生成模型从独特的表单类型中提取数据。 目前可用的是用于英语销售收据和名片的预生成模型。
 * **布局 API** - 从文档中提取文本和表结构及其边框坐标。
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 表单识别器使用[布局 API](#layout-api) 来了解印刷体和手写体文本元素的预期大小和位置。 然后，它使用用户指定的标签来了解文档中的键/值关联。 建议使用五个手动标记的相同类型的表单，这样就可以在训练新模型时入门，并根据需要添加更多标记的数据以提高模型准确性。
 
-## <a name="prebuilt-receipt-model"></a>预生成的回执模型
+## <a name="prebuilt-models"></a>预生成的模型
 
-表单识别器还包括用于读取美国的英语销售收据的模型&mdash;由餐馆、油站、零售店等使用的类型（[示例收据](./media/contoso-receipt-small.png)）。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额和总计等。 此外，预生成的回执模型经过训练，可识别和返回回执中的所有文本。
+表单识别器还包括用于独特表单类型的预生成模型。
+### <a name="prebuilt-receipt-model"></a>预生成的收据模型
+预生成的收据模型用于读取澳大利亚、加拿大、英国、印度和美国的英语销售收据 &mdash; 由餐馆、油站、零售店等使用的类型。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额、明细项目和总计等。 此外，预生成的回执模型经过训练，可识别和返回回执中的所有文本。 
+
+![收据示例](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>预生成的名片模型
+通过名片模型，你可以从英语名片中提取人员姓名、职务、地址、电子邮件、公司和电话号码等信息。 
+
+![名片示例](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>布局 API
 
@@ -90,7 +99,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>预生成的回执模型
+### <a name="prebuilt"></a>预生成
 
 回执模型的输入要求略有不同。
 

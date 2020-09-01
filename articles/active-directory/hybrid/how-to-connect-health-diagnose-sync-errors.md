@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359086"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179141"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -34,7 +34,7 @@ ms.locfileid: "85359086"
 
 ## <a name="problems"></a>问题
 ### <a name="a-common-scenario"></a>常见方案
-发生 QuarantinedAttributeValueMustBeUnique**** 和 AttributeValueMustBeUnique**** 同步错误时，Azure AD 中往往会出现 UserPrincipalName**** 或代理地址**** 冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 同步错误将在下一次同步后解决。例如，此图像表示有两个用户的**UserPrincipalName**发生冲突。 两者都是**Joe. J \@ contoso.com**。 有冲突的对象将在 Azure AD 中隔离。
+发生 QuarantinedAttributeValueMustBeUnique**** 和 AttributeValueMustBeUnique**** 同步错误时，Azure AD 中往往会出现 UserPrincipalName**** 或代理地址**** 冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 同步错误将在下一次同步后解决。例如，此图像表示有两个用户的 **UserPrincipalName**发生冲突。 两者都是 **Joe. J \@ contoso.com**。 有冲突的对象将在 Azure AD 中隔离。
 
 ![诊断常见的同步错误场景](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "85359086"
 ## <a name="diagnostic-and-troubleshooting-steps-in-connect-health"></a>Connect Health 中的诊断和故障排除步骤 
 诊断功能支持具有以下重复属性的用户对象：
 
-| 特性名 | 同步错误类型|
+| 属性名称 | 同步错误类型|
 | ------------------ | -----------------|
 | UserPrincipalName | QuarantinedAttributeValueMustBeUnique 或 AttributeValueMustBeUnique | 
 | ProxyAddresses | QuarantinedAttributeValueMustBeUnique 或 AttributeValueMustBeUnique | 
@@ -58,7 +58,7 @@ ms.locfileid: "85359086"
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> 需要在 RBAC 设置中指定“全局管理员”权限或“参与者”才能访问此功能********。
+> 若要访问此功能，需要具有 Azure RBAC 的 **全局管理员** 权限或 **参与者** 权限。
 >
 
 在 Azure 门户中遵循以下步骤，可以在同步错误详细信息中缩小诊断范围，并提供更具体的解决方法：
@@ -129,7 +129,7 @@ ms.locfileid: "85359086"
 > “应用修复”时所做的更改只适用于孤立对象的情况****。
 >
 
-执行上述步骤之后，用户可以访问原始资源，这是对现有对象的链接。 列表视图中的 "**诊断状态**" 值将更新为 "**挂起的同步**"。同步错误将在下一次同步后解决。连接运行状况将不再显示列表视图中已解决的同步错误。
+执行上述步骤之后，用户可以访问原始资源，这是对现有对象的链接。 列表视图中的 " **诊断状态** " 值将更新为 " **挂起的同步**"。同步错误将在下一次同步后解决。连接运行状况将不再显示列表视图中已解决的同步错误。
 
 ## <a name="failures-and-error-messages"></a>故障和错误消息
 **具有冲突属性的用户在 Azure Active Directory 中软删除。请确保在重试之前硬删除用户。**  
@@ -138,7 +138,7 @@ ms.locfileid: "85359086"
 **不支持更新租户中基于云的用户的源定位点。**  
 Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下不支持更新源定位点。 需要从本地手动进行修复。 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 **Q.** 如果“应用修复”操作执行失败，会发生什么情况****？  
 **A.** 如果执行失败，原因可能是 Azure AD Connect 遇到导出错误。 刷新门户页，然后在下一次同步后重试。默认同步周期为30分钟。 
 
@@ -148,7 +148,7 @@ Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下�
 
 
 **Q.** 用户应用修复需要哪些权限？  
-**A.** 全局管理员或在 RBAC 设置中指定的参与者有权访问诊断和故障排除过程********。
+**A.** **全局管理员**或 Azure RBAC 的 **参与者** 有权访问诊断和故障排除过程。
 
 
 **Q.** 是否需要为此功能配置 Azure AD Connect 或更新 Azure AD Connect Health 代理？  

@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001155"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181691"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -275,11 +275,11 @@ MABS 使用 System Center Data Protection Manager 保护代理。 [此处](/syst
 9. 在 SQL 中，还原 DPMDB。
 10. 在新服务器上以管理员) 身份运行 CMD (。 中转到 Microsoft Azure 备份安装位置和 bin 文件夹
 
-    路径示例：C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    路径示例： `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
 11. 若要连接到 Azure 备份，请运行 `DPMSYNC -SYNC`
 
-    如果已将 **新** 磁盘添加到 DPM 存储池，而不是移动旧磁盘，则运行 `DPMSYNC -Reallocatereplica`
+    如果已将 **新** 磁盘添加到 DPM 存储池而不是移动旧磁盘，则运行 `DPMSYNC -Reallocatereplica` 。
 
 ## <a name="network-connectivity"></a>网络连接
 
@@ -355,7 +355,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 4. 备份应会继续，而无需重启生产服务器。
 5. 现在，可以开始保护数据。 如果要升级到新式备份存储，同时保护，你还可以选择要在其中存储备份的卷，并在预配空间下检查。 [了解详细信息](backup-mabs-add-storage.md)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅此[错误代码文档](https://support.microsoft.com/kb/3041338)以获取详细信息。
 此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)

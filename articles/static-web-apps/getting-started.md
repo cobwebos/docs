@@ -1,22 +1,22 @@
 ---
-title: 快速入门：使用 Azure 静态 Web 应用生成第一个静态 Web 应用
-description: 了解如何使用首选前端框架生成 Azure 静态 Web 应用实例。
+title: 快速入门：使用 Azure Static Web Apps 生成第一个静态 Web 应用
+description: 了解如何构建 Azure Static Web Apps 网站。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565904"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752353"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入门：生成第一个静态 Web 应用
 
-Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布到生成环境。 在本快速入门中，将使用 GitHub 存储库中首选前端框架生成 Web 应用程序。
+Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布到生产环境。 在此快速入门中，你可以使用 Visual Studio Code 扩展将 Web 应用部署到 Azure Static Web Apps。
 
 如果没有 Azure 订阅，[请创建一个免费的试用帐户](https://azure.microsoft.com/free)。
 
@@ -24,153 +24,97 @@ Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布�
 
 - [GitHub](https://github.com) 帐户
 - [Azure](https://portal.azure.com) 帐户
+- [Visual Studio Code](https://code.visualstudio.com)
+- [Visual Studio Code 的 Azure Static Web Apps 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
 
-## <a name="create-a-repository"></a>创建存储库
+[!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
-本文使用 GitHub 模板存储库来轻松创建新存储库。 这些模板的特点是具有使用不同前端框架生成的入门级应用。
+[!INCLUDE [clone the repository](../../includes/static-web-apps-get-started-clone-repo.md)]
 
-# <a name="angular"></a>[Angular](#tab/angular)
-
-- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
-  - https://github.com/staticwebdev/angular-basic/generate
-- 将存储库命名为 my-first-static-web-app
-
-# <a name="react"></a>[React](#tab/react)
-
-- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
-  - https://github.com/staticwebdev/react-basic/generate
-- 将存储库命名为 my-first-static-web-app
-
-# <a name="vue"></a>[Vue](#tab/vue)
-
-- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
-  - https://github.com/staticwebdev/vue-basic/generate
-- 将存储库命名为 my-first-static-web-app
-
-# <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
-
-- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
-  - https://github.com/staticwebdev/vanilla-basic/generate
-- 将存储库命名为 my-first-static-web-app
-
-> [!NOTE]
-> Azure 静态 Web 应用需要至少一个 HTML 文件来创建 Web 应用。 在此步骤中创建的存储库包括单个 index.html 文件。
-
----
-
-单击“从模板创建存储库”按钮。
-
-:::image type="content" source="media/getting-started/create-template.png" alt-text="从模板创建存储库":::
+接下来，打开 Visual Studio Code 并转到“文件”>“打开文件夹”以在编辑器中打开刚刚克隆到计算机上的存储库。
 
 ## <a name="create-a-static-web-app"></a>创建静态 Web 应用
 
-现在，已经创建了存储库，可以从 Azure 门户创建静态 Web 应用。
+1. 在 Visual Studio Code 中，选择活动栏中的 Azure 徽标以打开 Azure 扩展窗口。
 
-- 导航到 [Azure 门户](https://portal.azure.com)
-- 单击“创建资源”
-- 搜索“静态 Web 应用”
-- 单击“静态 Web 应用(预览)”
-- 单击“创建”
+    :::image type="content" source="media/getting-started/extension-azure-logo.png" alt-text="Azure 徽标":::
 
-### <a name="basics"></a>基础
+    > [!NOTE]
+    > 需要登录 Azure 和 GitHub。 如果尚未从 Visual Studio Code 登录到 Azure 和 GitHub，该扩展将在创建过程中提示你登录到这两个站点。
 
-首先，配置新应用，并将其链接到 GitHub 存储库。
+1. 将鼠标置于“Static Web Apps”标签上，然后选择加号。
 
-:::image type="content" source="media/getting-started/basics-tab.png" alt-text="“基本信息”选项卡":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="应用程序名称":::
 
-- 选择 Azure 订阅
-- 选择或创建新资源组
-- 将应用命名为 my-first-static-web-app。
-  - 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。
-- 选择离你最近的区域
-- 选择免费 SKU
-- 单击“使用 GitHub 登录”按钮，然后使用 GitHub 进行身份验证
+1. 命令面板将在编辑器顶部打开，并提示你命名应用程序。
 
-登录 GitHub 后，请输入存储库信息。
+    输入“my-first-static-web-app”，然后按 Enter 。
 
-:::image type="content" source="media/getting-started/repository-details.png" alt-text="存储库详细信息":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="创建静态 Web 应用":::
 
-- 选择首选组织
-- 选择“存储库”下拉列表中的“my-first-web-static-app”
-- 从“分支”下拉列表中选择“master”
-- 单击“下一步:生成 >”按钮以编辑生成配置
+1. 选择“master”分支并按 Enter 。
 
-:::image type="content" source="media/getting-started/next-build-button.png" alt-text="下一个生成按钮":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="分支名称":::
 
-> [!NOTE]
->  如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure Static Web Apps。 浏览到 [GitHub 主页](https://github.com)并单击你的帐户图像，打开下拉菜单。 单击“设置”，然后单击“应用程序”>“已获得授权的 OAuth 应用”>“Azure Static Web Apps”，最后选择“授权”  。 对于组织存储库，你必须是组织的所有者才能授予权限。
+1. 选择“/”作为应用程序代码的位置，然后按 Enter 。
 
-### <a name="build"></a>生成
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序代码位置":::
 
-接下来，添加特定于首选前端框架的详细信息。
+1. 扩展正在查找应用程序中 API 的位置。 本文不实现 API。
 
-# <a name="angular"></a>[Angular](#tab/angular)
+    选择“暂时跳过”，然后按 Enter 。
 
-- 在“应用位置”框中输入“/”
-- 清除“Api 位置”框中的默认值
-- 在“应用项目位置”框中输入“dist/angular-basic”
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API 位置":::
 
-# <a name="react"></a>[React](#tab/react)
+1. 选择在应用中生成用于生产的文件的位置。
 
-- 在“应用位置”框中输入“/”
-- 清除“Api 位置”框中的默认值
-- 在“应用项目位置”框中输入“build”
+    # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
-# <a name="vue"></a>[Vue](#tab/vue)
+    清除框并按 Enter。
 
-- 在“应用位置”框中输入“/”
-- 清除“Api 位置”框中的默认值
-- 在“应用项目位置”框中输入“dist”
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="应用文件路径":::
 
-# <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
+    # <a name="angular"></a>[Angular](#tab/angular)
 
-- 在“应用位置”框中输入“/”
-- 清除“Api 位置”框中的默认值
-- 清除“应用项目位置”框中的默认值
+    输入“dist/angular-basic”，然后按 Enter 。
 
----
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular 应用文件路径":::
 
-单击“查看 + 创建”按钮。
+    # <a name="react"></a>[React](#tab/react)
 
-:::image type="content" source="media/getting-started/review-create.png" alt-text="“查看创建”按钮":::
+    键入“生成”，然后按 Enter 。
 
-若要在创建应用后更改这些值，可编辑 [工作流文件](github-actions-workflow.md)。
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React 应用文件路径":::
 
-### <a name="review--create"></a>查看 + 创建
+    # <a name="vue"></a>[Vue](#tab/vue)
 
-请求验证后，可以继续创建应用程序。
+    键入“dist”，然后按 Enter 。
 
-单击“创建”按钮
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue 应用文件路径":::
 
-:::image type="content" source="media/getting-started/create-button.png" alt-text="“创建”按钮":::
+    ---
 
-创建资源后，单击“转到资源”按钮
+1. 选择离你最近的位置，然后按 Enter。
 
-:::image type="content" source="media/getting-started/resource-button.png" alt-text="“转到资源”按钮":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="资源位置":::
 
-## <a name="view-the-website"></a>查看网站
+1. 创建应用后，将在 Visual Studio Code 中显示确认通知。
 
-通过两个方面来部署静态应用。 第一个预配构成应用的基础 Azure 资源。 第二个是生成和发布应用程序的 GitHub Actions 工作流。
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="已创建确认":::
 
-在导航到新静态站点之前，必须先完成部署生成的运行。
+1. 在 Visual Studio Code 资源管理器窗口中，返回到“Static Web Apps”部分，右键单击“产品”，然后选择“在门户中打开”以在 Azure 门户中查看应用 。
 
-静态 Web 应用“概述”窗口显示了一系列链接，可帮助你与 Web 应用进行交互。
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="打开门户":::
 
-:::image type="content" source="media/getting-started/overview-window.png" alt-text="“概述”窗口":::
-
-1. 单击“单击此处以查看 GitHub Actions 运行的状态”的标题，即可转到针对存储库运行的 GitHub Actions。 确认部署作业完成后，即可通过生成的 URL 导航到网站。
-
-2. GitHub Actions 工作流完成后，可以单击该 URL 链接以在新选项卡中打开网站。
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用程序，可按以下步骤删除 Azure 静态 Web 应用实例：
+如果不打算继续使用此应用程序，可通过该扩展删除 Azure Static Web Apps 实例。
 
-1. 打开 [Azure 门户](https://portal.azure.com)
-1. 在顶部搜索栏中搜索“my-first-web-static-app”
-1. 单击应用名称
-1. 单击“删除”按钮
-1. 单击“是”以确认删除操作
+在 Visual Studio Code 资源浏览器窗口中，返回到“Static Web Apps”部分，右键单击“my-first-static-web-app”，然后选择“删除” 。
+
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="删除应用":::
 
 ## <a name="next-steps"></a>后续步骤
 

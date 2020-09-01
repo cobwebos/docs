@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589497"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181759"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -36,6 +36,15 @@ ms.locfileid: "88589497"
 > 在部署到生产环境之前确保应用程序的故障转移是复原的，这有助于降低生产环境中出现应用程序故障的风险，并将向客户提供应用程序可用性。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 托管实例上启动手动故障转移
+
+### <a name="rbac-permissions-required"></a>需要 RBAC 权限
+
+启动故障转移的用户需要具有下列 RBAC 角色之一：
+
+- 订阅所有者角色或
+- 托管实例参与者角色，或
+- 具有以下权限的自定义角色：
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
@@ -99,7 +108,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 需要在 API 调用中传递以下属性：
 
-| **API 属性** | **Parameter** |
+| **API 属性** | **参数** |
 | --- | --- |
 | subscriptionId | 托管实例所部署到的订阅 ID |
 | resourceGroupName | 包含托管实例的资源组 |

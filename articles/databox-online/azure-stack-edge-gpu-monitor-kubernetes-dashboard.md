@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083127"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180671"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge GPU 设备
 
@@ -26,6 +26,7 @@ ms.locfileid: "89083127"
 > [!div class="checklist"]
 >
 > * 访问设备上的 Kubernetes 仪表板
+> * 下载 `aseuser` 配置
 > * 查看设备上部署的模块
 > * 获取设备上部署的应用程序的 IP 地址
 > * 查看设备上部署的模块的容器日志
@@ -33,13 +34,13 @@ ms.locfileid: "89083127"
 
 ## <a name="about-kubernetes-dashboard"></a>关于 Kubernetes 仪表板
 
-Kubernetes 仪表板是一种基于 web 的用户界面，可用于对容器化应用程序进行故障排除。 Kubernetes 仪表板是 Kubernetes 命令行的基于 UI 的替代项 `kubectl` 。 
+Kubernetes 仪表板是一种基于 web 的用户界面，可用于对容器化应用程序进行故障排除。 Kubernetes 仪表板是 Kubernetes 命令行的基于 UI 的替代项 `kubectl` 。 有关详细信息，请参阅 [Kubernetes 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)。 
 
-在 Azure Stack 边缘设备上，你可以在只读模式下使用 Kubernetes 仪表板来大致了解在 Azure Stack Edge 设备上运行的应用程序，查看 Kubernetes 群集资源的状态，并查看设备上发生的任何错误。
+在 Azure Stack 边缘设备上，你可以在 *只读* 模式下使用 Kubernetes 仪表板来大致了解在 Azure Stack Edge 设备上运行的应用程序，查看 Kubernetes 群集资源的状态，并查看设备上发生的任何错误。
 
 ## <a name="access-dashboard"></a>访问面板
 
-Kubernetes 仪表板为只读，并在端口31000上的 Kubernetes 主节点上运行。 请按照以下步骤访问仪表板： 
+Kubernetes 仪表板为 *只读* ，并在端口31000上的 Kubernetes 主节点上运行。 请按照以下步骤访问仪表板： 
 
 1. 在设备的本地 UI 中，中转到 " **设备** "，并中转到 " **设备终结点**"。 选择 Kubernetes 仪表板 URL，在浏览器中打开仪表板。
 

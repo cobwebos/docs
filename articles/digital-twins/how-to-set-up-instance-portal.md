@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 300a11c36b11230d2bd75534f152a0a5955743ed
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234975"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181777"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -107,7 +107,7 @@ ms.locfileid: "88234975"
 在下面的 " *注册应用程序* " 页中，填写所需的值：
 * **名称**：要与注册关联的 Azure AD 应用程序显示名称
 * **受支持的帐户类型**：仅 * (默认目录-单租户) 中选择此组织目录中的帐户 *
-* **重定向 URI**： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 您可以使用 `http://localhost` 。
+* **重定向 URI**： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 为添加 *公共客户端/本机 (移动 & 桌面) * URI `http://localhost` 。
 
 完成后，单击 " *注册* " 按钮。
 

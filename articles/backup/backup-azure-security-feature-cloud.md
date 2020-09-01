@@ -3,12 +3,12 @@ title: Azure 备份的软删除
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: a23d9d1e2ceeb767784490ba65542a5e91b6785b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004912"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179957"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
@@ -97,7 +97,7 @@ SoftDeleteFeatureState : Disabled
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
-如果在禁用软删除之前删除了项，则它们将处于已软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
+如果在禁用软删除之前删除了项目，则这些项目将处于软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
 
 确定处于已软删除状态的项。
 
@@ -134,7 +134,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="using-rest-api"></a>使用 REST API
 
-如果在禁用软删除之前删除了项，则它们将处于已软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
+如果在禁用软删除之前删除了项目，则这些项目将处于软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
 
 1. 首先，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)提到的步骤撤消删除操作。
 2. 然后遵循[此处](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)所述的步骤，使用 REST API 禁用软删除功能。

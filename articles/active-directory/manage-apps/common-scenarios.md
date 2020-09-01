@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763629"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642106"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 集中应用程序管理
 
@@ -43,7 +43,7 @@ ms.locfileid: "84763629"
 |Feature  | 说明 | 建议 |
 |---------|---------|---------|
 |SSO|使用受信任的行业标准的基于标准的联合 SSO。|如果应用程序支持 SSO，请始终使用 [SAML/OIDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) 来启用它。|
-|访问面板|为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。| 将应用与 Azure AD 进行 SSO 集成后，请在组织中部署[访问面板](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan)。|
+|我的应用|为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。| 将应用与 Azure AD 进行 SSO 集成后，请在组织中部署[我的应用](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan)。|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>应用场景 2：自动预配和取消预配 
 

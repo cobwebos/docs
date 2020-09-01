@@ -4,20 +4,21 @@ description: 了解 Azure 预留磁盘折扣如何应用于 Azure 高级 SSD 托
 author: roygara
 ms.author: rogarana
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cd89c3ddc3c58de02f1104109ce7f243c4d1e6fd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509459"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682444"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>了解预留折扣如何应用于 Azure 磁盘存储
 
 购买 Azure 磁盘预留容量后，预留折扣自动应用于与预留条款匹配的磁盘资源。 预留折扣仅应用于磁盘 SKU。 磁盘快照按即用即付费率收费。
 
-有关 Azure 磁盘预留的详细信息，请参阅[通过 Azure 磁盘预留节省成本](../../virtual-machines/linux/disks-reserved-capacity.md)。 有关 Azure 磁盘预留的定价信息，请参阅 [Azure 托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
+有关 Azure 磁盘预留的详细信息，请参阅[通过 Azure 磁盘预留节省成本](../../virtual-machines/disks-reserved-capacity.md)。 有关 Azure 磁盘预留的定价信息，请参阅 [Azure 托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 ## <a name="how-the-reservation-discount-is-applied"></a>如何应用预留折扣
 
@@ -53,6 +54,5 @@ Azure 磁盘预留折扣是一种“不用就会失效”的折扣。 它按小�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [通过 Azure 磁盘预留降低成本 (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
-- [通过 Azure 磁盘预留降低成本 (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
+- [通过 Azure 磁盘预留降低成本](../../virtual-machines/disks-reserved-capacity.md)
 - [什么是 Azure 预订？](save-compute-costs-reservations.md)

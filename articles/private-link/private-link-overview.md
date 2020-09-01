@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168144"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639691"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -68,6 +68,7 @@ Azure 专用链接提供以下优势：
 | Azure SignalR | 美国东部、美国西部 2、美国中南部      |  | 预览   <br/> [了解详细信息](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |  | GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Azure 文件同步 | 所有公共区域      | |   GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | 美国东部、美国西部 2、美国中南部、美国中西部、法国中部、东亚、英国南部、US Gov 弗吉尼亚州、US Gov 亚利桑那州  | | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 有关最新通知，请查看 [Azure 专用链接更新页面](https://azure.microsoft.com/updates/?product=private-link)。
 

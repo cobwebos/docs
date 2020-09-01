@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022388"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180280"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -70,7 +70,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 报表包含各种选项卡：
 
-##### <a name="summary"></a>摘要
+##### <a name="summary"></a>“摘要”
 
 使用此选项卡可大致了解备份空间。 你可以快速查看备份项的总数、使用的云存储空间总量、受保护实例的数量以及每种工作负载类型的作业成功率。 有关特定备份项目类型的详细信息，请转到相应的选项卡。
 
@@ -113,7 +113,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 若要查看非活动资源，请导航到 " **优化** " 选项卡，然后选择 " **非活动资源** " 磁贴。 选择此磁贴会显示一个网格，其中包含所选范围内的所有非活动资源的详细信息。 默认情况下，此网格显示在过去7天内没有恢复点的项。 若要在不同时间范围内查找非活动资源，可以在该选项卡的顶部调整 **时间范围** 筛选器。
 
-确定非活动资源后，可以通过导航到 "备份项" 仪表板或该资源的 "Azure 资源" 窗格来进一步调查此问题， (只要适用) 。 根据你的方案，你可以选择停止 (计算机的备份（如果不存在），) 并删除不必要的备份，这将节省成本，或者你可以修复计算机中的问题，以确保备份可靠。
+确定非活动资源后，可通过导航到该资源的 "备份项" 仪表板或 "Azure 资源" 窗格 (，无论是否适用) ，都可以进一步调查该问题。 根据你的方案，你可以选择停止 (计算机的备份（如果不存在），) 并删除不必要的备份，这将节省成本，或者你可以修复计算机中的问题，以确保备份可靠。
 
 ![优化选项卡-非活动资源](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 

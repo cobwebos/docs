@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919669"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179345"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure 多重身份验证的会话生存期
 
 Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要重新进行身份验证的频率。 这种重新验证可能会导致首个因素（如 password、FIDO 或无密码 Microsoft Authenticator）或 (MFA) 执行多重身份验证。 你可以根据自己的环境和所需的用户体验来配置这些身份验证设置。
+
+用户登录频率 Azure AD 默认配置是90天的滚动窗口。 要求用户提供凭据通常是一项明智的事情，但它可以 backfire。 如果已训练用户在未考虑的情况下输入其凭据，则他们可能会无意中将其提供给恶意凭据提示。
+
+即使任何违反 IT 策略的情况都吊销会话，它也可能会发出警报。 一些示例包括密码更改、incompliant 设备或帐户禁用操作。 还可以 [使用 PowerShell 显式撤销用户会话](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)。
 
 本文详细介绍了推荐的配置，以及不同的设置的工作方式和相互交互。
 
@@ -35,6 +39,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 * 如果你有 Office 365 应用许可证或免费 Azure AD 层：
     * 使用 [托管设备](../devices/overview.md) 或 [无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录 (SSO) 。
     * 保持启用 " *保持登录* " 选项，并指导用户接受该选项。
+* 对于移动设备方案，请确保用户使用 Microsoft Authenticator 应用。 此应用程序用作其他 Azure AD 联合应用程序的代理，并减少设备上的身份验证提示。
 
 我们的研究表明，这些设置适用于大多数租户。 这些设置的一些组合（如 " *记住 MFA* " 和 " *签名*"）可能会导致提示用户进行身份验证。 一般的身份验证提示对于用户工作效率是不正确的，并且可以使其更易受到攻击。
 
@@ -71,11 +76,11 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 ### <a name="remember-multi-factor-authentication"></a>记住多重身份验证  
 
-此设置允许你配置介于1-60 天之间的值，并在用户选择 "在登录时 **不再次询问 X 天** " 选项时在浏览器上设置持久性 cookie。
+此设置允许你配置介于1-365 天之间的值，并在用户选择 "在登录时 **不再次询问 X 天** " 选项时在浏览器上设置持久性 cookie。
 
 ![批准登录请求的示例提示屏幕截图](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-尽管此设置可减少 web 应用的身份验证次数，但会增加新式身份验证客户端的身份验证次数，如 Office 客户端。 通常，在密码重置或非活动状态为90天后，这些客户端通常会提示。 但是，" *记住 MFA* " 的最大值为60天。 当结合使用时，将与 **保持登录** 或条件性访问策略一起使用时，它可能会增加身份验证请求的数目。
+尽管此设置可减少 web 应用的身份验证次数，但会增加新式身份验证客户端的身份验证次数，如 Office 客户端。 通常，在密码重置或非活动状态为90天后，这些客户端通常会提示。 但是，将此值设置为小于90天会缩短 Office 客户端的默认 MFA 提示，并增加重新验证的频率。 当结合使用时，将与 **保持登录** 或条件性访问策略一起使用时，它可能会增加身份验证请求的数目。
 
 如果你使用 " *记住 MFA* " 并有 Azure AD Premium 1 个许可证，请考虑将这些设置迁移到条件访问登录频率。 否则，请考虑使用 *"使我保持登录"* ，而不是。
 

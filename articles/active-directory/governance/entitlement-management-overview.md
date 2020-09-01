@@ -12,22 +12,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034396"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871201"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
 Azure Active Directory (Azure AD) 权利管理是一种[标识治理](identity-governance-overview.md)功能，通过自动执行访问请求工作流、访问分配、审核和过期，使组织能够大规模管理标识和访问生命周期。
 
-组织中的员工需要访问各种组、应用程序和站点以执行其作业。 由于要求发生了更改（添加了新应用程序或用户需要额外的访问权限），因此管理此访问具有难度。  在与外部组织协作时，此场景更为复杂 - 你可能不知道另一组织中的谁需要访问你组织的资源，并且他们不知道你的组织正在使用哪些应用程序、组或站点。
+组织中的员工需要访问各种组、应用程序和站点以执行其作业。 由于要求发生了更改（添加了新应用程序或用户需要额外的访问权限），因此管理此访问具有难度。  在与外部组织协作时，此场景会更为复杂 - 你可能不知道另一组织中的哪些人需要访问你的组织的资源，他们可能也不知道你的组织正在使用哪些应用程序、组或站点。
 
 Azure AD 权利管理可帮助你更加高效地管理内部用户及需要访问这些资源的组织外部的用户对组、应用程序和 SharePoint Online 站点的访问权限。
 
@@ -54,7 +55,10 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 - 将创建访问包的功能委托给非管理员。 这些访问包包含用户可以请求的资源，并且接受委托的访问包管理员可以使用用户可以请求的规则来定义策略、谁必须审批其访问权限以及访问权限到期时间。
 - 选择哪些已连接的组织的用户可以请求访问权限。  当一个不属于你目录的用户请求了访问权限并获得批准后，系统将自动邀请他们进入你的目录并为其分配访问权限。  当他们的访问权限到期时，如果他们没有收到其他访问包分配，可以自动删除他们在你的目录中的 B2B 帐户。
 
-可以开始使用我们的[教程创建你的第一个访问包](entitlement-management-access-package-first.md)。 还可以阅读[常见方案](entitlement-management-scenarios.md)或观看视频，包括
+>[!NOTE]
+>如果你已准备好试用权利管理，可以从[关于创建你的第一个访问包的教程](entitlement-management-access-package-first.md)开始。
+
+还可以阅读[常见方案](entitlement-management-scenarios.md)或观看视频，包括
 
 - [如何在组织中部署 Azure AD 权利管理](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [如何监视和缩放 Azure AD 权利管理的使用](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -68,7 +72,7 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 - Azure AD 安全组的成员身份
 - Microsoft 365 组和团队的成员身份
-- 分配到 Azure AD 企业应用程序的分配内容，包括 SaaS 应用程序和支持联合/单一登录和/或预配的自定义集成应用程序
+- 分配到 Azure AD 企业应用程序的内容，包括 SaaS 应用程序和支持联合/单一登录和/或预配的自定义集成应用程序
 - SharePoint Online 站点的成员身份
 
 你还可以控制对依赖于 Azure AD 安全组或 Microsoft 365 组的其他资源的访问权限。  例如：
@@ -99,16 +103,16 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 ## <a name="when-should-i-use-access-packages"></a>应在何时使用访问包？
 
-访问包并不替代其他访问权限分配机制。  它们最适用于以下情况：
+访问包并不替代其他访问权限分配机制。  它们最适用于类似如下的情况：
 
 - 员工需要用于特定任务的受时间限制的访问权限。  例如，你可以使用基于组的许可和动态组来确保所有员工都有 Exchange Online 邮箱，然后在员工需要其他访问权限的情况（例如从其他部门读取部门资源）下使用访问包。
-- 访问权限需要由员工的经理或其他指定的个人进行批准。
+- 需要员工经理或其他指定人员批准的访问。
 - 部门希望自己管理自己的资源访问策略，不希望 IT 参与。  
 - 两个或多个组织在一个项目上进行协作，因此，需要通过 Azure AD B2B 引入一个组织中的多个用户，使其能够访问其他组织的资源。
 
 ## <a name="how-do-i-delegate-access"></a>如何委托访问权限？
 
- 在名为 *catalogs* 的容器中定义访问包。  可以为所有访问包使用单个目录，也可以指定某些个人来创建并拥有其自己的目录。 管理员可以将资源添加到任何目录，但非管理员只能将他们拥有的资源添加到目录。 目录所有者可以将其他用户添加为目录共同所有者或访问包管理员。  可通过 [Azure AD 权利管理中的委托和角色](entitlement-management-delegate.md)一文进一步了解这些场景。
+ 在名为 *catalogs* 的容器中定义访问包。  可以为所有访问包使用单个目录，也可以指定某些个人来创建并拥有其自己的目录。 管理员可以将资源添加到任何目录，但非管理员只能将自己拥有的资源添加到目录。 目录所有者可以将其他用户添加为目录共同所有者或访问包管理员。  可通过 [Azure AD 权利管理中的委托和角色](entitlement-management-delegate.md)一文进一步了解这些场景。
 
 ## <a name="summary-of-terminology"></a>术语摘要
 
@@ -149,7 +153,7 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 - 被委托了管理任务的用户（例如目录创建者、目录所有者和访问包管理员）无需任何许可证。
 - 有权请求访问包但并不请求访问包的来宾无需任何许可证 。
 
-对于为成员用户（员工）购买的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD B2B 邀请至多 5 位来宾用户。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅 [Azure AD B2B 协作许可指南](../b2b/licensing-guidance.md)。
+对于为成员用户（员工）购买的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD B2B 邀请至多 5 位来宾用户。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅 [Azure AD B2B 协作许可指南](../external-identities/licensing-guidance.md)。
 
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 
