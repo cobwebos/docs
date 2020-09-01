@@ -154,7 +154,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 在“选择服务资源”中，选择应该为其启用所选 HCX 服务的一个或多个服务资源。 选择“继续”。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/select-service-resources.png" alt-text="在 "选择服务资源" 中，选择要为其启用选定 HCX 服务的一个或多个服务资源。选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/select-service-resources.png" alt-text="在 选择服务资源 中，选择要为其启用选定 HCX 服务的一个或多个服务资源。选择 继续。":::
   
    > [!NOTE]
    > 选择特定群集，会针对其中的源 VM 使用 HCX 进行迁移。
@@ -179,27 +179,27 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
     
    如果你有不在多个站点之间共享的点对点网络（如直接连接），则可以跳过此步骤，因为计算配置文件与多个站点共享。 在这种情况下，可以在创建互连服务网格期间替代和指定上行网络配置文件。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/uplink-network-profile.png" alt-text="选择 "网络上行" 并选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/uplink-network-profile.png" alt-text="选择 网络上行 并选择 继续。":::
 
 1. 选择“vMotion 网络配置文件”，然后选择“继续”。
       
    选择可以用于访问 ESXi 主机的 vMotion 接口的网络配置文件。 如果尚未定义此类网络配置文件，则可以在此处进行创建。 如果没有 vMotion 网络，请选择“管理网络配置文件”。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/vmotion-network-profile.png" alt-text="选择 "vMotion 网络配置文件"，并选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/vmotion-network-profile.png" alt-text="选择 vMotion 网络配置文件，并选择 继续。":::
 
 1. 从 " **选择 VSphere 复制网络配置文件**" 中，选择网络配置文件 VSphere 的 ESXi 主机的复制接口，然后选择 " **继续**"。
       
    在大多数情况下，此配置文件与管理网络配置文件相同。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png" alt-text="从 "选择 vSphere 复制网络配置文件" 中，选择网络配置文件 vSphere 的 ESXi 主机的复制接口，然后选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png" alt-text="从 选择 vSphere 复制网络配置文件 中，选择网络配置文件 vSphere 的 ESXi 主机的复制接口，然后选择 继续。":::
 
 1. 从 " **选择网络扩展的分布式交换机**" 中，选择要将集成并连接到其网络的虚拟机所在的 DVS。  选择“继续”。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/distributed-switches.png" alt-text="从 "选择网络扩展的分布式交换机" 中，选择要将集成并连接到其网络的虚拟机所在的 DVS。 选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/distributed-switches.png" alt-text="从 选择网络扩展的分布式交换机 中，选择要将集成并连接到其网络的虚拟机所在的 DVS。 选择 继续。":::
 
 1. 查看连接规则并选择 " **继续**"。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/complete-compute-profile.png" alt-text="查看连接规则并选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/complete-compute-profile.png" alt-text="查看连接规则并选择 继续。":::
 
 1.  选择“完成”以创建完整配置文件。
 
@@ -227,7 +227,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 2. 在 "**基础结构**" 下，选择 "**互连**  >  **服务网格**  >  **创建服务网格**"，以配置在前面的步骤中创建的网络和计算配置文件。    
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-service-mesh.png" alt-text="在 "基础结构" 下，选择 "> Service 网格的互连 > 创建服务网格，以配置在前面的步骤中创建的网络和计算配置文件。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-service-mesh.png" alt-text="在 基础结构 下，选择 > Service 网格的互连 > 创建服务网格，以配置在前面的步骤中创建的网络和计算配置文件。":::
 
 3. 选择配对站点以启用混合功能，然后选择 **继续**。   
 
@@ -241,7 +241,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 5. 选择要启用的服务，并选择 " **继续**"。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-services.png" alt-text="选择要启用的服务，并选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-services.png" alt-text="选择要启用的服务，并选择 继续。":::
 
 6. 在“高级配置 - 替代上行网络配置文件”中，选择“继续”。  
       
@@ -251,7 +251,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 7. 选择 **"配置网络扩展设备 Scale Out**。 
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/network-extension-scale-out.png" alt-text="选择 "配置网络扩展设备 Scale Out。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/network-extension-scale-out.png" alt-text="选择 配置网络扩展设备 Scale Out。":::
 
 8. 输入与 DVS 交换机计数对应的设备计数。  
 
@@ -259,7 +259,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 9. 选择 " **继续** " 以跳过。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/traffic-engineering.png" alt-text="选择 "继续" 以跳过。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/traffic-engineering.png" alt-text="选择 继续 以跳过。":::
 
 10. 查看拓扑预览，然后选择“继续”。 
 
