@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039185"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265654"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 针对 over-the-top (OTT) 或在线流解决方案设计和构建数字版权管理 (DRM) 子系统是相当复杂的任务。 运营商/在线视频提供商通常会将此任务外包给专门的 DRM 服务提供商。 本文档旨在陈述 OTT 或在线流解决方案中端到端 DRM 子系统的参考设计和参考实现。
 
@@ -49,7 +51,7 @@ ms.locfileid: "87039185"
 | --- | --- | --- |
 | **智能电视、STB** | PlayReady、Widevine 和/或其他 | 适用于 PlayReady 和/或 Widevine 的嵌入式浏览器/EME|
 | **Windows 10** | PlayReady | 适用于 PlayReady 的 Microsoft Edge/IE11|
-| **Android 设备（手机、平板电脑、电视）** |Widevine |适用于 Widevine 的 Chrome |
+| **Android 设备 (手机、平板电脑、TV) ** |Widevine |适用于 Widevine 的 Chrome |
 | **iOS** | FairPlay | 适用于 FairPlay 的 Safari（自 iOS 11.2 起） |
 | **macOS** | FairPlay | 适用于 FairPlay 的 Safari（自 Mac OS X 10.11 + El Capitan 版 Safari 9+ 起）|
 | **tvOS** | FairPlay | |
@@ -134,11 +136,11 @@ DRM 子系统可能包含以下组件：
 | **构建基块** | **技术** |
 | --- | --- |
 | **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **标识提供者（IDP）** |Azure Active Directory (Azure AD) |
+| **标识提供者 (IDP) ** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |Azure 媒体服务动态保护 |
 | **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
-| **格式** |Azure 媒体服务流式处理终结点 |
+| **源** |Azure 媒体服务流式处理终结点 |
 | **密钥管理** |不需要参考实现 |
 | **内容管理** |一个 C# 控制台应用程序 |
 
@@ -176,7 +178,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产*不*受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产 *不* 受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 

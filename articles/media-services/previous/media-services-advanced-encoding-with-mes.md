@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264804"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概述
 
@@ -51,7 +53,7 @@ ms.locfileid: "89018019"
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>生成缩略图
+## <a name="generate-thumbnails"></a>生成缩略图
 
 本部分说明如何自定义生成缩略图的预设。 下面定义的预设包含有关如何将文件编码的信息，以及生成缩略图时所需的信息。 可使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并添加生成缩略图的代码。  
 
@@ -64,7 +66,7 @@ ms.locfileid: "89018019"
 
 请务必仔细阅读[注意事项](#considerations)部分。
 
-### <a name="json-preset"></a><a id="json"></a>JSON 预设
+### <a name="json-preset"></a>JSON 预设
 
 ```json
 {
@@ -166,7 +168,7 @@ ms.locfileid: "89018019"
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML 预设
+### <a name="xml-preset"></a>XML 预设
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -1092,5 +1094,5 @@ job.GetExecutionProgressTask(CancellationToken.None).Wait();
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [媒体服务编码概述](media-services-encode-asset.md)

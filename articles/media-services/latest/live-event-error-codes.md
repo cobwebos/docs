@@ -1,6 +1,6 @@
 ---
-title: Azure 媒体服务实时事件错误代码 |Microsoft Docs
-description: 本文列出了实时事件错误代码。
+title: Azure 媒体服务直播活动错误代码 | Microsoft Docs
+description: 本文列出了直播活动错误代码。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -11,22 +11,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/4/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000945"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265365"
 ---
-# <a name="media-services-live-event-error-codes"></a>媒体服务实时事件错误代码
+# <a name="media-services-live-event-error-codes"></a>媒体服务直播活动错误代码
 
-此部分中的表列出了[实时事件](live-events-outputs-concept.md)错误代码。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+本节中的表列出了[直播活动](live-events-outputs-concept.md)错误代码。
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-当你订阅实时事件的[事件网格](../../event-grid/index.yml)事件时，可能会看到[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)事件出现以下错误之一。
+订阅直播活动的[事件网格](../../event-grid/index.yml)事件时，可从 [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) 事件中看到以下错误之一。
 
 | 结果代码 | 说明 |
 | ----------- | ----------- |
@@ -34,17 +36,17 @@ ms.locfileid: "87000945"
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | 编码器 IP 在配置的 IP 允许列表中不存在 |
 | MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | RTMP 编码器未发送 setDataFrame 命令。 |
 | MPE_INGEST_CODEC_NOT_SUPPORTED | 不支持指定的编解码器。 |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED |在实际媒体数据送达之前，未收到媒体说明信息。|
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED |音频或视频类型的质量计数超出了允许的最大限制。|
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED |实时事件或通道服务中的总传入比特率超出了允许的最大限制。|
+| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED |在实际媒体数据送达之前未收到媒体说明信息。|
+| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED |音频或视频类型的质量计数超过了允许的最大限制。|
+| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED |直播活动或频道服务中的总传入比特率超过了允许的最大限制。|
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP 编码器中视频或音频 FLVTag 的时间戳无效。 |
-| MPE_INGEST_FRAMERATE_EXCEEDED | 带 framerates 的传入编码器引入流超过了允许的最大30fps 编码实时事件/通道。|
-| MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | 传入编码器引入流超过以下允许的分辨率：用于对实时事件/通道进行编码的1920x1088 和用于传递实时事件/通道的 4096 x 2160。|
-| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | 实时事件同时接收了大量音频数据，或者没有任何关键帧的视频数据量。 我们已断开编码器连接，使其有机会使用正确的数据重试。 |
+| MPE_INGEST_FRAMERATE_EXCEEDED | 传入的编码器引入流的帧速率超过了直播活动/频道编码所允许的最大值，即 30fps。|
+| MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | 传入的编码器引入流超过了以下允许的分辨率：1920x1088（直播活动/频道编码）和 4096x2160（直接传递直播活动/频道编码）。|
+| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | 直播活动同时接收了大量音频数据或大量没有任何关键帧的视频数据。 已断开编码器连接，以使其有机会使用正确的数据进行重试。 |
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-你可能会看到来自[LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected)事件的以下错误之一。
+你可能会从 [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) 事件中看到以下错误之一。
 
 |结果代码|说明|
 |---|---|
@@ -56,8 +58,8 @@ ms.locfileid: "87000945"
 
 ## <a name="see-also"></a>另请参阅
 
-[流式处理终结点（源）错误代码](streaming-endpoint-error-codes.md)
+[流式处理终结点（来源）错误代码](streaming-endpoint-error-codes.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[教程：通过 Media Services 实时流](stream-live-tutorial-with-api.md)
+[教程：使用媒体服务进行实时流式传输](stream-live-tutorial-with-api.md)

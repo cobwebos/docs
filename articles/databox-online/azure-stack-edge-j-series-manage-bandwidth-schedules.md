@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: b27c4fb9beb631b40617307cfc5952b7dcb45369
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147042"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265688"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>使用 Azure 门户管理 Azure Stack 边缘的带宽计划 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>使用 Azure 门户管理 Azure Stack 边缘 GPU 上的带宽计划 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -46,7 +46,7 @@ ms.locfileid: "89147042"
    2. 如果此计划应该全天运行，请选中“全天”选项。****
    3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。**** 为此字段提供一个介于20和2147483647之间的数字。
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。****
-   5. 选择“添加”   。
+   5. 选择 **添加** 。
 
       ![添加计划](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
 

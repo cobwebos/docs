@@ -7,19 +7,16 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 07e7b8db3bf7e1131ec8892a69223eaf4505e8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10f3856a7c0c0a98ab8b23e20342d745b1966b9b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037740"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263189"
 ---
 # <a name="az-spring-cloud"></a>az 春季-cloud
 
 ## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure 春季云
-
->[!Note]
-> Azure Spring Cloud 目前为预览版。  将来的版本中可能会更改或删除这些命令。
 
 | az 春季-cloud | 命令 |
 |------|------:|
@@ -93,11 +90,11 @@ az spring-cloud create  --name -n
 | 必需参数 | 说明 |
 | --- | :--- |
 | --name-n | 此 Azure 春季 Cloud 实例的名称。 |
-| --resource-group -g | 指定此应用程序的资源组。  使用配置默认组`az configure --defaults group=<name>` |
+| --resource-group -g | 指定此应用程序的资源组。  使用配置默认组 `az configure --defaults group=<name>` |
 
 | 可选参数 | 说明 |
 | --- | :--- |
-| --location -l | 为此应用指定服务器位置。  使用查找有效位置`az account list-locations` |
+| --location -l | 为此应用指定服务器位置。  使用查找有效位置 `az account list-locations` |
 | --no-wait | 不要用于完成长时间运行的操作。
 
 ### <a name="examples"></a>示例
@@ -254,7 +251,7 @@ az spring cloud app deploy  --name -n
 | --env | "键 [= 值]" 格式的以空格分隔的环境变量。 |
 | --instance-count | 实例数。 |
 | --jar-路径 | 如果提供，则从给定路径部署 jar。 否则，将当前文件夹部署为 tar。 |
-| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m` 。 |
+| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如，  `--jvm-options='-Xms1024m -Xmx2048m` 。 |
 | --内存 | 每个实例的内存 GB 数。 |
 | --no-wait | 请勿等待长时间运行的操作完成。 |
 | --运行时版本 | 应用中使用的语言的运行时版本。  允许的值： `Java_11` 、 `Java_8` 。 |
@@ -504,7 +501,7 @@ az spring-cloud app update --name -n
 | --enable-持久存储 | 布尔值。  如果为 true，则使用默认路径装载50GB 磁盘。 |
 | --env | "键 [= 值]" 格式的以空格分隔的环境变量。 |
 | --公有 | 布尔值。  如果为 true，则向应用程序分配公共域。 |
-| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m` 。 |
+| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如，  `--jvm-options='-Xms1024m -Xmx2048m` 。 |
 | --no-wait | 请勿等待长时间运行的操作完成。 |
 | --运行时版本 | 应用中使用的语言的运行时版本。  允许的值： `Java_11` 、 `Java_8` 。 |
 
@@ -739,7 +736,7 @@ az spring-cloud app binding redis add --app
 | --env | "键 [= 值]" 格式的以空格分隔的环境变量。 |
 | --instance-count | 实例数。 默认值：1。 |
 | --jar-路径 | 如果已提供，请部署 jar。  否则，将当前文件夹部署为 tar。 |
-| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m` 。 |
+| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如，  `--jvm-options='-Xms1024m -Xmx2048m` 。 |
 | --内存 | 每个实例的内存 GB 数。 |
 | --no-wait | 请勿等待长时间运行的操作完成。 |
 | --运行时版本 | 应用中使用的语言的运行时版本。  允许的值： `Java_11` 、 `Java_8` 。 |

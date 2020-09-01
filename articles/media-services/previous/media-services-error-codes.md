@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042826"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263665"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码**及可能的错误原因的列表。  
 
 ## <a name="400-bad-request"></a>400 错误的请求
@@ -48,7 +51,7 @@ ms.locfileid: "87042826"
 
 * 缺少身份验证标头。
 * 错误的身份验证标头值。
-  * 令牌已过期。 
+  * 标记已过期。 
   * 令牌包含无效签名。
 
 ## <a name="403-forbidden"></a>403 禁止访问
@@ -116,7 +119,7 @@ ms.locfileid: "87042826"
 > 
 > 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [媒体服务管理错误代码](/rest/api/media/)
 
 ## <a name="next-steps"></a>后续步骤
