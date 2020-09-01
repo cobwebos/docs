@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165152"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182337"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -225,7 +225,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 ## <a name="november-2015"></a>2015 年 11 月
 **新功能：**
 
-* 支持 azure [RBAC) 的基于角色的访问控制 (](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* 支持 azure [RBAC) 的基于角色的访问控制 (](how-to-connect-health-operations.md#manage-access-with-azure-rbac)
 
 **新的预览功能：**
 

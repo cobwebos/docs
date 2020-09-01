@@ -4,15 +4,15 @@ description: 了解 Azure CDN 服务上的 Azure Web 应用程序防火墙如何
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.topic: overview
-ms.date: 03/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87278618"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225146"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure 内容分发网络上的 Azure Web 应用程序防火墙
 

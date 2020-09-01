@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: b58316cf5a56eae46c81056a78446dc6c3d10764
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271985"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226754"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -153,7 +153,15 @@ ms.locfileid: "88271985"
 > | [Azure Sentinel 参与者](#azure-sentinel-contributor) | Azure Sentinel 参与者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel 读取者](#azure-sentinel-reader) | Azure Sentinel 读取者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel 响应方](#azure-sentinel-responder) | Azure Sentinel 响应方 | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [密钥保管库参与者](#key-vault-contributor) | 允许管理密钥保管库，但不允许对其进行访问。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Key Vault 管理员 (预览版) ](#key-vault-administrator-preview) | 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理 key vault 资源或管理角色分配。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [ (预览版 Key Vault 证书官员) ](#key-vault-certificates-officer-preview) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [密钥保管库参与者](#key-vault-contributor) | 管理密钥保管库，但不允许在 Azure RBAC 中分配角色，而且不允许你访问机密、密钥或证书。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [ (预览版 Key Vault 加密官) ](#key-vault-crypto-officer-preview) | 对密钥保管库的密钥执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Key Vault 加密服务加密 (预览版) ](#key-vault-crypto-service-encryption-preview) | 读取密钥的元数据并执行包装/解包操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault 加密用户 (预览版) ](#key-vault-crypto-user-preview) | 使用密钥执行加密操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault Reader (预览版) ](#key-vault-reader-preview) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料之类的敏感值。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [ (预览版 Key Vault 秘密专员) ](#key-vault-secrets-officer-preview) | 对密钥保管库的密码执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault 机密用户 (预览版) ](#key-vault-secrets-user-preview) | 读取机密内容。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [安全管理员](#security-admin) | 查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -6276,9 +6284,129 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
+### <a name="key-vault-administrator-preview"></a>Key Vault 管理员 (预览版) 
+
+对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理 key vault 资源或管理角色分配。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on certificates, keys and secrets of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00482a5a-887f-4fb3-b363-3b7fe8e74483",
+  "name": "00482a5a-887f-4fb3-b363-3b7fe8e74483",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Administrator (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-certificates-officer-preview"></a> (预览版 Key Vault 证书官员) 
+
+对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificatecas/* |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificates/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the certificates of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a4417e6f-fecd-4de8-b567-7b0420556985",
+  "name": "a4417e6f-fecd-4de8-b567-7b0420556985",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/certificatecas/*",
+        "Microsoft.KeyVault/vaults/certificates/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="key-vault-contributor"></a>密钥保管库参与者
 
-允许管理密钥保管库，但不允许对其进行访问。 [了解详细信息](../key-vault/general/secure-your-key-vault.md)
+管理密钥保管库，但不允许在 Azure RBAC 中分配角色，而且不允许你访问机密、密钥或证书。 [了解详细信息](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6324,6 +6452,324 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
     }
   ],
   "roleName": "Key Vault Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-officer-preview"></a> (预览版 Key Vault 加密官) 
+
+对密钥保管库的密钥执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the keys of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
+  "name": "14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-service-encryption-preview"></a>Key Vault 加密服务加密 (预览版) 
+
+读取密钥的元数据并执行包装/解包操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。 对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。 永远不会公开私钥和对称密钥。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read metadata of keys and perform wrap/unwrap operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e147488a-f6f5-4113-8e2d-b22465e65bf6",
+  "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/read",
+        "Microsoft.KeyVault/vaults/keys/wrap/action",
+        "Microsoft.KeyVault/vaults/keys/unwrap/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-user-preview"></a>Key Vault 加密用户 (预览版) 
+
+使用密钥执行加密操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。 对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。 永远不会公开私钥和对称密钥。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/update/action | 更新与给定密钥关联的指定属性。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | 创建密钥的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的密钥。 可能存在限制。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | 使用密钥加密纯文本。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | 使用密钥解密加密文本。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | 使用密钥签名哈希。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | 验证哈希。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform cryptographic operations on keys and certificates.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/12338af0-0e69-4776-bea7-57ae8d297424",
+  "name": "12338af0-0e69-4776-bea7-57ae8d297424",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/read",
+        "Microsoft.KeyVault/vaults/keys/update/action",
+        "Microsoft.KeyVault/vaults/keys/backup/action",
+        "Microsoft.KeyVault/vaults/keys/encrypt/action",
+        "Microsoft.KeyVault/vaults/keys/decrypt/action",
+        "Microsoft.KeyVault/vaults/keys/wrap/action",
+        "Microsoft.KeyVault/vaults/keys/unwrap/action",
+        "Microsoft.KeyVault/vaults/keys/sign/action",
+        "Microsoft.KeyVault/vaults/keys/verify/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto User (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-reader-preview"></a>Key Vault Reader (预览版) 
+
+读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料之类的敏感值。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read metadata of key vaults and its certificates, keys and secrets. Cannot read sensitive values such as secret contents or key material.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/21090545-7ca7-4776-b22c-e363652d74d2",
+  "name": "21090545-7ca7-4776-b22c-e363652d74d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Reader (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-secrets-officer-preview"></a> (预览版 Key Vault 秘密专员) 
+
+对密钥保管库的密码执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the secrets of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "name": "b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/secrets/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-secrets-user-preview"></a>Key Vault 机密用户 (预览版) 
+
+读取机密内容。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/getSecret/action | 获取机密值。 |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read secret contents.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+  "name": "4633458b-17de-408a-b874-0445c86b69e6",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+        "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Secrets User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

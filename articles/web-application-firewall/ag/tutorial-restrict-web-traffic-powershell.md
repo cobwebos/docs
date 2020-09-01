@@ -5,15 +5,15 @@ description: 了解如何使用 Azure PowerShell 在应用程序网关上使用 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74046279"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225180"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 启用 Web 应用程序防火墙
 
@@ -21,11 +21,10 @@ ms.locfileid: "74046279"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建启用 WAF 的应用程序网关
-> * 创建虚拟机规模集
-> * 创建存储帐户和配置诊断
+* 设置网络
+* 创建启用 WAF 的应用程序网关
+* 创建虚拟机规模集
+* 创建存储帐户和配置诊断
 
 ![Web 应用程序防火墙示例](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 

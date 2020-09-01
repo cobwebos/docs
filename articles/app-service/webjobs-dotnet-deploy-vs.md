@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959895"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226023"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 开发和部署 WebJobs
 
@@ -184,9 +184,9 @@ Web 作业部署信息：
 
 Web 作业的类型可以为“触发式”或“连续式” ：
 
-- 触发式（默认值）：触发式 Web 作业按[计划](#scheduling-a-triggered-webjob)基于绑定事件启动，或在你（按需）手动触发时启动。 它在运行 Web 应用的所有实例上运行，但你可以选择将 Web 作业限制到单个实例。
+- 触发式（默认值）：触发式 Web 作业按[计划](#scheduling-a-triggered-webjob)基于绑定事件启动，或在你（按需）手动触发时启动。 它在运行 web 应用的单个实例上运行。
 
-- 连续式：[连续式](#continuous-execution) Web 作业在 Web 作业创建后立即启动。 此类型的 Web 作业最适用于无边界的或长时间运行的作业。 如果作业确实终止，可将其重启。  
+- 连续式：[连续式](#continuous-execution) Web 作业在 Web 作业创建后立即启动。 默认情况下，它在所有 web 应用缩放实例上运行，但可以配置为通过 *settings*作为单个实例运行。
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

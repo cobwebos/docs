@@ -1,25 +1,25 @@
 ---
-title: Blob 版本控制（预览版）
+title: Blob 版本控制
 titleSuffix: Azure Storage
-description: Blob 存储版本控制 (预览) 自动维护对象的以前版本，并使用时间戳标识它们。 如果错误地修改或删除了数据，则可以还原以前版本的 blob 以恢复数据。
+description: Blob 存储版本控制自动维护对象的以前版本，并使用时间戳标识它们。 如果错误地修改或删除了数据，则可以还原以前版本的 blob 以恢复数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074527"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226256"
 ---
-# <a name="blob-versioning-preview"></a>Blob 版本控制（预览版）
+# <a name="blob-versioning"></a>Blob 版本控制
 
-可以启用 Blob 存储版本控制 (预览) 自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
+可以启用 Blob 存储版本控制来自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
 
 Blob 版本控制在存储帐户上启用，适用于存储帐户中的所有 blob。 为存储帐户启用 blob 版本控制后，Azure 存储将自动维护存储帐户中每个 blob 的版本。
 
@@ -41,6 +41,10 @@ Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实�
 当删除启用了版本控制的 blob 时，Azure 存储将创建一个在删除之前捕获 blob 状态的版本。 然后，将删除 blob 的当前版本，但 blob 的版本将保持不变，以便可以在需要时重新创建。 
 
 Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数据。
+
+Blob 版本控制可用于常规用途 v2、块 blob 和 Blob 存储帐户。 当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
+
+Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制。
 
 ### <a name="version-id"></a>版本 ID
 
@@ -108,7 +112,7 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有以�
 
 ## <a name="enable-or-disable-blob-versioning"></a>启用或禁用 blob 版本控制
 
-若要了解如何启用或禁用 blob 版本控制，请参阅 [启用或禁用 blob 版本控制](versioning-enable.md)。
+若要了解如何启用或禁用 blob 版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
 
 禁用 blob 版本控制不会删除现有的 blob、版本或快照。 关闭 blob 版本控制后，任何现有版本都将在存储帐户中保持可访问状态。 不会再创建新版本。
 
@@ -196,134 +200,95 @@ Blob 版本的已签名资源为 `bv` 。 有关详细信息，请参阅 [创建
 |----------------|----------------|------------------------|
 | Delete         | x              | 删除 blob 版本。 |
 
-## <a name="about-the-preview"></a>关于此预览版
-
-Blob 版本控制在以下区域提供预览版：
-
-- 美国东部 2
-- 美国中部
-- 北欧
-- 西欧
-- 法国中部
-- 加拿大东部
-- 加拿大中部
-
-> [!IMPORTANT]
-> Blob 版本控制预览版仅适用于非生产使用。 生产服务级别协议 (SLA) 当前不可用。
-
-Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制。
-
-### <a name="storage-account-support"></a>存储帐户支持
-
-Blob 版本控制可用于以下类型的存储帐户：
-
-- 常规用途 v2 存储帐户
-- 块 Blob 存储帐户
-- Blob 存储帐户
-
-如果你的存储帐户是常规用途 v1 帐户，请使用 Azure 门户升级到常规用途 v2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
-
-当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
-
-### <a name="register-for-the-preview"></a>注册预览版
-
-若要在 blob 版本控制预览版中注册，请使用 PowerShell 或 Azure CLI 提交请求以便向你的订阅注册此功能。 批准请求后，可以使用任何新的或现有的常规用途 v2、Blob 存储或高级块 blob 存储帐户启用 blob 版本控制。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要向 PowerShell 注册，请调用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令。
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要注册 Azure CLI，请调用 [az feature register](/cli/azure/feature#az-feature-register) 命令。
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>检查注册状态
-
-若要检查注册状态，请使用 PowerShell 或 Azure CLI。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要通过 PowerShell 检查注册状态，请调用 [AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要查看 Azure CLI 的注册状态，请调用 [az 功能](/cli/azure/feature#az-feature-show) 命令。
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>定价和计费
 
 启用 blob 版本控制可能会导致帐户产生额外的数据存储费用。 在设计应用程序时，有必要了解在哪些情况下会产生这些费用，以便最大程度地减少费用。
 
-Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。 如果某个版本共享块或页与其基 blob，则只需为不在版本和基本 blob 之间共享的任何其他块或页面付费。
+Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。 如何对版本进行计费取决于是否已为基本 blob 或其任何版本 (或快照) 显式设置层。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。
+
+如果未更改 blob 或版本的层，则会对该 blob 的唯一数据块、其版本以及它可能具有的任何快照进行计费。 有关详细信息，请参阅 [在尚未显式设置 blob 层时进行计费](#billing-when-the-blob-tier-has-not-been-explicitly-set)。
+
+如果更改了 blob 或版本的层，则会对整个对象计费，而不考虑 blob 和版本是否最终在同一层中。 有关详细信息，请参阅 [在显式设置 blob 层时进行计费](#billing-when-the-blob-tier-has-been-explicitly-set)。
 
 > [!NOTE]
 > 为经常被覆盖的数据启用版本控制可能会增加存储容量费用，并在列出操作期间增加延迟。 若要缓解这些问题，请将频繁覆盖的数据存储在禁用了版本控制的单独存储帐户中。
 
-### <a name="important-billing-considerations"></a>重要计费注意事项
+有关 blob 快照的计费详细信息，请参阅 [blob 快照](snapshots-overview.md)。
 
-启用 blob 版本控制时，请确保考虑以下几点：
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>未显式设置 blob 层时进行计费
 
-- 存储帐户会对唯一的块或页产生费用，无论它们是在 blob 中还是在 blob 的以前版本中都是如此。 你的帐户在更新其所基于的 blob 之前，不会向与 blob 关联的版本收取额外费用。 更新 blob 后，它将从其以前的版本与其分离。 发生这种情况时，需要为每个 blob 或版本中的唯一块或页付费。
-- 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与版本中的相同，也是如此。 再次提交块后，它将从任何版本的对应与其分离，并向你收取其数据的费用。 对于使用相同数据更新的页 Blob 中的页面来说，情况也是如此。
-- Blob 存储无法确定两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此请务必考虑在启用版本控制时更新 blob 将导致附加的唯一块和额外费用。
-- 启用 blob 版本控制后，在块 blob 上设计更新操作，以使它们更新的块数量越少。 允许对块进行精细控制的写入操作是 [put](/rest/api/storageservices/put-block) 块和 [put 块列表](/rest/api/storageservices/put-block-list)。 另一方面， [Put Blob](/rest/api/storageservices/put-blob) 操作将替换 Blob 的全部内容，因此可能会导致额外的费用。
+如果没有为基本 blob 或其任何版本显式设置 blob 层，则会为 blob、其版本以及它可能拥有的任何快照支付唯一的块或页的费用。 在 blob 及其版本间共享的数据只收费一次。 在更新 blob 时，基础 blob 中的数据与其分离其版本中存储的数据，并按块或页面对唯一数据收费。
 
-### <a name="versioning-billing-scenarios"></a>版本计费方案
+在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与先前版本中的数据块 ID 和数据相同也是如此。 再次提交块后，它将从以前版本中的对应与其分离，并向你收取其数据的费用。 对于使用相同数据更新的页 Blob 中的页面来说，情况也是如此。
 
-以下方案说明了块 blob 及其版本的计费方式。
+Blob 存储无法确定两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此请务必记住，如果启用了版本控制，则更新 blob 将导致附加的唯一块和额外费用。
+
+启用 blob 版本控制后，在块 blob 上调用更新操作，以使它们更新的块数目越少。 允许对块进行精细控制的写入操作是 [put](/rest/api/storageservices/put-block) 块和 [put 块列表](/rest/api/storageservices/put-block-list)。 另一方面， [Put Blob](/rest/api/storageservices/put-blob) 操作将替换 Blob 的全部内容，因此可能会导致额外的费用。
+
+下面的方案演示了在未显式设置 blob 层时，块 blob 及其版本的计费方式。
 
 #### <a name="scenario-1"></a>方案 1
 
 在方案1中，blob 具有以前的版本。 Blob 在创建版本后未更新，因此仅对唯一块1、2和3产生费用。
 
-![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-1.png)
+![图1显示基本 blob 和以前版本中的唯一块的计费](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>方案 2
 
 在方案2中，已更新 blob) 中的一个块 (块3。 即使更新的块包含相同的数据和 ID，它也与以前版本中的块3不同。 因此，帐户需要为四个块支付费用。
 
-![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-2.png)
+![图2显示基本 blob 和以前版本中的唯一块的计费](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>方案 3
 
 在方案3中，已更新 blob，但版本未更新。 块3已替换为基础 blob 中的块4，但先前版本仍反映块3。 因此，帐户需要为四个块支付费用。
 
-![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-3.png)
+![图3显示基本 blob 和以前版本中的唯一块的计费](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>方案 4
 
-在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，将对基本 blob 中的所有八个唯一块进行收费，在 &mdash; 以前的版本中对此帐户进行收费。 如果使用 Put Blob 操作写入 blob，则会发生这种情况，因为它会替换基本 blob 的全部内容。
+在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，将对基本 blob 中的所有八个唯一块进行收费，在 &mdash; 以前的版本中对此帐户进行收费。 如果使用 [Put blob](/rest/api/storageservices/put-blob) 操作写入 blob，则会发生这种情况，因为它会替换基本 blob 的全部内容。
 
-![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-4.png)
+![图4显示基本 blob 和以前版本中的唯一块的计费](./media/versioning-overview/versions-billing-scenario-4.png)
+
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>在显式设置 blob 层时计费
+
+如果已显式设置 blob 或版本 (或快照) 的 blob 层，则会为新层中的对象的完整内容长度收费，而不考虑它是否与原始层中的对象共享块。 你还将对原始层中最早版本的完整内容长度收费。 保留在原始层中的任何其他版本或快照都按其可能共享的唯一块收费，如 [未显式设置 blob 层时计费](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>将 blob 移到新层
+
+下表描述了将 blob 或版本移到新层时的计费行为。
+
+| 当显式设置 blob 层时 .。。 | 然后，你需要支付 .。。 |
+|-|-|
+| 具有以前版本的基本 blob | 新层中的基本 blob 和原始层中的最早版本，以及其他版本中的任何唯一块。<sup>1</sup> |
+| 具有以前版本和快照的基本 blob | 新层中的基本 blob、原始层中的最早版本和原始层中的最早快照，以及其他版本或快照中的任何唯一块<sup>1</sup>。 |
+| 以前的版本 | 新层中的版本和原始层中的基础 blob 以及其他版本中的任何唯一块。<sup>1</sup> |
+
+<sup>1</sup>如果其他以前的版本或快照尚未从其原始层中移出，这些版本或快照会根据它们所包含的唯一块的数量收费，如 [未显式设置 blob 层的计费](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+无法撤消为 blob、版本或快照显式设置层。 如果将某个 blob 移动到新层，然后将其移回其原始层，则即使该对象与原始层中的其他对象共享块，也会为该对象的完整内容长度收费。
+
+显式设置 blob、版本或快照层的操作包括：
+
+- [设置 Blob 层](/rest/api/storageservices/set-blob-tier)
+- 指定指定层的[Blob](/rest/api/storageservices/put-blob)
+- 指定了层的[放置块列表](/rest/api/storageservices/put-block-list)
+- [将 Blob 复制](/rest/api/storageservices/copy-blob) 到指定的层
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>启用软删除后删除 blob
+
+启用 blob 软删除后，如果删除或覆盖已显式设置其层的基本 blob，则会按完整内容长度对任何以前版本的软删除 blob 进行计费。 有关 blob 版本控制和软删除如何协同工作的详细信息，请参阅 [blob 版本控制和软删除](#blob-versioning-and-soft-delete)。
+
+下表描述了软删除的 blob 的计费行为，具体取决于启用还是禁用了版本控制。 启用版本控制后，在对 blob 进行软删除时，将创建版本。 禁用版本控制后，软删除 blob 会创建软删除快照。
+
+| 当你覆盖基本 blob 并显式设置其层时 .。。 | 然后，你需要支付 .。。 |
+|-|-|
+| 如果 blob 软删除和版本控制均已启用 | 完全内容长度的所有现有版本，与层无关。 |
+| 如果启用了 blob 软删除但禁用了版本控制 | 所有现有的软删除快照（完全内容长度，而不考虑层）。 |
 
 ## <a name="see-also"></a>另请参阅
 
-- [启用 Blob 版本控制](versioning-enable.md)
+- [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Azure 存储 Blob 的软删除](storage-blob-soft-delete.md)

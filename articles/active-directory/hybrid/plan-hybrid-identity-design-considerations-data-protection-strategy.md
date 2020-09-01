@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109360"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182439"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -106,7 +106,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 >
 >
 
-通过 Azure AD 支持，移动业务应用程序可以使用相同的简单移动服务身份验证体验，让员工使用企业的 Active Directory 凭据登录到其移动应用程序。 通过此功能，Azure AD 可受到支持作为移动服务中的标识提供者，与支持的其他标识提供者（包括 Microsoft 帐户、Facebook ID、Google ID 和 Twitter ID）配合运行。 如果本地应用程序使用位于公司 AD DS 的用户凭据，则来自云的第三方和用户所做的访问应该是透明的。 你可以管理用户的条件性访问控制（基于云） web 应用程序、web API、Microsoft 云服务、第三方 SaaS 应用程序和本机（移动）客户端应用程序，并在同一位置获得安全性、审核和报告功能的优势。 但是，我们建议在非生产环境中或用户数量有限的环境中验证该实施项目。
+通过 Azure AD 支持，移动业务应用程序可以使用相同的简单移动服务身份验证体验，让员工使用企业的 Active Directory 凭据登录到其移动应用程序。 通过此功能，Azure AD 可受到支持作为移动服务中的标识提供者，与支持的其他标识提供者（包括 Microsoft 帐户、Facebook ID、Google ID 和 Twitter ID）配合运行。 如果本地应用程序使用位于公司 AD DS 的用户凭据，则来自云的第三方和用户所做的访问应该是透明的。 你可以管理用户的条件性访问控制，以 (基于云的) web 应用程序、web API、Microsoft 云服务、第三方 SaaS 应用程序和本机 (移动) 客户端应用程序，并在同一位置获得安全性、审核和报告功能的优势。 但是，我们建议在非生产环境中或用户数量有限的环境中验证该实施项目。
 
 > [!TIP]
 > 必须提到的是，Azure AD 不像 AD DS 一样具有组策略。 若要为设备强制实施策略，需要使用移动设备管理解决方案，例如 [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx)。
@@ -121,7 +121,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 1. 对在本地托管的应用程序的条件访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。
 
-2. 对 Azure 门户的访问控制：Azure 还允许通过使用基于角色的访问控制 (RBAC) 来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方法委派访问权限：
+2. 对 Azure 门户的访问控制： Azure 还允许使用 azure RBAC) # A2，通过 azure 基于角色的访问 (控制来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 Azure RBAC 控制对门户的访问时，IT 管理员可以使用以下访问管理方法委派访问权限：
 
    - 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这样，便可以充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
    - 使用 Azure 中的内置角色：可以使用三个角色 - 所有者、参与者和阅读人员，以确保用户和组仅具有完成工作所需任务的权限。

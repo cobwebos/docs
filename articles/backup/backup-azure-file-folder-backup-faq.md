@@ -3,12 +3,12 @@ title: Microsoft Azure 恢复服务 (MARS) 代理– FAQ
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144458"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182507"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务 (MARS) 代理
 
@@ -122,7 +122,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 1. 通过在权限提升的命令提示符下运行以下命令来停止备份引擎：
 
     ```Net stop obengine```
-2. 如果已配置系统状态备份，请打开“磁盘管理”，然后卸载名称采用 `"CBSSBVol_<ID>"` 格式的磁盘。
+2. 如果已配置系统状态备份，请打开 "磁盘管理"，然后卸载磁盘 (s) 的名称格式为 `"CBSSBVol_<ID>"` 。
 3. 默认情况下，暂存文件夹位于 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` 中
 4. 将整个 `\Scratch` 文件夹复制到具有足够空间的另一驱动器。 请务必复制内容，而不是移动内容。
 5. 使用最近移动的暂存文件夹的路径更新以下注册表项。

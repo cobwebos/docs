@@ -6,13 +6,13 @@ ms.service: dns
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: ea4f3072df7ef6d25736ca3abdeb72abaf2971a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860738"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225660"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>适用于 Azure DNS 的 Azure 安全基线
 
@@ -250,7 +250,7 @@ ms.locfileid: "88860738"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
 - [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -396,7 +396,7 @@ ms.locfileid: "88860738"
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy [拒绝] 和 [不存在时部署] 在 Azure 资源中强制实施安全设置。
+**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
 此外，Azure 资源管理器还支持其他类型的安全控制，即能够锁定资源。 资源锁应用于资源，对所有用户和角色都有效。 有两种类型的资源锁：  CanNotDelete 和 ReadOnly  。
 

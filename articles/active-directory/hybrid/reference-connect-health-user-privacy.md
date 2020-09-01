@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690687"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182354"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>用户隐私和 Azure AD Connect Health 
 
@@ -41,7 +41,7 @@ Azure AD Connect Health 不生成报告、不进行分析，也不提供 30 天�
 借助 Azure AD Connect Health，可针对所监视的单独服务器或所监视服务的实例停止数据收集功能。 例如，可针对使用 Azure AD Connect Health 进行监视的单独 ADFS（Active Directory 联合身份验证服务）服务器停止数据收集功能。 还可针对当前通过 Azure AD Connect Health 监视的整个 ADFS 实例停止数据收集功能。 选择停止此功能后，会在停止数据收集后从 Azure AD Connect Health 门户删除相应的服务器。 
 
 >[!IMPORTANT]
-> 需在 RBAC 具备 Azure AD 全局管理员特权或参与者角色，才能从 Azure AD Connect Health 中删除所监视的服务器。
+> 需要在 Azure RBAC 中 Azure AD 全局管理员权限或参与者角色，才能从 Azure AD Connect Health 中删除受监视的服务器。
 >
 > 从 Azure AD Connect Health 删除服务器或服务实例后，操作不可撤消。 
 

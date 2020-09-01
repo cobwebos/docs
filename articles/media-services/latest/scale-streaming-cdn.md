@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: 了解如何通过 CDN 集成流式传输内容，以及预提取和源-协助 CDN 预提取。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: inhenkel
+ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799343"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226142"
 ---
 # <a name="stream-content-with-cdn-integration"></a>通过 CDN 集成流式传输内容
 
@@ -29,14 +29,19 @@ CDN 缓存从媒体服务 [流式处理终结点流式处理终结点 (源) ](st
 
 还需要考虑自适应流式处理的工作原理。 每个单独的视频片段缓存为其自己的实体。 例如，假设您首次监视某个视频。 如果查看器仅在此处显示了几秒钟的时间，并且在那里只显示与所监视人员关联的视频碎片，则会在 CDN 中缓存。 使用自适应流式处理，你通常会有 5 到 7 种不同的视频比特率。 如果一个人在观看一个比特率，而另一个用户正在观看不同的比特率，则它们分别在 CDN 中进行缓存。 即使两个用户观察到相同的比特率，也可以通过不同的协议进行流式处理。 每个协议（HLS、MPEG-DASH、平滑流式处理）都是单独缓存的。 因此，会单独缓存每个比特率和协议，并且仅缓存已请求的视频片段。
 
-在决定是否在媒体服务 [流式处理终结点](streaming-endpoint-concept.md)上启用 CDN 时，请考虑预期的查看者数量。 仅当你希望为内容提供许多查看器时，CDN 才会有所帮助。 如果查看器的最大并发度低于500，则建议禁用 CDN，因为 CDN 会使用并发度进行缩放。
+建议为标准和高级流式处理终结点启用 CDN，但测试环境除外。 每种类型的流式处理终结点都有不同的受支持吞吐量限制。
+很难准确计算流式处理终结点支持的最大并发流数，因为需要考虑各种因素。 这些方法包括：
+
+- 用于流式处理的最大比特率
+- 播放器预缓冲和切换行为。 播放机尝试从原点突发段并使用加载速度来计算自适应比特率切换。 如果流式处理终结点接近饱和，响应时间可能会有所不同，并且玩家会开始切换到较低质量。 因为这会减少流式处理终结点播放机上的负载，所以，请返回到较高质量，创建不需要的切换触发器。
+总体而言，使用最大的流式处理终结点吞吐量来估算最大并发流并将其除以最大比特率 (（假定所有播放机使用高比特率），这是安全的。 ) 例如，你可以拥有一个限制为 600 Mbps 的标准流式处理终结点和3Mbp 的最高比特率。 在这种情况下，最高比特率支持大约200个并发流。 还应考虑音频带宽要求。 尽管音频流只能在 128 kps 进行流式传输，但在将其与并发流的数量相乘后，总流会迅速增加。
 
 本主题讨论如何启用 [CDN 集成](#enable-azure-cdn-integration)。 它还说明了预提取 (主动缓存) 和 [源协助 CDN 预提取](#origin-assist-cdn-prefetch) 概念。
 
 ## <a name="considerations"></a>注意事项
 
-* 无论是否启用 CDN， [流式处理终结点](streaming-endpoint-concept.md) `hostname` 和流 URL 都是相同的。
-* 如果你需要能够通过或不通过 CDN 来测试你的内容，请创建另一个不启用 CDN 的流式处理终结点。
+- 无论是否启用 CDN， [流式处理终结点](streaming-endpoint-concept.md) `hostname` 和流 URL 都是相同的。
+- 如果你需要能够通过或不通过 CDN 来测试你的内容，请创建另一个不启用 CDN 的流式处理终结点。
 
 ## <a name="enable-azure-cdn-integration"></a>启用 Azure CDN 集成
 

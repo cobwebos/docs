@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718537"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182371"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -54,7 +54,7 @@ ms.locfileid: "88718537"
 
 许可信息还可在 [Azure AD 定价页](https://aka.ms/aadpricing)中找到。
 
-示例：
+例如：
 
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
@@ -98,7 +98,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在安装 Azure AD Connect Health 代理期间，是否必须重新启动服务器？**
 
-不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不能。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -115,7 +115,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不能。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
@@ -137,7 +137,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 * 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅 " [要求" 部分](how-to-connect-health-agent-install.md#requirements) 。
 * 网络层会对出站通信进行 TLS 检测。 这会导致代理使用的证书被检查服务器/实体替换，并且无法执行完成代理注册所需的步骤。
-* 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可以使用 azure [RBAC)  (azure 基于角色的访问控制 ](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) 来委托其他用户的访问权限。
+* 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可以使用 azure [RBAC)  (azure 基于角色的访问控制 ](how-to-connect-health-operations.md#manage-access-with-azure-rbac) 来委托其他用户的访问权限。
 
 **问：收到 "运行状况服务数据不是最新" 的警报。如何实现解决该问题？**
 

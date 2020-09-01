@@ -1,6 +1,6 @@
 ---
-title: 从/向 Snowflake 复制数据
-description: 了解如何使用 Azure 数据工厂从/向 Azure Snowflake 复制数据。
+title: 在雪花中复制和转换数据
+description: 了解如何使用数据工厂在雪花中复制和转换数据。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,30 +11,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 5bc64985401fce1c58a985b6b9fdead620c9aa8f
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048170"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181878"
 ---
-# <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Snowflake 复制数据
+# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换雪花中的数据
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从/向 Snowflake 复制数据。 有关数据工厂的详细信息，请参阅[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的复制活动将数据从和复制到雪花，并使用数据流转换雪花中的数据。 有关数据工厂的详细信息，请参阅[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 Snowflake 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 对于复制活动，此 Snowflake 连接器支持以下功能：
 
 - 从 Snowflake 复制数据：利用 Snowflake 的 [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) 命令实现最佳性能。
-- 将数据复制到 Snowflake 中：利用 Snowflake 的 [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) 命令实现最佳性能。 它支持 Azure 上的 Snowflake。
+- 将数据复制到 Snowflake 中：利用 Snowflake 的 [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) 命令实现最佳性能。 它支持 Azure 上的 Snowflake。 
+
+使用 Azure Synapse Analytics 工作区时，不支持雪花作为接收器。
 
 ## <a name="get-started"></a>入门
 
@@ -46,7 +49,7 @@ ms.locfileid: "89048170"
 
 Snowflake 链接服务支持以下属性。
 
-| 属性         | 说明                                                  | 必须 |
+| 属性         | 描述                                                  | 必需 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type 属性必须设置为 **Snowflake**。              | 是      |
 | connectionString | 指定连接到雪花实例所需的信息。 你可以选择将密码或整个连接字符串放在 Azure Key Vault 中。 如需更多详细信息，请参阅表下面的示例和[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)一文。<br><br>一些典型的设置：<br>- **帐户名：** 雪花帐户的  [完整帐户名称](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (包括标识区域和云平台) 的其他段，如 xy12345-zh-cn。<br/>- **用户名：** 连接的用户的登录名。<br>- **密码：** 用户的密码。<br>- **数据库：** 连接后要使用的默认数据库。 它应该是指定角色具有权限的现有数据库。<br>- **仓库：** 连接后要使用的虚拟仓库。 它应是指定角色具有权限的现有仓库。<br>- **角色：** 要在雪花会话中使用的默认访问控制角色。 指定的角色应为已分配给指定用户的现有角色。 默认角色是公共的。 | 是      |
@@ -102,11 +105,11 @@ Snowflake 链接服务支持以下属性。
 
 Snowflake 数据集支持以下属性。
 
-| 属性  | 说明                                                  | 必须                    |
+| 属性  | 描述                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 SnowflakeTable。 | 是                         |
-| 架构 | 架构的名称。 |对于源为“否”，对于接收器为“是”  |
-| 表 | 表/视图的名称。 |对于源为“否”，对于接收器为“是”  |
+| 架构 | 架构的名称。 请注意，架构名称在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
+| 表 | 表/视图的名称。 请注意，表名在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
 
 **示例：**
 
@@ -140,10 +143,10 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 
 从 Snowflake 复制数据时，复制活动的“源”部分支持以下属性。
 
-| 属性                     | 说明                                                  | 必须 |
+| 属性                     | 描述                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的类型属性必须设置为 SnowflakeSource。 | 是      |
-| 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。<br>不支持执行存储过程。 | 否       |
+| 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。<br>不支持执行存储过程。 | 否       |
 | exportSettings | 用于从 Snowflake 检索数据的高级设置。 可以配置 COPY into 命令支持的此类设置。在调用相关语句时，数据工厂会传递此类设置。 | 否       |
 | 在 `exportSettings` 下： |  |  |
 | type | 导出命令的类型，设置为 **SnowflakeExportCopyCommand**。 | 是 |
@@ -194,7 +197,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
         "typeProperties": {
             "source": {
                 "type": "SnowflakeSource",
-                "sqlReaderQuery": "SELECT * FROM MyTable",
+                "sqlReaderQuery": "SELECT * FROM MYTABLE",
                 "exportSettings": {
                     "type": "SnowflakeExportCopyCommand",
                     "additionalCopyOptions": {
@@ -271,7 +274,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 若要将数据复制到 Snowflake，复制活动的“接收器”部分需要支持以下属性。
 
-| 属性          | 说明                                                  | 必须                                      |
+| 属性          | 描述                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 复制活动接收器的类型属性设置为 SnowflakeSink。 | 是                                           |
 | preCopyScript     | 指定在每次运行中将数据写入到 Snowflake 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
@@ -396,6 +399,83 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流中转换数据时，可以在雪花中对表进行读取和写入。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 您可以选择将雪花型数据集或 [内联数据集](data-flow-source.md#inline-datasets) 用作源和接收器类型。
+
+### <a name="source-transformation"></a>源转换
+
+下表列出了雪花型源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。连接器利用雪花 [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
+
+| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | * 仅限内联数据集的 () *<br>tableName<br>schemaName |
+| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。 | 否 | 字符串 | query |
+
+#### <a name="snowflake-source-script-examples"></a>雪花源脚本示例
+
+使用雪花数据集作为源类型时，关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SnowflakeSource
+```
+
+如果使用内联数据集，则关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'select * from MYTABLE',
+    store: 'snowflake') ~> SnowflakeSource
+```
+
+### <a name="sink-transformation"></a>接收器转换
+
+下表列出了雪花接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。使用内联数据集时，你将看到与 " [数据集属性](#dataset-properties) " 一节中所述的属性相同的其他设置。 连接器利用雪花 [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
+
+| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update 方法 | 指定允许对雪花目标执行哪些操作。<br>若要更新、upsert 或删除行，需要 [更改行转换](data-flow-alter-row.md) 以标记这些操作的行。 | 是 | `true` 或 `false` | 删除 <br/>可插入 <br/>更新 <br/>upsertable |
+| 键列 | 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。 | 否 | Array | 密钥 |
+| 表操作 | 确定在写入之前是否在目标表中重新创建或删除所有行。<br>- **None**：不会对表执行任何操作。<br>- **重新创建**：该表将被删除并重新创建。 如果以动态方式创建表，则是必需的。<br>- **截断**：目标表中的所有行都将被删除。 | 否 | `true` 或 `false` | 重新创建<br/>truncate |
+
+#### <a name="snowflake-sink-script-examples"></a>雪花接收器脚本示例
+
+将雪花数据集用作接收器类型时，关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:false,
+    keys:['movieId'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
+
+如果使用内联数据集，则关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    tableName: 'table',
+    schemaName: 'schema',
+    deletable: true,
+    insertable: true,
+    updateable: true,
+    upsertable: false,
+    store: 'snowflake',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 

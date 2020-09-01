@@ -19,12 +19,12 @@
 - name: 概念
   items:
     - name: 什么是密码哈希同步？
-      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 了解 Azure AD 架构、属性和表达式
       href: concept-attributes.md
     - name: 在 Azure Active Directory 中编写属性映射的表达式
       href: reference-expressions.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 安装和升级
       items:
@@ -49,20 +49,20 @@
         - name: 转换
           href: how-to-transformation.md
         - name: Azure AD 同步 API
-          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+          href: /graph/api/resources/synchronization-overview
     - name: 故障排除
       items:
         - name: 云预配故障排除
           href: how-to-troubleshoot.md
         - name: 重复的属性
-          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+          href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: 参考
   items:
     - name: Azure AD Connect 云预配代理版本历史记录
-      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect 云预配常见问题解答
       href: reference-cloud-provisioning-faq.md
     - name: 同步的属性
-      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: 基本 Active Directory 和 Azure AD 环境
       href: tutorial-basic-ad-azure.md

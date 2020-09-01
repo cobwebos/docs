@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80b7d5ca67751cf7ece775331cc13cfbac10395b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518316"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182388"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a> (预览安装并运行语音服务容器) 
 
@@ -28,10 +28,10 @@ ms.locfileid: "88518316"
 
 | 函数 | 功能 | 最新 |
 |--|--|--|
-| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.3.1 |
-| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.3.1 |
-| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.5.0 |
-| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.5.0 |
+| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.4.0 |
+| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.4.0 |
+| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.6.0 |
+| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.6.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -165,7 +165,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 以下标记是格式示例：
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 对于 " **语音到文本** " 容器的所有受支持的区域设置，请参阅 [语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。
@@ -207,7 +207,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 以下标记是格式示例：
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 对于支持的 **文本到语音转换** 容器的所有区域设置和相应声音，请参阅 [文本到语音图像标记](../containers/container-image-tags.md#text-to-speech)。
@@ -423,6 +423,8 @@ ApiKey={API_KEY}
 #### <a name="analyze-sentiment"></a>分析情绪
 
 如果 [为容器](#analyze-sentiment-on-the-speech-to-text-output)提供了文本分析 API 凭据，则可以使用语音 SDK 通过情绪分析发送语音识别请求。 可以将 API 响应配置为使用 *简单* 或 *详细* 格式。
+> [!NOTE]
+> 适用于 Speech Service Python SDK 的 v2.0 已识别情绪分析问题。 如果使用的是语音服务 Python SDK 中的情绪分析，请使用 v 1.12. x 或更早版本。
 
 # <a name="simple-format"></a>[简单格式](#tab/simple-format)
 

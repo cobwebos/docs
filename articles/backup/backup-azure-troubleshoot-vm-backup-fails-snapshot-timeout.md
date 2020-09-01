@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 1bfd83534bda6397983b0595acc089e901c473d6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021473"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182031"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -59,7 +59,7 @@ Azure 备份使用 VM 快照扩展对 Azure 虚拟机进行应用程序一致的
 
 - **检查是否需要网络访问**：从 azure 存储扩展存储库下载扩展包，并将扩展状态上载发送到 Azure 存储。 [了解详细信息](../virtual-machines/extensions/features-windows.md#network-access)。
   - 如果你使用的是不支持的代理版本，则需要从 VM 对该区域中的 Azure 存储允许出站访问。
-  - 如果已阻止访问 `168.63.129.16` 使用来宾防火墙或代理，则无论以上哪种情况，扩展都将失败。 需要端口80、443和32526， [了解详细信息](../virtual-machines/extensions/features-windows.md#network-access)。
+  - 如果已阻止 `168.63.129.16` 使用来宾防火墙或代理进行访问，则无论以上哪种情况，扩展都将失败。 需要端口80、443和32526， [了解详细信息](../virtual-machines/extensions/features-windows.md#network-access)。
 
 - **请确保在来宾 vm 内启用 dhcp**：这是从 DHCP 获取主机或构造地址以使 IaaS VM 备份正常运行所必需的。 如果需要静态专用 IP，应通过 Azure 门户或 PowerShell 进行配置，并确保已启用 VM 内的 DHCP 选项， [了解详细信息](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)。
 

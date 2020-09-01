@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 6fe6079ca4cdf76757088cbdc00dd1af3c2225ea
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6badcedba7fa1e1b605fc5553e5c6eed52c4203b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642361"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182065"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -126,7 +126,7 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundament
 
 ## <a name="logging-services"></a>日志记录服务
 
-如果需要自己的日志记录提供程序，请将自定义类型注册为的实例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，该实例可[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)通过使用
+如果需要自己的日志记录提供程序，请将自定义类型注册为 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory)（可通过 [Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet 包获取）的实例。
 
 Azure Functions 会自动添加 Application Insights。
 
@@ -136,9 +136,9 @@ Azure Functions 会自动添加 Application Insights。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
 
-主机会将 `ILogger<T>` 和 `ILoggerFactory` 服务注入构造函数中。  但是，默认情况下，将筛选出函数日志中的新的日志记录筛选器。  你需要修改该 `host.json` 文件以选择加入其他筛选器和类别。
+主机会将 `ILogger<T>` 和 `ILoggerFactory` 服务注入构造函数中。  但是在默认情况下，会从函数日志中筛选出新日志记录筛选器。  需要修改 `host.json` 文件，以选择加入其他筛选器和类别。
 
-下面的示例演示如何 `ILogger<HttpTrigger>` 使用向主机公开的日志添加。
+下面的示例演示如何添加包含向主机公开的日志的 `ILogger<HttpTrigger>`。
 
 ```csharp
 namespace MyNamespace
@@ -163,7 +163,7 @@ namespace MyNamespace
 }
 ```
 
-下面的示例 `host.json` 文件添加了日志筛选器。
+下面的示例 `host.json` 文件添加日志筛选器。
 
 ```json
 {
@@ -253,7 +253,7 @@ public class HttpTrigger
 
 有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options)。
 
-### <a name="customizing-configuration-sources"></a>自定义配置源
+## <a name="customizing-configuration-sources"></a>自定义配置源
 
 > [!NOTE]
 > Azure Functions 主机版本2.0.14192.0 和3.0.14191.0 开始提供配置源自定义。
@@ -280,7 +280,8 @@ namespace MyNamespace
 
             builder.ConfigurationBuilder
                 .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
-                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false)
+                .AddEnvironmentVariables();
         }
     }
 }

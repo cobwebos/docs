@@ -15,15 +15,15 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78299323"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226924"
 ---
 # <a name="understand-the-azure-ad-schema"></a>了解 Azure AD 架构
-Azure Active Directory （Azure AD）中的对象（如任意目录）是一个编程的高级数据构造，它表示用户、组和联系人等。 在 Azure AD 中创建新用户或联系人时，将创建该对象的新实例。 这些实例可根据其属性进行区分。
+与任何目录一样，Azure Active Directory (Azure AD) 中的对象是一个编程性的高级数据构造，它表示用户、组和联系人等。 在 Azure AD 中创建新用户或联系人时，将创建该对象的新实例。 这些实例可根据其属性进行区分。
 
 Azure AD 中的属性是负责在 Azure AD 中存储对象的实例信息的元素。
 
@@ -51,7 +51,7 @@ Azure AD 具有两种类型的属性：
 * **输入** (mail)：“john.smith@contoso.com”
 * **输出**： "john smith"
 
-有关如何编写自定义表达式和语法的详细信息，请参阅[在 Azure Active Directory 中编写属性映射的表达式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)。
+有关如何编写自定义表达式和语法的详细信息，请参阅 [在 Azure Active Directory 中编写属性映射的表达式](../app-provisioning/functions-for-customizing-application-data.md)。
 
 下表列出了常见的属性以及它们如何同步到 Azure AD。
 
@@ -72,9 +72,9 @@ Azure AD 具有两种类型的属性：
 
 若要查看并验证架构，请执行以下步骤。
 
-1.  请参阅[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
+1.  请参阅 [图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 1.  用全局管理员帐户登录。
-1.  在左侧，选择 "**修改权限**"，并确保 "**所有**" 都*同意*。
+1.  在左侧，选择 " **修改权限** "，并确保 " **所有** " 都 *同意*。
 1.  运行查询 `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` 。 此查询返回已筛选的服务主体列表。
 1.  找到 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 并记下的值 `"id"` 。
     ```

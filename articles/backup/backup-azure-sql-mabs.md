@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 SQL Server
 description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 备份 SQL Server 数据库所需的配置。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: caf3d49c9b921cab97054a97ece271e484a734bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b47cb74c6e5dbb868c03f8f7b79c00b0c4ce7886
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005201"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182303"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 
@@ -50,7 +50,7 @@ ms.locfileid: "89005201"
 
 ## <a name="before-you-start"></a>开始之前
 
-在开始之前，请确保[已安装并准备好 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)。
+在开始之前，请确保已 [安装并准备好 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)。
 
 ## <a name="create-a-backup-policy"></a>创建备份策略
 

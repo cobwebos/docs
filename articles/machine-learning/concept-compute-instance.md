@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146753"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226788"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -80,10 +80,10 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 ### <a name="installing-packages"></a>安装包
 
-可以直接在 Jupyter 笔记本或 Rstudio 中安装包：
+可以直接在 Jupyter Notebook 或 RStudio 中安装包：
 
 * RStudio 使用右下的“包”选项卡或左上的“控制台”选项卡。  
-* Python:添加安装代码并在 Jupyter 笔记本单元中执行它。
+* Python：添加安装代码并在 Jupyter Notebook 单元中执行。
 
 也可通过以下任一方式访问终端窗口：
 

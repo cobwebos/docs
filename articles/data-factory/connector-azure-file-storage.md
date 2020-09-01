@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: c7b91fb8d283402cf8bda43c707d0ce2c8a1498b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 08/31/2020
+ms.openlocfilehash: fe48f27cdf2aa09f47e3ed58433a5695036e4cfa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051247"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182473"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Azure 文件存储复制数据
 
@@ -60,7 +60,7 @@ ms.locfileid: "89051247"
 
 数据工厂支持 Azure 文件存储帐户密钥身份验证的以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureFileStorage**。 | 是 |
 | connectionString | 指定连接到 Azure 文件存储所需的信息。 <br/> 还可以将帐户密钥放在 Azure Key Vault 中，从连接字符串中拉取 `accountKey` 配置。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -120,7 +120,7 @@ ms.locfileid: "89051247"
 
 数据工厂支持通过以下属性来使用共享访问签名身份验证：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureFileStorage**。 | 是 |
 | sasUri | 指定资源的共享访问签名 URI。 <br/>将此字段标记为 **SecureString**，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以使用自动轮换和删除令牌部分。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -182,7 +182,7 @@ ms.locfileid: "89051247"
 
 ### <a name="legacy-model"></a>旧模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureFileStorage**。 | 是 |
 | host | 将 Azure 文件存储终结点指定为： <br/>-使用 UI：指定 `\\<storage name>.file.core.windows.net\<file service name>`<br/>-使用 JSON：`"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
@@ -221,7 +221,7 @@ ms.locfileid: "89051247"
 
 在基于格式的数据集中的 `location` 设置下，Azure 文件存储支持以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 描述                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 **FileServerLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
@@ -263,7 +263,7 @@ ms.locfileid: "89051247"
 
 在基于格式的复制源中的 `storeSettings` 设置下，Azure 文件存储支持以下属性：
 
-| 属性                 | 说明                                                  | 必须                                      |
+| 属性                 | 描述                                                  | 必需                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 **FileServerReadSettings**。 | 是                                           |
 | 找到要复制的文件： |  |  |
@@ -277,8 +277,8 @@ ms.locfileid: "89051247"
 | deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制复制方案中有效，其中数据源存储为 Blob、ADLS Gen1、ADLS Gen2、S3、Google 云存储、文件、Azure 文件、SFTP 或 FTP。 默认值：false。 |否 |
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| enablePartitionDiscovery | 对于已分区的文件，指定是否分析文件路径中的分区，并将其添加为其他源列。<br/>允许的值为 **false** (默认值) 为 **true**。 | False                                            |
-| partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将分区文件夹作为数据列进行读取。<br/><br/>如果未指定，则默认情况下，<br/>-在数据集或源中的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>-使用通配符文件夹筛选器时，"分区根路径" 是第一个通配符之前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为 "根/文件夹/年 = 2020/month = 08/day = 27"：<br/>-如果将分区根路径指定为 "root/folder/year = 2020"，则除了文件中的列外，复制活动还将分别生成另外两个列 `month` 和 `day` 值 "08" 和 "27"。<br/>-如果未指定分区根路径，则不会生成额外的列。 | False                                            |
+| enablePartitionDiscovery | 对于已分区的文件，指定是否分析文件路径中的分区，并将其添加为其他源列。<br/>允许的值为 **false** (默认值) 为 **true**。 | 否                                            |
+| partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将分区文件夹作为数据列进行读取。<br/><br/>如果未指定，则默认情况下，<br/>-在数据集或源中的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>-使用通配符文件夹筛选器时，"分区根路径" 是第一个通配符之前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为 "根/文件夹/年 = 2020/month = 08/day = 27"：<br/>-如果将分区根路径指定为 "root/folder/year = 2020"，则除了文件中的列外，复制活动还将分别生成另外两个列 `month` 和 `day` 值 "08" 和 "27"。<br/>-如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否                                            |
 
 **示例：**
@@ -328,7 +328,7 @@ ms.locfileid: "89051247"
 
 在基于格式的复制接收器中的 `storeSettings` 设置下，Azure 文件存储支持以下属性：
 
-| 属性                 | 说明                                                  | 必须 |
+| 属性                 | 描述                                                  | 必需 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 **FileServerWriteSettings**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
@@ -422,7 +422,7 @@ ms.locfileid: "89051247"
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**FileShare** |是 |
 | folderPath | 文件夹路径。 <br/><br/>支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -470,7 +470,7 @@ ms.locfileid: "89051247"
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：FileSystemSource |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false  | 否 |
@@ -510,7 +510,7 @@ ms.locfileid: "89051247"
 
 ### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**FileSystemSink** |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定文件名，则合并的文件名将为指定的名称；否则，会自动生成文件名。 | 否 |

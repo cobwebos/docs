@@ -1,5 +1,5 @@
 ---
-title: 我们正在将虚拟机（VM）映像迁移到 Azure Marketplace 中的托管磁盘存储
+title: 正在将虚拟机 (VM) 映像迁移到 Azure Marketplace 中的托管磁盘存储
 description: 若要为新的 marketplace 特性和功能提供更快、更可靠的存储和支持，我们要将 marketplace VM 映像迁移到托管磁盘存储。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.openlocfilehash: c9f6d5d2649aff03d4bfb2770ec97053e70027da
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319875"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182422"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我们正在将 Azure Marketplace 中的虚拟机（VM）映像迁移到托管磁盘存储
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>正在将 Azure Marketplace 中的虚拟机 (VM) 映像移动到托管磁盘存储
 
 若要为新的 marketplace 特性和功能提供更快、更可靠的存储和支持，我们要将 marketplace VM 映像迁移到托管磁盘存储。
 
@@ -22,7 +22,7 @@ ms.locfileid: "87319875"
 
 发布者或使用者不需要执行任何操作，用户也不会受到影响。 Marketplace 产品/服务将保持可用，并且在移动过程中和之后，客户仍将能够从这些映像部署托管 Vm。
 
-如果你有任何疑问，请[联系我们](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)。
+如果你有任何疑问，请 [联系我们](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)。
 
 ## <a name="faqs"></a>常见问题解答
 
@@ -38,11 +38,11 @@ VM 映像的用户将不会遇到中断。
 
 ### <a name="do-i-need-to-take-any-action"></a>是否需要执行任何操作？
 
-否。 发布者或使用者不需要执行任何操作。
+不能。 发布者或使用者不需要执行任何操作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>是否必须将系统更新为以不同方式调用云门户 Api，然后再将其移动到托管磁盘存储？
 
-否。 你的现有 API 调用将继续工作。
+不能。 你的现有 API 调用将继续工作。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>是否所有 VM 映像都同时移动到托管磁盘？
 

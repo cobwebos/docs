@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718078"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226669"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -28,13 +28,13 @@ ms.locfileid: "88718078"
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个无密码身份验证选项，这些选项与 Azure Active Directory (Azure AD) ：
 
-- Windows Hello for Business
+- Windows Hello 企业版
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business
+## <a name="windows-hello-for-business"></a>Windows Hello 企业版
 
 Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 凭据直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构 (PKI) 集成和内置支持单一登录 (SSO) ，Windows Hello 企业版提供了一种方便的方法，可用于无缝访问本地和云中的公司资源。
 
@@ -114,6 +114,8 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 | 2 | 客户端 pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
 | 3 | hmac 密钥 | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
+
+### <a name="fido2-security-key-providers"></a>FIDO2 安全密钥提供程序
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 建议你通过联系供应商以及 FIDO 联盟来评估这些密钥的安全属性。
 

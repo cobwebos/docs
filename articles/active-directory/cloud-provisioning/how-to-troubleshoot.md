@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256860"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226941"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>云预配故障排除
 
@@ -49,7 +49,7 @@ ms.locfileid: "86256860"
 
    ![查看所有代理](media/how-to-install/install7.png)</br>
  
-1. 在 "**本地预配代理**" 屏幕上，可以看到已安装的代理。 验证相关代理是否存在并标记为 "*正常*"。
+1. 在 " **本地预配代理** " 屏幕上，可以看到已安装的代理。 验证相关代理是否存在并标记为 " *正常*"。
 
    ![“本地预配代理”屏幕](media/how-to-install/install8.png)</br>
 
@@ -86,8 +86,8 @@ ms.locfileid: "86256860"
 
 1. 使用管理员帐户登录到服务器。
 1. 导航到“服务”或者转到“开始” > “运行” > “Services.msc”来打开“服务”。
-1. 在 "**服务**" 下，双击 " **Microsoft Azure AD 连接设置代理**"。
-1. 在 "**登录**" 选项卡上，将**此帐户**更改为域管理员。然后重新启动该服务。 
+1. 在 " **服务**" 下，双击 " **Microsoft Azure AD 连接设置代理**"。
+1. 在 " **登录** " 选项卡上，将 **此帐户** 更改为域管理员。然后重新启动该服务。 
 
    ![登录选项卡](media/how-to-troubleshoot/troubleshoot3.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "86256860"
 
 此问题通常是由于代理无法连接到混合标识服务所导致，并且需要你配置 HTTP 代理。 若要解决此问题，请配置出站代理。 
 
-预配代理支持使用出站代理。 可以通过编辑代理配置文件*C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*来配置它。将以下行添加到该文件末尾紧靠结束 `</configuration>` 标记之前。
+预配代理支持使用出站代理。 可以通过编辑代理配置文件 *C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*来配置它。将以下行添加到该文件末尾紧靠结束 `</configuration>` 标记之前。
 将变量 `[proxy-server]` 和替换 `[proxy-port]` 为你的代理服务器名称和端口值。
 
 ```xml
@@ -120,17 +120,17 @@ ms.locfileid: "86256860"
 
 此问题通常是由于本地 PowerShell 执行策略无法执行 PowerShell 注册脚本导致的。
 
-若要解决此问题，请更改服务器上的 PowerShell 执行策略。 需要将计算机和用户策略设置为*未定义*或*RemoteSigned*。 如果将其设置为 "*无限制*"，则会看到此错误。 有关详细信息，请参阅[PowerShell 执行策略](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)。 
+若要解决此问题，请更改服务器上的 PowerShell 执行策略。 需要将计算机和用户策略设置为 *未定义* 或 *RemoteSigned*。 如果将其设置为 " *无限制*"，则会看到此错误。 有关详细信息，请参阅 [PowerShell 执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)。 
 
 ### <a name="log-files"></a>日志文件
 
-默认情况下，代理发出最少的错误消息和堆栈跟踪信息。 可以在*C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect 预配 Agent\Trace*文件夹中找到这些跟踪日志。
+默认情况下，代理发出最少的错误消息和堆栈跟踪信息。 可以在 *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect 预配 Agent\Trace*文件夹中找到这些跟踪日志。
 
 若要收集用于排查代理相关问题的其他详细信息，请执行以下步骤。
 
-1. 停止服务**Microsoft Azure AD 连接设置代理**。
+1. 停止服务 **Microsoft Azure AD 连接设置代理**。
 1. 创建原始配置文件的副本： *C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*。
-1. 将现有节替换为 `<system.diagnostics>` 以下内容，并将所有跟踪消息都发送到文件*ProvAgentTrace*。
+1. 将现有节替换为 `<system.diagnostics>` 以下内容，并将所有跟踪消息都发送到文件 *ProvAgentTrace*。
 
    ```xml
      <system.diagnostics>
@@ -153,7 +153,7 @@ ms.locfileid: "86256860"
      </system.diagnostics>
     
    ```
-1. 启动服务**Microsoft Azure AD 连接设置代理**。
+1. 启动服务 **Microsoft Azure AD 连接设置代理**。
 1. 使用以下命令来结尾文件并调试问题。 
     ```
     Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
@@ -164,7 +164,7 @@ ms.locfileid: "86256860"
 
 ### <a name="provisioning-logs"></a>“预配”日志
 
-在 Azure 门户中，设置日志可用于帮助跟踪对象同步问题并排除故障。 若要查看日志，请选择 "**日志**"。
+在 Azure 门户中，设置日志可用于帮助跟踪对象同步问题并排除故障。 若要查看日志，请选择 " **日志**"。
 
 ![“日志”按钮](media/how-to-troubleshoot/log1.png)
 
@@ -191,11 +191,11 @@ ms.locfileid: "86256860"
 
 ### <a name="resolve-a-quarantine"></a>解析隔离
 
-- 使用 Azure 门户重启预配作业。 在 "代理配置" 页上，选择 "**重新启动设置**"。
+- 使用 Azure 门户重启预配作业。 在 "代理配置" 页上，选择 " **重新启动设置**"。
 
   ![重新启动预配](media/how-to-troubleshoot/quarantine3.png)
 
-- 使用 Microsoft Graph[重启预配作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 你可以完全控制重新启动的内容。 你可以选择清除以下内容：
+- 使用 Microsoft Graph [重启预配作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 你可以完全控制重新启动的内容。 你可以选择清除以下内容：
   - Escrows，用于重新启动向隔离状态累算的保管计数器。
   - 隔离：从隔离区中删除应用程序。
   - 水印. 
@@ -208,6 +208,3 @@ ms.locfileid: "86256860"
 
 - [什么是预配？](what-is-provisioning.md)
 - [什么是 Azure AD Connect 云预配？](what-is-cloud-provisioning.md)
-
-
-

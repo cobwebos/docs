@@ -3,17 +3,17 @@ title: 适用于 Blob 的热、冷、存档访问层 - Azure 存储
 description: 了解 Azure Blob 存储的 "热"、"冷" 和 "存档" 访问层。 查看支持分层的存储帐户。 比较块 blob 存储选项。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009604"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226176"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -123,7 +123,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
 | **可用性** <br> （RA-GRS 读取）  | 空值                       | 99.99%       | 99.9%               | Offline           |
 | 使用费                         | 存储费用较高，访问和事务费用较低 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| 最小对象大小                   | 不适用                       | 空值          | 空值                 | 空值               |
+| 最小对象大小                   | 空值                       | 空值          | 空值                 | 空值               |
 | 最短存储持续时间              | 空值                       | 空值          | 30 天<sup>1</sup> | 180 天
 | **延迟** <br> （距第一字节时间） | 一位数的毫秒数 | 毫秒 | 毫秒        | 小时<sup>2</sup> |
 
@@ -156,7 +156,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 1. 单击顶部的“保存”。
 
-![更改存储帐户层](media/storage-tiers/account-tier.png)
+![在 Azure 门户中更改默认帐户层](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改帐户层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. 选择底部的“保存”。
 
-![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
+![在 Azure 门户中更改 blob 层](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用你的存储帐户名初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 blob 名称初始化 `$blobName` 变量。 
@@ -219,6 +219,8 @@ $blob.ICloudBlob.SetStandardBlobTier("Archive")
 - **异地复制数据传输成本**：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
 - **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 GB 产生带宽使用费，与通用存储帐户一致。
 - **更改访问层**：更改帐户访问层会导致帐户中存储的未设置显式层的“推断访问层”Blob 产生层更改费。 有关更改单个 Blob 的访问层的信息，请参阅 [Blob 级分层计费](#blob-level-tiering-billing)。
+
+    如果在启用了版本控制的情况下更改了 blob 的访问层，或者 blob 具有快照，则可能会产生额外费用。 若要详细了解如何在启用 blob 版本控制时对其进行计费，并显式更改 blob 的层，请参阅 blob 版本控制文档中的 [定价和计费](versioning-overview.md#pricing-and-billing) 。 有关 blob 具有快照时如何计费的详细信息，以及显式更改 blob 的层，请参阅 blob 快照文档中的 [定价和计费](snapshots-overview.md#pricing-and-billing) 。
 
 > [!NOTE]
 > 有关 Blob 块的定价详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)页。 有关出站数据传输收费的详细信息，请参阅[数据传输定价详细信息](https://azure.microsoft.com/pricing/details/data-transfers/)页。

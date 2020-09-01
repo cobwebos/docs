@@ -3,18 +3,18 @@ title: 与 Azure CLI 备份 Azure 文件共享
 description: 了解如何使用 Azure CLI 在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cc4422a7d20dbd231729922bd013549d5276deb1
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012018"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182201"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>通过 CLI 备份 Azure 文件共享
 
 Azure 命令行接口 (CLI) 提供了用于管理 Azure 资源的命令行体验。 这是一个很好的工具，用于构建自定义自动化以使用 Azure 资源。 本文详细介绍如何将 Azure 文件共享与 Azure CLI 备份。 也可以使用 [Azure PowerShell](./backup-azure-afs-automation.md) 或 [Azure 门户](backup-afs.md)执行这些步骤。
 
-本教程结束时，你将学习如何使用 Azure CLI 执行以下操作：
+本教程结束时，你将了解如何使用 Azure CLI 执行以下操作：
 
 * 创建恢复服务保管库
 * 为 Azure 文件共享启用备份

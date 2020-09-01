@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85e0c1b146cfba0cb95a6612f33e42a465bfd20b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008740"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226703"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
@@ -52,22 +52,23 @@ ms.locfileid: "88008740"
 
 ### <a name="subscribe-with-a-user-account"></a>使用用户帐户进行订阅
 
-1. 在客户端的主页中，选择 "**订阅**"。
+1. 在客户端的主页中，选择 " **订阅**"。
 2. 出现提示时，请使用用户帐户登录。
 3. 资源将显示在连接中心，并按工作区进行分组。
 
 ### <a name="subscribe-with-a-url"></a>使用 URL 订阅
 
-1. 在客户端的主页中，选择 "**订阅**" "URL"。
+1. 在客户端的主页中，选择 " **订阅**" "URL"。
 2. 输入工作区 URL 或你的电子邮件地址：
    - 如果使用工作区 URL，请输入管理员提供给你的 URL。 如果从 Windows 虚拟桌面访问资源，可使用下列 URL 之一：
-     - Windows 虚拟桌面 (经典) ：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows 虚拟桌面（经典）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
-   - 如果你使用的是**电子邮件**字段，请输入你的电子邮件地址。 如果管理员已设置[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)，则这将告知客户端搜索与你的电子邮件地址关联的 URL。
-3. 选择“下一步”  。
+     - Windows 虚拟桌面 (US Gov) ： `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
+   - 如果你使用的是 **电子邮件** 字段，请输入你的电子邮件地址。 如果管理员已设置 [电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)，则这将告知客户端搜索与你的电子邮件地址关联的 URL。
+3. 选择“**下一页**”。
 4. 出现提示时，请使用用户帐户登录。
 5. 资源应显示在连接中心中，按工作区分组。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何使用 Windows 桌面客户端的详细信息，请参阅[Windows 桌面客户端入门](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。
+若要了解有关如何使用 Windows 桌面客户端的详细信息，请参阅 [Windows 桌面客户端入门](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。
