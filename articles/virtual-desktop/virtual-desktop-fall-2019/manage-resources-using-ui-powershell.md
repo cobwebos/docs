@@ -5,13 +5,14 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: lizross
-ms.openlocfilehash: 08366735308e8b3c6fb79efd1adca469272dd053
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005765"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069011"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虚拟桌面 (经典) 管理工具
 
@@ -137,14 +138,14 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 
 验证 Azure AD 应用程序配置并提供许可：
 
-1. 打开 internet 浏览器，然后用管理帐户登录到[Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户顶部的搜索栏中，搜索**应用注册**并选择 "**服务**" 下的项。
-3. 选择 "**所有应用程序**"，并在[创建 Azure Active Directory 应用注册](#create-an-azure-active-directory-app-registration)中搜索为 PowerShell 脚本提供的唯一应用名称。
-4. 在浏览器左侧的面板中，选择 "**身份验证**"，并确保重定向 URI 与管理工具的 WEB 应用 URL 相同，如下图所示。
+1. 打开 internet 浏览器，然后用管理帐户登录到 [Azure 门户](https://portal.azure.com/) 。
+2. 在 Azure 门户顶部的搜索栏中，搜索 **应用注册** 并选择 " **服务**" 下的项。
+3. 选择 " **所有应用程序** "，并在 [创建 Azure Active Directory 应用注册](#create-an-azure-active-directory-app-registration)中搜索为 PowerShell 脚本提供的唯一应用名称。
+4. 在浏览器左侧的面板中，选择 " **身份验证** "，并确保重定向 URI 与管理工具的 WEB 应用 URL 相同，如下图所示。
 
    [![具有输入的重定向 URI ](../media/management-ui-redirect-uri-inline.png) 的身份验证页](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. 在左面板中，选择 " **API 权限**" 以确认添加了权限。 如果你是全局管理员，请选中 "**向管理员授予许可 `tenantname` ** " 按钮，然后按照对话框提示为你的组织提供管理员同意。
+5. 在左面板中，选择 " **API 权限** " 以确认添加了权限。 如果你是全局管理员，请选中 "**向管理员授予许可 `tenantname` ** " 按钮，然后按照对话框提示为你的组织提供管理员同意。
 
     [!["API 权限" 页 ](../media/management-ui-permissions-inline.png)](../media/management-ui-permissions-expanded.png#lightbox)
 
@@ -160,7 +161,7 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
    > [!NOTE]
    > 如果在配置管理工具时未授予管理员许可，则登录的每个用户都需要提供自己的用户同意才能使用该工具。
 
-3. 当系统提示选择租户组时，请从下拉列表中选择 "**默认租户组**"。
+3. 当系统提示选择租户组时，请从下拉列表中选择 " **默认租户组** "。
 4. 选择“默认租户组”时，将在窗口左侧显示一个菜单****。 在此菜单中，找到租户组的名称并将其选中。
 
    > [!NOTE]

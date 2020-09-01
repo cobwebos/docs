@@ -3,14 +3,14 @@ title: Azure Functions 的 PowerShell 开发人员参考
 description: 了解如何使用 PowerShell 开发函数。
 author: eamonoreilly
 ms.topic: conceptual
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933489"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071153"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -74,11 +74,11 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| 属性   | 说明                                     | 类型     |
+| properties   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
-| MethodName | 触发的函数的名称     | 字符串   |
-| RandGuid   | 此函数执行的唯一 guid | 字符串   |
+| MethodName | 触发的函数的名称     | string   |
+| RandGuid   | 此函数执行的唯一 guid | string   |
 
 每个触发器类型都有一组不同的元数据。 例如，的 `$TriggerMetadata` `QueueTrigger` 包含、、等 `InsertionTime` `Id` `DequeueCount` 。 有关队列触发器的元数据的详细信息，请参阅 [队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的 [触发器](functions-triggers-bindings.md) 的相关文档，了解触发器元数据内部的内容。
 
@@ -128,7 +128,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 | 名称 | 类型 | 位置 | 说明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | 字符串 | 1 | 要设置的输出绑定的名称。 |
+| **`-Name`** | String | 1 | 要设置的输出绑定的名称。 |
 | **`-Value`** | 对象 | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
 | **`-Clobber`** | SwitchParameter | 名为 |  (可选) 指定时，将强制为指定的输出绑定设置值。 | 
 
@@ -276,7 +276,7 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
 * Hashtable
-* 字符串
+* string
 * byte[]
 * int
 * Double
@@ -295,14 +295,14 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传递到脚本的请求对象的类型为 `HttpRequestContext` ，它具有以下属性：
 
-| 属性  | 说明                                                    | 类型                      |
+| properties  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 (object) |
 | **`Headers`** | 包含请求标头的字典。                | Dictionary<string，string><sup>*</sup> |
-| **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
+| **`Method`** | 请求的 HTTP 方法。                                | string                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string，string><sup>*</sup> |
 | **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string，string><sup>*</sup> |
-| **`Url`** | 请求的 URL。                                        | 字符串                    |
+| **`Url`** | 请求的 URL。                                        | string                    |
 
 <sup>*</sup> 所有 `Dictionary<string,string>` 键都不区分大小写。
 
@@ -310,10 +310,10 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 应发送回的响应对象的类型为 `HttpResponseContext` ，它具有以下属性：
 
-| 属性      | 说明                                                 | 类型                      |
+| properties      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | 对象 (object)                    |
-| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
+| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | string                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
 
@@ -414,7 +414,7 @@ param([string] $myBlob)
 
 使用以下步骤可更改函数应用使用的 PowerShell 版本。 可以在 Azure 门户中或使用 PowerShell 执行此操作。
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的函数应用。
 

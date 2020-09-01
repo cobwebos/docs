@@ -8,18 +8,19 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 803d2a09fb4114dae36dcb6147139c7b657501f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d3e7cdf11e1e1e033b4e72b9579d8c63b28e6c88
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700121"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071680"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 将旧直接对等互连转换为 Azure 资源
 
 本文介绍如何使用 PowerShell cmdlet 将现有的旧式直接对等互连转换为 Azure 资源。
 
-如果愿意，可以使用 Azure[门户](howto-legacy-direct-portal.md)完成本指南。
+如果愿意，可以使用 Azure [门户](howto-legacy-direct-portal.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](prerequisites.md)和[直接对等互连演练](walkthrough-direct-all.md)。

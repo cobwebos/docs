@@ -10,113 +10,77 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: d7bad24510f74a7fadd74328e24ea22855e6fe02
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b90cda409096f940d6c2b1c64517731e81c41fbe
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750853"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069148"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
-了解 Azure 机器学习的体系结构和概念。
-
-> [!NOTE]
-> 本文定义了 Azure 机器学习使用的术语和概念，但未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
+了解 [Azure 机器学习](overview-what-is-azure-ml.md)的体系结构和概念。  本文提供了有关组件以及它们如何协同工作以帮助构建、部署和维护机器学习模型的过程的高级理解。
 
 ## <a name="workspace"></a><a name="workspace"></a> 空间
 
-:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="Azure 机器学习体系结构":::
+[机器学习工作区](concept-workspace.md)是 Azure 机器学习的顶级资源。
 
-[机器学习工作区](concept-workspace.md)是 Azure 机器学习的顶级资源。  工作区是的集中位置：
+:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="关系图：工作区及其组件的 Azure 机器学习体系结构":::
+
+工作区是的集中位置：
+
 * 管理用于定型和部署模型的资源，例如 [计算](#compute-instance)
 * 使用 Azure 机器学习时，存储所创建的资产，包括：
   * [环境](#environments)
-  * [运行次数](#runs)
+  * [试验](#experiments)
   * [管道](#ml-pipelines)
   * [数据集](#datasets-and-datastores)
-  * Models
+  * [模型](#models)
   * [Endpoints](#endpoints)
 
 工作区包含工作区使用的其他 Azure 资源：
 
-+ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”。
++ [Azure 容器注册表 (ACR) ](https://azure.microsoft.com/services/container-registry/)：注册在训练过程中和部署模型时使用的 docker 容器。 为了最大限度地降低成本，只能在创建部署映像时创建 ACR。
 + [Azure 存储帐户](https://azure.microsoft.com/services/storage/)，用作工作区的默认数据存储。  与 Azure 机器学习计算实例一起使用的 Jupyter 笔记本也存储在此处。
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
 
 可与其他人共享工作区。
 
-## <a name="studio"></a>工作室
+## <a name="computes"></a>契
 
-[Azure 机器学习 studio](https://ml.azure.com) 提供了工作区中所有项目的 web 视图。  你还可以在此门户中访问 Azure 机器学习的一部分的交互式工具：
+<a name="compute-targets"></a>[计算目标](concept-compute-target.md)是用于运行训练脚本或托管服务部署的任何计算机或计算机集。 你可以使用本地计算机或远程计算资源作为计算目标。  通过计算目标，你可以在本地计算机上开始培训，然后在不更改定型脚本的情况下向外扩展到云。
 
-+ [Azure 机器学习设计器 (预览) ](concept-designer.md) 在不编写代码的情况下执行工作流步骤
-+ [自动机器学习](concept-automated-ml.md)的 Web 体验
-+ [数据标记项目](how-to-create-labeling-projects.md) ，用于创建、管理和监视项目以标记数据
+Azure 机器学习引入了两个完全托管的基于云的虚拟机 (VM) ，这些虚拟机配置了机器学习任务：
 
-##  <a name="computes"></a>契
+* <a name="compute-instance"></a>**计算实例**：计算实例是一个 VM，其中包含为机器学习安装的多个工具和环境。 计算实例的主要用途是用于开发工作站。  你可以开始运行示例笔记本，无需安装。 计算实例还可用作定型和推断作业的计算目标。
 
-<a name="compute-targets"></a>[计算目标](concept-compute-target.md)是运行训练脚本或托管服务部署的计算机或计算机组。 此位置可以是本地计算机，也可以是远程计算资源。
-
-Azure 机器学习引入了两个完全托管的基于云的计算资源，这些资源配置为机器学习任务：
-
-* <a name="compute-instance"></a> ([computeinstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance?view=azure-ml-py)) 的**计算实例**：计算实例是虚拟机 (VM) ，其中包含为机器学习安装的多个工具和环境。 使用计算实例作为开发工作站开始运行示例笔记本，无需安装。 还可用作定型和推断作业的计算目标。
-* **计算群集** ([amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)) ：包含多节点缩放功能的 vm 群集。 提交作业时自动扩展。 更适合大型作业和生产的计算目标。 使用作为训练计算目标，或用于开发/测试部署。
+* **计算群集**：计算群集是包含多节点缩放功能的 vm 群集。 计算群集更适合用于大型作业和生产的计算目标。  提交作业时，群集会自动扩展。  使用作为训练计算目标，或用于开发/测试部署。
 
 有关定型计算目标的详细信息，请参阅 [训练计算目标](concept-compute-target.md#train)。  有关部署计算目标的详细信息，请参阅 [部署目标](concept-compute-target.md#deploy)。
 
 ## <a name="datasets-and-datastores"></a>数据集和数据存储
 
-[**Azure 机器学习数据集**](concept-data.md#datasets)  ，可以更方便地访问和处理数据。 数据集管理各种方案（例如模型训练和管道创建）中的数据。 使用 Azure 机器学习 SDK 可以访问底层存储、浏览数据，以及管理不同数据集定义的生命周期。
-
-数据集提供多种方法用于处理常用格式的数据，例如使用 `from_delimited_files()` 或 `to_pandas_dataframe()`。
+[**Azure 机器学习数据集**](concept-data.md#datasets)  ，可以更方便地访问和处理数据。 通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 由于数据保留在其现有位置中，因此不会产生额外的存储成本，也不会损害数据源的完整性。
 
 有关详细信息，请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)。
 
-[**数据**](concept-data.md#datastores)存储是通过 Azure 存储帐户进行的存储提取。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。 
+数据集使用 [数据存储](concept-data.md#datastores) 安全地连接到 Azure 存储服务。 数据存储存储连接信息，而无需对你的身份验证凭据和原始数据源的完整性造成风险。 它们在与工作区关联的 Key Vault 中存储连接信息，如订阅 ID 和令牌授权，因此，你可以安全地访问存储，而无需在脚本中对其进行硬编码。
 
-## <a name="models"></a>模型
-
-简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型涉及到选择算法、向其提供数据以及 [优化超参数](how-to-tune-hyperparameters.md)。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
-
-模型由 Azure 机器学习中的实验[运行](#runs)生成。 [experiment](#experiments) 还可以使用在 Azure 机器学习外部训练的模型。 然后，在工作区中 [注册模型](#register-model) 。
-
-Azure 机器学习与框架无关。 创建模型时，可以使用任何流行的机器学习框架，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
-
-有关使用 Scikit-learn 为模型定型的示例，请参阅 [教程：使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)。
-
-### <a name="model-registry"></a><a name="register-model"></a> 模型注册表
-[工作区](#workspace)  > **模型注册表**
-
-利用 **模型注册表** ，可以跟踪 Azure 机器学习工作区中的所有模型。
-
-模型按名称和版本标识。 每次使用与现有相同的名称注册模型时，注册表都会假定它是新版本。 该版本将递增并且新模型会以同一名称注册。
-
-注册模型时，可以提供其他元数据标记，然后在搜索模型时使用这些标记。
-
-> [!TIP]
-> 已注册的模型是构成模型的一个或多个文件的逻辑容器。 例如，如果你有一个存储在多个文件中的模型，则可以在 Azure 机器学习工作区中将这些文件注册为单个模型。 注册后，可以下载或部署已注册的模型，并接收注册的所有文件。
-
-无法删除在活动部署正在使用的已注册模型。
-
-有关注册模型的示例，请参阅[使用 Azure 机器学习训练映像分类模型](tutorial-train-models-with-aml.md)。
-
-
-### <a name="environments"></a>环境
+## <a name="environments"></a>环境
 
 [工作区](#workspace)  > **环境**
 
-[环境](concept-environments.md)是环境的封装，其中发生了机器学习模型的定型或评分。 环境指定围绕定型和评分脚本的 Python 包、环境变量和软件设置。
+[环境](concept-environments.md)是环境的封装，其中发生了机器学习模型的定型或评分。 环境指定围绕定型和评分脚本的 Python 包、环境变量和软件设置。  
 
 如需代码示例，请参阅[如何使用环境](how-to-use-environments.md#manage-environments)中的“管理环境”部分。
 
-### <a name="experiments"></a>试验
+## <a name="experiments"></a>试验
 
 [工作区](#workspace)  > **试验**
 
 试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交实验时该名称不存在，则会自动创建新的实验。
-
+  
 有关使用试验的示例，请参阅[教程：训练第一个模型](tutorial-1st-experiment-sdk-train.md)。
 
 ### <a name="runs"></a>运行次数
@@ -146,16 +110,9 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 ### <a name="estimators"></a>估算器
 
-为了便于使用流行框架进行模型训练，可以通过估算器类轻松构造运行配置。 可以创建一个泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，并通过该估算器提交使用你选择的任何学习框架（例如 scikit-learn）的训练脚本。
+为了便于使用流行框架进行模型训练，可以通过估算器类轻松构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用所选任何学习框架（例如 scikit-learn）的训练脚本。
 
-对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 和 [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 估算器，以便使用这些框架进行简化。
-
-有关详细信息，请参阅以下文章：
-
-* [使用估算器训练 ML 模型](how-to-train-ml-models.md)。
-* [使用 Azure 机器学习大规模训练 Pytorch 深度学习模型](how-to-train-pytorch.md)
-* [使用 Azure 机器学习大规模训练并注册 TensorFlow 模型](how-to-train-tensorflow.md)
-* [使用 Azure 机器学习大规模训练和注册 Chainer 模型](how-to-train-ml-models.md)。
+有关估算的详细信息，请参阅 [通过估算训练 ML 模型](how-to-train-ml-models.md)。
 
 ### <a name="snapshots"></a>快照
 
@@ -178,6 +135,34 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 
+## <a name="models"></a>模型
+
+简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型涉及到选择算法、向其提供数据以及 [优化超参数](how-to-tune-hyperparameters.md)。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
+
+你可以将已训练的模型置于 Azure 机器学习之外。 或者，您可以通过在 Azure 机器学习中将[实验](#experiments)的[运行](#runs)提交给[计算目标](#compute-targets)来定型模型。 有了模型后，就可以在工作区中 [注册该模型](#register-model) 了。
+
+Azure 机器学习与框架无关。 创建模型时，可以使用任何流行的机器学习框架，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
+
+有关使用 Scikit-learn 为模型定型的示例，请参阅 [教程：使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)。
+
+
+### <a name="model-registry"></a><a name="register-model"></a> 模型注册表
+
+[工作区](#workspace)  > **模型**
+
+利用 **模型注册表** ，可以跟踪 Azure 机器学习工作区中的所有模型。
+
+模型按名称和版本标识。 每次使用与现有相同的名称注册模型时，注册表都会假定它是新版本。 该版本将递增并且新模型会以同一名称注册。
+
+注册模型时，可以提供其他元数据标记，然后在搜索模型时使用这些标记。
+
+> [!TIP]
+> 已注册的模型是构成模型的一个或多个文件的逻辑容器。 例如，如果你有一个存储在多个文件中的模型，则可以在 Azure 机器学习工作区中将这些文件注册为单个模型。 注册后，可以下载或部署已注册的模型，并接收注册的所有文件。
+
+无法删除在活动部署正在使用的已注册模型。
+
+有关注册模型的示例，请参阅[使用 Azure 机器学习训练映像分类模型](tutorial-train-models-with-aml.md)。
+
 ## <a name="deployment"></a>部署
 
 将 [已注册的模型](#register-model) 部署为服务终结点。 需要以下组件：
@@ -196,7 +181,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 #### <a name="web-service-endpoint"></a>Web 服务终结点
 
-将模型部署为 Web 服务时，可以在 Azure 容器实例、Azure Kubernetes 服务或 FPGA 上部署终结点。 可以从模型、脚本和关联的文件创建服务。 这些将放置到基容器映像中，其中包含模型的执行环境。 映像具有负载均衡的 HTTP 终结点，可接收发送到 Web 服务的评分请求。
+将模型部署为 web 服务时，可以将终结点部署在 Azure 容器实例、Azure Kubernetes 服务或 Fpga 上。 可以从模型、脚本和关联的文件创建服务。 这些将放置到基容器映像中，其中包含模型的执行环境。 映像具有负载均衡的 HTTP 终结点，可接收发送到 Web 服务的评分请求。
 
 可以启用 Application Insights 遥测或模型遥测来监视 web 服务。 只能由你访问遥测数据。  它存储在 Application Insights 和存储帐户实例中。
 
@@ -210,8 +195,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 如果已启用监视，Azure 会从 Azure IoT Edge 模块内的模型中收集遥测数据。 遥测数据仅供你访问，并且存储在存储帐户实例中。
 
-Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
-. 
+Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。 
 ## <a name="automation"></a>自动化
 
 ### <a name="azure-machine-learning-cli"></a>Azure 机器学习 CLI 
@@ -224,7 +208,19 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 管道步骤可重用，如果这些步骤的输出没有更改，则无需重新运行前面的步骤即可运行。 例如，如果数据未更改，你可以重新训练模型，不需要重新运行成本高昂的数据准备步骤。 管道还使数据科学家能够展开协作，同时可以处理机器学习工作流的不同环节。
 
-## <a name="interacting-with-machine-learning"></a>与机器学习交互
+## <a name="interacting-with-your-workspace"></a>与工作区交互
+
+### <a name="studio"></a>工作室
+
+[Azure 机器学习 studio](https://ml.azure.com) 提供了工作区中所有项目的 web 视图。  您可以查看数据集、试验、管道、模型和终结点的结果和详细信息。  你还可以在工作室中管理计算资源和数据存储。
+
+通过工作室，你还可以访问 Azure 机器学习中包含的交互工具：
+
++ [Azure 机器学习设计器 (预览) ](concept-designer.md) 在不编写代码的情况下执行工作流步骤
++ [自动机器学习](concept-automated-ml.md)的 Web 体验
++ [数据标记项目](how-to-create-labeling-projects.md) ，用于创建、管理和监视项目以标记数据
+
+### <a name="programming-tools"></a>编程工具
 
 > [!IMPORTANT]
 > 下面标记了“（预览版）”的工具目前为公共预览版。
@@ -232,7 +228,6 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 +  使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 来与任何 Python 环境中的服务交互。
 + 在具有适用于 R (预览版) 的 [AZURE 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) 的任何 r 环境中与服务进行交互。
-+ 使用 [Azure 机器学习设计器（预览版）](concept-designer.md)执行工作流步骤且无需编写任何代码。 （使用设计器需要[企业工作区](concept-workspace.md#upgrade)。）
 + 使用 [AZURE 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) 实现自动化。
 + [多模型解决方案加速器](https://aka.ms/many-models)（预览）是在 Azure 机器学习的基础之上构建而成，可便于你训练、操作和管理成百上千的机器学习模型。
 

@@ -16,12 +16,13 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf27778d1365ef3779a996f37fff09bb7a1efbec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c4183ed7343434b575015e94afb4111b3d14c5e3
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999795"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071544"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -318,7 +319,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 可以使用以下选项将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
 > [!NOTE]
-> 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行下面的命令：<br />
+> 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行以下命令：<br />
 > Restart-Service AzureADConnectHealth *
 >
 >

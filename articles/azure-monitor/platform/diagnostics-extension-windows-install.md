@@ -7,13 +7,13 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e38e9ee301d080110e8019e3fe407e7d5cdc026
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499188"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069572"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装并配置 Microsoft Azure 诊断扩展 (WAD)
 [Azure 诊断扩展](diagnostics-extension-overview.md)是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负载以及其他计算资源中收集监视数据。 本文详细介绍如何安装并配置 Windows 诊断扩展，以及如何将数据存储在 Azure 存储帐户中。
@@ -21,7 +21,7 @@ ms.locfileid: "87499188"
 诊断扩展作为 Azure 中的[虚拟机扩展](../../virtual-machines/extensions/overview.md)实现，因此，它支持使用资源管理器模板、PowerShell 和 CLI 的相同安装选项。 有关安装和维护虚拟机扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](../../virtual-machines/extensions/features-windows.md)。
 
 ## <a name="overview"></a>概述
-配置 Microsoft Azure 诊断扩展时，必须指定一个存储帐户，所有指定的数据都将发送到该帐户。 您可以选择添加一个或多个*数据接收器*，将数据发送到不同位置。
+配置 Microsoft Azure 诊断扩展时，必须指定一个存储帐户，所有指定的数据都将发送到该帐户。 可以选择添加一个或更多数据接收器，以便将数据发送到不同的位置。
 
 - Azure Monitor 接收器 - 将来宾性能数据发送到 Azure Monitor 指标。
 - 事件中心接收器 - 将来宾性能和日志数据发送到 Azure 事件中心以在 Azure 外部转发。 无法在 Azure 门户中配置此接收器。

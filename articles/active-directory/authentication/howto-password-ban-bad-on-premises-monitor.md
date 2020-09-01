@@ -11,18 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 02937c22cbc16defb0b7672ac7ebc56c2ae2beb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550273"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068773"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>监视和查看本地 Azure AD 密码保护环境的日志
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录信息，以及如何报告 Azure AD 密码保护使用情况。
 
-监视和报告是通过事件日志消息或通过运行 PowerShell cmdlet 来完成的。 DC 代理和代理服务都记录事件日志消息。 下面所述的所有 PowerShell cmdlet 仅可用于代理服务器（请参阅 AzureADPasswordProtection PowerShell 模块）。 DC 代理软件不安装 PowerShell 模块。
+监视和报告是通过事件日志消息或通过运行 PowerShell cmdlet 来完成的。 DC 代理和代理服务都记录事件日志消息。 下面所述的所有 PowerShell cmdlet 仅可用于代理服务器 (参阅 AzureADPasswordProtection PowerShell module) 。 DC 代理软件不安装 PowerShell 模块。
 
 ## <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
 
@@ -235,7 +236,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。**** 目前提供以下性能计数器：
 
-|性能计数器名称 | 描述|
+|性能计数器名称 | 说明|
 | --- | --- |
 |处理的密码数 |此计数器显示自上次重启以来已处理的密码（接受或拒绝）总数。|
 |接受的密码数 |此计数器显示自上次重启以来已接受的密码总数。|

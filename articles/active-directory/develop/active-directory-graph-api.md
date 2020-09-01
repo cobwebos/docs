@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: da99468b1582c4acab192ad3b96761172aa69580
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115792"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068654"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 图形 API
 
 > [!IMPORTANT]
-> 强烈建议使用 [Microsoft Graph](https://developer.microsoft.com/graph)（而非 Azure AD Graph API）访问 Azure Active Directory (Azure AD) 资源。 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案数量非常有限；有关详细信息，请参阅 [Microsoft Graph or the Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/)（Microsoft Graph 或 Azure AD Graph）博客文章和[将 Azure AD Graph 应用迁移到 Microsoft Graph](/graph/migrate-azure-ad-graph-overview)。
+> 强烈建议使用 [Microsoft Graph](https://developer.microsoft.com/graph)（而非 Azure AD Graph API）访问 Azure Active Directory (Azure AD) 资源。 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案数量非常有限；有关详细信息，请参阅 [Microsoft Graph or the Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/)（Microsoft Graph 或 Azure AD Graph）博客文章和[将 Azure AD Graph 应用迁移到 Microsoft Graph](/graph/migrate-azure-ad-graph-planning-checklist)。
 
 本文适用于 Azure AD 图形 API。 有关与 Microsoft Graph API 相关的类似信息，请参阅[使用 Microsoft Graph API](/graph/use-the-api)。
 

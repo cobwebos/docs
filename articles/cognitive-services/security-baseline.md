@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7c6f115597b5b95cd1004f67adec53727736c377
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498338"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072020"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>认知服务的 Azure 安全基线
 
@@ -42,7 +42,7 @@ ms.locfileid: "87498338"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
-**指南**：当虚拟机部署在与 Azure 认知服务容器相同的虚拟网络中时，可以使用网络安全组（NSG）来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：当虚拟机部署在与 Azure 认知服务容器相同的虚拟网络中时，可以使用 (NSG) 的网络安全组，以降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 * [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -73,7 +73,7 @@ ms.locfileid: "87498338"
 **指南**：当虚拟机部署在与 Azure 认知服务容器相同的虚拟网络中时，请通过 azure 策略为相关网络资源定义和实施标准安全配置。 使用 "Cognitiveservices account" 和 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行 Azure 缓存的 Redis 实例的网络配置。 还可以利用内置策略定义，例如：
 - 应启用 DDoS 防护标准版
 
-你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、基于 Azure 角色的访问控制（Azure RBAC）和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+你还可以使用 Azure 蓝图通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 如果在容器中使用认知服务，则可以使用面向正面的 web 应用程序防火墙解决方案来增强容器部署，该解决方案可筛选恶意流量并支持端到端 TLS 加密，使容器终结点成为私有终结点并确保其安全。
 
@@ -89,7 +89,7 @@ ms.locfileid: "87498338"
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：当虚拟机部署在与 Azure 认知服务容器相同的虚拟网络中时，可以使用网络安全组（NSG）来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：当虚拟机部署在与 Azure 认知服务容器相同的虚拟网络中时，可以使用 (NSG) 的网络安全组，以降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 * [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -115,7 +115,7 @@ ms.locfileid: "87498338"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -135,9 +135,9 @@ ms.locfileid: "87498338"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：使用虚拟网络服务标记定义网络安全组（NSG）或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用虚拟网络服务标记来定义网络安全组 (NSG) 或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-你还可以使用应用程序安全组（ASG）来帮助简化复杂的安全配置。 Asg 使你能够将网络安全性配置为应用程序结构的自然扩展，使你能够对虚拟机进行分组，并基于这些组定义网络安全策略。
+你还可以使用应用程序安全组 (ASG) 来帮助简化复杂的安全配置。 Asg 使你能够将网络安全性配置为应用程序结构的自然扩展，使你能够对虚拟机进行分组，并基于这些组定义网络安全策略。
 
 * [虚拟网络服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
@@ -151,7 +151,7 @@ ms.locfileid: "87498338"
 
 **指南**：定义和实现与 Azure 认知服务容器结合 azure 策略的网络资源的标准安全配置。 使用 "Cognitiveservices account" 和 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行 Azure 缓存的 Redis 实例的网络配置。
 
-你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、基于角色的访问控制（RBAC）和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -169,7 +169,7 @@ ms.locfileid: "87498338"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -197,7 +197,7 @@ ms.locfileid: "87498338"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在控制平面级别对 Azure 认知服务容器执行的操作。 使用 Azure 活动日志数据，可以确定为 Redis 实例在 Azure 缓存的控制平面级别执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。
+**指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在控制平面级别对 Azure 认知服务容器执行的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，这些操作 (PUT、POST、DELETE) 在 Azure Cache for Redis 实例的控制平面级别执行。
 
 * [如何启用 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
@@ -223,7 +223,7 @@ ms.locfileid: "87498338"
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -235,7 +235,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -267,7 +267,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Azure 认知服务不会处理或产生与反恶意软件相关的日志。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -275,7 +275,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Azure 认知服务不会处理或产生 DNS 相关的日志。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -283,7 +283,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -305,7 +305,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**：控制平面访问 Azure 认知服务是通过 AZURE ACTIVE DIRECTORY （AD）控制的。 Azure AD 没有默认密码。
+**指南**：控制平面访问 Azure 认知服务是通过 AZURE ACTIVE DIRECTORY (AD) 控制的。 Azure AD 没有默认密码。
 
 通过访问密钥控制对 Azure 认知服务的数据平面访问。 这些密钥由连接到缓存的客户端使用，可以随时重新生成。
 
@@ -315,7 +315,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -336,7 +336,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
-**指南**： Azure 认知服务使用访问密钥对用户进行身份验证，而不支持数据平面级别的单一登录（SSO）。 可以通过 REST API 访问 Azure 认知服务的控制平面，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
+**指南**： Azure 认知服务使用访问密钥对用户进行身份验证，而不支持在数据平面级别 (SSO) 进行单一登录。 可以通过 REST API 访问 Azure 认知服务的控制平面，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
 
 * [了解 Azure 认知服务 REST API](https://docs.microsoft.com/rest/api/cognitiveservices/)
 
@@ -386,13 +386,13 @@ Azure 安全中心监视：不适用
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指南**：在 AZURE ACTIVE DIRECTORY （AD）条件访问中配置命名位置，以仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问。
+**指南**：在 AZURE ACTIVE DIRECTORY (AD) 条件访问中配置命名位置，以仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问。
 
 * [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -424,7 +424,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指南**：你有权访问 AZURE ACTIVE DIRECTORY （AD）登录活动、审核和风险事件日志源，这允许你与 Azure Sentinel 或第三方 SIEM 集成。
+**指南**：你有权访问 AZURE ACTIVE DIRECTORY (AD) 登录活动、审核和风险事件日志源，从而允许你与 Azure Sentinel 或第三方 SIEM 集成。
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 可以在 Log Analytics 中配置所需的日志警报。
 
@@ -434,11 +434,11 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：对于控制平面上的帐户登录行为偏差，使用 AZURE ACTIVE DIRECTORY （AD） Identity Protection 和风险检测功能来配置自动响应，以检测与用户标识相关的可疑操作。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
+**指南**：对于控制平面上的帐户登录行为偏差，使用 AZURE ACTIVE DIRECTORY (AD) Identity Protection 和风险检测功能，配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
 
 * [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -466,13 +466,13 @@ Azure 安全中心监视：不适用
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
 * [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -494,7 +494,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -511,12 +511,12 @@ Microsoft 管理 Azure 认知服务的底层基础结构，并实施了严格控
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
 **指南**：通过 HTTP 公开的所有认知服务终结点强制 TLS 1.2。 使用强制执行的安全协议时，尝试调用认知服务终结点的使用者应遵循以下准则：
-- 客户端操作系统（OS）需要支持 TLS 1.2。
-- 用于发出 HTTP 调用的语言（和平台）需要将 TLS 1.2 指定为请求的一部分。 （根据语言和平台，可以隐式或显式地指定 TLS。）
+- 客户端操作系统 (操作系统) 需要支持 TLS 1.2。
+- 用于执行 HTTP 调用的语言 (和平台) 需要将 TLS 1.2 指定为请求的一部分。  (根据语言和平台，指定 TLS 是隐式还是显式完成。 ) 
 
 * [了解 Azure 认知服务的传输层安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：共享
 
@@ -524,7 +524,7 @@ Microsoft 管理 Azure 认知服务的底层基础结构，并实施了严格控
 
 **指南**： Azure 认知服务尚不支持数据标识、分类和丢失防护功能。 标记包含敏感信息的实例，并根据需要实现第三方解决方案（如符合性目的）。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -532,25 +532,25 @@ Microsoft 管理 Azure 认知服务的底层基础结构，并实施了严格控
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 Azure Active Directory （Azure AD）基于角色的访问控制（RBAC）来控制对 Azure 认知服务控制平面（即 Azure 门户）的访问。
+**指南**：使用 azure RBAC) 的 azure 基于角色的访问控制来控制对 Azure 认知服务控制平面的访问 (即 Azure 门户)  (。
 
 * [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-指南：不适用；此建议旨在用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Microsoft 管理 Azure 认知服务的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
 
 * [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -592,7 +592,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -600,7 +600,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -608,7 +608,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -618,7 +618,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：Microsoft
+**责任**：Microsoft
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
@@ -628,7 +628,7 @@ Azure 安全中心监视：不适用
 
 **指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-虽然可以通过 Resource Graph 发现经典的 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源以供后续使用。
+尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
 * [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
@@ -638,7 +638,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -648,7 +648,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -672,13 +672,13 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此建议适用于计算资源和整个 Azure。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指南**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -696,7 +696,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -712,7 +712,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -732,7 +732,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -752,7 +752,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -760,7 +760,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -784,7 +784,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -804,7 +804,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -824,7 +824,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -842,7 +842,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -854,13 +854,13 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -876,13 +876,13 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
 **指南**：对于正在用于访问 Azure 认知服务 API Azure App Service 上运行的 azure 虚拟机或 web 应用程序，请将托管服务标识与 Azure Key Vault 结合使用，以简化和保护 Azure 认知服务密钥管理。 确保启用 Key Vault 软删除。
 
-使用托管标识在 Azure Active Directory 中通过自动管理的标识来提供 Azure 服务。 通过托管标识，你可以对任何支持 Azure AD 身份验证的服务进行身份验证，包括 Azure Key Vault，而无需在代码中包含任何凭据。
+使用托管标识在 Azure Active Directory 中通过自动管理的标识来提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 * [如何配置托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
@@ -908,31 +908,31 @@ Azure 安全中心监视：不适用
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
-在支持 Azure 服务（例如，Azure 认知服务）的基础主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure 认知服务) ，但它不会在客户内容上运行。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 azure 服务的基础主机（例如，用于 Redis 的 azure 缓存）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，azure Cache for Redis) ，但它不会在客户内容上运行。
 
 预扫描要上传到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure Database for PostgreSQL 等。Microsoft 无法访问这些实例中的数据。
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
 **指南**：不适用；此建议适用于计算资源。
 
-在支持 Azure 服务（例如，Azure 认知服务）的基础主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure 认知服务) ，但它不会在客户内容上运行。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -968,7 +968,7 @@ Azure 安全中心监视：不适用
 
 * [资源组-导出模板](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
 
-* [Azure Automation 简介](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure 自动化简介](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -990,7 +990,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 azure DevOps 来安全地存储和管理 Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以授予或拒绝特定用户、内置安全组或在 Azure Active Directory （Azure AD）中定义的、与 Azure DevOps 集成的权限，或在与 TFS 集成时 Active Directory。  使用基于角色的访问控制来保护客户管理的密钥。 在密钥保管库中启用软删除和清除保护，以防止意外删除或恶意删除密钥。 
+**指南**：使用 azure DevOps 来安全地存储和管理 Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以授予或拒绝特定用户、内置安全组或 Azure AD (Azure Active Directory 中定义的组) （如果与 Azure DevOps 集成），或 Active Directory 与 TFS 集成。  使用基于角色的访问控制来保护客户管理的密钥。 在密钥保管库中启用软删除和清除保护，以防止意外删除或恶意删除密钥。 
 
 * [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -1026,7 +1026,7 @@ Azure 安全中心监视：不适用
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
+此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
 **Azure 安全中心监视**：是
 
@@ -1072,7 +1072,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 

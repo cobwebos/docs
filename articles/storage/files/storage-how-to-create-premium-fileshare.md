@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27bedb2a5d9f95632141ce332773e0f4f9c696d5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 7c178f0bb54cb815b25259c819d15d10b3671c79
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930632"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070932"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何创建 Azure 高级文件共享
 
@@ -31,7 +31,7 @@ ms.locfileid: "88930632"
 
 每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 高级文件共享需要 FileStorage 帐户。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -142,7 +142,7 @@ STORAGEKEY=$(az storage account keys list \
 
 现在，你已创建 FileStorage 帐户，你可以在该存储帐户中创建高级文件共享。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在存储帐户的左侧菜单中滚动到“文件服务”部分，然后选择“文件”。 
 1. 选择“文件共享”以创建高级文件共享。

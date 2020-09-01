@@ -1,73 +1,181 @@
 - name: Azure Stack Edge 和 Data Box Gateway 文档
   href: /azure/databox-online/
   expanded: true
-- name: Data Box Gateway
+- name: Azure Stack Edge with GPU（预览版）
   items:
     - name: 概述
       items:
-        - name: 什么是 Data Box Gateway？
-          href: data-box-gateway-overview.md
+        - name: 什么是 Azure Stack Edge with GPU？
+          href: azure-stack-edge-gpu-overview.md
     - name: 教程
       items:
-        - name: 1 - 准备
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A - 在 Hyper-V 中预配
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B - 在 VMware 中预配
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: 3 - 连接、设置、激活
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: 4 - 添加、连接到共享
-          href: data-box-gateway-deploy-add-shares.md
+        - name: 0 - 获取清单
+          href: azure-stack-edge-gpu-deploy-checklist.md
+        - name: 1 - 排序、准备
+          href: azure-stack-edge-gpu-deploy-prep.md
+        - name: 2 - 安装
+          href: azure-stack-edge-gpu-deploy-install.md
+        - name: 3 - 连接
+          href: azure-stack-edge-gpu-deploy-connect.md
+        - name: 4 - 配置网络
+          href: azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md
+        - name: 5 - 配置设备
+          href: azure-stack-edge-gpu-deploy-set-up-device-update-time.md
+        - name: 6 - 配置证书
+          href: azure-stack-edge-gpu-deploy-configure-certificates.md
+        - name: 7 - 激活
+          href: azure-stack-edge-gpu-deploy-activate.md
+        - name: 8 - 配置计算
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+        - name: 9A - 添加、连接到共享
+          href: azure-stack-edge-j-series-deploy-add-shares.md
+        - name: 9B - 添加、连接到存储帐户
+          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: 概念
       items:
         - name: 审查要求
-          href: data-box-gateway-system-requirements.md
+          href: azure-stack-edge-gpu-system-requirements.md
         - name: 了解限制
-          href: data-box-gateway-limits.md
+          href: azure-stack-edge-limits.md
         - name: 安全概述
-          href: data-box-gateway-security.md
-        - name: 查看用例
-          href: data-box-gateway-use-cases.md
+          href: azure-stack-edge-security.md
+        - name: 查看规范
+          items:
+            - name: 设备规格
+              href: azure-stack-edge-gpu-technical-specifications-compliance.md
+            - name: 电源线规格
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
+        - name: 了解 Kubernetes
+          items:
+            - name: 什么是 Kubernetes？
+              href: azure-stack-edge-gpu-kubernetes-overview.md
+            - name: Kubernetes 存储
+              href: azure-stack-edge-gpu-kubernetes-storage.md
+            - name: Kubernetes 网络
+              href: azure-stack-edge-gpu-kubernetes-networking.md
+            - name: Kubernetes RBAC
+              href: azure-stack-edge-gpu-kubernetes-rbac.md
+            - name: Kubernetes 工作负载
+              href: azure-stack-edge-gpu-kubernetes-workload-management.md
     - name: 如何
       items:
-        - name: 更新
-          href: data-box-gateway-apply-updates.md
-        - name: 管理
+        - name: 部署 IoT Edge 示例
+          items:
+            - name: Nvidia 库中的模块
+              href: azure-stack-edge-j-series-configure-gpu-modules.md
+            - name: Git 存储库中的 GPU 模块
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: 通过市场的 GPU 模块
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+        - name: 部署 Kubernetes 工作负载
+          items:
+            - name: 通过 kubectl
+              items:
+                - name: 访问 Kubernetes 群集
+                  href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: 公开无状态应用
+                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                - name: 部署有状态应用（静态预配）
+                  href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
+                - name: 部署有状态应用（动态预配）
+                  href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+            - name: 通过 IoT Edge
+              items:
+                - name: 公开无状态应用
+                  href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+            - name: 通过 Azure Arc
+              items:
+                - name: 在 Kubernetes 群集上启用 Arc
+                  href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
+                - name: 通过 GitOps 部署无状态应用
+                  href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+        - name: 配置 Azure 资源管理器
+          items:
+            - name: 通过 Azure PowerShell 连接
+              href: azure-stack-edge-j-series-connect-resource-manager.md
+            - name: 设置 Azure 资源管理器密码
+              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+            - name: 配置客户端 TLS 设置
+              href: azure-stack-edge-j-series-configure-tls-settings.md
+        - name: 部署 VM
+          items:
+            - name: 部署 VM - 模板
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: 部署 VM - Azure PowerShell cmdlet
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+            - name: 部署 VM - Azure PowerShell 脚本
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+            - name: 部署 VM - Azure CLI/Python
+              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: 创建 VM 映像
+              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+        - name: 管理证书
+          items:
+            - name: 要求
+              href: azure-stack-edge-j-series-certificate-requirements.md
+            - name: 自带
+              href: azure-stack-edge-j-series-manage-certificates.md
+            - name: 通过 Azure Stack 准备情况检查器工具进行创建
+              href: azure-stack-edge-j-series-create-certificates-tool.md
+            - name: 排查证书错误
+              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+            - name: 开发 C# 模块
+              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: 管理 Edge 计算
+          href: azure-stack-edge-j-series-manage-compute.md
+        - name: 管理存储网关
           items:
             - name: 共享
-              href: data-box-gateway-manage-shares.md
+              href: azure-stack-edge-j-series-manage-shares.md
             - name: 用户
-              href: data-box-gateway-manage-users.md
+              href: azure-stack-edge-j-series-manage-users.md
+            - name: 存储帐户
+              href: azure-stack-edge-j-series-manage-storage-accounts.md
             - name: 带宽计划
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 访问、开/关、连接
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+        - name: 管理设备
+          items:
+            - name: 电源、访问权限和连接
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: 通过 PowerShell
-              href: data-box-gateway-connect-powershell-interface.md
+              href: azure-stack-edge-gpu-connect-powershell-interface.md
+            - name: 应用更新
+              href: azure-stack-edge-gpu-install-update.md
+            - name: 退回设备
+              href: azure-stack-edge-return-device.md
+            - name: 更换设备
+              href: azure-stack-edge-replace-device.md
         - name: 监视
-          href: data-box-gateway-monitor.md
+          items:
+            - name: 使用指标图表
+              href: azure-stack-edge-monitor.md
+            - name: 使用 Kubernetes 仪表板
+              href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
         - name: 疑难解答
-          href: data-box-gateway-troubleshoot.md
-        - name: 请联系 Microsoft 支持部门
-          href: azure-stack-edge-contact-microsoft-support.md
+          items:
+            - name: 设备问题
+              href: azure-stack-edge-troubleshoot.md
+            - name: 订购问题
+              href: azure-stack-edge-troubleshoot-ordering.md
+            - name: 请联系 Microsoft 支持部门
+              href: azure-stack-edge-contact-microsoft-support.md
     - name: 发行说明
       items:
-        - name: 2007 - 最新版
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: 正式发布版 (GA)
-          href: data-box-gateway-release-notes.md
-- name: Azure Stack Edge
+        - name: 2008 - 发行说明
+          href: azure-stack-edge-gpu-2008-release-notes.md
+    - name: 参考
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge with FPGA
   items:
     - name: 概述
       items:
-        - name: 什么是 Azure Stack Edge？
+        - name: 什么是 Azure Stack Edge with FPGA？
           href: azure-stack-edge-overview.md
     - name: 教程
       items:
@@ -151,6 +259,68 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Data Box Gateway
+  items:
+    - name: 概述
+      items:
+        - name: 什么是 Data Box Gateway？
+          href: data-box-gateway-overview.md
+    - name: 教程
+      items:
+        - name: 1 - 准备
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A - 在 Hyper-V 中预配
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B - 在 VMware 中预配
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: 3 - 连接、设置、激活
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: 4 - 添加、连接到共享
+          href: data-box-gateway-deploy-add-shares.md
+    - name: 概念
+      items:
+        - name: 审查要求
+          href: data-box-gateway-system-requirements.md
+        - name: 了解限制
+          href: data-box-gateway-limits.md
+        - name: 安全概述
+          href: data-box-gateway-security.md
+        - name: 查看用例
+          href: data-box-gateway-use-cases.md
+    - name: 如何
+      items:
+        - name: 更新
+          href: data-box-gateway-apply-updates.md
+        - name: 管理
+          items:
+            - name: 共享
+              href: data-box-gateway-manage-shares.md
+            - name: 用户
+              href: data-box-gateway-manage-users.md
+            - name: 带宽计划
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 访问、开/关、连接
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: 通过 PowerShell
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: 监视
+          href: data-box-gateway-monitor.md
+        - name: 疑难解答
+          href: data-box-gateway-troubleshoot.md
+        - name: 请联系 Microsoft 支持部门
+          href: azure-stack-edge-contact-microsoft-support.md
+    - name: 发行说明
+      items:
+        - name: 2007 - 最新版
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 正式发布版 (GA)
+          href: data-box-gateway-release-notes.md
 - name: 资源
   items:
     - name: Azure Stack Edge C# 模块示例 (.NET)

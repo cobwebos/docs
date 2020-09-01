@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501349"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069810"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -110,7 +110,7 @@ az login
 
 可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘****。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -143,7 +143,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `-EnableHierarchicalNamespace $True` 在此参数列表中包含。
+> 如果计划使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `-EnableHierarchicalNamespace $True` 在此参数列表中包含。
 
 若要使用不同的复制选项创建常规用途 v2 存储帐户，请将 **SkuName** 参数替换为下表中的所需值。
 
@@ -186,7 +186,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `--enable-hierarchical-namespace true` 在此参数列表中包含。 
+> 如果计划使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `--enable-hierarchical-namespace true` 在此参数列表中包含。 
 
 若要使用不同的复制选项创建常规用途 v2 存储帐户，请将 **sku** 参数替换为下表中的所需值。
 
@@ -201,7 +201,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-你可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板来创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
+你可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板来创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择 " **尝试** " 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -221,7 +221,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> 此模板仅用作示例。 存在许多未配置为此模板的一部分的存储帐户设置。 例如，如果要使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，则可以通过将 `isHnsEnabledad` 对象的属性设置为来修改此模板 `StorageAccountPropertiesCreateParameters` `true` 。 
+> 此模板仅用作示例。 存在许多未配置为此模板的一部分的存储帐户设置。 例如，如果要使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，则可以通过将 `isHnsEnabledad` 对象的属性设置为来修改此模板 `StorageAccountPropertiesCreateParameters` `true` 。 
 
 若要了解如何修改此模板或创建新模板，请参阅：
 
@@ -237,10 +237,10 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 删除存储帐户将删除整个帐户，包括该帐户中的所有数据，并且该操作无法撤销。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 导航到[Azure 门户](https://portal.azure.com)中的存储帐户。
-1. 单击“删除” 。
+1. 导航到 [Azure 门户](https://portal.azure.com)中的存储帐户。
+1. 单击 **“删除”** 。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -289,7 +289,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 在本操作指南文章中，你已创建一个常规用途 v2 标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门之一。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [通过 Azure 门户使用 Blob](../blobs/storage-quickstart-blobs-portal.md)

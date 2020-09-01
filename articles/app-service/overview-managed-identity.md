@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: 98cec9fc30b4840a763358c0b3cd76659ff865d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961578"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070337"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 

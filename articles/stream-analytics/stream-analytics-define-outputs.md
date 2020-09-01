@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 92cc742fce101b67bfb359381b4eabf9cf2a404e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869569"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068977"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 流分析的输出
 
@@ -24,7 +24,7 @@ Azure 流分析作业由输入、查询和输出构成。 可以向多个输出�
 
 | 输出类型 | 分区 | 安全性 | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Azure Active Directory 用户 </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 用户 </br> MSI|
 |[Azure SQL 数据库](sql-database-output.md)|是，但需要启用。|SQL 用户身份验证 </br> MSI (预览) |
 |[Azure Synapse Analytics（预览）](azure-synapse-analytics-output.md)|否|SQL 用户身份验证|
 |[Blob 存储和 Azure Data Lake 第2代](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 访问密钥|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: a7014e6721cb6985ddff5ddaf773de4e85a048e0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563902"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071493"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模
 
@@ -22,7 +22,7 @@ ms.locfileid: "87563902"
 
 有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](/azure/security/benchmarks/security-control-network-security)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -98,7 +98,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
@@ -112,7 +112,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -148,14 +148,14 @@ ms.locfileid: "87563902"
 
 - [了解 Azure Database for PostgreSQL 的访问管理](https://docs.microsoft.com/azure/postgresql/concepts-security#access-management])
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
 - [如何使用 psql 连接到 PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#connect-to-the-database-using-psql)
 
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -163,7 +163,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -171,7 +171,7 @@ ms.locfileid: "87563902"
 
 - [了解 Azure 安全中心标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
 **Azure 安全中心监视**：不适用
 
@@ -327,7 +327,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
@@ -347,13 +347,13 @@ ms.locfileid: "87563902"
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 Azure 基于角色的访问控制 (RBAC) 控制对超大规模 (Citus) 控制平面的访问 (例如 Azure 门户) 。 RBAC 不影响数据库中的用户权限。
+**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对超大规模 (Citus) 控制平面的访问 (例如 Azure 门户) 。 Azure RBAC 不影响数据库中的用户权限。
 
 若要在数据库级别修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。
 
-- [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 - [如何使用 SQL for Azure Database for PostgreSQL 配置用户访问权限](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
@@ -403,7 +403,7 @@ ms.locfileid: "87563902"
 
 有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅 () 中的超大规模 (Citus) 实例) 。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
@@ -441,7 +441,7 @@ ms.locfileid: "87563902"
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指导**：在 Azure 策略中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
@@ -458,11 +458,11 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure 策略中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 - 允许的资源类型
@@ -538,7 +538,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
@@ -550,7 +550,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
@@ -566,7 +566,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
@@ -576,7 +576,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -599,7 +599,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -613,7 +613,7 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="data-recovery"></a>数据恢复
 
@@ -660,7 +660,7 @@ ms.locfileid: "87563902"
 
 - [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -682,17 +682,17 @@ ms.locfileid: "87563902"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
+此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -724,7 +724,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 

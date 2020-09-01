@@ -12,16 +12,16 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bc94c7be4e3979cf9aa7624a9aeadf156cc48035
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ed29752e0b5f2ee9acf0382ef96e1b685f9cc886
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166070"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068501"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
 
-你使用适用于 .NET 的 Azure Active Directory 身份验证库 (ADAL.NET) 和 iOS 中介已有一段时间， 现在是时候迁移到适用于 .NET 的 [Microsoft 身份验证库](msal-overview.md) (MSAL.NET) 了，从版本 4.3 开始，该库支持 iOS 上的中介。 
+你使用适用于 .NET 的 Azure Active Directory 身份验证库 (ADAL.NET) 和 iOS 中介已有一段时间， 现在是时候迁移到适用于 .NET 的 [Microsoft 身份验证库](msal-overview.md) (MSAL.NET) 了，从版本 4.3 开始，该库支持 iOS 上的中介。
 
 要从哪里入手？ 本文会帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
 
@@ -32,36 +32,36 @@ ms.locfileid: "88166070"
 
 ### <a name="what-are-brokers"></a>什么是中介？
 
-中介是 Microsoft 在 Android 和 iOS 上提供的应用程序。 （请参阅 iOS 和 Android 上的 [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) 应用以及 Android 上的 Intune 公司门户应用。） 
+中介是 Microsoft 在 Android 和 iOS 上提供的应用程序。 （请参阅 iOS 和 Android 上的 [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) 应用以及 Android 上的 Intune 公司门户应用。）
 
 中介可以实现：
 
 - 单一登录。
-- 设备标识，这是某些[条件访问策略](../conditional-access/overview.md)所必需的。 有关详细信息，请参阅[设备管理](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。
+- 某些[条件访问策略](../conditional-access/overview.md)所需的设备标识。 有关详细信息，请参阅[管理](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。
 - 应用程序标识验证，在某些企业方案中也需要执行此操作。 有关详细信息，请参阅 [Intune 移动应用程序管理 (MAM)](/intune/mam-faq)。
 
 ## <a name="migrate-from-adal-to-msal"></a>从 ADAL 迁移到 MSAL
 
-### <a name="step-1-enable-the-broker"></a>步骤1：启用代理
+### <a name="step-1-enable-the-broker"></a>步骤 1：启用中介
 
 <table>
 <tr><td>当前 ADAL 代码：</td><td>对应的 MSAL 代码：</td></tr>
 <tr><td>
-在 ADAL.NET 中，中介支持将按身份验证上下文启用。 此项默认禁用。 必须在 
+在 ADAL.NET 中，中介支持将按身份验证上下文启用。 此项默认禁用。 必须在
 
 `PlatformParameters` 构造函数中将 `useBroker` 标志设置为 true 才能调用中介：
 
 ```csharp
 public PlatformParameters(
-        UIViewController callerViewController, 
+        UIViewController callerViewController,
         bool useBroker)
 ```
-此外，在特定于平台的代码中（对于本示例，是在 iOS 的页面呈现器中）将 `useBroker` 
+此外，在特定于平台的代码中（对于本示例，是在 iOS 的页面呈现器中）将 `useBroker`
 标志设置为 true：
 ```csharp
 page.BrokerParameters = new PlatformParameters(
-          this, 
-          true, 
+          this,
+          true,
           PromptBehavior.SelectAccount);
 ```
 
@@ -70,15 +70,15 @@ page.BrokerParameters = new PlatformParameters(
  AuthenticationResult result =
                     await
                         AuthContext.AcquireTokenAsync(
-                              Resource, 
-                              ClientId, 
-                              new Uri(RedirectURI), 
+                              Resource,
+                              ClientId,
+                              new Uri(RedirectURI),
                               platformParameters)
                               .ConfigureAwait(false);
 ```
 
 </td><td>
-在 MSAL.NET 中，中介支持是按 PublicClientApplication 启用的。 此项默认禁用。 若要启用它，请使用 
+在 MSAL.NET 中，中介支持是按 PublicClientApplication 启用的。 此项默认禁用。 若要启用它，请使用
 
 `WithBroker()` 参数（默认设置为 true）以调用中介：
 
@@ -97,28 +97,29 @@ result = await app.AcquireTokenInteractive(scopes)
 ```
 </table>
 
-### <a name="step-2-set-a-uiviewcontroller"></a>步骤2：设置 UIViewController ( # A1
-在 ADAL.NET 中，已传入 UIViewController 作为 `PlatformParameters` 的一部分。  (参见 MSAL.NET 中步骤 1. ) 中的示例，为开发人员提供更大的灵活性，使用对象窗口，但在常规 iOS 使用中不需要此操作。 若要使用中介，请设置对象窗口，以便与中介相互发送和接收响应。 
+### <a name="step-2-set-a-uiviewcontroller"></a>步骤 2：设置 UIViewController()
+在 ADAL.NET 中，已传入 UIViewController 作为 `PlatformParameters` 的一部分。 （请参阅“步骤 1”中的示例。）在 MSAL.NET 中，为了让开发人员获得更大的灵活性，将使用对象窗口，但在一般的 iOS 用途中不需要使用它。 若要使用中介，请设置对象窗口，以便与中介相互发送和接收响应。
 <table>
 <tr><td>当前 ADAL 代码：</td><td>对应的 MSAL 代码：</td></tr>
 <tr><td>
-UIViewController 将传入 
+UIViewController 将传入
 
 iOS 特定平台中的 `PlatformParameters`。
 
 ```csharp
 page.BrokerParameters = new PlatformParameters(
-          this, 
-          true, 
+          this,
+          true,
           PromptBehavior.SelectAccount);
 ```
 </td><td>
 在 MSAL.NET 中，请执行以下两项操作来设置 iOS 的对象窗口：
 
-1. 在 `AppDelegate.cs` 中，将 `App.RootViewController` 设置为新的 `UIViewController()`。 这种分配可确保提供一个 UIViewController 来调用中介。 如果未正确设置此参数，可能会收到以下错误：`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. 在 `AppDelegate.cs` 中，将 `App.RootViewController` 设置为新的 `UIViewController()`。
+这种分配可确保提供一个 UIViewController 来调用中介。 如果未正确设置此参数，可能会收到以下错误：`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. 在 AcquireTokenInteractive 调用中，使用 `.WithParentActivityOrWindow(App.RootViewController)` 并传入对你要使用的对象窗口的引用。
 
-**例如：**
+例如：
 
 在 `App.cs`中：
 ```csharp
@@ -138,7 +139,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 </table>
 
-### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步骤3：更新 AppDelegate 以处理回调
+### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步骤 3：更新 AppDelegate 以处理回调
 ADAL 和 MSAL 都会调用中介，而中介通过 `AppDelegate` 类的 `OpenUrl` 方法回调应用程序。 有关详细信息，请参阅[此文档](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback)。
 
 ADAL.NET 和 MSAL.NET 在此方面没有差别。
@@ -151,15 +152,15 @@ ADAL.NET 和 MSAL.NET 使用 URL 调用中介，然后将中介响应返回到�
 <tr><td>
 URL 方案对于应用是唯一的。
 </td><td>
-必须向 
+必须向
 
-`CFBundleURLSchemes` 名称必须包含 
+`CFBundleURLSchemes` 名称必须包含
 
 `msauth.`
 
 作为前缀，后接 `CFBundleURLName`
 
-例如： `$"msauth.(BundleId")`
+例如：`$"msauth.(BundleId")`
 
 ```csharp
  <key>CFBundleURLTypes</key>
@@ -182,14 +183,14 @@ URL 方案对于应用是唯一的。
 
 </table>
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步骤5：将 broker 标识符添加到 LSApplicationQueriesSchemes 部分
+### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步骤 5：将中介标识符添加到 LSApplicationQueriesSchemes 节
 
 ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装了中介。 按如下所示，将 iOS 中介的正确标识符添加到 info.plist 文件的 LSApplicationQueriesSchemes 节：
 
 <table>
 <tr><td>当前 ADAL 代码：</td><td>对应的 MSAL 代码：</td></tr>
 <tr><td>
-使用 
+使用
 
 `msauth`
 
@@ -201,7 +202,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 </array>
 ```
 </td><td>
-使用 
+使用
 
 `msauthv2`
 
@@ -215,16 +216,16 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 ```
 </table>
 
-### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>步骤6：在门户中注册重定向 URI
+### <a name="step-6-register-your-redirect-uri-in-the-azure-portal"></a>步骤6：在 Azure 门户中注册重定向 URI
 
-在以中介为目标时，ADAL.NET 和 MSAL.NET 都在重定向 URI 方面施加额外的要求。 在门户中将重定向 URI 注册到应用程序。
+在以中介为目标时，ADAL.NET 和 MSAL.NET 都在重定向 URI 方面施加额外的要求。 在 Azure 门户中，向应用程序注册重定向 URI。
 <table>
 <tr><td>当前 ADAL 代码：</td><td>对应的 MSAL 代码：</td></tr>
 <tr><td>
 
 `"<app-scheme>://<your.bundle.id>"`
 
-示例： 
+示例：
 
 `mytestiosapp://com.mycompany.myapp`
 </td><td>
@@ -237,7 +238,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 
 </table>
 
-有关如何在门户中注册重定向 URI 的详细信息，请参阅[在 Xamarin.iOS 应用程序中利用中介](msal-net-use-brokers-with-xamarin-apps.md#step-8-make-sure-the-redirect-uri-is-registered-with-your-app)。
+有关如何在 Azure 门户中注册重定向 URI 的详细信息，请参阅 [步骤7：向应用注册添加重定向 uri](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration)。
 
 ## <a name="next-steps"></a>后续步骤
 

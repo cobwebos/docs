@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611163"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069385"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -31,17 +31,16 @@ ms.locfileid: "85611163"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 声明变量
-> * 创建防火墙中心虚拟网络
-> * 创建分支虚拟网络
-> * 创建本地虚拟网络
-> * 配置和部署防火墙
-> * 创建并连接 VPN 网关
-> * 将中心和分支虚拟网络对等互连
-> * 创建路由
-> * 创建虚拟机
-> * 测试防火墙
+* 声明变量
+* 创建防火墙中心虚拟网络
+* 创建分支虚拟网络
+* 创建本地虚拟网络
+* 配置和部署防火墙
+* 创建并连接 VPN 网关
+* 将中心和分支虚拟网络对等互连
+* 创建路由
+* 创建虚拟机
+* 测试防火墙
 
 如果想改用 Azure 门户来完成本教程，请参阅[教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙](tutorial-hybrid-portal.md)。
 

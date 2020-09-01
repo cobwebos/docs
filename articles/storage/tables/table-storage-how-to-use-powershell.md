@@ -7,19 +7,20 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
-ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80545951"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070405"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 Azure 表存储是一种 NoSQL 数据存储，可用于存储和查询大量的结构化非关系型数据。 该服务的主要组件包括表、实体和属性。 表是实体的集合。 实体是一组属性。 每个实体最多可以有 252 个属性（都是一些名称-值对）。 本文假设用户熟知 Azure 表存储服务的概念。 有关详细信息，请参阅 [Understanding the Table Service Data Model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)（了解表服务数据模型）和[通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)。
 
-此操作指南文章介绍常见的 Azure 表存储操作。 学习如何： 
+此操作指南文章介绍常见的 Azure 表存储操作。 你将学习如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建表
@@ -37,7 +38,7 @@ Azure 表存储是一种 NoSQL 数据存储，可用于存储和查询大量的�
 > 使用 PowerShell 的 Azure 功能必须已安装 `Az` 模块。 `AzTable` 的当前版本与较旧的 AzureRM 模块不兼容。
 > 如果需要，请遵循[用于安装 Az 模块的最新安装说明](/powershell/azure/install-az-ps)。
 
-安装或更新 Azure PowerShell 后，必须安装模块 **AzTable**，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module  命令。
+安装或更新 Azure PowerShell 后，必须安装模块 **AzTable**，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module 命令。
 
 > [!IMPORTANT]
 > 出于模块名称兼容性原因，我们在 PowerShell 库中仍然以旧名称 `AzureRmStorageTables` 发布此同一模块。 此文档将仅引用新名称。
@@ -56,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>检索位置列表
 
-如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 这些示例使用 eastus****。 将此值存储在变量 location  中，以供以后使用。
+如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 这些示例使用 eastus****。 将此值存储在变量 location 中，以供以后使用。
 
 ```powershell
 Get-AzLocation | select Location
@@ -117,7 +118,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>引用特定表的 CloudTable 属性
 
 > [!IMPORTANT]
-> 使用 **AzTable** PowerShell 模块时必须使用 CloudTable。 调用**AzStorageTable**命令获取对此对象的引用。 如果表尚不存在，则此命令还创建表。
+> 使用 **AzTable** PowerShell 模块时必须使用 CloudTable。 调用 Get-AzStorageTable 命令来获取对此对象的引用。 如果表尚不存在，则此命令还创建表。
 
 若要使用 **AzTable** 对表执行操作，需要引用特定表的 CloudTable 属性。
 

@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 869c6590146561f6f2f50694c5cc3f79530dad25
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854234"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069283"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure 防火墙的 azure 安全基线
 
-此安全基线将[Azure 安全基准](../security/benchmarks/overview.md)中的指南应用到 azure 防火墙。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容将由 Azure 安全基准定义的**安全控制**和适用于 azure 防火墙的相关指南进行分组。 排除了不适用于 Azure 防火墙的**控件**。 若要查看 Azure 防火墙如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 防火墙安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将 [Azure 安全基准](../security/benchmarks/overview.md) 中的指南应用到 azure 防火墙。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容将由 Azure 安全基准定义的 **安全控制** 和适用于 azure 防火墙的相关指南进行分组。 排除了不适用于 Azure 防火墙的**控件**。 若要查看 Azure 防火墙如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 防火墙安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
-*有关详细信息，请参阅[Azure 安全基准：网络安全](/azure/security/benchmarks/security-control-network-security)。*
+*有关详细信息，请参阅 [Azure 安全基准：网络安全](/azure/security/benchmarks/security-control-network-security)。*
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视和记录虚拟网络、子网和网络接口的配置和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
 **指南**： Azure 防火墙与用于记录防火墙处理的流量的 Azure Monitor 集成。
 
@@ -34,7 +34,7 @@ ms.locfileid: "87854234"
 
 **责任**：客户
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意 IP 地址的通信
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
 **指南**：启用基于威胁智能的筛选，以发出警报，并拒绝来自/到已知恶意 IP 地址和域的流量。 可以为防火墙启用基于威胁智能的筛选，以发出警报，并拒绝来自/到已知的恶意 IP 地址和域的流量。
 
@@ -74,7 +74,7 @@ ms.locfileid: "87854234"
 
 **指南**： azure 防火墙尚不完全支持 azure 策略。 Azure 防火墙管理器可用于实现安全配置的标准化。
 
-你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、RBAC 控件和策略）来简化大规模的 Azure 部署。 可将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
+你还可以使用 Azure 蓝图通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控件和策略）来简化大规模的 Azure 部署。 可将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -102,7 +102,7 @@ ms.locfileid: "87854234"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅[Azure 安全基准：日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -118,7 +118,7 @@ ms.locfileid: "87854234"
 
 **指南**：你可以将和机载日志数据启用到 Azure Sentinel 或第三方 SIEM，用于集中安全日志管理各种日志。
 
-活动日志可用于审核对 Azure 防火墙的操作，并监视对资源的操作。 活动日志包含对资源的所有写入操作 (PUT、POST、DELETE) 除读取操作外， (获取) 。 活动日志可用于在故障排除时查找错误，或监视组织中的用户如何修改资源。
+活动日志可用于审核对 Azure 防火墙的操作，并监视对资源的操作。 活动日志包含资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
 Azure 防火墙还提供以下诊断日志来提供有关客户应用程序和网络规则的信息。
 
@@ -132,7 +132,7 @@ Azure 防火墙还提供以下诊断日志来提供有关客户应用程序和�
 
 活动日志中的资源操作列表： Azure 资源管理器资源提供程序操作
 
-- [如何通过 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何通过 Azure Monitor 收集平台日志和指标 ](../azure-monitor/platform/diagnostic-settings.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -186,7 +186,7 @@ Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势
 
 **指南**： Azure 防火墙与用于查看和分析防火墙日志的 Azure Monitor 集成。 日志可发送到 Log Analytics、Azure 存储或事件中心。 它们可在 Log Analytics 中进行分析，也可通过 Excel 和 Power BI 等不同工具进行分析。 有几种不同类型的 Azure 防火墙日志。
 
-活动日志可用于审核对 Azure 防火墙的操作，并监视对资源的操作。 活动日志包含对资源进行的所有写入操作 (PUT、POST、DELETE) 除读取操作外， (GET) 。 活动日志可用于在故障排除时查找错误，或监视组织中的用户如何修改资源。
+活动日志可用于审核对 Azure 防火墙的操作，并监视对资源的操作。 活动日志包含对资源进行的所有写入操作 (PUT、POST、DELETE) 除读取操作外， (GET) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
 Azure 防火墙还提供诊断日志来提供有关客户应用程序和网络规则的信息。
 
@@ -224,7 +224,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅[Azure 安全基准：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -326,7 +326,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 **Azure 安全中心监视**：目前不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
@@ -352,11 +352,11 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 **Azure 安全中心监视**：目前不可用
 
-责任：客户
+**责任**：客户
 
 ## <a name="data-protection"></a>数据保护
 
-*有关详细信息，请参阅[Azure 安全基准：数据保护](/azure/security/benchmarks/security-control-data-protection)。*
+*有关详细信息，请参阅 [Azure 安全基准：数据保护](/azure/security/benchmarks/security-control-data-protection)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -398,7 +398,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 **指导**：加密传输中的所有敏感信息。 确保连接到 Azure 防火墙和相关资源的任何客户端都能够协商 TLS 1.2 或更高版本。 
 
-请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。 
+请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。 
 
 - [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -416,11 +416,11 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 Azure Active Directory 基于角色的访问控制 (RBAC) 来控制对 Azure 防火墙和相关资源的访问权限。
+**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure 防火墙和相关资源的访问。
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -450,7 +450,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅[Azure 安全基准：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -476,7 +476,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指南**：根据组织的需要，创建已批准的 Azure 防火墙资源的清单，包括配置。
 
@@ -544,7 +544,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅[Azure 安全基准：安全配置](/azure/security/benchmarks/security-control-secure-configuration)。*
+*有关详细信息，请参阅 [Azure 安全基准：安全配置](/azure/security/benchmarks/security-control-secure-configuration)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -622,9 +622,9 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 ## <a name="data-recovery"></a>数据恢复
 
-*有关详细信息，请参阅[Azure 安全基准：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。*
+*有关详细信息，请参阅 [Azure 安全基准：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期自动备份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指南**：使用 azure 资源管理器将 azure 防火墙和相关资源导出 JAVASCRIPT 对象表示法 (JSON) 模板，该模板可用作 Azure 防火墙和相关配置的备份。  还可以从 Azure 门户使用 Azure 防火墙的 "导出模板" 功能导出 Azure 防火墙配置。  使用 Azure 自动化自动运行备份脚本。
 
@@ -678,7 +678,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅[Azure 安全基准：事件响应](/azure/security/benchmarks/security-control-incident-response)。*
+*有关详细信息，请参阅 [Azure 安全基准：事件响应](/azure/security/benchmarks/security-control-incident-response)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -698,7 +698,7 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。 
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。 
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md) 
 
@@ -754,11 +754,11 @@ Azure Monitor 日志可用于实时监视应用程序或查看趋势。
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅[Azure 安全基准：渗透测试和 red 团队练习](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策。 针对 Microsoft 托管的云基础结构、服务和应用程序，使用 Microsoft 的战略和对红色组合和活动站点渗透测试的执行。 
+**指导**：请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行的现场渗透测试。 
 
 - [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

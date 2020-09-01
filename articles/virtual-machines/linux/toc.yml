@@ -89,13 +89,13 @@
             - name: 从快照创建托管磁盘
               href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 将托管磁盘复制到相同或不同订阅
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 将快照作为 VHD 导出到存储帐户
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 将托管磁盘的 VHD 导出到存储帐户
               href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 将快照复制到相同或不同订阅
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 网络虚拟机
           items:
             - name: 保护虚拟机之间的网络流量
@@ -108,7 +108,7 @@
           items:
             - name: 使用 Azure Monitor 日志监视 VM
               href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 对 VM 操作系统磁盘进行故障排除
               href: ./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
@@ -143,13 +143,13 @@
             - name: 从 VHD 创建快照
               href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 将快照复制到相同或不同的订阅
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 监视虚拟机
           items:
             - name: 使用 Azure Monitor 日志监视 VM
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 将托管磁盘复制到相同或不同的订阅
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 使用 PowerShell 收集订阅中所有 VM 的详细信息
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure Policy 内置策略定义
@@ -239,7 +239,7 @@
             - name: Mv2 系列
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 约束的 vCPU
-              href: ../constrained-vcpu.md
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 存储优化
           items:
             - name: 概述
@@ -294,7 +294,7 @@
             - name: 什么是 Azure 预留？
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: VM 实例大小灵活性
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 点 VM
           displayName: 'pre-empt, preempt'
           href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -317,7 +317,7 @@
             - name: 什么是 Azure 预留？
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM 实例大小灵活性
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 基准评分
           href: compute-benchmark-scores.md
     - name: 认可的发行版
@@ -329,21 +329,21 @@
     - name: 磁盘存储
       items:
         - name: 托管磁盘简介
-          href: ../managed-disks-overview.md
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 选择适用于 IaaS VM 的磁盘类型
-          href: ../disks-types.md
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 加密
           href: disk-encryption.md
         - name: 磁盘存储预留
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 为实现高性能而设计
-          href: ../premium-storage-performance.md
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 磁盘突发
           href: disk-bursting.md
         - name: 磁盘的可伸缩性目标
           href: disk-scalability-targets.md
         - name: 磁盘的备份和灾难恢复
-          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 共享磁盘
           href: disks-shared.md
         - name: 临时 OS 磁盘
@@ -357,7 +357,7 @@
     - name: 安全性
       items:
         - name: 安全和策略
-          href: ../security-policy.md
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure 磁盘加密
           href: disk-encryption-overview.md
         - name: Azure Policy 的安全控件
@@ -370,7 +370,7 @@
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 状态和生命周期
-      href: ../states-lifecycle.md
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 监视
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 启动诊断
@@ -418,7 +418,7 @@
         - name: 迁移概述
           href: migration-classic-resource-manager-overview.md
         - name: 深入了解迁移
-          href: ../migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 规划迁移
           href: migration-classic-resource-manager-plan.md
         - name: 使用 CLI 迁移
@@ -428,7 +428,7 @@
         - name: 用于迁移的社区工具
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 常见问题解答
-          href: ../migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 使用映像
       displayName: 'SIG, AMI, image'
       items:
@@ -474,7 +474,7 @@
               href: cloudinit-bash-script.md
             - name: 准备适用于 cloud-init 的现有 VM
               href: cloudinit-prepare-custom-image.md
-        - name: 创建映像但不使用
+        - name: 在不使用预配代理的情况下创建映像
           href: no-agent.md
         - name: 禁用 Linux 代理预配
           href: disable-provisioning.md
@@ -797,7 +797,7 @@
                       href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: 自定义字段
                       href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: Log Analytics VM 扩展
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -956,9 +956,9 @@
           href: detach-disk.md
         - name: 使用 ARM 模板部署磁盘
           displayName: 'Azure Resource Manager, ARM'
-          href: ../using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 启用共享磁盘
-          href: ../disks-shared-enable.md
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 将 vhd 上传到磁盘 - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: 安全导入/导出磁盘 - CLI
@@ -968,11 +968,11 @@
         - name: 调整磁盘大小
           href: expand-disks.md
         - name: 使用存储资源管理器管理磁盘
-          href: ../disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
         - name: 预留磁盘存储
-          href: ../disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 创建增量快照 - CLI
           href: disks-incremental-snapshots.md
         - name: 创建增量快照 - 门户
@@ -1006,9 +1006,9 @@
         - name: 性能
           items:
             - name: 使用写入加速器
-              href: ../how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 使用超级磁盘
-              href: ../disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 对磁盘进行基准检验
               href: disks-benchmarks.md
             - name: 优化性能
@@ -1069,7 +1069,7 @@
           href: ../extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 导出扩展
           href: ../extensions/export-templates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: 故障排除
+        - name: 疑难解答
           href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 启用了 Python 3 的 Linux 系统的问题
           href: ../extensions/issues-using-vm-extensions-python-3.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -1174,5 +1174,5 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: 常见问题解答
       href: faq.md
-- name: 故障排除
+- name: 疑难解答
   href: ../troubleshooting/index.yml

@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure PowerShell 部署和配置 Azure 防
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 08/28/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 50d870590fa6b8351838af9cb91b7be39b8d30db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610653"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071697"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和配置 Azure 防火墙
 
@@ -35,13 +35,13 @@ ms.locfileid: "85610653"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置测试网络环境
-> * 部署防火墙
-> * 创建默认路由
-> * 配置一个应用程序规则以允许访问 www.google.com
-> * 配置网络规则，以允许访问外部 DNS 服务器
-> * 测试防火墙
+
+* 设置测试网络环境
+* 部署防火墙
+* 创建默认路由
+* 配置一个应用程序规则以允许访问 www.google.com
+* 配置网络规则，以允许访问外部 DNS 服务器
+* 测试防火墙
 
 如果需要，可以使用 [Azure 门户](tutorial-firewall-deploy-portal.md)完成此过程。
 

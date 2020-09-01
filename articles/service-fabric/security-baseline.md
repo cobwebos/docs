@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6e620502deb67c7fe79341bc1a45cb1ce33fa52f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836711"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071459"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>适用于 Service Fabric 的 Azure 安全基线
 
@@ -34,7 +34,7 @@ ms.locfileid: "87836711"
 
 * [使用模板部署 Azure 防火墙](../firewall/deploy-template.md)
 
-* [使用 Azure 网络安全组 (Nsg) 创建外围网络](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
+* [使用 Azure 网络安全组 (Nsg) 创建外围网络 ](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
 * [如何将 Azure Service Fabric 群集与现有虚拟网络集成](./service-fabric-patterns-networking.md)
 
@@ -226,7 +226,7 @@ ms.locfileid: "87836711"
 
 * [Log Analytics 日志搜索](../azure-monitor/log-query/log-query-overview.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -240,7 +240,7 @@ ms.locfileid: "87836711"
 
 * [如何将 Log Analytics 代理部署到节点上](./service-fabric-diagnostics-oms-agent.md)
 
-* [如何配置 Log Analytics 工作区保持期](../azure-monitor/platform/manage-cost-storage.md)
+* [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -256,7 +256,7 @@ ms.locfileid: "87836711"
 
 * [如何将 Log Analytics 代理部署到节点上](./service-fabric-diagnostics-oms-agent.md)
 
-* [如何配置 Log Analytics 工作区保持期](../azure-monitor/platform/manage-cost-storage.md)
+* [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -282,7 +282,7 @@ ms.locfileid: "87836711"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
@@ -508,7 +508,7 @@ ms.locfileid: "87836711"
 
 **指导**：在网络外围部署一个自动化工具，用于监视敏感信息的未授权传输，并阻止此类传输，同时提醒信息安全专业人员。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实现并维护了一套可靠的数据保护控件和
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实现并维护了一套可靠的数据保护控件和
 
 功能.
 
@@ -538,7 +538,7 @@ ms.locfileid: "87836711"
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 存储或计算资源。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -546,7 +546,7 @@ ms.locfileid: "87836711"
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 **指南**：不适用；此建议适用于设计用于存储数据的非计算资源。
 
@@ -558,7 +558,7 @@ ms.locfileid: "87836711"
 
 **指南**：对于 Azure Service Fabric 群集存储或处理敏感信息，请使用标记将群集和相关资源标记为敏感资源。 数据标识、分类和丢失防护功能尚不适用于 Azure 存储或计算资源。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -648,7 +648,7 @@ ms.locfileid: "87836711"
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
 
-**指南**：按一致的间隔导出扫描结果，并比较结果以验证是否已修正了漏洞。 使用 Azure 安全中心建议的漏洞管理建议时，可以转到选定解决方案的门户查看历史扫描数据。
+**指导**：以一致的间隔导出扫描结果，并比较结果以验证漏洞是否已修复。 使用 Azure 安全中心建议的漏洞管理建议时，可以转到选定解决方案的门户查看历史扫描数据。
 
 **Azure 安全中心监视**：目前不可用
 
@@ -666,11 +666,11 @@ ms.locfileid: "87836711"
 
 有关详细信息，请参阅[安全控制：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-虽然可以通过 Resource Graph 发现经典的 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源以供后续使用。
+尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
 * [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -706,7 +706,7 @@ ms.locfileid: "87836711"
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指导**：为计算资源定义已批准的 Azure 资源和软件。
 
@@ -868,13 +868,13 @@ ms.locfileid: "87836711"
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：如果使用自定义映像，请使用 RBAC 确保只有经过授权的用户才能访问这些映像。 对于容器映像，请将其存储在 Azure 容器注册表中，并利用 RBAC 确保只有授权用户才能访问这些映像。
+**指南**：如果使用自定义映像，请使用 azure RBAC)  (azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有经过授权的用户才能访问这些映像。
 
-* [了解 Azure 中的 RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [了解 Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [了解容器注册表的 RBAC](../container-registry/container-registry-roles.md)
+* [了解容器注册表的 Azure RBAC](../container-registry/container-registry-roles.md)
 
-* [如何在 Azure 中配置 RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [如何配置 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -918,7 +918,7 @@ ms.locfileid: "87836711"
 
 **Azure 安全中心监视**：目前不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
