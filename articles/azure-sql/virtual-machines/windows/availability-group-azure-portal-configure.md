@@ -63,7 +63,7 @@ ms.locfileid: "89038441"
 1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 " **+ 新建 Windows Server 故障转移群集** "，打开 " **配置 Windows 故障转移群集** " 页面。  
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="通过在门户中选择 "+ 新建" 群集来创建新群集":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="通过在门户中选择 + 新建 群集来创建新群集":::
 
 1. 命名群集并提供要用作云见证的存储帐户。 使用现有存储帐户，或选择 " **新建** " 以创建新的存储帐户。 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。
 
@@ -89,7 +89,7 @@ ms.locfileid: "89038441"
 1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 "载入 **现有 Windows Server 故障转移群集** "，打开 " **板载 Windows Server 故障转移群集** " 页面。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="从 SQL 虚拟机资源上的 "高可用性" 页中载入现有群集":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="从 SQL 虚拟机资源上的 高可用性 页中载入现有群集":::
 
 1. 查看群集的设置。 
 1. 选择 " **应用** " 以加入群集，然后在提示时选择 **"是"** 以继续。
@@ -104,7 +104,7 @@ ms.locfileid: "89038441"
 1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 " **+ 新建 Always On 可用性组** " 以打开 " **创建可用性组** " 页。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="选择 "新建 always on 可用性组" 以打开 "创建可用性组" 页。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="选择 新建 always on 可用性组 以打开 创建可用性组 页。":::
 
 1. 输入可用性组的名称。 
 1. 选择 " **配置侦听器** " 以打开 " **配置可用性组侦听器** " 页。 
@@ -140,7 +140,7 @@ ms.locfileid: "89038441"
 1. 展开**对象资源管理器** **Always On 高可用性**。
 1. 展开 " **可用性组**"，右键单击可用性组，然后选择 " **添加数据库 ...**"。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="在对象资源管理器中右键单击可用性组，然后选择 "添加数据库"":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="在对象资源管理器中右键单击可用性组，然后选择 添加数据库":::
 
 1. 按照提示选择要添加到可用性组的数据库 () 。 
 1. 选择 **"确定"** 以保存设置并将数据库添加到可用性组。 
@@ -148,7 +148,7 @@ ms.locfileid: "89038441"
 
 添加数据库后，可以在 Azure 门户中查看可用性组的状态： 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="在数据库同步后，从 Azure 门户中的 "高可用性" 页查看可用性组的状态":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="在数据库同步后，从 Azure 门户中的 高可用性 页查看可用性组的状态":::
 
 ## <a name="add-more-vms"></a>添加更多 Vm
 
@@ -159,7 +159,7 @@ ms.locfileid: "89038441"
 1. 选择 "**设置**" 下的 "**高可用性**"。 
 1. 选择 " **配置 Windows Server 故障转移群集** "，打开 " **配置 Windows Server 故障转移群集** " 页面。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="选择 "配置 Windows Server 故障转移群集"，将 Vm 添加到群集。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="选择 配置 Windows Server 故障转移群集，将 Vm 添加到群集。":::
 
 1. 展开 " **Windows Server 故障转移群集凭据** "，并输入用于 SQL Server 服务、群集操作员和群集启动帐户的帐户。 
 1. 选择要添加到群集的 SQL Server Vm。 
@@ -173,7 +173,7 @@ ms.locfileid: "89038441"
 
 您可以通过选择可用性组旁边的省略号 ( ... ) ，**将更多副本添加**到可用性组，**配置侦听器**，或从 Azure 门户中的 "**高可用性**" 页**删除侦听器**： 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="选择可用性组旁边的省略号，然后选择 "添加副本"，将更多副本添加到可用性组。":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="选择可用性组旁边的省略号，然后选择 添加副本，将更多副本添加到可用性组。":::
 
 ## <a name="remove-cluster"></a>删除群集
 
