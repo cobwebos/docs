@@ -6,13 +6,13 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7c331fcbb013243cbd724d0c9337ce80fa1bedbd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 132a6d9a6f5ca702b13e84402ee9bb71eca57d7c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752717"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229695"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -70,7 +70,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 你可以配置专用终结点，以仅从所选的虚拟网络中限制访问。
 
-在这些虚拟网络上启用 DDoS 保护标准，防范分布式拒绝服务 (DDoS) 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。 有关详细信息，请参阅以下文章： 
+在这些虚拟网络上启用 DDoS 保护标准，防范分布式拒绝服务 (DDoS) 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。 有关详细信息，请参阅下列文章： 
 
 - [如何配置 Azure 事件网格主题或域的专用终结点](configure-private-endpoints.md)
 
@@ -84,7 +84,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：如果你使用 Azure 虚拟机来访问事件网格资源，请启用网络安全组 (NSG) 流日志并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：如果你使用 Azure 虚拟机来访问事件网格资源，请启用网络安全组 (NSG) 流日志并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 注意如果为事件网格创建专用终结点，则默认情况下禁用网络策略，因此以上工作流可能不起作用。
 
@@ -319,7 +319,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 - [对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）](security-authentication.md)
 
-- [身份验证发布客户端 (Azure 事件网格) ](security-authenticate-publishing-clients.md)
+- [对发布客户端进行身份验证（Azure 事件网格）](security-authenticate-publishing-clients.md)
 
 - [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
@@ -379,7 +379,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 - [对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）](security-authentication.md)
 
-- [身份验证发布客户端 (Azure 事件网格) ](security-authenticate-publishing-clients.md)
+- [对发布客户端进行身份验证（Azure 事件网格）](security-authenticate-publishing-clients.md)
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -445,7 +445,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
  
  
  
@@ -471,7 +471,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
-**指南**：对于由 microsoft 管理的底层平台，microsoft 将所有客户内容视为敏感数据，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+**指南**：对于由 microsoft 管理的底层平台，microsoft 将所有客户内容视为敏感数据，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -798,7 +798,7 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 将托管标识与 Azure Key Vault 结合使用，简化云应用程序的密钥管理。
 
-- [身份验证发布客户端 (Azure 事件网格) ](security-authenticate-publishing-clients.md)
+- [对发布客户端进行身份验证（Azure 事件网格）](security-authenticate-publishing-clients.md)
 
 - [如何使用 Azure 资源的托管标识](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 

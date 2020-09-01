@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 04a50d37606754ff4540d1056e378d46388e2592
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590567"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228029"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v3：发行说明和资源
 > [!div class="op_single_selector"]
@@ -122,13 +122,15 @@ cosmos.queryMetricsEnabled=true
 
 ## <a name="helpful-content"></a>帮助内容
 
-| 内容 | 春季 Data framework v2。0 | 春季 Data framework v2。0 |
+| Content | 春季 Data framework v2。0 | 春季 Data framework v2。0 |
 |---|---|
 | **SDK 下载** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
 |**参与 SDK** | [GitHub 上的弹簧数据 Azure Cosmos DB 存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [GitHub 上的弹簧数据 Azure Cosmos DB 存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
 |**教程**| [GitHub 上的弹簧数据 Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [GitHub 上的弹簧数据 Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>版本历史记录
+
+### <a name="300-beta2-unreleased"></a>3.0.0 (未发布) 
 
 ### <a name="300-beta1-2020-08-17"></a>3.0.0 (2020-08-17) 
 #### <a name="new-features"></a>新增功能
@@ -160,7 +162,7 @@ cosmos.queryMetricsEnabled=true
 * 修复 `IgnoreCase`  &  `AllIgnoreCase` 了忽略大小写查询的关键字。
 * 自动创建容器时，删除了默认的请求单位值4000。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤

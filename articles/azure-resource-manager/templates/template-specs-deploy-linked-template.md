@@ -2,13 +2,13 @@
 title: 将模板规范部署为链接模板
 description: 了解如何在链接部署中部署现有模板规范。
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: dd1bb00c1cfd737478a8d5f6ebffdb57e5e1640e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.date: 08/31/2020
+ms.openlocfilehash: 799dac2bb553983b16f734d1d1abc2ad9281fb58
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228012"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程： (预览版将模板规范部署为链接模板) 
 
@@ -126,7 +126,7 @@ $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateS
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+id = $(az ts show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
 ```
 
 > [!NOTE]

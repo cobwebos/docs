@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177272"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227026"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>将 Azure 订阅转移到其他 Azure AD 目录（预览）
 
@@ -42,7 +42,7 @@ ms.locfileid: "89177272"
 
 1. 准备转移
 
-1. 将 Azure 订阅的计费所有权转移到另一帐户
+1. 将 Azure 订阅转移到不同的目录
 
 1. 在目标目录中重新创建资源，例如角色分配、自定义角色和托管标识
 
@@ -264,12 +264,12 @@ ms.locfileid: "89177272"
 
 ## <a name="step-2-transfer-the-subscription"></a>步骤2：传输订阅
 
-在此步骤中，将订阅从源目录传输到目标目录。 具体步骤会有所不同，具体取决于是否也要转移计费所有权。
+在此步骤中，将订阅从源目录传输到目标目录。 具体步骤会有所不同，具体取决于是否还要转移计费所有权。
 
 > [!WARNING]
 > 传输订阅时，源目录中的所有角色分配将被 **永久** 删除并且无法还原。 传输订阅后无法返回。 执行此步骤之前，请确保已完成前面的步骤。
 
-1. 确定是否还要转移计费所有权。
+1. 确定是否还要将帐单所有权转移到另一个帐户。
 
 1. 将订阅转移到不同的目录。
 

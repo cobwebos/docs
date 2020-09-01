@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 263f018155aa6effada3d509c907d825b65a8d45
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079636"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228386"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>逻辑应用的 Azure 安全基线
 
@@ -94,9 +94,9 @@ ms.locfileid: "89079636"
 
 使用 Azure 安全中心自适应网络强化，推荐基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-* [如何保护对逻辑应用的入站调用](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [如何保护对逻辑应用的入站调用](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [如何限制入站 IP 地址](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [如何限制入站 IP 地址](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 * [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
 
@@ -368,7 +368,7 @@ ms.locfileid: "89079636"
 
 * [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [如何使用 SAS 在 Azure 逻辑应用中保护访问权限和数据](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [如何使用 SAS 在 Azure 逻辑应用中保护访问权限和数据](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 **Azure 安全中心监视**：空值
 
@@ -382,7 +382,7 @@ ms.locfileid: "89079636"
 
 如果使用基础结构即代码，请避免在代码中存储密码，而应改用 Azure Key Vault 来存储和检索凭据。
 
-* [如何在逻辑应用中保护和访问数据](./logic-apps-securing-a-logic-app.md)
+* [如何在逻辑应用中保护和访问数据](logic-apps-securing-a-logic-app.md)
 
 * [如何在 Azure Key Vault 中设置和检索机密](../key-vault/secrets/quick-create-portal.md)
 
@@ -473,7 +473,7 @@ ms.locfileid: "89079636"
 
 * [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [了解如何在逻辑应用中限制入站 IP 地址](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [了解如何在逻辑应用中限制入站 IP 地址](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure 安全中心监视**：空值
 
@@ -611,11 +611,11 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。
 
-* [在 Azure 逻辑应用中保护访问和数据](./logic-apps-securing-a-logic-app.md)
+* [在 Azure 逻辑应用中保护访问和数据](logic-apps-securing-a-logic-app.md)
 
-* [在 Azure 逻辑应用中接收和响应入站 HTTPS 请求](../connectors/connectors-native-reqres.md#tls-support)
+* [在 Azure 逻辑应用中接收和响应入站 HTTPS 请求](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点](../connectors/connectors-native-http.md#tls-support)
+* [通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -633,7 +633,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控制以防止客户数据丢失或泄露。
 
-* [保护对运行历史记录数据的访问](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
+* [保护对运行历史记录数据的访问](logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
 * [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 若要防止他人更改或删除逻辑应用，可以使用 Azure 资源锁。 此功能可以防止他人更改或删除生产资源。
 
-* [保护对 Azure 逻辑应用操作的访问](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [保护对 Azure 逻辑应用操作的访问](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure 安全中心监视**：空值
 
@@ -885,7 +885,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 * [如何创建管理组](../governance/management-groups/create.md)
 
-* [如何通过 Azure RBAC 保护对逻辑应用的访问](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [如何通过 Azure RBAC 保护对逻辑应用的访问](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure 安全中心监视**：空值
 
@@ -911,9 +911,9 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
-* [如何为 Azure 逻辑应用部署 Azure 资源管理器模板](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [如何为 Azure 逻辑应用部署 Azure 资源管理器模板](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [了解如何保护操作参数](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [了解如何保护操作参数](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [有关参数的安全建议](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -947,11 +947,11 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
-* [如何为 Azure 逻辑应用部署 Azure 资源管理器模板](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [如何为 Azure 逻辑应用部署 Azure 资源管理器模板](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [保护对运行历史记录输入和输出的访问](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [保护对运行历史记录输入和输出的访问](logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [保护对参数输入的访问](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [保护对参数输入的访问](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [有关参数的安全建议](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -1033,11 +1033,11 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 当你创建集成服务环境 (ISE) 来托管逻辑应用，并且希望更好地控制 Azure 存储使用的加密密钥时，你可以使用 Azure Key Vault 设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" (BYOK) ，密钥称为 "客户托管密钥"。
 
-* [保护 Azure 逻辑应用的运行历史记录中的输入和输出](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [保护 Azure 逻辑应用的运行历史记录中的输入和输出](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [有关参数的安全建议](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [在 Azure 逻辑应用中保护对参数输入的访问](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [在 Azure 逻辑应用中保护对参数输入的访问](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [在部署过程中使用 Azure Key Vault 传递安全的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1069,11 +1069,11 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 也可通过实现凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-* [保护 Azure 逻辑应用的运行历史记录中的输入和输出](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [保护 Azure 逻辑应用的运行历史记录中的输入和输出](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [有关参数的安全建议](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [在 Azure 逻辑应用中保护对参数输入的访问](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [在 Azure 逻辑应用中保护对参数输入的访问](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [在部署过程中使用 Azure Key Vault 传递安全的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1133,7 +1133,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 * [详细了解 Azure 逻辑应用的业务连续性和灾难恢复](./business-continuity-disaster-recovery-guidance.md)
 
-* [如何使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化](./logic-apps-azure-resource-manager-templates-overview.md)
+* [如何使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化](logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure 安全中心监视**：空值
 
@@ -1151,9 +1151,9 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 * [详细了解 Azure 逻辑应用的业务连续性和灾难恢复](./business-continuity-disaster-recovery-guidance.md)
 
-* [如何使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化](./logic-apps-azure-resource-manager-templates-overview.md)
+* [如何使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化](logic-apps-azure-resource-manager-templates-overview.md)
 
-* [如何使用 SAS 在 Azure 逻辑应用中保护访问权限和数据](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [如何使用 SAS 在 Azure 逻辑应用中保护访问权限和数据](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [如何备份 Key Vault 密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 

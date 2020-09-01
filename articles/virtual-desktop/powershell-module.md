@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c99aa1bdb246d242c4c1cbd33672367b66f923ea
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007252"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229962"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
 
@@ -40,6 +40,12 @@ Install-Module -Name Az.DesktopVirtualization
 ```powershell
 Connect-AzAccount
 ```
+
+>!无关紧要如果正在连接到 US Gov 门户，请改为运行此 cmdlet：
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
 
 登录到 Azure 帐户的操作需要在运行 Connect cmdlet 时生成的代码。 若要登录，请访问 <https://microsoft.com/devicelogin>，输入代码，然后使用 Azure 管理员凭据登录。
 

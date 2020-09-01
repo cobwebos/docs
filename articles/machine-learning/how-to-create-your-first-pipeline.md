@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0d917ea686c2003bf46b6fca872ef67fb0363107
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144067"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228897"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -56,10 +56,8 @@ ws = Workspace.from_config()
 * 配置 `Dataset` 对象，使之指向驻留在数据存储中的或可在数据存储中访问的持久性数据。 为在管道步骤间传递的临时数据配置 `PipelineData` 对象。 
 
     > [!TIP]
-    > 公共预览版类中提供了在管道步骤之间传递临时数据的改善体验  `OutputFileDatasetConfig` 。  此类是一个试验性预览功能，随时可能会更改。
-    > 
-    >有关实验功能的详细信息，请参阅 https://aka.ms/azuremlexperimental 。
-    
+    > 公共预览版类中提供了在管道步骤之间传递临时数据的改善体验  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) 。  此类是一个 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。
+
 * 设置[计算目标](concept-azure-machine-learning-architecture.md#compute-targets)，管道步骤将在其上运行。
 
 ### <a name="set-up-a-datastore"></a>设置数据存储

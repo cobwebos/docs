@@ -1,6 +1,6 @@
 ---
-title: 可视化 Gen2 资源管理器中的数据-Azure 时序见解 Gen2 |Microsoft Docs
-description: 了解 Azure 时序见解 Gen2 资源管理器中可用的功能和选项。
+title: 在 TSI 资源管理器中实现数据的可视化-Azure 时序见解 Gen2 |Microsoft Docs
+description: 了解 Azure 时序见解资源管理器中可用的功能和选项。
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -8,37 +8,37 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164149"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227043"
 ---
-# <a name="azure-time-series-insights-gen2-explorer"></a>Azure 时序见解 Gen2 资源管理器
+# <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
-本文介绍 Azure 时序见解 Gen2[演示环境](https://insights.timeseries.azure.com/preview/demo)中可用的各种功能和选项。
+本文介绍 Azure 时序见解 Gen2 [演示环境](https://insights.timeseries.azure.com/preview/demo)中可用的各种功能和选项。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始了解 Azure 时序见解 Gen2 资源管理器，必须执行以下操作：
+若要开始了解 Azure 时序见解资源管理器，必须执行以下操作：
 
-* 已预配 Azure 时序见解 Gen2 环境。 阅读[Azure 时序见解 Gen2](./time-series-insights-update-create-environment.md)教程，详细了解如何设置实例。
+* 已预配 Azure 时序见解 Gen2 环境。 阅读 [Azure 时序见解 Gen2](./time-series-insights-update-create-environment.md) 教程，详细了解如何设置实例。
 * 提供对为帐户创建的 Azure 时序见解 Gen2 环境的[数据访问权限](./time-series-insights-data-access.md)。 可以向其他人以及自己提供访问。
 * 将事件源添加到 Azure 时序见解 Gen2 环境，以将数据推送到环境：
-  * 了解[如何连接到事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)
-  * 了解[如何连接到 IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)
+  * 了解 [如何连接到事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)
+  * 了解 [如何连接到 IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
-## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>了解 Azure 时序见解 Gen2 资源管理器
+## <a name="explore-the-azure-time-series-insights-explorer"></a>了解 Azure 时序见解资源管理器
 
-Azure 时序见解 Gen2 资源管理器由以下七个元素组成：
+Azure 时序见解资源管理器由以下七个元素组成：
 
-[![Azure 时序见解 Gen2 资源管理器概述](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
+[![Azure 时序见解资源管理器概述](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [环境面板](#1-environment-panel)：显示所有 Azure 时序见解 Gen2 环境。
-1. [导航栏](#2-navigation-bar)：用于在 "**分析**" 和 "**模型**" 页之间切换。
+1. [导航栏](#2-navigation-bar)：用于在 " **分析** " 和 " **模型** " 页之间切换。
 1. [层次结构树和搜索面板](#3-hierarchy-tree-and-search-panel)：用于选择和搜索要绘制到图表中的特定数据元素。
 1. [时间序列良好](#4-time-series-well)：显示所有当前选定的数据元素。
 1. [图表面板](#5-chart-panel)：显示当前工作图表。
@@ -74,11 +74,11 @@ Azure 时序见解 Gen2 支持对时序模型 (CRUD) 操作的完全创建、读
 * **时序模型层次结构**：层次结构是数据的系统组织。 层次结构，描述时序模型中不同实例之间的关系。
 * **时序模型实例**：实例是时间序列本身。 在大多数情况下，它们是 **DeviceID** 或 **AssetID**（环境中的资产的唯一标识符）。
 
-若要了解有关时序模型的详细信息，请参阅[时序模型](./concepts-model-overview.md)。
+若要了解有关时序模型的详细信息，请参阅 [时序模型](./concepts-model-overview.md)。
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. 层次结构树和搜索面板
 
-利用层次结构树和搜索面板，可以轻松搜索和导航[时序模型](./concepts-model-overview.md)层次结构，以查找要在图表上显示的特定时序实例。 选择实例时，不仅会将它们添加到当前图表，还会将其添加到数据。
+利用层次结构树和搜索面板，可以轻松搜索和导航 [时序模型](./concepts-model-overview.md) 层次结构，以查找要在图表上显示的特定时序实例。 选择实例时，不仅会将它们添加到当前图表，还会将其添加到数据。
 
 [![层次结构树和搜索面板](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -90,7 +90,7 @@ Azure 时序见解 Gen2 支持对时序模型 (CRUD) 操作的完全创建、读
 
   [![Gen2](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-您可以通过选择红色**删除** (垃圾桶在元素左侧) 控制，从当前数据中删除特定数据元素。 同样，您还可以控制每个元素在图表中的显示方式。 您可以选择添加最小/最大阴影、数据点、按时间移动元素并按逐步方式可视化实例。
+您可以通过选择红色 **删除** (垃圾桶在元素左侧) 控制，从当前数据中删除特定数据元素。 同样，您还可以控制每个元素在图表中的显示方式。 您可以选择添加最小/最大阴影、数据点、按时间移动元素并按逐步方式可视化实例。
 
 此外，探索控件使您可以轻松地创建时间移位和散点图。  
 
@@ -121,19 +121,19 @@ Azure 时序见解 Gen2 支持对时序模型 (CRUD) 操作的完全创建、读
 
 1. **标记元素**：当前选定的数据元素及其关联的详细信息。
 
-可以通过在按住鼠标的同时**单击**当前关系图上的数据点，然后将所选区域拖到所选终结点，进一步深化到特定数据切片。 **右键单击**蓝色的选定区域，然后选择 "**缩放**"，如下所示。 您还可以在所选 timespan 中查看和下载遥测事件。
+可以通过在按住鼠标的同时 **单击** 当前关系图上的数据点，然后将所选区域拖到所选终结点，进一步深化到特定数据切片。 **右键单击** 蓝色的选定区域，然后选择 " **缩放** "，如下所示。 您还可以在所选 timespan 中查看和下载遥测事件。
 
   [![Gen2 图缩放](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-执行**缩放**操作后，将显示所选的数据集。 选择 "格式" 控件以循环浏览数据的三个 y 轴表示形式。
+执行 **缩放** 操作后，将显示所选的数据集。 选择 "格式" 控件以循环浏览数据的三个 y 轴表示形式。
 
   [![Gen2 图 y 轴](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-下面提供了**重叠图表**的示例：
+下面提供了 **重叠图表** 的示例：
 
   [![重叠图表选项](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-"**更多操作**" 按钮将展开以显示 "**下载为 CSV**"，**连接到 Power BI**，将**图表数据显示为表**，并**浏览原始事件**选项。
+" **更多操作** " 按钮将展开以显示 " **下载为 CSV**"， **连接到 Power BI**，将 **图表数据显示为表**，并 **浏览原始事件** 选项。
 
   [![更多操作选项](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
@@ -182,7 +182,7 @@ Azure 时序见解 Gen2 导航面板显示在应用的顶部。 它提供以下�
 
 * 显示当前的 Azure 时序见解 Gen2 登录帐户信息。
 * 使用它在可用的主题之间切换。
-* 使用它查看 Gen2[演示环境](https://insights.timeseries.azure.com/preview/demo)。
+* 使用它查看 Gen2 [演示环境](https://insights.timeseries.azure.com/preview/demo)。
 
 ### <a name="theme-selection"></a>主题选择
 
@@ -193,7 +193,7 @@ Azure 时序见解 Gen2 导航面板显示在应用的顶部。 它提供以下�
 > [!TIP]
 > 选择个人资料图标还可以设置语言。
 
-Azure 时序见解 Gen2 资源管理器支持两个主题：
+Azure 时序见解资源管理器支持两个主题：
 
 * **浅色主题**：本文档中所示的默认主题。
 * **深色主题**：呈现资源管理器，如下所示：
@@ -204,7 +204,7 @@ Azure 时序见解 Gen2 资源管理器支持两个主题：
 
 ### <a name="gen2-terms-panel"></a>Gen2 术语面板
 
-本部分仅适用于尝试在更新的 UI 中使用资源管理器的现有第1代环境。 你可能想要结合使用第1代产品和 Gen2 产品。 我们已将现有 UI 中的一些功能添加到更新的资源管理器，但可在新的 Azure 时序见解 Gen2 资源管理器中获取第1代环境的完整 UI 体验。
+本部分仅适用于尝试在更新的 UI 中使用资源管理器的现有第1代环境。 你可能想要结合使用第1代产品和 Gen2 产品。 我们已将现有 UI 中的一些功能添加到更新的资源管理器，但可在新的 Azure 时序见解资源管理器中获取第1代环境的完整 UI 体验。
 
 将显示 Azure 时序见解 Gen2 条款面板，而不是层次结构。 术语面板允许您在您的环境中定义查询。 使用它还可以根据谓词筛选数据。
 
@@ -219,15 +219,15 @@ Azure 时序见解 Gen2 术语编辑器面板采用以下参数：
 | `<`, `>`, `<=`, `>=` | 双精度、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL |
 | `IN` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL | 所有操作数应为同一类型或者是 NULL 常数。 |
-| `HAS` | 字符串 | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
+| `HAS` | String | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
 
-若要了解有关受支持的查询操作和数据类型的详细信息，请参阅[ (TSX) 的时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
+若要了解有关受支持的查询操作和数据类型的详细信息，请参阅 [ (TSX) 的时序表达式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 ### <a name="examples-of-where-clauses"></a>where 子句示例
 
   [![Where 子句示例](media/v2-update-explorer/tsi-preview-example-queries.png)](media/v2-update-explorer/tsi-preview-example-queries.png#lightbox)
 
-**度量值**：一种下拉列表，其中显示所有数值列 (**双精度**值，) 可以将其用作当前图表的元素。
+**度量值**：一种下拉列表，其中显示所有数值列 (**双精度** 值，) 可以将其用作当前图表的元素。
 
 **拆分依据**：此下拉列表显示模型中的所有可用分类列 (字符串) ，你可以通过对数据进行分组。 最多可以添加要在同一个 X 轴上查看的五个搜索词。 输入所需的参数，然后选择“添加”**** 以添加新的搜索词。
 
@@ -239,10 +239,10 @@ Azure 时序见解 Gen2 术语编辑器面板采用以下参数：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解将[数据引入](./concepts-ingestion-overview.md)到你的环境中。
+* 了解将 [数据引入](./concepts-ingestion-overview.md) 到你的环境中。
 
-* 查看有关[存储](concepts-storage.md)的文章。
+* 查看有关 [存储](concepts-storage.md)的文章。
 
-* 了解 Azure 时序见解 Gen2 中的[数据建模](./concepts-model-overview.md)。
+* 了解 Azure 时序见解 Gen2 中的 [数据建模](./concepts-model-overview.md) 。
 
-* 了解[如何诊断和排查环境问题](./time-series-insights-update-how-to-troubleshoot.md)。
+* 了解 [如何诊断和排查环境问题](./time-series-insights-update-how-to-troubleshoot.md) 。

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146413"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229389"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 生成和部署 HPC 解决方案
 
@@ -29,7 +29,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 若要按照本文中的步骤进行操作，需要一个 Azure DevOps 组织和一个团队项目。
 
 * [创建一个 Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization)
-* [在 Azure DevOps 中创建项目](/azure/devops/organizations/projects/create-projects)
+* [在 Azure DevOps 中创建项目](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>环境的源代码管理
 
@@ -325,7 +325,7 @@ Azure DevOps Services 内的 [Azure Pipelines](/azure/devops/pipelines/get-start
 
     a. [使用可视化设计器](/azure/devops/pipelines/get-started-designer)。 为此，请在“新管道”页上单击“使用可视化设计器”。
 
-    b. [使用 YAML 生成](/azure/devops/pipelines/get-started-yamls)。 可以通过单击“新管道”页上的“Azure Repos”或“GitHub”选项来创建新的 YAML 管道。 或者，可以在源代码管理中存储下面的示例，并通过单击“可视化设计器”引用现有的 YAML 文件，然后使用 YAML 模板。
+    b. [使用 YAML 生成](/azure/devops/pipelines/get-started-yaml)。 可以通过单击“新管道”页上的“Azure Repos”或“GitHub”选项来创建新的 YAML 管道。 或者，可以在源代码管理中存储下面的示例，并通过单击“可视化设计器”引用现有的 YAML 文件，然后使用 YAML 模板。
 
     ```yml
     # To publish an application into Azure Batch, we need to

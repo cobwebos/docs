@@ -17,16 +17,16 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261017"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229848"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 Azure AD 活动日志
 
-可以将 Azure Active Directory （Azure AD）活动日志路由到多个终结点，以实现长期保留和数据见解。 可以使用此功能实现以下操作：
+可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点，以便长期保留和数据见解。 可以使用此功能实现以下操作：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -60,7 +60,7 @@ ms.locfileid: "81261017"
 
 根据审核日志数据要路由到的位置，需满足以下条件之一:
 
-* 你对其拥有 *ListKeys* 权限的 Azure 存储帐户。 建议使用常规存储帐户而非 Blob 存储帐户。 有关存储定价信息，请查看 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/calculator/?service=storage)。 
+* 你对其拥有 *ListKeys* 权限的 Azure 存储帐户。 建议使用常规存储帐户而非 Blob 存储帐户。 有关存储定价信息，请参阅 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/calculator/?service=storage)。 
 * 用于与第三方解决方案集成的 Azure 事件中心命名空间。
 * 用于将日志发送到 Azure Monitor 日志的 Azure Log Analytics 工作区。
 
@@ -68,9 +68,9 @@ ms.locfileid: "81261017"
 
 如果已经有 Azure AD 许可证，则还需要一个 Azure 订阅才能设置存储帐户和事件中心。 Azure 订阅可以免费获取，但若要使用 Azure 资源（包括用于存档的存储帐户以及用于流式处理的事件中心），则需付费。 数据量以及因此引发的费用可能因租户大小的不同而差异很大。 
 
-### <a name="storage-size-for-activity-logs"></a>用于活动日志的存储大小
+### <a name="storage-size-for-activity-logs"></a>活动日志的存储大小
 
-每个审核日志事件使用大约 2 KB 的数据存储。 登录事件日志约为 4 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
+每个审核日志事件占用大约 2KB 的数据存储。 登录事件日志约为 4 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
 
 
 下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -98,7 +98,7 @@ ms.locfileid: "81261017"
 
 例如，对于用户数超出 100,000 的大型租户来说，通常情况下每秒大约有 18 个事件，该频率相当于每五分钟 5,400 个事件。 由于审核日志大约每个事件 2 KB，上述事件相当于 10.8 MB 的数据， 因此会在五分钟的时间间隔内向事件中心发送 43 条消息。 
 
-下表包含在美国西部的基本事件中心每月估计的成本，具体取决于每个因素（如用户登录行为等）不同于租户的事件数据量。若要计算对应用程序预期的数据量的准确估计值，请使用[事件中心定价计算器](https://azure.microsoft.com/pricing/details/event-hubs/)。
+下表包含在美国西部的基本事件中心每月估计的成本，具体取决于每个因素（如用户登录行为等）不同于租户的事件数据量。若要计算对应用程序预期的数据量的准确估计值，请使用 [事件中心定价计算器](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 | 日志类别 | 用户数 | 每秒事件数 | 每五分钟时间间隔的事件数 | 每个时间间隔的数据量 | 每个时间间隔的消息数 | 每月消息数 | 每月成本（估算） |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
@@ -111,7 +111,7 @@ ms.locfileid: "81261017"
 
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月事件数（30天） | 每月成本（est） |
+| 日志类别       | 用户数 | 每日事件数 | 每月事件 (30 天)  | USD (est 中每月的成本 )  |
 | :--                | ---             | ---            | ---                        | --:                          |
 | 审核和登录 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
 | 审核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
@@ -126,9 +126,9 @@ ms.locfileid: "81261017"
 
 
 
-若要查看与管理 Azure Monitor 日志相关的成本，请参阅[通过在 Azure Monitor 日志中控制数据量和保留期管理成本](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)。
+若要查看与管理 Azure Monitor 日志相关的成本，请参阅[通过在 Azure Monitor 日志中控制数据量和保留期管理成本](../../azure-monitor/platform/manage-cost-storage.md)。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 此部分回答 Azure Monitor 中 Azure AD 日志的常见问题并讨论其已知问题。
 
@@ -180,13 +180,13 @@ ms.locfileid: "81261017"
 
 **问: 目前支持哪些 SIEM 工具？** 
 
-**答**：**答**：目前， [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、IBM QRadar、 [sumo logic 逻辑](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、 [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)、LogRhythm 和 Logz.io 支持 Azure Monitor。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+**答**： **答**：目前， [Splunk](./howto-integrate-activity-logs-with-splunk.md)、IBM QRadar、 [sumo logic 逻辑](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、 [ArcSight](./howto-integrate-activity-logs-with-arcsight.md)、LogRhythm 和 Logz.io 支持 Azure Monitor。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ---
 
 **问: 如何将 Azure AD 活动日志与 Splunk 实例集成？**
 
-**答**：首先，[将 Azure AD 活动日志路由到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)，然后按照步骤[将活动日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)。
+**答**：首先，[将 Azure AD 活动日志路由到事件中心](./tutorial-azure-monitor-stream-logs-to-event-hub.md)，然后按照步骤[将活动日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
 
 ---
 
@@ -198,7 +198,7 @@ ms.locfileid: "81261017"
 
 **问: 是否可以在不使用外部 SIEM 工具的情况下，从事件中心访问数据？** 
 
-**答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。 
 
 ---
 
@@ -206,5 +206,5 @@ ms.locfileid: "81261017"
 ## <a name="next-steps"></a>后续步骤
 
 * [将活动日志存档到存储帐户](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [将活动日志路由到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [将活动日志路由到事件中心](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [将活动日志与 Azure Monitor 集成](howto-integrate-activity-logs-with-log-analytics.md)

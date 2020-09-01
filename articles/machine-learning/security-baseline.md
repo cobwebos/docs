@@ -6,13 +6,13 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015078"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228352"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>适用于 Azure 机器学习的 Azure 安全基线
 
@@ -250,7 +250,7 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：在 Azure Monitor 中，配置与活动日志中的 Azure 机器学习相关的日志，并机器学习诊断设置将日志发送到要查询到的 Log Analytics 工作区或长期存档存储的存储帐户。 使用 Log Analytics 工作区为安全日志和事件中的异常活动创建警报。
+**指南**：在 Azure Monitor 中，配置与活动日志中的 Azure 机器学习相关的日志，并机器学习诊断设置将日志发送到要查询到的 Log Analytics 工作区或长期存档存储的存储帐户。 使用 Log Analytics 工作区针对安全日志和事件中的异常活动创建警报。
 
 或者，你可以将和机载数据启用到 Azure Sentinel。
 
@@ -467,7 +467,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供内置 RBA
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
  
 - [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -493,7 +493,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供内置 RBA
 
 **指南**：在网络外围使用 Azure Marketplace 中的第三方解决方案来监视敏感信息的未授权传输，并在通知信息安全专业人员时阻止此类传输。 
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。 
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。 
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -515,7 +515,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供内置 RBA
 
 **指南**：目前尚不 Azure 机器学习支持数据标识、分类和丢失防护功能。 如有必要，请实现第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -847,7 +847,7 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy [拒绝] 和 [不存在时部署] 在 Azure 资源中强制实施安全设置。 此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。 
+**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。 此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。 
  
  
  

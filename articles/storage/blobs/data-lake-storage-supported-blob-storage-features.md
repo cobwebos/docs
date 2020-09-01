@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077001"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228675"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -45,7 +45,6 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |快照|预览|尚不支持|[blob 快照](snapshots-overview.md)|
 |静态网站|预览|尚不支持|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
 |不可变存储|预览|尚不支持|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
-|生命周期管理策略|预览|尚不支持|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
 |容器软删除|预览|预览|[容器的软删除 (预览) ](soft-delete-container-overview.md)|
 |Blob 软删除|尚不支持|尚不支持|[blob 的软删除](storage-blob-soft-delete.md)|
 |Blobfuse|预览|尚不支持|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|

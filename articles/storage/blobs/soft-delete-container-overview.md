@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854543"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228624"
 ---
 # <a name="soft-delete-for-containers-preview"></a>容器的软删除 (预览) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "88854543"
 
 - 容器软删除，以防止意外删除或覆盖容器。 若要了解如何启用容器软删除，请参阅 [启用和管理容器的软删除](soft-delete-container-enable.md)。
 - Blob 软删除，以防止意外删除或覆盖单个 blob。 若要了解如何启用 blob 软删除，请参阅 [blob 的软删除](soft-delete-blob-overview.md)。
-- Blob 版本控制 (预览) 自动维护以前版本的 blob。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
+- Blob 版本控制，用于自动维护以前版本的 blob。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
 
 > [!WARNING]
 > 无法撤消删除存储帐户。 软删除无法防止删除存储帐户。 若要防止意外删除存储帐户，请在存储帐户资源上配置 **CannotDelete** 锁。 有关锁定 Azure 资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
@@ -123,4 +123,4 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 - [配置容器软删除](soft-delete-container-enable.md)
 - [blob 的软删除](soft-delete-blob-overview.md)
-- [Blob 版本控制（预览版）](versioning-overview.md)
+- [Blob 版本控制](versioning-overview.md)

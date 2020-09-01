@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846966"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229916"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -34,8 +34,8 @@ ms.locfileid: "85846966"
     - **登录** - [登录报告](concept-sign-ins.md)提供有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志** - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 - **安全性** 
-    - 有**风险的登录**-有[风险登录](concept-risky-sign-ins.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。 
-    - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
+    - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。 
+    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
 本文概述了审核报告。
  
@@ -89,7 +89,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 使用“服务”**** 筛选器可以从以下服务的下拉列表中进行选择：
 
-- All
+- 全部
 - AAD 管理 UX
 - 访问评审
 - 帐户预配
@@ -111,7 +111,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “类别”筛选器用于选择下述筛选器之一：****
 
-- All
+- 全部
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -138,16 +138,16 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 可以使用“状态”筛选器根据审核操作的状态进行筛选。**** 状态可以是下列其中一项：
 
-- All
+- 全部
 - Success
 - 失败
 
-**目标**筛选器允许您通过名称或用户主体名称（UPN）搜索特定目标。 目标名称和 UPN 区分大小写。 
+**目标**筛选器使你可以通过 (UPN) 的名称或用户主体名称来搜索特定目标。 目标名称和 UPN 区分大小写。 
 
-通过筛选器**启动**的筛选器，您可以定义参与者名称或通用主体名称（UPN）的开头。 名称和 UPN 区分大小写。
+通过筛选器启动的筛选器，您可以定义使用 **者** 名称或通用主体名称 (UPN) 以开头。 名称和 UPN 区分大小写。
 
-使用 "**日期范围**" 筛选器可以定义返回的数据的时间范围。  
-可能的值有：
+使用 " **日期范围** " 筛选器可以定义返回的数据的时间范围。  
+可能的值包括：
 
 - 7 天
 - 24 小时
@@ -210,9 +210,9 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 ## <a name="office-365-activity-logs"></a>Office 365 活动日志
 
-可以从 [Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
+可以从 [Microsoft 365 管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
 
-还可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
+还可以使用 [Office 365 管理 API](/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816076"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228760"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -32,8 +32,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - **登录** –有关托管应用程序和用户登录活动的使用情况的信息。
     - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
 - **安全性** 
-    - 有**风险的登录**-有[风险的登录](concept-risky-sign-ins.md)是指不是用户帐户合法所有者的登录尝试。
-    - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
+    - 有**风险的登录**-有[风险的登录](../identity-protection/overview-identity-protection.md)是指不是用户帐户合法所有者的登录尝试。
+    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
 本文概述了登录报告。
 
@@ -149,7 +149,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 |Exchange ActiveSync| |此筛选器显示尝试 EAS 协议的所有登录尝试。|
 |浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
 |Exchange ActiveSync| | 显示使用客户端应用通过 Exchange ActiceSync 连接到 Exchange Online 的用户进行的所有登录尝试|
-|Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用使用的编程接口。|
 |IMAP4| |使用 IMAP 检索电子邮件的旧版邮件客户端。|
 |基于 HTTP 的 MAPI| |由 Outlook 2010 及更高版本使用。|
@@ -271,13 +271,12 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 ## <a name="office-365-activity-logs"></a>Office 365 活动日志
 
-可以从 [Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 要考虑到 Office 365 活动和 Azure AD 活动日志共享大量的目录资源。 只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
+可以从 [Microsoft 365 管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 要考虑到 Office 365 活动和 Azure AD 活动日志共享大量的目录资源。 只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
 
-还可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
+还可以使用 [Office 365 管理 API](/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [登录活动报告错误代码](reference-sign-ins-error-codes.md)
 * [Azure AD 数据保留策略](reference-reports-data-retention.md)
 * [Azure AD 报告延迟](reference-reports-latencies.md)
-

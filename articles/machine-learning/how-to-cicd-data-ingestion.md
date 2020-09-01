@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843702"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228879"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 
@@ -64,7 +64,7 @@ ms.locfileid: "87843702"
 数据工程师可以在 IDE（例如 [Visual Studio Code](https://code.visualstudio.com)）本地或者直接在 Databricks 工作区中处理 Python 笔记本源代码。 代码更改完成后，代码更改会根据分支策略合并到存储库中。
 
 > [!TIP] 
-> 建议将代码存储在 `.py` 文件中，而不要以 `.ipynb` Jupyter 笔记本格式存储。 这样可以改善代码的可读性，并在 CI 过程中实现自动代码质量检查。
+> 建议将代码存储在文件中， `.py` 而不是 `.ipynb` Jupyter Notebook 格式。 这样可以改善代码的可读性，并在 CI 过程中实现自动代码质量检查。
 
 ### <a name="azure-data-factory-source-code"></a>Azure 数据工厂源代码
 
@@ -174,7 +174,7 @@ labels = np.array(data['target'])
 
 ![adf-notebook-parameters](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请将 `"Microsoft.DataFactory/factories/pipelines"` [默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)的部分更新为以下代码片段，并将结果 json 文件放置在源文件夹的根目录中：
+Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请将 `"Microsoft.DataFactory/factories/pipelines"` [默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) 的部分更新为以下代码片段，并将结果 json 文件放置在源文件夹的根目录中：
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {

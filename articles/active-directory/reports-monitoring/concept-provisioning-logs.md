@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826865"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229865"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -34,8 +34,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - **设置日志** -提供有关由 Azure AD 预配服务设置的用户、组和角色的系统活动。 
 
 - **安全性** 
-    - 有**风险的登录**-有[风险登录](concept-risky-sign-ins.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
-    - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
+    - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
+    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
 本主题简要介绍预配报表。
 
@@ -94,7 +94,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 在默认视图中，您可以选择以下筛选器：
 
 - 标识
-- Date
+- 日期
 - 状态
 - 操作
 
@@ -172,7 +172,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 修改的属性
 
-- 摘要
+- “摘要”
 
 
 ![筛选器](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
@@ -204,7 +204,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **修改后的属性**显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
 
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>“摘要”
 
 " **摘要** " 选项卡概述源系统和目标系统中的对象发生了什么情况和标识符。 
 
@@ -218,7 +218,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 当前不支持 log analytics。
 
-- 从应用的上下文中访问预配日志时，它不会自动将事件筛选为审核日志执行方式的特定应用。
+- 对于不在作用域内的用户，可能会看到跳过的事件。 这是预期情况，特别是在同步作用域设置为 "所有用户和组" 时。 我们的服务将评估租户中的所有对象，即使是超出范围的对象。 
 
 ## <a name="error-codes"></a>错误代码
 
@@ -226,28 +226,26 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 |错误代码|说明|
 |---|---|
-|冲突，EntryConflict|更正 "Azure AD" 或 "应用程序" 中冲突的属性值，或者查看匹配的属性配置（如果应该匹配和接管冲突的用户帐户）。 有关配置匹配属性的详细信息，请参阅以下 [文档](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 。|
+|冲突，EntryConflict|更正 "Azure AD" 或 "应用程序" 中冲突的属性值，或者查看匹配的属性配置（如果应该匹配和接管冲突的用户帐户）。 有关配置匹配属性的详细信息，请参阅以下 [文档](../app-provisioning/customize-application-attributes.md) 。|
 |TooManyRequests|目标应用拒绝了更新用户的尝试，因为该用户重载并收到太多请求。 无需执行任何操作。 此尝试将自动停用。 Microsoft 还收到此问题的通知。|
 |InternalServerError |目标应用返回了意外错误。 目标应用程序可能存在导致此无法正常工作的服务问题。 在40分钟后，此尝试将自动停用。|
-|InsufficientRights，MethodNotAllowed，NotPermitted，未授权| Azure AD 能够向目标应用程序进行身份验证，但无权执行更新。 请查看目标应用程序提供的任何说明，并查看相应的应用程序 [教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)。|
+|InsufficientRights，MethodNotAllowed，NotPermitted，未授权| Azure AD 能够向目标应用程序进行身份验证，但无权执行更新。 请查看目标应用程序提供的任何说明，并查看相应的应用程序 [教程](../saas-apps/tutorial-list.md)。|
 |UnprocessableEntity|目标应用程序返回了意外响应。 目标应用程序的配置可能不正确，或者目标应用程序可能存在导致此操作无法正常工作的服务问题。|
 |WebExceptionProtocolError |连接到目标应用程序时出现 HTTP 协议错误。 无需执行任何操作。 在40分钟后，此尝试将自动停用。|
-|InvalidAnchor|预配服务以前创建或匹配的用户已不存在。 检查以确保该用户存在。 若要强制重新匹配所有用户，请使用 MS 图形 API [重新启动作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 请注意，重新启动设置将触发初始周期，这可能需要一些时间才能完成。 它还会删除预配服务用于操作的缓存，这意味着租户中的所有用户和组都必须重新评估，并且某些预配事件可能会被删除。|
-|NotImplemented | 目标应用返回了意外响应。 应用的配置可能不正确，或者目标应用可能存在服务问题，导致无法正常工作。 请查看目标应用程序提供的任何说明，并查看相应的应用程序 [教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)。 |
-|MandatoryFieldsMissing, MissingValues |无法创建用户，因为缺少所需的值。 更正源记录中缺少的属性值，或查看匹配的属性配置以确保不省略必填字段。 [详细了解](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 如何配置匹配属性。|
-|SchemaAttributeNotFound |无法执行该操作，因为指定的属性在目标应用程序中不存在。 请参阅有关属性自定义的 [文档](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) ，并确保配置正确。|
+|InvalidAnchor|预配服务以前创建或匹配的用户已不存在。 检查以确保该用户存在。 若要强制重新匹配所有用户，请使用 MS 图形 API [重新启动作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 请注意，重新启动设置将触发初始周期，这可能需要一些时间才能完成。 它还会删除预配服务用于操作的缓存，这意味着租户中的所有用户和组都必须重新评估，并且某些预配事件可能会被删除。|
+|NotImplemented | 目标应用返回了意外响应。 应用的配置可能不正确，或者目标应用可能存在服务问题，导致无法正常工作。 请查看目标应用程序提供的任何说明，并查看相应的应用程序 [教程](../saas-apps/tutorial-list.md)。 |
+|MandatoryFieldsMissing, MissingValues |无法创建用户，因为缺少所需的值。 更正源记录中缺少的属性值，或查看匹配的属性配置以确保不省略必填字段。 [详细了解](../app-provisioning/customize-application-attributes.md) 如何配置匹配属性。|
+|SchemaAttributeNotFound |无法执行该操作，因为指定的属性在目标应用程序中不存在。 请参阅有关属性自定义的 [文档](../app-provisioning/customize-application-attributes.md) ，并确保配置正确。|
 |InternalError |Azure AD 预配服务中发生内部服务错误。 无需执行任何操作。 此尝试将在40分钟内自动重试。|
 |InvalidDomain |由于包含无效域名的属性值，无法执行该操作。 更新用户的域名或将其添加到目标应用程序中的允许列表。 |
 |超时 |操作无法完成，因为目标应用程序的响应时间太长。 无需执行任何操作。 此尝试将在40分钟内自动重试。|
 |LicenseLimitExceeded|无法在目标应用程序中创建用户，因为没有此用户的可用许可证。 为目标应用程序购买其他许可证，或查看用户分配和属性映射配置，以确保为正确的属性分配正确的用户。|
-|DuplicateTargetEntries  |操作无法完成，因为在目标应用程序中找到了多个具有配置的匹配属性的用户。 删除目标应用程序中的重复用户，或重新配置属性映射，如 [此处](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)所述。|
-|DuplicateSourceEntries | 操作无法完成，因为找到多个具有配置的匹配属性的用户。 请删除重复的用户，或重新配置属性映射，如 [此处](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)所述。|
+|DuplicateTargetEntries  |操作无法完成，因为在目标应用程序中找到了多个具有配置的匹配属性的用户。 删除目标应用程序中的重复用户，或重新配置属性映射，如 [此处](../app-provisioning/customize-application-attributes.md)所述。|
+|DuplicateSourceEntries | 操作无法完成，因为找到多个具有配置的匹配属性的用户。 请删除重复的用户，或重新配置属性映射，如 [此处](../app-provisioning/customize-application-attributes.md)所述。|
 |ImportSkipped | 评估每个用户时，我们会尝试从源系统导入用户。 如果导入的用户缺少属性映射中定义的匹配属性，则通常会出现此错误。 如果在匹配属性的用户对象上不存在值，则无法计算范围、匹配或导出更改。 请注意，存在此错误并不表示用户处于范围内，因为我们尚未评估用户的范围。|
 |EntrySynchronizationSkipped | 预配服务已成功查询源系统并确定了用户。 用户未采取进一步的操作，已跳过这些操作。 此跳过可能是由于用户超出了作用域，或者用户在目标系统中已存在，无需进行进一步的更改。|
 
 ## <a name="next-steps"></a>后续步骤
 
-* [检查用户设置的状态](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [为 Azure AD 库应用程序配置用户预配时遇到的问题](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [检查用户设置的状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [为 Azure AD 库应用程序配置用户预配时遇到的问题](../app-provisioning/application-provisioning-config-problem.md)
