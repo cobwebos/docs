@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 97be10352d25daf9c60ce41fe1fc9e728513ba94
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210892"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076809"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 的 Azure 安全基线
 
@@ -44,11 +44,11 @@ ms.locfileid: "88210892"
 
 **责任**：客户
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视和记录虚拟网络、子网和网络接口的配置和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
 **指南**：连接到 AZURE Synapse SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。
 
-还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 * [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -70,7 +70,7 @@ ms.locfileid: "88210892"
 
 **责任**：不适用
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意 IP 地址的通信
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
 **指南**：将高级威胁防护 (ATP) 用于 AZURE Synapse SQL。 ATP 会检测异常活动，这些活动表明对访问或利用数据库的异常和潜在有害尝试，并且它可能会触发各种警报，如 "潜在的 SQL 注入" 和 "从异常位置访问"。 ATP 是) 产品/服务的高级数据安全 (的一部分，可通过中央 SQL 广告门户进行访问和管理。
 
@@ -92,7 +92,7 @@ ms.locfileid: "88210892"
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：连接到 AZURE Synapse SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将流日志发送到 Log Analytics 工作区，或将流日志流式传输到事件中心。 如果需要调查异常活动，请启用网络观察程序数据包捕获。
+**指南**：连接到 AZURE Synapse SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将流日志发送到 Log Analytics 工作区，或将流日志流式传输到事件中心。 启用网络观察程序数据包捕获（如果调查异常活动时有此需要）。
 
 * [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -138,7 +138,7 @@ ms.locfileid: "88210892"
 
 **指南**：定义和实现与 Azure 策略相关的 SQL 池资源的网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或使用为 Azure SQL 数据库/服务器网络保护设计的任何内置策略定义。 适用于 Azure SQL 数据库服务器的适用内置网络安全策略的一个示例是： "SQL Server 应使用虚拟网络服务终结点"。
 
-使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于角色的访问控制 (RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于 Azure 角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -446,7 +446,7 @@ ms.locfileid: "88210892"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**： Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，还可以使用 Azure Active Directory 访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户的访问权限，以确保只有正确的用户才能继续访问。
+**指南**： Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，还可以使用 Azure Active Directory 访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才能持续拥有访问权限。
 
 使用 SQL 身份验证时，请在数据库中创建包含的数据库用户。 确保将一个或多个数据库用户放入一个自定义数据库角色，该角色具有适用于该用户组的特定权限。
 
@@ -510,7 +510,7 @@ ms.locfileid: "88210892"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
 数据发现 &amp; 分类内置于 Azure SYNAPSE SQL 中。 它提供用于发现、分类、标记和报告数据库中的敏感数据的高级功能。
 
@@ -544,7 +544,7 @@ ms.locfileid: "88210892"
 
 此外，适用于 Azure SQL 数据库的高级威胁防护、Azure SQL 托管实例和 Azure Synapse 可检测异常活动，指示访问或利用数据库的异常和潜在有害尝试。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
 
@@ -582,7 +582,7 @@ ms.locfileid: "88210892"
 
 **责任**：客户
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 **指导**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对 Synapse SQL 池中的 Azure SQL 数据库的访问。
 
@@ -698,7 +698,7 @@ ms.locfileid: "88210892"
 
 有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指南**：使用 Azure 资源关系图在)  (中查询和发现与订阅中的 Synapse SQL 池相关的所有资源。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
@@ -738,7 +738,7 @@ ms.locfileid: "88210892"
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指南**：定义与 Synapse SQL 池相关的已批准 Azure 资源的列表。
 
@@ -752,7 +752,7 @@ ms.locfileid: "88210892"
 - 不允许的资源类型
 - 允许的资源类型
 
-使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -954,7 +954,7 @@ ms.locfileid: "88210892"
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：使用托管标识，通过 AZURE ACTIVE DIRECTORY (AD) 中的自动托管标识提供 Azure 服务。 通过托管标识，你可以对任何支持 Azure AD 身份验证的服务进行身份验证，包括 Azure Key Vault，而无需在代码中包含任何凭据。
+**指南**：使用托管标识，通过 AZURE ACTIVE DIRECTORY (AD) 中的自动托管标识提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 * [教程：使用 Windows VM 系统分配托管标识访问 Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
 
@@ -1010,7 +1010,7 @@ ms.locfileid: "88210892"
 
 有关详细信息，请参阅[安全控制：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期自动备份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指南**：在一整天内会自动创建 Synapse SQL 池的快照，创建7天可用的还原点。 无法更改此保留期。 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 

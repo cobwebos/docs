@@ -12,14 +12,14 @@ ms.author: sawinark
 author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
-ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926685"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077840"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -169,11 +169,11 @@ ms.locfileid: "87926685"
 
 ![在“设置”选项卡上设置属性 - 嵌入包](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
 
-   1. 使用) 拖放包文件 (`.dtsx` 或将其从文件夹中**上传**到所提供的框中。 包会自动压缩并嵌入到活动有效负载中。 嵌入后，可以“下载”包供以后编辑。 你还可以通过将嵌入包分配给可在多个活动中使用的管道参数来**参数化**它，从而优化管道有效负载的大小。 当前不支持使用)  (嵌入项目文件 `.ispac` ，因此你不能在嵌入包中将 SSIS 参数/连接管理器与项目级别的作用域一起使用。
+   1. 拖放你的包文件（带有 `.dtsx`），或将其从文件夹“上传”到提供的框中。 包会自动压缩并嵌入到活动有效负载中。 嵌入后，可以“下载”包供以后编辑。 你还可以通过将嵌入包分配给可在多个活动中使用的管道参数来**参数化**它，从而优化管道有效负载的大小。 当前不支持嵌入项目文件（带有 `.ispac`），因此无法在嵌入包中将 SSIS 参数/连接管理器与项目级范围一起使用。
    
-   1. 如果你的嵌入式包不是全部加密的，并且我们检测到 (中) 使用 "执行包任务"，则会自动选择 "**执行包任务**" 复选框，并将自动添加其文件系统路径引用的子包，因此你也可以嵌入它们。
+   1. 如果嵌入包不是全部加密的，并且我们检测到其中使用了“执行包任务 (EPT)”，则系统会自动选中“执行包任务”复选框，并自动添加通过其文件系统路径引用的子包，以便你也可嵌入它们。
    
-      如果我们无法检测到 EPT 的使用，则需要手动选中 "**执行包任务**" 复选框，并逐个添加由其文件系统路径引用的子包，以便您还可以嵌入它们。 如果子包存储在 SQL Server 数据库 (MSDB) 中，则不能嵌入这些包，因此，您需要确保您的 Azure-SSIS IR 可以访问 MSDB，以使用其 SQL Server 引用获取它们。 当前不支持嵌入项目文件 (`.ispac`) ，因此不能为子包使用基于项目的引用。
+      如果无法检测到 EPT 的使用，则需要手动选中“执行包任务”复选框，并添加通过其文件系统路径逐个引用的子包，以便你也可以嵌入它们。 如果子包存储在 SQL Server 数据库 (MSDB) 中，则无法嵌入它们，因此需要确保 Azure-SSIS IR 可以访问 MSDB，以便使用其 SQL Server 引用提取它们。 当前不支持嵌入项目文件（带有 `.ispac`），因此无法对子包使用基于项目的引用。
    
    1. 如果在通过 SSDT 创建包时使用了 **EncryptAllWithPassword** 或 **EncryptSensitiveWithPassword** 保护级别，请在“加密密码”框中输入密码的值。 
    
@@ -245,15 +245,15 @@ ms.locfileid: "87926685"
 
    1. 如果 Azure-SSIS IR 正在运行，而你已选择“SSISDB”作为包位置，并已清除“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目和包中现有的连接管理器，方便你为它们的属性赋值  。 否则，可以逐个输入以便手动为其属性赋值。 为了使包成功执行，请确保它们存在并已正确输入。 
    
-      您可以通过在 SSDT 上打开包含任何连接管理器的包来获取该连接管理器的正确**作用域**、**名称**和**属性**名称。 打开包后，选择相关的连接管理器，以在 SSDT 的 "**属性**" 窗口中显示其所有属性的名称和值。 利用此信息，你可以在运行时覆盖任何连接管理器属性的值。 
+      可以获取任何连接管理器的正确 SCOPE、NAME 和 PROPERTY 名称，具体方法是在 SSDT 上打开包含相应连接管理器的包。 打开包之后，选择相关连接管理器，以在 SSDT 的“属性”窗口中显示其所有属性的名称和值。 利用此信息，可以在运行时重写任何连接管理器属性的值。 
 
       ![从 SSDT 获取连接管理器属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
 
-      例如，如果不在 SSDT 上修改原始包，可以通过在运行时覆盖现有连接管理器中的**ConnectByProxy**、 **ConnectionString**和**ConnectUsingManagedIdentity**属性的值，将 SQL Server 上运行的本地数据流数据流转换为在 ADF 中运行的本地到云的数据流。
+      例如，如果不在 SSDT 上修改原始包，可以通过在运行时覆盖现有连接管理器中的 **ConnectByProxy**、 **ConnectionString**和 **ConnectUsingManagedIdentity** 属性的值，将 SQL Server 上运行的本地数据流数据流转换为在 ADF 中运行的本地到云的数据流。
       
-      这些运行时重写可以启用自承载 IR () SHIR 在本地访问数据时，将 SHIR 配置为 SSIS IR 的代理; 有关使用最新 MSOLEDBSQL 驱动 (Azure Active Directory 程序[将配置为代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)的 Azure SQL 数据库/托管实例连接的信息，请参阅使用[用于 OLEDB 连接的 Adf 托管标识配置 aad 身份验证](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+      这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)）。
 
-      ![在 "连接管理器" 选项卡上设置 SSDT 的属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+      ![在“连接管理器”选项卡上通过 SSDT 设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    
    1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的连接管理器属性，以便在此选项卡上为它们赋值。    
 
@@ -269,19 +269,19 @@ ms.locfileid: "87926685"
 
    1. 逐个输入选定包的现有属性的路径，以便手动为其赋值。 为了使包成功执行，请确保它们存在并已正确输入。 例如，若要替代用户变量的值，请按以下格式输入其路径：`\Package.Variables[User::<variable name>].Value`。 
 
-      您可以通过在 SSDT 上打开包含包属性的包来获取该属性的正确**路径**。 打开包后，在 SSDT 的 "**属性**" 窗口中选择其控制流和**配置**属性。 接下来，选择 "**配置**" 属性旁的**省略号 ("**) " 按钮，以打开通常用于[在包部署模型中创建包配置](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)的 "**包配置组织**程序"。 
+      可以通过在 SSDT 上打开包含任何包属性的包，获取相应包属性的正确 PROPERTY PATH。 打开包后，在 SSDT 的 "**属性**" 窗口中选择其控制流和**配置**属性。 接下来，选择其“配置”属性旁的省略号 (...) 按钮，以打开“包配置组织程序”，它通常用于[在包部署模型中创建包配置](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)。 
 
-      ![从 SSDT 获取包属性-配置属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+      ![从 SSDT 获取包属性 - 配置属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 
-      在 "**包配置组织**程序" 中，选中 "**启用包配置**" 复选框和 "**添加 ...** " 按钮以打开**包配置向导**。 
+      在“包配置组织程序”中，选中“启用包配置”复选框和“添加...”按钮以打开“包配置向导”。 
       
-      在**包配置向导**中，选择 "**配置类型**" 下拉菜单中的 " **XML 配置文件**" 项，并选择 "**直接指定配置设置**" 按钮，输入配置文件名称，然后选择 "**下一步" >** 按钮。 
+      在“包配置向导”上，在“配置类型”下拉菜单中选择“XML 配置文件”项，选择“直接指定配置设置”按钮，输入配置文件名，然后选择“下一步 >”按钮。 
 
-      ![从 SSDT 获取包属性-配置管理器](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+      ![从 SSDT 获取包属性 - 配置组织程序](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
 
-      最后，选择要选择其路径的包属性，然后选择**下一个 >** 按钮。  现在可以看到，请复制 & 粘贴所需的包属性路径，并将其保存在配置文件中。 利用此信息，你可以在运行时重写任何包属性的值。 
+      最后，选择需要其路径的包属性，然后选择“下一步 >”按钮。  现在可以查看、复制和粘贴所需的包属性路径，并将它们保存在配置文件中。 利用此信息，可以在运行时重写任何包属性的值。 
 
-      ![从 SSDT 获取包属性-配置向导](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
+      ![从 SSDT 获取包属性 - 配置向导](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
    1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的包属性，以便在此选项卡上为它们赋值。    
    

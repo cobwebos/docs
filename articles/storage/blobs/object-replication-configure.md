@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566057"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076168"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>为块 blob 配置对象复制（预览）
 
@@ -24,6 +24,8 @@ ms.locfileid: "88566057"
 配置对象复制时，需要创建复制策略，以指定源存储帐户和目标帐户。 复制策略包括一个或多个规则，用于指定源容器和目标容器，并指明复制源容器中的哪些块 blob。
 
 本文介绍了如何使用 Azure 门户、PowerShell 或 Azure CLI 为存储帐户配置对象复制。 还可以使用 Azure 存储资源提供程序客户端库之一来配置对象复制。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>创建复制策略和规则
 

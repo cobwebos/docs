@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c52275735a6558a625e2118761d7ba98509dbe1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3f1a9a2756d81765d82938651672e5a83edc48ed
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497063"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078675"
 ---
-# <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>使用 SQL VM 资源提供程序（RP）在 Azure 中注册 SQL Server VM
+# <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server VM (RP) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍如何在 Azure 中通过 SQL VM 资源提供程序（RP）注册 SQL Server 的虚拟机（VM）。 注册到资源提供程序会在订阅中创建 SQL 虚拟机资源，这是与虚拟机资源不同的资源。 从资源提供程序中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
+本文介绍如何在 Azure 中通过 SQL VM 资源提供程序 (RP) 注册 SQL Server 虚拟机 (VM) 。 注册到资源提供程序会在订阅中创建 SQL 虚拟机资源，这是与虚拟机资源不同的资源。 从资源提供程序中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
 
 通过 Azure 门户部署 SQL Server VM Azure 市场映像会自动将 SQL Server VM 注册到资源提供程序。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则应将 SQL Server VM 注册到资源提供程序以实现以下目的：
 
@@ -51,7 +51,7 @@ ms.locfileid: "87497063"
 
    ---
 
-若要利用 SQL VM 资源提供程序，必须先向[资源提供程序注册订阅](#register-subscription-with-rp)，这使资源提供程序能够在特定订阅中创建资源。
+若要利用 SQL VM 资源提供程序，必须先向 [资源提供程序注册订阅](#register-subscription-with-rp)，这使资源提供程序能够在特定订阅中创建资源。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -122,7 +122,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>轻型管理模式
 
-如果未在虚拟机上安装[SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)，则建议在轻型模式下向 SQL VM 资源提供程序注册。 这会在[轻型模式](#management-modes)下安装 SQL IaaS 扩展并防止 SQL Server 服务重启。 随后可以随时升级到完整模式，但这样做会重启 SQL Server 服务，因此建议等到计划性维护时段。 
+如果未在虚拟机上安装 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md) ，则建议在轻型模式下向 SQL VM 资源提供程序注册。 这会在[轻型模式](#management-modes)下安装 SQL IaaS 扩展并防止 SQL Server 服务重启。 随后可以随时升级到完整模式，但这样做会重启 SQL Server 服务，因此建议等到计划性维护时段。 
 
 提供 SQL Server 许可证类型，形式为即用即付（`PAYG`，用于按使用情况付费）、Azure 混合权益（`AHUB`，用于使用自己的许可证）或灾难恢复（`DR`，用于激活[免费 DR 副本许可证](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)）。
 
@@ -243,7 +243,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)资源。 
-1. 选择 SQL Server VM，然后选择 "**概述**"。 
+1. 选择 SQL Server VM，然后选择 " **概述**"。 
 1. 对于具有无代理或轻型 IaaS 模式的 SQL Server VM，请选择“SQL IaaS 扩展仅提供许可证类型和版本更新”消息。
 
    ![用于从门户更改模式的选项](./media/sql-vm-resource-provider-register/change-sql-iaas-mode-portal.png)
@@ -283,7 +283,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ### <a name="azure-portal"></a>Azure 门户 
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
-1. 中转到[SQL Server vm](manage-sql-vm-portal.md)。
+1. 中转到 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果 SQL Server VM 未在此处列出，则可能尚未注册到 SQL VM 资源提供程序。 
 1. 查看“状态”下的值。 如果“状态”为“成功”，则 SQL Server VM 已成功注册到 SQL VM 资源提供程序 。 
 
@@ -313,7 +313,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ## <a name="unregister-from-rp"></a>从 RP 注销
 
-若要使用 SQL VM 资源提供程序取消注册 SQL Server VM，请使用 Azure 门户或 Azure CLI 删除 SQL 虚拟机*资源*。 删除 SQL 虚拟机*资源*不会删除 SQL Server VM。 但是，请小心谨慎并仔细执行以下步骤，因为在尝试删除资源时，可能会意外删除虚拟机。 
+若要使用 SQL VM 资源提供程序取消注册 SQL Server VM，请使用 Azure 门户或 Azure CLI 删除 SQL 虚拟机 *资源* 。 删除 SQL 虚拟机 *资源* 不会删除 SQL Server VM。 但是，请小心谨慎并仔细执行以下步骤，因为在尝试删除资源时，可能会意外删除虚拟机。 
 
 需要在 SQL VM 资源提供程序中注销 SQL 虚拟机，以使管理模式完全降级。 
 
@@ -330,19 +330,19 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
    ![删除 SQL VM 资源提供程序](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
-1. 键入 SQL 虚拟机的名称，并**清除该虚拟机旁边的复选框**。
+1. 键入 SQL 虚拟机的名称，并 **清除该虚拟机旁边的复选框**。
 
    ![删除 SQL VM 资源提供程序](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > 如果未能清除虚拟机名称的复选框，会导致彻底删除虚拟机。 清除该复选框可从资源提供程序取消注册 SQL Server VM，但不会删除实际虚拟机。 
 
-1. 选择 "**删除**" 以确认删除 SQL 虚拟机*资源*，而不是 SQL Server VM。 
+1. 选择 " **删除** " 以确认删除 SQL 虚拟机 *资源*，而不是 SQL Server VM。 
 
 ### <a name="command-line"></a>命令行
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用[az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete)命令。 这会删除 SQL Server VM*资源*，但不会删除虚拟机。 
+若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用 [az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) 命令。 这会删除 SQL Server VM *资源* ，但不会删除虚拟机。 
 
 
 ```azurecli-interactive
@@ -353,7 +353,7 @@ az sql vm delete
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 这会删除 SQL Server VM*资源*，但不会删除虚拟机。 
+若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 这会删除 SQL Server VM *资源* ，但不会删除虚拟机。 
 
 ```powershell-interactive
 Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
@@ -398,9 +398,9 @@ SQL VM 资源提供程序仅支持：
 
 注册到 SQL VM 资源提供程序是否会在我的 VM 上安装代理？
 
-不是。 注册到 SQL VM 资源提供程序仅创建新的元数据资源。 不会在 VM 上安装代理。
+是，使用 SQL VM 资源提供程序注册将在 VM 上安装代理。
 
-仅在启用完整可管理性时，才需要 SQL Server IaaS 扩展。 将可管理性模式从轻型升级到完整会安装 SQL Server IaaS 扩展，并且会重启 SQL Server。
+SQL Server IaaS 扩展依赖于代理来查询 SQL Server 的元数据。 仅当在 NoAgent 模式下 regsitered SQL VM 资源提供程序时，才会安装代理。
 
 **是否向 VM 上的 SQL VM 资源提供程序重启 SQL Server 注册？**
 
@@ -466,6 +466,6 @@ SQL VM 资源提供程序仅支持：
 有关详细信息，请参阅以下文章： 
 
 * [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)
+* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)  
 * [Windows VM 上的 SQL Server 定价指南](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 发行说明](../../database/doc-changes-updates-release-notes.md)

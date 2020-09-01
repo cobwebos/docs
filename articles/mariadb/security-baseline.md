@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 69930342a69613c3863443c993d80e02e1981a98
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366826"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077239"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>适用于 Azure Database for MariaDB 的 Azure 安全基线
 
@@ -34,11 +34,11 @@ ms.locfileid: "87366826"
 
 你还可以通过防火墙规则保护 Azure Database for MariaDB。 在指定哪些计算机具有访问权限之前，服务器防火墙将禁止所有对数据库服务器的访问。 要配置防火墙，请创建防火墙规则，以指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
 
-如何配置 Azure Database for MariaDB 的专用链接：https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+如何配置 Azure Database for MariaDB 的专用链接： https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-如何在 Azure Database for MariaDB 服务器中创建和管理 VNet 服务终结点和 VNet 规则：https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+如何在 Azure Database for MariaDB 服务器中创建和管理 VNet 服务终结点和 VNet 规则： https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-如何配置 Azure Database for MariaDB 防火墙规则：https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+如何配置 Azure Database for MariaDB 防火墙规则： https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Azure 安全中心监视**：是
 
@@ -46,11 +46,11 @@ ms.locfileid: "87366826"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
-**指南**：在 Azure Database for MariaDB 服务器保护到专用终结点时，你可以在同一虚拟网络中部署虚拟机。 可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：在 Azure Database for MariaDB 服务器保护到专用终结点时，你可以在同一虚拟网络中部署虚拟机。 可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
-如何配置 Azure Database for MariaDB 的专用链接：https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+如何配置 Azure Database for MariaDB 的专用链接： https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-如何启用 NSG 流日志： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal 如何启用和使用流量分析：https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+如何启用 NSG 流日志： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal 如何启用和使用流量分析： https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -72,7 +72,7 @@ ms.locfileid: "87366826"
 
 在与 Azure Database for MariaDB 实例相关联的虚拟网络上启用 DDoS 保护，以防范 DDoS 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-如何配置 Azure Database for MariaDB 的高级威胁防护：https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+如何配置 Azure Database for MariaDB 的高级威胁防护： https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
 如何配置 DDoS 保护： https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -84,9 +84,9 @@ ms.locfileid: "87366826"
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：在 Azure Database for MariaDB 服务器保护到专用终结点时，你可以在同一虚拟网络中部署虚拟机。 随后可以配置网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：在 Azure Database for MariaDB 服务器保护到专用终结点时，你可以在同一虚拟网络中部署虚拟机。 随后可以配置网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
-如何启用 NSG 流日志： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal 如何启用和使用流量分析：https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+如何启用 NSG 流日志： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal 如何启用和使用流量分析： https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -97,7 +97,7 @@ ms.locfileid: "87366826"
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
 **指南**：对 Azure Database for MariaDB 使用高级威胁防护。 高级威胁防护可检测异常活动，表明尝试访问或利用数据库的行为异常且可能有害。
-如何配置 Azure Database for MariaDB 的高级威胁防护：https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+如何配置 Azure Database for MariaDB 的高级威胁防护： https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
 
 **Azure 安全中心监视**：是
@@ -118,7 +118,7 @@ ms.locfileid: "87366826"
 **指南**：对于需要访问 Azure Database for MariaDB 实例的资源，可以使用虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应源或目标字段中指定服务标记名称（例如 SQL.WestUs），可允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 注意： Azure Database for MariaDB 使用 "Microsoft .Sql" 服务标记。
 
-有关使用服务标记的详细信息： https://docs.microsoft.com/azure/virtual-network/service-tags-overview 了解 Azure Database for MariaDB 的服务标记用法：https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+有关使用服务标记的详细信息： https://docs.microsoft.com/azure/virtual-network/service-tags-overview 了解 Azure Database for MariaDB 的服务标记用法： https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -157,20 +157,20 @@ ms.locfileid: "87366826"
 
 如何创建和使用标记： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Database for MariaDB 实例相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
-如何查看和检索 Azure 活动日志事件： https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 如何在 Azure Monitor 中创建警报：https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+如何查看和检索 Azure 活动日志事件： https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 如何在 Azure Monitor 中创建警报： https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -188,9 +188,9 @@ Azure 安全中心监视：不适用
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
 **指南**：启用诊断设置和服务器日志，并引入日志来聚合 Azure Database for MariaDB 实例生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
-如何配置和访问 Azure Database for MariaDB 的服务器日志：https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+如何配置和访问 Azure Database for MariaDB 的服务器日志： https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-如何配置和访问 Azure Database for MariaDB 的审核日志： https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal 如何载入 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何配置和访问 Azure Database for MariaDB 的审核日志： https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal 如何载入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -202,7 +202,7 @@ Azure 安全中心监视：不可用
 
 **指南**：对 Azure Database for MariaDB 实例启用诊断设置，以便访问审核、安全和诊断日志。 确保专门启用了 MariaDB 审核日志。 自动可用的活动日志包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 还可以启用 Azure 活动日志诊断设置，并将日志发送到相同的 Log Analytics 工作区或存储帐户。
 
-如何配置和访问 Azure Database for MariaDB 的服务器日志： https://docs.microsoft.com/azure/mariadb/concepts-server-logs 如何配置和访问 Azure Database for MariaDB 的审核日志： https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal 如何配置 Azure 活动日志的诊断设置：https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+如何配置和访问 Azure Database for MariaDB 的服务器日志： https://docs.microsoft.com/azure/mariadb/concepts-server-logs 如何配置和访问 Azure Database for MariaDB 的审核日志： https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal 如何配置 Azure 活动日志的诊断设置： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -222,13 +222,13 @@ Azure 安全中心监视：不可用
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指南**：在 Azure Monitor 中，对于用于保存 Azure Database for MariaDB 日志的 Log Analytics 工作区，请根据组织的符合性法规设置保留期。 使用 Azure 存储帐户进行长期/存档存储。
-如何为 Log Analytics 工作区设置日志保持参数：将 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period 资源日志存储在 Azure 存储帐户中：https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+如何为 Log Analytics 工作区设置日志保持参数：将 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period 资源日志存储在 Azure 存储帐户中： https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -236,13 +236,13 @@ Azure 安全中心监视：不可用
 
 如何加入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-有关 "Log Analytics" 工作区的详细信息：https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+有关 "Log Analytics" 工作区的详细信息： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
 如何在 Azure Monitor 中执行自定义查询： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：针对异常活动启用警报
 
@@ -250,11 +250,11 @@ Azure 安全中心监视：不可用
 
 此外，你可以为 MariaDB 启用服务器日志和诊断设置，并将日志发送到 Log Analytics 工作区。 将 Log Analytics 工作区加入 Azure Sentinel，因为它提供了安全业务流程自动化响应 (SOAR) 解决方案。 这样便可以创建 playbook（自动化解决方案）并将其用于修正安全问题。
 
-如何为 MariaDB 启用高级威胁防护：https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+如何为 MariaDB 启用高级威胁防护： https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-如何配置和访问 MariDB 的服务器日志：https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+如何配置和访问 MariDB 的服务器日志： https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-如何配置和访问 MariaDB 的审核日志：https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+如何配置和访问 MariaDB 的审核日志： https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
 如何加入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -292,11 +292,11 @@ Azure 安全中心监视：不可用
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：维护对 MariaDB 实例的管理平面（Azure 门户/Azure 资源管理器）具有管理访问权限的用户帐户的清单。 此外，维护有权访问 MariaDB 实例的数据平面的管理帐户的清单。 （在创建 MariaDB 服务器时，你为管理员用户提供凭据。 此管理员可用于创建其他 MariaDB 用户。）
+**指南**：维护对管理平面具有管理访问权限的用户帐户的清单 (Azure 门户/Azure 资源管理器) MariaDB 实例。 此外，维护有权访问 MariaDB 实例的数据平面的管理帐户的清单。  (在创建 MariaDB 服务器时，你为管理员用户提供凭据。 此管理员可用于创建其他 MariaDB 用户。 ) 
 
-了解 MariaDB 的访问管理：https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
+了解 MariaDB 的访问管理： https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-了解 Azure 订阅的 Azure 内置角色：https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+了解 Azure 订阅的 Azure 内置角色： https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Azure 安全中心监视**：是
@@ -309,12 +309,12 @@ Azure 安全中心监视：不可用
 
 创建 MariaDB 资源本身时，Azure 会强制创建具有强密码的管理用户。 但是，一旦创建了 MariaDB 实例，你就可以使用你创建的帐户的第一个服务器管理员帐户创建其他用户并授予其管理访问权限。 创建这些帐户时，请确保为每个帐户配置不同的强密码。
 
-如何为 MariaDB 创建其他帐户：https://docs.microsoft.com/azure/mariadb/howto-create-users
+如何为 MariaDB 创建其他帐户： https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -330,11 +330,11 @@ Azure 安全中心监视：不可用
 
 **指南**：对 MariaDB 的数据平面访问由存储在数据库中的标识控制，不支持 SSO。 MariaDB 的控制平面访问通过 REST API 提供，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
 
-了解 Azure Database for MariaDB REST API：https://docs.microsoft.com/rest/api/mariadb/
+了解 Azure Database for MariaDB REST API： https://docs.microsoft.com/rest/api/mariadb/
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -358,7 +358,7 @@ Azure 安全中心监视：不可用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
@@ -366,7 +366,7 @@ Azure 安全中心监视：不可用
 
 此外，可以使用 Azure AD Privileged Identity Management (PIM) 在环境中发生可疑活动或不安全的活动时生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。
 
-如何为 MariaDB 设置高级威胁防护：https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+如何为 MariaDB 设置高级威胁防护： https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
 如何部署 Privileged Identity Management (PIM)： https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
@@ -390,9 +390,9 @@ Azure 安全中心监视：不可用
 
 **指导**：使用 Azure Active Directory (AAD) 作为中心身份验证和授权系统。 AAD 通过对静态数据和传输中数据使用强加密来保护数据。 AAD 还会对用户凭据进行加盐、哈希处理和安全存储。
 
-Azure AD 身份验证不能用于直接访问 MariaDB 数据平面，但是，可以在管理平面级别（例如 Azure 门户）使用 Azure AD 凭据来控制 MariaDB 管理员帐户。
+Azure AD 身份验证不能用于直接访问 MariaDB 数据平面，但是，可以在管理平面级别使用 Azure AD 凭据 (例如，Azure 门户) 控制 MariaDB 管理员帐户。
 
-如何更新 MariaDB 的管理员密码：https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
+如何更新 MariaDB 的管理员密码： https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
 
 **Azure 安全中心监视**：是
 
@@ -406,21 +406,21 @@ Azure AD 身份验证不能用于直接访问 MariaDB 数据平面，但是，�
 
 如何使用 Azure 标识访问评审： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 
-**指南**：启用 MariaDB 和 Azure Active Directory 的诊断设置，将所有日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中配置所需的警报（例如身份验证尝试失败）。
+**指南**：启用 MariaDB 和 Azure Active Directory 的诊断设置，将所有日志发送到 Log Analytics 工作区。 配置所需的警报 (如 Log Analytics 工作区中) 身份验证尝试失败。
 
-如何配置和访问 MariaDB 的服务器日志：https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+如何配置和访问 MariaDB 的服务器日志： https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-如何配置和访问 MariaDB 的审核日志：https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+如何配置和访问 MariaDB 的审核日志： https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
 如何将 Azure 活动日志集成到 Azure Monitor： https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure 安全中心监视**：不可用
+Azure 安全中心监视：不可用
 
 **责任**：客户
 
@@ -430,15 +430,15 @@ Azure 安全中心监视：是
 
 使用 Azure Active Directory 标识保护和风险检测功能可配置对检测到的可疑操作的自动响应。 可以通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
 
-如何为 MariaDB 启用高级威胁防护：https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+如何为 MariaDB 启用高级威胁防护： https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-如何配置和启用 Identity Protection 风险策略：https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+如何配置和启用 Identity Protection 风险策略： https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 如何查看 Azure AD 风险登录： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 如何加入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure 安全中心监视**：不可用
+Azure 安全中心监视：不可用
 
 **责任**：客户
 
@@ -448,7 +448,7 @@ Azure 安全中心监视：是
 
 客户密码箱支持的服务列表： https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -462,9 +462,9 @@ Azure 安全中心监视：是
 
 如何创建和使用标记： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -474,13 +474,13 @@ Azure 安全中心监视：不适用
 
 如何创建管理组： https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何配置 Azure Database for MariaDB 的专用链接：https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+如何配置 Azure Database for MariaDB 的专用链接： https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-如何配置 Azure Database for MariaDB 的服务终结点：https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+如何配置 Azure Database for MariaDB 的服务终结点： https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-如何配置 Azure Database for MariaDB 的防火墙规则：https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+如何配置 Azure Database for MariaDB 的防火墙规则： https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
-**Azure 安全中心监视**：不可用
+Azure 安全中心监视：不可用
 
 **责任**：客户
 
@@ -490,29 +490,29 @@ Azure 安全中心监视：不适用
 
 Microsoft 管理 MariaDB 的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
 
-如何减小 Azure Database for MariaDB 的数据渗透：https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+如何减小 Azure Database for MariaDB 的数据渗透： https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
 了解 Azure 中的客户数据保护： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**： Azure Database for MariaDB 支持使用传输层安全性（TLS）将 Azure Database for MariaDB 服务器连接到客户端应用程序，之前称为安全套接字层（SSL）。 通过在数据库服务器与客户端应用程序之间强制实施 TLS 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 在 Azure 门户中，确保已为所有 MariaDB 实例启用 "强制 SSL 连接"。
+**指南**： Azure Database for MariaDB 支持使用传输层安全性 (TLS) 将 Azure Database for MariaDB 服务器连接到客户端应用程序，之前称为安全套接字层 (SSL) 。 通过在数据库服务器与客户端应用程序之间强制实施 TLS 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 在 Azure 门户中，确保已为所有 MariaDB 实例启用 "强制 SSL 连接"。
 
-如何在传输中为 MariaDB 配置加密：https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
+如何在传输中为 MariaDB 配置加密： https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
 
 Azure 安全中心监视：不可用
 
-**责任**：共享
+责任：共享
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
 **指南**：目前尚不 Azure Database for MariaDB 支持数据标识、分类和丢失防护功能。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 了解 Azure 中的客户数据保护： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -522,11 +522,11 @@ Azure 安全中心监视：不可用
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 Azure AD RBAC 来控制对 Azure Database for MariaDB 管理平面（Azure 门户/Azure 资源管理器）的访问。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。
+**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 azure Database for MariaDB 管理平面 (Azure 门户/azure 资源管理器) 。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。
 
-如何在 Azure 中配置 RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+如何配置 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-如何使用 SQL for MariaDB 配置用户访问权限：https://docs.microsoft.com/azure/mariadb/howto-create-users
+如何使用 SQL for MariaDB 配置用户访问权限： https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 **Azure 安全中心监视**：不适用
 
@@ -548,7 +548,7 @@ Microsoft 管理 MariaDB 的底层基础结构，并实施了严格控制来防�
 
 **指南**： Azure Database for MariaDB 服务使用 FIPS 140-2 验证的加密模块进行静态数据的存储加密。 数据（包括备份）在磁盘上加密，运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 
-了解 MariaDB 的静态加密：https://docs.microsoft.com/azure/mariadb/concepts-security
+了解 MariaDB 的静态加密： https://docs.microsoft.com/azure/mariadb/concepts-security
 
 **Azure 安全中心监视**：不适用
 
@@ -618,7 +618,7 @@ Microsoft 管理 MariaDB 的底层基础结构，并实施了严格控制来防�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源（包括 Azure Database for MariaDB 服务器）。 确保你在租户中拥有适当（读取）权限，并且能够枚举所有 Azure 订阅以及订阅中的资源。
+**指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅 () 中的 Azure Database for MariaDB server) 。 确保你在租户中拥有适当（读取）权限，并且能够枚举所有 Azure 订阅以及订阅中的资源。
 
 如何使用 Azure Resource Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -664,7 +664,7 @@ Microsoft 管理 MariaDB 的底层基础结构，并实施了严格控制来防�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指南**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -722,13 +722,13 @@ Microsoft 管理 MariaDB 的底层基础结构，并实施了严格控制来防�
 
 
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 
 **Azure 安全中心监视**：不适用
@@ -786,7 +786,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -828,7 +828,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -848,7 +848,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -868,7 +868,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -910,9 +910,9 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 如何设置凭据扫描器： https://secdevtools.azurewebsites.net/helpcredscan.html
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -931,7 +931,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 Azure 服务的基础主机（例如 Azure Database for MariaDB server）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如 Azure Database for MariaDB server) ，但它不会在客户内容上运行。
 
 预先扫描要上传到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure Database for MariaDB 服务器等。Microsoft 无法访问这些实例中的数据。
 
@@ -943,7 +943,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **指南**：不适用；此建议适用于计算资源。
 
-在支持 Azure 服务的基础主机（例如 Azure Database for MariaDB server）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+在支持 Azure 服务 (的基础主机上启用了 Microsoft 反恶意软件，例如 Azure Database for MariaDB server) ，但它不会在客户内容上运行。
 
 
 **Azure 安全中心监视**：不适用
@@ -958,9 +958,9 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **指南**： Azure Database for MariaDB 获取完整备份、差异备份和事务日志备份。  Azure Database for MariaDB 可自动创建服务器备份并将其存储在用户配置的本地冗余或异地冗余存储中。 备份可以用来将服务器还原到某个时间点。 备份和还原是任何业务连续性策略的基本组成部分，因为它们可以保护数据免遭意外损坏或删除。  默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
-了解 MariaDB 的备份：https://docs.microsoft.com/azure/mariadb/concepts-backup
+了解 MariaDB 的备份：  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-了解 MariaDB 初始配置：https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
+了解 MariaDB 初始配置： https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
 
 
 
@@ -974,14 +974,14 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 如果对 MariaDB 服务器中存储的数据使用客户端数据加密 Key Vault，请确保密钥的定期自动备份。
 
-了解 MariaDB 的备份：https://docs.microsoft.com/azure/mariadb/concepts-backup
+了解 MariaDB 的备份：  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
 如何备份 Key Vault 密钥： https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 
-**Azure 安全中心监视**：是
+Azure 安全中心监视：是
 
-责任：共享
+**责任**：共享
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
@@ -989,7 +989,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
-了解 Azure Database for MariaDB 中的备份和还原：https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
+了解 Azure Database for MariaDB 中的备份和还原：  https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
 
 
 **Azure 安全中心监视**：不适用
@@ -1000,7 +1000,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **指南**： Azure Database for MariaDB 获取完整备份、差异备份和事务日志备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
-了解 Azure Database for MariaDB 中的备份和还原：https://docs.microsoft.com/azure/mariadb/concepts-backup
+了解 Azure Database for MariaDB 中的备份和还原：  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
 
 **Azure 安全中心监视**：是
@@ -1025,13 +1025,13 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。 
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
-- Azure 安全中心中的安全警报：https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+- Azure 安全中心中的安全警报： https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
-- 使用标记来组织 Azure 资源：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- 使用标记来组织 Azure 资源： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure 安全中心监视**：是
 
@@ -1077,7 +1077,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -1089,7 +1089,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-可在以下位置找到有关 Microsoft 管理的云基础结构、服务和应用程序的 Microsoft 策略、红组和实时站点渗透测试的详细信息：https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+可在以下位置找到有关 Microsoft 管理的云基础结构、服务和应用程序的 Microsoft 策略、红组和实时站点渗透测试的详细信息：  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 **Azure 安全中心监视**：不适用

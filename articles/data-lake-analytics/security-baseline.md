@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 383e135cad867ed8f345b39a6cace6fbbca8bfa0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005126"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076372"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>适用于 Data Lake Analytics 的 Azure 安全基线
 
@@ -38,7 +38,7 @@ ms.locfileid: "88005126"
 
 **责任**：客户
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视和记录虚拟网络、子网和网络接口的配置和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
 **指南**：不适用;Azure Data Lake Analytics 不在虚拟网络中运行，并且在使用联合查询时，传出呼叫无法配置为通过客户虚拟网络进行路由。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88005126"
 
 **责任**：不适用
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意 IP 地址的通信
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
 **指南**：使用 Data Lake Analytics 的防火墙设置来限制外部 IP 范围，以允许来自本地客户端和第三方服务的访问。 可以通过门户、REST Api 或 PowerShell 配置防火墙设置。
 
@@ -224,7 +224,7 @@ ms.locfileid: "88005126"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
-**指南**：根据组织的需要，从 Azure MARKETPLACE 实现 DNS 日志记录解决方案的第三方解决方案。
+**指导**：根据组织的需求，从 Azure 市场实现 DNS 日志记录解决方案的第三方解决方案。
 
 **Azure 安全中心监视**：不适用
 
@@ -334,7 +334,7 @@ ms.locfileid: "88005126"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 提供了基于角色的访问控制 (RBAC) ，以精细控制客户端对 Data Lake Analytics 资源的访问权限。
+**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure RBAC)  (基于角色的访问控制，可对客户端访问 Data Lake Analytics 资源提供精细的控制。
 
 * [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -404,7 +404,7 @@ ms.locfileid: "88005126"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指南**：使用单独的订阅实现隔离，使用各个安全域（如环境）的管理组，数据敏感性。 可以限制 Data Lake Analytics，以控制对应用程序和企业环境所需的 Data Lake Analytics 资源的访问级别。 配置防火墙规则时，只有在指定网络集上请求数据的应用程序才能访问 Data Lake Analytics 资源。 可以通过 Azure AD RBAC 控制对 Azure Data Lake Analytics 的访问。
+**指南**：使用单独的订阅实现隔离，使用各个安全域（如环境）的管理组，数据敏感性。 可以限制 Data Lake Analytics，以控制对应用程序和企业环境所需的 Data Lake Analytics 资源的访问级别。 配置防火墙规则时，只有在指定网络集上请求数据的应用程序才能访问 Data Lake Analytics 资源。 可以通过 Azure RBAC 控制对 Azure Data Lake Analytics 的访问。
 
 * [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -456,11 +456,11 @@ ms.locfileid: "88005126"
 
 **责任**：客户
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：使用基于角色的访问控制 (RBAC) 来控制用户与服务交互的方式。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制用户与服务交互的方式。
 
-* [管理基于角色的访问控制](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [管理 Azure RBAC](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -548,7 +548,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。 确保适当的 (读取租户中的) 权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
@@ -592,7 +592,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
 
@@ -847,7 +847,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 有关详细信息，请参阅[安全控制：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期自动备份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指南**： Data Lake Analytics 作业日志和数据输出存储在底层 Data Lake Storage Gen1 服务中。 可以使用各种方法来复制数据，包括 ADLCopy、Azure PowerShell 或 Azure 数据工厂。 你还可以使用 Azure 自动化来定期自动备份数据。
 
@@ -915,7 +915,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
@@ -955,7 +955,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 

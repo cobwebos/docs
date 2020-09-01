@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/28/2020
-ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055577"
+ms.locfileid: "89076508"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ ms.locfileid: "89055577"
 
 - **故障转移组读写侦听器**
 
-  一个 DNS CNAME 记录，指向当前主要节点的 URL。 此记录是创建故障转移组时自动创建的，可让读写工作负载在故障转移发生后主节点发生更改时，以透明方式重新连接到主数据库。 在服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.database.windows.net`。 在 SQL 托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.zone_id.database.windows.net`。
+  一个 DNS CNAME 记录，指向当前主要节点的 URL。 此记录是创建故障转移组时自动创建的，可让读写工作负载在故障转移发生后主节点发生更改时，以透明方式重新连接到主数据库。 在服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.database.windows.net`。 在 SQL 托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.<zone_id>.database.windows.net`。
 
 - **故障转移组只读侦听器**
 
-  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 此记录是创建故障转移组时自动创建的，可让只读 SQL 工作负荷使用指定的负载均衡规则以透明方式连接到辅助数据库。 在服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.secondary.database.windows.net`。 在 SQL 托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.zone_id.secondary.database.windows.net`。
+  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 此记录是创建故障转移组时自动创建的，可让只读 SQL 工作负荷使用指定的负载均衡规则以透明方式连接到辅助数据库。 在服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.secondary.database.windows.net`。 在 SQL 托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.secondary.<zone_id>.database.windows.net`。
 
 - **自动故障转移策略**
 
@@ -257,13 +257,13 @@ ms.locfileid: "89055577"
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>使用只读侦听器连接到辅助实例
 
-如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 若要直接连接到异地复制的辅助节点，请使用 `<fog-name>.zone_id.secondary.database.windows.net` 作为服务器 URL，这样可以直接连接到异地复制的辅助节点。
+如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 若要直接连接到异地复制的辅助节点，请使用 `<fog-name>.secondary.<zone_id>.database.windows.net` 作为服务器 URL，这样可以直接连接到异地复制的辅助节点。
 
 > [!NOTE]
 > 在某些服务层级中，SQL 数据库支持通过[只读副本](read-scale-out.md)，使用一个只读副本的容量和连接字符串中的 `ApplicationIntent=ReadOnly` 参数对只读查询工作负载进行负载均衡。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
 >
-> - 若要连接到主要位置中的只读副本，请使用 `<fog-name>.zone_id.database.windows.net`。
-> - 若要连接到辅助位置中的只读副本，请使用 `<fog-name>.secondary.zone_id.database.windows.net`。
+> - 若要连接到主要位置中的只读副本，请使用 `<fog-name>.<zone_id>.database.windows.net`。
+> - 若要连接到辅助位置中的只读副本，请使用 `<fog-name>.secondary.<zone_id>.database.windows.net`。
 
 ### <a name="preparing-for-performance-degradation"></a>为性能降低做好准备
 

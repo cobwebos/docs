@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212305"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078038"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -159,7 +159,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 **指南：** 开发测试实验室使用 Azure AD 服务进行标识管理。 当你为用户授予基于开发测试实验室的环境的访问权限时，请考虑以下两个重要方面：
 
-- **资源管理：** 它提供对 Azure 门户的访问权限，以管理 (创建 Vm、创建环境、启动、停止、重新启动、删除和应用) 项目等资源的资源。 资源管理通过使用基于角色的访问控制 (RBAC) 在 Azure 中完成。 你将角色分配给用户，并设置资源和访问级别权限。
+- **资源管理：** 它提供对 Azure 门户的访问权限，以管理 (创建 Vm、创建环境、启动、停止、重新启动、删除和应用) 项目等资源的资源。 使用 azure RBAC)  (azure 基于角色的访问控制在 Azure 中完成资源管理。 你将角色分配给用户，并设置资源和访问级别权限。
 - **虚拟机 (网络级) **：在默认配置中，vm 使用本地管理员帐户。 如果域服务 (Azure AD 域服务、本地域或基于云的域) ，则可以将计算机加入域。 然后，用户可以使用域加入项目将其基于域的标识连接到计算机。 
 
 - [开发测试实验室的参考体系结构](devtest-lab-reference-architecture.md#architecture)
@@ -315,9 +315,9 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 **责任：** 面向
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
-**指南：** 使用 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 来控制对 Azure 开发测试实验室中的实验室的访问。
+**指南：** 使用 azure RBAC)  (Azure 基于角色的访问控制来控制对 Azure 开发测试实验室中的实验室的访问。
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 - [了解开发测试实验室中的角色](devtest-lab-add-devtest-user.md)
 
 **Azure 安全中心监视：** 不适用
@@ -344,7 +344,7 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 
 项目结果和公式文档将发送到作为每个实验室部署的一部分创建的 Azure 存储帐户。 Azure 存储中的数据将使用 256 位 AES 加密法（可用的最强大块加密法之一）以透明方式进行加密和解密，并符合 FIPS 140-2 规范。 无法禁用 Azure 存储加密。 可以依赖于使用 Microsoft 托管的密钥来加密存储帐户，或者，可以使用自己的密钥来管理加密。 有关详细信息，请参阅 [实验室存储帐户的加密](encrypt-storage.md)。
 
-默认情况下，使用平台托管密钥对所有实验室 OS 和数据磁盘进行加密。 写入到现有托管磁盘的所有托管磁盘、快照、映像和数据都将通过平台管理的密钥自动进行静态加密。 作为实验室所有者，你可以配置要使用客户托管密钥加密的实验室操作系统磁盘。 使用实验室数据磁盘的客户托管密钥的加密当前无法通过实验室本身进行配置。 不过，订阅管理员现在可以为订阅中的实验室磁盘配置此设置。 有关详细信息，请参阅 [使用客户托管密钥加密实验室开发测试 LABS OS 磁盘](encrypt-disks-customer-managed-keys.md)。
+默认情况下，使用平台托管密钥对所有实验室 OS 和数据磁盘进行加密。 所有写入现有托管磁盘的托管磁盘、快照、映像和数据都会自动使用平台托管密钥进行静态加密。 作为实验室所有者，你可以配置要使用客户托管密钥加密的实验室操作系统磁盘。 使用实验室数据磁盘的客户托管密钥的加密当前无法通过实验室本身进行配置。 不过，订阅管理员现在可以为订阅中的实验室磁盘配置此设置。 有关详细信息，请参阅 [使用客户托管密钥加密实验室开发测试 LABS OS 磁盘](encrypt-disks-customer-managed-keys.md)。
 
 **Azure 安全中心监视：** 不适用
 
@@ -401,7 +401,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
-**指南：** 按一致的间隔导出扫描结果，并比较结果以验证是否已修正了漏洞。 使用 Azure 安全中心建议的漏洞管理建议时，客户可能会透视到所选解决方案的门户以查看历史扫描数据。
+**指南：** 按一致的间隔导出扫描结果，并比较结果以验证是否已修正了漏洞。 使用 Azure 安全中心建议的漏洞管理建议时，客户可以转到所选解决方案的门户查看历史扫描数据。
 
 **Azure 安全中心监视：** 不适用
 
@@ -419,7 +419,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 有关详细信息，请参阅[安全控制：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 **指南：** 使用 Azure 资源关系图可查询和发现所有资源 (包括订阅中) 的开发测试实验室资源。 确保你具有适当的 (读取租户中的) 权限，并且可以枚举订阅中的所有 Azure 订阅和资源。
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
@@ -453,7 +453,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 **责任：** 面向
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 **指南：** 根据组织的需要，为计算资源创建已批准的 Azure 资源和批准的软件的清单。 作为订阅管理员，你还可以使用自适应应用程序控件（Azure 安全中心的一项功能）来帮助你定义一组允许在已配置的实验室计算机上运行的应用程序。 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。
 
 - [如何启用自适应应用程序控制](../security-center/security-center-adaptive-application.md)
@@ -476,7 +476,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
-**指南：** Azure Automation 在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 作为订阅管理员，你可以使用 Azure 虚拟机库存自动收集有关你的订阅中的开发测试实验室 Vm 的所有软件的信息。 "软件名称"、"版本"、"发布者" 和 "刷新时间" 属性可从 Azure 门户中获取。 若要获取安装日期和其他信息的访问权限，客户需要启用来宾级别诊断，并将 Windows 事件日志引入 Log Analytics 工作区。
+**指南：** Azure Automation 在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 作为订阅管理员，你可以使用 Azure 虚拟机库存自动收集有关你的订阅中的开发测试实验室 Vm 的所有软件的信息。 "软件名称"、"版本"、"发布者" 和 "刷新时间" 属性可从 Azure 门户中获取。 若要获得安装日期和其他信息的访问权限，客户需要启用来宾级诊断并将 Windows 事件日志置于 Log Analytics 工作区中。
 
 除了使用更改跟踪来监视软件应用程序外，Azure 安全中心的自适应应用程序控件还可以使用机器学习来分析计算机上运行的应用程序，并通过此智能创建允许列表。 此功能极大地简化了配置和维护应用程序允许列表策略的过程，使你能够避免在你的环境中使用不需要的软件。 你可以配置审核模式或强制模式。 审核模式只审核受保护 Vm 上的活动。 强制模式确实强制执行这些规则，并确保阻止不允许运行的应用程序。 
 
@@ -490,7 +490,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
-**指南：** Azure Automation 在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 作为订阅管理员，你可以使用更改跟踪来确定在开发测试实验室中托管的 Vm 上安装的所有软件。 你可以实现自己的进程，或使用 Azure 自动化状态配置来删除未经授权的软件。
+**指南：** Azure Automation 在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 作为订阅管理员，你可以使用更改跟踪来确定在开发测试实验室中托管的 Vm 上安装的所有软件。 可以实现自己的过程，也可以使用 Azure Automation State Configuration 来删除未经授权的软件。
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 - [使用更改跟踪解决方案跟踪环境中的更改](../automation/change-tracking.md)
@@ -638,12 +638,12 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
-**指南：** 如果使用自定义映像，请使用基于角色的访问控制 (RBAC) ，确保只有经过授权的用户才能访问这些映像。 使用共享映像库，你可以将映像共享到需要它的特定实验室。 对于容器映像，请将其存储在 Azure 容器注册表中，并使用 RBAC 确保只有经过授权的用户才能访问该映像。
+**指南：** 如果使用自定义映像，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 使用共享映像库，你可以将映像共享到需要它的特定实验室。 对于容器映像，请将其存储在 Azure 容器注册表中，并使用 Azure RBAC 确保只有经过授权的用户才能访问这些映像。
 
-- [了解 Azure 中的 RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [了解 Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [如何配置 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [为开发测试实验室配置共享映像库](configure-shared-image-gallery.md)
-- [了解容器注册表的 RBAC](../container-registry/container-registry-roles.md)
+- [了解容器注册表的 Azure RBAC](../container-registry/container-registry-roles.md)
 
 **Azure 安全中心监视：** 不适用
 
@@ -747,7 +747,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
-**指南：** 部署后，默认情况下，Microsoft 反恶意软件将自动安装最新的签名、平台和引擎更新。 遵循 Azure 安全中心中的建议： "计算 & 应用"，确保开发测试实验室基础计算资源的所有终结点都是最新的签名。 Windows OS 可以通过附加的安全性进行进一步保护，以通过与 Azure 安全中心集成的 Microsoft Defender 高级威胁防护服务来限制受病毒或恶意软件攻击的风险。
+**指南：** 部署后，默认情况下，Microsoft 反恶意软件将自动安装最新的签名、平台和引擎更新。 遵循 Azure 安全中心中的建议： "计算 & 应用"，确保开发测试实验室基础计算资源的所有终结点都是最新的签名。 通过与 Azure 安全中心集成的 Microsoft Defender 高级威胁防护服务，可以使用附加的安全性进一步保护 Windows OS，以降低基于病毒或恶意软件进行攻击的风险。
 
 - 如何为 Azure 云服务和虚拟机部署 Microsoft Antimalware
 - Microsoft Defender 高级威胁防护
@@ -759,7 +759,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ## <a name="data-recovery"></a>数据恢复
 有关详细信息，请参阅[安全控制：数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期自动备份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 **指南：** 目前，Azure 开发测试实验室不支持 VM 备份和快照。 但是，可以在开发测试实验室中托管的底层 Azure Vm 上启用和配置 Azure 备份。 而且，您还可以为自动备份配置所需的频率和保留期，前提是您对基础计算资源具有适当的访问权限。 
 
 - [概要了解 Azure VM 备份](../backup/backup-azure-vms-introduction.md)
@@ -798,7 +798,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
-**指南：** 当你通过 Azure 备份来备份托管磁盘时，将静态加密 Vm，并) 存储服务加密 (SSE。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用软删除，以防意外或恶意删除密钥。
+**指南：** 当你通过 Azure 备份来备份托管磁盘时，将静态加密 Vm，并) 存储服务加密 (SSE。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
 
 - [VM 的软删除](../backup/soft-delete-virtual-machines.md)
 - [Azure Key Vault-软删除概述](../key-vault/general/soft-delete-overview.md)
@@ -824,7 +824,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 **指南：** Azure 安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 - [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)

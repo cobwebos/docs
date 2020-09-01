@@ -6,22 +6,18 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ac01d71316fe4ccf44aa422d88dc31b1fd0ca4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009437"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078548"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
 
 可以通过改变虚拟机 (VM) 规模来降低 Windows 虚拟桌面总部署成本。 这是指在非高峰使用时段关闭和取消分配会话主机 VM，并在高峰时段重新启用和重新分配。
 
 在本文中，你将了解如何利用 Azure 自动化帐户和 Azure 逻辑应用生成的缩放工具，该工具可自动缩放 Windows 虚拟桌面环境中的会话主机 Vm。 若要了解如何使用缩放工具，请转至[先决条件](#prerequisites)。
-
-## <a name="report-issues"></a>报告问题
-
-关于缩放工具的问题反馈，当前是通过 GitHub 进行处理的，而不由 Microsoft 支持部门负责处理。 如果使用缩放工具时遇到任何问题，请获取 "[报告问题](#reporting-issues)" 一节中所述的必要信息，并在[RDS GitHub 页](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)上打开标记为 "WVD-logicapps" 的 GitHub 问题。
 
 ## <a name="how-the-scaling-tool-works"></a>缩放工具的工作原理
 
@@ -38,16 +34,16 @@ ms.locfileid: "88009437"
 在高峰使用时段，该作业会检查每个主机池当前正在运行的会话主机的当前会话数和 VM 容量。 它使用此信息来计算正在运行的会话主机 Vm 是否可支持基于为**CreateOrUpdateAzLogicApp.ps1**文件定义的*SessionThresholdPerCPU*参数的现有会话。 如果会话主机 VM 无法支持现有会话，该作业会在主机池中启动其他会话主机 VM。
 
 >[!NOTE]
->SessionThresholdPerCPU 不会限制虚拟机上的会话数。 此参数仅确定需要在何时启动新 VM，以便对连接数实施负载平衡。 若要限制会话数，需要按照说明[AzWvdHostPool](configure-host-pool-load-balancing.md#configure-breadth-first-load-balancing)来相应地配置*MaxSessionLimit*参数。
+>SessionThresholdPerCPU 不会限制虚拟机上的会话数。 此参数仅确定需要在何时启动新 VM，以便对连接数实施负载平衡。 若要限制会话数，需要按照说明 [AzWvdHostPool](configure-host-pool-load-balancing.md#configure-breadth-first-load-balancing) 来相应地配置 *MaxSessionLimit* 参数。
 
-在非高峰使用时间内，作业根据*MinimumNumberOfRDSH*参数确定应关闭多少个会话主机 vm。 如果将*LimitSecondsToForceLogOffUser*参数设置为非零正值，则作业会将会话主机 vm 设置为排出模式，以防新会话连接到主机。 然后，该作业通知所有当前已登录的用户是否保存其工作，等待配置的时间长度，然后强制用户注销。会话主机 VM 上的所有用户会话注销后，该作业将关闭 VM。 VM 关闭后，该作业将重置其会话主机排出模式。
+在非高峰使用时间内，作业根据 *MinimumNumberOfRDSH* 参数确定应关闭多少个会话主机 vm。 如果将 *LimitSecondsToForceLogOffUser* 参数设置为非零正值，则作业会将会话主机 vm 设置为排出模式，以防新会话连接到主机。 然后，该作业通知所有当前已登录的用户是否保存其工作，等待配置的时间长度，然后强制用户注销。会话主机 VM 上的所有用户会话注销后，该作业将关闭 VM。 VM 关闭后，该作业将重置其会话主机排出模式。
 
 >[!NOTE]
->如果手动将会话主机 VM 设置为排出模式，则该作业不会管理会话主机 VM。 如果会话主机 VM 正在运行并设置为排出模式，则将其视为不可用，这会使作业启动其他 Vm 来处理负载。 建议在将任何 Azure Vm 手动设置为排出模式之前，对其进行标记。 以后创建 Azure 逻辑应用计划程序时，可以用*MaintenanceTagName*参数命名标记。 标记将帮助你将这些 Vm 与缩放工具所管理的 Vm 区分开来。 设置维护标记还会阻止缩放工具更改 VM，直到删除标记。
+>如果手动将会话主机 VM 设置为排出模式，则该作业不会管理会话主机 VM。 如果会话主机 VM 正在运行并设置为排出模式，则将其视为不可用，这会使作业启动其他 Vm 来处理负载。 建议在将任何 Azure Vm 手动设置为排出模式之前，对其进行标记。 以后创建 Azure 逻辑应用计划程序时，可以用 *MaintenanceTagName* 参数命名标记。 标记将帮助你将这些 Vm 与缩放工具所管理的 Vm 区分开来。 设置维护标记还会阻止缩放工具更改 VM，直到删除标记。
 
-如果将*LimitSecondsToForceLogOffUser*参数设置为零，则作业允许指定组策略中的会话配置设置处理用户会话的注销。 若要查看这些组策略，请访问**计算机配置**  >  **策略**  >  **管理模板**  >  **Windows 组件**  >  **远程桌面服务**  >  **远程桌面会话主机**  >  **会话时间限制**。 如果某个会话主机 VM 上存在任何活动会话，该作业会使该会话主机 VM 保持运行。 如果没有任何活动会话，则该作业将关闭会话主机 VM。
+如果将 *LimitSecondsToForceLogOffUser* 参数设置为零，则作业允许指定组策略中的会话配置设置处理用户会话的注销。 若要查看这些组策略，请访问**计算机配置**  >  **策略**  >  **管理模板**  >  **Windows 组件**  >  **远程桌面服务**  >  **远程桌面会话主机**  >  **会话时间限制**。 如果某个会话主机 VM 上存在任何活动会话，该作业会使该会话主机 VM 保持运行。 如果没有任何活动会话，则该作业将关闭会话主机 VM。
 
-在任何时候，作业还会考虑主机池的*MaxSessionLimit* ，以确定当前会话数是否超过最大容量的90%。 如果是，则该作业将启动其他会话主机 Vm。
+在任何时候，作业还会考虑主机池的 *MaxSessionLimit* ，以确定当前会话数是否超过最大容量的90%。 如果是，则该作业将启动其他会话主机 Vm。
 
 作业基于所设置的重复周期间隔定期运行。 你可以根据 Windows 虚拟桌面环境的大小更改此间隔，但请记住，启动和关闭 Vm 可能需要一些时间，因此请记住延迟。 建议将重复周期间隔设置为每 15 分钟一次。
 
@@ -55,7 +51,7 @@ ms.locfileid: "88009437"
 
 - 此解决方案仅适用于共用的多会话会话主机 Vm。
 - 此解决方案管理任何区域中的 Vm，但只能在与 Azure 自动化帐户和 Azure 逻辑应用相同的订阅中使用。
-- Runbook 中的作业的最大运行时间为3小时。 如果启动或停止主机池中的 Vm 所用时间超过此时间，则作业将失败。 有关更多详细信息，请参阅[共享资源](../automation/automation-runbook-execution.md#fair-share)。
+- Runbook 中的作业的最大运行时间为3小时。 如果启动或停止主机池中的 Vm 所用时间超过此时间，则作业将失败。 有关更多详细信息，请参阅 [共享资源](../automation/automation-runbook-execution.md#fair-share)。
 
 >[!NOTE]
 >缩放工具控制其当前正在缩放的主机池的负载平衡模式。 该工具使用广泛的负载均衡模式来实现高峰时间和非高峰时段。
@@ -121,7 +117,7 @@ ms.locfileid: "88009437"
 
 5. 此 cmdlet 的输出包含一个 webhook URI。 请确保保留 URI 记录，因为当你为 Azure 逻辑应用设置执行计划时，将使用该 URI 作为参数。
 
-6. 如果为 Log Analytics 指定了参数**WorkspaceName** ，则该 cmdlet 的输出还将包含 Log Analytics 的工作区 ID 和主键。 请确保记住 URI，因为当你为 Azure 逻辑应用设置执行计划时，你将需要再次将其用作参数。
+6. 如果为 Log Analytics 指定了参数 **WorkspaceName** ，则该 cmdlet 的输出还将包含 Log Analytics 的工作区 ID 和主键。 请确保记住 URI，因为当你为 Azure 逻辑应用设置执行计划时，你将需要再次将其用作参数。
 
 7. 设置 Azure 自动化帐户后，登录到 Azure 订阅，并检查以确保 Azure 自动化帐户和相关 runbook 已显示在指定的资源组中，如下图所示：
 
@@ -134,27 +130,27 @@ ms.locfileid: "88009437"
 
 使用 Azure 自动化帐户后，还需要创建 Azure 自动化运行方式帐户（如果尚未安装）。 此帐户将允许此工具访问你的 Azure 资源。
 
-[Azure 自动化运行方式帐户](../automation/manage-runas-account.md)为使用 azure Cmdlet 管理 azure 中的资源提供身份验证。 创建运行方式帐户时，它会在 Azure Active Directory 中创建新的服务主体用户，并在订阅级别将参与者角色分配给服务主体用户。 Azure 运行方式帐户是使用证书和服务主体名称安全进行身份验证的一种绝佳方式，无需在凭据对象中存储用户名和密码。 若要了解有关运行方式帐户身份验证的详细信息，请参阅[限制运行方式帐户权限](../automation/manage-runas-account.md#limit-run-as-account-permissions)。
+[Azure 自动化运行方式帐户](../automation/manage-runas-account.md)为使用 azure Cmdlet 管理 azure 中的资源提供身份验证。 创建运行方式帐户时，它会在 Azure Active Directory 中创建新的服务主体用户，并在订阅级别将参与者角色分配给服务主体用户。 Azure 运行方式帐户是使用证书和服务主体名称安全进行身份验证的一种绝佳方式，无需在凭据对象中存储用户名和密码。 若要了解有关运行方式帐户身份验证的详细信息，请参阅 [限制运行方式帐户权限](../automation/manage-runas-account.md#limit-run-as-account-permissions)。
 
 如果任何用户是订阅管理员角色的成员，并且共同管理员订阅，则可以创建运行方式帐户。
 
 在 Azure 自动化帐户中创建运行方式帐户：
 
-1. 在 Azure 门户中，选择“所有服务”。 在资源列表中，输入并选择 "**自动化帐户**"。
+1. 在 Azure 门户中，选择“所有服务”。 在资源列表中，输入并选择 " **自动化帐户**"。
 
-2. 在 "**自动化帐户**" 页上，选择 Azure 自动化帐户的名称。
+2. 在 " **自动化帐户** " 页上，选择 Azure 自动化帐户的名称。
 
 3. 在窗口左侧的窗格中，选择 "**帐户设置**" 部分下的 "**运行方式帐户**"。
 
-4. 选择 " **Azure 运行方式帐户**"。 当 "**添加 Azure 运行方式帐户**" 窗格出现时，查看概述信息，然后选择 "**创建**" 以启动帐户创建过程。
+4. 选择 " **Azure 运行方式帐户**"。 当 " **添加 Azure 运行方式帐户** " 窗格出现时，查看概述信息，然后选择 " **创建** " 以启动帐户创建过程。
 
 5. 等待几分钟，让 Azure 完成运行方式帐户的创建。 可以在“通知”下的菜单中跟踪创建进度。
 
-6. 完成此过程后，它将在指定的 Azure 自动化帐户中创建名为**AzureRunAsConnection**的资产。 选择 " **Azure 运行方式帐户**"。 该连接资产保存应用程序 ID、租户 ID、订阅 ID 和证书指纹。 您还可以在 "**连接**" 页上找到相同的信息。 若要切换到此页，请在窗口左侧的窗格中，选择 "**共享资源**" 部分下的 "**连接**"，然后单击名为**AzureRunAsConnection**的连接资产。
+6. 完成此过程后，它将在指定的 Azure 自动化帐户中创建名为 **AzureRunAsConnection** 的资产。 选择 " **Azure 运行方式帐户**"。 该连接资产保存应用程序 ID、租户 ID、订阅 ID 和证书指纹。 您还可以在 " **连接** " 页上找到相同的信息。 若要切换到此页，请在窗口左侧的窗格中，选择 "**共享资源**" 部分下的 "**连接**"，然后单击名为**AzureRunAsConnection**的连接资产。
 
 ## <a name="create-the-azure-logic-app-and-execution-schedule"></a>创建 Azure 逻辑应用和执行计划
 
-最后，需要创建 Azure 逻辑应用，并为新的缩放工具设置执行计划。 首先，下载并导入要在 PowerShell 会话中使用的[桌面虚拟化 powershell 模块](powershell-module.md)（如果尚未这样做）。
+最后，需要创建 Azure 逻辑应用，并为新的缩放工具设置执行计划。 首先，下载并导入要在 PowerShell 会话中使用的 [桌面虚拟化 powershell 模块](powershell-module.md) （如果尚未这样做）。
 
 1. 打开 Windows PowerShell。
 
@@ -239,7 +235,7 @@ ms.locfileid: "88009437"
     >[!div class="mx-imgBorder"]
     >![示例 Azure 逻辑应用的“概述”页的图像。](media/logic-app.png)
 
-    若要更改执行计划（例如更改定期间隔或时区），请参阅 Azure 逻辑应用自动缩放计划程序，并选择 "**编辑**" 以进入 Azure 逻辑应用设计器。
+    若要更改执行计划（例如更改定期间隔或时区），请参阅 Azure 逻辑应用自动缩放计划程序，并选择 " **编辑** " 以进入 Azure 逻辑应用设计器。
 
     >[!div class="mx-imgBorder"]
     >![Azure 逻辑应用设计器的图像。 定期和 webhook 菜单允许用户编辑重复执行时间，webhook 文件处于打开状态。](media/logic-apps-designer.png)
@@ -261,22 +257,22 @@ ms.locfileid: "88009437"
 
 可以通过打开 runbook 并选择作业来查看扩展和扩展操作的日志。
 
-导航到托管 Azure Automation 帐户的资源组中的 runbook，然后选择 "**概述**"。 在 "概述" 页上，选择 "**最近的作业**" 下的作业以查看其缩放工具输出，如下图所示。
+导航到托管 Azure Automation 帐户的资源组中的 runbook，然后选择 " **概述**"。 在 "概述" 页上，选择 " **最近的作业** " 下的作业以查看其缩放工具输出，如下图所示。
 
 >[!div class="mx-imgBorder"]
 >![缩放工具的输出窗口的图像。](media/tool-output.png)
 
 ### <a name="check-the-runbook-script-version-number"></a>检查 runbook 脚本版本号
 
-可以通过在 Azure 自动化帐户中打开 runbook 文件并选择 "**查看**" 来检查正在使用的 runbook 脚本的版本。 Runbook 的脚本将出现在屏幕的右侧。 在脚本中，将在部分下的格式中看到版本号 `v#.#.#` `SYNOPSIS` 。 可在[此处](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/wvd-scaling-script/ARM_based/basicScale.ps1#L1)找到最新的版本号。 如果未在 runbook 脚本中看到版本号，则表示你运行的是早期版本的脚本，应立即更新。 如果需要更新 runbook 脚本，请按照[创建或更新 Azure 自动化帐户](#create-or-update-an-azure-automation-account)中的说明进行操作。
+可以通过在 Azure 自动化帐户中打开 runbook 文件并选择 " **查看**" 来检查正在使用的 runbook 脚本的版本。 Runbook 的脚本将出现在屏幕的右侧。 在脚本中，将在部分下的格式中看到版本号 `v#.#.#` `SYNOPSIS` 。 可在 [此处](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/wvd-scaling-script/ARM_based/basicScale.ps1#L1)找到最新的版本号。 如果未在 runbook 脚本中看到版本号，则表示你运行的是早期版本的脚本，应立即更新。 如果需要更新 runbook 脚本，请按照 [创建或更新 Azure 自动化帐户](#create-or-update-an-azure-automation-account)中的说明进行操作。
 
 ### <a name="reporting-issues"></a>报告问题
 
 报告问题时，需要提供以下信息来帮助我们进行故障排除：
 
-- 作业中引起问题的 "**所有日志**" 选项卡上的完整日志。 若要了解如何获取日志，请按照[查看日志和缩放工具输出](#view-logs-and-scaling-tool-output)中的说明进行操作。 如果日志中有任何敏感信息或私有信息，可以将其删除，然后将问题提交给我们。
+- 作业中引起问题的 " **所有日志** " 选项卡上的完整日志。 若要了解如何获取日志，请按照 [查看日志和缩放工具输出](#view-logs-and-scaling-tool-output)中的说明进行操作。 如果日志中有任何敏感信息或私有信息，可以将其删除，然后将问题提交给我们。
 
-- 正在使用的 runbook 脚本的版本。 若要了解如何获取版本号，请参阅[检查 runbook 脚本版本号](#check-the-runbook-script-version-number)
+- 正在使用的 runbook 脚本的版本。 若要了解如何获取版本号，请参阅 [检查 runbook 脚本版本号](#check-the-runbook-script-version-number)
 
 - Azure 自动化帐户中安装的以下每个 PowerShell 模块的版本号。 若要查找这些模块，请打开 Azure Automation 帐户，在窗口左侧窗格中的 "**共享资源**" 部分下选择 "**模块**"，然后搜索模块的名称。
     - Az.Accounts
@@ -286,7 +282,7 @@ ms.locfileid: "88009437"
     - OMSIngestionAPI
     - Az.DesktopVirtualization
 
-- [运行方式帐户](#create-an-azure-automation-run-as-account)的过期日期。 若要找到此项，请打开 Azure 自动化帐户，然后在窗口左侧的窗格中选择 "**帐户设置**" 下的 "**运行方式帐户**"。 到期日期应为**Azure 运行方式帐户**。
+- [运行方式帐户](#create-an-azure-automation-run-as-account)的过期日期。 若要找到此项，请打开 Azure 自动化帐户，然后在窗口左侧的窗格中选择 "**帐户设置**" 下的 "**运行方式帐户**"。 到期日期应为 **Azure 运行方式帐户**。
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -327,3 +323,7 @@ ms.locfileid: "88009437"
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>报告问题
+
+缩放工具的问题报告当前正在由 Microsoft 支持部门处理。 发出问题报告时，请确保按照 [报告问题](#reporting-issues)中的说明进行操作。 如果你有关于该工具或要请求新功能的反馈，请在 [RDS GitHub 页](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)上打开一个标有 "4-WVD" 的 GitHub 问题。

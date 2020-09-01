@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: daff4d1e43f5cc27e52e8bf26f48f30147800ae8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 63c476e7ad8c7bab38ad4adfb6197b845106458c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839853"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077970"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS 保护标准的 azure 安全基线
 
-此安全基线将[Azure 安全性基准](../benchmarks/overview.md)中的指南应用于 Azure DDoS 保护标准。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的**安全控制**和适用于 DDoS 保护的相关指南进行分组。 排除了不适用于 DDoS 保护的**控件**。 若要查看 DDoS 保护如何完全映射到 Azure 安全基准，请参阅[完整的 Ddos 保护安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将 [Azure 安全性基准](../benchmarks/overview.md) 中的指南应用于 Azure DDoS 保护标准。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 DDoS 保护的相关指南进行分组。 排除了不适用于 DDoS 保护的**控件**。 若要查看 DDoS 保护如何完全映射到 Azure 安全基准，请参阅 [完整的 Ddos 保护安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -254,7 +254,7 @@ ms.locfileid: "87839853"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
 - [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -262,11 +262,11 @@ ms.locfileid: "87839853"
 
 **责任**：客户
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 **指南**：若要使用 Azure DDoS 保护计划，你的帐户必须分配到网络参与者角色或分配有特定操作的自定义角色。
 
-- [在 Azure DDoS 保护中管理基于角色的访问控制](../../virtual-network/manage-ddos-protection.md)
+- [在 azure DDoS 保护中管理 azure RBAC) 的 Azure 基于角色的访问控制 (](../../virtual-network/manage-ddos-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -286,7 +286,7 @@ ms.locfileid: "87839853"
 
 有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指南**：使用 Azure 资源关系图查询/发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
@@ -302,7 +302,7 @@ ms.locfileid: "87839853"
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：将标记应用于 Azure 资源，使元数据根据分类逻辑组织它们。
+**指导**：将标记应用到 Azure资源，以便有条理地根据分类组织元数据。
 
 - [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -330,7 +330,7 @@ ms.locfileid: "87839853"
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
 
@@ -340,9 +340,9 @@ ms.locfileid: "87839853"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可在订阅中创建的资源类型施加限制。
+**指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure 资源关系图可查询和发现其订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询和发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -484,7 +484,7 @@ ms.locfileid: "87839853"
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../../security-center/security-center-alerts-overview.md)
 
@@ -550,7 +550,7 @@ ms.locfileid: "87839853"
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：按照 Microsoft 渗透测试规则参与，确保你的渗透测试不违反 Microsoft 政策。 针对 Microsoft 托管的云基础结构、服务和应用程序，使用 Microsoft 的战略和对红色组合和活动站点渗透测试的执行。
+**指南**：按照 Microsoft 渗透测试规则参与，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行的现场渗透测试。
 
 - [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

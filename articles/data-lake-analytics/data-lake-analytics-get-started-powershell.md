@@ -6,18 +6,19 @@ ms.reviewer: jasonh
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: ccee8cef9cfcfc57ac19284b9c42e5c8371aa746
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 61177d1338be30ae14ccea3ff94c5e0e554aa331
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132545"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077307"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅[Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
+了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,7 +27,7 @@ ms.locfileid: "87132545"
 开始学习本教程之前，必须做好以下准备：
 
 * **Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)。
-* **配备 Azure PowerShell 的工作站**。 请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
+* **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

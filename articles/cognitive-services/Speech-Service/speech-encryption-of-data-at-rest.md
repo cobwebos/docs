@@ -1,20 +1,20 @@
 ---
 title: 语音识别服务静态数据的加密
 titleSuffix: Azure Cognitive Services
-description: 语音识别服务静态数据的加密。
+description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你通过自己的密钥（称为客户托管密钥 (CMK) ）管理你的认知服务订阅。 本文介绍适用于语音服务的静态数据加密。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b9b76b2eb5e9536561f73a92b6911a2f82122a1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198668"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078089"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -22,7 +22,7 @@ ms.locfileid: "83198668"
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 
-使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
+使用符合 [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
@@ -35,19 +35,19 @@ ms.locfileid: "83198668"
 
 有关托管标识的详细信息，请参阅[什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>自带存储（BYOS）以进行自定义和日志记录
+## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>自带存储 (BYOS) 用于自定义和日志记录
 
-若要请求访问自带存储，请填写并提交 [语音服务-自带存储（BYOS）请求表单](https://aka.ms/cogsvc-cmk)。 批准后，你需要创建自己的存储帐户来存储自定义和日志记录所需的数据。 添加存储帐户时，语音服务资源将启用系统分配的托管标识。 启用系统分配的托管标识后，此资源将注册到 Azure Active Directory （AAD）。 注册后，将向托管标识授予对存储帐户的访问权限。 可在此处了解有关托管标识的详细信息。 有关托管标识的详细信息，请参阅[什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+若要请求访问自带存储，请填写并提交 [语音服务-自带存储 (BYOS) 请求窗体](https://aka.ms/cogsvc-cmk)。 批准后，你需要创建自己的存储帐户来存储自定义和日志记录所需的数据。 添加存储帐户时，语音服务资源将启用系统分配的托管标识。 启用系统分配的托管标识后，将向 Azure Active Directory (AAD) 注册此资源。 注册后，将向托管标识授予对存储帐户的访问权限。 可在此处了解有关托管标识的详细信息。 有关托管标识的详细信息，请参阅[什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
 > [!IMPORTANT]
 > 如果禁用系统分配的托管标识，则将删除对存储帐户的访问权限。 这将导致需要访问存储帐户的语音服务部分停止工作。  
 
-语音服务当前不支持客户密码箱。 但是，可以使用 BYOS 存储客户数据，从而使你可以实现类似的数据控件来[客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 使用自定义功能（如自定义语音和自定义语音）时，将在 BYOS （如果使用）和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
+语音服务当前不支持客户密码箱。 但是，可以使用 BYOS 存储客户数据，从而使你可以实现类似的数据控件来 [客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 当使用自定义功能（如自定义语音和自定义语音）时，将在你的 BYOS () 和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
 
 > [!IMPORTANT]
-> Microsoft 不**会**使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 
+> Microsoft 不 **会** 使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [语音服务-自带存储（BYOS）请求表单](https://aka.ms/cogsvc-cmk)
+* [语音服务-自带存储 (BYOS) 请求窗体](https://aka.ms/cogsvc-cmk)
 * [什么是托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869450"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077001"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -49,11 +49,13 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |容器软删除|预览|预览|[容器的软删除 (预览) ](soft-delete-container-overview.md)|
 |Blob 软删除|尚不支持|尚不支持|[blob 的软删除](storage-blob-soft-delete.md)|
 |Blobfuse|预览|尚不支持|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
-|更改源|尚不支持|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
 |帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
-|加密范围|尚不支持|尚不支持|[ (预览创建和管理加密范围) ](encryption-scope-manage.md)|
+|加密范围|尚不支持|尚不支持|[创建和管理加密范围（预览）](encryption-scope-manage.md)|
+|更改源|尚不支持|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
+|对象复制|尚不支持|尚不支持|[为块 blob 配置对象复制（预览）](object-replication-configure.md)|
+|Blob 版本控制|尚不支持|尚不支持|[启用和管理 blob 版本控制 (预览) ](versioning-enable.md)|
 
 <div id="diagnostic-logging"><sup>1</sup> 对于高级块 blob 存储帐户，不能使用 Azure 门户启用 (经典) 的诊断日志。 可使用 PowerShell 启用它们。</div><br>
 

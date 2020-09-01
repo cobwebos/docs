@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193099"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077222"
 ---
 # <a name="security-control-secure-configuration"></a>安全控制：安全配置
 
@@ -98,7 +98,7 @@ ms.locfileid: "82193099"
 |--|--|--|
 | 7.5 | 5.3 | 客户 |
 
-使用 Azure DevOps 来安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板和所需的状态配置脚本。 若要访问 Azure DevOps 中管理的资源，可以授予或拒绝特定用户、内置安全组或在 Azure Active Directory （Azure AD）中定义的、与 Azure Active Directory DevOps 集成的权限，或在与 TFS 集成的情况下使用的组。
+使用 Azure DevOps 来安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板和所需的状态配置脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。
 
 - [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -110,17 +110,17 @@ ms.locfileid: "82193099"
 |--|--|--|
 | 7.6 | 5.3 | 客户 |
 
-如果使用自定义映像，请使用基于角色的访问控制 (RBAC) 以确保只有授权用户才能访问映像。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。  对于容器映像，请将其存储在 Azure 容器注册表中，并利用 RBAC 确保只有授权用户才能访问这些映像。  
+如果使用自定义映像，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。  对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有经过授权的用户才能访问这些映像。  
 
-- [了解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-- [了解容器注册表的 RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [了解容器注册表的 Azure RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-- [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 - [共享映像库概述](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
-## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署适用于 Azure 资源的配置管理工具
+## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
@@ -142,7 +142,7 @@ Azure Automation State Configuration 是一个配置管理服务，适用于任�
 
 - [加入 Azure Automation State Configuration 管理的计算机](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
-## <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：对 Azure 资源实现自动配置监视
+## <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|

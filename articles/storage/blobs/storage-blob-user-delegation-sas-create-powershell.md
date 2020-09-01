@@ -10,18 +10,19 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 97eb3f4cbb4ac76823ebe43126db6b5c2a10010b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 781d76cb80dd375c54d1283ecf27f543765f5ddb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533965"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077018"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>使用 PowerShell 为容器或 blob 创建用户委托 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用 Azure Active Directory （Azure AD）凭据为包含 Azure PowerShell 的容器或 blob 创建用户委托 SAS。
+本文介绍如何使用 Azure Active Directory (Azure AD) 凭据为包含 Azure PowerShell 的容器或 blob 创建用户委托 SAS。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -32,7 +33,7 @@ ms.locfileid: "87533965"
 1. 卸载以前安装的所有 Azure PowerShell：
 
     - 使用“设置”**** 下的“应用和功能”**** 设置从 Windows 中删除以前安装的所有 Azure PowerShell。
-    - 从中删除所有**Azure**模块 `%Program Files%\WindowsPowerShell\Modules` 。
+    - 从中删除所有 **Azure** 模块 `%Program Files%\WindowsPowerShell\Modules` 。
 
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
 
@@ -66,21 +67,21 @@ Get-Module -ListAvailable -Name Az.Storage -Refresh
 
 ## <a name="sign-in-to-azure-powershell-with-azure-ad"></a>通过 Azure AD 登录到 Azure PowerShell
 
-调用[AzAccount](/powershell/module/az.accounts/connect-azaccount)命令以通过 Azure AD 帐户登录：
+调用 [AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令以通过 Azure AD 帐户登录：
 
 ```powershell
 Connect-AzAccount
 ```
 
-有关如何在 PowerShell 中登录的详细信息，请参阅[登录 Azure PowerShell](/powershell/azure/authenticate-azureps)。
+有关如何在 PowerShell 中登录的详细信息，请参阅 [登录 Azure PowerShell](/powershell/azure/authenticate-azureps)。
 
 ## <a name="assign-permissions-with-rbac"></a>通过 RBAC 分配权限
 
-若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 PowerShell 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey**操作的角色。 此权限允许 Azure AD 帐户请求*用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey**操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。 有关创建用户委托 SAS 的 RBAC 权限的详细信息，请参阅[创建用户委托 sas](/rest/api/storageservices/create-user-delegation-sas)中的**使用 rbac 分配权限**部分。
+若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 PowerShell 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey** 操作的角色。 此权限允许 Azure AD 帐户请求 *用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey** 操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。 有关创建用户委托 SAS 的 RBAC 权限的详细信息，请参阅[创建用户委托 sas](/rest/api/storageservices/create-user-delegation-sas)中的**使用 rbac 分配权限**部分。
 
 如果你没有足够的权限将 Azure 角色分配到 Azure AD 安全主体，你可能需要要求帐户所有者或管理员分配必要的权限。
 
-下面的示例分配**存储 Blob 数据参与者**角色，其中包括 storageAccounts **//blobServices/generateUserDelegationKey**操作。 角色的作用域为存储帐户的级别。
+下面的示例分配 **存储 Blob 数据参与者** 角色，其中包括 storageAccounts **//blobServices/generateUserDelegationKey** 操作。 角色的作用域为存储帐户的级别。
 
 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -90,7 +91,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-有关内置角色的详细信息，包括**storageAccounts//blobServices/generateUserDelegationKey**操作，请参阅[Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+有关内置角色的详细信息，包括 **storageAccounts//blobServices/generateUserDelegationKey** 操作，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>使用 Azure AD 凭据来保护 SAS
 
@@ -108,7 +109,7 @@ $ctx = New-AzStorageContext -StorageAccountName <storage-account> -UseConnectedA
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>为容器创建用户委托 SAS
 
-若要为容器返回用户委托 SAS 令牌，请调用[AzStorageContainerSASToken](/powershell/module/az.storage/new-azstoragecontainersastoken)命令，并传入之前创建的 Azure 存储上下文对象。
+若要为容器返回用户委托 SAS 令牌，请调用 [AzStorageContainerSASToken](/powershell/module/az.storage/new-azstoragecontainersastoken) 命令，并传入之前创建的 Azure 存储上下文对象。
 
 以下示例返回容器的用户委托 SAS 令牌。 请记住，用自己的值替换括号中的占位符值：
 
@@ -128,7 +129,7 @@ New-AzStorageContainerSASToken -Context $ctx `
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>为 blob 创建用户委托 SAS
 
-若要为 blob 返回用户委托 SAS 令牌，请调用[AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken)命令，并传入之前创建的 Azure 存储上下文对象。
+若要为 blob 返回用户委托 SAS 令牌，请调用 [AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) 命令，并传入之前创建的 Azure 存储上下文对象。
 
 以下语法返回 blob 的用户委托 SAS。 该示例指定 `-FullUri` 参数，该参数返回附加 SAS 令牌的 BLOB URI。 请记住，用自己的值替换括号中的占位符值：
 
@@ -152,7 +153,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-
 
 ## <a name="revoke-a-user-delegation-sas"></a>撤消用户委托 SAS
 
-若要从 Azure PowerShell 撤消用户委托 SAS，请调用**AzStorageAccountUserDelegationKeys**命令。 此命令吊销与指定存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都将失效。
+若要从 Azure PowerShell 撤消用户委托 SAS，请调用 **AzStorageAccountUserDelegationKeys** 命令。 此命令吊销与指定存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都将失效。
 
 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -166,5 +167,5 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建用户委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)
+- [创建 (REST API 的用户委托 SAS) ](/rest/api/storageservices/create-user-delegation-sas)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)

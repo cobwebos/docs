@@ -1,6 +1,6 @@
 ---
-title: 从存储分析度量值移动到 Azure Monitor 指标 |Microsoft Docs
-description: 了解如何从存储分析度量值（经典指标）转换为 Azure Monitor 中的度量值。
+title: 从存储分析指标移动到 Azure Monitor 指标 | Microsoft Docs
+description: 了解如何从存储分析指标（经典指标）转换到 Azure Monitor 中的指标。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,47 +9,47 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422056"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078242"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>转换到 Azure Monitor 中的指标
 
-Azure 存储现在将指标集成到 Azure Monitor 平台。 本文将帮助你进行转换。
+**2023 年8月 31**日存储分析度量值，也称为*经典指标*。 如果使用经典指标，请确保在该日期之前过渡到 Azure Monitor 中的指标。 本文可帮助你进行转换。
 
 ## <a name="steps-to-complete-the-transition"></a>完成转换的步骤
 
-若要过渡到 Azure Monitor 中的指标，建议采用以下方法。
+若要转换到 Azure Monitor 中的指标，建议采用以下方法。
 
-1. 了解 Azure Monitor 中的典型指标和指标之间的一些[主要差异](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)。 
+1. 了解经典指标和 Azure Monitor 中的指标之间的一些[关键差别](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)。 
 
-2. 编译当前使用的经典度量值的列表。
+2. 编译当前使用的经典指标列表。
 
-3. 确定[Azure Monitor 中的哪些指标](#metrics-mapping-between-old-metrics-and-new-metrics)提供与当前使用的指标相同的数据。 
+3. 确定 [Azure Monitor 中的哪些指标](#metrics-mapping-between-old-metrics-and-new-metrics)提供与当前使用指标相同的数据。 
    
-4. 创建用于查看指标数据的[图表](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal)或[仪表板](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal)。
+4. 创建[图标](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal)或[仪表板](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal)以查看指标数据。
 
    > [!NOTE]
-   > 默认情况下会启用 Azure Monitor 中的度量值，因此，开始捕获指标时无需执行任何操作。 不过，您必须创建图表或仪表板来查看这些指标。 
+   > 默认情况下，Azure Monitor 中的指标处于启用状态，因此无需执行任何操作来开始捕获指标。 但是，你必须创建图表或仪表板才能查看这些指标。 
  
-5. 如果已创建基于经典存储指标的警报规则，则创建基于 Azure Monitor 中的指标的[警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。 
+5. 如果已创建基于经典存储指标的警报规则，则会根据 Azure Monitor 中的指标[创建警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。 
 
-6. 在 Azure Monitor 中可以看到所有指标之后，可以关闭经典日志记录。 
+6. 在 Azure Monitor 中查看所有指标后，可以关闭经典日志记录。 
 
 <a id="key-differences-between-classic-metrics-and-metrics-in-azure-monitor"></a>
 
 ## <a name="classic-metrics-vs-metrics-in-azure-monitor"></a>经典指标与 Azure Monitor 中的指标
 
-本部分介绍这两个指标平台之间的几个重要区别。
+本部分介绍这两个指标平台之间的一些关键差别。
 
-主要区别在于指标的管理方式。 经典指标由 Azure 存储管理，而 Azure Monitor 中的指标由 Azure Monitor 管理。 借助经典指标，Azure 存储收集指标值，将其聚合，然后将其存储在存储帐户中的表中。 通过 Azure Monitor 中的指标，Azure 存储将指标数据发送到 Azure Monitor 后端。 Azure Monitor 提供了一种统一的监视体验，其中包括来自 Azure 门户的数据以及引入的数据。 
+主要差别在于如何管理指标。 经典指标由 Azure 存储管理，而 Azure Monitor 中的指标由 Azure Monitor 管理。 使用经典指标，Azure 存储会收集并聚合指标值，然后将它们存储到位于存储帐户中的表中。 通过 Azure Monitor 中的指标，Azure 存储发送指标数据到 Azure Monitor 后端。 Azure Monitor 对通过 Azure 门户和引入的数据获取的数据提供统一的监视体验。 
 
-至于指标支持，经典指标仅提供适用于 Azure Blob 存储的**容量**指标。 Azure Monitor 中的指标提供 Blob、表、文件、队列和高级存储的容量指标。 经典指标提供 Blob、表、Azure 文件和队列存储的**事务**指标。 中的指标 Azure Monitor 向该列表中添加高级存储。
+至于指标支持，经典指标仅为 Azure Blob 存储提供容量指标。 Azure Monitor 中的指标提供 Blob、表、文件、队列和高级存储的容量指标。 经典指标提供 Blob、表、Azure 文件和队列存储上的事务指标。 Azure Monitor 中的指标向该列表添加高级存储。
 
-如果你的帐户中的活动未触发指标，则经典指标将为该指标显示值零（0）。 Azure Monitor 中的指标将完全省略数据，这会导致报告更加整洁。 例如，对于经典指标，如果未报告服务器超时错误，则 `ServerTimeoutError` 度量值表中的值将设置为0。 当查询的度量值的维度等于时，Azure Monitor 不返回任何数据 `Transactions` `ResponseType` `ServerTimeoutError` 。 
+如果帐户中的活动未触发指标，则经典指标将显示该指标的值为零 (0)。 Azure Monitor 中的指标将完全省略数据，让报告更简洁。 例如，对于经典指标，如果未报告服务器超时错误，则度量值表中的 `ServerTimeoutError` 值将设置为 0。 当你查询维度 `ResponseType` 等于 `ServerTimeoutError` 的指标 `Transactions` 的值时，Azure Monitor 不会返回任何数据。 
 
 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
 
@@ -57,57 +57,57 @@ Azure 存储现在将指标集成到 Azure Monitor 平台。 本文将帮助你�
 
 ## <a name="map-classic-metrics-to-metrics-in-azure-monitor"></a>将经典指标映射到 Azure Monitor 中的指标
 
- 使用这些表来确定 Azure Monitor 中的哪些指标提供与当前使用的指标相同的数据。 
+ 使用这些表可以标识 Azure Monitor 中哪些指标提供与当前使用的指标相同的数据。 
 
 **容量指标**
 
 | 经典指标 | Azure Monitor 中的指标 |
 | ------------------- | ----------------- |
-| `Capacity`            | `BlobCapacity`维度 `BlobType` 等于 `BlockBlob` 或`PageBlob` |
-| `ObjectCount`        | `BlobCount`维度 `BlobType` 等于 `BlockBlob` 或`PageBlob` |
+| `Capacity`            | 维度 `BlobType` 等于 `BlockBlob` 或 `PageBlob` 的 `BlobCapacity` |
+| `ObjectCount`        | 维度 `BlobType` 等于 `BlockBlob` 或 `PageBlob` 的 `BlobCount` |
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
-> 还有几个新的容量指标，不能用作经典指标。 若要查看完整列表，请参阅[度量值](../common/monitor-storage-reference.md#metrics)。
+> 还有一些新的容量指标不能作为经典指标提供。 若要查看完整列表，请参阅[指标](../common/monitor-storage-reference.md#metrics)。
 
 **事务指标**
 
 | 经典指标 | Azure Monitor 中的指标 |
 | ------------------- | ----------------- |
-| `AnonymousAuthorizationError` | 维度 `ResponseType` 等于 `AuthorizationError` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousClientOtherError` | 维度 `ResponseType` 等于 `ClientOtherError` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousClientTimeoutError` | 维度 `ResponseType` 等于 `ClientTimeoutError` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousNetworkError` | 维度 `ResponseType` 等于 `NetworkError` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousServerOtherError` | 维度 `ResponseType` 等于 `ServerOtherError` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousServerTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousSuccess` | 维度 `ResponseType` 等于 `Success` ，维度 `Authentication` 等于的事务`Anonymous` |
-| `AnonymousThrottlingError` | 维度 `ResponseType` 等于 `ClientThrottlingError` 或 `ServerBusyError` 且维度 `Authentication` 等于的事务`Anonymous` |
-| `AuthorizationError` | 维度等于的事务 `ResponseType``AuthorizationError` |
+| `AnonymousAuthorizationError` | 维度 `ResponseType` 等于 `AuthorizationError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousClientOtherError` | 维度 `ResponseType` 等于 `ClientOtherError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousClientTimeoutError` | 维度 `ResponseType` 等于 `ClientTimeoutError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousNetworkError` | 维度 `ResponseType` 等于 `NetworkError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousServerOtherError` | 维度 `ResponseType` 等于 `ServerOtherError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousServerTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousSuccess` | 维度 `ResponseType` 等于 `Success` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AnonymousThrottlingError` | 维度 `ResponseType` 等于 `ClientThrottlingError` 或 `ServerBusyError` 且维度 `Authentication` 等于 `Anonymous` 的事务 |
+| `AuthorizationError` | 维度 `ResponseType` 等于 `AuthorizationError` 的事务 |
 | `Availability` | `Availability` |
 | `AverageE2ELatency` | `SuccessE2ELatency` |
 | `AverageServerLatency` | `SuccessServerLatency` |
-| `ClientOtherError` | 维度等于的事务 `ResponseType``ClientOtherError` |
-| `ClientTimeoutError` | 维度等于的事务 `ResponseType``ClientTimeoutError` |
-| `NetworkError` | 维度等于的事务 `ResponseType``NetworkError` |
-| `PercentAuthorizationError` | 维度等于的事务 `ResponseType``AuthorizationError` |
-| `PercentClientOtherError` | 维度等于的事务 `ResponseType``ClientOtherError` |
-| `PercentNetworkError` | 维度等于的事务 `ResponseType``NetworkError` |
-| `PercentServerOtherError` | 维度等于的事务 `ResponseType``ServerOtherError` |
-| `PercentSuccess` | 维度等于的事务 `ResponseType``Success` |
-| `PercentThrottlingError` | 维度 `ResponseType` 等于或的事务 `ClientThrottlingError``ServerBusyError` |
-| `PercentTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` 或 `ResponseType` 等于的事务`ClientTimeoutError` |
-| `SASAuthorizationError` | 维度 `ResponseType` 等于 `AuthorizationError` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASClientOtherError` | 维度 `ResponseType` 等于 `ClientOtherError` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASClientTimeoutError` | 维度 `ResponseType` 等于 `ClientTimeoutError` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASNetworkError` | 维度 `ResponseType` 等于 `NetworkError` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASServerOtherError` | 维度 `ResponseType` 等于 `ServerOtherError` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASServerTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASSuccess` | 维度 `ResponseType` 等于 `Success` ，维度 `Authentication` 等于的事务`SAS` |
-| `SASThrottlingError` | 维度 `ResponseType` 等于 `ClientThrottlingError` 或 `ServerBusyError` 且维度 `Authentication` 等于的事务`SAS` |
-| `ServerOtherError` | 维度等于的事务 `ResponseType``ServerOtherError` |
-| `ServerTimeoutError` | 维度等于的事务 `ResponseType``ServerTimeoutError` |
-| `Success` | 维度等于的事务 `ResponseType``Success` |
-| `ThrottlingError` | `Transactions`维度 `ResponseType` 等于 `ClientThrottlingError` 或`ServerBusyError`|
+| `ClientOtherError` | 维度 `ResponseType` 等于 `ClientOtherError` 的事务 |
+| `ClientTimeoutError` | 维度 `ResponseType` 等于 `ClientTimeoutError` 的事务 |
+| `NetworkError` | 维度 `ResponseType` 等于 `NetworkError` 的事务 |
+| `PercentAuthorizationError` | 维度 `ResponseType` 等于 `AuthorizationError` 的事务 |
+| `PercentClientOtherError` | 维度 `ResponseType` 等于 `ClientOtherError` 的事务 |
+| `PercentNetworkError` | 维度 `ResponseType` 等于 `NetworkError` 的事务 |
+| `PercentServerOtherError` | 维度 `ResponseType` 等于 `ServerOtherError` 的事务 |
+| `PercentSuccess` | 维度 `ResponseType` 等于 `Success` 的事务 |
+| `PercentThrottlingError` | 维度 `ResponseType` 等于 `ClientThrottlingError` 或 `ServerBusyError` 的事务 |
+| `PercentTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` 或维度 `ResponseType` 等于 `ClientTimeoutError` 的事务 |
+| `SASAuthorizationError` | 维度 `ResponseType` 等于 `AuthorizationError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASClientOtherError` | 维度 `ResponseType` 等于 `ClientOtherError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASClientTimeoutError` | 维度 `ResponseType` 等于 `ClientTimeoutError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASNetworkError` | 维度 `ResponseType` 等于 `NetworkError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASServerOtherError` | 维度 `ResponseType` 等于 `ServerOtherError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASServerTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASSuccess` | 维度 `ResponseType` 等于 `Success` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `SASThrottlingError` | 维度 `ResponseType` 等于 `ClientThrottlingError` 或 `ServerBusyError` 且维度 `Authentication` 等于 `SAS` 的事务 |
+| `ServerOtherError` | 维度 `ResponseType` 等于 `ServerOtherError` 的事务 |
+| `ServerTimeoutError` | 维度 `ResponseType` 等于 `ServerTimeoutError` 的事务 |
+| `Success` | 维度 `ResponseType` 等于 `Success` 的事务 |
+| `ThrottlingError` | 维度 `ResponseType` 等于 `ClientThrottlingError` 或 `ServerBusyError` 的 `Transactions`|
 | `TotalBillableRequests` | `Transactions` |
 | `TotalEgress` | `Egress` |
 | `TotalIngress` | `Ingress` |

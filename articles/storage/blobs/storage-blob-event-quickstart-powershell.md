@@ -1,6 +1,6 @@
 ---
-title: 将 Azure Blob 存储事件发送到 web 终结点-PowerShell |Microsoft Docs
-description: 使用 Azure 事件网格订阅 Blob 存储事件，触发事件，并查看结果。 使用 Azure PowerShell 将存储事件路由到 web 终结点。
+title: 将 Azure Blob 存储事件发送到 Web 终结点 - PowerShell | Microsoft Docs
+description: 使用 Azure 事件网格订阅 Blob 存储事件，然后触发事件并查看结果。 使用 Azure PowerShell 将存储事件路由到 Web 终结点。
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,13 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 809ab593d4d3f58fa3c91b896e5df3a0db7865f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 06be168ff9dfd55a56578b3afcdab8d984416756
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824505"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078004"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入门：利用 PowerShell 将存储事件路由到 Web 终结点
 
@@ -25,11 +26,11 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 ![查看结果](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文要求运行最新版本的 Azure PowerShell。 如果需要安装或升级，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。
+本文要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -60,7 +61,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能****。 **Blob 存储帐户**是将非结构化数据作为 blob 存储 (对象) 在 Azure 存储中的专用存储帐户。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
+可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能****。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有 LRS 复制的 Blob 存储帐户，然后检索定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。 本示例创建一个名为 gridstorage 的存储帐户，其中启用了本地冗余存储 (LRS)****。 
 
@@ -103,7 +104,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="subscribe-to-your-storage-account"></a>订阅存储帐户
 
-您可以订阅主题，告诉事件网格要跟踪哪些事件。以下示例订阅你创建的存储帐户，并将你的 web 应用的 URL 作为事件通知的终结点传递。 Web 应用的终结点必须包括后缀 `/api/updates/`。
+订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅所创建的存储帐户，并将 Web 应用中的 URL 作为事件通知的终结点传递。 Web 应用的终结点必须包括后缀 `/api/updates/`。
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id

@@ -10,13 +10,13 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 84cbb6f099c7ca94ea7046bae3f4f40e784948fe
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 22e012c36f5c2c6f195a7e3b21afe9001a4cad0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504562"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077946"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
@@ -52,7 +52,7 @@ ms.locfileid: "87504562"
 
 ## <a name="require-secure-transfer-from-code"></a>在代码中要求安全传输
 
-若要以编程方式要求安全传输，请在存储帐户上将_enableHttpsTrafficOnly_属性设置为_True_ 。 可以使用存储资源提供程序 REST API、客户端库或工具来设置此属性：
+若要以编程方式要求安全传输，请在存储帐户上设置“enableHttpsTrafficOnly”属性为“真” 。 可以使用存储资源提供程序 REST API、客户端库或工具来设置此属性：
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)

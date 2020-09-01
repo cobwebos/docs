@@ -3,12 +3,13 @@ title: Azure Application Insights 中的资源、角色和访问控制 | Microso
 description: 组织的见解的所有者、参与者和读者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926495"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076678"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
@@ -37,7 +38,7 @@ ms.locfileid: "87926495"
 * [**订阅**](https://portal.azure.com) - 若要使用 Application Insights 或其他 Azure 资源，则登录到 Azure 订阅。 每个资源组都属于一个 Azure 订阅，从中选择价格封装，并选择成员及其访问权限（如果它是组织订阅）。
 * [**Microsoft 帐户**][account] - 用于登录到 Microsoft Azure 订阅、XBox Live、Outlook.com 和其他 Microsoft 服务的用户名和密码。
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a>控制资源组中的访问权限
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> 控制资源组中的访问权限
 
 请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 它们会附加到与 Application Insights 资源相同的[资源组](#resource-group)。 还可以在其中放置其他 Azure 服务，例如网站或存储。
 
@@ -101,7 +102,7 @@ ms.locfileid: "87926495"
 
 ## <a name="related-content"></a>相关内容
 
-* [Azure RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/role-assignments-portal.md)
+* [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>PowerShell 查询确定角色成员身份
 

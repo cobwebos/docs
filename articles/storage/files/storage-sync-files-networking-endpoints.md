@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 68d2b864b0e825756fbcd8e43fee3d6289c77c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7210d414c06f154395b9128be6ed10175ad1e838
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512854"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077052"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>配置 Azure 文件同步网络终结点
 Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用于访问 Azure 文件共享： 

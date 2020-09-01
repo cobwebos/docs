@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: a38528e32061f57e3239ef4be26cdd437f4f8746
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586675"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078586"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
 
@@ -138,7 +138,7 @@ Address: 192.168.0.5
 
 禁止对公共终结点的访问时，仍可通过存储帐户的专用终结点来访问该存储帐户。 否则，将拒绝对存储帐户的公共终结点的有效请求，除非它们来自 [特定允许的源](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks)。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

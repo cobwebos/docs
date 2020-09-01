@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f4bf3974cd561626c280dc65aa5fc78d0c9a159b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056493"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077902"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -151,7 +151,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 | **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 | **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
 
-有关详细参考信息，请参阅[azcopy copy](storage-ref-azcopy-copy.md)参考文档。
+有关详细参考信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 ## <a name="download-files"></a>下载文件
 
@@ -254,7 +254,29 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 
-有关详细参考信息，请参阅[azcopy copy](storage-ref-azcopy-copy.md)参考文档。
+有关详细参考信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
+
+#### <a name="download-previous-versions-of-a-blob"></a>下载以前版本的 blob
+
+如果已启用 [blob 版本控制](../blobs/versioning-enable.md)，则可下载一个或多个以前版本的 blob。 
+
+首先，创建一个包含 [版本 id](../blobs/versioning-overview.md)列表的文本文件。 每个版本 ID 必须出现在单独的行中。 例如： 
+
+```
+2020-08-17T05:50:34.2199403Z
+2020-08-17T05:50:34.5041365Z
+2020-08-17T05:50:36.7607103Z
+```
+
+然后，将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与选项一起使用 `--list-of-versions` 。 指定包含版本列表的文本文件的位置 (例如： `D:\\list-of-versions.txt`) 。  
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-directory-path>' --list-of-versions '<list-of-versions-file>'`|
+| **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+
+每个下载文件的名称以版本 ID 开头，后面是 blob 的名称。 
 
 ## <a name="copy-blobs-between-storage-accounts"></a>在存储帐户之间复制 Blob
 

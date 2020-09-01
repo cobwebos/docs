@@ -1,7 +1,7 @@
 ---
 title: PowerShell：将 SQL Server 迁移到 SQL 数据库
 titleSuffix: Azure Database Migration Service
-description: 了解如何使用 Azure 数据库迁移服务 Azure PowerShell 将数据库从 SQL Server 迁移到 Azure SQL Database。
+description: 了解如何通过 Azure PowerShell 使用 Azure 数据库迁移服务将数据库从 SQL Server 迁移到 Azure SQL 数据库。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -9,19 +9,19 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: a092ec3d211ed3fafadd73c37b3e58c353b618d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e83f69b2a46b54f92bbfe35ac96f870edf5cb807
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253403"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078021"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
-本文介绍如何使用 Microsoft Azure PowerShell 将还原到 SQL Server 2016 或更高版本的本地实例的**Adventureworks2012**数据库迁移到 Azure SQL database。 你可以使用 Microsoft Azure PowerShell 中的模块将数据库从 SQL Server 实例迁移到 Azure SQL Database `Az.DataMigration` 。
+本文介绍如何使用 Microsoft Azure PowerShell 将还原到 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL database。 你可以使用 Microsoft Azure PowerShell 中的模块将数据库从 SQL Server 实例迁移到 Azure SQL Database `Az.DataMigration` 。
 
 在本文中，学习如何：
 > [!div class="checklist"]
@@ -38,14 +38,14 @@ ms.locfileid: "85253403"
 * [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)（任意版本）
 * 启用 TCP / IP 协议，使用 SQL Server Express 安装的情况下会默认禁用该协议。 遵循[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文启用 TCP/IP 协议。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
-* Azure SQL 数据库实例。 若要创建 Azure SQL 数据库实例，请按照在 Azure 门户中的在[AZURE SQL 数据库中创建数据库一](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)文中的详细信息进行创建。
+* Azure SQL 数据库实例。 可以按照[在 Azure 门户中创建 Azure SQL 数据库中的数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的详细说明来创建 Azure SQL 数据库实例。
 * [数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
-* 若要使用 Azure 资源管理器部署模型创建 Microsoft Azure 虚拟网络，可以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)向 azure 数据库迁移服务提供与本地源服务器之间的站点到站点连接。
+* 若要使用 Azure 资源管理器部署模型创建 Microsoft Azure 虚拟网络，可以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)向 azure 数据库迁移服务提供与本地源服务器之间的站点到站点连接。
 * 已使用[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的数据迁移助手完成对本地数据库和架构迁移的评估
 * 使用 [Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) 从 PowerShell 库下载并安装 Az.DataMigration 模块；请务必使用“以管理员身份运行”来打开 PowerShell 命令窗口。
 * 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
 * 确保用于连接到目标 Azure SQL DB 实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
-* Azure 订阅。 如果没有，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+* Azure 订阅。 如果没有，请在开始之前创建一个 [免费](https://azure.microsoft.com/free/) 帐户。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 
