@@ -238,12 +238,6 @@
               href: application-types.md
             - name: 分配了意外的用户
               href: ways-users-get-assigned-to-applications.md
-        - name: 我的应用疑难解答
-          items:
-            - name: 应用未出现
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: 出现意外的应用
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: 排查本地应用故障
           items:
             - name: 应用程序代理故障排除

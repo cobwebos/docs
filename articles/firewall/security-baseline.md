@@ -6,19 +6,19 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 24c9e5137e59fbd14a489b4d41709f39aa448ed8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069283"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231344"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure 防火墙的 azure 安全基线
 
 此安全基线将 [Azure 安全基准](../security/benchmarks/overview.md) 中的指南应用到 azure 防火墙。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容将由 Azure 安全基准定义的 **安全控制** 和适用于 azure 防火墙的相关指南进行分组。 排除了不适用于 Azure 防火墙的**控件**。 若要查看 Azure 防火墙如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 防火墙安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 *有关详细信息，请参阅 [Azure 安全基准：网络安全](/azure/security/benchmarks/security-control-network-security)。*
 

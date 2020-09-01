@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045937"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231021"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>适用于 Azure SQL 数据库的 azure 安全基线 & SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "86045937"
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
-**指南**：可以启用 Azure 专用链接，以允许通过虚拟网络中的专用终结点访问 Azure PaaS 服务（例如 SQL 数据库）和 azure 托管的客户/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
+**指南**：可以启用 Azure 专用链接，以允许通过虚拟网络中的专用终结点访问 Azure PaaS 服务 (例如，SQL 数据库) 和 azure 托管的客户/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
 
 若要允许流量到达 Azure SQL 数据库，请使用 SQL 服务标记，以允许出站流量通过网络安全组。
 
@@ -51,7 +51,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint
 
 **指南**：对于 Azure SQL 数据库部署到的子网，使用 Azure 安全中心并修正网络保护建议。
 
-对于将连接到 Azure SQL 数据库的 Azure 虚拟机（VM），启用用于保护这些 Vm 的网络安全组（NSG）流日志，并将日志发送到 Azure 存储帐户以进行流量审核。
+对于将连接到 Azure SQL 数据库 (VM) 的 Azure 虚拟机，请启用 "网络安全组" (NSG) 流日志来保护这些 Vm，并将日志发送到 Azure 存储帐户以进行流量审核。
 
 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
@@ -101,7 +101,7 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-data-ser
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：对于将连接到 Azure SQL 数据库实例的 Azure 虚拟机（vm），启用 nsg 的网络安全组（NSG）流日志来保护这些 vm，并将日志发送到 Azure 存储帐户以进行流量审核。 如果需要调查异常活动，请启用网络观察程序数据包捕获。
+**指南**：对于将连接到 Azure SQL 数据库实例的 Azure 虚拟机 (vm) ，请启用 "网络安全组" (NSG) 流日志，以保护这些 vm，并将日志发送到 Azure 存储帐户进行流量审核。 启用网络观察程序数据包捕获（如果调查异常活动时有此需要）。
 
 如何启用 NSG 流日志：
 
@@ -117,9 +117,9 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：为 Azure SQL 数据库启用高级威胁防护（ATP）。  出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级威胁防护还将警报与 Azure 安全中心集成。
+**指南**：为 Azure SQL 数据库 (ATP) 启用高级威胁防护。  出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级威胁防护还将警报与 Azure 安全中心集成。
 
-了解并使用适用于 Azure SQL 数据库的高级威胁防护：https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+了解并使用适用于 Azure SQL 数据库的高级威胁防护： https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure 安全中心监视**：是
 
@@ -137,7 +137,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **指南**：使用虚拟网络服务标记定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-使用 Azure SQL 数据库的服务终结点时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须打开网络安全组（Nsg），以允许连接到 Azure SQL 数据库 Ip。 为此，可以使用适用于 Azure SQL 数据库的 NSG 服务标记。
+使用 Azure SQL 数据库的服务终结点时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须打开 (Nsg 的网络安全组) 才能允许连接到 Azure SQL 数据库 Ip。 为此，可以使用适用于 Azure SQL 数据库的 NSG 服务标记。
 
 了解 Azure SQL 数据库的服务终结点的服务标记：
 
@@ -155,7 +155,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **指南**：通过 azure 策略为 Azure SQL 数据库定义和实施网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或者使用为服务器网络保护设计的任何内置策略定义。 适用于服务器的内置网络安全策略的一个示例是： "SQL 数据库应使用虚拟网络服务终结点"。
 
-使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于角色的访问控制（RBAC）和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于角色的访问控制 (RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 如何配置和管理 Azure Policy： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -167,9 +167,9 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：对网络安全组（NSG）和与网络安全和通信流相关的其他资源使用标记。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
+**指南**：对网络安全组使用标记 (NSG) 以及与网络安全和流量流相关的其他资源。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
 
-使用与标记相关的任何内置 Azure 策略定义（如 "需要标记和值"）来确保使用标记创建所有资源并通知现有未标记资源。
+使用标记相关的任何内置 Azure Policy 定义（例如“需要标记及其值”）来确保使用标记创建所有资源，并在有现有资源不带标记时发出通知。
 
 可以使用 Azure PowerShell 或 Azure CLI 基于其标记对资源进行查找或执行操作。
 
@@ -179,7 +179,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -195,7 +195,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -223,7 +223,7 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
-如何使用 Azure Monitor 收集平台日志和指标： 
+如何 Azure Monitor 收集平台日志和指标：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
@@ -237,7 +237,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：在服务器上启用审核并为审核日志选择存储位置（Azure 存储、Log Analytics 或事件中心）。
+**指南**：在服务器上启用审核，并为 (Azure 存储、Log Analytics 或事件中心) 的审核日志选择存储位置。
 
 如何启用对 Azure SQL 数据库的审核：
 
@@ -265,7 +265,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： AZURE ACTIVE DIRECTORY （AAD）的内置角色必须显式分配并可查询。 使用 AAD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
+**指南**： AZURE ACTIVE DIRECTORY (AAD) 具有必须显式分配且可查询的内置角色。 使用 AAD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
 如何使用 PowerShell 获取 Azure AD 中的目录角色：
 
@@ -345,7 +345,7 @@ https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemem
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -363,7 +363,7 @@ https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 **指南**：围绕使用专用管理帐户创建策略和过程。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
 
-了解 Azure 安全中心标识和访问： 
+了解 Azure 安全中心的标识和访问权限：
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：启用 AZURE ACTIVE DIRECTORY （AAD）多重身份验证（MFA）并遵循 Azure 安全中心的标识和访问管理建议。
+**指南**：启用 AZURE ACTIVE DIRECTORY (AAD) 多因素身份验证 (MFA) 并遵循 Azure 安全中心的标识和访问管理建议。
 
 如何在 Azure 中启用 MFA：
 
@@ -397,7 +397,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：将特权访问工作站（PAW）与配置为登录和配置 Azure 资源的多重身份验证 MFA 结合使用。
+**指南**：通过配置为登录和配置 Azure 资源的多重身份验证 MFA，使用特权访问工作站 (PAW) 。
 
 了解特权访问工作站：
 
@@ -409,11 +409,11 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：在环境中发生可疑活动或不安全活动时，使用 Azure Active Directory 安全报告生成日志和警报。
+**指导**：使用 Azure Active Directory 安全报告在环境中发生可疑活动或不安全的活动时生成日志和警报。
 
 使用适用于 Azure SQL 数据库的高级威胁防护来检测异常活动，这些活动表明访问或利用数据库的异常和潜在有害尝试。
 
@@ -445,7 +445,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-over
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：为服务器创建 AZURE ACTIVE DIRECTORY （AAD）管理员。
+**指南**：为服务器 (AAD) 管理员创建 Azure Active Directory。
 
 如何配置和管理 Azure SQL Azure Active Directory 身份验证：
 
@@ -457,11 +457,11 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**： AZURE ACTIVE DIRECTORY （AAD）提供日志以帮助发现过时帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户的访问权限，以确保只有正确的用户才能继续访问。
+**指南**： AZURE ACTIVE DIRECTORY (AAD) 提供了日志来帮助发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才能持续拥有访问权限。
 
 如何使用 Azure 标识访问评审：
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 
-**指南**：使用 Azure SQL 配置 AZURE ACTIVE DIRECTORY （AAD）身份验证，并为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中配置所需的警报。
+**指南**：使用 Azure SQL 配置 AZURE ACTIVE DIRECTORY (AAD) 身份验证，并为 Azure Active Directory 用户帐户创建诊断设置，将审核日志和登录日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中配置所需的警报。
 
 如何配置和管理 Azure SQL Azure Active Directory 身份验证：
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AAD）标识保护和风险检测来配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，可将数据引入 Azure Sentinel 以做进一步调查。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AAD) Identity Protection 和风险检测来配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，可将数据引入 Azure Sentinel 以做进一步调查。
 
 如何查看 Azure AD 风险登录：
 
@@ -513,7 +513,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="data-protection"></a>数据保护
 
@@ -533,7 +533,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应由 Vnet/子网进行分隔，对其进行适当标记，并在 NSG 或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在 Vnet 中部署 Azure SQL 数据库，并使用专用终结点进行私下连接。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由 Vnet/子网进行分隔，对其进行适当标记，并在 NSG 或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在 Vnet 中部署 Azure SQL 数据库，并使用专用终结点进行私下连接。
 
 如何创建其他 Azure 订阅：
 
@@ -559,7 +559,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-over
 
 **指南**：对于 Azure SQL 数据库中的数据库，存储或处理敏感信息，使用标记将数据库和相关资源标记为敏感。 在 Azure SQL 数据库实例上，将专用链接配置为结合网络安全组服务标记，以防止渗透敏感信息。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透：
 
@@ -575,7 +575,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**： Azure SQL 数据库通过使用传输层安全性对活动中的数据进行加密来保护数据。 对于所有连接，SQL 数据库始终强制执行加密（SSL/TLS）。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 Encrypt 或 TrustServerCertificate 设置如何。
+**指南**： Azure SQL 数据库通过使用传输层安全性对活动中的数据进行加密来保护数据。 SQL 数据库将对所有连接始终强制执行加密 (SSL/TLS) 。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 Encrypt 或 TrustServerCertificate 设置如何。
 
 了解传输过程中的 Azure SQL 加密：
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AAD）对 Azure SQL 数据库实例进行身份验证和控制访问权限。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AAD) 验证和控制对 Azure SQL 数据库实例的访问权限。
 
 如何将 Azure SQL 数据库与用于身份验证的 Azure Active Directory 集成：
 
@@ -627,7 +627,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**：透明数据加密（TDE）可帮助保护 Azure sql 数据库、azure sql 托管实例和 Azure 数据仓库，防止静态静态数据的恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 默认情况下，为 SQL 数据库和 SQL 托管实例中的所有新部署的数据库启用了 TDE。 Microsoft 或客户可以管理 TDE 加密密钥。
+**指南**：透明数据加密 (TDE) 通过加密静态数据，帮助保护 Azure sql 数据库、azure sql 托管实例和 Azure 数据仓库免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 默认情况下，为 SQL 数据库和 SQL 托管实例中的所有新部署的数据库启用了 TDE。 Microsoft 或客户可以管理 TDE 加密密钥。
 
 如何管理透明数据加密和使用自己的加密密钥：
 
@@ -665,13 +665,13 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
 https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
 
-如何实施 Azure 安全中心漏洞评估建议： 
+如何实现 Azure 安全中心漏洞评估建议：
 
 https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
@@ -699,13 +699,13 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
 **指导**：使用 Azure 安全中心提供的默认风险评级（安全功能分数）。
 
-了解 Azure 安全中心安全功能分数： 
+了解 Azure 安全中心安全分数：
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
@@ -719,7 +719,7 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure 资源关系图查询并发现订阅中的所有资源（包括 Azure SQL 数据库）。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
@@ -731,7 +731,7 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -787,9 +787,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 如何使用 Azure Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
@@ -817,7 +817,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型进行限制：
+**指南**：使用 Azure 策略对可在客户)  (订阅中创建的资源类型（使用以下内置策略定义）施加限制：
 
 - 不允许的资源类型
 
@@ -893,7 +893,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy [拒绝] 和 [不存在时部署] 在 Azure 资源中强制实施安全设置。
+**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
 如何配置和管理 Azure Policy：
 
@@ -905,7 +905,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
@@ -949,7 +949,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
@@ -963,7 +963,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **指南**：利用 Azure 安全中心对 Azure SQL 数据库执行基线扫描。
 
-如何在 Azure 安全中心修正建议： 
+如何在 Azure 安全中心修正建议：
 
 https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations
 
@@ -981,7 +981,7 @@ https://docs.microsoft.com/azure/security-center/security-center-sql-service-rec
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
-**指南**：使用 Azure Key Vault 存储 Azure SQL Database 透明数据加密的加密密钥（TDE）。
+**指南**：使用 Azure Key Vault 存储 Azure SQL Database 的加密密钥透明数据加密 (TDE) 。
 
 如何保护 Azure SQL 数据库中存储的敏感数据并将加密密钥存储在 Azure Key Vault 中：
 
@@ -993,19 +993,19 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：使用托管标识为 Azure 服务提供 AZURE ACTIVE DIRECTORY （AAD）中的自动托管标识。 通过托管标识，你可以向支持 AAD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，而无需在代码中包含任何凭据。
+**指南**：使用托管标识，通过 AZURE ACTIVE DIRECTORY (AAD) 中的自动托管标识提供 Azure 服务。 通过托管标识，你可以向支持 AAD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，而无需在代码中包含任何凭据。
 
 教程：使用 Windows VM 系统分配的托管标识访问 Azure SQL：
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
 
-如何配置托管标识： 
+如何配置托管标识：
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -1015,7 +1015,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -1023,7 +1023,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指导**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
+**指南**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
 
 **Azure 安全中心监视**：不适用
 
@@ -1031,15 +1031,15 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 Azure 服务的基础主机（例如 Azure App Service）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件 (例如 Azure App Service) ，但它不会在客户内容上运行。
 
 预先扫描正在上载到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure SQL 数据库等。Microsoft 无法访问这些实例中的数据。
 
-了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件：https://docs.microsoft.com/azure/security/fundamentals/antimalware
+了解适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件： https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
@@ -1069,7 +1069,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份所有客户托管密钥
 
-**指南**： Azure SQL 数据库自动创建保留7到35天之间的数据库备份，并使用 Azure 读取访问异地冗余存储（GRS）来确保即使数据中心不可用，也会保留这些备份。 这些备份是自动创建的。 如果需要，为 Azure SQL 数据库启用长期冗余备份。
+**指南**： Azure SQL 数据库会自动创建保留7到35天之间的数据库备份，并使用 Azure 读取访问异地冗余存储 (RA-GRS) ，以确保即使数据中心不可用也会保留这些备份。 这些备份是自动创建的。 如果需要，为 Azure SQL 数据库启用长期冗余备份。
 
 如果使用客户托管密钥进行透明数据加密，请确保密钥正在备份。
 
@@ -1077,7 +1077,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
 https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups?tabs=single-database
 
-如何在 Azure 中备份 key vault 密钥：
+如何在 Azure 中备份密钥保管库密钥：
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
@@ -1099,7 +1099,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backup
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -1111,7 +1111,7 @@ https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azu
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ## <a name="incident-response"></a>事件响应
 
@@ -1127,13 +1127,13 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
 **指导**：安全中心将为警报分配严重性来帮助你确定每条警报的处理优先顺序，以便在资源泄密时可以立即采取措施。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-Azure 安全中心中的安全警报：https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+Azure 安全中心中的安全警报： https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
 **Azure 安全中心监视**：是
 
@@ -1141,7 +1141,7 @@ Azure 安全中心中的安全警报：https://docs.microsoft.com/azure/security
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
 
 可以参考 NIST 发布：针对 IT 计划和功能的测试、培训和试验计划指南：
 
@@ -1149,11 +1149,11 @@ https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指南**：如果 Microsoft 安全响应中心（MSRC）发现你的数据被非法或未授权的一方访问，microsoft 将使用安全事件联系人信息与你联系。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现你的数据被非法或未授权的一方访问，microsoft 将使用安全事件联系人信息与你联系。
 
 如何设置 Azure 安全中心安全联系人：
 

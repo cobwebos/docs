@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046710"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230970"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>在 Power BI 中直观显示 Azure 时序见解中的数据
 
@@ -27,17 +27,17 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 最后，了解如何通过 Azure 时序见解可视化时序数据，然后使用 Power BI 的强大数据可视化功能和轻松共享功能增强这些数据。
 
-如果还没有 Azure 订阅，请确保注册[免费订阅](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，请确保注册 [免费订阅](https://azure.microsoft.com/free/) 。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 下载并安装最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
-* 具有或创建[Azure 时序见解 Gen2 环境](time-series-insights-update-how-to-manage.md)
+* 具有或创建 [Azure 时序见解 Gen2 环境](time-series-insights-update-how-to-manage.md)
 
 > [!IMPORTANT]
 >
-> * 目前仅在配置了**热存储**的 Azure 时序见解 Gen2 环境中支持连接器。
-> * 如果你有来自另一个 Azure AD 租户的 Azure 时序见解 Gen2 环境的来宾访问权限，你将无法访问该连接器。 了解[环境访问策略](./concepts-access-policies.md)。
+> * 目前仅在配置了 **热存储**的 Azure 时序见解 Gen2 环境中支持连接器。
+> * 如果你有来自另一个 Azure AD 租户的 Azure 时序见解 Gen2 环境的来宾访问权限，你将无法访问该连接器。 了解 [环境访问策略](./concepts-access-policies.md)。
 
 ## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>将数据从 Azure 时序见解连接到 Power BI
 
@@ -52,31 +52,31 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 开始操作：
 
-1. 打开 Azure 时序见解 Gen2 资源管理器并组织数据。
-1. 创建满意的视图后，请导航到 "**更多操作**" 下拉菜单，并选择 "**连接到 Power BI**"。
+1. 打开 Azure 时序见解资源管理器并组织你的数据。
+1. 创建满意的视图后，请导航到 " **更多操作** " 下拉菜单，并选择 " **连接到 Power BI**"。
 
-    [![Azure 时序见解 Gen2 资源管理器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure 时序见解资源管理器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. 在此选项卡中设置参数：
 
    1. 指定视图的相对时间范围。 如果对现有视图感到满意，请保留“现有时间范围”。****
-   
-   1. 选择“聚合”或“原始事件”。******** 
-   
+
+   1. 选择“聚合”或“原始事件”。********
+
        > [!NOTE]
-       > 以后始终可以在 Power BI 中聚合数据，但聚合后无法还原为原始数据。 
-       
+       > 以后始终可以在 Power BI 中聚合数据，但聚合后无法还原为原始数据。
+
        > [!NOTE]
        > 原始事件级别数据的事件计数限制为250000。
 
        [![连接](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. 如果尚未使用**热存储**配置 Azure 时序见解环境，将收到一条警告。
+   1. 如果尚未使用 **热存储**配置 Azure 时序见解环境，将收到一条警告。
 
        [![热存储警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > 可以在 Azure 门户中为**热存储**配置现有实例。
+       > 可以在 Azure 门户中为 **热存储** 配置现有实例。
 
 1. 选择“将查询复制到剪贴板”。****
 1. 现在启动 Power BI Desktop。
@@ -84,13 +84,13 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
     [![主下拉列表](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. 搜索**Azure 时序见解**，选择 " **azure 时序见解（Beta）**"，然后单击 "**连接**"。
+1. 搜索 **Azure 时序见解**，选择 " **azure 时序见解 (Beta) **，然后单击" **连接**"。
 
     [![将 Power BI 连接到 Azure 时序见解](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     或者，导航到“Azure”选项卡，并依次选择“Azure 时序见解(Beta)”、“连接”。************
-    
-1. 此时会显示一个消息对话框，要求授予连接到第三方资源的权限。 选择 "**继续**"。
+
+1. 此时会显示一个消息对话框，要求授予连接到第三方资源的权限。 选择 " **继续**"。
 
     [![选择 "创建自定义查询"](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
 
@@ -112,17 +112,17 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
     [![选择报表视图](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  在“可视化效果”列中，选择所需的视觉对象。**** 例如，选择“折线图”。**** 这会在画布中添加一个空白的折线图。
+1. 在“可视化效果”列中，选择所需的视觉对象。**** 例如，选择“折线图”。**** 这会在画布中添加一个空白的折线图。
 
-1.  在 "**字段**" 列表中，选择 " **_Timestamp** "，然后将其拖动到 "**轴**" 字段以沿 X 轴显示项。 请确保切换到 **_Timestamp**为**轴**的值（默认值为**Date 层次结构**）。
+1. 在 " **字段** " 列表中，选择 " **_Timestamp** "，然后将其拖动到 " **轴** " 字段以沿 X 轴显示项。 请确保切换到 **_Timestamp** 为 **轴** 的值 (默认值为) **日期层次结构** 。
 
     [![选择报表视图](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  同样，请在“字段”列表中选择“时序 ID”，然后将此 ID 拖放到“值”字段以显示 Y 轴上的项。************
+1. 同样，请在“字段”列表中选择“时序 ID”，然后将此 ID 拖放到“值”字段以显示 Y 轴上的项。************
 
     [![创建折线图](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  若要向画布添加另一个图表，请在折线图外的画布上的任意位置选择，并重复此过程。
+1. 若要向画布添加另一个图表，请在折线图外的画布上的任意位置选择，并重复此过程。
 
     [![创建要共享的其他图表](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 

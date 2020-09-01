@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016880"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230323"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,9 +41,7 @@ Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而�
 
 
 > [!TIP]
-> 公共预览版类和中提供了在管道步骤之间传递临时数据的改进体验  `OutputFileDatasetConfig` `OutputTabularDatasetConfig` 。  这些类是试验性预览功能，随时可能会更改。
-> 
->有关实验功能的详细信息，请参阅 https://aka.ms/azuremlexperimental 。
+> 公共预览版类和中提供了在管道步骤之间传递临时数据的改进体验  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) 。  这些类是 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。
 
 通过 `AutoMLConfig` 对象配置 `AutoMLStep`。 `AutoMLConfig` 是一个灵活的类，如[使用 Python 配置自动化 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
 
@@ -272,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 以上代码片段会从数据准备步骤的 `PipelineOutputFileDataset` 输出创建一个高性能的 `PipelineOutputTabularDataset`。
 
 > [!TIP]
-> 公共预览版类 `OutputFileDatasetConfig` 还可以将转换为 `OutputFileDatasetConfig` `OutputTabularDatasetConfig` AutoML 运行中的消耗。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
+> 公共预览版类 `OutputFileDatasetConfig` 还可以将转换为 `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) AutoML 运行中的消耗。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
 
 另一个选项是使用在工作区中注册的 `Dataset` 对象：
 

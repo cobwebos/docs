@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070320"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231174"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查 Azure AD 我的应用登录应用程序时遇到的问题
 
@@ -27,10 +27,16 @@ ms.locfileid: "89070320"
 这些应用程序代表用户在 Azure AD 门户中进行配置。 必须正确配置应用程序，并将其分配给用户或用户所属的组，才能在 "我的应用" 中看到该应用程序。 
 
 用户看到的应用类型分为以下几类：
--   Office 365 应用程序
+-   Microsoft 365 和 Office 365 应用程序
 -   使用基于联合的 SSO 配置的 Microsoft 应用程序与第三方应用程序
 -   基于密码的 SSO 应用程序
 -   使用现有 SSO 解决方案的应用程序
+
+下面是检查应用是否显示或未显示的一些内容。
+- 请确保已将应用添加到 Azure AD，并确保已分配该用户。 若要了解详细信息，请参阅 [应用程序管理中的快速入门系列](view-applications-portal.md)。
+- 如果最近添加了某个应用，请让用户注销并重新登录。 
+- 如果应用需要许可证（如 Office），请确保已向用户分配适当的许可证。
+- 根据组的大小和复杂程度，授权更改所用的时间可能会有所不同。
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
 

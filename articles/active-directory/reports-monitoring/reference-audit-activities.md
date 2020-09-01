@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891503"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231140"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
@@ -31,12 +31,12 @@ ms.locfileid: "80891503"
 Azure AD 中的报告体系结构由以下部分组成：
 
 - **活动报告** 
-    - [登录](concept-sign-ins.md)–提供有关托管应用程序和用户登录活动的使用情况的信息
+    - [登录](concept-sign-ins.md) –提供有关托管应用程序和用户登录活动的使用情况的信息
     - [审核日志](concept-audit-logs.md) - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 
     
 - **安全报表** 
-    - [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
-    - [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 
+    - [风险登录](../identity-protection/overview-identity-protection.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
+    - [已标记为存在风险的用户](../identity-protection/overview-identity-protection.md) - 风险用户是指可能已泄露的用户帐户。 
 
 本文列出了可以在审核日志中记录的审核活动。
 

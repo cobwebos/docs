@@ -6,21 +6,21 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f7da9b1779ed2cf46cb29b21215a9415cbaef494
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004480"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231276"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>安全中心的 Azure 安全基准
 
-此安全基线将[Azure 安全基准](../security/benchmarks/overview.md)中的指南应用到 Azure 安全中心。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的**安全控制措施**进行分组，以及适用于 Azure 安全中心的相关指南。 排除了不适用于 Azure 安全中心的**控件**。 若要查看 Azure 安全中心如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 安全中心安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将 [Azure 安全基准](../security/benchmarks/overview.md) 中的指南应用到 Azure 安全中心。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控制措施** 进行分组，以及适用于 Azure 安全中心的相关指南。 排除了不适用于 Azure 安全中心的**控件**。 若要查看 Azure 安全中心如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 安全中心安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
-*有关详细信息，请参阅[Azure 安全基准：网络安全](/azure/security/benchmarks/security-control-network-security)。*
+*有关详细信息，请参阅 [Azure 安全基准：网络安全](/azure/security/benchmarks/security-control-network-security)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -96,7 +96,7 @@ ms.locfileid: "88004480"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅[Azure 安全基准：日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
@@ -186,7 +186,7 @@ ms.locfileid: "88004480"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅[Azure 安全基准：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -266,7 +266,7 @@ ms.locfileid: "88004480"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
@@ -292,7 +292,7 @@ ms.locfileid: "88004480"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，还可以使用 Azure AD 的标识和访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看与 Azure 安全中心相关的用户访问权限，以确保只有正确的用户才能继续进行访问。 
+**指南**：Azure Active Directory 提供日志来帮助发现过时的帐户。 此外，还可以使用 Azure AD 的标识和访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看与 Azure 安全中心相关的用户访问权限，以确保只有正确的用户才能继续进行访问。 
 
 - [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/) 
 
@@ -330,7 +330,7 @@ ms.locfileid: "88004480"
 
 ## <a name="data-protection"></a>数据保护
 
-*有关详细信息，请参阅[Azure 安全基准：数据保护](/azure/security/benchmarks/security-control-data-protection)。*
+*有关详细信息，请参阅 [Azure 安全基准：数据保护](/azure/security/benchmarks/security-control-data-protection)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -366,7 +366,7 @@ ms.locfileid: "88004480"
 
 **指导**：加密传输中的所有敏感信息。 确保连接到 Azure 资源的任何客户端能够协商 TLS 1.2 或更高版本。 配置有 Log Analytics 代理并向 Azure 安全中心发送数据的任何虚拟机都应配置为使用 TLS 1.2。
 
-请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。 
+请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。 
 
 - [安全地将数据发送到 Log Analytics](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
 
@@ -412,7 +412,7 @@ ms.locfileid: "88004480"
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-*有关详细信息，请参阅[Azure 安全基准：漏洞管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
+*有关详细信息，请参阅 [Azure 安全基准：漏洞管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
@@ -426,9 +426,9 @@ ms.locfileid: "88004480"
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅[Azure 安全基准：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指南**：使用 Azure 资源关系图可查询和发现订阅中与 Azure 安全中心相关的所有资源。 确保适当的 (读取租户中的) 权限，并枚举所有 Azure 订阅以发现安全中心资源。 
 
@@ -471,7 +471,7 @@ ms.locfileid: "88004480"
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
 **指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
 
@@ -481,9 +481,9 @@ ms.locfileid: "88004480"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可在订阅中创建的资源类型施加限制。 
+**指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure 资源关系图可查询和发现其订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。 
+使用 Azure Resource Graph 查询和发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -530,7 +530,7 @@ ms.locfileid: "88004480"
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅[Azure 安全基准：安全配置](/azure/security/benchmarks/security-control-secure-configuration)。*
+*有关详细信息，请参阅 [Azure 安全基准：安全配置](/azure/security/benchmarks/security-control-secure-configuration)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -614,7 +614,7 @@ ms.locfileid: "88004480"
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-*有关详细信息，请参阅[Azure 安全基准：恶意软件防护](/azure/security/benchmarks/security-control-malware-defense)。*
+*有关详细信息，请参阅 [Azure 安全基准：恶意软件防护](/azure/security/benchmarks/security-control-malware-defense)。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
@@ -626,7 +626,7 @@ ms.locfileid: "88004480"
 
 ## <a name="data-recovery"></a>数据恢复
 
-*有关详细信息，请参阅[Azure 安全基准：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。*
+*有关详细信息，请参阅 [Azure 安全基准：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份 
 
@@ -684,7 +684,7 @@ ms.locfileid: "88004480"
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅[Azure 安全基准：事件响应](/azure/security/benchmarks/security-control-incident-response)。*
+*有关详细信息，请参阅 [Azure 安全基准：事件响应](/azure/security/benchmarks/security-control-incident-response)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -758,7 +758,7 @@ ms.locfileid: "88004480"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅[Azure 安全基准：渗透测试和 red 团队练习](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 

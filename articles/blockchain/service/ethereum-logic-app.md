@@ -1,23 +1,24 @@
 ---
 title: 在 Azure 逻辑应用中使用以太坊区块链连接器-Azure 区块链服务
 description: 将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用，以触发智能合同函数并响应智能合同事件。
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077038"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230528"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
 
-将 [Ethereum 区块链连接器](/connectors/blockchainethereum/)与 [Azure 逻辑应用](../../logic-apps/index.yml)配合使用可以执行智能合同操作和响应智能合同事件。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
+将 [Ethereum 区块链连接器](/connectors/blockchainethereum/)与 [Azure 逻辑应用](../../logic-apps/index.yml)配合使用可以执行智能合同操作和响应智能合同事件。 本文介绍如何使用以太坊区块链连接器将区块链信息发送到其他服务或调用区块链函数。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成可选的先决条件[快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。 本快速入门将引导你安装[适用于 Ethereum 的 Azure 区块链开发工具包](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)并设置区块链开发环境。
+- 完成可选的先决条件 [快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。 本快速入门将引导你安装[适用于 Ethereum 的 Azure 区块链开发工具包](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)并设置区块链开发环境。
+- 如果不熟悉 Azure 逻辑应用，请考虑查看 [Azure 逻辑应用](/learn/modules/intro-to-logic-apps/) 的 Microsoft Learn 模块简介，并 [使用自定义连接器从逻辑应用工作流中调用 API](/learn/modules/logic-apps-and-custom-connectors/)。
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
@@ -33,7 +34,7 @@ ms.locfileid: "87077038"
 
 每个逻辑应用都必须从触发器开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来启动并运行工作流。
 
-Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触发器或操作取决于具体的方案。
+Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触发器或操作取决于具体的方案。 请按照本文中与你的方案最匹配的部分进行操作。
 
 如果工作流：
 
@@ -52,14 +53,14 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 
     ![包含事件触发器属性的逻辑应用设计器](./media/ethereum-logic-app/event-properties.png)
 
-    | properties | 描述 |
+    | 属性 | 说明 |
     |----------|-------------|
     | **合同 ABI** | 合同应用程序二进制接口 (ABI) 定义智能合同接口。 有关详细信息，请参阅[获取合同 ABI](#get-the-contract-abi)。 |
     | **智能合同地址** | 合同地址是 Ethereum 区块链上的智能合同目标地址。 有关详细信息，请参阅[获取合同地址](#get-the-contract-address)。 |
     | **事件名称** | 选择要检查的智能合同事件。 该事件触发逻辑应用。 |
     | **间隔**和**频率** | 选择检查事件的频率。 |
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 若要完成逻辑应用，可添加一个新步骤，用于根据 Ethereum 区块链事件触发器执行操作。 例如发送电子邮件。
 
@@ -78,7 +79,7 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 1. 更改或[创建 API 连接](#create-an-api-connection)，该连接用于连接到 Azure 区块链服务。
 1. 根据所选的操作，提供有关智能合同函数的以下详细信息。
 
-    | properties | 描述 |
+    | 属性 | 说明 |
     |----------|-------------|
     | **合同 ABI** | 合同 ABI 定义智能合同接口。 有关详细信息，请参阅[获取合同 ABI](#get-the-contract-abi)。 |
     | **协定字节码** | 编译的智能合同字节码。 有关详细信息，请参阅[获取合同字节码](#get-the-contract-bytecode)。 |
@@ -128,7 +129,7 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
 
     ![设计器视图，已选择其中的“连接”](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. 现在可以使用你的逻辑应用。 若要测试基于 REST 的微服务，请向逻辑应用请求 URL 发出 HTTP POST 请求。 复制“收到 HTTP 请求时”步骤中的“HTTP POST URL”内容。********
+1. 现在可以使用你的逻辑应用。 若要测试基于 REST 的微服务，请向逻辑应用请求 URL 发出 HTTP POST 请求。 **当收到 http 请求时**，从复制**http POST URL**内容。
 
     ![包含 HTTP POST URL 的逻辑应用设计器面板](./media/ethereum-logic-app/post-url.png)
 
@@ -153,7 +154,7 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 
 若要与 Azure 区块链服务成员建立连接，可能需要提供以下列表中的属性，具体取决于方案。
 
-| properties | 描述 |
+| 属性 | 说明 |
 |----------|-------------|
 |**连接名称** | API 连接的名称。 必需。 |
 |**Ethereum RPC 终结点** | Azure 区块链服务事务节点的 HTTP 地址。 必需。 有关详细信息，请参阅[获取 RPC 终结点](#get-the-rpc-endpoint)。 |
@@ -205,7 +206,7 @@ Ethereum 区块链连接器要求与区块链建立 API 连接。 可将 API 连
 在将事务发送到区块链时，可以使用成员帐户和密码进行身份验证。 密码在创建成员时设置。
 
 1. 在 Azure 门户中，转到 Azure 区块链服务的概述页。
-1. 复制**成员帐户**地址。
+1. 复制 **成员帐户** 地址。
 
     ![包含成员帐户地址的“概览”页](./media/ethereum-logic-app/member-account.png)
 

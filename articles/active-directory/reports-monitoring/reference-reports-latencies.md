@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74007706"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231055"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -32,7 +32,7 @@ ms.locfileid: "74007706"
 
 有两种类型的活动报告：
 
-- [登录](concept-sign-ins.md)–提供有关托管应用程序和用户登录活动的使用情况的信息
+- [登录](concept-sign-ins.md) –提供有关托管应用程序和用户登录活动的使用情况的信息
 - [审核日志](concept-audit-logs.md) - 提供有关用户和组、托管应用程序和目录活动的系统活动信息
 
 下表列出了活动报表的延迟信息。 
@@ -54,23 +54,23 @@ ms.locfileid: "74007706"
 
 有两种类型的安全报表：
 
-- [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
-- [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 
+- [风险登录](../identity-protection/overview-identity-protection.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
+- [已标记为存在风险的用户](../identity-protection/overview-identity-protection.md) - 风险用户是指可能已泄露的用户帐户。 
 
 下表列出了安全报表的延迟信息。
 
-| 报表 | 最低配置 | 平均值 | 最大值 |
+| 报告 | 最低要求 | 平均值 | 最大值 |
 | :-- | --- | --- | --- |
 | 有风险的用户          | 5 分钟   | 15 分钟  | 2 小时  |
 | 有风险的登录         | 5 分钟   | 15 分钟  | 2 小时  |
 
 ## <a name="risk-detections"></a>风险检测
 
-Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为**风险检测**的记录中。
+Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为 **风险检测**的记录中。
 
 下表列出了风险检测的滞后时间信息。
 
-| 报表 | 最低配置 | 平均值 | 最大值 |
+| 报告 | 最低要求 | 平均值 | 最大值 |
 | :-- | --- | --- | --- |
 | 从匿名 IP 地址登录 |5 分钟 |15 分钟 |2 小时 |
 | 从不熟悉的位置登录 |5 分钟 |15 分钟 |2 小时 |
@@ -84,4 +84,4 @@ Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户�
 
 * [Azure AD 报表概述](overview-reports.md)
 * [以编程方式访问 Azure AD 报告](concept-reporting-api.md)
-* [Azure Active Directory 风险检测](concept-risk-events.md)
+* [Azure Active Directory 风险检测](../identity-protection/overview-identity-protection.md)

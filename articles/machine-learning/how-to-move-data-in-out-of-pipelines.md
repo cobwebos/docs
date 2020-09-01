@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997891"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230307"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -33,9 +33,8 @@ ms.locfileid: "88997891"
 - 基于 `PipelineData` 创建你要持久保存的新 `Dataset` 对象
 
 > [!TIP]
-> 公共预览版类和中提供了在管道步骤之间传递临时数据并在管道运行后保存数据的更好的  `OutputFileDatasetConfig` 体验 `OutputTabularDatasetConfig` 。  这些类是试验性预览功能，随时可能会更改。
-> 
->有关实验功能的详细信息，请参阅 https://aka.ms/azuremlexperimental 。
+> 公共预览版类和中提供了在管道步骤之间传递临时数据并在管道运行后保存数据的更好的  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) 体验 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) 。  这些类是 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。
+
 
 ## <a name="prerequisites"></a>先决条件
 

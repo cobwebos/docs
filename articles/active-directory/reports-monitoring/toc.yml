@@ -36,11 +36,11 @@
     - name: 使用情况和见解报表
       href: concept-usage-insights-report.md
     - name: 有风险的登录
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: 风险检测
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: 有风险的用户
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: “预配”日志
       href: concept-provisioning-logs.md
     - name: 报告 API
@@ -78,7 +78,7 @@
           href: howto-integrate-activity-logs-with-splunk.md
         - name: 将活动日志与 SumoLogic 集成
           href: howto-integrate-activity-logs-with-sumologic.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 缺少审核数据
           href: troubleshoot-missing-audit-data.md
@@ -94,9 +94,9 @@
     - name: 用于报告的 Azure AD PowerShell cmdlet
       href: reference-powershell-reporting.md
     - name: 审核日志 API 参考
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
     - name: 登录日志 API 参考
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin?view=graph-rest-beta
     - name: 审核活动
       href: reference-audit-activities.md
     - name: 数据保留策略

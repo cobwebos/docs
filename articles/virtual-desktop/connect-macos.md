@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007632"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230868"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>通过 macOS 客户端连接到 Windows 虚拟桌面
 
@@ -24,7 +24,7 @@ ms.locfileid: "88007632"
 
 ## <a name="install-the-client"></a>安装客户端
 
-若要开始， [download](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)请   在 macOS 设备上下载并安装客户端。
+若要开始，请在 macOS 设备上 [下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 并安装客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
@@ -32,11 +32,12 @@ ms.locfileid: "88007632"
 
 若要订阅源，请执行以下操作：
 
-1. 在主页上选择 "**添加工作区**" 以连接到服务并检索资源。
+1. 在主页上选择 " **添加工作区** " 以连接到服务并检索资源。
 2. 输入源 URL。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
-3. 选择“添加”  。
+   - 若要通过 US Gov 门户进行连接，请使用 <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> 。
+3. 选择“添加”   。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应该会看到可用资源的列表。
@@ -45,4 +46,4 @@ ms.locfileid: "88007632"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 macOS 客户端的详细信息，请查看[macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/)文档。
+若要了解有关 macOS 客户端的详细信息，请查看 [macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) 文档。

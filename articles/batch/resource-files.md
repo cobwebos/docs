@@ -3,12 +3,12 @@ title: 创建和使用资源文件
 description: 了解如何从各种输入源创建 Batch 资源文件。 本文介绍有关如何创建这些文件并将其置于 VM 上的一些常用方法。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146294"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230936"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
@@ -99,7 +99,7 @@ Batch 作业可能包含多个任务，这些任务都使用相同的公共文�
 
 如果在任务上指定了几百个资源文件，Batch 可能会因为任务太大而拒绝该任务。 最好是将任务本身的资源文件数量减到最小，从而使任务保持较小规模。
 
-如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
+如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](/dotnet/api/microsoft.azure.batch.resourcefile#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018716"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230375"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -318,6 +318,26 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>自动化机器学习
 
+* **最新的 AutoML 依赖项升级到较新的版本将中断 compatibilitity**：从 SDK 的版本1.13.0 开始，模型将不会加载到较旧的 sdk 中，因为我们在以前的包中固定的旧版本之间存在不兼容的情况，并且我们现在将固定较新版本。 你将看到如下错误：
+  * 找不到模块：例如 `No module named 'sklearn.decomposition._truncated_svd` 。
+  * 导入错误：例如 `ImportError: cannot import name 'RollingOriginValidator'` ，
+  * 属性错误： Ex `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  若要解决此问题，请执行以下两个步骤之一，具体取决于你的 AutoML SDK 培训版本：
+  1. 如果 AutoML SDK 培训版本高于1.13.0，则需要 `pandas == 0.25.1` 和 `sckit-learn==0.22.1` 。 如果存在版本不匹配问题，请升级 scikit-learn 和/或 pandas 以更正版本，如下所示：
+  
+  ```bash
+     pip install --upgrade pandas==0.25.1
+     pip install --upgrade scikit-learn==0.22.1
+  ```
+  
+  2. 如果 AutoML SDK 培训版本小于或等于1.12.0，则需要 `pandas == 0.23.4` 和 `sckit-learn==0.20.3` 。 如果版本不匹配，请将 scikit-learn 和/或 pandas 降级为正确的版本，如下所示：
+  
+  ```bash
+    pip install --upgrade pandas==0.23.4
+    pip install --upgrade scikit-learn==0.20.3
+  ```
+ 
 * **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 TensorFlow = = 1.12.0。 
  
    ```python

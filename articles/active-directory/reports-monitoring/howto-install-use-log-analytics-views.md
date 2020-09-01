@@ -17,25 +17,25 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608188"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230579"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
 Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD 租户中的 Azure AD 活动日志。 Azure AD 活动日志包括：
 
-* 审核日志：通过 "[审核日志活动" 报表](concept-audit-logs.md)，您可以访问在租户中执行的每个任务的历史记录。
-* 登录日志：对于 "[登录活动" 报表](concept-sign-ins.md)，你可以确定谁执行了审核日志中报告的任务。
+* 审核日志：通过 " [审核日志活动" 报表](concept-audit-logs.md) ，您可以访问在租户中执行的每个任务的历史记录。
+* 登录日志：对于 " [登录活动" 报表](concept-sign-ins.md)，你可以确定谁执行了审核日志中报告的任务。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要使用日志分析视图，需要执行以下操作：
 
-* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
+* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
 * 将视图从 [GitHub 存储库](https://aka.ms/AADLogAnalyticsviews)下载到本地计算机。
 
@@ -67,11 +67,11 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 
     ![创建规则](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. 选择要发出警报的操作组。 一般情况下，这可能是你想要通过电子邮件或短信通知的团队，也可以是使用 webhook、runbook、函数、逻辑应用或外部 ITSM 解决方案的自动执行的任务。 了解如何[在 Azure 门户中创建和管理操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
+6. 选择要发出警报的操作组。 一般情况下，这可能是你想要通过电子邮件或短信通知的团队，也可以是使用 webhook、runbook、函数、逻辑应用或外部 ITSM 解决方案的自动执行的任务。 了解如何 [在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。
 
 7. 选择“创建警报规则”可以创建警报****。 现在，每当出现登录错误时都会发出警报。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用 Azure Monitor 日志分析活动日志](howto-analyze-activity-logs-log-analytics.md)
-* [Azure 门户中的 Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Azure 门户中的 Azure Monitor 日志入门](../../azure-monitor/log-query/get-started-portal.md)

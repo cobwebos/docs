@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bbc421baddf03068ac72907aaa88a71a81d208d0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041313"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230426"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 的 Azure 安全基线
 
@@ -32,13 +32,13 @@ HDInsight 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 为了减少通过渗透丢失数据的风险，请使用 Azure 防火墙限制 Azure HDInsight 群集的出站网络流量。
 
-如何在虚拟网络中部署 Azure HDInsight 并使用网络安全组进行保护：https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+如何在虚拟网络中部署 Azure HDInsight 并使用网络安全组进行保护： https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-如何通过 Azure 防火墙限制 Azure HDInsight 群集的出站流量：https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+如何通过 Azure 防火墙限制 Azure HDInsight 群集的出站流量： https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
@@ -58,7 +58,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
@@ -82,7 +82,7 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
@@ -98,7 +98,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
@@ -108,13 +108,13 @@ Azure HDInsight 有多个依赖项需要入站流量。 不能通过防火墙设
 
 为了减少通过渗透丢失数据的风险，请使用 Azure 防火墙限制 Azure HDInsight 群集的出站网络流量。
 
-如何在虚拟网络中部署 HDInsight 并使用网络安全组进行保护：https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+如何在虚拟网络中部署 HDInsight 并使用网络安全组进行保护： https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-了解 HDInsight 依赖关系和防火墙使用情况：https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+了解 HDInsight 依赖关系和防火墙使用情况： https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 HDInsight 管理 IP 地址： https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -134,7 +134,7 @@ HDInsight 管理 IP 地址： https://docs.microsoft.com/azure/hdinsight/hdinsig
 
 https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -144,7 +144,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、RBAC 控制措施和策略），来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
-如何查看可用的 Azure 策略别名：
+如何查看可用的 Azure Policy 别名：
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -156,7 +156,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -180,7 +180,7 @@ https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -194,7 +194,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
 如何在 Azure Monitor 中创建警报： https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -432,7 +432,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
@@ -448,7 +448,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
@@ -530,7 +530,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 
 
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -568,7 +568,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -608,7 +608,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryptio
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 存储或计算资源。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 了解 Azure 中的客户数据保护：
 
@@ -616,7 +616,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure 安全中心监视**：目前不可用
 
-责任：共享
+**责任**：共享
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
@@ -690,7 +690,7 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
@@ -862,7 +862,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等），包括 Azure HDInsight 群集。  删除发现的任何未批准 Azure 资源。 对于 Azure HDInsight 群集节点，请实施第三方解决方案来删除未批准的软件或对其发出警报。
 
-如何使用 Azure Graph 创建查询： 
+如何通过 Azure Graph 创建查询：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -940,7 +940,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **指导**：在“Microsoft.HDInsight”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 HDInsight 群集的网络配置。
 
-如何查看可用的 Azure 策略别名：
+如何查看可用的 Azure Policy 别名：
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -982,7 +982,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 **指导**：Microsoft 管理和维护的 Azure HDInsight 操作系统映像。 客户负责实施 OS 级别的状态配置。
 
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：共享
 
@@ -1034,7 +1034,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **指导**：在“Microsoft.HDInsight”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 HDInsight 群集的配置。
 
-如何查看可用的 Azure 策略别名：
+如何查看可用的 Azure Policy 别名：
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -1096,7 +1096,7 @@ https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -1222,7 +1222,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
@@ -1238,7 +1238,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
@@ -1294,7 +1294,7 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 **Azure 安全中心监视**：不适用
 
-责任：共享
+**责任**：共享
 
 ## <a name="next-steps"></a>后续步骤
 
