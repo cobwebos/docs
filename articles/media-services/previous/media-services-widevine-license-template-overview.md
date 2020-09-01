@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9f583e7956cba0de06e5b3277bfea13c463019d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171969"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266487"
 ---
-# <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述 
+# <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 可以使用 Azure 媒体服务允许配置和请求 Google Widevine 许可证。 当播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了请求，则该服务将颁发许可证。 许可证将被发送到客户端，并用于解密和播放指定的内容。
 
 Widevine 许可证请求将格式化为 JSON 消息。  
@@ -205,6 +208,6 @@ private static string ConfigureWidevineLicenseTemplate()
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [使用 PlayReady 和/或 Widevine DRM 动态通用加密](media-services-protect-with-playready-widevine.md)
 

@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: af9f1f745f58e9d51ff7c5755d24b819ed9443f7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147351"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269720"
 ---
 # <a name="media-services-regulatory-compliance"></a>媒体服务法规遵从性
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 媒体服务满足美国联邦风险 & 授权管理计划 (FedRAMP) 和美国国防部的苛刻要求，从信息影响级别2到5。 通过部署受保护的服务（包括 Azure 政府版、Office 365 美国政府版和 Dynamics 365 政府版、美国政府版和防御机构），可以使用一系列丰富的兼容服务。
 

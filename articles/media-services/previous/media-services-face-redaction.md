@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7cdacabcc97d37c144b498ea9a05ccc9d6bffc04
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9a562e31a26cc6cf7188dd635273bd9fa8c57213
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019855"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269462"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订 
+# <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>概述
 **Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅 [此](https://azure.microsoft.com/blog/azure-media-redactor/) 博客。
 
@@ -35,7 +38,7 @@ ms.locfileid: "89019855"
 ### <a name="combined-mode"></a>组合模式
 这会自动生成经过编修的 mp4，而无需任何手动输入。
 
-| 阶段 | 文件名 | 说明 |
+| 阶段 | 文件名 | 备注 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MOV 或 MP4 格式的视频 |
 | 输入配置 |作业配置预设 |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -50,7 +53,7 @@ ms.locfileid: "89019855"
 ### <a name="analyze-mode"></a>分析模式
 双步工作流的**分析**步骤使用视频输入，并生成表示面部位置的 JSON 文件，以及显示每个检测到的面部 jpg 图像。
 
-| 阶段 | 文件名 | 说明 |
+| 阶段 | 文件名 | 备注 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MPV 或 MP4 格式的视频 |
 | 输入配置 |作业配置预设 |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -115,7 +118,7 @@ ms.locfileid: "89019855"
 
 “分析”步骤的输出不包括原始视频。 需要将该视频上传到“修订”模式任务的输入资产中，并将其选作主文件。
 
-| 阶段 | 文件名 | 说明 |
+| 阶段 | 文件名 | 备注 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MPV 或 MP4 格式的视频。 与步骤 1 中相同的视频。 |
 | 输入资产 |foo_annotations.json |第一阶段中的批注元数据文件，包含可选的修改。 |

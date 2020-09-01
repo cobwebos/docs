@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cace61739e13514bb4aba1169c51ea670a167c9d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7fd91e898c12a13e35ae8b9055ebb5a57de2a051
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944405"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272151"
 ---
 Azure 文件存储提供了四种不同的存储层（高级、事务优化、热和冷存储层），因此你能够根据方案的性能和价格要求定制共享：
 
@@ -30,6 +30,7 @@ Azure 文件存储提供了四种不同的存储层（高级、事务优化、�
 - 澳大利亚中部 2
 - 澳大利亚东部
 - 澳大利亚东南部
+- Brazil South
 - 加拿大东部
 - 加拿大中部
 - 法国中部
@@ -53,5 +54,7 @@ Azure 文件存储提供了四种不同的存储层（高级、事务优化、�
 - 阿拉伯联合酋长国北部
 - 英国南部
 - 英国西部
+- 美国中北部
+- 美国中南部
 
 若要部署热或冷文件共享，请参阅[创建热或冷文件共享](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share)。 

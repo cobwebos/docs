@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: 了解如何使用动态打包器创建筛选器，以筛选并有选择性地流式传输清单。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4a2464cbb47291f35cd4d7e20b555356e3e9aa8b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705196"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266453"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>使用动态打包器筛选清单
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 将自适应比特率流内容传送到设备时，有时需要发布多个版本的清单来适应特定的设备功能或可用网络带宽。 使用[动态打包器](dynamic-packaging-overview.md)可以指定筛选器，用于即时筛选出特定的编解码器、分辨率、比特率和音频轨迹组合。 这种筛选消除了创建多个副本的需要。 只需使用一组根据目标设备（iOS、Android、SmartTV 或浏览器）和网络功能（高带宽、移动或低带宽方案）配置的一组特定筛选器发布新的 URL。 在这种情况下，客户端可以通过查询字符串处理内容流（通过指定可用的[资产筛选器或帐户筛选器](filters-concept.md)），并使用筛选器来流式传输流的特定部分。
 
@@ -95,7 +97,7 @@ Azure 媒体服务支持 HLS、MPEG DASH 和平滑流式处理协议。 作为[�
 
 许多直播活动长期运行，直播存档可能包含多个活动。 直播活动结束后，广播者可能需要将实时存档分解成符合逻辑的节目启动和停止序列。
 
-您可以单独发布这些虚拟程序，而无需处理实时存档，也不会创建单独的资产（这不会获得 Cdn 中现有缓存片段的优势）。 此类虚拟节目的示例包括橄榄球或篮球比赛中的节、棒球比赛中的局，或者任何体育节目中的单项赛事。
+您可以单独发布这些虚拟程序，而无需处理实时存档，也不会创建单独的资产 (这不会获得 Cdn) 中现有缓存片段的优势。 此类虚拟节目的示例包括橄榄球或篮球比赛中的节、棒球比赛中的局，或者任何体育节目中的单项赛事。
 
 借助动态清单，可以使用开始/结束时间创建筛选器，并基于实时存档创建虚拟视图。
 
@@ -142,7 +144,7 @@ Azure 媒体服务支持 HLS、MPEG DASH 和平滑流式处理协议。 作为[�
 - 不应设置 VOD 筛选器的 **forceEndTimestamp**、**presentationWindowDuration** 和 **liveBackoffDuration** 值。 它们仅用于动态筛选方案。
 - 动态清单在 GOP 边界（关键帧）内运行，因此修剪后具有精确的 GOP。
 - 可对帐户和资产筛选器使用相同的筛选器名称。 资产筛选器的优先级更高，会替代帐户筛选器。
-- 如果更新筛选器，则流式处理终结点需要最多 2 分钟来刷新规则。 如果你使用了筛选器来处理内容（并在代理和 CDN 缓存中缓存了内容），则更新这些筛选器会导致播放器失败。 我们建议在更新筛选器之后清除缓存。 如果无法做到这一点，请考虑使用其他筛选器。
+- 如果更新筛选器，则流式处理终结点需要最多 2 分钟来刷新规则。 如果你使用筛选器来提供内容 (并将内容缓存在代理和 CDN 缓存) 中，则更新这些筛选器可能会导致播放机失败。 我们建议在更新筛选器之后清除缓存。 如果无法做到这一点，请考虑使用其他筛选器。
 - 客户需要手动下载清单，并分析确切的开始时间戳和时间刻度。
 
     - 若要确定资产中轨迹的属性，请[获取并检查清单文件](#get-and-examine-manifest-files)。

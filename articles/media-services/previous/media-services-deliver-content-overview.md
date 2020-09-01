@@ -10,14 +10,17 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060366"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266028"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
 
 若要实现此目标，可以：
@@ -81,29 +84,29 @@ ms.locfileid: "87060366"
 > 也可通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，AMS 目前不支持对自定义域使用 TLS。  
 > 
 
-如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含 "origin.mediaservices.windows.net" （旧格式）的流式处理 Url 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
+如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含 "origin.mediaservices.windows.net" 的流式处理 Url (旧格式) 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
 
 ## <a name="streaming-url-formats"></a><a name="URLs"></a>流式处理 URL 格式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 格式
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = mpd-csf）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = mpd-csf) 
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) V4 格式
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=m3u8-aapl)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) 
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) V3 格式
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3-v3）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3-v3) 
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS) 格式带有仅音频筛选器
 默认情况下，仅音频轨道已包括在 HLS 清单中。 这是针对手机网络进行 Apple 应用商店认证所必需的。 在这种情况下，如果客户端没有足够的带宽或者通过 2G 连接进行连接，则播放轨道会切换成仅音频。 这有助于让内容保持流式传输而无需缓冲，但没有视频内容。 在某些情况下，相对于仅播放音频而言，用户更愿意选择缓冲播放视频。 如果希望删除仅音频轨道，可在 URL 中添加 **audio-only=false** 。
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （格式 = m3u8-aapl-v3-流式处理 m3u8-aapl-v3，仅音频 = false）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3，仅限音频) 
 
 有关详细信息，请参阅 [Dynamic Manifest Composition support and HLS output additional features](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)（动态清单组合支持和其他 HSL 输出功能）。
 

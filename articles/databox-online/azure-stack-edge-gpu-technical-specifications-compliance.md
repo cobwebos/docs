@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 87c96ef6487895d3230541f0ae5fe15c5a645368
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083129"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266657"
 ---
-# <a name="azure-stack-edge-technical-specifications-and-compliance"></a>Azure Stack 边缘技术规范和合规性
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>带有 GPU 的 Azure Stack 边缘的技术规格和符合性 
 
  (GPU) 的 Azure Stack 边缘的硬件组件，遵循本文中所述的技术规格和法规标准。 技术规范描述硬件、电源单位 (通电 psu) 、存储容量、机箱和环境标准。
 
@@ -67,7 +67,7 @@ Azure Stack 边缘设备具有以下网络硬件：
 
 | 参数           | 说明                 |
 |-------------------------|----------------------------|
-| 模型    | ConnectX®-4 Lx EN 网络接口卡                      |
+| 型号    | ConnectX®-4 Lx EN 网络接口卡                      |
 | 模型说明               | 25GbE 双端口 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 设备部件号 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |

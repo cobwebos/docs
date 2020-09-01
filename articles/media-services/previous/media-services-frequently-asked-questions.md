@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 73b24de0e66ca8fbe2097f7da39b64aaea8b1ac4
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ff15206e2373ce6481cb65cbbeeb3c88cd2b7154
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057987"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269414"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>媒体服务 v2 常见问题
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本文介绍由 Azure 媒体服务 (AMS) 用户社区提出的常见问题。
 

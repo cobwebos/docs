@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111994"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269482"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
 
@@ -158,7 +158,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 
 
 ## <a name="alternatives-to-custom-logs"></a>自定义日志的替代方法
-虽然如果数据符合列出的条件，则自定义日志很有用，但如下所示的情况需要其他策略：
+尽管自定义日志在您的数据符合上面列出的条件时很有用，但在某些情况下，您需要另一个策略：
 
 - 数据不符合所需的结构，如具有不同格式的时间戳。
 - 日志文件不符合要求，如文件编码或不受支持的文件夹结构。

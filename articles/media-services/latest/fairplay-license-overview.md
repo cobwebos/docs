@@ -1,7 +1,7 @@
 ---
 title: 媒体服务和 Apple FairPlay 许可证支持 - Azure | Microsoft Docs
 description: 本主题概述 Apple FairPlay 许可证要求和配置。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0c2a699a57ce43b4d0b6f02c850dbda8082fbaea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cded51fa1cc1a1411f59915382f3c310660f8b19
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009723"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269295"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 使用 Azure 媒体服务可通过 Apple FairPlay (AES-128 CBC) 加密 HLS 内容  。 媒体服务还提供用于交付 FairPlay 许可证的服务。 当播放器尝试播放受 FairPlay 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
 

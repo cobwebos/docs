@@ -16,12 +16,12 @@ ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 02815003bf5167a73c1e2362d9270deb867c84b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999404"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266317"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
 
@@ -34,7 +34,7 @@ ms.locfileid: "88999404"
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-如果打算使用本文中的 Azure PowerShell 或 Azure CLI 示例，请务必安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果打算使用本文中的 Azure PowerShell 或 Azure CLI 示例，请务必安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。 
 
 > [!IMPORTANT]
 > - 本文中的所有示例脚本均假设命令行客户端在已启用 Azure 资源的托管标识的 VM 上运行。 在 Azure 门户中使用 VM 的“连接”功能远程连接到 VM。 有关在 VM 上启用 Azure 资源的托管标识的详细信息，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)，或有关在不同工具（使用 PowerShell、CLI、模板或 Azure SDK）中执行此操作的文章之一。 
@@ -100,9 +100,3 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 ## <a name="next-steps"></a>后续步骤
 
 - 若要在 Azure VM 上启用 Azure 资源的托管标识，请参阅[使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识](qs-configure-powershell-windows-vm.md)或[使用 Azure CLI 在 Azure VM 上配置 Azure 资源的托管标识](qs-configure-cli-windows-vm.md)
-
-
-
-
-
-

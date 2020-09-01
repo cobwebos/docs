@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c7f571489a9e565fac8c23db4c08321be6f551d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146192"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269805"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>连接到 Azure Stack Edge 设备上的 Azure 资源管理器
 
@@ -57,7 +57,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge 设备 A
 
 以下部分详细介绍了连接到 Azure 资源管理器的上述每个步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保用于通过 Azure 资源管理器连接到设备的客户端使用的是 TLS 1.2。 有关详细信息，请参阅 [在 Windows 客户端上配置 TLS 1.2 访问 Azure Stack Edge 设备](azure-stack-edge-j-series-configure-tls-settings.md)。
 

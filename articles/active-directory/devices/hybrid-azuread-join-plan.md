@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925339"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269567"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -26,13 +26,13 @@ ms.locfileid: "87925339"
 - 混合 Azure AD 加入
 - Azure AD 注册
 
-借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件性访问](../active-directory-conditional-access-azure-portal.md)来保护对云和本地资源的访问。
+借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用 [条件性访问](../conditional-access/overview.md)来保护对云和本地资源的访问。
 
 如果你有 Active Directory (AD) 环境的本地，并且想要将已加入 AD 域的计算机加入 Azure AD，则可以通过混合 Azure AD 联接来完成此操作。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本文假设你熟悉[Azure Active Directory 中设备标识管理的简介](../device-management-introduction.md)。
+本文假设你熟悉 [Azure Active Directory 中设备标识管理的简介](./overview.md)。
 
 > [!NOTE]
 > Windows 10 混合 Azure AD 联接所需的最少域控制器版本为 Windows Server 2008 R2。
@@ -57,17 +57,17 @@ ms.locfileid: "87925339"
 - Windows 10
 - Windows Server 2016
   - **注意**： Azure 国内云客户需要1809版
-- Windows Server 2019
+- Windows Server Standard 2012 R2
 
-对于运行 Windows 桌面操作系统的设备，受支持的版本将在[Windows 10 版本信息](/windows/release-information/)中列出。 最佳做法是，Microsoft 建议升级到最新版本的 Windows 10。
+对于运行 Windows 桌面操作系统的设备，受支持的版本将在 [Windows 10 版本信息](/windows/release-information/)中列出。 最佳做法是，Microsoft 建议升级到最新版本的 Windows 10。
 
 ### <a name="windows-down-level-devices"></a>Windows 下层设备
 
 - Windows 8.1
-- Windows 7 支持已于 2020 年 1 月 14 日结束。 有关详细信息，请参阅对[Windows 7 的支持已结束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
+- Windows 7 支持已于 2020 年 1 月 14 日结束。 有关详细信息，请参阅对 [Windows 7 的支持已结束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
 - Windows Server 2012 R2
 - Windows Server 2012
-- Windows Server 2008 R2。 有关 Windows Server 2008 和 2008 R2 的支持信息，请参阅[准备 Windows server 2008 支持结束](https://www.microsoft.com/cloud-platform/windows-server-2008)。
+- Windows Server 2008 R2。 有关 Windows Server 2008 和 2008 R2 的支持信息，请参阅 [准备 Windows server 2008 支持结束](https://www.microsoft.com/cloud-platform/windows-server-2008)。
 
 第一个规划步骤是审查环境，并确定是否需要支持 Windows 下层设备。
 
@@ -83,16 +83,16 @@ ms.locfileid: "87925339"
 - 服务器核心操作系统不支持任何类型的设备注册。
 
 ### <a name="os-imaging-considerations"></a>OS 映像注意事项
-- 如果你依赖于系统准备工具 (Sysprep) ，并且你使用**Windows 之前的 Windows 10 1809**映像进行安装，请确保映像不是从已注册 Azure AD 作为混合 Azure AD 联接的设备进行的。
+- 如果你依赖于系统准备工具 (Sysprep) ，并且你使用 **Windows 之前的 Windows 10 1809** 映像进行安装，请确保映像不是从已注册 Azure AD 作为混合 Azure AD 联接的设备进行的。
 
 - 如果依赖于虚拟机 (VM) 快照来创建其他 Vm，请确保快照不是从已注册 Azure AD 作为混合 Azure AD 联接的 VM 使用。
 
-- 如果使用[统一写入筛选器](/windows-hardware/customize/enterprise/unified-write-filter)和类似的技术，在重新启动时清除对磁盘的更改，则必须在设备混合 Azure AD 加入设备后应用。 在完成混合 Azure AD 联接之前启用此类技术将导致设备在每次重新启动时进行脱离
+- 如果使用 [统一写入筛选器](/windows-hardware/customize/enterprise/unified-write-filter) 和类似的技术，在重新启动时清除对磁盘的更改，则必须在设备混合 Azure AD 加入设备后应用。 在完成混合 Azure AD 联接之前启用此类技术将导致设备在每次重新启动时进行脱离
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>处理 Azure AD 注册状态的设备
-如果已加入 Windows 10 域的设备[Azure AD 注册](overview.md#getting-devices-in-azure-ad)到你的租户，则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到) 或更高版本应用了 KB4489894 的 Windows 10 1803 (来自动处理此方案。 在1803之前的版本中，你将需要手动删除 Azure AD 注册状态，然后才能启用混合 Azure AD join。 在1803及更高版本中，已进行了以下更改，以避免这种双重状态：
+如果已加入 Windows 10 域的设备 [Azure AD 注册](overview.md#getting-devices-in-azure-ad) 到你的租户，则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到) 或更高版本应用了 KB4489894 的 Windows 10 1803 (来自动处理此方案。 在1803之前的版本中，你将需要手动删除 Azure AD 注册状态，然后才能启用混合 Azure AD join。 在1803及更高版本中，已进行了以下更改，以避免这种双重状态：
 
-- 在<i>设备混合 Azure AD 加入并且同一用户登录后</i>，将自动删除用户的任何现有 Azure AD 注册状态。 例如，如果用户 A 在设备上有 Azure AD 的注册状态，则只有当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当用户登录时，会单独清除双重状态。 除了删除 Azure AD 注册状态，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备，前提是该注册是通过自动注册在 Azure AD 注册过程中进行的。
+- 在 <i>设备混合 Azure AD 加入并且同一用户登录后</i>，将自动删除用户的任何现有 Azure AD 注册状态。 例如，如果用户 A 在设备上有 Azure AD 的注册状态，则只有当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当用户登录时，会单独清除双重状态。 除了删除 Azure AD 注册状态，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备，前提是该注册是通过自动注册在 Azure AD 注册过程中进行的。
 - 可以通过将以下注册表值添加到 HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin 来阻止已加入域的设备 Azure AD 注册： "BlockAADWorkplaceJoin" = dword：00000001。
 - 在 Windows 10 1803 中，如果已配置 Windows Hello 企业版，则用户需要在双重状态清理后重新设置 Windows Hello 企业版。此问题已通过 KB4512509 解决。
 
@@ -100,7 +100,7 @@ ms.locfileid: "87925339"
 > 即使 Windows 10 会在本地自动删除 Azure AD 的注册状态，如果 Azure AD 中的设备对象由 Intune 管理，则不会立即将其删除。 可以通过运行 dsregcmd.exe/status 来验证 Azure AD 已注册状态的删除，并考虑设备不会根据该设备注册 Azure AD。
 
 ### <a name="additional-considerations"></a>其他注意事项
-- 如果你的环境使用 (VDI) 的虚拟桌面基础结构，请参阅[设备标识和桌面虚拟化](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+- 如果你的环境使用 (VDI) 的虚拟桌面基础结构，请参阅 [设备标识和桌面虚拟化](./howto-device-identity-virtual-desktop-infrastructure.md)。
 
 - 对于符合 FIPS 的 TPM 2.0，支持混合 Azure AD 联接，不适用于 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 
 
@@ -108,9 +108,9 @@ ms.locfileid: "87925339"
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 
-当所有先决条件都准备就绪后，Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息，请参阅[Azure Active Directory 中的设备标识管理简介](overview.md)。
+当所有先决条件都准备就绪后，Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息，请参阅 [Azure Active Directory 中的设备标识管理简介](overview.md)。
 
-在整个组织中同时启用混合 Azure AD 联接之前，组织可能需要对其进行控制验证。 查看对[混合 Azure AD 联接的受控验证一](hybrid-azuread-join-control.md)文，了解如何实现它。
+在整个组织中同时启用混合 Azure AD 联接之前，组织可能需要对其进行控制验证。 查看对 [混合 Azure AD 联接的受控验证一](hybrid-azuread-join-control.md) 文，了解如何实现它。
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>基于标识基础结构选择方案
 
@@ -118,12 +118,12 @@ ms.locfileid: "87925339"
 
 ### <a name="managed-environment"></a>托管环境
 
-可使用[无缝单一登录](/azure/active-directory/hybrid/how-to-connect-sso)通过[密码哈希同步 (PHS)](/azure/active-directory/hybrid/whatis-phs) 或[直通身份验证 (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) 来部署托管环境。
+可使用[无缝单一登录](../hybrid/how-to-connect-sso.md)通过[密码哈希同步 (PHS)](../hybrid/whatis-phs.md) 或[直通身份验证 (PTA)](../hybrid/how-to-connect-pta.md) 来部署托管环境。
 
 这些方案不需要配置联合服务器进行身份验证。
 
 > [!NOTE]
-> 仅支持[使用分阶段推出的云身份验证](/azure/active-directory/hybrid/how-to-connect-staged-rollout)启动 Windows 10 1903 更新
+> 仅支持[使用分阶段推出的云身份验证](../hybrid/how-to-connect-staged-rollout.md)启动 Windows 10 1903 更新
 
 ### <a name="federated-environment"></a>联合环境
 
@@ -152,9 +152,9 @@ ms.locfileid: "87925339"
 
 ## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>查看本地 AD 用户的 UPN 支持混合 Azure AD 联接
 
-有时，本地 AD 用户 Upn 可能与 Azure AD Upn 有所不同。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](/azure/security/fundamentals/choose-ad-authn)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
+有时，本地 AD 用户 Upn 可能与 Azure AD Upn 有所不同。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](../hybrid/choose-ad-authn.md)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
 
-- 可路由用户 UPN：可路由的 UPN 具有已向域注册机构注册的有效验证域。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](/azure/active-directory/fundamentals/add-custom-domain)的本地 AD 中的主域
+- 可路由用户 UPN：可路由的 UPN 具有已向域注册机构注册的有效验证域。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](../fundamentals/add-custom-domain.md)的本地 AD 中的主域
 - 不可路由的用户 UPN：不可路由的 UPN 没有经过验证的域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。
 
 > [!NOTE]
@@ -162,7 +162,7 @@ ms.locfileid: "87925339"
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 描述 |
+| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 说明 |
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |

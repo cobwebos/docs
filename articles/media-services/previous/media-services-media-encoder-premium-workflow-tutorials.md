@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 55d9d9191dc62d7397c5de944985d5653eff4e13
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057460"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269822"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>概述
 本文档包含的演练说明如何使用**工作流设计器**自定义工作流。 可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)找到实际的工作流文件。  
 
@@ -462,7 +465,7 @@ ms.locfileid: "86057460"
 
 *引入场景搜索 JPG 文件写入器*
 
-用以下表达式配置 "输出文件夹路径" 属性：`${ROOT_outputWriteDirectory}`
+用以下表达式配置 "输出文件夹路径" 属性： `${ROOT_outputWriteDirectory}`
 
 配置文件名前缀属性：
 

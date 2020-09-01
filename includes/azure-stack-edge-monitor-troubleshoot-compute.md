@@ -2,16 +2,51 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313209"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272180"
 ---
-在配置了计算角色的 Azure Stack 边缘设备上，可以使用 docker 命令的子集来监视模块或对其进行故障排除。 若要查看可用命令的列表，请[连接到 PowerShell 接口](#connect-to-the-powershell-interface)并使用 `dkrdbe` 函数。
+在配置了计算角色的 Azure Stack 边缘设备上，你可以使用两个不同的命令集对设备进行故障排除或监视。
+
+- 使用 `iotedge` 命令。 这些命令可用于设备的基本操作。
+- 使用 `dkrdbe` 命令。 这些命令适用于你的设备的一组广泛的操作。
+
+若要执行上述任一命令集，需要 [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+
+### <a name="use-iotedge-commands"></a>使用 `iotedge` 命令
+
+若要查看可用命令的列表，请 [连接到 PowerShell 接口](#connect-to-the-powershell-interface) 并使用 `iotedge` 函数。
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                                                                                                 Usage: iotedge COMMAND
+
+Commands:
+   check
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+下表简要说明了可用于的命令 `iotedge` ：
+
+|command  |说明 |
+|---------|---------|
+|`check`     | 执行常见配置和连接问题的自动检查       |
+|`list`     | 列出模块         |
+|`logs`     | 提取模块的日志        |
+|`restart`     | 停止并重新启动模块         |
+
+
+### <a name="use-dkrdbe-commands"></a>使用 `dkrdbe` 命令
+
+若要查看可用命令的列表，请 [连接到 PowerShell 接口](#connect-to-the-powershell-interface) 并使用 `dkrdbe` 函数。
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -37,9 +72,9 @@ Commands:
 ```
 下表简要说明了可用于的命令 `dkrdbe` ：
 
-|命令  |描述 |
+|command  |说明 |
 |---------|---------|
-|`image`     | 管理映像。 若要删除未使用的映像，请使用：`dkrdbe image prune -a -f`       |
+|`image`     | 管理映像。 若要删除未使用的映像，请使用： `dkrdbe image prune -a -f`       |
 |`images`     | 列出映像         |
 |`inspect`     | 返回 Docker 对象的低级别信息         |
 |`login`     | 登录到 Docker 注册表         |
@@ -49,7 +84,7 @@ Commands:
 |`ps`     | 列出容器        |
 |`pull`     | 从注册表中提取映像或存储库         |
 |`start`     | 启动一个或多个已停止的容器         |
-|`stats`     | 显示容器资源使用情况统计信息的实时流         |
+|`stats`     | 显示容器 (的实时流) 资源使用情况统计信息         |
 |`stop`     | 停止一个或多个正在运行的容器        |
 |`system`     | 管理 Docker         |
 |`top`     | 显示容器的正在运行的进程         |
@@ -78,25 +113,25 @@ Options:
 [10.100.10.10]: PS>
 ```
 
-函数的可用命令与 `dkrdbe` 用于普通 docker 命令的命令使用的参数相同。 对于 docker 命令使用的选项和参数，请参阅[使用 docker 命令行](https://docs.docker.com/engine/reference/commandline/docker/)。
+函数的可用命令与 `dkrdbe` 用于普通 docker 命令的命令使用的参数相同。 对于 docker 命令使用的选项和参数，请参阅 [使用 docker 命令行](https://docs.docker.com/engine/reference/commandline/docker/)。
 
 ### <a name="to-check-if-the-module-deployed-successfully"></a>检查模块是否已成功部署
 
-计算模块是已实现业务逻辑的容器。 若要检查是否成功部署了计算模块，请运行 `ps` 命令，并检查容器（与计算模块对应）是否正在运行。
+计算模块是已实现业务逻辑的容器。 若要检查是否成功部署了计算模块，请运行 `ps` 命令，并检查容器 (与计算模块) 是否正在运行。
 
-若要获取所有容器的列表（包括暂停的容器），请运行 `ps -a` 命令。
+若要获取所有容器 (包括) 暂停的容器的列表，请运行 `ps -a` 命令。
 
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
-如果在创建容器映像时出现错误，或者在提取映像时出现错误，请运行 `logs edgeAgent` 。  `EdgeAgent`是负责预配其他容器的 IoT Edge 运行时容器。
+如果在创建容器映像时出现错误，或者在提取映像时出现错误，请运行 `logs edgeAgent` 。  `EdgeAgent` 是负责预配其他容器的 IoT Edge 运行时容器。
 
 由于 `logs edgeAgent` 转储所有日志，因此查看最近的错误的一种好方法是使用选项 `--tail 20` 。
 
@@ -127,10 +162,10 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
 3. 记下需要其日志的容器的容器 ID。

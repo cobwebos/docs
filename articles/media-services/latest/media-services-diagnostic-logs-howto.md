@@ -3,7 +3,7 @@ title: 通过 Azure Monitor 监视媒体服务诊断日志 | Microsoft Docs
 description: 本文演示如何通过 Azure Monitor 路由和查看诊断日志。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,26 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 15c8cd3eff7b0eb64e1a512282de129f606a33ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 837113c11f24eda91a62cc68fdc68180951eee16
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501229"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269448"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
-[Azure Monitor](../../azure-monitor/overview.md)使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 有关此功能的详细说明以及要如何使用 Azure 媒体服务指标和诊断日志的详细说明，请参阅[监视媒体服务指标和诊断](media-services-metrics-diagnostic-logs.md)日志。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+[Azure Monitor](../../azure-monitor/overview.md) 使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 有关此功能的详细说明以及要如何使用 Azure 媒体服务指标和诊断日志的详细说明，请参阅 [监视媒体服务指标和诊断](media-services-metrics-diagnostic-logs.md)日志。
 
 本文介绍如何将数据路由到存储帐户，并查看数据。
 
 ## <a name="prerequisites"></a>先决条件
 
 - [创建媒体服务帐户](./create-account-howto.md)。
-- 查看[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+- 查看  [监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>使用门户将数据路由到存储帐户
 
@@ -50,7 +52,7 @@ ms.locfileid: "87501229"
 
    ![诊断设置部分](media/media-services-diagnostic-logs/logs02.png)
 1. 将“保留期(天)”滑块移至 30****。 此滑块设置监视数据要在存储帐户中保留的天数。 Azure Monitor 会自动删除早于所述天数的数据。 如果保留期为 0 天，则无限期存储数据。
-1. 单击“保存”。
+1. 单击 **“保存”** 。
 
 现在，资源的监视数据将流入到存储帐户。
 
