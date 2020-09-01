@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001053"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074400"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>启用和管理 blob 版本控制 (预览) 
 
@@ -24,6 +24,8 @@ ms.locfileid: "89001053"
 本文介绍如何使用 Azure 门户或 Azure 资源管理器模板启用或禁用存储帐户的 blob 版本控制。
 
 启用 blob 版本控制之前，必须注册预览。 若要了解有关 blob 版本控制的详细信息（包括如何注册预览版），请参阅 [blob 版本控制 (预览) ](versioning-overview.md)。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>启用 Blob 版本控制
 

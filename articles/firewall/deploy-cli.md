@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602612"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075420"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和配置 Azure 防火墙
 
@@ -35,13 +35,12 @@ ms.locfileid: "85602612"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置测试网络环境
-> * 部署防火墙
-> * 创建默认路由
-> * 配置一个应用程序规则以允许访问 www.google.com
-> * 配置网络规则，以允许访问外部 DNS 服务器
-> * 测试防火墙
+* 设置测试网络环境
+* 部署防火墙
+* 创建默认路由
+* 配置一个应用程序规则以允许访问 www.google.com
+* 配置网络规则，以允许访问外部 DNS 服务器
+* 测试防火墙
 
 如果你愿意，可以使用 [Azure 门户](tutorial-firewall-deploy-portal.md)或 [Azure PowerShell](deploy-ps.md) 完成此过程。
 
@@ -53,7 +52,7 @@ ms.locfileid: "85602612"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-如果选择在本地安装并使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行**az--version**。 有关安装或升级的信息，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 **az --version**。 有关安装或升级的信息，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 安装 Azure 防火墙扩展：
 
@@ -293,7 +292,7 @@ az network firewall network-rule create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-你可以保留防火墙资源用于下一教程，如果不再需要，请删除**测试 FW-RG**资源组以删除所有与防火墙相关的资源：
+可以将防火墙资源保留到下一教程使用。不再需要时，请删除 **Test-FW-RG** 资源组，以删除与防火墙相关的所有资源：
 
 ```azurecli-interactive
 az group delete \

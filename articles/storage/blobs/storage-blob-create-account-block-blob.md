@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c23c034af40d7db2379f9d02357131a00482bd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 0e312cf49ee54020d0feb8d8e2f4c7a9bb77215a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495737"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074504"
 ---
 # <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
 BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 此类存储帐户针对事务处理速率高或需要极快速访问的工作负载进行了优化。 本文介绍如何使用 Azure 门户、Azure CLI 或 Azure PowerShell 创建 BlockBlobStorage 帐户。
 
 > [!NOTE]
-> 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
+> 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅 [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅 [此窗体](https://aka.ms/adlspremiumonboard)。
 
 有关 BlockBlobStorage 帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
@@ -29,7 +29,7 @@ BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 无。
 
@@ -62,7 +62,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -124,7 +124,7 @@ az login
    若要了解详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
 
    > [!NOTE]
-   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
+   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅 [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅 [此窗体](https://aka.ms/adlspremiumonboard)。
 
 8. 选择“查看+创建”可查看存储帐户设置。
 
@@ -168,7 +168,7 @@ az login
    若要优化用于数据分析的存储帐户，请将 `-EnableHierarchicalNamespace $True` 添加到命令中。 若要了解详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
 
    > [!NOTE]
-   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
+   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅 [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅 [此窗体](https://aka.ms/adlspremiumonboard)。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -202,7 +202,7 @@ az login
    若要优化用于数据分析的存储帐户，请将 `--hierarchical-namespace true` 添加到命令中。 若要了解详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
 
    > [!NOTE]
-   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
+   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅 [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅 [此窗体](https://aka.ms/adlspremiumonboard)。
    
 ---
 

@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1bf8fbfb6d2c141a2b18c3599631f6383883908
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494547"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074417"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -24,7 +25,7 @@ ms.locfileid: "87494547"
 - 将 Blob 转移到较冷的存储层（从热到冷、从热到存档，或者从冷到存档），以便针对性能和成本进行优化
 - 删除生命周期已结束的 Blob
 - 在存储帐户级别定义每天运行一次的规则
-- 将规则应用于容器或 blob 的一个子集（使用名称前缀或[blob 索引标记](storage-manage-find-blobs.md)作为筛选器）
+- 使用名称前缀或 [blob 索引标记](storage-manage-find-blobs.md) 作为筛选器，将规则应用于容器或部分 blob () 
 
 假设某个数据集在生命周期的早期阶段频繁被访问，两周后只是偶尔被访问。 一个月以后，该数据集很少被访问。 在这种场景下，早期阶段最适合使用热存储。 在偶尔访问阶段最适合使用冷存储。 在一个月后数据陈旧时，存档存储便是最佳的层选项。 通过根据数据陈旧程度调整存储层，可根据需求设计出最具性价比的存储选项。 若要实现这种过渡，可以使用生命周期管理策略规则将陈旧数据转移到较冷的存储层。
 
@@ -32,9 +33,9 @@ ms.locfileid: "87494547"
 
 ## <a name="availability-and-pricing"></a>可用性和定价
 
-常规用途 v2 （GPv2）帐户、Blob 存储帐户和高级块 Blob 存储帐户的所有 Azure 区域均提供生命周期管理功能。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
+生命周期管理功能在所有 Azure 区域中适用于常规用途 v2 (GPv2) 帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
 
-生命周期管理功能是免费的。 客户将按[集 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)API 调用的常规操作成本收费。 删除操作是免费的。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+生命周期管理功能是免费的。 客户需要支付[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 调用的常规操作费用。 删除操作是免费的。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="add-or-remove-a-policy"></a>添加或删除策略
 
@@ -243,7 +244,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 >[!NOTE]
 >- 生命周期管理仅支持块 blob 类型。<br>
->- 生命周期管理不会影响系统容器，如 $logs 和 $web。
+>- 生命周期管理不会影响 $logs 和 $web 等系统容器。
 
 - 在上次修改后的 30 天后，将 Blob 分层到冷层
 - 在上次修改后的 90 天后，将 Blob 分层到存档层
@@ -291,7 +292,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | blobIndexMatch | 由要匹配的 Blob 索引标记键和值条件组成的字典值的数组。 每个规则最多可以定义10个 Blob 索引标记条件。 例如，如果想要将的所有 blob 与 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 规则进行匹配，则 blobIndexMatch 为 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果未定义 blobIndexMatch，则规则将应用于存储帐户中的所有 blob。 | 否 |
 
 > [!NOTE]
-> Blob 索引以公共预览版提供，在**加拿大中部**、**加拿大东部**、**法国中部**和**法国南部**区域提供。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
+> Blob 索引以公共预览版提供，在 **加拿大中部**、 **加拿大东部**、 **法国中部**和 **法国南部** 区域提供。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>规则操作
 

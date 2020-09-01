@@ -97,7 +97,11 @@
     - name: 安全性
       items:
         - name: 网络安全组
-          href: security-overview.md
+          items:
+            - name: 概述
+              href: security-overview.md
+            - name: 工作原理
+              href: network-security-group-how-it-works.md
         - name: 应用程序安全组
           href: application-security-groups.md
         - name: 服务标记

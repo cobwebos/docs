@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1961aa3ee21d5b04108b3107731560d747a2c963
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497318"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075556"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>适用于 Azure Data Box 的 Azure 安全基线
 
@@ -30,7 +30,7 @@ ms.locfileid: "87497318"
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。 通过 Azure 门户控制从 Data Box 到 Azure 托管存储的流量。 利用 Data Box 时，数据将通过 Azure 主干传输。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -38,7 +38,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。 通过 Azure 门户控制从 Data Box 到 Azure 托管存储的流量。 利用 Data Box 时，数据将通过 Azure 主干传输。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -46,7 +46,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -54,7 +54,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。 通过 Azure 门户控制从 Data Box 到 Azure 托管存储的流量。 利用 Data Box 时，数据将通过 Azure 主干传输。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -62,7 +62,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。 通过 Azure 门户控制从 Data Box 到 Azure 托管存储的流量。 利用 Data Box 时，数据将通过 Azure 主干传输。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -82,7 +82,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -90,7 +90,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -98,7 +98,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -106,7 +106,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -114,7 +114,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;你的 Azure Data Box 不能与虚拟网络关联。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -162,7 +162,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -184,13 +184,13 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
 **指南**：不适用;Azure Data Box 不会处理或产生与反恶意软件相关的日志。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -198,7 +198,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Azure Data Box 不会处理或产生与 DNS 相关的日志。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -206,7 +206,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -216,11 +216,11 @@ Azure 安全中心监视：不适用
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：维护对你的 Azure Data Box 具有管理访问权限的用户帐户的清单。 可以在 Azure 门户中为你的订阅使用“标识和访问控制(IAM)”窗格来配置基于角色的访问控制 (RBAC)。 这些角色将应用于 Active Directory 中的用户、组、服务主体和托管标识。在首次创建订单时，你可以控制谁可以访问你的订单。 在不同范围中设置 Azure 角色，以控制对 Data Box 顺序的访问。 Azure 角色确定对操作子集的访问（读写、只读、读写）的类型。
+**指南**：维护对你的 Azure Data Box 具有管理访问权限的用户帐户的清单。 你可以使用订阅 Azure 门户中 (IAM) 窗格的 "标识和访问控制" 来配置 Azure RBAC)  (基于角色的访问控制。 这些角色将应用于 Active Directory 中的用户、组、服务主体和托管标识。在首次创建订单时，你可以控制谁可以访问你的订单。 在不同范围中设置 Azure 角色，以控制对 Data Box 顺序的访问。 Azure 角色确定对操作子集的访问（读写、只读、读写）的类型。
 
 * [了解自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [如何为工作簿配置 RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [如何为工作簿配置 Azure RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [了解如何按顺序设置访问控制](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
 
@@ -257,7 +257,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;对你的 Data Box 顺序的访问是通过 Azure 门户并为具有所有者或参与者的租户角色的帐户进行保留。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -271,7 +271,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：通过启用了 Azure 多重身份验证（MFA）的特权访问工作站（PAW）登录并配置你的 Azure Data Box 订单。
+**指南**：使用具有 Azure 多重 (身份验证的特权访问工作站 (PAW) 启用了 MFA) ，以便登录并配置 Azure Data Box 订单。
 
 * [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -283,7 +283,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：不适用，Azure Data Box 没有自己的管理帐户。 可以通过 Azure 门户访问它。 但是，你可以将 Azure 订阅配置为使用 Azure Active Directory （AD） Privileged Identity Management （PIM）来生成日志，并在环境中发生可疑活动或不安全活动时发出警报。
+**指南**：不适用，Azure Data Box 没有自己的管理帐户。 可以通过 Azure 门户访问它。 但是，你可以将 Azure 订阅配置为使用 Azure Active Directory (AD) Privileged Identity Management (PIM) ，以便在环境中发生可疑或不安全活动时生成日志和警报。
 
 此外，还可使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
 
@@ -307,7 +307,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）作为中心身份验证和授权系统（如果适用）。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为中心身份验证和授权系统（如果适用）。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 * [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -331,7 +331,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）作为中心身份验证和授权系统（如果适用）。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为中心身份验证和授权系统（如果适用）。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 你可以访问 Azure AD 登录活动、审核和风险事件日志源，以便与 Azure Sentinel 或第三方 SIEM 集成。
 
@@ -345,7 +345,7 @@ Azure Data Box 服务日志不会写入 Log Analytics 工作区中。
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
@@ -379,7 +379,7 @@ Azure Data Box 服务日志不会写入 Log Analytics 工作区中。
 
 **指南**：不适用于 Azure Data Box。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -401,7 +401,7 @@ Azure 安全中心监视：不适用
 
 * [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：共享
 
@@ -415,7 +415,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：共享
+**责任**：共享
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
@@ -427,7 +427,7 @@ Azure 安全中心监视：不适用
 
 **责任**：不适用
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 **指南**：确保你有权访问订阅的所有者或参与者才能创建 Data Box 订单。 你还可以在资源级别定义 Data Box 读取器和 Data Box 参与者角色。
 
@@ -437,7 +437,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
@@ -453,7 +453,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure Data Box 为静态数据实现 AES 256 位加密。
 
-Azure Data Box 为静态数据实现 AES 256 位加密。此外，Azure Data Box 通过加密密钥来保护用于锁定设备的设备解锁密钥（也称为设备密码）。 默认情况下，使用 Microsoft 管理的密钥加密 Data Box 订单的设备解锁密钥。 如需进一步控制设备解锁密钥，还可以提供客户管理的密钥。 必须在 Azure Key Vault 中创建并存储客户管理的密钥。
+Azure Data Box 为静态数据实现 AES 256 位加密。此外，Azure Data Box 还会通过加密密钥来保护设备解锁密钥 (也称为设备密码) 用于锁定设备。 默认情况下，使用 Microsoft 管理的密钥加密 Data Box 订单的设备解锁密钥。 如需进一步控制设备解锁密钥，还可以提供客户管理的密钥。 必须在 Azure Key Vault 中创建并存储客户管理的密钥。
 
 * [了解 Data Box 数据保护](https://docs.microsoft.com/azure/databox/data-box-security)
 
@@ -461,7 +461,7 @@ Azure Data Box 为静态数据实现 AES 256 位加密。此外，Azure Data Box
 
 **Azure 安全中心监视**：不适用
 
-责任：共享
+**责任**：共享
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
@@ -525,7 +525,7 @@ Azure Data Box 为静态数据实现 AES 256 位加密。此外，Azure Data Box
 
 **指南**：不适用，没有要发现的 Data Box 资产。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -533,7 +533,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Data Box 没有资产元数据。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -557,7 +557,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Data Box 服务级别无。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -565,7 +565,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Data Box 服务级别无。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -573,7 +573,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Data Box 服务级别无。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -581,7 +581,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Data Box 服务级别无。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -589,7 +589,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Data Box 服务仅使用批准的 Azure 服务。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -597,7 +597,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Data Box 服务仅使用批准的软件标题。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -615,7 +615,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Data Box 服务不支持执行脚本。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -659,7 +659,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure Data Box 附带资源的预配置最佳方案安全设置，不能更改。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -683,7 +683,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Azure Data Box 配置无法更改。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -691,7 +691,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Azure Data Box 配置无法更改。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -707,7 +707,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用，Azure Data Box 配置无法更改。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -749,13 +749,13 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。 Microsoft 反恶意软件已在支持 Azure 服务（例如 Azure 应用服务）的基础主机上启用，但它不会针对客户内容运行。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 azure 服务的基础主机（例如，azure 客户密码箱）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，azure 客户密码箱) ，但它不会在客户内容上运行。
 
 你需要负责预先扫描要上传到非计算 Azure 资源的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 
@@ -767,7 +767,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。 支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -829,7 +829,7 @@ Azure 安全中心监视：不适用
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
@@ -869,7 +869,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -887,7 +887,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**： Microsoft 在 Data Box 设备上进行渗透测试和漏洞扫描。 你可以执行自己的渗透测试和漏洞扫描。 如果你选择这样做，请按照 Microsoft 交往规则确保你的渗透测试不违反 Microsoft 政策。 针对 Microsoft 托管的云基础结构、服务和应用程序，使用 Microsoft 的战略和对红色组合和活动站点渗透测试的执行。
+**指南**： Microsoft 在 Data Box 设备上进行渗透测试和漏洞扫描。 你可以执行自己的渗透测试和漏洞扫描。 如果你选择这样做，请按照 Microsoft 交往规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行的现场渗透测试。
 
 * [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -895,7 +895,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：共享
+**责任**：共享
 
 ## <a name="next-steps"></a>后续步骤
 

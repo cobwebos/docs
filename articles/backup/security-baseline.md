@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bb4cc150fab388846b35dc9adebfacf7a56e9bbc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890495"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073499"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -416,7 +416,7 @@ ms.locfileid: "88890495"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
+**指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -480,11 +480,11 @@ Microsoft 管理 Azure 备份的底层基础结构，并实施了严格的控制
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**： azure RBAC) 的 azure 基于角色的访问控制支持对 azure 进行细致的访问管理 (。 使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
+**指南**： azure RBAC) 的 azure 基于角色的访问控制支持对 azure 进行细致的访问管理 (。 使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。
 
 Azure 备份提供三个用于控制备份管理操作的内置角色：备份参与者、备份操作员和备份读取者。 可以将备份内置角色映射到各种备份管理操作。
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [使用基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)
 
@@ -632,7 +632,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

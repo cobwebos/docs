@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
-ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832631"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072734"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure Spot VM 
 
@@ -41,10 +41,10 @@ Spot 实例的定价是可变的，基于区域和 SKU。 有关详细信息，�
 用户可以选择通过 [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) 来接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
 
 ## <a name="placement-groups"></a>放置组
-放置组是类似于 Azure 可用性集的构造，具有其自己的容错域和升级域。 默认情况下，一个规模集包含一个放置组，最大大小为 100 台 VM。 如果将被调用的规模集属性 `singlePlacementGroup` 设置为*false*，则规模集可以由多个放置组组成，其范围为 0-1000 个 vm。 
+放置组是类似于 Azure 可用性集的构造，具有其自己的容错域和升级域。 默认情况下，一个规模集包含一个放置组，最大大小为 100 台 VM。 如果将被调用的规模集属性 `singlePlacementGroup` 设置为 *false*，则规模集可以由多个放置组组成，其范围为 0-1000 个 vm。 
 
 > [!IMPORTANT]
-> 除非使用的是与 HPC 一起使用的，否则强烈建议将 "规模集" 属性设置 `singlePlacementGroup` 为*false* ，以启用多个放置组，以便更好地在区域或区域中进行缩放。 
+> 除非使用的是与 HPC 一起使用的，否则强烈建议将 "规模集" 属性设置 `singlePlacementGroup` 为 *false* ，以启用多个放置组，以便更好地在区域或区域中进行缩放。 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>在规模集中部署 Spot VM
 

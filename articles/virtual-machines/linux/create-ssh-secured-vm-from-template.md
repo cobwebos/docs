@@ -1,25 +1,29 @@
 ---
-title: 通过模板在 Azure 中创建 Linux VM
+title: 使用模板在 Azure 中创建 Linux VM
 description: 如何使用 Azure CLI 基于资源管理器模板创建 Linux VM
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: ef9650690435a3770e59326e757ab1c783fa7b23
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 184e856636a74ce5b7ac72b2e8cab3d1f19c4e17
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372750"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074383"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
-了解如何使用 Azure 资源管理器模板创建 Linux 虚拟机（VM）和 Azure Cloud shell 中的 Azure CLI。 若要创建 Windows 虚拟机，请参阅[通过资源管理器模板创建 Windows 虚拟机](../windows/ps-template.md)。
+了解如何使用 azure 资源管理器模板和 Azure Cloud shell 中的 Azure CLI，创建 (VM) 的 Linux 虚拟机。 若要创建 Windows 虚拟机，请参阅[通过资源管理器模板创建 Windows 虚拟机](../windows/ps-template.md)。
+
+一种替代方法是从 Azure 门户部署模板。 若要在门户中打开该模板，请选择 " **部署到 Azure** " 按钮。
+
+[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-sshkey%2Fazuredeploy.json)
 
 ## <a name="templates-overview"></a>模板概述
 
-Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方案的基础结构和配置。 使用模板可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。 若要查看资源类型的 JSON 语法，请参阅[定义 Azure 资源管理器模板中的资源](/azure/templates/microsoft.compute/allversions)。
+Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方案的基础结构和配置。 使用模板可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。 若要查看资源类型的 JSON 语法，请参阅[定义 Azure Resource Manager 模板中的资源](/azure/templates/microsoft.compute/allversions)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -32,7 +36,7 @@ Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方�
 
 [!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
 
-若要运行 CLI 脚本，请选择“试用”**** 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择 "**粘贴**"：
+若要运行 CLI 脚本，请选择“试用”**** 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择 " **粘贴**"：
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -57,7 +61,7 @@ az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-d
 下面是一些其他资源：
 
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/index.yml)。
-- 若要查看 Azure 虚拟机架构，请参阅[azure 模板参考](/azure/templates/microsoft.compute/allversions)。
+- 若要查看 Azure 虚拟机架构，请参阅 [Azure 模板引用](/azure/templates/microsoft.compute/allversions)。
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机

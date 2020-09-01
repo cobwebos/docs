@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 097b3c71b01a8ad0e930d7aa0d7be46a1e835e1a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: edbce017b1090a029d49c9f2f8812e7e65133fcb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495159"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073125"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>块 blob 的对象复制（预览版）
 
@@ -31,6 +31,8 @@ ms.locfileid: "87495159"
 :::image type="content" source="media/object-replication-overview/object-replication-diagram.svg" alt-text="显示对象复制工作方式的图":::
 
 若要了解如何配置对象复制，请参阅[配置对象复制（预览版）](object-replication-configure.md)。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="object-replication-policies-and-rules"></a>对象复制策略和规则
 
@@ -55,7 +57,7 @@ ms.locfileid: "87495159"
 
 也可以将一个或多个筛选器指定为复制规则的一部分，以按前缀筛选块 blob。 指定前缀时，只会将源容器中与该前缀匹配的 blob 复制到目标容器。
 
-源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以对目标容器中的 blob 调用 "[设置 Blob 层](/rest/api/storageservices/set-blob-tier)" 操作，以将其移动到 "存档" 层。 有关存档层的详细信息，请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
+源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以对目标容器中的 blob 调用 " [设置 Blob 层](/rest/api/storageservices/set-blob-tier) " 操作，以将其移动到 "存档" 层。 有关存档层的详细信息，请参阅 [Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
 
 ## <a name="about-the-preview"></a>关于此预览版
 
