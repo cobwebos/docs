@@ -1,7 +1,7 @@
 ---
 title: 试验跟踪和部署模型
 titleSuffix: Azure Data Science Virtual Machine
-description: 了解如何通过 Azure 机器学习和/或 MLFlow 从 DSVM 跟踪和记录试验。
+description: 了解如何在 Azure 机器学习和/或 MLFlow 的 Data Science Virtual Machine 中跟踪和记录试验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146889"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254740"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure 机器学习中跟踪试验和部署模型
 
@@ -24,9 +24,9 @@ ms.locfileid: "89146889"
 
 ![跟踪试验](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 你将需要 [预配 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* 需要 [预配 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>创建新的 Notebook
 
@@ -36,11 +36,11 @@ Azure 机器学习和 MLFlow SDK 预安装在 Data Science VM 上，并可在**a
 
 ## <a name="set-up-the-workspace"></a>设置工作区
 
-中转到 [Azure 门户](https://portal.azure.com) ，并选择作为必备组件的一部分预配的工作区。 你将 __在 (上看到下载 config.js__ ，) -下载配置并确保它存储在 DSVM 上的工作目录中。
+中转到 [Azure 门户](https://portal.azure.com) ，并选择作为必备组件的一部分预配的工作区。 你将看到 __下载 config.js__ (参阅下文) -下载配置并确保它存储在 DSVM 上的工作目录中。
 
 ![获取配置文件](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-配置包含工作区名称、订阅等信息，这意味着不需要对这些参数进行硬编码。
+Config 包含工作区名称、订阅等信息，这意味着不需要对这些参数进行硬编码。
 
 ## <a name="track-dsvm-runs"></a>跟踪 DSVM 运行
 
@@ -131,11 +131,11 @@ with mlflow.start_run():
 
 ### <a name="step-1-create-inference-compute"></a>步骤1：创建推理计算
 
-在 [AzureML Studio](https://ml.azure.com) 的左侧菜单中，单击 " __计算__ "，然后单击 " __推理群集__ " 选项卡。接下来，单击 " __+ 新建__ "，如下所示：
+在 [AzureML Studio](https://ml.azure.com) 的左侧菜单中，单击 " __计算__ "，然后单击 " __推理群集__ " 选项卡。接下来，单击 " __+ 新建__ "，如下所述：
 
 ![创建推理计算](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-在 " __新建推理群集__ " 窗格中填写以下内容的详细信息：
+在 __新的推理群集__ 窗格中填写以下内容的详细信息：
 
 * 计算名称
 * Kubernetes 服务-选择 "新建"
@@ -151,7 +151,7 @@ with mlflow.start_run():
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>步骤2：部署无代码推理服务
 
-当我们在代码中注册模型时， `register_model` 我们将该框架指定为 spark-sklearn。 Azure 机器学习不支持以下框架的代码部署：
+使用在代码中注册模型时 `register_model` ，我们将该框架指定为 spark-sklearn。 Azure 机器学习不支持以下框架的代码部署：
 
 * scikit-learn
 * Tensorflow SaveModel 格式
@@ -167,17 +167,17 @@ with mlflow.start_run():
 
 ![部署](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-我们会将模型部署到在步骤1中创建)  (Azure Kubernetes 服务的推理群集。 在下面的详细信息中，提供服务的名称以及在步骤 1)  (创建的 AKS 计算群集的名称。 我们还建议你将 __CPU 预留容量__ 增加到 1 (从 0.1) ，将 __内存预留容量__ 增加到 0.5) 中的1个 (-可以通过单击 " __高级__ " 并填入详细信息来实现此目的。 然后单击 " __部署__"。
+我们会将模型部署到在步骤1中创建)  (Azure Kubernetes 服务的推理群集。 填写以下详细信息：提供服务的名称，并在步骤 1)  (创建的 AKS 计算群集的名称。 我们还建议你将 __CPU 预留容量__ 增加到 1 (从 0.1) ，将 __内存预留容量__ 增加到 0.5) 中的1个 (-可以通过单击 " __高级__ " 并填入详细信息来提高这一增长。 然后单击 " __部署__"。
 
 ![部署详细信息](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
 ### <a name="step-3-consume"></a>步骤3：使用
 
-成功部署模型后，你应该看到以下 (若要访问此页面，请单击左侧菜单中的 "终结点" > 然后单击已部署的服务) 的名称：
+如果模型已成功部署，你应该看到以下 (若要访问此页面，请单击左侧菜单中的 "终结点" > 然后单击已部署的服务) 的名称：
 
 ![使用模型](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-你应注意到，部署状态从 __转换__ 到 __正常__。 此外，此详细信息部分提供了 REST 终结点和 Swagger Url，应用程序开发人员可以使用它将 ML 模型集成到其应用程序中。
+应会看到部署状态从 __转换__ 到 __正常__。 此外，此详细信息部分提供了 REST 终结点和 Swagger Url，应用程序开发人员可以使用它将 ML 模型集成到其应用程序中。
 
 可以使用 [Postman](https://www.postman.com/)测试终结点，也可以使用 AzureML SDK：
 
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>步骤4：清理
 
-应删除在步骤1中创建的推理计算，以便不会产生正在进行的计算费用。 在 Azure 机器学习 Studio 的左侧菜单中，单击 "计算" > 推理群集 "> 选择" 计算 ">" 删除 "。
+删除在步骤1中创建的推理计算，以便不会产生正在进行的计算费用。 在 Azure 机器学习 Studio 中的左侧菜单中，单击 "计算" > 推理群集 > 选择 "计算" > "删除"。
 
 ## <a name="next-steps"></a>后续步骤
 

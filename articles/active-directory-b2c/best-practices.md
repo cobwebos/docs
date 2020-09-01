@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484303"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254485"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
 
@@ -44,6 +44,7 @@ ms.locfileid: "84484303"
 | 可用性与安全性 | 解决方案必须致力于在应用程序可用性与组织可接受的风险级别之间取得适当的平衡。 |
 | 将本地依赖项转移到云中 | 为了帮助确保解决方案具有复原能力，请考虑将现有的应用程序依赖项转移到云中。 |
 | 将现有应用迁移到 b2clogin.com | 弃用的 login.microsoftonline.com 将对2004年12月 2020 12 日的所有 Azure AD B2C 租户生效。 [了解详细信息](b2clogin.md)。 |
+| 使用 Identity Protection 和条件访问 | 使用这些功能更好地控制有风险的身份验证和访问策略。 需要 Azure AD B2C 高级 P2。 [了解详细信息](conditional-access-identity-protection-overview.md)。 |
 
 ## <a name="implementation"></a>实现
 
@@ -52,7 +53,7 @@ ms.locfileid: "84484303"
 | 最佳做法 | 说明 |
 |--|--|
 | 使用 Visual Studio Code 的 Azure AD B2C 扩展编辑自定义策略 | 从 [Visual Studio Code 市场](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)下载 Visual Studio Code 以及社区开发的此扩展。 尽管 Visual Studio Code 的 Azure AD B2C 扩展不是 Microsoft 官方产品，但其中的多项功能可帮助简化自定义策略的处理。 |
-| 了解如何排查 Azure AD B2C 问题 | 了解如何在开发期间[排查自定义策略问题](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)。 了解常规身份验证流的大致形式，并使用相应的工具来发现异常和错误。 例如，使用[Application Insights](troubleshoot-with-application-insights.md)查看用户旅程的输出日志。 |
+| 了解如何排查 Azure AD B2C 问题 | 了解如何在开发期间[排查自定义策略问题](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)。 了解常规身份验证流的大致形式，并使用相应的工具来发现异常和错误。 例如，使用 [Application Insights](troubleshoot-with-application-insights.md) 查看用户旅程的输出日志。 |
 | 利用我们的经受验证的自定义策略模式库 | 查找多个增强型 Azure AD B2C 客户标识和访问管理 (CIAM) 用户旅程的[示例](https://github.com/azure-ad-b2c/samples)。 |
 
 
@@ -68,7 +69,7 @@ ms.locfileid: "84484303"
 | A/B 测试 | 先在外部让少量的随机用户体验你的新功能，然后再将其推出到整个用户群。 在 Azure AD B2C 中启用 JavaScript 后，可与 Optimizely、Clarity 等 A/B 测试工具相集成。 |
 | 负载测试 | Azure AD B2C 可以缩放，但应用程序仅在其所有依赖项均可缩放时才能缩放。 对 API 和 CDN 进行负载测试。 |
 | 限制 |  如果在短时间内从同一个源发送了过多的请求，Azure AD B2C 会限制流量。 执行负载测试时请使用多个流量源，并在应用程序中适当处理 `AADB2C90229` 错误代码。 |
-| 自动化 | 使用持续集成和交付（CI/CD）管道自动执行测试和部署，例如[Azure DevOps](deploy-custom-policies-devops.md)。 |
+| 自动化 | 使用持续集成和交付 (CI/CD) 管道自动执行测试和部署，例如 [Azure DevOps](deploy-custom-policies-devops.md)。 |
 
 ## <a name="operations"></a>操作
 
@@ -80,7 +81,7 @@ ms.locfileid: "84484303"
 | 对自定义策略使用版本控制 | 考虑对 Azure AD B2C 自定义策略使用 GitHub、Azure Repos 或其他基于云的版本控制系统。 |
 | 使用 Microsoft Graph API 将 B2C 租户管理自动化 | Microsoft Graph API：<br/>管理 [Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta)（自定义策略）<br/>[“键”](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[用户流](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
 | 与 Azure DevOps 集成 | [CI/CD 管道](deploy-custom-policies-devops.md)可在不同环境之间轻松移动代码，并确保在所有时间都能实现生产就绪。   |
-| 与 Azure Monitor 集成 | [审核日志事件](view-audit-logs.md)只保留7天。 [与 Azure Monitor 集成](azure-monitor.md)，以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具相集成，以获取有关环境的见解。 |
+| 与 Azure Monitor 集成 | [审核日志事件](view-audit-logs.md) 只保留7天。 [与 Azure Monitor 集成](azure-monitor.md)，以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具相集成，以获取有关环境的见解。 |
 | 设置有效警报和监视 | 使用 Application Insights 跟踪 Azure AD B2C 中的[用户行为](active-directory-b2c-custom-guide-eventlogger-appins.md)。 |
 
 

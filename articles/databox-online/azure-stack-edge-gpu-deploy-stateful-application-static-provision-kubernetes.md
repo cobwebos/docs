@@ -1,6 +1,6 @@
 ---
 title: 使用 kubectl 在 Azure Stack Edge 设备上通过静态预配的共享来部署 Kubernetes 有状态应用 |Microsoft Docs
-description: 介绍如何在 Microsoft Azure Stack 边缘设备上使用 kubectl 通过静态预配的共享来创建和管理 Kubernetes 有状态应用程序部署。
+description: 介绍如何在 Azure Stack 边缘 GPU 设备上使用 kubectl 通过静态预配的共享来创建和管理 Kubernetes 有状态应用程序部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: cabd27849445c0eab93a6649d228a172b66bd1a4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083471"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254366"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>使用 kubectl 在 Azure Stack Edge 设备上使用 PersistentVolume 运行 Kubernetes 有状态应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "89083471"
 此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md) 并且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)的概念的用户。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在部署有状态应用程序之前，请确保已在设备和将用于访问设备的客户端上完成以下先决条件：
 
@@ -339,7 +339,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤:
+在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 请执行下列步骤：
 
 1. 卸载共享。 在 Azure 门户中，请 > "共享" 中转到 **Azure Stack Edge 资源** ，并选择并单击要卸载的共享。 选择 " **卸载** "，然后确认操作。 等待共享卸载。 卸载 (会释放共享，因此 Kubernetes 群集中的关联 PersistentVolume) 。 
 

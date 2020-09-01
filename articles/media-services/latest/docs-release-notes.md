@@ -3,22 +3,24 @@ title: Azure 媒体服务 v3 文档更新
 description: 随时了解最新的媒体服务 v3 文档更新。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
-ms.author: juliako
-ms.openlocfilehash: 56c6b3732d0a77580c27f6cc8720b414e8e49d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78879733a35395ae2dc486ab8eb08da544925a8a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038981"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255148"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure 媒体服务 v3 文档更新
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 
@@ -26,7 +28,7 @@ ms.locfileid: "87038981"
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-* IoT Edge 公开的实时视频分析预览。 请参阅 IoT Edge 文档[上的实时视频分析](../live-video-analytics-edge/index.yml)中的详细信息。
+* IoT Edge 公开的实时视频分析预览。 请参阅 IoT Edge 文档 [上的实时视频分析](../live-video-analytics-edge/index.yml) 中的详细信息。
 * 新快速入门：
 
     * [使用门户上传、编码和流式处理内容](manage-assets-quickstart.md)

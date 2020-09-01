@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge 上管理计算网络以访问模块 |Microsoft Docs
-description: 描述如何在 Azure Stack 边缘扩展计算网络，以通过外部 IP 访问模块。
+title: 通过 IoT Edge 模块在 Azure Stack 边缘 GPU 上部署 Kubernetes 无状态应用 |Microsoft Docs
+description: 介绍如何使用通过外部 IP 访问的 IoT Edge 模块在 Azure Stack 边缘 GPU 设备上部署 Kubernetes 无状态应用程序。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 8de3dbd754cd0cbef947d2cde44542f9f3f77a08
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083189"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254162"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>使用 IoT Edge 模块在 Azure Stack Edge 设备上运行 Kubernetes 无状态应用程序
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>使用 IoT Edge 模块在 Azure Stack Edge GPU 设备上运行 Kubernetes 无状态应用程序
 
 本文介绍如何使用 IoT Edge 模块在 Azure Stack Edge 设备上部署无状态应用程序。
 
@@ -27,7 +27,7 @@ ms.locfileid: "89083189"
 
 在本操作指南文章中，你将使用 web 服务器应用模块来演示该方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，需要：
 
@@ -74,7 +74,7 @@ ms.locfileid: "89083189"
         }
         ```
 
-        此配置允许你使用 http 端口8080上的 *http* 上的计算网络 IP 来访问该模块，默认的 web 服务器端口为 80)  (。 选择“添加”  。
+        此配置允许你使用 http 端口8080上的 *http* 上的计算网络 IP 来访问该模块，默认的 web 服务器端口为 80)  (。 选择 **添加** 。
 
         ![在 IoT Edge 自定义模块边栏选项卡中指定端口信息](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 

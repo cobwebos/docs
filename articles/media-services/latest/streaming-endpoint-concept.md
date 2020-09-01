@@ -1,27 +1,27 @@
 ---
 title: 流式处理终结点（源）
 titleSuffix: Azure Media Services
-description: 了解流式处理终结点（源），这是将内容直接传送到客户端播放器应用程序或内容交付网络（CDN）的动态打包和流式处理服务。
+description: 了解流式处理终结点 (源) ，这是一个动态打包和流式处理服务，可直接将内容传递给客户端播放器应用程序或 (CDN) 的内容交付网络。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.author: inhenkel
+ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446210"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256491"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
-在 Microsoft Azure 媒体服务中，[流式处理终结点](/rest/api/media/streamingendpoints)代表一种动态（实时）打包和源服务，它可以使用其中一个常用流式处理媒体协议（HLS 或破折号）将实时内容和点播内容直接传送到客户端播放器应用。 此外，流式处理终结点  还为行业领先的 DRM 提供动态（实时）加密。 
+在 Microsoft Azure 媒体服务中， [流式处理终结点](/rest/api/media/streamingendpoints) 代表一种动态 (实时) 打包和源服务，它可以使用一种常见的流式媒体协议 (HLS 或破折号) 将实时内容和点播内容直接传送到客户端播放器应用。 此外，流式处理终结点  还为行业领先的 DRM 提供动态（实时）加密。 
 
 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认  流式处理终结点。 无法删除**默认**流式处理终结点。 可以在帐户下创建更多的流式处理终结点（请参阅[配额和限制](limits-quotas-constraints.md)）。
 
@@ -47,7 +47,7 @@ ms.locfileid: "87446210"
 
 有两种类型的**流式处理终结点**：**标准**（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。
 
-最大流式处理单位限制通常为10个。 请[在此处](https://azure.microsoft.com/support/create-ticket/)与我们联系，为你的帐户增加限制。
+最大流式处理单位限制通常为10个。 请 [在此处](https://azure.microsoft.com/support/create-ticket/) 与我们联系，为你的帐户增加限制。
 
 下表描述了类型：
 
@@ -67,15 +67,15 @@ ms.locfileid: "87446210"
 ---|---|---
 吞吐量 |使用 CDN 时，高达 600 Mbps，可以提供更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时，可以提供更高的有效吞吐量。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
-按比例计费| 每天|每日
-动态加密|“是”|“是”
-动态打包|是|“是”
+按比例计费| 每日|每日
+动态加密|是|是
+动态打包|是|是
 缩放|自动扩展到目标吞吐量。|更多的 SU
-IP 筛选/G20/自定义主机<sup>1</sup>|“是”|“是”
-渐进式下载|“是”|“是”
+IP 筛选/G20/自定义主机 <sup>1</sup>|是|是
+渐进式下载|是|是
 建议用途 |建议用于绝大多数流式处理方案。|专业用途。
 
-<sup>1</sup>仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>
+<sup>1</sup> 仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>
 
 ## <a name="streaming-endpoint-properties"></a>流式处理终结点属性
 
@@ -83,17 +83,17 @@ IP 筛选/G20/自定义主机<sup>1</sup>|“是”|“是”
 
 - `accessControl`：用于为此流式处理终结点配置以下安全设置：Akamai 签名标头身份验证密钥和允许连接到此终结点的 IP 地址。 仅当设置为 false 时，才能设置此属性 `cdnEnabled` 。
 
-- `cdnEnabled`：指示此流式处理终结点的 Azure CDN 集成是否已启用（默认情况下处于禁用状态）。 如果将 `cdnEnabled` 设置为 true，则会禁用以下配置：`customHostNames` 和 `accessControl`。
+- `cdnEnabled`：指示是否启用此流式处理终结点的 Azure CDN 集成 (默认情况下) 禁用。 如果将 `cdnEnabled` 设置为 true，则会禁用以下配置：`customHostNames` 和 `accessControl`。
 
     并非所有数据中心都支持 Azure CDN 集成。 若要检查你的数据中心是否具有可用 Azure CDN 集成，请执行以下步骤：
 
   - 尝试将 `cdnEnabled` 设置为 true。
-  - 检查（Httpstatuscode.preconditionfailed）的返回结果， `HTTP Error Code 412` 消息为 "流式处理终结点 CdnEnabled 属性不能设置为 true，因为 CDN 功能在当前区域中不可用。"
+  - 检查 (Httpstatuscode.preconditionfailed) 的返回结果，该 `HTTP Error Code 412` 消息的 "流式处理终结点 CdnEnabled" 属性不能设置为 true，因为 CDN 功能在当前区域中不可用。
 
     如果出现此错误，则数据中心不支持此错误。 请尝试另一个数据中心。
 
 - `cdnProfile`：当 `cdnEnabled` 设置为 true 时，还可以传递 `cdnProfile` 值。 `cdnProfile` 是将在其中创建 CDN 终结点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，将自动创建一个新的配置文件。
-- `cdnProvider`：启用 CDN 后，还可以传递 `cdnProvider` 值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未提供任何值且 `cdnEnabled` 为 true，则使用 "StandardVerizon" （这是默认值）。
+- `cdnProvider`：启用 CDN 后，还可以传递 `cdnProvider` 值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未提供任何值且 `cdnEnabled` 为 true，则使用 "StandardVerizon" 作为默认值)  (。
 - `crossSiteAccessPolicies`：用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](/previous-versions/azure/azure-services/gg185950(v=azure.100))。 这些设置仅适用于平滑流式处理。
 - `customHostNames`：用于配置流式处理终结点以接受定向到自定义主机名的流量。 此属性对标准和高级流式处理终结点有效，可以在以下情况下设置 `cdnEnabled` ： false。
 
@@ -140,10 +140,10 @@ IP 筛选/G20/自定义主机<sup>1</sup>|“是”|“是”
 
 * 每个预留单位都允许 200 Mbps 的带宽。 如果需要的带宽超过 2,000 Mbps (2 Gbps)，则可使用第二个流式处理终结点和负载均衡来提供额外的带宽。
 
-    但是，CDN 是实现流式处理内容扩大的最佳方法，但如果要传送的内容太多，CDN 需要超过 2 Gbps，则可以添加更多的流式处理终结点（源）。 在这种情况下，需要将在两个流式处理终结点之间平衡的内容 Url 进行分发。 此方法比尝试对每个源随机发送请求（例如通过流量管理器）提供更好的缓存。 
+    但是，CDN 是实现流式处理内容扩大的最佳方法，但如果你要传递的内容太多，CDN 需要超过 2 Gbps，则可以将其他流式处理终结点添加 (源) 。 在这种情况下，需要将在两个流式处理终结点之间平衡的内容 Url 进行分发。 此方法比尝试将请求随机发送到每个源 (例如，通过流量管理器) 提供更好的缓存。 
     
     > [!TIP]
-    > 通常情况下，如果 CDN 正在拉取 2 Gbps 以上的内容，则可能是配置错误（例如，没有源屏蔽）。
+    > 通常情况下，如果 CDN 请求的数量超过 2 Gbps，则可能是配置错误 (例如，) 没有源屏蔽。
     
 * 对不同 CDN 提供程序进行负载平衡。 例如，可以设置默认的流式处理终结点以使用 Verizon CDN，并创建另一个使用 Akamai 的流式处理终结点。 然后在二者之间添加一些负载平衡，以实现多 CDN 平衡。 
 

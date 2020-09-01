@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 边缘设备上的启用 Arc 的 Kubernetes 上部署 PHP 留言簿应用 |Microsoft Docs
+title: 在 Azure Stack Edge GPU 设备上的启用 Arc 的 Kubernetes 上部署 PHP 留言簿应用 |Microsoft Docs
 description: 介绍如何在 Azure Stack Edge 设备的启用了 Arc 的 Kubernetes 群集上，使用 GitOps 部署具有 Redis 的 PHP 留言簿无状态应用程序。
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 46cef291a447a7c243ee9ef66ee64e9c6264ad23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083208"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254213"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge"></a>在 Azure Stack Edge 上启用启用了 Kubernetes 的 Redis on Arc 的 PHP 留言簿无状态应用程序
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>在 Azure Stack 边缘 GPU 上启用启用了 Kubernetes 群集的 PHP 留言簿无状态应用程序
 
 本文说明如何使用 Kubernetes 和 Azure Arc 构建和部署简单的多层 web 应用程序。此示例包含以下组件：
 
@@ -28,7 +28,7 @@ ms.locfileid: "89083208"
 此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在部署无状态应用程序之前，请确保已在设备和将用于访问该设备的客户端上完成以下先决条件：
 

@@ -5,23 +5,23 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6e776b6dfc233ffb12d3597a0e6bc203f1674abd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147059"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256117"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell-script"></a>通过 Azure PowerShell 脚本在 Azure Stack Edge 设备上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>通过 Azure PowerShell 脚本在 Azure Stack Edge GPU 设备上部署 Vm
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 本教程介绍如何使用 Azure PowerShell 脚本在 Azure Stack Edge 设备上创建和管理 VM。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 使用此脚本开始在 Azure Stack Edge 设备上创建和管理 VM 之前，需要确保已完成以下步骤中列出的先决条件：
 
