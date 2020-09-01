@@ -5,15 +5,15 @@ services: Azure Stack Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ea560cf7d61a208cf29aef977aea6d1584a7cdb7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146040"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267371"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 中心就绪检查程序工具为 Azure Stack 边缘创建证书 
 
@@ -37,7 +37,7 @@ ms.locfileid: "89146040"
 - VPN 证书
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要为 Azure Stack Edge 设备部署创建 Csr，请确保： 
 

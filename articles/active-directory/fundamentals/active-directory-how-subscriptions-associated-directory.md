@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbc1286b6c434d1c7a110c75dd5085de2043012d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6cd095939009c39c48456d330f975303f06a841a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179090"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267524"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -28,15 +28,16 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 如果订阅过期，则将失去与该订阅关联的所有其他资源的访问权限。 但是，Azure AD 目录保留在 Azure 中。 可以使用不同的 Azure 订阅来关联和管理该目录。
 
+默认情况下，当用户注册 Microsoft 云服务时，将创建一个 Azure AD 租户，并使该用户成为全局管理员角色的成员。 当你将订阅添加到现有目录时，你不会分配到全局管理员角色。
+
 所有用户都有一个用于身份验证的“主”目录。 用户还可以充当其他目录中的来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
 
 > [!Important]
-> 将订阅关联到不同的目录时，具有使用 [azure 基于角色的访问控制分配角色的用户 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md) 会失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也将失去其访问权限。
+> 将订阅关联到不同的目录时，具有使用 [azure 基于角色的访问控制分配角色的用户 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md) 会失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也会失去访问权限。
 >
 > 当订阅与不同的目录关联时，还会从该订阅中删除策略分配。
 >
 > 如果将 Azure Kubernetes 服务 (AKS) 群集移到其他订阅，或者将拥有该群集的订阅移到新租户，该群集将会由于失去角色分配和服务主体权限而丢失功能。 有关 AKS 的详细信息，请参阅 [Azure Kubernetes 服务 (AKS)](https://docs.microsoft.com/azure/aks/)。
-
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -66,19 +67,19 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 1. 选择 " **更改目录**"。
 
-    ![订阅页面，其中突出显示了“更改目录”选项](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
+   ![订阅页面，其中突出显示了“更改目录”选项](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
 1. 查看显示的所有警告，然后选择 " **更改**"。
 
-    ![“更改目录”页，显示要更改到的目录](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
+   ![“更改目录”页，显示要更改到的目录](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    更改订阅的目录后，将收到一条成功消息。
+   更改订阅的目录后，将收到一条成功消息。
 
-  1. 选择 "订阅" 页上的 " **切换目录** "，转到新目录。 
+1. 选择 "订阅" 页上的 " **切换目录** "，转到新目录。
 
-      !["目录切换器" 页，包含示例信息](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+   !["目录切换器" 页，包含示例信息](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-      所有内容可能需要几个小时才能正常显示。 如果看起来太长，请检查 **全局订阅筛选器**。 请确保移动的订阅不隐藏。 你可能需要注销 Azure 门户并重新登录才能查看新目录。
+   所有内容可能需要几个小时才能正常显示。 如果看起来太长，请检查 **全局订阅筛选器**。 请确保移动的订阅不隐藏。 你可能需要注销 Azure 门户并重新登录才能查看新目录。
 
 更改订阅目录是服务级操作，不会影响订阅的账单所有权。 帐户管理员仍可从[帐户中心](https://account.azure.com/subscriptions)更改服务管理员。 若要删除原始目录，必须将订阅的账单所有权转让给新的帐户管理员。若要详细了解如何转让账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../../cost-management-billing/manage/billing-subscription-transfer.md)。
 

@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 2d693a63360890b9f658baa1a37d251f311d5617
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 645ad24b2b275f9a14fda82746347a6f64c735dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875007"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268000"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>快速入门：使用 Python 从知识库获取问题答案
 
@@ -22,7 +22,7 @@ ms.locfileid: "87875007"
 
 * [Python 3.6 或更高版本](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。********
+* 您必须具有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。********
 * “发布”页设置。**** 如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。**** 可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。
 
     发布页设置包括 POST 路由值、Host 值和 EndpointKey 值。
@@ -37,7 +37,7 @@ ms.locfileid: "87875007"
 
 在 `get-answer-3x.py` 文件顶部，向项目添加必需的依赖项：
 
-[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="dependencies":::
 
 <!--TBD - reword this following paragraph -->
 
@@ -47,19 +47,19 @@ ms.locfileid: "87875007"
 
 添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。****
 
-[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=5-25 "Add the required constants")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question-and-get-an-answer"></a>添加一个 POST 请求来发送问题并获取答案
 
 以下代码向 QnA Maker API 发出 HTTPS 请求，以便向知识库发送问题并接收响应：
 
-[!code-python[Add a POST request to send question to knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=27-48 "Add a POST request to send question to knowledge base")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="main":::
 
 `Authorization` 标头的值包括字符串 `EndpointKey`。
 
 ## <a name="run-the-program"></a>运行程序
 
-通过命令行运行程序。 它会自动向 QnA Maker API 发送请求，然后输出到控制台窗口。
+从命令行运行程序。 它会自动向 QnA Maker API 发送请求，然后输出到控制台窗口。
 
 运行文件：
 

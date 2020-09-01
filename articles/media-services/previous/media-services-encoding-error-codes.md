@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042862"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269023"
 ---
 # <a name="encoding-error-codes"></a>编码错误代码
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 下表列出了在执行编码任务期间发生错误的情况下可能返回的错误代码。  若要获取 .NET 代码中的错误详细信息，请使用 [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) 类。 若要获取 REST 代码中的错误详细信息，请使用 [ErrorDetail](/rest/api/media/operations/errordetail) REST API。
 

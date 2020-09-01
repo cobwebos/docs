@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245581"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266419"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入门： Node.js 的 QnA Maker REST Api
 
@@ -76,11 +76,15 @@ npm install requestretry request --save
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
-创建名为 `rest-apis.js` 的文件，并添加以下 _requires_ 语句发出 HTTP 请求。
+创建一个名为的文件 `rest-apis.js` 并添加以下依赖项。
 
-```javascript
-const request = require("requestretry");
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="dependencies":::
+
+## <a name="add-utility-functions"></a>添加实用函数
+
+添加以下实用工具函数。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="utility":::
 
 ## <a name="add-azure-resource-information"></a>添加 Azure 资源信息
 
@@ -91,7 +95,7 @@ const request = require("requestretry");
 * `QNAMAKER_RESOURCE_KEY` - **密钥** 为32字符串，在 "Azure 门户" 的 "QnA Maker 资源" 的 " **快速启动** " 页上提供。 这与预测终结点密钥不同。
 * `QNAMAKER_AUTHORING_ENDPOINT` - 创作终结点的格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`，其中包括**资源名称**。 这与用于查询预测终结点的 URL 不同。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
 ## <a name="create-a-knowledge-base"></a>创建知识库
 
@@ -103,13 +107,13 @@ const request = require("requestretry");
 
 [使用 REST API 创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>替换知识库
 
 [使用 REST API 替换知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
 ## <a name="publish-a-knowledge-base"></a>发布知识库
 
@@ -117,14 +121,13 @@ const request = require("requestretry");
 
 [使用 REST API 发布知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
 
-
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>下载知识库
 
 [使用 REST API 下载知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
 ## <a name="delete-a-knowledge-base"></a>删除知识库
 
@@ -132,7 +135,7 @@ const request = require("requestretry");
 
 [使用 REST API 删除知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
 ## <a name="get-status-of-an-operation"></a>获取操作的状态
 
@@ -140,9 +143,13 @@ const request = require("requestretry");
 
 [使用 REST API 监视对知识库执行的操作](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
 
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
+## <a name="add-main-method"></a>添加 main 方法
 
+添加以下 `main` 方法。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="main":::
 
 ## <a name="run-the-application"></a>运行应用程序
 

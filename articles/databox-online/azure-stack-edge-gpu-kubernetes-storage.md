@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 88a528e8e7f8713a766c715faaea9bb0f29f046e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083142"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268085"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-device"></a>Azure Stack 边缘设备上的 Kubernetes 存储管理
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备上的 Kubernetes 存储管理
 
 在 Azure Stack Edge 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 可以通过不同的方式在 Kubernetes 群集中将存储提供给 pod。 
 

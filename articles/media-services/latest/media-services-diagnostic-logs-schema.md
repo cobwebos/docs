@@ -3,7 +3,7 @@ title: Azure 媒体服务诊断日志架构 - Azure
 description: 本文演示 Azure 媒体服务诊断日志架构。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,37 +11,39 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6f09a0ab88273aa10bb5f3cb55f89d014897df12
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092008"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268445"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
-[Azure Monitor](../../azure-monitor/overview.md)使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-有关详细信息，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
+[Azure Monitor](../../azure-monitor/overview.md) 使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
+
+有关详细信息，请参阅 [Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md) 和 [Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
 本文介绍 Media Services 诊断日志架构。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-有关顶层诊断日志架构的详细说明，请参阅[Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/resource-logs-schema.md)。
+有关顶层诊断日志架构的详细说明，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/resource-logs-schema.md)。
 
 ## <a name="key-delivery-log-schema"></a>密钥传送日志架构
 
-### <a name="properties"></a>“属性”
+### <a name="properties"></a>属性
 
 这些属性特定于密钥传送日志架构。
 
-|名称|描述|
+|名称|说明|
 |---|---|
 |keyId|请求的密钥的 ID。|
-|keyType|可以是以下值之一： "Clear" （无加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
+|keyType|可以是以下值之一： "Clear" () ，"FairPlay"、"PlayReady" 或 "Widevine"。|
 |policyName|策略的 Azure 资源管理器名称。|
 |tokenType|令牌类型。|
 |statusMessage|状态消息。|

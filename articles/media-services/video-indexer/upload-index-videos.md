@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011865"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268819"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -118,7 +118,7 @@ ms.locfileid: "89011865"
         
     - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>说明
+##### <a name="notes"></a>备注
 
 - 视频索引器返回在原始 URL 中提供的任何现有参数。
 - 提供的 URL 必须进行编码。
@@ -167,7 +167,7 @@ ms.locfileid: "89011865"
 
 以下 C# 代码片段演示了如何将所有的视频索引器 API 结合使用。
 
-#### <a name="instructions-for-running-this-code-sample"></a>有关运行此代码示例的说明
+**有关运行以下代码示例的说明**
 
 将此代码复制到开发平台后，需要提供两个参数： API 管理身份验证密钥和视频 URL。
 

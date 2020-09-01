@@ -3,30 +3,32 @@ title: Azure 媒体服务 v3 常见问题 | Microsoft Docs
 description: 本文解答有关 Azure 媒体服务 v3 的常见问题。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/07/2020
-ms.author: juliako
-ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011679"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268479"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本文解答有关 Azure 媒体服务 v3 的常见问题。
 
 ## <a name="general"></a>常规
 
-### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>媒体服务 v3 Azure 门户的限制是什么？
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Azure 门户针对媒体服务 v3 有哪些限制？
 
-你可以使用[Azure 门户](https://portal.azure.com/)来管理 v3 实时事件、查看 v3 资产和作业、获取有关访问 api 的信息、加密内容。 <br/>对于所有其他管理任务（例如，管理转换和作业或分析 v3 内容），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
+可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 实时事件、查看 v3 资产和作业、获取有关访问 API 的信息以及加密内容。 <br/>对于所有其他管理任务 (例如，管理转换和作业或分析 v3 内容) ，请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一种受支持的 [sdk](media-services-apis-overview.md#sdks)。
 
 如果视频以前是使用媒体服务 v3 API 上传到媒体服务帐户的，或者该内容是基于实时输出生成的，则 Azure 门户中不会显示“编码”、“分析”或“加密”按钮  。 使用媒体服务 v3 API 来执行这些任务。  
 
@@ -76,12 +78,12 @@ ms.locfileid: "87011679"
 
 #### <a name="server-side"></a>服务器端
 
-可以通过订阅 Azure 事件网格事件来监视实时事件。 有关详细信息，请参阅[EventGrid 事件架构](media-services-event-schemas.md#live-event-types)。
+可以通过订阅 Azure 事件网格事件来监视实时事件。 有关详细信息，请参阅 [EventGrid 事件架构](media-services-event-schemas.md#live-event-types)。
 
 可以：
 
-* [订阅](reacting-to-media-services-events.md)流级别的[LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected)事件，并监视是否有一段时间没有重新传输进入，停止并删除实时事件。
-* [订阅](reacting-to-media-services-events.md)跟踪级[检测信号](media-services-event-schemas.md#liveeventingestheartbeat)事件。 如果所有磁道的传入比特率下降到0，或者最后时间戳不再增加，则可以安全地关闭实时事件。 每个轨迹每隔20秒出现一次检测信号事件，因此可能有点冗长。
+* [订阅](reacting-to-media-services-events.md) 流级别的 [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) 事件，并监视是否有一段时间没有重新传输进入，停止并删除实时事件。
+* [订阅](reacting-to-media-services-events.md) 跟踪级 [检测信号](media-services-event-schemas.md#liveeventingestheartbeat) 事件。 如果所有磁道的传入比特率下降到0，或者最后时间戳不再增加，则可以安全地关闭实时事件。 每个轨迹每隔20秒出现一次检测信号事件，因此可能有点冗长。
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>如何在实时传送流过程中插入中断/视频和图像盖板？
 
@@ -146,7 +148,7 @@ DRM 系统（如 PlayReady、Widevine 和 FairPlay）在用于解密内容的密
 通常，客户可能已在自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 使用媒体服务内容保护，可以在混合模式下操作。 可以在媒体服务中托管和动态保护内容，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，请注意以下变更：
 
 * STS 需要颁发被许可证服务器场认可和验证的令牌。 例如，Axinom 提供的 Widevine 许可证服务器需要特定的 JWT，其中包含权利消息。 需要有 STS 才能颁发此类 JWT。 
-* 不再需要在媒体服务中配置许可证传送服务。 在配置时，需要提供许可证获取 Url （适用于 PlayReady、Widevine 和 FairPlay） `ContentKeyPolicy` 。
+* 不再需要在媒体服务中配置许可证传送服务。 你需要在配置时为 PlayReady、Widevine 和 FairPlay) 提供许可证获取 Url (`ContentKeyPolicy` 。
 
 > [!NOTE]
 > Widevine 是 Google 提供的一项服务，受 Google 的服务条款和隐私策略约束。
@@ -235,7 +237,7 @@ iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件�
 
 ### <a name="widevine-streaming-for-android"></a>适用于 Android 的 Widevine 流式处理
 
-#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>如何为其他客户端/用户和非永久许可证（脱机禁用）提供永久性许可证（已启用脱机）？ 是否需要复制内容并使用单独的内容密钥？
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>如何为某些客户端/用户和非持久性许可证 (脱机禁用) 脱机的)  (提供永久性许可证？ 是否需要复制内容并使用单独的内容密钥？
 
 由于媒体服务 v3 允许资产具有多个 `StreamingLocator` 实例，因此您可以：
 
@@ -247,14 +249,14 @@ iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件�
 
 #### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Widevine 和 Media Services DRM 安全级别之间的映射是什么？
 
-Google 的 "Widevine DRM 体系结构概述" 定义了三个安全级别。 但是， [Widevine 许可证模板上的 Azure 媒体服务文档概述了](widevine-license-template-overview.md)五个安全级别（播放的客户端稳定性要求）。 本部分介绍如何映射安全级别。
+Google 的 "Widevine DRM 体系结构概述" 定义了三个安全级别。 但是， [Widevine 许可证模板上的 Azure 媒体服务文档概述了](widevine-license-template-overview.md) 五个安全级别 (客户端可靠性要求) 。 本部分介绍如何映射安全级别。
 
 两组安全级别都是由 Google Widevine 定义的。 不同之处在于使用级别：体系结构或 API。 Widevine API 中使用了这五种安全级别。 `content_key_specs`对象（包含 `security_level` ）通过 Azure 媒体服务 Widevine 许可证服务进行反序列化并传递到 Widevine global 传递服务。 下表显示了两组安全级别之间的映射。
 
 | **在 Widevine 体系结构中定义的安全级别** |**Widevine API 中使用的安全级别**|
 |---|---| 
-| **安全级别 1**：所有内容处理、加密和控制均在受信任的执行环境（t）内执行。 在某些实现模型中，可能会在不同的芯片中执行安全处理。|**security_level = 5**：必须在硬件支持的 t-sql 内处理对媒体（压缩和未压缩）的加密、解码和所有处理。<br/><br/>**security_level = 4**：内容的加密和解码必须在硬件支持的中进行。|
-**安全级别 2**：在中执行加密（但不是视频处理）。 已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但在第2级，只能在该 t 内处理加密信息。| **security_level = 3**：密钥材料和加密操作必须在硬件支持的中执行。 |
+| **安全级别 1**：所有内容处理、加密和控制均在受信任的执行环境中执行， (t) 。 在某些实现模型中，可能会在不同的芯片中执行安全处理。|**security_level = 5**：必须在硬件支持的程序集中处理对媒体 (压缩和未压缩的) 的加密、解码和所有处理。<br/><br/>**security_level = 4**：内容的加密和解码必须在硬件支持的中进行。|
+**安全级别 2**：加密 (但不是在中执行的视频处理) 。 已解密的缓冲区返回到应用程序域，并通过单独的视频硬件或软件进行处理。 但在第2级，只能在该 t 内处理加密信息。| **security_level = 3**：密钥材料和加密操作必须在硬件支持的中执行。 |
 | **安全级别 3**：设备上没有。 可以采取适当的措施来保护主机操作系统上的加密信息和解密内容。 第3级实现也可能包含硬件加密引擎，但这只会提高性能，而不能增强安全性。 | **security_level = 2**：需要软件加密和模糊处理解码器。<br/><br/>**security_level = 1**：需要基于软件的白框加密。|
 
 #### <a name="why-does-content-download-take-so-long"></a>为什么下载内容需要很长时间？
@@ -265,7 +267,7 @@ Google 的 "Widevine DRM 体系结构概述" 定义了三个安全级别。 但�
 * 让用户有选择地下载视频质量层和音频轨道，而不是所有内容。 对于脱机模式，下载所有质量层并无任何需要。 可通过两种方式实现此目的：
 
   * 由客户端控制：播放机应用自动选择或用户选择、视频质量层和要下载的音频轨道。
-  * 服务控制：可以使用 Azure 媒体服务中的动态清单功能创建（全局）筛选器，它将 HLS 播放列表或短划线 MPD 限制为单个视频质量层和选定的音频轨迹。 然后，呈现给用户的下载 URL 将包含此筛选器。
+  * 服务控制：可以使用 Azure 媒体服务中的动态清单功能创建 (全局) 筛选器，它将 HLS 播放列表或短划线 MPD 限制为单个视频质量层和选定的音频轨迹。 然后，呈现给用户的下载 URL 将包含此筛选器。
 
 ## <a name="next-steps"></a>后续步骤
 

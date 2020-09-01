@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: db3bfddd3376a013cc8921f9e0b94bd30bfe041f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b18218515e4fbd9886317e116c76186b8372392c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181521"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267541"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -29,7 +29,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 
 * [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
-* [DSv2 系列](../dv2-dsv2-series.md) 
+* [Dsv2 系列](../dv2-dsv2-series.md) 
 * [Dsv3 系列](../dv3-dsv3-series.md)
 * [Dsv4 系列](../dv4-dsv4-series.md)
 * [Ddsv4 系列](../ddv4-ddsv4-series.md)
@@ -112,10 +112,10 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 下面是在 Azure 门户中创建第 2 代 (Gen2) VM 的步骤。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-1. 选择“创建资源”。
+1. 选择“创建资源”。 
 1. 在左侧的“Azure 市场”中单击“查看全部”。
 1. 选择支持 Gen2 的映像。
-1. 单击**创建**。
+1. 单击“创建”。
 1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
 1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
@@ -164,7 +164,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   否。
+   不是。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：

@@ -1,6 +1,6 @@
 ---
 title: H264 多比特率 4K Media Encoder Standard 预设 - Azure | Microsoft 文档
-description: 本文概述了 Media Encoder Standard **H264 多比特率 4k**任务预设。
+description: 本文概述了 Media Encoder Standard **H264 多比特率 4k** 任务预设。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b077dc2fe3ba7528d03490a19312de946647a522
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 967919d1e9e37216621b4df34cba67f3baf24752
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086296"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268394"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 多比特率 4K
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
  本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 4K` 预设。  

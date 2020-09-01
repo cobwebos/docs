@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654831"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265875"
 ---
-# <a name="get-credentials-to-access-media-services-api"></a>获取访问媒体服务 API 的凭据  
+# <a name="get-credentials-to-access-media-services-api"></a>获取访问媒体服务 API 的凭据
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 通过 Azure AD 身份验证访问 Azure 媒体服务 API 时，可使用下面两种身份验证选项：
 

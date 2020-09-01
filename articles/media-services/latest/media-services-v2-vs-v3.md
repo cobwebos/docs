@@ -3,7 +3,7 @@ title: 从 Azure 媒体服务 v2 迁移到 v3
 description: 本文介绍了 Azure 媒体服务 v3 中引入的更改，并说明了两个版本之间的差异。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448383"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267558"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本文介绍了 Azure 媒体服务 v3 中引入的更改，并说明了两个版本之间的差异。
 

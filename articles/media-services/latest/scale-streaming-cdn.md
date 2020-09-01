@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/13/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: cd2b9848ef1358c1aeaaed43e55d9914ac701564
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226142"
+ms.locfileid: "89267099"
 ---
 # <a name="stream-content-with-cdn-integration"></a>通过 CDN 集成流式传输内容
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速分发高带宽内容。  
 
@@ -153,7 +155,7 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 * 此功能是否适用于 UHD/HEVC 内容？
 
-    是。
+    是的。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

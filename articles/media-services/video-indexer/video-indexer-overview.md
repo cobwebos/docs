@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744603"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267864"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什么是 Azure 媒体服务视频索引器？
 
 视频索引器 (VI) 是 Azure 媒体服务 AI 解决方案，也是 Azure 认知服务品牌的一部分。 使用视频索引器，可以基于多通道（语音、声乐、视觉对象）使用机器学习模型来提取深度见解（无需数据分析或编码技能）。 另外，你还可以自定义和训练模型。 该服务可实现深度搜索，降低运营成本，创造新的盈利机会，并在大型的视频存档方面创造新的用户体验（具有较低准入门槛）。
 
 若要开始使用视频索引器提取见解，你需要先创建帐户并上传视频。 将视频上传到视频索引器时，会通过运行不同的 AI 模型来分析视觉对象和音频。 当视频索引器分析视频时，由 AI 模型提取的见解。
+
+创建视频索引器帐户并将其连接到媒体服务时，媒体和元数据文件存储在与该媒体服务帐户关联的 Azure 存储帐户中。 有关详细信息，请参阅 [创建连接到 Azure 的视频索引器帐户](connect-to-azure.md)。
 
 下图是对视频索引器后台工作的阐释，并非技术说明。
 

@@ -10,30 +10,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 39c790ea3c7799c59d4b49e3ce3284fb96b8b254
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2730c6ce523e618110cd29b13ba2f37115e2cbd0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422957"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267677"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>如何在 Azure 媒体服务中使用 Video.js 播放器
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 ## <a name="overview"></a>概述
 
-Video.js 是为 HTML5 世界打造的 web 视频播放器。 它在浏览器中播放自适应媒体格式（如破折号和 HLS），无需使用插件或 Flash。 Video.js 使用开放 web 标准 MediaSource 扩展和加密媒体扩展。 此外，它还支持在桌面和移动设备上播放视频。
+Video.js 是为 HTML5 世界打造的 web 视频播放器。 它在浏览器中播放自适应媒体格式 (如虚线和 HLS) ，而无需使用插件或 Flash。 Video.js 使用开放 web 标准 MediaSource 扩展和加密媒体扩展。 此外，它还支持在桌面和移动设备上播放视频。
 
 可在中找到它的官方文档 [https://docs.videojs.com/](https://docs.videojs.com/) 。
 
-## <a name="sample-code"></a>示例代码
-本文中的示例代码可在[Azure 示例/3rdparty-示例](https://github.com/Azure-Samples/media-services-3rdparty-player-samples)中找到。
+## <a name="sample-code"></a>代码示例
+本文中的示例代码可在 [Azure 示例/3rdparty-示例](https://github.com/Azure-Samples/media-services-3rdparty-player-samples)中找到。
 
 ## <a name="implement-the-player"></a>实现播放器
 
-1. 创建一个 `index.html` 将在其中承载播放机的文件。 添加以下代码行（如果适用，可以将版本替换为较新版本）：
+1. 创建一个 `index.html` 将在其中承载播放机的文件。 添加以下代码行 (可以将版本替换为较新版本（如果适用）) ：
 
     ```html
     <html>
@@ -73,10 +75,10 @@ Video.js 是为 HTML5 世界打造的 web 视频播放器。 它在浏览器中�
 
 运行 `addRemoteTextTrack` 方法，并替换：
 
-- `subtitleKind`具有 `"captions"` 、、 `"subtitles"` `"descriptions"` 或`"metadata"`  
-- `caption`对于 vtt 文件路径（vtt 文件必须位于同一主机上，以避免 CORS 错误）
-- `subtitleLang`对于语言为 BCP 47 的代码，例如 `"eng"` 英语或 `"es"` 西班牙语
-- `subtitleLabel`具有所需的标题显示名称
+- `subtitleKind` 具有 `"captions"` 、、 `"subtitles"` `"descriptions"` 或 `"metadata"`  
+- `caption` 对于 vtt 文件路径 (vtt 文件必须位于同一主机中，以避免 CORS 错误) 
+- `subtitleLang` 对于语言为 BCP 47 的代码，例如 `"eng"` 英语或 `"es"` 西班牙语
+- `subtitleLabel` 具有所需的标题显示名称
 
 ```javascript
 videojs.players.video.addRemoteTextTrack({
@@ -113,13 +115,13 @@ videojs.Hls.xhr.beforeRequest = setupTokenForDecrypt;
 Video.js 支持 AES-128 加密，无需任何其他配置。 
 
 > [!NOTE] 
-> 目前不能播放加密和 HLS/短划线 CMAF 内容的[问题](https://github.com/videojs/video.js/issues/6717)。
+> 目前不能播放加密和 HLS/短划线 CMAF 内容的 [问题](https://github.com/videojs/video.js/issues/6717) 。
 
 ### <a name="set-up-drm-protection"></a>设置 DRM 保护
 
-为了支持 DRM 保护，你必须添加[videojs-contrib-eme](https://github.com/videojs/videojs-contrib-eme)官方扩展。 CDN 版本也起作用。
+为了支持 DRM 保护，你必须添加 [videojs-contrib-eme](https://github.com/videojs/videojs-contrib-eme) 官方扩展。 CDN 版本也起作用。
 
-1. 在 `index.js` 上面详细的文件中，必须在 `videoJS.eme();` 添加视频源*之前*通过添加来初始化 EME 扩展：
+1. 在 `index.js` 上面详细的文件中，必须在 `videoJS.eme();` 添加视频源 *之前* 通过添加来初始化 EME 扩展：
 
    ```javascript
     videoJS.eme();
@@ -146,7 +148,7 @@ Video.js 支持 AES-128 加密，无需任何其他配置。
 为了获取许可证 URL，你可以：
 
 - 请参阅 DRM 提供商配置
-- 或者，如果使用的是示例，请在 `output.json` *setup-vod.ps1*运行 VODs PowerShell 脚本或实时流的*start-live.ps1*脚本时，查阅生成的文档。 你还会发现此文件中的孩子。
+- 或者，如果使用的是示例，请在 `output.json` *setup-vod.ps1* 运行 VODs PowerShell 脚本或实时流的 *start-live.ps1* 脚本时，查阅生成的文档。 你还会发现此文件中的孩子。
 
 #### <a name="using-tokenized-drm"></a>使用标记化 DRM
 

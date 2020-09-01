@@ -12,24 +12,24 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611307"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268768"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
 本文内容适用于运行 Windows 10 或 Windows Server 2016 的设备。
 
-对于其他 Windows 客户端，请参阅[排查混合 Azure Active Directory 联接下层设备问题](troubleshoot-hybrid-join-windows-legacy.md)一文。
+对于其他 Windows 客户端，请参阅 [排查混合 Azure Active Directory 联接下层设备问题](troubleshoot-hybrid-join-windows-legacy.md)一文。
 
 本文假设你已[配置已加入混合 Azure Active Directory 的设备](hybrid-azuread-join-plan.md)，以支持以下方案：
 
 - 基于设备的条件访问
-- [企业设置漫游](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
+- [企业设置漫游](./enterprise-state-roaming-overview.md)
+- [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 本文档提供了用于解决潜在问题的故障排除指导。
 
@@ -103,7 +103,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined : YES
 
-此字段指示设备是否已加入。 如果设备是 Azure AD 联接设备或混合 Azure AD 加入设备，则该值为**YES** 。
+此字段指示设备是否已加入。 如果设备是 Azure AD 联接设备或混合 Azure AD 加入设备，则该值为 **YES** 。
 如果值为 **NO**，则表示加入到 Azure AD 的过程尚未完成。
 
 继续执行后续步骤，进一步进行故障排除。
@@ -132,7 +132,7 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 在以下应对警报304、305、307中查找事件。
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -146,35 +146,35 @@ WamDefaultAuthority: organizations
 失败的可能原因：
 
 - 设备对域控制器没有线路视觉。
-   - 该设备必须在组织的内部网络上，或在网络上具有到本地 Active Directory （AD）域控制器的网络线路。
+   - 设备必须在组织的内部网络上，或在网络上与网络线路视觉到本地 Active Directory (AD) 域控制器。
 
 #### <a name="discover-phase"></a>发现阶段
 
 失败的可能原因：
 
-- 服务连接点（SCP）对象配置错误/无法从 DC 读取 SCP 对象。
+- 服务连接点 (SCP) 对象配置错误/无法从 DC 读取 SCP 对象。
    - 设备所属的 AD 林中需要有效的 SCP 对象，这些对象指向 Azure AD 中的已验证域名。
-   - 详细信息可在[配置服务连接点](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)部分找到。
+   - 详细信息可在 [配置服务连接点](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)部分找到。
 - 未能连接并从发现终结点提取发现元数据。
    - 设备应该能够 `https://enterpriseregistration.windows.net` 在系统上下文中访问，以便发现注册和授权终结点。
    - 如果本地环境需要出站代理，则 IT 管理员必须确保设备的计算机帐户能够发现并以无提示方式向出站代理进行身份验证。
-- 未能连接到用户领域终结点并执行领域发现。 （仅限 Windows 10 版本1809及更高版本）
-   - 设备应该能够 `https://login.microsoftonline.com` 在系统上下文中访问，以执行已验证域的领域发现，并确定域类型（托管/联合）。
+- 未能连接到用户领域终结点并执行领域发现。  (Windows 10 版本1809及更高版本仅) 
+   - 设备应该能够 `https://login.microsoftonline.com` 在系统上下文中访问以执行已验证域的领域发现，并确定域类型 (托管/联合) 。
    - 如果本地环境需要出站代理，则 IT 管理员必须确保设备上的系统上下文能够发现并在出站代理上以无提示方式进行身份验证。
 
 **常见错误代码：**
 
-- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** （0x801c001d/-2145648611）
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611) 
    - 原因：无法读取 SCP 对象并获取 Azure AD 租户信息。
-   - 解决方法：请参阅[配置服务连接点](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)部分。
-- **DSREG_AUTOJOIN_DISC_FAILED** （0x801c0021/-2145648607）
+   - 解决方法：请参阅 [配置服务连接点](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)部分。
+- **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607) 
    - 原因：一般发现失败。 未能从 DRS 获取发现元数据。
    - 解决方法：查找下面的 suberror 以进行进一步调查。
-- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** （0x801c001f/-2145648609）
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609) 
    - 原因：执行发现时操作超时。
-   - 解决方法：确保 `https://enterpriseregistration.windows.net` 在系统上下文中可访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)部分。
-- **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** （0x801c0021/-2145648611）
-   - 原因：通用领域发现失败。 无法从 STS 确定域类型（托管/联合）。
+   - 解决方法：确保 `https://enterpriseregistration.windows.net` 在系统上下文中可访问。 有关详细信息，请参阅 [网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)部分。
+- **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611) 
+   - 原因：通用领域发现失败。 无法从 STS 确定 (托管/联合) 的域类型。
    - 解决方法：查找下面的 suberror 以进行进一步调查。
 
 **常见的 suberror 代码：**
@@ -207,35 +207,35 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 查找包含以下应对警报201的事件
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/5.png)
 
 ###### <a name="network-errors"></a>网络错误
 
-- **WININET_E_CANNOT_CONNECT** （0x80072efd/-2147012867）
+- **WININET_E_CANNOT_CONNECT** (0x80072efd/-2147012867) 
    - 原因：无法建立与服务器的连接
-   - 解决方法：确保与所需的 Microsoft 资源建立网络连接。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
-- **WININET_E_TIMEOUT** （0x80072ee2/-2147012894）
+   - 解决方法：确保与所需的 Microsoft 资源建立网络连接。 有关详细信息，请参阅 [网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
+- **WININET_E_TIMEOUT** (0x80072ee2/-2147012894) 
    - 原因：常规网络超时。
-   - 解决方法：确保与所需的 Microsoft 资源建立网络连接。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
-- **WININET_E_DECODING_FAILED** （0x80072f8f/-2147012721）
+   - 解决方法：确保与所需的 Microsoft 资源建立网络连接。 有关详细信息，请参阅 [网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
+- **WININET_E_DECODING_FAILED** (0x80072f8f/-2147012721) 
    - 原因：网络堆栈无法解码来自服务器的响应。
    - 解决方法：确保网络代理不干扰并修改服务器响应。
 
 ###### <a name="http-errors"></a>HTTP 错误
 
-- **DSREG_DISCOVERY_TENANT_NOT_FOUND** （0x801c003a/-2145648582）
+- **DSREG_DISCOVERY_TENANT_NOT_FOUND** (0x801c003a/-2145648582) 
    - 原因：已将 SCP 对象配置为错误的租户 ID。 或在租户中找不到活动订阅。
    - 解决方法：确保将 SCP 对象配置为正确的 Azure AD 租户 ID 和活动订阅，或者存在于租户中。
-- **DSREG_SERVER_BUSY** （0x801c0025/-2145648603）
+- **DSREG_SERVER_BUSY** (0x801c0025/-2145648603) 
    - 原因：来自 DRS 服务器的 HTTP 503。
    - 解决方法：服务器当前不可用。 服务器重新联机后，将来的联接尝试可能会成功。
 
 ###### <a name="other-errors"></a>其他错误
 
-- **E_INVALIDDATA** （0x8007000d/-2147024883）
+- **E_INVALIDDATA** (0x8007000d/-2147024883) 
    - 原因：无法分析服务器响应 JSON。 可能是由于代理返回了使用 HTML 身份验证页的 HTTP 200。
    - 解决方法：如果本地环境需要出站代理，则 IT 管理员必须确保设备上的系统上下文能够发现并在出站代理上以无提示方式进行身份验证。
 
@@ -246,56 +246,56 @@ WamDefaultAuthority: organizations
 失败原因：
 
 - 无法为 DRS 资源自动获取访问令牌。
-   - Windows 10 设备使用 windows 集成身份验证向活动 WS-TRUST 终结点获取身份验证令牌。 详细信息：[联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - Windows 10 设备使用 windows 集成身份验证向活动 WS-TRUST 终结点获取身份验证令牌。 详细信息： [联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **常见错误代码：**
 
 使用事件查看器日志来查找错误代码、suberror 代码、服务器错误代码和服务器错误消息。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 查找具有以下 eventID 305 的事件
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/3.png)
 
 ##### <a name="configuration-errors"></a>配置错误
 
-- **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** （0xcaa90017/-894894057）
+- **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057) 
    - 原因：身份验证协议不是 WS-TRUST。
    - 解决方法：本地标识提供者必须支持 WS-TRUST
-- **ERROR_ADAL_FAILED_TO_PARSE_XML** （0xcaa9002c/-894894036）
+- **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036) 
    - 原因：本地联合身份验证服务未返回 XML 响应。
    - 解决方法：确保 MEX 终结点返回有效的 XML。 确保代理不会干扰并返回非 xml 响应。
-- **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** （0xcaa90023/-894894045）
+- **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045) 
    - 原因：无法发现用户名/密码身份验证的终结点。
    - 解决方法：检查本地标识提供程序设置。 确保启用 WS-TRUST 终结点，并确保 MEX 响应包含这些正确的终结点。
 
 ##### <a name="network-errors"></a>网络错误
 
-- **ERROR_ADAL_INTERNET_TIMEOUT** （0xcaa82ee2/-894947614）
+- **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614) 
    - 原因：常规网络超时。
-   - 解决方法：确保 `https://login.microsoftonline.com` 在系统上下文中可访问。 确保本地标识提供程序可在系统上下文中访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
-- **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** （0xcaa82efe/-894947586）
+   - 解决方法：确保 `https://login.microsoftonline.com` 在系统上下文中可访问。 确保本地标识提供程序可在系统上下文中访问。 有关详细信息，请参阅 [网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
+- **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586) 
    - 原因：与身份验证终结点的连接已中止。
    - 解决方法：在一段时间后重试，或者尝试从另一个稳定的网络位置进行联接。
-- **ERROR_ADAL_INTERNET_SECURE_FAILURE** （0xcaa82f8f/-894947441）
-   - 原因：传输层安全性（TLS）以前称为安全套接字层（SSL），无法验证服务器发送的证书。
+- **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441) 
+   - 原因：传输层安全性 (TLS) （以前称为安全套接字层 (SSL) ）无法验证服务器发送的证书。
    - 解决方法：检查客户端时间偏差。 请在一段时间后重试，或者尝试从备用的稳定网络位置进行联接。
-- **ERROR_ADAL_INTERNET_CANNOT_CONNECT** （0xcaa82efd/-894947587）
+- **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587) 
    - 原因：尝试连接到 `https://login.microsoftonline.com` 失败。
    - 解决方法：检查与之间的网络连接 `https://login.microsoftonline.com` 。
 
 ##### <a name="other-errors"></a>其他错误
 
-- **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** （0xcaa20003/-895352829）
+- **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829) 
    - 原因： Azure AD 未接受来自本地标识提供程序的 SAML 令牌。
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
-- **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** （0xcaa90014/-894894060）
+- **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060) 
    - 原因：服务器 WS-TRUST 响应报告了错误异常，无法获取断言
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
-- **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** （0xcaa90006/-894894074）
+- **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074) 
    - 原因：尝试从令牌终结点获取访问令牌时收到错误。
    - 解决方法：查找 ADAL 日志中的基本错误。
-- **ERROR_ADAL_OPERATION_PENDING** （0xcaa1002d/-895418323）
+- **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323) 
    - 原因：常规 ADAL 失败
    - 解决方法：查找验证日志中的 suberror 代码或服务器错误代码。
 
@@ -327,47 +327,47 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 查找包含以下应对警报204的事件
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/4.png)
 
 ##### <a name="http-errors-returned-from-drs-server"></a>DRS 服务器返回的 HTTP 错误
 
-- **DSREG_E_DIRECTORY_FAILURE** （0x801c03f2/-2145647630）
+- **DSREG_E_DIRECTORY_FAILURE** (0x801c03f2/-2145647630) 
    - 原因：收到 DRS 发出的错误响应，错误代码： "目录错误"
    - 解决方法：有关可能的原因和解决方法，请参阅服务器错误代码。
-- **DSREG_E_DEVICE_AUTHENTICATION_ERROR** （0x801c0002/-2145648638）
+- **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638) 
    - 原因：收到 DRS 发出的错误响应，错误代码： "AuthenticationError"，ErrorSubCode 不是 "DeviceNotFound"。
    - 解决方法：有关可能的原因和解决方法，请参阅服务器错误代码。
-- **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** （0x801c0006/-2145648634）
+- **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634) 
    - 原因：收到 DRS 发出的错误响应，错误代码： "目录错误"
    - 解决方法：有关可能的原因和解决方法，请参阅服务器错误代码。
 
 ##### <a name="tpm-errors"></a>TPM 错误
 
-- **NTE_BAD_KEYSET** （0x80090016/-2146893802）
+- **NTE_BAD_KEYSET** (0x80090016/-2146893802) 
    - 原因： TPM 操作失败或无效
    - 解决方法：可能是由于 sysprep 映像错误引起的。 确保从中创建 sysprep 映像的计算机未 Azure AD 联接、混合 Azure AD 联接或 Azure AD 已注册。
-- **TPM_E_PCP_INTERNAL_ERROR** （0x80290407/-2144795641）
+- **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641) 
    - 原因：常见的 TPM 错误。
    - 解决方法：在出现此错误的设备上禁用 TPM。 Windows 10 版本1809和更高版本会自动检测 TPM 故障，并在不使用 TPM 的情况下完成混合 Azure AD 联接。
-- **TPM_E_NOTFIPS** （0x80280036/-2144862154）
+- **TPM_E_NOTFIPS** (0x80280036/-2144862154) 
    - 原因：目前不支持在 FIPS 模式下 TPM。
    - 解决方法：在出现此错误的设备上禁用 TPM。 Windows 1809 会在不使用 TPM 的情况下自动检测 TPM 故障并完成混合 Azure AD 联接。
-- **NTE_AUTHENTICATION_IGNORED** （0x80090031/-2146893775）
+- **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775) 
    - 原因： TPM 已锁定。
-   - 解决方法：暂时性错误。 等待 cooldown 时间段。 在一段时间后尝试加入尝试应成功。 有关详细信息，请参阅[TPM 基础知识](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - 解决方法：暂时性错误。 等待 cooldown 时间段。 在一段时间后尝试加入尝试应成功。 有关详细信息，请参阅 [TPM 基础知识](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
 ##### <a name="network-errors"></a>网络错误
 
-- **WININET_E_TIMEOUT** （0x80072ee2/-2147012894）
+- **WININET_E_TIMEOUT** (0x80072ee2/-2147012894) 
    - 原因：常规网络超时尝试在 DRS 上注册设备
    - 解决方法：检查与之间的网络连接 `https://enterpriseregistration.windows.net` 。
-- **WININET_E_NAME_NOT_RESOLVED** （0x80072ee7/-2147012889）
+- **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889) 
    - 原因：无法解析服务器名称或地址。
    - 解决方法：检查与之间的网络连接 `https://enterpriseregistration.windows.net` 。 确保主机名的 DNS 解析在 n/w 和设备上是准确的。
-- **WININET_E_CONNECTION_ABORTED** （0x80072efe/-2147012866）
+- **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866) 
    - 原因：与服务器的连接已异常终止。
    - 解决方法：在一段时间后重试，或者尝试从另一个稳定的网络位置进行联接。
 
@@ -387,15 +387,15 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步骤5：收集日志并联系 Microsoft 支持部门
 
-从下载文件 Auth.zip[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+从下载文件 Auth.zip [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
 1. 解压缩文件并将包含的**stop-auth.txt** **start-auth.txt**文件重命名为 " **start-auth** " 和 " **stop-auth**"。
-1. 在提升的命令提示符下，运行**start-auth**。
+1. 在提升的命令提示符下，运行 **start-auth**。
 1. 使用交换机帐户切换到有问题用户的其他会话。
-1. 重现问题。
+1. 重现此问题。
 1. 使用交换机帐户切换回运行跟踪的管理会话。
-1. 在提升的命令提示符下，运行**stop-auth**。
-1. Zip，并从执行脚本的文件夹**Authlogs**发送文件夹。
+1. 在提升的命令提示符下，运行 **stop-auth**。
+1. Zip，并从执行脚本的文件夹 **Authlogs** 发送文件夹。
 
 ## <a name="troubleshoot-post-join-issues"></a>排查联接后问题
 
@@ -406,7 +406,7 @@ WamDefaultAuthority: organizations
 这些字段指示用户在登录设备时是否已成功通过 Azure AD 的身份验证。
 如果值为 **NO**，原因可能是：
 
-- 注册时与设备关联的 TPM 中的存储密钥错误（在运行提升时检查 KeySignTest）。
+- 注册时与设备关联的 TPM 中的存储密钥错误 (在运行提升的) 时检查 KeySignTest。
 - 备用登录 ID
 - 找不到 HTTP 代理
 
@@ -415,6 +415,6 @@ WamDefaultAuthority: organizations
 
 ## <a name="next-steps"></a>后续步骤
 
-继续[使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)
+继续 [使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)
 
 如有问题，请参阅[设备管理常见问题解答](faq.md)

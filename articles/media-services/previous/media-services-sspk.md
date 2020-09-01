@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 912f8bdf90e2b45932a73e5bd99190f58cf546a7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086228"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265943"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 ## <a name="overview"></a>概述
 Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经过优化的平滑流式处理客户端实现，可帮助嵌入式设备制造商、有线和移动运营商、内容服务提供商、手持设备制造商、独立软件供应商 (ISV) 和解决方案提供商创建产品和服务，用于流式传输平滑流式处理格式的自适应内容。 SSPK 是平滑流式处理客户端的与设备和平台无关的实现，许可接受方可将它移植到任何设备和平台。 
 
@@ -114,31 +117,31 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Arcadyan Technology Corporation
-* Arcelik
+* Arcelik A.S
 * Compal Electronics, Inc.
-* 明示技术有限
+* EXPRESS LUCK TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
 * Hisense International Co., Ltd. 
-* HKC 公司有限
-* 中国香港 Konka 有限公司
-* Innolux 公司
-* Innopia 技术，Inc。
-* Tronics （Suzhou）技术有限公司。 
+* HKC Corporation Limited
+* Hong Kong Konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
+* Tronics (Suzhou) 技术有限公司。 
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
-* 成名电气有限公司
-* MIRC 电子设备有限
+* Mega Fame Electronics Co. Limited
+* MIRC Electronics Limited
 * Nintendo Co., Ltd.
-* ONEPLUS 电子（SHENZHEN）有限公司。
-* Panasonic 公司
-* Qingdao Haier information Optronics
-* Shenzhen ATEKO 相片电力公司
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier Optronics Co., Ltd.
+* Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
 * Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Jiuzhou Electric Co., Ltd
-* Shenzhen KTC 技术有限公司。 
-* Shenzhen Maxmade 技术有限公司
-* Shenzhen MTC，有限公司
+* Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
@@ -148,7 +151,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Sony Corporation
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
-* UMC 波兰 sp。 o.o。
+* UMC Poland sp. z .o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

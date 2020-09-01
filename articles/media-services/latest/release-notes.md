@@ -3,22 +3,24 @@ title: Azure 媒体服务 v3 发行说明 | Microsoft Docs
 description: 为了让大家随时了解最新的开发成果，本文提供了 Azure 媒体服务 v3 的最新更新。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072144"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267491"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 
@@ -32,9 +34,9 @@ ms.locfileid: "87072144"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 v3[实时事件](live-events-outputs-concept.md)、查看 v3[资产](assets-concept.md)和作业、获取有关访问 api 的信息、加密内容。 对于所有其他管理任务（例如，管理转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
+> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [实时事件](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)和作业、获取有关访问 API 的信息以及加密内容。 对于所有其他的管理任务（例如，管理转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 >
-> 有关详细信息，请参阅：[媒体服务 v3 的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
+> 有关详细信息，请参阅：[媒体服务 v3的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -44,17 +46,17 @@ Live 转录现在支持19个语言和8个区域。
 
 ## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>通过 Media Services 和 Azure AD 保护内容
 
-我们发布了一篇名[为端到端内容保护的教程，其中使用 Azure AD](./azure-ad-content-protection.md)。
+我们发布了一篇名 [为端到端内容保护的教程，其中使用 Azure AD](./azure-ad-content-protection.md)。
 
 ### <a name="high-availablity"></a>高可用性
 
-我们发布了有关 Media Services 和视频点播（VOD）[概述](./media-services-high-availability-encoding.md)和[示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)的高可用性。
+我们使用 Media Services 和视频点播 (VOD) [概述](./media-services-high-availability-encoding.md) 和 [示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)中发布了高可用性。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 预览版的实时视频分析
 
-IoT Edge 公开的实时视频分析预览。 有关详细信息，请参阅[发行说明](../live-video-analytics-edge/release-notes.md)。
+IoT Edge 公开的实时视频分析预览。 有关详细信息，请参阅 [发行说明](../live-video-analytics-edge/release-notes.md)。
 
 IoT Edge 上的实时视频分析是 Media Service 系列的扩展。 利用它，你可以在自己的边缘设备上分析你所选的 AI 模型的实时视频，还可以选择捕获并录制该视频。 你现在可以在边缘使用实时视频分析构建应用，而无需担心生成和操作实时视频管道的复杂性。
 
@@ -120,7 +122,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
 
-- 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含视频和音频交错的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
+- 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
 - 改善了标准编码器中大小重设器的性能和多线程处理。 在特定条件下，客户应看到 5-40% 的 VOD 编码获得性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
 -  改进了可变帧速率 (VFR) 源内容的 AV 同步

@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: 了解如何创建与 Azure 媒体服务配合使用的 Azure 存储帐户。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/01/2019
-ms.author: juliako
-ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 120bd403d84f9912bd309f965f3b69306fabcc24
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071999"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267065"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。
 
@@ -32,7 +34,7 @@ ms.locfileid: "87071999"
 > [!NOTE]
 > 仅热访问层支持与 Azure 媒体服务配合使用，尽管其他访问层可用于降低未活跃使用的内容的存储成本。
 
-可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在为生产选择 SKU 时，应考虑 `--sku Standard_RAGRS` ，它提供了地理复制以实现业务连续性。
+可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 
@@ -66,7 +68,7 @@ ms.locfileid: "87071999"
 
 ## <a name="azure-storage-firewall"></a>Azure 存储防火墙
 
-Azure 媒体服务不支持启用了 Azure 存储防火墙或[专用终结点](../../storage/common/storage-network-security.md)的存储帐户。
+Azure 媒体服务不支持启用了 Azure 存储防火墙或 [专用终结点](../../storage/common/storage-network-security.md) 的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,31 +12,31 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541883"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268598"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 
-企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅[Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
+企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
 
 启用企业状态漫游时，会自动授予组织对 Azure Rights Management 保护的免费受限使用许可证，该许可证来自 Azure 信息保护。 此免费订阅仅限用于加密和解密企业设置，以及由企业状态漫游同步的应用程序数据。 必须拥有[付费版订阅](https://azure.microsoft.com/pricing/details/information-protection/)才能使用 Azure Rights Management 服务的完整功能。
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>启用企业状态漫游
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 1. 选择**企业状态漫游 Azure Active Directory**  >  **设备**"  >  **Enterprise State Roaming**。
-1. 选择“用户可以跨设备同步设置和应用数据”。**** 有关详细信息，请参阅[如何配置设备设置](/azure/active-directory/device-management-azure-portal)。
+1. 选择“用户可以跨设备同步设置和应用数据”。**** 有关详细信息，请参阅[如何配置设备设置](./device-management-azure-portal.md)。
   
    ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
   
-要让 Windows 10 设备使用企业状态漫游服务，设备必须使用 Azure AD 标识进行身份验证。 对于已加入到 Azure AD 的设备，用户的主登录标识为 Azure AD 标识，因此不需要其他配置。 对于使用本地 Active Directory 的设备，IT 管理员必须[配置加入混合 Azure Active Directory 的设备](hybrid-azuread-join-manual-steps.md)。 
+要让 Windows 10 设备使用企业状态漫游服务，设备必须使用 Azure AD 标识进行身份验证。 对于已加入到 Azure AD 的设备，用户的主登录标识为 Azure AD 标识，因此不需要其他配置。 对于使用本地 Active Directory 的设备，IT 管理员必须[配置加入混合 Azure Active Directory 的设备](./hybrid-azuread-join-plan.md)。 
 
 ## <a name="data-storage"></a>数据存储
 
@@ -96,4 +96,4 @@ ms.locfileid: "87541883"
 * [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.md)
 * [设置同步的组策略和 MDM 设置](enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](enterprise-state-roaming-windows-settings-reference.md)
-* [疑难解答](enterprise-state-roaming-troubleshooting.md)
+* [故障排除](enterprise-state-roaming-troubleshooting.md)

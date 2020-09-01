@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: 了解如何使用 AES 128 位加密来加密视频，以及如何在 Azure 媒体服务中使用密钥传送服务。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 45bb8637d37c9c3789a962c9f5ac42227d547637
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d8bc270549f702f9ba277b3514a3332d16b52d8d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022814"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267167"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教程：使用 AES-128 来加密视频以及使用密钥传送服务
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
@@ -32,7 +34,7 @@ ms.locfileid: "87022814"
 
 本文中示例的输出包括 Azure Media Player 的 URL、清单 URL，以及播放内容所需的 AES 令牌。 该示例将 JSON Web 令牌 (JWT) 令牌的过期时间设置为 1 小时。 可以打开浏览器并粘贴生成的 URL 来启动 Azure Media Player 演示页，其中已经填充了该 URL 和令牌（采用以下格式：```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```）。
 
-本教程演示如何：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 下载本文中介绍的 [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) 示例。
@@ -58,7 +60,7 @@ ms.locfileid: "87022814"
 * 查看[内容保护概述](content-protection-overview.md)一文。
 * 安装 Visual Studio Code 或 Visual Studio。
 * [创建媒体服务帐户](./create-account-howto.md)。
-* 使用[访问 api](./access-api-howto.md)获取使用媒体服务 api 时所需的凭据。
+* 使用 [访问 api](./access-api-howto.md)获取使用媒体服务 api 时所需的凭据。
 
 ## <a name="download-code"></a>下载代码
 
@@ -87,7 +89,7 @@ ms.locfileid: "87022814"
 
 ## <a name="get-or-create-an-encoding-transform"></a>获取或创建编码转换
 
-创建新[转换](/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），然后通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。
+创建新实例时，需要指定希望生成的输出内容[转换](/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），然后通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。
 
 在创建新的[转换](/rest/api/media/transforms)之前，请先检查是否已存在使用 **Get** 方法的转换，如以下代码中所示。 在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -111,9 +113,9 @@ ms.locfileid: "87022814"
 
 ## <a name="create-a-content-key-policy"></a>创建内容密钥策略
 
-内容密钥提供对资产的安全访问。 你需要创建一个**内容密钥策略**，用于配置如何将内容密钥传递到最终客户端。 内容密钥与**流定位器**相关联。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。
+内容密钥提供对资产的安全访问。 你需要创建一个 **内容密钥策略** ，用于配置如何将内容密钥传递到最终客户端。 内容密钥与**流定位器**相关联。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。
 
-当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容（在这种情况下，使用 AES 加密。）为了解密流，播放器将从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
+当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容，在这种情况下，使用 AES 加密 (。 ) 解密流，播放机从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
@@ -121,7 +123,7 @@ ms.locfileid: "87022814"
 
 完成编码并设置内容密钥策略后，下一步是使输出资产中的视频可供客户端播放。 可以通过两个步骤来提供视频：
 
-1. 创建[流式处理定位符](/rest/api/media/streaminglocators)。
+1. 创建 [流式处理定位符](/rest/api/media/streaminglocators)。
 2. 生成客户端可以使用的流式处理 URL。
 
 创建**流定位器**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，流式处理定位符**** 立即生效， 并持续到被删除为止。
@@ -143,7 +145,7 @@ ms.locfileid: "87022814"
 
 ## <a name="build-a-dash-streaming-url"></a>生成 DASH 流 URL
 
-现在已经创建了[流式处理定位符](/rest/api/media/streaminglocators)，可以获取流式处理 url。 若要生成 URL，需要连接 [StreamingEndpoint](/rest/api/media/streamingendpoints) 主机名称和流定位器路径****。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
+现在已经创建了 [流式处理定位符](/rest/api/media/streaminglocators) ，可以获取流式处理 url。 若要生成 URL，需要连接 [StreamingEndpoint](/rest/api/media/streamingendpoints) 主机名称和流定位器路径****。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 

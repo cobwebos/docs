@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: 了解如何通过 Azure Monitor 监视 Azure 媒体服务指标和诊断日志。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011645"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267599"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 使用 [Azure Monitor](../../azure-monitor/overview.md) 可以监视指标和诊断日志，以帮助了解应用的执行情况。 Azure Monitor 收集的所有数据属于以下两种基本类型之一：指标和日志。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以使用[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)来可视化和分析指标数据。 可将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)、将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、并将其导出到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第三方服务。
 

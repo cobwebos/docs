@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘设备上的 Kubernetes 上启用 Azure Arc |Microsoft Docs
-description: 介绍如何在 Azure Stack 边缘设备上的现有 Kubernetes 群集上启用 Azure Arc。
+title: 在 Azure Stack Edge GPU 设备上的 Kubernetes 上启用 Azure Arc |Microsoft Docs
+description: 介绍如何在 Azure Stack 边缘 GPU 设备上的现有 Kubernetes 群集上启用 Azure Arc。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 03bf2a01ad4c1d5d017d881bf171806fa33e8799
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083591"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268187"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-device"></a>在 Azure Stack 边缘设备上的 Kubernetes 群集上启用 Azure Arc
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack 边缘 GPU 设备上的 Kubernetes 群集上启用 Azure Arc
 
 本文介绍如何在 Azure Stack 边缘设备上的现有 Kubernetes 群集上启用 Azure Arc。 
 
 此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在 Kubernetes 群集上启用 Azure Arc 之前，请确保已在 Azure Stack 边缘设备和将用于访问设备的客户端上完成以下先决条件：
 

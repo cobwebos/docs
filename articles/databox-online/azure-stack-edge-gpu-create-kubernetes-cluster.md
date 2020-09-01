@@ -1,21 +1,21 @@
 ---
-title: 在 Microsoft Azure Stack Edge 设备上创建和管理 Kubernetes 群集 |Microsoft Docs
-description: 介绍如何通过 Windows PowerShell 界面在 Microsoft Azure Stack Edge 设备上创建和管理 Kubernetes 群集。
+title: 在 Azure Stack Edge GPU 设备上创建和管理 Kubernetes 群集 |Microsoft Docs
+description: 介绍如何通过 Windows PowerShell 界面在 Azure Stack Edge GPU 设备上创建和管理 Kubernetes 群集。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 74f86ed48f363031fcab5d9d89046c349a1c3667
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181386"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267952"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-device"></a>通过 Azure Stack 边缘设备上的 kubectl 连接到 Kubernetes 群集并对其进行管理
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>通过 Azure Stack 边缘 GPU 设备上的 kubectl 连接和管理 Kubernetes 群集
 
 在 Azure Stack Edge 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl*），从客户端计算机本地连接和管理群集。
 

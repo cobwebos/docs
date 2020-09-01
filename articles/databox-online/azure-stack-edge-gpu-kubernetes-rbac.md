@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 703e67b4829413776dc8d98843888fbd67906baa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182184"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268068"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-device"></a>在 Azure Stack 边缘设备上 Kubernetes 基于角色的访问控制
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备上基于角色的访问控制 Kubernetes
 
 
 在 Azure Stack 边缘设备上，配置计算角色时，会创建 Kubernetes 群集。 你可以使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制对设备上群集资源的访问。
@@ -45,9 +45,9 @@ Azure Stack 边缘设备包含以下命名空间：
     - kube-系统
     - metallb-系统
     - dbe-命名空间
-    - default
+    - 默认值
     - kubernetes-dashboard
-    - default
+    - 默认值
     - kube-租赁
     - kube-公共
     - iotedge

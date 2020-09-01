@@ -1,21 +1,21 @@
 ---
 title: 将证书与 Azure Stack Edge GPU 一起使用 |Microsoft Docs
 description: 描述如何将证书与 Azure Stack Edge GPU 设备一起使用，其中包括使用原因，以及如何在设备上上传证书。
-services: Azure Stack Edge
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147076"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268870"
 ---
-# <a name="use-certificates-with-azure-stack-edge-series"></a>将证书用于 Azure Stack Edge 系列 
+# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 设备上使用证书
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -324,7 +324,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
         ![导入证书3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
 
  
-4. 选择“完成”  。 出现导入成功的影响的消息。
+4. 选择“完成”。 出现导入成功的影响的消息。
 
 ### <a name="export-certificates-as-pfx-format-with-private-key"></a>用私钥将证书导出为 .pfx 格式
 
@@ -366,11 +366,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![导出证书7](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-7.png)
   
-8. 选择“完成”  。
+8. 选择“完成”。
 
     ![导出证书8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 你会收到一条已成功导出的消息。 选择“确定”。
+9. 你会收到一条已成功导出的消息。 选择“确定”  。
 
     ![导出证书9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -385,7 +385,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![导出证书1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
-2. 证书向导将打开。 选择格式为 **DER 编码的二进制 x.509 ( .cer) **。 选择“**下一步**”。
+2. 证书向导将打开。 选择格式为 **DER 编码的二进制 x.509 ( .cer) **。 选择“**下一页**”。
 
     ![导出证书2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
@@ -394,7 +394,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
     ![导出证书3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
-4. 选择“完成”  。
+4. 选择“完成”。
 
     ![导出证书4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 

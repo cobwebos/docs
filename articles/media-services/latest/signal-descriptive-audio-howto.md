@@ -3,23 +3,25 @@ title: 使用 Azure 媒体服务 v3 指示描述性音频轨道 | Microsoft Docs
 description: 按照本教程中的步骤，使用媒体服务 v3 上传文件、编码视频、添加描述性音频轨道和流式传输内容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006646"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267422"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 可以向视频中添加旁白轨道，以帮助视力受损的客户通过倾听旁白来跟随视频录制。 在媒体服务 v3 中，我们通过在清单文件中注释音频轨道来指示描述性音频轨道。
 

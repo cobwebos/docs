@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b54f4d64810fbbb6a3a0fe0eb8083640376eecb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d26f1cdd6184ca10c3a7b9c9a7dc5724cc5e8129
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020552"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266300"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>使用 Azure CLI 查看托管标识的服务主体
 
@@ -33,11 +33,11 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请[注册免费帐户](https://azure.microsoft.com/free/)。
-- 在[虚拟机](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)上启用系统分配的标识。
+- 在[虚拟机](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)或[应用程序](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity)上启用系统分配的标识。
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
     - 在 Azure 门户中使用 [Azure Cloud Shell](../../cloud-shell/overview.md)（见下一部分）。
     - 单击各代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。
-    - 如果喜欢使用本地 CLI 控制台并使用 `az login` 登录 Azure，请[安装最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+    - 如果喜欢使用本地 CLI 控制台并使用 `az login` 登录 Azure，请[安装最新版的 Azure CLI](/cli/azure/install-azure-cli)
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -52,5 +52,3 @@ az ad sp list --display-name <VM or application name>
 ## <a name="next-steps"></a>后续步骤
 
 有关使用 Azure CLI 管理 Azure AD 服务主体的详细信息，请参阅 [az ad sp](/cli/azure/ad/sp)。
-
-

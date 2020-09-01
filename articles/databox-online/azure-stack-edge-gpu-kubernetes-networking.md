@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 8394ddbc4247eb992532fb11d06d8f5432edd1c7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083150"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268119"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-device"></a>Azure Stack Edge 设备中的 Kubernetes 网络
+# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备中的 Kubernetes 网络
 
 在 Azure Stack Edge 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 在 Kubernetes 群集中，可以通过不同的方式来使用网络箱。 
 

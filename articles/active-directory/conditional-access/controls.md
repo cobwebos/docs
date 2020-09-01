@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948294"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266572"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
 
 自定义控件是 Azure Active Directory 的预览功能。 使用自定义控件时，用户将被重定向到兼容服务，以满足 Azure Active Directory 之外的身份验证要求。 若要满足此控件要求，用户浏览器将重定向到外部服务，执行任何所需的身份验证，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
 
 > [!NOTE]
-> 有关我们计划自定义控件功能的更改的详细信息，请参阅2020年2月 [新增内容更新](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)。
+> 有关我们计划自定义控件功能的更改的详细信息，请参阅2020年2月版 [存档了解新增](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls)功能。
 
 ## <a name="creating-custom-controls"></a>创建自定义控件
 

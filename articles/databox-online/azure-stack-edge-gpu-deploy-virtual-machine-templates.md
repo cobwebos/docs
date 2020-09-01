@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 330186b12efcc31e9f99d7c4bdbff3e081311c23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083162"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268153"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-templates"></a>通过模板在 Azure Stack Edge 设备上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge GPU 设备上部署 Vm
 
 本教程介绍如何使用模板在 Azure Stack Edge 设备上创建和管理 VM。 这些模板 JavaScript 对象表示法 (JSON) 文件，用于定义 VM 的基础结构和配置。 在这些模板中，可以指定要部署的资源以及这些资源的属性。
 

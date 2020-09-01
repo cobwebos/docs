@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052521"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265909"
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -47,13 +49,13 @@ Azure 媒体服务已将以下属性添加到流式处理终结点实体： **Cd
 
 ### <a name="standardpremium-types-version-20"></a>标准/高级类型（版本 2.0）
 
-从 Media Services 的2017年1月版开始，你有两种流式处理类型：**标准**（预览）和**高级**。 这些类型属于流式处理终结点版本“2.0”。
+从 Media Services 2017 年1月版开始，你有两种流式处理类型： **标准** (预览) 和 **高级**版。 这些类型属于流式处理终结点版本“2.0”。
 
 
 |类型|说明|
 |--------|--------|  
 |**标准**|默认的流式处理终结点是“标准”**** 类型，可以通过调整流单元更改为“高级”类型。|
-|**高级** |此选项适用于需要更高级缩放或控制的专业方案。 可以通过调整流式处理单位移动到**高级**类型。<br/>专用流式处理终结点存在于隔离环境中，不会争用资源。|
+|**高级** |此选项适用于需要更高级缩放或控制的专业方案。 可以通过调整流式处理单位移动到 **高级** 类型。<br/>专用流式处理终结点存在于隔离环境中，不会争用资源。|
 
 对于希望将内容传递给大型 internet 受众的客户，我们建议你在流式处理终结点上启用 CDN。
 
@@ -77,7 +79,7 @@ Azure 媒体服务已将以下属性添加到流式处理终结点实体： **Cd
 
 |类型|StreamingEndpointVersion|ScaleUnits|CDN|计费|
 |--------------|----------|-----------------|-----------------|-----------------|
-|经典|1.0|0|NA|免费|
+|经典|1.0|0|NA|Free|
 |标准流式处理终结点（预览版）|2.0|0|是|付费|
 |高级流单元|1.0|>0|是|已付|
 |高级流单元|2.0|>0|是|已付|
@@ -88,24 +90,24 @@ Azure 媒体服务已将以下属性添加到流式处理终结点实体： **Cd
 ---|---|---
 吞吐量 |使用 CDN 时，高达 600 Mbps，可以提供更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时，可以提供更高的有效吞吐量。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
-按比例计费| 每天|每日
+按比例计费| 每日|每日
 动态加密|是|是
 动态打包|是|是
 缩放|自动扩展到目标吞吐量。|额外流单元。
-IP 筛选/G20/自定义主机<sup>1</sup>|是|是
+IP 筛选/G20/自定义主机 <sup>1</sup>|是|是
 渐进式下载|是|是
 建议用途 |建议用于绝大多数流式处理方案。|专业用途。 
 
-<sup>1</sup>仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>
+<sup>1</sup> 仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>
 
 有关 SLA 的信息，请参阅[定价和 SLA](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="migration-between-types"></a>类型之间的迁移
 
-From | 收件人 | 操作
+From | 目标 | 操作
 ---|---|---
 经典|Standard|需要选择加入
-经典|高级| 缩放（额外流单元）
+经典|Premium| 缩放（额外流单元）
 标准/高级|经典|不可用（如果流式处理终结点版本为 1.0， 允许通过将 scaleunits 设置为“0”更改为经典）
 标准（带/不带 CDN）|具有相同配置的高级类型|在**已启动**状态下允许。 （通过 Azure 门户）
 高级（带/不带 CDN）|具有相同配置的标准类型|在**已启动**状态下允许（通过 Azure 门户）

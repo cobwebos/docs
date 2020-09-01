@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182048"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268018"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Azure Stack 边缘设备上的 Kubernetes 工作负荷管理
 
@@ -47,11 +47,11 @@ ms.locfileid: "89182048"
 
 ![Kubernetes 工作负荷部署](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **本地部署**：这是通过命令行访问工具（例如） `kubectl` 来部署 K8 `yamls` 。 您可以使用该文件连接到您 Azure Stack 上的 K8 群集 `kubeconfig` 。 有关详细信息，请参阅 [通过 Kubectl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+- **本地部署**：这是通过命令行访问工具（例如） `kubectl` 来部署 Kubernetes `yamls` 。 您可以使用该文件连接到您 Azure Stack 上的 Kubernetes 群集 `kubeconfig` 。 有关详细信息，请参阅 [通过 Kubectl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
 
-- **IoT Edge 部署**：这是通过 IoT Edge 连接到 Azure IoT 中心。 通过命名空间连接到 Azure Stack 边缘设备上的 K8 群集 `iotedge` 。 部署在此命名空间中的 IoT Edge 代理负责连接到 Azure。 `IoT Edge deployment.json`使用 Azure DEVOPS CI/CD 应用配置。 命名空间和 IoT Edge 管理通过 cloud operator 完成。
+- **IoT Edge 部署**：这是通过 IoT Edge 连接到 Azure IoT 中心。 通过命名空间连接到 Azure Stack 边缘设备上的 Kubernetes 群集 `iotedge` 。 部署在此命名空间中的 IoT Edge 代理负责连接到 Azure。 `IoT Edge deployment.json`使用 Azure DEVOPS CI/CD 应用配置。 命名空间和 IoT Edge 管理通过 cloud operator 完成。
 
-- **Azure/Arc 部署**： azure Arc 是一种混合管理工具，可用于在 K8 群集上部署应用程序。 可以通过在 Azure Stack 边缘设备上连接 K8 群集 `azure-arc namespace` 。 代理部署在此命名空间中，该命名空间负责连接到 Azure。 使用基于 GitOps 的配置管理应用部署配置。 Azure Arc 还允许使用容器 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅 [什么是启用了 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
+- **Azure/Arc 部署**： azure Arc 是一种混合管理工具，可用于在 Kubernetes 群集上部署应用程序。 可以通过在 Azure Stack 边缘设备上连接 Kubernetes 群集 `azure-arc namespace` 。 代理部署在此命名空间中，该命名空间负责连接到 Azure。 使用基于 GitOps 的配置管理应用部署配置。 Azure Arc 还允许使用容器 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅 [什么是启用了 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
 
 ## <a name="choose-the-deployment-type"></a>选择部署类型
 

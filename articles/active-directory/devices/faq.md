@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689038"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266776"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -24,7 +24,7 @@ ms.locfileid: "84689038"
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备， 为什么我看不到 Azure 门户中的用户信息下的设备？ 或对于加入混合Azure Active Directory (Azure AD) 的设备，为什么设备所有者标记为 N/A？
 
-**答：** 已加入混合 Azure AD 的 Windows 10 设备不会显示在 "**用户设备**" 下。
+**答：** 已加入混合 Azure AD 的 Windows 10 设备不会显示在 " **用户设备**" 下。
 使用 Azure 门户中的“所有设备”视图****。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 “USER 设备”下面只会列出以下设备：****
@@ -37,7 +37,7 @@ ms.locfileid: "84689038"
 
 ### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>问：如何了解客户端的设备注册状态？
 
-**答：** 在 Azure 门户中，请切换到 "**所有设备**"。 使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或已重置映像。 因此，还必须检查设备上的设备注册状态：
+**答：** 在 Azure 门户中，请切换到 " **所有设备**"。 使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或已重置映像。 因此，还必须检查设备上的设备注册状态：
 
 - 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 `dsregcmd.exe /status`。
 - 对于低级别操作系统版本，请运行 `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`。
@@ -51,25 +51,25 @@ ms.locfileid: "84689038"
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>问：我在 Azure 门户的 "用户信息" 下看到设备记录。 我在设备上看到状态为已注册。 是否正确设置了使用条件性访问？
 
-**答：** 由**deviceID**显示的设备加入状态必须与 Azure AD 上的状态相匹配，并满足条件访问的任何评估条件。 有关详细信息，请参阅[要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
+**答：** 由 **deviceID**显示的设备加入状态必须与 Azure AD 上的状态相匹配，并满足条件访问的任何评估条件。 有关详细信息，请参阅 [要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
 
 ---
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>问：为什么我的用户在其 Windows 10 设备上看到一条错误消息，指出 "你的组织已删除设备" 或 "你的组织已禁用了设备"？
 
-**答：** 在加入或注册到 Azure AD 的 Windows 10 设备上，会向用户颁发允许单一登录的[主刷新令牌（PRT）](concept-primary-refresh-token.md) 。 PRT 的有效性取决于设备本身的有效性。 如果 Azure AD 在中删除或禁用了设备，则用户将看到此消息，而无需从设备本身启动操作。 在以下任一情况下，都可以删除或禁用设备 Azure AD： 
+**答：** 在加入或注册到 Azure AD 的 Windows 10 设备上，将向用户颁发一个 [主刷新令牌 (PRT) ](concept-primary-refresh-token.md) 启用单一登录。 PRT 的有效性取决于设备本身的有效性。 如果 Azure AD 在中删除或禁用了设备，则用户将看到此消息，而无需从设备本身启动操作。 在以下任一情况下，都可以删除或禁用设备 Azure AD： 
 
 - 用户从 "我的应用" 门户禁用该设备。 
-- 管理员（或用户）在 Azure 门户或使用 PowerShell 删除或禁用设备
+- 管理员 (或用户) 在 Azure 门户或通过使用 PowerShell 删除或禁用设备
 - 仅联接混合 Azure AD：管理员将设备 OU 从同步范围中删除，导致设备从 Azure AD
-- 升级 Azure AD 连接到版本 1.4. x. x. x. x. x. x。 [了解 Azure AD Connect 1.4. x. x 和设备消失](/azure/active-directory/hybrid/reference-connect-device-disappearance)。
+- 升级 Azure AD 连接到版本 1.4. x. x. x. x. x. x。 [了解 Azure AD Connect 1.4. x. x 和设备消失](../hybrid/reference-connect-device-disappearance.md)。
 
 
 请参阅下面有关如何纠正这些操作的说明。
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态仍显示为已注册。 我该怎么办？
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态仍显示为已注册。   应采取何种操作？
 
 **答：** 此操作是由设计决定的。 在这种情况下，设备无法访问云中的资源。 管理员可以对过时的、丢失或被盗的设备执行此操作，以防止未经授权的访问。 如果无意中执行了此操作，则需要重新启用或重新注册设备，如下所述
 
@@ -94,14 +94,14 @@ ms.locfileid: "84689038"
       对于已加入 Azure AD Windows 10 设备的设备，请执行以下步骤：
 
       1. 以管理员身份打开命令提示符
-      1. Enter `dsregcmd /forcerecovery` （注意：你必须是管理员才能执行此操作）。
+      1. 输入 `dsregcmd /forcerecovery` (注意：你必须是管理员才能执行此操作) 。
       1. 在打开的对话框中单击 "登录"，并继续登录过程。
       1. 注销并重新登录到设备，以完成恢复。
 
       对于 Azure AD 注册的 Windows 10 设备，请执行以下步骤：
 
       1. 中转到 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作单位或学校**"。 
-      1. 选择该帐户，然后选择 "**断开连接**"。
+      1. 选择该帐户，然后选择 " **断开连接**"。
       1. 单击 "+ 连接"，然后通过登录过程再次注册设备。
 
 ---
@@ -134,14 +134,14 @@ ms.locfileid: "84689038"
 
 ### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>问：为什么在 Azure 门户中的 "已注册" 列下，哪些设备标记为 "挂起"？
 
-**答**： "挂起" 表示设备未注册。 此状态表示设备已使用 Azure AD 从本地 AD 连接并已准备好进行设备注册。 这些设备的联接类型设置为 "混合 Azure AD 联接"。 了解有关[如何计划混合 Azure Active Directory 联接实现](hybrid-azuread-join-plan.md)的详细信息。
+**答**： "挂起" 表示设备未注册。 此状态表示设备已使用 Azure AD 从本地 AD 连接并已准备好进行设备注册。 这些设备的联接类型设置为 "混合 Azure AD 联接"。 了解有关 [如何计划混合 Azure Active Directory 联接实现](hybrid-azuread-join-plan.md)的详细信息。
 
 >[!NOTE]
 >设备还可以从 "已注册" 状态更改为 "挂起"
 >* 如果从 Azure AD 删除了某个设备，并从本地 AD 重新同步了该设备。
 >* 如果从 Azure AD Connect 上的同步作用域中删除了某个设备，并将其重新添加回来。
 >
->在这两种情况下，必须在每台设备上手动重新注册设备。 若要查看设备是否之前已注册，可以[使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)。
+>在这两种情况下，必须在每台设备上手动重新注册设备。 若要查看设备是否之前已注册，可以 [使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)。
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD 加入常见问题解答
@@ -182,17 +182,17 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>问：我的用户无法从 Azure AD 联接的设备中搜索打印机。 如何从这些设备启用打印？
 
-**答：** 若要为 Azure AD 联接的设备部署打印机，请参阅[利用预身份验证部署 Windows Server 混合云打印](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+**答：** 若要为 Azure AD 联接的设备部署打印机，请参阅 [利用预身份验证部署 Windows Server 混合云打印](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>问：如何实现连接到已加入远程 Azure AD 设备？
 
-**答：** 请参阅[连接到远程 Azure Active Directory 联接的 PC](/windows/client-management/connect-to-remote-aadj-pc)。
+**答：** 请参阅 [连接到远程 Azure Active Directory 联接的 PC](/windows/client-management/connect-to-remote-aadj-pc)。
 
 ---
 
-### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>问：为什么我的用户看到*无法从这里获取*？
+### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>问：为什么我的用户看到 *无法从这里获取*？
 
 **答：** 是否配置了某些条件性访问规则来要求特定设备状态？ 如果设备不满足条件，就会阻止用户，并且他们会看到该消息。 评估条件访问策略规则。 确保设备满足条件，避免出现该消息。
 
@@ -209,7 +209,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ---
 
-### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>问：为什么对于刚刚加入到 Azure AD 的设备，我的*用户名或密码不正确*？
+### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>问：为什么对于刚刚加入到 Azure AD 的设备，我的 *用户名或密码不正确* ？
 
 **答：** 此方案的常见原因如下：
 
@@ -220,7 +220,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ---
 
-### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>问：为何我看*不到 .。。出现错误！* 尝试 Azure AD 加入我的电脑时的对话框？
+### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>问：为何我看 *不到 .。。出现错误！* 尝试 Azure AD 加入我的电脑时的对话框？
 
 **答：** 当你设置 Azure Active Directory 向 Intune 注册时，将发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](/intune/windows-enroll)。  
 
@@ -240,7 +240,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>问：为什么在 Windows 10 设备上看到多个由 MS-Organization-P2P-Access 颁发的过期证书？ 如何删除它们？
 
-**答：** Windows 10 版本1709和更低版本上确定出现问题，因为存在加密问题，因此，在计算机存储中，这些证书已过期。 如果你使用的是不能处理大量过期证书的 VPN 客户端（如 Cisco AnyConnect），则你的用户可能会面临网络连接问题。 此问题在 Windows 10 1803 版本中已修复，自动删除任何此类过期的 MS-Organization-P2P-Access 证书。 可以通过将设备更新到 Windows 10 1803 来解决此问题。 如果无法更新，可以删除这些证书，而不产生任何不利影响。  
+**答：** Windows 10 版本1709和更低版本上确定出现问题，因为存在加密问题，因此，在计算机存储中，这些证书已过期。 如果你使用的是任何 VPN 客户端 (例如，无法处理大量过期证书的 Cisco AnyConnect) ，你的用户可能会面临网络连接问题。 此问题在 Windows 10 1803 版本中已修复，自动删除任何此类过期的 MS-Organization-P2P-Access 证书。 可以通过将设备更新到 Windows 10 1803 来解决此问题。 如果无法更新，可以删除这些证书，而不产生任何不利影响。  
 
 ---
 
@@ -259,7 +259,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>问：为什么在 "Azure AD 设备" 列表中看到 "我的 Windows 10 混合设备" Azure AD 联接设备的重复 Azure AD 注册记录？
 
-**答：** 当你的用户将其帐户添加到加入域的设备上的应用时，系统可能会提示你**将帐户添加到 Windows？** 如果他们在提示时输入“确定”，设备会注册 Azure AD****。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
+**答：** 当你的用户将其帐户添加到加入域的设备上的应用时，系统可能会提示你 **将帐户添加到 Windows？** 如果他们在提示时输入“确定”，设备会注册 Azure AD****。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
 
 混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此，在进行任何身份验证和条件性访问评估时，设备被视为混合 Azure AD 联接。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](hybrid-azuread-join-plan.md#review-things-you-should-know)。 
 
@@ -267,7 +267,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>问：为什么我的用户在更改其 UPN 后在 Windows 10 混合 Azure AD 联接设备上遇到问题？
 
-**答：** 目前，混合 Azure AD 联接设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要从 Azure AD 中脱离设备（以提升的权限运行 "dsregcmd.exe/leave"），并重新加入（自动发生）以解决此问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+**答：** 目前，混合 Azure AD 联接设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要将设备从 Azure AD 中脱离 (以提升的权限运行 "dsregcmd.exe/leave") ，并自动重新加入 () 解决该问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
 
 Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新的设备上的用户将不会有任何问题
 
@@ -281,7 +281,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>问：如果用户更改了密码，并尝试登录到 Windows 10 混合 Azure AD 公司网络外部的已加入设备，会发生什么情况？
 
-**答：** 如果在企业网络外部更改了密码（例如，通过使用 Azure AD SSPR），则使用新密码登录的用户将失败。 对于已加入混合 Azure AD 设备，本地 Active Directory 是主颁发机构。 当设备对域控制器没有线路视觉时，它无法验证新密码。 因此，用户需要先建立与域控制器的连接（通过 VPN 或位于企业网络中），然后才能通过新密码登录到该设备。 否则，它们只能用旧密码登录，因为 Windows 中已缓存的登录功能。 但是，旧密码会在令牌请求期间 Azure AD 失效，因此会阻止单一登录，并使任何基于设备的条件访问策略失败。 如果使用 Windows Hello 企业版，则不会出现此问题。 
+**答：** 如果在企业网络外部更改了密码 (例如，通过使用 Azure AD SSPR) ，则使用新密码登录的用户将失败。 对于已加入混合 Azure AD 设备，本地 Active Directory 是主颁发机构。 当设备对域控制器没有线路视觉时，它无法验证新密码。 因此，用户需要建立与域控制器的连接 (通过 VPN 或在企业网络中) ，才能通过其新密码登录到设备。 否则，它们只能用旧密码登录，因为 Windows 中已缓存的登录功能。 但是，旧密码会在令牌请求期间 Azure AD 失效，因此会阻止单一登录，并使任何基于设备的条件访问策略失败。 如果使用 Windows Hello 企业版，则不会出现此问题。 
 
 ---
 
@@ -295,7 +295,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 - 对于 macOS，可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 
 
 ---
-### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>问：如何阻止用户在公司 Windows 10 设备上添加其他工作帐户（Azure AD 注册）？
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>问：如何阻止用户向企业 Windows 10 设备上 (Azure AD 注册) 添加其他工作帐户？
 
 **答：** 启用以下注册表，阻止用户将其他工作帐户添加到加入企业域、Azure AD 联接或混合 Azure AD 加入 Windows 10 设备。 此策略还可用于阻止加入域的计算机无意中获取 Azure AD 注册到同一个用户帐户。 
 
@@ -312,11 +312,11 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 **答：** 执行以下步骤：
 
 1.    [创建合规性策略](/intune/compliance-policy-create-mac-os)
-1.    [定义 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 
+1.    [定义 macOS 设备的条件访问策略](../conditional-access/overview.md) 
 
-**标记**
+**备注：**
 
-- 你的条件访问策略中包含的用户需要[macOS 的支持的 Office 版本](../conditional-access/concept-conditional-access-conditions.md)来访问资源。 
+- 你的条件访问策略中包含的用户需要 [macOS 的支持的 Office 版本](../conditional-access/concept-conditional-access-conditions.md) 来访问资源。 
 - 在首次尝试访问期间，用户使用公司门户时会看到注册设备的提示。
 
 ---
