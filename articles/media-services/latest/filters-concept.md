@@ -3,7 +3,7 @@ title: 在 Azure 媒体服务中定义筛选器
 description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
-ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8cc3bc176798efda46f03c80fe9cce2edd7daf6b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023222"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262628"
 ---
 # <a name="filters"></a>筛选器
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 将内容传送到客户（实时传送视频流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 Azure 媒体服务根据预定义的筛选器提供[动态清单](filters-dynamic-manifest-overview.md)。 
 
@@ -150,7 +152,7 @@ ms.locfileid: "87023222"
  
 尽管筛选器可更新，但**流定位符**不可更新。 
 
-不建议更新与主动发布的**流式处理定位符**相关联的筛选器的定义，尤其是在启用 CDN 时。 流式处理服务器和 Cdn 可能有可能会导致返回过时缓存数据的内部缓存。 
+不建议更新与主动发布的 **流式处理定位符**相关联的筛选器的定义，尤其是在启用 CDN 时。 流式处理服务器和 Cdn 可能有可能会导致返回过时缓存数据的内部缓存。 
 
 如果需要更改筛选器定义，请考虑创建一个新的筛选器，并将其添加到**流定位符** URL，或发布直接引用筛选器的新**流定位符**。
 

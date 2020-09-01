@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054982"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260520"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
 
@@ -40,10 +40,10 @@ Azure 春季云通过集成 Azure Monitor、Application Insights 和 Log Analyti
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure 春季云的已知限制是什么？
 
-在预览版期间，Azure 春季云具有以下已知限制：
-
+Azure 春季云具有以下已知限制：
+    
 * `spring.application.name` 将被用于创建每个应用程序的应用程序名称重写。
-* `server.port` 默认为端口80/443。 如果应用其他任何值，则会将其重写为80/443。
+* `server.port` 默认为端口1025。 如果应用其他任何值，则会将其重写为1025。
 * Azure 门户和 Azure 资源管理器模板不支持上传应用程序包。 仅可通过 Azure CLI 部署应用程序来上载应用程序包。
 
 ### <a name="what-pricing-tiers-are-available"></a>提供哪些定价层？ 

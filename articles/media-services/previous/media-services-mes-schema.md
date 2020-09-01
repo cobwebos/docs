@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901439"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261506"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard 架构
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 本文介绍 [Media Encoder Standard 预设](media-services-mes-presets-overview.md)基于的 XML 架构的一些元素和类型。 本文将解释元素及其有效值。  
 
 ## <a name="preset-root-element"></a><a name="Preset"></a> 预设（根元素）

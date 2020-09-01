@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9236b5d6159a87ef09219d5e2bdb2e2679fb85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52ce8a359f63004393e191d1d6a8f991fba1e9f6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084545"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260792"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -44,7 +47,7 @@ ms.locfileid: "87084545"
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
     如果你无法访问摄像机，则可以使用 [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) 等工具从视频文件生成实时源。
-1. 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，请查看此博客：[包含 OBS 的实时流式处理生产](https://link.medium.com/ttuwHpaJeT)。
+1. 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
 
     此步骤也可以在创建频道后执行。
 1. 创建并启动通道。 
@@ -61,11 +64,11 @@ ms.locfileid: "87084545"
 1. 要停止流式传输并存档事件时，停止事件。
 1. 删除事件（并选择性地删除资产）。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 以下是完成本教程所需具备的条件。
 
-* 要完成本教程，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 
+* 若要完成本教程，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 
   有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 可以发送单比特率实时流的摄像头和编码器。
@@ -77,7 +80,7 @@ ms.locfileid: "87084545"
 3. 选择“自定义创建” ****。 选择此选项可以创建一个频道来进行实时编码。
 
     ![创建频道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
-4. 单击 "**设置**"。
+4. 单击“设置”  。
 
    1. 选择“实时编码” **** 频道类型。 此类型指定要创建能够进行实时编码的频道。 这意味着传入单比特率流将发送到频道，并使用指定的实时编码器设置编码为多比特率流。 有关详细信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。 单击“确定”。
    2. 指定频道的名称。
@@ -141,7 +144,7 @@ ms.locfileid: "87084545"
 将流传输到通道后，可以通过创建资产、节目和流定位符来启动流式传输事件。 这会存档流，并使观看者可通过流式处理终结点使用该流。 
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
 
 可通过两种方式启动该活动： 
 
@@ -175,7 +178,7 @@ ms.locfileid: "87084545"
 如果已完成流式处理事件，并想要清理先前设置的资源，请遵循以下过程。
 
 * 停止从编码器推送流。
-* 停止通道。 停止通道后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
+* 停止通道。 停止通道后，不会产生任何费用。 需要重新启动它时，它会采用相同的引入 URL，因此无需重新配置编码器。
 * 除非想要继续以点播流形式提供直播活动的存档，否则可以停止流式处理终结点。 如果通道处于停止状态，不会产生任何费用。
 
 ## <a name="view-archived-content"></a>查看存档的内容

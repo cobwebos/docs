@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9d73c280e3f5639b11e0d07b9ef2f775f48cd3c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038482"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262492"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API  
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -79,7 +81,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
        可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
    * 媒体服务资源 URI。 
 
-       对于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如，https： \/ /rest.media.azure.net）。
+       对于同一 Azure 环境中的媒体服务帐户，此 URI 是相同的 (例如，https： \/ /rest.media.azure.net) 。
 
    * 媒体服务（本机）应用程序客户端 ID。
    * 媒体服务（本机）应用程序重定向 URI。
@@ -121,7 +123,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
        可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
    * 媒体服务资源 URI。 
 
-       对于位于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如，https： \/ /rest.media.azure.net）。
+       对于位于同一 Azure 环境中的媒体服务帐户，此 URI 是相同的 (例如，https： \/ /rest.media.azure.net) 。
 
    * REST 媒体服务的资源 URI。
 
