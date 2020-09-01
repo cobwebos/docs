@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3a931955451722d7d925be482a78e1f6cc6d43d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08ebda8bdd17cc4d620792934e1299365d0ced71
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042981"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257919"
 ---
-# <a name="content-protection-overview"></a>内容保护概述 
+# <a name="content-protection-overview"></a>内容保护概述
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -103,7 +105,7 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 * 加密类型区分大小写。
 * 可以指定以下加密类型：
 
-  * **cenc**：适用于 PlayReady 或 Widevine （通用加密）
+  * **cenc**：对于 PlayReady 或 Widevine (常见的加密) 
   * **cbcs-aapl**：用于 FairPlay（AES CBC 加密）
   * **cbc**：用于 AES 信封加密
 

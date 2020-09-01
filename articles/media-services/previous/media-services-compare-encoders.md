@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f42361df438a434548b3bc9394c007ef8d4c6eb0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9f9124568144efba6aa7d715c2e33aaa32e2baf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038964"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258123"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比  
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 本主题对 **Media Encoder Standard** 和**媒体编码器高级工作流**的编码功能进行了比较。
 
@@ -73,7 +75,7 @@ ms.locfileid: "87038964"
 | Avid DNxHD（MXF 格式） |是 |是 |
 | DVCPro/DVCProHD（MXF 格式） |是 |是 |
 | JPEG2000 |是 |是 |
-| MPEG-2 （最多422个配置文件和高级别，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等变体 &reg; ） |最高支持 422 Profile |是 |
+| MPEG-2 (多达422个配置文件和高级别;包括变量，如 XDCAM、XDCAM HD、XDCAM IMX、CableLabs &reg; 和 D10)  |最高支持 422 Profile |是 |
 | MPEG-1 |是 |是 |
 | Windows Media 视频/VC-1 |是 |是 |
 | Canopus HQ/HQX |否 |否 |
@@ -92,8 +94,8 @@ ms.locfileid: "87038964"
 | --- | --- | --- |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |是 |
 | 杜比 &reg; E |否 |是 |
-| 杜比 &reg; 数字（e-ac3） |否 |是 |
-| 杜比 &reg; 数字加（E-e-ac3） |否 |是 |
+| 杜比 &reg; 数字 (e-ac3)  |否 |是 |
+| 杜比 &reg; 数字加 (E-e-ac3)  |否 |是 |
 | AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
 | MPEG Layer 2 |是 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |是 |
@@ -122,7 +124,7 @@ ms.locfileid: "87038964"
 | AVC（H.264；8 位；最高支持 High Profile、Level 5.2；4K Ultra HD；AVC Intra） |仅限 8 位 4:2:0 |是 |
 | HEVC（H.265；8 位和 10 位；）  |否 |是 |
 | Avid DNxHD（MXF 格式） |否 |是 |
-| MPEG-2 （最多422个配置文件和高级别，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等变体 &reg; ） |否 |是 |
+| MPEG-2 (多达422个配置文件和高级别;包括变量，如 XDCAM、XDCAM HD、XDCAM IMX、CableLabs &reg; 和 D10)  |否 |是 |
 | MPEG-1 |否 |是 |
 | Windows Media 视频/VC-1 |否 |是 |
 | JPEG 缩图创建 |是 |是 |
@@ -133,15 +135,15 @@ ms.locfileid: "87038964"
 | 输出音频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |是 |
-| 杜比 &reg; 数字（e-ac3） |否 |是 |
-| &reg;最高7.1 的杜比数字加（E-e-ac3） |否 |是 |
+| 杜比 &reg; 数字 (e-ac3)  |否 |是 |
+| 杜比 &reg; 数字加 (E-e-ac3) 高达7。1 |否 |是 |
 | AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
 | MPEG Layer 2 |否 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |否 |是 |
 | Windows Media 音频 |否 |是 |
 
 >[!NOTE]
->如果编码为 "杜比 &reg; 数字（e-ac3）"，则只能将输出写入 ISO 标准文件中。
+>如果编码为杜比 &reg; 数字 (e-ac3) ，则输出只能写入 ISO 文件。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

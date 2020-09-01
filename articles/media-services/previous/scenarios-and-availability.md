@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542372"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259172"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -215,7 +217,7 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 |Azure 媒体动作检测器|预览|全部|
 |Azure 媒体 OCR|预览|全部|
 |Azure 媒体编修器|GA|全部|
-|Azure 媒体视频缩略图|预览|All|
+|Azure 媒体视频缩略图|预览|全部|
 
 ### <a name="protection"></a>保护
 

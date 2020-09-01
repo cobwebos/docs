@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7ef020298b66ce3b66f27bdd482ef7fc04a2504c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a55151ec70c27f18c9503235519d4dd2fcf5b64e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259653"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)

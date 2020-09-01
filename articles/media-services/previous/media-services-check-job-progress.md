@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2368108ab2a6c6799254e2846f566d71882ad1b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 591f69855204c4489eb3e9c6edb3900044dda2db
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021453"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258395"
 ---
-# <a name="monitor-job-progress-using-net"></a>使用 .NET 监视作业进度 
+# <a name="monitor-job-progress-using-net"></a>使用 .NET 监视作业进度
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)

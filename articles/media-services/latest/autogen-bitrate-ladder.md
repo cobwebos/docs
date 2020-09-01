@@ -3,7 +3,7 @@ title: 使用媒体服务中的标准编码器对视频进行编码 - Azure | Mi
 description: 本主题介绍如何基于输入分辨率和比特率，使用媒体服务中的标准编码器并通过自动生成的比特率阶梯对输入视频进行编码。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c5fb04597ec274eaf2b4a4e7a5e2b96f1816f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60733311"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258820"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>使用自动生成的比特率阶梯进行编码
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>概述
 

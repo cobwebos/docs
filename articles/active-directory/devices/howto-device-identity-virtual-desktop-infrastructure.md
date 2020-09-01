@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604383"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259347"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
@@ -68,7 +68,7 @@ ms.locfileid: "88604383"
 
 <sup>4</sup> **托管**标识基础结构环境表示一个环境，该环境的 Azure AD 为使用[密码哈希同步 (PHS) ](../hybrid/whatis-phs.md)或通过[无缝单一登录](../hybrid/how-to-connect-sso.md) [ (PTA) ](../hybrid/how-to-connect-pta.md)部署的标识提供者。
 
-<sup>5</sup> **Windows 当前的非持久性支持** 需要额外考虑，如下面的指南部分中所述。
+<sup>5</sup> **Windows 当前的非持久性支持** 需要额外考虑，如下面的指南部分中所述。 此方案需要 Windows 10 1803、Windows Server 2019 或 Windows Server (半年通道) 从版本1803开始
 
 <sup>6</sup> **对 Windows 下级级别的非持久性支持** 需要额外考虑，如下面的指南部分中所述。
 

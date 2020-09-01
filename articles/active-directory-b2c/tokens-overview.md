@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482577"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258429"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
 
@@ -97,7 +97,7 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 ## <a name="pass-through"></a>直通
 
-用户旅程开始时，Azure AD B2C 会从标识提供者处收到一个访问令牌。 Azure AD B2C 使用该令牌来检索有关用户的信息。 [在用户流中启用声明](idp-pass-through-user-flow.md)或[在自定义策略中定义声明](idp-pass-through-custom.md)即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。 应用程序必须使用建议的[用户流](user-flow-versions.md)，才能利用将令牌作为声明进行传递。
+用户旅程开始时，Azure AD B2C 会从标识提供者处收到一个访问令牌。 Azure AD B2C 使用该令牌来检索有关用户的信息。 [在用户流中启用声明](idp-pass-through-user-flow.md)或[在自定义策略中定义声明](idp-pass-through-custom.md)即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。 应用程序必须使用建议的 [用户流](user-flow-versions.md) ，才能利用将令牌作为声明进行传递。
 
 Azure AD B2C 当前仅支持传递 OAuth 2.0 标识提供者（包括 Facebook 和 Google）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
@@ -119,7 +119,7 @@ JWT 包含三段：标头、主体和签名。   签名段可用于验证令牌�
 }
 ```
 
-**alg** 声明的值是用来为令牌签名的算法。 **kid** 声明的值是用来为令牌签名的公钥。 在任何给定时间，Azure AD B2C 都可使用一组公钥-私钥对中的任意一个对令牌签名。 Azure AD B2C 定期轮换可能一组的密钥。 应将应用程序编写成自动处理这些密钥更改。 对 Azure AD B2C 所用公钥的更新进行检查的合理频率为每 24 小时一次。
+**alg** 声明的值是用来为令牌签名的算法。 **kid** 声明的值是用来为令牌签名的公钥。 在任何给定时间，Azure AD B2C 都可使用一组公钥-私钥对中的任意一个对令牌签名。 Azure AD B2C 定期轮换可能一组的密钥。 应将应用程序编写成自动处理这些密钥更改。 对 Azure AD B2C 所用公钥的更新进行检查的合理频率为每 24 小时一次。 若要处理意外的密钥更改，应编写你的应用程序，以便在收到意外的 **儿童** 值时重新检索公钥。
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点。 使用此终结点，应用程序可以在运行时请求有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 Azure AD B2C 租户针对策略包含一个 JSON 元数据文档。 元数据文档是包含多条有用信息的 JSON 对象。 元数据包含 **jwks_uri**，它提供用于对令牌签名的公钥集位置。 在此处提供该位置，但最好使用元数据文档并分析 **jwks_uri** 来动态提取位置：
 

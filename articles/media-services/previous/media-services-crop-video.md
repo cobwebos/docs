@@ -1,6 +1,6 @@
 ---
 title: 如何使用 Media Encoder Standard 裁剪视频 - Azure | Microsoft Docs
-description: 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 本文演示如何通过 Media Encoder Standard 来裁剪视频。
+description: 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 本文演示如何使用 Media Encoder Standard 裁剪视频。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,22 +14,24 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 87348899a70d45fbfbce805bf2169f9f5e4e3f3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4264d1c0d83f14da02b26107d336521250fcf13b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956757"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257851"
 ---
-# <a name="crop-videos-with-media-encoder-standard"></a>使用 Media Encoder Standard 裁剪视频  
+# <a name="crop-videos-with-media-encoder-standard"></a>使用 Media Encoder Standard 裁剪视频
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 可以使用 Media Encoder Standard (MES) 裁剪输入视频。 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 下图可帮助说明该过程。
 
 ![裁剪视频](./media/media-services-crop-video/media-services-crop-video01.png)
 
-假设作为输入的视频的分辨率为 1920x1080 像素（16:9 纵横比），不过因为左侧和右侧有黑色长条（圆柱框），导致包含活动视频的区域只有 4:3 窗口或 1440x1080 像素。 可以使用 MES 裁剪或去掉黑色长条，并编码 1440x1080 区域。
+假设作为输入的视频的分辨率为 1920x1080 像素（16:9 纵横比），不过因为左侧和右侧有黑色长条（圆柱框），导致包含活动视频的区域只有 4:3 窗口或 1440x1080 像素。 用户可以使用 MES 裁剪或去掉黑色长条，并编码 1440x1080 区域。
 
-MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪参数适用于原始输入视频。 编码是后续阶段，因此，宽度/高度设置适用于*经过预先处理的*视频，而非原始视频。 在设计预设值时，需要执行以下操作：(a) 根据原始输入视频选择裁剪参数；(b) 根据裁剪后的视频选择编码设置。 如果编码设置与裁剪后的视频不匹配，输出会不如预期。
+MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪参数适用于原始输入视频。 编码是后续阶段，因此，宽度/高度设置适用于 *经过预先处理* 的视频，而非原始视频。 在设计预设值时，需要执行以下操作：(a) 根据原始输入视频选择裁剪参数；(b) 根据裁剪后的视频选择编码设置。 如果编码设置与裁剪后的视频不匹配，输出会不如预期。
 
 [以下](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)主题说明如何使用 MES 创建编码作业，以及如何为编码任务指定自定义预设值。 
 
@@ -130,7 +132,7 @@ MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪�
 ```
 
 ## <a name="restrictions-on-cropping"></a>裁剪的限制
-裁剪功能仅供手动操作。 需要将输入视频加载到合适的编辑工具中，以便选择感兴趣的帧、定位光标以确定裁剪矩形的偏移量、确定为该特定视频调整的编码预设值等。此功能并不旨在实现：自动检测和删除输入视频中的黑色黑边/黑边边框。
+裁剪功能仅供手动操作。 需要将输入视频加载到合适的编辑工具中，以便选择感兴趣的帧、定位光标以确定裁剪矩形的偏移量，以此确定针对该特定视频调整的编码预设值等。此功能并非是用来实现诸如自动检测及删除输入视频黑边之类的操作的。
 
 裁剪功能受到以下限制。 如果不符合以下情况，编码任务可能会失败或生成非预期的输出。
 

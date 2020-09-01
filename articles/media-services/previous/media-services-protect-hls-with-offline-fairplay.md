@@ -16,14 +16,16 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df84761edf605f1dda087569f95749e5b9c5c7b6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021096"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259704"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
+# <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
 > * [第 3 版](../latest/offline-fairplay-for-ios.md)

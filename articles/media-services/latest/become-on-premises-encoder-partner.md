@@ -5,17 +5,19 @@ services: media-services
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/02/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af6a7fc988271fc350ecc6e8be19742ede8ecee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298625"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258633"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何验证本地实时传送视频流编码器
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 作为 Azure 媒体服务本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来推广你的产品。 若要成为本地编码器合作伙伴，必须验证本地编码器与媒体服务的兼容性。 为此，请完成以下验证。
 

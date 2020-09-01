@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d3bf8b43bc12a2a8a193ea2708ab1668235edde
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f7a40cb72e1ae58f7962c4c8b80195a82ebdc5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047577"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259262"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本文包含 Postman  集合的定义，该集合包含调用 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman  以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 

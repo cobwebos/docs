@@ -15,14 +15,16 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a4f436f6f5542db289ed219a240a68db5c2065b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021521"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258582"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概述
 
@@ -471,7 +473,7 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文档讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、媒体服务和媒体播放器。
 

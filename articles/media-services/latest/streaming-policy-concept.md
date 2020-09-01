@@ -3,20 +3,20 @@ title: Azure 媒体服务中的流式处理策略 | Microsoft Docs
 description: 本文介绍何为流式处理策略以及 Azure 媒体服务如何使用这些终结点。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
-ms.author: juliako
-ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: inhenkel
+ms.openlocfilehash: 529d27a831945123e1d2eda225e40864a81ee18e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544007"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257562"
 ---
 # <a name="streaming-policies"></a>流式处理策略
 

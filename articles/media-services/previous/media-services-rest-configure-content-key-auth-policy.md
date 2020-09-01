@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 43a63a47b5973820bd0cc5376ec0f0e9e54a245d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9f7910219c34c811cc49f530af145c6e1589711f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010199"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257018"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概述
@@ -36,7 +39,7 @@ ms.locfileid: "89010199"
 
 媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 - [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 

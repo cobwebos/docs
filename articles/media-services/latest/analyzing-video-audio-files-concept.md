@@ -4,26 +4,28 @@ titleSuffix: Azure Media Services
 description: 了解如何使用 Azure 媒体服务中的 AudioAnalyzerPreset 和 VideoAnalyzerPreset 分析音频与视频内容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/30/2020
-ms.author: juliako
-ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053471"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258888"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
-在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 若要了解何时使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-若要使用媒体服务 v3 预设来分析内容，请创建一个**转换**，并提交使用以下预设之一的**作业**： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
+在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 若要了解何时使用视频索引器与媒体服务分析器预设，请查看 [比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
+
+若要使用媒体服务 v3 预设来分析内容，请创建一个 **转换** ，并提交使用以下预设之一的 **作业** ： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
 > 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
@@ -70,7 +72,7 @@ ms.locfileid: "87053471"
 |名称|说明|
 |---|---|
 |id|行 ID。|
-|text|脚本本身。|
+|文本|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
@@ -108,7 +110,7 @@ ms.locfileid: "87053471"
 |名称|说明|
 |---|---|
 |id|OCR 行 ID。|
-|text|OCR 文本。|
+|文本|OCR 文本。|
 |confidence|识别置信度。|
 |语言|OCR 语言。|
 |instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
@@ -153,7 +155,7 @@ ms.locfileid: "87053471"
 |id|人脸 ID。|
 |name|人脸姓名。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
-|说明|名人的说明。 |
+|description|名人的说明。 |
 |thumbnailId|该人脸的缩略图 ID。|
 |knownPersonId|内部 ID（如果是已知人员）。|
 |referenceId|必应 ID（如果是必应名人）。|
@@ -250,7 +252,7 @@ ms.locfileid: "87053471"
 
 ### <a name="statistics"></a>statistics
 
-|名称|描述|
+|名称|说明|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -359,7 +361,7 @@ ms.locfileid: "87053471"
 |名称|说明|
 |---|---|
 |id|关键字 ID。|
-|text|关键字文本。|
+|文本|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
 |instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|

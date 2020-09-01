@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: 本文介绍如何使用 Azure 媒体服务对视频和音频进行编码。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e4db27f268d0d49696fd2a7dacc200942fa4477
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053344"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258973"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒体服务编码视频和音频
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 媒体服务中的术语“编码”适用于将包含数字视频和/或音频的文件从一种标准格式转换为另一种标准格式的过程，其目的是 (a) 减小文件大小，和/或 (b) 生成与各种设备和应用兼容的格式。 此过程也称为视频压缩或转码。 有关概念的进一步讨论，请参阅[数据压缩](https://en.wikipedia.org/wiki/Data_compression)及[什么是编码和转码？](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx)。
 
@@ -98,10 +100,10 @@ ms.locfileid: "87053344"
 
 - **EncoderNamedPreset.AACGoodQualityAudio**：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
 - **EncoderNamedPreset.AdaptiveStreaming**（推荐）：有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
-- **EncoderNamedPreset. ContentAwareEncoding**：为内容感知编码公开预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码](content-aware-encoding.md)。
+- **EncoderNamedPreset.ContentAwareEncoding**：公开内容感知编码的预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码](content-aware-encoding.md)。
 
   > [!NOTE]
-  > 请确保使用**ContentAwareEncoding** not ContentAwareEncodingExperimental。
+  > 请确保使用 ContentAwareEncoding 而不使用 ContentAwareEncodingExperimental。
 - **EncoderNamedPreset.H264MultipleBitrate1080p**：生成一组 8 GOP 对齐的 MP4 文件（范围从 6000 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 1080p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrate720p**：生成一组 6 GOP 对齐的 MP4 文件（范围从 3400 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 720p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrateSD**：生成一组 5 GOP 对齐的 MP4 文件（范围从 1600 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 480p，之后下降到 360p。
@@ -136,7 +138,7 @@ ms.locfileid: "87053344"
 
 ## <a name="preset-schema"></a>预设架构
 
-在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的 "架构" 定义。 你还可以在[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)， [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) （或其他媒体服务 v3 SDK 参考文档）中查看预设定义（如**StandardEncoderPreset**）。
+在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的“架构”定义。 也可以在 [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)（或其他媒体服务 v3 SDK 参考文档）中查看预设定义（例如 **StandardEncoderPreset**）。
 
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 
@@ -144,7 +146,7 @@ ms.locfileid: "87053344"
 
 ## <a name="billing"></a>计费
 
-媒体服务不会对已取消或误码的作业计费。 例如，已达到50% 进度且已取消的作业不会按作业分钟数50% 计费。 只需为已完成的作业付费。
+媒体服务不会对已取消或已出错的作业计费。 例如，进度已达到 50% 而被取消的作业不会按作业时间的 50% 计费。 你仅为已完成作业付费。
 
 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
@@ -154,7 +156,7 @@ ms.locfileid: "87053344"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用媒体服务进行上传、编码和流式](stream-files-tutorial-with-api.md)处理。
+* [使用媒体服务上传、编码和流式传输](stream-files-tutorial-with-api.md)。
 * [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)。
 * [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)。
 * [构建自定义预设，以确定特定方案或设备要求](customize-encoder-presets-how-to.md)。

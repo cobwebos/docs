@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 73e92fa505a994cc5cc2fdb3a297dfd653a596a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071822"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257052"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户 
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-upload-files.md)
@@ -30,30 +32,30 @@ ms.locfileid: "87071822"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 有关使用门户的最新上传文件，请参阅[使用门户上传、编码和流式传输内容](../latest/manage-assets-quickstart.md)。<br/>另外，请查看：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 有关通过门户最新上传的文件，请参阅[使用门户上传、编码和流式传输内容](../latest/manage-assets-quickstart.md)。<br/>另请参阅：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 在 Azure 媒体服务中，可以将数字文件上传到资产。 资产可包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 媒体服务针对文件处理设置了一个最大文件大小。 若要详细了解文件大小限制，请参阅[媒体服务配额和限制](media-services-quotas-and-limitations.md)。
 
-要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
 
 ## <a name="upload-files"></a>上传文件
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 选择 "**设置**  >  **资产**"。 然后选择“上传”按钮****。
+2. 选择“设置” > “资产”。 然后选择“上传”按钮。
    
     ![上传文件](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    此时会显示“上传视频资产”窗口****。
+    此时会显示“上传视频资产”窗口。
    
    > [!NOTE]
    > 媒体服务不会限制上传视频的文件大小。
  
-3. 在计算机上，转到要上传的视频。 选择视频，然后选择“确定”****。  
+3. 在计算机上，转到要上传的视频。 选择视频，然后选择“确定”。  
    
     上传开始。 可以在文件名下看到进度。  
 
-上传完成后，新资产列在“资产”**** 窗格中。 
+上传完成后，新资产列在“资产”窗格中。 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

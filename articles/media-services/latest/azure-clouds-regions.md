@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001343"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258650"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azure 政府、Azure德国、Azure 中国世纪互联中使用。 但是，并非所有媒体服务功能都可在所有 Azure 云中使用。 本文档概述了主要媒体服务 v3 组件的可用性。
 
@@ -36,7 +38,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="feature-availability-in-preview"></a>预览版中的功能可用性
 
-[LiveTranscription](live-transcription.md)在以下区域中提供：
+[LiveTranscription](live-transcription.md) 在以下区域中提供：
 
 - Southeast Asia
 - 西欧

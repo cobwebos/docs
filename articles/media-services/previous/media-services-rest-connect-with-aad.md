@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082726"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257137"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -124,7 +126,7 @@ ms.locfileid: "87082726"
 
 本部分演示如何使用 Postman 执行返回 JWT 持有者令牌（访问令牌）的 REST API****。 若要调用任何媒体服务 REST API，需要将“授权”标头添加到这些调用，并将“持有者 your_access_token”的值添加到每个调用（如本教程的下一部分中所示）**。 
 
-1. 打开**Postman**。
+1. 打开 **Postman**。
 2. 选择“POST”  。
 3. 使用以下格式输入包括租户名称的 URL：此租户名称应以“.onmicrosoft.com”结尾，此 URL 应以“oauth2/token”结尾********： 
 
@@ -166,8 +168,8 @@ ms.locfileid: "87082726"
 
 本部分演示如何使用 Postman 访问资产 API********。
 
-1. 打开**Postman**。
-2. 选择 "**获取**"。
+1. 打开 **Postman**。
+2. 选择 " **获取**"。
 3. 粘贴 REST API 终结点（例如，https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. 选择“授权”选项卡****。 
 5. 选择“持有者令牌”****。

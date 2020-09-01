@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 1ca1b8b453be433f7db428f3b256677b9945ce40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038896"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258021"
 ---
-# <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
+# <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -164,7 +166,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，并使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
-StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容交付网络（CDN）以进一步分发（Azure 媒体服务现在提供 Azure CDN 集成。）流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点 。 标准流式处理终结点适用于最消耗流的工作负荷。 
+StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容交付网络 (CDN) 以便进一步分发 (Azure 媒体服务现在提供 Azure CDN 集成。 ) 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点 。 标准流式处理终结点适用于最消耗流的工作负荷。 
 
 标准流式处理终结点适用于最消耗流的工作负荷。 标准流式处理终结点可以动态地将内容打包成 HLS、MPEG-DASH 和平滑流式处理，并针对 Microsoft PlayReady、Google Widevine、Apple Fairplay 和 AES128 进行动态加密，从而灵活地将内容传送到几乎所有设备。  它们还从很小的受众扩展到非常大的受众，并通过 Azure CDN 集成提供数千个并发查看器。 如果有高级工作负荷或者流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者希望控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单元（也称为高级流单元）。
 
@@ -200,7 +202,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 也可通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 TLS。  
 
 >[!NOTE]
->如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含 "origin.mediaservices.windows.net" （旧格式）的流式处理 Url 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 TLS 流式传输内容。
+>如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含 "origin.mediaservices.windows.net" 的流式处理 Url (旧格式) 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 TLS 流式传输内容。
 
 以下列表描述了不同的流格式并提供了示例：
 
@@ -214,19 +216,19 @@ http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = mpd-csf）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = mpd-csf) 
 
 * Apple HTTP 实时流 (HLS) V4
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=m3u8-aapl)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) 
 
 * Apple HTTP 实时流 (HLS) V3
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3-v3）
+http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3-v3) 
 
 ## <a name="additional-notes"></a>附加说明
 

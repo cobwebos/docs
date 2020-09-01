@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 78236a334b6c75f823819c70c0cdbb75bb30191d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086347"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257426"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
@@ -54,7 +56,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 * MXF、GXF 和 QuickTime 文件，其中的音频曲目具有交错的立体声或 5.1 示例
 
-or
+或
 
 * MXF、GXF 和 QuickTime 文件，其中的音频以独立 PCM 轨道的形式携带，但可以从文件元数据推导频道映射（到立体声或 5.1 的映射）
 
@@ -112,7 +114,7 @@ or
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md)
 
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)

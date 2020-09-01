@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180331"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259364"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
 
-- [使用 Azure CLI 添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-cli)
-- [使用 Azure 门户添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-portal)
-- [使用 Azure PowerShell 添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-powershell)。
+- [使用 Azure CLI 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-cli.md)
+- [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure PowerShell 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="using-conditional-access"></a>使用条件性访问
 
@@ -224,7 +224,7 @@ az role assignment create \
 > [!NOTE]
 > 可以保存。RDP 文件本地计算机上用于启动到虚拟机的远程桌面连接，而无需导航到 Azure 门户中的虚拟机概述页面并使用连接选项。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 ### <a name="troubleshoot-deployment-issues"></a>排查部署问题
 
@@ -339,7 +339,7 @@ az role assignment create \
 
 ![你的凭据不起作用](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-验证你用来启动远程桌面连接的 Windows 10 电脑是 Azure AD 联接的，或者是连接到你的 VM 加入同一 Azure AD 目录的混合 Azure AD。 有关设备标识的详细信息，请参阅 [什么是设备标识一](/azure/active-directory/devices/overview)文。
+验证你用来启动远程桌面连接的 Windows 10 电脑是 Azure AD 联接的，或者是连接到你的 VM 加入同一 Azure AD 目录的混合 Azure AD。 有关设备标识的详细信息，请参阅 [什么是设备标识一](./overview.md)文。
 
 > [!NOTE]
 > Windows 10 内部版本20H1 添加了对 Azure AD 已注册电脑的支持，以启动到 VM 的 RDP 连接。 当使用注册的 Azure AD (不 Azure AD 加入或混合 Azure AD 联接) PC 作为 RDP 客户端来发起到 VM 的连接时，必须以 AzureAD\UPn (格式输入凭据) 例如 AzureAD\john@contoso.com 。
@@ -367,4 +367,4 @@ az role assignment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
+有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](../fundamentals/active-directory-whatis.md)

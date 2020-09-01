@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: eea54d493a27373a682b361ab7138ae1fa527362
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: afee82b66f9803333e27f029ecb487a47ba5dd9e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873052"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259721"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：通过 Python 在 QnA Maker 中创建知识库
 
@@ -24,10 +24,10 @@ ms.locfileid: "87873052"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Python 3.7](https://www.python.org/downloads/)
-* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+* 您必须具有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ## <a name="create-a-knowledge-base-python-file"></a>创建知识库 Python 文件
 
@@ -37,7 +37,7 @@ ms.locfileid: "87873052"
 
 在 `create-new-knowledge-base-3x.py` 的顶部，添加以下行来向项目添加必需的依赖项：
 
-[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
 在上述必需的依赖项后，添加访问 QnA Maker 所必需的常量。 将 `<your-qna-maker-subscription-key>` 和 `<your-resource-name>` 的值替换为你自己的 QnA Maker 密钥和资源名称。
@@ -49,26 +49,26 @@ ms.locfileid: "87873052"
 * `<your-qna-maker-subscription-key>` - **密钥**是一个 32 字符的字符串，可以在“快速入门”页的 QnA Maker 资源上的 Azure 门户中使用。 这与预测终结点密钥不同。
 * `<your-resource-name>` - **资源名称**用于构造用于创作的创作终结点 URL，其格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。 这与用于查询预测终结点的 URL 不同。
 
-[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="constants":::
 
 ## <a name="add-the-kb-model-definition"></a>添加知识库模型定义
 
 在常量后，添加以下知识库模型定义。 模型将在定义后转换为字符串。
 
-[!code-python[Add the KB model definition](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=15-41 "Add the KB model definition")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="model":::
 
 ## <a name="add-supporting-function"></a>添加支持函数
 
 添加以下函数，用于以可读格式输出 JSON：
 
-[!code-python[Add supporting function](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=43-45 "Add supporting function")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="pretty":::
 
 ## <a name="add-function-to-create-kb"></a>添加函数以创建知识库
 
 添加以下函数，以发出用于创建知识库的 HTTP POST 请求。
 此 API 调用将在标头字段 **Location** 中返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。
 
-[!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="create_kb":::
 
 此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。
 
@@ -86,7 +86,7 @@ ms.locfileid: "87873052"
 
 以下函数检查 URL 路由末尾的操作 ID 中发送的创建状态。 对 `check_status` 的调用位于主 _while_ 循环内。
 
-[!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="get_status":::
 
 此 API 调用返回包含操作状态的 JSON 响应：
 
@@ -116,7 +116,7 @@ ms.locfileid: "87873052"
 ## <a name="add-main-code-block"></a>添加主代码块
 以下循环定期轮询创建操作状态，直到该操作完成。
 
-[!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="main":::
 
 ## <a name="build-and-run-the-program"></a>生成并运行程序
 

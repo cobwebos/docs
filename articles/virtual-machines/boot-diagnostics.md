@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: aca41edeb159a65b27ecbbc27ae568f8bc94cebe
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d425953b278a98af35a172d8777ab758db52709e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181861"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257749"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -36,6 +36,7 @@ ms.locfileid: "89181861"
 ## <a name="limitations"></a>限制
 - 启动诊断仅适用于 Azure 资源管理器 Vm。 
 - 启动诊断不支持高级存储帐户，如果高级存储帐户用于启动诊断，用户将 `StorageAccountTypeNotSupported` 在启动 VM 时收到错误。 
+- Azure 串行控制台当前与用于启动诊断的托管存储帐户不兼容。 详细了解 [Azure 串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

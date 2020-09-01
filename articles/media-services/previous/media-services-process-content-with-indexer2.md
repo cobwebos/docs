@@ -15,14 +15,16 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 82c69d67d261c493d89f259720e1f903824d6ef8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34f71242b5d9c607d0b27dca3abd3c441ddad36e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013599"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259752"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 预览版为媒体文件编制索引
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 将停用 **Azure Media Indexer 2** 媒体处理器。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。 [Azure 媒体服务视频索引器](../video-indexer/index.yml) 将替换此旧媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
