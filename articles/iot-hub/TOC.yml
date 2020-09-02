@@ -84,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: 测试设备连接性
       href: tutorial-connectivity.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: TLS 支持
@@ -461,6 +456,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: 功能和 API 停用
       items:
         - name: 操作监视

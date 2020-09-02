@@ -141,9 +141,6 @@
           items:
             - name: Azure Monitor
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 映像
@@ -432,7 +429,7 @@
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: migration-classic-resource-manager-community-tools.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 使用映像
       displayName: 'SIG, AMI, image'
@@ -691,7 +688,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 常见问题
+            - name: 常见问题解答
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -714,7 +711,7 @@
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Lines 资源日志格式
                       href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics 代理
               items:
@@ -750,7 +747,7 @@
                       href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: 自定义字段
                       href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: Log Analytics VM 扩展
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -956,7 +953,7 @@
           href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 导出扩展
           href: ../extensions/export-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 故障排除
+        - name: 疑难解答
           href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure 磁盘加密
           href: ../extensions/azure-disk-enc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -1024,7 +1021,7 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-- name: 故障排除
+- name: 疑难解答
   href: ../troubleshooting/index.yml
 - name: 参考
   items:
@@ -1047,6 +1044,9 @@
     - name: 资源管理器模板
       displayName: ARM
       href: /azure/templates/microsoft.compute/allversions
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: 资源
   items:
     - name: 问答
@@ -1068,5 +1068,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
