@@ -4,14 +4,15 @@ description: 可以快速访问有关 Azure SignalR 服务的常见问题解答�
 author: sffamily
 ms.service: signalr
 ms.topic: overview
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 9aa510a055cb76b30508cb98a25cd9c919eb117d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853274"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928303"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 

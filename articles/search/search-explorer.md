@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488199"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929782"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入门：在门户中使用“搜索浏览器”来运行查询
 
 “搜索浏览器”是一种内置查询工具，用于针对 Azure 认知搜索中的搜索索引运行查询。 利用此工具，可以轻松学习查询语法，测试查询或筛选器表达式，或者通过验证索引中是否存在较新的内容来确认数据刷新。
 
-本快速入门使用现有索引来演示搜索浏览器。 请求是使用[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 表述的，响应以 JSON 文档的形式返回。
+本快速入门使用现有索引来演示搜索浏览器。 请求是使用[搜索 REST API](/rest/api/searchservice/) 表述的，响应以 JSON 文档的形式返回。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -133,7 +133,7 @@ Azure 认知搜索根据搜索排名返回排名前 50 的匹配项。 若要获
 
    ![Orderby 表达式](./media/search-explorer/search-explorer-example-ordery.png "更改排序顺序")
 
-“$filter”和“$orderby”表达式都是 OData 构造 。 有关详细信息，请参阅 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
+“$filter”和“$orderby”表达式都是 OData 构造 。 有关详细信息，请参阅 [Filter OData syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
 
 <a name="start-search-explorer"></a>
 
@@ -147,7 +147,7 @@ Azure 认知搜索根据搜索排名返回排名前 50 的匹配项。 若要获
 
 + 自由格式查询类似于在商用 Web 浏览器中输入的内容，可用于测试最终用户体验。 例如，假设有一个内置的房地产示例索引，可以输入“华盛顿湖西雅图公寓”，再使用 Ctrl-F 在搜索结果中查找字词。 
 
-+ 查询和筛选器表达式使用 Azure 认知搜索支持的语法来表达。 默认为[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)，但可选择使用[完整 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 进行更强大的查询。 [筛选表达式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)采用的是 OData 语法。
++ 查询和筛选器表达式使用 Azure 认知搜索支持的语法来表达。 默认为[简单语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)，但可选择使用[完整 Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 进行更强大的查询。 [筛选表达式](/rest/api/searchservice/odata-expression-syntax-for-azure-search)采用的是 OData 语法。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -159,7 +159,7 @@ Azure 认知搜索根据搜索排名返回排名前 50 的匹配项。 若要获
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解查询结构和语法，请使用 Postman 或某个等效工具创建可利用该 API 的更多部分的查询表达式。 [搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 对于学习和探索特别有用。
+若要详细了解查询结构和语法，请使用 Postman 或某个等效工具创建可利用该 API 的更多部分的查询表达式。 [搜索 REST API](/rest/api/searchservice/) 对于学习和探索特别有用。
 
 > [!div class="nextstepaction"]
 > [使用 Postman 创建基本查询](search-query-simple-examples.md)

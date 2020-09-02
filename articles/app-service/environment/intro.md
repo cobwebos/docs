@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: e9bd97dc4afe0937ebd0553117640e008a72722e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770632"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961741"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -61,13 +61,13 @@ ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的�
 
 ## <a name="virtual-network-support"></a>虚拟网络支持 ##
 
-ASE 功能直接将 Azure 应用服务部署到客户的 Azure 资源管理器虚拟网络。 若要了解有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络常见问题解答](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/)。 ASE 始终存在于虚拟网络之中，更准确地说，是在虚拟网络的子网内。 可使用虚拟网络的安全功能为应用控制入站和出站网络通信。
+ASE 功能直接将 Azure 应用服务部署到客户的 Azure 资源管理器虚拟网络。 若要了解有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md)。 ASE 始终存在于虚拟网络之中，更准确地说，是在虚拟网络的子网内。 可使用虚拟网络的安全功能为应用控制入站和出站网络通信。
 
 ASE 既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
 
 [网络安全组][NSGs]将入站网络通信限制为 ASE 所在的子网。 可以在上游设备和服务（例如 WAF 和网络 SaaS 提供程序）后使用 NSG 来运行应用。
 
-应用还经常需要访问公司资源，例如内部数据库和 Web 服务。 如果在包含本地网络的 VPN 连接的虚拟网络中部署 ASE，ASE 中的应用可以访问本地资源。 无论 VPN 是[站点到站点](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) VPN，还是 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) VPN，都可以使用此功能。
+应用还经常需要访问公司资源，例如内部数据库和 Web 服务。 如果在包含本地网络的 VPN 连接的虚拟网络中部署 ASE，ASE 中的应用可以访问本地资源。 无论 VPN 是[站点到站点](../../vpn-gateway/vpn-gateway-multi-site.md) VPN，还是 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) VPN，都可以使用此功能。
 
 有关如何在虚拟网络和本地网络中使用 ASE 的详细信息，请参阅[应用服务环境网络注意事项][ASENetwork]。
 
@@ -95,12 +95,12 @@ ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配�
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/waf-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

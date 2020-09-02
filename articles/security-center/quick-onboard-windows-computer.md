@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519756"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013735"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机加入安全中心
 载入 Azure 订阅之后，可以通过预配 Log Analytics 代理为在 Azure 外部（例如，在本地或在其他云中）运行的资源启用安全中心。
@@ -74,7 +74,7 @@ ms.locfileid: "86519756"
 
 完成后，**Log Analytics 代理**会显示在“控制面板”中。 可以在该处检查配置，并验证代理是否已连接。
 
-有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 
 现在，可以从单个位置监视 Azure VM 和非 Azure 计算机了。 在“计算”下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
 

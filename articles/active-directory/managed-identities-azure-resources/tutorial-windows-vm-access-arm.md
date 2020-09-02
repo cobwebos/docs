@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识访问 Azure 资源管理器 - Windows - Azure
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure Resource Manager 的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6edd926c0a91519f4c75228d8230c71ff7b96442
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018819"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263056"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -51,7 +51,7 @@ ms.locfileid: "87018819"
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用 Azure 资源管理器 
 
-在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/)下载。 
+在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](/powershell/azure/)下载。 
 
 1.  在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。 
 2.  输入创建 Windows VM 时添加的用户名和密码。 
@@ -95,5 +95,4 @@ ms.locfileid: "87018819"
 在本快速入门中，你已学习了如何使用系统分配的标识来访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)
-
+>[Azure 资源管理器](../../azure-resource-manager/management/overview.md)

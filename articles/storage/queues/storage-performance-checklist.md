@@ -8,12 +8,13 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75750498"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008397"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>队列存储的性能与可伸缩性查检表
 
@@ -183,7 +184,7 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 ## <a name="use-update-message"></a>使用“更新消息”
 
-可以使用“更新消息”操作来增大不可见性超时或更新消息的状态信息。  与作业每完成一步就将其从一个队列传到下一个队列的工作流相比，使用“更新消息”可能更高效。  应用程序可将作业状态保存到消息，然后可以继续工作，而不必在作业的每一步完成时，为了执行作业的下一步而将消息重新排队。 请注意，每个“更新消息”操作将计入到可伸缩性目标。 
+可以使用“更新消息”操作来增大不可见性超时或更新消息的状态信息。**** 与作业每完成一步就将其从一个队列传到下一个队列的工作流相比，使用“更新消息”可能更高效。**** 应用程序可将作业状态保存到消息，然后可以继续工作，而不必在作业的每一步完成时，为了执行作业的下一步而将消息重新排队。 请注意，每个“更新消息”操作将计入到可伸缩性目标。****
 
 ## <a name="application-architecture"></a>应用程序体系结构
 

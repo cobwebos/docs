@@ -3,7 +3,7 @@ title: 使用模板在 Azure VM 上配置托管标识 - Azure AD
 description: 分步说明如何使用 Azure 资源管理器模板在 Azure VM 上配置 Azure 资源的托管标识。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7970f321f301cc394732b1557d65974e7902574
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18d38d3ab8cbbfb1f409b368cddc1df854baa8e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266878"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -41,7 +41,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    - 使用 [Azure 市场中的自定义模板](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，这样可以从头开始创建模板，也可以在现有常见模板或[快速启动模板](https://azure.microsoft.com/documentation/templates/)的基础之上操作。
    - 派生自现有资源组，具体方法是从[原始部署](../../azure-resource-manager/templates/export-template-portal.md)或[当前部署](../../azure-resource-manager/templates/export-template-portal.md)导出模板。
-   - 使用本地 [JSON 编辑器（例如 VS Code）](../../azure-resource-manager/resource-manager-create-first-template.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
+   - 使用本地 [JSON 编辑器（例如 VS Code）](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
    - 使用 Visual Studio [Azure 资源组项目](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)同时创建和部署模板。  
 
 无论选择哪种方法，在初始部署和重新部署期间，模板语法都是相同的。 在新的或现有 VM 上启用系统或用户分配的托管标识所采用的方式是相同的。 此外，默认情况下，Azure 资源管理器还会对部署执行[增量更新](../../azure-resource-manager/templates/deployment-modes.md)。
@@ -52,7 +52,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>在创建 Azure VM 的过程中或在现有 VM 上启用系统分配的托管标识
 
-若要在 VM 上启用系统分配的托管标识，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
+若要在 VM 上启用系统分配的托管标识，你的帐户需要[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
@@ -66,7 +66,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 
 
-3. 完成后，应将以下部分添加到 `resource` 模板的部分，该部分应如下所示：
+3. 完成后，以下各节应当会添加到模板的 `resource` 节，该节应当呈现如下：
 
    ```JSON
    "resources": [
@@ -105,13 +105,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>向 VM 的系统分配的托管标识分配一个角色
 
-在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限  。
+在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限。
 
-若要为 VM 的系统分配标识分配角色，你的帐户需要[用户访问管理员](/azure/role-based-access-control/built-in-roles#user-access-administrator)角色分配。
+若要为 VM 的系统分配标识分配角色，你的帐户需要[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
-2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限  。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
+2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
 
    在 `parameters` 部分下添加以下代码：
 
@@ -151,7 +151,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>从 Azure VM 中禁用系统分配的托管标识
 
-若要从 VM 中删除系统分配的托管标识，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
+若要从 VM 中删除系统分配的托管标识，你的帐户需要[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
@@ -165,7 +165,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    如果 `apiVersion` 为 `2017-12-01` 并且 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及用户分配的托管标识的 `identityIds` 数组。  
 
-下面的示例演示如何从没有用户分配的托管标识的 VM 中删除系统分配的托管标识：
+以下示例演示如何从没有用户分配的托管标识的 VM 删除系统分配的托管标识：
 
  ```JSON
  {
@@ -188,7 +188,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>向 Azure VM 分配用户分配的托管标识
 
-若要将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)和[托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
+若要将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)和[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
 
 1. 在 `resources` 元素下添加以下条目，以向 VM 分配用户分配的托管标识。  请务必将 `<USERASSIGNEDIDENTITY>` 替换为你创建的用户分配的托管标识的名称。
 
@@ -230,7 +230,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    }
    ```
 
-3. 完成后，应将以下部分添加到 `resource` 模板的部分，该部分应如下所示：
+3. 完成后，以下各节应当会添加到模板的 `resource` 节，该节应当呈现如下：
 
    **Microsoft.Compute/virtualMachines API 版本 2018-06-01**    
 
@@ -312,7 +312,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>从 Azure VM 中删除用户分配的托管标识
 
-若要从 VM 中删除用户分配的标识，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)角色分配。 无需其他 Azure AD 目录角色分配。
+若要从 VM 中删除用户分配的标识，你的帐户需要[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色分配。 无需其他 Azure AD 目录角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
@@ -336,13 +336,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `useraAssignedIdentities` 字典中删除。
 
-   如果你有系统分配的托管标识，请将它保留在 `type` 值下的值中 `identity` 。
+   如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
 
    **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
 
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `identityIds` 数组中删除。
 
-   如果你有系统分配的托管标识，请将它保留在 `type` 值下的值中 `identity` 。
+   如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
 
 ## <a name="next-steps"></a>后续步骤
 

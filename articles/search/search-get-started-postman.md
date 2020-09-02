@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510906"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929765"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [门户](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-本文介绍如何使用 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice) 和用于发送和接收请求的 API 客户端以交互方式构建 REST API 请求。 在编写任何代码之前，可以使用 API 客户端按照这些说明发送请求和查看响应。
+本文介绍如何使用 [Azure 认知搜索 REST API](/rest/api/searchservice) 和用于发送和接收请求的 API 客户端以交互方式构建 REST API 请求。 在编写任何代码之前，可以使用 API 客户端按照这些说明发送请求和查看响应。
 
 本文使用 Postman 应用程序。 如果偏爱使用预定义的请求，则可以[下载并导入 Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)。 
 
@@ -74,7 +74,7 @@ Content-Type: application/json
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-在 Azure 认知搜索中，通常会先创建索引，然后再连同数据一起加载索引。 本任务将使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。 
+在 Azure 认知搜索中，通常会先创建索引，然后再连同数据一起加载索引。 本任务将使用[创建索引 REST API](/rest/api/searchservice/create-index)。 
 
 需扩展 URL 以包含 `hotels` 索引名称。
 
@@ -128,7 +128,7 @@ Content-Type: application/json
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-创建索引和填充索引是分开的步骤。 在 Azure 认知搜索中，索引包含所有可搜索的数据。 在此场景中，数据以 JSON 文档的形式提供。 本任务将使用[添加、更新或删除文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 
+创建索引和填充索引是分开的步骤。 在 Azure 认知搜索中，索引包含所有可搜索的数据。 在此场景中，数据以 JSON 文档的形式提供。 本任务将使用[添加、更新或删除文档 REST API](/rest/api/searchservice/addupdate-or-delete-documents)。 
 
 需扩展 URL 以包含 `docs` 集合与 `index` 操作。
 
@@ -236,12 +236,12 @@ Content-Type: application/json
 如果收到 207，则指示至少有一个文档无法上传。 如果收到 404，则表示请求的标头或正文有语法错误：请验证是否已更改终结点，使之包括 `/docs/index`。
 
 > [!Tip]
-> 对于所选数据源，可以选择备用的 ** indexer 方法，以便简化并减少进行索引操作所需的代码量。 有关详细信息，请参阅 [Indexer operations](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)（Indexer 操作）。
+> 对于所选数据源，可以选择备用的 ** indexer 方法，以便简化并减少进行索引操作所需的代码量。 有关详细信息，请参阅 [Indexer operations](/rest/api/searchservice/indexer-operations)（Indexer 操作）。
 
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-现在，索引和文档集已加载，可以使用[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 针对它们发出查询了。
+现在，索引和文档集已加载，可以使用[搜索文档 REST API](/rest/api/searchservice/search-documents) 针对它们发出查询了。
 
 需扩展 URL，以包含使用搜索运算符指定的查询表达式。
 
@@ -278,7 +278,7 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 ```
 
 ## <a name="get-index-properties"></a>获取索引属性
-还可以使用[获取统计信息](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)来查询文档计数和索引大小： 
+还可以使用[获取统计信息](/rest/api/searchservice/get-index-statistics)来查询文档计数和索引大小： 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30

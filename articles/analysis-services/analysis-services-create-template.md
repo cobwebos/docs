@@ -6,14 +6,14 @@ ms.author: owend
 tags: azure-resource-manager
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641900"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230766"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>快速入门：创建服务器 - ARM 模板
 
@@ -105,6 +105,5 @@ Write-Host "Press [ENTER] to continue..."
 
 在本快速入门中，你已使用 ARM 模板创建了新的资源组和 Azure Analysis Services 服务器资源。 在使用模板创建服务器资源后，请考虑执行以下操作：
 
-- [快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
-- [从门户中添加示例模型](analysis-services-create-sample-model.md)
-- [配置服务器管理员和用户角色](tutorials/analysis-services-tutorial-roles.md)
+> [!div class="nextstepaction"]
+> [快速入门：配置服务器防火墙 - 门户](analysis-services-qs-firewall.md)   

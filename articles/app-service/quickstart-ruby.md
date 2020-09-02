@@ -6,19 +6,19 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083434"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961323"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>在应用服务中创建 Ruby on Rails 应用
 
-[Linux 上的 Azure 应用服务](overview.md#app-service-on-linux)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程介绍了如何使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 将 Ruby on Rails 应用部署到 Linux 上的应用服务。
+[Linux 上的 Azure 应用服务](overview.md#app-service-on-linux)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程介绍了如何使用 [Cloud Shell](../cloud-shell/overview.md) 将 Ruby on Rails 应用部署到 Linux 上的应用服务。
 
 > [!NOTE]
-> Ruby 开发堆栈目前仅支持 Ruby on Rails。 如果想要使用不同的平台（如 Sinatra），或者想要使用不受支持的 Ruby 版本，则需要[在自定义容器中运行它](containers/quickstart-docker-go.md)。
+> Ruby 开发堆栈目前仅支持 Ruby on Rails。 如果想要使用不同的平台（如 Sinatra），或者想要使用不受支持的 Ruby 版本，则需要[在自定义容器中运行它](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux)。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 

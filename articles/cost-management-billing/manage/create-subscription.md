@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: df303801daba0509177e48565b3ddbe7674013e8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689960"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925039"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
@@ -73,7 +73,7 @@ ms.locfileid: "88689960"
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>以编程方式创建另一个 Azure 订阅
 
-你还可以通过编程方式创建另外的订阅。 有关详细信息，请参阅[以编程方式创建 Azure 订阅](../../azure-resource-manager/management/programmatically-create-subscription.md)。
+你还可以通过编程方式创建另外的订阅。 有关详细信息，请参阅[以编程方式创建 Azure 订阅](programmatically-create-subscription.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

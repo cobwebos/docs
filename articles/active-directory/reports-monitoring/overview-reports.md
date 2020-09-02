@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5c07500ec432d176b2cf74aa95f0a1c943348f9f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481385"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229510"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
@@ -44,9 +44,9 @@ ms.locfileid: "85481385"
 
 安全报表有助于保护组织的标识。 有两种类型的安全报表：
 
-- 标记为存在风险的用户 - 可以通过[标记为存在风险的用户的安全报表](concept-user-at-risk.md)大致了解可能已遭到入侵的用户帐户。
+- 标记为存在风险的用户 - 可以通过[标记为存在风险的用户的安全报表](../identity-protection/overview-identity-protection.md)大致了解可能已遭到入侵的用户帐户。
 
-- 风险登录 - 可以通过[风险登录安全报表](concept-risky-sign-ins.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
+- 风险登录 - 可以通过[风险登录安全报表](../identity-protection/overview-identity-protection.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>访问安全报表需要什么 Azure AD 许可证？  
 
@@ -81,7 +81,7 @@ ms.locfileid: "85481385"
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>访问审核日志报表需要什么 Azure AD 许可证？  
 
-对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 [不同类型的许可证的](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses)特征详细比较可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上查看。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad)。
+对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 [不同类型的许可证的](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)特征详细比较可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上查看。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)。
 
 ### <a name="sign-ins-report"></a>登录报告
 
@@ -101,6 +101,6 @@ ms.locfileid: "85481385"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [风险登录报表](concept-risky-sign-ins.md)
+- [风险登录报表](../identity-protection/overview-identity-protection.md)
 - [审核日志报表](concept-audit-logs.md)
 - [登录日志报表](concept-sign-ins.md)
