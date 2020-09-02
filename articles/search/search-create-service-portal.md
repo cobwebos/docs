@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554016"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927113"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -96,7 +96,7 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
  如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
 
- 具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)中创建其服务。 例如，如果你在北美运营，则可以为每个服务选择“美国东部和美国西部”或“美国中北部和美国中南部”。
+ 具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs)中创建其服务。 例如，如果你在北美运营，则可以为每个服务选择“美国东部和美国西部”或“美国中北部和美国中南部”。
 
 ### <a name="recommendations"></a>建议
 
@@ -160,7 +160,7 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 尽管大多数客户只使用一个服务，但若有以下操作要求，则可能需要提供服务冗余：
 
-+ [业务连续性和灾难恢复 (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 Azure 认知搜索在发生服务中断时不提供即时故障转移。
++ [业务连续性和灾难恢复 (BCDR)](../best-practices-availability-paired-regions.md)。 Azure 认知搜索在发生服务中断时不提供即时故障转移。
 
 + [多租户体系结构](search-modeling-multitenant-saas-applications.md)有时会调用两个或更多服务。
 

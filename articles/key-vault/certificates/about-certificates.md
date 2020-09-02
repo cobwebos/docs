@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604897"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923681"
 ---
 # <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
 
@@ -44,7 +44,8 @@ ms.locfileid: "88604897"
 
 可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作是从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射的。  
 
-证书支持以下两种类型的密钥：RSA 或 RSA HSM   。 仅 RSA 允许可导出，RSA HSM 不支持。  
+ - 支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM 等（参见[此处](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅与 RSA 和 EC 一起使用。 HSM 密钥不可导出。
+
 
 ## <a name="certificate-attributes-and-tags"></a>证书属性和标记
 

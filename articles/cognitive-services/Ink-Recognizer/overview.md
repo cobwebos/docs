@@ -8,17 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927447"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051060"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什么是墨迹识别器 API？
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 墨迹识别器认知服务提供基于云的 REST API 用于分析和识别数字墨迹内容。 与使用光学字符识别 (OCR) 的服务不同，该 API 需要使用数字墨迹笔划数据作为输入。 数字墨迹笔划是 2D 点（X,Y 坐标，表示数字手写笔或手指的动作）的时序集。 然后，墨迹识别器会识别输入中的形状和手写内容，并返回包含所有已识别实体的 JSON 响应。
 

@@ -8,12 +8,13 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: e30bee23b634db12def62e906183c6087c6613e6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: d24116701347c7d4b60494219b56877e0b121ea3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044288"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017459"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>快速入门：使用 .NET Core 和 Azure Cosmos DB 构建 Cassandra 应用
 

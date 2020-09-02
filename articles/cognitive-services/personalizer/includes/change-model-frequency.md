@@ -7,15 +7,15 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
-ms.openlocfilehash: d03d904de68720874ea175c95244ba80c586df82
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/25/2020
+ms.openlocfilehash: 4eacc1c4e863ad1a278a4974bb0f6c101aafe7e0
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133782"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055360"
 ---
-## <a name="change-the-model-update-frequency"></a>更改模型更新频率
+### <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
 在 Azure 门户的“配置”页上的个性化体验创建服务资源中，将“模型更新频率”更改为 10 秒   。 此短暂持续时间可快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
 

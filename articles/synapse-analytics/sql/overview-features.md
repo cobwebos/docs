@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: e1223a9cd5bd3a092bc35c9ba03f7352c6ac7eed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce7238aaa10b1e73f7fa3c061045f47cbc472e23
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059409"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378689"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支持的 Transact-SQL 功能
 
@@ -54,7 +54,7 @@ Synapse SQL 中使用的查询语言可能有不同的受支持功能，具体�
 | **INSERT 语句** | 是 | 否 |
 | **UPDATE 语句** | 是 | 否 |
 | **DELETE 语句** | 是 | 否 |
-| **MERGE 语句** | 是 | 否 |
+| **MERGE 语句** | 否 | 否 |
 | **[事务](develop-transactions.md)** | 是 | 否 |
 | **[标签](develop-label.md)** | 是 | 否 |
 | **数据加载** | 是的。 首选的实用工具是 [COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，但系统支持使用 BULK load (BCP) 和 [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 加载数据。 | 否 |

@@ -16,13 +16,13 @@ ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
-ms.custom: mvc
-ms.openlocfilehash: 5438cc07670393cab69344544ea1b68c46c42bd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6d1c41df638c092daf24938931c3526fb18ea3db
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844018"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074757"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure PowerShell
 
@@ -40,7 +40,7 @@ ms.locfileid: "76844018"
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -63,7 +63,7 @@ $vM = New-AzVm `
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG  资源组中名为 NetworkWatcher_eastus  的现有网络观察程序：
+如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG** 资源组中名为 NetworkWatcher_eastus** 的现有网络观察程序：
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `

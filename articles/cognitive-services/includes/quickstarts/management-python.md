@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 743b05b38eddc80ce7462a3439613fc767d91daa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 7cc76ab7c9ce2191a54d5bd61282267467603694
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607605"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321533"
 ---
 [参考文档](https://docs.microsoft.com/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [包 (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
@@ -22,15 +22,9 @@ ms.locfileid: "88607605"
 * 一个有效的 Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * [Python 3.x](https://www.python.org/)
 
-## <a name="create-an-azure-service-principal"></a>创建 Azure 服务主体
+[!INCLUDE [Create a service principal](./create-service-principal.md)]
 
-若要使应用程序与 Azure 帐户交互，需要使用 Azure 服务主体来管理权限。 请按照[创建 Azure 服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.4.0&viewFallbackFrom=azps-3.3.0)中的说明操作。
-
-创建服务主体时，你会看到它有一个机密值、一个 ID 和一个应用程序 ID。 将应用程序 ID 和机密保存到某个临时位置，以供后续步骤使用。
-
-## <a name="create-a-resource-group"></a>创建资源组
-
-在创建认知服务资源之前，帐户必须具有 Azure 资源组才能包含该资源。 如果还没有资源组，请在 [Azure 门户](https://ms.portal.azure.com/)中创建一个。
+[!INCLUDE [Create a resource group](./create-resource-group.md)]
 
 ## <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
@@ -72,71 +66,7 @@ pip install azure-mgmt-cognitiveservices
 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
-请参阅下面的 SKU 和定价信息列表。 
-
-#### <a name="multi-service"></a>多服务
-
-| 服务                    | 种类                      |
-|----------------------------|---------------------------|
-| 多个服务。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)页。            | `CognitiveServices`     |
-
-
-#### <a name="vision"></a>影像
-
-| 服务                    | 种类                      |
-|----------------------------|---------------------------|
-| 计算机视觉            | `ComputerVision`          |
-| 自定义视觉 - 预测 | `CustomVision.Prediction` |
-| 自定义视觉 - 定型   | `CustomVision.Training`   |
-| 人脸                       | `Face`                    |
-| 表单识别器            | `FormRecognizer`          |
-| 墨迹识别器             | `InkRecognizer`           |
-
-#### <a name="search"></a>搜索
-
-| 服务            | 种类                  |
-|--------------------|-----------------------|
-| 必应自动建议   | `Bing.Autosuggest.v7` |
-| 必应自定义搜索 | `Bing.CustomSearch`   |
-| 必应实体搜索 | `Bing.EntitySearch`   |
-| 必应搜索        | `Bing.Search.v7`      |
-| 必应拼写检查   | `Bing.SpellCheck.v7`  |
-
-#### <a name="speech"></a>语音
-
-| 服务            | 种类                 |
-|--------------------|----------------------|
-| 语音服务    | `SpeechServices`     |
-| 语音识别 | `SpeakerRecognition` |
-
-#### <a name="language"></a>语言
-
-| 服务            | 种类                |
-|--------------------|---------------------|
-| 窗体理解 | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| 文本分析     | `TextAnalytics`     |
-| 文本翻译   | `TextTranslation`   |
-
-#### <a name="decision"></a>决策
-
-| 服务           | 种类               |
-|-------------------|--------------------|
-| 异常检测器  | `AnomalyDetector`  |
-| 内容审查器 | `ContentModerator` |
-| 个性化体验创建服务      | `Personalizer`     |
-
-
-#### <a name="pricing-tiers-and-billing"></a>定价层和计费
-
-定价层（以及你收到的账单金额）基于你使用身份验证信息发送的事务数。 每个定价层指定：
-* 每秒允许的最大事务数 (TPS)。
-* 在定价层中启用的服务功能。
-* 预定义事务数的成本。 根据[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中为服务所指定的内容，超过此数字将导致额外费用。
-
-> [!NOTE]
-> 许多认知服务都有一个免费层，供你试用该服务。 若要使用免费层，请使用 `F0` 作为资源的 SKU。
+[!INCLUDE [SKUs and pricing](./sku-pricing.md)]
 
 ## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
 

@@ -10,12 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: f35b69a3ca44308a7d314f448bf35b81d7119228
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a5e957e21b431ede445fd64774fa4727eda7f803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603513"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922236"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>快速入门：使用必应图像搜索 REST API 和 C# 来搜索图像
 

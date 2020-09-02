@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084001"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019372"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入门：将 Azure Stack 虚拟机载入安全中心
 载入 Azure 订阅后，可以通过从 Azure Stack 市场添加“Azure 监视、更新和配置管理”虚拟机扩展，启用安全中心来保护 Azure Stack 上运行的虚拟机。
@@ -72,7 +72,7 @@ ms.locfileid: "87084001"
 7. 提供所需的配置设置后，请单击“确定”  。
 8. 扩展安装完成后，其状态将显示为“预配成功”。 最长可能需要经过一小时，该虚拟机才会显示在安全中心门户中。
 
-有关安装和配置 Windows 代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+有关安装和配置 Windows 代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 
 有关如何排查 Linux 代理问题，请参阅[排查 Azure Log Analytics Linux 代理问题](../azure-monitor/platform/agent-linux-troubleshoot.md)。
 

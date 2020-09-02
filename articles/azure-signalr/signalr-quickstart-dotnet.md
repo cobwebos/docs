@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74158170"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050527"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入门：使用 ASP.NET 和 SignalR 服务创建聊天室
 
@@ -30,15 +31,21 @@ Azure SignalR 服务基于[适用于 ASP.NET Core 2.0 的 SignalR](https://docs.
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
+
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR 服务实例，请始终使用“默认”或“经典”。  
+ASP.NET SignalR 应用程序不支持无服务器模式。** 对于 Azure SignalR 服务实例，请始终使用“默认”或“经典”。****
 
 也可根据[创建 SignalR 服务脚本](scripts/signalr-cli-create-service.md)中的说明，创建在本快速入门中使用的 Azure 资源。
+
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -52,13 +59,15 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
+
 ## <a name="configure-and-run-chat-room-web-app"></a>配置并运行聊天室 Web 应用
 
 1. 启动 Visual Studio，并打开所克隆存储库的 *aspnet-samples/ChatRoom/* 文件夹中的解决方案。
 
 1. 在打开了 Azure 门户的浏览器中，查找并选择所创建的实例。
 
-1. 选择“密钥”  以查看 SignalR 服务实例的连接字符串。
+1. 选择“密钥”**** 以查看 SignalR 服务实例的连接字符串。
 
 1. 选择并复制主连接字符串。
 
@@ -83,7 +92,7 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
     }
     ```
 
-    此外还需在使用这些 API 之前参考服务 SDK。 打开“工具”|“NuGet 包管理器”|“包管理器控制台”，然后运行以下命令： 
+    此外还需在使用这些 API 之前参考服务 SDK。 打开“工具”|“NuGet 包管理器”|“包管理器控制台”，然后运行以下命令：****
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
@@ -96,6 +105,8 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
 
 1. 按 **F5** 以调试模式运行项目。 可以看到应用程序在本地运行。 它现在会连接到 Azure SignalR 服务，而不是由应用程序自身来托管 SignalR 运行时。
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 
@@ -105,14 +116,16 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
 > 
 > 
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-在“按名称筛选...”文本框中键入资源组的名称  。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
+在“按名称筛选...”文本框中键入资源组的名称。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组” 。
 
    
 ![删除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 片刻之后，将会删除该资源组及其包含的所有资源。
+
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -120,3 +133,6 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
 
 > [!div class="nextstepaction"]
 > [将 Azure SignalR 服务与 ASP.NET Core 配合使用](./signalr-quickstart-dotnet-core.md)
+
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
+

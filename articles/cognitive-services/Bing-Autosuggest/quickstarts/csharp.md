@@ -10,12 +10,13 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: cf74d686a9156d6ccff1753a4f53abb5ecc6b7df
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: devx-track-csharp
+ms.openlocfilehash: af64e80137b375e6e7b7037f72240e814b4b1e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929683"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919414"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 

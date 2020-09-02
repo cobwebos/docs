@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0d5e8643abf41a488dd5f9b8cbc39c3f1bac1c0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659165"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005031"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin.Forms 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -28,7 +29,7 @@ ms.locfileid: "83659165"
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
-本快速入门教程演示如何使用 Azure 门户创建 [使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md) 、文档数据库和集合。 然后，使用 [MongoDB .NET 驱动程序](https://docs.mongodb.com/ecosystem/drivers/csharp/)生成 Xamarin.Forms 待办事项应用。
+本快速入门演示了如何使用 Azure 门户[创建 Cosmos 帐户并为其配置 Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)、文档数据库和集合。 然后，使用 [MongoDB.NET 驱动程序](https://docs.mongodb.com/ecosystem/drivers/csharp/)构建 Xamarin.Forms 待办事项应用。
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>运行示例应用的先决条件
 
@@ -72,7 +73,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
@@ -134,7 +135,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     }
     ```
 
-* 创建任务并将其插入到集合。
+* 创建任务并将其插入到集合中。
     ```cs
     public async Task CreateTask(MyTask task)
     {
@@ -150,7 +151,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     }
     ```
 
-* 删除集合中的任务。
+* 从集合中删除任务。
     ```cs
     public async Task DeleteTask(MyTask task)
     {
@@ -164,11 +165,11 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”  ，并单击“读写密钥”  。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”，然后单击“读写密钥”。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
 
 2. 打开 **TaskList.Core** 项目的 **Helpers** 目录中的 **APIKeys.cs** 文件。
 
-3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。 
+3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。
 
 4. 从连接字符串中删除 `&replicaSet=globaldb`。 如果不从查询字符串中删除该值，则会出现运行时错误。
 
@@ -177,16 +178,16 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. 在 Visual Studio 中，右键单击解决方案资源管理器  中的每个项目，并单击“管理 NuGet 包”  。
-2. 单击“还原所有 NuGet 包”  。
-3. 右键单击“TaskList.Android”，并选择“设为启动项目”。  
+1. 在 Visual Studio 中，右键单击解决方案资源管理器中的每个项目，并单击“管理 NuGet 包”。
+2. 单击“还原所有 NuGet 包”。
+3. 右键单击“TaskList.Android”，并选择“设为启动项目”。 
 4. 按 F5 开始调试应用程序。
 5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
-6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。  
+6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。 
 7. 单击 F5 开始调试应用程序。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
@@ -207,4 +208,4 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 本快速入门已介绍如何创建 Azure Cosmos DB 帐户和使用 API for MongoDB 运行 Xamarin.Forms 应用。 现在可以将其他数据导入 Cosmos DB 帐户。
 
 > [!div class="nextstepaction"]
-> [将数据导入使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Azure Cosmos DB](mongodb-migrate.md)
+> [将数据导入到使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Azure Cosmos DB](mongodb-migrate.md)

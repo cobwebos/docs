@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962129"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050516"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
@@ -33,9 +34,13 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 * 安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
 * 下载或克隆 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub 存储库。 
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
+
 ## <a name="create-an-azure-signalr-resource"></a>创建 Azure SignalR 资源
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
+
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
@@ -49,6 +54,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     dotnet new mvc
     ```
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-secret-manager-to-the-project"></a>向项目添加机密管理器
 
@@ -71,6 +77,8 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     </ItemGroup>
     </Project>    
     ```
+    
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>将 Azure SignalR 添加到 Web 应用
 
@@ -225,6 +233,7 @@ connection.start()
     }
     ```
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
@@ -254,7 +263,7 @@ connection.start()
 
     ![Azure SignalR 群组聊天示例](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -279,7 +288,7 @@ connection.start()
    
 片刻之后，将会删除该资源组及其所有资源。
 
-
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -288,4 +297,5 @@ connection.start()
 > [!div class="nextstepaction"]
 > [Azure SignalR 服务身份验证](./signalr-concept-authenticate-oauth.md)
 
+[存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 

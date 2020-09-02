@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 8d9e05b5d8105cce8355d217cc6922c25bbe1730
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7678ffa1684fb1fe1ea198e9e1836a152cd51b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75467166"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926625"
 ---
 本指南介绍如何安装用于 [Unity](https://unity3d.com/) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -36,11 +37,11 @@ ms.locfileid: "75467166"
 
 若要安装适用于 Unity 的语音 SDK，请执行以下步骤：
 
-1. 下载并打开[适用于 Unity 的语音 SDK](https://aka.ms/csspeech/unitypackage)，该程序打包为 Unity 资产包 (.unitypackage)，应该已经与 Unity 关联。 打开资产包后，会显示“导入 Unity 包”对话框。  可能需要创建并打开一个空项目才能使用此步骤。
+1. 下载并打开[适用于 Unity 的语音 SDK](https://aka.ms/csspeech/unitypackage)，该程序打包为 Unity 资产包 (.unitypackage)，应该已经与 Unity 关联。 打开资产包后，会显示“导入 Unity 包”对话框。 可能需要创建并打开一个空项目才能使用此步骤。
 
    [![Unity 编辑器中的“导入 Unity 包”对话框](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-unity-01-import.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-unity-01-import.png#lightbox)
 
-1. 确保选择所有文件，然后选择“导入”。  片刻之后，Unity 资产包即会导入到项目中。
+1. 确保选择所有文件，然后选择“导入”。 片刻之后，Unity 资产包即会导入到项目中。
 
 有关将资产包导入 Unity 的详细信息，请参阅 [Unity 文档](https://docs.unity3d.com/Manual/AssetPackages.html)。
 

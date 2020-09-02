@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835997"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001631"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -238,7 +238,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
-可以从命令行或使用自动化方法（如 Configuration Manager）安装代理。 [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。
+可以从命令行或使用自动化方法（如 Configuration Manager）安装代理。 [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-options)如何使用这些方法安装 MMA 代理。
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>在 Linux 计算机上安装 MMA 代理
 
@@ -249,7 +249,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)。
+[详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/platform/agents-overview.md#supported-operating-systems)。
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>在受 Operations Manager 监视的计算机上安装 MMA 代理
 

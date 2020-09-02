@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922262"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020858"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>快速入门：使用 Azure.Search.Documents 客户端库创建搜索索引
 
-使用新的 [Azure.Search.Documents（版本 11）客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)以 C# 创建 .NET Core 控制台应用程序，用于创建、加载和查询搜索索引。
+使用新的 [Azure.Search.Documents（版本 11）客户端库](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)以 C# 创建 .NET Core 控制台应用程序，用于创建、加载和查询搜索索引。
 
 [下载源代码](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11)，从一个已完成的项目着手，或按照本文中的步骤操作，创建自己的项目。
 
@@ -77,7 +78,7 @@ ms.locfileid: "87922262"
    using Azure.Search.Documents.Models;
    ```
 
-1. 创建两个客户端：[SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) 创建索引，[SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) 使用现有索引。 两者都需要服务终结点和管理员 API 密钥才能使用创建/删除权限进行身份验证。
+1. 创建两个客户端：[SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) 创建索引，[SearchClient](/dotnet/api/azure.search.documents.searchclient) 使用现有索引。 两者都需要服务终结点和管理员 API 密钥才能使用创建/删除权限进行身份验证。
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +100,7 @@ ms.locfileid: "87922262"
 
 此快速入门生成酒店索引，你将在其中加载酒店数据并对其运行查询。 在此步骤中，定义索引中的字段。 每个字段定义都包含名称、数据类型以及确定如何使用该字段的属性。
 
-在此示例中，为了简单和可读性，使用了 Azure.Search.Documents 库的同步方法。 但是，对于生产场景，应使用异步方法来保持应用程序的可缩放性和响应性。 例如，使用 [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync)，而不是 [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)。
+在此示例中，为了简单和可读性，使用了 Azure.Search.Documents 库的同步方法。 但是，对于生产场景，应使用异步方法来保持应用程序的可缩放性和响应性。 例如，使用 [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync)，而不是 [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)。
 
 1. 向项目添加一个空的类定义：Hotel.cs
 
@@ -131,7 +132,7 @@ ms.locfileid: "87922262"
     }
     ```
 
-1. 在“Program.cs”中，指定字段和属性。 [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) 和 [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) 用于创建索引。
+1. 在“Program.cs”中，指定字段和属性。 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 和 [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) 用于创建索引。
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +155,9 @@ ms.locfileid: "87922262"
 
 该字段的特性决定字段在应用程序中的使用方式。 例如，`IsFilterable` 属性必须分配给每个支持筛选表达式的字段。
 
-与要求在可搜索字符串字段上使用 [IsSearchable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) 的 .NET SDK 早期版本不同，你可使用 [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) 和 [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) 来简化字段定义。
+与要求在可搜索字符串字段上使用 [IsSearchable](/dotnet/api/microsoft.azure.search.models.field.issearchable) 的 .NET SDK 早期版本不同，你可使用 [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) 和 [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) 来简化字段定义。
 
-与早期版本类似，定义本身仍需要其他属性。 例如，[IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) 和 [IsFacetable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) 必须进行显式属性化，如上例中所示。 
+与早期版本类似，定义本身仍需要其他属性。 例如，[IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) 和 [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) 必须进行显式属性化，如上例中所示。 
 
 <a name="load-documents"></a>
 
@@ -166,7 +167,7 @@ Azure 认知搜索对存储在服务中的内容进行搜索。 在此步骤中�
 
 在 Azure 认知搜索中，文档这一数据结构既是索引输入，也是查询输出。 文档输入从外部数据源获取，可能是数据库中的行、Blob 存储中的 blob 或磁盘上的 JSON 文档。 在此示例中，我们采用了快捷方式，并在代码本身中嵌入了五个酒店的 JSON 文档。 
 
-上传文档时，必须使用 [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 对象。 IndexDocumentsBatch 包含[操作](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)的集合，其中每个操作均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
+上传文档时，必须使用 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 对象。 IndexDocumentsBatch 包含[操作](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)的集合，其中每个操作均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
 
 1. 在“Program.cs”中，创建文档和索引操作的数组，然后将数组传递给 `ndexDocumentsBatch`。下面的文档符合宾馆类定义的 hotels-quickstart-v11 索引。
 
@@ -185,7 +186,7 @@ Azure 认知搜索对存储在服务中的内容进行搜索。 在此步骤中�
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    初始化 [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 对象后，可以通过对 [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) 对象调用 [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) 将其发送到索引。
+    初始化 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 对象后，可以通过对 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 对象调用 [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) 将其发送到索引。
 
 1. 由于这是一个按顺序运行所有命令的控制台应用，因此请在索引和查询之间添加 2 秒的等待时间。
 
@@ -201,9 +202,9 @@ Azure 认知搜索对存储在服务中的内容进行搜索。 在此步骤中�
 
 对第一个文档编制索引后，可立即获取查询结果，但索引的实际测试应等到对所有文档编制索引后进行。
 
-此部分添加了两个功能：查询逻辑和结果。 对于查询，请使用 [Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) 方法。 此方法采用搜索文本（查询字符串）以及其他[选项](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions)。
+此部分添加了两个功能：查询逻辑和结果。 对于查询，请使用 [Search](/dotnet/api/azure.search.documents.searchclient.search) 方法。 此方法采用搜索文本（查询字符串）以及其他[选项](/dotnet/api/azure.search.documents.searchoptions)。
 
-[SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1) 类表示结果。
+[SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) 类表示结果。
 
 1. 在“Program.cs”中，创建 WriteDocuments 方法，该方法用于将搜索结果输出到控制台。
 
@@ -267,17 +268,17 @@ Azure 认知搜索对存储在服务中的内容进行搜索。 在此步骤中�
 
 + 全文搜索会在索引的可搜索字段中查询一个或多个术语。 第一个查询是全文搜索。 全文搜索生成用于对结果进行排序的相关性分数。
 
-+ 筛选器是布尔表达式，该表达式通过索引中的 [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) 字段求值。 筛选器查询包括或排除值。 同样，筛选器查询没有关联的相关性分数。 最后两个查询演示筛选器搜索。
++ 筛选器是布尔表达式，该表达式通过索引中的 [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) 字段求值。 筛选器查询包括或排除值。 同样，筛选器查询没有关联的相关性分数。 最后两个查询演示筛选器搜索。
 
 可以配合使用全文搜索和筛选器，也可以单独使用。
 
-使用 [SearchClient.Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) 方法可同时执行搜索和查询。 搜索查询可在 `searchText` 字符串中传递，而筛选表达式则可在 [SearchOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) 类的 [Filter](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter) 属性中传递。 若要筛选但不搜索，只需传递 `"*"` 作为 [Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) 方法的 `searchText` 参数。 若要搜索但不筛选，则不设置 `Filter` 属性，或不在 `SearchOptions` 实例中传递。
+使用 [SearchClient.Search](/dotnet/api/azure.search.documents.searchclient.search) 方法可同时执行搜索和查询。 搜索查询可在 `searchText` 字符串中传递，而筛选表达式则可在 [SearchOptions](/dotnet/api/azure.search.documents.searchoptions) 类的 [Filter](/dotnet/api/azure.search.documents.searchoptions.filter) 属性中传递。 若要筛选但不搜索，只需传递 `"*"` 作为 [Search](/dotnet/api/azure.search.documents.searchclient.search) 方法的 `searchText` 参数。 若要搜索但不筛选，则不设置 `Filter` 属性，或不在 `SearchOptions` 实例中传递。
 
 ## <a name="run-the-program"></a>运行程序
 
 按 F5 可重新生成应用并完整运行该程序。 
 
-输出包含 [Console.WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline) 中的消息，并添加了查询信息和结果。
+输出包含 [Console.WriteLIne](/dotnet/api/system.console.writeline) 中的消息，并添加了查询信息和结果。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -297,4 +298,4 @@ Azure 认知搜索对存储在服务中的内容进行搜索。 在此步骤中�
 希望优化并节省云支出？
 
 > [!div class="nextstepaction"]
-> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
