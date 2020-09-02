@@ -12,6 +12,9 @@
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: 创建流量管理器配置文件 - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
+    - name: 创建流量管理器配置文件 - ARM 模板
+      href: quickstart-create-traffic-manager-profile-template.md
+  expanded: true
 - name: 教程
   items:
     - name: 路由流量以降低延迟
@@ -30,7 +33,7 @@
       href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
 - name: 示例
   items:
-    - name: Azure CLl
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -59,7 +62,7 @@
       href: traffic-manager-how-it-works.md
     - name: 常见问题解答
       href: traffic-manager-FAQs.md
-- name: 操作方式
+- name: 操作指南
   items:
     - name: 在流量管理器中配置性能路由
       href: traffic-manager-configure-performance-routing-method.md
@@ -95,7 +98,7 @@
           href: traffic-manager-subnet-override-cli.md
         - name: 配置子网替代 - PowerShell
           href: traffic-manager-subnet-override-powershell.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查 Azure 流量管理器中出现降级状态的问题
           href: traffic-manager-troubleshooting-degraded.md
@@ -132,7 +135,7 @@
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务限制
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

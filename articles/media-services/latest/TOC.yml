@@ -49,20 +49,22 @@
   items:
     - name: .NET
       items:
-        - name: 对远程文件 REST 进行编码和流式传输
-          href: stream-files-tutorial-with-rest.md
         - name: 对远程文件 .NET 进行编码和流式传输
           href: stream-files-dotnet-quickstart.md
-        - name: 对上传的文件进行编码和流式传输
+        - name: 对上传的文件进行编码和流式传输 (.NET)
           href: stream-files-tutorial-with-api.md
-        - name: 实时流式处理
+        - name: 使用 .NET 实时传送视频流
           href: stream-live-tutorial-with-api.md
-        - name: 分析视频
+        - name: 使用 .NET 分析视频
           href: analyze-videos-tutorial-with-api.md
         - name: 通过 AES-128 进行动态加密
           href: protect-with-aes128.md
         - name: 通过 DRM 进行动态加密
           href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: 对远程文件 REST 进行编码和流式传输
+          href: stream-files-tutorial-with-rest.md
     - name: CLI
       items:
         - name: 对远程文件 CLI 进行编码和流式传输

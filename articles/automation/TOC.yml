@@ -27,11 +27,6 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: 创建 Python Runbook
       href: learn/automation-tutorial-runbook-textual-python2.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 自动化帐户身份验证概述
@@ -325,6 +320,9 @@
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 自动化简介视频

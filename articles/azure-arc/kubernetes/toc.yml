@@ -4,12 +4,6 @@
   items:
     - name: 关于已启用 Arc 的 Kubernetes
       href: overview.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      items:
-        - name: 已启用 Arc 的 Kubernetes
-          href: policy-samples.md
 - name: 操作指南
   items:
     - name: 连接到 Azure Arc
@@ -34,3 +28,8 @@
           href: deploy-azure-iot-edge-workloads.md
     - name: 疑难解答
       href: Troubleshooting.md
+- name: 参考
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

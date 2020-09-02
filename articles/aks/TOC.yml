@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - 升级群集
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 群集和工作负荷
@@ -66,7 +61,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: 资源管理器模板
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

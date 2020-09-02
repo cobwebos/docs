@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: 管理已备份的 SQL Server 数据库 - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 支持矩阵
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 合规性

@@ -73,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 单个服务器
@@ -291,7 +288,7 @@
           items:
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
@@ -393,6 +390,9 @@
           href: reference-hyperscale-parameters.md
         - name: 系统表
           href: reference-hyperscale-metadata.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

@@ -19,9 +19,6 @@
       href: quick-create-python.md
 - name: 示例
   items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
     - name: Key Vault 代码示例
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: 教程
@@ -67,6 +64,9 @@
     - name: 资源管理器模板
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: 诊断日志记录
       href: diagnostic-logging.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      href: ./policy-samples.md
 - name: 安全性
   items:
     - name: 认知服务的安全性
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 配方：Art Explorer
           href: ./big-data/recipes/art-explorer.md
+- name: 参考
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: Azure 路线图

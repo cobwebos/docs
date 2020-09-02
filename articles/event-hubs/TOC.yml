@@ -75,9 +75,6 @@
   items:
     - name: 代码示例
       href: event-hubs-samples.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 事件中心术语
@@ -290,6 +287,9 @@
       href: event-hubs-quotas.md
     - name: Apache Kafka 配置
       href: apache-kafka-configurations.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

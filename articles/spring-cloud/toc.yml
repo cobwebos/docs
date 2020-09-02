@@ -3,7 +3,7 @@
   displayName: Azure Spring Cloud
 - name: 概述
   items:
-    - name: 什么是 Azure Spring Cloud？
+    - name: Azure Spring Cloud 是什么？
       href: spring-cloud-overview.md
 - name: 快速入门
   expanded: true
@@ -47,11 +47,6 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: 在虚拟网络中部署 Azure Spring Cloud
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 了解应用和部署
@@ -126,3 +121,6 @@
       href: spring-cloud-faq.md
     - name: REST API 参考
       href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

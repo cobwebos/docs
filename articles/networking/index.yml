@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 03/17/2020
-  ms.openlocfilehash: eba71e790c9da1978e0c9cac84b1913447972db2
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 55340e52505498f2475487567f141437347c3d10
+  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800717"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89290372"
 highlightedContent:
   items:
   - title: 什么是 Azure 网络？
@@ -113,15 +113,15 @@ conceptualContent:
     - url: ../load-balancer/load-balancer-overview.md
       itemType: overview
       text: 什么是 Azure 负载均衡器？
+    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
+      itemType: whats-new
+      text: 新增功能
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: 对传入 VM 的 Internet 流量进行负载均衡
-    - url: ../load-balancer/tutorial-load-balancer-port-forwarding-portal.md
-      itemType: tutorial
-      text: 配置端口转发
     - url: ../load-balancer/load-balancer-troubleshoot.md
       itemType: how-to-guide
-      text: 排查 Azure 负载均衡器问题
+      text: 对 Azure 负载均衡器进行故障排除
     footerLink:
       url: ../load-balancer/index.yml
       text: 查看详细信息

@@ -107,12 +107,12 @@
           href: update-regulatory-compliance-packages.md
     - name: 扫描 VM 中的漏洞
       items:
-        - name: 漏洞扫描概述
-          href: security-center-vulnerability-assessment-recommendations.md
-        - name: VM 的集成漏洞扫描程序
-          href: built-in-vulnerability-assessment.md
-        - name: 使用外部扫描程序
-          href: partner-vulnerability-assessment.md
+        - name: 将集成的漏洞扫描程序部署到 VM
+          href: deploy-vulnerability-assessment-vm.md
+        - name: 将 BYOL 漏洞解决方案部署到 VM
+          href: deploy-vulnerability-assessment-byol-vm.md
+        - name: 评审和修正 VM 上的漏洞
+          href: remediate-vulnerability-findings-vm.md
     - name: 配置威胁防护并处理警报
       items:
         - name: 管理安全警报

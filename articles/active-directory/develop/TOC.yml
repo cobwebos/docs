@@ -273,7 +273,9 @@
               href: msal-net-adfs-support.md
             - name: 迁移到 MSAL.NET
               href: msal-net-migration.md
-            - name: 使用代理将 Xamarin 应用迁移到 MSAL.NET
+            - name: 使用代理将 Xamarin Android 应用迁移到 MSAL.NET
+              href: msal-net-migration-android-broker.md
+            - name: 使用代理将 Xamarin iOS 应用迁移到 MSAL.NET
               href: msal-net-migration-ios-broker.md
             - name: Web 浏览器注意事项
               href: msal-net-web-browsers.md
@@ -487,7 +489,7 @@
           href: active-directory-authentication-protocols.md
         - name: 委派权限与应用程序权限之间的差异
           href: delegated-and-app-perms.md
-        - name: 应用程序许可工作原理
+        - name: 应用程序同意操作的工作原理
           href: consent-framework-links.md
         - name: 为自定义开发的应用程序查找所需的特定 API
           href: api-find-an-api-how-to.md

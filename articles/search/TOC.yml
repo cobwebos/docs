@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST 示例
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 全文搜索
@@ -496,6 +493,9 @@
           items:
             - name: 命名实体识别
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: Azure 社区支持

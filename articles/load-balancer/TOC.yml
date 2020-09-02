@@ -47,8 +47,6 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 新增功能
-      href: whats-new.md
     - name: 组件
       href: components.md
     - name: 概念

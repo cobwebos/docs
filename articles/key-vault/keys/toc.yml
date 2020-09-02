@@ -27,9 +27,6 @@
   items:
     - name: Key Vault 代码示例
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 参考
   items:
     - name: Azure PowerShell
@@ -51,6 +48,9 @@
       displayName: ARM
     - name: “创建自己的密钥”规范
       href: byok-specification.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

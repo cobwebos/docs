@@ -93,9 +93,6 @@
           href: ./scripts/powershell-single-av-zone-scale-set.md
         - name: 创建区域冗余规模集
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure 资源管理器
@@ -178,7 +175,7 @@
         - name: 选择磁盘类型
           href: ../virtual-machines/disks-types.md
           maintainContext: true
-        - name: 加密
+        - name: Encryption
           href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: 高级存储性能
@@ -394,6 +391,9 @@
       href: /rest/api/virtualmachinescalesets/
     - name: Azure 模板
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: Azure 路线图
