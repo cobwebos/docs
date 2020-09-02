@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234697"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948872"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -100,6 +100,6 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 - [条件访问策略构建方法详解](concept-conditional-access-policies.md)
 - [计划条件访问部署](plan-conditional-access.md)
-- [了解标识保护](../identity-protection/overview-v2.md)
+- [了解标识保护](../identity-protection/overview-identity-protection.md)
 - [了解 Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 - [了解 Microsoft Intune](/intune/index)

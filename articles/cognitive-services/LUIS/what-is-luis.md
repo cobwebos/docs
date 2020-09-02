@@ -5,12 +5,12 @@ keywords: Azure, 人工智能, ai, 自然语言处理, nlp, 自然语言理解, 
 ms.topic: overview
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752143"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320046"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -64,7 +64,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 |`When does your store open?`|店铺营业时间和位置|开门|
 |`Schedule a meeting at 1pm with Bob in Distribution`|安排谈话|下午 1 点，何石|
 
-使用[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 和/或 [LUIS 门户](https://www.luis.ai)生成模型。 了解如何使用[门户](get-started-portal-build-app.md)和 [SDK 客户端库](quickstart-sdk.md)生成内容。
+使用[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 和/或 [LUIS 门户](https://www.luis.ai)生成模型。 了解如何使用[门户](get-started-portal-build-app.md)和 [SDK 客户端库](azure-sdk-quickstart.md)生成内容。
 
 ## <a name="step-2-get-the-query-prediction"></a>步骤 2：获取查询预测
 
@@ -126,7 +126,7 @@ LUIS 提供文本分析的功能，作为现有 LUIS 资源的一部分。 此�
 
 ## <a name="learn-with-the-quickstarts"></a>通过快速入门学习
 
-使用[门户](get-started-portal-build-app.md)和 [SDK 客户端库](quickstart-sdk.md)的实际操作快速入门来了解 LUIS。
+使用[门户](get-started-portal-build-app.md)和 [SDK 客户端库](azure-sdk-quickstart.md)的实际操作快速入门来了解 LUIS。
 
 
 ## <a name="next-steps"></a>后续步骤

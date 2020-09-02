@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212666"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961527"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -59,8 +59,8 @@ ms.locfileid: "88212666"
 
 在设置应用服务的过程中，将会创建：
 
-- 一个新的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology)，用于包含该服务的所有 Azure 资源。
-- 一个新的[托管计划](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)，用于指定托管应用的 Web 服务器场的位置、大小和功能。
+- 一个新的[资源组](../azure-resource-manager/management/overview.md#terminology)，用于包含该服务的所有 Azure 资源。
+- 一个新的[托管计划](./overview-hosting-plans.md)，用于指定托管应用的 Web 服务器场的位置、大小和功能。
 
 遵循以下步骤创建应用服务并发布 Web 应用：
 
@@ -160,7 +160,7 @@ Web 应用的“概述”页包含用于基本管理（例如浏览、停止、�
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[Linux 应用服务](overview.md#app-service-on-linux)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何在 Linux 应用服务中创建 [.NET Core](https://docs.microsoft.com/aspnet/core/) 应用。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建应用，并使用 Git 将 .NET Core 代码部署到该应用。
+[Linux 应用服务](overview.md#app-service-on-linux)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何在 Linux 应用服务中创建 [.NET Core](/aspnet/core/) 应用。 使用 [Azure CLI](/cli/azure/get-started-with-azure-cli) 创建应用，并使用 Git 将 .NET Core 代码部署到该应用。
 
 ![在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -322,4 +322,4 @@ git push azure master
 > [!div class="nextstepaction"]
 > [配置 ASP.NET Core 应用](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

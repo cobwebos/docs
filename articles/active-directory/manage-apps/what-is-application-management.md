@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafd3d7805924d92354c3de6ded50f17598f80f6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078064"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299875"
 ---
 # <a name="what-is-application-management"></a>什么是应用程序管理？
 
@@ -93,6 +93,6 @@ SSO 可以提高安全性。 在没有单一登录的情况下，管理员需要
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD 中的应用管理快速入门系列](view-applications-portal.md)
+- [应用程序管理的快速入门系列](view-applications-portal.md)
 - [应用程序集成入门](plan-an-application-integration.md)
 - [了解如何执行自动预配](../app-provisioning/user-provisioning.md)

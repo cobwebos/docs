@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 63fc699cfd2f02a322f71324519b2f0b5b22234b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400713"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926391"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,12 +25,12 @@ ms.locfileid: "81400713"
 
 第一步是确保在 Visual Studio 中打开项目。
 
-1. 启动 Visual Studio 2019  。
-2. 加载项目并打开 Program.cs  。
+1. 启动 Visual Studio 2019。
+2. 加载项目并打开 Program.cs。
 
 ## <a name="source-code"></a>源代码
 
-将 Program.cs  文件的内容替换为以下 C# 代码。
+将 Program.cs 文件的内容替换为以下 C# 代码。
 
 ```csharp
 using System;
@@ -93,8 +94,8 @@ namespace Speech.Recognition
 
 现在，可以使用语音服务重新构建应用并测试语音识别功能。
 
-1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5   <kbd></kbd>。
+1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”  。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5  <kbd></kbd>。
 3. **开始识别** - 它会提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

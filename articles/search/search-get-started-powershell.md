@@ -9,23 +9,24 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f803532e7d08d0de21541cb5d1b52639b623bb90
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505999"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078293"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST API 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [门户](search-get-started-portal.md)
 > 
 
-本文引导你完成使用 PowerShell 和 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 创建、加载和查询 Azure 认知搜索索引的过程。 本文介绍如何以交互方式运行 PowerShell 命令。 你也可以[下载并运行一个 PowerShell 脚本](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)来执行相同的操作。
+本文引导你完成使用 PowerShell 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载和查询 Azure 认知搜索索引的过程。 本文介绍如何以交互方式运行 PowerShell 命令。 你也可以[下载并运行一个 PowerShell 脚本](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)来执行相同的操作。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -33,7 +34,7 @@ ms.locfileid: "88505999"
 
 本快速入门需要以下服务和工具。 
 
-+ [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)。你将使用 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 来执行有序步骤和交互式步骤。
++ [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)。你将使用 [Invoke-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 来执行有序步骤和交互式步骤。
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
@@ -85,7 +86,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，服务中必须预先存在一个索引才能加载数据。 此步骤定义索引并将其推送到服务。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+除非使用门户，服务中必须预先存在一个索引才能加载数据。 此步骤定义索引并将其推送到服务。 此步骤使用[创建索引 REST API](/rest/api/searchservice/create-index)。
 
 索引的所需元素包括名称和字段集合。 字段集合定义文档的结构。  每个字段具有一个确定其用法的名称、类型和属性（例如，该字段在搜索结果是否可全文搜索、可筛选或可检索）。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
@@ -179,7 +180,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-若要推送文档，请对索引的 URL 终结点使用 HTTP POST 请求。 此任务的 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
+若要推送文档，请对索引的 URL 终结点使用 HTTP POST 请求。 此任务的 REST API 为[添加、更新或删除文档](/rest/api/searchservice/addupdate-or-delete-documents)。
 
 1. 请将此示例粘贴到 PowerShell 中，以创建包含所要上传的文档的 **$body** 对象。 
 
@@ -281,7 +282,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    结果应如以下示例所示。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+    结果应如以下示例所示。 应会看到[状态代码 201](/rest/api/searchservice/HTTP-status-codes)。
 
     ```
     {
@@ -317,7 +318,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-此步骤说明如何使用[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 查询索引。
+此步骤说明如何使用[搜索文档 API](/rest/api/searchservice/search-documents) 查询索引。
 
 请务必将搜索 $urls 括在单引号中。 查询字符串包含 **$** 字符。如果整个字符串括在单引号中，则可以忽略字符转义。
 
