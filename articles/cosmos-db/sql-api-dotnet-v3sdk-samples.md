@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
-ms.openlocfilehash: d162639885a7736953a3e7388336c3105f2f0893
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: cfa79569ea4f2ec37eb7086d4878d3592babf18d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683859"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015180"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>SQL API 的 Azure Cosmos DB.NET V3 SDK (Microsoft.Azure.Cosmos) 示例
 
@@ -26,9 +27,9 @@ ms.locfileid: "83683859"
 >
 >
 
-[azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新 .NET 示例解决方案。 如果你熟悉旧版 .NET SDK，则可能习惯使用术语“集合”和“文档”。 由于 Azure Cosmos DB 支持多个 API 模型，因此 3.0 版的 .NET SDK 使用通用术语“容器”和“项”。 容器可以是集合、图或表。 项可以是文档、边缘/顶点或行，是容器中的内容。 本文将提供：
+[azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新 .NET 示例解决方案。 如果你熟悉旧版 .NET SDK，则可能习惯使用术语“集合”和“文档”。 由于 Azure Cosmos DB 支持多个 API 模型，因此 3.0 版的 .NET SDK 使用通用术语“容器”和“项”。 容器可以是集合、图或表。 项可以是文档、边缘/顶点或行，是容器中的内容。 本文提供：
 
-* 每个示例 C# 项目文件中各项任务的链接。
+* 指向每个示例 C# 项目文件中各项任务的链接。
 * 指向相关的 API 参考内容的链接。
 
 ## <a name="prerequisites"></a>先决条件

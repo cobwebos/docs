@@ -9,17 +9,19 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/11/2020
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 0bdb2c36bc895c9229e4c04e9e0d76aa852bd139
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719251"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297299"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>上传媒体以进行流式处理或编码
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 在媒体服务中，可以将数字文件（媒体）上传到与资产关联的 blob 容器中。 [资产](/rest/api/media/operations/asset)实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 将文件上传到资产的容器中后，相关内容即安全地存储在云中供后续处理和流式传输。
 

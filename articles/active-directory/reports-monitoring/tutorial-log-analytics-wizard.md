@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271256"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226201"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>教程：配置 Log Analytics 向导
 
@@ -41,15 +41,15 @@ ms.locfileid: "88271256"
 
 通过以下文章熟悉相关知识：
 
-- [教程：从 Azure 资源收集和分析资源日志](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [教程：从 Azure 资源收集和分析资源日志](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [如何将活动日志与 Log Analytics 集成](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将活动日志与 Log Analytics 集成](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [在 Azure AD 中管理紧急访问帐户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [在 Azure AD 中管理紧急访问帐户](../users-groups-roles/directory-emergency-access.md)
 
-- [KQL 快速参考](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [KQL 快速参考](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure Monitor 工作簿](../../azure-monitor/platform/workbooks-overview.md)
 
 
 

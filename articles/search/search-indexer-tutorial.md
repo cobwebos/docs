@@ -8,18 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045444"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004249"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教程：使用 .NET SDK 为 Azure SQL 数据编制索引
 
 配置一个[索引器](search-indexer-overview.md)，用于从 Azure SQL 数据库提取可搜索的数据，从而将其发送到 Azure 认知搜索中的搜索索引。 
 
-本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 执行以下任务：
+本教程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 执行以下任务：
 
 > [!div class="checklist"]
 > * 创建连接到 Azure SQL 数据库的数据源
@@ -78,7 +79,7 @@ ms.locfileid: "86045444"
     SELECT * FROM Hotels
     ```
 
-1. 复制数据库的 ADO.NET 连接字符串 在“设置” > “连接字符串”下，复制类似于以下示例的 ADO.NET 连接字符串。 
+1. 复制数据库的 ADO.NET 连接字符串 在“设置” > “连接字符串”下，复制类似于以下示例的 ADO.NET 连接字符串。
 
     ```sql
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -106,7 +107,7 @@ API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创�
 
 1. 在解决方案资源管理器中，打开“appsettings.json”以提供连接信息。
 
-1. 对于 `searchServiceName`，如果完整 URL 为“https://my-demo-service.search.windows.net”，则要提供的服务名称为“my-demo-service”。
+1. 对于 `searchServiceName`，如果完整 URL 为“https://my-demo-service.search.windows.net ”，则要提供的服务名称为“my-demo-service”。
 
 1. 对于 `AzureSqlConnectionString`，字符串格式如下所示：`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
@@ -144,7 +145,7 @@ public string HotelName { get; set; }
 
 主程序包含用于创建客户端、索引、数据源和索引器的逻辑。 此代码检查是否存在同一名称的资源，如果存在则会将其删除，所依据的假设是此程序可能多次运行。
 
-数据源对象是使用特定于 Azure SQL 数据库资源的设置配置的，包括[部分或增量索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，用于利用 Azure SQL 的内置[更改检测功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 Azure SQL 中的 hotels 演示数据库包含一个名为 **IsDeleted** 的“软删除”列。 如果在数据库中将此列设置为 true，则索引器会从 Azure 认知搜索索引中删除相应的文档。
+数据源对象是使用特定于 Azure SQL 数据库资源的设置配置的，包括[部分或增量索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，用于利用 Azure SQL 的内置[更改检测功能](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 Azure SQL 中的 hotels 演示数据库包含一个名为 **IsDeleted** 的“软删除”列。 如果在数据库中将此列设置为 true，则索引器会从 Azure 认知搜索索引中删除相应的文档。
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -214,7 +215,7 @@ public string HotelName { get; set; }
 
 使用 Azure 门户验证对象的创建，然后使用“搜索资源管理器”查询索引。
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中轮流打开每个列表，以验证是否已创建该对象。 “索引”、“索引器”和“数据源”分别包含“hotels”、“azure-sql-indexer”和“azure-sql”。  
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中轮流打开每个列表，以验证是否已创建该对象。 “索引”、“索引器”和“数据源”分别包含“hotels”、“azure-sql-indexer”和“azure-sql”。
 
    ![索引器和数据源磁贴](./media/search-indexer-tutorial/tiles-portal.png)
 

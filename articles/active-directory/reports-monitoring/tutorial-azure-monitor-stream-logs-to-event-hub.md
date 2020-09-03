@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74007657"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229372"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
 
@@ -35,7 +35,7 @@ ms.locfileid: "74007657"
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。 
-* 在 Azure 订阅中有事件中心命名空间和事件中心。 了解如何[创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
+* 在 Azure 订阅中有事件中心命名空间和事件中心。 了解如何[创建事件中心](../../event-hubs/event-hubs-create.md)。
 
 ## <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
 
@@ -79,19 +79,19 @@ ms.locfileid: "74007657"
     
     * **ArcSight**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅[使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)。
     
-    * **Splunk**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅[使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)。
+    * **Splunk**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅[使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
     
     * **IBM QRadar**：DSM 和 Azure 事件中心协议可以从 [IBM 支持](https://www.ibm.com/support)站点下载。 若要详细了解如何与 Azure 集成，请访问 [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) 站点。
     
     * **Sumo Logic**：若要设置 Sumo Logic 以使用事件中心的数据，请参阅[安装 Azure AD 应用并查看仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。 
 
-* **设置自定义工具**。 如果当前的 SIEM 在 Azure Monitor 诊断中不受支持，则可使用事件中心 API 设置自定义工具。 有关详细信息，请参阅[从事件中心接收消息入门](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph)。
+* **设置自定义工具**。 如果当前的 SIEM 在 Azure Monitor 诊断中不受支持，则可使用事件中心 API 设置自定义工具。 有关详细信息，请参阅[从事件中心接收消息入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)
-* [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)
+* [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)
 * [使用 Azure Monitor 将 Azure AD 日志与 SumoLogic 集成](howto-integrate-activity-logs-with-sumologic.md)
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
