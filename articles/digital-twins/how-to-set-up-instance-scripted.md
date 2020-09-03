@@ -82,7 +82,7 @@ ms.locfileid: "89181368"
 
 选择它将打开实例的 " *概述* " 页。 注意其 *名称*、 *资源组*和 *主机名*。 稍后可能需要用到它们来标识并连接到实例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 "概述" 页中的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 概述 页中的重要值":::
 
 ### <a name="collect-app-registration-values"></a>收集应用注册值 
 
