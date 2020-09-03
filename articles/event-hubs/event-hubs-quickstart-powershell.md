@@ -3,12 +3,12 @@ title: 快速入门：使用 PowerShell 创建事件中心 - Azure 事件中心
 description: 本快速入门介绍如何使用 Azure PowerShell 创建事件中心，然后使用 .NET Standard SDK 发送和接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cc82058fb55fba4b5a88ca09ad6e16bac6c82852
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074895"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933947"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建事件中心
 
@@ -63,10 +63,10 @@ New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name 
 
 在本文中，我们已创建事件中心命名空间，并使用示例应用程序从事件中心发送和接收事件。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程： 
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083553"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935307"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ ms.locfileid: "86083553"
 
 我们继续。现在应已创建了一个可以使用内置[**搜索资源管理器**](search-explorer.md)查询页查询的搜索索引。 该页提供了一个搜索框，用于测试任意查询字符串。
 
-**搜索浏览器**仅用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)，但它接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作中使用的所有搜索参数。
+**搜索浏览器**仅用于处理 [REST API 请求](/rest/api/searchservice/search-documents)，但它接受[简单查询语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档 REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作中使用的所有搜索参数。
 
 > [!TIP]
 > 以下步骤在 [Azure 认知搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)第 6 分 8 秒处开始演示。
@@ -188,7 +188,7 @@ ms.locfileid: "86083553"
 
 * **$filter** 参数返回与提供的条件匹配的结果。 在本例中，条件为评分大于 4。
 
-* 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
+* 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> 分面查询
 
@@ -207,7 +207,7 @@ ms.locfileid: "86083553"
 
 * 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
 
-* “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)。
+* “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](./search-faceted-navigation.md#filter-based-on-a-range)。
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 突出显示搜索结果
@@ -240,11 +240,11 @@ ms.locfileid: "86083553"
 
 模糊搜索和通配符搜索对搜索输出产生影响。 不会针对这些查询格式执行语言分析。 在使用模糊搜索和通配符搜索之前，请查看 [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md#stage-2-lexical-analysis)，并查找有关词法分析例外情况的部分。
 
-有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 认知搜索中的 Lucene 查询语法）。
+有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Cognitive Search](/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 认知搜索中的 Lucene 查询语法）。
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> 尝试地理空间搜索
 
-对于包含坐标的字段，支持通过 [edm.GeographyPoint 数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)执行地理空间搜索。 地域搜索是 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）中指定的一种筛选器类型。
+对于包含坐标的字段，支持通过 [edm.GeographyPoint 数据类型](/rest/api/searchservice/supported-data-types)执行地理空间搜索。 地域搜索是 [Filter OData syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）中指定的一种筛选器类型。
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>示例（地理坐标筛选器）：`search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ ms.locfileid: "86083553"
 
 本教程快速介绍了如何在 Azure 门户中使用 Azure 认知搜索。
 
-介绍了如何使用“导入数据”向导创建搜索索引； 介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
+介绍了如何使用“导入数据”向导创建搜索索引； 介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](/rest/api/searchservice/update-index)；
 
 介绍了一些基本的查询语法，在 Azure 门户中使用**搜索浏览器**通过手动示例演示筛选器、搜索词突出显示、模糊搜索和地理搜索等重要功能；
 
@@ -280,4 +280,4 @@ ms.locfileid: "86083553"
 希望优化并节省云支出？
 
 > [!div class="nextstepaction"]
-> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

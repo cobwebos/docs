@@ -3,12 +3,12 @@ title: 什么是 Azure 事件中心？ - 大数据引入服务 | Microsoft Docs
 description: 了解 Azure 事件中心 - 每秒可引入数百万个事件的大数据流式处理服务。
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522102"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927895"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -81,10 +81,10 @@ Stack 上的事件中心在公共预览期免费。 有关详细信息，请参�
 
 要开始使用事件中心，请参阅“发送和接收事件”教程  ：
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)

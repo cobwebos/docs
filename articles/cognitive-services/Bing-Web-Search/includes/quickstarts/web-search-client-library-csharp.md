@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925488"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931075"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 

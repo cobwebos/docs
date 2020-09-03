@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68779851"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278643"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什么是使用 Azure Active Directory 的混合标识？
 
@@ -36,7 +36,7 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 
 这些身份验证方法还提供[单一登录](how-to-connect-sso.md)功能。  单一登录可使连接到企业网络的企业设备上的用户自动登录。
 
-有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。 
+有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](./choose-ad-authn.md)。 
 
 ## <a name="common-scenarios-and-recommendations"></a>常见方案和建议 
 
@@ -60,7 +60,7 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 > 
 > <sup>3</sup> 使用 AD FS 的联合单一登录。  
 >  
-> <sup>4</sup> AD FS 可与企业 PKI 集成，允许使用证书登录。 这些证书可以是通过受信任预配通道（如 MDM、GPO 或智能卡证书（包括 PIV/CAC 卡）或 Hello 企业版（信任证书））部署的软证书。 有关智能卡身份验证支持的详细信息，请参阅[此博客](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)。 
+> <sup>4</sup> AD FS 可与企业 PKI 集成，允许使用证书登录。 这些证书可以是通过受信任预配通道（如 MDM、GPO 或智能卡证书（包括 PIV/CAC 卡）或 Hello 企业版（信任证书））部署的软证书。 有关智能卡身份验证支持的详细信息，请参阅[此博客](/archive/blogs/samueld/adfs-certauth-aad-o365)。 
 > 
 
 ## <a name="license-requirements-for-using-azure-ad-connect"></a>使用 Azure AD Connect 的许可证要求
@@ -73,5 +73,4 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 - [什么是密码哈希同步 (PHS)？](whatis-phs.md) 
 - [什么是直通身份验证 (PTA)？](how-to-connect-pta.md) 
 - [什么是联合身份验证？](whatis-fed.md) 
-- [什么是单一登录？](how-to-connect-sso.md) 
-
+- [什么是单一登录？](how-to-connect-sso.md)

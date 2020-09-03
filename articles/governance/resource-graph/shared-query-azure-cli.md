@@ -3,12 +3,12 @@ title: 快速入门：使用 Azure CLI 创建共享查询
 description: 本快速入门将按照步骤为 Azure CLI 启用 Resource Graph 扩展，并创建共享查询。
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: fc03339c50316516301901d84d2c5a3ba2ab287d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569384"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050941"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Resource Graph 共享查询
 
@@ -26,7 +26,7 @@ ms.locfileid: "85569384"
 
 若要使 Azure CLI 能够用于 Azure Resource Graph，则必须添加该扩展。 此扩展适用于可以使用 Azure CLI 的任何位置，包括 [Windows 10 上的 bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com)（独立的或位于门户内的）、[Azure CLI Docker 映像](https://hub.docker.com/r/microsoft/azure-cli/)，也适用于在本地安装了 Azure CLI 的任何位置。
 
-1. 请确保安装最新的 Azure CLI（至少为 2.8.0）。 若尚未安装，请遵循[这些说明](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
+1. 请确保安装最新的 Azure CLI（至少为 2.8.0）。 若尚未安装，请遵循[这些说明](/cli/azure/install-azure-cli-windows)。
 
 1. 在所选的 Azure CLI 环境中，使用 [az extension add](/cli/azure/extension#az-extension-add)，通过以下命令导入 Resource Graph 扩展：
 

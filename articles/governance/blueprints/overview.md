@@ -1,14 +1,14 @@
 ---
 title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530381"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050771"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
