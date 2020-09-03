@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0018e952516e08d6d01e2e79fea038745acadf62
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b63d487d09679e64b5a2029284471c1aa3c3b769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958297"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教程：使用 Linux 上的 Azure 应用服务和 Azure Cosmos DB 生成 Java Spring Boot Web 应用
 
-本教程将指导你完成在 Azure 上生成、配置、部署和缩放 Java Web 应用的过程。 完成本教程后，你将获得一个 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序，该应用程序可在 [Linux 上运行的 Azure 应用服务](overview.md)运行的 [Azure Cosmos DB](/azure/cosmos-db) 中存储数据。
+本教程将指导你完成在 Azure 上生成、配置、部署和缩放 Java Web 应用的过程。 完成本教程后，你将获得一个 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序，该应用程序可在 [Linux 上运行的 Azure 应用服务](overview.md)运行的 [Azure Cosmos DB](../cosmos-db/index.yml) 中存储数据。
 
 ![在 Azure Cosmos DB 中存储数据的 Spring Boot 应用程序](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
@@ -33,14 +33,14 @@ ms.locfileid: "88081965"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已在自己的计算机上安装 [Azure CLI](https://docs.microsoft.com/cli/azure/overview)。 
+* 已在自己的计算机上安装 [Azure CLI](/cli/azure/overview)。 
 * [Git](https://git-scm.com/)
 * [Java JDK](https://aka.ms/azure-jdks)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>克隆示例 TODO 应用并准备存储库
 
-本教程使用一个示例 TODO 列表应用，该应用的 Web UI 可以调用 [Spring Data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb) 支持的 Spring REST API。 [GitHub](https://github.com/Microsoft/spring-todo-app) 上提供了该应用的代码。 若要详细了解如何使用 Spring 和 Cosmos DB 编写 Java 应用，请参阅 [Spring Boot Starter 与 Azure Cosmos DB SQL API 教程](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db )和 [Spring Data Azure Cosmos DB 快速入门](https://github.com/Microsoft/spring-data-cosmosdb#quick-start)。
+本教程使用一个示例 TODO 列表应用，该应用的 Web UI 可以调用 [Spring Data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb) 支持的 Spring REST API。 [GitHub](https://github.com/Microsoft/spring-todo-app) 上提供了该应用的代码。 若要详细了解如何使用 Spring 和 Cosmos DB 编写 Java 应用，请参阅 [Spring Boot Starter 与 Azure Cosmos DB SQL API 教程](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)和 [Spring Data Azure Cosmos DB 快速入门](https://github.com/Microsoft/spring-data-cosmosdb#quick-start)。
 
 
 在终端中运行以下命令，以克隆示例存储库并设置示例应用环境。
@@ -310,7 +310,7 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>后续步骤
 
 [面向 Java 开发人员的 Azure](/java/azure/)
-[Spring Boot](https://spring.io/projects/spring-boot)，[Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)，[Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) 和 [Linux 版应用服务](overview.md)。
+[Spring Boot](https://spring.io/projects/spring-boot)，[Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)，[Azure Cosmos DB](../cosmos-db/introduction.md) 和 [Linux 版应用服务](overview.md)。
 
 在开发人员指南中详细了解在 Linux 上的应用服务中运行 Java 应用。
 
