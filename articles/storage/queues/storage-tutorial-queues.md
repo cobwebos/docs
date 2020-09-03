@@ -8,23 +8,24 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
-ms.openlocfilehash: 73bc21307ff0648b7e0aab7611e57f6fa60a806b
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84809561"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008788"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>教程：在 .NET 中使用 Azure 存储队列
 
 Azure 队列存储实现基于云的队列以在分布式应用程序的组件之间实现通信。 每个队列维护一个可由发送方组件添加的、由接收方组件处理的消息列表。 使用队列时，应用程序可根据需求立即缩放。 本文介绍有关使用 Azure 存储队列的基本步骤。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
 > - 创建 Azure 存储帐户
-> - 创建应用
+> - 创建应用程序
 > - 添加 Azure 客户端库
 > - 支持异步代码的支持
 > - 创建队列
@@ -300,7 +301,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    dotnet run First queue message
    ```
 
-   应该会看到以下输出：
+   你应该会看到以下输出：
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message

@@ -7,18 +7,18 @@ ms.author: msangapu
 keywords: azure 应用服务, web 应用, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212939"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958450"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自定义容器将自定义软件迁移到 Azure 应用服务
 
 ::: zone pivot="container-windows"  
 
-[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)）。 但是，通过在应用服务（预览版）中使用自定义 Windows 容器，可以作出应用所需的 OS 更改，因此可轻松迁移需要自定义 OS 和软件配置的本地应用。 本教程演示如何将使用 Windows 字体库中安装的自定义字体的 ASP.NET 应用迁移到应用服务。 你将自定义配置的 Windows 映像从 Visual Studio 部署到 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)，然后在应用服务中运行它。
+[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)）。 但是，通过在应用服务（预览版）中使用自定义 Windows 容器，可以作出应用所需的 OS 更改，因此可轻松迁移需要自定义 OS 和软件配置的本地应用。 本教程演示如何将使用 Windows 字体库中安装的自定义字体的 ASP.NET 应用迁移到应用服务。 你将自定义配置的 Windows 映像从 Visual Studio 部署到 [Azure 容器注册表](../container-registry/index.yml)，然后在应用服务中运行它。
 
 ![显示在 Windows 容器中运行的 Web 应用。](media/tutorial-custom-container/app-running.png)
 
@@ -92,7 +92,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 ## <a name="publish-to-azure-container-registry"></a>发布到 Azure 容器注册表
 
-[Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)可以存储用于容器部署的映像。 可以将应用服务配置为使用 Azure 容器注册表中托管的映像。
+[Azure 容器注册表](../container-registry/index.yml)可以存储用于容器部署的映像。 可以将应用服务配置为使用 Azure 容器注册表中托管的映像。
 
 ### <a name="open-publish-wizard"></a>打开发布向导
 
@@ -439,7 +439,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     
     有关此环境变量的详细信息，请参阅[示例 GitHub 存储库中的自述文件](https://github.com/Azure-Samples/docker-django-webapp-linux)。
 
-1. 使用 [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令为 web 应用启用[托管标识](/azure/app-service/overview-managed-identity)：
+1. 使用 [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令为 web 应用启用[托管标识](./overview-managed-identity.md)：
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -466,7 +466,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     - 将 `<registry-name>` 替换为容器注册表的名称
     - 将 `<subscription-id>` 替换为从 `az account show` 命令检索到的订阅 ID
 
-有关这些权限的详细信息，请参阅[什么是 Azure 基于角色的访问控制](/azure/role-based-access-control/overview)和 
+有关这些权限的详细信息，请参阅[什么是 Azure 基于角色的访问控制](../role-based-access-control/overview.md)和 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>部署映像并测试应用
 

@@ -8,18 +8,19 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705888"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002856"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
 如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 本 C# 教程对图像应用光学字符识别 (OCR)，并执行自然语言处理来创建可在查询、分面和筛选器中利用的新字段。
 
-本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 执行以下任务：
+本教程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 执行以下任务：
 
 > [!div class="checklist"]
 > * 从 Azure Blob 存储中的应用程序文件和图像开始。
@@ -127,7 +128,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-[Azure 认知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 由一些客户端库组成。借助这些库，不仅可以管理索引、数据源、索引器和技能集，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
+[Azure 认知搜索 .NET SDK](/dotnet/api/overview/azure/search) 由一些客户端库组成。借助这些库，不仅可以管理索引、数据源、索引器和技能集，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
 
 对于此项目，请安装版本 9 或更高版本的 `Microsoft.Azure.Search` NuGet 包。
 
@@ -680,7 +681,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-若要详细了解如何定义索引，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+若要详细了解如何定义索引，请参阅[创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)。
 
 ### <a name="step-4-create-and-run-an-indexer"></a>步骤 4：创建并运行索引器
 
@@ -905,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) 属性返回多个字段。
+针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) 属性返回多个字段。
 
 <a name="reset"></a>
 
