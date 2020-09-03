@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: dc4c348315dce59d5eaf58046c9a8d8f7f2e3725
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c8d7b13f9e35a41a414a44c908997cfcc550af41
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313670"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011729"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Linux 虚拟机
 
@@ -192,4 +192,4 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 请转到下一教程来了解 Azure 安全中心。
 
 > [!div class="nextstepaction"]
-> [管理 VM 安全性](../../security/fundamentals/overview.md)
+> [管理 VM 安全性](tutorial-azure-security.md)

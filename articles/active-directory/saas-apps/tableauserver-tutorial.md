@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546578"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tableau Server 集成
 
@@ -141,7 +141,7 @@ ms.locfileid: "88546578"
 
     b. 选中“为服务器启用 SAML 身份验证”复选框。
 
-    c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 <http://tableau_server>。 但不建议使用 `http://localhost`。 不支持使用带尾部反斜杠的 URL（例如 `http://tableau_server/`）。 复制“Tableau Server 返回 URL”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“登录 URL”文本框中  。
+    c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 `http://tableau_server`。 但不建议使用 `http://localhost`。 不支持使用带尾部反斜杠的 URL（例如 `http://tableau_server/`）。 复制“Tableau Server 返回 URL”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“登录 URL”文本框中  。
 
     d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 复制“SAML 实体 ID”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中  。
 
