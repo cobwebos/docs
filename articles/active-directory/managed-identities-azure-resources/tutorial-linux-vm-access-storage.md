@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识访问 Azure 存储 - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75971918"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263155"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -44,7 +44,7 @@ ms.locfileid: "75971918"
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
 - 通过 Azure 门户或每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。 
-- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -95,7 +95,7 @@ ms.locfileid: "75971918"
 
 Azure 存储原生支持 Azure AD 身份验证，因此可以直接接受使用托管标识获取的访问令牌。 在某种程度上，这是将 Azure 存储与 Azure AD 集成，不同于在连接字符串中提供凭据。
 
-若要完成以下步骤，需在此前创建的 VM 中工作，并且需要一个可以连接到它的 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](~/articles/virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成以下步骤，需在此前创建的 VM 中工作，并且需要一个可以连接到它的 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](/windows/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](~/articles/virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Linux 虚拟机，然后在“概览”  页中单击“连接”  。 复制用于连接到 VM 的字符串。
 2. 使用所选的 SSH 客户端连接  到 VM。 
@@ -121,4 +121,4 @@ Azure 存储原生支持 Azure AD 身份验证，因此可以直接接受使用�
 本教程介绍了如何启用 Linux VM 系统分配的托管标识来访问 Azure 存储。  若要详细了解 Azure 存储，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure 存储](/azure/storage/common/storage-introduction)
+> [Azure 存储](../../storage/common/storage-introduction.md)

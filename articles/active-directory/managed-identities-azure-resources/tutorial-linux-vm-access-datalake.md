@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识访问 Azure Data Lake Store - Linux - Azure A
 description: 本教程介绍了如何使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0fe442741ae0b8fa817c9ea177ff244a413720e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d465419dfe36fd5dd67abdef22a6f54fba69a98e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75888509"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267456"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store
 
@@ -40,7 +40,7 @@ ms.locfileid: "75888509"
 
 ## <a name="grant-access"></a>授予访问权限
 
-此部分介绍如何授予 VM 对 Azure Data Lake Store 中的文件和文件夹的访问权限。 对于此步骤，可以使用现有的 Data Lake Store 实例，或创建新的实例。 若要使用 Azure 门户创建 Data Lake Store 实例，请遵循 [Azure Data Lake Store 快速入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。 [Azure Data Lake Store 文档](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
+此部分介绍如何授予 VM 对 Azure Data Lake Store 中的文件和文件夹的访问权限。 对于此步骤，可以使用现有的 Data Lake Store 实例，或创建新的实例。 若要使用 Azure 门户创建 Data Lake Store 实例，请遵循 [Azure Data Lake Store 快速入门](../../data-lake-store/data-lake-store-get-started-portal.md)。 [Azure Data Lake Store 文档](../../data-lake-store/data-lake-store-overview.md)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
 在 Data Lake Store 中，新建一个文件夹，并向 Linux VM 系统分配的托管标识授予在该文件夹中读取、写入和执行文件的权限：
 
@@ -56,18 +56,18 @@ ms.locfileid: "75888509"
 10. 与执行步骤 5 时一样，选择“添加”。  在“选择”框中，输入 VM 的名称。  从搜索结果中选择自己的 VM，然后单击“选择”  。
 11. 与执行步骤 6 时一样，选择“选择权限”。  选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”      。 选择“确定”  。  权限应已成功添加。
 
-Azure 资源的托管标识现在可以对你创建的文件夹中的文件执行所有操作。 若要详细了解管理 Data Lake Store 的访问权限，请参阅 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)。
+Azure 资源的托管标识现在可以对你创建的文件夹中的文件执行所有操作。 若要详细了解管理 Data Lake Store 的访问权限，请参阅 [Data Lake Store 中的访问控制](../../data-lake-store/data-lake-store-access-control.md)。
 
 ## <a name="get-an-access-token"></a>获取访问令牌 
 
-此部分介绍如何获取访问令牌并调用 Data Lake Store 文件系统。 Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接接受使用 Azure 资源的托管标识获取的访问令牌。 若要在 Data Lake Store 文件系统中进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点。 授权标头的访问令牌采用“Bearer \<ACCESS_TOKEN_VALUE\>”格式。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请参阅[使用 Azure Active Directory 在 Data Lake Store 中进行身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)。
+此部分介绍如何获取访问令牌并调用 Data Lake Store 文件系统。 Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接接受使用 Azure 资源的托管标识获取的访问令牌。 若要在 Data Lake Store 文件系统中进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点。 授权标头的访问令牌采用“Bearer \<ACCESS_TOKEN_VALUE\>”格式。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请参阅[使用 Azure Active Directory 在 Data Lake Store 中进行身份验证](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)。
 
 本教程通过使用 cURL 发出 REST 请求，对 Data Lake Store 文件系统的 REST API 进行身份验证。
 
 > [!NOTE]
 > Data Lake Store 文件系统的客户端 SDK 目前不支持 Azure 资源的托管标识。
 
-若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如需有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](/windows/wsl/about)中使用 SSH 客户端。 如需有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在门户中，浏览到自己的 Linux VM。 在“概述”中，选择“连接”。    
 2. 使用所选的 SSH 客户端连接到该 VM。 
@@ -155,4 +155,4 @@ Azure 资源的托管标识现在可以对你创建的文件夹中的文件执�
 本教程介绍了如何使用 Linux VM 系统分配的托管标识来访问 Azure Data Lake Store。 若要了解有关 Azure Data Lake Store 的详细信息，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

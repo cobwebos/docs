@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 882188c638c77fa0055f1c2d2e664d97a4fe9359
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213708"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962258"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
@@ -37,7 +37,7 @@ ms.locfileid: "88213708"
 > * 使用 Azure AD 身份验证从 Visual Studio 连接到 SQL 数据库
 
 > [!NOTE]
->在本地 Active Directory 域服务 (AD DS) 中，Azure AD 身份验证不同于[集成式 Windows 身份验证](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))。 AD DS 和 Azure AD 使用的身份验证协议完全不相同。 有关详细信息，请参阅 [Azure AD 域服务文档](https://docs.microsoft.com/azure/active-directory-domain-services/)。
+>在本地 Active Directory 域服务 (AD DS) 中，Azure AD 身份验证不同于[集成式 Windows 身份验证](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))。 AD DS 和 Azure AD 使用的身份验证协议完全不相同。 有关详细信息，请参阅 [Azure AD 域服务文档](../active-directory-domain-services/index.yml)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -83,7 +83,7 @@ Visual Studio for Windows 集成了 Azure AD 身份验证。 若要在 Visual St
 
 ### <a name="macos-client"></a>macOS 客户端
 
-Visual Studio for Mac 未集成 Azure AD 身份验证。 不过，稍后将使用的 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 库可以使用 Azure CLI 中的令牌。 若要在 Visual Studio 中启用开发和调试，首先需要在本地计算机上[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+Visual Studio for Mac 未集成 Azure AD 身份验证。 不过，稍后将使用的 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 库可以使用 Azure CLI 中的令牌。 若要在 Visual Studio 中启用开发和调试，首先需要在本地计算机上[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 在本地计算机上安装 Azure CLI 后，请使用 Azure AD 用户通过以下命令登录 Azure CLI：
 

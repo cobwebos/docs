@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420628"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998520"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>教程：使用 .NET SDK 对搜索结果排序
 
@@ -462,8 +462,8 @@ ms.locfileid: "87420628"
 
 4. 现在，必须将这些概念关联起来。 但是，我们的教程中讲到了这些代码片段，而构建基于映射的应用这一操作留给读者做练习。 要进一步了解此示例，请考虑输入一个带半径的城市名，或者在地图上找一个点，然后选择一个半径。 要进一步探讨这些选项，请参阅以下资源：
 
-* [Azure Maps 文档](https://docs.microsoft.com/azure/azure-maps/)
-* [使用 Azure Maps 搜索服务查找地址](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Azure Maps 文档](../azure-maps/index.yml)
+* [使用 Azure Maps 搜索服务查找地址](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>根据计分概要文件对结果排序
 
@@ -959,7 +959,7 @@ ms.locfileid: "87420628"
 
 ### <a name="resources"></a>资源
 
-有关详细信息，请参阅下面的[将计分概要文件添加到 Azure 认知搜索索引](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)。
+有关详细信息，请参阅下面的[将计分概要文件添加到 Azure 认知搜索索引](/azure/search/index-add-scoring-profiles)。
 
 ## <a name="takeaways"></a>要点
 
@@ -975,4 +975,4 @@ ms.locfileid: "87420628"
 
 你已学完本系列的 C# 教程，应该已经找到了有关 Azure 认知搜索 API 的宝贵知识。
 
-有关进一步的参考和教程，请考虑浏览 [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) 或 [Azure 认知搜索文档](https://docs.microsoft.com/azure/search/)中的其他教程。
+有关进一步的参考和教程，请考虑浏览 [Microsoft Learn](/learn/browse/?products=azure) 或 [Azure 认知搜索文档](./index.yml)中的其他教程。

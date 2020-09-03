@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: 介绍如何使用 Azure 媒体服务 v3 上载文件、对视频编码和流式传输内容的教程。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 2c2d55b15fb69fe4c1aea21bb2183f0e40c3586c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136484"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256756"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 对视频进行上载、编码和流式传输
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。

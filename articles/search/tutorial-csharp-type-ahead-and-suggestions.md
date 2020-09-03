@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420594"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998435"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教程：使用 .NET SDK 添加自动完成和建议功能
 
@@ -145,7 +145,7 @@ ms.locfileid: "87420594"
  
     ![在将 fuzzy 设置为 true 后，键入“pa”](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    如果感兴趣，可阅读 [Azure 认知搜索中的 Lucene 查询语法](https://docs.microsoft.com/azure/search/query-lucene-syntax)，其中详细介绍了模糊搜索使用的逻辑。
+    如果感兴趣，可阅读 [Azure 认知搜索中的 Lucene 查询语法](./query-lucene-syntax.md)，其中详细介绍了模糊搜索使用的逻辑。
 
 ## <a name="add-highlighting-to-the-suggestions"></a>为建议添加突出显示
 
@@ -244,7 +244,7 @@ ms.locfileid: "87420594"
 
     请注意，在自动完成功能搜索中使用的函数是名为“sg”的 suggester  函数，与为建议用的函数一样（仅尝试自动完成酒店名称）。
 
-    有一系列 AutocompleteMode  设置，这里使用 OneTermWithContext  。 有关其他选项的说明，请参阅[自动完成 API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。
+    有一系列 AutocompleteMode  设置，这里使用 OneTermWithContext  。 有关其他选项的说明，请参阅[自动完成 API](/rest/api/searchservice/autocomplete)。
 
 4. 运行应用。 请注意，下拉列表中显示的一系列选项都是单个词语。 请尝试键入“re”开头的单词。 请注意选项数是如何随键入字母的增加而减少的。
 
@@ -464,5 +464,3 @@ ms.locfileid: "87420594"
 
 > [!div class="nextstepaction"]
 > [C# 教程：使用 facet 辅助导航 - Azure 认知搜索](tutorial-csharp-facets.md)
-
-

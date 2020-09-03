@@ -3,19 +3,19 @@ title: Azure 资源管理器模板示例 - Azure Front Door
 description: 了解适用于 Azure Front Door 的资源管理器模板示例，包括用于创建基本 Front Door 和配置 Front Door 速率限制的模板。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
-ms.author: sharadag
-ms.openlocfilehash: 14f9cb33ce298b97ead0f6d7fbec0ad77e79a1ee
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.author: duau
+ms.openlocfilehash: 961214b3a815eb8ae9b0fcb283599b3474d4706e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182181"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399355"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>适用于 Front Door 的 Azure 资源管理器部署模型模板
 

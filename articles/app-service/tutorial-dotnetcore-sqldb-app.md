@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 10182abb99788e4974e08c9bfc5c9c53df2a201b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 27b01a86d1bc44b5adb977f10339a0f2d56a64d4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212935"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958501"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -63,7 +63,7 @@ git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
 cd dotnetcore-sqldb-tutorial
 ```
 
-此示例项目包含使用 [Entity Framework Core](https://docs.microsoft.com/ef/core/) 的基本 CRUD（创建-读取-更新-删除）应用。
+此示例项目包含使用 [Entity Framework Core](/ef/core/) 的基本 CRUD（创建-读取-更新-删除）应用。
 
 ### <a name="run-the-application"></a>运行应用程序
 
@@ -126,7 +126,7 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 
 ### <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../azure-sql/database/firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>创建数据库
 
-使用 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) 命令在服务器中创建 [S0 性能级别](../sql-database/sql-database-service-tiers-dtu.md)的数据库。
+使用 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) 命令在服务器中创建 [S0 性能级别](../azure-sql/database/service-tiers-dtu.md)的数据库。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -459,12 +459,12 @@ git push azure master
 
 当 ASP.NET Core 应用在 Azure 应用服务中运行时，可以将控制台日志传输到 Cloud Shell。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
-示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)中的指南，并且进行了两个配置更改：
+示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging#azure-app-service-provider)中的指南，并且进行了两个配置更改：
 
 - 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
 - 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
-若要将应用服务中的 ASP.NET Core [日志级别](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
+若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
@@ -484,7 +484,7 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
 
-有关自定义 ASP.NET Core 日志的详细信息，请参阅 [ASP.NET Core 中的日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
+有关自定义 ASP.NET Core 日志的详细信息，请参阅 [ASP.NET Core 中的日志记录](/aspnet/core/fundamentals/logging)。
 
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 

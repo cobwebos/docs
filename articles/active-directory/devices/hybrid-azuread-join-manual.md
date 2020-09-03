@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428376"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268547"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -39,7 +39,7 @@ ms.locfileid: "87428376"
 
 本教程假定你熟悉以下内容：
 
-* [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)
+* [Azure Active Directory 中的设备管理简介](./overview.md)
 * [计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)
 * [控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
 
@@ -94,7 +94,7 @@ Azure AD Connect：
 
 在注册过程中，设备使用服务连接点 (SCP) 对象来发现 Azure AD 租户信息。 在本地 Active Directory 实例中，计算机林的配置命名上下文分区中必须存在用于加入混合 Azure AD 的设备的 SCP 对象。 每个林只有一个配置命名上下文。 在多林 Active Directory 配置中，服务连接点必须存在于所有包含已加入域的计算机的林中。
 
-可以使用 [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) cmdlet 来检索林的配置命名上下文。  
+可以使用 [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) cmdlet 来检索林的配置命名上下文。  
 
 对于具有 Active Directory 域名 *fabrikam.com* 的林，配置命名上下文是：
 
@@ -167,7 +167,7 @@ cmdlet：
 
 在前面的脚本中，`$verifiedDomain = "contoso.com"` 为占位符。 将它替换为 Azure AD 中的已验证域名之一。 需要先拥有域，然后才能使用它。
 
-若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。
+若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。
 
 若要获取已验证的公司域的列表，可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) cmdlet。
 
@@ -326,7 +326,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 在前面的声明中，`<verified-domain-name>` 为占位符。 将它替换为 Azure AD 中的已验证域名之一。 例如，使用 `Value = "http://contoso.com/adfs/services/trust/"`。
 
-若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。  
+若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。  
 
 若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet。
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 如果在对已加入域的 Windows 设备完成混合 Azure AD 加入时遇到问题，请参阅：
 
-- [使用 dsregcmd 命令排查设备问题](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [使用 dsregcmd 命令排查设备问题](./troubleshoot-device-dsregcmd.md)
 - [排查已加入混合 Azure Active Directory 的设备的问题](troubleshoot-hybrid-join-windows-current.md)
 - [排查已加入混合 Azure Active Directory 的下层设备问题](troubleshoot-hybrid-join-windows-legacy.md)
 
