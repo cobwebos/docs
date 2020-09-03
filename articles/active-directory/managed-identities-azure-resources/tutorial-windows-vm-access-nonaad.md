@@ -3,7 +3,7 @@ title: 教程：使用托管标识访问 Azure Key Vault - Windows - Azure AD
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7648f0c41731968c6cf8d2b2b2e55fffd9b5f53d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2890eb2211ac0a105363742a0e900e52a577ed27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018768"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255819"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -75,7 +75,7 @@ ms.locfileid: "87018768"
  
 ## <a name="access-data"></a>访问数据  
 
-本部分介绍如何使用 VM 标识获取访问令牌并使用它从 Key Vault 中检索机密。 如果未安装 PowerShell 4.3.1 或更高版本，则需要[下载并安装最新版本](https://docs.microsoft.com/powershell/azure/)。
+本部分介绍如何使用 VM 标识获取访问令牌并使用它从 Key Vault 中检索机密。 如果未安装 PowerShell 4.3.1 或更高版本，则需要[下载并安装最新版本](/powershell/azure/)。
 
 首先，我们使用 VM 的系统分配托管标识获取访问令牌，向 Key Vault 证明身份：
  
@@ -128,4 +128,4 @@ ms.locfileid: "87018768"
 在本教程中，你已学习了如何使用 Windows VM 系统分配的托管标识来访问 Azure Key Vault。  若要详细了解 Azure Key Vault，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-overview)
+>[Azure Key Vault](../../key-vault/general/overview.md)

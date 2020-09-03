@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559011"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929697"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON Blob 编制索引
 
 Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引器](search-indexer-overview.md)来编制 Azure blob 存储中 JSON 文档和数组的索引。 半结构化数据包含用于分隔数据中的内容的标记或标签。 它的本质是提供必须全面索引的非结构化数据和符合数据模型的正式结构化数据之间的一个折中，例如可以按字段编制索引的关系数据库架构。
 
-本教程使用 Postman 和[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 执行以下任务：
+本教程使用 Postman 和[搜索 REST API](/rest/api/searchservice/) 执行以下任务：
 
 > [!div class="checklist"]
 > * 为 Azure blob 容器配置 Azure 认知搜索数据源
@@ -31,7 +31,7 @@ Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引�
 
 ## <a name="prerequisites"></a>先决条件
 
-+ [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure 存储](../storage/common/storage-account-create.md)
 + [Postman 桌面应用](https://www.getpostman.com/)
 + [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -72,7 +72,7 @@ Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引�
 
 1. 单击“Blob”服务。 
 
-1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可将“公共访问级别”设为任何有效值。
+1. [创建一个 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)用于包含示例数据。 可将“公共访问级别”设为任何有效值。
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。
 
@@ -116,7 +116,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
 
 ## <a name="3---create-a-data-source"></a>3 - 创建数据源
 
-[创建数据源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 可创建一个 Azure 认知搜索对象，用于指定要编制索引的数据。
+[创建数据源 API](/rest/api/searchservice/create-data-source) 可创建一个 Azure 认知搜索对象，用于指定要编制索引的数据。
 
 1. 请将此调用的终结点设置为 `https://[service name].search.windows.net/datasources?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。 
 
@@ -159,7 +159,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
 
 ## <a name="4---create-an-index"></a>4 - 创建索引
     
-第二次调用的是[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
+第二次调用的是[创建索引 API](/rest/api/searchservice/create-index)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
 
 1. 请将此调用的终结点设置为 `https://[service name].search.windows.net/indexes?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。
 
@@ -234,7 +234,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
 
 ## <a name="5---create-and-run-an-indexer"></a>5 - 创建并运行索引器
 
-索引器连接到数据源，将数据导入目标搜索索引，并选择性地提供一个计划来自动执行数据刷新。 REST API 为[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+索引器连接到数据源，将数据导入目标搜索索引，并选择性地提供一个计划来自动执行数据刷新。 REST API 为[创建索引器](/rest/api/searchservice/create-indexer)。
 
 1. 请将此调用的 URI 设置为 `https://[service name].search.windows.net/indexers?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。
 

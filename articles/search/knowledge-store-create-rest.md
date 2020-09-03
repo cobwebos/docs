@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/02/2020
-ms.openlocfilehash: 51422be944d514de398d4bfa424679e2f6d531b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534747"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924259"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
 
@@ -36,7 +36,7 @@ ms.locfileid: "87534747"
 
 1. [下载 HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 此数据是保存在某个 CSV 文件中的酒店评论数据（源自 Kaggle.com），其中包含客户对一家酒店的 19 条反馈。 
 
-1. [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或在当前订阅下[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 你将使用 Azure 存储来保存要导入的原始内容，并使用知识存储（最终结果）。
+1. [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)，或在当前订阅下[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 你将使用 Azure 存储来保存要导入的原始内容，并使用知识存储（最终结果）。
 
    选择“StorageV2 (常规用途 V2)”帐户类型。
 

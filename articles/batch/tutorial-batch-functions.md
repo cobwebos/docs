@@ -5,13 +5,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
-ms.custom: mvc
-ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85963846"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930088"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教程：使用 Azure Functions 触发批处理作业
 

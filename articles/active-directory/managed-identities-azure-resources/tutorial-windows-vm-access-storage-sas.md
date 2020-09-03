@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识通过 SAS 凭据访问 Azure 存储 - Azure A
 description: 本教程介绍了如何使用 Windows VM 系统分配的托管标识通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ca5ec32e1f88572812b19cf08d4c6f9dc70af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018564"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255811"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 系统分配的托管标识通过 SAS 凭据访问 Azure 存储
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用系统分配的标识为 Windows 虚拟机 (VM) 获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
+本教程介绍如何使用系统分配的标识为 Windows 虚拟机 (VM) 获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
 
 服务 SAS 提供了在不公开帐户访问密钥的情况下授权特定的服务（在我们的示例中为 blob 服务）在有限时间内访问存储帐户中对象的权限。 可以像平常在执行存储操作时一样使用 SAS 凭据，例如使用存储 SDK 时。 对于本教程，我们将演示使用 Azure 存储 PowerShell 上传和下载 blob。 将了解如何执行以下操作：
 
@@ -83,7 +83,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托�
 
 在本教程的剩余部分中，我们从先前创建的 VM 入手。
 
-在此部分中，将需要使用 Azure 资源管理器 PowerShell cmdlet。  如果尚未安装，请[下载最新版本](https://docs.microsoft.com/powershell/azure/)，然后再继续。
+在此部分中，将需要使用 Azure 资源管理器 PowerShell cmdlet。  如果尚未安装，请[下载最新版本](/powershell/azure/)，然后再继续。
 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Windows 虚拟机，然后在“概述”页中单击顶部的“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。 
@@ -205,6 +205,4 @@ Name              : testblob
 在本教程中，你已学习了如何使用 Windows VM 系统分配的托管标识通过 SAS 凭据来访问 Azure 存储。  若要深入了解 Azure 存储 SAS，请参阅：
 
 > [!div class="nextstepaction"]
->[使用共享访问签名 (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-
-
+>[使用共享访问签名 (SAS)](../../storage/common/storage-sas-overview.md)

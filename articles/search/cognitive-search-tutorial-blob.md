@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503296"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936004"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
 如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 REST 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
 
-本教程使用 Postman 和[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 执行以下任务：
+本教程使用 Postman 和[搜索 REST API](/rest/api/searchservice/) 执行以下任务：
 
 > [!div class="checklist"]
 > * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、HTML、DOCX 和 PPTX）着手。
@@ -135,7 +135,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
-[数据源对象](https://docs.microsoft.com/rest/api/searchservice/create-data-source)为包含文件的 Blob 容器提供连接字符串。
+[数据源对象](/rest/api/searchservice/create-data-source)为包含文件的 Blob 容器提供连接字符串。
 
 1. 使用 **POST** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）。
 
@@ -165,7 +165,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="step-2-create-a-skillset"></a>步骤 2：创建技能集
 
-[技能集对象](https://docs.microsoft.com/rest/api/searchservice/create-skillset)是应用到内容的一组扩充步骤。 
+[技能集对象](/rest/api/searchservice/create-skillset)是应用到内容的一组扩充步骤。 
 
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）。
 
@@ -250,7 +250,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="step-3-create-an-index"></a>步骤 3：创建索引
 
-[索引](https://docs.microsoft.com/rest/api/searchservice/create-index)提供所需的架构用于在反向索引中创建内容的实际表达形式，以及在 Azure 认知搜索中创建其他构造。 索引的最大组件是字段集合，其中的数据类型和属性确定了 Azure 认知搜索中的内容和行为。
+[索引](/rest/api/searchservice/create-index)提供所需的架构用于在反向索引中创建内容的实际表达形式，以及在 Azure 认知搜索中创建其他构造。 索引的最大组件是字段集合，其中的数据类型和属性确定了 Azure 认知搜索中的内容和行为。
 
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引。
 
@@ -334,7 +334,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="step-4-create-and-run-an-indexer"></a>步骤 4：创建并运行索引器
 
-[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)驱动管道。 到目前为止创建的三个组件（数据源、技能集、索引）是索引器的输入。 在 Azure 认知搜索中创建索引器是运转整个管道的事件。 
+[索引器](/rest/api/searchservice/create-indexer)驱动管道。 到目前为止创建的三个组件（数据源、技能集、索引）是索引器的输入。 在 Azure 认知搜索中创建索引器是运转整个管道的事件。 
 
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引器。
 
@@ -486,7 +486,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-这些查询演示了对认知搜索创建的新字段使用查询语法和筛选器的多种方式。 有关更多查询示例，请参阅[搜索文档 REST API 中的示例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[简单语法查询示例](search-query-simple-examples.md)和[完整 Lucene 查询示例](search-query-lucene-examples.md)。
+这些查询演示了对认知搜索创建的新字段使用查询语法和筛选器的多种方式。 有关更多查询示例，请参阅[搜索文档 REST API 中的示例](/rest/api/searchservice/search-documents#bkmk_examples)、[简单语法查询示例](search-query-simple-examples.md)和[完整 Lucene 查询示例](search-query-lucene-examples.md)。
 
 <a name="reset"></a>
 

@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识访问 Azure 资源管理器 - Windows - Azure
 description: 本教程介绍了使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977838"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255691"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
 
@@ -45,9 +45,9 @@ ms.locfileid: "75977838"
 
 - [登录到 Azure 门户](https://portal.azure.com)
 
-- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
+- [创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md)
 
-- 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
+- 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - [安装最新版本的 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
 - 运行 `Connect-AzAccount`，创建与 Azure 的连接。
 - 安装[最新版本的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
@@ -163,4 +163,4 @@ CanDelegate: False
 在本教程中，你已学习了如何创建用户分配的标识，并将其附加到 Azure 虚拟机以访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)
+>[Azure 资源管理器](../../azure-resource-manager/management/overview.md)

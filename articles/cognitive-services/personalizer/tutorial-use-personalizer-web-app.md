@@ -3,12 +3,13 @@ title: 使用 Web 应用 - 个性化体验创建服务
 description: 自定义具有个性化体验创建服务循环的 C# .NET Web 应用，以根据操作（包含特征）和上下文特征向用户提供正确的内容。
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446360"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935613"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教程：向 .NET Web 应用添加个性化体验创建服务
 

@@ -1,14 +1,14 @@
 ---
 title: NIST SP 800-53 R4 蓝图示例概述
 description: NIST SP 800-53 R4 蓝图示例的概述。 此蓝图示例可帮助客户评估特定 NIST SP 800-53 R4 控制要求。
-ms.date: 05/14/2020
+ms.date: 08/27/2020
 ms.topic: sample
-ms.openlocfilehash: 20ea6e81746a07db85a00a0881744340b2a24d1f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f40451e1e82833aba4f626052e708f2c1136f832
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042656"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048765"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例
 
@@ -33,7 +33,7 @@ NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure 
 
 首先，通过使用示例作为起点在环境中创建新的蓝图，来实现蓝图示例。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
 1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
 
@@ -62,7 +62,7 @@ NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure 
 
 成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 

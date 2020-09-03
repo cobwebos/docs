@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识访问 Azure SQL 数据库 - Windows - Azure A
 description: 本教程将指导你完成使用 Windows VM 系统分配托管标识访问 Azure SQL 数据库的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920382"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255743"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -44,7 +44,7 @@ ms.locfileid: "85920382"
 
 ## <a name="grant-access"></a>授予访问权限
 
-若要授予 VM 对 Azure SQL 数据库中数据库的访问权限，可以使用现有[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)，或创建新的 SQL Server。 若要使用 Azure 门户创建新的服务器和数据库，请遵循此 [Azure SQL 快速入门](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)。 [Azure SQL 文档](https://docs.microsoft.com/azure/sql-database/)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
+若要授予 VM 对 Azure SQL 数据库中数据库的访问权限，可以使用现有[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)，或创建新的 SQL Server。 若要使用 Azure 门户创建新的服务器和数据库，请遵循此 [Azure SQL 快速入门](../../azure-sql/database/single-database-create-quickstart.md)。 [Azure SQL 文档](/azure/sql-database/)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
 授予 VM 对数据库的访问权限需要执行两个步骤：
 
@@ -53,7 +53,7 @@ ms.locfileid: "85920382"
 
 ### <a name="enable-azure-ad-authentication"></a>启用 Azure AD 身份验证
 
-[配置 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure)：
+[配置 Azure AD 身份验证](../../azure-sql/database/authentication-aad-configure.md)：
 
 1. 在 Azure 门户的左侧导航栏中选择“SQL 服务器”。
 2. 单击要启用 Azure AD 身份验证的 SQL 服务器。
@@ -64,10 +64,10 @@ ms.locfileid: "85920382"
 
 ### <a name="create-contained-user"></a>创建包含用户
 
-本部分介绍如何在数据库中创建一个表示 VM 的系统分配标识的包含用户。 在此步骤中，需要使用 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
+本部分介绍如何在数据库中创建一个表示 VM 的系统分配标识的包含用户。 在此步骤中，需要使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
 
-- [SQL 数据库和 Azure Synapse Analytics 的通用身份验证（SSMS 对 MFA 的支持）](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [使用 SQL 数据库或 Azure Synapse Analytics 配置和管理 Azure Active Directory 身份验证](/azure/sql-database/sql-database-aad-authentication-configure)
+- [SQL 数据库和 Azure Synapse Analytics 的通用身份验证（SSMS 对 MFA 的支持）](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [使用 SQL 数据库或 Azure Synapse Analytics 配置和管理 Azure Active Directory 身份验证](../../azure-sql/database/authentication-aad-configure.md)
 
 SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（例如用户、组和服务主体（应用程序））以及启用了托管标识的 VM 名称必须在 AAD 中针对其显示名称是唯一定义的。 SQL DB 在使用 T-SQL 创建此类用户期间会检查 AAD 显示名称，如果它不唯一，则命令将无法请求为给定帐户提供唯一的 AAD 显示名称。
 
@@ -208,4 +208,4 @@ if (accessToken != null) {
 本教程介绍了如何使用系统分配托管标识来访问 Azure SQL 数据库。 要了解有关 Azure SQL 数据库的详细信息，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure SQL 数据库](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)

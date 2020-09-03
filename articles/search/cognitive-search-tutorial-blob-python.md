@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dfa105b7af146086da6b72dd55f6fe679832f44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845045"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936021"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 Python 和 AI 从 Azure Blob 生成可搜索的内容
 
 如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 Python 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
 
-本教程使用 Python 和[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 执行以下任务：
+本教程使用 Python 和[搜索 REST API](/rest/api/searchservice/) 执行以下任务：
 
 > [!div class="checklist"]
 > * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、HTML、DOCX 和 PPTX）着手。
@@ -163,7 +163,7 @@ params = {
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
-[数据源对象](https://docs.microsoft.com/rest/api/searchservice/create-data-source)为包含文件的 Blob 容器提供连接字符串。
+[数据源对象](/rest/api/searchservice/create-data-source)为包含文件的 Blob 容器提供连接字符串。
 
 在以下脚本中，将占位符 YOUR-BLOB-RESOURCE-CONNECTION-STRING 替换为上一步中创建的 blob 的连接字符串。 请替换容器的占位符文本。 然后，运行该脚本以创建一个名为 `cogsrch-py-datasource` 的数据源。
 
@@ -375,11 +375,11 @@ print(r.status_code)
 
 请求应返回状态代码 201，确认成功。
 
-若要详细了解如何定义索引，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+若要详细了解如何定义索引，请参阅[创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)。
 
 ### <a name="step-4-create-and-run-an-indexer"></a>步骤 4：创建并运行索引器
 
-[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)驱动管道。 到目前为止创建的三个组件（数据源、技能集、索引）是索引器的输入。 在 Azure 认知搜索中创建索引器是运转整个管道的事件。 
+[索引器](/rest/api/searchservice/create-indexer)驱动管道。 到目前为止创建的三个组件（数据源、技能集、索引）是索引器的输入。 在 Azure 认知搜索中创建索引器是运转整个管道的事件。 
 
 要在索引器中将这些对象捆绑在一起，必须定义字段映射。
 
@@ -512,7 +512,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 对其他字段重复此操作，在本练习中这些字段是 `content`、`languageCode`、`keyPhrases` 和 `organizations`。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
 
-可以根据查询字符串的复杂性和长度，使用 GET 或 POST。 有关详细信息，请参阅[使用 REST API 进行查询](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+可以根据查询字符串的复杂性和长度，使用 GET 或 POST。 有关详细信息，请参阅[使用 REST API 进行查询](/rest/api/searchservice/search-documents)。
 
 <a name="reset"></a>
 
