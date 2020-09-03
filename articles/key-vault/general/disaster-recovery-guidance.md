@@ -7,14 +7,14 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: e4364c3c5bcba1a04837f3f9e7a0576579211c72
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796589"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073176"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
 
@@ -32,8 +32,6 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
 
 * 发生区域故障转移时，可能需要等待几分钟让服务故障转移。 在故障转移之前的这段时间内发出的请求可能会失败。
 * 在故障转移期间，密钥保管库处于只读模式。 在此模式下支持的请求包括：
-  * 列出密钥保管库
-  * 获取密钥保管库的属性
   * 列出证书
   * 获取证书
   * 列出机密
