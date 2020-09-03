@@ -111,6 +111,9 @@
           href: ddos-protection-overview.md
         - name: 虚拟网络 TAP
           href: virtual-network-tap-overview.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: 子网
       items:
         - name: 子网扩展

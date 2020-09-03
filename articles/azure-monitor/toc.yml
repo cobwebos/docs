@@ -160,6 +160,8 @@
       href: platform/partners.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./platform/security-controls-policy.md
@@ -370,7 +372,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: FAQ
+        - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -459,7 +461,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
