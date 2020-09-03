@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85262202"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998452"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教程：使用 .NET SDK 从多个数据源编制索引
 
@@ -21,7 +22,7 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 本教程介绍如何为来自 Azure Cosmos DB 数据源的酒店数据编制索引并将其与来自 Azure Blob 存储文档的酒店房间详细信息整合。 其结果将是包含复杂数据类型的合并的酒店搜索索引。
 
-本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)。 你将在本教程中执行以下任务：
+本教程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search)。 你将在本教程中执行以下任务：
 
 > [!div class="checklist"]
 > * 上传示例数据和创建数据源
@@ -34,8 +35,8 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 ## <a name="prerequisites"></a>先决条件
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure 存储](../storage/common/storage-account-create.md)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -80,7 +81,7 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。  
 
-1. [创建 blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)，名为“hotel-rooms”  ，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
+1. [创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)，名为“hotel-rooms”  ，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
 
    ![创建一个 blob 容器](media/tutorial-multiple-data-sources/blob-add-container.png "创建 Blob 容器")
 
@@ -171,7 +172,7 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 ### <a name="create-an-index"></a>创建索引
 
-此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
+此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
 
 数据模型由“酒店”类定义，该类还包含对“地址”和“房间”类的引用。 FieldBuilder 向下钻取多个类定义，从而为索引生成复杂的数据结构。 元数据标记用于定义每个字段的属性，例如字段是否可搜索或可排序。
 
@@ -319,7 +320,7 @@ JSON Blob 包含名为 **`Id`** 而不是 **`HotelId`** 的键字段。 该代�
 
 Blob 存储索引器可使用能标识要使用的分析模式的参数。 该分析模式不同于 blob，后者表示单个文档或相同 blob 中的多个文档。 在此示例中，每个 blob 表示单个索引文档，因此代码使用 `IndexingParameters.ParseJson()` 参数。
 
-有关 JSON blob 的索引器分析参数的详细信息，请参阅[为 JSON blob 编制索引](search-howto-index-json-blobs.md)。 有关使用 .NET SDK 指定这些参数的详细信息，请参阅 [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) 类。
+有关 JSON blob 的索引器分析参数的详细信息，请参阅[为 JSON blob 编制索引](search-howto-index-json-blobs.md)。 有关使用 .NET SDK 指定这些参数的详细信息，请参阅 [IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) 类。
 
 程序在创建新索引器之前会先删除具有相同名称的任何现有索引器，以应对你想要多次运行此示例的情况。
 

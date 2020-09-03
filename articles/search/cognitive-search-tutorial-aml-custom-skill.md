@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245324"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924582"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教程：使用 Azure 机器学习构建和部署自定义技能 
 
-在本教程中，你将使用[酒店评论数据集](https://www.kaggle.com/datafiniti/hotel-reviews)（在 Creative Commons 许可证 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 下分发）通过 Azure 机器学习创建[自定义技能](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)，以从评论中提取基于方面的情绪。 这样一来，就可以将同一评论中的正面和负面情绪正确归因于已标识的实体，例如员工、客房、大厅或游泳池。
+在本教程中，你将使用[酒店评论数据集](https://www.kaggle.com/datafiniti/hotel-reviews)（在 Creative Commons 许可证 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 下分发）通过 Azure 机器学习创建[自定义技能](./cognitive-search-aml-skill.md)，以从评论中提取基于方面的情绪。 这样一来，就可以将同一评论中的正面和负面情绪正确归因于已标识的实体，例如员工、客房、大厅或游泳池。
 
 为了在 Azure 机器学习中训练基于方面的情绪模型，你将使用 [nlp recipes 存储库](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然后，你会将该模型部署为 Azure Kubernetes 群集上的终结点。 部署后，该终结点将作为 AML 技能添加到扩充管道中，供认知搜索服务使用。
 
@@ -36,10 +36,10 @@ ms.locfileid: "86245324"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - 获取[免费订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [认知搜索服务](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [认知搜索服务](./search-get-started-arm.md)
+* [认知服务资源](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure 机器学习工作区](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>设置
 
@@ -47,9 +47,9 @@ ms.locfileid: "86245324"
 * 如果下载的是 zip 文件，则提取内容。 确保文件是可读写的。
 * 在设置 Azure 帐户和服务时，将名称和密钥复制到易于访问的文本文件中。 名称和密钥将添加到笔记本中的第一个单元格，其中定义了用于访问 Azure 服务的变量。
 * 如果不熟悉 Azure 机器学习及其要求，最好先查看以下文档再开始使用：
- * [配置 Azure 机器学习的开发环境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [在 Azure 门户中创建和管理 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * 为 Azure 机器学习配置开发环境时，请考虑使用[基于云的计算实例](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance)，以便更快、更轻松地开始使用。
+ * [配置 Azure 机器学习的开发环境](../machine-learning/how-to-configure-environment.md)
+ * [在 Azure 门户中创建和管理 Azure 机器学习工作区](../machine-learning/how-to-manage-workspace.md)
+ * 为 Azure 机器学习配置开发环境时，请考虑使用[基于云的计算实例](../machine-learning/how-to-configure-environment.md#compute-instance)，以便更快、更轻松地开始使用。
 * 将数据集文件上传到存储帐户中的容器。 如果想在笔记本中执行训练步骤，则需要较大的文件。 如果想跳过训练步骤，建议使用较小的文件。
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>打开笔记本并连接到 Azure 服务
@@ -68,9 +68,9 @@ ms.locfileid: "86245324"
 
 笔记本的第 3 节将训练在第 2 节中创建的模型，注册这些模型，并将其部署为 Azure Kubernetes 群集中的终结点。 如果不熟悉 Azure Kubernetes，强烈建议先查看以下文章再尝试创建推理群集：
 
-* [Azure Kubernetes 服务概述](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和区域可用性](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Azure Kubernetes 服务概述](../aks/intro-kubernetes.md)
+* [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念](../aks/concepts-clusters-workloads.md)
+* [Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和区域可用性](../aks/quotas-skus-regions.md)
 
 创建和部署推理群集最多需要 30 分钟。 建议先测试 Web 服务，然后再执行最终步骤：更新技能组并运行索引器。
 
@@ -108,5 +108,5 @@ ms.locfileid: "86245324"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [查看自定义技能 Web API](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api)
-> [详细了解如何将自定义技能添加到扩充管道](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [查看自定义技能 Web API](./cognitive-search-custom-skill-web-api.md)
+> [详细了解如何将自定义技能添加到扩充管道](./cognitive-search-custom-skill-interface.md)

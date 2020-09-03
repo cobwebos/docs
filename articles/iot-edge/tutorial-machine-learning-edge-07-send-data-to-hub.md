@@ -8,12 +8,13 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 718f4c0b41400ae2e35b88820b2d4154dab23111
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272818"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997874"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教程：通过透明网关发送数据
 

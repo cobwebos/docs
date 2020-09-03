@@ -3,13 +3,13 @@ title: 在 Azure 中的 Service Fabric 上创建 .NET 应用
 description: 本教程介绍如何使用 ASP.NET Core 前端和 Reliable Services 有状态后端创建一个应用程序，然后将其部署到群集。
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 03320fe41bcac8b99a3475b52fcf1b41ea5aed89
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: mvc, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 847bd2e30977c5a14f8294f6709cbd6d376a8211
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428360"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016268"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 
