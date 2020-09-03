@@ -6,12 +6,13 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8bf19052c11301412a299c31a2cd73ed2f9ffc7d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083134"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079891"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 Web 应用程序防火墙 (WAF) 自定义规则
 

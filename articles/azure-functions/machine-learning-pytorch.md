@@ -5,13 +5,13 @@ author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
-ms.custom: devx-track-python
-ms.openlocfilehash: ebedb7f205553f91e38e3976a02b0912cbee1fb0
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: dd8de1b56927e158a181df952ce0dbeed140d6b7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852423"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078650"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>教程：使用 PyTorch 将预先训练的图像分类模型部署到 Azure Functions
 

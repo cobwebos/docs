@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: be18718513e8624db00d502228a3e5af6076d9d7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080226"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007071"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -117,7 +118,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-创建应用服务计划后，Azure CLI 将显示类似于以下示例的信息：
+创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
 
 <pre>
 { 

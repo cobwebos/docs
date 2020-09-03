@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887457"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018240"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>安装软件并设置教程所需资源
 
@@ -30,7 +30,7 @@ ms.locfileid: "84887457"
 4. 安装 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/)
 5. 打开 Azure Data Studio 并为笔记本配置 Python。 有关详细信息，请参阅[为笔记本配置 Python](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks)。此步骤可能需要几分钟的时间。
 6. 安装最新版本的 [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)。 以下脚本要求 AZ PowerShell 是最新版本（3.5.0，2020 年 2 月）。
-7. 下载将在教程中使用的 [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) 和 [AMD/ARM Docker 映像文件](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files)。
+7. 下载将在教程中使用的 [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) 和 [AMD/ARM Docker 映像文件](https://www.docker.com/blog/multi-arch-images/)。
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>使用 PowerShell 脚本部署 Azure 资源
 

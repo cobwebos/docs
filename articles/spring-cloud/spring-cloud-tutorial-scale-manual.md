@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021182"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289811"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>教程：在 Azure Spring Cloud 中缩放应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "87021182"
 若要遵循这些过程进行操作，需要：
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-* 部署的 Azure Spring Cloud 服务实例。  按[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart-launch-app-cli.md)中的说明开始操作。
+* 部署的 Azure Spring Cloud 服务实例。  按[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart.md)中的说明开始操作。
 * 至少已在该服务实例中创建一个应用程序。
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>导航到 Azure 门户中的“缩放”页
