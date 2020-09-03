@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422090"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258837"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>教程：使用 Azure AD 进行端到端内容保护
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 通过本教程和提供的播放器示例，可以在 Azure 媒体服务 (AMS) 和 Azure Active Directory (AAD) 上设置端到端媒体内容保护子系统，以使用所有 AMS 支持的 DRM/AES-128、流式处理协议、编解码器和容器格式来流式传输媒体内容。 该示例的兼容性足够高，可以通过使用 Proof Key for Code Exchange (PKCE) 的授权代码流安全访问受 OAuth 2 保护的任何 REST API。 （Azure 媒体服务许可证传送服务只是其中之一。）它还适用于 Microsoft Graph API 或使用 OAuth 2 授权代码流保护的任何自定义开发 REST API。 这是[示例代码](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)的配套文档。
 

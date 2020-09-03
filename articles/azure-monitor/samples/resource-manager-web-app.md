@@ -3,15 +3,16 @@ title: Azure 应用服务 + Application Insights 资源的资源管理器模板�
 description: 用于部署 Azure 应用服务和 Application Insights 资源的 Azure 资源管理器模板示例。
 ms.subservice: application-insights
 ms.topic: sample
+ms.custom: devx-track-dotnet
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/06/2020
-ms.openlocfilehash: 20a03720233c276ddb71d53c97252643dce8d557
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 966dc0650d445a2181dc6a7d6ea1c57f223fd6f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927482"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934236"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>用于创建具有 Application Insights 监视的 Azure 应用服务 Web 应用的资源管理器模板示例
 

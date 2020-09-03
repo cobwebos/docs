@@ -2,13 +2,14 @@
 title: 教程：使用 Azure 中继的 REST 教程
 description: 教程：生成一个公开基于 REST 的接口的 Azure 中继主机应用程序。
 ms.topic: tutorial
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85316631"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922321"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>教程：Azure WCF 中继 REST 教程
 

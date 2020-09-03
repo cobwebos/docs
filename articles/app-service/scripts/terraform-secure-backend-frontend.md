@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065431"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962224"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>创建两个与专用终结点和 VNet 集成安全连接的 Web 应用
 
-本文演示使用[专用终结点](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)和区域 [VNet 集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)，按照以下步骤安全地连接两个 Web 应用（前端和后端）的示例：
+本文演示使用[专用终结点](../networking/private-endpoint.md)和区域 [VNet 集成](../web-sites-integrate-with-vnet.md)，按照以下步骤安全地连接两个 Web 应用（前端和后端）的示例：
 - 部署 VNet
 - 为集成创建第一个子网
 - 为专用终结点创建第二个子网，必须设置特定参数才能禁用网络策略
 - 部署一个 PremiumV2 类型的应用服务计划、专用终结点功能所需的最小 SKU
-- 使用特定应用设置创建前端 Web 应用以使用专用 DNS 区域，[详细信息](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)
+- 使用特定应用设置创建前端 Web 应用以使用专用 DNS 区域，[详细信息](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - 将前端 Web 应用连接到集成子网
 - 创建后端 Web 应用
 - 创建 DNS 专用区域，使用 Web 应用的专用链接区域的名称 privatelink.azurewebsites.net
@@ -31,7 +31,7 @@ ms.locfileid: "88065431"
 
 ## <a name="how-to-use-terraform-in-azure"></a>如何在 Azure 中使用 Terraform
 
-浏览 [Azure 文档](https://docs.microsoft.com/azure/developer/terraform/)以了解如何将 Terraform 与 Azure 结合使用。
+浏览 [Azure 文档](/azure/developer/terraform/)以了解如何将 Terraform 与 Azure 结合使用。
 
 ## <a name="the-complete-terraform-file"></a>完整的 Terraform 文件
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>后续步骤
 
 
-> [详细了解如何在 Azure 中使用 Terraform](https://docs.microsoft.com/azure/developer/terraform/)
+> [详细了解如何在 Azure 中使用 Terraform](/azure/developer/terraform/)

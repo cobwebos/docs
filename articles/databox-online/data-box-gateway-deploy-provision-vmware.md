@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054113"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892110"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教程：在 VMware 中预配 Azure Data Box Gateway
 
@@ -200,7 +200,7 @@ ms.locfileid: "87054113"
 
 8. 使用 `Set-HcsIpAddress` cmdlet 配置网络。 下面显示了一个示例：
 
-    `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
+    `Set-HcsIpAddress –Name Ethernet0 –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
 9. 完成初始设置并启动设备以后，会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 将使用该 IP 地址连接到虚拟设备的 Web UI 并完成本地设置和激活。
 

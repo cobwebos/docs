@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536913"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069317"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -48,6 +48,8 @@ ms.locfileid: "86536913"
 
 如果需要，可以使用 [Azure PowerShell](deploy-ps.md) 完成本教程中的步骤。
 
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="set-up-the-network"></a>设置网络
@@ -63,7 +65,7 @@ ms.locfileid: "86536913"
 3. 对于“资源组名称”，请输入“Test-FW-RG”。
 4. 对于“订阅”，请选择自己的订阅。
 5. 对于“资源组位置”，请选择一个位置。 你创建的所有其他资源必须位于同一位置。
-6. 选择“创建”。
+6. 选择“创建”  。
 
 ### <a name="create-a-vnet"></a>创建 VNet
 
@@ -118,7 +120,7 @@ ms.locfileid: "86536913"
 8. 请确保为虚拟网络选择“Test-FW-VN”，并且子网为“Workload-SN”。
 9. 对于“公共 IP”，请选择“无”。 
 11. 接受其他默认值，然后选择“下一步:**管理”** 。
-12. 选择“关闭”以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
+12. 选择“关闭”  以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
 13. 检查摘要页上的设置，然后选择“创建”。
 
 ## <a name="deploy-the-firewall"></a>部署防火墙
@@ -157,13 +159,13 @@ ms.locfileid: "86536913"
 5. 对于“订阅”，请选择自己的订阅。
 6. 对于“资源组”，请选择“Test-FW-RG”。
 7. 对于“位置”，请选择前面使用的同一位置。
-8. 选择“创建”。
+8. 选择“创建”  。
 9. 依次选择“刷新”、“Firewall-route”路由表。
 10. 依次选择“子网”、“关联” 。
 11. 选择“虚拟网络” > “Test-FW-VN”。
 12. 对于“子网”，请选择“Workload-SN”。 请确保仅为此路由选择“Workload-SN” 子网，否则防火墙将无法正常工作
 
-13. 选择“确定”  。
+13. 选择“确定”。
 14. 依次选择“路由”、“添加” 。
 15. 对于“路由名称”，请键入 **fw-dg**。
 16. 对于“地址前缀”，请键入 **0.0.0.0/0**。
@@ -238,7 +240,7 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 
 1. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”。 选择“Test-FW-RG”资源组。
 2. 选择 **Srv-Work** 虚拟机的网络接口。
-3. 在“设置”下，选择“DNS 服务器”。
+3. 在“设置”下，选择“DNS 服务器”。 
 4. 在“DNS 服务器”下，选择“自定义”。
 5. 在“添加 DNS 服务器”文本框中键入 **209.244.0.3**，在下一个文本框中键入 **209.244.0.4**。
 6. 选择“保存”。
