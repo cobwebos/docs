@@ -37,9 +37,6 @@
       href: powershell-samples.md
     - name: 资源管理器模板
       href: template-samples.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 业务连续性
@@ -226,6 +223,12 @@
               href: ipv6-reserve-public-ip-address-prefix.md
         - name: IP 寻址
           items:
+            - name: 创建公共 IP 地址 - 门户
+              href: create-public-ip-portal.md
+            - name: 创建公共 IP 地址 - PowerShell
+              href: create-public-ip-powershell.md
+            - name: 创建公共 IP 地址 - Azure CLI
+              href: create-public-ip-cli.md
             - name: 管理公共 IP 地址
               href: virtual-network-public-ip-address.md
             - name: 管理公共 IP 前缀
@@ -432,6 +435,9 @@
       href: /azure/templates/microsoft.network/allversions
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

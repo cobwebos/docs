@@ -399,6 +399,8 @@
                 - name: 输出
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Dapr
+          href: 'https://github.com/dapr/azure-functions-extension'
         - name: 事件网格
           items:
             - name: 概述
@@ -432,6 +434,8 @@
             - name: 输出
               href: functions-bindings-event-iot-output.md
               displayName: Azure IoT Hubs
+        - name: Kafka
+          href: 'https://github.com/azure/azure-functions-kafka-extension'
         - name: HTTP 和 webhook
           items:
             - name: 概述
@@ -443,8 +447,6 @@
             - name: 输出
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
         - name: 移动应用
           href: functions-bindings-mobile-apps.md
         - name: 通知中心
@@ -460,6 +462,8 @@
             - name: 输出
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
+        - name: RabbitMQ
+          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服务总线

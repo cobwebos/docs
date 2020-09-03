@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: 快速入门
   items:
-    - name: 创建数据共享 - Azure 门户
+    - name: 共享数据 - Azure 门户
       href: share-your-data-portal.md
-    - name: 创建数据共享 - ARM 模板
+    - name: 共享数据 - ARM 模板
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: 教程
@@ -39,6 +39,10 @@
   items:
     - name: 通过源共享和接收数据
       items:
+        - name: 从 Azure 存储进行共享
+          href: how-to-share-from-storage.md
+        - name: 从 Azure SQL 数据库或 Synapse Analytics 进行共享
+          href: how-to-share-from-sql.md
         - name: 从 Azure 数据资源管理器进行共享
           href: /azure/data-explorer/data-share
           maintainContext: true

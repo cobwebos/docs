@@ -22,7 +22,7 @@
     - name: 使用浏览器
       href: luis-get-started-get-intent-from-browser.md
     - name: 使用 SDK
-      href: quickstart-sdk.md
+      href: azure-sdk-quickstart.md
     - name: 使用 REST API
       items:
         - name: 获取意向

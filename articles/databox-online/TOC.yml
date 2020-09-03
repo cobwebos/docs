@@ -71,17 +71,17 @@
           items:
             - name: 通过 kubectl
               items:
-                - name: 访问 Kubernetes 群集
+                - name: Kubernetes 群集访问
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
-                - name: 公开无状态应用
+                - name: 无状态应用
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
-                - name: 部署有状态应用（静态预配）
+                - name: 静态预配有状态应用
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
-                - name: 部署有状态应用（动态预配）
+                - name: 动态预配有状态应用
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
             - name: 通过 IoT Edge
               items:
-                - name: 公开无状态应用
+                - name: 无状态应用
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
             - name: 通过 Azure Arc
               items:
@@ -119,8 +119,8 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: 排查证书错误
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-            - name: 开发 C# 模块
-              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: 开发 C# 模块
+          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: 管理 Edge 计算
           href: azure-stack-edge-j-series-manage-compute.md
         - name: 管理存储网关
@@ -151,7 +151,7 @@
               href: azure-stack-edge-monitor.md
             - name: 使用 Kubernetes 仪表板
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 设备问题
               href: azure-stack-edge-gpu-troubleshoot.md

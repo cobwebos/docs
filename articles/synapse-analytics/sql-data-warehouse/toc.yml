@@ -116,17 +116,17 @@
               href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
-            - name: 动态数据屏蔽
+            - name: 动态数据掩码
               href: /azure/sql-database/sql-database-dynamic-data-masking-get-started?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
             - name: 透明数据加密 (TDE) 概述
               href: /azure/sql-database/transparent-data-encryption-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
             - name: 将 TDE 与自带密钥配合使用
               href: /azure/sql-database/transparent-data-encryption-byok-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
-    - name: 数据加载
+    - name: 数据引入和准备
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -234,7 +234,7 @@
           href: sql-data-warehouse-develop-group-by-options.md
         - name: 标签
           href: sql-data-warehouse-develop-label.md
-    - name: 工作负载管理
+    - name: 工作负荷管理
       items:
         - name: 概述
           href: sql-data-warehouse-workload-management.md
@@ -284,7 +284,7 @@
           href: sql-data-warehouse-encryption-tde.md
         - name: 启用加密 - T-SQL
           href: sql-data-warehouse-encryption-tde-tsql.md
-    - name: 加载数据
+    - name: 加载和准备数据
       items:
         - name: 从 Azure Data Lake Storage (ADLS)
           href: sql-data-warehouse-load-from-azure-data-lake-store.md
@@ -372,7 +372,7 @@
           items:
             - name: 使用 Power BI 进行可视化
               href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接
           href: sql-data-warehouse-troubleshoot-connectivity.md

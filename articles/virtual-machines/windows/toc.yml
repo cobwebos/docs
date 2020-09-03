@@ -70,23 +70,23 @@
             - name: 从上传的 VHD 创建 VM
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: 附加 OS 磁盘
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: 从快照创建 VM
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: 管理存储
           items:
             - name: 从 VHD 创建托管磁盘
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: 从快照创建托管磁盘
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: 复制托管磁盘
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: 将快照作为 VHD 导出到存储帐户
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: 将托管磁盘的 VHD 导出到存储帐户
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: 从 VHD 创建快照
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: 复制快照
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: 安全
@@ -118,15 +118,15 @@
         - name: 管理存储
           items:
             - name: 从 VHD 创建托管磁盘
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: 从快照创建托管磁盘
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: 复制托管磁盘
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: 将快照作为 VHD 导出到存储帐户
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: 将托管磁盘的 VHD 导出到存储帐户
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: 复制快照
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: 网络
@@ -172,7 +172,7 @@
         - name: VM 大小
           href: ../sizes.md
         - name: 第 2 代 VM
-          href: generation-2.md
+          href: ../generation-2.md
         - name: 常规用途
           items:
             - name: 概述
@@ -621,7 +621,7 @@
     - name: 管理 VM
       items:
         - name: VM 使用情况
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: 常见 PowerShell 任务
           href: ps-common-ref.md
         - name: 更改 VM 大小

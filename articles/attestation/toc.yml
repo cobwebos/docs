@@ -15,7 +15,7 @@
     - name: 创作证明策略并对其签名
       href: author-sign-policy.md
     - name: SGX 证明代码示例
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: 示例
   items:
     - name: 证明策略

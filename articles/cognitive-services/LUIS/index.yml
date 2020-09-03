@@ -12,12 +12,12 @@ metadata:
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
   description: 使用语言理解 (LUIS) 服务，应用程序可以理解用户希望使用自己的词语表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: 561f6ee161d2a697b8c143ee49209515f679c77b
-  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+  ms.openlocfilehash: 6e34c5e39118565e14a40765443583b0b9ed237b
+  ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88236516"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89322477"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 门户：创建新的 LUIS 应用
       url: get-started-portal-build-app.md
     - text: 使用 C# SDK
-      url: quickstart-sdk.md?pivots=programming-language-csharp
+      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
     - text: 使用 Python SDK
-      url: quickstart-sdk.md?pivots=programming-language-python
+      url: azure-sdk-quickstart.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: 创建新的 LUIS 应用
@@ -88,7 +88,7 @@ landingContent:
     - text: 门户：将应用部署到预测终结点
       url: get-started-portal-deploy-app.md
     - text: 使用 SDK
-      url: quickstart-sdk.md
+      url: azure-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: 对应用进行版本控制
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 SDK
-      url: quickstart-sdk.md
+      url: azure-sdk-quickstart.md
   - linkListType: quickstart
     links:
     - text: 将 C# 与 REST 配合使用

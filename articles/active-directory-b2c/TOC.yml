@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: SSO 会话
       href: session-overview.md
+    - name: 标识保护和条件访问
+      href: conditional-access-identity-protection-overview.md
 - name: 操作指南
   items:
     - name: 应用集成
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: 设置自助密码重置
               href: user-flow-self-service-password-reset.md
+        - name: 添加条件访问
+          href: conditional-access-user-flow.md
         - name: UX 自定义
           items:
             - name: 自定义 UI
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: 传递外部 IdP 令牌
           href: idp-pass-through-user-flow.md
+    - name: 标识保护和条件访问
+      href: conditional-access-identity-protection-setup.md
     - name: 自定义策略
       items:
         - name: 创建策略
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: 声明转换
                       href: claims-transformation-technical-profile.md
+                    - name: 条件访问技术配置文件
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: JWT 令牌颁发者
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

@@ -61,8 +61,6 @@
           href: security-center-recommendations.md
         - name: 安全策略概述
           href: tutorial-security-policy.md
-        - name: 内置安全策略
-          href: security-center-policy-definitions.md
         - name: 使用建议增强安全性
           href: security-center-using-recommendations.md
         - name: 安全基线
@@ -157,7 +155,7 @@
       href: asset-inventory.md
     - name: 与其他工具和服务集成
       items:
-        - name: 与 Windows Admin Center 集成
+        - name: 保护 Windows 管理中心服务器
           href: windows-admin-center-integration.md
         - name: 保护 Azure 应用服务 web 应用和 API
           href: security-center-app-services.md
@@ -211,6 +209,9 @@
       href: security-center-features-retirement-july2019.md
     - name: 终结点保护评估和建议
       href: security-center-endpoint-protection.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

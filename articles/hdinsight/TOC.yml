@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: Ranger 和 Apache Ambari 中的 LDAP 同步
           href: ./domain-joined/ldap-sync.md
+        - name: 传输中的双重加密
+          href: ./domain-joined/encryption-in-transit.md
     - name: 操作指南
       items:
         - name: 使用 ID 代理进行凭据管理

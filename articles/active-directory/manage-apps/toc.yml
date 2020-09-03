@@ -16,6 +16,8 @@
       href: add-application-portal.md
     - name: 配置应用
       href: add-application-portal-configure.md
+    - name: 向应用分配用户
+      href: add-application-portal-assign-users.md
     - name: 设置单一登录
       href: add-application-portal-setup-sso.md
     - name: 删除应用

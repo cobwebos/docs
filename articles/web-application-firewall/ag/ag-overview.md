@@ -1,21 +1,21 @@
 ---
-title: Azure Web 应用程序防火墙简介
+title: 什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 titleSuffix: Azure Web Application Firewall
 description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (WAF)
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142847"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226992"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙
+# <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 
 Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 SQL 注入和跨站点脚本是最常见的攻击。
 
@@ -158,7 +158,7 @@ Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM)
 使用内置的 Azure WAF 防火墙事件工作簿可以大致了解 WAF 中的安全事件。 这包括事件、匹配和阻止的规则，以及在防火墙日志中记录的其他所有内容。 参阅下面有关日志记录的详细信息。 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Azure WAF 防火墙事件工作簿](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>日志记录
 
@@ -206,10 +206,12 @@ Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM)
 
 WAF_v1 和 WAF_v2 SKU 的定价模型不同。 有关详细信息，请参阅[应用程序网关定价](https://azure.microsoft.com/pricing/details/application-gateway/)页。 
 
+## <a name="whats-new"></a>新增功能
+
+若要了解 Azure Web 应用程序防火墙的新增功能，请参阅 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall)。
+
 ## <a name="next-steps"></a>后续步骤
 
-- 从[创建 WAF 策略](create-waf-policy-ag.md)开始
 - 详细了解 [WAF 托管规则](application-gateway-crs-rulegroups-rules.md)
 - 详细了解[自定义规则](custom-waf-rules-overview.md)
 - 了解 [Azure Front Door 上的 Web 应用程序防火墙](../afds/afds-overview.md)
-
