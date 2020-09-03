@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识访问 Azure Cosmos DB - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2006c44d68d9570af0bfa410cc7fe908502d2ba5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78248284"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267983"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
 
@@ -44,7 +44,7 @@ ms.locfileid: "78248284"
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
 - 通过 Azure 门户或每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
 
 ## <a name="create-a-cosmos-db-account"></a>创建 Cosmos DB 帐户 
 
@@ -114,7 +114,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 至于本教程的剩余部分，请从先前创建的 VM 入手。
 
-若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Linux 虚拟机，然后在“概述”页中单击顶部的“连接”。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
@@ -228,5 +228,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 本教程介绍了如何使用 Linux 虚拟机上的系统分配托管标识来访问 Cosmos DB。  若要详细了解 Cosmos DB，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB 概述](/azure/cosmos-db/introduction)
-
+>[Azure Cosmos DB 概述](../../cosmos-db/introduction.md)

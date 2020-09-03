@@ -3,7 +3,7 @@ title: 教程：使用托管标识访问 Azure Cosmos DB - Windows - Azure AD
 description: 本教程介绍了使用 Windows VM 上系统分配的托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583062"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263053"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -84,7 +84,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 本部分介绍如何使用 Windows VM 系统分配的托管标识的访问令牌调用 Azure 资源管理器。 在本教程的剩余部分中，我们从先前创建的 VM 入手。 
 
-需在 Windows VM 上安装最新版本的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+需在 Windows VM 上安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli)。
 
 
 
@@ -204,6 +204,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 在本教程中，你学习了如何使用 Windows VM 系统分配的标识来访问 Cosmos DB。  若要详细了解 Cosmos DB，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB 概述](/azure/cosmos-db/introduction)
-
-
+>[Azure Cosmos DB 概述](../../cosmos-db/introduction.md)

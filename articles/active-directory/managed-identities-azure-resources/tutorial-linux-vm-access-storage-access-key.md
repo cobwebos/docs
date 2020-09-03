@@ -3,7 +3,7 @@ title: 教程`:`使用托管标识通过访问密钥访问 Azure 存储 - Linux 
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/04/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4c00c723c23e2f0d962009d33a6abe1008c734a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78273819"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266266"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -78,7 +78,7 @@ ms.locfileid: "78273819"
 
 在本教程的剩余部分中，我们从先前创建的 VM 入手。
 
-若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Linux 虚拟机，然后在“概述”  页中单击顶部的“连接”  。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
@@ -127,7 +127,7 @@ CURL 响应将提供一个密钥列表：
 echo "This is a test file." > test.txt
 ```
 
-接下来，运行 CLI `az storage` 命令并使用存储访问密钥进行身份验证，然后将文件上传到 blob 容器。 对于此步骤，需要在 VM 上[安装最新的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（如果尚未安装）。
+接下来，运行 CLI `az storage` 命令并使用存储访问密钥进行身份验证，然后将文件上传到 blob 容器。 对于此步骤，需要在 VM 上[安装最新的 Azure CLI](/cli/azure/install-azure-cli)（如果尚未安装）。
  
 
 ```azurecli-interactive
@@ -199,4 +199,4 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 在本教程中，你已学习了如何使用 Linux VM 系统分配的托管标识通过访问密钥来访问 Azure 存储。  若要详细了解 Azure 存储访问密钥，请参阅：
 
 > [!div class="nextstepaction"]
->[管理存储访问密钥](/azure/storage/common/storage-create-storage-account)
+>[管理存储访问密钥](../../storage/common/storage-account-create.md)

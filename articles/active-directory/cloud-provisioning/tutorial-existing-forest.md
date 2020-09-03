@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d369395cc06902f31bdf17b427ecbb9f71f42001
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: eba35d6ffb4cbeb25d64d42adb2429636f1d56ce
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86146835"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228459"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>将现有林和新林与单个 Azure AD 租户集成
 
@@ -31,12 +31,12 @@ ms.locfileid: "86146835"
 ## <a name="prerequisites"></a>先决条件
 ### <a name="in-the-azure-active-directory-admin-center"></a>在 Azure Active Directory 管理中心中
 
-1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 完成此步骤至关重要，可确保自己不被锁定在租户外部。
-2. 在 Azure AD 租户中添加一个或多个[自定义域名](../active-directory-domains-add-azure-portal.md)。 用户可以使用其中一个域名登录。
+1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../fundamentals/add-users-azure-active-directory.md)。 完成此步骤至关重要，可确保自己不被锁定在租户外部。
+2. 在 Azure AD 租户中添加一个或多个[自定义域名](../fundamentals/add-custom-domain.md)。 用户可以使用其中一个域名登录。
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 指定一台已加入域的、运行 Windows Server 2012 R2 或更高版本、至少有 4 GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器 
+1. 指定一台已加入域、运行 Windows Server 2012 R2 或更高版本、至少有 4 GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器 
 
 2. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
    - 确保代理可以通过以下端口向 Azure AD 发出出站请求： 

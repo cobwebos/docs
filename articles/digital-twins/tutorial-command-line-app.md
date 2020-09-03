@@ -1,5 +1,5 @@
 ---
-title: 使用示例客户端应用了解基础知识
+title: 教程：使用示例客户端应用了解基础知识
 titleSuffix: Azure Digital Twins
 description: 使用示例命令行应用程序了解 Azure 数字孪生 SDK 的教程
 author: baanders
@@ -7,23 +7,24 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986265"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022507"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>使用示例客户端应用了解 Azure 数字孪生
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教程：使用示例客户端应用了解 Azure 数字孪生
 
 本教程介绍实现了命令行客户端应用程序的示例应用程序，用于与 Azure 数字孪生实例进行交互。 客户端应用与[*教程：编写客户端应用*](tutorial-code.md)中编写的应用类似。
 
 可以使用此示例执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生以及创建关系。 还可以查看示例的代码，以了解 Azure 数字孪生 API，并通过修改示例项目等各种方式来练习实现你自己的命令。
 
 在本教程中，你将...
-1. 设置 Azure 数字孪生实例
-2. 配置示例命令行应用以与实例进行交互
-3. 使用命令行应用来探索 Azure 数字孪生，包括模型、数字孪生、关系和查询
+> [!div class="checklist"]
+> * 设置 Azure 数字孪生实例
+> * 配置示例命令行应用以与实例进行交互
+> * 使用命令行应用来探索 Azure 数字孪生，包括模型、数字孪生、关系和查询
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -288,24 +289,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 本教程中的项目为下一个教程（即[*教程：连接端到端解决方案*](tutorial-end-to-end.md)）奠定基础。 如果打算继续学习下一个教程，则可以保留此处设置的资源，以便继续使用此 Azure 数字孪生实例和已配置的示例应用。
 * 在本例中，可以使用示例应用的 `DeleteAllTwins` 和 `DeleteAllModels` 命令分别清除实例中的孪生和模型。 这将为下一个教程奠定基础。
 
-如果不再需要本教程中创建的资源，请按照以下步骤将其删除。
-
-利用 [Azure Cloud Shell](https://shell.azure.com)，你可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这将删除资源组和 Azure 数字孪生实例。
-
-> [!IMPORTANT]
-> 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
-
-打开 Azure Cloud Shell 并运行以下命令，以删除资源组及其包含的所有内容。
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-接下来，使用以下命令删除为客户端应用创建的 Azure Active Directory 应用注册：
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 最后，删除下载到本地计算机上的项目示例文件夹。
 
@@ -314,12 +298,5 @@ az ad app delete --id <your-application-ID>
 在本教程中，你通过设置实例和客户端应用程序开始使用 Azure 数字孪生，以与实例进行了交互。 你使用客户端应用浏览了 Azure 数字孪生，创建了模型、数字孪生和关系。 你还对解决方案运行了一些查询，以了解 Azure 数字孪生可以解答的与环境有关的问题。
 
 继续学习下一个教程，以结合使用示例命令行应用和其他 Azure 服务来完成数据驱动型端到端方案：
-
 > [!div class="nextstepaction"]
 > [*教程：连接端到端解决方案*](tutorial-end-to-end.md)
-
-或者开始查看概念文档，详细了解以下教程中所用的元素：
-* [*概念：自定义模型*](concepts-models.md)
-
-你也可以先查看操作方法文章，更深入的了解以下教程中的过程：
-* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
