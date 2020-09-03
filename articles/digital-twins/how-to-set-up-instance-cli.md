@@ -78,7 +78,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > 使用 [Azure Active Directory 用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) 的 "Azure 门户" 页选择用户帐户并打开其详细信息。 复制用户的 *ObjectID*：
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 "对象 ID" 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 对象 ID 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
 >
 > 然后，使用上面参数的用户 *对象 ID* 重复角色分配列表命令 `assignee` 。
 
