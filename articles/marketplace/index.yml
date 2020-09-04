@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: keferna
   ms.author: keferna
-  ms.date: 04/02/2020
-  ms.openlocfilehash: 9a61e3796fdd228ffee52d8bf7611946c873460a
-  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+  ms.date: 09/02/2020
+  ms.openlocfilehash: 39d0f00bd59663da8ec5529e9a7be185d93e4de0
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89378094"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89421673"
 landingContent:
 - title: 使用商业市场
   linkLists:
@@ -37,8 +37,6 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: 创建新的 SaaS 产品/服务
-      url: ./create-new-saas-offer.md
     - text: 市场营销最佳做法
       url: ./gtm-marketing-best-practices.md
     - text: 云解决方案提供商
@@ -77,12 +75,12 @@ landingContent:
       url: ./partner-center-portal/downloads-dashboard.md
     - text: 评分和评价仪表板
       url: ./partner-center-portal/ratings-reviews.md
-- title: 管理产品/服务
+- title: 创建产品
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: SaaS 产品/服务
-      url: create-new-saas-offer.md
+      url: plan-saas-offer.md
     - text: 虚拟机产品/服务
       url: ./marketplace-virtual-machines.md
     - text: Azure 应用程序产品/服务
