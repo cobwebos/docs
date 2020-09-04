@@ -4,8 +4,6 @@
   items:
     - name: 什么是 Azure Front Door？
       href: front-door-overview.md
-    - name: Azure Front Door 中的新增功能
-      href: front-door-whats-new.md
 - name: 快速入门
   expanded: true
   items:

@@ -590,6 +590,8 @@
           href: enable-customer-managed-key.md
         - name: 托管的虚拟网络
           href: managed-virtual-network-private-endpoint.md
+        - name: 用于数据工厂的 Azure 专用链接
+          href: data-factory-private-link.md
     - name: 监视和管理
       items:
         - name: 直观地监视

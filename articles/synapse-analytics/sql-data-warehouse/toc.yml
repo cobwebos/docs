@@ -12,7 +12,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -126,7 +126,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -134,7 +134,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -222,8 +222,6 @@
               href: sql-data-warehouse-develop-user-defined-schemas.md
             - name: 变量赋值
               href: sql-data-warehouse-develop-variable-assignment.md
-            - name: 视图
-              href: sql-data-warehouse-develop-views.md
     - name: 查询
       items:
         - name: 动态 SQL

@@ -173,6 +173,8 @@
           href: iot-hub-devguide-glossary.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 建议
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 安全基础知识

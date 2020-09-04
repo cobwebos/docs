@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: 应用管理常用方案
       href: common-scenarios.md
+    - name: 查看租户中的应用
+      href: application-types.md
+    - name: 将用户分配到应用
+      href: ways-users-get-assigned-to-applications.md
     - name: 计划云应用集成
       items:
         - name: 应用集成入门
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: 配置管理员同意工作流（预览版）
           href: configure-admin-consent-workflow.md
-        - name: 向应用分配用户或组
+        - name: 管理应用的用户分配
           href: assign-user-or-group-access-portal.md
         - name: 查看向应用授予的权限
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: 用于删除用户对应用的访问权限的方法
           href: methods-for-removing-user-access.md
-        - name: 删除用户或组访问权限
-          href: remove-user-or-group-access-portal.md
         - name: 对用户隐藏应用
           href: hide-application-from-user-portal.md
         - name: 禁用用户登录
@@ -203,11 +205,7 @@
     - name: 疑难解答
       items:
         - name: 排查添加应用时出现的问题
-          items:
-            - name: 常见问题 - 库应用
-              href: adding-gallery-app-common-problems.md
-            - name: 常见问题 - 非库应用
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: 排查用户登录问题
           items:
             - name: 意外的许可提示
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: 配置联合单一登录时常见的问题 - 非库应用
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: 排查应用列表和分配问题
-          items:
-            - name: 为租户管理应用程序列表
-              href: application-types.md
-            - name: 分配了意外的用户
-              href: ways-users-get-assigned-to-applications.md
         - name: 排查本地应用故障
           items:
             - name: 应用程序代理故障排除

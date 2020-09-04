@@ -80,7 +80,7 @@
               href: data-factory-azure-search-connector.md
             - name: Azure SQL Database
               href: data-factory-azure-sql-connector.md
-            - name: Azure SQL 数据仓库
+            - name: Azure Synapse Analytics
               href: data-factory-azure-sql-data-warehouse-connector.md
             - name: Azure 表存储
               href: data-factory-azure-table-connector.md

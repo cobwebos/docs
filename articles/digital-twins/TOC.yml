@@ -82,6 +82,8 @@
       items:
         - name: 从 IoT 中心引入遥测数据
           href: how-to-ingest-iot-hub-data.md
+        - name: 使用 DPS 自动管理设备
+          href: how-to-provision-using-device-provisioning-service.md
         - name: 与逻辑应用集成
           href: how-to-integrate-logic-apps.md
     - name: 连接输出
@@ -183,7 +185,9 @@
         - name: DTDL 验证器（示例）
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
         - name: DPS 和 IoT 中心集成示例
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
+        - name: Azure 数字孪生自定义 Swagger
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell

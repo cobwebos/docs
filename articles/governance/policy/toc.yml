@@ -52,7 +52,7 @@
           href: ./samples/pattern-logical-operators.md
         - name: 字段
           href: ./samples/pattern-fields.md
-        - name: parameters
+        - name: 参数
           href: ./samples/pattern-parameters.md
         - name: 效果详细信息
           href: ./samples/pattern-effect-details.md
@@ -93,6 +93,9 @@
     - name: 评估新策略的影响
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 建议的策略
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: 合规性
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md

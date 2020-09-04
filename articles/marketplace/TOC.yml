@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: 在商业市场中进行交易
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: 规划和定价
+              href: plans-pricing.md
             - name: 专用产品/服务
               href: ./private-offers.md
             - name: 标准合同
               href: ./standard-contract.md
             - name: Azure 合作伙伴和客户使用情况归因
               href: ./azure-partner-customer-usage-attribution.md
+            - name: 支持的国家和地区
+              href: ./sell-from-countries.md
         - name: 发布指南（按产品/服务类型）
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,8 +36,6 @@
               href: ./marketplace-solution-templates.md
             - name: Azure 应用：托管应用程序
               href: ./marketplace-managed-apps.md
-            - name: SaaS 应用
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: 容器
               href: ./marketplace-containers.md
             - name: IoT Edge 模块
@@ -165,10 +167,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS 产品/服务
           items:
-            - name: SaaS 产品/服务创建清单
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: 创建 SaaS 产品/服务
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: 规划 SaaS 产品/服务
+              href: plan-saas-offer.md
             - name: 适用于 SaaS 的 Azure AD 身份验证
               items:
                 - name: Azure AD 和 SaaS 概述
@@ -177,6 +177,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: 免费或试用版产品/服务的登陆页
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: SaaS 按流量计费
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: 创建和发布 SaaS 产品/服务
+              items:
+                - name: 创建 SaaS 产品/服务
+                  href: create-new-saas-offer.md
+                - name: 配置 SaaS 产品/服务属性
+                  href: create-new-saas-offer-properties.md
+                - name: 配置 SaaS 产品/服务列表
+                  href: create-new-saas-offer-listing.md
+                - name: 添加预览受众
+                  href: create-new-saas-offer-preview.md
+                - name: 添加技术细节
+                  href: create-new-saas-offer-technical.md
+                - name: 创建计划
+                  href: create-new-saas-offer-plans.md
+                - name: 测试和发布 SaaS 产品/服务
+                  href: test-publish-saas-offer.md
+            - name: 推销你的 SaaS 产品/服务
+              href: create-new-saas-offer-marketing.md
             - name: SaaS 履行 API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +208,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS 履行 API - 常见问题解答
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS 按流量计费
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: “潜在顾客管理”概述
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +225,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: 市场计量服务
           items:
-            - name: 异常情况检测服务
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: 身份验证策略
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Azure 市场计量服务 API
@@ -234,7 +250,7 @@
       href: review-publish-offer.md
     - name: 更新现有产品/服务
       href: ./partner-center-portal/update-existing-offer.md
-    - name: 激活权益
+    - name: 激活商城奖励
       href: ./partner-center-portal/marketplace-rewards.md
     - name: 合作伙伴中心分析
       items:
@@ -304,3 +320,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 支持选项
       href: ./partner-center-portal/support.md
+    - name: 资源
+      items:
+        - name: 支持的 HTML 标记
+          href: supported-html-tags.md

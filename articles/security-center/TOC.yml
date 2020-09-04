@@ -130,6 +130,7 @@
         - name: 自动响应警报
           href: workflow-automation.md
         - name: 导出警报
+          displayName: continuous
           href: continuous-export.md
     - name: 使用安全建议来提高安全性
       items:
@@ -150,6 +151,7 @@
         - name: 自动响应建议
           href: workflow-automation.md
         - name: 导出建议
+          displayName: continuous
           href: continuous-export.md
     - name: 使用资产清单管理资源
       href: asset-inventory.md

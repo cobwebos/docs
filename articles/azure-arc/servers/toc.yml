@@ -23,6 +23,8 @@
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: 安全概述
+          href: security-overview.md
 - name: 操作指南
   items:
     - name: 连接到 Azure Arc

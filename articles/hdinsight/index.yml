@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 02/27/2020
-  ms.openlocfilehash: c32ca826eb7ebbc773d86a8cfae65cdd4984bcd0
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: fdda3f72c9ed70130a5f5d3877e677ee625a024d
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78192721"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89393524"
 landingContent:
 - title: 关于 HDInsight
   linkLists:
@@ -24,209 +24,143 @@ landingContent:
     links:
     - text: 什么是 Azure HDInsight？
       url: ./hdinsight-overview.md
-  - linkListType: learn
+    - text: HDInsight OSS 组件和版本
+      url: ./hdinsight-component-versioning.md
+  - linkListType: get-started
     links:
     - text: 使用 Azure HDInsight 构建分析解决方案
       url: https://docs.microsoft.com/learn/paths/build-oss-analytical-solutions-az-hdinsight/
+    - text: 创建 HDInsight 群集
+      url: ./hdinsight-hadoop-provision-linux-clusters.md
+    - text: 通过 HDInsight 进行监视
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: 缩放群集以节省成本
+      url: ./hdinsight-scaling-best-practices.md
+    - text: HDInsight 安全性概述
+      url: ./domain-joined/hdinsight-security-overview.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 什么是 Apache Spark？
+      url: ./spark/apache-spark-overview.md
+    - text: 在 Jupyter 中创建 Spark 群集并运行 Spark
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+    - text: 加载数据并运行 Spark 查询
+      url: ./spark/apache-spark-load-data-run-query.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理 Spark 依赖项
+      url: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+    - text: 优化 Spark 作业
+      url: ./spark/apache-spark-perf.md
+- title: Apache Hadoop
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 什么是 Apache Hadoop？
+      url: ./hadoop/apache-hadoop-introduction.md
+    - text: 创建 Hadoop 群集并运行 Hive 查询
+      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+    - text: 运行 Map Reduce 示例
+      url: ./hadoop/apache-hadoop-run-samples-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: 监视和管理 Hadoop 群集
+      url: ./hdinsight-hadoop-manage-ambari.md
+    - text: 使用 JDBC/ODBC 驱动程序
+      url: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+- title: 集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Spark/Hive - 使用 Hive Warehouse Connector 连接 Spark 和 Hive
+      url: ./interactive-query/apache-hive-warehouse-connector.md
+    - text: Spark/Kafka - Apache Spark 结构化流式处理与 Apache Kafka
+      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - text: Spark/HBase - 使用 Apache Spark 查询 Apache HBase
+      url: ./hdinsight-using-spark-query-hbase.md
+    - text: 使用 ADF 创建按需群集
+      url: ./hdinsight-hadoop-create-linux-clusters-adf.md
   - linkListType: concept
     links:
-    - text: HDInsight 组件和版本
-      url: ./hdinsight-component-versioning.md
     - text: 选择适当的 VM 大小
       url: ./hdinsight-selecting-vm-size.md
     - text: HDInsight 支持的 VM 类型
       url: ./hdinsight-supported-node-configuration.md
     - text: 比较存储选项
       url: ./hdinsight-hadoop-compare-storage-options.md
-  - linkListType: tutorial
-    links:
-    - text: 设置 HDInsight 群集
-      url: ./hdinsight-hadoop-provision-linux-clusters.md
-    - text: 创建包含 Data Lake Store Gen2 的 HDInsight 群集
-      url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
-  - linkListType: whats-new
-    links:
-    - text: 自定义 Ambari DB
-      url: ./hdinsight-custom-ambari-db.md
-    - text: 自动缩放：自动缩放 Hadoop 群集
-      url: ./hdinsight-autoscale-clusters.md
-    - text: 通过 HDInsight 进行监视
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: 将 Apache Hive 表迁移到 HDInsight 4.0
-      url: ./interactive-query/apache-hive-migrate-workloads.md
-- title: Apache Spark
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是 Apache Spark？
-      url: ./spark/apache-spark-overview.md
-  - linkListType: quickstart
-    links:
-    - text: 在 Azure 门户中创建 Apache Spark 群集
-      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-  - linkListType: concept
-    links:
-    - text: 优化 Spark 作业
-      url: ./spark/apache-spark-perf.md
-  - linkListType: tutorial
-    links:
-    - text: 为 Spark 创建 Scala Maven 应用程序
-      url: ./spark/apache-spark-create-standalone-application.md
-    - text: 加载数据并运行 Apache Spark 查询
-      url: ./spark/apache-spark-load-data-run-query.md
-    - text: 使用 Apache Spark 查询 Apache HBase
-      url: ./hdinsight-using-spark-query-hbase.md
-    - text: 使用 Power BI 分析 Spark 数据
-      url: ./spark/apache-spark-use-bi-tools.md
-- title: Apache Hadoop
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是 Apache Hadoop？
-      url: ./hadoop/apache-hadoop-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: 在 Azure 门户中创建 Apache Hadoop 群集
-      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-  - linkListType: concept
-    links:
-    - text: 大规模 Hadoop ETL
-      url: ./hadoop/apache-hadoop-etl-at-scale.md
-    - text: 将 Hadoop 迁移到云
-      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-    - text: Hadoop 群集容量规划
-      url: ./hdinsight-capacity-planning.md
-  - linkListType: tutorial
-    links:
-    - text: 将 Excel 连接到 Apache Hadoop
-      url: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-    - text: 使用 Azure Monitor 日志监视 Hadoop
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: 通过 Ambari UI 监视和管理 Hadoop 群集
-      url: ./hdinsight-hadoop-manage-ambari.md
 - title: Apache Kafka
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: 什么是 Apache Kafka？
       url: ./kafka/apache-kafka-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: 在 Azure 门户中创建 Apache Kafka 群集
+    - text: 创建 Kafka 群集并管理 Kafka 主题
       url: ./kafka/apache-kafka-get-started.md
-  - linkListType: concept
-    links:
-    - text: Kafka REST 代理
-      url: ./kafka/rest-proxy.md
-    - text: 从 3.6 迁移到 4.0
-      url: ./kafka/migrate-versions.md
-    - text: 优化 Kafka 性能
-      url: ./kafka/apache-kafka-performance-tuning.md
-    - text: Kafka 可伸缩性
-      url: ./kafka/apache-kafka-scalability.md
-    - text: Kafka 高可用性
-      url: ./kafka/apache-kafka-high-availability.md
-  - linkListType: tutorial
-    links:
-    - text: 使用 Kafka 生成者和使用者 API
+    - text: 使用生成者和使用者 API
       url: ./kafka/apache-kafka-producer-consumer-api.md
-    - text: 将 Apache Spark 结构化流式处理与 Apache Kafka 配合使用
-      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
-    - text: 用于灾难恢复的 Kafka 镜像
-      url: ./kafka/apache-kafka-mirroring.md
-    - text: 用于身份验证的 Kafka SSL 设置
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Kafka REST 代理
+      url: ./kafka/rest-proxy.md
+    - text: Kafka TLS 加密和身份验证
       url: ./kafka/apache-kafka-ssl-encryption-authentication.md
-- title: Apache HBase
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是 Apache HBase？
-      url: ./hbase/apache-hbase-overview.md
-  - linkListType: quickstart
-    links:
-    - text: 使用 Apache Phoenix 查询 HBase
-      url: ./hbase/apache-hbase-query-with-phoenix.md
-  - linkListType: concept
-    links:
-    - text: 面向 Apache HBase 的加速写入
-      url: ./hbase/apache-hbase-accelerated-writes.md
-    - text: Apache Phoenix 最佳做法
-      url: ./hbase/apache-hbase-phoenix-performance.md
-  - linkListType: tutorial
-    links:
-    - text: 在 Azure HDInsight 中使用 Apache HBase
-      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - text: 将 HBase 迁移到新版本
-      url: ./hbase/apache-hbase-migrate-new-version.md
 - title: 交互式查询
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: 什么是交互式查询？
       url: ./interactive-query/apache-interactive-query-get-started.md
-  - linkListType: quickstart
-    links:
-    - text: 使用 Apache Zeppelin 执行 Apache Hive 查询
-      url: ./interactive-query/hdinsight-connect-hive-zeppelin.md
-  - linkListType: concept
-    links:
-    - text: 优化 Hive 查询
-      url: ./hdinsight-hadoop-optimize-hive-query.md
-    - text: 使用 Hive 作为 ETL 工具
-      url: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-  - linkListType: tutorial
-    links:
     - text: 使用 Apache Hive 分析航班数据
       url: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
-    - text: 使用 Hive Warehouse Connector 连接 Spark 和 Hive
-      url: ./interactive-query/apache-hive-warehouse-connector.md
-    - text: 使用 DirectQuery 将 Hive 与 Power BI 进行连接
+  - linkListType: how-to-guide
+    links:
+    - text: 群集大小调整指南
+      url: ./interactive-query/hive-llap-sizing-guide.md
+    - text: 使用 Power BI 连接 Hive
       url: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
 - title: 企业就绪情况
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: HDInsight 安全性概述
       url: ./domain-joined/hdinsight-security-overview.md
-  - linkListType: concept
-    links:
     - text: 计划虚拟网络
       url: ./hdinsight-plan-virtual-network-deployment.md
     - text: 基于 Active Directory 的 Hadoop：企业安全性套餐
       url: ./domain-joined/apache-domain-joined-architecture.md
-    - text: 自动缩放 Hadoop 群集
-      url: ./hdinsight-autoscale-clusters.md
     - text: 将本地群集迁移到云
       url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-  - linkListType: tutorial
+- title: Apache HBase
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: 使用 Azure ADDS 设置企业安全性
-      url: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+    - text: 什么是 Apache HBase？
+      url: ./hbase/apache-hbase-overview.md
+    - text: 使用 Azure HDInsight 中的 HBase
+      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - text: 使用 Apache Phoenix 查询 HBase
+      url: ./hbase/apache-hbase-query-with-phoenix.md
+  - linkListType: how-to-guide
+    links:
+    - text: 对 HBase 启用加速写入
+      url: ./hbase/apache-hbase-accelerated-writes.md
+    - text: Apache Phoenix 最佳做法
+      url: ./hbase/apache-hbase-phoenix-performance.md
 - title: ML Services
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: 什么是 HDInsight 上的 ML 服务？
       url: ./r-server/r-server-overview.md
-  - linkListType: quickstart
-    links:
     - text: 在 ML 服务群集上执行 R 脚本
       url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
-  - linkListType: tutorial
-    links:
-    - text: 在 Spark 计算上下文中使用 R
-      url: ./r-server/ml-services-tutorial-spark-compute.md
 - title: Apache Storm
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: 什么是 Apache Storm？
       url: ./storm/apache-storm-overview.md
-  - linkListType: quickstart
-    links:
     - text: 创建 Apache Storm 拓扑
       url: ./storm/apache-storm-quickstart.md
-  - linkListType: tutorial
-    links:
-    - text: 使用 Apache Storm 写入到 HDFS
-      url: ./storm/apache-storm-write-data-lake-store.md

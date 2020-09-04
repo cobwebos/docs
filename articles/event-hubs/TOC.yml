@@ -125,8 +125,12 @@
       maintainContext: true
 - name: 操作指南
   items:
-    - name: 跨区域移动
-      href: move-across-regions.md
+    - name: 移动
+      items:
+        - name: 将命名空间移到另一个区域
+          href: move-across-regions.md
+        - name: 将专用群集移到另一个区域
+          href: move-cluster-across-regions.md
     - name: 动态添加分区
       href: dynamically-add-partitions.md
     - name: 使用 Blob 存储作为 Azure Stack Hub 上的检查点存储

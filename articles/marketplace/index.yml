@@ -10,12 +10,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 04/02/2020
-  ms.openlocfilehash: a79d3de89399e9ed89598c5f08efb756291246ca
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: 9a61e3796fdd228ffee52d8bf7611946c873460a
+  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87287859"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89378094"
 landingContent:
 - title: 使用商业市场
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: 创建新的 SaaS 产品/服务
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: ./create-new-saas-offer.md
     - text: 市场营销最佳做法
       url: ./gtm-marketing-best-practices.md
     - text: 云解决方案提供商
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: SaaS 产品/服务
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: create-new-saas-offer.md
     - text: 虚拟机产品/服务
       url: ./marketplace-virtual-machines.md
     - text: Azure 应用程序产品/服务

@@ -241,11 +241,8 @@
   items:
     - name: 意向识别文档
       href: index-intent-recognition.yml
-    - name: 快速入门
-      items:
-        - name: 识别语音、意向和实体
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: 意向识别快速入门
+      href: quickstarts/intent-recognition.md
     - name: 操作指南
       items:
         - name: 使用 LUIS、C# 识别语音意向
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: 说话人识别
   items:
-    - name: 概述
-      items:
-        - name: 什么是说话人识别？
-          href: speaker-recognition-overview.md
-        - name: 说话人识别基础知识
-          href: speaker-recognition-basics.md
+    - name: 说话人辨识概述
+      href: speaker-recognition-overview.md
+    - name: 说话人辨识快速入门
+      href: get-started-speaker-recognition.md
     - name: 参考
       items:
-        - name: REST API
-          items:
-            - name: 说话人识别 REST API
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: 说话人识别 REST API
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: “承载”文档
