@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: 将证书与 Batch 配合使用
           href: batch-certificates.md
-    - name: 使用应用程序包
-      href: batch-application-packages.md
     - name: 将文件和应用程序复制到池节点
       items:
         - name: 将应用程序和数据复制到池节点

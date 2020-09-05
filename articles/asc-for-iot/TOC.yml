@@ -94,6 +94,6 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure 安全性、隐私性与合规性博客
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'

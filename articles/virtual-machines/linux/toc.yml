@@ -307,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU 配额
           href: quotas.md
-        - name: 预留实例
-          items:
-            - name: 为 VM 预付
-              href: prepay-reserved-vm-instances.md
-            - name: 什么是 Azure 预留？
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: VM 实例大小灵活性
-              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 基准评分
           href: compute-benchmark-scores.md
     - name: 认可的发行版

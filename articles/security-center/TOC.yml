@@ -229,7 +229,7 @@
     - name: 就绪情况路线图
       href: security-center-readiness-roadmap.md
     - name: Azure 安全性、隐私性与合规性博客
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Stack Overflow 上的 Azure 安全中心
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: 视频

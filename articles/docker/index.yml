@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 94d5dd74aad11e2271de52dd082cfb9287eb10c1
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+  ms.openlocfilehash: 700c5b1e113de32b80b3d716db915836049128ec
+  ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88224571"
+  ms.lasthandoff: 09/04/2020
+  ms.locfileid: "89470113"
 landingContent:
 - title: 在 Azure 上部署 Docker
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: 在 Azure 应用服务中使用 PostgreSQL 运行 Python (Django) Web 应用
       url: ../app-service/tutorial-python-postgresql-app.md
     - text: 使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
-      url: ../jenkins/tutorial-jenkins-github-docker-cicd.md
+      url: /azure/developer/jenkins/pipeline-with-github-and-docker
 - title: 资源
   linkLists:
   - linkListType: reference

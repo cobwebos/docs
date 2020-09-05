@@ -117,6 +117,9 @@
               href: concepts-data-encryption-postgresql.md
             - name: 基础结构双重加密
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Azure 安全基准的安全基线
               href: security-baseline.md
         - name: 业务连续性

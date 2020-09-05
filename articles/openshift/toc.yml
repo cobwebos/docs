@@ -65,7 +65,7 @@
                   href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: 在 Azure Red Hat OpenShift 3.11 中禁用适用于容器的 Azure Monitor
-                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: 在 Azure Red Hat OpenShift 3.11 中运行特权容器
           href: howto-run-privileged-containers.md
