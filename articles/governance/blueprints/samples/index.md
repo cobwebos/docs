@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 07/01/2020
+ms.date: 07/10/2020
 ms.topic: sample
-ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181550"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488348"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -26,7 +26,7 @@ ms.locfileid: "86181550"
 | [DoD 影响级别 5](./dod-impact-level-5/index.md) | 提供了一组策略以帮助符合 DoD 影响级别 5。 |
 | [FedRAMP Moderate](./fedramp-m/index.md) | 提供了一组策略以帮助符合 FedRAMP Moderate。 |
 | [FedRAMP High](./fedramp-h/index.md) | 提供了一组策略以帮助符合 FedRAMP High。 |
-| [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | 提供了一组有助于符合 HIPAA HITRUST 的策略。 |
+| [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | 提供了一组有助于符合 HIPAA HITRUST 的策略。 |
 | [IRS 1075](./irs-1075/index.md) | 提供可帮助符合 IRS 1075 的规范措施。|
 | [ISO 27001](./iso27001/index.md) | 提供可帮助符合 ISO 27001 的规范措施。 |
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |

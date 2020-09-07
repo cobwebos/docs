@@ -222,6 +222,8 @@
                   href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio 笔记本
               href: ./spark/apache-spark-development-using-notebooks.md
+            - name: 使用 TokenLibrary 保护凭据
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
             - name: .NET for Apache Spark
               href: ./spark/spark-dotnet.md
             - name: Apache Spark 机器学习
@@ -248,11 +250,11 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL 池最佳做法
               href: sql/best-practices-sql-pool.md
-        - name: 数据加载
+        - name: 数据引入和准备
           items:
             - name: 概述
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 最佳实践
+            - name: 最佳做法
               href: sql/data-loading-best-practices.md
             - name: 列存储压缩
               href: sql/data-load-columnstore-compression.md
@@ -416,7 +418,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 升级到第 2 代
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: 加载数据
+    - name: 数据引入和准备
       items:
         - name: 到数据仓库中
           items:

@@ -65,6 +65,8 @@
       href: ../../firewall/security-baseline.md
     - name: Azure Functions 安全基线
       href: ../../azure-functions/security-baseline.md
+    - name: Azure IoT 中心安全基线
+      href: ../../iot-hub/security-baseline.md
     - name: Azure Monitor 安全基线
       href: ../../azure-monitor/security-baseline.md
     - name: Azure 机器学习安全基线

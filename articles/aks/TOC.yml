@@ -61,7 +61,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md
@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: 使用 Azure 超级磁盘（预览版）
           href: use-ultra-disks.md
+        - name: CSI 存储驱动程序
+          items:
+            - name: 启用 CSI 存储驱动程序（预览版）
+              href: csi-storage-drivers.md
+            - name: Azure 磁盘 CSI 驱动程序（预览版）
+              href: azure-disk-csi.md
+            - name: Azure 文件存储 CSI 驱动程序（预览版）
+              href: azure-files-csi.md
     - name: 配置网络
       items:
         - name: 创建虚拟网络或使用现有虚拟网络
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: 实现 Azure Active Directory 集成
           items:
-            - name: AKS 管理的 AAD
+            - name: AKS 管理的 Azure AD
               href: managed-aad.md
-            - name: AAD 集成（旧版）
+            - name: Azure AD 集成（旧版）
               href: azure-ad-integration-cli.md
         - name: 使用 Azure RBAC 进行 Kubernetes 授权（预览）
           href: manage-azure-rbac.md

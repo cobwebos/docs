@@ -105,6 +105,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: 应用安全策略时，VM 无响应
           href: unresponsive-vm-apply-security-policy.md
+        - name: Windows 启动管理器错误 - 状态：映像哈希无效
+          href: windows-boot-error-invalid-image-hash.md
         - name: Windows 停止错误 - 错误系统配置信息
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows 停止错误 - 状态无内存

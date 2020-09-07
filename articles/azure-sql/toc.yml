@@ -605,7 +605,7 @@
                           items:
                             - name: 使用 SQL 数据库
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: 使用 SQL 数据仓库
+                            - name: 使用 Azure Synapse Analytics（以前称为 SQL 数据仓库）
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: 使用异地还原进行灾难恢复
                       href: database/saas-dbpertenant-dr-geo-restore.md
@@ -725,25 +725,25 @@
                 - name: Python
                   items:
                     - name: 运行 Python 脚本
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 数据结构和对象
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: Python 函数
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 对模型进行训练和评分
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 部署 ONNX 模型
-                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current
+                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true
                 - name: R
                   items:
                     - name: 运行 R 脚本
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 数据类型和对象
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: R 函数
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 对模型进行训练和评分
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
             - name: 教程
               items:
                 - name: Python
@@ -751,69 +751,69 @@
                     - name: 雪橇租赁（线性回归）
                       items:
                         - name: 1 - 简介
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - 准备数据
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - 定型模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - 部署模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 对客户进行分类（k-means 群集）
                       items:
                         - name: 1 - 简介
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - 准备数据
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - 创建模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - 部署模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 纽约出租车提示（分类）
                       items:
                         - name: 1 - 简介
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - 数据研究
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - 功能设计
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - 训练和部署
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 5 - 预测
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: R
                   items:
                     - name: 滑雪租赁（决策树）
                       items:
                         - name: 1 - 简介
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - 准备数据
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - 定型模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - 部署模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 对客户进行分类（k-means 群集）
                       items:
                         - name: 1 - 简介
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - 准备数据
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - 创建模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - 部署模型
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 纽约出租车提示（分类）
                       items:
                         - name: 1 - 简介
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - 数据研究
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - 功能设计
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - 训练和部署
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 5 - 预测
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
             - name: 如何
               items:
                 - name: 数据探索和建模
@@ -821,33 +821,33 @@
                     - name: Python
                       items:
                         - name: 在 Python 中绘制直方图
-                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-plot-histogram?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-plot-histogram?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 将数据导入 Pandas 数据帧
-                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 将数据帧插入 SQL
-                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: 预测
                   items:
                     - name: 使用 PREDICT T-SQL 本机评分
-                      href: 'https://docs.microsoft.com/sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: 包管理
                   items:
                     - name: 安装新 Python 包
                       items:
                         - name: 获取 Python 包信息
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 通过 sqlmlutils 安装
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 安装新 R 包
                       items:
                         - name: 获取 R 包信息
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 通过 sqlmlutils 安装
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 创建 miniCRAN 存储库
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 使用 R 包的提示
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
         - name: 功能
           items:
             - name: 链接服务器
@@ -1164,7 +1164,7 @@
       href: /sql/connect/sql-server-drivers
       items:
         - name: ADO.NET
-          href: /sql/connect/ado-net/microsoft-ado-net-sql-server?view=sql-server-ver15
+          href: /sql/connect/ado-net/microsoft-ado-net-sql-server?view=sql-server-ver15&preserve-view=true
         - name: JDBC
           href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
         - name: Node.js

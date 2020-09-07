@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: 墨迹识别器 API 文档
-summary: 了解如何使用墨迹识别器 API 为你的应用和服务带来数字墨迹识别功能。 该 API 是一项基于云的服务，它使用机器学习来识别任何上下文中的手写形状和文本。
+title: 墨迹识别器 API 文档（即将停用）
+summary: 墨迹识别器 API 已于 2020 年 8 月 26 日结束预览。 如果你目前有墨迹识别器资源，可继续使用它们，直到 2021 年 1 月 31 日完全停用该服务为止。 了解如何使用墨迹识别器 API 为你的应用和服务带来数字墨迹识别功能。 该 API 是一项基于云的服务，它使用机器学习来识别任何上下文中的手写形状和文本。
 metadata:
   title: 墨迹识别器 API - 教程、快速入门和 API 参考
   titleSuffix: Azure Cognitive Services
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2019
   ms.author: aahi
-  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0886171d074863009dd83163599c888db10e187
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415693"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89419582"
 landingContent:
 - title: 关于墨迹识别器 API
   linkLists:

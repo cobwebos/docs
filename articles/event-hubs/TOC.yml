@@ -64,7 +64,7 @@
   items:
     - name: 直观显示事件中心数据流的数据异常
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: 将捕获的数据存储在 SQL 数据仓库中
+    - name: 将捕获的数据存储在 Azure Synapse Analytics 中
       href: store-captured-data-data-warehouse.md
     - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
       href: event-hubs-kafka-stream-analytics.md

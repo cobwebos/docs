@@ -114,6 +114,8 @@
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: 保护索引器资源
+          href: search-indexer-securing-resources.md
 - name: 操作指南
   items:
     - name: 创建索引和构造
@@ -354,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: 筛选用户标识
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: 出站安全（索引器）
+          items:
+            - name: 通过 IP 范围访问
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: 通过受信任的服务异常访问
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: 通过专用终结点访问
+              href: search-indexer-howto-access-private.md
     - name: 管理
       items:
         - name: 门户
@@ -392,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: 搜索 2020-06-30
+        - name: 搜索 API（稳定版）
           href: /rest/api/searchservice
-        - name: 搜索 2020-06-30-Preview
+        - name: 搜索 API（预览版）
           href: /rest/api/searchservice/index-preview
-        - name: 管理 2020-03-13
+        - name: 管理 API（稳定版）
           href: /rest/api/searchmanagement
-        - name: 管理 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: 管理 API（预览版）
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: 搜索 API

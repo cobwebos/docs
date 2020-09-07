@@ -112,7 +112,7 @@
               href: azure-create-vm.md
             - name: 在 Azure 中管理 CloudSimple VM
               href: azure-manage-vm.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 保护环境
           href: private-cloud-secure.md
@@ -178,3 +178,7 @@
               href: on-premises-connection.md
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
               href: azure-expressroute-connection.md
+    - name: 发行说明
+      items:
+        - name: CloudSimple 2020 年 9 月更新
+          href: update-plan-sept-2020.md

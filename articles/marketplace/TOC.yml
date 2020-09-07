@@ -59,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: 云解决方案提供商
               href: ./cloud-solution-providers.md
+            - name: 连接计划加入指南
+              href: ./cloud-partner-portal/business-applications-isv-program.md
         - name: 市场权益
           href: ./gtm-your-marketplace-benefits.md
           items:

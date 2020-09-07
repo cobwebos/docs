@@ -62,7 +62,7 @@
       href: walkthroughs-azure-data-lake.md
     - name: 将 R、Python 和 T-SQL 与 SQL Server 配合使用
       href: walkthroughs-sql-server.md
-    - name: 将 T-SQL 和 Python 与 SQL DW 配合使用
+    - name: 通过 Azure Synapse Analytics 使用 T-SQL 和 Python
       href: walkthroughs-sql-data-warehouse.md
 - name: 实用程序和工具
   items:
@@ -74,7 +74,7 @@
       href: team-data-science-process-for-data-scientists.md
     - name: 适用于 DevOps
       href: team-data-science-process-for-devops.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 设置数据科学环境
       href: environment-setup.md
