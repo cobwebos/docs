@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: b0b1914755ff0435318ab970aa6dc6e5e039d581
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 684f37ba3186a719aa9ce730ac07ca4ad42f113d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855677"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458053"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>用于 Azure Monitor 中的 Log Analytics 工作区的资源管理器模板示例
 本文包含用于在 Azure Monitor 中创建和配置 Log Analytics 工作区的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -21,8 +21,9 @@ ms.locfileid: "88855677"
 
 ## <a name="template-references"></a>模板参考
 
-- [Microsoft.OperationalInsights workspaces](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces) 
-- [Microsoft.OperationalInsights workspaces/dataSources](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces/datasources)
+- [Microsoft.OperationalInsights workspaces](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces
+) 
+- [Microsoft.OperationalInsights workspaces/dataSources](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces/datasources)
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 下面的示例创建一个新的空 Log Analytics 工作区。

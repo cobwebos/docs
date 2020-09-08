@@ -2,13 +2,13 @@
 title: 教程 - 在 Azure 中部署 vSphere 群集
 description: 了解如何使用 Azure VMWare 解决方案在 Azure 中部署 vSphere 群集
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/07/2020
+ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750479"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512349"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教程：在 Azure 中部署 Azure VMware 解决方案私有云
 
@@ -30,14 +30,7 @@ ms.locfileid: "88750479"
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 
-若要使用 Azure VMware 解决方案，必须首先将资源提供程序注册到你的订阅。
-
-```
-azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
+[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="create-a-private-cloud"></a>创建私有云
@@ -46,34 +39,7 @@ az provider register -n Microsoft.AVS --subscription <your subscription ID>
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-
-1. 选择“创建新资源”。 在“搜索市场”文本框中键入 `Azure VMware Solution`，然后从列表中选择“Azure VMware 解决方案” 。 在“Azure VMware 解决方案”窗口中选择“创建”
-
-1. 在“基本信息”选项卡上，输入相关字段的值。 下表列出了字段的属性。
-
-   | 字段   | 值  |
-   | ---| --- |
-   | **订阅** | 你打算用于部署的订阅。|
-   | **资源组** | 私有云资源的资源组。 |
-   | **位置** | 选择一个位置，例如“美国东部”。|
-   | **资源名称** | Azure VMware 解决方案私有云的名称。 |
-   | **SKU** | 选择以下 SKU 值：AV36 |
-   | **主机** | 要添加到私有云群集的主机数。 默认值为 3，在部署后可以增大或减小此值。  |
-   | **vCenter 管理员密码** | 输入云管理员密码。 |
-   | **NSX-T 管理者密码** | 输入 NSX-T 管理员密码。 |
-   | **地址块** | 输入私有云 CIDR 网络的 IP 地址块,，例如 10.175.0.0/22。 |
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="在“基本信息”选项卡上，输入相关字段的值。" border="true":::
-
-1. 完成后，选择“审阅 + 创建”。 在下一个屏幕上，验证输入的信息。 如果信息全部正确，请选择“创建”。
-
-   > [!NOTE]
-   > 此步骤大约需要两小时。 
-
-1. 验证部署是否成功。 导航到创建的资源组，然后选择私有云。  完成部署后，你将看到“成功”状态。 
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="验证部署是否成功。" border="true":::
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -85,7 +51,7 @@ az provider register -n Microsoft.AVS --subscription <your subscription ID>
 
 #### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```
 azurecli-interactive

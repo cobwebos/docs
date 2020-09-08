@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1afeca4f627236c5172dd07a44751015c16d2f58
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998435"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462014"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教程：使用 .NET SDK 添加自动完成和建议功能
 
@@ -31,7 +31,7 @@ ms.locfileid: "88998435"
 
 本教程是一系列教程的一部分，是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)中创建的分页项目的基础上编写的。
 
-也可下载并运行此特定教程的解决方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)。
+也可下载并运行此特定教程的解决方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)。
 
 ## <a name="add-suggestions"></a>添加建议
 

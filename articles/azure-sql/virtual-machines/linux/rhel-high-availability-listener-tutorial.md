@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343755"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485782"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84343755"
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>在 Azure 门户中创建负载均衡器
 
-以下说明引导你完成[负载均衡器 - Azure 门户](../windows/availability-group-load-balancer-portal-configure.md)一文的[在 Azure 门户中创建和配置负载均衡器](../windows/availability-group-load-balancer-portal-configure.md#create-and-configure-the-load-balancer-in-the-azure-portal)部分中的步骤 1 到步骤 4。
+以下说明引导你完成[负载均衡器 - Azure 门户](../windows/availability-group-load-balancer-portal-configure.md)一文的[在 Azure 门户中创建和配置负载均衡器](../windows/availability-group-load-balancer-portal-configure.md#create--configure-load-balancer)部分中的步骤 1 到步骤 4。
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 

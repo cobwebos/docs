@@ -1,15 +1,15 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-ms.date: 07/10/2020
+ms.date: 09/04/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7982627197a7524093ab56828b24528ebd903c67
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a664c740649135c7586c77da43eacfd0a73e34a9
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298334"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487541"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
@@ -112,10 +112,6 @@ ms.locfileid: "89298334"
 ## <a name="logic-apps"></a>逻辑应用
 
 [!INCLUDE [azure-policy-reference-policies-logic-apps](../../../../includes/policy/reference/bycat/policies-logic-apps.md)]
-
-## <a name="machine-learning"></a>机器学习
-
-[!INCLUDE [azure-policy-reference-policies-machine-learning](../../../../includes/policy/reference/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>托管应用程序
 

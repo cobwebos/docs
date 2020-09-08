@@ -1,22 +1,22 @@
 ---
 title: Azure Cache for Redis 的 Azure Policy 法规遵从性控制
-description: 列出可用于 Azure Cache for Redis 的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 07/22/2020
+description: 列出可用于 Azure Cache for Redis 的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
+ms.date: 09/04/2020
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 75b33610acac0309f6141d807d204d4dfef9d91c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9979956ef20e83a3c9b6254208c94c50c9a41dc5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374407"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484778"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Azure Cache for Redis 的 Azure Policy 法规遵从性控制
 
-[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure Cache for Redis 的“符合域”和“安全控件” 。 可以分别为“安全控制”分配内置项，以帮助 Azure 资源符合特定的标准。
+[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure Cache for Redis 的“符合域”和“安全控件” 。 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 
@@ -24,5 +24,5 @@ ms.locfileid: "87374407"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Policy 法规遵从性](../governance/policy/concepts/regulatory-compliance.md)。
+- 详细了解 [Azure Policy 法规符合性](../governance/policy/concepts/regulatory-compliance.md)。
 - 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
