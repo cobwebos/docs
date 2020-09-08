@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6eacaf2ec75c485dbdd7e66a73cdd36787da6126
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2b305b1ffc5c72780f903c7798fbce24c630baba
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753055"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321821"
 ---
 <a name="HOLTop"></a>
 
@@ -78,13 +78,13 @@ mkdir -p src/main/java
 
 ### <a name="install-the-client-library"></a>安装客户端库
 
-本快速入门使用 Gradle 依赖项管理器。 可以在 [Maven 中央存储库](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)中找到客户端库以及其他依赖项管理器的信息。
+本快速入门使用 Gradle 依赖项管理器。 可以在 [Maven 中央存储库](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)中找到客户端库以及其他依赖项管理器的信息。
 
 在项目的 *build.gradle.kts* 文件中，包含计算机视觉客户端库作为依赖项。
 
 ```kotlin
 dependencies {
-    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.2-beta")
+    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.4-beta")
 }
 ```
 
@@ -204,26 +204,47 @@ dependencies {
 
 ## <a name="read-printed-and-handwritten-text"></a>读取印刷体文本和手写文本
 
-计算机视觉可以读取图像中的可见文本，并将其转换为字符流。
+计算机视觉可以读取图像中的可见文本，并将其转换为字符流。 本部分定义方法 `ReadFromFile`，该方法采用本地文件路径并将图像的文本输出到控制台。
 
 > [!NOTE]
 > 还可以使用其 URL 读取远程图像中的文本。 请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)上的示例代码以了解涉及远程图像的方案。
 
-### <a name="call-the-recognize-api"></a>调用识别 API
+### <a name="set-up-test-image"></a>设置测试图像
 
-首先，使用以下代码对给定图像调用 **recognizePrintedTextInStream** 方法。 将此代码添加到项目中时，需要将 `localTextImagePath` 的值替换为本地图像的路径。 可下载[示例映像](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg)在此使用。
+在项目的 src/main/ 文件夹中创建 resources/ 文件夹，并添加要从中读取文本的图像 。 可下载[示例映像](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg)在此使用。
+
+然后，将以下方法定义添加到 **ComputerVisionQuickstarts** 类。 如有必要，请更改 `localFilePath` 的值，使之与图像文件相匹配。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_setup)]
+
+### <a name="call-the-read-api"></a>调用读取 API
+
+然后，添加以下代码调用给定图像的 readInStreamWithServiceResponseAsync 方法。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>输出识别结果
 
-以下代码块处理返回的文本并对其进行分析，以输出每行的第一个单词。 可以使用此代码快速了解 **OcrResult** 实例的结构。
+下面的代码块从 Read 调用的响应中提取操作 ID。 它将此 ID 与 helper 方法一起使用，以将文本读取结果输出到控制台。 
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_response)]
 
-最后，结束 try/catch 块和方法定义。
+结束 try/catch 块和方法定义。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
+
+### <a name="get-read-results"></a>获取读取结果
+
+然后，添加 helper 方法的定义。 此方法使用上一步中的操作 ID 来查询读取操作并在 OCR 结果可用时获取该结果。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_call)]
+
+此方法的其余部分会分析 OCR 结果，并将其输出到控制台。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_print)]
+
+最后，添加上面使用的其他 helper 方法，该方法从初始响应中提取操作 ID。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -253,5 +274,5 @@ gradle run
 > [!div class="nextstepaction"]
 >[计算机视觉参考 (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
 
-* [什么是计算机视觉？](../../Home.md)
+* [什么是计算机视觉？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上找到此示例的源代码。

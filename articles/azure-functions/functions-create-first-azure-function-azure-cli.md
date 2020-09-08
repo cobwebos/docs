@@ -3,14 +3,14 @@ title: 在 Azure 中创建用于响应 HTTP 请求的函数
 description: 了解如何通过命令行创建函数，然后将本地项目发布到 Azure Functions 中托管的无服务器实例。
 ms.date: 03/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d63ae61dbaf969c021b0f1744e716068de88e4f8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547369"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145546"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -82,7 +82,7 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。 如果要部署 Java 11 函数，请使用 `-DjavaVersion=11`。若要了解更多信息，请参阅 [Java 版本](functions-reference-java.md#java-versions)。 
+在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。 如果希望函数在 Java 11 上运行，请使用 `-DjavaVersion=11`。 若要了解详细信息，请参阅 [Java 版本](functions-reference-java.md#java-versions)。 
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash

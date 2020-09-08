@@ -1,24 +1,26 @@
 ---
 title: 快速入门：使用墨迹识别器 REST API 和 Node.js 识别数字墨迹
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中使用墨迹识别器 API 来开始识别数字墨迹笔划。
+description: 在本快速入门中使用墨迹识别器 API 和 JavaScript 来开始识别数字墨迹笔划。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 59cd4711ec3604779e57434af72460534b378af4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b8d8464fb9defb64c039ef9026812de89436091c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407041"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050892"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入门：使用墨迹识别器 REST API 和 JavaScript 识别数字墨迹
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 根据本快速入门的说明，开始对数字墨迹笔划使用墨迹识别器 API。 本 JavaScript 应用程序发送包含 JSON 格式墨迹笔划数据的 API 请求，并显示响应。
 

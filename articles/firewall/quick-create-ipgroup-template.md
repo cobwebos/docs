@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建 Azure 防火墙和 IP 组 - 资源管理器模板
-description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 防火墙和 IP 组。
+description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 防火墙和 IP 组。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/06/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 97d1c14a61e98f98e45e25668841cee1ad9ce0d1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705463"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079126"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入门：创建 Azure 防火墙和 IP 组 - ARM 模板
 

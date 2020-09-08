@@ -1,14 +1,14 @@
 ---
 title: 快速入门：在门户中创建蓝图
 description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045206"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051516"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
@@ -61,7 +61,7 @@ ms.locfileid: "86045206"
 
    1. 将“类型”更改为“内置” 。 在“搜索”中输入 **tag**。
 
-   1. 单击“搜索”以进行筛选。 选择“对资源组追加标记及其默认值”。
+   1. 将焦点更改为“搜索”以进行筛选。 选择“对资源组追加标记及其默认值”。
 
    1. 选择“添加”将此项目添加到蓝图中。
 

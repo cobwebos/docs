@@ -1,23 +1,26 @@
 ---
 title: 快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
 titleSuffix: Azure Cognitive Services
-description: 本快速入门说明如何使用墨迹识别器 API 开始识别数字墨迹笔划。
+description: 本快速入门说明如何使用墨迹识别器 API 和 C# 开始识别数字墨迹笔划。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986068"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051587"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 根据本快速入门的说明，开始将数字墨迹笔划发送到墨迹识别器 API。 本 C# 应用程序发送包含 JSON 格式墨迹笔划数据的 API 请求，并获取响应。
 

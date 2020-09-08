@@ -42,7 +42,7 @@
               href: ./iot-edge-module.md
             - name: 咨询服务
               href: ./consulting-services.md
-            - name: Office 365、Dynamics 365 和 Power BI
+            - name: Microsoft 365、Dynamics 365 和 Power BI
               href: ./appsource-offer-publishing-guide.md
             - name: 允许产品/服务向 Azure AD 进行身份验证
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -60,7 +60,7 @@
             - name: 云解决方案提供商
               href: ./cloud-solution-providers.md
             - name: 连接计划加入指南
-              href: ./cloud-partner-portal/business-applications-isv-program.md
+              href: ./business-applications-isv-program.md
         - name: 市场权益
           href: ./gtm-your-marketplace-benefits.md
           items:

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604702"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303921"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -249,9 +249,12 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 对于 VNet 到 VNet 连接，当前行为优先选择 ExpressRoute 线路路径而非中心到中心。 但是，不建议在虚拟 WAN 设置中进行此选择。 虚拟 WAN 团队正在研究修补程序，以支持优先选择中心到中心而非 ExpressRoute 路径。 对于区域间流量流，建议将多个 ExpressRoute 线路（不同提供商）连接到一个中心，并使用虚拟 WAN 提供的中心到中心连接。
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>是否可以在虚拟 WAN 的不同资源组中创建中心？
+是的。 目前只能通过 powershell 使用此选项。 虚拟 WAN 门户要求中心与虚拟 WAN 资源本身位于同一资源组中。
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虚拟 WAN 是否支持 IPv6？
 
-虚拟 WAN 中心及其网关不支持 IPv6。 如果你有一个支持 IPv6 的 VNet，并且要将 VNet 连接到虚拟 WAN，则当前不支持此方案。
+虚拟 WAN 中心及其网关不支持 IPv6。 如果你具有支持 IPv4 和 IPv6 的 VNet，并且要将 VNet 连接到虚拟 WAN，那么当前不支持此方案。 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>对于自动完成多种虚拟 WAN 功能的脚本，建议其使用哪个 API 版本？
 

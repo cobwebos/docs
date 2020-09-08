@@ -6,14 +6,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file
-ms.date: 07/30/2020
-ms.openlocfilehash: aab4a59a35b098589adb462f2f0d6385802a9875
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/25/2020
+ms.openlocfilehash: 18fa74562b50ac832c7512351065bf8fedeba74f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246137"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055359"
 ---
 [参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [包 (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
 
@@ -21,28 +21,37 @@ ms.locfileid: "88246137"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="创建个性化体验创建服务资源"  target="_blank">创建个性化体验创建服务资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到个性化体验创建服务 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-## <a name="using-this-quickstart"></a>使用此快速入门
-
-
-使用此快速入门有几个步骤：
-
-* 在 Azure 门户中，创建一个个性化体验创建服务资源
-* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，将模型更新频率更改为非常短的间隔
-* 在代码编辑器中，创建一个代码文件并编辑该代码文件
-* 在命令行或终端中，从命令行安装 SDK
-* 在命令行或终端中，运行代码文件
-
-[!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
+## <a name="setting-up"></a>设置
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-## <a name="install-the-python-library-for-personalizer"></a>为个性化体验创建服务安装 Python 库
+### <a name="install-the-client-library"></a>安装客户端库
 
-使用以下命令安装适用于 Python 的个性化体验创建服务客户端库：
+在安装 Python 后，可以通过以下命令安装客户端库：
 
 ```console
 pip install azure-cognitiveservices-personalizer
+```
+
+### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
+
+创建一个新的 Python 文件，为资源的终结点和订阅密钥创建变量。
+
+[!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
+
+```python
+from azure.cognitiveservices.personalizer import PersonalizerClient
+from azure.cognitiveservices.personalizer.models import RankableAction, RewardRequest, RankRequest
+from msrest.authentication import CognitiveServicesCredentials
+
+import datetime, json, os, time, uuid
+
+key = "<paste-your-personalizer-key-here>"
+endpoint = "<paste-your-personalizer-endpoint-here>"
 ```
 
 ## <a name="object-model"></a>对象模型
@@ -59,41 +68,64 @@ pip install azure-cognitiveservices-personalizer
 
 这些代码片段演示如何使用适用于 Python 的个性化体验创建服务客户端库执行以下操作：
 
-* [创建个性化体验创建服务客户端](#create-a-personalizer-client)
+* [对客户端进行身份验证](#authenticate-the-client)
 * [排名 API](#request-the-best-action)
 * [奖励 API](#send-a-reward)
 
-## <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
+## <a name="authenticate-the-client"></a>验证客户端
 
-在首选编辑器或 IDE 中创建名为 `sample.py` 的新 Python 应用程序。
+使用之前创建的 `key` 和 `endpoint` 实例化 `PersonalizerClient`。
 
-## <a name="add-the-dependencies"></a>添加依赖项
-
-从项目目录中，在首选编辑器或 IDE 中打开 **sample.py** 文件。 添加以下内容：
-
-[!code-python[Add module dependencies](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=Dependencies)]
-
-## <a name="add-personalizer-resource-information"></a>添加个性化体验创建服务资源信息
-
-编辑密钥和终结点变量，使其位于资源的 Azure 密钥和终结点的代码文件顶部。 
-
-[!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=AuthorizationVariables)]
-
-## <a name="create-a-personalizer-client"></a>创建个性化体验创建服务客户端
-
-接下来，创建一个用于返回个性化体验创建服务客户端的方法。 该方法的参数为 `PERSONALIZER_RESOURCE_ENDPOINT`，ApiKey 为 `PERSONALIZER_RESOURCE_KEY`。
-
-[!code-python[Create the Personalizer client](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=Client)]
+```python
+# Instantiate a Personalizer client
+client = PersonalizerClient(endpoint, CognitiveServicesCredentials(key))
+```
 
 ## <a name="get-content-choices-represented-as-actions"></a>获取以操作形式表示的内容选项
 
 操作表示你希望个性化体验创建服务从中选择最佳内容项的内容选择。 将以下方法添加到 Program 类，以表示操作及其特征的集合。
 
-[!code-python[Present time out day preference to the user](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=getActions)]
+```python
+def get_actions():
+    action1 = RankableAction(id='pasta', features=[{"taste":"salty", "spice_level":"medium"},{"nutrition_level":5,"cuisine":"italian"}])
+    action2 = RankableAction(id='ice cream', features=[{"taste":"sweet", "spice_level":"none"}, { "nutritional_level": 2 }])
+    action3 = RankableAction(id='juice', features=[{"taste":"sweet", 'spice_level':'none'}, {'nutritional_level': 5}, {'drink':True}])
+    action4 = RankableAction(id='salad', features=[{'taste':'salty', 'spice_level':'none'},{'nutritional_level': 2}])
+    return [action1, action2, action3, action4]
+```
 
-[!code-python[Present time out day preference to the user](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=createUserFeatureTimeOfDay)]
+```python
+def get_user_timeofday():
+    res={}
+    time_features = ["morning", "afternoon", "evening", "night"]
+    time = input("What time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night\n")
+    try:
+        ptime = int(time)
+        if(ptime<=0 or ptime>len(time_features)):
+            raise IndexError
+        res['time_of_day'] = time_features[ptime-1]
+    except (ValueError, IndexError):
+        print("Entered value is invalid. Setting feature value to", time_features[0] + ".")
+        res['time_of_day'] = time_features[0]
+    return res
+```
 
-[!code-python[Present food taste preference to the user](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=createUserFeatureTastePreference)]
+```python
+def get_user_preference():
+    res = {}
+    taste_features = ['salty','sweet']
+    pref = input("What type of food would you prefer? Enter number 1.salty 2.sweet\n")
+    
+    try:
+        ppref = int(pref)
+        if(ppref<=0 or ppref>len(taste_features)):
+            raise IndexError
+        res['taste_preference'] = taste_features[ppref-1]
+    except (ValueError, IndexError):
+        print("Entered value is invalid. Setting feature value to", taste_features[0]+ ".")
+        res['taste_preference'] = taste_features[0]
+    return res
+```
 
 ## <a name="create-the-learning-loop"></a>创建学习循环
 
@@ -101,7 +133,41 @@ pip install azure-cognitiveservices-personalizer
 
 以下代码循环调用以下循环：在命令行询问用户的首选项，将该信息发送给个性化体验创建服务以选择最佳操作，向客户显示所选项以让他们从列表中进行选择，然后向个性化体验创建服务发送奖励，指出服务在做选择时的表现如何。
 
-[!code-python[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=mainLoop&highlight=9,10,29)]
+```python
+keep_going = True
+while keep_going:
+
+    eventid = str(uuid.uuid4())
+
+    context = [get_user_preference(), get_user_timeofday()]
+    actions = get_actions()
+
+    rank_request = RankRequest( actions=actions, context_features=context, excluded_actions=['juice'], event_id=eventid)
+    response = client.rank(rank_request=rank_request)
+    
+    print("Personalizer service ranked the actions with the probabilities listed below:")
+    
+    rankedList = response.ranking
+    for ranked in rankedList:
+        print(ranked.id, ':',ranked.probability)
+
+    print("Personalizer thinks you would like to have", response.reward_action_id+".")
+    answer = input("Is this correct?(y/n)\n")[0]
+
+    reward_val = "0.0"
+    if(answer.lower()=='y'):
+        reward_val = "1.0"
+    elif(answer.lower()=='n'):
+        reward_val = "0.0"
+    else:
+        print("Entered choice is invalid. Service assumes that you didn't like the recommended food choice.")
+
+    client.events.reward(event_id=eventid, value=reward_val)
+
+    br = input("Press Q to exit, any other key to continue: ")
+    if(br.lower()=='q'):
+        keep_going = False
+```
 
 在运行代码文件之前，添加以下方法以[获取内容选项](#get-content-choices-represented-as-actions)：
 
@@ -111,21 +177,32 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="request-the-best-action"></a>请求最佳操作
 
-
 为了完成排名请求，程序将要求用户指定偏好，以创建内容选项的 `currentContent`。 该过程可以创建要从操作中排除的内容，显示为 `excludeActions`。 排名请求需要 actions 及其特征、currentContext 特征、excludeActions 以及唯一的事件 ID 才能接收响应。
 
 本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](../concept-feature-evaluation.md)[操作与特征](../concepts-features.md)可能是一件非常重要的事情。
 
-[!code-python[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=rank)]
+```python
+rank_request = RankRequest( actions=actions, context_features=context, excluded_actions=['juice'], event_id=eventid)
+response = client.rank(rank_request=rank_request)
+```
 
 ## <a name="send-a-reward"></a>发送奖励
-
 
 为了获取奖励评分以在奖励请求中发送，程序将从命令行获取用户的选择，为该选择分配一个数值，然后将唯一事件 ID 和奖励评分（作为数值）发送到奖励 API。
 
 本快速入门分配一个简单的数字（0 或 1）作为奖励评分。 在生产系统中，确定何时向[奖励](../concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。
 
-[!code-python[The Personalizer learning loop sends a reward.](~/cognitive-services-quickstart-code/python/Personalizer/sample.py?name=reward&highlight=9)]
+```python
+reward_val = "0.0"
+if(answer.lower()=='y'):
+    reward_val = "1.0"
+elif(answer.lower()=='n'):
+    reward_val = "0.0"
+else:
+    print("Entered choice is invalid. Service assumes that you didn't like the recommended food choice.")
+
+client.events.reward(event_id=eventid, value=reward_val)
+```
 
 ## <a name="run-the-program"></a>运行程序
 

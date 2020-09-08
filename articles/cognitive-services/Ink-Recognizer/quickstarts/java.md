@@ -1,24 +1,26 @@
 ---
 title: 快速入门：使用墨迹识别器 REST API 和 Java 识别数字墨迹
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中使用墨迹识别器 API 来识别数字墨迹笔划。
+description: 在本快速入门中使用墨迹识别器 API 和 Java 来开始识别数字墨迹笔划。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-java
-ms.openlocfilehash: 902d8a592893a70b8a694ab888bb3c22c6c9670a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b73f5013fdbef34344ece672bacff90db9bac60b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371543"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051570"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>快速入门：使用墨迹识别器 REST API 和 Java 识别数字墨迹
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 根据本快速入门的说明，开始对数字墨迹笔划使用墨迹识别器 API。 本 Java 应用程序发送包含 JSON 格式墨迹笔划数据的 API 请求，并获取响应。
 

@@ -1,18 +1,18 @@
 ---
 title: 快速入门 - 在 Azure 门户中创建 Analysis Services 服务器 | Microsoft Docs
-description: 了解如何使用 Azure 门户快速创建 Azure Analysis Services 服务器实例。
+description: 本快速入门介绍如何使用 Azure 门户创建 Azure Analysis Services 服务器实例。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697480"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230774"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入门：创建服务器 - 门户
 
@@ -21,7 +21,7 @@ ms.locfileid: "83697480"
 ## <a name="prerequisites"></a>先决条件 
 
 * **Azure 订阅**：访问 [Azure 免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p/)以创建帐户。
-* **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联。 并且，需要使用 Azure Active Directory 中的一个帐户登录 Azure。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
+* **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联。 并且，需要使用该 Azure Active Directory 中的一个帐户登录 Azure。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户 
 
@@ -38,8 +38,8 @@ ms.locfileid: "83697480"
    
    * **服务器名称**：键入用于引用服务器的唯一名称。 服务器名称必须以小写字符开头，并且包含 3 到 128 个小写字符和数字。 不允许使用空格和特殊字符。
    * **订阅**：选择此服务器要关联到的订阅。
-   * **资源组**：创建一个新资源组或选择一个现有资源组。 资源组旨在帮助管理 Azure 资源的集合。 有关详细信息，请参阅[资源组](../azure-resource-manager/management/overview.md)。
-   * **位置**：此 Azure 数据中心位置托管该服务器。 选择最接近最大用户群的位置。
+   * **资源组**：创建一个新资源组或选择一个现有资源组。 资源组旨在帮助管理 Azure 资源的集合。 若要了解详细信息，请参阅[资源组](../azure-resource-manager/management/overview.md)。
+   * **位置**：此 Azure 数据中心位置承载着该服务器。 选择最接近最大用户群的位置。
    * **定价层**：选择定价层。 如果要进行测试且想要安装示例模型数据库，请选择免费的 D1 层。 若要了解详细信息，请参阅 [Azure Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。 
    * **管理员**：默认情况下，这是用于登录的帐户。 可从 Azure Active Directory 选择其他帐户。
    * **备份存储设置**：可选。 如果已有[存储帐户](../storage/common/storage-introduction.md)，则可将其指定为默认模型数据库备份帐户。 稍后还可指定[备份和还原](analysis-services-backup.md)设置。
@@ -59,5 +59,3 @@ ms.locfileid: "83697480"
 
 > [!div class="nextstepaction"]
 > [快速入门：配置服务器防火墙 - 门户](analysis-services-qs-firewall.md)   
-> [!div class="nextstepaction"]
-> [教程：将示例模型添加到服务器](analysis-services-create-sample-model.md)

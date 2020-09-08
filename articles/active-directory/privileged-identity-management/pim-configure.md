@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 07/01/2020
+ms.date: 08/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023902"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047813"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于管理、控制和监视对组织中重要资源的访问的服务。 这些资源包括访问 Azure AD、Azure 和其他 Microsoft Online Services（例如 Office 365 或 Microsoft Intune）中的资源。
+ Privileged Identity Management (PIM) 是 Azure Active Directory (Azure AD) 中用于管理、控制和监视对组织中重要资源的访问的服务。 这些资源包括访问 Azure AD、Azure 和其他 Microsoft Online Services（例如 Office 365 或 Microsoft Intune）中的资源。
 
 ## <a name="reasons-to-use"></a>使用原因
 
-组织希望尽量减少拥有访问权限的人员以保护信息或资源安全，因为这样可以减少恶意行动者获得相应访问权限，或者已授权用户无意中影响敏感资源的可能性。 但是，用户仍需在 Azure AD、Azure、Office 365 或 SaaS 应用中执行特权操作。 组织可能会授予用户对 Azure 资源和 Azure AD 的实时 (JIT) 特许访问权限。 在这种情况下，需要监督这些用户使用其管理员特权执行了哪些操作。
+组织希望尽量减少拥有访问权限的人员以保护信息或资源安全，因为这样可以减少恶意行动者获得相应访问权限，或者已授权用户无意中影响敏感资源的可能性。 但是，用户仍需在 Azure AD、Azure、Office 365 或 SaaS 应用中执行特权操作。 组织可以授予用户对 Azure 资源和 Azure AD 的实时特许访问权限。 在这种情况下，需要监督这些用户使用其管理员特权执行了哪些操作。
 
 ## <a name="what-does-it-do"></a>它有什么作用？
 
@@ -44,7 +44,7 @@ Privileged Identity Management 提供基于时间和基于审批的角色激活�
 
 ## <a name="what-can-i-do-with-it"></a>它的作用是什么？
 
-设置 Privileged Identity Management 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。    管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
+设置 Privileged Identity Management 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。    作为管理员，你将在管理 Azure AD 角色，管理 Azure 资源角色或特权访问组等选项之间进行选择 。 选择要管理的选项时，将看到该选项的相应选项集。
 
 ![Azure 门户中 Privileged Identity Management 的屏幕截图](./media/pim-configure/pim-quickstart.png)
 

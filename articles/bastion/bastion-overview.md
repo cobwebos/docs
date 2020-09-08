@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 01/31/2020
+ms.date: 09/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270336"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291868"
 ---
 # <a name="what-is-azure-bastion"></a>什么是 Azure Bastion？
 
@@ -26,7 +26,7 @@ Azure Bastion 部署是按虚拟网络进行的，而不是按订阅/帐户或�
 
 RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通过 Internet 公开 RDP/SSH 端口，这被视为一个严重的威胁面。 这通常是由于协议漏洞造成的。 若要包含此威胁面，可以在外围网络的公共端部署 bastion 主机（也称为跳转服务器）。 Bastion 主机服务器在设计和配置上考虑了抵御攻击。 Bastion 服务器还为位于 bastion 后以及网络内的工作负载提供 RDP 和 SSH 连接。
 
-![体系结构](./media/bastion-overview/architecture.png)
+![Azure Bastion 体系结构](./media/bastion-overview/architecture.png)
 
 此图显示了 Azure Bastion 部署体系结构。 在此图中：
 
@@ -47,7 +47,11 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 * 端口扫描防护  ：因为无需将虚拟机公开到公共 Internet，因此可防止 VM 受到虚拟网络外部的恶意用户的端口扫描。
 * **防止零日漏洞。仅在一个位置强化：** Azure Bastion 是完全托管平台 PaaS 服务。 由于它位于虚拟网络外围，因此你无需担心如何强化虚拟网络中的每个虚拟机。 Azure 平台通过使 Azure Bastion 保持强化且始终保持最新来防范零天攻击。
 
-## <a name="faq"></a>常见问题解答
+## <a name="whats-new"></a><a name="new"></a>新增功能
+
+订阅 RSS 源，并在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion)页面上查看最新的 Azure Bastion 功能更新。
+
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 

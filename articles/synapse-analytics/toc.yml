@@ -36,6 +36,8 @@
   items:
     - name: 使用 Azure 门户创建 Synapse 工作区
       href: quickstart-create-workspace.md
+    - name: 使用模板进行部署
+      href: quickstart-deployment-template-workspaces.md
     - name: 使用 Azure CLI 创建 Synapse 工作区
       href: quickstart-create-workspace-cli.md
     - name: 使用 Synapse Studio
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark 性能
               href: ./spark/apache-spark-performance.md
+            - name: 使用 Hyperspace 索引优化 Apache Spark 性能
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Apache Spark 自动缩放行为
               href: ./spark/apache-spark-autoscale.md
         - name: 开发
@@ -254,7 +258,7 @@
           items:
             - name: 概述
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 最佳做法
+            - name: 最佳实践
               href: sql/data-loading-best-practices.md
             - name: 列存储压缩
               href: sql/data-load-columnstore-compression.md
@@ -920,7 +924,7 @@
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 问题和回答
-      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
+      href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

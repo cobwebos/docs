@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658339"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269635"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>快速入门：在 Azure 门户中使用 Azure Data Share 共享数据
 
@@ -47,7 +47,7 @@ Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费
 
 1. 部署完成后，选择“转到资源”。
 
-## <a name="create-a-data-share"></a>创建 Data Share
+## <a name="create-a-share"></a>创建共享
 
 1. 导航到 Data Share 概览页。
 
@@ -57,15 +57,15 @@ Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费
 
 1. 选择“创建”。
 
-1. 填充 Data Share 的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
+1. 填充共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
    ![EnterShareDetails](./media/enter-share-details.png "输入共享详细信息") 
 
 1. 选择“继续”。
 
-1. 若要向 Data Share 添加数据集，请选择“添加数据集”。**** 
+1. 若要向共享添加数据集，请选择“添加数据集”。 
 
-   ![数据集](./media/datasets.png "数据集")
+   ![向共享添加数据集](./media/datasets.png "数据集")
 
 1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库进行共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
 

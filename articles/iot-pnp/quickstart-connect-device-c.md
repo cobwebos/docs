@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352552"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959283"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>快速入门：将 Linux 或 Windows 上运行的示例 IoT 即插即用预览设备应用程序连接到 IoT 中心 (C)
 
@@ -117,7 +117,10 @@ git clone --depth 1 --recurse-submodules https://github.com/Azure/azure-iot-sdk-
 
 在 SDK 中运行示例应用程序，以模拟将遥测发送到 IoT 中心的 IoT 即插即用设备：
 
-创建一个名为“IOTHUB_DEVICE_CONNECTION_STRING”的环境变量，以存储你之前记下的设备连接字符串。
+创建两个环境变量配置示例，以使用连接字符串连接到 IoT 中心：
+
+- 具有值 `"connectionString"` 的 IOTHUB_DEVICE_SECURITY_TYPE
+- 用于存储你之前记下的设备连接字符串的 IOTHUB_DEVICE_CONNECTION_STRING。
 
 在 cmake 文件夹中，导航到包含可执行文件的文件夹，并运行该文件：
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420322"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299195"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -74,6 +74,10 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 有关标准负载均衡器的定价信息，请参阅[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)。
 基本负载均衡器是免费提供的。
 请参阅[负载均衡器的 SLA](https://aka.ms/lbsla)。 基本负载均衡器没有 SLA。
+
+## <a name="whats-new"></a>新增功能
+
+订阅 RSS 源，并在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)页上查看最新的 Azure 负载均衡器功能更新。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅[升级基本负载均衡器](upgrade-basic-standard.md)，将基本负载均衡器升级为标准负载均衡器。

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: c9787a88cba051dcfaa58a188bf43fb03cafe70a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325162"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055475"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -104,7 +104,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
 
 > [!NOTE]
-> 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，都将删除作为该组成员的所有底层资源。
+> 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，属于该组的所有底层资源都将被删除。
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。
 2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，并单击“删除”。

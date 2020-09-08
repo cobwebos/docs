@@ -6,14 +6,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file
-ms.date: 07/30/2020
-ms.openlocfilehash: fdae79912e6fe3bf2f7d55b7405cb7883e484c47
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/25/2020
+ms.openlocfilehash: f0e7e0909de80ead7b300a4d396bf3eb84515745
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602478"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055361"
 ---
 [参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
@@ -21,22 +21,15 @@ ms.locfileid: "88602478"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="创建个性化体验创建服务资源"  target="_blank">创建个性化体验创建服务资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到个性化体验创建服务 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-## <a name="using-this-quickstart"></a>使用此快速入门
+## <a name="setting-up"></a>设置
 
-使用此快速入门有几个步骤：
+[!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-* 在 Azure 门户中，创建一个个性化体验创建服务资源
-* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，将模型更新频率更改为非常短的间隔
-* 在代码编辑器中，创建一个代码文件并编辑该代码文件
-* 在命令行或终端中，从命令行安装 SDK
-* 在命令行或终端中，运行代码文件
-
-[!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
-
-[!INCLUDE [!Change model frequency](change-model-frequency.md)]
-
-## <a name="create-a-new-c-application"></a>新建 C# 应用程序
+### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
 在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
 
@@ -62,7 +55,7 @@ Build succeeded.
 ...
 ```
 
-## <a name="install-the-sdk"></a>安装 SDK
+### <a name="install-the-client-library"></a>安装客户端库
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的个性化体验创建服务客户端库：
 
@@ -70,7 +63,18 @@ Build succeeded.
 dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.0-preview
 ```
 
-如果你使用的是 Visual Studio IDE，客户端库可用作可下载的 NuGet 包。
+> [!TIP]
+> 如果你使用的是 Visual Studio IDE，客户端库可用作可下载的 NuGet 包。
+
+在偏好的编辑器或 IDE 中打开项目目录中的 `Program.cs` 文件。 添加以下 using 指令：
+
+```csharp
+using Microsoft.Azure.CognitiveServices.Personalizer;
+using Microsoft.Azure.CognitiveServices.Personalizer.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+```
 
 ## <a name="object-model"></a>对象模型
 
@@ -86,45 +90,124 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 这些代码片段演示如何使用适用于 .NET 的个性化体验创建服务客户端库执行以下任务：
 
-* [创建个性化体验创建服务客户端](#create-a-personalizer-client)
+* [创建个性化体验创建服务客户端](#authenticate-the-client)
 * [排名 API](#request-the-best-action)
 * [奖励 API](#send-a-reward)
 
-## <a name="add-the-dependencies"></a>添加依赖项
 
-在首选的编辑器或 IDE 中，从项目目录打开 **Program.cs** 文件。 将现有 `using` 代码替换为以下 `using` 指令：
+## <a name="authenticate-the-client"></a>验证客户端
 
-[!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=Dependencies)]
+在本部分中，你将执行以下两项操作：
+* 指定密钥和终结点
+* 创建个性化体验创建服务客户端
 
-## <a name="add-personalizer-resource-information"></a>添加个性化体验创建服务资源信息
+首先，将以下行添加到 Program 类。 请确保从个性化体验创建服务资源中添加密钥和终结点。
 
-在“程序”类中编辑密钥和终结点变量，使其位于资源的 Azure 密钥和终结点的代码文件顶部。 
+[!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
-[!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=classVariables)]
+```csharp
+private static readonly string ApiKey = "REPLACE-WITH-YOUR-PERSONALIZER-KEY";
+private static readonly string ServiceEndpoint = "https://REPLACE-WITH-YOUR-PERSONALIZER-RESOURCE-NAME.cognitiveservices.azure.com";
+```
 
-## <a name="create-a-personalizer-client"></a>创建个性化体验创建服务客户端
+接下来，将方法添加到程序，以创建新的个性化体验创建服务客户端。
 
-接下来，创建一个用于返回个性化体验创建服务客户端的方法。 该方法的参数为 `PERSONALIZER_RESOURCE_ENDPOINT`，ApiKey 为 `PERSONALIZER_RESOURCE_KEY`。
+```csharp
+static PersonalizerClient InitializePersonalizerClient(string url)
+{
+    PersonalizerClient client = new PersonalizerClient(
+        new ApiKeyServiceClientCredentials(ApiKey)) { Endpoint = url };
 
-[!code-csharp[Create the Personalizer client](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=authorization)]
+    return client;
+}
+```
 
 ## <a name="get-food-items-as-rankable-actions"></a>获取食品项作为可排名操作
 
 操作表示你希望个性化体验创建服务从中选择最佳内容项的内容选择。 将以下方法添加到 Program 类，以表示操作及其特征的集合。 
 
-[!code-csharp[Food items as actions](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createAction)]
+```csharp
+static IList<RankableAction> GetActions()
+{
+    IList<RankableAction> actions = new List<RankableAction>
+    {
+        new RankableAction
+        {
+            Id = "pasta",
+            Features =
+            new List<object>() { new { taste = "salty", spiceLevel = "medium" }, new { nutritionLevel = 5, cuisine = "italian" } }
+        },
+
+        new RankableAction
+        {
+            Id = "ice cream",
+            Features =
+            new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionalLevel = 2 } }
+        },
+
+        new RankableAction
+        {
+            Id = "juice",
+            Features =
+            new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionLevel = 5 }, new { drink = true } }
+        },
+
+        new RankableAction
+        {
+            Id = "salad",
+            Features =
+            new List<object>() { new { taste = "salty", spiceLevel = "low" }, new { nutritionLevel = 8 } }
+        }
+    };
+
+    return actions;
+}
+```
 
 ## <a name="get-user-preferences-for-context"></a>获取上下文的用户首选项
 
 将以下方法添加到 Program 类，以从命令行获取用户的日期时间输入及其当前食品偏好。 它们将用作上下文特征。
 
-[!code-csharp[Present time out day preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTimeOfDay)]
+```csharp
+static string GetUsersTimeOfDay()
+{
+    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
 
-[!code-csharp[Present food taste preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTastePreference)]
+    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
+    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
+        timeIndex = 1;
+    }
+
+    return timeOfDayFeatures[timeIndex - 1];
+}
+```
+
+```csharp
+static string GetUsersTastePreference()
+{
+    string[] tasteFeatures = new string[] { "salty", "sweet" };
+
+    Console.WriteLine("\nWhat type of food would you prefer (enter number)? 1. salty 2. sweet");
+    if (!int.TryParse(GetKey(), out int tasteIndex) || tasteIndex < 1 || tasteIndex > tasteFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + tasteFeatures[0] + ".");
+        tasteIndex = 1;
+    }
+
+    return tasteFeatures[tasteIndex - 1];
+}
+```
 
 这两个方法都使用 `GetKey` 方法从命令行读取用户的选择。
 
-[!code-csharp[Read user's choice from the command line](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=readCommandLine)]
+```csharp
+private static string GetKey()
+{
+    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
+}
+```
 
 ## <a name="create-the-learning-loop"></a>创建学习循环
 
@@ -132,7 +215,69 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 以下代码循环调用以下循环：在命令行询问用户的首选项，将该信息发送给个性化体验创建服务以选择最佳操作，向客户显示所选项以让他们从列表中进行选择，然后向个性化体验创建服务发送奖励评分，指出服务在做选择时的表现如何。
 
-[!code-csharp[Learning loop](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=mainLoop)]
+```csharp
+static void Main(string[] args)
+{
+    int iteration = 1;
+    bool runLoop = true;
+
+    IList<RankableAction> actions = GetActions();
+
+    PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
+
+    do
+    {
+        Console.WriteLine("\nIteration: " + iteration++);
+
+        string timeOfDayFeature = GetUsersTimeOfDay();
+        string tasteFeature = GetUsersTastePreference();
+
+        IList<object> currentContext = new List<object>() {
+            new { time = timeOfDayFeature },
+            new { taste = tasteFeature }
+        };
+
+        IList<string> excludeActions = new List<string> { "juice" };
+
+        string eventId = Guid.NewGuid().ToString();
+
+        var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+        RankResponse response = client.Rank(request);
+
+        Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
+
+        float reward = 0.0f;
+        string answer = GetKey();
+
+        if (answer == "Y")
+        {
+            reward = 1;
+            Console.WriteLine("\nGreat! Enjoy your food.");
+        }
+        else if (answer == "N")
+        {
+            reward = 0;
+            Console.WriteLine("\nYou didn't like the recommended food choice.");
+        }
+        else
+        {
+            Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
+        }
+
+        Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+        foreach (var rankedResponse in response.Ranking)
+        {
+            Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
+        }
+
+        client.Reward(response.EventId, new RewardRequest(reward));
+
+        Console.WriteLine("\nPress q to break, any other key to continue:");
+        runLoop = !(GetKey() == "Q");
+
+    } while (runLoop);
+}
+```
 
 在运行代码文件之前，添加以下方法以[获取内容选项](#get-food-items-as-rankable-actions)：
 
@@ -147,7 +292,22 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](../concept-feature-evaluation.md)[操作与特征](../concepts-features.md)可能是一件非常重要的事情。
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=rank)]
+```csharp
+string timeOfDayFeature = GetUsersTimeOfDay();
+string tasteFeature = GetUsersTastePreference();
+
+IList<object> currentContext = new List<object>() {
+    new { time = timeOfDayFeature },
+    new { taste = tasteFeature }
+};
+
+IList<string> excludeActions = new List<string> { "juice" };
+
+string eventId = Guid.NewGuid().ToString();
+
+var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+RankResponse response = client.Rank(request);
+```
 
 ## <a name="send-a-reward"></a>发送奖励
 
@@ -155,7 +315,34 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 本快速入门分配一个简单的数字（0 或 1）作为奖励评分。 在生产系统中，确定何时向[奖励](../concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=reward)]
+```csharp
+float reward = 0.0f;
+string answer = GetKey();
+
+if (answer == "Y")
+{
+    reward = 1;
+    Console.WriteLine("\nGreat! Enjoy your food.");
+}
+else if (answer == "N")
+{
+    reward = 0;
+    Console.WriteLine("\nYou didn't like the recommended food choice.");
+}
+else
+{
+    Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
+}
+
+Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+foreach (var rankedResponse in response.Ranking)
+{
+    Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
+}
+
+// Send the reward for the action based on user response.
+client.Reward(response.EventId, new RewardRequest(reward));
+```
 
 ## <a name="run-the-program"></a>运行程序
 

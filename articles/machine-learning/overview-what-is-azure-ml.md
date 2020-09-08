@@ -9,18 +9,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650105"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145886"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
 在本文中，你将了解 Azure 机器学习，这是一种基于云的环境，你可以使用它来训练、部署、自动化、管理和跟踪 ML 模型。 
 
-Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度学习、监督式和非监督式学习。 无论你是否希望编写 Python 或 R 代码或零代码/低代码选项（如[设计器](tutorial-designer-automobile-price-train-score.md)），你都可以在 Azure 机器学习工作区中构建、训练和跟踪非常准确的机器学习和深度学习模型。 
+Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度学习、监督式和非监督式学习。 无论你是希望使用 SDK 编写 Python 或 R 代码，还是在[工作室](#build-ml-models-in-the-studio)中使用无代码/低代码选项，你都可以在 Azure 机器学习工作区中构建、训练和跟踪机器学习和深度学习模型。 
 
 开始在本地计算机上训练，然后横向扩展到云。 
 
@@ -63,27 +63,31 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 开始使用 Azure 机器学习 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> 在本地计算机上训练。 然后，横向扩展到云。 
 
-借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
+借助许多可用的[计算目标](how-to-create-attach-compute-sdk.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
 
 也可使用 SDK [自动完成模型训练和优化](tutorial-auto-train-models.md)。
 
-## <a name="build-ml-models-with-no-code-tools"></a>使用无代码工具生成 ML 模型
+## <a name="build-ml-models-in-the-studio"></a>在工作室中生成 ML 模型
 
-对于无代码或低代码训练和部署，请尝试：
+[Azure 机器学习工作室](https://www.ml.azure.com)是 Azure 机器学习中的 Web 门户，提供用于模型训练、部署和资产管理的低代码和无代码选项。 工作室与 Azure 机器学习 SDK 集成，以实现无缝体验。 有关详细信息，请参阅[什么是 Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)。
 
 + **Azure 机器学习设计器（预览版）**
 
-  使用设计器可在不编写任何代码的情况下准备数据、训练、测试、部署、管理和跟踪机器学习模型。 不需要编程，只需以可视方式连接数据集和模块即可构建模型。 尝试[设计器教程](tutorial-designer-automobile-price-train-score.md)。
+  使用[设计器](concept-designer.md)可在不编写任何代码的情况下训练和部署机器学习模型。 尝试[设计器教程](tutorial-designer-automobile-price-train-score.md)以开始使用。 
 
-  有关详细信息，请参阅 [Azure 机器学习设计器概述文章](concept-designer.md)。 
+  ![Azure 机器学习设计器的拖放界面的动画 gif](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Azure 机器学习设计器示例](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **跟踪试验**
 
-+ **自动化机器学习 UI**
+  了解如何在工作室中[跟踪和可视化数据科学试验](tutorial-first-experiment-automated-ml.md)。 
 
-  了解如何在易于使用的界面中创建[自动化 ML 试验](tutorial-first-experiment-automated-ml.md)。 
+    ![Azure 机器学习工作室中的运行详细信息](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Azure 机器学习工作室导航窗格](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **更多...**
+
+  在 [ml.azure.com](https://www.ml.azure.com) 访问 Azure 机器学习工作室。 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命周期管理
 有了正确的模型以后，即可轻松地将其用在 Web 服务中、IoT 设备上或 Power BI 中。 有关详细信息，请参阅有关[部署方式及位置](how-to-deploy-and-where.md)的文章。

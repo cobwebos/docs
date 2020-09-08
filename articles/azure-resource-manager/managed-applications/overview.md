@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391577"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377006"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -71,13 +71,13 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 此资源组包含托管应用程序所需的所有资源。 例如，此资源组包含解决方案的虚拟机、存储帐户和虚拟网络。 使用者对此资源组拥有有限的访问权限，因为使用者不会管理托管应用程序的单个资源。 发布者对此资源组的访问权限对应于托管应用程序定义中指定的角色。 例如，发布者可以请求此资源组的“所有者”或“参与者”角色。 访问权限可以是永久性的，也可以限制为特定的时间。
 
-将[托管应用程序发布到市场](publish-marketplace-app.md)时，发布者可以授予使用者对托管资源组中的资源执行特定操作的能力。 例如，发布者可以指定使用者可以重启虚拟机。 仍拒绝除读取操作外的其他所有操作。
+将[托管应用程序发布到市场](publish-marketplace-app.md)时，发布者可以授予使用者对托管资源组中的资源执行特定操作的能力。 例如，发布者可以指定使用者可以重启虚拟机。 仍拒绝除读取操作外的其他所有操作。 使用者通过已授权操作对托管资源组中的资源所做的更改受限于使用者租户的托管资源组范围内的 [Azure Policy](../../governance/policy/overview.md) 分配。
 
 当使用者删除托管应用程序时，也会一并删除托管资源组。
 
 ## <a name="azure-policy"></a>Azure Policy
 
-可以向托管应用程序应用 [Azure Policy](../../governance/policy/overview.md)。 可以应用策略以确保托管应用程序的已部署实例满足数据和安全要求。 如果应用程序与敏感数据进行交互，请确保你已评估应当如何对该数据进行保护。 例如，如果应用程序与来自 Office 365 的数据进行交互，请应用策略来确保启用数据加密。
+可以应用 [Azure Policy](../../governance/policy/overview.md) 来审核托管应用程序。 可以应用策略定义以确保托管应用程序的已部署实例满足数据和安全要求。 如果应用程序与敏感数据进行交互，请确保你已评估应当如何对该数据进行保护。 例如，如果应用程序与来自 Office 365 的数据进行交互，则可应用策略定义来确保启用数据加密。
 
 ## <a name="next-steps"></a>后续步骤
 

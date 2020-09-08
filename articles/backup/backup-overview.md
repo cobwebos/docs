@@ -4,12 +4,12 @@ description: 概述 Azure 备份服务及其如何有助于实现业务连续性
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: da4f9b4814e93a964105a7ed3ea4addaecd43864
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9954c8fa6affca7d2c2b73d7176280587d749476
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611222"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017883"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 

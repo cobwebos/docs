@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686599"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997568"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -24,6 +24,9 @@ ms.locfileid: "88686599"
 认证为 [Azure 专家托管服务提供商 (MSP)](https://partner.microsoft.com/membership/azure-expert-msp)的 CSP 直接帐单合作伙伴可以请求为其具有直接企业协议 (EA) 的客户转移 Azure 订阅。 仅允许为已接受了 Microsoft 客户协议 (MCA) 并购买了某个 Azure 计划的客户进行订阅转移。
 
 当请求获得批准后，CSP 可以向其客户提供组合发票。 若要详细了解 CSP 转移订阅，请参阅[获取你的 MPA 帐户的 Azure 订阅的计费所有权](mpa-request-ownership.md)。
+
+>[!IMPORTANT]
+> 将 EA 订阅转移到 CSP 合作伙伴后，以前应用到 EA 订阅的任何配额增加都将重置为默认值。 如果在订阅转移后需要额外的配额，请让 CSP 提供程序提交[配额增加](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests)请求。 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>将其他订阅转移到 CSP 合作伙伴
 

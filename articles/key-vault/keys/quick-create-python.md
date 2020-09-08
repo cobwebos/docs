@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: c590fea274900f580a5c8415f6b04c2f9108f74f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18ba00b39d8ffd703eb31b95d373e5b89e51c59b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876931"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376819"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端密钥库
 
@@ -68,7 +68,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
-对基于云的 .NET 应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault](../general/managed-identity.md)。 
+对基于云的应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[对 Azure Key Vault 进行身份验证](../general/authentication.md)。 
 
 不过，为了简单起见，本快速入门创建了一个需要使用服务主体和访问控制策略的桌面应用程序。 服务主体要求使用格式为“http://&lt;my-unique-service-principal-name&gt;”的唯一名称。
 
@@ -235,6 +235,6 @@ print(" done.")
 
 在本快速入门中，你创建了一个密钥保管库，存储了一个密钥，然后检索了该密钥。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
-- 阅读 [Azure Key Vault 概述](../general/overview.md)
-- 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- [Azure 密钥保管库概述](../general/overview.md)
+- [Azure Key Vault 开发人员指南](../general/developers-guide.md)
+- [Azure Key Vault 最佳做法](../general/best-practices.md)

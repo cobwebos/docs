@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建 Apache Spark for Azure Synapse Analytics 笔记本
-description: 本快速入门介绍如何使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池（预览版），并运行 Spark SQL 查询。
+title: 快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池
+description: 本快速入门介绍如何使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池，并运行 Spark SQL 查询。
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496241"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049802"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496746"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292531"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建演示应用（Azure 认知搜索）
 
@@ -61,7 +61,7 @@ ms.locfileid: "86496746"
 
 1. 在“说明”中，选择一个提供详细信息的字段，这些信息可以帮助用户确定是否要单击进入特定的文档。
 
-   ![示例数据的数据源页](media/search-create-app-portal/configure-results.png)
+   ![配置示例数据的结果](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>添加边栏
 
@@ -111,4 +111,4 @@ ms.locfileid: "86496746"
 默认应用对于初始探索和小任务非常有用，而尽早查看 API 有助于更深入地了解概念和工作流：
 
 > [!div class="nextstepaction"]
-> [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [使用 .NET SDK 创建索引](./search-get-started-dotnet.md)

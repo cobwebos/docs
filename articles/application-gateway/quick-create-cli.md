@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用 CLI 定向 Web 流量
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure CLI 创建 Azure 应用程序网关，用以将 Web 流量定向到后端池中的虚拟机。
+description: 本快速入门介绍如何使用 Azure CLI 创建 Azure 应用程序网关，以便将 Web 流量重定向到后端池中的虚拟机。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b6b2077a71870d619c023b0d66c37ebc043aa3f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499120"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961731"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
@@ -24,12 +24,14 @@ ms.locfileid: "87499120"
 
 还可以使用 [Azure PowerShell](quick-create-powershell.md) 或 [Azure 门户](quick-create-portal.md)完成本快速入门。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Azure CLI 2.0.4 或更高版本](/cli/azure/install-azure-cli)（如果在本地运行 Azure CLI）。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+
 
 ## <a name="create-resource-group"></a>创建资源组
 

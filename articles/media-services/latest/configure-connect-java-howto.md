@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: dc667a46d9802332d0f8c8dc673b28a9aeab96ea
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
-ms.translationtype: MT
+ms.openlocfilehash: 0f099a1b807cb860aaeda95a442cfdd7fd3c2869
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265620"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297376"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
 

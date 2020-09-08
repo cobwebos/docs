@@ -1,24 +1,24 @@
 ---
-title: 快速入门：为应用程序 HA 创建配置文件 - Azure CLI - Azure 流量管理器的
+title: 快速入门：为应用程序 HA 创建配置文件 - Azure CLI - Azure 流量管理器
 description: 本快速入门文章介绍如何创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
 services: traffic-manager
-author: rohinkoul
-mnager: twooley
+author: duongau
+mnager: kumud
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
-ms.author: rohink
+ms.date: 08/26/2020
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1de651d5321fa3a0dea4da33c5d41839e67ad9dc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 429d107a68c8631983bf791108f5091f31a480c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491181"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178074"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入门：使用 Azure CLI 创建流量管理器配置文件以实现 Web 应用程序的高可用性
 
@@ -112,12 +112,12 @@ az webapp create \
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 使用 [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) 将两个 Web 应用作为流量管理器终结点添加到流量管理器配置文件，如下所示：
 
-- 确定 Web 应用 ID，并将“美国东部”Azure 区域中的 Web 应用添加为主要终结点，以路由所有用户流量。  
-- 确定 Web 应用 ID，并将“西欧”Azure 区域中的 Web 应用添加为故障转移终结点。  
+- 确定 Web 应用 ID，并将“美国东部”Azure 区域中的 Web 应用添加为主要终结点，以路由所有用户流量。 
+- 确定 Web 应用 ID，并将“西欧”Azure 区域中的 Web 应用添加为故障转移终结点。 
 
 当主终结点不可用时，流量自动路由到故障转移终结点。
 
-在以下示例中，请将 **<app1name_eastus>** 和 **<app2name_westeurope>** 替换为在上一部分为每个区域创建的应用名称，将 **<appspname_eastus>** 和 **<appspname_westeurope>** 替换为在上一部分用于创建应用服务计划的名称，将 **<profile_name>** 替换为在上一部分使用的配置文件名称。 
+在下面的示例中，将 <app1name_eastus> 和 <app2name_westeurope> 替换为在上一部分为每个区域创建的应用名称 。 然后，将 <profile_name> 替换为上一部分中使用的配置文件名称。 
 
 **美国东部终结点**
 
@@ -174,7 +174,7 @@ az network traffic-manager endpoint create \
 
 在此部分，需检查流量管理器配置文件的域名。 此外还需将主终结点配置为不可用。 最后可以看到该 Web 应用仍然可用。 这是因为流量管理器将流量发送到故障转移终结点。
 
-在以下示例中，请将 **<app1name_eastus>** 和 **<app2name_westeurope>** 替换为在上一部分为每个区域创建的应用名称，将 **<appspname_eastus>** 和 **<appspname_westeurope>** 替换为在上一部分用于创建应用服务计划的名称，将 **<profile_name>** 替换为在上一部分使用的配置文件名称。
+在下面的示例中，将 <app1name_eastus> 和 <app2name_westeurope> 替换为在上一部分为每个区域创建的应用名称 。 然后，将 <profile_name> 替换为上一部分中使用的配置文件名称。
 
 ### <a name="determine-the-dns-name"></a>确定 DNS 名称
 
@@ -195,7 +195,7 @@ az network traffic-manager profile show \
 1. 在 Web 浏览器中输入流量管理器配置文件的 DNS 名称 (*http://<* relativednsname *>.trafficmanager.net*)，以查看 Web 应用的默认网站。
 
     > [!NOTE]
-    > 在本快速入门方案中，所有请求都路由到主终结点。 它设置为“优先级 1”。 
+    > 在本快速入门方案中，所有请求都路由到主终结点。 它设置为“优先级 1”。****
 2. 若要查看流量管理器故障转移如何进行，请使用 [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 禁用主要站点。
 
    ```azurecli-interactive

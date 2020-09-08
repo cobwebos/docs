@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641851"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300147"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性
 
@@ -31,7 +31,7 @@ ms.locfileid: "88641851"
 - 可选：完成[添加应用](add-application-portal.md)。
 
 >[!IMPORTANT]
->使用非生产性环境测试本快速入门中的步骤。
+>使用非生产环境测试本快速入门中的步骤。
 
 ## <a name="configure-app-properties"></a>配置应用属性
 
@@ -93,6 +93,6 @@ ms.locfileid: "88641851"
 
 ## <a name="next-steps"></a>后续步骤
 
-请继续学习下一篇文章，了解如何为应用设置单一登录。
+继续学习下一篇文章，了解如何向应用分配用户。
 > [!div class="nextstepaction"]
-> [设置单一登录](add-application-portal-setup-sso.md)
+> [向应用分配用户](add-application-portal-assign-users.md)

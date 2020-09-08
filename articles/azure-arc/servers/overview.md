@@ -1,16 +1,16 @@
 ---
 title: 启用了 Azure Arc 的服务器（预览版）概述
-description: 了解如何使用启用了 Azure Arc 的服务器（预览版）像管理 Azure 资源一样，管理托管在 Azure 外部的计算机。
+description: 了解如何使用启用了 Azure Arc 的服务器（预览版）像管理 Azure 资源一样，管理托管在 Azure 外部的服务器。
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211321"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228081"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>什么是启用了 Azure Arc 的服务器（预览版）？
 
@@ -51,4 +51,4 @@ Connected Machine 代理每 5 分钟向服务发送一条定期检测信号消�
 
 ## <a name="next-steps"></a>后续步骤
 
-在为多台混合计算机评估或启用已启用 Arc 的服务器（预览版）之前，请查看[连接的计算机代理概述](agent-overview.md)一文，了解所需满足的条件、有关代理的技术详细信息以及部署方法。
+在为多台混合计算机评估或启用已启用 Arc 的服务器（预览版）之前，请查看[连接的计算机代理概述](agent-overview.md)，了解要求、有关代理的技术详细信息以及部署方法。

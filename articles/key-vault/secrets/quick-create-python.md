@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b31f22f9a3909df308fdcfa994833887828f2539
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f1f044eb3af35019eaf010e118bc4a5814269e9e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876353"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378538"
 ---
 # <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 机密客户端库
 
@@ -27,7 +27,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 简化和自动化与 TLS/SSL 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
-[API 参考文档](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [包（Python 包索引）](https://pypi.org/project/azure-keyvault/)
+[API 参考文档](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [包（Python 包索引）](https://pypi.org/project/azure-keyvault-secrets/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +73,7 @@ pip install azure.identity
 
 使用适用于 Python 的 Azure Key Vault 客户端库，你可以管理密钥和相关的资产（例如证书和机密）。 以下代码示例演示如何创建客户端以及设置、检索和删除机密。
 
-[https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app ) 中提供了整个控制台应用。
+[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets/samples) 上提供了演示本文中所示的类似操作以及其他 Key Vault 功能的示例应用。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -99,7 +99,7 @@ client = SecretClient(vault_url=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>保存机密
 
-应用程序通过身份验证后，你可以使用 client.SetSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)将机密放入 keyvault。此操作需要使用机密的名称，本示例中使用“mySecret”。  
+应用程序通过身份验证后，你可以使用 client.[set_secret 方法](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-)将机密放入密钥保管库。此操作需要使用机密的名称，本例中使用“mySecret”。  
 
 ```python
 client.set_secret(secretName, secretValue)
@@ -113,7 +113,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>检索机密
 
-现在，可以使用 [client.GetSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)检索以前设置的值。
+现在，你可以使用 [get_secret 方法](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-)检索以前设置的值。
 
 ```python
 retrieved_secret = client.get_secret(secretName)
@@ -123,10 +123,10 @@ retrieved_secret = client.get_secret(secretName)
 
 ### <a name="delete-a-secret"></a>删除机密
 
-最后，使用 [client.DeleteSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)从密钥保管库中删除机密。
+最后，使用 [begin_delete_secret 方法](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-)从密钥保管库中删除机密。
 
 ```python
-client.delete_secret(secretName)
+client.begin_delete_secret(secretName)
 ```
 
 可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令来验证是否已删除机密：
@@ -147,7 +147,7 @@ az group delete -g "myResourceGroup"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 ```python
 import os
@@ -183,15 +183,15 @@ retrieved_secret = client.get_secret(secretName)
 print(f"Your secret is '{retrieved_secret.value}'.")
 print(f"Deleting your secret from {keyVaultName} ...")
 
-client.delete_secret(secretName)
+client.begin_delete_secret(secretName)
 
 print(" done.")
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个 Key Vault、存储了一个机密，然后检索了该机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
+在本快速入门中，你创建了一个密钥保管库、存储了一个机密，然后检索了该机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
-- 阅读 [Azure Key Vault 概述](../general/overview.md)
-- 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- [Azure 密钥保管库概述](../general/overview.md)
+- [Azure Key Vault 开发人员指南](../general/developers-guide.md)
+- [Azure Key Vault 最佳做法](../general/best-practices.md)

@@ -3,21 +3,21 @@ title: Azure Front Door | Microsoft Docs
 description: 本文提供 Azure Front Door 的概述。 了解它是否是针对应用程序进行用户流量负载均衡的正确选择。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
-ms.author: sharadag
-ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378179"
 ---
 # <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
 在 Azure Front Door 中，你可以进行优化以实现最佳性能以及进行快速全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 使用 Front Door，可将全球（多区域）消费型和企业应用程序转化成可靠、高性能、个性化的现代应用程序、API 和内容，供 Azure 全球受众访问。
@@ -81,6 +81,10 @@ HTTP/2 协议通过长时间运行的 TCP 连接，在应用程序后端与客�
 ## <a name="pricing"></a>定价
 
 有关定价信息，请参阅 [Front Door 定价](https://azure.microsoft.com/pricing/details/frontdoor/)。
+
+## <a name="whats-new"></a>新增功能
+
+订阅 RSS 源，并在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door)页上查看最新的 Azure 负载均衡器功能更新。
 
 ## <a name="next-steps"></a>后续步骤
 

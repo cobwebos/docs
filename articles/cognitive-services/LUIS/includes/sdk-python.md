@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 08/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file
+ms.custom: include file, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: eac827097f892de81bc5820994f3e2a4e0696dcb
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 0cb7378f818263ddf3b4c4b2d041649ffbaed4e2
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246241"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323051"
 ---
 使用适用于 Python 的语言理解 (LUIS) 客户端库来执行以下操作：
 
@@ -28,7 +28,7 @@ ms.locfileid: "88246241"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新版本的 [Python 3.x](https://www.python.org/)。 
+* 最新版本的 [Python 3.x](https://www.python.org/)。
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 有了 Azure 订阅后，在 Azure 门户中[创建语言理解创作资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以获取创作密钥和终结点。 等待其部署并单击“转到资源”按钮。
     * 需要从[创建](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)的资源获取密钥和终结点，以便将应用程序连接到语言理解创作。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。 可以使用免费定价层 (`F0`) 来试用该服务。
@@ -43,7 +43,7 @@ ms.locfileid: "88246241"
     mkdir quickstart-sdk && cd quickstart-sdk
     ```
 
-1. 为 Python 代码创建名为 `authoring_and_predict.py` 的文件。 
+1. 为 Python 代码创建名为 `authoring_and_predict.py` 的文件。
 
     ```console
     touch authoring_and_predict.py
@@ -61,6 +61,8 @@ pip install azure-cognitiveservices-language-luis
 
 语言理解 (LUIS) 创作客户端是对 Azure 进行身份验证的 [LUISAuthoringClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-python) 对象，其中包含创作密钥。
 
+## <a name="code-examples-for-authoring"></a>创作的代码示例
+
 创建客户端后，可以使用此客户端访问如下所述的功能：
 
 * 应用 - [创建](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#add-application-create-object--custom-headers-none--raw-false----operation-config-)、[删除](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#delete-app-id--force-false--custom-headers-none--raw-false----operation-config-)、[发布](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#publish-app-id--version-id-none--is-staging-false--custom-headers-none--raw-false----operation-config-)
@@ -76,6 +78,8 @@ pip install azure-cognitiveservices-language-luis
 
 语言理解 (LUIS) 预测运行时客户端是对 Azure 进行身份验证的 [LUISRuntimeClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-python) 对象，其中包含资源密钥。
 
+## <a name="code-examples-for-prediction-runtime"></a>预测运行时的代码示例
+
 创建客户端后，可以使用此客户端访问如下所述的功能：
 
 * 按[过渡槽或生产槽](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)进行预测
@@ -85,26 +89,28 @@ pip install azure-cognitiveservices-language-luis
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
-将客户端库添加到 python 文件中。 
+将客户端库添加到 python 文件中。
 
 [!code-python[Add python libraries to code file](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=Dependencies)]
 
 
-## <a name="add-boilerplate-code"></a>添加样板代码 
+## <a name="add-boilerplate-code"></a>添加样板代码
 
-1. 添加 `quickstart` 方法及其调用。 此方法保存大部分剩余代码。 在文件末尾调用此方法。 
+1. 添加 `quickstart` 方法及其调用。 此方法保存大部分剩余代码。 在文件末尾调用此方法。
 
     ```python
-    def quickstart(): 
+    def quickstart():
 
         # add calls here, remember to indent properly
-    
+
     quickstart()
     ```
 
-1. 在 quickstart 方法中添加剩余代码（除非另有指定）。 
+1. 在 quickstart 方法中添加剩余代码（除非另有指定）。
 
 ## <a name="create-variables-for-the-app"></a>为应用创建变量
+
+创建两组变量：第一组为你更改的变量，第二组保留在代码示例中显示的状态。 
 
 1. 创建用于保存创作密钥和资源名称的变量。
 
@@ -118,7 +124,7 @@ pip install azure-cognitiveservices-language-luis
 
 使用密钥创建 [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 对象，并在终结点中使用该对象创建一个 [LUISAuthoringClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-python) 对象。
 
-[!code-python[Create LUIS authoring client object](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringCreateClient)]
+[!code-python[Authenticate the client](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>创建 LUIS 应用
 
@@ -126,7 +132,7 @@ LUIS 应用包含自然语言处理 (NLP) 模型，包括意向、实体和示�
 
 创建 [AppsOperation](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python) 对象的 [add](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#add-application-create-object--custom-headers-none--raw-false----operation-config-) 方法，用于创建应用。 名称和语言区域性是必需的属性。
 
-[!code-python[Create LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringCreateApplication)]
+[!code-python[Create a LUIS app](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringCreateApplication)]
 
 
 ## <a name="create-intent-for-the-app"></a>为应用创建意向
@@ -136,7 +142,7 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 `intentName` 值硬编码为 `OrderPizzaIntent`，作为[为应用创建变量](#create-variables-for-the-app)中变量的一部分。
 
-[!code-python[Create intent](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AddIntent)]
+[!code-python[Create intent for the app](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>为应用创建实体
 
@@ -148,9 +154,9 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 实体创建代码会创建机器学习实体，其中包含子实体以及应用于 `Quantity` 子实体的功能。
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="实体创建代码会创建机器学习实体，其中包含子实体以及应用于 `Quantity` 子实体的功能。":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="显示创建的实体的门户的部分屏幕截图，其中为包含子实体以及应用于 `Quantity` 子实体的功能的机器学习实体。":::
 
-[!code-python[Create entities](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddEntities)]
+[!code-python[Create entities for the app](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddEntities)]
 
 将以下方法置于 `quickstart` 方法之上，查找 Quantity 子实体的 ID，以便将功能分配给该子实体。
 
@@ -162,11 +168,11 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 通过创建 [ExampleLabelObject](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-python) 对象的列表来添加示例言语（每个示例言语对应于一个对象）。 每个示例应使用实体名称和实体值的名称/值对字典来标记所有实体。 实体值应与示例言语文本中显示的值完全相同。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="实体值应与示例言语文本中显示的值完全相同。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="显示门户中标记的示例言语的部分屏幕截图。":::
 
-结合应用 ID、版本 ID 和示例调用 [examples.add](https://docs.microsoft.com//python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#add-app-id--version-id--example-label-object--enable-nested-children-false--custom-headers-none--raw-false----operation-config-)。 
+结合应用 ID、版本 ID 和示例调用 [examples.add](https://docs.microsoft.com//python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#add-app-id--version-id--example-label-object--enable-nested-children-false--custom-headers-none--raw-false----operation-config-)。
 
-[!code-python[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddLabeledExamples)]
+[!code-python[Add example utterance to intent](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>训练应用
 
@@ -176,9 +182,9 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 极小的模型（如本快速入门中所示的模型）很快就能完成训练。 对于生产级应用程序，应用的训练应该包括轮询调用 [get_status](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-) 方法以确定训练何时成功或者是否成功。 响应是一个 [ModelTrainingInfo](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-python) 对象列表，其中分别列出了每个对象的状态。 所有对象必须成功，才能将训练视为完成。
 
-[!code-python[Train the app's version](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=TrainAppVersion)]
+[!code-python[Train the app](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>发布语言理解应用
+## <a name="publish-app-to-production-slot"></a>将应用发布到生产槽
 
 使用 [app.publish](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#publish-app-id--version-id-none--is-staging-false--custom-headers-none--raw-false----operation-config-) 方法发布 LUIS 应用。 这会将当前已训练的版本发布到终结点上的指定槽。 客户端应用程序使用此终结点发送用户言语，以预测意向和提取实体。
 
@@ -190,7 +196,7 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-python[Create LUIS runtime client object](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=PredictionCreateClient)]
+[!code-python[Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=PredictionCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>从运行时获取预测
 
@@ -200,7 +206,7 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** 方法需要多个参数，如应用 ID、槽名称，以及用于履行请求的预测请求对象。 其他选项（如详细、显示所有意向和日志）都是可选的。 该请求返回 [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) 对象。
 
-[!code-python[Get prediction based on query](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=QueryPredictionEndpoint)]
+[!code-python[Get prediction from runtime](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893843"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055458"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>使用 ADT 资源管理器探索示例 Azure 数字孪生方案
 
@@ -26,6 +26,10 @@ ms.locfileid: "88893843"
 1. 上传预生成的模型和图数据来构造示例方案
 1. 探索已创建的方案图
 1. 对图进行更改
+
+你将使用的示例图表示具有两个楼层和两个房间的建筑。 该图将如下所示：
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="由箭头连接的 4 个圆形节点组成的图形视图。标记为“楼层 1”的圆圈通过标记为“包含”的箭头连接到标记为“房间 1”的圆圈；标记为“楼层 0”的圆圈通过标记为“包含”的箭头连接到标记为“房间 0”的圆圈。未连接“楼层 1”和“楼层 0”。":::
 
 ## <a name="prerequisites"></a>必备知识
 
@@ -98,7 +102,7 @@ ms.locfileid: "88893843"
 输入之前在[先决条件](#prerequisites)部分中收集的重要信息：
 * 应用程序（客户端）ID
 * 目录（租户）ID
-* ADT URL，格式为 https://<instance host name>
+* ADT URL，格式为 https://{instance host name}
 
 >[!NOTE]
 > 可随时重新访问/编辑此信息，方法是选择相同图标以再次拉取“登录”框。 它将保留你传入的值。
@@ -170,7 +174,7 @@ ADT 资源管理器现在会将这些模型文件上传到 Azure 数字孪生实
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-在“文件选择器”框中，再次导航到 client/examples 文件夹，然后选择 buildingScenario.xlsx 电子表格文件__。 此文件包含示例图的说明。 点击“确定”。
+在“文件选择器”框中，导航到 Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp 文件夹，然后选择 buildingScenario.xlsx 电子表格文件__。 此文件包含示例图的说明。 点击“确定”。
 
 几秒钟后，ADT 资源管理器将打开“导入”视图，其中显示了要加载的图的预览。
 

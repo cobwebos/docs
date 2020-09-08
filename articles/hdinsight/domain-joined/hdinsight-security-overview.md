@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367098"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292973"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性概述
 
@@ -59,7 +59,7 @@ Hadoop 管理员可以配置基于角色的访问控制 (RBAC)。 这些配置�
 
 保护数据对于满足组织安全性和合规性要求具有重要意义。 除了限制未经授权的员工访问数据外，还应对数据加密。
 
-Azure 存储和 Data Lake Storage Gen1/Gen2 支持在服务器端以透明方式[对静态数据进行加密](../../storage/common/storage-service-encryption.md)。 HDInsight 安全群集将与服务器端静态数据加密无缝协作。
+HDInsight 支持使用平台托管和[客户托管的密钥](../disk-encryption.md)加密静态数据。 传输中的数据的加密是通过 TLS 和 IPSec 来处理的。 如需了解详情，请参阅 [Azure HDInsight 的传输中加密](encryption-in-transit.md)。
 
 ### <a name="compliance"></a>合规性
 
@@ -79,7 +79,7 @@ Azure 合规性产品/服务基于各种类型的保证，包括独立的第三�
 |  | 在存储帐户中启用“[需要安全传输](../../storage/common/storage-require-secure-transfer.md)”属性。 | 客户 |
 |  | 配置 [Azure 存储防火墙](../../storage/common/storage-network-security.md)和虚拟网络 | 客户 |
 |  | 为 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 配置 [Azure 虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | 客户 |
-|  | 确保为传输中的数据启用 [TLS 加密](../../storage/common/storage-security-tls.md)。 | 客户 |
+|  | 请确保已启用[传输中加密](./encryption-in-transit.md)功能，以便使用 TLS 和 IPSec 进行群集内通信。 | 客户 |
 |  | 配置[客户管理的密钥](../../storage/common/storage-encryption-keys-portal.md)以进行 Azure 存储加密 | 客户 |
 |  | 使用[客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)控制对数据的访问权限 | 客户 |
 | 应用程序和中间件安全性 | 集成 AAD-DS 并[配置身份验证](apache-domain-joined-configure-using-azure-adds.md) | 客户 |
