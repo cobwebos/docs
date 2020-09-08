@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d5a8555b2bd57dc024318464e38f042469beb4b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015979"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458665"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教程：使用 R 创建机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 在 RStudio 中，导航到“终端”选项卡，通过 cd 命令进入要在其中克隆存储库的目录。
 
-1. 在终端中运行“git clone https://github.com/Azure/azureml-sdk-for-r.git”以克隆存储库。
+1. 在终端中运行“git clone https://github.com/Azure/azureml-sdk-for-r”以克隆存储库。
 
 1. 在 RStudio 中，导航到克隆的 azureml-sdk-for-r 文件夹的 vignettes 文件夹。  在 vignettes 下，选择 train-and-ploplo-first-model.Rmd 文件，以查找本教程中使用的 vignette。 用于 vignette 的其他文件位于 train-and-ploy-first-model 子文件夹中。 打开 vignette 后，通过“会话”>“设置工作目录”>“到源文件位置”，将工作目录设置为文件所在的位置。 
 
