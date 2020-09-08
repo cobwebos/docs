@@ -4,14 +4,14 @@ description: 教程：了解如何使用开源 Azure Cosmos DB 数据迁移工�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118757"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255981"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教程：使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
@@ -40,6 +40,9 @@ ms.locfileid: "85118757"
 * **增加吞吐量：** 数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的[性能级别](performance-levels.md)和[定价层](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
 * **创建 Azure Cosmos DB 资源：** 在开始迁移数据之前，从 Azure 门户预先创建所有集合。 若要迁移到具有数据库级别吞吐量的 Azure Cosmos DB 帐户，请在创建 Azure Cosmos 容器时提供分区键。
+
+> [!IMPORTANT]
+> 若要确保数据迁移工具在连接到 Azure Cosmos 帐户时使用传输层安全性 (TLS) 1.2，请使用 .NET Framework 版本 4.7 或按照[本文](https://docs.microsoft.com/dotnet/framework/network-programming/tls)中的说明执行操作。
 
 ## <a name="overview"></a><a id="Overviewl"></a>概述
 

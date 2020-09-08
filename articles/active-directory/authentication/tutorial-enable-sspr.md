@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718843"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399967"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
@@ -37,7 +37,8 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Free 或试用版许可证的有效 Azure AD 租户。 在免费层中，SSPR 仅适用于 Azure AD 中的云用户。
+    * 对于本系列中的后续教程，本地密码写回需要 Azure AD Premium P1 或试用版许可证。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个拥有“全局管理员”特权的帐户。
 * 你知道其密码的非管理员测试用户，例如 *testuser*。 在本教程中，你将使用此帐户来测试最终用户的 SSPR 体验。
@@ -140,7 +141,7 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何：
+在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为一组 Azure AD 用户启用自助式密码重置

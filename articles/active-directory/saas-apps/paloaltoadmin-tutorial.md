@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554067"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成
 
@@ -43,20 +43,20 @@ ms.locfileid: "88554067"
 
 * Palo Alto Networks - 管理 UI 支持 **SP** 发起的 SSO
 * Palo Alto Networks - 管理 UI 支持**实时**用户预配
+* 配置 Palo Alto Networks - 管理员 UI 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>从库添加 Palo Alto Networks - 管理 UI
 
 若要配置 Palo Alto Networks - 管理 UI 与 Azure AD 的集成，需要从库中将 Palo Alto Networks - 管理 UI 添加到托管的 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分中，在搜索框中键入“Palo Alto Networks - Admin UI”。 
 1. 在结果面板中选择“Palo Alto Networks - Admin UI”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 在本部分中，将基于名为 **B.Simon** 的测试用户配置并测试“Palo Alto Networks - Admin UI”的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Palo Alto Networks - 管理 UI 中相关用户之间建立链接关系。
 
@@ -83,11 +83,11 @@ ms.locfileid: "88554067"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-1. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框  。
+1. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`。
 
@@ -118,6 +118,9 @@ ms.locfileid: "88554067"
     | | |
 
     > [!NOTE]
+    > adminrole 值应与步骤 9 中提到的 Palo Alto Networks 中配置的角色名相同。 
+
+    > [!NOTE]
     > 有关这些属性的详细信息，请参阅以下文章：
     > * [Admin UI 的管理角色配置文件 (adminrole)](https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/firewall-administration/manage-firewall-administrators/configure-an-admin-role-profile)
     > * [Admin UI 的设备访问域 (accessdomain)](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-web-interface-help/device/device-access-domain.html)
@@ -145,7 +148,7 @@ ms.locfileid: "88554067"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -158,12 +161,12 @@ ms.locfileid: "88554067"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ### <a name="configure-palo-alto-networks---admin-ui-sso"></a>配置 Palo Alto Networks - Admin UI SSO
@@ -272,5 +275,3 @@ Palo Alto Networks - Admin UI 支持实时用户预配。 如果用户尚不存�
 - [尝试通过 Azure AD 使用 Palo Alto Networks - Admin UI](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何通过高级可见性和控制保护 Palo Alto Networks - Admin UI](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

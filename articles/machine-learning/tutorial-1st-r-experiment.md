@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056357"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015979"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教程：使用 R 创建机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,8 @@ ms.locfileid: "88056357"
 将在本教程中执行以下任务：
 > [!div class="checklist"]
 > * 创建 Azure 机器学习工作区
-> * 将笔记本文件夹和运行本教程所需的文件克隆到工作区
 > * 从工作区打开 RStudio
+> * 将 https://github.com/Azure/azureml-sdk-for-r 和运行本教程所需的文件克隆到工作区
 > * 加载数据并准备训练
 > * 将数据上传到数据存储，使之可用于远程训练
 > * 创建计算资源以远程训练模型
@@ -53,33 +53,11 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 > 记下你的工作区和订阅 。 你将需要这些项才能确保在正确的位置创建试验。 
 
 
-## <a name="clone-a-notebook-folder"></a><a name="azure"></a>克隆笔记本文件夹
-
-本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
-
-在 Azure 机器学习工作室中完成以下试验设置和运行步骤，该工作室是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。
-
-1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
-
-1. 选择创建的订阅和工作区。
-
-1. 选择左侧的“笔记本”。
-
-1. 打开“Samples”文件夹。
-
-1. 打开 R 文件夹。
-
-1. 打开包含版本号的文件夹。  此数字表示 R SDK 的当前版本。
-
-1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。
-
-    ![克隆文件夹](media/tutorial-1st-r-experiment/clone-folder.png)
-
-1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“vignettes”文件夹克隆到其中的文件夹。
-
 ## <a name="open-rstudio"></a><a name="open"></a>打开 RStudio
 
-在计算实例或 Notebook VM 上使用 RStudio 运行此教程。  
+本示例使用工作区中的计算实例来实现免安装的预配置体验。 如果你希望控制自己计算机上的环境、包和依赖项，请使用[自己的环境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
+
+在 Azure ML 计算实例上使用 RStudio 运行本教程。  
 
 1. 选择左侧的“计算”。
 
@@ -87,10 +65,19 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 计算运行后，使用 RStudio 链接打开 RStudio。
 
-1. 在 RStudio 中，“vignettes”文件夹位于右下位置“文件”部分中的“用户”下几级的位置 。  在 vignettes 下选择“train-and-deploy-to-aci”文件夹，找到本教程中所需的文件。
+
+## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>克隆示例 vignette 
+
+克隆 https://github.com/azure/azureml-sdk-for-r GitHub 存储库以获取将在本教程中运行的 vignette 文件的副本。
+
+1. 在 RStudio 中，导航到“终端”选项卡，通过 cd 命令进入要在其中克隆存储库的目录。
+
+1. 在终端中运行“git clone https://github.com/Azure/azureml-sdk-for-r.git”以克隆存储库。
+
+1. 在 RStudio 中，导航到克隆的 azureml-sdk-for-r 文件夹的 vignettes 文件夹。  在 vignettes 下，选择 train-and-ploplo-first-model.Rmd 文件，以查找本教程中使用的 vignette。 用于 vignette 的其他文件位于 train-and-ploy-first-model 子文件夹中。 打开 vignette 后，通过“会话”>“设置工作目录”>“到源文件位置”，将工作目录设置为文件所在的位置。 
 
 > [!Important]
-> 本文的余下部分包含 *train-and-deploy-to-aci.Rmd* 文件中所示的相同内容。 如果你有 RMarkdown 方面的经验，可随意使用该文件中的代码。  或者，可将该文件或本文中的代码片段复制/粘贴到 R 脚本或命令行中。  
+> 本文余下部分包含与 train-and-deploy-to-aci.Rmd 文件中所示内容相同的内容。 如果你有 RMarkdown 方面的经验，可随意使用该文件中的代码。  或者，可将该文件或本文中的代码片段复制/粘贴到 R 脚本或命令行中。 
 
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
@@ -197,7 +184,7 @@ upload_files_to_datastore(ds,
 * 提交作业
 
 ### <a name="prepare-the-training-script"></a>准备训练脚本
-本教程的同一目录中已提供了一个名为 `accidents.R` 的训练脚本。 请注意**训练脚本中**的以下详细信息，这些操作的目的是利用 Azure 机器学习进行训练：
+已在 train-and-ploy-first-model 目录中为你提供名为 `accidents.R` 的训练脚本。 请注意**训练脚本中**的以下详细信息，这些操作的目的是利用 Azure 机器学习进行训练：
 
 * 训练脚本采用 `-d` 参数来查找包含训练数据的目录。 稍后定义并提交作业时，需要指向数据存储来获取此参数。 Azure ML 会将存储文件夹装载到训练作业的远程群集。
 * 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标，记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API，用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在[工作室](https://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
@@ -216,7 +203,7 @@ Azure ML 评估器封装了在计算目标上执行训练脚本所需的运行�
 * 用于训练的任何环境依赖项。 为训练生成的默认 Docker 映像已包含训练脚本中所需的三个包（`caret`、`e1071` 和 `optparse`）。  因此，无需指定附加的信息。 如果使用默认未包含的 R 包，请使用评估器的 `cran_packages` 参数添加附加的 CRAN 包。 有关完整的可配置选项集，请参阅 [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) 参考。
 
 ```R
-est <- estimator(source_directory = ".",
+est <- estimator(source_directory = "train-and-deploy-first-model",
                  entry_script = "accidents.R",
                  script_params = list("--data_folder" = ds$path(target_path)),
                  compute_target = compute_target
@@ -331,6 +318,7 @@ r_env <- r_environment(name = "basic_env")
 ```R
 inference_config <- inference_config(
   entry_script = "accident_predict.R",
+  source_directory = "train-and-deploy-first-model",
   environment = r_env)
 ```
 

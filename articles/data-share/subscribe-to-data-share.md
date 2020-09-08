@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258649"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268887"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -38,7 +38,7 @@ ms.locfileid: "88258649"
 * 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。 
 * 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。  
 
-### <a name="receive-data-into-a-sql-based-source"></a>将数据接收到基于 SQL 的源中：
+### <a name="receive-data-into-a-sql-based-target"></a>将数据接收到基于 SQL 的目标中：
 
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。 
 * 数据共享资源托管标识用于访问 Azure SQL 数据库或 Azure SQL 数据仓库的权限。 可以通过以下步骤完成此操作： 
@@ -78,7 +78,7 @@ ms.locfileid: "88258649"
 
    若要直接从 Azure 门户打开邀请，请在 Azure 门户中搜索“数据共享邀请”  。 这会转到“数据共享邀请”列表。
 
-   ![邀请](./media/invitations.png "邀请列表") 
+   ![邀请列表](./media/invitations.png "邀请列表") 
 
 1. 选择要查看的共享。 
 

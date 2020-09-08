@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82203245"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295255"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "82203245"
 此时，API 管理中没有任何操作映射到后端 API 中的操作。 如果调用通过后端（而不是通过 API 管理）公开的操作，则会收到 404 错误。
 
 >[!NOTE] 
-> 默认情况下，在添加某个 API 时，除非已将某些操作列入允许列表，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要将后端服务的某个操作列入允许列表，请创建一个映射到后端操作的 APIM 操作。
+> 默认情况下，在添加某个 API 时，除非你允许，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要允许后端服务的某个操作，请创建一个映射到后端操作的 APIM 操作。
 
 ## <a name="add-and-test-an-operation"></a>添加并测试操作
 

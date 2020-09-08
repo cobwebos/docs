@@ -7,15 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77b105fd5bbc6cc88411379e79522562ebce3677
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 587b26d821b9701df435b9ee0a1c5f9ba5602fc0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083746"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050924"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>使用 IntelliJ 部署 Azure Spring Cloud 应用程序
 适用于 Azure Spring Cloud 的 IntelliJ 插件支持从 IntelliJ IDEA 进行应用程序部署。  
+
+在运行此示例之前，可以尝试[基础知识快速入门](spring-cloud-quickstart.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)

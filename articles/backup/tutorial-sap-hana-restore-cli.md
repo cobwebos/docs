@@ -4,12 +4,12 @@ description: 在本教程中，你将了解如何使用 Azure CLI 从 Azure 备�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: d0a6cec234c367ceb1c6032e99d64d6ca5bc4805
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762277"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180263"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
 

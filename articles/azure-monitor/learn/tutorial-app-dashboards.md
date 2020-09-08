@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829673"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856012"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -40,6 +40,9 @@ ms.locfileid: "87829673"
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-new-dashboard"></a>创建新的仪表板
+> [!WARNING]
+> 如果将应用程序见解资源移至其他资源组或订阅，则需要手动更新仪表板，方法是删除旧磁贴并将同一应用程序见解资源中的新磁贴固定在新位置。 
+
 单个仪表板可以包含来自多个应用程序、资源组和订阅的资源。  通过为应用程序创建新的仪表板开始本教程。  
 
 1. 在仪表板窗格中，选择“新建仪表板”。

@@ -1,18 +1,18 @@
 ---
 title: 教程 - 配置 Azure Analysis Services 角色 | Microsoft Docs
-description: 了解如何使用 Azure 门户或 SQL Server Management Studio 配置 Azure Analysis Services 管理员和用户角色。
+description: 在本教程中了解如何使用 Azure 门户或 SQL Server Management Studio 配置 Azure Analysis Services 管理员和用户角色。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84016383"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229355"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
 
@@ -63,7 +63,7 @@ ms.locfileid: "84016383"
 
 3. 在“对象资源管理器”  中，以展开方式查看服务器对象。 右键单击即可查看服务器属性。
    
-    ![在 SSMS 中连接](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
+    ![SSMS 中的对象资源管理器](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>将用户帐户添加到服务器管理员角色
 

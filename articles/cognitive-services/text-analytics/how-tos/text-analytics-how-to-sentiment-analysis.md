@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141239"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933012"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
@@ -40,7 +40,7 @@ ms.locfileid: "84141239"
 
 情绪分析 v3 将情绪标签应用于文本，然后在句子和文档级别返回标签，每个标签都有一个置信度分数。 
 
-标签为 `positive`、`negative` 和 `neutral`。 在文档级别，还可返回 `mixed` 情绪标签。 文档的情绪由以下内容确定：
+标签为积极、消极和中性。 在文档级别，还可能返回混合情绪标签。 文档的情绪由以下内容确定：
 
 | 句子情绪                                                                            | 返回的文档标签 |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ ms.locfileid: "84141239"
 | 文档中至少有一个 `negative` 句子和一个 `positive` 句子。    | `mixed`                 |
 | 文档中的所有句子为 `neutral`。                                                  | `neutral`               |
 
-置信度分数范围介于 1 到 0 之间。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 每个文档或句子的置信度分数合计为 1。
+置信度分数范围介于 1 到 0 之间。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 对于每个文档或每个句子，与标签（积极、消极和中性）关联的预测分数总和为 1。
 
 ### <a name="opinion-mining"></a>观点挖掘
 

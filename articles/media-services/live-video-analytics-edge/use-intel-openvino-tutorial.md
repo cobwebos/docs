@@ -4,12 +4,12 @@ description: 在本教程中，将使用由 Intel 提供的 AI 模型服务器�
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 2268300f711a939ed808d1f39bbde1653e8832c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212324"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950249"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频 
 
@@ -53,7 +53,7 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>关于 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）
 Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html)（开放式视觉推理和神经网络优化）是一个免费的软件包，可帮助开发人员和数据科学家提高计算机视觉工作负载、简化深度学习推理和部署，以及实现从边缘到云的跨 Intel® 平台的简单异类执行。 它包括配备了模型优化器和推理引擎的 Intel® 深度学习部署工具套件以及具有超过 40 个经过优化的预训练模型的 [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) 存储库。
 
-为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 本教程会将推理请求发送到 [OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）](https://aka.ms/lva-intel-ovms)，这是一种设计用于 IoT Edge 上的实时视频分析的 Edge 模块。 此推理服务器模块包含 OpenVINO™ Model Server (OVMS)，这是一种由 OpenVINO™ 工具套件提供支持的推理服务器，它针对计算机视觉工作负载进行了高度优化，并针对 Intel 体系结构进行了开发。 已将扩展添加到 OVMS，以便在推理服务器与 IoT Edge 模块上的实时视频分析之间轻松交换视频帧和推理结果，从而使你能够运行任何 OpenVINO 支持的模型（可通过修改[此处](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)的代码来自定义推理服务器模块）。 可进一步选择 Intel 硬件提供的各种加速机制。 这些包括 CPU（Atom、Core、Xeon）、FPGA、VPU。
+为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 本教程会将推理请求发送到 [OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）](https://aka.ms/lva-intel-ovms)，这是一种设计用于 IoT Edge 上的实时视频分析的 Edge 模块。 此推理服务器模块包含 OpenVINO™ Model Server (OVMS)，这是一种由 OpenVINO™ 工具套件提供支持的推理服务器，它针对计算机视觉工作负载进行了高度优化，并针对 Intel® 体系结构进行了开发。 已将扩展添加到 OVMS，以便在推理服务器与 IoT Edge 模块上的实时视频分析之间轻松交换视频帧和推理结果，从而使你能够运行任何 OpenVINO™ 工具包支持的模型（可通过修改[代码](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)来自定义推理服务器模块）。 可进一步选择 Intel® 硬件提供的各种加速机制。 这些包括 CPU（Atom、Core、Xeon）、FPGA、VPU。
 
 在此推理服务器的初始版本中，你可以访问以下[模型](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models)：
 

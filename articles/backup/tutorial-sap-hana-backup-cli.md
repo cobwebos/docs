@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 将 Azure VM 上运�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762396"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007564"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-默认情况下，恢复服务保管库是针对异地冗余存储设置的。 异地冗余存储可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。 如果存储冗余设置需要修改，请使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet。
+默认情况下，恢复服务保管库是针对异地冗余存储设置的。 异地冗余存储可确保将备份数据复制到距主要区域数百英里以外的辅助 Azure 区域。 如果存储冗余设置需要修改，请使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -83,7 +83,7 @@ az backup container register --resource-group saphanaResourceGroup \
 ```
 
 >[!NOTE]
->如果 VM 与保管库不在同一个资源组中，则 saphanaResourceGroup 引用创建保管库所在的资源组。
+>如果 VM 与保管库不在同一个资源组中，则 saphanaResourceGroup 指代创建保管库所在的资源组。
 
 注册 SAP HANA 实例会自动发现其所有当前数据库。 但是，若要发现将来可能添加的任何新数据库，请参考[发现已添加到已注册 SAP HANA 的新数据库](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance)实例部分。
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 列出了在受保护数据库上已运行或当前正在运行的所有（计划或按需）备份作业，以及注册、配置备份、删除备份数据等其他操作。
+[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 列出了在受保护数据库上已运行或当前正在运行的所有（计划或按需）备份作业，以及注册、配置备份和删除备份数据等其他操作。
 
 >[!NOTE]
 >备份 Azure VM 中运行的 SAP HANA 数据库时，Azure 备份不会针对夏令时更改自动进行调整。

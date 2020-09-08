@@ -3,13 +3,13 @@ title: 教程：使用 PowerShell 进行多个 Azure VM 备份
 description: 本教程详细介绍了如何使用 Azure PowerShell 将多个 Azure VM 备份到恢复服务保管库。
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513211"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181725"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>使用 PowerShell 备份 Azure VM
 
@@ -58,7 +58,7 @@ ms.locfileid: "86513211"
     New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
     ```
 
-2. 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，在变量中存储备份恢复服务保管库对象可提供方便。
+2. 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，可方便地在变量中存储备份恢复服务保管库对象。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault –Name myRSVault

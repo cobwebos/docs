@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81007826"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864748"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
 
@@ -95,7 +95,7 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
     此时将显示“Create a new Certificate”（创建新证书）  屏幕。
 
     > [!NOTE]
-    > 本教程使用开发证书。 注册生产证书时使用相同的过程。 只需确保在发送通知时使用相同的证书类型。
+    > 本教程使用开发证书，应用使用该证书生成唯一的设备令牌。 注册生产证书时使用相同的过程。 只需确保在发送通知时使用相同的证书类型。
 
 3. 选择“Choose File”（选择文件），浏览到在第一个任务中保存 CSR 文件的位置，然后双击证书名以加载该证书。  然后选择“继续”。 
 
@@ -211,11 +211,11 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 在“Notification Services”  下，选择“Apple (APNS)”  ，然后根据以前在[为通知中心创建证书](#creating-a-certificate-for-notification-hubs)部分中选择的方法，执行相应的步骤。  
 
 > [!NOTE]
-> 仅当希望将推送通知发送给已从应用商店购买应用的用户时，才应当对“应用程序模式”使用“生产”。  
+> 如果使用 App Store 或即席分发配置文件构建应用，请使用“生产”作为“应用程序模式” 。 这将允许设备向从应用商店购买了应用的用户发送推送通知。
 
 ### <a name="option-1-using-a-p12-push-certificate"></a>选项 1：使用 .p12 推送证书
 
-1. 选择“证书”。 
+1. 选择“证书”。
 
 1. 选择文件图标。
 
@@ -227,19 +227,19 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 
     ![在 Azure 门户中配置 APNs 证书](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 ### <a name="option-2-using-token-based-authentication"></a>选项 2：使用基于令牌的身份验证
 
-1. 选择“令牌”  。
+1. 选择“令牌”。
 1. 输入前面获取的以下值：
 
-    - 密钥 ID 
-    - 捆绑包 ID 
-    - 团队 ID 
+    - 密钥 ID
+    - 捆绑包 ID
+    - 团队 ID
     - 令牌  
 
 1. 选择“沙盒” 
-1. 选择“保存”。  
+1. 选择“保存”  。 
 
 现在已使用 APNs 配置通知中心。 此外还有了用于注册应用和发送推送通知的连接字符串。

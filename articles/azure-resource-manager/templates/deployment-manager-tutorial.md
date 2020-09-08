@@ -2,15 +2,15 @@
 title: 使用 Azure 部署管理器来部署模板
 description: 了解如何配合使用资源管理器模板与 Azure 部署管理器来部署 Azure 资源。
 author: mumian
-ms.date: 12/04/2019
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 49465f05b5484dfd358136866b67ce35f789799f
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86056882"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892926"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（公共预览版）
 

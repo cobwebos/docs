@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure Pipelines 进行持续集成
 description: 了解如何持续构建、测试和部署 Azure 资源管理器模板。
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118913"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892671"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -120,14 +120,14 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     ![Azure 资源管理器 Azure DevOps Azure Pipelines 创建 Azure DevOps 项目](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. 选择“新建项目”。 如果没有任何项目，将自动打开“创建项目”页面。
+1. 选择“新建项目”。  如果没有任何项目，将自动打开“创建项目”页面。
 1. 输入以下值：
 
     * **项目名称**：输入项目名称。 可以使用在本教程开头选择的项目名称。
     * **版本控制**：选择“Git”。 可能需要展开“高级”才能看到“版本控制” 。
 
     可以使用其他属性的默认值。
-1. 选择“创建”。
+1. 选择“创建”  。
 
 创建服务连接，用于将项目部署到 Azure。
 
@@ -171,12 +171,12 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * **Azure 资源管理器连接**：选择前面创建的服务连接名称。
     * 订阅：指定目标订阅 ID。
     * **操作**：选择“创建或更新资源组”操作，执行 2 项操作 - 1. 如果提供了新的资源组名称，则创建资源组；2. 部署指定的模板。
-    * 资源组：输入新的资源组名称。 例如，“AzureRmPipeline-rg”。
+    * **资源组**：输入新的资源组名称。 例如，“AzureRmPipeline-rg”。
     * 位置：选择资源组的位置，例如“美国中部”。
     * **模板位置**：选择“链接的项目”，表示任务将直接从连接的存储库中查找模板文件。
     * **模板**：输入 **CreateWebApp/azuredeploy.json**。 如果更改了文件夹名称和文件名，则需要更改此值。
-    * **模板参数**：将此字段留空。 稍后将在 **“替代模板参数”中指定参数值。
-    * **overrideParameters**：输入 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 。 替换项目名称和链接模板 URL。 链接模板 URL 是在完成[创建 GitHub 存储库](#create-a-github-repository)部分时记下的 URL。
+    * **模板参数**：将此字段留空。 将在“替代模板参数”中指定参数值。
+    * **替代模板参数**：输入 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 。 替换项目名称和链接模板 URL。 链接模板 URL 是在完成[创建 GitHub 存储库](#create-a-github-repository)部分时记下的 URL。 它以 https://raw.githubusercontent.com 开头。
     * **部署模式**：选择“增量”。
     * **部署名称**：输入 **DeployPipelineTemplate**。 选择“高级”，然后可以看到“部署名称”。 
 

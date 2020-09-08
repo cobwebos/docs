@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b679028a0d99d20497ad1f4e7d870c39b76a136
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ecb53d661b1171f9c1b18d37d0bb35952645ba7e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88657017"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299637"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成
 
@@ -67,8 +67,8 @@ ms.locfileid: "88657017"
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. [配置 FortiGate SSL VPN SSO](#configure-fortigate-ssl-vpn-sso) - 在应用程序端配置单一登录设置。
-    1. [创建 FortiGate SSL VPN 测试用户](#create-fortigate-ssl-vpn-test-user) - 在 FortiGate SSL VPN 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    1. **创建 FortiGate SSL VPN 测试用户** - 在 FortiGate SSL VPN 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -142,28 +142,119 @@ ms.locfileid: "88657017"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
+### <a name="create-a-security-group-for-the-test-user"></a>为测试用户创建安全组
+
+在本部分中，你将在 Azure Active Directory 中为测试用户创建安全组。 FortiGate 将使用此安全组通过 VPN 授予用户网络访问权限。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”和“组” 。
+1. 选择屏幕顶部的“新建组”。
+1. 在“新建组”属性中执行以下步骤：
+   1. 在“组类型”字段中，选择“安全”。
+   1. 在“名称”字段中，输入 `FortiGateAccess`。
+   1. 在“组说明”字段中，输入 `Group for granting FortiGate VPN access`。
+   1. 对于“Azure AD 角色可以分配到组(预览版)”设置，请选择“否”。
+   1. 在“成员身份类型”字段中，选择“已分配”。
+   1. 在“成员”下，选择“未选择任何成员”。
+   1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+   1. 选择“创建”  。
+1. 返回 Azure Active Directory 中的“组”边栏选项卡后，找到“FortiGate Access”组，并记下“对象 ID”以供之后使用。
+
 ## <a name="configure-fortigate-ssl-vpn-sso"></a>配置 FortiGate SSL VPN SSO
 
-若要在“FortiGate SSL VPN”端配置单一登录，请按照[此文档](https://aka.ms/AA9avum)操作。
+### <a name="upload-the-base64-saml-certificate-to-the-fortigate-appliance"></a>将 Base64 SAML 证书上传到 FortiGate 设备
 
-> [!NOTE]
-> 有关配置 FortiGate SSL VPN 的详细信息，请参阅 [此链接](https://docs.fortinet.com/document/fortigate/6.4.0/new-features/558169/saml-sp-for-vpn-authentication)。
+在租户中完成 FortiGate 应用的 SAML 配置后，你下载了 Base64 编码的 SAML 证书。 必须将其上传到 FortiGate 设备：
 
-### <a name="create-fortigate-ssl-vpn-test-user"></a>创建 FortiGate SSL VPN 测试用户
+1. 登录到 FortiGate 设备的管理门户。
+1. 在左侧菜单中，单击“系统”。
+1. 在“系统”下，单击“证书”。
+1. 单击“导入” -> “远程证书”。
+1. 浏览到从 Azure 租户中的 FortiGate 应用部署下载的证书，将其选中，然后单击“确定”
 
-在本部分，你将在 FortiGate SSL VPN 中创建名为 B.Simon 的用户。 使用  [FortiGate SSL VPN 支持团队](mailto:tac_amer@fortinet.com) 在 FortiGate SSL VPN 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+上传证书后，请记下其在“系统” > “证书” > “远程证书”下的名称。 默认情况下，它将命名为 REMOTE_Cert_N，其中 N 是一个整数值。
 
-## <a name="test-sso"></a>测试 SSO 
+### <a name="perform-fortigate-command-line-configuration"></a>执行 FortiGate 命令行配置
+
+以下步骤要求配置 Azure 注销 URL。 此 URL 包含一个问号 (?)。 需要执行特殊步骤才能成功提交此字符。 无法从 FortiGate CLI 控制台执行这些步骤。 相反，请使用 PuTTY 等工具建立到 FortiGate 设备的 SSH 会话。 如果 FortiGate 设备是 Azure 虚拟机，则可以从 Azure 虚拟机串行控制台执行以下步骤。
+
+若要执行这些步骤，将需要之前记录的值：
+
+- 实体 ID
+- 回复 URL
+- 注销 URL
+- Azure 登录 URL
+- Azure AD 标识符
+- Azure 注销 URL
+- Base64 SAML 证书名称 (REMOTE_Cert_N)
+
+1. 与 FortiGate 设备建立 SSH 会话，并使用 FortiGate 管理员帐户登录。
+1. 执行以下命令：
+
+   ```console
+    config user saml
+    edit azure
+    set entity-id <Entity ID>
+    set single-sign-on-url <Reply URL>
+    set single-logout-url <Logout URL>
+    set idp-single-sign-on-url <Azure Login URL>
+    set idp-entity-id <Azure AD Identifier>
+    set idp-single-logout-url <Azure Logout URL>
+    set idp-cert <Base64 SAML Certificate Name>
+    set user-name username
+    set group-name group
+    end
+
+   ```
+
+   > [!NOTE]
+   > “Azure 注销 URL”包含 `?` 字符。 必须输入特殊密钥序列才能正确地将 URL 提供给 FortiGate 串行控制台。 该 URL 通常为 `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`。
+   >
+   > 若要在串行控制台中输入 Azure 注销 URL，请输入 `set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation`。
+   > 
+   > 然后，选择 CTRL + V 并粘贴 URL 的其余部分以完成该行：`set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`。
+
+### <a name="configure-fortigate-for-group-matching"></a>配置 FortiGate 以进行组匹配
+
+在本部分中，你将配置 FortiGate 以识别测试用户所在的安全组的对象 ID。 这将使 FortiGate 能够基于此组的成员身份做出访问决策。
+
+若要执行这些步骤，将需要之前创建的 FortiGateAccess 安全组的对象 ID
+
+1. 与 FortiGate 设备建立 SSH 会话，并使用 FortiGate 管理员帐户登录。
+1. 执行以下命令：
+
+   ```
+    config user group
+    edit FortiGateAccess
+    set member azure
+    config match
+    edit 1
+    set server-name azure
+    set group-name <Object Id>
+    next
+    end
+    next
+    end
+   ```
+
+### <a name="create-fortigate-vpn-portals-and-firewall-policy"></a>创建 FortiGate VPN 门户和防火墙策略
+
+在本部分中，你将配置 FortiGate VPN 门户和防火墙策略，以授予对上文创建的安全组 FortiGateAccess 的访问权限。
+
+在  [FortiGate 支持团队](mailto:tac_amer@fortinet.com)的配合下，将 VPN 门户和防火墙策略添加到 FortiGate VPN 平台。 在使用单一登录前，必须完成这些步骤。
+
+## <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 FortiGate SSL VPN 磁贴时，应当会自动登录到为其设置了 SSO 的 FortiGate SSL VPN。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
+Microsoft 和 FortiGate 建议使用 Fortinet VPN 客户端 FortiClient，以获得最佳最终用户体验。
+
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585009"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300283"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -53,13 +53,11 @@ Azure 应用程序配置会自动缓存每项设置，避免过多调用配置�
 sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会监视 sentinel 键以了解更改情况。 检测到更改时，刷新所有配置值。 与监视所有键以了解更改情况相比，这种方法可减少应用对 Azure 应用程序配置发出的请求的总数。
 
 1. 在 Azure 门户中，选择“配置资源管理器”>“创建”>“键-值”  。
-
 1. 输入 *TestApp:Settings:Sentinel* 作为“键”。   输入 1 作为“值”。 将“标签”和“内容类型”留空   。
-
 1. 选择“应用”。 
 
-    > [!NOTE]
-    > 如果不使用 sentinel 密钥，则需手动注册要监视的每个密钥。
+> [!NOTE]
+> 如果不使用 Sentinel 密钥，则需手动注册要监视的每个密钥。
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 
@@ -162,9 +160,8 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     }
     ```
     ---
-
-    > [!TIP]
-    > 要了解有关读取配置值时选项模式的详细信息，请参阅  [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
+    > [!Tip]
+    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅  [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以添加 `UseAzureAppConfiguration` 中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，更新已为刷新操作注册的配置设置。
 
@@ -316,15 +313,15 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 
 1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
 
-```console
+    ```console
         dotnet build
-```
+    ```
 
 1. 生成成功完成后，请运行以下命令以在本地运行 Web 应用：
 
-```console
+    ```console
         dotnet run
-```
+    ```
 
 1. 打开浏览器窗口，访问 `dotnet run` 输出中显示的 URL。
 

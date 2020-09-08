@@ -1,7 +1,7 @@
 ---
 title: Azure 媒体服务 DRM 加密和许可证传送服务
 titleSuffix: Azure Media Services
-description: 了解如何使用 DRM 动态加密和许可证传送服务传递使用 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。
+description: 了解如何使用 DRM 动态加密和许可证传送服务传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 97011222593d249461719e3492dd5b54fb63baff
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
-ms.translationtype: MT
+ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267133"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289347"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "89267133"
 
 可以使用 Azure 媒体服务来传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。 如需深入说明，请参阅[使用动态加密保护内容](content-protection-overview.md)。
 
-媒体服务还提供了用于传送 PlayReady、Widevine 和 FairPlay DRM 许可证的服务。 当用户请求受 DRM 保护的内容时，播放器应用会从媒体服务许可证服务请求许可证。 如果播放器应用获得授权，媒体服务许可证服务会向该播放器颁发许可证。 许可证包含客户端播放器用来对内容进行解密和流式传输的解密密钥。
+媒体服务还提供用于传送 PlayReady、Widevine 和 FairPlay DRM 许可证的服务。 当用户请求受 DRM 保护的内容时，播放器应用会从媒体服务许可证服务请求许可证。 如果播放器应用获得授权，媒体服务许可证服务会向该播放器颁发许可证。 许可证包含客户端播放器用来对内容进行解密和流式传输的解密密钥。
 
 本文基于[使用 DRM 进行加密](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM)示例。
 
@@ -50,12 +50,12 @@ ms.locfileid: "89267133"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下项目是完成本教程所需具备的条件：
 
 * 查看[内容保护概述](content-protection-overview.md)一文。
-* 查看 [使用访问控制设计多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)。
+* 查看[设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)。
 * 安装 Visual Studio Code 或 Visual Studio。
 * 按照[本快速入门](./create-account-howto.md)所述，创建新的 Azure 媒体服务帐户。
 * 根据[访问 API](./access-api-howto.md) 中所述，获取使用媒体服务 API 时所需的凭据
@@ -88,7 +88,7 @@ ms.locfileid: "89267133"
 
 ## <a name="get-or-create-an-encoding-transform"></a>获取或创建编码转换
 
-创建新实例时，需要指定希望生成的输出内容[转换](transforms-jobs-concept.md)。 所需参数是 `transformOutput` 对象，如以下代码所示。 每个 TransformOutput 都包含一个 **预设**。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 
+创建新实例时，需要指定希望生成的输出内容[转换](transforms-jobs-concept.md)。 所需参数是 `transformOutput` 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 
 
 在创建新的**转换**之前，应该先检查是否已存在使用 **Get** 方法的转换，如以下代码中所示。  在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -114,11 +114,11 @@ ms.locfileid: "89267133"
 
 内容密钥提供对资产的安全访问。 通过 DRM 加密内容时，需要创建[内容密钥策略](content-key-policy-concept.md)。 此策略配置如何将内容密钥传送到最终的客户端。 内容密钥与流定位器相关联。 媒体服务还提供密钥传送服务，将加密密钥和许可证传送给已授权的用户。
 
-需要在 **内容密钥策略** 上设置要求 (限制) ，才能传递具有指定配置的密钥。 此示例设置了以下配置和要求：
+需要在使用指定的配置传送密钥时必须满足的内容密钥策略中设置要求（限制）。 此示例设置了以下配置和要求：
 
 * 配置
 
-    配置了 [PlayReady](playready-license-template-overview.md) 和 [Widevine](widevine-license-template-overview.md) 许可证，因此只能由媒体服务许可证传送服务传送这些许可证。 尽管此示例应用未配置 [FairPlay](fairplay-license-overview.md) 许可证，但它包含可用于配置 FairPlay 的方法。 可以将 FairPlay 配置添加为另一个选项。
+    配置了 [PlayReady](playready-license-template-overview.md) 和 [Widevine](widevine-license-template-overview.md) 许可证，因此只能由媒体服务许可证传送服务传送这些许可证。 尽管此示例应用未配置 [FairPlay](fairplay-license-overview.md) 许可证，但它包含一个可用来配置 FairPlay 的方法。 可以将 FairPlay 配置添加为另一个选项。
 
 * 限制
 
@@ -132,12 +132,12 @@ ms.locfileid: "89267133"
 
 完成编码并设置内容密钥策略后，下一步是使输出资产中的视频可供客户端播放。 可以通过两个步骤来提供视频：
 
-1. 创建 [流式处理定位符](streaming-locators-concept.md)。
+1. 创建[流式处理定位符](streaming-locators-concept.md)。
 2. 生成客户端可以使用的流式处理 URL。
 
 创建**流定位器**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，流式处理定位符**** 立即生效， 并持续到被删除为止。
 
-创建**流定位器**时，需要指定所需的 `StreamingPolicyName`。 本教程使用某个预定义的流式处理策略来告知 Azure 媒体服务如何发布流式处理的内容。 在此示例中，请将 StreamingLocator.StreamingPolicyName 设置为“Predefined_MultiDrmCencStreaming”策略。 应用 PlayReady 和 Widevine 加密，并根据配置的 DRM 许可证将密钥传递到播放客户端。 如果还要使用 CBCS (FairPlay) 加密流，请使用“Predefined_MultiDrmStreaming”。
+创建**流定位器**时，需要指定所需的 `StreamingPolicyName`。 本教程使用某个预定义的流式处理策略来告知 Azure 媒体服务如何发布流式处理的内容。 在此示例中，请将 StreamingLocator.StreamingPolicyName 设置为“Predefined_MultiDrmCencStreaming”策略。 应用 PlayReady 和 Widevine 加密，并根据配置的 DRM 许可证将密钥传送到播放客户端。 如果还要使用 CBCS (FairPlay) 加密流，请使用“Predefined_MultiDrmStreaming”。
 
 > [!IMPORTANT]
 > 使用自定义的[流策略](streaming-policy-concept.md)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于 StreamingPolicy 条目数的配额。 不应为每个 StreamingLocator 创建新的 StreamingPolicy。

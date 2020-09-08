@@ -3,13 +3,13 @@ title: PowerShell 脚本示例 - 备份 Azure VM
 description: 本文介绍如何使用 Azure PowerShell 脚本示例备份 Azure 虚拟机。
 ms.topic: sample
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: c45ee26bef0f9afbb0b9d03f1dcafee21a894f8a
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6e3af44284acdc96f6f0197c4153c6f7538570d2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757551"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069456"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>使用 PowerShell 备份已加密 Azure 虚拟机
 

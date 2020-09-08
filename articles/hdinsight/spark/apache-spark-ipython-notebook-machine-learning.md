@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873919"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230919"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "87873919"
 
 此应用程序使用 Spark [ML 管道](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)来执行文档分类。 ML 管道提供建立在数据帧基础之上的统一的一组高级 API。 数据帧可帮助用户创建和优化实用的机器学习管道。 在管道中，可将文档分割成单字、将单字转换成数字特征向量，最后使用特征向量和标签创建预测模型。 按下列步骤创建应用程序。
 
-1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
+1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建 Jupyter Notebook 文件](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)。
 
 1. 导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
 

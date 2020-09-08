@@ -10,16 +10,17 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541413"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378009"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 
-向 Azure 服务进行身份验证的最佳方法是使用[托管标识](../general/managed-identity.md)，但某些情况下无法做到这一点。 在此类情况下，将使用访问密钥或机密。 应定期轮换访问密钥或机密。
+向 Azure 服务进行身份验证的最佳方法是使用[托管标识](../general/authentication.md)，但某些情况下无法做到这一点。 在此类情况下，将使用访问密钥或机密。 应定期轮换访问密钥或机密。
 
 本教程介绍如何定期自动轮换使用一组身份验证凭据的数据库和服务的机密。 具体而言，本教程将使用 Azure 事件网格通知触发的函数来轮换 Azure Key Vault 中存储的 SQL Server 密码：
 
@@ -112,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-有关如何创建函数应用和使用托管标识访问 Key Vault 的信息，请参阅[从 Azure 门户创建函数应用](../../azure-functions/functions-create-function-app-portal.md)和[使用托管标识提供 Key Vault 身份验证](../general/managed-identity.md)。
+有关如何创建函数应用和使用托管标识访问密钥保管库的信息，请参阅[从 Azure 门户创建函数应用](/azure/azure-functions/functions-create-function-app-portal)、[如何将托管标识用于应用服务和 Azure Functions](/azure/app-service/overview-managed-identity) 以及[使用 Azure 门户分配密钥保管库访问策略](../general/assign-access-policy-portal.md)。
 
 ### <a name="rotation-function"></a>轮换函数
 在先前步骤中部署的函数使用事件通过更新 Key Vault 和 SQL 数据库来触发机密轮替。 

@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318821"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812931"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的示例管道和数据集（预览版）
 
@@ -55,9 +55,9 @@ ms.locfileid: "87318821"
 
 1. 管道运行完毕后，可以查看管道，还可以查看每个模块的输出，了解详细信息。 使用以下步骤查看模块输出：
 
-   1. 选择画布中的模块。
+   1. 右键单击画布中要查看其输出的模块。
+   1. 选择“可视化”。
 
-   1. 在画布右侧的模块详细信息窗格中，选择“输出 + 日志”。 选择图标 ![可视化图标](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)，查看每个模块的结果。 
 
    从示例着手，了解一些最常见的机器学习方案。
 

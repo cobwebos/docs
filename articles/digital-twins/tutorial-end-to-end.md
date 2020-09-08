@@ -1,5 +1,5 @@
 ---
-title: 连接端到端解决方案
+title: 教程：连接端到端解决方案
 titleSuffix: Azure Digital Twins
 description: 扩建由设备数据驱动的端到端 Azure 数字孪生解决方案的教程。
 author: baanders
@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827301"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401769"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>扩建端到端解决方案
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
 若要设置由环境中的实时数据驱动的完整端到端解决方案，可以将 Azure 数字孪生实例连接到其他 Azure 服务，以管理设备和数据。
 
 在本教程中，你将...
-* 设置 Azure 数字孪生实例
-* 了解示例建筑方案，并实例化预先编写的组件
-* 使用 [Azure Functions](../azure-functions/functions-overview.md) 应用将模拟的遥测从 [IoT 中心](../iot-hub/about-iot-hub.md)设备路由到数字孪生属性
-* 通过使用 Azure Functions、终结点和路由处理数字孪生通知，通过孪生图传播更改
+> [!div class="checklist"]
+> * 设置 Azure 数字孪生实例
+> * 了解示例建筑方案，并实例化预先编写的组件
+> * 使用 [Azure Functions](../azure-functions/functions-overview.md) 应用将模拟的遥测从 [IoT 中心](../iot-hub/about-iot-hub.md)设备路由到数字孪生属性
+> * 通过使用 Azure Functions、终结点和路由处理数字孪生通知，通过孪生图传播更改
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -365,6 +366,8 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 接下来，创建 Azure 数字孪生路由，将事件发送到刚刚创建的 Azure 数字孪生终结点。
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 ```azurecli
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
@@ -433,7 +436,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 如果不再需要本教程中创建的资源，请按照以下步骤将其删除。 
 
-利用 Azure Cloud Shell，你可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这会删除资源组；Azure 数字孪生实例；IoT 中心和中心设备注册；事件网格主题和关联的订阅；以及两个 Azure Functions 应用，包括存储等关联资源。
+利用 [Azure Cloud Shell](https://shell.azure.com)，你可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这会删除资源组；Azure 数字孪生实例；IoT 中心和中心设备注册；事件网格主题和关联的订阅；以及 Azure Functions 应用，包括函数和存储等关联资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
@@ -448,14 +451,13 @@ az group delete --name <your-resource-group>
 az ad app delete --id <your-application-ID>
 ```
 
-最后，删除从本地计算机下载的项目示例文件夹。
+最后，删除下载到本地计算机上的项目示例文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你创建了一个端到端方案，它显示了由实时设备数据驱动的 Azure 数字孪生。
 
 接下来，请开始查看概念文档，详细了解本教程中所用的元素：
-* [*概念：自定义模型*](concepts-models.md)
 
-或者，你也可以先查看操作方法文章，更深入的了解本教程中的过程：
-* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*概念：自定义模型*](concepts-models.md)

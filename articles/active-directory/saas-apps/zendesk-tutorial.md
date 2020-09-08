@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546048"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zendesk 的集成
 
@@ -54,7 +54,7 @@ ms.locfileid: "88546048"
 1. 在“从库中添加”部分的搜索框中，键入 Zendesk。  
 1. 在结果面板中选择“Zendesk”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>为 Zendesk 配置并测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>配置并测试 Zendesk 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 Zendesk 的 Azure AD SSO。  若要使 SSO 有效，需要在 Azure AD 用户与 Zendesk 相关用户之间建立关联。
 
@@ -149,50 +149,29 @@ ms.locfileid: "88546048"
 
 1. 若要手动设置 Zendesk，请打开新的 Web 浏览器窗口，以管理员身份登录到 Zendesk 公司网站，并执行以下步骤：
 
-1. 单击“管理”  。
+1. 在“Zendesk 管理中心”，单击“安全性”选项卡中的“安全设置”。
 
-1. 在左侧导航窗格中，单击“设置”  ，并单击“安全”  。
+    ![安全性](./media/zendesk-tutorial/settings.png "安全性")
 
-1. 在“安全”  页中，执行以下步骤：
+1. 转到“单一登录”页，然后单击“SAML”中的“编辑”。
 
-    ![安全性](./media/zendesk-tutorial/ic773089.png "安全性")
+    ![安全性](./media/zendesk-tutorial/saml-sso.png "安全性")
 
-    ![单一登录](./media/zendesk-tutorial/ic773090.png "单一登录")
+1. 在“SSO”页，执行以下步骤。
 
-    a. 单击“管理员和代理”  选项卡。
+    ![单一登录](./media/zendesk-tutorial/saml-configuration.png "单一登录")
 
-    b. 选择“单一登录 (SSO) 和 SAML”  ，并选择“SAML”  。
+    a. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。  
 
-    c. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。  
+    b. 在“证书指纹”  文本框中，粘贴从 Azure 门户复制的证书“指纹”  值。
 
-    d. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。  
+    c. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。  
 
-    e. 在“证书指纹”  文本框中，粘贴从 Azure 门户复制的证书“指纹”  值。
-
-    f. 单击“ **保存**”。
+    d. 单击“ **保存**”。
 
 ### <a name="create-zendesk-test-user"></a>创建 Zendesk 测试用户
 
 本部分的目的是在 Zendesk 中创建名为“Britta Simon”的用户。 Zendesk 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](Zendesk-provisioning-tutorial.md)。
-
-如果需要手动创建用户，请执行以下步骤： 
-
-> [!NOTE]
-> 在登录时会自动预配“最终用户”帐户  。 在登录前需要在 Zendesk 中手动预配“代理”和“管理员”帐户    。
-
-1. 登录到 Zendesk 租户。 
-
-2. 选择“客户列表”  选项卡。
-
-3. 选择“用户”  选项卡，并单击“添加”  。
-
-    ![添加用户](./media/zendesk-tutorial/ic773632.png "添加用户")
-4. 键入要预配的现有 Azure AD 帐户的**名称**和**电子邮件**，然后单击“保存”  。
-
-    ![新建用户](./media/zendesk-tutorial/ic773633.png "新建用户")
-
-> [!NOTE]
-> 可以使用 Zendesk 提供的任何其他 Zendesk 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

@@ -4,15 +4,15 @@ description: 查找某些常用应用服务方案的 Azure 资源管理器模板
 author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
-ms.date: 01/04/2019
+ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517699"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891039"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>应用服务的 Azure 资源管理器模板
 
@@ -44,6 +44,7 @@ ms.locfileid: "86517699"
 | [使用 Azure SQL 数据库中的数据库的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| 在“基本”服务级别部署应用服务应用和 Azure SQL 数据库中的数据库。 |
 | [使用 Blob 存储连接的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| 使用 Azure Blob 存储连接字符串部署应用服务应用。 然后，可以从该应用使用 Blob 存储。 |
 | [使用用于 Redis 的 Azure 缓存的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| 使用用于 Redis 的 Azure 缓存部署应用服务应用。 |
+| [连接到后端 webapp 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| 将两个 Web 应用（前端和后端）与 VNet 注入和专用终结点安全地连接在一起。 |
 |**应用服务环境**| **说明** |
 | [创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | 在虚拟网络中创建应用服务环境 v2。 |
 | [使用 ILB 地址创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | 使用专用的内部负载均衡器地址在虚拟网络中创建应用服务环境 v2。 |

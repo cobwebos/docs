@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中使用备份和恢复服务还原磁盘并
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141340"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890659"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>使用 Azure CLI 还原 VM
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>还原 VM 磁盘
 
 > [!IMPORTANT]
-> 强烈建议使用 Az CLI version 2.0.74 或更高版本，以享受快速还原的所有益处，包括托管磁盘还原。 用户最好始终使用最新版本。
+> 强烈建议使用 Az CLI version 2.0.74 或更高版本，以享受快速还原的所有益处，包括托管磁盘还原。 最好始终使用最新版本。
 
 ### <a name="managed-disk-restore"></a>托管磁盘还原
 
@@ -88,7 +88,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > 如果未提供目标资源组，则托管磁盘将作为非托管磁盘还原到给定的存储帐户。 这会对还原时间产生重大影响，因为还原磁盘所需的时间完全取决于给定的存储帐户。 只有指定了 target-resource-group 参数，客户才能获得即时还原的好处。 如果打算将托管磁盘作为非托管磁盘还原，则不提供 target-resource-group 参数，而是提供 restore-as-unmanaged-disk 参数，如下所示。 此参数从 az 3.4.0 开始提供。
+    > 如果未提供目标资源组，则托管磁盘将作为非托管磁盘还原到给定的存储帐户。 这会对还原时间产生重大影响，因为还原磁盘所需的时间完全取决于给定的存储帐户。 只有指定了 target-resource-group 参数，才能获得即时还原的好处。 如果打算将托管磁盘作为非托管磁盘还原，则不提供 target-resource-group 参数，而是提供 restore-as-unmanaged-disk 参数，如下所示 。 此参数从 az 3.4.0 开始提供。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,11 +101,11 @@ az backup recoverypoint list \
     --restore-as-unmanaged-disk
     ```
 
-这会将托管磁盘作为非托管磁盘还原到给定存储帐户，并且不会利用“即时”还原功能。 在将来的 CLI 版本中，必须提供 target-resource-group 参数或 restore-as-unmanaged-disk 参数。
+这会将托管磁盘作为非托管磁盘还原到给定存储帐户，并且不会利用“即时”还原功能。 在将来的 CLI 版本中，必须提供 target-resource-group 参数或 restore-as-unmanaged-disk 参数 。
 
 ### <a name="unmanaged-disks-restore"></a>非托管磁盘还原
 
-如果备份 VM 具有非托管磁盘，并且其目的是从恢复点还原磁盘，则首先需提供 Azure 存储帐户。 此存储帐户用于存储 VM 配置和部署模板，这两者稍后可用于从还原的磁盘部署 VM。 默认情况下，非托管磁盘将还原到其原始存储帐户。 如果用户希望将所有非托管磁盘还原到同一个位置，则还可以将给定的存储帐户也用作这些磁盘的暂存位置。
+如果备份 VM 具有非托管磁盘，并且其目的是从恢复点还原磁盘，则首先需提供 Azure 存储帐户。 此存储帐户用于存储 VM 配置和部署模板，这两者稍后可用于从还原的磁盘部署 VM。 默认情况下，非托管磁盘将还原到其原始存储帐户。 若要将所有非托管磁盘还原到同一个位置，则还可以将给定的存储帐户也用作这些磁盘的暂存位置。
 
 在其他步骤中，将使用还原的磁盘创建 VM。
 

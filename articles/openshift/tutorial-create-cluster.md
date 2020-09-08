@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587729"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300164"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -23,6 +23,8 @@ ms.locfileid: "88587729"
 ## <a name="before-you-begin"></a>开始之前
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+
+Azure Red Hat OpenShift 至少需要 40 个核心才能创建和运行 OpenShift 群集。 新 Azure 订阅的默认 Azure 资源配额不满足此要求。 若要请求提高资源上限，请参阅[标准配额：按 VM 系列提高上限](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)中所述。
 
 ### <a name="verify-your-permissions"></a>验证你的权限
 
@@ -87,12 +89,15 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 1. **创建资源组。**
 
     Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。
+    
+> [!NOTE]
+> Azure Red Hat OpenShift 并非在可以创建 Azure 资源组的所有区域中可用。 有关支持 Azure Red Hat OpenShift 的位置的信息，请参阅[可用区域](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)。
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
     ```
 
-    以下示例输出显示已成功创建资源组：
+    The following example output shows the resource group created successfully:
 
     ```json
     {

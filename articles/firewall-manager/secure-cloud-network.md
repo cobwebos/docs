@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420815"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079109"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教程：使用 Azure 防火墙管理器保护虚拟中心
 
@@ -32,6 +32,10 @@ ms.locfileid: "87420815"
 > * 部署服务器
 > * 创建防火墙策略并保护中心
 > * 测试防火墙
+
+## <a name="prerequisites"></a>先决条件
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>创建中心和辐射体系结构
 
@@ -132,7 +136,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
 ## <a name="deploy-the-servers"></a>部署服务器
 
-1. 在 Azure 门户中，选择“创建资源”。
+1. 在 Azure 门户中，选择“创建资源”。 
 2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。
 3. 输入虚拟机的以下值：
 
@@ -150,7 +154,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 8. 选择“Spoke-01”作为虚拟网络，并选择“Workload-01-SN”作为子网 。
 9. 对于“公共 IP”，请选择“无”。
 11. 接受其他默认值，然后选择“下一步:**管理”** 。
-12. 选择“关闭”以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
+12. 选择“关闭”  以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
 13. 检查摘要页上的设置，然后选择“创建”。
 
 使用下表中的信息配置名为 Srv-Workload-02 的另一台虚拟机。 剩余的配置与 Srv-workload-01 虚拟机相同。
@@ -220,7 +224,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 3. 在“中心”选项卡上，选择“关联虚拟中心”。
 4. 选择“Hub-01”，然后选择“添加”。
 5. 选择“查看 + 创建”。
-6. 选择“创建”。
+6. 选择“创建”  。
 
 这可能需要 5 分钟或更长时间才能完成。
 
@@ -252,7 +256,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
    应会看到 Microsoft 主页。
 
-5. 浏览到 https://www.google.com 。
+5. 浏览到 https://www.google.com。
 
    防火墙应会阻止你访问。
 
@@ -270,6 +274,10 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
 现已验证防火墙网络规则可正常工作：
 * 你可以将远程桌面连接到另一个虚拟网络中的服务器。
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成防火墙资源测试后，删除 fw-manager 资源组，以删除所有与防火墙相关的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

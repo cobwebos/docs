@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687393"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294401"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>排查 Azure EA 门户访问问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "88687393"
 - 跨租户工作或学校帐户 - 适用于已设置联合到云的 Active Directory 且会将帐户置于多个租户中的组织。
 - 混合帐户 - 允许通过 Microsoft 帐户和/或通过工作或学校帐户添加用户。
 
-第一个添加到许可登记表的工作或学校帐户决定了域是 _default_ 域还是 _master_ 域。 若要添加其他租户中的工作或学校帐户，必须将“许可登记表”下的身份验证级别更改为跨租户身份验证。
+第一个添加到许可登记表的工作或学校帐户确定默认域。 若要添加其他租户中的工作或学校帐户，必须将“许可登记表”下的身份验证级别更改为跨租户身份验证。
 
 若要更新“身份验证级别”，请执行以下操作：
 

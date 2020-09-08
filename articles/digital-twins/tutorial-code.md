@@ -1,5 +1,5 @@
 ---
-title: 为客户端应用编写代码
+title: 教程： 为客户端应用编写代码
 titleSuffix: Azure Digital Twins
 description: 使用 .NET (C#) SDK 为客户端应用编写基础代码的教程。
 author: baanders
@@ -7,16 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723463"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923698"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure 数字孪生 API 编写代码
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
 开发人员使用 Azure 数字孪生编写客户端应用程序，以与其 Azure 数字孪生服务实例交互，这是很常见的情况。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure IoT 数字孪生客户端库 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
+
+> [!div class="checklist"]
+> * 设置项目
+> * 开始使用项目代码   
+> * 完整的代码示例
+> * 清理资源
+> * 后续步骤
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +55,7 @@ dotnet new console
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity
 ```
 
 第一个依赖项是[适用于 .NET 的 Azure IoT 数字孪生客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。 第二个依赖项会提供可帮助进行 Azure 身份验证的工具。
@@ -419,7 +426,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
@@ -532,24 +538,7 @@ namespace minimal
  
 本教程中使用的实例可重复用于下一教程[*教程：使用示例客户端应用了解基础知识*](tutorial-command-line-app.md)。 如果打算继续学习下一个教程，可以保留在此处设置的 Azure 数字孪生实例。
  
-如果不再需要本教程中创建的资源，请按照以下步骤将其删除。
-
-利用 [Azure Cloud Shell](https://shell.azure.com)，你可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这将删除资源组和 Azure 数字孪生实例。
-
-> [!IMPORTANT]
-> 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
-
-打开 Azure Cloud Shell 并运行以下命令，以删除资源组及其包含的所有内容。
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-接下来，使用以下命令删除为客户端应用创建的 Azure Active Directory 应用注册：
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 最后，删除在本地计算机上创建的项目文件夹。
 
@@ -561,7 +550,3 @@ az ad app delete --id <your-application-ID>
 
 > [!div class="nextstepaction"]
 > [*教程：使用示例客户端应用了解基础知识*](tutorial-command-line-app.md)
-
-你也可以在操作说明文章中了解更多管理操作，以增加在本教程中编写的代码，或开始查看概念文档，详细了解教程中使用的元素。
-* [*操作说明：管理自定义模型*](how-to-manage-model.md)
-* [*概念：自定义模型*](concepts-models.md)

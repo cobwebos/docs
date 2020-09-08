@@ -8,39 +8,17 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: b4d48dcc8f09ae8e2ec3bb198f8864de1c945682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093320"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255012"
 ---
 # <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
 
 在本教程中，你将了解如何创建 Synapse 工作区、SQL 池和 Apache Spark 池。 
-
-## <a name="prepare-a-storage-account"></a>准备存储帐户
-
-1. 打开 [Azure 门户](https://portal.azure.com)。
-1. 创建具有以下设置的新存储帐户：
-
-    |选项卡|设置 | 建议的值 | 说明 |
-    |---|---|---|---|
-    |基础|**存储帐户名称**| 选择任何名称。| 在本文档中，我们将使用名称 contosolake。|
-    |基础|**帐户种类**| StorageV2 ||
-    |基础|**位置**|选择任何位置。| 建议 Azure Synapse Analytics 工作区和 Azure Data Lake Storage Gen2 帐户位于同一区域。|
-    |高级|**Data Lake Storage Gen2**|**已启用**| Azure Synapse 仅适用于启用了此设置的存储帐户。|
-    |||||
-
-1. 创建存储帐户后，在左窗格中选择“访问控制 (IAM)”。 然后，分配以下角色或确保其已经分配：
-    * 为自己分配“所有者”角色。
-    * 为自己分配“存储 Blob 数据所有者”角色。
-1. 在左窗格中选择“容器”并创建容器。
-1. 可以为此容器指定任何名称。 在本文档中，我们将此容器命名为“users”。
-1. 接受默认设置“公共访问级别”，然后选择“创建” 。
-
-在下面的步骤中，你将配置 Azure Synapse 工作区以使用此存储帐户作为“主要”存储帐户，并使用容器来存储工作区数据。 工作区将数据存储在 Apache Spark 表中。 它将 Spark 应用程序日志存储在名为 /synapse/workspacename 的文件夹下。
 
 ## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -53,20 +31,14 @@ ms.locfileid: "87093320"
     |基础|**工作区名称**|可以将它命名为任何内容。| 在本文档中，我们将使用 myworkspace。|
     |基础|**区域**|匹配存储帐户的区域。|
 
-1. 在“选择 Data Lake Storage Gen 2”下，选择之前创建的帐户和容器。
+1. 需要 ADLSGEN2 帐户才能创建工作区。 最简单的方法是创建一个新工作区。 如果要重复使用现有工作区，需要执行一些其他配置。 
+1. 选项 1 创建新的 ADLSGEN2 帐户 
+    1. 在“选择 Data Lake Storage Gen 2”下，单击“新建”并将其命名为 contosolake  。
+    1. 在“选择 Data Lake Storage Gen 2”下，单击“文件系统”并将其命名为 users  。
+1. 选项 2 参阅本文档底部的“准备存储帐户”说明。
+1. Azure Synapse 工作区将此存储帐户用作“主要”存储帐户，并使用容器来存储工作区数据。 工作区将数据存储在 Apache Spark 表中。 它将 Spark 应用程序日志存储在名为 /synapse/workspacename 的文件夹下。
 1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
 
-## <a name="verify-access-to-the-storage-account"></a>验证对存储帐户的访问权限
-
-Azure Synapse 工作区的托管标识可能已具有对存储帐户的访问权限。 请执行以下步骤，以确保：
-
-1. 打开 [Azure 门户](https://portal.azure.com)和为工作区所选的主存储帐户。
-1. 从左窗格中选择“访问控制(标识和访问管理)”。
-1. 分配以下角色或确保其已经分配。 我们对工作区标识和工作区使用相同的名称。
-    * 对于存储帐户上的“存储 Blob 数据参与者”角色，请将 myworkspace 指定为工作区标识 。
-    * 将 myworkspace 指定为工作区名称。
-
-1. 选择“保存”。
 
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio
 
@@ -121,6 +93,38 @@ Azure Synapse 工作区的托管标识可能已具有对存储帐户的访问权
 
 * SQL 按需版本具有自己的 SQL 按需版本数据库，这些数据库独立于任何 SQL 按需版本池而存在。
 * 工作区始终只包含一个名为“SQL 按需版本”的 SQL 按需版本池。
+
+## <a name="prepare-a-storage-account"></a>准备存储帐户
+
+1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 创建具有以下设置的新存储帐户：
+
+    |选项卡|设置 | 建议的值 | 说明 |
+    |---|---|---|---|
+    |基础|**存储帐户名称**| 选择任何名称。| 在本文档中，我们将使用名称 contosolake。|
+    |基础|**帐户种类**| StorageV2 ||
+    |基础|**位置**|选择任何位置。| 建议 Azure Synapse Analytics 工作区和 Azure Data Lake Storage Gen2 帐户位于同一区域。|
+    |高级|**Data Lake Storage Gen2**|**已启用**| Azure Synapse 仅适用于启用了此设置的存储帐户。|
+    |||||
+
+1. 创建存储帐户后，在左窗格中选择“访问控制 (IAM)”。 然后，分配以下角色或确保其已经分配：
+    * 为自己分配“所有者”角色。
+    * 为自己分配“存储 Blob 数据所有者”角色。
+1. 在左窗格中选择“容器”并创建容器。
+1. 可以为此容器指定任何名称。 在本文档中，我们将此容器命名为“users”。
+1. 接受默认设置“公共访问级别”，然后选择“创建” 。
+
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>配置从工作区访问存储帐户的权限
+
+Azure Synapse 工作区的托管标识可能已具有对存储帐户的访问权限。 请执行以下步骤，以确保：
+
+1. 打开 [Azure 门户](https://portal.azure.com)和为工作区所选的主存储帐户。
+1. 从左窗格中选择“访问控制(标识和访问管理)”。
+1. 分配以下角色或确保其已经分配。 我们对工作区标识和工作区使用相同的名称。
+    * 对于存储帐户上的“存储 Blob 数据参与者”角色，请将 myworkspace 指定为工作区标识 。
+    * 将 myworkspace 指定为工作区名称。
+
+1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

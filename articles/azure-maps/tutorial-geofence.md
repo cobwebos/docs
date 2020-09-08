@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121232"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299297"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -258,15 +258,15 @@ Azure Maps 支持三种事件类型。 可在[此处](https://docs.microsoft.com
 
 5. 对上一个部分中创建的逻辑应用退出终结点重复第 1-4 步。 在步骤 3 中，请确保选择 `Geofence Exited` 作为事件类型。
 
-## <a name="use-search-geofence-get-api"></a>使用搜索地理围栏 Get API
+## <a name="use-spatial-geofence-get-api"></a>使用空间地理围栏获取 API
 
-现在，使用[搜索地理围栏 Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 在有设备进入或退出地理围栏时向运营管理员发送电子邮件通知。
+现在，我们将使用[空间地理围栏获取 API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 在有设备进入或退出地理围栏时向运营管理员发送电子邮件通知。
 
 每个设备都有一个 `deviceId`。 在本教程中，我们将跟踪单个设备，其唯一 ID 是 `device_1`。
 
 为清楚起见，下图显示一段时间内设备的五个位置，并从位于地理围栏外的“启动”位置开始。 考虑到本教程的目的，不定义“启动”位置，因为我们不会在该位置查询设备。
 
-当使用某个设备位置（最初进入或退出地理围栏的位置）查询[搜索地理围栏 Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 时，事件网格将调用相应的逻辑应用终结点，并向运营管理员发送电子邮件通知。
+当使用某个设备位置（指示最初进入或退出地理围栏的位置）查询[空间地理围栏获取 API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 时，事件网格将调用相应的逻辑应用终结点，并向运营管理员发送电子邮件通知。
 
 以下每个部分都使用设备的 5 个不同位置坐标发出 HTTP GET 地理围栏 API 请求。
 

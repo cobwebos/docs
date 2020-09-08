@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 准备评估/迁移 VMware VM。
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109569"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927300"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -36,8 +36,8 @@ ms.locfileid: "86109569"
 --- | --- | ---
 **创建 Azure Migrate 项目** | Azure Migrate 项目提供了一个中心位置，用于使用 Azure Migrate 工具、Microsoft 工具和第三方产品来协调和管理评估与迁移。 | Azure 帐户需要项目所在的资源组中的“参与者”或“所有者”权限。
 **注册设备** | Azure Migrate 使用轻型 Azure Migrate 设备来发现 VM，使用服务器评估工具对其进行评估，并使用服务器迁移工具通过无代理迁移对其进行迁移。 [详细了解](migrate-appliance-architecture.md#appliance-registration)有关注册的信息。 | 若要注册设备，Azure 帐户需要 Azure 订阅的“参与者”或“所有者”权限。
-**创建 Azure AD 应用** | 注册设备时，Azure Migrate 将创建 Azure Active Directory (Azure AD) 应用。 <br/><br/> - 第一个应用用于设备上运行的代理与 Azure Migrate 之间的通信。 <br/><br/> - 第二个应用专门用于访问在用户的订阅中创建的 KeyVault，以便进行无代理 VMware VM 迁移。   | Azure 帐户需要创建 Azure AD 应用的权限。
-**创建 Key Vault** | 若要使用无代理迁移来迁移 VMware VM，Azure Migrate 需要创建一个 Key Vault，用于管理订阅中复制帐户的访问密钥。 | 若要允许 Azure Migrate 创建 Key Vault，需要在 Azure Migrate 项目所在的资源组中设置权限（所有者或参与者和用户访问管理员）。
+**创建 Azure AD 应用** | 注册设备时，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用。 <br/><br/> - 第一个应用用于设备上运行的代理与 Azure Migrate 之间的通信。 <br/><br/> - 第二个应用专门用于访问在用户的订阅中创建的 KeyVault，以便进行无代理 VMware VM 迁移。   | Azure 帐户需要这些[权限](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps)才能创建 Azure AD 应用。
+**创建 Key Vault** | - 第一个 Key Vault 是在设备注册时创建的，用于管理在设备配置过程中下载到其上的证书。 <br/><br/> \- 若要使用无代理迁移来迁移 VMware VM，Azure Migrate 需要创建另一个 Key Vault，用于管理订阅中复制帐户的访问密钥。| 若要允许 Azure Migrate 创建 Key Vault，需要在 Azure Migrate 项目所在的资源组中设置权限（所有者或参与者和用户访问管理员）。
 
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限

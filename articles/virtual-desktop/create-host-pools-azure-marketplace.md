@@ -3,15 +3,15 @@ title: 使用 Azure 门户创建 Windows 虚拟桌面主机池 - Azure
 description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755477"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322579"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -47,6 +47,8 @@ ms.locfileid: "88755477"
 若要开始创建新的主机池，请执行以下操作：
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
+   
+   >![注意]如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
 
 2. 在搜索栏中输入“Windows 虚拟桌面”，然后在“服务”下找到并选择“Windows 虚拟桌面” 。
 
@@ -72,7 +74,7 @@ ms.locfileid: "88755477"
       > [!div class="mx-imgBorder"]
       > ![“分配类型”字段下拉菜单的屏幕截图。 用户已选择“自动”。](media/assignment-type-field.png)
 
-9. 如果选择“共用”，请输入以下信息：
+9.  如果选择“共用”，请输入以下信息：
 
      - 对于“会话数上限”，请输入你要在单个会话主机中进行负载均衡的最大用户数。
      - 对于“负载均衡算法”，请根据使用模式选择“广度优先”或“深度优先”。
@@ -129,9 +131,11 @@ ms.locfileid: "88755477"
 
 7. 选择希望 VM 使用的 OS 磁盘类型：“标准 SSD”、“高级 SSD”或“标准 HDD”。
 
-8. 在“网络和安全”下，选择要在其中放置所创建的虚拟机的“虚拟网络”和“子网” 。 请确保该虚拟网络可以连接到域控制器，因为你需要将该虚拟网络中的虚拟机加入域。 接下来，选择是否要为虚拟机使用公共 IP。 建议选择“否”，因为专用 IP 更安全。
+8. 在“网络和安全”下，选择要在其中放置所创建的虚拟机的“虚拟网络”和“子网” 。 请确保该虚拟网络可以连接到域控制器，因为你需要将该虚拟网络中的虚拟机加入域。 所选虚拟网络的 DNS 服务器应配置为使用域控制器的 IP。
 
-9. 选择所需的安全组类型：“基本”、“高级”或“无”  。
+9. 接下来，选择是否要为虚拟机使用公共 IP。 建议选择“否”，因为专用 IP 更安全。
+
+10. 选择所需的安全组类型：“基本”、“高级”或“无”  。
 
     如果选择“基本”，则必须选择是否需要打开任何入站端口。 如果选择“是”，请从标准端口列表中选择允许入站连接的端口。
 
@@ -143,11 +147,13 @@ ms.locfileid: "88755477"
 
     如果选择“高级”，请选择已配置的现有网络安全组。
 
-10. 然后，选择是否要将虚拟机加入特定的域和组织单位。 如果选择“是”，请指定要加入到的域。 可以选择添加要将虚拟机加入其中的特定组织单位。 如果你选择“否”，VM 将加入到与“AD 域加入 UPN”的后缀相匹配的域 。
+11. 然后，选择是否要将虚拟机加入特定的域和组织单位。 如果选择“是”，请指定要加入到的域。 可以选择添加要将虚拟机加入其中的特定组织单位。 如果你选择“否”，VM 将加入到与“AD 域加入 UPN”的后缀相匹配的域 。
 
-11. 在“管理员帐户”下，输入所选虚拟网络的 Active Directory 域管理员的凭据。
+  - 指定 OU 时，请确保使用完整路径（可分辨名称）且不带引号。
 
-12. 在完成时选择“下一步:工作区 >”。
+12. 在“管理员帐户”下，输入所选虚拟网络的 Active Directory 域管理员的凭据。 此帐户不能启用多重身份验证 (MFA)。 加入 Azure Active Directory 域服务 (Azure AD DS) 域时，帐户必须是 Azure AD DC 管理员组的成员，并且帐户密码必须在 Azure AD DS 中有效。
+
+13. 在完成时选择“下一步:工作区 >”。
 
 完成这些操作后，我们便可以开始进行设置主机池的下一阶段：将应用组注册到工作区。
 

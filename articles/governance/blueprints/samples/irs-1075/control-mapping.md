@@ -3,12 +3,12 @@ title: IRS 1075 蓝图示例控件
 description: IRS 1075 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: b7208a475d35674cc1abb6932a04681a11f7e89b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f19cc11ddde8137305566efb33aa316ea7b71960
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653743"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89288995"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例的控制映射
 
@@ -137,19 +137,19 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="9357-cm-7-2-least-functionality--prevent-program-execution"></a>9.3.5.7 CM-7 (2) 最少的功能 | 防止程序执行
 
-Azure 安全中心中的自适应应用程序控制是一种智能、自动化端到端的应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以在强制模式下运行，从而禁止未批准的应用程序运行。 此蓝图分配了一个 Azure Policy 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
+Azure 安全中心中的自适应应用程序控制是一种智能的自动化端到端应用程序筛选解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以在强制模式下运行，从而禁止未批准的应用程序运行。 此蓝图分配了一个 Azure Policy 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
 
 - 应在虚拟机上启用自适应应用程序控制
 
 ## <a name="9357-cm-7-5-least-functionality--authorized-software--whitelisting"></a>9.3.5.7 CM-7 (5) 最少的功能 | 授权软件/允许列表
 
-Azure 安全中心中的自适应应用程序控制是一种智能、自动化端到端的应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制帮助你为虚拟机创建批准的应用程序列表。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
+Azure 安全中心中的自适应应用程序控制是一种智能的自动化端到端应用程序筛选解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制帮助你为虚拟机创建批准的应用程序列表。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
 
 - 应在虚拟机上启用自适应应用程序控制
 
 ## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM-11 用户安装的软件
 
-Azure 安全中心中的自适应应用程序控制是一种智能、自动化端到端的应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以帮助你强制执行和监视软件限制策略的符合性。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
+Azure 安全中心中的自适应应用程序控制是一种智能的自动化端到端应用程序筛选解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以帮助你强制执行和监视软件限制策略的符合性。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
 
 - 应在虚拟机上启用自适应应用程序控制
 

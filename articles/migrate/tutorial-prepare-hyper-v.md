@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 准备评估/迁移 Hyper-V VM。
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109614"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928915"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
@@ -38,6 +38,7 @@ ms.locfileid: "86109614"
 **创建 Azure Migrate 项目** | Azure Migrate 项目提供了一个中心位置，用于使用 Azure Migrate 工具、Microsoft 工具和第三方产品来协调和管理评估与迁移。 | Azure 帐户需要项目所在的资源组中的“参与者”或“所有者”权限。
 **注册设备** | Azure Migrate 使用轻型 Azure Migrate 设备来发现并评估 Hyper-V VM。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。 | 若要注册设备，Azure 帐户需要 Azure 订阅的“参与者”或“所有者”权限。
 **创建 Azure AD 应用** | 注册设备时，Azure Migrate 会创建一个 Azure Active Directory (Azure AD) 应用，用于在设备和 Azure Migrate 上运行的代理之间进行通信。 | Azure 帐户需要创建 Azure AD 应用的权限。
+**创建 Key Vault** | 密钥保管库在设备注册时创建，用于管理在设备配置过程中下载到设备上的证书。| 若要允许 Azure Migrate 创建密钥保管库，你的 Azure 帐户需要在 Azure Migrate 项目所在的资源组中具有参与者权限。
 **创建 VM** | 需要权限才能在资源组和虚拟网络中创建 VM，也才能写入 Azure 托管磁盘。 | Azure 帐户需要“虚拟机参与者”角色。
 
 
@@ -81,6 +82,7 @@ ms.locfileid: "86109614"
 #### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色
 
 租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+
 
 ### <a name="assign-azure-account-permissions"></a>分配 Azure 帐户权限
 

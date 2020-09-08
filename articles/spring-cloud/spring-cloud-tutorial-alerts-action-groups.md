@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071164"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299220"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教程：如何使用警报和操作组监视 Spring Cloud 资源
 
@@ -24,7 +24,7 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 
 ## <a name="prerequisites"></a>先决条件
 
-除了 Azure Spring 要求外，本教程中的过程还适用于已部署的 Azure Spring Cloud 实例。  按[快速入门](spring-cloud-quickstart-launch-app-cli.md)的说明开始操作。
+除了 Azure Spring 要求外，本教程中的过程还适用于已部署的 Azure Spring Cloud 实例。  按[快速入门](spring-cloud-quickstart.md)的说明开始操作。
 
 以下过程初始化**操作组**，以及从 Spring Cloud 实例左侧导航窗格中的“警报”选项启动的**警报**。 （该过程也可以从 Azure 门户的“监视器概述”页启动。） 
 
@@ -76,11 +76,11 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 
 1. 选择条件。 此示例采用“系统 CPU 使用率百分比”。
 
-   ![门户中“新建警报规则”的屏幕截图](media/alerts-action-groups/alerts-3-1.png)
+   ![门户中“新建警报规则”的屏幕截图 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. 向下滚动“配置信号逻辑”窗格，然后设置“阈值”以进行监视 。
 
-   ![门户中“新建警报规则”的屏幕截图](media/alerts-action-groups/alerts-3-2.png)
+   ![门户中“新建警报规则”的屏幕截图 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. 单击“完成”。
 
@@ -88,7 +88,7 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 
  在“操作”下，单击“选择操作组” 。 在“操作”窗格中，选择前面定义的**操作组**。
 
-   ![门户中“新建警报规则”的屏幕截图](media/alerts-action-groups/alerts-3-3.png) 
+   ![门户中“新建警报规则”的屏幕截图 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. 向下滚动，然后在“警报详细信息”中为警报规则命名。
 
@@ -96,15 +96,15 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 
 1. 单击“创建警报规则”。
 
-   ![门户中“新建警报规则”的屏幕截图](media/alerts-action-groups/alerts-3-4.png)
+   ![门户中“新建警报规则”的屏幕截图 5](media/alerts-action-groups/alerts-3-4.png)
 
 确认是否已启用新警报规则。
 
-   ![门户中“新建警报规则”的屏幕截图](media/alerts-action-groups/alerts-4.png)
+   ![门户中“新建警报规则”的屏幕截图 6](media/alerts-action-groups/alerts-4.png)
 
 还可以使用“指标”页创建规则：
 
-   ![门户中“新建警报规则”的屏幕截图](media/alerts-action-groups/alerts-5.png)
+   ![门户中“新建警报规则”的屏幕截图 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,17 +1,17 @@
 ---
 title: 教程：在组织外共享 - Azure Data Share
 description: 教程 - 使用 Azure Data Share 与客户和合作伙伴共享数据
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/28/2020
+ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511967"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259058"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
 
@@ -73,7 +73,7 @@ ms.locfileid: "87511967"
 
 在 Azure 资源组中创建 Azure Data Share 资源。
 
-1. 选择门户左上角的“创建资源”按钮 (+)  。
+1. 选择门户左上角的菜单按钮，然后选择“创建资源”(+)。
 
 1. 搜索“Data Share”。 
 
@@ -83,17 +83,17 @@ ms.locfileid: "87511967"
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 名称 | *datashareacount* | 指定 Data Share 帐户的名称。 |
-    | 订阅 | 订阅 | 选择要用于 Data Share 帐户的 Azure 订阅。|
+    | 订阅 | 你的订阅 | 选择要用于 Data Share 帐户的 Azure 订阅。|
     | 资源组 | *test-resource-group* | 使用现有资源组或创建新资源组。 |
-    | 位置 | 美国东部 2  | 选择 Data Share 帐户的区域。
+    | 位置 | *美国东部 2* | 选择 Data Share 帐户的区域。
+    | 名称 | *datashareaccount* | 指定 Data Share 帐户的名称。 |
     | | |
 
-1. 选择“创建”，预配 Data Share 帐户。  预配新的 Data Share 帐户通常需要大约 2 分钟或更少的时间。 
+1. 选择“审阅 + 创建”，然后选择“创建”来预配数据共享帐户 。 预配新的 Data Share 帐户通常需要大约 2 分钟或更少的时间。 
 
 1. 部署完成后，选择“转到资源”。 
 
-## <a name="create-a-data-share"></a>创建 Data Share
+## <a name="create-a-share"></a>创建共享
 
 1. 导航到 Data Share 概览页。
 
@@ -103,15 +103,15 @@ ms.locfileid: "87511967"
 
 1. 选择“创建”  。   
 
-1. 填充 Data Share 的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
+1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
     ![EnterShareDetails](./media/enter-share-details.png "输入共享详细信息") 
 
-1. 选择“继续” 
+1. 选择“继续”。
 
-1. 若要向 Data Share 添加数据集，请选择“添加数据集”。  
+1. 若要向共享添加数据集，请选择“添加数据集”。 
 
-    ![数据集](./media/datasets.png "数据集")
+    ![向共享添加数据集](./media/datasets.png "数据集")
 
 1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库进行共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
 
@@ -125,7 +125,7 @@ ms.locfileid: "87511967"
 
     ![AddRecipients](./media/add-recipient.png "添加收件人") 
 
-1. 选择“继续” 
+1. 选择“继续”。
 
 1. 如果已选择了快照共享类型，则可以配置快照计划来向数据使用者提供数据更新。 
 
@@ -133,9 +133,9 @@ ms.locfileid: "87511967"
 
 1. 选择开始时间和重复周期间隔。 
 
-1. 选择“继续” 
+1. 选择“继续”。
 
-1. 在“查看 + 创建”选项卡中查看包内容、设置、接收者和同步设置。 选择“创建” 
+1. 在“查看 + 创建”选项卡中查看包内容、设置、接收者和同步设置。 选择“创建”。
 
 你的 Azure Data Share 现已创建，Data Share 的接收者现已准备好接受你的邀请。 
 

@@ -1,14 +1,14 @@
 ---
 title: 教程：从蓝图示例到新环境
 description: 在本教程，你将使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677094"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048726"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教程：基于蓝图示例创建环境
 
@@ -122,7 +122,7 @@ ms.locfileid: "80677094"
 
 1. 在左侧选择“分配的蓝图”页。  使用筛选器找到 _Assignment-two-rgs-with-role-assignments_ 蓝图分配，并将其选中。
 
-   在此页中，可以看到分配成功消息、创建的资源列表及其蓝图锁定状态。 如果更新了分配，“分配操作”下拉列表会显示有关每个定义版本的部署的详细信息。  可以单击列出的每个已创建资源，打开该资源的属性页。
+   在此页中，可以看到分配成功消息、创建的资源列表及其蓝图锁定状态。 如果更新了分配，“分配操作”下拉列表会显示有关每个定义版本的部署的详细信息。  可以选择列出的每个已创建资源，打开该资源的属性页。
 
 1. 选择“ProductionRG”资源组。 
 
@@ -169,7 +169,7 @@ ms.locfileid: "80677094"
 
 1. 在左侧选择“访问控制(IAM)”页，然后选择“角色分配”选项卡。  
 
-每个资源组的安全性仍具有部署的角色分配，但蓝图分配不再具有“所有者”访问权限。 
+每个资源组的安全性仍具有已部署的角色分配，但蓝图分配不再具有“所有者”访问权限。
 
 “删除蓝图分配成功”门户通知出现后，转到下一步骤。 
 

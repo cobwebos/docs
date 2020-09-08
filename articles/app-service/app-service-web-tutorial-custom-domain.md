@@ -5,14 +5,14 @@ keywords: 应用服务, Azure 应用服务, 域映射, 域名, 现有域, 主机
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 4a2c65e2685dada6412adf8c8ad9c63f472b91e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782305"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962275"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "88782305"
 
 为完成此教程：
 
-* [创建应用服务应用](/azure/app-service/)，或使用为另一教程创建的应用。
+* [创建应用服务应用](./index.yml)，或使用为另一教程创建的应用。
 * 购买域名，确保可以访问域提供商（如 GoDaddy）的 DNS 注册表。
 
   例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须能够配置 `contoso.com` 根域的 DNS 设置。
@@ -138,38 +138,34 @@ ms.locfileid: "88782305"
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中启用 CNAME 记录映射
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
+1. 在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
-![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在应用的“自定义域”页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
+1. 在应用的“自定义域”页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
 
-选择“添加域名”旁边的 **+** 图标。
+1. 选择“添加自定义域”。
 
-![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入已添加 CNAME 记录的完全限定的域名，如 `www.contoso.com`。
+1. 键入已添加 CNAME 记录的完全限定的域名，如 `www.contoso.com`。
 
-选择“验证”。
+1. 选择“验证”。 此时会显示“添加自定义域”页。
 
-此时会显示“添加自定义域”页。
+1. 确保“主机名记录类型”设置为“CNAME (www\.example.com 或任何子域)”。 选择“添加自定义域”。
 
-确保“主机名记录类型”设置为“CNAME (www\.example.com 或任何子域)”。
+    ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-选择“添加自定义域”。
+    新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
-![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
+    > [!NOTE]
+    > 自定义域的警告标签意味着该域尚未绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
-![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+    如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
-> [!NOTE]
-> 自定义域的“不安全”标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
-
-如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
-
-![验证错误](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
+    ![验证错误](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a" aria-hidden="true"></a>
 
@@ -223,33 +219,29 @@ ms.locfileid: "88782305"
 
 在 Azure 门户中返回到应用的“自定义域”页。将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
 
-选择“添加域名”旁边的 **+** 图标。
+1. 选择“添加自定义域”。
 
-![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入已配置 A 记录的完全限定的域名，如 `contoso.com`。
+1. 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。 
 
-选择“验证”。
+1. 选择“验证”。 此时会显示“添加自定义域”页。
 
-此时会显示“添加自定义域”页。
+1. 确保“主机名记录类型”设置为“A 记录 (example.com)”。  选择“添加自定义域”。
 
-确保“主机名记录类型”设置为“A 记录 (example.com)”。 
+    ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-选择“添加自定义域”。
+    新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
-![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+    ![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
-新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
-
-![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
-
-> [!NOTE]
-> 自定义域的“不安全”标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
-
-如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
-
-![验证错误](./media/app-service-web-tutorial-custom-domain/verification-error.png)
-
+    > [!NOTE]
+    > 自定义域的警告标签意味着该域尚未绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+    
+    如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
+    
+    ![验证错误](./media/app-service-web-tutorial-custom-domain/verification-error.png)
+    
 <a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>映射通配符域
@@ -279,33 +271,31 @@ ms.locfileid: "88782305"
 
 现在，可以将任何与通配符名称匹配的子域（例如 `sub1.contoso.com`、`sub2.contoso.com` 和 `*.contoso.com` 都匹配 `*.contoso.com`）添加到应用中。
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
+1. 在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
-![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-选择“添加域名”旁边的 **+** 图标。
+1. 选择“添加自定义域”。
 
-![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”。
+1. 键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”。
 
-“添加自定义域”按钮随即激活。
+    “添加自定义域”按钮随即激活。
 
-确保“主机名记录类型”设置为“CNAME 记录(www\.example.com 或任何子域)”。
+1. 确保“主机名记录类型”设置为“CNAME 记录(www\.example.com 或任何子域)”。 选择“添加自定义域”。
 
-选择“添加自定义域”。
+    ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+    新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
-新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
+1. 再次选择 **+** 图标，添加另一个与通配符域匹配的自定义域。 例如，添加 `sub2.contoso.com`。
 
-再次选择 **+** 图标，添加另一个与通配符域匹配的自定义域。 例如，添加 `sub2.contoso.com`。
+    ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
 
-![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
-
-> [!NOTE]
-> 自定义域的“不安全”标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
-
+    > [!NOTE]
+    > 自定义域的警告标签意味着该域尚未绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+    
 ## <a name="test-in-browser"></a>在浏览器中测试
 
 浏览至你之前配置的 DNS 名称（例如，`contoso.com`、`www.contoso.com`、`sub1.contoso.com` 和 `sub2.contoso.com`）。

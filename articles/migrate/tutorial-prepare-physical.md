@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420781"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927368"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -40,6 +40,7 @@ ms.locfileid: "87420781"
 **创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。 
 **注册资源提供程序（仅限评估）** | Azure Migrate 使用轻型 Azure Migrate 设备通过“Azure Migrate:服务器评估”来发现并评估计算机。<br/><br/> 在设备注册过程中，资源提供程序会注册到在设备中选择的订阅。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
 **创建 Azure AD 应用（仅限评估）** | 注册设备时，Azure Migrate 会创建一个 Azure Active Directory (Azure AD) 应用，方便在设备上运行的代理与其在 Azure 上运行的相应服务通信。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 你需要具有创建 Azure AD 应用的权限（在“应用程序开发人员”角色中提供）。
+**创建 Key Vault** | 密钥保管库在设备注册时创建，用于管理在设备配置过程中下载到设备上的证书。<br/><br/>若要允许 Azure Migrate 创建密钥保管库，你的 Azure 帐户需要在 Azure Migrate 项目所在的资源组中具有参与者权限。
 
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限 

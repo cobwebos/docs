@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987165"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401480"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本文介绍如何创建私有证书或公用证书，或将其上传或导入到应用服务中。 
 
-将证书添加到应用服务应用或[函数应用](https://docs.microsoft.com/azure/azure-functions/)后，即可[使用它来保护自定义 DNS 名称](configure-ssl-bindings.md)或[在应用程序代码中使用它](configure-ssl-certificate-in-code.md)。
+将证书添加到应用服务应用或[函数应用](../azure-functions/index.yml)后，即可[使用它来保护自定义 DNS 名称](configure-ssl-bindings.md)或[在应用程序代码中使用它](configure-ssl-certificate-in-code.md)。
 
 下表列出了用于在应用服务中添加证书的选项：
 
@@ -25,7 +25,7 @@ ms.locfileid: "87987165"
 |-|-|
 | 创建免费应用服务托管证书（预览版） | 如果只需保护 `www` [自定义域](app-service-web-tutorial-custom-domain.md)或应用服务中的任何非裸域，则可以轻松使用私有证书。 |
 | 购买应用服务证书 | 由 Azure 管理的私有证书。 它结合了自动化证书管理的简单性以及续订和导出选项的灵活性。 |
-| 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 管理 [PKCS12 证书](https://wikipedia.org/wiki/PKCS_12)时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
+| 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](../key-vault/index.yml) 管理 [PKCS12 证书](https://wikipedia.org/wiki/PKCS_12)时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传私有证书 | 如果你已有第三方提供商提供的私有证书，则可以上传它。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传公用证书 | 公用证书不用于保护自定义域，但可以将其加载到代码中（如果需要它们来访问远程资源）。 |
 
@@ -33,7 +33,7 @@ ms.locfileid: "87987165"
 
 按照本操作方法指南操作：
 
-- [创建应用服务应用](/azure/app-service/)。
+- [创建应用服务应用](./index.yml)。
 - 仅限免费证书：使用 [CNAME 记录](app-service-web-tutorial-custom-domain.md#map-a-cname-record)将子域（例如 `www.contoso.com`）映射到应用服务。
 
 ## <a name="private-certificate-requirements"></a>私有证书要求
@@ -123,6 +123,10 @@ ms.locfileid: "87987165"
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
 | 法律条款 | 单击以确认你同意法律条款。 证书是从 GoDaddy 获取的。 |
 
+> [!NOTE]
+> 从 Azure 购买的应用服务证书由 GoDaddy 颁发。 对于某些顶级域，必须通过创建值为 `0 issue godaddy.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 GoDaddy 作为证书颁发者
+> 
+
 ### <a name="store-in-azure-key-vault"></a>存储在 Azure Key Vault 中
 
 证书购买过程完成后，还需完成其他一些步骤才可开始使用此证书。 
@@ -131,7 +135,7 @@ ms.locfileid: "87987165"
 
 ![配置应用服务证书的 Key Vault 存储](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
+[Key Vault](../key-vault/general/overview.md) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
 
 在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库 。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 在应用服务应用所在的订阅和资源组中创建新 Key Vault。
 
@@ -141,8 +145,8 @@ ms.locfileid: "87987165"
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | 位置 | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
-| 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后配置，请按照[授予多个应用程序访问密钥保管库的权限](../key-vault/general/group-permissions-for-apps.md)的步骤进行操作。 |
-| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/general/network-security.md)的步骤进行操作。 |
+| 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后按照[分配密钥保管库访问策略](/azure/key-vault/general/assign-access-policy-portal)中的步骤进行配置。 |
+| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](/azure/key-vault/general/network-security)的步骤进行操作。 |
 
 选择保管库后，关闭“Key Vault 存储库”页面。 “步骤1:存储”选项应显示绿色复选标记表示成功。 保持页面处于打开状态，执行下一步骤。
 
@@ -195,7 +199,7 @@ ms.locfileid: "87987165"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| 密钥保管库 | 包含要导入的证书的保管库。 |
+| Key Vault | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。
@@ -248,7 +252,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 出现提示时，定义导出密码。 稍后将 TLS/SSL 证书上传到应用服务时要使用此密码。
 
-如果使用 IIS 或 Certreq.exe 生成证书请求，请将证书安装到本地计算机，然后[将证书导出为 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
+如果使用 IIS 或 Certreq.exe 生成证书请求，请将证书安装到本地计算机，然后[将证书导出为 PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))。
 
 ### <a name="upload-certificate-to-app-service"></a>将证书上传到应用服务
 
@@ -327,9 +331,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="export-certificate"></a>导出证书
 
-由于应用服务证书是 [Key Vault 机密](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)，因此可以导出该证书的 PFX 副本，并将其用于其他 Azure 服务或 Azure 之外的服务。
+由于应用服务证书是 [Key Vault 机密](../key-vault/general/about-keys-secrets-certificates.md)，因此可以导出该证书的 PFX 副本，并将其用于其他 Azure 服务或 Azure 之外的服务。
 
-若要将应用服务证书导出为 PFX 文件，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令。 如果[已安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，则还可以在本地运行该命令。 将占位符替换为[创建应用服务证书](#start-certificate-order)时使用的名称。
+若要将应用服务证书导出为 PFX 文件，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令。 如果[已安装 Azure CLI](/cli/azure/install-azure-cli)，则还可以在本地运行该命令。 将占位符替换为[创建应用服务证书](#start-certificate-order)时使用的名称。
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -376,4 +380,4 @@ az keyvault secret download \
 * [实施 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [在 Azure 应用服务中通过代码使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)
-* [常见问题解答：应用服务证书](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [常见问题解答：应用服务证书](./faq-configuration-and-management.md)

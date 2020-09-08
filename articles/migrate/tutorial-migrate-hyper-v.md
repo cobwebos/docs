@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 0e909a91d610c032bc1d9d003efae7c555afd8bc
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 370712ea976db027abee943d786f6ce81ac99c4a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86108220"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376003"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -114,14 +114,18 @@ ms.locfileid: "86108220"
 5. 在“目标设置”中，选择要迁移到的目标区域、订阅，以及迁移之后 Azure VM 所在的资源组。
 7. 在“复制存储帐户”中，选择将在 Azure 中存储复制数据的 Azure 存储帐户。
 8. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。
-9. 在“Azure 混合权益”中：
+9. 在“可用性选项”中，选择：
+    -  可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 如果选择此选项，则需要在“计算”选项卡中指定用于每个选定计算机的可用性区域。仅当为迁移选择的目标区域支持可用性区域时，此选项才可用
+    -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
+    - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
+10. 在“Azure 混合权益”中：
 
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
-    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
+    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
 
     ![目标设置](./media/tutorial-migrate-hyper-v/target-settings.png)
 
-10. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。 VM 必须符合 [Azure 要求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
+11. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表将包含建议的大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。 
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 
@@ -129,13 +133,13 @@ ms.locfileid: "86108220"
 
     ![VM 计算设置](./media/tutorial-migrate-hyper-v/compute-settings.png)
 
-11. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+12. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 
     ![磁盘](./media/tutorial-migrate-hyper-v/disks.png)
 
-10. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
+13. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 
 > [!NOTE]
 > 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。  开始复制后无法更改设置。
@@ -187,7 +191,7 @@ ms.locfileid: "86108220"
 3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure 虚拟网络。 建议使用非生产虚拟网络。
 4. “测试迁移”作业随即启动。 在门户通知中监视该作业。
 5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。 计算机名称带有 **-Test** 后缀。
-6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。 
+6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。
 
     ![清理迁移](./media/tutorial-migrate-hyper-v/clean-up.png)
 
@@ -200,7 +204,7 @@ ms.locfileid: "86108220"
 
     ![复制服务器](./media/tutorial-migrate-hyper-v/replicate-servers.png)
 
-2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。 
+2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。
 3. 在“迁移” > “关闭虚拟机并执行计划迁移(不会丢失任何数据)”中，选择“是” > “确定”。   
     - 默认情况下，Azure Migrate 将关闭本地 VM，并运行按需复制，以同步自上次复制发生以来发生的任何 VM 更改。 这可以确保不会丢失数据。
     - 如果你不想要关闭 VM，请选择“否”

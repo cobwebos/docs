@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757347"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007292"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
@@ -119,7 +119,7 @@ saphanadatabase;hxe;newhxe      SAPHanaDatabase          HXE           hxehost  
 
 如果选择保留恢复点，请记住以下详细内容：
 
-* 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
+* 所有恢复点都将永久保持不变，所有删除操作都将在停止保护时停止，并保留数据。
 * 你将为受保护的实例和使用的存储付费。
 * 如果在不停止备份的情况下删除数据源，则新备份会失败。
 

@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: eae7e2d371ed8156debe9ae24cf0744bd6273943
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86114238"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950266"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -75,15 +75,23 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
 创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
+### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
+
+1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 Hyper-V”。  
+3. 在“1: 生成 Azure Migrate 项目密钥”中，提供将为发现 Hyper-V VM 而设置的 Azure Migrate 设备的名称。该名称应为不超过 14 个字符的字母数字字符。
+1. 单击“生成密钥”，开始创建所需的 Azure 资源。 在创建资源期间，请不要关闭“发现计算机”页。
+1. 成功创建 Azure 资源后，会生成一个 Azure Migrate 项目密钥。
+1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
+
 ### <a name="download-the-vhd"></a>下载 VHD
 
-下载设备的压缩 VHD 模板。
+在“2: 下载 Azure Migrate 设备”中，选择 .VHD 文件，然后单击“下载”。 
 
-1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 Hyper-V”。  
-3. 单击“下载”以下载 VHD 文件。
+   ![对于发现计算机的选择](./media/tutorial-assess-hyper-v/servers-discover.png)
 
-    ![下载 VM](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
+
+   ![对于生成密钥的选择](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
 
 ### <a name="verify-security"></a>验证安全性
@@ -102,13 +110,13 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
         **方案** | **下载** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.93 GB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (10.4 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - 对于 Azure 政府：
 
         **方案*** | **下载** | **SHA256**
         --- | --- | ---
-        Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+        Hyper-V (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  8025f315e41c01ebdb4ffb1de87982ae6cc4ea7c4cce612612c7e90a44e79b44
 
 
 ### <a name="create-the-appliance-vm"></a>创建设备 VM
@@ -125,9 +133,9 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
     ![部署 VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
-3. 在“查找文件夹”中，选择“虚拟机”文件夹。 然后单击“下一步”。
+3. 在“查找文件夹”中，选择“虚拟机”文件夹。 然后单击“下一步”  。
 1. 在“选择虚拟机”中，单击“下一步”。 
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”  。
 3. 在“选择目标”中保留默认设置。 单击“下一步”。
 4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
 5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。 [了解](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何创建虚拟交换机。
@@ -151,25 +159,27 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
 
    或者，可以在设备桌面上单击应用快捷方式打开该应用。
+1. 接受许可条款，并阅读第三方信息。
 1. 在 Web 应用 >“设置必备组件”中执行以下操作：
-    - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用将检查 VM 是否可访问 Internet。 如果 VM 使用代理：
-      - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
+      - 单击“设置代理”，并指定代理地址（格式为 http://ProxyIPAddress 或 http://ProxyFQDN) ）和侦听端口。
       - 如果代理需要身份验证，请指定凭据。
       - 仅支持 HTTP 代理。
+      - 如果已添加代理详细信息或已禁用代理和/或身份验证，请单击“保存”，再次触发连接性检查。
     - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常发现 VM。
-    - **安装更新**：Azure Migrate 服务器评估将检查设备上是否安装了最新更新。
+    - **安装更新**：Azure Migrate 服务器评估检查设备是否安装了最新更新。检查完成后，可以单击“查看设备服务”，查看设备上运行的组件的状态和版本。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
-1. 单击“登录”。 如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-2. 在新的标签页中，使用 Azure 凭据登录。
-    - 使用用户名和密码登录。
-    - 不支持使用 PIN 登录。
-3. 成功登录后，返回到 Web 应用。
-4. 选择在其中创建了 Azure Migrate 项目的订阅。 然后选择该项目。
-5. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
-6. 单击“注册”。
+1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择在生成密钥时提供的设备名称，然后复制相应的密钥。
+1. 单击“登录”。 这将在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
+1. 在新选项卡上，使用 Azure 用户名和密码登录。
+   
+   不支持使用 PIN 登录。
+3. 成功登录后，返回到 Web 应用。 
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](tutorial-prepare-hyper-v.md#prepare-azure)，会启动设备注册。
+1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
+
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>为 SMB VHD 委托凭据
@@ -201,16 +211,27 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, Hype
 
 从设备连接到 Hyper-V 主机或群集，并启动 VM 发现。
 
-1. 在“用户名”和“密码”中，指定设备用来发现 VM 的帐户凭据。  指定凭据的易记名称，然后单击“保存详细信息”。
-2. 单击“添加主机”，然后指定 Hyper-V 主机/群集详细信息。
-3. 单击 **“验证”** 。 验证后，将显示每个主机/群集上可发现的 VM 数。
-    - 如果主机验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。
-    - 若要删除主机或群集，请选择“删除”。
+1. 在**步骤 1：提供 Hyper-V 主机凭据**中，单击“添加凭据”以指定凭据的易记名称，为设备将用于发现 VM 的 Hyper-V 主机/群集添加“用户名”和“密码”。 单击“保存” 。
+1. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 Hyper-V VM 发现支持多个凭据。
+1. 在**步骤 2：提供 Hyper-V 主机/群集详细信息**中，单击“添加发现源”，以指定 Hyper-V 主机/群集 IP 地址/FQDN 以及用于连接到主机/群集的凭据的易记名称。
+1. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供 Hyper-V 主机/群集详细信息。
+
+    ![对于添加发现源的选择](./media/tutorial-assess-hyper-v/add-discovery-source-hyperv.png)
+
+    - 如果选择“添加单个项目”，则需要指定凭据的易记名称和 Hyper-V 主机/群集 IP 地址/FQDN，然后单击“保存”。
+    - 如果选择“添加多个项目”（默认情况下处于选中状态），则可以通过在文本框中指定 Hyper-V 主机/群集 IP 地址/FQDN 和凭据的易记名称来一次添加多个记录。验证添加的记录并单击“保存”。
+    - 如果选择“导入 CSV”，可以下载 CSV 模板文件，并使用 Hyper-V 主机/群集 IP 地址/FQDN 和凭据的易记名称填充文件。 然后，将该文件导入设备，验证文件中的记录，然后单击“保存” 。
+
+1. 单击“保存”后，设备将尝试验证与已添加 Hyper-V 主机/群集的连接，并在表中显示每个主机/群集的“验证状态”。
+    - 对于验证成功的主机/群集，可以通过单击其 IP 地址/FQDN 来查看更多详细信息。
+    - 如果主机验证失败，请通过单击表中“状态”列的“验证失败”来查看错误。 解决此问题，然后再次验证。
+    - 若要删除主机或群集，请单击“删除”。
     - 无法删除群集中的特定主机。 只能删除整个群集。
     - 即使群集中的特定主机出现问题，你也可以添加群集。
-4. 验证之后，单击“保存并启动发现”以启动发现过程。
+1. 在开始发现之前，可以随时重新验证与主机/群集之间的连接。
+1. 单击“开始发现”，从已成功验证的主机/群集开始发现 VM。 成功启动发现后，你可以针对表中的每个主机/群集检查发现状态。
 
-随即会启动发现。 在 Azure 门户中，每台主机大约需要 1.5 分钟才能显示发现的服务器的元数据。
+随即会启动发现。 在 Azure 门户中，每台主机大约需要 2 分钟才能显示发现的服务器的元数据。
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 
@@ -244,7 +265,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, Hype
 
     ![评估属性](./media/tutorial-assess-hyper-v/assessment-properties.png)
 
-3. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+3. 在“选择或创建组”中，选择“新建”并指定组名称。 组将要评估的一个或多个 VM 集合到一起。
 4. 在“将计算机添加到组”中，选择要添加到该组的 VM。
 5. 单击“创建评估”以创建该组，并运行评估。
 

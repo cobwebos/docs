@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405528"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300045"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -443,7 +443,7 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，必应搜索 API 订阅密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可通过 CORS 代理发出请求。 此类代理的响应具有 `Access-Control-Expose-Headers` 标头，它将响应头列入允许列表，让响应头可供 JavaScript 访问。
+进行开发时，可通过 CORS 代理发出请求。 此类代理的响应具有 `Access-Control-Expose-Headers` 标头，它筛选响应头并使其可供 JavaScript 使用。
 
 轻松操作即可安装 CORS 代理，它使示例应用能够访问客户端 ID 标头。 运行以下命令：
 

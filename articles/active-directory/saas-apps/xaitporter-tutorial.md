@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546298"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>教程：Azure Active Directory 与 XaitPorter 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "88546298"
 
     ![证书下载链接](common/copy-metadataurl.png)
 
-6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供 **IP 地址**或**应用联合元数据 URL**，使 XaitPorter 能够确保可从其配置允许列表的 XaitPorter 实例访问该 IP 地址。 
+6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供“IP 地址”或“应用联合元数据 URL”，使 XaitPorter 能够确保可从其配置批准列表的 XaitPorter 实例访问该 IP 地址。 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>配置 XaitPorter 单一登录
 
@@ -213,4 +213,3 @@ ms.locfileid: "88546298"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

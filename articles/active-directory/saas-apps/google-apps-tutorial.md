@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551510"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Google Cloud (G Suite) Connector 的集成
 
@@ -225,15 +225,18 @@ ms.locfileid: "88551510"
 
     b. 在 Google Cloud (G Suite) Connector 中的“登录页 URL”字段内，粘贴从 Azure 门户复制的“登录 URL”值。  
 
-    c. 在 Google Cloud (G Suite) Connector 中的“注销页 URL”字段内，粘贴从 Azure 门户复制的“注销 URL”值。  
+    c. 在 Google Cloud (G Suite) Connector 中的“注销页 URL”字段内，粘贴从 Azure 门户复制的“登录 URL”值 。
 
-    d. 在 Google Cloud (G Suite) Connector 中的“更改密码 URL”字段内，粘贴从 Azure 门户复制的“更改密码 URL”值。  
+    > [!NOTE]
+    > Google Cloud (G Suite) 基于 SAML 注销协议。 因此在“注销页 URL”字段中，我们需要使用 SAML 注销 URL（即登录 URL）作为相同字段的值。
 
-    e. 在 Google Cloud (G Suite) Connector 中，对于“验证证书”，请上传从 Azure 门户下载的证书。 
+    d. 在 Google Cloud (G Suite) Connector 中，对于“验证证书”，请上传从 Azure 门户下载的证书。    
 
-    f. 按照 Azure AD 中的上述“基本 SAML 配置”部分提供的说明，勾选/取消选中“使用特定于域的颁发者”选项。  
+    e. 按照 Azure AD 中的上述“基本 SAML 配置”部分提供的说明，勾选/取消选中“使用特定于域的颁发者”选项。  
 
-    g. 单击 **“保存更改”** 。
+    f. 在 Google Cloud (G Suite) Connector 中的“更改密码 URL”字段内，粘贴从 Azure 门户复制的“更改密码 URL”值。 
+
+    g. 单击“ **保存**”。
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>创建 Google Cloud (G Suite) Connector 测试用户
 
