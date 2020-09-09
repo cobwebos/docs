@@ -4,15 +4,15 @@ description: 介绍 Azure HPC 缓存，它是一种用于高性能计算的文�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053674"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611745"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 
@@ -65,11 +65,11 @@ Azure HPC 缓存部署可帮助加快定量分析计算、风险分析工作负�
 * US Gov 亚利桑那州
 * US Gov 弗吉尼亚州
 
-## <a name="service-availability"></a>服务可用性
+<!-- ## Service availability
 
-必须为将用于 Azure HPC 缓存的每个订阅请求访问权限。 此限制有助于确保服务质量。
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-通过填写[此表单](https://aka.ms/onboard-hpc-cache)来请求访问权限。 将订阅添加到访问列表后，可以创建缓存。
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
 ## <a name="next-steps"></a>后续步骤
 

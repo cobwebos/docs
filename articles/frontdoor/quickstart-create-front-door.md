@@ -3,7 +3,7 @@ title: 快速入门：使用 Azure Front Door 服务设置高可用性
 description: 本快速入门介绍如何使用 Azure Front Door 服务实现高度可用的高性能全局 Web 应用程序。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.assetid: ''
 ms.service: frontdoor
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
-ms.author: sharadag
-ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: duau
+ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82133452"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569231"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入门：创建 Front Door，以实现高度可用的全局 Web 应用程序
 
@@ -165,5 +165,3 @@ ms.locfileid: "82133452"
 继续学习下一篇文章，了解如何将自定义域添加到 Front Door。
 > [!div class="nextstepaction"]
 > [添加自定义域](front-door-custom-domain.md)
-
-若要详细了解如何路由流量，请参阅 [Front Door 路由方法](front-door-routing-methods.md)。
