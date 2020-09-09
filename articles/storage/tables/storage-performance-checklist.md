@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008669"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458326"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表
 
@@ -197,7 +197,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 从存储服务 2013-08-15 版开始，表服务就支持使用 JSON 而非基于 XML 的 AtomPub 格式来传输表数据。 使用 JSON 最多可以减少 75% 的有效负载大小，并可以显著提高应用程序的性能。
 
-有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx)（表服务操作的有效负载格式）。
+有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx)（表服务操作的有效负载格式）。
 
 ### <a name="disable-nagle"></a>禁用 Nagle
 

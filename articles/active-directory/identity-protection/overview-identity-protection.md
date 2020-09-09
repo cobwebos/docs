@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815175"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437694"
 ---
 # <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
@@ -102,17 +102,17 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 功能 | 详细信息 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free/Office 365 应用 |
+| 功能 | 详细信息  | Azure AD Free/Office 365 应用 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| 风险策略 | 用户风险策略（通过标识保护实现） | 是 | 否 | 否 |
-| 风险策略 | 登录风险策略（通过标识保护或条件访问实现） | 是 | 否 | 否 |
-| 安全报表 | 概述 | 是 | 否 | 否 |
-| 安全报表 | 有风险用户 | 完全访问权限 | 有限信息 | 有限信息 |
-| 安全报表 | 有风险的登录 | 完全访问权限 | 有限信息 | 有限信息 |
-| 安全报表 | 风险检测 | 完全访问权限 | 有限信息 | 否 |
-| 通知 | 检测到用户存在风险的警报 | 是 | 否 | 否 |
-| 通知 | 每周摘要 | 是 | 否 | 否 |
-| | MFA 注册策略 | 是 | 否 | 否 |
+| 风险策略 | 用户风险策略（通过标识保护实现）  | 否 | 否 |是 | 
+| 风险策略 | 登录风险策略（通过标识保护或条件访问实现）  | 否 |  否 |是 |
+| 安全报表 | 概述 |  否 | 否 |是 |
+| 安全报表 | 有风险用户  | 有限信息 | 有限信息 | 完全访问权限|
+| 安全报表 | 有风险的登录  | 有限信息 | 有限信息 | 完全访问权限|
+| 安全报表 | 风险检测   | 否 | 有限信息| 完全访问权限|
+| 通知 | 检测到用户存在风险的警报  | 否 | 否 |是 |
+| 通知 | 每周摘要| 否 | 否 | 是 | 
+| | MFA 注册策略 | 否 | 否 | 是 |
 
 ## <a name="next-steps"></a>后续步骤
 

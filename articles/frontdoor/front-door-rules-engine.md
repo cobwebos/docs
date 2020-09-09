@@ -3,7 +3,7 @@ title: Azure Front Door 体系结构和术语的规则引擎
 description: 本文概述了 Azure Front Door 规则引擎功能。
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 1332f4b21f971d23055c158c2aebdd3316f1bd39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: f8eb02f4ea57988eab4e7bb5b193e81e4d9f4746
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512208"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399168"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>什么是 Azure Front Door 的规则引擎？ 
 

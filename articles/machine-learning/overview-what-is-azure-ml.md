@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145886"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462456"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -69,7 +69,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 ## <a name="build-ml-models-in-the-studio"></a>在工作室中生成 ML 模型
 
-[Azure 机器学习工作室](https://www.ml.azure.com)是 Azure 机器学习中的 Web 门户，提供用于模型训练、部署和资产管理的低代码和无代码选项。 工作室与 Azure 机器学习 SDK 集成，以实现无缝体验。 有关详细信息，请参阅[什么是 Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)。
+[Azure 机器学习工作室](https://studio.azureml.net)是 Azure 机器学习中的 Web 门户，提供用于模型训练、部署和资产管理的低代码和无代码选项。 工作室与 Azure 机器学习 SDK 集成，以实现无缝体验。 有关详细信息，请参阅[什么是 Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)。
 
 + **Azure 机器学习设计器（预览版）**
 
@@ -86,7 +86,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + **更多...**
 
-  在 [ml.azure.com](https://www.ml.azure.com) 访问 Azure 机器学习工作室。 
+  在 [ml.azure.com](https://studio.azureml.net) 访问 Azure 机器学习工作室。 
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命周期管理
