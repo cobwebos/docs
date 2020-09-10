@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651193"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647224"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>创建计算目标
 
-在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 运行以下代码以创建基于 CPU 的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标。
+在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 运行以下代码以创建基于 CPU 的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) 目标。
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>创建数据输入
 
-批量推理的输入是要分区以进行并行处理的数据。 批量推理管道通过 [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) 接受数据输入。
+批量推理的输入是要分区以进行并行处理的数据。 批量推理管道通过 [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) 接受数据输入。
 
-`Dataset` 用于在 Azure 机器学习中浏览、转换和管理数据。 它有两种类型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)。 在此示例中，你将使用 `FileDataset` 作为输入。 `FileDataset` 允许你将文件下载或装载到计算机。 通过创建数据集，可以创建对数据源位置的引用。 如果将任何子集转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。
+`Dataset` 用于在 Azure 机器学习中浏览、转换和管理数据。 它有两种类型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true)。 在此示例中，你将使用 `FileDataset` 作为输入。 `FileDataset` 允许你将文件下载或装载到计算机。 通过创建数据集，可以创建对数据源位置的引用。 如果将任何子集转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。
 
 有关 Azure 机器学习数据集的详细信息，请参阅[创建和访问数据集（预览版）](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)。
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-为了在运行批量推理管道时使用动态数据输入，可以将输入 `Dataset` 定义为 [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)。 可以在每次重新提交批量推理管道运行时指定输入数据集。
+为了在运行批量推理管道时使用动态数据输入，可以将输入 `Dataset` 定义为 [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true)。 可以在每次重新提交批量推理管道运行时指定输入数据集。
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>创建输出
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象用于在管道步骤之间传输中间数据。 在此示例中，将其用于推理输出。
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) 对象用于在管道步骤之间传输中间数据。 在此示例中，将其用于推理输出。
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>创建并运行管道
 
-现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 对象。 `steps` 参数是步骤数组。 在本例中，批量推理只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
+现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) 对象。 `steps` 参数是步骤数组。 在本例中，批量推理只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
 
 接下来，使用 `Experiment.submit()` 函数提交管道以供执行。
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 批处理推理作业可能需要很长时间才能完成。 此示例使用 Jupyter 小组件监视进度。 你还可以使用以下项来监视作业的进度：
 
 * Azure 机器学习工作室。 
-* 来自 [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) 对象的控制台输出。
+* 来自 [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true) 对象的控制台输出。
 
 ```python
 from azureml.widgets import RunDetails

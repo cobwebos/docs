@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504511"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536049"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
-本文分步介绍如何配置 Azure Key Vault 防火墙和虚拟网络，以限制对 Key Vault 的访问。 通过 [Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)可将访问对象限制为指定的虚拟网络和一组 IPv4（Internet 协议版本 4）地址范围。
+本文分步介绍如何配置 Azure Key Vault 防火墙和虚拟网络，以限制对 Key Vault 的访问。 通过 [Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)可将访问限制为指定虚拟网络和一系列 IPv4（Internet 协议版本 4）地址范围。
 
 > [!IMPORTANT]
 > 防火墙规则生效后，只在用户请求来自允许的虚拟网络或 IPv4 地址范围时，才能执行 Key Vault [数据平面](secure-your-key-vault.md#data-plane-access-control)操作。 从 Azure 门户访问 Key Vault 时，这同样适用。 虽然用户可从 Azure 门户浏览到 Key Vault，但如果其客户端计算机不在允许列表中，则可能无法列出密钥、机密或证书。 这也会影响其他 Azure 服务的 Key Vault 选取器。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看 Key Vault 列表，但不能查看列表密钥。

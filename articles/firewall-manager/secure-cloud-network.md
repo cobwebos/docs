@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079109"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535996"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教程：使用 Azure 防火墙管理器保护虚拟中心
 
@@ -110,37 +110,13 @@ ms.locfileid: "89079109"
 
 重复此步骤以连接“Spoke-02”虚拟网络：连接名称 -“hub-spoke-02” 
 
-### <a name="configure-the-hub-and-spoke-routing"></a>配置中心路由和辐射路由
-
-从 Azure 门户打开 Cloud Shell 并运行以下 Azure PowerShell，以配置所需的中心路由和辐射路由。 对等互连辐射/分支连接必须将传播设置为“无”。 这会阻止辐射之间的任意位置到任意位置通信，而是使用默认路由将流量路由到防火墙。
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
-
 ## <a name="deploy-the-servers"></a>部署服务器
 
 1. 在 Azure 门户中，选择“创建资源”。 
 2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。
 3. 输入虚拟机的以下值：
 
-   |设置  |值  |
+   |设置  |Value  |
    |---------|---------|
    |资源组     |**fw-manager**|
    |虚拟机名称     |**Srv-workload-01**|
@@ -159,7 +135,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
 使用下表中的信息配置名为 Srv-Workload-02 的另一台虚拟机。 剩余的配置与 Srv-workload-01 虚拟机相同。
 
-|设置  |值  |
+|设置  |Value  |
 |---------|---------|
 |虚拟网络|**Spoke-02**|
 |子网|**Workload-02-SN**|
@@ -224,7 +200,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 3. 在“中心”选项卡上，选择“关联虚拟中心”。
 4. 选择“Hub-01”，然后选择“添加”。
 5. 选择“查看 + 创建”。
-6. 选择“创建”  。
+6. 选择“创建”。
 
 这可能需要 5 分钟或更长时间才能完成。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551296"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647982"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>教程：为 Cisco Webex 配置自动用户预配
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Cisco Webex 预配](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  在“租户 URL”  字段中，以 `https://api.ciscoweb.com/v1/scim/[OrgId]` 的形式输入值。 若要获取 `[OrgId]`，请登录到 [Cisco Webex 控制中心](https://admin.webex.com/login)。 单击左下角的组织名称，并复制“组织 ID”中的值  。 
+6.  在“租户 URL”  字段中，以 `https://api.ciscospark.com/v1/scim/[OrgId]` 的形式输入值。 若要获取 `[OrgId]`，请登录到 [Cisco Webex 控制中心](https://admin.webex.com/login)。 单击左下角的组织名称，并复制“组织 ID”中的值  。 
 
     * 若要获取“机密令牌”  的值，请导航到此 [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)。 在出现的 webex 登录页面中，使用组织的完整 Cisco Webex 管理员帐户登录。 出现错误页面，指出无法访问站点，但这是正常情况。
 

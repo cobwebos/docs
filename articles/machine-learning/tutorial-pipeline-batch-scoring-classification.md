@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 600b19ffac61f8f7c7336f114c6b52c6bc88b5ad
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489504"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646977"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
@@ -142,7 +142,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 机器学习管道无法在本地运行，因此你需要在云资源或远程计算目标上运行这些管道。 远程计算目标是可重用的虚拟计算环境，可在其中运行试验和机器学习工作流。 
 
-运行以下代码创建支持 GPU 的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标，并将其附加到工作区。 有关计算目标的详细信息，请参阅[概念文章](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
+运行以下代码创建支持 GPU 的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) 目标，并将其附加到工作区。 有关计算目标的详细信息，请参阅[概念文章](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
 
 
 ```python
@@ -305,7 +305,7 @@ parallel_run_config = ParallelRunConfig(
 * 输入和输出数据，以及任何自定义参数
 * 对执行步骤期间要运行的脚本或 SDK 逻辑的引用
 
-有多个类继承自父类 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 你可以选择适当的类，以使用特定的框架和堆栈生成步骤。 在此示例中，将通过自定义 Python 脚本使用 `ParallelRunStep` 类定义步骤逻辑。 如果脚本的某个自变量是步骤的输入或步骤的输出，则必须分别在 `arguments` 数组以及 `input` 或 `output` 参数中定义该自变量。  
+有多个类继承自父类 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true)。 你可以选择适当的类，以使用特定的框架和堆栈生成步骤。 在此示例中，将通过自定义 Python 脚本使用 `ParallelRunStep` 类定义步骤逻辑。 如果脚本的某个自变量是步骤的输入或步骤的输出，则必须分别在 `arguments` 数组以及 `input` 或 `output` 参数中定义该自变量。  
 
 如果存在多个步骤，`outputs` 数组中的某个对象引用可用作后续管道步骤的输入。
 
@@ -329,7 +329,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-有关可对不同步骤类型使用的所有类的列表，请参阅[步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)。
+有关可对不同步骤类型使用的所有类的列表，请参阅[步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true)。
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
@@ -386,9 +386,9 @@ published_pipeline
 
 若要从 REST 终结点运行管道，需要获取 OAuth2 Bearer-type 身份验证标头。 以下示例使用交互式身份验证（用于演示目的），但对于大多数需要自动身份验证或无头身份验证的生产方案，请使用服务主体身份验证，如[此文中所述](how-to-setup-authentication.md)。
 
-服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。 首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。 使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 类来管理身份验证流。 
+服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。 首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。 使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) 类来管理身份验证流。 
 
-[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) 函数来提取标头：
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#&preserve-view=trueget-authentication-header--) 函数来提取标头：
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
