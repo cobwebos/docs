@@ -32,6 +32,10 @@
       href: private-link-service-overview.md
     - name: 专用终结点 DNS 集成
       href: private-endpoint-dns.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 如何
   items:
     - name: 专门连接到存储帐户

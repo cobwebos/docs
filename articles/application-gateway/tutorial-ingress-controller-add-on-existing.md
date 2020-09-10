@@ -4,15 +4,15 @@ description: 本教程介绍了如何使用现有的应用程序网关为现有�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 42952e379b9f68008de23ee3b1717280d8dd6cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088098"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595931"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教程：通过 Azure CLI 使用现有的应用程序网关为现有 AKS 群集启用应用程序网关入口控制器加载项（预览版）
 
@@ -72,7 +72,7 @@ az group create --name myResourceGroup --location canadacentral
 
 现在，你将部署新的 AKS 群集，以模拟你有一个现有 AKS 群集且需要为其启用 AGIC 加载项的情况。  
 
-在以下示例中，将使用[AZURE CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking)和创建的资源组*MyResourceGroup*中的[托管标识](https://docs.microsoft.com/azure/aks/use-managed-identity)部署名为*myCluster*的新 AKS 群集。    
+在下面的示例中，你将在所创建的资源组 myResourceGroup 中使用 [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) 和[托管实例](https://docs.microsoft.com/azure/aks/use-managed-identity)部署名为 myCluster 的新 AKS 群集 。    
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 

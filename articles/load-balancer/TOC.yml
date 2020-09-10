@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 如何
   items:
+    - name: 门户设置
+      href: manage.md
     - name: 虚拟机规模集
       items:
         - name: 与现有的 Azure 负载均衡器配合使用 - 门户

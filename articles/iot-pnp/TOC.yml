@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: 教程
   items:
+    - name: 连接多组件设备 (C)
+      href: tutorial-multiple-components-c.md
     - name: 连接多组件设备 (C#)
       href: tutorial-multiple-components-csharp.md
     - name: 连接多组件设备 (Java)

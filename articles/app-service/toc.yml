@@ -27,6 +27,8 @@
       href: quickstart-ruby.md
     - name: 静态 HTML 站点
       href: quickstart-html.md
+    - name: ARM 模板
+      href: quickstart-arm-template.md
     - name: 自定义容器
       href: quickstart-custom-container.md
     - name: 多容器应用
@@ -301,7 +303,7 @@
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: 迁移助手指南
       href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
-    - name: 最佳实践
+    - name: 最佳做法
       href: app-service-best-practices.md
     - name: 示例
       href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
@@ -327,7 +329,7 @@
           href: troubleshoot-performance-degradation.md
         - name: 排查域和证书问题
           href: troubleshoot-domain-ssl-certificates.md
-        - name: 常见问题解答
+        - name: 常见问题
           items:
             - name: 可用性、性能和应用程序常见问题解答
               href: faq-availability-performance-application-issues.md

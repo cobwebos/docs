@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: 应用程序网关组件
           href: application-gateway-components.md
-        - name: 配置概述
-          href: configuration-overview.md
+        - name: Configuration
+          items:
+            - name: 概述
+              href: configuration-overview.md
+            - name: 基础结构
+              href: configuration-infrastructure.md
+            - name: 前端 IP 地址
+              href: configuration-front-end-ip.md
+            - name: 侦听器
+              href: configuration-listeners.md
+            - name: 请求路由规则
+              href: configuration-request-routing-rules.md
+            - name: HTTP 设置
+              href: configuration-http-settings.md
     - name: 高流量支持
       href: high-traffic-support.md
     - name: 自动缩放 v2 SKU

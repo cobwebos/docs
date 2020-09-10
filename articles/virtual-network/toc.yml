@@ -96,7 +96,7 @@
         - name: 网络安全组
           items:
             - name: 概述
-              href: security-overview.md
+              href: network-security-groups-overview.md
             - name: 工作原理
               href: network-security-group-how-it-works.md
         - name: 应用程序安全组
@@ -459,5 +459,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题解答
+    - name: 常见问题
       href: virtual-networks-faq.md
