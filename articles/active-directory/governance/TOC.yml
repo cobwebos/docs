@@ -31,6 +31,8 @@
           href: manage-user-access-with-access-reviews.md
         - name: 管理从条件访问中排除的用户
           href: conditional-access-exclusion.md
+    - name: 查看和删除来自外部组织的用户
+      href: access-reviews-external-users.md
 - name: 操作指南
   expanded: true
   items:

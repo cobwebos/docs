@@ -6,6 +6,8 @@
   href: conversion-rest-api.md
 - name: 配置模型转换
   href: configure-model-conversion.md
+- name: 为转换设计文件布局
+  href: layout-files-for-conversion.md
 - name: 在模型转换期间替代材料
   href: override-materials.md
 - name: 获取转换的相关信息
