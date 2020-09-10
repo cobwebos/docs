@@ -10,13 +10,13 @@ metadata:
   ms.collection: M365-security-compliance
   author: mlottner
   ms.author: mlottner
-  ms.date: 07/15/2020
-  ms.openlocfilehash: 6047b647641033af415be86d8534bda9c857b608
-  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+  ms.date: 09/07/2020
+  ms.openlocfilehash: ee088a43fdd328a01b8682f015e498c728cba8d9
+  ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88067301"
+  ms.lasthandoff: 09/08/2020
+  ms.locfileid: "89514333"
 landingContent:
 - title: 关于适用于 IoT 的 Azure 安全中心
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: 适用于 IoT 的 Azure 安全中心是什么？
       url: overview.md
-    - text: Azure RTOS 安全解决方案
+    - text: Azure RTO 安全模块
       url: iot-security-azure-rtos.md
     - text: 规划解决方案
       url: service-prerequisites.md
@@ -44,6 +44,8 @@ landingContent:
       url: getting-started.md
     - text: IoT 中心
       url: iot-hub-integration.md
+    - text: Azure IoT 安全模块 RTOS 入门
+      url: concept-rtos-security-module.md
     - text: 安全代理
       url: security-agents.md
 - title: 配置解决方案
@@ -52,8 +54,10 @@ landingContent:
     links:
     - text: 在 IoT 中心启用适用于 IoT 的 Azure 安全中心
       url: quickstart-onboard-iot-hub.md
-    - text: 配置解决方案
+    - text: 配置 IoT 安全解决方案
       url: quickstart-configure-your-solution.md
+    - text: 配置 Azure RTO 安全模块
+      url: quickstart-azure-rtos-security-module.md
     - text: 创建适用于 IoT 的 Azure 安全中心模块克隆
       url: quickstart-create-security-twin.md
     - text: 创建自定义安全警报
@@ -64,6 +68,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 自定义 Azure RTO 安全模块
+      url: how-to-azure-rtos-security-module.md
     - text: 选择代理
       url: how-to-deploy-agent.md
     - text: 为 Windows 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理

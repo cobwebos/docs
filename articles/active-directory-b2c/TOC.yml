@@ -69,6 +69,8 @@
           href: tokens-overview.md
         - name: 请求访问令牌
           href: access-tokens.md
+    - name: 策略密钥
+      href: policy-keys-overview.md
     - name: 用户流和策略
       items:
         - name: 用户流
@@ -302,7 +304,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md

@@ -16,24 +16,14 @@
   items:
     - name: 语音转文本文档
       href: index-speech-to-text.yml
-    - name: 概述
-      items:
-        - name: 什么是语音转文本？
-          href: speech-to-text.md
-        - name: 语音识别基础知识
-          href: speech-to-text-basics.md
-    - name: 快速入门
-      items:
-        - name: 识别来自麦克风输入的语音
-          href: quickstarts/speech-to-text-from-microphone.md
-        - name: 识别音频文件中的语音
-          href: quickstarts/speech-to-text-from-file.md
-        - name: 识别存储在 Blob 存储中的语音
-          href: quickstarts/from-blob.md
-        - name: 在 Speech Studio 中使用音频文件测试模型
-          href: quickstarts/speech-studio-test-model.md
+    - name: 语音转文本概述
+      href: speech-to-text.md
+    - name: 语音转文本快速入门
+      href: get-started-speech-to-text.md
     - name: 操作指南
       items:
+        - name: 识别存储在 Blob 存储中的语音
+          href: quickstarts/from-blob.md
         - name: 选择语音识别模式
           href: how-to-choose-recognition-mode.md
         - name: 更改语音识别源语言
@@ -57,6 +47,8 @@
           href: tutorial-tenant-model.md
     - name: 自定义
       items:
+        - name: 在 Speech Studio 中使用音频文件测试模型
+          href: quickstarts/speech-studio-test-model.md
         - name: 准备自定义语音的数据
           href: how-to-custom-speech-test-and-train.md
         - name: 检查自定义语音数据
@@ -75,33 +67,29 @@
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: 参考
       items:
-        - name: 语音 SDK API
-          items:
-            - name: C++
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/cppref'
-            - name: C#
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/csharpref'
-            - name: Java
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
-              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javascriptref'
-            - name: Objective-C
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/objectivecref'
-            - name: Python
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/pythonref'
-            - name: 发行说明
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-              href: releasenotes.md
-        - name: REST API
-          items:
-            - name: 语音转文本 REST API
-              href: rest-speech-to-text.md
+        - name: C++
+          displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/cppref'
+        - name: C#
+          displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/csharpref'
+        - name: Java
+          displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javaref'
+        - name: Javascript
+          displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javascriptref'
+        - name: Objective-C
+          displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/objectivecref'
+        - name: Python
+          displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/pythonref'
+        - name: 发行说明
+          displayName: 'release notes,updates,what''s new,what is new,changes'
+          href: releasenotes.md
+        - name: 语音转文本 REST API
+          href: rest-speech-to-text.md
     - name: 资源
       items:
         - name: 语言支持
@@ -167,7 +155,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -217,7 +205,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -260,7 +248,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -315,7 +303,7 @@
                 - name: Java
                   displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
+                - name: Javascript
                   displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javascriptref'
                 - name: Objective-C
@@ -530,7 +518,7 @@
           href: 'https://aka.ms/csspeech/csharpref'
         - name: Java
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
           href: 'https://aka.ms/csspeech/objectivecref'

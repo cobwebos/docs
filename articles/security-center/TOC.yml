@@ -136,7 +136,11 @@
       items:
         - name: 修正建议
           href: security-center-remediate-recommendations.md
+        - name: 通过强制/拒绝防止错误配置
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: 加强安全态势
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: 建议的参考列表
           href: recommendations-reference.md

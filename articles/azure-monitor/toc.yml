@@ -372,7 +372,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: 常见问题解答
+        - name: FAQ
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -566,6 +566,8 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management 连接
               href: platform/itsmc-connections.md
+            - name: 安全导出集成
+              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: 创建 Service Manager Web 应用
               href: platform/itsmc-service-manager-script.md
             - name: 修复 ServiceNow ITSM 同步问题
@@ -720,6 +722,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
+        - name: OpenTelemetry
+          items:
+            - name: FAQ
+              href: faq.md#opentelemetry
         - name: 创建资源（经典）
           href: app/create-new-resource.md
         - name: 创建资源（基于工作区）
@@ -881,7 +887,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -984,7 +990,7 @@
       items:
         - name: 概述
           href: insights/container-insights-overview.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:
@@ -1010,6 +1016,8 @@
           href: insights/container-insights-health.md
         - name: 监视 GPU 性能
           href: insights/container-insights-gpu-monitoring.md
+        - name: 监视部署和 HPA
+          href: insights/container-insights-deployment-hpa-metrics.md
         - name: 查看实时数据
           items:
             - name: 实时数据（预览版）概述
