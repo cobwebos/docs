@@ -2,7 +2,7 @@
 title: Azure 资源移动器文档
 summary: 在 Azure 资源移动器中的 Azure 区域之间移动 Azure 资源。
 metadata:
-  title: Azure 资源管理器文档
+  title: Azure 资源移动器文档
   description: 查找有关跨 Azure 区域移动资源的教程和信息。
   ms.service: resource-move
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: raynew
   ms.date: 09/09/2020
   keywords: azure resource mover, azure regions, move across regions
-  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
-  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.openlocfilehash: 3dab9d313ab9564e860d78495d375bd0116ac9e0
+  ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 09/10/2020
-  ms.locfileid: "89652117"
+  ms.locfileid: "89669662"
 landingContent:
 - title: 关于 Azure 资源移动器
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
       url: ./tutorial-move-region-virtual-machines.md
     - text: 将 Azure SQL 数据库和弹性池移动到另一区域
       url: ./tutorial-move-region-sql.md
-- title: 了解更多信息
+- title: 了解详细信息
   linkLists:
   - linkListType: learn
     links:
