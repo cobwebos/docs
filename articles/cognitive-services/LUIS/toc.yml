@@ -130,6 +130,8 @@
           href: luis-concept-devops-automation.md
 - name: 操作指南
   items:
+    - name: 登录到 LUIS 门户
+      href: sign-in-luis-portal.md
     - name: 创建新应用
       href: luis-how-to-start-new-app.md
       displayName: 'import, export, container'
