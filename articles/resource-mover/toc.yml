@@ -1,0 +1,36 @@
+- name: Azure 资源移动器文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure 资源移动器
+      href: overview.md
+    - name: 选择用于移动资源的工具
+      href: select-move-tool.md
+    - name: 常见问题
+      href: common-questions.md
+- name: 教程
+  items:
+    - name: 将 Azure VM 移动到另一区域
+      href: tutorial-move-region-virtual-machines.md
+    - name: 将 SQL 资源移动到另一个区域
+      href: tutorial-move-region-sql.md
+- name: 概念
+  items:
+    - name: 移动概述
+      href: about-move-process.md
+    - name: Azure VM 区域移动的支持矩阵
+      href: support-matrix-move-region-azure-vm.md
+    - name: Azure SQL 区域移动的支持矩阵
+      href: support-matrix-move-region-sql.md
+- name: 操作方法指南
+  items:
+    - name: 从移动集合中删除资源
+      href: remove-move-resources.md
+- name: 资源
+  items:
+    - name: 云采用框架中的迁移
+      href: /azure/cloud-adoption-framework/migrate/
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
