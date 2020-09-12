@@ -3,20 +3,20 @@ title: 流量管理器终结点类型 | Microsoft 文档
 description: 本文介绍可以通过 Azure 流量管理器来使用的不同类型的终结点
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: rohink
-ms.openlocfilehash: cd5c6968425c64bd670e56bbe7ae016c59662169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698659"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401276"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 

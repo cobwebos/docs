@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230273"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400460"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 的 Azure 安全基线
 
@@ -140,7 +140,7 @@ Key Vault 应使用虚拟网络服务终结点
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy 示例： 
+Azure 策略示例：
 
 https://docs.microsoft.com/azure/governance/policy/samples/#networ
 
@@ -411,7 +411,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：在环境中发生可疑活动或不安全活动时，使用 AZURE ACTIVE DIRECTORY (AAD) PRIVILEGED IDENTITY MANAGEMENT (PIM) 用于生成日志和警报。 使用 AAD 风险检测来查看警报和报告有风险的用户行为。 对于其他日志记录，请将 Azure 安全中心风险检测警报发送到 Azure Monitor，并使用操作组配置自定义警报/通知。
+**指南**：在环境中发生可疑或不安全活动时，使用 Azure Active Directory (Azure AD) PRIVILEGED IDENTITY MANAGEMENT (PIM) 生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。 对于其他日志记录，请将 Azure 安全中心风险检测警报发送到 Azure Monitor，并使用操作组配置自定义警报/通知。
 
 启用高级威胁防护 (ATP) 以便 Azure Key Vault 生成可疑活动的警报。
 
@@ -445,7 +445,7 @@ Azure Active Directory 条件访问中的位置条件是什么？： https://doc
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AAD) 作为 Azure 资源（例如 Key Vault）的集中身份验证和授权系统。 这允许基于角色的访问控制 (RBAC) 管理敏感资源。
+**指南**：使用 Azure Active Directory (Azure AD) 作为 Azure 资源（如 Key Vault）的中央身份验证和授权系统。 这允许基于角色的访问控制 (RBAC) 管理敏感资源。
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：查看 AZURE ACTIVE DIRECTORY (AAD) 日志，以帮助发现具有 Azure Key Vault 管理角色的过时帐户。 此外，还可以使用 AAD 访问评审来有效地管理组成员身份、访问可用于访问 Azure Key Vault 和角色分配的企业应用程序。 应定期查看用户访问权限，如每90天，确保只有正确的用户才能继续访问。
+**指南**：查看 Azure Active Directory (Azure AD) 日志，以帮助发现具有 Azure Key Vault 管理角色的过时帐户。 此外，还可以使用 Azure AD 访问评审来有效地管理组成员身份、访问可用于访问 Azure Key Vault 和角色分配的企业应用程序。 应定期查看用户访问权限，如每90天，确保只有正确的用户才能继续访问。
 
 Azure Active Directory 报表和监视文档：
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 如何创建 Key Vault：
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何使用托管标识提供 Key Vault 身份验证：  
+如何对 Key Vault 进行身份验证：
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+如何分配 Key Vault 访问策略：
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure 安全中心监视**：是
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-如何与 Azure 托管标识集成： 
+* [如何与 Azure 托管标识集成](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [如何创建 Key Vault](quick-create-portal.md)
 
-如何创建 Key Vault： 
+* [如何对 Key Vault 进行身份验证](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-如何使用托管标识提供 Key Vault 身份验证：   
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [如何分配 Key Vault 访问策略](assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：不适用
 

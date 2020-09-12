@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831016"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400052"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>方案： Vnet 的自定义隔离
 
@@ -23,50 +23,50 @@ ms.locfileid: "87831016"
 
 为了确定需要多少个路由表，你可以构建一个连接矩阵。 对于这种情况，它将如下所示，其中每个单元表示源 (行) 是否可以与目标 (列) ：
 
-| From | 到:| *Blue Vnet* | *Red Vnet* | *分支*|
+| 从 | 到:| *Blue Vnet* | *Red Vnet* | *分支*|
 |---|---|---|---|---|
 | **Blue Vnet** |   &#8594;|      X        |               |       X      |
 | **Red Vnet**  |   &#8594;|              |       X       |       X      |
 | **分支**   |   &#8594;|     X        |       X       |       X      |
 
-上表中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、表中的行标题) 了解流的 "To" 端 (目标前缀，表) 中的列标题用于特定的流量流。
+上表中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、表中的行标题) 了解流的 "To" 端 (目标前缀，表中的列标题在表中) 对于特定的通信流，其中 "X" 表示虚拟 WAN 提供连接。
 
-不同的行模式数将是我们在此方案中将需要的路由表的数量。 在这种情况下，我们将为虚拟网络调用**RT_BLUE**和**RT_RED** ，并为分支**默认**提供三个路由路由表。 请记住，分支始终必须与默认路由表相关联。
+不同的行模式数将是我们在此方案中将需要的路由表的数量。 在这种情况下，我们将为虚拟网络调用 **RT_BLUE** 和 **RT_RED** ，并为分支 **默认** 提供三个路由路由表。 请记住，分支始终必须与默认路由表相关联。
 
-分支需要了解来自红和蓝 Vnet 的前缀，因此所有 Vnet 都需要传播到默认 (另外**RT_BLUE**或**RT_RED**) 。 Blue 和 Red Vnet 将需要了解分支前缀，因此分支也将传播到**RT_BLUE**和**RT_RED**的路由表。 因此，这是最终设计：
+分支需要了解来自红和蓝 Vnet 的前缀，因此所有 Vnet 都需要传播到默认 (另外 **RT_BLUE** 或 **RT_RED**) 。 Blue 和 Red Vnet 将需要了解分支前缀，因此分支也将传播到 **RT_BLUE** 和 **RT_RED** 的路由表。 因此，这是最终设计：
 
 * 蓝色虚拟网络：
   * 关联的路由表： **RT_BLUE**
-  * 传播到路由表： **RT_BLUE**和**默认值**
+  * 传播到路由表： **RT_BLUE** 和 **默认值**
 * 红色虚拟网络：
   * 关联的路由表： **RT_RED**
-  * 传播到路由表： **RT_RED**和**默认值**
+  * 传播到路由表： **RT_RED** 和 **默认值**
 * 转
-  * 关联的路由表：**默认值**
-  * 传播到路由表： **RT_BLUE**、 **RT_RED**和**默认值**
+  * 关联的路由表： **默认值**
+  * 传播到路由表： **RT_BLUE**、 **RT_RED** 和 **默认值**
 
 > [!NOTE]
 > 由于所有分支都需要与默认路由表相关联，并且要传播到同一组路由表，因此所有分支都将具有相同的连接配置文件。 换句话说，Vnet 的红色/蓝色概念不能应用于分支。
 
 > [!NOTE]
-> 如果虚拟 WAN 部署在多个区域，则需要在每个中心创建**RT_BLUE**和**RT_RED**路由表，并且每个 VNet 连接的路由都需要使用传播标签传播到每个虚拟中心的路由表。
+> 如果虚拟 WAN 部署在多个区域，则需要在每个中心创建 **RT_BLUE** 和 **RT_RED** 路由表，并且每个 VNet 连接的路由都需要使用传播标签传播到每个虚拟中心的路由表。
 
 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 ## <a name="workflow"></a><a name="architecture"></a>工作流
 
-在**图 1**中，有蓝色和红色 VNet 连接。
+在 **图 1**中，有蓝色和红色 VNet 连接。
 
 * 蓝色连接的 Vnet 可以相互联系，并 (VPN/ER/P2S) 连接的所有分支。
 * 红色 Vnet 可以相互联系，并 (VPN/ER/P2S) 连接的所有分支。
 
 设置路由时，请考虑以下步骤。
 
-1. 在 Azure 门户中创建两个自定义路由表， **RT_BLUE**和**RT_RED**。
-2. 对于路由表**RT_BLUE**，为以下设置：
+1. 在 Azure 门户中创建两个自定义路由表， **RT_BLUE** 和 **RT_RED**。
+2. 对于路由表 **RT_BLUE**，为以下设置：
    * **关联**：选择所有蓝色 vnet。
    * **传播**：对于 "分支"，请选择 "分支" 选项，表示 "分支 (VPN/ER/P2S) 连接会将路由传播到此路由表。
-3. 对 (VPN/ER/P2S) 的红色 Vnet 和分支**RT_RED**路由表重复相同的步骤。
+3. 对 (VPN/ER/P2S) 的红色 Vnet 和分支 **RT_RED** 路由表重复相同的步骤。
 
 这将导致路由配置更改，如下图所示
 

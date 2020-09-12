@@ -6,14 +6,14 @@ manager: dcscontentpm
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056238"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321729"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -28,73 +28,6 @@ ms.locfileid: "88056238"
 >
 > - 64 位版本的 Windows Server 2008 R2 以及更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位操作系统，请参阅 [Azure VM 中的 32 位操作系统支持](https://support.microsoft.com/help/4021388/)。
 > - 如果将使用任何灾难恢复工具（如 Azure Site Recovery 或 Azure Migrate）来迁移工作负荷，则在来宾 OS上仍需要此过程以在迁移之前准备映像。
-
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>将虚拟磁盘转换为固定大小的 VHD
-
-使用本部分中的一个方法，将虚拟磁盘转换为 Azure 所需的格式并调整其大小：
-
-1. 在运行虚拟磁盘转换或调整大小过程之前备份 VM。
-
-1. 确保 Windows VHD 在本地服务器上正常工作。 尝试转换磁盘或将其上传到 Azure 之前，先解决 VM 本身内部的所有错误。
-
-1. 将虚拟磁盘转换为固定类型。
-
-1. 调整虚拟磁盘的大小以满足 Azure 要求：
-
-   1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 的大小不是 1 MiB 的整数倍，需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证这一点，可以使用 PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet 来显示“大小”（在 Azure 中必须是 1 MiB 的倍数），以及“文件大小”（等于“大小”加上 VHD 页脚的 512 字节）。
-   
-   1. 第 1 代 VM 的 OS VHD 允许的最大大小为 2,048 GiB (2 TiB)， 
-   1. 数据磁盘的最大大小为 32,767 GiB (32 TiB)。
-
-> [!NOTE]
-> - 如果要在转换为固定磁盘并根据需要调整大小后准备 Windows OS 磁盘，请创建使用该磁盘的 VM。 启动并登录到该 VM，然后继续根据本文内容，完成上传准备。  
-> - 如果你正在准备数据磁盘，可以停止学习此部分，继续上传磁盘。
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘
-
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。
-1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
-1. 在“选择操作”页上选择“转换” > “下一步”。
-1. 若要从 VHDX 进行转换，请选择“VHD” > “下一步” 。
-1. 若要从动态扩展磁盘进行转换，请选择“固定大小” > “下一步” 。
-1. 找到并选择新 VHD 文件的保存路径。
-1. 选择“完成”。
-
-### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘
-
-可以使用 PowerShell 中的 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如果需要有关安装此 cmdlet 的信息，请单击[此处](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
-
-以下示例将磁盘从 VHDX 转换为 VHD。 该示例还会将动态扩展磁盘转换为固定大小的磁盘。
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-在此示例中，请将路径的值替换为要转换的虚拟硬盘的路径。 将 DestinationPath 的值替换为已转换的磁盘的新路径和名称。
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
-
-如果你的 Windows VM 映像采用 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)，请使用 [Microsoft 虚拟机转换器](https://www.microsoft.com/download/details.aspx?id=42497)将其转换为 VHD 格式。 有关详细信息，请参阅[如何将 VMware VMDK 转换为 Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)。
-
-### <a name="use-hyper-v-manager-to-resize-the-disk"></a>使用 Hyper-V 管理器调整磁盘大小
-
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。
-1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
-1. 在“选择操作”页上选择“展开” > “下一步”  。
-1. 在“查找虚拟硬盘”页上，以 GiB 为单位输入新的大小，然后选择“下一步” 。
-1. 选择“完成”。
-
-### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 调整磁盘大小
-
-可以使用 PowerShell 中的 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如果需要有关安装此 cmdlet 的信息，请单击[此处](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
-
-下面的示例将磁盘大小从 100.5 MiB 调整到 101 MiB，以满足 Azure 的一致性要求。
-
-```powershell
-Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
-```
-
-在此示例中，请将路径的值替换为要调整大小的虚拟硬盘的路径。 将 SizeBytes 的值替换为磁盘的新大小（以字节为单位）。
 
 ## <a name="system-file-checker"></a>系统文件检查器
 
@@ -138,7 +71,7 @@ Windows Resource Protection did not find any integrity violations.
    netsh.exe winhttp reset proxy
    ```
 
-    如果 VM 需要使用特定代理，请为 Azure IP 地址 ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) 添加代理例外，使 VM 能够连接到 Azure：
+    如果 VM 需要使用特定代理，请为 Azure IP 地址 ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) 添加代理例外，使 VM 能够连接到 Azure：
 
     ```
     $proxyAddress='<your proxy server>'
@@ -411,13 +344,13 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 1. 重启 VM，确保 Windows 仍可正常运行，并可通过 RDP 连接来访问。 此时，请考虑在本地 Hyper-V 服务器中创建一个 VM，以确保该 VM 完全启动。 然后通过测试来确保可通过 RDP 来访问该 VM。
 
-1. 删除所有其他传输驱动程序接口 (TDI) 筛选器。 例如，删除用于分析 TCP 数据包的软件或多余的防火墙。 若要稍后进行查看，可以在将 VM 部署到 Azure 中后进行操作。
+1. 删除所有其他传输驱动程序接口 (TDI) 筛选器。 例如，删除用于分析 TCP 数据包的软件或多余的防火墙。
 
 1. 卸载与物理组件相关的任何其他第三方软件或驱动程序，或卸载任何其他虚拟化技术。
 
 ### <a name="install-windows-updates"></a>安装 Windows 更新
 
-最好是在*修补程序级别*保持更新计算机。 如果这不可能，请确保安装以下更新。 若要获取最新的更新，请查看 Windows 更新历史记录页：[Windows 10 和 Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 和 Windows Server 2012 R2](https://support.microsoft.com/help/4009470)，以及 [Windows 7 SP1 和 Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
+理想情况下，应将计算机更新为 *修补程序级别*，如果无法做到这一点，请确保安装以下更新。 若要获取最新的更新，请参阅 Windows 更新历史记录页： [windows 10 和 Windows server 2019](https://support.microsoft.com/help/4000825)、 [Windows 8.1 以及 Windows server 2012 r2](https://support.microsoft.com/help/4009470) 和 Windows [7 SP1 以及 windows server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 <br />
 
@@ -462,7 +395,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 > [!NOTE]
 > 为避免在 VM 预配期间意外重新启动，我们建议确保所有 Windows 更新安装均已完成，并且没有任何更新待处理。 完成此操作的一种方法是在运行 `sysprep.exe` 命令之前安装所有可能的 Windows 更新并重新启动一次。
 
-### <a name="determine-when-to-use-sysprep"></a>确定何时使用 sysprep
+## <a name="determine-when-to-use-sysprep"></a>确定何时使用 sysprep
 
 系统准备工具 (`sysprep.exe`) 是一个可以重置 Windows 安装的进程。
 Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“全新安装”体验。
@@ -472,7 +405,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 若要只从一个磁盘创建一个 VM，则不需使用 Sysprep。 可以从专用化映像创建 VM。 有关如何从专用化磁盘创建 VM 的信息，请参阅：
 
 - [从专用磁盘创建 VM](create-vm-specialized.md)
-- [Create a VM from a specialized VHD disk](./create-vm-specialized-portal.md)（从专用 VHD 磁盘创建 VM）
+- [Create a VM from a specialized VHD disk](/azure/virtual-machines/windows/create-vm-specialized-portal)（从专用 VHD 磁盘创建 VM）
 
 若要创建通用化映像，则需运行 Sysprep。 有关详细信息，请参阅[如何使用 Sysprep：简介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))。
 
@@ -488,9 +421,8 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 1. 登录到 Windows VM。
 1. 以管理员身份运行 PowerShell 会话。
-1. 删除 panther 目录 (C:\Windows\Panther) 。
 1. 将目录切换到 `%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
-1. 在 "**系统准备工具**" 对话框中，选择 "**进入系统全新体验 (OOBE) **，并确保已选中"**通用化**"复选框。
+1. 在 " **系统准备工具** " 对话框中，选择 " **进入系统全新体验 (OOBE) **，并确保已选中" **通用化** "复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在“关机选项”中选择“关机”。
@@ -501,6 +433,73 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 >[!NOTE]
 > 不支持自定义的 *unattend.xml* 文件。 尽管我们确实支持 additionalUnattendContent 属性，但针对向 Azure 预配代理使用的 unattention.xml 文件添加 [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 选项，它只提供有限的支持。 例如，可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) 添加 FirstLogonCommands 和 LogonCommands。 有关详细信息，请参阅 [additionalUnattendContent FirstLogonCommands 示例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>将虚拟磁盘转换为固定大小的 VHD
+
+使用本部分中的一个方法，将虚拟磁盘转换为 Azure 所需的格式并调整其大小：
+
+1. 在运行虚拟磁盘转换或调整大小过程之前备份 VM。
+
+1. 确保 Windows VHD 在本地服务器上正常工作。 尝试转换磁盘或将其上传到 Azure 之前，先解决 VM 本身内部的所有错误。
+
+1. 将虚拟磁盘转换为固定类型。
+
+1. 调整虚拟磁盘的大小以满足 Azure 要求：
+
+   1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 是 1 MiB 的一部分，则需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证大小，你可以使用 PowerShell [获取 VHD](/powershell/module/hyper-v/get-vhd) cmdlet 显示 "大小"，该大小必须是 Azure 中 1 MiB 的倍数，"FileSize" 将等于 VHD 页脚的 "size" 加上512字节。
+   
+   1. 第 1 代 VM 的 OS VHD 允许的最大大小为 2,048 GiB (2 TiB)， 
+   1. 数据磁盘的最大大小为 32,767 GiB (32 TiB)。
+
+> [!NOTE]
+> - 如果要在转换为固定磁盘并根据需要调整大小后准备 Windows OS 磁盘，请创建使用该磁盘的 VM。 启动并登录到该 VM，然后继续根据本文内容，完成上传准备。  
+> - 如果你正在准备数据磁盘，可以停止学习此部分，继续上传磁盘。
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘
+
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。
+1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
+1. 在“选择操作”页上选择“转换” > “下一步”。
+1. 若要从 VHDX 进行转换，请选择“VHD” > “下一步” 。
+1. 若要从动态扩展磁盘进行转换，请选择“固定大小” > “下一步” 。
+1. 找到并选择新 VHD 文件的保存路径。
+1. 选择“完成”。
+
+### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘
+
+可以使用 PowerShell 中的 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+
+以下示例将磁盘从 VHDX 转换为 VHD。 该示例还会将动态扩展磁盘转换为固定大小的磁盘。
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+在此示例中，请将路径的值替换为要转换的虚拟硬盘的路径。 将 DestinationPath 的值替换为已转换的磁盘的新路径和名称。
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>使用 Hyper-V 管理器调整磁盘大小
+
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。
+1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
+1. 在“选择操作”页上选择“展开” > “下一步”  。
+1. 在“查找虚拟硬盘”页上，以 GiB 为单位输入新的大小，然后选择“下一步” 。
+1. 选择“完成”。
+
+### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 调整磁盘大小
+
+可以使用 PowerShell 中的 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+
+下面的示例将磁盘大小从 100.5 MiB 调整到 101 MiB，以满足 Azure 的一致性要求。
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+在此示例中，请将路径的值替换为要调整大小的虚拟硬盘的路径。 将 SizeBytes 的值替换为磁盘的新大小（以字节为单位）。
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
+
+如果具有 [vmdk 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [AZURE MIGRATE](https://docs.microsoft.com/azure/migrate/server-migrate-overview) 来转换 vmdk，并将其上传到 Azure。
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
 
@@ -520,4 +519,4 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 ## <a name="next-steps"></a>后续步骤
 
 - [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
-- [排查 Azure Windows VM 激活问题](../troubleshooting/troubleshoot-activation-problems.md)
+- [排查 Azure Windows VM 激活问题](troubleshoot-activation-problems.md)

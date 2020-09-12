@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e6702ab3753604af50e21f931dd23f63de3c1451
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4c5389e322fdf44e8a71baa8770f87c276c076c9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936191"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400392"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -74,8 +74,8 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 > 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!IMPORTANT]
-> 只有具有**用户分配标识**的 vm 才**需要**"authenticationsettings.instance.setsecretkey 中" 属性。
-> 它指定用于 Key Vault 身份验证的标识。
+> 仅对于使用“用户分配的标识”的 VM，才需要“authenticationSettings”属性 。
+> 它指定用于对 Key Vault 进行身份验证的标识。
 
 
 ### <a name="property-values"></a>属性值
@@ -83,16 +83,16 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | 字符串 |
-| type | KeyVaultForLinux | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | string |
+| type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
+| pollingIntervalInS | 3600 | string |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
-| msiEndpoint | http://169.254.169.254/metadata/identity | 字符串 |
+| msiEndpoint | http://169.254.169.254/metadata/identity | string |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
 
@@ -131,7 +131,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 > [!WARNING]
-> PowerShell 客户端通常将添加 `\` 到 `"` settings.js中，这会导致 akvvm_service 失败并出现错误： `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
+> PowerShell 客户端通常会将 `\` 添加到 settings.json 中的 `"`，这会导致 akvvm_service 失败，并出现错误：`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 可以使用 Azure PowerShell，将 Key Vault VM 扩展部署到现有虚拟机或虚拟机规模集。 
 
@@ -206,7 +206,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 请注意以下限制/要求：
 - Key Vault 限制：
   - 必须在部署时存在 
-  - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅如何[使用托管标识提供 Key Vault 身份验证](../../key-vault/general/managed-identity.md)
+  - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅 [如何对 Key Vault 进行身份验证](/azure/key-vault/general/authentication) 并 [分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
 
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
@@ -234,4 +234,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

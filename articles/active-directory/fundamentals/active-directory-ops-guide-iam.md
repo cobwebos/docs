@@ -11,16 +11,16 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298608"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321661"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 标识和访问管理操作参考指南
 
-本部分的[Azure AD 操作参考指南](active-directory-ops-guide-intro.md)介绍了用于保护和管理标识及其分配的生命周期的检查和操作。
+本部分的 [Azure AD 操作参考指南](active-directory-ops-guide-intro.md) 介绍了用于保护和管理标识及其分配的生命周期的检查和操作。
 
 > [!NOTE]
 > 这些建议是发布日期之后的最新建议，但会随时间变化。 组织应持续评估其身份实践，因为 Microsoft 产品和服务随时间推移而发展。
@@ -45,14 +45,14 @@ ms.locfileid: "79298608"
 
 #### <a name="assigning-owners-recommended-reading"></a>分配所有者建议阅读
 
-- [在 Azure Active Directory 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure 中的监管](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure 中的监管](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>本地标识同步
 
 ### <a name="identify-and-resolve-synchronization-issues"></a>确定并解决同步问题
 
-Microsoft 建议你对本地环境中的问题有很好的基线和了解，这可能会导致云出现同步问题。 由于自动工具（例如[IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)和[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) ）可能会生成大量的假正值，因此，我们建议你通过清除错误中的这些对象来识别置之不理超过100天的同步错误。 长期未解决的同步错误可以生成支持事件。 [在同步过程中解决错误](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors)提供了不同类型的同步错误、导致这些错误的某些可能情况以及修复错误的可能方法。
+Microsoft 建议你对本地环境中的问题有很好的基线和了解，这可能会导致云出现同步问题。 由于自动工具（例如 [IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) 和 [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#why-use-azure-ad-connect-health) ）可能会生成大量的假正值，因此，我们建议你通过清除错误中的这些对象来识别置之不理超过100天的同步错误。 长期未解决的同步错误可以生成支持事件。 [在同步过程中解决错误](../hybrid/tshoot-connect-sync-errors.md) 提供了不同类型的同步错误、导致这些错误的某些可能情况以及修复错误的可能方法。
 
 ### <a name="azure-ad-connect-sync-configuration"></a>Azure AD Connect 同步配置
 
@@ -81,7 +81,7 @@ Microsoft 建议你对本地环境中的问题有很好的基线和了解，这�
 > [!NOTE]
 > 如果单个人体标识有多个帐户（如旧式域迁移、合并或收购）预配了多个帐户，则只需同步用户在日常工作中使用的帐户，例如，他们用于登录其计算机的帐户。
 
-理想情况下，您会希望在减少要同步的对象数和规则中的复杂性之间达到平衡。 通常，OU/容器[筛选](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering)与 cloudFiltered 属性的简单属性映射之间的组合是一种有效的筛选组合。
+理想情况下，您会希望在减少要同步的对象数和规则中的复杂性之间达到平衡。 通常，OU/容器 [筛选](../hybrid/how-to-connect-sync-configure-filtering.md) 与 cloudFiltered 属性的简单属性映射之间的组合是一种有效的筛选组合。
 
 > [!IMPORTANT]
 > 如果在生产环境中使用组筛选，则应转换为另一种筛选方法。
@@ -90,8 +90,8 @@ Microsoft 建议你对本地环境中的问题有很好的基线和了解，这�
 
 Azure AD Connect 在预配过程中扮演着关键角色。 如果同步服务器出于任何原因进入脱机状态，则不能在云中更新本地更改，并可能会导致用户访问问题。 因此，请务必定义一个故障转移策略，使管理员能够在同步服务器脱机后快速恢复同步。 此类策略可能分为以下几类：
 
-- **在暂存模式下部署 Azure AD Connect 服务器**-允许管理员通过简单的配置交换机将过渡服务器 "提升" 为生产环境。
-- **使用虚拟化**-如果 Azure AD 连接部署在虚拟机（VM）中，则管理员可以利用其虚拟化堆栈实时迁移或快速重新部署 VM，进而恢复同步。
+- **在暂存模式下部署 Azure AD Connect Server (s) ** -允许管理员通过简单的配置交换机将过渡服务器 "升级" 到生产环境。
+- **使用虚拟化** -如果 Azure AD 连接部署在 (VM) 的虚拟机中，则管理员可以利用其虚拟化堆栈实时迁移或快速重新部署 VM，进而恢复同步。
 
 如果你的组织缺少用于同步的灾难恢复和故障转移策略，则不应担心在暂存模式下部署 Azure AD Connect。 同样，如果你的生产和暂存配置不匹配，则应重新设置基准 Azure AD Connect 过渡模式，以匹配生产配置，包括软件版本和配置。
 
@@ -105,9 +105,9 @@ Microsoft 更新会定期 Azure AD Connect。 保持最新，以便充分利用�
 
 #### <a name="source-anchor"></a>源锚点
 
-使用**msds-consistencyguid**作为[源锚点](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts)，可以更轻松地跨林和域迁移对象，这在 AD 域合并/清理、合并、收购和 divestitures 中很常见。
+使用 **msds-consistencyguid** 作为 [源锚点](../hybrid/plan-connect-design-concepts.md) ，可以更轻松地跨林和域迁移对象，这在 AD 域合并/清理、合并、收购和 divestitures 中很常见。
 
-如果当前正在使用**ObjectGuid**作为源定位点，建议使用**msds-consistencyguid**。
+如果当前正在使用 **ObjectGuid** 作为源定位点，建议使用 **msds-consistencyguid**。
 
 #### <a name="custom-rules"></a>自定义规则
 
@@ -116,14 +116,14 @@ Azure AD Connect 自定义规则提供了控制本地对象和云对象之间的
 - 疑难解答复杂性
 - 跨对象执行复杂操作时性能下降
 - 生产服务器和过渡服务器之间的配置的不同偏差率
-- 升级时的额外开销 Azure AD Connect 如果在优先级超过100的时间创建自定义规则（由内置规则使用）
+- 升级时的额外开销 Azure AD Connect 如果在内置规则使用的优先级超过 100 (创建自定义规则) 
 
 如果你使用的是过于复杂的规则，则应该调查复杂性的原因并找到简化的机会。 同样，如果你创建了优先级值超过100的自定义规则，则应该修复这些规则，以使它们不存在风险或与默认集冲突。
 
 滥用自定义规则的示例包括：
 
-- **补偿目录中的脏数据**-在这种情况下，建议使用 AD 团队的所有者，并将目录中的数据作为修正任务进行清理，并调整进程以避免重新引入错误数据。
-- **单个用户的一次性修正**-常见情况是查找特殊案例离群值的规则，通常是由于特定用户的问题。
+- **补偿目录中的脏数据** -在这种情况下，建议使用 AD 团队的所有者，并将目录中的数据作为修正任务进行清理，并调整进程以避免重新引入错误数据。
+- **单个用户的一次性修正** -常见情况是查找特殊案例离群值的规则，通常是由于特定用户的问题。
 - **Overcomplicated "CloudFiltering"** -减少对象数量是一种很好的做法，使用许多同步规则创建和 Overcomplicated 同步作用域的风险。 如果存在用于在 OU 筛选以外包含/排除对象的复杂逻辑，则建议在同步之外处理此逻辑，并使用简单的 "cloudFiltered" 属性来标记对象，此属性可以与简单同步规则一起流动。
 
 #### <a name="azure-ad-connect-configuration-documenter"></a>Azure AD Connect 配置文档
@@ -138,17 +138,17 @@ Azure AD Connect 自定义规则提供了控制本地对象和云对象之间的
 
 ### <a name="group-based-licensing-for-microsoft-cloud-services"></a>适用于 Microsoft 云服务的基于组的许可
 
-Azure Active Directory 通过[基于组](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal)的 Microsoft 云服务许可简化对许可证的管理。 通过这种方式，IAM 提供组基础结构，并将这些组委派给组织中的适当团队。 可以通过多种方式在 Azure AD 中设置组的成员身份，包括：
+Azure Active Directory 通过 [基于组](./active-directory-licensing-whatis-azure-portal.md) 的 Microsoft 云服务许可简化对许可证的管理。 通过这种方式，IAM 提供组基础结构，并将这些组委派给组织中的适当团队。 可以通过多种方式在 Azure AD 中设置组的成员身份，包括：
 
-- **从本地**-组同步可能来自本地目录，这对于已建立组管理过程的组织而言，这些组管理过程可以扩展以在 office 365 中分配许可证。
+- **从本地** -组同步可能来自本地目录，这对于已建立组管理过程的组织而言，这些组管理过程可以扩展以在 office 365 中分配许可证。
 
 - 基于**属性/动态**组可以基于用户属性（例如，部门等于 "销售"）在云中创建。 Azure AD 维护组的成员，使其与定义的表达式一致。 将这种类型的组用于许可证分配可启用基于属性的许可证分配，这适用于在其目录中具有高数据质量的组织。
 
-- **委托所有权**-可以在云中创建组，并且可以指定所有者。 通过这种方式，您可以使企业所有者（例如，协作团队或 BI 团队）定义谁有权访问。
+- **委托所有权** -可以在云中创建组，并且可以指定所有者。 通过这种方式，您可以使企业所有者（例如，协作团队或 BI 团队）定义谁有权访问。
 
 如果你当前正在使用手动过程向用户分配许可证和组件，我们建议你实现基于组的许可。 如果当前进程没有监视授权错误或分配的内容与 "可用"，则应为解决授权错误和监视授权分配的过程定义改进。
 
-许可证管理的另一个方面是服务计划（许可证的组成部分）的定义，应基于组织中的工作职能来启用。 如果不需要，授予对服务计划的访问权限，则可能会导致用户在 Office 门户中查看他们未经培训或不应使用的工具。 它可以推动其他技术支持的数量、不必要的预配，并使你的合规性和监管面临风险，例如，将 OneDrive for Business 预配到可能不允许共享内容的个人。
+许可证管理的另一个方面是 (许可证) 组件的定义，这些组件应基于组织中的作业功能来启用。 如果不需要，授予对服务计划的访问权限，则可能会导致用户在 Office 门户中查看他们未经培训或不应使用的工具。 它可以推动其他技术支持的数量、不必要的预配，并使你的合规性和监管面临风险，例如，将 OneDrive for Business 预配到可能不允许共享内容的个人。
 
 使用以下准则来定义用户的服务计划：
 
@@ -157,26 +157,26 @@ Azure Active Directory 通过[基于组](https://docs.microsoft.com/azure/active
 - 还可以定义一个属性来容纳用户的包。
 
 > [!IMPORTANT]
-> Azure AD 中基于组的许可引入了用户处于许可错误状态的概念。 如果注意到任何许可错误，应立即[识别并解决](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems)任何许可证分配问题。
+> Azure AD 中基于组的许可引入了用户处于许可错误状态的概念。 如果注意到任何许可错误，应立即 [识别并解决](../users-groups-roles/licensing-groups-resolve-problems.md) 任何许可证分配问题。
 
 ![自动生成的计算机屏幕说明的屏幕截图](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>生命周期管理
 
-如果你当前使用的工具（如[Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/)或第三方系统）依赖于本地基础结构，我们建议你从现有工具中卸载分配，实现基于组的许可，并基于[组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups)定义组生命周期管理。 同样，如果你的现有流程不考虑离开组织的新员工或员工，你应该根据动态组部署基于组的许可，并定义组成员的生命周期。 最后，如果针对缺乏生命周期管理的本地组部署了基于组的许可，则考虑使用云组来启用功能，如委派所有权或基于属性的动态成员身份。
+如果你当前使用的工具（如 [Microsoft Identity Manager](/microsoft-identity-manager/) 或第三方系统）依赖于本地基础结构，我们建议你从现有工具中卸载分配，实现基于组的许可，并基于 [组](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)定义组生命周期管理。 同样，如果你的现有流程不考虑离开组织的新员工或员工，你应该根据动态组部署基于组的许可，并定义组成员的生命周期。 最后，如果针对缺乏生命周期管理的本地组部署了基于组的许可，则考虑使用云组来启用功能，如委派所有权或基于属性的动态成员身份。
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>为应用分配 "所有用户" 组
 
-资源所有者可能相信，"**所有用户**"**组在实际情况中**都包含**企业**员工和**来宾**。 因此，在使用 "**所有用户**" 组进行应用程序分配并授予对 SharePoint 内容或应用程序等资源的访问权限时，应该特别小心。
+资源所有者可能相信，" **所有用户** " **组在实际情况中** 都包含 **企业** 员工和 **来宾**。 因此，在使用 " **所有用户** " 组进行应用程序分配并授予对 SharePoint 内容或应用程序等资源的访问权限时，应该特别小心。
 
 > [!IMPORTANT]
-> 如果 "**所有用户**" 组已启用，并且用于条件访问策略、"应用" 或 "资源分配"，请确保在不想让用户包括来宾用户的情况下[保护组](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups)。 而且，你应该通过创建并分配给只包含**企业员工**的组来修复你的授权分配。 另一方面，如果你发现 "**所有用户**" 组已启用但未被用于授予对资源的访问权限，请确保你的组织的操作指导有意使用该组（包括**企业员工**和**来宾**）。
+> 如果 " **所有用户** " 组已启用，并且用于条件访问策略、"应用" 或 "资源分配"，请确保在不想让用户包括来宾用户的情况下 [保护组](../external-identities/use-dynamic-groups.md) 。 而且，你应该通过创建并分配给只包含 **企业员工** 的组来修复你的授权分配。 另一方面，如果你发现 " **所有用户** " 组已启用但未用于授予对资源的访问权限，请确保你的组织的操作指导有意使用该组 (其中包括 **企业员工** 和 **来宾**) 。
 
 ### <a name="automated-user-provisioning-to-apps"></a>应用的自动用户预配
 
-应用程序的[自动用户预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)是在多个系统之间创建一致的标识、取消设置、取消设置和生命周期的最佳方式。
+应用程序的[自动用户预配](../app-provisioning/user-provisioning.md)是在多个系统之间创建一致的标识、取消设置、取消设置和生命周期的最佳方式。
 
-如果你当前正在以特定方式预配应用，或使用 CSV 文件、JIT 或不满足生命周期管理的本地解决方案等功能，我们建议你使用支持的应用程序的 Azure AD[实现应用程序预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application)，并为 Azure AD 尚不支持的应用程序定义一致的模式。
+如果你当前正在以特定方式预配应用，或使用 CSV 文件、JIT 或不满足生命周期管理的本地解决方案等功能，我们建议你使用支持的应用程序的 Azure AD [实现应用程序预配](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) ，并为 Azure AD 尚不支持的应用程序定义一致的模式。
 
 ![Azure AD 预配服务](./media/active-directory-ops-guide/active-directory-ops-img3.png)
 
@@ -184,12 +184,12 @@ Azure Active Directory 通过[基于组](https://docs.microsoft.com/azure/active
 
 务必要了解组织中的更改量，并确保不会花费太长时间来进行可预测的同步时间。
 
-[默认的增量同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler)频率为30分钟。 如果增量同步花费的时间超过30分钟，或者过渡和生产的增量同步性能之间存在明显的差异，则应调查并查看[影响 Azure AD Connect 性能的因素](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors)。
+[默认的增量同步](../hybrid/how-to-connect-sync-feature-scheduler.md)频率为30分钟。 如果增量同步花费的时间超过30分钟，或者过渡和生产的增量同步性能之间存在明显的差异，则应调查并查看 [影响 Azure AD Connect 性能的因素](../hybrid/plan-connect-performance-factors.md)。
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect 疑难解答建议阅读
 
-- [使用 IdFix 工具为与 Office 365 同步准备目录属性-Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
-- [Azure AD Connect：同步过程中的错误疑难解答](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
+- [使用 IdFix 工具为与 Office 365 同步准备目录属性-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Azure AD Connect：同步过程中的错误疑难解答](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>总结
 

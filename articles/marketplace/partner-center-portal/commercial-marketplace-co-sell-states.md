@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 04/01/2020
-ms.openlocfilehash: 7dd28ab23894988a1ee193f2f8d72cb83b7aafe8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/02/2020
+ms.openlocfilehash: 44f06773eec965fad610da1a4286bdf224e3a88b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120511"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321474"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace 中的共同销售州和省/自治区代码
 
-本文列出了在产品/服务的共同销售页面上提供联系人信息时的可用州和省/市/自治区代码。 如果适用，请使用以下代码提供省/直辖市/自治区信息，在[产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md#contacts)。
+本文列出了在产品/服务的共同销售页面上提供联系人信息时的可用州和省/市/自治区代码。 如果适用，请使用以下代码提供省/直辖市/自治区信息，在 [产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md#contacts)。
 
 ## <a name="us-states-and-territories"></a>美国州和区域
 
@@ -78,7 +78,7 @@ ms.locfileid: "86120511"
 | 北马里亚纳群岛            | 美国-MP     |
 | 波多黎各                         | 美国-PR     |
 | 美国本土外小岛屿 | 美国-UM    |
-| 美属维尔京群岛                 | US-VI    |
+| 美国维尔京群岛                 | US-VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>加拿大省份和地区
 
@@ -115,4 +115,4 @@ ms.locfileid: "86120511"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[合作伙伴中心的共同销售选项](./commercial-marketplace-co-sell.md)。
+- 了解 [合作伙伴中心的共同销售选项](./commercial-marketplace-co-sell.md)。

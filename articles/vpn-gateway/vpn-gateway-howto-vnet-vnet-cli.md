@@ -6,15 +6,15 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/14/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6cb1c8ad41ccd5f16c4a68b0b8ef4ace768bde8b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495635"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401140"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 配置 VNet 到 VNet 的 VPN 网关连接
 
@@ -68,11 +68,11 @@ ms.locfileid: "87495635"
 
 就本练习来说，可以将配置组合起来，也可以只是选择要使用的配置。 所有配置使用 VNet 到 VNet 连接类型。 网络流量在彼此直接连接的 VNet 之间流动。 在此练习中，流量不从 TestVNet4 路由到 TestVNet5。
 
-* [驻留在同一订阅中的 vnet：](#samesub)此配置的步骤使用 TestVNet1 和 TestVNet4。
+* [驻留在同一订阅中的 vnet：](#samesub) 此配置的步骤使用 TestVNet1 和 TestVNet4。
 
   ![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [驻留在不同订阅中的 vnet：](#difsub)此配置的步骤使用 TestVNet1 和 TestVNet5。
+* [驻留在不同订阅中的 vnet：](#difsub) 此配置的步骤使用 TestVNet1 和 TestVNet5。
 
   ![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 

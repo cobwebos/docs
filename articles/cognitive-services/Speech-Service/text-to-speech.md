@@ -1,27 +1,29 @@
 ---
-title: 文本转语音 - 语音服务
+title: 文本到语音概述-语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音服务中的文本转语音功能可让应用程序、工具或设备将文本转换为类似于人类的自然合成语音。 选择 "预设声音" 或创建自己的自定义语音。
+description: 语音服务中的文本转语音功能可让应用程序、工具或设备将文本转换为类似于人类的自然合成语音。 本文概述了文本到语音服务的优势和功能。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: 文本到语音转换
+ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167702"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401174"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 选择标准和神经声音，或创建产品或品牌的独特的自定义声音。 75多个标准语音在45多种语言和区域设置中提供，5个神经声音在选择的语言和区域设置中可用。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+在本概述中，你将了解文本到语音服务的优点和功能，使你的应用程序、工具或设备可以将文本转换为类似于用户的合成语音。 选择标准和神经声音，或创建产品或品牌的独特的自定义声音。 75多个标准语音在45多种语言和区域设置中提供，5个神经声音在选择的语言和区域设置中可用。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 > [!NOTE]
 > 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api 或自定义语音，我们已创建了可帮助你迁移到语音服务的指南。
@@ -29,7 +31,7 @@ ms.locfileid: "88167702"
 
 ## <a name="core-features"></a>核心功能
 
-* 语音合成-使用[语音 SDK](quickstarts/text-to-speech-audio-file.md)或[REST API](rest-text-to-speech.md)通过标准、神经或自定义语音转换文本到语音转换。
+* 语音合成-使用 [语音 SDK](quickstarts/text-to-speech-audio-file.md) 或 [REST API](rest-text-to-speech.md) 通过标准、神经或自定义语音转换文本到语音转换。
 
 * 长音频的异步合成 - 使用[长音频 API](long-audio-api.md) 异步合成 10 分钟以上的文本转语音文件（例如有声书籍或讲座）。 不同于使用语音 SDK 或语音转文本 REST API 执行的合成，响应不会实时返回。 预期会异步发送请求，以轮询的方式获取响应，并会下载合成音频（在服务提供该音频的情况下）。 仅支持自定义的神经声音。
 
@@ -41,7 +43,7 @@ ms.locfileid: "88167702"
 
 ## <a name="get-started"></a>入门
 
-请参阅[快速入门](get-started-text-to-speech.md)，了解文本到语音转换的入门教程。 通过[语音 SDK](speech-sdk.md)、 [REST API](rest-text-to-speech.md)和[语音 CLI](spx-overview.md)提供文本到语音服务
+请参阅[快速入门](get-started-text-to-speech.md)以开始使用文本转语音。 文本转语音服务通过[语音 SDK](speech-sdk.md)、[REST API](rest-text-to-speech.md) 和[语音 CLI](spx-overview.md) 提供
 
 ## <a name="sample-code"></a>代码示例
 
@@ -52,7 +54,7 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 
 ## <a name="customization"></a>自定义
 
-除了标准和神经声音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅[自定义语音入门](how-to-custom-voice.md)
+除了标准和神经声音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅 [自定义语音入门](how-to-custom-voice.md)
 
 ## <a name="pricing-note"></a>定价说明
 

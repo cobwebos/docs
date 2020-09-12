@@ -1,5 +1,5 @@
 ---
-title: 向 VNet 添加多个 VPN 网关站点到站点连接： Azure 门户
+title: 向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户
 description: 将多站点 S2S 连接添加到包含现有连接的 VPN 网关
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -7,14 +7,14 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/09/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121419"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401191"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet
 
@@ -46,18 +46,18 @@ ms.locfileid: "88121419"
 * VPN 设备有一个面向外部的公共 IP 地址。
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>第 1 部分 - 配置连接
-1. 在浏览器中导航到[Azure 门户](https://portal.azure.com)，并在必要时使用 Azure 帐户登录。
+1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
 2. 单击“**所有资源**”，从资源列表中找到“**虚拟网络网关**”并单击它。
 3. 在“虚拟网络网关”页面上，单击“连接”********。
    
-    ![连接页](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "“连接”页")<br>
+    ![“连接”页](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "“连接”页")<br>
 4. 在“连接”页面上，单击“+添加”********。
    
     ![“添加连接”按钮](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "“添加连接”按钮")<br>
 5. 在“添加连接”页面上，填写以下字段****：
    
    * **名称：** 想与其建立连接的站点的名称。
-   * **连接类型：** 选择 "**站点到站点 (IPsec") **。
+   * **连接类型：** 选择“站点到站点(IPsec)”。
      
      ![“添加连接”页](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "“添加连接”页")<br>
 

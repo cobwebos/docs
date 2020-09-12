@@ -4,12 +4,12 @@ description: SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS)
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 759111ee7e77ce00fec3762b1a20494c2771ef8f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 43c9ca244f02ffe1485fbd7316901d607d6e2479
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931193"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321219"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -86,11 +86,11 @@ LUIS 目前有 2 种类型的终结点：
 
 |语言 |参考文档|程序包|快速入门|
 |--|--|--|--|
-|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](quickstart-sdk.md?pivots=programming-language-csharp)<br>[查询预测](quickstart-sdk.md?pivots=programming-language-csharp)|
+|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[查询预测](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
 |Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[创作和预测](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|Javascript|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](quickstart-sdk.md?pivots=programming-language-javascript)<br>[预测](quickstart-sdk.md?pivots=programming-language-javascript)|
-|Python|[创作和预测](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](quickstart-sdk.md?pivots=programming-language-python)<br>[预测](quickstart-sdk.md?pivots=programming-language-python)|
+|Javascript|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[预测](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
+|Python|[创作和预测](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[预测](azure-sdk-quickstart.md?pivots=programming-language-python)|
 
 
 ### <a name="containers"></a>容器

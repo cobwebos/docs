@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605773"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400307"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -118,6 +118,7 @@ Cosmos DB 会定期自动备份数据。 有关备份保留时间间隔和窗口
 | 索引策略中的最大路径数| 100 <sup>*</sup>|
 | 每个容器的最大唯一键数|10 <sup>*</sup>|
 | 每个唯一键约束的最大路径数|16 <sup>*</sup>|
+| 最大 TTL 值 |2147483647|
 
 <sup>*</sup> 可以联系 Azure 支持人员来提高上述每个容器的限制。
 
@@ -136,6 +137,7 @@ Cosmos DB 会定期自动备份数据。 有关备份保留时间间隔和窗口
 | 属性值的最大长度 | 无实际限制 |
 | 字符串属性值的最大长度 | 无实际限制 |
 | 数字属性值的最大长度 | IEEE754 双精度 64 位 |
+| 最大 TTL 值 |2147483647|
 
 除了对分区键和 ID 值的长度限制以及 2 MB 的总大小限制外，对项负载没有任何限制，如属性数量和嵌套深度。 可能需要为具有大型或复杂项结构的容器配置索引策略，以减少 RU 消耗。 [为 Cosmos DB 中的项建模](how-to-model-partition-example.md)中提供了一个真实示例，以及用于管理大项的模式。
 

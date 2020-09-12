@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723939"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400343"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -47,7 +47,7 @@ ms.locfileid: "88723939"
 
 ## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
 
-若要查看和配置 Git 配置设置，可单击“安全”菜单并导航到“配置存储库”选项卡。
+若要查看和配置 Git 配置设置，可单击 " **部署和基础结构** " 菜单，然后导航到 " **存储库** " 选项卡。
 
 ![启用 Git][api-management-enable-git]
 
@@ -62,7 +62,7 @@ ms.locfileid: "88723939"
 
 克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”。
 
-在确认屏幕上进行任何所需的更改，并单击“确定”保存。
+在确认屏幕上进行任何所需的更改，然后单击 " **保存** " 以保存。
 
 片刻后配置已保存，并显示存储库的配置状态，包括上次配置更改和服务配置与存储库之间上次同步的日期和时间。
 
@@ -112,7 +112,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
 
-如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
+如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 为此，请在 Azure 门户的 "**存储库**" 选项卡上单击 "**保存到存储库**"，然后在本地存储库中发出以下命令。
 
 ```
 git pull
@@ -198,7 +198,7 @@ git push
 }
 ```
 
-前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“安全”部分中的“标识”选项卡上的以下设置。
+在 " `RegistrationEnabled` `UserRegistrationTerms` `UserRegistrationTermsEnabled` `UserRegistrationTermsConsentRequired` **开发人员门户**" 部分的 "**标识**" 选项卡上， (、、和) 的前四个设置映射到以下设置。
 
 | 标识设置 | 映射到 |
 | --- | --- |
@@ -208,7 +208,7 @@ git push
 | UserRegistrationTermsConsentRequired |“需要同意”复选框 |
 | RequireUserSigninEnabled |“将匿名用户重定向到登录页”复选框 |
 
-接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”部分中的“委派”选项卡上的以下设置。
+接下来的四个设置 (`DelegationEnabled` 、 `DelegationUrl` 、 `DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`) 映射到**开发人员门户**中 "**委派**" 选项卡上的以下设置。
 
 | 委派设置 | 映射到 |
 | --- | --- |

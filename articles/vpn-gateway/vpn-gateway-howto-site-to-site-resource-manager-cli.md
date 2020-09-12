@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/18/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: a90563f77a1e491bdc7fb7d421dedc7b265790d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fb7afa9afb72ce16213fd15953b6c82d0fddfeb5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030565"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401225"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络
 
@@ -30,7 +30,7 @@ ms.locfileid: "88030565"
 
 ![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-diagram.png)
 
-使用站点到站点 VPN 网关连接，通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道将本地网络连接到 Azure 虚拟网络。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关 VPN 网关的详细信息，请参阅[关于 vpn 网关](vpn-gateway-about-vpngateways.md)。
+使用站点到站点 VPN 网关连接，通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道将本地网络连接到 Azure 虚拟网络。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关 VPN 网关的详细信息，请参阅 [关于 vpn 网关](vpn-gateway-about-vpngateways.md)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -201,5 +201,5 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 * 有关强制隧道的信息，请参阅[关于强制隧道](vpn-gateway-forced-tunneling-rm.md)。
 * 有关高可用性主动-主动连接的信息，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](vpn-gateway-highlyavailable.md)。
 * 有关网络 Azure CLI 命令的列表，请参阅 [Azure CLI](https://docs.microsoft.com/cli/azure/network)。
-* 有关使用 Azure 资源管理器模板创建站点到站点 VPN 连接的信息，请参阅[创建站点到站点 Vpn 连接](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)。
-* 有关使用 Azure 资源管理器模板创建 vnet 到 vnet VPN 连接的信息，请参阅[部署 HBase 异地复制](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)。
+* 有关使用 Azure 资源管理器模板创建站点到站点 VPN 连接的信息，请参阅 [创建站点到站点 Vpn 连接](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)。
+* 有关使用 Azure 资源管理器模板创建 vnet 到 vnet VPN 连接的信息，请参阅 [部署 HBase 异地复制](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)。
