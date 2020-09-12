@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264957"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291409"
 ---
 # <a name="live-transcription-preview"></a>实时脚本 (预览) 
 
@@ -58,13 +58,13 @@ Live 脚本在以下区域中提供：
 | 英语（新西兰） | en-NZ |
 | 英语（美国） | zh-CN |
 | 西班牙语(西班牙) | es-ES |
-| 西班牙语(墨西哥) | es-MX |
+| 西班牙语（墨西哥） | es-MX |
 | 芬兰语（芬兰） | fi-FI |
 | 法语（加拿大） | fr-CA |
 | 法语（法国） | fr-FR |
 | 意大利语（意大利） | it-IT |
 | 荷兰语（荷兰） | nl-NL |
-| 葡萄牙语(巴西) | pt-BR |
+| 葡萄牙语（巴西） | pt-BR |
 | 葡萄牙语(葡萄牙) | pt-PT |
 | 瑞典语（瑞典） | sv-SE |
 

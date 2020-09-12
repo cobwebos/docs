@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691473"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276756"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控件来减少计算机的攻击面
 
@@ -76,7 +76,7 @@ ms.locfileid: "88691473"
     - **建议** -运行相同应用程序且未配置允许列表的计算机组。 建议为这些组启用自适应应用程序控件。
     
       > [!TIP]
-      > 如果你看到名为 "REVIEWGROUP" 的组名，则它包含具有部分一致性列表的应用程序的计算机。 安全中心无法查看模式，但建议查看此组，以查看 _是否可以_ 手动定义某些自适应应用程序控件规则，如 [编辑组的自适应应用程序控件规则](#editing-a-groups-adaptive-application-controls-rule)中所述。
+      > 如果你看到名为 "REVIEWGROUP" 的组名，则它包含具有部分一致性列表的应用程序的计算机。 安全中心无法查看模式，但建议查看此组，以查看 _是否可以_ 手动定义某些自适应应用程序控件规则，如 [编辑组的自适应应用程序控件规则](#edit-a-groups-adaptive-application-controls-rule)中所述。
       >
       > 你还可以根据 [将计算机从一个组移到另一个组](#move-a-machine-from-one-group-to-another)中所述，将计算机从此组移动到其他组。
 
@@ -115,7 +115,7 @@ ms.locfileid: "88691473"
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>编辑组的自适应应用程序控件规则
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>编辑组的自适应应用程序控件规则
 
 由于组织中已知的更改，你可能会决定编辑一组计算机的允许列表。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "88691473"
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>响应 "应更新自适应应用程序控制策略中的允许列表规则" 建议
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>响应 "应更新自适应应用程序控制策略中的允许列表规则" 建议
 
 如果安全中心的机器学习识别了以前未被允许的可能合法行为，你将看到此建议。 建议建议现有定义的新规则，以减少误报警报的数目。
 
@@ -167,7 +167,7 @@ ms.locfileid: "88691473"
 
 
 
-## <a name="auditing-alerts-and-violations"></a>审核警报和冲突
+## <a name="audit-alerts-and-violations"></a>审核警报和冲突
 
 1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
 
@@ -199,7 +199,7 @@ ms.locfileid: "88691473"
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>通过 REST API 管理应用程序控件 
+## <a name="manage-application-controls-via-the-rest-api"></a>通过 REST API 管理应用程序控件 
 
 若要以编程方式管理自适应应用程序控件，请使用我们的 REST API。 
 

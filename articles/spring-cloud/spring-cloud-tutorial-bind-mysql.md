@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ef202bb3ba82b48aca75c7f934aecb3f5fbe0a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 0287bc8a11c359acce5fbf12d3a51e99a9f5420e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070756"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297138"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87070756"
 * Azure Database for MySQL 帐户
 * Azure CLI
 
-如果没有已部署的 Azure Spring Cloud 实例，请按照[快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用](spring-cloud-quickstart-launch-app-portal.md)中的说明部署第一个 Spring Cloud 应用。
+如果没有已部署的 Azure Spring Cloud 实例，请按照[快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用](spring-cloud-quickstart.md)中的说明部署第一个 Spring Cloud 应用。
 
 ## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>将应用绑定到 Azure Database for MySQL 实例
 

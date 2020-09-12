@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357828"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278592"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 
@@ -64,7 +64,7 @@ Foreach ($file in $Files) {
 
 ### <a name="note-about-domain-controller-logs"></a>关于域控制器日志的注意事项
 
-如果启用了审核日志，此产品可能会为域控制器生成安全日志。 若要了解有关配置审核策略的详细信息，请阅读[此文](https://technet.microsoft.com/library/dd277403.aspx)。
+如果启用了审核日志，此产品可能会为域控制器生成安全日志。 若要了解有关配置审核策略的详细信息，请阅读[此文](/previous-versions/tn-archive/dd277403(v=technet.10))。
 
 ## <a name="next-steps"></a>后续步骤
 

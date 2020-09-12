@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922882"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294248"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
 
@@ -27,7 +27,7 @@ ms.locfileid: "88922882"
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>启用 Azure SQL 托管实例公共终结点
 还可以在“安全性”   > “虚拟网络”   > “公共终结点”   > “启用”  下为现有 SQL 托管实例启用公共终结点。
 
-   ![启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "启用公共终结点")
+   ![使用托管实例 VNET 启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "启用公共终结点")
 
 ## <a name="verify-nsg-rules"></a>验证 NSG 规则
 检查网络安全组是否具有允许来自 Azure 服务的连接的正确的**入站安全规则**。

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183626"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294707"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -334,17 +334,17 @@ StorSimple 设备应该：
 ## <a name="troubleshoot-multipathing"></a>排查多路径问题
 如果在配置多路径期间遇到任何问题，请参阅本部分提供的一些有用提示。
 
-问： `multipath.conf` 文件中的更改未生效。
+Q. `multipath.conf` 文件中的更改未生效。
 
-A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 键入下列命令：
+A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 键入以下命令：
 
 `service multipathd restart`
 
-问： 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
+Q. 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
 
 A. 请确保这两个路径位于同一子网且可路由。 如果网络接口位于不同的 vLAN 且不可路由，则只会显示两个路径。 验证方法之一是确定是否可从 StorSimple 设备上的网络接口访问这两个主机接口。 需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)，因为这种验证只能通过支持会话完成。
 
-问： 列出可用路径时，未看到任何输出。
+Q. 列出可用路径时，未看到任何输出。
 
 A. 通常情况下，不会看到任何多路径路径会给出有关多路径后台程序的问题，很有可能是该文件中存在问题 `multipath.conf` 。
 
@@ -352,12 +352,12 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
 
 * 使用以下命令重新扫描 SCSI 总线：
   
-    `$ rescan-scsi-bus.sh`Sg3_utils 包的 (部分) 
+    `$ rescan-scsi-bus.sh` Sg3_utils 包的 (部分) 
 * 键入以下命令：
   
     `$ dmesg | grep sd*`
      
-     或
+     Or
   
     `$ fdisk -l`
   
@@ -372,14 +372,14 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
 
 `iscsiadm -m node --logout -p <Target_IP>`
 
-针对 iSCSI 目标（即 StorSimple 设备）上所有已连接的网络接口重复此命令。 从所有 iSCSI 会话注销后，使用 iSCSI 目标 IQN 重新建立 iSCSI 会话。 键入下列命令：
+针对 iSCSI 目标（即 StorSimple 设备）上所有已连接的网络接口重复此命令。 从所有 iSCSI 会话注销后，使用 iSCSI 目标 IQN 重新建立 iSCSI 会话。 键入以下命令：
 
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-问： 我不确定我的设备是否已列入允许列表。
+Q. 我不确定是否允许设备。
 
-A. 若要验证设备是否已列入允许列表，请使用以下故障排除交互式命令：
+A. 若要验证是否允许您的设备，请使用以下疑难解答交互式命令：
 
 ```console
 multipathd -k
@@ -420,10 +420,10 @@ dm-3 devnode blacklisted, unmonitored
 ```
 
 
-有关详细信息，请参阅多[路径故障排除](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
+有关详细信息，请参阅多 [路径故障排除](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用命令列表
-| 类型 | 命令 | 描述 |
+| 类型 | Command | 说明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |启动 iSCSI 服务 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服务 |
@@ -449,4 +449,3 @@ dm-3 devnode blacklisted, unmonitored
 
 * [Setting up MPIO on CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)（在 CentOS 上设置 MPIO）
 * [Linux Training Guide](http://linux-training.be/linuxsys.pdf)（Linux 培训指南）
-

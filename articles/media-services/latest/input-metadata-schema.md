@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269142"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295540"
 ---
 # <a name="input-metadata"></a>输入元数据
 
@@ -77,11 +77,11 @@ ms.locfileid: "89269142"
 | DisplayAspectRatioDenominator<br />必须 |视频显示纵横比分母。 <br /><br />示例： `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |视频样本纵横比分子。 <br /><br />示例： `"SampleAspectRatioNumerator": 1.0`|
 | **SampleAspectRatioDenominator**|示例： `"SampleAspectRatioDenominator": 1.0`|
-| FrameRate<br />必须 |采用 .3f 格式测量的视频帧速率。 <br /><br />示例： `"FrameRate": 29.970`|
+| FrameRate<br />必须 |采用 .3f 格式的测量的视频帧速率。 <br /><br />示例： `"FrameRate": 29.970`|
 | Bitrate |由资产文件计算所得的平均视频比特率（比特/秒）。 仅针对基本流有效负载计数，不包含打包开销。 <br /><br />示例： `"Bitrate": 8421583`|
 | **HasBFrames** |B 帧的视频轨道数。 <br /><br />示例： `"HasBFrames": 2`|
 | Metadata |可以用来保存各种信息的通用键/值字符串。 <br />请参阅本文末尾的完整示例。 |
-| Id<br />必须 |此音频轨或视频轨从零开始的索引。<br /><br /> 此 **Id** 不一定是在 TrackID 文件中使用的。 <br /><br />示例： `"Id": 2`|
+| Id <br />必须 |此音频轨或视频轨从零开始的索引。<br /><br /> 此 **Id** 不一定是在 TrackID 文件中使用的。 <br /><br />示例： `"Id": 2`|
 | **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "h264"`|
 | **CodecLongName** |音频或视频轨道编解码器长名称。 <br /><br />示例： `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
 | **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "h264"`|
@@ -100,7 +100,7 @@ ms.locfileid: "89269142"
 | SamplingRate<br />必须 |音频采样率（样本数/秒或 Hz）。 <br /><br />示例： `"SamplingRate": 48000`|
 | Bitrate |由资产文件计算所得的平均音频比特率（比特/秒）。 仅对基本流有效负载计数，此计数中不包含打包开销。 <br /><br />示例： `"Bitrate": 192080`|
 | Metadata |可以用来保存各种信息的通用键/值字符串。  <br />请参阅本文末尾的完整示例。 |
-| Id<br />必须 |此音频轨或视频轨从零开始的索引。<br /><br /> 这不一定是 MP4 文件中使用的 TrackID。 <br /><br />示例： `"Id": 1`|
+| Id <br />必须 |此音频轨或视频轨从零开始的索引。<br /><br /> 这不一定是 MP4 文件中使用的 TrackID。 <br /><br />示例： `"Id": 1`|
 | **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "aac"`|
 | **CodecLongName** |音频或视频轨道编解码器长名称。 <br /><br />示例： `"CodecLongName": "AAC (Advanced Audio Coding)"`|
 | TimeBase<br />必须 |时间基准。<br /><br />示例： `"TimeBase": "1/48000"` |

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3aa8d691eb62b94c5784d8a6efc35b53a3762d7f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921150"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294112"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>将请求发送到必应自动建议 API。
 
@@ -48,11 +48,11 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 建议所有请求都源自服务器。 如果将密钥作为客户端应用程序的一部分进行分发，会让恶意的第三方有更多机会进行访问。 另外，从服务器执行调用还会提供未来更新的单一升级点。
 
-请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查询参数，该参数包含用户的部分搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。
+请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查询参数，该参数包含用户的部分搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数的列表，请参阅 [查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。
 
 请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 请求头。 尽管可视需要添加，但仍建议还指定以下请求头：
 
-- [用户代理](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
 - [X-搜索-位置](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
@@ -64,7 +64,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 > [!NOTE]
 > 从 JavaScript 调用必应自动建议 API 时，浏览器内置的安全功能可能会阻止你访问这些标头的值。
 
-若要解决此问题，可以通过 CORS 代理发出必应自动建议 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应标头列入允许列表，并将它们提供给 JavaScript。
+若要解决此问题，可以通过 CORS 代理发出必应自动建议 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，该标头筛选响应标头并使它们可供 JavaScript 使用。
 
 CORS 代理安装起来很简单，可便于[教程应用](../tutorials/autosuggest.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 

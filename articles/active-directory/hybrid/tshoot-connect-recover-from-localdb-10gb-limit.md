@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355992"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275896"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
 Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整 SQL。 SQL Server Express 存在 10 GB 的大小限制。 使用 LocalDB 并达到此限制后，Azure AD Connect Synchronization Service 将无法正常启动或同步。 本文提供了恢复步骤。
@@ -55,7 +55,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 5. 如果服务未运行，请尝试启动服务。 如果服务成功启动，请跳过[收缩数据库](#shrink-the-database)步骤，转到[删除运行历史记录数据](#delete-run-history-data)步骤。 否则，请继续执行[收缩数据库](#shrink-the-database)步骤。
 
 ### <a name="shrink-the-database"></a>收缩数据库
-使用收缩操作可释放足够的 DB 空间，以便启动 Synchronization Service。 该操作释放 DB 空间的方式是删除数据库中的空格。 此步骤只需尽力操作即可，因为无法保证总能恢复空间。 若要详细了解收缩操作，请阅读 [Shrink a database](https://msdn.microsoft.com/library/ms189035.aspx)（收缩数据库）一文。
+使用收缩操作可释放足够的 DB 空间，以便启动 Synchronization Service。 该操作释放 DB 空间的方式是删除数据库中的空格。 此步骤只需尽力操作即可，因为无法保证总能恢复空间。 若要详细了解收缩操作，请阅读 [Shrink a database](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)（收缩数据库）一文。
 
 > [!IMPORTANT]
 > 如果能够运行 Synchronization Service，请跳过此步骤。 建议不要收缩 SQL DB，因为随着碎片增加，可能会导致性能不佳。
@@ -100,8 +100,8 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>长期解决方案 - 迁移到完整的 SQL
 通常情况下，此问题表示 10 GB 的数据库大小已经无法让 Azure AD Connect 将本地 Active Directory 同步到 Azure AD。 建议改用完整版 SQL Server。 不能直接将现有 Azure AD Connect 部署的 LocalDB 替换为完整版 SQL 的数据库， 而必须使用完整版 SQL 来部署新的 Azure AD Connect 服务器。 建议执行交叉迁移，将新的 Azure AD Connect 服务器（装有 SQL DB）部署为过渡服务器，与现有的 Azure AD Connect 服务器（装有 LocalDB）并存。 
-* 有关如何使用 Azure AD Connect 配置远程 SQL 的说明，请参阅 [Azure AD Connect 的自定义安装](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)一文。
-* 有关如何通过交叉迁移进行 Azure AD Connect 升级的说明，请参阅 [Azure AD Connect：从旧版升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)一文。
+* 有关如何使用 Azure AD Connect 配置远程 SQL 的说明，请参阅 [Azure AD Connect 的自定义安装](./how-to-connect-install-custom.md)一文。
+* 有关如何通过交叉迁移进行 Azure AD Connect 升级的说明，请参阅 [Azure AD Connect：从旧版升级到最新版本](./how-to-upgrade-previous-version.md#swing-migration)一文。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

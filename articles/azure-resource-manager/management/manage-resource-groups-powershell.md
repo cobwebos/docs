@@ -3,14 +3,14 @@ title: 管理资源组 - Azure PowerShell
 description: 使用 Azure PowerShell 通过 Azure 资源管理器管理资源组。 说明如何创建、列出和删除资源组。
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9519b9a5dec898a0905310de02ef9fad3d282a65
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827070"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290525"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -31,15 +31,10 @@ ms.locfileid: "87827070"
 
 ## <a name="create-resource-groups"></a>创建资源组
 
-以下 PowerShell 脚本将创建一个资源组，然后显示该资源组。
+下面的 PowerShell 脚本将创建一个资源组。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-Get-AzResourceGroup -Name $resourceGroupName
+New-AzResourceGroup -Name demoResourceGroup -Location westus
 ```
 
 ## <a name="list-resource-groups"></a>列出资源组
@@ -68,7 +63,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-若要详细了解 Azure 资源管理器如何控制资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
+若要详细了解 Azure 资源管理器如何管理资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>将资源部署到现有的资源组
 
@@ -82,7 +77,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能也称为“出错时回滚”**。 有关详细信息，请参阅[在部署失败时重新部署](../templates/rollback-on-error.md)。
+此功能也称为“出错时回滚”  。 有关详细信息，请参阅[在部署失败时重新部署](../templates/rollback-on-error.md)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移到另一个资源组或订阅
 
@@ -108,7 +103,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Get-AzResourceLock -ResourceGroupName $resourceGroupName 
 ```
 
-更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
+有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](lock-resources.md)。
 
 ## <a name="tag-resource-groups"></a>标记资源组
 
@@ -217,7 +212,7 @@ Export-AzResourceGroup `
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 
-Azure [RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md)是管理 azure 中资源访问权限的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

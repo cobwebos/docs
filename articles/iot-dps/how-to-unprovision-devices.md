@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974830"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294384"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
 
@@ -57,22 +57,10 @@ ms.locfileid: "74974830"
 使用登记组时，需要考虑两种情况：
 
 - 若要取消预配已通过注册组预配的所有设备，请执行以下操作：
-  1. 禁用其签名的证书的方块列表的注册组。 
+  1. 禁用注册组以禁止其签名证书。 
   2. 然后，可以使用该登记组的预配设备列表，从每个设备的相应 IoT 中心的标识注册表中禁用或删除该设备。 
   3. 从相应的 IoT 中心禁用或删除所有设备后，可以选择删除登记组。 但请注意，如果删除登记组，并且在一个或多个设备的证书链中为某个级别较高的签名证书启用了登记组，则这些设备可能重新登记。 
 
 - 若要从注册组取消预配单个设备，请执行以下操作：
   1. 创建其叶（设备）证书已禁用各个注册。 这会撤销该设备对预配服务的访问权限，同时仍允许链中具有登记组签名证书的其他设备访问。 不要删除设备的已禁用单独登记。 否则，设备会通过登记组重新登记。 
   2. 然后，可以使用登记组详细信息中的预配设备列表来查找设备已预配到的 IoT 中心，并从该中心的标识注册表中禁用或删除该设备。 
-  
-  
-
-
-
-
-
-
-
-
-
-

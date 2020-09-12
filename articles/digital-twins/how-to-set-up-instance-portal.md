@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 300a11c36b11230d2bd75534f152a0a5955743ed
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181777"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280020"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -32,11 +32,11 @@ ms.locfileid: "89181777"
 
 进入门户后，首先在 Azure 服务的 "主页" 菜单中选择 " _创建资源_ "。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="从 主页 的 Azure 门户 页中选择 创建资源":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="从 "主页" 的 "Azure 门户" 页中选择 "创建资源"":::
 
 在搜索框中搜索 " *Azure 数字孪生* "，然后从结果中选择 " **azure 数字孪生 (预览") ** 服务。 选择 " _创建_ " 按钮以创建服务的新实例。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="从 Azure 数字孪生服务页中选择 创建":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="从 Azure 数字孪生服务页中选择 "创建"":::
 
 在下面的 " *创建资源* " 页上，填写以下给定值：
 * **订阅**：要使用的 Azure 订阅
@@ -52,7 +52,7 @@ ms.locfileid: "89181777"
 
 推送 *创建*后，可以通过门户图标栏在 Azure 通知中查看实例的部署状态。 通知将指示部署成功的时间，并且你将能够选择 " _中转到资源_ " 按钮来查看已创建的实例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="显示成功部署并突出显示 中转到资源 按钮的 Azure 通知视图":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="显示成功部署并突出显示 "中转到资源" 按钮的 Azure 通知视图":::
 
 或者，如果部署失败，通知将指出原因。 观察错误消息中的建议，然后重试创建实例。
 
@@ -61,7 +61,7 @@ ms.locfileid: "89181777"
 
 在实例的 " *概述* " 页上，记下其 *名称*、 *资源组*和 *主机名*。 这些是你在继续使用 Azure 数字孪生实例时可能需要的所有重要值。 如果其他用户将对该实例进行编程，则应该与它们共享这些值。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 概述 页中的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 "概述" 页中的重要值":::
 
 现已准备好使用 Azure 数字孪生实例。 接下来，你将为适当的 Azure 用户授予管理权限。
 
@@ -71,7 +71,7 @@ ms.locfileid: "89181777"
 
 首先，在 Azure 门户中打开 Azure 数字孪生实例的页面。 从实例的菜单中，选择 " *访问控制 (IAM) *。 选择 "*添加角色分配*" 下的 "*添加*" 按钮。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="选择从 访问控制 (IAM)  页添加角色分配":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="选择从 "访问控制 (IAM) " 页添加角色分配":::
 
 在 " *添加角色分配* " 页上，填写值 (必须由在 Azure 订阅中具有 [足够权限](#prerequisites-permission-requirements) 的用户完成) ：
 * **角色**：从下拉菜单中选择 " *Azure 数字孪生所有者 (预览") *
@@ -80,7 +80,7 @@ ms.locfileid: "89181777"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="将列出的字段填充到 添加角色分配 对话框中":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="将列出的字段填充到 "添加角色分配" 对话框中":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -102,7 +102,7 @@ ms.locfileid: "89181777"
 
 首先，导航到 Azure 门户中的 [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) (可以使用此链接或通过门户搜索栏) 找到它。 从 "服务" 菜单中选择 " *应用注册* "，然后选择 " *+ 新注册*"。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Azure 门户中 Azure AD 服务 页的视图，突出显示 应用注册 菜单选项和 + 新建注册 按钮":::
+:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Azure 门户中 "Azure AD 服务" 页的视图，突出显示 "应用注册" 菜单选项和 "+ 新建注册" 按钮":::
 
 在下面的 " *注册应用程序* " 页中，填写所需的值：
 * **名称**：要与注册关联的 Azure AD 应用程序显示名称
@@ -111,7 +111,7 @@ ms.locfileid: "89181777"
 
 完成后，单击 " *注册* " 按钮。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="注册应用程序 页的视图，其中填写了所述的说明值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text=""注册应用程序" 页的视图，其中填写了所述的说明值":::
 
 完成设置注册后，门户会将你重定向到其详细信息页面。
 
@@ -121,18 +121,18 @@ ms.locfileid: "89181777"
 
 从应用注册的门户页中，从菜单中选择 " *API 权限* "。 在 "下列权限" 页上，单击 " *+ 添加权限* " 按钮。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Azure 门户中的应用注册的视图，突出显示 API 权限 菜单选项和 + 添加权限 按钮":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Azure 门户中的应用注册的视图，突出显示 "API 权限" 菜单选项和 "+ 添加权限" 按钮":::
 
 在下面的 " *请求 API 权限* " 页中，切换到 " *我的组织使用的 api* " 选项卡，然后搜索 " *azure 数字孪生*"。 从搜索结果中选择 " *Azure 数字孪生* "，以继续分配 Azure 数字孪生 api 的权限。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="显示 Azure 数字孪生的 请求 API 权限 页面搜索结果视图":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="显示 Azure 数字孪生的 "请求 API 权限" 页面搜索结果视图":::
 
 >[!NOTE]
 > 如果现有的 Azure 数字孪生实例的 (服务早于2020年7月) 之前的公共预览版，则需改为查看 *Azure 智能空间服务* 。 这是同一组 Api 的旧名称，并且不会更改你在此步骤之外的体验。
 
 接下来，选择要为这些 Api 授予的权限。 展开 " **读取 (1) ** " 权限，并选中 " *读取* " 复选框以授予此应用注册读取器和编写器权限。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="请求 API 权限 页的视图选择 Azure 数字孪生 Api 的 读取 权限":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text=""请求 API 权限" 页的视图选择 Azure 数字孪生 Api 的 "读取" 权限":::
 
 完成后点击 *添加权限* 。
 
@@ -140,13 +140,13 @@ ms.locfileid: "89181777"
 
 返回到 " *API 权限* " 页，验证现在是否存在用于反映读/写权限的 Azure 数字孪生条目：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure AD 应用注册的 API 权限的门户视图，其中显示了 Azure 数字孪生的 读取/写入访问权限":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure AD 应用注册的 API 权限的门户视图，其中显示了 Azure 数字孪生的 "读取/写入访问权限"":::
 
 你还可以在应用注册的 *manifest.js*中验证与 Azure 数字孪生的连接，该连接已在添加 API 权限时随 Azure 数字孪生信息自动更新。
 
 为此，请从菜单中选择 " *清单* "，以查看应用注册的清单代码。 滚动到代码窗口的底部，在下查找这些字段 `requiredResourceAccess` 。 值应与以下屏幕截图中的值匹配：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD 应用注册清单的门户视图。嵌套在 requiredResourceAccess 下，有一个 resourceAppId 值为 0b07f429-9f4b 4714-9392-cc5e8e80c8b0，resourceAccess > id 值为4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD 应用注册清单的门户视图。嵌套在 "requiredResourceAccess" 下，有一个 "resourceAppId" 值为 0b07f429-9f4b 4714-9392-cc5e8e80c8b0，"resourceAccess > id" 值为4589bd03-58cb-4e6c-b17f-b580e39652f8":::
 
 ### <a name="collect-important-values"></a>收集重要值
 
@@ -162,5 +162,9 @@ ms.locfileid: "89181777"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
+使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
+
+或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
 * [*操作说明：编写应用身份验证代码*](how-to-authenticate-client.md)

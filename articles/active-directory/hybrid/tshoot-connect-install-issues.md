@@ -15,23 +15,23 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25314b4a306678dc877a95194907b3d73979e4f8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356213"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275855"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑难解答：Azure AD Connect 安装问题
 
 ## <a name="recommended-steps"></a>**建议的步骤**
-请查看适合你的 [Azure AD Connect 安装类型](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)。 如果满足快速安装的条件，则强烈建议进行快速安装。 快速安装提供完成安装所需的最少选项，因此出现问题的可能性更小。 
+请查看适合你的 [Azure AD Connect 安装类型](./how-to-connect-install-select-installation.md)。 如果满足快速安装的条件，则强烈建议进行快速安装。 快速安装提供完成安装所需的最少选项，因此出现问题的可能性更小。 
 
 但是，如果不满足快速安装的条件，并且必须执行自定义安装，则下文提供一些可用于避免常见问题的最佳做法。 为简单起见，此处仅提及有选择的选项：
 
 * 请确保你是在其上安装 AAD Connect 的计算机上的管理员。 使用同一管理员凭据登录计算机。
 
-* 在以下所有页保留默认选项，如果想要使用现有 SQL Server，则“使用现有 SQL Server”页除外。 以下是有关如何使用自定义安装选项的[更多详细信息](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)。 
+* 在以下所有页保留默认选项，如果想要使用现有 SQL Server，则“使用现有 SQL Server”页除外。 以下是有关如何使用自定义安装选项的[更多详细信息](./how-to-connect-install-custom.md)。 
 
     ![使用现有 SQL Server](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
 
@@ -41,26 +41,21 @@ ms.locfileid: "85356213"
 
 ### <a name="common-issues"></a>**常见问题**
 
-* [本地 Active Directory 的连接问题](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)。
+* [本地 Active Directory 的连接问题](./reference-connect-adconnectivitytools.md)。
 
-* [联机 Azure Active Directory 的连接问题](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)。
+* [联机 Azure Active Directory 的连接问题](./tshoot-connect-connectivity.md)。
 
-* [本地 Active Directory 的权限问题](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
+* [本地 Active Directory 的权限问题](./how-to-connect-configure-ad-ds-connector-account.md)。
 
 ## <a name="recommended-documents"></a>**建议的文档**
-* [Azure AD Connect 的先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
-* [选择要使用的 Azure AD Connect 安装类型](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
-* [通过快速设置开始使用 Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
-* [Azure AD Connect 的自定义安装](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Azure AD Connect：从旧版升级到最新版本](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Azure AD Connect：过渡服务器是什么？](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
-* [什么是 ADConnectivityTools PowerShell 模块？](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
+* [Azure AD Connect 的先决条件](./how-to-connect-install-prerequisites.md)
+* [选择要使用的 Azure AD Connect 安装类型](./how-to-connect-install-select-installation.md)
+* [通过快速设置开始使用 Azure AD Connect](./how-to-connect-install-express.md)
+* [Azure AD Connect 的自定义安装](./how-to-connect-install-custom.md)
+* [Azure AD Connect：从旧版升级到最新版本](./how-to-upgrade-previous-version.md)
+* [Azure AD Connect：过渡服务器是什么？](./plan-connect-topologies.md#staging-server)
+* [什么是 ADConnectivityTools PowerShell 模块？](./how-to-connect-adconnectivitytools.md)
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
 - [什么是混合标识？](whatis-hybrid-identity.md)
-
-
-
-
-

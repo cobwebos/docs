@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 065c6661ffc9f618a5dfd32a9f45d26569a56003
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559565"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278167"
 ---
 # <a name="using-custom-security-policies"></a>使用自定义安全策略
 
@@ -69,7 +69,7 @@ ms.locfileid: "85559565"
 
     [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强自定义建议
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强你的自定义建议
 
 Azure 安全中心提供的内置建议包括严重性级别和修正说明等详细信息。 如果要将此类信息添加到自定义建议，使其显示在 Azure 门户中或任何可供访问建议的位置，则需要使用 REST API。 
 

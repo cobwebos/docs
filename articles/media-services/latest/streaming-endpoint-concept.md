@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256491"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297189"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
@@ -47,7 +47,7 @@ ms.locfileid: "89256491"
 
 有两种类型的**流式处理终结点**：**标准**（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。
 
-最大流式处理单位限制通常为10个。 请 [在此处](https://azure.microsoft.com/support/create-ticket/) 与我们联系，为你的帐户增加限制。
+最大流单元限制通常为 10。 请 [在此处](https://azure.microsoft.com/support/create-ticket/) 与我们联系，为你的帐户增加限制。
 
 下表描述了类型：
 
@@ -97,7 +97,7 @@ IP 筛选/G20/自定义主机 <sup>1</sup>|是|是
 - `crossSiteAccessPolicies`：用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](/previous-versions/azure/azure-services/gg185950(v=azure.100))。 这些设置仅适用于平滑流式处理。
 - `customHostNames`：用于配置流式处理终结点以接受定向到自定义主机名的流量。 此属性对标准和高级流式处理终结点有效，可以在以下情况下设置 `cdnEnabled` ： false。
 
-    域名的所有权必须由媒体服务确认。 媒体服务通过要求将包含媒体服务帐户 ID 的 `CName` 记录作为组件添加到正在使用的域来验证域名所有权。 例如，要将“sports.contoso.com”用作流式处理终结点的自定义主机名，则必须将 `<accountId>.contoso.com` 的记录配置为指向其中一个媒体服务验证主机名。 验证主机名由 verifydns \<mediaservices-dns-zone> 组成。
+    域名的所有权必须由媒体服务确认。 媒体服务通过要求将包含媒体服务帐户 ID 的 `CName` 记录作为组件添加到正在使用的域来验证域名所有权。 例如，要将“sports.contoso.com”用作流式处理终结点的自定义主机名，则必须将 `<accountId>.contoso.com` 的记录配置为指向其中一个媒体服务验证主机名。 验证主机名由 verifydns.\<mediaservices-dns-zone> 组成。
 
     下面是要在不同 Azure 区域的验证记录中使用的预期 DNS 区域。
   

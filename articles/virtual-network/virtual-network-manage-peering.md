@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416496"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290168"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
@@ -88,7 +88,7 @@ ms.locfileid: "87416496"
 5. 更改相应的设置。 若要了解每个设置的选项，请阅读“创建对等互连”部分的[步骤 5](#add-peering)。
 6. 选择“保存” 。
 
-**命令**
+命令
 
 - **Azure CLI**：[az network vnet peering list](/cli/azure/network/vnet/peering) 可列出虚拟网络的对等，[az network vnet peering show](/cli/azure/network/vnet/peering) 可显示特定对等的设置，[az network vnet peering update](/cli/azure/network/vnet/peering) 可更改对等设置。|
 - PowerShell：[Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 可检索视图对等互连设置，[Set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) 可更改设置。
@@ -126,11 +126,12 @@ ms.locfileid: "87416496"
   - *已启动：* 创建从第一个虚拟网络到第二个虚拟网络的对等互连时，对等互连状态为“已启动”。 
   - *已连接：* 创建从第二个虚拟网络到第一个虚拟网络的对等互连时，对等互连状态为“已连接”。 如果查看第一个虚拟网络的对等互连状态，会看到其状态从“已启动”更改为“已连接”。 直到两个虚拟网络对等互连的对等互连状态均为“已连接”时，对等互连才成功建立。
 - 将一个通过 Resource Manager 创建的虚拟网络与一个通过经典部署模型创建的虚拟网络对等互连时，只需为通过 Resource Manager 部署的虚拟网络配置对等互连。 不能为经典虚拟网络配置对等互连，也不能在两个通过经典部署模型部署的虚拟网络之间配置对等互连。 创建从 Resource Manager 虚拟网络到经典虚拟网络的对等互连时，对等互连状态先为“正在更新”，随后很快更改为“已连接”。
-- 对等互连是在两个虚拟网络之间建立的。 对等互连不可传递。 如果在以下虚拟网络之间创建对等互连：
-  - VirtualNetwork1 和 VirtualNetwork2
-  - VirtualNetwork2 和 VirtualNetwork3
+- 对等互连是在两个虚拟网络之间建立的。 对等互连本身是不可传递的。 如果在以下虚拟网络之间创建对等互连：
+  - VirtualNetwork1 & VirtualNetwork2-VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3-VirtualNetwork2 & VirtualNetwork3
 
-  不会通过 VirtualNetwork2 在 VirtualNetwork1 和 VirtualNetwork3 之间形成对等互连。 如果要在 VirtualNetwork1 和 VirtualNetwork3 之间创建虚拟网络对等互连，必须在 VirtualNetwork1 和 VirtualNetwork3 之间创建对等互连。
+
+  不会通过 VirtualNetwork2 在 VirtualNetwork1 和 VirtualNetwork3 之间形成对等互连。 如果要在 VirtualNetwork1 和 VirtualNetwork3 之间创建虚拟网络对等互连，必须在 VirtualNetwork1 和 VirtualNetwork3 之间创建对等互连。 不会通过 VirtualNetwork2 在 VirtualNetwork1 和 VirtualNetwork3 之间形成对等互连。 如果希望 VirtualNetwork1 和 VirtualNetwork3 直接通信，则必须在 VirtualNetwork1 和 VirtualNetwork3 之间创建显式对等互连，或者在中心网络中通过 NVA。  
 - 无法使用默认 Azure 名称解析来解析已对等互连的虚拟网络中的名称。 若要解析其他虚拟网络中的名称，必须使用[适用于专用域的 Azure DNS](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用自定义 DNS 服务器。 若要了解如何设置自己的 DNS 服务器，请参阅[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 - 同一区域中对等互连虚拟网络中的资源可以互相之间以相同的带宽和延迟进行通信，就如同资源是位于同一个虚拟网络中一样。 但是，每种虚拟机大小都有其自己的最大网络带宽。 若要深入了解不同虚拟机大小的最大网络带宽，请参阅 [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机大小。
 - 一个虚拟网络可以对等互连到另一个虚拟网络，也可以通过 Azure 虚拟网关连接到另一个虚拟网络。 当虚拟网络同时通过对等互连和网关连接时，虚拟网络的流量会根据对等互连配置流动，而不是通过网关流动。
@@ -165,6 +166,6 @@ ms.locfileid: "87416496"
   |一个是资源管理器模型，一个是经典模型  |[相同](create-peering-different-deployment-models.md)|
   |                                   |[不同](create-peering-different-deployment-models-subscriptions.md)|
 
-- 了解如何创建[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- 了解如何创建 [中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建虚拟网络对等互连
 - 为虚拟网络创建和分配 [Azure Policy 定义](policy-samples.md)

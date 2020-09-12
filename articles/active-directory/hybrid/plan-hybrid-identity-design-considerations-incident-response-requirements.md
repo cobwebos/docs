@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109272"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278405"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的事件响应要求
-大型或中型组织很可能会部署[安全事件响应](https://technet.microsoft.com/library/cc700825.aspx)，帮助 IT 部门根据事件级别采取相应措施。 标识管理系统是事件响应过程的重要组成部分，因为可以使用它来帮助识别针对目标执行具体操作的用户。 混合标识解决方案必须能够提供监视和报告功能，IT 部门可以利用这些功能采取措施来识别和缓解潜在威胁。 在典型的事件响应计划中将包含以下几个阶段：
+大型或中型组织很可能会部署[安全事件响应](/previous-versions/tn-archive/cc700825(v=technet.10))，帮助 IT 部门根据事件级别采取相应措施。 标识管理系统是事件响应过程的重要组成部分，因为可以使用它来帮助识别针对目标执行具体操作的用户。 混合标识解决方案必须能够提供监视和报告功能，IT 部门可以利用这些功能采取措施来识别和缓解潜在威胁。 在典型的事件响应计划中将包含以下几个阶段：
 
 1. 初始评估。
 2. 事件通信。
@@ -60,7 +60,7 @@ ms.locfileid: "67109272"
 * 贵公司是否需要为隔离用户强制实施条件性访问？ 
 
 > [!NOTE]
-> 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)将会超出每个选项的可用选项和优点/缺点。  回答了这些问题之后，就会挑选出最适合业务需求的选项。
+> 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md) 将会超出每个选项的可用选项和优点/缺点。  回答了这些问题之后，就会挑选出最适合业务需求的选项。
 > 
 > 
 
@@ -69,4 +69,3 @@ ms.locfileid: "67109272"
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)
-

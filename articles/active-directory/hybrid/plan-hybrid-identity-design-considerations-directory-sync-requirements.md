@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381153"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278388"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>确定目录同步要求
 同步就是基于用户的本地标识向用户提供一个云中的标识。 无论用户是否会将已同步的帐户用于身份验证或联合身份验证，用户仍需要具有一个云中的标识。  需要定期维护和更新此标识。  可以进行多种形式的更新（从标题更改到密码更改）。  
@@ -64,7 +64,7 @@ ms.locfileid: "60381153"
   * 是否能够打开支持同步所需的防火墙端口？
 * 是否有用于同步服务器的灾难恢复计划？
 * 是否具有要与其进行同步的所有林的正确权限的帐户？
-  * 如果贵公司不知道该问题的答案，请查看[安装 Azure Active Directory 同步服务](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService)文章中的“密码同步的权限”一节，并确定是否已具有这些权限的帐户，还是需要创建一个帐户。
+  * 如果贵公司不知道该问题的答案，请查看[安装 Azure Active Directory 同步服务](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService)文章中的“密码同步的权限”一节，并确定是否已具有这些权限的帐户，还是需要创建一个帐户。
 * 如果具有多林同步，同步服务器是否能够访问每个林？
 
 > [!NOTE]
@@ -77,4 +77,3 @@ ms.locfileid: "60381153"
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)
-

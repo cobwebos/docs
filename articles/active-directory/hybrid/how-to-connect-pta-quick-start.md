@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849879"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280173"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 传递身份验证：快速入门
 
@@ -33,7 +33,7 @@ ms.locfileid: "85849879"
 >如果要从 AD FS（或其他联合技术）迁移到传递身份验证，强烈建议按照[此处](https://aka.ms/adfstoPTADPDownload)发布的详细部署指南进行操作。
 
 >[!NOTE]
->如果通过 Azure 政府云部署 Pass 身份验证，请查看[Azure 政府的混合标识注意事项](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)。
+>如果通过 Azure 政府云部署 Pass 身份验证，请查看 [Azure 政府的混合标识注意事项](./reference-connect-government-cloud.md)。
 
 按照以下说明在租户上部署直通身份验证：
 
@@ -42,12 +42,12 @@ ms.locfileid: "85849879"
 请确保符合以下先决条件：
 
 >[!IMPORTANT]
->从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保证域控制器防范攻击](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的相同顺序对 PTA 代理服务器进行强制验证
+>从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保证域控制器防范攻击](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的相同顺序对 PTA 代理服务器进行强制验证
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>在 Azure Active Directory 管理中心中
 
-1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 完成此步骤至关重要，可确保自己不被锁定在租户外部。
-2. 在 Azure AD 租户中添加一个或多个[自定义域名](../active-directory-domains-add-azure-portal.md)。 用户可以使用其中一个域名登录。
+1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../fundamentals/add-users-azure-active-directory.md)。 完成此步骤至关重要，可确保自己不被锁定在租户外部。
+2. 在 Azure AD 租户中添加一个或多个[自定义域名](../fundamentals/add-custom-domain.md)。 用户可以使用其中一个域名登录。
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
@@ -55,12 +55,12 @@ ms.locfileid: "85849879"
 2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.750.0 或更高版本。
 
     >[!NOTE]
-    >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不__ 打算将密码哈希同步与直通身份验证结合使用，请参阅 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)了解详细信息。
+    >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不__ 打算将密码哈希同步与直通身份验证结合使用，请参阅 [Azure AD Connect 发行说明](./reference-connect-version-history.md)了解详细信息。
 
 3. 确定可以运行独立身份验证代理的一个或多个其他服务器（在启用 TLS 1.2 的情况下运行 Windows Server 2012 R2 或更高版本）。 需要这些额外的服务器来确保登录请求的高可用性。 将这些服务器添加到需要验证其密码的用户所在的同一 Active Directory 林中。
 
     >[!IMPORTANT]
-    >在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
+    >在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
 
 4. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
    - 确保身份验证代理可以通过以下端口向 Azure AD 提出“出站”** 请求：
@@ -77,7 +77,7 @@ ms.locfileid: "85849879"
    - 为了进行验证证书，请取消阻止以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure 政府云必备组件
-在使用步骤 2 Azure AD Connect 启用直通身份验证之前，请从 Azure 门户下载 PTA 代理的最新版本。  你需要确保代理版本为**1.5.1742.0。** 或更高版本。  若要验证代理，请参阅[升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+在使用步骤 2 Azure AD Connect 启用直通身份验证之前，请从 Azure 门户下载 PTA 代理的最新版本。  你需要确保代理版本为 **1.5.1742.0。** 或更高版本。  若要验证代理，请参阅 [升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
 
 下载最新版本的代理后，请继续执行以下说明，通过 Azure AD Connect 配置传递身份验证。
 
@@ -103,7 +103,7 @@ ms.locfileid: "85849879"
 
 按照这些说明验证是否已正确启用直通身份验证：
 
-1. 用租户的全局管理员凭据登录到[Azure Active Directory 管理中心](https://aad.portal.azure.com)。
+1. 用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com) 。
 2. 在左窗格中选择“Azure Active Directory”****。
 3. 选择“Azure AD Connect”****。
 4. 验证“直通身份验证”**** 功能是否显示为“已启用”****。
@@ -120,12 +120,12 @@ ms.locfileid: "85849879"
 如果计划在生产环境中部署直通身份验证，则应安装其他独立身份验证代理。 在没有__ 运行 Azure AD Connect 的服务器上安装这些身份验证代理。 此设置可提供用户登录请求的高可用性。
 
 >[!IMPORTANT]
->在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
+>在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
 
 安装多个直通身份验证代理可确保高可用性，但不会在身份验证代理之间实现确定性负载均衡。 若要确定你的租户所需的身份验证代理数，请考虑你预期会在你的租户上看到的登录请求的峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300 到 400 个身份验证。
 
 若要估算网络流量，请使用以下大小调整指南：
-- 每个请求的有效负载大小为（0.5 K + 1K * num_of_agents）字节，即从 Azure AD 到身份验证代理的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
+- 每个请求的有效负载大小为 (0.5 K + 1K * num_of_agents) 字节，即从 Azure AD 到身份验证代理的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
 - 每个响应的负载大小为1K 个字节，即从身份验证代理到 Azure AD 的数据。
 
 对于大多数客户，总共有三个身份验证代理足以满足高可用性和容量需求。 应在域控制器附近安装身份验证代理以改善登录延迟。
@@ -166,11 +166,11 @@ ms.locfileid: "85849879"
   ```
 
 >[!IMPORTANT]
->如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以安装其他身份验证代理。 此方法不**受支持**。
+>如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以安装其他身份验证代理。 此方法不 **受支持**。
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>步骤5：配置智能锁定功能
 
-智能锁定有助于锁定尝试猜测用户密码或使用强制方法获取的不良执行组件。 通过在本地 Active Directory 中的 Azure AD 和/或适当的锁定设置中配置智能锁定设置，可以在访问 Active Directory 之前对其进行筛选。 阅读[本文](../authentication/howto-password-smart-lockout.md)，了解有关如何在租户中配置智能锁定设置以保护用户帐户的详细信息。
+智能锁定有助于锁定尝试猜测用户密码或使用强制方法获取的不良执行组件。 通过在本地 Active Directory 中的 Azure AD 和/或适当的锁定设置中配置智能锁定设置，可以在访问 Active Directory 之前对其进行筛选。 阅读 [本文](../authentication/howto-password-smart-lockout.md) ，了解有关如何在租户中配置智能锁定设置以保护用户帐户的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoptadp) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。

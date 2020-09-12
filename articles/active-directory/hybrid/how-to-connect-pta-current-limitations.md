@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6efff54d2c28659af27161ab4cd4753302210006
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358406"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280190"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -34,7 +34,7 @@ ms.locfileid: "85358406"
 
 - 用户登录到基于 Web 浏览器的应用程序。
 - 用户使用旧版协议（例如 Exchange ActiveSync、EAS、SMTP、POP 和 IMAP）登录 Outlook 客户端。
-- 用户登录到旧版 Office 客户端应用程序和支持[新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 office 应用程序： Office 2013 和2016版本。
+- 用户登录到旧版 Office 客户端应用程序和支持 [新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 office 应用程序： Office 2013 和2016版本。
 - 用户登录到旧版协议的应用程序，例如 PowerShell 1.0 版本等。
 - 适用于 Windows 10 设备的 Azure AD 联接。
 - 进行多重身份验证的应用密码。
@@ -43,9 +43,9 @@ ms.locfileid: "85358406"
 
 _不_支持以下方案：
 
-- 检测[凭据泄露](../reports-monitoring/concept-risk-events.md#leaked-credentials)的用户。
+- 检测[凭据泄露](../identity-protection/overview-identity-protection.md)的用户。
 - Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
-- 直通身份验证未与 [Azure AD Connect Health](whatis-hybrid-identity-health.md) 集成。
+- 直通身份验证未与 [Azure AD Connect Health](./whatis-azure-ad-connect.md) 集成。
 
 > [!IMPORTANT]
 > 仅__ 作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。

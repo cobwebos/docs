@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bda07d0e14ddc630bde4fdc9c869704154c1e6cc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236346"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290084"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -72,6 +72,11 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     ```
 
 5. 在 Azure 数字孪生中创建 [路由](concepts-route-events.md#create-an-event-route) ，以将克隆更新事件发送到终结点。 此路由中的筛选器将仅允许向您的终结点传递一条不成对的更新消息。
+
+    >[!NOTE]
+    >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
+    >
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -207,6 +212,8 @@ namespace SampleFunctionsApp
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>开始将 IoT 数据发送到 Azure 数字孪生
 
 若要开始将数据发送到时序见解，需要开始更新 Azure 数字孪生中的数字克隆属性，并更改数据值。 使用 [az dt 双子端更新](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) 命令。
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 如果你使用的是端到端教程 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 来帮助进行环境设置，你可以通过从示例运行 *devicesimulator.exe* 项目来开始发送模拟 IoT 数据。 本教程的 [*配置和运行模拟*](tutorial-end-to-end.md#configure-and-run-the-simulation) 部分介绍了相关说明。
 

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177612"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276263"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -111,7 +111,7 @@ Azure AD Connect Health 支持以下内置角色：
 
 | 角色 | 权限 |
 | --- | --- |
-| Owner |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
+| 所有者 |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
 | 参与者 |参与者可以在 Azure AD Connect Health 中从门户中*查看所有信息*（例如查看警报信息）以及*更改设置*（例如设置电子邮件通知）。 |
 | 读取器 |读取者可以在 Azure AD Connect Health 中从门户*查看所有信息*（例如查看警报）。 |
 
@@ -133,12 +133,12 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”**** 部分中，单击“用户”****。<br>
    ![Azure AD Connect Health 资源边栏的屏幕截图](./media/how-to-connect-health-operations/startRBAC.png)
-2. 选择“添加”   。
+2. 选择 **添加** 。
 3. 在“选择角色”**** 窗格中，选择一个角色（例如“所有者”****）。<br>
    ![Azure AD Connect Health 和 Azure RBAC 配置菜单的屏幕截图](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。
    ![Azure AD Connect Health 和 Azure RBAC 角色列表的屏幕截图](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 选择“确定”。<br>
+5. 选择“确定” 。<br>
 6. 完成角色分配后，用户和组将显示在列表中。<br>
    ![突出显示 Azure AD Connect Health 和 Azure RBAC 和新用户的屏幕截图](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
@@ -167,7 +167,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 [//]: # (结束 RBAC 部分)
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
 * [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)
 * [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)

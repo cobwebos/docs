@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7cd6e61b8614e4c8ff5d54232972865c81cbb3ff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928864"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294775"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>创建和管理 Azure 认知搜索服务的 API 密钥
 
@@ -21,7 +21,7 @@ ms.locfileid: "88928864"
 
 在服务预配期间，将使用搜索服务创建密钥。 可以在 [Azure 门户](https://portal.azure.com)中查看和获取密钥值。
 
-![门户页上的“设置”>“密钥”部分](media/search-manage/azure-search-view-keys.png)
+![门户页，检索设置，键部分](media/search-manage/azure-search-view-keys.png)
 
 ## <a name="what-is-an-api-key"></a>什么是 API 密钥？
 
@@ -47,7 +47,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 2. 列出订阅的[搜索服务](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 3. 选择该服务，在“概述”页上，单击“设置” >“密钥”以查看管理密钥和查询密钥。
 
-   ![门户页上的“设置”>“密钥”部分](media/search-security-overview/settings-keys.png)
+   ![门户页，"查看设置，密钥" 部分](media/search-security-overview/settings-keys.png)
 
 ## <a name="create-query-keys"></a>创建查询密钥
 

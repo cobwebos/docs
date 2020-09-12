@@ -8,15 +8,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b983602c94acc9ffc0048a9753693d7c16869494
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 02aaae89f7544392765b46361b1617e0fd7dae8c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265552"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296800"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>从本地文件创建作业输入
 
@@ -33,7 +33,7 @@ ms.locfileid: "89265552"
 以下代码演示如何创建输入资产并将其用作作业的输入。 此 CreateInputAsset 函数执行以下操作：
 
 * 创建资产
-* 获取[存储中资产容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写[SAS URL](../../storage/common/storage-sas-overview.md)
+* 获取资产的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

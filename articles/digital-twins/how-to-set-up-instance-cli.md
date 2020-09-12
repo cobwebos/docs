@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 17e39a7b94384827af19b2362d478456cde8f167
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181453"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280088"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>设置 Azure 数字孪生实例和 (CLI 的身份验证) 
 
@@ -78,7 +78,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > 使用 [Azure Active Directory 用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) 的 "Azure 门户" 页选择用户帐户并打开其详细信息。 复制用户的 *ObjectID*：
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 对象 ID 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 "对象 ID" 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
 >
 > 然后，使用上面参数的用户 *对象 ID* 重复角色分配列表命令 `assignee` 。
 
@@ -150,5 +150,9 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
+使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
+
+或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
 * [*操作说明：编写应用身份验证代码*](how-to-authenticate-client.md)

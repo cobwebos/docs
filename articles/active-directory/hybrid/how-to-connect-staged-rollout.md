@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053213"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278575"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
@@ -25,7 +25,7 @@ ms.locfileid: "88053213"
 -  使用智能卡进行身份验证。 
 -  当前服务器提供某些仅限联合的功能。
 
-在尝试此功能之前，建议查看有关选择正确身份验证方法的指南。 有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods)中的“比较方法”表。
+在尝试此功能之前，建议查看有关选择正确身份验证方法的指南。 有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](./choose-ad-authn.md#comparing-methods)中的“比较方法”表。
 
 有关功能概述，请参阅此“Azure Active Directory：什么是分阶段推出？” 视频：
 
@@ -38,14 +38,14 @@ ms.locfileid: "88053213"
 -   你拥有具有联合域的 Azure Active Directory (Azure AD) 租户。
 
 -   你已决定改用以下两个选项之一：
-    - **选项 A**  - *密码哈希同步 (同步) *  + *无缝单一登录 (SSO) *。  有关详细信息，请参阅[什么是密码哈希同步](whatis-phs.md)以及[什么是无缝 SSO](how-to-connect-sso.md)
-    - **选项 B**  - *传递身份验证*  + *无缝 SSO*。  有关详细信息，请参阅[什么是直通身份验证](how-to-connect-pta.md)  
+    - **选项 A**  - *密码哈希同步 (同步) *  + *无缝单一登录 (SSO) *。  有关详细信息，请参阅 [什么是密码哈希同步](whatis-phs.md) 以及 [什么是无缝 SSO](how-to-connect-sso.md)
+    - **选项 B**  - *传递身份验证*  + *无缝 SSO*。  有关详细信息，请参阅 [什么是直通身份验证](how-to-connect-pta.md)  
     
     尽管无缝 SSO 是可选的，但我们建议使用它，为运行着公司网络中加入域的计算机的用户提供无提示登录体验。
 
 -   你已配置了要迁移到云身份验证的用户所需的所有相应租户品牌和条件访问策略。
 
--   如果你计划使用 Azure 多重身份验证，我们建议你使用 "[自助密码重置" 的组合注册 (SSPR) 和多重身份验证](../authentication/concept-registration-mfa-sspr-combined.md)，让你的用户注册其身份验证方法一次。
+-   如果你计划使用 Azure 多重身份验证，我们建议你使用 " [自助密码重置" 的组合注册 (SSPR) 和多重身份验证](../authentication/concept-registration-mfa-sspr-combined.md) ，让你的用户注册其身份验证方法一次。
 
 -   若要使用分阶段推出功能，你必须是租户的全局管理员。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88053213"
     - 分阶段推出不支持动态组。
     - 组内的联系人对象会阻止添加组。
 
-- 仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。  有关域切换的详细信息，请参阅[从联合迁移到密码哈希同步](plan-migrate-adfs-password-hash-sync.md)和[从联合迁移到直通身份验证](plan-migrate-adfs-pass-through-authentication.md)
+- 仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。  有关域切换的详细信息，请参阅 [从联合迁移到密码哈希同步](plan-migrate-adfs-password-hash-sync.md) 和 [从联合迁移到直通身份验证](plan-migrate-adfs-pass-through-authentication.md)
 
 
 
@@ -91,7 +91,7 @@ ms.locfileid: "88053213"
 
 若要使用分阶段推出测试密码哈希同步登录，请遵循下一节中的准备工作说明。
 
-有关要使用的 PowerShell cmdlet 的信息，请参阅 [Azure AD 2.0 预览版](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)。
+有关要使用的 PowerShell cmdlet 的信息，请参阅 [Azure AD 2.0 预览版](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)。
 
 ## <a name="pre-work-for-password-hash-sync"></a>密码哈希同步的准备工作
 
@@ -225,7 +225,7 @@ ms.locfileid: "88053213"
 
 1. 使用 UserPrincipalName 进行筛选，确保登录名成功显示在 [Azure AD 登录活动报告](../reports-monitoring/concept-sign-ins.md)中。
 
-   若要跟踪所选分阶段推出用户仍使用 Active Directory 联合身份验证服务 (AD FS) 进行的用户登录，请遵循 [AD FS 排除故障：事件和日志记录](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)中的说明。 查看有关如何在第三方联合身份验证提供程序上检查此项的供应商文档。
+   若要跟踪所选分阶段推出用户仍使用 Active Directory 联合身份验证服务 (AD FS) 进行的用户登录，请遵循 [AD FS 排除故障：事件和日志记录](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)中的说明。 查看有关如何在第三方联合身份验证提供程序上检查此项的供应商文档。
 
 ## <a name="remove-a-user-from-staged-rollout"></a>从分阶段推出中删除用户
 
@@ -243,7 +243,7 @@ A:不能，此功能设计用于从联合身份验证分阶段迁移到云身份
 
 **问：可以使用 PowerShell 执行分阶段推出吗？**
 
-A:是的。 若要了解如何使用 PowerShell 执行分阶段推出，请参阅 [Azure AD 预览版](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)。
+A:是的。 若要了解如何使用 PowerShell 执行分阶段推出，请参阅 [Azure AD 预览版](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)。
 
 ## <a name="next-steps"></a>后续步骤
-- [Azure AD 2.0 预览版](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2.0 预览版](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

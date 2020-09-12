@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698591"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279646"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
@@ -165,7 +165,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>对 AD FS 或第三方联合身份验证配置的影响
 如果使用 Azure AD Connect 管理本地 AD FS 部署，Azure AD Connect 会自动更新声明规则，使用同一 AD 属性作为 sourceAnchor。 这样可确保由 ADFS 生成的 ImmutableID 声明与导出到 Azure AD 的 sourceAnchor 值一致。
 
-如果在 Azure AD Connect 外部管理 AD FS，或者使用第三方联合身份验证服务器进行身份验证，则必须手动更新声明规则，以便 ImmutableID 声明与导出到 Azure AD 的 sourceAnchor 值一致，详见文章的[修改 AD FS 声明规则](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)部分。 安装完成后，向导会返回以下警告：
+如果在 Azure AD Connect 外部管理 AD FS，或者使用第三方联合身份验证服务器进行身份验证，则必须手动更新声明规则，以便 ImmutableID 声明与导出到 Azure AD 的 sourceAnchor 值一致，详见文章的[修改 AD FS 声明规则](./how-to-connect-fed-management.md#modclaims)部分。 安装完成后，向导会返回以下警告：
 
 ![第三方联合身份验证配置](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
@@ -193,7 +193,7 @@ John 是 contoso.com 中的用户。 在将用户同步到 Azure AD 目录 conto
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>不可路由的本地域与 Azure AD 的 UPN
 有些组织使用不可路由的域（例如 contoso.local）或简单的单标签域（例如 contoso）。 在 Azure AD 中，无法验证不可路由的域。 Azure AD Connect 只能同步到 Azure AD 中已验证的域。 创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。 因此，如果不想要同步到默认的 onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。
 
-有关添加和验证域的详细信息，请阅读 [Add your custom domain name to Azure Active Directory](../active-directory-domains-add-azure-portal.md)（将自定义域名添加到 Azure Active Directory）。
+有关添加和验证域的详细信息，请阅读 [Add your custom domain name to Azure Active Directory](../fundamentals/add-custom-domain.md)（将自定义域名添加到 Azure Active Directory）。
 
 Azure AD Connect 将检测是否在不可路由的域环境中运行，并在适当的情况下警告你不要继续使用快速设置。 如果在不可路由的域中操作，用户的 UPN 可能也包含不可路由的后缀。 例如，如果在 contoso.local 下运行，Azure AD Connect 建议使用自定义设置而不是快速设置。 使用自定义设置，可以在用户同步到 Azure AD 之后，指定要用作 UPN 以供登录 Azure 的属性。
 

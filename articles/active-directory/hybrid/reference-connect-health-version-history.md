@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182337"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279408"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -30,7 +30,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 > 新版本发布时，会自动更新连接运行状况代理。 请确保从 Azure 门户启用自动升级设置。
 >
 
-适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
+适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](./reference-connect-version-history.md)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
 
 ## <a name="april-2020"></a>2020 年 4 月
 **代理更新**
@@ -260,4 +260,4 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 * 使用 Azure AD 全局管理员凭据简化代理部署。  
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](whatis-hybrid-identity-health.md)。
+有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](./whatis-azure-ad-connect.md)。

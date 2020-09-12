@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762349"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291290"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -22,7 +22,7 @@ Spring Cloud Config 为分布式系统中的外部化配置提供服务器和客
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-* 一个已预配的处于运行状态的 Azure Spring Cloud 服务。 若要设置并启动 Azure Spring Cloud 服务，请参阅[快速入门：使用 Azure CLI 启动 Java Spring 应用程序](spring-cloud-quickstart-launch-app-cli.md)。
+* 一个已预配的处于运行状态的 Azure Spring Cloud 服务。 若要设置并启动 Azure Spring Cloud 服务，请参阅[快速入门：使用 Azure CLI 启动 Java Spring 应用程序](spring-cloud-quickstart.md)。
 
 ## <a name="restriction"></a>限制
 
@@ -216,7 +216,7 @@ Azure 春季云可以访问使用 SSH 保护的、使用 HTTP 基本身份验证
 
 1. 选择要配置的服务。
 
-1. 在服务页的左窗格中的 " **设置**" 下，选择 " **配置服务器** " 选项卡。配置前面创建的存储库：
+1. 在服务页的左窗格中的 " **设置**" 下，选择 " **配置服务器** " 选项卡。配置之前创建的存储库：
    - 添加从上一部分保存的存储库 URL
    - 单击 `Authentication` 并选择 `HTTP Basic`
    - __用户名__是上一部分中保存的用户名

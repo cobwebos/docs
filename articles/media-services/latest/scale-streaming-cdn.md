@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: cd2b9848ef1358c1aeaaed43e55d9914ac701564
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267099"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291273"
 ---
 # <a name="stream-content-with-cdn-integration"></a>通过 CDN 集成流式传输内容
 
@@ -155,7 +155,7 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 * 此功能是否适用于 UHD/HEVC 内容？
 
-    是的。
+    可以。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

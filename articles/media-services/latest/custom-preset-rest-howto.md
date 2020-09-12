@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9bdea0998b5d6b4c10a96d2ef593f46d6b7c02bf
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266997"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295625"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何对自定义转换进行编码 - REST
 

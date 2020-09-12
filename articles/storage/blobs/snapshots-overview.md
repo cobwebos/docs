@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230326"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295388"
 ---
 # <a name="blob-snapshots"></a>Blob 快照
 
@@ -90,25 +90,25 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 在方案 1 中，基本 Blob 自创建快照后未进行更新，因此仅唯一块 1、2 和 3 会产生费用。
 
-![图1显示基本 blob 和快照中的唯一块的计费](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![图1：显示基本 blob 和快照中的唯一块的计费。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>方案 2
 
 在方案 2 中，已更新基本 Blob，但未更新快照。 已更新块 3，即使它包含相同的数据和 ID，它也与快照中的块 3 不同。 因此，帐户需要为四个块支付费用。
 
-![图2显示基本 blob 和快照中的唯一块的计费](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![图2：显示基本 blob 和快照中的唯一块的计费。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>方案 3
 
 在方案 3 中，已更新基本 Blob，但未更新快照。 块 3 已替换为基础 Blob 中的块 4，但快照仍反映块 3。 因此，帐户需要为四个块支付费用。
 
-![图3显示基本 blob 和快照中的唯一块的计费](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![图3：显示基本 blob 和快照中的唯一块的计费。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>方案 4
 
 在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，帐户需要为所有八个唯一块支付费用。
 
-![图4显示基本 blob 和快照中的唯一块的计费](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![图4：显示基本 blob 和快照中的唯一块的计费。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > 避免调用覆盖整个 blob 的方法，而是更新各个块以降低成本。
@@ -128,6 +128,10 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 | 快照 | 新层中的快照和原始层中的基本 blob 以及其他快照中的任何唯一块。<sup>1</sup> |
 
 <sup>1</sup>如果其他以前的版本或快照尚未从其原始层中移出，这些版本或快照会根据它们所包含的唯一块的数量收费，如 [未显式设置 blob 层的计费](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+下图说明了当包含快照的 blob 移到不同层时，如何对对象计费。
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="此图显示了在显式分层包含快照的 blob 时，如何对对象计费。":::
 
 无法撤消为 blob、版本或快照显式设置层。 如果将某个 blob 移动到新层，然后将其移回其原始层，则即使该对象与原始层中的其他对象共享块，也会为该对象的完整内容长度收费。
 

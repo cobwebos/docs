@@ -3,15 +3,15 @@ title: 管理资源组 - Azure CLI
 description: 使用 Azure CLI 通过 Azure 资源管理器管理资源组。 说明如何创建、列出和删除资源组。
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c64e7166d154d8f37af7a64777e2c36181b7195b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827106"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290491"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源管理器资源组
 
@@ -32,14 +32,10 @@ ms.locfileid: "87827106"
 
 ## <a name="create-resource-groups"></a>创建资源组
 
-以下 CLI 脚本将创建一个资源组，然后显示该资源组。
+以下 CLI 命令将创建一个资源组。
 
 ```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-echo "Enter the location (i.e. centralus):" &&
-read location &&
-az group create --name $resourceGroupName --location $location
+az group create --name demoResourceGroup --location westus
 ```
 
 ## <a name="list-resource-groups"></a>列出资源组
@@ -68,7 +64,7 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-若要详细了解 Azure 资源管理器如何控制资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
+若要详细了解 Azure 资源管理器如何管理资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>将资源部署到现有的资源组
 
@@ -80,7 +76,7 @@ az group delete --name $resourceGroupName
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能也称为“出错时回滚”**。 有关详细信息，请参阅[在部署失败时重新部署](../templates/rollback-on-error.md)。
+此功能也称为“出错时回滚”  。 有关详细信息，请参阅[在部署失败时重新部署](../templates/rollback-on-error.md)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移到另一个资源组或订阅
 
@@ -116,7 +112,7 @@ read lockName &&
 az lock delete --name $lockName --resource-group $resourceGroupName
 ```
 
-更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
+有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](lock-resources.md)。
 
 ## <a name="tag-resource-groups"></a>标记资源组
 
@@ -145,7 +141,7 @@ az group export --name $resourceGroupName
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 
-Azure [RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md)是管理 azure 中资源访问权限的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

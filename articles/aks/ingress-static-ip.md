@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: dbab9df3acf7de801a4e75502863fff698232458
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852558"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290542"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> 以上命令创建一个 IP 地址，如果你删除了 AKS 群集，该 IP 地址会被删除。 或者，你可以在不同的资源组中创建一个 IP 地址，该资源组可以与你的 AKS 群集分开管理。 如果在不同的资源组中创建 IP 地址，请确保 AKS 群集使用的服务主体具有委托给其他资源组的权限，例如网络参与者。
+> 以上命令创建一个 IP 地址，如果你删除了 AKS 群集，该 IP 地址会被删除。 或者，你可以在不同的资源组中创建一个 IP 地址，该资源组可以与你的 AKS 群集分开管理。 如果在不同的资源组中创建 IP 地址，请确保 AKS 群集使用的服务主体具有委托给其他资源组的权限，例如网络参与者。 有关详细信息，请参阅 [将静态公共 IP 地址和 DNS 标签用于 AKS 负载均衡器][aks-static-ip]。
 
 现在，通过 Helm 部署 *nginx-ingress* 图表。 对于增加的冗余，NGINX 入口控制器的两个副本会在部署时具备 `--set controller.replicaCount` 参数。 若要充分利用正在运行的入口控制器副本，请确保 AKS 群集中有多个节点。
 
@@ -483,3 +483,4 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-static-ip]: static-ip.md

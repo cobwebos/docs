@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423144"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279493"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
@@ -38,10 +38,10 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：按照 [Microsoft 密码指南](https://www.microsoft.com/research/publication/password-guidance/)中的指南进行操作，该指南的适用范围是 Microsoft 标识平台（Azure Active Directory、Active Directory 和 Microsoft 帐户）的用户。
 
 **最佳做法**：监视与用户帐户相关的可疑操作。   
-**详细信息**：使用 Azure AD 安全报告监视具有[风险的用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)和有风险的[登录](../../active-directory/reports-monitoring/concept-risk-events.md)。
+**详细信息**：使用 Azure AD 安全报告监视具有 [风险的用户](/azure/active-directory/reports-monitoring/concept-user-at-risk) 和有风险的 [登录](../../active-directory/reports-monitoring/concept-risk-events.md) 。
 
 **最佳做法**：自动检测和修正高风险密码。   
-**详细信息**： [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)是 Azure AD Premium P2 版本的一项功能，它使你能够：
+**详细信息**： [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview) 是 Azure AD Premium P2 版本的一项功能，它使你能够：
 
 - 检测影响组织标识的潜在漏洞
 - 配置自动响应，可检测与组织标识相关的可以操作
@@ -53,9 +53,9 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 在 Azure 注册门户中，你可以确保管理员联系信息包含用来进行安全操作通知的详细信息。 联系人详细信息为电子邮件地址和电话号码。
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>将 Azure 订阅组织到管理组中
-如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/governance/management-groups/create)提供了高于订阅的范围级别。 可将订阅组织到名为“管理组”的容器中，并将治理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。
+如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/governance/management-groups/create) 提供了高于订阅的范围级别。 可将订阅组织到名为“管理组”的容器中，并将治理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。
 
-可以在目录中构建管理组和订阅的灵活结构。 为每个目录指定了一个称为根管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 根管理组允许在目录级别应用全局策略和 Azure 角色分配。
+可以在目录中构建管理组和订阅的灵活结构。 为每个目录指定了一个称为根管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 该根管理组允许在目录级别应用全局策略和 Azure 角色分配。
 
 下面是管理组使用方面的一些最佳做法：
 
@@ -80,7 +80,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：根管理组中的更改可能会影响 Azure 上的每个资源。 尽管它们提供了一种强大的方法来确保整个企业中的一致性，但错误或不正确的使用可能会对生产操作产生负面影响。 请在测试实验室或生产试点中测试对根管理组的所有更改。
 
 ## <a name="streamline-environment-creation-with-blueprints"></a>利用蓝图简化环境创建
-[Azure 蓝图](/azure/governance/blueprints/overview)服务使云架构师和中心信息技术小组能够定义可实现并符合组织标准、模式和要求的一组可重复的 azure 资源。 使用 Azure 蓝图，开发团队可以快速生成新的环境并将其放在新的环境中，并提供一套内置组件，并确保他们在组织符合性中创建这些环境。
+[Azure 蓝图](/azure/governance/blueprints/overview) 服务使云架构师和中心信息技术小组能够定义可实现并符合组织标准、模式和要求的一组可重复的 azure 资源。 使用 Azure 蓝图，开发团队可以快速生成新的环境并将其放在新的环境中，并提供一套内置组件，并确保他们在组织符合性中创建这些环境。
 
 ## <a name="monitor-storage-services-for-unexpected-changes-in-behavior"></a>监视存储服务的意外行为更改
 诊断和排查在云环境中托管的分布式应用程序中的问题可能会比在传统环境中更复杂。 应用程序可以部署在 PaaS 或 IaaS 基础结构、本地、移动设备，或这些环境的某种组合中。 应用程序的网络流量可能会遍历公用和专用网络，你的应用程序可能使用多种存储技术。
@@ -100,26 +100,26 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 几乎所有的企业组织都有一个安全信息和事件管理 (SIEM) 系统，它可以整合来自不同信号收集设备的日志信息，因此可以识别新出现的威胁。 然后，数据分析系统会分析日志，以帮助确定所有日志收集和分析解决方案中不可避免的噪音的 "有趣"。
 
-[Azure Sentinel](/azure/sentinel/overview)是一个可缩放的云本机、安全信息和事件管理（SIEM）和安全业务流程自动响应（之忠诚度）解决方案。 Azure Sentinel 通过警报检测、威胁可见性、主动搜寻和自动威胁响应提供智能安全分析和威胁智能。
+[Azure Sentinel](/azure/sentinel/overview) 是一种可缩放的云本机、安全信息和事件管理 (SIEM) 和安全业务流程自动响应 (之忠诚度) 解决方案。 Azure Sentinel 通过警报检测、威胁可见性、主动搜寻和自动威胁响应提供智能安全分析和威胁智能。
 
 下面是一些用于预防、检测和响应威胁的最佳做法：
 
 **最佳做法**：使用基于云的 SIEM 提高 SIEM 解决方案的速度和可伸缩性。   
-**详细信息**：调查[Azure Sentinel](/azure/sentinel/overview)的特性和功能，并将其与你当前在本地使用的功能进行比较。 如果符合组织的 SIEM 要求，请考虑采用 Azure Sentinel。
+**详细信息**：调查 [Azure Sentinel](/azure/sentinel/overview) 的特性和功能，并将其与你当前在本地使用的功能进行比较。 如果符合组织的 SIEM 要求，请考虑采用 Azure Sentinel。
 
 **最佳做法**：找到最严重的安全漏洞，以便确定调查优先级。   
 **详细信息**：查看你的 [Azure 安全评分](../../security-center/secure-score-security-controls.md)，了解 Azure 安全中心内置的 Azure 策略和计划所产生的建议。 这些建议有助于解决顶级风险，例如安全更新、终结点保护、加密、安全配置、WAF 缺失、VM 连接到 Internet 等方面的风险。
 
-基于 Internet 安全（CIS）控制中心的安全分数使你可以基于外部源对组织的 Azure 安全进行基准测试。 外部验证有助于验证和丰富团队的安全策略。
+基于 Internet 安全中心 (CIS) 控件的安全分数使你能够根据外部源来基准组织的 Azure 安全性。 外部验证有助于验证和丰富团队的安全策略。
 
 **最佳做法**：监视计算机、网络、存储和数据服务以及应用程序的安全状况，发现潜在的安全问题并确定其优先级。  
 **详细信息**：按照安全中心的[安全建议](../../security-center/security-center-recommendations.md)操作，并从优先级最高的项开始。
 
-**最佳做法**：将安全中心警报集成到你的安全信息和事件管理（SIEM）解决方案中。   
-**详细信息**：使用 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中央 clearinghouse。 安全中心生成的已处理事件会发布到 Azure 活动日志中，其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅[导出安全警报和建议](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs)。 如果使用的是 Azure Sentinel，请参阅[连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
+**最佳做法**：将安全中心警报集成到你的安全信息和事件管理 (SIEM) 解决方案。   
+**详细信息**：使用 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中央 clearinghouse。 安全中心生成的已处理事件会发布到 Azure 活动日志中，其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅 [导出安全警报和建议](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) 。 如果使用的是 Azure Sentinel，请参阅 [连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
 
 **最佳做法**：将 Azure 日志与你的 SIEM 集成。   
-**详细信息**：[使用 Azure Monitor 收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 此做法对于启用安全事件调查至关重要，而在线日志保留期是有限的。 如果使用的是 Azure Sentinel，请参阅[连接数据源](../../sentinel/connect-data-sources.md)。
+**详细信息**：[使用 Azure Monitor 收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 此做法对于启用安全事件调查至关重要，而在线日志保留期是有限的。 如果使用的是 Azure Sentinel，请参阅 [连接数据源](../../sentinel/connect-data-sources.md)。
 
 **最佳做法**：通过将终结点检测和响应 (EDR) 功能集成到攻击调查中，加快调查和搜寻过程，并减少误报。   
 **详细信息**：通过安全中心安全策略[启用 Microsoft Defender ATP 集成](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration)。 考虑使用 Azure Sentinel 进行威胁搜寻和事件响应。
@@ -149,20 +149,20 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 [Azure 资源管理器](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/)允许用户使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
 
 **** 最佳做法：自动生成并部署到 Azure Web 应用或云服务。  
-**详细信息**：可以将 Azure DevOps Projects 配置为[自动生成并部署](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops)到 Azure web 应用或云服务。 在每次代码签入后，azure DevOps 会自动部署二进制文件。 包生成过程与 Visual Studio 中的 Package 命令等效，而发布步骤与 Visual Studio 中的 Publish 命令等效。
+**详细信息**：可以将 Azure DevOps Projects 配置为  [自动生成并部署](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) 到 Azure web 应用或云服务。 在每次代码签入后，azure DevOps 会自动部署二进制文件。 包生成过程与 Visual Studio 中的 Package 命令等效，而发布步骤与 Visual Studio 中的 Publish 命令等效。
 
 **** 最佳做法：自动执行发布管理。  
 **** 详细信息：[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) 是实现多阶段部署和管理发布过程自动化的解决方案。 创建托管的持续部署管道，快速、轻松地频繁发布。 通过 Azure Pipelines，可以使发布过程自动化，还可以拥有预定义的批准工作流。 根据需要进行本地部署和部署到云、扩展和自定义。
 
 **** 最佳做法：在推出应用或将更新部署到生产环境之前，先检查该应用的性能。  
-**详细信息**：运行基于云的[负载测试](/azure/devops/test/load-test/overview#alternatives)，以执行以下操作：
+**详细信息**：运行基于云的 [负载测试](/azure/devops/test/load-test/overview#alternatives) ，以执行以下操作：
 
 - 在应用中查找性能问题。
 - 提高部署质量。
 - 请确保应用始终可用。
 - 确保应用可以处理下一次启动或市场营销活动的流量。
 
-[Apache JMeter](https://jmeter.apache.org/)是一个功能强大的免费开源工具，具有强大的社区支持。
+[Apache JMeter](https://jmeter.apache.org/) 是一个功能强大的免费开源工具，具有强大的社区支持。
 
 **** 最佳做法：监视应用程序性能。  
 **** 详细信息：[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。
@@ -215,11 +215,11 @@ Azure 具有两个 DDoS [服务产品](../../virtual-network/ddos-protection-ove
 **最佳做法**：确定负责监视策略违规的角色，并确保快速执行正确的修正操作。   
 **详细信息**：让已分配的角色通过 [Azure 门户](../../governance/policy/how-to/get-compliance-data.md#portal)或[命令行](../../governance/policy/how-to/get-compliance-data.md#command-line)来监视符合性。
 
-**最佳做法**：Azure Policy 是组织的书面策略的技术表示形式。 将所有 Azure 策略定义映射到组织策略，以减少混乱并增加一致性。   
-**详细信息**：在组织的文档或 Azure 策略定义中，通过在[策略定义](../../governance/policy/concepts/definition-structure.md#display-name-and-description)或[计划定义](../../governance/policy/concepts/initiative-definition-structure.md#metadata)说明中添加对组织策略的引用来记录映射。
+**最佳做法**：Azure Policy 是组织的书面策略的技术表示形式。 将所有 Azure 策略定义映射到组织策略，以减少混乱并增强一致性。   
+**详细信息**：在组织的文档或 Azure 策略定义中，通过在 [策略定义](../../governance/policy/concepts/definition-structure.md#display-name-and-description) 或 [计划定义](../../governance/policy/concepts/initiative-definition-structure.md#metadata) 说明中添加对组织策略的引用来记录映射。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>监视 Azure AD 风险报告
-大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为[风险检测](../../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险检测记录在 Azure AD 安全报表中。 有关详细信息，请参阅[风险安全报表](../../active-directory/reports-monitoring/concept-user-at-risk.md)中的用户和有风险的[登录安全报告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
+大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为 [风险检测](../../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险检测记录在 Azure AD 安全报表中。 有关详细信息，请参阅 [风险安全报表](../../active-directory/reports-monitoring/concept-user-at-risk.md) 中的用户和有风险的 [登录安全报告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135855"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291103"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -54,13 +54,13 @@ ms.locfileid: "88135855"
 >[!NOTE]
 >Windows 虚拟桌面当前没有 IP 地址范围的列表，你可以取消阻止这些 IP 地址范围以允许网络流量。 目前仅支持取消阻止特定的 Url。
 >
->有关与安全 Office 相关的 Url （包括所需 Azure Active Directory 相关 Url）的列表，请参阅[Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges)。
+>有关与安全 Office 相关的 Url （包括所需 Azure Active Directory 相关 Url）的列表，请参阅 [Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges)。
 >
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
 >1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
 >2. 打开**事件查看器**，然后切换到**Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3701。
->3. 将在事件 ID 3701 下找到的 Url 列入白名单。 事件 ID 3701 下的 Url 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
+>3. 取消阻止在事件 ID 3701 下找到的 Url。 事件 ID 3701 下的 Url 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
 
 ## <a name="remote-desktop-clients"></a>远程桌面客户端
 
@@ -79,4 +79,4 @@ ms.locfileid: "88135855"
 >[!IMPORTANT]
 >若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。
 >
->这些 Url 仅对应于客户端站点和资源。 此列表不包含其他服务（如 Azure Active Directory）的 Url。 在[Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的 ID 56 下可以找到 Azure Active Directory url。
+>这些 Url 仅对应于客户端站点和资源。 此列表不包含其他服务（如 Azure Active Directory）的 Url。 在 [Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的 ID 56 下可以找到 Azure Active Directory url。

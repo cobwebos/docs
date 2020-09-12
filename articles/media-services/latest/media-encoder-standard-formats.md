@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: c8c111d046bfaefac11df576e455162d20acecd0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266555"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289437"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
 

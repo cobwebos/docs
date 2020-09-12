@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245492"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279306"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
 有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。 常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。 但即使有纯模型，混合模型也是常见的模型。 Azure AD Connect 同步中的默认配置是不会假定任何特定模型，但观察到的行为可能会有所不同，这具体取决于安装指南中如何选择用户匹配。
@@ -39,9 +39,9 @@ ms.locfileid: "60245492"
 
 * Azure AD Connect 会从目录同步中排除内置安全组。
 
-* Azure AD Connect 不支持将[主要组成员身份](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx)同步到 Azure AD。
+* Azure AD Connect 不支持将[主要组成员身份](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11))同步到 Azure AD。
 
-* Azure AD Connect 不支持将[动态分发组成员身份](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx)同步到 Azure AD。
+* Azure AD Connect 不支持将[动态分发组成员身份](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019)同步到 Azure AD。
 
 * 若要以启用邮件的组的形式将 Active Directory 组同步到 Azure AD：
 
@@ -76,4 +76,3 @@ ms.locfileid: "60245492"
 ## <a name="additional-resources"></a>其他资源
 * [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
-

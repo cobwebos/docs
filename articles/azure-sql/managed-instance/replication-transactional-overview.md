@@ -1,7 +1,7 @@
 ---
 title: 事务复制
 titleSuffix: Azure SQL Managed Instance
-description: 了解如何对 Azure SQL 托管实例使用 SQL Server 事务复制。
+description: 了解如何在 Azure SQL 托管实例 (预览) 中使用 SQL Server 事务复制。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920112"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290508"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>使用 Azure SQL 托管实例进行事务性复制
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>通过 Azure SQL 托管实例 (预览版进行事务复制) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 事务复制是 Azure SQL 托管实例和 SQL Server 的一项功能，用于将 Azure SQL 托管实例或 SQL Server 实例中表的数据复制到远程数据库中的表。 使用此功能可以同步不同数据库中的多个表。 
 
-事务性复制目前处于公共预览版的 SQL 托管实例。 
+事务复制目前提供了用于 SQL 托管实例的公共预览版。 
 
 ## <a name="overview"></a>概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "87920112"
 
 - SQL Server 数据库 - 在本地或在 Azure VM 上
 - Azure SQL 数据库中的数据库
-- Azure SQL 中的实例数据库托管实例
+- Azure SQL 托管实例中的实例数据库
 
   > [!NOTE]
   > 若要使用 Azure SQL 托管实例的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
@@ -106,7 +106,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
 
-| Category | 数据同步 | 事务复制 |
+| 类别 | 数据同步 | 事务复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
 | 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | -无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |

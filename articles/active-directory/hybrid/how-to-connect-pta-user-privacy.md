@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358117"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279510"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
 
@@ -67,13 +67,13 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-event-logs"></a>删除身份验证代理事件日志
 
-此产品还可创建 **Windows 事件日志**。 有关详细信息，请参阅[此文](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx)。
+此产品还可创建 **Windows 事件日志**。 有关详细信息，请参阅[此文](/windows/win32/wes/windows-event-log)。
 
 若要查看与直通身份验证代理相关的日志，请在服务器上打开“事件查看器”应用程序，然后在 **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** 下查看。****
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>删除身份验证代理跟踪日志文件
 
-应定期检查 **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect Authentication Agent\Trace**的内容，每48小时删除此文件夹中的内容。 
+应定期检查 **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect Authentication Agent\Trace** 的内容，每48小时删除此文件夹中的内容。 
 
 >[!IMPORTANT]
 >如果身份验证代理服务正在运行，则无法删除此文件夹中的当前日志文件。 重试之前请停止该服务。 为避免用户登录失败，应事先配置直通身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
@@ -92,18 +92,18 @@ Foreach ($file in $files) {
 
 1.  将脚本保存在具有“.PS1”扩展名的文件中。
 2.  打开“控制面板”，单击“系统和安全性”。********
-3.  在 "**管理工具**" 标题下，单击 "**计划任务**"。
+3.  在 " **管理工具** " 标题下，单击 "**计划任务**"。
 4.  在“任务计划程序”中，右键单击“任务计划库”，并单击“创建基本任务...”。************
 5.  输入新任务的名称，然后单击“下一步”****。
 6.  为**任务触发器**选择**每日**，单击**下一步**。
 7.  将重复周期设置为两天，单击“下一步”。****
 8.  选择“启动程序”作为操作，单击“下一步”********。
-9.  在 "程序/脚本" 框中键入 "**PowerShell**"，并在标记为 "**添加参数（可选）**" 的框中输入之前创建的脚本的完整路径，然后单击 "**下一步**"。
-10. 下一屏幕会显示要创建的任务摘要。 验证这些值，然后单击 "**完成**" 以创建任务：
+9.  在 "程序/脚本" 框中键入 "**PowerShell**"，并在标记为 "** (可选) 添加参数 **" 的框中输入之前创建的脚本的完整路径，然后单击 " **下一步**"。
+10. 下一屏幕会显示要创建的任务摘要。 验证这些值，然后单击 " **完成** " 以创建任务：
  
 ### <a name="note-about-domain-controller-logs"></a>关于域控制器日志的注意事项
 
-如果启用了审核日志，此产品可能会为域控制器生成安全日志。 若要了解有关配置审核策略的详细信息，请阅读[此文](https://technet.microsoft.com/library/dd277403.aspx)。
+如果启用了审核日志，此产品可能会为域控制器生成安全日志。 若要了解有关配置审核策略的详细信息，请阅读[此文](/previous-versions/tn-archive/dd277403(v=technet.10))。
 
 ## <a name="next-steps"></a>后续步骤
 * [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)

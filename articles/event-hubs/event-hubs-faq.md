@@ -3,12 +3,12 @@ title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537174"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89288961"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -70,8 +70,8 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | HTTP、HTTPS | 80、443 |  |
 | Kafka | 9093 | 请参阅[使用 Kafka 应用程序中的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要将哪些 IP 地址列入允许列表？
-若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
+### <a name="what-ip-addresses-do-i-need-to-allow"></a>需要允许哪些 IP 地址？
+若要查找要添加到连接的允许列表的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符运行以下命令： 
 

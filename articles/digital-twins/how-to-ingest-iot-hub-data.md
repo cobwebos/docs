@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 47e4bb291d031c41c89c88435a795004490e20a1
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8d720d77773e506a13f176723ab4583613f1e625
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505319"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291749"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>将 IoT 中心遥测数据引入 Azure 数字孪生
 
@@ -63,14 +63,20 @@ Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure �
 ```
 
 若要将 **此模型上传到孪生实例**，请打开 Azure CLI，并运行以下命令：
+
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 然后，需要 **使用此模型创建一个**克隆。 使用以下命令创建一个克隆并将0.0 设置为初始温度值。
+
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 成功的 "创建" 命令的输出应如下所示：
 ```json
@@ -212,6 +218,8 @@ namespace IotHubtoTwins
 ## <a name="validate-your-results"></a>验证结果
 
 在运行上面的设备模拟器时，将更改数字克隆的温度值。 在 Azure CLI 中运行以下命令以查看温度值。
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ```azurecli-interactive
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}

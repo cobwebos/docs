@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268316"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290117"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>排查 Azure Stack 边缘 GPU 设备上的问题 
 
@@ -140,7 +140,7 @@ ms.locfileid: "89268316"
 
 下面是在配置 Azure 资源管理器以访问设备时可能显示的错误。 
 
-| **问题/错误** |  **分辨率** | 
+| **问题/错误** |  **解决方法** | 
 |------------|-----------------|
 |常规问题|<li>[验证边缘设备是否已正确配置](#verify-the-device-is-configured-properly)。<li> [验证是否正确配置了客户端](#verify-the-client-is-configured-properly)|
 |Get-azurermenvironment：发送请求时出错。<br>行：1个字符：1<br>+ Get-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此错误表示无法访问或正确配置 Azure Stack Edge 设备。 验证是否正确配置了边缘设备和客户端。 有关指南，请参阅此表中的 **常规问题** 行。|
@@ -184,17 +184,17 @@ ms.locfileid: "89268316"
 
 下面是与 Azure Stack Edge/Data Box Gateway 设备上的 blob 存储相关的错误。
 
-| **问题/错误** |  **分辨率** | 
+| **问题/错误** |  **解决方法** | 
 |--------------------|-----------------|
 |无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。| 在“编辑”菜单中，选择“目标 Azure Stack API”。  然后，重新启动 Azure 存储资源管理器。|
 |getaddrinfo ENOTFOUND <accountname> . <serialnumber>microsoftdatabox.com|检查是否已将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到主机文件中的以下路径： `C:\Windows\System32\drivers\etc\hosts` Windows 或 `/etc/hosts` Linux。|
 |无法检索子资源。<br> 详细信息：自签名证书 |将设备的 SSL 证书导入 Azure 存储资源管理器： <ol><li>从 Azure 门户下载证书。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。</li><li>在 " **编辑** " 菜单中，选择 "SSL 证书"，然后选择 " **导入证书**"。</li></ol>|
-|AzCopy 命令在显示以下错误之前，似乎挂起了一分钟：<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了一分钟：<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟：<br>`Error parsing source location… The SSL connection could not be established`. |将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
-|在显示此错误之前，AzCopy 命令似乎挂起20分钟： `Error parsing source location… The SSL connection could not be established` 。|将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟：<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟：<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location… The SSL connection could not be established`. |将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
+|显示此错误之前，AzCopy 命令似乎停止响应20分钟： `Error parsing source location… The SSL connection could not be established` 。|将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
 |其中一个 HTTP 标头的值的格式不正确。|Data Box 不支持用于 Python 的 Microsoft Azure 存储库的已安装版本。 请查看 Azure Data Box Blob 存储要求，了解支持的版本。|
 |… [SSL:CERTIFICATE_VERIFY_FAILED] …| 在运行 Python 之前，将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (参阅如何 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。 例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>或者，将证书添加到系统的证书存储中，然后将此环境变量设置为该存储区的路径。 例如，在 Ubuntu 上为：<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |连接超时。|登录到 Azure Stack 边缘，然后检查它是否已解锁。 设备在重启后会保持锁定状态，直到有人登录为止。|

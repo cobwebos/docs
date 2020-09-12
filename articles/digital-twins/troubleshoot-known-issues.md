@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921063"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290772"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -21,19 +21,28 @@ ms.locfileid: "88921063"
 
 Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客户端错误： url 的错误请求： http://localhost:50342/oauth2/token " 后跟完整堆栈跟踪。
 
+对于 Azure 数字孪生，此操作会影响以下命令组：
+* `az dt route`
+* `az dt model`
+* `az dt twin`
+
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
-可以通过重新运行该 `az login` 命令并完成后续的登录步骤来解决此情况。
+若要解决此情况，可以 `az login` 在 Cloud Shell 中重新运行该命令并完成后续的登录步骤。 此后，你应该能够重新运行该命令。
 
-此后，你应该能够重新运行命令。
+另一种解决方案是在您的计算机上 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ，以便您可以在本地运行 Azure CLI 命令。 本地 CLI 不会遇到此问题。
 
 ### <a name="possible-causes"></a>可能的原因
 
 这是 Cloud Shell 中的已知问题的结果： [*从 Cloud Shell 中获取令牌间歇性失败，并出现400客户端错误：错误的请求*](https://github.com/Azure/azure-cli/issues/11749)。
 
+这会给 Azure 数字孪生实例身份验证令牌和 Cloud Shell 默认的基于 [管理身份](../active-directory/managed-identities-azure-resources/overview.md) 的身份验证提供问题。 正在运行的故障排除步骤 `az login` 会将你从托管标识身份验证中排除，从而逐句通过此问题。
+
+这不会影响或命令组中的 Azure 数字孪生命令 `az dt` `az dt endpoint` ，因为它们使用不同类型的身份验证令牌 (基于 ARM 的) ，这与 Cloud Shell 的托管标识身份验证无关。
+
 ## <a name="missing-role-assignment-after-scripted-setup"></a>编写脚本后缺少角色分配
 
-在 [*操作方法：设置实例和身份验证 (脚本) *](how-to-set-up-instance-scripted.md)时，某些用户可能会遇到有关角色分配部分的问题。 此脚本不表示失败，但 *Azure 数字孪生所有者 (预览) * 角色未成功分配给用户，这将影响在路上创建其他资源的能力。
+在 [*操作方法：设置实例和身份验证 (脚本) *](how-to-set-up-instance-scripted.md)时，某些用户可能会遇到有关角色分配部分的问题。 此脚本不表示失败，但 *Azure 数字孪生所有者 (预览) * 角色未成功分配给用户，此问题将影响在路上创建其他资源的能力。
 
 若要确定运行脚本后是否成功设置了角色分配，请按照安装程序一文中的 [*验证用户角色分配*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) 部分中的说明进行操作。 如果用户未显示此角色，此问题会影响你。
 
@@ -47,7 +56,7 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 ### <a name="possible-causes"></a>可能的原因
 
-对于使用个人 [Microsoft 帐户 (MSA) ](https://account.microsoft.com/account)登录的用户，用户的主体 ID （用于标识类似于这样的命令）可能不同于用户的登录电子邮件，这使得脚本很难发现和使用正确分配角色。
+对于使用个人 [Microsoft 帐户 (MSA) ](https://account.microsoft.com/account)登录的用户，用户的主体 ID （用于标识类似于此的命令可能不同于用户的登录电子邮件），这使得脚本难以发现并使用来正确分配角色。
 
 ## <a name="issue-with-interactive-browser-authentication"></a>交互式浏览器身份验证问题
 
@@ -64,11 +73,11 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
-若要解决此问题，请更新应用程序以使用 Azure. 标识版本 **1.2.2**。 对于此版本的库，浏览器应按照预期方式进行加载和身份验证。
+若要解决此问题，请更新应用程序以使用 `Azure.Identity` 版本 **1.2.2**。 对于此版本的库，浏览器应按照预期方式进行加载和身份验证。
 
 ### <a name="possible-causes"></a>可能的原因
 
-这与最新版本的 Azure. 标识库 (版本 **1.2.0**) ： [*在使用 InteractiveBrowserCredential 时无法进行身份验证*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
+这与库的最新版本 `Azure.Identity` (版本 **1.2.0**) ： [*在使用 InteractiveBrowserCredential 时无法进行身份验证时*](https://github.com/Azure/azure-sdk-for-net/issues/13940)的打开问题有关。
 
 如果在 Azure 数字孪生应用程序中使用版本 **1.2.0** ，或将库添加到项目中，但未指定版本 (，则会看到此问题，这也是默认情况下) 的最新版本。
 

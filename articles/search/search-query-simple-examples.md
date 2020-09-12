@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918020"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294860"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
 
@@ -37,13 +37,13 @@ ms.locfileid: "88918020"
 
 指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
 
-  ![Postman 请求标头](media/search-query-lucene-examples/postman-header.png)
+  ![Postman 请求标头设置参数](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>设置请求 URL
 
 请求是一个与包含 Azure 认知搜索终结点和搜索字符串的 URL 配对的 GET 命令。
 
-  ![Postman 请求标头](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman 请求标头获取](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 组合具备以下元素：
 

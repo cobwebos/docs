@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 4a57719ec9e7b22ed81ee6f07a568a993846de42
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: af7238ca4229bac678061c742f13953299a96ba4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374314"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290015"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
@@ -187,7 +187,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| properties  | type | 必须 | 说明 |
+| properties  | type | 必选 | 说明 |
 |-----------|------|----------|-------------|
 | name      | string | true   |  建筑物名称。 |
 | streetAddress|    字符串 |    false    | 建筑物地址。 |
@@ -208,7 +208,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `buildingLevels` 对象包含建筑物楼层的 JSON 数组。
 
-| 属性  | 类型 | 必须 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |levelName    |string    |true |    楼层的描述性名称。 例如：Floor 1、Lobby、Blue Parking、Basement 等。|
 |序号 | integer |    true | 序号用于确定楼层的垂直顺序。 每个设施都必须有序号为 0 的楼层。 |
@@ -218,15 +218,15 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="georeference"></a>georeference
 
-| 属性  | 类型 | 必须 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |lat    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |lon    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
-|angle|    numeric|    true|   True 与绘图的垂直（Y）轴之间的顺时针角度（以度为单位）。   |
+|angle|    numeric|    true|   True 与绘图的垂直 (Y) 轴之间的顺时针角度（以度为单位）。   |
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| 属性  | 类型 | 必须 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |exterior    |字符串数组|    true|    定义建筑物外表面轮廓的一个或多个图层的名称。|
 |单位|    字符串数组|    true|    定义单元的一个或多个图层的名称。|
@@ -240,7 +240,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `unitProperties` 对象包含 unit 属性的 JSON 数组。
 
-| properties  | 类型 | 必须 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |unitName    |string    |true    |要与此 `unitProperty` 记录关联的单元的名称。 只有当在一个或多个 `unitLabel` 图层中找到与 `unitName` 匹配的标签时，此记录才有效。 |
 |categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
@@ -251,7 +251,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 |nameSubtitle|    字符串    |false|    单元的副标题。 |
 |addressRoomNumber|    字符串|    false|    单元的房间/单间/公寓/套房编号。|
 |verticalPenetrationCategory|    字符串|    false| 如果定义了此属性，则生成的特征是 Vertical Penetration (VRT)，而不是 unit。 VRT 可用于导航到它上面或下面的楼层中的其他 VRT 特征。 Vertical Penetration 是[类别](https://aka.ms/pa-indoor-spacecategories)名称。 如果定义了此属性，则会使用 verticalPenetrationCategory 重写 categoryName 属性。 |
-|verticalPenetrationDirection|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为 `lowToHigh`、`highToLow`、`both` 和 `closed`。 默认值是 `both`。|
+|verticalPenetrationDirection|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为 `lowToHigh`、`highToLow`、`both` 和 `closed`。 默认值为 `both`。|
 | nonPublic | bool | false | 指明单元是否向公众开放。 |
 | isRoutable | bool | false | 如果设置为 `false`，表明单元无法导航到或穿过。 默认值为 `true`。 |
 | isOpenArea | bool | false | 允许导航代理输入单位，而无需连接到设备。 默认情况下，此值设置为 " `true` 对于没有开口的单元"; `false`  如果 `isOpenArea` `false` 在没有打开的单元上手动设置为，则会出现警告。 这是因为导航代理无法访问结果单元。|
@@ -260,7 +260,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `zoneProperties` 对象包含 zone 属性的 JSON 数组。
 
-| properties  | 类型 | 必须 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |zoneName        |string    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
 |categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
@@ -359,7 +359,6 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
             "nameAlt": "Basement01", 
             "nameSubtitle": "01", 
             "addressRoomNumber": "B01", 
-            "nonWheelchairAccessible": false, 
             "nonPublic": true, 
             "isRoutable": true, 
             "isOpenArea": true 

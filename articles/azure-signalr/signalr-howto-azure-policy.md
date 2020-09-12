@@ -1,23 +1,23 @@
 ---
 title: 使用 Azure Policy 实现合规性
-description: 将 Azure 策略中的内置策略分配给 Azure SignalR 服务资源的符合性。
+description: 分配 Azure Policy 中的内置策略来审核 Azure SignalR 服务资源的合规性。
 author: JialinXin
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 1e0b6fbcacf13296d1d219da82d1b6f4c74ad7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85131953"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295007"
 ---
-# <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>使用 Azure 策略审核 Azure SignalR 服务资源的符合性
+# <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>使用 Azure Policy 审核 Azure SignalR 服务资源的合规性
 
 [Azure Policy](../governance/policy/overview.md) 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，使这些资源符合公司标准和服务级别协议。
 
-本文介绍 Azure SignalR 服务的内置策略（预览版）。 使用这些策略审核新的和现有的 SignalR 资源的符合性。
+本文介绍适用于 Azure SignalR 服务的内置策略（预览版）。 可以使用这些策略来审核新的和现有的 SignalR 资源的合规性。
 
 可以免费使用 Azure Policy。
 
@@ -25,12 +25,12 @@ ms.locfileid: "85131953"
 
 以下内置策略定义特定于 Azure SignalR 服务：
 
-[!INCLUDE [azure-policy-samples-policies-signalr](../../includes/policy/samples/bycat/policies-signalr.md)]
+[!INCLUDE [azure-policy-reference-policies-signalr](../../includes/policy/reference/bycat/policies-signalr.md)]
 
 ## <a name="assign-policy-definitions"></a>分配策略定义
 
-* 使用[Azure 门户](../governance/policy/assign-policy-portal.md)、 [Azure CLI](../governance/policy/assign-policy-azurecli.md)、[资源管理器模板](../governance/policy/assign-policy-template.md)或 Azure 策略 sdk 分配策略定义。
-* 将策略分配的作用域限定为资源组、订阅或 [Azure 管理组](../governance/management-groups/overview.md)。 SignalR 策略分配适用于作用域内的现有和新 SignalR 资源。
+* 使用 [Azure 门户](../governance/policy/assign-policy-portal.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md)、[资源管理器模板](../governance/policy/assign-policy-template.md)或 Azure Policy SDK 来分配策略定义。
+* 将策略分配的作用域限定为资源组、订阅或 [Azure 管理组](../governance/management-groups/overview.md)。 SignalR 策略分配适用于作用域内的现有的和新的 SignalR 资源。
 * 可以随时启用或禁用[策略实施](../governance/policy/concepts/assignment-structure.md#enforcement-mode)功能。
 
 > [!NOTE]
@@ -44,16 +44,16 @@ ms.locfileid: "85131953"
 
 ### <a name="policy-compliance-in-the-portal"></a>门户中的策略合规性：
 
-1. 选择“所有服务”  ，然后搜索“策略”。 
-1. 选择“合规性”。 
-1. 使用筛选器限制符合性状态或搜索策略
+1. 选择“所有服务”  ，然后搜索“策略”。
+1. 选择“合规性”。
+1. 将筛选器用于限制合规性状态，或用于搜索策略
    
-    [![门户 ](./media/signalr-howto-azure-policy/azure-policy-compliance.png) 中的策略符合性](./media/signalr-howto-azure-policy/azure-policy-compliance.png#lightbox)
-2. 选择一个策略来查看聚合合规性详细信息和事件。 如果需要，请选择特定的 SignalR 以实现资源符合性。
+    [ ![门户中的策略合规性](./media/signalr-howto-azure-policy/azure-policy-compliance.png) ](./media/signalr-howto-azure-policy/azure-policy-compliance.png#lightbox)
+2. 选择一个策略来查看聚合合规性详细信息和事件。 然后，根据需要选择一个适用于资源合规性的特定 SignalR。
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI 中的策略合规性
 
-也可使用 Azure CLI 来获取合规性数据。 例如，使用 CLI 中的[az policy 分配 list](/cli/azure/policy/assignment#az-policy-assignment-list)命令获取应用的 Azure SignalR 服务策略的策略 id：
+也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) 命令获取已应用的 Azure SignalR 服务策略的策略 ID：
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'SignalR')].{name:displayName, ID:id}" --output table
@@ -67,13 +67,13 @@ Name                                                                            
 [Preview]: Azure SignalR Service should use private links  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Authorization/policyAssignments/<assignmentId>
 ```
 
-然后，运行[az policy state list](/cli/azure/policy/state#az-policy-state-list)返回特定资源组下所有资源的 JSON 格式的符合性状态：
+然后运行 [az policy state list](/cli/azure/policy/state#az-policy-state-list)，以便返回特定资源组下所有资源的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list --g <resourceGroup>
 ```
 
-或运行[az policy state list](/cli/azure/policy/state#az-policy-state-list)返回特定 SignalR 资源的 JSON 格式符合性状态：
+也可运行 [az policy state list](/cli/azure/policy/state#az-policy-state-list)，以便返回特定 SignalR 资源的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \

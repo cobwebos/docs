@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519348"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277657"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -33,14 +33,14 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 安全中心提供以下选项来让用户使用安全策略：
 
-* **查看和编辑内置默认策略**-启用安全中心时，名为 "ASC 默认值" 的内置计划会自动分配到所有安全中心注册的订阅（免费或标准定价层）。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](security-center-policy-definitions.md)列表。
+* **查看和编辑内置默认策略** -启用安全中心时，名为 "ASC 默认值" 的内置计划会自动分配给所有安全中心注册的订阅 (免费或标准定价层) 。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](security-center-policy-definitions.md)列表。
 
 * **添加自己的自定义策略** - 如果希望自定义要应用到自己的订阅的安全计划，可以在安全中心执行此操作。 如果计算机不遵循创建的策略，则你会收到建议。 有关生成和分配自定义策略的说明，请参阅[使用自定义安全策略](custom-security-policies.md)。
 
 * **添加合规性策略** - 安全中心的合规性仪表板显示环境内的所有评估在特定标准或法规（例如 Azure CIS、NIST SP 800-53 R4、SWIFT CSP CSCF-v2020）上下文中的状态。 有关详细信息，请参阅[改善合规性](security-center-compliance-dashboard.md)。
 
 
-## <a name="managing-your-security-policies"></a>管理安全策略
+## <a name="manage-your-security-policies"></a>管理安全策略
 
 要在安全中心内查看安全策略，请执行以下操作：
 
@@ -54,7 +54,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 此时会显示该订阅或管理组的安全策略页。 其中显示了可用和已分配的策略。
 
-   ![策略屏幕](./media/tutorial-security-policy/security-policy-page.png)
+   ![策略页](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > 如果默认策略旁边有一个标签“MG 已继承”，则表示该策略已分配到某个管理组，并已由当前你正在查看的订阅继承。
@@ -86,10 +86,10 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 你可以在 Azure Policy 门户中通过 REST API 或 Windows PowerShell 编辑安全策略。
 
-安全中心使用基于角色的访问控制（RBAC），提供可分配给 Azure 用户、组和服务的内置角色。 当用户打开安全中心时，他们只会看到与他们可以访问的资源相关的信息。 这意味着向用户分配了对资源的订阅的*所有者*、*参与者*或*读者*角色。 还有两个特定的安全中心角色：
+安全中心使用基于角色的访问控制 (RBAC) ，它提供可分配给 Azure 用户、组和服务的内置角色。 当用户打开安全中心时，他们只会看到与他们可以访问的资源相关的信息。 这意味着向用户分配了对资源的订阅的 *所有者*、 *参与者*或 *读者* 角色。 还有两个特定的安全中心角色：
 
 - **安全读者**：有权查看安全中心项目，如建议、警报、策略和运行状况。 无法进行更改。
-- **安全管理员**：与*安全读者*具有相同的查看权限。 还可以更新安全策略并消除警报。
+- **安全管理员**：与 *安全读者*具有相同的查看权限。 还可以更新安全策略并消除警报。
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>禁用安全策略并禁用建议
@@ -111,11 +111,11 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 选择“查看有效策略”。
 
-   ![禁用策略](./media/tutorial-security-policy/view-effective-policy.png)
+   ![查看策略](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. 选择分配的策略。
 
-   ![禁用策略](./media/tutorial-security-policy/security-policy.png)
+   ![选择策略](./media/tutorial-security-policy/security-policy.png)
 
 1. 在“参数”部分中，搜索调用要禁用的建议的策略，然后从下拉列表中选择“禁用”
 

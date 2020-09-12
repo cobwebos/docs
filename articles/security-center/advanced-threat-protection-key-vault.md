@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7025b091b83a56b7b3df18c3f42cb84b163560bb
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77914800"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277759"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 的威胁防护（预览版）
 
@@ -21,7 +21,7 @@ Azure Key Vault 的高级威胁防护提供了额外的安全情报层。 此工
 
 安全中心检测到异常活动时会显示警报。 它还会向订阅管理员发送电子邮件，提供可疑活动的详细信息，以及如何调查和修正已识别威胁的建议。
 
-## <a name="configuring-threat-protection-from-security-center"></a>配置安全中心的威胁防护
+## <a name="configure-threat-protection-from-security-center"></a>配置安全中心的威胁防护
 
 默认情况下，当你订阅安全中心的标准定价层时，将为你的所有 Key Vault 帐户启用高级威胁防护。 有关详细信息，请参阅[定价](security-center-pricing.md)。
 

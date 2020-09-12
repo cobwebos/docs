@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73664408"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278074"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>使用文件完整性监视 (FIM) 比较基线
 
@@ -41,7 +41,7 @@ FIM 注册表配置单元的默认设置提供了一种简便的方法来监视�
 >[!NOTE]
 > 递归检查仅适用于建议的安全配置单元，不适用于自定义注册表路径。  
 
-## <a name="adding-a-custom-registry-check"></a>添加自定义注册表检查
+## <a name="add-a-custom-registry-check"></a>添加自定义注册表检查
 
 FIM 基线首先确定操作系统和支持应用程序的已知良好状态的特征。  在此示例中，我们将重点介绍 Windows Server 2008 及更高版本的密码策略配置。
 
@@ -73,14 +73,14 @@ FIM 基线首先确定操作系统和支持应用程序的已知良好状态的�
 
       ![对注册表启用 FIM](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>跟踪 Windows 文件的更改
+## <a name="track-changes-to-windows-files"></a>跟踪对 Windows 文件的更改
 
 1. 在“添加 Windows 文件以跟踪更改”窗口的“输入路径”文本框中，输入包含要跟踪的文件的文件夹。在下图的示例中，Contoso Web 应用位于 D:\ 驱动器的 ContosWebApp 文件夹结构中。  
 1. 通过提供设置类的名称、启用递归并使用通配符 (*) 后缀指定顶级文件夹，来创建自定义 Windows 文件条目。
 
     ![对文件启用 FIM](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>检索变更数据
+## <a name="retrieve-change-data"></a>检索变更数据
 
 文件完整性监视数据位于 Azure Log Analytics / ConfigurationChange 表集中。  
 

@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: a29280815a1c9cf3d578f0d304bc679bf234c185
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267116"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289233"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒体服务帐户的基于角色的访问控制 (RBAC)
 

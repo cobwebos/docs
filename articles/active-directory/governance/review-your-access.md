@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077931"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292718"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审自己对组或应用程序的访问权限
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 执行访问评审的第一步是找到并打开访问评审。
 
 >[!IMPORTANT]
-> 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 将 azure-noreply@microsoft.com 加入允许列表可确保收到所有电子邮件。
+> 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 添加 azure-noreply@microsoft.com 到安全收件人列表，确保收到所有电子邮件。
 
 1. 找到要求你执行访问评审的 Microsoft 电子邮件。 以下示例电子邮件要求评审你对某个组的访问权限。
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
     > [!NOTE]
     > 如果你指出不再需要访问权限，系统不会立即将你删除。 系统会在评审结束时或者在管理员停止评审时将你删除。
 
-## <a name="review-your-own-access-using-my-access-new"></a>使用 Access 查看你自己的访问权限（新）
+## <a name="review-your-own-access-using-my-access-new"></a>使用 "我的 Access (新建) 来查看你自己的访问权限
 
 你可以使用以下几种不同的方式，通过 "我的 Access" 中更新的用户界面尝试新体验：
 
@@ -97,16 +97,16 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
     > [!NOTE]
     > 如果“访问评审”磁贴不可见，则表明该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-3. 单击 "**试用"！** 在页面顶部的标题中，请访问新的 "我的访问体验"。
+3. 单击 " **试用"！** 在页面顶部的标题中，请访问新的 "我的访问体验"。
 
     ![在预览期间显示有新的可用体验横幅的应用和组的挂起访问审阅列表](./media/review-your-access/banner-your-access.png)
 
 4. 继续**执行访问评审**部分
 
-### <a name="email"></a>电子邮件
+### <a name="email"></a>Email
 
 >[!IMPORTANT]
-> 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 将 azure-noreply@microsoft.com 加入允许列表可确保收到所有电子邮件。
+> 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 添加 azure-noreply@microsoft.com 到安全收件人列表，确保收到所有电子邮件。
 
 1. 查找要求你执行访问评审的 Microsoft 电子邮件。 你可以在下面看到一个示例电子邮件：
 
@@ -117,15 +117,15 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 3. 继续**执行访问评审**部分
 
 >[!NOTE]
->如果单击 "开始审阅"，则会将你转到 **"我的应用**"，然后按照上面标题为 **"我的应用门户**" 部分列出
+>如果单击 "开始审阅"，则会将你转到 **"我的应用** "，然后按照上面标题为 **"我的应用门户**" 部分列出
 
 ### <a name="directly-at-my-access"></a>直接在我的访问
 
 还可以通过使用浏览器打开 "我的访问" 来查看待定的访问评审。
 
-1. 在上登录到 "我的访问"https://myaccess.microsoft.com/
+1. 在上登录到 "我的访问" https://myaccess.microsoft.com/
 
-2. 从左侧栏上的菜单中选择 "**访问评审**"，查看分配给你的待定访问评审的列表。
+2. 从左侧栏上的菜单中选择 " **访问评审** "，查看分配给你的待定访问评审的列表。
 
    ![菜单中的访问评审](./media/review-your-access/access-review-menu.png)
 
@@ -133,10 +133,10 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 1. 在 "组和应用" 下，可以看到：
     
-    - **名称**访问评审的名称。
-    - **截止日期**评审的截止日期。 在此日期后，可以从正在查看的组或应用中删除用户。
-    - **资源**要查看的资源的名称。
-    - **进度**在此访问评审的总用户数量中审阅的用户数。
+    - **名称** 访问评审的名称。
+    - **截止日期** 评审的截止日期。 在此日期后，可以从正在查看的组或应用中删除用户。
+    - **资源** 要查看的资源的名称。
+    - **进度** 在此访问评审的总用户数量中审阅的用户数。
     
 2. 单击 "访问评审" 的名称即可开始使用。
 
@@ -148,7 +148,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
     ![打开访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/review-access-preview.png)
 
-1. 选择 **"是"** 以保留访问权限，或选择 "**否**" 以删除访问权限。
+1. 选择 **"是"** 以保留访问权限，或选择 " **否** " 以删除访问权限。
 
 1. 如果单击“是”，你可能需要在“原因”框中指出原因。 
 

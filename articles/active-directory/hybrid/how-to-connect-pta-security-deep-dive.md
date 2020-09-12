@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358236"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280139"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -38,14 +38,14 @@ ms.locfileid: "85358236"
 此功能的安全性主要有以下方面：
 - 它构建于安全的多租户体系结构上，此体系结构隔离租户之间的登录请求。
 - 本地密码永远不会以任何形式存储在云中。
-- 本地身份验证代理侦听和响应密码验证请求，它仅从网络内部建立出站连接。 无需在外围网络 (DMZ) 中安装这些身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
+- 本地身份验证代理侦听和响应密码验证请求，它仅从网络内部建立出站连接。 无需在外围网络 (DMZ) 中安装这些身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
 - 从身份验证代理到 Azure AD 的出站通信仅使用标准端口（80 和 443）。 不需打开防火墙上的入站端口。 
   - 端口 443 用于所有经过身份验证的出站通信。
   - 端口 80 仅用于下载证书吊销列表 (CRL)，以确保未吊销此功能所用的任何证书。
-  - 有关网络要求的完整列表，请参阅[Azure Active Directory 传递身份验证：快速入门](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
+  - 有关网络要求的完整列表，请参阅 [Azure Active Directory 传递身份验证：快速入门](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
 - 用户在登录期间提供的密码将在云中加密，再由本地身份验证代理接受，通过 Active Directory 进行验证。
 - 通过相互进行身份验证保护 Azure AD 和本地身份验证代理之间的 HTTPS 通道。
-- 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/concept-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
+- 可通过与 [Azure AD 条件访问策略](../conditional-access/overview.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/concept-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
 
 ## <a name="components-involved"></a>涉及的组件
 
@@ -59,8 +59,8 @@ ms.locfileid: "85358236"
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>安装和注册身份验证代理
 
 在以下情况下安装身份验证代理并将其注册到 Azure AD：
-   - [通过 Azure AD Connect 启用直通身份验证](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
-   - [添加更多身份验证代理，确保登录请求的高可用性](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
+   - [通过 Azure AD Connect 启用直通身份验证](./how-to-connect-pta-quick-start.md#step-2-enable-the-feature)
+   - [添加更多身份验证代理，确保登录请求的高可用性](./how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) 
    
 启用身份验证代理涉及三个主要阶段：
 
@@ -73,11 +73,11 @@ ms.locfileid: "85358236"
 ### <a name="authentication-agent-installation"></a>安装身份验证代理
 
 仅全局管理员可在本地服务器上安装身份验证代理（使用 Azure AD Connect 或独立安装）。 安装将两个新条目添加到 "控制面板 **" 的 "程序"**"程序  >  **Programs**  >  **和功能**" 列表中：
-- 身份验证代理应用程序本身。 此应用程序使用 [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 特权运行。
-- 用于自动更新身份验证代理的更新程序应用程序。 此应用程序使用 [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 特权运行。
+- 身份验证代理应用程序本身。 此应用程序使用 [NetworkService](/windows/win32/services/networkservice-account) 特权运行。
+- 用于自动更新身份验证代理的更新程序应用程序。 此应用程序使用 [LocalSystem](/windows/win32/services/localsystem-account) 特权运行。
 
 >[!IMPORTANT]
->从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保证域控制器防范攻击](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的相同顺序对 PTA 代理服务器进行强制验证
+>从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保证域控制器防范攻击](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的相同顺序对 PTA 代理服务器进行强制验证
 
 ### <a name="authentication-agent-registration"></a>注册身份验证代理
 
@@ -107,7 +107,7 @@ ms.locfileid: "85358236"
     -  没有任何其他 Azure AD 服务使用此 CA。
     - 证书主题（可分辨名称或 DN）将设置为租户 ID。 此 DN 是唯一标识租户的 GUID。 此 DN 将此证书限制为仅用于租户。
 6. Azure AD 在 Azure SQL 数据库中的数据库中存储身份验证代理的公钥，只有 Azure AD 有权访问该数据库。
-7. 将（步骤 5 中发布的）证书存储到本地服务器上的 Windows 证书存储（具体而言，即 [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) 位置）。 它可供身份验证代理和更新程序应用程序使用。
+7. 将（步骤 5 中发布的）证书存储到本地服务器上的 Windows 证书存储（具体而言，即 [CERT_SYSTEM_STORE_LOCAL_MACHINE](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_LOCAL_MACHINE) 位置）。 它可供身份验证代理和更新程序应用程序使用。
 
 ### <a name="authentication-agent-initialization"></a>初始化身份验证代理
 
@@ -144,7 +144,7 @@ ms.locfileid: "85358236"
 8. Azure AD STS 将密码验证请求（包含用户名和加密密码值）置于特定于租户的服务总线队列上。
 9. 由于初始化的身份验证代理持续连接到服务总线队列，因此其中一个可用身份验证代理会检索密码验证请求。
 10. 身份验证代理将使用标识符查找特定于其公钥的加密密码值，并使用其私钥进行解密。
-11. 此身份验证代理将使用 [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)（将 **dwLogonType** 参数设置为 **LOGON32_LOGON_NETWORK**），尝试向本地 Active Directory 验证用户名和密码。 
+11. 此身份验证代理将使用 [Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera)（将 **dwLogonType** 参数设置为 **LOGON32_LOGON_NETWORK**），尝试向本地 Active Directory 验证用户名和密码。 
     - 在联合登录方案中，Active Directory 联合身份验证服务 (AD FS) 即使用此 API 登录用户。
     - 此 API 依赖 Windows Server 中的标准解析进程来查找域控制器。
 12. 身份验证代理从 Active Directory 检索结果（例如成功、用户名或密码不正确或密码过期）。
@@ -179,7 +179,7 @@ ms.locfileid: "85358236"
     - 使用 Azure AD 根 CA 对证书进行签名。
     - 将证书主题（可分辨名称或 DN）设置为租户 ID，此租户 ID 是一个用于唯一标识租户的 GUID。 此 DN 使证书仅针对你的租户。
 6. Azure AD 将身份验证代理的新公钥存储在 Azure SQL 数据库中只有有权访问的数据库中。 它还会使与此身份验证代理关联的旧公钥无效。
-7. 然后将（步骤 5 中颁发的）新证书存储到服务器上的 Windows 证书存储（具体而言即 [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) 位置）。
+7. 然后将（步骤 5 中颁发的）新证书存储到服务器上的 Windows 证书存储（具体而言即 [CERT_SYSTEM_STORE_CURRENT_USER](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_CURRENT_USER) 位置）。
     - 由于信任续订过程为非交互式（不涉及全局管理员），因此身份验证代理不再有权更新 CERT_SYSTEM_STORE_LOCAL_MACHINE 位置的现有证书。 
     
    > [!NOTE]
@@ -188,9 +188,9 @@ ms.locfileid: "85358236"
 
 ## <a name="auto-update-of-the-authentication-agents"></a>自动更新身份验证代理
 
-当发布新版本（包含 bug 修复或性能增强功能）时，更新程序应用程序会自动更新身份验证代理。 更新应用程序不处理租户的任何密码验证请求。
+当新版本的 bug 修复或性能增强) 功能 (发布时，更新程序应用程序会自动更新身份验证代理。 更新应用程序不处理租户的任何密码验证请求。
 
-Azure AD 以已签名 Windows Installer 程序包 (MSI)**** 的形式，托管该软件的新版本。 使用 [Microsoft 验证码](https://msdn.microsoft.com/library/ms537359.aspx)和 SHA256 摘要算法对 MSI 进行签名。 
+Azure AD 以已签名 Windows Installer 程序包 (MSI)**** 的形式，托管该软件的新版本。 使用 [Microsoft 验证码](/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms537359(v=vs.85))和 SHA256 摘要算法对 MSI 进行签名。 
 
 ![自动更新](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
@@ -203,7 +203,7 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI)**** 的形式，托管�
 4. 更新程序运行该 MSI。 此操作涉及以下步骤：
 
    > [!NOTE]
-   > 更新程序使用[本地系统](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)权限运行。
+   > 更新程序使用[本地系统](/windows/win32/services/localsystem-account)权限运行。
 
     - 停止身份验证代理服务
     - 在服务器上安装新版本的身份验证代理

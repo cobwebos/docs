@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265365"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291528"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒体服务直播活动错误代码
 

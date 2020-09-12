@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5be97414a2e4270870d976a9922415b227c66e27
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924344"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289165"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
@@ -68,7 +68,7 @@ ms.locfileid: "88924344"
 
 1. 单击表右上方带有反向箭头的图标，以展开“内容”。 显示列的列表后，选择所有列，并取消选择以“metadata”开头的列。 单击“确定”显示所选列。
 
-   ![编辑表](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "扩展内容")
+   ![扩展内容](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "扩展内容")
 
 1. 单击列左上方的 ABC-123 图标，更改以下列的数据类型。
 

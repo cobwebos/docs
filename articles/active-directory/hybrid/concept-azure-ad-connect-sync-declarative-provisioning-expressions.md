@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245505"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280207"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
 Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
 
 声明性设置的一个重要组成部分是属性流中使用的表达式语言。 所用的语言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 Microsoft Office 中使用了这种语言，具有 VBScript 经验的用户都认识该语言。 声明性预配表达式语言只使用函数，不属于结构化语言。 它不提供任何方法或语句。 函数嵌套在表达式程序流中。
 
-有关详细信息，请参阅 [Welcome to the Visual Basic for Applications language reference for Office 2013](https://msdn.microsoft.com/library/gg264383.aspx)（欢迎使用适用于 Office 2013 的 Visual Basic 应用程序语言参考）。
+有关详细信息，请参阅 [Welcome to the Visual Basic for Applications language reference for Office 2013](/office/vba/api/overview/language-reference)（欢迎使用适用于 Office 2013 的 Visual Basic 应用程序语言参考）。
 
 属性属于强类型。 函数只接受正确类型的属性。 它还区分大小写。 函数名称和属性名称都必须具有正确的大小写，否则会引发错误。
 
@@ -100,4 +100,3 @@ Active Directory 连接器为入站同步规则提供以下参数：
 **参考主题**
 
 * [Azure AD Connect 同步：函数参考](reference-connect-sync-functions-reference.md)
-

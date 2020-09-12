@@ -10,17 +10,17 @@ tags: ''
 keywords: azure 媒体服务, 流, 广播, 实时, 脱机
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 26e6e56d7c14cfa0ab54776003ae4489bb254094
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265841"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294367"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>使用门户创建并监视带有事件网格的 Azure 媒体服务事件
 

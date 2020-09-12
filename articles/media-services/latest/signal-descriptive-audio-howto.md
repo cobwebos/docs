@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267422"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291256"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
 
@@ -45,7 +45,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 以下函数执行以下操作：
 
 * 创建**资产** 
-* 获取[存储中资产容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写[SAS URL](../../storage/common/storage-sas-overview.md)
+* 获取资产的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

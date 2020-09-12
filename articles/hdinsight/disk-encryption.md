@@ -8,43 +8,43 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a78b56de537cfac0da48814afe9b07d911a61af1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 97d899d73359cc45daf88940b815ed262c3b4766
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020742"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290831"
 ---
-# <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据的双加密
+# <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据双重加密
 
-本文介绍 Azure HDInsight 群集中静态数据的加密方法。 静态数据加密是指附加到 HDInsight 群集虚拟机的 (数据磁盘、OS 磁盘和临时磁盘) 托管磁盘上的加密。 
+本文介绍 Azure HDInsight 群集中静态数据的加密方法。 静态数据加密是指对附加到 HDInsight 群集虚拟机的托管磁盘（数据磁盘、OS 磁盘和临时磁盘）进行加密。 
 
 本文档不会探讨 Azure 存储帐户中存储的数据。 群集中可能附加了一个或多个 Azure 存储帐户，其中的加密密钥可能是由 Microsoft 托管的或者客户自己管理的，但加密服务是不同的。 有关 Azure 存储加密的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
-Azure 中有三个主要托管磁盘角色：数据磁盘、操作系统磁盘和临时磁盘。 有关不同类型的托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。 
+在 Azure 中有三个主要的托管磁盘角色：数据磁盘、OS 磁盘和临时磁盘。 有关不同类型的托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。 
 
-HDInsight 在两个不同的层中支持多种类型的加密：
+HDInsight 支持两个不同层中多种类型的加密：
 
-- 服务器端加密 (SSE) -SSE 由存储服务执行。 在 HDInsight 中，SSE 用于对 OS 磁盘和数据磁盘进行加密。 它默认为启用状态。 SSE 是第1层加密服务。
-- 使用平台托管密钥进行主机加密-类似于 SSE，此类型的加密由存储服务执行。 不过，它仅适用于临时磁盘，默认情况下不启用。 主机加密也是第1层加密服务。
-- 使用客户托管密钥进行静态加密-可在数据和临时磁盘上使用这种类型的加密。 默认情况下不启用此功能，并要求客户通过 Azure 密钥保管库提供自己的密钥。 静态加密是第2层加密服务。
+- 服务器端加密 (SSE) - SSE 由存储服务执行。 在 HDInsight 中，SSE 用于加密 OS 磁盘和数据磁盘。 它默认为启用状态。 SSE 是第 1 层加密服务。
+- 在主机上使用平台管理的密钥进行加密（类似于 SSE），此类型的加密由存储服务执行。 但是，它仅适用于临时磁盘，且默认情况下不启用。 主机加密也是第 1 层加密服务。
+- 使用客户管理的密钥进行静态加密 - 可对数据和临时磁盘使用此类型的加密。 默认情况下不启用，并要求客户通过 Azure 密钥保管库提供自己的密钥。 静态加密是第 2 层加密服务。
 
 下表汇总了这些类型。
 
 |群集类型 |OS 磁盘（托管磁盘） |数据磁盘（托管磁盘） |临时数据磁盘（本地 SSD） |
 |---|---|---|---|
-|Kafka、有加速写入的 HBase|Layer1：默认情况下， [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Layer1： [默认情况下](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) ，第2层：默认情况下使用 CMK 的静态加密|Layer1：使用 PMK 在主机上进行可选加密，第2层：使用 CMK 的静态静态加密|
-|所有其他群集（Spark、Interactive、Hadoop、无加速写入的 HBase）|Layer1：默认情况下， [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|空值|Layer1：使用 PMK 在主机上进行可选加密，第2层：使用 CMK 的静态静态加密|
+|Kafka、有加速写入的 HBase|Layer1：默认为 [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Layer1：默认为 [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)，Layer2：使用 CMK 的可选静态加密|Layer1：使用 PMK 的可选主机加密，Layer2：使用 CMK 的可选静态加密|
+|所有其他群集（Spark、Interactive、Hadoop、无加速写入的 HBase）|Layer1：默认为 [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|空值|Layer1：使用 PMK 的可选主机加密，Layer2：使用 CMK 的可选静态加密|
 
-## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户托管密钥进行静态加密
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥进行静态加密
 
-客户管理的密钥加密是在群集创建期间处理的单步骤过程，不收取额外的费用。 只需使用 Azure Key Vault 向托管标识授权，并在创建群集时添加加密密钥。
+客户管理的密钥加密是在群集创建期间处理的单步骤过程，不收取额外的费用。 需要做的就是使用 Azure Key Vault 授权托管标识，并在创建群集时添加加密密钥。
 
-群集的每个节点上的数据磁盘和临时磁盘都使用对称数据加密密钥进行加密 (DEK) 。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。
+群集每个节点上的数据磁盘和临时磁盘均已使用对称数据加密密钥 (DEK) 进行加密。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。
 
-对于附加到群集 Vm 的 OS 磁盘，只 (PMK) 提供一个加密层。 如果方案需要 CMK 加密，则建议客户避免将敏感数据复制到操作系统磁盘。
+对于附加到群集 VM 的 OS 磁盘，只有一个加密层 (PMK) 可用。 如果方案需要 CMK 加密，建议客户避免将敏感数据复制到 OS 磁盘。
 
 如果在存储磁盘加密密钥的密钥保管库上启用密钥保管库防火墙，则必须将用于部署群集的区域的 HDInsight 区域资源提供程序 IP 地址添加到密钥保管库防火墙配置。 这是必需的，因为 HDInsight 不是受信任的 Azure 密钥保管库服务。
 
@@ -117,7 +117,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>创建支持客户管理的密钥磁盘加密的群集
 
-现在已准备好新建 HDInsight 群集。 客户托管的密钥只能在群集创建过程中应用于新群集。 无法从客户管理的密钥群集中删除加密，且不能将客户托管的密钥添加到现有群集。
+现在已准备好新建 HDInsight 群集。 客户管理的密钥只能在群集创建期间应用于新群集。 无法从客户管理的密钥群集中删除加密，无法将客户管理的密钥添加到现有群集。
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
@@ -463,7 +463,7 @@ New-AzHDInsightCluster `
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
--p "HttpPassword1234!" \\
+-p "yourpass" \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 

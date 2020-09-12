@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32ee0135d4d991a9afe229747f8cb66916a12e7f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522600"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277436"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
@@ -46,7 +46,7 @@ Microsoft 还会自行跟踪监管标准，并随时间推移自动改进其在�
 其他标准会在可用时在仪表板中受支持。 
 
 
-## <a name="adding-a-regulatory-standard-to-your-dashboard"></a>向仪表板添加监管标准
+## <a name="add-a-regulatory-standard-to-your-dashboard"></a>向仪表板添加法规标准
 
 以下步骤说明如何添加包以监视是否符合与一种支持的监管标准。
 

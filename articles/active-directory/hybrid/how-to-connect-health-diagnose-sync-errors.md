@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179141"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278677"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -133,12 +133,12 @@ ms.locfileid: "89179141"
 
 ## <a name="failures-and-error-messages"></a>故障和错误消息
 **具有冲突属性的用户在 Azure Active Directory 中软删除。请确保在重试之前硬删除用户。**  
-应当清除 Azure AD 中具有冲突属性的用户，然后才能应用修复。 在重试修复之前，请查看[如何在 Azure AD 中永久删除用户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)。 在处于软删除状态 30 天后，用户也将自动永久删除。 
+应当清除 Azure AD 中具有冲突属性的用户，然后才能应用修复。 在重试修复之前，请查看[如何在 Azure AD 中永久删除用户](../fundamentals/active-directory-users-restore.md)。 在处于软删除状态 30 天后，用户也将自动永久删除。 
 
 **不支持更新租户中基于云的用户的源定位点。**  
 Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下不支持更新源定位点。 需要从本地手动进行修复。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题
 **Q.** 如果“应用修复”操作执行失败，会发生什么情况****？  
 **A.** 如果执行失败，原因可能是 Azure AD Connect 遇到导出错误。 刷新门户页，然后在下一次同步后重试。默认同步周期为30分钟。 
 

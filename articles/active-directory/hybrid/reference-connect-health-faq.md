@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182371"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276195"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -54,7 +54,7 @@ ms.locfileid: "89182371"
 
 许可信息还可在 [Azure AD 定价页](https://aka.ms/aadpricing)中找到。
 
-例如：
+示例：
 
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
@@ -98,13 +98,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在安装 Azure AD Connect Health 代理期间，是否必须重新启动服务器？**
 
-不能。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
 **问：Azure AD Connect Health 是否通过直通型 HTTP 代理进行工作？**
 
-是。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
+可以。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
 阅读有关 [为 Health 代理配置 HTTP 代理的](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)详细信息。
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
@@ -115,7 +115,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不能。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
@@ -190,18 +190,18 @@ CheckForMS17-010
 
 问：PowerShell cmdlet <i>Get-MsolDirSyncProvisioningError</i> 显示的同步错误为什么比较少****？
 
-<i>Get-MsolDirSyncProvisioningError</i> 只返回 DirSync 预配错误。 除了该类错误以外，Connect Health 门户还会显示其他类型的同步错误，例如导出错误。 这与 Azure AD Connect delta 结果一致。 了解有关 [Azure AD Connect 同步错误](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)的详细信息。
+<i>Get-MsolDirSyncProvisioningError</i> 只返回 DirSync 预配错误。 除了该类错误以外，Connect Health 门户还会显示其他类型的同步错误，例如导出错误。 这与 Azure AD Connect delta 结果一致。 了解有关 [Azure AD Connect 同步错误](./tshoot-connect-sync-errors.md)的详细信息。
 
 **问：为什么未生成 ADFS 审核？**
 
-请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的详细信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
+请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的详细信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
 
 **问：代理证书在过期之前是否自动续订？**
 代理证书将在到期日期前 **6 个月** 自动续订。 如果未续订，请确保该代理的网络连接稳定。 重新启动代理服务或更新到最新版本也可以解决此问题。
 
 
 ## <a name="related-links"></a>相关链接
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
 * [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)

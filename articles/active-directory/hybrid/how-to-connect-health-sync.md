@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359137"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278728"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -81,7 +81,7 @@ ms.locfileid: "85359137"
 ### <a name="categorization-of-errors"></a>错误分类
 该报告将现有同步错误划分为以下类别：
 
-| 类别 | 描述 |
+| 类别 | 说明 |
 | --- | --- |
 | 重复属性 |当 Azure AD Connect 在 Azure AD 中尝试创建或更新对象时出错，因为这些对象具有一个或多个属性的重复值，但这些值在 proxyAddresses、UserPrincipalName 等租户中必须唯一。 |
 | 数据不匹配 |当软匹配无法匹配导致同步错误的对象时出错。 |
@@ -116,7 +116,7 @@ ms.locfileid: "85359137"
 ## <a name="related-links"></a>相关链接
 * [排查同步期间的错误](tshoot-connect-sync-errors.md)
 * [重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
 * [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)
