@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/21/2020
-ms.openlocfilehash: 6eb4aee1cfe62b09210f62d016028485594a9474
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/02/2020
+ms.openlocfilehash: 2a0c95e45dc529d779d6b06e1e5bdb32ba80b241
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000781"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007530"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "89000781"
 
 ### <a name="windows-agents"></a>Windows 代理
 
-| | Azure Monitor 代理 (预览版)  | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
+| | Azure Monitor 代理（预览版） | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|
 | **支持的环境** | Azure | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
 | **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
@@ -42,7 +42,7 @@ ms.locfileid: "89000781"
 
 ### <a name="linux-agents"></a>Linux 代理
 
-| | Azure Monitor 代理 (预览版)  | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
+| | Azure Monitor 代理（预览版） | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|:---|
 | **支持的环境** | Azure | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
 | **代理要求**  | 无 | 无 | 无 | 无 | 需要 Log Analytics 代理 |
@@ -51,7 +51,7 @@ ms.locfileid: "89000781"
 | **服务和**<br>**功能**<br>**受** | Log Analytics<br>指标资源管理器 | | 指标资源管理器 | 用于 VM 的 Azure Monitor<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | 用于 VM 的 Azure Monitor<br>服务映射 |
 
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理 (预览版) 
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理（预览版）
 [Azure Monitor 代理](azure-monitor-agent-overview.md)目前处于预览阶段，将替换适用于 Windows 和 Linux 虚拟机的 Log Analytics 代理和 Telegraf 代理。 它可以将数据发送到 Azure Monitor 日志和 Azure Monitor 指标，并使用 [数据收集规则 (DCR) ](data-collection-rule-overview.md) ，这为每个代理提供了一种配置数据收集和目标的更具伸缩性的方法。
 
 如果需要，请使用 Azure Monitor 代理：
@@ -83,7 +83,7 @@ Azure Monitor 代理的限制包括：
 * 使用 [用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 允许你大规模监视虚拟机，并监视其进程和其他资源和外部进程的依赖项。  
 * 使用 [Azure 安全中心](../../security-center/security-center-intro.md)  或 [azure Sentinel](../../sentinel/overview.md)管理虚拟机的安全性。
 * 使用 [Azure 自动化更新管理](../../automation/update-management/update-mgmt-overview.md)、 [Azure 自动化状态配置](../../automation/automation-dsc-overview.md)或 [azure 自动化更改跟踪和清点](../../automation/change-tracking.md) 来提供 Azure vm 的全面管理
-* 使用不同的 [解决方案](../monitor-reference.md#insights-and-core-solutions) 来监视特定服务或应用程序。
+* 使用不同的[解决方案](../monitor-reference.md#insights-and-core-solutions)监视特定服务或者应用程序。
 
 Log Analytics 代理的限制包括：
 
@@ -148,7 +148,7 @@ Azure 诊断扩展的限制包括：
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 企业版<br> (包括多会话) 和 Pro  |   | X | X | X |
+| Windows 10 企业版<br> (包括多会话) 和 Pro  | X | X | X | X |
 | Windows 8 企业版和专业版                             |   | X | X |   |
 | Windows 7 SP1                                            |   | X | X |   |
 
@@ -159,6 +159,7 @@ Azure 诊断扩展的限制包括：
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                     |   | X |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
+| CentOS Linux 7。8                                         | X | X | X | X |
 | CentOS Linux 7。6                                         | X | X | X | X |
 | CentOS Linux 6                                           | X | X |   |   |
 | CentOS Linux 6.5 +                                        | X | X |   | X |
@@ -170,11 +171,11 @@ Azure 诊断扩展的限制包括：
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           | X | X |   |   |
 | Oracle Linux 6.4+                                        | X | X |   | X |
-| Red Hat Enterprise Linux Server 8                        | X | X |   |   |
+| Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        | X | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
-| SUSE Linux Enterprise Server 15                          | X | X | X |   |
+| SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 18.04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
@@ -184,7 +185,7 @@ Azure 诊断扩展的限制包括：
 #### <a name="dependency-agent-linux-kernel-support"></a>依赖关系代理 Linux 内核支持
 由于依赖关系代理在内核级别工作，因此支持也依赖于内核版本。 下表列出了依赖关系代理的主要和次要 Linux OS 版本以及支持的内核版本。
 
-| 分布 | OS 版本 | 内核版本 |
+| 分发 | OS 版本 | 内核版本 |
 |:---|:---|:---|
 |  Red Hat Linux 7   | 7.6     | 3.10.0-957  |
 |                    | 7.5     | 3.10.0-862  |

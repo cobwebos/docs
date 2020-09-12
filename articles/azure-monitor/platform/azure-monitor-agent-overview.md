@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705769"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005218"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -88,12 +88,12 @@ Azure Monitor 代理目前支持以下操作系统。
   - CentOS 6<sup>1</sup>，7
   - Debian 9、10
   - Oracle Linux 6<sup>1</sup>，7
-  - RHEL 6<sup>1</sup>、7、8
+  - RHEL 6<sup>1</sup>、7
   - SLES 11、12、15
   - Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup>要使这些分发发送 Syslog 数据，必须删除 rsyslog 并安装 syslog-ng。
+> <sup>1</sup>对于这些分发用于发送 Syslog 数据，必须在安装代理后一次重启 rsyslog 服务。
 
 
 ## <a name="security"></a>安全性

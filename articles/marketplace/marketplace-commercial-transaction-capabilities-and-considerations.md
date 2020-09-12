@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d086f8f3a2f4939012691d5bd03cc92a50ac4613
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078310"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006391"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -146,7 +146,7 @@ BYOL 的成本构成如下：
 
 ### <a name="reduced-service-fee"></a>降低服务费用
 
-对于在商业市场上发布的特定产品/服务，Microsoft 将从 20% (降低其 Marketplace 服务费用，如 [Microsoft 发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前，必须至少在5个工作日内获得资格，以获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用适用于 Azure IP 共同销售 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+对于在商业市场上发布的特定产品/服务，Microsoft 将从 20% (降低其 Marketplace 服务费用，如 [Microsoft 发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前，必须至少在5个工作日内获得资格，以获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用适用于 Azure IP 共同销售 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。 付费 SaaS 产品/服务与一个 Microsoft 团队应用相关联，或至少两 Microsoft 365 加载项 (Excel、PowerPoint、Word、Outlook 和 SharePoint) ，并发布在 AppSource 上也会获得此折扣。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
@@ -185,6 +185,7 @@ Microsoft 作为代理收集的所有软件许可费用将收取 20% 的手续�
 
 - 无论产品/服务采用怎样的定价模型，交易发布选项都需要使用 Microsoft 帐户和财务信息。
 - 必需的财务信息包括支出帐户和计税配置文件。
+- 发布者必须位于 [受支持的国家或地区](sell-from-countries.md)。
 
 有关设置这些帐户的详细信息，请参阅 [在合作伙伴中心管理商业 marketplace 帐户](partner-center-portal/manage-account.md)。
 

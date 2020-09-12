@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526824"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017466"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教程：配置从 Azure AD 到 Workday 的属性写回
 本教程的目的是说明从 Azure AD 到 Workday 的写回属性需要执行的步骤。 Workday 写回预配应用支持将值分配给以下 Workday 属性：
@@ -34,7 +34,7 @@ ms.locfileid: "88526824"
 
 此 Workday 写回用户预配解决方案非常适合于：
 
-* 使用 Office 365 的组织希望对其管理的权威属性进行写回 (如电子邮件地址、用户名和电话号码) 返回到 Workday
+* 使用需要对其管理的权威属性进行写回的 Microsoft 365 组织 (例如电子邮件地址、用户名和电话号码) 返回到 Workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中配置集成系统用户
 

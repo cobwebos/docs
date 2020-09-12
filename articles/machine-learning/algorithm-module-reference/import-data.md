@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68bf47f370a57fe277d4ab9679af0b920a0d81ec
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611809"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658119"
 ---
 # <a name="import-data-module"></a>“导入数据”模块
 
@@ -45,7 +45,7 @@ ms.locfileid: "85611809"
 如果源数据发生更改，可以通过重新运行[导入数据](./import-data.md)来刷新数据集并添加新数据。
 
 > [!WARNING]
-> 如果工作区位于虚拟网络中，则必须将数据存储配置为使用设计器的数据可视化功能。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[使用专用虚拟网络进行定型 & 推理中的网络隔离](../how-to-enable-virtual-network.md#machine-learning-studio)。
+> 如果工作区位于虚拟网络中，则必须将数据存储配置为使用设计器的数据可视化功能。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅 [在 Azure 虚拟网络中使用 Azure 机器学习 studio](../how-to-enable-studio-virtual-network.md)。
 
 
 ## <a name="how-to-configure-import-data"></a>如何配置“导入数据”
@@ -64,7 +64,7 @@ ms.locfileid: "85611809"
 
 1. 复选框“重新生成输出”决定是否在运行时执行模块以重新生成输出。 
 
-    默认情况下，它处于未选中状态，这意味着如果模块已经以相同的参数执行，系统将重用上次运行的输出来减少运行时间。 
+    默认情况下，它处于未选中状态，这意味着如果以前已经以相同的参数执行了模块，系统将重用上次运行的输出以减少运行时间。 
 
     如果选中它，系统将再次执行模块以重新生成输出。 因此，更新存储中的基础数据时，选择此选项可以帮助获取最新数据。
 

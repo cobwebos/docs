@@ -1,6 +1,6 @@
 ---
 title: 发布者验证概述 - Microsoft 标识平台 | Azure
-description: 概要介绍了 Microsoft 标识平台的发布者验证计划（预览版）。 列出优势、计划要求和常见问题。 当应用程序标记为“发布者已验证”时，表示发布者已使用 Microsoft 合作伙伴网络帐户（该帐户已完成验证过程）验证了身份，并将 MPN 帐户与其应用程序注册相关联。
+description: 提供 Microsoft 标识平台的发行者验证程序的概述。 列出优势、计划要求和常见问题。 当应用程序标记为“发布者已验证”时，表示发布者已使用 Microsoft 合作伙伴网络帐户（该帐户已完成验证过程）验证了身份，并将 MPN 帐户与其应用程序注册相关联。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068467"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005785"
 ---
-# <a name="publisher-verification-preview"></a>发布者验证（预览版）
+# <a name="publisher-verification"></a>发行者验证
 
-发布者验证（预览版）旨在帮助管理员和最终用户了解与 Microsoft 标识平台集成的应用程序开发人员的真实身份。 当应用程序标记为“发布者已验证”时，表示发布者已使用 [Microsoft 合作伙伴网络](https://partner.microsoft.com/membership)帐户（该帐户已完成[验证](/partner-center/verification-responses)过程）验证了身份，并将 MPN 帐户与其应用程序注册相关联。 
+发行者验证可帮助管理员和最终用户了解与 Microsoft 标识平台集成的应用程序开发人员的真实性。 当应用程序标记为“发布者已验证”时，表示发布者已使用 [Microsoft 合作伙伴网络](https://partner.microsoft.com/membership)帐户（该帐户已完成[验证](/partner-center/verification-responses)过程）验证了身份，并将 MPN 帐户与其应用程序注册相关联。 
 
 蓝色的“已验证”徽章会显示在 Azure AD 同意提示和其他屏幕上：![同意提示](./media/publisher-verification-overview/consent-prompt.png)
 
