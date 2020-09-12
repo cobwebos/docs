@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655863"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596103"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -320,6 +320,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
+
 在 Windows 防火墙级别或计算机级别，通常已启用这些出站端口。 如果未启用，可以在自承载集成运行时计算机上配置域和端口。
 
 > [!NOTE]
@@ -331,13 +332,13 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 确保在企业防火墙、自承载集成运行时计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让自承载集成运行时成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
 
-例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure SQL 数据仓库接收器，请执行以下步骤：
+例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure Synapse Analytics (以前的 SQL 数据仓库) 接收器，请执行以下步骤：
 
 1. 对于 Windows 防火墙和企业防火墙，允许 1433 端口上的出站 TCP 通信。
 1. 配置 SQL 数据库的防火墙设置，将自承载集成运行时计算机的 IP 地址添加到允许的 IP 地址列表。
 
 > [!NOTE]
-> 如果防火墙不允许出站端口 1433，则自承载集成运行时无法直接访问 SQL 数据库。 在这种情况下，可对 SQL 数据库和 SQL 数据仓库使用[分阶段复制](copy-activity-performance.md)。 对于此方案，只需将 HTTPS（端口 443）用于数据移动。
+> 如果防火墙不允许出站端口 1433，则自承载集成运行时无法直接访问 SQL 数据库。 在这种情况下，可以使用 SQL 数据库和 Azure Synapse Analytics 的 [分阶段复制](copy-activity-performance.md) 。 对于此方案，只需将 HTTPS（端口 443）用于数据移动。
 
 ## <a name="proxy-server-considerations"></a>代理服务器注意事项
 

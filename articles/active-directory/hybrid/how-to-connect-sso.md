@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357743"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658362"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -56,10 +56,10 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - 如果应用程序（例如 `https://myapps.microsoft.com/contoso.com`）在其 Azure AD 登录请求中转发 `domain_hint` (OpenID Connect) 或 `whr` (SAML) 参数（用于标识租户）或 `login_hint` 参数（用于标识用户），则用户将自动登录，而无需输入用户名或密码。
 - 如果应用程序（例如 `https://contoso.sharepoint.com`）向设置为租户的 Azure AD 终结点（即 `https://login.microsoftonline.com/contoso.com/<..>` 或 `https://login.microsoftonline.com/<tenant_ID>/<..>`）而不是 Azure AD 的通用终结点（即 `https://login.microsoftonline.com/common/<...>`）发送登录请求，则用户也可获得无提示登录体验。
 - 支持注销。 这可以让用户选择另一个 Azure AD 帐户进行登录，而不是自动使用无缝 SSO 自动登录。
-- 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Office 365 Win32 客户端（Outlook、Word、Excel 等）。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
+- 使用非交互式流时，支持使用16.0.8730 和更高版本的 Microsoft 365 Win32 客户端 (Outlook、Word、Excel 和其他) 。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 可通过 Azure AD Connect 启用它。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
-- 在能够进行 Kerberos 身份验证的平台和浏览器上，支持[新式身份验证](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)的基于 Web 浏览器的客户端和 Office 客户端支持此功能：
+- 在能够进行 Kerberos 身份验证的平台和浏览器上，支持[新式身份验证](/office365/enterprise/modern-auth-for-office-2013-and-2016)的基于 Web 浏览器的客户端和 Office 客户端支持此功能：
 
 | 操作系统\浏览器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
@@ -88,4 +88,3 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - [**常见问题**](how-to-connect-sso-faq.md) - 常见问题解答。
 - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-

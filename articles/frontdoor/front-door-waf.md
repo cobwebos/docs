@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Front Door 和 Azure Web 应用程序防火墙 (WAF) 快速缩放和保护 Web 应用程序 | Microsoft Docs
-description: 本文将帮助你了解如何结合使用 Web 应用程序防火墙和 Azure Front Door 服务
+description: 本文将帮助你了解如何将 Web 应用程序防火墙用于 Azure 前门服务
 services: frontdoor
 documentationcenter: ''
-author: tremansdoerfer
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/06/2020
-ms.author: rimansdo
-ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743535"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535425"
 ---
 # <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>使用 Azure Front Door 和 Azure Web 应用程序防火墙 (WAF) 快速缩放和保护 Web 应用程序
 
@@ -119,7 +119,7 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 更新 DNS 记录的具体步骤将取决于你的 DNS 服务提供商，但如果使用 Azure DNS 来托管 DNS 名称，则可以参阅[更新 DNS 记录的步骤](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli)文档，然后指向 AFD 主机名。 
 
-这里需要注意的一点是，如果需要用户使用区域顶点导航到你的网站（例如 contoso.com），则必须使用 Azure DNS 及其[别名记录类型](https://docs.microsoft.com/azure/dns/dns-alias)来托管你的 DNS 名称。 
+这里需要注意的一点是，如果你需要用户使用区域顶点导航到你的网站（例如，contoso.com），则必须使用 Azure DNS 并且它的 [别名记录类型](https://docs.microsoft.com/azure/dns/dns-alias) 来托管你的 DNS 名称。 
 
 此外，还需要更新 AFD 配置，[向其添加此自定义域](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain)，以便 AFD 知道此映射。
 

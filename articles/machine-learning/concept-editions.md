@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ab8a49f62735a47c4ccc9fa488eed60088cd9c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508596"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658589"
 ---
 # <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>企业 (预览版) 和基本版 Azure 机器学习 
 
@@ -113,7 +113,7 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 | 功能     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | Azure [RBAC) 支持 (基于角色的访问控制](how-to-assign-roles.md)                                           | 全部                     |
-| [虚拟网络 (VNet)](how-to-enable-virtual-network.md) 计算支持                                         | 全部                     |
+| [虚拟网络 (VNet)](how-to-secure-training-vnet.md) 计算支持                                         | 全部                     |
 | 对终结点身份验证评分                                                    | 全部                     |
 | [工作区专用链接](how-to-configure-private-link.md)                                                            | 全部                     |
 | 跨工作区[配额管理](how-to-manage-quotas.md)                                                 | 仅限 Enterprise Edition |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
-ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f415294c77b743996993f1f00be45e36f9d6002
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77587917"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660673"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
 
@@ -36,28 +36,28 @@ ms.locfileid: "77587917"
 
 默认情况下，Azure Sentinel 中启用此检测。 若要检查状态或禁用该状态，可能是因为你使用替代解决方案来基于多个警报创建事件，请使用以下说明：
 
-1. 如果尚未这样做，请登录到[Azure 门户](https://portal.azure.com)。
+1. 如果尚未这样做，请登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 导航到**Azure Sentinel**  >  **配置**  >  **分析**
 
-3. 选择 "**活动规则**" 并在 "**名称**" 列中找到 "**高级多阶段攻击检测**"。 检查 "**状态**" 列以确认是否已启用或禁用此检测。
+3. 选择 "**活动规则**" 并在 "**名称**" 列中找到 "**高级多阶段攻击检测**"。 检查 " **状态** " 列以确认是否已启用或禁用此检测。
 
-4. 若要更改状态，请选择此项，然后在 "**高级多阶段攻击检测**" 边栏选项卡上，选择 "**编辑**"。
+4. 若要更改状态，请选择此项，然后在 " **高级多阶段攻击检测** " 边栏选项卡上，选择 " **编辑**"。
 
-5. 在**规则创建向导**边栏选项卡上，会自动选择状态更改，因此请选择 "**下一步：查看**"，然后单击 "**保存**"。 
+5. 在 **规则创建向导** 边栏选项卡上，会自动选择状态更改，因此请选择 " **下一步：查看**"，然后单击 " **保存**"。 
 
 规则模板不适用于高级多阶段攻击检测。
 
 > [!NOTE]
-> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用[客户托管的密钥（CMK）](customer-managed-keys.md)加密定型数据。 若要选择退出，请导航到**Azure Sentinel**   \>  **配置**   \>  **分析 \> 活动规则 \> 高级多阶段攻击检测**，然后在 **"状态**" 列中，选择 "**禁用"。**
+> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用 [客户托管密钥 (CMK) ](customer-managed-keys.md) 来加密定型数据。 若要选择退出，请导航到**Azure Sentinel**   \>  **配置**   \>  **分析 \> 活动规则 \> 高级多阶段攻击检测**，然后在 **"状态**" 列中，选择 "**禁用"。**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>使用 Palo Alto 网络和 Microsoft Defender ATP 进行合成
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>使用 Palo Alto 网络和 Microsoft Defender for Endpoint 进行合成 (以前的 Microsoft Defender ATP) 
 
-这些方案结合了安全分析师使用的两个基本日志：来自 Palo Alto 网络的防火墙日志和来自 Microsoft Defender ATP 的终结点检测日志。 在下面列出的所有方案中，在涉及外部 IP 地址的终结点中检测到可疑活动，然后将来自外部 IP 地址的异常流量返回到防火墙中。 在 Palo Alto 日志中，Azure Sentinel 侧重于[威胁日志](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，在允许威胁时（可疑数据、文件、洪水、数据包、扫描、间谍软件、url、病毒、漏洞、分秒必争、wildfires），流量被视为可疑。
+这些方案结合了安全分析师使用的两个基本日志：来自 Palo Alto 网络的防火墙日志和 Microsoft Defender for Endpoint 的终结点检测日志。 在下面列出的所有方案中，在涉及外部 IP 地址的终结点中检测到可疑活动，然后将来自外部 IP 地址的异常流量返回到防火墙中。 在 Palo Alto 日志中，Azure Sentinel 侧重于 [威胁日志](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，如果允许威胁 (可疑数据、文件、洪水、数据包、扫描、间谍软件、url、病毒、漏洞、分秒必争、wildfires) ，则会将流量视为可疑。
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名服务的网络请求，后跟 Palo Alto 网络防火墙标记的异常流量。
 
-在此方案中，Azure Sentinel 首先检测到 Microsoft Defender 高级威胁防护检测到对 TOR 匿名服务的网络请求，导致异常活动。 此操作是在帐户 {account name} 下启动的，SID ID {sid} 于 {time}。 连接的传出 IP 地址是 {IndividualIp}。
+在此方案中，Azure Sentinel 首先检测到 Microsoft Defender for Endpoint (以前的 Microsoft Defender for ATP) 检测到导致异常活动的 TOR 匿名服务的网络请求。 此操作是在帐户 {account name} 下启动的，SID ID {sid} 于 {time}。 连接的传出 IP 地址是 {IndividualIp}。
 然后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量的目标 IP 地址为 {DestinationIP}。
 
 此方案目前为公共预览版。
@@ -65,13 +65,13 @@ ms.locfileid: "77587917"
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell 进行了可疑的网络连接，并 Palo Alto 网络防火墙标记的异常流量。
 
-在此方案中，Azure Sentinel 首先检测到 Microsoft Defender 高级威胁防护检测到 PowerShell 发出可疑网络连接，导致 Palo Alto 网络防火墙检测到异常活动。 这是由在 {time} 的 SID ID 为 {sid} 的帐户 {account name} 启动的。 连接的传出 IP 地址是 {IndividualIp}。 然后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量进入了网络。 网络流量的目标 IP 地址为 {DestinationIP}。
+在此方案中，Azure Sentinel 首先检测到 Microsoft Defender for Endpoint (以前为 Microsoft Defender for ATP) 的警报检测到，PowerShell 发出可疑网络连接，导致 Alto 网络防火墙检测到异常活动。 这是由在 {time} 的 SID ID 为 {sid} 的帐户 {account name} 启动的。 连接的传出 IP 地址是 {IndividualIp}。 然后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量进入了网络。 网络流量的目标 IP 地址为 {DestinationIP}。
 
 此方案目前为公共预览版。
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>到 IP 的出站连接，其中包含未经授权的访问尝试的历史记录，以及 Palo Alto 网络防火墙标记的异常流量
 
-在这种情况下，Azure Sentinel 会检测到警报，指出 Microsoft Defender 高级威胁防护检测到 IP 地址的出站连接，其中包含导致 Palo Alto 网络防火墙检测到异常活动的未经授权的访问尝试。 这是由在 {time} 的 SID ID 为 {sid} 的帐户 {account name} 启动的。 连接的传出 IP 地址是 {IndividualIp}。 完成此操作后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量进入了网络。 网络流量的目标 IP 地址为 {DestinationIP}。
+在此方案中，Azure Sentinel 检测到 Microsoft Defender for Endpoint (以前的 Microsoft Defender for ATP 的警报) 检测到 IP 地址的出站连接，其中包含导致 Palo Alto 网络防火墙检测到异常活动的未经授权的访问尝试的历史记录。 这是由在 {time} 的 SID ID 为 {sid} 的帐户 {account name} 启动的。 连接的传出 IP 地址是 {IndividualIp}。 完成此操作后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量进入了网络。 网络流量的目标 IP 地址为 {DestinationIP}。
 
 此方案目前为公共预览版。
 
@@ -87,7 +87,7 @@ ms.locfileid: "77587917"
 - [来自匿名 IP 地址的登录活动，后跟异常 Office 365 活动](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
 - [用户的登录活动，该用户的凭据已泄露，后跟异常 Office 365 活动](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
 
-您必须配置[Azure AD Identity Protection 数据连接器](connect-azure-ad-identity-protection.md)和[Cloud App Security](connect-cloud-app-security.md)连接器。
+您必须配置 [Azure AD Identity Protection 数据连接器](connect-azure-ad-identity-protection.md) 和 [Cloud App Security](connect-cloud-app-security.md) 连接器。
 
 在接下来的说明中，Azure Sentinel 会将此页上表示的数据的实际值显示为方括号中的变量。 例如，帐户的实际显示名称（而不是），而 \<*account name*> 不是实际数字 \<*number*> 。
 
@@ -97,7 +97,7 @@ ms.locfileid: "77587917"
 
 - **不可能前往导致 Office 365 邮箱渗透的异常位置**
     
-    此警报是指在 \<*account name*> 用户收件箱中设置了一个不可能旅行 \<*location*> 、一个非典型位置和可疑收件箱转发规则的登录事件的指示。
+    此警报是指在 \<*account name*>  用户收件箱中设置了一个不可能旅行 \<*location*> 、一个非典型位置和可疑收件箱转发规则的登录事件的指示。
     
     这可能表示帐户已泄露，并且邮箱正在用于盗取你的组织中的信息。 用户 \<*account name*> 创建或更新了收件箱转发规则，该规则将所有传入电子邮件转发到外部地址 \<*email address*> 。
 
@@ -123,7 +123,7 @@ ms.locfileid: "77587917"
     
     此警报表示 \<*account name*> 从不可能旅行到的 \<*location*> 非典型位置的登录事件。 
     
-    接下来，该帐户 \<*account name*> \<*number of activities*> 在单个会话中执行了异常量的模拟活动。
+    接下来，该帐户 \<*account name*> \<*number of activities*> 在单个会话中 () 模拟活动。
 
 - **不可能前往导致大容量文件共享的异常位置**
     
@@ -336,5 +336,5 @@ ms.locfileid: "77587917"
 
 现在，你已了解有关高级多阶段攻击检测的详细信息，你可能会对以下快速入门感兴趣，以了解如何了解你的数据和潜在威胁： [Azure Sentinel 入门](quickstart-get-visibility.md)。
 
-如果你已准备好调查为你创建的事件，请参阅以下教程：[通过 Azure Sentinel 调查事件](tutorial-investigate-cases.md)。
+如果你已准备好调查为你创建的事件，请参阅以下教程： [通过 Azure Sentinel 调查事件](tutorial-investigate-cases.md)。
 

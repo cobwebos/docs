@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1359acfb768f7ac2fa3527afd041595d313249d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d1dedfcd4a93446b615d84e86666059fd210c18
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669233"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485747"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速启动模板为 Azure VM 上的 SQL Server 配置可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "84669233"
 - 可控制 SQL Server 的域用户帐户。 
 
 
-## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>步骤 1：使用快速启动模板创建故障转移群集并将 SQL Server VM 加入到群集 
+## <a name="create-cluster"></a>创建群集
 将 SQL Server VM 注册到 SQL VM 资源提供程序后，可将 SQL Server VM 加入到 SqlVirtualMachineGroups。 此资源定义 Windows 故障转移群集的元数据。 元数据包括版本、完全限定的域名、用于管理群集和 SQL 服务的 Active Directory 帐户，以及用作云见证的存储帐户。 
 
 将 SQL Server VM 添加到 *SqlVirtualMachineGroups* 资源组会启动 Windows 故障转移群集服务，以便创建群集并将这些 SQL Server VM 加入该群集。 此步骤通过“101-sql-vm-ag-setup”快速启动模板自动执行。 可通过执行以下步骤实现它：
@@ -83,14 +83,26 @@ ms.locfileid: "84669233"
 > 模板部署过程中提供的凭据仅在部署期间存储。 部署完成后，将删除这些密码。 如果要向群集中添加更多 SQL Server VM，需要再次提供这些密码。 
 
 
-## <a name="step-2-manually-create-the-availability-group"></a>步骤 2：手动创建可用性组 
+
+## <a name="validate-cluster"></a>验证群集 
+
+要使故障转移群集受 Microsoft 支持，它必须通过群集验证。 使用首选方法（如远程桌面协议 () RDP）连接到 VM，并验证群集是否通过验证，然后再继续。 否则，群集将处于不受支持状态。 
+
+你可以使用故障转移群集管理器 (FCM) 或以下 PowerShell 命令来验证群集：
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
+
+
+## <a name="create-availability-group"></a>创建可用性组 
 像平时一样使用 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell) 或 [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) 手动创建可用性组。 
 
 >[!IMPORTANT]
 > 此时请不要创建侦听程序，因为 101-sql-vm-aglistener-setup 快速启动模板会在步骤 4 中自动创建侦听程序。 
 
-## <a name="step-3-manually-create-the-internal-load-balancer"></a>步骤 3：手动创建内部负载均衡器
-Always On 可用性组侦听程序需要 Azure 负载均衡器的内部实例。 内部负载均衡器为可用性组侦听程序提供“浮动”IP 地址，可以加快故障转移和重新连接的速度。 如果可用性组中的 SQL Server VM 属于同一个可用性集，则你可以使用基本负载均衡器。 否则，需要使用标准负载均衡器。 
+## <a name="create-load-balancer"></a>创建负载均衡器
+Always On 可用性组侦听器需要 Azure 负载均衡器的内部实例。 内部负载均衡器为可用性组侦听器提供“浮动”IP 地址，可以加快故障转移和重新连接的速度。 如果可用性组中的 SQL Server VM 属于同一个可用性集，则可以使用基本负载均衡器。 否则，需要使用标准负载均衡器。 
 
 > [!IMPORTANT]
 > 内部负载均衡器应与 SQL Server VM 实例位于同一虚拟网络中。 
@@ -122,7 +134,7 @@ Always On 可用性组侦听程序需要 Azure 负载均衡器的内部实例。
 >[!IMPORTANT]
 > 每个 SQL Server VM 的公共 IP 资源应有一个与标准负载均衡器兼容的标准 SKU。 若要确定 VM 公共 IP 资源的 SKU，请转到“资源组”，选择 SQL Server VM 的“公共 IP 地址”资源，并在“概述”窗格的“SKU”下面找到该值   。 
 
-## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>步骤 4：使用快速启动模板创建可用性组侦听程序并配置内部负载均衡器
+## <a name="create-listener"></a>创建侦听器 
 
 使用 101-sql-vm-aglistener-setup 快速启动模板自动创建可用性组侦听程序并配置内部负载均衡器。 该模板预配 Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener 资源。 **101-sql-vm-aglistener-setup** 快速入门模板通过 SQL VM 资源提供程序执行以下操作：
 
@@ -159,9 +171,9 @@ Always On 可用性组侦听程序需要 Azure 负载均衡器的内部实例。
 1. 若要监视部署，请从顶部导航横幅的“通知”钟形图标中选择“部署”，或转到 Azure 门户中的“资源组” 。 在“设置”下选择“部署”，然后选择“Microsoft.Template”部署  。 
 
 >[!NOTE]
->如果部署中途失败，则需要使用 PowerShell 手动[删除新建的侦听程序](#remove-the-availability-group-listener)，然后重新部署 101-sql-vm-aglistener-setup 快速启动模板。 
+>如果部署中途失败，则需要使用 PowerShell 手动[删除新建的侦听程序](#remove-listener)，然后重新部署 101-sql-vm-aglistener-setup 快速启动模板。 
 
-## <a name="remove-the-availability-group-listener"></a>删除可用性组侦听程序
+## <a name="remove-listener"></a>删除侦听器
 如果以后需要删除该模板配置的可用性组侦听程序，则必须通过 SQL VM 资源提供程序执行整个操作。 由于侦听程序是通过 SQL VM 资源提供程序注册的，因此仅仅通过 SQL Server Management Studio 删除它是不够的。 
 
 最佳方法是在 PowerShell 中使用以下代码片段，通过 SQL VM 资源提供程序将其删除。 这样会从 SQL VM 资源提供程序中删除可用性组侦听程序元数据。 并将侦听程序从可用性组中实际删除。 
@@ -175,19 +187,15 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>常见错误
 本部分讨论一些已知问题及其可能的解决方法。 
 
-### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>可用性组“\<AG-Name>”的可用性组侦听程序已存在
-用于可用性组侦听程序的 Azure 快速启动模板中的所选可用性组已包含侦听程序。 这表明侦听程序在物理上位于可用性组内，或者其元数据仍保留在 SQL VM 资源提供程序内。 使用 [PowerShell](#remove-the-availability-group-listener) 删除该侦听程序，然后重新部署 101-sql-vm-aglistener-setup 快速启动模板。 
+可用性**组 "" 的可用性组侦听器 \<AG-Name> 已存在**：用于可用性组侦听器的 Azure 快速入门模板中所选的可用性组已包含一个侦听器。 这表明侦听程序在物理上位于可用性组内，或者其元数据仍保留在 SQL VM 资源提供程序内。 使用 [PowerShell](#remove-listener) 删除该侦听程序，然后重新部署 101-sql-vm-aglistener-setup 快速启动模板。 
 
-### <a name="connection-only-works-from-primary-replica"></a>只能从主要副本进行连接
-此行为的原因可能是 101-sql-vm-aglistener-setup 模板部署失败，使内部负载均衡器配置处于不一致状态。 验证后端池是否列出可用性集，并且是否存在运行状况探测规则和负载均衡规则。 如果缺少任何内容，则内部负载均衡器的配置将处于不一致状态。 
+**连接仅适用于主副本** 此行为可能来自已导致内部负载均衡器配置处于不一致状态的失败的 **101-aglistener** 模板部署。 验证后端池是否列出可用性集，并且是否存在运行状况探测规则和负载均衡规则。 如果缺少任何内容，则内部负载均衡器的配置将处于不一致状态。 
 
-若要解决此行为，请使用 [PowerShell](#remove-the-availability-group-listener) 删除侦听程序，通过 Azure 门户删除内部负载均衡器，然后从步骤 3 重新开始。 
+若要解决此行为，请使用 [PowerShell](#remove-listener) 删除侦听程序，通过 Azure 门户删除内部负载均衡器，然后从步骤 3 重新开始。 
 
-### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - 只能更新 SQL 虚拟机列表
-部署 101-sql-vm-aglistener-setup 模板时，如果通过 SQL Server Management Studio (SSMS) 删除了侦听程序，但未将其从 SQL VM 资源提供程序中删除，则可能会发生此错误。 通过 SSMS 删除侦听程序不会将侦听程序的元数据从 SQL VM 资源提供程序中删除。 必须通过 [PowerShell](#remove-the-availability-group-listener) 从资源提供程序中删除该侦听程序。 
+**BadRequest-只能更新 SQL 虚拟机列表** 如果侦听器已通过 SQL Server Management Studio (SSMS) 删除，但未从 SQL VM 资源提供程序中删除，则在 **101 部署 aglistener** 模板时，可能会发生此错误。 通过 SSMS 删除侦听程序不会将侦听程序的元数据从 SQL VM 资源提供程序中删除。 必须通过 [PowerShell](#remove-listener) 从资源提供程序中删除该侦听程序。 
 
-### <a name="domain-account-does-not-exist"></a>域帐户不存在
-此错误可能有两个原因。 指定的域帐户不存在，或者缺少[用户主体名称 (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) 数据。 101-sql-vm-ag-setup 模板要求域帐户采用 UPN 形式（即 user@domain.com），但某些域帐户可能缺少它。 如果本地用户在迁移后成为第一个域管理员帐户（此时服务器已提升为域控制器），或者如果用户是通过 PowerShell 创建的，则通常会发生这种情况。 
+**域帐户不存在** 此错误可能有两个原因。 指定的域帐户不存在，或者缺少[用户主体名称 (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) 数据。 101-sql-vm-ag-setup 模板要求域帐户采用 UPN 形式（即 user@domain.com），但某些域帐户可能缺少它。 如果本地用户在迁移后成为第一个域管理员帐户（此时服务器已提升为域控制器），或者如果用户是通过 PowerShell 创建的，则通常会发生这种情况。 
 
 验证帐户是否存在。 如果帐户存在，则你遇到的是第二种情况。 若要解决此问题，请执行以下操作：
 
@@ -202,7 +210,6 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 6. 选择“应用”以保存所做的更改，然后选择“确定”，将对话框关闭。  
 
 完成这些更改后，请尝试再次部署 Azure 快速启动模板。 
-
 
 
 ## <a name="next-steps"></a>后续步骤

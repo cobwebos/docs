@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949773"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647495"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
@@ -46,6 +46,7 @@ ms.locfileid: "88949773"
 * 系统节点池需要一个至少具有 2 个 vCPU 和 4GB 内存的 VM SKU。
 * 系统节点池必须支持至少 30 个 Pod，如 [Pod 的最小值和最大值公式][maximum-pods]中所述。
 * 现成节点池需要用户节点池。
+* 添加其他系统节点池或更改哪个节点池为系统节点池 *不* 会自动移动系统箱。 即使将系统箱更改为用户节点池，系统盒也可以继续在同一节点池上运行。 如果删除或缩小运行系统箱的节点池，而该节点池以前是系统节点池，则会将这些系统箱重新部署到新的系统节点池。
 
 对于节点池，可以执行以下操作：
 

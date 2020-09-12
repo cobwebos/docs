@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0afb7906e102e4f0fb49245949b08618da1693ec
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f2d874925cdad05ec7979575c9b87608da542927
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265671"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661432"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -78,12 +78,12 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>在 AKS 和现场可编程门阵列 (FPGA) 上进行部署
 
   > [!NOTE]
-  > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+  > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。
 
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
--  如果创建新群集，请使用 **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 。
-- 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 。 这两个方法都返回包含 enable_ssl 方法的配置对象。
+-  如果创建新群集，请使用 **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 。
+- 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 。 这两个方法都返回包含 enable_ssl 方法的配置对象。
 
 enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书。
 
@@ -130,7 +130,7 @@ enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书。
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-有关 enable_ssl 的详细信息，请参阅 [AksProvisioningConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) 和 [AksAttachConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
+有关 enable_ssl 的详细信息，请参阅 [AksProvisioningConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) 和 [AksAttachConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
 
 ### <a name="deploy-on-azure-container-instances"></a>在 Azure 容器实例上进行部署
 
@@ -200,8 +200,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 有关详细信息，请参阅以下参考文档：
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
-* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py&preserve-view=true)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py&preserve-view=true)
 
 ### <a name="update-custom-certificate"></a>更新自定义证书
 
@@ -240,8 +240,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 有关详细信息，请参阅以下参考文档：
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
-* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py&preserve-view=true)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py&preserve-view=true)
 
 ## <a name="disable-tls"></a>禁用 TLS
 
@@ -264,4 +264,4 @@ aks_target.update(update_config)
 ## <a name="next-steps"></a>后续步骤
 了解如何：
 + [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-+ [在 Azure 虚拟网络中安全运行试验和推理](how-to-enable-virtual-network.md)
++ [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)

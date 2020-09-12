@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7305fe8ee96697c5c8b2172e32a2a97e5bd6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358423"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657092"
 ---
 # <a name="more-details-about-features-in-preview"></a>有关预览版功能的详细信息
 本主题介绍如何使用当前以预览版形式提供的功能。
 
 ## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同步 V2 终结点 API（公共预览版） 
 
-我们已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 通过利用新的 V2 终结点，导出或导入 Azure AD 时的性能会有显著提升。 这个新的终结点还支持同步最多包含 250000 个成员的组。 使用此终结点，还可以在组回写处于启用状态时，将 O365 统一组（没有最多成员人数限制）回写到本地 Active Directory。   有关详细信息，请参阅 [Azure AD Connect 同步 V2 终结点 API（公共预览版）](how-to-connect-sync-endpoint-api-v2.md)。
+我们已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 通过利用新的 V2 终结点，导出或导入 Azure AD 时的性能会有显著提升。 这个新的终结点还支持同步最多包含 250000 个成员的组。 启用组写回后，使用此终结点还可以向本地 Active Directory 写回 Microsoft 365 统一组（无最大成员身份限制）。 有关详细信息，请参阅 [Azure AD Connect 同步 V2 终结点 API（公共预览版）](how-to-connect-sync-endpoint-api-v2.md)。
 
 ## <a name="user-writeback"></a>用户写回
 > [!IMPORTANT]

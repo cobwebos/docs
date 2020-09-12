@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589038"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658343"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -37,7 +37,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 **问：能否在 [Microsoft Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用无缝 SSO？**
 
-无缝 SSO 可用于 Azure 政府云。 有关详细信息，请查看[针对 Azure 政府的混合标识注意事项](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)。
+无缝 SSO 可用于 Azure 政府云。 有关详细信息，请查看[针对 Azure 政府的混合标识注意事项](./reference-connect-government-cloud.md)。
 
 **问：哪些应用程序可以利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？**
 
@@ -62,11 +62,11 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 **问：无缝 SSO 是否支持将 `Alternate ID` 作为用户名（而不是 `userPrincipalName`）？**
 
-是的。 在 Azure AD Connect 中进行配置时，无缝 SSO 支持将 `Alternate ID` 作为用户名，如[此处](how-to-connect-install-custom.md)所示。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 有关支持声明，请参阅特定应用程序文档。
+是的。 在 Azure AD Connect 中进行配置时，无缝 SSO 支持将 `Alternate ID` 作为用户名，如[此处](how-to-connect-install-custom.md)所示。 并非所有 Microsoft 365 的应用程序都支持 `Alternate ID` 。 有关支持声明，请参阅特定应用程序文档。
 
-**问：[Azure AD 加入](../active-directory-azureadjoin-overview.md)与无缝 SSO 提供的单一登录体验有何不同？**
+**问：[Azure AD 加入](../devices/overview.md)与无缝 SSO 提供的单一登录体验有何不同？**
 
-如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。  用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 会自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
+如果用户的设备注册了 Azure AD，[Azure AD 加入](../devices/overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。  用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 会自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
 
 可同时在租户上使用 Azure AD 加入和无缝 SSO。 这两种功能互补。 如果同时开启这两项功能，将先通过 Azure AD 加入实现 SSO，再进行无缝 SSO。
 
@@ -85,7 +85,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
    **步骤 1。获取已在其中启用了无缝 SSO 的 AD 林列表**
 
-   1. 首先，下载并安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+   1. 首先，下载并安装 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
    2. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
    3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
@@ -130,7 +130,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
    在运行 Azure AD Connect 的本地服务器上运行以下步骤：
 
-   1. 首先，下载并安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+   1. 首先，下载并安装 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
    2. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
    3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
@@ -145,7 +145,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
    如果已使用 Azure AD Connect 禁用了无缝 SSO，请依次执行下面的任务 1 到 4。 但是，如果是使用 PowerShell 禁用了无缝 SSO，请跳转到下面的任务 5。
 
-   1. 首先，下载并安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+   1. 首先，下载并安装 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
    2. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
    3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。

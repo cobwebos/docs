@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903317"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461538"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
 
@@ -30,13 +30,13 @@ ms.locfileid: "87903317"
 
 ## <a name="use-sql-for-dashboard"></a>对仪表板使用 SQL
 
-Power BI 仪表板提供较低的延迟，但无法用于生成完备的 Power BI 报表。 常见的报告模式是先将数据输出到 SQL 数据库。 然后使用 Power BI 的 SQL 连接器在 SQL 中查询最新数据。
+Power BI 仪表板提供较低的延迟，但无法用于生成完备的 Power BI 报表。 常见报告模式是先将数据输出到 SQL 数据库。 然后使用 Power BI 的 SQL 连接器在 SQL 中查询最新数据。
 
 ![ASA SQL 仪表板](media/stream-analytics-solution-patterns/sql-dashboard.png)
 
-使用 SQL 数据库可提供更大的灵活性，但会降低延迟。 此解决方案最适合延迟要求超过一秒的作业。 此方法可以最大程度地发挥 Power BI 的功能，以进一步细分报表数据，并提供多得多的可视化选项。 此外，你可以灵活地使用其他仪表板解决方案，例如 Tableau。
+使用 SQL 数据库可以获得更大的灵活性，低价是延迟略有提高。 此解决方案最适合延迟要求超过一秒的作业。 此方法可以最大程度地发挥 Power BI 的功能，以进一步细分报表数据，并提供多得多的可视化选项。 此外，你可以灵活地使用其他仪表板解决方案，例如 Tableau。
 
-SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据库的最大吞吐量目前为 24 MB/s。 如果解决方案中的事件源以更高的速率生成数据，则你需要使用流分析中的处理逻辑来降低到 SQL 的输出速率。 可以结合时态联接和分析函数使用筛选、开窗聚合、模式匹配等技术。 可以使用[到 Azure SQL 数据库的 Azure 流分析输出](stream-analytics-sql-output-perf.md)中所述的技术进一步优化到 SQL 的输出速率。
+SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据库的最大吞吐量目前大约为 24 MB/秒。 如果解决方案中的事件源以更高的速率生成数据，则你需要使用流分析中的处理逻辑来降低到 SQL 的输出速率。 可以结合时态联接和分析函数使用筛选、开窗聚合、模式匹配等技术。 可以使用[到 Azure SQL 数据库的 Azure 流分析输出](stream-analytics-sql-output-perf.md)中所述的技术进一步优化到 SQL 的输出速率。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>使用事件消息传送将实时见解整合到应用程序中
 
@@ -72,7 +72,7 @@ SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据
 
 ## <a name="use-reference-data-for-application-customization"></a>使用引用数据进行应用程序自定义
 
-Azure 流分析引用数据功能是专门为警报阈值、处理规则和[地理围栏](geospatial-scenarios.md)等最终用户自定义操作设计的。 应用程序层可以接受参数更改，并将其存储在 SQL 数据库中。 流分析作业定期查询数据库中的更改，并使得自定义参数可通过引用数据联接操作进行访问。 有关如何使用引用数据进行应用程序自定义的详细信息，请参阅 [SQL 引用数据](sql-reference-data.md)和[引用数据联接](/stream-analytics-query/reference-data-join-azure-stream-analytics)。
+Azure 流分析引用数据功能是专门为警报阈值、处理规则和[地理围栏](geospatial-scenarios.md)等最终用户自定义操作设计的。 应用层可以接受参数更改，并将其存储在 SQL 数据库中。 流分析作业定期查询数据库中的更改，并使得自定义参数可通过引用数据联接操作进行访问。 有关如何使用引用数据进行应用程序自定义的详细信息，请参阅 [SQL 引用数据](sql-reference-data.md)和[引用数据联接](/stream-analytics-query/reference-data-join-azure-stream-analytics)。
 
 此模式还可用于实现从引用数据定义规则阈值的规则引擎。 有关规则的详细信息，请参阅[在 Azure 流分析中处理基于阈值的可配置规则](stream-analytics-threshold-based-rules.md)。
 
@@ -88,7 +88,7 @@ Azure 流分析的内置[异常情况检测模型](stream-analytics-machine-lear
 
 ## <a name="real-time-data-warehousing"></a>实时数据仓库
 
-另一种常见模式是实时数据仓库，也称为流数据仓库。 除了从应用程序传入事件中心和 IoT 中心的事件以外，还可使用 [IoT Edge 上运行的 Azure 流分析](stream-analytics-edge.md)来满足数据清理、数据化减、数据存储和转发需求。 在 IoT Edge 上运行的流分析可以正常处理系统中的带宽限制和连接问题。 写入 Azure Synapse Analytics 时，流分析可支持最多 200MB/秒的吞吐量速率。
+另一种常见模式是实时数据仓库，也称为流数据仓库。 除了从应用程序传入事件中心和 IoT 中心的事件以外，还可使用 [IoT Edge 上运行的 Azure 流分析](stream-analytics-edge.md)来满足数据清理、数据化减、数据存储和转发需求。 在 IoT Edge 上运行的流分析可以正常处理系统中的带宽限制和连接问题。 写入 Azure Synapse Analytics 时，流分析可支持最大 200MB/秒的吞吐率。
 
 ![ASA 数据仓库](media/stream-analytics-solution-patterns/data-warehousing.png)
 
@@ -102,7 +102,7 @@ Azure 流分析的内置[异常情况检测模型](stream-analytics-machine-lear
 
 ## <a name="use-reference-data-for-enrichment"></a>使用引用数据进行扩充
 
-ETL 引擎通常需要数据扩充。 Azure 流分析支持从 SQL 数据库和 Azure Blob 存储的[引用数据](stream-analytics-use-reference-data.md)扩充数据。 可以扩充进入 Azure Data Lake 和 SQL 数据仓库的数据。
+ETL 引擎通常需要数据扩充。 Azure 流分析支持使用 SQL 数据库和 Azure Blob 存储中的[参考数据](stream-analytics-use-reference-data.md)扩充数据。 可以在 Azure Data Lake 和 Azure Synapse 分析中为数据登陆完成数据扩充。
 
 
 ![使用数据扩充进行 ASA 脱机分析](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
@@ -129,7 +129,7 @@ ETL 引擎通常需要数据扩充。 Azure 流分析支持从 SQL 数据库和 
 
     此指标反映处理管道滞后于挂钟时间的程度（秒）。 某些延迟归因于固有的处理逻辑。 因此，监视趋势的增长比监视绝对值重要得多。 应该通过应用程序设计而不是监视或警报来解决稳定态延迟。
 
-出现故障时，活动日志和[诊断日志](stream-analytics-job-diagnostic-logs.md)是开始查找错误的最佳位置。
+出现故障时，活动日志和 [诊断日志](stream-analytics-job-diagnostic-logs.md) 是开始查找错误的最佳位置。
 
 ## <a name="build-resilient-and-mission-critical-applications"></a>构建可复原的任务关键型应用程序
 

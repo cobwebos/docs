@@ -1,6 +1,6 @@
 ---
 title: 用于在 Azure Synapse Analytics 中开发 Synapse SQL 池的资源
-description: SQL 数据仓库的开发概念、设计决策、建议和编码技术。
+description: Azure Synapse Analytics 的开发概念、设计决策、建议和编码技术。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211487"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460603"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 Synapse SQL 池的设计决策和编码技术 
  在本文中，你将查找更多资源，帮助你更好地理解 Azure Synapse 中 SQL 池的关键设计决策、建议和编码技术。
@@ -38,7 +38,7 @@ ms.locfileid: "85211487"
 
 * [存储过程](sql-data-warehouse-develop-stored-procedures.md)
 * [标签](sql-data-warehouse-develop-label.md)
-* [视图](sql-data-warehouse-develop-views.md)
+* [视图](performance-tuning-materialized-views.md)
 * [临时表](sql-data-warehouse-tables-temporary.md)
 * [动态 SQL](sql-data-warehouse-develop-dynamic-sql.md)
 * [循环](sql-data-warehouse-develop-loops.md)

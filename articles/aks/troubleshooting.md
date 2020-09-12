@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056516"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460314"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "87056516"
 此错误表示用于群集的子网在其 CIDR 中不再具有用于成功分配资源的可用 IP。 对于 Kubenet 群集，需要为群集中的每个节点提供足够的 IP 空间。 对于 Azure CNI 群集，需要为群集中的每个节点和 Pod 提供足够的 IP 空间。
 阅读并详细了解如何[设计为 Pod 分配 IP 的 Azure CNI](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
 
-这些错误还会在[AKS 诊断](./concepts-diagnostics.md)中出现，这会主动地显示子网大小不足等问题。
+这些错误还会在 [AKS 诊断](./concepts-diagnostics.md) 中出现，这会主动地显示子网大小不足等问题。
 
 以下三 (3) 种情况会导致子网大小不足的错误：
 
@@ -46,7 +46,7 @@ ms.locfileid: "87056516"
    1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of buffer nodes needed to upgrade` 时就会发生这种情况。
    1. 如果使用的是 Azure CNI，当 `number of free IPs in the subnet` 小于 `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 时就会发生这种情况。
    
-   默认情况下，AKS 群集设置一（1）的 max 电涌（升级缓冲器）值，但可以通过设置[节点池的最大电涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview)来自定义此升级行为，此值将增加完成升级所需的可用 ip 的数量。
+   默认情况下，AKS 群集将最大冲击 (升级缓冲区) 一个 (1) 的值，但可以通过设置 [节点池的最大浪涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview) 来自定义此升级行为，这将增加完成升级所需的可用 ip 的数目。
 
 1. AKS 创建或 AKS Nodepool 添加
    1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of nodes requested for the node pool` 时就会发生这种情况。
@@ -60,7 +60,7 @@ ms.locfileid: "87056516"
    1. 从驻留在要替换的旧子网中的旧 nodepool 中清空 Pod。
    1. 删除旧的子网和旧的 nodepool。
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。   应采取何种操作？
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。 我该怎么办？
 
 可能有多种原因导致 Pod 停滞在该模式。 可能通过以下方式查看：
 
@@ -80,11 +80,11 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
-- **[节点之间的内部流量是否被阻止？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
+- [节点之间的内部流量是否被阻止？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)
 
-## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我正在接收 `TCP timeouts` ，如`dial tcp <Node_IP>:10250: i/o timeout`
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我收到 `TCP timeouts`，如 `dial tcp <Node_IP>:10250: i/o timeout`
 
-这些超时可能与被阻止节点之间的内部通信有关。 验证此流量是否未被阻止，如群集节点的子网上的[网络安全组](concepts-security.md#azure-network-security-groups)。
+这些超时可能与被阻止节点之间的内部流量有关。 验证此流量是否未被阻止，例如通过群集节点子网上的[网络安全组](concepts-security.md#azure-network-security-groups)来这样做。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我想尝试在现有群集上启用基于角色的访问控制 (RBAC)。 该如何操作？
 
@@ -97,6 +97,10 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误：拨号后端时出错: 拨打 tcp...”。 我该怎么办？
 
 确保端口 22、9000 和 1194 已打开，以便连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` 或 `aks-link` Pod 是否正在 kube-system 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
+
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>`"tls: client offered only unsupported versions"`连接到 AKS API 时，我将从客户端获得。   应采取何种操作？
+
+AKS 中支持的最低 TLS 版本是 TLS 1.2。
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>我在尝试进行升级或缩放时收到 `"Changing property 'imageReference' is not allowed"` 错误。 如何修复此问题？
 
@@ -153,9 +157,9 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 * AKS 节点/MC_ 资源组名称由资源组名称和资源名称组成。 自动生成的 `MC_resourceGroupName_resourceName_AzureRegion` 语法长度不能超过 80 个字符。 如果需要，请缩短资源组名称或 AKS 群集名称的长度。 也可以[自定义节点资源组名称](cluster-configuration.md#custom-resource-group-name)
 * dnsPrefix 必须以字母数字值开头和结尾，并且必须介于 1-54 个字符之间。 有效字符包括字母数字值和连字符 (-)。 dnsPrefix 不能包含特殊字符，例如句点 (.)。
 * AKS 节点池名称必须全部为小写形式，对于 Linux 节点池，长度为 1-11 个字符；对于 Windows 节点池，长度为 1-6 个字符。 名称必须以字母开头，并且仅允许使用字母和数字字符。
-* *管理员用户名*（用于设置 Linux 节点的管理员用户名）必须以字母开头，只能包含字母、数字、连字符和下划线，且最大长度为64个字符。
+* admin-username（用于设置 Linux 节点的管理员用户名）必须以字母开头，只能包含字母、数字、连字符和下划线，其最大长度为 64 个字符。
 
-## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>在尝试创建、更新、缩放、删除或升级群集时收到错误：不允许执行该操作，因为正在执行其他操作。
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在尝试创建、更新、缩放、删除或升级群集时收到错误，该操作不被允许，因为另一个操作正在进行。
 
 以下故障排除帮助参考自 aka.ms/aks-pending-operation
 
@@ -176,9 +180,9 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 * 如果使用自动化脚本，请在创建服务主体和创建 AKS 群集之间增加延迟时间。
 * 如果使用 Azure 门户，请在创建期间返回到群集设置，然后在几分钟后重试验证页面。
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>我正在 `"AADSTS7000215: Invalid client secret is provided."` 使用 AKS API。   应采取何种操作？
 
-
-
+这通常是由于服务主体凭据过期引起的。 [更新 AKS 群集的凭据。](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>在限制出口流量后收到错误消息
 
@@ -215,7 +219,7 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
 ```
 
-此问题已在以下版本的 Kubernetes 中得到解决：
+此问题在以下版本的 Kubernetes 中已得到修复：
 
 | Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
@@ -290,7 +294,7 @@ initContainers:
 
 在某些极端情况下，Azure 磁盘分离操作可能部分失败，导致节点 VM 处于故障状态。
 
-此问题已在以下版本的 Kubernetes 中得到解决：
+此问题在以下版本的 Kubernetes 中已得到修复：
 
 | Kubernetes 版本 | 已修复的版本 |
 |--|:--:|

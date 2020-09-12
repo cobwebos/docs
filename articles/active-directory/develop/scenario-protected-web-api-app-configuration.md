@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50de800c94bd0a65fafcff3ef6613d6f063a3797
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855488"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512328"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
@@ -91,9 +91,9 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 }
 ```
 
-#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>使用 web API 的自定义应用 ID URI 的情况
+#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>为 Web API 使用自定义应用 ID URI 时
 
-如果已接受应用注册门户建议的应用 ID URI，则无需指定访问群体 (参阅 [应用程序 ID uri 和范围](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)) 。 否则，应添加一个 `Audience` 属性，其值为 WEB API 的应用 ID URI。
+如果已接受应用注册门户建议的应用 ID URI，则无需指定访问群体 (参阅 [应用程序 ID uri 和范围](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)) 。 否则，应添加一个 `Audience` 属性，其值为 Web API 的应用 ID URI。
 
 ```Json
 {
@@ -111,13 +111,13 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 对包含 **[Authorize]** 属性的控制器操作调用某个应用时，ASP.NET 和 ASP.NET Core 将从 Authorization 标头的持有者令牌中提取访问令牌。 然后，该访问令牌将转发到 JwtBearer 中间件，而该中间件会调用适用于 .NET 的 Microsoft IdentityModel 扩展。
 
-#### <a name="using-microsoftidentityweb-templates"></a>使用 Web.config 模板
+#### <a name="using-microsoftidentityweb-templates"></a>使用 Microsoft.Identity.Web 模板
 
-可以通过使用 Microsoft. Identity. Web 项目模板从头开始创建一个 web API。 有关详细信息，请参阅 [Microsoft WEB API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)
+可以通过使用 Microsoft.Identity.Web 项目模板从头开始创建一个 Web API。 有关详细信息，请参阅 [Microsoft.Identity.Web - Web API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>从现有 ASP.NET Core 3.1 应用程序开始
 
-目前，ASP.NET Core 3.1 使用 AspNetCore. AzureAD 库。 中间件在 Startup.cs 文件中进行初始化。
+目前，ASP.NET Core 3.1 使用 Microsoft.AspNetCore.AzureAD.UI 库。 该中间件在 Startup.cs 文件中初始化。
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -156,29 +156,30 @@ public void ConfigureServices(IServiceCollection services)
 public void ConfigureServices(IServiceCollection services)
 {
  // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
- services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+             .AddMicrosoftIdentityWebApi(Configuration, "AzureAd");
 
- services.AddControllers();
+services.AddControllers();
 }
 ```
 
 > [!NOTE]
-> 如果你使用的是，而不是在 `Audience` *appsettings.js*中设置，则使用以下内容：
-> -  `$"{ClientId}"` 如果已将 [访问令牌接受版本](scenario-protected-web-api-app-registration.md#accepted-token-version) 设置为 `2` 或，则为 Azure AD B2C web api。
-> - `$"api://{ClientId}` 在所有其他情况下， () 的1.0 版 [访问令牌](access-tokens.md) 。
-> 有关详细信息，请参阅[Microsoft web.config。](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)
+> 如果使用 Microsoft.Identity.Web，但未在 appsettings.json 中设置 `Audience`，则使用以下内容：
+> -  如果已将[接受访问令牌的版本](scenario-protected-web-api-app-registration.md#accepted-token-version)设置为 `2` 或用于 Azure AD B2C Web API，则使用 `$"{ClientId}"`。
+> - 在所有其他情况下（用于 v1.0 [访问令牌](access-tokens.md)），使用 `$"api://{ClientId}`。
+> 有关详细信息，请参阅 Microsoft.Identity.Web [源代码](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)。
 
-上面的代码段摘自 [ASP.NET Core WEB API 增量教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)。 AddMicrosoftIdentityWebApiAuthentication 中提供了有关**AddMicrosoftIdentityWebApiAuthentication**的详细[信息。](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27) 此方法调用 [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)，这本身指示中间件如何验证令牌。 有关详细信息，请参阅 [源代码](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)。
+前面的代码段摘自 [ASP.NET Core Web API 增量教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)。 AddMicrosoftIdentityWebApiAuthentication 中提供了有关**AddMicrosoftIdentityWebApiAuthentication**的详细[信息。](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27) 此方法调用 [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)，后者会指示中间件如何验证令牌。 有关详细信息，请参阅其[源代码](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)。
 
 ## <a name="token-validation"></a>令牌验证
 
 在上述代码片段中，与 Web 应用中的 OpenID Connect 中间件一样，JwtBearer 中间件将会根据 `TokenValidationParameters` 的值验证令牌。 根据需要解密该令牌，提取声明，并验证签名。 然后，该中间件将通过检查以下数据来验证该令牌：
 
-- 受众：令牌针对 web API。
-- Sub：对允许调用 web API 的应用程序发出此操作。
-- 颁发者：它是由受信任的 security token service (STS) 颁发的。
-- 过期：其生存期在范围内。
-- 签名：未被篡改。
+- 受众：令牌面向 Web API。
+- 使用者：令牌是针对可以调用 Web API 的应用颁发的。
+- 颁发者：令牌是由受信任的安全令牌服务 (STS) 颁发的。
+- 过期时间：令牌的生存期在有效范围内。
+- 签名：令牌未被篡改。
 
 此外还可以执行特殊验证。 例如，可以验证嵌入在令牌中的签名密钥是否受信任，以及令牌是否未重放。 最后，某些协议需要特定的验证。
 
@@ -201,9 +202,9 @@ public void ConfigureServices(IServiceCollection services)
 
 验证程序与 **TokenValidationParameters** 类的属性相关联。 这些属性从 ASP.NET 和 ASP.NET Core 配置初始化。
 
-在大多数情况下，无需更改参数， 非单租户应用除外。 这些 web 应用将接受来自任何组织或个人 Microsoft 帐户的用户。 对于这种情况，必须验证颁发者。 Web.config 还会处理颁发者验证。 有关详细信息，请参阅 [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)。
+在大多数情况下，无需更改参数， 非单租户应用除外。 这些 web 应用将接受来自任何组织或个人 Microsoft 帐户的用户。 对于这种情况，必须验证颁发者。 Microsoft.Identity.Web 还负责颁发者验证。 有关详细信息，请参阅 Microsoft.Identity.Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)。
 
-在 ASP.NET Core 中，如果要自定义令牌验证参数，请在 *Startup.cs*中使用以下代码片段：
+在 ASP.NET Core 中，如果要自定义令牌验证参数，请在 Startup.cs 中使用以下代码片段：
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -221,17 +222,17 @@ services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, opt
 });
 ```
 
-对于 ASP.NET MVC，下面的代码示例演示如何执行自定义令牌验证：
+对于 ASP.NET MVC，下面的代码示例演示了如何执行自定义令牌验证：
 
 https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation
 
 ## <a name="token-validation-in-azure-functions"></a>Azure Functions 中的令牌验证
 
-还可以在 Azure Functions 中验证传入的访问令牌。 你可以在 GitHub 上的以下代码示例中找到此类验证的示例：
+还可以在 Azure Functions 中验证传入的访问令牌。 可以在 GitHub 上的以下代码示例中找到此类验证的示例：
 
-- .NET： [Azure 示例/ms-dotnet-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
-- Node.js： [Azure-Samples/ms-nodejs-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
-- Python： [Azure 示例/ms-identity-webapi-azurefunctions) ](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
+- .NET:[Azure-Samples/ms-identity-dotnet-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
+- Node.js：[Azure-Samples/ms-identity-nodejs-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
+- Python:[Azure-Samples/ms-identity-python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
 ## <a name="next-steps"></a>后续步骤
 

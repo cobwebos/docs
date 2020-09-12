@@ -1,6 +1,6 @@
 ---
 title: 使用存储过程
-description: 有关在开发解决方案的 Synapse SQL 池中实现存储过程的技巧。
+description: 用于在 Synapse SQL 池中实现存储过程的技巧 (数据仓库) 用于开发解决方案。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 294652a42d3b6a2468f024ce7ebdbdfc3615f9e1
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494989"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647869"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>使用 SQL 池中的存储过程
 
-有关在开发解决方案的 Synapse SQL 池中实现存储过程的技巧。
+用于在 Synapse SQL 池中实现存储过程的技巧 (数据仓库) 用于开发解决方案。
 
 ## <a name="what-to-expect"></a>期望
 
@@ -62,7 +62,7 @@ EXEC prc_nesting
 ```sql
 CREATE PROCEDURE prc_nesting_2
 AS
-EXEC sp_executesql 'SELECT 'another nest level'  -- This call is nest level 2
+EXEC sp_executesql N'SELECT ''another nest level'''  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
@@ -78,7 +78,7 @@ SQL 池不允许通过 INSERT 语句使用存储过程的结果集。 但是，�
 
 SQL 池中未实现 Transact-sql 存储过程的某些方面。
 
-它们分别是：
+它们是：
 
 * 临时存储过程
 * 编号的存储过程

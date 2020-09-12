@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 2888e46d26a58e8451f38accbb9073d657f8ea1b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387058"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651455"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "87387058"
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
 
-* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 
 * [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
@@ -141,4 +141,4 @@ for name, ds in datastores.items():
 
 ## <a name="next-steps"></a>后续步骤
 
-有关注册数据存储的详细信息，请参阅 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) 类参考。
+有关注册数据存储的详细信息，请参阅 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py&preserve-view=true) 类参考。

@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a5f56beb179f7c72fe66c7423999201f3460b143
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648779"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646298"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程门阵列 (FPGA) 以及如何部署
 
@@ -30,7 +30,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 ![Azure 机器学习 FPGA 比较示意图](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|处理器| 缩写 |描述|
+|处理器| 缩写 |说明|
 |---|:-------:|------|
 |特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
 |现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|
@@ -67,7 +67,7 @@ Azure 上的 FPGA 支持：
   
 以下 Azure 区域提供 Fpga：
   - 美国东部
-  - 东南亚
+  - Southeast Asia
   - 西欧
   - 美国西部 2
 
@@ -78,7 +78,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 
 ## <a name="deploy-models-on-fpgas"></a>在 FPGA 上部署模型
 
-你可以使用 [Azure 机器学习硬件加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)将模型部署为 fpga 上的 web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。
+你可以使用 [Azure 机器学习硬件加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)将模型部署为 fpga 上的 web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。
 
 将模型部署到 FPGA 涉及以下步骤：
 
@@ -121,7 +121,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
     ```
 ### <a name="1-define-the-tensorflow-model"></a>1. 定义 TensorFlow 模型
 
-使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 创建服务定义。 服务定义是一个文件，用于根据 TensorFlow 来描述图形（输入、特征化器、分类器）的管道。 部署命令会自动将定义和图压缩到 ZIP 文件中，然后将 ZIP 文件上传到 Azure Blob 存储。 DNN 已经部署，可以在 FPGA 上运行。
+使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 创建服务定义。 服务定义是一个文件，用于根据 TensorFlow 来描述图形（输入、特征化器、分类器）的管道。 部署命令会自动将定义和图压缩到 ZIP 文件中，然后将 ZIP 文件上传到 Azure Blob 存储。 DNN 已经部署，可以在 FPGA 上运行。
 
 1. 加载 Azure 机器学习工作区
 

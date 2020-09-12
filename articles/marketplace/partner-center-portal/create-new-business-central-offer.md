@@ -3,16 +3,16 @@ title: 创建 Dynamics 365 Business Central 产品/服务 - Microsoft 商业市�
 description: 了解在合作伙伴中心的 Microsoft 商业 marketplace 中创建新的 Dynamics 365 Business Central 产品/服务的步骤和注意事项。 可在 Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售你的产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817045"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646855"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 

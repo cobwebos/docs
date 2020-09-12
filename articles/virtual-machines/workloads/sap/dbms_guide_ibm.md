@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649606"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461955"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 
@@ -56,7 +56,8 @@ ms.locfileid: "88649606"
 ### <a name="storage-configuration"></a>存储配置
 有关 SAP 工作负荷的 Azure 存储类型的概述，请参阅文章 [适用于 sap 工作负荷的 Azure 存储类型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) ：所有数据库文件都必须存储在 azure 块存储的已装载磁盘上 (WINDOWS： NFFS、Linux： xfs、ext4 或 ext3) 。 数据库文件 **不** 支持任何类型的网络驱动器或远程共享（例如以下 Azure 服务）： 
 
-* [Microsoft Azure 文件服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure 文件服务](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)
 
 使用基于 Azure 页 BLOB 存储或托管磁盘的磁盘时，[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 DB2 DBMS 进行的部署。
@@ -71,7 +72,7 @@ ms.locfileid: "88649606"
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-如果磁盘包含 sapdata 和 saptmp 目录的 DB2 存储路径，则必须将物理磁盘扇区的大小指定为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
+对于包含和目录的 Db2 存储路径的磁盘 `sapdata` `saptmp` ，必须将物理磁盘扇区大小指定为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
 
 对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入事务日志的延迟。 因此，应该为形成 DB2 事务日志卷的 VHD 部署 Azure 写入加速器。 有关详细信息，请阅读文档[写入加速器](../../how-to-enable-write-accelerator.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 在工作室中创建计算资源
+title: '创建定型 & 部署 (studio 计算) '
 titleSuffix: Azure Machine Learning
 description: 使用 studio 创建培训和部署计算资源 (计算目标) 用于机器学习
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147374"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661957"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习 studio 中创建模型定型和部署的计算目标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -119,6 +119,9 @@ ms.locfileid: "89147374"
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
 ### <a name="inference-clusters"></a>推理群集
+
+> [!IMPORTANT]
+> 使用带有 Azure 机器学习的 Azure Kubernetes 服务有多个配置选项。 某些方案（如网络）需要额外的设置和配置。 有关将 AKS 与 Azure ML 一起使用的详细信息，请参阅 [创建并附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
 
 创建或附加 Azure Kubernetes Service (AKS) 群集以进行大规模推断。 使用 [上述步骤](#portal-create) 创建 AKS 群集。  然后填写表单，如下所示：
 

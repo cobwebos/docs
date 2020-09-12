@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/09/2020
+ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795875"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613485"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
@@ -29,7 +29,9 @@ ms.locfileid: "88795875"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-查找活动支持以下数据源。 查找活动可返回的最大行数是 5,000，最大大小为 2 MB。 目前，查找活动在超时前的最长持续时间为 1 小时。
+查找活动支持以下数据源。 
+
+Lookup 活动最多可以返回5000行;如果结果集包含更多记录，将返回前5000行。 查找活动输出支持最大大小为 2 MB，如果大小超过限制，则活动将失败。 目前，查找活动在超时前的最长持续时间为 1 小时。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -58,7 +60,7 @@ ms.locfileid: "88795875"
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
 source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不是。 默认为 `true`。
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否。 默认为 `true`。
 
 > [!NOTE]
 > 

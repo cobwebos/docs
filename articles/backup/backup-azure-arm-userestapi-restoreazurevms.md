@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011182"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506671"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -242,6 +242,30 @@ X-Powered-By: ASP.NET
     }
   }
 }
+```
+
+### <a name="restore-disks-selectively"></a>有选择地还原磁盘
+
+如果可以 [有选择地备份磁盘](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)，则会在 [恢复点摘要](#select-recovery-point) 和 [详细响应](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)中提供当前备份磁盘列表。 你还可以有选择地还原磁盘，并在 [此处](selective-disk-backup-restore.md#selective-disk-restore)提供更多详细信息。 若要有选择地还原已备份磁盘列表中的磁盘，请从恢复点响应中查找磁盘的 LUN，并将 **restoreDiskLunList** 属性添加到 [上述请求正文](#example-request) 中，如下所示。
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
 ```
 
 按 [如上所述](#responses)跟踪响应并完成长时间运行的作业后，会在给定的存储帐户中提供备份虚拟机的磁盘和配置 ( "VMConfig.js" ) 。

@@ -11,17 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d8bf3f087592a7d629a247b1c10721237699fdc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590058"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613537"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL 托管实例是一种智能、可伸缩的云数据库服务，它将最广泛的 SQL Server 数据库引擎兼容性与完全托管和最长的平台即服务的所有优势相结合。 SQL 托管实例具有与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性，提供解决常见安全问题的本机[虚拟网络 (VNet)](../../virtual-network/virtual-networks-overview.md) 实现，并提供现有 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，SQL 托管实例保留了所有 PaaS 功能（自动修补和版本更新、[自动备份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），可大幅降低管理开销和总拥有成本。
+
+如果不熟悉 Azure SQL 托管实例，请参阅我们的深层[AZURE sql 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的*azure sql 托管实例*视频：
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
 
 > [!IMPORTANT]
 > 若要查看 SQL 托管实例当前可用的区域列表，请参阅[支持区域](resource-limits.md#supported-regions)。
@@ -41,7 +44,7 @@ SQL 托管实例结合了 Azure SQL 数据库和 SQL Server 数据库引擎提�
 
 | **PaaS 优势** | **业务连续性** |
 | --- | --- |
-|无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](../database/high-availability-sla.md) <br>使用[自动备份](../database/automated-backups-overview.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[数据库时间点还原](../database/recovery-using-backups.md#point-in-time-restore)功能 |
+|无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](../database/high-availability-sla.md) <br>使用[自动备份](../database/automated-backups-overview.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>[数据库时间点还原](../database/recovery-using-backups.md#point-in-time-restore)功能 |
 |**安全性和符合性** | **Management**|
 |隔离的环境（[VNet 集成](connectivity-architecture-overview.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 身份验证](../database/authentication-aad-overview.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>  <br>遵循与 Azure SQL 数据库相同的合规性标准 <br>[SQL 审核](auditing-configure.md) <br>[高级威胁防护](threat-detection-configure.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
@@ -115,7 +118,7 @@ SQL 托管实例可在两个服务层级中提供：
 
 ## <a name="management-operations"></a>管理操作
 
-Azure SQL 托管实例提供管理操作，你可以使用这些操作来自动部署新的托管实例、更新实例属性，以及删除不再需要的实例。 有关管理操作的详细说明，请参阅 [托管实例管理操作概述](management-operations-overview.md) 页。
+Azure SQL 托管实例提供管理操作，你可以使用这些操作来自动部署新的托管实例、更新实例属性，以及删除不再需要的实例。 可以在[托管实例管理操作概述](management-operations-overview.md)页上找到管理操作的详细说明。
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
@@ -182,7 +185,7 @@ SQL 托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量�
 
 ### <a name="backup-and-restore"></a>备份和还原  
 
-迁移方法利用 Azure Blob 存储的 SQL 备份。 可以使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
+迁移方法利用 Azure Blob 存储的 SQL 备份。 可以使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current&preserve-view=true)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
 
 - 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](restore-sample-database-quickstart.md)。 本快速入门介绍如何将备份文件上传到 Azure Blob 存储并使用共享访问签名 (SAS) 密钥对其进行保护。
 - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](migrate-to-instance-from-sql-server.md#native-restore-from-url)。
@@ -202,7 +205,7 @@ SQL 托管实例支持与 SQL Server 2008 数据库的向后兼容。 支持从 
   
 下图概括描绘了 SQL 托管实例中外围应用的兼容性：  
 
-![迁移](./media/sql-managed-instance-paas-overview/migration.png)
+![外围应用兼容性](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>本地 SQL Server 与 SQL 托管实例之间的主要差异
 

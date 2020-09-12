@@ -2,18 +2,18 @@
 title: 连接提供商和位置：Azure ExpressRoute | Microsoft Docs
 description: 本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。 按连接服务提供商排序。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2020
-ms.author: cherylmc
-ms.openlocfilehash: e47f555e33b9b6d3548f82485767184c89236731
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.author: duau
+ms.openlocfilehash: 78c0b589bfbab17f8c20b3e0b1181fca878d621d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927623"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651346"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等位置
 
@@ -74,7 +74,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 
 ### <a name="global-commercial-azure"></a>全球商业 Azure
 
-| **服务提供商** | **Microsoft Azure** | **Office 365**  | **位置** |
+| **服务提供商** | **Microsoft Azure** | **Microsoft 365**  | **位置** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |支持 |支持 |墨尔本、悉尼 |
 | **[Airtel](https://www.airtel.in/business/#/)** | 支持 | 支持 | 金奈 2、孟买 2 |
@@ -86,7 +86,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支持 | 支持 | 东京 |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |支持 |支持 |开普敦、约翰内斯堡|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支持 |支持 |蒙特利尔、多伦多、魁北克市 |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支持 |支持 |阿姆斯特丹、香港特别行政区、约翰内斯堡、伦敦、纽波特(威尔士)、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支持 |支持 |阿姆斯特丹、Amsterdam2、中国香港特别行政区、约翰内斯堡、伦敦、纽波特 (威尔士) 、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |支持 |支持 |迈阿密 |
 | **CDC** | 支持 | 支持 | 堪培拉、堪培拉 2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |阿姆斯特丹 2、芝加哥、法兰克福、香港特别行政区、拉斯维加斯、伦敦 2、纽约、巴黎、圣安东尼奥、硅谷、东京、多伦多、华盛顿特区、华盛顿特区 2 |
@@ -97,7 +97,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |支持 |支持 |台北 |
 | **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** |支持 |支持 |迈阿密 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支持 |支持 |芝加哥，达拉斯，明尼阿波利斯，蒙特利尔，多伦多，范特区，华盛顿特区 |
-| **[Colt](https://www.colt.net/direct-connect/azure/)** |支持 |支持 |阿姆斯特丹、阿姆斯特丹 2、芝加哥、都柏林、法兰克福、伦敦、伦敦 2、纽波特、纽约、大阪、巴黎、硅谷、硅谷 2、新加坡 2、东京、华盛顿特区 |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |支持 |支持 |阿姆斯特丹、Amsterdam2、芝加哥、都柏林、法兰克福、伦敦、London2、Milan、纽波特、纽约、大阪、巴黎、硅谷、硅 Valley2、新加坡2、东京、华盛顿特区 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |芝加哥、丹佛、洛杉矶、纽约、硅谷、硅谷 2、华盛顿特区、华盛顿特区 2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | 支持 |支持 |Amsterdam2，Dubai2，法兰克福，马赛，孟买，慕尼黑，纽约 |
@@ -109,6 +109,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **Etisalat UAE** |支持 |支持 |迪拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |支持 |支持 |阿姆斯特丹，Amsterdam2，都柏林，法兰克福，伦敦 |
 | **FarEasTone** |支持 |支持 |台北|
+| **Fibrenoire** |支持 |支持 |Montreal|
 | **GÉANT** |支持 |支持 |阿姆斯特丹、Amsterdam2、都柏林、法兰克福、马赛 |
 | **GTT** |支持 |支持 |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | 支持| 支持 | 金奈、孟买 |
@@ -164,13 +165,14 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |支持 |支持 |开普敦、约翰内斯堡 |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | 支持 | 支持 | 吉隆坡 |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |支持 |支持 |达拉斯、Queretaro (墨西哥) |
+| **T-Systems** |支持 |支持 |法兰克福|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |支持 |支持 |圣保罗 |
 | **[UIH](https://www.uih.co.th/en/network-solutions/global-network/cloud-direct-for-microsoft-azure-expressroute)** | 支持 | 支持 | 曼谷 |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、伦敦、孟买、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **[Viasat](http://www.directcloud.viasatbusiness.com/)** | 支持 | 支持 | 华盛顿特区 2 |
 | **[Vocus Group NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | 支持 | 支持 | 奥克兰、悉尼 |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |支持 |阿姆斯特丹 2、伦敦、新加坡 |
-| **[Vodafone Idea](https://discover.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | 支持 | 支持 | 孟买 2 |
+| **[Vodafone Idea](https://www.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | 支持 | 支持 | 孟买 2 |
 | **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、丹佛、伦敦、洛杉矶、蒙特利尔、纽约、巴黎、西雅图、硅谷、多伦多、华盛顿特区、华盛顿特区 2 |
 
  **+** 表示即将推出

@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263463"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594145"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中的数据流问题
 
@@ -45,6 +45,8 @@ ms.locfileid: "88263463"
 - **消息**：广播联接超时错误。请确保在调试运行中广播流在 60 秒内生成数据，在作业运行中广播流在 300 秒内生成数据
 - 原因：在调试运行中，广播的默认超时为 60 秒；在作业运行中，广播的默认超时为 300 秒。 为广播选择的流似乎很大，无法在此限制内生成数据。
 - **建议**：请检查数据流转换的“优化”选项卡，以进行 Join、Exists 和 Lookup。 广播的默认选项为“自动”。 如果已设置此选项，或你要手动将左侧或右侧设置为“固定”下的广播，则可以设置较大的 Azure Integration Runtime 配置，或关闭广播。 为了获得最佳的数据流性能，推荐的方法是允许 Spark 使用“自动”进行广播，并使用内存优化的 Azure IR。
+
+如果要从调试管道运行在调试测试执行中执行数据流，可能会更频繁地运行到此条件。 这是因为 ADF 将广播超时限制为60秒，以便保持更快的调试体验。 如果要从触发的运行中将其扩展到300秒的超时时间，则可以使用 Debug > Use 活动运行时选项来利用执行数据流管道活动中定义的 Azure IR。
 
 ### <a name="error-code-df-executor-conversion"></a>错误代码:DF-Executor-Conversion
 

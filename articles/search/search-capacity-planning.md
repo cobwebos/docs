@@ -7,32 +7,48 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927198"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660301"
 ---
-# <a name="adjust-capacity-in-azure-cognitive-search"></a>在 Azure 认知搜索中调整容量
+# <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>调整 Azure 认知搜索服务的容量
 
-在[预配搜索服务](search-create-service-portal.md)和锁定特定的定价层之前，请花几分钟时间了解服务中的副本和分区的角色，以及如何调整服务来适应资源需求的高峰和低谷。
+[预配搜索服务](search-create-service-portal.md)并在特定定价层中锁定之前，需花费几分钟时间来了解容量的工作方式，以及如何调整副本和分区以适应工作负荷的波动。
 
-容量是[所选层](search-sku-tier.md)（层确定硬件特征）以及预期工作负荷所需的副本和分区组合的一个功能因素。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。 
+容量是[所选层](search-sku-tier.md)（层确定硬件特征）以及预期工作负荷所需的副本和分区组合的一个功能因素。 您可以单独增加或减少副本或分区数。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。
 
 修改副本和分区的分配时，建议使用 Azure 门户。 该门户针对允许的组合强制实施限制，使其低于层的上限。 但是，如果需要使用基于脚本或基于代码的预配方法，[Azure PowerShell](search-manage-powershell.md) 或[管理 REST API](/rest/api/searchmanagement/services) 是替代的解决方案。
 
-## <a name="terminology-replicas-and-partitions"></a>术语：副本和分区
+## <a name="concepts-search-units-replicas-partitions-shards"></a>概念：搜索单位、副本、分区、分片
 
-|||
-|-|-|
-|*分区* | 为读/写操作（例如在重建或刷新索引时）提供索引存储和 I/O。 每个分区提供总体索引的一个份额。 如果分配三个分区，则索引将划分为三个部分。 |
-|*副本* | 是搜索服务的实例，主要用于对查询操作进行负载均衡。 每个副本是索引的一个副本。 如果分配三个副本，则可以使用索引的三个副本来为查询请求提供服务。|
+容量以可以使用*分区*和*副本*的组合进行分配的*搜索单位*表示，使用基础*分片*机制支持灵活的配置：
+
+| 概念  | 定义|
+|----------|-----------|
+|*搜索单位* |  (36 单位) 的总可用容量的单个增量。 它还是 Azure 认知搜索服务的计费单位。 运行服务至少需要一个单位。|
+|*副本* | 是搜索服务的实例，主要用于对查询操作进行负载均衡。 每个副本承载一个索引副本。 如果分配三个副本，则可以使用索引的三个副本来为查询请求提供服务。|
+|分区 | 读/写操作的物理存储和 i/o (例如，在重新生成或刷新索引) 时。 每个分区都有一个 "总计" 索引的切片。 如果分配三个分区，则索引将划分为三个部分。 |
+|*分片* | 索引的块区。 Azure 认知搜索将每个索引划分为分片，通过将分片移到) 的新搜索单元中，可以更快地 (添加分区。|
+
+下图显示副本、分区、分片和搜索单位之间的关系。 其中显示了一个示例，说明如何在包含两个副本和两个分区的服务中跨四个搜索单元跨一个索引。 四个搜索单元中的每一个都仅存储索引的一半分片。 左栏中的搜索单位存储分片的前半部分，其中包含第一个分区，而右列中的第二部分存储分片的后半部分，其中包含第二个分区。 由于有两个副本，因此每个索引分片有两个副本。 顶部行中的搜索单位存储一个副本，其中包含第一个副本，而底部行中的搜索单位存储另一个副本，其中包含第二个副本。
+
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜索索引是跨分区分片的。":::
+
+上图只是一个示例。 可以使用多个分区和副本组合，最多可包含36个搜索单位。
+
+在认知搜索中，分片管理是实现的详细信息和不可配置的，但知道索引分片有助于了解排名和自动完成行为中的偶然异常：
+
++ 排名异常：在分片级别首先计算搜索评分，然后聚合到单个结果集中。 根据分片内容的特征，从一个分片的匹配可能排名高于另一个中的匹配项。 如果在搜索结果中注意到 unintuitive 排名，则很可能是因为分片的影响，尤其是当索引较小时。 您可以通过选择 [在整个索引中全局计算分数](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)来避免这些排名异常，但这样做会导致性能下降。
+
++ 自动完成异常：自动完成查询（其中，在部分输入的单词的前几个字符上进行匹配）接受 forgives 小偏差的模糊参数。 对于自动完成，模糊匹配将被限制为当前分片中的字词。 例如，如果分片包含 "Microsoft"，并且输入了部分 "micor"，则搜索引擎将在该分片的 "Microsoft" 中匹配，但不会在保留索引剩余部分的其他分片中匹配。
 
 ## <a name="when-to-add-nodes"></a>何时添加节点
 
-最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 
+最初为服务分配了由一个分区和一个副本组成的最低级别的资源。
 
 单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 没有任何工作负荷在后台运行。 如果查询请求在性质上不频繁，则可以计划索引编制，但如果不这样做，服务也不会排定任务的优先级。 此外，在内部更新服务或节点时，一定程度的冗余也会销蚀查询性能。
 
@@ -59,7 +75,7 @@ ms.locfileid: "88927198"
 
    ![添加副本和分区](media/search-capacity-planning/2-add-2-each.png "添加副本和分区")
 
-1. 单击“保存”以确认所做的更改。 
+1. 选择 " **保存** " 以确认更改。
 
    ![确认对规模和计费所做的更改](media/search-capacity-planning/3-save-confirm.png "确认对规模和计费所做的更改")
 
@@ -89,7 +105,7 @@ ms.locfileid: "88927198"
 | **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
 | **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
 | **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
-| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |不适用 |不适用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |空值 |不适用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 

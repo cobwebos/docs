@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146770"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651259"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -110,7 +110,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 ### <a name="estimators"></a>估算器
 
-为了便于使用流行框架进行模型训练，可以通过估算器类轻松构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用所选任何学习框架（例如 scikit-learn）的训练脚本。
+为了便于使用流行框架进行模型训练，可以通过估算器类轻松构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true)来提交使用所选任何学习框架（例如 scikit-learn）的训练脚本。
 
 有关估算的详细信息，请参阅 [通过估算训练 ML 模型](how-to-train-ml-models.md)。
 
@@ -121,15 +121,17 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
 
 
-### <a name="logging"></a>日志记录
+### <a name="logging"></a>Logging
 
-开发解决方案时，请在 Python 脚本中使用 Azure 机器学习 Python SDK 记录任意指标。 运行后，查询指标以确定运行是否生成了要部署的模型。
+Azure 机器学习会自动为你记录标准运行指标。 不过，也可以 [使用 PYTHON SDK 记录任意指标](how-to-track-experiments.md)。
+
+可以通过多种方式查看日志：实时监视运行状态或在完成后查看结果。 有关详细信息，请参阅 [监视和查看 ML 运行日志](how-to-monitor-view-training-logs.md)。
 
 
 > [!NOTE]
 > [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
-### <a name="git-tracking-and-integration"></a>Git 跟踪和集成
+### <a name="git-tracking-and-integration"></a>Git 跟踪与集成
 
 如果以本地 Git 存储库作为源目录开始训练运行，有关存储库的信息将存储在运行历史记录中。 这适用于使用估算器、ML 管道或脚本运行提交的运行。 此外，还适用于从 SDK 或机器学习 CLI 提交的运行。
 
@@ -189,6 +191,17 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 
 有关将模型部署为 Web 服务的示例，请参阅[在 Azure 容器实例中部署映像分类模型](tutorial-deploy-models-with-aml.md)。
 
+#### <a name="real-time-endpoints"></a>实时终结点
+
+当你在设计器中部署定型模型时 (预览) ，你可以将 [模型部署为实时终结点](tutorial-designer-automobile-price-deploy.md)。 实时终结点通常通过 REST 终结点接收单个请求，并实时返回一个预测。 这与批处理不同，后者同时处理多个值并在完成后将结果保存到数据存储中。
+
+#### <a name="pipeline-endpoints"></a>管道终结点
+
+管道终结点允许通过 REST 终结点以编程方式调用 [ML 管道](#ml-pipelines) 。 管道终结点可让你自动执行管道工作流。
+
+管道终结点是已发布管道的集合。 此逻辑组织允许使用同一终结点管理和调用多个管道。 管道终结点中每个已发布的管道都是版本控制的。 可以为终结点选择默认管道，也可以在 REST 调用中指定版本。
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT 模块终结点
 
 已部署 IoT 模块终结点是一个 Docker 容器，其中包含模型和关联脚本或应用程序，以及任何其他依赖项。 在边缘设备上使用 Azure IoT Edge 部署这些模块。
@@ -212,12 +225,13 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 ### <a name="studio"></a>工作室
 
-[Azure 机器学习 studio](https://ml.azure.com) 提供了工作区中所有项目的 web 视图。  您可以查看数据集、试验、管道、模型和终结点的结果和详细信息。  你还可以在工作室中管理计算资源和数据存储。
+[Azure 机器学习 studio](overview-what-is-machine-learning-studio.md) 提供了工作区中所有项目的 web 视图。  您可以查看数据集、试验、管道、模型和终结点的结果和详细信息。  你还可以在工作室中管理计算资源和数据存储。
 
-通过工作室，你还可以访问 Azure 机器学习中包含的交互工具：
+使用 studio，还可以访问 Azure 机器学习中包含的交互工具：
 
 + [Azure 机器学习设计器 (预览) ](concept-designer.md) 在不编写代码的情况下执行工作流步骤
 + [自动机器学习](concept-automated-ml.md)的 Web 体验
++ [Azure 机器学习笔记本](how-to-run-jupyter-notebooks.md) 在集成的 Jupyter 笔记本服务器中编写和运行自己的代码。
 + [数据标记项目](how-to-create-labeling-projects.md) ，用于创建、管理和监视项目以标记数据
 
 ### <a name="programming-tools"></a>编程工具
@@ -226,10 +240,10 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 > 下面标记了“（预览版）”的工具目前为公共预览版。
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-+  使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 来与任何 Python 环境中的服务交互。
++  使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 来与任何 Python 环境中的服务交互。
 + 在具有适用于 R (预览版) 的 [AZURE 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) 的任何 r 环境中与服务进行交互。
 + 使用 [AZURE 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) 实现自动化。
-+ [多模型解决方案加速器](https://aka.ms/many-models)（预览）是在 Azure 机器学习的基础之上构建而成，可便于你训练、操作和管理成百上千的机器学习模型。
++ [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
 
 ## <a name="next-steps"></a>后续步骤
 

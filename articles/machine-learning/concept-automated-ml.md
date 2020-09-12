@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652094"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658563"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -98,7 +98,7 @@ ms.locfileid: "88652094"
 
 模型生成是自动化的，同时，你也可以[了解特征对于生成的模型而言如何重要或者彼此相关](how-to-configure-auto-train.md#explain)。
 
-了解如何使用 [远程计算目标](how-to-auto-train-remote.md)。
+了解如何使用[远程计算目标](how-to-auto-train-remote.md)。
 
 
 
@@ -136,7 +136,7 @@ ms.locfileid: "88652094"
 
 + Azure 机器学习工作室：[通过以下步骤](how-to-use-automated-ml-for-ml-models.md#customize-featurization)在“查看其他配置”部分中启用“自动特征化”。
 
-+ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 了解有关 [启用特征化](how-to-configure-auto-features.md)的详细信息。 
++ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 详细了解如何[启用特征化](how-to-configure-auto-features.md)。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 系综模型
 
@@ -174,7 +174,7 @@ ms.locfileid: "88652094"
 
  使用远程计算时，有更多的功能可用，如下表中所示。 其中一些功能仅在企业工作区中可用。
 
-| 功能                                                    | Remote | Local | 需要 <br>企业工作区 |
+| Feature                                                    | Remote | Local | 需要 <br>企业工作区 |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | ✓                             |
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       | ✓                             |
@@ -204,9 +204,9 @@ ms.locfileid: "88652094"
 
 ## <a name="automl-in-azure-machine-learning"></a>Azure 机器学习中的 AutoML
 
-Azure 机器学习提供两个用于操作自动化 ML 的体验
+Azure 机器学习提供了两种使用自动 ML 的体验：
 
-* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 
 
 * 编程经验有限/无经验的客户可以使用 [https://ml.azure.com](https://ml.azure.com/) 上的 Azure 机器学习工作室  
 
@@ -289,9 +289,9 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 查看 GitHub 笔记本存储库中的详细代码示例和用例 [以获取自动机器学习示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)。
 
-### <a name="python-sdk-reference"></a>Python SDK 参考 
+### <a name="python-sdk-reference"></a>Python SDK 参考
 
-阅读 [AutoML 类参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深你对 SDK 设计模式和类规范的专业知识的理解。 
+阅读 [AutoML 类参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)，加深你对 SDK 设计模式和类规范的专业知识的理解。 
 
 > [!Note]
 > 自动化机器学习功能也可以在其他 Microsoft 解决方案（例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)）中使用

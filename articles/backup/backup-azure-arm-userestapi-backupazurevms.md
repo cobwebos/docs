@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006289"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506621"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -274,6 +274,35 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 这确认了以下事实：已为 VM 启用了保护，并且将根据策略计划触发第一次备份。
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>排除 Azure VM 备份中的磁盘
+
+Azure 备份还提供了一种在 Azure VM 中有选择地备份磁盘子集的方法。 [此处](selective-disk-backup-restore.md)提供了更多详细信息。 如果要在启用保护期间有选择地备份几个磁盘，则在 [启用保护期间](#example-request-body)，以下代码段应为请求正文。
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+在上述请求正文中，"扩展属性" 部分提供了要备份的磁盘列表。
+
+|properties  |值  |
+|---------|---------|
+|diskLunList     | 磁盘 LUN 列表是 *数据磁盘的 lun*列表。 **始终备份 OS 磁盘，无需提及**。        |
+|IsInclusionList     | 应为 **true** ，以便在备份过程中包括 lun。 如果该 **参数为 false**，则将排除前面提到的 lun。         |
+
+因此，如果需要仅备份 OS 磁盘，则应排除 _所有_ 数据磁盘。 更简单的方法是说不应包含任何数据磁盘。 因此，磁盘 LUN 列表将为空， **IsInclusionList** 将为 **true**。 同样，可以考虑选择子集的更简单方法：应始终排除几个磁盘，否则应始终包含几个磁盘。 请相应地选择 LUN 列表和布尔变量值。
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>为受保护的 Azure VM 触发按需备份
 
 配置 Azure VM 以进行备份后，将根据策略计划执行备份。 可以等待第一次计划备份或随时触发按需备份。 按需备份的保留期与备份策略的保留期是不同的，并且可以指定为特定的日期时间。 如果未指定，则假定为触发按需备份之日后的 30 天。
@@ -389,7 +418,7 @@ X-Powered-By: ASP.NET
 
 若更改受保护 VM 的策略，可以使用与[启用保护](#enabling-protection-for-the-azure-vm)相同的格式。 只需在[请求正文](#example-request-body)中提供新的策略 ID 并提交请求即可。 例如：要将 testVM 的策略从“DefaultPolicy”更改为“ProdPolicy”，请在请求正文中提供“ProdPolicy”ID。
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ X-Powered-By: ASP.NET
 ```
 
 响应将与上文所述的[启用保护](#responses-to-create-protected-item-operation)中采用相同的格式
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>在 Azure VM 保护期间排除磁盘
+
+如果已备份 Azure VM，则可以通过更改保护策略来指定要备份或排除的磁盘列表。 在[启用保护期间](#excluding-disks-in-azure-vm-backup)，只需以与排除磁盘相同的格式准备请求
+
+> [!IMPORTANT]
+> 上述请求正文始终是要排除或包含的数据磁盘的最终副本。 这并不会 *添加* 到以前的配置。 例如：如果你首先将保护更新为 "排除数据磁盘 1"，然后重复 "排除数据磁盘 2"，则在后续备份中 *只会排除数据磁盘 2* ，并将包含数据磁盘1。 这始终是最终列表，随后的备份中将包含/排除此列表。
+
+若要获取排除或包含的磁盘的当前列表，请按 [此处](https://docs.microsoft.com/rest/api/backup/protecteditems/get)所述获取受保护的项信息。 响应将提供数据磁盘 Lun 列表，并指明它们是包括还是排除。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>停止保护，但保留现有数据
 

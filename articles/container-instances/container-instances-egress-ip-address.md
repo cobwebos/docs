@@ -3,18 +3,16 @@ title: 配置静态出站 IP
 description: 为使用防火墙公共 IP 地址进行入口和出口的 Azure 容器实例工作负荷配置 Azure 防火墙和用户定义的路由
 ms.topic: article
 ms.date: 07/16/2020
-author: dlepow
-ms.author: danlep
-ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023698"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566562"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>为容器组的出站和入站流量配置单个公共 IP 地址
 
-设置具有面向外部的 IP 地址的[容器组](container-instances-container-groups.md)允许外部客户端使用该 ip 地址访问组中的容器。 例如，浏览器可以访问在容器中运行的 web 应用。 然而，当前一个容器组使用不同的 IP 地址进行出站通信。 此出口 IP 地址不以编程方式公开，这使得容器组监视和配置客户端防火墙规则变得更加复杂。
+设置具有面向外部的 IP 地址的 [容器组](container-instances-container-groups.md) 允许外部客户端使用该 ip 地址访问组中的容器。 例如，浏览器可以访问在容器中运行的 web 应用。 然而，当前一个容器组使用不同的 IP 地址进行出站通信。 此出口 IP 地址不以编程方式公开，这使得容器组监视和配置客户端防火墙规则变得更加复杂。
 
 本文介绍如何在与[Azure 防火墙](../firewall/overview.md)集成的[虚拟网络](container-instances-virtual-network-concepts.md)中配置容器组。 通过将用户定义的路由设置到容器组和防火墙规则，你可以路由和标识到容器组的流量。 容器组入口和出口使用防火墙的公共 IP 地址。 部署到 Azure 容器实例的虚拟网络子网中部署的多个容器组可以使用单个出口 IP 地址。
 
@@ -33,7 +31,7 @@ ms.locfileid: "87023698"
 
 容器组从映像运行小型 web 应用 `aci-helloworld` 。 如本文档中的其他文章所述，此映像会打包一个以 Node.js 编写的、可提供静态 HTML 页面的小型 Web 应用。
 
-如果需要，请先使用[az group create][az-group-create]命令创建 Azure 资源组。 例如：
+如果需要，请先使用 [az group create][az-group-create] 命令创建 Azure 资源组。 例如：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -45,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 export RESOURCE_GROUP_NAME=myResourceGroup
 ```
 
-用[az container create][az-container-create]命令创建容器组：
+用 [az container create][az-container-create] 命令创建容器组：
 
 ```azurecli
 az container create \
@@ -71,9 +69,9 @@ ACI_PRIVATE_IP="$(az container show --name appcontainer \
 
 ## <a name="deploy-azure-firewall-in-network"></a>在网络中部署 Azure 防火墙
 
-在以下部分中，使用 Azure CLI 在虚拟网络中部署 Azure 防火墙。 有关背景知识，请参阅[教程：使用 Azure 门户部署和配置 Azure 防火墙](../firewall/deploy-cli.md)。
+在以下部分中，使用 Azure CLI 在虚拟网络中部署 Azure 防火墙。 有关背景知识，请参阅 [教程：使用 Azure 门户部署和配置 Azure 防火墙](../firewall/deploy-cli.md)。
 
-首先，使用[az network vnet subnet create][az-network-vnet-subnet-create]为防火墙添加名为 AzureFirewallSubnet 的子网。 AzureFirewallSubnet 是此子网*所需*的名称。
+首先，使用 [az network vnet subnet create][az-network-vnet-subnet-create] 为防火墙添加名为 AzureFirewallSubnet 的子网。 AzureFirewallSubnet 是此子网 *所需* 的名称。
 
 ```azurecli
 az network vnet subnet create \
@@ -83,9 +81,9 @@ az network vnet subnet create \
   --address-prefix 10.0.1.0/26
 ```
 
-使用以下[Azure CLI 命令](../firewall/deploy-cli.md)在子网中创建防火墙。
+使用以下 [Azure CLI 命令](../firewall/deploy-cli.md) 在子网中创建防火墙。
 
-如果尚未安装，请使用[az extension add][az-extension-add]命令将防火墙扩展添加到 Azure CLI：
+如果尚未安装，请使用 [az extension add][az-extension-add] 命令将防火墙扩展添加到 Azure CLI：
 
 ```azurecli
 az extension add --name azure-firewall
@@ -114,7 +112,7 @@ az network firewall ip-config create \
   --vnet-name aci-vnet
 ```
 
-使用[az network firewall update][az-network-firewall-update]命令更新防火墙配置：
+使用 [az network firewall update][az-network-firewall-update] 命令更新防火墙配置：
 
 ```azurecli
 az network firewall update \
@@ -122,7 +120,7 @@ az network firewall update \
   --resource-group $RESOURCE_GROUP_NAME
 ```
 
-使用[az network firewall IP-config list][az-network-firewall-ip-config-list]命令获取防火墙的专用 IP 地址。 此专用 IP 地址在后面的命令中使用。
+使用 [az network firewall IP-config list][az-network-firewall-ip-config-list] 命令获取防火墙的专用 IP 地址。 此专用 IP 地址在后面的命令中使用。
 
 
 ```azurecli
@@ -131,7 +129,7 @@ FW_PRIVATE_IP="$(az network firewall ip-config list \
   --firewall-name myFirewall \
   --query "[].privateIpAddress" --output tsv)"
 ```
-使用[az network 公共 ip show][az-network-public-ip-show]命令获取防火墙的公共 ip 地址。 此公共 IP 地址用于后面的命令中。
+使用 [az network 公共 ip show][az-network-public-ip-show] 命令获取防火墙的公共 ip 地址。 此公共 IP 地址用于后面的命令中。
 
 ```azurecli
 FW_PUBLIC_IP="$(az network public-ip show \
@@ -142,11 +140,11 @@ FW_PUBLIC_IP="$(az network public-ip show \
 
 ## <a name="define-user-defined-route-on-aci-subnet"></a>定义 ACI 子网上用户定义的路由
 
-在 ACI 子网上定义使用定义的路由，以将流量转移到 Azure 防火墙。 有关详细信息，请参阅[路由网络流量](../virtual-network/tutorial-create-route-table-cli.md)。 
+在 ACI 子网上定义使用定义的路由，以将流量转移到 Azure 防火墙。 有关详细信息，请参阅 [路由网络流量](../virtual-network/tutorial-create-route-table-cli.md)。 
 
 ### <a name="create-route-table"></a>创建路由表
 
-首先，运行以下[az network route create][az-network-route-table-create]命令，以创建路由表。 在虚拟网络所在的同一区域中创建路由表。
+首先，运行以下 [az network route create][az-network-route-table-create] 命令，以创建路由表。 在虚拟网络所在的同一区域中创建路由表。
 
 ```azurecli
 az network route-table create \
@@ -158,7 +156,7 @@ az network route-table create \
 
 ### <a name="create-route"></a>创建路由
 
-运行[az network route 路由 create][az-network-route-table-route-create]以在路由表中创建路由。 若要将流量路由到防火墙，请将 "下一跃点类型" 设置为 `VirtualAppliance` ，并将防火墙的专用 IP 地址作为下一个跃点地址进行传递。
+运行 [az network route 路由 create][az-network-route-table-route-create] 以在路由表中创建路由。 若要将流量路由到防火墙，请将 "下一跃点类型" 设置为 `VirtualAppliance` ，并将防火墙的专用 IP 地址作为下一个跃点地址进行传递。
 
 ```azurecli
 az network route-table route create \
@@ -172,7 +170,7 @@ az network route-table route create \
 
 ### <a name="associate-route-table-to-aci-subnet"></a>将路由表关联到 ACI 子网
 
-运行[az network vnet subnet update][az-network-vnet-subnet-update]命令，将路由表与委托给 Azure 容器实例的子网相关联。
+运行 [az network vnet subnet update][az-network-vnet-subnet-update] 命令，将路由表与委托给 Azure 容器实例的子网相关联。
 
 ```azurecli
 az network vnet subnet update \
@@ -185,13 +183,13 @@ az network vnet subnet update \
 
 ## <a name="configure-rules-on-firewall"></a>在防火墙上配置规则
 
-默认情况下，Azure 防火墙拒绝入站和出站流量。 
+默认情况下，Azure 防火墙会拒绝 (块) 入站和出站流量。 
 
 ### <a name="configure-nat-rule-on-firewall-to-aci-subnet"></a>将防火墙上的 NAT 规则配置到 ACI 子网
 
-在防火墙上创建[NAT 规则](../firewall/rule-processing.md)，以将入站 internet 流量转换和筛选到之前在网络中启动的应用程序容器。 有关详细信息，请参阅[通过 Azure 防火墙筛选入站 Internet 流量 DNAT](../firewall/tutorial-firewall-dnat.md)
+在防火墙上创建 [NAT 规则](../firewall/rule-processing.md) ，以将入站 internet 流量转换和筛选到之前在网络中启动的应用程序容器。 有关详细信息，请参阅 [通过 Azure 防火墙筛选入站 Internet 流量 DNAT](../firewall/tutorial-firewall-dnat.md)
 
-使用[az network firewall nat-t create][az-network-firewall-nat-rule-create]命令创建 NAT 规则和集合：
+使用 [az network firewall nat-t create][az-network-firewall-nat-rule-create] 命令创建 NAT 规则和集合：
 
 ```azurecli
 az network firewall nat-rule create \
@@ -213,7 +211,7 @@ az network firewall nat-rule create \
 
 ### <a name="create-outbound-application-rule-on-the-firewall"></a>创建防火墙上的出站应用程序规则
 
-运行以下[az network firewall application-rule create][az-network-firewall-application-rule-create]命令，在防火墙上创建出站规则。 此示例规则允许从委托给 Azure 容器实例的子网访问到 FQDN `checkip.dyndns.org` 。 稍后的步骤中将使用对该站点的 HTTP 访问，以确认 Azure 容器实例中的出口 IP 地址。
+运行以下 [az network firewall application-rule create][az-network-firewall-application-rule-create] 命令，在防火墙上创建出站规则。 此示例规则允许从委托给 Azure 容器实例的子网访问到 FQDN `checkip.dyndns.org` 。 稍后的步骤中将使用对该站点的 HTTP 访问，以确认 Azure 容器实例中的出口 IP 地址。
 
 ```azurecli
 az network firewall application-rule create \
@@ -234,7 +232,7 @@ az network firewall application-rule create \
 
 ### <a name="test-ingress-to-a-container-group"></a>到容器组的测试入口
 
-通过浏览到防火墙的公共 IP 地址，测试对虚拟网络中运行的*appcontainer*的入站访问。 以前，你已在变量 $FW _PUBLIC_IP 中存储公共 IP 地址：
+通过浏览到防火墙的公共 IP 地址，测试对虚拟网络中运行的 *appcontainer* 的入站访问。 以前，你已在变量 $FW _PUBLIC_IP 中存储公共 IP 地址：
 
 ```bash
 echo $FW_PUBLIC_IP
@@ -253,7 +251,7 @@ echo $FW_PUBLIC_IP
 ### <a name="test-egress-from-a-container-group"></a>测试容器组中的出口
 
 
-将以下示例容器部署到虚拟网络中。 当它运行时，它将向发出一个 HTTP 请求 `http://checkip.dyndns.org` ，其中显示发件人的 ip 地址（出口 ip 地址）。 如果正确配置了防火墙上的应用程序规则，则返回防火墙的公共 IP 地址。
+将以下示例容器部署到虚拟网络中。 当它运行时，它会向发送一个 HTTP 请求 `http://checkip.dyndns.org` ，其中显示发件人的 ip 地址 (出口 ip 地址) 。 如果正确配置了防火墙上的应用程序规则，则返回防火墙的公共 IP 地址。
 
 ```azurecli
 az container create \
@@ -284,7 +282,7 @@ az container logs \
 
 本文介绍如何在 Azure 防火墙后面的虚拟网络中设置容器组。 在防火墙上配置了用户定义的路由、NAT 和应用程序规则。 通过使用此配置，可以设置单个静态 IP 地址，用于从 Azure 容器实例进行入口和出口。
 
-有关管理流量和保护 Azure 资源的详细信息，请参阅[Azure 防火墙](../firewall/index.yml)文档。
+有关管理流量和保护 Azure 资源的详细信息，请参阅 [Azure 防火墙](../firewall/index.yml) 文档。
 
 
 

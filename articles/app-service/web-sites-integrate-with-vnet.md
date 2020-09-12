@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 399689f3f7d07a6e77128037be6b7439e7bf5184
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88960014"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646607"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -80,7 +80,7 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 若要创建网关，请执行以下操作：
 
-1. 在 VNet 中[创建网关子网][creategatewaysubnet]。  
+1. 在 VNet 中[创建网关子网][creategatewaysubnet]。
 
 1. [创建 VPN 网关][creategateway]。 选择基于路由的 VPN 类型。
 
@@ -102,8 +102,8 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 > [!NOTE]
 > 需要网关的 VNet 集成功能不将应用与包含 ExpressRoute 网关的 VNet 集成。 即使以[共存模式][VPNERCoex]配置 ExpressRoute 网关，VNet 集成也不会生效。 如果需要通过 ExpressRoute 连接访问资源，请使用区域 VNet 集成功能或在 VNet 中运行的[应用服务环境][ASE]。
-> 
-> 
+>
+>
 
 ### <a name="peering"></a>对等互连
 
@@ -177,26 +177,27 @@ Commands:
 
 ```azurepowershell
 # Parameters
-$sitename="myWebApp"
-$resourcegroupname="myRG"
-$VNetname="myVNet"
-$location="myRegion"
-$integrationsubnetname = "myIntegrationSubnet"
-$subscriptionID = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+$sitename = 'myWebApp'
+$resourcegroupname = 'myRG'
+$VNetname = 'myVNet'
+$location = 'myRegion'
+$integrationsubnetname = 'myIntegrationSubnet'
+$subscriptionID = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
 
 #Property array with the SubnetID
 $properties = @{
-      "subnetResourceId" = "/subscriptions/"+$subscriptionID+"/resourceGroups/"+$resourcegroupname+"/providers/Microsoft.Network/virtualNetworks/"+$VNetname+"/subnets/"+$integrationsubnetname;
-      }
-      
-#Creation of the VNet integration
-$resourceID = $sitename+"/VirtualNetwork"
-New-AzResource -ResourceName $resourceID `
--Location $location  `
--ResourceGroupName $resourcegroupname `
--ResourceType Microsoft.Web/sites/networkConfig `
--PropertyObject $properties 
+  subnetResourceId = "/subscriptions/$subscriptionID/resourceGroups/$resourcegroupname/providers/Microsoft.Network/virtualNetworks/$VNetname/subnets/$integrationsubnetname"
+}
 
+#Creation of the VNet integration
+$vNetParams = @{
+  ResourceName = "$sitename/VirtualNetwork"
+  Location = $location
+  ResourceGroupName = $resourcegroupname
+  ResourceType = 'Microsoft.Web/sites/networkConfig'
+  PropertyObject = $properties
+}
+New-AzResource @vNetParams
 ```
 
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962819"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596033"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
@@ -149,11 +149,11 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="more-resources"></a>更多资源
 
-[教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)  
-[教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-[在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)
-[.NET Core 与 Azure AppService EasyAuth（第三方）集成](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-[使用 .NET Core（第三方）进行 Azure 应用服务身份验证](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)  
+* [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)
+* [Azure AppService EasyAuth (第三方的 .NET Core 集成) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [使用 .NET Core (第三方进行 Azure App Service 身份验证) ](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 特定于提供程序的操作方法指南：
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920084"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460280"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，即指示应用程序存在问题。
@@ -65,7 +65,7 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 ## <a name="next-steps"></a>后续步骤
 查看更多针对云服务的 [故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
 
-在 [Kevin Williamson 博客系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)中查看更多角色回收方案。
+在 [Kevin Williamson 博客系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)中查看更多角色回收方案。
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx

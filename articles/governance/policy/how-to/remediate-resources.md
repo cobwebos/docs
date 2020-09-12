@@ -3,12 +3,12 @@ title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958739"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651359"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -19,7 +19,7 @@ ms.locfileid: "88958739"
 当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
 Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 托管标识的位置不会影响它对 Azure Policy 的操作。
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="托管标识 - 缺少角色" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="DeployIfNotExists 策略的屏幕截图，缺少对托管标识的定义权限。" border="false":::
 
 > [!IMPORTANT]
 > 如果通过 deployIfNotExists 或 modify 修改的资源在策略分配范围之外，或者模板访问策略分配范围之外的资源上的属性，则必须为分配的托管标识[手动授予访问权限](#manually-configure-the-managed-identity)，否则修正部署将失败。
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>通过门户授予定义的角色
 
-可以通过以下两种方法使用门户向分配的托管标识授予定义的角色：使用访问控制 (IAM)，或通过编辑策略或计划分配并单击“保存”。
+可以通过两种方法使用门户来授予分配的托管标识：使用门户、通过使用 **访问控制 (IAM) ** 或编辑策略或计划分配并选择 " **保存**"。
 
 若要将角色添加到分配的托管标识，请按照下列步骤操作：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
+1. 通过选择 " **所有服务**"，然后搜索并选择 " **策略**"，在 Azure 门户中启动 Azure 策略服务。
 
 1. 选择“Azure Policy”页左侧的“分配”。
 
-1. 找到具有托管标识的分配，并单击名称。
+1. 找到具有托管标识的分配，然后选择该名称。
 
 1. 在编辑页上查找“Assignment ID”属性。 分配 ID 将类似于：
 
@@ -110,10 +110,10 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 导航到需要手动添加角色定义的资源或资源父容器（资源组、订阅、管理组）。
 
-1. 单击资源页中的“访问控制 (IAM)”链接，然后单击访问控制页顶部的“+ 添加角色分配”。
+1. 在 "资源" 页中选择 " **访问控制 (IAM) ** " 链接，然后选择 "访问控制" 页顶部的 " **+ 添加角色分配** "。
 
 1. 从策略定义中选择匹配 roleDefinitionIds 的合适角色。
-   将“分配访问权限至”设置保留为默认设置“Azure AD 用户、组或应用程序”。 在“选择”框中，粘贴或键入先前找到的分配资源 ID 部分。 完成搜索后，单击具有相同名称的对象来选择 ID，然后单击“保存”。
+   将“分配访问权限至”设置保留为默认设置“Azure AD 用户、组或应用程序”。 在“选择”框中，粘贴或键入先前找到的分配资源 ID 部分。 搜索完成后，选择具有相同名称的对象选择 ID，然后选择 " **保存**"。
 
 ## <a name="create-a-remediation-task"></a>创建修正任务
 
@@ -123,32 +123,32 @@ if ($roleDefinitionIds.Count -gt 0)
 
 若要创建修正任务，请执行以下步骤：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
+1. 通过选择 " **所有服务**"，然后搜索并选择 " **策略**"，在 Azure 门户中启动 Azure 策略服务。
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="在所有服务中搜索策略的屏幕截图。" border="false":::
 
 1. 选择“Azure Policy”页左侧的“修正”。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="在 Policy 页上选择“修正”" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text=""策略" 页上的 "修正" 节点的屏幕截图。" border="false":::
 
-1. “要修正的策略”选项卡和数据表中包含所有具有不合规的资源的 deployIfNotExists 和 modify 策略分配。 单击其中一个具有不符合资源的策略。 “新修正任务”页随即打开。
+1. “要修正的策略”选项卡和数据表中包含所有具有不合规的资源的 deployIfNotExists 和 modify 策略分配。 选择具有不符合的资源的策略。 “新修正任务”页随即打开。
 
    > [!NOTE]
-   > 打开“修正任务”页的另一种方法是查找并单击“符合性”页上的策略，然后单击“创建修正任务”按钮。
+   > 打开 " **修正任务** " 页的另一种方法是从 " **符合性** " 页中查找和选择策略，然后选择 " **创建修正任务** " 按钮。
 
 1. 在“新修正任务”页上，通过使用“范围”省略号从分配策略的位置选取子资源（包括下面的单个资源对象）来筛选要修正的资源。 此外，使用“位置”下拉列表来进一步筛选资源。 仅对表中列出的资源进行修正。
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="修正 - 选择要修正的资源" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="要修正的 "修正" 节点和资源网格的屏幕截图。" border="false":::
 
-1. 筛选资源后，通过单击“修正”来启动修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。 由修正任务创建的部署将立即开始。
+1. 通过选择 " **修正**" 筛选资源后，开始修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。 由修正任务创建的部署将立即开始。
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="修正 - 修正任务的进度" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text=""修正任务" 选项卡的屏幕截图和现有修正任务的进度。" border="false":::
 
-1. 单击“策略符合性”页中的“修正任务”以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
+1. 从 "策略符合性" 页中选择 " **修正任务** " 以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 
-1. 从“修正任务”页中，右键单击资源以查看修正任务的部署或资源。 在行末尾，单击“相关事件”以查看诸如错误消息之类的详细信息。
+1. 在 " **修正任务** " 页上，右键单击资源以查看修正任务的部署或资源。 在行的末尾，选择 " **相关事件** " 以查看详细信息，例如错误消息。
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="修正 - 资源任务上下文菜单" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text=""修正任务" 选项卡上的资源上下文菜单的屏幕截图。" border="false":::
 
 通过“修正任务”部署的资源将添加到“策略符合性”页上的“部署的资源”选项卡。
 

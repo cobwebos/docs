@@ -1,7 +1,7 @@
 ---
-title: 转换器检测方法
+title: 翻译器 Detect 方法
 titleSuffix: Azure Cognitive Services
-description: 使用 Azure 认知服务翻译器检测方法标识文本部分的语言。
+description: 使用 Azure 认知服务翻译器 Detect 方法识别一段文本的语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592281"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566630"
 ---
-# <a name="translator-30-detect"></a>转换器3.0：检测
+# <a name="translator-30-detect"></a>翻译器 3.0：Detect
 
 标识一段文本的语言。
 
@@ -45,7 +45,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -61,13 +61,13 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*可选*。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>请求正文
 
-请求的正文是一个 JSON 数组。 每个数组元素都是一个包含字符串属性名称为 `Text` 的 JSON 对象。 语言检测应用于 `Text` 属性的值。 示例响应正文如下所示：
+请求的正文是一个 JSON 数组。 每个数组元素都是一个包含字符串属性名称为 `Text` 的 JSON 对象。 语言检测应用于 `Text` 属性的值。 使用较长的输入文本，语言自动检测效果更佳。 示例响应正文如下所示：
 
 ```json
 [
@@ -78,14 +78,13 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 以下限制适用：
 
 * 数组最多可具有 100 个元素。
-* 数组元素的文本值不能超过 10,000 个字符（包括空格）。
 * 请求中包含的整个文本不能超过 50,000 个字符（包括空格）。
 
 ## <a name="response-body"></a>响应正文
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `language`：检测到的语言的代码。
+  * `language`：已检测语言的代码。
 
   * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
 
@@ -93,7 +92,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
   * `isTransliterationSupported`：一个布尔值，如果检测到的语言是文本音译支持的语言之一，则为 true。
   
-  * `alternatives`：其他可能语言的数组。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
+  * `alternatives`：其他可能语言的阵列。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
 
 示例 JSON 响应如下：
 
@@ -125,7 +124,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>X-RequestId</td>
@@ -170,7 +169,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 翻译器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
 
 ## <a name="examples"></a>示例
 

@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：非对称路由
 description: 本文详细介绍在与一个目标建立有多个链接的网络中使用非对称路由时可能会遇到的问题。
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: osamam
-ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072139"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566528"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非对称路由与多个网络路径
 本文说明当网络源与目标之间有多个路径时，正向和返回网络流量如何选择不同的路由。
@@ -64,5 +64,5 @@ ms.locfileid: "74072139"
 ![基于源的 NAT 网络配置](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>非对称路由检测
-跟踪路由是确保网络流量遍历预期路径的最佳方式。 如果预期从本地 SMTP 服务器到 Microsoft 的流量采用 Internet 路径，则预期跟踪路由是从 SMTP 服务器到 Office 365。 结果证明，流量确实离开了网络前往 Internet，而不是前往 ExpressRoute。
+跟踪路由是确保网络流量遍历预期路径的最佳方式。 如果希望从本地 SMTP 服务器到 Microsoft 的流量获得 Internet 路径，则预期的 traceroute 是从 SMTP 服务器到 Microsoft 365。 结果证明，流量确实离开了网络前往 Internet，而不是前往 ExpressRoute。
 

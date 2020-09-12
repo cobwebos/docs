@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225676"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594350"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
@@ -59,7 +59,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 > 建议你创建托管专用终结点来连接到所有 Azure 数据源。 
  
 > [!WARNING]
-> 如果 PaaS 数据存储 (Blob、ADLS Gen2、SQL DW) 已经为其创建了专用终结点，即使它允许从所有网络进行访问，ADF 也只能使用托管的专用终结点来访问它。 请确保在此类方案中创建专用终结点。 
+> 如果 PaaS 数据存储 (Blob、ADLS Gen2、Azure Synapse Analytics) 已经为其创建了专用终结点，即使它允许来自所有网络的访问，ADF 也只能使用托管的专用终结点来访问它。 请确保在此类方案中创建专用终结点。 
 
 在 Azure 数据工厂中创建托管专用终结点时，将以 "挂起" 状态创建专用终结点连接。 将启动审批工作流。 专用链接资源所有者负责批准或拒绝该连接。
 
@@ -83,6 +83,23 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure 专用链接服务
+- Azure 搜索
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+
+### <a name="supported-regions"></a>支持的区域
+- 美国东部
+- 美国东部 2
+- 美国中西部
+- 美国西部 2
+- 美国中南部
+- 美国中部
+- 北欧
+- 西欧
+- 英国南部
+- Southeast Asia
+- 澳大利亚东部
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>从 ADF 托管虚拟网络通过公共终结点进行的出站通信
 - 对于出站通信，只打开端口443。

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903980"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566596"
 ---
 # <a name="translator-30-translate"></a>翻译器 3.0：Translate
 
@@ -63,7 +63,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义转换器<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a>中的类别 ID 添加到此参数，以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
+    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义转换器 <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a> 中的类别 ID 添加到此参数，以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -280,7 +280,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
     }
 ]
 ```
-响应类似于前一示例中的响应。 由于请求了语言自动检测，因此响应还包括针对输入文本检测到的语言的信息。 
+响应类似于前一示例中的响应。 由于请求了语言自动检测，因此响应还包括针对输入文本检测到的语言的信息。 使用较长的输入文本，语言自动检测效果更佳。
 
 ### <a name="translate-with-transliteration"></a>通过音译进行翻译
 

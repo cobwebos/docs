@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 71f188ffca125bc13eb2e9a43f466aeb61c64b75
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181997"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506604"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -114,10 +114,10 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 - `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- `*.Microsoft.com`
+- `*.WindowsAzure.com`
+- `*.microsoftonline.com`
+- `*.windows.net`
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 

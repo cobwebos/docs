@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 19bfaf611093f6ca178a627123d4d0f9c8ccf3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804411"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594217"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -21,12 +21,11 @@ ms.locfileid: "84804411"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建自签名证书
-> * 设置网络
-> * 使用证书创建应用程序网关
-> * 添加侦听器和重定向规则
-> * 使用默认后端池创建虚拟机规模集
+* 创建自签名证书
+* 设置网络
+* 使用证书创建应用程序网关
+* 添加侦听器和重定向规则
+* 使用默认后端池创建虚拟机规模集
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -54,7 +53,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组 。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus

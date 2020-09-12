@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002430"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462082"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入门：使用 v10 客户端库创建搜索索引
 
@@ -27,7 +27,7 @@ ms.locfileid: "89002430"
 
 在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft azure](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
 
-本文介绍如何创建应用程序。 你还可以 [下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
+本文介绍如何创建应用程序。 你还可以 [下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)。
 
 > [!NOTE]
 > 本文中的演示代码使用 Azure 认知搜索第10版 .NET SDK 的同步方法，以便于简单。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
@@ -48,9 +48,9 @@ ms.locfileid: "89002430"
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
@@ -107,9 +107,9 @@ ms.locfileid: "89002430"
 
 1. 将两个空的类定义添加到你的项目：Address.Methods.cs、Hotel.Methods.cs
 
-1. 在 Address.Methods.cs 中，使用以下代码（[1-25 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)）覆盖默认内容。
+1. 在 Address.Methods.cs 中，使用以下代码（[1-25 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)）覆盖默认内容。
 
-1. 在 Hotel.Methods.cs 中，复制 [1-68 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)。
+1. 在 Hotel.Methods.cs 中，复制 [1-68 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)。
 
 ## <a name="1---create-index"></a>1 - 创建索引
 
@@ -555,7 +555,7 @@ ms.locfileid: "89002430"
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 

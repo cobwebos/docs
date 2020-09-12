@@ -3,16 +3,16 @@ title: 在 Microsoft 商业市场中创建 Dynamics 365 for Customer Engagement 
 description: 如何创建新的 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务，以在 Azure 市场、AppSource 中或通过合作伙伴中心的云解决方案提供商 (CSP) 计划列出或销售。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c488daeafefce23d1fc65fe61e8c0f39cd1c0490
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817028"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646720"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
 

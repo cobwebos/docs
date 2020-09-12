@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319620"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661620"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器（预览版）重新训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "87319620"
 
 ### <a name="sample-pipeline"></a>示例管道
 
-本文中使用的管道是改版的[示例 3：收入预测](samples-designer.md#classification)。 该管道使用[导入数据](algorithm-module-reference/import-data.md)模块，而不是用于演示如何使用自己的数据训练模型的示例数据集。
+本文中使用的管道是设计器主页中的示例管道 [收入预测](samples-designer.md#classification) 的更改版本。 该管道使用[导入数据](algorithm-module-reference/import-data.md)模块，而不是用于演示如何使用自己的数据训练模型的示例数据集。
 
 ![屏幕截图显示了修改后的示例管道，并使用方框突出显示“导入数据”模块](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -83,7 +83,8 @@ ms.locfileid: "87319620"
 1. 在“其他输出”中可以找到模型以及运行日志。
 1. 或者，也可选择“查看输出”图标。 在这里，可以按照对话框中的说明直接导航到数据存储。 
 
-![屏幕截图显示了如何下载定型的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![屏幕截图显示了如何下载定型的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>发布训练管道
 
@@ -101,9 +102,9 @@ ms.locfileid: "87319620"
 
 现在你已经有了一个已发布的训练管道，接下来就可以使用它来根据新数据重新训练模型。 你可以从工作室工作区或以编程方式通过管道终结点提交运行。
 
-### <a name="submit-runs-by-using-the-designer"></a>使用设计器提交运行
+### <a name="submit-runs-by-using-the-studio-portal"></a>使用 studio 门户提交运行
 
-使用以下步骤通过设计器提交参数化管道终结点：
+使用以下步骤从 studio 门户提交参数化管道终结点：
 
 1. 转到工作室工作区中的“终结点”页。
 1. 选择“管道终结点”选项卡。然后，选择管道终结点。

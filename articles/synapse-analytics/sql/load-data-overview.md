@@ -1,6 +1,6 @@
 ---
 title: 为 SQL 池设计 PolyBase 数据加载策略
-description: 设计用于加载数据或 SQL 池的提取、加载和转换（ELT）过程，而不是 ETL。
+description: 不是 ETL，而是设计提取、加载和转换 (ELT) 用于加载数据或 SQL 池的过程。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490279"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483722"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>为 Azure Synapse SQL 池设计 PolyBase 数据加载策略
 
-传统的 SMP 数据仓库通过提取、转换和加载 (ETL) 过程来加载数据。 Azure SQL 池是一种大规模并行处理（MPP）体系结构，它利用了计算和存储资源的可伸缩性和灵活性。 使用提取、加载和转换（ELT）过程可以利用 MPP，并消除在加载前转换数据所需的资源。
+传统的 SMP 数据仓库通过提取、转换和加载 (ETL) 过程来加载数据。 Azure SQL 池是一种大规模的并行处理 (MPP) 体系结构，它利用了计算和存储资源的可伸缩性和灵活性。 使用 (ELT) 进程的提取、加载和转换可以利用 MPP，并消除在加载前转换数据所需的资源。
 
 尽管 SQL 池支持多种加载方法（包括 BCP 和 SQL BulkCopy API 等非 Polybase 选项），但最快且最具伸缩性的加载日期的方式是通过 PolyBase。  PolyBase 是这样一种技术，可以通过 T-SQL 语言访问存储在 Azure Blob 存储或 Azure Data Lake Storage 中的外部数据。
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="extract-load-and-transform-elt"></a>提取、加载和转换（ELT）
+## <a name="extract-load-and-transform-elt"></a>提取、加载和转换 (ELT) 
 
 提取、加载和转换 (ELT) 是指将数据从源系统提取并加载到数据仓库然后再进行转换的过程。
 
@@ -38,7 +38,7 @@ ms.locfileid: "87490279"
 5. 转换数据。
 6. 将数据插入生产表。
 
-有关加载教程，请参阅[使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关加载教程，请参阅 [使用 PolyBase 将数据从 azure blob 存储加载到 Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 有关详细信息，请参阅[加载模式博客](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "87490279"
 
 PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 除了带分隔符的文本文件以外，它还可以从 Hadoop 文件格式、RC 文件、ORC 和 Parquet 加载数据。 PolyBase 还可以从 Gzip 和 Snappy 压缩文件加载数据。 PolyBase 目前不支持扩展的 ASCII、固定宽度格式以及 WinZip、JSON 和 XML 等嵌套格式。
 
-如果要从 SQL Server 中导出，可以使用 [bcp 命令行工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，以将数据导出为带分隔符的文本文件。 Parquet to SQL DW 数据类型映射如下所示：
+如果要从 SQL Server 中导出，可以使用 [bcp 命令行工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，以将数据导出为带分隔符的文本文件。 Parquet to Azure Synapse Analytics 数据类型映射如下所示：
 
 | **Parquet 数据类型** |                      **SQL 数据类型**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -59,8 +59,8 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
 |        boolean        |                             bit                              |
-|        double         |                            FLOAT                             |
-|         float         |                             real                             |
+|        Double         |                            FLOAT                             |
+|         FLOAT         |                             real                             |
 |        Double         |                            money                             |
 |        Double         |                          smallmoney                          |
 |        string         |                            nchar                             |
@@ -85,7 +85,7 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 服务可以增强网络吞吐量、性能和可预测性。 ExpressRoute 是通过专用连接将数据路由到 Azure 的服务。 ExpressRoute 连接不通过公共 Internet 路由数据。 与基于公共 Internet 的典型连接相比，这些连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 - [AZCopy 实用工具](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)可以通过公共 Internet 将数据移到 Azure 存储。 如果数据小于 10 TB，则很适合使用此工具。 若要使用 AZCopy 定期执行加载操作，请测试网络速度是否在可接受的范围内。
-- [Azure 数据工厂 (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 提供一个可以安装在本地服务器上的网关。 然后，你可以创建管道，以便将数据从本地服务器移到 Azure 存储。 若要将数据工厂用于 SQL 池，请参阅将[数据加载到 sql 池中](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+- [Azure 数据工厂 (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 提供一个可以安装在本地服务器上的网关。 然后，你可以创建管道，以便将数据从本地服务器移到 Azure 存储。 若要将数据工厂用于 SQL 池，请参阅将 [数据加载到 sql 池中](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.准备要加载的数据
 
@@ -121,7 +121,7 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 - 如果数据位于 Azure Blob 存储或 Azure Data Lake Store 中，则 [PolyBase 与 T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 可以发挥作用。 使用此方法可以获得加载过程的最大控制度，不过同时需要定义外部数据对象。 其他方法在你将源表映射到目标表时，在幕后定义这些对象。  若要协调 T-SQL 负载，可以使用 Azure 数据工厂、SSIS 或 Azure Functions。
 - 源数据位于 SQL Server 时，[具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 运行良好。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
 - [PolyBase 与 Azure 数据工厂 (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 是另一个业务流程工具。  它定义管道并计划作业。
-- [Polybase 与 Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)将数据从 SQL 数据仓库表传输到 Databricks 数据帧和/或使用 PolyBase 将数据从 Databricks 数据帧写入 Sql 数据仓库表。
+- 使用[polybase Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)将数据从 Azure Synapse 分析表传输到 Databricks 数据帧，并/或使用 PolyBase 将数据从 Databricks 数据帧写入 Azure Synapse Analytics 表。
 
 ### <a name="non-polybase-loading-options"></a>非 PolyBase 加载选项
 

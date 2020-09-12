@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804671"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594214"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -20,10 +20,9 @@ ms.locfileid: "84804671"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建侦听器和重定向规则
-> * 创建应用程序网关
+* 设置网络
+* 创建侦听器和重定向规则
+* 创建应用程序网关
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,7 +34,7 @@ ms.locfileid: "84804671"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组 。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus

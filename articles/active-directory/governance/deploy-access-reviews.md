@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011338"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461028"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -93,7 +93,7 @@ ms.locfileid: "89011338"
 
 * **It 管理** 管理 it 基础结构，管理云投资和软件即服务 (SaaS) 应用。 此团队将：
 
-   * 查看对基础结构和应用（包括 Office 365 和 Azure AD）的特权访问。
+   * 查看对基础结构和应用的特权访问，包括 Microsoft 365 和 Azure AD。
 
    * 计划和运行用于维护异常列表或 IT 试验项目的组的访问评审，以维护最新的访问列表。
 
@@ -180,7 +180,7 @@ ms.locfileid: "89011338"
 
 * [与单一登录 (Azure AD 集成的应用程序](../manage-apps/what-is-application-management.md) ，如 SaaS、业务线) 。
 
-* 组 [成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步到 Azure AD，或者在 Azure AD 或 Office 365 中创建，包括 Microsoft 团队) 。
+* 组 [成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步到 Azure AD，或者在 Azure AD 或 Microsoft 365 中创建，包括 Microsoft 团队) 。
 
 * 将资源 (组、应用和站点分组) 为单个包以管理访问权限的[访问包](/azure/active-directory/governance/entitlement-management-overview)。
 
@@ -192,10 +192,10 @@ ms.locfileid: "89011338"
 
 | 资源类型|  (创建者创建和管理访问评审) | 读取访问评审结果 |
 | - | - | -|
-| 组或应用程序| 全局管理员角色 <p>用户管理员| 创建者和安全管理员 |
-| Azure AD 中的特权角色| 全局管理员角色 <p>特权角色管理员| 创建者 <p>安全读取者<p>安全管理员 |
-| Azure 中的特权角色 (资源) | 全局管理员角色<p>用户管理员<p>资源所有者| 创建者 |
-| 访问包| 全局管理员角色<p>访问包的创建者| 仅限全局管理员 |
+| 组或应用程序| 全局管理员 <p>用户管理员| 创建者和安全管理员 |
+| Azure AD 中的特权角色| 全局管理员 <p>特权角色管理员| 创建者 <p>安全读取者<p>安全管理员 |
+| Azure 中的特权角色 (资源) | 全局管理员<p>用户管理员<p>资源所有者| 创建者 |
+| 访问包| 全局管理员<p>访问包的创建者| 仅限全局管理员 |
 
 
 有关详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
@@ -241,7 +241,7 @@ ms.locfileid: "89011338"
 
 **示例访问评审计划**
 
-| 组件| “值” |
+| 组件| 值 |
 | - | - |
 | **要查看的资源**| 访问 Microsoft Dynamics |
 | **查看频率**| 每月一次 |
@@ -304,7 +304,7 @@ ms.locfileid: "89011338"
 
 ## <a name="plan-access-reviews-for-groups"></a>规划组的访问评审
 
-除访问包外，查看组成员身份是管理访问权限的最有效方法。 建议通过 [安全组或 Office 365 组](../fundamentals/active-directory-manage-groups.md)分配资源访问权限，并将用户添加到这些组以获取访问权限。
+除访问包外，查看组成员身份是管理访问权限的最有效方法。 建议通过 [安全组或 Microsoft 365 组](../fundamentals/active-directory-manage-groups.md)分配资源访问权限，并将用户添加到这些组以获取访问权限。
 
 单个组可以被授予对所有相应资源的访问权限。 可以将组访问权限分配给单个资源，或者分配给对应用程序和其他资源进行分组的访问包。 使用此方法，你可以查看对组的访问权限，而不是查看单个应用程序的访问权限。 
 
@@ -322,9 +322,9 @@ ms.locfileid: "89011338"
 
 建议组所有者查看成员身份，因为它们最好知道需要访问的用户。 组的所有权不同于组的类型：
 
-在 Office 365 和 Azure AD 中创建的组具有一个或多个定义完善的所有者。 在大多数情况下，这些所有者为他们自己的组提供了完美的审阅者，因为他们知道谁有权访问。 
+在 Microsoft 365 和 Azure AD 中创建的组具有一个或多个定义完善的所有者。 在大多数情况下，这些所有者为他们自己的组提供了完美的审阅者，因为他们知道谁有权访问。 
 
-例如，Microsoft 团队使用 Office 365 组作为基础授权模型，为用户授予对 SharePoint、Exchange、OneNote 或其他 Office 365 服务中的资源的访问权限。 团队的创建者将自动成为所有者，并应负责证明该组的成员身份。 
+例如，Microsoft 团队使用 Microsoft 365 组作为基础授权模型，以便向用户授予对 SharePoint、Exchange、OneNote 或其他 Microsoft 365 服务中的资源的访问权限。 团队的创建者将自动成为所有者，并应负责证明该组的成员身份。 
 
 在 Azure AD 门户中手动创建的组或通过 Microsoft Graph 的脚本创建的组可能不必定义所有者。 建议你通过组的 "所有者" 部分中的 Azure AD 门户或通过 Graph 来定义它们。
 
@@ -393,7 +393,7 @@ ms.locfileid: "89011338"
 
 访问评审允许审阅者证明用户是否仍需要处于角色中。 与访问包的访问评审一样，对 Azure AD 角色和 Azure 资源的检查都已集成到 PIM 管理员用户体验中。 建议定期查看下列角色分配：
 
-* 全局管理员角色
+* 全局管理员
 
 * 用户管理员
 
@@ -403,7 +403,7 @@ ms.locfileid: "89011338"
 
 * 安全管理员
 
-* 所有 Office 365 和 Dynamics Service 管理角色
+* 所有 Microsoft 365 和 Dynamics 服务管理角色
 
 此处选择的角色包括永久角色和符合条件的角色。 
 

@@ -3,16 +3,16 @@ title: Azure 虚拟机映像验证-Azure Marketplace
 description: 了解如何在商业市场中测试和提交虚拟机产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: fd8f41f88b6184eee15477c460dc9d2e521d25e6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144130"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647818"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Azure 虚拟机映像验证
 

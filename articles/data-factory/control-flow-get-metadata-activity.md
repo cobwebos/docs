@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 26d52eed02c9d25ed2f18afa3a5262ba9224b0ba
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224843"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613491"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -50,7 +50,7 @@ ms.locfileid: "88224843"
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Azure Blob 存储](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure 文件](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [文件系统](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
@@ -69,7 +69,7 @@ ms.locfileid: "88224843"
 |:--- |:--- |:--- |:--- |
 | [Azure SQL 数据库](connector-azure-sql-database.md) | √ | √ | √ |
 | [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
-| [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>元数据选项

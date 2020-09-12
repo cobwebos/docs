@@ -2,17 +2,17 @@
 title: 使用 PowerShell 和模板部署资源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 64993b526b67430266a8b3e85e3bcc233a3e28a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: ef2ff71430f0dcaca660666bb9a6c015c923da3f
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079513"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536066"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
 
-本文介绍如何使用 Azure 资源管理器模板（ARM 模板） Azure PowerShell 将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
+本文介绍如何配合使用 Azure PowerShell 与 Azure 资源管理器模板（ARM 模板），以将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
 
 ## <a name="deployment-scope"></a>部署范围
 
@@ -79,11 +79,11 @@ New-AzResourceGroupDeployment -Name ExampleDeployment `
 
 ## <a name="deployment-name"></a>部署名称
 
-在前面的示例中，你已将部署命名为 `ExampleDeployment` 。 如果未提供部署的名称，将使用模板文件的名称。 例如，如果部署名为的模板 `azuredeploy.json` ，但未指定部署名称，则会将部署命名为 `azuredeploy` 。
+在前面的示例中，你已将部署命名为 `ExampleDeployment`。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
 
-每次运行部署时，会在资源组的部署历史记录中添加一个包含部署名称的条目。 如果运行另一个部署并为其指定了相同的名称，则会将以前的条目替换为当前部署。 如果要在部署历史记录中维护唯一条目，请为每个部署指定唯一名称。
+每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
-若要创建唯一名称，可以分配一个随机数字。
+若要创建唯一名称，你可以分配一个随机数。
 
 ```azurepowershell-interactive
 $suffix = Get-Random -Maximum 1000
@@ -97,13 +97,13 @@ $today=Get-Date -Format "MM-dd-yyyy"
 $deploymentName="ExampleDeployment"+"$today"
 ```
 
-如果以相同的部署名称运行对同一资源组的并发部署，则只完成最后一个部署。 任何没有完成的同名部署都将替换为最后一个部署。 例如，如果你运行一个名为 `newStorage` 的部署，它将部署一个名为的存储帐户 `storage1` ，同时运行名为的另一个部署， `newStorage` 该部署将部署名为的存储帐户 `storage2` ，你只部署一个存储帐户。 生成的存储帐户名为 `storage2` 。
+如果使用相同的部署名称对同一资源组运行并发部署，则仅会完成最后一个部署。 尚未完成的具有相同名称的任何部署都将被最后一个部署所替换。 例如，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将仅部署一个存储帐户。 生成的存储帐户名为 `storage2`。
 
-但是，如果运行名为的部署 `newStorage` （部署名为的存储帐户 `storage1` ），并且在完成后立即运行名为的另一个部署 `newStorage` ，该部署将部署名为的存储帐户 `storage2` ，则你有两个存储帐户。 一个名为 `storage1` ，另一个名为 `storage2` 。 但是，部署历史记录中只有一个条目。
+但是，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；在该部署完成时你又立即运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将有两个存储帐户。 一个名为 `storage1`，另一个名为 `storage2`。 但是，部署历史记录中只有一个条目。
 
-为每个部署指定唯一名称时，可以在不发生冲突的情况下同时运行它们。 如果运行名为的部署 `newStorage1` ，该部署将部署名为的存储帐户 `storage1` ，同时运行名为的另一个部署，该部署将部署 `newStorage2` 名为的存储帐户 `storage2` ，则部署历史记录中有两个存储帐户和两个条目。
+为每个部署指定唯一的名称时，可以并发运行它们而不会发生冲突。 如果你运行一个名为 `newStorage1` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你又运行了另一个名为 `newStorage2` 的部署，它部署了一个名为 `storage2` 的存储帐户，则部署历史记录中将有两个存储帐户和两个条目。
 
-若要避免与并发部署冲突并确保部署历史记录中的唯一条目，请为每个部署指定唯一名称。
+为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
 
 ## <a name="deploy-remote-template"></a>部署远程模板
 
@@ -122,15 +122,39 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 若要了解如何部署需要共享访问签名 (SAS) 令牌的模板，请参阅[部署具有 SAS 令牌的专用模板](secure-template-with-sas-token.md)。 若要完成教程，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](template-tutorial-use-key-vault.md)。
 
+## <a name="deploy-template-spec"></a>部署模板规格
+
+你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用基于角色的访问控制 (RBAC) 授予对模板规范的访问权限。此功能目前处于预览阶段。
+
+下面的示例演示如何创建和部署模板规范。只有 [注册了预览](https://aka.ms/templateSpecOnboarding)后，才可以使用这些命令。
+
+首先，通过提供 ARM 模板创建模板规范。
+
+```azurepowershell
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateJsonFile ./mainTemplate.json
+```
+
+然后，获取模板规范的 ID 并进行部署。
+
+```azurepowershell
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName demoRG `
+  -TemplateSpecId $id
+```
+
+有关详细信息，请参阅 [Azure 资源管理器模板规格 (预览版) ](template-specs.md)。
+
 ## <a name="preview-changes"></a>预览更改
 
-在部署模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](template-deploy-what-if.md)验证模板是否进行了预期的更改。 假设操作还验证模板是否有错误。
+在部署模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](template-deploy-what-if.md)验证模板是否进行了预期的更改。 模拟操作还验证模板是否有错误。
 
 ## <a name="deploy-from-azure-cloud-shell"></a>从 Azure Cloud Shell 部署
 
 可以使用 [Azure Cloud Shell](https://shell.azure.com) 来部署模板。 若要部署外部模板，请提供模板的 URI。 要部署本地模板，必须先将模板加载到 Cloud Shell 的存储帐户。 若要将文件上传到 shell，请从 shell 窗口选择“上传/下载文件”菜单图标****。
 
-若要打开 Cloud Shell，请浏览到 [https://shell.azure.com](https://shell.azure.com) ，或从以下代码部分选择 "**尝试**"：
+若要打开 Cloud Shell，请浏览到 [https://shell.azure.com](https://shell.azure.com) ，或从以下代码部分选择 " **尝试** "：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

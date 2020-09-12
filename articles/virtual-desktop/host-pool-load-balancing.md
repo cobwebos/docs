@@ -3,15 +3,15 @@ title: Windows 虚拟桌面主机池负载平衡-Azure
 description: 了解 Windows 虚拟桌面环境的主机池负载平衡方法。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 09/04/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007431"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461113"
 ---
 # <a name="host-pool-load-balancing-methods"></a>主机池负载均衡方法
 
@@ -34,7 +34,7 @@ Windows 虚拟桌面提供以下负载平衡方法：
 
 通过广度优先的负载平衡方法，您可以分发用户连接以便针对此方案进行优化。 此方法非常适用于想要为连接到其共用虚拟桌面环境的用户提供最佳体验的组织。
 
-广度优先方法首先查询允许新连接的会话主机。 然后，方法选择会话数最少的会话主机。 如果存在关联，则该方法将选择查询中的第一个会话主机。
+广度优先方法首先查询允许新连接的会话主机。 然后，此方法会随机从包含最少会话数的一组会话主机中随机选择一个会话主机。 例如，如果有九台计算机具有11、12、13、14、15、16、17、18和19个会话，则您创建的新会话不会自动切换到第一台计算机。 相反，它可以转到最小数量的会话 (11、12、13、14、15) 的前五台计算机。
 
 ## <a name="depth-first-load-balancing-method"></a>深度优先负载平衡方法
 

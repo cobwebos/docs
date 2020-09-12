@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: HT
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518464"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658366"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect 云预配常见问题解答
 
@@ -32,7 +32,7 @@ ms.locfileid: "86518464"
 
 这是正常情况。 失败的原因是 Azure AD 中不存在相关的用户对象。 将用户预配到 Azure AD 后，密码哈希应会在后续的运行中预配。 请等待运行几次，然后确认密码哈希同步是否不再出错。
 
-**问：如果 Active Directory 实例包含云预配不支持的属性（例如，目录扩展），会发生什么情况？**
+**问：如果 Active Directory 实例具有云预配 (不支持的属性（例如，目录扩展) ），会发生什么情况？**
 
 云预配将运行并预配受支持的属性。 不支持的属性将不会预配到 Azure AD。 查看 Active Directory 中的目录扩展，并确保不需要这些属性流向 Azure AD。 如果需要一个或多个属性，请考虑使用 Azure AD Connect 同步或将所需的信息移到支持的属性之一（例如，扩展属性 1-15）。
 
@@ -74,7 +74,7 @@ Microsoft 会自动升级代理。 对于 IT 团队来说，这可以减轻必�
 
 **问：不支持 Exchange 混合意味着什么？**
 
-Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中共存。 Azure AD Connect 将一组特定的属性从 Azure AD 同步回到本地目录。  云预配代理目前不将这些属性同步回本地目录，因此不支持用它替代 Azure AD Connect。
+Exchange 混合部署功能允许在本地和 Microsoft 365 中共存 Exchange 邮箱。 Azure AD Connect 将一组特定的属性从 Azure AD 同步回到本地目录。  云预配代理目前不将这些属性同步回本地目录，因此不支持用它替代 Azure AD Connect。
 
 **问：能否在 Windows Server Core 上安装云预配代理？**
 

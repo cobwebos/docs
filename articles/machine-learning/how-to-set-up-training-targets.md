@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ca76ec5bef1d908ca3cea6ce0f58b1205c1676ca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144084"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661576"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>向计算目标提交定型运行
 
@@ -31,7 +31,7 @@ ms.locfileid: "89144084"
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
-* [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure 机器学习工作区](how-to-manage-workspace.md)，`ws`
 * 计算目标， `my_compute_target` 。  使用以下内容创建计算目标：
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
@@ -39,11 +39,11 @@ ms.locfileid: "89144084"
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>脚本运行配置是什么？
 
-您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 对象提交训练试验。  此对象包含：
+您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 对象提交训练试验。  此对象包含：
 
 * **source_directory**：包含训练脚本的源目录
 * **script**：标识训练脚本
-* **run_config**： [运行配置](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)，该配置又定义了定型发生的位置。 在中， `run_config` 指定运行训练脚本时要使用的计算目标和环境。  
+* **run_config**： [运行配置](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)，该配置又定义了定型发生的位置。 在中， `run_config` 指定运行训练脚本时要使用的计算目标和环境。  
 
 ## <a name="whats-an-environment"></a>什么是环境？
 
@@ -152,7 +152,7 @@ run = experiment.submit(config=script_run_config)
 
 <a id="gitintegration"></a>
 
-## <a name="git-tracking-and-integration"></a>Git 跟踪和集成
+## <a name="git-tracking-and-integration"></a>Git 跟踪与集成
 
 如果以本地 Git 存储库作为源目录开始训练运行，有关存储库的信息将存储在运行历史记录中。 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 
@@ -167,7 +167,7 @@ run = experiment.submit(config=script_run_config)
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
-* 若要构建更好的模型，请了解如何[高效地优化超参数](how-to-tune-hyperparameters.md)。
+* 了解如何 [有效地调整超参数](how-to-tune-hyperparameters.md) 以构建更好的模型。view = azure-ml&preserve = true) 
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
-* 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
+* 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK 参考。
 * [通过 Azure 虚拟网络使用 Azure 机器学习](how-to-enable-virtual-network.md)

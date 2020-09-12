@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65950895"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660564"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
@@ -72,10 +72,10 @@ ms.locfileid: "65950895"
   * 公司的某个本地应用程序（内置或第三方）使用 SAML 或类似的联合身份验证功能。
   * 通过智能卡执行 MFA。 RSA SecurID 等等。
   * 可以解决以下问题的客户端访问规则：
-    1. 是否可以根据客户端的 IP 地址阻止对 Office 365 的所有外部访问？
-    2. 是否可以阻止对 Office 365 的所有外部访问（Exchange ActiveSync 除外）？
-    3. 是否可以阻止对 Office 365 的所有外部访问（基于浏览器的应用（OWA、SPO）除外）？
-    4. 是否可以阻止指定的 AD 组成员对 Office 365 的所有外部访问？
+    1. 是否可以根据客户端的 IP 地址阻止对 Microsoft 365 的所有外部访问？
+    2. 除了 Exchange ActiveSync 外，是否可以阻止对 Microsoft 365 的所有外部访问？
+    3. 我可以阻止对 Microsoft 365 的所有外部访问，但基于浏览器的应用 (OWA、SPO) 
+    4. 对于指定的 AD 组的成员，是否可以阻止对 Microsoft 365 的所有外部访问
 * 安全/审核考虑因素
 * 对联合身份验证的既有投资
 * 组织在云中的域将使用哪种名称？

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007785"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611711"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用相同的持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
@@ -115,7 +115,7 @@ class MyActorImpl extends FabricActor implements MyActor
 ### <a name="correctly-manage-the-actors-life-cycle"></a>正确管理执行组件的生命周期
 你应制定明确的策略来管理每个分区中执行组件服务状态的大小。 执行组件服务应具有固定数目的执行组件，并尽可能多地重复使用它们。 如果不断地创建新的执行组件，则必须在这些执行组件完成其工作后删除它们。 执行组件框架存储有关存在的每个执行组件的一些元数据。 删除某个执行组件的所有状态不会删除有关该执行组件的元数据。 必须删除执行组件（请参阅[删除执行组件及其状态](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)），才能删除系统中存储的有关它的所有信息。 作为额外的检查，应偶尔查询执行组件服务一次（请参阅[枚举执行组件](service-fabric-reliable-actors-enumerate.md)）以确保执行组件数在预期范围内。
  
-如果看到执行组件服务的数据库文件大小不断增加到超出预期大小，请确保你是按照前面的指南进行操作的。 如果你是按照这些指南操作的，但仍存在数据库文件大小问题，应通过产品团队[开具支持票证](service-fabric-support.md)以获取帮助。
+如果看到执行组件服务的数据库文件大小不断增加到超出预期大小，请确保你是按照前面的指南进行操作的。 如果遵循这些准则，但仍遇到数据库文件大小问题，则应与产品团队 [建立支持票证](service-fabric-support.md) ，以获得帮助。
 
 ## <a name="next-steps"></a>后续步骤
 

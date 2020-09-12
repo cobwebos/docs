@@ -1,5 +1,5 @@
 ---
-title: 在 TSI 资源管理器中实现数据的可视化-Azure 时序见解 Gen2 |Microsoft Docs
+title: 显示时序见解资源管理器中的数据-Azure 时序见解 Gen2 |Microsoft Docs
 description: 了解 Azure 时序见解资源管理器中可用的功能和选项。
 author: deepakpalled
 ms.author: dpalled
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227043"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488161"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
@@ -47,7 +47,7 @@ Azure 时序见解资源管理器由以下七个元素组成：
 
 ## <a name="1-environment-panel"></a>1. 环境面板
 
-"环境" 面板显示有权访问的所有 Azure 时序见解 Gen2 环境。 此列表包括 Gen2 环境和第1代环境。 只需选择要在其中立即使用的环境。
+"环境" 面板显示有权访问的所有 Azure 时序见解 Gen2 环境。 此列表包括 Gen2 环境以及 Gen1 环境。 只需选择要在其中立即使用的环境。
 
 1. 选择显示的环境旁边的下拉箭头。
 
@@ -200,11 +200,11 @@ Azure 时序见解资源管理器支持两个主题：
 
   [![所选深色主题](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>第1代环境控件
+## <a name="gen1-environment-controls"></a>Gen1 环境控件
 
 ### <a name="gen2-terms-panel"></a>Gen2 术语面板
 
-本部分仅适用于尝试在更新的 UI 中使用资源管理器的现有第1代环境。 你可能想要结合使用第1代产品和 Gen2 产品。 我们已将现有 UI 中的一些功能添加到更新的资源管理器，但可在新的 Azure 时序见解资源管理器中获取第1代环境的完整 UI 体验。
+本部分仅适用于尝试在更新的 UI 中使用资源管理器的现有 Gen1 环境。 你可能想要结合使用 Gen1 产品和 Gen2 产品。 我们已将现有 UI 中的一些功能添加到更新的资源管理器，但可在新的 Azure 时序见解资源管理器中获取 Gen1 环境的完整 UI 体验。
 
 将显示 Azure 时序见解 Gen2 条款面板，而不是层次结构。 术语面板允许您在您的环境中定义查询。 使用它还可以根据谓词筛选数据。
 

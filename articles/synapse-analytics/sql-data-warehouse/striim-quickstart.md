@@ -1,6 +1,6 @@
 ---
 title: Striim 快速入门
-description: 快速开始使用 Striim 和 Azure SQL 数据仓库。
+description: 通过 Striim 和 Azure Synapse Analytics 快速入门。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208546"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485968"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW 市场产品/服务安装指南
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim Azure Synapse Analytics Marketplace 产品安装指南
 
-本快速入门教程假定已有 SQL 数据仓库的实例。
+本快速入门假定你已有 Azure Synapse Analytics 的预先存在的实例。
 
-在 Azure 市场中搜索 Striim，并选择“用于将数据集成到 SQL 数据仓库（已暂存）的 Striim”选项 
+在 Azure Marketplace 中搜索 "Striim"，并选择 "将数据集成到 Azure Synapse 分析" 的 Striim (过渡) "选项 
 
 ![安装 Striim][install]
 
@@ -32,7 +32,7 @@ ms.locfileid: "85208546"
 
 部署完成后，单击 Azure 门户中的 \<VM Name>-masternode，单击“连接”，并复制使用 VM 本地帐户的登录名 
 
-![将 Striim 连接到 SQL 数据仓库][connect]
+![将 Striim 连接到 Azure Synapse Analytics][connect]
 
 将 sqljdbc42.jar 从 <https://www.microsoft.com/en-us/download/details.aspx?id=54671> 下载到本地计算机。 
 

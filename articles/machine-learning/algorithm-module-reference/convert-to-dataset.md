@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456584"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646250"
 ---
 # <a name="convert-to-dataset"></a>转换为数据集
 
@@ -35,7 +35,7 @@ ms.locfileid: "79456584"
 
 2. 将它连接到可以输出数据集的任何模块。   
 
-    只要数据是[表格](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)，就可以将其转换为数据集。 这包括通过[导入数据](import-data.md)加载的数据、通过[手动输入数据](enter-data-manually.md)创建的数据，或通过[应用转换](apply-transformation.md)转换的数据集。
+    只要数据是[表格](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)，就可以将其转换为数据集。 这包括通过[导入数据](import-data.md)加载的数据、通过[手动输入数据](enter-data-manually.md)创建的数据，或通过[应用转换](apply-transformation.md)转换的数据集。
 
 3.  在“操作”下拉列表中，指示是否要在保存数据集之前对数据执行任何清理操作：  
   

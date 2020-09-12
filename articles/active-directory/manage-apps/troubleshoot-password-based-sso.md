@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure AD 中基于密码的单一登录的问题
-description: 如何对配置为基于密码的单一登录的 Azure AD 应用程序问题进行故障排除。
+title: 排查 Azure Active Directory 中基于密码的单一登录的问题
+description: 排查配置为基于密码的单一登录的 Azure AD 应用的问题。
 author: kenwith
 manager: celestedg
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 436fbdde1283bd8406e631fd37b559bfe11e234e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051898"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460348"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>排查 Azure AD 中基于密码的单一登录的问题
 
@@ -98,7 +98,7 @@ ms.locfileid: "89051898"
 7. 在应用程序加载后，在左侧的导航窗格中选择 " **单一登录** "。
 8. 选择 **"基于密码的登录模式"** 。
 9. 输入 " **登录 url**"，它是用户在其中输入用户名和密码以登录的页面的 url。 *确保登录字段在提供的 URL 的页面上可见*。
-10. 选择“保存” 。
+10. 选择“保存”。
     对于 "用户名" 和 "密码" 输入框，会自动擦除页面。 你现在可以使用 Azure AD 通过 "我的应用" 浏览器扩展安全地将密码传输到该应用。
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>手动捕获应用程序的登录字段

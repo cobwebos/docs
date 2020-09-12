@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 624668ad80d72933d6dd1e67fcac799fd210d659
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/10/2020
+ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816654"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647554"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -44,7 +44,14 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   > [!IMPORTANT]
   > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 虚拟网络需要四个 *空* 子网，这些子网是在 ISE 中创建和部署资源所必需的，由内部逻辑应用组件（如连接器和缓存）用于性能。 可以提前创建子网，也可以等待，直到创建了 ISE，以便可以同时创建子网。 但是，在创建子网之前，请查看 [子网要求](#create-subnet)。
+* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 虚拟网络需要四个 *空* 子网，这些子网是在 ISE 中创建和部署资源所必需的，由这些内部和隐藏组件使用：
+
+  * 逻辑应用计算
+  * 内部应用服务环境 (连接器) 
+  * 内部 API 管理 (连接器) 
+  * 用于缓存和性能的内部 Redis
+  
+  可以提前创建子网，也可以等待，直到创建了 ISE，以便可以同时创建子网。 但是，在创建子网之前，请查看 [子网要求](#create-subnet)。
 
   > [!IMPORTANT]
   >

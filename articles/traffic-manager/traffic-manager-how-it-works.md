@@ -3,7 +3,7 @@ title: Azure 流量管理器的工作原理 | Microsoft Docs
 description: 本文将帮助你了解流量管理器如何路由流量以确保 Web 应用程序的高性能和可用性
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294859"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462626"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -62,8 +62,8 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
     - 每个终结点的当前运行状况，可通过流量管理器运行状况检查来确定。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md)。
     - 所选的流量路由方法。 有关详细信息，请参阅[流量管理器路由方法](traffic-manager-routing-methods.md)。
 
-5. 选择的终结点以另一个 DNS CNAME 记录的形式返回。 在本例中，假设返回的是 contoso-us.cloudapp.net。
-6. 接下来，递归 DNS 服务将查找“cloudapp.net”域的名称服务器。 它会联系这些名称服务器以请求“contoso-us.cloudapp.net”DNS 记录。 返回的 DNS“A”记录包含位于美国的服务终结点的 IP 地址。
+5. 选择的终结点以另一个 DNS CNAME 记录的形式返回。 在这种情况下，我们假设返回了 contoso-eu.cloudapp.net。
+6. 接下来，递归 DNS 服务将查找“cloudapp.net”域的名称服务器。 它会联系这些名称服务器以请求 "contoso-eu.cloudapp.net" DNS 记录。 返回一个 DNS "A" 记录，其中包含基于欧盟的服务终结点的 IP 地址。
 7. 递归 DNS 服务将结果合并，向客户端返回单个 DNS 响应。
 8. 客户端接收 DNS 结果，并连接到给定的 IP 地址。 客户端直接连接到应用程序服务终结点，而不是通过流量管理器连接。 由于这是一个 HTTPS 终结点，客户端将执行必要的 SSL/TLS 握手，然后针对“/login.aspx”页面发出 HTTP GET 请求。
 

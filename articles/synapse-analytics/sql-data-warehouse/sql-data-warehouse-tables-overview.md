@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798561"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460541"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中设计表
 
@@ -111,7 +111,7 @@ SQL 池的一个基本功能是可以跨[分布区](massively-parallel-processin
 
 ## <a name="table-partitions"></a>表分区
 
-分区表存储根据数据范围存储表行并对其执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。 还可以通过分区切换来维护数据。 由于 SQL 数据仓库中的数据已经是分布式的，过多的分区可能会降低查询性能。 有关详细信息，请参阅[分区指南](sql-data-warehouse-tables-partition.md)。  以分区切换的方式切换成不为空的表分区时，若要截断现有数据，可考虑在 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句中使用 TRUNCATE_TARGET 选项。 以下代码将已转换的日常数据切换成 SalesFact，覆盖任何现有的数据。
+分区表存储根据数据范围存储表行并对其执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。 还可以通过分区切换来维护数据。 由于 Azure Synapse Analytics 中的数据已分布，因此分区太多可能会降低查询性能。 有关详细信息，请参阅[分区指南](sql-data-warehouse-tables-partition.md)。  以分区切换的方式切换成不为空的表分区时，若要截断现有数据，可考虑在 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句中使用 TRUNCATE_TARGET 选项。 以下代码将已转换的日常数据切换成 SalesFact，覆盖任何现有的数据。
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -294,9 +294,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
 
 ### <a name="table-space-summary"></a>表空间摘要
 

@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc21dc67dd6c686eedf307660a8d8b7afd60db71
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 879844efdc5c2b40f69ee5f79305d4dfa596fd27
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075855"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460722"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 还原已删除的 SQL 池
 
@@ -26,7 +26,7 @@ ms.locfileid: "87075855"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个 SQL 池都由具有默认 DTU 配额的[逻辑 SQL server](../../azure-sql/database/logical-servers.md) （例如，myserver.database.windows.net）托管。  验证该服务器的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
+**验证 DTU 容量。** 每个 SQL 池由 [逻辑 SQL server](../../azure-sql/database/logical-servers.md) (（例如，具有默认 DTU 配额的 myserver.database.windows.net) 。  验证该服务器的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>通过 PowerShell 还原已删除的数据仓库
 
@@ -39,7 +39,7 @@ ms.locfileid: "87075855"
 5. 获取特定的已删除数据仓库。
 6. 还原已删除的 SQL 池
     1. 若要将已删除的 SQL 池还原到另一服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
-    1. 若要还原到其他订阅，请使用 "[移动](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal)" 按钮将服务器移到另一个订阅。
+    1. 若要还原到其他订阅，请使用 " [移动](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) " 按钮将服务器移到另一个订阅。
 7. 验证已还原的数据仓库是否处于联机状态。
 8. 完成还原后，可以按[在恢复后配置数据库](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复后的数据仓库。
 
@@ -77,7 +77,7 @@ $RestoredDatabase.status
 
     ![已删除的数据库](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-01.png)
 
-4. 选择要还原的已删除 SQL 数据仓库。
+4. 选择要还原的已删除 Azure Synapse Analytics。
 
     ![选择“已删除的数据库”](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-11.png)
 

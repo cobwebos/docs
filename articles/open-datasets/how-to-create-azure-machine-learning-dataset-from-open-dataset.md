@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998066"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461504"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建 Azure 机器学习数据集
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Azure 开放式数据集是特选的公共数据集，可用于添加特定于�
 
 * [安装的适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包括 `azureml-datasets` 包。
 
-    * 创建一个 [Azure 机器学习的计算实例](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)，该实例是一个完全配置且托管的开发环境，其中包括集成的笔记本和已安装的 SDK。
+    * 创建一个 [Azure 机器学习计算实例](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)，它是一个完全配置且托管的开发环境，其中包括集成的笔记本和已安装的 SDK。
 
     **或者**
 
@@ -111,7 +111,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
     ![选择数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. 选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在这种情况下，对于 **公共假日** 数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 有关数据的详细信息，请参阅 [Azure 开放数据集目录](https://azure.microsoft.com/services/op[en-datasets/catalog/) ，例如字段说明和日期范围。 选择“创建” 。
+1. 选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在这种情况下，对于 **公共假日** 数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 有关数据的详细信息，请参阅 [Azure 开放数据集目录](https://azure.microsoft.com/services/open-datasets/catalog) ，例如字段说明和日期范围。 选择“创建” 。
 
     ![设置数据集参数并创建数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

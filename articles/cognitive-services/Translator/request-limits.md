@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903399"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566579"
 ---
 # <a name="request-limits-for-translator"></a>转换器的请求限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "87903399"
 |:----|:----|:----|:----|
 | Translate | 10,000    | 100   | 10,000 |
 | Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
+| Detect | 50,000 | 100 |   50,000 |
 | BreakSentence | 50,000    | 100 | 50,000 |
 | 字典查找| 100 |  10  | 1,000 |
 | 字典示例 | 100 个用于文本，100 个用于翻译（总共 200 个）| 10|   2,000 |
@@ -58,7 +58,7 @@ ms.locfileid: "87903399"
 
 ## <a name="latency"></a>延迟
 
-使用标准模型时，转换器的最大延迟为15秒，使用自定义模型时为120秒。 通常， *100 字符内的文本*响应会在150毫秒后返回到300毫秒。 自定义转换器模型对于持续的请求速率具有相似的延迟特征，在请求速率为间歇性时可能会有较高的延迟。 响应时间因请求大小和语言对而异。 如果在该时间范围内未收到翻译或[错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)，请检查你的代码和你的网络连接，然后重试。 
+使用标准模型时，转换器的最大延迟为15秒，使用自定义模型时为120秒。 通常， *100 字符内的文本* 响应会在150毫秒后返回到300毫秒。 自定义转换器模型对于持续的请求速率具有相似的延迟特征，在请求速率为间歇性时可能会有较高的延迟。 响应时间因请求大小和语言对而异。 如果在该时间范围内未收到翻译或 [错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) ，请检查你的代码和你的网络连接，然后重试。 
 
 ## <a name="sentence-length-limits"></a>句子长度限制
 

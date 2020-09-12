@@ -16,15 +16,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359342"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660840"
 ---
-# <a name="risky-ip-report-public-preview"></a>有风险的 IP 报表（公共预览版）
-AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为最终用户提供身份验证服务，方便他们访问 Office 365 之类的 SaaS 应用程序。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
+# <a name="risky-ip-report-public-preview"></a> (公开预览版的有风险 IP 报表) 
+AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为最终用户提供身份验证服务，以访问 SaaS 应用程序，如 Microsoft 365。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
 
 另外，单个 IP 地址可能会尝试针对多个用户进行多次登录。 在这些情况下，每个用户的尝试次数必须在 AD FS 中的帐户锁定保护阈值以下。 Azure AD Connect Health 现在提供“风险 IP 报表”来检测这种情况，并在发生这种情况时通知管理员。 下面是此报表的主要优点： 
 - 检测超出基于密码的登录失败次数阈值的 IP 地址
@@ -35,13 +35,13 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 > [!NOTE]
 > 若要使用此报表，请务必启用 AD FS 审核。 有关详细信息，请参阅 [为 AD FS 启用审核](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
-> 若要访问预览版，需要提供全局管理员或[安全读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。  
+> 若要访问预览版，需要提供全局管理员或[安全读取者](../../role-based-access-control/built-in-roles.md#security-reader)权限。  
 > 
 
 ## <a name="what-is-in-the-report"></a>报表中有哪些内容？
 失败的登录活动客户端 IP 地址通过 Web 应用程序代理服务器进行聚合。 “风险 IP”报表中的每个项目都会显示有关失败的 AD FS 登录活动（失败次数超出指定阈值）的聚合信息。 它提供以下信息：![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4a.png)
 
-| 报告项 | 描述 |
+| 报告项 | 说明 |
 | ------- | ----------- |
 | 时间戳 | 当检测时间窗口启动时，显示基于 Azure 门户本地时间的时间戳。<br /> 所有每日事件都在 UTC 时间的午夜生成。 <br />每小时事件的时间戳舍入为整点。 可以在已导出文件的“firstAuditTimestamp”中找到第一个活动开始时间。 |
 | 触发器类型 | 显示检测时间窗口的类型。 聚合触发器类型为每小时或每日。 这适用于检测高频暴力破解攻击，与之相反的是慢速攻击，后者在一天中的尝试攻击行动是分散的。 |
@@ -68,7 +68,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 ## <a name="download-risky-ip-report"></a>下载有风险的 IP 报表 
 使用**下载**功能，可以将过去 30 天的整个风险 IP 地址列表从 Connect Health 门户导出 导出结果将包括每个检测时段所有失败的 AD FS 登录活动，因此可以在导出后自定义筛选功能。 除了门户中突出显示的聚合，导出结果还显示有关已失败登录活动（按 IP 地址划分）的更多详细信息：
 
-|  报告项  |  描述  | 
+|  报告项  |  说明  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 显示在检测时段启动失败的活动时的第一个时间戳。  | 
 | lastAuditTimestamp | 显示在检测时段结束失败的活动时的最后一个时间戳。  | 
@@ -83,7 +83,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 ![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4d.png)
 
-| 阈值项 | 描述 |
+| 阈值项 | 说明 |
 | --- | --- |
 | (错误 U/P + Extranet 锁定) / 天  | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**天**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |
 | (错误 U/P + Extranet 锁定) / 小时 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**小时**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |
@@ -97,9 +97,9 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 >
 >
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 **为何在报表中发现专用 IP 地址范围？**  <br />
-专用 IP 地址（<i>10.x.x.x、172.x.x.x 和 192.168.x.x</i>）和 Exchange IP 地址会在筛选后在 IP 允许列表中标记为 True。 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。
+专用 IP 地址) <i>&</i> (8.x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x x 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。
 
 **为何在报表中出现负载均衡器 IP 地址？**  <br />
 如果出现负载均衡器 IP 地址，很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。 请正确配置负载均衡器，使之传递转发客户端 IP 地址。 
@@ -113,9 +113,9 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 - AD FS 场中未启用审核。
 
 **为何会看到无权访问该报表？**  <br />
-需要全局管理员或[安全读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。 请联系全局管理员以获得访问权限。
+需要全局管理员或[安全读取者](../../role-based-access-control/built-in-roles.md#security-reader)权限。 请联系全局管理员以获得访问权限。
 
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)

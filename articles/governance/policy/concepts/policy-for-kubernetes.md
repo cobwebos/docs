@@ -3,12 +3,12 @@ title: 预览版 - 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。 这是预览功能。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509869"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645592"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解适用于 Kubernetes 群集的 Azure Policy（预览版）
 
@@ -57,13 +57,13 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
      1. 注册“Microsoft.ContainerService”和“Microsoft.PolicyInsights”资源提供程序。 有关步骤，请参阅[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
-     1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
+     1. 通过选择 " **所有服务**"，然后搜索并选择 " **策略**"，在 Azure 门户中启动 Azure 策略服务。
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="在所有服务中搜索策略的屏幕截图。" border="false":::
 
      1. 选择“Azure Policy”页左侧的“加入预览”。
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="加入“适用于 AKS 的 Policy”预览" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text=""策略" 页上的 "联接预览" 节点的屏幕截图。" border="false":::
 
      1. 选择要添加到预览的订阅行。
 
@@ -120,17 +120,17 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
 - Azure 门户
 
-  1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“Kubernetes 服务”，启动 AKS 服务。 
+  1. 通过选择 " **所有服务**"，然后搜索并选择 " **Kubernetes 服务**"，在 Azure 门户中启动 AKS 服务。
 
   1. 选择 AKS 群集之一。
 
   1. 选择“Kubernetes 服务”页面左侧的“策略(预览)”。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS 群集中的策略定义" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 "策略 (preview) " 节点的屏幕截图。" border="false":::
 
   1. 在主页中，选择“启用加载项”按钮。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="启用适用于 AKS 的 Azure Policy 加载项":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text=""支持 Azure Kubernetes Services 的 Azure 策略" 的 "启用外接程序" 按钮的屏幕截图 (K S) 页面。":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 - Azure 门户
 
-  1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“Kubernetes 服务”，启动 AKS 服务。 
+  1. 通过选择 " **所有服务**"，然后搜索并选择 " **Kubernetes 服务**"，在 Azure 门户中启动 AKS 服务。
 
   1. 选择要在其中禁用 Azure Policy 加载项的 AKS 群集。
 
   1. 选择“Kubernetes 服务”页面左侧的“策略(预览)”。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS 群集中的策略定义" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 "策略 (preview) " 节点的屏幕截图。" border="false":::
 
   1. 在主页中，选择“禁用加载项”按钮。
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="禁用适用于 AKS 的 Azure Policy 加载项" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text=""Azure Kubernetes 服务的 Azure 策略" 的 "禁用外接程序" 按钮的屏幕截图 (K S) 页面。" border="false":::
 
 - Azure CLI
 

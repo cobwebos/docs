@@ -6,29 +6,32 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432504"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486852"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
-可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务。
+可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务。 如果你不需要 web 服务器来呈现内容，Azure 存储静态网站托管是一个不错的选择。
+
+[应用服务静态 Web 应用](https://azure.microsoft.com/services/app-service/static/) 是 Azure 存储静态网站托管的一种很好的替代方法，也适用于不需要 Web 服务器呈现内容的情况。 应用服务静态 Web 应用提供完全托管的持续集成和持续交付 (从 GitHub 源到全局部署的 CI/CD) 工作流。
+
+如果需要 web 服务器来呈现内容，可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> 如果你的站点依赖于服务器端代码，请改用 [Azure 应用服务](/azure/app-service/overview)。
-确保创建常规用途 v2 标准存储帐户。 静态网站在任何其他类型的存储帐户中都不可用。
+> 确保创建常规用途 v2 标准存储帐户。 静态网站在任何其他类型的存储帐户中都不可用。
 
 ## <a name="setting-up-a-static-website"></a>设置静态网站
 
-静态网站托管是你必须在存储帐户上启用的一项功能。
+静态网站托管是必须在存储帐户上启用的一项功能。
 
 若要启用静态网站托管，请选择默认文件的名称，然后可以提供自定义 404 页面的路径。 如果帐户中尚不存在名为 **$web** 的 blob 存储容器，则会为你创建一个。 将站点的文件添加到此容器。
 
@@ -85,7 +88,7 @@ ms.locfileid: "87432504"
 
 但是，对主 blob 服务终结点 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公共访问权限将从专用更改为公共。 现在，用户可以使用这两个终结点中的任意一个来打开该文件。
 
-在存储帐户上禁用公共访问不会影响该存储帐户中托管的静态网站。 有关详细信息，请参阅[配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
+在存储帐户上禁用公共访问不会影响该存储帐户中托管的静态网站。 有关详细信息，请参阅 [配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>将自定义域映射到静态网站 URL
 
@@ -103,6 +106,11 @@ ms.locfileid: "87432504"
 无法将标头配置为静态网站功能的一部分。 但是，可以使用 Azure CDN 来添加标头和追加（或覆盖）标头值。 请参阅 [Azure CDN 的标准规则引擎参考](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
 
 如果要使用标头来控制缓存，请参阅[使用缓存规则控制 Azure CDN 缓存行为](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)。
+
+## <a name="multi-region-website-hosting"></a>多区域网站托管
+
+如果你计划在多个地理位置托管一个网站，我们建议你使用 [内容分发网络](https://docs.microsoft.com/azure/cdn/) 进行区域缓存。 如果要在每个区域中提供不同的内容，请使用 [Azure 前门](https://docs.microsoft.com/azure/frontdoor/) 。 它还提供故障转移功能。 如果你计划使用自定义域，则不建议使用[Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/)。 由于 Azure 存储验证自定义域名的方式，可能会出现问题。
+
 
 ## <a name="pricing"></a>定价
 

@@ -1,5 +1,5 @@
 ---
-title: 使用资源管理器浏览数据-Azure 时序见解 |Microsoft Docs
+title: 使用资源管理器浏览数据 - Azure 时序见解 | Microsoft Docs
 description: 了解如何使用 Azure 时序见解资源管理器查看 IoT 数据。
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080686"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487294"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure 时序见解 Gen1 资源管理器
 
-本文介绍 Azure 时序见解 Gen1 [Explorer web 应用](https://insights.timeseries.azure.com/)的功能和选项。 Azure 时序见解资源管理器演示服务提供的功能强大的数据可视化功能，可以在自己的环境中对其进行访问。
+本文介绍 Azure 时序见解 Gen1 [资源管理器 Web 应用](https://insights.timeseries.azure.com/)的功能和选项。 Azure 时序见解资源管理器演示了该服务提供的，可在你自己的环境中访问的强大数据可视化功能。
 
-Azure 时序见解是一种完全托管的分析、存储和可视化服务，让同时探索和分析数十亿 IoT 事件变得简单轻松。 它提供数据的全局视图，从而可以快速验证 IoT 解决方案并避免任务关键型设备出现代价高昂的故障时间。 可以近乎实时地发现隐藏的趋势、找出异常以及进行根本原因分析。 
+Azure 时序见解是一种完全托管的分析、存储和可视化服务，让同时探索和分析数十亿 IoT 事件变得简单轻松。 它提供数据的全局视图，从而可以快速验证 IoT 解决方案并避免任务关键型设备出现代价高昂的故障时间。 可以近乎实时地发现隐藏的趋势、找出异常以及进行根本原因分析。
 
 > [!TIP]
 > 有关演示环境的指导教程，请阅读 [Azure 时序见解快速入门](time-series-quickstart.md)。
@@ -35,21 +35,21 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->播放前面的视频<a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"使用 Azure IoT 解决方案加速器开始使用 Azure 时序见解"。</a>
+>播放前面的视频 <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"使用 Azure IoT 解决方案加速器开始使用 Azure 时序见解"。</a>
 
 ## <a name="prerequisites"></a>先决条件
 
-必须先执行以下操作，然后才能使用 Azure 时序见解资源管理器：
+在可以使用 Azure 时序见解资源管理器之前，必须：
 
-- 创建 Azure 时序见解环境。 有关详细信息，请阅读[如何开始 Azure 时序见解](./time-series-insights-get-started.md)。
+- 创建 Azure 时序见解环境。 有关详细信息，请阅读[如何开始使用 Azure 时序见解环境](./time-series-insights-get-started.md)。
 - 提供对环境中帐户的[访问](time-series-insights-data-access.md)。
-- 向其添加[IoT 中心](time-series-insights-how-to-add-an-event-source-iothub.md)或[事件中心](time-series-insights-how-to-add-an-event-source-eventhub.md)事件源。
+- 在环境中添加 [IoT 中心](time-series-insights-how-to-add-an-event-source-iothub.md)或[事件中心](time-series-insights-how-to-add-an-event-source-eventhub.md)事件源。
 
 ## <a name="explore-and-query-data"></a>浏览和查询数据
 
-在将事件源连接到 Azure 时序见解环境的几分钟内，可以浏览和查询时序数据。
+将事件源连接到 Azure 时序见解环境的几分钟内，你可以浏览和查询时序数据。
 
-1. 若要开始，请在 web 浏览器中打开[Azure 时序见解资源管理器](https://insights.timeseries.azure.com/)。 在窗口左侧选择一个环境。 有权访问的所有环境均按字母顺序列出。
+1. 若要开始，请在 Web 浏览器中打开 [Azure 时序见解资源管理器](https://insights.timeseries.azure.com/)。 在窗口左侧选择一个环境。 有权访问的所有环境均按字母顺序列出。
 
 1. 选择环境后，使用顶部的“从”和“到”配置，或者将其选中并拖到所需的时间跨度   。 单击右上角的放大镜，或者右键单击所选时间跨度并选择“搜索”  。
 
@@ -108,7 +108,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 使用**热度地图**可以快速发现给定查询中的唯一或异常数据系列。 仅有一个搜索术语能可视化为热度地图。
 
-    [![Gen1 资源管理器热度地图图表](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![时序见解资源管理器热度地图图表 ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. 通过选择或右键单击浏览事件时，会显示“事件”面板  。 在这里，可以查看所有原始事件并可将事件导出为 JSON 或 CSV 文件。 Azure 时序见解存储所有原始数据。
 
@@ -116,12 +116,12 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 浏览事件以公开模式和列统计信息之后，选择“统计信息”  选项卡。
 
-    - **模式**：此功能主动显示所选数据区域中最具统计意义的模式。 无需查看数千个事件来了解最需要花费时间和精力的模式。 使用 Azure 时序见解，可以直接跳转到这些统计的重要模式，以继续进行分析。 此功能也有助于对历史数据进行事后调查。
+    - **模式**：此功能主动显示所选数据区域中最具统计意义的模式。 无需查看数千个事件来了解最需要花费时间和精力的模式。 你可以使用 Azure 时序见解直接跳转到这些具有重大统计意义的模式继续进行分析。 此功能也有助于对历史数据进行事后调查。
     - **列统计信息**：列统计信息提供图表和表格，细分选定时间范围内所选数据系列的每列中的数据。
 
       [![“统计信息”列图表和选项](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-现在，你已了解 Azure 时序见解资源管理器 web 应用中可用的主要功能、配置设置和显示选项。
+现在，你已了解 Azure 时序见解资源管理器 Web 应用中可用的关键功能、配置设置和显示选项。
 
 ## <a name="next-steps"></a>后续步骤
 

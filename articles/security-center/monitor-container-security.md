@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ec06fc23b147eb3e4a5922242aa922063f4172c
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038608"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514146"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>监视容器的安全性
 
 本页说明如何使用概念部分的[容器安全文章](container-security.md)中介绍的容器安全功能。
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>扫描基于 ARM 的容器注册表中的漏洞 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>针对漏洞扫描基于 ARM 的容器注册表 
 
 1. 启用 Azure 容器注册表映像的漏洞扫描：
 
@@ -30,13 +30,13 @@ ms.locfileid: "87038608"
 
         安全中心现在可以扫描推送到注册表的映像。 
 
-        >[!NOTE]
-        >此功能按映像收费。
+      >[!NOTE]
+      >此功能按映像收费。
 
 
 1. 若要触发映像的扫描，请将其推送到注册表。 
 
-    扫描完成时（通常在大约2分钟后，最长可能需要15分钟），结果将作为安全中心建议提供，如下所示：
+    扫描完成后 (通常为大约2分钟后，但最多可以有15分钟) ，则可作为安全中心建议使用。
 
 1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你会看到以下建议：
 
@@ -86,7 +86,7 @@ ms.locfileid: "87038608"
     1. 确定更新的映像已推送、已扫描，且不再显示在建议中时，请从注册表中删除“旧”版本易受攻击的映像。
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>强化容器的 Docker 主机
+## <a name="harden-your-containers-docker-hosts"></a>强化容器的 Docker 主机
 
 安全中心不断监视 Docker 主机的配置，并会生成反映行业标准的安全建议。
 
