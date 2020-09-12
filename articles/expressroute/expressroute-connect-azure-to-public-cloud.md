@@ -2,17 +2,17 @@
 title: 将 Azure 连接到公有云 | Microsoft Docs
 description: 介绍如何通过各种方式将 Azure 连接到其他公有云
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
-ms.author: osamaz
-ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: f413b6100fb2a7d1c8bc06d787468cc3e79c0169
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081094"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397468"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>将 Azure 与公有云进行连接
 
@@ -61,7 +61,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
 ## <a name="next-steps"></a>后续步骤
 如果遇到 ExpressRoute 和虚拟网络连接的其他任何问题，请参阅 [ExpressRoute 常见问题解答][ER-FAQ]。
 
-请参阅在 Azure 和 oracle[云之间设置直接连接][ER-OCI]以连接 Azure 和 oracle
+请参阅在 Azure 和 oracle [云之间设置直接连接][ER-OCI] 以连接 Azure 和 oracle
 
 <!--Link References-->
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs

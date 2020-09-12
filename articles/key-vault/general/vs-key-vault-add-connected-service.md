@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 3d39ad2016da1525658944f4f13185e9df9855af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007088"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378859"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -201,6 +201,6 @@ ms.locfileid: "89007088"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果已根据本教程完成上述操作，则为你设置的 Key Vault 权限适合与你自己的 Azure 订阅配合运行，但可能不适合于生产方案。 可以创建托管标识来管理应用的 Key Vault 访问权限。 请参阅[使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)。
+如果已根据本教程完成上述操作，则为你设置的 Key Vault 权限适合与你自己的 Azure 订阅配合运行，但可能不适合于生产方案。 可以创建托管标识来管理应用的 Key Vault 访问权限。 请参阅 [如何对 Key Vault 进行身份验证](/azure/key-vault/general/authentication) 并 [分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-portal)。
 
 在 [Key Vault 开发人员指南](developers-guide.md)中了解如何使用 Key Vault 进行开发。

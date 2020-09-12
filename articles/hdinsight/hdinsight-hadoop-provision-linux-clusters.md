@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749866"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434650"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -135,11 +135,11 @@ HDInsight 群集可以使用以下存储选项：
 > 在创建群集后启用安全存储传输可能会导致使用存储帐户时出错，因此不建议这样做。 最好使用已启用安全传输的存储帐户创建新群集。
 
 > [!Note]  
-> Azure HDInsight 不会自动传输、将 Azure 存储中存储的数据移动或复制到另一区域。
+> Azure HDInsight 不会将 Azure 存储中存储的数据从一个区域自动传输、移动或复制到另一区域。
 
 ### <a name="metastore-settings"></a>元存储设置
 
-你可以创建可选的 Hive 或 Apache Oozie 元存储。 但是，并非所有群集类型都支持元存储，并且 Azure SQL 数据仓库与元存储不兼容。
+你可以创建可选的 Hive 或 Apache Oozie 元存储。 但是，并非所有群集类型都支持元存储，Azure Synapse Analytics 与元存储不兼容。
 
 有关详细信息，请参阅[在 Azure HDInsight 中使用外部元数据存储](./hdinsight-use-external-metadata-stores.md)。
 
@@ -153,7 +153,7 @@ HDInsight 群集可以使用以下存储选项：
 为一个 HDInsight 群集版本创建 An HDInsight 元存储不能在不同的 HDInsight 群集版本之间共享。 有关 HDInsight 版本的列表，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
 > [!IMPORTANT]
-> 默认的元存储提供具有 **基本第5级 DTU 限制 **的 Azure SQL 数据库， (无法) 升级！ 适用于基本测试目的。 对于大型或生产工作负荷，我们建议迁移到外部元存储。
+> 默认元存储提供具有基本层 5 DTU 限制（不可升级）的 Azure SQL 数据库！ 适用于基本测试目的。 对于大型或生产工作负载，我们建议迁移到外部元存储。
 
 #### <a name="sql-database-for-oozie"></a>适用于 Oozie 的 SQL 数据库
 

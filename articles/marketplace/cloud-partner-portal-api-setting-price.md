@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271716"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393813"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 指定虚拟机套餐定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
 
@@ -98,13 +98,13 @@ ms.locfileid: "87271716"
 
 ## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 上增加了新的核心大小
 
-VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价格（基于内核数）通知。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM，将根据当前价格自动计算这些核心大小的新价格。  发布者截至2019年8月1日，以查看其他价格并进行任何所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新的核心大小的自动计算价格将生效。
+VM 发布者已在2019年7月2日向添加新的 Azure 虚拟机大小增加了新价格， (基于) 的内核数。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM，将根据当前价格自动计算这些核心大小的新价格。 发布者截至2019年8月1日，以查看其他价格并进行任何所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新的核心大小的自动计算价格将生效。
 
 ## <a name="regions"></a>区域
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
 
-| **区域** | **Name**             | **货币代码** |
+| **区域** | **名称**             | **货币代码** |
 |------------|----------------------|-------------------|
 | DZ         | 阿尔及利亚              | DZD               |
 | AR         | 阿根廷            | ARS               |
@@ -121,7 +121,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | CR         | 哥斯达黎加           | CRC               |
 | HR         | 克罗地亚              | HRK               |
 | CY         | 塞浦路斯               | EUR               |
-| CZ         | 捷克共和国       | CZK               |
+| CZ         | 捷克       | CZK               |
 | DK         | 丹麦              | DKK               |
 | DO         | 多米尼加共和国   | USD               |
 | EC         | 厄瓜多尔              | USD               |
@@ -151,7 +151,6 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | LI         | 列支敦士登        | CHF               |
 | LT         | 立陶宛            | EUR               |
 | LU         | 卢森堡           | EUR               |
-| MK         | 北马其顿      | MKD               |
 | MY         | 马来西亚             | MYR               |
 | MT         | 马耳他                | EUR               |
 | MX         | 墨西哥               | MXN               |
@@ -160,6 +159,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | NL         | 荷兰          | EUR               |
 | NZ         | 新西兰          | NZD               |
 | NG         | 尼日利亚              | NGN               |
+| MK         | 北马其顿      | MKD               |
 | 是         | 挪威               | NOK               |
 | OM         | 阿曼                 | OMR               |
 | PK         | 巴基斯坦             | PKR               |

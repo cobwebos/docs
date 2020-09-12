@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff46c5e2d434a75bf71d6216ce81b34de878ba80
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304184"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419174"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>分级 & 查看合作伙伴中心的分析仪表板
 
@@ -26,21 +26,21 @@ ms.locfileid: "87304184"
 
 ## <a name="access-the-dashboard"></a>访问仪表板
 
-在合作伙伴中心的 "[商用 Marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中，展开 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**" 部分，然后选择 "**分级 & 审核**"。
+在合作伙伴中心的 " [商用 Marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 中，展开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 部分，然后选择 " **分级 & 审核**"。
 
 该仪表板显示以下客户活动的图形表示形式：
 
 - 评级 & 审核  
 - 查看注释
 
-使用**Marketplace 店面**选项卡，单独查看提议 Microsoft AppSource 和 Azure Marketplace 指标。 若要查看特定的产品指标，请从 "产品/服务" 下拉列表中选择产品/服务。
+使用 **Marketplace Insights** 选项卡，单独查看产品/服务 Microsoft AppSource 和 Azure Marketplace 指标。 若要查看特定的产品指标，请从 "产品/服务" 下拉列表中选择产品/服务。
 
 ### <a name="ratings--reviews-summary"></a>分级 & 审核摘要
 
 "分级 & 查看摘要" 部分显示了下面所选日期范围内的指标：
 
 - **平均评分：** 客户为所选产品/服务提交的所有评级的加权平均星形评级。
-- **评级细目：** 按提交分级的客户计数对星级评级的细分。 条形图按实际和修订的分级堆积（已更新评级计数）。
+- **评级细目：** 按提交分级的客户计数对星级评级的细分。 条形图按实际和修订分级堆积 (更新的评级计数) 。
 - **总评分：** 已提交的评级总计。 此计数还包括具有和不含评论的分级。
 - **具有评审的评级：** 提交的评论计数。
 
@@ -48,7 +48,7 @@ ms.locfileid: "87304184"
 
 ### <a name="review-comments"></a>查看注释
 
-在发布时，将按时间顺序显示评审。 默认视图显示所有评审，你可以使用下拉菜单中的 "**分级" 筛选**器通过星级进行筛选。 此外，还可以按查看中显示的关键字进行搜索。  
+在发布时，将按时间顺序显示评审。 默认视图显示所有评审，你可以使用下拉菜单中的 " **分级" 筛选** 器通过星级进行筛选。 此外，还可以按查看中显示的关键字进行搜索。  
 
 ![合作伙伴中心分析评审评论](./media/analyze-reviews.png)
 

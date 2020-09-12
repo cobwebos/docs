@@ -2,17 +2,17 @@
 title: 为 VPN 用户启用 MFA：Azure AD 身份验证
 description: 为 VPN 用户启用多重身份验证
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: e6d3ff32d2daaf35ff00bd0ee1d8f42669683827
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e29aafe55c8007182c6183d53d988d8a18dd82c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998589"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424968"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>为 VPN 用户启用 Azure 多重身份验证 (MFA)
 
@@ -26,11 +26,11 @@ ms.locfileid: "86998589"
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-vwan-openvpn-sign-in.md)]
 
-## <a name="option-1---per-user-access"></a><a name="peruser"></a>选项 1-每用户访问
+## <a name="option-1---per-user-access"></a><a name="peruser"></a>选项 1 -“按用户”访问
 
 [!INCLUDE [per user](../../includes/vpn-gateway-vwan-openvpn-per-user.md)]
 
-## <a name="option-2---conditional-access"></a><a name="conditional"></a>选项 2-条件性访问
+## <a name="option-2---conditional-access"></a><a name="conditional"></a>选项 2 - 条件访问
 
 [!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 

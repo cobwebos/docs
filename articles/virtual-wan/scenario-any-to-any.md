@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553421"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400069"
 ---
 # <a name="scenario-any-to-any"></a>方案： Any 到 any
 
@@ -24,33 +24,33 @@ ms.locfileid: "87553421"
 
 为了确定虚拟 WAN 方案中需要多少个路由表，你可以构建一个连接矩阵，其中每个单元表示源 (行) 是否可以与) 的目标 (列通信。 此方案中的连接矩阵非常简单，但我们已将其包含在内，以便与其他方案保持一致。
 
-| From |   功能 |  *Vnet* | *分支* |
+| 从 |   功能 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
 | VNet     | &#8594;|      X     |     X    |
 | 分支   | &#8594;|    X     |     X    |
 
-上表中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、表中的行标题) 了解流的 "To" 端 (目标前缀，表) 中的列标题用于特定的流量流。
+上表中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、表中的行标题) 了解流的 "To" 端 (目标前缀，表中的列标题在表中) 对于特定的通信流，其中 "X" 表示虚拟 WAN 提供连接。
 
 由于 Vnet 和分支中的所有连接都 (VPN、ExpressRoute 和用户 VPN) 具有相同的连接要求，因此需要一个路由表。 因此，所有连接都将关联并传播到同一个路由表，默认路由表如下：
 
 * 虚拟网络：
-  * 关联的路由表：**默认值**
-  * 传播到路由表：**默认值**
+  * 关联的路由表： **默认值**
+  * 传播到路由表： **默认值**
 * 转
-  * 关联的路由表：**默认值**
-  * 传播到路由表：**默认值**
+  * 关联的路由表： **默认值**
+  * 传播到路由表： **默认值**
 
 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 ## <a name="architecture"></a><a name="architecture"></a>体系结构
 
-在**图 1**中，所有 Vnet 和分支 (VPN、EXPRESSROUTE、P2S) 可以相互联系。 在虚拟中心中，连接的工作方式如下：
+在 **图 1**中，所有 Vnet 和分支 (VPN、EXPRESSROUTE、P2S) 可以相互联系。 在虚拟中心中，连接的工作方式如下：
 
 * VPN 连接将 VPN 站点连接到 VPN 网关。
 * 虚拟网络连接将虚拟网络连接到虚拟中心。 虚拟中心的路由器提供 Vnet 之间的传输功能。
 * ExpressRoute 连接将 ExpressRoute 线路连接到 ExpressRoute 网关。
 
-默认情况) 下，这些连接 (与默认路由表相关联，除非将连接的路由配置设置为 "**无**" 或自定义路由表。 默认情况下，这些连接还会将路由传播到默认路由表。 这可以实现任意到任意方案，其中任何分支 (VNet、VPN、ER、P2S) 可以相互联系。
+默认情况) 下，这些连接 (与默认路由表相关联，除非将连接的路由配置设置为 " **无**" 或自定义路由表。 默认情况下，这些连接还会将路由传播到默认路由表。 这可以实现任意到任意方案，其中任何分支 (VNet、VPN、ER、P2S) 可以相互联系。
 
 **图 1**
 

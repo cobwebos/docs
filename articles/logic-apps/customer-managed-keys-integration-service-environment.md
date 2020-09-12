@@ -1,25 +1,25 @@
 ---
 title: 设置客户管理的密钥，以便在 ISEs 中加密静态数据
-description: 创建并管理自己的加密密钥，以便在 Azure 逻辑应用中保护静态数据和集成服务环境（ISEs）
+description: 创建并管理自己的加密密钥，以便在 Azure 逻辑应用中 (ISEs) 为 integration service 环境保护静态数据
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386157"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400137"
 ---
-# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>设置客户管理的密钥，以便在 Azure 逻辑应用中为集成服务环境（ISEs）加密静态数据
+# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>设置客户管理的密钥，以便在 Azure 逻辑应用中 (ISEs) 为 integration service 环境加密静态数据
 
-Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../storage/common/storage-service-encryption.md)。 此加密可保护数据，并帮助你履行组织的安全性和合规性承诺。 默认情况下，Azure 存储使用 Microsoft 托管的密钥来加密数据。 有关 Azure 存储加密的工作原理的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)和[静态数据加密](../security/fundamentals/encryption-atrest.md)。
+Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../storage/common/storage-service-encryption.md)。 此加密可保护数据，并帮助你履行组织的安全性和合规性承诺。 默认情况下，Azure 存储使用 Microsoft 托管的密钥来加密数据。 有关 Azure 存储加密的工作原理的详细信息，请参阅 [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md) 和 [静态数据加密](../security/fundamentals/encryption-atrest.md)。
 
-创建用于托管逻辑应用的[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)并希望更好地控制 Azure 存储使用的加密密钥时，可以使用[Azure Key Vault](../key-vault/general/overview.md)设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" （BYOK），你的密钥称为 "客户管理的密钥"。
+当你创建 [集成服务环境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 来托管逻辑应用，并且希望更好地控制 Azure 存储使用的加密密钥时，你可以使用 [Azure Key Vault](../key-vault/general/overview.md)设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" (BYOK) ，密钥称为 "客户托管密钥"。
 
-本主题说明如何设置和指定你自己的加密密钥，以便在你使用逻辑应用 REST API 创建 ISE 时使用。 有关通过逻辑应用创建 ISE REST API 的常规步骤，请参阅[使用逻辑应用 REST API 创建集成服务环境（ISE）](../logic-apps/create-integration-service-environment-rest-api.md)。
+本主题说明如何设置和指定你自己的加密密钥，以便在你使用逻辑应用 REST API 创建 ISE 时使用。 有关通过逻辑应用创建 ISE REST API 的常规步骤，请参阅 [使用逻辑应用 REST API (ISE) 创建 integration service 环境](../logic-apps/create-integration-service-environment-rest-api.md)。
 
 ## <a name="considerations"></a>注意事项
 
@@ -27,34 +27,34 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * *只能在创建 ISE 时*指定客户托管的密钥，而不能在以后创建 ISE。 创建 ISE 后，不能禁用此密钥。 目前，不支持轮换 ISE 的客户托管密钥。
 
-* 若要支持客户管理的密钥，ISE 要求需要启用[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 此标识允许 ISE 验证对其他 Azure Active Directory （Azure AD）租户中的资源的访问权限，这样就无需使用凭据进行登录。
+* 若要支持客户管理的密钥，ISE 要求需要启用 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) 。 此标识允许 ISE 验证对其他 Azure Active Directory 中的资源的访问权限， (Azure AD) 租户，以便无需使用凭据进行登录。
 
 * 目前，若要创建支持客户管理的密钥的 ISE 并启用系统分配的标识，则必须使用 HTTPS PUT 请求调用逻辑应用 REST API。
 
-* 发送用于创建 ISE 的 HTTPS PUT 请求后*30 分钟*内，必须[为 ise 的系统分配的标识授予密钥保管库访问权限](#identity-access-to-key-vault)。 否则，ISE 创建失败并引发权限错误。
+* 发送用于创建 ISE 的 HTTPS PUT 请求后 *30 分钟* 内，必须 [为 ise 的系统分配的标识授予密钥保管库访问权限](#identity-access-to-key-vault)。 否则，ISE 创建失败并引发权限错误。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 为[ise 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和要求与在 Azure 门户中创建 ise 时相同。
 
-* 已启用**软删除**且**未清除**属性的 Azure 密钥保管库
+* 已启用 **软删除** 且 **未清除** 属性的 Azure 密钥保管库
 
-  有关启用这些属性的详细信息，请参阅[Azure Key Vault 软删除概述](../key-vault/general/soft-delete-overview.md)和[配置 Azure Key Vault 的客户托管密钥](../storage/common/storage-encryption-keys-portal.md)。 如果你不熟悉 Azure Key Vault，请参阅[如何使用 Azure 门户创建密钥保管库](../key-vault/secrets/quick-create-portal.md#create-a-vault)，或使用 Azure PowerShell 命令[AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。
+  有关启用这些属性的详细信息，请参阅 [Azure Key Vault 软删除概述](../key-vault/general/soft-delete-overview.md) 和 [配置 Azure Key Vault 的客户托管密钥](../storage/common/storage-encryption-keys-portal.md)。 如果你不熟悉 Azure Key Vault，请参阅 [如何使用 Azure 门户创建密钥保管库](../key-vault/secrets/quick-create-portal.md#create-a-vault) ，或使用 Azure PowerShell 命令 [AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。
 
 * 在密钥保管库中，使用以下属性值创建的密钥：
 
-  | 属性 | 值 |
+  | properties | 值 |
   |----------|-------|
   | **键类型** | RSA |
   | **RSA 密钥大小** | 2048 |
-  | **Enabled** | 是 |
+  | **已启用** | 是 |
   |||
 
   ![创建客户管理的加密密钥](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  有关详细信息，请参阅[配置客户管理的密钥与 Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)或 Azure PowerShell 命令[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。
+  有关详细信息，请参阅 [配置客户管理的密钥与 Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) 或 Azure PowerShell 命令 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。
 
-* 一种工具，可用于通过调用具有 HTTPS PUT 请求 REST API 的逻辑应用来创建 ISE。 例如，可以使用[Postman](https://www.getpostman.com/downloads/)，也可以生成执行此任务的逻辑应用。
+* 一种工具，可用于通过调用具有 HTTPS PUT 请求 REST API 的逻辑应用来创建 ISE。 例如，可以使用 [Postman](https://www.getpostman.com/downloads/)，也可以生成执行此任务的逻辑应用。
 
 <a name="enable-support-key-system-identity"></a>
 
@@ -76,7 +76,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 > 删除虚拟网络时，请确保没有资源仍处于连接状态。 
 > 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
-### <a name="request-header"></a>请求标头
+### <a name="request-header"></a>请求头
 
 在请求标头中，包括以下属性：
 
@@ -197,35 +197,35 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 ## <a name="grant-access-to-your-key-vault"></a>授予对 Key Vault 的访问权限
 
-发送 HTTP PUT 请求以创建 ISE 之后，在*30 分钟*内，必须将访问策略添加到 ise 系统分配的密钥保管库。 否则，你的 ISE 创建会失败，并会出现权限错误。 
+发送 HTTP PUT 请求以创建 ISE 之后，在 *30 分钟* 内，必须将访问策略添加到 ise 系统分配的密钥保管库。 否则，你的 ISE 创建会失败，并会出现权限错误。 
 
-对于此任务，您可以使用 Azure PowerShell [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)命令，也可以在 Azure 门户中执行以下步骤：
+对于此任务，您可以使用 Azure PowerShell [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 命令，也可以在 Azure 门户中执行以下步骤：
 
-1. 在[Azure 门户](https://portal.azure.com)中，打开 Azure 密钥保管库。
+1. 在 [Azure 门户](https://portal.azure.com)中，打开 Azure 密钥保管库。
 
 1. 在 key vault 菜单上，选择 "**访问策略**  >  " "**添加访问策略**"，例如：
 
    ![为系统分配的托管标识添加访问策略](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
-1. 在 "**添加访问策略**" 窗格打开后，请执行以下步骤：
+1. 在 " **添加访问策略** " 窗格打开后，请执行以下步骤：
 
    1. 选择以下选项：
 
       | 设置 | 值 |
       |---------|--------|
-      | **"从模板配置（可选）" 列表** | 密钥管理 |
+      | **从模板配置 (可选) 列表** | 密钥管理 |
       | **关键权限** | - **密钥管理操作**：获取、列出 <p><p>- **加密操作**：解包密钥，换行密钥 |
       |||
 
       ![选择 "密钥管理" > "密钥权限"](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. 对于 "**选择主体**"，请选择 "**未**选择"。 **主体**窗格打开后，在 "搜索" 框中，找到并选择你的 ISE。 完成后，选择 "**选择**  >  **添加**"。
+   1. 对于 " **选择主体**"，请选择 " **未**选择"。 **主体**窗格打开后，在 "搜索" 框中，找到并选择你的 ISE。 完成后，选择 "**选择**  >  **添加**"。
 
       ![选择要用作主体的 ISE](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. 完成 "**访问策略**" 窗格后，请选择 "**保存**"。
+   1. 完成 " **访问策略** " 窗格后，请选择 " **保存**"。
 
-有关详细信息，请参阅[使用托管标识提供 Key Vault 身份验证](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)。
+有关详细信息，请参阅 [如何向 Key Vault 进行身份验证](/azure/key-vault/general/authentication) 和 [分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-portal)。
 
 ## <a name="next-steps"></a>后续步骤
 

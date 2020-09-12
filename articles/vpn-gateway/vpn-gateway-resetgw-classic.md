@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c0313c74b046d4c93c8625eab8659df392041059
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033047"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419803"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-结果:
+结果：
 
 收到返回结果时，可假定网关重置成功。 但返回结果没有明确指出重置成功。 如要仔细查看历史记录，确定网关重置发生的确切时间，可在 [Azure 门户](https://portal.azure.com)中查看该信息。 在门户中，导航到“GatewayName”->“资源运行状况”****。
 
@@ -77,7 +77,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-结果:
+结果：
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ StatusCode     : OK
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-结果:
+结果：
 
 收到返回结果时，可假定网关重置成功。 但返回结果没有明确指出重置成功。 如要仔细查看历史记录，确定网关重置发生的确切时间，可在 [Azure 门户](https://portal.azure.com)中查看该信息。 在门户中，导航到“GatewayName”->“资源运行状况”****。

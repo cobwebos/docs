@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f7f559a0f0cfeddcba6e3f563c0a74a2472887d7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f067d4c777bb9a49ac2cc50595046249479a8f7a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226771"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393830"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>适用于 Azure Database for MariaDB 的 Azure 安全基线
 
@@ -468,7 +468,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 结合使用专用链接、服务终结点和/或 MariaDB 防火墙规则，隔离和限制对 MariaDB 实例的网络访问。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 结合使用专用链接、服务终结点和/或 MariaDB 防火墙规则，隔离和限制对 MariaDB 实例的网络访问。
 
 如何创建其他 Azure 订阅： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
@@ -880,11 +880,11 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 如何与 Azure 托管标识集成： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/quick-create-portal
+如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何使用托管标识提供 Key Vault 身份验证： https://docs.microsoft.com/azure/key-vault/managed-identity 
+如何对 Key Vault 进行身份验证： https://docs.microsoft.com/azure/key-vault/general/authentication
 
-
+如何分配 Key Vault 访问策略： https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure 安全中心监视**：是
 

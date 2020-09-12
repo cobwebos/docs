@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d917bc1d52cc2a43e87affcc9c5e3c2ab533da07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984877"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420772"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -149,7 +149,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 4. 从菜单中选择“IPsec/IKEv2 (strongSwan)”  ，然后双击。 可以在此步骤中命名连接。
 
    ![选择连接类型](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
-5. 打开下载的客户端配置文件包含的 **Generic** 文件夹中的 **VpnSettings.xml** 文件。 找到名为**VpnServer**的标记，并复制名称，以 "azuregateway" 开头，以 ". cloudapp.net" 结尾。
+5. 打开下载的客户端配置文件包含的 **Generic** 文件夹中的 **VpnSettings.xml** 文件。 找到名为 **VpnServer** 的标记，并复制名称，以 "azuregateway" 开头，以 ". cloudapp.net" 结尾。
 
    ![复制名称](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. 在“网关”部分中，将此名称粘贴到新 VPN 连接的“地址”字段中。   接下来，选择“证书”字段末尾的文件夹图标，浏览到 **Generic** 文件夹，并选择 **VpnServerRoot** 文件。 

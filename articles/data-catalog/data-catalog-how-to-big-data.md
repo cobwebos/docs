@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523445"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443137"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中编录大数据
 
@@ -19,7 +19,7 @@ ms.locfileid: "86523445"
 
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 它旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据源（包括大数据）中获取更多价值。
 
-**Azure 数据目录** 支持 Azure Blog 存储 blob 和目录以及 Hadoop HDFS 文件和目录的注册。 这些数据源的半结构化特性提供了极大的灵活性。 但是，若要通过使用 **Azure 数据目录**注册它们来获取最大的价值，用户必须考虑如何组织数据源。
+**Azure 数据目录** 支持注册 azure 存储 blob 和目录以及 Hadoop HDFS 文件和目录。 这些数据源的半结构化特性提供了极大的灵活性。 但是，若要通过使用 **Azure 数据目录**注册它们来获取最大的价值，用户必须考虑如何组织数据源。
 
 ## <a name="directories-as-logical-data-sets"></a>将目录视为逻辑数据集
 

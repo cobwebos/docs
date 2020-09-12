@@ -2,20 +2,20 @@
 title: Azure 流量管理器 - 流量路由方法
 description: 本文讲解流量管理器使用的各种流量路由方法。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689650"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401650"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理器路由方法
 

@@ -3,15 +3,15 @@ title: Azure Monitor 监视哪些内容
 description: 有关 Azure Monitor 监视的所有服务和其他资源的参考信息。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 06/15/2020
-ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: rboucher
+ms.author: robb
+ms.date: 08/15/2020
+ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080858"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435399"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -32,7 +32,7 @@ ms.locfileid: "88080858"
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
 | [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
 | [用于 VM 的 Azure Monitor](insights/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
-| [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供对你的密钥保管库的全面监视，方法是提供你的 Key Vault 请求、性能、故障和延迟的统一视图。 |
+| [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
 | [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
 
@@ -120,7 +120,7 @@ ms.locfileid: "88080858"
 |IoT 中心 | 是 | 是 | 否 |  |
 |Key Vault | 是 | 是 | [是](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes 服务 (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
-|负载均衡器 | 是 | 是 | 否 |  |
+|负载均衡器 | 是 | 否 | 否 |  |
 |逻辑应用 | 是 | 是 | 否 |  |
 |机器学习服务 | 否 | 否 | 否 |  |
 |托管应用程序  | 否 | 否 | 否 |  |
@@ -149,9 +149,9 @@ ms.locfileid: "88080858"
 |服务总线 | 是 | 是 | 否 |  |
 |Service Fabric | 否 | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
 |注册门户 | 否 | 否 | 否 |  |
-|Site Recovery | 否 | “是” | 否 |  |
+|Site Recovery | 否 | 是 | 否 |  |
 |Spring Cloud 服务 | 否 | 否 | 否 |  |
-|SQL 数据仓库 | 是 | 是 | 否 |  |
+|Azure Synapse Analytics | 是 | 是 | 否 |  |
 |SQL 数据库 | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |堆栈 | 否 | 否 | 否 |  |
@@ -220,7 +220,7 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 | 资源 | 方法 |
 |:---|:---|
 | 应用程序 | 使用 Application Insights 监视 Azure 以外的 web 应用程序。 请参阅[什么是 Application Insights？](./app/app-insights-overview.md)。 |
-| 虚拟机 | 使用代理从其他云环境或本地的虚拟机的来宾操作系统中收集数据。 请参阅[Azure Monitor 代理概述](platform/agents-overview.md)。 |
+| 虚拟机 | 使用代理从其他云环境中的或本地的虚拟机的来宾操作系统收集数据。 请参阅 [Azure Monitor 代理概述](platform/agents-overview.md)。 |
 | REST API 客户端 | 可使用单独的 API 将数据从任何 REST API 客户端写入 Azure Monitor 日志和指标。 请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](platform/data-collector-api.md)，以及[使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](platform/metrics-store-custom-rest-api.md)。 |
 
 

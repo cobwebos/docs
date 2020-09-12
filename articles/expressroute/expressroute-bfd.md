@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：配置 BFD
 description: 本文说明如何通过 ExpressRoute 线路的专用对等互连配置 BFD（双向转发检测）。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/1/2018
-ms.author: rambala
-ms.openlocfilehash: ec9c6248f4054329bd3cd9b74855964c4acf72c4
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.author: duau
+ms.openlocfilehash: db2f45da0193ac648d58c0be9773f36e542ed917
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855154"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397604"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD
 

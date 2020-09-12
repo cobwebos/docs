@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f1e95c1244d327478862c3919481394d974ea42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270028"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419259"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 基于角色的访问控制 (预览版，提供对 Key Vault 密钥、证书和机密的访问权限) 
 
@@ -38,7 +38,7 @@ Azure RBAC 模型提供了在不同的作用域级别上设置权限的功能：
 
 有关 Azure Key Vault 管理准则的详细信息，请参阅：
 
-- [Azure Key Vault 最佳实践](best-practices.md)
+- [Azure Key Vault 最佳做法](best-practices.md)
 - [Azure Key Vault 服务限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>用于 Key Vault 数据平面操作 (预览版的 Azure 内置角色) 
@@ -61,6 +61,10 @@ Azure RBAC 模型提供了在不同的作用域级别上设置权限的功能：
 Key vault 的新 Azure RBAC 权限模型提供保管库访问策略权限模型的替代方法。 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>启用 Key Vault 上的 Azure RBAC 权限
+
+预览期间，必须使用 Azure RBAC 功能标记 (Microsoft_Azure_KeyVault_RBACEnabled = true) 查看新的权限模型选项。
+
+https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > 设置 Azure RBAC 权限模型会使所有访问策略权限失效。 当未分配等效的 Azure 角色时，它可能会导致中断。
@@ -206,15 +210,13 @@ az role definition create --role-definition '{ \
 
 [Azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-对于可用操作，请检查附录： **可用操作**
-
 ## <a name="known-limits-and-performance"></a>已知的限制和性能
 
 -   2000每个订阅的 Azure 角色分配
 
 -   角色分配延迟：达到当前预期性能时，将需要10分钟 (600 秒) 更改角色分配以应用角色
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多信息
 
 - [Azure RBAC 概述](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [自定义角色教程](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

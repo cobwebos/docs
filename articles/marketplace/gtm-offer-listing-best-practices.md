@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816263"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420925"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "88816263"
 
 | 在线商店 | 类别 <br>按在线商店 | 类别 <br>按在线商店 | 行业 <br> 对于 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **产品类型**   |  **Azure 市场**  | **AppSource**  |
+| **产品/服务类型**   |  **Azure 市场**  | **AppSource**  |
 | Azure 应用 | X | |
 | 容器 | X | |
 | 咨询服务 | | | X |
@@ -48,11 +48,11 @@ ms.locfileid: "88816263"
 
 ### <a name="categories"></a>类别
 
-Microsoft AppSource 和 Azure Marketplace 是两个不同的在线商店，它们可满足独特的客户需求。 Azure Marketplace 面向 IT 专业人员和开发人员在 Azure 上构建解决方案。  Microsoft AppSource 面向查找企业和/或行业 SaaS 应用程序的业务用户、Dynamics 365 外接程序、Microsoft 365 加载项和 Power Platform 应用。
+Microsoft AppSource 和 Azure Marketplace 是提供不同解决方案类型的在线商店。 Azure Marketplace 提供了在或 Azure 上构建的 IT 解决方案。  Microsoft AppSource 提供业务解决方案，如行业 SaaS 应用程序、Dynamics 365 外接程序、Microsoft 365 加载项和 Power Platform 应用。
 
-类别和子类别基于目标受众映射到每个在线商店。 你的产品/服务将发布到 Microsoft AppSource 或 Azure Marketplace，具体取决于产品/服务的产品/服务和类别/子类别选择的产品/服务类型。 
+类别和子类别基于解决方案类型映射到每个在线商店。 你的产品/服务将发布到 Microsoft AppSource 或 Azure Marketplace，具体取决于产品/服务的产品/服务和类别/子类别选择的产品/服务类型。 
 
-选择最适合你的产品/服务和目标受众的类别和子类别。 可以选择：
+选择最适合你的解决方案类型的类别和子类别。 可以选择：
 
 * 最多包含两个类别，其中包括一个主类别和一个辅助类别 (可选) 。
 * 每个主节点和/或辅助类别最多包含两个子类别。 如果未选择任何子类别，你的产品/服务仍将仅在所选类别上可发现。

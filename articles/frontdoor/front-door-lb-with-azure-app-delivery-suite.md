@@ -3,20 +3,20 @@ title: Azure 前端-通过 Azure 的应用程序交付套件实现负载平衡 |
 description: 本文将帮助你了解 Azure 如何向其应用程序交付套件提供负载均衡
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 685ee9feaf057e4f2fae3cfe016624806f1ad00c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80875276"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399457"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的应用程序传送套件进行负载均衡
 
@@ -27,7 +27,7 @@ Microsoft Azure 提供了多个全局和区域服务，用于管理网络流量�
  
 这些服务分为两个类别：
 1. 流量管理器和前端等**全局负载平衡服务**将来自你的最终用户的流量分散到你的区域后端，跨云甚至你的混合本地服务。 全局负载均衡将流量路由到最近的服务后端，并对服务可靠性或性能方面的更改作出响应，从而为用户提供始终可用的最佳性能。 
-2. **区域负载平衡服务**（如标准负载均衡器或应用程序网关）提供了跨虚拟机（vm）或区域内的区域服务终结点在虚拟网络（vnet）内分布流量的功能。
+2. **区域负载平衡服务** （如标准负载均衡器或应用程序网关）能够在虚拟机中 (vnet) ，将流量分布到虚拟机 (vm) 或区域内的区域服务终结点。
 
 在应用程序中结合使用全局和区域服务可提供端到端的可靠、高性能和安全的方法，将用户的流量路由到 IaaS、PaaS 或本地服务。 下一部分介绍上述各项服务。
 
@@ -39,9 +39,9 @@ Microsoft Azure 提供了多个全局和区域服务，用于管理网络流量�
 - 地理路由 - 确保将位于特定地理区域中的请求者定向到映射到那些区域的后端（例如，所有位于西班牙的请求者都将被定向到法国中部这一个 Azure 区域）
 - 子网路由 - 能够将 IP 地址范围映射到后端，从而将这些范围内的请求者发送到指定后端（例如，从公司总部的 IP 地址范围中进行连接的所有用户得到的 Web 内容与普通用户不同）
 
-客户端直接连接到该后端。 当某个后端运行不正常时，Azure 流量管理器可以检测到这种状态，然后将客户端重定向到另一个正常的实例。 有关服务的详细信息，请参阅[Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)文档。
+客户端直接连接到该后端。 当某个后端运行不正常时，Azure 流量管理器可以检测到这种状态，然后将客户端重定向到另一个正常的实例。 有关服务的详细信息，请参阅 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) 文档。
 
-**Azure 前门**提供动态网站加速（DSA），包括全局 HTTP 负载平衡。  它着眼于为指定的主机名、URL 路径和配置的规则路由到最近后端/区域的传入 HTTP 请求。  
+**Azure 前门** 提供动态网站加速 (DSA) 包含全局 HTTP 负载平衡。  它着眼于为指定的主机名、URL 路径和配置的规则路由到最近后端/区域的传入 HTTP 请求。  
 Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测以检测应用程序或基础结构在运行状况或延迟方面的变化。  然后始终将流量路由到可用（正常运行）的最远后端。 参阅 Front Door 的[路由基础结构](front-door-routing-architecture.md)详细信息以及[流量路由方法](front-door-routing-methods.md)深入了解该服务。
 
 ## <a name="regional-load-balancing"></a>区域负载均衡
@@ -58,7 +58,7 @@ Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测�
 
 | 流量管理器 | Azure Front Door |
 | --------------- | ------------------------ |
-|**任何协议：** 流量管理器在 DNS 层运行，因此可以路由任何类型的网络流量，比如 HTTP、TCP、UDP 等。 | **HTTP 加速：** 在 Microsoft 网络的边缘，有前门流量的代理。  因此，HTTP （S）请求会发现延迟和吞吐量改进，从而减少了 TLS 协商延迟，并使用了从 AFD 到应用程序的热连接。|
+|**任何协议：** 流量管理器在 DNS 层运行，因此可以路由任何类型的网络流量，比如 HTTP、TCP、UDP 等。 | **HTTP 加速：** 在 Microsoft 网络的边缘，有前门流量的代理。  因此，HTTP (S) 请求会看到延迟和吞吐量改进，从而减少了 TLS 协商的延迟，并使用 AFD 中的热连接到应用程序。|
 |**本地路由：** 当路由位于 DNS 层时，流量始终从点到点进行。  从分支机构到本地数据中心的路由可以采用直接路径;甚至在你自己的网络上使用流量管理器。 | **独立的可伸缩性：** Front Door 适用于 HTTP 请求，因此，可根据各个应用程序微服务的规则和运行状况，将路由到不同 URL 路径的请求路由到不同的后端/区域服务池（微服务）。|
 |**** 计费形式：基于 DNS 的计费随用户数增加，适用于具有更多用户和更高稳定性的服务，从而为使用率较高的情况降低费用。 |**内联安全性：** Front Door 启用流量限速和 IP ACL 等规则，使你能在流量达到应用程序前保护后端。 
 

@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：针对灾难恢复进行设计
 description: 本页提供有关使用 Azure ExpressRoute 实现灾难恢复的体系结构建议。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
-ms.author: rambala
-ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081162"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397995"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 专用对等互连进行灾难恢复设计
 
@@ -21,7 +21,7 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 但是，考虑到墨菲的一句格言“如果某件事可能会出错，那么它就会出错”，本文将重点分析的解决方案并不局限于使用单条 ExpressRoute 线路可以解决的故障。  换而言之，本文将会探讨使用异地冗余 ExpressRoute 线路构建可靠的后端网络连接以实现灾难恢复时的网络体系结构考虑因素。
 
 >[!NOTE]
->本文中所述的概念同样适用于在 "虚拟广域网" 或它外部创建 ExpressRoute 线路的情况。
+>本文所述的概念同样适用于在虚拟 WAN 下或其外部创建 ExpressRoute 线路的情况。
 >
 
 ## <a name="need-for-redundant-connectivity-solution"></a>对冗余连接解决方案的需求
@@ -76,7 +76,7 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 
 以下屏幕截图演示了如何通过 Azure 门户配置 ExpressRoute 连接的权重。
 
-[![三维空间]][3]
+[![3]][3]
 
 下图演示了如何使用连接权重来影响 ExpressRoute 路径选择。 默认连接权重为 0。 在以下示例中，ExpressRoute 1 的连接权重配置为 100。 当 VNet 收到通过多条 ExpressRoute 线路播发的路由前缀时，VNet 将优先使用权重最高的连接。
 

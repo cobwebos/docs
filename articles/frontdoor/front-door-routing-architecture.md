@@ -3,24 +3,24 @@ title: Azure 前端-路由体系结构 |Microsoft Docs
 description: 本文以宏观视角对 Front Door 体系结构进行整体综述和梳理。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b36852e27f6aa3a909dd645c19a12c55e082b761
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879286"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399321"
 ---
 # <a name="routing-architecture-overview"></a>路由体系结构概述
 
-Azure 前门接收客户端请求时，它会应答这些请求（如果启用了缓存）或将其转发到相应的应用程序后端（作为反向代理）。
+Azure 前门接收客户端请求时，它会将其应答 (如果启用了缓存) 或将其转发到相应的应用程序后端 (作为反向代理) 。
 
 </br>路由到 Azure Front Door 或路由到后端有可能使通信流得到优化。
 

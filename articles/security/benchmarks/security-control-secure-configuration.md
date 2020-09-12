@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077222"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400086"
 ---
 # <a name="security-control-secure-configuration"></a>安全控制：安全配置
 
@@ -174,7 +174,9 @@ Azure Automation State Configuration 是一个配置管理服务，适用于任�
 
 - [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [如何使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [如何对 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
+
+- [如何分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 

@@ -13,26 +13,26 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475988"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401667"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中创建角色可分配的组
 
-您只能向使用设置为 True 的 "isAssignableToRole" 属性创建的组分配角色，或者在 Azure AD 门户中创建的、 **Azure AD 可以将角色分配给组**的角色。 此组属性使组可以分配给 Azure Active Directory （Azure AD）中的角色。 本文介绍如何创建这种特殊类型的组。
+您只能向使用设置为 True 的 "isAssignableToRole" 属性创建的组分配角色，或者在 Azure AD 门户中创建的、 **Azure AD 可以将角色分配给组** 的角色。 此组属性可将组分配到 Azure Active Directory (Azure AD) 中的角色。 本文介绍如何创建这种特殊类型的组。 **注意：** 将 isAssignableToRole 属性设置为 true 的组不能为动态成员身份类型。 有关详细信息，请参阅 [使用组管理 Azure AD 角色分配](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)。
 
 ## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 管理中心
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到[Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 1. 选择 "**组**" "  >  **所有组**" "  >  **新组**"。
 
     [![打开 Azure Active Directory 并创建一个新组。](media/roles-groups-create-eligible/new-group.png "打开 Azure Active Directory 并创建一个新组。")](media/roles-groups-create-eligible/new-group.png#<lightbox>)
 
-1. 在 "**新建组**" 选项卡上，提供组类型、名称和说明。
-1. 打开**Azure AD 可以将角色分配给组**。 只有特权角色管理员和全局管理员才能看到此开关，因为这两个角色只是两个可设置交换机的角色。
+1. 在 " **新建组** " 选项卡上，提供组类型、名称和说明。
+1. 打开 **Azure AD 可以将角色分配给组**。 只有特权角色管理员和全局管理员才能看到此开关，因为这两个角色只是两个可设置交换机的角色。
 
     [![使新组符合角色分配的条件](media/roles-groups-create-eligible/eligible-switch.png "使新组符合角色分配的条件")](media/roles-groups-create-eligible/eligible-switch.png#<lightbox>)
 
@@ -40,7 +40,7 @@ ms.locfileid: "87475988"
 
     [![将成员添加到可分配角色的组并分配角色。](media/roles-groups-create-eligible/specify-members.png "将成员添加到可分配角色的组并分配角色。")](media/roles-groups-create-eligible/specify-members.png#<lightbox>)
 
-1. 指定成员和所有者后，选择 "**创建**"。
+1. 指定成员和所有者后，选择 " **创建**"。
 
     [!["创建" 按钮位于页面的底部。](media/roles-groups-create-eligible/create-button.png ""创建" 按钮位于页面的底部。")](media/roles-groups-create-eligible/create-button.png#<lightbox>)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816246"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420602"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "88816246"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge 模块是什么？
 
-通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](../iot-edge/iot-edge-modules.md)。
+通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是 IoT Edge 管理的最小计算单元，可以包含 Microsoft 服务 (如 Azure 流分析) 、第三方服务或你自己特定于解决方案的代码。 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](../iot-edge/iot-edge-modules.md)。
 
 **容器套餐类型和 IoT Edge 模块套餐类型之间的区别是什么？**
 
@@ -40,7 +40,7 @@ IoT Edge 模块套餐类型是在 IoT Edge 设备上运行的一种特定类型�
 
 **选择正确的在线商店**
 
-IoT Edge 模块仅发布到 Azure Marketplace;AppSource 不适用。 有关在线商店中的差异和目标受众的详细信息，请参阅 [确定发布选项](determine-your-listing-type.md)。
+IoT Edge 模块仅发布到 Azure Marketplace;AppSource 不适用。 有关在线商店之间的差异的详细信息，请参阅 [确定发布选项](determine-your-listing-type.md)。
 
 **计费选项**
 
@@ -75,6 +75,5 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
 - 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
 - 在合作伙伴中心[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。

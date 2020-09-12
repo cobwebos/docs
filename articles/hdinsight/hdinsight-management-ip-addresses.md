@@ -7,26 +7,32 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82778254"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401633"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
-> [!Important]
-> 在大多数情况下，现在可以对网络安全组使用[服务标记](hdinsight-service-tags.md)功能，而不是手动添加 IP 地址。 将仅为服务标记添加新区域，并且最终将弃用静态 IP 地址。
+本文列出了 Azure HDInsight 运行状况和管理服务使用的 IP 地址。 如果使用 (Nsg) 的网络安全组或用户定义的路由 (Udr) 可能需要将其中一些 IP 地址添加到入站网络流量的允许列表中。
 
-如果使用网络安全组（Nsg）或用户定义的路由（Udr）来控制到 HDInsight 群集的入站流量，则必须确保群集可以与关键 Azure 运行状况和管理服务通信。  这些服务的某些 IP 地址是特定于区域的，其中某些地址适用于所有 Azure 区域。 如果使用的不是自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
+## <a name="introduction"></a>简介
+ 
+> [!Important]
+> 在大多数情况下，你现在可以使用网络安全组的 [服务标记](hdinsight-service-tags.md) ，而不是手动添加 IP 地址。 对于新的 Azure 区域，不会发布 IP 地址，它们将仅具有已发布的服务标记。 管理 IP 地址的静态 IP 地址最终将被弃用。
+
+如果使用 (Nsg) 的网络安全组或用户定义的路由 (Udr) 来控制到 HDInsight 群集的入站流量，则必须确保群集可以与关键 Azure 运行状况和管理服务通信。  这些服务的某些 IP 地址是特定于区域的，其中某些地址适用于所有 Azure 区域。 如果使用的不是自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
+
+如果你需要此处未列出的区域的 IP 地址，可以使用 [服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 来查找你所在区域的 ip 地址。 如果无法使用 API，请下载 [服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 并搜索所需的区域。
 
 以下部分介绍了必须允许的特定 IP 地址。
 
 ## <a name="azure-dns-service"></a>Azure DNS 服务
 
-如果你使用的是 Azure 提供的 DNS 服务，则允许从端口53上的__168.63.129.16__访问。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
+如果你使用的是 Azure 提供的 DNS 服务，则允许从端口53上的 __168.63.129.16__ 访问。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
 
 ## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务：所有区域
 

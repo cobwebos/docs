@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 080b5a224f3d4a720d8009933ddd9161f56dba0a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270008"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393932"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义条件访问技术配置文件
 
@@ -47,7 +47,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ## <a name="conditional-access-evaluation"></a>条件性访问评估
 
-对于每次登录，Azure AD B2C 会评估所有策略，并确保在授予用户访问权限之前满足所有要求。 "阻止访问" 将覆盖所有其他配置设置。 条件性访问技术配置文件的 **评估** 模式将评估在使用本地帐户登录期间 Azure AD B2C 收集的信号。 条件性访问技术配置文件的结果是一组由条件性访问评估生成的声明。 Azure AD B2C 策略在下一个业务流程步骤中使用这些声明来执行操作，例如阻止用户或质询多重身份验证的使用。 可以为该模式配置以下选项。
+对于每次登录，Azure AD B2C 会评估所有策略，并确保在授予用户访问权限之前满足所有要求。 "阻止访问" 将覆盖所有其他配置设置。 条件性访问技术配置文件的 **评估** 模式将评估在使用本地帐户登录期间 Azure AD B2C 收集的信号。 条件性访问技术配置文件的结果是一组由条件性访问评估生成的声明。 Azure AD B2C 策略在下一个业务流程步骤中使用这些声明来执行操作，如阻止用户或使用多重身份验证质询用户。 可以为该模式配置以下选项。
 
 ### <a name="metadata"></a>Metadata
 

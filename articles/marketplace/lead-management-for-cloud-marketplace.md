@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 14c4877e9692a35cb5b20e8d357c74fbb1dc909a
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606893"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419786"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>商业应用程序的潜在客户管理
 
 任何发展良好的业务都以客户为中心。 在当今的产品采购转型中，营销人员需要注重直接与客户进行联系并建立关系。 所以，生成高质量的销售线索对销售周期非常重要。 在[合作伙伴中心](https://partner.microsoft.com/)推出你的产品/服务后，就可以在客户对你的产品表现出感兴趣或在市场中部署产品时，立即使用工具以编程方式获取客户联系信息。 
 
-## <a name="what-are-leads-in-the-marketplace"></a>什么是市场中的潜在顾客？
+## <a name="what-are-leads-in-the-commercial-marketplace"></a>商业应用商店中的潜在客户有哪些？
 
-潜在顾客是对市场中的产品感兴趣或部署产品的客户。 无论产品发布在 Azure 市场还是 AppSource，只要从 CRM 将它正确设置到合作伙伴中心的产品目录中，你就可以从客户中获得潜在顾客。 
+潜在顾客来自于从商业应用商店感兴趣或部署你的产品的客户。 一旦将 CRM 与你的列表 (s) 连接到合作伙伴中心，你就可以从 Azure Marketplace 和 AppSource 客户那里获得潜在顾客。
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>如何连接 CRM 系统和合作伙伴中心
 
-为了开始获得潜在顾客，合作伙伴中心的潜在顾客管理连接器设计成可以轻松地与 CRM 信息一起插入到可用的 CRM 系统列表中。 现在，可以轻松利用由市场生成的销售线索，而不需要执行重大的工程工作来与外部系统进行集成。
+合作伙伴中心的主导管理连接器设计为可以轻松地将 CRM 信息插入到可用的 CRM 系统列表中。 现在，可以轻松利用由市场生成的销售线索，而不需要执行重大的工程工作来与外部系统进行集成。
 
 以下是有关如何连接每个可能的潜在顾客目标的分步说明：
 
@@ -38,25 +38,25 @@ ms.locfileid: "88606893"
 
 **Https 终结点** - 有关如何设置 Https 终结点以获得潜在顾客的说明，请参阅[使用 HTTPS 终结点配置潜在顾客管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md)。
 
-在正确配置销售线索目标并在产品/服务上点击“发布”后，我们会验证连接并向你发送一个测试销售线索。 如果要在投入使用前查看产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试销售线索连接。 请务必确保潜在顾客设置保持最新状态，以便你不会错失任何潜在顾客，因此，每当终端发生了更改时都务必更新这些连接。
+正确配置潜在客户目标并请求发布产品/服务后，我们将验证连接并向你发送测试线索。 如果要在投入使用前查看产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试销售线索连接。 请务必确保潜在顾客设置保持最新状态，以便你不会错失任何潜在顾客，因此，每当终端发生了更改时都务必更新这些连接。
 
 ### <a name="what-are-the-next-steps"></a>后续步骤有哪些？
 
-在技术性设置到位后，应当将这些潜在顾客纳入到当前的销售和市场营销策略以及操作流程中。 我们希望更好地了解整个销售流程并希望更紧密地与你合作来提供高质量的潜在顾客和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果想要提供使销售团队在市场潜在顾客方面取得更大成功的反馈和建议，请告知我们。
+在技术性设置到位后，应当将这些潜在顾客纳入到当前的销售和市场营销策略以及操作流程中。 我们想要了解你的总体销售过程，并想要与你密切合作，以便为你提供高质量的潜在顾客和足够的数据以使你取得成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果想要提供反馈和建议来使销售团队借助商业市场潜在客户信息取得更大的成功，请告知我们。
 
 ## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> 在合作伙伴中心发布期间的常见潜在顾客配置错误
 
 **无法将潜在顾客保存到 Dynamics CRM。检查 Dynamics CRM 帐户设置。LastCRMError：无法登录 Dynamics CRM，LastCRMException:** 
 
-> 如果选择了 O365 身份验证，请检查用户帐户和密码是否有效。 如果选择了 AAD，请检查租户 ID、应用程序 ID 和应用程序密钥是否与 AAD 上设置的项相匹配。 请按照[此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的说明进行操作。 如果帐户用户名/密码有效，请确保可以访问 Dynamics 365 并已分配许可证（如果使用 Azure Active Directory，则执行步骤 11-15，或者如何使用 Office 用户，则使用安全设置）。 
+> 如果选择了 O365 身份验证，请检查用户帐户和密码是否有效。 如果选择 Azure Active Directory，请检查租户 ID、应用程序 ID 和应用程序密钥是否与 Azure Active Directory 上设置的内容相匹配。 请按照[此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的说明进行操作。 如果帐户用户名/密码有效，请确保可以访问 Dynamics 365 并已分配许可证（如果使用 Azure Active Directory，则执行步骤 11-15，或者如何使用 Office 用户，则使用安全设置）。 
 
 **无法将潜在顾客保存到 Dynamics CRM。用户不具有潜在顾客实体中 leadsourcecode 属性的创建权限** 
 
-> 应用程序/用户缺少 Microsoft 市场潜在顾客编写器的安全角色。 如果在[此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)使用 Office用户，使用 Azure Active Directory 或安全设置，请执行步骤 11-15。
+> 应用程序/用户缺少 Microsoft 市场潜在顾客编写器的安全角色。 如果使用 Azure Active Directory 或安全设置（如果 [在此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)使用 Office 用户），请执行步骤11-15。
 
 **无法使用 AAD 将潜在顾客保存到 Dynamics CRM。异常::找不到租户。如果该租户没有活动订阅，可能会发生此实例。**  
 
-> 潜在顾客管理部分中提供的目录 ID 不是有效的目录。 请根据步骤 2（[此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的 Azure Active Directory 下）的说明获取目录 ID。
+> 潜在顾客管理部分中提供的目录 ID 不是有效的目录。 请根据 [此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)Azure Active Directory) 下步骤 2 (说明获取目录 Id。
 
 **无法将潜在顾客保存到 Dynamics CRM。LastCRMError：SecLib::RetrievePrivilegeForUser 失败 - 未向用户分配任何角色。**  
 
@@ -76,7 +76,7 @@ ms.locfileid: "88606893"
 
 **无法将潜在顾客保存到 Dynamics CRM。LastCRMError：请求通道在等待回复时，00:02:00 后超时。增加传递给 Request 调用的超时值或增加 Binding 上的 SendTimeout 值。分配给此操作的时间可能是较长超时的一部分。**  
 
-> 解决方法：登录合作伙伴中心，查看“店面详细信息”>>“潜在顾客目标”>>“URL”，检查它是否为有效的 Dynamic CRM 实例。
+> 解决方法：登录到合作伙伴中心，选中 "产品/服务 >> 客户主管 >> URL"，检查它是否为有效的动态 CRM 实例。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -139,7 +139,7 @@ title = MSFT_TEST_636573304831318844
 - 操作：
   - "INS"-表示安装。 这在 Azure 市场或 AppSource 中每当客户点击按钮来购买产品时发生。
   - "PLT"-代表合作伙伴 Led 试验。 这在 AppSource 中每当客户点击“与我联系”按钮时发生。
-  - "DNC"-表示 "不联系"。 这在 AppSource 中每当请求与在应用页面上交叉列出的合作伙伴进行联系时发生。 我们共享以下提醒：此客户已在应用上交叉列出，但他们不需要取得联系。
+  - "DNC"-表示 "不联系"。 这在 AppSource 中每当请求与在应用页面上交叉列出的合作伙伴进行联系时发生。 我们共享的是此客户在您的应用程序上交叉列出的头，但不需要联系它们。
   - "创建"-这仅适用于 Azure 门户，且每当客户向其帐户购买产品/服务时都是如此。
   - "StartTestDrive"-这仅适用于测试驱动器，并在客户启动其测试驱动器时提供。
 
@@ -190,4 +190,4 @@ title = MSFT_TEST_636573304831318844
 
 **我已将 Azure 存储（BLOB/表）配置为潜在顾客目标，需要多少费用？** 
 
-潜在顾客常规数据较低（几乎所有发布者都 <1 GB）。 费用将取决于收到的潜在顾客数量，如果一个月收到 1,000 个潜在顾客，则费用约为 50 美分。 
+对于几乎所有发布服务器) ，潜在客户生成数据 ( # B0 1 GB。 费用将取决于收到的潜在顾客数量，如果一个月收到 1,000 个潜在顾客，则费用约为 50 美分。 

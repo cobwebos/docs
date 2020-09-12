@@ -3,23 +3,23 @@ title: Azure 前门-应用程序层安全性 |Microsoft Docs
 description: 本文将帮助你了解 Azure 前门如何实现如何保护应用程序并保护应用程序后端
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471789"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399933"
 ---
 # <a name="application-layer-security-with-front-door"></a>通过 Front Door 实现应用程序层安全性
-Azure 前门提供 web 应用程序保护功能，可保护 web 应用程序免受网络攻击和常见 web 漏洞的攻击，如 SQL 注入或跨站点脚本（XSS）。 为 HTTP(S) 前端启用的 Front Door 的应用层安全性分布在全球并始终处于启用状态，可以阻止攻击者在 Azure 的网络边缘发动恶意攻击，使之远离你的后端。 Front Door 在安全性和性能优化方面进行了强化，可以为最终用户提供快速且安全的 Web 体验。
+Azure 前门提供 web 应用程序保护功能，防止 web 应用程序受到网络攻击和常见 web 漏洞的攻击，如 SQL 注入或跨站点脚本 (XSS) 。 为 HTTP(S) 前端启用的 Front Door 的应用层安全性分布在全球并始终处于启用状态，可以阻止攻击者在 Azure 的网络边缘发动恶意攻击，使之远离你的后端。 Front Door 在安全性和性能优化方面进行了强化，可以为最终用户提供快速且安全的 Web 体验。
 
 ## <a name="application-protection"></a>应用程序保护
 Front Door 的应用程序保护在全球的每个边缘环境中根据应用程序的情况进行配置，可以自动阻止非 HTTP(S) 流量到达 Web 应用程序。 我们的多租户分布式体系结构可以在不牺牲性能的情况下实现大规模的全球保护。 对于 HTTP(S) 工作负荷，Front Door 的 Web 应用程序保护服务提供了适用于自定义规则的富规则引擎、针对常见攻击的预配置规则集，以及适用于所有与规则相符的请求的详细日志记录。 支持包括“允许”、“阻止”或“仅记录”在内的灵活操作。
@@ -38,7 +38,7 @@ Front Door 的应用程序保护在全球的每个边缘环境中根据应用程
 ## <a name="centralized-protection-policy"></a>集中保护策略
 - 可以定义多个保护规则，将它们按优先顺序添加到策略。 在允许异常方面，自定义规则比托管规则集的优先级要高。 单项规则已关联到你的 Web 应用程序。  同一 Web 应用程序保护策略会复制到所有位置的所有边缘服务器，确保所有区域的安全策略一致
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 - 在预览版发布期间，可以使用 REST API、PowerShell 或 CLI 来创建并部署 Front Door 的应用程序保护规则和策略。 在服务公开发布之前，会支持门户访问。 
 
 

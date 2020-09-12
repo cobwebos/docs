@@ -3,7 +3,7 @@ title: Azure 流量管理器上的降级状态故障排除
 description: 如何在流量管理器显示为降级状态时对流量管理器配置文件进行故障排除。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 88c2536ad53be0beb583dc64e633322b2a531d15
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.author: duau
+ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183437"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401548"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
-本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅[启用资源日志](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”**** 的状态，则一个或多个终结点的状态可能为“已降级”****：
+本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅 [启用资源日志](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) 。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”**** 的状态，则一个或多个终结点的状态可能为“已降级”****：
 
 ![已降级终结点状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 

@@ -2,25 +2,25 @@
 title: Azure ExpressRoute：向 VNet 添加网关：门户
 description: 本文逐步讲解如何使用 Azure 门户将虚拟网络网关添加到为 ExpressRoute 创建的资源管理器 VNet。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2018
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 188d366dafce6ee79a084750b5f7d1fe4140432b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f7e5d28017ee618adfeeec52c6f1226e1ae82c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736367"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396346"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [经典 - PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
@@ -70,7 +70,7 @@ ms.locfileid: "84736367"
 4. **网关类型**：选择“ExpressRoute”****。
 5. **SKU**：从下拉列表中选择网关 SKU。
 6. **位置**：调整“位置”字段，使其指向虚拟网络所在的位置****。 如果该位置未指向虚拟网络所在的区域，该虚拟网络将不会显示在“选择虚拟网络”下拉列表中。
-7. 选择要将此网关添加到其中的虚拟网络。 单击 "**虚拟网络**" 打开 "**选择虚拟网络**" 边栏选项卡。 选择 VNet。 如果看不到 VNet，请确保 "**位置**" 字段指向虚拟网络所在的区域。
+7. 选择要将此网关添加到其中的虚拟网络。 单击 " **虚拟网络** " 打开 " **选择虚拟网络** " 边栏选项卡。 选择 VNet。 如果看不到 VNet，请确保 " **位置** " 字段指向虚拟网络所在的区域。
 9. 选择公共 IP 地址。 单击“公共 IP 地址”打开“选择公共 IP 地址”边栏选项卡********。 单击“+新建”打开“创建公共 IP 地址”边栏选项卡********。 输入公共 IP 地址的名称。 此边栏选项卡会创建一个公共 IP 地址对象，将向其动态分配公共 IP 地址。 单击“确定”**** 保存对此边栏选项卡所做的更改。
 10. **订阅**：确保选择正确的订阅。
 11. **资源组**：此设置取决于所选的虚拟网络。

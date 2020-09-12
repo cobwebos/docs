@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837222"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420687"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数
 
@@ -39,6 +39,9 @@ ms.locfileid: "87837222"
 
     例如，可以通过将 `init_connect` 设置为 `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;` 来更改服务器的字符集
 4.  以保存更改。
+
+>[!Note]
+> `init_connect` 可用于更改在会话级别不需要超级权限 () 的参数。 若要验证是否可以使用设置参数 `init_connect` ，请执行 `set session parameter_name=YOUR_DESIRED_VALUE;` 命令，如果它在拒绝访问时出错，则 **需要超级权限 () ** 错误，则无法使用 "init_connect" 设置参数。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 

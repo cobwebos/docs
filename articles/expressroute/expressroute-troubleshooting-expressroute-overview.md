@@ -2,18 +2,18 @@
 title: Azure ExpressRoute：验证连接 - 故障排除指南
 description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 10/31/2019
-ms.author: rambala
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204212"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401735"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过往往已由连接服务提供商优化的专用连接，将本地网络扩展到 Microsoft 云中。 在传统上，ExpressRoute 连接涉及到三个不同的网络区域，如下所述：
@@ -23,7 +23,7 @@ ms.locfileid: "86204212"
 -   Microsoft 数据中心
 
 > [!NOTE]
-> 在 ExpressRoute 直接连接模型中 (提供 10/100 Gbps 带宽) ，客户可以直接连接到 Microsoft 企业边缘 (MSEE) 路由器 "端口。 因此，直接连接模型中只有客户和 Microsoft 网络区域。
+> 在 ExpressRoute 直接连接模型（带宽为 10/100 Gbps）中，客户可以直接连接到 Microsoft 企业边缘 (MSEE) 路由器的端口。 因此，直接连接模型中只有客户和 Microsoft 网络区域。
 >
 
 
@@ -88,7 +88,7 @@ ms.locfileid: "86204212"
 若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”     。
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。  另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。 
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。
 >
 >
 
@@ -145,7 +145,7 @@ ServiceProviderProvisioningState : Provisioned
 ```
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。  另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。 
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。
 >
 >
 
@@ -249,7 +249,7 @@ ARP 表为特定的对等互连提供 IP 地址和 MAC 地址的映射。 用于
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>验证 BGP 以及 MSEE 上的路由
 
-对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：  
+对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：
 
 ```azurepowershell
 Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****

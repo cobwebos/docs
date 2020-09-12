@@ -2,20 +2,20 @@
 title: Azure 流量管理器中的指标和警报
 description: 本文介绍可用于 Azure 中的流量管理器的指标和警报。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: rohink
-ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938582"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392844"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报
 
@@ -58,7 +58,7 @@ ms.locfileid: "76938582"
 
 图 4：  终结点状态指标的拆分视图
 
-可以通过[Azure Monitor 服务](../azure-monitor/platform/metrics-supported.md)的门户、 [REST API](https://docs.microsoft.com/rest/api/monitor/)、 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)和[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)来使用这些指标，也可以通过流量管理器门户体验的 "指标" 部分使用这些指标。
+可以通过 [Azure Monitor 服务](../azure-monitor/platform/metrics-supported.md)的门户、 [REST API](https://docs.microsoft.com/rest/api/monitor/)、 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)和 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)来使用这些指标，也可以通过流量管理器门户体验的 "指标" 部分使用这些指标。
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>针对流量管理器指标的警报
 除了处理和显示来自流量管理器的指标外，Azure Monitor 还允许客户配置和接收与这些指标关联的警报。 你可以选择这些指标需要满足什么条件才会发生警报、需要以何频率监视这些条件，以及应当如何向你发送警报。 有关详细信息，请参阅 [Azure Monitor 警报文档](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99985ba8540a347977b9eaf2e733a308fa777b97
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231395"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401616"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 的 Azure 安全基线
 
@@ -834,7 +834,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 
 **指南**：如果将自定义 Azure 策略定义用于 Cosmos DB 或相关资源，请使用 Azure Repos 安全地存储和管理你的代码。
 
-Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 **Azure 安全中心监视**：不适用
 
@@ -890,9 +890,11 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 如何与 Azure 托管标识集成： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/quick-create-portal
+如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何使用托管标识提供 Key Vault 身份验证： https://docs.microsoft.com/azure/key-vault/managed-identity
+如何对 Key Vault 进行身份验证： https://docs.microsoft.com/azure/key-vault/general/authentication
+
+如何分配 Key Vault 访问策略： https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure 安全中心监视**：是
 

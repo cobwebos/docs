@@ -6,19 +6,21 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410853"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399950"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服务标记
 
 网络安全组 (NSG) 的 Azure HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 [服务标记](../virtual-network/security-overview.md#service-tags)允许来自特定 IP 的入站流量，而无需输入 NSG 中的每个[管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
 HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标记，也无法修改现有标记。 Microsoft 会管理与服务标记匹配的地址前缀，并会在地址发生更改时自动更新服务标记。
+
+如果你想要使用特定的区域，但尚未在此页上记录服务标记，则可以使用 [服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 来查找你的服务标记。 你还可以下载 [服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 并搜索所需的区域。
 
 ## <a name="get-started-with-service-tags"></a>开始使用服务标记
 
@@ -57,11 +59,11 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
 | 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
-| &nbsp; | 澳大利亚东南部 | HDInsight.AustraliaSoutheast |
+| &nbsp; | Australia Southeast | HDInsight.AustraliaSoutheast |
 | &nbsp; | 澳大利亚中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国东部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| 美国 | 美国中北部 | HDInsight.NorthCentralUS |
+| United States | 美国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 美国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 美国中西部 | HDInsight.WestCentralUS |
 | 加拿大 | 加拿大东部 | HDInsight.CanadaEast |
@@ -74,9 +76,9 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 法国 | 法国中部| HDInsight.FranceCentral |
 | 英国 | 英国南部 | HDInsight.UKSouth |
 | Azure Government | USDoD 中部 | HDInsight.USDoDCentral |
-| &nbsp; | US Gov 德克萨斯州 | HDInsight.USGovTexas |
+| &nbsp; | USGov Texas | HDInsight.USGovTexas |
 | &nbsp; | UsDoD 东部 | HDInsight.USDoDEast |
-| &nbsp; | US Gov 亚利桑那州 | USGovArizona |
+| &nbsp; | USGov Arizona | USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域性服务标记
 
@@ -96,7 +98,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
-| 美国 | 美国东部 2 | HDInsight.EastUS2 |
+| United States | 美国东部 2 | HDInsight.EastUS2 |
 | &nbsp; | 美国中部 | HDInsight.CentralUS |
 | &nbsp; | 美国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 美国中南部 | HDInsight.SouthCentralUS |
@@ -106,7 +108,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 欧洲 | 北欧 | HDInsight.NorthEurope |
 | &nbsp; | 西欧| HDInsight.WestEurope |
 | 亚洲 | 东亚 | HDInsight.EastAsia |
-| &nbsp; | 东南亚 | HDInsight.SoutheastAsia |
+| &nbsp; | Southeast Asia | HDInsight.SoutheastAsia |
 | 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
 
 #### <a name="group-2"></a>组 2

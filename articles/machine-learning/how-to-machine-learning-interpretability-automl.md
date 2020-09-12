@@ -1,5 +1,5 @@
 ---
-title: 自动 ML 中的 Explainability （预览版）
+title: '自动 ML (预览版中的 Explainability) '
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解自动化 ML 模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306411"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419106"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自动机器学习（预览版）中的模型说明
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自动机器学习 (预览版中的模型说明) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -39,6 +39,14 @@ ms.locfileid: "87306411"
 ## <a name="interpretability-during-training-for-the-best-model"></a>训练最佳模型过程中的可解释性
 
 从 `best_run` 中检索解释，其中包括工程特征的解释。
+
+> [!Warning]
+> Interpretability，最佳模型解释不能用于将以下算法作为最佳模型的自动 ML 预测试验： 
+> * ForecastTCN
+> * 平均值 
+> * Naive
+> * 季节性平均值 
+> * 季节性 Naive
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>从项目存储下载工程特征重要性
 
@@ -112,7 +120,7 @@ engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=au
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>推理过程中的可解释性
+## <a name="interpretability-during-inference"></a>推理过程中的可解释性
 
 本部分介绍如何使用解释器（在上一部分用于计算解释）将自动化 ML 模型操作化。
 

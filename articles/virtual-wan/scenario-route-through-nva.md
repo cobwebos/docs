@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852092"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400018"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>方案：通过 NVA 路由流量
 
@@ -39,14 +39,14 @@ ms.locfileid: "88852092"
 
 **连接矩阵**
 
-| 从             | 更改为：|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
+| 从             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
 | **NVA 轮辐**   | &#8594; | 0/0 UDR  |  对等互连 |   0/0 UDR    |  0/0 UDR  |
 | **NVA Vnet**    | &#8594; |   静态 |      X   |        X     |      X    |
 | **非 NVA Vnet**| &#8594; |   静态 |      X   |        X     |      X    |
 | **分支**     | &#8594; |   静态 |      X   |        X     |      X    |
 
-连接矩阵中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、表中的行标题) 了解流的 "To" 端 (目标前缀，表) 中的列标题用于特定的流量流。 考虑以下情况：
+连接矩阵中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、表中的行标题) 了解流的 "To" 端 (目标前缀，表) 中的列标题用于特定的流量流。 "X" 表示虚拟 WAN 在本机提供连接，而 "静态" 表示虚拟 WAN 使用静态路由提供连接。 考虑以下情况：
 
 * NVA 轮辐不受虚拟 WAN 的管理。 因此，用户将维护与其他 Vnet 或分支通信的机制。 与 NVA VNet 的连接是由 VNet 对等互连提供的，默认路由到 0.0.0.0/0，并将其作为下一个跃点指向 NVA
 * NVA Vnet 将知道自己的 NVA 轮辐，但不能了解连接到其他 NVA Vnet 的 NVA 轮辐。 例如，在表1中，VNet 2 知道 VNet 5 和 VNet 6，而不是关于 VNet 7 和 VNet 8 的其他分支。 需要使用静态路由将其他轮辐前缀注入到 NVA Vnet 中。
@@ -125,9 +125,9 @@ ms.locfileid: "88852092"
 
 这将导致路由配置更改，如下面的 **图 3**所示。
 
-**图3**
+**图 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

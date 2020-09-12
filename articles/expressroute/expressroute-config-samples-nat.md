@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：路由器配置示例 - NAT
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 3393c661240ae5619597256a6691ae43608d622b
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.author: duau
+ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856714"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397488"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
 
@@ -56,7 +56,7 @@ nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static
 
 **接口和方向：**
 
-源接口（流量进入 ASA）：目标接口内部（流量在此位置用于退出 ASA）：外部
+源接口 (流量进入 ASA) ：目标接口内 (流量在该位置退出 ASA) ：外部
 
 **配置：**
 

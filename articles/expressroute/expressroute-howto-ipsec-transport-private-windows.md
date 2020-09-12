@@ -2,18 +2,18 @@
 title: Azure ExpressRoute 专用对等互连：配置 IPsec 传输模式-Windows 主机
 description: 如何使用 GPO 和 OU 通过 ExpressRoute 专用对等互连在 Azure Windows VM 和本地 Windows 主机之间启用 IPsec 传输模式。
 services: expressroute
-author: fabferri
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: fabferri
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737251"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396482"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>配置 ExpressRoute 专用对等互连的 IPsec 传输模式
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814716"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419748"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 
@@ -22,16 +22,16 @@ ms.locfileid: "88814716"
 
 ## <a name="compare-consulting-services"></a>比较咨询服务
 
-商业市场在线商店（Microsoft AppSource 和 Azure Marketplace）与受众和云产品保持一致，以帮助客户找到所需的内容。 每个在线商店都提供专门的发布选项来帮助你最大程度地提高发布投资。 若要详细了解两个在线商店之间的差异，请参阅 [比较 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
+商业市场在线商店（Microsoft AppSource 和 Azure Marketplace）与解决方案类型和云产品相结合，以帮助客户找到所需的内容。 每个在线商店都提供专门的发布选项来帮助你最大程度地提高发布投资。 若要详细了解两个在线商店之间的差异，请参阅 [比较 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
 
 基于 Dynamics 365、Power Apps 和 Power BI 的咨询服务产品可以列在 AppSource 中。 有关详细信息，请下载 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 文件。
 
 基于 Microsoft Azure 的咨询服务和托管服务产品可以可以列在 Azure 市场中。 有关详细信息，请参阅[发布 Azure 咨询服务产品](./partner-center-portal/create-consulting-service-offer.md)和[将托管服务产品发布到 Azure 市场](../lighthouse/how-to/publish-managed-services-offers.md)。
 
 > [!Note]
-> Azure 市场中的咨询服务应主要为面向技术人员提供的产品，并侧重于 Azure 技术解决方案和服务。
+> Azure Marketplace 中的咨询服务应侧重于 Azure 技术解决方案和服务。
 >
-> AppSource 中的咨询服务应主要为面向以下用户提供的产品：提供 Dynamics 365、Power BI 或 Power Apps 高质量解决方案的专业人员。
+> AppSource 中的咨询服务应侧重于 Dynamics 365、Power BI 或 Power Apps 的业务解决方案。
  
 > [!TIP]
 > 若要发布到 Azure Marketplace，请在 "合作伙伴中心 **主要产品** " 下拉列表中选择 " **Azure**"。
@@ -131,7 +131,7 @@ ms.locfileid: "88814716"
 > * **面对面** - 在客户所在地或合作伙伴的设施现场。
 > * **虚拟形式** - 通过电话会议、网络会议或远程实现。
 
-当你配置好前面列出的所需元素以后，内容审核团队会验证你的产品/服务描述所提供的信息对于目标受众来说是否足够充分。 
+配置了前面列出的所需元素后，内容审查团队将验证你的产品/服务说明是否是信息性的，以及是否完整。 
 
 ### <a name="the-listing-title"></a>列出标题
 
@@ -171,9 +171,5 @@ ms.locfileid: "88814716"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，请了解如何[使用 Azure 市场发展云业务](https://azuremarketplace.microsoft.com/sell)。
-
-若要注册并开始使用合作伙伴中心，请执行以下操作：
-
-* [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
-* 有关详细信息，请参阅[创建咨询服务产品/服务](./partner-center-portal/create-consulting-service-offer.md)。
+- [通过 Azure Marketplace 发展云业务](https://azuremarketplace.microsoft.com/sell)。
+- [创建咨询服务套餐](./partner-center-portal/create-consulting-service-offer.md)

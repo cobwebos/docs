@@ -2,17 +2,17 @@
 title: 查看 Azure VPN 网关指标
 description: 查看 VPN 网关指标的步骤
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: b3a79b8101a55eaf401c20cb118be3b0796b7aca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531071"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443171"
 ---
 # <a name="view-vpn-gateway-metrics"></a>查看 VPN 网关指标
 
@@ -35,11 +35,11 @@ ms.locfileid: "86531071"
 ## <a name="the-following-steps-help-you-locate-and-view-metrics"></a>以下步骤可帮助你查找和查看指标：
 
 1. 导航到门户中的虚拟网络网关资源
-2. 选择 "**概述**" 以查看总隧道入口和出口指标。
+2. 选择 " **概述** " 以查看总隧道入口和出口指标。
 
    ![用于创建警报规则的选项](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/overview.png "视图")
 
-3. 查看上面列出的任何其他指标。 单击虚拟网络网关资源下面的 "**指标**" 部分，并从下拉列表中选择该度量值。
+3. 查看上面列出的任何其他指标。 单击虚拟网络网关资源下面的 " **指标** " 部分，并从下拉列表中选择该度量值。
 
    ![资源列表中的“选择”按钮和 VPN 网关](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/metrics.png "Select")
 
@@ -47,4 +47,4 @@ ms.locfileid: "86531071"
 
 若要针对隧道指标配置警报，请参阅[针对 VPN 网关指标设置警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。
 
-若要配置对隧道资源日志的警报，请参阅[设置 VPN 网关资源日志的警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)。
+若要配置对隧道资源日志的警报，请参阅 [设置 VPN 网关资源日志的警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)。
