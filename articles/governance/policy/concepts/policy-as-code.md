@@ -3,12 +3,12 @@ title: 将策略设计为代码工作流
 description: 了解如何设计工作流以将 Azure Policy 定义部署为代码并自动验证资源。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047320"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651892"
 ---
 # <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流
 
@@ -43,7 +43,9 @@ ms.locfileid: "89047320"
 
 策略即代码的建议常规工作流如下图所示：
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="策略即代码工作流概述" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="显示从创建到要部署的测试的 "代码工作流" 框的策略的关系图。" border="false":::
+   将策略显示为代码工作流框的关系图。 创建包含策略和计划定义的创建。 测试涵盖已禁用强制模式的赋值。 首先，将网关检查符合性状态，并向其授予对 I 权限和修正资源的分配。  部署包含已启用强制模式的更新分配。
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>创建和更新策略定义
 

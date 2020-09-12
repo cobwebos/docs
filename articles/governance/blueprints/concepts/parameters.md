@@ -3,12 +3,12 @@ title: 使用参数创建动态蓝图
 description: 了解静态和动态参数，以及如何使用它们创建安全、动态的蓝图。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051553"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651951"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -51,7 +51,7 @@ ms.locfileid: "89051553"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在门户中设置静态参数
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 从左侧页面中选择“蓝图定义”。
 
@@ -61,11 +61,11 @@ ms.locfileid: "89051553"
 
 1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”********。 选择项目行来编辑项目参数。
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="蓝图定义上的蓝图参数" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="突出显示蓝图定义和 "已填充的 Y 个参数" 的屏幕截图。" border="false":::
 
-1. “编辑项目”页会显示适用于所单击项目的值选项****。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”****。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中__****__。
+1. " **编辑项目** " 页显示适用于所选项目的值选项。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”****。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中__****__。
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="蓝图项目的蓝图静态参数" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="蓝图项目的静态参数屏幕截图。" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>从 REST API 设置静态参数
 
@@ -168,7 +168,7 @@ ms.locfileid: "89051553"
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 从左侧页面中选择“蓝图定义”。
 
@@ -176,7 +176,7 @@ ms.locfileid: "89051553"
 
 1. 在 " **分配蓝图** " 页上，找到 " **项目参数** " 部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项****。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配__****。
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="蓝图分配期间的蓝图动态参数" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="在蓝图分配过程中设置动态参数的屏幕截图。" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>从 REST API 设置动态参数
 

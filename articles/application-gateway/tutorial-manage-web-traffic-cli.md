@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d3de9dff2d3af99c720868d3342d39f8fb47e8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502745"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595842"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>通过 Azure CLI 使用应用程序网关管理 Web 流量
 
@@ -21,10 +21,9 @@ ms.locfileid: "87502745"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建应用程序网关
-> * 使用默认后端池创建虚拟机规模集
+* 设置网络
+* 创建应用程序网关
+* 使用默认后端池创建虚拟机规模集
 
 如果需要，可以使用 [Azure PowerShell](tutorial-manage-web-traffic-powershell.md) 完成此过程。
 

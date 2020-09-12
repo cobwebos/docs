@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806494"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595938"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>排查应用程序网关中的应用服务问题
 
@@ -23,9 +23,8 @@ ms.locfileid: "84806494"
 
 本文介绍如何排查以下问题：
 
-> [!div class="checklist"]
-> * 发生重定向时，应用服务 URL 在浏览器中公开。
-> * 应用服务 ARRAffinity cookie 域设置为应用服务主机名 example.azurewebsites.net，而不是原始主机。
+* 发生重定向时，应用服务 URL 在浏览器中公开。
+* 应用服务 ARRAffinity cookie 域设置为应用服务主机名 example.azurewebsites.net，而不是原始主机。
 
 当后端应用程序发送重定向响应时，你可能希望将客户端重定向到不同的 URL，而不是后端应用程序指定的 URL。 当应用服务托管在应用程序网关后面，并要求客户端重定向到其相对路径时，你可能希望这样做。 例如，从 contoso.azurewebsites.net/path1 到 contoso.azurewebsites.net/path2 的重定向。 
 
@@ -36,7 +35,7 @@ ms.locfileid: "84806494"
 - 在应用服务中配置了重定向。 只需在请求中添加一个尾随的斜杠即可配置重定向。
 - Azure Active Directory 身份验证导致重定向。
 
-此外，在应用程序网关后使用应用服务时，与应用程序网关（example.com）关联的域名不同于应用服务的域名（例如，example.azurewebsites.net）。 应用服务设置的 ARRAffinity cookie 的域值携带 example.azurewebsites.net 域名，这并不是必需的。 原始主机名 example.com 应是 Cookie 中的域名值。
+此外，在应用程序网关后使用应用服务时，与应用程序网关关联的域名 (example.com) 不同于应用服务的域名 (说，example.azurewebsites.net) 。 应用服务设置的 ARRAffinity cookie 的域值携带 example.azurewebsites.net 域名，这并不是必需的。 原始主机名 example.com 应是 Cookie 中的域名值。
 
 ## <a name="sample-configuration"></a>示例配置
 
@@ -47,7 +46,7 @@ ms.locfileid: "84806494"
 
 ## <a name="cause"></a>原因
 
-应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名 azurewebsites.net （例如，contoso.azurewebsites.net）不同于应用程序网关的域名（例如，contoso.com）。 
+应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名 (例如，contoso.azurewebsites.net) 不同于应用程序网关的域名 (说 contoso.com) 。 
 
 来自客户端的原始请求包含应用程序网关的域名 contoso.com 作为主机名。 需要配置应用程序网关，以便在将请求路由到应用服务后端时，将原始请求中的主机名更改为应用服务的主机名。 在应用程序网关的 HTTP 设置配置中使用开关“从后端地址中选取主机名”。  在运行状况探测配置中使用开关“从后端 HTTP 设置中选取主机名”。 
 
@@ -81,7 +80,7 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>解决方案：重写 location 标头
 
-将 location 标头中的主机名设置为应用程序网关的域名。 为此，请创建一个包含条件的[重写规则](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)，该规则评估响应中的 location 标头是否包含 azurewebsites.net。 该规则还必须执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 有关详细信息，请参阅有关[如何重写 location 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)的说明。
+将 location 标头中的主机名设置为应用程序网关的域名。 为此，请创建一个包含条件的 [重写规则](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) ，该规则评估响应中的 location 标头是否包含 azurewebsites.net。 该规则还必须执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 有关详细信息，请参阅有关[如何重写 location 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)的说明。
 
 > [!NOTE]
 > HTTP 标头重写支持仅适用于应用程序网关的 [Standard_v2 和 WAF_v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)。 如果使用 v1 SKU，我们建议[从 v1 迁移到 v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)。 需要使用 v2 SKU 中提供的重写和其他[高级功能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502744"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595830"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个网站的应用程序网关
 
@@ -22,13 +22,12 @@ ms.locfileid: "87502744"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建应用程序网关
-> * 创建后端侦听器
-> * 创建路由规则
-> * 使用后端池创建虚拟机规模集
-> * 在域中创建 CNAME 记录
+* 设置网络
+* 创建应用程序网关
+* 创建后端侦听器
+* 创建路由规则
+* 使用后端池创建虚拟机规模集
+* 在域中创建 CNAME 记录
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="多站点应用程序网关":::
 
@@ -121,11 +120,11 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>添加侦听器
 
-使用[az 网络应用程序网关 http 侦听器 create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)添加路由流量所需的侦听器。
+使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) 添加路由流量所需的侦听器。
 
 >[!NOTE]
-> 使用应用程序网关或 WAF v2 SKU，你还可以为每个侦听器配置最多5个主机名，并且可以在主机名中使用通配符。 有关详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
->若要使用 Azure CLI 在侦听器中使用多个主机名和通配符，则必须使用 `--host-names` 而不是 `--host-name` 。 利用主机名，最多可将5个主机名称为逗号分隔值。 例如： `--host-names "*.contoso.com,*.fabrikam.com"`
+> 通过应用程序网关或 WAF v2 SKU，你还可为每个侦听器配置最多 5 个主机名，并且可在主机名中使用通配符。 要了解详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要通过 Azure CLI 在侦听器中使用多个主机名和通配符，则必须使用 `--host-names` 而不是 `--host-name`。 使用 host-names 时，可通过逗号分隔值的形式提及最多 5 个主机名。 例如： `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

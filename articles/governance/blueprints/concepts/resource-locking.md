@@ -3,12 +3,12 @@ title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051496"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651928"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -103,7 +103,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 如果蓝图分配选择了“只读”**** 或“不要删除”**** 选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并阻止在 Azure 蓝图之外删除蓝图锁定。
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="蓝图拒绝对资源组的分配" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="访问控制 (I A M) 页面和资源组的 "拒绝分配" 选项卡的屏幕截图。" border="false":::
 
 每个模式的 [拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) 如下所示：
 

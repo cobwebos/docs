@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502726"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595812"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 TLS 终端创建应用程序网关
 
@@ -21,11 +21,10 @@ ms.locfileid: "87502726"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建自签名证书
-> * 设置网络
-> * 使用证书创建应用程序网关
-> * 使用默认后端池创建虚拟机规模集
+* 创建自签名证书
+* 设置网络
+* 使用证书创建应用程序网关
+* 使用默认后端池创建虚拟机规模集
 
 如果需要，可以使用 [Azure PowerShell](tutorial-ssl-powershell.md) 完成此过程。
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524952"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595832"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>使用 Azure PowerShell 创建托管多个网站的应用程序网关
 
@@ -22,13 +22,12 @@ ms.locfileid: "86524952"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建应用程序网关
-> * 创建后端侦听器
-> * 创建路由规则
-> * 使用后端池创建虚拟机规模集
-> * 在域中创建 CNAME 记录
+* 设置网络
+* 创建应用程序网关
+* 创建后端侦听器
+* 创建路由规则
+* 使用后端池创建虚拟机规模集
+* 在域中创建 CNAME 记录
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="多站点应用程序网关":::
 
@@ -127,8 +126,8 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建第一个侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 *contosoRule* 的基本规则。
 
 >[!NOTE]
-> 使用应用程序网关或 WAF v2 SKU，你还可以为每个侦听器配置最多5个主机名，并且可以在主机名中使用通配符。 有关详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
->若要使用 Azure PowerShell 在侦听器中使用多个主机名和通配符，则必须使用 `-HostNames` 而不是 `-HostName` 。 利用主机名，可以将最多5个主机名称视为逗号分隔值。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
+> 通过应用程序网关或 WAF v2 SKU，你还可为每个侦听器配置最多 5 个主机名，并且可在主机名中使用通配符。 要了解详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要通过 Azure PowerShell 在侦听器中使用多个主机名和通配符，则必须使用 `-HostNames` 而不是 `-HostName`。 使用 HostNames 时，可通过逗号分隔值的形式提及最多 5 个主机名。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -280,7 +279,7 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="create-cname-record-in-your-domain"></a>在域中创建 CNAME 记录
 
-使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 不建议使用-记录，因为在 V1 SKU 中重新启动应用程序网关时，VIP 可能会发生变化。
+使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 建议不要使用 A 记录，因为在 V1 SKU 中重启应用程序网关后 VIP 可能会变化。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

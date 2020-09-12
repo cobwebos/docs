@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067971"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651980"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能
 
@@ -83,13 +83,13 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 ## <a name="multiple-site-hosting"></a>多站点托管
 
-利用应用程序网关，可以根据主机名或域名为同一应用程序网关上的多个 web 应用程序配置路由。 它允许您为部署配置更有效的拓扑，方法是将最多100个网站添加到一个应用程序网关。 每个网站都可以定向到自己的后端池。 例如，三个域、contoso.com、fabrikam.com 和 adatum.com，指向应用程序网关的 IP 地址。 可以创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
+通过应用程序网关，可为同一应用程序网关上的多个 Web 应用程序配置基于主机名或域名的路由。 它可以将多达 100 多个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，contoso.com、fabrikam.com 和 adatum.com，这三个域指向应用程序网关的 IP 地址。 你将创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
 
-的请求 `http://contoso.com` 路由到 ContosoServerPool， `http://fabrikam.com` 并路由到 FabrikamServerPool，依此类推。
+对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool，诸如此类。
 
 同样，可以将同一父域的两个子域托管在同一应用程序网关部署中。 例如，在单个应用程序网关部署中托管的 `http://blog.contoso.com` 和 `http://app.contoso.com` 都是使用子域。 有关详细信息，请参阅[应用程序网关多站点托管](multiple-site-overview.md)。
 
-你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可定义5个主机名。 若要了解详细信息，请参阅[侦听程序（预览版）中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+此外，你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名（预览）](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
 
 ## <a name="redirection"></a>重定向
 
@@ -117,13 +117,13 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，这些协议的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
 
-有关详细信息，请参阅 [WebSocket 支持](application-gateway-websocket.md)和 [HTTP/2 支持](configuration-overview.md#http2-support)。
+有关详细信息，请参阅 [WebSocket 支持](application-gateway-websocket.md)和 [HTTP/2 支持](configuration-listeners.md#http2-support)。
 
 ## <a name="connection-draining"></a>连接清空
 
 连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 此设置是通过后端 http 设置启用的，并且可以在创建规则期间应用于后端池的所有成员。 启用后，应用程序网关可确保后端池的所有已取消注册实例不再收到任何新请求，同时允许现有请求在所配置的时间限制内完成。 这适用于通过用户配置更改显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。 唯一的例外情况是限定为取消注册实例的请求，这些实例由于网关托管会话相关性的原因而取消注册，将继续代理到取消注册实例。
 
-有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#connection-draining)。
+有关详细信息，请参阅[应用程序网关配置概述](configuration-http-settings.md#connection-draining)。
 
 ## <a name="custom-error-pages"></a>自定义错误页
 
@@ -139,15 +139,15 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 - 删除可能会透露敏感信息的响应标头字段。
 - 从 X-Forwarded-For 标头中去除端口信息。
 
-应用程序网关和 WAF v2 SKU 支持添加、删除或更新 HTTP 请求和响应标头的功能，而请求和响应数据包则在客户端和后端池之间移动。 还可以重写 Url、查询字符串参数和主机名。 使用 URL 重写和基于 URL 路径的路由，可以选择使用重新评估路径映射选项将请求路由到基于原始路径或重写路径的后端池。 
+当请求和响应数据包在客户端与后端池之间移动时，可以通过应用程序网关和 WAF v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 还可以重写 URL、查询字符串参数和主机名。 使用 URL 重写和基于 URL 路径的路由，可以选择使用重新评估路径映射选项将请求路由到基于原始路径或重写路径的后端池之一。 
 
-它还提供了添加条件以确保仅在满足某些条件时重写指定标头或 URL 的功能。 这些条件基于请求和响应信息。
+它还允许你添加条件，确保只有在满足特定条件的情况下才能重写指定标头或 URL。 这些条件基于请求和响应信息。
 
 有关详细信息，请参阅[重写 HTTP 标头和 URL](rewrite-http-headers-url.md)。
 
 ## <a name="sizing"></a>大小调整
 
-可以配置应用程序网关的 Standard_v2，以便进行自动缩放的或固定大小的部署。 此 SKU 不提供不同的实例大小。 有关 v2 性能和定价的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing)。
+可以配置应用程序网关的 Standard_v2，以便进行自动缩放的或固定大小的部署。 此 SKU 不提供不同的实例大小。 有关 v2 性能和定价的详细信息，请参阅自动 [缩放 v2](application-gateway-autoscaling-zone-redundant.md) 和 [了解定价](understanding-pricing.md)。
 
 应用程序网关标准版有三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
 

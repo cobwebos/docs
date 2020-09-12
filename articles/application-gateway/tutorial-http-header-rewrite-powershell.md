@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806442"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595897"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
 
@@ -20,15 +20,13 @@ ms.locfileid: "84806442"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
->
-> * 创建自动缩放虚拟网络
-> * 创建保留的公共 IP
-> * 设置应用程序网关基础结构
-> * 指定 http 标头重写规则配置
-> * 指定自动缩放
-> * 创建应用程序网关
-> * 测试应用程序网关
+* 创建自动缩放虚拟网络
+* 创建保留的公共 IP
+* 设置应用程序网关基础结构
+* 指定 http 标头重写规则配置
+* 指定自动缩放
+* 创建应用程序网关
+* 测试应用程序网关
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
