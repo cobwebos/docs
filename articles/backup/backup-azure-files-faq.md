@@ -3,12 +3,12 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824723"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377414"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "88824723"
 
 是的。 保护连接到同步组的 Azure 文件共享这一功能已启用。
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>我在尝试备份文件共享时，单击了某个存储帐户，看能否发现其中的文件共享。 但是，我没能对其进行保护。 如何使用其他保管库来保护这些文件共享？
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>尝试备份文件共享时，我选择了一个存储帐户来发现其中的文件共享。 但是，我没能对其进行保护。 如何使用其他保管库来保护这些文件共享？
 
 尝试进行备份时，如果选择一个要发现其中的文件共享的存储帐户，则会将该存储帐户注册到在其中执行此操作的保管库。 如果选择使用其他保管库来保护文件共享，则请从该保管库[注销](manage-afs-backup.md#unregister-a-storage-account)所选存储帐户。
 

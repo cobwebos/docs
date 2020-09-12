@@ -10,17 +10,17 @@ tags: ''
 keywords: azure 媒体服务, 流, 广播, 实时, 脱机
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267558"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298940"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
@@ -85,7 +85,7 @@ ms.locfileid: "89267558"
     * 在输入不包含音频时插入静音曲目
     * 在输入不包含视频时插入视频轨道
 * 包含转码的直播活动目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
-* 有关 `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` 使用 V2 REST API 的最佳实践和模式，请参阅示例代码。NETCore SDK。
+* 有关使用 .NETCore SDK 上的 V2 REST API 的最佳做法和模式，请参阅 `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git`。
 
 ## <a name="asset-specific-changes"></a>特定于资产的更改
 

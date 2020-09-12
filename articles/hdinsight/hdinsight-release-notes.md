@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826814"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319791"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "88826814"
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一。
 
-## <a name="release-date-08092020"></a>发布日期：08/09/2020
+## <a name="release-date-08092020"></a>发行日期：2020/08/09
 
 此版本仅适用于 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
 
@@ -49,7 +49,7 @@ Apache Tez 视图用于跟踪和调试 Hive Tez 作业的执行情况。 从此�
 
 ## <a name="behavior-changes"></a>行为更改
 ### <a name="ambari-stack-version-change"></a>Ambari 堆栈版本更改
-从此发布版开始，Ambari 版本从 2.x.x.x 更改为 4.1。 可以通过访问“Ambari UI”>“关于”获取 Ambari 版本。
+在此版本中，Ambari 版本更改为4.1。 可以在 Ambari： Ambari > 用户 > 版本中验证 (HDInsight 4.1) 的堆栈版本。
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 没有需要注意的即将发生的中断性变更。
@@ -65,7 +65,7 @@ HDInsight 会持续改善群集的可靠性和性能。
 * [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
 * [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
 
-下面是适用于 HBase 的 JIRAs：
+已为 Hive 向后移植以下 HBase：
 * [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
 * [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
 * [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
@@ -75,4 +75,4 @@ HDInsight 会持续改善群集的可靠性和性能。
 
 ## <a name="known-issues"></a>已知问题
 
-Azure 门户中已修复了一个问题，即用户使用 SSH 身份验证类型的公钥创建 Azure HDInsight 群集时遇到错误。 当用户单击 " **查看 + 创建**" 时，他们将收到 "不得包含 SSH 用户名中的任何三个连续字符" 的错误。 此问题已修复，但可能要求你通过按 CTRL + F5 来加载已更正的视图来刷新浏览器缓存。 此问题的解决方法是使用 ARM 模板创建群集。 
+Azure 门户中已修复了一个问题，即用户在使用 SSH 身份验证类型的公钥创建 Azure HDInsight 群集时会遇到错误。 当用户单击“查看 + 创建”时，他们将收到错误“不得包含 SSH 用户名中的任意三个连续字符。” 此问题已修复，但可能要求你通过按 CTRL + F5 加载更正的视图来刷新浏览器缓存。 解决此问题的方法是使用 ARM 模板创建群集。 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 8748e4f78582ab133d7e527daba1c126dcb7e7e2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 0fe8c4753cef9fa829a2cb696e164dbdf5f2b8f2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543701"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297563"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
@@ -59,10 +59,10 @@ az provider register --namespace Microsoft.ContainerInstance
 * 美国西部 2 (westus2)
 
 ## <a name="known-limitations"></a>已知的限制
-虚拟节点功能很大程度上依赖于 ACI 的功能集。 除了[Azure 容器实例的配额和限制](../container-instances/container-instances-quotas.md)之外，虚拟节点尚不支持以下方案：
+虚拟节点功能很大程度上依赖于 ACI 的功能集。 除了 [Azure 容器实例的配额和限制](../container-instances/container-instances-quotas.md)之外，虚拟节点尚不支持以下方案：
 
 * 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)是使用 [Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [虚拟网络限制](../container-instances/container-instances-vnet.md)包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 Internet 的出站流量。
+* [虚拟网络限制](../container-instances/container-instances-virtual-network-concepts.md)包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 Internet 的出站流量。
 * 初始化容器
 * [主机别名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI 中的 exec 的[参数](../container-instances/container-instances-exec.md#restrictions)

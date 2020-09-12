@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 0e1e50f27c6d0563ab51a74bbfa22d2a7f54ecd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000730"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377397"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -100,7 +100,7 @@ System Center Data Protection Manager (SC-DPM) Microsoft Azure 备份 Server (MA
 
 ## <a name="inactivating-alerts"></a>停用警报
 
-若要停用/解决活动警报，您可以选择与要禁用的警报相对应的列表项。 此时将打开一个屏幕，其中显示有关警报的详细信息，并在顶部显示 " **停** 用" 按钮。 单击此按钮会将警报的状态更改为 " **非活动**"。 您还可以通过右键单击对应于该警报的列表项并选择 " **停**用" 来停用警报。
+若要停用/解决活动警报，您可以选择与要禁用的警报相对应的列表项。 此时将打开一个屏幕，其中显示有关警报的详细信息，并在顶部显示 " **停** 用" 按钮。 选择此按钮会将警报的状态更改为 " **非活动**"。 您还可以通过右键单击对应于该警报的列表项并选择 " **停**用" 来停用警报。
 
 ![停用恢复服务保管库警报](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

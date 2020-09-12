@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178005"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376173"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -198,7 +198,7 @@ Azure 备份支持 Azure Marketplace 中提供的 Vm 的备份和还原。 如�
 
 * 确保来宾代理已安装并可做出响应
 * 从 Azure 门户中，转到“虚拟机” > “所有设置” > “扩展”  
-* 选择备份扩展 VmSnapshot 或 VmSnapshotLinux，并单击“卸载”
+* 选择备份扩展 VmSnapshot 或 VmSnapshotLinux，然后选择 " **卸载**"。
 * 在删除备份扩展后重试备份操作
 * 后续备份操作将以所需的状态安装新扩展
 
@@ -245,7 +245,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤：
 
-* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>或
+* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>or
 * 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
 ### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-由于存储帐户中的可用空间不足，无法复制虚拟机的快照

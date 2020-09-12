@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523096"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320641"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什么是 Azure Active Directory 中的标识安全评分？
 
@@ -50,7 +50,7 @@ ms.locfileid: "77523096"
 
 所有版本的 Azure AD 都提供标识安全分数。 组织可以从**Azure 门户**  >  **Azure Active Directory**  >  **安全**  >  **标识安全分数**中访问其标识安全分数。
 
-## <a name="how-does-it-work"></a>工作原理
+## <a name="how-does-it-work"></a>它是如何工作的？
 
 Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳做法进行比较。 根据此评估结果，将为你的目录计算一个新分数。 您的安全配置可能并不完全符合最佳实践指导原则，而且改进操作仅部分得到满足。 在这些情况下，你只会获得可用于控件的最大分数部分。
 
@@ -78,7 +78,7 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 
 ### <a name="how-are-controls-scored"></a>控件的评分方式是什么？
 
-可以通过两种方式对控件进行评分。 某些会按二进制方式评分-如果你已根据我们的建议配置了功能或设置，则会获得100% 的分数。 其他分数以总配置的百分比计算。 例如，如果您在使用 MFA 保护所有用户时获得30个点，并且仅保护了5个100的用户，则您将获得2个分数的部分分数（5个受保护的/100 总计 * 30 最大点数 = 2 pt 部分分数）。
+可以通过两种方式对控件进行评分。 某些会按二进制方式评分-如果你已根据我们的建议配置了功能或设置，则会获得100% 的分数。 其他分数以总配置的百分比计算。 例如，如果您在使用 MFA 保护所有用户时获得30个点，并且仅保护了5个100的用户，则会为您提供一些分数，其中包含2个 (5 个受保护的/100 总计 * 30 最大值 = 2 磅部分分数) 。
 
 ### <a name="what-does-not-scored-mean"></a>[未评分] 是什么意思？
 
@@ -90,7 +90,7 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>我的评分已更改。 如何找出更改的原因？
 
-转到[Microsoft 365 安全中心](https://security.microsoft.com/)，你可以在其中找到完整的 Microsoft 安全分数。 通过查看 "历史记录" 选项卡上的详细更改，可以轻松地查看安全分数的所有更改。
+转到 [Microsoft 365 安全中心](https://security.microsoft.com/)，你可以在其中找到完整的 Microsoft 安全分数。 通过查看 "历史记录" 选项卡上的详细更改，可以轻松地查看安全分数的所有更改。
 
 ### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>安全分数是否会衡量遭受违例的风险？
 
@@ -100,11 +100,11 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 
 将会提供有关配置建议安全功能或执行安全相关任务（例如读取报告）的要点。 某些操作是根据部分完成状态评分的，例如，为用户启用多重身份验证 (MFA)。 你的安全分数直接代表你使用的 Microsoft 安全服务。 请记住，安全性必须与可用性进行平衡。 所有安全控制措施都有影响用户的一面。 用户影响较小的控制措施对用户日常操作的影响很小，甚至没有任何影响。
 
-若要查看分数历史记录，请转到[Microsoft 365 安全中心](https://security.microsoft.com/)，并查看你的总体 Microsoft 安全分数。 您可以查看对整体安全分数的更改单击查看历史记录。 选择特定的日期以查看在该日期启用的控制措施，以及从每个控制措施赢得的积分。
+若要查看分数历史记录，请转到 [Microsoft 365 安全中心](https://security.microsoft.com/) ，并查看你的总体 Microsoft 安全分数。 您可以查看对整体安全分数的更改单击查看历史记录。 选择特定的日期以查看在该日期启用的控制措施，以及从每个控制措施赢得的积分。
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>标识安全评分与 Office 365 安全评分之间有什么关系？
 
-[Microsoft 安全评分](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)包含五个不同的控制和评分类别：
+[Microsoft 安全评分](/office365/securitycompliance/microsoft-secure-score)包含五个不同的控制和评分类别：
 
 - 标识
 - 数据
@@ -116,4 +116,4 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关 Microsoft 安全分数的详细信息](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[了解有关 Microsoft 安全分数的详细信息](/office365/securitycompliance/microsoft-secure-score)

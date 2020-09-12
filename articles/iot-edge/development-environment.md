@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511087"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300368"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
 
@@ -82,10 +82,10 @@ Azure IoT Edge 开发工具使用命令行功能简化了 IoT Edge 开发。 此
 
 | 工具 | 也称为 | 受支持的平台 | 最适用于 |
 | ---- | ------------- | ------------------- | --------- |
-| IoT EdgeHub 开发工具  | iotedgehubdev | Windows, Linux, MacOS | 模拟设备来调试模块。 |
-| IoT Edge 开发容器 | microsoft/iotedgedev | Windows, Linux, MacOS | 开发而无需安装依赖项。 |
-| 容器中的 IoT Edge 运行时 | iotedgec | Windows, Linux, MacOS, ARM | 在可能不支持运行时的设备上进行测试。 |
-| IoT Edge 设备容器 | toolboc/azure-iot-edge-device-container | Windows, Linux, MacOS, ARM | 使用多个 IoT Edge 设备大规模测试方案。 |
+| IoT EdgeHub 开发工具  | iotedgehubdev | Windows、Linux、macOS | 模拟设备来调试模块。 |
+| IoT Edge 开发容器 | microsoft/iotedgedev | Windows、Linux、macOS | 开发而无需安装依赖项。 |
+| 容器中的 IoT Edge 运行时 | iotedgec | Windows、Linux、macOS、ARM | 在可能不支持运行时的设备上进行测试。 |
+| IoT Edge 设备容器 | toolboc/azure-iot-edge-device-container | Windows、Linux、macOS、ARM | 使用多个 IoT Edge 设备大规模测试方案。 |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT EdgeHub 开发工具
 
@@ -103,7 +103,7 @@ Azure IoT Edge 开发容器是一个 Docker 容器，具有 IoT Edge 开发所�
 
 ### <a name="iot-edge-runtime-in-a-container"></a>容器中的 IoT Edge 运行时
 
-容器中的 IoT Edge 运行时提供了一个完整的运行时，该运行时将设备连接字符串作为环境变量。 通过此容器，可在可能不支持本机运行时的系统（如 MacOS）上测试 IoT Edge 模块和方案。 部署的任何模块都将在运行时容器之外启动。 如果希望运行时和任何已部署的模块存在于同一容器中，请考虑使用 IoT Edge 设备容器。
+容器中的 IoT Edge 运行时提供了一个完整的运行时，该运行时将设备连接字符串作为环境变量。 利用此容器，您可以在可能不支持本机运行时的系统（如 macOS）上测试 IoT Edge 模块和方案。 部署的任何模块都将在运行时容器之外启动。 如果希望运行时和任何已部署的模块存在于同一容器中，请考虑使用 IoT Edge 设备容器。
 
 有关详细信息，请参阅[在容器中运行 Azure IoT Edge](https://github.com/Azure/iotedgedev/tree/master/docker/runtime)。
 
@@ -119,7 +119,7 @@ IoT Edge 设备容器是一个完整的 IoT Edge 设备，可以在任何带有�
 
 有关详细信息、指南和示例，请参阅以下页面：
 
-* [向 Azure IoT Edge 进行持续集成和持续部署](how-to-ci-cd.md)
-* [使用 Azure DevOps Projects 为 IoT Edge 创建 CI/CD 管道](how-to-devops-project.md)
+* [向 Azure IoT Edge 进行持续集成和持续部署](how-to-continuous-integration-continuous-deployment.md)
+* [使用 Azure DevOps Starter 为 IoT Edge 创建 CI/CD 管道](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins 插件](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub 存储库](https://github.com/toolboc/IoTEdge-DevOps)

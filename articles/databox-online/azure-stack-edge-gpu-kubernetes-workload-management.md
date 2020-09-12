@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268018"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318975"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Azure Stack 边缘设备上的 Kubernetes 工作负荷管理
 
@@ -47,7 +47,7 @@ ms.locfileid: "89268018"
 
 ![Kubernetes 工作负荷部署](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **本地部署**：这是通过命令行访问工具（例如） `kubectl` 来部署 Kubernetes `yamls` 。 您可以使用该文件连接到您 Azure Stack 上的 Kubernetes 群集 `kubeconfig` 。 有关详细信息，请参阅 [通过 Kubectl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+- **本地部署**：此部署通过命令行访问工具（例如） `kubectl` 来部署 Kubernetes `yamls` 。 通过文件访问 Azure Stack 边缘上的 Kubernetes 群集 `kubeconfig` 。 有关详细信息，请参阅 [通过 Kubectl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
 
 - **IoT Edge 部署**：这是通过 IoT Edge 连接到 Azure IoT 中心。 通过命名空间连接到 Azure Stack 边缘设备上的 Kubernetes 群集 `iotedge` 。 部署在此命名空间中的 IoT Edge 代理负责连接到 Azure。 `IoT Edge deployment.json`使用 Azure DEVOPS CI/CD 应用配置。 命名空间和 IoT Edge 管理通过 cloud operator 完成。
 
@@ -59,9 +59,9 @@ ms.locfileid: "89268018"
 
 - **单个或多个类型**：可以选择单个部署选项或不同部署选项的混合。
 - **云与本地**：根据应用程序，可以通过 kubectl 或云部署通过 IoT Edge 和 Azure Arc 选择本地部署。 
-    - 本地部署更适合开发方案。 选择本地部署时，将限制为在其中部署 Azure Stack Edge 设备的网络。
+    - 选择本地部署时，将限制为在其中部署 Azure Stack Edge 设备的网络。
     - 如果你有可以部署的云代理，则应该部署云操作员，并使用云管理。
-- **IoT Vs Azure Arc**：部署选择还取决于产品方案的目的。 如果要部署的应用程序或容器与 IoT 或 IoT 生态系统更深层的集成，则应该选择部署应用程序 IoT Edge 方式。 如果你有现有的 Kubernetes 部署，Azure Arc 将是首选选项。
+- **IoT Vs Azure Arc**：部署选择还取决于产品方案的目的。 如果要部署的应用程序或容器与 IoT 或 IoT 生态系统更深层的集成，请选择 "IoT Edge" 以部署应用程序。 如果你有现有的 Kubernetes 部署，Azure Arc 将是首选选项。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -76,4 +76,4 @@ ms.locfileid: "89268018"
 
 若要通过 Azure Arc 部署应用，请参阅：
 
-- [使用 Azure Arc 部署应用程序](azure-stack-edge-gpu-deploy-sample-module.md)。
+- [使用 Azure Arc 部署应用程序](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。

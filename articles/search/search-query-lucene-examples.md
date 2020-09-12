@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934967"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297988"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用“完整的”Lucene 搜索语法（Azure 认知搜索中的高级查询）
 
@@ -40,13 +40,13 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 
 指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
 
-  ![Postman 请求标头](media/search-query-lucene-examples/postman-header.png)
+  ![Postman 请求标头设置参数](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>设置请求 URL
 
 请求是一个与包含 Azure 认知搜索终结点和搜索字符串的 URL 配对的 GET 命令。
 
-  ![Postman 请求标头](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman 请求标头获取](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 组合具备以下元素：
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 此查询的响应应与以下屏幕截图类似。
 
-  ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Postman 示例响应和分数](media/search-query-lucene-examples/postman-sample-results.png)
 
 你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包含实际搜索条件时，会看到搜索评分变成有意义的值。
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman 示例响应](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Postman 示例响应搜索表达式](media/search-query-lucene-examples/intrafieldfilter.png)
 
 可以使用 **fieldName:searchExpression** 语法定义字段化搜索操作，其中的搜索表达式可以是单个词，也可以是一个短语，或者是括号中的更复杂的表达式，可以选择使用布尔运算符。 下面是部分示例：
 

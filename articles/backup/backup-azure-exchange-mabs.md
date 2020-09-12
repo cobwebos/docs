@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 043122271bfa91b1cbaa490760da712cd1b867cc
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825029"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377619"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 
@@ -24,14 +24,14 @@ ms.locfileid: "88825029"
 若要在 Exchange Server 上安装 MABS 保护代理，请遵循以下步骤：
 
 1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
-2. 通过在 MABS 管理员控制台中单击“管理”>“代理”>“安装”，在 Exchange Server 上安装代理。 有关详细步骤，请参阅[安装 MABS 保护代理](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)。
+2. 在 Exchange 服务器上安装代理，方法是选择 " **管理" > 代理 ">** 在 MABS 管理员控制台中安装。 有关详细步骤，请参阅[安装 MABS 保护代理](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
 
-1. 在 MABS 管理员控制台中，单击“保护”，并单击工具功能区上的“新建”，打开“新建保护组”向导。
-2. 在向导的“欢迎”屏幕上单击“下一步”。
-3. 在“**选择保护组类型**”屏幕上，选择“**服务器**”并单击“**下一步**”。
-4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
+1. 在 MABS 管理员控制台中，选择 " **保护**"，然后在工具功能区上选择 " **新建** " 以打开 " **创建新保护组** 向导"。
+2. 在向导的 " **欢迎** " 屏幕上，选择 " **下一步**"。
+3. 在 " **选择保护组类型** " 屏幕上选择 " **服务器** "，然后选择 " **下一步**"。
+4. 选择要保护的 Exchange server 数据库，然后选择 " **下一步**"。
 
    > [!NOTE]
    > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](/system-center/dpm/back-up-exchange)。
@@ -47,7 +47,7 @@ ms.locfileid: "88825029"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单机“下一步”
+6. 选择“**下一步**”。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，MABS 会运行备份一致性检查，以避免由于在 Exchange 服务器上运行 eseutil 命令而产生的 I/O 流量。
@@ -57,21 +57,21 @@ ms.locfileid: "88825029"
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”。
-9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
+8. 选择“**下一步**”。
+9. 选择要进行 **复制备份**的数据库，然后选择 " **下一步**"。
 
    > [!NOTE]
    > 如果没有为数据库的至少一个 DAG 副本选择 "完全备份"，则不会截断日志。
    >
    >
-10. 配置“**短期备份**”的目标，并单击“**下一步**”。
-11. 检查可用磁盘空间，并单击“**下一步**”。
-12. 选择 MABS 服务器将创建初始复制的时间，并单击“下一步”。
-13. 选择一致性检查选项，并单击“**下一步**”。
-14. 选择要备份到 Azure 数据库，并单击“**下一步**”。 例如：
+10. 为 **短期备份**配置目标，然后选择 " **下一步**"。
+11. 查看可用磁盘空间，然后选择 " **下一步**"。
+12. 选择 MABS 服务器创建初始复制的时间，然后选择 " **下一步**"。
+13. 选择 "一致性检查" 选项，然后选择 " **下一步**"。
+14. 选择要备份到 Azure 的数据库，然后选择 " **下一步**"。 例如：
 
     ![指定在线保护数据](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. 定义“**Azure 备份**”的计划，并单击“**下一步**”。 例如：
+15. 定义 " **Azure 备份**" 的计划，然后选择 " **下一步**"。 例如：
 
     ![指定联机备份计划](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -79,21 +79,21 @@ ms.locfileid: "88825029"
     > 请注意，在线恢复点基于快速完全恢复点。 因此，必须将在线恢复点安排在针对快速完全恢复点指定的时间之后。
     >
     >
-16. 配置“**Azure 备份**”的保留策略，并单击“**下一步**”。
-17. 选择在线复制选项并单击“**下一步**”。
+16. 配置 " **Azure 备份**" 的保留策略，然后选择 " **下一步**"。
+17. 选择 "联机复制" 选项，然后选择 " **下一步**"。
 
     如果有大型数据库，通过网络创建初始备份所需的时间会很长。 可以通过创建脱机备份避免此问题。  
 
     ![指定联机保留策略](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
-18. 确认设置，并单击“**创建组**”。
-19. 单击“**关闭**”。
+18. 确认设置，然后选择 " **创建组**"。
+19. 选择“关闭”。
 
 ## <a name="recover-the-exchange-database"></a>恢复 Exchange 数据库
 
-1. 若要恢复 Exchange 数据库，请在 MABS 管理员控制台中单击“恢复”。
+1. 若要恢复 Exchange 数据库，请在 MABS 管理员控制台中选择 " **恢复** "。
 2. 找到要恢复的 Exchange 数据库。
 3. 从“*恢复时间*”下拉列表中选择在线恢复点。
-4. 单击“**恢复**”启动“**恢复向导**”。
+4. 选择 " **恢复** " 以启动 **恢复向导**。
 
 在线恢复点有五种恢复类型：
 

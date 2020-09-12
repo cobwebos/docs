@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181929"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299739"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -31,16 +31,16 @@ ms.locfileid: "89181929"
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 虚拟机**|**价格**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|标准|
-|[虚拟机行为分析（和安全警报）](threat-protection.md)|✔|✔|✔|标准|
+|[虚拟机行为分析 (和安全警报) ](threat-protection.md)|✔|✔|✔|标准|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|标准|
 |[基于网络的安全警报](threat-protection.md#network-layer)|✔|✔|-|标准|
-|[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
+|[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
 |[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|标准|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|标准|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|标准|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|标准|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|标准|
-|[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
+|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|-|-|-|标准|
 |缺少 OS 修补程序评估|✔|✔|✔|Azure：免费<br><br>非 Azure：标准|
 |安全配置错误评估|✔|✔|✔|Azure：免费<br><br>非 Azure：标准|
@@ -55,16 +55,16 @@ ms.locfileid: "89181929"
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 虚拟机**|**价格**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|标准|
-|[虚拟机行为分析（和安全警报）](security-center-alerts-iaas.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|标准|
+|[虚拟机行为分析 (和安全警报) ](security-center-alerts-iaas.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|标准|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|-|-|-|标准|
 |[基于网络的安全警报](threat-protection.md#network-layer)|✔|✔|-|标准|
-|[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
+|[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
 |[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|标准|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|标准|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|标准|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|标准|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|标准|
-|[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
+|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|✔|✔|✔|标准|
 |缺少 OS 修补程序评估|✔|✔|✔|Azure：免费<br><br>非 Azure：标准|
 |安全配置错误评估|✔|✔|✔|Azure：免费<br><br>非 Azure：标准|

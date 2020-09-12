@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873715"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320862"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
-在常见的标识相关攻击（例如密码喷涂、重播和网络钓鱼）变得越来越流行时，管理安全性可能比较困难。 利用安全默认值，可以更轻松地通过预配置的安全设置来保护组织免受这些攻击：
+随着常见的与标识相关的攻击（如密码喷射、重放和网络钓鱼）越来越普遍，可能会使安全管理变得更困难。 利用安全默认值，可以更轻松地通过预配置的安全设置来保护组织免受这些攻击：
 
 - 要求所有用户注册 Azure 多重身份验证。
 - 要求管理员执行多重身份验证。
@@ -92,7 +92,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 > [!WARNING]
 > 启用安全默认值之前，请确保管理员没有使用旧身份验证协议。 有关详细信息，请参阅[如何弃用旧身份验证](concept-fundamentals-block-legacy-authentication.md)。
 
-- [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>保护特权操作
 
@@ -109,7 +109,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 启用租户中的安全默认值后，访问 Azure 门户、Azure PowerShell 或 Azure CLI 的任何用户都需要完成额外的身份验证。 此策略适用于访问 Azure 资源管理器的所有用户，无论他们是管理员还是用户。 
 
 > [!NOTE]
-> 默认情况下，2017 之前的 Exchange Online 租户已禁用新式身份验证。 为了避免在对这些租户进行身份验证时出现登录循环，必须[启用新式身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
+> 默认情况下，2017 之前的 Exchange Online 租户已禁用新式身份验证。 为了避免在对这些租户进行身份验证时出现登录循环，必须[启用新式身份验证](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
 
 > [!NOTE]
 > Azure AD Connect 同步帐户将从安全默认值中排除，系统不会提示该帐户注册或执行多重身份验证。 组织不应出于其他目的使用此帐户。

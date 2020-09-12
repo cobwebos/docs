@@ -3,12 +3,12 @@ title: 从 Azure 备份服务器恢复数据
 description: 将所保护的数据从任意 Azure 备份服务器恢复到恢复服务保管库，前提是服务器已注册到该保管库。
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 531de9226be05bf50f887cfd0410842dadb68178
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012001"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378060"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "89012001"
 
 若要从 Azure 备份服务器恢复数据，请执行以下操作：
 
-1. 在 Azure 备份服务器管理控制台的“恢复”选项卡中，单击“添加外部 DPM”（位于屏幕左上角）。
+1. 在 Azure 备份服务器管理控制台的 " **恢复** " 选项卡中，选择位于屏幕左上角的 **"添加外部 DPM"** () "。
 
     ![添加外部 DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. 从与要恢复数据的“Azure 备份服务器”关联的保管库下载新的“保管库凭据”，从注册到恢复服务保管库的 Azure 备份服务器列表中选择 Azure 备份服务器，并提供与要恢复数据的服务器关联的“加密密码”。
@@ -42,10 +42,10 @@ ms.locfileid: "89012001"
     将在底部窗格中显示文件和文件夹的列表，可以浏览这些文件和文件夹并将其恢复到任何位置。
 
     ![外部 DPM 服务器恢复点](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. 右键单击相应的项目，然后单击“恢复”。
+5. 右键单击相应的项目，然后选择 " **恢复**"。
 
     ![外部 DPM 恢复](./media/backup-azure-alternate-dpm-server/recover.png)
-6. 查看“恢复所选内容”。 验证要恢复的备份副本的数据和时间，以及创建备份副本时所依据的源。 如果所选内容不正确，请单击“取消”，导航回“恢复”选项卡，然后选择适当的恢复点。 如果所选内容正确无误，请单击“下一步”。
+6. 查看“恢复所选内容”。 验证要恢复的备份副本的数据和时间，以及创建备份副本时所依据的源。 如果选择不正确，请选择 " **取消** "，导航回 "恢复" 选项卡以选择相应的恢复点。 如果选择正确，请选择 " **下一步**"。
 
     ![外部 DPM 恢复摘要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. 选择“恢复到另一个位置”。 **浏览** 到进行恢复的正确位置。
@@ -62,7 +62,7 @@ ms.locfileid: "89012001"
      确定是否在恢复成功完成后发送**通知**。
 
      ![外部 DPM 恢复通知](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. “摘要”屏幕列出了目前为止的所选选项。 单击“恢复”时，数据将恢复到相应的本地位置。
+9. “摘要”屏幕列出了目前为止的所选选项。 选择 " **恢复**" 后，数据将恢复到相应的本地位置。
 
     ![外部 DPM 恢复选项摘要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "89012001"
    >
 
     ![监视恢复](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. 单击 DPM 服务器的“恢复”选项卡上的“清除外部 DPM”，即可删除外部 DPM 服务器的视图 。
+10. 可以在 DPM 服务器的 "**恢复**" 选项卡上选择 "**清除外部 dpm** "，以删除外部 dpm 服务器的视图。
 
     ![清除外部 DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

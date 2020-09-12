@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本文提供计算机视觉功能支持的自然语言列表;OCR，图像分析。
+description: 本文提供计算机视觉功能 OCR 和映像分析支持的自然语言列表。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1e4dfb399432278ee09d1c016faae8fd3b584647
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760628"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318040"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -23,9 +23,9 @@ ms.locfileid: "87760628"
 
 ## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
-计算机视觉的 OCR Api 支持多种语言。 它们不需要指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR) ](concept-recognizing-text.md) 。
+计算机视觉的 OCR API 支持多种语言。 它们不要求你指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR)](concept-recognizing-text.md)。
 
-|语言| 语言代码 | OCR API | 读取3.0 版 | 读取3.1 公共预览版 |
+|语言| 语言代码 | OCR API | Read v3.0 | 读取3.1 公共预览版 |
 |:-----|:----:|:-----:|:---:|:---:|
 |阿拉伯语 | `ar`|✔ | | |
 |中文(简体) | `zh-Hans`|✔ | |✔ |
@@ -41,7 +41,7 @@ ms.locfileid: "87760628"
 |匈牙利语 | `hu` |✔ | | |
 |意大利语 | `it` |✔ |✔ |✔ |
 |日语 | `ja` |✔ | | |
-|韩语 | `ko` |✔ | | |
+|朝鲜语 | `ko` |✔ | | |
 |挪威语 | `nb` |✔ | | |
 |波兰语 | `pl` |✔ | | |
 |葡萄牙语 | `pt` |✔ |✔ |✔ |
@@ -56,9 +56,9 @@ ms.locfileid: "87760628"
 
 ## <a name="image-analysis"></a>图像分析
 
-[分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](home.md)以获取能够通过图像分析完成的所有操作的列表。
+[分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](overview.md)以获取能够通过图像分析完成的所有操作的列表。
 
-|语言 | 语言代码 | 类别 | 标记 | 说明 | 成人 | 品牌 | Color | 面 | ImageType | 对象 | 名人 | 特征点 |
+|语言 | 语言代码 | 类别 | Tags | 描述 | 成人 | 品牌 | 颜色 | 面 | ImageType | 对象 | 名人 | 特征点 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英语 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

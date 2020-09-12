@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6bbd54be46effe324199639477f9ca4ab31bea98
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: c21a6a2a42aa7417ddb53afd3beda735b54cff3d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091396"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299127"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87091396"
 * Azure Redis 缓存服务实例
 * 用于 Azure CLI 的 Azure Spring Cloud 扩展
 
-如果没有已部署的 Azure Spring Cloud 实例，请按照[有关如何部署 Azure Spring Cloud 应用的快速入门](spring-cloud-quickstart-launch-app-portal.md)中的步骤操作。
+如果没有已部署的 Azure Spring Cloud 实例，请按照[有关如何部署 Azure Spring Cloud 应用的快速入门](spring-cloud-quickstart.md)中的步骤操作。
 
 ## <a name="bind-azure-cache-for-redis"></a>绑定 Azure Redis 缓存
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260520"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322035"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
 
@@ -36,7 +36,8 @@ Azure 春季云通过集成 Azure Monitor、Application Insights 和 Log Analyti
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure 春季云在哪些区域可用？
 
-美国东部、美国西部 2、西欧和东南亚。
+美国东部、美国东部2、美国中部、美国中南部、美国西部2、西欧、北欧、英国南部、东南部和澳大利亚东部。
+
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure 春季云的已知限制是什么？
 
@@ -58,7 +59,7 @@ Azure 春季云具有以下已知限制：
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是一名云开发人员，而是 Azure 的新手。 了解如何开发 Azure 春季云应用程序的最快方法是什么？
 
-若要快速开始使用 Azure 春季云，请按照 [快速入门：使用 Azure 门户启动 Azure 春季 cloud 应用程序](spring-cloud-quickstart-launch-app-portal.md)中的说明进行操作。
+若要快速开始使用 Azure 春季云，请按照 [快速入门：使用 Azure 门户启动 Azure 春季 cloud 应用程序](spring-cloud-quickstart.md)中的说明进行操作。
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud 支持哪些 Java 运行时？
 
@@ -72,7 +73,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支持分布式跟踪？
 
-是的。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
+可以。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
 
 ### <a name="what-resource-types-does-service-binding-support"></a>服务绑定支持哪些资源类型？
 
@@ -83,7 +84,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>能否在我的应用程序中查看、添加或移动永久性卷？
 
-是的。
+可以。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>删除/移动 Azure 春季云服务实例时，是否也会删除/移动其扩展资源？
 
@@ -143,19 +144,19 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季云是否支持蓝绿色部署？
-是的。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
+可以。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
 
-不是。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
+否。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支持从源构建容器？
 
-是的。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-launch-from-source.md)。
+可以。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支持应用实例中的自动缩放？
 
-不是。
+否。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有春季 Cloud 微服务迁移到 Azure 春季云的最佳做法是什么？
 

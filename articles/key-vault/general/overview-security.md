@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 安全性 | Microsoft Docs
+title: Azure Key Vault 安全性
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870572"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377567"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
-你需要在云中保护加密密钥和机密（例如证书、连接字符串和密码），以便使用 Azure Key Vault。 由于要存储敏感数据和业务关键数据，因此需要采取措施来最大程度地提高保管库和其中存储的数据的安全性。 本文将介绍在设计 Azure Key Vault 安全性时应考虑的一些概念。
+使用 Azure Key Vault 来保护云中的加密密钥和机密（例如证书、连接字符串和密码）。 在存储敏感数据和业务关键数据时，您需要采取措施来最大限度地提高保管库的安全性和存储的数据。
 
 ## <a name="identity-and-access-management"></a>标识和访问管理
 
@@ -65,9 +64,9 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 > [!IMPORTANT]
 > 密钥保管库访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 如果授予某个用户创建和删除密钥的权限，该用户可以针对该密钥保管库中的所有密钥执行这些操作。
 
-若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](/cli/azure/install-azure-cli?view=azure-cli-latest)、[PowerShell](/powershell/azure/) 或[密钥保管库管理 REST API](/rest/api/keyvault/)。
+你可以使用 [Azure 门户](assign-access-policy-portal.md)、 [Azure CLI](assign-access-policy-cli.md)、 [Azure PowerShell](assign-access-policy-powershell.md)或 [Key Vault 管理 REST api](/rest/api/keyvault/)设置密钥保管库的访问策略。
 
-可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
+可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限）。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
 
 ## <a name="network-access"></a>网络访问
 
@@ -93,7 +92,7 @@ Key Vault 日志记录会保存保管库中所执行活动的相关信息。 Key
 - 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
 - 删除不想继续保留在存储帐户中的日志。
 
-有关安全管理存储帐户的建议，请查看 [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)
+有关安全管理存储帐户的建议，请参阅 [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)
 
 ## <a name="next-steps"></a>后续步骤
 

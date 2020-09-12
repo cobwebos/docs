@@ -1,6 +1,6 @@
 ---
 title: 连接到 Azure 媒体服务 v3 API - Node.js
-description: 本文演示如何通过 Node.js 连接到媒体服务 v3 API。
+description: 本文演示如何使用 Node.js 连接到媒体服务 v3 API。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 95059710ce759a1536bcaacd35c0d2cf6497269b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f6b24b17ac0e12c286a11abe8732bb86e2deb5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265586"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297342"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API - Node.js
 

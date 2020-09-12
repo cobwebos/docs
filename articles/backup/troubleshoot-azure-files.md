@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001733"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376972"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -51,7 +51,7 @@ ms.locfileid: "89001733"
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>取消保护文件共享后无法删除恢复服务保管库
 
-在 Azure 门户中，打开**保管库**  >  **备份基础结构**  >  **存储帐户**，然后单击 "**注销**" 以从恢复服务保管库中删除存储帐户。
+在 Azure 门户中，打开**保管库**  >  **备份基础结构**  >  **存储帐户**。 选择 " **注销** " 以从恢复服务保管库中删除存储帐户。
 
 >[!NOTE]
 >只有注销已注册到保管库的所有存储帐户后，才能删除恢复服务保管库。

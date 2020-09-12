@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180671"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297806"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge GPU 设备
 
@@ -26,7 +26,6 @@ ms.locfileid: "89180671"
 > [!div class="checklist"]
 >
 > * 访问设备上的 Kubernetes 仪表板
-> * 下载 `aseuser` 配置
 > * 查看设备上部署的模块
 > * 获取设备上部署的应用程序的 IP 地址
 > * 查看设备上部署的模块的容器日志
@@ -42,26 +41,18 @@ Kubernetes 仪表板是一种基于 web 的用户界面，可用于对容器化�
 
 Kubernetes 仪表板为 *只读* ，并在端口31000上的 Kubernetes 主节点上运行。 请按照以下步骤访问仪表板： 
 
-1. 在设备的本地 UI 中，中转到 " **设备** "，并中转到 " **设备终结点**"。 选择 Kubernetes 仪表板 URL，在浏览器中打开仪表板。
+1. 在设备的本地 UI 中，中转到 " **设备** "，并中转到 " **设备终结点**"。 
+1. 选择 " **下载配置** " 以下载 `kubeconfig` 允许访问仪表板的。 将该 `config.json` 文件保存到你的本地系统。
+1. 选择 Kubernetes 仪表板 URL，在浏览器中打开仪表板。
 
     ![本地 UI 中设备页面中的 Kubernetes 仪表板 URL](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
 
-1. 在 **Kubernetes 仪表板登录** 页上，选择 " **令牌**"。 
-1. 提供令牌。 
-    1. 若要获取令牌，请 [通过设备的 PowerShell 接口进行连接](azure-stack-edge-gpu-connect-powershell-interface.md)。
-    1. 运行命令：  `Get-HcsKubernetesDashboardToken`
+1. 在 **Kubernetes 仪表板登录** 页上：
     
-    1. 在出现提示时复制提供给你的令牌字符串。 下面是示例输出：
-        
-        ```powershell
-        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
-        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
-        [10.100.10.10]: PS>
-        ```
-        
-1. 选择“登录”。
-
-    ![登录到 Kubernetes 仪表板](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+    1. 选择 **kubeconfig**。 
+        ![选择 kubeconfig 选项](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
+    1. 选择省略号 **...**。浏览并指向 `kubeconfig` 你之前在本地系统上下载的。 选择“登录”。
+        ![浏览到 kubeconfig 文件](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
 6. 你现在可以在只读模式下查看 Azure Stack Edge 设备的 Kubernetes 仪表板。
 
@@ -110,6 +101,21 @@ Kubernetes 仪表板为 *只读* ，并在端口31000上的 Kubernetes 主节点
 
     ![查看容器日志2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
+
+## <a name="view-cpu-memory-usage"></a>查看 CPU，内存使用情况
+
+Azure Stack Edge 设备的 Kubernetes 仪表板还具有一个 [指标服务器加载项](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) ，用于聚合 Kubernetes 资源中的 CPU 和内存使用情况。
+ 
+例如，你可以查看所有命名空间中的部署所消耗的 CPU 和内存。 
+
+![查看所有部署中的 CPU 和内存使用情况](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-all-1.png)
+
+您还可以按特定的命名空间进行筛选。 在下面的示例中，你可以仅查看 Azure Arc 部署的 CPU 和内存消耗。  
+
+![查看 Azure Arc 部署的 CPU 和内存使用情况](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
+
+Kubernetes 指标服务器提供类似于 [水平 Pod 自动缩放程序](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)的自动缩放管道。
+
 
 ## <a name="next-steps"></a>后续步骤
 

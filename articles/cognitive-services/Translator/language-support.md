@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782322"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300215"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -28,7 +28,7 @@ ms.locfileid: "88782322"
 ## <a name="text-translation"></a>文本翻译
 可以使用转换操作对翻译人员提供的任何语言进行文本转换。 该 API 还通过使用检测操作、音译和直译操作提供语言检测，并使用字典查找和字典示例操作提供双语词典。 下面列出了每个操作的可用语言。 
 
-### <a name="translate"></a>Translate
+### <a name="translate"></a>翻译
 
 翻译人员支持文本转换的以下语言。 
 
@@ -155,6 +155,7 @@ ms.locfileid: "88782322"
 |斯瓦希里语| `sw`    |
 |克林贡语|   `tlh-Latn`  |
 |韩语 |`ko`   |
+|库尔德语 (中部)   |`ku-Arab`  |
 |拉脱维亚语|   `lv`    |
 |立陶宛语|    `lt`    |
 |马来语| `ms`        |
@@ -189,14 +190,14 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 [查看直译操作参考文档](reference/v3-0-translate.md)
 
 
-| 语言    | 语言代码 | 脚本 | 到/从 | 脚本|
+| 语言    | 语言代码 | Script | 到/从 | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
 | Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
-| 中文（简体） | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
-| 中文（简体） | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
-| 和 SharePoint 2010 显示的“中文(繁体)” | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
-| 和 SharePoint 2010 显示的“中文(繁体)” | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
 | 古吉拉特语 | `gu`  | 古吉拉特语 `Gujr` | <--> | 拉丁语 `Latn` |
 | 希伯来语 | `he` | 希伯来语 `Hebr` | <--> | 拉丁语 `Latn` |
 | Hindi | `hi` | 梵语 `Deva` | <--> | 拉丁语 `Latn` |
@@ -283,10 +284,12 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
+|南非荷兰语| `af`|
 | 阿拉伯语       | `ar`          |
 | Bangla      | `bn`          |
 | 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
+|加泰罗尼亚语|   `ca`    |
 | 简体中文      | `zh-Hans`          |
 |中文(繁体)|   `zh-Hant`   |
 | 克罗地亚语      | `hr`          |
@@ -295,6 +298,8 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 荷兰语      | `nl`          |
 | 英语    | `en`     |
 | 爱沙尼亚语      | `et`          |
+|斐济语|    `fj`    |
+|菲律宾语|  `fil`   |
 | 芬兰语      | `fi`          |
 | 法语      | `fr`          |
 | 德语      | `de`          |
@@ -308,18 +313,20 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 爱尔兰语 | `ga`  |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
+|卡纳达语|`kn`|
 | 斯瓦希里语|    `sw`    |
 | 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马达加斯加语| `mg`    |
 | 马来语|    `ms`        |
+|马耳他语|   `mt`    |
 | 毛利语| `mi`  |
 | 马拉地语| `mr`  |
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语(巴西) | `pt-br` |
+| 葡萄牙语（巴西） | `pt-br` |
 | 旁遮普语|`pa`|
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
@@ -329,7 +336,9 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |
 | 瑞典语      | `sv`          |
+|塔希提语|  `ty`    |
 | 泰语      | `th`          |
+|汤加语|    `to`    |
 | 土耳其语      | `tr`          |
 | 乌克兰语      | `uk`          |
 | 乌尔都语| `ur`    |
@@ -342,7 +351,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 ### <a name="speech-to-text"></a>语音转文本
 将语音转换为文本，以便转换为所选的文本语言。 语音转换文本用于语音转换文本，或在与语音合成一起使用时用于语音到语音转换。
 
-| Language    |
+| 语言    |
 |:----------- |
 |阿拉伯语|
 |粤语(繁体)|
@@ -364,7 +373,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |挪威语|
 |波兰语|
 |葡萄牙语（巴西）|
-|葡萄牙语(葡萄牙)|
+|葡萄牙语（葡萄牙）|
 |俄语|
 |西班牙语|
 |瑞典语|
@@ -376,7 +385,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 ### <a name="text-to-speech"></a>文本转语音
 将文本转换为语音。 使用文本到语音功能可以在使用语音到文本时添加语音转换结果的音频输出，或用于语音语音转换。 
 
-| Language    |
+| 语言    |
 |:----------- |
 |阿拉伯语|
 |保加利亚语|

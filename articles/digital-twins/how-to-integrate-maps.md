@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 20a376d303f90727063f288e239e89ede2a1113c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235904"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298209"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -60,6 +60,12 @@ ms.locfileid: "88235904"
     ```
 
 3. 在 Azure 数字孪生中创建路由，以将克隆更新事件发送到终结点。
+
+    >[!NOTE]
+    >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
+    >
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```

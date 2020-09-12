@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164914"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377856"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理远程访问本地应用程序
 
@@ -58,6 +58,11 @@ Azure AD 应用程序代理的特性：
 5. 连接器将请求发送到本地应用程序。
 6. 通过连接器和应用程序代理服务将响应发送给用户。
 
+> [!NOTE]
+> 与大多数 Azure AD 混合代理一样，应用程序代理连接器无需通过防火墙打开入站连接。 步骤3中的用户流量在 Azure AD) 中的应用程序代理服务 (终止。 应用程序代理连接器 (本地) 负责其他通信。
+>
+
+
 | 组件 | 说明 |
 | --------- | ----------- |
 | 终结点  | 终结点是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
@@ -68,5 +73,5 @@ Azure AD 应用程序代理的特性：
 | 本地应用程序 | 最后，用户便可以访问本地应用程序。
 
 ## <a name="next-steps"></a>后续步骤
-若要开始使用应用程序代理，请参阅[教程：通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
+若要开始使用应用程序代理，请参阅 [教程：通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
 

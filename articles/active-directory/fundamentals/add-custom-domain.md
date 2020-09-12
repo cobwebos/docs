@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796805"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321168"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
@@ -116,4 +116,4 @@ ms.locfileid: "87796805"
 
 - 在 Azure AD 中管理域名信息。 有关详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。
 
-- 若要结合 Azure Active Directory 使用 Windows Server 的本地版本，请参阅[将本地目录与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)。
+- 若要结合 Azure Active Directory 使用 Windows Server 的本地版本，请参阅[将本地目录与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。

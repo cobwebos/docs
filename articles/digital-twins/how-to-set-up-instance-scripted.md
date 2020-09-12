@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181368"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298260"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证 (脚本) 
 
@@ -59,6 +59,13 @@ ms.locfileid: "89181368"
 
 此脚本将创建一个 Azure 数字孪生实例，为你的 Azure 用户分配 azure *数字孪生所有者 (预览 * 该实例上的) 角色，并设置 Azure AD 应用注册，以便客户端应用程序使用。
 
+>[!NOTE]
+>目前有一个 **已知** 的脚本化安装问题，其中某些用户 (特别是个人 Microsoft 帐户上的用户 [ (msa) ](https://account.microsoft.com/account)) 可能会发现 **未创建 _Azure 数字孪生所有者 (预览版) _ 的角色分配**。
+>
+>你可以在本文后面的 " [*验证用户角色分配*](#verify-user-role-assignment) " 部分中验证角色分配，并且如果需要，还可以使用 [Azure 门户](how-to-set-up-instance-portal.md#set-up-user-access-permissions) 或 [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)手动设置角色分配。
+>
+>有关此问题的更多详细信息，请参阅 [*故障排除： Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)。
+
 下面是该脚本的输出日志摘录：
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="显示通过运行部署脚本的输入和输出日志的 Cloud Shell 窗口" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
@@ -82,7 +89,7 @@ ms.locfileid: "89181368"
 
 选择它将打开实例的 " *概述* " 页。 注意其 *名称*、 *资源组*和 *主机名*。 稍后可能需要用到它们来标识并连接到实例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 概述 页中的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 "概述" 页中的重要值":::
 
 ### <a name="collect-app-registration-values"></a>收集应用注册值 
 
@@ -127,5 +134,9 @@ ms.locfileid: "89181368"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
+使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
+
+或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
 * [*操作说明：编写应用身份验证代码*](how-to-authenticate-client.md)

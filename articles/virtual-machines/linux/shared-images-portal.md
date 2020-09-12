@@ -10,18 +10,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d49bbebe4d38783342170693bd06f0dfc645f34d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30e61a9a8bf4d7f843db5e68278e4b10a3a8c023
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288405"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318108"
 ---
-# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
+# <a name="create-a-shared-image-gallery-using-the-portal"></a>使用门户创建共享映像库
 
 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
-使用共享映像库，你可以在 AAD 租户内在同一区域或跨区域与组织中的其他用户共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
+使用共享映像库，你可以与 Azure AD 组织中的其他人共享你的自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
 
 库是顶级资源，它提供完全基于角色的访问控制 (RBAC)。 你可以控制映像的版本，并且可以选择将每个映像版本复制到一组不同的 Azure 区域。 库仅适用于托管映像。
 
@@ -53,7 +53,7 @@ ms.locfileid: "87288405"
 1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。****
 1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。**** ****
 1. 在“虚拟机名称”中键入 *myVM*。****
-1. 对于“区域”，请选择“美国东部”。 
+1. 对于“区域”，请选择“美国东部”。
 1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。******
 1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。****
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。**** ****

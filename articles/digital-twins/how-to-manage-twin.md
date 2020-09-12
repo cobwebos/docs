@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796946"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297461"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -173,7 +173,7 @@ object result = await client.GetDigitalTwin(id);
 
 您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
 
-你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 以下是示例：
+你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 下面是一个示例：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -275,7 +275,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 
 仅当修补程序修改的数字克隆符合新的模型时，此操作才会成功。 
 
-请考虑以下示例：
+请看下面的示例：
 1. 假设有一个数字克隆，其型号为 *foo_old*。 *foo_old* 定义所需的属性 *质量*。
 2. 新模型 *foo_new* 定义属性质量并添加新的必需属性 *温度*。
 3. 修补后，数字克隆必须同时具有质量和温度属性。 
@@ -381,6 +381,8 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 ## <a name="manage-twins-with-cli"></a>用 CLI 管理孪生
 
 还可以使用 Azure 数字孪生 CLI 管理孪生。 有关命令，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

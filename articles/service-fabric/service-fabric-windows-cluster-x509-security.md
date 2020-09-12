@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 43825728da34c027557f6e6d722e39d494451e55
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 477a8e75aef3eb676d17c045f16a5c3f4ecf1b81
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255925"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299694"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
 本文介绍如何保护独立 Windows 群集的不同节点之间的通信。 此外，还介绍如何使用 X.509 证书针对连接到此群集的客户端进行身份验证。 身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。 创建群集时，应在该群集上启用证书安全性。  
@@ -120,13 +120,13 @@ ms.locfileid: "86255925"
 | --- | --- |
 | ClusterCertificate |建议用于测试环境。 需要使用此证书来保护群集节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
 | ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书来保护群集节点之间的通信。 可以使用一个或两个群集证书公用名称。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。|
-| ClusterCertificateIssuerStores |建议用于生产环境。 此证书与群集证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClusterCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新群集颁发者证书。 如果使用多个群集证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
+| ClusterCertificateIssuerStores |建议用于生产环境。 此证书与群集证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClusterCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新群集颁发者证书。 如果使用多个群集证书，可以指定多个颁发者。 空 IssuerCommonName 允许在 X509StoreNames 下指定的相应商店中的所有证书。|
 | ServerCertificate |建议用于测试环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 ClusterCertificate 和 ServerCertificate 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
 | ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
-| ServerCertificateIssuerStores |建议用于生产环境。 此证书与服务器证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ServerCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新服务器颁发者证书。 如果使用多个服务器证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
+| ServerCertificateIssuerStores |建议用于生产环境。 此证书与服务器证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ServerCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新服务器颁发者证书。 如果使用多个服务器证书，可以指定多个颁发者。 空 IssuerCommonName 允许在 X509StoreNames 下指定的相应商店中的所有证书。|
 | ClientCertificateThumbprints |在经过身份验证的客户端上安装这一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 CertificateThumbprint 变量中设置每个证书的指纹。 如果将 IsAdmin 设置为 *true*，则安装了此证书的客户端可以针对群集执行管理员管理活动。 如果 IsAdmin 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。 |
 | ClientCertificateCommonNames |在 CertificateCommonName 中设置第一个客户端证书的通用名称。 CertificateIssuerThumbprint 是此证书的颁发者的指纹。 若要详细了解公用名称和颁发者，请阅读[使用证书](/dotnet/framework/wcf/feature-details/working-with-certificates)。 |
-| ClientCertificateIssuerStores |建议用于生产环境。 此证书与客户端证书的颁发者（管理员和非管理员角色）相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClientCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新客户端颁发者证书。 如果使用多个客户端证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
+| ClientCertificateIssuerStores |建议用于生产环境。 此证书与客户端证书的颁发者（管理员和非管理员角色）相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClientCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新客户端颁发者证书。 如果使用多个客户端证书，可以指定多个颁发者。 空 IssuerCommonName 允许在 X509StoreNames 下指定的相应商店中的所有证书。|
 | ReverseProxyCertificate |建议用于测试环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
 | ReverseProxyCertificateCommonNames |建议用于生产环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797094"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321083"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
@@ -60,7 +60,7 @@ ms.locfileid: "87797094"
 
 ## <a name="add-a-new-guest-user"></a>添加新的来宾用户
 
-你还可以通过从**新用户**页面中选择 "**邀请用户**"，邀请新的来宾用户与你的组织协作。 如果你的组织的外部协作设置已配置为允许你邀请来宾，则会向用户发送电子邮件邀请，以便开始协作。 有关邀请 B2B 协作用户的详细信息，请参阅[邀请 b2b 用户 Azure Active Directory](../b2b/add-users-administrator.md)
+你还可以通过从**新用户**页面中选择 "**邀请用户**"，邀请新的来宾用户与你的组织协作。 如果你的组织的外部协作设置已配置为允许你邀请来宾，则会向用户发送电子邮件邀请，以便开始协作。 有关邀请 B2B 协作用户的详细信息，请参阅 [邀请 b2b 用户 Azure Active Directory](../external-identities/add-users-administrator.md)
 
 ## <a name="add-a-consumer-user"></a>添加使用者用户
 
@@ -105,4 +105,4 @@ ms.locfileid: "87797094"
 
 - [使用动态组和用户](../users-groups-roles/groups-create-rule.md)
 
-也可以执行其他用户管理任务，例如，[从另一个目录添加来宾用户](../b2b/what-is-b2b.md)或[还原已删除的用户](active-directory-users-restore.md)。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理和文档](../users-groups-roles/index.yml)。
+也可以执行其他用户管理任务，例如， [从另一个目录添加来宾用户](../external-identities/what-is-b2b.md) 或 [还原已删除的用户](active-directory-users-restore.md)。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理和文档](../users-groups-roles/index.yml)。

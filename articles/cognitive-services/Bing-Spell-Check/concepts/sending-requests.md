@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: fe540dbb230f033f139e82325bf8e20846f5bfe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de232ab6c52afa45b40ef7863a0cb35d7b40531f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832536"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299110"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>将请求发送到必应拼写检查 API
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
   
 请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) 请求头。 尽管是可选的，但仍建议还指定以下请求头。 这些标头有助于必应拼写检查 API 返回更准确的结果：  
   
--   [用户代理](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
 -   [X-搜索-位置](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
@@ -42,7 +42,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 
 当使用 JavaScript 调用必应拼写检查 API 时，浏览器内置的安全功能可能会阻止你访问这些标头的值。
 
-若要解决此问题，可以通过 CORS 代理发出必应拼写检查 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应标头列入允许列表，并将它们提供给 JavaScript。
+若要解决此问题，可以通过 CORS 代理发出必应拼写检查 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，该标头筛选响应标头并使它们可供 JavaScript 使用。
 
 可以轻松安装 CORS 代理，使[教程应用](../tutorials/spellcheck.md)可以访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 

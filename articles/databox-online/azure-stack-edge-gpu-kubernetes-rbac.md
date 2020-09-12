@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318958"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备上基于角色的访问控制 Kubernetes
 
@@ -32,10 +32,7 @@ Kubernetes RBAC 允许您分配用户或用户组、执行操作（如创建或�
 
 Kubernetes 资源（如 pod 和部署）按逻辑分组到一个命名空间中。 这些分组提供了一种逻辑划分 Kubernetes 群集的方法，并限制了创建、查看或管理资源的访问权限。 用户只能与分配的命名空间内的资源进行交互。
 
-命名空间适用于具有多个用户分布在多个团队或项目中的环境。 对于包含少量用户的群集，不需要创建或考虑所有命名空间。 当你需要提供的功能时，开始使用命名空间。
-
-有关详细信息，请参阅 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
-
+命名空间适用于具有多个用户分布在多个团队或项目中的环境。 有关详细信息，请参阅 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
 
 Azure Stack 边缘设备包含以下命名空间：
 
@@ -47,20 +44,18 @@ Azure Stack 边缘设备包含以下命名空间：
     - dbe-命名空间
     - 默认值
     - kubernetes-dashboard
-    - 默认值
     - kube-租赁
     - kube-公共
-    - iotedge
-    - azure-弧线
+
 
     请确保不要将任何保留名称用于创建的用户命名空间。 
 <!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
 
-- **用户命名空间** -这些是可以通过 **kubectl** 创建的命名空间，以本地方式部署应用程序。
+- **用户命名空间** -这些是可以通过 **kubectl** 创建的命名空间，也可以是通过设备的 PowerShell 接口创建以本地方式部署应用程序的命名空间。
  
-- **IoT Edge 命名空间** -通过 IoT Edge 连接到此 `iotedge` 命名空间以部署应用程序。
+- **IoT Edge 命名空间** -你连接到此 `iotedge` 命名空间以管理通过 IoT Edge 部署的应用程序。
 
-- **Azure arc 命名空间** - `azure-arc` 通过 azure arc 连接到此命名空间以部署应用程序。 
+- **Azure arc 命名空间** -连接到此 `azure-arc` 命名空间，管理通过 Azure Arc 部署的应用程序。利用 Azure Arc，还可以将应用程序部署到其他用户命名空间中。 
 
 ## <a name="namespaces-and-users"></a>命名空间和用户
 
@@ -96,7 +91,7 @@ Azure Stack 边缘设备具有多个系统命名空间，你可以创建具有�
 
 在此关系图中，Alice、Bob 和 Chuck 只能访问分配的用户命名空间，在这种情况下，这种命名空间 `ns1` 分别为、 `ns2` 和 `ns3` 。 在这些命名空间内，它们具有管理访问权限。 另一方面，群集管理员可以管理对系统命名空间和群集范围内资源的访问权限。
 
-你可以使用 `kubectl` 命令创建命名空间、分配用户、分配用户或下载 `kubeconfig` 文件。 下面是高级工作流：
+你可以使用 `kubectl` 命令创建命名空间和用户、将用户分配到命名空间或 `kubeconfig` 下载文件。 下面是高级工作流：
 
 1. 创建命名空间和用户。  
 
@@ -123,7 +118,7 @@ Azure Stack 边缘设备具有多个系统命名空间，你可以创建具有�
 - 你可以创建用户命名空间，并在这些命名空间内创建其他用户，并授予或撤消对这些用户的命名空间访问权限。
 - 不允许创建名称与任何系统命名空间相同的命名空间。 系统命名空间的名称是保留名称。  
 - 不允许创建名称已被其他用户命名空间使用的任何用户命名空间。 例如，如果你具有创建的 `test-ns` ，则不能创建另一个 `test-ns` 命名空间。
-- 不允许你创建具有已保留名称的用户。 例如， `aseuser` 是保留的群集管理员，不能使用。
+- 不允许你创建具有已保留名称的用户。 例如， `aseuser` 是一个保留用户，不能使用。
 
 
 ## <a name="next-steps"></a>后续步骤

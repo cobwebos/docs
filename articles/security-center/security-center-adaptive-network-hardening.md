@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: d12df01fe1506f7f5ade9cce60ae7af0412e3010
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080805"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378196"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心内的自适应网络强化
+# <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在 Azure 安全中心内配置自适应网络强化。
 
 ## <a name="what-is-adaptive-network-hardening"></a>什么是自适应网络强化？
@@ -35,6 +35,17 @@ ms.locfileid: "87080805"
 
 
 ![“网络强化”视图](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+
+
+## <a name="availability"></a>可用性
+
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|必需的角色和权限：|计算机的 Nsg 的写入权限|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看“自适应网络强化”警报和规则

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 09/01/2020
 ms.author: yushwang
-ms.openlocfilehash: 18eaf520c70b064f26cd1da5f50c023f42adb8ee
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021810"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318941"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -39,14 +39,14 @@ ms.locfileid: "89021810"
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
-| Arista | CloudEOS 路由器 | vEOS 4.24.0 FX | （未测试） | [配置指南](https://www.arista.com/en/cg-veos-router/veos-router-cloudeos-ipsec-connectivity-to-azure-virtual-network-gateway) |
+| Arista | CloudEOS 路由器 | vEOS 4.24.0FX | （未测试） | [配置指南](https://www.arista.com/en/cg-veos-router/veos-router-cloudeos-ipsec-connectivity-to-azure-virtual-network-gateway) |
 | Barracuda Networks, Inc. |Barracuda CloudGen 防火墙 |PolicyBased：5.4.3<br>RouteBased：6.2.0 |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
 | 检查点 |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |支持 |[配置指南*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |支持 |支持 |
 | Cisco | CSR | RouteBased：IOS-XE 16.10 | （未测试） | [配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |支持 |支持 |
-| Cisco |Meraki |空值 |不兼容 |不兼容 |
+| Cisco |Meraki (MX)  | MX v 15.12 |不兼容 | [配置指南](https://documentation.meraki.com/MX/Site-to-site_VPN/Configuring_Site_to_Site_VPN_tunnels_to_Azure_VPN_Gateway) |
 | Cisco | vEdge (Viptela OS) | 18.4.0（主动/被动模式）<br><br>19.2（主动/主动模式） | 不兼容 |  [手动配置（主动/被动）](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onramp 配置（主动/主动）](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -67,7 +67,7 @@ ms.locfileid: "89021810"
 | Sophos | XG 下一代防火墙 | XG v17 | （未测试） | [配置指南](https://community.sophos.com/kb/127546)<br><br>[配置指南 - 多个 SA](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | （未测试） | [配置指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未测试） | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347) |
-| 超高性能 | 3E-636L3 | 5.2.0 生成-13  | （未测试） | [配置指南](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
+| 超高性能 | 3E-636L3 | 5.2.0.T3 Build-13  | （未测试） | [配置指南](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
 | WatchGuard |全部 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v4.32+ | （未测试） | [基于 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/)<br><br>[基于 IKEv2/IPsec 的BGP](https://businessforum.zyxel.com/discussion/2650/)|
 

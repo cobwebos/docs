@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 09/01/2020
 ms.author: lbosq
-ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263052"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318210"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
 
@@ -44,11 +44,10 @@ ms.locfileid: "85263052"
 
 |**迁移类型**|**解决方案**|**注意事项**|
 |---------|---------|---------|
-|Offline|[数据迁移工具](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; 易于设置并支持多个源 <br/>&bull; 不适合用于大型数据集。|
-|Offline|[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; 易于设置且支持多个源 <br/>&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程<br/>&bull; 缺少死信队列，这意味着，出现几个有错误的文件就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量|
+|联机|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
+|Offline|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
+|Offline|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)|&bull; 易于设置且支持多个源 <br/>&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程<br/>&bull; 缺少死信队列，这意味着，出现几个有错误的文件就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量|
 |Offline|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
-|联机|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 完全托管的迁移服务。<br/>&bull; 为迁移任务提供托管和监视解决方案。 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
-
 
 ## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a>估算工作负荷的吞吐量需求
 
@@ -71,18 +70,18 @@ ms.locfileid: "85263052"
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-也可以使用[诊断设置](cosmosdb-monitor-resource-logs.md)来了解针对 Azure Cosmos DB 执行的查询的频率和模式。 可将诊断日志中的结果发送到存储帐户、事件中心实例或 [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。  
+也可以使用[诊断设置](cosmosdb-monitor-resource-logs.md)来了解针对 Azure Cosmos DB 执行的查询的频率和模式。 可将诊断日志中的结果发送到存储帐户、事件中心实例或 [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md)。  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>选择分区键
 分区（也称为分片）是迁移数据之前要考虑的一个要点。 Azure Cosmos DB 使用完全托管的分区来提高数据库中的容量，以满足存储和吞吐量要求。 此功能不需要托管或配置路由服务器。   
 
-分区功能以类似方式自动增加容量，并相应地重新均衡数据。 有关为数据选择适当分区键的详细信息和建议，请参阅[选择分区键](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)一文。 
+分区功能以类似方式自动增加容量，并相应地重新均衡数据。 有关为数据选择适当分区键的详细信息和建议，请参阅[选择分区键](partitioning-overview.md#choose-partitionkey)一文。 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>为数据编制索引
 
 Azure Cosmos DB API for MongoDB 服务器版本 3.6 仅自动为 `_id` 字段编制索引。 无法删除此字段。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 若要为其他字段编制索引，请应用 MongoDB 索引管理命令。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
 
-Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 有关详细信息，请参阅[Azure Cosmos DB 的 API For MongoDB 中的索引](mongodb-indexing.md)。
+Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 有关详细信息，请参阅 [Azure Cosmos DB 的 API For MongoDB 中的索引](mongodb-indexing.md)。
 
 [Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db.md)自动迁移具有唯一索引的 MongoDB 集合。 但是，必须在迁移之前创建唯一索引。 如果集合中已包含数据，Azure Cosmos DB 将不支持创建唯一索引。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)。
 

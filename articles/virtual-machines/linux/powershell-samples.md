@@ -1,20 +1,20 @@
 ---
-title: Azure 虚拟机 PowerShell 示例
-description: Azure 虚拟机 PowerShell 示例
+title: PowerShell 示例
+description: Vm 的 PowerShell 示例列表
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 23dd47df33ef6571fefbf1c1964324bea5ca4488
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b1a154e562db9f8fdd74300bb8eb3d6839cb2ef4
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369928"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321916"
 ---
-# <a name="azure-virtual-machine-powershell-samples-for-creating-and-managing-linux-vms"></a>用于创建和管理 Linux Vm 的 Azure 虚拟机 PowerShell 示例
+# <a name="azure-vm-powershell-samples-for-creating-and-managing-linux-vms"></a>用于创建和管理 Linux Vm 的 Azure VM PowerShell 示例
 
 下表包含用于创建和管理 Linux 虚拟机的 PowerShell 脚本示例的链接。
 
@@ -25,15 +25,15 @@ ms.locfileid: "87369928"
 | [创建已启用 Docker 的 VM](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，将此 VM 配置为 Docker 主机，并运行 NGINX 容器。 |
 | [创建 VM 并运行配置脚本](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，并使用 Azure 自定义脚本扩展安装 NGINX。 |
 | [创建安装有 WordPress 的 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，并使用 Azure 自定义脚本扩展安装 WordPress。 |
-| [从托管 OS 磁盘创建 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 通过将现有托管磁盘附加为 OS 磁盘来创建虚拟机。 |
+| [从托管 OS 磁盘创建 VM](./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 通过将现有托管磁盘附加为 OS 磁盘来创建虚拟机。 |
 | [从快照创建 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 通过先从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 |
 |**管理存储**||
-| [在相同或不同的订阅中从 VHD 创建托管磁盘](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 在相同或不同订阅中，从专用 VHD 将托管磁盘创建为 OS 磁盘，或从数据 VHD 将托管磁盘创建为数据磁盘。  |
-| [从快照创建托管磁盘](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 从快照创建托管磁盘。 |
-| [将快照作为 VHD 导出到存储帐户](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管快照作为 VHD 导出到不同区域中的存储帐户。 |
-| [将托管磁盘的 VHD 导出到存储帐户](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管磁盘的基础 VHD 导出到不同区域的存储帐户。 |
-| [从 VHD 创建快照](../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 从 VHD 创建快照，然后使用该快照快速创建多个相同的托管磁盘。  |
-| [将快照复制到相同或不同的订阅](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将快照复制到父快照所在区域中的相同或不同订阅。 |
+| [在相同或不同的订阅中从 VHD 创建托管磁盘](../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 在相同或不同订阅中，从专用 VHD 将托管磁盘创建为 OS 磁盘，或从数据 VHD 将托管磁盘创建为数据磁盘。  |
+| [从快照创建托管磁盘](../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 从快照创建托管磁盘。 |
+| [将快照作为 VHD 导出到存储帐户](../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管快照作为 VHD 导出到不同区域中的存储帐户。 |
+| [将托管磁盘的 VHD 导出到存储帐户](../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管磁盘的基础 VHD 导出到不同区域的存储帐户。 |
+| [从 VHD 创建快照](../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 从 VHD 创建快照，然后使用该快照快速创建多个相同的托管磁盘。  |
+| [将快照复制到相同或不同的订阅](../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将快照复制到父快照所在区域中的相同或不同订阅。 |
 |**监视虚拟机**||
 | [使用 Azure Monitor 日志监视 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，安装 Log Analytics 代理，并在 Log Analytics 工作区中注册该 VM。  |
 | [将托管磁盘复制到相同或不同的订阅](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管磁盘复制到父托管磁盘所在区域中的相同或不同订阅。

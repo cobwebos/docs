@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797387"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321967"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 添加组织的隐私信息
 本文介绍租户管理员如何通过 Azure 门户将与隐私相关的信息添加到组织的 Azure Active Directory (Azure AD) 租户。
@@ -56,5 +56,5 @@ ms.locfileid: "87797387"
 4. 选择“保存” 。
 
 ## <a name="next-steps"></a>后续步骤
-- [Azure Active Directory B2B 协作邀请兑换](../b2b/redemption-experience.md)
+- [Azure Active Directory B2B 协作邀请兑换](../external-identities/redemption-experience.md)
 - [在 Azure Active Directory 中添加或更改用户的个人资料信息](active-directory-users-profile-azure-portal.md)

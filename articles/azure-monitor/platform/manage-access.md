@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925628"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300096"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -20,7 +20,7 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 本文介绍如何管理对日志的访问，以及如何管理包含日志的工作区，包括如何执行以下操作： 
 
 * 使用工作区权限授予对工作区的访问权限。
-* 需要使用基于角色的访问控制从特定资源访问日志数据的用户 (Azure RBAC) -也称为[资源上下文](design-logs-deployment.md#access-mode)
+* 需要使用 Azure 基于角色的访问控制 (Azure RBAC)（也称为[资源上下文](design-logs-deployment.md#access-mode)）访问特定资源中的日志数据的用户
 * 使用 Azure RBAC 对需要访问工作区中特定表中的日志数据的用户授予访问权限。
 
 要了解有关 RBAC 和访问策略的日志概念，请阅读[设计 Azure Monitor 日志部署](design-logs-deployment.md)
@@ -102,7 +102,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 ## <a name="manage-access-using-workspace-permissions"></a>使用工作区权限管理访问
 
-每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 使用 azure [RBAC)  (，使用 azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)来管理访问权限。
+每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 来管理访问权限。
 
 以下活动也需要 Azure 权限：
 
@@ -228,14 +228,14 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 为用户授予对工作区的以下权限： 
 
-        * `Microsoft.OperationalInsights/workspaces/read`–必需，以便用户可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
-        * `Microsoft.OperationalInsights/workspaces/query/read`–每个可以执行查询的用户都需要
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`–能够读取 Azure AD 登录日志
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read`–能够读取更新管理解决方案日志
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`–能够读取更新管理解决方案日志
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`–能够读取更新管理日志
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`–要求能够使用更新管理解决方案
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`–要求能够使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/read` –必需，以便用户可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
+        * `Microsoft.OperationalInsights/workspaces/query/read` –每个可以执行查询的用户都需要
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` –能够读取 Azure AD 登录日志
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` –能够读取更新管理解决方案日志
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` –能够读取更新管理解决方案日志
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` –能够读取更新管理日志
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` –要求能够使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` –要求能够使用更新管理解决方案
 
     * 为用户授予对其资源的以下权限：分配给“读取者”角色的 `*/read`，或 `Microsoft.Insights/logs/*/read`。 
 
@@ -270,7 +270,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-以上示例定义了允许的表的允许列表。 此示例显示了当用户可以访问除 SecurityAlert 表之外的所有表时的阻止列表定义：
+以上示例定义了允许的表的列表。 当用户可以访问所有表而不是 _SecurityAlert_ 表时，此示例显示阻止列表定义：
 
 ```
 "Actions":  [

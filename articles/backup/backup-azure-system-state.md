@@ -3,12 +3,12 @@ title: 将 Windows 系统状态备份到 Azure
 description: 了解如何将 Windows Server 计算机的系统状态备份到 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181623"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376484"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
 
@@ -62,7 +62,7 @@ ms.locfileid: "89181623"
 
     ![配置文件和文件夹](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    单击 "确定" 后，会在 " **备份目标**" 旁边显示一个复选标记，并会打开 " **准备基础结构** " 窗格。
+    选择 **"确定"** 后，会在 " **备份目标**" 旁边显示一个复选标记，并会打开 " **准备基础结构** " 窗格。
 
     ![已配置备份目标，接下来准备基础结构](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "89181623"
 
 5. 选择 " **系统状态** "，然后选择 **"确定"**。
 
-6. 选择“下一步”  。
+6. 选择“**下一步**”。
 
 7. 在后续页中选择系统状态备份所需的备份频率和保留策略。
 

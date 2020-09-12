@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268187"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322018"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack 边缘 GPU 设备上的 Kubernetes 群集上启用 Azure Arc
 
@@ -22,7 +22,7 @@ ms.locfileid: "89268187"
 此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在 Kubernetes 群集上启用 Azure Arc 之前，请确保已在 Azure Stack 边缘设备和将用于访问设备的客户端上完成以下先决条件：
 
@@ -59,7 +59,7 @@ ms.locfileid: "89268187"
 
 ## <a name="register-kubernetes-resource-providers"></a>注册 Kubernetes 资源提供程序
 
-在通过 Azure Arc 配置 Kubernetes 群集之前，你将需要启用并注册 `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` 订阅。 
+在 Kubernetes 群集上启用 Azure Arc 之前，你将需要启用并注册 `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` 订阅。 
 
 1. 若要启用资源提供程序，请在 Azure 门户中，访问计划用于部署的订阅。 请访问 **资源提供程序**。 
 1. 在右侧窗格中，搜索要添加的提供程序。 在此示例中， `Microsoft.Kubernetes` 和 `Microsoft.KubernetesConfiguration` 。
@@ -88,7 +88,7 @@ ms.locfileid: "89268187"
 
 1. 若要创建服务主体，请通过使用以下命令 `az cli` 。
 
-    `az as sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
     有关如何登录到的信息 `az cli` ，请 [在 Azure 门户中开始 Cloud Shell](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
@@ -108,7 +108,7 @@ ms.locfileid: "89268187"
 
 1. 记下 `appID` 、、和， `name` `password` `tenantID` 因为你将在下一命令中将其用作输入。
 
-1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 使用以下命令：
+1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 请使用以下命令：
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
@@ -142,12 +142,12 @@ ms.locfileid: "89268187"
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    若要在 Azure Stack Edge 设备上部署 Azure Arc，请确保使用 [受支持的 Azure arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前为预览版。 
+    若要在 Azure Stack Edge 设备上部署 Azure Arc，请确保使用 [受支持的 Azure arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前为预览版。 你还可以使用命令来确定要在 cmdlet 中传递的区域的确切名称 `az account list-locations` 。
     
-    以下是示例：
+    下面是一个示例：
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "WestEurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
         [10.128.44.240]: PS>
     ```
     
@@ -180,7 +180,7 @@ ms.locfileid: "89268187"
 
     还可以在命名空间中获取 Kubernetes 群集上运行的盒的列表 `azure-arc` 。 Pod 是在 Kubernetes 群集上运行的应用程序容器或进程。 
 
-    使用以下命令：
+    请使用以下命令：
     
     `kubectl get pods -n azure-arc`
     

@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e696ff576ffa8e788312344c4ebd103184173fa4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799576"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318584"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中添加或删除组所有者
 Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有者可以是用户或服务主体，并且能够管理组（包括成员身份）。 只有现有的组所有者或组管理管理员才能分配组所有者。 组所有者无需成为组成员。
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有
 当组没有所有者时，组管理管理员仍然能够管理组。 建议每个组至少有一个所有者。 将所有者分配到组后，将无法删除该组的最后一个所有者。 请确保在从组中删除最后一个所有者之前选择另一个所有者。
 
 ## <a name="add-an-owner-to-a-group"></a>向组添加所有者
-下面是使用 Azure AD 门户将用户作为所有者添加到组的说明。 若要将服务主体添加为组的所有者，请按照说明使用 [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) 执行此操作。
+下面是使用 Azure AD 门户将用户作为所有者添加到组的说明。 若要将服务主体添加为组的所有者，请按照说明使用 [PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) 执行此操作。
 
 ### <a name="to-add-a-group-owner"></a>添加组所有者
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。

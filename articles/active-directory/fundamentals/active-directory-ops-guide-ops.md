@@ -11,16 +11,16 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422949"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321950"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 常规操作指南参考
 
-本部分的[Azure AD 操作参考指南](active-directory-ops-guide-intro.md)介绍了优化 Azure Active Directory （Azure AD）的常规操作时应采取的检查和操作。
+本部分的 [Azure AD 操作参考指南](active-directory-ops-guide-intro.md) 介绍了 Azure Active Directory (Azure AD) 中优化常规操作所需执行的检查和操作。
 
 > [!NOTE]
 > 这些建议是发布日期之后的最新建议，但会随时间变化。 组织应持续评估其操作做法，因为 Microsoft 产品和服务随时间推移而发展。
@@ -43,14 +43,14 @@ ms.locfileid: "75422949"
 | 监视混合日志：直通身份验证代理 | IAM 操作团队 |
 | 监视混合日志：密码写回服务 | IAM 操作团队 |
 | 监视混合日志：本地密码保护网关 | IAM 操作团队 |
-| 监视混合日志： Azure MFA NPS 扩展（如果适用） | IAM 操作团队 |
+| 监视混合日志： Azure MFA NPS 扩展 (（如果适用）)  | IAM 操作团队 |
 
 查看列表时，可能会发现需要为缺少所有者的任务分配所有者，或使用与上述建议不符的所有者来调整任务的所有权。
 
 #### <a name="owners-recommended-reading"></a>所有者建议阅读
 
-- [在 Azure Active Directory 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure 中的监管](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure 中的监管](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>混合管理
 
@@ -69,12 +69,12 @@ ms.locfileid: "75422949"
 
 #### <a name="hybrid-management-recommended-reading"></a>混合管理建议阅读
 
-- [Azure AD Connect：自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
-- [了解 Azure AD 应用程序代理连接器 |自动更新](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#automatic-updates)
+- [Azure AD Connect：自动升级](../hybrid/how-to-connect-install-automatic-upgrade.md)
+- [了解 Azure AD 应用程序代理连接器 |自动更新](../manage-apps/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health 警报基线
 
-组织应部署[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health)以便监视和报告 Azure AD Connect 和 AD FS。 Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理和身份验证，从而导致停机。 Azure AD Connect Health 有助于监视和深入了解本地标识基础结构，从而确保环境的可靠性。
+组织应部署 [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) 以便监视和报告 Azure AD Connect 和 AD FS。 Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理和身份验证，从而导致停机。 Azure AD Connect Health 有助于监视和深入了解本地标识基础结构，从而确保环境的可靠性。
 
 ![Azure AD Connect Heath 体系结构](./media/active-directory-ops-guide/active-directory-ops-img16.png)
 
@@ -82,19 +82,19 @@ ms.locfileid: "75422949"
 
 #### <a name="azure-ad-connect-health-recommended-reading"></a>Azure AD Connect Health 建议阅读
 
-- [Azure AD Connect Health 代理安装](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+- [Azure AD Connect Health 代理安装](../hybrid/how-to-connect-health-agent-install.md)
 
 ### <a name="on-premises-agents-logs"></a>本地代理日志
 
-某些标识和访问管理服务要求本地代理启用混合方案。 示例包括密码重置、传递身份验证（PTA）、Azure AD 应用程序代理和 Azure MFA NPS 扩展。 操作团队通过使用 System Center Operations Manager 或 SIEM 等解决方案存档和分析组件代理日志来比较和监视这些组件的运行状况，这一点很重要。 同样重要的是，Infosec 运营团队或咨询台了解如何排查错误模式。
+某些标识和访问管理服务要求本地代理启用混合方案。 示例包括密码重置、传递身份验证 (PTA) 、Azure AD 应用程序代理和 Azure MFA NPS 扩展。 操作团队通过使用 System Center Operations Manager 或 SIEM 等解决方案存档和分析组件代理日志来比较和监视这些组件的运行状况，这一点很重要。 同样重要的是，Infosec 运营团队或咨询台了解如何排查错误模式。
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>本地代理日志建议阅读
 
-- [应用程序代理故障排除](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
-- [自助密码重置疑难解答 - Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [了解 Azure AD 应用程序代理连接器](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
-- [Azure AD Connect：对直通身份验证进行故障排除](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
-- [排查 Azure MFA NPS 扩展的错误代码](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
+- [应用程序代理故障排除](../manage-apps/application-proxy-troubleshoot.md)
+- [自助密码重置疑难解答 - Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [了解 Azure AD 应用程序代理连接器](../manage-apps/application-proxy-connectors.md)
+- [Azure AD Connect：对直通身份验证进行故障排除](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
+- [排查 Azure MFA NPS 扩展的错误代码](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>本地代理管理
 
@@ -106,14 +106,14 @@ ms.locfileid: "75422949"
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>本地代理管理建议阅读
 
-- [了解 Azure AD 应用程序代理连接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [了解 Azure AD 应用程序代理连接器](../manage-apps/application-proxy-connectors.md)
 - [Azure AD 传递身份验证-快速入门](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大规模管理
 
 ### <a name="identity-secure-score"></a>标识安全分数
 
-[标识安全分数](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score)为组织的安全状况提供了一个可计量度量值。 这是不断查看和解决报告并尽力实现最高分数的关键。 评分有助于：
+[标识安全分数](./identity-secure-score.md)为组织的安全状况提供了一个可计量度量值。 这是不断查看和解决报告并尽力实现最高分数的关键。 评分有助于：
 
 - 客观衡量标识安全状况
 - 规划标识安全改进
@@ -125,15 +125,15 @@ ms.locfileid: "75422949"
 
 ### <a name="notifications"></a>通知
 
-Microsoft 向管理员发送电子邮件通信，通知服务中的各种更改、所需的配置更新以及需要管理员干预的错误。 重要的是，客户必须设置通知电子邮件地址，以便将通知发送到正确的团队成员，这些成员可以确认并操作所有通知。 建议将多个收件人添加到[Office 365 消息中心](https://docs.microsoft.com/office365/admin/manage/message-center)，并请求将通知（包括 Azure AD Connect Health 通知）发送到通讯组列表或共享邮箱。 如果只有一个具有电子邮件地址的全局管理员帐户，请确保至少配置两个支持电子邮件的帐户。
+Microsoft 向管理员发送电子邮件通信，通知服务中的各种更改、所需的配置更新以及需要管理员干预的错误。 重要的是，客户必须设置通知电子邮件地址，以便将通知发送到正确的团队成员，这些成员可以确认并操作所有通知。 建议将多个收件人添加到 [Office 365 消息中心](/office365/admin/manage/message-center) ，并请求通知 (包括 Azure AD Connect Health 通知) 发送到通讯组列表或共享邮箱。 如果只有一个具有电子邮件地址的全局管理员帐户，请确保至少配置两个支持电子邮件的帐户。
 
 Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> ，用于发送 Office 365 消息中心通知; 以及 <azure-noreply@microsoft.com> 发送与以下内容相关的通知：
 
-- [Azure AD 访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
-- [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD 标识保护](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
-- [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
-- [企业应用到期证书通知](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
+- [Azure AD 访问评审](../governance/access-reviews-overview.md)
+- [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
+- [Azure AD 标识保护](../identity-protection/howto-identity-protection-configure-notifications.md)
+- [Azure AD Privileged Identity Management](../privileged-identity-management/pim-email-notifications.md)
+- [企业应用到期证书通知](../manage-apps/manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)
 - 企业应用预配服务通知
 
 请参阅下表，了解发送的通知类型和要检查的通知：
@@ -144,27 +144,27 @@ Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> ，
 | Office 365 消息中心 | 标识服务和 O365 后端服务的事件和降级通知 | Office 门户 |
 | Identity Protection 每周摘要 | Identity Protection 摘要 | Azure AD Identity Protection 边栏选项卡 |
 | Azure AD Connect Health | 警报通知 | Azure 门户-Azure AD Connect Health 边栏选项卡 |
-| 企业应用程序通知 | 证书即将过期时的通知和预配错误 | Azure 门户-企业应用程序边栏选项卡（每个应用程序都有自己的电子邮件地址设置） |
+| 企业应用程序通知 | 证书即将过期时的通知和预配错误 | Azure 门户企业应用程序边栏选项卡 (每个应用程序都有自己的电子邮件地址设置)  |
 
 #### <a name="notifications-recommended-reading"></a>建议阅读通知
 
-- [更改组织的地址、技术联系人和更多-Office 365](https://docs.microsoft.com/office365/admin/manage/change-address-contact-and-more)
+- [更改组织的地址、技术联系人和更多-Office 365](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>操作外围应用
 
 ### <a name="ad-fs-lockdown"></a>AD FS 锁定
 
-组织，它将应用程序配置为直接进行身份验证，以便 Azure AD 受益于 [Azure AD 智能锁定](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)。 如果在 Windows Server 2012 R2 中使用 AD FS，请实现 AD FS [extranet 锁定保护](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果在 Windows Server 2016 或更高版本上使用 AD FS，请实现 [extranet 智能锁定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 我们至少建议你启用 extranet 锁定，以包含对本地 Active Directory 进行暴力攻击的风险。 但是，如果在 Windows 2016 或更高版本中有 AD FS，还应启用 extranet 智能锁定，以帮助减轻[密码喷涂](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻击。
+组织，它将应用程序配置为直接进行身份验证，以便 Azure AD 受益于 [Azure AD 智能锁定](../authentication/concept-sspr-howitworks.md)。 如果在 Windows Server 2012 R2 中使用 AD FS，请实现 AD FS [extranet 锁定保护](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果在 Windows Server 2016 或更高版本上使用 AD FS，请实现 [extranet 智能锁定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 我们至少建议你启用 extranet 锁定，以包含对本地 Active Directory 进行暴力攻击的风险。 但是，如果在 Windows 2016 或更高版本中有 AD FS，还应启用 extranet 智能锁定，以帮助减轻 [密码喷涂](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) 攻击。
 
-如果 AD FS 仅用于 Azure AD 联合，则可以关闭某些终结点以最大程度地减少受攻击面。 例如，如果 AD FS 仅用于 Azure AD，则应禁用不支持**usernamemixed**和**windowstransport**终结点的 ws-trust 终结点。
+如果 AD FS 仅用于 Azure AD 联合，则可以关闭某些终结点以最大程度地减少受攻击面。 例如，如果 AD FS 仅用于 Azure AD，则应禁用不支持 **usernamemixed** 和 **windowstransport**终结点的 ws-trust 终结点。
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>使用本地标识组件访问计算机
 
 组织应使用与本地域相同的方式锁定对具有本地混合组件的计算机的访问。 例如，备份操作员或 Hyper-v 管理员应无法登录到 Azure AD Connect 服务器来更改规则。
 
-Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识系统，该环境在完全控制环境（第0层）与攻击者经常泄露的高风险工作站资产之间使用。 ![层模型的三个层图示](./media/active-directory-ops-guide/active-directory-ops-img18.png)
+Active Directory 的管理层模型旨在使用一组缓冲区区域来保护标识系统， (层 0) 和攻击者经常泄露的高风险工作站资产之间使用一组缓冲区。 ![层模型的三个层图示](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
-[层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)由三个级别组成，只包括管理帐户，而不包括标准用户帐户。
+[层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)由三个级别组成，只包括管理帐户，而不包括标准用户帐户。
 
 - **第0层**  -在环境中直接控制企业标识。 第 0 层包括帐户、组以及对 Active Directory 林、域或域控制器及其中的所有资产具有直接或间接管理控制权的其他资产。 第 0 层中所有资产的安全敏感性是等同的，因为它们均可以有效地相互控制。
 - **第1层**  -控制企业服务器和应用程序。 第 1 层资产包括服务器操作系统、云服务和企业应用程序。 第 1 层的管理员帐户能够管理控制这些资产上托管的大量业务价值。 常见的示例角色是服务器管理员，此角色可维护这些操作系统并能够影响所有企业服务。
@@ -174,7 +174,7 @@ Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识
 
 ## <a name="summary"></a>总结
 
-安全标识基础结构有七个方面。 此列表将帮助你找到为 Azure Active Directory （Azure AD）优化操作而应执行的操作。
+安全标识基础结构有七个方面。 此列表将帮助你查找 Azure Active Directory (Azure AD) 优化操作所需执行的操作。
 
 - 将所有者分配给关键任务。
 - 为本地混合组件自动执行升级过程。
@@ -186,4 +186,4 @@ Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识
 
 ## <a name="next-steps"></a>后续步骤
 
-有关未部署的任何功能的实现细节，请参阅[Azure AD 部署计划](active-directory-deployment-plans.md)。
+有关未部署的任何功能的实现细节，请参阅 [Azure AD 部署计划](active-directory-deployment-plans.md) 。

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d8f3b4d57f00ef33bbf566c36babafd83be9a5df
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037306"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299620"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>如何在 Azure 春季云中自行诊断和解决问题
 Azure 春季云诊断是一种交互式体验，可帮助你对应用进行故障排除。 不需要任何配置。 当你发现问题时，Azure 春季云诊断会指出问题所在，并指导你获取有助于排查和解决此问题的信息。
@@ -21,13 +21,13 @@ Azure 春季云诊断是一种交互式体验，可帮助你对应用进行故�
 要完成本教程，需要：
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 部署的 Azure Spring Cloud 服务实例。 按[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart-launch-app-cli.md)操作即可入门。
+* 部署的 Azure Spring Cloud 服务实例。 按[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart.md)操作即可入门。
 * 至少已在该服务实例中创建一个应用程序。
 
 ## <a name="navigate-to-the-diagnostics-page"></a>导航到 "诊断" 页
 1. 登录到 Azure 门户。
 2. 转到 Azure Spring Cloud 的“概览”页。
-3. 在页面左侧的菜单中打开 "**诊断并解决问题**"。
+3. 在页面左侧的菜单中打开 " **诊断并解决问题** "。
 
  ![诊断，求解对话框](media/spring-cloud-diagnose/diagnose-solve-dialog.png)
 
@@ -36,11 +36,11 @@ Azure 春季云诊断是一种交互式体验，可帮助你对应用进行故�
 
  ![搜索问题](media/spring-cloud-diagnose/search-detectors.png)
 
-选择 "**配置服务器运行状况检查**"、"**配置服务器运行状况状态**" 或 "**配置服务器更新历史记录**" 将显示各种结果。
+选择 " **配置服务器运行状况检查**"、" **配置服务器运行状况状态**" 或 " **配置服务器更新历史记录** " 将显示各种结果。
 
 ![问题选项](media/spring-cloud-diagnose/detectors-options.png)
 
-找到目标探测器，并单击它执行。 执行检测器后，将显示诊断摘要。 您可以选择 "**查看完整报表**" 以检查诊断详细信息，或者单击 "**显示磁贴菜单**" 按钮返回到 "检测器列表"。
+找到目标探测器，并单击它执行。 执行检测器后，将显示诊断摘要。 您可以选择 " **查看完整报表** " 以检查诊断详细信息，或者单击 " **显示磁贴菜单** " 按钮返回到 "检测器列表"。
 
  ![摘要诊断](media/spring-cloud-diagnose/summary-diagnostics.png)
 

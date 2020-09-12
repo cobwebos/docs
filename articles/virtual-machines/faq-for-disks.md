@@ -1,5 +1,5 @@
 ---
-title: 有关磁盘的常见问题
+title: 有关磁盘的常见问题解答
 description: 有关 Azure IaaS Linux VM 磁盘和高级磁盘（托管和非托管）的常见问题解答
 author: roygara
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d05de44343d5d530a367286bec3d82ba3d66f0f6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817417"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322511"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -50,7 +50,7 @@ ms.locfileid: "88817417"
 
 **是否可以使用 Azure 存储帐户中的 VHD 文件在不同的区域中创建托管磁盘？**
 
-不是。
+否。
 
 客户使用托管磁盘是否存在任何规模限制？
 
@@ -58,7 +58,7 @@ ms.locfileid: "88817417"
 
 可用性集中的 VM 是否可以同时包含托管和非托管磁盘？
 
-不是。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
+否。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
 
 **托管磁盘是否是 Azure 门户中的默认选项？**
 
@@ -110,15 +110,15 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 是否可以收缩或缩小托管磁盘？
 
-不是。 目前，不支持此功能。
+否。 目前，不支持此功能。
 
 是否可以在磁盘上中断租用？
 
-不是。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
+否。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
 
 当使用专用（未使用系统准备工具创建或未通用化）操作系统磁盘预配 VM 时，是否可以更改计算机名称属性？
 
-不是。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
+否。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
 
 在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
 * [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/)（使用托管磁盘的模板列表）
@@ -245,11 +245,11 @@ Azure 备份是否可用于超级磁盘？
 
 是否可以在 VM 处于上传状态时将磁盘附加到它？
 
-不是。
+否。
 
 **是否可以创建处于上传状态的托管磁盘的快照？**
 
-不是。
+否。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -288,11 +288,11 @@ Azure 标准 SSD 盘是什么？
 
 **是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？**
 
-不是。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
+否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
-不是。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
+否。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
 是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？
 
@@ -300,7 +300,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-不是。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
+否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -322,11 +322,11 @@ Azure 标准 SSD 盘是什么？
 
 是否可以为托管磁盘禁用服务器端加密？
 
-不是。
+否。
 
 服务器端加密是否仅适用于特定区域？
 
-不是。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
+否。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
 
 对于本地到 Azure 和 Azure 到 Azure 灾难恢复方案，Azure Site Recovery 是否支持使用客户托管密钥的服务器端加密？
 
@@ -346,7 +346,7 @@ Azure 标准 SSD 盘是什么？
 
 是否会同时加密从托管磁盘或快照导出的 VHD？
 
-不是。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
+否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
@@ -398,11 +398,11 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 **操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 4 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统非托管磁盘的最大大小为 2 TiB。 Azure 支持的非托管数据磁盘最大大小为 4 TiB。
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 为操作系统非托管磁盘支持的最大大小为 4 TiB。 Azure 支持的非托管数据磁盘最大大小为 4 TiB。
 
 支持的最大页 blob 大小是多少？
 
@@ -467,15 +467,15 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以将多个虚拟网络链接到相同的磁盘访问对象？**
 
-不是。 目前，只能将磁盘访问对象链接到一个虚拟网络。
+否。 目前，只能将磁盘访问对象链接到一个虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+否。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+否。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **可以同时发生多少次使用同一磁盘访问对象的导出或导入？**
 
@@ -483,11 +483,11 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以使用磁盘/快照的 SAS URI 来下载与该磁盘关联的专用终结点的子网中的 VM 的基础 VHD？**
 
-是的。
+可以。
 
 **是否可以使用磁盘/快照的 SAS URI 下载 VM 的基础 VHD，该虚拟机不在与该磁盘关联的专用终结点的子网中。**
 
-不是。
+否。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 

@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 919f3105c1ee9cc8cbdfaf413be56f6dd6291683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212677"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378519"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
@@ -25,8 +25,6 @@ ms.locfileid: "85212677"
 ## <a name="key-commands"></a>关键命令
 
 [对用户数据库启用/禁用结果集缓存](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-
-[开启/关闭用户数据库的结果集缓存](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 [对会话启用/禁用结果集缓存](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
@@ -81,11 +79,11 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 ## <a name="manage-cached-results"></a>管理缓存结果
 
-每个数据库的结果集缓存最大大小为 1 TB。  当基础查询数据更改时，缓存的结果将自动失效。  
+每个数据库的结果集缓存最大大小为 1 TB。  当底层查询数据发生更改时，缓存结果会自动失效。  
 
 缓存逐出由 Synapse SQL 按照以下计划自动管理：
 
-- 尚未使用结果集或已失效（每 48 小时执行一次）。
+- 如果结果集在 48 小时间隔时间内未使用，或者已失效。
 - 当结果集缓存接近最大大小时。
 
 用户可以使用以下选项之一手动清空整个结果集缓存：

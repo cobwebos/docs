@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974881"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299248"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
@@ -51,7 +51,7 @@ ms.locfileid: "74974881"
 
 通过滚动更新获得新叶证书后，设备无法再连接到 IoT 中心，因为它使用新证书进行连接。 IoT 中心只会识别具有旧证书的设备。 设备尝试连接会导致“未授权”连接错误。 若要解决此错误，必须更新设备的注册条目，以采用设备的新叶证书。 然后，在重新预配设备时，预配服务可根据需要更新 IoT 中心设备注册表信息。 
 
-如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则上述连接尝试可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则该设备可以识别。 如果在对安全违规做出反应时出现这种情况，至少应将组中被视为违规的特定设备证书加入方块列表。 有关详细信息，请参阅[将注册组中的特定设备加入方块列表](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
+如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则上述连接尝试可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则该设备可以识别。 如果这种情况是由于对安全漏洞的反应，则至少应禁用组中被视为被破坏的特定设备证书。 有关详细信息，请参阅 [禁止注册组中的特定设备](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group)。
 
 可在“管理注册”页上更新已滚动更新的证书的注册条目。  若要访问该页，请遵循以下步骤：
 
@@ -197,9 +197,9 @@ ms.locfileid: "74974881"
 重新预配完成后，设备可以使用其新证书连接到 IoT 中心。
 
 
-## <a name="blacklist-certificates"></a>将证书加入方块列表
+## <a name="disallow-certificates"></a>禁止证书
 
-响应安全违规时，可能需要将设备证书加入方块列表。 若要将设备证书加入方块列表，请禁用目标设备/证书的注册条目。 有关详细信息，请参阅[管理取消注册](how-to-revoke-device-access-portal.md)一文中的“将设备列入方块列表”。
+为了响应安全漏洞，可能需要禁止设备证书。 若要禁止设备证书，请禁用目标设备/证书的注册条目。 有关详细信息，请参阅 [Manage 取消注册](how-to-revoke-device-access-portal.md) 文章中的禁止设备。
 
 将证书包含为已禁用注册条目的一部分后，使用该证书注册到 IoT 中心的任何尝试都会失败，即使已在另一个注册条目中启用该证书。
  
@@ -211,13 +211,3 @@ ms.locfileid: "74974881"
 - 若要详细了解设备预配服务中的 X.509 证书，请参阅[安全性](concepts-security.md) 
 - 若要了解如何使用 Azure IoT 中心设备预配服务执行 X.509 CA 证书的所有权证明，请参阅[如何验证证书](how-to-verify-certificates.md)
 - 若要了解如何使用门户创建登记组，请参阅[使用 Azure 门户管理设备登记](how-to-manage-enrollments.md)。
-
-
-
-
-
-
-
-
-
-

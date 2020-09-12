@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何排查在使用 Azure 备份对 SAP HANA 数据库进行备份时可能发生的常见错误。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004164"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377678"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上的 SAP HANA 数据库备份问题
 
@@ -97,7 +97,7 @@ ms.locfileid: "89004164"
 
 - 默认情况下会使用备份项名称填充还原的数据库名称。 在本例中为 h21(sdc)。
 - 选择目标为 "H11" 不会自动更改还原的数据库名称。 **应将其编辑为 h11(sdc)** 。 对于 SDC，还原的数据库名称将是小写字母形式的目标实例 ID，并且在括号中追加了“sdc”。
-- 由于 SDC 只能包含一个数据库，因此还需要单击相应的复选框，以允许使用恢复点数据替代现有的数据库数据。
+- 由于 SDC 只能包含单一数据库，因此还需要选中相应的复选框以允许使用恢复点数据覆盖现有数据库数据。
 - 在 Linux 中，此项输入区分大小写。 因此请小心保留大小写。
 
 ### <a name="multiple-container-database-mdc-restore"></a>多容器数据库 (MDC) 还原
@@ -165,7 +165,7 @@ ms.locfileid: "89004164"
 - 执行升级。 完成后，HANA 系统现在便是包含一个系统 DB 和多个租户 DB 的 MDC
 - 重新运行[预注册脚本](https://aka.ms/scriptforpermsonhana)
 - 在 Azure 门户中为同一计算机重新注册扩展（“备份” -> “查看详细信息”->“选择相关 Azure VM”->“重新注册”） 
-- 针对同一 VM 单击“重新发现 DB”。 此操作应将步骤 3 中的新 DB 显示为 SYSTEMDB 和租户 DB，而不是 SDC
+- 对于同一 VM，选择 "重新 **发现** 数据库"。 此操作应将步骤 3 中的新 DB 显示为 SYSTEMDB 和租户 DB，而不是 SDC
 - 旧的 SDC 数据库将继续位于保管库中，并根据相应策略保留旧的备份数据
 - 为这些数据库配置备份
 
@@ -178,7 +178,7 @@ ms.locfileid: "89004164"
 - 执行升级。 完成后，HANA 系统现在便是包含一个系统 DB 和多个租户 DB 的 MDC
 - 重新运行具有正确详细信息（新 SID 和 MDC）的[预注册脚本](https://aka.ms/scriptforpermsonhana)。 由于 SID 发生了更改，你可能会遇到阻碍脚本成功运行的问题。 如果遇到问题，请联系 Azure 备份支持部门。
 - 在 Azure 门户中为同一计算机重新注册扩展（“备份” -> “查看详细信息”->“选择相关 Azure VM”->“重新注册”） 
-- 针对同一 VM 单击“重新发现 DB”。 此操作应将步骤 3 中的新 DB 显示为 SYSTEMDB 和租户 DB，而不是 SDC
+- 对于同一 VM，选择 "重新 **发现** 数据库"。 此操作应将步骤 3 中的新 DB 显示为 SYSTEMDB 和租户 DB，而不是 SDC
 - 旧的 SDC 数据库将继续位于保管库中，并根据相应策略保留旧的备份数据
 - 为这些数据库配置备份
 

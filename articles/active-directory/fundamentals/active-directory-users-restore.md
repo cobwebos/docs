@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796754"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321185"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
@@ -88,6 +88,6 @@ ms.locfileid: "87796754"
 
 - [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
 
-- [添加另一个组织中的来宾用户](../b2b/what-is-b2b.md)
+- [添加另一个组织中的来宾用户](../external-identities/what-is-b2b.md)
 
 有关其他可用的用户管理任务的详细信息，请参阅 [Azure AD 用户管理文档](../users-groups-roles/index.yml)。

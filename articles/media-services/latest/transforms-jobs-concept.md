@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: 103509de90d8819b19c46ebba7ae2dcc6071ac33
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256061"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297971"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
@@ -74,7 +74,7 @@ ms.locfileid: "89256061"
 
 选择图像查看其完整大小。  
 
-[![显示转换对象及其引用的对象的关系图，包括对象之间的类派生关系。](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
+[![图显示了 Transform 对象及其引用的对象，包括对象之间的类派生关系。](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>作业
 
@@ -88,7 +88,7 @@ ms.locfileid: "89256061"
 
 如果输入内容已在资产中，或者内容已存储在本地文件中，请使用[资产作为作业输入](job-input-from-local-file-how-to.md)。 如果你打算发布输入资产以供流式传输或下载（例如，要发布 MP4 文件以供下载，同时想要执行语音转文本或人脸检测），这也是一个不错的选择。 此方法支持多文件资产（例如，在本地编码的 MBR 流集）。
 
-### <a name="checking-job-progress"></a>正在检查作业进度
+### <a name="checking-job-progress"></a>检查作业进度
 
 使用事件网格监视事件可以获取作业的进度和状态。 有关详细信息，请参阅[使用事件网格监视事件](job-state-events-cli-how-to.md)。
 
@@ -102,7 +102,7 @@ ms.locfileid: "89256061"
 
 单击图像查看其完整大小。  
 
-[![显示作业对象及其引用的对象的关系图，包括对象之间的类派生关系。](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
+[![图显示了 Job 对象及其引用的对象，包括对象之间的类派生关系。](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>配置媒体预留单位
 

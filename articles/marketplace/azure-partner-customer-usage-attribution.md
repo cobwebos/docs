@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031279"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320964"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业应用商店合作伙伴和客户使用情况归属
 
@@ -61,7 +61,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 将 GUID 添加到模板或用户代理并在合作伙伴中心注册 GUID 后，系统将跟踪未来的部署。
 
 > [!NOTE]
-> 如果你正在通过合作伙伴中心向 Azure Marketplace 发布你的[Azure 应用程序](./partner-center-portal/create-new-azure-apps-offer.md)产品/服务，则在上载模板时，模板内使用的任何新 GUID 都将自动注册到你的合作伙伴中心配置文件。  
+> 如果你正在通过合作伙伴中心向 Azure Marketplace 发布你的 [Azure 应用程序](./partner-center-portal/create-new-azure-apps-offer.md) 产品/服务，则在上载模板时，模板内使用的任何新 GUID 都将自动注册到你的合作伙伴中心配置文件。  
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard)。
 
@@ -88,7 +88,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 > 有关创建和发布解决方案模板的详细信息，请参阅
 > * [创建和部署第一个资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。
->* 视频：[为 Azure Marketplace 构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
+>* 视频： [为 Azure Marketplace 构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
 若要添加全局唯一标识符 (GUID)，可对主模板文件进行一次性的修改：
@@ -97,9 +97,9 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 1. 打开资源管理器模板。
 
-1. 在主模板文件中添加新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
+1. 在主模板文件中添加类型为 " [Microsoft. 资源/部署](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) " 的新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 在前缀后面输入 GUID 值 `pid-` (例如，eb7927c8-dd66-43e1-b0cf-c346a422063) 。
+1. 输入前缀后的 GUID 值 `pid-` 作为资源的名称。 例如，如果 GUID 为 eb7927c8-dd66-43e1-b0cf-c346a422063，则资源名称将为 _pid-eb7927c8_-dd66-43e1-b0cf。
 
 1. 检查模板是否存在任何错误。
 
@@ -112,11 +112,11 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 若要为模板启用跟踪资源，需要在资源部分下添加以下附加资源。 将下面的示例代码添加到主模板文件时，请确保使用自己的输入修改该代码。
 资源只需添加到 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -153,6 +153,20 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 > [!NOTE]
 > 将属性添加每个客户端。 没有全局的静态配置。 可以标记一个客户端工厂来确保每个客户端都在跟踪。 有关详细信息，请参阅 [GitHub 上的此客户端工厂示例](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)。
+
+#### <a name="example-the-net-sdk"></a>示例： .NET SDK
+
+对于 .NET，请确保设置用户代理。 使用以下代码，可以使用 [Microsoft Azure 管理](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) 库来设置用户代理， (c # 中的示例 ) ：
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>使用 Azure PowerShell 标记部署
 
@@ -269,7 +283,7 @@ foreach ($deployment in $deployments){
 1. 选择问题的“类别”：
 
    - 对于使用情况关联的问题，请选择“其他”。
-   - 有关 Azure Marketplace 的访问问题，请选择 "**访问问题**"。
+   - 有关 Azure Marketplace 的访问问题，请选择 " **访问问题**"。
 
      ![选择问题类别](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -339,7 +353,7 @@ Azure 存储的 GUID 生成器窗体可确保生成所需格式的 GUID。 此�
 
 **未能更新主模板的 contentVersion 属性？**
 
-在某些情况下，当使用来自另一个模板（因某些原因应使用较低版本 contentVersion ）的 TemplateLink 部署该模板时，可能会出现这个 bug。 解决方法是使用元数据属性：
+这很可能是一个 bug，在使用来自另一个模板的 TemplateLink 部署模板时，由于某种原因需要使用较旧的 contentVersion。 解决方法是使用元数据属性：
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

@@ -3,12 +3,12 @@ title: 将系统状态还原为 Windows Server
 description: 有关从 Azure 中的备份还原 Windows Server 系统状态的分步说明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178580"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377431"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -56,7 +56,7 @@ ms.locfileid: "89178580"
 
 8. 验证 " **确认** " 窗格中的恢复详细信息，然后选择 " **恢复**"。
 
-   ![单击“恢复”确认恢复操作](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![选择 "恢复" 以确认恢复操作](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. 将恢复目标中的 WindowsImageBackup 目录复制到服务器的非关键卷中**。 通常，Windows OS 卷是关键卷。
 
@@ -104,7 +104,7 @@ ms.locfileid: "89178580"
 
 11. 验证 "确认" 窗格中的恢复详细信息，然后选择 " **恢复**"。
 
-    ![单击“恢复”按钮确认恢复过程](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![选择 "恢复" 按钮，确认恢复过程](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. 将 WindowsImageBackup 目录复制到服务器的非关键卷（如 D:\)）**。 通常，Windows OS 卷是关键卷。
 

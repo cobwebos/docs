@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1232c47040a5577731121ee0bb17eb264240e765
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264872"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297696"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>配置 Postman 以进行媒体服务 v3 REST API 调用
 
@@ -94,12 +94,12 @@ ms.locfileid: "89264872"
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="troubleshooting"></a>疑难解答 
+## <a name="troubleshooting"></a>故障排除 
 
-* 如果你的应用程序失败并显示 "HTTP 504： Gateway Timeout"，请确保位置变量未显式设置为媒体服务帐户预期位置之外的值。 
+* 如果应用程序失败并显示“HTTP 504:网关超时”，请确保没有将位置变量显式设置为媒体服务帐户的预期位置以外的值。 
 * 如果收到“找不到帐户”错误，还请检查以确保将正文 JSON 消息中的 location 属性设置为媒体服务帐户所在的位置。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [使用媒体服务创建筛选器 - REST](filters-dynamic-manifest-rest-howto.md)
 - [基于 Azure 资源管理器的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)

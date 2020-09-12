@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387109"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318279"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 与客户管理的密钥共同实现了“创建自己的密钥”(BYOK) 方案，凭此可以实现静态数据保护，并使组织能够在密钥和数据管理方面实现职责分离。 使用客户管理的透明数据加密时，客户需要负责并可全面控制密钥生命周期管理（密钥创建、上传、轮换、删除）、密钥使用权限，以及密钥操作的审核。
 
-在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md)（一个基于云的外部密钥管理系统）中。 Key Vault 是适用于 RSA 加密密钥的高度可用且可缩放的安全存储，可选择通过 FIPS 140-2 第2级验证的硬件安全模块（Hsm）进行支持。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥保管库可以从本地 HSM 设备生成密钥保管库，将其导入或[传输到密钥保管库](../../key-vault/keys/hsm-protected-keys.md)。
+在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md)（一个基于云的外部密钥管理系统）中。 Key Vault 是 RSA 加密密钥的高度可用且可缩放的安全存储，可选择通过 FIPS 140-2 级别2验证的硬件安全模块（ (Hsm) 提供支持）。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥保管库可以从本地 HSM 设备生成密钥保管库，将其导入或 [传输到密钥保管库](../../key-vault/keys/hsm-protected-keys.md)。
 
 对于 Azure SQL 数据库和 Azure Synapse Analytics，TDE 保护器在服务器级别设置，并由该服务器关联的所有已加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是 SQL 数据库和 Azure Synapse 中的服务器和 SQL 托管实例中的托管实例。
 
@@ -32,7 +32,7 @@ Azure SQL [透明数据加密 (TDE)](/sql/relational-databases/security/encrypti
 > 对于当前正在使用服务托管的 TDE 并想要开始使用客户管理的 TDE 的用户，在切换过程中数据将保持加密状态，且不会造成停机，也不需要重新加密数据库文件。 从服务托管的密钥切换到客户管理的密钥只需重新加密 DEK，此操作非常快捷且可在线完成。
 
 > [!NOTE]
-> 若要为 Azure SQL 客户提供静态静态数据的两个级别的加密，请推出包含平台托管密钥的基础结构加密（使用 AES-256 加密算法）。这会提供静态加密的一层，以及包含客户管理密钥（已提供）的 TDE。 此时，客户必须请求对此功能的访问权限。 如果你对此功能感兴趣，请联系 AzureSQLDoubleEncryptionAtRest@service.microsoft.com 。
+> 若要为 Azure SQL 客户提供静态数据的两个级别的加密，请使用256加密算法 (使用 AES-加密算法) 使用平台托管密钥。这会提供静态加密的一层，以及包含客户管理密钥（已提供）的 TDE。 此时，客户必须请求对此功能的访问权限。 如果你对此功能感兴趣，请联系 AzureSQLDoubleEncryptionAtRest@service.microsoft.com 。
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>客户管理的 TDE 的优势
 
@@ -133,6 +133,11 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 - 如果超过 8 小时后还原了密钥访问权限，数据库将无法自动修复，并且要使数据库恢复正常运行，需要在门户上执行其他步骤，并且可能会花费大量时间，具体取决于数据库的大小。 数据库恢复联机后，先前配置的服务器级别设置（例如[故障转移组](auto-failover-group-overview.md)配置、时间点还原历史记录和标记）**将丢失**。 因此，建议实现一个通知系统，以便在 8 小时内识别和解决基础密钥访问问题。
 
+下面是一个视图，其中介绍了在门户中将无法访问的数据库重新联机所需的其他步骤。
+
+![TDE BYOK 无法访问数据库](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
+
+
 ### <a name="accidental-tde-protector-access-revocation"></a>意外的 TDE 保护器访问权限吊销
 
 对 Key Vault 拥有足够访问权限的某人可能会意外地通过以下方式禁用服务器对密钥的访问权限：
@@ -155,7 +160,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 - [Azure 资源运行状况](../../service-health/resource-health-overview.md)。 首次与失去 TDE 保护器访问权限的不可访问的数据库建立连接遭到拒绝后，该数据库将显示为“不可用”。
 - [活动日志](../../service-health/alerts-activity-log-service-notifications.md)。访问客户管理的 Key Vault 中的 TDE 保护器失败时，会将相应的条目添加到活动日志。  为这些事件创建警报可以尽快恢复访问权限。
-- [操作组](../../azure-monitor/platform/action-groups.md)可以定义为根据你的偏好发送通知和警报，例如电子邮件/短信/推送/语音、逻辑应用、WEBHOOK、ITSM 或自动化 Runbook。
+- [操作组](../../azure-monitor/platform/action-groups.md) 可以定义为根据你的偏好发送通知和警报，例如电子邮件/短信/推送/语音、逻辑应用、WEBHOOK、ITSM 或自动化 Runbook。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>使用客户管理的 TDE 进行数据库备份和还原
 

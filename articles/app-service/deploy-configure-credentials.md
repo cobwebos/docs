@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223850"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300266"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
@@ -40,17 +40,17 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 
 1. 在 [Azure 门户](https://portal.azure.com)中，从左侧菜单中选择“应用服务” > “\<any_app>” > “部署中心” > “FTP” > “仪表板”。
 
-    ![演示如何从 Azure 应用 Services 中的部署中心选择 FTP 面板。](./media/app-service-deployment-credentials/access-no-git.png)
+    ![演示如何从 Azure 应用服务的部署中心选择 FTP 仪表板。](./media/app-service-deployment-credentials/access-no-git.png)
 
     或者，如果已配置了 Git 部署，请选择“应用程序服务” > “&lt;any_app>” > “部署中心” > “FTP/凭据”。
 
-    ![演示如何在已配置的 Git 部署 Azure 应用 Services 中的 "部署中心" 中选择 FTP 面板。](./media/app-service-deployment-credentials/access-with-git.png)
+    ![演示如何从 Azure 应用服务的部署中心为配置的 Git 部署选择 FTP 仪表板。](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. 选择“用户凭据”，配置用户名和密码，然后选择“保存凭据” 。
 
 设置部署凭据后，可以在应用的“概述”页中找到 Git 部署用户名，
 
-![演示如何在应用的 "概述" 页上查找 Git 部署用户名。](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![演示如何在应用“概述”页上查找 Git 部署用户名。](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 如果配置了 Git 部署，则该页显示 **Git/部署用户名**；否则，显示 **FTP/部署用户名**。
 
@@ -73,6 +73,36 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 2. 选择“应用凭据”，然后选择“复制”链接以复制用户名或密码 。
 
 若要重置应用级别凭据，请选择相同对话框中的“重置凭据”。
+
+## <a name="disable-basic-authentication"></a>禁用基本身份验证
+
+某些组织需要满足安全要求，并通过 FTP 或 WebDeploy 禁用访问。 这样，组织的成员就只能通过 Azure Active Directory (Azure AD) 控制的 Api 来访问其应用服务。
+
+### <a name="ftp"></a>FTP
+
+若要禁用对站点的 FTP 访问，请运行以下 CLI 命令。 将占位符替换为资源组和站点名称。 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+若要确认 FTP 访问被阻止，可以尝试使用 FTP 客户端（如 FileZilla）进行身份验证。 若要检索发布凭据，请前往网站的 "概述" 边栏选项卡，并单击 "下载发布配置文件"。 使用文件的 FTP 主机名、用户名和密码进行身份验证，你将收到401错误响应，指出你未获得授权。
+
+### <a name="webdeploy-and-scm"></a>WebDeploy 和 SCM
+
+若要禁用对 WebDeploy 端口和 SCM 站点的基本身份验证访问，请运行以下 CLI 命令。 将占位符替换为资源组和站点名称。 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+若要确认在 WebDeploy 上阻止发布配置文件凭据，请尝试 [使用 Visual Studio 2019 发布 web 应用](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)。
+
+### <a name="disable-access-to-the-api"></a>禁用对 API 的访问
+
+上一部分中的 API 是 Azure 基于角色的访问控制 (RBAC) ，这意味着，你可以 [创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) 并将 priveldged 的用户分配给角色，使他们无法在任何站点上启用基本身份验证。 若要配置自定义角色，请 [遵循这些说明](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
+
+你还可以使用 [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 审核任何成功的身份验证请求，并使用 [Azure 策略](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 对订阅中的所有站点实施此配置。
 
 ## <a name="next-steps"></a>后续步骤
 

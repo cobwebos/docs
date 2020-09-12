@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中创建虚拟硬盘驱动器的快照
-description: 了解如何创建 Azure VM 的副本，以便将其用作备份或用于排查问题。
+title: 使用门户或 PowerShell 创建虚拟硬盘的快照
+description: 了解如何创建 Azure VM 的副本以用作备份，或使用门户或 PowerShell 解决问题。
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074131"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322307"
 ---
-# <a name="create-a-snapshot"></a>创建快照
+# <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用门户或 PowerShell 创建快照
 
 快照是虚拟硬盘 (VHD) 的完整只读副本。 可以创建 OS 或数据磁盘 VHD 的快照以用作备份，或用于解决虚拟机 (VM) 问题。
 

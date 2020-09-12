@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200541"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320947"
 ---
 # <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
  
@@ -34,7 +34,7 @@ ms.locfileid: "86200541"
 
 1. 导航到“Azure 门户” > “Azure Active Directory” > “登录”。  
 1. 如果未显示“客户端应用”列，请单击“列”>“客户端应用”添加该列。 ****   ****
-1. 按**客户端应用**筛选 > 检查显示的所有**旧版身份验证客户端**选项。
+1. 按“客户端应用”进行筛选，然后选中显示的所有“旧式身份验证客户端”选项。 
 1. 按“状态” > “成功”进行筛选。  
 1. 如果需要，请使用“日期”筛选器扩展日期范围。
 
@@ -50,7 +50,7 @@ ms.locfileid: "86200541"
 
 启用新式身份验证的第一步是确保目录支持新式身份验证。 对于在 2017 年 8 月 1 日或之后创建的目录，默认已启用新式身份验证。 如果目录是在此日期之前创建的，则需要使用以下步骤手动为目录启用新式身份验证：
 
-1. 通过在 [Skype for Business Online PowerShell 模块](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)中运行 `Get-CsOAuthConfiguration` 来检查目录是否支持新式身份验证。
+1. 通过在 [Skype for Business Online PowerShell 模块](/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)中运行 `Get-CsOAuthConfiguration` 来检查目录是否支持新式身份验证。
 1. 如果该命令返回空的 `OAuthServers` 属性，则表示新式身份验证已禁用。 使用 `Set-CsOAuthConfiguration` 更新设置以启用新式身份验证。 如果 `OAuthServers` 属性包含某个项，则可以继续下一步。
 
 请务必先完成此步骤，然后继续。 首先更改目录配置，这一点至关重要，因为这些配置规定了所有 Office 客户端要使用哪个协议。 即使使用的 Office 客户端支持新式身份验证，但如果在目录中禁用了新式身份验证，这些客户端也会默认使用旧式协议。
@@ -59,7 +59,7 @@ ms.locfileid: "86200541"
 
 在目录中启用新式身份验证后，可以通过对 Office 客户端启用新式身份验证开始更新应用程序。 默认情况下，Office 2016 或更高版本的客户端支持新式身份验证。 无需执行额外的步骤。
 
-如果使用 Office 2013 Windows 客户端或更低版本，我们建议升级到 Office 2016 或更高版本。 即使完成了上述在目录中启用新式身份验证的步骤，早期的 Office 应用程序也仍会继续使用旧式身份验证协议。 如果使用 Office 2013 客户端且无法立即升级到 Office 2016 或更高版本，请按照 [在 Windows 设备上为 Office 2013 启用新式身份验证](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)一文中的步骤操作。 为了帮助你在使用旧式身份验证时保护帐户，我们建议对整个目录使用强密码。 查看 [Azure AD 密码保护](../authentication/concept-password-ban-bad.md)了解如何在整个目录中禁止弱密码。
+如果使用 Office 2013 Windows 客户端或更低版本，我们建议升级到 Office 2016 或更高版本。 即使完成了上述在目录中启用新式身份验证的步骤，早期的 Office 应用程序也仍会继续使用旧式身份验证协议。 如果使用 Office 2013 客户端且无法立即升级到 Office 2016 或更高版本，请按照 [在 Windows 设备上为 Office 2013 启用新式身份验证](/office365/admin/security-and-compliance/enable-modern-authentication)一文中的步骤操作。 为了帮助你在使用旧式身份验证时保护帐户，我们建议对整个目录使用强密码。 查看 [Azure AD 密码保护](../authentication/concept-password-ban-bad.md)了解如何在整个目录中禁止弱密码。
 
 Office 2010 不支持新式身份验证。 需要将使用 Office 2010 的任何用户升级到更高版本的 Office。 我们建议升级到 Office 2016 或更高版本，因为它默认会阻止旧式身份验证。
 
@@ -69,13 +69,13 @@ Office 2010 不支持新式身份验证。 需要将使用 Office 2010 的任何
 
 要让基于 Windows 的 Outlook 客户端使用新式身份验证，还必须为 Exchange Online 启用新式身份验证。 如果对 Exchange Online 禁用新式身份验证，则支持新式身份验证的基于 Windows 的 Outlook 客户端（Outlook 2013 或更高版本）将使用基本身份验证连接到 Exchange Online 邮箱。
 
-SharePoint Online 在默认情况下已启用新式身份验证。 对于在 2017 年 8 月 1 日之后创建的目录，默认已在 Exchange Online 中启用新式身份验证。 但是，如果你先前禁用了新式身份验证，或者使用的目录是在此日期之前创建的，请按照 [在 Exchange Online 中启用新式身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)一文中的步骤操作。
+SharePoint Online 在默认情况下已启用新式身份验证。 对于在 2017 年 8 月 1 日之后创建的目录，默认已在 Exchange Online 中启用新式身份验证。 但是，如果你先前禁用了新式身份验证，或者使用的目录是在此日期之前创建的，请按照 [在 Exchange Online 中启用新式身份验证](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)一文中的步骤操作。
 
 ### <a name="step-4-skype-for-business"></a>步骤 4：Skype for Business
 
 若要阻止 Skype for Business 发出的旧式身份验证请求，需要为 Skype for Business Online 启用新式身份验证。 对于在 2017 年 8 月 1 日之后创建的目录，默认已经为 Skype for Business 启用了新式身份验证。
 
-建议过渡到 Microsoft Teams，它默认支持新式身份验证。 但是，如果当前无法迁移，则需要为 Skype for Business Online 启用新式身份验证，让 Skype for Business 客户端开始使用新式身份验证。 遵循 [新式身份验证支持的 Skype for Business 拓扑](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)一文中的步骤，为 Skype for Business 启用新式身份验证。
+建议过渡到 Microsoft Teams，它默认支持新式身份验证。 但是，如果当前无法迁移，则需要为 Skype for Business Online 启用新式身份验证，让 Skype for Business 客户端开始使用新式身份验证。 遵循 [新式身份验证支持的 Skype for Business 拓扑](/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)一文中的步骤，为 Skype for Business 启用新式身份验证。
 
 除了为 Skype for Business Online 启用新式身份验证以外，我们还建议在为 Skype for Business 启用新式身份验证时，为 Exchange Online 启用新式身份验证。 此过程有助于同步 Exchange Online 和 Skype for Business Online 中的新式身份验证状态，并防止 Skype for Business 客户端中多次出现登录提示。
 
@@ -93,11 +93,11 @@ SharePoint Online 在默认情况下已启用新式身份验证。 对于在 201
 
 可在以下文章中找到有关启用新式身份验证的步骤：
 
-* [如何将本地 Exchange Server 配置为使用混合新式身份验证](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-* [如何在 Skype for Business 中使用新式身份验证 (ADAL)](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+* [如何将本地 Exchange Server 配置为使用混合新式身份验证](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+* [如何在 Skype for Business 中使用新式身份验证 (ADAL)](/skypeforbusiness/manage/authentication/use-adal)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何将本地 Exchange Server 配置为使用混合新式身份验证](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-- [如何在 Skype for Business 中使用新式身份验证 (ADAL)](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+- [如何将本地 Exchange Server 配置为使用混合新式身份验证](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+- [如何在 Skype for Business 中使用新式身份验证 (ADAL)](/skypeforbusiness/manage/authentication/use-adal)
 - [阻止旧式身份验证](../conditional-access/block-legacy-authentication.md)

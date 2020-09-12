@@ -3,12 +3,12 @@ title: 管理 Azure VM 上已备份的 SAP HANA 数据库
 description: 本文介绍了对在 Azure 虚拟机上运行的 SAP HANA 数据库进行管理和监视时的常见任务。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267473"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377448"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
 
@@ -41,7 +41,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
   ![备份警报列表](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* 单击警报以查看更多详细信息：
+* 选择警报以查看更多详细信息：
 
   ![警报详细信息](./media/sap-hana-db-manage/alert-details.png)
 
@@ -61,9 +61,9 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 备份根据策略计划运行。 可以按需运行备份，如下所示：
 
-1. 在保管库菜单中，单击“备份项”。
-2. 在“备份项”中，选择运行 SAP HANA 数据库的 VM，然后单击“立即备份”。
-3. 在“立即备份”中，选择要执行的备份的类型。 然后单击“确定”。 此备份将根据与此备份项关联的策略进行保留。
+1. 在保管库菜单中，选择 " **备份项**"。
+2. 在 " **备份项目**" 中，选择运行 SAP HANA 数据库的 VM，然后选择 " **立即备份**"。
+3. 在“立即备份”中，选择要执行的备份的类型。 然后选择“确定”。 此备份将根据与此备份项关联的策略进行保留。
 4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于你的数据库的大小。
 
 默认情况下，按需备份的保留期为45天。
@@ -114,7 +114,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
   ![选择 Azure VM 中的 SAP HANA](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * 选择要更改其基础策略的备份项
-* 单击现有备份策略
+* 选择现有的备份策略。
 
   ![选择现有备份策略](./media/sap-hana-db-manage/existing-backup-policy.png)
 
@@ -173,7 +173,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 如果选择保留恢复点，请记住以下详细内容：
 
-* 所有恢复点都将始终保持不变，并且所有的修剪都将停止保护并保留数据。
+* 所有恢复点都将永久保持不变，所有删除操作都将在停止保护时停止，并保留数据。
 * 你将为受保护的实例和使用的存储付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
 * 如果在不停止备份的情况下删除数据源，则新备份会失败。
 

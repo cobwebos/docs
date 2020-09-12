@@ -3,12 +3,12 @@ title: 关于 Azure 文件共享备份
 description: 了解如何在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180008"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378077"
 ---
 # <a name="about-azure-file-share-backup"></a>关于 Azure 文件共享备份
 
@@ -52,9 +52,9 @@ Azure 文件共享备份是一种基于云的本机备份解决方案，用于�
 
 Azure 文件共享备份解决方案有两种成本：
 
-1. **快照存储成本**：根据[此处](https://azure.microsoft.com/pricing/details/storage/files/)所述的定价详细信息，按 Azure 文件使用情况对快照产生的存储费用进行计费 
+1. **快照存储成本**：根据[此处](https://azure.microsoft.com/pricing/details/storage/files/)所述的定价详细信息，按 Azure 文件使用情况对快照产生的存储费用进行计费
 
-2. **受保护实例费用** ：从2020年9月1日开始，将根据 [此处](https://azure.microsoft.com/en-in/pricing/details/backup/) 所述的定价详细信息向客户收取受保护的实例费用。受保护实例的费用取决于存储帐户中受保护文件共享的总大小。
+2. **受保护实例费用**：从2020年9月1日开始，将根据 [此处](https://azure.microsoft.com/pricing/details/backup/)所述的定价详细信息向客户收取受保护的实例费用。受保护实例的费用取决于存储帐户中受保护文件共享的总大小。
 
 若要获取有关备份 Azure 文件共享的详细估计，可下载详细的 [Azure 备份定价估计器](https://aka.ms/AzureBackupCostEstimates)。  
 

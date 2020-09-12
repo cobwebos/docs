@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202251"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297784"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -38,7 +38,7 @@ ms.locfileid: "86202251"
 }, ...
 ```
 
-通常，必应 Web 搜索返回一部分应答。 例如，如果查询字词为*航海 dinghies*，则响应可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非使用了 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 来筛选出网页，否则响应始终包含 `webpages` 和 `rankingResponse` 应答。
+通常，必应 Web 搜索返回一部分应答。 例如，如果查询字词为 *航海 dinghies*，则响应可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非使用了 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 来筛选出网页，否则响应始终包含 `webpages` 和 `rankingResponse` 应答。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -296,7 +296,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |-|减法|
 |/|部门|
 |*|乘法|
-|^|强力|
+|^|电源|
 |!|阶乘|
 |.|小数|
 |()|优先级分组|
@@ -304,7 +304,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下常量：
 
-|符号|描述|
+|符号|说明|
 |------------|-----------------|
 |Pi|3.14159...|
 |度|度|
@@ -314,7 +314,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下函数：
 
-|符号|描述|
+|符号|说明|
 |------------|-----------------|
 |排序|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函数（以弧度为单位的参数）|
@@ -431,11 +431,11 @@ Query: What time is it in the U.S.
 }, ...
 ```
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 来自必应 Web 搜索 API 的响应可能包含以下标头：
 
-| 标头 | 描述 |
+| 标头 | 说明 |
 |-|-|
 |`X-MSEdge-ClientID`|必应分配给用户的唯一 ID|
 |`BingAPIs-Market`|用于完成请求的市场|
@@ -445,7 +445,7 @@ Query: What time is it in the U.S.
 
 不过，通过 JavaScript 调用必应 Web 搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些响应头的值。
 
-若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
+若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，该标头筛选响应标头并使它们可供 JavaScript 使用。
 
 CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 

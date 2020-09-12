@@ -1,21 +1,21 @@
 ---
-title: 如何在 Azure 中标记 Windows VM 资源
-description: 了解如何标记使用 Resource Manager 部署模型在 Azure 中创建的 Windows 虚拟机。
+title: 如何使用 PowerShell 标记 VM
+description: 了解如何使用 PowerShell 标记虚拟机
 author: mmccrory
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 84fc6e6fee0b4a85b909c9b43a17381b31f39abf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3aa40ed396e87b342207fc51576cd28170c7d4e9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291989"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322375"
 ---
-# <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>如何在 Azure 中标记 Windows 虚拟机
-本文介绍在 Azure 中通过 Resource Manager 部署模型标记 Windows 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 50 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。 如果想要标记 Linux 虚拟机，请参阅[如何在 Azure 中标记 Linux 虚拟机](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+# <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>如何使用 PowerShell 标记 Azure 中的虚拟机
+本文介绍在 Azure 中通过 Resource Manager 部署模型标记 Windows 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 50 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。 如果要使用 Azure CLI 标记虚拟机，请参阅 [如何使用 Azure CLI 标记 Azure 中的虚拟机](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 

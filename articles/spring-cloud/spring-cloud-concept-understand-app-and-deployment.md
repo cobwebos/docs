@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263891"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297529"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>了解 Azure 春季云中的应用和部署
 
-**应用** 和 **部署** 是 Azure 春季云和资源模型中的两个关键概念。 在 Azure 春季云中， *应用* 是一个业务应用或一个微服务的抽象。  部署中运行的*应用程序*版本*之一。*
+**应用** 和 **部署** 是 Azure 春季云和资源模型中的两个关键概念。 在 Azure 春季云中， *应用* 是一个业务应用或一个微服务的抽象。  部署中运行的*应用程序*版本*之一。*  应用在 *Azure 春季云服务实例*中运行，或仅在 *服务实例*中运行，如下所示。
 
  ![应用和部署](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+单个 Azure 订阅中可以有多个服务实例，但在构成企业应用或微服务的所有应用都驻留在单个服务实例中时，Azure 春季云服务最易于使用。
 
 Azure 春季云标准层允许一个应用有一个生产部署和一个过渡部署，以便你可以轻松地对其进行蓝色/绿色部署。
 
@@ -27,7 +29,7 @@ Azure 春季云标准层允许一个应用有一个生产部署和一个过渡�
 
 | 枚举 | 定义 |
 |:--|:----------------|
-| 公用</br>终结点 | 用于访问应用程序的 URL |
+| Public</br>终结点 | 用于访问应用程序的 URL |
 | “自定义”</br>域 | 保护自定义域的 CNAME 记录 |
 | 服务</br>绑定 | 在 function.js文件和 *ServiceBusTrigger* 属性中设置的绑定配置属性 |
 | 托管</br>标识 | 通过 Azure Active Directory 的管理身份，你的应用可以轻松访问其他 Azure AD 保护的资源，例如 Azure Key Vault |

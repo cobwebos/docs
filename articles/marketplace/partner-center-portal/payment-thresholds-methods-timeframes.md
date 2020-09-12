@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607288"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322069"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款阈值、方法和时间范围
 
@@ -78,7 +78,7 @@ ms.locfileid: "88607288"
 | 科特迪瓦 | 是 | 是 | 是 | 否 |
 | 克罗地亚 | 是 | 是 | 是 | 否 |
 | 塞浦路斯 | 是 | 是 | 是 | 是 |
-| 捷克共和国 | 是 | 是 | 是 | 是 |
+| 捷克 | 是 | 是 | 是 | 是 |
 | 丹麦 | 是 | 是 | 是 | 是 |
 | 多米尼加岛 | 是 | 是 | 否 | 是 |
 | 多米尼加共和国 | 是 | 是 | 是 | 是 |
@@ -123,7 +123,6 @@ ms.locfileid: "88607288"
 | 列支敦士登 | 是 | 是 | 是 | 是 |
 | 立陶宛 | 是 | 是 | 是 | 否 |
 | 卢森堡 | 是 | 是 | 是 | 是 |
-| 马其顿 | 否 | 是 | 是 | 否 |
 | 马达加斯加岛 | 是 | 是 | 是 | 否 |
 | 马拉维 | 是 | 是 | 是 | 是 |
 | 马来西亚 | 是 | 是 | 是 | 是 |
@@ -142,6 +141,7 @@ ms.locfileid: "88607288"
 | 尼加拉瓜 | 是 | 是 | 是 | 是 |
 | 尼日尔 | 是 | 是 | 是 | 否 |
 | 尼日利亚 | 是 | 是 | 是 | 否 |
+| 北马其顿 | 否 | 是 | 是 | 否 |
 | 挪威 | 是 | 是 | 是 | 是 |
 | 阿曼 | 是 | 是 | 是 | 是 |
 | 巴基斯坦 | 是 | 是 | 是 | 否 |

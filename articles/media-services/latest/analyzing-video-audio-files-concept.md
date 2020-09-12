@@ -9,17 +9,19 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258888"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320675"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
+
+[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -72,7 +74,7 @@ ms.locfileid: "89258888"
 |名称|说明|
 |---|---|
 |id|行 ID。|
-|文本|脚本本身。|
+|text|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
@@ -110,7 +112,7 @@ ms.locfileid: "89258888"
 |名称|说明|
 |---|---|
 |id|OCR 行 ID。|
-|文本|OCR 文本。|
+|text|OCR 文本。|
 |confidence|识别置信度。|
 |语言|OCR 语言。|
 |instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
@@ -361,7 +363,7 @@ ms.locfileid: "89258888"
 |名称|说明|
 |---|---|
 |id|关键字 ID。|
-|文本|关键字文本。|
+|text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
 |instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|

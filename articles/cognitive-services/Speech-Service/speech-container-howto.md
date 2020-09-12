@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 09/02/2020
 ms.author: aahi
-ms.openlocfilehash: 80b7d5ca67751cf7ece775331cc13cfbac10395b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b242530b09f399a84f10a40ea35e21c1119f52b1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182388"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321000"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a> (预览安装并运行语音服务容器) 
 
 通过容器，你可以在自己的环境中运行一些语音服务 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装以及运行语音容器。
 
-通过语音容器，客户能够生成语音应用程序体系结构，该体系结构针对强大的云功能和边缘位置进行了优化。 由四个不同的容器可用。 这两个标准容器为 **语音到文本** 和 **文本到语音转换**。 这两个自定义容器是 **自定义语音文本** 和 **自定义文本到语音转换**。 语音容器与基于云的 Azure 语音服务具有相同的 [定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) 。
+通过语音容器，客户能够生成语音应用程序体系结构，该体系结构针对强大的云功能和边缘位置进行了优化。 有五个不同的容器可用。 这两个标准容器为 **语音到文本**和 **文本到语音转换**。 这两个自定义容器是 **自定义语音文本** 和 **自定义文本到语音转换**。 通过使用更高级的模型， **神经文本到语音转换** 还提供更自然的最谈话。 语音容器与基于云的 Azure 语音服务具有相同的 [定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) 。
 
 > [!IMPORTANT]
 > 所有语音容器当前均作为 [公共 "封闭" 预览版](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分提供。 当语音容器 (GA) 的公开上市时，将发出公告。
@@ -32,6 +32,7 @@ ms.locfileid: "89182388"
 | 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.4.0 |
 | 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.6.0 |
 | 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.6.0 |
+| 神经文本到语音转换 | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 | 1.1.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -44,6 +45,7 @@ ms.locfileid: "89182388"
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **** 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
 | 语音资源 | 若要使用这些容器，必须具有：<br><br>一个用于获取关联 API 密钥和终结点 URI 的 Azure 语音资源。__ 可在 Azure 门户的**语音**“概述”和“密钥”页上获取两个值。 必须获取这两个值才能启动容器。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点**** |
+
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
@@ -74,31 +76,13 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 下表描述了每个语音容器的最小和建议的资源分配。
 
-# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
-
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
-
-# <a name="custom-speech-to-text"></a>[自定义语音转文本](#tab/cstt)
-
-| 容器 | 最小值 | 建议 |
-|-----------|---------|-------------|
 | 自定义语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
-
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
-
-| 容器 | 最小值 | 建议 |
-|-----------|---------|-------------|
 | 文本转语音 | 单核，2-GB 内存 | 2核，3 GB 内存 |
-
-# <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
-
-| 容器 | 最小值 | 建议 |
-|-----------|---------|-------------|
 | 自定义文本到语音转换 | 单核，2-GB 内存 | 2核，3 GB 内存 |
-
-***
+| 神经文本到语音转换 | 6核，12 GB 内存 | 8核，16 GB 内存 |
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
@@ -128,6 +112,12 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 容器 | 存储库 |
 |-----------|------------|
 | 文本转语音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+
+# <a name="neural-text-to-speech"></a>[神经文本到语音转换](#tab/ntts)
+
+| 容器 | 存储库 |
+|-----------|------------|
+| 神经文本到语音转换 | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest` |
 
 # <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
@@ -213,7 +203,39 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 对于支持的 **文本到语音转换** 容器的所有区域设置和相应声音，请参阅 [文本到语音图像标记](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 构建标准的 *文本到语音转换* HTTP POST 时， [ (SSML) 消息的语音合成标记语言 ](speech-synthesis-markup.md) 需要 `voice` 具有属性的元素 `name` 。 该值是对应的容器区域设置和语音，也称为 ["短名称"](language-support.md#standard-voices)。 例如，标记的 `latest` 语音名称将为 `en-US-AriaRUS` 。
+> 构造 *文本到语音转换* HTTP POST 时， [ (SSML) 消息的语音合成标记语言 ](speech-synthesis-markup.md) 需要 `voice` 具有属性的元素 `name` 。 该值是对应的容器区域设置和语音，也称为 ["短名称"](language-support.md#standard-voices)。 例如，标记的 `latest` 语音名称将为 `en-US-AriaRUS` 。
+
+# <a name="neural-text-to-speech"></a>[神经文本到语音转换](#tab/ntts)
+
+#### <a name="docker-pull-for-the-neural-text-to-speech-container"></a>用于神经文本到语音转换容器的 Docker 请求
+
+使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从容器预览注册表下载容器映像。
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest
+```
+
+> [!IMPORTANT]
+> `latest` 标记提取 `en-US` 区域设置和 `arianeural` 语音。 有关其他区域设置，请参阅 [神经文本到语音的区域设置](#neural-text-to-speech-locales)。
+
+#### <a name="neural-text-to-speech-locales"></a>神经文本到语音区域设置
+
+除之外的所有标记 `latest` 均采用以下格式，并区分大小写：
+
+```
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+```
+
+以下标记是格式示例：
+
+```
+1.1.0-amd64-en-us-arianeural-preview
+```
+
+对于所有受支持的区域设置以及 **神经文本到语音转换** 容器的相应声音，请参阅 [神经文本到语音图像标记](../containers/container-image-tags.md#neural-text-to-speech)。
+
+> [!IMPORTANT]
+> 构造 *神经文本到语音转换* HTTP POST 时， [ (SSML) 消息的语音合成标记语言 ](speech-synthesis-markup.md) 需要 `voice` 具有属性的元素 `name` 。 该值是对应的容器区域设置和语音，也称为 ["短名称"](language-support.md#neural-voices)。 例如，标记的 `latest` 语音名称将为 `en-US-AriaNeural` 。
 
 # <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
@@ -243,7 +265,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 # <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
-若要运行 *语音到文本* 的容器，请执行以下 `docker run` 命令。
+若要运行标准的 *语音到文本* 的容器，请执行以下 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -310,7 +332,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 下表表示各种 `docker run` 参数及其相应的说明：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的 [卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中 *C 驱动器* 位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -341,7 +363,7 @@ ApiKey={API_KEY}
 
 # <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
-若要运行 *文本到语音* 的容器，请执行以下 `docker run` 命令。
+若要运行标准 *文本到语音转换* 容器，请执行以下 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -353,8 +375,27 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 从容器映像中运行 *文本到语音* 容器。
+* 从容器映像运行标准的 *文本到语音转换* 容器。
 * 分配1个 CPU 核心和 2 gb (GB) 内存。
+* 公开 TCP 端口 5000，并为容器分配伪 TTY。
+* 退出后自动删除容器。 容器映像在主计算机上仍然可用。
+
+# <a name="neural-text-to-speech"></a>[神经文本到语音转换](#tab/ntts)
+
+若要运行 *神经文本到语音的* 容器，请执行以下 `docker run` 命令。
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+此命令：
+
+* 从容器映像运行 *神经文本到语音* 容器。
+* 分配6个 CPU 核心和 12 gb (GB) 内存。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
@@ -372,7 +413,7 @@ ApiKey={API_KEY}
 
 下表表示各种 `docker run` 参数及其相应的说明：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的 [卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中 *C 驱动器* 位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -413,10 +454,12 @@ ApiKey={API_KEY}
 
 | 容器 | SDK 主机 URL | 协议 |
 |--|--|--|
-| 语音到文本和自定义语音到文本 | `ws://localhost:5000` | WS |
-| 文本到语音转换和自定义文本到语音转换 | `http://localhost:5000` | HTTP |
+| 标准语音到文本和自定义语音到文本 | `ws://localhost:5000` | WS |
+| 文本到语音 (包括标准、自定义和神经)  | `http://localhost:5000` | HTTP |
 
 有关使用 WSS 和 HTTPS 协议的详细信息，请参阅 [容器安全性](../cognitive-services-container-support.md#azure-cognitive-services-container-security)。
+
+### <a name="speech-to-text-standard-and-custom"></a>语音到文本 (标准和自定义) 
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
 
@@ -537,7 +580,7 @@ speech_config.set_service_property(
 )
 ```
 
-### <a name="text-to-speech-or-custom-text-to-speech"></a>文本到语音转换或自定义文本到语音转换
+### <a name="text-to-speech-standard-neural-and-custom"></a>文本到语音 (标准、神经和自定义) 
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
@@ -580,6 +623,7 @@ speech_config.set_service_property(
   * *自定义语音转文本*
   * *文本转语音*
   * *自定义文本到语音转换*
+  * *神经文本到语音转换*
 * 容器映像从 Azure 中的容器注册表下载。
 * 容器映像在 Docker 中运行。
 * 使用 REST API 仅 (文本到语音) 或 SDK (语音到文本或文本到语音，) 指定容器的主机 URI。 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fb76f7897b9647a688e21993002f9c96fe9487f8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046742"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299603"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>实时流式传输 Azure Spring Cloud 应用日志
 Azure 春季 Cloud 在 Azure CLI 中启用日志流式处理，以获取实时应用程序控制台日志以进行故障排除。 还可以 [通过诊断设置分析日志和指标](./diagnostic-services.md)。
@@ -20,7 +20,7 @@ Azure 春季 Cloud 在 Azure CLI 中启用日志流式处理，以获取实时�
 ## <a name="prerequisites"></a>先决条件
 
 * 安装适用于春季 Cloud 的 [Azure CLI 扩展](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) ，最低版本为0.2.0。
-* 带有正在运行的应用程序的 **Azure 春季 cloud** 的实例，例如 " [春季 cloud app](./spring-cloud-quickstart-launch-app-cli.md)"。
+* 带有正在运行的应用程序的 **Azure 春季 cloud** 的实例，例如 " [春季 cloud app](./spring-cloud-quickstart.md)"。
 
 > [!NOTE]
 >  ASC CLI 扩展已从版本为0.2.0 更新为0.2.1。 此更改影响日志流式处理的命令的语法： `az spring-cloud app log tail` ，它被替换为： `az spring-cloud app logs` 。 命令： `az spring-cloud app log tail` 将在未来版本中弃用。 如果使用的是版本为0.2.0，则可以升级到0.2.1。 首先，删除旧版本的命令： `az extension remove -n spring-cloud` 。  然后，使用以下命令安装0.2.1： `az extension add -n spring-cloud` 。
@@ -87,7 +87,7 @@ az spring-cloud app logs -h
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [快速入门：通过日志、指标和跟踪来监视 Azure 春季云应用](spring-cloud-quickstart-logs-metrics-tracing.md)
+* [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [通过诊断设置分析日志和指标](./diagnostic-services.md)
 
  

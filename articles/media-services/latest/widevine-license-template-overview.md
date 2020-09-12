@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5a1140510bbfa09c807021212884836af43a861
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8ea0eab6d420a4b74de93a1d35e178d6c57c2ad9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269244"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298923"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>带有 Widevine 许可证模板的媒体服务 v3 概述
 
@@ -69,7 +69,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | content_id |Base64 编码的字符串 |用于为每个 content_key_specs.track_type 派生密钥 ID 与内容密钥的标识符。 |
 | provider |string |用于查找内容密钥和策略。 如果将 Microsoft 密钥传送用于 Widevine 许可证传送，则忽略此参数。 |
 | policy_name |string |以前注册的策略的名称。 可选。 |
-| allowed_track_types |枚举 |SD_ONLY 或 SD_HD。 控制许可证中包含哪些内容密钥。 |
+| allowed_track_types |enum |SD_ONLY 或 SD_HD。 控制许可证中包含哪些内容密钥。 |
 | content_key_specs |JSON 结构的数组，请参阅“内容密钥规范”部分。  |更精细地控制要返回哪些内容密钥。 有关详细信息，请参阅“内容密钥规范”部分。 只能指定 allowed_track_types 和 content_key_specs 值中的一个。 |
 | use_policy_overrides_exclusively |布尔值 true 或 false |使用 policy_overrides 所指定的策略属性，并忽略以前存储的所有策略。 |
 | policy_overrides |JSON 结构，请参阅“策略重写”部分。 |此许可证的策略设置。  如果此资产具有预定义的策略，则会使用这些指定的值。 |

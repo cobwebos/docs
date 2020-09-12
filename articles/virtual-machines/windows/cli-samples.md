@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8e83b289abd92d657b2e336aed3a74c10d6f6490
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6c4b707a3cebc1bcdad7c9e14a96d82a8dda2371
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501025"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318788"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure CLI 示例
 
@@ -28,12 +28,12 @@ ms.locfileid: "87501025"
 | [创建 VM 并运行配置脚本](./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个虚拟机，并使用 Azure 自定义脚本扩展安装 IIS。 |
 | [创建 VM 并运行 DSC 配置](./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个虚拟机，并使用 Azure Desired State Configuration (DSC) 扩展来安装 IIS。 |
 |**管理存储**||
-| [从 VHD 创建托管磁盘](../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 从作为 OS 磁盘的专用 VHD 或从作为数据磁盘的数据 VHD 创建托管磁盘。  |
-| [从快照创建托管磁盘](../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 从快照创建托管磁盘。 |
-| [将托管磁盘复制到相同或不同的订阅](../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管磁盘复制到相同或不同的订阅，但与父级托管磁盘位于同一区域。 
-| [将快照作为 VHD 导出到存储帐户](../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管快照作为 VHD 导出到不同区域中的存储帐户。 |
-| [将托管磁盘的 VHD 导出到存储帐户](../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管磁盘的基础 VHD 导出到不同区域中的存储帐户。 |
-| [将快照复制到相同或不同的订阅中](../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将快照复制到相同或不同的订阅，但与父级快照位于同一区域。 |
+| [从 VHD 创建托管磁盘](../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 从作为 OS 磁盘的专用 VHD 或从作为数据磁盘的数据 VHD 创建托管磁盘。  |
+| [从快照创建托管磁盘](../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 从快照创建托管磁盘。 |
+| [将托管磁盘复制到相同或不同的订阅](../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管磁盘复制到相同或不同的订阅，但与父级托管磁盘位于同一区域。 
+| [将快照作为 VHD 导出到存储帐户](../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管快照作为 VHD 导出到不同区域中的存储帐户。 |
+| [将托管磁盘的 VHD 导出到存储帐户](../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管磁盘的基础 VHD 导出到不同区域中的存储帐户。 |
+| [将快照复制到相同或不同的订阅中](../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 将快照复制到相同或不同的订阅，但与父级快照位于同一区域。 |
 |**网络虚拟机**||
 | [保护虚拟机之间的网络流量](./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建两个虚拟机、所有相关资源以及内部和外部网络安全组 (NSG)。 |
 |**保护虚拟机安全**||
