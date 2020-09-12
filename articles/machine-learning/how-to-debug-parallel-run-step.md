@@ -11,17 +11,17 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 07/16/2020
-ms.openlocfilehash: 0b914059567e9a513b605ce733407465b625a909
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 8d357cea7ce809c2df6b35e08ac7da7e9d3795e9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950011"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650421"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>对 ParallelRunStep 进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 中对 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 类进行调试和故障排除。
+本文介绍如何在 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 中对 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py&preserve-view=true) 类进行调试和故障排除。
 
 ## <a name="testing-scripts-locally"></a>在本地测试脚本
 
@@ -90,7 +90,7 @@ def run(mini_batch):
 
 用户可以使用 ParalleRunStep 的 side_inputs 参数将引用数据传递给脚本。 作为 side_inputs 提供的所有数据集将装载到每个工作器节点上。 用户可以通过传递参数获取装载的位置。
 
-构造包含引用数据的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
+构造包含引用数据的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -116,6 +116,6 @@ labels_path = args.labels_dir
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请查看 SDK 参考，获取有关 [azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) 包的帮助。 查看 ParallelRunStep 类的参考[文档](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py)。
+* 请查看 SDK 参考，获取有关 [azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) 包的帮助。 查看 ParallelRunStep 类的参考[文档](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true)。
 
 * 按照[高级教程](tutorial-pipeline-batch-scoring-classification.md)操作，将管道与 ParallelRunStep 配合使用。 本教程演示如何将另一个文件作为旁路输入。 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607328"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007751"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有关 Microsoft 商用 marketplace 的常见问题
 
@@ -46,7 +46,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场是否收取发布费用？
 
-不，在我们的商业市场发布产品/服务无需支付任何费用。 我们只保留一小部分销售额，作为交易费用，并将其投入市场奖励计划、平台创新和商业市场运营。 对于 [AZURE IP 共同销售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized 产品/服务，此交易费用将减少。
+不，在我们的商业市场发布产品/服务无需支付任何费用。 我们只保留一小部分销售额，作为交易费用，并将其投入市场奖励计划、平台创新和商业市场运营。 对于 [AZURE IP 共同销售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized 产品/服务，以及与一个 Microsoft 团队应用或至少两 Microsoft 365 加载项 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 相关联的 AppSource，此交易费用将减少。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>如何注册成为 Microsoft 商业市场的发布者？
 
@@ -320,7 +320,7 @@ Microsoft AppSource 支持信用卡付款。 Azure 市场支持信用卡付款�
 建议使用以下这些资源：
 
 - 若要加入 Microsoft 合作伙伴社区，请参阅 [Microsoft AppSource 和 Azure 市场](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)。
-- 了解和加入 [Microsoft 商业市场预览体验计划](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders)。
+- 了解和加入 [Microsoft 商业市场预览体验计划](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743)。
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>我可以从何处了解有关合作伙伴中心的更多信息？
 

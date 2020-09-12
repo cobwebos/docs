@@ -15,32 +15,32 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256673"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014627"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
 ## <a name="general-installation"></a>常规安装
 
-**问：如何强化 Azure AD Connect 服务器以减少安全攻击面？**
+**问：如何加强 Azure AD Connect 服务器以减少安全攻击面？**
 
 Microsoft 建议强化 Azure AD Connect 服务器，以降低这一 IT 环境关键组件的安全攻击面。  遵循以下建议将减少组织面临的安全风险。
 
-* 将 Azure AD Connect 部署在已加入域的服务器上，并限制域管理员或其他受到严格控制的安全组的管理访问权限
+* 将 Azure AD Connect 部署在已加入域的服务器上，并仅限域管理员或其他严格受控的安全组进行管理性访问
 
 若要了解更多信息，请参阅以下文章： 
 
-* [保护管理员组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [保护管理员组](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [保护内置管理员帐户](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [保护内置的管理员帐户](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [减少攻击面，提高安全性和持续性](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [通过减小攻击面改进并维护安全性](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [减少 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [减少 Active Directory 攻击面](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **问：如果 Azure Active Directory (Azure AD) 全局管理员已启用双重身份验证 (2FA)，安装是否能够正常进行？**  
 2016 年 2 月版开始支持此方案。
@@ -60,7 +60,7 @@ Microsoft 建议强化 Azure AD Connect 服务器，以降低这一 IT 环境关
 是的。支持此方案。 请参阅[多个域](how-to-connect-install-multiple-domains.md)。
  
 **问：是否可对 Azure AD Connect 中的同一个 Active Directory 域使用多个连接器？**  
-不支持对同一个 AD 域使用多个连接器。 
+否，不支持对同一个 AD 域使用多个连接器。 
 
 **问：是否可将 Azure AD Connect 数据库从本地数据库移到远程 SQL Server 实例？**    
 是的，以下步骤提供了此操作的一般指导。 我们目前正在努力编写更详细的文档。
@@ -121,7 +121,7 @@ Microsoft 建议强化 Azure AD Connect 服务器，以降低这一 IT 环境关
 
 ## <a name="network"></a>网络
 **问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
-所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的 Microsoft 标识同步工具。
+所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的所有 Microsoft 标识同步工具。
 
 **问：是否支持单一标签域 (SLD)？**  
 虽然我们强烈建议不要使用此网络配置（[请参阅相关文章](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)），但只要单级域的网络配置正常发挥作用，将 Azure AD Connect 同步与单标签域配合使用就是受支持的。
@@ -139,30 +139,30 @@ Azure AD Connect 不支持纯 IPv6 环境。
 否，不支持通过 NAT 使用 Azure AD Connect。 
 
 ## <a name="federation"></a>联合
-**问：如果我收到一封电子邮件，要求我续订 Office 365 证书，我该怎么办？**  
+**问：如果我收到一封电子邮件，要求我续订 Microsoft 365 证书，我该怎么办？**  
 有关续订证书的指导，请参阅[续订证书](how-to-connect-fed-o365-certs.md)。
 
-**问：我为 Office 365 信赖方设置了“自动更新信赖方”。当我的令牌签名证书自动滚动更新时，我是否需要采取任何措施？**  
+**问：我为 Microsoft 365 信赖方设置了 "自动更新信赖方"。当我的令牌签名证书自动滚动时，我是否需要采取任何措施？**  
 请参考[续订证书](how-to-connect-fed-o365-certs.md)一文中所述的指导。
 
 ## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
-不是。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
+否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
 
-**问：启用 FIPS 的计算机上是否支持下一代加密 (NGC) 同步规则？**  
+**问：已启用 FIPS 的计算机是否支持下一代加密 (NGC) 同步规则？**  
 否。  不支持。
 
-**问：我在 Azure 门户中禁用了已同步的设备（例如HAADJ），为何它被重新启用了？**<br>
-可在本地创作或管理已同步的设备。 如果在本地启用了已同步的设备，即使管理员之前禁用了该设备，它也可能会在 Azure 门户中重新启用。 若要禁用已同步的设备，请使用本地 Active Directory 禁用计算机帐户。
+**问：如果我在 Azure 门户中禁用了同步设备（例如：HAADJ），为什么要重新启用它？**<br>
+可以在本地创作或掌控同步设备。 如果在本地启用了同步设备，即使管理员之前禁用了该设备，也可能会在 Azure 门户中重新启用它。 若要禁用同步设备，请使用本地 Active Directory 禁用计算机帐户。
 
-**问：我阻止了已同步的用户在 Office 365 或 Azure AD 门户中登录，为何他们在登录时未被阻止？**<br>
-可在本地创作或管理已同步的用户。 如果在本地启用了帐户，则可取消管理员设置的登录阻止。
+**：.如果在 Microsoft 365 或 Azure AD 门户中阻止用户登录，以便同步用户，则在再次登录时取消阻止用户登录？**<br>
+可以在本地创作或掌控同步用户。 如果在本地启用了该帐户，则可以取消管理员放置的登录阻止。
 
 ## <a name="identity-data"></a>标识数据
 **问：Azure AD 中的 userPrincipalName (UPN) 属性为何与本地 UPN 不匹配？**  
 有关信息，请参阅以下文章：
 
-* [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)
+* [Microsoft 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)
 * [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/kb/2669550)
 
 还可以根据 [Azure AD Connect 同步服务功能](how-to-connect-syncservice-features.md)中所述配置 Azure AD，以允许同步引擎更新 UPN。
@@ -178,16 +178,16 @@ Azure AD Connect 不支持纯 IPv6 环境。
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
 **问：是否可以使用 Synchronization Service Manager 中的“服务器导出/服务器导入”选项在服务器之间移动配置？**  
-不是。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
+否。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
 目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
-**问：Azure 登录页会显示之前已成功登录的用户的用户名。是否可以关闭此行为？**  
+**问：Azure 登录页会显示之前已成功登录的用户的用户名。此行为是否可以关闭？**  
 目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：是否有方法来阻止并发会话？**  
-不是。
+否。
 
 ## <a name="auto-upgrade"></a>自动升级
 
@@ -223,7 +223,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 ![控制面板中的 Azure AD Connect 版本](./media/reference-connect-faq/faq1.png)
 
 **问：如何升级到最新版本的 Azure AD Connect？**  
-若要了解如何升级到最新版本，请参阅 [Azure AD Connect：从旧版本升级到最新版本](how-to-upgrade-previous-version.md)一文。 
+若要了解如何升级到最新版本，请参阅 [Azure AD Connect：从旧版升级到最新版本](how-to-upgrade-previous-version.md)。 
 
 **问：我们去年已升级到最新版本的 Azure AD Connect。是否需要再次升级？**  
 Azure AD Connect 团队会对该服务进行频繁的更新。 若要充分利用 Bug 修复、安全更新和新功能的优势，必须使用最新版本来保持服务器的最新状态。 如果启用自动升级，则会自动更新软件版本。 若要查找 Azure AD Connect 的版本发布历史记录，请参阅 [Azure AD Connect：版本发布历史记录](reference-connect-version-history.md)。
@@ -253,19 +253,19 @@ Office 团队会更新 Office 门户，使之反映当前的产品名称。 它�
 是的，可以自动升级暂存模式下的 Azure AD Connect 服务器。
 
 **问：如果自动升级失败而 Azure AD Connect 服务器无法启动，该怎么办？**  
-Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况下，重新启动服务器通常就会解决问题。 如果 Azure AD Connect 服务仍然无法启动，请开具支持票证。 有关详细信息，请参阅[创建服务请求以联系 Office 365 支持部门](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)。 
+Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况下，重新启动服务器通常就会解决问题。 如果 Azure AD Connect 服务仍然无法启动，请开具支持票证。 有关详细信息，请参阅 [创建服务请求以联系 Microsoft 365 支持](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)。 
 
 **问：我不知道升级到新版 Azure AD Connect 后会有什么风险。你们能通过电话帮助我升级吗？**  
-如果在升级到新版 Azure AD Connect 时需要帮助，请参阅[创建服务请求以联系 Office 365 支持部门](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)开具支持票证。
+如果需要帮助升级到较新版本的 Azure AD Connect，请在创建服务请求中打开支持票证 [以联系 Microsoft 365 支持](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)部门。
 
-## <a name="operational-best-practice"></a>操作最佳实践    
-下面是在 Windows Server Active Directory 和 Azure Active Directory 间同步时应实现的一些最佳实践。
+## <a name="operational-best-practice"></a>操作方面的最佳做法    
+下面是在 Windows Server Active Directory 和 Azure Active Directory 之间同步时应实施的一些最佳做法。
 
-**为所有已同步的帐户应用多重身份验证**Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时保持用户的简单性。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的身份验证方法提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。 可在此处阅读有关 MFA 的详细信息：https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**为所有已同步的帐户应用多重身份验证** Azure 多重身份验证有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的身份验证方法提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。 有关 MFA 的详细信息，可参阅此文： https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
-**遵循 Azure AD Connect 服务器安全指导原则**Azure AD Connect 服务器包含关键的标识数据，应将其视为第0层组件，如[Active Directory 管理层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 请参阅我们[的有关保护 AADConnect 服务器安全的准则](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)。
+**遵循 Azure AD Connect 服务器安全指导原则** Azure AD Connect 服务器包含关键标识数据，应将其视为第 0 层组件，如 [Active Directory 管理层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 另请参阅我们的 [AADConnect 服务器安全指南](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)。
 
-**为泄漏的凭据检测启用 PHS**密码哈希同步还为混合帐户启用[泄漏的凭据检测](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)。 Microsoft 与深色 web 研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与用户的关联，则关联的帐户将被移到 "高风险"。 
+**为泄漏的凭据检测启用 PHS** 密码哈希同步还为混合帐户启用 [泄漏的凭据检测](../identity-protection/concept-identity-protection-risks.md) 。 Microsoft 与暗网研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与用户的关联，则关联的帐户将被移到 "高风险"。 
 
 
 ## <a name="troubleshooting"></a>疑难解答
@@ -275,12 +275,12 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 
 * 在知识库 (KB) 中搜索有关 Azure AD Connect 支持的常见故障维修服务问题的技术解决方案。
 
-[有关 Azure Active Directory 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[有关 Azure Active Directory 的 Microsoft Q&A 问题页面](/answers/topics/azure-active-directory.html)
 
-* 转到 [Azure AD 社区](https://docs.microsoft.com/answers/topics/azure-active-directory.html)，搜索技术问题与答案，或提出自己的问题。
+* 转到 [Azure AD 社区](/answers/topics/azure-active-directory.html)，搜索技术问题与答案，或提出自己的问题。
 
-[获取 Azure AD 支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[获取 Azure AD 支持](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
-**问：同步步骤出错后为什么出现了事件 6311 和 6401？**
+**问：为什么在同步步骤错误后出现事件 6311 和 6401？**
 
-出现同步步骤错误后，系统始终会记录事件 6311（服务器在执行回调时遇到意外错误）和 6401（管理代理控制器遇到了意外错误） 。 若要解决这些错误，需要清除同步步骤错误。  有关详细信息，请参阅[在同步过程中排查错误](tshoot-connect-sync-errors.md)和[排查使用 Azure AD Connect 同步时遇到的对象同步问题](tshoot-connect-objectsync.md)
+事件 6311 - **服务器在执行回叫时遇到意外错误**，而 6401 - **管理代理控制器遇到意外错误** - 始终在同步步骤错误之后记录。 若要解决这些错误，需要清除同步步骤错误。  有关详细信息，请参阅[对同步期间的错误进行故障排除](tshoot-connect-sync-errors.md)和[使用 Azure AD Connect 同步进行对象同步故障排除](tshoot-connect-objectsync.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1397aa350ccc3114954902a6bfd02826cdff965f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4983a4a637ae636c6a3ef4a485c1777fc9b8a77a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553273"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015138"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
 
@@ -111,12 +111,14 @@ ms.locfileid: "88553273"
      |phoneNumbers[type eq "work"].value|字符串|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
+     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
+     
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步为 PureCloud by Genesys**"。
 
 11. 在 " **属性映射** " 部分中，查看通过 Genesys 从 Azure AD 同步到 PureCloud 的组属性。 选为 " **匹配** " 属性的属性用于匹配 PureCloud by Genesys 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 PureCloud by Genesys 不支持组创建或删除，并且仅支持更新组。
 
-      |属性|类型|
+      |Attribute|类型|
       |---|---|
       |displayName|字符串|
       |externalId|字符串|
@@ -144,6 +146,10 @@ ms.locfileid: "88553273"
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 * 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+
+## <a name="change-log"></a>更改日志
+
+09/10-添加了对企业属性 "employeeNumber" 的支持。
 
 ## <a name="additional-resources"></a>其他资源
 

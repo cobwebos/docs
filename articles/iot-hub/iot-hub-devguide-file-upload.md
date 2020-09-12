@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323020"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019523"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -28,6 +28,8 @@ IoT 中心本身不中转消息，而是充当关联 Azure 存储帐户的调度
 从设备将文件上传到 IoT 中心之前，必须通过为其[关联 Azure 存储](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub)帐户来配置该中心。
 
 然后，设备就能[初始化上传](iot-hub-devguide-file-upload.md#initialize-a-file-upload)，并在上传完成后[通知 IoT 中心](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 （可选）设备通知 IoT 中心上传完成以后，服务可以生成[通知消息](iot-hub-devguide-file-upload.md#file-upload-notifications)。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>何时使用
 

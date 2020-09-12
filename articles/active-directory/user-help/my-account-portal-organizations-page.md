@@ -1,6 +1,6 @@
 ---
 title: 从“我的帐户”门户管理组织 - Azure AD
-description: 如何从“我的帐户”门户的“组织”页查看和离开连接到工作或学校帐户的组织。
+description: 如何从 "我的帐户" 门户的 "组织" 页查看和离开你有权访问的组织。
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798170"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005065"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>在“组织”页中管理连接的组织
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>在我的帐户门户中管理你有权访问的组织
 
-通过“我的帐户”门户的“组织”页，可以帮助你管理连接到工作或学校帐户的组织（通常是组织的名称）。 “组织”页中显示了两种类型的组织：
+"**我的帐户**" 门户中的 "**组织**" 页可帮助你管理 (通常为你的组织名称) 你有权访问的组织。 “组织”页中显示了两种类型的组织：
 
 - **本组织。** 本组织是拥有你的工作或学校帐户的组织。 无法离开本组织。
 
@@ -30,7 +30,7 @@ ms.locfileid: "88798170"
 - **其他组织。** 其他组织是之前使用工作或学校帐户登录到的任何组。 可以随时离开其中任何组织。
 
 >[!Important]
->本文适用于尝试更新连接到工作或学校帐户的组织信息的用户。 如果你作为管理员正在为你的员工和其他用户查找组和用户管理相关信息，请参阅[企业用户管理文档](../users-groups-roles/index.yml)。
+>本文适用于尝试更新工作或学校帐户所访问的组织信息的用户。 如果你作为管理员正在为你的员工和其他用户查找组和用户管理相关信息，请参阅[企业用户管理文档](../users-groups-roles/index.yml)。
 
 ## <a name="view-your-organizations"></a>查看组织
 
@@ -44,7 +44,7 @@ ms.locfileid: "88798170"
 
     ![“组织”页](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. 查看其他关联组织，确保能够识别连接到帐户的所有组织。
+4. 查看其他组织，确保你认识到你有权访问的所有组织。
 
 ## <a name="leave-an-organization"></a>离开组织
 

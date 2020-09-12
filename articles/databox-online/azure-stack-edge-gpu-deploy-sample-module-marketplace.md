@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7d29408c126844615666a4ab217027b6ae1d037d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254621"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659962"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 设备上从 Azure Marketplace 部署支持 GPU 的 IoT 模块
 
@@ -28,14 +28,12 @@ ms.locfileid: "89254621"
 
 本文中的 GPU 示例模块包括针对 GPU 的 CPU 的 PyTorch 和 TensorFlow 基准测试示例代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
 - 你可以访问已启用 GPU 的1节点 Azure Stack Edge 设备。 此设备已使用 Azure 中的资源激活。 
-- 已在此设备上配置计算。 
-    - 按照 [教程：在 Azure Stack Edge 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步骤操作。
-    - 确保先 
+- 已在此设备上配置计算。 按照 [教程：在 Azure Stack Edge 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步骤操作。
 - Windows 客户端上的以下开发资源：
     - [Visual Studio Code](https://code.visualstudio.com/)  
     - [Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。   

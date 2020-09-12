@@ -3,12 +3,12 @@ title: 容器 Azure Monitor 的指标警报 |Microsoft Docs
 description: 本文介绍了公共预览版中适用于容器 Azure Monitor 建议的指标警报。
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563358"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019880"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a> (预览从容器 Azure Monitor 预览) 推荐的指标警报
 
@@ -16,7 +16,7 @@ ms.locfileid: "87563358"
 
 本文介绍了经验并指导如何配置和管理这些警报规则。
 
-如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要了解有关指标警报的详细信息，请参阅[Azure Monitor 中的指标警报](../platform/alerts-metric-overview.md)。
+如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要了解有关指标警报的详细信息，请参阅 [Azure Monitor 中的指标警报](../platform/alerts-metric-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,22 +24,22 @@ ms.locfileid: "87563358"
 
 * 自定义指标只在一部分 Azure 区域中可用。 受支持的区域列表在[此处](../platform/metrics-custom-overview.md#supported-regions)记录。
 
-* 为了支持指标警报和引入其他指标，所需的最低代理版本为**microsoft/oms： ciprod05262020**。
+* 为了支持指标警报和引入其他指标，所需的最低代理版本为 **microsoft/oms： ciprod05262020**。
 
     若要验证群集是否正在运行较新版本的代理，可以执行以下操作之一：
 
-    * 运行命令： `kubectl describe <omsagent-pod-name> --namespace=kube-system` 。 在返回的状态中，记下输出的 "*容器*" 部分中 "Omsagent 的**图像**" 下的值。 
-    * 在 "**节点**" 选项卡上，选择 "群集" 节点，然后在右侧的 "**属性**" 窗格中，记下 "**代理图像" 标记**下的值。
+    * 运行 `kubectl describe <omsagent-pod-name> --namespace=kube-system` 命令。 在返回的状态中，记下输出的“容器”部分中“映像”下 omsagent 的值。 
+    * 在“节点”选项卡上选择群集节点，然后在右侧的“属性”窗格中记下“代理映像标记”下的值。  
 
-    显示的值应为高于**ciprod05262020**的版本。 如果群集具有较旧版本，请按照[AKS 群集上的升级代理](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)步骤来获取最新版本。
+    显示的值应为高于 **ciprod05262020**的版本。 如果群集具有较旧版本，请按照 [AKS 群集上的升级代理](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) 步骤来获取最新版本。
     
-    有关与代理版本相关的详细信息，请参阅[代理发行历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。 若要验证是否正在收集指标，可以使用 Azure Monitor 指标资源管理器，并验证是否列出了**insights**的**指标命名空间**。 如果是这样，您可以继续设置警报。 如果看不到任何收集到的指标，则群集服务主体或 MSI 缺少必要的权限。 若要验证 SPN 或 MSI 是否为 "**监视指标发布者**" 角色的成员，请按照使用 Azure CLI 确认和设置角色分配部分的 "[每个群集升级](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)" 一节中所述的步骤进行操作。
+    有关与代理版本相关的详细信息，请参阅 [代理发行历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。 若要验证是否正在收集指标，可以使用 Azure Monitor 指标资源管理器，并验证是否列出了**insights**的**指标命名空间**。 如果是这样，您可以继续设置警报。 如果看不到任何收集到的指标，则群集服务主体或 MSI 缺少必要的权限。 若要验证 SPN 或 MSI 是否为 " **监视指标发布者** " 角色的成员，请按照使用 Azure CLI 确认和设置角色分配部分的 " [每个群集升级](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) " 一节中所述的步骤进行操作。
 
 ## <a name="alert-rules-overview"></a>警报规则概述
 
 若要对重要内容发出警报，Azure Monitor 容器包括 AKS 群集的以下指标警报：
 
-|“属性”| 描述 |默认阈值 |
+|名称| 说明 |默认阈值 |
 |----|-------------|------------------|
 |平均容器 CPU 百分比 |计算每个容器使用的平均 CPU 量。|如果每个容器的平均 CPU 使用率大于95%。| 
 |容器工作集平均内存百分比 |计算每个容器使用的平均工作集内存。|如果每个容器的平均工作集内存使用率大于95%，则为。 |
@@ -61,7 +61,7 @@ ms.locfileid: "87563358"
 
 * 所有警报规则每分钟评估一次，并在最近5分钟的数据中查看。
 
-* 默认情况下，警报规则未分配给它们。 您可以通过在编辑警报规则时选择现有操作组或创建新的操作组，将[操作组](../platform/action-groups.md)添加到警报。
+* 默认情况下，警报规则未分配给它们。 您可以通过在编辑警报规则时选择现有操作组或创建新的操作组，将 [操作组](../platform/action-groups.md) 添加到警报。
 
 * 您可以通过直接编辑警报规则来修改其阈值。 但在修改其阈值之前，请参阅每个警报规则中提供的指导。
 
@@ -73,13 +73,13 @@ ms.locfileid: "87563358"
 
 * 仅当存在 OOM 的已终止容器时才发送*oomKilledContainerCount*指标。
 
-* 在默认阈值为 95% )  (默认阈值超出配置的阈值时，将发送*cpuExceededPercentage*、 *memoryRssExceededPercentage*和*memoryWorkingSetExceededPercentage*指标。 这些阈值与为相应的警报规则指定的警报条件阈值不完全相同。 这意味着，如果要从[指标资源管理器](../platform/metrics-getting-started.md)中收集这些指标并对其进行分析，建议将阈值配置为低于警报阈值的值。 在节下的 ConfigMaps 文件中，可以重写与容器资源利用率阈值的集合设置相关的配置 `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` 。 有关与配置 ConfigMap 配置文件相关的详细信息，请参阅[配置可报警指标 ConfigMaps](#configure-alertable-metrics-in-configmaps)部分。
+* 在默认阈值为 95% )  (默认阈值超出配置的阈值时，将发送*cpuExceededPercentage*、 *memoryRssExceededPercentage*和*memoryWorkingSetExceededPercentage*指标。 这些阈值与为相应的警报规则指定的警报条件阈值不完全相同。 这意味着，如果要从 [指标资源管理器](../platform/metrics-getting-started.md)中收集这些指标并对其进行分析，建议将阈值配置为低于警报阈值的值。 在节下的 ConfigMaps 文件中，可以重写与容器资源利用率阈值的集合设置相关的配置 `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` 。 有关与配置 ConfigMap 配置文件相关的详细信息，请参阅 [配置可报警指标 ConfigMaps](#configure-alertable-metrics-in-configmaps) 部分。
 
 ## <a name="metrics-collected"></a>收集的指标
 
 除非另行指定，否则将启用和收集以下度量值：
 
-|指标命名空间 |指标 |描述 |
+|指标命名空间 |指标 |说明 |
 |---------|----|------------|
 |见解：容器/节点 |cpuUsageMillicores |主机 millicores 的 CPU 使用率。|
 |见解：容器/节点 |cpuUsagePercentage |按节点的 CPU 使用率百分比。|
@@ -100,7 +100,7 @@ ms.locfileid: "87563358"
 
 ## <a name="enable-alert-rules"></a>启用警报规则
 
-按照以下步骤，从 Azure 门户 Azure Monitor 中启用指标警报。 若要使用资源管理器模板启用，请参阅[使用资源管理器模板启用](#enable-with-a-resource-manager-template)。
+按照以下步骤，从 Azure 门户 Azure Monitor 中启用指标警报。 若要使用资源管理器模板启用，请参阅 [使用资源管理器模板启用](#enable-with-a-resource-manager-template)。
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
 
@@ -108,21 +108,21 @@ ms.locfileid: "87563358"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 通过从 Azure 门户中的左窗格中选择 "**见解**"，可以直接从 AKS 群集访问 Azure Monitor for 容器指标警报 (预览版) 功能。
+2. 通过从 Azure 门户中的左窗格中选择 " **见解** "，可以直接从 AKS 群集访问 Azure Monitor for 容器指标警报 (预览版) 功能。
 
-3. 在命令栏中，选择 "**推荐的警报**"。
+3. 在命令栏中，选择 " **推荐的警报**"。
 
     ![容器 Azure Monitor 中的建议警报选项](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
-4. "**推荐的警报**" 属性窗格会自动显示在页面的右侧。 默认情况下，列表中的所有警报规则都处于禁用状态。 选择 "**启用**" 后，将创建警报规则，并且规则名称将进行更新以包括指向警报资源的链接。
+4. " **推荐的警报** " 属性窗格会自动显示在页面的右侧。 默认情况下，列表中的所有警报规则都处于禁用状态。 选择 " **启用**" 后，将创建警报规则，并且规则名称将进行更新以包括指向警报资源的链接。
 
     ![建议的警报属性窗格](./media/container-insights-metric-alerts/recommended-alerts-pane.png)
 
-    选择**启用/禁用**切换启用警报后，会创建一个警报规则，并且规则名称将进行更新以包括指向实际警报资源的链接。
+    选择 **启用/禁用** 切换启用警报后，会创建一个警报规则，并且规则名称将进行更新以包括指向实际警报资源的链接。
 
     ![启用警报规则](./media/container-insights-metric-alerts/recommended-alerts-pane-enable.png)
 
-5. 警报规则不与[操作组](../platform/action-groups.md)相关联，以通知用户已触发了警报。 选择 "**未分配操作组**"，并在 "**操作组**" 页上，通过选择 "**添加**" 或 "**创建**" 来指定现有或创建操作组。
+5. 警报规则不与 [操作组](../platform/action-groups.md) 相关联，以通知用户已触发了警报。 选择 " **未分配操作组** "，并在 " **操作组** " 页上，通过选择 " **添加** " 或 " **创建**" 来指定现有或创建操作组。
 
     ![选择操作组](./media/container-insights-metric-alerts/select-action-group.png)
 
@@ -132,9 +132,9 @@ ms.locfileid: "87563358"
 
 基本步骤如下所示：
 
-1. 下载说明如何从[GitHub](https://github.com/microsoft/Docker-Provider/tree/ci_dev/alerts/recommended_alerts_ARM)创建警报的一个或所有可用模板。
+1. 下载说明如何从 [GitHub](https://github.com/microsoft/Docker-Provider/tree/ci_dev/alerts/recommended_alerts_ARM)创建警报的一个或所有可用模板。
 
-2. 创建和使用[参数文件](../../azure-resource-manager/templates/parameter-files.md)作为 JSON，以设置创建警报规则所需的值。
+2. 创建和使用 [参数文件](../../azure-resource-manager/templates/parameter-files.md) 作为 JSON，以设置创建警报规则所需的值。
 
 3. 从 Azure 门户、PowerShell 或 Azure CLI 部署模板。
 
@@ -144,17 +144,17 @@ ms.locfileid: "87563358"
 
 2. 若要通过门户部署自定义模板，请从[Azure 门户](https://portal.azure.com)中选择 "**创建资源**"。
 
-3. 搜索 "**模板**"，然后选择 "**模板**"。 部署.
+3. 搜索 " **模板**"，然后选择 " **模板部署**"。
 
-4. 选择“创建”。
+4. 选择“创建” 。
 
-5. 你会看到用于创建模板的多个选项，请选择 "**在编辑器中生成自己的模板**"。
+5. 你会看到用于创建模板的多个选项，请选择 " **在编辑器中生成自己的模板**"。
 
-6. 在 "**编辑模板" 页**上，选择 "**加载文件**"，然后选择模板文件。
+6. 在 " **编辑模板" 页**上，选择 " **加载文件** "，然后选择模板文件。
 
-7. 在 "**编辑模板**" 页上，选择 "**保存**"。
+7. 在 " **编辑模板** " 页上，选择 " **保存**"。
 
-8. 在 "**自定义部署**" 页上，指定以下各项，并在完成后选择 "**购买**" 以部署模板并创建警报规则。
+8. 在 " **自定义部署** " 页上，指定以下各项，并在完成后选择 " **购买** " 以部署模板并创建警报规则。
 
     * 资源组
     * 位置
@@ -194,16 +194,16 @@ ms.locfileid: "87563358"
 
 ## <a name="edit-alert-rules"></a>编辑警报规则
 
-可以查看和管理容器警报规则 Azure Monitor，以编辑其阈值或为 AKS 群集配置[操作组](../platform/action-groups.md)。 尽管可以从 Azure 门户和 Azure CLI 执行这些操作，但也可以直接从容器的 Azure Monitor 中的 AKS 群集执行这些操作。
+可以查看和管理容器警报规则 Azure Monitor，以编辑其阈值或为 AKS 群集配置 [操作组](../platform/action-groups.md) 。 尽管可以从 Azure 门户和 Azure CLI 执行这些操作，但也可以直接从容器的 Azure Monitor 中的 AKS 群集执行这些操作。
 
-1. 在命令栏中，选择 "**推荐的警报**"。
+1. 在命令栏中，选择 " **推荐的警报**"。
 
-2. 若要修改阈值，请在 "**推荐的警报**" 窗格中选择 "启用的警报"。 在 "**编辑规则**" 中，选择要编辑的**警报条件**。
+2. 若要修改阈值，请在 " **推荐的警报** " 窗格中选择 "启用的警报"。 在 " **编辑规则**" 中，选择要编辑的 **警报条件** 。
 
-    * 若要修改警报规则阈值，请选择该**条件**。
+    * 若要修改警报规则阈值，请选择该 **条件**。
     * 若要指定现有操作组或创建操作组，请在 "**操作组**" 下选择 "**添加**" 或 "**创建**"
 
-若要查看为启用规则创建的警报，请在 "**推荐的警报**" 窗格中选择 "**在警报中查看**"。 你将被重定向到 AKS 群集的 "警报" 菜单，可在其中查看当前为群集创建的所有警报。
+若要查看为启用规则创建的警报，请在 " **推荐的警报** " 窗格中选择 " **在警报中查看**"。 你将被重定向到 AKS 群集的 "警报" 菜单，可在其中查看当前为群集创建的所有警报。
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>在 ConfigMaps 中配置可报警指标
 
@@ -215,7 +215,7 @@ ms.locfileid: "87563358"
 
 1. 编辑节中的 ConfigMap yaml 文件 `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` 。
 
-2. 若要将*cpuExceededPercentage*阈值修改为90%，并在达到或超过该阈值时开始收集此指标，请使用以下示例配置 ConfigMap 文件。
+2. 若要将 *cpuExceededPercentage* 阈值修改为90%，并在达到或超过该阈值时开始收集此指标，请使用以下示例配置 ConfigMap 文件。
 
     ```
     container_cpu_threshold_percentage = 90.0
@@ -235,4 +235,4 @@ ms.locfileid: "87563358"
 
 - 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。
 
-- 若要详细了解 Azure Monitor 以及如何监视 Kubernetes 群集的其他方面，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)。
+- 若要详细了解 Azure Monitor 以及如何监视 Kubernetes 群集的其他方面，请参阅 [查看 Kubernetes 群集性能](container-insights-analyze.md)。

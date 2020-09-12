@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/04/2019
-ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735430"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650967"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客户密码箱
 
@@ -26,17 +26,60 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 客户密码箱现已正式发布，目前已启用对虚拟机的远程桌面访问。
 
+## <a name="supported-services-and-scenarios-in-preview"></a>预览版中支持的服务和方案
+
+以下服务目前以预览版提供客户密码箱：
+
+- API 管理
+- Azure 应用服务
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Synapse Analytics
+- 认知服务
+- 容器注册表
+- Azure 数据工厂
+- Azure Database for PostgreSQL
+- Azure Kubernetes 服务
+- Azure Data Box
+- HDInsight
+- 函数
+- Azure 存储
+- Azure SQL DB
+- Azure 数据资源管理器
+- 虚拟机 (现在还包括对内存转储和托管磁盘的访问权限) 
+- Azure 订阅传输
+
+若要为组织的这些预览版提供客户密码箱，请注册 [Azure 公共预览版客户密码箱](https://aka.ms/customerlockbox/insiderprogram)。
+
+## <a name="supported-services-and-scenarios-in-general-availability"></a>公开上市中支持的服务和方案
+
+以下服务和方案目前在客户密码箱公开上市。
+
+### <a name="remote-desktop-access-to-virtual-machines"></a>对虚拟机的远程桌面访问
+
+当前已对虚拟机的远程桌面访问请求启用客户密码箱。 支持以下工作负载：
+- 平台即服务 (PaaS) - (web 角色和辅助角色的 Azure 云服务) 
+- 基础结构即服务 (IaaS) Windows 和 Linux (Azure 资源管理器仅) 
+- 虚拟机规模集-Windows 和 Linux
+
+> [!NOTE]
+> 客户密码箱不支持 IaaS 经典实例。 如果你的工作负荷在 IaaS 经典实例上运行，我们建议你将其从经典部署模型迁移到资源管理器部署模型。 有关说明，请参阅 [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+
+#### <a name="detailed-audit-logs"></a>详细审核日志
+
+对于涉及远程桌面访问的方案，你可以使用 Windows 事件日志来查看 Microsoft 工程师执行的操作。 请考虑使用 Azure 安全中心收集事件日志，并将数据复制到工作区进行分析。 有关详细信息，请参阅 [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)。
+
 ## <a name="workflow"></a>工作流
 
 以下步骤概述了客户密码箱请求的典型工作流。
 
 1. 组织中的某人对其 Azure 工作负荷有问题。
 
-2. 在此人员对问题进行故障排除但无法修复后，他们将从[Azure 门户](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)中打开支持票证。 票证分配给 Azure 客户支持工程师。
+2. 在此人员对问题进行故障排除但无法修复后，他们将从 [Azure 门户](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)中打开支持票证。 票证分配给 Azure 客户支持工程师。
 
 3. Azure 支持工程师会查看服务请求，并确定解决此问题的后续步骤。
 
-4. 如果支持工程师无法通过使用标准工具和遥测对问题进行故障排除，则下一步是通过使用实时（JIT）访问服务请求提升的权限。 此请求可以来自原始支持工程师。 或者，它可以来自不同的工程师，因为此问题已上报给 Azure DevOps 团队。
+4. 如果支持工程师无法通过使用标准工具和遥测对问题进行故障排除，则下一步是通过使用实时 (JIT) access 服务请求提升的权限。 此请求可以来自原始支持工程师。 或者，它可以来自不同的工程师，因为此问题已上报给 Azure DevOps 团队。
 
 5. Azure 工程师提交访问请求后，实时服务会评估请求，其中包括以下因素：
     - 资源的范围
@@ -47,29 +90,29 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 6. 当请求需要直接访问客户数据时，将启动客户密码箱请求。 例如，对客户的虚拟机的远程桌面访问。
 
-    请求现在处于**客户通知**状态，在授予访问权限前等待客户的批准。
+    请求现在处于 **客户通知** 状态，在授予访问权限前等待客户的批准。
 
-7. 在客户组织中，拥有 Azure 订阅的[所有者角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)的用户将收到来自 Microsoft 的电子邮件，通知他们有关挂起的访问请求。 对于客户密码箱请求，此人为指定的审批者。
+7. 在客户组织中，拥有 Azure 订阅的 [所有者角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) 的用户将收到来自 Microsoft 的电子邮件，通知他们有关挂起的访问请求。 对于客户密码箱请求，此人为指定的审批者。
 
     示例电子邮件：
 
     ![Azure 客户密码箱-电子邮件通知](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
-8. 电子邮件通知提供 Azure 门户中**客户密码箱**边栏选项卡的链接。 使用此链接，指定的审批者可以登录到 Azure 门户，查看其组织为客户密码箱所做的任何挂起的请求：
+8. 电子邮件通知提供 Azure 门户中 **客户密码箱** 边栏选项卡的链接。 使用此链接，指定的审批者可以登录到 Azure 门户，查看其组织为客户密码箱所做的任何挂起的请求：
 
     ![Azure 客户密码箱-登陆页面](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
 
    请求在客户队列中保留四天。 此时间过后，访问请求会自动过期，并且不会向 Microsoft 工程师授予任何访问权限。
 
-9. 若要获取待定请求的详细信息，指定的审批者可以从**挂起的请求**中选择密码箱请求：
+9. 若要获取待定请求的详细信息，指定的审批者可以从 **挂起的请求**中选择密码箱请求：
 
     ![Azure 客户密码箱-查看挂起的请求](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. 指定的审批者还可以选择**服务请求 ID** ，以查看原始用户创建的支持票证请求。 此信息提供了有关 Microsoft 支持部门的原因以及所报告问题的历史记录的上下文。 例如：
+10. 指定的审批者还可以选择 **服务请求 ID** ，以查看原始用户创建的支持票证请求。 此信息提供了有关 Microsoft 支持部门的原因以及所报告问题的历史记录的上下文。 例如：
 
     ![Azure 客户密码箱-查看支持票证请求](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
-11. 查看请求后，指定的审批者选择 "**批准**" 或 "**拒绝**"：
+11. 查看请求后，指定的审批者选择 " **批准** " 或 " **拒绝**"：
 
     ![Azure 客户密码箱-选择 "批准" 或 "拒绝"](./media/customer-lockbox-overview/customer-lockbox-approval.png)
 
@@ -77,11 +120,11 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
     - **批准**：向 Microsoft 工程师授予访问权限。 在八小时的默认期限内授予访问权限。
     - **拒绝**： Microsoft 工程师的提升访问请求被拒绝，无需执行其他操作。
 
-出于审核目的，在此工作流中执行的操作记录在[客户密码箱请求日志](#auditing-logs)中。
+出于审核目的，在此工作流中执行的操作记录在 [客户密码箱请求日志](#auditing-logs)中。
 
 ## <a name="auditing-logs"></a>审核日志
 
-客户密码箱日志存储在活动日志中。 在 Azure 门户中，选择 "**活动日志**" 以查看与客户密码箱请求相关的审核信息。 可以筛选特定操作，例如：
+客户密码箱日志存储在活动日志中。 在 Azure 门户中，选择 " **活动日志** " 以查看与客户密码箱请求相关的审核信息。 可以筛选特定操作，例如：
 - **拒绝密码箱请求**
 - **创建密码箱请求**
 - **审批密码箱请求**
@@ -91,40 +134,9 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 ![Azure 客户密码箱活动日志](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>公开上市中支持的服务和方案
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>客户密码箱与 Azure 安全性基准的集成
 
-以下服务和方案目前在客户密码箱公开上市。
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>对虚拟机的远程桌面访问
-
-当前已对虚拟机的远程桌面访问请求启用客户密码箱。 支持以下工作负载：
-- 平台即服务（PaaS）-Azure 云服务（web 角色和辅助角色）
-- 基础结构即服务（IaaS）-Windows 和 Linux （仅限 Azure 资源管理器）
-- 虚拟机规模集-Windows 和 Linux
-
-> [!NOTE]
-> 客户密码箱不支持 IaaS 经典实例。 如果你的工作负荷在 IaaS 经典实例上运行，我们建议你将其从经典部署模型迁移到资源管理器部署模型。 有关说明，请参阅[平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
-
-#### <a name="detailed-audit-logs"></a>详细审核日志
-
-对于涉及远程桌面访问的方案，你可以使用 Windows 事件日志来查看 Microsoft 工程师执行的操作。 请考虑使用 Azure 安全中心收集事件日志，并将数据复制到工作区进行分析。 有关详细信息，请参阅[Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)。
-
-## <a name="supported-services-and-scenarios-in-preview"></a>预览版中支持的服务和方案
-
-以下服务目前以预览版提供客户密码箱：
-
-- Azure 存储
-
-- Azure SQL DB
-
-- Azure 数据资源管理器
-
-- 虚拟机（现在还包括对内存转储和托管磁盘的访问权限）
-
-- Azure 订阅传输
-
-若要为组织的这些预览版提供客户密码箱，请注册[Azure 公共预览版客户密码箱](https://aka.ms/customerlockbox/insiderprogram)。
-
+我们引入了新的基线控件 ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) Azure 安全基准，其中包含客户密码箱适用性。 客户现在可以利用基准来查看服务客户密码箱适用性。
 
 ## <a name="exclusions"></a>排除项
 

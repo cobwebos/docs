@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355907"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016259"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -28,15 +28,15 @@ ms.locfileid: "85355907"
 
 - 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
 - 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证（通常 10 小时有效）过期前，将不会获得单一登录体验。
-- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”****。 由于此行为， [SharePoint 和 OneDrive 映射方案](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec)不起作用。
-- 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Office 365 Win32 客户端（Outlook、Word、Excel 等）。 不支持其他版本；在这些版本中，用户需输入用户名而不是密码登录。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
+- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”****。 由于此行为， [SharePoint 和 OneDrive 映射方案](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) 不起作用。
+- 使用非交互式流时，支持使用16.0.8730 和更高版本的 Microsoft 365 Win32 客户端 (Outlook、Word、Excel 和其他) 。 不支持其他版本；在这些版本中，用户需输入用户名而不是密码登录。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
 - 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
-- 将 Azure AD 服务 URL （ `https://autologon.microsoftazuread-sso.com` ）添加到 "受信任的站点" 区域而非 "本地 intranet" 区域会*阻止用户登录*。
-- 无缝 SSO 支持 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密类型。 建议将 AzureADSSOAcc $ 帐户的加密类型设置为 AES256_HMAC_SHA1，或将其中一个 AES 类型与 RC4 进行加密以提高安全性。 加密类型存储在 Active Directory 中的帐户的 Msds-supportedencryptiontypes 属性上。  如果 "AzureADSSOAcc $ 帐户加密类型" 设置为 "RC4_HMAC_MD5"，并且你想要将其更改为其中一个 AES 加密类型，请确保首先滚动 AzureADSSOAcc $ 帐户的 Kerberos 解密密钥，如相关问题下的[FAQ 文档](how-to-connect-sso-faq.md)中所述，否则不会出现无缝 SSO。
+- 将 Azure AD 服务 URL (`https://autologon.microsoftazuread-sso.com`) 添加到 "受信任的站点" 区域而非 "本地 intranet" 区域会 *阻止用户登录*。
+- 无缝 SSO 支持 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密类型。 建议将 AzureADSSOAcc $ 帐户的加密类型设置为 AES256_HMAC_SHA1，或将其中一个 AES 类型与 RC4 进行加密以提高安全性。 加密类型存储在 Active Directory 中的帐户的 Msds-supportedencryptiontypes 属性上。  如果 "AzureADSSOAcc $ 帐户加密类型" 设置为 "RC4_HMAC_MD5"，并且你想要将其更改为其中一个 AES 加密类型，请确保首先滚动 AzureADSSOAcc $ 帐户的 Kerberos 解密密钥，如相关问题下的 [FAQ 文档](how-to-connect-sso-faq.md) 中所述，否则不会出现无缝 SSO。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
 
@@ -74,9 +74,9 @@ ms.locfileid: "85355907"
 使用以下清单排查无缝 SSO 问题：
 
 - 确保在 Azure AD Connect 中已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)。
-- 如果同时对租户启用了 [Azure AD Join](../active-directory-azureadjoin-overview.md)和无缝 SSO，请确保 Azure AD Join 没有问题。 如果设备同时注册了 Azure AD 并加入了域，则 Azure AD Join 的 SSO 将优先于无缝 SSO。 使用 Azure AD Join 的 SSO，用户将看到显示“已连接到 Windows”的登录磁贴。
-- 确保 Azure AD URL （ `https://autologon.microsoftazuread-sso.com` ）是用户 Intranet 区域设置的一部分。
-- 确保企业设备已加入 Active Directory 域。 设备__ 不需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)，无缝 SSO 便可工作。
+- 如果同时对租户启用了 [Azure AD Join](../devices/overview.md)和无缝 SSO，请确保 Azure AD Join 没有问题。 如果设备同时注册了 Azure AD 并加入了域，则 Azure AD Join 的 SSO 将优先于无缝 SSO。 使用 Azure AD Join 的 SSO，用户将看到显示“已连接到 Windows”的登录磁贴。
+- 确保 Azure AD URL (`https://autologon.microsoftazuread-sso.com`) 是用户 Intranet 区域设置的一部分。
+- 确保企业设备已加入 Active Directory 域。 设备__ 不需要[加入 Azure AD](../devices/overview.md)，无缝 SSO 便可工作。
 - 确保用户已通过 Active Directory 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 Active Directory 林。
 - 确保已在企业网络中连接该设备。
@@ -106,7 +106,7 @@ ms.locfileid: "85355907"
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>步骤 1：导入无缝 SSO PowerShell 模块
 
-1. 首先，下载并安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+1. 首先，下载并安装 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
 2. 浏览到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
 3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
 
@@ -140,6 +140,6 @@ ms.locfileid: "85355907"
 
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能
 
 若要在租户上启用此功能，请调用 `Enable-AzureADSSO -Enable $true`。

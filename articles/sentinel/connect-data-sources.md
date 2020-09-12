@@ -1,10 +1,10 @@
 ---
 title: 将数据源连接到 Azure Sentinel | Microsoft Docs
-description: 了解如何将数据源（如 Microsoft 威胁防护、Microsoft 365 和 Office 365、Azure AD、ATP 和 Cloud App Security）连接到 Azure Sentinel。
+description: 了解如何将数据源（如 Microsoft 365 Defender (以前的 Microsoft 威胁防护) 、Microsoft 365 和 Office 365、Azure AD、ATP 和 Cloud App Security 连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,32 +13,31 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555505"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659624"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
-一旦你启用了 Azure Sentinel，你需要做的第一件事就是连接数据源。 Azure Sentinel 附带了许多用于 Microsoft 解决方案的连接器，可用于提供实时集成，包括 Microsoft 威胁防护解决方案、Microsoft 365 源（包括 Office 365）、Azure AD、Azure ATP、Microsoft Cloud App Security 等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 你还可以使用通用事件格式（CEF）、Syslog 或 REST API 通过 Azure Sentinel 连接数据源。
+一旦你启用了 Azure Sentinel，你需要做的第一件事就是连接数据源。 Azure Sentinel 附带了多个 Microsoft 解决方案连接器，并提供实时集成，包括 Microsoft 365 Defender (以前的 Microsoft 威胁防护) 解决方案，Microsoft 365 源 (包括 Office 365) 、Azure AD、Microsoft Defender for Identity (以前的 Azure ATP) 、Microsoft Cloud App Security 等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 (CEF)、Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。
 
 1. 在菜单上，选择“数据连接器”。 通过此页，可以查看 Azure Sentinel 提供的连接器及其状态的完整列表。 选择要连接的连接器，然后选择“打开连接器页”。 
 
-   ![数据收集器](./media/collect-data/collect-data-page.png)
+   ![数据连接器库](./media/collect-data/collect-data-page.png)
 
 1. 在特定连接器页上，确保已满足所有先决条件，并按照相关说明将数据连接到 Azure Sentinel。 可能需要一段时间才能让日志开始与 Azure Sentinel 保持同步。 在连接后，可以在“收到的数据”图中查看数据摘要，以及数据类型的连接状态。
 
-   ![连接收集器](./media/collect-data/opened-connector-page.png)
+   ![配置数据连接器](./media/collect-data/opened-connector-page.png)
   
 1. 单击“后续步骤”选项卡，以获取 Azure Sentinel 针对特定数据类型提供的现成内容的列表。
 
-   ![数据收集器](./media/collect-data/data-insights.png)
+   ![连接器的后续步骤](./media/collect-data/data-insights.png)
  
-
 ## <a name="data-connection-methods"></a>数据连接方法
 
 Azure Sentinel 支持以下数据连接方法：
@@ -46,15 +45,15 @@ Azure Sentinel 支持以下数据连接方法：
 - **服务到服务集成**：<br> 有些服务是本机互连的（如 AWS 和 Microsoft 服务），这些服务利用 Azure 基础进行现成集成，只需单击几次即可连接以下解决方案：
     - [Amazon Web Services - CloudTrail](connect-aws.md)
     - [Azure 活动](connect-azure-activity.md)
-    - [Azure Active Directory](connect-azure-active-directory.md)审核日志和登录日志
+    - [Azure Active Directory](connect-azure-active-directory.md) 审核日志和登录日志
     - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
-    - [Azure 高级威胁防护](connect-azure-atp.md)
+    - [Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure 高级威胁防护) 
     - [Azure 信息保护](connect-azure-information-protection.md)
-    - [Azure 安全中心](connect-azure-security-center.md)
+    - [Azure Defender](connect-azure-security-center.md) (以前的 Azure 安全中心) 
     - [Cloud App Security](connect-cloud-app-security.md)
     - [域名服务器](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft defender For Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前的 Microsoft Defender 高级威胁防护) 
     - [Microsoft Web 应用程序防火墙](connect-microsoft-waf.md)
     - [Windows 防火墙](connect-windows-firewall.md)
     - [Windows 安全事件](connect-windows-security-events.md)
@@ -135,8 +134,8 @@ Azure Sentinel 支持以下数据连接方法：
 | WireData | [连接 Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [连接 Windows 防火墙](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [连接 Azure AD 标识保护](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [连接 Azure ATP](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [连接 Azure 安全中心](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [将 Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure ATP)  | &#10003; | |
+| ASC SecurityAlert  | [将 Azure Defender](connect-azure-security-center.md) (以前的 Azure 安全中心连接)   | &#10003; | |
 | MCAS SecurityAlert  | [连接 Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon（事件） | [连接 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [连接 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [获取 Sysmon 分析程序](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 默认情况下，虚拟机上未安装 Sysmon 集合。 有关如何安装 Sysmon 代理的详细信息，请参阅 [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon)。 |

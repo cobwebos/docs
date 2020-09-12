@@ -7,12 +7,13 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: device-developer
+ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337103"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015086"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -24,7 +25,7 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义连接到应�
 
 设备模板包括以下部分：
 
-- _设备功能模型（DCM）_。 设备模板的此部分定义设备与应用程序交互的方式。 设备开发人员实现 DCM 中定义的行为。
+- _一种设备功能模型 (DCM) _。 设备模板的此部分定义设备与应用程序交互的方式。 设备开发人员实现 DCM 中定义的行为。
 - _云属性_。 设备模板的此部分使解决方案开发人员可以指定任何要存储的设备元数据。 云属性永远不会与设备同步，而只存在于应用程序中。 云属性不影响设备开发人员为实现 DCM 而编写的代码。
 - _自定义_。 设备模板的此部分使解决方案开发人员可以覆盖 DCM 中的一些定义。 如果解决方案开发人员想要优化应用程序处理值的方式（例如更改属性的显示名称或用于显示遥测值的颜色），则自定义项很有用。 自定义不会影响设备开发人员为实现 DCM 而编写的代码。
 - _视图_。 设备模板的此部分使解决方案开发人员可以定义可视化，以查看设备中的数据，以及用于管理和控制设备的窗体。 视图使用 DCM、云属性和自定义项。 视图不影响设备开发人员为实现 DCM 而编写的代码。
@@ -34,18 +35,18 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义连接到应�
 
 ## <a name="device-capability-models"></a>设备功能模型
 
-DCM 定义设备与 IoT Central 应用程序交互的方式。 设备开发人员必须确保设备实现 DCM 中定义的行为，以便 IoT Central 能够监视和管理设备。 DCM 由一个或多个_接口_组成，每个接口都可以定义_遥测_类型、_设备属性_和_命令_的集合。 解决方案开发人员可以将定义 DCM 的 JSON 文件导入设备模板，或使用 IoT Central 中的 web UI 来创建或编辑 DCM。 使用 Web UI 进行 DCM 的更改需要对[设备模板进行版本控制](./howto-version-device-template.md)。
+DCM 定义设备与 IoT Central 应用程序交互的方式。 设备开发人员必须确保设备实现 DCM 中定义的行为，以便 IoT Central 能够监视和管理设备。 DCM 由一个或多个 _接口_组成，每个接口都可以定义 _遥测_ 类型、 _设备属性_和 _命令_的集合。 解决方案开发人员可以将定义 DCM 的 JSON 文件导入设备模板，或使用 IoT Central 中的 web UI 来创建或编辑 DCM。 使用 Web UI 进行 DCM 的更改需要对 [设备模板进行版本控制](./howto-version-device-template.md)。
 
 解决方案开发人员还可以导出包含 DCM 的 JSON 文件。 设备开发人员可以使用此 JSON 文档来了解设备应该如何与 IoT Central 的应用程序进行通信。
 
-定义 DCM 的 JSON 文件使用[数字双子定义语言（DTDL） V1](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)。 IoT Central 要求 JSON 文件包含具有内联定义的接口的 DCM，而不是在单独的文件中。
+定义 DCM 的 JSON 文件使用 [数字克隆定义语言 (DTDL) V1](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)。 IoT Central 要求 JSON 文件包含具有内联定义的接口的 DCM，而不是在单独的文件中。
 
 典型的 IoT 设备由以下内容组成：
 
 - 自定义部件，这是使您的设备独一无二的东西。
 - 标准部件，是所有设备通用的部分。
 
-这些部分称为 DCM 中的_接口_。 接口定义设备实现的每个部件的详细信息。 接口可在 DCMs 之间重复使用。
+这些部分称为 DCM 中的 _接口_ 。 接口定义设备实现的每个部件的详细信息。 接口可在 DCMs 之间重复使用。
 
 下面的示例演示具有两个接口的环境传感器设备的设备功能模型的轮廓：
 
@@ -160,10 +161,10 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 
 此示例显示了两个属性：一个遥测类型和两个命令。 最小字段说明具有：
 
-- `@type`指定功能类型： `Telemetry` 、 `Property` 或 `Command` 。  在某些情况下，该类型包括一个语义类型，以使 IoT Central 可以做出有关如何处理该值的一些假设。
-- `name`对于遥测值。
-- `schema`指定遥测的数据类型或属性。 此值可以是基元类型，如 double、integer、boolean 或 string。 还支持复杂的对象类型、数组和映射。
-- `commandType`指定应如何处理命令。
+- `@type` 指定功能类型： `Telemetry` 、 `Property` 或 `Command` 。  在某些情况下，该类型包括一个语义类型，以使 IoT Central 可以做出有关如何处理该值的一些假设。
+- `name` 对于遥测值。
+- `schema` 指定遥测的数据类型或属性。 此值可以是基元类型，如 double、integer、boolean 或 string。 还支持复杂的对象类型、数组和映射。
+- `commandType` 指定应如何处理命令。
 
 可选字段（如显示名称和说明）使你可以向界面和功能添加更多详细信息。
 
@@ -224,6 +225,6 @@ IoT Central 允许你查看仪表板和图表上的遥测，并使用规则在�
 
 ## <a name="next-steps"></a>后续步骤
 
-作为设备开发人员，现在你已了解设备模板，接下来要做的后续步骤是阅读[遥测、属性和命令有效负载](./concepts-telemetry-properties-commands.md)，了解有关与 IoT Central 设备交换的数据的详细信息。
+作为设备开发人员，现在你已了解设备模板，接下来要做的后续步骤是阅读 [遥测、属性和命令有效负载](./concepts-telemetry-properties-commands.md) ，了解有关与 IoT Central 设备交换的数据的详细信息。
 
-作为解决方案开发人员，建议的下一步是[在 Azure IoT Central 应用程序中阅读定义新的 IoT 设备类型](./howto-set-up-template.md)，以了解有关如何创建设备模板的详细信息。
+作为解决方案开发人员，建议的下一步是 [在 Azure IoT Central 应用程序中阅读定义新的 IoT 设备类型](./howto-set-up-template.md) ，以了解有关如何创建设备模板的详细信息。

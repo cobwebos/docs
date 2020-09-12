@@ -12,12 +12,12 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ce5f373576f13a4b1bdb88b5ffb7869a2d7865cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4fa4b64c6519df90d5883e8c5760b3ed2ce0337
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388351"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004453"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -38,8 +38,9 @@ ms.locfileid: "85388351"
     ```
 
     例如，`https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`。
+    例如，`https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`。
 
-1. 对于“客户端 ID”，请输入之前记录的应用程序 ID。
+1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
 1. 对于“客户端机密”，请输入之前记录的客户端机密。
 1. 对于“范围”，请输入 `openid profile`。
 1. 对于“响应类型”和“响应模式” ，请保留默认值。
@@ -47,9 +48,9 @@ ms.locfileid: "85388351"
 1. 在“标识提供者声明映射”下，选择以下声明：
 
     * **用户 ID**：*oid*
-    * **显示名称**：*name*
-    * **名字**：*given_name*
-    * **姓氏**：*family_name*
-    * **电子邮件**：*unique_name*
+    * 显示名称：name
+    * 给定名称：given_name
+    * 姓氏：family_name
+    * 电子邮件：unique_name
 
-1. 选择“保存” 。
+1. 选择“保存”。

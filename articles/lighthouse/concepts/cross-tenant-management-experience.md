@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 08/12/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 38e7d349d8b77b53a19fdf360bd6db454907d4f9
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146906"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007802"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -64,7 +64,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure 备份](../../backup/index.yml)：
 
-- 备份和还原客户租户中的数据
+- 备份和还原[本地工作负荷、Azure vm、azure 文件共享](../..//backup/backup-overview.md#what-can-i-back-up)等的客户数据
 - 使用[备份资源管理器](../../backup/monitor-azure-backup-with-backup-explorer.md)可以查看备份项（包括尚未配置用于备份的 Azure 资源）的操作信息以及委托订阅的监视信息（作业和警报）。 备份资源管理器当前仅可用于 Azure VM 数据。
 - 跨委托订阅使用[备份报告](../../backup/configure-reports.md)来跟踪历史趋势、分析备份存储消耗，以及审核备份和还原。
 

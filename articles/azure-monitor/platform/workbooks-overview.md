@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799559"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657946"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -35,7 +35,7 @@ ms.locfileid: "87799559"
 * [度量值](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [警报（预览版）](workbooks-data-sources.md#alerts-preview)
-* [工作负荷运行状况](workbooks-data-sources.md#workload-health)
+* [工作负载运行状况](workbooks-data-sources.md#workload-health)
 * [Azure 资源运行状况](workbooks-data-sources.md#azure-resource-health)
 * [Azure 数据资源管理器](workbooks-data-sources.md#azure-data-explorer)
 
@@ -43,12 +43,13 @@ ms.locfileid: "87799559"
 
 工作簿提供了一组丰富的功能以用于将数据可视化。 有关每种可视化类型的详细示例，可以参阅下面的示例链接：
 
-* [文本](workbooks-visualizations.md#text)
-* [图表](workbooks-visualizations.md#charts)
-* [网格](workbooks-visualizations.md#grids)
-* [平铺](workbooks-visualizations.md#tiles)
-* [树](workbooks-visualizations.md#trees)
-* [关系图](workbooks-visualizations.md#graphs)
+* [文本](workbooks-text-visualizations.md)
+* [图表](workbooks-chart-visualizations.md)
+* [网格](workbooks-grid-visualizations.md)
+* [平铺](workbooks-tile-visualizations.md)
+* [树](workbooks-tree-visualizations.md)
+* [关系图](workbooks-graph-visualizations.md)
+* [复合条](workbooks-composite-bar.md)
 
 ![示例工作簿可视化效果](./media/workbooks-overview/visualizations.png)
 
@@ -56,9 +57,9 @@ ms.locfileid: "87799559"
 
 若要探索工作簿体验，请先导航到 Azure Monitor 服务。 为此，可以在 Azure 门户的搜索框中键入 **Monitor**。
 
-然后选择 "**工作簿**"。
+然后选择“工作簿”。
 
-![在红色框中突出显示的工作簿按钮屏幕截图](./media/workbooks-overview/workbooks.png)
+![在红色框中突出显示的工作簿按钮的屏幕截图](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>库
 
@@ -86,9 +87,9 @@ ms.locfileid: "87799559"
 
 ### <a name="editing-mode"></a>编辑模式
 
-若要了解此工作簿模板的构成，需要选择“编辑”切换到编辑模式。 
+若要了解此工作簿模板的构成，需要选择“编辑”切换到编辑模式。
 
-![应用程序故障分析模板的屏幕截图](./media/workbooks-overview/edit.png)
+![工作簿中 "编辑" 按钮的屏幕截图。](./media/workbooks-overview/edit.png)
 
 切换到编辑模式后，你会发现右侧显示了一些“编辑”框，它们对应于工作簿的每个方面。
 

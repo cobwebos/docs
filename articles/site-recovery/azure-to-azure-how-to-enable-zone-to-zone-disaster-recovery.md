@@ -5,27 +5,29 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021641"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007785"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>启用区域以对 Azure 虚拟机进行灾难恢复
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>在可用性区域之间启用 Azure VM 灾难恢复
 
 本文介绍如何将 Azure 虚拟机从一个可用性区域复制、故障转移和故障回复到同一 Azure 区域中的另一个。
 
 >[!NOTE]
 >
 >- 对区域到区域灾难恢复的支持当前限制为两个区域：东南亚和英国南部。  
->- 如果客户使用区域进行灾难恢复，则 Site Recovery 不会将客户数据从其部署到的区域中移出或存储。 如果客户选择了不同的区域，则他们可能会选择恢复服务保管库。 恢复服务保管库包含元数据，但没有实际的客户数据。
+>- 如果客户使用区域进行灾难恢复，则 Site Recovery 不会将客户数据从其部署到的区域中移出或存储。 如果客户愿意，可以从其他地区选择恢复服务保管库。 恢复服务保管库包含元数据，但不包含实际的客户数据。
 
 Site Recovery 服务通过在计划内和计划外的停机期间保持业务应用程序的运行，来为业务连续性和灾难恢复策略提供贡献。 建议使用灾难恢复选项，使应用程序在发生区域性服务中断时能够正常运行。
 
 可用性区域是 Azure 区域中独特的物理位置。 每个区域都有一个或多个数据中心。 
+
+如果要将 Vm 移到其他区域中的可用性区域，请 [查看此文](../resource-mover/move-region-availability-zone.md)。
 
 ## <a name="using-availability-zones-for-disaster-recovery"></a>使用可用性区域进行灾难恢复 
 
@@ -37,7 +39,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 - 许多其他客户都有复杂的网络基础结构，并且不希望因为相关的成本和复杂性而在次要区域中重新创建它。 区域到灾难恢复的区域降低了复杂性，因为它利用了跨可用性区域进行配置的更简单的冗余网络概念。 此类客户更愿意简单，还可以使用可用性区域进行灾难恢复。
 
-- 在某些区域中，如果在同一法律管辖区域内没有配对区域（例如，东南亚），区域到区域的灾难恢复可以作为实际的灾难恢复解决方案，因为它有助于确保合法遵从性，因为你的应用程序和数据不跨越全国边界。 
+- 在某些区域中，如果在同一法律区域内没有配对区域 (例如，东南亚) ，区域到区域的灾难恢复可以作为实际的灾难恢复解决方案，因为它可以帮助确保合法遵从性，因为你的应用程序和数据不会跨国家边界移动。 
 
 - 与 Azure 到 Azure 灾难恢复相比，区域到区域的灾难恢复意味着在较短的距离内复制数据，因此，可能会出现延迟下降，从而降低 RPO。
 
@@ -69,8 +71,8 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 |---------|---------|
 |经典 VM   |     不支持    |
 |ARM Vm    |    支持    |
-|Azure 磁盘加密 v1 （双重 pass，带有 AAD）     |     支持 |
-|Azure 磁盘加密 v2 （单一传递，无 AAD）    |    支持    |
+|Azure 磁盘加密 v1 (双路，Azure Active Directory (Azure AD) # A3     |     支持   |
+|Azure 磁盘加密 v2 (单个 pass，无需 Azure AD)     |    支持    |
 |非托管磁盘    |    不支持    |
 |托管磁盘    |    支持    |
 |客户管理的密钥    |    支持    |
@@ -98,7 +100,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 5. 如果要对复制设置进行更改，请单击 "下一步：高级设置"。
 
-6. 在适当的位置将设置远离默认值。 对于 Azure 到 Azure 灾难恢复的用户，此页可能很熟悉。 有关此边栏选项卡上显示的选项的更多详细信息，请参阅[此处](./azure-to-azure-tutorial-enable-replication.md)
+6. 在适当的位置将设置远离默认值。 对于 Azure 到 Azure 灾难恢复的用户，此页可能很熟悉。 有关此边栏选项卡上显示的选项的更多详细信息，请参阅 [此处](./azure-to-azure-tutorial-enable-replication.md)
 
     ![高级设置页面](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -107,7 +109,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 ## <a name="faqs"></a>常见问题解答
 
 **1. 区域到灾难恢复的区域的定价如何？**
-区域到区域灾难恢复的定价与 Azure 到 Azure 灾难恢复的定价相同。 可在[此处](https://azure.microsoft.com/pricing/details/site-recovery/)和[此处](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)找到有关定价页面的更多详细信息。 请注意，要在区域灾难恢复中看到的出口费用将低于区域进行灾难恢复。
+区域到区域灾难恢复的定价与 Azure 到 Azure 灾难恢复的定价相同。 可在 [此处](https://azure.microsoft.com/pricing/details/site-recovery/) 和 [此处](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)找到有关定价页面的更多详细信息。 请注意，要在区域灾难恢复中看到的出口费用将低于区域进行灾难恢复。
 
 **2. RTO 和 RPO 的 SLA 是什么？**
 RTO SLA 与 Site Recovery 整体相同。 我们承诺最多2小时的 RTO。 没有针对 RPO 定义的 SLA。
@@ -119,14 +121,14 @@ Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构�
 区域到区域的灾难恢复支持与 Azure 到 Azure 灾难恢复相同的操作系统。 请参阅[此处](./azure-to-azure-support-matrix.md)的支持矩阵。
 
 **5. 源和目标资源组是否可以相同？**
-否，必须故障转移到不同的资源组。
+不可以，必须故障转移到不同的资源组。
 
 ## <a name="next-steps"></a>后续步骤
 
 运行灾难恢复演练、故障转移、重新保护和故障回复时需要遵循的步骤与 Azure 到 Azure 灾难恢复方案中的步骤相同。
 
-若要执行灾难恢复演练，请执行[此处](./azure-to-azure-tutorial-dr-drill.md)概述的步骤。
+若要执行灾难恢复演练，请执行 [此处](./azure-to-azure-tutorial-dr-drill.md)概述的步骤。
 
-若要执行故障转移并重新保护辅助区域中的 Vm，请按照[此处](./azure-to-azure-tutorial-failover-failback.md)概述的步骤进行操作。
+若要在辅助区域中执行故障转移和重新保护 Vm，请遵循 [此处](./azure-to-azure-tutorial-failover-failback.md)所述的步骤。
 
-若要故障回复到主要区域，请执行[此处](./azure-to-azure-tutorial-failback.md)概述的步骤。
+若要故障回复到主要区域，请执行 [此处](./azure-to-azure-tutorial-failback.md)概述的步骤。

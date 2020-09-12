@@ -4,12 +4,12 @@ description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kuber
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048272"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004861"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -69,42 +69,43 @@ pod/nginx created
 
 启用并显示诊断日志可能需要几分钟时间。 在 Azure 门户中，导航到 AKS 群集，并选择左侧的 " **日志** "。 如果出现 " *示例查询* " 窗口，则将其关闭。
 
-
 在左侧选择“日志”。 若要查看 *kube-audit* 日志，请在文本框中输入以下查询：
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
 ```
 
 许多日志可能会返回。 若要将查询范围缩小到查看有关上一步骤中创建的 NGINX pod 的日志，请添加其他 *where* 语句来搜索 *NGINX* ，如下面的示例查询中所示：
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| where log_s contains "nginx"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
+| where Name contains "nginx"
 ```
-
-若要查看其他日志，可将针对 *Category* 名称的查询更新为 *kube-controller-manager* 或 *kube-scheduler*，具体取决于启用的其他日志。 然后，可以使用附加的 *where* 语句来具体化要查找的事件。
 
 有关如何查询和筛选日志数据的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据][analyze-log-analytics]。
 
 ## <a name="log-event-schema"></a>日志事件架构
 
-为帮助分析日志数据，下表详细说明了用于每个事件的架构：
+AKS 记录以下事件：
 
-| 字段名称               | 说明 |
-|--------------------------|-------------|
-| *resourceId*             | 生成日志的 Azure 资源 |
-| *time*                   | 上传日志的时间戳 |
-| *category*               | 生成日志的容器/组件的名称 |
-| *operationName*          | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | 来自组件的日志的完整文本 |
-| *properties.stream*      | *stderr* 或 *stdout* |
-| *properties.pod*         | 日志的来源 pod 名称 |
-| *properties.containerID* | 此日志的来源 Docker 容器的 ID |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [检测信号][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [性能][log-schema-perf]
 
 ## <a name="log-roles"></a>日志角色
 
@@ -131,3 +132,19 @@ AzureDiagnostics
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

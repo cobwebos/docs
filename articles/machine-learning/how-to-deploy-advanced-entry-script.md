@@ -1,5 +1,5 @@
 ---
-title: 用于高级方案的创作条目脚本
+title: 为高级方案创作入口脚本
 titleSuffix: Azure Machine Learning entry script authoring
 author: gvashishtha
 services: machine-learning
@@ -8,20 +8,20 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 0499cd6885454604e89ce4cadc313b2f68c45156
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 95d3570d93aa4966fcf6864838ec01735b8662db
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544551"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650288"
 ---
-# <a name="advanced-entry-script-authoring"></a>高级条目脚本创作
+# <a name="advanced-entry-script-authoring"></a>高级入口脚本创作
 
 本文介绍如何编写用于专用用例的入口脚本。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
-本文假设你已有一个要使用 Azure 机器学习部署的经过训练的机器学习模型。 若要了解有关模型部署的详细信息，请参阅[此教程](how-to-deploy-and-where.md)。
+本文假设你已有一个要使用 Azure 机器学习进行部署的经过训练的机器学习模型。 若要详细了解模型部署，请参阅[此教程](how-to-deploy-and-where.md)。
 
 ## <a name="automatically-generate-a-swagger-schema"></a>自动生成 Swagger 架构
 
@@ -90,7 +90,7 @@ def run(data):
 ```
 
 
-## <a name="binary-ie-image-data"></a><a id="binary-data"></a>二进制（即图像）数据
+## <a name="binary-ie-image-data"></a><a id="binary-data"></a> 二进制（即图像）数据
 
 如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 若要接受原始数据，请在入口脚本中使用 `AMLRequest` 类，并向 `run()` 函数添加 `@rawhttp` 修饰器。
 
@@ -260,16 +260,16 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-注册模型时，请提供用于在注册表中管理该模型的模型名称。 将此名称与 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 方法结合使用，以检索本地文件系统上一个或多个模型文件的路径。 如果注册文件夹或文件集合，此 API 会返回包含这些文件的目录的路径。
+注册模型时，请提供用于在注册表中管理该模型的模型名称。 将此名称与 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 方法结合使用，以检索本地文件系统上一个或多个模型文件的路径。 如果注册文件夹或文件集合，此 API 会返回包含这些文件的目录的路径。
 
 注册模型时，请为其指定一个名称。 该名称对应于模型的放置位置（本地位置或在服务部署过程中指定的位置）。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查失败的部署问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
-* [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
-* [更新 web 服务](how-to-deploy-update-web-service.md)
+* [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386446"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650923"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "87386446"
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="新建文件":::
 
 1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择“Python Notebook”作为文件类型。
+1. 对于 Jupyter Notebook 文件，请选择 " **笔记本** " 作为文件类型。
 1. 选择文件目录。
 1. 选择“创建” 。
 
@@ -77,12 +77,12 @@ ms.locfileid: "87386446"
 1. 在 [Azure 机器学习工作室](https://ml.azure.com)中打开工作区。
 1. 在左侧选择“笔记本”。
 1. 选择左侧“用户文件”部分中的任何笔记本。  如果没有笔记本，请先[创建笔记本](#create)
-1. 选择“计算”目标或新建一个目标，然后等待目标运行。
+1. 选择 **计算** 目标或创建一个新的目标，并等待它运行。
 1. 选择“打开终端”图标。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="打开终端":::
 
-1. 如果看不到该图标，请选择计算目标右侧的“...”，然后选择“打开终端”。
+1. 如果看不到该图标，请选择计算目标右侧的 " **...** "，然后选择 " **打开终端**"。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="从“...”打开终端":::
 
@@ -92,7 +92,7 @@ ms.locfileid: "87386446"
 
 ### <a name="share-notebooks-and-other-files"></a>共享笔记本和其他文件
 
-复制并粘贴 URL 可以共享笔记本或文件。  只有工作区的其他用户才能访问此 URL。  详细了解如何[授权访问工作区](how-to-assign-roles.md)。
+复制并粘贴 URL 可以共享笔记本或文件。  只有工作区的其他用户可以访问此 URL。  详细了解如何[授权访问工作区](how-to-assign-roles.md)。
 
 ## <a name="edit-a-notebook"></a>编辑笔记本
 
@@ -109,6 +109,22 @@ ms.locfileid: "87386446"
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 这些功能可帮助你详细了解所使用的代码、跟踪正在键入的参数，只需几次击键即可添加对属性和方法的调用。  
 
 键入代码时，请使用“Ctrl+空格键”来触发 IntelliSense。
+
+### <a name="clean-your-notebook-preview"></a>清理笔记本 (预览) 
+
+> [!IMPORTANT]
+> 收集功能目前为公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+在创建笔记本的过程中，通常最终会获得用于数据浏览或调试的单元格。 " *收集* " 功能可帮助你在不使用这些多余单元的情况下生成干净的笔记本。
+
+1. 运行所有笔记本单元。
+1. 选择包含想要新笔记本运行的代码的单元格。 例如，提交实验的代码或可能注册模型的代码。
+1. 选择显示在 "单元格" 工具栏上的 " **集合** " 图标。
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择 "收集" 图标":::
+1. 输入新的 "收集的" 笔记本的名称。  
+
+新笔记本只包含代码单元，所有单元格都需要生成与你为收集所选单元产生的结果相同的结果。
 
 ### <a name="save-and-checkpoint-a-notebook"></a>将笔记本保存并设置检查点
 
@@ -157,7 +173,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 ### <a name="view-logs-and-output"></a>查看日志和输出
 
-使用[笔记本小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)可以查看运行进度和日志。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
+使用[笔记本小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)可以查看运行进度和日志。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
 
 ## <a name="change-the-notebook-environment"></a>更改笔记本环境
 
@@ -185,7 +201,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。  若要向计算实例添加内核，请执行以下步骤：
 
 1. 选择笔记本工具栏中的“[打开终端](#terminal)”。
-1. 使用终端窗口创建新环境。  例如，以下代码将创建 `newenv` ：
+1. 使用终端窗口创建新环境。  例如，以下代码会创建 `newenv`：
     ```shell
     conda create --name newenv
     ```

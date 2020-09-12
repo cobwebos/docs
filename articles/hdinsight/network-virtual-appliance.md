@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: b9e33ba8d9610067cb9e844477ec273391fbdb0b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751728"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650868"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>在 Azure HDInsight 中配置网络虚拟设备
 
@@ -47,7 +47,7 @@ ms.locfileid: "88751728"
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项
 
 > [!Important]
-> 以下列表仅提供了在创建群集后和群集操作的生存期内，操作系统和安全修补或证书验证可能需要的几个 Fqdn。 可以获取 Fqdn 依赖项列表， (大多数 Azure 存储和 Azure 服务总线) [在此文件中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)配置 NVA。 HDInsight 资源提供程序 (RP) 使用这些依赖关系成功创建和监视/管理群集。 其中包括遥测/诊断日志、预配元数据、群集相关配置、脚本、ARM 模板等。FQDN 依赖关系列表可能会更改，并释放未来的 HDIngisht 更新。
+> 以下列表仅提供了在创建群集后以及在群集操作的生存期期间，OS 和安全修补程序或证书验证可能需要的几个 FQDN。 可以获取 FQDN 依赖项（主要是 Azure 存储和 Azure 服务总线）的列表，用于[在此文件中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)配置 NVA。 这些依赖项由 HDInsight 资源提供程序 (RP) 使用，以便成功创建和监视/管理群集。 其中包括遥测/诊断日志、预配元数据、群集相关配置、脚本、ARM 模板等。FQDN 依赖项列表可能会随未来 HDIngisht 更新的发布而更改。
 
 | **终结点**                                                          |
 |---|
@@ -55,6 +55,7 @@ ms.locfileid: "88751728"
 | security.ubuntu.com:80                                                |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
+| microsoft.com:80                                                      |
 
 ## <a name="next-steps"></a>后续步骤
 

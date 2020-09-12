@@ -3,14 +3,14 @@ title: Durable Functions 的单一实例 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展中的单一实例。
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/10/2020
 ms.author: azfuncdf
-ms.openlocfilehash: deb64cf8128fd548cb74c064ab9fd6f169db5300
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 954b322536c5430608597c2e67c474fefeb5fb25
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041925"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004929"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions 中的单一实例业务流程协调程序 (Azure Functions)
 
@@ -44,9 +44,10 @@ public static async Task<HttpResponseMessage> RunSingle(
     else
     {
         // An instance with the specified ID exists, don't create one.
-        return req.CreateErrorResponse(
-            HttpStatusCode.Conflict,
-            $"An instance with ID '{instanceId}' already exists.");
+        return new HttpResponseMessage(HttpStatusCode.Conflict)
+        {
+            Content = new StringContent($"An instance with ID '{instanceId}' already exists."),
+        };
     }
 }
 ```
@@ -141,7 +142,7 @@ module.exports = async function(context, req) {
 }
 ```
 
-**__init__py**
+**__init__.py**
 
 ```python
 import logging
@@ -170,7 +171,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ---
 
-默认情况下，实例 ID 是随机生成的 GUID。 但是，在前面的示例中，实例 ID 通过 URL 在路由数据中传递。 代码调用 `GetStatusAsync` （c #）、 `getStatus` （JavaScript）或 `get_status` （Python）以检查具有指定 ID 的实例是否已在运行。 如果没有此类实例正在运行，将使用该 ID 创建一个新实例。
+默认情况下，实例 ID 是随机生成的 GUID。 但是，在前面的示例中，实例 ID 通过 URL 在路由数据中传递。 代码调用 `GetStatusAsync` (c # ) 、 `getStatus` (JavaScript) 或 `get_status` (Python) 来检查具有指定 ID 的实例是否已在运行。 如果没有此类实例正在运行，将使用该 ID 创建一个新实例。
 
 > [!NOTE]
 > 在此示例中有潜在的争用条件。 如果 **HttpStartSingle** 的两个实例同时执行，则两个函数调用都将报告成功，但实际上只会启动一个业务流程实例。 根据你的要求，这可能会产生不良副作用。 因此，必须确保没有两个请求可以同时执行此触发器函数。

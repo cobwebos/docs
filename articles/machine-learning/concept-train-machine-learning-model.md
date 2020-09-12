@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144832"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651021"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -30,7 +30,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
     | [估算器](#estimators) | 利用估算器类，可以轻松地根据常用机器学习框架来训练模型。 有用于 Scikit-learn、PyTorch、TensorFlow、Chainer 和 Ray RLlib 的估算器类。 还有一个泛型估算器，可用于尚无专用估算器类的框架。 使用估算器时，无需担心定义运行配置。 |
     | [机器学习管道](#machine-learning-pipeline) | 管道不是一种不同的训练方法，而是一种使用模块化、可重复使用的步骤定义工作流的方法，该方法可以将训练作为工作流的一部分包含在内。 机器学习管道支持使用自动化机器学习、估算器和运行配置来训练模型。 由于管道并非专门针对训练，因此使用管道的原因比其他训练方法更多样。 通常，可以在以下情况下使用管道：<br>* 你需要计划无人参与的进程，如长时间运行的训练作业或数据准备。<br>* 使用多个步骤跨异类计算资源和存储位置进行协调。<br>* 将管道用作针对特定场景的可重复使用的模板，如重新训练或批处理评分。<br>* 对工作流的数据源、输入和输出进行跟踪和版本控制。<br>* 工作流由不同的团队实现，这些团队单独执行特定步骤。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
 
-+ [适用于 r 的 AZURE 机器学习 sdk](#r-sdk)：适用于 r 的 sdk 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
++ [适用于 R 的 Azure 机器学习 SDK](#r-sdk)：适用于 R 的 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
 
 + 设计器：Azure 机器学习设计器（预览版）为机器学习提供了一个简单的入门点，用于构建概念证明，或者为几乎没有编码经验的用户提供入门指导。 它允许你使用拖放基于 Web 的 UI 来训练模型。 可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下训练模型。
 
@@ -42,13 +42,13 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 
 可以将适用于 Python 的 Azure 机器学习 SDK 与 Azure 机器学习结合使用，来构建和运行机器学习工作流。 可以通过交互式式 Python 会话、Jupyter Notebook、Visual Studio Code 或其他 IDE 与服务进行交互。
 
-* [什么是适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [安装/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [什么是适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [安装/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [配置 Azure 机器学习的开发环境](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>运行配置
 
-使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 可以定义具有 Azure 机器学习的一般训练作业。 然后使用运行配置，以及训练脚本来训练计算目标上的模型。
+使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) 可以定义具有 Azure 机器学习的一般训练作业。 然后使用运行配置，以及训练脚本来训练计算目标上的模型。
 
 可以从本地计算机的运行配置开始，然后根据需要切换到基于云的计算目标。 更改计算目标时，只需更改所使用的运行配置。 运行还会记录有关训练作业的信息，例如输入、输出和日志。
 
@@ -125,7 +125,7 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
-设计器使您能够在 web 浏览器中使用拖放界面来训练模型。
+通过设计器，可以在 Web 浏览器中使用拖放式界面来训练模型。
 
 + [什么是设计器？](concept-designer.md)
 + [教程：预测汽车价格](tutorial-designer-automobile-price-train-score.md)

@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889934"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659998"
 ---
-# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火墙后面的工作区进行 Azure 机器学习
+# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
-本文介绍如何将 Azure 防火墙配置为控制对 Azure 机器学习工作区和公共 internet 的访问。   若要了解有关保护 Azure 机器学习的详细信息，请参阅 [企业安全性 Azure 机器学习](concept-enterprise-security.md)
+本文介绍如何配置 Azure 防火墙以控制对 Azure 机器学习工作区和公共 Internet 的访问。   若要详细了解如何保护 Azure 机器学习，请参阅 [Azure 机器学习的企业安全性](concept-enterprise-security.md)
 
-虽然本文档中的信息基于使用 [Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)，但你应该能够将其与其他防火墙产品一起使用。 如果有关于如何允许通过防火墙进行通信的问题，请查阅所使用防火墙的相关文档。
+虽然本文档中的信息基于使用 [Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)，但你应该能够将其与其他防火墙产品一起使用。 如果你对如何允许通过防火墙进行通信有疑问，请查阅你正在使用的防火墙的相关文档。
 
 ## <a name="application-rules"></a>应用程序规则
 
@@ -35,7 +35,7 @@ ms.locfileid: "88889934"
 
 ## <a name="microsoft-hosts"></a>Microsoft 主机
 
-如果未正确配置，则防火墙可能会在使用工作区时导致问题。 Azure 机器学习工作区均使用各种主机名。
+如果未正确配置，则防火墙可能会在使用工作区时导致问题。 Azure 机器学习工作区使用各种主机名。
 
 本部分中的主机归 Microsoft 所有，它们提供工作区正常工作所需的服务。
 
@@ -55,8 +55,8 @@ ms.locfileid: "88889934"
 | **vault.azure.net** | Azure Key Vault |
 | **azurecr.io** | Azure 容器注册表 |
 | **mcr.microsoft.com** | 用于 docker 基础映像的 Microsoft 容器注册表 |
-| **your-acr-server-name.azurecr.io** | 仅当 Azure 容器注册表位于虚拟网络后面时才需要。 在此配置中，将从 Microsoft 环境创建专用链接到订阅中的 ACR 实例。 为 Azure 机器学习工作区使用 ACR 服务器名称。 |
-| **\*。 notebooks.azure.net** | Azure 机器学习 studio 中的笔记本需要。 |
+| **your-acr-server-name.azurecr.io** | 仅当 Azure 容器注册表位于虚拟网络后面时才需要。 通过此配置，将创建从 Microsoft 环境到订阅中的 ACR 实例的专用链接。 将 ACR 服务器名称用于 Azure 机器学习工作区。 |
+| **\*.notebooks.azure.net** | Azure 机器学习工作室中的笔记本需要。 |
 | **graph.windows.net** | 笔记本需要 |
 
 ## <a name="python-hosts"></a>Python 主机
@@ -92,4 +92,4 @@ Azure 政府区域所需的 Url。
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：使用 Azure 门户部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
-* [保护 Azure 虚拟网络中的 Azure ML 试验和推理作业](how-to-enable-virtual-network.md)
+* [保护 Azure 虚拟网络中的 Azure ML 试验和推理作业](how-to-network-security-overview.md)
