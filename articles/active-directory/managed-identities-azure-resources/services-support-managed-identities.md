@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267439"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006774"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -231,7 +231,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-所有区域都提供[Service Fabric 应用程序的托管标识](../../service-fabric/concepts-managed-identity.md)。
+[Service Fabric 应用程序的托管标识](../../service-fabric/concepts-managed-identity.md)在所有区域中均可用。
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
@@ -284,6 +284,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 模板](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
+- [Azure SDK](qs-configure-sdk-windows-vm.md)
 
 
 ### <a name="azure-vm-image-builder"></a>Azure VM 映像生成器
@@ -301,7 +302,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 预览 | 预览 | 不可用 | 预览 |
 
-请参阅以下列表，在可用) 的区域中为 Azure SignalR 服务 (配置托管标识：
+请参阅以下列表来配置 Azure SignalR 服务的托管标识（在可用的区域中）：
 
 - [Azure Resource Manager 模板](../../azure-signalr/howto-use-managed-identity.md)
 

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167634"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661634"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,11 +62,11 @@ Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 > [!IMPORTANT]
 > 如果未指定现有 Azure 服务，则将在创建工作区期间自动创建一个。 必须始终指定资源组。 附加自己的存储帐户时，请确保它满足以下条件：
 >
-> * 存储帐户_不_是高级帐户 (Premium_LRS 和 Premium_GRS) 
-> * Azure Blob 和 Azure 文件功能都已启用
-> * 已禁用分层命名空间 (ADLS 第2代) 
+> * 存储帐户不是高级帐户（Premium_LRS 和 Premium_GRS）
+> * Azure Blob 和 Azure 文件功能同时启用
+> * 分层命名空间（ADLS 第 2 代）已禁用
 >
-> 这些要求仅适用于工作区使用的_默认_存储帐户。
+> 这些要求仅适用于工作区使用的默认存储帐户。
 
 | 服务 | 用于指定现有实例的参数 |
 | ---- | ---- |
@@ -145,7 +145,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ### <a name="virtual-network-and-private-endpoint"></a>虚拟网络和专用终结点
 
 > [!IMPORTANT]
-> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在**美国东部**和**美国西部 2**区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在 **美国东部** 和 **美国西部 2** 区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果要将工作区的访问权限限制为虚拟网络，可以使用以下参数：
 
@@ -155,19 +155,19 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
 * `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
 
-有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅[网络隔离和隐私](how-to-enable-virtual-network.md)。
+有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客户管理的密钥和高业务影响工作区
 
 默认情况下，工作区的指标和元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 此数据使用 Microsoft 托管的密钥进行加密。 
 
-如果正在创建 Azure 机器学习的__企业__版，则可以使用提供自己的密钥。 这样做会创建在 Azure 订阅中存储指标和元数据的 Azure Cosmos DB 实例。 使用 `--cmk-keyvault` 参数指定包含密钥的 Azure Key Vault，并 `--resource-cmk-uri` 指定保管库中密钥的 URL。
+如果正在创建 Azure 机器学习的 __企业__ 版，则可以使用提供自己的密钥。 这样做会创建在 Azure 订阅中存储指标和元数据的 Azure Cosmos DB 实例。 使用 `--cmk-keyvault` 参数指定包含密钥的 Azure Key Vault，并 `--resource-cmk-uri` 指定保管库中密钥的 URL。
 
 > [!IMPORTANT]
 > 使用 `--cmk-keyvault` 和参数之前 `--resource-cmk-uri` ，必须先执行以下操作：
 >
-> 1. 在标识和访问管理) 中为订阅的 "参与者" 权限授权__机器学习应用__ (。
-> 1. 按照[将客户托管的密钥配置](/azure/cosmos-db/how-to-setup-cmk)为：
+> 1. 在标识和访问管理) 中为订阅的 "参与者" 权限授权 __机器学习应用__ (。
+> 1. 按照 [将客户托管的密钥配置](/azure/cosmos-db/how-to-setup-cmk) 为：
 >     * 注册 Azure Cosmos DB 提供程序
 >     * 创建和配置 Azure Key Vault
 >     * 生成密钥
@@ -181,7 +181,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!IMPORTANT]
 > 只有在创建工作区时，才能选择高业务影响。 在创建工作区后，不能更改此设置。
 
-有关客户管理的密钥和高业务影响工作区的详细信息，请参阅[企业安全 Azure 机器学习](concept-enterprise-security.md#encryption-at-rest)。
+有关客户管理的密钥和高业务影响工作区的详细信息，请参阅 [企业安全 Azure 机器学习](concept-enterprise-security.md#encryption-at-rest)。
 
 ### <a name="use-existing-resources"></a>使用现有资源
 
@@ -197,7 +197,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
     > [!IMPORTANT]
-    > 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户 (Premium_LRS 并 Premium_GRS) 。 它也不能 (与 Azure Data Lake Storage Gen2) 一起使用的分层命名空间。 工作区的_默认_存储帐户不支持高级存储或分层命名空间。 可以将高级存储或分层命名空间用于_非默认_存储帐户。
+    > 若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
 
 + **Azure Application Insights**：
 
@@ -368,7 +368,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 ## <a name="sync-keys-for-dependent-resources"></a>同步依赖资源的密钥
 
-如果更改了工作区使用的某个资源的访问密钥，则工作区需要大约一小时的时间才能同步到新密钥。 若要强制工作区立即同步新密钥，请使用以下命令：
+如果更改工作区使用的资源之一的访问密钥，则工作区需要大约一个小时才能与新密钥同步。 若要强制工作区立即同步新密钥，请使用以下命令：
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

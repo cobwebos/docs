@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230375"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651649"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -173,7 +173,9 @@ ms.locfileid: "89230375"
 > [!WARNING]
 > 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
-* **Azure 门户**：如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规“概述”页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
+* **Azure 门户**： 
+  * 如果直接从 SDK 或 Azure 门户的共享链接直接连接到工作区，则无法查看在扩展中有订阅信息的标准 " **概述** " 页。 在这种情况下，也无法切换到另一个工作区。 若要查看其他工作区，请直接跳到 [Azure 机器学习 studio](https://ml.azure.com) 并搜索工作区名称。
+  * 所有资产 (数据集、试验、计算等) 仅在 [Azure 机器学习 studio](https://ml.azure.com)中可用。 它们 *不* 是 Azure 门户提供的。
 
 * **Azure 机器学习工作室 Web 门户支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
   * Microsoft Edge（新的 Microsoft Edge（最新版）， 不是旧版 Microsoft Edge）
@@ -239,7 +241,7 @@ ms.locfileid: "89230375"
     1. 在“数据集监视器”选项卡上，选择试验链接以检查运行状态。  此链接位于表的最右侧。
     1. 如果运行已成功完成，请检查驱动程序日志，以便查看已生成的指标数，或者查看是否有任何警告消息。  单击试验后，在“输出 + 日志”选项卡中查找驱动程序日志。
 
-* 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
+* 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -268,7 +270,7 @@ time.sleep(600)
 
 实时终结点的日志是客户数据。 对于实时终结点故障排除，可以使用以下代码来启用日志。 
 
-有关详细信息，请参阅 [本文](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)中的监视 web 服务终结点。
+有关监视 Web 服务终结点的更多详细信息，请参阅[本文](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)。
 
 ```python
 from azureml.core import Workspace
@@ -278,7 +280,7 @@ ws = Workspace.from_config()
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
-如果有多个租户，则可能需要先添加下面的身份验证代码 `ws = Workspace.from_config()`
+如果有多个租户，则可能需要在 `ws = Workspace.from_config()` 之前添加以下身份验证代码
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -294,7 +296,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Azure ML 还提供适用于 TensorFlow、PyTorch、Chainer 和 SKLearn 的框架特定的估算器。 使用这些估算器可确保在用于训练的环境中自动安装核心框架依赖项。 可以使用相应的选项根据前面所述指定额外的依赖项。 
  
     可以在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到 Azure ML 维护的 Docker 映像及其内容。
-    框架特定的依赖项列在相应的框架文档中 - [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
+    框架特定的依赖项列在相应的框架文档中 - [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks)。
 
     > [!Note]
     > 如果你认为某个特定的包比较常用，需要添加到 Azure ML 维护的映像和环境中，请在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 问题。 
@@ -303,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod 已关闭**：在大多数情况下，如果遇到“AbortedError:Horovod 已关闭”，此异常表示某个进程中的根本性异常导致 Horovod 关闭。 MPI 作业中的每个排名都会在 Azure ML 中生成专属的日志文件。 这些日志名为 `70_driver_logs`。 对于分布式训练，日志名称带有 `_rank` 后缀，以方便区分日志。 若要查找导致 Horovod 关闭的确切错误，请浏览所有日志文件，并查看 driver_log 文件末尾的 `Traceback`。 其中的某个文件会指出实际的根本性异常。 
 
-* **运行或试验删除**：可以通过以下方式将试验存档：使用 [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) 方法，或者从 Azure 机器学习工作室客户端中的“试验”选项卡视图中使用“存档试验”按钮。 执行此操作后，在列出查询和视图时将隐藏该试验，但不会将其删除。
+* **运行或试验删除**：可以通过以下方式将试验存档：使用 [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) 方法，或者从 Azure 机器学习工作室客户端中的“试验”选项卡视图中使用“存档试验”按钮。 执行此操作后，在列出查询和视图时将隐藏该试验，但不会将其删除。
 
     目前不支持永久删除个体试验或运行。 有关删除工作区资产的详细信息，请参阅[导出或删除机器学习服务工作区数据](how-to-export-delete-data.md)。
 
@@ -338,6 +340,8 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
+* **预测 R2 评分值始终为零**：如果提供的定型数据的时序包含的 `n_cv_splits`  +  数据点的值相同，则会出现此问题 `forecasting_horizon` 。 如果你的时间序列中应有此模式，则可以将主要指标切换为标准化的平均平方误差。
+ 
 * **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 TensorFlow = = 1.12.0。 
  
    ```python
@@ -358,46 +362,46 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
 * **automl_setup 失败**： 
-    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 若要安装 Miniconda) ，请单击 [此处](https://docs.conda.io/en/latest/miniconda.html)。
-    * 通过运行命令确保安装了 conda 64 位，而不是32位 `conda info` 。 `platform`应该 `win-64` 适用于 Windows 或 `osx-64` for Mac。
-    * 确保已安装 conda 4.4.10 或更高版本。 可以通过命令检查版本 `conda -V` 。 如果你安装了以前的版本，则可以使用命令进行更新： `conda update conda` 。
-    * Linux `gcc: error trying to exec 'cc1plus'`
-      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 遇到错误，请使用管理中心捆绑命令安装 build essentials `sudo apt-get install build-essential` 。
-      * 将新名称作为第一个参数传递给 automl_setup 以创建新的 conda 环境。 使用查看现有的 conda 环境 `conda env list` ，并使用将其删除 `conda env remove -n <environmentname>` 。
+    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 若要安装 Miniconda，请单击[此处](https://docs.conda.io/en/latest/miniconda.html)。
+    * 通过运行 `conda info` 命令，确保已安装 conda 64 位而不是 32 位。 对于 Windows，`platform` 应为 `win-64`，对于 Mac，应为 `osx-64`。
+    * 确保已安装 conda 4.4.10 或更高版本。 可以使用命令 `conda -V` 检查该版本。 如果安装了以前的版本，可以使用以下命令对其进行更新：`conda update conda`。
+    * Linux - `gcc: error trying to exec 'cc1plus'`
+      *  如果遇到 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 错误，请使用命令 `sudo apt-get install build-essential` 安装版本要素。
+      * 将新名称作为第一个参数传递给 automl_setup 以创建新的 conda 环境。 使用 `conda env list` 查看现有的 conda 环境，并使用 `conda env remove -n <environmentname>` 删除它们。
       
-* **automl_setup_linux sh 失败**：如果 automl_setup_linus，则在 Ubuntu Linux 出现错误： `unable to execute 'gcc': No such file or directory`-
-  1. 确保启用出站端口53和80。 在 Azure VM 上，可以通过在 Azure 门户中选择 VM 并单击 "网络" 来执行此操作。
+* **automl_setup_linux.sh 失败**：如果 automl_setup_linus.sh 在 Ubuntu Linux 上失败，并出现错误：`unable to execute 'gcc': No such file or directory`-
+  1. 确保已启用出站端口 53 和 80。 在 Azure VM 上，可以通过选择 VM 并单击“网络”，从 Azure 门户执行此操作。
   2. 运行命令 `sudo apt-get update`
   3. 运行命令 `sudo apt-get install build-essential --fix-missing`
-  4. `automl_setup_linux.sh`再次运行
+  4. 再次运行 `automl_setup_linux.sh`
 
-* **ipynb 失败**：
-  * 对于本地 conda，请首先确保 automl_setup 具有 susccessfully 运行。
-  * 确保 subscription_id 正确。 依次选择 "所有服务" 和 "订阅"，在 Azure 门户中查找 subscription_id。 Subscription_id 值中不应包含字符 "<" 和 ">"。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
-  * 确保参与者或所有者对订阅的访问权限。
-  * 检查该区域是否为受支持的区域之一： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` `australiaeast` `westus2` 、、和 `southcentralus` 。
-  * 使用 Azure 门户确保对区域的访问权限。
+* **configuration.ipynb 失败**：
+  * 对于本地 conda，请首先确保 automl_setup 已成功运行。
+  * 确保 subscription_id 是正确的。 通过选择“所有服务”，然后选择“订阅”，在 Azure 门户中查找 subscription_id。 字符“<”和“>”不应包含在 subscription_id 值中。 例如，`subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 的格式有效。
+  * 确保参与者或所有者有权访问“订阅”。
+  * 检查该区域是否为受支持的区域之一：`eastus2`、`eastus`、`westcentralus`、`southeastasia`、`westeurope`、`australiaeast`、`westus2`、`southcentralus`。
+  * 确保使用 Azure 门户访问该区域。
   
-* **导入 AutoMLConfig 失败**：自动机器学习版本1.0.76 中存在包更改，这需要在更新到新版本之前卸载以前的版本。 如果 `ImportError: cannot import name AutoMLConfig` 从 1.0.76 v 到 v 1.0.76 或更高版本的 SDK 版本升级之后遇到此错误，请通过运行以下内容来解决该错误： `pip uninstall azureml-train automl` 和 `pip install azureml-train-auotml` 。 Automl_setup .cmd 脚本会自动执行此功能。 
+* **导入 AutoMLConfig 失败**：自动化机器学习版本 1.0.76 中存在包更改，这要求先卸载以前的版本，再更新到新版本。 如果从 v1.0.76 之前的 SDK 版本升级到 v1.0.76 或更高版本后遇到 `ImportError: cannot import name AutoMLConfig`，请先运行 `pip uninstall azureml-train automl` 再运行 `pip install azureml-train-auotml` 来解决该错误。 automl_setup.cmd 脚本会自动执行此操作。 
 
-* **工作区。 from_config 失败**：如果调用 Ws = workspace from_config ( # A1 "失败-
-  1. 确保 ipynb 笔记本已成功运行。
-  2. 如果正在运行的文件夹不在运行的文件夹下运行 `configuration.ipynb` ，请将文件夹 aml_config，并将其包含的文件 config.js到新文件夹中。 From_config 读取笔记本文件夹或其父文件夹的 config.js。
-  3. 如果正在使用新的订阅、资源组、工作区或区域，请确保 `configuration.ipynb` 再次运行笔记本。 仅当工作区在指定的订阅下指定的资源组中已存在时，才能直接更改 config.js。
-  4. 若要更改区域，请更改工作区、资源组或订阅。 `Workspace.create` 如果工作区已经存在，则不会创建或更新它，即使指定的区域不同也是如此。
+* **workspace.from_config 失败**：如果调用 ws = Workspace.from_config()' 失败 -
+  1. 确保 configuration.ipynb 笔记本已成功运行。
+  2. 如果正在从不在运行 `configuration.ipynb` 的文件夹下的文件夹中运行笔记本，则将文件夹 aml_config 及其包含的文件 config.json 复制到新文件夹中。 Workspace.from_config 读取笔记本文件夹或其父文件夹的 config.json。
+  3. 如果正在使用新的订阅、资源组、工作区或区域，请确保再次运行 `configuration.ipynb` 笔记本。 仅当指定订阅下的指定资源组中已存在工作区时，直接更改 config.json 才会生效。
+  4. 如果要更改区域，请更改工作区、资源组或订阅。 即使指定的区域不同，`Workspace.create` 也不会创建或更新工作区（如果已存在）。
   
-* **示例笔记本失败**：如果示例笔记本失败并出现错误，preperty、方法或库不存在：
-  * 确保已在 jupyter 笔记本中选择 correctcorrect 内核。 内核显示在笔记本页面的右上方。 默认值为 azure_automl。 请注意，内核将作为笔记本的一部分保存。 因此，如果切换到新的 conda 环境，则必须在笔记本中选择新内核。
+* **示例笔记本失败**：如果示例笔记本失败，并出现属性、方法或库不存在的错误：
+  * 确保在 Jupyter 笔记本中选择了正确的内核。 内核显示在笔记本页面的右上方。 默认值为 azure_automl。 请注意，内核作为笔记本的一部分进行保存。 因此，如果切换到新的 conda 环境，则必须在笔记本中选择新内核。
       * 对于 Azure Notebooks，它应为 Python 3.6。 
-      * 对于本地 conda 环境，该环境应为在 automl_setup 中指定的 conda envioronment 名称。
-  * 确保笔记本适用于你正在使用的 SDK 版本。 可以通过 `azureml.core.VERSION` 在 jupyter 笔记本单元中执行来检查 SDK 版本。 您可以通过单击该 `Branch` 按钮，选择该 `Tags` 选项卡，然后选择版本来从 GitHub 下载以前版本的示例笔记本。
+      * 对于本地 conda 环境，它应为在 automl_setup 中指定的 conda 环境名称。
+  * 确保笔记本适用于正在使用的 SDK 版本。 可以通过在 Jupyter 笔记本单元格中执行 `azureml.core.VERSION` 来检查 SDK 版本。 通过单击 `Branch` 按钮，选择 `Tags` 选项卡，然后选择版本，可以从 GitHub 下载以前版本的示例笔记本。
 
-* **Windows 中的 Numpy 导入失败**：一些 windows 环境会看到一个错误，加载 Numpy 最新的 Python 版本3.6.8。 如果你看到此问题，请尝试 Python 版本3.6.7。
+* **Windows 中的 Numpy 导入失败**：在某些 Windows 环境中，最新的 Python 3.6.8 版本加载 numpy 时会出现错误。 如果出现此问题，请尝试使用 Python 3.6.7 版本。
 
-* **Numpy 导入失败**：请在自动 ml conda 环境中检查 tensorflow 版本。 支持的版本为 1.13 <。 如果版本 >为1.13，则从环境中卸载 tensorflow，可以按如下所示检查 tensorflow 和 uninstall 的版本：
-  1. 启动命令行界面，激活安装了自动 ml 包的 conda 环境。
-  2. 输入 `pip freeze` 并查找 `tensorflow` ，如果找到，则列出的版本应为 < 1.13
-  3. 如果列出的版本不是受支持的版本，请 `pip uninstall tensorflow` 在命令外壳中输入 y 进行确认。
+* **Numpy 导入失败**：在自动化 ML conda 环境中检查 TensorFlow 版本。 支持的版本为 <1.13 的版本。 如果版本 >= 1.13，请从环境中卸载 TensorFlow。可以按如下所示检查 TensorFlow 的版本并进行卸载 -
+  1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
+  2. 输入 `pip freeze` 并查找 `tensorflow`，如果找到，则列出的版本应 <1.13
+  3. 如果列出的版本不是受支持的版本，请在命令 shell 中使用 `pip uninstall tensorflow` 并输入 y 进行确认。
 
 ## <a name="deploy--serve-models"></a>部署和提供模型
 

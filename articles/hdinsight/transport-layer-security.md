@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e46cca28c049a794db617797d5f09e9f3b5720d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82183494"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006885"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Azure HDInsight 中的传输层安全性
 
@@ -21,8 +21,6 @@ ms.locfileid: "82183494"
 
 默认情况下，Azure HDInsight 群集会接受公共 HTTPS 终结点上的 TLS 1.2 连接，以及可以后向兼容的较旧版本。 在群集创建过程中，可以使用 Azure 门户或资源管理器模板来控制网关节点支持的最低 TLS 版本。 对于门户，请在群集创建过程中从“安全性 + 网络”选项卡中选择 TLS 版本。**** 对于部署时的资源管理器模板，请使用 minSupportedTlsVersion**** 属性。 有关示例模板，请参阅 [HDInsight 最低 TLS 1.2 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)。 此属性支持三个值：“1.0”、“1.1”和“1.2”，分别对应于 TLS 1.0+、TLS 1.1+ 和 TLS 1.2+。
 
-> [!IMPORTANT]
-> 从 2020 年 6 月 30 日开始，Azure HDInsight 将为所有 HTTPS 连接强制实行 TLS 2.1 或更高版本。 我们建议你确保所有客户端都已准备好处理 TLS 1.2 或更高版本。 有关详细信息，请参阅 [Azure HDInsight TLS 1.2 强制](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)。
 
 ## <a name="next-steps"></a>后续步骤
 

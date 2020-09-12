@@ -3,12 +3,12 @@ title: 注册表身份验证选项
 description: 专用 Azure 容器注册表的身份验证选项，包括使用 Azure Active Directory 标识、使用服务主体以及使用可选的管理凭据进行登录。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926314"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657086"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>使用 Azure 容器注册表进行身份验证
 
@@ -44,7 +44,7 @@ az acr login --name <acrName>
 
 对于注册表访问，`az acr login` 使用的令牌有效期为 3 小时  ，因此，建议在运行 `docker` 命令之前始终登录到注册表。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 
 
-使用 `az acr login` azure 标识提供[azure 基于角色的访问控制 (azure RBAC) ](../role-based-access-control/role-assignments-portal.md)。 在某些情况下，你可能想要在 Azure AD 中使用自己的单个标识登录到注册表，或者使用特定的[azure 角色和权限](container-registry-roles.md)配置其他 azure 用户。 对于跨服务方案，或者若要在不想管理个人访问的情况下满足工作组或部署工作流的需求，还可以使用 [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)进行登录。
+使用 `az acr login` azure 标识提供 [azure 基于角色的访问控制 (azure RBAC) ](../role-based-access-control/role-assignments-portal.md)。 在某些情况下，你可能想要在 Azure AD 中使用自己的单个标识登录到注册表，或者使用特定的 [azure 角色和权限](container-registry-roles.md)配置其他 azure 用户。 对于跨服务方案，或者若要在不想管理个人访问的情况下满足工作组或部署工作流的需求，还可以使用 [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)进行登录。
 
 ### <a name="az-acr-login-with---expose-token"></a>包含--公开令牌的 az acr login
 
@@ -53,7 +53,7 @@ az acr login --name <acrName>
 对于这种情况，请 `az acr login` 先用 `--expose-token` 参数运行。 此选项公开访问令牌，而不是通过 Docker CLI 登录。
 
 ```azurecli
-az acr login -name <acrName> --expose-token
+az acr login --name <acrName> --expose-token
 ```
 
 输出显示访问令牌，缩写如下：
@@ -73,7 +73,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>服务主体
 
-如果为注册表分配了[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，则应用程序或服务可以将其用于无外设身份验证。 服务主体允许对注册表使用[AZURE RBAC)  (azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)，并且你可以将多个服务主体分配到注册表。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
+如果为注册表分配了[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，则应用程序或服务可以将其用于无外设身份验证。 服务主体允许对注册表使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md) ，并且你可以将多个服务主体分配到注册表。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
 
 容器注册表的可用角色包括：
 
@@ -91,7 +91,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 每个容器注册表包含一个管理员用户帐户，此帐户默认禁用。 可以在 Azure 门户中或通过使用 Azure CLI 或其他 Azure 工具启用管理员用户并管理其凭据。 管理员帐户对注册表具有完全权限。
 
-在某些情况下，需要管理员帐户才能将映像从容器注册表部署到某些 Azure 服务。 例如，当你将门户中的容器映像从注册表直接部署到[Azure 容器实例](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal)或[适用于容器的 azure Web 应用](container-registry-tutorial-deploy-app.md)时，需要管理员帐户。
+在某些情况下，需要管理员帐户才能将映像从容器注册表部署到某些 Azure 服务。 例如，当你将门户中的容器映像从注册表直接部署到 [Azure 容器实例](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) 或 [适用于容器的 azure Web 应用](container-registry-tutorial-deploy-app.md)时，需要管理员帐户。
 
 > [!IMPORTANT]
 > 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 建议不要在多个用户之间共享管理帐户凭据。 对于使用管理员帐户进行身份验证的所有用户，他们都将显示为对注册表具有推送和拉取访问权限的单个用户。 更改或禁用此帐户会禁用使用凭据的所有用户的注册表访问权限。 建议用户和服务主体在无外设方案中使用单个标识。

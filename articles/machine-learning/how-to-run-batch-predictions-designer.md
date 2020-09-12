@@ -5,17 +5,17 @@ description: 了解如何使用设计器训练模型并设置批量预测管道�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319603"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661544"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器运行批量预测（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +71,10 @@ ms.locfileid: "87319603"
    
     输入参数名称或接受默认值。
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>发布批量推理管道
+    > [!div class="mx-imgBorder"]
+    > ![将数据集设置为管道参数](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
+
+## <a name="publish-your-batch-inference-pipeline"></a>发布批处理推理管道
 
 现在，你已准备好部署推理管道。 下面的操作将部署管道，使其可供其他人使用。
 
@@ -126,9 +129,7 @@ ms.locfileid: "87319603"
 
 在“运行概述”面板中可以找到管道终结点的 REST 终结点。 通过调用终结点，将使用其默认的已发布管道。
 
-另外，还可以在“已发布管道”页中使用已发布的管道。 选择已发布管道，并找到其 REST 终结点。 
-
-![REST 终结点详细信息](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+另外，还可以在“已发布管道”页中使用已发布的管道。 选择已发布的管道，可以在关系图右侧的 " **已发布管道概述** " 面板中找到它的 REST 终结点。 
 
 若要进行 REST 调用，需要 OAuth 2.0 持有者类型身份验证标头。 请参阅以下[教程部分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)，以详细了解如何设置工作区的身份验证并进行参数化 REST 调用。
 
@@ -142,7 +143,7 @@ ms.locfileid: "87319603"
 
 另外，还可以在终结点的“已发布管道”选项卡中设置新的默认管道。
 
-![设置默认管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![在 "已发布管道" 页中设置默认管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>后续步骤
 

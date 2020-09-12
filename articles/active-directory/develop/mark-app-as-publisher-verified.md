@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477679"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006938"
 ---
-# <a name="mark-your-app-as-publisher-verified-preview"></a>将应用标记为“发布者已验证”（预览版）
+# <a name="mark-your-app-as-publisher-verified"></a>将应用标记为“发布者已验证”
 
 当应用程序标记为“发布者已验证”时，表示发布者已使用 Microsoft 合作伙伴网络 (MPN) 帐户验证了身份，并将此 MPN 帐户与其应用程序注册相关联。 本文介绍如何完成[发布者验证（预览版）](publisher-verification-overview.md)过程。
 
 ## <a name="quickstart"></a>快速入门
 如果已注册 Microsoft 合作伙伴网络 (MPN)，并且已经满足[先决条件](publisher-verification-overview.md#requirements)，则可以立即开始： 
 
-1. 导航到预览版[应用注册门户](https://aka.ms/PublisherVerificationPreview)。
+1. 导航到 [应用注册门户](https://aka.ms/PublisherVerificationPreview)。
 
 1. 选择应用，然后单击“品牌打造”。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "85477679"
 
     - 在合作伙伴中心中，该用户必须拥有以下角色之一：MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。 
 
-1. 导航到应用注册门户的预览版本：  
+1. 导航到应用注册门户：  
 
 1. 单击想要标记为“发布者已验证”的应用，然后打开“品牌打造”边栏选项卡。 
 

@@ -6,15 +6,15 @@ ms.author: viviali
 ms.date: 03/27/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b9cf8b862f77af833016d6aabb0ccae7bea8e24a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497420"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015970"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
 
@@ -26,7 +26,7 @@ ms.locfileid: "87497420"
 
 ## <a name="prerequisites"></a>必备条件
 
-+ Azure CLI 已安装且版本为 2.0.7 或更高。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/install-azure-cli)了解如何进行安装和更新
++ Azure CLI 安装，且版本2.7.0 或更高版本。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/install-azure-cli)了解如何进行安装和更新
 + Azure 中的工作或学校帐户，在 IoT Central 应用程序中作为用户添加。
 
 ## <a name="install-the-iot-central-extension"></a>安装 IoT Central 扩展
@@ -43,7 +43,7 @@ az extension add --name azure-iot
 az --version
 ```
 
-应会看到 azure iot 扩展为0.8.1 或更高版本。 如果不是，请运行：
+应会看到 azure iot 扩展为0.9.9 或更高版本。 如果不是，请运行：
 
 ```azurecli
 az extension update --name azure-iot
@@ -68,16 +68,16 @@ az login
 监视从设备发送到 IoT Central 应用的消息。 输出包含所有标头和批注。
 
 ```azurecli
-az iot central app monitor-events --app-id <app-id> --properties all
+az iot central diagnostics monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>查看设备属性
 查看某个给定设备当前的读取和读取/写入设备属性。
 
 ```azurecli
-az iot central device-twin show --app-id <app-id> --device-id <device-id>
+az iot central device twin show --app-id <app-id> --device-id <device-id>
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是一名设备开发人员，建议下一步是了解[Azure IoT Central 中的设备连接](./concepts-get-connected.md)。
+如果你是一名设备开发人员，建议下一步是了解 [Azure IoT Central 中的设备连接](./concepts-get-connected.md)。

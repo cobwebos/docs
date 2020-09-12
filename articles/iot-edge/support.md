@@ -4,16 +4,16 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/17/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccfd85c5976642d30b3f21d2d2afeb868ba49bf9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 679fa4002f687f715ab1fe9701997d46e4b6f2cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924608"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018452"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -98,7 +98,7 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 sudo apt-get install libssl1.0.2
 ```
 
-<sup>2</sup> [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)存储库中的 Debian 9 包应与 Ubuntu 20.04 一起使用。
+<sup>2</sup> [Azure IoT Edge 版本存储库](https://github.com/Azure/azure-iotedge/releases)中的 Debian 9 包应该可以直接与 Ubuntu 20.04 配合使用。
 
 ## <a name="releases"></a>发行版本
 
@@ -108,7 +108,7 @@ IoT Edge 组件可以单独安装或更新，并后向兼容旧版中的组件�
 
 | 发布 | 安全守护程序 | Edge 中心<br>Edge 代理 | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.9** | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4（ARMv7hl，CentOS） |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |

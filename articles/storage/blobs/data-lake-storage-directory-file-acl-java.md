@@ -3,24 +3,24 @@ title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Java SDK
 description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 09/10/2020
 ms.custom: devx-track-java
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 0f7dfda46c7a4af8143c33b1b45001a88d3bed88
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac0f885a370269a87e45b5e31ec1de6ac397080a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319382"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017207"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍了如何使用 Java 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[包（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
+[Package (Maven) ](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 参考](/java/api/overview/azure/storage-file-datalake-readme)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -110,7 +110,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 容器充当文件的文件系统。 可以通过调用 **DataLakeServiceClient.createFileSystem** 方法来创建一个。
 
-此示例创建一个名为的容器 `my-file-system` 。 
+此示例创建一个名为 `my-file-system` 的容器。 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -124,7 +124,7 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 可以通过调用 **DataLakeFileSystemClient.createDirectory** 方法来创建目录引用。
 
-此示例向容器添加一个名 `my-directory` 为的目录，然后添加一个名为的子目录 `my-subdirectory` 。 
+此示例向容器添加名为 `my-directory` 的目录，然后添加名为 `my-subdirectory` 的子目录。 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -233,7 +233,7 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串（）传递给 `""` **DataLakeFileSystemClient. getDirectoryClient**方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串 (`""`) 传递到“DataLakeFileSystemClient.getDirectoryClient”方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
@@ -395,7 +395,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 
 ## <a name="see-also"></a>另请参阅
 
-* [API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)
+* [API 参考文档](/java/api/overview/azure/storage-file-datalake-readme)
 * [包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
 * [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)

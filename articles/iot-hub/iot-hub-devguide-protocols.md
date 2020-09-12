@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 619bc7cec2f8a79a656cf3a7ad1f86d1e5786abb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322986"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015988"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -54,6 +54,8 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 > [!WARNING]
 > 使用 HTTPS 时，每台设备应每 25 分钟或更短时间轮询一次云到设备消息。 在开发中，每台设备都可以根据需要更频繁地轮询。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="port-numbers"></a>端口号
 

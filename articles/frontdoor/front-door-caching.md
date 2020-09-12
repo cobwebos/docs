@@ -3,20 +3,20 @@ title: Azure 前端-缓存 |Microsoft Docs
 description: 本文可帮助你了解 Azure 前端如何监视后端的运行状况
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056952"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024275"
 ---
 # <a name="caching-with-azure-front-door"></a>用 Azure 前门进行缓存
 下列文档详细说明了在具有已启用缓存的路由规则时 Front Door 的行为。 前门是 (CDN) 的新式内容交付网络，以及动态站点加速和负载平衡，它还支持与任何其他 CDN 一样的缓存行为。
@@ -88,13 +88,22 @@ Front Door 可动态压缩边缘内容，从而更快响应客户端。 所有�
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，后端对 `www.example.ashx?q=test1` 的请求做出的响应将缓存在 Front Door 环境中，并为具有同一查询字符串的后续缓存返回该响应。 `www.example.ashx?q=test2` 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
 
 ## <a name="cache-purge"></a>缓存清除
-Front Door 将缓存资产，直到资产的生存时间 (TTL) 过期。 资产的 TTL 到期后，如果客户端请求资产，Front Door 环境将检索具有最新更新的资产副本，以满足客户端请求并存储刷新缓存。
-</br>确保用户始终获取资产的最新副本的最佳做法是针对每次更新将资产版本化，并将其发布为新 URL。 Front Door 将立即检索用于下一个客户端请求的新资产。 有时候可能希望从所有边缘节点清除缓存的内容，并强制其全部检索新的已更新资产。 这可能是由于 Web 应用程序获得了更新，或快速更新的资产包含不正确的信息。
 
-</br>选择要从边缘节点清除的资产。 若要清除所有资产，单击“全部清除”复选框。 否则，请在“路径”文本框中键入要清除的每个资产的路径。 路径支持以下格式。
-1. **单路径清除**：通过在不使用协议和域) 的情况下，通过文件扩展名（例如/pictures/strasbourg.png）指定 (资产的完整路径，清除单个资产 () ：
-2. **通配符清除**：星号 (\*) 可用作通配符。 使用路径在路径中清除所有文件夹、子文件夹和文件， \* 或通过指定文件夹后跟/，清除特定文件夹下的所有子文件夹和文件， \* 例如，/pictures/ \* 。
-3. **根域清除**：清除路径中具有“/”的终结点的根。
+前门会缓存资产，直到资产的生存时间 (TTL) 过期。 资产的 TTL 到期后，当客户端请求资产时，前门环境会检索新更新的资产副本以为客户端请求提供服务并存储刷新缓存。
+
+确保用户始终获取资产的最新副本的最佳做法是针对每次更新将资产版本化，并将其发布为新 URL。 Front Door 将立即检索用于下一个客户端请求的新资产。 有时候可能希望从所有边缘节点清除缓存的内容，并强制其全部检索新的已更新资产。 这可能是由于 Web 应用程序获得了更新，或快速更新的资产包含不正确的信息。
+
+从边缘节点中选择要清除的资产。 若要清除所有资产，请选择 " **全部清除**"。 否则，在 " **路径**" 中，输入要清除的每个资产的路径。
+
+要清除的路径列表支持这些格式：
+
+- **单路径清除**：通过指定资产 (的完整路径（没有协议和域) ，使用文件扩展名，例如，/pictures/strasbourg.png;
+- **通配符清除**：星号 (\*) 可用作通配符。 使用路径在路径中清除所有文件夹、子文件夹和文件， \* 或通过指定文件夹后跟/，清除特定文件夹下的所有子文件夹和文件， \* 例如，/pictures/ \* 。
+- **根域清除**：清除路径中具有“/”的终结点的根。
+
+> [!NOTE]
+> **清除通配符域**：指定用于清除的缓存路径，如本部分中所述，不适用于与前门关联的任何通配符域。 目前，我们不支持直接清除通配符域。 可以通过指定 "针对特定" 子域和清除路径，清除特定子域中的路径。 例如，如果我的前门具有 `*.contoso.com` ，则可通过键入清除我的子域资产 `foo.contoso.com` `foo.contoso.com/path/*` 。 目前，如果适用，在清除内容路径中指定主机名将 imited 到通配符域的子域。
+>
 
 Front Door 的缓存清除不区分大小写。 此外，它们不区分查询字符串，这表示清除 URL 时将一并清除其查询字符串的所有变体。 
 
@@ -102,7 +111,7 @@ Front Door 的缓存清除不区分大小写。 此外，它们不区分查询�
 按下列标题顺序来确定项目在缓存中的存储时间：</br>
 1. Cache-Control: s-maxage=\<seconds>
 2. 缓存控制：最大期限 =\<seconds>
-3. 完\<http-date>
+3. 完 \<http-date>
 
 缓存控制响应标头，指示不会缓存响应，如缓存控制：专用、缓存控制：非缓存和缓存控制：无存储。 但是，如果 POP 中多个正在进行的请求针对的是同一 URL，则它们可共享响应。 如果不存在任何缓存控制，则默认行为是 AFD 将缓存资源的时间为 X，其中 X 随机选取时间为1到3天。
 

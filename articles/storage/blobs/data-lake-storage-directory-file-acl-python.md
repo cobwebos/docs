@@ -3,24 +3,24 @@ title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Python SDK
 description: 在启用了分层命名空间 (HNS) 的存储帐户中使用 Python 来管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
-ms.date: 08/26/2020
+ms.date: 09/10/2020
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 3056e167a7482cb2967a68bbf1cd40e4bad49093
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923834"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017109"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍如何使用 Python 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[包 (Python 包索引) ](https://pypi.org/project/azure-storage-file-datalake/)  | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
+[包 (Python 包索引) ](https://pypi.org/project/azure-storage-file-datalake/)  | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  | [API 参考](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -98,7 +98,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 容器充当文件的文件系统。 可以通过调用 **FileSystemDataLakeServiceClient.create_file_system** 方法来创建一个。
 
-此示例创建一个名为的容器 `my-file-system` 。
+此示例创建一个名为 `my-file-system` 的容器。
 
 ```python
 def create_file_system():
@@ -116,7 +116,7 @@ def create_file_system():
 
 通过调用 **FileSystemClient.create_directory** 方法来创建目录引用。
 
-此示例将一个名为 `my-directory` 的目录添加到容器中。 
+此示例将名为 `my-directory` 的目录添加到容器中。 
 
 ```python
 def create_directory():
@@ -196,7 +196,7 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **_Get_root_directory_client FileSystemClient** 方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **FileSystemClient._get_root_directory_client** 方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录 
 
@@ -213,7 +213,7 @@ def upload_file_to_directory():
         directory_client = file_system_client.get_directory_client("my-directory")
         
         file_client = directory_client.create_file("uploaded-file.txt")
-        local_file = open("C:\\file-to-upload.txt",'r')
+        local_file = open("C:\\file-to-upload.txt",'rb')
 
         file_contents = local_file.read()
 
@@ -242,7 +242,7 @@ def upload_file_to_directory_bulk():
         
         file_client = directory_client.get_file_client("uploaded-file.txt")
 
-        local_file = open("C:\\file-to-upload.txt",'r')
+        local_file = open("C:\\file-to-upload.txt",'rb')
 
         file_contents = local_file.read()
 
@@ -339,7 +339,7 @@ def list_directory_contents():
 
 ## <a name="see-also"></a>另请参阅
 
-* [API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
+* [API 参考文档](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)
 * [包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/)
 * [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 * [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)

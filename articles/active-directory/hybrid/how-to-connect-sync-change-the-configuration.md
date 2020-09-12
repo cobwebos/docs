@@ -12,20 +12,20 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357862"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662572"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
 
 > [!WARNING]
-> 如果更改默认现有同步规则，则下次更新 Azure AD Connect 时将覆盖这些更改，从而导致意外且可能无用的同步结果。
+> 如果更改默认的现成同步规则，则下次更新 Azure AD Connect 时将覆盖这些更改，从而导致意外和可能不需要的同步结果。
 >
-> 默认现有同步规则具有指纹。 如果更改这些规则，指纹不再匹配。 今后尝试应用 Azure AD Connect 的新版本时可能会遇到问题。 只能根据本文所述的方式进行更改。
+> 默认的现成同步规则具有指纹。 如果更改这些规则，指纹不再匹配。 将来尝试应用 Azure AD Connect 的新版本时可能会遇到问题。 只能根据本文所述的方式进行更改。
 
 ## <a name="synchronization-rules-editor"></a>同步规则编辑器
 同步规则编辑器用于查看和更改默认配置。 可以在“Azure AD Connect”组下的“开始”菜单中找到它。   
@@ -53,10 +53,10 @@ ms.locfileid: "85357862"
 ![禁用计划程序](./media/how-to-connect-sync-change-the-configuration/schedulerdisable.png)  
 
 ### <a name="create-the-rule"></a>创建规则
-1. 单击“添加新规则”。
+1. 单击“添加新规则” 。
 2. 在“说明”页上输入以下内容：  
    ![入站规则筛选](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **Name**：为规则提供说明性名称。
+   * **名称**：为规则提供说明性名称。
    * **说明**：提供一些说明以便他人可以理解规则的用途。
    * **连接的系统**：这是可从中找到对象的系统。 在本例中，请选择“Active Directory 连接器”。
    * **连接的系统/Metaverse 对象类型**：分别选择“用户”和“人员”。
@@ -70,7 +70,7 @@ ms.locfileid: "85357862"
 5. 在“转换”页上，将 FlowType 更改为 **Expression**。  对于“目标属性”，请选择“givenName”。  对于“源”，请输入 **PCase([givenName])** 。
    ![入站规则转换](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    函数名称和属性名称上的同步引擎要区分大小写。 如果键入出错，则添加规则时会看到警告。 可以保存并继续，但需要重新打开规则并进行更正。
-6. 单击“添加”保存规则。
+6.  单击“添加”保存规则。
 
 新的自定义规则应该与系统中的其他同步规则一起显示。
 
@@ -80,23 +80,23 @@ ms.locfileid: "85357862"
 - 在所有对象上运行完全同步。
 - 在单个对象上运行预览和完全同步。
 
-从“开始”菜单打开“同步服务”。  本部分中的步骤全部在此工具中。
+从“开始”菜单打开“同步服务”。  本部分中所述步骤全部使用此工具。
 
-**针对所有对象的完全同步**  
+针对所有对象的完全同步  
 
-   1. 选择顶部的“连接器”。 标识在前面部分中进行过更改的连接器（在本例中为 Active Directory 域服务），并选中它。 
+   1. 从“操作”中选择“运行”  。 标识在前面部分中进行过更改的连接器（在本例中为 Active Directory 域服务），并选中它。 
    2. 对于“操作”，请选择“运行”。 
    3. 依次选择“完全同步”、“确定”。 
    ![完全同步](./media/how-to-connect-sync-change-the-configuration/fullsync.png)  
    现已更新了 metaverse 中的对象。 查看 metaverse 中的对象来验证更改。
 
-**在单个对象上的预览和完全同步**  
+针对单个对象的预览和完全同步  
 
-   1. 选择顶部的“连接器”。 标识在前面部分中进行过更改的连接器（在本例中为 Active Directory 域服务），并选中它。
+   1. 从“操作”中选择“运行”  。 标识在前面部分中进行过更改的连接器（在本例中为 Active Directory 域服务），并选中它。
    2. 选择“搜索连接器空间”。 
-   3. 使用“范围”查找想要用于测试更改的对象。 选择该对象，并单击“预览”。 
+   3. 使用“范围”查找想要用于测试更改的对象。 选择该对象，并单击“预览” 。 
    4. 在新的屏幕中，选择“提交预览”。  
-   ![提交预览](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
+   ![Commit preview](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
    现已将更改提交到 metaverse。
 
 **查看 metaverse 中的对象**  
@@ -113,7 +113,7 @@ ms.locfileid: "85357862"
 前面部分介绍了如何更改属性流。 本部分提供了另外一些示例。 虽然创建同步规则的步骤已缩简，但可以在前面部分中找到完整步骤。
 
 ### <a name="use-an-attribute-other-than-the-default"></a>使用其他属性而不是默认属性
-在此 Fabrikam 方案中，有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 在 Azure AD 和 Office 365 中创建全局地址列表时，组织反而想要使用这些属性。
+在此 Fabrikam 方案中，有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 为了构建 Azure AD 和 Microsoft 365 中的全局地址列表，组织要改为使用这些属性。
 
 使用默认配置时，本地林中的对象如下所示：  
 ![属性流 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -122,33 +122,33 @@ ms.locfileid: "85357862"
 
 1. 从“开始”菜单打开“同步规则编辑器”。 
 2. 在左侧依然选定了“入站”的情况下，单击“添加新规则”按钮。
-3. 为规则指定名称和说明。 选择本地 Active Directory 实例和相关的对象类型。 在“链接类型”中选择“联接” 。 为“优先级”选择一个未被其他规则使用的数字。 现成的规则从 100 开始，因此该示例可以使用值 50。
+3. 为规则指定名称和说明。 选择本地 Active Directory 实例和相关的对象类型。 在“链接类型”中选择“联接”。  为“优先级”选择一个未被其他规则使用的数字。 现成的规则从 100 开始，因此该示例可以使用值 50。
   ![属性流 2](./media/how-to-connect-sync-change-the-configuration/attributeflowjp2.png)
 4. 将“范围筛选器”留空。 （即它应该应用到林中的所有用户对象。）
 5. 将“联接规则”留空。 （即让现成的规则处理所有联接。）
 6. 在“转换”中创建以下流：  
   ![属性流 3](./media/how-to-connect-sync-change-the-configuration/attributeflowjp3.png)
-7. 单击“添加”保存规则。
-8. 转到“同步服务管理器”。 在“连接器”上，选择已在其中添加了规则的连接器。 依次选择“运行”、“完全同步”。  完全同步将使用当前规则重新计算所有对象。
+7.  单击“添加”保存规则。
+8. 转到“同步服务管理器” 。 在“连接器”上，选择已在其中添加了规则的连接器。 依次选择“运行”、“完全同步”。  完全同步将使用当前规则重新计算所有对象。
 
 这是使用此自定义规则的同一对象的结果：  
 ![属性流 4](./media/how-to-connect-sync-change-the-configuration/attributeflowjp4.png)
 
 ### <a name="length-of-attributes"></a>属性的长度
 字符串属性默认为可编制索引，并且最大长度为 448 个字符。 如果使用其中可能包含更多字符的字符串属性，请确保属性流中包括以下内容：  
-`attributeName` <- `Left([attributeName],448)`：
+`attributeName` <- `Left([attributeName],448)`.
 
 ### <a name="changing-the-userprincipalsuffix"></a>更改 userPrincipalSuffix
 Active Directory 中的 userPrincipalName 属性并非始终被用户知晓，并且可能不适合作为登录 ID。 使用 Azure AD Connect 同步安装向导可以选择不同的属性 -- 例如 *mail*。 但在某些情况下，必须计算该属性。
 
 例如：公司 Contoso 具有两个 Azure AD 目录，一个用于生产，另一个用于测试。 他们希望测试租户中的用户使用登录 ID 中的另一后缀：  
-`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`：
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`.
 
-在此表达式中，使用第一个 @-sign (Word) 的左侧所有内容，并与固定字符串连接。
+在此表达式中，使用第一个 @-sign (Word) 左侧的所有内容，并与固定字符串连接。
 
 ### <a name="convert-a-multi-value-attribute-to-single-value"></a>将多值属性转换为单值属性
 Active Directory 中的某些属性在架构中是多值，不过它们在 Active Directory 用户和计算机中看上去是单值。 一个示例就是说明属性：  
-`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`：
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`.
 
 在此表达式中，如果属性具有值，请使用属性中的第一项 (*Item*)，删除前导空格和尾随空格 (*Trim*)，并保留字符串中的前 448 个字符 (*Left*)。
 
@@ -166,26 +166,26 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
   ![说明](./media/how-to-connect-sync-change-the-configuration/syncruledescription.png)
 2. 创建 **FlowType** 为 **Expression** 且 **Source** 为 **AuthoritativeNull** 的属性流。 即使优先顺序较低的同步规则尝试填充值，文本值 **AuthoritativeNull** 也会指出 metaverse 中的值应该为空。
   ![扩展属性的转换](./media/how-to-connect-sync-change-the-configuration/syncruletransformations.png)
-3. 保存同步规则。 启动“同步服务”，查找“连接器”，并依次选择“运行”和“完全同步”。   此步骤将重新计算所有属性流。
+3. 保存同步规则。 启动“同步服务”，查找“连接器”，并依次选择“运行”和“完全同步”。   此步骤会重新计算所有属性流。
 4. 通过搜索连接器空间来验证是否即将导出所需的更改。
   ![分阶段删除](./media/how-to-connect-sync-change-the-configuration/deletetobeexported.png)
 
 ## <a name="create-rules-with-powershell"></a>使用 PowerShell 创建规则
-如只需进行少量更改，使用同步规则编辑器即可达到目的。 如需进行大量更改，最好选择 PowerShell。 某些高级功能只有 PowerShell 中才会提供。
+只需稍作更改时，可以使用同步规则编辑器。 如需进行大量更改，最好选择 PowerShell。 一些高级功能仅在 PowerShell 中提供。
 
 ### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>获取现成规则的 PowerShell 脚本
-要查看创建现成规则的 PowerShell 脚本，在同步规则编辑器中选择此规则，并单击“导出”。 此操作会提供创建该规则的 PowerShell 脚本。
+若要查看创建现成规则的 PowerShell 脚本，在同步规则编辑器中选择此规则，然后单击“导出”。 此操作会提供创建该规则的 PowerShell 脚本。
 
 ### <a name="advanced-precedence"></a>高级优先级
-以 100 优先级值开头的现成同步规则。 如果有多个林，并且需要进行大量自定义更改，那么 99 个同步规则可能不够。
+现成的同步规则一开始的优先级值为 100。 如果有多个林，且需进行大量自定义更改，则 99 个同步规则可能不够。
 
-可以指示同步引擎需要在现成规则前插入其他规则。 若要获取此行为，请执行以下步骤：
+可以指示同步引擎需要在现成规则前插入其他规则。 若要实现此行为，请完成以下步骤：
 
 1. 在同步规则编辑器中标记第一个现成同步规则 (**In from AD-User Join**)，并选择“导出”。 复制 SR 标识符值。  
-![更改前的 PowerShell](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
+![更改之前的 PowerShell](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. 创建新的同步规则。 可使用同步规则编辑器创建它。 将规则导出到 PowerShell 脚本。
-3. 在 **PrecedenceBefore** 属性中，从现成规则插入标识符值。 将“优先级”设置为“0”。 请确保标识符属性唯一，且不会从另一规则中重复使用某个 GUID。 此外，请确保未设置 **ImmutableTag** 属性。 仅为现成规则设置该属性。
-4. 保存 PowerShell 脚本并运行它。 这样就会为自定义规则分配优先级值 100，且所有其他现成规则优先级值随之递增。  
+3. 在 **PrecedenceBefore** 属性中，从现成规则插入标识符值。 将“优先级”设置为“0” 。 请确保标识符属性唯一，且不会从另一规则中重复使用某个 GUID。 此外，请确保未设置 **ImmutableTag** 属性。 仅为现成规则设置该属性。
+4. 保存并运行 PowerShell 脚本。 结果是，为自定义规则分配了优先级值 100，所有其他现成规则的值递增。  
 ![更改后的 PowerShell](./media/how-to-connect-sync-change-the-configuration/powershell2.png)  
 
 必要时，可让多个自定义同步规则使用相同的 **PrecedenceBefore** 值。
@@ -200,17 +200,17 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 - Azure AD 只接受 UserType 属性的两个值：**Member** 和 **Guest**。
 - 如果没有在 Azure AD Connect 中启用 UserType 属性同步，则通过目录同步创建的 Azure AD 用户的 UserType 属性将设置为 **Member**。
-- 在版本 1.5.30.0 之前，Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 在旧版本中，只能在创建 Azure AD 用户时设置该属性并[通过 Powershell 更改](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
+- 在版本 1.5.30.0 之前，Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 在旧版本中，只能在创建 Azure AD 用户期间设置，并 [通过 PowerShell 更改](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
 
 在启用 UserType 属性同步之前，必须首先确定如何从本地 Active Directory 派生属性。 下面是最常见的方法：
 
 - 指定要用作源属性的尚未使用的本地 AD 属性（例如 extensionAttribute1）。 指定的本地 AD 属性应为**字符串**类型，具有单值，且包含值 **Member** 或 **Guest**。 
 
-    如果选择此方法，则在启用 UserType 属性同步之前，对于同步到 Azure AD 的本地 Active Directory 中的所有现有用户对象，必须确保指定的属性填充了正确的值。
+    如果选择此方法，在启用 UserType 属性同步之前，必须确保指定的属性中填充了本地 Active Directory 中已同步到 Azure AD 的所有现有用户对象的正确值。
 
 - 或者，可以从其他属性派生 UserType 属性的值。 例如，如果用户的本地 AD userPrincipalName 属性结尾是域部分 <em>@partners.fabrikam123.org</em>，则应将这些用户全部同步为 **Guest**。 
 
-    如前所述，旧版 Azure AD Connect 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 因此，对于租户中的所有 Azure AD 用户，必须确保采用的逻辑与 UserType 属性的现有配置方式一致。
+    如前所述，旧版 Azure AD Connect 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 因此，必须确保所确定的逻辑与针对租户中所有现有 Azure AD 用户配置 UserType 属性的方式一致。
 
 启用 UserType 属性同步的步骤可归纳如下：
 
@@ -223,7 +223,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 7.  启用同步计划程序。
 
 >[!NOTE]
-> 本节其余部分介绍了这些步骤。 在 Azure AD 部署使用单林拓扑和不使用自定义同步规则的上下文中描述它们。 如果有多林拓扑、自定义同步规则配置或者过渡服务器，则需要相应地调整步骤。
+> 本部分的余下内容将介绍这些步骤。 在 Azure AD 部署使用单林拓扑和不使用自定义同步规则的上下文中描述它们。 如果有多林拓扑、自定义同步规则配置或者过渡服务器，则需要相应地调整步骤。
 
 ### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步骤 1：禁用同步计划程序，并验证是否没有正在进行的同步
 若要避免将意外的更改导出到 Azure AD，请确保实现新同步规则的中途不会发生同步。 若要禁用内置的同步计划程序，请执行以下操作：
@@ -243,8 +243,8 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
  5. 单击“确定”保存。
 ![将源属性添加到本地 AD 连接器架构](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>步骤3：将 UserType 特性添加到 Azure AD 连接器架构
-默认情况下，UserType 属性不会导入 Azure AD 连接空间。 将 UserType 属性添加到导入属性的列表：
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>步骤 3：将 UserType 属性添加到 Azure AD 连接器架构
+默认情况下，UserType 属性不会导入 Azure AD 连接空间。 将 UserType 属性添加到导入属性列表：
 
  1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
  2. 右键单击“Azure AD 连接器”，并选择“属性”。 
@@ -262,19 +262,19 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮创建新的入站规则。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | Attribute | 值 | 详细信息 |
+    | 属性 | Value | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
     | 说明 | *提供说明* |  |
-    | 连接的系统 | *选择本地 AD 连接器* |  |
-    | 连接的系统对象类型 | **用户** |  |
+    | 连接的系统 | 选择本地 AD 连接器 |  |
+    | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
     | 链接类型 | **Join** |  |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到“范围筛选器”选项卡，并添加包含以下子句的**单个范围筛选器组**：
 
-    | Attribute | 操作员 | 值 |
+    | 属性 | 运算符 | Value |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | 用户\_ |
 
@@ -282,13 +282,13 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 6. 转到“转换”选项卡并实现所需转换规则。 例如，如果指定了未使用的本地 AD 属性（例如 extensionAttribute1）作为 UserType 的源属性，则可以实现直接属性流：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | UserType | extensionAttribute1 | 未选中 | 更新 |
 
     另举一例，我们可以从其他属性派生 UserType 属性的值。 例如，如果用户的本地 AD userPrincipalName 属性结尾是域部分 <em>@partners.fabrikam123.org</em>，则应将这些用户全部同步为 Guest。可如下所示实现表达式：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 表达式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | 未选中 | 更新 |
 
@@ -304,28 +304,28 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | Attribute | 值 | 详细信息 |
+    | 属性 | Value | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
     | 说明 | *提供说明* ||
-    | 连接的系统 | *选择 AAD 连接器* ||
-    | 连接的系统对象类型 | **用户** ||
+    | 连接的系统 | 选择 AAD 连接器 ||
+    | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||
     | 链接类型 | **Join** ||
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到“范围筛选器”选项卡，并添加包含两个子句的**单个范围筛选器组**：
 
-    | Attribute | 操作员 | 值 |
+    | 属性 | 运算符 | Value |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | 用户 |
+    | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
     范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在本示例中，我们将使用 *Out to AD – User Identity* 现成同步规则中的相同范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 User 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | UserType | UserType | 未选中 | 更新 |
 
@@ -393,10 +393,10 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 
 ## <a name="next-steps"></a>后续步骤
-* 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
-* 在 [Understanding Declarative Provisioning Expressions](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)（了解声明性预配表达式）中了解有关表达式语言的详细信息。
+* 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
+* 在[了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)中阅读有关表达式语言的详细信息。
 
 **概述主题**
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

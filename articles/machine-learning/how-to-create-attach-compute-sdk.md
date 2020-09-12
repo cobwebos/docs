@@ -1,5 +1,5 @@
 ---
-title: 通过 Python SDK 创建计算资源
+title: '创建定型 & 部署 (Python 计算) '
 titleSuffix: Azure Machine Learning
 description: '使用 Azure 机器学习 Python SDK 创建培训和部署计算资源 (用于机器学习的计算目标) '
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147379"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662544"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>通过 Python SDK 创建用于模型定型和部署的计算目标
 
@@ -31,8 +31,12 @@ ms.locfileid: "89147379"
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
-* [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>限制
+
+本文档中列出的某些方案将标记为 " __预览__"。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="whats-a-compute-target"></a>什么是计算目标？
 
@@ -55,16 +59,33 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 * [远程虚拟机](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>用于推理的计算目标
+
+执行推理时，Azure 机器学习会创建一个 Docker 容器，用于托管模型以及使用该模型所需的关联资源。 然后，在以下部署方案之一中使用此容器：
+
+* 作为用于实时推理的 __web 服务__ 。 Web 服务部署使用以下计算目标之一：
+
+    * [本地计算机](#local)
+    * [Azure 机器学习计算实例](#instance)
+    * [Azure 容器实例](#aci)
+    * [Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)
+    *  (预览版) Azure Functions。 部署到 Azure Functions 仅依赖于 Azure 机器学习来生成 Docker 容器。 在该处，它是使用 Azure Functions 部署的。 有关详细信息，请参阅 [将机器学习模型部署到 Azure Functions (预览版) ](how-to-deploy-functions.md)。
+
+* 用作 __批处理推理__ 终结点，用于定期处理数据批。 批处理推断使用 [Azure 机器学习计算群集](#amlcompute)。
+
+* 对于 __IoT 设备__ (预览) 。 部署到 IoT 设备仅依赖于 Azure 机器学习来构建 Docker 容器。 在该处，它是使用 Azure IoT Edge 部署的。 有关详细信息，请参阅 [ (preview) 部署为 IoT Edge 模块 ](/azure/iot-edge/tutorial-deploy-machine-learning)。
 
 ## <a name="local-computer"></a><a id="local"></a>本地计算机
 
-使用本地计算机进行培训时，无需创建计算目标。  只需从您的本地计算机 [提交训练运行](how-to-set-up-training-targets.md) 即可。
+使用本地计算机进行 **培训**时，无需创建计算目标。  只需从您的本地计算机 [提交训练运行](how-to-set-up-training-targets.md) 即可。
+
+使用本地计算机进行 **推断**时，必须安装 Docker。 若要执行部署，请使用 [Deploy_configuration LocalWebservice ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) 来定义 web 服务将使用的端口。 然后按照使用 [Azure 机器学习部署模型](how-to-deploy-and-where.md)中所述，使用常规部署过程。
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure 机器学习计算群集
 
 Azure 机器学习计算群集是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
 
-可以使用 Azure 机器学习计算在云中的 CPU 或 GPU 计算节点群集之间分配训练进程。 有关包括 GPU 的 VM 大小的详细信息，请参阅 [GPU 优化的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
+您可以使用 Azure 机器学习计算来跨一个 CPU 群集或云中的 GPU 计算节点分布定型或批处理推理过程。 有关包括 GPU 的 VM 大小的详细信息，请参阅 [GPU 优化的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
 Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](how-to-manage-quotas.md)。
 
@@ -87,7 +108,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
     或者，可以[在 Azure 机器学习工作室](how-to-create-attach-compute-studio.md#portal-create)中创建并附加持久性 Azure 机器学习计算资源。
 
-附加计算后，下一步是 [提交训练运行](how-to-set-up-training-targets.md)。
+附加计算后，下一步是 [提交定型运行](how-to-set-up-training-targets.md) 或 [运行批处理推理](how-to-use-parallel-run-step.md)。
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低计算群集成本
 
@@ -201,8 +222,15 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
         instance.wait_for_completion(show_output=True)
     ```
 
-附加计算并配置运行后，下一步是[提交训练运行](how-to-set-up-training-targets.md)
+现在，你已附加了计算并配置了运行，下一步是 [提交定型运行](how-to-set-up-training-targets.md) 或 [部署模型以进行推理](how-to-deploy-local-container-notebook-vm.md)。
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure 容器实例
+
+部署模型时，动态创建 (ACI) 的 Azure 容器实例。 不能以任何其他方式创建和将 ACI 附加到工作区。 有关详细信息，请参阅 [将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
+
+当与 Azure 机器学习一起使用时，Azure Kubernetes Service (AKS) 允许使用各种配置选项。 有关详细信息，请参阅 [如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机
 
@@ -437,7 +465,7 @@ except ComputeTargetException:
 有关更详细的示例，请参阅 GitHub 上的 [示例笔记本](https://aka.ms/pl-adla)。
 
 > [!TIP]
-> Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) 复制数据。
+> Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) 复制数据。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

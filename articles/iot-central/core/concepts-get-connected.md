@@ -7,15 +7,17 @@ ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
+manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+- device-developer
+ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337086"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018174"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -23,33 +25,33 @@ ms.locfileid: "87337086"
 
 本文介绍用于将设备连接到 Azure IoT Central 应用程序的选项。
 
-通常，必须先在应用程序中注册设备，然后才能进行连接。 但是，IoT Central 支持在[没有首先注册的情况下可以连接设备](#connect-without-registering-devices)的方案。
+通常，必须先在应用程序中注册设备，然后才能进行连接。 但是，IoT Central 支持在 [没有首先注册的情况下可以连接设备](#connect-without-registering-devices)的方案。
 
-IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/about-iot-dps.md)来管理连接过程。 设备首先连接到 DPS 终结点，以检索连接到应用程序所需的信息。 IoT Central 应用程序在内部使用 IoT 中心来处理设备连接。 使用 DPS：
+IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/about-iot-dps.md) 来管理连接过程。 设备首先连接到 DPS 终结点，以检索连接到应用程序所需的信息。 IoT Central 应用程序在内部使用 IoT 中心来处理设备连接。 使用 DPS：
 
 - 可让 IoT Central 支持大规模的设备加入和连接。
 - 可让你离线生成设备凭据并配置设备，而无需通过 IoT Central UI 注册设备。
 - 可让你使用自己的设备 ID 在 IoT Central 中注册设备。 使用自己的设备 ID 可以简化与现有后端办公系统的集成。
 - 可以通过一致的单一方式将设备连接到 IoT Central。
 
-为了保护设备与应用程序之间的通信，IoT Central 支持共享访问签名（SAS）和 x.509 证书。 在生产环境中，建议使用 x.509 证书。
+为了保护设备与应用程序之间的通信，IoT Central 支持共享访问签名 (SAS) 和 x.509 证书。 在生产环境中，建议使用 x.509 证书。
 
 本文介绍以下用例：
 
 - [使用 SAS 连接单个设备](#connect-a-single-device)
 - [使用 SAS 大规模连接设备](#connect-devices-at-scale-using-sas)
-- [使用 x.509 证书大规模连接设备](#connect-devices-using-x509-certificates)-建议用于生产环境的方法。
+- [使用 x.509 证书大规模连接设备](#connect-devices-using-x509-certificates) -建议用于生产环境的方法。
 - [连接设备而不先注册设备](#connect-without-registering-devices)
 - [连接使用 DPS 单个注册的设备](#individual-enrollment-based-device-connectivity)
 - [自动将设备与设备模板关联](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>连接单个设备
 
-在体验 IoT Central 或测试设备时，此方法非常有用。 你可以使用 IoT Central 应用程序中的设备连接 SAS 密钥将设备连接到 IoT Central 应用程序。 从已注册设备的连接信息中复制_设备 SAS 密钥_：
+在体验 IoT Central 或测试设备时，此方法非常有用。 你可以使用 IoT Central 应用程序中的设备连接 SAS 密钥将设备连接到 IoT Central 应用程序。 从已注册设备的连接信息中复制 _设备 SAS 密钥_ ：
 
 ![单个设备的 SAS 密钥](./media/concepts-get-connected/single-device-sas.png)
 
-若要了解详细信息，请参阅[创建 Node.js 客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)教程。
+若要了解详细信息，请参阅 [创建 Node.js 客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md) 教程。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>使用 SAS 大规模连接设备
 
@@ -63,7 +65,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 ### <a name="set-up-your-devices"></a>设置设备
 
-在设备代码中使用导出文件中的连接信息，使设备能够连接到 IoT Central 应用程序并向其发送数据。 还需要为应用程序提供 DPS **ID 范围**。 你可以在 "管理" **> 设备连接**"中找到此值。
+在设备代码中使用导出文件中的连接信息，使设备能够连接到 IoT Central 应用程序并向其发送数据。 还需要为应用程序提供 DPS **ID 范围** 。 你可以在 "管理" **> 设备连接**"中找到此值。
 
 > [!NOTE]
 > 若要了解如何在不事先将设备注册到 IoT Central 的情况下连接设备，请参阅[在不事先注册设备的情况下连接设备](#connect-without-registering-devices)。
@@ -74,7 +76,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 若要将设备与 x.509 证书连接到应用程序，请执行以下操作：
 
-1. 创建使用**证书（x.509）** 证明类型的*注册组*。
+1. 使用** (x.509) **证明类型的证书创建*注册组*。
 2. 添加并验证注册组中的中间或根 x.509 证书。
 3. 注册并连接使用从注册组中的根或中间证书生成的叶 x.509 证书的设备。
 
@@ -85,7 +87,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 - 在 x.509 注册组中，连接到 IoT Central 的所有设备都使用从注册组中的根或中间证书生成的叶 x.509 证书。
 - 在 SAS 注册组中，连接到 IoT Central 的所有设备都使用从注册组中的 SAS 令牌生成的 SAS 令牌。
 
-每个 IoT Central 应用程序中的两个默认注册组都是 SAS 注册组-一个用于 IoT 设备，另一个用于 Azure IoT Edge 设备。 若要创建 x.509 注册组，请导航到 "**设备连接**" 页，然后选择 " **+ 添加注册组**"：
+每个 IoT Central 应用程序中的两个默认注册组都是 SAS 注册组-一个用于 IoT 设备，另一个用于 Azure IoT Edge 设备。 若要创建 x.509 注册组，请导航到 " **设备连接** " 页，然后选择 " **+ 添加注册组**"：
 
 :::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="添加 x.509 注册组屏幕快照":::
 
@@ -95,11 +97,11 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 1. 导航到刚刚创建的 x.509 注册组。 你可以选择同时添加主要和辅助 x.509 证书。 选择 " **+ 管理主要**"。
 
-1. 在 "**主证书" 页**上，上传主 x.509 证书。 这是你的根或中间证书：
+1. 在 " **主证书" 页**上，上传主 x.509 证书。 这是你的根或中间证书：
 
     :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="主证书屏幕截图":::
 
-1. 使用**验证码**在你使用的工具中生成验证码。 然后选择 "**验证**" 上传验证证书。
+1. 使用 **验证码** 在你使用的工具中生成验证码。 然后选择 " **验证** " 上传验证证书。
 
 1. 验证成功后，会看到以下确认信息：
 
@@ -111,13 +113,13 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 ### <a name="register-and-connect-devices"></a>注册并连接设备
 
-若要使用 x.509 证书大容量连接设备，请先通过使用 CSV 文件[导入设备 id 和设备名称](howto-manage-devices.md#import-devices)，在应用程序中注册设备。 设备 Id 应该全部为小写。
+若要使用 x.509 证书大容量连接设备，请先通过使用 CSV 文件 [导入设备 id 和设备名称](howto-manage-devices.md#import-devices)，在应用程序中注册设备。 设备 Id 应该全部为小写。
 
-使用上载到 x.509 注册组的根或中间证书，为设备生成 x.509 叶证书。 使用**设备 ID**作为 `CNAME` 叶证书中的值。 设备代码需要应用程序的**ID 范围**值、**设备 ID**和相应的设备证书。
+使用上载到 x.509 注册组的根或中间证书，为设备生成 x.509 叶证书。 使用 **设备 ID** 作为 `CNAME` 叶证书中的值。 设备代码需要应用程序的 **ID 范围** 值、 **设备 ID**和相应的设备证书。
 
 #### <a name="sample-device-code"></a>示例设备代码
 
-以下来自[Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的示例演示了 Node.js 设备客户端如何使用 x.509 叶证书和 DPS 注册到 IoT Central 应用程序：
+以下来自 [Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) 的示例演示了 Node.js 设备客户端如何使用 x.509 叶证书和 DPS 注册到 IoT Central 应用程序：
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -143,47 +145,47 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>连接使用 SAS 令牌的设备而无需注册
 
-1. 从 " **SAS-设备**" 注册组中复制组主密钥：
+1. 从 " **SAS-设备** " 注册组中复制组主密钥：
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="将 SAS-设备注册组中的主密钥分组":::
 
-1. 使用[dps-ssh-keygen](https://www.npmjs.com/package/dps-keygen)工具生成设备 SAS 密钥。 使用上一步中的 "组主密钥"。 设备 Id 必须是小写的：
+1. 使用 `az iot central device compute-device-key` 命令生成设备 SAS 密钥。 使用上一步中的 "组主密钥"。 设备 Id 必须是小写的：
 
-    ```cmd
-    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```azurecli
+    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
     ```
 
-1. OEM 用设备 ID、生成的设备 SAS 密钥和应用程序**ID 范围**值闪烁每个设备。
+1. OEM 用设备 ID、生成的设备 SAS 密钥和应用程序 **ID 范围** 值闪烁每个设备。
 
 1. 打开设备时，它首先会连接到 DPS 以检索其 IoT Central 注册信息。
 
-    设备最初在 "**设备**" 页上具有 "未**关联**设备" 状态，并且未分配给设备模板。 在 "**设备**" 页上，将设备**迁移**到适当的设备模板。 设备预配现已完成，设备状态现在为 "已**设置**"，设备可以开始发送数据。
+    设备最初在 "**设备**" 页上具有 "未**关联**设备" 状态，并且未分配给设备模板。 在 " **设备** " 页上，将设备 **迁移** 到适当的设备模板。 设备预配现已完成，设备状态现在为 "已 **设置**"，设备可以开始发送数据。
 
-    在 "**管理 > 设备连接**" 页上，"**自动批准**" 选项控制是否需要在设备开始发送数据之前手动批准。
+    在 " **管理 > 设备连接** " 页上，" **自动批准** " 选项控制是否需要在设备开始发送数据之前手动批准。
 
     > [!NOTE]
-    > 若要了解如何自动将设备与设备模板关联，请参阅[自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
+    > 若要了解如何自动将设备与设备模板关联，请参阅 [自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>连接使用 x.509 证书的设备而不注册
 
-1. [创建一个注册组](#create-an-enrollment-group)，然后[将根或中间 x.509 证书添加](#add-and-verify-a-root-or-intermediate-x509-certificate)到 IoT Central 应用程序并进行验证。
+1. [创建一个注册组](#create-an-enrollment-group) ，然后 [将根或中间 x.509 证书添加](#add-and-verify-a-root-or-intermediate-x509-certificate) 到 IoT Central 应用程序并进行验证。
 
 1. 使用已添加到 IoT Central 应用程序的根证书或中间证书为设备生成叶证书。 使用小写的设备 Id 作为 `CNAME` 叶证书中的。
 
-1. OEM 用设备 ID、生成的叶 x.509 证书和应用程序**ID 范围**值闪烁每个设备。
+1. OEM 用设备 ID、生成的叶 x.509 证书和应用程序 **ID 范围** 值闪烁每个设备。
 
 1. 打开设备时，它首先会连接到 DPS 以检索其 IoT Central 注册信息。
 
-    设备最初在 "**设备**" 页上具有 "未**关联**设备" 状态，并且未分配给设备模板。 在 "**设备**" 页上，将设备**迁移**到适当的设备模板。 设备预配现已完成，设备状态现在为 "已**设置**"，设备可以开始发送数据。
+    设备最初在 "**设备**" 页上具有 "未**关联**设备" 状态，并且未分配给设备模板。 在 " **设备** " 页上，将设备 **迁移** 到适当的设备模板。 设备预配现已完成，设备状态现在为 "已 **设置**"，设备可以开始发送数据。
 
-    在 "**管理 > 设备连接**" 页上，"**自动批准**" 选项控制是否需要在设备开始发送数据之前手动批准。
+    在 " **管理 > 设备连接** " 页上，" **自动批准** " 选项控制是否需要在设备开始发送数据之前手动批准。
 
     > [!NOTE]
-    > 若要了解如何自动将设备与设备模板关联，请参阅[自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
+    > 若要了解如何自动将设备与设备模板关联，请参阅 [自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>基于注册的单个设备连接
 
-对于连接设备的每个设备都有自己的身份验证凭据，请使用单独的注册。 单个注册是允许连接的单个设备的条目。 个人注册可使用 x.509 叶证书或 SAS 令牌（来自物理或虚拟受信任的平台模块）作为证明机制。 单个注册中的设备 ID （也称为 "注册 ID"）是字母数字、小写形式，可以包含连字符。 有关详细信息，请参阅[DPS 单个注册](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
+对于连接设备的每个设备都有自己的身份验证凭据，请使用单独的注册。 单个注册是允许连接的单个设备的条目。 个人注册可使用 x.509 叶证书或 SAS 令牌 (从物理或虚拟受信任的平台模块) 作为证明机制。 设备 ID (也称为 "注册 ID") 在单个注册中是字母数字、小写形式，可以包含连字符。 有关详细信息，请参阅 [DPS 单个注册](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
 
 > [!NOTE]
 > 为设备创建单个注册时，其优先级高于 IoT Central 应用程序中的默认组注册选项。
@@ -192,21 +194,21 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 IoT Central 支持用于单个注册的以下证明机制：
 
-- **对称密钥证明：** 对称密钥证明是使用 DPS 实例对设备进行身份验证的一种简单方法。 若要创建使用对称密钥的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，并选择 "**共享访问签名（SAS）** " 作为机制。 输入 base64 编码的主密钥和辅助密钥，并保存所做的更改。 使用**id 范围**、**设备 ID**以及主密钥或辅助密钥来连接设备。
+- **对称密钥证明：** 对称密钥证明是使用 DPS 实例对设备进行身份验证的一种简单方法。 若要创建使用对称密钥的单个注册，请打开 " **设备连接** " 页，选择 " **单个注册** " 作为连接方法，并将 " **共享访问签名" (SAS) ** 作为机制。 输入 base64 编码的主密钥和辅助密钥，并保存所做的更改。 使用 **id 范围**、 **设备 ID**以及主密钥或辅助密钥来连接设备。
 
     > [!TIP]
-    > 对于测试，可以使用**OpenSSL**生成 base64 编码的密钥：`openssl rand -base64 64`
+    > 对于测试，可以使用 **OpenSSL** 生成 base64 编码的密钥： `openssl rand -base64 64`
 
-- **X.509 证书：** 若要使用 x.509 证书创建单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为连接方法，然后选择 "**证书" （x.509）** 作为机制。 与单个注册条目一起使用的设备证书要求将颁发者和使用者 CN 设置为设备 ID。
+- **X.509 证书：** 若要使用 x.509 证书创建单个注册，请打开 " **设备连接** " 页，选择 " **单个注册** " 作为连接方法，并将 **证书 (x.509) ** 为该机制。 与单个注册条目一起使用的设备证书要求将颁发者和使用者 CN 设置为设备 ID。
 
     > [!TIP]
-    > 对于测试，可以使用适用于[Node.js的 Azure IoT 设备预配设备 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)来生成自签名证书：`node create_test_cert.js device "mytestdevice"`
+    > 对于测试，可以使用适用于 [Node.js的 Azure IoT 设备预配设备 SDK 工具 ](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) 来生成自签名证书： `node create_test_cert.js device "mytestdevice"`
 
-- **受信任的平台模块（TPM）证明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一种硬件安全模块。 使用 TPM 是连接设备的最安全方式之一。 本文假设使用的是独立的、固件或集成的 TPM。 软件仿真 Tpm 非常适合用于原型制作或测试，但它们不提供与离散、固件或集成 Tpm 相同的安全性级别。 请勿在生产环境中使用软件 Tpm。 若要创建使用 TPM 的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，选择 " **TPM** " 作为机制。 输入 TPM 认可密钥并保存设备连接信息。
+- **受信任的平台模块 (TPM) 证明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一种硬件安全模块。 使用 TPM 是连接设备的最安全方式之一。 本文假设使用的是独立的、固件或集成的 TPM。 软件仿真 Tpm 非常适合用于原型制作或测试，但它们不提供与离散、固件或集成 Tpm 相同的安全性级别。 请勿在生产环境中使用软件 Tpm。 若要创建使用 TPM 的单个注册，请打开 " **设备连接** " 页，选择 " **单个注册** " 作为 "连接方法"，选择 " **TPM** " 作为机制。 输入 TPM 认可密钥并保存设备连接信息。
 
 ## <a name="automatically-associate-with-a-device-template"></a>自动与设备模板关联
 
-IoT Central 的主要功能之一是能够在设备连接上自动关联设备模板。 设备还可以将**CapabilityModelId**作为设备注册呼叫的一部分发送。 **CapabilityModelID**是用于标识设备实现的功能模型的 URN。 IoT Central 应用程序可以使用**CapabilityModelID**来标识要使用的设备模板，然后自动将设备与设备模板关联。 发现过程的工作方式如下：
+IoT Central 的主要功能之一是能够在设备连接上自动关联设备模板。 设备还可以将 **CapabilityModelId** 作为设备注册呼叫的一部分发送。 **CapabilityModelID**是用于标识设备实现的功能模型的 URN。 IoT Central 应用程序可以使用 **CapabilityModelID** 来标识要使用的设备模板，然后自动将设备与设备模板关联。 发现过程的工作方式如下：
 
 1. 如果设备模板已在 IoT Central 应用程序中发布，则设备将与设备模板关联。
 1. 对于预认证的 IoT 即插即用设备，如果设备模板尚未在 IoT Central 应用程序中发布，则从公共存储库中获取设备模板。
@@ -242,12 +244,12 @@ IoT Central 的主要功能之一是能够在设备连接上自动关联设备�
 
 1. 操作员可以阻止设备。 阻止设备时，它无法将数据发送到 IoT Central 应用程序。 已阻止的设备的状态为“已阻止”。**** 只有在操作员重置设备后，该设备才能继续发送数据。 当操作员取消阻止设备时，状态将恢复为以前的值：“已注册”或“已预配”。********
 
-1. 如果设备状态为 "**正在等待批准**"，则表示 "**自动批准**" 选项处于禁用状态。 操作员必须先显式批准设备，然后才能开始发送数据。 未在“设备”页上手动注册，但已使用有效凭据建立连接的设备的状态将是“等待批准”。******** 操作员可以在“设备”页中使用“批准”按钮批准这些设备。********
+1. 如果设备状态为 " **正在等待批准**"，则表示 " **自动批准** " 选项处于禁用状态。 操作员必须先显式批准设备，然后才能开始发送数据。 未在“设备”页上手动注册，但已使用有效凭据建立连接的设备的状态将是“等待批准”。******** 操作员可以在“设备”页中使用“批准”按钮批准这些设备。********
 
-1. 如果设备状态为 "未**关联**"，则表示连接到 IoT Central 的设备没有关联的设备模板。 这种情况通常发生在以下情况下：
+1. 如果设备状态为 "未 **关联**"，则表示连接到 IoT Central 的设备没有关联的设备模板。 这种情况通常发生在以下情况下：
 
-    - 使用 "**导入**" 在 "**设备**" 页上添加一组设备，而无需指定设备模板。
-    - 设备已在 "**设备**" 页上手动注册，无需指定设备模板。 然后，设备会连接到有效的凭据。  
+    - 使用 " **导入** " 在 " **设备** " 页上添加一组设备，而无需指定设备模板。
+    - 设备已在 " **设备** " 页上手动注册，无需指定设备模板。 然后，设备会连接到有效的凭据。  
 
     操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到设备模板。
 
@@ -277,9 +279,9 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测 | 设备到云的消息传送 |
-| 属性 | 设备孪生报告属性 |
+| properties | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| 命令 | 直接方法 |
+| Command | 直接方法 |
 
 ### <a name="protocols"></a>协议
 
@@ -293,14 +295,14 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
-在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅[控制对 IoT 中心的访问](../../iot-hub/iot-hub-devguide-security.md)。
+在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅 [控制对 IoT 中心的访问](../../iot-hub/iot-hub-devguide-security.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你是设备开发人员，则建议执行以下后续步骤：
 
 - 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)
-- 了解如何[在 Azure IoT Central 应用程序中定义新的 IoT 设备类型](./howto-set-up-template.md)
-- 了解[Azure IoT Edge 设备和 Azure IoT Central](./concepts-iot-edge.md)
+- 了解如何 [在 Azure IoT Central 应用程序中定义新的 IoT 设备类型](./howto-set-up-template.md)
+- 了解 [Azure IoT Edge 设备和 Azure IoT Central](./concepts-iot-edge.md)

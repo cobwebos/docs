@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: 2025b127a428afa478cfe839c7619df2d7d688d3
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583666"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015953"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
 
@@ -21,7 +22,7 @@ ms.locfileid: "82583666"
 
 设备模板包含一个架构，该架构描述设备如何与 IoT Central 进行交互。 这些交互包括遥测、属性和命令。 设备和 IoT Central 应用程序都依赖于此架构的共享了解来交换信息。 只能对架构进行有限的更改，而不会中断协定，这就是大多数架构更改需要新版本的设备模板的原因。 版本控制设备模板允许较旧的设备继续使用其所理解的架构版本，而更新或更新的设备则使用更高版本的架构。
 
-设备模板中的架构是在设备功能模型（DCM）及其接口中定义的。 设备模板包括其他信息，如云属性、显示自定义和视图。 如果在设备模板的这些部分中进行了更改，但未定义设备与 IoT Central 交换数据的方式，则无需对模板进行版本。
+设备模板中的架构是在设备功能模型中定义的 (DCM) 及其接口。 设备模板包括其他信息，如云属性、显示自定义和视图。 如果在设备模板的这些部分中进行了更改，但未定义设备与 IoT Central 交换数据的方式，则无需对模板进行版本。
 
 你必须发布任何设备模板更改，无论它们是否需要版本更新，操作员都可以使用它。 IoT Central 会阻止你在不首先对模板进行版本控制的情况下将重大更改发布到设备模板。
 
@@ -30,7 +31,7 @@ ms.locfileid: "82583666"
 
 ## <a name="versioning-rules"></a>版本规则
 
-本部分概述了适用于设备模板的版本控制规则。 DCMs 和接口都有版本号。 以下代码片段显示了环境传感器设备的 DCM。 DCM 有两个接口： **DeviceInformation**和**EnvironmentalSensor**。 您可以在字段末尾看到版本号 `@id` 。 若要在 IoT Central UI 中查看此信息，请在设备模板编辑器中选择 "**查看标识**"。
+本部分概述了适用于设备模板的版本控制规则。 DCMs 和接口都有版本号。 以下代码片段显示了环境传感器设备的 DCM。 DCM 有两个接口： **DeviceInformation** 和 **EnvironmentalSensor**。 您可以在字段末尾看到版本号 `@id` 。 若要在 IoT Central UI 中查看此信息，请在设备模板编辑器中选择 " **查看标识** "。
 
 ```json
 {
@@ -92,7 +93,7 @@ ms.locfileid: "82583666"
 1. 选择要自定义的设备模板。
 1. 选择“自定义”选项卡。****
 1. 此处列出了设备功能模型中定义的所有功能。 您可以编辑、保存和使用所有这些字段，而无需对您的设备模板进行版本。 如果要编辑的字段是只读的，则必须对设备模板进行版本更改。 选择要编辑的字段，然后输入任何新值。
-1. 单击“ **保存**”。 现在，这些值将覆盖在设备模板中最初保存并在应用程序中使用的所有内容。
+1. 单击“保存” 。 现在，这些值将覆盖在设备模板中最初保存并在应用程序中使用的所有内容。
 
 ## <a name="version-a-device-template"></a>版本设备模板
 
@@ -105,7 +106,7 @@ ms.locfileid: "82583666"
 1. 转到“设备模板”页。****
 1. 选择要尝试版本的设备模板。
 1. 单击页面顶部的“版本”按钮，并为模板指定新名称。**** IoT Central 建议一个新名称，您可以对其进行编辑。
-1. 单击“创建”。
+1. 单击**创建**。
 1. 该设备模板现在处于草稿模式。 您可以看到您的接口仍处于锁定状态。 版本要修改的任何接口。
 
 ## <a name="version-an-interface"></a>版本接口
@@ -118,7 +119,7 @@ ms.locfileid: "82583666"
 1. 选择处于草稿模式的设备模板。
 1. 选择处于已发布模式的、要进行版本控制和编辑的接口。
 1. 单击接口页面顶部的“版本”按钮。****
-1. 单击“创建”。
+1. 单击**创建**。
 1. 该接口现在处于草稿模式。 你可以在接口中添加或编辑功能，而不会破坏现有的自定义和视图。
 
 ## <a name="migrate-a-device-across-versions"></a>跨版本迁移设备
@@ -134,6 +135,6 @@ ms.locfileid: "82583666"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是操作员或解决方案生成器，建议下一步是了解[如何管理你的设备](./howto-manage-devices.md)。
+如果你是操作员或解决方案生成器，建议下一步是了解 [如何管理你的设备](./howto-manage-devices.md)。
 
-如果你是设备开发人员，建议下一步是了解[Azure IoT Edge 设备和 Azure IoT Central](./concepts-iot-edge.md)。
+如果你是设备开发人员，建议下一步是了解 [Azure IoT Edge 设备和 Azure IoT Central](./concepts-iot-edge.md)。

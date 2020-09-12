@@ -1,21 +1,21 @@
 ---
-title: 将数据导入设计器（预览）
+title: '将数据导入设计器 (预览) '
 titleSuffix: Azure Machine Learning
-description: 了解如何将数据从各种数据源导入 Azure 机器学习设计器（预览）。
+description: 了解如何将数据从各种数据源导入 Azure 机器学习设计器 (预览) 。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495365"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006978"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>将数据导入到 Azure 机器学习设计器（预览版）
 
@@ -38,19 +38,28 @@ ms.locfileid: "87495365"
 
 1. 选择输出你要注册的数据的模块。
 
-1. 在“属性”窗格中，选择“输出” > “注册数据集” 。
+1. 在 "属性" 窗格中，选择 "**输出 + 日志**" "  >  **注册数据集**"。
 
     ![屏幕截图，其中显示了如何导航到“注册数据集”选项](media/how-to-designer-import-data/register-dataset-designer.png)
 
+如果模块输出数据为表格格式，则必须选择将输出注册为 **文件数据集** 或 **表格数据集**。
+
+ - **文件数据集** 将模块的输出文件夹注册为文件数据集。 Output 文件夹包含设计器在内部使用的数据文件和元文件。 如果要继续在设计器中使用已注册的数据集，请选择此选项。 
+
+ - **表格数据集** 仅将模块的输出数据文件注册为表格数据集。 此格式可以由其他工具轻松使用，例如自动机器学习或 Python SDK。 如果计划在设计器外使用注册的数据集，请选择此选项。  
+
+
+
 ### <a name="use-a-dataset"></a>使用数据集
 
-可以在模块面板中的“数据集” > “我的数据集”下找到你已注册的数据集。  若要使用某个数据集，请将其拖放到管道画布上。 然后，将该数据集的输出端口连接到面板中的其他模块。
+可在模块面板的 " **数据集**" 下找到已注册的数据集。 若要使用某个数据集，请将其拖放到管道画布上。 然后，将该数据集的输出端口连接到画布中的其他模块。 
 
 ![屏幕截图，其中显示了设计器面板中已保存数据集的位置](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> 此设计器当前仅支持处理[表格数据集](how-to-create-register-datasets.md#dataset-types)。 如果要使用[文件数据集](how-to-create-register-datasets.md#dataset-types)，请使用适用于 Python 和 R 的 Azure 机器学习 SDK。
+> 设计器支持 [数据集版本控制](how-to-version-track-datasets.md)。 在数据集模块的属性面板中指定数据集版本。
+
 
 ## <a name="import-data-using-the-import-data-module"></a>使用“导入数据”模块导入数据
 
@@ -94,7 +103,7 @@ ms.locfileid: "87495365"
 
 ## <a name="access-data-in-a-virtual-network"></a>访问虚拟网络中的数据
 
-如果工作区位于虚拟网络中，则必须执行其他配置步骤，以便在设计器中实现数据的可视化。 若要详细了解如何在虚拟网络中使用数据存储和数据集，请参阅[使用专用虚拟网络进行训练和推理的过程中的网络隔离](how-to-enable-virtual-network.md#machine-learning-studio)。
+如果工作区位于虚拟网络中，则必须执行其他配置步骤，以便在设计器中实现数据的可视化。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅 [在 Azure 虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

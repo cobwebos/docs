@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926943"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007037"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>将 Azure 认知搜索服务移到另一个 Azure 区域
 
@@ -23,7 +23,13 @@ ms.locfileid: "88926943"
 > [!NOTE]
 > 在 Azure 门户中，所有服务都有一个 **导出模板** 命令。 对于 Azure 认知搜索，此命令会生成服务的基本定义， (名称、位置、层、副本和分区计数) ，但不识别服务的内容，也不会执行密钥、角色或日志。 尽管该命令存在，但我们不建议使用它来移动搜索服务。
 
-## <a name="guidance-for-moving-a-service"></a>移动服务的指南
+## <a name="prerequisites"></a>先决条件
+
++ 确保帐户使用的服务和功能在目标区域中受支持。
+
++ 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
+
+## <a name="prepare-and-move"></a>准备并移动
 
 1. 识别依赖项和相关服务，以了解重定位服务的全部影响，以防只需移动 Azure 认知搜索。
 
@@ -41,7 +47,9 @@ ms.locfileid: "88926943"
 
 1. 更新客户端应用程序和测试套件以使用新的服务名称和 API 密钥，并对所有应用程序进行测试。
 
-1. 在新服务经过完全测试和操作后，删除旧服务。
+## <a name="discard-or-clean-up"></a>丢弃或清理
+
+在新服务经过完全测试和操作后，删除旧服务。 删除服务会自动删除与该服务关联的所有内容。
 
 ## <a name="next-steps"></a>后续步骤
 

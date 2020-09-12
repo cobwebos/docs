@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157936"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017092"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
-
-
-本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。 操作员可以：
+本文介绍如何在 Azure IoT Central 应用程序中管理设备，作为操作员。 操作员可以：
 
 - 使用“设备”页查看、添加和删除与 Azure IoT Central 应用程序连接的设备。 
 - 维护最新的设备清单。
@@ -69,7 +67,7 @@ ms.locfileid: "80157936"
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
     > [!NOTE]
-    > 如果还没有设备模板，则可以在 "**所有设备**" 下导入设备，并在不使用模板的情况下注册设备。 导入设备后，可将其关联到某个模板。
+    > 如果还没有设备模板，则可以在 " **所有设备** " 下导入设备，并在不使用模板的情况下注册设备。 导入设备后，可将其关联到某个模板。
 
 1. 选择“导入”  。
 

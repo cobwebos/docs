@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386123"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660475"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -33,11 +33,11 @@ ms.locfileid: "87386123"
   * 你的 Azure 帐户必须是工作帐户或学校帐户，如所示 `username@contoso.com` 。 不能使用 Azure B2B（来宾）帐户或个人 Microsoft 帐户，如 @hotmail.com 或 @outlook.com。
 
     > [!NOTE]
-    > 如果你已注册 Office 365 产品/服务但未提供工作电子邮件地址，则你的地址可能类似于 `username@domain.onmicrosoft.com`。 你的帐户存储在 Azure AD 租户中。 在大多数情况下，你的 Azure 帐户的用户主体名称（UPN）与你的电子邮件地址相同。
+    > 如果你注册了 Microsoft 365 产品/服务，但未提供工作电子邮件地址，则你的地址可能类似于 `username@domain.onmicrosoft.com` 。 你的帐户存储在 Azure AD 租户中。 在大多数情况下，你的 Azure 帐户的用户主体名称 (UPN) 与你的电子邮件地址相同。
 
-    若要使用与 Microsoft 帐户关联的[Visual Studio Standard 订阅](https://visualstudio.microsoft.com/vs/pricing/)，请首先[创建 Azure AD 租户](../active-directory/develop/quickstart-create-new-tenant.md)或使用默认目录。 将具有密码的用户添加到该目录，然后向该用户提供对 Azure 订阅的访问权限。 然后在网关安装期间可以使用此用户名和密码登录。
+    若要使用与 Microsoft 帐户关联的 [Visual Studio Standard 订阅](https://visualstudio.microsoft.com/vs/pricing/) ，请首先 [创建 Azure AD 租户](../active-directory/develop/quickstart-create-new-tenant.md) 或使用默认目录。 将具有密码的用户添加到该目录，然后向该用户提供对 Azure 订阅的访问权限。 然后在网关安装期间可以使用此用户名和密码登录。
 
-  * 你的 Azure 帐户必须仅属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 需要使用同一 Azure 帐户在本地计算机上安装和管理网关。
+  * 你的 Azure 帐户必须仅属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 需要使用同一 Azure 帐户在本地计算机上安装和管理网关。
 
   * 当你安装网关时，你可以通过 Azure 帐户登录，这会将网关安装链接到你的 Azure 帐户，并且仅将该帐户链接到该帐户。 不能将相同的网关安装链接到多个 Azure 帐户或 Azure AD 租户。
 

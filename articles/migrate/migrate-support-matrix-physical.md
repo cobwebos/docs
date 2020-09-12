@@ -3,12 +3,12 @@ title: Azure Migrate 中的物理服务器评估支持
 description: 了解支持 Azure Migrate Server 评估的物理服务器评估
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640117"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660354"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理服务器评估的支持矩阵 
 
@@ -34,8 +34,8 @@ ms.locfileid: "88640117"
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **物理服务器部署**       | 物理服务器可以是独立服务器，也可以部署到群集中。 |
-| **权限**           | **Windows：** 将域帐户用于已加入域的计算机，并将本地帐户用于未加入域的计算机。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 <br/> 另外，请确保使用以下命令设置所需的功能。 <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/fdisk <br/> 如果/usr/sbin/fdisk 不存在，则 setcap CAP_DAC_READ_SEARCH + eip/sbin/fdisk ()  <br/> setcap "cap_dac_override、cap_dac_read_search、cap_fowner、cap_fsetid、cap_setuid、cap_setpcap、cap_net_bind_service、cap_net_admin、cap_sys_chroot、cap_sys_admin、cap_sys_resource、cap_audit_control、cap_setfcap = + eip"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/dmidecode <br/> chmod a + r/sys/class/dmi/id/product_uuid
-| **操作系统** | 所有操作系统（Windows Server 2003 和 SUSE Linux 除外）都可以进行迁移评估。 |
+| **权限**           | **Windows：** 针对已加入域的计算机使用域帐户，针对未加入域的计算机使用本地帐户。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 <br/> 另外，请确保使用以下命令设置所需的功能。 <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/fdisk <br/> 如果/usr/sbin/fdisk 不存在，则 setcap CAP_DAC_READ_SEARCH + eip/sbin/fdisk ()  <br/> setcap "cap_dac_override、cap_dac_read_search、cap_fowner、cap_fsetid、cap_setuid、cap_setpcap、cap_net_bind_service、cap_net_admin、cap_sys_chroot、cap_sys_admin、cap_sys_resource、cap_audit_control、cap_setfcap = + eip"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/dmidecode <br/> chmod a + r/sys/class/dmi/id/product_uuid
+| **操作系统** | 所有 Windows 和 Linux 操作系统都可以进行迁移评估。 |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 设备要求

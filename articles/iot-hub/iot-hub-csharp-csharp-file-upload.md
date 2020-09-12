@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: ae145f5a1ce462edb28171a1f5bb6f3ebb72f538
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7a80fb47122d21e078cf2724b805fa56c5a73aeb
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018206"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018114"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>通过 IoT 中心将设备中的文件上传到云 (.NET)
 
@@ -47,6 +47,8 @@ ms.locfileid: "89018206"
 
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、Java、Python 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272893"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018350"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -225,6 +225,8 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>指向用于上传文件的存储帐户的出口连接
 
 IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存储帐户。 若要正常上传文件，设备和 IoT 中心都需要连接到存储帐户。 如果存储帐户上存在防火墙限制，你的设备需要使用任何支持的存储帐户机制（包括[专用终结点](../private-link/create-private-endpoint-storage-portal.md)、[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火墙配置](../storage/common/storage-network-security.md)）来实现连接。 同样，如果存储帐户上存在防火墙限制，需要将 IoT 中心配置为通过受信任的 Microsoft 服务异常功能来访问存储资源。 出于此目的，IoT 中心必须具有一个托管标识。 预配托管标识后，请按照以下步骤为你的中心的资源标识提供 RBAC 权限，用于访问你的存储帐户。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 

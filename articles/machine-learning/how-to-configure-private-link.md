@@ -10,17 +10,17 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/28/2020
-ms.openlocfilehash: 9ce139131e2c6cbfd73f9160b986d9886ae4844b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/03/2020
+ms.openlocfilehash: b9b256a3d3c1636cac55bcb1790182240d2199c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181946"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661882"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a> (预览版为 Azure 机器学习工作区配置 Azure 专用链接) 
 
-本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 
+本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 有关为 Azure 机器学习设置虚拟网络的信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
 > [!IMPORTANT]
 > 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在 **美国东部**、 **美国中南部** 和 **美国西部 2** 区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -28,7 +28,7 @@ ms.locfileid: "89181946"
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
 > [!IMPORTANT]
-> Azure 专用链接不影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作像往常一样通过公共 Internet 执行。
+> Azure 专用链接不影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作像往常一样通过公共 Internet 执行。 数据平面操作（如使用 Azure 机器学习 studio、Api (包括) 的已发布管道）或 SDK 使用专用终结点。
 >
 > 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中的 HTTPS 上的 DNS 有关。 建议使用 Google Chrome 的 Microsoft Edge 作为解决方法。
 
@@ -54,87 +54,6 @@ ms.locfileid: "89181946"
 有关 Azure 虚拟机的信息，请参阅[虚拟机文档](/azure/virtual-machines/)。
 
 
-## <a name="using-azure-storage"></a>使用 Azure 存储
-
-若要保护工作区使用的 Azure 存储帐户，请将其置于虚拟网络中。
-
-若要了解如何将存储帐户置于虚拟网络中，请参阅[对工作区使用存储帐户](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
-
-> [!WARNING]
-> Azure 机器学习不支持使用启用了专用链接的 Azure 存储帐户。
-
-## <a name="using-azure-key-vault"></a>使用 Azure Key Vault
-
-若要保护工作区使用的 Azure Key Vault，可以将其置于虚拟网络中，也可以为其启用专用链接。
-
-若要了解如何将密钥保管库置于虚拟网络中，请参阅[将密钥保管库实例与工作区配合使用](how-to-enable-virtual-network.md#key-vault-instance)。
-
-若要了解如何为密钥保管库启用专用链接，请参阅[将 Key Vault 与 Azure 专用链接集成](/azure/key-vault/private-link-service)。
-
-## <a name="using-azure-kubernetes-services"></a>使用 Azure Kubernetes 服务
-
-若要保护工作区使用的 Azure Kubernetes 服务，请将其置于虚拟网络中。 有关详细信息，请参阅[将 Azure Kubernetes 服务与工作区配合使用](how-to-enable-virtual-network.md#aksvnet)。
-
-Azure 机器学习现在支持使用启用了专用链接的 Azure Kubernetes 服务。
-若要创建专用 AKS 群集，请[在此处](https://docs.microsoft.com/azure/aks/private-clusters)执行文档
-
-## <a name="azure-container-registry"></a>Azure 容器注册表
-
-若要了解如何在虚拟网络中保护 Azure 容器注册表，请参阅[使用 Azure 容器注册表](how-to-enable-virtual-network.md#azure-container-registry)。
-
-> [!IMPORTANT]
-> 如果对 Azure 机器学习工作区使用专用链接，并在虚拟网络中放置工作区的 Azure 容器注册表，则还必须应用以下 Azure 资源管理器模板。 借助此模板，工作区可以通过专用链接与 ACR 通信。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "keyVaultArmId": {
-      "type": "string"
-      },
-      "workspaceName": {
-      "type": "string"
-      },
-      "containerRegistryArmId": {
-      "type": "string"
-      },
-      "applicationInsightsArmId": {
-      "type": "string"
-      },
-      "storageAccountArmId": {
-      "type": "string"
-      },
-      "location": {
-      "type": "string"
-      }
-  },
-  "resources": [
-      {
-      "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('workspaceName')]",
-      "location": "[parameters('location')]",
-      "identity": {
-          "type": "SystemAssigned"
-      },
-      "sku": {
-          "tier": "enterprise",
-          "name": "enterprise"
-      },
-      "properties": {
-          "sharedPrivateLinkResources":
-  [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
-          "keyVault": "[parameters('keyVaultArmId')]",
-          "containerRegistry": "[parameters('containerRegistryArmId')]",
-          "applicationInsights": "[parameters('applicationInsightsArmId')]",
-          "storageAccount": "[parameters('storageAccountArmId')]"
-      }
-      }
-  ]
-}
-```
-
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何保护 Azure 机器学习工作区，请参阅[企业安全](concept-enterprise-security.md)一文。
+有关保护 Azure 机器学习工作区的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md) 一文。

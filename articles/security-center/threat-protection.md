@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e2f72cc0ea6851caaf5d0db2f17f8e16473d420e
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272495"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667552"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -25,7 +25,7 @@ Azure 安全中心威胁防护为环境提供全面的防御：
 
 * **针对 Azure 计算资源的威胁防护**：Windows 计算机、Linux 计算机、Azure 应用服务和 Azure 容器
 
-* **针对 Azure 数据资源的威胁防护**：SQL 数据库和 SQL 数据仓库、Azure 存储以及 Azure Cosmos DB
+* **Azure 数据资源的威胁防护**： sql 数据库和 Azure Synapse Analytics (以前的 Sql 数据仓库) 、Azure 存储和 Azure Cosmos DB
 
 * **针对 Azure 服务层的威胁防护**：Azure 网络层、Azure 管理层（Azure 资源管理器）（预览版）和 Azure Key Vault（预览版）
 
@@ -131,19 +131,19 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>针对 SQL 数据库和 SQL 数据仓库的威胁防护 <a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-azure-synapse-analytics-formerly-sql-data-warehouse"></a> (以前的 SQL 数据仓库的 SQL 数据库和 Azure Synapse Analytics 的威胁防护) <a name="data-sql"></a>
 
 Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 出现可疑的数据库活动、潜在漏洞，或者 SQL 注入攻击以及异常的数据库访问和查询模式时，你会看到警报。
 
-适用于 Azure SQL 数据库和 SQL 的高级威胁防护是高级 SQL 安全功能 [ (广告) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 统一包的高级威胁防护，其中包括 Azure sql 数据库、Azure Sql 托管实例、Azure Sql 数据仓库数据库和 Azure 虚拟机上的 sql server。
+适用于 Azure SQL 数据库和 SQL 的高级威胁防护是 [高级的数据安全 (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 统一包，其中包括 Azure sql 数据库、Azure Sql 托管实例、Azure Synapse Analytics (以前的 Sql 数据仓库) 数据库和 Azure 虚拟机上的 sql server。
 
 有关详细信息，请参阅：
 
 * [如何为 Azure SQL 数据库启用高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何为 Azure 虚拟机上的 SQL 服务器启用高级威胁防护](security-center-iaas-advanced-data.md)
-* [针对 SQL 数据库和 SQL 数据仓库的威胁防护警报列表](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [ (以前的 SQL 数据仓库的 SQL 数据库和 Azure Synapse Analytics 的威胁防护警报列表) ](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
@@ -164,8 +164,6 @@ Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在�
 Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活动。 无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。
 
 这一层保护使你 *无* 需成为安全专家，就能解决威胁，并可帮助你管理安全监视系统。
-
-已保护你的存储帐户 
 
 ### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>哪些类型的警报对 Azure 存储提供威胁保护？
 
@@ -204,7 +202,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>针对 Azure Cosmos DB 的威胁防护 <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (预览版的威胁防护) <a name="cosmos-db"></a>
 
 当有人企图以非寻常和可能有害的方式访问或恶意利用 Azure Cosmos DB 帐户时，会生成 Azure Cosmos DB 警报。
 

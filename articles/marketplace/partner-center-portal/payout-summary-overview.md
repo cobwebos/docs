@@ -1,35 +1,35 @@
 ---
-title: 付款摘要概述 - Azure 市场
+title: 支出摘要概述，Azure Marketplace
 description: 付款摘要显示了你通过产品/服务赚取的资金的详细信息。 它还显示了收到付款的时间以及付款金额。
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 708fc2c0783bdefa4ac4fa4b73f10733bba0bc04
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479806"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006918"
 ---
 # <a name="payout-summary-overview"></a>付款摘要概述
 
 [付款摘要](./payout-summary.md)显示有关通过 Microsoft 赚取的资金的详细信息。 它还显示了收到付款的时间以及付款金额。
 
-如果你在 Azure 市场上销售产品/服务，你还可在付款摘要中看到有关成功付款的信息。 有关 Azure 市场付款的详细信息，请参阅 [Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
+如果你在 Azure Marketplace 中销售产品/服务，你还将看到有关付款的信息。 有关 Azure Marketplace 支付的详细信息，请参阅商业市场和[Microsoft 发行者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)[中的付费](./get-paid.md)。
 
 > [!NOTE]
-> 要获得付款资格，你的收益必须达到 50 美元的[付款阈值](./payment-thresholds-methods-timeframes.md)。 有关付款阈值的详细信息，请参阅 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
+> 你的收款必须达到 50 美元的付款阈值，才符合成为付款的条件。 有关详细信息，请参阅 [Microsoft 发行者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
 
-若要查看付出的详细信息，请登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)，并选择屏幕右上角的 "支出" 图标：
+若要查看付出的详细信息，请登录到 [合作伙伴中心](https://partner.microsoft.com/dashboard/home) ，并选择屏幕右上角的 "支出" 图标：
 
 ![展示了合作伙伴中心门户右上角的“付款”图标。](./media/payout-overview.png)
 
 ## <a name="roles-and-permissions"></a>角色和权限
 
-以下是用于访问付款报告的角色和权限：
+这些是访问支出报表的角色和权限：
 
 | 报表/页 | 帐户所有者 | Manager | 开发人员 | 业务参与者 | 财务参与者 | 营销人员 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ ms.locfileid: "87479806"
 
 ## <a name="payment-schedules"></a>付款计划
 
-有关付款计划的讨论，包括持有期限、合作伙伴可见性以及客户使用信用卡或发票的时间，请参阅“付款详细信息”主题的[付款计划](./payout-policy-details.md#payment-schedules)部分。
+若要深入了解付款计划，包括保持期、合作伙伴可见性以及客户使用信用卡或发票的情况，请参阅**付出详细信息**一文中的[付款计划](./payout-policy-details.md#payment-schedules)部分。
 
 ## <a name="transaction-history-download-export"></a>交易历史记录下载导出
 
@@ -82,8 +82,8 @@ ms.locfileid: "87479806"
 | paymentId | 付款的唯一标识符。 此数字在银行报表中可见 |
 | paymentStatus | 付款状态 |
 | paymentStatusDescription | 付款状态的说明 |
-| customerId | 始终为空白 |
-| customerName | 始终为空白 |
+| customerId | 始终为空 |
+| customerName | 始终为空 |
 | partNumber | 始终为空 |
 | productName | 与交易关联的产品名称 |
 | productId | 唯一的产品标识符 |
@@ -129,6 +129,6 @@ ms.locfileid: "87479806"
 ## <a name="billing-questions-and-support"></a>计费问题和支持
 有关计费支持，请联系商业市场[发布者支持](https://partner.microsoft.com/support/v2/?stage=1)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [付款摘要](./payout-summary.md)

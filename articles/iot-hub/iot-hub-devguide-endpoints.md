@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323037"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019557"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -55,6 +55,8 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
   * *检索并更新设备孪生的属性*。 设备使用此终结点访问其[设备孪生](iot-hub-devguide-device-twins.md)的属性。 不支持 HTTPS。
 
   * *接收直接方法请求*。 设备使用此终结点侦听[直接方法](iot-hub-devguide-direct-methods.md)的请求。 不支持 HTTPS。
+
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 * **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点只使用 [AMQP](https://www.amqp.org/) 协议以及基于 WebSockets 的 AMQP 协议进行公开。 直接方法调用终结点通过 HTTPS 协议进行公开。
   

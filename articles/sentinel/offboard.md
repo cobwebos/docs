@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: yelevin
-ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77581678"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662017"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>从工作区中删除 Azure Sentinel
 
@@ -29,11 +29,11 @@ ms.locfileid: "77581678"
 
 按照此过程从工作区中删除 Azure Sentinel：
 
-1. 中转到**Azure Sentinel**，然后选择 "**设置**"，然后选择 "**删除 Azure sentinel**" 选项卡。
+1. 中转到 **Azure Sentinel**，然后选择 " **设置**"，然后选择 " **删除 Azure sentinel**" 选项卡。
 
 1. 删除 Azure Sentinel 之前，请使用复选框告诉我们你为何要将其删除。
 
-1. 选择 "**从工作区中删除 Azure Sentinel**"。
+1. 选择 " **从工作区中删除 Azure Sentinel**"。
     
     ![删除 SecurityInsights 解决方案](media/offboard/delete-solution.png)
 
@@ -48,19 +48,19 @@ ms.locfileid: "77581678"
 
 -   AWS
 
--   Microsoft 服务安全警报（Azure ATP，Microsoft Cloud App Security 包括 Cloud Discovery 影子 IT 报告、Azure AD Identity Protection、Microsoft Defender ATP、Azure 安全中心）
+-   Microsoft 服务安全警报： Microsoft Defender for Identity (*以前的 AZURE ATP*) ，Microsoft Cloud App Security 包括 CLOUD DISCOVERY 影子 IT 报告、Azure AD Identity Protection、microsoft Defender for Endpoint (*以前的 microsoft defender ATP*) 、azure Defender (*以前的 azure 安全中心*) 
 
 -   威胁智能
 
--   常见安全日志（包括基于 CEF 的日志、Barracuda 和 Syslog）（如果你有 Azure 安全中心，将继续收集这些日志。）
+-   常见安全日志 (包括基于 CEF 的日志、Barracuda 和 Syslog)  (如果你有 Azure Defender，将继续收集这些日志。 ) 
 
--   Windows 安全事件（如果你有 Azure 安全中心，将继续收集这些日志。）
+-   Windows 安全事件 (如果你有 Azure Defender，将继续收集这些日志。 ) 
 
-在前48小时内，数据和分析规则（包括实时自动化配置）将无法再在 Azure Sentinel 中访问或查询。
+在前48小时内，数据和分析规则 (包括实时自动化配置) 在 Azure Sentinel 中将不再可访问或可查询。
 
 **30天后，这些资源将被删除：**
 
--   事件（包括调查元数据）
+-   事件 (包括调查元数据) 
 
 -   分析规则
 
@@ -78,4 +78,4 @@ ms.locfileid: "77581678"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何删除 Azure Sentinel 服务。 如果你改变主意并想要重新安装它：
-- 开始进行[Azure Sentinel](quickstart-onboard.md)入门。
+- 开始进行 [Azure Sentinel](quickstart-onboard.md)入门。

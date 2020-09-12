@@ -10,17 +10,17 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cad1c8b7250ddf1e675145e764abcc90b4db9d86
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018053"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661727"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)和[Azure 机器学习设计器 (预览) ](https://docs.microsoft.com/azure/machine-learning/concept-designer)中排除和调试[机器学习管道](concept-ml-pipelines.md)。 
+本文介绍如何在[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)和[Azure 机器学习设计器 (预览) ](https://docs.microsoft.com/azure/machine-learning/concept-designer)中排除和调试[机器学习管道](concept-ml-pipelines.md)。 
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
@@ -33,7 +33,7 @@ ms.locfileid: "89018053"
 | 计算目标出现不明确的错误 | 请尝试删除并重新创建计算目标。 重新创建计算目标非常快速，可以解决某些暂时性问题。 |
 | 管道未重复使用步骤 | 默认已启用步骤重复使用，但是，请确保未在管道步骤中禁用它。 如果已禁用重复使用，则步骤中的 `allow_reuse` 参数将设置为 `False`。 |
 | 管道不必要地重新运行 | 若要确保步骤仅在基础数据或脚本更改时重新运行，请为每个步骤分离源代码目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
-
+| 逐步降低定型时期或其他循环行为 | 尝试将所有文件写入（包括日志记录）从转换 `as_mount()` 为 `as_upload()` 。 **装载**模式使用远程虚拟文件系统，并在每次将其追加到时上载整个文件。 |
 
 ## <a name="debugging-techniques"></a>调试技术
 
@@ -148,7 +148,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 1. 在模块的右窗格中，转到“输出 + 日志”选项卡。
 1. 展开右窗格，然后选择 70_driver_log.txt 并在浏览器中查看该文件。 还可以在本地下载日志。
 
-    ![设计器中展开的输出窗格](./media/how-to-debug-pipelines/designer-logs.png)
+    ![设计器中展开的输出窗格](./media/how-to-debug-pipelines/designer-logs.png)？ view = azure-ml-py&preserve = true) ？ view = azure ml py&preserve = true) 
 
 ### <a name="get-logs-from-pipeline-runs"></a>从管道运行获取日志
 
@@ -168,12 +168,12 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 ## <a name="application-insights"></a>Application Insights
 有关以此方式使用 OpenCensus Python 库的详细信息，请参阅此指南：[在 Application Insights 中对机器学习管道进行调试和故障排除](how-to-debug-pipelines-application-insights.md)
 
-## <a name="interactive-debugging-with-visual-studio-code"></a>交互式调试与 Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
-在某些情况下，可能需要以交互方式调试 ML 管道中使用的 Python 代码。 通过使用 Visual Studio Code (VS Code) 和 debugpy，可以在代码在定型环境中运行时附加到代码。 有关详细信息，请访问 [VS Code 指南中的交互式调试](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)。
+在某些情况下，可能需要以交互方式调试 ML 管道中使用的 Python 代码。 通过使用 Visual Studio Code (VS Code) 和 debugpy，可以在训练环境中运行代码时附加到该代码。 有关详细信息，请访问[在 VS Code 指南中进行交互式调试](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) 包和 [azureml-pipelines-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) 包的帮助信息，请参阅 SDK 参考。
+* 有关 [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) 包和 [azureml-pipelines-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) 包的帮助信息，请参阅 SDK 参考。
 
 * 请参阅[设计器异常和错误代码](algorithm-module-reference/designer-error-codes.md)的列表。

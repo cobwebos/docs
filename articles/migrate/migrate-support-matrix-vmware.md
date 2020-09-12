@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解使用 Azure Migrate 服务器评估时的 VMware VM 评估支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266963"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660277"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估支持矩阵 
 
@@ -33,7 +33,7 @@ ms.locfileid: "89266963"
 
 **VMware** | **详细信息**
 --- | ---
-**vCenter Server** | 要发现和评估的计算机必须由 vCenter Server 5.5、6.0、6.5 或6.7 版本来管理。
+**vCenter Server** | 你要发现和评估的计算机必须通过 vCenter Server 版本5.5、6.0、6.5、6.7 或7.0 进行管理。<br/><br/> 当前不支持通过在设备中提供 ESXi 主机详细信息来发现 VMware Vm。
 **权限** | 服务器评估需要 vCenter Server 只读帐户进行发现和评估。<br/><br/> 如果要执行应用程序发现或依赖项可视化，帐户需要为**虚拟机**  >  **来宾操作**启用特权。
 
 ## <a name="vm-requirements"></a>VM 要求
@@ -89,7 +89,7 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 **vCenter Server 凭据** | 依赖关系可视化需要 vCenter Server 帐户，帐户具有只读访问权限，并需要为“虚拟机”>“来宾操作”启用的特权。
 **Windows VM 权限** |  对于依赖关系分析，Azure Migrate 设备必须有域管理员帐户或本地管理员帐户，才能访问 Windows VM。
 **Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Linux 帐户** | 对于依赖关系分析，在 Linux 虚拟机上，Azure Migrate 设备需要具有根权限的用户帐户。<br/><br/> 或者，用户帐户需要对 /bin/netstat 和 /bin/ls 文件具有以下权限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
+**Linux 帐户** | 对于依赖关系分析，在 Linux 虚拟机上，Azure Migrate 设备需要具有根权限的用户帐户。<br/><br/> 或者，用户帐户需要对 /bin/netstat 和 /bin/ls 文件具有以下权限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。 使用以下命令设置这些功能： <br/> sudo setcap CAP_DAC_READ_SEARCH，CAP_SYS_PTRACE = ep/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH，CAP_SYS_PTRACE = ep/bin/netstat
 **必需代理** | 要分析的虚拟机上不需要任何代理。
 **VMware 工具** | 必须在要分析的每个 VM 上安装并运行 VMware 工具（版本高于 10.2）。
 

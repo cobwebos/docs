@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037246"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651733"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -38,7 +38,7 @@ Azure 中的网络服务提供可以搭配使用或单独使用的各种网络�
 |[Azure DNS](#dns)|托管使用 Microsoft Azure 基础结构提供名称解析的 DNS 域。|<p>[在 Azure DNS 中托管域](../dns/dns-delegate-domain-azure-dns.md)</p><p>[为 Web 应用创建 DNS 记录](../dns/dns-web-sites-custom-domain.md)</p> <p>[为流量管理器创建别名记录](../dns/tutorial-alias-tm.md)</p> <p>[为公共 IP 地址创建别名记录](../dns/tutorial-alias-pip.md)</p> <p>[为区域资源记录创建别名记录](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|直接在 Azure 门户 over TLS 中，配置与虚拟机的安全且无缝的 RDP/SSH 连接。 通过 Azure 堡垒连接时，虚拟机不需要公共 IP 地址|<p>[创建 Azure Bastion 主机](../bastion/bastion-create-host-portal.md)</p><p>[使用 SSH 连接到 Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[使用 RDP 连接到 Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[虚拟网络 NAT 网关](#nat)|创建 NAT 网关，为虚拟机提供出站连接。|<p>[创建 NAT 网关](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure 对等互连服务 (预览) ](#azurepeeringservice)|通过公共网络与服务提供商协作，以获得最佳和可靠的路由。|<p>[注册 Azure 对等互连服务](../peering-service/azure-portal.md)</p>|
+|[Azure 对等互连服务](#azurepeeringservice)|通过公共网络与服务提供商协作，以获得最佳和可靠的路由。|<p>[注册 Azure 对等互连服务](../peering-service/azure-portal.md)</p>|
 ||||
 
 
@@ -71,20 +71,20 @@ Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的�
 ![虚拟 WAN 示意图](./media/networking-overview/virtualwan1.png)
 
 ### <a name="azure-dns"></a><a name="dns"></a>Azure DNS
-Azure DNS 是 DNS 域的托管服务，DNS 域使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
+Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
 
-### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
+### <a name="azure-bastion"></a><a name="bastion"></a>Azure 堡垒
 Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅[什么是 Azure Bastion？](../bastion/bastion-overview.md)。
 
 ![Azure 堡垒体系结构](./media/networking-overview/architecture.png)
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>虚拟网络 NAT 网关
-虚拟网络 NAT（网络地址转换）简化了虚拟网络的仅限出站 Internet 连接。 在子网中配置后，所有出站连接将使用指定的静态公共 IP 地址。 无需使用负载均衡器或将公共 IP 地址直接附加到虚拟机，即可建立出站连接。 有关详细信息，请参阅[什么是虚拟网络 NAT 网关？](../virtual-network/nat-overview.md) 
+虚拟网络 NAT（网络地址转换）简化了虚拟网络的仅限出站 Internet 连接。 在子网中配置后，所有出站连接将使用指定的静态公共 IP 地址。 无需使用负载均衡器或将公共 IP 地址直接附加到虚拟机，即可建立出站连接。 有关详细信息，请参阅 [什么是虚拟网络 NAT 网关？](../virtual-network/nat-overview.md) 
 
 ![虚拟网络 NAT 网关](./media/networking-overview/flow-map.png)
 
-### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Azure 对等互连服务
-Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365、Dynamics 365、软件即服务）的连接， (SaaS) 服务、Azure 或可通过公共 internet 访问的任何 Microsoft 服务。 有关详细信息，请参阅[什么是 Azure 对等互连服务？](../peering-service/about.md)。
+### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure 对等互连服务
+Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365、Dynamics 365、软件即服务）的连接， (SaaS) 服务、Azure 或可通过公共 internet 访问的任何 Microsoft 服务。 有关详细信息，请参阅 [什么是 Azure 对等互连服务？](../peering-service/about.md)。
 
 ## <a name="application-protection-services"></a><a name="protect"></a>应用程序保护服务
 
@@ -93,14 +93,14 @@ Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365�
 |服务|为何使用此类服务？|方案|
 |---|---|---|
 |[DDoS 保护](#ddosprotection) |针对额外的 IP 流量收费提供保护的应用程序的高可用性|[管理 Azure DDoS 保护](../virtual-network/manage-ddos-protection.md)|
-|[Web 应用程序防火墙](#waf)|<p>[具有应用程序网关的 Azure WAF](../web-application-firewall/ag/ag-overview.md) 为公共和专用地址空间中的实体提供区域性保护</p><p>[带有前门的 AZURE WAF](../web-application-firewall/afds/afds-overview.md)提供网络边缘到公共终结点的保护。</p>|<p>[配置机器人保护规则](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[配置自定义响应代码](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[配置 IP 限制规则](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[配置速率限制规则](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Web 应用程序防火墙](#waf)|<p>[具有应用程序网关的 Azure WAF](../web-application-firewall/ag/ag-overview.md) 为公共和专用地址空间中的实体提供区域性保护</p><p>[带有前门的 AZURE WAF](../web-application-firewall/afds/afds-overview.md) 提供网络边缘到公共终结点的保护。</p>|<p>[配置机器人保护规则](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[配置自定义响应代码](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[配置 IP 限制规则](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[配置速率限制规则](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure 防火墙](#firewall)|Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。|<p>[在 Vnet 中部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[- 在混合网络中部署 Azure 防火墙](../firewall/tutorial-hybrid-ps.md)</p> <p>[使用 Azure 防火墙 DNAT 筛选入站流量](../firewall/tutorial-firewall-dnat.md)</p>|
 |[网络安全组](#nsg)|在 VM/子网中对所有网络流量进行完全粒度的分布式终端节点控制|[使用网络安全组筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)|
 |[虚拟网络服务终结点](#serviceendpoints)|使你可以将对某些 Azure 服务资源的网络访问限制到虚拟网络子网|[限制 PaaS 资源的网络访问](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
 [专用链接](#privatelink)|使你能够通过虚拟网络中的专用终结点访问 Azure PaaS 服务 (例如，Azure 存储和 SQL 数据库) 和 Azure 托管的客户拥有/合作伙伴服务。|<p>[创建专用终结点](../private-link/create-private-endpoint-portal.md)</p><p>[创建专用链接服务](../private-link/create-private-link-service-portal.md)</p>|
 |||
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS 保护 
-[Azure DDoS 防护](../virtual-network/manage-ddos-protection.md)针对最复杂的 DDoS 威胁提供对策。 此服务为你的虚拟网络中部署的应用程序和资源提供增强的 DDoS 缓解功能。 此外，使用 Azure DDoS 防护的客户有权访问 DDoS 快速响应支持，以在主动攻击期间与 DDoS 专家联系。
+[Azure DDoS 防护](../virtual-network/manage-ddos-protection.md) 针对最复杂的 DDoS 威胁提供对策。 此服务为你的虚拟网络中部署的应用程序和资源提供增强的 DDoS 缓解功能。 此外，使用 Azure DDoS 防护的客户有权访问 DDoS 快速响应支持，以在主动攻击期间与 DDoS 专家联系。
 
 ![DDoS 保护](./media/networking-overview/ddos-protection.png)
 
@@ -108,7 +108,7 @@ Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365�
 
 [Azure Web 应用程序防火墙](../web-application-firewall/overview.md) (WAF) 为 Web 应用程序提供保护，使其免受 SQL 注入、跨站点脚本等常见 Web 攻击和漏洞的影响。 Azure WAF 通过托管的规则针对 OWASP 识别出的 10 大漏洞提供现成保护。 此外，客户还可以配置自定义规则（客户管理的规则），用于根据源 IP 范围，以及标头、Cookie、表单数据字段或查询字符串参数等请求属性提供额外的保护。
 
-客户可以选择部署[具有应用程序网关的 Azure WAF](../application-gateway/waf-overview.md)，以便为公共和专用地址空间中的实体提供区域性保护。 客户还可以选择部署[具有前门的 AZURE WAF](../frontdoor/waf-overview.md) ，它提供网络边缘到公共终结点的保护。
+客户可以选择部署[具有应用程序网关的 Azure WAF](../application-gateway/waf-overview.md)，以便为公共和专用地址空间中的实体提供区域性保护。 客户还可以选择部署 [具有前门的 AZURE WAF](../frontdoor/waf-overview.md) ，它提供网络边缘到公共终结点的保护。
 
 ![Web 应用程序防火墙](./media/networking-overview/waf-overview.png)
 
@@ -154,7 +154,7 @@ Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案�
 ![Azure CDN](./media/networking-overview/cdn-overview.png)
 
 ### <a name="azure-front-door-service"></a><a name="frontdoor"></a>Azure 前门服务
-在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 使用 Front Door，可将全球（多区域）消费型和企业应用程序转化成可靠、高性能、个性化的现代应用程序、API 和内容，供 Azure 全球受众访问。 有关详细信息，请参阅[Azure 前门](../frontdoor/front-door-overview.md)。
+在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 使用 Front Door，可将全球（多区域）消费型和企业应用程序转化成可靠、高性能、个性化的现代应用程序、API 和内容，供 Azure 全球受众访问。 有关详细信息，请参阅 [Azure 前门](../frontdoor/front-door-overview.md)。
 
 
 ### <a name="traffic-manager"></a><a name="trafficmanager"></a>流量管理器
@@ -206,7 +206,7 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 
 ![虚拟网络 TAP 的工作原理](./media/networking-overview/virtual-network-tap-architecture.png)
 
-有关详细信息，请参阅[什么是虚拟网络点击](../virtual-network/virtual-network-tap-overview.md)。
+有关详细信息，请参阅 [什么是虚拟网络点击](../virtual-network/virtual-network-tap-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

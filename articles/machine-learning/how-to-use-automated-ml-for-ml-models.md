@@ -11,17 +11,17 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185394"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660429"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-本文介绍了如何在 Azure 机器学习 studio 中创建、探索和部署自动化机器学习模型，而无需编写单行代码。
+本文介绍如何在不编写任何代码的情况下，在 Azure 机器学习工作室中创建、探索和部署自动化机器学习模型。
 
 >[!IMPORTANT]
 > Azure 机器学习工作室中的自动化 ML 体验处于预览状态。 某些功能可能不受支持或者受限。
@@ -56,22 +56,22 @@ ms.locfileid: "88185394"
 
 1. 选择“+ 新建自动化 ML 运行”并填充窗体。
 
-1. 选择存储容器中的数据集，或创建新数据集。 可以基于本地文件、Web URL、数据存储或 Azure 开放数据集创建数据集。 了解有关[创建数据集](how-to-create-register-datasets.md)的详细信息。  
+1. 选择存储容器中的数据集，或创建新数据集。 可以基于本地文件、Web URL、数据存储或 Azure 开放数据集创建数据集。 详细了解[数据集创建](how-to-create-register-datasets.md)。  
 
     >[!Important]
     > 训练数据的要求：
     >* 数据必须为表格格式。
     >* 要预测的值（目标列）必须在数据中存在。
 
-    1. 若要从本地计算机上的文件创建新的数据集，请选择 " **+ 创建数据集**"，然后选择 "**从本地文件**"。 
+    1. 若要从本地计算机上的文件创建新的数据集，请选择“+创建数据集”，然后选择“从本地文件”。 
 
-    1. 在 "**基本信息**" 窗体中，为数据集指定唯一名称，并提供可选说明。 
+    1. 在“基本信息”窗体中，为数据集指定唯一名称，并提供可选说明。 
 
     1. 选择“下一步”，以打开“数据存储和文件选择”窗体。 在此窗体上，你需选择要将数据集上传到何处：将数据集上传到在工作区中自动创建的默认存储容器，或选择要用于试验的存储容器。 
     
-        1. 如果数据位于虚拟网络后面，则需要启用 "**跳过验证"** 功能以确保工作区可以访问数据。 了解有关[网络隔离和隐私](how-to-enable-virtual-network.md#machine-learning-studio)的详细信息。 
+        1. 如果数据位于虚拟网络后面，则需要启用“跳过验证”功能以确保工作区可以访问数据。 有关详细信息，请参阅 [在 Azure 虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md)。 
     
-    1. 选择 "**浏览**" 上传数据集的数据文件。 
+    1. 选择“浏览”以上传数据集的数据文件。 
 
     1. 查看“设置和预览”窗体中内容的准确性。 该窗体是基于文件类型智能填充的。 
 
@@ -105,13 +105,13 @@ ms.locfileid: "88185394"
     字段|说明
     ---|---
     计算名称| 输入用于标识计算上下文的唯一名称。
-    虚拟机优先级| 低优先级虚拟机的成本较低，但不保证计算节点。 
-    虚拟机类型| 为虚拟机类型选择 "CPU" 或 "GPU"。
+    虚拟机优先级| 低优先级虚拟机的费用更低，但不能保证计算节点。 
+    虚拟机类型| 选择“CPU”或“GPU”作为虚拟机类型。
     虚拟机大小| 指定计算资源的虚拟机大小。
     最小/最大节点数| 若要分析数据，必须指定一个或多个节点。 输入计算的最大节点数。 对于 AML 计算，默认值为 6 个节点。
     高级设置 | 使用这些设置可以配置用户帐户和现有虚拟网络以进行试验。 
     
-    选择“创建” 。 创建新计算可能需要花费几分钟时间。
+    选择“创建”。 创建新计算可能需要花费几分钟时间。
 
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](#profile)部分）。
@@ -120,25 +120,28 @@ ms.locfileid: "88185394"
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
-    1. 对于**分类**，还可以启用用于文本 featurizations 的深度学习。
-
-    1. 对于**预测**，可以 
+    1. 对于 **分类**，还可以启用深度学习。
     
-        1. 启用深度学习
-    
-        1. 选择*时间列*：此列包含要使用的时间数据。
+        如果启用深度学习，则验证仅限于 _train_validation 拆分_。 [了解有关验证选项的详细信息](how-to-configure-cross-validation-data-splits.md)。
 
-        1. 选择*预测范围*：指示该模型可预测到未来的)  (分钟/小时/天/周/月/年的时间单位。 模型需要预测的未来时间越久远，其准确度越低。 [详细了解预测和预测范围](how-to-auto-train-forecast.md)。
+
+    1. 对于预测，可以 
+    
+        1. 启用深度学习。
+    
+        1. 选择“时间列”：此列包含要使用的时间数据。
+
+        1. 选择“预测范围”：指示模型可以预测未来的多少个时间单位（分钟/小时/天/周/月/年）。 模型需要预测的未来时间越久远，其准确度越低。 [详细了解预测和预测范围](how-to-auto-train-forecast.md)。
 
 1. （可选）查看附加配置设置：可用来更好地控制训练作业的其他设置。 否则，将会根据试验选择和数据应用默认设置。 
 
     其他配置|说明
     ------|------
     主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#primary-metric)。
-    解释最佳模型 | 选择此项可以启用或禁用，以便显示建议的最佳模型的 explainability。
-    阻止的算法| 选择要从训练作业中排除的算法。
+    解释最佳模型 | 选择此项可以启用或禁用，以便显示建议的最佳模型的说明。 <br> 此功能当前不适用于 [某些预测算法](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)。 
+    阻止的算法| 选择要从训练作业中排除的算法。 <br><br> 允许算法仅适用于 [SDK 试验](how-to-configure-auto-train.md#supported-models)。 <br> 请参阅 [每个任务类型支持的模型](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true)。
     退出条件| 如果满足其中的任一条件，则会停止训练作业。 <br> *训练作业时间(小时)* ：允许训练作业运行多长时间。 <br> *指标评分阈值*：所有管道的最低指标评分。 这可以确保在你具有一个要实现的已定义目标指标时，无需花费不必要的时间来完成训练作业。
-    验证| 选择要在训练作业中使用的交叉验证选项之一。 [详细了解交叉验证](how-to-configure-cross-validation-data-splits.md#prerequisites)。
+    验证| 选择要在训练作业中使用的交叉验证选项之一。 <br> [详细了解交叉验证](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>预测只支持 k 折交叉验证。
     并发| *最大并发迭代数*：要在训练作业中测试的最大管道（迭代）数。 作业运行的迭代数不会超过指定的数目。
 
 1. （可选）查看特征化设置：如果选择在“其他配置设置”窗体中启用“自动特征化”，则会应用默认的特征化技术 。 在“查看特征化设置”中，可以更改这些默认设置并相应地进行自定义。 了解如何[自定义特征化](#customize-featurization)。 
@@ -199,7 +202,7 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 ### <a name="view-training-run-details"></a>查看训练运行详细信息
 
-向下钻取任何已完成的模型，以查看定型运行详细信息，如 "**模型**" 选项卡上的模型摘要或 "**度量值**" 选项卡上的性能指标图表。[了解有关图表的详细信息](how-to-understand-automated-ml.md)。
+向下钻取任何已完成的模型，以查看训练运行详细信息，例如“模型”选项卡上的模型摘要或“指标”选项卡上的性能指标图表。[详细了解图表](how-to-understand-automated-ml.md)。
 
 [![迭代详细信息](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
@@ -211,14 +214,14 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 1. 可以使用多个部署选项。 
 
-    + 选项1：根据你定义的指标条件部署最佳模型。 
-        1. 试验完成后，在屏幕顶部选择 "**运行 1** "，导航到父 "运行" 页。 
-        1.  选择**最佳模型摘要**部分中列出的模型。 
-        1. 选择窗口左上角的 "**部署**"。 
+    + 选项 1：根据定义的指标条件部署最佳模型。 
+        1. 试验完成后，选择屏幕顶部的“运行 1”，导航到父运行页面。 
+        1.  选择“最佳模型摘要”部分中列出的模型。 
+        1. 选择窗口左上角的“部署”。 
 
-    + 选项2：从此试验部署特定模型迭代。
-        1. 从 "**模型**" 选项卡中选择所需的模型
-        1. 选择窗口左上角的 "**部署**"。
+    + 选项 2：从此试验部署特定模型迭代。
+        1. 从“模型”选项卡中选择所需模型
+        1. 选择窗口左上角的“部署”。
 
 1. 填充“部署模型”窗格。
 
@@ -237,7 +240,7 @@ Variance| 此列数据与其平均值之间的分散程度度量。
     “高级”菜单提供默认部署功能，例如[数据收集](how-to-enable-app-insights.md)和资源利用率设置。 若要替代这些默认设置，请在此菜单中替代。
 
 1. 选择“部署”。 完成部署可能需要大约 20 分钟。
-    部署开始后，将显示 "**模型摘要**" 选项卡。 请参阅部署**状态**部分下的部署进度。 
+    部署开始后，将显示“模型摘要”选项卡。 在“部署状态”部分下查看部署进度。 
 
 现在，你已获得一个正常运行的、可以生成预测结果的 Web 服务！ 可以通过 [Power BI 内置的 Azure 机器学习支持](how-to-consume-web-service.md#consume-the-service-from-power-bi)查询该服务，以测试预测。
 

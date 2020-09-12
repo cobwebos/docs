@@ -3,12 +3,12 @@ title: 捕获流式处理事件 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522119"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667445"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或者 [Azure Data Lake Storage Gen 1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
@@ -132,7 +132,7 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 
 ## <a name="integration-with-event-grid"></a>事件网格集成 
 
-可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程介绍如何创建事件网格订阅，其中事件中心作为源，Azure Functions 应用作为接收器：[使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 SQL 数据仓库](store-captured-data-data-warehouse.md)。
+可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程演示了如何使用事件网格和 Azure Functions，将事件中心作为源和 Azure Functions 应用创建事件网格订阅，并将 [捕获的事件中心数据迁移到 Azure Synapse 分析](store-captured-data-data-warehouse.md)。
 
 ## <a name="next-steps"></a>后续步骤
 事件中心捕获是将数据加载到 Azure 最简单的方法。 使用 Azure Data Lake、Azure 数据工厂和 Azure HDInsight，可以执行批处理操作和其他分析，并且可以选择熟悉的工具和平台，以所需的任何规模执行。
@@ -147,7 +147,7 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://github.com/microsoft/AzureStorageExplorer/releases
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html

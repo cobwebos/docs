@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936514"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006753"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -122,6 +122,7 @@ ms.locfileid: "88936514"
 ### <a name="user-secrets-and-other-configuration-providers"></a>用户机密和其他配置提供程序
 
 如果要将检测密钥存储在 ASP.NET Core 用户机密或从其他配置提供程序中检索它，则可以将重载与参数一起使用 `Microsoft.Extensions.Configuration.IConfiguration` 。 例如，`services.AddApplicationInsightsTelemetry(Configuration);`。
+从 Applicationinsights.config AspNetCore 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)开始，调用 `services.AddApplicationInsightsTelemetry()` 会自动从应用程序读取检测密钥 `Microsoft.Extensions.Configuration.IConfiguration` 。 无需显式提供 `IConfiguration` 。
 
 ## <a name="run-your-application"></a>运行应用程序
 
@@ -158,17 +159,17 @@ ms.locfileid: "88936514"
 
 1. 在 `_ViewImports.cshtml` 中添加注入代码：
 
-    ```cshtml
-        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-    ```
+```cshtml
+    @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+```
 
 2. 在 `_Layout.cshtml` 中，将 `HtmlHelper` 插入到 `<head>` 节的末尾、任何其他脚本的前面。 若要从页面报告任何自定义 JavaScript 遥测数据，请将其注入到此片段的后面：
 
-    ```cshtml
-        @Html.Raw(JavaScriptSnippet.FullScript)
-        </head>
-    ```
-    
+```cshtml
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    </head>
+```
+
 从 SDK v2.14 开始，除了使用 `FullScript` 之外，还可以使用 `ScriptBody`。 如果需要控制 `<script>` 标记以设置内容安全策略，请使用此标记：
 
 ```cshtml
@@ -183,7 +184,7 @@ ms.locfileid: "88936514"
 
 ## <a name="configure-the-application-insights-sdk"></a>配置 Application Insights SDK
 
-可以自定义适用于 ASP.NET Core 的 Application Insights SDK 以更改默认配置。 Application Insights SDK ASP.NET 的用户可以使用 `ApplicationInsights.config` 或通过修改 `TelemetryConfiguration.Active` 来熟悉配置更改。 对于 ASP.NET Core，需以不同的方式更改配置。 使用 ASP.NET Core 的内置[依赖项注入](/aspnet/core/fundamentals/dependency-injection)将 ASP.NET Core SDK 添加到应用程序并对其进行配置。 除非另有指示，否则几乎所有的配置更改都是在 `Startup.cs` 类的 `ConfigureServices()` 方法中完成的。 以下部分提供了详细信息。
+可以自定义适用于 ASP.NET Core 的 Application Insights SDK 以更改默认配置。 Application Insights SDK ASP.NET 的用户可以使用 `ApplicationInsights.config` 或通过修改 `TelemetryConfiguration.Active` 来熟悉配置更改。 对于 ASP.NET Core，几乎所有的配置更改都是在类的方法中完成的 `ConfigureServices()` `Startup.cs` ，除非你有其他定向。 以下部分提供了详细信息。
 
 > [!NOTE]
 > 在 ASP.NET Core 应用程序中，不支持通过修改 `TelemetryConfiguration.Active` 来更改配置。
@@ -221,8 +222,25 @@ public void ConfigureServices(IServiceCollection services)
 |EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（默认间隔为 15 分钟）发送名为“HeartbeatState”的自定义指标，其中包含有关运行时等的信息，例如 .NET 版本、Azure 环境信息（如果适用）等。 | 是
 |AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序 - 一个 TelemetryProcessor，在采样发生之前发送有关请求/依赖项的聚合前指标。 | 是
 |RequestCollectionOptions.TrackExceptions | 启用/禁用请求收集模块的未经处理的异常跟踪报告。 | 在 NETSTANDARD2.0 中为 false（因为异常是通过 ApplicationInsightsLoggerProvider 跟踪的），否则为 true。
+|EnableDiagnosticsTelemetryModule | 启用/禁用 `DiagnosticsTelemetryModule` 。 禁用此项将导致忽略以下设置; `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | 是
 
 有关最新列表，请参阅 [`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
+
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Applicationinsights.config 的配置建议 AspNetCore SDK 2.15.0-beta3 &
+
+从 Applicationinsights.config. AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) 开始，建议使用配置中提供的每个设置 `ApplicationInsightsServiceOptions` ，包括使用应用程序实例的 instrumentationkey `IConfiguration` 。 设置必须位于 "Applicationinsights.config" 部分下，如以下示例中所示。 中来自 appsettings.js的以下部分配置检测密钥，同时还禁用自适应采样和性能计数器集合。
+
+```json
+{
+    "ApplicationInsights": {
+    "InstrumentationKey": "putinstrumentationkeyhere",
+    "EnableAdaptiveSampling": false,
+    "EnablePerformanceCounterCollectionModule": false
+    }
+}
+```
+
+如果 `services.AddApplicationInsightsTelemetry(aiOptions)` 使用，则此将重写中的设置 `Microsoft.Extensions.Configuration.IConfiguration` 。
 
 ### <a name="sampling"></a>采样
 
@@ -473,4 +491,3 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [使用 API](./api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
 * 使用[可用性测试](./monitor-web-app-availability.md)从世界各地不断检查应用。
 * [ASP.NET Core 中的依赖项注入](/aspnet/core/fundamentals/dependency-injection)
-

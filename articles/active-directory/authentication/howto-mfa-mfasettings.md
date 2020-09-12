@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179397"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023833"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -25,7 +25,7 @@ ms.locfileid: "89179397"
 
 Azure 门户中提供以下 Azure 多重身份验证设置：
 
-| 功能 | 描述 |
+| 功能 | 说明 |
 | ------- | ----------- |
 | [帐户锁定](#account-lockout) | 如果行中拒绝过多的身份验证尝试次数过多，请暂时锁定帐户以使用 Azure 多重身份验证。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 阻止特定用户接收 Azure 多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户在被阻止或被手动解除阻止时，将在90天内保持被阻止。 |
@@ -242,7 +242,10 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 
 如果你的组织部署 NPS 扩展，向本地应用程序提供 MFA，请注意源 IP 地址将始终显示为身份验证尝试流经的 NPS 服务器。
 
-|Azure AD 租户类型 |受信任的 IP 功能选项 | |：---|：---| 双重 |托管 |**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 最多可以配置50个受信任的 IP 范围。 ||联合 |**所有联合用户**：从组织内部登录的所有联合用户都可以绕过多重身份验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 |
+| Azure AD 租户类型 | 受信任的 IP 功能选项 |
+|:--- |:--- |
+| 托管 |**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 最多可以配置50个受信任的 IP 范围。|
+| 联合 |**所有联合用户**：从组织内部登录的所有联合用户都可以绕过多重身份验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 ip 地址范围**：管理员指定一个 ip 地址范围，该范围可以为从公司 intranet 登录的用户绕过多重身份验证。 |
 
 受信任的 IP 绕过只能从公司 intranet 内部使用。 如果选择 " **所有联合用户** " 选项，并且用户从公司 intranet 外部登录，则用户必须使用多重身份验证进行身份验证。 即使用户提供了 AD FS 声明，验证过程也相同。
 

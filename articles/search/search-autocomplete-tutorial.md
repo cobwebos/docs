@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011573"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660268"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>向客户端应用添加自动完成和建议
 
@@ -139,9 +139,11 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Suggest 函数
 
-如果使用 C# 和 MVC 应用程序，可以在 Controllers 目录下的 HomeController.cs 文件中为建议的结果创建类****。 在 .NET 中，Suggest 函数基于 [DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)。
+如果使用 C# 和 MVC 应用程序，可以在 Controllers 目录下的 HomeController.cs 文件中为建议的结果创建类****。 在 .NET 中，Suggest 函数基于 [DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)。 有关 .NET SDK 的详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](./search-howto-dotnet-sdk.md)。
 
-`InitSearch` 方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关 .NET SDK 的详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](./search-howto-dotnet-sdk.md)。
+`InitSearch` 方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters)类的属性确定在结果中搜索和返回哪些字段、匹配项的数量，以及是否使用模糊匹配。 
+
+对于自动完成，模糊匹配仅限于一次 (一个省略或错放字符) 的编辑距离。 请注意，自动完成查询中的模糊匹配有时可能会产生意外的结果，具体取决于索引大小及其分片的方式。 有关详细信息，请参阅 [分区和分片的概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -250,5 +252,5 @@ Autocomplete 函数采用搜索字词输入。 该方法创建 [AutoCompletePara
 访问以下链接，获取端到端的说明或演示上述两种“边键入边搜索”体验的代码。 这两个代码示例都包含建议和自动完成的混合实现。
 
 + [教程：使用 C# 创建你的第一个应用（第 3 课）](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C# 代码示例：azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [C# 代码示例：azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
 + [同时采用了 C# 和 JavaScript 以及 REST 的代码示例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

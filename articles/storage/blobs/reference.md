@@ -3,17 +3,17 @@ title: Azure Blob 存储参考
 description: 查找 Azure Blob 存储 API 参考、自述文件和客户端库包。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 477170cf3c2bab54efc5ef74495f39fb89f62c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8e4cada8ac2570fa32d55e35cbcdb214d5b5188
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976687"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018150"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob 存储参考
 
@@ -21,75 +21,75 @@ ms.locfileid: "84976687"
 
 ## <a name="net-client-libraries"></a>.NET 客户端库
 
-下表列出了 Azure Blob 存储 .NET Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 .NET API 的参考文档和示例文档。
 
-|  Version  | 参考文档 | 程序包 | 快速入门 |
+|  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [适用于 .NET 的 Azure Blob 存储客户端库](/dotnet/api/overview/azure/storage.blobs-readme) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12](/azure/storage/blobs/storage-quickstart-blobs-dotnet) |
-| 11. x | [Microsoft. Blob 命名空间](/dotnet/api/microsoft.azure.storage.blob) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11](/azure/storage/blobs/storage-quickstart-blobs-dotnet-legacy) |
+| 11.x | [Microsoft.Azure.Storage.Blob 命名空间](/dotnet/api/microsoft.azure.storage.blob) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11](/azure/storage/blobs/storage-quickstart-blobs-dotnet-legacy) |
 
 ### <a name="storage-management"></a>存储管理
 
-下表列出了 Azure 存储管理 .NET Api 的参考文档。
+下表列出了 Azure 存储管理 .NET API 的参考文档。
 
-|  Version  | 参考文档 | 程序包 |
+|  版本  | 参考文档 | 程序包 |
 | :-------: | ----------------------- | ------- |
-| 1600 | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
+| 16.x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
 
 ### <a name="data-movement"></a>数据移动
 
-下表列出了 Azure 存储数据移动 .NET Api 的参考文档。
+下表列出了 Azure 存储数据移动 .NET API 的参考文档。
 
-|  Version  | 参考文档 | 程序包 |
+|  版本  | 参考文档 | 程序包 |
 | :-------: | ----------------------- | ------- |
 | 1.x | [数据移动](/dotnet/api/microsoft.azure.storage.datamovement) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) |
 
 ## <a name="java-client-libraries"></a>Java 客户端库
 
-下表列出了 Azure Blob 存储 Java Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 Java API 的参考文档和示例文档。
 
-|  Version  | 参考文档 | 程序包 | 快速入门 |
+|  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure 存储-Blob](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [快速入门：使用 Java v12 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-java) |
-| 推进 | [".com"。](/java/api/com.microsoft.azure.storage.blob) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [快速入门：使用 Java v8 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
+| 12.x | [Azure 存储 - Blob](/java/api/overview/azure/storage-blob-readme) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [快速入门：使用 Java v12 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-java) |
+| 8.x | [com.microsoft.azure.storage.blob](/java/api/com.microsoft.azure.storage.blob) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [快速入门：使用 Java v8 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
 
 ### <a name="storage-management"></a>存储管理
 
-下表列出了 Azure 存储管理 Java Api 的参考文档。
+下表列出了 Azure 存储管理 Java API 的参考文档。
 
-|  Version  | 参考文档 | 程序包 |
+|  版本  | 参考文档 | 程序包 |
 | :-------: | ----------------------- | ------- |
-| 0.9. x | [".com"。](/java/api/overview/azure/storage/management) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-svc-mgmt-storage) |
+| 0.9.x | [com.microsoft.azure.management.storage](/java/api/overview/azure/storage/management) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-svc-mgmt-storage) |
 
 ## <a name="python-client-libraries"></a>Python 客户端库
 
-下表列出了 Azure Blob 存储 Python Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 Python API 的参考文档和示例文档。
 
-|  Version  | 参考文档 | 程序包 | 快速入门 |
+|  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [用于 Python 的 Azure 存储客户端库 v12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [包（PyPI）](https://pypi.org/project/azure-storage-blob/) | [快速入门：使用 Python v12 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-python) |
-| 2.x | [用于 Python 的 Azure 存储客户端库 v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [包（PyPI）](https://pypi.org/project/azure-storage-blob/2.1.0/) | [快速入门：使用 Python v2.1 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+| 12.x | [适用于 Python 的 Azure 存储客户端库 v12](/azure/developer/python/sdk/storage/overview) | [包 (PyPI)](https://pypi.org/project/azure-storage-blob/) | [快速入门：使用 Python v12 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-python) |
+| 2.x | [适用于 Python 的 Azure 存储客户端库 v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [包 (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [快速入门：使用 Python v2.1 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript 客户端库
 
-下表列出了 Azure Blob 存储 JavaScript Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 JavaScript API 的参考文档和示例文档。
 
-|  Version  | 参考文档 | 程序包 | 快速入门 |
+|  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure 存储 Blob JavaScript 的客户端库](/javascript/api/overview/azure/storage-blob-readme) | [包（npm）](https://www.npmjs.com/package/@azure/storage-blob) | [快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [快速入门：在浏览器中使用 JavaScript v12 SDK 管理 Blob](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
-| 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [包（npm）](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [快速入门：在 Node.js中管理包含 JavaScript v10 SDK 的 blob](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [快速入门：在浏览器中使用 JavaScript v10 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+| 12.x | [适用于 JavaScript 的 Azure 存储 Blob 客户端库](/javascript/api/overview/azure/storage-blob-readme) | [包 (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [快速入门：在浏览器中使用 JavaScript v12 SDK 管理 Blob](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
+| 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [包 (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [快速入门：在 Node.js 中使用 JavaScript v10 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [快速入门：在浏览器中使用 JavaScript v10 SDK 管理 blob](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
 
 ## <a name="rest-apis"></a>REST API
 
-下表列出了 Azure Blob 存储 REST Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 REST API 的参考文档和示例文档。
 
 | 参考文档 | 概述 |
 | ----------------------- | -------- |
 | [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api) | [Blob 服务概念](/rest/api/storageservices/blob-service-concepts) |
 
-### <a name="other-rest-reference"></a>其他 REST 引用
+### <a name="other-rest-reference"></a>其他 REST 参考
 
-- [Azure 存储导入-导出 REST API](/rest/api/storageimportexport/)有助于管理导入/导出作业，以便将数据传入或传出 Blob 存储。
+- [Azure 存储导入和导出 REST API](/rest/api/storageimportexport/) 可帮助你管理导入/导出作业，这些作业将数据传输到 Blob 存储或从 Blob 存储传输数据。
 
 ## <a name="other-languages-and-platforms"></a>其他语言和平台
 
@@ -103,12 +103,13 @@ ms.locfileid: "84976687"
 
 ## <a name="powershell"></a>PowerShell
 
-下表包含指向引用内容的最新版本的链接。
+下表包含指向参考内容的最新版本的链接。
 
-| Version | 平台 |
+| 版本 | 平台 |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

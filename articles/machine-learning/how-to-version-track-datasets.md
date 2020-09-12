@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d57122ee98eb6612f43d09ecff4797038ceaf5f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fe56427e93650fbaca397bbbb27d32f730b1f7f3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654083"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651769"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "88654083"
 
 对于本教程的内容，你需要：
 
-- [安装了适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 此 SDK 包括 [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) 包。
+- [安装了适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 此 SDK 包括 [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true) 包。
     
 - [Azure 机器学习工作区](concept-workspace.md)。 通过运行以下代码检索现有的工作区，或者[创建新的工作区](how-to-manage-workspace.md)。
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
+默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
 
 下面的代码获取 `titanic_ds` 数据集的版本 1。
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 对于每个机器学习试验，可以通过试验 `Run` 对象轻松跟踪用作输入的数据集。
 
-下面的代码使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) 方法跟踪试验运行时使用哪些输入数据集：
+下面的代码使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) 方法跟踪试验运行时使用哪些输入数据集：
 
 ```Python
 # get input datasets

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588815"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651846"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>导入 Azure Key Vault 证书常见问题
 
@@ -54,7 +54,7 @@ ms.locfileid: "88588815"
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>如何解决 "错误类型：创建证书时的冲突"？
     
-每个证书名称必须是唯一的。 与另一个证书同名的证书可能处于软删除状态。 此外，根据 Azure Key Vault 中 [证书的撰写](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) ，如果密钥保管库中有另一个密钥或机密与你要为证书指定的名称相同，则证书创建将会失败，并且你需要删除此密钥或机密，或者对证书使用不同的名称。 
+每个证书名称必须是唯一的。 具有相同名称的证书可能处于软删除状态。 此外，根据证书的 [组成](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)，在创建新证书时，它将创建一个具有相同名称的可寻址机密，因此，如果密钥保管库中的另一个密钥或机密与你要为证书指定的名称相同，则证书创建将会失败，并且你需要删除此密钥或机密，或者对证书使用不同的名称。 
 
 有关详细信息，请参阅 [获取删除的证书操作](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "88588815"
 是的，你可以从任何 CA 导入证书，但你的密钥保管库将无法自动续订这些证书。 你可以设置提醒以获得有关证书过期的通知。
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>如果导入合作伙伴 CA 颁发的证书，自动续订功能是否仍然有效？
-是的。 上传证书后，请确保在证书的颁发策略中指定 autorotation。 设置将一直有效，直到下一个周期或证书版本发布。
+可以。 上传证书后，请确保在证书的颁发策略中指定 autorotation。 设置将一直有效，直到下一个周期或证书版本发布。
 
 ### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>为什么看不到要 Key Vault 导入的应用服务证书？ 
 如果已成功导入证书，你应该可以通过转到 " **机密** " 窗格来确认证书。
