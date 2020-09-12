@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 09/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0c30d5c072c66e04b97cae2f88e4c8ef96b32779
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 30c64e4cf467f4e505327414e15b23ee2c6d1543
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116219"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611659"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
@@ -70,7 +70,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 3. 将技术配置文件元数据 WantsEncryptedAssertions 设为 `true`。
 4. 使用新的 Azure AD B2C 技术配置文件元数据更新身份提供程序。 你应该会看到 KeyDescriptor，其中的“使用”属性设置为包含你的证书的公钥的 `encryption`。
 
-以下示例显示了用于加密的 SAML 元数据的密钥描述符部分：
+以下示例显示了用于加密的 SAML 元数据的“密钥描述符”部分：
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -120,7 +120,7 @@ SAML 断言：
 - issuerUserId 声明映射到 assertionSubjectName 声明。
 - **first_name** 声明已映射到 **givenName** 声明。
 - **last_name** 声明已映射到 **surname** 声明。
-- **DisplayName**声明映射到**名称**声明。
+- displayName 声明已映射到 name 声明。
 - 没有名称映射的 **email** 声明。
 
 技术配置文件还会返回标识提供者不返回的声明：
@@ -152,7 +152,6 @@ SAML 断言：
 | WantsSignedAssertions | 否 | 指示技术配置文件是否要求对所有传入断言进行签名。 可能的值：`true` 或 `false`。 默认值为 `true`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的所有断言部分 `saml:Assertion` 必须进行签名。 如果该值设置为 `false`，则身份提供程序不应对断言进行签名，但即使这样做，Azure AD B2C 也不会验证签名。 此元数据还控制元数据标记的 WantsAssertionsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果禁用断言验证，则还可能想要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned）。 |
 | ResponsesSigned | 否 | 可能的值：`true` 或 `false`。 默认值为 `true`。 如果该值设置为 `false`，则身份提供程序不应对 SAML 响应进行签名，但即使这样做，Azure AD B2C 也不会验证签名。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的 SAML 响应已签名，且必须进行验证。 如果禁用 SAML 响应验证，则还可能想要禁用断言签名验证（有关详细信息，请参阅 WantsSignedAssertions）。 |
 | WantsEncryptedAssertions | 否 | 指示技术配置文件是否要求对所有传入断言进行加密。 可能的值：`true` 或 `false`。 默认值为 `false`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的断言必须进行签名，并且需要指定 SamlAssertionDecryption 加密密钥。 如果该值设置为 `true`，则 Azure AD B2C 技术配置文件的元数据要包括“加密”部分。 身份提供程序读取元数据并使用 Azure AD B2C 技术配置文件的元数据中提供的公钥加密 SAML 响应断言。 如果启用断言加密，则还可能需要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned）。 |
-| IdpInitiatedProfileEnabled | 否 | 指示是否启用由 SAML 身份提供程序配置文件启动的单一登录会话配置文件。 可能的值：`true` 或 `false`。 默认为 `false`。 在由身份提供程序启动的流程中，用户在外部进行身份验证，并向 Azure AD B2C 发送未经请求的响应，然后 Azure AD B2C 使用令牌，执行业务流程步骤，然后向信赖方应用发送响应。 |
 | NameIdPolicyFormat | 否 | 指定要使用的名称标识符上的约束，使之代表请求的主题。 如果省略此项，则可使用请求的主题对应的标识提供者支持的任何类型的标识符。 例如，`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`。 **NameIdPolicyFormat** 可以与 **NameIdPolicyAllowCreate** 配合使用。 查看标识提供者的文档，了解哪些名称 ID 策略受支持。 |
 | NameIdPolicyAllowCreate | 否 | 使用 **NameIdPolicyFormat** 时，也可指定 **NameIDPolicy** 的 `AllowCreate` 属性。 此元数据的值为 `true` 或 `false`，表示是否允许标识提供者在登录流程中创建新帐户。 请查看你的身份提供程序的文档，以获取有关如何执行此操作的指导。 |
 | AuthenticationRequestExtensions | 否 | Azure AD BC 和标识提供者认可的可选协议消息扩展元素。 此扩展以 XML 格式呈现。 将 XML 数据添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` 中。 检查标识提供者的文档，看扩展元素是否受支持。 |
@@ -164,7 +163,7 @@ SAML 断言：
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 属性 |必须 | 说明 |
+| 属性 |必需 | 说明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |是 | X509 证书（RSA 密钥集），用于解密 SAML 消息。 此证书应由身份提供程序提供。 Azure AD B2C 使用此证书解密身份提供程序发送的数据。 |
@@ -172,10 +171,10 @@ SAML 断言：
 
 ## <a name="saml-entityid-customization"></a>SAML entityID 自定义
 
-如果有多个依赖于不同 entityID 值的 SAML 应用程序，则可以覆盖 `issueruri` 信赖方文件中的值。 为此，请将技术配置文件从基本文件复制到 "Saml2AssertionIssuer" ID 并覆盖 `issueruri` 值。
+如果有多个依赖于不同 entityID 值的 SAML 应用程序，可以重写信赖方文件中的 `issueruri` 值。 为此，请从基础文件复制 ID 为“Saml2AssertionIssuer”的技术配置文件，重写 `issueruri` 值。
 
 > [!TIP]
-> `<ClaimsProviders>`从基中复制节，并在声明提供程序中保留这些元素： `<DisplayName>Token Issuer</DisplayName>` 、 `<TechnicalProfile Id="Saml2AssertionIssuer">` 和 `<DisplayName>Token Issuer</DisplayName>` 。
+> 从基础文件中复制 `<ClaimsProviders>` 节，并在声明提供程序中保留这些元素：`<DisplayName>Token Issuer</DisplayName>`、`<TechnicalProfile Id="Saml2AssertionIssuer">` 和 `<DisplayName>Token Issuer</DisplayName>`。
  
 示例：
 

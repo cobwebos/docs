@@ -3,21 +3,17 @@ title: 自动修复 Azure Kubernetes 服务 (AKS) 节点
 description: 了解节点自动修复功能，以及 AKS 如何修复损坏的工作器节点。
 services: container-service
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 7fcb7b380f3694aaf34328019c3e09f5157c9e64
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/24/2020
+ms.openlocfilehash: 781a1ffebb40b0cce9f18699d308db90633e8626
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542036"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490099"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes 服务 (AKS) 节点自动修复
 
-AKS 会持续检查工作器节点的运行状况，在节点运行不正常的情况下对其进行自动修复。 本文档向操作员介绍了自动节点修复功能的运行方式。 除了 AKS 修复，Azure VM 平台还会对遇到问题的[虚拟机执行维护][vm-updates]。 AKS 和 Azure VM 协同工作，以最大程度地减少群集的服务中断次数。
-
-## <a name="limitations"></a>限制
-
-* 目前不支持 Windows 节点池。
+AKS 会持续检查工作器节点的运行状况，在节点运行不正常的情况下对其进行自动修复。 本文档通知操作员有关自动节点修复功能在 Windows 和 Linux 节点上的行为方式。 除了 AKS 修复，Azure VM 平台还会对遇到问题的[虚拟机执行维护][vm-updates]。 AKS 和 Azure VM 协同工作，以最大程度地减少群集的服务中断次数。
 
 ## <a name="how-aks-checks-for-unhealthy-nodes"></a>AKS 如何检查运行不正常的节点
 
@@ -37,9 +33,13 @@ kubectl get nodes
 > [!Note]
 > AKS 使用用户帐户“aks-remediator”启动修复操作。
 
-如果根据上述规则将某个节点确定为不正常，并且连续10分钟仍保持不正常状态，AKS 将重新启动该节点。 如果在初始修复操作后节点仍然运行不正常，则 AKS 工程师将调查其他修正。
-  
-如果在运行状况检查期间多个节点运行不正常，则在开始另一个修复之前，将单独修复每个节点。
+如果某个节点不正常（根据上述规则），并且连续10分钟仍保持不正常，请执行以下操作。
+
+1. 重新启动节点
+1. 如果重新启动不成功，则重新映像节点
+1. 如果重置映像失败，请创建新节点并重新制作其映像
+
+如果任何操作都没有成功，则 AKS 工程师将调查其他修正。 如果在运行状况检查期间多个节点运行不正常，则在开始另一个修复之前，将单独修复每个节点。
 
 ## <a name="next-steps"></a>后续步骤
 

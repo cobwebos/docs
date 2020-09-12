@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020280"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613923"
 ---
 # <a name="entities"></a>实体
 
@@ -21,7 +21,7 @@ ms.locfileid: "89020280"
 
 实体具有由位置、旋转和比例定义的转换。 实体本身没有任何可观测的功能。 而行为是通过附加到实体的组件添加的。 例如，附加 [CutPlaneComponent](../overview/features/cut-planes.md) 将在实体位置创建裁切平面。
 
-实体本身的最重要方面是层次结构和产生的分层转换。 例如，将多个实体作为子级附加到共享的父实体时，可以通过更改父实体的转换，同时移动、旋转和缩放所有这些实体。
+实体本身的最重要方面是层次结构和产生的分层转换。 例如，将多个实体作为子级附加到共享的父实体时，可以通过更改父实体的转换，同时移动、旋转和缩放所有这些实体。 此外，实体的 `enabled` 状态可用于关闭层次结构中完整子关系图的可见性和对光线转换的响应。
 
 实体由其父级唯一拥有，这意味着，当父级被 `Entity.Destroy()` 销毁时，其子级和所有连接的[组件](components.md)也会被销毁。 因此，从场景中删除模型（由 `AzureSession.Actions.LoadModelAsync()` 或其 SAS 变体 `AzureSession.Actions.LoadModelFromSASAsync()` 返回）可以通过在模型的根节点上调用 `Destroy` 来实现。
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>查询空间边界
 
 边界查询是使用一个实体作为根实体在整个对象层次结构上操作的异步调用。 请参阅有关[对象边界](object-bounds.md)的专用章节。
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 即使对象不包含任何元数据，查询也将成功。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # 实体类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C # RemoteManager CreateEntity ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C + + 实体类](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C + + RemoteManager：： CreateEntity ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653267"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611620"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>在 Azure 虚拟机上具有 SQL Server 的故障转移群集实例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 **优势**： 
 - 适用于希望迁移到 Azure，同时保持高可用性和灾难恢复 (HADR) 体系结构的应用程序。 
 - 由于 SCSI 永久保留 (SCSI PR) 支持，因此可将群集的应用程序迁移到 Azure。 
-- 支持共享 Azure 高级 SSD 适用于所有版本的 SQL Server 并共享 Azure Ultra 磁盘存储 SQL Server 2019。 
+- 支持共享 Azure 高级 SSD 和 Azure Ultra 磁盘存储。
 - 可以使用单个共享磁盘或条带化多个共享磁盘来创建共享的存储池。 
 - 支持 Filestream。
 
@@ -153,10 +153,11 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 
 完全扩展支持自动备份、修补和高级门户管理等功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Server Vm 将不起作用。
 
-### <a name="msdtc"></a>MSDTC   
-Azure 虚拟机支持 Windows Server 2019 上的 MSDTC 与群集共享卷上的存储 (CSV) 和 [Azure 标准负载均衡器](../../../load-balancer/load-balancer-standard-overview.md)。
+### <a name="msdtc"></a>MSDTC 
 
-在 Azure 虚拟机上，Windows Server 2016 或更早版本不支持 MSDTC，原因如下：
+Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC) ，并在群集共享卷 (CSV) 和 [azure 标准负载均衡器](../../../load-balancer/load-balancer-standard-overview.md) 上，或 SQL Server 使用 azure 共享磁盘的 vm 上。 
+
+在 Azure 虚拟机上，Windows Server 2016 或更早版本的 MSDTC 不支持群集共享卷，原因如下：
 
 - 无法将群集 MSDTC 资源配置为使用共享存储。 在 Windows Server 2016 上，如果创建 MSDTC 资源，即使存储可用，它也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
 - 基本负载均衡器不会处理 RPC 端口。

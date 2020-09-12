@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930666"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645583"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -231,9 +231,9 @@ az storage share create \
 > 文件共享的名称必须是全部小写。 若要全面且详细地了解如何为文件共享和文件命名，请参阅 [命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 ### <a name="create-a-hot-or-cool-file-share"></a>创建热文件共享或冷文件共享
-常规用途 v2 中的文件共享 ** (GPv2) 存储帐户** 可以包含事务优化、热或冷文件共享 (或其) 混合。 事务优化的共享在所有 Azure 区域中均可用，但热和冷文件共享仅 [在区域的一个子集内](storage-files-planning.md#storage-tiers)可用。 您可以使用 Azure PowerShell 预览模块或 Azure CLI 创建热或冷文件共享。 
+**常规用途 v2 (GPv2) 存储帐户**可以包含事务优化、热或冷文件共享 (或) 混合使用。 事务优化的共享在所有 Azure 区域中均可用，但热和冷文件共享仅 [在区域的一个子集内](storage-files-planning.md#storage-tiers)可用。 您可以使用 Azure PowerShell 预览模块或 Azure CLI 创建热或冷文件共享。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure 门户尚不支持创建热和冷文件共享，或者将现有事务优化文件共享移动到 "热" 或 "冷"。 请查看使用 PowerShell 或 Azure CLI 创建文件共享的说明。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

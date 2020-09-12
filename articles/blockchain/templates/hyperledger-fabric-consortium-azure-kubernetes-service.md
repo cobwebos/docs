@@ -1,17 +1,17 @@
 ---
-title: 'Azure Kubernetes Service 上的 Hyperledger Fabric 联合会 (AKS) '
+title: 在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d23a0120aafb4dc3e6952b40959a20f9a3456614
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226858"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651558"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 上的 Hyperledger Fabric 联合会 (AKS) 
+# <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
 
 可以使用 Azure Kubernetes Service (AKS) 模板上的 Hyperledger Fabric 在 Azure 上部署和配置 Hyperledger Fabric 联合会网络。
 
@@ -334,7 +334,7 @@ CHANNEL_NAME=<channelName>
 ```
 此命令会在环境变量中对等组织集的所有对等节点上安装 chaincode `ORGNAME` 。 如果两个或多个对等组织在你的频道中，并且你想要在所有它们上安装 chaincode，请为每个对等组织单独运行此命令。  
 
-执行以下步骤:  
+执行以下步骤：  
 
 1.  `ORGNAME`根据设置并 `USER_IDENTITY` `peerOrg1` 运行 `./azhlf chaincode install` 命令。  
 2.  `ORGNAME`根据设置并 `USER_IDENTITY` `peerOrg2` 运行 `./azhlf chaincode install` 命令。  
@@ -359,7 +359,7 @@ CHANNEL_NAME=<channelName>
 ```
 
 `<collectionConfigJSONFilePath>`部分是 JSON 文件的路径，该文件包含为私有数据 chaincode 的实例化定义的集合。 可在以下路径找到一个相对于 *azhlfTool* 目录的示例集合的配置 JSON 文件： `./samples/chaincode/src/private_marbles/collections_config.json` 。
-`<transientArgs>`以字符串格式传递为有效的 JSON。 对任何特殊字符进行转义。 例如：`'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
+`<transientArgs>`以字符串格式传递为有效的 JSON。 对任何特殊字符进行转义。 例如： `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > 从通道中的任意一个对等组织运行命令一次。 成功将事务提交到 orderer 后，orderer 会将此事务分发给通道中的所有对等组织。 然后，将在通道中的所有对等组织上的所有对等节点上实例化 Chaincode。  
@@ -391,7 +391,7 @@ CHANNEL_NAME=<channelName>
 
 分别在和中传递查询函数名称和空格分隔的参数列表  `<queryFunction>`    `<queryFuncArgs>`   。 再次获取 chaincode_example02。 chaincode 作为参考，若要查询世界状态的 "a" 的值，请将设置  `<queryFunction>`   为  `query` 和  `<queryArgs>` `"a"` 。  
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 运行以下命令以查找模板部署的版本。
 

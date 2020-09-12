@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 62da43879b581d6737eee1310cf642e9692051de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d7701e215011165ffef33353de7f9372b1142cf
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248439"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440739"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +34,7 @@ ms.locfileid: "85248439"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建紧商业智能 (BI) 报告解决方案。
+数据工厂可以包含一个或多个数据管道。 管道是共同执行任务的活动的逻辑分组。 管道中的活动定义要对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，请使用第二个复制活动将输出数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库，) 在构建的商业智能 (BI) 报表解决方案之上。
 
 每个活动可获取零个或多个输入[数据集](data-factory-create-datasets.md)，并生成一个或多个输出[数据集](data-factory-create-datasets.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
 
@@ -42,7 +42,7 @@ ms.locfileid: "85248439"
 
 通过管道，可按集的形式而非单独管理活动。 例如，可部署、计划、暂停和继续执行管道，而不是单独处理管道中的活动。
 
-数据工厂支持两种类型的活动：数据移动活动和数据转换活动。 每个活动可以有零个或多个输入[数据集](data-factory-create-datasets.md)，并生成一个或多个输出数据集。
+数据工厂支持两种类型的活动：数据移动活动和数据转换活动。 每个活动可以有零个或多个输入 [数据集](data-factory-create-datasets.md) ，并生成一个或多个输出数据集。
 
 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 创建数据集后，可将其与管道中的活动一起使用。 例如，数据集可以是复制活动或 HDInsightHive 活动的输入/输出数据集。 有关数据集的详细信息，请参阅 [Azure 数据工厂中的数据集](data-factory-create-datasets.md)一文。
 
@@ -65,7 +65,7 @@ ms.locfileid: "85248439"
 如果需要将数据移入/移出复制活动不支持的数据存储，或要使用自己的逻辑转换数据，可以创建自定义 .NET 活动。**** 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
 
 ## <a name="schedule-pipelines"></a>计划管道
-管道仅在其**开始**时间和**结束**时间之间处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 若要了解如何在 Azure 数据工厂中计划和执行工作，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
+管道仅在其 **开始** 时间和 **结束** 时间之间处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 若要了解如何在 Azure 数据工厂中计划和执行工作，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
 
 ## <a name="pipeline-json"></a>管道 JSON
 让我们深入了解如何以 JSON 格式定义管道。 管道的泛型结构如下所示：
@@ -145,7 +145,7 @@ ms.locfileid: "85248439"
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| Property | 允许的值 | 默认值 | 描述 |
+| properties | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
@@ -156,7 +156,7 @@ ms.locfileid: "85248439"
 | longRetryInterval |TimeSpan |00:00:00 |长重试尝试之间的延迟 |
 
 ## <a name="sample-copy-pipeline"></a>复制管道示例
-在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](data-factory-data-movement-activities.md)将数据从 azure Blob 存储复制到 Azure SQL 数据库。
+在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中， [复制活动](data-factory-data-movement-activities.md) 将数据从 azure Blob 存储复制到 Azure SQL 数据库。
 
 ```json
 {
@@ -205,7 +205,7 @@ ms.locfileid: "85248439"
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
 * 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 有关在 JSON 中定义数据集的信息，请参阅[数据集](data-factory-create-datasets.md)文章。
-* 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 在 "[数据移动活动](#data-movement-activities)" 部分中，单击要用作源或接收器的数据存储，了解有关将数据移入/移出该数据存储的详细信息。
+* 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 在 " [数据移动活动](#data-movement-activities) " 部分中，单击要用作源或接收器的数据存储，了解有关将数据移入/移出该数据存储的详细信息。
 
 有关创建此管道的完整演练，请参阅[教程：将 Blob 存储中的数据复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
@@ -284,7 +284,7 @@ ms.locfileid: "85248439"
 
 本例中，Pipeline1 仅拥有一个活动，它将 Dataset1 作为输入，并生成 Dataset2 作为输出。 Pipeline2 同样仅拥有一个活动，它将 Dataset2 作为输入，并生成 Dataset3 作为输出。
 
-有关详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
+有关详细信息，请参阅 [计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 ## <a name="create-and-monitor-pipelines"></a>创建和监视管道
 可使用下列某个工具或 SDK 创建管道。
 
@@ -348,7 +348,7 @@ ms.locfileid: "85248439"
 
 * 不指定管道的**开始**和**结束**时间。
 * 指定输入和输出数据集的 **Availability**（**frequency** 和 **interval**），尽管数据工厂不使用该值。
-* “关系图”视图不显示一次性管道。 这是设计的行为。
+* “关系图”视图不显示一次性管道。 此行为是设计使然。
 * 一次性管道无法更新。 可对一次性管道执行克隆、重命名、更新属性，还可以对其部署以生成另外一个一次性管道。
 
 ## <a name="next-steps"></a>后续步骤

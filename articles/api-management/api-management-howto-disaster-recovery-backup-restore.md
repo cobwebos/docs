@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c0af87dc8e38c6d5184cec4614b47d2ae4a24ca
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830251"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458257"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -179,12 +179,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 #### <a name="what-is-not-backed-up"></a>不备份的内容
 -   用于创建分析报表的**用法数据** **不包括**在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
--   [自定义域 TLS/SSL](configure-custom-domain.md)证书
--   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括客户上传的中间或根证书
--   [虚拟网络](api-management-using-with-vnet.md)集成设置。
--   [托管标识](api-management-howto-use-managed-service-identity.md)配置。
--   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md)Configuration.
--   [协议和密码](api-management-howto-manage-protocols-ciphers.md)设置。
+-   [自定义域 TLS/SSL](configure-custom-domain.md) 证书
+-   [自定义 CA 证书](api-management-howto-ca-certificates.md) ，包括客户上传的中间或根证书
+-   [虚拟网络](api-management-using-with-vnet.md) 集成设置。
+-   [托管标识](api-management-howto-use-managed-service-identity.md) 配置。
+-   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md) Configuration.
+-   [协议和密码](api-management-howto-manage-protocols-ciphers.md) 设置。
 
 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 
@@ -234,7 +234,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 -   [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [使用逻辑应用自动执行 API 管理备份和还原](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API 管理：备份和还原配置](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+-   [Azure API 管理：备份和还原配置](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
      Stuart 详述的方法与官方指南不匹配，但非常有趣。 
 
 [backup an api management service]: #step1

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020297"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613935"
 ---
 # <a name="components"></a>组件
 
@@ -53,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 组件在创建时附加到实体。 之后不能将其迁移至其他实体。 使用 `Component.Destroy()` 显式删除组件，或者在组件的所有者实体被销毁时自动显式删除组件。
 
 一次只能向一个实体添加每个组件类型的一个实例。
@@ -61,6 +60,15 @@ lightComponent = nullptr;
 ## <a name="unity-specific"></a>Unity 特定
 
 Unity 集成具有其他扩展函数，用于与组件进行交互。 请参阅 [Unity 游戏对象和组件](../how-tos/unity/objects-components.md)。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # ComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C # RemoteManager CreateComponent ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [C # FindComponentOfType ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C + + ComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
+* [C + + RemoteManager：： CreateComponent ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [C + + Entity：： FindComponentOfType ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>后续步骤
 

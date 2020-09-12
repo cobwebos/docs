@@ -2,13 +2,13 @@
 title: 服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将服务总线队列和主题用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105687"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440790"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 服务总线是其中之一。 
@@ -62,9 +62,9 @@ az eventgrid event-subscription create \
 | aeg-data-version | <p>事件的数据版本。</p><p>示例：“1”。</p><p>对于“事件网格事件架构”，此属性表示数据版本；对于“云事件架构”，此属性不适用。</p> |
 
 ## <a name="message-headers"></a>消息标头
-将事件作为中转消息发送到服务总线队列或主题时，中转消息的 `messageid` 是事件 ID。
+当将事件作为中转消息发送到服务总线队列或主题时， `messageid` 中转消息的是内部系统 ID。
 
-事件 ID 会在事件重新传递期间保留，这样就可以在服务总线实体上启用“重复项检测”，避免重复传递。 建议在服务总线实体上启用重复项检测持续时间，并将其设为事件的生存时间 (TTL) 或最大重试持续时间（以较长者为准）。
+消息的内部系统 ID 将在事件的前列中进行维护，以便您可以通过启用对服务总线实体的 **重复检测** 来避免重复传递。 建议在服务总线实体上启用重复项检测持续时间，并将其设为事件的生存时间 (TTL) 或最大重试持续时间（以较长者为准）。
 
 ## <a name="rest-examples-for-put"></a>REST 示例（适用于 PUT）
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852151"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614057"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "87852151"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>新的开发人员门户与旧版开发人员门户不兼容，因此不能自动迁移。 需要手动重新创建 (页面、文本、媒体文件) 的内容，并自定义新门户的外观。 有关指南，请参阅[开发人员门户教程](api-management-howto-developer-portal-customize.md)。
+> <a name="migrate-from-legacy"></a> 新的开发人员门户与旧版开发人员门户不兼容，因此不能自动迁移。 需要手动重新创建 (页面、文本、媒体文件) 的内容，并自定义新门户的外观。 有关指南，请参阅 [开发人员门户教程](api-management-howto-developer-portal-customize.md) 。
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> 托管版本和自承载版本
 
@@ -73,25 +73,25 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 ### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>如何从门户预览版迁移？
 
-你已使用开发人员门户预览版在 API 管理服务中预配了预览内容。 为了提供更好的用户体验，默认内容已在正式版中进行重大修改。 正式版中还包括新的小组件。
+首次启动开发人员门户预览版本时，你在 API 管理服务中预配了其默认内容的预览版本。 在公开发布的版本中，已显著修改了默认内容。 例如，默认内容的预览版本不包括登录页面中的 OAuth 按钮，它将使用不同的小组件来显示 Api，并依赖于构建开发人员门户页面的有限功能。 即使内容存在差异，门户的引擎 (包括基础小组件) 会在每次发布开发人员门户时自动更新。
 
-如果使用的是托管版本，请通过单击“操作”菜单部分中的“重置内容”来重置门户内容。  确认此操作会删除门户的所有内容并预配新的默认内容。 门户引擎已在 API 管理服务中自动更新。
+如果你根据内容的预览版本对门户进行了大量自定义，你可以继续按原样使用它，并在门户的页面上手动放置新的小组件。 否则，建议将门户内容替换为新的默认内容。
+
+若要重置托管门户中的内容，请单击 "**操作**" 菜单部分中的 "**重置内容**"。 此操作将删除门户的所有内容并预配新的默认内容。 你将丢失所有开发人员门户自定义项和更改。 **无法撤消此操作**。
 
 ![重置门户内容](media/api-management-howto-developer-portal/reset-content.png)
 
-如果使用的是自承载版本，请使用 GitHub 存储库中的 `scripts/cleanup.bat` 和 `scripts/generate.bat` 删除现有内容并预配新内容。 确保提前将门户代码升级到 GitHub 存储库中的最新版本。
+如果使用自承载版本，请 `scripts.v2/cleanup.bat` `scripts.v2/generate.bat` 从 GitHub 存储库运行和脚本，以删除现有内容并预配新内容。 请确保事先将门户的代码升级到 GitHub 存储库中的最新版本。
 
-如果不想要重置门户内容，可以考虑在整个页面中使用新的可用小组件。 现有的小组件已自动更新到最新版本。
-
-如果门户是宣布推出正式版后预配的，则它应已具有新的默认内容。 你无需在自己的一端执行任何操作。
+如果第一次在11月2019公开上市后首次访问门户，则该门户应已具有新的默认内容，无需进一步操作。
 
 ### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>门户是否包含旧版门户的所有功能？
 
-开发人员门户不再支持“应用程序”和“问题” 。
+开发人员门户不再支持使用 Facebook、Microsoft、Twitter 和 Google 作为标识提供程序的 *应用程序*、 *问题*和直接集成 (你可以改用 Azure AD B2C) 。
 
 ### <a name="has-the-legacy-portal-been-deprecated"></a>旧门户是否已弃用？
 
-旧的开发人员和发布者门户现在是*旧*功能，它们仅接收安全更新。 新功能只会在新开发人员门户中实现。
+旧的开发人员和发布者门户现在是 *旧* 功能，它们仅接收安全更新。 新功能只会在新开发人员门户中实现。
 
 旧门户弃用时，我们会另行通告。 若有问题、疑虑或意见，请提出[相关的 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/121)。
 
@@ -107,7 +107,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 ### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>如何实现从托管版本迁移到自承载版本？
 
-请参阅[GitHub 上的开发人员门户存储库的 Wiki 部分][2]中的详细文章。
+请参阅 [GitHub 上的开发人员门户存储库的 Wiki 部分][2]中的详细文章。
 
 ### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>能否在一个 API 管理服务中有多个开发人员门户？
 

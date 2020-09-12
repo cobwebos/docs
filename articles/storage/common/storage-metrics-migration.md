@@ -4,21 +4,21 @@ description: 了解如何从存储分析指标（经典指标）转换到 Azure 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/04/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f0357c153a068b1f857e4595fa17a9ac6bc22104
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078242"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500260"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>转换到 Azure Monitor 中的指标
 
-**2023 年8月 31**日存储分析度量值，也称为*经典指标*。 如果使用经典指标，请确保在该日期之前过渡到 Azure Monitor 中的指标。 本文可帮助你进行转换。
+**2023 年8月 31**日存储分析度量值，也称为*经典指标*。 有关详细信息，请参阅 [官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果使用经典指标，请确保在该日期之前过渡到 Azure Monitor 中的指标。 本文可帮助你进行转换。 
 
 ## <a name="steps-to-complete-the-transition"></a>完成转换的步骤
 

@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020263"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613890"
 ---
 # <a name="graphics-binding"></a>图形绑定
 
@@ -115,7 +115,6 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
     //...
 }
 ```
-
 
 上面的 `ptr` 必须是一个指向本机 `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` 对象的指针，该对象定义了表示 API 中坐标的世界空间坐标系统。
 
@@ -231,6 +230,17 @@ else
     ...
 }
 ```
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # RemoteManagerStatic StartupRemoteRendering ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanagerstatic.startupremoterendering)
+* [C # GraphicsBinding 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbinding)
+* [C # GraphicsBindingWmrD3d11 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbindingwmrd3d11)
+* [C # GraphicsBindingSimD3d11 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11)
+* [C + + RemoteRenderingInitialization 结构](https://docs.microsoft.com/cpp/api/remote-rendering/remoterenderinginitialization)
+* [C + + GraphicsBinding 类](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbinding)
+* [C + + GraphicsBindingWmrD3d11 类](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
+* [C + + GraphicsBindingSimD3d11 类](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingsimd3d11)
 
 ## <a name="next-steps"></a>后续步骤
 

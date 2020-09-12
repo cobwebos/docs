@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011032"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461997"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "89011032"
 ## <a name="introduction"></a><a name="introduction"></a>介绍
 本指南演示如何使用 Azure 存储客户端库中的 Azure 存储分析、客户端日志记录等功能及其他第三方工具，确定、诊断和排查与 Azure 存储相关的问题。
 
-![此图显示客户端应用程序与 Azure 存储服务之间的信息流。][1]
+![显示客户端应用程序与 Azure 存储服务之间的信息流的示意图。][1]
 
 本指南的主要目标受众是开发使用 Azure 存储服务的联机服务的开发人员以及负责管理此类联机服务的 IT 专业人员。 本指南的目标是：
 
@@ -114,7 +114,7 @@ ms.locfileid: "89011032"
 
 下图中的图表说明了对小时指标进行的求平均值操作为何会隐藏活动中的峰值。 小时度量值似乎显示稳定的请求速率，而分钟度量值却显示了实际发生的波动。
 
-![显示每小时度量值的平均值如何隐藏活动的图表。][3]
+![一张图表，其中显示了对每小时指标进行的求平均值操作如何可能隐藏活动达到峰值。][3]
 
 本节的剩余部分介绍应监视哪些度量值以及监视原因。
 
@@ -134,7 +134,7 @@ ms.locfileid: "89011032"
 >
 >
 
-若要帮助估算各种存储对象（如 Blob）的大小，请参阅博客文章[了解 Microsoft Azure 存储计费 - 带宽、事务和容量](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)。
+若要帮助估算各种存储对象（如 Blob）的大小，请参阅博客文章[了解 Microsoft Azure 存储计费 - 带宽、事务和容量](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>监视可用性
 应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性： **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
@@ -344,7 +344,7 @@ catch (StorageException storageException)
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>度量值显示高 AverageE2ELatency 和低 AverageServerLatency
 下面来自 [Azure 门户](https://portal.azure.com)监视工具的插图显示了一个示例，其中 **AverageE2ELatency** 明显高于 **AverageServerLatency**。
 
-![Azure 门户中的插图，其中显示了一个示例，其中 AverageE2ELatency 明显高于 AverageServerLatency。][4]
+![来自 Azure 门户的插图，其显示了一个示例，其中 AverageE2ELatency 明显高于 AverageServerLatency。][4]
 
 存储服务仅对成功的请求计算指标 **AverageE2ELatency**，与 **AverageServerLatency** 不同，它包括客户端发送数据及从存储服务接收确认所需的时间。 因此，**AverageE2ELatency** 和 **AverageServerLatency** 之间的差异可能是由于客户端应用程序响应速度慢，或者是由网络情况导致的。
 
@@ -503,7 +503,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -624,7 +624,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -723,7 +723,7 @@ sqllocaldb create v11.0
 
 若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”选项卡中配置的筛选器。下面的屏幕截图显示了只捕获发送到 **contosoemaildist.table.core.windows.net** 存储终结点流量的筛选器：
 
-![屏幕截图显示筛选器，该筛选器只捕获发送到 contosoemaildist.table.core.windows.net 存储终结点的流量。][5]
+![屏幕截图，其中显示了只捕获发送到 contosoemaildist.table.core.windows.net 存储终结点流量的筛选器。][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>附录 2：使用 Wireshark 捕获网络流量
 [Wireshark](https://www.wireshark.org/) 是一种网络协议分析器，可用于查看各种网络协议的详细数据包信息。
@@ -735,18 +735,18 @@ sqllocaldb create v11.0
 3. 单击“捕获选项”。
 4. 将一个筛选器添加到“捕获筛选器”文本框中。 例如，**host contosoemaildist.table.core.windows.net** 会将 Wireshark 配置为只捕获发送到 **contosoemaildist** 存储帐户中的表服务终结点或从该终结点发送的数据包。 请查看[捕获筛选器的完整列表](https://wiki.wireshark.org/CaptureFilters)。
 
-   ![显示如何将筛选器添加到 "捕获筛选器" 文本框的屏幕截图。][6]
+   ![屏幕截图，其中显示了如何将筛选器添加到“捕获筛选器”文本框。][6]
 5. 单击“启动”。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
 6. 完成后，在主菜单上，依次单击“捕获”和“停止”。
 7. 若要将捕获的数据保存到 Wireshark 捕获文件中，请在主菜单上依次单击“文件”和“保存”。
 
 WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 还可以使用“专家信息”窗口（依次单击“分析”和“专家信息”）来查看错误和警告的摘要。
 
-![屏幕截图显示了 "专家信息" 窗口，您可以在其中查看错误和警告的摘要。][7]
+![屏幕截图，其中显示了“专家信息”窗口，你可以在其中查看错误和警告的摘要。][7]
 
 还可选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，并选择“跟踪 TCP 流”。 在不使用捕获筛选器捕获了转储时，此方法很有用。 有关详细信息，请参阅 [Following TCP Streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)（跟踪 TCP 流）。
 
-![屏幕截图，显示如何在应用程序层看到 TCP 数据时查看这些数据。][8]
+![屏幕截图，其中显示了如何在应用程序层看到 TCP 数据时查看该数据。][8]
 
 > [!NOTE]
 > 有关使用 Wireshark 的详细信息，请参阅 [Wireshark Users Guide](https://www.wireshark.org/docs/wsug_html_chunked)（Wireshark 用户指南）。
@@ -779,11 +779,11 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 
 下面的屏幕截图显示了**本地链路层**跟踪的一个示例，其中一些**信息性**消息显示在 **DiagnosisTypes** 列中。 单击 **DiagnosisTypes** 列中的图标可显示消息的详细信息。 在此示例中，服务器重新传输了消息 #305，因为它未收到来自客户端的确认消息：
 
-![使用 DiagnosisTypes 列中的一些信息性消息显示示例本地链接层跟踪的屏幕截图][9]
+![屏幕截图，其显示了本地链路层跟踪的一个示例，其中一些信息性消息显示在 DiagnosisTypes 列中][9]
 
 当在 Microsoft Message Analyzer 中创建跟踪会话时，可以指定筛选器，以减少跟踪中的干扰项量。 在定义跟踪的“捕获/跟踪”页上，单击 **Microsoft-Windows-NDIS-PacketCapture** 旁边的“配置”链接。 下面的屏幕截图显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置：
 
-![屏幕截图，显示用于筛选三个存储服务的 IP 地址的 TCP 通信的配置。][10]
+![屏幕截图，其中显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置。][10]
 
 有关 Microsoft Message Analyzer 本地链路层跟踪的详细信息，请参阅 [Microsoft-PEF-NDIS-PacketCapture Provider](https://technet.microsoft.com/library/jj659264.aspx)（Microsoft-PEF-NDIS-PacketCapture 提供程序）。
 

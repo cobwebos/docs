@@ -2,13 +2,13 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086806"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535552"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -19,7 +19,9 @@ ms.locfileid: "87086806"
 如需教程，请参阅[教程：创建链接的 Azure 资源管理器模板](./deployment-tutorial-linked-template.md)。
 
 > [!NOTE]
-> 对于链接模板或嵌套模板，只能使用[增量](deployment-modes.md)部署模式。
+> 对于链接模板或嵌套模板，只能将部署模式设置为 " [增量](deployment-modes.md)"。 但是，主模板可以在完整模式下进行部署。 如果在 "完整" 模式下部署主模板，并且链接或嵌套的模板以相同的资源组为目标，则在 "完成模式" 部署的评估中包括部署在链接模板或嵌套模板中的资源。 将与资源组中的现有资源进行比较，将在主模板和链接的模板中部署的资源组合在一起。 此组合集合中未包含的所有资源都将被删除。
+>
+> 如果链接或嵌套的模板面向不同的资源组，则该部署使用增量模式。
 >
 
 ## <a name="nested-template"></a>嵌套模板
@@ -160,7 +162,7 @@ ms.locfileid: "87086806"
 
 `exampleVar` 的值因 `expressionEvaluationOptions` 中 `scope` 属性的值而异。 下表显示了这两个作用域的结果。
 
-| `expressionEvaluationOptions`内 | 输出 |
+| `expressionEvaluationOptions` 作用域 | 输出 |
 | ----- | ------ |
 | 内部 | from nested template |
 | outer（或默认值） | from parent template |
@@ -277,11 +279,11 @@ ms.locfileid: "87086806"
 
 > [!NOTE]
 >
-> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中已部署资源的值，请使用 " `inner` 作用域" 或 "将嵌套模板转换为链接模板"。
+> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
 
 ## <a name="linked-template"></a>链接的模板
 
-若要链接模板，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
+若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
 
 ```json
 {
@@ -315,11 +317,6 @@ ms.locfileid: "87086806"
 > 可以使用参数（如 `_artifactsLocation` 参数）来引用模板，例如：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`，这些参数最终会解析为某个使用“http”或“https”的项
 
 资源管理器必须能够访问模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
-
-[模板规范](./template-specs.md)（目前为个人预览版）可让你与组织中的其他用户共享 ARM 模板。 模板规范还可用于打包主模板及其链接的模板。 有关详细信息，请参阅：
-
-- [教程：创建包含链接模板的模板规范](./template-specs-create-linked.md)。
-- [教程：将模板规范部署为链接模板](./template-specs-deploy-linked-template.md)。
 
 ### <a name="parameters-for-linked-template"></a>链接模板的参数
 
@@ -369,6 +366,15 @@ ms.locfileid: "87086806"
 ```
 
 不能同时使用内联参数和指向参数文件的链接。 同时指定 `parametersLink` 和 `parameters` 时，部署将失败，并出现错误。
+
+## <a name="template-specs"></a>模板规格
+
+您可以创建将主模板及其链接模板打包到可部署的单个实体的 [模板规范](template-specs.md) ，而不是在可访问的终结点上维护链接的模板。 模板规范是 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用基于角色的访问控制 (RBAC) 授予对模板规范的访问权限。此功能目前处于预览阶段。
+
+有关详细信息，请参阅：
+
+- [教程：创建包含链接模板的模板规范](./template-specs-create-linked.md)。
+- [教程：将模板规范部署为链接模板](./template-specs-deploy-linked-template.md)。
 
 ## <a name="contentversion"></a>contentVersion
 
@@ -509,9 +515,9 @@ ms.locfileid: "87086806"
 }
 ```
 
-与其他资源类型一样，可以设置链接模板和其他资源之间的依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
+链接模板与其他资源类型一样，你可以在它与其他资源之间设置依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
 
-下面的示例演示了一个模板，该模板部署一个公共 IP 地址并返回该公共 IP 的 Azure 资源的资源 ID：
+以下示例显示一个模板，该模板部署公共 IP 地址并返回该公共 IP 的 Azure 资源的资源 ID：
 
 ```json
 {
@@ -546,7 +552,7 @@ ms.locfileid: "87086806"
 }
 ```
 
-若要在部署负载平衡器时使用上述模板中的公共 IP 地址，请链接到该模板，并声明对资源的依赖项 `Microsoft.Resources/deployments` 。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
+在部署负载均衡器时，若要使用前面所述模板中的公共 IP 地址，请链接到该模板，并声明对 `Microsoft.Resources/deployments` 资源的依赖性。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
 
 ```json
 {
@@ -723,6 +729,9 @@ done
 也可将参数文件限制为通过 SAS 令牌进行访问。
 
 目前，无法链接到位于 [Azure 存储防火墙](../../storage/common/storage-network-security.md)后面的存储帐户中的模板。
+
+> [!IMPORTANT]
+> 请考虑创建 [模板规范](template-specs.md)，而不是使用 SAS 令牌保护链接模板。模板规范将主模板及其链接模板安全地存储为 Azure 订阅中的资源。 使用 RBAC 向需要部署模板的用户授予访问权限。
 
 以下示例演示在链接到模板时如何传递 SAS 令牌：
 

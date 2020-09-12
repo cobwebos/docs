@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047446"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457985"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明
 
@@ -35,7 +35,7 @@ ms.locfileid: "89047446"
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (Formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -51,7 +51,7 @@ ms.locfileid: "89047446"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**列级加密 (公共预览版) **|使用 Transact-sql 对数据列应用对称加密，以保护 Synapse SQL 数据仓库中的敏感信息。 列级加密具有内置函数，可用于通过使用证书、密码、对称密钥或非对称密钥进一步保护的对称密钥来加密数据。 有关详细信息，请访问 [加密列数据](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
+|**列级加密 (公共预览版) **|使用 Transact-sql 对数据列应用对称加密，以保护 Azure Synapse 分析中的敏感信息。 列级加密具有内置函数，可用于通过使用证书、密码、对称密钥或非对称密钥进一步保护的对称密钥来加密数据。 有关详细信息，请访问 [加密列数据](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
 |** (GA) 兼容级别支持 **|在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[更改数据库范围的配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**行级别安全性**|此版本包含对在其上实施了 RLS 的行的更新和删除操作的改进。 在此版本中，如果内部函数（如 "is_rolemember"）包含内部函数的更新和删除操作，则这些函数将成功。 在此改进之前，由于基础 DML 操作的限制，这些操作失败。|
 |DBCC SHRINKDATABASE (GA)|现在可以收缩指定数据库中的数据文件和日志文件的大小。 有关详细信息，请参阅[文档](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|

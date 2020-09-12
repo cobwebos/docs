@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2164f6d6b346eda185e8a38720677ad50f2e8c89
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843209"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650681"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,11 +45,11 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作组。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
-* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
+* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 Internet 上访问的 [Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。
-* 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md)。
+* 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置及方式](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-custom-base-image"></a>创建自定义基础映像
 
@@ -76,7 +76,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 
     * Ubuntu 16.04 或更高版本。
     * Conda 4.5.# 或更高版本。
-    * Python 3.5. #、3.6. # 或 3.7. #。
+    * Python 3.5.#、3.6.# 或 3.7.#。
 
 <a id="getname"></a>
 
@@ -124,26 +124,35 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
     ```text
     FROM ubuntu:16.04
 
-    ARG CONDA_VERSION=4.5.12
-    ARG PYTHON_VERSION=3.6
+    ARG CONDA_VERSION=4.7.12
+    ARG PYTHON_VERSION=3.7
+    ARG AZUREML_SDK_VERSION=1.13.0
+    ARG INFERENCE_SCHEMA_VERSION=1.1.0
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
+        apt-get install -y fuse \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
+    RUN useradd --create-home dockeruser
+    WORKDIR /home/dockeruser
+    USER dockeruser
+
     RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
-        /bin/bash ~/miniconda.sh -b -p /opt/miniconda && \
+        /bin/bash ~/miniconda.sh -b -p ~/miniconda && \
         rm ~/miniconda.sh && \
-        /opt/miniconda/bin/conda clean -tipsy
+        ~/miniconda/bin/conda clean -tipsy
+    ENV PATH="/home/dockeruser/miniconda/bin/:${PATH}"
 
     RUN conda install -y conda=${CONDA_VERSION} python=${PYTHON_VERSION} && \
+        pip install azureml-defaults==${AZUREML_SDK_VERSION} inference-schema==${INFERENCE_SCHEMA_VERSION} &&\
         conda clean -aqy && \
-        rm -rf /opt/miniconda/pkgs && \
-        find / -type d -name __pycache__ -prune -exec rm -rf {} \;
+        rm -rf ~/miniconda/pkgs && \
+        find ~/miniconda/ -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
 2. 在 shell 或命令提示符下，使用以下命令对 Azure 容器注册表进行身份验证。 将 `<registry_name>` 替换为要将映像存储在其中的容器注册表的名称：
@@ -209,7 +218,7 @@ Microsoft 在可公开访问的存储库中提供了多个 docker 映像，可�
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>将映像与 Azure 机器学习 SDK 结合使用
 
-若要使用存储在工作区的 Azure 容器注册表中的映像，或使用存储在可公开访问的容器注册表中的映像，请设置以下[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)属性 ：
+若要使用存储在工作区的 Azure 容器注册表中的映像，或使用存储在可公开访问的容器注册表中的映像，请设置以下[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)属性 ：
 
 + `docker.enabled=True`
 + `docker.base_image`：设置为注册表和映像的路径。
@@ -243,7 +252,7 @@ myenv.python.conda_dependencies=conda_dep
 
 必须添加版本 >= 1.0.45 的 azureml-defaults 作为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 还必须将环境的 inferencing_stack_version 属性设置为“latest”，这将安装 Web 服务所需的特定 apt 包。 
 
-定义环境后，将其与 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 对象一起使用，以定义模型和 Web 服务将在其中运行的推理环境。
+定义环境后，将其与 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) 对象一起使用，以定义模型和 Web 服务将在其中运行的推理环境。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -272,7 +281,7 @@ print(service.state)
 > [!IMPORTANT]
 > 目前，机器学习 CLI 可以使用来自工作区的 Azure 容器注册表或可公开访问的存储库的映像。 而不能使用来自独立的专用注册表的映像。
 
-使用机器学习 CLI 部署模型之前，请创建一个使用自定义映像的[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。 然后创建引用该环境的推理配置文件。 也可以在推理配置文件中直接定义环境。 下面的 JSON 文档演示了如何在公共容器注册表中引用映像。 在本示例中，以内联方式定义环境：
+使用机器学习 CLI 部署模型之前，请创建一个使用自定义映像的[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)。 然后创建引用该环境的推理配置文件。 也可以在推理配置文件中直接定义环境。 下面的 JSON 文档演示了如何在公共容器注册表中引用映像。 在本示例中，以内联方式定义环境：
 
 ```json
 {

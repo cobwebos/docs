@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829588"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440671"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -42,7 +42,7 @@ ms.locfileid: "87829588"
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>你对资源没有足够的访问权限
 
-在 Azure 中，对指标的访问由[azure 基于角色的访问控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)控制。 只有[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)的成员才能浏览任何资源的指标。
+在 Azure 中，对指标的访问由 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 控制。 只有[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)的成员才能浏览任何资源的指标。
 
 **解决方案：** 请确保你对要在其中浏览指标的资源拥有足够的权限。
 
@@ -110,7 +110,7 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
 
 1. 验证存储帐户是否不受防火墙的保护。 Azure 门户需要对存储帐户的访问权限才能检索指标数据和绘制图表。
 
-1. 使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)验证指标是否流入存储帐户。 如果未收集指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)进行操作。
+1. 使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/) 验证指标是否流向存储帐户。 如果未收集指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

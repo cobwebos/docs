@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020348"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645654"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -147,7 +147,8 @@ Azure Migrate Server 评估目前只考虑 Windows 计算机的操作系统许�
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure 政府版中的依赖项可视化
 
-Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映射当前在 Azure 政府版中不可用，因此此功能在 Azure 政府版中不可用。
+Azure 政府版不支持基于代理的依赖项分析。 请使用无代理依赖项分析。
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>代理安装后不显示依赖关系
 
@@ -160,7 +161,7 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 
     ![MMA 状态](./media/troubleshoot-assessment/mma-properties.png)
 
-对于 Linux Vm，请确保 MMA 和依赖关系代理的安装命令已成功。
+对于 Linux Vm，请确保 MMA 和依赖关系代理的安装命令已成功。 请参阅 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)的更多故障排除指南。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -181,7 +182,6 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 ## <a name="machines-show-install-agent"></a>计算机显示 "安装代理"
 
 将启用了依赖关系可视化的计算机迁移到 Azure 后，计算机可能会显示 "安装代理" 操作，而不是 "查看依赖项"，原因如下：
-
 
 - 迁移到 Azure 后，本地计算机将关闭，并在 Azure 中启动等效 Vm。 这些计算机将获得一个不同的 MAC 地址。
 - 计算机还可能具有不同的 IP 地址，具体取决于是否保留了本地 IP 地址。

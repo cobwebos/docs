@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651720"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650691"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -213,7 +213,7 @@ ms.locfileid: "88651720"
 12. 在应用工作负荷时，记录 Azure 中系统的资源消耗。 将此消耗与旧平台中的记录进行比较。 如果发现存在较大的差异，请调整未来部署的 VM 大小。 请记住，当您缩小、存储和 Vm 的网络带宽时，也会将其减少。
     - [Azure 中 Windows 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Azure 中 Linux 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. 试验系统复制功能和进程。 目的是使您能够轻松地复制开发系统或测试系统，使项目团队能够快速获得新系统。 请考虑对这些任务使用 [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) 。
+13. 试验系统复制功能和进程。 目的是使您能够轻松地复制开发系统或测试系统，使项目团队能够快速获得新系统。 
 14. 优化和增强团队的 Azure 基于角色的访问、权限和过程，确保你有责任分离。 同时，请确保所有团队都可以在 Azure 基础结构中执行其任务。
 15. 练习、测试和记录高可用性和灾难恢复过程，使您的员工能够执行这些任务。 确定缺点，并改编要集成到部署中的新 Azure 功能。
 

@@ -3,12 +3,12 @@ title: 利用 Advisor 提高 Azure 应用程序的性能
 description: 使用 Azure 顾问中的性能建议，提高关键业务应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653301"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651577"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -63,6 +63,8 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 顾问分析可以指示连接到 MySQL 服务器的应用程序可能没有有效地管理连接。 这种情况可能会导致不必要的资源消耗和应用程序的总体延迟。 为了改进连接管理，建议你减少短期连接数并消除不必要的空闲连接。 可以通过配置服务器端连接池程序（例如 ProxySQL）来进行这些改进。
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>将当前的 Compute Management SDK 版本更新到最新版本
+顾问标识具有使用过时计算管理 SDK 版本的操作的订阅。 这可能会影响工作负荷的安全性和性能，因此，顾问建议切换到最新版本的计算管理 SDK。 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>增加以优化 Azure Synapse 分析表的缓存利用率以提高查询性能
 
@@ -165,7 +167,7 @@ Azure 顾问会在过去7天内分析系统日志，并确定群集是否遇到�
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>通过优化 MySQL 临时表的大小来提高性能
 顾问分析表明，由于临时表参数设置较低，MySQL 服务器可能会导致不必要的 i/o 开销。 这可能会导致不必要的基于磁盘的事务并降低性能。 建议增大“tmp_table_size”和“max_heap_table_size”参数值，以减少基于磁盘的事务数。 [了解详细信息](https://aka.ms/azure_mysql_tmp_table)
 
-## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>分发服务器组中的数据，以在节点间分布工作负荷
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>在服务器组中分布数据，以在节点间分布工作负载
 顾问会确定尚未分发数据但在协调器上保留的服务器组。 根据此，顾问建议对于完全超大规模 (Citus) 权益在服务器组的辅助角色节点上分布数据。 这将通过使用服务器组中每个节点的资源来提高查询性能。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议

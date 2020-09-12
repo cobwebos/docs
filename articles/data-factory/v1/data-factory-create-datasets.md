@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 13ee8c5166e3b31ec186ca9aa2702d15de36e09f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ddb99fd7a7ce8265a6e9c63555cd6a226caacc4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522391"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440722"
 ---
-# <a name="datasets-in-azure-data-factory-version-1"></a>Azure 数据工厂中的数据集（版本1）
+# <a name="datasets-in-azure-data-factory-version-1"></a>Azure 数据工厂中的数据集 (版本 1) 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-create-datasets.md)
 > * [版本 2（当前版本）](../concepts-datasets-linked-services.md)
@@ -32,9 +32,9 @@ ms.locfileid: "86522391"
 > 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)了解相关概述。 如果还没有亲身体验如何创建数据工厂，可通过阅读[数据转换教程](data-factory-build-your-first-pipeline.md)和[数据移动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)加深了解。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，可再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建商业智能 (BI) 报告解决方案。 有关管道和活动的详细信息，请参阅[Azure 数据工厂中的管道和活动](data-factory-create-pipelines.md)。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，你可能会使用第二个复制活动将输出数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) ，这在构建的商业智能 (BI) 报表解决方案之上。 有关管道和活动的详细信息，请参阅 [Azure 数据工厂中的管道和活动](data-factory-create-pipelines.md)。
 
-活动可以接受零个或多个输入**数据集**，并生成一个或多个输出数据集。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供管道读取数据的 Blob 容器和文件夹。
+活动可以接受零个或多个输入 **数据集**，并生成一个或多个输出数据集。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供管道读取数据的 Blob 容器和文件夹。
 
 创建数据集之前，请创建一个链接服务****，将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 数据集可识别链接的数据存储（如 SQL 表、文件、文件夹和文档）中的数据。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示 blob 容器以及包含要处理的输入 blob 的文件夹。
 
@@ -80,15 +80,15 @@ ms.locfileid: "86522391"
 | properties | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | name |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
-| type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#Type)。 |是 |不可用 |
-| structure |数据集的架构。<br/><br/>有关详细信息，请参阅[数据集结构](#Structure)。 |否 |NA |
+| type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅 [数据集类型](#Type)。 |是 |不可用 |
+| structure |数据集的架构。<br/><br/>有关详细信息，请参阅 [数据集结构](#Structure)。 |否 |不可用 |
 | typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob、Azure SQL 表）。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#Type)。 |是 |不可用 |
 | external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 如果活动的输入数据集不由当前管道生成，请将此标志设置为 true。 针对管道中第一个活动的输入数据集，将此标志设置为 true。  |否 |false |
 | availability | 定义数据集生产的处理时段（如每小时或每天）或切片模型。 活动运行使用和生成的每个数据单元称为数据切片。 如果输出数据集的可用性设置为每天（频率 - 天，间隔 - 1），则将每天生成一个切片。 <br/><br/>有关详细信息，请参阅“数据集可用性”。 <br/><br/>有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |不可用 |
-| policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |NA |
+| policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |不可用 |
 
 ## <a name="dataset-example"></a>数据集示例
-在下面的示例中，数据集表示 SQL 数据库中名为**MyTable**的表。
+在下面的示例中，数据集表示 SQL 数据库中名为 **MyTable** 的表。
 
 ```json
 {
@@ -111,9 +111,9 @@ ms.locfileid: "86522391"
 
 请注意以下几点：
 
-* **type**设置为 AzureSqlTable。
-* **tableName** type 属性（特定于 AzureSqlTable 类型）设置为 MyTable。
-* **linkedServiceName**引用 AzureSqlDatabase 类型的链接服务，该服务在下一个 JSON 代码片段中定义。
+* **type** 设置为 AzureSqlTable。
+*  (特定于 AzureSqlTable 类型) 的**tableName**类型属性设置为 MyTable。
+* **linkedServiceName** 引用 AzureSqlDatabase 类型的链接服务，该服务在下一个 JSON 代码片段中定义。
 * “availability frequency”**** 设置为 Day，而“interval”**** 设置为 1。 这意味着，每日都将生成数据集切片。
 
 AzureSqlLinkedService**** 定义如下：
@@ -141,7 +141,7 @@ AzureSqlLinkedService**** 定义如下：
 > [!IMPORTANT]
 > 除非由管道生成数据集，否则应将其标记为“external”****。 此设置通常适用于管道中第一个活动的输入。
 
-## <a name="dataset-type"></a><a name="Type"></a>数据集类型
+## <a name="dataset-type"></a><a name="Type"></a> 数据集类型
 数据集的类型取决于所用的数据存储。 请参阅下表，获取数据工厂支持的数据存储的列表。 单击数据存储，了解如何创建链接服务和该数据存储的数据集。
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
@@ -233,11 +233,11 @@ structure:
 
 | properties | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
-| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
+| frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”**** 指定为“Minute”****，则应将“interval”设置为小于 15 的值。 |是 |不可用 |
-| 样式 |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>如果**frequency**设置为**Month**，并且**style**设置为**EndOfInterval**，则会在每月的最后一天生成切片。 若将“style”**** 设置为“StartOfInterval”****，则会在每月的第一天生成切片。<br/><br/>如果**frequency**设置为**Day**，并且**style**设置为**EndOfInterval**，则会在一天的最后一小时生成切片。<br/><br/>如果**frequency**设置为**Hour**，并且**style**设置为**EndOfInterval**，则会在该小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
+| 样式 |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>如果 **frequency** 设置为 **Month**，并且 **style** 设置为 **EndOfInterval**，则会在每月的最后一天生成切片。 若将“style”**** 设置为“StartOfInterval”****，则会在每月的第一天生成切片。<br/><br/>如果 **frequency** 设置为 **Day**，并且 **style** 设置为 **EndOfInterval**，则会在一天的最后一小时生成切片。<br/><br/>如果 **frequency** 设置为 **Hour**，并且 **style** 设置为 **EndOfInterval**，则会在该小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>请注意，如果此属性具有的日期部分比指定的频率更精细，则忽略更精细的部分。 例如，如果“interval”**** 是“每小时”****（frequency: hour 且 interval: 1），而 anchorDateTime**** 包含“分钟和秒”****，则将忽略 anchorDateTime 的“分钟和秒”**** 部分。 |否 |01/01/0001 |
-| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime**** 和 offset****，则结果是组合偏移。 |否 |NA |
+| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime**** 和 offset****，则结果是组合偏移。 |否 |不可用 |
 
 ### <a name="offset-example"></a>偏移示例
 默认情况下，日常 (`"frequency": "Day", "interval": 1`) 切片在协调世界时凌晨零点（午夜）开始。 要将开始时间改为 UTC 时间早上 6 点，请按以下片段中所示设置偏移量：
@@ -280,8 +280,8 @@ structure:
 ### <a name="validation-policies"></a>验证策略
 | 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |验证 Azure Blob 存储**** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
-| minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |NA |
+| minimumSizeMB |验证 Azure Blob 存储**** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |不可用 |
+| minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |不可用 |
 
 #### <a name="examples"></a>示例
 **minimumSizeMB:**

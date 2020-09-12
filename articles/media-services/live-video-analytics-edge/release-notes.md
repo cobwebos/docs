@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 23c2362d46a0b9bfe2fc2fbe31e00d0a42f80cfa
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: feab7755dea69a932fe40df59e0dd35f3f826553
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055441"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645826"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -21,42 +21,42 @@ ms.locfileid: "89055441"
 * Bug 修复
 * 已弃用的功能
 
-## <a name="august-19-2020"></a>2020年8月19日
+## <a name="august-19-2020"></a>2020 年 8 月 19 日
 
-此模块2020年8月刷新的此版本标记为：
+此模块 2020 年 8 月刷新的此版本标记为：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
 ```
 
 > [!NOTE]
-> 在快速入门和教程中，部署清单使用标记 1 (实时视频分析： 1) 。 因此，只需重新部署此类清单，就会 > 设备上更新该模块。
+> 在快速入门和教程中，部署清单使用标记 1 (live-video-analytics:1)。 因此，只需重新部署此类清单，即可在“边缘”>“设备”上更新该模块。
 
-## <a name="new-features"></a>新增功能 
+### <a name="new-features"></a>新增功能 
 
-* 你现在可以在 IoT Edge 上的实时视频分析与使用 gRPC framework 的自定义扩展之间获取高数据内容传输性能。 请参阅 [此](analyze-live-video-use-your-grpc-model-quickstart.md) 快速入门。
-* 更广泛的实时视频分析区域部署，并且仅更新了云服务。  
-* 实时视频分析现已在全球25个其他区域推出。 下面是所有可用区域的 [列表](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) 。  
-* " [设置](https://aka.ms/lva-edge/setup-resources-for-samples) " "快速入门" 已更新，并支持新的区域。
+* 现在，你可以使用 gRPC 框架在 IoT Edge 的实时视频分析和自定义扩展之间获得高数据内容传输性能。 请参阅[此内容](analyze-live-video-use-your-grpc-model-quickstart.md)以开始使用。
+* 实时视频分析的区域部署更广泛，且只更新了云服务。  
+* 实时视频分析现已在全球25个其他区域推出。 下面是所有可用区域的[列表](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。  
+* 快速入门的[设置](https://aka.ms/lva-edge/setup-resources-for-samples)已更新，并支持新区域。
     * 对于已设置资源的用户，不需要进行任何操作
 
-## <a name="bug-fixes"></a>Bug 修复 
+### <a name="bug-fixes"></a>Bug 修复 
 
-* 在设置脚本中删除不推荐使用的 azure 扩展
+* 在设置脚本中删除弃用的 azure 扩展的使用
 
-## <a name="july-13-2020"></a>7月13日，2020
+## <a name="july-13-2020"></a>2020 年 7 月 13 日
 
-此模块2020年7月刷新的此版本标记为：
+此模块 2020 年 7 月刷新的此版本标记为：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2
 ```
 
 > [!NOTE]
-> 在快速入门和教程中，部署清单使用标记 1 (实时视频分析： 1) 。 因此，只需重新部署此类清单，就会 > 设备上更新该模块。
+> 在快速入门和教程中，部署清单使用标记 1 (live-video-analytics:1)。 因此，只需重新部署此类清单，即可在“边缘”>“设备”上更新该模块。
 
 ### <a name="new-features"></a>新增功能
-* 你现在可以创建具有 "资产接收器" 节点以及 "信号入口处理器" 节点下游的 "文件接收器" 节点的图形拓扑。 有关示例，请参阅 [此](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) 示例。
+* 现在，你可以创建具有资产接收器节点以及信号门处理器节点下游的文件接收器节点的图形拓扑。 请参阅[此内容](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files)获取示例。
 
 ### <a name="bug-fixes"></a>Bug 修复
 * 对所需属性验证的改进

@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056384"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500124"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>将自托管网关部署到 Kubernetes
 
@@ -33,7 +33,7 @@ ms.locfileid: "87056384"
 1. 选择“部署和基础结构”下的“网关” 。
 2. 选择要部署的自承载网关资源。
 3. 选择“部署”。
-4. "**令牌**" 文本框中的访问令牌是根据默认的 "**过期** **" 和 "密钥"** 值自动生成的。 如果需要，请在其中一个或两个控件中选择值以生成新令牌。
+4. " **令牌** " 文本框中的访问令牌是根据默认的 " **过期** **" 和 "密钥"** 值自动生成的。 如果需要，请在其中一个或两个控件中选择值以生成新令牌。
 5. 选择“部署脚本”下的“Kubernetes”选项卡 。
 6. 选择** \<gateway-name\> docker-compose.override.yml**文件链接并下载 YAML 文件。
 7. 选择“部署”文本框右下角的“复制”图标，将 `kubectl` 命令保存到剪贴板 。
@@ -63,7 +63,7 @@ ms.locfileid: "87056384"
 ## <a name="production-deployment-considerations"></a>生产部署注意事项
 
 ### <a name="access-token"></a>访问令牌
-如果没有有效的访问令牌，自承载网关将无法从关联的 API 管理服务的终结点访问和下载配置数据。 访问令牌的有效期最长为 30 天。 必须在到期前重新生成令牌，并手动或通过自动化方式用新令牌配置群集。 
+如果没有有效的访问令牌，自承载网关将无法从关联的 API 管理服务的终结点访问和下载配置数据。 访问令牌的有效期最长为 30 天。 必须在到期前重新生成令牌，并手动或通过自动化方式用新令牌配置群集。
 
 自动刷新令牌时，请使用[此管理 API 操作](/rest/api/apimanagement/2019-12-01/gateway/generatetoken)生成新令牌。 有关管理 Kubernetes 机密的信息，请参阅 [Kubernetes 网站](https://kubernetes.io/docs/concepts/configuration/secret)。
 
@@ -106,6 +106,9 @@ DNS 名称解析对于自承载网关是否能连接到 Azure 中的依赖项并
 Azure 门户中提供的 YAML 文件将应用默认的 [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) 策略。 此策略可导致群集 DNS 未解析的名称解析请求转发到从节点继承的上游 DNS 服务器。
 
 若要了解 Kubernetes 中的名称解析，请参阅 [Kubernetes 网站](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)。 请考虑根据你的设置自定义 [DNS 策略](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)或 [DNS 配置](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config)。
+
+### <a name="external-traffic-policy"></a>外部流量策略
+Azure 门户将 `externalTrafficPolicy` [服务](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) 对象上的字段设置为所提供的 YAML 文件 `Local` 。 这会保留调用方 IP 地址 (在 [请求上下文](api-management-policy-expressions.md#ContextVariables) 中可访问) 并禁用跨节点负载平衡，从而消除由其导致的网络跃点。 请注意，此设置可能会导致部署中的流量不对称分布于每个节点的网关箱数不相等的部署中。
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>自定义域名和 SSL 证书
 

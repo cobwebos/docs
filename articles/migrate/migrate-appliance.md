@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927489"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514350"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -121,7 +121,7 @@ download.microsoft.com/download | 允许从 Microsoft 下载中进行下载。
 graph.windows.net | 登录到 Azure 订阅。
 login.microsoftonline.us  | 为设备创建 Azure Active Directory (AD) 应用，以便与 Azure Migrate 通信。
 management.usgovcloudapi.net | 为设备创建 Azure AD 应用，以便与 Azure Migrate 服务通信。
-dc.services.visualstudio.com | 上传用于内部监视的应用日志。
+*.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.usgovcloudapi.net | 在 Azure Key Vault 中管理机密。
 aka.ms/* | 允许访问 aka 链接。 用于 Azure Migrate 设备更新。
 download.microsoft.com/download | 允许从 Microsoft 下载中进行下载。
@@ -218,8 +218,8 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 **数据** | **注册表位置** | **Key**
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 发布者
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
 
@@ -240,7 +240,7 @@ Parent  | Get-help  | Parent
 名称  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
-Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Version 
+版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 
 #### <a name="windows-vm-operating-system-data"></a>Windows VM 操作系统数据
 
@@ -249,17 +249,17 @@ Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> 
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
 名称  | Win32_operatingsystem  | Caption
-Version  | Win32_operatingsystem  | Version
+版本  | Win32_operatingsystem  | 版本
 体系结构  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-vm-apps-data"></a>Linux VM 应用数据
 
 此设备从每个启用了应用程序发现的 VM 收集的已安装应用程序数据。 根据 VM 的操作系统，运行一个或多个命令。 这些数据将发送到 Azure。
 
-数据  | 命令
+数据  | Command
 --- | --- 
 名称 | rpm，dpkg，对齐
-Version | rpm，dpkg，对齐
+版本 | rpm，dpkg，对齐
 提供程序 | rpm，dpkg，对齐
 
 #### <a name="linux-vm-operating-system-data"></a>Linux VM 操作系统数据

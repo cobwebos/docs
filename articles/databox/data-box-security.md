@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483823"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565744"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -30,9 +30,13 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 - **连接到设备的客户端/主机** – 基础结构中的客户端，它们连接到 Data Box 设备，并包含需要保护的数据。
 - **云存储** – Azure 云中存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
 
-下图指示了通过 Azure Data Box 解决方案运行的从本地到 Azure 的数据流。 此流适用于你的 Data Box 的导入顺序。
+下图显示了通过 Azure Data Box 解决方案从本地到 Azure 的数据流，以及在数据流过解决方案时的各种安全功能。 此流适用于你的 Data Box 的导入顺序。
 
-![Data Box 安全性](media/data-box-security/data-box-security-2.png)
+![Data Box 导入安全性](media/data-box-security/data-box-security-2.png)
+
+下图是 Data Box 的出口订单。
+
+![Data Box 导出安全](media/data-box-security/data-box-security-3.png)
 
 在数据流经此解决方案时，将会记录事件并生成日志。 有关详细信息，请转到：
 
@@ -102,7 +106,7 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 Data Box 中实现了以下安全准则： 
 
-|准则   |描述   |
+|准则   |说明   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 防水防尘保护         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 对不利运输条件的承受力          |

@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206693"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457900"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 池开发最佳做法
 
@@ -122,6 +122,6 @@ ms.locfileid: "85206693"
 
 可以在[有关 Azure Synapse 的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)上向其他用户和 Azure Synapse 产品组发布问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
 
-若要提问有关堆栈溢出的问题，请访问 [Azure SQL 数据仓库堆栈溢出论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
+如果你希望在 Stack Overflow 上提出问题，我们还会获得一个 [Azure Synapse Analytics Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
 
 请使用 [Azure Synapse 反馈](https://feedback.azure.com/forums/307516-sql-data-warehouse)页面提出功能请求。  添加请求或对其他请求投赞成票对我们确定功能的优先级有很大的帮助。

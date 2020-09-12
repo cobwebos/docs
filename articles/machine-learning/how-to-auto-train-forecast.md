@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144781"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651513"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在 [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)中使用自动机器学习（AutoML）配置和培训时序预测回归模型。 
+本文介绍如何在 [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)中使用自动机器学习（AutoML）配置和培训时序预测回归模型。 
 
 有关低代码体验，请参阅[教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)，里面有关于在 [Azure 机器学习工作室](https://ml.azure.com/)中使用自动化机器学习的时序预测示例。
 
@@ -93,7 +93,7 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!IMPORTANT]
-> 在训练用于预测未来值的模型时，请确保在针对预期范围运行预测时可使用训练中用到的所有特征。 例如，在创建需求预测时，包含当前股票价格的特征可能大幅提升训练准确度。 但是，如果你打算使用较长的时间范围进行预测，则可能没法准确预测与未来的时序点相对应的未来股价值，模型准确性也会受到影响。
+> 在训练用于预测未来值的模型时，请确保在针对预期范围运行预测时可使用训练中用到的所有特征。 <br> <br>例如，在创建需求预测时，包含当前股票价格的特征可能大幅提升训练准确度。 但是，如果你打算使用较长的时间范围进行预测，则可能没法准确预测与未来的时序点相对应的未来股价值，模型准确性也会受到影响。
 
 <a name="config"></a>
 
@@ -101,11 +101,11 @@ test_labels = test_data.pop(label).values
 
 您可以直接在对象中指定单独的定型集和验证集 `AutoMLConfig` 。   详细了解 [AutoMLConfig](#configure-experiment)。
 
-对于时序预测，当你同时传递定型和验证数据时，将自动使用 **滚动起源交叉验证 (ROCV) ** ，并使用中的参数设置交叉验证折叠数 `n_cross_validations` `AutoMLConfig` 。 ROCV 使用原始时间点将时序分成训练数据和验证数据。 在时间内滑动原点会生成交叉验证折叠。 此策略保留时序数据完整性，并消除数据泄露的风险
+对于时序预测，默认情况下，只有 **滚动起源交叉验证 (ROCV) ** 用于验证。 一起传递定型和验证数据，并设置中与参数之间的交叉验证折叠数 `n_cross_validations` `AutoMLConfig` 。 ROCV 使用原始时间点将时序分成训练数据和验证数据。 在时间内滑动原点会生成交叉验证折叠。 此策略保留时序数据完整性，并消除数据泄露的风险
 
-![替换文字](./media/how-to-auto-train-forecast/ROCV.svg)
+![滚动起源交叉验证](./media/how-to-auto-train-forecast/ROCV.svg)
 
-有关其他交叉验证和数据拆分选项，请参阅 [在 AutoML 中配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)。
+还可以自带验证数据，在 [AutoML 中配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md#provide-validation-data)中了解详细信息。
 
 
 ```python
@@ -118,7 +118,7 @@ automl_config = AutoMLConfig(task='forecasting',
 详细了解 AutoML 如何应用交叉验证，以 [防止过度调整模型](concept-manage-ml-pitfalls.md#prevent-over-fitting)。
 
 ## <a name="configure-experiment"></a>配置试验
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 对象定义自动化机器学习任务所需的设置和数据。 预测模型的配置与标准回归模型的设置相似，但特定于时间序列数据的某些特征化步骤和配置选项是存在的。 
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 对象定义自动化机器学习任务所需的设置和数据。 预测模型的配置与标准回归模型的设置相似，但特定于时间序列数据的某些特征化步骤和配置选项是存在的。 
 
 ### <a name="featurization-steps"></a>特征化步骤
 
@@ -163,13 +163,13 @@ featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
 
-如果使用 Azure 机器学习工作室进行试验，请参阅[操作方法文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+如果你正在使用 Azure 机器学习 studio 进行试验，请参阅 [如何在工作室中自定义特征化](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
 
 ### <a name="configuration-settings"></a>配置设置
 
 与回归问题类似，你要定义标准训练参数，例如任务类型、迭代次数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 
 
-下表汇总了这些附加参数。 有关语法设计模式，请参阅 [参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 。
+下表汇总了这些附加参数。 有关语法设计模式，请参阅 [参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 。
 
 | 参数&nbsp;名称 | 说明 | 必选 |
 |-------|-------|-------|
@@ -245,7 +245,11 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
+> [!Warning]
+> 为使用 SDK 创建的试验启用 DNN 时，将禁用 [最佳模型说明](how-to-machine-learning-interpretability-automl.md) 。
+
 若要为 Azure 机器学习 studio 中创建的 AutoML 实验启用 DNN，请参阅 studio 操作指南中的 " [任务类型" 设置](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)。
+
 
 自动化 ML 作为推荐系统的一部分向用户提供原生时序和深度学习模型。 
 
@@ -254,7 +258,6 @@ automl_config = AutoMLConfig(task='forecasting',
 Prophet（预览版）|Prophet 最适合用于受季节影响大且包含多个季节历史数据的时序。 若要利用此模型，请使用 `pip install fbprophet` 在本地安装它。 | 准确、快速、可靠地反应时序中的离群值、缺失数据和巨大变化。
 Auto-ARIMA（预览版）|当数据为静止时，自动回归集成的移动平均线 (ARIMA) 性能最佳。 这意味着其统计属性（例如平均值和方差）在整个集中保持不变。 例如，如果你掷一枚硬币，那么无论是今天掷、明天掷还是明年掷，正面朝上的可能性都是 50%。| 适用于单变量系列，这是因为使用过去的值来预测未来的值。
 ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处理最苛刻的预测任务，从而捕获数据中的非线性本地和全局趋势以及时序之间的关系。|可利用数据中的复杂趋势并轻松扩展到最大型的数据集。
-
 
 查看[饮料制造预测笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)，获取使用 DNN 的详细代码示例。
 
@@ -266,8 +269,7 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 
 该表显示在应用窗口聚合时产生的特征工程。 **最小值、最大**值和**总和**列基于定义的设置在三个滑动窗口上生成。 每行都有一个新的计算功能（如果时间戳为9月8日，2017 4： 00 (）使用9月 8 2017 日的 **需求值** 计算最大值、最小值和总和值： 00 (-3： 00 (。 3 这个窗口将移位填充其余行的数据。
 
-![替换文字](./media/how-to-auto-train-forecast/target-roll.svg)
-
+![目标滚动窗口](./media/how-to-auto-train-forecast/target-roll.svg)
 
 请查看使用[目标滚动窗口聚合特征](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)的 Python 代码示例。
 
@@ -336,5 +338,8 @@ day_datetime,store,week_of_year
 
 ## <a name="next-steps"></a>后续步骤
 
-* 遵循[教程](tutorial-auto-train-models.md)了解如何通过自动化机器学习创建试验。
-* 查看[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 参考文档。
+* 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
+* 了解 [Interpretability：自动机器学习 (预览) 中的模型说明 ](how-to-machine-learning-interpretability-automl.md)。 
+* 了解如何在 [多个模型解决方案加速器](https://aka.ms/many-models)中用 AutoML 训练多个模型。
+* 遵循 [教程](tutorial-auto-train-models.md) ，了解有关使用自动机器学习创建试验的端到端示例。
+

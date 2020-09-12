@@ -2,18 +2,18 @@
 title: 网络链接性能故障排除： Azure
 description: 此页提供一种标准化方法来测试 Azure 网络链接性能。
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521660"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566069"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
 ## <a name="overview"></a>概述
@@ -121,7 +121,7 @@ AzureCT PowerShell 模块有两个组件 - [可用性测试][Availability Doc]�
 ![2][2]
 
 >[!NOTE]
-> 请注意，MSEE 不在 Azure 云中。 ExpressRoute 实际是在 Microsoft 网络边缘，而不是在 Azure 中。 通过 ExpressRoute 连接到 MSEE 后，你就连接到了 Microsoft 网络，然后便可转到任何云服务，如 Office 365（使用 Microsoft 对等互连）或 Azure（使用专有和/或 Microsoft 对等互连）。
+> 请注意，MSEE 不在 Azure 云中。 ExpressRoute 实际是在 Microsoft 网络边缘，而不是在 Azure 中。 将 ExpressRoute 连接到 MSEE 后，你将连接到 Microsoft 的网络，然后你可以从那里进入到任何云服务，例如通过 Microsoft 对等互连) 或 Azure (与专用和/或 Microsoft 对等互连)  (Microsoft 365。
 >
 >
 

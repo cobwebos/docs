@@ -5,19 +5,19 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419897"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440773"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
 
-本文逐步讲解如何使用 Resource Manager 部署模型和 PowerShell 创建主动-主动跨界连接与 VNet 到 VNet 连接。 你还可以在 Azure 门户中配置主动-主动网关。
+本文逐步讲解如何使用 Resource Manager 部署模型和 PowerShell 创建主动-主动跨界连接与 VNet 到 VNet 连接。 还可以在 Azure 门户中配置主动-主动网关。
 
 ## <a name="about-highly-available-cross-premises-connections"></a>关于高可用性跨界连接
 若要实现跨界连接和 VNet 到 VNet 连接的高可用性，应该部署多个 VPN 网关，在网络与 Azure 之间建立多个并行连接。 有关连接选项和拓扑的概述，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](vpn-gateway-highlyavailable.md)。
@@ -86,9 +86,9 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-create-a-new-resource-group"></a>2. 创建新的资源组
+#### <a name="2-create-a-new-resource-group"></a>2.创建新的资源组
 
-使用以下示例创建新的资源组：
+使用以下示例创建新资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -371,7 +371,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 ## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>更新现有 VPN 网关
 
-将主动-待机网关更改为主动-主动网关时，也将创建另一个公共 IP 地址，然后添加第二个网关 IP 配置。 本部分可帮助你将现有的 Azure VPN 网关从主动-待机模式更改为主动-主动模式，反之亦然。 你还可以在虚拟网络网关的 "**配置**" 页上的 "Azure 门户中更改网关。
+将主动-待机网关更改为主动-主动网关时，也将创建另一个公共 IP 地址，然后添加第二个网关 IP 配置。 此部分有助于使用 PowerShell 将现有 Azure VPN 网关从主动-待机模式更改为主动-主动模式，或反之。 还可以在 Azure 门户的“配置”页上为虚拟网络网关更改网关。
 
 ### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>将主动-待机网关更改为主动-主动网关
 

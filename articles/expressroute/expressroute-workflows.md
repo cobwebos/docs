@@ -2,18 +2,18 @@
 title: Azure ExpressRoute：线路配置工作流
 description: 此页面显示了用于配置 ExpressRoute 线路和对等互连的工作流
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814070"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565917"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 
@@ -86,7 +86,7 @@ ms.locfileid: "88814070"
 
 #### <a name="for-microsoft-peering"></a>对于 Microsoft 对等互连
 
-启用此类以访问 Microsoft 联机服务，如 Office 365。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。 你必须确保使用独立的代理/边缘来连接到 Microsoft，而不是用于 Internet 的代理/边缘。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
+启用此类以访问 Microsoft 联机服务，如 Microsoft 365。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。 你必须确保使用独立的代理/边缘来连接到 Microsoft，而不是用于 Internet 的代理/边缘。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
 
 * 路径 1 (/30) 的对等互连子网必须是公共 IP
 * 路径 2 (/30) 的对等互连子网必须是公共 IP

@@ -1,756 +1,275 @@
 ---
-title: 导出 Azure IoT Central 数据 | Microsoft Docs
-description: 如何将数据从 Azure IoT Central 应用程序导出到 Azure 事件中心、Azure 服务总线和 Azure Blob 存储
+title: 从 Azure IoT Central (preview) 导出数据 |Microsoft Docs
+description: 如何使用新的数据导出将 IoT 数据导出到 Azure 和自定义云目标。
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: iot-central
-manager: corywink
-ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: contperfq1
+ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008519"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461929"
 ---
-# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>使用数据导出 (旧) 将 IoT 数据导出到 Azure 中的目标
+# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>使用数据导出 (预览将 IoT 数据导出到云目标) 
 
 > [!Note]
-> 有一种新方法可在 IoT Central 中导出数据。 你可以使用新的数据导出来筛选和丰富导出的数据，并将其导出到新目标（如 webhook 终结点）。 你可以在[此处](./howto-use-data-export.md)了解有关新数据导出的信息。 若要了解新的数据导出和旧数据导出之间的差异，请参阅[比较表](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export)。
+> 本文介绍 IoT Central 中的预览数据导出功能。
+>
+> - 有关旧数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标 (旧) ](./howto-export-data-legacy.md)。
+> - 若要了解预览版数据导出功能和旧数据导出功能之间的差异，请参阅下表中的 [比较表](#comparison-of-legacy-data-export-and-preview-data-export) 。
 
-本文介绍如何使用 Azure 中的数据导出功能 IoT Central。 此功能可让你将数据连续导出到**Azure 事件中心**、 **azure 服务总线**或**azure Blob 存储**实例。 数据导出使用 JSON 格式，可以包括遥测、设备信息和设备模板信息。 使用导出的数据可以获取：
+本文介绍如何使用 Azure 中的新数据导出预览功能 IoT Central。 使用此功能可以从您的 IoT Central 应用程序持续导出已筛选和增加的 IoT 数据。 数据导出会将接近实时的更改推送到云解决方案的其他部分，以获取热路径见解、分析和存储。
 
-- 热路径见解和分析。 此选项包括在 Azure 流分析中触发自定义规则、在 Azure 逻辑应用中触发自定义工作流，或者通过 Azure Functions 传递数据以进行转换。
-- 冷路径分析，例如 Azure 机器学习中的训练模型或 Microsoft Power BI 中的长期趋势分析。
+例如，你能够：
 
-> [!Note]
+- 以近乎实时的顺序连续导出 JSON 格式的遥测数据和属性更改。
+- 筛选数据流以导出与自定义条件匹配的数据。
+- 利用来自设备的自定义值和属性值丰富数据流。
+- 将数据发送到 Azure 事件中心、Azure 服务总线、Azure Blob 存储和 webhook 终结点等目标。
+
+> [!Tip]
 > 当你打开数据导出时，你只会获得那一刻的数据。 当前，数据导出关闭时无法检索数据。 若要保留更多的历史数据，请及早打开数据导出。
 
 ## <a name="prerequisites"></a>先决条件
 
-您必须是 IoT Central 应用程序中的管理员或具有数据导出权限。
+若要使用预览数据导出功能，你必须具有 [V3 应用程序](howto-get-app-info.md)，并且必须具有 [数据导出](howto-manage-users-roles.md) 权限。
 
 ## <a name="set-up-export-destination"></a>设置导出目标
 
-导出目标必须存在，然后才能配置数据导出。
+导出目标必须存在，然后才能配置数据导出。 当前提供以下目标类型：
 
-### <a name="create-event-hubs-namespace"></a>创建事件中心命名空间
+- Azure 事件中心
+- Azure 服务总线队列
+- Azure 服务总线主题
+- Azure Blob 存储
+- Webhook
+
+### <a name="create-an-event-hubs-destination"></a>创建事件中心目标
 
 如果当前没有可导出到的事件中心命名空间，请执行以下步骤：
 
 1. [在 Azure 门户中创建新的事件中心命名空间](https://ms.portal.azure.com/#create/Microsoft.EventHub)。 可以在 [Azure 事件中心文档](../../event-hubs/event-hubs-create.md)中进行详细的了解。
 
-2. 选择订阅。 你可以将数据导出到与你的 IoT Central 应用程序不在同一订阅中的其他订阅。 在这种情况下，需使用连接字符串进行连接。
+1. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。****
 
-3. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。****
+1. 生成要在 IoT Central 中设置数据导出时使用的密钥：
 
-### <a name="create-service-bus-namespace"></a>创建服务总线命名空间
+    - 选择创建的事件中心实例。
+    - 选择 " **设置" > 共享访问策略**"。
+    - 创建新的密钥或选择具有 " **发送** " 权限的现有密钥。
+    - 复制主连接字符串或辅助连接字符串。 使用此连接字符串在 IoT Central 中设置新的目标。
+
+### <a name="create-a-service-bus-queue-or-topic-destination"></a>创建服务总线队列或主题目标
 
 如果当前没有可导出到的服务总线命名空间，请执行以下步骤：
 
 1. [在 Azure 门户中创建新的服务总线命名空间](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)。 可以在 [Azure 服务总线文档](../../service-bus-messaging/service-bus-create-namespace-portal.md)中进行详细的了解。
-2. 选择订阅。 你可以将数据导出到与你的 IoT Central 应用程序不在同一订阅中的其他订阅。 在这种情况下，需使用连接字符串进行连接。
 
-3. 若要创建要导出到的队列或主题，请使用服务总线命名空间，然后选择 " **+ 队列**" 或 " **+ 主题**"。
+1. 若要创建要导出到的队列或主题，请使用服务总线命名空间，然后选择 " **+ 队列** " 或 " **+ 主题**"。
 
-选择服务总线作为导出目标时，队列和主题不得启用“会话”或“重复检测”。 如果启用了其中任一选项，则某些消息不会到达队列或主题中。
+1. 生成要在 IoT Central 中设置数据导出时使用的密钥：
 
-### <a name="create-storage-account"></a>创建存储帐户
+    - 选择创建的队列或主题。
+    - 选择 " **设置"/"共享访问策略**"。
+    - 创建新的密钥或选择具有 " **发送** " 权限的现有密钥。
+    - 复制主连接字符串或辅助连接字符串。 使用此连接字符串在 IoT Central 中设置新的目标。
+
+### <a name="create-an-azure-blob-storage-destination"></a>创建 Azure Blob 存储目标
 
 如果没有要导出到的现有 Azure 存储帐户，请执行以下步骤：
 
-1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的[Azure Blob 存储帐户](https://aka.ms/blobdocscreatestorageaccount)或[Azure Data Lake Storage v2 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
+1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的 [Azure Blob 存储帐户](https://aka.ms/blobdocscreatestorageaccount) 或 [Azure Data Lake Storage v2 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
 
     |性能层|帐户类型|
     |-|-|
-    |Standard|常规用途 V2|
-    |Standard|常规用途 V1|
-    |Standard|Blob 存储|
+    |标准|常规用途 V2|
+    |标准|常规用途 V1|
+    |标准|Blob 存储|
     |高级|块 Blob 存储|
 
-2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
+1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
+
+1. 转到 " **设置" > "访问密钥**"，为你的存储帐户生成一个连接字符串。 复制两个连接字符串中的一个。
+
+### <a name="create-a-webhook-endpoint"></a>创建 webhook 终结点
+
+可以将数据导出到公开可用的 HTTP webhook 终结点。 可以使用 [RequestBin](https://requestbin.net/)创建测试 webhook 终结点。 达到请求限制时，RequestBin 限制请求：
+
+1. 打开 [RequestBin](https://requestbin.net/)。
+2. 创建一个新的 RequestBin 并复制 **Bin URL**。 在测试数据导出时使用此 URL。
 
 ## <a name="set-up-data-export"></a>设置数据导出
 
-现在，你已有将数据导出到的目标，请按照以下步骤设置数据导出。
+现在，你已有将数据导出到的目标，请在 IoT Central 应用程序中设置数据导出：
 
 1. 登录到 IoT Central 应用程序。
 
-2. 在左窗格中，选择 "**数据导出**"。
+1. 在左窗格中，选择 " **数据导出 (预览") **。
 
     > [!Tip]
-    > 如果左窗格中未显示 "**数据导出**"，则没有权限在应用中配置数据导出。 请与管理员联系以设置数据导出。
+    > 如果在左窗格中看不到 " **数据导出 (预览") ** ，则无权在应用中配置数据导出。 请与管理员联系以设置数据导出。
 
-3. 选择“+ 新建”按钮。**** 选择一个**Azure Blob 存储**、 **azure 事件中心**、 **Azure 服务总线队列**或**azure 服务总线主题**作为导出目标。 每个应用程序的最大导出数目是 5。
+1. 选择 " **+ 新建导出**"。
 
-4. 输入导出的名称。 在下拉列表框中，选择**命名空间**，或**输入连接字符串**。
+1. 为新的导出输入显示名称，并确保 **已启用**数据导出。
 
-    - 您只能在与 IoT Central 应用程序相同的订阅中查看存储帐户、事件中心命名空间和服务总线命名空间。 如果要导出到此订阅之外的目标，请选择 "**输入连接字符串**" 并查看步骤6。
-    - 对于使用免费定价计划创建的应用，配置数据导出的唯一方法是使用连接字符串。 免费定价计划中的应用没有关联的 Azure 订阅。
+1. 选择要导出的数据类型。 下表列出了支持的数据导出类型：
 
-    ![创建新的事件中心](media/howto-export-data/export-event-hub.png)
+    | 数据类型 | 说明 | 数据格式 |
+    | :------------- | :---------- | :----------- |
+    |  遥测 | 以近乎实时的速度从设备导出遥测消息。 每个导出的消息都包含原始设备消息的已规范化内容。   |  [遥测消息格式](#telemetry-format)   |
+    | 属性更改 | 以近乎实时的速度将更改导出到设备和云属性。 对于只读设备属性，将导出对报告值所做的更改。 对于读写属性，将导出报告的值和所需的值。 | [属性更改消息格式](#property-changes-format) |
 
-5. 从下拉列表框中选择一个事件中心、队列、主题或容器。
+1. （可选）添加筛选器以减少导出的数据量。 每种数据导出类型都有不同类型的筛选器：
 
-6. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。**** 若要获取连接字符串，请执行以下操作：
+    若要筛选遥测数据，请使用：
 
-    - 事件中心或服务总线，请中转到 Azure 门户中的命名空间：
-        - 若要对整个命名空间使用连接字符串：
-            1. 在 "**设置**" 下，选择 "**共享访问策略**"
-            2. 创建新的密钥或选择具有 "**发送**" 权限的现有密钥。
-            3. 复制主连接字符串或辅助连接字符串
-        - 若要将连接字符串用于特定的事件中心实例或服务总线队列或主题，请参阅**实体 > 事件中心**或**实体 > 队列**或**实体 > 主题**。 选择特定的实例，然后执行上述相同步骤以获取连接字符串。
-    - 存储帐户，请在 Azure 门户中找到存储帐户：
-        - 只支持整个存储帐户的连接字符串。 不支持作用域为单个容器的连接字符串。
-          1. 在 "**设置**" 下，选择 "**访问密钥**"
-          2. 复制密钥 1 连接字符串或密钥 2 连接字符串
+    - **功能筛选器**：如果在 " **名称** " 下拉列表中选择遥测项，则导出的流只包含符合筛选条件的遥测。 如果在 " **名称** " 下拉列表中选择 "设备" 或 "云" 属性项，则导出的流只包含其属性与筛选条件相匹配的设备的遥测数据。
+    - **消息属性筛选器**：使用设备 sdk 的设备可以在每个遥测消息上发送 *消息属性* 或 *应用程序属性* 。 属性是使用自定义标识符对消息进行标记的键值对包。 若要创建消息属性筛选器，请输入所需的消息属性键，并指定条件。 仅导出属性与指定筛选条件匹配的遥测消息。 支持以下字符串比较运算符：等于、不等于、包含、不包含、存在、不存在。 [详细了解 IoT 中心文档中的应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-    粘贴到连接字符串中。 键入实例或**容器名称**，请记住，这区分大小写。
+    若要筛选属性更改，请使用 **功能筛选器**。 选择下拉列表中的属性项。 导出的流只包含所选属性的更改，这些更改符合筛选条件。
 
-7. 在“要导出的数据”下，通过将相应类型设置为“打开”来指定要导出的数据类型。********
+1. （可选）利用附加的键值对元数据丰富导出的消息。 以下根据适用于遥测和属性更改数据导出类型：
 
-8. 若要启用数据导出，请确保启用的切换为**打开****状态**。 选择“保存”。
+    - **自定义字符串**：向每个消息添加一个自定义静态字符串。 输入任意密钥，并输入任意字符串值。
+    - **属性**：将当前设备报告的属性或云属性值添加到每条消息。 输入任意密钥，并选择 "设备" 或 "云" 属性。 如果导出的消息来自没有指定属性的设备，则导出的消息不会获取扩充。
 
-9. 几分钟后，数据便会出现在所选目标中。
+1. 添加新的目标或添加已创建的目标。 选择 " **新建一个** " 链接，并添加以下信息：
+
+    - **目标名称**： IoT Central 中目标的显示名称。
+    - **目标类型**：选择目标的类型。 如果尚未设置目标，请参阅 [设置导出目标](#set-up-export-destination)。
+    - 对于 Azure 事件中心、Azure 服务总线队列或主题，请粘贴资源的连接字符串。
+    - 对于 Azure Blob 存储，请粘贴资源的连接字符串，并输入区分大小写的容器名称。
+    - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。
+    - 选择“创建” 。
+
+1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
+
+1. 完成导出设置后，请选择 " **保存**"。 几分钟后，你的数据将显示在目标中。
 
 ## <a name="export-contents-and-format"></a>导出内容和格式
 
-导出的遥测数据包含设备发送到 IoT Central 的整个消息，而不仅仅是遥测值本身。 导出的设备数据包含对所有设备的属性和元数据的更改，而导出的设备模板则包含对所有设备模板的更改。
+### <a name="azure-blob-storage-destination"></a>Azure Blob 存储目标
 
-对于事件中心和服务总线，数据将以近实时的速度导出。 数据在 `body` 属性中，采用 JSON 格式。 有关示例，请参阅下面的示例。
+每分钟导出一次数据，每个文件包含自上一次导出以来发生的一批更改。 导出的数据以 JSON 格式保存。 存储帐户中导出数据的默认路径为：
 
-对于 Blob 存储，将每分钟导出一次数据，其中每个文件包含自上次导出的文件以来发生的一批更改。 导出的数据以 JSON 格式放置在三个文件夹中。 存储帐户中的默认路径是：
+- 遥测： _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+- 属性更改： _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
-- 遥测数据：_{container}/{app-id}/telemetry/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
-- 设备：_{container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
-- 设备模板：_{container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+若要浏览 Azure 门户中的已导出文件，请导航到该文件，然后选择 " **编辑 blob**"。
 
-若要浏览 Azure 门户中的已导出文件，请导航到该文件，然后选择 "**编辑 blob** " 选项卡。
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure 事件中心和 Azure 服务总线目标
 
-## <a name="telemetry"></a>遥测
+数据将以近乎实时的速度导出。 数据在消息正文中，采用 JSON 格式编码为 UTF-8。
 
-对于事件中心和服务总线，IoT Central 在接收到来自设备的消息之后迅速导出一条新消息。 每个导出的消息都包含在正文属性中以 JSON 格式发送的完整消息。
+消息的批注或系统属性包包含 `iotcentral-device-id` 、 `iotcentral-application-id` 、 `iotcentral-message-source` 和字段，这些字段的 `iotcentral-message-type` 值与消息正文中相应的字段的值相同。
 
-对于 Blob 存储，将每分钟分批和导出一次消息。 导出的文件使用的格式与[IoT 中心消息路由](../../iot-hub/tutorial-routing.md)到 blob 存储导出的消息文件相同。
+### <a name="webhook-destination"></a>Webhook 目标
 
-> [!NOTE]
-> 对于 Blob 存储，请确保你的设备正在发送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` (或 `utf-16`) `utf-32` 的消息。 有关示例，请参阅 [IoT 中心文档](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
+对于 webhook 目标，数据也会以近乎实时的速度导出。 消息正文中的数据的格式与事件中心和服务总线的格式相同。
 
-发送遥测数据的设备由设备 ID 表示（请参阅以下部分）。 若要获取设备的名称，请导出设备数据并使用与设备消息的 **deviceId** 匹配的 **connectionDeviceId** 来关联每条消息。
+### <a name="telemetry-format"></a>遥测格式
 
-以下示例显示了从事件中心或服务总线队列或主题接收的消息：
+每个导出的消息都包含在消息正文中发送的完整消息的规范化形式。 消息采用 JSON 格式，并编码为 UTF-8。 每条消息中的信息包括：
 
-```json
-{
-  "temp":81.129693132351775,
-  "humid":59.488071477541247,
-  "EventProcessedUtcTime":"2020-04-07T09:41:15.2877981Z",
-  "PartitionId":0,
-  "EventEnqueuedUtcTime":"2020-04-07T09:38:32.7380000Z"
-}
-```
+- `applicationId`： IoT Central 应用程序的 ID。
+- `messageSource`：消息的源 `telemetry` 。
+- `deviceId`：发送遥测消息的设备的 ID。
+- `schema`：负载架构的名称和版本。
+- `templateId`：与设备关联的设备模板的 ID。
+- `enrichments`：导出时设置的任何根据。
+- `messageProperties`：设备随消息一起发送的附加属性。 这些属性有时称为 *应用程序属性*。 [了解 IoT 中心文档中的详细信息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-此消息不包括发送设备的设备 ID。
+对于事件中心和服务总线，IoT Central 在接收到来自设备的消息之后迅速导出一条新消息。
 
-若要从 Azure 流分析查询中的消息数据检索设备 ID，请使用[GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)函数。 有关示例，请参阅[使用流分析扩展 Azure IoT Central 使用自定义规则扩展 Azure、Azure Functions 和 SendGrid](./howto-create-custom-rules.md)。
+对于 Blob 存储，将每分钟分批和导出一次消息。
 
-若要在 Azure Databricks 或 Apache Spark 工作区中检索设备 ID，请使用[systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)。 有关示例，请参阅[使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central](./howto-create-custom-analytics.md)中的 Databricks 工作区。
-
-下面的示例显示了已导出到 blob 存储的记录：
+下面的示例显示导出的遥测消息：
 
 ```json
+
 {
-  "EnqueuedTimeUtc":"2019-09-26T17:46:09.8870000Z",
-  "Properties":{
-
-  },
-  "SystemProperties":{
-    "connectionDeviceId":"<deviceid>",
-    "connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-    "connectionDeviceGenerationId":"637051167384630591",
-    "contentType":"application/json",
-    "contentEncoding":"utf-8",
-    "enqueuedTime":"2019-09-26T17:46:09.8870000Z"
-  },
-  "Body":{
-    "temp":49.91322758395974,
-    "humid":49.61214852573155,
-    "pm25":25.87332214661367
-  }
-}
-```
-
-## <a name="devices"></a>设备
-
-快照中的每条消息或记录表示自上次导出的消息以来对设备及其设备和云属性进行的一项或多项更改。 消息包括：
-
-- IoT Central 中设备的 `id`
-- 设备的 `displayName`
-- 设备模板 ID`instanceOf`
-- `simulated`标志，如果设备为模拟设备，则为 true
-- `provisioned`标志，如果已设置设备，则为 true
-- `approved`标志，如果已批准设备发送数据，则为 true
-- 属性值
-- `properties`包括设备和云属性值
-
-删除的设备不会导出。 目前，在导出的消息中没有针对已删除设备的指示器。
-
-对于事件中心和服务总线，IoT Central 会以近乎实时的时间将包含设备数据的消息发送到事件中心、服务总线队列或主题。
-
-对于 Blob 存储，包含自上次写入后的所有更改的新快照每分钟导出一次。
-
-以下示例消息显示了事件中心或服务总线队列或主题中的设备和属性数据的相关信息：
-
-```json
-{
-  "body":{
-    "id": "<device Id>",
-    "etag": "<etag>",
-    "displayName": "Sensor 1",
-    "instanceOf": "<device template Id>",
-    "simulated": false,
-    "provisioned": true,
-    "approved": true,
-    "properties": {
-        "sensorComponent": {
-            "setTemp": "30",
-            "fwVersion": "2.0.1",
-            "status": { "first": "first", "second": "second" },
-            "$metadata": {
-                "setTemp": {
-                    "desiredValue": "30",
-                    "desiredVersion": 3,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 3
-                },
-                "fwVersion": { "ackVersion": 3 },
-                "status": {
-                    "desiredValue": {
-                        "first": "first",
-                        "second": "second"
-                    },
-                    "desiredVersion": 2,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 2
-                }
-            },
-            
-        }
-    },
-    "installDate": { "installDate": "2020-02-01" }
-},
-  "annotations":{
-    "iotcentral-message-source":"devices",
-    "x-opt-partition-key":"<partitionKey>",
-    "x-opt-sequence-number":39740,
-    "x-opt-offset":"<offset>",
-    "x-opt-enqueued-time":1539274959654
-  },
-  "partitionKey":"<partitionKey>",
-  "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
-  "offset":"<offset>"
-}
-```
-
-此快照是显示 Blob 存储中的设备和属性数据的示例消息。 导出的文件为每条记录包含一行。
-
-```json
-{
-  "id": "<device Id>",
-  "etag": "<etag>",
-  "displayName": "Sensor 1",
-  "instanceOf": "<device template Id>",
-  "simulated": false,
-  "provisioned": true,
-  "approved": true,
-  "properties": {
-      "sensorComponent": {
-          "setTemp": "30",
-          "fwVersion": "2.0.1",
-          "status": { "first": "first", "second": "second" },
-          "$metadata": {
-              "setTemp": {
-                  "desiredValue": "30",
-                  "desiredVersion": 3,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 3
-              },
-              "fwVersion": { "ackVersion": 3 },
-              "status": {
-                  "desiredValue": {
-                      "first": "first",
-                      "second": "second"
-                  },
-                  "desiredVersion": 2,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 2
-              }
-          },
-          
-      }
-  },
-  "installDate": { "installDate": "2020-02-01" }
-}
-```
-
-## <a name="device-templates"></a>设备模板
-
-每条消息或快照记录表示自上次导出的消息以来对已发布设备模板进行的一项或多项更改。 在每条消息或记录中发送的信息包括：
-
-- `id`与 `instanceOf` 上面的设备流匹配的设备模板
-- 设备模板的 `displayName`
-- 设备的 `capabilityModel`，包括其 `interfaces`、遥测数据、属性和命令定义
-- `cloudProperties` 定义
-- 重写和初始值，与 `capabilityModel` 内联在一起
-
-删除的设备模板不会导出。 目前，在导出的消息中没有针对已删除设备模板的指示器。
-
-对于事件中心和服务总线，IoT Central 会以近乎实时的时间将包含设备模板数据的消息发送到事件中心、服务总线队列或主题。
-
-对于 Blob 存储，包含自上次写入后的所有更改的新快照每分钟导出一次。
-
-此示例显示有关事件中心或服务总线队列或主题中的设备模板数据的消息：
-
-```json
-{
-  "body":{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "sensorComponent",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorConfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-此示例快照显示包含 Blob 存储中的设备和属性数据的消息。 导出的文件为每条记录包含一行。
-
-```json
-{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "Sensor component",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorconfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  }
-```
-
-## <a name="data-format-change-notice"></a>数据格式更改通知
-
-> [!Note]
-> 遥测流数据格式不受此更改的影响。 仅设备和设备模板数据流会受到影响。
-
-如果在已启用 "*设备*和*设备模板*" 流的预览应用程序中有现有的数据导出，请将导出更新为**30 年6月 30 2020 日**。 此要求适用于导出到 Azure Blob 存储、Azure 事件中心和 Azure 服务总线。
-
-自2020年2月3日起，启用了设备和设备模板的应用程序中的所有新导出都将具有上面所述的数据格式。 在此日期之前创建的所有导出都将保留在2020年6月30日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[设备属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[设备云属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)和[设备模板](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)对象匹配。
-
-对于**设备**，旧数据格式和新数据格式之间的显著差异包括：
-- `@id`对于删除的设备， `deviceId` 将重命名为`id` 
-- `provisioned`添加了标记以描述设备的设置状态
-- `approved`添加了标记以描述设备的审批状态
-- `properties`包括设备和云属性，与公共 API 中的实体匹配
-
-对于**设备模板**，旧数据格式和新数据格式之间的显著差异包括：
-
-- `@id`对于设备模板已重命名为`id`
-- `@type`对于设备模板，将重命名为 `types` ，现在为数组
-
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>从2020年2月3日 (格式弃用的设备) 
-
-```json
-{
-  "@id":"<id-value>",
-  "@type":"Device",
-  "displayName":"Airbox",
-  "data":{
-    "$cloudProperties":{
-        "Color":"blue"
-    },
-    "EnvironmentalSensor":{
-      "thsensormodel":{
-        "reported":{
-          "value":"Neque quia et voluptatem veritatis assumenda consequuntur quod.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "pm25sensormodel":{
-        "reported":{
-          "value":"Aut alias odio.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    },
-    "urn_azureiot_DeviceManagement_DeviceInformation":{
-      "totalStorage":{
-        "reported":{
-          "value":27900.9730905171,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "totalMemory":{
-        "reported":{
-          "value":4667.82916715811,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    }
-  },
-  "instanceOf":"<template-id>",
-  "deviceId":"<device-id>",
-  "simulated":true
-}
-```
-
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>从2020年2月3日 (格式弃用的设备模板) 
-
-```json
-{
-  "@id":"<template-id>",
-  "@type":"DeviceModelDefinition",
-  "displayName":"Airbox",
-  "capabilityModel":{
-    "@id":"<id>",
-    "@type":"CapabilityModel",
-    "implements":[
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"EnvironmentalSensor",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "comment":"Requires temperature and humidity sensors.",
-          "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-          "displayName":"Environmental Sensor",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current temperature on the device",
-              "displayName":"Temperature",
-              "name":"temp",
-              "schema":"double",
-              "unit":"Units/Temperature/celsius",
-              "valueDetail":{
-                "@id":"<id>",
-                "@type":"ValueDetail/NumberValueDetail",
-                "minValue":{
-                  "@value":"50"
-                }
-              },
-              "visualizationDetail":{
-                "@id":"<id>",
-                "@type":"VisualizationDetail"
-              }
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current humidity on the device",
-              "displayName":"Humidity",
-              "name":"humid",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current PM2.5 on the device",
-              "displayName":"PM2.5",
-              "name":"pm25",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"T&H Sensor Model Name",
-              "displayName":"T&H Sensor Model",
-              "name":"thsensormodel",
-              "schema":"string"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"PM2.5 Sensor Model Name",
-              "displayName":"PM2.5 Sensor Model",
-              "name":"pm25sensormodel",
-              "schema":"string"
-            }
-          ]
-        }
-      },
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "displayName":"Device information",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-              "displayName":"Total storage",
-              "name":"totalStorage",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-              "displayName":"Total memory",
-              "name":"totalMemory",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            }
-          ]
-        }
-      }
-    ],
-    "displayName":"AAEONAirbox52"
-  },
-  "solutionModel":{
-    "@id":"<id>",
-    "@type":"SolutionModel",
-    "cloudProperties":[
-      {
-        "@id":"<id>",
-        "@type":"CloudProperty",
-        "displayName":"Color",
-        "name":"Color",
-        "schema":"string",
-        "valueDetail":{
-          "@id":"<id>",
-          "@type":"ValueDetail/StringValueDetail"
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@preview",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "Activity": "running",
+        "BloodPressure": {
+            "Diastolic": 7,
+            "Systolic": 71
         },
-        "visualizationDetail":{
-          "@id":"<id>",
-          "@type":"VisualizationDetail"
-        }
-      }
-    ]
-  }
+        "BodyTemperature": 98.73447010562934,
+        "HeartRate": 88,
+        "HeartRateVariability": 17,
+        "RespiratoryRate": 13
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
 }
 ```
+
+## <a name="property-changes-format"></a>属性更改格式
+
+每条消息或记录表示对设备或云属性进行的一项更改。 对于设备属性，只会将报告的值中的更改导出为单独的消息。 导出的消息中的信息包括：
+
+- `applicationId`： IoT Central 应用程序的 ID。
+- `messageSource`：消息的源 `properties` 。
+- `messageType`： `cloudPropertyChange` 、 `devicePropertyDesiredChange` 或 `devicePropertyReportedChange` 。
+- `deviceId`：发送遥测消息的设备的 ID。
+- `schema`：负载架构的名称和版本。
+- `templateId`：与设备关联的设备模板的 ID。
+- `enrichments`：导出时设置的任何根据。
+
+对于事件中心和服务总线，IoT Central 会以近乎实时的时间将新的消息数据导出到事件中心、服务总线队列或主题。
+
+对于 Blob 存储，将每分钟分批和导出一次消息。
+
+下面的示例演示了 Azure Blob 存储中接收到的已导出属性更改消息。
+
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "properties",
+    "messageType": "cloudPropertyChange",
+    "deviceId": "18a985g1fta",
+    "schema": "default@preview",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:37:32.942Z",
+    "properties": [{
+        "fieldName": "MachineSerialNumber",
+        "value": "abc"
+    }],
+    "enrichments": {
+        "userSpecifiedKey" : "sampleValue"
+    }
+}
+```
+
+## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>旧数据导出和预览数据导出的比较
+
+下表显示了 [旧的数据导出](howto-export-data-legacy.md) 和预览数据导出功能之间的差异：
+
+| 功能  | 旧数据导出 | 新数据导出 |
+| :------------- | :---------- | :----------- |
+| 可用数据类型 | 遥测、设备、设备模板 | 遥测，属性更改 |
+| Filtering | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
+| 根据 | 无 | 使用自定义字符串或设备上的属性值丰富 |
+| Destinations | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
+| 支持的应用程序版本 | V2、V3 | 仅 V3 |
+| 明显限制 | 每个应用导出5个，每个导出1个目标 | 10个导出-每个应用的目标连接 |
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将数据导出到 Azure 事件中心、Azure 服务总线和 Azure Blob 存储后，请继续执行下一步：
-
-> [!div class="nextstepaction"]
-> [如何通过 Databricks 运行自定义分析](./howto-create-custom-analytics.md)
+了解如何使用新的数据导出后，建议下一步是了解 [如何在 IoT Central 中使用分析](./howto-create-analytics.md)

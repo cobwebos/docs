@@ -9,12 +9,12 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 53f96d8988adfea6e14e3eb349276199afc444d7
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011525"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461912"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -488,7 +488,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ### <a name="conceptual-articles-and-videos"></a>概念性文章和视频
 
 * [Azure 文件：适用于 Windows 和 Linux 的顺畅的云 SMB 文件系统](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [将 Azure 文件存储用于 Linux](storage-how-to-use-files-linux.md)
+* [在 Linux 中使用 Azure 文件存储](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>文件存储的工具支持
 
@@ -497,12 +497,12 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 ### <a name="reference"></a>参考
 
-* [用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage)
+* [适用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage)
 * [文件服务 REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>博客文章
 
 * [Azure 文件存储现已推出正式版](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [在 Azure 文件存储中](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Microsoft Azure 文件服务简介](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [将连接保存到 Microsoft Azure 文件中](https://docs.microsoft.com/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)

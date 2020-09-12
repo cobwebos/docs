@@ -3,12 +3,12 @@ title: 使用 Windows PowerShell DSC 安装连接的计算机代理
 description: 本文介绍如何使用支持 Azure Arc 的服务器 (预览版) 使用 Windows PowerShell DSC 将计算机连接到 Azure。
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213074"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565814"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安装连接的计算机代理
 
@@ -82,7 +82,7 @@ ms.locfileid: "88213074"
 
 可以将此资源添加到现有 DSC 配置，以表示计算机的端到端配置。 例如，你可能希望将此资源添加到设置安全操作系统设置的配置中。
 
-PowerShell 库中的 [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) 模块可用于创建示例配置的 [复合资源](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ，以进一步简化组合配置。
+PowerShell 库中的 [CompositeResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) 模块可用于创建示例配置的 [复合资源](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ，以进一步简化组合配置。
 
 ## <a name="next-steps"></a>后续步骤
 

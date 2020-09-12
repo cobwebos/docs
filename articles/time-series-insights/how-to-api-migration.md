@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d68323bb72779ec5978c721b5258d4c8a8d4940d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163945"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650789"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>迁移到新的 Azure 时序见解第 2 代 API 版本
 
@@ -56,7 +56,7 @@ ms.locfileid: "88163945"
 
     [![更新变量](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. 单击“更新已保存的查询”。 当完成变量更新时，该工具会发送通知。
+1. 单击“更新已保存的查询”。 当已保存的查询更新时，该工具将通知您。
 
     [![更新已保存的查询](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -70,7 +70,7 @@ ms.locfileid: "88163945"
 
 如果已使用 Power BI 连接器生成查询，则它们会使用预览版 API 和旧的时序表达式语法调用 Azure 时序见解。 在预览版 API 被弃用之前，这些查询可继续成功检索数据。
 
-若要更新查询以使用新的 API 版本和新的时序表达式语法，需要从资源管理器重新生成查询。 阅读有关如何[使用 Power BI 连接器创建查询](./how-to-connect-power-bi.md)的详细信息。
+若要更新查询以使用新的 API 版本和新的时序表达式语法，需要从资源管理器重新生成查询。 阅读有关如何 [使用 Power BI 连接器创建查询](./how-to-connect-power-bi.md)的详细信息。
 
 > [!NOTE]
 > 必须使用 2020 年 7 月版的 Power BI Desktop。 如果未使用此版本，则可能会看到[“无效的查询有效负载版本”错误](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)。
@@ -384,4 +384,4 @@ ms.locfileid: "88163945"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过[Azure 时序见解资源管理器](./concepts-ux-panels.md)或自定义应用程序测试环境。
+- 通过 [Azure 时序见解资源管理器](./concepts-ux-panels.md) 或自定义应用程序测试环境。

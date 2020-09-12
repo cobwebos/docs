@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135430"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614048"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -52,13 +52,13 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 ### <a name="destination-requirements"></a>目标要求
 
-在创建诊断设置之前，必须创建诊断设置的任何目标。 只要配置设置的用户具有对这两个订阅的相应 RBAC 访问权限，目标就不必与资源发送日志位于同一订阅中。 下表为每个目标提供了独特的要求，包括任何区域限制。
+在创建诊断设置之前，必须已创建诊断设置的任何目标。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，目标就不必位于发送日志的资源所在的订阅中。 下表提供了每个目标的独特要求，包括任何区域限制。
 
 | 目标 | 要求 |
 |:---|:---|
-| Log Analytics 工作区 | 工作区不需要与所监视的资源位于同一区域。|
-| 事件中心 | 命名空间的共享访问策略定义流式处理机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 若要更新诊断设置，使之包括流式传输，则必须在事件中心授权规则中拥有 ListKey 权限。<br><br>如果资源是区域，事件中心命名空间必须与受监视的资源位于同一区域。 |
-| Azure 存储帐户 | 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制数据所需的访问权限。 不过，如果要将活动日志和资源日志一同存档，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。<br><br>若要将数据发送到不可变存储，请按照[为 Blob 存储设置和管理不可变策略](../../storage/blobs/storage-blob-immutability-policies-manage.md)中所述为存储帐户设置不可变策略。 必须按照本文中的所有步骤操作，包括启用受保护的追加 blob 写入操作。<br><br>如果资源是区域，则存储帐户必须与受监视的资源位于同一区域。 |
+| Log Analytics 工作区 | 此工作区无需与要监视的资源在同一区域。|
+| 事件中心 | 命名空间的共享访问策略定义流式处理机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 若要更新诊断设置，使之包括流式传输，则必须在事件中心授权规则中拥有 ListKey 权限。<br><br>如果资源是区域性的，则事件中心命名空间需要与要监视的资源位于同一区域中。 |
+| Azure 存储帐户 | 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制数据所需的访问权限。 不过，如果要将活动日志和资源日志一同存档，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。<br><br>若要将数据发送到不可变存储，请按照[为 Blob 存储设置和管理不可变策略](../../storage/blobs/storage-blob-immutability-policies-manage.md)中所述为存储帐户设置不可变策略。 必须按照本文中的所有步骤操作，包括启用受保护的追加 blob 写入操作。<br><br>如果资源是区域性的，则存储帐户需要与要监视的资源位于同一区域中。 |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2 帐户目前不支持作为诊断设置的目标，即使它们可能在 Azure 门户中被列为有效选项。
@@ -100,7 +100,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
      - **所有指标** - 将资源的平台指标路由到 Azure 日志存储，但采用日志格式。 这些指标平常只发送到 Azure Monitor 指标时序数据库。 将它们发送到 Azure Monitor 日志存储（可通过 Log Analytics 进行搜索），以将它们集成到跨其他日志进行搜索的查询中。 此选项不一定适用于所有资源类型。 当受支持时，[Azure Monitor 支持的指标](metrics-supported.md)会列出为具体资源类型收集的具体指标。
 
        > [!NOTE]
-       > 请参阅本文前面部分介绍的将指标路由到 Azure Monitor 日志时的限制。  
+       > 请参阅本文前面 Azure Monitor 日志中的路由指标限制。  
 
 
      - **日志** - 列出根据资源类型提供的各种类别。 请选中你希望路由到目标的所有类别。

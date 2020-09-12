@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d7502414f6476cafcc85bbefd28a4ec463f62099
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: fd58adf9e845e296725131da96c3319a72895cb8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751689"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645689"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "88751689"
 
 1. 注册模型。
 1. 准备推理配置
-1. 准备条目脚本 (，除非使用 [无代码部署](how-to-deploy-no-code-deployment.md)) 
+1. 准备入口脚本（使用[无代码部署](how-to-deploy-no-code-deployment.md)的情况除外）
 1. 将模型部署到计算目标。
 1. 测试已部署的模型（也称为“Web 服务”）。
 
@@ -39,13 +39,13 @@ ms.locfileid: "88751689"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
-- [Azure 命令行接口 (机器学习服务的 CLI) 扩展](reference-azure-machine-learning-cli.md)。
+- [机器学习服务的 Azure 命令行界面 (CLI) 扩展](reference-azure-machine-learning-cli.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
-- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK)](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。
 
 ---
 
@@ -53,15 +53,15 @@ ms.locfileid: "88751689"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-按照 Azure CLI 文档中的说明 [设置你的订阅上下文](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)。
+按照 Azure CLI 文档中的说明[设置订阅上下文](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)。
 
-然后执行以下操作：
+然后执行以下命令：
 
 ```azurecli-interactive
 az ml workspace list --resource-group=<my resource group>
 ```
 
-查看有权访问的工作区。
+以便查看有权访问的工作区。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -70,7 +70,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-若要详细了解如何使用 SDK 连接到工作区，请参阅[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) 文档。
+若要详细了解如何使用 SDK 连接到工作区，请参阅[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) 文档。
 
 
 ---
@@ -89,7 +89,7 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 
 以下示例演示如何注册模型。
 
-### <a name="register-a-model-from-an-azure-ml-training-run"></a>从 Azure ML 定型运行注册模型
+### <a name="register-a-model-from-an-azure-ml-training-run"></a>通过 Azure ML 训练运行注册一个模型
 
 ```azurecli-interactive
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid --tag area=mnist
@@ -107,7 +107,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 若要在模型注册中包含多个文件，请将 `-p` 设置为包含文件的文件夹的路径。
 
-有关的详细信息 `az ml model register` ，请参阅 [参考文档](/cli/azure/ext/azure-cli-ml/ml/model)。
+有关 `az ml model register` 的详细信息，请参阅[参考文档](/cli/azure/ext/azure-cli-ml/ml/model)。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -121,9 +121,9 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 以下示例演示如何注册模型。
 
-### <a name="register-a-model-from-an-azure-ml-training-run"></a>从 Azure ML 定型运行注册模型
+### <a name="register-a-model-from-an-azure-ml-training-run"></a>通过 Azure ML 训练运行注册一个模型
 
-  使用 SDK 训练模型时，可以接收 [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) 对象或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 对象，具体取决于模型的训练方式。 每个对象都可用于注册通过实验运行创建的模型。
+  使用 SDK 训练模型时，可以接收 [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true) 对象或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 对象，具体取决于模型的训练方式。 每个对象都可用于注册通过实验运行创建的模型。
 
   + 通过 `azureml.core.Run` 对象注册模型：
  
@@ -134,7 +134,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅 [Run.register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 文档。
+    `model_path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅 [Run.register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 文档。
 
   + 通过 `azureml.train.automl.run.AutoMLRun` 对象注册模型：
 
@@ -177,13 +177,13 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
   若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。
 
-有关详细信息，请参阅关于[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的文档。
+有关详细信息，请参阅关于[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)的文档。
 
 若要详细了解如何使用在 Azure 机器学习之外训练的模型，请参阅[如何部署现有模型](how-to-deploy-existing-model.md)。
 
 ---
 
-## <a name="define-an-entry-script"></a>定义条目脚本
+## <a name="define-an-entry-script"></a>定义入口脚本
 
 [!INCLUDE [write entry script](../../includes/machine-learning-entry-script.md)]
 
@@ -202,9 +202,9 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 此实例中的配置指定以下设置：
 
-* 此模型需要 Python
-* 用于处理发送到已部署服务的 web 请求的[条目脚本](#define-an-entry-script)
-* 描述推理所需 Python 包的 Conda 文件
+* 需要 Python 的模型
+* [入口脚本](#define-an-entry-script)，用于处理发送到已部署服务的 Web 请求
+* 用于描述推理所需的 Python 包的 Conda 文件
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
@@ -242,7 +242,7 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
-有关使用 Azure 机器学习并自定义 Python 环境的详细讨论，请参阅 [在 Azure 机器学习中创建 & 使用软件环境](how-to-use-environments.md)。
+有关通过 Azure 机器学习使用和自定义 Python 环境的详细讨论，请参阅[在 Azure 机器学习中创建和使用软件环境](how-to-use-environments.md)。
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
@@ -261,7 +261,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
 
-有关推理配置的详细信息，请参阅 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 类文档。
+有关推理配置的详细信息，请参阅 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) 类文档。
 
 ---
 
@@ -273,7 +273,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-根据所选的计算目标，部署配置可用的选项会有所不同。
+适用于部署配置的选项因所选计算目标而异。
 
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
@@ -305,13 +305,13 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ## <a name="deploy-your-model"></a>部署模型
 
-你现在已准备好部署模型。 
+现在已准备好部署模型。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ### <a name="using-a-registered-model"></a>使用已注册的模型
 
-如果在 Azure 机器学习工作区中注册了模型，请将 "mymodel>： 1" 替换为模型的名称及其版本号。
+如果在 Azure 机器学习工作区中注册了模型，请将“mymodel:1”替换为模型的名称及其版本号。
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -319,7 +319,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 ### <a name="using-a-local-model"></a>使用本地模型
 
-如果你不想注册模型，则可以将 inferenceconfig.js中的 "sourceDirectory" 参数传递给，以指定用于提供模型的本地目录。
+如果不想注册模型，则可在 inferenceconfig.json 中传递 "sourceDirectory" 参数，以指定用于提供模型的本地目录。
 
 ```azurecli-interactive
 az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json
@@ -327,7 +327,7 @@ az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示了本地部署。 根据你在上一步中选择的计算目标，语法将有所不同。
+下面的示例演示了本地部署。 语法因你在上一步选择的计算目标而异。
 
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
@@ -338,7 +338,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-有关详细信息，请参阅关于 [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) 的文档。
+有关详细信息，请参阅关于 [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true)[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true) 的文档。
 
 ---
 
@@ -369,27 +369,27 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-若要删除已部署的 webservice，请使用 `az ml service <name of webservice>` 。
+若要删除已部署的 webservice，请使用 `az ml service <name of webservice>`。
 
 若要从工作区中删除已注册的模型，请使用 `az ml model delete <model id>`
 
-阅读有关 [删除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) 并 [删除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)的详细信息。
+详细了解如何[删除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) 和[删除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)。
 
 # <a name="python"></a>[Python](#tab/python)
 
 若要删除已部署的 Web 服务，请使用 `service.delete()`。
 若要删除已注册的模型，请使用 `model.delete()`。
 
-有关详细信息，请参阅关于 [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) 和 [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) 的文档。
+有关详细信息，请参阅关于 [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#&preserve-view=truedelete--) 和 [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedelete--) 的文档。
 
 ---
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查失败的部署问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
-* [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
+* [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)

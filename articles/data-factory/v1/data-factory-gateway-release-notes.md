@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194473"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490082"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -39,14 +39,14 @@ ms.locfileid: "84194473"
 ## <a name="earlier-versions"></a>早期版本
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
-- 可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
+- 如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
 - HDFS 连接器现在支持自签名的公共证书，方法是允许你跳过 TLS 验证。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增强功能
--   可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
+-   如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 在此处了解更多详情。
 -   现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
 -   已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
 -   已修复：从 Document DB 复制到 SQL Server 时，索引超出范围问题。
@@ -198,7 +198,7 @@ ms.locfileid: "84194473"
 
 *  支持 Configuration Manager 的诊断工具
 *  支持用于 Azure 数据工厂的表格数据源的表列
-*  支持用于 Azure 数据工厂的 SQL DW
+*  支持 Azure 数据工厂的 Azure Synapse 分析
 *  支持用于 Azure 数据工厂的 BlobSource 和 FileSource 中的隐藏
 *  支持 CopyBehavior - Azure 数据工厂中包含二进制副本的 BlobSink 和 FileSink 的 MergeFiles、PreserveHierarchy 和 FlattenHierarchy
 *  支持用于 Azure 数据工厂的复制活动报告进程

@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 452372f187e97a95b9eee88936b15a0409dd4fe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99936161039b05e5e6c00c129e81a35befaae961
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311374"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514452"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>适用于 IoT 的 Azure 安全中心入门
 
 本文介绍了适用于 IoT 服务的 Azure 安全中心的不同组件，并说明了如何使用两种可能的部署选项开始使用服务。
+
+正在寻找 Azure RTO 安全模块入门？ 请参阅 [AZURE Rto 安全模块的快速入门](quickstart-azure-rtos-security-module.md) 部分。 
 
 ## <a name="deployment-options"></a>部署选项
 
@@ -34,19 +36,19 @@ ms.locfileid: "81311374"
 
 使用无缝的内置部署选项，可快速将 IoT 的 Azure 安全中心集成到 IoT 中心，并为 IoT 中心配置、设备标识和管理以及中心设备通信模式提供安全分析。
 
-启动内置的 IoT 中心监视和建议的[部署](iot-hub-integration.md)。
+启动内置的 IoT 中心监视和建议的 [部署](iot-hub-integration.md) 。
     <br>
 
 ### <a name="enhanced-deployment"></a>增强型部署
 
 为了增强安全功能，除了启用 IoT 中心安全性外，为 IoT 代理部署 Azure 安全中心还可以为 IoT 设备提供基于代理的事件收集、分析和威胁检测，还提供全面的安全状况管理功能。
 
-启动[增强型部署](security-agents.md)，其中提供了基于代理的综合威胁防护和安全状况管理解决方案。
+启动 [增强型部署](security-agents.md) ，其中提供了基于代理的综合威胁防护和安全状况管理解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [为 IoT 启用 Azure 安全中心](quickstart-onboard-iot-hub.md)
-- 配置[解决方案](quickstart-configure-your-solution.md)
+- 配置 [解决方案](quickstart-configure-your-solution.md)
 - [创建安全模块](quickstart-create-security-twin.md)
-- 配置[自定义警报](quickstart-create-custom-alerts.md)
+- 配置 [自定义警报](quickstart-create-custom-alerts.md)
 - [部署安全代理](how-to-deploy-agent.md)

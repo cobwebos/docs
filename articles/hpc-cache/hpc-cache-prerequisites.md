@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096308"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613991"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -21,24 +21,24 @@ ms.locfileid: "87096308"
 
 观看这些视频，快速概述系统组件以及需要协同工作的组件。
 
-（单击视频图像或观看的链接。）
+ (单击视频图像或观看 ) 的链接。
 
-* [工作原理](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)-介绍 Azure HPC 缓存如何与存储和客户端交互
+* [工作原理](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) -介绍 Azure HPC 缓存如何与存储和客户端交互
 
-  [![视频缩略图： Azure HPC 缓存：工作方式（单击以访问视频页面）](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+  [![视频缩略图： Azure HPC 缓存：工作原理 (单击以访问视频页面) ](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
-* [先决条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)-介绍 NAS 存储、Azure Blob 存储、网络访问和客户端访问的要求
+* [先决条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) -介绍 NAS 存储、Azure Blob 存储、网络访问和客户端访问的要求
 
-  [![视频缩略图： Azure HPC 缓存：先决条件（单击以访问视频页）](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+  [![视频缩略图： Azure HPC 缓存：必备项 (单击以访问视频页面) ](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 
 有关具体建议，请阅读本文的其余部分。
 
 ## <a name="azure-subscription"></a>Azure 订阅
 
 建议使用付费订阅。
-
+<!-- 
 > [!NOTE]
-> Azure HPC 缓存团队必须先将订阅添加到访问列表，然后才能将其用于创建缓存实例。 此过程有助于确保每个客户从其缓存中获得高质量的响应能力。 填写[此窗体](https://aka.ms/onboard-hpc-cache)以请求访问。
+> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>网络基础结构
 
@@ -68,17 +68,17 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 简单的 DNS 服务器还可用于对所有可用缓存装入点中的客户端连接进行负载均衡。
 
-若要详细了解 azure 虚拟网络中的资源，请参阅[名称解析中的](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)azure 虚拟网络和 DNS 服务器配置。
+若要详细了解 azure 虚拟网络中的资源，请参阅 [名称解析中的](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)azure 虚拟网络和 DNS 服务器配置。
 
 ## <a name="permissions"></a>权限
 
 请先检查与权限相关的先决条件，然后再开始创建缓存。
 
-* 缓存实例需要能够创建虚拟网络接口（Nic）。 创建缓存的用户必须在订阅中具有足够的权限才能创建 Nic。
+* 缓存实例需要能够创建 (Nic) 的虚拟网络接口。 创建缓存的用户必须在订阅中具有足够的权限才能创建 Nic。
 
-* 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 使用基于角色的访问控制（RBAC）授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。
+* 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 使用基于角色的访问控制 (RBAC) 来授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。
 
-  按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明添加角色。
+  按照 [添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) 中的说明添加角色。
 
 ## <a name="storage-infrastructure"></a>存储基础结构
 
@@ -88,38 +88,38 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 ### <a name="blob-storage-requirements"></a>Blob 存储要求
 
-如果要将 Azure Blob 存储与缓存一起使用，则需要一个兼容的存储帐户，以及一个使用 Azure HPC 缓存格式化数据填充的空 Blob 容器或容器，如[将数据移动到 Azure Blob 存储](hpc-cache-ingest.md)中所述。
+如果要将 Azure Blob 存储与缓存一起使用，则需要一个兼容的存储帐户，以及一个使用 Azure HPC 缓存格式化数据填充的空 Blob 容器或容器，如 [将数据移动到 Azure Blob 存储](hpc-cache-ingest.md)中所述。
 
 尝试添加存储目标之前，请先创建帐户。 添加目标时，可以创建新的容器。
 
 若要创建兼容的存储帐户，请使用以下设置：
 
-* 性能：**标准**
-* 帐户类型： **StorageV2 （常规用途 v2）**
-* 复制：**本地冗余存储（LRS）**
-* 访问层（默认）：**热**
+* 性能： **标准**
+* 帐户类型： **StorageV2 (常规用途 v2) **
+* 复制： **本地冗余存储 (LRS) **
+*  (默认) 的访问层： **热**
 
 最好使用与缓存位于同一位置的存储帐户。
 
-还必须为缓存应用程序授予对 Azure 存储帐户的访问[权限](#permissions)，如上文所述。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的过程为缓存提供所需的访问角色。 如果你不是存储帐户所有者，请让所有者执行此步骤。
+还必须为缓存应用程序授予对 Azure 存储帐户的访问 [权限](#permissions)，如上文所述。 按照 [添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) 中的过程为缓存提供所需的访问角色。 如果你不是存储帐户所有者，请让所有者执行此步骤。
 
 ### <a name="nfs-storage-requirements"></a>NFS 存储要求
 <!-- linked from configuration.md -->
 
-如果使用的是 NFS 存储系统（例如，本地硬件 NAS 系统），请确保它满足这些要求。 你可能需要与存储系统（或数据中心）的网络管理员或防火墙管理器合作来验证这些设置。
+如果使用的是 NFS 存储系统 (例如，本地硬件 NAS 系统) ，请确保它满足这些要求。 你可能需要与存储系统 (或数据中心) 的网络管理员或防火墙管理器合作来验证这些设置。
 
 > [!NOTE]
 > 如果缓存对 NFS 存储系统的访问权限不足，则存储目标创建将失败。
 
-有关[解决 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)的详细信息。
+有关 [解决 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)的详细信息。
 
-* **网络连接：** Azure HPC 缓存需要在缓存子网和 NFS 系统的数据中心之间进行高带宽的网络访问。 建议使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或类似的访问。 如果使用的是 VPN，你可能需要将其配置为将 TCP MSS 固定在1350，以确保不会阻止较大的数据包。 阅读[vpn 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)，了解有关 vpn 设置疑难解答的详细信息。
+* **网络连接：** Azure HPC 缓存需要在缓存子网和 NFS 系统的数据中心之间进行高带宽的网络访问。 建议使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或类似的访问。 如果使用的是 VPN，你可能需要将其配置为将 TCP MSS 固定在1350，以确保不会阻止较大的数据包。 阅读 [vpn 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) ，了解有关 vpn 设置疑难解答的详细信息。
 
 * **端口访问：** 缓存需要访问存储系统上的特定 TCP/UDP 端口。 不同类型的存储具有不同的端口要求。
 
   若要检查存储系统的设置，请按照此过程操作。
 
-  * `rpcinfo`向存储系统发出命令以检查所需的端口。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
+  * `rpcinfo`向存储系统发出命令以检查所需的端口。 以下命令列出了这些端口，并在表中设置相关结果的格式。  (使用系统的 IP 地址来代替 *<storage_IP>* 术语。 ) 
 
     你可以从安装了 NFS 基础结构的任何 Linux 客户端发出此命令。 如果在群集子网中使用客户端，它还可以帮助验证子网和存储系统之间的连接。
 
@@ -131,38 +131,38 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
   * 如果无法使用 `rpcinfo` 命令，请确保这些常用端口允许入站和出站流量：
 
-    | 协议 | 端口  | 服务  |
+    | 协议 | Port  | 服务  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | mountd   |
-    | TCP/UDP  | 4047  | status   |
+    | TCP/UDP  | 4047  | 状态   |
 
     某些系统对这些服务使用不同的端口号，请参阅存储系统的文档以确保。
 
   * 检查防火墙设置，以确保它们允许所有这些所需端口上的流量。 请确保检查 Azure 中使用的防火墙以及数据中心内的本地防火墙。
 
-* **目录访问：**`showmount`在存储系统中启用命令。 Azure HPC 缓存使用此命令检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录（发生文件冲突的风险）。
+* **目录访问：**`showmount`在存储系统中启用命令。 Azure HPC 缓存使用此命令来检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录 () 发生文件冲突的风险。
 
   > [!NOTE]
-  > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请**不要启用 `showmount` **。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md)以获取帮助。
+  > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请**不要启用 `showmount` **。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md) 以获取帮助。
 
-  有关目录列表访问权限的详细信息，请参阅 NFS 存储目标[故障排除一文](troubleshoot-nas.md#enable-export-listing)。
+  有关目录列表访问权限的详细信息，请参阅 NFS 存储目标 [故障排除一文](troubleshoot-nas.md#enable-export-listing)。
 
-* **根访问**（读/写）：缓存以用户 ID 0 的形式连接到后端系统。 检查存储系统上的这些设置：
+* **根访问** (读/写) ：缓存以用户 ID 0 的形式连接到后端系统。 检查存储系统上的这些设置：
   
   * 启用 `no_root_squash`。 此选项可确保远程根用户可以访问 root 所拥有的文件。
 
   * 选中 "导出策略"，确保它们不包括缓存子网中的根访问限制。
 
-  * 如果你的存储具有作为另一个导出的子目录的任何导出，请确保缓存对路径的最小段具有根访问权限。 有关详细信息，请参阅 NFS 存储目标故障排除一文中[目录路径上的根访问权限](troubleshoot-nas.md#allow-root-access-on-directory-paths)。
+  * 如果你的存储具有作为另一个导出的子目录的任何导出，请确保缓存对路径的最小段具有根访问权限。 有关详细信息，请参阅 NFS 存储目标故障排除一文中 [目录路径上的根访问权限](troubleshoot-nas.md#allow-root-access-on-directory-paths) 。
 
 * NFS 后端存储必须是兼容的硬件/软件平台。 有关详细信息，请联系 Azure HPC 缓存团队。
 
-## <a name="set-up-azure-cli-access-optional"></a>设置 Azure CLI 访问权限（可选）
+## <a name="set-up-azure-cli-access-optional"></a>设置 Azure CLI 访问 (可选) 
 
-如果要从 Azure 命令行接口（Azure CLI）创建或管理 Azure HPC 缓存，则需要安装 CLI 软件和 HPC 缓存扩展。 按照[为 AZURE HPC 缓存设置 Azure CLI](az-cli-prerequisites.md)中的说明进行操作。
+如果要从 Azure 命令行接口创建或管理 Azure HPC 缓存 (Azure CLI) ，则需要安装 CLI 软件和 HPC 缓存扩展。 按照 [为 AZURE HPC 缓存设置 Azure CLI](az-cli-prerequisites.md)中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

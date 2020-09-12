@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6744bbf2e77fa0ec275350678e75ff094eec82e0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230307"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650387"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -33,7 +33,7 @@ ms.locfileid: "89230307"
 - 基于 `PipelineData` 创建你要持久保存的新 `Dataset` 对象
 
 > [!TIP]
-> 公共预览版类和中提供了在管道步骤之间传递临时数据并在管道运行后保存数据的更好的  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) 体验 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) 。  这些类是 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。
+> 公共预览版类和中提供了在管道步骤之间传递临时数据并在管道运行后保存数据的更好的  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 体验 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  这些类是 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性预览功能，随时可能会更改。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -42,7 +42,7 @@ ms.locfileid: "89230307"
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-- [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
+- [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
 
 - Azure 机器学习工作区。
   
@@ -61,7 +61,7 @@ ms.locfileid: "89230307"
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>将 `Dataset` 对象用于预先存在的数据 
 
-将数据引入到管道的首选方法是使用 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) 对象。 `Dataset` 对象表示在整个工作区中可用的持久性数据。
+将数据引入到管道的首选方法是使用 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) 对象。 `Dataset` 对象表示在整个工作区中可用的持久性数据。
 
 可以通过许多方法来创建和注册 `Dataset` 对象。 表格数据集用于一个或多个文件中可用的分隔数据。 文件数据集用于二进制数据（例如图像）或你要分析的数据。 创建 `Dataset` 对象的最简单编程方式是使用工作区存储或公共 URL 中的现有 blob：
 
@@ -152,7 +152,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>将 `PipelineData` 用于中间数据
 
-尽管 `Dataset` 对象表示持久性数据，但 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象用于从管道步骤输出的临时数据。 由于 `PipelineData` 对象的寿命比单个管道步骤长，因此你在管道定义脚本中定义它们。 创建 `PipelineData` 对象时，必须提供一个名称和用于存储数据的数据存储。 同时使用 `arguments` 和 `outputs` 参数将 `PipelineData` 对象传递给 `PythonScriptStep`：
+尽管 `Dataset` 对象表示持久性数据，但 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) 对象用于从管道步骤输出的临时数据。 由于 `PipelineData` 对象的寿命比单个管道步骤长，因此你在管道定义脚本中定义它们。 创建 `PipelineData` 对象时，必须提供一个名称和用于存储数据的数据存储。 同时使用 `arguments` 和 `outputs` 参数将 `PipelineData` 对象传递给 `PythonScriptStep`：
 
 ```python
 
@@ -177,7 +177,8 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 ```
 
 > [!TIP]
-> 公共预览版类提供了在管道步骤之间传递中间数据的改善体验 `OutputFileDatasetConfig` 。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
+> 公共预览版类提供了在管道步骤之间传递中间数据的改善体验 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 有关使用的代码示例 `OutputFileDatasetConfig` ，请参阅如何 [构建两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
+
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>将 `PipelineData` 用作训练步骤的输出
 在管道的 `PythonScriptStep` 中，可以使用程序的参数检索可用输出路径。 如果此步骤是第一个步骤并将初始化输出数据，则必须在指定的路径创建目录。 然后，你可以写入要包含在 `PipelineData` 中的任何文件。
@@ -192,7 +193,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-如果你已在创建 `PipelineData` 时将 `is_directory` 参数设置为 `True`，则只需执行 `os.makedirs()` 调用即可，然后就可以随意将所需的任何文件写入该路径。 有关更多详细信息，请查看 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 参考文档。
+如果你已在创建 `PipelineData` 时将 `is_directory` 参数设置为 `True`，则只需执行 `os.makedirs()` 调用即可，然后就可以随意将所需的任何文件写入该路径。 有关更多详细信息，请查看 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) 参考文档。
 
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>读取 `PipelineData` 作为非初始步骤的输入
@@ -227,7 +228,7 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 `PipelineData` 输入的值是上一输出的路径。 
 
 > [!TIP]
-> 公共预览版类提供了在管道步骤之间传递中间数据的改善体验 `OutputFileDatasetConfig` 。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
+> 公共预览版类提供了在管道步骤之间传递中间数据的改善体验 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 有关使用的代码示例 `OutputFileDatasetConfig` ，请参阅如何 [构建两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
 
 如前所示，如果第一个步骤写入了单个文件，则可以如下所示使用它： 
 
@@ -249,7 +250,7 @@ step1_output_ds.register(name="processed_data", create_new_version=True)
 
 ```
 > [!TIP]
-> 公共预览版类提供了用于在管道运行之外持久保存中间数据的体验 `OutputFileDatasetConfig` 。 有关 `OutputFileDatasetConfig` [SDK 参考文档中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)设计模式和方法的详细信息，请参阅。
+> 公共预览版类提供了用于在管道运行之外持久保存中间数据的体验 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 有关使用的代码示例 `OutputFileDatasetConfig` ，请参阅如何 [构建两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
 
 ## <a name="next-steps"></a>后续步骤
 

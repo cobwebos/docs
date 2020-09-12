@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146583"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650612"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "89146583"
 凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松地将训练脚本提交到[各种计算目标](how-to-set-up-training-targets.md)。 该模式提供了很强的灵活性和最大程度的控制度。
 
 
-借助估算器类，可以更轻松地通过深入学习和强化学习来训练模型。 它提供了一个高级抽象，可便于轻松地构造运行配置。 可以创建泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，并使用它在所选的任何计算目标（无论是本地计算机、Azure 中的单个 VM 还是 Azure 中的 GPU 群集）上提交使用任何所选的学习框架（如 scikit-learn）的训练脚本。 对于 PyTorch、TensorFlow、Chainer 和强化学习任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 和[强化学习](how-to-use-reinforcement-learning.md)估算器来简化这些框架的使用。
+借助估算器类，可以更轻松地通过深入学习和强化学习来训练模型。 它提供了一个高级抽象，可便于轻松地构造运行配置。 可以创建泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true)，并使用它在所选的任何计算目标（无论是本地计算机、Azure 中的单个 VM 还是 Azure 中的 GPU 群集）上提交使用任何所选的学习框架（如 scikit-learn）的训练脚本。 对于 PyTorch、TensorFlow、Chainer 和强化学习任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true) 和[强化学习](how-to-use-reinforcement-learning.md)估算器来简化这些框架的使用。
 
 ## <a name="train-with-an-estimator"></a>使用估算器进行训练
 
@@ -116,7 +116,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 `custom_docker_image`| 要使用的映像的名称。 仅提供公共 docker 存储库（这种情况下为 Docker 中心）中可用的映像。 若要使用专用 docker 存储库中的映像，请改为使用构造函数的 `environment_definition` 参数。| `None`
 `node_count`| 要用于训练作业的节点数。 | `1`
 `process_count_per_node`| 要在每个节点上运行的进程（或“工作线程”）数。 在这种情况下，使用每个节点上均可用的 `2`GPU。| `1`
-`distributed_training`| 用于使用 MPI 后端来启动分布式训练的 [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) 对象。  | `None`
+`distributed_training`| 用于使用 MPI 后端来启动分布式训练的 [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) 对象。  | `None`
 
 
 最后，提交训练作业：
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 训练模型后，就可以将它保存并注册到工作区。 借助模型注册，可以在工作区中存储模型，并对它进行版本管理，从而简化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-运行下面的代码会将模型注册到工作区，并可在远程计算上下文或部署脚本中按名称引用模型。 有关详细信息和其他参数，请参阅参考文档中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
+运行下面的代码会将模型注册到工作区，并可在远程计算上下文或部署脚本中按名称引用模型。 有关详细信息和其他参数，请参阅参考文档中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

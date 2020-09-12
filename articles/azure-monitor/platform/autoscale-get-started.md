@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794545"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651712"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -115,13 +115,17 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到 (应用服务的正常实例) 
 
-向外扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 为此，请打开应用服务的门户，并选择 "**监视**" 下的**运行状况检查**。 选择 " **启用** "，并在应用程序中提供有效的 URL 路径，例如 `/health` 或 `/api/health` 。 单击“保存”  。
+向外扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 为此，请打开应用服务的门户，并选择 "**监视**" 下的**运行状况检查**。 选择 " **启用** "，并在应用程序中提供有效的 URL 路径，例如 `/health` 或 `/api/health` 。 单击“保存” 。
 
 ### <a name="health-check-path"></a>运行状况检查路径
 
-路径必须在两分钟内响应，状态代码介于200与299之间 (包含) 。 如果路径在两分钟内未响应，或返回范围之外的状态代码，则实例将被视为 "不正常"。 运行状况检查与应用服务的身份验证和授权功能集成，即使启用了这些 microsoft.powershell.secuity 功能，系统也会到达终结点。 如果你使用自己的身份验证系统，运行状况检查路径必须允许匿名访问。 如果站点启用了 HTTP**s** ，则 healthcheck 将服从 http**s** ，并使用该协议发送请求。
+路径必须在两分钟内响应，状态代码介于200与299之间 (包含) 。 如果路径在两分钟内未响应，或返回范围之外的状态代码，则实例将被视为 "不正常"。 运行状况检查与应用服务的身份验证和授权功能集成，即使启用了这些 microsoft.powershell.secuity 功能，系统也会到达终结点。 如果你使用自己的身份验证系统，运行状况检查路径必须允许匿名访问。 如果站点启用了 HTTP**S** ，则 healthcheck 将首先命中 http 终结点，然后接受 307 HTTP 重定向到 HTTPS 终结点。
 
 运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，路径应返回500级别的响应代码，以指示该应用程序不正常。
+
+#### <a name="security"></a>安全性 
+
+大型企业的开发团队通常需要遵守其公开的 Api 的安全要求。 若要保护 healthcheck 终结点，你应该首先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、 [客户端证书](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)或虚拟网络等功能来限制对应用程序的访问。 你可以通过要求传入请求的匹配来保护 healthcheck 终结点本身 `User-Agent` `ReadyForRequest/1.0` 。 由于之前的安全功能已对该请求进行了保护，因此不能欺骗用户代理。
 
 ### <a name="behavior"></a>行为
 
