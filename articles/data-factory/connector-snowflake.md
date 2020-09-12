@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181878"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023850"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换雪花中的数据
 
@@ -49,7 +49,7 @@ ms.locfileid: "89181878"
 
 Snowflake 链接服务支持以下属性。
 
-| 属性         | 描述                                                  | 必需 |
+| 属性         | 说明                                                  | 必需 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type 属性必须设置为 **Snowflake**。              | 是      |
 | connectionString | 指定连接到雪花实例所需的信息。 你可以选择将密码或整个连接字符串放在 Azure Key Vault 中。 如需更多详细信息，请参阅表下面的示例和[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)一文。<br><br>一些典型的设置：<br>- **帐户名：** 雪花帐户的  [完整帐户名称](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (包括标识区域和云平台) 的其他段，如 xy12345-zh-cn。<br/>- **用户名：** 连接的用户的登录名。<br>- **密码：** 用户的密码。<br>- **数据库：** 连接后要使用的默认数据库。 它应该是指定角色具有权限的现有数据库。<br>- **仓库：** 连接后要使用的虚拟仓库。 它应是指定角色具有权限的现有仓库。<br>- **角色：** 要在雪花会话中使用的默认访问控制角色。 指定的角色应为已分配给指定用户的现有角色。 默认角色是公共的。 | 是      |
@@ -63,7 +63,11 @@ Snowflake 链接服务支持以下属性。
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -105,7 +109,7 @@ Snowflake 链接服务支持以下属性。
 
 Snowflake 数据集支持以下属性。
 
-| 属性  | 描述                                                  | 必需                    |
+| 属性  | 说明                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 SnowflakeTable。 | 是                         |
 | 架构 | 架构的名称。 请注意，架构名称在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
@@ -143,7 +147,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 
 从 Snowflake 复制数据时，复制活动的“源”部分支持以下属性。
 
-| 属性                     | 描述                                                  | 必需 |
+| 属性                     | 说明                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的类型属性必须设置为 SnowflakeSource。 | 是      |
 | 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。<br>不支持执行存储过程。 | 否       |
@@ -274,7 +278,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 若要将数据复制到 Snowflake，复制活动的“接收器”部分需要支持以下属性。
 
-| 属性          | 描述                                                  | 必需                                      |
+| 属性          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 复制活动接收器的类型属性设置为 SnowflakeSink。 | 是                                           |
 | preCopyScript     | 指定在每次运行中将数据写入到 Snowflake 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
@@ -407,10 +411,10 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 下表列出了雪花型源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。连接器利用雪花 [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | * 仅限内联数据集的 () *<br>tableName<br>schemaName |
-| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。 | 否 | 字符串 | query |
+| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | String | * 仅限内联数据集的 () *<br>tableName<br>schemaName |
+| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。 | 否 | String | 查询 |
 
 #### <a name="snowflake-source-script-examples"></a>雪花源脚本示例
 
@@ -437,7 +441,7 @@ source(allowSchemaDrift: true,
 
 下表列出了雪花接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。使用内联数据集时，你将看到与 " [数据集属性](#dataset-properties) " 一节中所述的属性相同的其他设置。 连接器利用雪花 [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Update 方法 | 指定允许对雪花目标执行哪些操作。<br>若要更新、upsert 或删除行，需要 [更改行转换](data-flow-alter-row.md) 以标记这些操作的行。 | 是 | `true` 或 `false` | 删除 <br/>可插入 <br/>更新 <br/>upsertable |
 | 键列 | 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。 | 否 | Array | 密钥 |

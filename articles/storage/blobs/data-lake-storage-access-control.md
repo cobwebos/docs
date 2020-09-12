@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 中的访问控制概述 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen2 中的访问控制的工作原理。 支持 azure RBAC) 和类似 POSIX 的 Acl 中的基于角色的访问控制 (。
+description: 了解 Azure Data Lake Storage Gen2 中访问控制的工作原理。 支持 Azure 基于角色的访问控制 (Azure RBAC) 和类似 POSIX 的 ACL。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030480"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017228"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
-Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持 Azure RBAC) 和类似 POSIX 的访问控制列表 (Acl) 中使用 Azure 基于角色的访问 (控制。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
+Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持 Azure 基于角色的访问控制 (Azure RBAC) 和类似 POSIX 的访问控制列表 (ACL)。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
 
 <a id="azure-role-based-access-control-rbac"></a>
 
@@ -34,9 +34,9 @@ RBAC 使用角色分配对服务主体有效地应用权限集。 安全主体�
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>角色分配对文件和目录级访问控制列表的影响
 
-虽然使用 Azure 角色分配是一种强大的机制来控制访问权限，但它是相对于 Acl 的一种非常相当的粒度机制。 RBAC 的最小粒度在容器级别，其评估优先级高于 ACL。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
+虽然使用 Azure 角色分配是一种强大的访问权限控制机制，但相对于 ACL，这种机制并不精细。 RBAC 的最小粒度在容器级别，其评估优先级高于 ACL。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
 
-通过某个[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或某个自定义角色授予安全主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作受到安全主体的 Azure 角色分配的授权，则会立即解决授权，并且不执行任何其他 ACL 检查。 或者，如果安全主体没有 Azure 角色分配，或者请求的操作与分配的权限不匹配，则执行 ACL 检查来确定安全主体是否有权执行请求的操作。
+通过某个[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或某个自定义角色授予安全主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作通过安全主体的 Azure 角色分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 Azure 角色分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定安全主体是否有权执行请求的操作。
 
 > [!NOTE]
 > 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。 超级用户访问是唯一获准的更改资源所有者的方式。
@@ -256,7 +256,7 @@ Azure Data Lake Storage Gen2 的 umask 是设置为 007 的常量值。 此值�
 | umask.owning_group  |    0         |   `---`      | 对于拥有组，将父项的默认 ACL 复制到子项的访问 ACL | 
 | umask.other         |    7         |   `RWX`      | 对于其他，删除子项的访问 ACL 的所有权限 |
 
-Azure Data Lake Storage Gen2 的 umask 值实际上表示无论默认 ACL 作何指示，默认情况下永远不会在新子项上传输“其他”的值。 
+Azure Data Lake Storage Gen2 使用的 umask 值有效表示默认情况下，不会在新的子级上传输 **其他** 的值，除非在父目录中定义了默认 ACL。 在这种情况下，umask 将被有效地忽略，并且默认 ACL 定义的权限将应用于子项目。 
 
 以下伪代码显示了在为子项创建 ACL 时如何应用 umask。
 
@@ -332,7 +332,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
 
-Azure 角色分配将继承。 分配从订阅、资源组和存储帐户资源向下传递到容器资源。
+Azure 角色分配确实可以继承。 分配从订阅、资源组和存储帐户资源向下传递到容器资源。
 
 ACL 不支持继承。 但是，可以使用默认 ACL 来设置父目录下创建的子目录和文件的 ACL。 
 

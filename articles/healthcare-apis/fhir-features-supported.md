@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999999"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007564"
 ---
 # <a name="features"></a>功能
 
@@ -98,14 +98,24 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | 搜索操作       | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
-| `_sort`                 | 否        | 部分   | 部分        |   支持 `_sort=_lastUpdated`       |
+| `_sort`                 | 部分        | 部分   | 部分        |   支持 `_sort=_lastUpdated`       |
 | `_score`                | 否        | 否        | 否        |         |
 | `_count`                | 是       | 是       | 是       |         |
 | `_summary`              | 部分   | 部分   | 部分   | 支持 `_summary=count` |
 | `_include`              | 否        | 是       | 否        |         |
 | `_revinclude`           | 否        | 是       | 否        | 包含的项限制为100。 |
 | `_contained`            | 否        | 否        | 否        |         |
-| `_elements`             | 否        | 否        | 否        |         |
+| `_elements`             | 是        | 是        | 是        |         |
+
+## <a name="extended-operations"></a>扩展操作
+
+支持扩展 RESTful API 的所有操作。
+
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
+|-----------------------|-----------|-----------|-----------|---------|
+|  (整个系统的 $export)                 | 是       | 是       | 是       |         |
+| 患者/$export         | 是       | 是       | 是       |         |
+| 组/$export               | 是       | 是       | 是       |         |
 
 ## <a name="persistence"></a>持久性
 

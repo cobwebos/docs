@@ -1,20 +1,20 @@
 ---
-title: Azure 防火墙日志分析示例
+title: Azure 防火墙 Azure Monitor 日志
 description: Azure Monitor 日志可用于分析 Azure 防火墙。 示例文件是在 Azure Monitor 的视图设计器中构建的。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705955"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023867"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure 防火墙 Azure Monitor 日志
 
 以下 Azure Monitor 日志示例可用于分析 Azure 防火墙日志。 示例文件是在 Azure Monitor 的视图设计器中构建的，[Azure Monitor 中的视图设计器](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)一文提供了有关视图设计概念的更多信息。
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 以下日志示例显示了日志条目中包含的数据。
 
-![日志条目](media/log-analytics-samples/log1.png)
+![日志条目一](media/log-analytics-samples/log1.png)
 
-![日志条目](media/log-analytics-samples/log2.png)
+![日志条目二 ](media/log-analytics-samples/log2.png)
 
-![日志条目](media/log-analytics-samples/log3.png)
+![日志条目三](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>后续步骤
 
 若要了解 Azure 防火墙监视和诊断，请参阅[教程：监视 Azure 防火墙日志和指标](tutorial-diagnostics.md)。

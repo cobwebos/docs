@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012375"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023748"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用会话管理 REST API
 
@@ -79,7 +79,7 @@ $token = $response.AccessToken;
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId： GUID | 成功 |
+| 202 | -sessionId： GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>示例脚本：创建会话
 
@@ -122,7 +122,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 有几个命令可用于查询或修改现有会话的参数。
 
 > [!CAUTION]
-对于所有 REST 调用，通常情况下，发送这些命令会导致服务器中止并返回故障。 在本例中，状态代码为 429 ( "请求太多" ) 。 根据经验法则，在 **后续调用之间应有5-10 秒**的延迟。
+> 对于所有 REST 调用，通常情况下，发送这些命令会导致服务器中止并返回故障。 在本例中，状态代码为 429 ( "请求太多" ) 。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
 
 ### <a name="update-session-parameters"></a>更新会话参数
 
@@ -265,7 +265,7 @@ RawContentLength  : 60
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
-| 204 | | 成功 |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>示例脚本：停止会话
 

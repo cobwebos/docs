@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021878"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023765"
 ---
 # <a name="models"></a>模型
 
@@ -28,7 +28,6 @@ Azure 远程渲染中的模型指的是一个完整的对象表示法，由多�
 通过从文件格式（例如 FBX 和 GLTF）[转换输入模型](../how-tos/conversion/model-conversion.md)来创建运行时模型。 转换过程将提取所有资源，例如纹理、材料和网格，并将其转换为优化的运行时格式。 该过程还将提取结构信息，并将其转换为 ARR 的实体/组件图结构。
 
 > [!IMPORTANT]
->
 > [模型转换](../how-tos/conversion/model-conversion.md)是创建[网格](meshes.md)的唯一方式。 尽管可以在运行时在实体之间共享网格，但是除了加载模型之外，没有其他方法可以将网格引入运行时。
 
 ## <a name="loading-models"></a>加载模型
@@ -118,6 +117,13 @@ ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<E
 
 > [!CAUTION]
 > ARR 中的所有 Async 函数都返回异步操作对象。 在完成操作之前，必须存储对这些对象的引用。 否则，C# 垃圾回收器可能会提前删除该操作，并且该操作永远无法完成。 在上面的示例代码中，使用 await 可以确保局部变量“loadOp”在模型加载完成之前一直保留引用。 但是，如果要改用 Completed 事件，则需要将异步操作存储在成员变量中。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # RemoteManager LoadModelAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C # RemoteManager LoadModelFromSASAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C + + RemoteManager：： LoadModelAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C + + RemoteManager：： LoadModelFromSASAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>后续步骤
 

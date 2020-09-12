@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心 X.509 安全性概念 | Microsoft Docs
-description: 概念 - 了解 X.509 证书颁发机构证书在 IoT 设备制造和身份验证中的重要性。
+description: 概念-了解 IoT 设备制造和身份验证中的 x.509 证书颁发机构证书。
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320113"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019897"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性理解 IoT 行业中的 X.509 CA 证书
 
@@ -28,6 +28,8 @@ ms.locfileid: "61320113"
 * 如何为基于 X.509 CA 的身份验证设置制造供应链
 
 * 使用 X.509 CA 签名的设备如何连接到 IoT 中心
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>概述
 
@@ -63,13 +65,13 @@ X 公司可通过公共根证书颁发机构购买 X.509 CA 证书，也可通�
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>购买 X.509 CA 证书
 
-购买 CA 证书的好处是可让知名根 CA 充当可信第三方，确保设备连接时 IoT 设备的合法性。 如果 X 公司希望智能 X 小组件在与 IoT 中心进行初始连接后可与第三方产品或服务进行交互，则可选择此选项。
+购买 CA 证书的好处是可让知名根 CA 充当可信第三方，确保设备连接时 IoT 设备的合法性。 如果在初次连接到 IoT 中心后，X 公司希望将智能 X 小组件与第三方产品或服务进行交互，则可以选择此选项。
 
 要购买 X.509 CA 证书，X 公司可选择根证书服务提供商。 通过 Internet 搜索词语“根 CA”可找到一些好线索。 根 CA 将指导 X 公司了解如何创建公钥/私钥对以及如何为其服务生成证书签名请求 (CSR)。 CSR 是从证书颁发机构申请证书的正式过程。 此次购买的证书可用作证书颁发机构证书。 由于 X.509 证书普遍存在，所以该证书格式可能已按照 IETF RFC 5280 标准正确设置。
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>创建自签名 X.509 CA 证书
 
-除了需要根证书颁发机构等第三方签名人之外，创建自签名 X.509 CA 证书的过程与购买过程相同。 在本例中，X 公司要对其授权证书进行签名，而不是向根证书颁发机构购买。 在 X 公司准备好购买证书颁发机构证书前，他们可能会选择此选项进行测试。 如果 X 公司不打算将智能 X 小组件连接到 IoT 中心外任何第三方服务，则他们也可以在生产中使用自签名 X.509 CA 证书。
+创建自签名 x.509 CA 证书的过程类似于购买，但涉及到根证书颁发机构之类的第三方签名者除外。 在本例中，X 公司要对其授权证书进行签名，而不是向根证书颁发机构购买。 在 X 公司准备好购买证书颁发机构证书前，他们可能会选择此选项进行测试。 如果不打算将智能 X 小组件连接到 IoT 中心以外的任何第三方服务，则公司 X 还可以在生产中使用自签名的 x.509 CA 证书。
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>向 IoT 中心注册 X.509 证书
 

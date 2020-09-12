@@ -1,6 +1,6 @@
 ---
 title: 发布者验证故障排除 - Microsoft 标识平台 | Azure
-description: 说明如何通过调用 Microsoft Graph API 对 Microsoft 标识平台的发布者验证（预览版）进行故障排除。
+description: 介绍如何通过调用 Microsoft Graph Api 来解决 Microsoft 标识平台的发行者验证问题。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282970"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007547"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>发布者验证（预览版）故障排除
-如果无法完成这个过程，或者在[发布者验证（预览版）](publisher-verification-overview.md)过程中遇到意外的行为，则在收到错误或看到意外行为时，应该首先执行以下操作： 
+# <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
+如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
 
 1. 查看 [要求](publisher-verification-overview.md#requirements)，并确保已满足这些要求。
 
@@ -62,7 +62,7 @@ ms.locfileid: "87282970"
 
 ## <a name="making-microsoft-graph-api-calls"></a>进行 Microsoft Graph API 调用 
 
-如果遇到问题，但无法根据在 UI 中看到的内容理解出现问题的原因，可能有帮助的做法是，使用 Microsoft Graph 调用执行可在应用注册门户中执行的相同操作来进行进一步的故障排除。 在预览阶段，这些 API 仅可在 Microsoft Graph 的 /beta 终结点上使用。  
+如果遇到问题，但无法根据在 UI 中看到的内容理解出现问题的原因，可能有帮助的做法是，使用 Microsoft Graph 调用执行可在应用注册门户中执行的相同操作来进行进一步的故障排除。
 
 要实现这些请求，最简单的方法是使用 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。 还可以考虑使用其他选项，例如，使用 [Postman](https://www.postman.com/)，或使用 PowerShell 来[调用 Web 请求](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)。  
 
