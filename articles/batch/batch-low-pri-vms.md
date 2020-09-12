@@ -3,14 +3,14 @@ title: 在经济高效的低优先级 VM 上运行工作负载
 description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负载的成本。
 author: mscurrell
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816688"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568449"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -18,7 +18,7 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负载的�
 
 低优先级 VM 利用 Azure 中多余的容量。 在池中指定低优先级 VM 时，Azure Batch 可以自动使用此多余容量（如果可用）。
 
-使用低优先级虚拟机的代价是这些虚拟机可能不可用，并将其分配，或在任何时间，具体取决于可用的容量可能会被抢占。 出于此原因，低优先级 VM 最适合用于某些类型的工作负载。 对于作业完成时间很灵活且工作分布在多个 VM 上的批处理和异步处理工作负载，可以使用低优先级 VM。
+使用低优先级 Vm 的折衷在于，这些 Vm 可能并非始终可以分配，也可能随时抢占，具体取决于可用容量。 出于此原因，低优先级 VM 最适合用于某些类型的工作负载。 对于作业完成时间很灵活且工作分布在多个 VM 上的批处理和异步处理工作负载，可以使用低优先级 VM。
 
 与专用 VM 相比，以显著低廉的价格提供低优先级 VM。 有关价格详细信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
 
@@ -123,7 +123,7 @@ int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-当池中的一个或多个节点被占用时，池上的列表节点操作仍会返回这些节点。 低优先级节点的当前数量保持不变，但这些节点会将其状态设置为“已占用”。 Batch 会尝试查找替代 VM，如果成功，节点将依次经历“正在创建”和“正在启动”状态，然后才可用于执行任务，就像新的节点一样。
+对于虚拟机配置池，当一个或多个节点被取代时，对该池的列表节点操作仍会返回这些节点。 低优先级节点的当前数量保持不变，但这些节点会将其状态设置为“已占用”。 Batch 会尝试查找替代 VM，如果成功，节点将依次经历“正在创建”和“正在启动”状态，然后才可用于执行任务，就像新的节点一样。
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>缩放包含低优先级 VM 的池
 
@@ -155,10 +155,11 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 ## <a name="handling-preemption"></a>处理取代
 
-VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作：
+Vm 可能偶尔会被抢占。 发生这种情况时，已在被抢占的节点 Vm 上运行的任务将重新排队并再次运行。
+
+对于虚拟机配置池，Batch 还会执行以下操作：
 
 -   将已取代的 VM 的状态更新为“已取代”。
--   如果已取代的节点 VM 上有运行中的任务，这些任务将重新排队并重新运行。
 -   VM 被实际删除，导致 VM 本地存储的所有数据丢失。
 -   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”和“正在启动”状态，然后可供任务计划使用。
 -   Azure 门户以指标形式提供取代计数。
@@ -168,7 +169,7 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 [Azure 门户](https://portal.azure.com)提供了低优先级节点的新指标。 这些指标是：
 
 - 低优先级节点计数
-- 低优先级核心计数 
+- 低优先级核心计数
 - 已占用节点计数
 
 在 Azure 门户中查看指标：
@@ -177,10 +178,10 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 2. 从“监视”部分选择“指标” 。
 3. 从“可用指标”列表选择所需指标。
 
-![低优先级节点的指标](media/batch-low-pri-vms/low-pri-metrics.png)
+![显示低优先级节点的指标选择的屏幕截图。](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
-* 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
-* 开始规划从低优先级 VM 到现成 VM 的迁移。 如果你在“云服务配置”池中使用低优先级 VM，则需规划迁移到“虚拟机配置”池 。
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+- 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
+- 开始规划从低优先级 VM 到现成 VM 的迁移。 如果你在“云服务配置”池中使用低优先级 VM，则需规划迁移到“虚拟机配置”池 。

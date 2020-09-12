@@ -11,22 +11,22 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 72706a67e1798662ea0f40fa7843c32d8267e0d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320181"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646064"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何从 Azure Kubernetes Service （AKS）群集上部署的 Azure 机器学习模型收集数据。 然后，收集的数据存储在 Azure Blob 存储中。
+本文演示如何从 Azure Kubernetes 服务 (AKS) 群集上部署的 Azure 机器学习模型中收集数据， 然后将收集的数据存储在 Azure Blob 存储中。
 
 启用收集后，收集的数据可帮助你：
 
-* [监视偏离](how-to-monitor-datasets.md)收集的生产数据的数据。
+* 针对收集的生产数据[监视数据偏移](how-to-monitor-datasets.md)。
 
 * 使用[Power BI](#powerbi)或[Azure Databricks](#databricks)分析收集的数据
 
@@ -61,17 +61,17 @@ Blob 中输出数据的路径遵循以下语法：
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
 
-- 必须安装 Azure 机器学习工作区、包含脚本的本地目录和用于 Python 的 Azure 机器学习 SDK。 若要了解如何安装，请参阅[如何配置开发环境](how-to-configure-environment.md)。
+- 必须安装一个 Azure 机器学习工作区、一个包含脚本的本地目录以及适用于 Python 的 Azure 机器学习 SDK。 若要了解如何安装，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 
 - 需要一个已训练的机器学习模型，该模型将部署到 AKS。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
 
 - 需要一个 AKS 群集。 有关如何创建此类群集并部署到其中的信息，请参阅[部署方式和部署位置](how-to-deploy-and-where.md)。
 
-- [设置环境](how-to-configure-environment.md)并安装 [Azure 机器学习监视 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+- [设置环境](how-to-configure-environment.md)并安装 [Azure 机器学习监视 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 
 ## <a name="enable-data-collection"></a>启用数据收集
 
-无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py)。
+无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true)。
 
 若要启用数据收集，需要：
 
@@ -149,7 +149,7 @@ Blob 中输出数据的路径遵循以下语法：
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>使用 Power BI 分析模型数据
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a> 使用 Power BI 分析模型数据
 
 1. 下载并打开 [Power BI Desktop](https://www.powerbi.com)。
 
@@ -185,7 +185,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 开始基于模型数据生成自定义报表。
 
-### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>使用 Azure Databricks 分析模型数据
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> 使用 Azure Databricks 分析模型数据
 
 1. 创建一个 [Azure Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
 
@@ -212,4 +212,4 @@ Blob 中输出数据的路径遵循以下语法：
 
 ## <a name="next-steps"></a>后续步骤
 
-检测收集的数据的[数据偏移](how-to-monitor-datasets.md)。
+针对已收集的数据[检测数据偏移](how-to-monitor-datasets.md)。

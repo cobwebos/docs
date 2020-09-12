@@ -1,18 +1,19 @@
 ---
 title: Azure 磁盘存储概述
-description: Azure 托管磁盘概述，在使用 Vm 时，将为你处理存储帐户。
+description: 概要介绍 Azure 托管磁盘，这种磁盘在你使用 VM 时为你处理存储帐户。
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c7bef7fac23ab054810d7d27f99b773f6910f344
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: contperfq1
+ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021421"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299926"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
 
@@ -91,11 +92,11 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 每个虚拟机都附加了一个操作系统磁盘。 该 OS 磁盘有一个预先安装的 OS，是在创建 VM 时选择的。 此磁盘包含启动卷。
 
-此磁盘的最大容量为 4095 GiB。
+此磁盘最大容量为 4,095 GiB。
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-大多数 Vm 包含非托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json) 时，临时磁盘上的数据可能会丢失。 在成功进行 VM 的标准重启期间，临时磁盘上的数据将会保留。 有关没有临时磁盘的 Vm 的详细信息，请参阅 [没有本地临时磁盘的 AZURE vm 大小](azure-vms-no-temp-disk.md)。
+大多数 VM 都包含一个临时磁盘，该磁盘不是托管磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json) 时，临时磁盘上的数据可能会丢失。 在以标准方式成功重启 VM 期间，临时磁盘上的数据将保留。 有关没有临时磁盘的 Vm 的详细信息，请参阅 [没有本地临时磁盘的 AZURE vm 大小](azure-vms-no-temp-disk.md)。
 
 在 Azure Linux VM 上，临时磁盘通常为“/dev/sdb”；在 Windows VM 上，临时磁盘默认为 D:。 务器端加密不会加密临时磁盘，除非你在主机上启用加密。
 

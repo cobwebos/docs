@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922797"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661097"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -39,7 +39,7 @@ ms.locfileid: "88922797"
 
 可以通过以下方式区分层：
 
-+ 可创建的索引和索引器数量
++ 索引和索引器的数量 (最大限制) 
 + 分区（物理存储）的大小和速度
 
 选择的层决定了计费费率。 以下 Azure 门户屏幕截图显示了可用的层，其中不包括定价层（可在门户中和[定价页](https://azure.microsoft.com/pricing/details/search/)上找到该层）。 “免费”、“基本”和“标准”层是最常用的层。  

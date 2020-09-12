@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：配置对等互连：经典
 description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: cherylmc
-ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736231"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395547"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "84736231"
 > * [视频 - 专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [视频 - 公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [视频 - Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [PowerShell （经典）](expressroute-howto-routing-classic.md)
+> * [PowerShell（经典）](expressroute-howto-routing-classic.md)
 > 
 
 本文指导执行相关步骤，以便使用 PowerShell 和经典部署模型创建和管理 ExpressRoute 线路的对等互连/路由配置。 下面的步骤还将说明如何查看状态，以及如何更新、删除和取消预配 ExpressRoute 线路的对等互连。 可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 
@@ -38,7 +38,7 @@ ms.locfileid: "84736231"
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
-* 必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行下述 cmdlet。
+* 必须有一个活动的 ExpressRoute 线路。 继续之前，请按照说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并让连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行下述 cmdlet。
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>下载最新的 PowerShell cmdlet
 
@@ -52,7 +52,7 @@ ms.locfileid: "84736231"
 
 1. **创建 ExpressRoute 线路。**
 
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在这种情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确保它已预配。**
    
    检查 ExpressRoute 线路是否已预配并已启用。
@@ -159,7 +159,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 
 1. **创建 ExpressRoute 线路**
 
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在这种情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
 
    首先必须检查 ExpressRoute 线路是否已预配并已启用。
@@ -263,7 +263,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
 
 1. **创建 ExpressRoute 线路**
   
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在这种情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
 
    确认线路显示为已预配并已启用。 
@@ -295,8 +295,8 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    
     在继续下一步之前，请确保已准备好以下信息。
    
-   * 主链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
-   * 辅助链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
+   * 主链路的 /30 子网。 这必须是你拥有且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
+   * 辅助链路的 /30 子网。 这必须是你拥有且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。

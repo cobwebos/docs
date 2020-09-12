@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c90590ac4c47f6ac8d51273fecfb653dfe056b1d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251979"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485764"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure Synapse Analytics（以前称为 SQL DW）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。 Azure Synapse Analytics 在大规模并行处理 (MPP) 体系结构的基础上构建，已针对企业数据仓库工作负荷进行优化。 它通过灵活地缩放存储以及独立计算提供云灵活性。
+[Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。 Azure Synapse Analytics 在大规模并行处理 (MPP) 体系结构的基础上构建，已针对企业数据仓库工作负荷进行优化。 它通过灵活地缩放存储以及独立计算提供云灵活性。
 
 现在通过使用 Azure 数据工厂，Azure Synapse Analytics 入门变得前所未有的简单。 Azure 数据工厂是一个完全托管的基于云的数据集成服务。 该服务可用于使用现有系统中的数据填充 Azure Synapse Analytics，在生成分析解决方案时节省时间。
 
@@ -31,7 +31,7 @@ ms.locfileid: "85251979"
 * **轻松设置**：无需脚本的直观 5 步向导。
 * **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
-* **通过使用 PolyBase 提供无与伦比的性能**：使用 Polybase 是将数据移到 Azure Synapse Analytics 的最高效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储和 Data Lake Store）的高加载速度。 （默认情况下，Polybase 支持 Azure Blob 存储和 Azure Data Lake Store。）有关详细信息，请参阅[复制活动性能](copy-activity-performance.md)。
+* **通过使用 PolyBase 提供无与伦比的性能**：使用 Polybase 是将数据移到 Azure Synapse Analytics 的最高效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储和 Data Lake Store）的高加载速度。 默认情况下，Polybase 支持 Azure Blob 存储和 Azure Data Lake Store () 。有关详细信息，请参阅 [复制活动性能](copy-activity-performance.md)。
 
 本文介绍如何使用数据工厂复制数据工具将数据从 Azure SQL 数据库加载至 Azure Synapse Analytics。 可以遵循类似步骤，从其他类型的数据存储中复制数据。
 
@@ -42,7 +42,7 @@ ms.locfileid: "85251979"
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Azure Synapse Analytics：此数据仓库保存从 SQL 数据库复制的数据。 如果没有 Azure Synapse Analytics，请参阅[创建 Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) 中的说明。
-* Azure SQL 数据库：本教程在 Azure SQL 数据库中复制艾德 Works LT 示例数据集的数据。 可以按照在[AZURE Sql 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明，在 SQL 数据库中创建此示例数据库。
+* Azure SQL 数据库：本教程从 Azure SQL 数据库中的 Adventure Works LT 示例数据集复制数据。 可以按照[在 Azure SQL 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明在 SQL 数据库中创建此示例数据库。
 * Azure 存储帐户：Azure 存储用作大容量复制操作中的暂存 blob。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
@@ -89,7 +89,7 @@ ms.locfileid: "85251979"
 
     d. 选择新创建的链接服务作为源，然后单击“下一步”。
 
-1. 在“选择要从中复制数据的表或使用自定义查询”页中，输入 **SalesLT** 以筛选表。 选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”。 
+1. 在“选择要从中复制数据的表或使用自定义查询”页中，输入 **SalesLT** 以筛选表。 选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”。
 
     ![选择源表](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
@@ -102,24 +102,24 @@ ms.locfileid: "85251979"
 
     a. 单击“+ 创建新连接”来添加连接
 
-    b. 从库中选择“Azure Synapse Analytics (以前称为 SQL DW)”，然后选择“继续”。 可以在搜索框中键入“SQL”以筛选连接器。
+    b. 从库中选择 " **Azure Synapse Analytics (以前的 SQL 数据仓库) ** ，然后选择" **继续**"。 可以在搜索框中键入“SQL”以筛选连接器。
 
-    ![选择 Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+    ![选择 Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. 在“新建链接服务”页上，从下拉列表中选择服务器名称和 DB 名称，指定用户名和密码。 单击“测试连接”以验证设置，然后选择“创建” 。
 
-    ![配置 Azure SQL DW](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+    ![配置 Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. 选择新创建的链接服务作为接收器，然后单击“下一步”。
 
-1. 在“表映射”页中查看内容并选择“下一步”。  此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下 Azure 数据工厂将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。
+1. 在“表映射”页中查看内容并选择“下一步”。 此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下 Azure 数据工厂将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。
 
    > [!NOTE]
    > 当 SQL Server 或 Azure SQL 数据库为源时，将应用 Azure Synapse Analytics 接收器的自动创建表的功能。 若从其他源数据存储复制数据，则在执行数据复制操作前，需先在接收器 Azure Synapse Analytics 中预创建架构。
 
    ![“表映射”页](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. 在“列映射”页中，查看内容并选择“下一步”。  智能表映射基于列名。 如果自动创建的表的数据工厂，源和目标存储之间存在不兼容时，可能发生数据类型转换。 如果在源列与目标列之间进行不受支持的数据类型转换，会显示错误消息以及相应的表。
+1. 在“列映射”页中，查看内容并选择“下一步”。 智能表映射基于列名。 如果自动创建的表的数据工厂，源和目标存储之间存在不兼容时，可能发生数据类型转换。 如果在源列与目标列之间进行不受支持的数据类型转换，会显示错误消息以及相应的表。
 
     ![“列映射”页](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/13/2020
+ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143727"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645740"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -157,7 +157,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | QnA Maker                        | 是                | 是                | -                  |
 | 语音服务                  | 是                | 是                | -                  |
 | 文本翻译                  | 是                | 是                | -                  |
-| Power BI                         | 是                | 预览，RSA 2048 位 | -                  |
+| Power BI                         | 是                | 是，RSA 4096 位  | -                  |
 | **分析**                    |                    |                    |                    |
 | Azure 流分析           | 是                | 暂无\*              | -                  |
 | 事件中心                       | 是                | 是                | -                  |

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: memildin
-ms.openlocfilehash: d9229137c999157d2cea112ebb5e6e8b169eed96
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192783"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375255"
 ---
 # <a name="workflow-automation"></a>工作流自动化
 
@@ -33,7 +33,7 @@ ms.locfileid: "88192783"
 |发布状态：|正式版|
 |计价|免费层|
 |必需的角色和权限：|资源组上的**安全管理员角色**或**所有者**<br>还必须对目标资源具有写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 权限是必需的或逻辑应用读取/触发器访问 (此角色无法创建或编辑逻辑应用;仅 *运行* 现有) <br> - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的<br>如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务 (例如，Outlook/团队/时差实例) |
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中国 Gov，其他 Gov|
 |||
 
 

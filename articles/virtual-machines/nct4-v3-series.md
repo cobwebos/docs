@@ -8,16 +8,18 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 73d583cb371876cefc10c982dbe66f6e15bddf03
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932604"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375221"
 ---
-# <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
+# <a name="ncast4_v3-series-in-preview"></a>预览中的 NCasT4_v3 系列 ()  
 
 NCasT4_v3 系列虚拟机由 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 提供支持 (罗马) cpu。 Vm 的功能最多支持4个 NVIDIA T4 Gpu，每个内存有 16 GB 内存，最多64个非多线程 AMD EPYC 7V12 (罗马) 处理器核心，440 GiB 的系统内存。 这些虚拟机非常适合用 CUDA、TensorFlow、Pytorch、Caffe 和其他框架或使用 NVIDIA 网格技术的图形工作负荷运行 ML 和 AI 工作负荷。 NCasT4_v3 系列非常适合用于运行推理工作负荷。
+
+你可以将请求作为预览计划的一部分 [提交](https://aka.ms/NCT4v3Preview) 。
 
 <br>
 
