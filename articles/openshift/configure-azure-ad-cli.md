@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590330"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469416"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>为 Azure Red Hat OpenShift 4 群集 (CLI 配置 Azure Active Directory 身份验证) 
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 检索用于配置 Azure Active Directory 应用程序的特定于群集的 Url。
 
@@ -66,7 +66,7 @@ az account show --query tenantId -o tsv
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>创建清单文件以定义要包含在 ID 令牌中的可选声明
 
-应用程序开发人员可以在其 Azure AD 的应用程序中使用 [可选的声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) ，以指定要发送到其应用程序的令牌中的声明。
+应用程序开发人员可以在其 Azure AD 的应用程序中使用 [可选的声明](../active-directory/develop/active-directory-optional-claims.md) ，以指定要发送到其应用程序的令牌中的声明。
 
 使用可选声明可以：
 
@@ -127,7 +127,7 @@ az ad app permission add \
 
 默认情况下，在 Azure Active Directory (Azure AD) 租户中注册的应用程序可供租户的所有已成功进行身份验证的用户使用。 租户管理员和开发人员可以通过 Azure AD 将应用限制为仅供租户中特定的一组用户或安全组使用。
 
-按照 Azure Active Directory 文档上的说明向 [应用程序分配用户和组](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
+按照 Azure Active Directory 文档上的说明向 [应用程序分配用户和组](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)。
 
 ## <a name="configure-openshift-openid-authentication"></a>配置 OpenShift OpenID 身份验证
 

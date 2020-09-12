@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249137"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442899"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用提取的数据运行跨租户分析 - 多租户应用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "85249137"
 
 如果所有数据只是在一个多租户数据库中，则访问所有租户的数据就很简单。 但是，如果数据大量分散在几千个数据库中，则访问就会变得更复杂。 克服复杂性的方法之一是将数据提取到分析数据库或数据仓库。 然后，可以查询数据仓库，以便从所有租户的票证数据中收集见解。
 
-本教程将会介绍此示例 SaaS 应用程序的完整分析方案。 首先，使用弹性作业来计划从每个租户数据库提取数据。 将数据发送到分析存储。 分析存储可以是 SQL 数据库或 SQL 数据仓库。 对于大规模数据提取，建议使用 [Azure 数据工厂](../../data-factory/introduction.md)。
+本教程将会介绍此示例 SaaS 应用程序的完整分析方案。 首先，使用弹性作业来计划从每个租户数据库提取数据。 将数据发送到分析存储。 分析存储可以是 SQL 数据库或 Azure Synapse Analytics (以前的 SQL 数据仓库) 。 对于大规模数据提取，建议使用 [Azure 数据工厂](../../data-factory/introduction.md)。
 
 接下来，将聚合的数据分片成一组[星型架构](https://www.wikipedia.org/wiki/Star_schema)表。 这些表由一个中心事实数据表和相关的维度表组成：
 
@@ -70,7 +70,7 @@ ms.locfileid: "85249137"
 
 若要完成本教程，请确保满足以下先决条件：
 
-- 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip 票证 SaaS 多租户数据库应用程序](../../sql-database/saas-multitenantdb-get-started-deploy.md)
+- 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内进行部署，请参阅 [部署和浏览 Wingtip 票证 SaaS 多租户数据库应用程序](../../sql-database/saas-multitenantdb-get-started-deploy.md)
 - 已从 GitHub 下载 Wingtip SaaS 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。** 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](../../sql-database/saas-multitenantdb-provision-and-catalog.md)。
@@ -80,7 +80,7 @@ ms.locfileid: "85249137"
 
 在本教程中，将门票销售数据执行分析。 在当前步骤中，请为所有租户生成门票数据。  稍后将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得有意义的数据量。** 数量够大的数据能够揭示不同购票模式的范围。
 
-1. 在**POWERSHELL ISE**中，打开 *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*，并设置以下值：
+1. 在 **POWERSHELL ISE**中，打开 *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*，并设置以下值：
     - **$DemoScenario**  = **1**所有会场的事件的购买票证
 2. 按 **F5** 运行脚本，并创建每个会场举行的每个活动的购票历史记录。  该脚本会运行几分钟时间，以生成数万张门票。
 
@@ -94,7 +94,7 @@ ms.locfileid: "85249137"
     - 若要将 SQL 数据库与列存储一起使用，请设置 **$DemoScenario**  =  **3**  
 3. 按 **F5** 运行演示脚本（用于调用 *Deploy-TenantAnalytics\<XX>.ps1* 脚本），以创建租户分析存储。 
 
-现在，你已部署了应用程序，并使用了感兴趣的租户数据对其进行了填充 *，请使用* [SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)来连接**tenants1- \<User\> mt**和使用* \@ ssword1*的**目录 \<User\> **
+现在，你已部署了应用程序，并使用了兴趣的租户数据对其进行了填充，请使用[SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ，使用 Login = *developer*，Password = *P \@ ssword1*连接**tenants1- \<User\> mt**和**目录-mt \<User\> **服务器。
 
 ![architectureOverView](./media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "85249137"
 
 在继续下一步之前，请确保已部署作业帐户和作业帐户数据库。 在接下来的一系列步骤中，将使用弹性作业从分片租户数据库提取数据，并将数据存储在分析存储中。 然后，第二个作业将数据分片，并将其存储到星型架构的表中。 这两个作业针对两个不同的目标组（即 **TenantGroup** 和 **AnalyticsGroup**）运行。 提取作业针对包含所有租户数据库的 TenantGroup 运行。 分片作业针对只包含分析存储的 AnalyticsGroup 运行。 使用以下步骤创建目标组：
 
-1. 在 SSMS 中，连接到目录-mt-中的**jobaccount**数据库 \<User\> 。
+1. 在 SSMS 中，连接到目录-mt-中的 **jobaccount** 数据库 \<User\> 。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
 3. 修改脚本顶部的 @User 变量，将 `<User>` 替换为部署 Wingtip Tickets SaaS 多租户数据库应用程序时使用的用户值。
 4. 按 **F5** 运行脚本，以创建两个目标组。
@@ -133,10 +133,10 @@ ms.locfileid: "85249137"
 
 每个作业提取自身的目标数据，并将其发布到分析存储。 有一个单独的作业会将提取的数据分片到分析星型架构。
 
-1. 在 SSMS 中，连接到目录-mt-服务器中的**jobaccount**数据库 \<User\> 。
+1. 在 SSMS 中，连接到目录-mt-服务器中的 **jobaccount** 数据库 \<User\> 。
 2. 在 SSMS 中，打开 *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*。
 3. 修改脚本顶部的 @User，并将 `<User>` 替换为部署 Wingtip Tickets SaaS 多租户数据库应用程序时使用的用户名。 
-4. 按**F5**运行用于创建和运行从每个租户数据库提取票证和客户数据的作业的脚本。 该作业会将数据保存到分析存储中。
+4. 按 **F5** 运行用于创建和运行从每个租户数据库提取票证和客户数据的作业的脚本。 该作业会将数据保存到分析存储中。
 5. 查询 tenantanalytics 数据库中的 TicketsRawData 表，确保该表中已填充来自所有租户的门票信息。
 
 ![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
@@ -153,7 +153,7 @@ ms.locfileid: "85249137"
 
 在本教程部分，定义并运行一个用于将提取的原始数据与星型架构表中的数据合并的作业。 合并作业完成后，将删除原始数据，以便下一个租户数据提取作业可以填充表。
 
-1. 在 SSMS 中，连接到目录-mt-中的**jobaccount**数据库 \<User\> 。
+1. 在 SSMS 中，连接到目录-mt-中的 **jobaccount** 数据库 \<User\> 。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*。
 3. 按 **F5** 运行脚本，以定义一个调用分析存储中 sp_ShredRawExtractedData 存储过程的作业。
 4. 请耐心等待，让作业成功运行。
@@ -172,11 +172,11 @@ ms.locfileid: "85249137"
 1. 启动 Power BI Desktop。
 2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...”******** 。
 3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。****
-4. 在数据库登录窗口中，输入服务器名称（ \<User\> database.windows.net）。 为“数据连接模式”选择“导入”，单击“确定”。******** 
+4. 在 "数据库登录" 窗口中，输入服务器名称 (目录 \<User\> database.windows.net) 。 为“数据连接模式”选择“导入”，单击“确定”。******** 
 
     ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”。  
+5. 选择左窗格中的 " **数据库** "，然后输入 "用户名 = *开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”  。  
 
     ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

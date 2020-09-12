@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：路由要求
 description: 本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.author: cherylmc
-ms.openlocfilehash: 7e70348ba1638057fdab579c1f2799a0f5aa77a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341360"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569605"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -83,7 +83,7 @@ ms.locfileid: "85341360"
 可选择使用用于专用对等互连的公共或专用 IPv4 地址。 我们会对用户的流量进行端到端隔离，因此在进行专用对等互连时，不可能出现与其他客户的地址发生重叠的情况。 这些地址不会播发到 Internet。 
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
-可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft Teams。 Microsoft 在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Microsoft 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft 团队。 Microsoft 在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保 IP 地址和 AS 号码已在下列其中一个注册表中注册：
 
@@ -100,7 +100,7 @@ ms.locfileid: "85341360"
 专用 AS 编号可以用于 Microsoft 对等互连，但也需手动验证。 此外，对于收到的前缀，我们会删除 AS PATH 中的专用 AS 数字。 因此，无法在 AS PATH 中追加专用 AS 数字来[影响 Microsoft 对等互连的路由](expressroute-optimize-routing.md)。 
 
 > [!IMPORTANT]
-> 不要将相同的公共 IP 路由播发到公共 Internet 和通过 ExpressRoute 播发。 为了降低错误配置导致不对称路由的风险，我们强烈建议通过 ExpressRoute 播发到 Microsoft 的 [NAT IP 地址](expressroute-nat.md)应该来自完全没有播发到 Internet 的范围。 如果无法实现这一点，则必须确保通过 ExpressRoute 播发的范围比 Internet 连接上的范围更具体。 除了要进行 NAT 的公共路由外，还可以在本地网络中通过 ExpressRoute 播发与 Microsoft 中的 Office 365 终结点通信的服务器使用的公共 IP 地址。 
+> 不要将相同的公共 IP 路由播发到公共 Internet 和通过 ExpressRoute 播发。 为了降低错误配置导致不对称路由的风险，我们强烈建议通过 ExpressRoute 播发到 Microsoft 的 [NAT IP 地址](expressroute-nat.md)应该来自完全没有播发到 Internet 的范围。 如果无法实现这一点，则必须确保通过 ExpressRoute 播发的范围比 Internet 连接上的范围更具体。 除了 NAT 的公共路由以外，还可以通过 ExpressRoute 播发本地网络中的服务器使用的公共 IP 地址，这些地址与 Microsoft 中的 Microsoft 365 终结点进行通信。 
 > 
 > 
 
@@ -138,7 +138,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 * 使用用户定义的路由可为需要 Internet 连接的每个子网建立 Internet 连接。
 
 > [!NOTE]
-> 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) 的说明来解决此问题。
+> 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) 的说明来解决此问题。
 > 
 > 
 
@@ -183,13 +183,13 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 挪威西部 | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 12076:55043 | 
 | **亚太区** | |
 | 东亚 | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
-| 东南亚 | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
+| Southeast Asia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **日本** | |
-| 日本东部 | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
+| Japan East | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
 | 日本西部 | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **澳大利亚** | |
 | 澳大利亚东部 | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
-| 澳大利亚东南部 | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
+| Australia Southeast | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **澳大利亚政府** | |
 | 澳大利亚中部 | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
 | 澳大利亚中部 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |
@@ -229,10 +229,10 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | Azure 资源管理器 |12076:5070 |
 | 其他 Office 365 联机服务 * * | 12076:5100 |
 
-\*Azure 全局服务目前仅包含 Azure DevOps。
-\*\*Microsoft 要求的授权，请参阅[为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
-\*\*\*此社区还发布了 Microsoft 团队服务所需的路由。
-\*\*\*\*CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选择 Dynamics 部署的区域社区。
+\* Azure 全局服务目前仅包含 Azure DevOps。
+\*\* Microsoft 要求的授权，请参阅 [为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
+\*\*\* 此社区还发布了 Microsoft 团队服务所需的路由。
+\*\*\*\* CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选择 Dynamics 部署的区域社区。
 
 > [!NOTE]
 > Microsoft 不遵循你在播发到 Microsoft 的路由上设置的任何 BGP 社区值。

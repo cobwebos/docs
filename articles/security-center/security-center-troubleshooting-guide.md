@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835999"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462388"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "83835999"
 
 * 虚拟机行为分析 (VMBA)
 * 网络分析
-* SQL 数据库和 SQL 数据仓库分析
+* SQL 数据库和 Azure Synapse Analytics (以前的 SQL 数据仓库) 分析
 * 上下文信息
 
 客户可以根据警报类型收集所需的信息，以便通过以下资源来调查警报：
@@ -151,4 +151,4 @@ ms.locfileid: "83835999"
 * [Azure 安全中心检测功能](security-center-detection-capabilities.md)
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](faq-general.md) - 查找有关使用服务的常见问题
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
+* [Azure 安全性博客](https://docs.microsoft.com/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

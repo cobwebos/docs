@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 910d98558e5b949a76202cce48c2a210531d5c35
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042660"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459787"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -30,7 +30,7 @@ ms.locfileid: "88042660"
 |----|:----|
 |发布状态：|正式版|
 |计价|标准层|
-|必需的角色和权限：|**工作区所有者**可以启用/禁用 FIM (有关详细信息，请参阅[Log Analytics) 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)。<br>**读者**可以查看结果。|
+|必需的角色和权限：|**工作区所有者** 可以启用/禁用 FIM (有关详细信息，请参阅 [Log Analytics) 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles) 。<br>**读者** 可以查看结果。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
 |||
 
@@ -112,7 +112,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 可能还会显示工作区对应的以下按钮：
 
 - ![启用图标][3] 指示未对工作区启用 FIM。 选择工作区可在该工作区中的所有计算机上启用 FIM。
-- ![升级计划图标 ][4] 表明工作区或订阅未在安全中心的标准层上运行。 若要使用 FIM 功能，订阅必须运行标准层。  选择工作区可以升级到标准层。 若要了解有关标准层和如何升级的详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+- ![升级计划图标 ][4] 表明工作区或订阅未在安全中心的标准层上运行。 若要使用 FIM 功能，订阅必须运行标准层。  选择工作区可以升级到标准层。 若要了解有关标准层和如何升级的详细信息，请参阅 [升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
 - 空白（没有任何按钮）表示已对工作区启用 FIM。
 
 在“文件完整性监视”下，可以选择某个工作区以便对其启用 FIM、查看该工作区的“文件完整性监视”仪表板工作区，或者将该工作区[升级](security-center-pricing.md)到标准层。
@@ -249,7 +249,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 * [设置安全策略](tutorial-security-policy.md) -- 了解如何为 Azure 订阅和资源组配置安全策略。
 * [管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助你保护 Azure 资源。
-* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/) - 获取最新的 Azure 安全新闻和信息。
+* [Azure 安全博客](https://docs.microsoft.com/archive/blogs/azuresecurity/) - 获取最新的 Azure 安全新闻和信息。
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png

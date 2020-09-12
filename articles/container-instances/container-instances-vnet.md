@@ -3,14 +3,13 @@ title: 将容器组部署到 Azure 虚拟网络
 description: 了解如何使用 Azure 命令行接口将容器组部署到新的或现有的 Azure 虚拟网络。
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c5eff486299a3974e8fb9b4b12d6bb74880c48d8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407143"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569384"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -18,7 +17,7 @@ ms.locfileid: "87407143"
 
 本文演示如何在 Azure CLI 中使用 [az container create][az-container-create] 命令将容器组部署到新的虚拟网络或现有虚拟网络。 
 
-有关网络方案和限制，请参阅[Azure 容器实例的虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
+有关网络方案和限制，请参阅 [Azure 容器实例的虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
 
 > [!IMPORTANT]
 > 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性](container-instances-virtual-network-concepts.md#where-to-deploy)。 
@@ -37,7 +36,7 @@ ms.locfileid: "87407143"
 
 虚拟网络和子网地址前缀分别指定虚拟网络和子网的地址空间。 这些值以无类域间路由 (CIDR) 表示法表示，例如 `10.0.0.0/16`。 有关使用子网的详细信息，请参阅[添加、更改或删除虚拟网络子网](../virtual-network/virtual-network-manage-subnet.md)。
 
-使用此方法部署第一个容器组后，可以通过指定虚拟网络和子网名称或者 Azure 自动创建的网络配置文件，来部署到同一子网。 由于 Azure 将该子网委托给了 Azure 容器实例，因此只能将容器组部署到该子网。**
+使用此方法部署第一个容器组后，可以通过指定虚拟网络和子网名称或者 Azure 自动创建的网络配置文件，来部署到同一子网。 由于 Azure 将该子网委托给了 Azure 容器实例，因此只能将容器组部署到该子网。
 
 ### <a name="example"></a>示例
 
@@ -60,7 +59,7 @@ az container create \
 
 将容器组部署到现有虚拟网络：
 
-1. 在现有虚拟网络中创建一个子网，使用已在其中部署了容器组的现有子网，或使用已腾空了所有** 其他资源的现有子网
+1. 在现有虚拟网络中创建一个子网，使用已在其中部署了容器组的现有子网，或使用已腾空了所有其他资源的现有子网
 1. 使用 [az container create][az-container-create] 部署容器组并指定以下信息之一：
    * 虚拟网络名称和子网名称
    * 虚拟网络资源 ID 和子网资源 ID，它允许使用其他资源组中的虚拟网络
@@ -205,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 执行该脚本之前，请将 `RES_GROUP` 变量设置为包含所要删除的虚拟网络和子网的资源组的名称。 如果未使用之前建议的 `aci-vnet` 名称，请更新虚拟网络的名称。 此脚本已针对 Bash Shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值和访问器。
 
 > [!WARNING]
-> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。** 一旦删除，**这些资源就不可恢复**。
+> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除，**这些资源就不可恢复**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

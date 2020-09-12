@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612548"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482838"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>为 Azure 虚拟机中的 SQL Server Always On 可用性组配置负载均衡器
 
@@ -40,7 +40,7 @@ ms.locfileid: "88612548"
 
 执行本文中的每个步骤可以在 Azure 门户中创建和配置负载均衡器。 完成该过程后，将配置群集，以将负载均衡器中的 IP 地址用于可用性组侦听器。
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>在 Azure 门户中创建并配置负载均衡器
+## <a name="create--configure-load-balancer"></a>创建 & 配置负载均衡器 
 
 在任务的此部分中，执行以下步骤：
 
@@ -71,7 +71,7 @@ ms.locfileid: "88612548"
    | --- | --- |
    | **名称** |表示负载均衡器的文本名称。 例如 **sqlLB**。 |
    | 类型 |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
-   | **SKU** |**标准**：如果你的 SQL 实例与负载均衡器在不同的可用性集中，则为必需。 </br> **基本**：默认选项。 |
+   | **SKU** |**基本**：默认选项。 仅当 SQL Server 实例位于同一可用性集中时有效。 </br> **标准**：首选。 如果 SQL Server 实例在同一可用性集中，则有效。 如果 SQL Server 实例位于不同的可用性区域中，则是必需的。 |
    | **虚拟网络** |选择 SQL Server 实例所在的虚拟网络。 |
    | **子网** |选择 SQL Server 实例所在的子网。 |
    | IP 地址分配 |**静态** |
@@ -124,7 +124,7 @@ Azure 将更新后端地址池的设置。 现在，可用性集具有包含两�
    | 间隔 |*5* |
    | 不正常阈值 |*2* |
 
-4.  选择“确定”。 
+4.  选择“确定” 。 
 
 > [!NOTE]
 > 确保指定的端口已在两个 SQL Server 实例的防火墙上打开。 这两个实例需要所用 TCP 端口的入站规则。 有关详细信息，请参阅[添加或编辑防火墙规则](https://technet.microsoft.com/library/cc753558.aspx)。 
@@ -157,7 +157,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
    > 可能需要在边栏选项卡中向下滚动才能查看所有设置。
    > 
 
-4. 选择“确定”。 
+4. 选择“确定” 。 
 
 5. Azure 将配置负载均衡规则。 负载均衡器现已配置为将流量路由到托管可用性组侦听器的 SQL Server 实例。 
 

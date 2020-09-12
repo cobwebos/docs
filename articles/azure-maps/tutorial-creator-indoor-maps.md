@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688074"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469909"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>使用 Creator 创建室内定位
 
@@ -120,7 +120,7 @@ ms.locfileid: "88688074"
 4. 在生成器选项卡中，启动新的 GET HTTP 方法。将 Azure Maps 主订阅密钥追加到 `status URL` 中。 在**GET** `status URL` 步骤3中复制的上发出 GET 请求。 类似于 `status URL` 以下 URL：
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     如果转换过程还没有完成，你可能会看到如下所示的 JSON 响应：
@@ -208,7 +208,7 @@ ms.locfileid: "88688074"
 3. 在图块集的 `statusURL` 处发出 GET 请求。 为了进行身份验证，请追加 Azure Maps 主订阅密钥。 请求应如下面的 URL 所示：
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. 当 GET HTTP 请求成功完成时，响应头包含已创建图块集的 `tilesetId`。 复制 `tilesetId`。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311562"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434531"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
@@ -32,7 +32,7 @@ ms.locfileid: "87311562"
 1. 登录 [Azure 门户](https://portal.azure.com)。 如果你的帐户有权访问多个租户，请在顶部菜单中选择“目录 + 订阅”筛选器，然后选择应包含你要创建的应用注册的租户。
 1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册”。 
-1. 选择“新注册”，输入应用程序的“名称”，并为应用程序选择“支持的帐户类型”。 请勿输入“重定向 URI”。 有关不同帐户类型的说明，请参阅 [使用 Azure 门户注册新应用程序](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)。
+1. 选择“新注册”，输入应用程序的“名称”，并为应用程序选择“支持的帐户类型”。 请勿输入“重定向 URI”。 有关不同帐户类型的说明，请参阅 [使用 Azure 门户注册新应用程序](quickstart-register-app.md)。
 1. 选择“注册”以创建应用注册。
 
 接下来，使用“重定向 URI”配置应用注册，以指定 Microsoft 标识平台应将客户端与任何安全令牌重定向到的位置。 按照适用于将在应用程序中使用的 MSAL.js 版本的步骤操作：
@@ -40,7 +40,7 @@ ms.locfileid: "87311562"
 - [采用身份验证代码流的 MSAL.js 2.0](#redirect-uri-msaljs-20-with-auth-code-flow)（推荐）
 - [采用隐式流的 MSAL.js 1.0](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>重定向 URI： [MSAL.js 2.0 与身份验证代码流](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>重定向 URI：[采用身份验证代码流的 MSAL.js 2.0](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 按照以下步骤为使用 MSAL.js 2.0 或更高版本的应用添加重定向 URI。 MSAL.js 2.0+ 支持使用 PKCE 和 CORS 的授权代码流，以响应[浏览器第三方 cookie 限制](reference-third-party-cookies-spas.md)。 MSAL.js 2.0+ 不支持隐式授权流。
 
@@ -52,9 +52,9 @@ ms.locfileid: "87311562"
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过使用“添加平台”窗格中的“单页应用程序”磁贴来配置重定向 URI，可以将应用程序注册配置为支持使用 PKCE 和 CORS 的授权代码流。
 
-请按照[教程](tutorial-v2-javascript-auth-code.md)获取进一步指导。
+如需进一步的指导，请参阅[教程](tutorial-v2-javascript-auth-code.md)。
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>重定向 URI： [MSAL.js 1.0 与隐式流](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>重定向 URI：[采用隐式流的 MSAL.js 1.0](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 请按照以下步骤为使用 MSAL.js 1.3 或更早版本的单页应用和隐式授权流添加重定向 URI。 使用 MSAL.js 1.3 或更早版本的应用程序不支持身份验证代码流。
 
@@ -69,7 +69,7 @@ ms.locfileid: "87311562"
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过选择“ID 令牌”和“访问令牌”中的一个或选择两个，即表示启用了隐式授权流。
 
-请按照[教程](tutorial-v2-javascript-spa.md)获取进一步指导。
+如需进一步的指导，请参阅[教程](tutorial-v2-javascript-spa.md)。
 
 ## <a name="note-about-authorization-flows"></a>关于授权流的注意事项
 

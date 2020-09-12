@@ -3,16 +3,16 @@ title: 排查 Azure 映像生成器服务问题
 description: 排查使用 Azure VM 映像生成器服务时遇到的常见问题和错误
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 09/03/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068079"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459923"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务问题
 
@@ -34,7 +34,7 @@ az image builder show --name $imageTemplateName  --resource-group $imageResource
 Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGroupName <imageTemplateResourceGroup> | Select-Object ProvisioningState, ProvisioningErrorMessage
 ```
 > [!NOTE]
-> 对于 PowerShell，你将需要安装[Azure 映像生成器 PowerShell 模块](../windows/image-builder-powershell.md#prerequisites)。
+> 对于 PowerShell，你将需要安装 [Azure 映像生成器 PowerShell 模块](../windows/image-builder-powershell.md#prerequisites)。
 
 以下部分包括常见映像模板提交错误的问题解决方法。
 
@@ -80,7 +80,7 @@ Microsoft.VirtualMachineImages/imageTemplates 'helloImageTemplateforSIG01' faile
 - 分布图像或共享图像库资源
 - 文件定制器正在访问的存储帐户、容器或 blob。 
 
-有关配置权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)
+有关配置权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)
 
 ### <a name="error-getting-managed-image"></a>获取托管映像时出错
 
@@ -102,7 +102,7 @@ Status=403 Code="AuthorizationFailed" Message="The client '......' with object i
 * 分布图像或共享图像库资源
 * 文件定制器正在访问的存储帐户、容器或 blob。 
 
-有关配置权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)
+有关配置权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)
 
 ### <a name="build--step-failed-for-image-version"></a>映像版本的生成步骤失败
 
@@ -156,7 +156,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 例如， *IT_aibmdi_helloImageTemplateLinux01*。
 
-可以通过选择**存储帐户**  >  **blob**来查看资源组中的自定义。  >  `packerlogs`  然后选择 "**目录 > 自定义日志**"。
+可以通过选择**存储帐户**  >  **blob**来查看资源组中的自定义。  >  `packerlogs`  然后选择 " **目录 > 自定义日志**"。
 
 
 ### <a name="understanding-the-customization-log"></a>了解自定义日志
@@ -194,7 +194,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
     PACKER OUT ==> azure-arm: Connected to SSH!
     ```
 
-4. 运行自定义阶段。 自定义运行时，可以通过查看自定义日志来识别它们。 搜索* (遥测) *。
+4. 运行自定义阶段。 自定义运行时，可以通过查看自定义日志来识别它们。 搜索 * (遥测) *。
     ```text
     (telemetry) Starting provisioner windows-update
     (telemetry) ending windows-update
@@ -245,7 +245,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 #### <a name="solution"></a>解决方案
 
-查看日志以查找定制员失败。 搜索* (遥测) *。 
+查看日志以查找定制员失败。 搜索 * (遥测) *。 
 
 例如：
 ```text
@@ -283,9 +283,9 @@ Deployment failed. Correlation ID: xxxxx-xxxx-xxxx-xxxx-xxxxxxxxx. Failed in bui
 
 4. 查看脚本中可能会导致脚本等待的错误和依赖项。
 
-5. 如果预计自定义需要更多时间，请增加[buildTimeoutInMinutes](image-builder-json.md)。 默认值为4小时。
+5. 如果预计自定义需要更多时间，请增加 [buildTimeoutInMinutes](image-builder-json.md)。 默认值为4小时。
 
-6. 如果有大量占用资源的操作（例如下载千兆字节的文件），请考虑基础生成 VM 大小。 服务使用 Standard_D1_v2 VM。 VM 具有1个 vCPU 和 3.5 GB 的内存。 如果要下载 50 GB，则这可能会耗尽 VM 资源，并导致 Azure 映像生成器服务和生成 VM 之间发生通信故障。 通过设置[VM_Size](image-builder-json.md#vmprofile)，使用较大的内存 VM 重试生成。
+6. 如果有大量占用资源的操作（例如下载千兆字节的文件），请考虑基础生成 VM 大小。 服务使用 Standard_D1_v2 VM。 VM 具有1个 vCPU 和 3.5 GB 的内存。 如果要下载 50 GB，则这可能会耗尽 VM 资源，并导致 Azure 映像生成器服务和生成 VM 之间发生通信故障。 通过设置 [VM_Size](image-builder-json.md#vmprofile)，使用较大的内存 VM 重试生成。
 
 ### <a name="long-file-download-time"></a>长时间文件下载时间
 
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>原因
 
-图像生成器等待添加图像并将其复制到共享映像库 (SIG) 超时。 如果将图像注入到 SIG 中，则可以假定映像生成成功。 但是，整个进程失败，因为映像生成器正在等待共享映像库完成复制。 即使生成失败，也会继续复制。 可以通过检查分发*runOutput*来获取映像版本的属性。
+图像生成器等待添加图像并将其复制到共享映像库 (SIG) 超时。 如果将图像注入到 SIG 中，则可以假定映像生成成功。 但是，整个进程失败，因为映像生成器正在等待共享映像库完成复制。 即使生成失败，也会继续复制。 可以通过检查分发 *runOutput*来获取映像版本的属性。
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -331,7 +331,7 @@ az resource show \
 
 #### <a name="solution"></a>解决方案
 
-增加**buildTimeoutInMinutes**。
+增加 **buildTimeoutInMinutes**。
  
 ### <a name="low-windows-resource-information-events"></a>低 Windows 资源信息事件
 
@@ -436,7 +436,7 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 
 重新检查 Azure 映像生成器是否具有所需的所有权限。 
 
-有关配置权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)
+有关配置权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)
 
 ### <a name="sysprep-timing"></a>Sysprep 计时
 
@@ -496,11 +496,33 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 ```
 #### <a name="cause"></a>原因
 
-原因可能是由于 D1_V2 VM 大小导致的计时问题。 如果自定义项的限制和执行时间小于三秒，则由 Azure 映像生成器运行 sysprep 命令以取消预配。 当 Azure 映像生成器取消预配时，sysprep 命令将检查*WindowsAzureGuestAgent*，这可能会导致计时问题。 
+原因可能是由于 D1_V2 VM 大小导致的计时问题。 如果自定义项的限制和执行时间小于三秒，则由 Azure 映像生成器运行 sysprep 命令以取消预配。 当 Azure 映像生成器取消预配时，sysprep 命令将检查 *WindowsAzureGuestAgent*，这可能会导致计时问题。 
 
 #### <a name="solution"></a>解决方案
 
 增加 VM 大小。 或者，你可以添加一个60秒的 PowerShell 睡眠自定义，以避免出现计时问题。
+
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>取消上下文取消上下文后取消生成器
+
+#### <a name="error"></a>错误
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>原因
+映像生成器服务使用端口 22 (Linux) 或 5986 (Windows) 来连接到 build VM，这在映像生成过程中将服务从生成 VM 断开连接时出现。 断开连接的原因可能有所不同，但在脚本中启用或配置防火墙可能会阻止上述端口。
+
+#### <a name="solution"></a>解决方案
+查看脚本以了解防火墙更改/启用或更改 SSH 或 WinRM，并确保任何更改都允许在上述端口上的服务和生成 VM 之间进行持续连接。 有关映像生成器网络的详细信息，请查看 [要求](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)。
 
 ## <a name="devops-task"></a>DevOps 任务 
 
@@ -526,7 +548,7 @@ template name:  t_1556938436xxx
 在某些情况下，你需要调查成功的生成，并想要查看日志。 如前所述，如果映像生成成功，将在清理过程中删除包含日志的暂存资源组。 但是，您可以执行的操作是在内联命令后面引入睡眠，然后在生成暂停时获取日志。 要执行此操作，请执行以下步骤：
  
 1. 更新内联命令并添加：写入主机/回显 "睡眠" –这将允许你在日志中搜索
-2. 为至少10分钟入门添加睡眠，可以使用 "[开始-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep)" 或 " `Sleep` Linux" 命令。
+2. 为至少10分钟入门添加睡眠，可以使用 " [开始-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep)" 或 " `Sleep` Linux" 命令。
 3. 使用上面的方法来确定日志位置，然后继续下载/检查日志，直到其进入睡眠状态。
 
 
@@ -564,7 +586,7 @@ template name:  t_1556938436xxx
 
 如果用户未取消此生成，则 Azure DevOps 用户代理已将其取消。 由于 Azure DevOps 功能，最有可能的超时时间为1小时。 如果你使用的是专用项目和代理，则会收到60分钟的生成时间。 如果生成超过超时时间，DevOps 将取消正在运行的任务。
 
-有关 Azure DevOps 功能和限制的详细信息，请参阅[Microsoft 托管的代理](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+有关 Azure DevOps 功能和限制的详细信息，请参阅 [Microsoft 托管的代理](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
  
 #### <a name="solution"></a>解决方案
 
@@ -572,9 +594,9 @@ template name:  t_1556938436xxx
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>无法成功创建从 AIB 映像创建的 Vm
 
-默认情况下，Azure 映像生成器会在每个映像自定义阶段结束时运行*预配*代码，以便*通用化*映像。 通用化是一个进程，其中，映像已设置为可重复使用以创建多个 Vm，你可以传入 VM 设置，例如主机名、用户名等。对于 Windows，Azure 映像生成器会执行*Sysprep*，Linux Azure 映像生成器将运行 `waagent -deprovision` 。 
+默认情况下，Azure 映像生成器会在每个映像自定义阶段结束时运行 *预配* 代码，以便 *通用化* 映像。 通用化是一个进程，其中，映像已设置为可重复使用以创建多个 Vm，你可以传入 VM 设置，例如主机名、用户名等。对于 Windows，Azure 映像生成器会执行 *Sysprep*，Linux Azure 映像生成器将运行 `waagent -deprovision` 。 
 
-对于 Windows，Azure 映像生成器使用通用 Sysprep 命令。 但是，这可能不适合每个成功的 Windows 通用化。 Azure 映像生成器允许自定义 Sysprep 命令。 请注意，Azure 映像生成器是一个映像自动化工具。 它负责成功运行 Sysprep 命令。 但是，你可能需要不同的 Sysprep 命令来使你的映像可重复使用。 对于 Linux，Azure 映像生成器使用一般 `waagent -deprovision+user` 命令。 有关详细信息，请参阅[Microsoft Azure Linux 代理文档](https://github.com/Azure/WALinuxAgent#command-line-options)。
+对于 Windows，Azure 映像生成器使用通用 Sysprep 命令。 但是，这可能不适合每个成功的 Windows 通用化。 Azure 映像生成器允许自定义 Sysprep 命令。 请注意，Azure 映像生成器是一个映像自动化工具。 它负责成功运行 Sysprep 命令。 但是，你可能需要不同的 Sysprep 命令来使你的映像可重复使用。 对于 Linux，Azure 映像生成器使用一般 `waagent -deprovision+user` 命令。 有关详细信息，请参阅 [Microsoft Azure Linux 代理文档](https://github.com/Azure/WALinuxAgent#command-line-options)。
 
 如果要迁移现有的自定义项，并且使用的是不同的 Sysprep/waagent 命令，则可以尝试使用映像生成器一般命令。 如果 VM 创建失败，请使用以前的 Sysprep/waagent 命令。
 
@@ -583,7 +605,7 @@ template name:  t_1556938436xxx
 
 ### <a name="command-locations-and-filenames"></a>命令位置和文件名
 
-Windows：
+Windows:
 
 ```
 c:\DeprovisioningScript.ps1
@@ -625,7 +647,7 @@ Write-Output '>>> Sysprep complete ...'
 
 ### <a name="overriding-the-commands"></a>重写命令
 
-若要重写命令，请使用 PowerShell 或 shell 脚本设置程序创建具有确切文件名的命令文件，并将其放入前面列出的目录中。 Azure 映像生成器将读取这些命令，并将输出写入*自定义日志*。
+若要重写命令，请使用 PowerShell 或 shell 脚本设置程序创建具有确切文件名的命令文件，并将其放入前面列出的目录中。 Azure 映像生成器将读取这些命令，并将输出写入 *自定义日志*。
 
 ## <a name="getting-support"></a>获取支持
 如果已参考本指南，但仍无法解决问题，则可以提出支持案例。 执行此操作时，请选择 "正确的产品和支持" 主题，这样做会与 Azure VM 映像生成器支持团队联系。
@@ -633,11 +655,11 @@ Write-Output '>>> Sysprep complete ...'
 选择案例产品：
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。

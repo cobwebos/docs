@@ -8,20 +8,20 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495312"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470028"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>设置 Azure Red Hat OpenShift 开发环境
 
 若要生成并运行 Microsoft Azure Red Hat OpenShift 应用程序，需要：
 
-* 安装 Azure CLI 的版本2.0.65 （或更高版本）（或使用 Azure Cloud Shell）。
+* 安装版本 2.0.65 (或更高版本的 Azure CLI () 或使用 Azure Cloud Shell) 。
 * 注册 `AROGA` 功能和关联的资源提供程序。
-* 创建 Azure Active Directory （Azure AD）租户。
+* ) 租户创建 Azure Active Directory (Azure AD。
 * 创建 Azure AD 应用程序对象。
 * 创建 Azure AD 用户。
 
@@ -37,15 +37,15 @@ az --version
 
 例如，输出的第一行将包含 CLI 版本 `azure-cli (2.0.65)` 。
 
-如果需要全新安装或升级，请参阅以下[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)说明。
+如果需要全新安装或升级，请参阅以下 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 说明。
 
-或者，您可以使用[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 使用 Azure Cloud Shell 时，请确保选择**Bash**环境（如果打算按照[创建和管理 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程系列中的说明进行操作）。
+或者，您可以使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 使用 Azure Cloud Shell 时，请确保选择 **Bash** 环境（如果打算按照 [创建和管理 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md) 教程系列中的说明进行操作）。
 
 ## <a name="register-providers-and-features"></a>注册提供程序和功能
 
 在 `Microsoft.ContainerService AROGA` `Microsoft.Solutions` `Microsoft.Compute` `Microsoft.Storage` `Microsoft.KeyVault` `Microsoft.Network` 部署第一个 Azure Red Hat OpenShift 群集之前，必须将功能、、、和提供程序手动注册到你的订阅。
 
-若要手动注册这些提供程序和功能，请使用 Bash shell 中的以下说明（如果已安装 CLI），或从 Azure 门户中的 Azure Cloud Shell （Bash）会话使用：
+若要手动注册这些提供程序和功能，请使用 Bash shell 中的以下说明（如果已安装 CLI），或从你的 Azure 门户中的 Azure Cloud Shell (Bash) 会话使用以下说明：
 
 1. 如果有多个 Azure 订阅，请指定相关订阅 ID：
 
@@ -95,17 +95,17 @@ az --version
     az provider register -n Microsoft.ContainerService --wait
     ```
 
-## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>创建 Azure Active Directory （Azure AD）租户
+## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>创建 Azure Active Directory (Azure AD) 租户
 
-Azure Red Hat OpenShift 服务需要一个关联的 Azure Active Directory （Azure AD）租户，它代表你的组织及其与 Microsoft 之间的关系。 你的 Azure AD 租户使你能够注册、构建和管理应用，并使用其他 Azure 服务。
+Azure Red Hat OpenShift 服务需要一个关联的 Azure Active Directory (Azure AD 表示你的组织及其与 Microsoft 的关系的) 租户。 你的 Azure AD 租户使你能够注册、构建和管理应用，并使用其他 Azure 服务。
 
-如果没有 Azure AD 用作 Azure Red Hat OpenShift 群集的租户，或者想要创建用于测试的租户，请按照为[Azure Red Hat OpenShift 群集创建 Azure AD 租户](howto-create-tenant.md)中的说明，然后再继续本指南。
+如果没有 Azure AD 用作 Azure Red Hat OpenShift 群集的租户，或者想要创建用于测试的租户，请按照为 [Azure Red Hat OpenShift 群集创建 Azure AD 租户](howto-create-tenant.md) 中的说明，然后再继续本指南。
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>创建 Azure AD 用户、安全组和应用程序对象
 
-Azure Red Hat OpenShift 需要权限才能在群集上执行任务，如配置存储。 这些权限通过[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)来表示。 还需要创建新的 Active Directory 用户，以便测试在 Azure Red Hat OpenShift 群集上运行的应用。
+Azure Red Hat OpenShift 需要权限才能在群集上执行任务，如配置存储。 这些权限通过 [服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)来表示。 还需要创建新的 Active Directory 用户，以便测试在 Azure Red Hat OpenShift 群集上运行的应用。
 
-按照[创建 Azure AD 应用对象和用户](howto-aad-app-configuration.md)中的说明，创建服务主体，为你的应用生成客户端密钥和身份验证回叫 URL，并创建新的 Azure AD 安全组和用户来访问该群集。
+按照 [创建 Azure AD 应用对象和用户](howto-aad-app-configuration.md) 中的说明，创建服务主体，为你的应用生成客户端密钥和身份验证回叫 URL，并创建新的 Azure AD 安全组和用户来访问该群集。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -115,4 +115,4 @@ Azure Red Hat OpenShift 需要权限才能在群集上执行任务，如配置�
 > [!div class="nextstepaction"]
 > [创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli-install]: /cli/azure/install-azure-cli

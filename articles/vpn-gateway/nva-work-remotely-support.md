@@ -5,14 +5,14 @@ services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/21/2020
+ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 8a22e8f0bde2d13b4055566d96680fadc2db6e11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80337094"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595353"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>远程工作：用于远程工作的网络虚拟设备 (NVA) 的注意事项
 
@@ -51,14 +51,16 @@ Azure 市场中的所有主流 NVA 供应商应已提供有关在部署其解决
 
 大多数主流 NVA 合作伙伴已经围绕在 COVID-19 疫情期间出现流量意外突增时如何进行扩展发布了指导。 下面是一些一些有用的合作伙伴资源链接。
 
-[Barracuda Enable Work from home while securing your data during COVID-19](https://www.barracuda.com/covid-19/work-from-home "在 COVID-19 疫情期间实现在家办公和数据保护")（在 COVID-19 疫情期间 Barracuda 可以实现在家办公和数据保护）
+[Barracuda Enable Work from home while securing your data during COVID-19](https://www.barracuda.com/covid-19/work-from-home "从家里启用工作，同时在 COVID 期间保护数据")（在 COVID-19 疫情期间 Barracuda 可以实现在家办公和数据保护）
 
-[Cisco AnyConnect Implementation and Performance/Scaling Reference for COVID-19 Preparation](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "应对 COVID-19 的 Cisco AnyConnect 实施方案和性能/缩放参考")（应对 COVID-19 的 Cisco AnyConnect 实施方案和性能/缩放参考）
+[在 Coronavirus 期间检查点安全远程人力](https://www.checkpoint.com/solutions/secure-remote-workforce-during-coronavirus/ "在 Coronavirus 期间保护远程人力")
 
-[Citrix COVID-19 Response Support Center](https://www.citrix.com/support/covid-19-coronavirus.html "Citrix COVID-19 响应支持中心")（Citrix COVID-19 响应支持中心）
+[适用于 COVID 的 Cisco AnyConnect 实现和性能/缩放参考-19 准备](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "适用于 COVID 的 Cisco AnyConnect 实现和性能/缩放参考-19 准备")
 
-[F5 Guidance to Address the Dramatic Increase in Remote Workers](https://www.f5.com/business-continuity "F5 针对远程工作者大幅增加提供的指导")（F5 针对远程工作者大幅增加提供的指导）
+[Citrix COVID-19 响应支持中心](https://www.citrix.com/support/covid-19-coronavirus.html "Citrix COVID-19 响应支持中心")
 
-[Fortinet COVID-19 Updates for Customers and Partners](https://www.fortinet.com/covid-19.html "面向客户和合作伙伴的 COVID-19 最新消息")（面向客户和合作伙伴的 Fortinet COVID-19 最新消息）
+[用于解决远程辅助角色大幅增加的 F5 指导](https://www.f5.com/business-continuity "用于解决远程辅助角色大幅增加的 F5 指导")
 
-[Palo Alto Networks COVID-19 Response Center](https://live.paloaltonetworks.com/t5/COVID-19-Response-Center/ct-p/COVID-19_Response_Center "Palo Alto Networks COVID-19 响应中心")（Palo Alto Networks COVID-19 响应中心）
+[适用于客户和合作伙伴的 Fortinet COVID-19 个更新](https://www.fortinet.com/covid-19.html "COVID-为客户和合作伙伴提供19个更新")
+
+[Palo Alto Networks COVID-19 答复中心](https://live.paloaltonetworks.com/t5/COVID-19-Response-Center/ct-p/COVID-19_Response_Center "Palo Alto Networks COVID-19 答复中心")

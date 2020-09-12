@@ -1,7 +1,7 @@
 ---
-title: 删除 TDE 保护程序（PowerShell & Azure CLI）
+title: 删除 TDE 保护器（PowerShell 和 Azure CLI）
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: 了解如何使用 TDE 和自带密钥（BYOK）支持对 Azure SQL 数据库或 Azure Synapse Analytics 进行可能已泄露的 TDE 保护程序。
+description: 了解如何针对使用 TDE（支持“创建自己的密钥”(BYOK)）的 Azure SQL 数据库或 Azure Synapse Analytics，响应可能已泄露的 TDE 保护器。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,47 +12,47 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 9ffc2af0309f8a682db04b36675a3c29725c44fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67bb77777ee1052a5429dc4599ed30593b9ae2ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324447"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436555"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-本主题介绍如何对在 Azure Key Vault 创建自己的密钥（BYOK）支持中与客户托管密钥结合使用 TDE 的 Azure SQL 数据库或 Azure Synapse Analytics 做出可能已泄露的 TDE 保护。 若要详细了解 TDE 的 BYOK 支持，请参阅[概述页](transparent-data-encryption-byok-overview.md)。
+本主题介绍如何针对使用 TDE（支持“Azure Key Vault 中的客户托管密钥 - 创建自己的密钥 (BYOK)”）的 Azure SQL 数据库或 Azure Synapse Analytics，响应可能已泄露的 TDE 保护器。 若要详细了解 TDE 的 BYOK 支持，请参阅[概述页](transparent-data-encryption-byok-overview.md)。
 
 > [!CAUTION]
-> 本文中所述的过程只能在极端情况下或在测试环境中完成。 仔细查看步骤，因为从 Azure Key Vault 中删除积极使用的 TDE 保护程序将导致**数据库变得不可用**。
+> 本文概述的过程仅应在极端情况下或在测试环境中执行。 请仔细查看相关步骤，因为从 Azure Key Vault 中删除活跃使用的 TDE 保护器将导致数据库不可用。
 
 如果怀疑某个密钥已泄露，以致某个服务或用户在未经授权的情况下访问该密钥，则最好是删除该密钥。
 
-请记住，在 Key Vault 中删除 TDE 保护程序后，最多10分钟后，所有已加密数据库将开始拒绝所有连接与相应的错误消息，并将其状态更改为 "[不可访问](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)"。
+请记住，在 Key Vault 中删除了 TDE 保护器后，在长达 10 分钟的时间内，所有加密数据库将开始拒绝所有带有相应错误消息的连接，并将其状态更改为[无法访问](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)。
 
-此操作方法指南基于发生泄露事件响应后的所需结果，进行了两种方法：
+本操作指南根据事件响应泄露后的预期结果介绍了两种方法：
 
-- 使 Azure SQL Database/Azure Synapse Analytics 中的数据库**不可访问**。
-- 使 Azure SQL 数据库/Azure SQL 数据仓库中的数据库**不可访问**。
+- 使 Azure SQL 数据库/Azure Synapse Analytics 中的数据库无法访问。
+- 若要使 Azure SQL 数据库中的数据库 Synapse Analytics (以前的 SQL 数据仓库) **不可访问**。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 必须有一个 Azure 订阅，并且是该订阅的管理员
 - 必须安装并运行 Azure PowerShell。
-- 本操作方法指南假设你已使用 Azure Key Vault 的密钥作为 Azure SQL 数据库或 Azure Synapse （以前称为 SQL 数据仓库）的 TDE 保护程序。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-overview.md)。
+- 本操作指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或 Azure Synapse（以前称为 SQL 数据仓库）的 TDE 保护器。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-overview.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
  有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 若要了解具体的 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。
 
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器（RM）模块仍受支持，但所有未来开发都适用于 Az .Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
+> 仍然支持 PowerShell Azure 资源管理器 (RM) 模块，但所有后续开发都针对 Az.Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-有关安装，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+有关安装的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 * * *
 
@@ -69,7 +69,7 @@ SELECT [database_id],
  FROM [sys].[dm_database_encryption_keys]
 ```
 
-以下查询将返回所使用的 Vlf 和 TDE 保护程序各自的指纹。 每个不同的指纹引用 Azure Key Vault (AKV) 中的不同密钥：
+下面的查询返回 VLF 和 TDE 保护程序各自使用的指纹。 每个不同的指纹引用 Azure Key Vault (AKV) 中的不同密钥：
 
 ```sql
 SELECT * FROM sys.dm_db_log_info (database_id)
@@ -87,7 +87,7 @@ PowerShell 命令 **az sql server key show** 提供查询中使用的 TDE 保�
 
 * * *
 
-## <a name="keep-encrypted-resources-accessible"></a>保持加密资源的可访问性
+## <a name="keep-encrypted-resources-accessible"></a>使加密资源保持可访问
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -138,7 +138,7 @@ PowerShell 命令 **az sql server key show** 提供查询中使用的 TDE 保�
 
 1. [在 Key Vault 中创建新密钥](/cli/azure/keyvault/key#az-keyvault-key-create)。 请务必在不包含可能已泄露的 TDE 保护器的另一个 Key Vault 中创建此新密钥，因为访问控制是在保管库级别预配的。
 
-2. 将新密钥添加到服务器，并将其更新为服务器的新 TDE 保护程序。
+2. 将新密钥添加到服务器，并将其更新为服务器的新 TDE 保护器。
 
    ```azurecli
    # add the key from Key Vault to the server  
@@ -178,7 +178,7 @@ PowerShell 命令 **az sql server key show** 提供查询中使用的 TDE 保�
 
 * * *
 
-## <a name="make-encrypted-resources-inaccessible"></a>使加密资源不可访问
+## <a name="make-encrypted-resources-inaccessible"></a>使加密的资源不可访问
 
 1. 删除可能已泄露的密钥所加密的数据库。
 

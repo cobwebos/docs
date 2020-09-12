@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961986"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506689"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>针对 Azure 虚拟机的选择性磁盘备份和还原
 
@@ -268,6 +268,10 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 使用 Azure 门户启用备份时，可以选择 " **仅备份 OS 磁盘** " 选项。 因此，你可以配置 Azure VM 的备份和操作系统磁盘，并排除附加到它的所有数据磁盘。
 
 ![仅为 OS 磁盘配置备份](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>使用 Azure REST API
+
+你可以使用几个选择磁盘配置 Azure VM 备份，也可以修改现有 VM 的保护，使其包含/排除几个磁盘（如 [此处](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)所述）。
 
 ## <a name="selective-disk-restore"></a>选择性磁盘还原
 

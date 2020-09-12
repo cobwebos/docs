@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071442"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595795"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>通过 Azure PowerShell 使用 TLS 终端创建应用程序网关
 
@@ -22,11 +22,10 @@ ms.locfileid: "89071442"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建自签名证书
-> * 设置网络
-> * 使用证书创建应用程序网关
-> * 使用默认后端池创建虚拟机规模集
+* 创建自签名证书
+* 设置网络
+* 使用证书创建应用程序网关
+* 使用默认后端池创建虚拟机规模集
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

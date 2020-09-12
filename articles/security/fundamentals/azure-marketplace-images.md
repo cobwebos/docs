@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038267"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536376"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure 市场映像的安全建议
 
@@ -27,7 +27,7 @@ ms.locfileid: "87038267"
 
 ## <a name="open-source-based-images"></a>打开基于源的映像
 
-| Category | 检查 |
+| 类别 | 检查 |
 | -------- | ----- |
 | 安全性                                                     | 安装适用于 Linux 分发版的所有最新安全修补程序。                                                                                                                                                                                                              |
 | 安全性                                                     | 遵循行业准则，保护特定 Linux 分发版的 VM 映像。                                                                                                                                                                                     |
@@ -49,7 +49,7 @@ ms.locfileid: "87038267"
 
 ## <a name="windows-server-based-images"></a>基于 Windows Server 的映像
 
-| Category | 检查 |
+| 类别 | 检查 |
 |--------- | ----- |
 | 安全性                                                         | 使用安全 OS 的基础映像。 用于任何基于 Windows Server 的映像源的 VHD 必须来自 Microsoft Azure 所提供的 Windows Server OS 映像。 |
 | 安全性                                                         | 安装所有最新的安全更新。                                                                                                                                     |
@@ -65,11 +65,3 @@ ms.locfileid: "87038267"
 
 即使你的组织没有 Azure marketplace 中的映像，也可以考虑根据这些建议检查 Windows 和 Linux 映像配置。
 
-## <a name="contacting-customers"></a>联系客户
-
-确定客户及其联系电子邮件：
-
-1.  在云合作伙伴门户的左侧，选择 " **Insights**"。
-2.  在 "**订单和用途**" 选项卡上，使用 "**开始日期**" 和 "**结束日期**" 字段查询所需日期范围内的使用情况。 这会显示每天使用该产品/服务的 Azure 订阅。 导出此数据。 
-3.  同样，在 "**客户**" 选项卡上，查询和导出客户群。
-4.  将步骤2中的订阅 ID 与步骤3中的订阅 ID 相匹配，查找必要的客户信息。

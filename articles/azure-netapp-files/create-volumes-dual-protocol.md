@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 8/11/2020
 ms.author: b-juche
-ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134575"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459991"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
@@ -29,13 +29,13 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 ## <a name="before-you-begin"></a>开始之前 
 
 * 必须已设置容量池。  
-    请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
+    请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
 * 子网必须委派给 Azure NetApp 文件。  
-    请参阅[向 Azure NetApp 文件委托子网](azure-netapp-files-delegate-subnet.md)。
+    请参阅 [向 Azure NetApp 文件委托子网](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="considerations"></a>注意事项
 
-* 确保满足[Active Directory 连接的要求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
+* 确保满足 [Active Directory 连接的要求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
 * 在 DNS 服务器上创建反向查找区域，然后在该反向查找区域中的 AD 主机计算机 (PTR) 记录中添加一个指针。 否则，双协议卷创建将会失败。
 * 确保 NFS 客户端是最新的，并且运行最新的操作系统更新。
 
@@ -45,7 +45,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  在 "创建卷" 窗口中，单击 "**创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
+2.  在 "创建卷" 窗口中，单击 " **创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
     * **卷名称**      
         指定要创建的卷的名称。   
 
@@ -76,28 +76,28 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
+    * 如果要将现有的快照策略应用到卷，请单击 " **显示高级" 部分** 将其展开，指定是否要隐藏快照路径，并在下拉菜单中选择快照策略。 
 
-        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        有关创建快照策略的信息，请参阅 [管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 3. 单击“协议”  ，然后完成以下操作：  
-    * 选择 "**双协议 (NFSv3 和 SMB) **作为卷的协议类型。   
+    * 选择 " **双协议 (NFSv3 和 SMB) ** 作为卷的协议类型。   
 
-    * 从下拉列表中选择 " **Active Directory**连接"。  
+    * 从下拉列表中选择 " **Active Directory** 连接"。  
     使用的 Active Directory 必须具有服务器根 CA 证书。 
 
-    * 指定卷的**卷路径**。   
+    * 指定卷的 **卷路径** 。   
     此卷路径是共享卷的名称。 名称必须以字母字符开头，并且在每个订阅和每个区域中必须是唯一的。  
 
-    * 指定要使用的**安全样式**： NTFS (默认) 或 UNIX。
+    * 指定要使用的 **安全样式** ： NTFS (默认) 或 UNIX。
 
-    * （可选）[配置卷的导出策略](azure-netapp-files-configure-export-policy.md)。
+    * （可选） [配置卷的导出策略](azure-netapp-files-configure-export-policy.md)。
 
     ![指定双重协议](../media/azure-netapp-files/create-volume-protocol-dual.png)
 
-4. 单击“查看 + 创建”以查看卷详细信息。 然后单击 "**创建**" 来创建卷。
+4. 单击“查看 + 创建”以查看卷详细信息。 然后单击 " **创建** " 来创建卷。
 
     创建的卷将显示在“卷”页中。 
  
@@ -105,9 +105,9 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>上载 Active Directory 证书颁发机构公共根证书  
 
-1.  按照[安装证书颁发机构的](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)步骤安装和配置添加证书颁发机构。 
+1.  按照 [安装证书颁发机构的](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 步骤安装和配置添加证书颁发机构。 
 
-2.  遵循使用[mmc 管理单元查看证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)，使用 mmc 管理单元和证书管理器工具。  
+2.  遵循使用 [mmc 管理单元查看证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ，使用 mmc 管理单元和证书管理器工具。  
     使用 "证书管理器" 管理单元查找本地设备的根证书或证书证书。 你应从下列设置之一运行证书管理管理单元命令：  
     * 已加入域并已安装根证书的基于 Windows 的客户端 
     * 包含根证书的域中的另一台计算机  
@@ -117,7 +117,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     ![证书导出向导](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. 中转到双重协议卷的 NetApp 帐户，单击**Active Directory 连接**"，然后使用"**加入 Active Directory** "窗口上传根 CA 证书：  
+4. 中转到双重协议卷的 NetApp 帐户，单击 **Active Directory 连接**"，然后使用" **加入 Active Directory** "窗口上传根 CA 证书：  
 
     ![服务器根 CA 证书](../media/azure-netapp-files/server-root-ca-certificate.png)
 
@@ -134,7 +134,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
 ## <a name="configure-the-nfs-client"></a>配置 NFS 客户端 
 
-按照为[Azure NetApp 文件配置 nfs 客户端](configure-nfs-clients.md)中的说明配置 nfs 客户端。  
+按照为 [Azure NetApp 文件配置 nfs 客户端](configure-nfs-clients.md) 中的说明配置 nfs 客户端。  
 
 ## <a name="next-steps"></a>后续步骤  
 

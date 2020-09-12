@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019973"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440552"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -51,7 +51,7 @@ ms.locfileid: "84019973"
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
-- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure SQL 数据仓库、Azure SQL 数据库、Azure Data Lake Store、Amazon S3 和 Amazon Redshift）、SaaS 服务（如 Salesforce）以及 Web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
+- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure Synapse Analytics (以前的 SQL 数据仓库) 、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
 - **混合场景**：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "84019973"
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure SQL 数据仓库的所有连接需要经过加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
+> 与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS) ，同时数据与数据库之间传输。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
 
 > [!NOTE]
 > 若要在从 Oracle 移动数据时启用传输加密，请遵循以下选项之一：
@@ -80,8 +80,8 @@ ms.locfileid: "84019973"
 ### <a name="data-encryption-at-rest"></a>静态数据加密
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
-Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Azure Synapse Analytics 中透明数据加密 (TDE) 通过对静态数据进行实时加密和解密，帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [在 Azure Synapse Analytics 中保护数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
@@ -141,7 +141,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
-| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute （Microsoft 对等互连）            | 自承载集成运行时可以在本地安装，也可以安装在 Azure 虚拟机上。 |
+| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute (Microsoft 对等互连)             | 自承载集成运行时可以在本地安装，也可以安装在 Azure 虚拟机上。 |
 
 下图显示了如何使用自承载集成运行时通过 ExpressRoute 和 IPSec VPN（具有 Azure 虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
@@ -156,7 +156,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> 防火墙配置和针对 IP 地址设置的允许列表
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。
+> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 作为示例。
 
 > [!NOTE] 
 > 若要详细了解通过 Azure 数据工厂实施的数据访问策略，请参阅[此文](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)。
@@ -169,7 +169,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 作为示例。   
 
 下表提供了 Windows 防火墙的入站端口要求：
 
@@ -185,7 +185,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 以下云数据存储要求允许自承载集成运行时计算机的 IP 地址。 默认情况下，其中一些数据存储可能不需要允许列表。 
 
 - [Azure SQL 数据库](../azure-sql/database/firewall-configure.md) 
-- [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -198,7 +198,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure Synapse Analytics 作为源或目标，则还需要打开端口1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

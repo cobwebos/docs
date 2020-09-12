@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187280"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440501"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "84187280"
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
 数据工厂是一项完全托管的、基于云的数据集成 ETL 服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
 
-使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 您可以处理数据并将数据转换为数据流。 ADF 还支持使用计算服务（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services （SSIS）集成运行时）进行手动编码转换的外部计算引擎。 
+使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 您可以处理数据并将数据转换为数据流。 ADF 还支持使用计算服务（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services (SSIS) 集成运行时）进行手动编码转换的外部计算引擎。 
 
 使用数据工厂，可在基于 Azure 的云服务或自己的自承载计算环境（例如 SSIS、SQL Server 或 Oracle）中执行数据处理。 创建用于执行所需操作的管道后，可将它计划为定期运行（例如每小时、每天或每周）、按时间范围运行或者在发生某个事件时触发。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "84187280"
 数据工厂可以包含一个或多个数据管道。 管道是执行任务单元的活动的逻辑分组。 管道中的活动可以共同执行一项任务。 例如，一个管道可以包含一组活动，这些活动从 Azure Blob 引入数据，并在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 优点在于，可以使用管道以集的形式管理活动，而无需单独管理每个活动。 管道中的活动可以链接在一起来按顺序运行，也可以独立并行运行。
 
 ### <a name="data-flows"></a>数据流
-数据流是在数据工厂中直观地生成的对象，可在后端 Spark 服务大规模转换数据。 不需要了解编程或 Spark 内部机制。 只需使用图形（映射）或电子表格（整理）设计数据转换方法。
+数据流是在数据工厂中直观地生成的对象，可在后端 Spark 服务大规模转换数据。 不需要了解编程或 Spark 内部机制。 只需使用图形 (映射) 或电子表格 (整理) 设计数据转换意向。
 
 ### <a name="activities"></a>活动
 活动表示管道中的处理步骤。 例如，可以使用复制活动将数据从一个数据存储复制到另一个数据存储。 同样，可以使用在 Azure HDInsight 群集上运行 Hive 查询的 Hive 活动来转换或分析数据。 数据工厂支持三种类型的活动：数据移动活动、数据转换活动和控制活动。
@@ -190,7 +190,7 @@ ms.locfileid: "84187280"
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>使用数据工厂中的其他90数据集类型如何实现访问数据？
 
-映射数据流功能目前允许 Azure SQL 数据库、Azure SQL 数据仓库、来自 Azure Blob 存储或 Azure Data Lake Storage Gen2 的带分隔符的文本文件，以及从 Blob 存储或本机 Data Lake Storage Gen2 的 Parquet 文件用于源和接收器。 
+映射数据流功能目前允许 Azure SQL 数据库、Azure Synapse Analytics (以前的 SQL 数据仓库) 、从 Azure Blob 存储或 Azure Data Lake Storage Gen2 中分隔的文本文件，以及从 Blob 存储中 Parquet 文件，或为源和接收器本地 Data Lake Storage Gen2。 
 
 使用复制活动可从任何其他连接器暂存数据，然后执行数据流活动，在暂存数据后对其进行转换。 例如，管道将首先复制到 Blob 存储，然后数据流活动将使用源中的数据集来转换该数据。
 
@@ -241,18 +241,18 @@ ms.locfileid: "84187280"
 
 ### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power Platform 数据流和整理数据流之间的区别是什么？
 
-使用 Power Platform 数据流，用户可以将各种数据源中的数据导入和转换到 Common Data Service，并 Azure Data Lake 生成 PowerApps 应用程序、Power BI 报表或流自动化。 Power Platform 数据流使用已建立的 Power Query 数据准备体验，与 Power BI 和 Excel 类似。 使用 Power Platform 数据流，还可以轻松地在组织中重用，并自动处理业务流程（例如，在刷新前一数据流时，自动刷新依赖于其他数据流的数据流）。
+使用 Power Platform 数据流，用户可以将各种数据源中的数据导入和转换到 Common Data Service，并 Azure Data Lake 生成 PowerApps 应用程序、Power BI 报表或流自动化。 Power Platform 数据流使用已建立的 Power Query 数据准备体验，与 Power BI 和 Excel 类似。 使用 Power Platform 数据流，还可以轻松地在组织中重用，并自动处理业务流程 (例如，当) 中刷新前一数据流时，会自动刷新依赖于其他数据流的数据流。
 
-Azure 数据工厂（ADF）是一个托管数据集成服务，它允许数据工程师和公民数据集成器创建复杂的混合提取-转换-加载（ETL）和提取-加载转换（ELT）工作流。 ADF 中的整理数据流为用户提供了一个无代码的无服务器环境，该环境可简化云中的数据准备并扩展到任何数据大小，无需基础结构管理。 它使用 Power Query 数据准备技术（在 Power Platform 数据流、Excel 和 Power BI 中也使用）来准备和调整数据。 整理数据流允许用户通过 spark 执行以大规模方式快速准备数据，旨在处理大数据集成的所有复杂和规模挑战。 用户可以使用基于浏览器的界面在可访问的视觉对象环境中构建可复原的数据管道，并让 ADF 处理 Spark 执行的复杂性。 生成管道的计划，并从 ADF 监视门户监视数据流的执行情况。 使用 ADF 丰富的可用性监视和警报轻松管理数据可用性 Sla，并利用内置的持续集成和部署功能在托管环境中保存和管理流。 建立警报并查看执行计划，以验证你的逻辑在你调整数据流时是否按计划执行。
+Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据工程师和公民数据集成器创建复杂的混合提取-转换-加载 (ETL) ，并 (ELT) 工作流提取加载转换。 ADF 中的整理数据流为用户提供了一个无代码的无服务器环境，该环境可简化云中的数据准备并扩展到任何数据大小，无需基础结构管理。 它使用 Power Query 数据准备技术 (在 Power Platform 数据流、Excel、Power BI) 中使用该技术来准备和调整数据。 整理数据流允许用户通过 spark 执行以大规模方式快速准备数据，旨在处理大数据集成的所有复杂和规模挑战。 用户可以使用基于浏览器的界面在可访问的视觉对象环境中构建可复原的数据管道，并让 ADF 处理 Spark 执行的复杂性。 生成管道的计划，并从 ADF 监视门户监视数据流的执行情况。 使用 ADF 丰富的可用性监视和警报轻松管理数据可用性 Sla，并利用内置的持续集成和部署功能在托管环境中保存和管理流。 建立警报并查看执行计划，以验证你的逻辑在你调整数据流时是否按计划执行。
 
 ### <a name="supported-sql-types"></a>支持的 SQL 类型
 
 整理数据流支持 SQL 中的以下数据类型。 使用不受支持的数据类型时，将会收到验证错误。
 
 * short
-* double
+* Double
 * real
-* float
+* FLOAT
 * char
 * nchar
 * varchar

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 11043d6686bd762b1c0a9827c7edb2230487cc72
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263194"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595438"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
@@ -57,6 +57,7 @@ ms.locfileid: "88263194"
 
     页面包括：
 
+    - 受支持的建议的 "**强制**" 和 "**拒绝**" 按钮 (参阅[阻止强制/拒绝建议的配置](prevent-misconfigurations.md)错误) 
     - **严重性指标**
     - **刷新间隔**  (相关)  
     - **说明** -问题的简短说明
@@ -68,10 +69,19 @@ ms.locfileid: "88263194"
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="由于原因而不适用的资源。":::
 
+## <a name="preview-recommendations"></a>预览建议
 
+安全分数计算中不包括标记为 **预览版** 的建议。
+
+它们应尽可能进行修正，以便在预览期结束时，它们会给你评分。
+
+预览建议的示例如下：
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
  
 ## <a name="next-steps"></a>后续步骤
 
 在本文档中，已向你介绍安全中心的安全建议。 了解如何修正建议：
 
-* [修正建议](security-center-remediate-recommendations.md) -了解如何配置 Azure 订阅和资源组的安全策略。
+- [修正建议](security-center-remediate-recommendations.md) -了解如何配置 Azure 订阅和资源组的安全策略。
+- [防止对强制/拒绝建议的配置](prevent-misconfigurations.md)错误。

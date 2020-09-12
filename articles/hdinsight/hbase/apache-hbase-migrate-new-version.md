@@ -1,19 +1,19 @@
 ---
 title: 将 HBase 群集迁移到新版本 - Azure HDInsight
 description: 如何将 Apache HBase 群集迁移到 Azure HDInsight 中的较新版本。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079541"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503986"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -176,7 +176,7 @@ ms.locfileid: "86079541"
 
 1. 为确保刷新 memstore 中的所有最新数据，请再次运行前面的脚本。
 
-1. 登录到旧群集上的[Apache Ambari](https://ambari.apache.org/) （ `https://OLDCLUSTERNAME.azurehdidnsight.net` ），并停止 HBase 服务。 当系统提示你确认想要停止这些服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
+1. 登录到旧群集上的 [Apache Ambari](https://ambari.apache.org/) (`https://OLDCLUSTERNAME.azurehdidnsight.net`) 并停止 HBase 服务。 当系统提示你确认想要停止这些服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
 
     ![在 Ambari 中的“服务操作”下，单击“服务”>“HBase”>“停止”](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 

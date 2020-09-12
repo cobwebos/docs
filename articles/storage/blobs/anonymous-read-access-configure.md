@@ -6,24 +6,24 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7f3f71f11c741e5e9108d945b60c4465f9cec7da
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534305"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594775"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置容器和 blob 的匿名公共读取访问权限
 
 Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认情况下，不允许匿名访问数据。 除非显式启用匿名访问，否则对容器及其 blob 的所有请求都必须获得授权。 如果将容器的公共访问级别设置配置为允许匿名访问，则客户端可以读取该容器中的数据而无需对请求进行授权。
 
 > [!WARNING]
-> 当容器配置为公共访问时，任何客户端都可以读取该容器中的数据。 公共访问权限会带来潜在的安全风险，因此，如果你的方案不需要，Microsoft 建议你禁止将其用于存储帐户。 有关详细信息，请参阅[阻止对容器和 blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
+> 当容器配置为公共访问时，任何客户端都可以读取该容器中的数据。 公共访问权限会带来潜在的安全风险，因此，如果你的方案不需要，Microsoft 建议你禁止将其用于存储帐户。 有关详细信息，请参阅 [阻止对容器和 blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
 
-本文介绍如何配置容器及其 blob 的匿名公共读取访问权限。 有关如何从客户端应用程序匿名访问 blob 数据的信息，请参阅[使用 .net 匿名访问公共容器和 blob](anonymous-read-access-client.md)。
+本文介绍如何配置容器及其 blob 的匿名公共读取访问权限。 有关如何从客户端应用程序匿名访问 blob 数据的信息，请参阅 [使用 .net 匿名访问公共容器和 blob](anonymous-read-access-client.md)。
 
 ## <a name="about-anonymous-public-read-access"></a>关于匿名公共读取访问
 
@@ -34,10 +34,10 @@ Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认�
 
 下表总结了这两个设置如何共同影响容器的公共访问。
 
-| 公共访问设置 | 已禁用容器的公共访问权限（默认设置） | 容器的公共访问权限设置为容器 | 公共访问容器设置为 Blob |
+| 公共访问设置 | 已禁用 (默认设置的容器的公共访问)  | 容器的公共访问权限设置为容器 | 公共访问容器设置为 Blob |
 |--|--|--|--|
 | 不允许对存储帐户进行公共访问 | 不能对存储帐户中的任何容器进行公共访问。 | 不能对存储帐户中的任何容器进行公共访问。 存储帐户设置将覆盖容器设置。 | 不能对存储帐户中的任何容器进行公共访问。 存储帐户设置将覆盖容器设置。 |
-| 允许对存储帐户进行公共访问（默认设置） | 没有对此容器的公共访问权限（默认配置）。 | 允许公共访问此容器及其 blob。 | 允许公共访问此容器中的 blob，但不允许访问容器本身。 |
+| 允许对存储帐户进行公共访问 (默认设置)  | 对于此容器 (默认配置) 的公共访问权限。 | 允许公共访问此容器及其 blob。 | 允许公共访问此容器中的 blob，但不允许访问容器本身。 |
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>允许或禁止对存储帐户进行公共读取访问
 
@@ -48,11 +48,14 @@ Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认�
 不允许对存储帐户进行公共访问，禁止对该帐户中的所有容器和 blob 进行匿名访问。 如果帐户不允许公共访问，则不能将容器的公共访问设置配置为允许匿名访问。 为了提高安全性，Microsoft 建议你禁止对存储帐户进行公共访问，除非你的方案要求用户匿名访问 blob 资源。
 
 > [!IMPORTANT]
-> 禁用存储帐户的公共访问权限会替代该存储帐户中所有容器的公共访问设置。 如果不允许对存储帐户进行公共访问，以后对该帐户的任何匿名请求都将失败。 在更改此设置之前，请务必了解可能会以匿名方式访问存储帐户中数据的客户端应用程序的影响。 有关详细信息，请参阅[阻止对容器和 blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
+> 禁用存储帐户的公共访问权限会替代该存储帐户中所有容器的公共访问设置。 如果不允许对存储帐户进行公共访问，以后对该帐户的任何匿名请求都将失败。 在更改此设置之前，请务必了解可能会以匿名方式访问存储帐户中数据的客户端应用程序的影响。 有关详细信息，请参阅 [阻止对容器和 blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
 
-若要允许或禁止访问存储帐户的公共访问权限，请配置该帐户的**AllowBlobPublicAccess**属性。 此属性适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 有关详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。
+若要允许或禁止访问存储帐户的公共访问权限，请配置该帐户的 **AllowBlobPublicAccess** 属性。 此属性适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 有关详细信息，请参阅 [存储帐户概述](../common/storage-account-overview.md)。
 
-默认情况下， **AllowBlobPublicAccess**属性不会设置，并且不会返回值，除非你显式设置该值。 当属性值为**null**或为**true**时，存储帐户允许公共访问。
+> [!NOTE]
+> 默认情况下， **AllowBlobPublicAccess** 属性不会设置，并且不会返回值，除非你显式设置该值。 当属性值为 **null** 或为 **true**时，存储帐户允许公共访问。
+>
+> **AllowBlobPublicAccess**属性当前仅适用于 Azure 公有云中的存储帐户。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -60,15 +63,15 @@ Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认�
 
 1. 导航到 Azure 门户中的存储帐户。
 1. 找到 "**设置**" 下的**配置**设置。
-1. 将**Blob 公共访问权限**设置为 "**已启用**" 或 "**已禁用**"。
+1. 将 **Blob 公共访问权限** 设置为 " **已启用** " 或 " **已禁用**"。
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="显示如何允许或禁止对帐户使用 blob 公共访问权限的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 允许或禁止访问存储帐户，请安装[Azure PowerShell 版本 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0)或更高版本。 接下来，为新的或现有的存储帐户配置**AllowBlobPublicAccess**属性。
+若要使用 PowerShell 允许或禁止访问存储帐户，请安装 [Azure PowerShell 版本 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) 或更高版本。 接下来，为新的或现有的存储帐户配置 **AllowBlobPublicAccess** 属性。
 
-下面的示例创建一个存储帐户并将**AllowBlobPublicAccess**属性显式设置为**true**。 然后更新存储帐户，将**AllowBlobPublicAccess**属性设置为**false**。 该示例还检索每个事例中的属性值。 请记住，用自己的值替换括号中的占位符值：
+下面的示例创建一个存储帐户并将 **AllowBlobPublicAccess** 属性显式设置为 **true**。 然后更新存储帐户，将 **AllowBlobPublicAccess** 属性设置为 **false**。 该示例还检索每个事例中的属性值。 请记住，用自己的值替换括号中的占位符值：
 
 ```powershell
 $rgName = "<resource-group>"
@@ -96,9 +99,9 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要允许或禁止具有 Azure CLI 的存储帐户的公共访问权限，请安装 Azure CLI 2.9.0 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 接下来，为新的或现有的存储帐户配置**allowBlobPublicAccess**属性。
+若要允许或禁止具有 Azure CLI 的存储帐户的公共访问权限，请安装 Azure CLI 2.9.0 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 接下来，为新的或现有的存储帐户配置 **allowBlobPublicAccess** 属性。
 
-下面的示例创建一个存储帐户并将**allowBlobPublicAccess**属性显式设置为**true**。 然后更新存储帐户，将**allowBlobPublicAccess**属性设置为**false**。 该示例还检索每个事例中的属性值。 请记住，用自己的值替换括号中的占位符值：
+下面的示例创建一个存储帐户并将 **allowBlobPublicAccess** 属性显式设置为 **true**。 然后更新存储帐户，将 **allowBlobPublicAccess** 属性设置为 **false**。 该示例还检索每个事例中的属性值。 请记住，用自己的值替换括号中的占位符值：
 
 ```azurecli-interactive
 az storage account create \
@@ -128,12 +131,12 @@ az storage account show \
 
 # <a name="template"></a>[模板](#tab/template)
 
-若要允许或禁止具有模板的存储帐户的公共访问权限，请创建**AllowBlobPublicAccess**属性设置为**true**或**false**的模板。 以下步骤介绍如何在 Azure 门户中创建模板。
+若要允许或禁止具有模板的存储帐户的公共访问权限，请创建 **AllowBlobPublicAccess** 属性设置为 **true** 或 **false**的模板。 以下步骤介绍如何在 Azure 门户中创建模板。
 
 1. 在 Azure 门户中，选择“创建资源”。
 1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。 
-1. 选择 "**模板部署（使用自定义模板部署）（预览版）**"，选择 "**创建**"，然后选择 **"在编辑器中生成自己的模板"**。
-1. 在模板编辑器中，粘贴以下 JSON 以创建新帐户，并将**AllowBlobPublicAccess**属性设置为**true**或**false**。 请记得将尖括号中的占位符替换为自己的值。
+1. 选择 " **使用自定义模板 (部署")  (预览) **"，选择" **创建**"，然后选择 **" 在编辑器中生成自己的模板 "** 模板部署。
+1. 在模板编辑器中，粘贴以下 JSON 以创建新帐户，并将 **AllowBlobPublicAccess** 属性设置为 **true** 或 **false**。 请记得将尖括号中的占位符替换为自己的值。
 
     ```json
     {
@@ -164,7 +167,7 @@ az storage account show \
     ```
 
 1. 保存模板。
-1. 指定资源组参数，然后选择 "**查看**" 和 "创建" 按钮以部署模板并创建配置了**allowBlobPublicAccess**属性的存储帐户。
+1. 指定资源组参数，然后选择 " **查看** " 和 "创建" 按钮以部署模板并创建配置了 **allowBlobPublicAccess** 属性的存储帐户。
 
 ---
 
@@ -173,9 +176,9 @@ az storage account show \
 >
 > 更新存储帐户的公共访问设置后，最多需要30秒才能完全传播更改。
 
-允许或禁止 blob 公共访问需要 Azure 存储资源提供程序的2019-04-01 版或更高版本。 有关详细信息，请参阅[Azure 存储资源提供程序 REST API](/rest/api/storagerp/)。
+允许或禁止 blob 公共访问需要 Azure 存储资源提供程序的2019-04-01 版或更高版本。 有关详细信息，请参阅 [Azure 存储资源提供程序 REST API](/rest/api/storagerp/)。
 
-本节中的示例演示如何读取存储帐户的**AllowBlobPublicAccess**属性，以确定当前是否允许或禁止公共访问。 若要详细了解如何验证帐户的公共访问设置是否已配置为阻止匿名访问，请参阅[更正匿名公共访问](anonymous-read-access-prevent.md#remediate-anonymous-public-access)。
+本节中的示例演示如何读取存储帐户的 **AllowBlobPublicAccess** 属性，以确定当前是否允许或禁止公共访问。 若要详细了解如何验证帐户的公共访问设置是否已配置为阻止匿名访问，请参阅 [更正匿名公共访问](anonymous-read-access-prevent.md#remediate-anonymous-public-access)。
 
 ## <a name="set-the-public-access-level-for-a-container"></a>设置容器的公共访问级别
 
@@ -194,7 +197,7 @@ az storage account show \
 若要更新 Azure 门户中一个或多个现有容器的公共访问级别，请执行以下步骤：
 
 1. 在 Azure 门户中导航到存储帐户概述。
-1. 在菜单边栏选项卡上的 " **Blob 服务**" 下，选择 "**容器**"。
+1. 在菜单边栏选项卡上的 " **Blob 服务** " 下，选择 " **容器**"。
 1. 选择要对其设置公共访问级别的容器。
 1. 使用“更改访问级别”按钮显示公共访问权限设置。
 1. 从“公共访问级别”下拉列表中选择所需的公共访问级别，然后单击“确定”按钮应用对选定容器所做的更改。
@@ -207,7 +210,7 @@ az storage account show \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 更新一个或多个容器的公共访问级别，请调用[AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl)命令。 通过传入帐户密钥、连接字符串或共享访问签名（SAS）来授权此操作。 设置容器的公共访问级别的 "[设置容器 ACL](/rest/api/storageservices/set-container-acl) " 操作不支持 Azure AD 的授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+若要使用 PowerShell 更新一个或多个容器的公共访问级别，请调用 [AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) 命令。 通过传入帐户密钥、连接字符串或共享访问签名 (SAS) 来授权此操作。 设置容器的公共访问级别的 " [设置容器 ACL](/rest/api/storageservices/set-container-acl) " 操作不支持 Azure AD 的授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
 下面的示例创建一个已禁用公共访问权限的容器，然后更新该容器的公共访问设置，以允许对容器及其 blob 进行匿名访问。 请记住，用自己的值替换括号中的占位符值：
 
@@ -238,7 +241,7 @@ Get-AzStorageContainerAcl -Container $containerName -Context $ctx
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 更新一个或多个容器的公共访问级别，请调用[az storage container set 权限](/cli/azure/storage/container#az-storage-container-set-permission)命令。 通过传入帐户密钥、连接字符串或共享访问签名（SAS）来授权此操作。 设置容器的公共访问级别的 "[设置容器 ACL](/rest/api/storageservices/set-container-acl) " 操作不支持 Azure AD 的授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+若要使用 Azure CLI 更新一个或多个容器的公共访问级别，请调用 [az storage container set 权限](/cli/azure/storage/container#az-storage-container-set-permission) 命令。 通过传入帐户密钥、连接字符串或共享访问签名 (SAS) 来授权此操作。 设置容器的公共访问级别的 " [设置容器 ACL](/rest/api/storageservices/set-container-acl) " 操作不支持 Azure AD 的授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
 下面的示例创建一个已禁用公共访问权限的容器，然后更新该容器的公共访问设置，以允许对容器及其 blob 进行匿名访问。 请记住，用自己的值替换括号中的占位符值：
 

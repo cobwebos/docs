@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461695"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462354"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -31,7 +31,7 @@ ms.locfileid: "81461695"
 - 将安全重心从以网络为中心的方案转换为以标识为中心的外围安全方案
 - 实施一般的 PaaS 安全最佳实践建议
 
-[开发适用](abstract-develop-secure-apps.md)于云的应用程序时，在软件开发生命周期的每个阶段应考虑的安全问题和控制措施是一般的指导。
+[开发适用](abstract-develop-secure-apps.md) 于云的应用程序时，在软件开发生命周期的每个阶段应考虑的安全问题和控制措施是一般的指导。
 
 ## <a name="cloud-security-advantages"></a>云的安全优势
 请务必了解你与 Microsoft 之间的[责任分工](shared-responsibility.md)。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。
@@ -80,7 +80,7 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 **详细信息**：唯一比丢失密钥和凭据更遭糕的事情是让未经授权的一方获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共代码存储库。
 
 **最佳做法**：通过使用可以直接远程管理这些 VM 的管理接口来保护混合 PaaS 和 IaaS 服务上的 VM 管理接口。   
-**详细信息**：可以使用远程管理协议，如[SSH](https://en.wikipedia.org/wiki/Secure_Shell)、 [RDP](https://support.microsoft.com/kb/186607)和[PowerShell 远程处理](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。
+**详细信息**：可以使用远程管理协议，如 [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、 [RDP](https://support.microsoft.com/kb/186607)和 [PowerShell 远程处理](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) 。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。
 
 如果可以，请使用替代方法，例如在 Azure 虚拟网络中使用虚拟专用网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并使用双重身份验证（例如 [Azure 多重身份验证](/azure/active-directory/authentication/multi-factor-authentication)）。
 
@@ -94,7 +94,7 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 使用 OAuth2 和 Kerberos 等标准身份验证协议。 这些协议经过广泛的同行评审，有时可实现为平台库的一部分用于身份验证和授权。
 
 ## <a name="use-threat-modeling-during-application-design"></a>在应用程序设计期间使用威胁建模
-Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定团队应在设计阶段参与名为威胁建模的过程。 为了帮助简化此过程，Microsoft 已创建 [SDL 威胁建模工具](/azure/security/azure-security-threat-modeling-tool)。 对应用程序设计进行建模，并在所有信任边界中枚举[STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)威胁可能会及早捕获设计错误。
+Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定团队应在设计阶段参与名为威胁建模的过程。 为了帮助简化此过程，Microsoft 已创建 [SDL 威胁建模工具](/azure/security/azure-security-threat-modeling-tool)。 对应用程序设计进行建模，并在所有信任边界中枚举 [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 威胁可能会及早捕获设计错误。
 
 下表列出了 STRIDE 威胁，并提供了一些使用 Azure 功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
 
@@ -135,7 +135,7 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 ## <a name="install-a-web-application-firewall"></a>安装 Web 应用程序防火墙
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
 
-[Web 应用程序防火墙（WAF）](/azure/frontdoor/waf-overview)是应用程序网关的一项功能，它提供对 Web 应用程序的集中保护，并防范常见的漏洞。 WAF 基于 [开放 Web 应用程序安全项目 (OWASP) 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。
+[Web 应用程序防火墙 (WAF) ](/azure/frontdoor/waf-overview) 是应用程序网关的一项功能，它可提供对 Web 应用程序的集中保护，并防范常见的漏洞。 WAF 基于 [开放 Web 应用程序安全项目 (OWASP) 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。
 
 ## <a name="monitor-the-performance-of-your-applications"></a>监视应用程序的性能
 监视是一种数据收集和分析操作，用于确定应用程序的性能、运行状况及可用性。 有效的监视策略有助于了解应用程序组件的详细运行状况， 它有助于向你发送关键情况的通知，让你在这些情况成为问题之前解决它们，从而提高运行时间。 它还有助于检测可能与安全相关的异常。
@@ -151,16 +151,16 @@ Application Insights 提供各种可以与所收集的数据交互的工具。 A
 
 
 ## <a name="next-steps"></a>后续步骤
-本文重点介绍了 Azure PaaS 部署的安全优势以及云应用程序的最佳安全做法。 接下来，请阅读有关使用特定 Azure 服务保护 PaaS Web 和移动解决方案的建议做法。 首先，我们介绍如何保护 Azure 应用服务、Azure SQL 数据库和 Azure SQL 数据仓库，以及 Azure 存储。 随着适用于其他 Azure 服务的建议做法文章的发布，我们会在以下列表中提供相应的链接：
+本文重点介绍了 Azure PaaS 部署的安全优势以及云应用程序的最佳安全做法。 接下来，请阅读有关使用特定 Azure 服务保护 PaaS Web 和移动解决方案的建议做法。 我们将从 Azure App Service、Azure SQL 数据库、Azure Synapse Analytics 和 Azure 存储空间开始。 随着适用于其他 Azure 服务的建议做法文章的发布，我们会在以下列表中提供相应的链接：
 
 - [Azure 应用服务](paas-applications-using-app-services.md)
-- [Azure SQL 数据库和 Azure SQL 数据仓库](paas-applications-using-sql.md)
+- [Azure SQL 数据库和 Azure Synapse Analytics](paas-applications-using-sql.md)
 - [Azure 存储](paas-applications-using-storage.md)
 - 用于 Redis 的 Azure 缓存
 - Azure 服务总线
 - Web 应用程序防火墙
 
-请参阅在[Azure 上开发安全应用程序](abstract-develop-secure-apps.md)，以在开发云应用程序时，在软件开发生命周期的每个阶段应考虑安全问题和控制措施。
+请参阅在 [Azure 上开发安全应用程序](abstract-develop-secure-apps.md) ，以在开发云应用程序时，在软件开发生命周期的每个阶段应考虑安全问题和控制措施。
 
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。
 

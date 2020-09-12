@@ -4,58 +4,63 @@ titleSuffix: Azure Cognitive Services
 description: 与光学字符识别相关的概念 (使用计算机视觉 API 打印和手写文本的图像和文档的 OCR) 。
 services: cognitive-services
 author: PatrickFarley
-manager: netahw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: cb931d0b9c3dd4d3fa0fa69f69f5f90fc37ea8f6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24be20d7eac48024b73e88f8ac8500928f0fb840
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929187"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594221"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
-Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功能可从图像中提取打印文本或手写文本。 你可以从图像中提取文本，如许可证印版照片或带有序列号的容器，以及文档-发票、帐单、财务报表、文章等。 
+Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功能可从图像中提取打印文本或手写文本。 你可以从图像中提取文本，如许可证印版照片或带有序列号的容器，以及文档-发票、帐单、财务报表、文章等。
 
 ## <a name="read-api"></a>读取 API 
 
-计算机视觉 [读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 是 Azure 的最新 OCR 技术，它以多种语言提取打印文本 () ，手写文本仅 (英语的图像和多页面 PDF 文档中的) 、数字和货币符号。 它经过优化，可以从带有混合语言的文本繁重图像和多页面 PDF 文档中提取文本。 它支持在同一图像或文档中检测打印文本和手写文本。
+计算机视觉 [读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 是 Azure 的最新 OCR 技术 ([了解哪些新增功能](./whats-new.md#read-api-v31-public-preview-adds-simplified-chinese-support)) ，该功能提取了几种语言的打印文本 () ，手写文本仅限图像和多页面 PDF 文档中 (、数字和货币符号。 它经过优化，可以从带有混合语言的文本繁重图像和多页面 PDF 文档中提取文本。 它支持在同一图像或文档中检测打印文本和手写文本。
 
 ![OCR 如何将图像和文档转换为带有提取文本的结构化输出](./Images/how-ocr-works.svg)
 
 ## <a name="input-requirements"></a>输入要求
-读取 API 的 **读取** 操作将图像和文档作为其输入。 它们具有以下要求：
+**读取**调用采用图像和文档作为其输入。 它们具有以下要求：
 
 * 支持的文件格式：JPEG、PNG、BMP、PDF 和 TIFF
-* 对于 PDF 和 TIFF，最多处理 2000 页。 对于免费层订阅服务器，只处理前两页。
-* 文件大小必须小于 50 MB，且尺寸介于 50 x 50 和 10000 x 10000 像素之间。
+* 对于 PDF 和 TIFF 文件，最多2000个页面只 (处理免费层) 的前两页。
+* 对于免费层，文件大小必须小于 50 MB (4 MB) 和至少 50 x 50 像素到 10000 x 10000 像素的维度。 
 * PDF 尺寸必须为 17 x 17 英寸或更小，对应于 Legal 或 A3 纸张尺寸及更小。
 
 > [!NOTE]
 > **语言输入** 
 >
-> [读取操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)具有语言的可选请求参数。 这是文档中文本的 BCP-47 语言代码。 Read 支持自动语言标识和多语言文档，因此，如果想要强制将文档作为该特定语言进行处理，只需提供语言代码。
+> [Read 调用](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)具有适用于 language 的可选请求参数。 这是文档中文本的 BCP-47 语言代码。 Read 支持自动语言标识和多语言文档，因此，如果想要强制将文档作为该特定语言进行处理，只需提供语言代码。
 
-## <a name="the-read-operation"></a>读取操作
+## <a name="the-read-call"></a>Read 调用
 
-[读取操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)采用图像或 PDF 文档作为输入，并以异步方式提取文本。 调用返回并带有一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的操作 ID。
+读取 API 的 [读取调用](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 采用图像或 PDF 文档作为输入，并以异步方式提取文本。 调用返回并带有一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的操作 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
 |Operation-Location | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="the-get-read-results-operation"></a>获取读取结果操作
+> [!NOTE]
+> **Billing** 
+>
+> [计算机视觉定价](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)页面包含用于读取的定价层。 每个分析的图像或页面都是一个事务。 如果使用包含100页的 PDF 或 TIFF 文档调用该操作，则读取操作会将其计为100个事务，并将为100个交易计费。 如果对操作发出了50个调用，并且每次调用提交了包含100页的文档，则会向你收取 50 X 100 = 5000 事务的费用。
+
+## <a name="the-get-read-results-call"></a>获取读取结果调用
 
 第二步是调用 [获取读取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) 操作。 此操作使用读取操作创建的操作 ID 作为输入。 它将返回一个 JSON 响应，该响应包含具有以下可能值的 **状态** 字段。 此操作以迭代方式调用，直到它返回 **成功** 值。 使用1到2秒的间隔，以避免超出每秒 (RPS) 速率的请求数。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|状态 | 字符串 | notStarted：操作尚未开始。 |
+|状态 | string | notStarted：操作尚未开始。 |
 | |  | 正在运行：正在处理操作。 |
 | |  | failed：操作失败。 |
 | |  | succeeded：操作成功。 |
@@ -65,7 +70,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应包含图像或文档中提取的文本内容。 JSON 响应会维护已识别单词的原始分组。 其中包括提取的文本行及其边界框坐标。 每个文本行都包含所有提取的单词及其坐标和可信度分数。
 
-### <a name="sample-json-output"></a>示例 JSON 输出
+## <a name="sample-json-output"></a>示例 JSON 输出
 
 请参阅以下成功的 JSON 响应示例：
 
@@ -120,30 +125,25 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
   }
 }
 ```
+开始 [计算机视觉 OCR SDK 快速入门](./quickstarts-sdk/client-library.md) 和 [读取 REST API 快速入门](./QuickStarts/CSharp-hand-text.md) ，开始将 OCR 功能集成到应用程序中。
 
-按照 " [提取打印文本和手写文本](./QuickStarts/CSharp-hand-text.md) " 快速入门，使用 c # 和 REST API 实现 OCR。
-
-## <a name="language-support"></a>语言支持
-
-### <a name="printed-text"></a>打印的文本
+## <a name="supported-languages-for-print-text"></a>打印文本支持的语言
 [Read 3.0 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)支持以英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语语言提取打印文本。 
 
 [Read 3.1 API 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)增加了对简体中文的支持。 如果你的方案需要支持更多语言，请参阅 [OCR API](#ocr-api) 部分。 
 
 有关 OCR 支持的语言的完整列表，请参阅 [支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) 。
 
-### <a name="handwritten-text"></a>手写文本
+## <a name="supported-languages-for-handwritten-text"></a>手写文本支持的语言
 读取操作当前支持纯文本形式提取手写文本。
 
-## <a name="integration-options"></a>集成选项
-
-### <a name="use-the-rest-api-or-client-sdk"></a>使用 REST API 或客户端 SDK
+## <a name="use-the-rest-api-and-sdk"></a>使用 REST API 和 SDK
 对于大多数客户而言， [读取 REST API](./QuickStarts/CSharp-hand-text.md) 是首选选项，因为它易于集成，并可实现快速工作效率。 当你集中精力满足客户需求时，Azure 和计算机视觉服务可处理规模、性能、数据安全和合规性需求。
 
-### <a name="use-containers-for-on-premise-deployment"></a>将容器用于本地部署
+## <a name="deploy-on-premise-with-docker-containers"></a>在本地部署 Docker 容器
 [Read 2.0 Docker 容器 (预览版) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)使你能够在自己的本地环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。
 
-## <a name="read-ocr-examples"></a>读取 OCR 示例
+## <a name="example-outputs"></a>示例输出
 
 ### <a name="text-from-images"></a>图像中的文本
 
@@ -188,6 +188,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 ## <a name="next-steps"></a>后续步骤
 
+- 开始计算机视觉在 c #、Java、JavaScript 或 Python 中 [阅读 3.0 SDK 快速入门](./quickstarts-sdk/client-library.md) 。
+- 使用 c #、Java、JavaScript 或 Python 中的 [读取 3.0 REST API 快速入门](./QuickStarts/CSharp-hand-text.md) ，了解如何使用 REST api。
 - 了解[读取 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)。
 - 了解 [Read 3.1 公共预览版 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) 增加了简体中文支持。
-- 按照 [提取文本](./QuickStarts/CSharp-hand-text.md) 快速入门中的步骤，使用 c #、Java、JavaScript 或 Python 以及 REST API 来实现 OCR。

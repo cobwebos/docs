@@ -2,20 +2,20 @@
 title: 使用 Application Insights 监视 SharePoint site 站点
 description: 开始使用新检测密钥监视新应用程序
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 0d365e1fbcc52e14cfc727dd1de3e31a7d3e5d68
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326522"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536491"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
 
 Azure Application Insights 监视应用的可用性、性能和使用情况。 下面介绍如何为 SharePoint 站点设置它。
 
 > [!NOTE]
-> 出于安全方面的考虑，不能将本文中所述的脚本直接添加到 SharePoint 新式 UX 中的网页。 作为替代方法，可以使用[Sharepoint Framework （SPFx）](/sharepoint/dev/spfx/extensions/overview-extensions)生成可用于在 SharePoint 站点上安装 Application Insights 的自定义扩展插件。 若要了解详细信息，请参阅[如何从头开始创建 SPFx extension 解决方案](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)，或[查看示例](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)。 
+> 出于安全方面的考虑，不能将本文中所述的脚本直接添加到 SharePoint 新式 UX 中的网页。 作为替代方法，你可以使用 [Sharepoint Framework (SPFx) ](/sharepoint/dev/spfx/extensions/overview-extensions) 来构建可用于在 SharePoint 站点上安装 Application Insights 的自定义扩展插件。 若要了解详细信息，请参阅 [如何从头开始创建 SPFx extension 解决方案](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) ，或 [查看示例](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample-NPM)。 
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 在 [Azure 门户](https://portal.azure.com)中，创建新的 Application Insights 资源。 选择 ASP.NET 作为应用程序类型。
@@ -55,7 +55,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ![显示如何使用 Sharepoing 设计器或其他编辑器编辑母版页的屏幕截图。](./media/sharepoint/03-master.png)
 
-将代码添加到 </head> 符. 
+将代码添加到 </head> 标记。 
 
 ![屏幕截图，显示要将代码添加到网站页的位置。](./media/sharepoint/04-code.png)
 

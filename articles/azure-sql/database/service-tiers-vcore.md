@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 08/14/2020
-ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586794"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462201"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Azure SQL 数据库和 Azure SQL 托管实例使用的虚拟核心 (vCore) 购�
 - 更高的计算、内存、I/O 和存储限制。
 - 控制硬件代系，以便更好地符合工作负荷的计算和内存要求。
 - [Azure 混合权益 (AHB) ](../azure-hybrid-benefit.md)和预留实例的定价折扣[ (RI) ](reserved-capacity-overview.md)。
-- 提高计算能力的硬件细节的透明度，有助于规划从本地部署迁移。
+- 为驱动计算的硬件细节提供更高的透明度，这有助于规划从本地部署进行的迁移。
 
 ## <a name="service-tiers"></a>服务层
 
@@ -154,7 +154,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 ![更改 SQL 托管实例硬件](./media/service-tiers-vcore/change-managed-instance-hardware.png)
 
-在 "定价层" 页上，你将能够按前面的步骤所述更改硬件生成。
+在“定价层”页上，可以按前面步骤中所述更改硬件代系。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -164,7 +164,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-有关更多详细信息，请检查 [AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) 命令。
+有关更多详细信息，请查看 [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) 命令。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -182,13 +182,13 @@ az sql mi update -g mygroup -n myinstance --family Gen5
 
 #### <a name="gen4gen5"></a><a name="gen4gen5-1"></a> 第 4 代/第 5 代
 
-Gen4 硬件正在 [逐步推出](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) ，在新部署中不再可用。 所有新数据库都必须部署在 Gen5 硬件上。
+Gen4 硬件正在 [逐步推出](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) ，在新部署中不再可用。 所有新的数据库都必须部署在第 5 代硬件上。
 
 Gen5 在世界各地的大多数区域中都可用。
 
 #### <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列在以下区域中提供：澳大利亚中部、澳大利亚中部2、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、东亚、美国东部、法国中部、印度中部、印度西部、韩国中部、韩国南部、北欧、南非北部、东南亚、英国南部、英国西部、西欧、美国西部2。
+Fsv2 系列在以下区域中提供：澳大利亚中部、澳大利亚中部2、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、东亚、美国东部、法国中部、印度中部、韩国中部、韩国南部、北欧、南非北部、东南亚、英国南部、英国西部、西欧、美国西部2。
 
 
 #### <a name="m-series"></a>M 系列

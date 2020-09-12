@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189936"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437660"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,26 +91,26 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 ## <a name="accelerated-database-recovery-adr"></a>加速的数据库恢复 (ADR)
 
-[加速的数据库恢复 (ADR)](../accelerated-database-recovery.md) 是一项新的数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure SQL 数据仓库。
+[加速的数据库恢复 (ADR)](../accelerated-database-recovery.md) 是一项新的数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics， (以前的 SQL 数据仓库) 。
 
 ## <a name="testing-application-fault-resiliency"></a>测试应用程序的故障复原能力
 
-高可用性是 SQL 数据库和 SQL 托管实例平台的基本功能，其运作对数据库应用程序透明。 但是，我们认识到，你可能想要测试在计划内或计划外事件期间启动的自动故障转移操作如何影响应用程序，然后再将其部署到生产环境。 可以通过调用一种特殊的 API 来重新启动数据库、弹性池或托管实例，手动触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致将客户端连接重定向到可用性区域中与旧主数据库的可用性区域不同的新主站点。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证是否由于网络延迟的变化而更改了端到端性能。 由于重新启动操作是入侵的，很多用户可能会对平台造成压力，因此每个数据库、弹性池或托管实例每隔30分钟只允许进行一次故障转移呼叫。
+高可用性是 SQL 数据库和 SQL 托管实例平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会将其部署到生产环境。 可以通过调用一种特殊的 API 来重新启动数据库、弹性池或托管实例，手动触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致将客户端连接重定向到可用性区域中与旧主数据库的可用性区域不同的新主站点。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证是否由于网络延迟的变化而更改了端到端性能。 由于重新启动操作是入侵的，很多用户可能会对平台造成压力，因此每个数据库、弹性池或托管实例每隔30分钟只允许进行一次故障转移呼叫。
 
 可以使用 PowerShell、REST API 或 Azure CLI 启动故障转移：
 
 |部署类型|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|数据库|[AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[数据库故障转移](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
-|弹性池|[AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[弹性池故障转移](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
-|托管实例|[AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[托管实例-故障转移](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi 故障转移](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|数据库|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[数据库故障转移](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
+|弹性池|[Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[弹性池故障转移](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
+|托管实例|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[托管实例 - 故障转移](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > 故障转移命令不适用于超大规模数据库的可读辅助副本。
 
 ## <a name="conclusion"></a>结论
 
-Azure SQL 数据库和 Azure SQL 托管实例提供与 Azure 平台深度集成的内置高可用性解决方案。 它依赖于故障检测和恢复 Service Fabric，在用于数据保护的 Azure Blob 存储上，以及可用性区域以获得更高的容错能力 (如前文所述的文档不适用于 Azure SQL) 托管实例。 此外，SQL 数据库和 SQL 托管实例利用 SQL Server 实例的 Always On 可用性组技术来执行复制和故障转移。 将这些技术相结合，应用程序可完全实现混合存储模型的优势并支持最严格的 SLA。
+Azure SQL 数据库和 Azure SQL 托管实例提供与 Azure 平台深度集成的内置高可用性解决方案。 它依赖于使用 Service Fabric 来执行故障检测和恢复，依赖于使用 Azure Blob 存储来实现数据保护，并依赖于使用可用性区域来提高容错能力（如文档前文所述，尚不适用于 Azure SQL 托管实例）。 此外，SQL 数据库和 SQL 托管实例利用 SQL Server 实例的 Always On 可用性组技术来执行复制和故障转移。 将这些技术相结合，应用程序可完全实现混合存储模型的优势并支持最严格的 SLA。
 
 ## <a name="next-steps"></a>后续步骤
 

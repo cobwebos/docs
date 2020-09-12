@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752301"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536473"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -56,11 +56,11 @@ Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷�
 
 |    卷大小 (配额)      |  Maxfiles 限制的自动 readjustment    |
 |----------------------------|-------------------|
-|    < 1 TiB                 |    2000 万     |
-|    >= 1 TiB 但 < 2 TiB    |    40000000     |
-|    >= 2 TiB，但 < 3 TiB    |    6000 万     |
-|    >= 3 TiB，但 < 4 TiB    |    80000000     |
-|    >= 4 TiB                |    1 亿    |
+|    <= 1 TiB                |    2000 万     |
+|    > 1 TiB，但 <= 2 TiB    |    40000000     |
+|    > 2 TiB，但 <= 3 TiB    |    6000 万     |
+|    > 3 TiB，但 <= 4 TiB    |    80000000     |
+|    > 4 TiB                 |    1 亿    |
 
 如果已为卷分配至少 4 TiB 的配额，则可以启动 [支持请求](#limit_increase) ，以将 maxfiles 限制增加到100000000以上。
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/01/2020
+ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229865"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469858"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -94,12 +94,12 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 在默认视图中，您可以选择以下筛选器：
 
 - 标识
-- 日期
+- Date
 - 状态
 - 操作
 
 
-![筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
+![添加筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
 
 **标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
@@ -172,10 +172,10 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 修改的属性
 
-- “摘要”
+- 总结
 
 
-![筛选器](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
+![预配详细信息](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
 
 
 
@@ -190,7 +190,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-![筛选器](./media/concept-provisioning-logs/steps.png "筛选器")
+![步骤](./media/concept-provisioning-logs/steps.png "筛选器")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议
@@ -204,21 +204,23 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **修改后的属性**显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
 
 
-### <a name="summary"></a>“摘要”
+### <a name="summary"></a>总结
 
 " **摘要** " 选项卡概述源系统和目标系统中的对象发生了什么情况和标识符。 
 
-## <a name="what-you-should-know"></a>应了解的内容
+## <a name="what-you-should-know"></a>要点
 
 - 如果有高级版，Azure 门户将报告的预配数据存储30天，如果有免费版，则存储7天。
 
 - 您可以使用 "更改 ID" 属性作为唯一标识符。 例如，当与产品支持交互时，这很有用。
 
-- 当前没有下载预配数据的选项。
+- 当前没有可用于下载 CSV 文件的预配数据的选项，但你可以使用 [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)来导出数据。
 
 - 当前不支持 log analytics。
 
 - 对于不在作用域内的用户，可能会看到跳过的事件。 这是预期情况，特别是在同步作用域设置为 "所有用户和组" 时。 我们的服务将评估租户中的所有对象，即使是超出范围的对象。 
+
+- 预配日志当前在政府云中不可用。 如果你无法访问预配日志，请使用审核日志作为临时解决方法。  
 
 ## <a name="error-codes"></a>错误代码
 
@@ -244,6 +246,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 |DuplicateSourceEntries | 操作无法完成，因为找到多个具有配置的匹配属性的用户。 请删除重复的用户，或重新配置属性映射，如 [此处](../app-provisioning/customize-application-attributes.md)所述。|
 |ImportSkipped | 评估每个用户时，我们会尝试从源系统导入用户。 如果导入的用户缺少属性映射中定义的匹配属性，则通常会出现此错误。 如果在匹配属性的用户对象上不存在值，则无法计算范围、匹配或导出更改。 请注意，存在此错误并不表示用户处于范围内，因为我们尚未评估用户的范围。|
 |EntrySynchronizationSkipped | 预配服务已成功查询源系统并确定了用户。 用户未采取进一步的操作，已跳过这些操作。 此跳过可能是由于用户超出了作用域，或者用户在目标系统中已存在，无需进行进一步的更改。|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| 执行 GET 请求以检索用户或组时，会在响应中收到多个用户或组。 只应在响应中接收一个用户或组。 [例如](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)，如果我们执行 GET 请求来检索组，并提供筛选器以排除成员，并且你的 SCIM 终结点返回成员，则会引发此错误。|
 
 ## <a name="next-steps"></a>后续步骤
 

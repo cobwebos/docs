@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898148"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439078"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
@@ -26,10 +26,10 @@ ms.locfileid: "78898148"
        <td><b>手动输入</b></td>
        <td><b>注册工具</b></td>
        <td><b>Open-in 工具</b></td>
-       <td><b>说明</b></td>
+       <td><b>备注</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 目录（仅第1代）</td>
+      <td>Azure Data Lake Store 目录仅 (第1代) </td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ ms.locfileid: "78898148"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 文件（仅第1代）</td>
+      <td>仅 (第1代 Azure Data Lake Store 文件) </td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -143,7 +143,7 @@ ms.locfileid: "78898148"
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL 数据仓库表</td>
+      <td>Azure Synapse 分析表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +151,7 @@ ms.locfileid: "78898148"
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL 数据仓库视图</td>
+      <td>Azure Synapse 分析视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -195,7 +195,7 @@ ms.locfileid: "78898148"
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>浏览器</td>
+      <td>浏览者</td>
       <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 和更高版本</td>
     </tr>
     <tr>
@@ -932,7 +932,7 @@ ms.locfileid: "78898148"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Command</td>
       <td>Stored procedure</td>
       <td>
@@ -948,7 +948,7 @@ ms.locfileid: "78898148"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>TableValuedFunction</td>
       <td>Table-valued function</td>
       <td>
@@ -964,7 +964,7 @@ ms.locfileid: "78898148"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Container</td>
       <td>Database</td>
       <td>
@@ -978,7 +978,7 @@ ms.locfileid: "78898148"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Table</td>
       <td>Table, view</td>
       <td>

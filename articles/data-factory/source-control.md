@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949127"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595066"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 
-若要切换到其他 Git 存储库，请单击“数据工厂概述”页右上角的“Git 存储库设置”图标。 如果看不到该图标，请清除本地浏览器缓存。 选择该图标以删除与当前存储库的关联。
+若要切换到另一个 Git 存储库，请转到管理中心中的 " **源代码**管理" 下的 "Git 配置" 页。 选择 " **断开连接**"。 
 
-![“Git”图标](media/author-visually/remove-repo.png)
+![“Git”图标](media/author-visually/remove-repository.png)
 
-出现“存储库设置”窗格后，选择“删除 Git”。 输入数据工厂名称并单击“确认”以删除与数据工厂关联的 Git 存储库。
+输入数据工厂名称并单击“确认”以删除与数据工厂关联的 Git 存储库。
 
-![删除与当前 Git 存储库的关联](media/author-visually/remove-repo2.png)
+![删除与当前 Git 存储库的关联](media/author-visually/remove-repository-2.png)
 
 删除与当前存储库的关联后，可以将 Git 设置配置为使用不同的存储库，然后将现有数据工厂资源导入新存储库。
 

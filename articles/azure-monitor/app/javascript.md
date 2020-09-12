@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224846"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656939"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -204,8 +204,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 默认情况下，此 SDK **不会**处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
 
-目前，我们提供了一个单独的 [React 插件](#react-extensions)（可以使用此 SDK 对其进行初始化）。 该插件也能为你实现路由更改跟踪，并可收集[其他特定于 React 的遥测数据](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
-
+目前，我们提供了一个单独的 [React 插件](javascript-react-plugin.md)（可以使用此 SDK 对其进行初始化）。 该插件也能为你实现路由更改跟踪，并可收集其他特定于 React 的遥测数据。
 > [!NOTE]
 > 仅当你不使用 React 插件时，才使用 `enableAutoRouteTracking: true`。 当路由更改时，这两种方法都能发送新的 PageView。 如果这两种方法均已启用，则可能会发送重复的 PageView。
 
@@ -213,12 +212,13 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
 
-## <a name="react-extensions"></a>React 扩展
+## <a name="extensions"></a>扩展
 
 | 扩展 |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
+| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
 ## <a name="correlation"></a>相关性
 
@@ -315,7 +315,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>示例
 
-有关可运行的示例，请参阅 [Application Insights JavaScript SDK 示例](https://github.com/topics/applicationinsights-js-demo)
+有关可运行的示例，请参阅 [Application Insights JAVASCRIPT SDK 示例](https://github.com/Azure-Samples?q=applicationinsights-js-demo)。
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版 Application Insights 升级
 

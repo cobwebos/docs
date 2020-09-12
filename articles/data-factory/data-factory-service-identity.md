@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037590"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434939"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -32,7 +32,7 @@ ms.locfileid: "86037590"
 数据工厂的托管标识对以下功能有益：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂托管标识用于 Azure Key Vault 身份验证。
-- 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL 数据库](connector-azure-sql-database.md)和 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md)。
+- 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure SQL 数据库](connector-azure-sql-database.md)和 [azure Synapse Analytics (以前的 SQL 数据仓库) ](connector-azure-sql-data-warehouse.md)。
 - [Web 活动](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>生成托管标识
@@ -163,7 +163,7 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 - 托管标识租户
 - 托管标识应用程序 ID
 
-当你创建链接服务时，托管标识信息也会显示，它支持托管标识身份验证，如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等。
+当你创建支持托管标识身份验证的链接服务（如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等）时，托管标识信息也会显示。
 
 授予权限时，请使用对象 ID 或数据工厂名称（作为托管标识名称）来查找此标识。
 
@@ -193,7 +193,7 @@ Type                  : ServicePrincipal
 
 ### <a name="retrieve-managed-identity-using-rest-api"></a>使用 REST API 检索托管标识
 
-当你获取特定数据工厂时，将返回托管标识主体 ID 和租户 ID，如下所示。
+获取特定的数据工厂时，会返回托管标识主体 ID 和租户 ID，如下所示。
 
 在请求中调用以下 API：
 
@@ -201,7 +201,7 @@ Type                  : ServicePrincipal
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**响应**：将获得如下所示的响应。 "标识" 部分会相应填充。
+**响应**：你将获得如下所示的响应。 “标识”部分会相应进行填充。
 
 ```json
 {
@@ -233,7 +233,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!TIP] 
-> 若要从 ARM 模板检索托管标识，请在 ARM JSON 中添加 "**输出**" 部分：
+> 若要从 ARM 模板检索托管标识，请在 ARM JSON 中添加“输出”部分：
 
 ```json
 {

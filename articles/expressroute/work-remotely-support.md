@@ -2,17 +2,17 @@
 title: 使用 Azure ExpressRoute 支持远程用户
 description: 本页介绍在新冠肺炎疫情期间如何利用 Azure ExpressRoute 来实现远程工作。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/22/2020
-ms.author: ajitbhu
-ms.openlocfilehash: 18b30380ede0c95c7d039749a4d47f65e5824058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738067"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567667"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>使用 Azure ExpressRoute 创建混合连接以支持远程用户
 
@@ -31,7 +31,7 @@ ms.locfileid: "84738067"
 * [如何增加现有 ExpressRoute 线路的带宽](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [ExpressRoute 监视、指标和警报](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
 * [基于 ExpressRoute 的路由优化](expressroute-optimize-routing.md)
-* [适用于 O365 的 Azure ExpressRoute](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+* [适用于 Microsoft 365 的 Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [非对称路由注意事项](expressroute-asymmetric-routing.md)
 * [如何在 Azure 门户中打开支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 

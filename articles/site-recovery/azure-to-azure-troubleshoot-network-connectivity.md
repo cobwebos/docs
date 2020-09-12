@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6adfd9bc778318b406d5ce27cadccdad02d73d69
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049683"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437456"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -108,7 +108,7 @@ ms.locfileid: "89049683"
 
 #### <a name="resolution"></a>解决方法
 
-Azure Site Recovery 需要根据区域访问 [Site Recovery IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。 请确保可以从 VM 访问所需的 IP 范围。
+如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理来控制计算机上的出站网络连接，则需要允许多个服务标记。 [了解详细信息](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。
 
 ### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器时，Azure 到 Azure 的复制失败 (151072)
 

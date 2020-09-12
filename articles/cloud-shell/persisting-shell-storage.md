@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273284"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470130"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -83,7 +83,7 @@ Cloud Shell 计算机位于以下区域中：
 用户可以 `(Get-CloudDrive | Get-AzStorageAccount).Location` 在 PowerShell 中运行以查看其文件共享的位置。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
-在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../azure-policy/json-samples.md)。
+在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../governance/policy/samples/index.md)。
 
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell 存储的工作原理 
 Cloud Shell 通过以下两种方法持久保存文件： 
@@ -103,7 +103,7 @@ Cloud Shell 通过以下两种方法持久保存文件：
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
 若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
 
-clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如，`//storageaccountname.file.core.windows.net/filesharename`
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -170,4 +170,4 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 快速入门](quickstart.md) <br>
 [了解 Microsoft Azure 文件存储](../storage/files/storage-files-introduction.md) <br>
-[了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[了解存储标记](../azure-resource-manager/management/tag-resources.md) <br>

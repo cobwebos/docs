@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37a3725fb7684a9e87f1936ef0ce8cc79de03894
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158669"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594656"
 ---
 # <a name="change-iot-central-application-settings"></a>更改 IoT Central 应用程序设置
 
@@ -45,7 +45,7 @@ ms.locfileid: "80158669"
 
 IoT Central Azure 资源管理器 SDK 程序包适用于 Node、Python、C#、Ruby、Java 和 Go。 可以使用这些包来创建、列出、更新或删除 IoT Central 应用程序。 这些包包含用于管理身份验证和错误处理的帮助程序。
 
-可以在 [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples) 中找到有关如何使用 Azure 资源管理器 SDK 的示例。
+可以在 [https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples](https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples) 中找到有关如何使用 Azure 资源管理器 SDK 的示例。
 
 有关详细信息，请参阅以下 GitHub 存储库和包：
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038484"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500294"
 ---
 # <a name="supported-authentication-methods"></a>支持的身份验证方法
 
@@ -43,9 +43,13 @@ Windows 虚拟桌面支持 NT LAN Manager (NTLM) ，以及用于会话主机身�
 >[!NOTE]
 >智能卡和 Windows Hello 只能使用 Kerberos 进行登录。 用 Kerberos 登录需要对域控制器有线路视觉。
 
+## <a name="hybrid-identity"></a>混合标识
+
+Windows 虚拟桌面通过 Azure Active Directory (AD) （包括使用 Active Directory 联合身份验证服务 (ADFS) 的联合身份验证）支持 [混合标识](../active-directory/hybrid/whatis-hybrid-identity.md) 。 由于用户必须通过 Azure AD 发现，因此 Windows 虚拟桌面不支持使用 ADFS 的独立 Active Directory 部署。
+
 ## <a name="single-sign-on-sso"></a>单一登录 (SSO)
 
-Windows 虚拟桌面目前不支持用于身份验证或 SSO 的 (ADFS) Active Directory 联合身份验证服务。
+Windows 虚拟桌面目前不支持 Active Directory 联合身份验证服务 (ADFS) 用于 SSO。
 
 避免系统提示输入会话主机凭据的唯一方法是将其保存在客户端中。 建议仅对安全设备执行此操作，以防其他用户访问资源。
 

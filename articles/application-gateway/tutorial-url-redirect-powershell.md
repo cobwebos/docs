@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806031"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595243"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持基于 URL 路径的重定向的应用程序网关
 
@@ -20,11 +20,10 @@ ms.locfileid: "84806031"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建应用程序网关
-> * 添加侦听器和路由规则
-> * 为后端池创建虚拟机规模集
+* 设置网络
+* 创建应用程序网关
+* 添加侦听器和路由规则
+* 为后端池创建虚拟机规模集
 
 下面的示例演示来自端口 8080 和 8081 并定向到相同后端池的站点流量：
 

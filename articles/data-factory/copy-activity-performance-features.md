@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846337"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440535"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
@@ -35,8 +35,8 @@ ms.locfileid: "87846337"
 |:--- |:--- |---- |
 | 文件存储之间 |- **从/向单一文件复制**：2-4 <br>- **从/向多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br><br>例如，如果从包含 4 个大文件的文件夹复制数据并选择保留层次结构，则最大有效 DIU 为 16；选择合并文件时，最大有效 DIU 为 4。 |4 到 32 个，具体取决于文件的数量和大小 |
 | 从文件存储到非文件存储 |- **从单个文件复制**：2-4 <br/>- **从多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br/><br/>例如，如果从包含 4 个大文件的文件夹复制数据，则最大有效 DIU 为 16。 |- **复制到 Azure SQL 数据库或 Azure Cosmos DB**：4-16 个，具体取决于接收器层 (DTU/RU) 和源文件模式<br>- 使用 PolyBase 或 COPY 语句**复制到 Azure Synapse Analytics**：2<br>- 其他方案：4 |
-| 从非文件存储到文件存储 |- **从分区启用选项的数据存储复制** (包括[azure sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [Azure Sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和[Teradata](connector-teradata.md#teradata-as-source)) ：2-256 写入文件夹时2-4，写入到一个文件中。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br/>- 使用 UNLOAD **从 Amazon Redshift 复制**：2<br>- **其他方案**：4 |
-| 非文件存储之间 |- **从分区启用选项的数据存储复制** (包括[azure sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [Azure Sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和[Teradata](connector-teradata.md#teradata-as-source)) ：2-256 写入文件夹时2-4，写入到一个文件中。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br/>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br>- **其他方案**：4 |
+| 从非文件存储到文件存储 |- **从分区启用选项的数据存储复制** (包括 [azure sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [Azure Sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和 [Teradata](connector-teradata.md#teradata-as-source)) ：2-256 写入文件夹时2-4，写入到一个文件中。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br/>- 使用 UNLOAD **从 Amazon Redshift 复制**：2<br>- **其他方案**：4 |
+| 非文件存储之间 |- **从分区启用选项的数据存储复制** (包括 [azure sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [Azure Sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和 [Teradata](connector-teradata.md#teradata-as-source)) ：2-256 写入文件夹时2-4，写入到一个文件中。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br/>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br>- **其他方案**：4 |
 
 可以在复制活动监视视图或活动输出中查看用于每个复制运行的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-monitoring.md)。 若要替代此默认值，请按如下所示指定 `dataIntegrationUnits` 属性的值。 复制操作在运行时使用的*实际 DIU 数*等于或小于配置的值，具体取决于数据模式。
 
@@ -74,7 +74,7 @@ ms.locfileid: "87846337"
 请注意，在以下情况下，单个复制活动执行可以利用多个自承载 IR 节点：
 
 - 从基于文件的存储中复制数据。使用的节点数取决于文件的数量和大小。
-- 从启用分区选项的数据存储复制数据 (包括[AZURE Sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [azure sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和[Teradata](connector-teradata.md#teradata-as-source)) ，具体取决于数据分区数。
+- 从启用分区选项的数据存储复制数据 (包括 [AZURE Sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [azure sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和 [Teradata](connector-teradata.md#teradata-as-source)) ，具体取决于数据分区数。
 
 ## <a name="parallel-copy"></a>并行复制
 
@@ -93,8 +93,8 @@ ms.locfileid: "87846337"
 | --- | --- |
 | 文件存储之间 | `parallelCopies` 确定文件级别的并行度。 每个文件内的区块化会自动透明地在该级别下进行。 它旨在对给定数据存储类型使用最佳区块大小，以并行加载数据。 <br/><br/>复制活动在运行时使用的实际并行副本数不超过现有的文件数。 如果复制行为是在文件接收器中执行 **mergeFile**，则复制活动无法利用文件级并行度。 |
 | 从文件存储到非文件存储 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
-| 从非文件存储到文件存储 | -从分区启用选项的数据存储复制数据时 (包括[AZURE Sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [azure sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和[Teradata](connector-teradata.md#teradata-as-source)) ，默认的并行复制为4。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
-| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>-从分区启用选项的数据存储复制数据时 (包括[AZURE Sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [azure sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和[Teradata](connector-teradata.md#teradata-as-source)) ，默认的并行复制为4。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
+| 从非文件存储到文件存储 | -从分区启用选项的数据存储复制数据时 (包括 [AZURE Sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [azure sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和 [Teradata](connector-teradata.md#teradata-as-source)) ，默认的并行复制为4。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
+| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>-从分区启用选项的数据存储复制数据时 (包括 [AZURE Sql 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、 [azure sql 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、 [azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、 [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)、 [SQL Server](connector-sql-server.md#sql-server-as-a-source)和 [Teradata](connector-teradata.md#teradata-as-source)) ，默认的并行复制为4。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
 
 若要控制托管数据存储的计算机上的负载或优化复制性能，可以替代默认值并为 `parallelCopies` 属性指定值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
@@ -126,7 +126,7 @@ ms.locfileid: "87846337"
 
 将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
 
-- **你要通过 PolyBase 将数据从各种数据存储引入 Azure Synapse Analytics（以前称为 SQL 数据仓库）。** Azure Synapse Analytics 使用 PolyBase 作为高吞吐量机制，将大量数据加载到 Azure Synapse Analytics 中。 源数据必须位于 Blob 存储或 Azure Data Lake Store 中，并且必须满足其他条件。 从 Blob 存储或 Azure Data Lake Store 以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，Azure 数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据有效地加载到 Azure Synapse Analytics 中。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
+- **你要通过 PolyBase 将数据从各种数据存储引入 Azure Synapse Analytics（以前称为 SQL 数据仓库）。** Azure Synapse Analytics 使用 PolyBase 作为高吞吐量机制，将大量数据加载到 Azure Synapse Analytics 中。 源数据必须位于 Blob 存储或 Azure Data Lake Store 中，并且必须满足其他条件。 从 Blob 存储或 Azure Data Lake Store 以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，Azure 数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据有效地加载到 Azure Synapse Analytics 中。 有关详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)中。
 - **有时，通过速度慢的网络连接执行混合数据移动（即从本地数据存储复制到云数据存储）需要一段时间。** 为了提高性能，可以使用暂存复制来压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
 - **由于企业 IT 策略，不希望在防火墙中打开除端口 80 和端口 443 以外的端口。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure Synapse Analytics 接收器时，需要为 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，它可以将数据从 Blob 暂存存储加载到 SQL 数据库或 Azure Synapse Analytics 中。 在此流中，不需要启用端口 1433。
 

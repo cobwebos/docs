@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39736f0a369064e1a825ba3f6975a01c5e9ecc40
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147382"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437235"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -108,7 +108,7 @@ Exchange 和 SharePoint 能够同步关键的条件性访问策略，以便可�
 1. 在这种情况下，资源提供程序会拒绝访问，并向客户端发送 401 + 声明质询。
 1. 支持 CAE 的客户端理解 401+ 声明质询。 它绕过缓存并返回到步骤 1，将其刷新令牌和声明质询一起发送回 Azure AD。 然后在此情况下，Azure AD 将重新评估所有条件，并提示用户重新进行身份验证。
 
-### <a name="user-condition-change-flow-public-preview"></a>公共预览版 (的用户条件更改流) ：
+### <a name="user-condition-change-flow-preview"></a>用户条件更改流 (预览) ：
 
 在下面的示例中，条件访问管理员已将基于位置的条件性访问策略配置为仅允许来自特定 IP 范围的访问：
 
@@ -135,6 +135,13 @@ Exchange 和 SharePoint 能够同步关键的条件性访问策略，以便可�
 
 ## <a name="troubleshooting"></a>疑难解答
 
+### <a name="supported-location-policies"></a>支持的位置策略
+
+对于 CAE，只能深入了解基于命名 IP 的命名位置。 我们不会深入了解其他位置设置，如 [MFA 受信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 当用户来自受 MFA 信任的 IP 或包含 MFA 受信任的 IP 或国家/地区位置的受信任位置时，用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们将发出1小时的 CAE 令牌，且不进行即时 IP 强制检查。
+
+> [!IMPORTANT]
+> 配置持续访问评估的位置时，请仅使用 [基于 ip 的条件访问位置条件](../conditional-access/location-condition.md#preview-features) ，并配置可由标识提供者和资源提供程序查看的所有 IP 地址， **包括 IPv4 和 IPv6**。 不要使用国家/地区位置条件或 Azure 多重身份验证的服务设置页中提供的受信任的 ip 功能。
+
 ### <a name="ip-address-configuration"></a>IP 地址配置
 
 标识提供者和资源提供程序可能会看到不同的 IP 地址。 这种不匹配可能是由于组织的网络代理实现或标识提供者和资源提供程序之间不正确的 IPv4/IPv6 配置导致的。 例如：
@@ -145,15 +152,12 @@ Exchange 和 SharePoint 能够同步关键的条件性访问策略，以便可�
 
 如果你的环境中存在此方案以避免无限循环，Azure AD 将发出一个小时的 CAE 令牌，并且不会强制更改客户端位置。 即使在这种情况下，与传统的1小时令牌相比，安全性也得到了改进，因为我们仍在评估客户端位置更改事件之外的 [其他事件](#critical-event-evaluation) 。
 
-> [!IMPORTANT]
-> 配置持续访问评估的位置时，请仅使用 [基于 IP 的条件性访问位置条件](../conditional-access/location-condition.md)。 不要使用国家/地区位置条件或 Azure 多重身份验证的服务设置页中提供的受信任的 ip 功能。
-
 ### <a name="office-and-web-account-manager-settings"></a>Office 和 Web 帐户管理器设置
 
 | Office 更新通道 | DisableADALatopWAMOverride | DisableAADWAM |
 | --- | --- | --- |
 | 半年企业频道 | 如果设置为 enabled 或1，则不支持 CAE。 | 如果设置为 enabled 或1，则不支持 CAE。 |
-| 当前频道 <br> 或 <br> 每月企业频道 | 无论设置如何，都支持 CAE | 无论设置如何，都支持 CAE |
+| 当前频道 <br> or <br> 每月企业频道 | 无论设置如何，都支持 CAE | 无论设置如何，都支持 CAE |
 
 有关 office 更新通道的说明，请参阅 [Microsoft 365 应用的更新频道概述](https://docs.microsoft.com/deployoffice/overview-update-channels)。 建议组织不要禁用 (WAM) 的 Web 帐户管理器。
 

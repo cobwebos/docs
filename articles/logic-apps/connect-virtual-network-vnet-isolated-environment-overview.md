@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816009"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500379"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -60,7 +60,7 @@ ms.locfileid: "88816009"
   * Azure 自动化、Azure Key Vault、Azure 事件网格和 Azure Monitor 日志
   * FTP、SFTP-SSH、文件系统和 SMTP
   * SAP、IBM MQ、IBM DB2 和 IBM 3270
-  * SQL Server、Azure SQL 数据仓库、Azure Cosmos DB
+  * SQL Server、Azure Synapse 分析 Azure Cosmos DB
   * AS2、X12 和 EDIFACT
 
   在少数例外情况下，如果 ISE 连接器可用于本地系统或数据源，则无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接连接。 有关详细信息，请参阅本主题后面的对 [本地系统的访问权限](#on-premises) 。
@@ -142,7 +142,7 @@ ms.locfileid: "88816009"
 
 ## <a name="integration-accounts-with-ise"></a>集成帐户与 ISE
 
-可以在集成服务环境 (ISE) 中将集成帐户与逻辑应用结合使用。 但是，这些集成帐户必须使用相同的 ISE** 作为链接的逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的这些集成帐户。 创建集成帐户时，可以选择 ISE 作为集成帐户的位置。 若要了解如何使用 ISE 实现集成帐户的定价和计费，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+可以在集成服务环境 (ISE) 中将集成帐户与逻辑应用结合使用。 但是，这些集成帐户必须使用相同的 ISE** 作为链接的逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的这些集成帐户。 创建集成帐户时，可以选择 ISE 作为集成帐户的位置。 若要了解如何使用 ISE 实现集成帐户的定价和计费，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 有关限制信息，请参阅 [集成帐户限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

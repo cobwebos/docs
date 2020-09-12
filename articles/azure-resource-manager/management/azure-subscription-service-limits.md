@@ -2,14 +2,13 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-author: davidsmatlak
-ms.date: 06/04/2020
-ms.openlocfilehash: 86c9958818b5439502ab37471ed7a51fb3f21bf9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/02/2020
+ms.openlocfilehash: b9b2b7217b854153f03d61713d8b4a1bcf5bfd9d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854096"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470164"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -27,6 +26,9 @@ ms.locfileid: "88854096"
 > 如果可以调整限制，则表中包含“默认限制”和“最大限制”表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
+>
+> 术语 " *软* 限制" 和 " *硬限制* " 通常用于非正式地描述 (软限制) 的可调整的限制， (硬限制) 的最大限制。 如果无法调整某个限制，则不会有软限制，只是硬性限制。
+>
 
 [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p) 不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将 [Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md) 和 [免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
@@ -75,6 +77,10 @@ ms.locfileid: "88854096"
 ## <a name="automation-limits"></a>自动化限制
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
+
+## <a name="azure-app-configuration"></a>Azure 应用配置
+
+[!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Redis 缓存限制
 

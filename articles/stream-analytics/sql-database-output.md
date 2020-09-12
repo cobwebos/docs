@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d61cad0be25f5aa1a4c63bf3dc128196ad80fdad
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 83fa119a17d319dffe1fcd54173d9a11b29135ca
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875590"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481818"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 azure SQL 数据库输出
 
-可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 Azure 流分析作业将写入 SQL 数据库中的现有表。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
+可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 Azure 流分析作业将写入 SQL 数据库中的现有表。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure Synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
 
 还可以使用 [Azure SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作为输出。 必须[在 SQL 托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
 

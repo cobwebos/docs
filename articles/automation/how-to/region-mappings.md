@@ -1,27 +1,29 @@
 ---
 title: 链接的 Log Analytics 工作区支持的区域
-description: 本文介绍支持的自动化帐户与 Log Analytics 工作区之间的区域映射。
+description: 本文介绍自动化帐户与 Log Analytics 工作区之间受支持的区域映射，因为它与 Azure 自动化的某些功能相关。
+ms.date: 09/03/2020
 services: automation
-ms.service: automation
-ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 06/12/2020
 ms.topic: conceptual
-manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447856"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440654"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
-在 Azure 自动化中，可以为 VM 启用更新管理、更改跟踪和库存，以及在空闲时间启动/停止 VM 功能。 只有某些区域在订阅中支持链接 Log Analytics 工作区与自动化帐户。 区域映射仅适用于自动化帐户和 Log Analytics 工作区。 Log Analytics 工作区和自动化帐户必须位于相同的订阅中，但是可以位于部署到相同区域的不同资源组中。 有关更多信息，请参阅 [Log Analytics 工作区和自动化帐户](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
+在 Azure 自动化中，你可以为你的服务器和虚拟机启用更新管理、更改跟踪和清点以及在空闲时间启动/停止 VM 功能。 这些功能与 Log Analytics 工作区有依赖关系，因此需要将工作区链接到自动化帐户。 但是，仅支持某些区域将它们链接在一起。 通常，如果你计划将自动化帐户链接到未启用这些功能的工作区，则映射 *不* 适用。
+
+本文提供了支持的映射，以便在自动化帐户中成功启用和使用这些功能。
+
+有关详细信息，请参阅 [Log Analytics 工作区和自动化帐户](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
 
 ## <a name="supported-mappings"></a>支持的映射
+
+> [!NOTE]
+> 如下表中所示，Log Analytics 和 Azure Automation 之间只能存在一个映射。
 
 下表显示了受支持的映射：
 
@@ -48,11 +50,11 @@ ms.locfileid: "87447856"
 
 <sup>1</sup> Log Analytics 工作区到自动化帐户的 EastUS 映射不是精确的区域到区域的映射，但它是正确的映射。
 
-<sup>2</sup>在此区域中，仅支持更新管理，而其他功能（如更改跟踪和库存）目前不可用。
+<sup>2</sup> 在此区域中，仅支持更新管理，而其他功能（如更改跟踪和库存）目前不可用。
 
 ## <a name="unlink-a-workspace"></a>取消链接工作区
 
-如果决定不再想要将自动化帐户与 Log Analytics 工作区集成，可以直接从 Azure 门户取消链接帐户。 在继续之前，如果正在使用更新管理、更改跟踪和库存，以及在空闲时间启动/停止 VM，首先需要将其[删除](move-account.md#remove-features)。 如果不删除，则无法完成取消链接操作。 
+如果决定不再想要将自动化帐户与 Log Analytics 工作区集成，可以直接从 Azure 门户取消链接帐户。 在继续之前，如果正在使用更新管理、更改跟踪和库存，以及在空闲时间启动/停止 VM，首先需要将其[删除](move-account.md#remove-features)。 如果不删除，则无法完成取消链接操作。
 
 删除这些功能后，可以按照以下步骤取消链接自动化帐户。
 

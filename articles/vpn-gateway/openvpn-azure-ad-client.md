@@ -1,25 +1,27 @@
 ---
-title: VPN 网关： P2S OpenVPN 协议连接的 VPN 客户端： Azure AD 身份验证
+title: VPN 网关：用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c14d300e2c09316e0665ece3f3e15f7036d5b9a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 781d3aeea6a5568aec065ec4b1cbcfacb74836a6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525069"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434667"
 ---
-# <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 身份验证：为 P2S OpenVPN 协议连接配置 VPN 客户端
+# <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端
 
 本文帮助你配置 VPN 客户端，以使用点到站点 VPN 和 Azure Active Directory 身份验证连接到虚拟网络。 在使用 Azure AD 进行连接和身份验证之前，必须先配置 Azure AD 租户。 有关详细信息，请参阅[配置 Azure AD 租户](openvpn-azure-ad-tenant.md)。
 
 > [!NOTE]
 > Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
+>
+> Azure AD authentication 需要 Azure VPN 客户端，该客户端仅适用于 Windows 10。
 >
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>使用客户端配置文件
@@ -158,7 +160,7 @@ ms.locfileid: "86525069"
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何将 DNS 后缀添加到 VPN 客户端？
 
-您可以修改下载的配置文件 XML 文件并添加** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> **标记
+可以修改下载的配置文件 XML 文件并添加 \<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes> 标记
 
 ```
 <azvpnprofile>
@@ -176,7 +178,7 @@ ms.locfileid: "86525069"
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何将自定义 DNS 服务器添加到 VPN 客户端？
 
-您可以修改下载的配置文件 XML 文件并添加** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> **标记
+可以修改下载的配置文件 XML 文件并添加 \<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers> 标记
 
 ```
 <azvpnprofile>
@@ -197,7 +199,7 @@ ms.locfileid: "86525069"
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
 
-您可以修改下载的配置文件 XML 文件并添加** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **标记
+可以修改下载的配置文件 XML 文件并添加 \<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes> 标记
 
 ```
 <azvpnprofile>
@@ -215,7 +217,7 @@ ms.locfileid: "86525069"
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何在 VPN 客户端中阻止（排除）路由？
 
-您可以修改下载的配置文件 XML 文件并添加** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> **标记
+可以修改下载的配置文件 XML 文件并添加 \<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes> 标记
 
 ```
 <azvpnprofile>

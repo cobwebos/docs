@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72328715"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469892"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 Azure 资源的托管标识
 
@@ -43,8 +43,8 @@ echo The MSI access token is $access_token
 
 如果将令牌缓存在代码中，应该准备好处理资源指出令牌已过期的情况。
 
-若要处理令牌错误，请访问[有关获取 MSI 访问令牌的 MSI 页](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)。
+若要处理令牌错误，请访问[有关获取 MSI 访问令牌的 MSI 页](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling)。
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解 MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[从 MSI VM 获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[详细了解 MSI](../active-directory/managed-identities-azure-resources/overview.md)  
+[从 MSI VM 获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

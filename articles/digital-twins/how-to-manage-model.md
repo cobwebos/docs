@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079770"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536449"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -79,7 +79,7 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为 *json* 文件。 还�
 > [!TIP] 
 > 请记住，所有 SDK 方法均为同步和异步版本。 对于分页调用，异步方法会在 `AsyncPageable<T>` 同步版本返回时返回 `Pageable<T>` 。
 
-### <a name="upload-models"></a>上载模型
+### <a name="upload-models"></a>上传模型
 
 创建模型后，可以将其上传到 Azure 数字孪生实例。
 
@@ -168,13 +168,18 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 ### <a name="update-models"></a>更新模型
 
-将模型上载到实例后，整个模型接口就是不可变的。 这意味着不存在模型的传统 "编辑"。
+一旦将模型上传到 Azure 数字孪生实例，整个模型接口就是不可变的。 这意味着不存在模型的传统 "编辑"。 Azure 数字孪生也不允许重新上传同一模型。
 
-相反，如果要在 Azure 数字孪生中对模型进行更改，则执行此操作的方法是上传同一模型的 **较新版本** 。 在预览期间，推进模型版本将只允许您删除字段，而不是添加新的字段 (添加新字段，只需 [创建一个全新的模型](#create-models)) 。
+相反，如果您要对模型进行更改（例如更新 `displayName` 或 `description` ），则执行此操作的方法是上传更新的模型 **版本** 。 
+
+#### <a name="model-versioning"></a>模型版本控制
 
 若要创建现有模型的新版本，请从原始模型的 DTDL 开始。 更新要更改的字段。
 
-然后，通过更新模型的字段将其标记为较新版本的模型 `id` 。 模型 ID 的最后一个部分（之后 `;` ）表示模型号。 若要指示这现在是此模型的更新版本，请将值末尾的数字递增 `id` 为大于当前版本号的任何数字。
+>[!NOTE]
+>在预览期间，推进模型版本只允许添加新字段，而不会删除现有字段。 若要删除字段，只需 [创建一个全新的模型](#create-models)。
+
+接下来，通过更新模型的字段，将其标记为较新版本的模型 `id` 。 模型 ID 的最后一个部分（之后 `;` ）表示模型号。 若要指示这现在是此模型的更新版本，请将值末尾的数字递增 `id` 为大于当前版本号的任何数字。
 
 例如，如果之前的模型 ID 如下所示：
 
@@ -188,7 +193,17 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-然后，将新版本的模型上传到实例。 它将取代旧版本，使用此模型创建的新孪生将使用更新的版本。
+然后，将新版本的模型上传到实例。 
+
+此版本的模型随后将在你的实例中提供，用于数字孪生。 它不 **会** 覆盖较早版本的模型，因此，在您 [删除](#remove-models)之前，模型的多个版本将在您的实例中共存。
+
+#### <a name="impact-on-twins"></a>对孪生的影响
+
+当你创建新的个克隆时，由于新的模型版本和旧模型版本共存，新的克隆可以使用新版本的模型或旧版本。
+
+这也意味着上传新版本的模型不会自动影响现有孪生。 现有孪生将只保留旧模型版本的实例。
+
+可以通过对其进行修补来将这些现有孪生更新为新模型版本，如*操作方法：管理数字孪生*的[*更新数字克隆的模型*](how-to-manage-twin.md#update-a-digital-twins-model)部分中所述。 在同一修补程序中，您必须将 **模型 ID** (更新为新版本) 以及 **必须在克隆上更改以使其符合新模型的任何字段**。
 
 ### <a name="remove-models"></a>删除模型
 
@@ -273,6 +288,8 @@ Azure 数字孪生不会阻止此状态，因此请小心地修补孪生，以�
 ## <a name="manage-models-with-cli"></a>用 CLI 管理模型
 
 还可以使用 Azure 数字孪生 CLI 来管理模型。 有关命令，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

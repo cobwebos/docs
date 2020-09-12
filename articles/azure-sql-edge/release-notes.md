@@ -9,28 +9,49 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/04/2020
+ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553404"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500345"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍 Azure SQL Edge 的每个新版本的新增功能和变化。
 
+## <a name="ctp-23"></a>CTP 2.3
+### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎内部版本号-15.0.2000.1549
+### <a name="whats-new"></a>新增功能
+1. 支持 Date_Bucket ( # A1 函数中的自定义源。 
+2. 支持作为 SQL 部署的一部分的 BacPac 文件。
+3. 支持基于数据保留策略的清理。      
+   - 启用保留策略的 DDL 支持 
+   - 清除存储过程和后台清除任务
+   - 用于监视清理任务的扩展事件
+
+### <a name="fixes"></a>修复项
+1. 用于对 TSQL 流式处理操作进行疑难解答的其他错误消息和详细信息。 
+2. Imporvements 以保持处于空闲模式的电池寿命。 
+3. TSQL 流式处理引擎修复： 
+   - 解决 substreamed 跳跃窗口的停滞水印问题 
+   - 修复框架异常处理，以确保将其收集为用户可操作错误
+
+
 ## <a name="ctp-22"></a>CTP 2.2
 ### <a name="sql-engine-build-number---15020001546"></a>SQL 引擎内部版本号-15.0.2000.1546
-### <a name="fixes"></a>修复项
+### <a name="whats-new"></a>新增功能
 1. 支持非根容器 
 2. 支持使用情况和诊断数据收集 
 3. T-sql 流式处理更新
    - 支持对流对象名称的 Unicode 字符
+
+### <a name="fixes"></a>修复项
+1. T-sql 流式处理更新
    - 进程清理改进
    - 日志记录和诊断改进
-4. 数据引入性能改进
+2. 数据引入性能改进
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL 引擎内部版本号-15.0.2000.1545
@@ -55,11 +76,11 @@ ms.locfileid: "87553404"
  
 ### <a name="known-issues"></a>已知问题
 
-1. <b>问题：</b>由于计时问题而导致在启动时应用 dacpac 的潜在故障。
+1. <b>问题：</b> 由于计时问题而导致在启动时应用 dacpac 的潜在故障。
 
-    <b>解决方法：</b>重新启动 SQL Server 或容器将重试应用 dacpac，并应修复问题
+    <b>解决方法：</b> 重新启动 SQL Server 或容器将重试应用 dacpac，并应修复问题
 ### <a name="request-support"></a>请求支持
-1. 可以在[支持页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中请求支持。
+1. 可以在 [支持页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中请求支持。
 
 4. 确保选择以下字段： 
     * 问题类型-技术 

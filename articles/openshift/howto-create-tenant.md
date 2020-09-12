@@ -1,21 +1,21 @@
 ---
 title: 创建适用于 Azure Red Hat OpenShift 的 Azure AD 租户
-description: 下面介绍如何创建 Azure Active Directory （Azure AD）租户来托管你的 Microsoft Azure Red Hat OpenShift 群集。
+description: 下面介绍如何创建 Azure Active Directory (Azure AD) 租户来托管 Microsoft Azure Red Hat OpenShift 群集。
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694899"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469977"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>创建适用于 Azure Red Hat OpenShift 的 Azure AD 租户
 
-Microsoft Azure Red Hat OpenShift 需要一个用于创建群集的[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)租户。 *租户*是组织或应用开发人员通过注册 Azure、Microsoft Intune 或 Microsoft 365 与 Microsoft 建立关系时接收的 Azure AD 的专用实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户，并具有自己的工作、学校标识和应用注册。
+Microsoft Azure Red Hat OpenShift 要求在其中创建群集的 [Azure Active Directory (Azure AD) ](../active-directory/develop/quickstart-create-new-tenant.md) 租户。 *租户*是组织或应用开发人员通过注册 Azure、Microsoft Intune 或 Microsoft 365 与 Microsoft 建立关系时接收的 Azure AD 的专用实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户，并具有自己的工作、学校标识和应用注册。
 
 如果还没有 Azure AD 租户，请按照以下说明创建一个。
 
@@ -23,23 +23,23 @@ Microsoft Azure Red Hat OpenShift 需要一个用于创建群集的[Azure Active
 
 创建租户：
 
-1. 使用想要与 Azure Red Hat OpenShift 群集关联的帐户登录到[Azure 门户](https://portal.azure.com/)。
-2. 打开 " [Azure Active Directory" 边栏选项卡](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)以创建新的租户（也称为新的*Azure Active Directory*）。
-3. 提供**组织名称**。
-4. 提供一个**初始域名**。 这会在其中追加*onmicrosoft.com* 。 可在此处重复使用*组织名称*的值。
+1. 使用想要与 Azure Red Hat OpenShift 群集关联的帐户登录到 [Azure 门户](https://portal.azure.com/) 。
+2. 打开 " [Azure Active Directory" 边栏选项卡](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) 以创建新的租户 (也称为新 *Azure Active Directory*) 。
+3. 提供 **组织名称**。
+4. 提供一个 **初始域名**。 这会在其中追加 *onmicrosoft.com* 。 可在此处重复使用 *组织名称* 的值。
 5. 选择将在其中创建租户的国家或地区。
-6. 单击“创建”。
-7. 创建 Azure AD 租户后，请选择 "**单击此处以管理新目录**" 链接。 新租户名称应显示在 Azure 门户的右上方：  
+6. 单击**创建**。
+7. 创建 Azure AD 租户后，请选择 " **单击此处以管理新目录** " 链接。 新租户名称应显示在 Azure 门户的右上方：  
 
     ![显示右上方的租户名称的门户屏幕截图][tenantcallout]  
 
-8. 记下*租户 ID* ，以便以后可以指定 Azure Red Hat OpenShift 群集的创建位置。 在门户中，现在应看到新租户的 "Azure Active Directory 概述" 边栏选项卡。 选择 "**属性**" 并复制**目录 ID**的值。 `TENANT`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
+8. 记下 *租户 ID* ，以便以后可以指定 Azure Red Hat OpenShift 群集的创建位置。 在门户中，现在应看到新租户的 "Azure Active Directory 概述" 边栏选项卡。 选择 " **属性** " 并复制 **目录 ID**的值。 `TENANT`在[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程中，我们将引用此值。
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>资源
 
-有关[Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)的详细信息，请查看[Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory/)。
+有关[Azure AD 租户](../active-directory/develop/quickstart-create-new-tenant.md)的详细信息，请查看[Azure Active Directory 文档](../active-directory/index.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,12 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180093"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500328"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -72,7 +72,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 
-“备份作业”菜单只显示按需备份作业。 对于计划的作业，请[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+" **备份作业** " 菜单显示所有计划的和按需操作，但计划的日志备份除外，因为它们可能非常频繁。 对于计划日志作业，请使用 [Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>未来的数据库会自动添加备份吗？
 

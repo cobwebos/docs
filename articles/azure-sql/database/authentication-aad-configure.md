@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 08/17/2020
-ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551834"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434395"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文介绍如何创建和填充 Azure Active Directory (Azure AD) 实例，然后将 Azure AD 与 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)配合使用。 有关概述，请参阅 [Azure Active Directory 身份验证](authentication-aad-overview.md)。
+本文介绍如何创建和填充 Azure Active Directory (Azure AD) 实例，然后将 Azure AD 与 [AZURE Sql Database](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 azure Synapse Analytics 结合使用 ([以前的 SQL 数据仓库) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 有关概述，请参阅 [Azure Active Directory 身份验证](authentication-aad-overview.md)。
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD 身份验证方法
 
@@ -73,7 +73,7 @@ Azure 中的每个[服务器](logical-servers.md)（托管 SQL 数据库或 Azur
 > [!IMPORTANT]
 > 若要预配 Azure SQL 托管实例，则只执行以下步骤。 在 Azure AD 中，只能由全局/公司管理员或特权角色管理员执行此操作。
 >
-> 在 **公共预览版**中，你可以将 **目录读取** 者角色分配到 Azure AD 中的组。 然后，组所有者可以将托管实例标识作为此组的成员添加，这将允许你为 SQL 托管实例预配 Azure AD 管理员。 有关此功能的详细信息，请参阅 [AZURE SQL Azure Active Directory 中的目录读者角色](authentication-aad-directory-readers-role.md)。
+> 在 **公共预览版**中，你可以将 **目录读取** 者角色分配到 Azure AD 中的组。 然后，组所有者可以将托管实例标识作为此组的成员添加，这将允许你为 SQL 托管实例预配 Azure AD 管理员。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 
 SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组成员资格验证用户身份或创建新用户等任务。 为此，需要授予 SQL 托管实例读取 Azure AD 的权限。 可以使用 Azure 门户或 PowerShell 执行此操作。
 
@@ -362,7 +362,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 但是，将 Azure Active Directory 身份验证与 SQL 数据库和 Azure Synapse 结合使用时，需要使用基于 Azure AD 标识的包含的数据库用户。 包含的数据库用户在 master 数据库中没有登录名，且映射到与数据库关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 不能使用 Azure 门户创建数据库用户（管理员除外）。 Azure 角色不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库。 Azure 角色用于管理 Azure 资源，不适用于数据库权限。 例如，“SQL Server 参与者”角色不会授予连接到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
+> 不能使用 Azure 门户创建数据库用户（管理员除外）。 Azure 角色不会传播到 SQL 数据库中的数据库、SQL 托管实例或 Azure Synapse。 Azure 角色用于管理 Azure 资源，不适用于数据库权限。 例如，“SQL Server 参与者”角色不会授予连接到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
 
 > [!WARNING]
 > 不支持在 T-SQL 的 `CREATE LOGIN` 和 `CREATE USER` 语句中将特殊字符（例如冒号 `:` 或与号 `&`）用作用户名的一部分。
@@ -538,8 +538,8 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](firewall-configure.md)。
-- 有关如何将 Azure AD guest 用户设置为 Azure AD 管理员的信息，请参阅 [创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员](authentication-aad-guest-users.md)。
-- 有关如何使用 Azure SQL 提供服务主体的信息，请参阅 [使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)
+- 有关如何将 Azure AD 来宾用户设置为 Azure AD 管理员的信息，请参阅[创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员](authentication-aad-guest-users.md)。
+- 有关如何使用 Azure SQL 服务主体的信息，请参阅[使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)
 
 <!--Image references-->
 

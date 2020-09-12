@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978996"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438936"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -75,7 +75,7 @@ ms.locfileid: "74978996"
 ### <a name="feature-additions"></a>新增功能
 * 添加了新的 StorageFormat 类型 [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) 类型，以优化的行纵栏表 (ORC) 格式复制文件。
 * 向 SqlDWSink 添加了 [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) 和 PolyBaseSettings 属性。
-  * 能够使用 PolyBase 将数据复制到 SQL 数据仓库中。
+  * 允许使用 PolyBase 将数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) 。
 
 ## <a name="version-461"></a>版本 4.6.1
 ### <a name="bug-fixes"></a>Bug 修复
@@ -163,7 +163,7 @@ ms.locfileid: "74978996"
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  以下是示例：
+* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  下面是一个示例：
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -181,5 +181,5 @@ ms.locfileid: "74978996"
 * **列表**管道 API 仅返回管道的摘要而不是完整的详细信息。 例如，管道摘要中的活动只包含名称和类型。
 
 ### <a name="feature-additions"></a>新增功能
-* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 类支持两个新属性（即 **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**），以支持到 Azure SQL 数据仓库的幂等复制。 有关这些属性的详细信息，请参阅 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
-* 当前支持针对 Azure SQL 数据库和 Azure SQL 数据仓库源作为复制活动的一部分运行存储过程。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource)和 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  
+* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)类支持两个新属性（ **SliceIdentifierColumnName**和**SqlWriterCleanupScript**），以支持将幂等复制到 azure azure Synapse Analytics。 有关这些属性的详细信息，请参阅 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 文章。
+* 现在，我们支持针对 Azure SQL 数据库和 Azure Synapse Analytics 源运行存储过程，作为复制活动的一部分。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [AZURE SQL 数据库](data-factory-azure-sql-connector.md#sqlsource) 和 [azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) 文章。  

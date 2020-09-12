@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a74a791c8c6a95c71faf1f4a0ce6eaacd7c68901
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 212ead54f0f8212ae251175d40873e7cec4e0240
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002975"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482651"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>在 Azure VM (PowerShell & Az CLI 上配置 SQL Server 的可用性组) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,13 +44,13 @@ ms.locfileid: "89002975"
 - 在域中具有“创建计算机对象”权限的现有域用户帐户。 例如，域管理员帐户通常拥有足够的权限（如 account@domain.com）。 该帐户还应该属于每个 VM 上负责创建群集的本地管理员组。
 - 可控制 SQL Server 的域用户帐户。 
  
-## <a name="create-a-storage-account-as-a-cloud-witness"></a>创建存储帐户作为云见证服务器
+## <a name="create-a-storage-account"></a>创建存储帐户 
+
 群集需要一个存储帐户来充当云见证。 可以使用现有存储帐户，也可以创建新的存储帐户。 如果要使用现有存储帐户，请跳转至下一部分。 
 
 下面的代码片段将创建存储帐户： 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 
 ```azurecli-interactive
 # Create the storage account
@@ -80,7 +80,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ---
 
-## <a name="define-windows-failover-cluster-metadata"></a>定义 Windows 故障转移群集元数据
+## <a name="define-cluster-metadata"></a>定义分类元数据
 
 Azure CLI [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) 命令组管理托管可用性组的 Windows Server 故障转移群集 (WSFC) 服务的元数据。 群集元数据包括 Active Directory 域、群集帐户、要用作云见证的存储帐户和 SQL Server 版本。 使用 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) 定义 WSFC 的元数据，以便在添加第一个 SQL Server VM 时，按定义创建群集。 
 
@@ -183,6 +183,17 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+
+## <a name="validate-cluster"></a>验证群集 
+
+要使故障转移群集受 Microsoft 支持，它必须通过群集验证。 使用首选方法（如远程桌面协议 () RDP）连接到 VM，并验证群集是否通过验证，然后再继续。 否则，群集将处于不受支持状态。 
+
+你可以使用故障转移群集管理器 (FCM) 或以下 PowerShell 命令来验证群集：
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
 
 ## <a name="create-availability-group"></a>创建可用性组
 

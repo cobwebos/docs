@@ -5,19 +5,19 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: e9f876f3d20af01867283f550590b3af23dec662
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b1f30e91b9ce96daf8b2eb8ac6c8cb38b86b347f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926614"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594401"
 ---
 # <a name="h-series"></a>H 系列
 
-H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提供较大内存的优化。 H 系列 Vm 功能8或 16 Intel 至强 E5 2667 v3 处理器核心，每个 CPU 核心最多 14 GB RAM，无超线程。 H 系列功能 56 Gb/秒，FDR 不会阻止 fat 树配置，以实现一致的 RDMA 性能。 H 系列 Vm 支持 Intel MPI 1.x 和 MS-CHAP。
+H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提供较大内存的优化。 H 系列 Vm 功能8或 16 Intel 至强 E5 2667 v3 处理器核心，每个 CPU 核心最多 14 GB RAM，无超线程。 H 系列功能 56 Gb/秒，FDR 不会阻止 fat 树配置，以实现一致的 RDMA 性能。 H 系列 Vm 目前不支持 SR-IOV，并支持 Intel MPI 1.x 和 MS-CHAP。
 
 ACU：290-300
 
@@ -38,12 +38,12 @@ ACU：290-300
 | Standard_H16r <sup>1</sup>  | 16 | Intel 至强 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |
 | Standard_H16mr <sup>1</sup> | 16 | Intel 至强 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |
 
-<sup>1</sup>对于 MPI 应用程序，专用 RDMA 后端网络是通过 FDR 无限网络启用的。
+<sup>1</sup> 对于 MPI 应用程序，专用 RDMA 后端网络是通过 FDR 无限网络启用的。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 > [!NOTE]
-> 在[支持 RDMA 的 vm](sizes-hpc.md#rdma-capable-instances)之间，H 系列不启用 sr-iov。 因此，支持的[Vm 映像](./workloads/hpc/configure.md#vm-images)、未受支持的[驱动程序](./workloads/hpc/enable-infiniband.md)要求和受支持的[MPI 库](./workloads/hpc/setup-mpi.md)不同于启用 sr-iov 的 vm。
+> 在 [支持 RDMA 的 vm](sizes-hpc.md#rdma-capable-instances)之间，H 系列不启用 sr-iov。 因此，支持的 [Vm 映像](./workloads/hpc/configure.md#vm-images)、未受支持的 [驱动程序](./workloads/hpc/enable-infiniband.md) 要求和受支持的 [MPI 库](./workloads/hpc/setup-mpi.md) 不同于启用 sr-iov 的 vm。
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -57,6 +57,6 @@ ACU：290-300
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解如何在[HPC 工作负荷](./workloads/hpc/overview.md)中[配置 Vm](./workloads/hpc/configure.md)、[启用无限](./workloads/hpc/enable-infiniband.md)，为 Azure[设置 MPI](./workloads/hpc/setup-mpi.md)和优化 hpc 应用程序。
-- 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。
-- 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

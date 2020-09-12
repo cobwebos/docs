@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837303"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505331"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -29,6 +29,16 @@ ms.locfileid: "87837303"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>视频索引器网站的移动设计
+
+视频索引器网站体验现在支持移动设备。 用户体验会迅速适应你的移动屏幕大小 (不包括自定义 Ui) 。 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>辅助功能改进和 bug 修复 
+
+作为 WCAG (Web 内容辅助功能准则) 的一部分，在 Microsoft 辅助功能标准中，视频索引器网站体验与等级 C 相一致。 解决了一些与键盘导航、编程访问和屏幕阅读器相关的 bug 和改进。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -58,7 +68,7 @@ ms.locfileid: "87837303"
 
 现在，你可以使用搜索 API 搜索包含特定主题 (仅) API 的视频。
 
-主题作为 `textScope` (可选参数) 的一部分添加。 有关详细信息，请参阅[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
+主题作为 `textScope` (可选参数) 的一部分添加。 有关详细信息，请参阅 [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
 
 ### <a name="labels-enhancement"></a>标签增强
 
@@ -76,7 +86,7 @@ ms.locfileid: "87837303"
 
 从现在开始，无论是用于嵌入小组件还是登录到视频索引器 web 应用程序，都可 www.videoindexer.ai。
 
-同时，wus.videoindexer.ai 将重定向到 www。 有关详细信息，请访问应用中的[嵌入视频索引器小组件](video-indexer-embed-widgets.md)。
+同时，wus.videoindexer.ai 将重定向到 www。 有关详细信息，请访问应用中的 [嵌入视频索引器小组件](video-indexer-embed-widgets.md)。
 
 ## <a name="april-2020"></a>2020 年 4 月
 
@@ -86,7 +96,7 @@ ms.locfileid: "87837303"
 
 **播放机**小组件具有新 `locale` 参数。 `locale`和 `language` 参数都控制播放机的语言。
 
-有关详细信息，请参阅[小组件类型](video-indexer-embed-widgets.md#widget-types)部分。 
+有关详细信息，请参阅 [小组件类型](video-indexer-embed-widgets.md#widget-types) 部分。 
 
 ### <a name="new-player-skin"></a>新播放器外观
 
@@ -101,12 +111,12 @@ ms.locfileid: "87837303"
     * [获取帐户-授权](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
     * [带令牌的获取帐户](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
  
-    帐户对象的 `Url` 字段指向[视频索引器网站](https://www.videoindexer.ai/)的位置。
+    帐户对象的 `Url` 字段指向 [视频索引器网站](https://www.videoindexer.ai/)的位置。
 对于付费帐户，该 `Url` 字段当前指向内部 URL，而不是公共网站。
-在接下来的几周，我们将对其进行更改，并返回 (试用版和付费) 的所有帐户的[视频索引器网站](https://www.videoindexer.ai/)URL。
+在接下来的几周，我们将对其进行更改，并返回 (试用版和付费) 的所有帐户的 [视频索引器网站](https://www.videoindexer.ai/) URL。
 
-    不要使用内部 Url，你应该使用[视频索引器公共 api](https://api-portal.videoindexer.ai/)。
-* 如果要在应用程序中嵌入视频索引器 Url 并且 Url 未指向[视频索引器网站](https://www.videoindexer.ai/)或视频索引器 API 终结点 () 而不是指向 `https://api.videoindexer.ai` 区域终结点 (例如 `https://wus2.videoindexer.ai`) ，请重新生成 url。
+    不要使用内部 Url，你应该使用 [视频索引器公共 api](https://api-portal.videoindexer.ai/)。
+* 如果要在应用程序中嵌入视频索引器 Url 并且 Url 未指向 [视频索引器网站](https://www.videoindexer.ai/) 或视频索引器 API 终结点 () 而不是指向 `https://api.videoindexer.ai` 区域终结点 (例如 `https://wus2.videoindexer.ai`) ，请重新生成 url。
 
    为此，可以执行以下任一操作：
 
@@ -129,17 +139,17 @@ ms.locfileid: "87837303"
  
 ### <a name="new-video-indexer-github-repository"></a>新视频索引器 GitHub 存储库
 
-新的视频索引器 GitHub 包含不同的项目，现在可以使用入门指南和代码示例：https://github.com/Azure-Samples/media-services-video-indexer
+新的视频索引器 GitHub 包含不同的项目，现在可以使用入门指南和代码示例： https://github.com/Azure-Samples/media-services-video-indexer
  
 ### <a name="swagger-update"></a>Swagger 更新
 
-视频索引器将统一**身份验证**和**操作**合并为单个[视频索引器 OpenAPI 规范 (swagger) ](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 开发人员可以在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 api。
+视频索引器将统一 **身份验证** 和 **操作** 合并为单个 [视频索引器 OpenAPI 规范 (swagger) ](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 开发人员可以在 [视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 api。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
 ### <a name="update-transcript-with-the-new-api"></a>用新 API 更新脚本
 
-使用[更新-视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update)API 更新脚本中的特定部分。
+使用 [更新-视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) API 更新脚本中的特定部分。
 
 ### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>从视频索引器门户修复帐户配置
 
@@ -169,7 +179,7 @@ ms.locfileid: "87837303"
 
 ### <a name="error-handling-improvement"></a>错误处理改进
 
-现在，状态代码409将从[重新索引视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?)并[更新视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?)api 中返回，以防活动处于活动状态，以防止意外重写当前的重新索引更改。
+现在，状态代码409将从 [重新索引视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) 并 [更新视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) api 中返回，以防活动处于活动状态，以防止意外重写当前的重新索引更改。
 
 ## <a name="november-2019"></a>2019 年 11 月
  
@@ -186,7 +196,7 @@ ms.locfileid: "87837303"
  
 * 搜索库中的动画字符
 
-    为经过动画处理的字符编制索引时，现在可以在帐户的视频条带中搜索它们。 有关详细信息，请参阅[动画字符识别](animated-characters-recognition.md)。
+    为经过动画处理的字符编制索引时，现在可以在帐户的视频条带中搜索它们。 有关详细信息，请参阅 [动画字符识别](animated-characters-recognition.md)。
 
 ## <a name="september-2019"></a>2019 年 9 月
  
@@ -203,10 +213,10 @@ IBC 2019 上公布了多项改进：
     通过自然语言处理 (NLP) 从语音和视觉文本中提取品牌、位置和人物。
 * 编辑快照类型分类
 
-    用编辑类型（如近向、中等拍摄、两个拍摄、室内、户外等）标记照片。有关详细信息，请参阅[编辑快照类型检测](scenes-shots-keyframes.md#editorial-shot-type-detection)。
+    用编辑类型（如近向、中等拍摄、两个拍摄、室内、户外等）标记照片。有关详细信息，请参阅 [编辑快照类型检测](scenes-shots-keyframes.md#editorial-shot-type-detection)。
 * 主题推断增强功能-现在涵盖级别2
     
-    主题推断 model 现在支持 IPTC 分类的深度粒度。 阅读有关 Azure 媒体服务的完整详细信息[新的 AI 支持的创新](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)。
+    主题推断 model 现在支持 IPTC 分类的深度粒度。 阅读有关 Azure 媒体服务的完整详细信息 [新的 AI 支持的创新](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)。
 
 ## <a name="august-2019"></a>2019 年 8 月
  
@@ -263,7 +273,7 @@ IBC 2019 上公布了多项改进：
 
 ### <a name="create-and-repair-account-api-preview"></a>创建和修复帐户 API (预览) 
 
-添加了新的 API，可用于[更新 Azure 媒体服务连接终结点或密钥](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag)。
+添加了新的 API，可用于 [更新 Azure 媒体服务连接终结点或密钥](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag)。
 
 ### <a name="improve-error-handling-on-upload"></a>改进上传时的错误处理 
 
@@ -281,9 +291,9 @@ IBC 2019 上公布了多项改进：
 
 ### <a name="update-custom-language-model-from-closed-caption-file"></a>从隐藏式字幕文件更新自定义语言模型
 
-[创建自定义语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag)和[更新自定义语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag)API 现在支持将 VTT、SRT 和 TTML 文件格式作为语言模型的输入。
+[创建自定义语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) 和 [更新自定义语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) API 现在支持将 VTT、SRT 和 TTML 文件格式作为语言模型的输入。
 
-调用[更新视频脚本 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript)时，会自动添加脚本。 与视频相关的训练模型也会自动更新。 有关如何自定义和训练语言模型的信息，请参阅[使用视频索引器自定义语言模型](customize-language-model-overview.md)。
+调用 [更新视频脚本 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript)时，会自动添加脚本。 与视频相关的训练模型也会自动更新。 有关如何自定义和训练语言模型的信息，请参阅 [使用视频索引器自定义语言模型](customize-language-model-overview.md)。
 
 ### <a name="new-download-transcript-formats--txt-and-csv"></a>新下载脚本格式– TXT 和 CSV
 

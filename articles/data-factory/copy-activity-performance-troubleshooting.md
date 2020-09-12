@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770945"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440518"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -57,7 +57,7 @@ ms.locfileid: "84770945"
 | --------------- | ------------------------------------------------------------ |
 | 队列           | 复制活动在集成运行时中实际启动之前所消逝的时间。 |
 | 复制前脚本 | 复制活动在 IR 中启动之后、在接收器数据存储中执行完复制前脚本之前所消逝的时间。 为数据库接收器配置复制前脚本时适用，例如，将数据写入 Azure SQL 数据库会在复制新数据之前执行清理。 |
-| 传输        | 完成前一步骤之后、在 IR 将所有数据从源传输到接收器之前所消逝的时间。 <br/>请注意，传输中的子步骤会并行运行，某些操作（例如，分析/生成文件格式）现在未显示。<br><br/>- **距第一字节的时间：** 在前一步骤结束之后、IR 从源数据存储收到第一个字节之前所经过的时间。 适用于不是基于文件的源。<br>- **列出源：** 枚举源文件或数据分区所花费的时间。 后者适用于为数据库源配置分区选项时，例如，从 Oracle/SAP HANA/Teradata/Netezza 等数据库复制数据时。<br/>-**从源中读取：** 从源数据存储检索数据所花费的时间。<br/>- **写入接收器：** 将数据写入接收器数据存储所花费的时间。 请注意，某些连接器目前没有此指标，包括 Azure 认知搜索、Azure 数据资源管理器、Azure 表存储、Oracle、SQL Server、Common Data Service、Dynamics 365、Dynamics CRM、Salesforce/Salesforce 服务云。 |
+| 传输        | 完成前一步骤之后、在 IR 将所有数据从源传输到接收器之前所消逝的时间。 <br/>请注意，传输中的子步骤会并行运行，某些操作（例如，分析/生成文件格式）现在未显示。<br><br/>- **距第一字节的时间：** 在前一步骤结束之后、IR 从源数据存储收到第一个字节之前所经过的时间。 适用于不是基于文件的源。<br>- **列出源：** 枚举源文件或数据分区所花费的时间。 后者适用于为数据库源配置分区选项时，例如，从 Oracle/SAP HANA/Teradata/Netezza 等数据库复制数据时。<br/>-**从源中读取：** 从源数据存储检索数据所花费的时间。<br/>- **写入接收器：** 将数据写入接收器数据存储所花费的时间。 请注意，某些连接器（包括 Azure 认知搜索、Azure 数据资源管理器、Azure 表存储、Oracle、SQL Server、Common Data Service、Dynamics 365、Dynamics CRM、Salesforce/Salesforce 服务云）目前没有此指标。 |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>排查 Azure IR 中的复制活动的问题
 
@@ -179,7 +179,7 @@ ms.locfileid: "84770945"
 * Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../storage/blobs/storage-performance-checklist.md)。
 * Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比。
-* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+* Azure Synapse Analytics (以前的 SQL 数据仓库) ：其功能以数据仓库单位 (Dwu) 来度量。 请参阅 [在 Azure Synapse Analytics 中管理计算能力 (概述) ](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。
 * SQL Server：[性能监视和优化](https://msdn.microsoft.com/library/ms189081.aspx)。
 * 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)。

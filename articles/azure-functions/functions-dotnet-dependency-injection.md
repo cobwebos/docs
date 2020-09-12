@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 6badcedba7fa1e1b605fc5553e5c6eed52c4203b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 7e45537d0a9fbdd738d6a2142b9259a15498e9c9
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182065"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503799"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -170,9 +170,9 @@ namespace MyNamespace
     "version": "2.0",
     "logging": {
         "applicationInsights": {
-            "samplingExcludedTypes": "Request",
             "samplingSettings": {
-                "isEnabled": true
+                "isEnabled": true,
+                "excludedTypes": "Request"
             }
         },
         "logLevel": {
@@ -256,11 +256,11 @@ public class HttpTrigger
 ## <a name="customizing-configuration-sources"></a>自定义配置源
 
 > [!NOTE]
-> Azure Functions 主机版本2.0.14192.0 和3.0.14191.0 开始提供配置源自定义。
+> 从 Azure Functions 主机版本 2.0.14192.0 和 3.0.14191.0 开始，可以使用配置源自定义。
 
-若要指定其他配置源，请 `ConfigureAppConfiguration` 在函数应用的类中重写方法 `StartUp` 。
+若要指定其他配置源，请替代函数应用的 `StartUp` 类中的 `ConfigureAppConfiguration` 方法。
 
-下面的示例从基本和特定于环境的应用程序设置文件添加配置值。
+以下示例从基础映像和可选的特定于环境的应用设置文件中添加配置值。
 
 ```csharp
 using System.IO;
@@ -287,11 +287,11 @@ namespace MyNamespace
 }
 ```
 
-将配置提供程序添加到的 `ConfigurationBuilder` 属性 `IFunctionsConfigurationBuilder` 。 有关使用配置提供程序的详细信息，请参阅 [ASP.NET Core 中的配置](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)。
+将配置提供程序添加到 `IFunctionsConfigurationBuilder` 的 `ConfigurationBuilder` 属性。 有关使用配置提供程序的详细信息，请参阅 [ASP.NET Core 中的配置](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)。
 
-`FunctionsHostBuilderContext`是从获取的 `IFunctionsConfigurationBuilder.GetContext()` 。 使用此上下文检索当前环境名称，并解析函数应用文件夹中配置文件的位置。
+`FunctionsHostBuilderContext` 是从 `IFunctionsConfigurationBuilder.GetContext()` 中获取的。 使用此上下文检索当前环境名称，并解析函数应用文件夹中配置文件的位置。
 
-默认情况下，上的配置文件（如 *appsettings.js* ）不会自动复制到 function app 的 output 文件夹中。 更新 *.csproj* 文件，使其与以下示例匹配以确保复制文件。
+默认情况下，不会自动将配置文件（如 appsettings.json）复制到函数应用的输出文件夹。 更新 .csproj 文件以匹配以下示例，从而确保文件已复制。
 
 ```xml
 <None Update="appsettings.json">
@@ -304,7 +304,7 @@ namespace MyNamespace
 ```
 
 > [!IMPORTANT]
-> 对于在使用或高级计划中运行的函数应用，对触发器中使用的配置值的修改可能导致缩放错误。 类对这些属性所做的任何更改都会 `FunctionsStartup` 导致函数应用启动错误。
+> 对于在使用或高级计划中运行的函数应用，对触发器中使用的配置值的修改可能导致缩放错误。 由 `FunctionsStartup` 类对这些属性所做的任何更改都会导致函数应用启动错误。
 
 ## <a name="next-steps"></a>后续步骤
 

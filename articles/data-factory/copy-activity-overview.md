@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534339"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440586"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -127,7 +127,7 @@ ms.locfileid: "87534339"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| 属性 | 说明 | 必需？ |
+| properties | 说明 | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，请设置为 `Copy` | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -156,7 +156,7 @@ ms.locfileid: "87534339"
 
 ## <a name="resume-from-last-failed-run"></a>从上次失败的运行恢复
 
-在基于文件的存储之间以二进制格式按原样复制大量文件，并选择将文件夹/文件层次结构从源保存到接收器（例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2）时，复制活动支持从上次失败的运行中恢复。 它适用于以下基于文件的连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)和[SFTP](connector-sftp.md)。
+在基于文件的存储之间以二进制格式按原样复制大量文件，并选择将文件夹/文件层次结构从源保存到接收器（例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2）时，复制活动支持从上次失败的运行中恢复。 它适用于以下基于文件的连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)和 [SFTP](connector-sftp.md)。
 
 可以通过下述两种方式利用复制活动恢复功能：
 
@@ -186,7 +186,7 @@ ms.locfileid: "87534339"
 除了将数据从源数据存储复制到接收器外，还可以进行配置，以便添加要一起复制到接收器的其他数据列。 例如：
 
 - 从基于文件的源复制时，将相对文件路径存储为一个附加列，用以跟踪数据来自哪个文件。
-- 添加包含 ADF 表达式的列，附加 ADF 系统变量（如管道名称/管道 ID），或存储来自上游活动输出的其他动态值。
+- 添加包含 ADF 表达式的列，以附加 ADF 系统变量（例如管道名称/管道 ID），或存储来自上游活动输出的其他动态值。
 - 添加一个包含静态值的列以满足下游消耗需求。
 
 可以在复制活动源选项卡上找到以下配置： 
@@ -198,7 +198,7 @@ ms.locfileid: "87534339"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
 
@@ -243,13 +243,13 @@ ms.locfileid: "87534339"
 
 ## <a name="auto-create-sink-tables"></a>自动创建接收器表
 
-将数据复制到 SQL 数据库/Azure Synapse Analytics 时，如果目标表不存在，则复制活动支持根据源数据自动创建它。 它旨在帮助您快速开始加载数据，并评估 SQL 数据库/Azure Synapse Analytics。 数据引入后，可以根据需要查看和调整接收器表架构。
+将数据复制到 SQL 数据库/Azure Synapse Analytics 时，如果目标表不存在，则复制活动支持基于源数据自动创建该表。 它旨在帮助快速开始加载数据并评估 SQL 数据库/Azure Synapse Analytics。 进行数据引入之后，可以根据需要查看和调整接收器表架构。
 
-将数据从任何源复制到以下接收器数据存储时，支持此功能。 可以在*ADF 创作 UI* （>*复制活动接收器*– >*表选项*– >*自动创建表*或 `tableOption` 复制活动接收器负载中的属性）中找到选项。
+将数据从任何源复制到以下接收器数据存储时，支持此功能。 可以在 *ADF 创作 UI* （> *复制活动接收器* – > *表选项* – > *自动创建表*或 `tableOption` 复制活动接收器负载中的属性）中找到选项。
 
 - [Azure SQL 数据库](connector-azure-sql-database.md)
 - [Azure SQL 数据库托管实例](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics （以前称为 Azure SQL 数据仓库）](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics（以前称为 SQL 数据仓库）](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![创建接收器表](media/copy-activity-overview/create-sink-table.png)

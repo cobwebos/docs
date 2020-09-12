@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270018"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482311"
 ---
 # <a name="how-to-export-fhir-data"></a>如何导出 FHIR 数据
 
@@ -38,7 +38,14 @@ Azure API for FHIR 中的 $export 命令采用可选的_ \_ conatiner_参数，�
 |查询参数            | 示例 |可选性| 说明|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.js|对于取消识别的导出是必需的 |配置文件的名称。 请在 [此处](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)查看配置文件格式。 此文件应保留在配置为导出位置的同一 Azure 存储帐户中名为 **匿名** 的容器内。 |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|对于取消识别的导出是可选的|这是配置文件的 Etag。 可以使用 Azure 存储资源管理器从 blob 属性获取 Etag|
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|对于取消识别的导出是可选的|这是配置文件的 Etag。 可以使用 blob 属性中的 Azure 存储资源管理器获取 Etag|
 
 > [!IMPORTANT]
 > 请注意，在导出配置过程中指定的相同 Azure 存储帐户中，原始导出和取消识别的导出写入。 建议使用与不同的已取消识别的配置对应的不同容器，并在容器级别管理用户访问权限。
+
+## <a name="next-steps"></a>后续步骤
+
+本文介绍了如何使用 $export 命令（包括取消识别的数据）导出 FHIR 资源。 接下来，可以配置导出数据：
+ 
+>[!div class="nextstepaction"]
+>[配置导出数据](configure-export-data.md)

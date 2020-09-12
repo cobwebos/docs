@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921981"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439208"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多个实例扩展 SignalR 服务？
 最新的 SignalR 服务 SDK 支持对 SignalR 服务实例使用多个终结点。 可以使用此功能来扩展并发连接，或将其用于跨区域的消息传送。
@@ -27,7 +27,7 @@ ms.locfileid: "88921981"
 
 可以使用以下 `dotnet` 命令添加多个实例连接字符串：
 
-```batch
+```cmd
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <ConnectionString2>
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>

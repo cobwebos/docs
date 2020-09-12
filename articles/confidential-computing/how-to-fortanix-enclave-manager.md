@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826287"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462422"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>如何：使用 Fortanix Enclave Manager 运行应用程序 
 
@@ -24,7 +24,7 @@ ms.locfileid: "88826287"
 Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure 基础结构之上。 其他第三方提供商在 Azure 上提供类似的机密计算服务。
 
 > [!Note] 
- > 本文档中提及的产品不受 MICROSOFT 控制。 MICROSOFT 仅为你提供此信息，并且对这些非 MICROSOFT 产品的引用不表示 MICROSOFT 认可。
+ > 本文档中提及的产品不受 Microsoft 控制。 Microsoft 仅为你提供此信息，并且对这些非 Microsoft 产品的引用不表示 Microsoft 认可。
 
 
 
@@ -43,7 +43,7 @@ Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure �
 > 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>向 Fortanix Enclave Manager 添加应用程序
-1. 登录到 [FORTANIX EM](https://fortanix.com)
+1. 登录到 [Fortanix Enclave Manager (FORTANIX EM) ](https://em.fortanix.com)
 1. 导航到 " **帐户** " 页，然后选择 " **添加帐户** " 以创建新帐户。 
     
 ![创建帐户](media/how-to-fortanix-enclave-manager/create-account.png)
@@ -73,7 +73,7 @@ Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure �
     - **Docker 中心**： [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
     - **应用**： fortanix/python-flask
 
-        运行下面的命令：
+        运行以下命令：
          ```bash
             sudo docker run fortanix/python-flask
          ```
@@ -120,7 +120,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 1. 在此页上，你将输入用于部署虚拟机的信息。 具体而言，此 VM 是安装了 Fortanix Node Agent 软件的 Azure 中的 DCsv2 系列启用了 Intel SGX 的虚拟机。 节点代理将允许转换的映像在 Azure 中的 Intel SGX 节点上安全运行。  选择要在其中部署虚拟机和关联资源的 **订阅** 和 **资源组** 。 
  
     > [!NOTE]
-    > 在 Azure 中部署 DCsv2 系列虚拟机时存在一些限制。 可能需要请求额外内核的配额。 有关详细信息，请参阅 [Azure vm 上的机密计算解决方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solution) 。 
+    > 在 Azure 中部署 DCsv2 系列虚拟机时存在一些限制。 可能需要请求额外内核的配额。 有关详细信息，请参阅 [Azure vm 上的机密计算解决方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
 
 1. 选择可用区域。
 1. 在 " **节点名称** " 字段中输入虚拟机的名称。 
@@ -130,7 +130,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
      ![部署资源](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. 选择“查看 + 创建”  。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
+1. 选择“查看 + 创建”。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>在计算节点上运行应用程序映像
 通过执行以下命令来运行应用程序。 请确保将节点 IP、端口和转换后的映像名称更改为你的特定应用程序的输入。 
@@ -166,7 +166,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
 若要删除创建的 Fortanix Enclave 管理器帐户，请在 Enclave 管理器中转到 " [帐户" 页](https://em.fortanix.com/accounts) 。 将鼠标悬停在要删除的帐户上。 选择右上角的黑色黑色点，然后选择 " **删除帐户**"。
 
-  ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![删除](media/how-to-fortanix-enclave-manager/delete-account.png)
 
 ## <a name="next-steps"></a>后续步骤
 

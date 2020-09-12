@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586209"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536394"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 > [!div class="op_single_selector"]
@@ -49,9 +49,9 @@ ms.locfileid: "88586209"
 > 此外，[Azure Cosmos DB 研讨会和实验室](https://aka.ms/cosmosworkshop)也是了解如何使用 Azure Cosmos DB Java SDK v4 的绝佳资源！
 >
 
-## <a name="helpful-content"></a>帮助内容
+## <a name="helpful-content"></a>帮助性内容
 
-| 内容 | 链接 |
+| Content | 链接 |
 |---|---|
 |**SDK 下载**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API 文档** | [Java API 参考文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
@@ -68,49 +68,75 @@ ms.locfileid: "88586209"
 
 ## <a name="release-history"></a>版本历史记录
 
-### <a name="440-beta1-unreleased"></a>4.4.0 (未发布) 
+### <a name="440-beta2-unreleased"></a>4.4.0 (未发布) 
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了启用 tcnative 时的 RequestTimeoutException。
 
-### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29) 
+### <a name="440-beta1-2020-08-27"></a>4.4.0 (2020-08-27) 
+#### <a name="new-features"></a>新功能
+* 添加了新的 API，以便有效地加载多个文档 (通过 pk/id 对列表或) 的一组 pk 值的所有文档。
+* 添加了新 `deleteItem` API。
+* 默认情况下启用查询度量值。
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了中的 NPE `GatewayAddressCache` 。
+* 修复了零项响应的查询指标问题。
+* 提高了性能 (降低了地址分析和主密钥身份验证的 CPU 使用率) 。
+
+### <a name="432-beta2-2020-08-17"></a>4.3.2 (2020-08-17) 
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 以前版本没有任何更改，因此无法发布弹簧数据模块的兼容性问题。
+
+### <a name="432-beta1-2020-08-14"></a>4.3.2 (2020-08-14) 
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了 RntbdServiceEndpoint 中的问题，以避免未使用的 TCP 连接提前关闭。
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13) 
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了查询的问题 `GROUP BY` ，它仅返回一页。
+* 修复了用于符合中央 SDK 准则的用户代理字符串格式。
+* 增强了诊断信息以包括查询计划诊断。
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
 #### <a name="new-features"></a>新增功能
-* 已将反应器的核心库版本更新为 `3.3.8.RELEASE` 。 
-* 已将反应器-netty 库版本更新为 `0.9.10.RELEASE` 。 
-* 已将 netty 库版本更新为 `4.1.51.Final` 。 
-* 为添加了新的重载 Api `upsertItem` `partitionKey` 。 
+* 已将 reactor-core 库版本更新为 `3.3.8.RELEASE`。 
+* 已将 reactor-netty 库版本更新为 `0.9.10.RELEASE`。 
+* 已将 netty 库版本更新为 `4.1.51.Final`。 
+* 为具有 `partitionKey` 的 `upsertItem` 添加了新的重载 API。 
 * 添加了开放式遥测跟踪支持。 
-#### <a name="key-bug-fixes"></a>密钥错误修复
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
 * 修复了 SSLException 在网关模式下取消请求时引发的问题。
-* 修复了对存储过程执行的资源限制重试策略。
-* 修复了在日志级别调试模式下 SDK 挂起的问题。 
-* 修复了直接模式下延迟的定期高峰。 
-* 修复了高客户端初始化时间问题。 
-* 修复了用直接模式和网关模式自定义客户端时的 http 代理 bug。 
-* 修复了用户传递 null 选项的潜在 NPE。 
-* 已将 timeUnit 添加到 `requestLatency` 诊断字符串中。
+* 修复了存储过程执行中的资源限制重试策略问题。
+* 修复了 SDK 在日志级别调试模式下挂起的问题。 
+* 修复了直接模式下延迟定期出现峰值的问题。 
+* 修复了客户端初始化时间过长的问题。 
+* 修复了使用直接模式和网关模式自定义客户端时的 http 代理 bug。 
+* 修复了用户中的潜在 NPE 传递 null 选项的问题。 
+* 将 timeUnit 添加到诊断字符串中的 `requestLatency`。
 * 从诊断字符串中删除了重复的 uri 字符串。 
-* 为点操作修复了正确的 JSON 格式的诊断字符串。
-* 修复了与 `.single()` 运算符有关的问题，导致反应器链在未找到异常的情况下出现。 
+* 将诊断字符串修复为正确的 JSON 格式以用于点操作。
+* 修复了导致 reactor 链在出现“未找到”异常时爆发的 `.single()` 运算符问题。 
 
-### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14) 
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
 #### <a name="new-features"></a>新增功能
-* 向添加了启用脚本日志记录的 API `CosmosStoredProcedureRequestOptions` 。
-* 更新 `DirectConnectionConfig` 默认值 `idleEndpointTimeout` 为1小时，默认值 `connectTimeout` 为5s。
-#### <a name="key-bug-fixes"></a>密钥错误修复
-* 修复 `GatewayConnectionConfig` `idleConnectionTimeout` 了重写的问题 `DirectConnectionConfig` `idleConnectionTimeout` 。
-* 修复了 `responseContinuationTokenLimitInKb` 中的 get 和 Set api `CosmosQueryRequestOptions` 。
-* 修复了在重新创建同名集合时查询和更改源的问题。
-* 修复了 top 查询引发 ClassCastException 的问题。
+* 向 `CosmosStoredProcedureRequestOptions` 添加了启用脚本日志记录的 API。
+* 将 `DirectConnectionConfig` 的默认 `idleEndpointTimeout` 更新为 1 小时，并将默认 `connectTimeout` 更新为 5 秒。
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了 `GatewayConnectionConfig` `idleConnectionTimeout` 替代 `DirectConnectionConfig` `idleConnectionTimeout` 的问题。
+* 修复了 `CosmosQueryRequestOptions` 中的 `responseContinuationTokenLimitInKb` get 和 set API。
+* 修复了使用相同名称重新创建集合时查询和更改源中的问题。
+* 修复了引发 ClassCastException 的顶层查询的问题。
 * 修复了 order by 查询引发 NullPointerException 的问题。
 * 修复了在直接模式下处理取消请求时的问题，从而导致 `onErrorDropped` 调用反应器。 
 
-### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25) 
+### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>新增功能
 * 添加了对 `GROUP BY` 查询的支持。
-* 在 DirectConnectionConfig 中，将 maxConnectionsPerEndpoint 的默认值增加到了130。
-* 增加了 DirectConnectionConfig 中 maxRequestsPerConnection 到30的默认值。
-#### <a name="key-bug-fixes"></a>密钥错误修复
-* 修复了使用继续标记恢复时返回重复结果的 order by 查询的问题。 
-* 修复了值查询返回了嵌套对象的 null 值的问题。
-* 修复了 RntbdClientChannelPool 中的请求管理器的空指针异常。
+* 在 DirectConnectionConfig 中将 maxConnectionsPerEndpoint 的默认值增加到 130。
+* 在 DirectConnectionConfig 中将 maxRequestsPerConnection 的默认值增加到 30。
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了使用继续标记恢复时 order by 查询返回重复结果的问题。 
+* 修复了 value 查询为嵌套对象返回 null 值的问题。
+* 修复了 RntbdClientChannelPool 中请求管理器上的空指针异常问题。
 
 ### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
 #### <a name="new-features"></a>新增功能
@@ -167,7 +193,7 @@ ms.locfileid: "88586209"
 * 通过删除不必要的来回复制来优化响应标头。 
 * 通过删除中间字符串实例化优化了 `ByteBuffer` 序列化/反序列化。
 
-#### <a name="key-bug-fixes"></a>密钥错误修复
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
 * 修复了 ConnectionPolicy `toString()` 空指针异常。
 * 修复了在按查询的值顺序分析查询结果时的问题。 
 * 修复了直接 TCP 客户端的套接字泄漏问题。

@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782934"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569197"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
-这份 Microsoft 常见问题解答列出了 Azure Monitor 的常见问题。
+这份 Microsoft 常见问题解答列出了 Azure Monitor 的常见问题。 如果你有任何其他问题，请前往 [讨论论坛](https://docs.microsoft.com/answers/questions/topics/single/24223.html) 并发布你的问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+
 
 ## <a name="general"></a>常规
 
@@ -98,7 +99,7 @@ Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么收到“要使此订阅启用此查询，需注册 Microsoft.Insights”错误？ 
 将自动注册多个资源提供程序，但某些资源提供程序可能需要你手动注册。 注册的范围始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么收到“无法访问”错误消息？ 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么我不会收到访问错误消息？ 
 若要查看 VM 日志，需获得存储 VM 日志的工作区的读取权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。
 
 ## <a name="metrics"></a>指标
@@ -125,7 +126,7 @@ Azure 资源的[平台指标](insights/monitor-azure-resource.md#monitoring-data
 
 
 ### <a name="what-is-an-action-rule"></a>什么是操作规则？
-通过操作规则，可修改匹配特定条件的一组警报的行为。 这允许您执行在维护时段内禁用警报操作等要求。 你还可将操作组应用于一组警报，而不是将其直接应用于警报规则。 请参阅[操作规则](platform/alerts-action-rules.md)。
+通过操作规则，可修改匹配特定条件的一组警报的行为。 这样，你便可以在维护时段履行禁用警报操作之类的要求。 你还可将操作组应用于一组警报，而不是将其直接应用于警报规则。 请参阅[操作规则](platform/alerts-action-rules.md)。
 
 ## <a name="agents"></a>代理
 
@@ -319,7 +320,7 @@ WireData
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
-* 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此 [文](./app/ip-collection.md)。
+* 若要详细了解如何在 Application Insights 中收集 IP 地址和地理位置数据，请参阅[此文](./app/ip-collection.md)。
 
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -513,19 +514,64 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
-### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502 和503响应并不总是由 Application Insights 捕获
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502 和 503 响应并不总是由 Application Insights 捕获
 
-"502 错误的网关" 和 "503 服务不可用" 错误不总是由 Application Insights 捕获。 如果仅客户端 JavaScript 用于监视这种情况，则可能会出现这种情况，因为在包含 HTML 标头的页面之前返回错误响应，并呈现监视 JavaScript 代码段。 
+“502 错误的网关”和“503 服务不可用”错误并不总是由 Application Insights 捕获。 如果仅将客户端 JavaScript 用于监视，则这是预期的行为，因为错误响应会在包含 HTML 标头且会呈现监视性的 JavaScript 代码片段的页面之前返回。 
 
-如果从启用了服务器端监视的服务器发送了502或503响应，则 Application Insights SDK 会收集这些错误。 
+如果从启用了服务器端监视的服务器发送了 502 或 503 响应，则 Application Insights SDK 会收集这些错误。 
 
-但是，在某些情况下，即使在应用程序的 web 服务器上启用了服务器端监视，也不会 Application Insights 捕获502或503错误。 许多新式 web 服务器不允许客户端直接通信，而是使用反向代理等解决方案在客户端和前端 web 服务器之间来回传递信息。 
+但某些情况下，即使在应用程序的 Web 服务器上启用了服务器端监视，也不会由 Application Insights 捕获 502 或 503 错误。 许多新式 Web 服务器不允许客户端直接通信，而是使用反向代理之类的解决方案在客户端和前端 Web 服务器之间来回传递信息。 
 
-在此方案中，由于反向代理层出现问题，可能会将502或503响应返回到客户端，并且 Application Insights 不会将其内置。 若要帮助检测该层中的问题，可能需要将日志从反向代理转发到 Log Analytics，并创建自定义规则来检查502/503 响应。 若要了解有关502和503错误的常见原因的详细信息，请参阅 Azure App Service [疑难解答文章 "502 错误的网关" 和 "503 服务不可用"](../app-service/troubleshoot-http-502-http-503.md)。     
+在这种情况下，由于反向代理层出现问题，可能会将 502 或 503 响应返回到客户端，该响应不会被 Application Insights 直接捕获。 可能需要将日志从反向代理转发到 Log Analytics，并创建自定义规则来检查 502/503 响应，这样有助于检测该层中的问题 若要详细了解 502 和 503 错误的常见原因，请参阅 Azure 应用服务[故障排除文章中的“502 错误的网关”和“503 服务不可用”](../app-service/troubleshoot-http-502-http-503.md)。     
+
+
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>什么是 OpenTelemetry
+
+可观察性的新开源标准。 更多信息请访问 [https://opentelemetry.io/](https://opentelemetry.io/)。
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>为什么 Microsoft/Azure Monitor 投资 OpenTelemetry？
+
+由于以下三个原因，我们认为它更好地为我们的客户提供服务：
+   1. 启用对更多客户方案的支持。
+   2. 检测，无需担心供应商锁定。
+   3. 提高客户的透明性和合作度。
+
+它还与 Microsoft 用于 [接纳开源](https://opensource.microsoft.com/)的策略相符。
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>OpenTelemetry 给出了哪些额外的价值？
+
+除了上述原因之外，OpenTelemetry 更有效地进行缩放，并跨语言提供一致的设计/配置。
+
+### <a name="how-can-i-test-out-opentelemetry"></a>如何对 OpenTelemetry 进行测试？
+
+注册即可加入我们的 Azure Monitor Application Insights 早期采用者社区 [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) 。
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>GA 在 OpenTelemetry 的上下文中是什么意思？
+
+OpenTelemetry 社区定义 ([GA) 的](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)公开上市。 但是，OpenTelemetry "GA" 并不意味着与现有 Application Insights Sdk 之间存在功能的奇偶校验。 Azure Monitor 将继续为需要某些功能（例如 [预聚合度量值](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、 [实时指标](app/live-stream.md)、 [自适应采样](app/sampling.md#adaptive-sampling)、 [探查器](app/profiler-overview.md)和 [快照调试器](app/snapshot-debugger.md) ）的客户建议当前 Application Insights sdk，直到 OpenTelemetry sdk 达到功能成熟度。
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>能否在生产环境中使用预览版？
+
+不建议使用此方法。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>OpenTelemetry SDK 与自动检测之间有何区别？
+
+OpenTelemetry 规范定义 [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)。 简而言之，"SDK" 是特定于语言的包，它在应用程序的各个组件之间收集遥测数据，并通过导出程序将数据发送到 Azure Monitor。
+
+自动检测 (的概念有时称为 "字节码注入"、"无代码置备" 或 "基于代理的) " 是指在不更改代码的情况下检测应用程序的功能。 例如，有关详细信息，请参阅 [OpenTelemetry Java 自动检测自述文件](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) 。
+
+### <a name="whats-the-opentelemetry-collector"></a>什么是 OpenTelemetry 收集器？
+
+OpenTelemetry 收集器在其 [GitHub 自述文件](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)中进行了介绍。 目前，Microsoft 不使用 OpenTelemetry 收集器，它依赖于发送到 Azure Monitor Application Insights 的直接导出程序。
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus 和 OpenTelemetry 之间的区别是什么？
+
+[OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/)的前提。 Microsoft 帮助将 [OpenTracing](https://opentracing.io/) 和 OpenCensus 结合起来，创建 OpenTelemetry，这是世界上单个可观察性标准。 Azure Monitor 的当前 [生产环境-建议的 PYTHON SDK](app/opencensus-python.md) 基于 OpenCensus，但最终所有 Azure Monitor 的 sdk 都基于 OpenTelemetry。
+
 
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
-
-本 Microsoft 常见问题解答列出了用于容器的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ### <a name="health-feature-is-in-private-preview"></a>运行状况功能现为个人预览版
 
@@ -533,7 +579,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>节点视图下的“其他进程”表示什么？
 
-“其他进程”旨在帮助你清楚地了解节点上资源使用率较高的根本原因。 这样，你就能将容器化流程与非容器化流程的使用量区分开。
+**其他过程** 旨在帮助你清楚地了解节点上资源使用率较高的根本原因。 这样，你就能将容器化流程与非容器化流程的使用量区分开。
 
 这些其他进程是哪些进程？ 
 
@@ -563,7 +609,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 联接其他表，在结果中包含这些属性值。
 
-联接 ContainerID 属性，将查询修改为包含 ```ContainerInventory``` 表中的 Image 和 ImageTag 属性。 通过联接 ContainerID 属性，可包含 KubepodInventory 表的 ContaineName 字段中的 Name 属性（如同之前在 ```ContainerLog``` 表中显示的一样）。建议使用此选项。
+联接 ContainerID 属性，将查询修改为包含 ```ContainerInventory``` 表中的 Image 和 ImageTag 属性。 您可以 ```ContainerLog``` 通过在 ContainerID 属性上联接，在 KubepodInventory 表的 ContaineName 字段中包含名称属性 (，就像它之前出现在) 表中一样。 这是建议选项。
 
 下面是一个详细查询示例，说明了如何使用联接来获取这些字段值。
 
@@ -660,12 +706,12 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 如果在为 AKS 群集启用用于容器的 Azure Monitor 之后，删除了群集向其发送数据的 Log Analytics 工作区，则在尝试升级群集时会失败。 要解决此情况，必须禁用再重新启用监视功能，使其引用订阅中的其他有效工作区。 在你重新尝试升级群集时，应该就会处理并成功完成。  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>需要为代理打开哪些端口和域或将哪些端口和域加入允许名单？
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>需要为代理打开/允许哪些端口和域？
 
 请参阅[网络防火墙要求](insights/container-insights-onboard.md#network-firewall-requirements)，了解使用Azure、Azure 美国政府和 Azure 中国世纪互联云的容器化代理所需的代理和防火墙配置信息。
 
+
 ## <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
-本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>是否可以载入到现有工作区？
 如果虚拟机已连接到 Log Analytics 工作区，则在加入用于 VM 的 Azure Monitor 时，你可以继续使用该工作区，前提是该工作区位于某个 [受支持的区域](insights/vminsights-configure-workspace.md#supported-regions)中。

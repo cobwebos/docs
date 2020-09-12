@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269363"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437371"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -50,7 +50,12 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 ### <a name="solution-for-cause-3"></a>原因 3 的解决方案
 
-若要更新共享级权限，请参阅为 [标识分配访问权限](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity)。
+验证是否正确配置了权限：
+
+- **Active Directory (AD) ** 参阅为 [标识分配共享级别权限](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)。
+
+    与 Active Directory (AD) 同步的组和用户支持共享级权限分配，以便使用 (Azure Active Directory) AAD Azure AD Connect。  确认分配给组和用户的共享级权限不受 "仅限云" 组的支持。
+- **Azure Active Directory 域服务 (AZURE AD DS) ** 参阅为 [标识分配访问权限](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)。
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>尝试装载或卸载 Azure 文件共享时发生错误 53、错误 67 或错误 87
@@ -316,18 +321,6 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 在将存储帐户部署到的订阅的 Azure AD 租户上启用 Azure AD DS。 需要 Azure AD 租户的管理员权限才能创建托管域。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
-
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>出现错误 "系统错误1359。 使用 Azure Active Directory 域服务 (的文件共享接收到的内部错误，Azure AD DS) 身份验证已启用
-
-### <a name="cause"></a>原因
-
-出现错误 "系统错误1359。 当你尝试使用为以数字字符开头的域 DNS 名称的 Azure AD DS 启用 Azure AD DS 身份验证来连接到文件共享时，将发生内部错误。 例如，如果 Azure AD DS 域 DNS 名称为 "1domain"，则在尝试使用 Azure AD 凭据装载文件共享时，会收到此错误。 
-
-### <a name="solution"></a>解决方案
-
-目前，可以考虑使用适用于以下规则的新域 DNS 名称重新部署 Azure AD DS：
-- 名称不能以数字字符开头。
-- 名称长度必须介于3到63个字符之间。
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>无法装载具有 AD 凭据的 Azure 文件 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502692"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595217"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
@@ -23,13 +23,12 @@ ms.locfileid: "87502692"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 为所需的网络资源创建资源组
-> * 创建网络资源
-> * 为来自应用程序的流量创建应用程序网关
-> * 为不同类型的流量指定服务器池和路由规则
-> * 为每个池创建一个规模集，使池可以自动缩放
-> * 运行测试，以便验证不同类型的流量是否进入正确的池
+* 为所需的网络资源创建资源组
+* 创建网络资源
+* 为来自应用程序的流量创建应用程序网关
+* 为不同类型的流量指定服务器池和路由规则
+* 为每个池创建一个规模集，使池可以自动缩放
+* 运行测试，以便验证不同类型的流量是否进入正确的池
 
 如果你愿意，可以使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 门户](create-url-route-portal.md)完成本过程中的步骤。
 

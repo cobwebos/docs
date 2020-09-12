@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ba0b242fa28b8dac774a48bdd9297e44a17fa3ec
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475594"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483025"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -25,7 +25,7 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ![调试滑块](media/data-flow/debugbutton.png "调试滑块")
 
-打开滑块后，系统将提示您选择要使用的集成运行时配置。 如果选择了 "AutoResolveIntegrationRuntime"，则将启动具有8个常规计算的群集，其生存时间为60分钟。 有关数据流集成运行时的详细信息，请参阅数据流[性能](concepts-data-flow-performance.md#ir)。
+打开滑块后，系统将提示您选择要使用的集成运行时配置。 如果选择了 "AutoResolveIntegrationRuntime"，则将启动具有8个常规计算的群集，其生存时间为60分钟。 有关数据流集成运行时的详细信息，请参阅数据流 [性能](concepts-data-flow-performance.md#ir)。
 
 ![调试 IR 选择](media/data-flow/debugbutton2.png "调试 IR 选择")
 
@@ -41,17 +41,17 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ## <a name="debug-settings"></a>调试设置
 
-可以通过单击 "数据流画布" 工具栏上的 "调试设置" 来编辑调试设置。 你可以在此处选择要用于每个源转换的行限制或文件源。 此设置中的行限制仅适用于当前调试会话。 你还可以选择要用于 SQL DW 源的暂存链接的服务。 
+启用调试模式后，可以编辑数据流预览数据的方式。 可以通过单击 "数据流画布" 工具栏上的 "调试设置" 来编辑调试设置。 你可以在此处选择要用于每个源转换的行限制或文件源。 此设置中的行限制仅适用于当前调试会话。 你还可以选择要用于 Azure Synapse Analytics 源的暂存链接的服务。 
 
 ![调试设置](media/data-flow/debug-settings.png "调试设置")
 
-如果数据流或其引用的任何数据集中都有参数，则可以通过选择 "**参数**" 选项卡指定要在调试期间使用的值。
+如果数据流或其引用的任何数据集中都有参数，则可以通过选择 " **参数** " 选项卡指定要在调试期间使用的值。
 
 ![调试设置参数](media/data-flow/debug-settings2.png "调试设置参数")
 
 ## <a name="data-preview"></a>数据预览
 
-打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果在上没有调试模式，数据流将仅在 "检查" 选项卡中显示和转换每个转换的当前元数据。数据预览只会查询您在调试设置中设置为限制的行数。 单击 "**刷新**" 提取数据预览。
+打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果在上没有调试模式，数据流将仅在 "检查" 选项卡中显示和转换每个转换的当前元数据。数据预览只会查询您在调试设置中设置为限制的行数。 单击 " **刷新** " 提取数据预览。
 
 ![数据预览](media/data-flow/datapreview.png "数据预览")
 
@@ -70,11 +70,11 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ![快速操作](media/data-flow/quick-actions1.png "快速操作")
 
-选择修改后，数据预览会立即刷新。 在右上角单击 "**确认**" 以生成新的转换。
+选择修改后，数据预览会立即刷新。 在右上角单击 " **确认** " 以生成新的转换。
 
 ![快速操作](media/data-flow/quick-actions2.png "快速操作")
 
-**转换**和**Modify**将生成一个派生列转换，并且**删除**将生成一个 Select 转换。
+**转换** 和 **Modify** 将生成一个派生列转换，并且 **删除** 将生成一个 Select 转换。
 
 ![快速操作](media/data-flow/quick-actions3.png "快速操作")
 
@@ -83,11 +83,11 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ### <a name="data-profiling"></a>数据事件探查
 
-在 "数据预览" 选项卡中选择一个列，然后在 "数据预览" 工具栏中单击 "**统计信息**"，将在数据网格最右侧弹出一个图表，其中包含有关每个字段的详细统计信息。 Azure 数据工厂将根据要显示的图表类型的数据采样做出决定。 高基数字段将默认为 NULL/NOT NULL 图表，而具有较低基数的分类和数值数据将显示显示数据值频率的条形图。 你还将看到字符串字段的 max/len 长度、数字字段中的最小/最大值、标准 dev、百分位数、计数和平均值。
+在 "数据预览" 选项卡中选择一个列，然后在 "数据预览" 工具栏中单击 " **统计信息** "，将在数据网格最右侧弹出一个图表，其中包含有关每个字段的详细统计信息。 Azure 数据工厂将根据要显示的图表类型的数据采样做出决定。 高基数字段将默认为 NULL/NOT NULL 图表，而具有较低基数的分类和数值数据将显示显示数据值频率的条形图。 你还将看到字符串字段的 max/len 长度、数字字段中的最小/最大值、标准 dev、百分位数、计数和平均值。
 
 ![列统计信息](media/data-flow/stats.png "列统计信息")
 
 ## <a name="next-steps"></a>后续步骤
 
-* 完成生成和调试数据流后，请[从管道中执行它。](control-flow-execute-data-flow-activity.md)
-* 使用数据流测试管道时，请使用管道[调试 "运行执行" 选项。](iterative-development-debugging.md)
+* 完成生成和调试数据流后，请 [从管道中执行它。](control-flow-execute-data-flow-activity.md)
+* 使用数据流测试管道时，请使用管道 [调试 "运行执行" 选项。](iterative-development-debugging.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: 迁移，aro，openshift，red hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513102"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469739"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
 
@@ -25,7 +25,7 @@ OpenShift 4 上的 Azure Red Hat OpenShift 在 Red Hat 核心操作系统、专�
 > [!NOTE]
 > Red Hat OpenShift 迁移工具（如控制平面迁移帮助工具和群集应用程序迁移工具） (凸轮) 不能与 Azure Red Hat OpenShift 3.11 群集一起使用。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你已有一个 Azure Red Hat OpenShift 3.11 群集。
 
@@ -100,7 +100,7 @@ Azure Red Hat OpenShift 4 支持以下 PersistentVolume 插件：
 
 Azure Red Hat OpenShift 4 可以从源代码构建映像，并对其进行部署，并管理其生命周期。 为了实现这一点，Azure Red Hat OpenShift 提供了4个 [集成的内部容器映像注册表](https://docs.openshift.com/aro/4/registry/registry-options.html) ，可在 Azure Red hat OpenShift 环境中将其部署到本地管理映像。
 
-如果使用的是外部注册表，如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)、 [red hat Quay](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)注册表或启用了 [身份验证的 red hat 注册表](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)，请按照步骤向群集提供凭据，使群集能够访问存储库。
+如果使用的是外部注册表，如 [Azure 容器注册表](../container-registry/index.yml)、 [red hat Quay](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)注册表或启用了 [身份验证的 red hat 注册表](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)，请按照步骤向群集提供凭据，使群集能够访问存储库。
 
 ### <a name="monitoring"></a>监视
 
@@ -128,4 +128,3 @@ az openshift delete --name $CLUSTER_NAME
 ```
 ## <a name="next-steps"></a>后续步骤
 [在此处](https://docs.openshift.com/aro/4/welcome/index.html)查看 red hat 提供的 Azure Red hat OpenShift 文档。
-

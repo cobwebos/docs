@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690232"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481784"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 的性能准则
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -108,7 +108,7 @@ Azure 虚拟机上有三种主要磁盘类型：
       1. 对于 OLTP 工作负荷，将交错（条带大小）设置为 64 KB（65,536 字节），对于数据仓库工作负荷，将交错（条带大小）设置为 256 KB（262,144 字节），以避免分区定位错误导致的性能影响。 这必须使用 PowerShell 设置。
       2. 设置列计数 = 物理磁盘的数量。 配置的磁盘超过 8 个时，请使用 PowerShell（而不是服务器管理器 UI）。 
 
-    例如，以下 PowerShell 会创建一个新的存储池，其交错大小为 64 KB，列数等于存储池中的物理磁盘量：
+    例如，以下 PowerShell 创建新的存储池，其交错大小为 64 KB，其列数等于存储池中的物理磁盘数量：
 
     ```powershell
     $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
@@ -162,7 +162,7 @@ Azure 虚拟机上有三种主要磁盘类型：
 
 * 请确保禁用 **自动收缩** 以避免可能对性能产生负面影响的不必要开销。
 
-* 将所有数据库（包括系统数据库）转移到数据磁盘。 有关详细信息，请参阅 [移动系统数据库](https://msdn.microsoft.com/library/ms345408.aspx)。
+* 将所有数据库（包括系统数据库）转移到数据磁盘。 有关详细信息，请参阅 [Move System Databases](https://msdn.microsoft.com/library/ms345408.aspx)（移动系统数据库）。
 
 * 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。 在 SQL Server 配置管理器中右键单击 SQL Server 实例并选择属性，即可实现此目的。 可以在“启动参数”选项卡中更改错误日志和跟踪文件设置。在“高级”选项卡中指定转储目录。以下屏幕截图显示了错误日志启动参数的位置。
 
@@ -198,10 +198,23 @@ Azure 虚拟机上有三种主要磁盘类型：
 
 如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”，Windows 将在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间会将多个磁盘分组到存储池。 有关详细信息，请参阅[存储空间](/windows-server/storage/storage-spaces/overview)。
 
+## <a name="multiple-instances"></a>多个实例 
+
+在将多个 SQL Server 实例部署到单个虚拟机时，请考虑以下最佳做法： 
+
+- 为每个 SQL Server 实例设置最大服务器内存，确保操作系统剩余内存。 如果更改分配给虚拟机的内存量，请确保更新 SQL Server 实例的内存限制。 
+- 数据、日志和 TempDB 具有不同的 Lun，因为它们都具有不同的工作负荷模式，并且你不希望它们相互影响。 
+- 在与生产类似的工作负载下全面测试您的环境，确保它可以在您的应用程序 Sla 内处理高峰工作负荷容量。 
+
+超载系统的征兆可以包括但不限于工作线程消耗、响应时间慢和/或调度程序系统内存已停止。 
+
+
+
+
 ## <a name="next-steps"></a>后续步骤
 
-有关存储和性能的详细信息，请参阅 [Azure 虚拟机上的 SQL Server 的存储配置准则](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
+有关存储和性能的详细信息，请参阅 [Azure 虚拟机上 SQL Server 的存储配置准则](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 
-有关安全最佳做法，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
+有关安全最佳实践，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
 
 查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。

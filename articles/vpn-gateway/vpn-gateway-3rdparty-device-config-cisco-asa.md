@@ -5,27 +5,27 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2018
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081995"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426164"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>示例配置：Cisco ASA 设备（IKEv2/无 BGP）
 本文提供将 Cisco 自适应安全 (ASA) 设备连接到 Azure VPN 网关的示例配置。 该示例适用于运行 IKEv2 而不使用边界网关协议 (BGP) 的 Cisco ASA 设备。 
 
 ## <a name="device-at-a-glance"></a>设备概览
 
-* 设备供应商： **Cisco**
-* 设备型号： **ASA**           
-* 目标版本： **8.4 和更高**版本
-* 已测试的模型： **ASA 5505**
-* 已测试版本： **9.2**             
-* IKE 版本： **IKEv2**                  
-* BGP：**否**      
+* 设备供应商：**Cisco**
+* 设备型号：**ASA**           
+* 目标版本：**8.4 和更高版本**
+* 测试的模型：**ASA 5505**
+* 测试的版本：**9.2**             
+* IKE 版本：**IKEv2**                  
+* BGP:**否**      
 * Azure VPN 网关类型：**基于路由的 VPN 网关**
 
 > [!NOTE]
@@ -108,13 +108,13 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 * 确保所有名称和策略编号在设备上唯一。
 * 确保设备支持加密算法。
 * 将以下“占位符值”替换为你配置的实际值：****
-  - 外部接口名称：**外部**
-  - **Azure_Gateway_Public_IP**
+  - 外部接口名称："outside"
+  - Azure_Gateway_Public_IP
   - **OnPrem_Device_Public_IP**
-  - IKE： **Pre_Shared_Key**
+  - IKE：**Pre_Shared_Key**
   - 虚拟网络和本地网络网关名称："VNetName" 和 "LNGName"********
   - 虚拟网络和本地网络地址前缀****
-  - 正确的**网络掩码**
+  - 正确的网络掩码
 
 #### <a name="sample-script"></a>示例脚本
 

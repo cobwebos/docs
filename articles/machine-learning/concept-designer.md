@@ -1,5 +1,5 @@
 ---
-title: 用设计器生成 ML 模型（预览）
+title: '利用设计器 (预览生成 ML 模型) '
 titleSuffix: Azure Machine Learning
 description: 了解组成 Azure 机器学习设计器的术语、概念和工作流。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 788eebaf28a768acbdb5b1eb778f196fe05dc3e3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012937"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651216"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -96,7 +96,7 @@ ms.locfileid: "87012937"
 | Azure 机器学习计算实例 | ✓ | |
 | Azure Kubernetes 服务 | | ✓ |
 
-计算目标会附加至 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室](https://ml.azure.com)的工作区中管理计算目标。
+计算目标会附加到 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室](https://ml.azure.com)的工作区中管理计算目标。
 
 ## <a name="deploy"></a>部署
 
@@ -114,7 +114,7 @@ ms.locfileid: "87012937"
 
 已发布的管道在每个模块的管道草稿中定义的计算资源上运行。
 
-设计器创建与 SDK 相同的 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) 对象。
+设计器创建与 SDK 相同的 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) 对象。
 
 ## <a name="next-steps"></a>后续步骤
 

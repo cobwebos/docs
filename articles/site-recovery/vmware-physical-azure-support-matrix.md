@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 288cebc4d4097ff40b618e2f1976039359458ecf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 98f9bf02b910749a98ae8cd6e409ee733c2e2dcc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719013"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595744"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -18,7 +18,7 @@ ms.locfileid: "88719013"
 - 遵循我们的[教程](tutorial-prepare-azure.md)尝试进行灾难恢复。
 
 > [!NOTE]
-> Site Recovery 不会将客户数据移出目标区域，也不会在其中为源计算机设置灾难恢复。 如果客户选择了不同的区域，则他们可能会选择恢复服务保管库。 恢复服务保管库包含元数据，但没有实际的客户数据。
+> Site Recovery 不会将客户数据移到或存储在目标区域之外，目标区域中已为源计算机设置了灾难恢复。 如果客户愿意，可以从其他地区选择恢复服务保管库。 恢复服务保管库包含元数据，但不包含实际的客户数据。
 
 ## <a name="deployment-scenarios"></a>部署方案
 
@@ -31,9 +31,8 @@ VMware VM 的灾难恢复 | 将本地 VMware VM 复制到 Azure。 可以在 Azu
 
 **Server** | **要求** | **详细信息**
 --- | --- | ---
-vCenter Server | 版本 7.0、6.7、6.5、6.0 或 5.5 | 建议在灾难恢复部署中使用 vCenter 服务器。
-vSphere 主机 | 版本 7.0、6.7、6.5、6.0 或 5.5 | 建议 vSphere 主机和 vCenter 服务器与进程服务器位于同一网络。 默认情况下，进程服务器在配置服务器上运行。 [了解详细信息](vmware-physical-azure-config-process-server-overview.md)。
-
+vCenter Server | 版本 7.0 & 此版本、6.7、6.5、6.0 或5.5 的后续更新 | 建议在灾难恢复部署中使用 vCenter 服务器。
+vSphere 主机 | 版本 7.0 & 此版本、6.7、6.5、6.0 或5.5 的后续更新 | 建议 vSphere 主机和 vCenter 服务器与进程服务器位于同一网络。 默认情况下，进程服务器在配置服务器上运行。 [了解详细信息](vmware-physical-azure-config-process-server-overview.md)。
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery 配置服务器
 
@@ -123,7 +122,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 --- | --- | --- |
 Debian 7 | [9.32][9.32 UR]、 [9.33](https://support.microsoft.com/help/4564347/)、 [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/)、 [9.36](https://support.microsoft.com/help/4578241/)| 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.35](https://support.microsoft.com/help/4573888/)、 [9.36](https://support.microsoft.com/help/4578241/) | 3.16.0-4-amd64 到 3.16.0-11-amd64，4.9.0 旁 1/-0. bpo 到4.9.0 旁 1/-0-amd64 |
+Debian 8 | [9.35](https://support.microsoft.com/help/4573888/)、 [9.36](https://support.microsoft.com/help/4578241/) | 3.16.0-4-amd64 到 3.16.0-11-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.11-amd64 |
 Debian 8 | [9.32][9.32 UR]、[9.33](https://support.microsoft.com/help/4564347/)、[9.34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 到 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.11-amd64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 支持的内核版本
@@ -170,7 +169,7 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 在复制的 VM 上添加磁盘 | 不支持。<br/> 为 VM 禁用复制，添加磁盘，然后重新启用复制。
 
 > [!NOTE]
-> 不支持对磁盘标识进行任何更改。 例如，如果磁盘分区已从 GPT 更改为 MBR，或反之亦然，则这将更改磁盘标识。 在这种情况下，复制将中断，并且将需要全新的设置。 
+> 不支持对磁盘标识进行任何更改。 例如，如果磁盘分区已从 GPT 更改为 MBR（或反过来），就会更改磁盘标识。 在这种情况下，复制将中断，并且需要全新的设置。 
 
 ## <a name="network"></a>网络
 
@@ -232,7 +231,7 @@ Docker 磁盘配置 | 否
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
 ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
-来宾/服务器 EFI/UEFI 启动 | -支持所有 [Azure MARKETPLACE UEFI os](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) ，并附带 Site Recovery 移动代理9.30 版。 <br/> - 不支持安全 UEFI 启动类型。 [了解详细信息。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+来宾/服务器 EFI/UEFI 启动 | - Site Recovery 移动代理版本 9.30 及更高版本支持所有 [Azure 市场 UEFI OS](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace)。 <br/> - 不支持安全 UEFI 启动类型。 [了解详细信息。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>复制通道
 
@@ -254,7 +253,7 @@ ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
 块 Blob | 否
 静态加密 (SSE)| 是
 静态加密 (CMK)| 是（通过 PowerShell Az 3.3.0 及更高版本模块）
-双静态加密 | 是 (通过 PowerShell Az 3.3.0 module) 。 了解有关 [Windows](../virtual-machines/windows/disk-encryption.md) 和 [Linux](../virtual-machines/linux/disk-encryption.md)支持的区域的详细信息。
+静态双重加密 | 是（通过 PowerShell Az 3.3.0 及更高版本模块）。 详细了解 [Windows](../virtual-machines/windows/disk-encryption.md) 和 [Linux](../virtual-machines/linux/disk-encryption.md) 支持的区域。
 高级存储 | 是
 安全传输选项 | 是
 导入/导出服务 | 否
@@ -279,7 +278,7 @@ HUB | 是
 来宾操作系统 | 验证复制的计算机[支持的操作系统](#replicated-machines)。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 </br> 不支持在不同磁盘上启动和系统分区 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br>复制到存储帐户时高达 4,095 GB| 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |

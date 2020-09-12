@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926858"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462507"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -96,10 +96,26 @@ ms.locfileid: "88926858"
 
 <sup>4</sup> 每个技能集最多拥有 30 项技能。
 
-<sup>5</sup> AI 扩充和图像分析属于计算密集型功能，会消耗过多的可用处理能力。 这些工作负荷的运行时间已缩短，从而使队列中的其他作业有更多的机会运行。  
+<sup>5</sup> AI 扩充和图像分析属于计算密集型功能，会消耗过多的可用处理能力。 这些工作负荷的运行时间已缩短，从而使队列中的其他作业有更多的机会运行。
 
 > [!NOTE]
 > 如[索引限制](#index-limits)中所述，从支持复杂类型 (`2019-05-06`) 的最新 API 正式版开始，索引器还针对每个文档的所有复杂集合强制实施 3000 个元素的上限。 这意味着，如果你使用早期 API 版本创建了索引器，则不会受此限制约束。 为了保持最高兼容性，使用早期 API 版本创建并使用 API 版本 `2019-05-06` 或更高版本更新了的索引器，仍会从这些限制中**排除**。 客户应注意使用极大复杂集合所造成的负面影响（如前所述）；我们强烈建议使用最新 API 正式版创建任何新索引器。
+
+### <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
+
+> [!NOTE]
+> 索引器可以通过[共享的专用链接资源 API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)安全地访问资源，如[本操作方法指南](search-indexer-howto-access-private.md)中所述
+
+| 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
+| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
+| 最大专用终结点 | 空值 | 10或30 | 100 | 400 | 400 | 空值 | 20 | 20 |
+| 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
+
+<sup>1</sup> AI 扩充和图像分析计算密集型，并使用数量不相称的可用处理能力，因此，对于较低的搜索服务层，将其设置为在专用环境中运行可能会对搜索服务的性能和稳定性产生不利影响。
+
+<sup>2</sup> 不同资源类型的数量计算为 `groupId` 在给定搜索服务的所有共享专用链接资源中使用的唯一值的数目，而不考虑资源的状态。
 
 ## <a name="synonym-limits"></a>同义词限制
 
@@ -116,7 +132,7 @@ ms.locfileid: "88926858"
 
 针对专用资源（基本层和标准层）上运行的服务进行计算时，估计值更可预测。 由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何进行估算的指导，请参阅 [Azure 认知搜索的性能和优化](search-performance-optimization.md)。
 
-与“标准”层相比，“存储优化”层（L1 和 L2）的查询吞吐量应更低，延迟应更高。 
+与“标准”层相比，“存储优化”层（L1 和 L2）的查询吞吐量应更低，延迟应更高。
 
 ## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 

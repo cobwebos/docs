@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525915"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462371"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
-## <a name="text-to-speech-2020-august-release"></a>文本到语音 2020-8 月发行版
+## <a name="text-to-speech-2020-august-release"></a>文本转语音 2020 年 8 月发行版
 
 ### <a name="new-features"></a>新增功能
 
-* **神经 TTS：新的 `en-US` 说话风格Aria 声音**。 阅读新闻时，AriaNeural 可能像是一个 newscaster。 "Newscast" 风格听起来更严重，而 "newscast" 样式更宽松，非正式。 请参阅 [如何在 SSML 中使用讲话样式](speech-synthesis-markup.md)。
+* **神经网络 TTS：`en-US` Aria 语音的一种新的说话风格**。 播报新闻时，AriaNeural 听起来像新闻播音员。 “newscast-formal”风格听起来更严肃，而“newscast-casual”风格则更为放松和随意。 请参阅[如何在 SSML 中使用说话风格](speech-synthesis-markup.md)。
 
 * **自定义语音：发布了一项新功能，可自动检查定型数据质量**。 当你上传数据时，系统将检查你的音频和记录数据的各个方面，并自动修复或筛选问题以提高语音模型的质量。 这涉及到音频的音量、噪音级别、语音的读音准确性、语音与规范化文本的对齐方式、音频中的静默性，以及音频和脚本格式。 
 
-* **音频内容创建：一组新功能，可实现更强大的语音微调和音频管理功能**。
+* **音频内容创建：一组新功能，可实现更强大的语音优化和音频管理功能**。
 
     * 发音：将发音优化功能更新为最新的音素集。 可以从库中选取正确的音素元素，并优化所选字词的发音。 
 
-    * 下载：音频 "下载"/"导出" 功能已增强，支持按段落生成音频。 可以在生成多个音频输出时在同一文件/SSML 中编辑内容。 还改进了 "下载" 的文件结构。 现在，可以轻松地获取一个文件夹中的所有音频。 
+    * 下载：音频“下载”/“导出”这一功能得到增强，支持按段落生成音频。 可以编辑同一文件/SSML 中的内容，同时生成多个音频输出。 “下载”的文件结构也得到了完善。 现在，可以轻松地将所有音频保存在一个文件夹中。 
 
-    * 任务状态：改进了多文件导出体验。 在过去导出多个文件时，如果其中一个文件失败，整个任务将失败。 但现在，所有其他文件都将成功导出。 此任务报告具有更详细和结构化的信息。 您可以通过报表查看所有失败文件和句子的日志。 
+    * 任务状态：多文件导出体验得到改善。 过去导出多个文件时，如果其中一个文件失败，则整个任务将失败。 但现在，所有其余文件都将成功导出。 任务报表中包含了更加详细和结构化的信息。 可以通过报表查看所有失败文件和句子的记录。 
 
-    * SSML 文档：链接到 SSML 文档，可帮助您查看有关如何使用所有优化功能的规则。
+    * SSML 文档：链接到 SSML 文档，查看有关如何使用所有优化功能的规则。
 
-* **语音列表 API 进行了更新，以包括用户友好显示名称和神经语音支持的说话样式**。
+* **语音列表 API 已更新，现包含用户易记的显示名称和神经网络语音支持的说话风格**。
 
 ### <a name="general-tts-voice-quality-improvements"></a>一般性的 TTS 语音质量改进
 
-* 降低了 56% )  (错误的单词级发音错误百分比 `ru-RU` ，以及 `sv-SE` 49% 降低了 (错误 ) 
+* 降低了单词级别发音错误 %：`ru-RU`（错误减少 56%）、`sv-SE`（错误减少 49%）
 
-* 提高了 `en-US` 40% 的神经声音上的复调单词读数。 复调单词的示例包括 "读取"、"实时"、"内容"、"记录"、"对象" 等。 
+* 对 `en-US` 神经网络语音的复音词读取能力提高了 40%。 复音词的示例包括“read”、“live”、“content”、“record”、“object”等。 
 
-* 改进了中的问题的深沉 `fr-FR` 。 MOS (平均观点) 收益： + 0.28
+* 使 `fr-FR` 中的疑问语气更加自然。 MOS（平均意见得分）增益：+0.28
 
-* 为以下语音更新了 vocoders，并提供了保真度改善和总体性能速度40%。
+* 更新了以下语音的 vocoder，提高了保真度，整体性能提高 40%。
 
     | Locale | 语音 |
     |---|---|    
@@ -61,10 +61,10 @@ ms.locfileid: "88525915"
 
 ### <a name="bug-fixes"></a>Bug 修复
 
-* 修复了 "音频内容创建" 工具的许多 bug 
-    * 已修复自动刷新问题。 
+* 修复了音频内容创建工具的一些 Bug 
+    * 修复了自动刷新问题。 
     * 修复了 zh-chs-南部东亚区域中的语音样式的问题。
-    * 修复了稳定性问题，其中包含带有 "break" 标记的导出错误和标点符号中的错误。    
+    * 修复了稳定性问题，包括“break”标记的导出错误和标点错误。    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>新的语音到文本区域设置： 2020-8 月发行版
 在8月发布的 "语音到文本" 发布了26个新区域设置：2个欧洲语言 `cs-CZ` 和 `hu-HU` 5 个英语区域设置，以及涵盖最多南美国家/地区的19个西班牙语区域。 下面是新区域设置的列表。 请在 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)查看完整的语言列表。
@@ -96,7 +96,7 @@ ms.locfileid: "88525915"
 | `es-US` | 西班牙语（美国）                     | 
 | `es-UY` | 西班牙语（乌拉圭）                 | 
 | `es-VE` | 西班牙语（委内瑞拉）               | 
-| `hu-HU` | 匈牙利语(匈牙利)               | 
+| `hu-HU` | 匈牙利语（匈牙利）               | 
 
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>语音 SDK 1.13.0：2020 年 7 月发行版
@@ -250,7 +250,7 @@ ms.locfileid: "88525915"
 
 **示例**
 - **转到**：添加了 [语音识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) 和 [自定义语音助手](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的快速入门。 在[此处](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)查找示例代码。 
-- **JavaScript**：添加了 [文本到语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、 [翻译](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)和 [意向识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入门。
+- **JavaScript**：添加了 [文本到语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、 [翻译](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)和 [意向识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入门。
 - 适用于[C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)和[Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)的关键字识别示例 (Android) 。  
 
 **COVID-19 缩减测试：** 由于过去几周一直在远程工作，我们无法像往常那样执行那么多手动验证测试。 我们没有做我们认为可能会造成任何破坏的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>

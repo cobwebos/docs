@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056765"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505330"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>创建 Azure Red Hat OpenShift 4 专用群集
 
@@ -23,17 +23,35 @@ ms.locfileid: "88056765"
 > * 安装必备组件并创建所需的虚拟网络和子网
 > * 使用专用 API 服务器终结点和专用入口控制器来部署群集
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 版本2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="register-the-resource-provider"></a>注册资源提供程序
+### <a name="register-the-resource-providers"></a>注册资源提供程序
 
-接下来，需要在订阅中注册 `Microsoft.RedHatOpenShift` 资源提供程序。
+1. 如果有多个 Azure 订阅，请指定相关订阅 ID：
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. 注册 `Microsoft.RedHatOpenShift` 资源提供程序：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. 注册 `Microsoft.Compute` 资源提供程序：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. 注册 `Microsoft.Storage` 资源提供程序：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>获取 Red Hat 拉取机密（可选）
 
@@ -141,7 +159,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. 在主子网上[禁用子网专用终结点策略](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。 为了能够连接和管理群集，必须执行此操作。
+5. 在主子网上[禁用子网专用终结点策略](../private-link/disable-private-link-service-network-policy.md)。 为了能够连接和管理群集，必须执行此操作。
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -207,7 +225,7 @@ az aro list-credentials \
 ```
 
 >[!IMPORTANT]
-> 为了连接到专用的 Azure Red Hat OpenShift 群集，需要从创建的虚拟网络中的主机上，或从与群集部署到的虚拟网络进行了[对等连接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的虚拟网络中的主机上执行以下步骤。
+> 为了连接到专用的 Azure Red Hat OpenShift 群集，需要从创建的虚拟网络中的主机上，或从与群集部署到的虚拟网络进行了[对等连接](../virtual-network/virtual-network-peering-overview.md)的虚拟网络中的主机上执行以下步骤。
 
 在浏览器中启动控制台 URL，使用 `kubeadmin` 凭据登录。
 
@@ -215,7 +233,7 @@ az aro list-credentials \
 
 ## <a name="install-the-openshift-cli"></a>安装 OpenShift CLI
 
-登录到 OpenShift Web 控制台后，单击右上角的“?”， 然后单击“命令行工具”。 下载适用于你的计算机的版本。
+登录到 OpenShift Web 控制台后，单击右上角的“?”，  然后单击“命令行工具”。  下载适用于你的计算机的版本。
 
 ![Azure Red Hat OpenShift 登录屏幕](media/aro4-download-cli.png)
 
@@ -230,9 +248,9 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> 为了连接到专用的 Azure Red Hat OpenShift 群集，需要从创建的虚拟网络中的主机上，或从与群集部署到的虚拟网络进行了[对等连接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的虚拟网络中的主机上执行以下步骤。
+> 为了连接到专用的 Azure Red Hat OpenShift 群集，需要从创建的虚拟网络中的主机上，或从与群集部署到的虚拟网络进行了[对等连接](../virtual-network/virtual-network-peering-overview.md)的虚拟网络中的主机上执行以下步骤。
 
-使用以下命令登录到 OpenShift 群集的 API 服务器。 替换 **\<kubeadmin password>** 为您刚才检索的密码。
+使用以下命令登录到 OpenShift 群集的 API 服务器。 将 \<kubeadmin password> 替换为刚才检索到的密码。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

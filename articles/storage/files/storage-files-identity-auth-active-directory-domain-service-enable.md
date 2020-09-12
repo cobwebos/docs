@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d4aad485741abc1c0f54e14e00cd8654a8addbca
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: contperfq1
+ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930786"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500311"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
 
@@ -58,7 +59,7 @@ ms.locfileid: "88930786"
 
 ## <a name="regional-availability"></a>区域可用性
 
-在 [所有 Azure 公共区域](https://azure.microsoft.com/global-infrastructure/locations/)中都提供了 Azure AD DS 的 azure 文件身份验证。
+在 [所有 Azure 公共区域和 Gov 区域](https://azure.microsoft.com/global-infrastructure/locations/)中都提供了 Azure AD DS 的 azure 文件身份验证。
 
 ## <a name="overview-of-the-workflow"></a>工作流概述
 
@@ -81,7 +82,7 @@ ms.locfileid: "88930786"
 
 请记住，仅当已成功将 Azure AD DS 部署到 Azure AD 租户之后，才能通过 SMB 启用 Azure AD DS 身份验证。 有关详细信息，请参阅 [先决条件](#prerequisites)。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要通过 [Azure 门户](https://portal.azure.com)启用 SMB Azure AD DS 身份验证，请执行以下步骤：
 

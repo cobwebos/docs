@@ -3,17 +3,19 @@ title: 为设备配置网络代理 - Azure IoT Edge | Microsoft Docs
 description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT Edge 模块配置为通过代理服务器进行通信。
 author: kgremban
 ms.author: kgremban
-ms.date: 3/10/2020
-ms.topic: conceptual
+ms.date: 09/03/2020
+ms.topic: how-to
 ms.service: iot-edge
 services: iot-edge
-ms.custom: amqp
-ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- contperfq1
+ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687201"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500362"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -21,29 +23,29 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 本文将引导你完成以下四个步骤，来配置并管理代理服务器后面的 IoT Edge 设备：
 
-1. **在设备上安装 IoT Edge 运行时。**
+1. [**在设备上安装 IoT Edge 运行时**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 有关详细步骤，请参阅本文的[通过代理安装运行时](#install-the-runtime-through-a-proxy)部分。 对于 Windows 设备，安装脚本还会提供[脱机安装](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)选项。
+   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 对于 Windows 设备，安装脚本还会提供[脱机安装](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)选项。
 
-   此步骤是首次设置 IoT Edge 设备时，在其上执行的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。
+   此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。
 
-2. **在设备上配置 Docker 守护程序和 IoT Edge 守护程序。**
+2. [**在设备上配置 Docker 守护程序和 IoT Edge 守护程序**](#configure-the-daemons)
 
-   IoT Edge 使用设备上的两个守护程序，这些守护程序需要通过代理服务器发出 Web 请求。 IoT Edge 守护程序负责与 IoT 中心通信。 Moby 守护程序负责容器管理，因此将与容器注册表通信。 有关详细步骤，请参阅本文的[配置守护程序](#configure-the-daemons)部分。
+   IoT Edge 使用设备上的两个守护程序，这些守护程序需要通过代理服务器发出 Web 请求。 IoT Edge 守护程序负责与 IoT 中心通信。 Moby 守护程序负责容器管理，因此将与容器注册表通信。
 
-   此步骤是首次设置 IoT Edge 设备时，在其上执行的一次性过程。
+   此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。
 
-3. **在设备上的 config.yaml 文件中配置 IoT Edge 代理属性。**
+3. [**在设备上的 yaml 文件中配置 IoT Edge 代理属性**](#configure-the-iot-edge-agent)
 
-   IoT Edge 守护程序最初会启动 edgeAgent 模块，然后，edgeAgent 模块将负责从 IoT 中心检索部署清单，并启动所有其他模块。 要使 IoT Edge 代理能够与 IoT 中心建立初始连接，请在设备本身上手动配置 edgeAgent 模块环境变量。 建立初始连接后，可以远程配置 edgeAgent 模块。 有关详细步骤，请参阅本文的[配置 IoT Edge 代理](#configure-the-iot-edge-agent)部分。
+   IoT Edge 守护程序最初会启动 edgeAgent 模块。 然后，edgeAgent 模块从 IoT 中心检索部署清单，并启动所有其他模块。 要使 IoT Edge 代理能够与 IoT 中心建立初始连接，请在设备本身上手动配置 edgeAgent 模块环境变量。 建立初始连接后，可以远程配置 edgeAgent 模块。
 
-   此步骤是首次设置 IoT Edge 设备时，在其上执行的一次性过程。
+   此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。
 
-4. **针对将来的所有模块部署设置环境变量，使任何模块可以通过代理进行通信。**
+4. [**对于所有将来的模块部署，为通过代理进行通信的任何模块设置环境变量**](#configure-deployment-manifests)
 
-   设置 IoT Edge 设备并通过代理服务器将其连接到 IoT 中心后，需要在将来的所有模块部署中保持该连接。 有关详细步骤，请参阅本文的[配置部署清单](#configure-deployment-manifests)部分。
+   设置 IoT Edge 设备并通过代理服务器将其连接到 IoT 中心后，需要在将来的所有模块部署中保持该连接。
 
-   此步骤是远程执行的持续过程，目的是在每次更换新模块或更新部署后，设备仍可通过代理服务器通信。
+   此步骤是远程完成的，因此，每个新的模块或部署更新都保持设备通过代理服务器进行通信的能力。
 
 ## <a name="know-your-proxy-url"></a>知道你的代理 URL
 
@@ -205,13 +207,13 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 始终配置两个运行时模块（edgeAgent 和 edgeHub），以通过代理服务器进行通信，从而维持与 IoT 中心的连接。 如果从 edgeAgent 模块中删除了代理信息，则重新建立连接的唯一方法是根据前一部分中所述，编辑设备上的 config.yaml 文件。
 
-除了 edgeAgent 和 edgeHub 模块外，其他模块也可能需要代理配置。 这些模块需要访问 IoT 中心以外的 Azure 资源（例如 blob 存储），并且必须在部署清单文件中为该模块指定 HTTPS_PROXY 变量。
+除了 edgeAgent 和 edgeHub 模块外，其他模块也可能需要代理配置。 除了 IoT 中心外，需要访问 Azure 资源的模块（例如 blob 存储）必须在部署清单文件中指定 HTTPS_PROXY 变量。
 
 以下过程在 IoT Edge 设备的整个生命周期中适用。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-使用“设置模块”向导为 IoT Edge 设备创建部署时，每个模块都有可用于配置代理服务器连接的“环境变量”部分。
+使用 " **设置模块** " 向导为 IoT Edge 设备创建部署时，每个模块都有一个 " **环境变量** " 部分，您可以在其中配置代理服务器连接。
 
 若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”。
 
@@ -221,7 +223,7 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 ![设置 https_proxy 环境变量](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
-添加到部署清单的所有其他模块都遵循相同的模式。 在设置模块名称和映像的页面中，具有环境变量部分。
+添加到部署清单的所有其他模块都遵循相同的模式。
 
 ### <a name="json-deployment-manifest-files"></a>JSON 部署清单文件
 

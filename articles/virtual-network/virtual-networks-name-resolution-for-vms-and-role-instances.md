@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087005"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469637"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -86,7 +86,7 @@ Azure 提供的名称解析包括以下功能：
 所有基于 ARM 的虚拟网络都支持反向 DNS。 可以发出反向 DNS 查询（PTR 查询），以将虚拟机的 IP 地址映射到虚拟机的 FQDN。
 * 虚拟机 IP 地址的所有 PTR 查询将返回 vmname 形式的 Fqdn \[ \] 。 internal.cloudapp.net
 * 在表单 vmname 的 Fqdn 上进行正向查找 \[ \] 将解析为分配给虚拟机的 IP 地址。
-* 如果虚拟网络已作为注册虚拟网络链接到 [Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询会返回两条记录。 一条记录的形式为 \[ vmname \] 。 [privatednszonename] 和其他格式为 \[ vmname \] . internal.cloudapp.net
+* 如果虚拟网络已作为注册虚拟网络链接到 [Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询会返回两条记录。 一条记录的格式为 \[ vmname \] 。 [privatednszonename]，另一个将采用 \[ vmname 格式 \] 。 internal.cloudapp.net
 * 反向 DNS 查找的范围限定为给定的虚拟网络，即使该虚拟网络已对等互连到其他虚拟网络。 对位于对等互连虚拟网络中的虚拟机的 IP 地址执行反向 DNS 查询（PTR 查询）会返回 NXDOMAIN。
 * 如果要在虚拟网络中关闭反向 DNS 功能，可以通过使用 [Azure DNS 专用区域](../dns/private-dns-overview.md)并将此区域链接到你的虚拟网络来执行此操作。 例如，如果虚拟网络的 IP 地址空间是 10.20.0.0/16，可以创建空的专用 DNS 区域 20.10.in-addr.arpa，并将其链接到该虚拟网络。 在将区域链接到虚拟网络时，应禁用链接上的自动注册。 此区域将替代虚拟网络的默认反向查找区域，因为此区域为空，反向 DNS 查询将获得 NXDOMAIN。 请参阅我们的[快速入门指南](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)，详细了解如何创建专用 DNS 区域并将其链接到虚拟网络。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f12b4e1d64db097730494da746b44479a791f9d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 569bc54d262e8611679c8aa86ed4dbfbed61aa79
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268632"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442672"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -116,7 +116,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 若要查看或复制 BitLocker 密钥，你需要是设备所有者或者是至少分配了以下一个角色的用户：
 
 - 云设备管理员
-- 全局管理员角色
+- 全局管理员
 - 支持管理员
 - Intune 服务管理员
 - 安全管理员
@@ -130,7 +130,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 - 相容状态
 - 联接类型 (Azure AD 联接，混合 Azure AD 联接，Azure AD 注册) 
 - 活动时间戳
-- OS
+- (OS)
 - 设备类型 (打印机、安全 Vm、共享设备、已注册设备) 
 
 若要在 " **所有设备** " 视图中启用预览筛选功能：
@@ -161,7 +161,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 > [!NOTE]
 > **需要多重身份验证加入设备** "设置适用于 Azure AD 联接或 Azure AD 注册的设备。 此设置不适用于混合 Azure AD 连接设备。
 
-- **最大设备数** -通过此设置，可以选择用户可以在 Azure AD 中具有的 Azure AD 联接或 Azure AD 注册设备的最大数量。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为 **20**。
+- **最大设备数** -通过此设置，可以选择用户可以在 Azure AD 中具有的 Azure AD 联接或 Azure AD 注册设备的最大数量。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为 **50**。
 
 > [!NOTE]
 > "**最大设备数**" 设置适用于 Azure AD 联接或注册 Azure AD 的设备。 此设置不适用于混合 Azure AD 连接设备。
