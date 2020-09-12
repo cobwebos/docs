@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482524"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462643"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -27,7 +27,7 @@ A. Azure Synapse 是一种分析服务，它将数据仓库和大数据分析结
 
 问： Azure SQL 数据仓库有什么变化？
 
-A. Azure Synapse 是 Azure SQL 数据仓库 (SQL DW) 的演进。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是经过发展的 Azure SQL 数据仓库。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
 问： 什么是 Synapse SQL 池？
 
@@ -67,7 +67,7 @@ A. 如果有功能请求，请在 [UserVoice](https://feedback.azure.com/forums/
 
 A. 若要获得有关使用 Azure Synapse 开发的帮助，可在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) 页上提问。
 
-问： 如何提交支持票证？
+Q. 如何提交支持票证？
 
 A. 可通过 Azure 门户提交[支持票证](sql-data-warehouse-get-started-create-support-ticket.md)。
 
@@ -99,7 +99,7 @@ A. 可在[连接字符串](../sql/connection-strings.md)页上找到 Synapse SQL
 
 问：使用 PolyBase 可以连接到哪些数据源？
 
-答： [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md)和[Azure 存储 blob](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+答： [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) 和 [Azure 存储 blob](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
 问：连接 Azure 存储 Blob 或 ADLS 时能否进行计算下推？
 

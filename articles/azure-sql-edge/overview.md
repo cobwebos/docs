@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642463"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489521"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>什么是 Azure SQL Edge（预览版）？
 
@@ -67,7 +67,7 @@ Azure SQL Edge 使应用程序的开发和维护更加轻松、高效。 用户�
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) - 一款免费、可下载的客户端应用程序，用于管理任何 SQL 基础结构（从 SQL Server 到 SQL 数据库，不一而足）。
 - [Visual Studio 中的 SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt/) - 一个免费、可下载的客户端应用程序，用于开发 SQL Server 关系数据库、SQL 数据库、Integration Services 包、Analysis Services 数据模型和 Reporting Services 报表。
 - [Azure Data Studio](/sql/azure-data-studio/what-is/) - 一个免费、可下载的跨平台数据库工具，适用于在 Windows、macOS 和 Linux 上使用 Microsoft 系列本地和云数据平台的数据专业人员。
-- [Visual Studio Code](https://code.visualstudio.com/docs) - 一个免费、可下载的开放源代码代码编辑器，适用于 Windows、macOS 和 Linux。 它支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库）。
+- [Visual Studio Code](https://code.visualstudio.com/docs) - 一个免费、可下载的开放源代码代码编辑器，适用于 Windows、macOS 和 Linux。 它支持扩展，包括用于查询 Microsoft SQL Server、Azure SQL 数据库和 Azure Synapse Analytics 的 [mssql 扩展](https://aka.ms/mssql-marketplace) 。
 
 
 ## <a name="next-steps"></a>后续步骤

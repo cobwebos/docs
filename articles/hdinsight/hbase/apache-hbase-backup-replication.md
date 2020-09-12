@@ -1,19 +1,19 @@
 ---
 title: Apache HBase、Phoenix 的备份和复制 - Azure HDInsight
 description: 在 Azure HDInsight 中为 Apache HBase 和 Apache Phoenix 设置备份与复制
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705718"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505023"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
 
@@ -96,7 +96,7 @@ hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<expo
 
 ## <a name="copy-tables"></a>复制表
 
-[CopyTable 实用工具](https://hbase.apache.org/book.html#copy.table)按行将数据从源表复制到与源相同的架构的现有目标表。 目标表可以位于相同的群集中，或不同的 HBase 群集中。 表名称区分大小写。
+[CopyTable 实用工具](https://hbase.apache.org/book.html#copy.table)将数据从源表逐行复制到架构与源相同的现有目标表。 目标表可以位于相同的群集中，或不同的 HBase 群集中。 表名称区分大小写。
 
 若要在群集中使用 CopyTable，请通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>快照
 
-[快照](https://hbase.apache.org/book.html#ops.snapshots) 使你能够对 HBase 数据存储中的数据进行时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。**
+使用[快照](https://hbase.apache.org/book.html#ops.snapshots)可为 HBase 数据存储中的数据创建时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。**
 
 若要创建快照，请通过 SSH 连接到 HDInsight HBase 群集的头节点，然后启动 `hbase` shell：
 
@@ -213,19 +213,19 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-如果你没有将辅助 Azure 存储帐户附加到源群集，或者源群集是本地群集 (或非 HDI 群集) ，则在尝试访问 HDI 群集的存储帐户时，可能会遇到身份验证问题。 若要解决此问题，请将你的存储帐户的密钥指定为命令行参数，如以下示例中所示。 可以在 Azure 门户中获取存储帐户的密钥。
+如果没有将辅助 Azure 存储帐户附加到源群集，或者源群集是本地群集（或非 HDI 群集），则在尝试访问 HDI 群集的存储帐户时，可能会遇到授权问题。 若要解决此问题，请将存储帐户的密钥指定为命令行参数，如以下示例所示。 可以在 Azure 门户中获取存储帐户的密钥。
 
 ```console
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-导出快照后，通过 SSH 连接到目标群集的头节点，并使用 `restore_snapshot` 前面所述的命令还原快照。
+导出快照后，通过 SSH 连接到目标群集的头节点，然后根据前面所述使用 `restore_snapshot` 命令还原快照。
 
 快照提供执行 `snapshot` 命令时的表的完整备份。 快照不提供按时间窗口执行增量快照的功能，也无法指定要包含在快照中的列系列子集。
 
 ## <a name="replication"></a>复制
 
-[HBase 复制](https://hbase.apache.org/book.html#_cluster_replication) 使用异步机制自动将源群集中的事务推送到目标群集，并且源群集上的开销最小。 在 HDInsight 中，可以在群集之间设置复制，其中：
+[HBase 复制](https://hbase.apache.org/book.html#_cluster_replication)使用异步机制自动将事务从源群集推送到目标群集，并且只会在源群集上产生极少的开销。 在 HDInsight 中，可以在群集之间设置复制，其中：
 
 * 源群集和目标群集位于同一虚拟网络中。
 * 源群集和目标群集位于通过 VPN 网关连接的不同虚拟网络中，但两个群集位于相同的地理位置。

@@ -3,12 +3,12 @@ title: Azure Migrate 设备体系结构
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919737"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514555"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 设备体系结构
 
@@ -62,15 +62,15 @@ Azure Migrate 设备用于以下应用场景。
 
 ## <a name="discovery-and-collection-process"></a>发现和收集过程
 
-![体系结构](./media/migrate-appliance-architecture/architecture.png)
+![体系结构](./media/migrate-appliance-architecture/architecture1.png)
 
 设备使用以下过程与 vCenter 服务器和 Hyper-v 主机/群集通信。
 
 1. **开始发现**：
-    - 当你在 Hyper-v 设备上启动发现时，它会与 WinRM 端口5985上的 Hyper-v 主机通信， (HTTP) 和 5986 (HTTPS) 。
+    - 当你在 Hyper-v 设备上启动发现时，它会与 WinRM 端口5985上的 Hyper-v 主机 (HTTP) 通信。
     - 在 VMware 设备上启动发现时，默认情况下，它会与 TCP 端口443上的 vCenter 服务器通信。 如果 vCenter 服务器侦听其他端口，则可以在设备 web 应用中进行配置。
 2. **收集元数据和性能数据**：
-    - 设备使用 (CIM) 会话通用信息模型从端口5985和5986上的 Hyper-v 主机收集 Hyper-v VM 数据。
+    - 设备使用 (CIM) 会话的通用信息模型从端口5985上的 Hyper-v 主机收集 Hyper-v VM 数据。
     - 默认情况下，设备与端口443通信，以便从 vCenter Server 收集 VMware VM 数据。
 3. **发送数据**：设备将收集的数据发送到 Azure Migrate 服务器评估，并通过 SSL 端口 443 Azure Migrate 服务器迁移。 设备可以通过 internet 连接到 Azure，也可以将 ExpressRoute 用于公共/Microsoft 对等互连。
     - 对于性能数据，设备会收集实时利用率数据。
@@ -81,17 +81,12 @@ Azure Migrate 设备用于以下应用场景。
     - 对于服务器迁移，设备会开始收集 VM 数据，并将其复制到 Azure。
 4. **评估和迁移**：你现在可以使用 Azure Migrate Server 评估从设备收集的元数据中创建评估。 此外，还可以使用 Azure Migrate Server 迁移开始迁移 VMware Vm，以安排无代理 VM 复制。
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>设备升级
 
 当设备上运行的 Azure Migrate 代理更新时，设备也会随之升级。 这会自动发生，因为默认情况下在设备上启用了自动更新。 您可以更改此默认设置以手动更新代理。
 
 在注册表中关闭自动更新，方法是将 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "自动更新" 项设置为 0 (DWORD) 。
 
- 
 
 ## <a name="next-steps"></a>后续步骤
 

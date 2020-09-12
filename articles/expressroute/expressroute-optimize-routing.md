@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：优化路由
 description: 本页详细说明当 Microsoft 与企业网络之间存在多个 ExpressRoute 连接线路时如何优化路由。
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
-ms.author: charwen
-ms.openlocfilehash: 2672068e505b7c86127b8b765372e7c607c3875a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: duau
+ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259781"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395224"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
 有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文详述此问题，并说明如何使用标准路由技术来优化路由。

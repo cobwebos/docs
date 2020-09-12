@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 015feac819467cf60bfb2faab27af769fadc3cfa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522867"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484946"
 ---
 # <a name="data-access-strategies"></a>数据访问策略
 
@@ -31,13 +31,13 @@ ms.locfileid: "86522867"
 > 通过[引入静态 IP 地址范围](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)，现在可以允许列出特定 Azure Integration Runtime 区域的 IP 范围，以确保不必在云数据存储中允许所有 Azure IP 地址。 这样，就可以限制允许访问数据存储的 IP 地址。
 
 > [!NOTE] 
-> Azure Integration Runtime 的 IP 地址范围被阻止，当前仅用于数据移动、管道和外部活动。 启用托管虚拟网络的数据流和 Azure Integration Runtime 现在不使用这些 IP 范围。 
+> 阻止该 IP 地址范围访问 Azure Integration Runtime，该范围的地址当前仅用于数据移动、管道和外部活动。 启用托管虚拟网络的数据流和 Azure Integration Runtime 现在不使用这些 IP 范围。 
 
 这应该适用于许多场景，我们知道为每个集成运行时配置唯一的静态 IP 地址会很理想，但在目前使用无服务器 Azure Integration Runtime 的情况下，这是不可能的。 如有必要，你始终可以设置自承载集成运行时并对其使用静态 IP。 
 
 ## <a name="data-access-strategies-through-azure-data-factory"></a>通过 Azure 数据工厂的数据访问策略
 
-* **[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)**-可以在 Azure 数据工厂托管的虚拟网络中创建 Azure Integration Runtime，它将利用专用终结点安全连接到受支持的数据存储。 托管虚拟网络与数据源之间的流量传播到 Microsoft 主干网络，并且不会公开给公用网络。
+* **[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)** -可以在 Azure 数据工厂托管的虚拟网络中创建 Azure Integration Runtime，它将利用专用终结点安全连接到受支持的数据存储。 托管虚拟网络与数据源之间的流量传播到 Microsoft 主干网络，并且不会公开给公用网络。
 * **[受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可以确保其他数据工厂不能连接到此存储，除非使用其托管标识将其列入了执行此操作的允许列表。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
 * **唯一静态 IP** - 需要设置一个自承载集成运行时，以便获取静态 IP 以建立数据工厂连接器。 此机制可确保阻止来自其他所有 IP 地址的访问。 
 * **[静态 IP 范围](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** - 可以使用 Azure Integration Runtime 的 IP 地址，允许在你的存储（如 S3、Salesforce 等）中列出它。 它肯定会限制可连接到数据存储但又依赖于身份验证/授权规则的 IP 地址。
@@ -54,9 +54,9 @@ ms.locfileid: "86522867"
     |                              | Azure Data Lake Gen1                                | -                | -                   | 是             | -            | 是                  |
     |                              | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL       | -                | -                   | 是             | -            | 是                  |
     |                              | Azure 文件存储                                  | 是              | -                   | 是             | -            | .                    |
-    |                              | Azure 存储（Blob、ADLS Gen2）                     | 是              | 是（仅 MSI 身份验证） | 是             | -            | .                    |
-    |                              | Azure SQL DB、SQL DW (Synapse Analytics)、SQL Ml  | 是（仅 Azure SQL DB/DW）        | -                   | 是             | -            | 是                  |
-    |                              | Azure Key Vault（用于提取机密/连接字符串） | yes      | 是                 | 是             | -            | -                    |
+    |                              | Azure 存储 (Blob、ADLS Gen2)                      | 是              | 是（仅 MSI 身份验证） | 是             | -            | .                    |
+    |                              | Azure SQL DB，Azure Synapse Analytics) ，SQL Ml  | 是 (仅限 Azure SQL DB/DW)         | -                   | 是             | -            | 是                  |
+    |                              | Azure Key Vault（用于提取机密/连接字符串） | 是      | 是                 | 是             | -            | -                    |
     | 其他 PaaS/SaaS 数据存储 | AWS S3、SalesForce、Google Cloud Storage 等。    | -                | -                   | 是             | -            | -                    |
     | Azure laaS                   | SQL Server、Oracle 等。                          | -                | -                   | 是             | 是          | -                    |
     | 本地 laaS              | SQL Server、Oracle 等。                          | -                | -                   | 是             | -            | -                    |
@@ -73,7 +73,7 @@ ms.locfileid: "86522867"
     |                                | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL               | 是       | -                   |
     |                                | Azure 文件存储                                            | 是       | -                   |
     |                                | Azure 存储（Blob、ADLS Gen2）                             | 是       | 是（仅 MSI 身份验证） |
-    |                                | Azure SQL DB、SQL DW (Synapse Analytics)、SQL Ml          | 是       | -                   |
+    |                                | Azure SQL DB，Azure Synapse Analytics) ，SQL Ml          | 是       | -                   |
     |                                | Azure Key Vault（用于提取机密/连接字符串） | 是       | 是                 |
     | 其他 PaaS/SaaS 数据存储 | AWS S3、SalesForce、Google Cloud Storage 等。              | 是       | -                   |
     | Azure laaS                     | SQL Server、Oracle 等。                                  | 是       | -                   |

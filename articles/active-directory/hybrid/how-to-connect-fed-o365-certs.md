@@ -1,6 +1,6 @@
 ---
-title: Office 365 和 Azure AD 用户证书续订 | Microsoft Docs
-description: 本文向 Office 365 用户说明了如何解决向其发送证书续订通知的电子邮件的问题。
+title: Microsoft 365 和 Azure AD 用户的证书续订 |Microsoft Docs
+description: 本文介绍了如何通过电子邮件解决通知他们有关续订证书的问题，Microsoft 365 用户。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,14 +16,14 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830445"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661459"
 ---
-# <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
+# <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>续订 Microsoft 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
 为使 Azure Active Directory (Azure AD) 与 Active Directory 联合身份验证服务 (AD FS) 之间能够成功联合，AD FS 用来为 Azure AD 签名安全令牌的证书应该与在 Azure AD 中所配置的证书相匹配。 任何不匹配情况都可能导致信任破坏。 Azure AD 可确保此信息在部署 AD FS 和 Web 应用程序代理（用于 Extranet 访问）时保持同步。
 
@@ -34,7 +34,7 @@ ms.locfileid: "85830445"
 * 正在使用第三方标识提供者。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>令牌签名证书的默认 AD FS 配置
-令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover**的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Office 365 和 Azure AD 会在证书过期之前自动对其进行更新。
+令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover**的自动续订进程。 如果使用 AD FS 2.0 或更高版本，Microsoft 365 和 Azure AD 会在证书过期之前自动对其进行更新。
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>来自 Microsoft 365 管理中心或电子邮件的续订通知
 > [!NOTE]
@@ -135,12 +135,12 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 * 令牌签名证书不是自签名证书。 这种情况最常见的原因是，组织通过组织证书颁发机构来管理注册的 AD FS 证书。
 * 网络安全性不允许公开提供联合元数据。
 
-在这些案例中，每当更新令牌签名证书时，还必须使用 PowerShell 命令 Update-MsolFederatedDomain 更新 Office 365 域。
+在这些情况下，每次更新令牌签名证书时，还必须使用 PowerShell 命令 Update-msolfederateddomain 更新 Microsoft 365 域。
 
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>步骤 1：确保 AD FS 具有新的令牌签名证书
 **非默认配置**
 
-若使用 AD FS 的非默认配置（即 **AutoCertificateRollover** 设置为 **False**），则很有可能你使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
+若使用 AD FS 的非默认配置（即 **AutoCertificateRollover** 设置为 **False**），则很有可能你使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请参阅 [联合服务器的证书要求](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers)。
 
 **无法公开获取联盟元数据**
 
@@ -162,8 +162,8 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 此时会列出两个证书，其中一个的 **NotAfter** 日期大约为未来的 1 年，其 **IsPrimary** 值为 **False**。
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>步骤 2：更新 Office 365 信任的新令牌签名证书
-按如下方式，使用要用于信任的新令牌签名证书更新 Office 365。
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-microsoft-365-trust"></a>步骤2：更新 Microsoft 365 信任的新令牌签名证书
+使用要用于信任的新令牌签名证书更新 Microsoft 365，如下所示。
 
 1. 打开用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块。
 2. 运行 $cred=Get-Credential。 当此 cmdlet 提示输入凭据时，键入云服务管理员帐户凭据。
@@ -188,4 +188,4 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 在当前证书到期 30 天前，Azure AD 会尝试从联合身份验证服务元数据中检索新证书。 如果新证书在该时间不可用，Azure AD 会继续每日定期监视元数据。 在元数据中获得新证书后，将立即使用新的证书信息更新域的联合身份验证设置。 如果在 NextSigningCertificate/SigningCertificate 中看到新证书，可以使用 `Get-MsolDomainFederationSettings` 进行验证。
 
-有关 AD FS 中令牌签名证书的详细信息，请参阅[获取和配置 AD FS 令牌签名证书和令牌解密证书](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
+有关 AD FS 中令牌签名证书的详细信息，请参阅[获取和配置 AD FS 令牌签名证书和令牌解密证书](/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286646"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468651"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 
@@ -29,11 +29,11 @@ Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访�
 
 - **直接链接**：打开浏览器到 [https://shell.azure.com](https://shell.azure.com) 。
 
-- **Azure 门户**：选择[Azure 门户](https://portal.azure.com)上的 Cloud Shell 图标：
+- **Azure 门户**：选择 [Azure 门户](https://portal.azure.com)上的 Cloud Shell 图标：
 
     ![用于从 Azure 门户启动 Cloud Shell 的图标](media/overview/portal-launch-icon.png)
 
-- **代码片段**：在[Docs.microsoft.com](https://docs.microsoft.com)和[Microsoft Learn](https://docs.microsoft.com/learn/)上，选择与 Azure CLI 和 Azure PowerShell 代码片段一起显示的 "**试用**" 按钮：
+- **代码片段**：在 [Docs.microsoft.com]() 和 [Microsoft Learn](/learn/)上，选择与 Azure CLI 和 Azure PowerShell 代码片段一起显示的 " **试用** " 按钮：
 
     ```azurecli-interactive
     az account show
@@ -43,9 +43,9 @@ Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访�
     Get-AzSubscription
     ```
 
-    "**试用**" 按钮使用 Bash （对于 Azure CLI 代码段）或 PowerShell （对于 Azure PowerShell 代码段）直接打开 Cloud Shell。
+    " **试用** " 按钮会直接打开 Cloud Shell，并使用 Bash (将 Azure CLI 代码段) 或 PowerShell (用于 Azure PowerShell 片段) 。
 
-    若要运行此命令，请使用代码段中的 "**复制**"，使用**Ctrl** + **+ shift** + **v** （Windows/Linux）或**Cmd** + **shift** + **v** （macOS）粘贴命令，然后按**enter**。
+    若要运行此命令，请使用代码段中的 "**复制**"，使用**Ctrl** + **shift** + **v** (Windows/Linux) 或**Cmd** + **Shift** + **v** (macOS) 以粘贴命令，然后按**enter**。
 
 ## <a name="features"></a>功能
 
@@ -57,7 +57,7 @@ Cloud Shell 能够访问以执行 Azure 管理任务为宗旨构建的基于浏�
 
 用户可以在 Bash 或 PowerShell 之间进行选择。
 
-1. 选择**Cloud Shell**。
+1. 选择 **Cloud Shell**。
 
     ![Cloud Shell 图标](media/overview/overview-cloudshell-icon.png)
 
@@ -87,8 +87,8 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI 文档](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)
+* [Azure CLI 文档](/cli/azure)
+* [Azure PowerShell 文档](/powershell/azure/)
 * [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -96,7 +96,7 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 
 Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已装载文件共享 `clouddrive` 。 首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
-详细了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解[Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
+详细了解如何装载 [新的或现有的存储帐户](persisting-shell-storage.md) ，或了解 [Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 
 > [!NOTE]
 > Cloud shell 存储帐户不支持 Azure 存储防火墙。
@@ -111,7 +111,7 @@ Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保�
 * Cloud Shell 使用文件共享中保存的 5-GB 映像持久保存 $HOME
 * 在 Bash 中权限是按常规 Linux 用户设置的
 
-详细了解 [Cloud Shell 中的 Bash](features.md) 和 [Cloud Shell 中的 PowerShell](features-powershell.md) 的功能。
+详细了解 [Cloud Shell 中的 Bash](features.md) 和 [Cloud Shell 中的 PowerShell](./features.md) 的功能。
 
 ## <a name="pricing"></a>定价
 

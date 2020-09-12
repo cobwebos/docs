@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254366"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462710"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>使用 kubectl 在 Azure Stack Edge 设备上使用 PersistentVolume 运行 Kubernetes 有状态应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "89254366"
 此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md) 并且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)的概念的用户。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在部署有状态应用程序之前，请确保已在设备和将用于访问设备的客户端上完成以下先决条件：
 
@@ -55,7 +55,10 @@ ms.locfileid: "89254366"
 
 ## <a name="provision-a-static-pv"></a>预配静态 PV
 
-若要以静态方式预配 PV，需要在设备上创建共享。 按照以下步骤为你的 SMB 或 NFS 共享设置 PV。 
+若要以静态方式预配 PV，需要在设备上创建共享。 按照以下步骤为 SMB 共享预配 PV。 
+
+> [!NOTE]
+> 本操作指南文章中使用的特定示例不适用于 NFS 共享。 通常情况下，可以在包含非数据库应用程序的 Azure Stack 边缘设备上预配 NFS 共享。
 
 1. 选择是要创建边缘共享还是边缘本地共享。 按照 [添加共享](azure-stack-edge-manage-shares.md#add-a-share) 中的说明创建共享。 请确保选中 " **使用与边缘计算的共享**" 复选框。
 
@@ -71,7 +74,7 @@ ms.locfileid: "89254366"
 
         ![装载适用于 PV 的现有本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. 记下共享名。 创建此共享时，会在 Kubernetes 群集中自动创建一个永久性卷对象，该对象对应于创建的 SMB 或 NFS 共享。 
+1. 记下共享名。 创建此共享时，会在 Kubernetes 群集中自动创建一个永久性卷对象，该对象对应于创建的 SMB 共享。 
 
 ## <a name="deploy-mysql"></a>部署 MySQL
 
@@ -147,7 +150,7 @@ ms.locfileid: "89254366"
               claimName: mysql-pv-claim
     ```
     
-2. 将保存为文件，并将其另存为 `mysql-pv.yml` 保存的同一文件夹 `mysql-deployment.yml` 。 若要使用前面使用创建的 SMB 或 NFS 共享 `kubectl` ，请将 `volumeName` PVC 对象中的字段设置为该共享的名称。 
+2. 将保存为文件，并将其另存为 `mysql-pv.yml` 保存的同一文件夹 `mysql-deployment.yml` 。 若要使用前面使用创建的 SMB 共享 `kubectl` ，请将 `volumeName` PVC 对象中的字段设置为该共享的名称。 
 
     > [!NOTE] 
     > 请确保 YAML 文件具有正确的缩进。 可以检查 YAML 不 [起毛](http://www.yamllint.com/) 的以验证并保存。
@@ -158,8 +161,8 @@ ms.locfileid: "89254366"
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ ms.locfileid: "89254366"
 
 ## <a name="verify-mysql-is-running"></a>验证 MySQL 是否正在运行
 
-前面的 YAML 文件创建了一个服务，该服务允许群集中的 Pod 访问数据库。 服务选项群集 ip： None 允许服务 DNS 名称直接解析到 Pod 的 IP 地址。 如果服务后面只有一个 Pod 并且不想增加 Pod 数量，则这是最佳做法。
 
 若要针对运行 MySQL 的 pod 中的容器运行命令，请键入：
 
@@ -339,7 +341,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 请执行下列步骤：
+在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤：
 
 1. 卸载共享。 在 Azure 门户中，请 > "共享" 中转到 **Azure Stack Edge 资源** ，并选择并单击要卸载的共享。 选择 " **卸载** "，然后确认操作。 等待共享卸载。 卸载 (会释放共享，因此 Kubernetes 群集中的关联 PersistentVolume) 。 
 

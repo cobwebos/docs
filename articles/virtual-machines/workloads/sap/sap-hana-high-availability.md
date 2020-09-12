@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/11/2020
+ms.date: 09/08/2020
 ms.author: radeltch
-ms.openlocfilehash: f2b4b207aca92cc37b71f3cb12ec579a6b57e832
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1efa00962e63274c2cc02c8758725e5b11d70a9d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068966"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567820"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -60,8 +60,8 @@ ms.locfileid: "87068966"
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合。
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本。
 * SAP 说明 [2015553] 列出了在 Azure 中 SAP 支持的 SAP 软件部署的先决条件。
-* SAP 说明[2205917]为 Sap 应用程序的 SUSE Linux Enterprise Server 建议的操作系统设置。
-* SAP 说明[1944799]具有适用于 Sap 应用程序的 SUSE Linux Enterprise Server SAP HANA 准则。
+* SAP 说明 [2205917] 为 Sap 应用程序的 SUSE Linux Enterprise Server 建议的操作系统设置。
+* SAP 说明 [1944799] 具有适用于 Sap 应用程序的 SUSE Linux Enterprise Server SAP HANA 准则。
 * SAP 说明 [2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
 * SAP 说明 [2191498] 包含 Azure 中的 Linux 所需的 SAP 主机代理版本。
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
@@ -71,7 +71,7 @@ ms.locfileid: "87068966"
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]指南。
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]（本文）。
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide] (本文) 。
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]指南。
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 最佳做法指南][sles-for-sap-bp]
   * 设置 SAP HANA SR 性能优化的基础结构 (SLES for SAP Applications 12 SP1)。 本指南包含为本地开发设置 SAP HANA 系统复制的所需的全部信息。 请使用本指南作为基准。
@@ -105,7 +105,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. 输入以下参数：
     - **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
-    - **Stack 类型**：（仅当使用聚合模板时，此参数才适用。）选择 "SAP NetWeaver" 堆栈类型。
+    - **Stack 类型**：仅当使用聚合模板时，此参数才适用 (。 ) 选择 "SAP NetWeaver" 堆栈类型。
     - **OS 类型**：选择一个 Linux 发行版。 对于本示例，请选择 " **SLES 12**"。
     - **数据库类型**：选择“HANA”。
     - **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
@@ -146,7 +146,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
       1. 打开负载均衡器，选择**后端池**，然后选择“添加”。
       1. 输入新后端池的名称（例如 **hana-backend**）。
-      1. 选择 "**虚拟网络**"。
+      1. 选择 " **虚拟网络**"。
       1. 选择“添加虚拟机”。
       1. 选择“虚拟机”。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
@@ -575,7 +575,6 @@ sudo crm configure rsc_defaults migration-threshold=5000
 # Full list of resources:
 #
 # stonith-sbd     (stonith:external/sbd): Started hn1-db-0
-# rsc_st_azure    (stonith:fence_azure_arm):      Started hn1-db-1
 # Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
 #     Started: [ hn1-db-0 hn1-db-1 ]
 # Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]

@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ecfb569f2791b674fe842e1c21cba972a8e9d2a7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852710"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443001"
 ---
 # <a name="vpn-gateway-design"></a>VPN 网关设计
 
@@ -27,7 +27,7 @@ ms.locfileid: "88852710"
 
 ![Azure VPN 网关站点到站点连接示例](./media/design/vpngateway-site-to-site-connection-diagram.png)
 
-可以使用一个公共 IP 在活动备用模式下配置 VPN 网关，也可以使用两个公共 ip 在主动-主动模式下配置 VPN 网关。 在活动备用模式下，一个 IPsec 隧道处于活动状态，另一个隧道处于备用状态。 在此设置中，流量流经活动隧道，如果此隧道发生某些问题，则流量将切换到备用隧道。 *建议*在主动-主动模式下设置 VPN 网关，因为这两个 IPsec 隧道同时处于活动状态，同时通过这两个隧道同时流动数据。 主动-主动模式的另一个优点是，客户遇到更高的吞吐量。
+VPN 网关可使用一个公共 IP 以主动-备用模式配置，也可使用两个公共 IP 以主动-主动模式配置。 在主动-备用模式下，一个 IPsec 隧道处于活动状态，另一个处于备用状态。 在此设置中，流量流经活动隧道，如果此隧道出现问题，则流量将切换到备用隧道。 建议在主动-主动模式下设置 VPN 网关，此时两个 IPsec 隧道都处于活动状态，数据同时流经这两个隧道。 主动-主动模式的另一优点是，客户可处理更高的吞吐量。
 
 ### <a name="multi-site"></a><a name="Multi"></a>多站点
 

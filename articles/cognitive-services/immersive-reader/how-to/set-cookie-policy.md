@@ -3,26 +3,26 @@ title: 设置沉浸式读者 Cookie 策略
 titleSuffix: Azure Cognitive Services
 description: 本文将演示如何设置沉浸式读者的 cookie 策略。
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: pasta
+ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6bc55416c335f370151e54d2b09ccf00bd799fdb
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 44de79afd6e2fb1f1d4fff1323484364a17da8d0
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406888"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505295"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>如何设置沉浸式读取器的 cookie 策略
 
 默认情况下，沉浸式读取器将禁用 cookie。 如果启用 cookie，则沉浸式读者可以使用 cookie 来维护用户首选项并跟踪功能的使用情况。 如果在沉浸式阅读器中启用 cookie，请考虑欧盟 Cookie 符合性策略的要求。 主机应用程序负责根据欧盟 Cookie 符合性策略获取任何必需的用户同意。
 
-Cookie 策略可通过沉浸式读者[选项](../reference.md#options)进行设置。
+Cookie 策略可通过沉浸式读者 [选项](../reference.md#options)进行设置。
 
 ## <a name="enable-cookie-usage"></a>启用 Cookie 用法
 

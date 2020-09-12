@@ -12,16 +12,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089696"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569078"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender 高级威胁防护与 Azure 安全中心
 
-Azure 安全中心与[Microsoft Defender 高级威胁防护（ATP）](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp)集成，以提供全面的终结点检测和响应（EDR）功能。
+Azure 安全中心与 [Microsoft Defender 高级威胁防护 (ATP) ](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) 集成，提供 (EDR) 功能的综合终结点检测和响应。
+
+
+## <a name="availability"></a>可用性
+
+|方面|详细信息|
+|----|:----|
+|发布状态：|**正式版**|
+|计价|标准层|
+|支持的计算机：|![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure 计算机<br>![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure Arc 计算机|
+|必需的角色和权限：|启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者**或 **订阅参与者**|
+|云：|![是](./media/icons/yes-icon.png) 商业云。<br>![否](./media/icons/no-icon.png) 在公共 Azure 云中运行工作负荷的 GCC 客户<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|||
+
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>安全中心的 Microsoft Defender ATP 功能
 
@@ -36,7 +49,7 @@ Microsoft Defender ATP 提供：
 
 通过将 Defender ATP 与 Azure 安全中心集成，你还可以从以下附加功能中获益：
 
-- **自动载入**：集成会自动为 Azure 安全中心监视的 Windows 服务器启用 MICROSOFT Defender ATP 传感器（除非它们正在运行 Windows Server 2019）。
+- **自动载入**：集成会自动为 Azure 安全中心监视的 windows 服务器启用 MICROSOFT Defender ATP 传感器 (除非它们运行的是 windows Server 2019) 。
 
 - **单一虚拟管理平台**：Azure 安全中心控制台显示 Microsoft Defender ATP 警报。 若要进一步调查，请使用 Microsoft Defender ATP。 Microsoft Defender ATP 提供其他信息，例如警报进程树和事件图形。 此外，还可以看到详细的机器时间线，其中显示了最长六个月的历史时段的每种行为。
 
@@ -55,13 +68,13 @@ Microsoft Defender ATP 提供：
 配置后便无法更改存储数据的位置。 如果需要将数据移动到另一个位置，请联系 Microsoft 支持部门重置租户。
 
 
-## <a name="onboarding-servers-to-security-center"></a>将服务器加入安全中心 
+## <a name="onboard-servers-to-security-center"></a>将服务器载入到安全中心 
 
 若要将服务器加入到安全中心，请从“Microsoft Defender ATP 服务器加入”单击“转到 Azure 安全中心加入服务器”。
 
 1. 在“加入”区域中选择或创建用于存储数据的工作区。
 
-2. 如果看不到所有工作区，原因可能是缺少权限，请确保工作区设置为 "Azure 安全标准" 定价层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+2. 如果看不到所有工作区，原因可能是缺少权限，请确保工作区设置为 "Azure 安全标准" 定价层。 有关详细信息，请参阅 [升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
     
 3. 选择“添加服务器”以查看有关如何安装 Log Analytics 代理的说明。 
 
@@ -88,7 +101,7 @@ Microsoft Defender ATP 提供：
 
 1. 遵照[为用户分配门户访问权限](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)中的说明操作。
 
-1. 检查你的代理或防火墙是否正在阻止匿名通信。 Defender ATP 传感器连接到系统上下文，因此必须允许匿名通信。 若要确保受阻碍访问 Microsoft Defender ATP 门户，请按照在[代理服务器中启用对 Microsoft DEFENDER atp 服务 url 的访问](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的说明进行操作。
+1. 检查你的代理或防火墙是否正在阻止匿名通信。 Defender ATP 传感器连接到系统上下文，因此必须允许匿名通信。 若要确保受阻碍访问 Microsoft Defender ATP 门户，请按照在 [代理服务器中启用对 Microsoft DEFENDER atp 服务 url 的访问](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的说明进行操作。
 
 ## <a name="test-the-feature"></a>测试功能
 

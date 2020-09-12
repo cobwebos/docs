@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 77964eed6960a79920f359a03c65102ad949a210
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004657"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299994"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -205,7 +205,7 @@ WHERE userID=:id < - session var
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **步骤** | 不应该将授予事件中心直接访问权限的令牌提供给设备。 对设备使用仅授予发布者访问权限的最低特权令牌有助于识别设备，如果发现该设备是恶意设备或者是遭到入侵的设备，则将它加入方块列表。|
+| **步骤** | 不应该将授予事件中心直接访问权限的令牌提供给设备。 对于仅向发布者提供访问权限的设备，使用最小特权令牌有助于识别并禁止使用该令牌，前提是它是恶意设备或被盗设备。|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>使用具有所需最低权限的 SAS 密钥连接到事件中心
 

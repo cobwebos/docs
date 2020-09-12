@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305085"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568654"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 诊断扩展 (WAD) 配置架构版本和历史记录
 本文提供了作为 Microsoft Azure SDK 的一部分提供的 [Windows Azure 诊断扩展 (WAD)](diagnostics-extension-overview.md) 架构版本的历史记录。  
@@ -160,7 +160,7 @@ ms.locfileid: "87305085"
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 和诊断扩展 1.3
 对 Visual Studio 中的云服务项目进行了以下更改。 （这些更改同样适用于更高版本的 Azure SDK。）
 
-* 本地模拟器现在支持诊断。 此更改意味着，在 Visual Studio 中开发和测试时，可以收集诊断数据并确保应用程序正在创建相应的跟踪。 使用 Azure 存储模拟器在 Visual Studio 中运行云服务项目时，连接字符串 `UseDevelopmentStorage=true` 可启用诊断数据收集。 所有诊断数据都在“(开发存储)”存储帐户中收集。
+* 本地模拟器现在支持诊断。 此更改意味着，在 Visual Studio 中开发和测试时，可以收集诊断数据并确保应用程序正在创建相应的跟踪。 `UseDevelopmentStorage=true`使用 Azure 存储模拟器在 Visual Studio 中运行云服务项目时，连接字符串可启用诊断数据收集。 所有诊断数据都在“(开发存储)”存储帐户中收集。
 * 诊断存储帐户连接字符串 (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) 将再次存储在服务配置 (.cscfg) 文件中。 在 Azure SDK 2.5 中，在 diagnostics.wadcfgx 文件中指定诊断存储帐户。
 
 连接字符串在 Azure SDK 2.4 及更早版本中的工作方式与它在 Azure SDK 2.6 中的工作方式之间有一些明显的差异。
@@ -179,7 +179,7 @@ ms.locfileid: "87305085"
 * .cscfg 文件中的诊断连接字符串优先于 .wadcfgx 文件中的存储帐户。 如果在 .cscfg 文件中指定了诊断连接字符串，则 Visual Studio 使用该字符串，而忽略 .wadcfgx 中的存储帐户。
 
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>“更新开发存储连接字符串...”复选框的作用
-“在发布到 Microsoft Azure 时使用 Microsoft Azure 存储帐户凭据更新诊断和缓存的开发存储连接字符串”复选框提供了使用发布过程中指定的 Azure 存储帐户更新任何开发存储帐户连接字符串的简便方法。 
+**“在发布到 Microsoft Azure 时使用 Microsoft Azure 存储帐户凭据更新诊断和缓存的开发存储连接字符串”** 复选框为你提供了使用发布过程中指定的 Azure 存储帐户更新任何开发存储帐户连接字符串的简便方法。
 
 例如，假设你选中此复选框，并且诊断连接字符串指定 `UseDevelopmentStorage=true`。 将项目发布到 Azure 时，Visual Studio 将自动使用发布向导中指定的存储帐户更新诊断连接字符串。 但是，如果已将实际的存储帐户指定为诊断连接字符串，则将改用该帐户。
 
@@ -188,6 +188,6 @@ ms.locfileid: "87305085"
 
 * **配置 API 已弃用** – 诊断的编程配置在 Azure SDK 2.4 或更早版本中可用，但在 Azure SDK 2.5 及更高版本中已弃用。 如果目前在代码中定义了诊断配置，则需在已迁移的项目中从头开始重新配置这些设置，这样才能让诊断正常工作。 Azure SDK 2.4 的诊断配置文件是 diagnostics.wadcfg，而 Azure SDK 2.5 及更高版本的诊断配置文件是 diagnostics.wadcfgx。
 * **云服务应用程序的诊断只能在角色级别配置，而不是在实例级别配置。**
-* **每次部署应用程序时，都会更新诊断配置** – 如果从服务器资源管理器更改诊断配置并重新部署应用，这可能会导致奇偶校验问题。
-* **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
+* **每次部署应用时，都会更新诊断配置** –如果从服务器资源管理器更改诊断配置并重新部署应用，这可能会导致奇偶校验问题。
+* **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果你在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
 

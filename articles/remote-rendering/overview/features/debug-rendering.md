@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013582"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613742"
 ---
 # <a name="debug-rendering"></a>调试渲染
 
@@ -74,6 +74,10 @@ void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight
 
 * 启用文本叠加只会产生极少的性能开销，甚至不会产生任何开销。
 * 启用线框模式确实会产生相当高的性能开销，不过，具体的开销因场景而异。 对于复杂场景，此模式可能导致帧速率下降到 60-Hz 目标以下。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C + + RemoteManager：:D ebugRenderingSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 62df01a02feacb8311d14e0bae7ceccb44d47a5a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 78007c9f153267b72a94dc4b4024155dee6beb88
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497645"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442967"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 
@@ -26,7 +26,7 @@ ms.locfileid: "86497645"
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可能包含一组活动，这些活动用于引入和清理日志数据，然后启动映射数据流来分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
+数据工厂可以包含一个或多个数据管道。 管道是共同执行任务的活动的逻辑分组。 例如，管道可以包含一组活动，这些活动引入和清除日志数据，然后启动映射数据流以分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
 
 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，使用数据流活动或 Databricks 笔记本活动处理数据，并将其从 blob 存储转换到 Azure Synapse 分析池，该池位于构建商业智能报表解决方案之上。
 
@@ -57,7 +57,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [Hadoop 流式处理](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
-[存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 数据仓库或 SQL Server
+[存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics (以前的 SQL 数据仓库) 或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
@@ -76,7 +76,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [Filter](control-flow-filter-activity.md) | 将筛选器表达式应用于输入数组
 [对每一个](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 [获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
-[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为时，它会计算一组活动 `true` ，当条件计算结果为时，还会计算一组活动`false.`
+[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为时，它会计算一组活动 `true` ，当条件计算结果为时，还会计算一组活动 `false.`
 [Lookup 活动](control-flow-lookup-activity.md) | 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
 [设置变量](control-flow-set-variable-activity.md) | 设置现有变量的值。
 [Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
@@ -106,14 +106,14 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必选
+标记 | 说明 | 类型 | 必需
 --- | ----------- | ---- | --------
-name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、"\" </li></ul> | 字符串 | 是
-description | 指定描述管道用途的文本。 | 字符串 | 否
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" </li></ul> | String | 是
+description | 指定描述管道用途的文本。 | String | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
-parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
+parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列表 | 否
 concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
-annotations | 与管道关联的标记的列表 | Array | 否
+annotations | 与管道关联的标记的列表 | 数组 | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -141,9 +141,9 @@ annotations | 与管道关联的标记的列表 | Array | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 描述 | 必需
+标记 | 说明 | 必需
 --- | ----------- | ---------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、"\" | 是</li></ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
@@ -184,7 +184,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 JSON 名称 | 说明 | 允许的值 | 必需
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
+timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 否。 默认值为 0
 retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
 secureOutput | 当设置为 true 时，来自活动的输出会被视为安全的，不会记录下来进行监视。 | 布尔 | 否。 默认值为 false。
@@ -208,7 +208,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 
 标记 | 说明 | 必需
 --- | ----------- | --------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、"\" | 是</li><ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li><ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -268,7 +268,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 ```
 
 ## <a name="sample-copy-pipeline"></a>复制管道示例
-在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](copy-activity-overview.md)将数据从 azure Blob 存储复制到 Azure SQL 数据库中的数据库。
+在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](copy-activity-overview.md)将 Azure Blob 存储中的数据复制到 Azure SQL 数据库中的数据库。
 
 ```json
 {

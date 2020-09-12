@@ -2,17 +2,17 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002788"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468634"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
-若要简化资源管理，可以使用 Azure 资源管理器模板 (ARM 模板) 在 Azure 订阅级别部署资源。 例如，你可以将[策略](../../governance/policy/overview.md)和[azure 基于角色的访问控制 (azure RBAC) ](../../role-based-access-control/overview.md)部署到你的订阅，这会将其应用到你的订阅。 你还可以在订阅中创建资源组，并将资源部署到订阅中的资源组。
+若要简化资源管理，可以使用 Azure 资源管理器模板（ARM 模板）在 Azure 订阅级别部署资源。 例如，可以将[策略](../../governance/policy/overview.md)和 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 部署到你的订阅中，从而将它们应用于整个订阅。 还可以在订阅中创建资源组，然后将资源部署到订阅中的资源组。
 
 > [!NOTE]
 > 可在订阅级别部署中部署到 800 个不同的资源组。
@@ -21,14 +21,14 @@ ms.locfileid: "88002788"
 
 ## <a name="supported-resources"></a>支持的资源
 
-并非所有资源类型都可以部署到订阅级别。 此部分列出了支持的资源类型。
+并非所有资源类型都可以部署到订阅级别。 本部分列出了支持的资源类型。
 
-对于 Azure 蓝图，使用：
+对于 Azure 蓝图，请使用：
 
 * [项目](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [蓝图](/azure/templates/microsoft.blueprint/blueprints)
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
-* [ (蓝图) 版本](/azure/templates/microsoft.blueprint/blueprints/versions)
+* [ (蓝图) 版本 ](/azure/templates/microsoft.blueprint/blueprints/versions)
 
 对于 Azure 策略，请使用：
 
@@ -115,9 +115,9 @@ New-AzSubscriptionDeployment `
 
 ## <a name="deployment-scopes"></a>部署范围
 
-部署到订阅时，可以将订阅或订阅中的任何资源组作为目标。 部署模板的用户必须具有对指定作用域的访问权限。
+部署到订阅时，可以将一个订阅和订阅中的任何资源组作为目标。 无法部署到与目标订阅不同的订阅。 部署模板的用户必须有权访问指定的作用域。
 
-在模板的 resources 节中定义的资源会应用于订阅。
+将对订阅应用模板的资源部分中定义的资源。
 
 ```json
 {
@@ -130,7 +130,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-若要以订阅中的资源组为目标，请添加嵌套部署并包括 `resourceGroup` 属性。 在下面的示例中，嵌套部署面向名为的资源组 `rg2` 。
+若要以订阅中的资源组为目标，请添加嵌套部署并包括 `resourceGroup` 属性。 在以下示例中，嵌套部署以名为 `rg2` 的资源组为目标。
 
 ```json
 {
@@ -145,7 +145,7 @@ New-AzSubscriptionDeployment `
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,19 @@ New-AzSubscriptionDeployment `
 }
 ```
 
+本文介绍如何将资源部署到不同范围的模板。 对于创建资源组并向其部署存储帐户的模板，请参阅 [创建资源组和资源](#create-resource-group-and-resources)。 对于创建资源组的模板，对其应用锁，并为资源组分配角色，请参阅 [访问控制](#access-control)。
+
 ## <a name="use-template-functions"></a>使用模板函数
 
 对于订阅级别部署，在使用模板函数时有一些重要注意事项：
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 使用 [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 函数获取在订阅级别部署的资源的资源 ID。
+* 请勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 获取在订阅级别部署的资源的资源 ID。
 
-  例如，若要获取策略定义的资源 ID，请使用：
+  相反，请使用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函数。
+
+  例如，若要获取部署到订阅的策略定义的资源 ID，请使用：
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -178,7 +182,7 @@ New-AzSubscriptionDeployment `
 
 ### <a name="create-resource-groups"></a>创建资源组
 
-若要在 ARM 模板中创建资源组，请使用资源组的名称和位置定义一个[resourceGroups/](/azure/templates/microsoft.resources/allversions)资源组。
+若要在 ARM 模板中创建资源组，请使用资源组的名称和位置定义一个 [resourceGroups/](/azure/templates/microsoft.resources/allversions) 资源组。
 
 以下模板创建空资源组。
 
@@ -420,7 +424,7 @@ New-AzSubscriptionDeployment `
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]
@@ -473,9 +477,9 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>访问控制
 
-若要了解如何分配角色，请参阅[使用 azure 资源管理器模板添加 azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
+若要了解如何分配角色，请参阅[使用 Azure 资源管理器模板添加 Azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
 
-下面的示例创建一个资源组，对其应用锁，并为主体分配一个角色。
+以下示例创建一个资源组，对其应用锁定，并为主体分配一个角色。
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 

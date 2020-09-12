@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261712"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442975"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
@@ -34,7 +34,7 @@ ms.locfileid: "86261712"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
@@ -59,8 +59,8 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
    | 设置            | 建议的值       | 说明                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
    | *名称**            | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（数据库标识符）。 |
-   | **订阅**   | 你的订阅     | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | MyResourceGroup       | 有关有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
+   | **订阅**   | 订阅     | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
+   | **资源组** | myResourceGroup       | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
    | **选择源**  | 空白数据库        | 指定创建空白数据库。 请注意，数据仓库是一种数据库。 |
 
     ![创建数据仓库](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -69,8 +69,8 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
     | 设置                | 建议的值          | 说明                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
-    | **服务器名称**        | 任何全局唯一名称 | 有关有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
-    | 服务器管理员登录名 | 任何有效的名称           | 有关有效的登录名，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（数据库标识符）。 |
+    | **服务器名称**        | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
+    | 服务器管理员登录名 | 任何有效的名称           | 如需有效的登录名，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（数据库标识符）。 |
     | **密码**           | 任何有效的密码       | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置**           | 任何有效的位置       | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
@@ -98,7 +98,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 服务器级别的防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 > [!NOTE]
-> SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 1433。
+> Azure Synapse Analytics 通过端口1433进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 1433。
 
 1. 部署完成后，在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择“mySampleDatabase”。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项****。
 
@@ -153,7 +153,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
     ![连接到服务器](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. 选择“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。
+3. 选择“连接” 。 此时会在 SSMS 中打开“对象资源管理器”窗口。
 
 4. 在“对象资源管理器”中，展开“数据库”。 然后展开“系统数据库”和“master”，查看 master 数据库中的对象。  展开“mySampleDatabase”，查看新数据库中的对象。
 
@@ -509,7 +509,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 3. 若要删除数据仓库，以便不再为计算或存储付费，请选择“删除”。
 
-4. 若要删除创建的服务器，请在上一个映像中选择**mynewserver-20180430.database.windows.net** ，然后选择 "**删除**"。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
+4. 若要删除创建的服务器，请在上一个映像中选择 **mynewserver-20180430.database.windows.net** ，然后选择 " **删除**"。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
 
 5. 若要删除资源组，请选择“myResourceGroup”，然后选择“删除资源组”。
 

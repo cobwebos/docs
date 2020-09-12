@@ -1,19 +1,19 @@
 ---
 title: 将 Apache Hive 用作 ETL 工具 - Azure HDInsight
 description: 使用 Apache Hive 提取、转换和加载 (ETL) Azure HDInsight 中的数据。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 1627fccb49f0ddbf7a3a0a42f5a483059101dae2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9b9dcd683915c17ae6909ebb88927d275e9a5896
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076056"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505278"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "86076056"
 
 ![Apache Hive 为 ETL 体系结构](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop 通常用于导入大量文本文件（如 Csv）的 ETL 进程。 或更小但经常更改的文本文件数量，或同时使用这两种方法。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
+Hadoop 通常用于导入大量文本文件 (如 Csv) 的 ETL 进程。 或更小但经常更改的文本文件数量，或同时使用这两种方法。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
 
 使用 Hive 执行 ETL 的典型步骤如下：
 
@@ -69,7 +69,7 @@ Hadoop 通常用于导入大量文本文件（如 Csv）的 ETL 进程。 或更
 可以使用 Hive 将数据输出到不同种类的目标，其中包括：
 
 * 关系数据库，例如 SQL Server 或 Azure SQL 数据库。
-* 数据仓库，例如 Azure SQL 数据仓库。
+* 数据仓库，例如 Azure Synapse Analytics。
 * Excel。
 * Azure 表和 Blob 存储。
 * 要求将数据处理成特定格式或处理成包含特定类型的信息结构的应用程序或服务。
@@ -79,9 +79,9 @@ Hadoop 通常用于导入大量文本文件（如 Csv）的 ETL 进程。 或更
 
 有以下需要时，通常可以使用 ETL 模型：
 
-`*`将流数据或大量半结构化或非结构化数据从外部源加载到现有数据库或信息系统中。
-`*`在加载数据之前对其进行清理、转换和验证，可能通过群集使用多个转换。
-`*`生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
+`*` 将流数据或大量半结构化或非结构化数据从外部源加载到现有数据库或信息系统中。
+`*` 在加载数据之前对其进行清理、转换和验证，可能通过群集使用多个转换。
+`*` 生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
 如果数据的目标不是数据库，则可以在查询中以适当的格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
 

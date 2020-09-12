@@ -2,25 +2,25 @@
 title: 在沉浸式阅读器中显示公式
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何在沉浸式阅读器中显示数学。
-author: pasta
+author: nitinme
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: pasta
+ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6bde75fe0fb856633d7849173faf21db76edc950
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2bc178dcd473154f65d0b74d20e9f608c4061f9f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406905"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505312"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>如何在沉浸式阅读器中显示数学
 
-如果以数学标记语言（[MathML](https://developer.mozilla.org/docs/Web/MathML)）的形式提供，则沉浸式读取器可以显示公式。
-MIME 类型可通过沉浸式读取器[区块](../reference.md#chunk)进行设置。 有关详细信息，请参阅[支持的 MIME 类型](../reference.md#supported-mime-types)。
+沉浸式读者可以在数学标记语言 ([MathML](https://developer.mozilla.org/docs/Web/MathML)) 的形式提供时显示数学标记。
+MIME 类型可通过沉浸式读取器 [区块](../reference.md#chunk)进行设置。 有关详细信息，请参阅 [支持的 MIME 类型](../reference.md#supported-mime-types) 。
 
 ## <a name="send-math-to-the-immersive-reader"></a>向沉浸式读者发送数学
 为了向沉浸式读者发送数学，请提供包含 MathML 的区块，并将 MIME 类型设置为 ```application/mathml+xml``` ;

@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5e8cb5e062db5c66fc093bf67c97caba15f407a3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856116"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489113"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
@@ -124,4 +124,4 @@ ms.locfileid: "88856116"
 
 * 阅读[身份验证和授权](time-series-insights-authentication-and-authorization.md)以获取 Azure Active Directory 应用注册步骤。
 
-* [在 Azure 时序见解 TSI 资源管理器中查看环境](./time-series-insights-update-explorer.md)。
+* [在 Azure 时序见解资源管理器中查看环境](./time-series-insights-update-explorer.md)。

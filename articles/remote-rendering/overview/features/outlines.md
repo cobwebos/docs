@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997517"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613700"
 ---
 # <a name="outline-rendering"></a>轮廓渲染
 
@@ -29,7 +29,7 @@ ms.locfileid: "88997517"
 | `PulseRateHz`    | FLOAT   | 轮廓的每秒振荡频率|
 | `PulseIntensity` | FLOAT   | 轮廓脉冲效果的强度。 必须介于 0.0（无脉冲）与 1.0（全脉冲）之间。 强度将轮廓的最小不透明度隐式设置为 `MinOpacity = 1.0 - PulseIntensity`。 |
 
-![轮廓](./media/outlines.png) 将 `color` 参数从黄色（左）更改为洋红色（中间）并将 `pulseIntensity` 从 0 更改为 0.8（右）后的效果。
+![对象使用不同的轮廓参数呈现三次：将 ](./media/outlines.png) `color` 参数从黄色 (左) 改为洋红色 (中心) ， `pulseIntensity` 从0到 0.8 (右) 。
 
 ## <a name="example"></a>示例
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>性能
 
 轮廓渲染可能会对渲染性能产生重大影响。 这种影响根据给定帧的选定对象与非选定对象之间的屏幕空间关系而异。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # RemoteManager OutlineSettings 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C + + RemoteManager：： OutlineSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>后续步骤
 

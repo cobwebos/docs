@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：配置对等互连
 description: 本文介绍创建和预配 ExpressRoute 专用对等互连和 Microsoft 对等互连的步骤。 本文还演示了如何检查线路的状态、更新或删除线路的对等互连。
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: 6bcbe2bd038a3e27df86b281c51cf0a151c5b5af
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: duau
+ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542902"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395717"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -28,7 +28,7 @@ ms.locfileid: "87542902"
 > * [PowerShell（经典）](expressroute-howto-routing-classic.md)
 > 
 
-可以为 ExpressRoute 线路配置专用对等互连和 Microsoft 对等互连（新线路不推荐使用 Azure 公共对等互连）。 可以按所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅[ExpressRoute 公共对等互连](about-public-peering.md)。
+可以为 ExpressRoute 线路配置专用对等互连和 Microsoft 对等互连， (新线路) 不推荐使用 Azure 公共对等互连。 可以按所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅 [ExpressRoute 公共对等互连](about-public-peering.md)。
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
@@ -177,7 +177,7 @@ ms.locfileid: "87542902"
 
 ## <a name="next-steps"></a>后续步骤
 
-下一步，[将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
+下一步， [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
 * 有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
 * 有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 * 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)。

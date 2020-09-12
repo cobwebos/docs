@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321728"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489538"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
-外部流对象在输入流和输出流中都具有双重目的。 它可用作从事件引入服务（如 Azure 事件中心、Azure IoT 中心（或边缘集线器）或 Kafka）查询流式处理数据的输入，也可用作输出，用于指定从流式处理查询存储结果的位置和方式。
+外部流对象在输入流和输出流中都具有双重目的。 它可用作从事件引入服务（如 Azure 事件中心、Azure IoT 中心 (或 Edge 中心) 或 Kafka）查询流式处理数据的输入，或者将其用作输出，用于指定从流式处理查询存储结果的位置和方式。
 
 此外，还可以指定 EXTERNAL STREAM，并将其创建为事件中心或 Blob 存储等服务的输出和输入。 这简化了在以下情况下的链接方案：流式处理查询将结果保存到外部流作为输出，另一个流式处理查询从同一外部流读取作为输入。
 
@@ -26,7 +26,7 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 
 | 数据源类型 | 输入 | 输出 | 说明 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge 中心 | 是 | 是 | 用于读取流数据并将其写入 Azure IoT Edge 中心的数据源。 有关详细信息，请参阅[IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
+| Azure IoT Edge 中心 | Y | Y | 用于读取流数据并将其写入 Azure IoT Edge 中心的数据源。 有关详细信息，请参阅 [IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
 | SQL 数据库 | N | Y | 将流式处理数据写入 SQL 数据库的数据源连接。 数据库可以是 Azure SQL Edge 中的本地数据库，也可以是 SQL Server 或 Azure SQL 数据库中的远程数据库。|
 | Kafka | Y | N | 从 Kafka 主题读取流式处理数据的数据源。 Kafka 支持不可用于 Azure SQL Edge 的 ARM64 版本。|
 
@@ -96,8 +96,8 @@ WITH  ( <with_options> )
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
 - LOCATION：指定数据源中的实际数据或位置的名称。 
    - 对于 Edge 中心或 Kafka 流对象，location 指定要读取或写入的 Edge 中心或 Kafka 主题的名称。
-   - 对于 SQL 流对象（SQL Server、Azure SQL 数据库或 Azure SQL Edge），指定表的名称。 如果在与目标表相同的数据库和架构中创建流，则仅表名后缀。 否则，需要完全限定表名（<database_name schema_name table_name）。
-   - 对于 Azure Blob 存储流对象位置，指的是要在 Blob 容器中使用的路径模式。 有关此功能的详细信息，请参阅（/articles/stream-analytics/stream-analytics-define-outputs.md # blob-gen2）
+   - 对于 (SQL Server、Azure SQL 数据库或 Azure SQL Edge) 位置的 SQL 流对象，请指定表的名称。 如果在与目标表相同的数据库和架构中创建流，则仅表名后缀。 否则，你需要完全限定 ( # B0 database_name schema_name. table_name) 表名称。
+   - 对于 Azure Blob 存储流对象位置，指的是要在 Blob 容器中使用的路径模式。 有关此功能的详细信息，请参阅 (/articles/stream-analytics/stream-analytics-define-outputs.md # blob-gen2) 
 
 - **INPUT_OPTIONS**：为作为流式处理查询的输入的服务（如 Kafka、IoT Edge 集线器）指定选项作为键值对
     - 分区：为主题定义的分区数
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT：  
     每次调用 Azure 函数发送给该函数的最大事件数 - 默认值为 100。 对于 SQL 数据库，这表示随每个批量插入事务一起发送的记录数上限 - 默认值为 10,000。 
     - 适用于所有基于 SQL 的输出 
-  - STAGING_AREA：Blob 存储的 EXTERNAL DATA SOURCE 对象 - 用于将高吞吐量数据引入到 SQL 数据仓库的临时区域 
+  - STAGING_AREA：用于 Blob 存储的外部数据源对象将高吞吐量数据引入到 Azure Synapse Analytics 的临时区域 
     - 保留供将来使用。 不适用于 Azure SQL Edge。
 
 

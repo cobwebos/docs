@@ -4,16 +4,16 @@ description: 了解如何连接到 Azure 中的 Analysis Services 服务器并�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506768"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489011"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
@@ -44,7 +44,7 @@ ms.locfileid: "86506768"
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 美国东部2地区的协议为**aspaaseastus2**。
+> 美国东部2地区的协议为 **aspaaseastus2**。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -76,6 +76,24 @@ ms.locfileid: "86506768"
 ## <a name="connect-using-an-odc-file"></a>使用 .odc 文件进行连接
 
 在较旧版本的 Excel 中，用户可以使用 Office 数据连接 (.odc) 文件连接到 Azure Analysis Services 服务器。 若要了解详细信息，请参阅[创建 Office 数据连接 (.odc) 文件](analysis-services-odc.md)。
+
+## <a name="connect-as-a-linked-server-from-sql-server"></a>作为链接服务器连接 SQL Server
+
+SQL Server 可以通过指定 MSOLAP 作为数据源提供程序，以 [链接服务器](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) 的形式连接到 Azure Analysis Services 资源。 在配置链接服务器连接之前，请确保安装最新的 [MSOLAP 客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (提供程序) 。 
+
+对于要 Azure Analysis Services 的链接服务器连接，MSOLAP 提供程序必须在 SQL Server 进程外实例化。 配置链接服务器选项时，请确保**未选择**"**允许进程**内" 选项。
+
+如果选择了 " **允许进程** 内" 并在 SQL Server 进程中实例化提供程序，则返回以下错误：
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
 
 
 ## <a name="next-steps"></a>后续步骤

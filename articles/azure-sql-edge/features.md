@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Edge（预览版）支持的功能
-description: 了解 Azure SQL Edge （预览版）支持的功能的详细信息。
+description: 了解 Azure SQL Edge 支持的功能的详细信息 (预览版) 。
 keywords: SQL Edge 简介, 什么是 SQL Edge, SQL Edge 概述
 services: sql-edge
 ms.service: sql-edge
@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/13/2020
-ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/03/2020
+ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539204"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462694"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge（预览版）支持的功能 
 
-Azure SQL Edge 构建于 Linux 上最新版本的 Microsoft SQL Server 数据库引擎。 除了当前不支持或在 Linux 上的 SQL Server 2019 中提供的某些功能（或在 Windows 上的 SQL Server 中）以外，它还支持 Linux 上的 SQL Server 2019 中支持的功能子集。
+Azure SQL Edge 构建于 Linux 上最新版本的 Microsoft SQL Server 数据库引擎。 除了在 Linux (上的 SQL Server 2019 或 Windows) 的 SQL Server 中当前不支持或未提供某些功能，它还支持 Linux 上的 SQL Server 2019 中支持的功能子集。
 
-有关 Linux 上的 SQL Server 中支持的功能的完整列表，请参阅 [Linux 上的 SQL Server 2019 的版本和支持功能](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019)。 有关 Windows 上的 SQL Server 的版本和支持的功能，请参阅[SQL Server 2019 （）的版本和支持的功能](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15)。
+有关 Linux 上的 SQL Server 中支持的功能的完整列表，请参阅 [Linux 上的 SQL Server 2019 的版本和支持功能](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019)。 有关 Windows 上的 SQL Server 的版本和支持的功能，请参阅 [SQL Server 2019 () 的版本和支持的功能 ](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15)。
 
 > [!NOTE]
 > Azure SQL Edge 目前处于预览阶段，因此不应在生产环境中使用。 Microsoft 可能建议在生产环境中运行 Azure SQL Edge，具体取决于部署验证和用例方案。
@@ -36,9 +36,9 @@ Azure SQL Edge 有两个不同的版本或软件计划。 这些版本具有相�
 
 ## <a name="operating-system"></a>操作系统
 
-Azure SQL Edge 容器目前基于 Ubuntu 16.04，因此仅支持在运行 Ubuntu 16.04 LTS （推荐）或 Ubuntu 18.04 LTS 的 Docker 主机上运行。 例如，可以在其他操作系统主机上运行 Azure SQL Edge 容器，例如，它可以在其他 Linux 分发版上运行，也可以在 Windows 上运行（使用 Docker CE 或 Docker EE），但 Microsoft 不建议这样做，因为此配置可能不会经过广泛测试。
+Azure SQL Edge 容器目前基于 Ubuntu 16.04，因此仅支持在运行 Ubuntu 16.04 LTS 的 Docker 主机上运行 (建议) 或 Ubuntu 18.04 LTS。 例如，可以在其他操作系统主机上运行 Azure SQL Edge 容器，例如，它可以在其他 Linux 分发版上运行，也可以使用 Docker CE 或 Docker EE) 在 Windows (上运行，但 Microsoft 不建议这样做，因为此配置可能不会经过广泛测试。
 
-目前仅支持通过 Azure IoT Edge 来部署 Azure SQL Edge。 有关详细信息，请参阅[Azure IoT Edge 支持的系统](https://docs.microsoft.com/azure/iot-edge/support)。
+目前仅支持通过 Azure IoT Edge 来部署 Azure SQL Edge。 有关详细信息，请参阅 [Azure IoT Edge 支持的系统](https://docs.microsoft.com/azure/iot-edge/support)。
 
 在 Windows 上运行 Azure SQL Edge 的建议配置是在 Windows 主机上配置 Ubuntu VM，然后在 Linux VM 中运行 Azure SQL Edge。
 
@@ -46,11 +46,11 @@ Azure SQL Edge 容器目前基于 Ubuntu 16.04，因此仅支持在运行 Ubuntu
 
 ## <a name="hardware-support"></a>硬件支持
 
-Azure SQL Edge 需要64位处理器（x64 或 ARM64），并且主机上至少有一个处理器和一个 GB RAM。 虽然 Azure SQL Edge 的启动内存占用接近 500 MB，但其他在边缘设备上运行的 IoT Edge 模块需要更多内存。 Azure SQL Edge 的实际内存和 CPU 要求将取决于工作负荷和正在处理的数据量的复杂性。 为解决方案选择硬件时，Microsoft 建议运行广泛的性能测试，以确保满足解决方案所需的性能特征。  
+Azure SQL Edge 要求64位处理器 (x64 或 ARM64) ，并且主机上至少有一个处理器和一个 GB RAM。 虽然 Azure SQL Edge 的启动内存占用接近 500 MB，但其他在边缘设备上运行的 IoT Edge 模块需要更多内存。 Azure SQL Edge 的实际内存和 CPU 要求将取决于工作负荷和正在处理的数据量的复杂性。 为解决方案选择硬件时，Microsoft 建议运行广泛的性能测试，以确保满足解决方案所需的性能特征。  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge 组件
 
-Azure SQL Edge 仅支持数据库引擎。 它不包含对 Windows 上的 SQL Server 2019 或 Linux 上 SQL Server 2019 的其他组件的支持。 具体而言，Azure SQL Edge 不支持 SQL Server 组件，如 Analysis Services、Reporting Services、Integration Services、Master Data Services、机器学习服务（数据库内）和 Machine Learning Server （独立）。
+Azure SQL Edge 仅支持数据库引擎。 它不包含对 Windows 上的 SQL Server 2019 或 Linux 上 SQL Server 2019 的其他组件的支持。 具体而言，Azure SQL Edge 不支持 SQL Server 组件，如 Analysis Services、Reporting Services、Integration Services、Master Data Services、机器学习服务 (数据库内) ，以及 Machine Learning Server 的独立 () 。
 
 ## <a name="supported-features"></a>支持的功能
 
@@ -67,8 +67,8 @@ Azure SQL Edge 仅支持数据库引擎。 它不包含对 Windows 上的 SQL Se
 | 区域 | 不支持的功能或服务 |
 |-----|-----|
 | **数据库设计** | 内存中 OLTP 以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
-| &nbsp; | `HierarchyID`数据类型，以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
-| &nbsp; | `Spatial`数据类型，以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
+| &nbsp; | `HierarchyID` 数据类型，以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
+| &nbsp; | `Spatial` 数据类型，以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
 | &nbsp; | Stretch DB、相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
 | &nbsp; | 全文索引和搜索，以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。|
 | &nbsp; | `FileTable`、 `FILESTREAM` 和相关的 DDL 命令和 transact-sql 函数、目录视图和动态管理视图。|
@@ -83,12 +83,16 @@ Azure SQL Edge 仅支持数据库引擎。 它不包含对 Windows 上的 SQL Se
 | &nbsp; | 缓冲池扩展。 |
 | &nbsp; | 带有第三方连接的分布式查询。 |
 | &nbsp; | 链接服务器。 |
-| &nbsp; | 系统扩展存储过程（如 `XP_CMDSHELL` ）。 |
+| &nbsp; | 系统扩展存储过程 (如 `XP_CMDSHELL`) 。 |
 | &nbsp; | CLR 程序集，以及相关的 DDL 命令和 Transact-sql 函数、目录视图和动态管理视图。 |
 | &nbsp; | CLR 相关的 t-sql 函数，例如 `ASSEMBLYPROPERTY` 、、 `FORMAT` `PARSE` 和 `TRY_PARSE` 。 |
 | &nbsp; | 与 CLR 相关的日期和时间目录视图、函数和查询子句。 |
 | &nbsp; | 缓冲池扩展。 |
 | &nbsp; | 数据库邮件。 |
+| &nbsp; | Service Broker |
+| &nbsp; | 基于策略的管理 |
+| &nbsp; | 管理数据仓库 |
+| &nbsp; | 包含的数据库 |
 | **SQL Server 代理** |  子系统： CmdExec、PowerShell、队列读取器、SSIS、SSAS 和 SSRS。 |
 | &nbsp; | 提醒. |
 | &nbsp; | 托管备份。 |

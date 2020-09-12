@@ -4,13 +4,13 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中创建跨可用性
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 08/13/2020
-ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/04/2020
+ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871405"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489130"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -150,7 +150,8 @@ Name:       aks-nodepool1-28993262-vmss000004
 现在，区域 1 和 2 中有两个额外的节点。 你可以部署包含三个副本的应用程序。 我们以 NGINX 为例：
 
 ```console
-kubectl run nginx --image=nginx --replicas=3
+kubectl create deployment nginx --image=nginx
+kubectl scale deployment nginx --replicas=3
 ```
 
 通过查看运行 pod 的节点，可以看到 pod 在与三个不同的可用性区域相对应的节点上运行。 例如， `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 在 Bash shell 中使用命令时，会收到类似于下面的输出：

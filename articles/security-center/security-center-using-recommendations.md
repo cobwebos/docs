@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783225"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569044"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
+
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 
 
 安全中心会自动运行连续扫描，分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需安全控件的过程。 安全中心会在 24 小时内更新其建议，但以下情况例外：
@@ -57,7 +58,7 @@ Jeff 执行以下任务：
 
 2. Jeff 查看“安全功能分数”，以全面了解订阅的安全状态，看到分数是 548。
 
-3. Jeff 必须决定要首先处理哪些建议。 那么，Jeff 单击安全分数，开始根据其[安全分数](secure-score-security-controls.md)的提高程度来处理建议。
+3. Jeff 必须决定要首先处理哪些建议。 那么，Jeff 单击安全分数，开始根据其 [安全分数](secure-score-security-controls.md)的提高程度来处理建议。
 
 4. 由于 Jeff 有大量连接的 VM 和服务器，因此他决定关注“计算和应用”。
 
@@ -66,6 +67,11 @@ Jeff 执行以下任务：
 6. Jeff 拥有许多面向 VM 的 Internet，并且由于其端口是公开的，所以担心攻击者可能控制服务器。 因此，Jeff 选择使用[实时 VM 访问](security-center-just-in-time.md)。
 
 Jeff 继续浏览高优先级和中优先级建议，并进行有关实施的决策。 对于每项建议，Jeff 会查看安全中心提供的详细信息，以了解受影响的资源、安全功能分数的影响、每项建议的含义以及缓解每个问题的修正步骤。
+
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>强制实施建议以防止安全配置错误
+
+为了确保用户不会创建对 Jeff 分数产生负面影响的资源，他们对建议最重要的建议配置了 "强制" 和 "拒绝" 选项。 有关详细信息 [，请参阅防止强制/拒绝建议](prevent-misconfigurations.md)的错误配置。
+
 
 ## <a name="conclusion"></a>结论
 监视安全中心内的建议有助于在发生攻击之前消除安全漏洞。 修正建议时，安全功能分数和工作负荷的安全状况会提高。 安全中心自动发现部署的新资源，根据安全策略对其进行评估，并提供新的建议对其进行保护。

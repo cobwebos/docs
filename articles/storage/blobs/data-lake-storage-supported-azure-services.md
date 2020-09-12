@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b185b6e7706b2049f2821400db9d810588000419
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c3a5f3a984c95af400c9e0c1543e3c1883290668
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848207"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442950"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -44,7 +44,6 @@ ms.locfileid: "87848207"
 |Azure 数据资源管理器|正式发布|是|是|[使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
 |Azure 认知搜索|预览|是|是|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure 内容分发网络|尚不支持|不适用|不适用|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.microsoft.com/azure/cdn/cdn-overview)|
-
 
 ## <a name="see-also"></a>另请参阅
 

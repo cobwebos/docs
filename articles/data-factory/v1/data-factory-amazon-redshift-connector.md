@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710144"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443018"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -59,9 +59,9 @@ ms.locfileid: "84710144"
 
 下表提供了特定于 Amazon Redshift 链接服务的 JSON 元素的说明。
 
-| Property | 描述 | 必须 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
-| **type** |该属性必须设置为 **AmazonRedshift**。 |是 |
+| type |该属性必须设置为 **AmazonRedshift**。 |是 |
 | 服务器 |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
@@ -74,7 +74,7 @@ ms.locfileid: "84710144"
 
 每种数据集的 **typeProperties** 部分有所不同，该部分提供有关数据在存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 **typeProperties** 部分具有以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | **tableName** |Amazon Redshift 数据库中链接服务引用的表的名称。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
@@ -84,7 +84,7 @@ ms.locfileid: "84710144"
 
 对于复制活动，当源的类型为 **AmazonRedshiftSource **时，则可在 **typeProperties** 部分中使用以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
@@ -93,7 +93,7 @@ ms.locfileid: "84710144"
 
 或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
 
@@ -101,13 +101,13 @@ ms.locfileid: "84710144"
 
 Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) 命令将查询结果卸载到 Amazon S3 上的一个或多个文件。 Amazon 推荐使用此命令从 Redshift 复制大型数据集。
 
-**示例：将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库**
+**示例：将数据从 Amazon Redshift 复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) **
 
-此示例将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
+此示例将数据从 Amazon Redshift 复制到 Azure Synapse Analytics。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
 
-对于该示例用例，复制活动首先将数据从 Amazon Redshift 卸载到 Amazon S3（如 **redshiftUnloadSettings** 选项中所配置）。 接下来，数据从 Amazon S3 复制到 Azure Blob 存储（如 **stagingSettings** 选项中所指定）。 最后，PolyBase 将数据加载到 SQL 数据仓库。 所有临时格式均由复制活动处理。
+对于该示例用例，复制活动首先将数据从 Amazon Redshift 卸载到 Amazon S3（如 **redshiftUnloadSettings** 选项中所配置）。 接下来，数据从 Amazon S3 复制到 Azure Blob 存储（如 **stagingSettings** 选项中所指定）。 最后，PolyBase 将数据加载到 Azure Synapse Analytics 中。 所有临时格式均由复制活动处理。
 
-![将工作流从 Amazon Redshift 复制到 SQL 数据仓库](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![将工作流从 Amazon Redshift 复制到 Azure Synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -337,7 +337,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 | DOUBLE PRECISION |Double |
 | BOOLEAN |String |
 | CHAR |String |
-| VARCHAR |字符串 |
+| VARCHAR |String |
 | DATE |DateTime |
 | TIMESTAMP |DateTime |
 | TEXT |String |

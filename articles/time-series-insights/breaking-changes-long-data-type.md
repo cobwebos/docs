@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856100"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489028"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中添加了对 long 数据类型的支持
 
@@ -33,7 +33,7 @@ ms.locfileid: "88856100"
 
 如果你符合上述任何情况，请对模型进行更改。 请使用建议的更改更新你的变量定义中的时序表达式 (TSX)。 更新两个：
 
-- Azure 时序见解 TSI 资源管理器
+- Azure 时序见解资源管理器
 - 任何使用我们的 API 的自定义客户端
 
 你可能看不到发送到你的 Azure 时序见解第 2 代环境的数据，具体取决于你的 IoT 解决方案和约束。 如果你不确定你的数据都是整型的还是既有整型的又有非整型的，则你有几个选择。

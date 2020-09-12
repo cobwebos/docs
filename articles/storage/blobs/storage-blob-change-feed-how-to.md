@@ -1,29 +1,26 @@
 ---
-title: 处理 Azure Blob 存储中的更改源（预览版）| Microsoft Docs
+title: 在 Azure Blob 存储中处理更改源 |Microsoft Docs
 description: 了解如何在 .NET 客户端应用程序中处理更改源日志
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018954"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568245"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>处理 Azure Blob 存储中的更改源（预览版）
+# <a name="process-change-feed-in-azure-blob-storage"></a>处理 Azure Blob 存储中的更改源
 
 更改源提供存储帐户中 Blob 和 Blob 元数据发生的所有更改的事务日志。 本文介绍如何使用 Blob 更改源处理器库读取更改源记录。
 
-若要详细了解更改源，请参阅 [Azure Blob 存储中的更改源（预览版）](storage-blob-change-feed.md)。
-
-> [!NOTE]
-> 更改源以公共预览版提供，在有限区域中提供。 若要了解有关此功能以及已知问题和限制的详细信息，请参阅 [Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)。 更改源处理器库将在现在和此库公开上市时进行更改。
+若要了解有关更改源的详细信息，请参阅 [更改 Azure Blob 存储中的源](storage-blob-change-feed.md)。
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>获取 Blob 更改源处理器库
 
@@ -219,4 +216,4 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解更改源日志。 请参阅 [Azure Blob 存储中的更改源（预览版）](storage-blob-change-feed.md)
+详细了解更改源日志。 请参阅 [更改 Azure Blob 存储中的源](storage-blob-change-feed.md)
