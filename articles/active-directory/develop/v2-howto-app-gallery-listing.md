@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891855"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439738"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -61,7 +61,7 @@ ms.locfileid: "88891855"
 6. 加入 Microsoft 合作伙伴网络。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 你需要一个永久帐户来测试至少注册了两个用户。
 
@@ -278,5 +278,5 @@ Microsoft 合作伙伴网络提供对独占资源、程序、工具和连接的�
 
 
 ## <a name="next-steps"></a>后续步骤
-
-有关构建支持 Azure AD 登录的应用程序的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-flows-app-scenarios.md)。
+* [生成 SCIM 终结点并配置预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Azure AD 的身份验证方案](authentication-flows-app-scenarios.md)

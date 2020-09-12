@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192530"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433664"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
 本文将帮助你排查 [CDN 文件压缩](cdn-improve-performance.md)问题。
@@ -111,8 +111,8 @@ ms.locfileid: "88192530"
 
 为了适合进行压缩，文件必须符合以下大小要求：
 
-* 大于 128 个字节。
-* 小于 1 MB。
+* 大于128字节 (Content-Length： 128) 
+* 小于 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>在源服务器上检查请求是否包含 **Via** 标头
 **Via** HTTP 标头指明了由代理服务器正在将请求传递到的 web 服务器。  默认情况下，当请求包含 **Via** 标头时，Microsoft IIS Web 服务器不会压缩响应。  要覆盖此行为，请执行以下操作：

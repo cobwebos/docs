@@ -1,7 +1,7 @@
 ---
-title: '交互式调试： VS Code & ML 计算实例 (预览) '
+title: '连接到 Visual Studio Code (预览版中的计算实例) '
 titleSuffix: Azure Machine Learning
-description: 设置 VS Code Remote，使用 Azure 机器学习对代码进行交互式调试。
+description: 了解如何连接到 Visual Studio Code 中的 Azure 机器学习计算实例
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,41 +9,80 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 08/06/2020
-ms.openlocfilehash: 37d0ec0295d76f740b2e8bf70ae72f0c95e68d14
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 09/03/2020
+ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904473"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461555"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>使用 VS Code 远程 (预览版以交互方式在 Azure 机器学习计算实例上调试) 
+# <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>连接到 Visual Studio Code (预览版中的 Azure 机器学习计算实例) 
 
-在本文中，你将了解如何在 Azure 机器学习计算实例上设置 Visual Studio Code 远程扩展，以便从 VS Code**交互调试你的代码**。
+本文介绍如何使用 Visual Studio Code 连接到 Azure 机器学习的计算实例。
 
-* [Azure 机器学习计算实例](concept-compute-instance.md)是基于云的完全托管数据科学工作站，并为 IT 管理员提供管理功能和企业就绪功能。 
+[Azure 机器学习计算实例](concept-compute-instance.md)是基于云的完全托管数据科学工作站，并为 IT 管理员提供管理功能和企业就绪功能。
 
-* 通过使用 [Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Development，可将容器、远程计算机或适用于 Linux 的 Windows 子系统 (WSL) 作为功能完备的开发环境使用。 
+可以通过两种方式从 Visual Studio Code 连接到计算实例：
 
-## <a name="prerequisite"></a>先决条件  
+* 远程 Jupyter Notebook 服务器。 此选项允许你将计算实例设置为远程 Jupyter Notebook 服务器。
+* [Visual Studio Code 远程开发](https://code.visualstudio.com/docs/remote/remote-overview)。 Visual Studio Code 远程开发使你可以使用容器、远程计算机或适用于 Linux 的 Windows 子系统 (WSL) 作为功能完备的开发环境。
 
-* 启用 SSH 的计算实例。 有关详细信息，[请参阅创建计算实例指南。](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#create)
-* 在 Windows 平台上，必须[安装 OpenSSH 兼容的 SSH 客户端](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client)（如果还没有）。 
+## <a name="configure-compute-instance-as-remote-notebook-server"></a>将计算实例配置为远程笔记本服务器
 
-> [!Note]
-> Windows 上不支持 PuTTY，因为 ssh 命令必须在路径中。 
+若要将计算实例配置为远程 Jupyter Notebook 服务器，需要满足以下先决条件：
 
-## <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>获取计算实例的 IP 和 SSH 端口
+* Azure 机器学习 Visual Studio Code 扩展。 有关详细信息，请参阅 [Azure 机器学习 Visual Studio Code 扩展安装指南](tutorial-setup-vscode-extension.md)。
+* Azure 机器学习工作区。 如果还没有[工作区，请使用 Azure 机器学习 Visual Studio Code 扩展来创建新的工作区](how-to-manage-resources-vscode.md#create-a-workspace)。
+
+连接到计算实例：
+
+1. 在 Visual Studio Code 中打开 Jupyter Notebook。
+1. 加载集成笔记本体验时，选择 " **Jupyter 服务器**"。
+
+    > [!div class="mx-imgBorder"]
+    > ![启动 Azure 机器学习远程 Jupyter 笔记本服务器下拉列表](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+
+    另外，还可以使用命令面板：
+
+    1. 从菜单栏选择“视图”>“命令面板”，打开命令面板。
+    1. 在文本框中输入 `Azure ML: Connect to Compute instance Jupyter server` 。
+
+1. `Azure ML Compute Instances`从 Jupyter 服务器选项的列表中进行选择。
+1. 从订阅列表中选择你的订阅。 如果以前已配置默认 Azure 机器学习工作区，则会跳过此步骤。
+1. 选择工作区。
+1. 从列表中选择计算实例。 如果没有，请选择 " **创建新的 Azure ML 计算实例** " 并按照提示进行创建。
+1. 要使更改生效，必须重新加载 Visual Studio Code。
+1. 打开 Jupyter Notebook 并运行一个单元格。
+
+> [!IMPORTANT]
+> 要建立连接， **必须** 运行一个单元格。
+
+此时，你可以继续在 Jupyter 笔记本中运行单元。
+
+> [!TIP]
+> 你还可以使用 Python 脚本文件 ( 包含类似 Jupyter 的代码单元的 py) 。 有关详细信息，请参阅 [Visual Studio Code Python 交互文档](https://code.visualstudio.com/docs/python/jupyter-support-py)。
+
+## <a name="configure-compute-instance-remote-development"></a>配置计算实例远程开发
+
+为了获得全功能的远程开发体验，需要满足以下先决条件：
+
+* [Visual Studio Code 远程 SSH 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)。
+* 启用了 SSH 的计算实例。 有关详细信息， [请参阅创建计算实例指南](concept-compute-instance.md#create)。
+
+> [!NOTE]
+> 在 Windows 平台上，必须[安装 OpenSSH 兼容的 SSH 客户端](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client)（如果还没有）。 Windows 上不支持 PuTTY，因为 ssh 命令必须在路径中。
+
+### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>获取计算实例的 IP 和 SSH 端口
 
 1. 前往 https://ml.azure.com/，转到 Azure 机器学习工作室。
-
 2. 选择[工作区](concept-workspace.md)。
 1. 单击“计算实例”选项卡****。
 1. 在“应用程序 URI”列中，单击要用作远程计算的计算实例的 SSH 链接********。 
 1. 请记下对话框中的 IP 地址和 SSH 端口。 
 1. 将私钥保存到本地计算机上的 ~/.ssh/ 目录中。例如，打开新文件的编辑器，然后将密钥粘贴进来： 
 
-   **Linux**：
+   Linux：
 
    ```sh
    vi ~/.ssh/id_azmlcitest_rsa  
@@ -73,9 +112,9 @@ ms.locfileid: "87904473"
    chmod 600 ~/.ssh/id_azmlcitest_rsa
    ```
 
-## <a name="add-instance-as-a-host"></a>将实例添加为主机
+### <a name="add-instance-as-a-host"></a>将实例添加为主机
 
-在编辑器中打开文件 `~/.ssh/config` (Linux) 或 `C:\Users<username>.ssh\config` (Windows)，并添加类似以下内容的新条目：
+`~/.ssh/config`在编辑器中打开文件 (Linux) 或 `C:\Users<username>.ssh\config` (Windows) ，并添加类似于以下内容的新条目：
 
 ```
 Host azmlci1 
@@ -95,19 +134,15 @@ Host azmlci1
 |----|---------|
 |主机|对计算实例应用所需的任何简写 |
 |HostName|这是计算实例的 IP 地址 |
-|端口|这是上述 SSH 对话框中显示的端口 |
+|Port|这是上述 SSH 对话框中显示的端口 |
 |用户|这应为  `azureuser` |
 |IdentityFile|应指向保存私钥的文件 |
 
 现在应该能够使用之前采用的简写 `ssh azmlci1` 通过 ssh 连接到计算实例。
 
-## <a name="connect-vs-code-to-the-instance"></a>将 VS Code 连接到实例
+### <a name="connect-vs-code-to-the-instance"></a>将 VS Code 连接到实例
 
-1. [安装 Visual Studio Code](https://code.visualstudio.com/)。
-
-1. [安装远程 Remote SSH 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)。
-
-1. 单击左侧的“Remote-SSH”图标，显示 SSH 配置。
+1. 单击 "Visual Studio Code" 活动栏中的 "远程 SSH" 图标以显示 SSH 配置。
 
 1. 右键单击刚创建的 SSH 主机配置。
 
@@ -117,6 +152,6 @@ Host azmlci1
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已设置 Visual Studio Code 远程，你可以使用计算实例作为 Visual Studio Code 的远程计算，以便以[交互方式调试你的代码](how-to-debug-visual-studio-code.md)。
+现在，你已设置 Visual Studio Code 远程，你可以使用计算实例作为 Visual Studio Code 的远程计算，以便以 [交互方式调试你的代码](how-to-debug-visual-studio-code.md)。
 
 [教程：训练自己的首个 ML 模型](tutorial-1st-experiment-sdk-train.md)演示如何将计算实例与集成的笔记本配合使用。

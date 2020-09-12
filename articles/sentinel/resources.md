@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77585265"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461725"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
@@ -28,11 +28,11 @@ ms.locfileid: "77585265"
 
 本文列出了可帮助你获取有关使用 Azure Sentinel 的详细信息的资源。
 
-Azure 逻辑应用连接器：<https://docs.microsoft.com/connectors/>
+Azure 逻辑应用连接器： <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>审核和报告
-Azure Sentinel 的审核日志保留在[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。
+Azure Sentinel 的审核日志保留在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。
 
 可以审核以下受支持的操作。
 
@@ -61,14 +61,14 @@ Azure Sentinel 的审核日志保留在[Azure 活动日志](../azure-monitor/pla
 
 你可以查看此数据，方法是将其从 Azure 活动日志流式传输到 Azure Sentinel，然后你可以在其中对其执行研究和分析。
 
-1. 连接[Azure 活动](connect-azure-activity.md)数据源。 执行此操作后，审核事件会在名为 AzureActivity 的**日志**屏幕上流式传输到新的表中。
+1. 连接 [Azure 活动](connect-azure-activity.md) 数据源。 执行此操作后，审核事件会在名为 AzureActivity 的 **日志** 屏幕上流式传输到新的表中。
 2. 然后，使用 KQL 查询数据，就像对任何其他表一样。
 
 
 
 ## <a name="vendor-documentation"></a>供应商文档
 
-| **供应商**  | **在 Azure Sentinel 中使用事件** | **链接**。|
+| **供应商**  | **在 Azure Sentinel 中使用事件** | **链接**|
 |----|----|----|
 | GitHub| 用于访问社区页面| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| 配置 CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
@@ -76,10 +76,10 @@ Azure Sentinel 的审核日志保留在[Azure 活动日志](../azure-monitor/pla
 
 ## <a name="blogs-and-forums"></a>博客和论坛
 
-将你的问题发布到 Azure Sentinel 的[TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)。
+将你的问题发布到 Azure Sentinel 的 [TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) 。
 
-查看[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)和[Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)的 Azure Sentinel 博客文章。
+查看 [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 和 [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)的 Azure Sentinel 博客文章。
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在[Microsoft Azure 安全和合规性博客](https://blogs.msdn.com/b/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。
+在本文档中，你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在 [Microsoft Azure 安全和合规性博客](https://docs.microsoft.com/archive/blogs/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。

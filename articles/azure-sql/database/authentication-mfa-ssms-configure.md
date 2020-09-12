@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018265"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442643"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>为 SQL Server Management Studio 和 Azure AD 配置多重身份验证
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文演示如何将 Azure Active Directory (Azure AD) 多重身份验证 (MFA) 与 SQL Server Management Studio (SSMS) 结合使用。 将 SSMS 或 SqlPackage.exe 连接到 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)（以前称为 Azure SQL 数据仓库）时，可以使用 Azure AD MFA。 有关多重身份验证的概述，请参阅 [SQL 数据库、SQL 托管实例和 Azure Synapse 的通用身份验证（SSMS 对 MFA 的 支持）](../database/authentication-mfa-ssms-overview.md)。
+本文演示如何将 Azure Active Directory (Azure AD) 多重身份验证 (MFA) 与 SQL Server Management Studio (SSMS) 结合使用。 将 SSMS 或 SqlPackage.exe 连接到 [AZURE Sql 数据库](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md) 和 [azure SYNAPSE Analytics (以前的 SQL 数据仓库) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)时，可以使用 Azure AD MFA。 有关多重身份验证的概述，请参阅 [SQL 数据库、SQL 托管实例和 Azure Synapse 的通用身份验证（SSMS 对 MFA 的 支持）](../database/authentication-mfa-ssms-overview.md)。
 
 > [!IMPORTANT]
-> 本文其余部分将 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse（以前称为 Azure SQL 数据仓库）中的数据库统称为数据库，并且服务器指的是为 Azure SQL 数据库和 Azure Synapse 托管数据库的[服务器](logical-servers.md)。
+> Azure SQL 数据库中的数据库、Azure SQL 托管实例和 Azure Synapse (以前的 SQL 数据仓库) 在本文的其余部分统称为数据库，而服务器则引用承载 Azure SQL 数据库和 Azure Synapse 的数据库的 [服务器](logical-servers.md) 。
 
 ## <a name="configuration-steps"></a>配置步骤
 
@@ -52,7 +52,7 @@ ms.locfileid: "89018265"
 
    ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. 选择“选项”并在“选项”对话框中指定数据库 。 （如果连接的用户是来宾用户 [如 joe@outlook.com]，则必须选中该框并在“选项”中添加当前 AD 域名或租户 ID。 请参阅[使用 SQL 数据库和 SQL 数据仓库（针对 MFA 的 SSMS 支持）进行通用身份验证](../database/authentication-mfa-ssms-overview.md)。 然后单击“连接”。  
+4. 选择“选项”并在“选项”对话框中指定数据库 。 （如果连接的用户是来宾用户 [如 joe@outlook.com]，则必须选中该框并在“选项”中添加当前 AD 域名或租户 ID。 请参阅 [通过 SQL 数据库和 Azure Synapse Analytics 进行通用身份验证 (针对 MFA) 的 SSMS 支持 ](../database/authentication-mfa-ssms-overview.md)。 然后单击“连接”。  
 5. 显示“登录到帐户”  对话框时，提供 Azure Active Directory 标识的帐户和密码。 如果用户属于与 Azure AD 联合的域，则无需任何密码。
 
    ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

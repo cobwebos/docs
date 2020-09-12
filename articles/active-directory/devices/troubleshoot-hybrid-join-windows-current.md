@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268768"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433647"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "89268768"
 
 - 基于设备的条件访问
 - [企业设置漫游](./enterprise-state-roaming-overview.md)
-- [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 本文档提供了用于解决潜在问题的故障排除指导。
 
@@ -42,7 +42,7 @@ ms.locfileid: "89268768"
 **检索加入状态：**
 
 1. 以管理员身份打开命令提示符
-2. 键入 `dsregcmd /status`
+2. 类型 `dsregcmd /status`
 
 ```
 +----------------------------------------------------------------------+
@@ -99,7 +99,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined : NO
 
-此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。** 对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，如果使用 Windows 10 周年更新版 (1607)，则会忽略该帐户。
+此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。** 对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，使用 Windows 10 1607 版或更高版本时，将忽略该帐户。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined : YES
 

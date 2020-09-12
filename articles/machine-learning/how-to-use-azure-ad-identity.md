@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319467"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647333"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
 
@@ -24,7 +24,7 @@ ms.locfileid: "87319467"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 - 使用 `kubectl` 命令访问 AKS 群集。 有关详细信息，请参阅[连接到群集](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
 
@@ -153,11 +153,11 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> 此示例使用 DefaultAzureCredential。 若要使用特定访问策略授予标识访问权限，请参阅[第4部分：从你那里检索机密 Azure Key Vault](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python)。
+> 此示例使用 DefaultAzureCredential。 若要使用特定访问策略授予标识访问权限，请参阅 [使用 Azure CLI 分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
 
 ### <a name="access-blob-from-your-web-service"></a>从 web 服务访问 Blob
 
-如果已向 Azure 标识授予对**存储 Blob**内的数据的读取访问权限，则 `score.py` 可以使用以下代码对其进行访问。
+如果已向 Azure 标识授予对 **存储 Blob**内的数据的读取访问权限，则 `score.py` 可以使用以下代码对其进行访问。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -179,5 +179,5 @@ blob_data.readall()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何使用 Python Azure 标识客户端库的详细信息，请参阅 GitHub 上的[存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python)。
-* 有关将模型部署到 Azure Kubernetes Service 群集的详细指南，请参阅操作[方法](how-to-deploy-azure-kubernetes-service.md)。
+* 有关如何使用 Python Azure 标识客户端库的详细信息，请参阅 GitHub 上的 [存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python) 。
+* 有关将模型部署到 Azure Kubernetes Service 群集的详细指南，请参阅操作 [方法](how-to-deploy-azure-kubernetes-service.md)。

@@ -1,7 +1,7 @@
 ---
-title: 监视和查看 ML 运行日志 & 指标
+title: 监视和查看 ML 运行日志与指标
 titleSuffix: Azure Machine Learning
-description: 监视 Azure ML 试验并查看运行指标，以增强模型创建过程。 使用小组件和 studio 门户来浏览运行状态和查看运行记录。
+description: 监视 Azure ML 试验并查看运行指标，以便改进模型创建过程。 使用小组件和工作室门户来浏览运行状态并查看运行记录。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,35 +11,35 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005949"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649281"
 ---
-# <a name="monitor-and-view-ml-run-logs-and-metrics"></a>监视和查看 ML 运行日志和指标
+# <a name="monitor-and-view-ml-run-logs-and-metrics"></a>监视和查看 ML 运行日志与指标
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何监视 Azure 机器学习运行和查看其日志。 在查看日志之前，必须先启用它们。 有关详细信息，请参阅 [在 AZURE ML 定型运行中启用日志记录](how-to-track-experiments.md)。
+本文介绍如何监视 Azure 机器学习运行并查看其日志。 在查看日志之前，必须先启用它们。 有关详细信息，请参阅[在 Azure 机器学习训练运行中启用日志记录](how-to-track-experiments.md)。
 
 日志可帮助你诊断错误和警告，或跟踪参数和模型准确性等性能指标。 本文介绍如何使用以下方法查看日志：
 
 > [!div class="checklist"]
-> * 在工作室中运行监视器
-> * 使用 Jupyter Notebook 小组件运行监视器
-> * 监视自动机器学习运行
-> * 完成后查看输出日志
-> * 查看工作室中的输出日志
+> * 在工作室中监视运行
+> * 使用 Jupyter Notebook 小组件监视运行
+> * 监视自动化机器学习运行
+> * 完成时查看输出日志
+> * 在工作室中查看输出日志
 
-有关如何管理试验的一般信息，请参阅 [启动、监视和取消定型运行](how-to-manage-runs.md)。
+有关如何管理试验的常规信息，请参阅[启动、监视和取消训练运行](how-to-manage-runs.md)。
 
-## <a name="monitor-runs-in-the-studio"></a>在工作室中运行监视器
+## <a name="monitor-runs-in-the-studio"></a>在工作室中监视运行
 
-若要从浏览器监视特定计算目标的运行，请执行以下步骤：
+若要在浏览器中监视特定计算目标的运行，请执行以下步骤：
 
-1. 在 [Azure 机器学习 studio](https://ml.azure.com/)中，选择你的工作区，然后从页面左侧选择 " __计算__ "。
+1. 在 [Azure 机器学习工作室](https://ml.azure.com/)中选择自己的工作区，然后在页面左侧选择“计算”。
 
 1. 选择“正在训练群集”，显示用于训练的计算目标列表。 然后选择群集。
 
@@ -50,15 +50,15 @@ ms.locfileid: "89005949"
     ![选择训练群集的运行](./media/how-to-track-experiments/show-runs-for-compute.png)
     
     > [!TIP]
-    > 由于定型计算目标是共享资源，因此它们可以在给定时间内排队或处于活动状态。
+    > 由于训练计算目标是共享资源，因此它们可以让多个运行排队或在给定时间处于活动状态。
     > 
     > 一个运行可以包含多个子级运行，所以一个训练作业可能会产生多个条目。
 
-完成的运行将不再显示在此页上。 若要查看已完成运行的信息，请访问工作室的“试验”部分，然后选择试验和运行。 有关详细信息，请参阅 " [完成运行的视图度量值](#view-the-experiment-in-the-web-portal)" 部分。
+完成的运行将不再显示在此页上。 若要查看已完成运行的信息，请访问工作室的“试验”部分，然后选择试验和运行。 有关详细信息，请参阅[查看已完成运行的指标](#view-the-experiment-in-the-web-portal)部分。
 
-## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>使用 Jupyter 笔记本小组件运行监视器
+## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>使用 Jupyter Notebook 小组件监视运行
 
-使用 **ScriptRunConfig** 方法提交运行时，可以使用 [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)观看运行进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
+使用 ScriptRunConfig 方法提交运行时，可使用 [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)监视运行的进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
 
 在等待运行完成的期间查看 Jupyter 小组件。
     
@@ -75,9 +75,9 @@ RunDetails(run).show()
 print(run.get_portal_url())
 ```
 
-## <a name="monitor-automated-machine-learning-runs"></a>监视自动机器学习运行
+## <a name="monitor-automated-machine-learning-runs"></a>监视自动化机器学习运行
 
-对于自动机器学习运行，若要访问以前运行的图表，请将替换 `<<experiment_name>>` 为相应的试验名称：
+对于自动化机器学习运行，若要访问根据以前的运行生成的图表，请将 `<<experiment_name>>` 替换为相应的试验名称：
 
 ```python
 from azureml.widgets import RunDetails
@@ -93,29 +93,29 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>完成时显示输出
 
-使用 ScriptRunConfig 时，可以使用 ```run.wait_for_completion(show_output = True)``` 在模型定型完成时进行显示。 使用 ```show_output``` 标志可查看详细输出。 有关详细信息，请参阅 [如何启用日志记录](how-to-track-experiments.md#scriptrunconfig-logs)的 ScriptRunConfig 部分。
+使用 ScriptRunConfig 时，可以使用 ```run.wait_for_completion(show_output = True)``` 在模型定型完成时进行显示。 使用 ```show_output``` 标志可查看详细输出。 有关详细信息，请参阅[如何启用日志记录](how-to-track-experiments.md#scriptrunconfig-logs)中的 ScriptRunConfig 部分。
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>查询运行指标
 
-可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 例如，您可以将此示例与上述示例一起使用，通过查找具有最低平均平方误差的模型来确定最佳模型 (mse) 值。
+可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 例如，可以将此方法示例与上面的示例配合使用，通过查找具有最低均方误差 (mse) 值的模型来确定最佳模型。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-run-records-in-the-studio"></a>在工作室中查看运行记录
 
-你可以在 [Azure 机器学习 studio](https://ml.azure.com)中浏览已完成的运行记录，包括记录的指标。
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中浏览已完成的运行记录，包括记录的指标。
 
-导航到 " **试验** " 选项卡，然后选择试验。 在 "试验运行" 仪表板中，可以看到每次运行所跟踪的指标和日志。 
+导航到“试验”选项卡并选择自己的试验。 在“试验运行”仪表板中，可以看到为每次运行跟踪的指标和日志。 
 
-向下钻取到特定运行查看其输出或日志，或下载试验快照，以便与其他人共享试验文件夹。
+向下钻取至特定运行以查看其输出或日志，或下载试验的快照，以便与其他人共享试验文件夹。
 
-您还可以编辑 "运行列表" 表来选择多个运行，并为您的运行显示最后一个、最小或最大的记录值。 自定义图表，比较记录的指标值和多个运行的聚合。
+还可以编辑“运行列表”表，以选择多个运行并显示运行的最新记录值、最小记录值或最大记录值。 自定义自己的图表，以比较多个运行上的已记录指标值和聚合。
 
 ![Azure 机器学习工作室中的运行详细信息](media/how-to-track-experiments/experimentation-tab.gif)
 
 ### <a name="format-charts-in-the-studio"></a>设置工作室中图表的格式
 
-使用日志记录 Api 中的以下方法来影响你的指标形象化。
+使用日志记录 API 中的以下方法可影响将指标可视化的工作室。
 
 |记录的值|示例代码| 门户中的格式|
 |----|----|----|
@@ -127,9 +127,9 @@ RunDetails(run).show()
 
 ## <a name="next-steps"></a>后续步骤
 
-请尝试以下步骤来了解如何使用 Azure 机器学习：
+尝试执行以下后续步骤，了解如何使用 Azure 机器学习：
 
-* 了解如何 [在 Azure 机器学习设计器中跟踪试验和启用日志 (预览版) ](how-to-track-designer-experiments.md)。
+* 了解如何[在 Azure 机器学习设计器（预览版）中跟踪试验并启用日志](how-to-track-designer-experiments.md)。
 
 * 查看教程[使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)中的示例，了解如何注册和部署最佳模型。
 

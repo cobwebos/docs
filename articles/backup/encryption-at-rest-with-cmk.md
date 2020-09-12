@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022405"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378281"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -23,7 +23,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 - 对使用客户管理的密钥加密的保管库执行备份
 - 从备份还原数据
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 - 此功能仅允许加密 **新的恢复服务保管库**。 不支持任何包含注册或试图注册到它的现有项目的保管库。
 
@@ -66,7 +66,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
     ![标识设置](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. 将“状态”更改为“启用”，然后单击“保存”  。
+1. 将 **状态** 更改为 **"打开** "，然后选择 " **保存**"。
 
 1. 系统将生成一个对象 ID，该 ID 是保管库的系统分配的托管标识。
 
@@ -82,13 +82,13 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
     ![分配密钥权限](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. 请在搜索框中， **选择 "主体** "，并使用其名称或托管标识搜索你的保管库。 显示后，选择保管库，并单击窗格底部的 " **选择** "。
+1. 请在搜索框中， **选择 "主体** "，并使用其名称或托管标识搜索你的保管库。 显示后，选择保管库，然后选择窗格底部的 " **选择** "。
 
     ![选择主体](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. 完成后，单击 " **添加** " 以添加新的访问策略。
+1. 完成后，选择 " **添加** " 以添加新的访问策略。
 
-1. 单击 " **保存** " 以保存对 Azure Key Vault 的访问策略所做的更改。
+1. 选择 " **保存** " 以保存对 Azure Key Vault 的访问策略所做的更改。
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>启用软删除和清除保护 Azure Key Vault
 
@@ -148,7 +148,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
     ![加密设置](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. 单击 "**加密设置**" 下的 "**更新**"。
+1. 选择 "**加密设置**" 下的 "**更新**"。
 
 1. 在 "加密设置" 窗格中，选择 " **使用你自己的密钥** "，然后使用以下方法之一继续指定密钥。 **确保要使用的密钥是 RSA 2048 密钥，它处于启用状态。**
 
@@ -160,7 +160,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 单击“ **保存**”。
+1. 选择“保存”。
 
 1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的 **活动日志** 跟踪密钥分配的进度。 状态应更改为 " **成功**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 

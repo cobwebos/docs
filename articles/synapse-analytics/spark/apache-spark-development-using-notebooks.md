@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849091"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612797"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio (预览版) 笔记本
 
@@ -192,7 +192,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 
 ### <a name="cancel-all-running-cells"></a>取消所有正在运行的单元
-单击 "**全部取消**" 按钮可取消正在运行的单元格或在队列中等待的单元格。 
+单击 " **全部取消** " 按钮可取消正在运行的单元格或在队列中等待的单元格。 
    ![全部取消单元](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 ### <a name="cell-status-indicator"></a>单元格状态指示器
@@ -232,7 +232,7 @@ from pyspark.sql.types import *
 account_name = "Your account name"
 container_name = "Your container name"
 relative_path = "Your path"
-adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (blob_container_name, blob_account_name,  blob_relative_path)
+adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
 spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
 spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
@@ -283,7 +283,7 @@ df = spark.read.option("header", "true") \
 
 ### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>可视化大型数据集中的内置图表 
 
-默认情况下，该 <code>display(df)</code> 函数将只接受数据的前1000行来呈现图表。 检查**所有结果的聚合**，并单击 "**应用**" 按钮，将从整个数据集中应用图表生成。 当图表设置发生更改时，将触发 spark 作业，完成计算并呈现图表需要一段时间。 
+默认情况下，该 <code>display(df)</code> 函数将只接受数据的前1000行来呈现图表。 检查 **所有结果的聚合** ，并单击 " **应用** " 按钮，将从整个数据集中应用图表生成。 当图表设置发生更改时，将触发 spark 作业，完成计算并呈现图表需要一段时间。 
     [![内置-图表-聚合-全部](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
@@ -349,7 +349,7 @@ displayHTML(html)
    ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>magic 命令
-可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们你在 GitHub 上的用例，以便我们可以继续构建更多 magic 命令来满足你的需求。
+可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们 [GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new) ，以便我们可以继续构建更复杂的命令来满足你的需求。
 
 可用行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
@@ -360,13 +360,13 @@ displayHTML(html)
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>向管道添加笔记本
 
-单击右上角的 "**添加到管道**" 按钮，将笔记本添加到现有管道或创建新管道。
+单击右上角的 " **添加到管道** " 按钮，将笔记本添加到现有管道或创建新管道。
 
 ![添加到管道](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>指定参数单元
 
-若要参数化笔记本，请选择省略号 ( ... ) 以访问最右侧的其他单元格操作菜单。 然后选择 "**切换参数单元**"，将该单元格指定为参数单元。
+若要参数化笔记本，请选择省略号 ( ... ) 以访问最右侧的其他单元格操作菜单。 然后选择 " **切换参数单元** "，将该单元格指定为参数单元。
 
 ![切换-参数](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
@@ -378,7 +378,7 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 
 ![赋值-参数](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
-分配参数值时，可以使用[管道表达式语言](../../data-factory/control-flow-expression-language-functions.md)或[系统变量](../../data-factory/control-flow-system-variables.md)。
+分配参数值时，可以使用 [管道表达式语言](../../data-factory/control-flow-expression-language-functions.md) 或 [系统变量](../../data-factory/control-flow-system-variables.md)。
 
 
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 85e95dc4138fd638c8db9f5c98a7064153c7ef17
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181640"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461827"
 ---
 # <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge GPU 设备
 
@@ -30,24 +30,24 @@ Azure Stack Edge 解决方案使你能够处理数据，并通过网络将数据
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>上传证书
+<!--## Upload certificate
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-你还可以上传 IoT Edge 证书，以在你的 IoT Edge 设备与可能连接到该设备的下游设备之间启用安全连接。 需要安装以下三个 IoT Edge *证书 () * 格式：
+You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
 
-- 根 CA 证书或所有者 CA
-- 设备 CA 证书
-- 设备密钥证书
+- Root CA certificate or the owner CA
+- Device CA certificate
+- Device key certificate
 
-下面的示例演示如何使用此 cmdlet 安装 IoT Edge 证书：
+The following example shows the usage of this cmdlet to install IoT Edge certificates:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-运行此 cmdlet 时，系统将提示你提供网络共享的密码。
+When you run this cmdlet, you will be prompted to provide the password for the network share.
 
-有关证书的详细信息，请参阅 [Azure IoT Edge 证书](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) "或 [" 在网关上安装证书 "](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)。
+For more information on certificates, go to [Azure IoT Edge certificates](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) or [Install certificates on a gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).-->
 
 ## <a name="view-device-information"></a>查看设备信息
  
@@ -121,18 +121,45 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
     - `FullLogCollection`：此参数可确保日志包将包含所有计算日志。 默认情况下，日志包仅包含一小部分的日志。
 
 
+## <a name="change-kubernetes-pod-and-service-subnets"></a>更改 Kubernetes pod 和服务子网
+
+默认情况下，Azure Stack 边缘设备上的 Kubernetes 使用子网 172.27.0.0/16 和 172.28.0.0/16 来分别使用 pod 和服务。 如果这些子网已在网络中使用，则可以运行 `Set-HcsKubeClusterNetworkInfo` cmdlet 来更改这些子网。
+
+在从 Azure 门户配置计算之前，要执行此配置，因为在此步骤中创建 Kubernetes 群集。
+
+1. 连接到设备的 PowerShell 接口。
+1. 从设备的 PowerShell 接口运行：
+
+    `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
+
+    将替换为 <subnet details> 要使用的子网范围。 
+
+1. 运行此命令后，可以使用 `Get-HcsKubeClusterNetworkInfo` 命令验证 pod 和服务子网是否已更改。
+
+下面是此命令的示例输出。
+
+```powershell
+[10.100.10.10]: PS>Set-HcsKubeClusterNetworkInfo -PodSubnet 10.96.0.1/16 -ServiceSubnet 10.97.0.1/16
+[10.100.10.10]: PS>Get-HcsKubeClusterNetworkInfo
+
+Id                                   PodSubnet    ServiceSubnet
+--                                   ---------    -------------
+6dbf23c3-f146-4d57-bdfc-76cad714cfd1 10.96.0.1/16 10.97.0.1/16
+[10.100.10.10]: PS>
+```
+
 
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>调试与 IoT Edge 相关的 Kubernetes 问题
 
-创建 Kubernetes 群集时， `aseuser` 还会创建与系统命名空间相关联的默认用户 `iotedge` 。 若要调试与 IoT Edge 相关的任何问题，可以使用此用户和系统命名空间。  
+<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
 
-### <a name="create-config-file-for-system-namespace"></a>为系统命名空间创建配置文件
+<!--### Create config file for system namespace
 
-若要进行故障排除，请首先创建 `config` `iotedge` 与命名空间对应的文件 `aseuser` 。
+To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
 
-运行 `Get-HcsKubernetesUserConfig -AseUser` 命令，并将输出保存为 `config` 文件 (没有文件扩展名) 。 将该文件保存到 `.kube` 本地计算机上的用户配置文件的文件夹中。
+Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
 
-下面是该命令的示例输出 `Get-HcsKubernetesUserConfig` 。
+Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
 
 ```PowerShell
 [10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
@@ -158,11 +185,67 @@ users:
 
 [10.100.10.10]: PS>
 ```
+-->
+
+在配置了计算角色的 Azure Stack 边缘设备上，你可以使用两个不同的命令集对设备进行故障排除或监视。
+
+- 使用 `iotedge` 命令。 这些命令可用于设备的基本操作。
+- 使用 `kubectl` 命令。 这些命令适用于你的设备的一组广泛的操作。
+
+若要执行上述任一命令集，需要 [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+
+### <a name="use-iotedge-commands"></a>使用 `iotedge` 命令
+
+若要查看可用命令的列表，请 [连接到 PowerShell 接口](#connect-to-the-powershell-interface) 并使用 `iotedge` 函数。
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                           
+Usage: iotedge COMMAND
+
+Commands:
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+下表简要说明了可用于的命令 `iotedge` ：
+
+|命令  |说明 |
+|---------|---------|
+|`list`     | 列出模块         |
+|`logs`     | 提取模块的日志        |
+|`restart`     | 停止并重新启动模块         |
+
+
+若要列出设备上运行的所有模块，请使用 `iotedge list` 命令。
+
+下面是此命令的示例输出。 此命令列出所有模块、关联的配置以及与模块关联的外部 Ip。 例如，你可以访问上的 **web** 服务器应用 `https://10.128.44.244` 。 
+
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME                   STATUS  DESCRIPTION CONFIG                                             EXTERNAL-IP
+----                   ------  ----------- ------                                             -----
+gettingstartedwithgpus Running Up 10 days  mcr.microsoft.com/intelligentedge/solutions:latest
+iotedged               Running Up 10 days  azureiotedge/azureiotedge-iotedged:0.1.0-beta10    <none>
+edgehub                Running Up 10 days  mcr.microsoft.com/azureiotedge-hub:1.0             10.128.44.243
+edgeagent              Running Up 10 days  azureiotedge/azureiotedge-agent:0.1.0-beta10
+webserverapp           Running Up 10 days  nginx:stable                                       10.128.44.244
+
+[10.100.10.10]: PS>
+```
+
+
+### <a name="use-kubectl-commands"></a>使用 kubectl 命令
 
 在配置了计算角色的 Azure Stack 边缘设备上， `kubectl` 可以使用所有命令来监视模块或对其进行故障排除。 若要查看可用命令的列表，请 `kubectl --help` 在命令窗口中运行。
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
+
 kubectl controls the Kubernetes cluster manager.
 
 Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
@@ -187,7 +270,7 @@ C:\Users\myuser>
 有关命令的完整列表 `kubectl` ，请参阅[ `kubectl` 速查表](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)。
 
 
-### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>获取在 Kubernetes 群集外部公开的服务或模块的 IP
+#### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>获取在 Kubernetes 群集外部公开的服务或模块的 IP
 
 若要获取在 Kubernetes 外部公开的负载均衡服务的 IP，请运行以下命令：
 
@@ -197,39 +280,53 @@ C:\Users\myuser>
 
 
 ```powershell
-C:\Users\user>kubectl get svc -n iotedge
+[10.100.10.10]: PS>kubectl get svc -n iotedge
 NAME           TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                                       AGE
 edgehub        LoadBalancer   10.103.52.225   10.128.44.243   443:31987/TCP,5671:32336/TCP,8883:30618/TCP   34h
 iotedged       ClusterIP      10.107.236.20   <none>          35000/TCP,35001/TCP                           3d8h
 webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP                                16h
 
-C:\Users\user>
+[10.100.10.10]: PS>
 ```
 "外部 IP" 列中的 IP 地址对应于服务或模块的外部终结点。 还可以 [在 Kubernetes 仪表板中获取外部 IP](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules)。
 
 
-### <a name="to-check-if-module-deployed-successfully"></a>检查模块是否已成功部署
+#### <a name="to-check-if-module-deployed-successfully"></a>检查模块是否已成功部署
 
-计算模块是已实现业务逻辑的容器。 Kubernetes pod 可以运行多个容器。 若要检查是否成功部署了计算模块，请运行 `get pods` 命令，并检查容器 (与计算模块) 是否正在运行。
+计算模块是已实现业务逻辑的容器。 Kubernetes pod 可以运行多个容器。 
+
+若要检查是否成功部署了计算模块，请连接到设备的 PowerShell 接口。
+运行 `get pods` 命令，并检查容器 (与计算模块) 是否正在运行。
 
 若要获取在特定命名空间中运行的所有 pod 的列表，请运行以下命令：
 
 `get pods -n <namespace>`
 
+若要检查通过 IoT Edge 部署的模块，请运行以下命令：
+
+`get pods -n iotedge`
+
 下面是在命名空间中运行的所有 pod 的示例输出 `iotedge` 。
 
 ```
-C:\Users\myuser>kubectl get pods -n iotedge
+[10.100.10.10]: PS>kubectl get pods -n iotedge
 NAME                        READY   STATUS    RESTARTS   AGE
 edgeagent-cf6d4ffd4-q5l2k   2/2     Running   0          20h
 edgehub-8c9dc8788-2mvwv     2/2     Running   0          56m
 filemove-66c49984b7-h8lxc   2/2     Running   0          56m
 iotedged-675d7f4b5f-9nml4   1/1     Running   0          20h
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
 状态 **状态** 表明命名空间中的所有 pod 都正在运行，并且 " **就绪** " 表示在 pod 中部署的容器数。 在上面的示例中，所有 pod 都在运行，并且每个 pod 中部署的所有模块都在运行。 
+
+若要检查通过 Azure Arc 部署的模块，请运行以下命令：
+
+`get pods -n azure-arc`
+
+或者，你可以 [连接到 Kubernetes 仪表板，以查看 IoT Edge 或 Azure Arc 部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#view-module-status)。
+
 
 对于给定命名空间的特定 pod 更详细的输出，你可以运行以下命令：
 
@@ -238,7 +335,7 @@ C:\Users\myuser>
 示例输出显示在此处。
 
 ```
-C:\Users\myuser>kubectl describe pod filemove-66c49984b7 -n iotedge
+[10.100.10.10]: PS>kubectl describe pod filemove-66c49984b7 -n iotedge
 Name:           filemove-66c49984b7-h8lxc
 Namespace:      iotedge
 Priority:       0
@@ -295,12 +392,12 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:          <none>
 
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
-### <a name="to-get-container-logs"></a>获取容器日志
+#### <a name="to-get-container-logs"></a>获取容器日志
 
-若要获取模块的日志，请运行以下命令：
+若要获取模块的日志，请从设备的 PowerShell 接口运行以下命令：
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
@@ -309,7 +406,7 @@ C:\Users\myuser>
 下面是一个示例输出。 
 
 ```
-C:\Users\myuser>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
+[10.100.10.10]: PS>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
 DEBUG 2020-05-14T20:40:42Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
@@ -325,8 +422,10 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 05/14/2020 19:46:45: Info: Initializing with input: /home/input, output: /home/output, protocol: Amqp.
 05/14/2020 19:46:45: Info: IoT Hub module client initialized.
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
+
+
 
 ## <a name="exit-the-remote-session"></a>退出远程会话
 
@@ -334,4 +433,4 @@ C:\Users\myuser>
 
 ## <a name="next-steps"></a>后续步骤
 
-- 将 [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) 部署 Azure 门户。
+- 在 Azure 门户中部署 [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)。

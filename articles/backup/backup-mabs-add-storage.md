@@ -3,12 +3,12 @@ title: 将新式备份存储与 Azure 备份服务器一起使用
 description: 了解 Azure 备份服务器中的新功能。 本文介绍如何升级备份服务器安装。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825862"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378230"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
@@ -56,7 +56,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
     ![创建新卷](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. 在“选择服务器和磁盘”**** 对话框中，选择服务器和新磁盘。 然后，选择“下一步”  。
+6. 在“选择服务器和磁盘”**** 对话框中，选择服务器和新磁盘。 然后，选择“下一步”。
 
     ![选择服务器和磁盘](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
@@ -105,7 +105,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
    ![停止保护成员](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. 在“从组中删除”**** 对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。
+2. 在“从组中删除”**** 对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 选择“确定” 。
 
    如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”**** 复选框以删除与成员关联的备份数据（和恢复点）。
 

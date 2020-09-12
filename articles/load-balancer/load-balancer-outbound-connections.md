@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706058"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438659"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -44,7 +44,7 @@ Azure 负载均衡器可通过各种机制提供出站连接。 本文介绍了�
 
 使用 PAT 时，Azure 使用某种算法根据后端池的大小来确定可用的预先分配的 SNAT 端口数目。 对于与负载均衡器关联的每个公共 IP 地址，有 64,000 个端口可用作每个 IP 传输协议的 SNAT 端口。 将分别为 UDP 和 TCP 预分配相同数量的 SNAT 端口，并根据 IP 传输协议独立地使用这些端口。  但是，SNAT 端口使用情况会因流是 UDP 还是 TCP 而有所不同。 创建出站流时，将动态消耗这些端口（直至达到预先分配的限制），当流关闭或达到[空闲超时](../load-balancer/troubleshoot-outbound-connection.md#idletimeout)时将释放这些端口。 仅当需要使流保持唯一时，才使用端口。
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> 分配的默认 SNAT 端口
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a> 已分配动态 SNAT 端口
 
 下表显示了针对后端池大小层的 SNAT 端口预分配：
 

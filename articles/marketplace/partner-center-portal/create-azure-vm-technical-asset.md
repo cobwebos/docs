@@ -3,16 +3,16 @@ title: 创建 Azure 虚拟机技术资产
 description: 了解如何为 Azure 市场的虚拟机 (VM) 产品/服务创建并配置技术资产。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 496cd4aeb96ca1849e950331658014d91dc6d6ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143855"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646809"
 ---
 # <a name="create-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
 
@@ -120,7 +120,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 在 Azure 门户中创建第2代 (Gen2) VM。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
-2. 选择“创建资源”。
+2. 选择“创建资源”。 
 3. 选择左侧的 "从 Azure Marketplace **查看全部** "。
 4. 选择支持 Gen2 的映像。
 5. 选择“创建” 。
@@ -157,7 +157,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 7. 打开 PuTTY 应用程序。
 8. 在 PuTTY 的“配置”对话框中，输入 VM 的 IP 地址或 DNS 名称。
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="说明 PuTTY 终端设置，并突出显示 主机名 和 端口 字段。":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="说明 PuTTY 终端设置，并突出显示 "主机名" 和 "端口" 字段。":::
 
 9. 选择“打开”以打开 PuTTY 终端。
 10. 出现提示时，请输入 Linux VM 帐户的帐户名称和密码。
@@ -170,7 +170,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
 以下规则适用于操作系统磁盘大小的限制。 提交任何请求时，请确保 OS 磁盘大小在 Linux 或 Windows 的限制范围内。
 
-| OS | 推荐的 VHD 大小 |
+| (OS) | 推荐的 VHD 大小 |
 | --- | --- |
 | Linux | 30到 1023 GB |
 | Windows | 30到 250 GB |

@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: fe562b8202c508c13f4127d14aeb5f994d15f962
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782747"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649603"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本指南介绍如何通过 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 定义各种自动机器学习试验的配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
+本指南介绍如何通过 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 定义各种自动机器学习试验的配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
 
 若要查看自动机器学习试验的示例，请参阅 [教程：使用自动机器学习](tutorial-auto-train-models.md) 或云中的 [自动化机器学习](how-to-auto-train-remote.md)来训练分类模型。
 
@@ -43,16 +43,16 @@ ms.locfileid: "88782747"
 * Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 * 已安装 Azure 机器学习 Python SDK。
-    若要安装 SDK，你可以： 
-    * 创建一个计算实例，该实例将自动安装 SDK，并预先配置了 ML 工作流。 有关详细信息，请参阅 [什么是 Azure 机器学习计算实例？](concept-compute-instance.md#managing-a-compute-instance) 。 
+    若要安装该 SDK，你可以： 
+    * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅[什么是 Azure 机器学习计算实例？](concept-compute-instance.md#managing-a-compute-instance) 
 
-    * [自行安装 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 只需确保包括多余的 `automl` 。 
+    * [自己安装 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 只要确保额外包括 `automl` 即可。 
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
-在开始试验之前，应确定要解决的机器学习问题类型。 自动机器学习支持、和的任务类型 `classification` `regression` `forecasting` 。 详细了解[任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
+在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持 `classification`、`regression` 和 `forecasting` 任务类型。 详细了解[任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
-下面的代码使用 `task` 构造函数中的参数将 `AutoMLConfig` 试验类型指定为 `classification` 。
+下面的代码使用 `AutoMLConfig` 构造函数中的 `task` 参数将试验类型指定为 `classification`。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -69,21 +69,21 @@ automl_config = AutoMLConfig(task = "classification")
 - 数据必须为表格格式。
 - 要预测的值（目标列）必须位于数据中。
 
-**对于远程试验**，必须可从远程计算访问定型数据。 AutoML 仅在处理远程计算时接受 [Azure 机器学习 TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 。 
+**对于远程试验**，必须能够从远程计算访问训练数据。 AutoML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)。 
 
-Azure 机器学习数据集公开功能：
+Azure 机器学习数据集公开的功能可以：
 
 * 轻松地将数据从静态文件或 URL 源传输到工作区。
-* 在云计算资源上运行时，使数据可用于训练脚本。 有关使用类将数据装载到远程计算目标的示例，请参阅如何使用 [数据集进行训练](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` 。
+* 在云计算资源上运行时，使数据可用于训练脚本。 有关使用 `Dataset` 类将数据装载到远程计算目标的示例，请参阅[如何使用数据集进行训练](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)。
 
-下面的代码从 web url 创建 TabularDataset。 有关如何从本地文件和数据存储等其他源创建数据集的代码示例，请参阅 [创建 TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) 。
+下面的代码从一个 Web URL 创建 TabularDataset。 有关从其他源（例如本地文件和数据存储）创建数据集的代码示例，请参阅[创建 TabularDataset](how-to-create-register-datasets.md#create-a-tabulardataset)。
 
 ```python
 from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**对于本地计算试验**，我们建议 pandas dataframes 以提高处理速度。
+**对于本地计算试验**，我们建议使用 pandas 数据帧以提高处理速度。
 
   ```python
   import pandas as pd
@@ -94,30 +94,30 @@ dataset = Dataset.Tabular.from_delimited_files(data)
   label = "label-col-name"
   ```
 
-## <a name="training-validation-and-test-data"></a>定型、验证和测试数据
+## <a name="training-validation-and-test-data"></a>训练、验证和测试数据
 
-您可以直接在构造函数中指定单独的 **定型集和验证集** `AutoMLConfig` 。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
+可以直接在 `AutoMLConfig` 构造函数中指定单独的**训练集和验证集**。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
 
-如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则 AutoML 将应用默认技术来确定验证的执行方式。 此决定取决于数据集中分配给参数的行数 `training_data` 。 
+如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则 AutoML 将应用默认技术来决定如何执行验证。 此决定依赖于分配给 `training_data` 参数的数据集中的行数。 
 
 |训练数据大小| 验证技术 |
 |---|-----|
 |**大于 20,000 行**| 将应用训练/验证数据拆分。 默认行为是将初始训练数据集的 10% 用作验证集。 然后，该验证集将用于指标计算。
 |**小于 20,000 行**| 将应用交叉验证方法。 默认折数取决于行数。 <br> **如果数据集小于 1,000 行**，则使用 10 折。 <br> **如果行数在 1,000 到 20,000 之间**，则使用 3 折。
 
-此时，需要为模型评估提供自己的 **测试数据** 。 有关为模型评估引入自己的测试数据的代码示例，请参阅[此 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的**测试**部分。
+此时，你需要提供自己的**测试数据**来进行模型评估。 如果需要通过代码示例来演示如何引入你自己的测试数据进行模型评估，请参阅[此 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的 **Test** 节。
 
 ## <a name="compute-to-run-experiment"></a>用于运行试验的计算环境
 
-接下来，确定要在何处训练模型。 自动机器学习训练实验可对以下计算选项运行。 了解 [本地和远程计算选项的优点和缺点](concept-automated-ml.md#local-remote) 。 
+接下来，确定要在何处训练模型。 自动化机器学习训练试验可根据以下计算选项运行。 了解[本地和远程计算选项的优缺点](concept-automated-ml.md#local-remote)。 
 
-* **本地**计算机（如本地桌面计算机或便携式计算机）-通常，当你有一个小型数据集并且仍处于探索阶段时。 有关本地计算示例，请参阅 [此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) 。 
+* **本地**台式机或便携式计算机等本地计算机 – 如果数据集较小，并且你仍然处于探索阶段，则通常使用此选项。 有关本地计算示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)。 
  
-* 云中的 **远程** 计算机- [Azure 机器学习托管计算](concept-compute-target.md#amlcompute) 是一种托管服务，可用于在 Azure 虚拟机群集上定型机器学习模型。 
+* 云中的**远程**计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机的群集上训练机器学习模型。 
 
-    有关使用 Azure 机器学习托管计算的远程示例，请参阅 [此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 。 
+    有关使用 Azure 机器学习托管计算的远程示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 
 
-* Azure 订阅中的 **Azure Databricks 群集** 。 可在此处找到更多详细信息- [设置 Azure Databricks 群集以实现自动 ML](how-to-configure-environment.md#azure-databricks)。 有关包含 Azure Databricks 的示例 Notebook，请参阅此 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
+* Azure 订阅中的 **Azure Databricks 群集**。 可在此处找到更多详细信息：[安装适用于自动化 ML 的 Azure Databricks 群集](how-to-configure-environment.md#azure-databricks)。 有关包含 Azure Databricks 的示例 Notebook，请参阅此 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
 
 <a name='configure-experiment'></a>
 
@@ -139,7 +139,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
        label_column_name=label,
        n_cross_validations=2)
    ```
-1. 下面的示例是一个在60分钟之后结束的回归实验，其中包含5次验证交叉折叠。
+1. 下面是设置为 60 分钟后结束的回归试验示例，其中包含 5 折交叉验证。
 
    ```python
       automl_regressor = AutoMLConfig(
@@ -153,7 +153,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
    ```
 
 
-1. 预测任务需要其他设置，请参阅 [自动训练时序预测模型一](how-to-auto-train-forecast.md) 文以了解更多详细信息。 
+1. 预测任务需要其他设置，请参阅[自动训练时序预测模型](how-to-auto-train-forecast.md)一文来了解更多详细信息。 
 
     ```python
     time_series_settings = {
@@ -177,13 +177,13 @@ dataset = Dataset.Tabular.from_delimited_files(data)
     
 ### <a name="supported-models"></a>支持的模型
 
-自动化机器学习在自动化和优化过程中尝试不同的模型和算法。 用户不需要指定算法。 
+在自动化和优化过程中，自动化机器学习会尝试各种模型和算法。 用户不需要指定算法。 
 
-`task`第三个任务类型 (三个不同的参数值 `forecasting` ，并使用类似的算法池作为 `regression` 任务) 确定要应用的算法和模型的列表。 使用 `allowed_models` 或 `blocked_models` 参数通过要包含或排除的可用模型来进一步修改迭代。 可在 [SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) 中找到支持的模型的列表，以便进行 [分类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、 [预测](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和 [回归](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)。
+三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用类似的算法池作为 `regression` 任务）确定要应用的算法模型的列表。 使用 `allowed_models` 或 `blocked_models` 参数通过要包含或排除的可用模型来进一步修改迭代。 可以在[分类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[预测](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和[回归](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)的 [SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)中找到支持的模型的列表。
 
 
 ### <a name="primary-metric"></a>主要指标
-`primary metric`参数确定要在模型定型过程中用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
+`primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
 
 如需了解上述指标的具体定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
 
@@ -197,14 +197,14 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动化机器学习实验中，数据都是*自动缩放和规范化*，以帮助对不同规模上的特征敏感的某些算法。 这种缩放和规范化称为特征化。 有关更多详细信息和代码示例，请参阅 [AutoML 中的特征化](how-to-configure-auto-features.md#) 。 
+在每个自动化机器学习实验中，数据都是*自动缩放和规范化*，以帮助对不同规模上的特征敏感的某些算法。 此缩放和规范化称为特征化。 有关更多详细信息和代码示例，请参阅 [AutoML 中的特征化](how-to-configure-auto-features.md#)。 
 
-在 `AutoMLConfig` 对象中配置试验时，可以启用/禁用设置 `featurization`。 下表显示了 [AutoMLConfig 对象](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中特征化的已接受设置。 
+在 `AutoMLConfig` 对象中配置试验时，可以启用/禁用设置 `featurization`。 下表列出了 [AutoMLConfig 对象](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的特征化的已接受设置。 
 
 |特征化配置 | 说明 |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| 指示在处理过程中自动执行[数据护栏和特征化步骤](how-to-configure-auto-features.md#featurization)。 默认设置。|
-|`"featurization": 'off'`| 指示不应自动执行特征化步骤。|
+|`"featurization": 'off'`| 表示不应自动执行特征化步骤。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指示应当使用自定义特征化步骤。 [了解如何自定义特征化](how-to-configure-auto-features.md#customize-featurization)。|
 
 > [!NOTE]
@@ -214,13 +214,13 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="ensemble-configuration"></a> 集成配置
 
-默认情况下启用系综模型，并在 AutoML 运行中显示为最终的运行迭代。 目前支持 **VotingEnsemble** 和 **StackEnsemble** 。 
+集成模型默认启用，在 AutoML 运行中显示为最终的运行迭代次数。 目前支持 **VotingEnsemble** 和 **StackEnsemble**。 
 
-投票实现使用加权平均值的软投票。 堆栈实现使用两层实现，其中第一层的模型与投票系综相同，第二层模型用于查找第一层模型的最佳组合。 
+投票实现了使用加权平均值的软投票。 堆栈实现使用一个两层实现，其中的第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 
 
-如果使用的是 ONNX 模型， **或** 启用了模型 explainability，则会禁用堆栈，并且仅使用投票。
+如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，仅使用投票。
 
-可以使用 `enable_voting_ensemble` 和布尔参数禁用系综定型 `enable_stack_ensemble` 。
+可以通过使用 `enable_voting_ensemble` 和 `enable_stack_ensemble` 布尔参数来禁用集成训练。
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -235,7 +235,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-若要更改默认的系综行为，可以在对象中提供多个默认参数 `kwargs` `AutoMLConfig` 。
+若要更改默认集成行为，可以将多个默认参数作为 `kwargs` 在 `AutoMLConfig` 对象中提供。
 
 > [!IMPORTANT]
 >  以下参数不是 AutoMLConfig 类的显式参数。 
@@ -314,17 +314,17 @@ run = experiment.submit(automl_config, show_output=True)
 
 |条件| description
 |----|----
-无 &nbsp; 条件 | 如果未定义任何退出参数，则试验会继续，直到主要指标没有进一步的进度。
-经过 &nbsp; 一 &nbsp; &nbsp; &nbsp; 段时间后| `experiment_timeout_minutes`在设置中使用，定义实验应继续运行的时间（分钟）。 <br><br> 若要帮助避免试验超时失败，最少需要15分钟，如果行的大小超过10000000则为60分钟。
-&nbsp; &nbsp; &nbsp; 已 &nbsp; 达到分数| 在 `experiment_exit_score` 达到指定的主要指标评分后，使用完成试验。
+无条件 | 如果未定义任何退出参数，则试验将继续，直到主要指标不再需要执行其他步骤。
+在一段时间后| 在设置中使用 `experiment_timeout_minutes` 来定义试验应继续运行多长时间（以分钟为单位）。 <br><br> 若要避免试验超时失败，最少需要 15 分钟，如果行数乘以列数的大小超过 10,000,000，则最少需要 60 分钟。
+达到某个分数| 使用 `experiment_exit_score` 将在达到指定的主要指标分数后完成试验。
 
 ## <a name="explore-models-and-metrics"></a>探索模型和指标
 
 如果在笔记本中操作，可以在小组件或内联单元中查看训练结果。 有关更多详细信息，请参阅[跟踪和评估模型](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)。
 
-请参阅 [了解自动化机器学习结果](how-to-understand-automated-ml.md) ，了解每个运行的性能图表和指标的定义和示例。 
+请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)，查看为每次运行提供的性能图表和指标的定义和示例。 
 
-若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅 [特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
+若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 
 ## <a name="register-and-deploy-models"></a>注册和部署模型
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722095"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440280"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
 
@@ -51,7 +51,7 @@ ms.locfileid: "76722095"
   
 - **任务**：任务是可分配的工作项，需要完成这些工作项才能完成特定的用户情景。 例如，用户情景“获取数据”中的任务可能是  ：
   - 获取 SQL Server 凭据
-  - 将数据上传到 SQL 数据仓库
+  - 将数据上传到 Azure Synapse Analytics
   
 - **Bug**：Bug 是现有代码或文档中的问题，必须修复这些问题才能完成任务。 如果 Bug 是由于缺少工作项引起的，则可以将其升级为用户情景或任务。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "76722095"
    
    还可以通过选择“开发”部分下的“添加链接”，将功能链接到项目的 Azure Repos 代码存储库   。 
    
-   编辑此功能后，选择 "**保存" & "关闭**"。
+   编辑此功能后，选择 " **保存" & "关闭**"。
    
    ![编辑功能并选择“保存并关闭”](./media/agile-development/3a-add-link-repo.png)
 

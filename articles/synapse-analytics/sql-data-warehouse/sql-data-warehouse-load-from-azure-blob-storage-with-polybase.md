@@ -1,5 +1,5 @@
 ---
-title: 将 Contoso 零售数据加载到 Synapse SQL 数据仓库
+title: 将 Contoso 零售数据加载到 Synapse SQL
 description: 使用 PolyBase 和 T-SQL 命令可将两张表从 Contoso 零售数据加载到 Synapse SQL。
 services: synapse-analytics
 author: kevinvngo
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213306"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461691"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>将 Contoso 零售数据加载到 Synapse SQL 
 
-本教程介绍如何使用 PolyBase 和 T-SQL 命令将两个表从 Contoso 零售数据载入 Synapse SQL 数据仓库。
+在本教程中，你将学习如何使用 PolyBase 和 T-sql 命令将两个表从 Contoso 零售数据加载到 Synapse SQL。
 
 在本教程中，你会：
 
@@ -30,11 +30,11 @@ ms.locfileid: "85213306"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-若要运行本教程，需要一个已包含 Synapse SQL 数据仓库的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
+若要运行本教程，需要一个已包含 Synapse SQL 的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
 
 ## <a name="configure-the-data-source"></a>配置数据源
 
-PolyBase 使用 T-SQL 外部对象，定义外部数据的位置和属性。 外部对象定义存储在 Synapse SQL 数据仓库中。 数据存储在外部。
+PolyBase 使用 T-SQL 外部对象，定义外部数据的位置和属性。 外部对象定义存储在 Synapse SQL 中。 数据存储在外部。
 
 ## <a name="create-a-credential"></a>创建凭据
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>优化列存储压缩
 
-默认情况下，Synapse SQL 数据仓库以聚集列存储索引形式存储表。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
+默认情况下，Synapse SQL 将表存储为聚集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
 
 若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267491"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425630"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -38,25 +38,37 @@ ms.locfileid: "89267491"
 >
 > 有关详细信息，请参阅：[媒体服务 v3的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="dynamic-encryption"></a>动态加密
+ (PIFF 1.1) 加密的旧版 PlayReady 受保护的可互操作文件格式支持现在可在动态包装器中使用。 这为从 LG 发布的 Samsung 和提供对旧智能电视集的支持，这些版本实现了 Microsoft 发布的通用加密 standard (CENC) 的早期草案。  PIFF 1.1 格式也称为 Silverlight 客户端库以前支持的加密格式。 目前，这种加密格式的唯一用例方案是面向旧版智能电视市场，其中在某些区域中仍不会有一段不重要的智能电视，只支持使用 PIFF 1.1 加密平滑流式处理。 
+
+若要使用新的 PIFF 1.1 加密支持，请将流式处理定位符的 URL 路径中的加密值更改为 "PIFF"。 有关更多详细信息，请参阅 [内容保护概述。](content-protection-overview.md)
+例如： `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1 支持作为智能电视 (Samsung，LG) 的向后兼容解决方案，用于实现通用加密的早期 "Silverlight" 版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的传统 Samsung 或 LG 智能电视支持 PlayReady 加密的 PIFF 1.1 版本。 
+
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="live-transcriptions"></a>实时转录
 
 Live 转录现在支持19个语言和8个区域。
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>通过 Media Services 和 Azure AD 保护内容
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>通过 Media Services 和 Azure AD 保护内容
 
 我们发布了一篇名 [为端到端内容保护的教程，其中使用 Azure AD](./azure-ad-content-protection.md)。
 
 ### <a name="high-availablity"></a>高可用性
 
-我们使用 Media Services 和视频点播 (VOD) [概述](./media-services-high-availability-encoding.md) 和 [示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)中发布了高可用性。
+我们发布了一个高可用性的媒体服务和视频点播 (VOD) [概述](./media-services-high-availability-encoding.md)和[示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 预览版的实时视频分析
 
-IoT Edge 公开的实时视频分析预览。 有关详细信息，请参阅 [发行说明](../live-video-analytics-edge/release-notes.md)。
+IoT Edge 上的实时视频分析预览版现已公开发行。 有关详细信息，请参阅 [发行说明](../live-video-analytics-edge/release-notes.md)。
 
 IoT Edge 上的实时视频分析是 Media Service 系列的扩展。 利用它，你可以在自己的边缘设备上分析你所选的 AI 模型的实时视频，还可以选择捕获并录制该视频。 你现在可以在边缘使用实时视频分析构建应用，而无需担心生成和操作实时视频管道的复杂性。
 

@@ -11,32 +11,32 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008196"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648310"
 ---
-# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>利用 Azure 机器学习部署现有模型
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure 机器学习部署现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何注册和部署在 Azure 机器学习之外训练的机器学习模型。 可以将部署为 web 服务或 IoT Edge 设备。  部署完成后，可以监视模型并检测 Azure 机器学习中的数据偏差。 
+本文介绍如何注册和部署在 Azure 机器学习外部训练的机器学习模型。 可以将其部署为 Web 服务或部署到 IoT Edge 设备。  部署后，可以在 Azure 机器学习中监视模型并检测数据偏移。 
 
 有关本文中的概念和术语的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Azure 机器学习工作区](how-to-manage-workspace.md)
-  + Python 示例假设将 `ws` 变量设置为 Azure 机器学习工作区。 有关如何连接到工作区的详细信息，请参阅适用于[Python 的 AZURE 机器学习 SDK 文档](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace)。
+* [一个 Azure 机器学习工作区](how-to-manage-workspace.md)
+  + Python 示例假定将 `ws` 变量设置为 Azure 机器学习工作区。 若要详细了解如何连接到工作区，请参阅[用于 Python 的 Azure 机器学习 SDK 文档](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=trueworkspace)。
   
-  + CLI 示例使用和的 `myworkspace` 占位符 `myresourcegroup` ，你应将其替换为你的工作区的名称以及包含它的资源组。
+  + CLI 示例使用占位符 `myworkspace` 和 `myresourcegroup`，你应将其替换为你的工作区的名称以及包含它的资源组。
 
-* [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
+* [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
-* 定型的模型。 必须将模型保留到开发环境中的一个或多个文件中。 <br><br>为了演示如何注册经过训练的模型，本文中的示例代码使用[Paolo Ripamonti 的 Twitter 情绪分析项目](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)中的模型。
+* 定型的模型。 必须将模型保留到开发环境中的一个或多个文件中。 <br><br>为了演示如何注册训练的模型，本文中的示例代码使用 [Paolo Ripamonti 的 Twitter 情绪分析项目](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)中的模型。
 
 ## <a name="register-the-models"></a>注册模型
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-有关详细信息，请参阅 [Model.register()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) 参考。
+有关详细信息，请参阅 [Model.register()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) 参考。
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -70,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 推理配置定义用于运行已部署模型的环境。 推理配置引用以下实体，这些实体用于在部署模型时运行模型：
 
-* 名为的条目脚本 `score.py` 在部署的服务启动时加载模型。 此脚本还负责接收数据，将数据传递到模型，然后返回响应。
+* 入口脚本（名为 `score.py`）在部署的服务启动时加载模型。 此脚本还负责接收数据，将数据传递到模型，然后返回响应。
 * Azure 机器学习[环境](how-to-use-environments.md)。 环境定义运行模型和入口脚本所需的软件依赖项。
 
 以下示例演示如何使用 SDK 创建环境，然后将其用于推理配置：
@@ -103,7 +103,7 @@ inference_config = InferenceConfig(entry_script="score.py",
 有关详细信息，请参阅以下文章：
 
 + [如何使用环境](how-to-use-environments.md)。
-+ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 参考。
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) 参考。
 
 
 CLI 从 YAML 文件加载推理配置：
@@ -133,7 +133,7 @@ dependencies:
 
 有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-### <a name="entry-script-scorepy"></a> (score.py 的条目脚本) 
+### <a name="entry-script-scorepy"></a>入口脚本 (score.py)
 
 入口脚本仅包含两个必需函数（`init()` 和 `run(data)`）。 这两个函数用于在启动时初始化服务，并使用客户端传入的请求数据运行模型。 脚本的其余部分用于加载和运行模型。
 
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
 
 ## <a name="define-deployment"></a>定义部署
 
-[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) 包中包含部署所用的类。 所用的类确定模型的部署位置。 例如，要在 Azure Kubernetes Service 上部署为 Web 服务，可使用 [AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 来创建部署配置。
+[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true) 包中包含部署所用的类。 所用的类确定模型的部署位置。 例如，要在 Azure Kubernetes Service 上部署为 Web 服务，可使用 [AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 来创建部署配置。
 
 以下 Python 代码用于定义本地部署的部署配置。 此配置将模型作为 Web 服务部署到你的本地计算机中。
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-有关详细信息，请参阅 [LocalWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) 参考。
+有关详细信息，请参阅 [LocalWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) 参考。
 
 CLI 从 YAML 文件加载部署配置：
 
@@ -260,7 +260,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-有关详细信息，请参阅 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 参考。
+有关详细信息，请参阅 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 参考。
 
 若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `inferenceConfig.json` 和 `deploymentConfig.json` 文件中的推理配置和部署配置来部署已注册模型 (`sentiment:1`) 的版本 1：
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815906"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440450"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
 
@@ -255,7 +255,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (以前的 SQL DW) 和数据库
 Azure Synapse Analytics (以前的 SQL DW) 是一种具有企业级 SQL Server 体验的弹性数据仓库即服务。
 
-可以按照 [本文](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中的说明预配 Azure Synapse Analytics。 预配 SQL 数据仓库后，可按照[此演练](../team-data-science-process/sqldw-walkthrough.md)，使用 SQL 数据仓库中的数据执行数据上传、探索和建模。
+可以按照 [本文](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可以使用 [此演练](../team-data-science-process/sqldw-walkthrough.md) ，通过 Azure Synapse 分析中的数据执行数据上传、探索和建模。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档及存储和查询文档。

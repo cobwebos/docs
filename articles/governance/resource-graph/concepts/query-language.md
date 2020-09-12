@@ -3,12 +3,12 @@ title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
 ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 65304ca1241b2c8a1f9541580e7ee8434dd5b6eb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798544"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426395"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -17,14 +17,14 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算�
 本文介绍 Resource Graph 支持的语言组件：
 
 - [Resource Graph 表](#resource-graph-tables)
-- [资源关系图自定义语言元素](#resource-graph-custom-language-elements)
+- [Resource Graph 自定义语言元素](#resource-graph-custom-language-elements)
 - [支持的 KQL 语言元素](#supported-kql-language-elements)
 - [查询的作用域](#query-scope)
 - [转义字符](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph 表
 
-资源图为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 这些表可以与 `join` 或 `union` 运算符一起使用，以从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
+Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 这些表可以与 `join` 或 `union` 运算符一起使用，以从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
 
 |Resource Graph 表 |说明 |
 |---|---|
@@ -32,6 +32,7 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算�
 |ResourceContainers |包括订阅（预览版 -- `Microsoft.Resources/subscriptions`）和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
 |AdvisorResources |包括与 `Microsoft.Advisor` 相关的资源。 |
 |AlertsManagementResources |包括与 `Microsoft.AlertsManagement` 相关的资源。 |
+|GuestConfigurationResources |包括与 `Microsoft.GuestConfiguration` 相关的资源。 |
 |HealthResources |包括与 `Microsoft.ResourceHealth` 相关的资源。 |
 |MaintenanceResources |包括与 `Microsoft.Maintenance` 相关的资源。 |
 |SecurityResources |包括与 `Microsoft.Security` 相关的资源。 |
@@ -83,25 +84,25 @@ Resources
 | summarize count() by tostring(properties.extended.instanceView.powerState.code)
 ```
 
-## <a name="resource-graph-custom-language-elements"></a>资源关系图自定义语言元素
+## <a name="resource-graph-custom-language-elements"></a>Resource Graph 自定义语言元素
 
-### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共享查询语法 (预览) 
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共享查询语法（预览）
 
-作为预览功能，可以直接在资源关系图查询中访问 [共享查询](../tutorials/create-share-query.md) 。 这种情况下，可以创建标准查询作为共享查询并重用它们。 若要在资源关系图查询中调用共享查询，请使用 `{{shared-query-uri}}` 语法。 共享查询的 URI 是该查询的 "**设置**" 页上共享查询的_资源 ID_ 。 在此示例中，我们的共享查询 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
-此 URI 指向要在另一个查询中引用的共享查询的订阅、资源组和完整名称。 此查询与在 [教程：创建和共享查询](../tutorials/create-share-query.md)中创建的查询相同。
+作为预览功能，[共享查询](../tutorials/create-share-query.md)可在 Resource Graph 查询中直接访问。 在这种情况下，可以创建标准查询作为共享查询并重复使用它们。 若要在 Resource Graph 查询中调用共享查询，请使用 `{{shared-query-uri}}` 语法。 共享查询的 URI 是该查询的“设置”页上的共享查询的资源 ID。 在此示例中，我们的共享查询 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS`。
+此 URI 指向我们想要在另一个查询中引用的共享查询的订阅、资源组和全名。 此查询与[教程：创建和共享查询](../tutorials/create-share-query.md)中创建的查询相同。
 
 > [!NOTE]
-> 不能将引用共享查询的查询另存为共享查询。
+> 无法保存将共享查询作为共享查询引用的查询。
 
-示例1：只使用共享查询
+示例 1：仅使用共享查询
 
-此资源图表查询的结果与共享查询中存储的查询的结果相同。
+此 Resource Graph 查询的结果与存储在共享查询中的查询相同。
 
 ```kusto
 {{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
 ```
 
-示例2：在较大查询中包含共享查询
+示例 2：将共享查询并入更大的查询中
 
 此查询首先使用共享查询，然后使用 `limit` 进一步限制结果。
 
@@ -139,12 +140,12 @@ Resources
 
 ## <a name="query-scope"></a>查询范围
 
-查询从中返回资源的订阅的作用域取决于访问资源关系图的方法。 Azure CLI 和 Azure PowerShell 根据授权用户的上下文填充要包含在请求中的订阅列表。 可以分别为每**个订阅的订阅和****订阅**参数分别定义订阅列表。
-在 REST API 和所有其他 Sdk 中，必须在请求中显式定义要包含的资源的订阅列表。
+查询返回的资源的订阅范围取决于访问 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 会根据授权用户的上下文填充要在请求中加入的订阅列表。 可以分别使用 subscriptions 和 Subscription 参数为每个订阅手动定义订阅列表 。
+在 REST API 和所有其他 SDK 中，包括资源的订阅列表必须显式定义为请求的一部分。
 
-作为 **预览**，REST API 版本 `2020-04-01-preview` 将添加一个属性，用于将查询范围限定为 [管理组](../../management-groups/overview.md)。 此预览 API 还可选择订阅属性。 如果未定义管理组或订阅列表，则查询范围是经过身份验证的用户可以访问的所有资源。 新 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。 当 `managementGroupId` 指定时，将包含指定管理组层次结构中或下的前5000个订阅中的资源。 `managementGroupId` 不能与一起使用 `subscriptions` 。
+作为预览版，REST API 版本 `2020-04-01-preview` 会添加一个属性，将查询范围限定到[管理组](../../management-groups/overview.md)。 此预览 API 也使订阅属性成为可选属性。 如果未定义管理组或订阅列表，则查询范围将包括经过身份验证的用户可以访问的所有资源（包括 [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) 委派的资源）。 新的 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。 指定 `managementGroupId` 时，将包含在指定管理组层次结构中或其下的前 5000 个订阅的资源。 `managementGroupId` 与 `subscriptions` 不能同时使用。
 
-示例：查询名为 "我的管理组"、ID 为 "myMG" 的管理组层次结构中的所有资源。
+示例：使用 ID“myMG”查询管理组层次结构中名为“我的管理组”的所有资源。
 
 - REST API URI
 

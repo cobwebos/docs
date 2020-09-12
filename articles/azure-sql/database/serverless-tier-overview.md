@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121351"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565083"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-无服务器是 Azure SQL 数据库中单一数据库的计算层，可根据工作负荷需求和帐单自动根据每秒使用的计算量来缩放计算。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
+无服务器是 Azure SQL 数据库中单一数据库的计算层，可根据工作负载需求自动缩放计算，并按每秒使用的计算量计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
 
 ## <a name="serverless-compute-tier"></a>无服务器计算层
 
@@ -114,11 +114,12 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 如有需要，系统也提供了禁用自动暂停的选项。
 
-以下功能不支持 autopausing，但支持自动缩放。  也就是说，如果使用了以下任意功能，那么无论数据库处于不活动状态的时间长短，数据库都会保持联机状态：
+以下功能不支持自动暂停，但支持自动缩放。  如果使用了下列任一功能，则应禁用 autopausing 并且数据库将保持联机状态，而不考虑数据库的非活动持续时间：
 
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
 - SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
+- DNS 别名
 - 弹性作业中使用的作业数据库 (预览) 。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
@@ -327,16 +328,16 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 此数量每秒计算一次，按 1 分钟进行汇总。
 
-### <a name="minimum-compute-bill"></a>最小计算帐单
+### <a name="minimum-compute-bill"></a>最小计算费用
 
-如果暂停无服务器数据库，则计算帐单为零。  如果未暂停无服务器数据库，则最小计算费用将不会低于最大 (最小值 Vcore，最小内存 GB * 1/3) 的 Vcore 量。
+如果暂停无服务器数据库，则计算费用将为零。  如果不暂停无服务器数据库，则最小计算费用不少于基于最大值（最小 vCore 数，最小内存 GB * 1/3）的 vCore 数的费用。
 
 示例：
 
-- 假设无服务器数据库被暂停并配置为具有8个最大 Vcore，1分钟 vCore 对应于 3.0 GB 的最小内存。  然后，最小计算帐单基于 max (1 vCore，3.0 GB * 1 vCore/3 GB) = 1 vCore。
-- 假设无服务器数据库被暂停并配置为具有最大 4 GB Vcore 和0.5 分钟 Vcore，对应于 2.1 GB 的最小内存。  然后，最小计算帐单基于 max (0.5 Vcore，2.1 GB * 1 vCore/3 GB) = 0.7 Vcore。
+- 假设无服务器数据库没有暂停，并配置有 8 个最大 vCore 和 1 个最小 vCore（对应于 3.0 GB 的最小内存）。  那么，最小计算费用将基于最大值（1 vCore，3.0 GB * 1 vCore / 3 GB）= 1 vCore。
+- 假设无服务器数据库没有暂停，并配置有 4 个最大 vCore 和 0.5 个最小 vCore（对应于 2.1 GB 的最小内存）。  那么，最小计算费用基于最大值（0.5 vCore，2.1 GB * 1 vCore / 3 GB）= 0.7 vCore。
 
-用于无服务器的[AZURE SQL 数据库定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)可用于根据配置的最大和最小 vcore 数确定可配置的最小内存。  作为一种规则，如果 Vcore 配置的最小值为大于 0.5 Vcore，则最小计算帐单将独立于配置的最小内存数量和仅基于已配置的最小值。
+无服务器的 [Azure SQL 数据库定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)可用于根据配置的最大和最小 vCore 数来确定可配置的最小内存。  通常，如果配置的最小 vCore 数大于 0.5 个 vCore，则最小计算费用与配置的最小内存无关，仅基于配置的最小 vCore 数。
 
 ### <a name="example-scenario"></a>示例方案
 

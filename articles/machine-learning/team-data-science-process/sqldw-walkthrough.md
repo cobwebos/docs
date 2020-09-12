@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845691"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440195"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
 本教程逐步介绍如何使用 Azure Synapse Analytics 为某个公开提供的数据集（[纽约市出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集）生成和部署机器学习模型。 构造的二元分类模型可预测是否为某个行程支付了小费。  模型包括多类分类（是否有小费）和回归（已付小费金额的分布）。
@@ -84,21 +84,21 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 **创建自己的 Azure Blob 存储帐户**
 
 * 设置自己的 Azure Blob 存储时，请为 Azure Blob 存储选择一个位于**美国中南部**或尽可能靠近美国中南部的地理位置，NYC 出租车数据存储在美国中南部。 将使用 AzCopy 将数据从公共 blob 存储容器复制到自己的存储中的某个容器。 Azure Blob 存储越接近美国中南部，完成此任务（步骤 4）的速度将越快。
-* 若要创建自己的 Azure 存储帐户，请按照[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)中所述的步骤进行操作。 请务必记下以下存储帐户凭据的值，因为在此演练中稍后将需要它们。
+* 若要创建自己的 Azure 存储帐户，请按照 [关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)中所述的步骤进行操作。 请务必记下以下存储帐户凭据的值，因为在此演练中稍后将需要它们。
 
   * **存储帐户名称**
   * **存储帐户密钥**
   * **容器名称**（希望在 Azure Blob 存储中存储数据的容器的名称）
 
 **预配 Azure Synapse Analytics 实例。**
-按照[在 Azure 门户中创建和查询 Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的文档预配 Azure Synapse Analytics 实例。 请务必记下以下 Azure Synapse Analytics 凭据，稍后的步骤中会使用它们。
+若要预配 Azure Synapse Analytics 实例，请参阅在 [Azure 门户中创建和查询 Azure Synapse analytics 中](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) 的文档。 请务必记下以下 Azure Synapse Analytics 凭据，稍后的步骤中会使用它们。
 
 * **服务器名称**：\<server Name>.database.windows.net
 * **SQLDW（数据库）名称**
 * **用户名**
 * **密码**
 
-**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅[适用于 SQL 数据仓库的 Visual Studio 2019 入门](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅 [Visual Studio 2019 For Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)入门。
 
 **使用 Visual Studio 连接到 Azure Synapse Analytics。** 有关说明，请参阅[连接到 Azure Synapse Analytics 中的 SQL Analytics](../../synapse-analytics/sql/connect-overview.md) 中的步骤 1 和 2。
 
@@ -609,7 +609,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>准备建模的数据
-下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio (经典) ](https://studio.azureml.net) [导入][数据模块，]以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到 [Azure 机器学习 Studio (经典) ](https://studio.azureml.net) [导入][数据模块，] 以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,

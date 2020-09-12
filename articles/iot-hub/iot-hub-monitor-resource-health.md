@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022133"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438392"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -61,7 +61,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -470,6 +470,42 @@ IoT 中心配置日志跟踪自动设备管理功能集的事件和错误。
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK 版本
+
+某些操作 `sdkVersion` 在其对象中返回一个属性 `properties` 。 对于这些操作，当设备或后端应用程序使用其中一个 Azure IoT Sdk 时，此属性包含有关所使用的 SDK、SDK 版本和运行 SDK 的平台的信息。 下面的示例演示 `sdkVersion` `deviceConnect` 使用 Node.js 设备 SDK 时为操作发出的属性： `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"` 。 下面是一个示例，其中显示了 .NET (c # ) SDK 的值： `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"` 。
+
+下表显示了用于不同 Azure IoT Sdk 的 SDK 名称：
+
+| SdkVersion 属性中的 SDK 名称 | 语言 |
+|----------|----------|
+| .NET | .NET (C#) |
+| microsoft azure. 设备 | .NET (c # ) 服务 SDK |
+| microsoft. client | .NET (c # ) 设备 SDK |
+| iothubclient | C 或 Python v1 (弃用) 设备 SDK |
+| iothubserviceclient | C 或 Python v1 (弃用) service SDK |
+| azure iot-iothub-py | Python 设备 SDK |
+| azure-iot-device | Node.js 设备 SDK |
+| azure-iothub | Node.js 服务 SDK |
+| iothub-客户端-客户端 | Java 设备 SDK |
+| iothub （sdk）。 | Java 服务 SDK |
+| ".com"-设备-客户端 | Java 设备 SDK |
+| ".com"-服务-客户端 | Java 服务 SDK |
+| C | Embedded C |
+| C + (OSSimplified = Azure RTO)  | Azure RTOS |
+
+对诊断日志执行查询时，可以提取 SDK 版本属性。 下面的查询从连接事件返回的属性中提取 SDK 版本属性 (和设备 ID) 。 这两个属性将连同事件的时间以及设备所连接到的 IoT 中心的资源 ID 一起写入结果。
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>从 Azure 事件中心读取日志

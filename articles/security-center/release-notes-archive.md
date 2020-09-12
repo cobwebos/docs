@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2012f590aa833bea1b49955958095917a6479665
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177306"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438562"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -28,6 +28,84 @@ ms.locfileid: "89177306"
 - 新增功能
 - Bug 修复
 - 已弃用的功能
+
+
+## <a name="march-2020"></a>2020 年 3 月
+
+3月的更新包括：
+
+- [工作流自动化现已正式发布](#workflow-automation-is-now-generally-available)
+- [Azure 安全中心与 Windows Admin Center 的集成](#integration-of-azure-security-center-with-windows-admin-center)
+- [Azure Kubernetes 服务保护](#protection-for-azure-kubernetes-service)
+- [改进了实时体验](#improved-just-in-time-experience)
+- [弃用了两项针对 Web 应用的安全建议](#two-security-recommendations-for-web-applications-deprecated)
+
+
+### <a name="workflow-automation-is-now-generally-available"></a>工作流自动化现已正式发布
+
+Azure 安全中心现已正式发布工作流自动化功能。 它可用于在安全警报和建议上自动触发逻辑应用。 此外，也可对提供了快速修复选项的警报和所有建议执行手动触发。
+
+每个安全计划都包含事件响应的多个工作流。 这些流程可能包含通知相关利益干系人、启动更改管理进程，以及应用特定的修正步骤。 安全专家建议你尽可能多地将这些流程自动化。 自动化可减少开销，还可确保根据你预定义的要求快速、一致地执行处理步骤，从而增强安全性。
+
+若要详细了解用于运行工作流的自动和手动安全中心功能，请参阅[工作流自动化](workflow-automation.md)。
+
+详细了解如何[创建逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+
+
+### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure 安全中心与 Windows Admin Center 的集成
+
+现可将本地 Windows 服务器从 Windows Admin Center 直接移动到 Azure 安全中心。 安全中心然后变成你的单一管理界面，可在这里查看 Windows Admin Center 各项资源（包括本地服务器、虚拟机和其他 PaaS 工作负载）的安全信息。
+
+在将服务器从 Windows Admin Center 直接移动到 Azure 安全中心后，你将能够：
+
+- 在 Windows Admin Center 的安全中心扩展中查看安全警报和建议。
+- 在 Azure 门户的安全中心内（或通过 API）查看安全状态和检索 Windows Admin Center 托管服务器的其他详细信息。
+
+详细了解[如何将 Azure 安全中心与 Windows Admin Center 集成](windows-admin-center-integration.md)。
+
+
+### <a name="protection-for-azure-kubernetes-service"></a>Azure Kubernetes 服务保护
+
+Azure 安全中心正在扩展其容器安全功能，现可保护 Azure Kubernetes 服务 (AKS)。
+
+常见的开源平台 Kubernetes 已被广泛采用，现在已成为容器业务流程方面的行业标准。 尽管得到了广泛实施，但在如何保护 Kubernetes 环境方面，人们仍然缺少了解。 要抵御容器化应用程序的攻击面，需要具备专业知识来确保基础结构已安全配置且受到持续监视，防范潜在威胁。
+
+安全中心的防范包括：
+
+- **发现和可见性** - 在安全中心内注册的订阅中持续发现托管的 AKS 实例。
+- **安全建议** - 帮助你遵守 AKS 安全最佳做法的可操作建议。 这些建议包含在安全功能分数中，确保被视为组织的安全状态的一部分。 你可能会看到的一个与 AKS 相关的建议示例是，“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”。
+- **威胁防护** - 通过对 AKS 部署的持续分析，Azure 安全中心会提醒你注意在主机和 AKS 群集级别检测到的威胁和恶意活动。
+
+详细了解 [Azure Kubernetes 服务与安全中心的集成](azure-kubernetes-service-integration.md)。
+
+详细了解[安全中心内的容器安全功能](container-security.md)。
+
+
+### <a name="improved-just-in-time-experience"></a>改进了实时体验
+
+增强了 Azure 安全中心内保护管理端口的实时工具的功能、操作和 UI，如下所示： 
+
+- **“理由”字段** - 通过 Azure 门户的实时页面请求对虚拟机 (VM) 的访问时，现有一个新的可选字段可用来输入请求原因。 可在活动日志中跟踪在此字段中输入的信息。 
+- **自动清除冗余实时 (JIT) 规则** - 无论何时更新 JIT 策略，都会自动运行清理工具来检查整个规则集的有效性。 该工具还将查看你策略中的规则与 NSG 中的规则之间是否存在不匹配的情况。 如果清理工具发现不匹配的情况，它将确定原因，并在确定可安全操作的情况下，删除不再需要的内置规则。 清理工具绝不会删除你创建的规则。 
+
+详细了解 [JIT 访问功能](security-center-just-in-time.md)。
+
+
+### <a name="two-security-recommendations-for-web-applications-deprecated"></a>弃用了两项针对 Web 应用的安全建议
+
+即将弃用下面两项与 Web 应用相关的安全建议： 
+
+- 应加强 IaaS NSG 上 Web 应用的规则。
+    （相关策略：应加强 IaaS 上 Web 应用的 NSG 规则）
+
+- 应限制对应用服务的访问。
+    （相关策略：应限制对应用服务的访问 [预览版]）
+
+这些建议将不再在安全中心的建议列表中显示。 相关策略将不再包含在名为“安全中心默认设置”的计划中。
+
+详细了解[安全建议](recommendations-reference.md)。
+
+
 
 
 ## <a name="february-2020"></a>2020 年 2 月

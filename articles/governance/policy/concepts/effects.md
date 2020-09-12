@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079653"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425528"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -156,7 +156,8 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - 如果 details.type 是 if 条件资源下的一个资源类型，则策略会在已评估资源范围内查询此“类型”的资源。   否则，策略会在与已评估资源同一资源组范围内查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 如果 if.field.type 和 then.details.type 的条件值匹配，则 Name 为必选项并且必须为 `[field('name')]`。   但是，应考虑改用[审核](#audit)效果。
+  - **如果**When 的条件值为，**则**为，然后键入 match，then **Name**为_required_ ，且必须为 `[field('name')]` `[field('fullName')]` 子资源。
+    但是，应考虑改用[审核](#audit)效果。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -277,7 +278,7 @@ DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - 首先尝试提取 if 条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 如果 if.field.type 和 then.details.type 的条件值匹配，则 Name 为必选项并且必须为 `[field('name')]`。  
+  - **如果**When 的条件值为，**则**为，然后键入 match，then **Name**为_required_ ，且必须为 `[field('name')]` `[field('fullName')]` 子资源。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -571,7 +572,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除属性或�
 |Operation |说明 |
 |-|-|
 |addOrReplace |将已定义的属性或标记和值添加到资源，即使已经存在具有不同值的属性或标记。 |
-|“添加” |将已定义的属性或标记和值添加到资源。 |
+|添加 |将已定义的属性或标记和值添加到资源。 |
 |删除 |从资源中删除定义的属性或标记。 |
 
 ### <a name="modify-examples"></a>修改示例

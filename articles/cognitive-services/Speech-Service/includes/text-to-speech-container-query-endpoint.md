@@ -6,28 +6,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50926074c09ef8f438b0abb53a4eb5f1813871b3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274940"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321001"
 ---
-容器提供[基于 REST 的终结点 api](../rest-text-to-speech.md)。 有许多适用于平台、框架和语言变体的[示例源代码项目](https://github.com/Azure-Samples/Cognitive-Speech-TTS)。
+容器提供 [基于 REST 的终结点 api](../rest-text-to-speech.md)。 有许多适用于平台、框架和语言变体的 [示例源代码项目](https://github.com/Azure-Samples/Cognitive-Speech-TTS) 。
 
-对于*标准的文本到语音转换*容器，你应依赖于所下载图像标记的区域设置和语音。 例如，如果下载了标记，则 `latest` 默认区域设置为 `en-US` 和 `JessaRUS` 语音。 `{VOICE_NAME}`然后，参数将为 [`en-US-JessaRUS`](../language-support.md#standard-voices) 。 请参阅下面的示例 SSML：
+对于标准或神经文本到语音转换容器，你应依赖于所下载图像标记的区域设置和语音。 例如，如果下载了标记，则 `latest` 默认区域设置为 `en-US` 和 `AriaRUS` 语音。 `{VOICE_NAME}`然后，参数将为 [`en-US-AriaRUS`](../language-support.md#standard-voices) 。 请参阅下面的示例 SSML：
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-JessaRUS">
+    <voice name="en-US-AriaRUS">
         This text will get converted into synthesized speech.
     </voice>
 </speak>
 ```
 
-但是，对于*自定义的文本到语音转换*，需要从[自定义语音门户](https://aka.ms/custom-voice-portal)获取**语音/模式**。 自定义模型名称与语音名称同义。 导航到**定型**页面，并复制要用作参数的**语音/模型** `{VOICE_NAME}` 。
+但是，对于*自定义的文本到语音转换*，需要从[自定义语音门户](https://aka.ms/custom-voice-portal)获取**语音/模式**。 自定义模型名称与语音名称同义。 导航到 **定型** 页面，并复制要用作参数的 **语音/模型** `{VOICE_NAME}` 。
 <br><br>
 :::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="自定义语音模型-语音名称":::
 
@@ -54,7 +54,7 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 此命令：
 
 * 为终结点构造 HTTP POST 请求 `speech/synthesize/cognitiveservices/v1` 。
-* 指定 `Accept` 标头`audio/*`
-* 指定的 `Content-Type` 标头 `application/ssml+xml` ，有关详细信息，请参阅[请求正文](../rest-text-to-speech.md#request-body)。
-* 指定的 `X-Microsoft-OutputFormat` 标头 `riff-16khz-16bit-mono-pcm` ，有关更多选项，请参阅[音频输出](../rest-text-to-speech.md#audio-outputs)。
-* 将给定的[语音合成标记语言（SSML）](../speech-synthesis-markup.md)请求发送 `{VOICE_NAME}` 到终结点。
+* 指定 `Accept` 标头 `audio/*`
+* 指定的 `Content-Type` 标头 `application/ssml+xml` ，有关详细信息，请参阅 [请求正文](../rest-text-to-speech.md#request-body)。
+* 指定的 `X-Microsoft-OutputFormat` 标头 `riff-16khz-16bit-mono-pcm` ，有关更多选项，请参阅 [音频输出](../rest-text-to-speech.md#audio-outputs)。
+* 将给定的 [ (SSML) 请求的语音合成标记语言 ](../speech-synthesis-markup.md) 发送 `{VOICE_NAME}` 到终结点。

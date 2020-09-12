@@ -3,16 +3,16 @@ title: 创建 Azure 应用程序产品/服务 - Microsoft 商业市场
 description: 了解在合作伙伴中心的商业市场门户中创建新 Azure 应用程序产品/服务的步骤和注意事项。 可以通过云解决方案提供商 (CSP) 计划在 Azure 市场中列出或销售 Azure 应用程序产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815653"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646938"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -197,9 +197,9 @@ ms.locfileid: "88815653"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
+1. Title
 2. 说明
-3. 有用链接
+3. 有用的链接
 4. 屏幕截图
 
 #### <a name="name"></a>名称

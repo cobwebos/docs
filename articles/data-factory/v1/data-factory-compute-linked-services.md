@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: cf7a3ff478100c892e59e98c91e9605c88bdc667
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563494"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438817"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure 数据工厂版本1支持的计算环境
 > [!NOTE]
@@ -32,7 +32,7 @@ ms.locfileid: "87563494"
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
 | [Azure 机器学习](#azure-machine-learning-linked-service) | [机器学习活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](#azure-sql-linked-service)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程活动](data-factory-stored-proc-activity.md) |
+| [AZURE SQL](#azure-sql-linked-service)、 [azure Synapse Analytics](#azure-synapse-analytics-linked-service) [SQL Server](#sql-server-linked-service) | [存储过程活动](data-factory-stored-proc-activity.md) |
 
 ## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>数据工厂支持的 HDInsight 版本
 Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个支持的版本创建 Hortonworks 数据平台 (HDP) 分发版的特定版本，以及该分发版中的一组组件。 
@@ -114,18 +114,18 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 > [!IMPORTANT]
 > HDInsight 群集在 JSON **linkedServiceName** 属性中指定的 Azure Blob 存储内创建默认容器。** 根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
 >
-> 随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用容器来排查作业问题，可以删除容器以降低存储成本。 这些容器的名称遵循 `adf<your Data Factory name>-<linked service name>-<date and time>`模式。 你可以使用[Microsoft Azure 存储资源管理器](https://storageexplorer.com/)之类的工具在 Blob 存储中删除容器。
+> 随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用容器来排查作业问题，可以删除容器以降低存储成本。 这些容器的名称遵循 `adf<your Data Factory name>-<linked service name>-<date and time>` 模式。 你可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/) 之类的工具在 Blob 存储中删除容器。
 >
 > 
 
 ### <a name="properties"></a>属性
-| 属性                     | 说明                              | 必选 |
+| properties                     | 说明                              | 必需 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 将 type 属性设置为 **HDInsightOnDemand**。 | 是      |
-| clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | “是”      |
-| timeToLive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br /><br />例如，如果活动运行需要6分钟，而**timeToLive**设置为5分钟，则在处理活动运行6分钟后，群集将保持活动状态5分钟。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br /><br />创建按需 HDInsight 群集是一项开销很大的操作（可能需要花费一段时间）。 请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br /><br />如果将 **timeToLive** 值设置为 **0**，则会在活动运行处理完后立即删除群集。 但是，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 根据具体需要设置适当的值非常重要。<br /><br />如果 **timeToLive** 值设置得当，则多个管道可以共享按需 HDInsight 群集的实例。 | “是”      |
+| clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
+| timeToLive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br /><br />例如，如果活动运行需要6分钟，而 **timeToLive** 设置为5分钟，则在处理活动运行6分钟后，群集将保持活动状态5分钟。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br /><br />创建按需 HDInsight 群集是一项开销很大的操作（可能需要花费一段时间）。 请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br /><br />如果将 **timeToLive** 值设置为 **0**，则会在活动运行处理完后立即删除群集。 但是，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 根据具体需要设置适当的值非常重要。<br /><br />如果 **timeToLive** 值设置得当，则多个管道可以共享按需 HDInsight 群集的实例。 | 是      |
 | 版本                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
-| linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此存储帐户位于同一区域。<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理后的结果数据存储在 Data Lake Store 中，请使用“复制活动”将数据从 Blob 存储复制到 Data Lake Store。 </p> | “是”      |
+| linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此存储帐户位于同一区域。<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理后的结果数据存储在 Data Lake Store 中，请使用“复制活动”将数据从 Blob 存储复制到 Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 为 HDInsight 链接服务指定更多的存储帐户。 数据工厂会代你注册存储帐户。 这些存储帐户必须与 HDInsight 群集位于同一区域。 HDInsight 群集是在 **linkedServiceName** 属性指定的存储帐户所在的同一区域中创建的。 | 否       |
 | osType                       | 操作系统的类型。 允许的值为 **Linux** 和 **Windows**。 如果未指定此值，将使用 **Linux**。  <br /><br />我们强烈建议使用基于 Linux 的 HDInsight 群集。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 按需 HDInsight 群集是使用 SQL 数据库作为元存储创建的。 | 否       |
@@ -142,7 +142,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="advanced-properties"></a>高级属性
 若要对按需 HDInsight 群集进行粒度配置，可指定以下属性：
 
-| 属性               | 说明                              | 必选 |
+| properties               | 说明                              | 必选 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为要创建的 HDInsight 群集指定核心配置参数 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -195,11 +195,11 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="node-sizes"></a>节点大小
 若要指定头节点、数据节点和 ZooKeeper 节点的大小，请使用以下属性： 
 
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | 设置头节点的大小。 默认值为**Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
-| dataNodeSize      | 设置数据节点的大小。 默认值为**Standard_D3**。 | 否       |
-| zookeeperNodeSize | 设置 ZooKeeper 节点的大小。 默认值为**Standard_D3**。 | 否       |
+| headNodeSize      | 设置头节点的大小。 默认值为 **Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
+| dataNodeSize      | 设置数据节点的大小。 默认值为 **Standard_D3**。 | 否       |
+| zookeeperNodeSize | 设置 ZooKeeper 节点的大小。 默认值为 **Standard_D3**。 | 否       |
 
 #### <a name="specify-node-sizes"></a>指定节点大小
 有关必须为上一部分中所述属性指定的字符串值，请参阅[虚拟机的大小](../../virtual-machines/linux/sizes.md)。 这些值必须符合[虚拟机大小](../../virtual-machines/linux/sizes.md)中提到的 cmdlet 和 API。 较大（默认）的数据节点使用 7 GB 内存。 这可能无法满足具体方案的需求。 
@@ -232,7 +232,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 * Azure 批处理
 * Azure 机器学习
 * Azure Data Lake Analytics
-* Azure SQL 数据库、Azure SQL 数据仓库、SQL Server
+* Azure SQL 数据库、Azure Synapse Analytics (以前的 SQL 数据仓库) ，SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
 可以创建 HDInsight 链接服务，以便将自己的 HDInsight 群集注册到数据工厂。
@@ -255,13 +255,13 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | 将 type 属性设置为 **HDInsight**。 | “是”      |
-| clusterUri        | HDInsight 群集的 URI。        | “是”      |
-| username          | 用于连接到现有 HDInsight 群集的用户帐户名。 | “是”      |
-| password          | 用户帐户的密码。   | “是”      |
-| linkedServiceName | 引用 HDInsight 群集所用的 Azure Blob 存储的存储链接服务的名称。 <p>目前，不能为此属性指定 Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive 或 Pig 脚本访问 Data Lake Store 中的数据。 </p> | “是”      |
+| type              | 将 type 属性设置为 **HDInsight**。 | 是      |
+| clusterUri        | HDInsight 群集的 URI。        | 是      |
+| username          | 用于连接到现有 HDInsight 群集的用户帐户名。 | 是      |
+| password          | 用户帐户的密码。   | 是      |
+| linkedServiceName | 引用 HDInsight 群集所用的 Azure Blob 存储的存储链接服务的名称。 <p>目前，不能为此属性指定 Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive 或 Pig 脚本访问 Data Lake Store 中的数据。 </p> | 是      |
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 可以创建 Batch 链接服务，用于向数据工厂注册虚拟机 (VM) 的 Batch 池。 可以使用 Batch 或 HDInsight 运行 Microsoft .NET 自定义活动。
@@ -303,13 +303,13 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | 将 type 属性设置为 **AzureBatch**。 | “是”      |
-| accountName       | Batch 帐户的名称。         | “是”      |
-| accessKey         | Batch 帐户的访问密钥。  | “是”      |
-| poolName          | VM 池的名称。    | “是”      |
-| linkedServiceName | 与此 Batch 链接服务关联的存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件，以及用于存储活动执行日志。 | “是”      |
+| type              | 将 type 属性设置为 **AzureBatch**。 | 是      |
+| accountName       | Batch 帐户的名称。         | 是      |
+| accessKey         | Batch 帐户的访问密钥。  | 是      |
+| poolName          | VM 池的名称。    | 是      |
+| linkedServiceName | 与此 Batch 链接服务关联的存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件，以及用于存储活动执行日志。 | 是      |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
 可以创建机器学习链接服务，用于向数据工厂注册机器学习 Batch 评分终结点。
@@ -330,10 +330,10 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性   | 说明                              | 必选 |
+| properties   | 说明                              | 必需 |
 | ---------- | ---------------------------------------- | -------- |
-| 类型       | 将 type 属性设置为 **AzureML**。 | “是”      |
-| mlEndpoint | 批处理计分 URL。                   | “是”      |
+| 类型       | 将 type 属性设置为 **AzureML**。 | 是      |
+| mlEndpoint | 批处理计分 URL。                   | 是      |
 | apiKey     | 已发布的工作区模型的 API。     | 是      |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
@@ -341,9 +341,9 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 下表描述了 JSON 定义中使用的泛型属性。
 
-| 属性                 | 说明                              | 必选                                 |
+| properties                 | 说明                              | 必需                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| type                 | 将 type 属性设置为 **AzureDataLakeAnalytics**。 | “是”                                      |
+| type                 | 将 type 属性设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | accountName          | Data Lake Analytics 帐户名。  | 是                                      |
 | dataLakeAnalyticsUri | Data Lake Analytics URI。           | 否                                       |
 | subscriptionId       | Azure 订阅 ID。                    | 否<br /><br />（如果未指定，将使用数据工厂订阅。） |
@@ -360,10 +360,10 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必选 |
+| properties                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
-| servicePrincipalId  | 应用程序的客户端 ID。     | “是”      |
-| servicePrincipalKey | 应用程序的密钥。           | “是”      |
+| servicePrincipalId  | 应用程序的客户端 ID。     | 是      |
+| servicePrincipalKey | 应用程序的密钥。           | 是      |
 | tenant              | 应用程序所在的租户的信息（域名或租户 ID）。 若要获取此信息，请将鼠标悬停在 Azure 门户的右上角。 | 是      |
 
 **示例：服务主体身份验证**
@@ -388,10 +388,10 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 #### <a name="user-credential-authentication"></a>用户凭据身份验证
 若要对 Data Lake Analytics 使用用户凭据身份验证，请指定以下属性：
 
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必需 |
 | :---------------- | :--------------------------------------- | :------- |
-| authorization | 在数据工厂编辑器中，选择“授权”按钮。**** 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | “是”      |
-| sessionID     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | “是”      |
+| authorization | 在数据工厂编辑器中，选择“授权”按钮。**** 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
+| sessionID     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
 
 **示例：用户凭据身份验证**
 ```json
@@ -462,8 +462,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ## <a name="azure-sql-linked-service"></a>Azure SQL 链接服务
 可以创建一个 SQL 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 有关详细信息，请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#linked-service-properties)。
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL 数据仓库链接服务
-可以创建一个 SQL 数据仓库链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 有关详细信息，请参阅 [Azure SQL 数据仓库连接器](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)。
+## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics 链接服务
+可以创建 Azure Synapse Analytics 链接服务，并将其与 [存储过程活动](data-factory-stored-proc-activity.md) 一起使用，以从数据工厂管道调用存储过程。 有关详细信息，请参阅 [Azure Synapse Analytics 连接器](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
 可以创建一个 SQL Server 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 有关详细信息，请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#linked-service-properties)。

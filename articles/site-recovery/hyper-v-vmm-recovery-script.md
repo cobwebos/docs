@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Site Recovery 中将脚本添加到恢复计划
 description: 了解如何将 VMM 脚本添加到恢复计划中，以便在 VMM 云中对 Hyper-V VM 进行灾难恢复。
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130138"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425868"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 
@@ -60,9 +60,9 @@ ms.locfileid: "86130138"
 
 如果具备 VMM 源站点，即可在 VMM 服务器上创建脚本。 然后，将脚本置于还原计划中。
 
-1. 在库共享中新建文件夹。 例如， \<VMM server name> \MSSCVMMLibrary\RPScripts。 将文件夹放到源和目标 VMM 服务器上。
+1. 在库共享中新建文件夹。 例如，\<VMM server name>\MSSCVMMLibrary\RPScripts。 将文件夹放到源和目标 VMM 服务器上。
 1. 创建脚本。 例如，将脚本命名为 RPScript。 验证脚本是否按预期运行。
-1. 将该脚本放在 \<VMM server name> 源和目标 VMM 服务器上的 \MSSCVMMLibrary 文件夹中。
+1. 将脚本放到源和目标 VMM 服务器的 \<VMM server name>\MSSCVMMLibrary 文件夹中。
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>将脚本添加到恢复计划
 

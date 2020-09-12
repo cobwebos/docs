@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0354010297942c3b9e18dc6f556cb0afa075ff5f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114908"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649102"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>适用于 iOS 设备的共享设备模式
 
@@ -33,7 +33,7 @@ ms.locfileid: "88114908"
 
 共享设备模式还提供 Microsoft 标识支持的设备管理。
 
-此功能使用[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)来管理设备上的用户，并分发[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。
+此功能使用 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 来管理设备上的用户，并分发 [适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。
 
 ## <a name="create-a-shared-device-mode-app"></a>创建共享设备模式应用
 
@@ -43,7 +43,7 @@ ms.locfileid: "88114908"
 
 1. 设备管理员使用 Microsoft Intune 等移动设备管理 (MDM) 提供程序来管理其组织中的设备，以准备好要共享的设备  。 MDM 将 Microsoft Authenticator 应用推送到设备，并通过设备的配置文件更新来为每台设备启用“共享模式”。 正是此“共享模式”设置更改了设备上受支持应用的行为。 MDM 提供程序中的此项配置为设备设置共享设备模式，并启用共享设备模式所需的[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。
 
-1. [**仅在公共预览期间必需**]具有[云设备管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator)角色的用户必须启动[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)并将其设备加入组织。
+1. [**仅在公共预览期间必需**]具有 [云设备管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) 角色的用户必须启动 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 并将其设备加入组织。
 
     若要在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”   
 
@@ -65,7 +65,7 @@ ms.locfileid: "88114908"
     - 要配置的其他数据：
       - 密钥：sharedDeviceMode
       - 键入：布尔
-      - 值：True
+      - 值： true
 
     有关使用 Intune 进行配置的详细信息，请参阅 [Intune 配置文档](/intune/configuration/ios-device-features-settings)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "88114908"
     - 配置 1：
       - 密钥：sharedDeviceMode
       - 键入：布尔
-      - 值：True
+      - 值： true
 
 ## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>修改 iOS 应用程序以支持共享设备模式
 

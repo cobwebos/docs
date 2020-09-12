@@ -10,17 +10,17 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e2f13cbdca9d6372677bbba24d60f4a73436cfd7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 1f68753e7b28163f3ec0c18c30cf5939e0bc5243
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179247"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649428"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建并管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文将介绍如何在 Azure 门户中针对 [Azure 机器学习](overview-what-is-azure-ml.md)创建、查看和删除 [Azure 机器学习工作区****](concept-workspace.md)。  门户是开始使用工作区的最简单方法，但随着需求的变化或自动化要求的增加，还可以[使用 CLI](reference-azure-machine-learning-cli.md)、[使用 Python 代码](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或[使用 VS Code 扩展](tutorial-setup-vscode-extension.md)创建和删除工作区。
+本文将介绍如何在 Azure 门户中针对 [Azure 机器学习](overview-what-is-azure-ml.md)创建、查看和删除 [Azure 机器学习工作区****](concept-workspace.md)。  门户是开始使用工作区的最简单方法，但随着需求的变化或自动化要求的增加，还可以[使用 CLI](reference-azure-machine-learning-cli.md)、[使用 Python 代码](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)或[使用 VS Code 扩展](tutorial-setup-vscode-extension.md)创建和删除工作区。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
@@ -85,7 +85,7 @@ ms.locfileid: "89179247"
     > 
     > 1. 在 [Azure 门户](https://portal.azure.com)中，选择包含工作区的资源组。 然后选择名为 __privatelink.api.azureml.ms__的专用 DNS 区域资源。
     > 2. 在 " __设置__" 中，选择 " __虚拟网络链接__"。
-    > 3. 选择“添加”   。 从 " __添加虚拟网络" 链接__ 页，提供一个唯一的 __链接名称__，然后选择要添加的 __虚拟网络__ 。 选择 __"确定"__ 以添加网络链接。
+    > 3. 选择 __添加__ 。 从 " __添加虚拟网络" 链接__ 页，提供一个唯一的 __链接名称__，然后选择要添加的 __虚拟网络__ 。 选择 __"确定"__ 以添加网络链接。
     >
     > 有关详细信息，请参阅 [Azure 专用终结点 DNS 配置](/azure/private-link/private-endpoint-dns)。
 

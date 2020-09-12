@@ -2,17 +2,17 @@
 title: ExpressRoute：将线路从经典部署移动到 Azure 资源管理器
 description: 了解将 Azure ExpressRoute 线路从经典部署模型转移到 Azure 资源管理器部署模型的方法。
 services: expressroute
-author: ganesr
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.author: ganesr
-ms.openlocfilehash: 2fc3a72ff9d6ec4dbd2eaa33e4af3054ad2a57b9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192380"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395156"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 本文概述将 Azure ExpressRoute 线路从经典部署模型转移到 Azure 资源管理器部署模型的效果。
