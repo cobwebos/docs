@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193678"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441045"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 满足大数据要求
 
@@ -130,5 +130,5 @@ ms.locfileid: "84193678"
 
 ![可视化 Data Lake Storage Gen1 中的数据](./media/data-lake-store-data-scenarios/visualize-data.png "可视化 Data Lake Storage Gen1 中的数据")
 
-* 首先通过使用 [Azure 数据工厂从 Data Lake Storage Gen1 将数据移动到 Azure SQL 数据仓库](../data-factory/copy-activity-overview.md)
-* 之后，可[集成 Power BI 和 Azure SQL 数据仓库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md)来创建数据的可视化表示形式。
+* 首先，可以使用 [Azure 数据工厂将数据从 Data Lake Storage Gen1 移到 Azure Synapse Analytics (以前的 SQL 数据仓库) ](../data-factory/copy-activity-overview.md)
+* 之后，你可以将 [Power BI 与 Azure Synapse Analytics 集成](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) ，以创建数据的直观表示形式。

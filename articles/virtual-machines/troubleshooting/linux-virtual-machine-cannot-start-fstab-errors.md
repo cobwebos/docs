@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509046"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441657"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>排查 fstab 错误导致的 Linux VM 启动问题
 
@@ -100,14 +100,14 @@ Give root password for maintenance
 
 ## <a name="resolution"></a>解决方法
 
-若要解决此问题，请使用 Azure 虚拟机的串行控制台在紧急模式下启动 VM。 然后使用该工具修复文件系统。 如果虚拟机上未启用串行控制台，请参阅[修复 vm 脱机](#repair-the-vm-offline)部分。
+若要解决此问题，请使用 Azure 虚拟机的串行控制台在紧急模式下启动 VM。 然后使用该工具修复文件系统。 如果虚拟机上未启用串行控制台，请参阅 [修复 vm 脱机](#repair-the-vm-offline) 部分。
 
 ## <a name="use-the-serial-console"></a>使用串行控制台
 
 ### <a name="using-single-user-mode"></a>使用单用户模式
 
-1. 连接到[串行控制台](./serial-console-linux.md)。
-2. 使用串行控制台获取单用户模式[单一用户](../linux/serial-console-grub-single-user-mode.md)模式
+1. 连接到 [串行控制台](./serial-console-linux.md)。
+2. 使用串行控制台获取单用户模式[单一用户](serial-console-grub-single-user-mode.md)模式
 3. Vm 启动到单用户模式后。 使用偏好的文本编辑器打开 fstab 文件。 
 
    ```
@@ -140,7 +140,7 @@ Give root password for maintenance
 
 ### <a name="using-root-password"></a>使用根密码
 
-1. 连接到[串行控制台](./serial-console-linux.md)。
+1. 连接到 [串行控制台](./serial-console-linux.md)。
 2. 使用本地用户和密码登录到系统。
 
    > [!Note]

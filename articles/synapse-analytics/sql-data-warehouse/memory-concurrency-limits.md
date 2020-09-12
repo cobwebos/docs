@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210655"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441674"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的内存和并发限制
 
@@ -125,7 +125,7 @@ ms.locfileid: "85210655"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-如果没有足够的并发槽位来启动查询执行，查询将根据重要性进行排队和执行。  如果重要性相同，查询将以先进先出的方式执行。  如果查询已完成并且查询数和槽位数低于限制，则 Azure SQL 数据仓库会释放排队的查询。
+如果没有足够的并发槽位来启动查询执行，查询将根据重要性进行排队和执行。  如果重要性相同，查询将以先进先出的方式执行。  当查询完成并且查询和槽的数目低于限制时，Azure Synapse Analytics 会释放排队的查询。
 
 ## <a name="next-steps"></a>后续步骤
 

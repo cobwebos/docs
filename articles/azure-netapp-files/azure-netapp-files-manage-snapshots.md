@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950334"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459045"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
-Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自动创建快照。  还可以将快照还原到新卷。  
+Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自动创建快照。  还可以使用客户端将快照还原到新卷或还原单个文件。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>为卷创建按需快照
 
@@ -97,7 +97,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击“ **保存**”。  
+4.  单击“保存” 。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。
@@ -161,11 +161,66 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![还原到新卷](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 单击 " **查看 + 创建**"。  单击“创建”。    
+4. 单击 " **查看 + 创建**"。  单击**创建**。   
     新卷使用的协议与快照使用的协议相同。   
     快照还原到的新卷将显示在“卷”边栏选项卡中。
+
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>使用客户端从快照还原文件
+
+如果不想将 [整个快照还原到卷](#restore-a-snapshot-to-a-new-volume)，则可以选择使用已装入卷的客户端从快照还原文件。  
+
+装载的卷包含 NFS 客户端中名为 (的快照目录  `.snapshot`) 或 `~snapshot` 客户端可以访问的 SMB 客户端) 中的 (。 快照目录包含对应于卷快照的子目录。 每个子目录都包含快照文件。 如果意外删除或覆盖了某个文件，则可以通过将该文件从快照子目录复制到读写目录，将该文件还原到父读写目录。 
+
+如果在创建卷时选中了 "隐藏快照路径" 复选框，则快照目录将隐藏。 可以通过选择卷来查看卷的 "隐藏快照路径" 状态。 通过单击卷页上的 " **编辑** "，可以编辑 "隐藏快照路径" 选项。  
+
+![编辑卷快照选项](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>使用 Linux NFS 客户端还原文件 
+
+1. 使用 `ls` Linux 命令列出要从目录还原的文件 `.snapshot` 。 
+
+    例如：
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. 使用 `cp` 命令将文件复制到父目录。  
+
+    例如： 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>使用 Windows 客户端还原文件 
+
+1. 如果 `~snapshot` 卷的目录处于隐藏状态，则在要显示的父目录中 [显示隐藏项](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10) `~snapshot` 。
+
+    ![显示隐藏项目](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. 导航到中的子目录 `~snapshot` ，找到要还原的文件。  右键单击该文件。 选择“复制”。****  
+
+    ![复制要还原的文件](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. 返回到父目录。 右键单击父目录，并选择 `Paste` 将该文件粘贴到该目录。
+
+    ![粘贴要还原的文件](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. 你还可以右键单击父目录，选择 " **属性**"，单击 " **以前的版本** " 选项卡以查看快照列表，然后选择 " **还原** " 以还原文件。  
+
+    ![属性以前的版本](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
+* [Azure NetApp 文件快照101视频](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

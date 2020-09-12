@@ -3,20 +3,20 @@ title: 配置子网流量路由 - Azure 流量管理器
 description: 本文介绍了如何配置流量管理器以从特定子网路由流量。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711776"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401361"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -29,7 +29,7 @@ ms.locfileid: "84711776"
 ## <a name="prerequisites"></a>先决条件
 为了查看流量管理器的运作方式，本教程要求部署以下各项：
 - 两个基本网站在不同的 Azure 区域运行 - 美国东部（作为内部网站）和西欧（作为生产网站）********。
-- 用于测试流量管理器的两个测试 Vm-**美国东部**和第二个 vm 中的一个 vm**西欧**。
+- 用于测试流量管理器的两个测试 Vm- **美国东部** 和第二个 vm 中的一个 vm **西欧**。
 
 测试 VM 用于演示流量管理器如何基于用户查询发起的子网，将用户流量路由到内部网站或生产网站。
 
@@ -121,7 +121,7 @@ ms.locfileid: "84711776"
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>为运行 IIS 的 VM 配置 DNS 名称
 
-流量管理器基于服务终结点的 DNS 名称路由用户流量。 在本部分中，将配置 IIS 服务器的 DNS 名称- *myIISVMEastUS*和*myIISVMWEurope*。
+流量管理器基于服务终结点的 DNS 名称路由用户流量。 在本部分中，将配置 IIS 服务器的 DNS 名称- *myIISVMEastUS* 和 *myIISVMWEurope*。
 
 1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。******
 2. 在“概述”页上的“DNS 名称”下，选择“配置”。   

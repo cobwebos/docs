@@ -1,36 +1,36 @@
 ---
 title: Azure VPN 网关：配置数据包捕获
-description: 了解可在 VPN 网关上使用的数据包捕获功能。
+description: 了解可以在 VPN 网关上使用的数据包捕获功能，以帮助缩小问题的原因。
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2019
+ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3ba3046367ceece6bf0ddf157451025c79977324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077205"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441589"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
+# <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
-连接和性能相关的问题通常很复杂，只需花费大量时间和精力来缩小问题的原因。 数据包捕获功能有助于大大缩短将问题范围缩小到特定网络部分所花费的时间，例如，问题是在网络的客户一端、网络的 Azure 一端，还是在两者之间的某个位置发生。 缩小问题的范围后，调试和采取补救措施就要高效得多。
+与连接和性能相关的问题通常很复杂。 只需花费大量时间和精力即可缩小问题的原因。 数据包捕获可帮助你将问题的范围缩小到网络的某些部分。 它可帮助您确定问题是出现在网络的客户端、网络的 Azure 端还是两者之间。 缩小问题范围后，调试和采取补救措施会更有效。
 
-可以使用一些常用的工具来获取数据包捕获。 使用这些工具获取相关数据包捕获可能会很麻烦，尤其是在使用大量流量方案时。 VPN 网关数据包捕获提供的筛选功能已成为一项主要优势。 除了常用的数据包捕获工具以外，也可以使用 VPN 网关数据包捕获。
+有一些常用的数据包捕获工具。 通过这些工具获取相关数据包捕获可能会很繁琐，尤其是在大容量流量方案中。 Azure VPN 网关数据包捕获提供的筛选功能是一个主要的区别。 可以结合使用 VPN 网关数据包捕获和常用的数据包捕获工具。
 
 ## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>VPN 网关数据包捕获筛选功能
 
-VPN 网关数据包捕获可在网关上运行，或者在特定的连接上运行，具体取决于客户的需求。 还可以同时在多个隧道上运行数据包捕获。 可以捕获单向或双向流量、IKE 和 ESP 流量以及内部数据包，并可对 VPN 网关进行筛选。
+你可以根据需要在网关上或特定连接上运行 VPN 网关数据包捕获。 还可以同时在多个隧道上运行数据包捕获。 可以捕获单向或双向流量、IKE 和 ESP 流量以及内部数据包以及 VPN 网关上的筛选。
 
-在大容量通信量上隔离问题时，使用5元组筛选器（源子网、目标子网、源端口、目标端口、协议）和 TCP 标志（SYN、ACK、FIN、URG、PSH、RST）非常有用。
+在大容量流量中隔离问题时，使用5元组筛选器 (源子网、目标子网、源端口、目标端口、协议) 和 TCP 标志 (SYN、确认、FIN、URG、PSH、RST) 。
 
-请参阅下面的 JSON 和 JSON 架构示例，其中包含每个属性的说明。 另外，请注意在运行数据包捕获时存在一些限制：
-- 在架构中，筛选器显示为一个数组，但每次只能使用一个筛选器。
-- 不允许同时使用多个网关范围内的数据包捕获。
-- 不允许在同一连接上同时进行多个数据包捕获。 可以同时在不同的连接上运行数据包捕获。
-- 每个网关最多可以并行运行五个数据包捕获。 这些数据包捕获可以是网关范围内数据包捕获或每个连接数据包捕获的组合。
+下面的 JSON 和 JSON 架构示例提供每个属性的说明。 下面是在运行数据包捕获时要记住的一些限制：
+- 在此处显示的架构中，筛选器是一个数组，但目前只能使用一个筛选器。
+- 不能同时运行多个网关范围的数据包捕获。
+- 不能同时在单个连接上运行多个数据包捕获。 可以同时在不同的连接上运行多个数据包捕获。
+- 每个网关最多可以并行运行 5 个数据包捕获。 这些数据包捕获可以是网关范围内数据包捕获和按连接数据包捕获的组合。
 
 ### <a name="example-json"></a>示例 JSON
 ```JSON-interactive
@@ -316,9 +316,9 @@ VPN 网关数据包捕获可在网关上运行，或者在特定的连接上运�
 }
 ```
 
-## <a name="setup-packet-capture-using-powershell"></a>使用 PowerShell 设置数据包捕获
+## <a name="set-up-packet-capture-by-using-powershell"></a>使用 PowerShell 设置数据包捕获
 
-请参阅以下示例来了解如何使用 PowerShell 命令启动和停止数据包捕获。 有关参数选项的详细信息，请参阅此 PowerShell[文档](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
+以下示例显示启动和停止数据包捕获的 PowerShell 命令。 有关参数选项的详细信息，请参阅 [此 PowerShell 文档](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>启动 VPN 网关的数据包捕获
 
@@ -326,7 +326,7 @@ VPN 网关数据包捕获可在网关上运行，或者在特定的连接上运�
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-可选参数 **-FilterData** 可用于应用筛选器。
+可以使用可选参数 `-FilterData` 来应用筛选器。
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>停止 VPN 网关的数据包捕获
 
@@ -340,7 +340,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-可选参数 **-FilterData** 可用于应用筛选器。
+可以使用可选参数 `-FilterData` 来应用筛选器。
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>在 VPN 网关连接上停止数据包捕获
 
@@ -348,12 +348,13 @@ Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourRes
 Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName" -SasUrl "YourSASURL"
 ```
 
-## <a name="key-considerations"></a>关键注意事项
+## <a name="key-considerations"></a>重要注意事项
 
-- 运行数据包捕获可能会影响性能。 不需要数据包捕获时，请记得将其停止。
-- 建议的最短数据包捕获持续时间为 600 秒。 由于路径中多个组件之间的同步问题，使用较短的数据包捕获持续时间可能无法提供完整的数据。
+- 运行数据包捕获可能会影响性能。 请记住，如果不需要数据包捕获，请将其停止。
+- 建议的最短数据包捕获持续时间为 600 秒。 由于路径上多个组件之间的同步问题，较短的数据包捕获可能不提供完整的数据。
 - 数据包捕获数据文件以 PCAP 格式生成。 使用 Wireshark 或其他常用应用程序打开 PCAP 文件。
+- 基于策略的网关不支持数据包捕获。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 VPN 网关的详细信息，请参阅[关于 Vpn 网关](vpn-gateway-about-vpngateways.md)
+有关 VPN 网关的详细信息，请参阅 [什么是 Vpn 网关？](vpn-gateway-about-vpngateways.md)。

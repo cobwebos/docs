@@ -8,17 +8,17 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eec032ad56d00778627fc147761f61c03ba8bafd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668417"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442082"
 ---
-# <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>适用于 Azure SQL 数据库和 SQL 托管实例的安全控制
+# <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的安全控件
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本文介绍 Azure SQL 数据库和 Azure SQL 托管实例中内置的安全控制。
+本文介绍 Azure SQL 数据库和 Azure SQL 托管实例中内置的安全控件。
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -26,16 +26,16 @@ ms.locfileid: "84668417"
 
 ## <a name="network"></a>网络
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务终结点支持| 是 | 仅适用于[SQL 数据库](../index.yml)。 |
-| Azure 虚拟网络注入支持| 是 | 仅适用于[SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)。 |
-| 网络隔离和防火墙支持| 是 | 数据库级别和服务器级别的防火墙。 网络隔离仅适用于[SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)。 |
-| 强制隧道支持| 是 | [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)通过[ExpressRoute](../expressroute/../index.yml) VPN。 |
+| 服务终结点支持| 是 | 仅适用于 [SQL 数据库](../index.yml)。 |
+| Azure 虚拟网络注入支持| 是 | 仅适用于 [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)。 |
+| 网络隔离和防火墙支持| 是 | 数据库级别和服务器级别的防火墙。 网络隔离仅适用于 [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)。 |
+| 强制隧道支持| 是 | 采用 [ExpressRoute](../expressroute/../index.yml) VPN 的 [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)。 |
 
 ## <a name="monitoring--logging"></a>监视和日志记录
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | Azure 监视支持，如 Log Analytics 或 Application Insights| 是 | SecureSphere 是 Imperva 的 SIEM 解决方案，也通过 [Azure 事件中心](../event-hubs/../index.yml)集成（通过 [SQL 审核](../../azure-sql/database/auditing-overview.md)）获得支持。 |
 | 控制平面和管理平面日志记录和审核| 是 | 仅对某些事件为“是” |
@@ -43,14 +43,14 @@ ms.locfileid: "84668417"
 
 ## <a name="identity"></a>标识
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 身份验证| 是 | Azure Active Directory (Azure AD) |
 | 授权| 是 | 无 |
 
 ## <a name="data-protection"></a>数据保护
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
 | 服务器端静态加密：Microsoft 管理的密钥 | 是 | 称为“使用中加密”，详见 [Always Encrypted](always-encrypted-certificate-store-configure.md) 一文中的说明。 服务端加密使用[透明数据加密](transparent-data-encryption-tde-overview.md)。|
 | 传输中加密：<ul><li>Azure ExpressRoute 加密</li><li>虚拟网络中的加密</li><li>虚拟网络之间的加密</ul>| 是 | 使用 HTTPS。 |
@@ -60,16 +60,16 @@ ms.locfileid: "84668417"
 
 ## <a name="configuration-management"></a>配置管理
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
-| 配置管理支持（例如，配置的版本控制）| 否  | None |
+| 配置管理支持（例如，配置的版本控制）| 否  | 无 |
 
 ## <a name="additional-security-controls-for-sql-database"></a>SQL 数据库的其他安全控制
 
-| 安全控制 | Yes/No | 说明|
+| 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 预防：漏洞评估 | 是 | 请参阅 [SQL 漏洞评估服务可帮助你识别数据库漏洞](sql-vulnerability-assessment.md)。 |
-| 预防：数据发现和分类  | 是 | 请参阅 [Azure SQL 数据库和 SQL 数据仓库数据发现和分类](data-discovery-and-classification-overview.md)。 |
+| 预防：数据发现和分类  | 是 | 请参阅 [AZURE SQL 数据库和 Azure Synapse Analytics 数据发现 & 分类](data-discovery-and-classification-overview.md)。 |
 | 检测：威胁检测 | 是 | 请参阅 [Azure SQL 数据库的高级威胁防护](threat-detection-overview.md)。 |
 
 ## <a name="next-steps"></a>后续步骤

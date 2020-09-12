@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981429"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440824"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -45,11 +45,11 @@ Azure Active Directory 服务主体通常可供 Azure HDInsight 之类的服务�
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen1 防火墙，允许 Azure 服务访问
 
-Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过**防火墙**  >  **Enable firewall （on）**  >  **允许访问 Azure 服务**选项，在 Azure 门户中的 Data Lake Storage Gen1 帐户上启用防火墙。
+Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过**防火墙**上的 "  >  **启用防火墙 (") **  >  **允许访问 Azure 服务**"选项在 Azure 门户中的 Data Lake Storage Gen1 帐户上启用防火墙。
 
 ![Data Lake Storage Gen1 中的防火墙设置](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 中的防火墙设置")
 
-启用防火墙以后，只有 Azure 服务（例如 HDInsight、数据工厂、SQL 数据仓库等）能够访问 Data Lake Storage Gen1。 由于 Azure 使用内部网络地址转换，因此 Data Lake Storage Gen1 防火墙不支持通过 IP 限制特定的服务，只能限制 Azure 外部的终结点，例如本地终结点。
+启用防火墙后，只有 HDInsight、数据工厂、Azure Synapse Analytics 等 Azure 服务 (以前的 SQL 数据仓库) 等）才能访问 Data Lake Storage Gen1。 由于 Azure 使用内部网络地址转换，因此 Data Lake Storage Gen1 防火墙不支持通过 IP 限制特定的服务，只能限制 Azure 外部的终结点，例如本地终结点。
 
 ## <a name="performance-and-scale-considerations"></a>性能和规模注意事项
 
@@ -86,7 +86,7 @@ Azure Data Lake Storage Gen1 去除了对 Blob 存储帐户的硬性 IO 限制�
 
 ## <a name="resiliency-considerations"></a>复原注意事项
 
-通过 Data Lake Storage Gen1 或任何云服务构建系统时，必须考虑到可用性要求以及如何响应可能出现的服务中断情况。 问题可能局限于特定的实例，也可能是区域性的，因此必须对二者都有计划。 根据工作负荷的**恢复时间目标**和**恢复点目标**sla，你可以为高可用性和灾难恢复选择更多或更低的策略。
+通过 Data Lake Storage Gen1 或任何云服务构建系统时，必须考虑到可用性要求以及如何响应可能出现的服务中断情况。 问题可能局限于特定的实例，也可能是区域性的，因此必须对二者都有计划。 根据工作负荷的 **恢复时间目标** 和 **恢复点目标** sla，你可以为高可用性和灾难恢复选择更多或更低的策略。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
 
@@ -104,7 +104,7 @@ Azure Data Lake Storage Gen1 去除了对 Blob 存储帐户的硬性 IO 限制�
 |**支持复制增量数据**     |   是      | 否         | 否         |
 |**内置业务流程**     |  否（使用 Oozie Airflow 或 cron 作业）       | 是        | 否（使用 Azure 自动化或 Windows 任务计划程序）         |
 |**支持的文件系统**     | ADL、HDFS、WASB、S3、GS、CFS        |很多，请参阅[连接器](../data-factory/connector-azure-blob-storage.md)。         | ADL 到 ADL、WASB 到 ADL（仅限同一区域）        |
-|**OS 支持**     |任何运行 Hadoop 的 OS         | 不适用          | Windows 10         |
+|**OS 支持**     |任何运行 Hadoop 的 OS         | 空值          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>使用 Distcp 在两个位置之间进行数据移动
 
@@ -114,7 +114,7 @@ Distcp 是 distributed copy（分布式复制）的简称，是 Hadoop 随附的
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>使用 Azure 数据工厂来计划复制作业
 
-Azure 数据工厂还可用于使用**复制活动**来计划复制作业，甚至可以通过**复制向导**来设置复制作业。 请记住，Azure 数据工厂的云数据移动单位 (DMU) 有限，因此最终会对大数据工作负荷的吞吐量/计算进行限制。 另外，Azure 数据工厂目前不提供在 Data Lake Storage Gen1 帐户之间进行增量更新的功能，因此 Hive 表之类的文件夹需要获得完整的副本才能进行复制。 请参阅[复制活动优化指南](../data-factory/copy-activity-performance.md)，详细了解如何使用数据工厂进行复制。
+Azure 数据工厂还可用于使用 **复制活动**来计划复制作业，甚至可以通过 **复制向导**来设置复制作业。 请记住，Azure 数据工厂的云数据移动单位 (DMU) 有限，因此最终会对大数据工作负荷的吞吐量/计算进行限制。 另外，Azure 数据工厂目前不提供在 Data Lake Storage Gen1 帐户之间进行增量更新的功能，因此 Hive 表之类的文件夹需要获得完整的副本才能进行复制。 请参阅[复制活动优化指南](../data-factory/copy-activity-performance.md)，详细了解如何使用数据工厂进行复制。
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -142,7 +142,7 @@ hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
 
 `log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-设置属性且节点重启后，Data Lake Storage Gen1 诊断就会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可以在 Data Lake Storage Gen1 帐户的 "[诊断](data-lake-store-diagnostic-logs.md)" 边栏选项卡中 Azure Monitor 日志或日志传送到的任何位置监视相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
+设置属性且节点重启后，Data Lake Storage Gen1 诊断就会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可以在 Data Lake Storage Gen1 帐户的 " [诊断](data-lake-store-diagnostic-logs.md) " 边栏选项卡中 Azure Monitor 日志或日志传送到的任何位置监视相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务
 

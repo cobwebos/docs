@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195884"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442388"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
@@ -41,7 +41,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 ## <a name="solution-overview"></a>解决方案概述
 在此示例中，实际 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务解决和实现使用案例，包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)。
 
-在线零售商在整个工作流中使用 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场作为其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息以及以本地方式存储于 SQL 数据仓库中的产品目录。 
+在线零售商在整个工作流中使用 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场作为其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息和在 Azure Synapse Analytics 中存储于本地的产品目录 (以前的 SQL 数据仓库) 。 
 
 用户在网站上浏览目录中的产品时，所有数据会汇总起来并输送到产品建议系统以基于客户兴趣和行为提供个性化的建议。 客户还会看到另外一种与寻找的产品相关的产品，这种产品以网站整体使用模式为基础，并不是以一个用户为基础。
 
@@ -53,7 +53,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 
 最后，个性化的产品建议结果集将转移到关系数据市场中供零售商网站使用。  结果集还可由其他程序直接从 blob 存储进行访问，或移动到其他客户或使用案例的相关存储中。
 
-## <a name="benefits"></a>好处
+## <a name="benefits"></a>优点
 通过优化产品建议策略并将其与业务目标对齐，本解决方案可满足在线零售商的商品销售和市场营销目标。 此外，他们还能够以高效、可靠且经济高效的方式优化和管理产品建议工作流。 他们通过本方法可以很方便地根据销售单击转换成功率测量结果更新模型和优化效果。 通过使用 Azure 数据工厂，他们可以摆脱耗时且成本高昂的手动云资源管理，改用按需式云资源管理。 因此，他们可节省时间和资金，并减少解决方案的部署时间。 通过在 Azure 门户可用的直观式数据工厂监视和管理 UI，可以很方便地显示数据沿袭视图和操作服务运行状况并进行相关故障排除。 他们现在可以安排和管理解决方案，以便以可靠方式完成数据并呈现给用户，并且可以自动管理数据和处理依赖项，无需人工操作。
 
 通过提供这种个性化购物体验，在线零售商创造了更具竞争力、更有吸引力的客户体验，因此增加了销售和整体客户满意度。

@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290103"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441164"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>向数据库授予对 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的访问权限
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 本文介绍：
 
-- 用于配置 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）的选项，目的是使用户能够执行管理任务和访问这些数据库中存储的数据。
+- 用于将 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 配置 (以前的 SQL 数据仓库) 的选项，使用户能够执行管理任务并访问存储在这些数据库中的数据。
 - 最初新建服务器后的访问权限和授权配置。
 - 如何在 master 数据库和用户账户中添加登录名和用户帐户，然后为这些帐户授予管理权限。
 - 如何在用户数据库中添加用户帐户（与登录名关联或作为包含的用户帐户）。

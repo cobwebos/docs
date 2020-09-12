@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212033"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434225"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -126,7 +126,7 @@ Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值�
 
 ### <a name="time-to-live"></a>生存时间
 
-默认情况下，每个数据流活动会根据 IR 配置来旋转新群集。 群集启动时间花了几分钟的时间，数据处理直到完成后才会开始。 如果管道包含多个 **顺序** 数据流，则可以启用 (TTL) 值的生存时间。 指定生存时间值会使群集在一段时间内的执行完成后保持活动状态。 如果新作业在 TTL 时间内使用 IR 开始，则会重复使用现有群集并启动时间，而不是以秒为单位。 第二个作业完成后，该群集将再次保持处于活动状态的 TTL 时间。
+默认情况下，每个数据流活动会根据 IR 配置来旋转新群集。 群集启动时间花了几分钟的时间，数据处理直到完成后才会开始。 如果管道包含多个 **顺序** 数据流，则可以启用 (TTL) 值的生存时间。 指定生存时间值会使群集在一段时间内的执行完成后保持活动状态。 如果新作业在 TTL 时间内使用 IR 开始，则会重复使用现有群集，并且启动时间将大大减少。 第二个作业完成后，该群集将再次保持处于活动状态的 TTL 时间。
 
 一次只能在一个群集上运行一个作业。 如果有可用的群集，但两个数据流开始，则仅有一个使用活动群集。 第二个作业将启动其自身的独立群集。
 

@@ -11,18 +11,18 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543650"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442215"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 池中的计算资源
 
 本教程使用 Azure Functions 在 Azure Synapse Analytics 中管理 SQL 池的计算资源。
 
-若要将 Azure Function App 与 SQL 池一起使用，必须创建一个[服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，该帐户具有与 sql 池实例相同的订阅中的参与者访问权限。
+若要将 Azure Function App 与 SQL 池一起使用，必须创建一个 [服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ，该帐户具有与 sql 池实例相同的订阅中的参与者访问权限。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署基于计时器的缩放
 
@@ -38,7 +38,7 @@ ms.locfileid: "87543650"
 
 有了上述信息以后，即可部署该模板：
 
-[![显示标记为 "部署到 Azure" 按钮的图像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
+[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 部署模板以后，应该可以找到三个新资源：一个免费的 Azure 应用服务计划、一个基于使用情况的 Function App 计划，以及一个将要用于处理日志记录和操作队列的存储帐户。 请继续阅读其他部分，了解如何根据需要修改部署的函数。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87543650"
 
 3. 目前显示的值应该为 **%ScaleDownTime% 或 **%ScaleUpTime%。 这些值指示计划基于在[应用程序设置](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中定义的值。 目前可以忽略该值，根据后续步骤将计划更改为首选时间。
 
-4. 在计划区域向 CRON 表达式添加所需时间，此时间反映了你所希望的对 SQL 数据仓库进行纵向扩展的频率。
+4. 在 "计划" 区域中，添加 CRON 表达式的时间，以反映想要将 Azure Synapse Analytics 向上扩展的频率。
 
    ![更改函数计划](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -169,4 +169,4 @@ ms.locfileid: "87543650"
 
 详细了解 Azure Functions 的[计时器触发器](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
-签出 SQL 池[示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)。
+签出 SQL 池 [示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)。

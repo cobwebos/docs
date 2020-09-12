@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196111"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441079"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -32,7 +32,7 @@ Azure 数据工厂复制活动提供安全、可靠且高性能的一流数据�
 
 Azure 提供了一组企业级数据存储和数据仓库解决方案，并且复制活动提供了高度优化的数据加载体验，易于配置和设置。 使用单个复制活动，可完成：
 
-* 以 **1.2 GBps** 的速度将数据加载到 **Azure SQL 数据仓库**。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
+* 正在将数据加载到**1.2 GBps**的**Azure Synapse Analytics**中。 有关用例的演练，请参阅使用 [Azure 数据工厂将 1 TB 加载到 Azure Synapse Analytics (以前的 SQL 数据仓库) 15 分钟](data-factory-load-sql-data-warehouse.md)。
 * 以 **1.0 GBps** 的速度将数据加载到 **Azure Blob 存储**
 * 以 **1.0 GBps** 的速度将数据加载到 **Azure Data Lake Store**
 
@@ -139,7 +139,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | 源和接收器 | 由服务确定的默认并行复制计数 |
 | --- | --- |
 | 在基于文件的存储（Blob 存储；Data Lake Store；Amazon S3；本地文件系统；本地 HDFS）之间复制数据 |介于 1 和 32 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或用于混合复制的网关计算机的物理配置（将数据粘贴到本地数据存储或从本地数据存储复制）。 |
-| 将数据从**任何源数据存储复制到 Azure 表存储** |4 |
+| 将数据从 **任何源数据存储复制到 Azure 表存储** |4 |
 | 所有其他源和接收器对 |1 |
 
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
@@ -183,9 +183,9 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="staged-copy"></a>暂存复制
 将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
 
-1. **需要通过 PolyBase 将数据从各种数据存储引入 SQL 数据仓库**。 SQL 数据仓库使用 PolyBase 作为高吞吐量机制，将大量数据加载到 SQL 数据仓库中。 但是，源数据必须位于 Blob 存储中，并且它必须满足其他条件。 从 Blob 存储以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据加载到 SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
+1. **需要通过 PolyBase 将数据从各种数据存储引入 Azure Synapse 分析**。 Azure Synapse Analytics 使用 PolyBase 作为高吞吐量机制，将大量数据加载到 Azure Synapse Analytics 中。 但是，源数据必须位于 Blob 存储中，并且它必须满足其他条件。 从 Blob 存储以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据加载到 Azure Synapse Analytics 中。 有关更多详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics)中。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 2. **有时，通过速度慢的网络连接执行混合数据移动（即在本地数据存储和云数据存储之间进行复制）需要一段时间**。 为了提高性能，可压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
-3. **你不想在防火墙中打开端口80和端口443以外的端口，因为企业 IT 策略**。 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器时，需要对 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，利用网关首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，将数据从 Blob 存储暂存加载到 SQL 数据库或 SQL 数据仓库。 在此流中，不需要启用端口 1433。
+3. **你不想在防火墙中打开端口80和端口443以外的端口，因为企业 IT 策略**。 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure Synapse Analytics 接收器时，需要为 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，利用网关首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，将数据从 Blob 存储暂存加载到 SQL 数据库或 Azure Synapse Analytics 中。 在此流中，不需要启用端口 1433。
 
 ### <a name="how-staged-copy-works"></a>暂存复制的工作原理
 激活暂存功能时，首先将数据从源数据存储复制到暂存数据存储（自带）。 然后，将数据从暂存数据存储复制到接收器数据存储。 数据工厂自动管理两阶段流。 数据移动完成后，数据工厂还将清除暂存存储中的临时数据。
@@ -202,14 +202,14 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 目前，不能使用暂存存储在两个本地数据存储之间复制数据。 我们预计会尽快提供此选项。
 
-### <a name="configuration"></a>配置
+### <a name="configuration"></a>Configuration
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| Property | 描述 | 默认值 | 必须 |
+| properties | 说明 | 默认值 | 必须 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
-| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| **path** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |空值 |否 |
+| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能将存储与共享访问签名一起使用，以通过 PolyBase 将数据加载到 Azure Synapse Analytics 中。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
+| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |空值 |否 |
 | **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
 以下是具有上表所述属性的复制活动的示例定义：
@@ -263,7 +263,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
      * [暂存复制](#staged-copy)
      * [数据管理网关可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)
    * [数据管理网关](#considerations-for-data-management-gateway)
-   * [源](#considerations-for-the-source)
+   * [Source](#considerations-for-the-source)
    * [接收器](#considerations-for-the-sink)
    * [序列化和反序列化](#considerations-for-serialization-and-deserialization)
    * [压缩](#considerations-for-compression)
@@ -282,7 +282,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)，帮助用户了解数据存储性能特征、尽量缩短响应时间以及最大化吞吐量。
 
-如果将数据从 Blob 存储复制到 SQL 数据仓库，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
+如果将数据从 Blob 存储复制到 Azure Synapse Analytics，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
 （包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）**
@@ -292,7 +292,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 对于其中需要**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
-（包括 SQL 数据库；SQL 数据仓库；Amazon Redshift；SQL Server 数据库；以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 数据库等。）**
+* (包含 SQL 数据库;Azure Synapse 分析;Amazon Redshift;SQL Server 数据库;和 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 数据库等 ) *
 
 * **数据模式**：表架构会影响复制吞吐量。 复制相同数据量时，较大行大小可比较小行大小提供更佳的性能。 原因是数据库可以更有效地检索包含较少行的较少批量数据。
 * **查询或存储过程**：优化在复制活动源中指定的查询或存储过程的逻辑，以更有效地提取数据。
@@ -304,7 +304,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)。 这些主题可帮助用户了解数据存储性能特征、了解如何尽量缩短响应时间以及最大化吞吐量。
 
-如果将数据从 **Blob 存储**复制到 **SQL 数据仓库**，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
+如果要将数据从 **Blob 存储** 复制到 **Azure Synapse Analytics**，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
 （包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）**
@@ -315,7 +315,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 对于需要使用**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
-（包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库）**
+* (包括 SQL 数据库、Azure Synapse Analytics、SQL Server 数据库和 Oracle 数据库) *
 
 * **复制行为**：根据已为 **sqlSink** 设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
@@ -418,8 +418,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../../storage/blobs/storage-performance-checklist.md)。
 * Azure 表存储：[表存储的可伸缩性和性能目标](../../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../../storage/tables/storage-performance-checklist.md)。
-* Azure SQL 数据库：可以[监视性能](../../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位（DTU）百分比
-* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure SQL 数据库：可以 [监视性能](../../sql-database/sql-database-single-database-monitor.md) 并检查数据库事务单位 (DTU) 百分比
+* Azure Synapse Analytics：其功能以数据仓库单位（ (Dwu) ）度量。请参阅 [在 Azure Synapse Analytics 中管理计算能力 (概述) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB： [Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
-* 本地文件服务器：[文件服务器的性能优化](https://msdn.microsoft.com/library/dn567661.aspx)
+* 本地文件服务器： [文件服务器的性能优化](https://msdn.microsoft.com/library/dn567661.aspx)

@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213425"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459141"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>在 Synapse SQL 池中使用标签来检测查询
 
 本文介绍了使用标签在 SQL 池中检测查询以开发解决方案的技巧。
 
-有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。
+在 Azure Synapse Analytics 中使用标签检测查询以开发解决方案的技巧。
 
 ## <a name="what-are-labels"></a>什么是标签？
 

@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068720"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436844"
 ---
-# <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用程序提供可选声明
+# <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
 应用程序开发人员可以在其 Azure AD 应用程序中使用可选声明来指定他们希望在发送到其应用程序的令牌中使用哪些声明。
 
@@ -130,13 +130,13 @@ ms.locfileid: "89068720"
 
 **通过 UI 配置可选声明：**
 
-[![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![在 UI 中配置可选声明](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. 从“管理”部分中选择“令牌配置” 。
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
-1. 选择“添加”  。
+1. 选择 **添加** 。
 
 **通过应用程序清单配置可选声明：**
 
@@ -199,7 +199,7 @@ ms.locfileid: "89068720"
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
-| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                                 |
+| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值是 False。                                                                                                                 |
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                                   |
 
 ## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
@@ -238,7 +238,7 @@ ms.locfileid: "89068720"
 1. 在列表中选择要为其配置可选声明的应用程序
 1. 在“管理”部分下，选择“令牌配置” 
 1. 选择“添加组声明”
-1. 选择要返回的组类型（“所有组”、“SecurityGroup”或“DirectoryRole”）。   “所有组”选项包括“SecurityGroup”、“DirectoryRole”和“DistributionList”   
+1. 选择要返回 (**安全组**、 **目录角色**、 **所有组**以及/或 **分配给应用程序**) 的组的组类型。 **分配给应用程序**选项的组仅包括分配给该应用程序的组。 **All groups**选项包括**SecurityGroup**、 **DirectoryRole**和**DistributionList**，但不包括**分配给应用程序的组**。 
 1. 可选：选择特定的令牌类型属性，将组声明值修改为包含本地组特性，或将声明类型更改为角色
 1. 选择“保存”
 
@@ -256,6 +256,7 @@ ms.locfileid: "89068720"
    - “所有”（此选项包括 SecurityGroup、DirectoryRole 和 DistributionList）
    - "SecurityGroup"
    - "DirectoryRole"
+   - "ApplicationGroup" (此选项仅包括分配给应用程序的组) 
 
    例如：
 
@@ -287,7 +288,7 @@ ms.locfileid: "89068720"
     }
     ```
 
-   | 可选声明架构 | Value |
+   | 可选声明架构 | 值 |
    |----------|-------------|
    | **name：** | 必须是“groups” |
    | **source：** | 未使用。 省略或指定 null |
@@ -307,7 +308,7 @@ ms.locfileid: "89068720"
 
     **UI 配置：**
 
-    [![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![配置可选声明](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **应用程序清单条目：**
 
@@ -328,7 +329,7 @@ ms.locfileid: "89068720"
 
     **UI 配置：**
 
-    [![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![清单中的可选声明](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **应用程序清单条目：**
 
@@ -378,7 +379,7 @@ ms.locfileid: "89068720"
 
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 
-1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 从左侧菜单中选择“Azure Active Directory”。
 
 1. 在“管理”部分下选择“应用注册” 。
 
@@ -394,11 +395,11 @@ ms.locfileid: "89068720"
 
 1. 选择“添加可选声明”，选择 SAML 令牌类型，从声明列表中选择 extn.skypeID（仅当创建了名为 skypeID 的 Azure AD 用户对象时才适用），然后选择“添加”   。
 
-    [![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![SAML 令牌的可选声明](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **清单配置：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 从左侧菜单中选择“Azure Active Directory”。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。

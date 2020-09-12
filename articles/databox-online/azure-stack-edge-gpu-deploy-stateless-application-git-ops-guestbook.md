@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254213"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319286"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>在 Azure Stack 边缘 GPU 上启用启用了 Kubernetes 群集的 PHP 留言簿无状态应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "89254213"
 此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在部署无状态应用程序之前，请确保已在设备和将用于访问该设备的客户端上完成以下先决条件：
 
@@ -57,7 +57,7 @@ ms.locfileid: "89254213"
       - 在 Azure Stack Edge 设备的本地 UI 中，请参阅 " **概述** " 并记下 "Kubernetes" 软件号码。 
       - 请验证这两个版本是否与支持的 Kubernetes 版本中提供的映射兼容 <!--insert link-->.
 
-1. 有一个 [可用于运行 Azure Arc 部署的 GitOps 配置](https://github.com/kagoyal/dbehaikudemo)。 你将使用以下 `yaml` 文件在 Azure Stack Edge 设备上部署。
+1. 有一个 [可用于运行 Azure Arc 部署的 GitOps 配置](https://github.com/kagoyal/dbehaikudemo)。 在此示例中，你将使用以下 `yaml` 文件在 Azure Stack Edge 设备上部署。
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->

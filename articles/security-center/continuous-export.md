@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612378"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433920"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 
@@ -36,12 +36,12 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 |发布状态：|正式版|
 |计价|免费层|
 |必需的角色和权限：|资源组上的**安全管理员角色** (或**所有者**) <br>还必须对目标资源具有写入权限|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中国 Gov (到事件中心) ，其他 Gov|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>设置连续导出
+## <a name="set-up-a-continuous-export"></a>设置连续导出
 
 无论是将连续导出设置为 Log Analytics 工作区还是 Azure 事件中心，都需要执行以下步骤。
 
@@ -55,12 +55,24 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 1. 选择要导出的数据类型，然后从每种类型的筛选器中进行选择 (例如，仅导出高严重性警报) 。
 
+1. （可选）如果你的选择包含以下四个建议中的一个，你可以将漏洞评估发现与它们一起包括：
+
+    - 应修正 SQL 数据库上的漏洞评估结果
+    - 计算机上的 SQL server 上的漏洞评估结果应 (预览版进行修正) 
+    - 应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供技术支持）
+    - 应修正虚拟机中的漏洞
+
+    若要在这些建议中包含发现，请启用 " **包括安全发现** " 选项。
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在连续导出配置中包括安全发现切换" :::
+
+
 1. 从 "导出目标" 区域中，选择要将数据保存到的位置。 数据可以保存在不同订阅的目标中 (例如，在中央事件中心实例或中心 Log Analytics 工作区) 上保存。
 
 1. 选择“保存”。
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>通过 REST API 设置连续导出
+## <a name="set-up-continuous-export-via-the-rest-api"></a>通过 REST API 设置连续导出
 
 可以通过 Azure 安全中心 [自动化 API](https://docs.microsoft.com/rest/api/securitycenter/automations)配置和管理连续导出功能。 使用此 API 创建或更新自动化，以便导出到以下任何可能的目标：
 
@@ -83,7 +95,7 @@ API 提供 Azure 门户中没有的其他功能，例如：
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>通过 Azure 事件中心配置 SIEM 集成
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>通过 Azure 事件中心配置 SIEM 集成
 
 Azure 事件中心是一种很好的解决方案，可用于以编程方式使用任何流数据。 对于 Azure 安全中心警报和建议，这是与第三方 SIEM 集成的首选方法。
 

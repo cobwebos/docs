@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950368"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459005"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -188,7 +188,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 
     将显示你创建的 Active Directory 连接。
 
-    ![Active Directory 连接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![已创建 Active Directory 连接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 ## <a name="add-an-smb-volume"></a>添加 SMB 卷
 
@@ -230,7 +230,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果要将现有的快照策略应用到卷，请单击 " **显示高级" 部分** 将其展开，然后在下拉菜单中选择一个快照策略。 
+    * 如果要将现有的快照策略应用到卷，请单击 " **显示高级" 部分** 将其展开，指定是否要隐藏快照路径，并在下拉菜单中选择快照策略。 
 
         有关创建快照策略的信息，请参阅 [管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 

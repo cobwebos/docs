@@ -1,5 +1,5 @@
 ---
-title: 利用具体化视图提高性能
+title: 使用具体化视图优化性能
 description: 在使用具体化视图来提高查询性能时应了解的建议和注意事项。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956383"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441198"
 ---
-# <a name="performance-tune-with-materialized-views"></a>利用具体化视图提高性能
+# <a name="performance-tune-with-materialized-views"></a>使用具体化视图优化性能
 
 Synapse SQL 池中的具体化视图为复杂的分析查询提供了一种低维护的方法，可以在不改变任何查询的情况下获得快速的性能。 本文讨论了使用具体化视图的一般指南。
 
@@ -52,7 +52,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 在 SQL 池中实现的具体化视图还具有以下额外优势：
 
-与其他数据仓库提供程序相比，在 Azure SQL 数据仓库中实现的具体化视图还具有以下附加优势：
+与其他数据仓库提供程序相比，在 Azure Synapse Analytics 中实现的具体化视图还提供以下附加优势：
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
 - 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。

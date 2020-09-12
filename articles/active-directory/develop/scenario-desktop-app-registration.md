@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885151"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440943"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -28,7 +28,7 @@ ms.locfileid: "80885151"
 
 ### <a name="audience-for-interactive-token-acquisition"></a>交互式令牌获取的受众
 
-如果桌面应用程序使用交互式身份验证，则可通过任何[帐户类型](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)将用户登录。
+如果桌面应用程序使用交互式身份验证，则可通过任何[帐户类型](quickstart-register-app.md)将用户登录。
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>桌面应用无提示流的受众
 
@@ -41,7 +41,7 @@ ms.locfileid: "80885151"
 可以在桌面应用程序中使用的重定向 URI 取决于要使用的流。
 
 - 如果使用交互式身份验证或设备代码流，请使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。 若要实现此配置，请在应用程序的“身份验证”部分中选择相应的 URL。****
-  
+
   > [!IMPORTANT]
   > 目前，默认情况下，MSAL.NET 会在 Windows 上运行的桌面应用程序中使用另一重定向 URI (`urn:ietf:wg:oauth:2.0:oob`)。 将来，我们需要更改此默认设置，因此建议你使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。
 

@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869858"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437065"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>使用 Azure 流分析集成 (预览将数据流式传输到 Azure SQL 数据库) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "88869858"
 - 预览数据的更易于使用：在所选表的上下文中预览来自事件源 (事件中心/IoT 中心) 的传入数据
 
 > [!IMPORTANT]
-> Azure 流分析作业可以输出到 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics (以前的 Azure SQL 数据仓库) 。 有关详细信息，请参阅[输出](../../stream-analytics/sql-database-output.md)。
+> Azure 流分析作业可以输出到 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics (以前的 SQL 数据仓库) 。 有关详细信息，请参阅[输出](../../stream-analytics/stream-analytics-define-outputs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

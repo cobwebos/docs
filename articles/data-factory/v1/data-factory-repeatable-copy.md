@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707287"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441623"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure 数据工厂中的可重复复制
 
@@ -104,7 +104,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>机制 2：使用 sliceIdentifierColumnName
 > [!IMPORTANT]
-> Azure SQL 数据仓库目前不支持 sliceIdentifierColumnName。 
+> 目前，Azure Synapse Analytics (以前的 SQL 数据仓库) 不支持 sliceIdentifierColumnName。 
 
 实现可重复性的第二种机制是在目标表中使用专用列 (sliceIdentifierColumnName)。 Azure 数据工厂使用此列来确保源与目标保持同步。 如果可以灵活更改或定义目标 SQL 表架构，则很适合使用这种方法。 
 
@@ -151,5 +151,5 @@ Azure 数据工厂会根据此列的需求填充数据，确保源与目标保�
 有关完整的 JSON 示例，请查看以下连接器文章： 
 
 - [Azure SQL 数据库](data-factory-azure-sql-connector.md)
-- [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

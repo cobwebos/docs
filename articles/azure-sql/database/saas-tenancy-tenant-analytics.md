@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043506"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437388"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "86043506"
 
 1.  从每个租户数据库提取数据，然后加载到分析存储中********。
 2.  转换提取后的数据进行分析处理****。
-3.  使用**商业智能**工具来草拟有用的见解，以指导制定决策。 
+3.  使用 **商业智能** 工具来草拟有用的见解，以指导制定决策。 
 
 本教程介绍如何执行下列操作：
 
@@ -44,7 +44,7 @@ ms.locfileid: "86043506"
 
 如果所有数据均位于一个多租户数据库中，则可轻松访问所有租户的数据。 但是，如果数据大量分散在几千个数据库中，访问就变得更加复杂。 为降低复杂度和尽量减少分析查询对事务数据的影响，一种方式是将数据提取到专门的分析数据库或数据仓库。
 
-本教程将展示一个针对 Wingtip Tickets SaaS 应用程序的完整分析情景。 首先，使用弹性作业从租户数据库中提取数据，再将其加载到分析存储的临时表中**。 分析存储可以是 SQL 数据库或 SQL 数据仓库。 对于大规模数据提取，建议使用 [Azure 数据仓库](../../data-factory/introduction.md)。
+本教程将展示一个针对 Wingtip Tickets SaaS 应用程序的完整分析情景。 首先，使用弹性作业从租户数据库中提取数据，再将其加载到分析存储的临时表中**。 分析存储可以是 SQL 数据库或 SQL 池。 对于大规模数据提取，建议使用 [Azure 数据仓库](../../data-factory/introduction.md)。
 
 接下来，将聚合的数据转换为一组[星型架构](https://www.wikipedia.org/wiki/Star_schema)表。 这些表由一个中心事实数据表和相关的维度表组成。  对于 Wingtip Tickets：
 
@@ -69,7 +69,7 @@ ms.locfileid: "86043506"
 
 若要完成本教程，请确保满足以下先决条件：
 
-- 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip SaaS 应用程序](../../sql-database/saas-dbpertenant-get-started-deploy.md)
+- 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 若要在五分钟内进行部署，请参阅 [部署和浏览 Wingtip SaaS 应用程序](../../sql-database/saas-dbpertenant-get-started-deploy.md)
 - 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。** 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)。
@@ -93,7 +93,7 @@ ms.locfileid: "86043506"
     - 若要将 SQL 数据库与列存储一起使用，请设置 **$DemoScenario**  =  **3**  
 3. 按 **F5** 运行演示脚本（用于调用 *Deploy-TenantAnalytics\<XX>.ps1* 脚本），以创建租户分析存储。 
 
-现在，你已部署了应用程序，并使用了兴趣的租户数据对其进行了填充，请使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)通过登录名 = *developer*，Password = *P \@ ssword1*连接**tenants1-user &lt; &gt; -** user 和**user- &lt; user &gt; **服务器。 有关更多指导，请参阅[简介教程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
+现在，你已部署了应用程序，并使用了兴趣的租户数据对其进行了填充，请使用[SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ，使用 Login = *developer*，Password = *P \@ ssword1*连接**tenants1-user &lt; &gt; -** user 和**user- &lt; user &gt; **服务器。 有关更多指导，请参阅[简介教程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
 
 ![architectureOverView](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "86043506"
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”。  
+5. 选择左窗格中的 " **数据库** "，然后输入 "用户名 = *开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”  。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

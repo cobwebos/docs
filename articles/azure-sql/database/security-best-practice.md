@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541713"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442099"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "87541713"
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>本指南不涉及的部署产品/服务
 
-- Azure SQL 数据仓库
+- Azure Synapse Analytics（以前称为 SQL 数据仓库）
 - Azure SQL VM (IaaS)
 - SQL Server
 
@@ -60,7 +60,7 @@ ms.locfileid: "87541713"
 - [NIST 专刊 800-53 安全控制](https://nvd.nist.gov/800-53)：AC-5、AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library)：6.3.2、6.4.2
 
-我们计划持续更新本文列出的建议和最佳做法。 使用本文底部的 "**反馈**" 链接提供对此文档的输入或任何更正。
+我们计划持续更新本文列出的建议和最佳做法。 使用本文底部的 " **反馈** " 链接提供对此文档的输入或任何更正。
 
 ## <a name="authentication"></a>身份验证
 
@@ -126,8 +126,8 @@ Azure 多重身份验证要求完成多种形式的身份验证，以此帮助�
 
 **最佳做法**：
 
-- 激活 Azure AD 中的条件性访问（需要高级订阅）。
-  - 请参阅文章[Azure AD 中的条件性访问](../../active-directory/conditional-access/overview.md)。  
+- Azure AD (需要高级订阅) 中激活条件性访问。
+  - 请参阅文章 [Azure AD 中的条件性访问](../../active-directory/conditional-access/overview.md)。  
 
 - 创建 Azure AD 组，并使用 Azure AD 条件访问为选定的组启用多重身份验证策略。
   - 请参阅[规划条件访问部署](../../active-directory/conditional-access/plan-conditional-access.md)一文。
@@ -240,7 +240,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
   - 确保不要将用户分配到不必要的角色。
 
 - 在 Azure 资源管理器中：
-  - 如果可用或 Azure 自定义角色，请使用内置角色，并分配必要的权限。
+  - 使用内置角色（如果可用）或 Azure 自定义角色，并分配所需的权限。
     - [Azure 内置角色](../../role-based-access-control/built-in-roles.md)
     - [Azure 自定义角色](../../role-based-access-control/custom-roles.md)
 
@@ -318,13 +318,13 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 当内置角色授予的权限过多或不足时，创建并使用用户定义的角色。
 
-- 还可在 T-sql 中的 SQL 代理作业步骤内或对 Azure 角色使用 Azure PIM，暂时将角色分配（也称为 "动态" 责任分离（DSD））。
+- 还可在 T-sql 中的 SQL 代理作业步骤中或对 Azure 角色使用 Azure PIM，暂时（也称为) 动态划分职责 (DSD）。
 
-- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 使用[可扩展密钥管理（EKM）](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使此分离更容易实现。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)可用于实现 EKM。
+- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 [ (EKM) 使用可扩展的密钥管理](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使此分离更容易实现。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可用于实现 EKM。
 
 - 始终确保针对安全相关的操作提供审核线索。
 
-- 可以检索 Azure 内置角色的定义，以查看所使用的权限，并通过 PowerShell 基于这些权限的摘录和 cumulations 创建自定义角色。
+- 可以检索 Azure 内置角色的定义以查看所用的权限，并通过 PowerShell 根据这些信息的摘录和累积创建自定义角色。
 
 - 由于 db_owner 数据库角色的任何成员都可以更改透明数据加密 (TDE) 等安全设置或更改 SLO，因此，应谨慎地授予此成员身份。 但是，许多任务要求使用 db_owner 特权。 例如，更改数据库选项等任何数据库设置的任务。 在任何解决方案中，审核都发挥着关键的作用。
 
@@ -530,7 +530,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 在服务器级别将“允许访问 Azure 服务”设置为“关闭”
 - 使用 VNet 服务终结点和 VNet 防火墙规则。
-- 使用 "专用链接（预览）"。
+- 使用 "专用链接 (预览") 。
 
 在 SQL 托管实例中：
 
@@ -538,9 +538,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **最佳做法**：
 
-- 通过在专用终结点上连接来限制对 Azure SQL 数据库和 SQL 托管实例的访问（例如，使用专用数据路径）：
-  - 托管实例可在虚拟网络内隔离，以防止外部访问。 位于同一区域中相同或对等互连的虚拟网络中的应用程序和工具可以直接访问它。 位于不同区域的应用程序和工具可以使用虚拟网络到虚拟网络连接或 ExpressRoute 线路对等互连来建立连接。 客户应使用网络安全组（NSG）来限制仅允许访问托管实例的资源访问端口1433。
-  - 对于 SQL 数据库，请使用[专用链接](../../private-link/private-endpoint-overview.md)功能，该功能为虚拟网络中的服务器提供专用专用 IP。 还可以将[虚拟网络服务终结点用于虚拟网络防火墙规则](vnet-service-endpoint-rule-overview.md)，以限制对服务器的访问。
+- 通过在专用终结点上连接来限制对 Azure SQL 数据库和 SQL 托管实例的访问 (例如，使用专用数据路径) ：
+  - 托管实例可在虚拟网络内隔离，以防止外部访问。 位于同一区域中相同或对等互连的虚拟网络中的应用程序和工具可以直接访问它。 位于不同区域的应用程序和工具可以使用虚拟网络到虚拟网络连接或 ExpressRoute 线路对等互连来建立连接。 客户应使用 (NSG) 的网络安全组来限制仅允许访问托管实例的资源访问端口1433。
+  - 对于 SQL 数据库，请使用 [专用链接](../../private-link/private-endpoint-overview.md) 功能，该功能为虚拟网络中的服务器提供专用专用 IP。 还可以将 [虚拟网络服务终结点用于虚拟网络防火墙规则](vnet-service-endpoint-rule-overview.md) ，以限制对服务器的访问。
   - 移动用户应该使用点到站点 VPN 连接，通过数据路径进行连接。
   - 连接到本地网络的用户应使用站点到站点 VPN 连接或 ExpressRoute 连接到数据路径。
 
@@ -604,9 +604,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 使用[虚拟网络服务终结点](vnet-service-endpoint-rule-overview.md)通过 Azure 主干网络安全访问 Azure 存储等 PaaS 服务。
 
-### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>防范分布式拒绝服务（DDoS）攻击
+### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>防范分布式拒绝服务 (DDoS) 攻击
 
-分布式拒绝服务（DDoS）攻击是恶意用户尝试将大量网络流量发送到 Azure SQL 数据库的尝试，其目标是使 Azure 基础结构成为惊人，并使其拒绝有效的登录和工作负荷。
+分布式拒绝服务 (DDoS) 攻击由恶意用户尝试向 Azure SQL 数据库发送大量网络流量，目的是使 Azure 基础结构成为惊人，并导致其拒绝有效登录和工作负荷。
 
 > 中提到的： OSA 实践 #9
 
@@ -614,15 +614,15 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 在 Azure 平台中，会自动启用 DDoS 保护。 它包括 always on 流量监视和对公共终结点上网络级别攻击的实时缓解。
 
-- 使用[Azure DDoS 防护](../../virtual-network/ddos-protection-overview.md)来监视与虚拟网络中部署的资源关联的公共 IP 地址。
+- 使用 [Azure DDoS 防护](../../virtual-network/ddos-protection-overview.md) 来监视与虚拟网络中部署的资源关联的公共 IP 地址。
 
-- 使用[AZURE SQL 数据库的高级威胁防护](threat-detection-overview.md)来检测对数据库的拒绝服务（DoS）攻击。
+- 使用 [AZURE SQL 数据库的高级威胁防护](threat-detection-overview.md) 来检测对数据库的拒绝服务 (DoS) 攻击。
 
 **最佳做法**：
 
-- 遵循[最小化攻击面](#minimize-attack-surface)中所述的做法有助于最大程度地减少 DDoS 攻击威胁。
+- 遵循 [最小化攻击面](#minimize-attack-surface) 中所述的做法有助于最大程度地减少 DDoS 攻击威胁。
 
-- 高级威胁防护**强力强制 SQL 凭据**警报有助于检测暴力破解攻击。 在某些情况下，警报甚至可以区分渗透测试工作负荷。
+- 高级威胁防护 **强力强制 SQL 凭据** 警报有助于检测暴力破解攻击。 在某些情况下，警报甚至可以区分渗透测试工作负荷。
 
 - 对于托管连接到 SQL 数据库的应用程序的 Azure VM：
   - 遵循建议，在 Azure 安全中心中通过面向 Internet 的终结点限制访问。
@@ -734,7 +734,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 持续监视 SQL 漏洞评估中建议的敏感数据的状态。 跟踪敏感数据发现规则，识别建议列中的任何分类偏差。  
 
-- 使用根据你的组织的特定需求定制的方式使用分类。 自定义 Azure 安全中心中的[SQL 信息保护](../../security-center/security-center-info-protection-policy.md)策略中的信息保护策略（灵敏度标签、信息类型、发现逻辑）。
+- 使用根据你的组织的特定需求定制的方式使用分类。 在 Azure 安全中心的 [SQL 信息保护](../../security-center/security-center-info-protection-policy.md) 策略中，自定义信息保护策略 (敏感度标签、信息类型、发现逻辑) 。
 
 ### <a name="track-access-to-sensitive-data"></a>跟踪对敏感数据的访问
 
@@ -781,7 +781,7 @@ Azure SQL 数据库和 SQL 托管实例目前提供以下技术来缓解数据�
 - 如果在 SQL 数据库中使用服务器，请设置以下选项：
   - 将“允许 Azure 服务”设置为“关闭”。
   - 设置 VNet 防火墙规则，仅允许来自包含你的 Azure VM 的子网的流量。
-  - 使用[专用链接](../../private-link/private-endpoint-overview.md)
+  - 使用 [专用链接](../../private-link/private-endpoint-overview.md)
 - 对于 SQL 托管实例，使用专用 IP 访问默认可以解决恶意 VM 的首要数据透露隐患。 在子网中启用子网委托功能，以在 SQL 托管实例子网中自动设置最严格的策略。
 - 恶意 DBA 隐患主要出现在 SQL 托管实例上，因为 SQL 托管实例的受攻击面较大，而网络要求对客户是可见的。 此问题的最佳缓解措施是首先应用本安全指南中的所有做法，以防止出现恶意 DBA 的情景（不仅可以解决数据透露）。 Always Encrypted 是保护敏感数据的一种方法，它可以加密敏感数据，并使 DBA 无法访问密钥。
 

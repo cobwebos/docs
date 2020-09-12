@@ -2,20 +2,20 @@
 title: 启用 Azure 流量管理器中的资源日志记录
 description: 了解如何为流量管理器配置文件启用资源日志记录，并访问作为结果创建的日志文件。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: rohink
-ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089050"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401310"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>启用 Azure 流量管理器中的资源日志记录
 
@@ -31,7 +31,7 @@ ms.locfileid: "87089050"
 
 1. **检索流量管理器配置文件：**
 
-    若要启用资源日志记录，需要使用流量管理器配置文件的 ID。 使用[AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)检索要为其启用资源日志记录的流量管理器配置文件。 输出包括流量管理器配置文件的 ID 信息。
+    若要启用资源日志记录，需要使用流量管理器配置文件的 ID。 使用 [AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)检索要为其启用资源日志记录的流量管理器配置文件。 输出包括流量管理器配置文件的 ID 信息。
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
@@ -39,7 +39,7 @@ ms.locfileid: "87089050"
 
 2. **为流量管理器配置文件启用资源日志记录：**
 
-    使用在上一步骤中使用[AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)获取的 ID 为流量管理器配置文件启用资源日志记录。 以下命令将流量管理器配置文件的详细日志存储到指定的 Azure 存储帐户。 
+    使用在上一步骤中使用 [AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)获取的 ID 为流量管理器配置文件启用资源日志记录。 以下命令将流量管理器配置文件的详细日志存储到指定的 Azure 存储帐户。 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
@@ -64,14 +64,14 @@ ms.locfileid: "87089050"
 
 ## <a name="traffic-manager-log-schema"></a>流量管理器日志架构
 
-通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。 有关顶级资源日志架构，请参阅[Azure 资源日志支持的服务、架构和类别](../azure-monitor/platform/tutorial-dashboards.md)。
+通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。 有关顶级资源日志架构，请参阅 [Azure 资源日志支持的服务、架构和类别](../azure-monitor/platform/tutorial-dashboards.md)。
 
 下表包含特定于 Azure 流量管理器配置文件资源的日志架构。
 
 |字段名称|字段类型|定义|示例|
 |----|----|---|---|
-|EndpointName|字符串|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
-|状态|字符串|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**Up**|
+|EndpointName|String|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
+|状态|String|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**Up**|
 |||||
 
 ## <a name="next-steps"></a>后续步骤

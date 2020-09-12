@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207713"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440994"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>将 SQL 池升级到 Gen2
 
@@ -34,12 +34,12 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理高
 
 | **区域** | **较低的 Gen2 可用** | **自动升级开始时间** |
 |:--- |:--- |:--- |
-| 加拿大东部 |2020 年 6 月 1 日 |2020年7月1日 |
+| 加拿大东部 |2020 年 6 月 1 日 |2020 年 7 月 1 日 |
 | 中国东部 |\* |\* |
 | 中国北部 |\* |\* |
 | 德国中部 |\* |\* |
-| 德国中西部 |可用 |5月1日，2020 |
-| 印度西部 |可用 |5月1日，2020  |
+| 德国中西部 |可用 |2020 年 5 月 1 日 |
+| 印度西部 |可用 |2020 年 5 月 1 日  |
 
 ## <a name="automatic-upgrade-process"></a>自动升级过程
 
@@ -58,7 +58,7 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理高
 
 进行自行升级时有两种选择。  可以就地升级当前 SQL 池，也可以将 Gen1 SQL 池还原为 Gen2 实例。
 
-- [就地升级](upgrade-to-latest-generation.md) - 此选项会将现有的 Gen1 SQL 池升级到 Gen2。 重启 SQL 池时，升级过程会导致连接性短暂下降（大约 5 分钟）。  重启 SQL 池后，它将完全可用。 如果在升级过程中遇到问题，请打开[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)并引用 "Gen2 upgrade" 作为可能的原因。
+- [就地升级](upgrade-to-latest-generation.md) - 此选项会将现有的 Gen1 SQL 池升级到 Gen2。 重启 SQL 池时，升级过程会导致连接性短暂下降（大约 5 分钟）。  重启 SQL 池后，它将完全可用。 如果在升级过程中遇到问题，请打开 [支持请求](sql-data-warehouse-get-started-create-support-ticket.md) 并引用 "Gen2 upgrade" 作为可能的原因。
 - [从还原点升级](sql-data-warehouse-restore-points.md) - 在当前 Gen1 SQL 池中创建用户定义的还原点，然后直接还原到 Gen2 实例。 现有的 Gen1 SQL 池会保持现状。 还原完成后，Gen2 SQL 池将完全可用。  在已还原的 Gen2 实例上运行所有测试和验证过程后，可以删除原始 Gen1 实例。
 
   - 步骤 1：在 Azure 门户中，[创建用户定义的还原点](sql-data-warehouse-restore-active-paused-dw.md)。
@@ -71,7 +71,7 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理高
 > [!NOTE]
 > Alter Index rebuild 是一项脱机操作，在重新生成完成之前，这些表将不可用。
 
-如果你的 SQL 池遇到任何问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)，并将 "Gen2 upgrade" 引用为可能的原因。
+如果你的 SQL 池遇到任何问题，请创建 [支持请求](sql-data-warehouse-get-started-create-support-ticket.md) ，并将 "Gen2 upgrade" 引用为可能的原因。
 
 有关详细信息，请参阅[升级到 Gen2](upgrade-to-latest-generation.md)。
 
@@ -79,7 +79,7 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理高
 
 **问：Gen2 的成本与 Gen1 相同吗？**
 
-- A:是的。
+- 答：是的。
 
 **问：升级将如何影响我的自动化脚本？**
 
@@ -133,4 +133,4 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理高
 - [就地升级和从还原点升级](upgrade-to-latest-generation.md)
 - [创建用户定义的还原点](sql-data-warehouse-restore-points.md)
 - [了解如何还原到 Gen2](sql-data-warehouse-restore-active-paused-dw.md)
-- [创建 SQL 数据仓库支持请求](https://go.microsoft.com/fwlink/?linkid=857950)
+- [打开 Azure Synapse Analytics 支持请求](https://go.microsoft.com/fwlink/?linkid=857950)
