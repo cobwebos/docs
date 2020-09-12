@@ -3,20 +3,20 @@ title: Azure 前端-路由规则匹配监视 |Microsoft Docs
 description: 本文可帮助你了解 Azure 前门如何匹配用于传入请求的路由规则
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878589"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401565"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 如何匹配请求与传递规则
 
@@ -29,7 +29,7 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 以下属性确定传入的请求是否与传递规则（或左侧）匹配：
 
 * **** HTTP 协议 (HTTP/HTTPS)
-* **主机**（例如 www \. foo.com、 \* . bar.com）
+* **宿主** (例如 www \. foo.com \* bar.com) 
 * **** 路径（例如，/\*、/users/\*/file.gif）
 
 这些属性会在内部扩展，因此协议/主机/路径的每种组合都是潜在的匹配集。

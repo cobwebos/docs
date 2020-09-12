@@ -3,20 +3,20 @@ title: Azure 前门中 HTTP 标头的协议支持 |Microsoft Docs
 description: 本文介绍前门支持的 HTTP 标头协议。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.author: duau
+ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799117"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399508"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure 前门中 HTTP 标头的协议支持
 本文概述了前门在调用路径的各个部分支持的协议 (参阅图像) 。 以下各节提供了有关前门支持的 HTTP 标头的详细信息。
@@ -33,9 +33,9 @@ ms.locfileid: "87799117"
 
 前门包含传入请求中的标头，除非由于限制而被删除。 前门还添加以下标头：
 
-| 标题  | 示例和说明 |
+| 标头  | 示例和说明 |
 | ------------- | ------------- |
-| Via |  Via： 1.1 Azure </br> 前门添加客户端的 HTTP 版本，后跟*Azure*作为 Via 标头的值。 此标头指示客户端的 HTTP 版本，前门是客户端与后端之间的请求的中间接收方。  |
+| Via |  Via： 1.1 Azure </br> 前门添加客户端的 HTTP 版本，后跟 *Azure* 作为 Via 标头的值。 此标头指示客户端的 HTTP 版本，前门是客户端与后端之间的请求的中间接收方。  |
 | X-Azure-ClientIP | X-ClientIP：127.0.0。1 </br> 表示与正在处理的请求关联的客户端 IP 地址。 例如，来自代理的请求可能会添加标头为 X 的标头，以指示原始调用方的 IP 地址。 |
 | X-Azure-SocketIP |  X-SocketIP：127.0.0。1 </br> 表示与当前请求所源自的 TCP 连接关联的套接字 IP 地址。 请求的客户端 IP 地址可能不等于其套接字 IP 地址，因为用户可以随意覆盖它。|
 | X-Azure-引用 |  X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> 标识由前门提供的请求的唯一引用字符串。 它用于搜索访问日志和故障排除的关键。|
@@ -50,7 +50,7 @@ ms.locfileid: "87799117"
 
 从后端发送到前门的任何标头也会传递给客户端。 下面是从前门发送到客户端的标头。
 
-| 标题  | 示例 |
+| 标头  | 示例 |
 | ------------- | ------------- |
 | X-Azure-引用 |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 这对于疑难解答至关重要，因为它用于搜索访问日志。|
 

@@ -3,7 +3,7 @@ title: 在 Azure 中使用负载均衡服务 | Microsoft 文档
 description: 本教程介绍如何使用以下 Azure 负载均衡产品组合创建方案：流量管理器、应用程序网关和负载均衡器。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: rohink
-ms.openlocfilehash: c5667a03d127441a9a911ff4b8daba0b3b138e3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711742"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393051"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 

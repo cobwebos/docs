@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 215d31ee4797dd3e7eef88d3a6679f2256f0ffae
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0ab9eb36e9d254c4dab5aed36ec6e9784f04d958
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225972"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400732"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>适用于 Redis 的 Azure 缓存的 azure 安全基线
 
@@ -503,7 +503,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 Azure Cache for Redis 实例应由虚拟网络/子网分隔并正确标记。 （可选）使用适用于 Redis 防火墙的 Azure Cache 定义规则，以便只有来自指定 IP 地址范围的客户端连接可以连接到缓存。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure Cache for Redis 实例应由虚拟网络/子网分隔并正确标记。 （可选）使用适用于 Redis 防火墙的 Azure Cache 定义规则，以便只有来自指定 IP 地址范围的客户端连接可以连接到缓存。
 
 如何创建其他 Azure 订阅：
 
@@ -947,11 +947,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 如何创建 Key Vault：
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何使用托管标识提供 Key Vault 身份验证： 
+如何对 Key Vault 进行身份验证：
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+如何分配 Key Vault 访问策略：
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure 安全中心监视**：是
 

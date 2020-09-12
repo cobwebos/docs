@@ -3,20 +3,20 @@ title: Azure 前门-流量路由方法 |Microsoft Docs
 description: 本文帮助你了解 Front Door 使用的不同流量路由方法
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: d12eb67abbc216afb241fa6c5a9ef9c66e65040c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687809"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399304"
 ---
 # <a name="front-door-routing-methods"></a>Front Door 路由方法
 
@@ -39,7 +39,7 @@ Front Door 提供四个主要的流量路由概念：
 
 下面是整体决策流：
 
-| 可用后端 | 优先度 | 延迟信号（基于运行状况探测） | 权重 |
+| 可用后端 | 优先级 | 延迟信号（基于运行状况探测） | 权重 |
 |-------------| ----------- | ----------- | ----------- |
 | 首先，选择已启用的、并且运行状况探测对其返回了正常状态 (200 OK) 的所有后端。 假设有六个后端 A、B、C、D、E 和 F，其中，C 的状态不正常，E 已禁用。 那么，可用后端的列表是 A、B、D 和 F。  | 接下来，在可用后端中选择优先级最高的后端。 假设后端 A、B 和 D 的优先级为 1，后端 F 的优先级为 2。 那么，选择的后端将是 A、B 和 D。| 选择在延迟范围内的后端（最小延迟，根据以毫秒为单位指定的延迟敏感度确定）。 假设 A、B 和 D 与请求抵达的 Front Door 环境之间的通信延迟分别是 15 毫秒、30 毫秒和 60 毫秒，延迟敏感度为 30 毫秒，那么，最低延迟池由后端 A 和 B 构成，因为 D 与最靠近的后端（即 A）之间的延迟差超过了 30 毫秒。 | 最后，Front Door 将会根据指定的权重比，在最终选择的后端池之间轮循流量。 假设后端 A 的权重为 5，后端 B 的权重为 8，则流量将按 5:8 的比在后端 A 与 B 之间分配。 |
 

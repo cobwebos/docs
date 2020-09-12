@@ -3,41 +3,39 @@ title: Azure Maps 搜索服务的最佳做法 | Microsoft Azure Maps
 description: 了解如何在 Microsoft Azure Maps 中使用搜索服务时应用最佳做法。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064270"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400698"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps 搜索服务的最佳做法
 
-Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括提供各种功能的 api，可帮助开发人员按名称或类别搜索地址、位置、业务列表和其他地理信息。 例如，"[模糊搜索" API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)允许用户搜索地址或兴趣点（POI）。
+Azure Maps [搜索服务](https://docs.microsoft.com/rest/api/maps/search) 包括提供各种功能的 api，可帮助开发人员按名称或类别搜索地址、位置、业务列表和其他地理信息。 例如，使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) ，用户可以在 POI) 搜索地址或 (兴趣点。
 
 本文介绍如何在调用 Azure Maps 搜索服务中的数据时应用最佳做法。 将了解如何执行以下操作：
-
-* 生成查询以返回相关的匹配项
-* 限定搜索结果
-* 了解结果类型之间的差异
-* 阅读地址搜索-响应结构
+> [!div class="checklist"]
+> * 生成查询以返回相关的匹配项
+> * 限定搜索结果
+> * 了解结果类型之间的差异
+> * 阅读地址搜索-响应结构
 
 ## <a name="prerequisites"></a>先决条件
 
-若要调用任何 Azure Maps 服务 API，需要具有 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
-有关 Azure Maps 中身份验证的信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
-
-> [!TIP]
-> 若要查询搜索服务，可以使用[Postman 应用程序](https://www.getpostman.com/apps)来生成 REST API 调用。 也可使用你喜欢的任何 API 开发环境。
+本文使用 [Postman 应用](https://www.postman.com/downloads/) 来构建 REST 调用，但你可以选择任何 API 开发环境。
 
 ## <a name="best-practices-to-geocode-addresses"></a>地理编码地址的最佳做法
 
-使用 Azure Maps 搜索服务搜索完整或部分地址时，API 将从搜索查询中读取关键字。 然后，它将返回地址的经度和纬度坐标。 此过程称为“地理编码”。 
+使用 Azure Maps 搜索服务搜索完整或部分地址时，API 将从搜索查询中读取关键字。 然后，它将返回地址的经度和纬度坐标。 此过程称为“地理编码”。
 
 在国家/地区中进行地理编码的能力取决于道路数据的可用性和地理编码服务的地理编码精度。 有关按国家或地区的 Azure Maps 地理编码功能的详细信息，请参阅[地理编码覆盖范围](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
 
@@ -61,7 +59,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 
 #### <a name="fuzzy-search-parameters"></a>模糊搜索参数
 
-如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。 例如，用户的输入可以是地址，也可以是感兴趣点的类型（POI），如*购物购物中心*。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
+如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。 例如，用户的输入可以是地址，也可以是 (POI) 的兴趣点类型，如 *购物购物中心*。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
 
 * 即使查询参数与用户需要的信息不完全匹配，`minFuzzyLevel` 和 `maxFuzzyLevel` 参数也有助于返回相关的匹配项。 可以将搜索查询设定为默认值 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2`，以提高性能并减少不正常的结果。 
 

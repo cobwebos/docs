@@ -3,20 +3,20 @@ title: Azure 前门-HTTP2 支持 |Microsoft Docs
 description: 本文可帮助你了解 Azure 前门中的 HTTP/2 支持
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985178"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399423"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Azure 前门中的 HTTP/2 支持
 
@@ -48,7 +48,7 @@ HTTP/2 的优点包括：
 
 所有主流浏览器均已在其当前版本中实现 HTTP/2 支持。 不支持的浏览器会自动回退到 HTTP/1.1。
 
-|浏览器|最低版本|
+|浏览者|最低版本|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|

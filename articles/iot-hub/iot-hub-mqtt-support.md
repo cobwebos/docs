@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure IoT 中心 MQTT 支持 | Microsoft Docs
-description: 开发人员指南 - 支持设备使用 MQTT 协议连接到面向设备的 IoT 中心终结点。 介绍了 Azure IoT 设备 SDK 中的内置 MQTT 支持。
+description: 支持使用 MQTT 协议连接到面向 IoT 中心面向设备的终结点的设备。 介绍了 Azure IoT 设备 SDK 中的内置 MQTT 支持。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +12,13 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+- contperfq1
+ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924183"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421401"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -43,7 +44,7 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 ## <a name="using-the-device-sdks"></a>使用设备 SDK
 
-支持 MQTT 协议的[设备 SDK](https://github.com/Azure/azure-iot-sdks) 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 还可以在客户端协议参数中指定基于 Web 套接字的 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。 虽然可以将**QoS 0**配置为更快的消息交换，但应注意，传递并不保证，也不会得到确认。 出于此原因， **QoS 0**通常称为 "火灾"。
+支持 MQTT 协议的[设备 SDK](https://github.com/Azure/azure-iot-sdks) 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 还可以在客户端协议参数中指定基于 Web 套接字的 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。 虽然可以配置 QoS 0 以加快消息交换速度，但你应该注意，这种传递不能得到保证或确认。 出于此原因，QoS 0 通常称为“用后即焚”。
 
 当设备连接到 IoT 中心时，设备 SDK 会提供方法，让设备与 IoT 中心交换消息。
 
@@ -84,15 +85,15 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |C#     | 300 秒 |  [是](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
 |Python   | 60 秒 |  否   |
 
-按照 [MQTT 规范](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)，IoT 中心的 keep-alive ping 时间间隔是客户端 keep-alive 值的 1.5 倍。 但是，IoT 中心将服务器端最大超时限制为 29.45 分钟（1767 秒），因为所有 Azure 服务都绑定到了 Azure 负载均衡器 TCP 空闲超时（29.45 分钟）。 
+按照 [MQTT 规范](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)，IoT 中心的 keep-alive ping 间隔为客户端 keep-alive 值1.5 倍。 但是，IoT 中心将服务器端最大超时限制为 29.45 分钟（1767 秒），因为所有 Azure 服务都绑定到了 Azure 负载均衡器 TCP 空闲超时（29.45 分钟）。 
 
-例如，使用 Java SDK 的设备会发送 keep-alive ping，然后失去网络连接。 230 秒后，设备会由于处于脱机状态而错过 keep-alive ping。 但是，IoT 中心不会立即关闭连接 - 它会再等待 `(230 * 1.5) - 230 = 115` 秒，然后再断开设备的连接，并显示错误 [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)。 
+例如，使用 Java SDK 的设备发送 keep-alive ping，然后失去网络连接。 230 秒后，设备会由于处于脱机状态而错过 keep-alive ping。 但是，IoT 中心不会立即关闭连接 - 它会再等待 `(230 * 1.5) - 230 = 115` 秒，然后再断开设备的连接，并显示错误 [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)。 
 
 可设置的客户端最大 keep-alive 值为 `1767 / 1.5 = 1177` 秒。 任何流量都将重置 keep-alive。 例如，成功的 SAS 令牌刷新会重置 keep-alive。
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>将设备应用从 AMQP 迁移到 MQTT
 
-如果使用[设备 SDK](https://github.com/Azure/azure-iot-sdks)，则从使用 AMQP 切换到 MQTT 需要在客户端初始化中更改协议参数，如前面所述。
+如果使用 [设备 sdk](https://github.com/Azure/azure-iot-sdks)，则从使用 AMQP 切换到 MQTT 需要在客户端初始化中更改协议参数，如前文所述。
 
 执行此操作时，请确保检查下列各项：
 
@@ -100,11 +101,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * MQTT 在接收[云到设备消息](iot-hub-devguide-messaging.md)时不支持拒绝操作。 如果后端应用需要接收来自设备应用的响应，请考虑使用[直接方法](iot-hub-devguide-direct-methods.md)。
 
-* Python SDK 不支持 AMQP
+* Python SDK 中不支持 AMQP。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
-如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在 CONNECT 数据包中，设备应使用以下值：
+如果设备无法使用设备 SDK，仍可使用端口 8883 上的 MQTT 协议连接到公共设备终结点。 在 CONNECT 数据包中，设备应使用以下值：
 
 * **ClientId** 字段使用 **deviceId**。
 
@@ -114,16 +115,16 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
-* “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
+* “密码”  字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > 如果使用 X.509 证书身份验证，则不需要使用 SAS 令牌密码。 有关详细信息，请参阅[在 Azure IoT 中心设置 X.509 安全性](iot-hub-security-x509-get-started.md)并按照[以下](#tlsssl-configuration)代码说明进行操作。
+  > 如果使用 X.509 证书身份验证，则不需要使用 SAS 令牌密码。 有关详细信息，请参阅在 [Azure IoT 中心设置 x.509 安全性](iot-hub-security-x509-get-started.md) ，并按照 [TLS/SSL 配置部分](#tlsssl-configuration)中的代码说明进行操作。
 
   有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)的设备部分。
 
-  测试时，也可以使用跨平台的[适用于 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或 CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
+  测试时，还可以使用跨平台的 [Azure IoT 工具进行 Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或使用 CLI 扩展命令 [az IoT 中心生成-sas 令牌](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) ，快速生成可复制并粘贴到自己的代码中的 sas 令牌。
 
 ### <a name="for-azure-iot-tools"></a>对于 Azure IoT Tools
 
@@ -148,9 +149,10 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 设备应用可以在 CONNECT 数据包中指定 Will 消息 。 设备应用应该使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作为 Will 主题名称，用于定义要作为遥测消息转发的 Will 消息 。 在此情况下，如果关闭网络连接，但之前未从设备中接收到 DISCONNECT 数据包，则 IoT 中心将 CONNECT 数据包中提供的 Will 消息发送到遥测通道  。 遥测通道可以是默认事件终结点或由 IoT 中心路由定义的自定义终结点。 消息具有 iothub-MessageType 属性，其中包含分配给它的 Will 的值 。
 
 ### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>在不使用 Azure IoT C SDK 的情况下使用 MQTT 的 C 代码示例
-此[存储库](https://github.com/Azure-Samples/IoTMQTTSample)中有几个 C/C++ 演示项目，演示如何在不使用 Azure IoT C SDK 的情况下通过 IoT 中心发送遥测消息并接收事件。 
 
-这些示例使用 Eclipse Mosquitto 库将消息发送到在 IoT 中心实现的 MQTT 中转站。
+在 [IOT MQTT 示例存储库](https://github.com/Azure-Samples/IoTMQTTSample)中，你将找到几个 c/c + + 演示项目，其中展示了如何发送遥测消息，并在不使用 Azure IOT C SDK 的情况下接收具有 IoT 中心的事件。 
+
+这些示例使用 Eclipse Mosquitto 库向在 IoT 中心内实现的 MQTT Broker 发送消息。
 
 此存储库包含：
 
@@ -162,7 +164,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备孪生事件的代码。
 
-* PnPMQTTWin32：包含用于将遥测消息（含 IoT 即插即用预览版设备功能）发送到在 Windows 计算机上生成和运行的 Azure IoT 中心的代码。 [在此](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)了解关于 IoT 即插即用功能的详细信息
+* PnPMQTTWin32：包含用于将遥测消息（含 IoT 即插即用预览版设备功能）发送到在 Windows 计算机上生成和运行的 Azure IoT 中心的代码。 你可以阅读有关[IoT 插件 & 播放](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)的详细信息
 
 **对于 Linux：**
 
@@ -180,7 +182,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>直接使用 MQTT 协议（作为模块）
 
-通过 MQTT 并使用模块标识连接到 IoT 中心的操作与设备类似（如[上面](#using-the-mqtt-protocol-directly-as-a-device)所述），但需要：
+使用模块标识通过 MQTT 连接到 IoT 中心类似于将 [MQTT 协议直接作为) 设备使用部分中](#using-the-mqtt-protocol-directly-as-a-device) 所述的设备 (，但需要使用以下内容：
 
 * 将客户端 ID 设置为 `{device_id}/{module_id}`。
 
@@ -304,19 +306,19 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 若要从 IoT 中心接收消息，设备应使用 `devices/{device_id}/messages/devicebound/#` 作为**主题筛选器**来进行订阅。 主题筛选器中的多级通配符 `#` 仅用于允许设备接收主题名称中的其他属性。 IoT 中心不允许使用 `#` 或 `?` 通配符筛选子主题。 由于 IoT 中心不是常规用途的发布-订阅消息传送中转站，因此它仅支持存档的主题名称和主题筛选器。
 
-在设备成功订阅 `devices/{device_id}/messages/devicebound/#` 主题筛选器表示的设备特定终结点前，不会从 IoT 中心收到任何消息。 建立订阅后，设备会接收建立订阅后发送给它的云到设备消息。 如果设备在 **CleanSession** 标志设置为 0 的情况下进行连接，则订阅在经历不同的会话后仍然持久存在。 在此情况下，下次使用 CleanSession 0 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 1 的 CleanSession 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
+设备在成功订阅了由主题筛选器表示的设备特定终结点之前，不会从 IoT 中心收到任何消息 `devices/{device_id}/messages/devicebound/#` 。 建立订阅后，设备会接收建立订阅后发送给它的云到设备消息。 如果设备在 **CleanSession** 标志设置为 0 的情况下进行连接，则订阅在经历不同的会话后仍然持久存在。 在此情况下，下次使用 CleanSession 0 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 1 的 CleanSession 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
 
 如有消息属性，IoT 中心会传送包含主题名称 `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀 **$** ，但应用程序属性使用没有前缀的原始属性名称。 有关属性包格式的其他详细信息，请参阅[发送设备到云的消息](#sending-device-to-cloud-messages)。
 
-在从云到设备的消息中，属性包中的值表示如下表中所示：
+在云到设备消息中，属性包中的值的表示形式如下表所示：
 
-| 属性值 | 表示形式 | 描述 |
+| 属性值 | 表示形式 | 说明 |
 |----|----|----|
 | `null` | `key` | 属性包中只显示密钥 |
-| 空字符串 | `key=` | 键后跟一个无值的等号 |
-| 非 null，非空值 | `key=value` | 键后跟一个等号和值 |
+| 空字符串 | `key=` | 密钥后跟一个等号，无值 |
+| 不可为 null、非空值 | `key=value` | 密钥后跟一个等号和值 |
 
-下面的示例显示一个属性包，其中包含三个应用程序属性： **prop1** ，值为 `null` ;**prop2** ( "" ) ，则为空字符串;和值为 "a string" 的**prop3** 。
+以下示例显示包含三个应用程序属性的属性包：值为 `null` 的 prop1、为空字符串 ("") 的 prop2 和值为“string”的 prop3  。
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
@@ -328,7 +330,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含**请求 ID** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备孪生数据，并且使用与请求相同的**请求 ID**。
 
-请求 ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南](iot-hub-devguide-messaging.md)中所述），且需要验证以确保状态是整数。
+请求 ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南](iot-hub-devguide-messaging.md)中所述），并且状态将验证为一个整数。
 
 响应正文包含设备孪生的 properties 节，如以下响应示例所示：
 
@@ -354,7 +356,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 | 429 | 请求过多（受限），如 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)中所述 |
 | 5** | 服务器错误 |
 
-有关详细信息，请参阅[设备孪生开发人员指南](iot-hub-devguide-device-twins.md)。
+有关详细信息，请参阅 [设备孪生开发人员指南](iot-hub-devguide-device-twins.md)。
 
 ## <a name="update-device-twins-reported-properties"></a>更新设备孪生的报告属性
 
@@ -368,7 +370,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 3. 然后，服务发送一个响应消息，其中包含 `$iothub/twin/res/{status}/?$rid={request id}` 主题上报告的属性集合的新 ETag 值。 此响应消息使用与请求相同的**请求 ID**。
 
-请求消息正文包含 JSON 文档，该文档包含已报告属性的新值。 JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如：
+请求消息正文包含 JSON 文档，该文档包含已报告属性的新值。 JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应成员。 一个成员集，用于 `null` 从包含对象中删除成员。 例如：
 
 ```json
 {
@@ -402,7 +404,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 上述孪生已报告属性更新操作成功后，来自 IoT 中心的发布消息将具有以下主题：`$iothub/twin/res/204/?$rid=1&$version=6`，其中 `204` 是表示成功的状态代码，`$rid=1` 对应于代码中设备提供的请求 ID，`$version` 对应于更新后设备孪生已报告属性部分的版本。
 
-有关详细信息，请参阅[设备孪生开发人员指南](iot-hub-devguide-device-twins.md)。
+有关详细信息，请参阅 [设备孪生开发人员指南](iot-hub-devguide-device-twins.md)。
 
 ## <a name="receiving-desired-properties-update-notifications"></a>接收所需属性更新通知
 
@@ -421,7 +423,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 > [!IMPORTANT]
 > IoT 中心仅在连接设备时才会生成更改通知。 请确保实现[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)，让 IoT 中心和设备应用之间的所需属性保持同步。
 
-有关详细信息，请参阅[设备孪生开发人员指南](iot-hub-devguide-device-twins.md)。
+有关详细信息，请参阅 [设备孪生开发人员指南](iot-hub-devguide-device-twins.md)。
 
 ## <a name="respond-to-a-direct-method"></a>响应直接方法
 
@@ -429,7 +431,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 进行响应时，设备向主题 `$iothub/methods/res/{status}/?$rid={request id}` 发送带有有效 JSON 或空正文的消息。 在此消息中，**request ID** 必须与请求消息中的相符，**status** 必须为整数。
 
-有关详细信息，请参阅[直接方法开发人员指南](iot-hub-devguide-direct-methods.md)。
+有关详细信息，请参阅 [直接方法开发人员指南](iot-hub-devguide-direct-methods.md)。
 
 ## <a name="additional-considerations"></a>其他注意事项
 

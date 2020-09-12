@@ -3,13 +3,13 @@ title: 概念 - Azure Kubernetes 服务 (AKS) 中的存储
 description: 了解 Azure Kubernetes 服务 (AKS) 中的存储，其中包括卷、永久性卷、存储类和声明
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406956"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421146"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -32,8 +32,6 @@ ms.locfileid: "87406956"
 
 - *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 ReadWriteOnce 的形式装载，因此仅可用于单个 Pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
 - *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 HDD 支持的 Azure 标准存储，也可以使用由高性能 SSD 支持的Azure 高级存储。
-> [!NOTE] 
-> Azure 文件存储支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储。
 
 在 Kubernetes 中，卷不仅仅能够表示可以存储和检索信息的传统磁盘。 Kubernetes 卷还可以用于将数据注入 Pod 以供容器使用。 Kubernetes 中常见的其他卷类型包括：
 
@@ -55,12 +53,18 @@ PersistentVolume 可以由群集管理员*静态*创建，或者由 Kubernetes A
 
 若要定义不同的存储层（例如高级和标准），可创建 *StorageClass*。 StorageClass 还定义 *reclaimPolicy*。 删除 Pod 后且可能不再需要永久性卷时，此 reclaimPolicy 可控制基础 Azure 存储资源在此情况下的行为。 可删除基础存储资源，也可保留基础存储资源以便与未来的 Pod 配合使用。
 
-在 AKS 中会创建 4 个初始 StorageClass：
+在 AKS 中， `StorageClasses` 使用树内存储插件为群集创建了四个初始：
 
-- *默认*-使用 Azure StandardSSD 存储创建托管磁盘。 回收策略指示在删除使用基础 Azure 磁盘的持久卷后，将删除该磁盘。
-- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略再次指示在删除使用基础 Azure 磁盘的持久卷后，将删除该磁盘。
-- azurefile：使用 Azure 标准存储创建 Azure 文件共享。 回收策略指示在删除使用基础 Azure 文件共享的永久性卷后，将删除该文件共享。
-- azurefile-premium：使用 Azure 高级存储创建 Azure 文件共享。 回收策略指示在删除使用基础 Azure 文件共享的永久性卷后，将删除该文件共享。
+- `default` -使用 Azure StandardSSD 存储创建托管磁盘。 回收策略可确保在删除所用的持久卷时删除基础 Azure 磁盘。
+- `managed-premium` -使用 Azure 高级存储创建托管磁盘。 再次使用回收策略可确保在删除所用的持久卷时，删除基础 Azure 磁盘。
+- `azurefile` -使用 Azure 标准存储创建 Azure 文件共享。 回收策略可确保在删除使用该文件的持久卷时删除基础 Azure 文件共享。
+- `azurefile-premium` -使用 Azure 高级存储创建 Azure 文件共享。 回收策略可确保在删除使用该文件的持久卷时删除基础 Azure 文件共享。
+
+对于使用新容器存储接口的群集 (CSI) 外部插件 (预览) 会创建以下附加项 `StorageClasses` ：
+- `managed-csi` -使用 Azure StandardSSD 本地冗余存储 (LRS) 创建托管磁盘。 回收策略可确保在删除所用的持久卷时删除基础 Azure 磁盘。 存储类还会将永久性卷配置为可扩展，只需编辑具有新大小的永久性卷声明。
+- `managed-csi-premium` -使用 Azure 高级本地冗余存储 (LRS) 创建托管磁盘。 再次使用回收策略可确保在删除所用的持久卷时，删除基础 Azure 磁盘。 同样，此存储类允许扩展永久性卷。
+- `azurefile-csi` -使用 Azure 标准存储创建 Azure 文件共享。 回收策略可确保在删除使用该文件的持久卷时删除基础 Azure 文件共享。
+- `azurefile-csi-premium` -使用 Azure 高级存储创建 Azure 文件共享。 回收策略可确保在删除使用该文件的持久卷时删除基础 Azure 文件共享。
 
 如果没有为永久性卷指定 StorageClass，则会使用默认 StorageClass。 请求永久性卷时应小心，以便它们使用你需要的适当存储。 可使用 `kubectl` 创建 StorageClass 来满足其他需求。 以下示例使用高级托管磁盘并指定在删除 Pod 时应该*保留*基础 Azure 磁盘：
 
@@ -77,7 +81,7 @@ parameters:
 ```
 
 > [!NOTE]
-> AKS 协调默认存储类，并将覆盖你对这些存储类所做的任何更改。
+> AKS 会协调默认存储类，并将覆盖你对这些存储类所做的任何更改。
 
 ## <a name="persistent-volume-claims"></a>永久性卷声明
 

@@ -1,19 +1,19 @@
 ---
-title: 排查 Azure Site Recovery 的 Hyper-v 灾难恢复问题
+title: 使用 Azure Site Recovery 对 Hyper-V 灾难恢复进行故障排除
 description: 介绍如何排查使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制时遇到的灾难恢复问题
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132449"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426116"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -116,7 +116,7 @@ ms.locfileid: "86132449"
         - 根据 VM 或其应用的繁忙程度，此数据变动率将会提高或保持在较高级别。
         - 对于 Site Recovery 的标准存储，平均源磁盘数据变动率为 2 MB/秒。 [了解详细信息](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - 此外，可以[验证存储可伸缩性目标](../storage/common/scalability-targets-standard-account.md)。
-8. 如果你使用的是基于 Linux 的服务器，请确保在其上启用了应用程序一致性。 [了解详细信息](./site-recovery-faq.md#replication)
+8. 如果使用的是基于 Linux 的服务器，请确保在其上启用了应用一致性。 [了解详细信息](./site-recovery-faq.md#replication)
 9. 运行[部署规划器](hyper-v-deployment-planner-run.md)。
 10. 查看有关[网络](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)和[存储](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)的建议。
 
@@ -124,34 +124,34 @@ ms.locfileid: "86132449"
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS 在 Hyper-V 主机中失败
 
 1. 在事件日志中查找 VSS 错误和建议：
-    - 在 hyper-v 主机服务器上，打开**事件查看器**  >  **应用程序和服务日志**""  >  **Microsoft**  >  **Windows**  >  **hyper-v**  >  **管理员**"中的 hyper-v 管理员事件日志。
+    - 在 Hyper-V 主机服务器上，通过“事件查看器” > “应用程序和服务日志” > “Microsoft” > “Windows” > “Hyper-V” > “管理”打开 Hyper-V 管理事件日志。     
     - 检查是否有任何事件指示发生应用一致的快照失败。
-    - 典型的错误为：“Hyper-V 无法为虚拟机 'XYZ' 生成 VSS 快照集: 编写器遇到非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
+    - 典型的错误消息如下：“Hyper-V 无法为虚拟机 'XYZ' 生成 VSS 快照集:编写器遇到非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
-    - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。****
-    - 你可以通过命令**enable-vmintegrationservice- \<VMName> Name VSS**从 hyper-v 主机上的提升的 PowerShell 会话中进行检查，还可以通过登录到来宾 VM 来获取此信息。 [了解详细信息](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。
+    - 可以在 Hyper-V 主机上权限提升的 PowerShell 会话中，使用命令 Get-VMIntegrationService -VMName\<VMName>-Name VSS 执行此项检查。也可以登录到来宾 VM 来获取此信息。 [了解详细信息](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - 确保 VM 上的备份/VSS Integration Services 正在运行且处于正常状态。 否则，请重启这些服务，并重启 Hyper-V 主机服务器上的 Hyper-V 卷影复制请求程序服务。
 
 ### <a name="common-errors"></a>常见错误
 
-**错误代码** | **消息** | **详细信息**
+错误代码 | **消息** | **详细信息**
 --- | --- | ---
-**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集: 更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败: 更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
+**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集:有更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机的复制操作失败:有更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
 **0x80070032** | “由于版本与 Hyper-V 预期的版本不匹配，Hyper-V 卷影复制请求程序无法连接到虚拟机 <./VMname>” | 检查是否安装了最新的 Windows 更新。<br/><br/> [升级](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)到最新版本的 Integration Services。
 
 
 
 ## <a name="collect-replication-logs"></a>收集复制日志
 
-所有 hyper-v 复制事件都记录在位于 "**应用程序和服务日志**"  >  **Microsoft**  >  **Windows**中的 Hyper-V-VMMS\Admin 日志中。 此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
+所有 Hyper-V 复制事件都记录在“应用程序和服务日志” > “Microsoft” > “Windows”下的 Hyper-V-VMMS\Admin 日志中。   此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
 
-1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击 "**查看**" "  >  **显示分析和调试日志**"。 分析日志显示在“Hyper-V-VMMS”下。****
-2. 在“**操作**”窗格中，单击“**启用日志**”。 
+1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击“视图” > “显示分析和调试日志”。  分析日志显示在“Hyper-V-VMMS”下。
+2. 在“操作”窗格中，单击“启用日志”。 
 
     ![启用日志](media/hyper-v-azure-troubleshoot/enable-log.png)
     
-3. 启用后，日志将作为“事件跟踪会话”显示在“性能监视器”中的“数据收集器集”下。************ 
+3. 启用后，日志将作为“事件跟踪会话”显示在“性能监视器”中的“数据收集器集”下。   
 4. 若要查看收集到的信息，请禁用日志，从而停止跟踪会话。 然后保存日志，并再次在事件查看器中打开日志，或使用其他工具根据需要转换日志。
 
 

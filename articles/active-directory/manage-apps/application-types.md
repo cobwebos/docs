@@ -1,128 +1,42 @@
 ---
-title: 应用程序列表中意料之外的应用程序 | Microsoft Docs
-description: 如何查看租户中的全部应用程序，并了解应用程序如何显示在“企业应用程序”下的“所有应用程序”列表中
+title: 使用用于标识管理的 Azure Active Directory 租户查看应用
+description: 了解如何使用 Azure Active Directory 租户查看标识管理的所有应用程序。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6c329b7de3e18989e7dbfa35aa6e9303c129654
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400715"
 ---
-# <a name="unexpected-application-in-my-applications-list"></a>应用程序列表中意料之外的应用程序
-
-本文介绍应用程序如何显示在“企业应用程序”下的“所有应用程序”列表中。 
-
-## <a name="how-to-see-all-applications-in-your-tenant"></a>如何查看租户中的全部应用程序
-
-若要查看租户中的所有应用程序，需要使用“筛选器”控件，在“所有应用程序”列表下显示“所有应用程序”。 执行以下步骤：
-
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
-
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
-
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
-
-5.  单击“所有应用程序”，查看所有应用程序的列表。
-
-6.  在“所有应用程序列表”顶部，单击以使用“筛选器”控件。
-
-7.  在“筛选器”窗格上，将“显示”选项设为“所有应用程序”。
+# <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>使用用于标识管理的 Azure AD 租户查看应用
+[有关应用程序管理的快速入门系列](view-applications-portal.md)介绍了基础知识。 在此示例中，你将了解如何使用用于标识管理的 Azure AD 租户查看所有应用。 本文更深入地介绍了深入的应用类型。
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>为什么在所有应用程序列表中出现某个特定应用程序？
-
 筛选为“所有应用程序”时，“所有应用程序列表” 会显示租户中的每个服务主体对象。 服务主体对象以多种方式出现在此列表中：
+- 添加应用程序库的任何应用程序时，包括：
+   - **Azure AD 企业应用程序** –使用 Azure AD 门户上的 " **企业应用程序** " 选项添加到租户的应用。 通常使用 SAML 标准集成的应用。
+   - **Azure AD 应用注册** –使用 Azure AD 门户上的 **应用注册** 选项添加到租户的应用。 通常，使用 Open ID Connect 和 OAuth 标准开发自定义开发的应用程序。
+   - **应用程序代理应用程序** - 要从外部向其提供单一登录且在本地环境中运行的应用程序
+- 注册或登录到时，与 Azure Active Directory 集成的第三方应用程序。 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) 就是一个示例。
+- Microsoft 应用，如 Microsoft 365 或 Office 365。
+- 当通过使用[应用程序注册表](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
+- 当通过使用 [V2.0 应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
+- 添加应用程序时，使用 Visual Studio 的[ASP.NET 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)进行开发
+- 使用 [Azure AD PowerShell 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)创建服务主体对象时
+- 以管理员身份[同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用租户中的数据时
+- [用户同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用租户中的数据时
+- 启用某些在租户中存储数据的服务时。 相应的一个示例是密码重置，密码重置是作为服务主体进行建模的，以便安全存储密码重置策略。
 
-1. 添加应用程序库的任何应用程序时，包括：
-
-   1. **Azure AD 库应用程序** - 已针对采用 Azure AD 的单一登录而预集成的应用程序
-
-   2. **应用程序代理应用程序** - 要从外部向其提供单一登录且在本地环境中运行的应用程序
-
-   3. **以自定义方式开发的应用程序** - 组织要在 Azure AD 应用程序开发平台上开发的应用程序，但可能尚不存在
-
-   4. **非库应用程序**–引入你自己的应用程序！ 任何所需的 Web 链接或任何呈现“用户名”和“密码”字段的应用程序，都支持 SAML 或 OpenID Connect 协议，或支持为实现单一登录而预集成到 Azure AD 的 SCIM。
-
-2. 注册或登录与 Azure Active Directory 集成的<sup></sup>第三方应用程序时。 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) 就是一个示例。
-
-3. 注册第一方应用程序或者将用户或组的许可证添加到其中时，例如 [Microsoft Office 365](https://products.office.com/)
-
-4. 当通过使用[应用程序注册表](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
-
-5. 当通过使用 [V2.0 应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
-
-6. 添加正在使用 Visual Studio 的 [ASP.net 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)开发的应用程序时
-
-7. 使用 [Azure AD PowerShell 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)创建服务主体对象时
-
-8. 以管理员身份[同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用租户中的数据时
-
-9. [用户同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用租户中的数据时
-
-10. 启用某些在租户中存储数据的服务时。 相应的一个示例是密码重置，密码重置是作为服务主体进行建模的，以便安全存储密码重置策略。
-
-要详细深入地了解如何将应用添加到目录，请参阅[如何以及为何将应用程序添加到 Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)。
-
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>我要删除特定用户或组到应用程序的分配
-
-若要删除用户或组对应用程序的分配，请按照[在 Azure Active Directory 中从企业应用删除用户或组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal)一文中所列的步骤进行操作。
-
-## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>我要禁用每个用户对应用程序的所有访问权限
-
-若要禁用所有用户对应用程序的登录，请遵循[在 Azure Active Directory 中对企业应用禁用用户登录](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)一文中所列出的步骤。
-
-## <a name="i-want-to-delete-an-application-entirely"></a>我要彻底删除应用程序
-
-若要**删除应用程序**，请执行以下步骤：
-
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
-
-2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
-
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
-
-5. 单击“所有应用程序”，查看所有应用程序的列表。
-
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
-
-6. 选择要删除的应用程序。
-
-7. 加载应用程序后，在应用程序顶部的“概述”窗格中，单击“删除”图标。
-
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
-
-针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可以代表用户授予许可。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
-
-若要**禁用用户未来在整个目录中执行的所有同意操作**，请执行以下步骤：
-
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
-
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-
-4.  单击导航菜单中的 "**用户和组**"。
-
-5.  单击 "**用户设置**"。
-
-6.  通过将“用户可以允许应用访问其数据”**** 切换为“否”**** 来禁用用户未来的所有同意操作，并单击“保存”**** 按钮。
+详细了解如何将应用添加到你的目录，以及如何将应用程序添加到 [Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)

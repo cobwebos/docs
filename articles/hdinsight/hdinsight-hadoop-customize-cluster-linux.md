@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/02/2020
+ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006665"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400851"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -58,7 +58,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
       * 可通过 http:// 路径访问的公共文件共享服务。 例如 Azure Blob、GitHub、OneDrive。 有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
 
-     * 对于具有 ESP 的群集，支持 wasb://或 wasbs://或 http [s]：//Uri。
+     * 对于具有 ESP 的群集，支持 wasb:// 或 wasbs:// 或 http[s]:// URI。
 
 * 可以限制为只对特定的节点类型运行， 例如头节点或工作节点。
 
@@ -66,13 +66,15 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
     持久化脚本操作必须有唯一的名称。 持久化脚本用于自定义通过缩放操作添加到群集的新工作节点。 进行缩放操作时，持久化脚本还可以将更改应用于其他节点类型， 例如头节点。
 
-    `Ad hoc`脚本不会持久保存。 创建群集期间使用的脚本操作自动持久保存下来。 它们在运行后不会应用于添加到群集的工作节点。 然后，可以将 `ad hoc` 脚本升级为持久化脚本，或将持久化脚本降级为 `ad hoc` 脚本。 即使明确指出应予保存，也不会持久保存失败的脚本。
+    `Ad hoc` 脚本不会持久保存。 创建群集期间使用的脚本操作自动持久保存下来。 它们在运行后不会应用于添加到群集的工作节点。 然后，可以将 `ad hoc` 脚本升级为持久化脚本，或将持久化脚本降级为 `ad hoc` 脚本。 即使明确指出应予保存，也不会持久保存失败的脚本。
 
 * 可以接受脚本在执行期间使用的参数。
 
 * 在群集节点上以根级别权限运行。
 
 * 可以通过 Azure 门户、Azure PowerShell、Azure CLI 或 HDInsight .NET SDK 使用。
+
+* 删除或修改 VM 上的服务文件的脚本操作可能会影响服务的运行状况和可用性。
 
 群集保留已运行的所有脚本的历史记录。 需要查找要升级或降级的脚本的 ID 时，历史记录很有用。
 

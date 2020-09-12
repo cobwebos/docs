@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552826"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421452"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -88,11 +88,11 @@ ms.locfileid: "87552826"
 
 1. 在“源属性”中按组织输入不带引号的常量值，并单击“保存”。 
 
-    ![打开 Azure 门户中的“用户属性和声明”部分](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Azure 门户中 & 声明部分的组织属性](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. 常量值显示如下。
 
-    ![打开 Azure 门户中的“用户属性和声明”部分](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![编辑 Azure 门户中 & 声明 "部分的属性](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>特定声明 - 转换
 
@@ -121,7 +121,7 @@ ms.locfileid: "87552826"
 2. 从“转换”下拉列表中选择函数。 根据所选的函数，必须提供要在转换中评估的参数和常量值。 有关可用函数的详细信息，请参阅下表。
 3. 若要应用多个转换，请单击**添加转换**。最多可对声明应用两个转换。 例如，可以先提取 `user.mail` 的电子邮件前缀。 然后，将字符串设为大写。
 
-   ![编辑 NameID（名称标识符）值](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![多个声明转换](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 可以使用以下功能转换声明。
 
@@ -129,8 +129,8 @@ ms.locfileid: "87552826"
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **Join()** | 通过联接两个属性来创建新的值。 或者，可以在两个属性之间使用分隔符。 对于 NameID 声明转换，联接仅限已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLower()** | 将所选属性的字符转换为小写字符。 |
-| **ToUpper()** | 将所选属性的字符转换为大写字符。 |
+| **ToLowercase ( # B1 ** | 将所选属性的字符转换为小写字符。 |
+| **ToUppercase ( # B1 ** | 将所选属性的字符转换为大写字符。 |
 | **Contains()** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的电子邮件地址（如果包含域 @contoso.com），否则就需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.email<br/>*值*: "@contoso.com"<br/>参数 2(输出)：user.email<br/>参数 3（如果没有匹配项，则为输出）：user.userprincipalname |
 | **EndWith()** | 如果输入以指定值结束，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果员工 ID 以 000 结束），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.employeeid<br/>*值*：000<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |
 | **StartWith()** | 如果输入以指定值开始，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果国家/地区以“美国”开始），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.country<br/>*值*：美国<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |

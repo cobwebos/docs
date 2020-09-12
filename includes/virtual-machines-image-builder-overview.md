@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554896"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89303943"
 ---
 借助标准化虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中保持一致。 映像通常包括预定义的安全性和配置设置，以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器，只需提供一个描述映像的简单配置，将其提交给该服务，即可构建映像并进行分发。
  
@@ -100,7 +100,7 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 Azure 映像生成器会将映像分发到所选区域，这可能会产生网络流出量费用。
 
 ## <a name="hyper-v-generation"></a>Hyper-V 代系
-映像生成器当前支持 Hyper-v 第1代映像和 Vm。
+映像生成器目前仅支持创建 (Gen1) 1 映像的 Hyper-v 生成， (SIG) 或托管映像。 如果要创建 Gen2 映像，则需使用源 Gen2 映像，并将其分发到 VHD。 之后，你将需要从 VHD 创建托管映像，并将其作为 Gen2 映像插入到 SIG 中。
  
 ## <a name="next-steps"></a>后续步骤 
  

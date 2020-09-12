@@ -3,23 +3,23 @@ title: Azure 前端-URL 重写 |Microsoft Docs
 description: 本文将帮助你了解 Azure 前门如何为你的路由重写 URL （如果已配置）。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471466"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398931"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 重写（自定义转发路径）
-Azure 前门支持 URL 重写，使你能够配置**自定义转发路径**，以便在构造转发到后端的请求时使用。 默认情况下，如果未提供自定义转发路径，则 Front Door 会将传入的 URL 路径复制到转发请求中使用的 URL。 转发请求中使用的主机标头与为选定后端配置的主机标头一样。 阅读[后端主机标头](front-door-backend-pool.md#hostheader)，了解它的作用以及配置方式。
+Azure 前门支持 URL 重写，使你能够配置 **自定义转发路径** ，以便在构造转发到后端的请求时使用。 默认情况下，如果未提供自定义转发路径，则 Front Door 会将传入的 URL 路径复制到转发请求中使用的 URL。 转发请求中使用的主机标头与为选定后端配置的主机标头一样。 阅读[后端主机标头](front-door-backend-pool.md#hostheader)，了解它的作用以及配置方式。
 
 使用自定义转发路径进行 URL 重写的强大之处在于，它会将与通配符路径匹配的传入路径的任何部分复制到转发路径（这些路径段是下面示例中的**绿色**段）：
 </br>

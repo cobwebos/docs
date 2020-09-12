@@ -3,20 +3,20 @@ title: 在 Azure 流量管理器中管理终结点 | Microsoft Docs
 description: 本文将帮助你从 Azure 流量管理器中添加、删除、启用和禁用终结点。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: rohink
-ms.openlocfilehash: 9f779910460ec19f0efb02fb1a65f39bb100050c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711606"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392912"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>添加、禁用、启用或删除终结点
 
@@ -30,7 +30,7 @@ ms.locfileid: "84711606"
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>将云服务或应用服务终结点添加到流量管理器配置文件
 
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
-2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击 "流量管理器" 配置文件。
+2. 在门户的搜索栏中，搜索要修改的 **流量管理器配置文件** 名称，然后在显示的结果中单击 "流量管理器" 配置文件。
 3. 在“流量管理器配置文件”  边栏选项卡的“设置”  部分中，单击“终结点”  。
 4. 在显示的“终结点”  边栏选项卡中，单击“添加”  。
 5. 在“添加终结点”  边栏选项卡中，按如下所示完成输入：
