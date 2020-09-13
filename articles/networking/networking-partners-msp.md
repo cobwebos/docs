@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: fc3c4055feedeb7c1c41a53dc26ac7c29a2cb4fe
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b9bb3691901d551f63592bee60adec913ee437ca
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007496"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029641"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -52,7 +52,7 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure 网络咨询服务：1 周评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure)；[Azure 评估服务：1 周](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure 迁移：3 周评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
 |[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[托管 Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[托管虚拟 WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
-|[技术 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|[E2E 托管网络解决方案](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure 专用 LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
+|[技术 Mahindra](https://www.techmahindra.com/en-in/network-services/)|[E2E 托管网络解决方案](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure 专用 LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 运行状况检查：5 日评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 日实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[Palo Alto Networks 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 

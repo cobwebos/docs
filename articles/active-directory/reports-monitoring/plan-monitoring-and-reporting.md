@@ -1,6 +1,6 @@
 ---
 title: '& 监视部署规划报表-Azure AD'
-description: 介绍如何计划和执行 implmentation 的报告和监视。
+description: 介绍如何计划和执行报表和监视的实现。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229746"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030984"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
 
@@ -99,10 +99,10 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 * 需要满足业务需求
 * 不适用
 
-|领域 |说明 |
+|区域 |说明 |
 |-|-|
 |保留| **日志保留期超过30天**。 由于法律或业务要求，需要将审核日志和登录日志 Azure AD 超过30天。 |
-|Analytics| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
+|分析| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
 | 操作见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用、趋势等。 |
 | 安全见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用情况、趋势等。 |
 | SIEM 系统中的集成      | **SIEM 集成**。 需要将 Azure AD 登录日志和审核日志集成并流式传输到现有的 SIEM 系统。 |
@@ -133,7 +133,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 通过将日志路由到 Azure 事件中心，可与第三方 SIEM 工具集成。 可以通过此集成将 Azure AD 活动日志数据与其他由 SIEM 托管的数据组合起来，获取更丰富的有关环境的见解。 
 
-了解如何[将日志流式传输到事件中心](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)。
+了解如何[将日志流式传输到事件中心](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>规划 Azure AD 报告和监视的操作和安全性
 

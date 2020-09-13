@@ -4,12 +4,12 @@ description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142395"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030374"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -78,6 +78,8 @@ Datadog 是世界领先的监视服务，适用于云规模的应用程序。 �
 
 [查看相关文档。][datadog-doc]
 
+Datadog 的新 Azure marketplace 集成计划于 10 2020 月提前发布。 发布时，将在此处添加一个链接。 
+
 ## <a name="dynatrace"></a>Dynatrace
 
 ![DynaTrace 徽标](./media/partners/dynatrace.png)
@@ -136,7 +138,7 @@ Microfocus ArcSight 为 Azure Monitor 事件中心提供了一个智能连接器
 
 [了解详细信息](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight 文档。")
 
-Microfocus**操作桥**会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供服务监视质量的独特组合，与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 Operations Bridge 使客户能够以业务和 IT 利益干系人都能理解的方式提供一个单一虚拟管理平台，可在任何具有浏览器的设备上使用。
+Microfocus **操作桥** 会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供服务监视质量的独特组合，与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 Operations Bridge 使客户能够以业务和 IT 利益干系人都能理解的方式提供一个单一虚拟管理平台，可在任何具有浏览器的设备上使用。
 
 了解详细信息
 - [OB 套件概述](https://www.microfocus.com/products/operations-bridge-suite/overview)

@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: ba0b242fa28b8dac774a48bdd9297e44a17fa3ec
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 09/11/2020
+ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483025"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030582"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -49,6 +49,8 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ![调试设置参数](media/data-flow/debug-settings2.png "调试设置参数")
 
+ADF 数据流中用于调试模式的默认 IR 是一个具有4核单驱动程序节点的小型四核单辅助角色节点。 在测试数据流逻辑时，此操作可在较小的数据示例中正常运行。 如果在数据预览期间展开调试设置中的行限制，或在管道调试期间在源中设置更高的采样行数，则可能要考虑在新的 Azure Integration Runtime 中设置更大的计算环境。 然后，你可以使用更大的计算环境重新启动调试会话。
+
 ## <a name="data-preview"></a>数据预览
 
 打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果在上没有调试模式，数据流将仅在 "检查" 选项卡中显示和转换每个转换的当前元数据。数据预览只会查询您在调试设置中设置为限制的行数。 单击 " **刷新** " 提取数据预览。
@@ -59,6 +61,8 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 > 文件源仅限制您看到的行数，而不限制所读取的行数。 对于非常大的数据集，建议你拍摄该文件的一小部分，并将其用于测试。 可以为文件数据集类型的每个源选择 "调试" 设置中的临时文件。
 
 在数据流中以调试模式运行时，数据不会写入接收器转换。 调试会话旨在用作转换的测试工具。 调试期间不需要接收器，并且会在数据流中忽略接收器。 如果希望测试在接收器中写入数据，请从 Azure 数据工厂管道执行数据流，并使用管道中的调试执行。
+
+数据预览是在 Spark 内存中使用行限制和数据帧数据采样的已转换数据的快照。 因此，在此方案中不使用或测试接收器驱动程序。
 
 ### <a name="testing-join-conditions"></a>测试联接条件
 

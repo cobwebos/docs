@@ -6,22 +6,22 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503202"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030321"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的临时表
 
 本文包含有关使用临时表的基本指导，并重点介绍了 Synapse SQL 中的会话级别临时表的原则。 
 
-SQL 池和 SQL 点播（预览版）资源都可以利用临时表。 SQL 点播包含本文末尾介绍的限制。 
+SQL 池和 SQL 点播 (预览) 资源均可利用临时表。 SQL 点播包含本文末尾介绍的限制。 
 
 ## <a name="temporary-tables"></a>临时表
 
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="drop-temporary-tables"></a>删除临时表
-创建新会话时，应不存在任何临时表。  但是，如果调用的是使用相同名称创建临时的同一存储过程，则为了确保 `CREATE TABLE` 语句成功，请使用简单的预存在检查，其中包括 `DROP` ： 
+创建新会话时，应不存在任何临时表。  但是，如果调用的是使用相同名称创建临时的同一存储过程，则为了确保 `CREATE TABLE` 语句成功，请使用简单的预存在检查，其中包括  `DROP` ： 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -195,7 +195,7 @@ GO
 
 由于 `DROP TABLE` 存储过程的末尾没有，当存储过程完成时，创建的表将保持不变，并且可以在存储过程之外读取。  
 
-与其他 SQL Server 数据库相比，Synapse SQL 允许您在创建该数据库的过程外部使用该临时表。  可以在会话中的**任何位置**使用通过 SQL 池创建的临时表。 因此，你将拥有更多模块化且可管理的代码，如以下示例中所示：
+与其他 SQL Server 数据库相比，Synapse SQL 允许您在创建该数据库的过程外部使用该临时表。  可以在会话中的 **任何位置** 使用通过 SQL 池创建的临时表。 因此，你将拥有更多模块化且可管理的代码，如以下示例中所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -224,7 +224,7 @@ SQL 池对临时表有一些实现限制：
 - 不能在临时表上创建视图。
 - 只能通过哈希或轮循机制分布来创建临时表。  不支持重复的临时表分布。 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 点播（预览版）中的临时表
+## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 按需 (预览中的临时表) 
 
 支持 SQL 点播中的临时表，但它们的使用受到限制。 它们不能用于以文件为目标的查询。 
 

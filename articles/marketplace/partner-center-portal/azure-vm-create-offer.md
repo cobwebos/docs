@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816518"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029696"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "88816518"
 将产品/服务发布到 Azure 市场时，可以：
 
 - 借助 Microsoft 品牌推广你的公司。
-- 覆盖 1 亿以上的 Office 365 和 Dynamics 365 用户以及 200,000 个以上的组织。
+- 超过 100000000 Microsoft 365 和 Dynamics 365 用户，以及超过200000个组织。
 - 从这些市场获得优质的潜在顾客。
 - 通过 Microsoft 现场和远程销售团队推广你的服务。
 
@@ -162,7 +162,7 @@ ms.locfileid: "88816518"
 
        a. 在“自定义修订条款”框中输入自己的修订条款。 可以输入无限数量的字符。 在 Azure 门户的产品/服务购买流程中，只有为这些自定义条款指定的租户 ID 中的客户会看到它们。
 
-       b. 必需提供租户 ID。 每个自定义修订最多可以面向 20 个租户 ID。 如果添加自定义修订，则必须至少提供一个租户 ID 以在 Azure 中标识客户。 客户可以选择“Azure Active Directory” > “属性”，在 Azure 中找到此项。 目录 ID 值即为租户 ID（例如，50c464d3-4930-494c-963c-1e951d15360e）。 还可以使用[我的 Microsoft Azure 和 Office 365 租户 ID 是什么？](https://www.whatismytenantid.com/)中客户的域名 Web 地址来查找其组织的租户 ID。
+       b. 必需提供租户 ID。 每个自定义修订最多可以面向 20 个租户 ID。 如果添加自定义修订，则必须至少提供一个租户 ID 以在 Azure 中标识客户。 客户可以选择“Azure Active Directory” > “属性”，在 Azure 中找到此项。 目录 ID 值即为租户 ID（例如，50c464d3-4930-494c-963c-1e951d15360e）。 你还可以通过使用 " [我的 Microsoft Azure" 和 "Microsoft 365 租户 id"](https://www.whatismytenantid.com/)的位置来查找你的客户的组织租户 id。
 
        c. 可以根据需要为租户 ID 提供友好说明，以帮助确定修订所面向的客户。
 
@@ -542,7 +542,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 说明
-8. 有用链接
+8. 有用的链接
 9. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
@@ -574,7 +574,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 1. 名称
 2. 说明
-3. 有用链接
+3. 有用的链接
 4. 屏幕截图/视频
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：

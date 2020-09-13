@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 05/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799037"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029539"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全信息重置工作或学校密码
 
@@ -107,7 +107,7 @@ ms.locfileid: "88799037"
 
 ## <a name="how-to-change-your-password"></a>如何更改密码
 
-如果只想更改密码，可通过 Office 365 门户、Azure 访问面板或 Windows 10 登录页来执行此操作。
+如果只是想要更改密码，可以通过 Office 365 门户、"我的应用" 门户或 Windows 10 登录页来执行此操作。
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>使用 Office 365 门户更改密码
 
@@ -121,11 +121,11 @@ ms.locfileid: "88799037"
 
 4. 键入旧密码，创建并确认新密码，然后选择“提交”。
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>从 Azure 访问面板更改密码
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>从 "我的应用" 门户更改密码
 
-如果通常使用 Azure 访问面板 (MyApps) 来访问应用，则请使用此方法：
+如果通常从 "我的应用" 门户访问应用，请使用此方法：
 
-1. 使用现有密码登录到 [Azure 访问面板](https://myapps.microsoft.com/)。
+1. 使用现有密码登录到 " [我的应用" 门户](https://myapps.microsoft.com/)。
 
 2. 选择右上角的个人资料，然后选择“个人资料”。
 

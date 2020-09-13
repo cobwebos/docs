@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120363"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030746"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置潜在顾客管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "86120363"
 
 * Dynamics 365 Customer Engagement 实例上能够安装解决方案的管理员权限。
 * 为用于从商业市场产品/服务发送潜在顾客的潜在顾客服务创建新服务帐户的租户管理员权限。
-* 对 Office 365 管理门户的访问权限。
+* 访问管理门户。
 * 对 Azure 门户的访问权限。
 
 ## <a name="install-the-solution"></a>安装解决方案

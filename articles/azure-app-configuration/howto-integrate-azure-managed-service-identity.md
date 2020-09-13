@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 0525f305e130247fd88ee2858c79cbfd0a15283e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400817"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029857"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -73,7 +73,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
     ![添加托管标识](./media/add-managed-identity.png)
 
-1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照 [分配 Key Vault 访问策略](/azure/key-vault/assign-access-policy-portal)中的说明进行操作。
+1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照 [分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-portal)中的说明进行操作。
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 

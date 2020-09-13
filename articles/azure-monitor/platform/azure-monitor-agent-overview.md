@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005218"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030821"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -99,11 +99,13 @@ Azure Monitor 代理目前支持以下操作系统。
 ## <a name="security"></a>安全性
 Azure Monitor 代理无需任何密钥，而是需要 [系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理之前，必须在每个虚拟机上启用系统分配的托管标识。
 
+## <a name="networking"></a>网络
+Azure Monitor 代理支持 Azure 服务标记 (需要) AzureMonitor 和 AzureResourceManager 标记，但尚不能使用 Azure Monitor 私有链接范围或直接代理。
 
 ## <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 
 
-| properties | Windows | Linux |
+| 属性 | Windows | Linux |
 |:---|:---|:---|
 | 发布者 | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |

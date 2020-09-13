@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855707"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030791"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -135,7 +135,7 @@ ms.locfileid: "88855707"
    在接下来的几个步骤中，将根据条件的结果设置要采取的操作：
 
    * 如果条件解析为“如果否”，则不执行任何操作。
-   * 如果条件解析为“如果是”，则触发连接 Office 365 帐户以发送电子邮件的操作。
+   * 如果为 **"是"**，则会触发连接工作或学校帐户以发送电子邮件的操作。 
 
 1. 选择“如果是”下的“添加操作” 。
 

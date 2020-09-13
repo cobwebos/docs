@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: a08c6abe52801e1fbafd517adcb8fd9a8b8b4aee
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462286"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030066"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>用于将本地或云数据迁移到 Azure Cosmos DB 的选项
 
@@ -47,7 +47,7 @@ ms.locfileid: "89462286"
 |Offline|[Azure Cosmos DB Spark 连接器](spark-connector.md)|Azure Cosmos DB SQL API。 <br/><br/>可以将其他源用于 Spark 生态系统的其他连接器。| Azure Cosmos DB SQL API。 <br/><br/>可以将其他目标用于 Spark 生态系统的其他连接器。| &bull; 使用 Azure Cosmos DB 大容量执行程序库。 <br/>&bull; 适用于大型数据集。 <br/>&bull; 需要自定义 Spark 设置。 <br/>&bull; Spark 对架构不一致非常敏感，迁移过程中可能会出现问题。 |
 |Offline|[包含 Cosmos DB 批量执行程序库的自定义工具](migrate-cosmosdb-data.md)| 源依赖于自定义代码 | Azure Cosmos DB SQL API| &bull; 提供检查点功能，这些功能可提高迁移复原能力。 <br/>&bull; 适用于超大型数据集 (10 TB +) 。  <br/>&bull; 需要此工具的自定义安装，以应用服务的形式运行。 |
 |联机|[Cosmos DB Functions + ChangeFeed API](change-feed-functions.md)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 易于设置。 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才起作用。 <br/>&bull; 不适合用于大型数据集。 <br/>&bull; 不捕获源容器的删除操作。 |
-|联机|[使用 ChangeFeed 的自定义迁移服务](https://github.com/nomiero/CosmosDBLiveETLSample)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 提供进度跟踪。 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才起作用。 <br/>&bull; 同样适用于较大的数据集。<br/>&bull; 要求用户设置应用服务以托管更改源处理器。 <br/>&bull; 不捕获源容器的删除操作。|
+|联机|[使用 ChangeFeed 的自定义迁移服务](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 提供进度跟踪。 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才起作用。 <br/>&bull; 同样适用于较大的数据集。<br/>&bull; 要求用户设置应用服务以托管更改源处理器。 <br/>&bull; 不捕获源容器的删除操作。|
 |联机|[Striim](cosmosdb-sql-api-migrate-data-striim.md)| &bull;联手 <br/>&bull;Apache Cassandra<br/><br/> 有关其他受支持的源，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/) 。 |&bull;Azure Cosmos DB SQL API <br/>&bull; Azure Cosmos DB Cassandra API<br/><br/> 有关其他受支持的目标，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/) 。 | &bull; 适用于各种源，如 Oracle、DB2、SQL Server。<br/>&bull; 轻松构建 ETL 管道并提供监视仪表板。 <br/>&bull; 支持更大的数据集。 <br/>&bull; 由于这是第三方工具，因此需要从 marketplace 购买并安装在用户的环境中。|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
