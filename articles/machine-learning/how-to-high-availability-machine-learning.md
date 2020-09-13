@@ -1,5 +1,5 @@
 ---
-title: 如何提高复原能力
+title: 复原 & 高可用性
 titleSuffix: Azure Machine Learning
 description: 了解如何使用高可用性配置使 Azure 机器学习资源更具复原能力。
 services: machine-learning
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 07/16/2020
-ms.openlocfilehash: 9b298e10d3eb95bcb0ef525eb973259a3ab1dbbb
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/16/2020
+ms.openlocfilehash: abb24ef1cc6a693acbaf6561a185fd5ae536a66d
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852547"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668795"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>增加 Azure 机器学习复原
 
@@ -53,7 +53,7 @@ Azure 服务包括：
 | **Azure 机器学习基础结构** | Microsoft | |
 | **关联的资源** |
 | Azure 存储 | 你 | |
-| 密钥保管库 | 你 | ✓ |
+| Key Vault | 你 | ✓ |
 | 容器注册表 | 你 | |
 | Application Insights | 你 | NA |
 | **计算资源** |

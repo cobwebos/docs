@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948107"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004300"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -363,9 +363,9 @@ ms.locfileid: "88948107"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | availabilitysets | 否 | 
+> | availabilitysets | 是 <br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移动可用性集。 | 
 > | diskencryptionsets | 否 | 
-> | disks | 否 | 
+> | disks | 是 <br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移动 azure vm 和相关磁盘。 | 
 > | galleries | 否 | 
 > | galleries/images | 否 | 
 > | galleries/images/versions | 否 | 
@@ -377,7 +377,7 @@ ms.locfileid: "88948107"
 > | sharedvmimages | 否 | 
 > | sharedvmimages/versions | 否 | 
 > | snapshots | 否 | 
-> | virtualmachines | 是 | 
+> | virtualmachines | 是 <br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移动 azure vm。 | 
 > | virtualmachines/extensions | 否 | 
 > | virtualmachinescalesets | 否 | 
 
@@ -448,7 +448,7 @@ ms.locfileid: "88948107"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | resourceproviders | 不适合 | 
+> | resourceproviders | 否 | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -544,14 +544,14 @@ ms.locfileid: "88948107"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | servers | 您可以使用跨区域读取副本来移动现有服务器。 [了解详细信息](../../postgresql/howto-move-regions-portal.md)。<br/><br/> 如果为服务预配了异地冗余备份存储，则可以使用异地还原在其他区域中进行还原。 [了解详细信息](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
+> | servers | 可以使用跨区域只读副本移动现有服务器。 [了解详细信息](../../postgresql/howto-move-regions-portal.md)。<br/><br/> 如果为服务预配了异地冗余备份存储，则可以使用异地还原在其他区域中进行还原。 [了解详细信息](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | servers | 您可以使用跨区域读取副本来移动现有服务器。 [了解详细信息](../../mysql/howto-move-regions-portal.md)。
+> | servers | 可以使用跨区域只读副本移动现有服务器。 [了解详细信息](../../mysql/howto-move-regions-portal.md)。
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -559,7 +559,7 @@ ms.locfileid: "88948107"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | servergroups | 否 | 
-> | servers | 您可以使用跨区域读取副本来移动现有服务器。 [了解更多](../../postgresql/howto-move-regions-portal.md)。
+> | servers | 可以使用跨区域只读副本移动现有服务器。 [了解详细信息](../../postgresql/howto-move-regions-portal.md)。
 > | serversv2 | 否 | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
@@ -569,9 +569,9 @@ ms.locfileid: "88948107"
 > | ------------- | ----------- |
 > | artifactsources | 否 | 
 > | rollouts | 否 |  
-> | servicetopologies | 不适合 | 
-> | servicetopologies / services | 不适合 |  
-> | servicetopologies / services / serviceunits | 不适合 | 
+> | servicetopologies | 否 | 
+> | servicetopologies / services | 否 |  
+> | servicetopologies / services / serviceunits | 否 | 
 > | steps | 否 | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -590,7 +590,7 @@ ms.locfileid: "88948107"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | 控制器 | 否 | 
-> | AKS 群集 | 不适合<br/><br/> [了解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) 有关移动到另一个区域的详细信息。
+> | AKS 群集 | 否<br/><br/> [了解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) 有关移动到另一个区域的详细信息。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -600,7 +600,7 @@ ms.locfileid: "88948107"
 > | labcenters | 否 | 
 > | labs | 否 | 
 > | labs / environments | 否 |  
-> | labs / servicerunners | 不适合 | 
+> | labs / servicerunners | 否 | 
 > | labs / virtualmachines | 否 |  
 > | schedules | 否 |  
 
@@ -908,13 +908,13 @@ ms.locfileid: "88948107"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是 <br/><br/> 可以将现有配置导出为模板，然后在新区域中部署该模板。 了解如何移动[外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)或[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)负载均衡器。 |
+> | loadbalancers | 是 <br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) 来移动内部和外部负载均衡器。 |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
-> | networkinterfaces | 是 | 
+> | networkinterfaces | 是 <br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移动 nic。 | 
 > | networkprofiles | 否 | 
-> | networksecuritygroups | 是 | 
+> | networksecuritygroups | 是 <br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) (NGSs) 移动网络安全组。 | 
 > | networkwatchers |  否 |  
 > | networkwatchers/connectionmonitors |  否 | 
 > | networkwatchers/lenses |  否 | 
@@ -924,7 +924,7 @@ ms.locfileid: "88948107"
 > | privatednszones/virtualnetworklinks |  否 |  
 > | privateendpoints | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是<br/><br/> 可以将现有公共 IP 地址配置导出为模板，然后在新区域中部署该模板。 [详细了解](../../virtual-network/move-across-regions-publicip-portal.md)如何移动公共 IP 地址。 |
+> | publicipaddresses | 是<br/><br/> 使用 [Azure 资源移动器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移动公共 IP 地址。 |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -1134,11 +1134,11 @@ ms.locfileid: "88948107"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | instancepools | 否 | 
-> | managedinstances | 是 | 
+> | managedinstances | 是 <br/><br/> [了解](/azure/azure-sql/database/move-resources-across-regions) 有关跨区域移动托管实例的详细信息。 | 
 > | managedinstances/databases | 是 | 
 > | servers | 是 | 
-> | servers/databases | 是 | 
-> | servers/elasticpools | 是 | 
+> | servers/databases | 是 <br/><br/> [了解](/azure/azure-sql/database/move-resources-across-regions) 有关跨区域移动数据库的详细信息。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 数据库。  | 
+> | servers/elasticpools | 是 <br/><br/> [了解](/azure/azure-sql/database/move-resources-across-regions) 有关跨区域移动弹性池的详细信息。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 弹性池。  | 
 > | virtualclusters | 是 | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
@@ -1147,7 +1147,7 @@ ms.locfileid: "88948107"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | sqlvirtualmachinegroups |  否 |  
-> | sqlvirtualmachines |  不适合 |  
+> | sqlvirtualmachines |  否 |  
 
 ## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
 

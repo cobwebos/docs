@@ -16,20 +16,20 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061500"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662548"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
-使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
+使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Microsoft 365 工作负荷（如 Exchange Online 和 Skype for Business）的用户将受益于完整的全局地址列表，以便他们能够发送电子邮件并呼叫所有人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
 
 但在某些情况下，需要对默认配置进行一些更改。 下面是一些示例：
 
 * 打算使用[多重 Azure AD 目录拓扑](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)。 然后，需要应用筛选器以控制要将哪些对象同步到特定的 Azure AD 目录。
-* 要试用 Azure 或 Office 365，因此只想在 Azure AD 中创建少量的用户。 在进行小规模试用时，无需使用完整全局地址列表即可演示功能。
+* 针对 Azure 或 Microsoft 365 运行试验，只需 Azure AD 中的一部分用户。 在进行小规模试用时，无需使用完整全局地址列表即可演示功能。
 * Azure AD 中有很多不需要的服务帐户和其他非个人帐户。
 * 因为符合性，所以不能删除任何本地用户帐户， 而只能禁用它们。 但是在 Azure AD 中，建议只存在活动的帐户。
 
@@ -217,7 +217,7 @@ Azure AD Connect 安装向导始终创建此配置。
 在入站筛选中，使用 **范围** 功能来决定哪些对象要同步或者不同步。 可以在此处根据组织的要求进行调整。 范围模块包含组和子句，决定何时在范围内包含同步规则。   一个组包含一个或多个子句。 多个子句之间使用逻辑“AND”，多个组之间使用逻辑“OR”。
 
 让我们看看以下示例：  
-![范围](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![显示添加范围筛选器示例的屏幕截图](./media/how-to-connect-sync-configure-filtering/scope.png)  
 这应该显示为 (department = IT) OR (department = Sales AND c = US)。 
 
 以下示例和步骤以用户对象为例，但可以将此示例用于所有对象类型。
@@ -275,7 +275,7 @@ Azure AD Connect 安装向导始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从“开始”菜单启动“同步规则编辑器”。  
 3. 在“规则类型”下，单击“出站”。  
-4. 根据所使用的连接版本，查找名**为 "Out TO aad – User join** " 或 " **out To Aad-user join SOAInAD**" 的规则，然后单击 "**编辑**"。
+4. 根据所使用的连接版本，查找名 **为 "Out TO aad – User join** " 或 " **out To Aad-user join SOAInAD**" 的规则，然后单击 " **编辑**"。
 5. 在弹出窗口中，回答“是”，以创建规则的副本。 
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。  
 7. 单击左侧导航栏中的“范围筛选器”，然后单击“添加子句”。   在“属性”中选择“mail”。   在“运算符”中选择“ENDSWITH”。   在“值”中键入 **\@contoso.com**，然后单击“添加子句”。   在“属性”中选择“userPrincipalName”。   在“运算符”中选择“ENDSWITH”。   在“值”  中，键入 **\@contoso.com**。

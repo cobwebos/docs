@@ -16,25 +16,25 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019755"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662486"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
-通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](https://docs.microsoft.com/graph/extensibility-overview
+通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](/graph/extensibility-overview
 )使用这些属性。 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。 你还可以使用此功能在 Azure AD 中创建动态组。
 
-目前，没有任何 Office 365 工作负荷使用这些属性。
+目前，无 Microsoft 365 工作负荷使用这些属性。
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>自定义要与 Azure AD 同步的属性
 
 在安装向导的自定义设置路径中配置要同步的其他属性。
 
 > [!NOTE]
-> 在1.2.65.0 以前的版本 Azure AD Connect 中，**可用属性**的搜索框区分大小写。
+> 在 1.2.65.0 之前的 Azure AD Connect 版本中，“可用属性”搜索框区分大小写。
 
 ![架构扩展向导](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
@@ -54,32 +54,32 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
 ## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>向导在 Azure AD 中进行的配置更改
 
-在安装 Azure AD Connect 期间，会注册可以使用这些属性的应用程序。 可以在 Azure 门户中看到此应用程序。 其名称始终为“租户架构扩展应用”****。
+在安装 Azure AD Connect 期间，会注册可以使用这些属性的应用程序。 可以在 Azure 门户中看到此应用程序。 其名称始终为“租户架构扩展应用”  。
 
 ![架构扩展应用](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-请确保选择“所有应用程序”**** 以查看此应用。
+请确保选择“所有应用程序”  以查看此应用。
 
-这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀****。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
+这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 查看属性
 
-通过使用[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer#)，现在可以通过 Microsoft Graph API 使用这些特性。
+通过使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer#)，这些属性现在可以通过 Microsoft Graph API 获得。
 
 >[!NOTE]
-> 在 Microsoft Graph API 中，需要请求返回属性。 按如下所示显式选择属性： `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` 。
+> 在 Microsoft Graph API 中，你需要请求要返回的属性。 按以下所示显式选择属性：`https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
-> 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)（Microsoft Graph：使用查询参数）。
+> 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](/graph/query-parameters#select-parameter)（Microsoft Graph：使用查询参数）。
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>使用动态组中的属性
 
-一个更有用的方案是在动态安全或 Office 365 组中使用这些属性。
+一个更有用的方案是在动态安全或 Microsoft 365 组中使用这些属性。
 
-1. 在 Azure AD 中创建一个新组。 为其提供一个良好的名称，并确保**成员身份类型**为 "**动态用户**"。
+1. 在 Azure AD 中创建一个新组。 为其提供一个良好的名称，并确保 **成员身份类型** 为 " **动态用户**"。
 
    ![使用新组的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
 
-2. 选择以**添加动态查询**。 如果查看属性，则不会看到这些扩展属性。 需要首先添加它们。 单击 "**获取自定义扩展属性**"，输入应用程序 ID，然后单击 "**刷新属性**"。
+2. 选择以 **添加动态查询**。 如果查看属性，则不会看到这些扩展属性。 需要首先添加它们。 单击 " **获取自定义扩展属性**"，输入应用程序 ID，然后单击 " **刷新属性**"。
 
    ![添加了目录扩展的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
 
@@ -87,7 +87,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
    ![新属性显示在 UI 中的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   完成表达式以满足你的要求。 在我们的示例中，将规则设置为 **（user. extension_9d98ed114c4840d298fad781915f27e4_division-eq "销售和营销"）**。
+   完成表达式以满足你的要求。 在我们的示例中，将规则设置为 ** (用户. extension_9d98ed114c4840d298fad781915f27e4_division-eq "销售和营销" ) **。
 
 4. 创建组后，为 Azure AD 提供一段时间来填充成员，然后查看成员。
 

@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260031"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669052"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
@@ -52,7 +52,7 @@ ms.locfileid: "86260031"
 * 证书信任链中的中间或根 CA 证书。 如果创建组注册，则此证书会上传到 DPS。
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。
+> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
 
 ### <a name="use-test-certificates"></a>使用测试证书
 
@@ -78,7 +78,7 @@ Windows:
 
 若要预配多个 IoT Edge 设备，请遵循下一部分[创建 DPS 组注册](#create-a-dps-group-enrollment)中的步骤。
 
-在 DPS 中创建注册时，可以声明“初始设备孪生状态”。 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
+在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 有关设备预配服务中的注册的详细信息，请参阅[如何管理设备注册](../iot-dps/how-to-manage-enrollments.md)。
 

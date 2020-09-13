@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 720f9dfc09d27a18460037bfbbd15ae4bfc88707
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236642"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669060"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>预览： Azure 中 Windows Vm 的自动 VM 来宾修补
 
@@ -65,7 +65,7 @@ Azure 为启用了自动 VM 来宾修补功能的所有 Vm 全局安排修补程
 ## <a name="supported-os-images"></a>支持的 OS 映像
 目前，预览版仅支持从特定 OS 平台映像创建的 Vm。 预览版目前不支持自定义映像。
 
-目前支持以下平台 Sku (并且会定期添加更多的) ：
+目前支持以下平台 SKU（我们会定期添加更多 SKU）：
 
 | 发布者               | OS 产品/服务      |  SKU               |
 |-------------------------|---------------|--------------------|
@@ -192,7 +192,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 创建或更新 VM 时，请使用 [AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) cmdlet 启用自动 VM 来宾修补。
 
 ```azurepowershell-interactive
-Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
+Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0

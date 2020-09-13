@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908278"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669378"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -51,39 +51,43 @@ Teams 完全支持所有设备上的 Google 来宾用户。 Google 用户可以�
 ## <a name="step-1-configure-a-google-developer-project"></a>步骤 1：配置 Google 开发人员项目
 首先，在 Google Developers Console 中创建一个新项目，以获取稍后要添加到 Azure AD 的客户端 ID 和客户端机密。 
 1. 转到 Google API (https://console.developers.google.com )，并使用 Google 帐户登录。 我们建议使用共享团队 Google 帐户。
-2. 创建新项目：在仪表板上，依次选择“Create Project”（创建项目）、“Create”（创建）。  在“New Project”（新建项目）页上输入**项目名称**，然后选择“Create”（创建）。
+2. 如果系统提示，接受服务条款
+3. 创建新项目：在仪表板上，选择 " **创建项目**"，为项目指定名称 (例如 "Azure AD B2B" ) ，然后选择 " **创建**"。 
    
    ![显示 Google“新建项目”页的屏幕截图](media/google-federation/google-new-project.png)
 
-3. 确保已在项目菜单中选择该新项目。 然后在“API 和服务”下，选择“OAuth 许可屏幕”。
+4. 在现在显示的 " **api & Services** " 页上，单击新项目下的 " **查看** "。
 
-4. 依次选择“外部”、“创建”。 
-5. 在“OAuth 许可屏幕”上，输入“应用程序名称”。 （保留其他设置。）
+5. 单击 "Api" 卡上的 " **跳到 api 概述** "。 选择 " **OAuth 许可屏幕**"。
+
+6. 依次选择“外部”、“创建”。 
+
+7. 在“OAuth 许可屏幕”上，输入“应用程序名称”。 
 
    ![显示 Google“OAuth 许可屏幕”选项的屏幕截图](media/google-federation/google-oauth-consent-screen.png)
 
-6. 滚动到“授权域”部分，然后输入microsoftonline.com。
+8. 滚动到“授权域”部分，然后输入microsoftonline.com。
 
-   ![显示“授权域”部分的屏幕截图](media/google-federation/google-oauth-authorized-domains.png)
+   ![显示“授权域”部分的屏幕截图](media/google-federation/google-oauth-authorized-domains.PNG)
 
-7. 选择“保存”。
+9. 选择“保存”。
 
-8. 选择“凭据”。 在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。 
+10. 选择“凭据”。 在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。 
 
-   ![显示 Google API“创建凭据”选项的屏幕截图](media/google-federation/google-api-credentials.png)
+    ![显示 Google API“创建凭据”选项的屏幕截图](media/google-federation/google-api-credentials.png)
 
-9. 在“Application type”（应用程序类型）下，选择“Web application”（Web 应用程序），然后在“Authorized redirect URIs”（已授权的重定向 URI）下输入以下 URI：  
-   - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>（其中，`<directory id>` 是你的目录 ID）
+11. 在 " **应用程序类型**" 下，选择 " **Web 应用程序** "，并为应用程序指定适当的名称（例如 "Azure AD B2B"），然后在 " **授权重定向 Uri**" 下输入以下 uri：
+    - `https://login.microsoftonline.com` 
+    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>（其中，`<directory id>` 是你的目录 ID）
    
-     > [!NOTE]
-     > 若要查找自己的目录 ID，请转到 https://portal.azure.com ，然后在“Azure Active Directory”下选择“Properties”（属性）并复制“Directory ID”（目录 ID）。  
+    > [!NOTE]
+    > 若要查找自己的目录 ID，请转到 https://portal.azure.com ，然后在“Azure Active Directory”下选择“Properties”（属性）并复制“Directory ID”（目录 ID）。  
 
-   ![显示“已授权的重定向 URI”部分的屏幕截图](media/google-federation/google-create-oauth-client-id.png)
+    ![显示“已授权的重定向 URI”部分的屏幕截图](media/google-federation/google-create-oauth-client-id.png)
 
-10. 选择“创建”。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
+12. 选择“创建”。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
 
-   ![显示 OAuth 客户端 ID 和客户端密钥的屏幕截图](media/google-federation/google-auth-client-id-secret.png)
+    ![显示 OAuth 客户端 ID 和客户端密钥的屏幕截图](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>步骤 2：在 Azure AD 中配置 Google 联合 
 现在请设置 Google 客户端 ID 和客户端机密：在 Azure AD 门户中输入，或者使用 PowerShell 进行设置。 请务必测试 Google 联合配置，方法是使用 Gmail 地址邀请自己，然后尝试使用受邀的 Google 帐户根据邀请操作。 
@@ -92,7 +96,7 @@ Teams 完全支持所有设备上的 Google 来宾用户。 Google 用户可以�
 1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”。 
 2. 选择“外部标识”。
 3. 选择“所有标识提供者”，然后单击“Google”按钮。
-4. 输入名称。 然后输入前面获取的客户端 ID 和客户端机密。 选择“保存”。 
+4. 然后输入前面获取的客户端 ID 和客户端机密。 选择“保存”。 
 
    ![显示“添加 Google 标识提供者”页的屏幕截图](media/google-federation/google-identity-provider.png)
 

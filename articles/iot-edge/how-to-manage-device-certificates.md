@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257839"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669021"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -49,7 +49,7 @@ ms.locfileid: "86257839"
 本文中所谓的“根 CA”并非组织的最顶层证书颁发机构。 它是 IoT Edge 方案的最顶层证书颁发机构，IoT Edge 中心模块、用户模块和任何下游设备使用该颁发机构来建立彼此之间的信任。
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。
+> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
 
 若要查看这些证书的示例，请查看[管理用于示例和教程的测试 CA 证书](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)中用于创建演示证书的脚本。
 
@@ -112,9 +112,11 @@ ms.locfileid: "86257839"
 对于这两个自动生成的证书，可以选择在 config.yaml 中设置 auto_generated_ca_lifetime_days 标志，以配置证书生存期的天数。
 
 >[!NOTE]
->IoT Edge 安全管理器还会创建第三个自动生成的证书：IoT Edge 中心服务器证书。 此证书始终具有90天的生存期，但会在过期前自动续订。 auto_generated_ca_lifetime_days 值不会影响此证书。
+>IoT Edge 安全管理器还会创建第三个自动生成的证书：IoT Edge 中心服务器证书。 此证书的生存期始终为 90 天，但过期之前会自动续订。 auto_generated_ca_lifetime_days 值不会影响此证书。
 
-若要将证书过期时间配置为超过默认 90 天，请在 config.yaml 文件的 certificates 节中添加所需值（以天为单位）。
+若要将证书过期时间配置为默认值90天以外的时间，请将值以天为单位，将值添加到**yaml**文件的 "**证书**" 部分。
+
+在指定的天数后过期后，必须重新启动 IoT Edge 安全守护程序以重新生成设备 CA 证书，而不会自动续订该证书。
 
 ```yaml
 certificates:
@@ -125,11 +127,9 @@ certificates:
 ```
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。
+> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
 
-如果提供了自己的设备 CA 证书，则此值仍会应用到工作负荷 CA 证书，前提是设置的生存期值短于设备 CA 证书的生存期。
-
-在 config.yaml 文件中指定标志后，请执行以下步骤：
+在 yaml 文件中指定值后，请执行以下步骤：
 
 1. 删除 `hsm` 文件夹的内容。
 
