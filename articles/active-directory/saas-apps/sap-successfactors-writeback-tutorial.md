@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533990"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017925"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性回写
 本教程的目的是介绍将 Azure AD 的属性写回到 SAP SuccessFactors Employee Central 的步骤。 
@@ -40,7 +40,7 @@ ms.locfileid: "88533990"
 
 此 SuccessFactors 写回用户预配解决方案非常适合用于：
 
-* 使用 Office 365 的组织希望将它管理的权威属性写入 (如电子邮件地址、电话、用户名) 返回到 SuccessFactors Employee Central。
+* 使用需要写回权威属性的 Microsoft 365 组织 (例如电子邮件地址、电话、用户名) 返回到 SuccessFactors Employee Central。
 
 ## <a name="configuring-successfactors-for-the-integration"></a>为集成配置 SuccessFactors
 
@@ -181,7 +181,7 @@ SuccessFactors 写回预配应用程序使用特定的 *代码* 值在 Employee 
 
 1. "授权" 选项卡将继承为集合配置的身份验证。 
 1. 单击 "发送" 以调用 API 调用。 
-1. 在响应正文中，查看 JSON 结果集，并查找与和对应的 *id* `externalCode = B` `externalCode = C` 。 
+1. 在响应正文中，查看 JSON 结果集，并查找与和对应的 *ID* `externalCode = B` `externalCode = C` 。 
 
    > [!div class="mx-imgBorder"]
    > ![Postman-电话](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
@@ -246,7 +246,7 @@ SuccessFactors 写回预配应用程序使用特定的 *代码* 值在 Employee 
 
 1. 在 " **属性映射** " 部分下的 "映射" 表中，您可以将以下 Azure Active Directory 特性映射到 SuccessFactors。 下表提供了有关如何映射回写属性的指导。 
 
-   | \# | Azure AD 属性 | SuccessFactors 特性 | 注解 |
+   | \# | Azure AD 属性 | SuccessFactors 特性 | 备注 |
    |--|--|--|--|
    | 1 | employeeId | personIdExternal | 默认情况下，此属性是匹配的标识符。 你可以使用任何其他 Azure AD 属性，而不是使用雇员可在 SuccessFactors 中存储等于 personIdExternal 的值。    |
    | 2 | mail | 电子邮件 | 地图电子邮件属性源。 出于测试目的，可以将 userPrincipalName 映射到电子邮件。 |

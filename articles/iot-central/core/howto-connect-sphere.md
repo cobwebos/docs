@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: device-developer
+ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715048"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017687"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>将 Azure Sphere 设备连接到 Azure IoT Central 应用程序
 

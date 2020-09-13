@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755902"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018571"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>为存储帐户请求强制执行最低要求的传输层安全性版本 (TLS) 
 
@@ -92,11 +92,13 @@ StorageBlobLogs
 若要为存储帐户配置最低 TLS 版本，请设置帐户的 **MinimumTlsVersion** 版本。 此属性适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 有关 Azure 资源管理器部署模型的详细信息，请参阅 [存储帐户概述](storage-account-overview.md)。
 
 > [!NOTE]
-> 默认情况下， **minimumTlsVersion** 属性不会设置，并且不会返回值，除非你显式设置该值。 如果属性值为 **null**，则存储帐户允许以 TLS 版本1.0 或更高版本发送的请求。
+> **MinimumTlsVersion**属性当前仅适用于 Azure 公有云中的存储帐户。
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
-若要为具有 Azure 门户的存储帐户配置最低 TLS 版本，请执行以下步骤：
+创建具有 Azure 门户的存储帐户时，默认情况下，最低 TLS 版本设置为1.2。
+
+若要为现有存储帐户配置 Azure 门户的最低 TLS 版本，请执行以下步骤：
 
 1. 导航到 Azure 门户中的存储帐户。
 1. 选择**配置**设置。
@@ -108,6 +110,8 @@ StorageBlobLogs
 
 若要使用 PowerShell 配置存储帐户的最低 TLS 版本，请安装 [Azure PowerShell 版本 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) 或更高版本。 接下来，为新的或现有的存储帐户配置 **MinimumTLSVersion** 属性。 **MinimumTlsVersion**的有效值为 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
 
+使用 PowerShell 创建存储帐户时，默认情况下不会设置 **MinimumTlsVersion** 属性。 在显式设置此属性之前，此属性不会返回值。 如果属性值为 **null**，则存储帐户允许以 TLS 版本1.0 或更高版本发送的请求。
+
 以下示例创建了一个存储帐户并将 **MinimumTLSVersion** 设置为 tls 1.1，然后更新该帐户并将 **MINIMUMTLSVERSION** 设置为 tls 1.2。 该示例还检索每个事例中的属性值。 请记住，用自己的值替换括号中的占位符值：
 
 ```powershell
@@ -116,18 +120,18 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
-    -Location $location \
-    -SkuName Standard_GRS \
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
 
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.
@@ -137,6 +141,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName \
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要为具有 Azure CLI 的存储帐户配置最低 TLS 版本，请安装 Azure CLI 2.9.0 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 接下来，为新的或现有的存储帐户配置 **minimumTlsVersion** 属性。 **MinimumTlsVersion**的有效值为 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
+
+创建 Azure CLI 的存储帐户时，默认情况下不会设置 **minimumTlsVersion** 属性。 在显式设置此属性之前，此属性不会返回值。 如果属性值为 **null**，则存储帐户允许以 TLS 版本1.0 或更高版本发送的请求。
 
 以下示例创建了一个存储帐户，并将 **minimumTLSVersion** 设置为 TLS 1.1。 然后更新帐户并将 **minimumTLSVersion** 属性设置为 TLS 1.2。 该示例还检索每个事例中的属性值。 请记住，用自己的值替换括号中的占位符值：
 
@@ -345,5 +351,5 @@ Azure 策略通过确保 Azure 资源符合要求和标准来支持云监管。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为客户端应用程序配置 (TLS) 的传输层安全性](transport-layer-security-configure-client-version.md)
+- [为客户端应用程序配置传输层安全性 (TLS)](transport-layer-security-configure-client-version.md)
 - [适用于 Blob 存储的安全建议](../blobs/security-recommendations.md)

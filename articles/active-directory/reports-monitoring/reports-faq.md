@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231038"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015324"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -37,7 +37,7 @@ ms.locfileid: "89231038"
 
 **问：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 api 将 Azure AD 安全报告 (特定类型的检测，如泄露的凭据或从匿名 IP 地址登录) 以编程方式登录到我们的报告系统。我应该切换到哪些功能？**
 
-**答：** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/howto-identity-protection-graph-api.md)   通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等，并将风险检测标准化为一种类型，以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，所需的工作可以扩展当前的 Microsoft Graph 投资，也可以帮助您开始过渡到这个新的标准平台。
+**答：** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/howto-identity-protection-graph-api.md)   通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等，并将风险检测标准化为一种类型，以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 但是， [新的 api 使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，这是 Microsoft 365 或 Azure AD 这类 Api 的 Microsoft 标准。 因此，所需的工作可以扩展当前的 Microsoft Graph 投资，也可以帮助您开始过渡到这个新的标准平台。
 
 ---
 
@@ -81,15 +81,15 @@ ms.locfileid: "89231038"
 
 ---
 
-**问：是否可以通过 Azure 门户获取 Office 365 活动日志信息？**
+**问：我是否可以通过 Azure 门户获取 Microsoft 365 活动日志信息？**
 
-**答：** 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但如果需要 Office 365 活动日志的完整视图，则应转到 [Microsoft 365 管理中心](https://admin.microsoft.com) 以获取 Office 365 活动日志信息。
+**答：** 即使 Microsoft 365 活动和 Azure AD 活动日志共享大量的目录资源，如果你需要完整的 Microsoft 365 活动日志视图，则应转到 [Microsoft 365 管理中心](https://admin.microsoft.com) 以获取 Office 365 活动日志信息。
 
 ---
 
-**问：应使用哪些 API 获取有关 Office 365 活动日志的信息？**
+**问：我使用哪些 Api 来获取有关 Microsoft 365 活动日志的信息？**
 
-**答：** 使用 [office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview) 通过 API 访问 Office 365 活动日志。
+**答：** 使用 [Microsoft 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview) 通过 API 访问 Microsoft 365 活动日志。
 
 ---
 
@@ -145,7 +145,7 @@ ms.locfileid: "89231038"
 
 * **未应用**：这表示在范围内没有针对用户和应用程序的 CA 策略。 
 * **成功**：这表示在范围内存在针对用户和应用程序的 CA 策略，并且已成功满足 CA 策略。 
-* **失败**：满足至少一个条件性访问策略的用户和应用程序条件，并且未满足或未将授权控件设置为阻止访问。
+* **失败**：登录满足了至少一个条件性访问策略的用户和应用程序条件，授权控件要么未满足，要么设置为阻止访问。
     
 **问：条件访问策略结果的所有可能值有哪些？**
 

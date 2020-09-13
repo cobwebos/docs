@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/10/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959147"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015443"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -147,7 +147,7 @@ SCIM RFC 中定义了多个终结点。 可以从 /User 终结点开始，然后
 在 [SCIM 2.0 协议规范](http://www.simplecloud.info/#Specification)中，应用程序必须符合以下要求：
 
 * 支持根据 [SCIM 协议第 3.3 节](https://tools.ietf.org/html/rfc7644#section-3.3)创建用户和组（可选）。  
-* 支持根据 [SCIM 协议第 3.5.2 节](https://tools.ietf.org/html/rfc7644#section-3.5.2)修改具有 PATCH 请求的用户或组。  
+* 支持根据 [SCIM 协议第 3.5.2 节](https://tools.ietf.org/html/rfc7644#section-3.5.2)修改具有 PATCH 请求的用户或组。 支持可确保以高性能的方式预配组和用户。 
 * 支持根据 [SCIM 协议第 3.4.1 节](https://tools.ietf.org/html/rfc7644#section-3.4.1)为先前创建的用户或组检索已知资源。  
 * 支持根据 [SCIM 协议第 3.4.2 节](https://tools.ietf.org/html/rfc7644#section-3.4.2)查询用户或组。  默认情况下，按 `id` 检索用户，按 `username` 和 `externalId` 查询用户，以及按 `displayName` 查询组。  
 * 支持根据 SCIM 协议第 3.4.2 节，按 ID 和管理员查询用户。  
@@ -746,7 +746,7 @@ TLS 1.2 密码套件最低标准：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 范围
-Azure AD 预配服务当前在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 范围下运行[，如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 正在进行的工作只需合并到 AzureActiveDirectory 下的 IP 范围。 
+Azure AD 预配服务当前在 AzureActiveDirectory 的 IP 范围下[运行，如下所列。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 可以添加 AzureActiveDirectory 标记下面列出的 IP 范围，以允许从 Azure AD 预配服务到应用程序的流量。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步骤 3：生成 SCIM 终结点
 
@@ -1175,7 +1175,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 请按照下面的清单进行操作，以确保应用程序能够快速上架，并且客户可以享受顺畅的部署体验。 当上架到库时，系统将向你收集相关信息。 
 > [!div class="checklist"]
 > * 支持 [SCIM 2.0](#step-2-understand-the-azure-ad-scim-implementation) 用户和组终结点（仅需要其中一项支持，但建议同时确保这两项支持）
-> * 支持每个租户每秒至少 25 个请求（必需）
+> * 支持每个租户的至少25个请求，以确保预配和取消预配用户和组，而无需延迟 (要求) 
 > * 确定工程和支持联系人，以便在上架到库后为客户提供指导（必需）
 > * 3 个应用程序的未过期测试凭据（必需）
 > * 如下所述，支持 OAuth 授权代码许可或长期有效的令牌（必需）

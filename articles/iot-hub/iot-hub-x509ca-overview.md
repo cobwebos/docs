@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 33c878b2af64a72212a8aac060e9ccac83b79a53
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2289ff37a0e524bc765163047608eb604c02372e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326505"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019795"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -27,6 +27,8 @@ ms.locfileid: "87326505"
 * 如何将 X.509 CA 证书注册到 IoT 中心
 * 如何使用 X.509 CA 证书为设备签名
 * 如何对使用 X.509 CA 签名的设备进行身份验证
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>概述
 
@@ -54,7 +56,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-设备证书（也称为 "叶证书"）必须将 "*使用者名称*" 设置为在 Azure iot 中心注册 IoT 设备时使用的**设备 ID** （ `CN=deviceId` ）。 身份验证需要此设置。
+设备证书 (也称为 "叶证书") 必须将 " *使用者名称* " 设置为 " **设备 ID** " (`CN=deviceId`) 在 Azure IoT 中心注册 IoT 设备时使用的设备 ID。 身份验证需要此设置。
 
 在此处了解如何像为设备签名时一样[创建证书链](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。
 

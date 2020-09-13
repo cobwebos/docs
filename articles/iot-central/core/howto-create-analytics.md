@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 8f329b6377915a3df6e3f3e212cbd8d41f9ed80d
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147266"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017654"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析功能来分析设备数据
 
 *本文适用于操作员、构建者和管理员。*
-
-
 
 Azure IoT Central 提供丰富的分析功能用于分析历史趋势以及关联设备中的各个遥测项。 若要开始，请访问左侧窗格中的“Analytics”。 
 
@@ -92,6 +90,6 @@ Analytics 用户界面由三个主要组件构成：
 
 - **下载为 CSV：** 你的结果可作为逗号分隔值 (CSV) 文件导出。 CSV 文件包含每个设备的数据。 将使用指定的时间间隔和时间范围导出结果。 
 
-- **删除标记：**"放置标记" 控件提供了一种在图表上定位某些数据点的方法。 当你尝试跨不同的时间段比较多个线条的数据时，此控件非常有用。
+- **删除标记：** "放置标记" 控件提供了一种在图表上定位某些数据点的方法。 当你尝试跨不同的时间段比较多个线条的数据时，此控件非常有用。
 
   ![显示分析数据的网格视图](media/howto-create-analytics/additionalchartcontrols.png)

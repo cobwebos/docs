@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect：版本发布历史记录 | Microsoft Docs
-description: 本文列出 Azure AD Connect 和 Azure AD Sync 的所有版本
+description: 本文列出了 Azure AD Connect 和 Azure AD Sync 的所有版本。
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052923"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018435"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -48,9 +48,9 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >
 >如果已启用支持同步的 Azure AD Connect，则在运行某个较旧版本时，你很快就会自动开始接收运行状况通知，警告你该版本即将弃用。
 >
->请参阅[本文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，详细了解如何将 Azure AD Connect 升级到最新版本。
+>请参阅[本文](./how-to-upgrade-previous-version.md)，详细了解如何将 Azure AD Connect 升级到最新版本。
 >
->有关弃用版本的版本历史记录信息，请参阅[Azure AD Connect 版本发行历史记录存档](reference-connect-version-history-archive.md)
+>有关弃用版本的版本历史记录信息，请参阅 [Azure AD Connect 版本发行历史记录存档](reference-connect-version-history-archive.md)
 
 ## <a name="15450"></a>1.5.45.0
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="functional-changes"></a>功能性更改
 此版本包含用于将现有 Azure AD Connect 服务器的配置导出到中的功能的公共预览版。JSON 文件，在安装新的 Azure AD Connect 服务器以创建原始服务器的副本时，可以使用该文件。
 
-可在[此文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config)中找到此新功能的详细说明
+可在[此文](./how-to-connect-import-export-config.md)中找到此新功能的详细说明
 
 ### <a name="fixed-issues"></a>已修复的问题
 - 修复了在升级过程中会出现有关本地化版本上的本地数据库大小的错误警告。
@@ -244,7 +244,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->将 Azure AD Connect 从早期版本升级到 1.3.21.0 时存在一个已知问题：即使 Azure AD Connect 已成功升级，O365 门户也不反映更新的版本。
+>将 Azure AD Connect 从早期版本升级到1.3.21.0 的已知问题，其中 Microsoft 365 门户不会反映更新的版本，即使 Azure AD Connect 升级成功。
 >
 > 若要解决此问题，需要导入 AdSync 模块，然后在 Azure AD Connect 服务器上运行 `Set-ADSyncDirSyncConfiguration` PowerShell cmdlet。  可以使用以下步骤：
 >

@@ -12,19 +12,19 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a62694790505dcf8355b3011387d9bdfd036b6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057132"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018486"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect：版本发布历史记录存档
 
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
 
 >[!NOTE] 
-> 本文包含有关所有已存档版本 Azure AD 1.3.20.0 和更早版本的版本参考信息。  有关最新版本，请参阅[Azure AD Connect 版本发行历史记录](reference-connect-version-history.md)
+> 本文包含有关所有已存档版本 Azure AD 1.3.20.0 和更早版本的版本参考信息。  有关最新版本，请参阅 [Azure AD Connect 版本发行历史记录](reference-connect-version-history.md)
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -166,7 +166,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
-- Azure AD Connect 中的 Ping Federate 集成现已公开发布。 [深入了解如何将 Azure AD 与 Ping Federate 联合](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Azure AD Connect 中的 Ping Federate 集成现已公开发布。 [深入了解如何将 Azure AD 与 Ping Federate 联合](./plan-connect-user-signin.md#federation-with-pingfederate)
 - Azure AD Connect 现在每次更新时都可在 AD FS 中创建 Azure AD 信任的备份，并将其存储在单独的文件中以便轻松还原（如果需要）。 [详细了解 Azure AD Connect 中的新增功能和 Azure AD 信任管理](https://aka.ms/fedtrustinaadconnect)。
 - 新的故障排除工具有助于解决更改主要电子邮件地址和隐藏全局地址列表中的帐户的问题
 - 已更新 Azure AD Connect，以包括最新版 SQL Server 2012 本机客户端
@@ -402,7 +402,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 若要查看此漏洞是否曾用于入侵 Azure AD Connect 配置，你应该验证服务帐户的最后一次密码重置日期。  如果存在非预期的时间戳，应通过事件日志进一步调查密码重置事件。
 
-有关详细信息，请参阅 [Microsoft 安全公告 4056318](https://technet.microsoft.com/library/security/4056318)
+有关详细信息，请参阅 [Microsoft 安全公告 4056318](/security-updates/securityadvisories/2017/4056318)
 
 ## <a name="116490"></a>1.1.649.0
 状态：2017 年 10 月 27 日
@@ -443,7 +443,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 修复了一个导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。 此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。 当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 通过这项修复，Azure AD Connect 只要求管理员在升级期间对 ADSync 数据库拥有 db_owner 特权。
 
-* 修复了一个会对已启用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)的客户造成影响的 Azure AD Connect 升级问题。 升级 Azure AD Connect 之后，Azure AD Connect 向导中会错误地将无缝单一登录显示为已禁用，即使该功能保持已启用状态且完全正常。 通过这项修复，该功能现在会正确地在向导中显示为已启用。
+* 修复了一个会对已启用[无缝单一登录](./how-to-connect-sso.md)的客户造成影响的 Azure AD Connect 升级问题。 升级 Azure AD Connect 之后，Azure AD Connect 向导中会错误地将无缝单一登录显示为已禁用，即使该功能保持已启用状态且完全正常。 通过这项修复，该功能现在会正确地在向导中显示为已启用。
 
 * 修复了一个导致 Azure AD Connect 向导始终在“已准备好配置”页上显示“配置源定位点”提示（即使未做出与源定位点相关的任何更改）的问题。 
 
@@ -457,7 +457,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 > [!NOTE]
-> 注意：同步服务提供一个 WMI 接口让客户开发自己的自定义计划程序。 此接口现已弃用，并会从 2018 年 6 月 30 日之后交付的后续 Azure AD Connect 版本中删除。 想要自定义同步计划的客户应使用[内置计划程序](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)。
+> 注意：同步服务提供一个 WMI 接口让客户开发自己的自定义计划程序。 此接口现已弃用，并会从 2018 年 6 月 30 日之后交付的后续 Azure AD Connect 版本中删除。 想要自定义同步计划的客户应使用[内置计划程序](./how-to-connect-sync-feature-scheduler.md)。
 #### <a name="fixed-issues"></a>修复的问题
 * 当 Azure AD Connect 向导创建从本地 Active Directory 同步更改所需的 AD 连接器帐户时，不会正确地向该帐户分配读取 PublicFolder 对象所需的权限。 此问题会影响“快速”安装和“自定义”安装。 此项更改修复了该问题。
 
@@ -470,7 +470,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS 管理
 #### <a name="fixed-issue"></a>修复的问题
-* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能的用法相关的问题。 此问题会影响已将“使用 AD FS 进行联合身份验证”配置为用户登录方法的客户。 执行向导中的“配置源定位点”任务时，Azure AD Connect 会改用 *ms-DS-ConsistencyGuid 作为 immutableId 的源属性。 在应用此项更改的过程中，Azure AD Connect 会尝试更新 AD FS 中 ImmutableId 的声明规则。 但是，由于 Azure AD Connect 无法提供配置 AD FS 所需的管理员凭据，此步骤失败。 通过这项修复，在执行“配置源定位点”任务时，Azure AD Connect 现在会提示输入 AD FS 的管理员凭据。
+* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能的用法相关的问题。 此问题会影响已将“使用 AD FS 进行联合身份验证”配置为用户登录方法的客户。 执行向导中的“配置源定位点”任务时，Azure AD Connect 会改用 *ms-DS-ConsistencyGuid 作为 immutableId 的源属性。 在应用此项更改的过程中，Azure AD Connect 会尝试更新 AD FS 中 ImmutableId 的声明规则。 但是，由于 Azure AD Connect 无法提供配置 AD FS 所需的管理员凭据，此步骤失败。 通过这项修复，在执行“配置源定位点”任务时，Azure AD Connect 现在会提示输入 AD FS 的管理员凭据。
 
 
 
@@ -485,7 +485,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * Azure AD Connect 升级存在已知问题，会对已启用[无缝单一登录](how-to-connect-sso.md)的客户造成影响。 升级 Azure AD Connect 后，功能会在向导中显示为已禁用，即使功能为启用状态也是如此。 未来的发布中将提供对此问题的修复。 担心此显示问题的客户可以手动修复此问题，方法是在向导中启用无缝单一登录。
 
 #### <a name="fixed-issues"></a>修复的问题
-* 修复了以下问题：启用[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能时，Azure AD Connect 无法更新本地 AD FS 中的声明规则。 如果尝试为将 AD FS 配置为登录方法的现有 Azure AD Connect 部署启用此功能，就会出现此问题。 之所以出现此问题是因为，向导在尝试更新 AD FS 中的声明规则前未提示输入 ADFS 凭据。
+* 修复了以下问题：启用[将 ms-DS-ConsistencyGuid 用作源定位点](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能时，Azure AD Connect 无法更新本地 AD FS 中的声明规则。 如果尝试为将 AD FS 配置为登录方法的现有 Azure AD Connect 部署启用此功能，就会出现此问题。 之所以出现此问题是因为，向导在尝试更新 AD FS 中的声明规则前未提示输入 ADFS 凭据。
 * 修复了本地 AD 林禁用 NTLM 后导致 Azure AD Connect 无法安装的问题。 此问题的起因是：创建 Kerberos 身份验证所需的安全上下文时，Azure AD Connect 向导未提供完全限定的凭据。 这将导致 Kerberos 身份验证失败并且 Azure AD Connect 向导将回退到使用 NTLM。
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
@@ -627,20 +627,20 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   * 如果启用了基于 OU 的筛选，则会选中“同步选定的域和 OU”选项。
   * 否则会选中“同步所有域和 OU”选项。
 
-发生的问题是在运行向导时始终会选中“同步所有域和 OU”选项。  即使以前配置了基于 OU 的筛选也会发生此问题。 在保存任何 Azure AD Connect 配置更改之前，请确保**选中 "同步选定的域和 ou" 选项**，并确认重新启用了所有需要同步的 ou。 否则将会禁用基于 OU 的筛选。
+发生的问题是在运行向导时始终会选中“同步所有域和 OU”选项。  即使以前配置了基于 OU 的筛选也会发生此问题。 在保存任何 Azure AD Connect 配置更改之前，请确保 **选中 "同步选定的域和 ou" 选项** ，并确认重新启用了所有需要同步的 ou。 否则将会禁用基于 OU 的筛选。
 
 #### <a name="fixed-issues"></a>修复的问题
 
-* 修复了密码写回功能的一个问题，该问题允许 Azure AD 管理员重置本地 AD 特权用户帐户的密码。 当向 Azure AD Connect 授予了对特权帐户的“重置密码”权限时会发生此问题。 此版本的 Azure AD Connect 通过以下方法解决了此问题：不允许 Azure AD 管理员重置任意本地 AD 特权用户帐户的密码，除非管理员是该帐户的所有者。 有关详细信息，请参阅[安全公告 4033453](https://technet.microsoft.com/library/security/4033453)。
+* 修复了密码写回功能的一个问题，该问题允许 Azure AD 管理员重置本地 AD 特权用户帐户的密码。 当向 Azure AD Connect 授予了对特权帐户的“重置密码”权限时会发生此问题。 此版本的 Azure AD Connect 通过以下方法解决了此问题：不允许 Azure AD 管理员重置任意本地 AD 特权用户帐户的密码，除非管理员是该帐户的所有者。 有关详细信息，请参阅[安全公告 4033453](/security-updates/SecurityAdvisories/2017/4033453)。
 
-* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能相关的一个问题，该问题导致 Azure AD Connect 不写回到本地 AD ms-DS-ConsistencyGuid 属性。 当向 Azure AD Connect 中添加了多个本地 AD 林并选中了“用户标识跨多个目录存在”选项时会发生此问题。 使用这样的配置时，得到的同步规则不会填充 Metaverse 中的 sourceAnchorBinary 属性。 sourceAnchorBinary 属性用作 ms-DS-ConsistencyGuid 属性的源属性。 因此，没有发生到 ms-DSConsistencyGuid 属性的写回。 为了修复此问题，已更新了以下同步规则来确保始终填充 Metaverse 中的 sourceAnchorBinary 属性：
+* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能相关的一个问题，该问题导致 Azure AD Connect 不写回到本地 AD ms-DS-ConsistencyGuid 属性。 当向 Azure AD Connect 中添加了多个本地 AD 林并选中了“用户标识跨多个目录存在”选项时会发生此问题。 使用这样的配置时，得到的同步规则不会填充 Metaverse 中的 sourceAnchorBinary 属性。 sourceAnchorBinary 属性用作 ms-DS-ConsistencyGuid 属性的源属性。 因此，没有发生到 ms-DSConsistencyGuid 属性的写回。 为了修复此问题，已更新了以下同步规则来确保始终填充 Metaverse 中的 sourceAnchorBinary 属性：
   * In from AD - InetOrgPerson AccountEnabled.xml
   * In from AD - InetOrgPerson Common.xml
   * In from AD - User AccountEnabled.xml
   * In from AD - User Common.xml
   * In from AD - User Join SOAInAAD.xml
 
-* 以前，即使未启用[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能，也会将“Out to AD – User ImmutableId”同步规则添加到 Azure AD Connect。 这具有积极影响，且不会导致出现 ms-DS-ConsistencyGuid 属性写回情况。 为避免混淆，已添加了逻辑来确保只有启用了此功能时才添加同步规则。
+* 以前，即使未启用[将 ms-DS-ConsistencyGuid 用作源定位点](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能，也会将“Out to AD – User ImmutableId”同步规则添加到 Azure AD Connect。 这具有积极影响，且不会导致出现 ms-DS-ConsistencyGuid 属性写回情况。 为避免混淆，已添加了逻辑来确保只有启用了此功能时才添加同步规则。
 
 * 修复了一个导致密码哈希同步失败且出现错误事件 611 的问题。 从本地 AD 中删除一个或多个域控制器后会发生此问题。 在每个密码同步周期结束时，本地 AD 发出的同步 cookie 包含 USN（更新序号）值为 0 的已删除域控制器的调用 ID。 密码同步管理器无法持久保存包含 USN 值 0 的同步 cookie，并且会失败且出现错误事件 611。 在下一个同步周期中，密码同步管理器将重新使用不包含 USN 值 0 的最后一个已持久保存的 cookie。 这将导致重新同步相同的密码更改。 使用此修复，密码同步管理器可以正确地持久保存同步 cookie。
 
@@ -648,12 +648,12 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 
-* 以前，[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能仅可用于新部署。 现在，它可用于现有部署。 更具体说来：
+* 以前，[将 ms-DS-ConsistencyGuid 用作源定位点](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能仅可用于新部署。 现在，它可用于现有部署。 更具体说来：
   * 若要访问此功能，请启动 Azure AD Connect 向导并选择“更新源锚点”选项。
   * 只会针对将 objectGuid 用作源锚点属性的现有部署显示此选项。
   * 配置此选项时，向导会验证本地 Active Directory 目录中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何用户对象上配置此属性，则向导会将 ms-DS-ConsistencyGuid 用作 sourceAnchor 属性。 如果已在目录中的一个或多个用户对象上配置了该属性，向导就会认为该属性正由其他应用程序使用，不适合用作 sourceAnchor 属性，并且不允许执行源锚点更改。 如果确定该属性未由现有应用程序使用，则需联系支持部门，了解如何取消显示该错误。
 
-* 特定于设备对象上的 **userCertificate** 属性，Azure AD Connect 现在会查找[将已加入域的设备连接到 Azure AD 以获得 Windows 10 体验](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)所需的证书值，并且会在同步到 Azure AD 之前将其余的筛选掉。 为了启用此行为，已更新了现成的同步规则“Out to AAD - Device Join SOAInAD”。
+* 特定于设备对象上的 **userCertificate** 属性，Azure AD Connect 现在会查找[将已加入域的设备连接到 Azure AD 以获得 Windows 10 体验](../devices/hybrid-azuread-join-plan.md)所需的证书值，并且会在同步到 Azure AD 之前将其余的筛选掉。 为了启用此行为，已更新了现成的同步规则“Out to AAD - Device Join SOAInAD”。
 
 * Azure AD Connect 现在支持将 Exchange Online **cloudPublicDelegates** 属性写回到本地 AD **publicDelegates** 属性。 这允许向拥有本地 Exchange 邮箱的用户授予对 Exchange Online 邮箱的 SendOnBehalfTo 权限。 为了支持此功能，已添加了新的现成的同步规则“Out to AD – User Exchange Hybrid PublicDelegates writeback”。 只有当启用了 Exchange 混合功能时才会将此同步规则添加到 Azure AD Connect。
 
@@ -779,8 +779,8 @@ Azure AD Connect 同步
   * 如果属性有 15 个以上的值，更新的默认同步规则设置为不导出属性 **userCertificate** 和 **userSMIMECertificate**。
   * AD 属性 **employeeID** 和 **msExchBypassModerationLink** 现在包含在默认同步规则集中。
   * AD 属性 **photo** 已从默认同步规则集中删除。
-  * 将**preferredDataLocation**添加到元节架构，并 Azure AD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。 
-  * 将**userType**添加到元节架构，并 Azure AD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。
+  * 将 **preferredDataLocation** 添加到元节架构，并 Azure AD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。 
+  * 将 **userType** 添加到元节架构，并 Azure AD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。
 
 * Azure AD Connect 现在会自动为本地 AD 对象启用将 ConsistencyGuid 属性用作源锚点属性。 而且，如果 ConsistencyGuid 属性为空，则 Azure AD Connect 会使用 objectGuid 属性值填充该属性。 此功能非常适用于新的部署。 若要了解有关此功能的详细信息，请参阅文章中的 [Azure AD Connect：设计概念 - 将 msDS-ConsistencyGuid 用作 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 部分。
 * 新故障排除 cmdlet Invoke-ADSyncDiagnostics 已添加以帮助诊断密码哈希同步相关的问题。 有关使用此 cmdlet 的信息，请参阅[使用 Azure AD Connect 同步排查密码哈希同步问题](tshoot-connect-password-hash-synchronization.md)。
@@ -844,7 +844,7 @@ Azure AD Connect 同步
 * Azure AD 租户有一个服务配置，该配置指示了是否已为租户启用密码同步功能。 之前，同时拥有活动和暂存服务器时，Azure AD Connect 很容易错误配置服务配置。 现在，Azure AD Connect 会尝试让服务配置只和活动 Azure AD Connect 服务器保持一致。
 * 如果本地 AD 未启用 AD 回收站，Azure AD Connect 向导会检测并返回警告。
 * 之前，如果批处理的对象总大小超过特定阈值，导出到 Azure AD 会超时并失败。 现在遇到此问题时，Synchronization Service 会再次尝试以较小批次单独重新发送对象。
-* 已经将 Synchronization Service Key Management 应用程序从 Windows 开始菜单中删除。 仍然支持使用 miiskmu.exe 通过命令行接口管理加密密钥。 有关加密密钥的详细信息，请参阅文章 [Abandoning the Azure AD Connect Sync encryption key](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key)（弃用 Azure AD Connect 同步加密密钥）。
+* 已经将 Synchronization Service Key Management 应用程序从 Windows 开始菜单中删除。 仍然支持使用 miiskmu.exe 通过命令行接口管理加密密钥。 有关加密密钥的详细信息，请参阅文章 [Abandoning the Azure AD Connect Sync encryption key](./how-to-connect-sync-change-serviceacct-pass.md#abandoning-the-adsync-service-account-encryption-key)（弃用 Azure AD Connect 同步加密密钥）。
 * 之前，如果更改了 Azure AD Connect 同步服务帐户密码，则无法正常启动 Synchronization Service，除非已弃用加密密钥并重新初始化 Azure AD Connect 同步服务帐户密码。 现在不再需要执行此过程。
 
 桌面 SSO
@@ -1072,7 +1072,7 @@ AD FS 管理
 
 **新的受支持方案：**
 
-* 支持多个本地 Exchange 组织。 有关详细信息，请参阅[包含多个 Active Directory 林的混合部署](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))。
+* 支持多个本地 Exchange 组织。 有关详细信息，请参阅[包含多个 Active Directory 林的混合部署](/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))。
 
 **已解决的问题：**
 
@@ -1181,7 +1181,7 @@ AD FS 管理
 **新功能：**
 
 * 现在支持使用基于属性的筛选执行密码同步。 有关详细信息，请参阅[使用筛选进行密码同步](how-to-connect-sync-configure-filtering.md)。
-* ms-DS-ExternalDirectoryObjectID 属性将写回 Active Directory。 此功能添加了对 Office 365 应用程序的支持。 它使用 OAuth2 访问混合 Exchange 部署中的联机邮箱和本地邮箱。
+* ms-DS-ExternalDirectoryObjectID 属性将写回 Active Directory。 此功能添加了对 Microsoft 365 应用程序的支持。 它使用 OAuth2 访问混合 Exchange 部署中的联机邮箱和本地邮箱。
 
 **修复了升级问题：**
 

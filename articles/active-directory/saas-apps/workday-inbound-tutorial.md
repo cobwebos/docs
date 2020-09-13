@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527802"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018095"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -31,15 +31,15 @@ ms.locfileid: "88527802"
 
 [Azure Active Directory 用户预配服务](../app-provisioning/user-provisioning.md)与 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 集成，以便能够预配用户帐户。 Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下人力资源和标识生命周期管理方案自动化：
 
-* **招聘新员工** -将新员工添加到 Workday 时，会自动在 Active Directory、Azure Active Directory 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将 IT 托管的联系人信息写回到 Workday。
+* **招聘新员工** -将新员工添加到 Workday 时，会自动在 Active Directory、Azure Active Directory 中创建用户帐户，并选择性地 Microsoft 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将 IT 托管的联系人信息写回到 Workday。
 
-* **员工属性和个人资料更新** - 在 Workday 中更新员工记录（例如其姓名、职称或上司）后，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中会自动更新相应员工的用户帐户。
+* **员工属性和配置文件更新** -在 Workday (（例如，其名称、标题或经理) ）中更新雇员记录时，会自动在 Active Directory、Azure Active Directory 中更新其用户帐户，并选择性地更新 Microsoft 365 [支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-* **员工离职** - 当某个员工在 Workday 离职时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中会自动禁用其用户帐户。
+* **员工** 离职-当员工在 Workday 中终止时，他们的用户帐户会自动禁用 Active Directory、Azure Active Directory，并选择性地 Microsoft 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-* **员工返聘** - 当 Workday 返聘某位员工时，该员工的旧帐户可自动重新激活或重新预配到 Active Directory、Azure Active Directory、Office 365 以及 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)（其中，具体操作由你的偏好而定，且后两类应用可选配）。
+* **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的首选项) 自动重新激活或重新设置其旧帐户 (，具体取决于你的首选项 Active Directory、Azure Active Directory 和 [Microsoft 365 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-### <a name="whats-new"></a>新变化
+### <a name="whats-new"></a>新增功能
 本部分捕获最近的 Workday 集成增强功能。 有关综合更新、计划的更改和存档的列表，请访问页面 [Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md) 
 
 * **5 月 2020-将电话号码写到 Workday 的能力：** 除了电子邮件和用户名外，现在可以将工作电话号码和移动电话号码从 Azure AD 写回到 Workday。 有关更多详细信息，请参阅 [写回应用教程](workday-writeback-tutorial.md)。
@@ -60,7 +60,7 @@ ms.locfileid: "88527802"
 
 * 要求只根据 Workday HCM 模块中检测到的更改信息，加入、移动用户或者使用户保持同步到一个或多个 Active Directory 林、域和 OU 的组织（请参阅 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)）
 
-* 使用 Office 365 收发电子邮件的组织
+* 使用 Microsoft 365 电子邮件的组织
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 
@@ -258,7 +258,7 @@ ms.locfileid: "88527802"
 > 如果要限制预配代理仅在特定 OU 中创建和读取用户以进行测试，则建议在测试运行期间将控件委托给适当的 OU 级别。
 
 4. 在欢迎屏幕上单击 " **下一步** "。 
-5. 在 " **选择用户或组** " 屏幕上，添加在步骤2中创建的域用户。 单击 **“下一步”** 。
+5. 在 " **选择用户或组** " 屏幕上，添加在步骤2中创建的域用户。 单击“下一步”。
    >[!div class="mx-imgBorder"]
    >![添加屏幕](./media/workday-inbound-tutorial/delegation-wizard-01.png "添加屏幕")
 
@@ -373,7 +373,7 @@ ms.locfileid: "88527802"
 1. 请打开“服务”管理单元来验证是否已安装代理并确保其正在运行，并查找名为“Microsoft Azure AD Connect 预配代理”的服务
 
    >[!div class="mx-imgBorder"]
-   >![服务](./media/workday-inbound-tutorial/services.png)
+   >![服务中运行的 Microsoft Azure AD 连接预配代理的屏幕截图](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在预配应用中，配置与 Workday 和 Active Directory 的连接
 在此步骤中，我们将在 Azure 门户中建立与 Workday 和 Active Directory 的连接。 

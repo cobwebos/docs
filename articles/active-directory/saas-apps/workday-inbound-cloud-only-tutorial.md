@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540960"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015477"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教程：配置 Workday 以 Azure AD 用户预配
 本教程的目的是说明将工作人员数据从 Workday 预配到 Azure Active Directory 需要执行的步骤。 
@@ -27,13 +27,13 @@ ms.locfileid: "88540960"
 
 [Azure Active Directory 用户预配服务](../app-provisioning/user-provisioning.md)与 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 集成，以便能够预配用户帐户。 Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下人力资源和标识生命周期管理方案自动化：
 
-* **招聘新员工** -将新员工添加到 Workday 时，会自动在 Azure Active Directory 和 Azure AD 支持的 Office 365 和 [其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将电子邮件地址写回到 Workday。
+* **招聘新员工** -将新员工添加到 Workday 时，会自动在 Azure Active Directory 中创建一个用户帐户，并选择性地 Microsoft 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)，并将电子邮件地址写回到 Workday。
 
-* **员工属性和配置文件更新** -在 Workday (中更新员工记录（例如，其名称、标题或经理) ）时，将自动更新其用户帐户 Azure Active Directory，并选择性地 [支持 Azure AD 的 Office 365 和其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+* **员工属性和配置文件更新** -在 Workday (（例如，其名称、标题或经理) 中更新雇员记录时，将自动更新其用户帐户 Azure Active Directory，并选择性地 Microsoft 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-* **员工** 离职-当员工在 Workday 中终止时，他们的用户帐户会在 Azure Active Directory 和 [Azure AD 支持的 Office 365 和其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中自动禁用。
+* **员工** 离职-当员工在 Workday 中终止时，将在 Azure Active Directory 中自动禁用其用户帐户，并选择性地 Microsoft 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-* **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的首选项) Azure Active Directory 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)，自动重新激活或重新设置其旧帐户 (。
+* **员工 rehires** -员工在 Workday 中 rehired 时，可以根据你的首选项) 自动重新激活或重新设置其旧帐户 (，具体取决于你的首选项 Azure Active Directory Microsoft 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
@@ -45,7 +45,7 @@ ms.locfileid: "88540960"
 
 * 要求使用从 Workday 获取的数据预配用户的组织
 
-* 使用 Office 365 收发电子邮件的组织
+* 使用 Microsoft 365 电子邮件的组织
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 

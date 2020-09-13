@@ -3,12 +3,12 @@ title: 大规模管理 Azure Sentinel 工作区
 description: 了解如何在委派的客户资源上有效地管理 Azure Sentinel。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050805"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019727"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -65,7 +65,7 @@ MSSP 将管理的每个客户订阅都必须 [载入 Azure Lighthouse](onboard-c
 
 [Azure Sentinel 中 Azure Monitor 工作簿](../../sentinel/overview.md#workbooks) 可帮助你可视化和监视已连接数据源中的数据，以获取见解。 可以在 Azure Sentinel 中使用内置工作簿模板，也可以为方案创建自定义工作簿。
 
-你可以在管理租户中部署工作簿并创建缩放仪表板，以跨客户租户监视和查询数据。 有关详细信息，请参阅 [跨工作区监视](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)。 请注意， [不支持跨多个工作区](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)的某些功能。
+你可以在管理租户中部署工作簿并创建缩放仪表板，以跨客户租户监视和查询数据。 有关详细信息，请参阅 [跨工作区监视](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)。 
 
 你还可以直接在你管理的单个租户中部署工作簿，以便为特定于该客户的方案进行管理。
 
@@ -76,8 +76,6 @@ MSSP 将管理的每个客户订阅都必须 [载入 Azure Lighthouse](onboard-c
 ## <a name="use-automation-for-cross-workspace-management"></a>使用自动化跨工作区管理
 
 可以使用自动化来管理多个 Azure Sentinel 工作区，并配置 [搜寻查询](../../sentinel/hunting.md)、行动手册和工作簿。 有关详细信息，请参阅 [使用自动化的跨工作区管理](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)。
-
-请注意， [在多个工作区中当前不支持](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)某些功能。
 
 ## <a name="manage-security-of-office-365-environments"></a>管理 Office 365 环境的安全性
 
