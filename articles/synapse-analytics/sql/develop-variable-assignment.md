@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: abc0a9f6fa6baefc7cc4b29c84ff179f0851dc30
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495669"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90028910"
 ---
 # <a name="assign-variables-with-synapse-sql"></a>用 Synapse SQL 赋值变量
 
@@ -66,4 +66,4 @@ SET     @v +=1;
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[SYNAPSE SQL 开发概述](develop-overview.md)一文。
+有关更多开发技巧，请参阅 [SYNAPSE SQL 开发概述](develop-overview.md) 一文。
