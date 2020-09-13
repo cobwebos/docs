@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 900d5cd435a913c0859c862d176fd30130e0a079
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321490"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650723"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "87321490"
 
 在 Azure 机器学习中，当使用 AutoML 来生成多个 ML 模型时，每个子运行都需要通过计算该模型的质量指标（例如准确度或加权 AUC）来验证相关的模型。 这些指标的计算方法是将每个模型所做的预测与验证数据中过去观察到的实际标签进行比较。 
 
-AutoML 试验会自动执行模型验证。 下面的各个部分介绍了如何使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) 进一步自定义验证设置。 
+AutoML 试验会自动执行模型验证。 下面的各个部分介绍了如何使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) 进一步自定义验证设置。 
 
 对于低代码或无代码体验，请参阅[在 Azure 机器学习工作室中创建自动化机器学习试验](how-to-use-automated-ml-for-ml-models.md)。 
 
@@ -47,7 +47,7 @@ AutoML 试验会自动执行模型验证。 下面的各个部分介绍了如何
 
 ## <a name="default--data-splits-and-cross-validation"></a>默认数据拆分和交叉验证
 
-使用 [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未**包括 `n_cross_validation` 或 `validation_ data` 的参数。
+使用 [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未**包括 `n_cross_validation` 或 `validation_ data` 的参数。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

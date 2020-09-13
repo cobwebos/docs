@@ -3,12 +3,12 @@ title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d6e9bbe3a1a99a8e4ee726cb88796dccb6f6ccbd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205904"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652059"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -47,6 +47,7 @@ ms.locfileid: "88205904"
 | 7.1.417.* | 7.0.466.* |小于或等于版本4。1 |当前版本，因此无结束日期 |
 | 7.1.428.* | 7.0.466.* |小于或等于版本4。1 |当前版本，因此无结束日期 |
 | 7.1.456.* | 7.0.466.* |小于或等于版本4。1 |当前版本，因此无结束日期 |
+| 7.1.458.* | 7.0.466.* |小于或等于版本4。1 |当前版本，因此无结束日期 |
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -119,4 +120,5 @@ ms.locfileid: "88205904"
 | 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
 | 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 

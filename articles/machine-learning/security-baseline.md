@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228352"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657353"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>适用于 Azure 机器学习的 Azure 安全基线
 
@@ -28,7 +28,7 @@ ms.locfileid: "89228352"
 
 Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 的访问。
 
-- [如何在隔离的虚拟网络中安全地运行试验和推理](how-to-enable-virtual-network.md)
+- [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
 - [将 Azure 防火墙后的工作区用于 Azure 机器学习](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 
 - [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 
-- [在 &amp; 私有虚拟网络的定型推理期间进行网络隔离](how-to-enable-virtual-network.md)
+- [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -94,7 +94,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 
 **指南**：在每个组织的网络边界上部署所选的防火墙解决方案，以检测和/或阻止恶意流量。
 
-从 Azure 市场中选择一种产品/服务，该产品/服务应支持包含有效负载检查功能的 ID/IPS 功能。  如果不需要进行负载检查，则可以使用 Azure 防火墙威胁情报。 基于 Azure 防火墙威胁智能的筛选用于警报和/或阻止与已知的恶意 IP 地址和域之间的流量。 IP 地址和域源自 Microsoft 威胁智能源。
+从 Azure Marketplace 中选择一个产品/服务，该产品/服务支持具有负载检查功能的 ID/IPS 功能。  如果不需要进行负载检查，则可以使用 Azure 防火墙威胁情报。 基于 Azure 防火墙威胁智能的筛选用于警报和/或阻止与已知的恶意 IP 地址和域之间的流量。 IP 地址和域源自 Microsoft 威胁智能源。
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -122,7 +122,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 - [有关使用服务标记的详细信息](../virtual-network/service-tags-overview.md)
 
-- [对于 Azure 机器学习虚拟网络](how-to-enable-virtual-network.md)
+- [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -326,7 +326,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供内置 RBA
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：在创建新的工作区时，Azure 机器学习附带三个默认角色，请围绕使用所有者帐户创建标准操作过程。
+**指南**：在创建新的工作区时，Azure 机器学习附带三个默认角色，创建有关使用所有者帐户的标准操作过程。
 
 还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用对管理帐户的实时访问。 
 
@@ -677,7 +677,7 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
-**指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
+**指导**：根据组织需求，创建已获批 Azure 资源以及已获批用于计算资源的软件的清单。
 
 **Azure 安全中心监视**：不适用
 
@@ -979,7 +979,9 @@ Azure 机器学习支持通过客户托管的密钥进行数据存储加密，�
 
 - [如何创建 Key Vault](/azure/key-vault/quick-create-portal)
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)
+- [如何对 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure 安全中心监视**：是
 
@@ -1106,13 +1108,13 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：制定组织的事件响应指南。 确保有一些书面的事件响应计划，这些计划定义了人员的所有角色，以及事件处理的各个阶段以及从检测到后事件检查的管理。 
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理和管理从检测到事件后审查的各个阶段。 
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
 - [Microsoft 安全响应中心事件分析](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-- [使用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [使用 NIST 的“计算机安全事件处理指南”，帮助制定自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure 安全中心监视**：不适用
 
@@ -1122,7 +1124,7 @@ Azure 机器学习跨不同计算资源甚至是自己的计算资源提供不�
 
 **指导**：Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的从分析上中的置信度，以及导致警报的活动的恶意意图的置信度。
 
-此外，使用标记来标记订阅，并创建命名系统来标识和分类 Azure 资源，尤其是处理敏感数据的资源。 根据发生事件的 Azure 资源和环境的严重程度确定警报修正的优先级。
+此外，使用标记来标记订阅，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

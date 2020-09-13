@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358440"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657113"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
 使用本文中介绍的操作流程，根据组织的需要和要求自定义 Azure Active Directory (Azure AD) Connect。  
@@ -30,7 +30,7 @@ ms.locfileid: "85358440"
 默认情况下，只有执行安装的用户和本地管理员才可以管理安装的同步引擎。 要使其他用户能够访问和管理同步引擎，请在本地服务器上找到名为 ADSyncAdmins 的组，并将这些用户添加到此组中。
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>向 Azure AD Premium 和企业移动性套件用户分配许可证
-将用户同步到云后，需要向他们分配许可证，以便其可以继续使用 Office 365 等云应用。
+用户已同步到云后，需要向他们分配许可证，以便他们可以使用 Microsoft 365 的云应用。
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>分配 Azure AD Premium 或企业移动套件许可证
 
@@ -59,11 +59,11 @@ ms.locfileid: "85358440"
 2. 单击 **“配置”** 。
 3. 在任务屏幕上，选择“自定义同步选项”****，然后单击“下一步”****。
 4. 输入 Azure AD 凭据
-5. 单击“下一步” 。 单击“下一步” 。  单击“下一步” 。
+5. 单击“下一步”。 单击“下一步”。  单击“下一步”。
 5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。********
 6.  单击 **“配置”** 。
 
-有关 Azure AD Connect 同步计划程序的详细信息，请参阅[Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。
+有关 Azure AD Connect 同步计划程序的详细信息，请参阅 [Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。
 
 ## <a name="additional-tasks-available-in-azure-ad-connect"></a>Azure AD Connect 中提供的其他任务
 在完成 Azure AD Connect 的初始安装后，随时可以从 Azure AD Connect 启动页或桌面快捷方式再次启动向导。  会发现，再次运行向导会以其他任务的形式提供一些新选项。  
@@ -72,7 +72,7 @@ ms.locfileid: "85358440"
 
 ![其他任务列表](./media/how-to-connect-post-installation/addtasks2.png)
 
-| 其他任务 | 描述 |
+| 其他任务 | 说明 |
 | --- | --- |
 |**隐私设置**|查看正在与 Microsoft 共享的遥测数据。|
 |**查看当前配置**|查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |

@@ -129,7 +129,7 @@ ms.locfileid: "89658168"
 
 此表包含有关这些子属性的详细信息：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |----------|------|-------|
 | `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个 *键-值* 对，其中键是操作的名称，并且值等效于调用 [ ( # A1 函数的操作](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者使用下划线 (_) 替换操作名称中的空格 ( "" ) 。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
 | `trigger` | Object | 触发器中的 Result 对象并等效于调用 [ ( # A1 函数的触发器](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |

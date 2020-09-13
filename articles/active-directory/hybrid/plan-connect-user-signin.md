@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331266"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657148"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
@@ -47,9 +47,9 @@ Azure AD 支持以下身份验证方法：
    * 直通身份验证 (PTA) - 此选项类似于密码哈希同步，但使用本地软件代理为具有强大安全性和合规性策略的组织提供简单的密码验证****。
 * **联合身份验证** - 如果选择此身份验证方法，Azure AD 会将身份验证过程移交给单独的受信任身份验证系统（例如 AD FS 或第三方联合身份验证服务）来验证用户的登录。 
 
-由于大多数组织只想让用户登录 Office 365、SaaS 应用程序和其他基于 Azure AD 的资源，因此，我们建议使用默认的密码哈希同步选项。
+对于只想让用户登录到 Microsoft 365、SaaS 应用程序和其他基于 Azure AD 的资源的大多数组织，我们建议使用默认的密码哈希同步选项。
  
-有关选择身份验证方法的详细信息，请参阅[选择 Azure Active Directory 混合标识解决方案的正确身份验证方法](../../security/fundamentals/choose-ad-authn.md)
+有关选择身份验证方法的详细信息，请参阅[选择 Azure Active Directory 混合标识解决方案的正确身份验证方法](./choose-ad-authn.md)
 
 ### <a name="password-hash-synchronization"></a>密码哈希同步
 凭借密码哈希同步，可将用户密码的哈希从本地 Active Directory 同步到 Azure AD。 当在本地更改或重置密码时，新密码哈希将立即同步到 Azure AD，以便用户始终可用相同密码访问云资源与本地资源。 密码绝不会被发送到 Azure AD，也不会以明文的形式存储在 Azure AD 中。 你可将密码哈希同步与密码写回一起使用，以在 Azure AD 中启用自助密码重置。
@@ -139,12 +139,12 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 可以单击“刷新”按钮，从 Azure AD 中重新提取自定义域最新的状态。
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>选择 Azure AD 中的用户主体名的属性
-属性 userPrincipalName 是用户登录 Azure AD 和 Office 365 时使用的属性。 应在同步处理用户之前对在 Azure AD 中使用的域（也称为 UPN 后缀）进行验证。
+属性 userPrincipalName 是用户登录到 Azure AD 和 Microsoft 365 时所使用的属性。 应在同步处理用户之前对在 Azure AD 中使用的域（也称为 UPN 后缀）进行验证。
 
 强烈建议保留默认属性 userPrincipalName。 如果此属性不可路由且无法验证，则可以选择另一个属性（例如 email）作为保存登录 ID 的属性。 这就是所谓的备用 ID。 “备用 ID”属性值必须遵循 RFC 822 标准。 可以将备用 ID 与密码 SSO 和联合 SSO 配合使用作为登录解决方案。
 
 > [!NOTE]
-> 所有 Office 365 工作负荷都不允许使用替代 ID。 有关详细信息，请参阅[配置备用登录 ID](https://technet.microsoft.com/library/dn659436.aspx)。
+> 使用备用 ID 与所有 Microsoft 365 工作负荷都不兼容。 有关详细信息，请参阅[配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 >
 >
 

@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860830"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657567"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure 机器学习主权云奇偶校验
 
@@ -34,7 +34,7 @@ ms.locfileid: "88860830"
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Feature | 公有云状态  | 美国-弗吉尼亚州 | 美国-亚利桑那| 
+| 功能 | 公有云状态  | 美国-弗吉尼亚州 | 美国-亚利桑那| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **自动化机器学习** | | | |
 | 在笔记本中创建和运行试验                                    | GA                   | YES                | YES         |
@@ -71,7 +71,7 @@ ms.locfileid: "88860830"
 | VNet 后的 ACI                                                            | 公共预览版       | 是                 | 是          |
 | VNet 后的 ACR                                                            | 公共预览版       | 是                 | 是          |
 | AKS 群集的专用 IP                                                  | 公共预览版       | 是                 | 是          |
-| 计算 |   | | |
+| **计算** |   | | |
 | 跨工作区的配额管理                                         | GA                   | YES                | YES         |
 | **用于机器学习的数据** |   | | |
 | 从 SDK 创建、查看或编辑数据集和数据存储                  | GA                   | YES                | YES         |
@@ -96,7 +96,7 @@ ms.locfileid: "88860830"
 | 用于实现数据表的 Azure 机器学习中的自定义标记              | GA                   | 是                 | 是          |
 | 公平 AzureML 集成                                               | 公共预览版       | 是                 | 是          |
 | Interpretability SDK                                                      | GA                   | YES                | YES         |
-| **方面** |   | | |
+| **培训** |   | | |
 | 试验日志流式处理                                              | GA                   | YES                | YES         |
 | 强化学习                                                     | 公共预览版       | 是                 | 是          |
 | 试验 UI                                                         | GA                   | YES                | YES         |
@@ -136,7 +136,7 @@ ms.locfileid: "88860830"
 * 对于 Azure 机器学习计算实例，Azure 政府版中未提供刷新持续时间超过24小时的令牌的功能。
 * 模型分析不支持美国-亚利桑那地区的4个 Cpu。   
 * 如果笔记本的示例需要访问公共数据，则可能无法在 Azure 政府版中使用。
-* IP 地址： VNet 中使用的 CLI 命令 [和强制隧道](how-to-enable-virtual-network.md#forced-tunneling) 说明不返回 IP 范围。 改为使用 azure 政府版的 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063) 。
+* IP 地址： VNet 中使用的 CLI 命令 [和强制隧道](how-to-secure-training-vnet.md#forced-tunneling) 说明不返回 IP 范围。 改为使用 azure 政府版的 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063) 。
 * 对于预定管道，还提供基于 blob 的触发器机制。 CMK 工作区不支持此机制。 若要为 CMK 工作区启用基于 blob 的触发器，必须执行其他设置。 有关详细信息，请参阅 [从逻辑应用触发机器学习管道的运行](how-to-trigger-published-pipeline.md)。
 * 防火墙：使用 Azure 政府区域时，将以下其他主机添加到防火墙设置：
 
@@ -147,7 +147,7 @@ ms.locfileid: "88860830"
 
 ## <a name="azure-china-21vianet"></a>Azure 中国世纪互联 
 
-| Feature                                       | 公有云状态 | CH-东-2 | CH-北-3 |
+| 功能                                       | 公有云状态 | CH-东-2 | CH-北-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **自动化机器学习** |    | | |
 | 在笔记本中创建和运行试验                                    | GA               | YES       | 空值        |
@@ -184,7 +184,7 @@ ms.locfileid: "88860830"
 | VNet 后的 ACI                                                            | 公共预览版   | 是        | 空值        |
 | VNet 后的 ACR                                                            | 公共预览版   | 是        | 空值        |
 | AKS 群集的专用 IP                                                  | 公共预览版   | 是        | 空值        |
-| 计算 |   | | |
+| **计算** |   | | |
 | 跨工作区的配额管理                                         | GA               | YES       | 空值        |
 | **用于机器学习的数据** | | | |
 | 从 SDK 创建、查看或编辑数据集和数据存储                  | GA               | YES       | 空值        |
@@ -209,7 +209,7 @@ ms.locfileid: "88860830"
 | 用于实现数据表的 Azure 机器学习中的自定义标记              | GA               | 是        | 空值        |
 | 公平 AzureML 集成                                               | 公共预览版   | 是        | 空值        |
 | Interpretability SDK                                                      | GA               | YES       | 空值        |
-| **方面** |    | | |
+| **培训** |    | | |
 | 试验日志流式处理                                              | GA               | YES       | 空值        |
 | 强化学习                                                     | 公共预览版   | 是        | 空值        |
 | 试验 UI                                                         | GA               | YES       | 空值        |
@@ -236,7 +236,7 @@ ms.locfileid: "88860830"
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * 如果需要访问公共数据，示例笔记本可能不起作用。
-* IP 地址范围： [VNet 强制隧道](how-to-enable-virtual-network.md#forced-tunneling) 说明中使用的 CLI 命令不返回 IP 范围。 改用 [适用于 Azure 中国的 AZURE IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062) 。
+* IP 地址范围： [VNet 强制隧道](how-to-secure-training-vnet.md#forced-tunneling) 说明中使用的 CLI 命令不返回 IP 范围。 改用 [适用于 Azure 中国的 AZURE IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062) 。
 * 目前启用了 "私有" 链接的工作区中不支持 Azure 机器学习计算实例预览，但在下一次将服务扩展部署到所有 AML 区域时，将支持 CI。
 
 ## <a name="next-steps"></a>后续步骤

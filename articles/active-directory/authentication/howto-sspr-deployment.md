@@ -9,14 +9,14 @@ ms.date: 01/31/2020
 ms.author: baselden
 author: barbaraselden
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717738"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657222"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -86,7 +86,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 |教程 |[完成 Azure AD 自助式密码重置试点推行](./tutorial-enable-sspr.md) |
 | |[启用密码写回](./tutorial-enable-sspr-writeback.md) |
 | |[Windows 10 登录屏幕中的 Azure AD 密码重置](./howto-sspr-windows.md) |
-| 常见问题解答|[密码管理常见问题解答](./active-directory-passwords-faq.md) |
+| 常见问题|[密码管理常见问题解答](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>解决方案体系结构
