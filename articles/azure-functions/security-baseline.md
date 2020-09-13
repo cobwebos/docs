@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5609df554e78996e50dcc57e200bb1dc1282cfb0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230494"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394085"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
@@ -179,7 +179,7 @@ ms.locfileid: "89230494"
 - 应该只能通过 HTTPS 访问函数应用
 - 应在函数应用中使用最新的 TLS 版本
 
-你还可以使用 Azure 蓝图通过打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) ）和单个蓝图定义中的策略，来简化大规模的 Azure 部署。 可以轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 可以轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -539,7 +539,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络 (VNet 分隔) /子网并进行相应标记。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络 (VNet 分隔) /子网并进行相应标记。
 
 你还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到服务 (例如： Azure Functions 应用 HTTPs 终结点) Azure Private Link。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点位于高级计划中运行的函数应用 (预览) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
@@ -960,7 +960,9 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md)
 
-- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/managed-identity.md)
+* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+
+* [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 - [使用应用服务和 Azure Functions 的 Key Vault 引用](../app-service/app-service-key-vault-references.md)
 
@@ -1079,9 +1081,9 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：备份和还原功能中的备份使用订阅中的 Azure 存储帐户。 Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了进一步控制加密密钥，你可以提供客户管理的密钥来加密存储数据。
+**指南**：备份和还原功能中的备份使用订阅中的 Azure 存储帐户。 Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，可以提供客户管理的密钥用于对存储数据进行加密。
 
-如果使用客户管理的密钥，请确保已启用 Key Vault 中的软删除功能，以防止意外或恶意删除密钥。
+如果使用的是客户管理的密钥，请确保在 Key Vault 中启用软删除，以防止意外或恶意删除密钥。
 
 - [Azure 存储静态加密](../storage/common/storage-service-encryption.md)
 

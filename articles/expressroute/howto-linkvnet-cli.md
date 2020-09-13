@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：将 VNet 链接到线路： CLI
 description: 本文介绍如何使用资源管理器部署模型和 CLI 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: cherylmc
-ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: duau
+ms.openlocfilehash: ac36e303cbeaf5167b5bbec3cea503c37b276058
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325247"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393201"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
@@ -22,8 +22,8 @@ ms.locfileid: "87325247"
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell （经典）](expressroute-howto-linkvnet-classic.md)
+> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell（经典）](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
@@ -153,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 *RoutingWeight* 的范围是 0 到 32000。 默认值为 0。
 
 ## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath 
-如果虚拟网络网关为超高性能或 ErGw3AZ，则可以启用[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 改进了数据路径性能，例如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
+如果虚拟网络网关为超高性能或 ErGw3AZ，则可以启用 [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 改进了数据路径性能，例如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
 
 **在新连接上配置 FastPath**
 

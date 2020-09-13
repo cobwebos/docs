@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：为线路配置 NPM
 description: 为 Azure ExpressRoute 线路配置基于云的网络监视 (NPM)。 这包括通过 ExpressRoute 专用对等互连和 Microsoft 对等互连进行监视。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
-ms.author: cherylmc
-ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738373"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393655"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
@@ -57,9 +57,9 @@ ms.locfileid: "84738373"
    >可以创建新的工作区或使用现有的工作区。 如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息 .。。](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
-   ![门户](./media/how-to-npm/3.png)<br><br>
+   ![portal](./media/how-to-npm/3.png)<br><br>
 2. 在“网络性能监视器”主页底部，单击“创建”打开“网络性能监视器 - 创建新解决方案”页面************。 单击“Log Analytics 工作区 - 选择工作区”**** 打开“工作区”页面。 单击“+ 创建新工作区”打开“工作区”页面****。
-3. 在 " **Log Analytics 工作区**" 页上，选择 "**新建**"，然后配置下列设置：
+3. 在 " **Log Analytics 工作区** " 页上，选择 " **新建**"，然后配置下列设置：
 
    * Log Analytics 工作区 - 键入工作区的名称。
    * “订阅”- 若有多个订阅，请选择要与新工作区相关联的订阅。
@@ -96,10 +96,10 @@ ms.locfileid: "84738373"
   >
 
 1. 运行安装程序，在要用于监视 ExpressRoute 的每个服务器上安装代理****。 用于监视的服务器可以是 VM 或本地服务器，并且必须连接 Internet。 需要至少在本地安装一个代理，并在 Azure 中在要监视的每个网络段上安装一个代理。
-2. 在“欢迎”页面上，单击“下一步”。 
-3. 在 "**许可条款**" 页上，阅读许可协议，然后单击 "**我同意**"。
-4. 在 "**目标文件夹**" 页上，更改或保留默认安装文件夹，然后单击 "**下一步**"。
-5. 在 "**代理安装选项**" 页上，可以选择将代理连接到 Azure Monitor 日志或 Operations Manager。 或者，如果希望稍后配置代理，也可以将选项留空。 完成选择后，单击“下一步”****。
+2. 在“欢迎”  页上，单击“下一步”  。
+3. 在 " **许可条款** " 页上，阅读许可协议，然后单击 " **我同意**"。
+4. 在 " **目标文件夹** " 页上，更改或保留默认安装文件夹，然后单击 " **下一步**"。
+5. 在 " **代理安装选项** " 页上，可以选择将代理连接到 Azure Monitor 日志或 Operations Manager。 或者，如果希望稍后配置代理，也可以将选项留空。 完成选择后，单击“下一步”****。
 
    * 如果选择连接到 Azure Log Analytics，请粘贴在前一部分中复制到记事本的“工作区 ID”和“工作区密钥”（主密钥）************。 然后单击“下一步”。
 
@@ -110,7 +110,7 @@ ms.locfileid: "84738373"
    * 在“代理操作帐户”页面，选择“本地系统”帐户或“域或本地计算机帐户”************。 然后单击“下一步”。
 
      ![帐户](./media/how-to-npm/10.png)
-6. 在 "**准备安装**" 页上，查看你的选择，然后单击 "**安装**"。
+6. 在 " **准备安装** " 页上，查看你的选择，然后单击 " **安装**"。
 7. 在“配置已成功完成”页上，单击“完成”。 
 8. 完成后，Microsoft Monitoring Agent 将显示在“控制面板”中。 你可以在此处查看配置，并验证代理是否已连接到 Azure Monitor 日志。 如果已连接，代理会显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”****。
 
@@ -136,7 +136,7 @@ ms.locfileid: "84738373"
 1. 在具有监视代理的服务器上，打开“控制面板”****。
 2. 打开“Microsoft Monitoring Agent”****。
 3. 单击“Azure Log Analytics”选项卡****。
-4. 在 "**状态**" 列中，应会看到代理成功连接到 Azure Monitor 日志。
+4. 在 " **状态** " 列中，应会看到代理成功连接到 Azure Monitor 日志。
 
    ![状态](./media/how-to-npm/12.png)
 
@@ -238,7 +238,7 @@ NPM 页面包含一个 ExpressRoute 页面，其中显示 ExpressRoute 线路和
 
 #### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>丢失、延迟和吞吐量的趋势
 
-带宽、延迟和丢失图表是交互式的。 可以使用鼠标控件放大这些图表的任何部分。 还可以通过单击左上角 "操作" 按钮下的 "**日期/时间**" 来查看其他间隔的带宽、延迟和丢失数据。
+带宽、延迟和丢失图表是交互式的。 可以使用鼠标控件放大这些图表的任何部分。 还可以通过单击左上角 "操作" 按钮下的 " **日期/时间**" 来查看其他间隔的带宽、延迟和丢失数据。
 
 ![趋势](./media/how-to-npm/16.png)
 

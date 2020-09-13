@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 132a6d9a6f5ca702b13e84402ee9bb71eca57d7c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 581e30508b508d5a36f2d5695043ac7bd782a2d5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229695"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394374"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -70,7 +70,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 你可以配置专用终结点，以仅从所选的虚拟网络中限制访问。
 
-在这些虚拟网络上启用 DDoS 保护标准，防范分布式拒绝服务 (DDoS) 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。 有关详细信息，请参阅下列文章： 
+在这些虚拟网络上启用 DDoS 保护标准，防范分布式拒绝服务 (DDoS) 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。 有关详细信息，请参阅以下文章： 
 
 - [如何配置 Azure 事件网格主题或域的专用终结点](configure-private-endpoints.md)
 
@@ -587,7 +587,7 @@ Azure 事件网格还支持用于发布到主题和域的基于 IP 的公共访�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
-**指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
+**指导**：根据组织需求，创建已获批 Azure 资源以及已获批用于计算资源的软件的清单。
 
 **Azure 安全中心监视**：不适用
 
@@ -804,7 +804,9 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 - [如何创建 Key Vault](/azure/key-vault/quick-create-portal)
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)
+- [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+
+- [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -901,13 +903,13 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：制定组织的事件响应指南。 确保有一些书面的事件响应计划，这些计划定义了人员的所有角色，以及事件处理的各个阶段以及从检测到后事件检查的管理。 
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理和管理从检测到事件后审查的各个阶段。 
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
 - [Microsoft 安全响应中心事件分析](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-- [使用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [使用 NIST 的“计算机安全事件处理指南”，帮助制定自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure 安全中心监视**：不适用
 
@@ -920,7 +922,7 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
  
  
  
- 此外，使用标记来标记订阅，并创建命名系统来标识和分类 Azure 资源，尤其是处理敏感数据的资源。 根据发生事件的 Azure 资源和环境的严重程度确定警报修正的优先级。
+ 此外，使用标记来标记订阅，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

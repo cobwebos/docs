@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3633afa3ed7d3dc9ba3d85bd7542ef9838881c5b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 796ef0b82c15940ce9200e0b50916ca657f10b99
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225642"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393887"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>认知服务的 Azure 安全基线
 
@@ -872,7 +872,9 @@ Microsoft 管理 Azure 认知服务的底层基础结构，并实施了严格控
 
 * [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何对 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure 安全中心监视**：是
 

@@ -2,25 +2,25 @@
 title: Azure ExpressRoute：通过 Microsoft 对等互连配置 S2S VPN
 description: 使用站点到站点的 VPN 网关，通过 ExpressRoute Microsoft 对等互连线路配置到 Azure 的 IPsec/IKE 连接。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 571ed0201fea11f6770ec3aa7e72db10d49e7b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738152"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393133"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 
 本文帮助你通过 ExpressRoute 专用连接在本地网络与 Azure 虚拟网络 (VNet) 间配置安全的加密连接。 可使用 Microsoft 对等互连在所选本地网络和 Azure VNet 间建立站点到站点的 IPsec/IKE VPN 隧道。 通过 ExpressRoute 配置安全隧道，即可机密、真实、完整地交换数据，不会出现重播。
 
 >[!NOTE]
->通过 Microsoft 对等互连设置站点到站点 VPN 时，需为 VPN 网关和 VPN 出口付费。 有关详细信息，请参阅[VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)。
+>通过 Microsoft 对等互连设置站点到站点 VPN 时，需为 VPN 网关和 VPN 出口付费。 有关详细信息，请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)。
 >
 >
 
@@ -91,7 +91,7 @@ ms.locfileid: "84738152"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-以下部分输出显示了从 \* 243.229.34 到 ASN 12076 （MSEE）的68前缀：
+下面的部分输出显示68前缀已从 \* 243.229.34 与 ASN 12076 (MSEE) 接收：
 
 ```
 ...
@@ -475,7 +475,7 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 配置 VPN 设备筛选和防火墙（可选）
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 配置 VPN 设备筛选和防火墙 (可选) 
 
 根据需求配置防火墙和筛选。
 
