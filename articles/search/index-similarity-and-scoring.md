@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924480"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662267"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
@@ -40,7 +40,7 @@ ms.locfileid: "88924480"
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>评分统计信息和粘滞会话
 
-为了实现可伸缩性，Azure 认知搜索会通过分片过程横向分布每个索引，这意味着，索引的某些部分在物理上是独立的。
+为了实现可伸缩性，Azure 认知搜索通过分片进程水平分布每个索引，这意味着 [索引的部分以物理方式分开](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 默认情况下，文档的评分是根据分片中数据的统计属性计算的。 此方法对于大型数据集而言通常不会造成问题，与基于所有分片中的信息计算评分相比，此方法可提供更好的性能。 也就是说，使用这种性能优化可能会导致两个非常相似的文档（甚至相同的文档）最终可能出现不同的相关性评分（如果这些文档出现在不同的分片中）。
 

@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356876"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662396"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，它将消除运行 Microsoft 的一种同步工具时 UserPrincipalName  和 SMTP ProxyAddress  冲突引起的摩擦。
@@ -69,7 +69,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 > 为租户启用“重复属性复原”功能之前，不能再使用 Set-MsolDirSyncFeature cmdlet 主动启用“重复属性复原”功能。 要能够测试该功能，将需要创建新的 Azure Active Directory 租户。
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>识别具有 DirSyncProvisioningErrors 的对象
-目前有两种方法可以标识由于重复属性冲突而导致的对象，Azure Active Directory PowerShell 和[Microsoft 365 管理中心](https://admin.microsoft.com)。 我们已计划将来扩展到其他基于门户的报告。
+目前有两种方法可以标识由于重复属性冲突而导致的对象，Azure Active Directory PowerShell 和 [Microsoft 365 管理中心](https://admin.microsoft.com)。 我们已计划将来扩展到其他基于门户的报告。
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 本主题中的 PowerShell cmdlet 具有以下特点：
@@ -126,7 +126,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 
 ![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "活动用户")
 
-有关如何在 Microsoft 365 管理中心查看目录同步错误的说明，请参阅[识别 Office 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
+有关如何在 Microsoft 365 管理中心查看目录同步错误的说明，请参阅 [确定 Microsoft 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
 
 ### <a name="identity-synchronization-error-report"></a>标识同步错误报告
 使用此新行为处理具有重复属性冲突的对象时，通知将包含在标准标识同步错误报告电子邮件中，而该电子邮件将发送给租户的技术通知联系人。 但是，此行为有一项重大变化。 在过去，有关重复属性冲突的信息包含在每个后续错误报告中，直到解决冲突为止。 使用此新行为，给定冲突的错误通知只出现一次 - 在冲突属性被隔离时。
@@ -163,7 +163,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
    
     b. 然后，尝试使用 **UPN = User\@contoso.com** 同步**用户 B**。
    
-    c. **用户 B 的**UPN 更改为**User1234 \@ contoso.onmicrosoft.com** ，而**User \@ contoso.com**添加到**DirSyncProvisioningErrors**。
+    c. **用户 B 的** UPN 更改为 **User1234 \@ contoso.onmicrosoft.com** ，而 **User \@ contoso.com** 添加到 **DirSyncProvisioningErrors**。
    
     d. **用户 B** 的错误消息应指出**用户 A** 已有用作 UPN 的 **User\@contoso.com**，但却显示**用户 B** 自己的 displayName。
 
@@ -177,5 +177,5 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
-* [识别 Office 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [确定 Microsoft 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

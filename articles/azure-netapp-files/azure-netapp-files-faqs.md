@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 09/09/2020
 ms.author: b-juche
-ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590364"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662456"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -49,6 +49,10 @@ ms.locfileid: "88590364"
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
 否。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+
+### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp 文件是否支持双堆栈 (IPv4 和 IPv6) VNet？
+
+不能，Azure NetApp 文件当前不支持 (IPv4 和 IPv6) VNet 的双堆栈。  
  
 ## <a name="security-faqs"></a>安全常见问题
 
@@ -66,10 +70,9 @@ NFSv3 或 SMBv3 客户端与 Azure NetApp 文件卷之间的数据流量未加�
 
 Azure NetApp 文件的密钥管理由服务处理。 为每个卷生成唯一的 XTS-256 数据加密密钥。 加密密钥层次结构用于加密和保护所有卷密钥。 这些加密密钥永远不会以未加密的格式显示或报告。 删除卷时，会立即删除加密密钥。
 
-使用 Azure 专用 HSM) 的用户管理密钥支持 (自带密钥，可在美国东部、美国 West2 和美国中南部区域提供控制。  您可以在上请求访问 **anffeedback@microsoft.com** 。 容量可用时，将批准请求。
+在美国东部、美国中南部、美国西部2和 US Gov 弗吉尼亚州地区，使用 Azure 专用 HSM (创建自己的密钥) 支持客户管理的密钥。 您可以在上请求访问 [anffeedback@microsoft.com](mailto:anffeedback@microsoft.com) 。 容量可用时，将批准请求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>能否配置 NFS 导出策略规则来控制对 Azure NetApp 文件服务装载目标的访问？
-
 
 是的，你可以在单个 NFS 导出策略中配置最多五个规则。
 

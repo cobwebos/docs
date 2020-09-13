@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255772"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662333"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -55,7 +55,7 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 > [!NOTE]
 > 支持从 ESAE 管理林（也称为“Red 林”）管理 Azure AD Connect 中使用的管理帐户。
 > 专用管理林允许组织在安全控制比生产环境更强的环境中托管管理帐户、工作站和组。
-> 若要了解有关专用管理林的详细信息，请参阅 [ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)。
+> 若要了解有关专用管理林的详细信息，请参阅 [ESAE 管理林设计方法](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)。
 
 > [!NOTE]
 > 初始安装后不再需要全局管理员角色，唯一必需的帐户是“目录同步帐户”角色帐户。 这并不一定意味着只需删除具有全局管理员角色的帐户。 最好将角色更改为不太强大的角色，因为如果需要再次重新运行向导，则完全删除帐户可能会导致问题。 通过减少角色的权限，你始终可以重新提升权限（如果必须再次使用 Azure AD Connect 向导）。 
@@ -147,9 +147,9 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
-| 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/howto-sspr-writeback.md)。 |
+| 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/tutorial-enable-sspr-writeback.md)。 |
 | 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](how-to-connect-device-writeback.md)。 |
-| 组写回 |允许你将 **Office 365 组**写回到已安装 Exchange 的林中。|
+| 组写回 |允许你将 **Microsoft 365 组** 写回到安装有 Exchange 的林。|
 
 ## <a name="upgrade"></a>升级
 从 Azure AD Connect 的一个版本升级到新版本时，需要拥有以下权限：
@@ -197,8 +197,8 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 - 非粗体 - 支持的选项
 - 本地帐户 - 服务器上的本地用户帐户
 - 域帐户 - 域用户帐户
-- sMSA - [独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA - [组托管服务帐户](https://technet.microsoft.com/library/hh831782.aspx)
+- sMSA - [独立托管服务帐户](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA - [组托管服务帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>自定义 | 远程 SQL</br>自定义 |
 | --- | --- | --- | --- |
@@ -215,11 +215,11 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 此功能需要 Windows Server 2008 R2 或更高版本。 如果在 Windows Server 2008 上安装 Azure AD Connect，则安装将回退改用[用户帐户](#user-account)。
 
 #### <a name="group-managed-service-account"></a>组托管服务帐户
-如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx)（组托管服务帐户概述）。
+如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))（组托管服务帐户概述）。
 
 要使用此选项，请在[安装所需组件](how-to-connect-install-custom.md#install-required-components)页上，选择“使用现有服务帐户”，并选择“托管服务帐户”。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-还支持使用[独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。
+还支持使用[独立托管服务帐户](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。
 
 此功能需要 Windows Server 2012 或更高版本。 如果需要使用早期版本的操作系统和远程 SQL，则必须使用[用户帐户](#user-account)。
 
@@ -252,7 +252,7 @@ Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中�
 若要删除未使用的 Azure AD 服务帐户，请运行以下 Azure AD PowerShell cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->在可以使用上述 PowerShell 命令之前，你需要安装 [Azure Active Directory PowerShell for Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) 并使用 [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) 连接到 Azure AD 实例
+>在可以使用上述 PowerShell 命令之前，你需要安装 [Azure Active Directory PowerShell for Graph 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) 并使用 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) 连接到 Azure AD 实例
 
 若要详细了解如何管理或重置 Azure AD 连接器帐户的密码，请参阅[管理 Azure AD Connect 帐户](how-to-connect-azureadaccount.md)
 
@@ -268,4 +268,4 @@ Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中�
 |安装后 | [验证安装并分配许可证](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

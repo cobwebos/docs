@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 采用策略 Azure | Microsoft Docs
-description: 使用条件性访问控制时，Azure Active Directory 会检查在对用户进行身份验证时以及允许访问应用程序之前选取的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+description: 使用条件性访问控制时，Azure AD 会检查在对用户进行身份验证时以及允许访问应用程序之前选取的特定条件。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555375"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659534"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -32,7 +32,7 @@ ms.locfileid: "85555375"
 * [确定多重身份验证要求](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>定义业务需求策略
-第一项任务是确定组织的业务需求。  这可能非常广泛，一不小心就发生范围蔓延。  刚开始要保持简单，但要时常记住所规划的设计应该兼顾和推动将来的变革。  无论是简单还是极为复杂的设计，Azure Active Directory 都是支持 Office 365、Microsoft Online Services 和云感知应用程序的 Microsoft 标识平台。
+第一项任务是确定组织的业务需求。  这可能非常广泛，一不小心就发生范围蔓延。  刚开始要保持简单，但要时常记住所规划的设计应该兼顾和推动将来的变革。  无论是简单设计还是极为复杂的设计，Azure Active Directory 都是支持 Microsoft 365、Microsoft Online Services 和云感知应用程序的 Microsoft 标识平台。
 
 ## <a name="define-an-integration-strategy"></a>定义集成策略
 Microsoft 有三个主要集成方案，分别为云标识、同步标识和联合标识。  应该规划采用这些集成策略的其中一个。  选择的策略可能各异，决策因素可能包括要提供何种用户体验、是否已部署现有基础结构，以及哪种做法最经济高效。  
@@ -55,7 +55,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 策略 | 优点 | 缺点 |
 | --- | --- | --- |
 | **云标识** |在小型组织中易于管理。 <br> 没有要本地安装的内容。 无需其他任何硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
-| **得到** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
+| **已同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
 | **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |设置和配置步骤较多 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合服务器。 如果使用 AD FS，则需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
 
 ### <a name="client-experience"></a>客户端体验
@@ -171,7 +171,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 * Azure AD 目录在设计上是隔离的。 它不支持将 Azure AD Connect 同步更改为从另一个 Azure AD 目录读取数据，以尝试在目录之间构建一般和统一的 GAL。 也不支持使用 Azure AD Connect 同步将用户导出为另一个本地 AD 的联系人。
 
 > [!NOTE]
-> 如果组织禁止网络上的计算机连接到 Internet，本文列出了在客户端计算机的输出允许列表和 Internet Explorer 信任的网站区域中应该添加的终结点（FQDN、IPv4 和 IPv6 地址范围），确保计算机可以成功使用 Office 365。 有关详细信息，请阅读 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)。
+> 如果你的组织限制网络上的计算机连接到 Internet，本文会列出 (Fqdn、IPv4 和 IPv6 地址范围) 的终结点，你应将这些终结点包含在客户端计算机的出站允许列表和 Internet Explorer 受信任的站点区域中，以确保你的计算机可以成功使用 Microsoft 365。 有关详细信息，请阅读 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)。
 > 
 > 
 
@@ -193,9 +193,9 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 用户位置 | 首选设计选项 |
 | --- | --- |
 | Azure Active Directory |云中的多重身份验证 |
-| Azure AD 和使用 AD FS 联合身份验证的本地 AD |推送、请求和匿名 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |推送、请求和匿名 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |推送、请求和匿名 |
+| Azure AD 和使用 AD FS 联合身份验证的本地 AD |两者 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |两者 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |两者 |
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]

@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509071"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658507"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍了使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -117,15 +117,15 @@ Azure AD Connect 同步中的默认配置假设：
 
 在此方案中，一个（或多个）资源林信任所有帐户林。 资源林通常包含装有 Exchange 和 Lync 的扩展 Active Directory 架构。 所有 Exchange 和 Lync 服务以及其他共享服务都位于此林中。 用户在此林中具有一个禁用的用户帐户，并且邮箱被链接到帐户林。
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 和拓扑注意事项
-某些 Office 365 工作负荷对支持的拓扑实施一些限制：
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 和拓扑注意事项
+某些 Microsoft 365 工作负荷对支持的拓扑有某些限制：
 
 | 工作负载 | 限制 |
 | --------- | --------- |
-| Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](https://technet.microsoft.com/library/jj873754.aspx)。 |
-| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/library/dn933910.aspx)。 |
+| Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)。 |
+| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)。 |
 
-如果是更大的组织，则应考虑使用 [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 功能。 它允许你定义用户的资源位于哪个数据中心区域。
+如果你是一个较大的组织，则应该考虑使用 [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 功能。 它允许你定义用户的资源位于哪个数据中心区域。
 
 ## <a name="staging-server"></a>暂存服务器
 ![拓扑中的暂存服务器](./media/plan-connect-topologies/MultiForestStaging.png)

@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356859"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662391"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步：理解和自定义同步
 Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azure AD Connect 的一个主要组件。 它负责在本地环境与 Azure AD 之间同步标识数据的所有相关操作。 Azure AD Connect 同步是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Azure Active Directory 连接器。
@@ -52,13 +52,13 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 | [实现密码哈希同步](how-to-connect-password-hash-synchronization.md) |介绍密码同步的工作原理、实现方式，及其操作与故障排除方法。 |
 | [设备写回](how-to-connect-device-writeback.md) |介绍设备写回在 Azure AD Connect 中的工作原理。 |
 | [目录扩展](how-to-connect-sync-feature-directory-extensions.md) |介绍如何使用自己的自定义属性扩展 Azure AD 架构。 |
-| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |介绍如何将用户的 Office 365 资源放置在用户所在的区域。 |
+| [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |描述如何将用户的 Microsoft 365 资源置于用户所在的同一区域中。 |
 | **同步服务** | |
 | [Azure AD Connect 同步服务功能](how-to-connect-syncservice-features.md) |介绍同步服务端，以及如何在 Azure AD 中更改同步设置。 |
 | [重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 重复属性值复原。 |
 | **操作和 UI** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |介绍 Synchronization Service Manager UI，包括 [操作](how-to-connect-sync-service-manager-ui-operations.md) 、[连接器](how-to-connect-sync-service-manager-ui-connectors.md) 、[Metaverse 设计器](how-to-connect-sync-service-manager-ui-mvdesigner.md) 和 [Metaverse 搜索](how-to-connect-sync-service-manager-ui-mvsearch.md) 选项卡。 |
-| [操作任务和注意事项](how-to-connect-sync-operations.md) |描述操作注意事项，例如灾难恢复。 |
+| [操作任务和注意事项](./how-to-connect-sync-staging-server.md) |描述操作注意事项，例如灾难恢复。 |
 | **如何。。。** | |
 | [重置 Azure AD 帐户](how-to-connect-azureadaccount.md) |如何重置用于从 Azure AD Connect 同步连接到 Azure AD 的服务帐户凭据。 |
 | **详细信息和参考资料** | |

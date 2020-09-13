@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 中的多个域
-description: 本文档介绍如何使用 O365 与 Azure AD 来设置和配置多个顶级域。
+description: 本文档介绍了如何设置和配置具有 Microsoft 365 和 Azure AD 的多个顶级域。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849945"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662433"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
-以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
+以下文档提供有关如何在与 Microsoft 365 或 Azure AD 域进行联合时使用多个顶级域和子域的指导。
 
 ## <a name="multiple-top-level-domain-support"></a>多个顶级域支持
 若要让多个顶级域与 Azure AD 联合，需要一些让单个顶级域联合时不需要的额外配置。
@@ -42,7 +42,7 @@ ms.locfileid: "85849945"
 
 当添加多个顶级域时，会出现问题。  例如，假设已设置了 Azure AD 和本地环境之间的联合。  本文档中使用的是域 bmcontoso.com。  现在，已添加了第二个顶级域 bmfabrikam.com。
 
-![域](./media/how-to-connect-install-multiple-domains/domains.png)
+![显示多个顶级域的屏幕截图](./media/how-to-connect-install-multiple-domains/domains.png)
 
 当尝试将 bmfabrikam.com 域转换为联合域时，发生错误。  原因在于，Azure AD 有一项限制，此限制不允许多个域的 IssuerUri 属性拥有相同的值。  
 
@@ -67,7 +67,7 @@ ms.locfileid: "85849945"
 
 `-SupportMultipleDomain` 的另一个功用是确保 AD FS 系统在颁发给 Azure AD 的令牌中包含正确的颁发者值。 此值是通过获取用户 UPN 的域部分并将其设置为 IssuerUri 中的域（即 https://{upn suffix}/adfs/services/trust）来设置的。
 
-因此，在 Azure AD 或 Office 365 上进行身份验证期间，会使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证将会失败。
+因此，在身份验证期间 Azure AD 或 Microsoft 365，用户令牌中的 IssuerUri 元素用于查找 Azure AD 中的域。 如果找不到匹配项，身份验证将会失败。
 
 例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 `http://bmcontoso.com/adfs/services/trust`。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
 
@@ -106,14 +106,14 @@ c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://sche
 2. 展开左侧的“信任关系”和“信赖方信任” 
 3. 删除右侧的“Microsoft Office 365 标识平台”项。
    ![删除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
+4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](/previous-versions/azure/jj151815(v=azure.100))的计算机上运行以下命令：`$cred=Get-Credential`。  
 5. 输入要联合的 Azure AD 域的全局管理员用户名和密码。
 6. 在 PowerShell 中，输入 `Connect-MsolService -Credential $cred`
 7. 在 PowerShell 中，输入 `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`。  此更新是针对原始域的。  因此，使用上述域后，命令将是：`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 使用以下步骤通过 PowerShell 添加新的顶级域
 
-1. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
+1. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](/previous-versions/azure/jj151815(v=azure.100))的计算机上运行以下命令：`$cred=Get-Credential`。  
 2. 输入要联合的 Azure AD 域的全局管理员用户名和密码
 3. 在 PowerShell 中，输入 `Connect-MsolService -Credential $cred`
 4. 在 PowerShell 中，输入 `New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
@@ -180,4 +180,4 @@ c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://sche
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
