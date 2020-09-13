@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478002"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535766"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
@@ -58,7 +58,7 @@ ms.locfileid: "85478002"
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 门户
 在 Azure 门户中执行以下步骤。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)，选择正确的 AzureAD 租户 (不是 B2C) 。
 2. 导航到“应用注册”部分并选择应用  。
 3. 打开“品牌”  窗格。
 4. 填写“服务条款 URL”和“隐私声明 URL”字段   。
@@ -70,6 +70,11 @@ ms.locfileid: "85478002"
 
 如果想要直接修改应用对象 JSON，可以使用 Azure 门户或应用注册门户中的清单编辑器来包含指向应用的服务条款和隐私声明的链接。
 
+1. 导航到 " **应用注册** " 部分并选择应用。
+2. 打开 " **清单** " 窗格。
+3. 按 Ctrl + F，搜索 "informationalUrls"。 填写信息。
+4. 保存所做更改。
+
 ```json
     "informationalUrls": { 
         "termsOfService": "<your_terms_of_service_url>", 
@@ -79,7 +84,7 @@ ms.locfileid: "85478002"
 
 ### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-若要以编程方式更新所有应用，可以使用 Microsoft Graph API 更新所有应用，以包含指向服务条款和隐私声明文档的链接。
+若要以编程方式更新所有应用程序，可以使用 Microsoft Graph API 更新所有应用程序，以包含指向服务条款和隐私声明文档的链接。
 
 ```
 PATCH https://graph.microsoft.com/v1.0/applications/{application id}
@@ -97,4 +102,4 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 
 > [!NOTE]
 > * 请注意不要覆盖已分配给以下任何字段的任何预先存在的值：`supportUrl``marketingUrl` 和 `logoUrl`
-> * 只有使用 Azure AD 帐户登录时，Microsoft Graph API 才起作用。 不支持 Microsoft 个人帐户。
+> * 仅当使用 Azure AD 帐户登录时，Microsoft Graph API 才适用。 不支持 Microsoft 个人帐户。

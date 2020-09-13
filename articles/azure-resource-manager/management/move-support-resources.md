@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079506"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566120"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -378,7 +378,7 @@ ms.locfileid: "87079506"
 > [!IMPORTANT]
 > Runbook 必须与自动化帐户存在于同一资源组中。
 >
-> 有关信息，请参阅[将 Azure Automation 帐户移到另一个订阅](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
+> 有关信息，请参阅 [将 Azure Automation 帐户移到另一个订阅](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -389,7 +389,7 @@ ms.locfileid: "87079506"
 > | automationaccounts / privateendpointconnectionproxies | 否 | 否 |
 > | automationaccounts / privateendpointconnections | 否 | 否 |
 > | automationaccounts / privatelinkresources | 否 | 否 |
-> | automationaccounts / runbooks | 是 | 是 |
+> | automationaccounts/runbooks | 是 | 是 |
 > | automationaccounts / softwareupdateconfigurations | 否 | 否 |
 > | automationaccounts / webhooks | 否 | 否 |
 > | 操作 | 否 | 否 |
@@ -744,7 +744,7 @@ ms.locfileid: "87079506"
 > | quotas | 否 | 否 |
 > | resourcetypes | 否 | 否 |
 > | validatesubscriptionmoveavailability | 否 | 否 |
-> | virtualmachines | 是 | No |
+> | virtualmachines | 是 | 是 |
 > | virtualmachines / diagnosticsettings | 否 | 否 |
 > | virtualmachines / metricdefinitions | 否 | 否 |
 > | virtualmachines / metrics | 否 | 否 |
@@ -796,7 +796,7 @@ ms.locfileid: "87079506"
 > | osplatformimages | 否 | 否 |
 > | publicimages | 否 | 否 |
 > | quotas | 否 | 否 |
-> | storageaccounts | 是 | No |
+> | storageaccounts | 是 | 否 |
 > | storageaccounts / blobservices | 否 | 否 |
 > | storageaccounts / fileservices | 否 | 否 |
 > | storageaccounts / metricdefinitions | 否 | 否 |
@@ -955,7 +955,7 @@ ms.locfileid: "87079506"
 > | registries / builds | 否 | 否 |
 > | registries / builds / cancel | 否 | 否 |
 > | registries / builds / getloglink | 否 | 否 |
-> | registries / buildtasks | 是 | 是 |
+> | registries/buildtasks | 是 | 是 |
 > | registries / buildtasks / listsourcerepositoryproperties | 否 | 否 |
 > | registries / buildtasks / steps | 否 | 否 |
 > | registries / buildtasks / steps / listbuildarguments | 否 | 否 |
@@ -978,7 +978,7 @@ ms.locfileid: "87079506"
 > | registries / queuebuild | 否 | 否 |
 > | registries / regeneratecredential | 否 | 否 |
 > | registries / regeneratecredentials | 否 | 否 |
-> | registries / replications | 是 | 是 |
+> | registries/replications | 是 | 是 |
 > | registries / runs | 否 | 否 |
 > | registries / runs / cancel | 否 | 否 |
 > | registries / runs / listlogsasurl | 否 | 否 |
@@ -990,7 +990,7 @@ ms.locfileid: "87079506"
 > | registries / tasks / listdetails | 否 | 否 |
 > | registries / tokens | 否 | 否 |
 > | registries / updatepolicies | 否 | 否 |
-> | registries / webhooks | 是 | 是 |
+> | registries/webhooks | 是 | 是 |
 > | registries / webhooks / getcallbackconfig | 否 | 否 |
 > | registries / webhooks / listevents | 否 | 否 |
 > | registries / webhooks / ping | 否 | 否 |
@@ -1437,7 +1437,7 @@ ms.locfileid: "87079506"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | labcenters | 否 | 否 |
-> | labs | 是 | No |
+> | labs | 是 | 否 |
 > | labs / environments | 是 | 是 |
 > | labs / servicerunners | 是 | 是 |
 > | labs / virtualmachines | 是 | 否 |
@@ -2055,11 +2055,11 @@ ms.locfileid: "87079506"
 > | mediaservices / contentkeypolicies | 否 | 否 |
 > | mediaservices / eventgridfilters | 否 | 否 |
 > | mediaservices / liveeventoperations | 否 | 否 |
-> | mediaservices / liveevents | 是 | 是 |
+> | mediaservices/liveevents | 是 | 是 |
 > | mediaservices / liveevents / liveoutputs | 否 | 否 |
 > | mediaservices / liveoutputoperations | 否 | 否 |
 > | mediaservices / streamingendpointoperations | 否 | 否 |
-> | mediaservices / streamingendpoints | 是 | 是 |
+> | mediaservices/streamingendpoints | 是 | 是 |
 > | mediaservices / streaminglocators | 否 | 否 |
 > | mediaservices / streamingpolicies | 否 | 否 |
 > | mediaservices / transforms | 否 | 否 |
@@ -2197,10 +2197,10 @@ ms.locfileid: "87079506"
 > | networkinterfaces | 是 | 是 |
 > | networkprofiles | 否 | 否 |
 > | networksecuritygroups | 是 | 是 |
-> | networkwatchers | 是 | No |
-> | networkwatchers / connectionmonitors | 是 | No |
-> | networkwatchers/flowlogs | 是 | No |
-> | networkwatchers / pingmeshes | 是 | No |
+> | networkwatchers | 是 | 否 |
+> | networkwatchers/connectionmonitors | 是 | 否 |
+> | networkwatchers/flowlogs | 是 | 否 |
+> | networkwatchers/pingmeshes | 是 | 否 |
 > | 操作 | 否 | 否 |
 > | p2svpngateways | 否 | 否 |
 > | privatednsoperationresults | 否 | 否 |
@@ -2215,7 +2215,7 @@ ms.locfileid: "87079506"
 > | privatednszones / soa | 否 | 否 |
 > | privatednszones / srv | 否 | 否 |
 > | privatednszones / txt | 否 | 否 |
-> | privatednszones / virtualnetworklinks | 是 | 是 |
+> | privatednszones/virtualnetworklinks | 是 | 是 |
 > | privatednszonesinternal | 否 | 否 |
 > | privateendpointredirectmaps | 否 | 否 |
 > | privateendpoints | 是 | 是 |
@@ -2523,7 +2523,7 @@ ms.locfileid: "87079506"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | applications | 是 | No |
+> | applications | 是 | 否 |
 > | checkmoderneligibility | 否 | 否 |
 > | checknameavailability | 否 | 否 |
 > | operationresults | 否 | 否 |
@@ -2691,7 +2691,7 @@ ms.locfileid: "87079506"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 服务 | 是 | 是 |
+> | applications | 是 | 是 |
 > | containergroups | 否 | 否 |
 > | gateways | 是 | 是 |
 > | locations | 否 | 否 |
@@ -2749,7 +2749,7 @@ ms.locfileid: "87079506"
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!IMPORTANT]
-> 数据库和服务器必须位于同一个资源组中。 移动 SQL 服务器时，也会移动其所有数据库。 此行为适用于 Azure SQL 数据库和 Azure Synapse 分析数据库。
+> 数据库和服务器必须位于同一个资源组中。 移动 SQL 服务器时，也会移动其所有数据库。 此行为适用于 Azure SQL 数据库和 Azure Synapse Analytics 数据库。
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -2789,7 +2789,7 @@ ms.locfileid: "87079506"
 > | locations / jobagentoperationresults | 否 | 否 |
 > | locations / longtermretentionbackupazureasyncoperation | 否 | 否 |
 > | locations / longtermretentionbackupoperationresults | 否 | 否 |
-> | locations / longtermretentionbackups | 否 | 否 |
+> | locations / longtermretentionbackups | 是 | 是 |
 > | locations / longtermretentionmanagedinstancebackupazureasyncoperation | 否 | 否 |
 > | locations / longtermretentionmanagedinstancebackupoperationresults | 否 | 否 |
 > | locations / longtermretentionmanagedinstancebackups | 否 | 否 |
@@ -2872,7 +2872,7 @@ ms.locfileid: "87079506"
 > | servers / databases / auditingsettings | 否 | 否 |
 > | servers / databases / auditrecords | 否 | 否 |
 > | servers / databases / automatictuning | 否 | 否 |
-> | servers / databases / backuplongtermretentionpolicies | 否 | 否 |
+> | servers / databases / backuplongtermretentionpolicies | 是 | 是 |
 > | servers / databases / backupshorttermretentionpolicies | 否 | 否 |
 > | servers / databases / connectionpolicies | 否 | 否 |
 > | servers / databases / datamaskingpolicies | 否 | 否 |
@@ -3186,7 +3186,7 @@ ms.locfileid: "87079506"
 > | ------------- | ----------- | ---------- |
 > | availablestacks | 否 | 否 |
 > | billingmeters | 否 | 否 |
-> | certificates | No | 是 |
+> | certificates | 否 | 是 |
 > | checknameavailability | 否 | 否 |
 > | connectiongateways | 是 | 是 |
 > | connections | 是 | 是 |
@@ -3226,7 +3226,7 @@ ms.locfileid: "87079506"
 > | sites / eventgridfilters | 否 | 否 |
 > | sites / hostnamebindings | 否 | 否 |
 > | sites / networkconfig | 否 | 否 |
-> | sites / premieraddons | 是 | 是 |
+> | sites/premieraddons | 是 | 是 |
 > | sites/slots | 是 | 是 |
 > | sites / slots / eventgridfilters | 否 | 否 |
 > | sites / slots / hostnamebindings | 否 | 否 |

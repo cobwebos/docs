@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab9b396f72ddd35638519ab69f17e034479e0d5a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311032"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504904"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
@@ -39,7 +39,7 @@ ms.locfileid: "81311032"
 查找数据存储 Log Analytics 工作区：
 
 1. 打开 IoT 中心，
-1. 在 "**安全**" 下，单击 "**概述**"，然后选择 "**设置**"。
+1. 在 " **安全性**" 下，选择 " **设置**"，然后选择 " **数据收集**"。
 1. 更改 Log Analytics 工作区配置详细信息。
 1. 单击“保存” 。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81311032"
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>可疑 IoT 设备的调查步骤
 
-若要查看有关 IoT 设备的见解和原始数据，请访问 Log Analytics 工作区[以访问数据](#how-can-i-access-my-data)。
+若要查看有关 IoT 设备的见解和原始数据，请访问 Log Analytics 工作区 [以访问数据](#how-can-i-access-my-data)。
 
 请参阅下面的示例 kql 查询，开始调查设备上的警报和活动。
 
