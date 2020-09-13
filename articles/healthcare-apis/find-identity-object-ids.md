@@ -8,34 +8,34 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 5b42d61d59a3c816c3b664297470cfbf91f17439
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 706d7e081743f2bab1f593e00dc792f218a000ea
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851760"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033619"
 ---
 # <a name="find-identity-object-ids-for-authentication-configuration"></a>查找用于身份验证配置的标识对象 ID
 
-在本文中，你将了解如何查找将 Azure API for FHIR 配置为[使用外部或辅助 Active Directory 租户](configure-local-rbac.md)作为数据平面时所需的标识对象 id。
+在本文中，你将了解如何查找将 Azure API for FHIR 配置为 [使用外部或辅助 Active Directory 租户](configure-local-rbac.md) 作为数据平面时所需的标识对象 id。
 
 ## <a name="find-user-object-id"></a>查找用户对象 ID
 
-如果用户使用的是用户名 `myuser@consoso.com` ，则可以 `ObjectId` 使用以下 PowerShell 命令查找用户：
+如果用户使用的是用户名 `myuser@contoso.com` ，则可以 `ObjectId` 使用以下 PowerShell 命令查找用户：
 
 ```azurepowershell-interactive
-$(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@consoso.com'").ObjectId
+$(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@contoso.com'").ObjectId
 ```
 
 或者，您可以使用 Azure CLI：
 
 ```azurecli-interactive
-az ad user show --id myuser@consoso.com --query objectId --out tsv
+az ad user show --id myuser@contoso.com --query objectId --out tsv
 ```
 
 ## <a name="find-service-principal-object-id"></a>查找服务主体对象 ID
 
-假设你已注册了[服务客户端应用](register-service-azure-ad-client-app.md)，并且希望允许此服务客户端访问用于 FHIR 的 Azure API，则可以使用以下 PowerShell 命令查找客户端服务主体的对象 ID：
+假设你已注册了 [服务客户端应用](register-service-azure-ad-client-app.md) ，并且希望允许此服务客户端访问用于 FHIR 的 Azure API，则可以使用以下 PowerShell 命令查找客户端服务主体的对象 ID：
 
 ```azurepowershell-interactive
 $(Get-AzureADServicePrincipal -Filter "AppId eq 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'").ObjectId

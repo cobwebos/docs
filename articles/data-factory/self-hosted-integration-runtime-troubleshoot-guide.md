@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/10/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800554"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033653"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -24,17 +24,17 @@ ms.locfileid: "87800554"
 
 对于在自承载 IR/共享 IR 上运行的失败的活动，Azure 数据工厂支持查看和上载错误日志。 你可以执行以下步骤来获取错误报告 ID，然后输入报表 ID 以查找相关的已知问题。
 
-1. "中转到**活动运行**" 页。
+1. "中转到 **活动运行** " 页。
 
-1. 在 "**错误**" 列下，单击 "下一按钮"。
+1. 在 " **错误** " 列下，单击 "下一按钮"。
 
     !["活动运行" 页](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
 
-1. 你会看到失败的活动运行的相关日志。 单击 "**发送日志**" 按钮以获得进一步帮助。
+1. 你会看到失败的活动运行的相关日志。 单击 " **发送日志** " 按钮以获得进一步帮助。
 
     ![发送日志](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. 您可以选择要发送的日志。 对于*自承载 ir*，你可以上载与失败的活动或自承载 ir 节点上的所有日志相关的日志。 对于*共享 IR*，只能上载与失败的活动相关的日志。
+1. 您可以选择要发送的日志。 对于 *自承载 ir*，你可以上载与失败的活动或自承载 ir 节点上的所有日志相关的日志。 对于 *共享 IR*，只能上载与失败的活动相关的日志。
 
     ![选择日志](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
@@ -65,15 +65,15 @@ ms.locfileid: "87800554"
 #### <a name="resolution"></a>解决方法
 
 Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的原因通常是 SSL 证书不正确。 SAN 中的最后一个 DNSName 应该是有效的。 请按照以下步骤进行验证。 
-1.  打开管理控制台，双击证书详细信息中的 "*使用者*" 和 "*使用者备用名称*"。 例如，在上面的示例中，"*使用者备用名称*" 中的最后一项是 "DNS 名称 = microsoft.com.com"，它是非法的。
+1.  打开管理控制台，双击证书详细信息中的 " *使用者* " 和 " *使用者备用名称* "。 例如，在上面的示例中，" *使用者备用名称*" 中的最后一项是 "DNS 名称 = microsoft.com.com"，它是非法的。
 2.  请与证书颁发公司联系，以删除错误的 DNS 名称。
 
 ### <a name="concurrent-jobs-limit-issue"></a>并发作业限制问题
 
 #### <a name="symptoms"></a>症状
 
-尝试增加 Azure 数据工厂 UI 中的并发作业限制时，它会挂起，因为它会永久*更新*。
-并发作业的最大值设置为24，你需要增加计数，以便作业运行速度更快。 可以输入的最小值为3，可输入的最大值为32。 增加了从24到32的值，并按 "更新" 按钮上的 "*更新*" 按钮，如下面所示，它会停滞在*更新*中。 刷新后，客户仍将值视为24，并且它永远不会更新到32。
+尝试增加 Azure 数据工厂 UI 中的并发作业限制时，它会挂起，因为它会永久 *更新* 。
+并发作业的最大值设置为24，你需要增加计数，以便作业运行速度更快。 可以输入的最小值为3，可输入的最大值为32。 增加了从24到32的值，并按 "更新" 按钮上的 " *更新* " 按钮，如下面所示，它会停滞在 *更新* 中。 刷新后，客户仍将值视为24，并且它永远不会更新到32。
 
 ![正在更新状态](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
@@ -82,8 +82,8 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 此设置存在限制，因为该值取决于计算机的 logicCore 和内存，只需将其调整为较小的值（如24），即可查看结果。
 
 > [!TIP] 
-> - 有关逻辑核心计数的详细信息以及如何查找计算机的逻辑核心计数的详细信息，请参阅[此文](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
-> - 有关如何计算 math 的详细信息，请参阅[此文](https://www.rapidtables.com/calc/math/Log_Calculator.html)。
+> - 有关逻辑核心计数的详细信息以及如何查找计算机的逻辑核心计数的详细信息，请参阅 [此文](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
+> - 有关如何计算 math 的详细信息，请参阅 [此文](https://www.rapidtables.com/calc/math/Log_Calculator.html)。
 
 
 ### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>自承载 IR HA SSL 证书问题
@@ -138,7 +138,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. 然后，将打开**URL 检索工具**。 可以通过单击 "**检索**" 按钮，验证来自 AIA、CDP 和 OCSP 的证书。
+    1. 然后，将打开 **URL 检索工具** 。 可以通过单击 " **检索** " 按钮，验证来自 AIA、CDP 和 OCSP 的证书。
 
         ![检索按钮](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
@@ -164,33 +164,33 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 > [!TIP] 
 > 你可以设置筛选器，如以下屏幕截图所示。
-> 它告诉我们，dll **ValueTuple**不在 GAC 相关文件夹中，或位于*C:\Program Files\Microsoft integration Runtime\4.0\Gateway*或*C:\Program Files\Microsoft integration Runtime\4.0\Shared*文件夹中。
-> 基本上，它首先从*GAC*文件夹加载 dll，然后从*共享*，最后从*网关子*文件夹加载 dll。 因此，可以将 dll 放到可帮助的任何路径。
+> 它告诉我们，dll **ValueTuple** 不在 GAC 相关文件夹中，或位于 *C:\Program Files\Microsoft integration Runtime\4.0\Gateway*或 *C:\Program Files\Microsoft integration Runtime\4.0\Shared* 文件夹中。
+> 基本上，它首先从 *GAC* 文件夹加载 dll，然后从 *共享* ，最后从 *网关子* 文件夹加载 dll。 因此，可以将 dll 放到可帮助的任何路径。
 
 ![设置筛选器](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
 #### <a name="resolution"></a>解决方法
 
-你可以找到**System.ValueTuple.dll**位于*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan*文件夹中。 将**System.ValueTuple.dll**复制到*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway*文件夹以解决此问题。
+你可以找到 **System.ValueTuple.dll** 位于 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* 文件夹中。 将 **System.ValueTuple.dll** 复制到 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* 文件夹以解决此问题。
 
 您可以使用相同的方法解决其他文件或程序集缺少的问题。
 
 #### <a name="more-information"></a>更多信息
 
-在 *%windir%\Microsoft.NET\assembly*和 *%windir%\assembly*下看到 System.ValueTuple.dll 的原因是它是 .net 行为。 
+在 *%windir%\Microsoft.NET\assembly* 和 *%windir%\assembly* 下看到 System.ValueTuple.dll 的原因是它是 .net 行为。 
 
-在下面的错误中，可以清楚地看到程序集*ValueTuple* 。 因此，当应用程序尝试检查程序集时，会发生此类问题*System.ValueTuple.dll*。
+在下面的错误中，可以清楚地看到程序集 *ValueTuple* 。 因此，当应用程序尝试检查程序集时，会发生此类问题 *System.ValueTuple.dll*。
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-有关 GAC 的详细信息，请参阅[此文](https://docs.microsoft.com/dotnet/framework/app-domains/gac)。
+有关 GAC 的详细信息，请参阅 [此文](https://docs.microsoft.com/dotnet/framework/app-domains/gac)。
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何审核缺少的自承载 IR 密钥
 
 #### <a name="symptoms"></a>症状
 
-自承载集成运行时突然进入脱机状态，但在事件日志中显示以下错误消息：`Authentication Key is not assigned yet`
+自承载集成运行时突然进入脱机状态，但在事件日志中显示以下错误消息： `Authentication Key is not assigned yet`
 
 ![缺少身份验证密钥](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
@@ -201,7 +201,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="resolution"></a>解决方法
 
-如果上述两个原因均不适用，你可以前往文件夹： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，并检查是否删除了名为的文件**配置**。 如果删除了该文件，请按照[此处](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的说明进行操作以审核删除该文件的人员。
+如果上述两个原因均不适用，你可以前往文件夹： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，并检查是否删除了名为的文件 **配置** 。 如果删除了该文件，请按照 [此处](https://www.netwrix.com/how_to_detect_who_deleted_file.html) 的说明进行操作以审核删除该文件的人员。
 
 ![检查配置文件](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="symptoms"></a>症状
 
-为源和目标数据存储创建自承载的 IRs 后，你需要将两个 IRs 连接在一起以完成复制。 如果数据存储是在不同的 Vnet 中配置的，或者无法理解网关机制，则会遇到如下错误：在*目标 IR 中找不到源的驱动程序*;*目标 IR 无法访问源*。
+为源和目标数据存储创建自承载的 IRs 后，你需要将两个 IRs 连接在一起以完成复制。 如果数据存储是在不同的 Vnet 中配置的，或者无法理解网关机制，则会遇到如下错误：在 *目标 IR 中找不到源的驱动程序*; *目标 IR 无法访问源*。
  
 #### <a name="cause"></a>原因
 
@@ -288,10 +288,10 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 ![IR 事件日志](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-如果错误显示为*system.unauthorizedaccessexception*以上，请遵循以下说明：
+如果错误显示为 *system.unauthorizedaccessexception*以上，请遵循以下说明：
 
 
-1. 检查 Windows 服务面板中的*DIAHostService* logon service 帐户。
+1. 检查 Windows 服务面板中的 *DIAHostService* logon service 帐户。
 
     ![登录服务帐户](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
@@ -316,7 +316,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
                 ```
                 dmgcmd.exe -SwitchServiceAccount "NT Authority\System" ""
                 ```         
-                不要**使用如下**所示的格式：
+                不要 **使用如下** 所示的格式：
 
                 ```
                 dmgcmd.exe -SwitchServiceAccount "LocalSystem" ""
@@ -325,13 +325,13 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
             1. 您可以使用 IR 服务登录帐户的本地/域用户。            
         1. 注册 Integration Runtime。
 
-如果错误显示为：*服务 "Integration Runtime service" (DIAHostService) 无法启动。请验证你是否具有足够的权限来启动系统服务*，请遵循以下说明：
+如果错误显示为： *服务 "Integration Runtime service" (DIAHostService) 无法启动。请验证你是否具有足够的权限来启动系统服务*，请遵循以下说明：
 
-1. 检查 Windows 服务面板中的*DIAHostService* logon service 帐户。
+1. 检查 Windows 服务面板中的 *DIAHostService* logon service 帐户。
    
     ![登录服务帐户](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. 检查登录服务帐户是否具有启动 Windows 服务的 "**作为服务登录**" 权限：
+2. 检查登录服务帐户是否具有启动 Windows 服务的 " **作为服务登录** " 权限：
 
     ![作为服务登录](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
 
@@ -345,13 +345,13 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="symptoms"></a>症状
 
-注册自承载 IR 时，在 Configuration Manager UI 上找不到 "**注册**" 按钮。
+注册自承载 IR 时，在 Configuration Manager UI 上找不到 " **注册** " 按钮。
 
 ![无注册按钮](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
 
 #### <a name="cause"></a>原因
 
-由于版本*3.0 Integration Runtime*，因此已删除现有 Integration Runtime 节点上的 "**注册**" 按钮，以启用更清晰和更安全的环境。 如果某个节点已注册到某些 Integration Runtime (是联机还是不) Integration Runtime，则必须卸载上一个节点，然后安装并注册该节点。
+由于版本 *3.0 Integration Runtime*，因此已删除现有 Integration Runtime 节点上的 " **注册** " 按钮，以启用更清晰和更安全的环境。 如果某个节点已注册到某个 Integration Runtime（无论是否联机），则必须卸载之前的节点，然后安装并注册该节点，才能将该节点重新注册到另一个 Integration Runtime。
 
 #### <a name="resolution"></a>解决方法
 
@@ -362,11 +362,11 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
     ![删除数据](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
 
-1. 如果你没有集成运行时安装程序 MSI，请前往[下载中心](https://www.microsoft.com/en-sg/download/details.aspx?id=39717)下载最新的 Integration Runtime。
+1. 如果你没有集成运行时安装程序 MSI，请前往 [下载中心](https://www.microsoft.com/en-sg/download/details.aspx?id=39717) 下载最新的 Integration Runtime。
 1. 安装 MSI 并注册 Integration Runtime。
 
 
-### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>由于 localhost，无法注册自承载 IR    
+### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>由于 localhost，无法注册自承载 IR     
 
 #### <a name="symptoms"></a>症状
 
@@ -519,7 +519,7 @@ Get_LoopbackIpOrName 时，无法在新计算机上注册自承载 IR。
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>自承载 IR 与数据工厂或自承载 IR 与数据源/接收器之间的连接问题
 
-若要排查网络连接问题，应知道如何[收集网络跟踪](#how-to-collect-netmon-trace)，了解如何使用它，并在通过自承载 IR 在实际案例中应用 Netmon 工具之前[分析 netmon 跟踪](#how-to-analyze-netmon-trace)。
+若要解决网络连接问题，您应该知道如何收集网络跟踪，了解如何使用它，并在从自承载 IR 在真实情况下应用 Netmon 工具之前 [分析 netmon 跟踪](#how-to-analyze-netmon-trace) 。
 
 #### <a name="symptoms"></a>症状
 
@@ -577,7 +577,7 @@ Get_LoopbackIpOrName 时，无法在新计算机上注册自承载 IR。
 
 ### <a name="how-to-collect-netmon-trace"></a>如何收集 netmon 跟踪
 
-1.  从[此网站](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)下载 Netmon 工具，并将其安装在服务器计算机（有问题的任何服务器）和客户端（如自承载 IR）上。
+1.  从[此网站](https://cnet-downloads.com/network-monitor)下载 Netmon 工具，并将其安装在服务器计算机（有问题的任何服务器）和客户端（如自承载 IR）上。
 
 2.  创建一个文件夹，例如在以下路径中创建：D:\netmon。 请确保它有足够的空间来保存日志。
 
@@ -621,7 +621,10 @@ Get_LoopbackIpOrName 时，无法在新计算机上注册自承载 IR。
 
 ### <a name="how-to-analyze-netmon-trace"></a>如何分析 netmon 跟踪
 
-如果收集到以上 netmon 跟踪，则在尝试 telnet **8.8.8.8 888** 时会看到以下跟踪：
+> [!NOTE] 
+> 以下说明适用于 netmon 跟踪。 由于 netmon 跟踪当前不支持，因此可以使用 wireshark。
+
+当你尝试收集到 telnet **8.8.8.8 888** 时，将会看到以下跟踪：
 
 ![netmon 跟踪 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 
