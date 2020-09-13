@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/01/2020
 ms.author: jlian
-ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080617"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006034"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT 中心的 TLS 支持
 
@@ -22,7 +22,7 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 
 ## <a name="tls-12-enforcement-available-in-select-regions"></a>所选区域中可用的 TLS 1.2 强制实施
 
-为了增加安全性，请将 IoT 中心配置为*仅*允许使用 TLS 版本1.2 的客户端连接，并强制使用[推荐的密码](#recommended-ciphers)。 仅在以下区域支持此功能：
+为了增加安全性，请将 IoT 中心配置为 *仅* 允许使用 TLS 版本1.2 的客户端连接，并强制使用 [密码套件](#cipher-suites)。 仅在以下区域支持此功能：
 
 * 美国东部
 * 美国中南部
@@ -55,23 +55,23 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 }
 ```
 
-使用此配置创建的 IoT 中心资源会拒绝那些尝试使用 TLS 版本 1.0 和 1.1 进行连接的设备和服务客户端。 同样，如果客户端的 HELLO 消息未列出任何[建议的密码](#recommended-ciphers)，TLS 握手会被拒绝。
+使用此配置创建的 IoT 中心资源会拒绝那些尝试使用 TLS 版本 1.0 和 1.1 进行连接的设备和服务客户端。 同样，如果 `ClientHello` 消息未列出任何 [建议的密码](#cipher-suites)，TLS 握手将被拒绝。
 
 > [!NOTE]
-> `minTlsVersion` 属性处于只读状态，创建 IoT 中心资源后，便不能再更改该属性。 因此，必须事先正确测试并验证你的所有 IoT 设备和服务是否与 TLS 1.2 和[建议的密码](#recommended-ciphers)兼容。
+> `minTlsVersion` 属性处于只读状态，创建 IoT 中心资源后，便不能再更改该属性。 因此，必须事先正确测试并验证你的所有 IoT 设备和服务是否与 TLS 1.2 和[建议的密码](#cipher-suites)兼容。
 > 
 > 故障转移后，IoT 中心的 `minTlsVersion` 属性在异地配对区域中仍然有效。
 
-## <a name="recommended-ciphers"></a>建议的密码
+## <a name="cipher-suites"></a>密码套件
 
-配置为仅接受 TLS 1.2 的 IoT 中心还会强制使用以下建议的密码：
+配置为仅接受 TLS 1.2 的 IoT 中心还将强制使用以下建议的密码套件：
 
 * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-对于未配置为强制接受 TLS 1.2 的 IoT 中心，TLS 1.2 仍可使用以下密码：
+对于未配置 TLS 1.2 强制的 IoT 中心，TLS 1.2 仍适用于以下密码套件：
 
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
@@ -85,6 +85,8 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 * `TLS_RSA_WITH_AES_256_CBC_SHA`
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+客户端可以建议在过程中使用的更高密码套件的列表 `ClientHello` 。 但是，IoT 中心可能不支持其中某些 (例如 `ECDHE-ECDSA-AES256-GCM-SHA384`) 。 在这种情况下，IoT 中心将尝试按照客户端的喜好进行操作，但最终会将密码套件与进行协商 `ServerHello` 。
 
 ## <a name="use-tls-12-in-your-iot-hub-sdks"></a>在 IoT 中心 SDK 使用 TLS 1.2
 
@@ -102,3 +104,7 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 ## <a name="use-tls-12-in-your-iot-edge-setup"></a>在 IoT Edge IoT 设置中使用 TLS 1.2
 
 IoT Edge 设备可以配置为在与 IoT 中心通信时使用 TLS 1.2。 为此，请参阅 [IoT Edge 文档页](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)。
+
+## <a name="device-authentication"></a>设备身份验证
+
+成功进行 TLS 握手后，IoT 中心可以使用对称密钥或 x.509 证书对设备进行身份验证。 对于基于证书的身份验证，这可以是任何 x.509 证书，包括 ECC。 IoT 中心根据你提供)  (CA 的指纹或证书颁发机构验证证书。 IoT 中心尚不支持基于 x.509 的相互身份验证 (mTLS) 。 若要了解详细信息，请参阅 [支持的 x.509 证书](iot-hub-devguide-security.md#supported-x509-certificates)。

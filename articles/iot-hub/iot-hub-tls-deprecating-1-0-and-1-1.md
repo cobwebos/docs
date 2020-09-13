@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849512"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006074"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>IoT 中心将弃用 TLS 1.0 和 1.1
 
@@ -38,9 +38,9 @@ ms.locfileid: "83849512"
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-## <a name="tls-12-ciphers"></a>TLS 1.2 密码
+## <a name="tls-12-cipher-suites"></a>TLS 1.2 密码套件
 
-请参阅 [IoT 中心 TLS 1.2 建议的密码](iot-hub-tls-support.md#recommended-ciphers)。
+请参阅 [IoT 中心 TLS 1.2 密码套件](iot-hub-tls-support.md#cipher-suites)。
  
 ## <a name="customer-feedback"></a>客户反馈
 

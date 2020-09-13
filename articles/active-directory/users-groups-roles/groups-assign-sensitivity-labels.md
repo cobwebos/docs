@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795322"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005932"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>向 Azure Active Directory 中的 Microsoft 365 组分配敏感度标签
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-分配过程如上所述。 已启用该功能，可以将已发布的标签应用于组。
+还需要将敏感度标签同步到 Azure AD。 有关说明，请参阅 [如何为容器启用敏感度标签和同步标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)。
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>在 Azure 门户中为新组分配标签
 
@@ -113,7 +113,8 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 仅当满足以下所有条件时，才会为组显示敏感度标签选项：
 
 1. 在此 Azure AD 组织的 Microsoft 365 符合性中心中发布标签。
-1. 启用此功能后，PowerShell 中的 EnableMIPLabels 设置为 True。
+1. 启用此功能后，EnableMIPLabels 将在中从 Azure AD PowerShell 模块设置为 True。
+1. 标签将与安全 & 相容性 PowerShell 模块中的 AzureAdLabelSync cmdlet 同步到 Azure AD。
 1. 组是 Microsoft 365 组。
 1. 组织具有活动的 Azure Active Directory Premium P1 许可证。
 1. 当前登录的用户具有足够的权限来分配标签。 用户必须是全局管理员、组管理员或组所有者。
@@ -135,7 +136,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 选择“组”。
 1. 从 " **所有组** " 页中，选择要标记的组。
 1. 在选定组的页上，选择 " **属性** "，然后从列表中选择一个新的敏感度标签。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>组设置对已发布标签所做的更改不会在组中更新
 

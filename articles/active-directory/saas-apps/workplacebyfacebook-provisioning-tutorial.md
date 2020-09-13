@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526374"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006068"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -125,8 +125,16 @@ ms.locfileid: "88526374"
    |phoneNumbers[type eq "fax"].value|字符串|
    |externalId|字符串|
    |preferredLanguage|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn： scim：架构：扩展： enterprise： 1.0. manager|String|
+   |urn： scim：架构：扩展： enterprise： 1.0. 部门|String|
+   |urn： scim：架构：扩展： enterprise：1。0|String|
+   |urn： scim：架构：扩展： enterprise： 1.0. 组织|String|
+   |urn： scim：架构：扩展： enterprise： 1.0. costCenter|String|
+   |urn： scim：架构：扩展： enterprise： 1.0. employeeNumber|String|
+   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|String|
+   |urn： scim：架构：扩展： facebook：前端：1.0。 is_frontline|布尔|
+   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|Integer|
+
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -153,6 +161,10 @@ ms.locfileid: "88526374"
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 *  如果你看到某个用户未成功创建，并且存在代码为 "1789003" 的审核日志事件，则表示该用户来自未经验证的域。
+
+## <a name="change-log"></a>更改日志
+
+* 09/10/2020-添加了对企业特性 "除法"、"组织"、"costCenter" 和 "employeeNumber" 的支持。 添加了对自定义属性 "开始日期"、"auth_method" 和 "前端" 的支持
 
 ## <a name="additional-resources"></a>其他资源
 
