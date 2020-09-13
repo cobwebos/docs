@@ -2,13 +2,13 @@
 title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 7f485d258074959c4a0a17449c65c38fa9648502
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/03/2020
+ms.openlocfilehash: 3f916be4431aa6b2b100967465450447ecc1d626
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661395"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468668"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -16,6 +16,7 @@ ms.locfileid: "88661395"
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
+* [pickZones](#pickzones)
 * [providers](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
@@ -32,9 +33,9 @@ ms.locfileid: "88661395"
 
 返回某个[扩展资源](../management/extension-resource-types.md)的资源 ID，该资源属于适用于其他资源的资源类型，是对其功能的补充。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | ResourceId |是 |string |扩展资源应用到的资源的资源 ID。 |
 | resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
@@ -101,6 +102,12 @@ ms.locfileid: "88661395"
 }
 ```
 
+部署到管理组的自定义策略定义是作为扩展资源实现的。 若要创建和分配策略，请将以下模板部署到管理组。
+
+:::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
+
+内置策略定义是租户级别资源。 有关部署内置策略定义的示例，请参阅 [tenantResourceId](#tenantresourceid)。
+
 <a id="listkeys"></a>
 <a id="list"></a>
 
@@ -112,7 +119,7 @@ ms.locfileid: "88661395"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
 | apiVersion |是 |string |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd**格式。 |
@@ -130,9 +137,16 @@ ms.locfileid: "88661395"
 
 | 资源类型 | 函数名称 |
 | ------------- | ------------- |
+| 加载项/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
+| ApiManagement/服务/网关 | [listKeys](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
+| ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
+| ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
+| ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft.AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
-| Microsoft.AppConfiguration/configurationStores | ListKeys |
+| Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
+| Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
@@ -144,10 +158,15 @@ ms.locfileid: "88661395"
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
+| Microsoft.containerregistry/注册表/agentpools | listQueueStatus |
+| Microsoft.containerregistry/注册表/buildTasks | listSourceRepositoryProperties |
+| Microsoft.containerregistry/注册表/buildTasks/步骤 | listBuildArguments |
+| Microsoft.containerregistry/注册表/taskruns | listDetails |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
 | Microsoft.ContainerRegistry/registries/tasks | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
 | Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft.ContainerService/managedClusters | [listClusterMonitoringUserCredential](/rest/api/aks/managedclusters/listclustermonitoringusercredentials) |
 | Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
 | Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
 | Microsoft.DataBox/jobs | listCredentials |
@@ -168,6 +187,7 @@ ms.locfileid: "88661395"
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
 | Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2020-04-01/notebookworkspaces/listconnectioninfo) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -206,7 +226,9 @@ ms.locfileid: "88661395"
 | Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft.OperationalInsights/workspaces | [list](/rest/api/loganalytics/workspaces/list) |
+| Microsoft.OperationalInsights/workspaces | listKeys |
 | Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| RedHatOpenShift/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
 | Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
@@ -225,6 +247,7 @@ ms.locfileid: "88661395"
 | Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
 | Microsoft.StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Synapse/工作区/integrationRuntimes | [listAuthKeys](/rest/api/synapse/integrationruntimeauthkeys/list) |
 | Microsoft.Web/connectionGateways | ListStatus |
 | microsoft.web/connections | listconsentlinks |
 | Microsoft.Web/customApis | listWsdlInterfaces |
@@ -316,6 +339,94 @@ ms.locfileid: "88661395"
 
 有关 listKeyValue 示例，请参阅[快速入门：使用应用程序配置和资源管理器模板自动部署 VM](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)。
 
+## <a name="pickzones"></a>pickZones
+
+`pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
+
+确定资源类型是否支持区域的区域。
+
+### <a name="parameters"></a>参数
+
+| 参数 | 必需 | 类型 | 说明 |
+|:--- |:--- |:--- |:--- |
+| providerNamespace | 是 | string | 用于检查区域支持的资源类型的资源提供程序命名空间。 |
+| resourceType | 是 | string | 要检查区域支持的资源类型。 |
+| location | 是 | string | 要检查区域支持的区域。 |
+| numberOfZones | 否 | integer | 要返回的逻辑区域数。 默认值为 1。 该数字必须是介于1和3之间的正整数。  对于单分区资源，请使用1。 对于多分区资源，该值必须小于或等于受支持区域的数目。 |
+| offset | 否 | integer | 起始逻辑区域的偏移量。 如果 offset 加 numberOfZones 超过支持的区域数量，则函数将返回错误。 |
+
+### <a name="return-value"></a>返回值
+
+具有受支持区域的数组。 当使用 offset 和 numberOfZones 的默认值时，支持区域的资源类型和区域返回以下数组：
+
+```json
+[
+    "1"
+]
+```
+
+当 `numberOfZones` 参数设置为3时，它将返回：
+
+```json
+[
+    "1",
+    "2",
+    "3"
+]
+```
+
+如果资源类型或区域不支持区域，则返回空数组。
+
+```json
+[
+]
+```
+
+### <a name="pickzones-example"></a>pickZones 示例
+
+以下模板显示了使用 pickZones 函数的三个结果。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "supported": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')]"
+        },
+        "notSupportedRegion": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
+        },
+        "notSupportedType": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Cdn', 'profiles', 'westus2')]"
+        }
+    }
+}
+```
+
+前面示例的输出返回三个数组。
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| 受支持 | array | ["1"] |
+| notSupportedRegion | array | [] |
+| notSupportedType | array | [] |
+
+你可以使用 pickZones 的响应来确定是否为区域提供 null，或将虚拟机分配给不同的区域。 下面的示例基于区域的可用性为区域设置一个值。
+
+```json
+"zones": {
+    "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
+},
+```
+
 ## <a name="providers"></a>providers
 
 `providers(providerNamespace, [resourceType])`
@@ -324,10 +435,10 @@ ms.locfileid: "88661395"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |字符串 |提供程序的命名空间 |
-| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |string |提供程序的命名空间 |
+| resourceType |否 |string |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -399,11 +510,11 @@ ms.locfileid: "88661395"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
-| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
+| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -722,13 +833,13 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
-| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -740,23 +851,27 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-用于[订阅级别部署](deploy-to-subscription.md)中时，将返回以下格式的资源 ID：
+您可以为其他部署范围使用 resourceId 功能，但该 ID 的格式会发生更改。
+
+如果在部署到订阅时使用 resourceId，则会按以下格式返回资源 ID：
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-在[管理组级别部署](deploy-to-management-group.md)或租户级别部署中使用时，将使用以下格式返回资源 ID：
+如果在将资源部署到管理组或租户时使用 resourceId，将按以下格式返回资源 ID：
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-若要获取其他格式的 ID，请参阅：
+为避免混淆，我们建议你在使用部署到订阅、管理组或租户的资源时不使用 resourceId。 请改用为范围设计的 ID 函数。
 
-* [extensionResourceId](#extensionresourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+对于 [订阅级别的资源](deploy-to-subscription.md)，请使用 [subscriptionResourceId](#subscriptionresourceid) 函数。
+
+对于 [管理组级别的资源](deploy-to-management-group.md)，请使用 [extensionResourceId](#extensionresourceid) 函数来引用作为管理组的扩展实现的资源。 例如，部署到管理组的自定义策略定义是管理组的扩展。 使用 [tenantResourceId](#tenantresourceid) 函数引用部署到租户但在你的管理组中可用的资源。 例如，内置策略定义实现为租户级别资源。
+
+对于 [租户级别的资源](deploy-to-tenant.md)，请使用 [tenantResourceId](#tenantresourceid) 函数。 对内置策略定义使用 tenantResourceId，因为它们是在租户级别实现的。
 
 ### <a name="remarks"></a>备注
 
@@ -918,12 +1033,12 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -1000,11 +1115,11 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -1019,6 +1134,44 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 ### <a name="remarks"></a>备注
 
 我们使用此函数获取部署到租户的资源的资源 ID。 返回的 ID 不同于其他资源 ID 函数返回的值，区别在于不包含资源组值或订阅值。
+
+### <a name="tenantresourceid-example"></a>tenantResourceId 示例
+
+内置策略定义是租户级别资源。 若要部署引用内置策略定义的策略分配，请使用 tenantResourceId 函数。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyAssignmentName": {
+      "type": "string",
+      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
+      "metadata": {
+        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
+      }
+    },
+    "policyDefinitionID": {
+      "type": "string",
+      "defaultValue": "0a914e76-4921-4c19-b460-a2d36003525a",
+      "metadata": {
+        "description": "Specifies the ID of the policy definition or policy set definition being assigned."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "[parameters('policyAssignmentName')]",
+      "apiVersion": "2019-09-01",
+      "properties": {
+        "scope": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]",
+        "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

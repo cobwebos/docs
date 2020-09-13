@@ -5,16 +5,16 @@ keywords: azure key-vault 身份验证本地凭据
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/08/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180909"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483331"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -54,7 +54,7 @@ ms.locfileid: "89180909"
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-在调用方法之前，不需要检查标记的过期时间 `GetAccessTokenAsync` ，因为 `AzureServiceTokenProvider` 在内存中缓存标记，并在过期之前从 Azure AD 检索该标记。 
+线程安全类将 `AzureServiceTokenProvider` 令牌缓存在内存中，并在过期之前从 Azure AD 检索它。 这意味着，在调用方法之前，你永远不需要检查令牌的有效期 `GetAccessTokenAsync` 。 
 
 `GetAccessTokenAsync` 方法需要资源标识符。 若要详细了解 Microsoft Azure 服务，请参阅[什么是 Azure 资源的托管标识](../../active-directory/msi-overview.md)。
 

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55360ef295ff80b700b059d053203458f9f384db
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76274931"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469076"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 的故障排除
 
@@ -24,16 +24,16 @@ ms.locfileid: "76274931"
 
 ## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>隐藏 Azure Red Hat OpenShift 群集资源组
 
-目前， `Microsoft.ContainerService/openShiftManagedClusters` Azure CLI （命令）自动创建的资源 `az openshift create` 在 Azure 门户中是隐藏的。 在**资源组**视图中，选中 "**显示隐藏的类型**" 以查看资源组。
+目前， `Microsoft.ContainerService/openShiftManagedClusters`) 中 Azure CLI (命令自动创建的资源 `az openshift create` 在 Azure 门户中是隐藏的。 在 **资源组** 视图中，选中 " **显示隐藏的类型** " 以查看资源组。
 
 ![门户中隐藏的类型复选框的屏幕截图](./media/aro-portal-hidden-type.png)
 
 ## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>创建群集导致找不到任何已注册的资源提供程序
 
-如果创建群集时出现错误，则表明 `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` 你是预览版的一部分，现在需要[购买 Azure 虚拟机保留实例](https://aka.ms/openshift/buy)，才能使用正式发布的产品。 预订通过预先支付完全托管的 Azure 服务来减少支出。 请参阅[*什么是 Azure 保留内容*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)，了解有关预订的详细信息以及这些预订如何节省资金。
+如果创建群集时出现错误，则表明 `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` 你是预览版的一部分，现在需要 [购买 Azure 虚拟机保留实例](https://aka.ms/openshift/buy) ，才能使用正式发布的产品。 预订通过预先支付完全托管的 Azure 服务来减少支出。 请参阅 [*什么是 Azure 保留内容*](../cost-management-billing/reservations/save-compute-costs-reservations.md) ，了解有关预订的详细信息以及这些预订如何节省资金。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 OpenShift 故障排除的详细信息，请尝试[Red Hat OpenShift 帮助中心](https://help.openshift.com/)。
+- 有关 OpenShift 故障排除的详细信息，请尝试 [Red Hat OpenShift 帮助中心](https://help.openshift.com/) 。
 
-- 查找[有关 Azure Red Hat OpenShift](openshift-faq.md)的常见问题的解答。
+- 查找 [有关 Azure Red Hat OpenShift](openshift-faq.md)的常见问题的解答。

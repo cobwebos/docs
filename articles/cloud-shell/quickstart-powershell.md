@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512973"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469450"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -261,7 +261,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
+按照 [此处](../virtual-machines/linux/quick-create-powershell.md) 的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
 在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
@@ -332,7 +332,7 @@ Hello World!
 
 ## <a name="use-git"></a>使用 Git
 
-若要在 Cloud Shell 中克隆 Git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
+若要在 Cloud Shell 中克隆 Git 存储库，需要创建 [个人访问令牌][githubtoken] 并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git
@@ -345,6 +345,6 @@ Hello World!
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/
 [customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
-[profile]: https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles
-[azmount]: https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows
+[profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
+[azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

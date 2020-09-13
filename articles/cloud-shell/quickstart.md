@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91b7c58890518559c046023bd78c9248e9840f9f
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513013"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468743"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "86513013"
 > 此外，还提供了 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
-1. 从 Azure 门户的顶部导航开始**Cloud Shell** 。 <br>
+1. 从 Azure 门户的顶部导航开始 **Cloud Shell** 。 <br>
 ![显示如何在 Azure 门户中启动 Azure Cloud Shell 的屏幕截图。](media/quickstart/shell-icon.png)
 
 2. 选择用于创建存储帐户和 Microsoft Azure 文件共享的订阅。
@@ -97,5 +97,5 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 
 ## <a name="next-steps"></a>后续步骤
 [了解如何为 Cloud Shell 中的 Bash 持久保存文件](persisting-shell-storage.md) <br>
-[了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[了解 Azure CLI](/cli/azure/) <br>
 [了解 Azure 文件存储](../storage/files/storage-files-introduction.md) <br>

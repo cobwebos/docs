@@ -2,21 +2,21 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002770"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468549"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
-随着组织的成熟，你可能需要定义并分配[策略](../../governance/policy/overview.md)或[azure 基于角色的访问控制 (azure RBAC) ](../../role-based-access-control/overview.md)到 Azure AD 租户。 通过租户级模板，可以声明的方式在全局级别应用策略和分配角色。
+随着组织的成熟，你可能需要在 Azure AD 租户中定义和分配[策略](../../governance/policy/overview.md)或 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。 通过租户级模板，可以声明的方式在全局级别应用策略和分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
-并非所有资源类型都可以部署到租户级别。 此部分列出了支持的资源类型。
+并非所有资源类型都可以部署到租户级别。 本部分列出了支持的资源类型。
 
 对于 Azure 策略，请使用：
 
@@ -32,11 +32,11 @@ ms.locfileid: "88002770"
 
 * [部署](/azure/templates/microsoft.resources/deployments)
 
-若要创建管理组，请使用：
+对于创建管理组，请使用：
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
-若要管理成本，请使用：
+对于管理成本，请使用：
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [说明](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
@@ -112,9 +112,9 @@ New-AzTenantDeployment `
 
 ## <a name="deployment-scopes"></a>部署范围
 
-部署到租户时，可以将租户或管理组、订阅和资源组定位到租户中。 部署模板的用户必须具有对指定作用域的访问权限。
+部署到租户时，可以将租户或租户中的管理组、订阅和资源组作为目标。 部署模板的用户必须有权访问指定的作用域。
 
-在模板的 resources 节中定义的资源将应用于租户。
+在模板的资源部分中定义的资源将应用于租户。
 
 ```json
 {
@@ -127,7 +127,7 @@ New-AzTenantDeployment `
 }
 ```
 
-若要以租户中的管理组为目标，请添加嵌套部署并指定 `scope` 属性。
+若要以租户内的管理组为目标，请添加嵌套部署并指定 `scope` 属性。
 
 ```json
 {
@@ -151,7 +151,7 @@ New-AzTenantDeployment `
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-mg
                 }
             }
         }
@@ -167,9 +167,11 @@ New-AzTenantDeployment `
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 不支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 使用 [tenantResourceId()](template-functions-resource.md#tenantresourceid) 函数可获得在租户级别部署的资源的 ID。
+* 请勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 获取在租户级别部署的资源的资源 ID。
 
-  例如，若要获取策略定义的资源 ID，请使用：
+  相反，请使用 [tenantResourceId ( # B1 ](template-functions-resource.md#tenantresourceid) 函数。
+
+  例如，若要获取内置策略定义的资源 ID，请使用：
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -251,5 +253,5 @@ New-AzTenantDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何分配角色，请参阅[使用 azure 资源管理器模板添加 azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
+* 若要了解如何分配角色，请参阅[使用 Azure 资源管理器模板添加 Azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
 * 还可在[订阅级别](deploy-to-subscription.md)或[管理组级别](deploy-to-management-group.md)部署模板。

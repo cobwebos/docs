@@ -8,16 +8,16 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75647707"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462541"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
-另请参阅[已连接的工厂特定常见问题](iot-accelerators-faq-cf.md)和[远程监视特定的常见问题](iot-accelerators-faq-rm-v2.md)。
+另请参阅 [已连接的工厂特定常见问题](iot-accelerators-faq-cf.md) 和 [远程监视特定的常见问题](iot-accelerators-faq-rm-v2.md) 。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>在哪里可以找到此解决方案加速器的源代码？
 
@@ -73,12 +73,12 @@ ms.locfileid: "75647707"
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>删除 Azure 门户中的资源组与在 azureiotsolutions.com 中的解决方案加速器上单击 "删除" 之间有何区别？
 
-* 如果删除[azureiotsolutions.com](https://www.azureiotsolutions.com/)中的解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
+* 如果删除 [azureiotsolutions.com](https://www.azureiotsolutions.com/)中的解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
 * 如果在 [Azure 门户](https://portal.azure.com)中删除资源组，则只会删除该资源组中的资源。 此外还需要删除与解决方案加速器关联的 Azure Active Directory 应用程序。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+可以。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 
@@ -101,7 +101,7 @@ ms.locfileid: "75647707"
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>如何删除 Azure AD 租户？
 
-请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)（有关删除 Azure AD 租户的演练）。
+请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)（有关删除 Azure AD 租户的演练）。
 
 ### <a name="next-steps"></a>后续步骤
 

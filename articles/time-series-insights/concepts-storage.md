@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855113"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483263"
 ---
 # <a name="data-storage"></a>数据存储
 
@@ -24,7 +24,7 @@ ms.locfileid: "88855113"
 * 可为暖数据存储配置的 Azure 时序见解第 2 代环境。
 * 用于冷数据存储的 Azure 存储帐户。
 
-你的热存储中的数据仅可通过 [时序查询 api](./time-series-insights-update-tsq.md) 和 [AZURE 时序见解 TSI 资源管理器](./time-series-insights-update-explorer.md)使用。 暖存储会包含在创建 Azure 时序见解第 2 代环境时选择的[保留期](./time-series-insights-update-plan.md#the-preview-environment)内的近期数据。
+你的热存储中的数据仅可通过 [时序查询 api](./time-series-insights-update-tsq.md) 和 [Azure 时序见解资源管理器](./time-series-insights-update-explorer.md)使用。 暖存储会包含在创建 Azure 时序见解第 2 代环境时选择的[保留期](./time-series-insights-update-plan.md#the-preview-environment)内的近期数据。
 
 Azure 时序见解第 2 代以 [Parquet 文件格式](#parquet-file-format-and-folder-structure)将冷存储数据保存到 Azure Blob 存储中。 Azure 时序见解第 2 代以独占方式管理此冷存储数据，但允许将这些数据作为标准 Parquet 文件直接进行读取。
 
@@ -58,7 +58,7 @@ Azure 时序见解第 2 代在 Azure 存储帐户中为每个事件保留最多�
 
 #### <a name="accessing-cold-store-data"></a>访问冷存储数据
 
-除了从 [Azure 时序见解 TSI 资源管理器](./time-series-insights-update-explorer.md) 和 [时序查询 api](./time-series-insights-update-tsq.md)访问数据外，还可能需要直接从存储在 Cold 存储中的 Parquet 文件访问数据。 例如，可以在 Jupyter 笔记本中读取、转换和清理数据，然后使用它来训练同一 Spark 工作流中的 Azure 机器学习模型。
+除了从 [Azure 时序见解资源管理器](./time-series-insights-update-explorer.md) 和 [时序查询 api](./time-series-insights-update-tsq.md)访问数据外，还可能需要直接从存储在 Cold 存储中的 Parquet 文件访问数据。 例如，可以在 Jupyter 笔记本中读取、转换和清理数据，然后使用它来训练同一 Spark 工作流中的 Azure 机器学习模型。
 
 若要直接从 Azure 存储帐户访问数据，你需要具有用于存储 Azure 时序见解第 2 代数据的帐户的读取访问权限。 然后，可以根据 Parquet 文件的创建时间读取选定的数据，该文件位于下面的 [Parquet 文件格式](#parquet-file-format-and-folder-structure)部分所述的 `PT=Time` 文件夹中。  若要详细了解如何启用对存储帐户的读取访问权限，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
 
@@ -82,7 +82,7 @@ Azure 时序见解第 2 代按如下方式存储数据的副本：
 
   `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
 
-文件夹中 blob 名称的时间戳 `PT=Time` 对应于数据到 Azure 时序见解 Gen2 的到达时间，而不是事件的时间戳。
+`PT=Time` 文件夹中的 blob 名称中的时间戳对应于数据到达 Azure 时序见解第 2 代的时间，而不是对应于事件的时间戳。
 
 `PT=TsId` 文件夹中的数据会不断针对查询进行优化，不是静态的。 在重新分区期间，某些事件可能会出现在多个 blob 中。 不保证此文件夹中的 blob 的命名保持不变。
 

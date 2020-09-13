@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/31/2020
+ms.date: 09/04/2020
 ms.custom: generated
-ms.openlocfilehash: b58316cf5a56eae46c81056a78446dc6c3d10764
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 25c231265bb4ec497af5559624b7228167add76d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226754"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483450"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -30,8 +30,8 @@ ms.locfileid: "89226754"
 > | 内置角色 | 说明 | ID |
 > | --- | --- | --- |
 > | **常规** |  |  |
-> | [参与者](#contributor) | 授予完全访问权限以管理所有资源，但不允许在 Azure RBAC 中分配角色。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [所有者](#owner) | 授予管理所有资源的完全访问权限，包括在 Azure RBAC 中分配角色的能力。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [参与者](#contributor) | 授予管理所有资源的完全访问权限，但不允许在 Azure RBAC 中分配角色。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [所有者](#owner) | 授予管理所有资源的完全访问权限，包括允许在 Azure RBAC 中分配角色。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [读者](#reader) | 查看所有资源，但不允许进行任何更改。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [用户访问管理员](#user-access-administrator) | 允许管理用户对 Azure 资源的访问权限。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **计算** |  |  |
@@ -215,7 +215,7 @@ ms.locfileid: "89226754"
 
 ### <a name="contributor"></a>参与者
 
-授予完全访问权限以管理所有资源，但不允许在 Azure RBAC 中分配角色。 [了解详细信息](rbac-and-directory-admin-roles.md)
+授予管理所有资源的完全访问权限，但不允许在 Azure RBAC 中分配角色。 [了解详细信息](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -264,7 +264,7 @@ ms.locfileid: "89226754"
 
 ### <a name="owner"></a>所有者
 
-授予管理所有资源的完全访问权限，包括在 Azure RBAC 中分配角色的能力。 [了解详细信息](rbac-and-directory-admin-roles.md)
+授予管理所有资源的完全访问权限，包括允许在 Azure RBAC 中分配角色。 [了解详细信息](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -518,7 +518,7 @@ ms.locfileid: "89226754"
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | 创建和管理计算可用性集 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | 创建和管理计算位置 |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 创建和管理虚拟机 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 执行所有虚拟机操作，包括创建、更新、删除、启动、重新启动和关闭虚拟机。 在虚拟机上执行预定义的脚本。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 创建和管理虚拟机规模集 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 创建新的磁盘，或更新现有的磁盘 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | 获取磁盘的属性 |
@@ -4072,7 +4072,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>分析
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -6313,7 +6313,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can perform any action on certificates, keys and secrets of a key vault, except manage permissions.",
+  "description": "Perform all data plane operations on a key vault and all objects in it, including certificates, keys, and secrets. Cannot manage key vault resources or manage role assignments. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00482a5a-887f-4fb3-b363-3b7fe8e74483",
   "name": "00482a5a-887f-4fb3-b363-3b7fe8e74483",
   "permissions": [
@@ -6373,7 +6373,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can perform any action on the certificates of a key vault, except manage permissions.",
+  "description": "Perform any action on the certificates of a key vault, except manage permissions. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a4417e6f-fecd-4de8-b567-7b0420556985",
   "name": "a4417e6f-fecd-4de8-b567-7b0420556985",
   "permissions": [
@@ -6486,7 +6486,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can perform any action on the keys of a key vault, except manage permissions.",
+  "description": "Perform any action on the keys of a key vault, except manage permissions. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
   "name": "14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
   "permissions": [
@@ -6538,7 +6538,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can read metadata of keys and perform wrap/unwrap operations.",
+  "description": "Read metadata of keys and perform wrap/unwrap operations. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
@@ -6587,7 +6587,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can perform cryptographic operations on keys and certificates.",
+  "description": "Perform cryptographic operations using keys. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/12338af0-0e69-4776-bea7-57ae8d297424",
   "name": "12338af0-0e69-4776-bea7-57ae8d297424",
   "permissions": [
@@ -6644,7 +6644,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can read metadata of key vaults and its certificates, keys and secrets. Cannot read sensitive values such as secret contents or key material.",
+  "description": "Read metadata of key vaults and its certificates, keys, and secrets. Cannot read sensitive values such as secret contents or key material. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/21090545-7ca7-4776-b22c-e363652d74d2",
   "name": "21090545-7ca7-4776-b22c-e363652d74d2",
   "permissions": [
@@ -6704,7 +6704,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can perform any action on the secrets of a key vault, except manage permissions.",
+  "description": "Perform any action on the secrets of a key vault, except manage permissions. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
   "name": "b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
   "permissions": [
@@ -6755,7 +6755,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Can read secret contents.",
+  "description": "Read secret contents. Only works for key vaults that use the 'Azure role-based access control' permission model.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
   "name": "4633458b-17de-408a-b874-0445c86b69e6",
   "permissions": [
@@ -7261,8 +7261,8 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | 创建和管理 Insights 组件 |
-> | [/DataCollectionRules/*](resource-provider-operations.md#microsoftinsights) |  |
-> | [/DataCollectionRuleAssociations/*](resource-provider-operations.md#microsoftinsights) |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/eventtypes/* | 列出订阅中的活动日志事件（管理事件）。 此权限适用于以编程方式和通过门户访问活动日志。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | 此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。 |
@@ -7395,7 +7395,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="monitoring-reader"></a>监视读取者
+### <a name="monitoring-reader"></a>监视查阅者
 
 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/platform/roles-permissions-security.md)
 

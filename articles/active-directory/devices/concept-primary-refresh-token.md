@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025874"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468600"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -86,6 +86,10 @@ PRT 通过两种不同的方法续订：
 * **通过 Azure AD WAM 插件在应用令牌请求中续订**：WAM 插件通过启用应用程序的无提示令牌请求，在 Windows 10 设备上启用 SSO。 WAM 插件可以通过两种不同的方式在这些令牌请求中续订 PRT：
    * 应用以无提示的方式向 WAM 请求访问令牌，但没有该应用可用的刷新令牌。 在这种情况下，WAM 使用 PRT 请求应用的令牌，并在响应中返回新的 PRT。
    * 应用向 WAM 请求访问令牌，但 PRT 无效或 Azure AD 需要额外的授权（例如 Azure 多重身份验证）。 在此方案中，WAM 会启动交互式登录，要求用户重新进行身份验证或提供附加验证，并会在身份验证成功后颁发新的 PRT。
+
+在 ADFS 环境中，无需直接向域控制器进行直接线路即可续订 PRT。 PRT 续订只需要使用 WS-TRUST 协议在代理上启用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 终结点。
+
+仅当更改了密码，而不是 PRT 续订时，才需要 Windows 传输终结点进行密码身份验证。
 
 ### <a name="key-considerations"></a>重要注意事项
 

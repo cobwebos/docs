@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055628"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468702"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -174,6 +174,42 @@ AND Room.$dtId IN ['room1', 'room2']
 | 在 *房间 123* 具有的设备中，返回服务于操作员角色的 MxChip 设备 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | 获取具有名为*id1*的关系*的孪生* | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | 获取*floor11*包含的此聊天室模型的所有聊天室 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>参考：表达式和条件
+
+本部分包含有关编写 Azure 数字孪生查询时可用的运算符和函数的参考。
+
+### <a name="operators"></a>运算符
+
+支持以下运算符：
+
+| 系列 | 运算符 |
+| --- | --- |
+| 逻辑 |AND、OR、NOT |
+| 比较 |=、！ =、<、>、<=、>= |
+| 包含 | 在中，N |
+
+### <a name="functions"></a>函数
+
+支持以下类型检查和强制转换函数：
+
+| 函数 | 说明 |
+| -------- | ----------- |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此功能。 基元类型包括字符串、布尔值、数字或 `null`。 不支持日期/时间、对象类型和数组。 |
+| IS_OF_MODEL | 返回一个布尔值，该值指示指定的上值是否与指定的模型类型匹配 |
+| IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
+| IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
+| IS_STRING | 返回一个布尔值，指示指定表达式的类型是否为字符串。 |
+| IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
+| IS_PRIMITIVE | 返回一个布尔值，指示指定表达式的类型是否为基元（字符串、布尔值、数字或 `null`）。 |
+| IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |
+
+支持以下字符串函数：
+
+| 函数 | 说明 |
+| -------- | ----------- |
+| STARTS_WITH(x, y) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
+| ENDS_WITH(x, y) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 
