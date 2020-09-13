@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512021"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648569"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -30,17 +30,17 @@ ms.locfileid: "86512021"
 
 若要查看符合性详细信息，请执行以下步骤：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
+1. 通过选择 " **所有服务**"，然后搜索并选择 " **策略**"，在 Azure 门户中启动 Azure 策略服务。
 
 1. 在“概览”或“符合性”页，选择“符合性状态”为“不符合”的策略  。
 
 1. 在“策略符合性”页的“资源符合性”选项卡下，右键单击或选择“符合性状态”为“不符合”的资源的省略号。 然后选择“查看符合性详细信息”。
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="查看符合性详细信息选项" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="资源符合性选项卡上的 "查看符合性详细信息" 链接的屏幕截图。" border="false":::
 
 1. “符合性详细信息”窗格显示对当前策略分配最近进行的计算得出的信息。 在此示例中，发现字段“Microsoft.Sql/servers/version”为“12.0”，而策略定义预期为“14.0”。 如果资源不符合有多种原因，则此窗格将列出每个原因。
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="符合性详细信息窗格和不符合性原因" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text=""符合性详细信息" 窗格的屏幕截图和不符合性原因：当前值为十二个，"目标值" 为14。" border="false":::
 
    对于“auditIfNotExists”或“deployIfNotExists”策略定义，详细信息包括“details.type”属性和任何可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上一个计算资源”为定义的“详细信息”部分中的相关资源。
 
@@ -69,7 +69,7 @@ ms.locfileid: "86512021"
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="符合性详细信息窗格 - *ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="IfNotExists 的符合性详细信息窗格的屏幕截图，包括评估的资源计数。" border="false":::
 
 > [!NOTE]
 > 为保护数据，当属性值为“secret”时，当前值显示星号。
@@ -114,13 +114,13 @@ ms.locfileid: "86512021"
 
 首先遵循上述部分中的相同步骤查看策略符合性详细信息。
 
-在符合性详细信息窗格视图中，单击“上一个计算资源”。
+在 "符合性详细信息" 窗格视图中，选择 " **上次评估资源**" 链接。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定义详细信息" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定义符合性详细信息的屏幕截图。" border="false":::
 
 “来宾分配”页显示所有可用的符合性详细信息。 视图中的每一行都代表在计算机中执行的计算。 “原因”列中显示描述来宾分配“不符合”原因的短语。 例如，如果要审核密码策略，“原因”列将显示包含每个设置当前值的文本。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="查看符合性详细信息" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="来宾分配符合性详细信息的屏幕截图。" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +191,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改 Azure 资源管理器属性时会触发更改检测。
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
+1. 通过选择 " **所有服务**"，然后搜索并选择 " **策略**"，在 Azure 门户中启动 Azure 策略服务。
 
 1. 在“概览”或“符合性”页，选择任一“符合性状态”策略  。
 
@@ -199,11 +199,11 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡 。 此时会显示检测到的更改的列表（如果存在）。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="“资源符合性”页上的“Azure Policy 更改历史记录”选项卡" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text=""更改历史记录" 选项卡的屏幕截图，检测到资源符合性页上的更改时间。" border="false":::
 
 1. 选择其中一个检测到的更改。 资源的“视觉差异”在“更改历史记录”页上显示。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="更改历史记录页上的 Azure 策略更改历史记录视觉差异" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="更改历史记录在 "更改历史记录" 页上属性的 "前后" 状态的屏幕截图。" border="false":::
 
 _视觉差异_可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态不相关。
 

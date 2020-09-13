@@ -10,18 +10,18 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3e14001758cadc8df5af3c82cb4386659a59d6a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843719"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648744"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
 本文介绍 Azure 机器学习设计器（预览版）中的“执行 Python 脚本”模块。
 
-使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[如何在 Azure 机器学习设计器中运行 python 代码](../how-to-designer-python.md)。
+使用此模块可以运行 Python 代码。 有关 Python 体系结构和设计原理的详细信息，请参阅[如何在 Azure 机器学习设计器中运行 Python 代码](../how-to-designer-python.md)。
 
 使用 Python，可以执行现有模块不支持的任务，例如：
 
@@ -58,7 +58,7 @@ if spec is None:
 > 如果管道包含的多个“执行 Python 脚本”模块需要使用预安装列表中未包含的包，请在每个模块中安装这些包。
 
 ## <a name="upload-files"></a>上传文件
-“执行 Python 脚本”支持使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) 上传文件。
+“执行 Python 脚本”支持使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-) 上传文件。
 
 以下示例演示如何在“执行 Python 脚本”模块中上传映像文件：
 

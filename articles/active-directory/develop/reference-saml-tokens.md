@@ -1,7 +1,7 @@
 ---
-title: Azure AD 令牌 & 声明类型
-description: 本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明
-documentationcenter: na
+title: SAML 2.0 令牌声明引用 |Microsoft
+titleSuffix: Microsoft identity platform
+description: 声明参考，其中包含由 Microsoft 标识平台颁发的 SAML 2.0 令牌中包含的声明的详细信息，包括其 JWT 等效项。
 author: kenwith
 services: active-directory
 manager: CelesteDG
@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 06/22/2018
+ms.date: 09/09/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 254fa03310bac9c5c478d9297145f88773c1a7b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114959"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648616"
 ---
-# <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
+# <a name="saml-token-claims-reference"></a>SAML 令牌声明引用
 
-Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
+Microsoft 标识平台会在处理每个身份验证流时发出多种类型的安全令牌。 本文档介绍了 SAML 2.0 令牌的格式、安全特征和内容。
 
 ## <a name="claims-in-saml-tokens"></a>SAML 令牌中的声明
 
@@ -30,11 +30,11 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 > | 名称 | 等效 JWT 声明 | 说明 | 示例 |
 > | --- | --- | --- | ------------|
 > |读者 | `aud` |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
-> | 即时身份验证 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
+> | 即时身份验证 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |身份验证方法 | `amr` |标识对令牌使用者的身份验证方式。 | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |名字 | `given_name` |和对 Azure AD 用户对象的设置一样，指定用户的名。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |组 | `groups` |指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过应用程序清单的“groupMembershipClaims”属性，基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br> **注释**： <br> 如果用户所在的组数超出了某个限制（对于 SAML，为 150；对于 JWT，为 200），则会添加超额声明，声明源指向包含该用户的组列表的 Graph 终结点。 （在 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | 组超额指示器 | `groups:src1` | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 SAML，此声明是作为新声明添加的，以代替 `groups` 声明。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | 组超额指示器 | `groups:src1` | 对于不受长度限制但对于令牌太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 SAML，此声明是作为新声明添加的，以代替 `groups` 声明。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |标识提供程序 | `idp` |记录对令牌使用者进行身份验证的标识提供程序。 除非用户帐户与颁发者不在同一租户中，否则此值与颁发者声明的值相同。 | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |存储颁发令牌的时间。 它通常用于度量令牌新鲜度。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |颁发者 | `iss` |标识构造并返回令牌的安全令牌服务 (STS)。 在 Azure AD 返回的令牌中，颁发者是 sts.windows.net。 颁发者声明值中的 GUID 是 Azure AD 目录的租户 ID。 租户 ID 是目录的固定不变且可靠的标识符。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
@@ -152,10 +152,9 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 </t:RequestSecurityTokenResponse>
 ```
 
-## <a name="related-content"></a>相关内容
+## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Policy 资源](/graph/api/resources/policy?view=graph-rest-beta)，详细了解如何使用 Microsoft Graph API 管理令牌生存期策略。
-* 有关通过 PowerShell cmdlet 管理策略的详细信息和示例，请参阅 [Azure AD 中的可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 
-* 将[自定义和可选声明](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)添加到应用程序的令牌。
-* 使用[带 SAML 的单一登录 (SSO)](single-sign-on-saml-protocol.md)。
+* 若要了解有关使用 Microsoft Graph API 管理令牌生存期策略的详细信息，请参阅 [Azure AD 策略资源概述](/graph/api/resources/policy)。
+* 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
+* 使用 [SAML (SSO) 的单一登录](single-sign-on-saml-protocol.md)。
 * 使用 [Azure 单一注销 SAML 协议](single-sign-out-saml-protocol.md)
