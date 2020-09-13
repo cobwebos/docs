@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b8e66ad2c907815b8395ab47059db92e57ad4cf
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707685"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438051"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虚拟机大小
 
@@ -25,17 +25,17 @@ ms.locfileid: "67707685"
 
 | 工作负荷                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| STREAM Triad                                    | 约 190 GB/秒（Intel LIP.MLC AVX-512）  |
-| 高性能 Linpack （HPL.DAT）                  | ~ 3520 GigaFLOPS （Rpeak），~ 2970 GigaFLOPS （Rmax） |
+| STREAM Triad                                    | 约 190 GB/s (Intel LIP.MLC AVX-512)   |
+| 高性能 Linpack (HPL.DAT)                   | ~ 3520 GigaFLOPS (Rpeak) ，~ 2970 GigaFLOPS (Rmax)  |
 | RDMA 延迟 & 带宽                        | 1.80 微秒，96.3 Gb/秒   |
 | 本地 NVMe SSD 上的 FIO                           | 约 1.3 GB/秒读取，约 900 MB/秒写入 |  
-| 4 Azure 高级 SSD 上的 IOR （P30 托管磁盘，RAID0） * *  | 约 780 MB/秒读取，约 780 MB/写入 |
+| IOR on 4 Azure 高级 SSD (P30 托管磁盘，RAID0) * *  | 约 780 MB/秒读取，约 780 MB/写入 |
 
 ## <a name="infiniband-send-latency"></a>无限发送延迟
 
 Mellanox Perftest。
 
-```azure-cli
+```bash
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
@@ -58,11 +58,11 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 OSU MPI 延迟测试 v 5.4.3。
 
-```azure-cli
+```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-| #bytes  | 滞后时间 [微秒] （MPICH 3.3 + CH4） | 滞后时间 [微秒] （OpenMPI 4.0.0） | 延迟 [微秒] （MVAPICH2 2.3） |
+| #bytes  | 延迟 [微秒] (MPICH 3.3 + CH4)  | 延迟 [微秒] (OpenMPI 4.0.0)  | 延迟 [微秒] (MVAPICH2 2.3)  |
 |------|----------|----------|----------|
 | 2    | 1.84     | 1.78     | 2.08     |
 | 4    | 1.84     | 1.79     | 2.08     |
@@ -81,11 +81,11 @@ OSU MPI 延迟测试 v 5.4.3。
 
 OSU MPI 带宽测试 v 5.4.3。
 
-```azure-cli
+```bash
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-| #Size   | 带宽（MB/s） | 带宽（Gb/秒） |
+| #Size   | 带宽 (MB/秒)  | 带宽 (Gb/秒)  |
 |---------|------------------|------------------|
 | 2       | 6.18             | 0.04944          |
 | 4       | 13.27            | 0.10616          |

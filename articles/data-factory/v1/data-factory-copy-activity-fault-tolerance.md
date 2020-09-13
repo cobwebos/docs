@@ -50,7 +50,7 @@ ms.locfileid: "89436385"
 >[!NOTE]
 >当复制活动配置为调用外部数据加载机制（包括 [Azure Synapse Analytics (以前的 SQL 数据仓库) PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [Amazon Redshift 卸载](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)）时，此功能不适用。 若要使用 PolyBase 将数据加载到 Azure Synapse Analytics，请在复制活动中指定 "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)"，使用 polybase 的本机容错支持。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 下面的 JSON 定义示例用于配置在复制活动中跳过不兼容行：
 
 ```json
@@ -69,7 +69,7 @@ ms.locfileid: "89436385"
 }
 ```
 
-| properties | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | **enableSkipIncompatibleRow** | 允许或不允许在复制期间跳过不兼容行。 | True<br/>False（默认值） | 否 |
 | **redirectIncompatibleRowSettings** | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否 |

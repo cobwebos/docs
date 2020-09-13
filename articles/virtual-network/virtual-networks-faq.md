@@ -44,7 +44,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 是的。 可以通过 Azure 市场部署许多供应商提供 [WAN 优化网络虚拟设备](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization)。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>要使用哪些工具创建 VNet？
 可以使用以下工具创建或配置 VNet：

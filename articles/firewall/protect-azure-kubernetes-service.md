@@ -1,60 +1,66 @@
 ---
-title: 使用 Azure 防火墙保护 Azure Kubernetes 服务（AKS）部署
-description: 了解如何使用 Azure 防火墙保护 Azure Kubernetes 服务（AKS）部署
+title: 使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
+description: 了解如何使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/03/2020
 ms.author: victorh
-ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87412943"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437847"
 ---
-# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务（AKS）部署
+# <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
 
-Azure Kubernetes Service （AKS）在 Azure 上提供托管的 Kubernetes 群集。 它通过将很多责任分担到 Azure，降低了管理 Kubernetes 的复杂性和操作开销。 AKS 可以处理关键任务，如运行状况监视和维护，并通过集中管理提供企业级安全群集。
+Azure Kubernetes 服务 (AKS) 提供 Azure 上的托管 Kubernetes 群集。 它通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 AKS 可以处理关键任务（例如运行状况监视和维护），并提供受到辅助治理的企业级安全群集。
 
-Kubernetes 根据虚拟机的可用计算资源和每个容器的资源要求，协调虚拟机群集并计划容器在这些虚拟机上运行。 容器组合到 pod 中，即 Kubernetes 的基本操作单元，而这些箱将扩展到所需的状态。
+Kubernetes 根据虚拟机的可用计算资源和每个容器的资源要求，协调虚拟机群集并安排容器在这些虚拟机上运行。 容器组合到 pod 中，即 Kubernetes 的基本操作单元，而这些箱将扩展到所需的状态。
 
 为了便于管理和操作，AKS 群集中的节点需要访问特定的端口和完全限定的域名 (FQDN)。 这些操作可以是与 API 服务器通信，或者下载并安装核心 Kubernetes 群集组件和节点安全更新。 Azure 防火墙可以帮助你锁定环境并筛选出站流量。
 
-遵循本文中的指导原则，使用 Azure 防火墙为你的 Azure Kubernetes 群集提供额外的保护。
+请参阅本文中的指南，使用 Azure 防火墙为 Azure Kubernetes 群集提供额外保护。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 已部署的 Azure Kubernetes 群集，其中包含运行的应用程序。
+- 已部署的 Azure Kubernetes 群集，其中包含正在运行的应用程序。
 
-   有关详细信息，请参阅[教程：部署 Azure Kubernetes 服务（AKS）群集](../aks/tutorial-kubernetes-deploy-cluster.md)和[教程：在 azure KUBERNETES 服务（AKS）中运行应用程序](../aks/tutorial-kubernetes-deploy-application.md)。
+   有关详细信息，请参阅[教程：部署 Azure Kubernetes 服务 (AKS) 群集](../aks/tutorial-kubernetes-deploy-cluster.md)和[教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序](../aks/tutorial-kubernetes-deploy-application.md)。
 
 
 ## <a name="securing-aks"></a>保护 AKS
 
-Azure 防火墙提供 AKS FQDN 标记以简化配置。 使用以下步骤可允许出站 AKS 平台流量：
+Azure 防火墙提供 AKS FQDN 标记以简化此配置。 使用以下步骤允许出站 AKS 平台流量：
 
-- 使用 Azure 防火墙限制出站流量并创建用户定义的路由（UDR）以指示所有出站流量时，请确保在防火墙中创建适当的 DNAT 规则，以正确允许入站流量。 
+- 使用 Azure 防火墙限制出站流量并创建用户定义的路由 (UDR) 来引导所有出站流量时，请确保在防火墙中创建适当的 DNAT 规则，以正确允许入站流量。 
 
-   使用带有 UDR 的 Azure 防火墙会中断入站安装，因为存在非对称路由。 如果 AKS 子网具有指向防火墙专用 IP 地址的默认路由，但使用的是公共负载均衡器，则会出现此问题。 例如，类型为*LoadBalancer*的入站或 Kubernetes 服务。
+   结合使用 Azure 防火墙和 UDR 时，会因不对称路由而破坏入站设置。 如果 AKS 子网具有指向防火墙专用 IP 地址的默认路由，而你使用公共负载均衡器，就会出现此问题。 例如类型为 LoadBalancer 的入站或 Kubernetes 服务。
 
    在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，并且无法识别已建立的会话，因此会丢弃返回的数据包。 若要了解如何将 Azure 防火墙与入口或服务负载均衡器集成，请参阅[将 Azure 防火墙与 Azure 标准负载均衡器集成](integrate-lb.md)。
-- 创建应用程序规则集合并添加规则以启用*AzureKubernetesService* FQDN 标记。 源 IP 地址范围为主机池虚拟网络，协议为 https，目标为 AzureKubernetesService。
-- AKS 群集需要以下出站端口/网络规则：
+- 创建应用程序规则集合并添加启用 AzureKubernetesService FQDN 标记的规则。 源 IP 地址范围为主机池虚拟网络，协议为 https，目标为 AzureKubernetesService。
+- 以下出站端口/网络规则对于 AKS 群集是必需的：
 
    - TCP 端口 443
-   - TCP [*IPAddrOfYourAPIServer*]：如果你的应用需要与 API 服务器通信，则需要443。 此更改可以在创建群集后设置。
-   - TCP 端口9000和 UDP 端口1194，用于隧道前端盒与 API 服务器上的隧道通信。
+   - 如果有应用需要与 API 服务器通信，则需要 TCP [IPAddrOfYourAPIServer]:443。 创建群集后，可以设置此更改。
+   - TCP 端口 9000 和 UDP 端口 1194，使隧道前端 pod 与 API 服务器上的隧道后端进行通信。
 
-      若要更具体地了解，请参阅 **hcp. <location> 。* 下表中的 azmk8s.io 和地址。
-   - 用于网络时间协议 (NTP) 时间同步 (Linux 节点) 的 UDP 端口 123。
-   - 如果你有直接访问 API 服务器的 Pod，则还需要用于 DNS 的 UDP 端口 53。
+      若要更具体地了解，请参阅 **hcp. <location> 。* 下表中的 azmk8s.io 和地址：
 
-   有关详细信息，请参阅[在 Azure Kubernetes 服务中控制群集节点的出口流量（AKS）](../aks/limit-egress-traffic.md)。
-- 配置 AzureMonitor 和存储服务标记。 Azure Monitor 接收 log analytics 数据。
+   | 目标终结点                                                             | 协议 | 端口    | 用途  |
+   |----------------------------------------------------------------------------------|----------|---------|------|
+   | **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
+   | **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
 
-   你还可以分别允许工作区 URL： `<worksapceguid>.ods.opinsights.azure.com` 、和 `<worksapceguid>.oms.opinsights.azure.com` 。 可以通过以下方式之一来解决此操作：
+   - UDP 端口 123，用于网络时间协议 (NTP) 时间同步（Linux 节点）。
+   - 如果你有可直接访问 API 服务器的 pod，则还必须具有用于 DNS 的 UDP 端口 53。
+
+   有关详细信息，请参阅 [在 Azure Kubernetes 服务中控制群集节点的出口流量 (AKS) ](../aks/limit-egress-traffic.md)。
+- 配置 AzureMonitor 和存储服务标记。 Azure Monitor 接收日志分析数据。
+
+   还可以单独允许工作区 URL：`<worksapceguid>.ods.opinsights.azure.com` 和 `<worksapceguid>.oms.opinsights.azure.com`。 可以通过以下方式之一来解决此操作：
 
     - 允许从主机池子网到、和的 https 访问 `*. ods.opinsights.azure.com` `*.oms. opinsights.azure.com` 。 这些通配符 Fqdn 启用了所需的访问权限，但限制更少。
     - 使用以下 log analytics 查询列出确切要求的 Fqdn，然后在防火墙应用程序规则中显式允许它们：
@@ -70,4 +76,4 @@ Azure 防火墙提供 AKS FQDN 标记以简化配置。 使用以下步骤可允
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 Azure Kubernetes 服务的详细信息，请参阅[Azure Kubernetes 服务（AKS）的 Kubernetes 核心概念](../aks/concepts-clusters-workloads.md)。
+- 若要详细了解 Azure Kubernetes 服务，请参阅[适用于 Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念](../aks/concepts-clusters-workloads.md)。

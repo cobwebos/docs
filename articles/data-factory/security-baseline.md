@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57786aa343fd2ea863b17f65253e5d4a4a6b88ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226822"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437932"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure 数据工厂的 azure 安全基线
 
@@ -540,7 +540,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 集成运行时应由虚拟网络 (VNet) /子网，并相应地进行标记。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 集成运行时应由虚拟网络 (VNet) /子网，并相应地进行标记。
 
  你还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。
 
@@ -578,7 +578,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**：如果云数据存储支持 HTTPS 或 tls，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。 使用的 TLS 版本为 1.2。
 
-在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure SQL 数据仓库的所有连接需要经过加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 true。 对于 Azure 存储，可以在连接字符串中使用 HTTPS。
+与 Azure SQL 数据库和 Azure Synapse Analytics (以前的 SQL 数据仓库的所有连接) 需要加密 (SSL/TLS) ，同时数据与数据库之间传输数据。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 true。 对于 Azure 存储，可以在连接字符串中使用 HTTPS。
 
 * [了解 Azure 数据工厂中的传输加密](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -684,7 +684,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请使用 azure 更新管理解决方案来管理 vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请使用 azure 更新管理解决方案来管理 vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
 对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
@@ -700,7 +700,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动修补程序管理解决方案
 
-**指南**：如果在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，则可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+**指南**：如果在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，则可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和补丁。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
 * [Azure 中的更新管理解决方案](https://docs.microsoft.com/azure/automation/automation-update-management)
 
@@ -856,7 +856,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指南**：自适应应用程序控制是 Azure 安全中心的一个智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 azure 和非 azure 计算机上 (Windows 和 Linux) 上运行。 如果这不能满足组织的要求，请实现第三方解决方案。
+**指导**：自适应应用程序控制是 Azure 安全中心提供的智能、自动化、端到端的解决方案，有助于控制可在 Azure 和非 Azure 计算机（Windows 和 Linux）上运行的应用程序。 如果这不能满足组织的要求，请实现第三方解决方案。
 
 请注意，这仅适用于在 Azure 虚拟机中运行 Integration Runtime。
 
@@ -1050,7 +1050,9 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 * [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何对 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [在管道活动中使用 Azure Key Vault 机密](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 
@@ -1112,7 +1114,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指南**：部署后，默认情况下，适用于 Azure 的 Microsoft 反恶意软件将自动安装最新的签名、平台和引擎更新。 请遵循 Azure 安全中心中的建议：“计算和应用”用于确保所有终结点都具有最新的签名。 通过与 Azure 安全中心集成的 Microsoft Defender 高级威胁防护服务，可以使用附加的安全性进一步保护 Windows OS，以降低基于病毒或恶意软件进行攻击的风险。
+**指导**：部署后，Microsoft Antimalware for Azure 会默认自动安装最新的签名、平台和引擎更新。 请遵循 Azure 安全中心中的建议：“计算和应用”用于确保所有终结点都具有最新的签名。 通过与 Azure 安全中心集成的 Microsoft Defender 高级威胁防护服务，可以使用附加的安全性进一步保护 Windows OS，以降低基于病毒或恶意软件进行攻击的风险。
 
 * [如何为 Azure 云服务和虚拟机部署 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -1142,7 +1144,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请启用 azure 备份和目标 azure vm，以及所需的频率和保留期。 在 Azure Key Vault 中备份客户托管的密钥。
+**指南**：如果你在 Azure 虚拟机中运行 INTEGRATION RUNTIME (VM) ，请启用 azure 备份和目标 azure vm，以及所需的频率和保留期。 在 Azure Key Vault 中备份客户管理的密钥。
 
 对于任何数据存储，请参阅该服务的安全基准，以获取有关如何执行定期、自动备份的建议。
 

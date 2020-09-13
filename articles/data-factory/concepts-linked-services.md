@@ -66,7 +66,7 @@ ms.locfileid: "89434090"
 
 下表描述了上述 JSON 中的属性：
 
-properties | 说明 | 必需 |
+属性 | 说明 | 必需 |
 -------- | ----------- | -------- |
 name | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 链接服务的类型。 例如： AzureBlobStorage (数据存储) 或 AzureBatch (计算) 。 请参阅 typeProperties 说明。 | 是 |
